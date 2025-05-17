@@ -1,0 +1,21 @@
+.unity-base-field__input {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.unity-base-field__label {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.unity-button {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.unity-button.large {
+    padding-bottom: 6px;
+    padding-top: 6px;
+}

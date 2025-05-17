@@ -1,0 +1,17 @@
+using UnityEngine;
+using NavalCombatCore;
+using GeographicLib;
+using TMPro;
+using UnityEngine.UIElements;
+using System.Collections.Generic;
+
+public class TopTabs : SingletonDocument<TopTabs>
+{
+    protected override void Awake()
+    {
+        base.Awake();
+
+        var shipClassEditorButton = root.Q<Button>("ClassEditorButton");
+        shipClassEditorButton.clicked += () => ShipClassEditor.Instance.Show();
+    }
+}

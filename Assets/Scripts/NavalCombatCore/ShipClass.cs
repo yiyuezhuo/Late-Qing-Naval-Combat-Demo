@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngineInternal;
+using System.Xml.Serialization;
+using System.Xml;
+
 
 namespace NavalCombatCore
 {
@@ -135,7 +137,10 @@ namespace NavalCombatCore
 
     public class MountArcRecord
     {
+        [XmlAttribute]
         public float startDeg;
+
+        [XmlAttribute]
         public float endDeg;
     }
 
@@ -151,26 +156,30 @@ namespace NavalCombatCore
 
     public class BatteryRecord
     {
-        public GlobalString name;
+        public GlobalString name = new();
         public float damageRating;
         public float maxRateOfFireShootPerMin; // shoot/min
         public int fireControlPositions;
         public FireControlSystem fireControlType;
         public float rangeYards;
         public float fireControlRadarModifier;
-        public GlobalString fireControlRadarName;
+        public GlobalString fireControlRadarName = new();
         public float shellSizeInch;
         public float shellWeightPounds; // lb
         public int ammunitionCapacity;
-        
+
         public List<FireControlTableRecord> fireControlTableRecords = new() { new() };
-        public List<PenetrationTableRecord> penetrationTableRecords = new(){new()};
-        public List<MountLocationRecord> mountLocationRecords = new(){new()};
+        public List<PenetrationTableRecord> penetrationTableRecords = new() { new() };
+        public List<MountLocationRecord> mountLocationRecords = new() { new() };
+
     }
 
     public class TorpedoSetting
     {
+        [XmlAttribute]
         public float rangeYards;
+
+        [XmlAttribute]
         public float speedKnots;
     }
 
@@ -189,7 +198,7 @@ namespace NavalCombatCore
 
     public class TorpedoSector
     {
-        public GlobalString name;
+        public GlobalString name = new();
         public List<MountLocationRecord> mountLocationRecords = new() { new() };
         public List<TorpedoSetting> torpedoSettings = new() { new() };
         public int ammunitionCapacity;
@@ -198,13 +207,16 @@ namespace NavalCombatCore
 
     public class RapidFireBatteryFireControlLevelRecord
     {
+        [XmlAttribute]
         public float fireControlMaxRange;
+
+        [XmlAttribute]
         public float fireControlEffectiveRange;
     }
 
     public class RapidFireBatteryRecord
     {
-        public GlobalString name;
+        public GlobalString name = new();
         public float maxRangeYards;
         public float effectiveRangeYards;
         public List<RapidFireBatteryFireControlLevelRecord> fireControlRecords = new() { new() };
@@ -215,13 +227,19 @@ namespace NavalCombatCore
 
     public class SpeedIncreaseRecord
     {
+        [XmlAttribute]
         public float thresholdSpeedKnots;
+
+        [XmlAttribute]
         public float increaseSpeedKnots;
     }
 
     public class ArmorRatingReocrd
     {
+        [XmlAttribute]
         public float effectInch;
+
+        [XmlAttribute]
         public float actualInch;
     }
 
@@ -231,16 +249,17 @@ namespace NavalCombatCore
         public ArmorRatingReocrd turretHorizontal = new(); // 2H
         public ArmorRatingReocrd superStructureHorizontal = new(); // 3H
         public ArmorRatingReocrd conningTower = new(); // 4V
-        public ArmorRatingReocrd beltMiddle = new(); // 5V
+        public ArmorRatingReocrd mainBelt = new(); // 5V
         public ArmorRatingReocrd beltEnd = new(); // 6V
         public ArmorRatingReocrd barbette = new(); // 7V
         public ArmorRatingReocrd turretVertical = new(); // 8V
         public ArmorRatingReocrd superStructureVertical = new(); // 9V
     }
 
+    [Serializable]
     public class ShipClass
     {
-        public GlobalString name;
+        public GlobalString name = new();
         public ShipType type;
         public Country country;
         public float displacementTons;
@@ -263,6 +282,7 @@ namespace NavalCombatCore
         public float standardTurnDegPer2Min; // per 2 min
         public float emergencyTurnDegPer2Min; // per 2 min
         public ArmorRating armorRating = new();
+
     }
 
 }

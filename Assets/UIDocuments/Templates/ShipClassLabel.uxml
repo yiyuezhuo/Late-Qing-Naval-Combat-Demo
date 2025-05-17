@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Label data-source-type="NavalCombatCore.ShipClass, Assembly-CSharp" style="border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 1px; border-right-width: 1px;">
+        <Bindings>
+            <ui:DataBinding property="text" binding-mode="ToTarget" source-to-ui-converters="ShipClass =&gt; ShipClass&apos;s merge name" />
+        </Bindings>
+    </ui:Label>
+</ui:UXML>

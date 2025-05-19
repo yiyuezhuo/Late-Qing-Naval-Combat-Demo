@@ -8,10 +8,11 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
 using System.Linq;
-using TreeEditor;
 
 public class ShipClassEditor : HideableDocument<ShipClassEditor>
 {
+    ListView batteryRecordsListView;
+
     protected override void Awake()
     {
         base.Awake();
@@ -68,7 +69,7 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
         // };
         // speedIncreaseMultiColumnListView.SetBinding("itemsSource", new DataBinding());
 
-        var batteryRecordsListView = root.Q<ListView>("BatteryRecordsListView");
+        batteryRecordsListView = root.Q<ListView>("BatteryRecordsListView");
         batteryRecordsListView.itemsAdded += Utils.MakeCallbackForItemsAdded<BatteryRecord>(batteryRecordsListView);
         batteryRecordsListView.makeItem = () =>
         {
@@ -82,7 +83,19 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             fireControlTableMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<FireControlTableRecord>(fireControlTableMultiColumnListView);
             penetrationTableMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<PenetrationTableRecord>(penetrationTableMultiColumnListView);
             mountsListView.itemsAdded += Utils.MakeCallbackForItemsAdded<MountLocationRecord>(mountsListView);
-            
+
+            mountsListView.makeItem = () =>
+            {
+                var el2 = mountsListView.itemTemplate.CloneTree();
+
+                var mountsArcsMultiColumnsListView = el2.Q<MultiColumnListView>("MountArcsMultiColumnListView");
+                mountsArcsMultiColumnsListView.itemsAdded += Utils.MakeCallbackForItemsAdded<MountArcRecord>(mountsArcsMultiColumnsListView);
+
+                Utils.BindItemsSourceRecursive(el2);
+
+                return el2;
+            };
+
             return el;
         };
 
@@ -102,11 +115,47 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             IOManager.Instance.textLoaded += OnShipClassesXMLLoaded;
             IOManager.Instance.LoadTextFile("xml");
         };
+
+        var exportSelectedBatteryButton = root.Q<Button>("ExportSelectedBatteryButton");
+        var importToSelectedBatteryButton = root.Q<Button>("ImportToSelectedBatteryButton");
+
+        exportSelectedBatteryButton.clicked += () =>
+        {
+            var battryRecord = batteryRecordsListView.selectedItem as BatteryRecord;
+            if (battryRecord != null)
+            {
+                var content = battryRecord.ToXML();
+                IOManager.Instance.SaveTextFile(content, "battery", "xml");
+            }
+        };
+
+        importToSelectedBatteryButton.clicked += () =>
+        {
+            var idx = batteryRecordsListView.selectedIndex;
+            if (idx >= 0 && idx < batteryRecordsListView.itemsSource.Count) // TODO: Notify invalid 
+            {
+                IOManager.Instance.textLoaded += OnBatteryXMLLoaded;
+                IOManager.Instance.LoadTextFile("xml");
+            }
+        };
+    }
+
+    public void OnBatteryXMLLoaded(object sender, string text)
+    {
+        IOManager.Instance.textLoaded -= OnBatteryXMLLoaded;
+
+        var idx = batteryRecordsListView.selectedIndex;
+        if (idx >= 0 && idx < batteryRecordsListView.itemsSource.Count) // TODO: Notify invalid 
+        {
+            var battryRecord = BatteryRecord.FromXml(text);
+            batteryRecordsListView.itemsSource[idx] = battryRecord;
+        }
     }
 
     public void OnShipClassesXMLLoaded(object sender, string text)
     {
-        GameManager.Instance.navalGameState.ShipClassesFromXml(text);
         IOManager.Instance.textLoaded -= OnShipClassesXMLLoaded;
+
+        GameManager.Instance.navalGameState.ShipClassesFromXml(text);
     }
 }

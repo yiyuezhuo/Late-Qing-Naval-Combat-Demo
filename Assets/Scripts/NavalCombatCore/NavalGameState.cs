@@ -10,13 +10,15 @@ namespace NavalCombatCore
     [Serializable]
     public class NavalGameState
     {
-        public List<ShipClass> shipClasses = new() {
+        public List<ShipClass> shipClasses = new()
+        {
             // new() { name=new() { english="114514"} },
             // new() { name=new() { english="abs"} }
         };
         public List<ShipLog> shipLogs = new() { new() };
 
-        static XmlSerializer serializer = new XmlSerializer(typeof(List<ShipClass>));
+        static XmlSerializer shipClassListSerializer = new XmlSerializer(typeof(List<ShipClass>));
+        static XmlSerializer batterySerializer = new XmlSerializer(typeof(List<BatteryRecord>));
 
         public string ShipClassesToXML()
         {
@@ -24,7 +26,7 @@ namespace NavalCombatCore
             {
                 using (var xmlWriter = XmlWriter.Create(textWriter))
                 {
-                    serializer.Serialize(xmlWriter, shipClasses);
+                    shipClassListSerializer.Serialize(xmlWriter, shipClasses);
                     string serializedXml = textWriter.ToString();
 
                     return serializedXml;
@@ -34,9 +36,9 @@ namespace NavalCombatCore
 
         public void ShipClassesFromXml(string xml)
         {
-            using(var reader = new StringReader(xml))
+            using (var reader = new StringReader(xml))
             {
-                shipClasses = (List<ShipClass>)serializer.Deserialize(reader);
+                shipClasses = (List<ShipClass>)shipClassListSerializer.Deserialize(reader);
             }
         }
     }

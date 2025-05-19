@@ -91,6 +91,10 @@
                             </ui:VisualElement>
                         </ui:Tab>
                         <ui:Tab label="Battery">
+                            <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
+                                <ui:Button text="Import To Selected" name="ImportToSelectedBatteryButton" />
+                                <ui:Button text="Export Selected" name="ExportSelectedBatteryButton" />
+                            </ui:VisualElement>
                             <ui:ScrollView style="height: 100%; flex-grow: 1;">
                                 <ui:ListView item-template="project://database/Assets/UIDocuments/BatteryRecordEditor.uxml?fileID=9197481963319205126&amp;guid=e85d42eaff3911a4d850ecd233a8d27c&amp;type=3#BatteryRecordEditor" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" virtualization-method="DynamicHeight" name="BatteryRecordsListView" data-source-path="batteryRecords" style="flex-grow: 0;" />
                             </ui:ScrollView>
@@ -98,106 +102,76 @@
                         <ui:Tab label="Rapid Fire Battery" />
                         <ui:Tab label="Torpedo" />
                         <ui:Tab label="Remark">
-                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                                    <ui:FloatField label="Displacement (tons)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="displacementTons" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:IntegerField label="Complement (men)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="complementMen" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:IntegerField>
-                                    <ui:FloatField label="Length (foot)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="lengthFoot" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Beam (foot)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="beamFoot" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Draft (foot)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="draftFoot" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:TextField label="Launch">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="launchedDate" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:TextField>
-                                    <ui:TextField label="Complated">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="completedDate" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:TextField>
-                                    <ui:SliderInt label="Applicable Year Begin" value="180" high-value="1945" low-value="1880" show-input-field="true">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="applicableYearBegin" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:SliderInt>
-                                    <ui:SliderInt label="Applicable Year End" value="42" high-value="1945" low-value="1880" show-input-field="true">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="applicableYearEnd" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:SliderInt>
+                            <ui:ScrollView>
+                                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                    <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                        <ui:FloatField label="Displacement (tons)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="displacementTons" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:IntegerField label="Complement (men)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="complementMen" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:IntegerField>
+                                        <ui:FloatField label="Length (foot)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="lengthFoot" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:FloatField label="Beam (foot)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="beamFoot" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:FloatField label="Draft (foot)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="draftFoot" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:TextField label="Launch">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="launchedDate" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:TextField>
+                                        <ui:TextField label="Complated">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="completedDate" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:TextField>
+                                        <ui:SliderInt label="Applicable Year Begin" value="180" high-value="1945" low-value="1880" show-input-field="true">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="applicableYearBegin" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:SliderInt>
+                                        <ui:SliderInt label="Applicable Year End" value="42" high-value="1945" low-value="1880" show-input-field="true">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="applicableYearEnd" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:SliderInt>
+                                        <ui:TextField label="Portrait">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="portraitUrl" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:TextField>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; padding-left: 1px; padding-bottom: 1px; padding-right: 1px; padding-top: 1px;">
+                                        <ui:Instance template="GlobalStringEditor" data-source-path="builderDesc">
+                                            <AttributeOverrides element-name="GlobalStringLabel" text="Builder" />
+                                        </ui:Instance>
+                                        <ui:Instance template="GlobalStringEditor" data-source-path="fateDesc">
+                                            <AttributeOverrides element-name="GlobalStringLabel" text="Fate" />
+                                        </ui:Instance>
+                                        <ui:Instance template="GlobalStringEditor" data-source-path="engineDesc">
+                                            <AttributeOverrides element-name="GlobalStringLabel" text="Engines" />
+                                        </ui:Instance>
+                                        <ui:Instance template="GlobalStringEditor" data-source-path="boilersDesc">
+                                            <AttributeOverrides element-name="GlobalStringLabel" text="Boilers" />
+                                        </ui:Instance>
+                                    </ui:VisualElement>
                                 </ui:VisualElement>
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; padding-left: 1px; padding-bottom: 1px; padding-right: 1px; padding-top: 1px;">
-                                    <ui:Instance template="GlobalStringEditor" data-source-path="builderDesc">
-                                        <AttributeOverrides element-name="GlobalStringLabel" text="Builder" />
-                                    </ui:Instance>
-                                    <ui:Instance template="GlobalStringEditor" data-source-path="fateDesc">
-                                        <AttributeOverrides element-name="GlobalStringLabel" text="Fate" />
-                                    </ui:Instance>
-                                    <ui:Instance template="GlobalStringEditor" data-source-path="engineDesc">
-                                        <AttributeOverrides element-name="GlobalStringLabel" text="Engines" />
-                                    </ui:Instance>
-                                    <ui:Instance template="GlobalStringEditor" data-source-path="boilersDesc">
-                                        <AttributeOverrides element-name="GlobalStringLabel" text="Boilers" />
-                                    </ui:Instance>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                        </ui:Tab>
-                        <ui:Tab label="Test">
-                            <ui:VisualElement style="flex-grow: 0;">
-                                <ui:ScrollView>
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                    <ui:Label text="Label" />
-                                </ui:ScrollView>
-                            </ui:VisualElement>
+                            </ui:ScrollView>
                         </ui:Tab>
                     </ui:TabView>
                     <Bindings>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.Xml;
+using System.IO;
 
 
 namespace NavalCombatCore
@@ -142,7 +143,7 @@ namespace NavalCombatCore
         public float startDeg;
 
         [XmlAttribute]
-        public float endDeg;
+        public float CoverageDeg;
     }
 
     public class MountLocationRecord
@@ -178,6 +179,29 @@ namespace NavalCombatCore
         // public List<PenetrationTableRecord> penetrationTableRecords = new() { new() };
         // public List<MountLocationRecord> mountLocationRecords = new() { new() };
 
+        static XmlSerializer serializer = new XmlSerializer(typeof(BatteryRecord));
+
+        public string ToXML()
+        {
+            using (var textWriter = new StringWriter())
+            {
+                using (var xmlWriter = XmlWriter.Create(textWriter))
+                {
+                    serializer.Serialize(xmlWriter, this);
+                    string serializedXml = textWriter.ToString();
+
+                    return serializedXml;
+                }
+            }
+        }
+
+        public static BatteryRecord FromXml(string xml)
+        {
+            using (var reader = new StringReader(xml))
+            {
+                return (BatteryRecord)serializer.Deserialize(reader);
+            }
+        }
     }
 
     public class TorpedoSetting
@@ -274,8 +298,8 @@ namespace NavalCombatCore
         public GlobalString name = new();
         public ShipType type;
         public Country country;
-        public int applicableYearBegin=1900;
-        public int applicableYearEnd=1900;
+        public int applicableYearBegin = 1900;
+        public int applicableYearEnd = 1900;
         public float displacementTons;
         public int complementMen;
         public GlobalString fateDesc = new();
@@ -307,5 +331,7 @@ namespace NavalCombatCore
         public float standardTurnDegPer2Min; // per 2 min
         public float emergencyTurnDegPer2Min; // per 2 min
         public ArmorRating armorRating = new();
+
+        public string portraitUrl;
     }
 }

@@ -33,3 +33,33 @@
 .unity-tab-view__content-viewport {
     flex-shrink: 0;
 }
+
+.unity-multi-column-header {
+    height: 23px;
+    min-height: 23px;
+}
+
+.unity-foldout__toggle {
+    height: 23px;
+    min-height: 23px;
+}
+
+.unity.collection-view:focus:enabled.unity-collection-view__item--selected {
+    color: rgb(0, 0, 0);
+    background-color: rgba(197, 245, 255, 0);
+}
+
+.unity-collection-view__item--selected:hover:enabled {
+    color: rgb(0, 0, 0);
+    background-color: rgba(221, 244, 250, 0.39);
+}
+
+.unity-collection-view:focus:enabled.unity-collection-view__item--selected {
+    color: rgb(0, 0, 0);
+    background-color: rgba(221, 244, 250, 0.39);
+}
+
+.unity-collection-view:focus:enabled .unity-collection-view__item--selected {
+    background-color: rgba(221, 244, 250, 0.39);
+    color: rgb(0, 0, 0);
+}

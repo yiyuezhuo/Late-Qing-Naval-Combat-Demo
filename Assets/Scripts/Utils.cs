@@ -1,6 +1,9 @@
 using UnityEngine;
 using System;
 using NavalCombatCore;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UIElements;
 
 public static class Utils
 {
@@ -45,10 +48,33 @@ public static class Utils
 
         return (latDeg, lonDeg);
     }
-    
+
     public static NavalCombatCore.LatLon Vector3ToLatLon(Vector3 point)
     {
         var (latDeg, lonDeg) = Vector3ToLatitudeLongitudeDeg(point);
         return new NavalCombatCore.LatLon(latDeg, lonDeg);
+    }
+
+    public static Action<IEnumerable<int>> MakeCallbackForItemsAdded<T>(BaseListView listView) where T : new()
+    {
+        return (IEnumerable<int> index) =>
+        {
+            foreach (var i in index)
+            {
+                var v = listView.itemsSource[i];
+                if (v == null)
+                {
+                    listView.itemsSource[i] = new T();
+                }
+            }
+        };
+    }
+
+    public static void BindItemsSourceRecursive(VisualElement root)
+    {
+        foreach (var listView in root.Query<BaseListView>().ToList())
+        {
+            listView.SetBinding("itemsSource", new DataBinding());
+        }
     }
 }

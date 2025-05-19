@@ -1,17 +1,210 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:Template name="ArmorRatingEditor" src="project://database/Assets/UIDocuments/ArmorRatingEditor.uxml?fileID=9197481963319205126&amp;guid=37ee59f7e2be1ae42a09a6e60180ee72&amp;type=3#ArmorRatingEditor" />
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
-    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" data-source-path="navalGameState" style="flex-grow: 1; background-color: rgb(240, 240, 240);">
+    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" style="flex-grow: 1; background-color: rgb(240, 240, 240);">
         <ui:Label text="Class Editor" class="title" style="background-color: rgb(200, 200, 200); margin-top: 0; padding-top: 0;" />
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-            <ui:VisualElement style="flex-grow: 1; width: 20%; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+            <ui:VisualElement data-source-path="navalGameState" style="flex-grow: 1; width: 20%; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                 <ui:ListView show-add-remove-footer="true" data-source-path="shipClasses" binding-source-selection-mode="AutoAssign" name="ShipClassListView" item-template="project://database/Assets/UIDocuments/Templates/ShipClassLabel.uxml?fileID=9197481963319205126&amp;guid=eeb346bb672489a408ab64d0ea933ed6&amp;type=3#ShipClassLabel" fixed-item-height="24" style="flex-grow: 1;" />
                 <ui:VisualElement style="flex-shrink: 0;">
-                    <ui:Button text="Import" name="ImportButton" />
-                    <ui:Button text="Export" name="ExportButton" />
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:Button text="Import" name="ImportButton" style="flex-basis: 100px; flex-grow: 1; flex-shrink: 1;" />
+                        <ui:Button text="Export" name="ExportButton" style="flex-grow: 1; flex-basis: 100px; flex-shrink: 1;" />
+                    </ui:VisualElement>
                     <ui:Button text="Confirm" name="ConfirmButton" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1; width: 80%;" />
+            <ui:VisualElement data-source-path="selectedShipClass" style="flex-grow: 1; width: 80%;">
+                <ui:Label text="Not Selected or invalid binding">
+                    <Bindings>
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipClass to DisplayStyle (Not)" />
+                    </Bindings>
+                </ui:Label>
+                <ui:VisualElement>
+                    <ui:TabView>
+                        <ui:Tab label="Basic">
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 50%;">
+                                    <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                                        <AttributeOverrides element-name="GlobalStringLabel" text="Class Name" />
+                                    </ui:Instance>
+                                    <ui:EnumField label="Type" value="Center" type="NavalCombatCore.ShipType, Assembly-CSharp">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:EnumField>
+                                    <ui:EnumField label="Country" value="Center" type="NavalCombatCore.Country, Assembly-CSharp">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="country" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:EnumField>
+                                    <ui:IntegerField label="Target Size">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="targetSizeModifier" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:IntegerField>
+                                    <ui:FloatField label="Damage Point">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:IntegerField label="Dmg Ctrl Rating">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="damageControlRatingUnmodified" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:IntegerField>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 50%;">
+                                    <ui:Instance template="ArmorRatingEditor" data-source-path="armorRating" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:Tab>
+                        <ui:Tab label="Dynamic">
+                            <ui:FloatField label="Speed (Knots)">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="speedKnots" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:FloatField>
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:FloatField label="Standard Turn (deg)" style="flex-basis: 100px; flex-grow: 1;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="standardTurnDegPer2Min" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Emergency Turn (deg)" style="flex-basis: 100px; flex-grow: 1;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="emergencyTurnDegPer2Min" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:FloatField>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:MultiColumnListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" header-title="Speed-Increase" show-foldout-header="true" data-source-path="speedIncreaseRecord" name="SpeedIncreaseMultiColumnListView" style="flex-grow: 1; flex-basis: 100px;">
+                                    <ui:Columns>
+                                        <ui:Column name="speed" title="Speed" cell-template="project://database/Assets/UIDocuments/Templates/SpeedIncreaseRecord/SpeedIncreaseRecordSpeedCell.uxml?fileID=9197481963319205126&amp;guid=429f86857d98fd24e8e16c6cf0b9e4ed&amp;type=3#SpeedIncreaseRecordSpeedCell" width="50%" />
+                                        <ui:Column name="increase" title="Increase" cell-template="project://database/Assets/UIDocuments/Templates/SpeedIncreaseRecord/SpeedIncreaseRecordIncreaseCell.uxml?fileID=9197481963319205126&amp;guid=86de648d34e3f7f4db8a315a6f91832f&amp;type=3#SpeedIncreaseRecordIncreaseCell" width="50%" />
+                                    </ui:Columns>
+                                </ui:MultiColumnListView>
+                                <ui:ListView header-title="Engine Room" show-add-remove-footer="true" binding-source-selection-mode="AutoAssign" show-foldout-header="true" item-template="project://database/Assets/UIDocuments/Templates/FloatEditor.uxml?fileID=9197481963319205126&amp;guid=2eb023c6dc4ecd3419856ce9190844d1&amp;type=3#FloatEditor" data-source-path="speedKnotsEngineRoomsLevels" name="EngineRoomsListView" style="flex-grow: 1; flex-basis: 100px;" />
+                                <ui:ListView header-title="Propulsion/Shaft" show-add-remove-footer="true" show-foldout-header="true" item-template="project://database/Assets/UIDocuments/Templates/FloatEditor.uxml?fileID=9197481963319205126&amp;guid=2eb023c6dc4ecd3419856ce9190844d1&amp;type=3#FloatEditor" binding-source-selection-mode="AutoAssign" data-source-path="speedKnotsPropulsionShaftLevels" name="PropulsionShaftListView" style="flex-grow: 1; flex-basis: 100px;" />
+                                <ui:ListView header-title="Boiler Room" show-add-remove-footer="true" show-foldout-header="true" item-template="project://database/Assets/UIDocuments/Templates/FloatEditor.uxml?fileID=9197481963319205126&amp;guid=2eb023c6dc4ecd3419856ce9190844d1&amp;type=3#FloatEditor" binding-source-selection-mode="AutoAssign" data-source-path="speedKnotsBoilerRooms" name="BoilerRoomsListView" style="flex-grow: 1; flex-basis: 100px;" />
+                            </ui:VisualElement>
+                        </ui:Tab>
+                        <ui:Tab label="Battery">
+                            <ui:ScrollView style="height: 100%; flex-grow: 1;">
+                                <ui:ListView item-template="project://database/Assets/UIDocuments/BatteryRecordEditor.uxml?fileID=9197481963319205126&amp;guid=e85d42eaff3911a4d850ecd233a8d27c&amp;type=3#BatteryRecordEditor" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" virtualization-method="DynamicHeight" name="BatteryRecordsListView" data-source-path="batteryRecords" style="flex-grow: 0;" />
+                            </ui:ScrollView>
+                        </ui:Tab>
+                        <ui:Tab label="Rapid Fire Battery" />
+                        <ui:Tab label="Torpedo" />
+                        <ui:Tab label="Remark">
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                    <ui:FloatField label="Displacement (tons)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="displacementTons" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:IntegerField label="Complement (men)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="complementMen" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:IntegerField>
+                                    <ui:FloatField label="Length (foot)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="lengthFoot" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Beam (foot)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="beamFoot" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Draft (foot)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="draftFoot" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:TextField label="Launch">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="launchedDate" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:TextField>
+                                    <ui:TextField label="Complated">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="completedDate" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:TextField>
+                                    <ui:SliderInt label="Applicable Year Begin" value="180" high-value="1945" low-value="1880" show-input-field="true">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="applicableYearBegin" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:SliderInt>
+                                    <ui:SliderInt label="Applicable Year End" value="42" high-value="1945" low-value="1880" show-input-field="true">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="applicableYearEnd" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:SliderInt>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; padding-left: 1px; padding-bottom: 1px; padding-right: 1px; padding-top: 1px;">
+                                    <ui:Instance template="GlobalStringEditor" data-source-path="builderDesc">
+                                        <AttributeOverrides element-name="GlobalStringLabel" text="Builder" />
+                                    </ui:Instance>
+                                    <ui:Instance template="GlobalStringEditor" data-source-path="fateDesc">
+                                        <AttributeOverrides element-name="GlobalStringLabel" text="Fate" />
+                                    </ui:Instance>
+                                    <ui:Instance template="GlobalStringEditor" data-source-path="engineDesc">
+                                        <AttributeOverrides element-name="GlobalStringLabel" text="Engines" />
+                                    </ui:Instance>
+                                    <ui:Instance template="GlobalStringEditor" data-source-path="boilersDesc">
+                                        <AttributeOverrides element-name="GlobalStringLabel" text="Boilers" />
+                                    </ui:Instance>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:Tab>
+                        <ui:Tab label="Test">
+                            <ui:VisualElement style="flex-grow: 0;">
+                                <ui:ScrollView>
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                    <ui:Label text="Label" />
+                                </ui:ScrollView>
+                            </ui:VisualElement>
+                        </ui:Tab>
+                    </ui:TabView>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipClass to DisplayStyle" />
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

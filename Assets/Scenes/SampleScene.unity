@@ -814,57 +814,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navalGameState:
-    shipClasses:
-    - name:
-        english: 114514
-        japanese: 
-        chineseSimplified: 
-        chineseTraditional: 
-      type: 0
-      country: 0
-      displacementTons: 0
-      lengthFoot: 0
-      beamFoot: 0
-      draftFoot: 0
-      launchedDate: 
-      completedDate: 
-      targetSizeModifier: 0
-      damagePoint: 0
-      speedKnots: 0
-      damageControlRatingUnmodified: 0
-      speedKnotsEngineRoomsLevels:
-      - 0
-      speedKnotsPropulsionShaftLevels:
-      - 0
-      speedKnotsBoilerRooms:
-      - 0
-      standardTurnDegPer2Min: 0
-      emergencyTurnDegPer2Min: 0
-    - name:
-        english: abs
-        japanese: 
-        chineseSimplified: 
-        chineseTraditional: 
-      type: 0
-      country: 0
-      displacementTons: 0
-      lengthFoot: 0
-      beamFoot: 0
-      draftFoot: 0
-      launchedDate: 
-      completedDate: 
-      targetSizeModifier: 0
-      damagePoint: 0
-      speedKnots: 0
-      damageControlRatingUnmodified: 0
-      speedKnotsEngineRoomsLevels:
-      - 0
-      speedKnotsPropulsionShaftLevels:
-      - 0
-      speedKnotsBoilerRooms:
-      - 0
-      standardTurnDegPer2Min: 0
-      emergencyTurnDegPer2Min: 0
+    shipClasses: []
+  selectedShipClassIndex: 0
 --- !u!4 &708640260
 Transform:
   m_ObjectHideFlags: 0

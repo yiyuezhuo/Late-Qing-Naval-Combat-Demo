@@ -1,0 +1,107 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement data-source-type="NavalCombatCore.ArmorRating, Assembly-CSharp" style="flex-grow: 1; flex-direction: column;">
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 200px;">
+                <ui:FloatField label="Armor Typ Factor" style="flex-grow: 0;">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="armorTypeFactor" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="1H Deck">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="deck.effectInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="2H Turret">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="turretHorizontal.effectInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="3H Super Strcuture">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="superStructureHorizontal.effectInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="4V Conning Tower">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="conningTower.effectInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="5V Main Belt">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="mainBelt.effectInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="6V Belt End">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="beltEnd.effectInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="7V Barbette">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="barbette.effectInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="8V Turret">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="turretVertical.effectInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="9V Super Structure">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="superStructureVertical.effectInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
+                <ui:Label text="Actual" style="-unity-text-align: upper-center; padding-bottom: 3px; padding-top: 3px;" />
+                <ui:FloatField>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="deck.actualInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="turretHorizontal.actualInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="superStructureHorizontal.actualInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="conningTower.actualInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="mainBelt.actualInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="beltEnd.actualInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="barbette.actualInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="turretVertical.actualInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="superStructureVertical.actualInch" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -29,3 +29,7 @@
     margin-right: 0;
     padding-bottom: 2px;
 }
+
+.unity-tab-view__content-viewport {
+    flex-shrink: 0;
+}

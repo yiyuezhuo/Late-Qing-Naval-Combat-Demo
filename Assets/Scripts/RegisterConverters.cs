@@ -25,6 +25,13 @@ public static class RegisteredConverters
         {
             return shipClass?.name?.GetMergedName() ?? "[not defined]";
         });
+
+        Register("Bool to DisplayStyle", (ref bool isShow) => (StyleEnum<DisplayStyle>)(isShow ? DisplayStyle.Flex : DisplayStyle.None));
+        Register("Bool to DisplayStyle (Not)", (ref bool isShow) => (StyleEnum<DisplayStyle>)(isShow ? DisplayStyle.None : DisplayStyle.Flex));
+        Register("object to DisplayStyle", (ref object obj) => (StyleEnum<DisplayStyle>)(obj != null ? DisplayStyle.Flex : DisplayStyle.Flex));
+        Register("object to DisplayStyle (Not)", (ref object obj) => (StyleEnum<DisplayStyle>)(obj == null ? DisplayStyle.Flex : DisplayStyle.None));
+        Register("ShipClass to DisplayStyle", (ref NavalCombatCore.ShipClass obj) => (StyleEnum<DisplayStyle>)(obj != null ? DisplayStyle.Flex : DisplayStyle.None));
+        Register("ShipClass to DisplayStyle (Not)", (ref NavalCombatCore.ShipClass obj) => (StyleEnum<DisplayStyle>)(obj == null ? DisplayStyle.Flex : DisplayStyle.None));
     }
 
 

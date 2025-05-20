@@ -99,8 +99,45 @@
                                 <ui:ListView item-template="project://database/Assets/UIDocuments/BatteryRecordEditor.uxml?fileID=9197481963319205126&amp;guid=e85d42eaff3911a4d850ecd233a8d27c&amp;type=3#BatteryRecordEditor" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" virtualization-method="DynamicHeight" name="BatteryRecordsListView" data-source-path="batteryRecords" style="flex-grow: 0;" />
                             </ui:ScrollView>
                         </ui:Tab>
-                        <ui:Tab label="Rapid Fire Battery" />
-                        <ui:Tab label="Torpedo" />
+                        <ui:Tab label="Rapid Fire Battery">
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <ui:ScrollView>
+                                    <ui:ListView data-source-path="rapidFireBatteryRecords" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/RapidFireBatteryRecordEditor.uxml?fileID=9197481963319205126&amp;guid=c54c25b0a3728a647b6d6db069dbe92f&amp;type=3#RapidFireBatteryRecordEditor" virtualization-method="DynamicHeight" name="RapidFireBatteryListView" show-add-remove-footer="true" />
+                                </ui:ScrollView>
+                            </ui:VisualElement>
+                        </ui:Tab>
+                        <ui:Tab label="Torpedo">
+                            <ui:ScrollView>
+                                <ui:VisualElement data-source-path="torpedoSector" style="flex-grow: 1;">
+                                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                        <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                            <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                                                <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+                                            </ui:Instance>
+                                            <ui:IntegerField label="Ammunition Capacity" value="0">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="ammunitionCapacity" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:IntegerField>
+                                            <ui:EnumField label="Damage Class" value="Center" type="NavalCombatCore.TorpedoDamageClass, Assembly-CSharp">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="damageClass" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:EnumField>
+                                        </ui:VisualElement>
+                                        <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                            <ui:MultiColumnListView header-title="Settings" show-add-remove-footer="true" show-foldout-header="true" binding-source-selection-mode="AutoAssign" name="TorpedoSettingsMultiColumnListView" data-source-path="torpedoSettings">
+                                                <ui:Columns>
+                                                    <ui:Column name="rangeYards" title="Range (yard)" width="50%" cell-template="project://database/Assets/UIDocuments/Templates/TorpedoSetting/TorpedoSettingCellRange.uxml?fileID=9197481963319205126&amp;guid=381f005889d09c144ba4ad4916089a57&amp;type=3#TorpedoSettingCellRange" />
+                                                    <ui:Column name="speedKnots" title="Speed (knots)" width="50%" cell-template="project://database/Assets/UIDocuments/Templates/TorpedoSetting/TorpedoSettingCellSpeed.uxml?fileID=9197481963319205126&amp;guid=6eaa20422539daf41ad1a7dc0f8f657b&amp;type=3#TorpedoSettingCellSpeed" />
+                                                </ui:Columns>
+                                            </ui:MultiColumnListView>
+                                        </ui:VisualElement>
+                                    </ui:VisualElement>
+                                    <ui:ListView data-source-path="mountLocationRecords" name="TorpedoMountsListView" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/MountLocationRecordEditor.uxml?fileID=9197481963319205126&amp;guid=83e697c363f8eb349b6713defb6ef393&amp;type=3#MountLocationRecordEditor" header-title="Mounts" show-foldout-header="true" show-add-remove-footer="true" virtualization-method="DynamicHeight" />
+                                </ui:VisualElement>
+                            </ui:ScrollView>
+                        </ui:Tab>
                         <ui:Tab label="Remark">
                             <ui:ScrollView>
                                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">

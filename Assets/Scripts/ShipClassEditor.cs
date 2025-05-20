@@ -25,28 +25,7 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
         }
 
         var shipClassListView = root.Q<ListView>("ShipClassListView");
-        // shipClassListView.SetBinding("itemsSource", new DataBinding());
         shipClassListView.itemsAdded += Utils.MakeCallbackForItemsAdded<ShipClass>(shipClassListView);
-        // shipClassListView.itemsAdded += (IEnumerable<int> index) =>
-        // {
-        //     foreach (var i in index)
-        //     {
-        //         var v = shipClassListView.itemsSource[i];
-        //         if (v == null)
-        //         {
-        //             shipClassListView.itemsSource[i] = new ShipClass();
-        //         }
-        //     }
-        // };
-
-        // shipClassListView.selectionChanged += (IEnumerable<object> objs) =>
-        // {
-        //     var shipClass = objs.FirstOrDefault() as ShipClass;
-        //     if (shipClass != null)
-        //     {
-        //         Debug.Log(shipClass.name.GetMergedName());
-        //     }
-        // };
 
         shipClassListView.selectedIndicesChanged += (IEnumerable<int> ints) =>
         {
@@ -56,18 +35,6 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
 
         var speedIncreaseMultiColumnListView = root.Q<MultiColumnListView>("SpeedIncreaseMultiColumnListView");
         speedIncreaseMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<SpeedIncreaseRecord>(speedIncreaseMultiColumnListView);
-        // speedIncreaseMultiColumnListView.itemsAdded += (IEnumerable<int> index) =>
-        // {
-        //     foreach (var i in index)
-        //     {
-        //         var v = speedIncreaseMultiColumnListView.itemsSource[i];
-        //         if (v == null)
-        //         {
-        //             speedIncreaseMultiColumnListView.itemsSource[i] = new SpeedIncreaseRecord();
-        //         }
-        //     }
-        // };
-        // speedIncreaseMultiColumnListView.SetBinding("itemsSource", new DataBinding());
 
         batteryRecordsListView = root.Q<ListView>("BatteryRecordsListView");
         batteryRecordsListView.itemsAdded += Utils.MakeCallbackForItemsAdded<BatteryRecord>(batteryRecordsListView);
@@ -95,6 +62,36 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
 
                 return el2;
             };
+
+            return el;
+        };
+
+        var torpedoSettingsMultiColumnListView = root.Q<MultiColumnListView>("TorpedoSettingsMultiColumnListView");
+        torpedoSettingsMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<TorpedoSetting>(torpedoSettingsMultiColumnListView);
+
+        var torpedoMountsListView = root.Q<ListView>("TorpedoMountsListView");
+        torpedoMountsListView.itemsAdded += Utils.MakeCallbackForItemsAdded<MountLocationRecord>(torpedoMountsListView);
+        torpedoMountsListView.makeItem = () =>
+        {
+            var el = torpedoMountsListView.itemTemplate.CloneTree();
+
+            Utils.BindItemsSourceRecursive(el);
+            var mountArcsMultiColumnListView = el.Q<MultiColumnListView>("MountArcsMultiColumnListView");
+            mountArcsMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<MountArcRecord>(mountArcsMultiColumnListView);
+
+            return el;
+        };
+
+        var rapidFireBatteryListView = root.Q<ListView>("RapidFireBatteryListView");
+        rapidFireBatteryListView.itemsAdded += Utils.MakeCallbackForItemsAdded<RapidFireBatteryRecord>(rapidFireBatteryListView);
+
+        rapidFireBatteryListView.makeItem = () =>
+        {
+            var el = rapidFireBatteryListView.itemTemplate.CloneTree();
+
+            Utils.BindItemsSourceRecursive(el);
+            var fireControlLevelMultiColumnListView = el.Q<MultiColumnListView>("FireControlLevelMultiColumnListView");
+            fireControlLevelMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<RapidFireBatteryFireControlLevelRecord>(fireControlLevelMultiColumnListView);
 
             return el;
         };

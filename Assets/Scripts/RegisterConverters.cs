@@ -4,6 +4,9 @@ using UnityEngine.UIElements;
 using System;
 using System.Collections.Generic;
 using TMPro;
+using System.Linq;
+using NavalCombatCore;
+
 
 
 #if UNITY_EDITOR
@@ -30,8 +33,37 @@ public static class RegisteredConverters
         Register("Bool to DisplayStyle (Not)", (ref bool isShow) => (StyleEnum<DisplayStyle>)(isShow ? DisplayStyle.None : DisplayStyle.Flex));
         Register("object to DisplayStyle", (ref object obj) => (StyleEnum<DisplayStyle>)(obj != null ? DisplayStyle.Flex : DisplayStyle.Flex));
         Register("object to DisplayStyle (Not)", (ref object obj) => (StyleEnum<DisplayStyle>)(obj == null ? DisplayStyle.Flex : DisplayStyle.None));
+
         Register("ShipClass to DisplayStyle", (ref NavalCombatCore.ShipClass obj) => (StyleEnum<DisplayStyle>)(obj != null ? DisplayStyle.Flex : DisplayStyle.None));
         Register("ShipClass to DisplayStyle (Not)", (ref NavalCombatCore.ShipClass obj) => (StyleEnum<DisplayStyle>)(obj == null ? DisplayStyle.Flex : DisplayStyle.None));
+
+        Register("ShipLog to DisplayStyle", (ref NavalCombatCore.ShipLog obj) => (StyleEnum<DisplayStyle>)(obj != null ? DisplayStyle.Flex : DisplayStyle.None));
+        Register("ShipLog to DisplayStyle (Not)", (ref NavalCombatCore.ShipLog obj) => (StyleEnum<DisplayStyle>)(obj == null ? DisplayStyle.Flex : DisplayStyle.None));
+
+        Register("ShipLog => ShipLog's merge name", (ref NavalCombatCore.ShipLog shipLog) =>
+        {
+            return shipLog?.name?.GetMergedName() ?? "[not defined]";
+        });
+
+        Register("ShipLog => ShipLog's ShipClass's DP", (ref NavalCombatCore.ShipLog shipLog) =>
+        {
+            return GetShipClassOfShipLog(shipLog)?.damagePoint ?? 0;
+        });
+
+        Register("ShipLog => ShipLog's ShipClass's Name", (ref NavalCombatCore.ShipLog shipLog) =>
+        {
+            return GetShipClassOfShipLog(shipLog)?.name;
+        });
+
+        Register("List<float> => Count", (ref List<float> floatList) =>
+        {
+            return floatList.Count;
+        });
+    }
+
+    static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)
+    {
+        return GameManager.Instance.navalGameState.shipClasses.FirstOrDefault(x => x.name.english == shipLog.shipClassStr);
     }
 
 

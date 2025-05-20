@@ -15,10 +15,24 @@ namespace NavalCombatCore
             // new() { name=new() { english="114514"} },
             // new() { name=new() { english="abs"} }
         };
-        public List<ShipLog> shipLogs = new() { new() };
+        // public List<ShipLog> shipLogs = new() { new() };
+        public List<ShipLog> shipLogs = new();
+
+        static NavalGameState _instance;
+        public static NavalGameState Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new();
+                }
+                return _instance;
+            }
+        }
 
         static XmlSerializer shipClassListSerializer = new XmlSerializer(typeof(List<ShipClass>));
-        static XmlSerializer batterySerializer = new XmlSerializer(typeof(List<BatteryRecord>));
+        static XmlSerializer shipLogListSerializer = new XmlSerializer(typeof(List<ShipLog>));
 
         public string ShipClassesToXML()
         {
@@ -41,5 +55,28 @@ namespace NavalCombatCore
                 shipClasses = (List<ShipClass>)shipClassListSerializer.Deserialize(reader);
             }
         }
+
+        public string ShipLogsToXML()
+        {
+            using (var textWriter = new StringWriter())
+            {
+                using (var xmlWriter = XmlWriter.Create(textWriter))
+                {
+                    shipLogListSerializer.Serialize(xmlWriter, shipLogs);
+                    string serializedXml = textWriter.ToString();
+
+                    return serializedXml;
+                }
+            }
+        }
+
+        public void ShipLogsFromXml(string xml)
+        {
+            using (var reader = new StringReader(xml))
+            {
+                shipLogs = (List<ShipLog>)shipLogListSerializer.Deserialize(reader);
+            }
+        }
+
     }
 }

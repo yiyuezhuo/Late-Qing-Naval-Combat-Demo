@@ -10,6 +10,7 @@
             <ui:Tab label="Editor">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                     <ui:Button text="Class Editor" name="ClassEditorButton" />
+                    <ui:Button text="Ship Log Editor" name="ShipLogEditorButton" />
                 </ui:VisualElement>
             </ui:Tab>
         </ui:TabView>

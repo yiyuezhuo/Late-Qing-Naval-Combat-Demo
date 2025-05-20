@@ -22,12 +22,14 @@
 
 .title {
     padding-left: 1px;
-    padding-top: 2px;
+    padding-top: 0;
     margin-top: 0;
     margin-left: 0;
     padding-right: 1px;
     margin-right: 0;
     padding-bottom: 2px;
+    background-color: rgb(200, 200, 200);
+    margin-bottom: 1px;
 }
 
 .unity-tab-view__content-viewport {
@@ -62,4 +64,9 @@
 .unity-collection-view:focus:enabled .unity-collection-view__item--selected {
     background-color: rgba(221, 244, 250, 0.39);
     color: rgb(0, 0, 0);
+}
+
+.panel {
+    background-color: rgb(240, 240, 240);
+    flex-grow: 1;
 }

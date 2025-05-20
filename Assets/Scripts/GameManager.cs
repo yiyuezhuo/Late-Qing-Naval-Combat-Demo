@@ -6,11 +6,12 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Unity.Properties;
 using System.IO;
+using System.Linq;
 
 
 public class GameManager : MonoBehaviour
 {
-    public NavalGameState navalGameState = new();
+    public NavalGameState navalGameState = NavalGameState.Instance;
 
     static GameManager _instance;
     public static GameManager Instance
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
 
 #if UNITY_EDITOR
 
-        var shipClassesPath = Path.Combine(Application.persistentDataPath, "shipClasses.xml");
+        var shipClassesPath = Path.Combine(Application.persistentDataPath, "ShipClasses.xml");
         if (File.Exists(shipClassesPath))
         {
             var shipClassXml = File.ReadAllText(shipClassesPath);
@@ -46,6 +47,13 @@ public class GameManager : MonoBehaviour
                     batteryReocrd.fireControlType = new FireControlSystem();
                 }
             }
+        }
+
+        var shipLogsPath = Path.Combine(Application.persistentDataPath, "ShipLogs.xml");
+        if (File.Exists(shipLogsPath))
+        {
+            var shipLogsXml = File.ReadAllText(shipLogsPath);
+            navalGameState.ShipLogsFromXml(shipLogsXml);
         }
 #endif
 
@@ -64,9 +72,36 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            if (selectedShipClassIndex >= navalGameState.shipClasses.Count)
+            if (selectedShipClassIndex >= navalGameState.shipClasses.Count || selectedShipClassIndex < 0)
                 return null;
             return navalGameState.shipClasses[selectedShipClassIndex];
+        }
+    }
+
+    public int selectedShipLogIndex = 0;
+
+    [CreateProperty]
+    public ShipLog selectedShipLog
+    {
+        get
+        {
+            if (selectedShipLogIndex >= navalGameState.shipLogs.Count || selectedShipLogIndex < 0)
+                return null;
+            return navalGameState.shipLogs[selectedShipLogIndex];
+        }
+    }
+
+    [CreateProperty]
+    public ShipClass shipClassOfSelectedShipLog
+    {
+        get
+        {
+            var shipLog = selectedShipLog;
+            if (shipLog != null)
+            {
+                return navalGameState.shipClasses.FirstOrDefault(x => x.name.english == shipLog.shipClassStr); // TODO: Use formal ID?
+            }
+            return null;
         }
     }
 }

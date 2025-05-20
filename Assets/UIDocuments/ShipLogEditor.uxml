@@ -1,0 +1,159 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement name="VisualElement" data-source-type="GameManager, Assembly-CSharp" class="panel" style="flex-grow: 1;">
+        <ui:Label text="Ship Logs" class="title" />
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 0; flex-basis: 20%; flex-shrink: 0; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:ListView name="ShipLogListView" data-source-path="navalGameState.shipLogs" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/ShipLogLabel.uxml?fileID=9197481963319205126&amp;guid=5651049bc518a7246863972edb054f20&amp;type=3#ShipLogLabel" show-add-remove-footer="true" style="flex-grow: 1;" />
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                    <ui:Button text="Import" name="ImportButton" style="flex-basis: 10px; flex-grow: 1;" />
+                    <ui:Button text="Export" name="ExportButton" style="flex-basis: 10px; flex-grow: 1;" />
+                </ui:VisualElement>
+                <ui:Button text="Confirm" name="ConfirmButton" />
+            </ui:VisualElement>
+            <ui:VisualElement data-source-path="selectedShipLog" style="flex-grow: 1;">
+                <ui:Label text="Not selected or invalid binding">
+                    <Bindings>
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipLog to DisplayStyle (Not)" />
+                    </Bindings>
+                </ui:Label>
+                <ui:VisualElement style="flex-grow: 1;">
+                    <ui:TabView>
+                        <ui:Tab label="Basic">
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                    <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                        <ui:TextField label="Class Name">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="shipClassStr" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:TextField>
+                                        <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                                            <AttributeOverrides element-name="GlobalStringLabel" text="Ship Name" />
+                                        </ui:Instance>
+                                        <ui:Instance template="GlobalStringEditor" data-source-path="captain">
+                                            <AttributeOverrides element-name="GlobalStringLabel" text="Captain" />
+                                        </ui:Instance>
+                                        <ui:SliderInt label="Crew Rating" high-value="3" low-value="-1" show-input-field="true">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="crewRating" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:SliderInt>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                        <ui:Label text="Class Name not resolved" data-source-path="shipClassProperty">
+                                            <Bindings>
+                                                <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipClass to DisplayStyle (Not)" />
+                                            </Bindings>
+                                        </ui:Label>
+                                        <ui:VisualElement data-source-path="shipClassProperty">
+                                            <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                                                <AttributeOverrides element-name="GlobalStringLabel" text="Matched Class Name" />
+                                            </ui:Instance>
+                                            <Bindings>
+                                                <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipClass to DisplayStyle" />
+                                            </Bindings>
+                                        </ui:VisualElement>
+                                        <ui:FloatField label="Damage Point">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="damagePoints" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:ProgressBar title="DP">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="damagePoints" binding-mode="ToTarget" />
+                                                <ui:DataBinding property="highValue" data-source-path="shipClassProperty.damagePoint" binding-mode="ToTarget" />
+                                            </Bindings>
+                                        </ui:ProgressBar>
+                                        <ui:FloatField label="Speed (knot) Mod.">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="dynamicStatus.speedKnotsDirectModifier" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:SliderInt label="Engine Room Hits" high-value="100" show-input-field="true">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="dynamicStatus.engineRoomHits" binding-mode="TwoWay" />
+                                                <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsEngineRoomsLevels" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count" />
+                                            </Bindings>
+                                        </ui:SliderInt>
+                                        <ui:SliderInt label="Propulsion/Shaft Hits" high-value="100" show-input-field="true">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="dynamicStatus.propulsionShaftHits" binding-mode="TwoWay" />
+                                                <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsPropulsionShaftLevels" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count" />
+                                            </Bindings>
+                                        </ui:SliderInt>
+                                        <ui:SliderInt label="Boiler Room Hits" high-value="100" show-input-field="true">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="dynamicStatus.boilerRoomHits" binding-mode="TwoWay" />
+                                                <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsBoilerRooms" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count" />
+                                            </Bindings>
+                                        </ui:SliderInt>
+                                        <ui:IntegerField label="Dmg Ctrl Rating">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="damageControlRatingHits" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:IntegerField>
+                                        <ui:IntegerField label="Port Searchlight Hits">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="searchLightHits.portHit" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:IntegerField>
+                                        <ui:IntegerField label="Starboard Searchlight Hits">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="searchLightHits.starboardHit" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:IntegerField>
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:Tab>
+                        <ui:Tab label="Damage Effects">
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                    <ui:MultiColumnListView header-title="General Damage Effects" show-add-remove-footer="true" show-foldout-header="true" name="GeneralDamageEffectMultiColumnListView" data-source-path="damageEffectRecords" binding-source-selection-mode="AutoAssign">
+                                        <ui:Columns>
+                                            <ui:Column width="50%" name="code" title="Code" cell-template="project://database/Assets/UIDocuments/Templates/DamageEffectRecord/DamageEffectRecordCellCode.uxml?fileID=9197481963319205126&amp;guid=ad727d435a5f5a041baf0a61417da417&amp;type=3#DamageEffectRecordCellCode" />
+                                            <ui:Column width="25%" name="severity" title="Severity" cell-template="project://database/Assets/UIDocuments/Templates/DamageEffectRecord/DamageEffectRecordCellSeverity.uxml?fileID=9197481963319205126&amp;guid=e3092b0c6a935e04cbbc5d0c1128ad0a&amp;type=3#DamageEffectRecordCellSeverity" />
+                                            <ui:Column width="25%" name="countdownSeconds" title="Countdown (sec)" cell-template="project://database/Assets/UIDocuments/Templates/DamageEffectRecord/DamageEffectRecordCellCountdownSeconds.uxml?fileID=9197481963319205126&amp;guid=053f663eea200a84186be5fac3fa832f&amp;type=3#DamageEffectRecordCellCountdownSeconds" />
+                                        </ui:Columns>
+                                    </ui:MultiColumnListView>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                    <ui:MultiColumnListView header-title="Shipboard Fires" show-add-remove-footer="true" show-foldout-header="true" name="ShipboardFireMultiColumnListView" data-source-path="shipboardFireStatus" binding-source-selection-mode="AutoAssign">
+                                        <ui:Columns>
+                                            <ui:Column width="33%" name="description" title="Description" cell-template="project://database/Assets/UIDocuments/Templates/ShipboardFireStatus/ShipboardFireStatusCellDescription.uxml?fileID=9197481963319205126&amp;guid=6ca1e8ac43a9b994f87c2c28e9829441&amp;type=3#ShipboardFireStatusCellDescription" />
+                                            <ui:Column width="33%" name="severity" title="Severity" cell-template="project://database/Assets/UIDocuments/Templates/ShipboardFireStatus/ShipboardFireStatusCellSeverity.uxml?fileID=9197481963319205126&amp;guid=5dcbd039e343dcd4ea6dbc8cd2dfbbac&amp;type=3#ShipboardFireStatusCellSeverity" />
+                                            <ui:Column width="33%" name="countdownSeconds" title="Countdown (sec)" cell-template="project://database/Assets/UIDocuments/Templates/ShipboardFireStatus/ShipboardFireStatusCellCountdownSeconds.uxml?fileID=9197481963319205126&amp;guid=8f4eb0bd762ab2543bb9394b19f4a0d0&amp;type=3#ShipboardFireStatusCellCountdownSeconds" />
+                                        </ui:Columns>
+                                    </ui:MultiColumnListView>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:Tab>
+                        <ui:Tab label="Weapons">
+                            <ui:ScrollView>
+                                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                    <ui:VisualElement data-source-path="batteryStatus" style="flex-grow: 1; flex-basis: 100px;">
+                                        <ui:ListView binding-source-selection-mode="AutoAssign" header-title="Battery Status" show-add-remove-footer="true" show-foldout-header="true" name="BatteryStatusListView" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                        <ui:IntegerField label=" Torpedo Ammunition">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="torpedoSectorStatus.ammunition" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:IntegerField>
+                                        <ui:ListView data-source-path="torpedoSectorStatus.mountStatus[0]" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" show-foldout-header="true" header-title="Torpedo Mounts Status" />
+                                        <ui:MultiColumnListView data-source-path="rapidFiringStatus" binding-source-selection-mode="AutoAssign" header-title="Rapid Fire Battey Status" show-foldout-header="true" show-add-remove-footer="true" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:ScrollView>
+                        </ui:Tab>
+                    </ui:TabView>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipLog to DisplayStyle" />
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

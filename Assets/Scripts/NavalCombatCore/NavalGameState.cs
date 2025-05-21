@@ -31,6 +31,20 @@ namespace NavalCombatCore
             }
         }
 
+        public void ResetAndRegisterAll()
+        {
+            EntityManager.Instance.Reset();
+
+            foreach (var shipClasses in shipClasses)
+            {
+                EntityManager.Instance.Register(shipClasses, null);
+            }
+            foreach (var shipLog in shipLogs)
+            {
+                EntityManager.Instance.Register(shipLog, null);
+            }
+        }
+
         static XmlSerializer shipClassListSerializer = new XmlSerializer(typeof(List<ShipClass>));
         static XmlSerializer shipLogListSerializer = new XmlSerializer(typeof(List<ShipLog>));
 
@@ -54,6 +68,8 @@ namespace NavalCombatCore
             {
                 shipClasses = (List<ShipClass>)shipClassListSerializer.Deserialize(reader);
             }
+
+            ResetAndRegisterAll();
         }
 
         public string ShipLogsToXML()
@@ -76,6 +92,8 @@ namespace NavalCombatCore
             {
                 shipLogs = (List<ShipLog>)shipLogListSerializer.Deserialize(reader);
             }
+
+            ResetAndRegisterAll();
         }
 
     }

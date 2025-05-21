@@ -4,6 +4,7 @@ using NavalCombatCore;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
+using System.Linq;
 
 public static class Utils
 {
@@ -55,7 +56,7 @@ public static class Utils
         return new NavalCombatCore.LatLon(latDeg, lonDeg);
     }
 
-    public static Action<IEnumerable<int>> MakeCallbackForItemsAdded<T>(BaseListView listView) where T : new()
+    public static Action<IEnumerable<int>> MakeCallbackForItemsAdded<T>(BaseListView listView, Func<object> parentProvider) where T : new()
     {
         return (IEnumerable<int> index) =>
         {
@@ -64,10 +65,37 @@ public static class Utils
                 var v = listView.itemsSource[i];
                 if (v == null)
                 {
-                    listView.itemsSource[i] = new T();
+                    var obj = new T();
+                    listView.itemsSource[i] = obj;
+
+                    if (obj is IObjectIdLabeled labeledObj)
+                    {
+                        EntityManager.Instance.Register(labeledObj, parentProvider());
+                    }
                 }
             }
         };
+    }
+
+    public static Action<IEnumerable<int>> MakeCallbackForItemsRemoved(BaseListView listView)
+    {
+        return (IEnumerable<int> index) =>
+        {
+            foreach (var i in index)
+            {
+                var v = listView.itemsSource[i];
+                if (v is IObjectIdLabeled labeledObj)
+                {
+                    EntityManager.Instance.Unregister(labeledObj);
+                }
+            }
+        };
+    }
+
+    public static void BindItemsAddedRemoved<T>(BaseListView listView, Func<object> parentProvider) where T : new()
+    {
+        listView.itemsAdded += MakeCallbackForItemsAdded<T>(listView, parentProvider);
+        listView.itemsRemoved += MakeCallbackForItemsRemoved(listView);
     }
 
     public static void BindItemsSourceRecursive(VisualElement root)

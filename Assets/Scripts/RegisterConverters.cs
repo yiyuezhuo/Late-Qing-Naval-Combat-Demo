@@ -47,24 +47,35 @@ public static class RegisteredConverters
 
         Register("ShipLog => ShipLog's ShipClass's DP", (ref NavalCombatCore.ShipLog shipLog) =>
         {
-            return GetShipClassOfShipLog(shipLog)?.damagePoint ?? 0;
+            return shipLog.shipClass?.damagePoint ?? 0;
         });
 
         Register("ShipLog => ShipLog's ShipClass's Name", (ref NavalCombatCore.ShipLog shipLog) =>
         {
-            return GetShipClassOfShipLog(shipLog)?.name;
+            return shipLog.shipClass?.name;
         });
 
         Register("List<float> => Count", (ref List<float> floatList) =>
         {
             return floatList.Count;
         });
+
+        Register("BatteryStatus => BatteryStatus's BatteryRecord's Name", (ref NavalCombatCore.BatteryStatus batteryStatus) =>
+        {
+            return batteryStatus?.batteryRecord?.name.mergedName ?? "Class Data Not Resolved";
+        });
+
+        Register("BatteryRecord => DisplayStyle", (ref NavalCombatCore.BatteryRecord batteryRecord) =>
+        {
+        return (StyleEnum<DisplayStyle>)(batteryRecord != null ? DisplayStyle.Flex : DisplayStyle.None);
+        });
     }
 
-    static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)
-    {
-        return GameManager.Instance.navalGameState.shipClasses.FirstOrDefault(x => x.name.english == shipLog.shipClassStr);
-    }
+    // static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)
+    // {
+    //     return shipLog.shipClass;
+    //     // return GameManager.Instance.navalGameState.shipClasses.FirstOrDefault(x => x.name.english == shipLog.shipClassStr);
+    // }
 
 
     static void Register<TSource, TDestination>(string name, TypeConverter<TSource, TDestination> converter)

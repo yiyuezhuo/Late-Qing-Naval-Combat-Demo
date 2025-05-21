@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76bfd23caa860845907cc78a182868c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipClassSelectorDialogDocument: {fileID: 9197481963319205126, guid: db23a7561c9db744c87072d260cba012, type: 3}
 --- !u!114 &57620257
 MonoBehaviour:
   m_ObjectHideFlags: 0

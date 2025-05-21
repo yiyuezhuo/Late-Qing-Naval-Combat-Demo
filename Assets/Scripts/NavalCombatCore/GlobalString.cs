@@ -5,7 +5,7 @@ using System.Linq;
 namespace NavalCombatCore
 {
     [Serializable]
-    public class GlobalString
+    public partial class GlobalString
     {
         public string english = "unnamed";
         public string japanese;

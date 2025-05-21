@@ -70,3 +70,7 @@
     background-color: rgb(240, 240, 240);
     flex-grow: 1;
 }
+
+.size50 .unity-label {
+    min-width: 50px;
+}

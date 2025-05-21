@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
         }
 #endif
 
+        EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
+        NavalGameState.Instance.ResetAndRegisterAll();
     }
 
     public void OnDestroy()
@@ -78,6 +80,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public ShipClass SelectedShipClassProvider()
+    {
+        return selectedShipClass;
+    }
+
     public int selectedShipLogIndex = 0;
 
     [CreateProperty]
@@ -91,17 +98,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [CreateProperty]
-    public ShipClass shipClassOfSelectedShipLog
-    {
-        get
-        {
-            var shipLog = selectedShipLog;
-            if (shipLog != null)
-            {
-                return navalGameState.shipClasses.FirstOrDefault(x => x.name.english == shipLog.shipClassStr); // TODO: Use formal ID?
-            }
-            return null;
-        }
-    }
+    // [CreateProperty]
+    // public ShipClass shipClassOfSelectedShipLog
+    // {
+    //     get
+    //     {
+    //         var shipLog = selectedShipLog;
+    //         if (shipLog != null)
+    //         {
+    //             return navalGameState.shipClasses.FirstOrDefault(x => x.name.english == shipLog.shipClassStr); // TODO: Use formal ID?
+    //         }
+    //         return null;
+    //     }
+    // }
 }

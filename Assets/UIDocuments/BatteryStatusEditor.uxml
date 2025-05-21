@@ -1,0 +1,47 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement data-source-type="NavalCombatCore.BatteryStatus, Assembly-CSharp" style="flex-grow: 1;">
+        <ui:Label text="battery record&apos;s merged name">
+            <Bindings>
+                <ui:DataBinding property="text" binding-mode="ToTarget" source-to-ui-converters="BatteryStatus =&gt; BatteryStatus&apos;s BatteryRecord&apos;s Name" />
+            </Bindings>
+        </ui:Label>
+        <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;">
+            <ui:VisualElement data-source-path="ammunition" style="flex-grow: 0;">
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                    <ui:IntegerField label="AP" class="size50" style="flex-grow: 1; flex-basis: 50px;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="ArmorPiercing" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:IntegerField>
+                    <ui:IntegerField label="SAP" class="size50" style="flex-basis: 50px; flex-grow: 1;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="semiArmorPiercing" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:IntegerField>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                    <ui:IntegerField label="COM" class="size50" style="flex-basis: 50px; flex-grow: 1;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="common" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:IntegerField>
+                    <ui:IntegerField label="HE" class="size50" style="flex-basis: 50px; flex-grow: 1;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="highExplosive" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:IntegerField>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:MultiColumnListView />
+            <ui:IntegerField label="Fire Control Hits">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="fireControlHits" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:IntegerField>
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="batteryRecord" binding-mode="ToTarget" source-to-ui-converters="BatteryRecord =&gt; DisplayStyle" />
+            </Bindings>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -146,8 +146,9 @@ namespace NavalCombatCore
         public float CoverageDeg;
     }
 
-    public class MountLocationRecord
+    public class MountLocationRecord : IObjectIdLabeled
     {
+        public string objectId{ get; set; }
         public MountLocation mountLocation;
         public int barrels; // Single, Double, Triple, Quadruple
         public int mounts;
@@ -158,8 +159,9 @@ namespace NavalCombatCore
         public bool trainable; // for torpedo
     }
 
-    public class BatteryRecord
+    public class BatteryRecord : IObjectIdLabeled
     {
+        public string objectId{ get; set; }
         public GlobalString name = new();
         public float damageRating;
         public float maxRateOfFireShootPerMin; // shoot/min
@@ -178,6 +180,14 @@ namespace NavalCombatCore
         // public List<FireControlTableRecord> fireControlTableRecords = new() { new() };
         // public List<PenetrationTableRecord> penetrationTableRecords = new() { new() };
         // public List<MountLocationRecord> mountLocationRecords = new() { new() };
+
+        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            foreach (var m in mountLocationRecords)
+            {
+                yield return m;
+            }
+        }
 
         static XmlSerializer serializer = new XmlSerializer(typeof(BatteryRecord));
 
@@ -293,8 +303,9 @@ namespace NavalCombatCore
     }
 
     [Serializable]
-    public class ShipClass
+    public class ShipClass : IObjectIdLabeled
     {
+        public string objectId { set; get; }
         public GlobalString name = new();
         public ShipType type;
         public Country country;
@@ -333,5 +344,17 @@ namespace NavalCombatCore
         public ArmorRating armorRating = new();
 
         public string portraitUrl;
+
+        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            foreach (var batteryRecord in batteryRecords)
+            {
+                yield return batteryRecord;
+            }
+            foreach (var mountLocationRecord in torpedoSector.mountLocationRecords)
+            {
+                yield return mountLocationRecord;
+            }
+        }
     }
 }

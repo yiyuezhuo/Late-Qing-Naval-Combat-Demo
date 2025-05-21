@@ -19,17 +19,59 @@ namespace NavalCombatCore
         Destroyed
     }
 
-    public class BatteryStatus
+    public class MountStatusRecord : IObjectIdLabeled
     {
+        public string objectId { get; set; }
+        public MountStatus status;
+    }
+
+    public partial class BatteryStatus : IObjectIdLabeled
+    {
+        public string objectId { get; set; }
         public BatteryAmmunitionRecord ammunition = new(); // TODO: based on mount instead of battery?
-        public List<MountStatus> mountStatus = new();
+        public List<MountStatusRecord> mountStatus = new();
         public int fireControlHits;
+
+        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            foreach (var mount in mountStatus)
+            {
+                yield return mount;
+            }
+        }
+
+        public BatteryRecord GetBatteryRecord()
+        {
+            var shipLog = EntityManager.Instance.GetParent<ShipLog>(this);
+            if (shipLog == null)
+                return null;
+            var idx = shipLog.batteryStatus.IndexOf(this);
+            var shipClass = shipLog.shipClass;
+            if (shipClass == null || idx < 0 || idx >= shipClass.batteryRecords.Count)
+                return null;
+            return shipClass.batteryRecords[idx];
+        }
+
+        // public ShipLog GetShipLog()
+        // {
+        //     return EntityManager.Instance.GetParent<ShipLog>(this);
+        // }
+
+        // public BatteryRecord GetBatteryRecord() // TODO: Performance issue?
+        // {
+        //     var shipLog = GetShipLog();
+        //     var idx = shipLog.batteryStatus.IndexOf(this);
+        //     var shipClass = shipLog.shipClass;
+        //     if (idx < 0 || idx >= shipClass.batteryRecords.Count)
+        //         return null;
+        //     return shipClass.batteryRecords[idx];
+        // }
     }
 
     public class TorpedoSectorStatus
     {
         public int ammunition;
-        public List<MountStatus> mountStatus = new();
+        public List<MountStatusRecord> mountStatus = new();
     }
 
     public class RapidFiringStatus
@@ -73,13 +115,16 @@ namespace NavalCombatCore
         public float countdownSeconds;
     }
 
-    public partial class ShipLog
+    public partial class ShipLog : IObjectIdLabeled
     {
+        public string objectId { get; set; }
         // public ShipClass shipClass;
-        public string shipClassStr;
+        public string shipClassObjectId;
+        // public string shipClassStr;
         public ShipClass shipClass
         {
-            get => NavalGameState.Instance.shipClasses.FirstOrDefault(x => x.name.english == shipClassStr);
+            // get => NavalGameState.Instance.shipClasses.FirstOrDefault(x => x.name.english == shipClassStr);
+            get => EntityManager.Instance.Get<ShipClass>(shipClassObjectId);
         }
         public GlobalString name = new();
         public GlobalString captain = new();
@@ -95,5 +140,18 @@ namespace NavalCombatCore
         public int damageControlRatingHits;
         public List<DamageEffectRecord> damageEffectRecords = new();
         public List<ShipboardFireStatus> shipboardFireStatus = new();
+
+        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            foreach (var obj in batteryStatus)
+            {
+                yield return obj;
+            }
+
+            foreach (var obj in torpedoSectorStatus.mountStatus)
+            {
+                yield return obj;
+            }
+        }
     }
 }

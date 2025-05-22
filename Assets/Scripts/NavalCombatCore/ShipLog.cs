@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System;
+using Unity.VisualScripting;
 
 namespace NavalCombatCore
 {
@@ -155,13 +156,20 @@ namespace NavalCombatCore
             if (r == null)
                 return "Not Valid";
 
-            var portClass = r.barrelsLevelPort.Count == 0 ? 0 : r.barrelsLevelPort[0];
-            var starboardClass = r.barrelsLevelStarboard.Count == 0 ? 0 : r.barrelsLevelStarboard[0];
+            var ( portClass, portCurrent) = GetClassCurrentBarrels(r.barrelsLevelPort, portMountHits);
+            var ( starboardClass, starboardCurrent) = GetClassCurrentBarrels(r.barrelsLevelStarboard, starboardMountHits);
 
-            var portCurrent = r.barrelsLevelPort.Count == 0 ? 0 : rapidFireBatteryRecord.barrelsLevelPort[Math.Min(portMountHits, rapidFireBatteryRecord.barrelsLevelPort.Count - 1)];
-            var starboardCurrent = r.barrelsLevelStarboard.Count == 0 ? 0 : rapidFireBatteryRecord.barrelsLevelStarboard[Math.Min(starboardMountHits, rapidFireBatteryRecord.barrelsLevelStarboard.Count - 1)];
+            return $"{portClass}({portCurrent})/{starboardClass}({starboardCurrent}) {r.name.mergedName}";
+        }
 
-            return $"{portClass}({portCurrent}) / {starboardClass}({starboardCurrent}) {r.name.mergedName}";
+        (int, int) GetClassCurrentBarrels(List<int> barrelsLevel, int hit)
+        {
+            hit = Math.Max(0, hit);
+            if (barrelsLevel.Count == 0)
+                return (0, 0);
+            var barrelsClass = barrelsLevel[0];
+            var barrelsCurrent = hit >= barrelsLevel.Count ? 0 : barrelsLevel[hit];
+            return (barrelsClass, barrelsCurrent);
         }
     }
 

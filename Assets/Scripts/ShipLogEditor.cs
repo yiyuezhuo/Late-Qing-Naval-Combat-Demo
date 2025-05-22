@@ -178,7 +178,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         });
 
         var rapidFiringStatusMultiColumnListView = root.Q<MultiColumnListView>("RapidFiringStatusMultiColumnListView");
-        Utils.BindItemsAddedRemoved<RapidFiringStatus>(torpedoMountStatusMultiColumnListView, () =>
+        Utils.BindItemsAddedRemoved<RapidFiringStatus>(rapidFiringStatusMultiColumnListView, () =>
         {
             return GameManager.Instance.selectedShipLog;
         });

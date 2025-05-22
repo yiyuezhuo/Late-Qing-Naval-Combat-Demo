@@ -59,6 +59,9 @@ public class GameManager : MonoBehaviour
 
         EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
         NavalGameState.Instance.ResetAndRegisterAll();
+
+        var s = new RapidFiringStatus();
+        var i = s.info;
     }
 
     public void OnDestroy()

@@ -36,7 +36,7 @@
             <ui:MultiColumnListView name="MountStatusMultiColumnListView" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" data-source-path="mountStatus">
                 <ui:Columns>
                     <ui:Column name="mountLocationRecordSummary" title="Info" width="50%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellMountLocationRecordSummary.uxml?fileID=9197481963319205126&amp;guid=a9d6744fd962fc3499fe76d34f17fbdc&amp;type=3#MountStatusCellMountLocationRecordSummary" />
-                    <ui:Column name="status" title="Sector Status" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellStatus.uxml?fileID=9197481963319205126&amp;guid=59c6fb856a1cee248a8d5aa1a0da437b&amp;type=3#MountStatusCellStatus" width="35%" />
+                    <ui:Column name="status" title="Sector Status" width="35%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellStatus.uxml?fileID=9197481963319205126&amp;guid=59c6fb856a1cee248a8d5aa1a0da437b&amp;type=3#MountStatusCellStatus" />
                     <ui:Column title="Mnt Destroyed" width="15%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellMountsDestroyed.uxml?fileID=9197481963319205126&amp;guid=766ec090531af0345bc395a0a59d2b2a&amp;type=3#MountStatusCellMountsDestroyed" />
                 </ui:Columns>
             </ui:MultiColumnListView>

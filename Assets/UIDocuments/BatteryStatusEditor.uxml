@@ -33,7 +33,12 @@
                     </ui:IntegerField>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:MultiColumnListView />
+            <ui:MultiColumnListView name="MountStatusMultiColumnListView" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" data-source-path="mountStatus">
+                <ui:Columns>
+                    <ui:Column name="location" title="Location" width="50%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellMountLocation.uxml?fileID=9197481963319205126&amp;guid=eb5c22b655feeff45978afe9bcbde75a&amp;type=3#MountStatusCellMountLocation" />
+                    <ui:Column name="status" title="Status" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellStatus.uxml?fileID=9197481963319205126&amp;guid=59c6fb856a1cee248a8d5aa1a0da437b&amp;type=3#MountStatusCellStatus" width="50%" />
+                </ui:Columns>
+            </ui:MultiColumnListView>
             <ui:IntegerField label="Fire Control Hits">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="fireControlHits" binding-mode="TwoWay" />

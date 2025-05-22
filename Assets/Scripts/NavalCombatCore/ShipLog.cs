@@ -19,10 +19,64 @@ namespace NavalCombatCore
         Destroyed
     }
 
-    public class MountStatusRecord : IObjectIdLabeled
+    public partial class MountStatusRecord : IObjectIdLabeled
     {
         public string objectId { get; set; }
         public MountStatus status;
+
+        public MountLocationRecord GetMountLocationRecord()
+        {
+            var battery = EntityManager.Instance.GetParent<BatteryStatus>(this);
+
+            if (battery == null)
+                return null;
+
+            var mountIdx = battery.mountStatus.IndexOf(this);
+
+            var batteryRecord = battery.GetBatteryRecord();
+            if (batteryRecord == null)
+                return null;
+            // var shipLog = EntityManager.Instance.GetParent<ShipLog>(battery);
+            // if (shipLog == null)
+            //     return null;
+
+            // var batteryIndex = shipLog.batteryStatus.IndexOf(battery);
+
+            // var shipClass = shipLog.shipClass;
+            // if (shipClass == null)
+            //     return null;
+
+            // if (batteryIndex < 0 || batteryIndex >= shipClass.batteryRecords.Count)
+            //     return null;
+
+            // var batteryRecord = shipClass.batteryRecords[batteryIndex];
+
+            if (mountIdx < 0 || mountIdx >= batteryRecord.mountLocationRecords.Count)
+                return null;
+
+            var mountLocationRecord = batteryRecord.mountLocationRecords[mountIdx];
+
+            return mountLocationRecord;
+        }
+
+        public MountLocationRecord GetTorpedoMountLocationRecord()
+        {
+            var shipLog = EntityManager.Instance.GetParent<ShipLog>(this);
+            if (shipLog == null)
+                return null;
+
+            var mountIdx = shipLog.torpedoSectorStatus.mountStatus.IndexOf(this);
+
+            var shipClass = shipLog.shipClass;
+            if (shipClass == null)
+                return null;
+
+            if (mountIdx < 0 || mountIdx >= shipClass.torpedoSector.mountLocationRecords.Count)
+                return null;
+
+            var mountLocationRecord = shipClass.torpedoSector.mountLocationRecords[mountIdx];
+            return mountLocationRecord;
+        }
     }
 
     public partial class BatteryStatus : IObjectIdLabeled

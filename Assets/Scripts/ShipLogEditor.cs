@@ -39,6 +39,33 @@ namespace NavalCombatCore
             get => GetMergedName();
         }
     }
+
+    public partial class MountStatusRecord
+    {
+        [CreateProperty]
+        public MountLocationRecord mountLocationRecord
+        {
+            get => GetMountLocationRecord();
+        }
+
+        [CreateProperty]
+        public MountLocation mountLocation
+        {
+            get => mountLocationRecord?.mountLocation ?? MountLocation.NotSpecified;
+        }
+
+        [CreateProperty]
+        public MountLocationRecord torpedoMountLocationRecord
+        {
+            get => GetTorpedoMountLocationRecord();
+        }
+
+        [CreateProperty]
+        public MountLocation torpedoMountLocation
+        {
+            get => torpedoMountLocationRecord?.mountLocation ?? MountLocation.NotSpecified;
+        }
+    }
 }
 
 
@@ -70,6 +97,25 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
 
         var batteryStatusListView = root.Q<ListView>("BatteryStatusListView");
         Utils.BindItemsAddedRemoved<NavalCombatCore.BatteryStatus>(batteryStatusListView, () => GameManager.Instance.selectedShipLog);
+        // MountStatusMultiColumnListView
+        batteryStatusListView.makeItem = () =>
+        {
+            var el = batteryStatusListView.itemTemplate.CloneTree();
+
+            Utils.BindItemsSourceRecursive(el);
+            var mountStatusMultiColumnListView = el.Q<MultiColumnListView>("MountStatusMultiColumnListView");
+            Utils.BindItemsAddedRemoved<MountStatusRecord>(mountStatusMultiColumnListView, () =>
+            {
+                var parent = mountStatusMultiColumnListView.parent;
+                var templateContainer = parent.parent.parent;
+                var idx = templateContainer.parent.IndexOf(templateContainer);
+                var sourceList = batteryStatusListView.itemsSource;
+                return sourceList[idx];
+                // return batteryStatusListView.selectedItem;
+            }); // TODO: Not always valid?
+
+            return el;
+        };
 
         var confirmButton = root.Q<Button>("ConfirmButton");
         confirmButton.clicked += Hide;

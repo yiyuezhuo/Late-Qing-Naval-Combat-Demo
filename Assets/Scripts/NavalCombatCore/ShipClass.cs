@@ -37,6 +37,7 @@ namespace NavalCombatCore
 
     public enum MountLocation // SEEKRIEG like 3x3 location
     {
+        NotSpecified, // indicate binding error
         PortForward,
         Forward, // A, B
         StarboardForward,

@@ -128,13 +128,27 @@
                                             <ui:ListView binding-source-selection-mode="AutoAssign" header-title="Battery Status" show-add-remove-footer="true" show-foldout-header="true" name="BatteryStatusListView" item-template="project://database/Assets/UIDocuments/BatteryStatusEditor.uxml?fileID=9197481963319205126&amp;guid=a7e04f44f7a7c42429e749f2381c0861&amp;type=3#BatteryStatusEditor" virtualization-method="DynamicHeight" data-source-path="batteryStatus" />
                                         </ui:VisualElement>
                                         <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                                            <ui:IntegerField label=" Torpedo Ammunition">
+                                            <ui:SliderInt label="Torpedo Ammunition" high-value="100" show-input-field="true">
                                                 <Bindings>
+                                                    <ui:DataBinding property="highValue" data-source-path="shipClassProperty.torpedoSector.ammunitionCapacity" binding-mode="ToTarget" />
                                                     <ui:DataBinding property="value" data-source-path="torpedoSectorStatus.ammunition" binding-mode="TwoWay" />
                                                 </Bindings>
-                                            </ui:IntegerField>
-                                            <ui:ListView data-source-path="torpedoSectorStatus.mountStatus" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" show-foldout-header="true" header-title="Torpedo Mounts Status" name="TorpedoMountStatusListView" virtualization-method="DynamicHeight" />
-                                            <ui:MultiColumnListView data-source-path="rapidFiringStatus" binding-source-selection-mode="AutoAssign" header-title="Rapid Fire Battey Status" show-foldout-header="true" show-add-remove-footer="true" name="RapidFiringStatusMultiColumnListView" virtualization-method="DynamicHeight" />
+                                            </ui:SliderInt>
+                                            <ui:MultiColumnListView name="TorpedoMountStatusMultiColumnListView" binding-source-selection-mode="AutoAssign" data-source-path="torpedoSectorStatus.mountStatus" show-add-remove-footer="true" header-title="Torpedo Status" show-foldout-header="true">
+                                                <ui:Columns>
+                                                    <ui:Column title="Info" name="torpedoMountLocationRecordSummary" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellMountTorpedoLocationRecordSummary.uxml?fileID=9197481963319205126&amp;guid=8eee01ca8da27de4dac4f05ca8b5529f&amp;type=3#MountStatusCellMountTorpedoLocationRecordSummary" width="40%" />
+                                                    <ui:Column cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellStatus.uxml?fileID=9197481963319205126&amp;guid=59c6fb856a1cee248a8d5aa1a0da437b&amp;type=3#MountStatusCellStatus" title="Sec. Status" name="status" width="40%" />
+                                                    <ui:Column cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellMountsDestroyed.uxml?fileID=9197481963319205126&amp;guid=766ec090531af0345bc395a0a59d2b2a&amp;type=3#MountStatusCellMountsDestroyed" width="20%" title="Mnts Destroyed" name="mountsDestroyed" />
+                                                </ui:Columns>
+                                            </ui:MultiColumnListView>
+                                            <ui:MultiColumnListView data-source-path="rapidFiringStatus" binding-source-selection-mode="AutoAssign" header-title="Rapid Fire Battey Status" show-foldout-header="true" show-add-remove-footer="true" name="RapidFiringStatusMultiColumnListView" virtualization-method="DynamicHeight">
+                                                <ui:Columns>
+                                                    <ui:Column name="info" title="Info" width="40%" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringStatus/RapidFiringStatusCellInfo2.uxml?fileID=9197481963319205126&amp;guid=0819f21b6b72b544d9abf88cd86de129&amp;type=3#RapidFiringStatusCellInfo2" />
+                                                    <ui:Column name="portMountsHits" title="Port Hits" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringStatus/RapidFiringStatusCellPortMountHits.uxml?fileID=9197481963319205126&amp;guid=59a76a29ea32f414a838e4734f23e63f&amp;type=3#RapidFiringStatusCellPortMountHits" />
+                                                    <ui:Column name="startboardHits" title="Stbd Hits" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringStatus/RapidFiringStatusCellStarboardMountHits.uxml?fileID=9197481963319205126&amp;guid=a069033f6299c7148a90eb7f02c1e0da&amp;type=3#RapidFiringStatusCellStarboardMountHits" />
+                                                    <ui:Column width="20%" name="fireControlHits" title="Fire Control Hits" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringStatus/RapidFiringStatusCellFireControlHits.uxml?fileID=9197481963319205126&amp;guid=879353972eec67a4a9ebf237e99e16ca&amp;type=3#RapidFiringStatusCellFireControlHits" />
+                                                </ui:Columns>
+                                            </ui:MultiColumnListView>
                                         </ui:VisualElement>
                                     </ui:VisualElement>
                                 </ui:ScrollView>

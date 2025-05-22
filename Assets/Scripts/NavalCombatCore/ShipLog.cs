@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System;
 
 namespace NavalCombatCore
 {
@@ -22,7 +23,8 @@ namespace NavalCombatCore
     public partial class MountStatusRecord : IObjectIdLabeled
     {
         public string objectId { get; set; }
-        public MountStatus status;
+        public MountStatus status; // Is "SectorStatus" a better name?
+        public int mountsDestroyed;
 
         public MountLocationRecord GetMountLocationRecord()
         {
@@ -128,11 +130,39 @@ namespace NavalCombatCore
         public List<MountStatusRecord> mountStatus = new();
     }
 
-    public class RapidFiringStatus
+    public partial class RapidFiringStatus : IObjectIdLabeled
     {
+        public string objectId { get; set; }
         public int portMountHits;
         public int starboardMountHits;
         public int fireControlHits;
+
+        public RapidFireBatteryRecord GetRapidFireBatteryRecord()
+        {
+            var shipLog = EntityManager.Instance.GetParent<ShipLog>(this);
+            if (shipLog == null)
+                return null;
+            var idx = shipLog.rapidFiringStatus.IndexOf(this);
+            var shipClass = shipLog.shipClass;
+            if (shipClass == null || idx < 0 || idx >= shipClass.rapidFireBatteryRecords.Count)
+                return null;
+            return shipClass.rapidFireBatteryRecords[idx];
+        }
+
+        public string GetInfo()
+        {
+            var r = rapidFireBatteryRecord;
+            if (r == null)
+                return "Not Valid";
+
+            var portClass = r.barrelsLevelPort.Count == 0 ? 0 : r.barrelsLevelPort[0];
+            var starboardClass = r.barrelsLevelStarboard.Count == 0 ? 0 : r.barrelsLevelStarboard[0];
+
+            var portCurrent = r.barrelsLevelPort.Count == 0 ? 0 : rapidFireBatteryRecord.barrelsLevelPort[Math.Min(portMountHits, rapidFireBatteryRecord.barrelsLevelPort.Count - 1)];
+            var starboardCurrent = r.barrelsLevelStarboard.Count == 0 ? 0 : rapidFireBatteryRecord.barrelsLevelStarboard[Math.Min(starboardMountHits, rapidFireBatteryRecord.barrelsLevelStarboard.Count - 1)];
+
+            return $"{portClass}({portCurrent}) / {starboardClass}({starboardCurrent}) {r.name.mergedName}";
+        }
     }
 
     public class DynamicStatus
@@ -203,6 +233,11 @@ namespace NavalCombatCore
             }
 
             foreach (var obj in torpedoSectorStatus.mountStatus)
+            {
+                yield return obj;
+            }
+
+            foreach (var obj in rapidFiringStatus)
             {
                 yield return obj;
             }

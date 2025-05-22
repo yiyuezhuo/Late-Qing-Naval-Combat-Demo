@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using Unity.Properties;
 using System.Threading.Tasks;
+using System;
 
 namespace NavalCombatCore
 {
@@ -55,6 +56,18 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
+        public string mountLocationRecordSummary
+        {
+            get
+            {
+                var r = mountLocationRecord;
+                if (r == null)
+                    return "Invalid";
+                return $"{r.mounts}x{r.barrels} {r.mountLocation}";
+            }
+        }
+
+        [CreateProperty]
         public MountLocationRecord torpedoMountLocationRecord
         {
             get => GetTorpedoMountLocationRecord();
@@ -64,6 +77,47 @@ namespace NavalCombatCore
         public MountLocation torpedoMountLocation
         {
             get => torpedoMountLocationRecord?.mountLocation ?? MountLocation.NotSpecified;
+        }
+
+        [CreateProperty]
+        public string torpedoMountLocationRecordSummary
+        {
+            get
+            {
+                var r = torpedoMountLocationRecord;
+                if (r == null)
+                    return "Invalid";
+                return $"{r.mounts}x{r.barrels} {r.mountLocation}";
+            }
+        }
+    }
+
+    public partial class RapidFiringStatus
+    {
+        [CreateProperty]
+        public RapidFireBatteryRecord rapidFireBatteryRecord
+        {
+            get => GetRapidFireBatteryRecord();
+        }
+
+        [CreateProperty]
+        public string info
+        {
+            get
+            {
+                return GetInfo();
+                // var r = rapidFireBatteryRecord;
+                // if (r == null)
+                //     return "Not Valid";
+
+                // var portClass = r.barrelsLevelPort.Count == 0 ? 0 : r.barrelsLevelPort[0];
+                // var starboardClass = r.barrelsLevelStarboard.Count == 0 ? 0 : r.barrelsLevelStarboard[0];
+
+                // var portCurrent = r.barrelsLevelPort.Count == 0 ? 0 : rapidFireBatteryRecord.barrelsLevelPort[Math.Min(portMountHits, rapidFireBatteryRecord.barrelsLevelPort.Count - 1)];
+                // var starboardCurrent = r.barrelsLevelStarboard.Count == 0 ? 0 : rapidFireBatteryRecord.barrelsLevelStarboard[Math.Min(starboardMountHits, rapidFireBatteryRecord.barrelsLevelStarboard.Count - 1)];
+
+                // return $"{portClass}({portCurrent}) / {starboardClass}({starboardCurrent}) {r.name.mergedName}";
+            }
         }
     }
 }
@@ -106,7 +160,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             var mountStatusMultiColumnListView = el.Q<MultiColumnListView>("MountStatusMultiColumnListView");
             Utils.BindItemsAddedRemoved<MountStatusRecord>(mountStatusMultiColumnListView, () =>
             {
-                var parent = mountStatusMultiColumnListView.parent;
+                var parent = mountStatusMultiColumnListView.parent; // FIXME: ugly hack
                 var templateContainer = parent.parent.parent;
                 var idx = templateContainer.parent.IndexOf(templateContainer);
                 var sourceList = batteryStatusListView.itemsSource;
@@ -116,6 +170,18 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
 
             return el;
         };
+
+        var torpedoMountStatusMultiColumnListView = root.Q<MultiColumnListView>("TorpedoMountStatusMultiColumnListView");
+        Utils.BindItemsAddedRemoved<MountStatusRecord>(torpedoMountStatusMultiColumnListView, () =>
+        {
+            return GameManager.Instance.selectedShipLog;
+        });
+
+        var rapidFiringStatusMultiColumnListView = root.Q<MultiColumnListView>("RapidFiringStatusMultiColumnListView");
+        Utils.BindItemsAddedRemoved<RapidFiringStatus>(torpedoMountStatusMultiColumnListView, () =>
+        {
+            return GameManager.Instance.selectedShipLog;
+        });
 
         var confirmButton = root.Q<Button>("ConfirmButton");
         confirmButton.clicked += Hide;

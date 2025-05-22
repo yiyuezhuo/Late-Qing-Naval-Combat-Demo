@@ -12,7 +12,7 @@
                         <ui:DataBinding property="value" data-source-path="mounts" binding-mode="TwoWay" />
                     </Bindings>
                 </ui:IntegerField>
-                <ui:SliderInt label="Barrels" value="1" high-value="8" low-value="1" show-input-field="true">
+                <ui:SliderInt label="Barrels" value="1" high-value="8" show-input-field="true">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="barrels" binding-mode="TwoWay" />
                     </Bindings>

@@ -26,6 +26,7 @@ namespace NavalCombatCore
 
     public enum ShipType
     {
+        NotSpecified,
         Battleship, // BB, ironclad, pre-dreadnought, dreadnought, post-dreadnought
         LightCruiser, // CL
         Cruiser, // CR, CC
@@ -356,6 +357,31 @@ namespace NavalCombatCore
             {
                 yield return mountLocationRecord;
             }
+        }
+
+        public static Dictionary<ShipType, string> acronymForShipType = new()
+        {
+            {ShipType.Battleship, "BB"},
+            {ShipType.LightCruiser, "CL"},
+            {ShipType.Cruiser, "CC"},
+            {ShipType.ArmoredCruiser, "CA"},
+            {ShipType.Destroyer, "DD"},
+            {ShipType.PatrolGunboat, "PG"},
+            {ShipType.TorpedoBoat, "TB"},
+        };
+
+        public static string GetAcronymFor(ShipType shipType)
+        {
+            if (acronymForShipType.TryGetValue(shipType, out string acronym))
+            {
+                return acronym;
+            }
+            return shipType.ToString();
+        }
+
+        public string GetAcronym()
+        {
+            return GetAcronymFor(type);
         }
     }
 }

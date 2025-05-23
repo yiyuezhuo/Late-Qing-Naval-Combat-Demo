@@ -26,7 +26,7 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
     }
 }
 
-public class SingletonDocument<T> : SingletonMonoBehaviour<SingletonDocument<T>> where T : MonoBehaviour
+public class SingletonDocument<T> : SingletonMonoBehaviour<T> where T : MonoBehaviour
 {
     protected VisualElement root;
 

@@ -7,11 +7,63 @@ using UnityEngine.UIElements;
 using Unity.Properties;
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
+using UnityEngine.EventSystems;
+using System;
+
 
 
 public class GameManager : MonoBehaviour
 {
     public NavalGameState navalGameState = NavalGameState.Instance;
+    public GameObject natoIconPrefab;
+    public Transform earthTransform;
+
+    [Serializable]
+    public class StateText2DConfig
+    {
+        public State state;
+        public Texture2D texture;
+        public Vector2 hotSpot;
+    }
+
+    public List<StateText2DConfig> stateIconMap = new();
+
+    public LatLon lastSelectedLatLon;
+
+    public enum State
+    {
+        Idle,
+        SelectingInsertUnitPosition
+    }
+
+    State _state = State.Idle;
+    public State state
+    {
+        get
+        {
+            return _state;
+        }
+        set
+        {
+            if (_state != value)
+            {
+                _state = value;
+
+                var r = stateIconMap.FirstOrDefault(p => p.state == value);
+                var icon = r?.texture;
+                var hotSpot = r?.hotSpot ?? Vector2.zero;
+
+                UnityEngine.Cursor.SetCursor(icon, hotSpot, CursorMode.Auto);
+            }
+        }
+    }
+
+    [CreateProperty]
+    public string stateDesc
+    {
+        get => state.ToString();
+    }
 
     static GameManager _instance;
     public static GameManager Instance
@@ -60,8 +112,88 @@ public class GameManager : MonoBehaviour
         EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
         NavalGameState.Instance.ResetAndRegisterAll();
 
+        // Test
         var s = new RapidFiringStatus();
         var i = s.info;
+
+        var j = 0;
+        foreach (var shipLog in NavalGameState.Instance.shipLogs)
+        {
+            // var icon = Instantiate(natoIconPrefab, earthTransform);
+            // var viewer = icon.GetComponent<IDF3ModelViewer>();
+            // viewer.model = shipLog;
+            shipLog.mapState = MapState.Deployed;
+            shipLog.position.LatDeg = 37 + j * 0.1f;
+            shipLog.position.LonDeg = 123 + j * 0.1f;
+            shipLog.headingDeg = j * 10f;
+            shipLog.speedKnots = 2 * j;
+
+            j++;
+        }
+    }
+
+    public Dictionary<ShipLog, IDF3ModelViewer> model2Viewer = new();
+
+    public void Update()
+    {
+        // sync ShipView and ShipLog mapping
+        foreach (var shipLog in NavalGameState.Instance.shipLogs)
+        {
+            if (shipLog.IsOnMap() && !model2Viewer.ContainsKey(shipLog))
+            {
+                var obj = Instantiate(natoIconPrefab, earthTransform);
+
+                var df3viewer = obj.GetComponent<IDF3ModelViewer>();
+                df3viewer.model = shipLog;
+                model2Viewer[shipLog] = df3viewer;
+
+                var iconViewer = obj.GetComponent<NATOIconViewer>();
+                iconViewer.shipLog = shipLog;
+            }
+        }
+        var shouldRemoved = model2Viewer.Where(kv => !kv.Key.IsOnMap()).ToList();
+        foreach ((var shipLog, var viewer) in shouldRemoved)
+        {
+            Destroy(viewer);
+            model2Viewer.Remove(shipLog);
+        }
+
+        // Handle Events
+
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            if (state == State.SelectingInsertUnitPosition)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    state = State.Idle;
+
+                    var ray = CameraController2.Instance.cam.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out RaycastHit hit))
+                    {
+                        var hitPoint = hit.point;
+
+                        lastSelectedLatLon = Utils.Vector3ToLatLon(hitPoint);
+                    }
+
+                    // lastSelectedLatLon
+
+                    DialogRoot.Instance.PopupShipLogSelectorDialog();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                state = State.Idle;
+            }
+
+            // handle events
+            if (Input.GetKeyDown(KeyCode.Insert))
+            {
+                state = State.SelectingInsertUnitPosition;
+            }
+        }
+
     }
 
     public void OnDestroy()

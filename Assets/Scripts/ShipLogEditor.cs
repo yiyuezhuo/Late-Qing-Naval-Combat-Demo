@@ -203,23 +203,16 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         var setShipClassButton = root.Q<Button>("SetShipClassButton");
         setShipClassButton.clicked += () =>
         {
-            var el = shipClassSelectorDialogDocument.CloneTree();
-
-            var shipClassListView = el.Q<ListView>("ShipClassListView");
-            var confirmButton = el.Q<Button>("ConfirmButton");
-            var cancelButton = el.Q<Button>("CancelButton");
-
-            Utils.BindItemsSourceRecursive(el);
-
-            root.Add(el);
-
-            cancelButton.clicked += () =>
+            var tempDialog = new TempDialog()
             {
-                root.Remove(el);
+                root = root,
+                template = shipClassSelectorDialogDocument,
+                templateDataSource = GameManager.Instance
             };
-            confirmButton.clicked += () =>
+
+            tempDialog.onConfirmed += (sender, el) =>
             {
-                root.Remove(el);
+                var shipClassListView = el.Q<ListView>("ShipClassListView");
 
                 var selectedShipLog = GameManager.Instance.selectedShipLog;
                 var selectedShipClass = shipClassListView.selectedItem as ShipClass;
@@ -228,15 +221,43 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
                     selectedShipLog.shipClassObjectId = selectedShipClass.objectId;
                 }
             };
-            el.style.position = Position.Absolute;
-            el.style.left = new Length(50, LengthUnit.Percent);
-            el.style.top = new Length(50, LengthUnit.Percent);
-            el.style.translate = new StyleTranslate(
-                new Translate(
-                    new Length(-50, LengthUnit.Percent),
-                    new Length(-50, LengthUnit.Percent)
-                )
-            );
+
+            tempDialog.Popup();
+
+            // var el = shipClassSelectorDialogDocument.CloneTree();
+
+            // var shipClassListView = el.Q<ListView>("ShipClassListView");
+            // var confirmButton = el.Q<Button>("ConfirmButton");
+            // var cancelButton = el.Q<Button>("CancelButton");
+
+            // Utils.BindItemsSourceRecursive(el);
+
+            // root.Add(el);
+
+            // cancelButton.clicked += () =>
+            // {
+            //     root.Remove(el);
+            // };
+            // confirmButton.clicked += () =>
+            // {
+            //     root.Remove(el);
+
+            //     var selectedShipLog = GameManager.Instance.selectedShipLog;
+            //     var selectedShipClass = shipClassListView.selectedItem as ShipClass;
+            //     if (selectedShipLog != null && selectedShipClass != null)
+            //     {
+            //         selectedShipLog.shipClassObjectId = selectedShipClass.objectId;
+            //     }
+            // };
+            // el.style.position = Position.Absolute;
+            // el.style.left = new Length(50, LengthUnit.Percent);
+            // el.style.top = new Length(50, LengthUnit.Percent);
+            // el.style.translate = new StyleTranslate(
+            //     new Translate(
+            //         new Length(-50, LengthUnit.Percent),
+            //         new Length(-50, LengthUnit.Percent)
+            //     )
+            // );
         };
     }
 

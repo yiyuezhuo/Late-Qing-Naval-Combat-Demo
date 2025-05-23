@@ -6,6 +6,11 @@ namespace NavalCombatCore
         public float LatDeg;
         public float LonDeg;
 
+        public LatLon()
+        {
+
+        }
+        
         public LatLon(float latDeg, float lonDeg)
         {
             LatDeg = latDeg;

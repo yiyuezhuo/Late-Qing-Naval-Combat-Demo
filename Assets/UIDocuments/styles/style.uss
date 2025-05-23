@@ -74,3 +74,22 @@
 .size50 .unity-label {
     min-width: 50px;
 }
+
+.panel-dialog {
+    background-color: rgb(255, 255, 255);
+    flex-grow: 0;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-bottom-left-radius: 1px;
+    width: 400px;
+    height: 400px;
+}

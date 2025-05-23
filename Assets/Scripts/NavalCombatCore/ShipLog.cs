@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using System;
 using Unity.VisualScripting;
+using Unity.Profiling;
 
 namespace NavalCombatCore
 {
@@ -207,7 +208,21 @@ namespace NavalCombatCore
         public float countdownSeconds;
     }
 
-    public partial class ShipLog : IObjectIdLabeled
+    public interface IDF3Model
+    {
+        float GetLatitudeDeg();
+        float GetLongitudeDeg();
+        float GetHeadingDeg();
+    }
+
+    public enum MapState
+    {
+        NotDeployed,
+        Deployed,
+        Destroyed
+    }
+
+    public partial class ShipLog : IObjectIdLabeled, IDF3Model
     {
         public string objectId { get; set; }
         // public ShipClass shipClass;
@@ -221,8 +236,16 @@ namespace NavalCombatCore
         public GlobalString name = new();
         public GlobalString captain = new();
         public int crewRating;
-        public float damagePoints;
+        public float damagePoint; // current damage point vs "max" damage point defined in the class
+        public LatLon position = new();
+        public float speedKnots; // current speed vs "max" speed defined in the class
+        public float headingDeg;
+        public MapState mapState;
         // DCR Modifier or DCR modifier type?
+
+        public float GetLatitudeDeg() => position.LatDeg;
+        public float GetLongitudeDeg() => position.LonDeg;
+        public float GetHeadingDeg() => headingDeg;
 
         public List<BatteryStatus> batteryStatus = new();
         public TorpedoSectorStatus torpedoSectorStatus = new();
@@ -250,5 +273,7 @@ namespace NavalCombatCore
                 yield return obj;
             }
         }
+
+        public bool IsOnMap() => mapState == MapState.Deployed;
     }
 }

@@ -44,14 +44,39 @@
                                                     <ui:DataBinding property="value" data-source-path="crewRating" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:SliderInt>
+                                            <ui:FloatField label="Latitude">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="position.LatDeg" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:FloatField>
+                                            <ui:FloatField label="Longitude">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="position.LonDeg" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:FloatField>
+                                            <ui:FloatField label="Speed (knot)">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="speedKnots" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:FloatField>
+                                            <ui:FloatField label="Heading">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="headingDeg" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:FloatField>
+                                            <ui:EnumField label="Map State" value="Center" type="NavalCombatCore.MapState, Assembly-CSharp">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="mapState" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:EnumField>
                                         </ui:VisualElement>
                                         <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                                             <ui:FloatField label="Damage Point">
                                                 <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="damagePoints" binding-mode="TwoWay" />
+                                                    <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:FloatField>
-                                            <ui:ProgressBar title="DP">
+                                            <ui:ProgressBar title="DP Progress">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="damagePoints" binding-mode="ToTarget" />
                                                     <ui:DataBinding property="highValue" data-source-path="shipClassProperty.damagePoint" binding-mode="ToTarget" />

@@ -222,7 +222,7 @@ namespace NavalCombatCore
         Destroyed
     }
 
-    public partial class ShipLog : IObjectIdLabeled, IDF3Model
+    public partial class ShipLog : IObjectIdLabeled, IDF3Model, IShipGroupMember
     {
         public string objectId { get; set; }
         // public ShipClass shipClass;
@@ -255,6 +255,9 @@ namespace NavalCombatCore
         public int damageControlRatingHits;
         public List<DamageEffectRecord> damageEffectRecords = new();
         public List<ShipboardFireStatus> shipboardFireStatus = new();
+
+        public string parentObjectId{ get; set; }
+        
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {

@@ -17,6 +17,9 @@ namespace NavalCombatCore
         };
         // public List<ShipLog> shipLogs = new() { new() };
         public List<ShipLog> shipLogs = new();
+        public List<ShipGroup> rootShipGroups = new();
+
+        public event EventHandler<List<ShipGroup>> rootShipGroupsChanged;
 
         static NavalGameState _instance;
         public static NavalGameState Instance
@@ -43,12 +46,29 @@ namespace NavalCombatCore
             {
                 EntityManager.Instance.Register(shipLog, null);
             }
+            foreach (var shipGroup in rootShipGroups)
+            {
+                ResetAndRegisterAllShipGroup(shipGroup);
+            }
+        }
+
+        public void ResetAndRegisterAllShipGroup(ShipGroup shipGroup)
+        {
+            EntityManager.Instance.Register(shipGroup, null);
+            foreach (var child in shipGroup.GetChildren())
+            {
+                if (child is ShipGroup subShipGroup)
+                {
+                    ResetAndRegisterAllShipGroup(subShipGroup);
+                }
+            }
         }
 
         static XmlSerializer shipClassListSerializer = new XmlSerializer(typeof(List<ShipClass>));
         static XmlSerializer shipLogListSerializer = new XmlSerializer(typeof(List<ShipLog>));
+        static XmlSerializer shipGroupListSerializer = new XmlSerializer(typeof(List<ShipGroup>));
 
-        public string ShipClassesToXML()
+        public string ShipClassesToXml()
         {
             using (var textWriter = new StringWriter())
             {
@@ -72,7 +92,7 @@ namespace NavalCombatCore
             ResetAndRegisterAll();
         }
 
-        public string ShipLogsToXML()
+        public string ShipLogsToXml()
         {
             using (var textWriter = new StringWriter())
             {
@@ -96,5 +116,58 @@ namespace NavalCombatCore
             ResetAndRegisterAll();
         }
 
+        public string RootShipGroupsToXml()
+        {
+            using (var writer = new StringWriter())
+            {
+                shipGroupListSerializer.Serialize(writer, rootShipGroups);
+                return writer.ToString();
+            }
+        }
+
+        public void RootShipGroupsFromXml(string xml)
+        {
+            using (var reader = new StringReader(xml))
+            {
+                rootShipGroups = (List<ShipGroup>)shipGroupListSerializer.Deserialize(reader);
+            }
+
+            ResetAndRegisterAll();
+            SyncShipLogParentWithGroupHierarchy();
+
+            rootShipGroupsChanged?.Invoke(this, rootShipGroups);
+        }
+
+        public void SyncShipLogParentWithGroupHierarchy()
+        {
+            var shipTracked = new HashSet<string>();
+            foreach (var shipGroup in rootShipGroups)
+            {
+                SyncShipLogParentWithGroupHierarchy(shipGroup, ref shipTracked);
+            }
+            foreach (var shipLog in shipLogs)
+            {
+                if (!shipTracked.Contains(shipLog.objectId))
+                {
+                    shipLog.parentObjectId = null;
+                }
+            }
+        }
+
+        public void SyncShipLogParentWithGroupHierarchy(ShipGroup shipGroup, ref HashSet<string> shipTracked)
+        {
+            foreach (var child in shipGroup.GetChildren())
+            {
+                child.parentObjectId = shipGroup.objectId;
+                if (child is ShipGroup subShipGroup)
+                {
+                    SyncShipLogParentWithGroupHierarchy(subShipGroup, ref shipTracked);
+                }
+                if (child is ShipLog subShipLog)
+                {
+                    shipTracked.Add(subShipLog.objectId);
+                }
+            }
+        }
     }
 }

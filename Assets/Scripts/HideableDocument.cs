@@ -36,7 +36,16 @@ public class SingletonDocument<T> : SingletonMonoBehaviour<T> where T : MonoBeha
         root = doc.rootVisualElement;
     }
 
-    public void Show() => root.style.display = DisplayStyle.Flex;
+    public virtual void OnShow()
+    {
+
+    }
+
+    public void Show()
+    {
+        OnShow();
+        root.style.display = DisplayStyle.Flex;
+    }
     public void Hide() => root.style.display = DisplayStyle.None;
 }
 

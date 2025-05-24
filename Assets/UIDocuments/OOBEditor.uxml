@@ -1,0 +1,67 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement data-source-type="OOBEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
+        <ui:Label text="OOB Editor" class="title" />
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:TreeView name="OOBTreeView" item-template="project://database/Assets/UIDocuments/Templates/OOBEditorLabel.uxml?fileID=9197481963319205126&amp;guid=13dc78db772c3514eb688d39d01f95c7&amp;type=3#OOBEditorLabel" auto-expand="true" />
+                <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;">
+                    <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                        <ui:Label text="State:" />
+                        <ui:Label text="Label">
+                            <Bindings>
+                                <ui:DataBinding property="text" data-source-path="state" binding-mode="ToTarget" />
+                            </Bindings>
+                        </ui:Label>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:Button text="Create Group" name="CreateGroupButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Delete Group" name="DeleteGroupButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Attach" name="AttachButton" style="flex-basis: 50px; flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:Button text="Export" name="ExportButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Import" name="ImportButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Expand" name="ExpandButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Collapse" name="CollapseButton" style="flex-basis: 50px; flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:Button text="Confirm" name="ConfirmButton" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                <ui:VisualElement data-source-path="currentSelectedShipGroup" style="flex-grow: 0;">
+                    <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                        <AttributeOverrides element-name="GlobalStringLabel" text="Group Name" />
+                    </ui:Instance>
+                    <ui:Instance template="GlobalStringEditor" data-source-path="captain">
+                        <AttributeOverrides element-name="GlobalStringLabel" text="Captain" />
+                    </ui:Instance>
+                    <ui:EnumField label="Type" value="Center" type="NavalCombatCore.GroupType, Assembly-CSharp">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
+                    <ui:EnumField label="Formation" value="Center" type="NavalCombatCore.FormationType, Assembly-CSharp">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="formation" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipGroup =&gt; DisplayStyle" />
+                    </Bindings>
+                </ui:VisualElement>
+                <ui:VisualElement data-source-path="currentSelectedShipLog" style="flex-grow: 0;">
+                    <ui:Label text="Selected ShipLog&apos;s nama">
+                        <Bindings>
+                            <ui:DataBinding property="text" binding-mode="ToTarget" source-to-ui-converters="ShipLog =&gt; ShipLog&apos;s merge name" />
+                        </Bindings>
+                    </ui:Label>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipLog to DisplayStyle" />
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

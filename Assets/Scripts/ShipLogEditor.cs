@@ -189,14 +189,14 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>
         {
-            var content = GameManager.Instance.navalGameState.ShipLogsToXML();
+            var content = GameManager.Instance.navalGameState.ShipLogsToXml();
             IOManager.Instance.SaveTextFile(content, "ShipLogs", "xml");
         };
 
         var importButton = root.Q<Button>("ImportButton");
         importButton.clicked += () =>
         {
-            IOManager.Instance.textLoaded += OnShipLogsXMLLoaded;
+            IOManager.Instance.textLoaded += OnShipLogsXmlLoaded;
             IOManager.Instance.LoadTextFile("xml");
         };
 
@@ -261,9 +261,9 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         };
     }
 
-    void OnShipLogsXMLLoaded(object sender, string text)
+    void OnShipLogsXmlLoaded(object sender, string text)
     {
-        IOManager.Instance.textLoaded -= OnShipLogsXMLLoaded;
+        IOManager.Instance.textLoaded -= OnShipLogsXmlLoaded;
 
         GameManager.Instance.navalGameState.ShipLogsFromXml(text);
     }

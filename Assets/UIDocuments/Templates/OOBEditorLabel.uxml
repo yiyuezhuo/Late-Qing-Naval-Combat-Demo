@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Label>
+        <Bindings>
+            <ui:DataBinding property="text" binding-mode="ToTarget" source-to-ui-converters="IShipGroupMember&apos;object ID =&gt; string" />
+        </Bindings>
+    </ui:Label>
+</ui:UXML>

@@ -107,6 +107,16 @@ public class GameManager : MonoBehaviour
             var shipLogsXml = File.ReadAllText(shipLogsPath);
             navalGameState.ShipLogsFromXml(shipLogsXml);
         }
+
+        // RootShipGroups
+        var rootShipGroupsPath = Path.Combine(Application.persistentDataPath, "RootShipGroups.xml");
+        if (File.Exists(rootShipGroupsPath))
+        {
+            var rootShipGroupsXml = File.ReadAllText(rootShipGroupsPath);
+            navalGameState.RootShipGroupsFromXml(rootShipGroupsXml);
+        }
+
+        OOBEditor.Instance.oobTreeView.ExpandAll();
 #endif
 
         EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");

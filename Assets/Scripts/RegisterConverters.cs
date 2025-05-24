@@ -67,7 +67,27 @@ public static class RegisteredConverters
 
         Register("BatteryRecord => DisplayStyle", (ref NavalCombatCore.BatteryRecord batteryRecord) =>
         {
-        return (StyleEnum<DisplayStyle>)(batteryRecord != null ? DisplayStyle.Flex : DisplayStyle.None);
+            return (StyleEnum<DisplayStyle>)(batteryRecord != null ? DisplayStyle.Flex : DisplayStyle.None);
+        });
+
+        Register("ShipGroup => DisplayStyle", (ref NavalCombatCore.ShipGroup shipGroup) =>
+        {
+            return (StyleEnum<DisplayStyle>)(shipGroup != null ? DisplayStyle.Flex : DisplayStyle.None);
+        });
+
+        Register("ShipGroup => DisplayStyle (Not)", (ref NavalCombatCore.ShipGroup shipGroup) =>
+        {
+            return (StyleEnum<DisplayStyle>)(shipGroup == null ? DisplayStyle.Flex : DisplayStyle.None);
+        });
+
+        Register("IShipGroupMember'object ID => string", (ref string objectId) =>
+        {
+            var obj = EntityManager.Instance.Get<IShipGroupMember>(objectId);
+            if (obj is ShipGroup sg)
+                return sg.name.mergedName ?? "[Not Specified SG]";
+            if (obj is ShipLog sl)
+                return sl.name.mergedName ?? "[Not Specified SL]";
+            return "[Not Specified SGM]";
         });
     }
 

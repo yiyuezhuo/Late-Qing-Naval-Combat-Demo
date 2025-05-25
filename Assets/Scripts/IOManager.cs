@@ -7,16 +7,33 @@ using UnityEngine.EventSystems;
 using SFB;
 using System;
 using System.Collections;
+using UnityEngine.Networking;
 
 public class IOManager: SingletonMonoBehaviour<IOManager>
 {
     public event EventHandler<string> textLoaded;
 
-    private IEnumerator OutputRoutine(string url) {
+    private IEnumerator OutputRoutine(string url)
+    {
         Debug.Log($"OutputRoutine({url})");
-        var loader = new WWW(url); // TODO: Use UnityWebRequest
-        yield return loader;
-        textLoaded?.Invoke(null, loader.text);
+        // var loader = new WWW(url); // TODO: Use UnityWebRequest
+        // yield return loader;
+        // textLoaded?.Invoke(null, loader.text);
+
+        using (var webRequest = UnityWebRequest.Get(url))
+        {
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.result == UnityWebRequest.Result.Success)
+            {
+                textLoaded?.Invoke(null, webRequest.downloadHandler.text);
+            }
+            else
+            {
+                Debug.LogError("UnityWebRequest failed to get");
+                textLoaded?.Invoke(null, null);
+            }
+        }
     }
 
 #if UNITY_WEBGL && !UNITY_EDITOR

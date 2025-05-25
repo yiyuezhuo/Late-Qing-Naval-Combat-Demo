@@ -115,3 +115,8 @@
     padding-bottom: 1px;
     padding-left: 1px;
 }
+
+.unity-toggle__checkmark {
+    width: 18px;
+    height: 18px;
+}

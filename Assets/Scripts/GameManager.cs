@@ -88,49 +88,73 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log($"Persistent Path:{Application.persistentDataPath}");
-
-#if UNITY_EDITOR
-
-        var shipClassesPath = Path.Combine(Application.persistentDataPath, "ShipClasses.xml");
-        if (File.Exists(shipClassesPath))
-        {
-            var shipClassXml = File.ReadAllText(shipClassesPath);
-            navalGameState.ShipClassesFromXml(shipClassXml);
-        }
-
-        // temp data structure fix
-        foreach (var shipClass in navalGameState.shipClasses)
-        {
-            foreach (var batteryReocrd in shipClass.batteryRecords)
-            {
-                if (batteryReocrd.fireControlType == null)
-                {
-                    batteryReocrd.fireControlType = new FireControlSystem();
-                }
-            }
-        }
-
-        var shipLogsPath = Path.Combine(Application.persistentDataPath, "ShipLogs.xml");
-        if (File.Exists(shipLogsPath))
-        {
-            var shipLogsXml = File.ReadAllText(shipLogsPath);
-            navalGameState.ShipLogsFromXml(shipLogsXml);
-        }
-
-        // RootShipGroups
-        var rootShipGroupsPath = Path.Combine(Application.persistentDataPath, "RootShipGroups.xml");
-        if (File.Exists(rootShipGroupsPath))
-        {
-            var rootShipGroupsXml = File.ReadAllText(rootShipGroupsPath);
-            navalGameState.RootShipGroupsFromXml(rootShipGroupsXml);
-        }
-
-        OOBEditor.Instance.oobTreeView.ExpandAll();
-#endif
+        // Debug.Log($"Persistent Path:{Application.persistentDataPath}");
 
         EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
-        NavalGameState.Instance.ResetAndRegisterAll();
+
+        // #if UNITY_EDITOR
+
+        //         var shipClassesPath = Path.Combine(Application.persistentDataPath, "ShipClasses.xml");
+        //         if (File.Exists(shipClassesPath))
+        //         {
+        //             var shipClassXml = File.ReadAllText(shipClassesPath);
+        //             navalGameState.ShipClassesFromXml(shipClassXml);
+        //         }
+
+        //         // temp data structure fix
+        //         foreach (var shipClass in navalGameState.shipClasses)
+        //         {
+        //             foreach (var batteryReocrd in shipClass.batteryRecords)
+        //             {
+        //                 if (batteryReocrd.fireControlType == null)
+        //                 {
+        //                     batteryReocrd.fireControlType = new FireControlSystem();
+        //                 }
+        //             }
+        //         }
+
+        //         var shipLogsPath = Path.Combine(Application.persistentDataPath, "ShipLogs.xml");
+        //         if (File.Exists(shipLogsPath))
+        //         {
+        //             var shipLogsXml = File.ReadAllText(shipLogsPath);
+        //             navalGameState.ShipLogsFromXml(shipLogsXml);
+        //         }
+
+        //         // RootShipGroups
+        //         var rootShipGroupsPath = Path.Combine(Application.persistentDataPath, "RootShipGroups.xml");
+        //         if (File.Exists(rootShipGroupsPath))
+        //         {
+        //             var rootShipGroupsXml = File.ReadAllText(rootShipGroupsPath);
+        //             navalGameState.RootShipGroupsFromXml(rootShipGroupsXml);
+        //         }
+
+        //         OOBEditor.Instance.oobTreeView.ExpandAll();
+        // #endif
+
+        Func<string, string> _load = (string name) =>
+        {
+            var path = "Scenarios/Battle of Pungdo/" + name;
+            return Resources.Load<TextAsset>(path).text;
+        };
+
+        var shipClassXml = _load("ShipClasses");
+        navalGameState.ShipClassesFromXml(shipClassXml);
+
+        var shipLogsXml = _load("ShipLogs");
+        navalGameState.ShipLogsFromXml(shipLogsXml);
+
+        var rootShipGroupsXml = _load("RootShipGroups");
+        navalGameState.RootShipGroupsFromXml(rootShipGroupsXml);
+
+        OOBEditor.Instance.oobTreeView.ExpandAll();
+
+        // var fullStateText = Resources.Load<TextAsset>("Scenarios/Battle of Pungdo/FullState").text;
+        // var fullState = FullState.FromXML(fullStateText);
+        // TopTabs.Instance.LoadViewState(fullState.viewState);
+        // NavalGameState.Instance.UpdateTo(fullState.navalGameState);
+
+
+        NavalGameState.Instance.ResetAndRegisterAll(); // Note FromXml call has call it many times.
 
         // Test
         // var s = new RapidFiringStatus();

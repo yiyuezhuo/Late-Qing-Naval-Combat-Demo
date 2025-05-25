@@ -1,3 +1,20 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <LabeledSlider label="Label:1231" value="12.7" />
+    <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+        <ui:TextField placeholder-text="filler text" />
+        <ui:Toggle />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+            <ui:TextField label="Text Field" placeholder-text="filler text" />
+            <ui:TextField label="Text Field" placeholder-text="filler text" />
+            <ui:TextField label="Text Field" placeholder-text="filler text" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+            <ui:Toggle label="Toggle" />
+            <ui:Toggle label="Toggle" />
+            <ui:Toggle label="Toggle" />
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>

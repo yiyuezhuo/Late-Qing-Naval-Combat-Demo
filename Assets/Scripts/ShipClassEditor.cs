@@ -103,7 +103,7 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             Utils.BindItemsSourceRecursive(el);
             var fireControlLevelMultiColumnListView = el.Q<MultiColumnListView>("FireControlLevelMultiColumnListView");
             // fireControlLevelMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<RapidFireBatteryFireControlLevelRecord>(fireControlLevelMultiColumnListView);
-            Utils.BindItemsAddedRemoved<ShipLog>(fireControlLevelMultiColumnListView, GameManager.Instance.SelectedShipClassProvider);
+            Utils.BindItemsAddedRemoved<RapidFireBatteryFireControlLevelRecord>(fireControlLevelMultiColumnListView, GameManager.Instance.SelectedShipClassProvider);
 
             return el;
         };
@@ -159,6 +159,8 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             var battryRecord = BatteryRecord.FromXml(text);
             batteryRecordsListView.itemsSource[idx] = battryRecord;
         }
+
+        NavalGameState.Instance.ResetAndRegisterAll(); // re-duplicate object id 
     }
 
     public void OnShipClassesXMLLoaded(object sender, string text)

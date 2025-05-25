@@ -10,6 +10,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System;
+using Unity.VisualScripting;
 
 
 
@@ -153,23 +154,33 @@ public class GameManager : MonoBehaviour
 
     public Dictionary<string, IDF3ModelViewer> objectId2Viewer = new();
 
+    float viewAccTime;
+
     public void Update()
     {
-        // sync ShipView and ShipLog mapping
-        foreach (var shipLog in NavalGameState.Instance.shipLogs)
+        viewAccTime += Time.deltaTime;
+
+        if (viewAccTime > 2)
         {
-            if (shipLog.IsOnMap() && !objectId2Viewer.ContainsKey(shipLog.objectId))
-            {
-                var obj = Instantiate(natoIconPrefab, earthTransform);
-
-                var df3viewer = obj.GetComponent<IDF3ModelViewer>();
-                df3viewer.modelObjectId = shipLog.objectId;
-                objectId2Viewer[shipLog.objectId] = df3viewer;
-
-                var iconViewer = obj.GetComponent<NATOIconViewer>();
-                iconViewer.shipLogObjectId = shipLog.objectId;
-            }
+            viewAccTime -= 2;
+            Debug.Log("2s Tick");
         }
+
+        // sync ShipView and ShipLog mapping
+            foreach (var shipLog in NavalGameState.Instance.shipLogs)
+            {
+                if (shipLog.IsOnMap() && !objectId2Viewer.ContainsKey(shipLog.objectId))
+                {
+                    var obj = Instantiate(natoIconPrefab, earthTransform);
+
+                    var df3viewer = obj.GetComponent<IDF3ModelViewer>();
+                    df3viewer.modelObjectId = shipLog.objectId;
+                    objectId2Viewer[shipLog.objectId] = df3viewer;
+
+                    var iconViewer = obj.GetComponent<NATOIconViewer>();
+                    iconViewer.shipLogObjectId = shipLog.objectId;
+                }
+            }
         var shouldRemoved = objectId2Viewer.Where(kv => !EntityManager.Instance.Get<ShipLog>(kv.Key)?.IsOnMap() ?? false).ToList();
         foreach ((var shipLog, var viewer) in shouldRemoved)
         {

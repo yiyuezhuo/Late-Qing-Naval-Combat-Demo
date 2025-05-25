@@ -48,10 +48,15 @@ var StandaloneFileBrowserWebGLPlugin = {
         }
         document.body.appendChild(fileInput);
 
+        /*
         document.onmouseup = function() {
             fileInput.click();
             document.onmouseup = null;
         }
+        */
+        setTimeout(function() {
+            fileInput.click();
+        }, 100);
     },
 
     // Save file
@@ -62,6 +67,8 @@ var StandaloneFileBrowserWebGLPlugin = {
     // byteArray: byte[]
     // byteArraySize: byte[].Length
     DownloadFile: function(gameObjectNamePtr, methodNamePtr, filenamePtr, byteArray, byteArraySize) {
+        console.log("(JS) DownloadFile");
+
         gameObjectName = UTF8ToString(gameObjectNamePtr);
         methodName = UTF8ToString(methodNamePtr);
         filename = UTF8ToString(filenamePtr);
@@ -77,6 +84,7 @@ var StandaloneFileBrowserWebGLPlugin = {
         downloader.download = filename;
         document.body.appendChild(downloader);
 
+        /*
         document.onmouseup = function() {
             downloader.click();
             document.body.removeChild(downloader);
@@ -84,6 +92,15 @@ var StandaloneFileBrowserWebGLPlugin = {
 
             SendMessage(gameObjectName, methodName);
         }
+        */
+
+        setTimeout(function() {
+            downloader.click();
+            document.body.removeChild(downloader);
+
+            SendMessage(gameObjectName, methodName);
+        }, 100);
+
     }
 };
 

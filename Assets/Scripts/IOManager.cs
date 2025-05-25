@@ -13,6 +13,7 @@ public class IOManager: SingletonMonoBehaviour<IOManager>
     public event EventHandler<string> textLoaded;
 
     private IEnumerator OutputRoutine(string url) {
+        Debug.Log($"OutputRoutine({url})");
         var loader = new WWW(url); // TODO: Use UnityWebRequest
         yield return loader;
         textLoaded?.Invoke(null, loader.text);
@@ -33,16 +34,17 @@ public class IOManager: SingletonMonoBehaviour<IOManager>
     }
 
     public void OnFileUpload(string url) {
+        Debug.Log($"OnFileUpload({url})");
         StartCoroutine(OutputRoutine(url));
     }
 #endif
 
     public void SaveTextFile(string _data, string name="sample", string ext="txt")
     {
+        Debug.Log("SaveTextFile");
 #if UNITY_WEBGL && !UNITY_EDITOR
-
         var bytes = System.Text.Encoding.UTF8.GetBytes(_data);
-        DownloadFile("gameObject.name", "OnFileDownload", $"{name}.{ext}", bytes, bytes.Length);
+        DownloadFile(gameObject.name, "OnFileDownload", $"{name}.{ext}", bytes, bytes.Length);
 
 #else
 
@@ -56,6 +58,7 @@ public class IOManager: SingletonMonoBehaviour<IOManager>
 
     public void LoadTextFile(string ext="txt")
     {
+        Debug.Log("LoadTextFile");
 #if UNITY_WEBGL && !UNITY_EDITOR
         UploadFile(gameObject.name, "OnFileUpload", $".{ext}", false);
 #else

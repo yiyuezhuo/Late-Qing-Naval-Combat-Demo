@@ -29,6 +29,15 @@ public class GameManager : MonoBehaviour
 
     public List<StateText2DConfig> stateIconMap = new();
 
+    [Serializable]
+    public class PostureMaterialConfig
+    {
+        public PostureType postureType;
+        public Material material;
+    }
+
+    public List<PostureMaterialConfig> postureMaterialMap = new();
+
     public LatLon lastSelectedLatLon;
 
     public enum State
@@ -123,49 +132,49 @@ public class GameManager : MonoBehaviour
         NavalGameState.Instance.ResetAndRegisterAll();
 
         // Test
-        var s = new RapidFiringStatus();
-        var i = s.info;
+        // var s = new RapidFiringStatus();
+        // var i = s.info;
 
-        var j = 0;
-        foreach (var shipLog in NavalGameState.Instance.shipLogs)
-        {
-            // var icon = Instantiate(natoIconPrefab, earthTransform);
-            // var viewer = icon.GetComponent<IDF3ModelViewer>();
-            // viewer.model = shipLog;
-            shipLog.mapState = MapState.Deployed;
-            shipLog.position.LatDeg = 37 + j * 0.1f;
-            shipLog.position.LonDeg = 123 + j * 0.1f;
-            shipLog.headingDeg = j * 10f;
-            shipLog.speedKnots = 2 * j;
+        // var j = 0;
+        // foreach (var shipLog in NavalGameState.Instance.shipLogs)
+        // {
+        //     // var icon = Instantiate(natoIconPrefab, earthTransform);
+        //     // var viewer = icon.GetComponent<IDF3ModelViewer>();
+        //     // viewer.model = shipLog;
+        //     shipLog.mapState = MapState.Deployed;
+        //     shipLog.position.LatDeg = 37 + j * 0.1f;
+        //     shipLog.position.LonDeg = 123 + j * 0.1f;
+        //     shipLog.headingDeg = j * 10f;
+        //     shipLog.speedKnots = 2 * j;
 
-            j++;
-        }
+        //     j++;
+        // }
     }
 
-    public Dictionary<ShipLog, IDF3ModelViewer> model2Viewer = new();
+    public Dictionary<string, IDF3ModelViewer> objectId2Viewer = new();
 
     public void Update()
     {
         // sync ShipView and ShipLog mapping
         foreach (var shipLog in NavalGameState.Instance.shipLogs)
         {
-            if (shipLog.IsOnMap() && !model2Viewer.ContainsKey(shipLog))
+            if (shipLog.IsOnMap() && !objectId2Viewer.ContainsKey(shipLog.objectId))
             {
                 var obj = Instantiate(natoIconPrefab, earthTransform);
 
                 var df3viewer = obj.GetComponent<IDF3ModelViewer>();
-                df3viewer.model = shipLog;
-                model2Viewer[shipLog] = df3viewer;
+                df3viewer.modelObjectId = shipLog.objectId;
+                objectId2Viewer[shipLog.objectId] = df3viewer;
 
                 var iconViewer = obj.GetComponent<NATOIconViewer>();
-                iconViewer.shipLog = shipLog;
+                iconViewer.shipLogObjectId = shipLog.objectId;
             }
         }
-        var shouldRemoved = model2Viewer.Where(kv => !kv.Key.IsOnMap()).ToList();
+        var shouldRemoved = objectId2Viewer.Where(kv => !EntityManager.Instance.Get<ShipLog>(kv.Key)?.IsOnMap() ?? false).ToList();
         foreach ((var shipLog, var viewer) in shouldRemoved)
         {
             Destroy(viewer);
-            model2Viewer.Remove(shipLog);
+            objectId2Viewer.Remove(shipLog);
         }
 
         // Handle Events
@@ -256,4 +265,6 @@ public class GameManager : MonoBehaviour
     //         return null;
     //     }
     // }
+
+
 }

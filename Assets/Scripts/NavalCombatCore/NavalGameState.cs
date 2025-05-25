@@ -3,10 +3,20 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
+using System.Linq;
 
 
 namespace NavalCombatCore
 {
+
+    public enum PostureType
+    {
+        Friendly,
+        Hostile,
+        Neutral,
+        Unknown
+    }
+
     [Serializable]
     public class NavalGameState
     {
@@ -168,6 +178,75 @@ namespace NavalCombatCore
                     shipTracked.Add(subShipLog.objectId);
                 }
             }
+        }
+
+        public void UpdateTo(NavalGameState newState)
+        {
+            shipClasses = newState.shipClasses;
+            shipLogs = newState.shipLogs;
+            rootShipGroups = newState.rootShipGroups;
+
+            ResetAndRegisterAll();
+            SyncShipLogParentWithGroupHierarchy();
+
+            rootShipGroupsChanged?.Invoke(this, rootShipGroups);
+        }
+
+        public IEnumerable<IShipGroupMember> GetShipGroupMembersRecursive()
+        {
+            // foreach(var)
+            foreach (var shipGroup in rootShipGroups)
+            {
+                foreach (var ret in GetShipGroupMembersRecursive(shipGroup))
+                {
+                    yield return ret;
+                }
+            }
+        }
+
+        public IEnumerable<IShipGroupMember> GetShipGroupMembersRecursive(ShipGroup shipGroup)
+        {
+            yield return shipGroup;
+
+            foreach (var child in shipGroup.GetChildren())
+            {
+                if (child is ShipLog subShipLog)
+                {
+                    yield return subShipLog;
+                }
+                else if (child is ShipGroup subShipGroup)
+                {
+                    foreach (var ret in GetShipGroupMembersRecursive(subShipGroup))
+                    {
+                        yield return ret;
+                    }
+                }
+            }
+        }
+
+        public Dictionary<IShipGroupMember, PostureType> CalcualtePostureMap(IShipGroupMember refGroup)
+        {
+            // var members = GetShipGroupMembersRecursive();
+            // var ret = new Dictionary<IShipGroupMember, PostureType>();
+
+            var refRoot = FindRoot(refGroup);
+            return GetShipGroupMembersRecursive().ToDictionary(
+                g => g,
+                g => FindRoot(g) == refRoot ? PostureType.Friendly : PostureType.Hostile
+            );
+        }
+
+        public static IShipGroupMember FindRoot(IShipGroupMember member)
+        {
+            if (member == null)
+                return null;
+            
+            var p = member;
+            while (p.GetParentGroup() != null)
+            {
+                p = p.GetParentGroup();
+            }
+            return p;
         }
     }
 }

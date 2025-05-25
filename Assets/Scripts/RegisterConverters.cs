@@ -83,11 +83,12 @@ public static class RegisteredConverters
         Register("IShipGroupMember'object ID => string", (ref string objectId) =>
         {
             var obj = EntityManager.Instance.Get<IShipGroupMember>(objectId);
-            if (obj is ShipGroup sg)
-                return sg.name.mergedName ?? "[Not Specified SG]";
-            if (obj is ShipLog sl)
-                return sl.name.mergedName ?? "[Not Specified SL]";
-            return "[Not Specified SGM]";
+            // if (obj is ShipGroup sg)
+            //     return sg.name.mergedName ?? "[Not Specified SG]";
+            // if (obj is ShipLog sl)
+            //     return sl.name.mergedName ?? "[Not Specified SL]";
+            // return "[Not Specified SGM]";
+            return obj?.GetMemberName() ?? "[Not Specified SGM]";
         });
     }
 

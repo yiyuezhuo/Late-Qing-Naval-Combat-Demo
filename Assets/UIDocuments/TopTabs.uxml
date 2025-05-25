@@ -5,6 +5,10 @@
             <ui:Tab label="General">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Next Turn" name="NextTurnButton" />
+                    <ui:Label text="Player" style="margin-left: 10px;" />
+                    <ui:DropdownField name="PlayerDropdownField" style="width: 300px;" />
+                    <ui:Button text="Save" name="SaveButton" />
+                    <ui:Button text="Load" name="LoadButton" />
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Editor">

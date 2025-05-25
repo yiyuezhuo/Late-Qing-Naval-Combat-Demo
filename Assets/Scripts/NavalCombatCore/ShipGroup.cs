@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace NavalCombatCore
 {
@@ -31,6 +32,8 @@ namespace NavalCombatCore
     public interface IShipGroupMember : IObjectIdLabeled // Include ShipGroup and ShipLog at times.
     {
         public string parentObjectId { get; set; }
+        public string GetMemberName();
+
         public ShipGroup GetParentGroup() => EntityManager.Instance.Get<ShipGroup>(parentObjectId);
 
         public void AttachTo(ShipGroup newParent)
@@ -79,10 +82,10 @@ namespace NavalCombatCore
     public class ShipGroup : IShipGroupMember
     {
         public string objectId { get; set; }
-        public string parentObjectId{get;set;}
+        public string parentObjectId { get; set; }
 
         public List<string> childrenObjectIds = new();
-        
+
         public IEnumerable<IShipGroupMember> GetChildren()
         {
             foreach (var childObjectId in childrenObjectIds)
@@ -94,6 +97,8 @@ namespace NavalCombatCore
         public GlobalString captain = new();
         public GroupType type;
         public FormationType formation;
+        
+        public string GetMemberName() => name.mergedName;
 
     }
 }

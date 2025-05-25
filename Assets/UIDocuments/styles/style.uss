@@ -93,3 +93,25 @@
     width: 400px;
     height: 400px;
 }
+
+.unity-base-dropdown__label {
+    margin-left: 1px;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    margin-top: 1px;
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+.unity-text-element.unity-label.unity-base-dropdown__label {
+    margin-top: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    padding-left: 1px;
+}

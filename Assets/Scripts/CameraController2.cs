@@ -88,7 +88,7 @@ public class CameraController2 : MonoBehaviour
         if (newSize > 0.001f)
         {
             cam.orthographicSize = newSize;
-            GetHitPoint();
+            // GetHitPoint();
         }
     }
 

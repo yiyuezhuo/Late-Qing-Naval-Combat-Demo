@@ -6,7 +6,8 @@ using NavalCombatCore;
 
 public class IDF3ModelViewer: MonoBehaviour
 {
-    public IDF3Model model;
+    public string modelObjectId;
+    public IDF3Model model{get => EntityManager.Instance.Get<IDF3Model>(modelObjectId);}
     public float scaleFactor = 1;
     public GameObject headingArrow;
     protected Material material;

@@ -886,6 +886,11 @@ MonoBehaviour:
   - state: 1
     texture: {fileID: 2800000, guid: eacdd482a82239842b4ce0baa8da6cf9, type: 3}
     hotSpot: {x: 16, y: 16}
+  postureMaterialMap:
+  - postureType: 0
+    material: {fileID: 2100000, guid: cbd1999e31e5dc649b0161a6a409769b, type: 2}
+  - postureType: 1
+    material: {fileID: 2100000, guid: b352e5d9bc233e44abe8359a017f9e95, type: 2}
   selectedShipClassIndex: 0
   selectedShipLogIndex: 0
 --- !u!4 &708640260

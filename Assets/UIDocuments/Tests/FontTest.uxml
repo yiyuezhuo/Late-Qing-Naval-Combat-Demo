@@ -1,0 +1,4 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Label text="Label アームスト 英国阿姆 造船廠" style="-unity-font-definition: resource(&apos;Fonts &amp; Materials/NotoSans-Regular SDF&apos;);" />
+    <ui:TextField label="Text Field" placeholder-text="filler text" />
+</ui:UXML>

@@ -154,17 +154,17 @@ public class GameManager : MonoBehaviour
 
     public Dictionary<string, IDF3ModelViewer> objectId2Viewer = new();
 
-    float viewAccTime;
+    // float viewAccTime;
 
     public void Update()
     {
-        viewAccTime += Time.deltaTime;
+        // viewAccTime += Time.deltaTime;
 
-        if (viewAccTime > 2)
-        {
-            viewAccTime -= 2;
-            Debug.Log("2s Tick");
-        }
+        // if (viewAccTime > 2)
+        // {
+        //     viewAccTime -= 2;
+        //     Debug.Log("2s Tick");
+        // }
 
         // sync ShipView and ShipLog mapping
             foreach (var shipLog in NavalGameState.Instance.shipLogs)

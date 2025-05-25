@@ -256,7 +256,12 @@ namespace NavalCombatCore
         public List<DamageEffectRecord> damageEffectRecords = new();
         public List<ShipboardFireStatus> shipboardFireStatus = new();
 
-        public string parentObjectId{ get; set; }
+        // remarks
+        public string launchedDate;
+        public string completedDate;
+        public GlobalString fateDesc = new();
+
+        public string parentObjectId { get; set; }
 
         public string GetMemberName() => name.mergedName;
         

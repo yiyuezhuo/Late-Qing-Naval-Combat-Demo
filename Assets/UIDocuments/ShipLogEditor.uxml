@@ -178,6 +178,21 @@
                                     </ui:VisualElement>
                                 </ui:ScrollView>
                             </ui:Tab>
+                            <ui:Tab label="Remark">
+                                <ui:Instance template="GlobalStringEditor" data-source-path="fateDesc">
+                                    <AttributeOverrides element-name="GlobalStringLabel" text="Fate" />
+                                </ui:Instance>
+                                <ui:TextField label="Launched">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="launchedDate" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:TextField>
+                                <ui:TextField label="Completed">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="completedDate" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:TextField>
+                            </ui:Tab>
                         </ui:TabView>
                         <Bindings>
                             <ui:DataBinding property="style.display" data-source-path="shipClassProperty" binding-mode="ToTarget" source-to-ui-converters="ShipClass to DisplayStyle" />

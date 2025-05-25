@@ -146,6 +146,9 @@ namespace NavalCombatCore
 
         [XmlAttribute]
         public float CoverageDeg;
+
+        [XmlAttribute]
+        public bool isCrossDeckFire;
     }
 
     public class MountLocationRecord : IObjectIdLabeled
@@ -177,6 +180,7 @@ namespace NavalCombatCore
         public int ammunitionCapacity;
 
         public List<FireControlTableRecord> fireControlTableRecords = new();
+        public AmmunitionType penetrationTableBaseType;
         public List<PenetrationTableRecord> penetrationTableRecords = new();
         public List<MountLocationRecord> mountLocationRecords = new();
         // public List<FireControlTableRecord> fireControlTableRecords = new() { new() };
@@ -315,13 +319,11 @@ namespace NavalCombatCore
         public int applicableYearEnd = 1900;
         public float displacementTons;
         public int complementMen;
-        public GlobalString fateDesc = new();
+        
         public float lengthFoot;
         public float beamFoot;
         public float draftFoot;
         public GlobalString builderDesc = new();
-        public string launchedDate;
-        public string completedDate;
         public GlobalString engineDesc = new();
         public GlobalString boilersDesc = new();
         // public List<BatteryRecord> batteryRecords = new() { new() };

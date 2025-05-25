@@ -38,8 +38,9 @@
         </ui:VisualElement>
         <ui:MultiColumnListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" header-title="Arcs" show-foldout-header="false" data-source-path="mountArcs" name="MountArcsMultiColumnListView">
             <ui:Columns>
-                <ui:Column name="begin" title="Begin (Deg)" width="50%" cell-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordStartCell.uxml?fileID=9197481963319205126&amp;guid=12785026fcf97104baac47198b704404&amp;type=3#MountArcRecordStartCell" />
-                <ui:Column title="Coverage (Deg)" name="coverage" cell-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordCoverageCell.uxml?fileID=9197481963319205126&amp;guid=3e2e4b723ac9fa445ba1a5bc768f172c&amp;type=3#MountArcRecordCoverageCell" width="50%" />
+                <ui:Column name="begin" title="Begin (Deg)" width="35%" cell-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordStartCell.uxml?fileID=9197481963319205126&amp;guid=12785026fcf97104baac47198b704404&amp;type=3#MountArcRecordStartCell" />
+                <ui:Column title="Coverage (Deg)" name="coverage" cell-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordCoverageCell.uxml?fileID=9197481963319205126&amp;guid=3e2e4b723ac9fa445ba1a5bc768f172c&amp;type=3#MountArcRecordCoverageCell" width="35%" />
+                <ui:Column width="30%" name="isCrossDeckFire" title="Cross Deck Fire" cell-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordIsCrossDeckFireCell.uxml?fileID=9197481963319205126&amp;guid=5fcda22c822c5424fa73fbd5ebc92910&amp;type=3#MountArcRecordIsCrossDeckFireCell" />
             </ui:Columns>
         </ui:MultiColumnListView>
     </ui:VisualElement>

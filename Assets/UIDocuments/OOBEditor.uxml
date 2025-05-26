@@ -21,8 +21,12 @@
                         <ui:Button text="Attach" name="AttachButton" style="flex-basis: 50px; flex-grow: 1;" />
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                        <ui:Button text="Export" name="ExportButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Add Ship" name="AddShipButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Remove Ship" name="RemoveShipButton" style="flex-basis: 50px; flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                         <ui:Button text="Import" name="ImportButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Export" name="ExportButton" style="flex-basis: 50px; flex-grow: 1;" />
                         <ui:Button text="Expand" name="ExpandButton" style="flex-basis: 50px; flex-grow: 1;" />
                         <ui:Button text="Collapse" name="CollapseButton" style="flex-basis: 50px; flex-grow: 1;" />
                     </ui:VisualElement>
@@ -55,6 +59,11 @@
                     <ui:Label text="Selected ShipLog&apos;s nama">
                         <Bindings>
                             <ui:DataBinding property="text" binding-mode="ToTarget" source-to-ui-converters="ShipLog =&gt; ShipLog&apos;s merge name" />
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Label text="Selected ShipLog&apos;s captain&apos;s name">
+                        <Bindings>
+                            <ui:DataBinding property="text" binding-mode="ToTarget" source-to-ui-converters="ShipLog =&gt; ShipLog&apos;s captain&apos;s merge name" />
                         </Bindings>
                     </ui:Label>
                     <Bindings>

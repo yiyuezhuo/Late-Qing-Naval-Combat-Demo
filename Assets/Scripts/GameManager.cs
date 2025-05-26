@@ -143,8 +143,8 @@ public class GameManager : MonoBehaviour
         var shipLogsXml = _load("ShipLogs");
         navalGameState.ShipLogsFromXml(shipLogsXml);
 
-        var rootShipGroupsXml = _load("RootShipGroups");
-        navalGameState.RootShipGroupsFromXml(rootShipGroupsXml);
+        var rootShipGroupsXml = _load("ShipGroups");
+        navalGameState.ShipGroupsFromXml(rootShipGroupsXml);
 
         OOBEditor.Instance.oobTreeView.ExpandAll();
 
@@ -232,7 +232,7 @@ public class GameManager : MonoBehaviour
 
                     // lastSelectedLatLon
 
-                    DialogRoot.Instance.PopupShipLogSelectorDialog();
+                    DialogRoot.Instance.PopupShipLogSelectorDialogForRedeploy();
                 }
             }
 

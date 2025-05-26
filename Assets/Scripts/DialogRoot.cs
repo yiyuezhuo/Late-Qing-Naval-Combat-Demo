@@ -1,5 +1,6 @@
 using NavalCombatCore;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 public class DialogRoot : SingletonDocument<DialogRoot>
@@ -18,7 +19,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     }
 
-    public void PopupShipLogSelectorDialog()
+    public void PopupShipLogSelectorDialogForRedeploy()
     {
         var tempDialog = new TempDialog()
         {
@@ -39,6 +40,37 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 selectedShipLog.mapState = MapState.Deployed;
                 selectedShipLog.position = latLon;
                 // Set Default heading?
+            }
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupShipLogSelectorDialogForAddShipLogToOOBItem()
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = shipLogSelectorDocument,
+            templateDataSource = GameManager.Instance
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            var addToShipGroup = OOBEditor.Instance.currentSelectedShipGroup;
+            var shipLogMultiColumnListView = el.Q<MultiColumnListView>("ShipLogMultiColumnListView");
+            var selectedShipLog = shipLogMultiColumnListView.selectedItem as ShipLog;
+
+            if (addToShipGroup != null && selectedShipLog != null)
+            {
+                if (((IShipGroupMember)selectedShipLog).TryAttachTo(addToShipGroup))
+                {
+                    OOBEditor.Instance.Sync();
+                }
+                else
+                {
+                    Debug.LogWarning("Not attachable");
+                }
             }
         };
 

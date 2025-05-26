@@ -27,9 +27,10 @@ namespace NavalCombatCore
         };
         // public List<ShipLog> shipLogs = new() { new() };
         public List<ShipLog> shipLogs = new();
-        public List<ShipGroup> rootShipGroups = new();
+        // public List<ShipGroup> rootShipGroups = new();
+        public List<ShipGroup> shipGroups = new();
 
-        public event EventHandler<List<ShipGroup>> rootShipGroupsChanged;
+        public event EventHandler<List<ShipGroup>> shipGroupsChanged;
 
         static NavalGameState _instance;
         public static NavalGameState Instance
@@ -56,23 +57,24 @@ namespace NavalCombatCore
             {
                 EntityManager.Instance.Register(shipLog, null);
             }
-            foreach (var shipGroup in rootShipGroups)
+            foreach (var shipGroup in shipGroups)
             {
-                ResetAndRegisterAllShipGroup(shipGroup);
+                EntityManager.Instance.Register(shipGroup, null);
+                // ResetAndRegisterAllShipGroup(shipGroup);
             }
         }
 
-        public void ResetAndRegisterAllShipGroup(ShipGroup shipGroup)
-        {
-            EntityManager.Instance.Register(shipGroup, null);
-            foreach (var child in shipGroup.GetChildren())
-            {
-                if (child is ShipGroup subShipGroup)
-                {
-                    ResetAndRegisterAllShipGroup(subShipGroup);
-                }
-            }
-        }
+        // public void ResetAndRegisterAllShipGroup(ShipGroup shipGroup)
+        // {
+        //     EntityManager.Instance.Register(shipGroup, null);
+        //     foreach (var child in shipGroup.GetChildren())
+        //     {
+        //         if (child is ShipGroup subShipGroup)
+        //         {
+        //             ResetAndRegisterAllShipGroup(subShipGroup);
+        //         }
+        //     }
+        // }
 
         // static XmlSerializer shipClassListSerializer = new XmlSerializer(typeof(List<ShipClass>));
         // static XmlSerializer shipLogListSerializer = new XmlSerializer(typeof(List<ShipLog>));
@@ -140,7 +142,7 @@ namespace NavalCombatCore
             ResetAndRegisterAll();
         }
 
-        public string RootShipGroupsToXml()
+        public string ShipGroupsToXml()
         {
             // using (var writer = new StringWriter())
             // {
@@ -148,31 +150,46 @@ namespace NavalCombatCore
             //     return writer.ToString();
             // }
 
-            return XmlUtils.ToXML(rootShipGroups);
+            // return XmlUtils.ToXML(rootShipGroups);
+            return XmlUtils.ToXML(shipGroups);
         }
 
-        public void RootShipGroupsFromXml(string xml)
+        public void ShipGroupsFromXml(string xml)
         {
             // using (var reader = new StringReader(xml))
             // {
             //     rootShipGroups = (List<ShipGroup>)shipGroupListSerializer.Deserialize(reader);
             // }
 
-            rootShipGroups = XmlUtils.FromXML<List<ShipGroup>>(xml);
+            // rootShipGroups = XmlUtils.FromXML<List<ShipGroup>>(xml);
+            shipGroups = XmlUtils.FromXML<List<ShipGroup>>(xml);
 
             ResetAndRegisterAll();
             SyncShipLogParentWithGroupHierarchy();
 
-            rootShipGroupsChanged?.Invoke(this, rootShipGroups);
+            shipGroupsChanged?.Invoke(this, shipGroups);
         }
 
         public void SyncShipLogParentWithGroupHierarchy()
         {
             var shipTracked = new HashSet<string>();
-            foreach (var shipGroup in rootShipGroups)
+
+            foreach (var shipGroup in shipGroups)
             {
-                SyncShipLogParentWithGroupHierarchy(shipGroup, ref shipTracked);
+                foreach (var child in shipGroup.GetChildren()) // if it's not resolved, child may be null and raise exception
+                {
+                    child.parentObjectId = shipGroup.objectId;
+                    if (child is ShipLog subShipLog)
+                    {
+                        shipTracked.Add(subShipLog.objectId);
+                    }
+                }
             }
+
+            // foreach (var shipGroup in rootShipGroups)
+            // {
+            //     SyncShipLogParentWithGroupHierarchy(shipGroup, ref shipTracked);
+            // }
             foreach (var shipLog in shipLogs)
             {
                 if (!shipTracked.Contains(shipLog.objectId))
@@ -182,44 +199,56 @@ namespace NavalCombatCore
             }
         }
 
-        public void SyncShipLogParentWithGroupHierarchy(ShipGroup shipGroup, ref HashSet<string> shipTracked)
-        {
-            foreach (var child in shipGroup.GetChildren())
-            {
-                child.parentObjectId = shipGroup.objectId;
-                if (child is ShipGroup subShipGroup)
-                {
-                    SyncShipLogParentWithGroupHierarchy(subShipGroup, ref shipTracked);
-                }
-                if (child is ShipLog subShipLog)
-                {
-                    shipTracked.Add(subShipLog.objectId);
-                }
-            }
-        }
+        // public void SyncShipLogParentWithGroupHierarchy(ShipGroup shipGroup, ref HashSet<string> shipTracked)
+        // {
+        //     foreach (var child in shipGroup.GetChildren())
+        //     {
+        //         child.parentObjectId = shipGroup.objectId;
+        //         if (child is ShipGroup subShipGroup)
+        //         {
+        //             SyncShipLogParentWithGroupHierarchy(subShipGroup, ref shipTracked);
+        //         }
+        //         if (child is ShipLog subShipLog)
+        //         {
+        //             shipTracked.Add(subShipLog.objectId);
+        //         }
+        //     }
+        // }
 
         public void UpdateTo(NavalGameState newState)
         {
             shipClasses = newState.shipClasses;
             shipLogs = newState.shipLogs;
-            rootShipGroups = newState.rootShipGroups;
+            // rootShipGroups = newState.rootShipGroups;
+            shipGroups = newState.shipGroups;
 
             ResetAndRegisterAll();
             SyncShipLogParentWithGroupHierarchy();
 
-            rootShipGroupsChanged?.Invoke(this, rootShipGroups);
+            // rootShipGroupsChanged?.Invoke(this, rootShipGroups);
+            shipGroupsChanged?.Invoke(this, shipGroups);
         }
 
         public IEnumerable<IShipGroupMember> GetShipGroupMembersRecursive()
         {
-            // foreach(var)
-            foreach (var shipGroup in rootShipGroups)
+            foreach (var shipGroup in shipGroups)
             {
-                foreach (var ret in GetShipGroupMembersRecursive(shipGroup))
+                if (shipGroup.parentObjectId == null) // "root" groups
                 {
-                    yield return ret;
+                    foreach (var ret in GetShipGroupMembersRecursive(shipGroup))
+                    {
+                        yield return ret;
+                    }
                 }
             }
+
+            // foreach (var shipGroup in rootShipGroups)
+            // {
+            //     foreach (var ret in GetShipGroupMembersRecursive(shipGroup))
+            //     {
+            //         yield return ret;
+            //     }
+            // }
         }
 
         public IEnumerable<IShipGroupMember> GetShipGroupMembersRecursive(ShipGroup shipGroup)

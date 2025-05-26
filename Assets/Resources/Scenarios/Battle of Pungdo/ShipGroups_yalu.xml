@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ArrayOfShipGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <ShipGroup>
+  <childrenObjectIds>
+   <string>a819def6-c727-4538-8e0e-625daaa44c93</string>
+   <string>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</string>
+  </childrenObjectIds>
+  <name>
+   <english>Beiyang Fleet</english>
+   <japanese>北洋艦隊</japanese>
+   <chineseSimplified>北洋舰队</chineseSimplified>
+  </name>
+  <captain>
+   <english>Ding Ruchang</english>
+   <japanese>丁汝昌</japanese>
+   <chineseSimplified>丁汝昌</chineseSimplified>
+  </captain>
+  <type>Fleet</type>
+  <formation>General</formation>
+  <objectId>0a72dc07-7f11-4da8-9032-fbe481fc4cb3</objectId>
+ </ShipGroup>
+ <ShipGroup>
+  <childrenObjectIds>
+   <string>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</string>
+   <string>61f04aed-26e0-4495-bd04-344f5d223de1</string>
+   <string>a55bdec2-a47a-4d2b-af3c-9588a875e58c</string>
+   <string>3ecfd394-30a5-45af-95be-f83b75d246b2</string>
+   <string>c8a76edb-7330-4ef4-a115-2f468df23494</string>
+   <string>b5dfd87e-cb47-4a4b-abba-affa96e356c4</string>
+   <string>00fb2b34-3d37-444b-9041-e8540c9304d1</string>
+   <string>370f72b3-2243-44ff-ab42-e08d3c6d273c</string>
+   <string>6a20093b-9f39-47fd-972f-49eaaefaf1d5</string>
+   <string>59969f6c-ed18-4e48-84d2-0b43c3e8ac74</string>
+  </childrenObjectIds>
+  <name>
+   <english>Pricipal Squadron</english>
+   <japanese>本隊</japanese>
+   <chineseSimplified>主队</chineseSimplified>
+  </name>
+  <captain>
+   <english>Ding Ruchang</english>
+   <japanese>丁汝昌</japanese>
+   <chineseSimplified>丁汝昌</chineseSimplified>
+  </captain>
+  <type>Squadron</type>
+  <formation>LineAbreast</formation>
+  <objectId>a819def6-c727-4538-8e0e-625daaa44c93</objectId>
+  <parentObjectId>0a72dc07-7f11-4da8-9032-fbe481fc4cb3</parentObjectId>
+ </ShipGroup>
+ <ShipGroup>
+  <childrenObjectIds>
+   <string>0cfda6a2-50de-48bf-8aa6-5338375327ef</string>
+   <string>9ad21ac1-2365-4f33-bfa9-fee5f27b965a</string>
+  </childrenObjectIds>
+  <name>
+   <english>Inshore Squadron</english>
+   <japanese>別働隊</japanese>
+   <chineseSimplified>分队</chineseSimplified>
+  </name>
+  <captain>
+   <english>Li He</english>
+   <japanese>李和</japanese>
+   <chineseSimplified>李和</chineseSimplified>
+  </captain>
+  <type>Squadron</type>
+  <formation>General</formation>
+  <objectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</objectId>
+  <parentObjectId>0a72dc07-7f11-4da8-9032-fbe481fc4cb3</parentObjectId>
+ </ShipGroup>
+ <ShipGroup>
+  <childrenObjectIds>
+   <string>55b05b8e-c4bc-4392-8988-b098825b3ad0</string>
+   <string>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</string>
+  </childrenObjectIds>
+  <name>
+   <english>Combined Fleet</english>
+   <japanese>連合艦隊</japanese>
+   <chineseSimplified>联合舰队</chineseSimplified>
+  </name>
+  <captain>
+   <english>Itō Sukeyuki</english>
+   <japanese>伊東祐亨中将</japanese>
+   <chineseSimplified>伊东祐亨</chineseSimplified>
+  </captain>
+  <type>Fleet</type>
+  <formation>General</formation>
+  <objectId>b4d3a47e-88b4-4860-b11e-2a0164a777ec</objectId>
+ </ShipGroup>
+ <ShipGroup>
+  <childrenObjectIds>
+   <string>e1f10636-ab79-4b42-8316-c3a533f31512</string>
+   <string>8c1e5af6-3f33-4f97-8f94-5d8a63785c28</string>
+   <string>1180b828-a3da-4927-ae6a-ea21c6c5c1be</string>
+   <string>10ae7cc2-8728-40b6-9d4b-4f06087918c6</string>
+   <string>4d486d3e-0643-4983-8641-a33434c2a4c5</string>
+   <string>3e705d71-1239-4963-8946-2aa151d5e57f</string>
+  </childrenObjectIds>
+  <name>
+   <english>Battle Squadron</english>
+   <japanese>連合艦隊本隊</japanese>
+   <chineseSimplified>联合舰队本队</chineseSimplified>
+  </name>
+  <captain>
+   <english>Itō Sukeyuki</english>
+   <japanese>伊東祐亨中将</japanese>
+   <chineseSimplified>伊东祐亨</chineseSimplified>
+  </captain>
+  <type>Squadron</type>
+  <formation>General</formation>
+  <objectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</objectId>
+  <parentObjectId>b4d3a47e-88b4-4860-b11e-2a0164a777ec</parentObjectId>
+ </ShipGroup>
+ <ShipGroup>
+  <childrenObjectIds>
+   <string>cf6393ee-7cbe-4a15-93ce-eb53bc18ada8</string>
+   <string>25623a6b-a217-4e49-baca-6ea3b7c782a6</string>
+   <string>01092b52-c42d-4f06-9f4e-57762a39aeba</string>
+   <string>ea56b877-9b5e-48bf-840d-3e8508af98ca</string>
+  </childrenObjectIds>
+  <name>
+   <english>Flying Squadron</english>
+   <japanese>第一遊撃隊</japanese>
+   <chineseSimplified>第一游击队</chineseSimplified>
+  </name>
+  <captain>
+   <english>Tsuboi Kōzō</english>
+   <japanese>坪井航三海軍少将</japanese>
+   <chineseSimplified>坪井航三</chineseSimplified>
+  </captain>
+  <type>Squadron</type>
+  <formation>General</formation>
+  <objectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</objectId>
+  <parentObjectId>b4d3a47e-88b4-4860-b11e-2a0164a777ec</parentObjectId>
+ </ShipGroup>
+</ArrayOfShipGroup>

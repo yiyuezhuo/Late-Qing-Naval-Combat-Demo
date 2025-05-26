@@ -132,7 +132,7 @@
    <english>unnamed</english>
   </fateDesc>
   <objectId>cf6393ee-7cbe-4a15-93ce-eb53bc18ada8</objectId>
-  <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
+  <parentObjectId>57247dcf-53dd-4f19-9db0-b74eb70ab79a</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>6197af50-741d-4f54-881a-f0eeec00996f</shipClassObjectId>
@@ -261,7 +261,7 @@
    <english>unnamed</english>
   </fateDesc>
   <objectId>01092b52-c42d-4f06-9f4e-57762a39aeba</objectId>
-  <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
+  <parentObjectId>57247dcf-53dd-4f19-9db0-b74eb70ab79a</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId>
@@ -380,7 +380,7 @@
    <english>unnamed</english>
   </fateDesc>
   <objectId>ea56b877-9b5e-48bf-840d-3e8508af98ca</objectId>
-  <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
+  <parentObjectId>57247dcf-53dd-4f19-9db0-b74eb70ab79a</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>84de785d-a41c-4993-973a-d167876f343b</shipClassObjectId>
@@ -489,7 +489,7 @@
    <english>unnamed</english>
   </fateDesc>
   <objectId>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</objectId>
-  <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
+  <parentObjectId>6e77dedf-998e-4d6d-99ba-dcfe1a367c38</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</shipClassObjectId>
@@ -586,7 +586,6 @@
    <english>unnamed</english>
   </fateDesc>
   <objectId>93b88a00-313d-4df0-8cfb-2182851c96f7</objectId>
-  <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</shipClassObjectId>
@@ -634,6 +633,7 @@
    <english>Captured 02/06/1895</english>
   </fateDesc>
   <objectId>b5dfd87e-cb47-4a4b-abba-affa96e356c4</objectId>
+  <parentObjectId>6e77dedf-998e-4d6d-99ba-dcfe1a367c38</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</shipClassObjectId>
@@ -681,6 +681,7 @@
    <english>Sunk 02/06/1895</english>
   </fateDesc>
   <objectId>c8a76edb-7330-4ef4-a115-2f468df23494</objectId>
+  <parentObjectId>6e77dedf-998e-4d6d-99ba-dcfe1a367c38</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</shipClassObjectId>
@@ -728,6 +729,7 @@
    <english>Sunk 09/17/1894</english>
   </fateDesc>
   <objectId>59969f6c-ed18-4e48-84d2-0b43c3e8ac74</objectId>
+  <parentObjectId>6e77dedf-998e-4d6d-99ba-dcfe1a367c38</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</shipClassObjectId>
@@ -775,6 +777,7 @@
    <english>Sunk 09/17/1894</english>
   </fateDesc>
   <objectId>6a20093b-9f39-47fd-972f-49eaaefaf1d5</objectId>
+  <parentObjectId>6e77dedf-998e-4d6d-99ba-dcfe1a367c38</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>0208979d-6075-4877-98ef-fa0adc0df9ed</shipClassObjectId>
@@ -822,6 +825,7 @@
    <english>Sunk 02/09/1895</english>
   </fateDesc>
   <objectId>370f72b3-2243-44ff-ab42-e08d3c6d273c</objectId>
+  <parentObjectId>6e77dedf-998e-4d6d-99ba-dcfe1a367c38</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>0208979d-6075-4877-98ef-fa0adc0df9ed</shipClassObjectId>
@@ -869,6 +873,7 @@
    <english>Sunk 09/17/1894</english>
   </fateDesc>
   <objectId>a55bdec2-a47a-4d2b-af3c-9588a875e58c</objectId>
+  <parentObjectId>6e77dedf-998e-4d6d-99ba-dcfe1a367c38</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>7cfe4fb1-5a4a-486f-acd8-27301ef8af77</shipClassObjectId>
@@ -916,6 +921,7 @@
    <english>Sunk 09/17/1894</english>
   </fateDesc>
   <objectId>3ecfd394-30a5-45af-95be-f83b75d246b2</objectId>
+  <parentObjectId>6e77dedf-998e-4d6d-99ba-dcfe1a367c38</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>7cfe4fb1-5a4a-486f-acd8-27301ef8af77</shipClassObjectId>
@@ -963,6 +969,7 @@
    <english>Sunk 02/05/1895</english>
   </fateDesc>
   <objectId>00fb2b34-3d37-444b-9041-e8540c9304d1</objectId>
+  <parentObjectId>6e77dedf-998e-4d6d-99ba-dcfe1a367c38</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>c9332796-cb5f-4d0c-a0e9-b05bc5c05c56</shipClassObjectId>
@@ -1010,6 +1017,7 @@
    <english>Captured 02/12/1895</english>
   </fateDesc>
   <objectId>9ad21ac1-2365-4f33-bfa9-fee5f27b965a</objectId>
+  <parentObjectId>8535257c-4030-4dc3-b0b9-2741c160845a</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>8cb2764f-61b3-4a5d-b992-1f795e2887c6</shipClassObjectId>
@@ -1057,6 +1065,7 @@
    <english>Sunk 09/17/1894</english>
   </fateDesc>
   <objectId>61f04aed-26e0-4495-bd04-344f5d223de1</objectId>
+  <parentObjectId>6e77dedf-998e-4d6d-99ba-dcfe1a367c38</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>0d9558bb-88c1-4021-8a3a-209d98a54419</shipClassObjectId>
@@ -1104,6 +1113,7 @@
    <english>Scrapped 1919</english>
   </fateDesc>
   <objectId>4d486d3e-0643-4983-8641-a33434c2a4c5</objectId>
+  <parentObjectId>b0383f69-ccc8-48e7-a47a-d4c75001cd3d</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</shipClassObjectId>
@@ -1151,6 +1161,7 @@
    <english>Lost 04/30/1906</english>
   </fateDesc>
   <objectId>10ae7cc2-8728-40b6-9d4b-4f06087918c6</objectId>
+  <parentObjectId>b0383f69-ccc8-48e7-a47a-d4c75001cd3d</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</shipClassObjectId>
@@ -1199,6 +1210,7 @@
    <japanese />
   </fateDesc>
   <objectId>1180b828-a3da-4927-ae6a-ea21c6c5c1be</objectId>
+  <parentObjectId>b0383f69-ccc8-48e7-a47a-d4c75001cd3d</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>a333035a-806e-4246-b57f-157148f73332</shipClassObjectId>
@@ -1246,6 +1258,7 @@
    <english>Scrapped 1911</english>
   </fateDesc>
   <objectId>3e705d71-1239-4963-8946-2aa151d5e57f</objectId>
+  <parentObjectId>b0383f69-ccc8-48e7-a47a-d4c75001cd3d</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>5d05cc6f-6559-4d69-b29d-2eeab1139643</shipClassObjectId>
@@ -1293,6 +1306,7 @@
    <english>Scrapped 1927</english>
   </fateDesc>
   <objectId>e1f10636-ab79-4b42-8316-c3a533f31512</objectId>
+  <parentObjectId>b0383f69-ccc8-48e7-a47a-d4c75001cd3d</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId>
@@ -1340,6 +1354,7 @@
    <english>Lost 10/17/1914</english>
   </fateDesc>
   <objectId>25623a6b-a217-4e49-baca-6ea3b7c782a6</objectId>
+  <parentObjectId>57247dcf-53dd-4f19-9db0-b74eb70ab79a</parentObjectId>
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>93917b3f-9a77-4307-8ed2-945de9b551c9</shipClassObjectId>
@@ -1387,5 +1402,53 @@
    <english>Scraapped 1927</english>
   </fateDesc>
   <objectId>8c1e5af6-3f33-4f97-8f94-5d8a63785c28</objectId>
+  <parentObjectId>b0383f69-ccc8-48e7-a47a-d4c75001cd3d</parentObjectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</shipClassObjectId>
+  <name>
+   <english>Kuang P'ing</english>
+   <japanese>広丙</japanese>
+   <chineseSimplified>广丙</chineseSimplified>
+  </name>
+  <captain>
+   <english>Cheng Biguang</english>
+   <japanese>程璧光</japanese>
+   <chineseSimplified>程璧光</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>00/00/1890</launchedDate>
+  <completedDate>00/00/1891</completedDate>
+  <fateDesc>
+   <english>Captured 02/12/1895</english>
+  </fateDesc>
+  <objectId>0cfda6a2-50de-48bf-8aa6-5338375327ef</objectId>
  </ShipLog>
 </ArrayOfShipLog>

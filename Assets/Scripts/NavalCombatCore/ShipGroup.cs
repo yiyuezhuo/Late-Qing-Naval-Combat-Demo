@@ -44,10 +44,10 @@ namespace NavalCombatCore
             {
                 parent.childrenObjectIds.Remove(objectId);
             }
-            else if(this is ShipGroup shipGroup)
-            {
-                NavalGameState.Instance.rootShipGroups.Remove(shipGroup);
-            }
+            // else if(this is ShipGroup shipGroup) // ShipGroup is attached to null => Remove group (is it better to create detached group instead?)
+            // {
+            //     NavalGameState.Instance.shipGroups.Remove(shipGroup);
+            // }
 
             if (newParent != null)
             {

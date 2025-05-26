@@ -26,8 +26,8 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         playerDropdownField = root.Q<DropdownField>("PlayerDropdownField");
 
-        NavalGameState.Instance.rootShipGroupsChanged -= OnRootShipGroupsChanged;
-        NavalGameState.Instance.rootShipGroupsChanged += OnRootShipGroupsChanged;
+        NavalGameState.Instance.shipGroupsChanged -= OnRootShipGroupsChanged;
+        NavalGameState.Instance.shipGroupsChanged += OnRootShipGroupsChanged;
 
         playerDropdownField.RegisterValueChangedCallback((ChangeEvent<string> evt) =>
         {

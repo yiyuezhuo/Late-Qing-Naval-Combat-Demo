@@ -45,6 +45,11 @@ public static class RegisteredConverters
             return shipLog?.name?.GetMergedName() ?? "[not defined]";
         });
 
+        Register("ShipLog => ShipLog's captain's merge name", (ref NavalCombatCore.ShipLog shipLog) =>
+        {
+            return shipLog?.captain?.GetMergedName() ?? "[not defined]";
+        });
+
         Register("ShipLog => ShipLog's ShipClass's DP", (ref NavalCombatCore.ShipLog shipLog) =>
         {
             return shipLog.shipClass?.damagePoint ?? 0;

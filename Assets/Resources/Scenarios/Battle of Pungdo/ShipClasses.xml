@@ -3001,7 +3001,7 @@
  </ShipClass>
  <ShipClass>
   <name>
-   <english>Chin Yuan</english>
+   <english>Chih Yuan</english>
    <japanese>致遠</japanese>
    <chineseSimplified>致远</chineseSimplified>
   </name>
@@ -3378,7 +3378,7 @@
    <torpedoSettings>
     <TorpedoSetting rangeYards="550" speedKnots="32" />
    </torpedoSettings>
-   <ammunitionCapacity>0</ammunitionCapacity>
+   <ammunitionCapacity>6</ammunitionCapacity>
    <damageClass>H</damageClass>
   </torpedoSector>
   <rapidFireBatteryRecords>
@@ -6445,7 +6445,7 @@
     <TorpedoSetting rangeYards="1000" speedKnots="28" />
     <TorpedoSetting rangeYards="2000" speedKnots="20" />
    </torpedoSettings>
-   <ammunitionCapacity>0</ammunitionCapacity>
+   <ammunitionCapacity>6</ammunitionCapacity>
    <damageClass>I</damageClass>
   </torpedoSector>
   <rapidFireBatteryRecords>

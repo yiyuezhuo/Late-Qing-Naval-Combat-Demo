@@ -74,73 +74,91 @@ namespace NavalCombatCore
             }
         }
 
-        static XmlSerializer shipClassListSerializer = new XmlSerializer(typeof(List<ShipClass>));
-        static XmlSerializer shipLogListSerializer = new XmlSerializer(typeof(List<ShipLog>));
-        static XmlSerializer shipGroupListSerializer = new XmlSerializer(typeof(List<ShipGroup>));
+        // static XmlSerializer shipClassListSerializer = new XmlSerializer(typeof(List<ShipClass>));
+        // static XmlSerializer shipLogListSerializer = new XmlSerializer(typeof(List<ShipLog>));
+        // static XmlSerializer shipGroupListSerializer = new XmlSerializer(typeof(List<ShipGroup>));
 
         public string ShipClassesToXml()
         {
-            using (var textWriter = new StringWriter())
-            {
-                using (var xmlWriter = XmlWriter.Create(textWriter))
-                {
-                    shipClassListSerializer.Serialize(xmlWriter, shipClasses);
-                    string serializedXml = textWriter.ToString();
+            // var settings = new XmlWriterSettings
+            // {
+            //     Indent = true,
+            //     IndentChars = " ",
+            // };
 
-                    return serializedXml;
-                }
-            }
+            // using (var textWriter = new StringWriter())
+            // {
+            //     using (XmlWriter xmlWriter = XmlWriter.Create(textWriter, settings))
+            //     {
+            //         shipClassListSerializer.Serialize(xmlWriter, shipClasses);
+            //         string serializedXml = textWriter.ToString();
+
+            //         return serializedXml;
+            //     }
+            // }
+
+            var serializedXml = XmlUtils.ToXML(shipClasses);
+            return serializedXml;
         }
 
         public void ShipClassesFromXml(string xml)
         {
-            using (var reader = new StringReader(xml))
-            {
-                shipClasses = (List<ShipClass>)shipClassListSerializer.Deserialize(reader);
-            }
+            // using (var reader = new StringReader(xml))
+            // {
+            //     shipClasses = (List<ShipClass>)shipClassListSerializer.Deserialize(reader);
+            // }
+            shipClasses = XmlUtils.FromXML<List<ShipClass>>(xml);
 
             ResetAndRegisterAll();
         }
 
         public string ShipLogsToXml()
         {
-            using (var textWriter = new StringWriter())
-            {
-                using (var xmlWriter = XmlWriter.Create(textWriter))
-                {
-                    shipLogListSerializer.Serialize(xmlWriter, shipLogs);
-                    string serializedXml = textWriter.ToString();
+            // using (var textWriter = new StringWriter())
+            // {
+            //     using (XmlWriter xmlWriter = XmlWriter.Create(textWriter))
+            //     {
+            //         shipLogListSerializer.Serialize(xmlWriter, shipLogs);
+            //         string serializedXml = textWriter.ToString();
 
-                    return serializedXml;
-                }
-            }
+            //         return serializedXml;
+            //     }
+            // }
+
+            return XmlUtils.ToXML(shipLogs);
         }
 
         public void ShipLogsFromXml(string xml)
         {
-            using (var reader = new StringReader(xml))
-            {
-                shipLogs = (List<ShipLog>)shipLogListSerializer.Deserialize(reader);
-            }
+            // using (var reader = new StringReader(xml))
+            // {
+            //     shipLogs = (List<ShipLog>)shipLogListSerializer.Deserialize(reader);
+            // }
+
+            shipLogs = XmlUtils.FromXML<List<ShipLog>>(xml);
 
             ResetAndRegisterAll();
         }
 
         public string RootShipGroupsToXml()
         {
-            using (var writer = new StringWriter())
-            {
-                shipGroupListSerializer.Serialize(writer, rootShipGroups);
-                return writer.ToString();
-            }
+            // using (var writer = new StringWriter())
+            // {
+            //     shipGroupListSerializer.Serialize(writer, rootShipGroups);
+            //     return writer.ToString();
+            // }
+
+            return XmlUtils.ToXML(rootShipGroups);
         }
 
         public void RootShipGroupsFromXml(string xml)
         {
-            using (var reader = new StringReader(xml))
-            {
-                rootShipGroups = (List<ShipGroup>)shipGroupListSerializer.Deserialize(reader);
-            }
+            // using (var reader = new StringReader(xml))
+            // {
+            //     rootShipGroups = (List<ShipGroup>)shipGroupListSerializer.Deserialize(reader);
+            // }
+
+            rootShipGroups = XmlUtils.FromXML<List<ShipGroup>>(xml);
 
             ResetAndRegisterAll();
             SyncShipLogParentWithGroupHierarchy();

@@ -1,1 +1,1391 @@
-<?xml version="1.0" encoding="utf-16"?><ArrayOfShipLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ShipLog><shipClassObjectId>fcf5997b-fe22-49ad-9e5b-70080d2221a9</shipClassObjectId><name><english>Yoshino</english><japanese>吉野</japanese><chineseSimplified>吉野</chineseSimplified></name><captain><english>Kawabara</english><japanese>河原要一大佐</japanese><chineseSimplified>河原要一大佐</chineseSimplified></captain><crewRating>1</crewRating><damagePoint>0</damagePoint><position><LatDeg>37.06988</LatDeg><LonDeg>126.288589</LonDeg></position><speedKnots>12</speedKnots><headingDeg>45</headingDeg><mapState>Deployed</mapState><batteryStatus><BatteryStatus><ammunition><ArmorPiercing>300</ArmorPiercing><semiArmorPiercing>0</semiArmorPiercing><common>300</common><highExplosive>0</highExplosive></ammunition><mountStatus><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>2582844d-d6fa-4f43-8b94-2e315b782a0d</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>12584f1d-5a81-4e8f-ac27-4105a760a5d0</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>0c0ab54d-59b5-430f-a021-ad6639eb464c</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>e40840b4-bdfd-4195-be4f-daa3a6bb3aec</objectId></MountStatusRecord></mountStatus><fireControlHits>0</fireControlHits><objectId>77c99db6-5cec-405f-a908-e4e74629bddb</objectId></BatteryStatus><BatteryStatus><ammunition><ArmorPiercing>720</ArmorPiercing><semiArmorPiercing>0</semiArmorPiercing><common>720</common><highExplosive>0</highExplosive></ammunition><mountStatus><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>cf6d9b81-d265-489a-8444-5df5a2b02a9e</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>0a020bda-d51c-453a-be96-c034be4f8a4c</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>44de33db-47fa-40a9-9128-b50d20e0c5fd</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>108c711d-1c24-4404-b05b-5352abea5fb9</objectId></MountStatusRecord></mountStatus><fireControlHits>0</fireControlHits><objectId>c1359630-f2eb-4783-8c50-632f0c8934cc</objectId></BatteryStatus></batteryStatus><torpedoSectorStatus><ammunition>12</ammunition><mountStatus><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>b4bd189b-f5cf-4460-96a3-e7df7357d530</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>62795ceb-7f72-4fe2-b9b0-7359be5e005c</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>53dc2a4e-81b1-4973-9413-089b26f3b2bd</objectId></MountStatusRecord></mountStatus></torpedoSectorStatus><rapidFiringStatus><RapidFiringStatus><portMountHits>0</portMountHits><starboardMountHits>0</starboardMountHits><fireControlHits>0</fireControlHits><objectId>18afa0f0-e6d1-4827-a8e3-b55a6ecacb86</objectId></RapidFiringStatus></rapidFiringStatus><dynamicStatus><speedKnotsDirectModifier>0</speedKnotsDirectModifier><engineRoomHits>0</engineRoomHits><propulsionShaftHits>0</propulsionShaftHits><boilerRoomHits>0</boilerRoomHits></dynamicStatus><searchLightHits><portHit>0</portHit><starboardHit>0</starboardHit></searchLightHits><damageControlRatingHits>0</damageControlRatingHits><damageEffectRecords /><shipboardFireStatus /><objectId>cf6393ee-7cbe-4a15-93ce-eb53bc18ada8</objectId><parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId></ShipLog><ShipLog><shipClassObjectId>6197af50-741d-4f54-881a-f0eeec00996f</shipClassObjectId><name><english>Akitsushima</english><japanese>秋津洲</japanese><chineseSimplified>秋津洲</chineseSimplified></name><captain><english>Uemura</english><japanese>上村彦之丞少佐</japanese><chineseSimplified>上村彦之丞少佐</chineseSimplified></captain><crewRating>1</crewRating><damagePoint>0</damagePoint><position><LatDeg>37.05812</LatDeg><LonDeg>126.276741</LonDeg></position><speedKnots>12</speedKnots><headingDeg>45</headingDeg><mapState>Deployed</mapState><batteryStatus><BatteryStatus><ammunition><ArmorPiercing>280</ArmorPiercing><semiArmorPiercing>0</semiArmorPiercing><common>280</common><highExplosive>0</highExplosive></ammunition><mountStatus><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>f2fc247a-3db6-40da-9878-66aebc8f082b</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>c2c9ea9d-ad0d-409a-bb33-b6123b60cb0e</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>3b66b335-8152-4d31-9bc2-8b4d336fff29</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>c872b2b0-d530-444b-b2ba-eb9db866bcad</objectId></MountStatusRecord></mountStatus><fireControlHits>0</fireControlHits><objectId>3e2f9fbe-e0d4-48c7-8b7b-1ca436083d36</objectId></BatteryStatus><BatteryStatus><ammunition><ArmorPiercing>480</ArmorPiercing><semiArmorPiercing>0</semiArmorPiercing><common>480</common><highExplosive>0</highExplosive></ammunition><mountStatus><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>c336b99d-c5f2-42c3-b476-431e14f042e4</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>530b3f7f-c44a-45b2-83a2-feab8cda9137</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>a63bff73-7e55-4575-bc34-6ff4cf695178</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>97383d4a-fb1f-4915-a0e1-eb918bbb1966</objectId></MountStatusRecord></mountStatus><fireControlHits>0</fireControlHits><objectId>94cb9d02-b052-477d-822c-8003bb55e985</objectId></BatteryStatus></batteryStatus><torpedoSectorStatus><ammunition>8</ammunition><mountStatus><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>7c1355e1-1908-4c2f-8efc-38619995cf69</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>3c5f0333-d164-40ca-b46c-efbb608a5c29</objectId></MountStatusRecord></mountStatus></torpedoSectorStatus><rapidFiringStatus><RapidFiringStatus><portMountHits>0</portMountHits><starboardMountHits>0</starboardMountHits><fireControlHits>0</fireControlHits><objectId>c61571fd-99d5-4d99-bea3-6dd7ba3b9710</objectId></RapidFiringStatus></rapidFiringStatus><dynamicStatus><speedKnotsDirectModifier>0</speedKnotsDirectModifier><engineRoomHits>0</engineRoomHits><propulsionShaftHits>0</propulsionShaftHits><boilerRoomHits>0</boilerRoomHits></dynamicStatus><searchLightHits><portHit>0</portHit><starboardHit>0</starboardHit></searchLightHits><damageControlRatingHits>0</damageControlRatingHits><damageEffectRecords /><shipboardFireStatus /><objectId>01092b52-c42d-4f06-9f4e-57762a39aeba</objectId><parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId></ShipLog><ShipLog><shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId><name><english>Naniwa</english><japanese>浪速</japanese><chineseSimplified>浪速</chineseSimplified></name><captain><english>Togo Heihachiro</english><japanese>東郷平八郎大佐</japanese><chineseSimplified>东乡平八郎大佐</chineseSimplified></captain><crewRating>1</crewRating><damagePoint>0</damagePoint><position><LatDeg>37.0488358</LatDeg><LonDeg>126.2648</LonDeg></position><speedKnots>12</speedKnots><headingDeg>45</headingDeg><mapState>Deployed</mapState><batteryStatus><BatteryStatus><ammunition><ArmorPiercing>100</ArmorPiercing><semiArmorPiercing>0</semiArmorPiercing><common>100</common><highExplosive>0</highExplosive></ammunition><mountStatus><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>9d8a5ae0-5bf0-4d55-9ed4-1311c2a24142</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>09871e70-cb92-4832-bcc1-761aeafd014b</objectId></MountStatusRecord></mountStatus><fireControlHits>0</fireControlHits><objectId>6498c64f-26b2-47d6-b609-de82822c9fc9</objectId></BatteryStatus><BatteryStatus><ammunition><ArmorPiercing>225</ArmorPiercing><semiArmorPiercing>0</semiArmorPiercing><common>225</common><highExplosive>0</highExplosive></ammunition><mountStatus><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>549dc1a9-b909-4458-86c1-eff6de8da60c</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>df3442f8-49c7-4166-ae83-d72af48c3e3a</objectId></MountStatusRecord></mountStatus><fireControlHits>0</fireControlHits><objectId>2d30d5db-d8bf-4f38-916f-3c388bd45663</objectId></BatteryStatus></batteryStatus><torpedoSectorStatus><ammunition>8</ammunition><mountStatus><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>38ee2489-c9c1-4938-9c48-cd11038de296</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>b1a2f4ed-3027-49a4-84da-46dc851b47c4</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>ffa67923-eedf-4116-a227-f2094047050e</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>0903a638-7893-4bb4-8e53-84cac77584b3</objectId></MountStatusRecord></mountStatus></torpedoSectorStatus><rapidFiringStatus><RapidFiringStatus><portMountHits>0</portMountHits><starboardMountHits>0</starboardMountHits><fireControlHits>0</fireControlHits><objectId>d27c22bd-022c-4937-96ca-9e9a65c7742e</objectId></RapidFiringStatus></rapidFiringStatus><dynamicStatus><speedKnotsDirectModifier>0</speedKnotsDirectModifier><engineRoomHits>0</engineRoomHits><propulsionShaftHits>0</propulsionShaftHits><boilerRoomHits>0</boilerRoomHits></dynamicStatus><searchLightHits><portHit>0</portHit><starboardHit>0</starboardHit></searchLightHits><damageControlRatingHits>0</damageControlRatingHits><damageEffectRecords /><shipboardFireStatus /><objectId>ea56b877-9b5e-48bf-840d-3e8508af98ca</objectId><parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId></ShipLog><ShipLog><shipClassObjectId>84de785d-a41c-4993-973a-d167876f343b</shipClassObjectId><name><english>Chi Yuan</english><japanese>済遠</japanese><chineseSimplified>济远</chineseSimplified></name><captain><english>Fang Boqian</english><japanese>方伯謙</japanese><chineseSimplified>方伯谦</chineseSimplified></captain><crewRating>0</crewRating><damagePoint>0</damagePoint><position><LatDeg>37.13317</LatDeg><LonDeg>126.473793</LonDeg></position><speedKnots>10</speedKnots><headingDeg>290</headingDeg><mapState>Deployed</mapState><batteryStatus><BatteryStatus><ammunition><ArmorPiercing>60</ArmorPiercing><semiArmorPiercing>0</semiArmorPiercing><common>60</common><highExplosive>0</highExplosive></ammunition><mountStatus><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>f82a6e49-5c99-4a6d-8740-c8129e70a0cf</objectId></MountStatusRecord></mountStatus><fireControlHits>0</fireControlHits><objectId>b43d875a-fe28-4b01-b4e6-e2b9c4da799f</objectId></BatteryStatus><BatteryStatus><ammunition><ArmorPiercing>35</ArmorPiercing><semiArmorPiercing>0</semiArmorPiercing><common>35</common><highExplosive>0</highExplosive></ammunition><mountStatus><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>8c5a3f00-2cad-4e0a-a342-e1e24b05f78f</objectId></MountStatusRecord></mountStatus><fireControlHits>0</fireControlHits><objectId>2ef3acc8-20f2-415e-a3d7-3d28b24d21d5</objectId></BatteryStatus></batteryStatus><torpedoSectorStatus><ammunition>6</ammunition><mountStatus><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>bf759935-d6f0-4152-a8dd-973857efa0c3</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>94178e87-3876-4b4c-b890-8ebca3df9e1c</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>8d742f23-f3bf-4300-ac62-b3d5f20f3baf</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>87f919bb-af25-438d-b5e6-81485caf551f</objectId></MountStatusRecord></mountStatus></torpedoSectorStatus><rapidFiringStatus><RapidFiringStatus><portMountHits>0</portMountHits><starboardMountHits>0</starboardMountHits><fireControlHits>0</fireControlHits><objectId>4ef7243c-c1e8-47d5-b3f6-52f0a039d187</objectId></RapidFiringStatus></rapidFiringStatus><dynamicStatus><speedKnotsDirectModifier>0</speedKnotsDirectModifier><engineRoomHits>0</engineRoomHits><propulsionShaftHits>0</propulsionShaftHits><boilerRoomHits>0</boilerRoomHits></dynamicStatus><searchLightHits><portHit>0</portHit><starboardHit>0</starboardHit></searchLightHits><damageControlRatingHits>0</damageControlRatingHits><damageEffectRecords /><shipboardFireStatus /><objectId>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</objectId><parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId></ShipLog><ShipLog><shipClassObjectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</shipClassObjectId><name><english>Kuang Yi</english><japanese>広乙</japanese><chineseSimplified>广乙</chineseSimplified></name><captain><english>Lin Kuohsiang</english><japanese>林国祥</japanese><chineseSimplified>林国祥</chineseSimplified></captain><crewRating>0</crewRating><damagePoint>0</damagePoint><position><LatDeg>37.1285553</LatDeg><LonDeg>126.486893</LonDeg></position><speedKnots>10</speedKnots><headingDeg>290</headingDeg><mapState>Deployed</mapState><batteryStatus><BatteryStatus><ammunition><ArmorPiercing>120</ArmorPiercing><semiArmorPiercing>0</semiArmorPiercing><common>120</common><highExplosive>0</highExplosive></ammunition><mountStatus><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>ee80c4e5-aaa8-4e29-bf3d-e50f098a9a15</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>879c8431-3934-455f-b9ab-9d6fc59048e8</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>c672a10e-293b-49d5-a409-84117b478e94</objectId></MountStatusRecord></mountStatus><fireControlHits>0</fireControlHits><objectId>ac0cfd66-4c2c-4c29-81db-e774d352eb86</objectId></BatteryStatus></batteryStatus><torpedoSectorStatus><ammunition>6</ammunition><mountStatus><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>03b2f9fb-e8c5-477e-9a8a-b4afe3b69aca</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>f01bb3f8-a139-47a2-8935-7b80fa43f4d5</objectId></MountStatusRecord><MountStatusRecord><status>Operational</status><mountsDestroyed>0</mountsDestroyed><objectId>f0a10b0d-bb8b-4660-88d1-b2353c6f851c</objectId></MountStatusRecord></mountStatus></torpedoSectorStatus><rapidFiringStatus><RapidFiringStatus><portMountHits>0</portMountHits><starboardMountHits>0</starboardMountHits><fireControlHits>0</fireControlHits><objectId>2b374694-14ac-420c-95ad-0226282a2361</objectId></RapidFiringStatus></rapidFiringStatus><dynamicStatus><speedKnotsDirectModifier>0</speedKnotsDirectModifier><engineRoomHits>0</engineRoomHits><propulsionShaftHits>0</propulsionShaftHits><boilerRoomHits>0</boilerRoomHits></dynamicStatus><searchLightHits><portHit>0</portHit><starboardHit>0</starboardHit></searchLightHits><damageControlRatingHits>0</damageControlRatingHits><damageEffectRecords /><shipboardFireStatus /><objectId>93b88a00-313d-4df0-8cfb-2182851c96f7</objectId><parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId></ShipLog></ArrayOfShipLog>
+<?xml version="1.0" encoding="utf-16"?>
+<ArrayOfShipLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <ShipLog>
+  <shipClassObjectId>fcf5997b-fe22-49ad-9e5b-70080d2221a9</shipClassObjectId>
+  <name>
+   <english>Yoshino</english>
+   <japanese>吉野</japanese>
+   <chineseSimplified>吉野</chineseSimplified>
+  </name>
+  <captain>
+   <english>Kawabara</english>
+   <japanese>河原要一大佐</japanese>
+   <chineseSimplified>河原要一大佐</chineseSimplified>
+  </captain>
+  <crewRating>1</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>37.06988</LatDeg>
+   <LonDeg>126.288589</LonDeg>
+  </position>
+  <speedKnots>12</speedKnots>
+  <headingDeg>45</headingDeg>
+  <mapState>Deployed</mapState>
+  <batteryStatus>
+   <BatteryStatus>
+    <ammunition>
+     <ArmorPiercing>300</ArmorPiercing>
+     <semiArmorPiercing>0</semiArmorPiercing>
+     <common>300</common>
+     <highExplosive>0</highExplosive>
+    </ammunition>
+    <mountStatus>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>2582844d-d6fa-4f43-8b94-2e315b782a0d</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>12584f1d-5a81-4e8f-ac27-4105a760a5d0</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>0c0ab54d-59b5-430f-a021-ad6639eb464c</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>e40840b4-bdfd-4195-be4f-daa3a6bb3aec</objectId>
+     </MountStatusRecord>
+    </mountStatus>
+    <fireControlHits>0</fireControlHits>
+    <objectId>77c99db6-5cec-405f-a908-e4e74629bddb</objectId>
+   </BatteryStatus>
+   <BatteryStatus>
+    <ammunition>
+     <ArmorPiercing>720</ArmorPiercing>
+     <semiArmorPiercing>0</semiArmorPiercing>
+     <common>720</common>
+     <highExplosive>0</highExplosive>
+    </ammunition>
+    <mountStatus>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>cf6d9b81-d265-489a-8444-5df5a2b02a9e</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>0a020bda-d51c-453a-be96-c034be4f8a4c</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>44de33db-47fa-40a9-9128-b50d20e0c5fd</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>108c711d-1c24-4404-b05b-5352abea5fb9</objectId>
+     </MountStatusRecord>
+    </mountStatus>
+    <fireControlHits>0</fireControlHits>
+    <objectId>c1359630-f2eb-4783-8c50-632f0c8934cc</objectId>
+   </BatteryStatus>
+  </batteryStatus>
+  <torpedoSectorStatus>
+   <ammunition>12</ammunition>
+   <mountStatus>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>b4bd189b-f5cf-4460-96a3-e7df7357d530</objectId>
+    </MountStatusRecord>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>62795ceb-7f72-4fe2-b9b0-7359be5e005c</objectId>
+    </MountStatusRecord>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>53dc2a4e-81b1-4973-9413-089b26f3b2bd</objectId>
+    </MountStatusRecord>
+   </mountStatus>
+  </torpedoSectorStatus>
+  <rapidFiringStatus>
+   <RapidFiringStatus>
+    <portMountHits>0</portMountHits>
+    <starboardMountHits>0</starboardMountHits>
+    <fireControlHits>0</fireControlHits>
+    <objectId>18afa0f0-e6d1-4827-a8e3-b55a6ecacb86</objectId>
+   </RapidFiringStatus>
+  </rapidFiringStatus>
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <objectId>cf6393ee-7cbe-4a15-93ce-eb53bc18ada8</objectId>
+  <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>6197af50-741d-4f54-881a-f0eeec00996f</shipClassObjectId>
+  <name>
+   <english>Akitsushima</english>
+   <japanese>秋津洲</japanese>
+   <chineseSimplified>秋津洲</chineseSimplified>
+  </name>
+  <captain>
+   <english>Uemura</english>
+   <japanese>上村彦之丞少佐</japanese>
+   <chineseSimplified>上村彦之丞少佐</chineseSimplified>
+  </captain>
+  <crewRating>1</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>37.05812</LatDeg>
+   <LonDeg>126.276741</LonDeg>
+  </position>
+  <speedKnots>12</speedKnots>
+  <headingDeg>45</headingDeg>
+  <mapState>Deployed</mapState>
+  <batteryStatus>
+   <BatteryStatus>
+    <ammunition>
+     <ArmorPiercing>280</ArmorPiercing>
+     <semiArmorPiercing>0</semiArmorPiercing>
+     <common>280</common>
+     <highExplosive>0</highExplosive>
+    </ammunition>
+    <mountStatus>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>f2fc247a-3db6-40da-9878-66aebc8f082b</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>c2c9ea9d-ad0d-409a-bb33-b6123b60cb0e</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>3b66b335-8152-4d31-9bc2-8b4d336fff29</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>c872b2b0-d530-444b-b2ba-eb9db866bcad</objectId>
+     </MountStatusRecord>
+    </mountStatus>
+    <fireControlHits>0</fireControlHits>
+    <objectId>3e2f9fbe-e0d4-48c7-8b7b-1ca436083d36</objectId>
+   </BatteryStatus>
+   <BatteryStatus>
+    <ammunition>
+     <ArmorPiercing>480</ArmorPiercing>
+     <semiArmorPiercing>0</semiArmorPiercing>
+     <common>480</common>
+     <highExplosive>0</highExplosive>
+    </ammunition>
+    <mountStatus>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>c336b99d-c5f2-42c3-b476-431e14f042e4</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>530b3f7f-c44a-45b2-83a2-feab8cda9137</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>a63bff73-7e55-4575-bc34-6ff4cf695178</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>97383d4a-fb1f-4915-a0e1-eb918bbb1966</objectId>
+     </MountStatusRecord>
+    </mountStatus>
+    <fireControlHits>0</fireControlHits>
+    <objectId>94cb9d02-b052-477d-822c-8003bb55e985</objectId>
+   </BatteryStatus>
+  </batteryStatus>
+  <torpedoSectorStatus>
+   <ammunition>8</ammunition>
+   <mountStatus>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>7c1355e1-1908-4c2f-8efc-38619995cf69</objectId>
+    </MountStatusRecord>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>3c5f0333-d164-40ca-b46c-efbb608a5c29</objectId>
+    </MountStatusRecord>
+   </mountStatus>
+  </torpedoSectorStatus>
+  <rapidFiringStatus>
+   <RapidFiringStatus>
+    <portMountHits>0</portMountHits>
+    <starboardMountHits>0</starboardMountHits>
+    <fireControlHits>0</fireControlHits>
+    <objectId>c61571fd-99d5-4d99-bea3-6dd7ba3b9710</objectId>
+   </RapidFiringStatus>
+  </rapidFiringStatus>
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <objectId>01092b52-c42d-4f06-9f4e-57762a39aeba</objectId>
+  <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId>
+  <name>
+   <english>Naniwa</english>
+   <japanese>浪速</japanese>
+   <chineseSimplified>浪速</chineseSimplified>
+  </name>
+  <captain>
+   <english>Togo Heihachiro</english>
+   <japanese>東郷平八郎大佐</japanese>
+   <chineseSimplified>东乡平八郎大佐</chineseSimplified>
+  </captain>
+  <crewRating>1</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>37.0488358</LatDeg>
+   <LonDeg>126.2648</LonDeg>
+  </position>
+  <speedKnots>12</speedKnots>
+  <headingDeg>45</headingDeg>
+  <mapState>Deployed</mapState>
+  <batteryStatus>
+   <BatteryStatus>
+    <ammunition>
+     <ArmorPiercing>100</ArmorPiercing>
+     <semiArmorPiercing>0</semiArmorPiercing>
+     <common>100</common>
+     <highExplosive>0</highExplosive>
+    </ammunition>
+    <mountStatus>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>9d8a5ae0-5bf0-4d55-9ed4-1311c2a24142</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>09871e70-cb92-4832-bcc1-761aeafd014b</objectId>
+     </MountStatusRecord>
+    </mountStatus>
+    <fireControlHits>0</fireControlHits>
+    <objectId>6498c64f-26b2-47d6-b609-de82822c9fc9</objectId>
+   </BatteryStatus>
+   <BatteryStatus>
+    <ammunition>
+     <ArmorPiercing>225</ArmorPiercing>
+     <semiArmorPiercing>0</semiArmorPiercing>
+     <common>225</common>
+     <highExplosive>0</highExplosive>
+    </ammunition>
+    <mountStatus>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>549dc1a9-b909-4458-86c1-eff6de8da60c</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>df3442f8-49c7-4166-ae83-d72af48c3e3a</objectId>
+     </MountStatusRecord>
+    </mountStatus>
+    <fireControlHits>0</fireControlHits>
+    <objectId>2d30d5db-d8bf-4f38-916f-3c388bd45663</objectId>
+   </BatteryStatus>
+  </batteryStatus>
+  <torpedoSectorStatus>
+   <ammunition>8</ammunition>
+   <mountStatus>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>38ee2489-c9c1-4938-9c48-cd11038de296</objectId>
+    </MountStatusRecord>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>b1a2f4ed-3027-49a4-84da-46dc851b47c4</objectId>
+    </MountStatusRecord>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>ffa67923-eedf-4116-a227-f2094047050e</objectId>
+    </MountStatusRecord>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>0903a638-7893-4bb4-8e53-84cac77584b3</objectId>
+    </MountStatusRecord>
+   </mountStatus>
+  </torpedoSectorStatus>
+  <rapidFiringStatus>
+   <RapidFiringStatus>
+    <portMountHits>0</portMountHits>
+    <starboardMountHits>0</starboardMountHits>
+    <fireControlHits>0</fireControlHits>
+    <objectId>d27c22bd-022c-4937-96ca-9e9a65c7742e</objectId>
+   </RapidFiringStatus>
+  </rapidFiringStatus>
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <objectId>ea56b877-9b5e-48bf-840d-3e8508af98ca</objectId>
+  <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>84de785d-a41c-4993-973a-d167876f343b</shipClassObjectId>
+  <name>
+   <english>Chi Yuan</english>
+   <japanese>済遠</japanese>
+   <chineseSimplified>济远</chineseSimplified>
+  </name>
+  <captain>
+   <english>Fang Boqian</english>
+   <japanese>方伯謙</japanese>
+   <chineseSimplified>方伯谦</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>37.13317</LatDeg>
+   <LonDeg>126.473793</LonDeg>
+  </position>
+  <speedKnots>10</speedKnots>
+  <headingDeg>290</headingDeg>
+  <mapState>Deployed</mapState>
+  <batteryStatus>
+   <BatteryStatus>
+    <ammunition>
+     <ArmorPiercing>60</ArmorPiercing>
+     <semiArmorPiercing>0</semiArmorPiercing>
+     <common>60</common>
+     <highExplosive>0</highExplosive>
+    </ammunition>
+    <mountStatus>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>f82a6e49-5c99-4a6d-8740-c8129e70a0cf</objectId>
+     </MountStatusRecord>
+    </mountStatus>
+    <fireControlHits>0</fireControlHits>
+    <objectId>b43d875a-fe28-4b01-b4e6-e2b9c4da799f</objectId>
+   </BatteryStatus>
+   <BatteryStatus>
+    <ammunition>
+     <ArmorPiercing>35</ArmorPiercing>
+     <semiArmorPiercing>0</semiArmorPiercing>
+     <common>35</common>
+     <highExplosive>0</highExplosive>
+    </ammunition>
+    <mountStatus>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>8c5a3f00-2cad-4e0a-a342-e1e24b05f78f</objectId>
+     </MountStatusRecord>
+    </mountStatus>
+    <fireControlHits>0</fireControlHits>
+    <objectId>2ef3acc8-20f2-415e-a3d7-3d28b24d21d5</objectId>
+   </BatteryStatus>
+  </batteryStatus>
+  <torpedoSectorStatus>
+   <ammunition>6</ammunition>
+   <mountStatus>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>bf759935-d6f0-4152-a8dd-973857efa0c3</objectId>
+    </MountStatusRecord>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>94178e87-3876-4b4c-b890-8ebca3df9e1c</objectId>
+    </MountStatusRecord>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>8d742f23-f3bf-4300-ac62-b3d5f20f3baf</objectId>
+    </MountStatusRecord>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>87f919bb-af25-438d-b5e6-81485caf551f</objectId>
+    </MountStatusRecord>
+   </mountStatus>
+  </torpedoSectorStatus>
+  <rapidFiringStatus>
+   <RapidFiringStatus>
+    <portMountHits>0</portMountHits>
+    <starboardMountHits>0</starboardMountHits>
+    <fireControlHits>0</fireControlHits>
+    <objectId>4ef7243c-c1e8-47d5-b3f6-52f0a039d187</objectId>
+   </RapidFiringStatus>
+  </rapidFiringStatus>
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <objectId>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</objectId>
+  <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</shipClassObjectId>
+  <name>
+   <english>Kuang Yi</english>
+   <japanese>広乙</japanese>
+   <chineseSimplified>广乙</chineseSimplified>
+  </name>
+  <captain>
+   <english>Lin Kuohsiang</english>
+   <japanese>林国祥</japanese>
+   <chineseSimplified>林国祥</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>37.1285553</LatDeg>
+   <LonDeg>126.486893</LonDeg>
+  </position>
+  <speedKnots>10</speedKnots>
+  <headingDeg>290</headingDeg>
+  <mapState>Deployed</mapState>
+  <batteryStatus>
+   <BatteryStatus>
+    <ammunition>
+     <ArmorPiercing>120</ArmorPiercing>
+     <semiArmorPiercing>0</semiArmorPiercing>
+     <common>120</common>
+     <highExplosive>0</highExplosive>
+    </ammunition>
+    <mountStatus>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>ee80c4e5-aaa8-4e29-bf3d-e50f098a9a15</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>879c8431-3934-455f-b9ab-9d6fc59048e8</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>c672a10e-293b-49d5-a409-84117b478e94</objectId>
+     </MountStatusRecord>
+    </mountStatus>
+    <fireControlHits>0</fireControlHits>
+    <objectId>ac0cfd66-4c2c-4c29-81db-e774d352eb86</objectId>
+   </BatteryStatus>
+  </batteryStatus>
+  <torpedoSectorStatus>
+   <ammunition>6</ammunition>
+   <mountStatus>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>03b2f9fb-e8c5-477e-9a8a-b4afe3b69aca</objectId>
+    </MountStatusRecord>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>f01bb3f8-a139-47a2-8935-7b80fa43f4d5</objectId>
+    </MountStatusRecord>
+    <MountStatusRecord>
+     <status>Operational</status>
+     <mountsDestroyed>0</mountsDestroyed>
+     <objectId>f0a10b0d-bb8b-4660-88d1-b2353c6f851c</objectId>
+    </MountStatusRecord>
+   </mountStatus>
+  </torpedoSectorStatus>
+  <rapidFiringStatus>
+   <RapidFiringStatus>
+    <portMountHits>0</portMountHits>
+    <starboardMountHits>0</starboardMountHits>
+    <fireControlHits>0</fireControlHits>
+    <objectId>2b374694-14ac-420c-95ad-0226282a2361</objectId>
+   </RapidFiringStatus>
+  </rapidFiringStatus>
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <objectId>93b88a00-313d-4df0-8cfb-2182851c96f7</objectId>
+  <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</shipClassObjectId>
+  <name>
+   <english>Chen Yuan</english>
+   <japanese>鎮遠</japanese>
+   <chineseSimplified>镇远</chineseSimplified>
+  </name>
+  <captain>
+   <english>Lin Taizen</english>
+   <japanese>林泰曽</japanese>
+   <chineseSimplified>林泰曾</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>11/28/1882</launchedDate>
+  <completedDate>00/00/1885</completedDate>
+  <fateDesc>
+   <english>Captured 02/06/1895</english>
+  </fateDesc>
+  <objectId>b5dfd87e-cb47-4a4b-abba-affa96e356c4</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</shipClassObjectId>
+  <name>
+   <english>Ting Yuen</english>
+   <japanese>定遠</japanese>
+   <chineseSimplified>定远</chineseSimplified>
+  </name>
+  <captain>
+   <english>Liu Buchan</english>
+   <japanese>劉歩蟾</japanese>
+   <chineseSimplified>刘步蟾</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>12/28/1881</launchedDate>
+  <completedDate>00/00/1885</completedDate>
+  <fateDesc>
+   <english>Sunk 02/06/1895</english>
+  </fateDesc>
+  <objectId>c8a76edb-7330-4ef4-a115-2f468df23494</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</shipClassObjectId>
+  <name>
+   <english>Yang Wei</english>
+   <japanese>揚威</japanese>
+   <chineseSimplified>扬威</chineseSimplified>
+  </name>
+  <captain>
+   <english>Lin lvzhong</english>
+   <japanese>林履中</japanese>
+   <chineseSimplified>林履中</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>01/29/1881</launchedDate>
+  <completedDate>07/14/1881</completedDate>
+  <fateDesc>
+   <english>Sunk 09/17/1894</english>
+  </fateDesc>
+  <objectId>59969f6c-ed18-4e48-84d2-0b43c3e8ac74</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</shipClassObjectId>
+  <name>
+   <english>Chao Yung</english>
+   <japanese>超勇</japanese>
+   <chineseSimplified>超勇</chineseSimplified>
+  </name>
+  <captain>
+   <english>Huang Jianxun</english>
+   <japanese>黄建勲</japanese>
+   <chineseSimplified>黄建勋</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>11/04/1880</launchedDate>
+  <completedDate>07/15/1881</completedDate>
+  <fateDesc>
+   <english>Sunk 09/17/1894</english>
+  </fateDesc>
+  <objectId>6a20093b-9f39-47fd-972f-49eaaefaf1d5</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>0208979d-6075-4877-98ef-fa0adc0df9ed</shipClassObjectId>
+  <name>
+   <english>Ching Yuan</english>
+   <japanese>靖遠</japanese>
+   <chineseSimplified>靖远</chineseSimplified>
+  </name>
+  <captain>
+   <english>Ye Zugui</english>
+   <japanese>葉祖珪</japanese>
+   <chineseSimplified>叶祖珪</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>12/14/1886</launchedDate>
+  <completedDate>07/09/1887</completedDate>
+  <fateDesc>
+   <english>Sunk 02/09/1895</english>
+  </fateDesc>
+  <objectId>370f72b3-2243-44ff-ab42-e08d3c6d273c</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>0208979d-6075-4877-98ef-fa0adc0df9ed</shipClassObjectId>
+  <name>
+   <english>Chih Yuan</english>
+   <japanese>致遠</japanese>
+   <chineseSimplified>致远</chineseSimplified>
+  </name>
+  <captain>
+   <english>Deng Shichang</english>
+   <japanese>鄧世昌</japanese>
+   <chineseSimplified>邓世昌</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>09/29/1886</launchedDate>
+  <completedDate>07/29/1887</completedDate>
+  <fateDesc>
+   <english>Sunk 09/17/1894</english>
+  </fateDesc>
+  <objectId>a55bdec2-a47a-4d2b-af3c-9588a875e58c</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>7cfe4fb1-5a4a-486f-acd8-27301ef8af77</shipClassObjectId>
+  <name>
+   <english>King Yuan</english>
+   <japanese>経遠</japanese>
+   <chineseSimplified>经远</chineseSimplified>
+  </name>
+  <captain>
+   <english>Ling Yongshen</english>
+   <japanese>林永升</japanese>
+   <chineseSimplified>林永升</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>01/03/1887</launchedDate>
+  <completedDate>00/00/1889</completedDate>
+  <fateDesc>
+   <english>Sunk 09/17/1894</english>
+  </fateDesc>
+  <objectId>3ecfd394-30a5-45af-95be-f83b75d246b2</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>7cfe4fb1-5a4a-486f-acd8-27301ef8af77</shipClassObjectId>
+  <name>
+   <english>Lai Yuan</english>
+   <japanese>来遠</japanese>
+   <chineseSimplified>来远</chineseSimplified>
+  </name>
+  <captain>
+   <english>Qiu Baoren</english>
+   <japanese>丘宝仁</japanese>
+   <chineseSimplified>丘宝仁</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>03/25/1887</launchedDate>
+  <completedDate>00/00/1889</completedDate>
+  <fateDesc>
+   <english>Sunk 02/05/1895</english>
+  </fateDesc>
+  <objectId>00fb2b34-3d37-444b-9041-e8540c9304d1</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>c9332796-cb5f-4d0c-a0e9-b05bc5c05c56</shipClassObjectId>
+  <name>
+   <english>Ping Yuen</english>
+   <japanese>平遠</japanese>
+   <chineseSimplified>平远</chineseSimplified>
+  </name>
+  <captain>
+   <english>Li He</english>
+   <japanese>李和</japanese>
+   <chineseSimplified>李和</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>06/00/1888</launchedDate>
+  <completedDate>04/00/1889</completedDate>
+  <fateDesc>
+   <english>Captured 02/12/1895</english>
+  </fateDesc>
+  <objectId>9ad21ac1-2365-4f33-bfa9-fee5f27b965a</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>8cb2764f-61b3-4a5d-b992-1f795e2887c6</shipClassObjectId>
+  <name>
+   <english>Kuang Chia</english>
+   <japanese>広甲</japanese>
+   <chineseSimplified>广甲</chineseSimplified>
+  </name>
+  <captain>
+   <english>Wu Jingrong</english>
+   <japanese>呉敬栄</japanese>
+   <chineseSimplified>吴敬荣</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>00/00/1887</launchedDate>
+  <completedDate>05/00/1888</completedDate>
+  <fateDesc>
+   <english>Sunk 09/17/1894</english>
+  </fateDesc>
+  <objectId>61f04aed-26e0-4495-bd04-344f5d223de1</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>0d9558bb-88c1-4021-8a3a-209d98a54419</shipClassObjectId>
+  <name>
+   <english>Fuso</english>
+   <japanese>扶桑</japanese>
+   <chineseSimplified>扶桑</chineseSimplified>
+  </name>
+  <captain>
+   <english>Arai</english>
+   <japanese>新井有貫大佐</japanese>
+   <chineseSimplified>新井有贯</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>04/14/1877</launchedDate>
+  <completedDate>01/00/1878</completedDate>
+  <fateDesc>
+   <english>Scrapped 1919</english>
+  </fateDesc>
+  <objectId>4d486d3e-0643-4983-8641-a33434c2a4c5</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</shipClassObjectId>
+  <name>
+   <english>Hashidate</english>
+   <japanese>橋立</japanese>
+   <chineseSimplified>桥立</chineseSimplified>
+  </name>
+  <captain>
+   <english>Hidaka Sōnojō</english>
+   <japanese>日高壮之丞大佐</japanese>
+   <chineseSimplified>日高壮之丞</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>03/24/1891</launchedDate>
+  <completedDate>06/00/1894</completedDate>
+  <fateDesc>
+   <english>Lost 04/30/1906</english>
+  </fateDesc>
+  <objectId>10ae7cc2-8728-40b6-9d4b-4f06087918c6</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</shipClassObjectId>
+  <name>
+   <english>Itsukushima</english>
+   <japanese>厳島</japanese>
+   <chineseSimplified>严岛</chineseSimplified>
+  </name>
+  <captain>
+   <english>Arima Shin'ichi</english>
+   <japanese>横尾道昱大佐</japanese>
+   <chineseSimplified>横尾道昱</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>07/11/1889</launchedDate>
+  <completedDate>08/00/1891</completedDate>
+  <fateDesc>
+   <english>Scrapped 1922</english>
+   <japanese />
+  </fateDesc>
+  <objectId>1180b828-a3da-4927-ae6a-ea21c6c5c1be</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>a333035a-806e-4246-b57f-157148f73332</shipClassObjectId>
+  <name>
+   <english>Hiei</english>
+   <japanese>比叡</japanese>
+   <chineseSimplified>比睿</chineseSimplified>
+  </name>
+  <captain>
+   <english>Sakurai Kikunojō</english>
+   <japanese>桜井規矩之左右少佐</japanese>
+   <chineseSimplified>樱井规矩之左右</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>06/12/1877</launchedDate>
+  <completedDate>03/00/1878</completedDate>
+  <fateDesc>
+   <english>Scrapped 1911</english>
+  </fateDesc>
+  <objectId>3e705d71-1239-4963-8946-2aa151d5e57f</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>5d05cc6f-6559-4d69-b29d-2eeab1139643</shipClassObjectId>
+  <name>
+   <english>Matsushima</english>
+   <japanese>松島</japanese>
+   <chineseSimplified>松岛</chineseSimplified>
+  </name>
+  <captain>
+   <english>Omoto Tomomichi</english>
+   <japanese>尾本知道大佐</japanese>
+   <chineseSimplified>梶本知道</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>01/22/1890</launchedDate>
+  <completedDate>03/00/1891</completedDate>
+  <fateDesc>
+   <english>Scrapped 1927</english>
+  </fateDesc>
+  <objectId>e1f10636-ab79-4b42-8316-c3a533f31512</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId>
+  <name>
+   <english>Takachiho</english>
+   <japanese>高千穂</japanese>
+   <chineseSimplified>高千穗</chineseSimplified>
+  </name>
+  <captain>
+   <english>Nomura Tadashi</english>
+   <japanese>野村貞大佐</japanese>
+   <chineseSimplified>野村贞</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>05/16/1885</launchedDate>
+  <completedDate>03/26/1886</completedDate>
+  <fateDesc>
+   <english>Lost 10/17/1914</english>
+  </fateDesc>
+  <objectId>25623a6b-a217-4e49-baca-6ea3b7c782a6</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>93917b3f-9a77-4307-8ed2-945de9b551c9</shipClassObjectId>
+  <name>
+   <english>Chiyoda</english>
+   <japanese>千代田</japanese>
+   <chineseSimplified>千代田</chineseSimplified>
+  </name>
+  <captain>
+   <english>Uchida Masatoshi</english>
+   <japanese>内田正敏大佐</japanese>
+   <chineseSimplified>内田正敏</chineseSimplified>
+  </captain>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <launchedDate>06/03/1890</launchedDate>
+  <completedDate>12/00/1890</completedDate>
+  <fateDesc>
+   <english>Scraapped 1927</english>
+  </fateDesc>
+  <objectId>8c1e5af6-3f33-4f97-8f94-5d8a63785c28</objectId>
+ </ShipLog>
+</ArrayOfShipLog>

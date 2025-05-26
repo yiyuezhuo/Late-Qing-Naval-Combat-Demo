@@ -201,7 +201,7 @@ namespace NavalCombatCore
         {
             using (var textWriter = new StringWriter())
             {
-                using (var xmlWriter = XmlWriter.Create(textWriter))
+                using (XmlWriter xmlWriter = XmlWriter.Create(textWriter))
                 {
                     serializer.Serialize(xmlWriter, this);
                     string serializedXml = textWriter.ToString();

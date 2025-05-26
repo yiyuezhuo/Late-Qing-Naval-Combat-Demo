@@ -17,7 +17,7 @@ public class FullState
     {
         using (var textWriter = new StringWriter())
         {
-            using (var xmlWriter = XmlWriter.Create(textWriter))
+            using (XmlWriter xmlWriter = XmlWriter.Create(textWriter))
             {
                 fullStateSerializer.Serialize(xmlWriter, this);
                 string serializedXml = textWriter.ToString();

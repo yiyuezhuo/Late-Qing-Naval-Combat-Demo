@@ -6,6 +6,7 @@ namespace NavalCombatCore
     public enum GroupType
     {
         General,
+        Force,
         Fleet,
         Squadron,
         Flotilla, // For DD

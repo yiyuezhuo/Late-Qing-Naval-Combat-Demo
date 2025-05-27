@@ -1855,7 +1855,7 @@
    <turretVertical effectInch="1" actualInch="1.5" />
    <superStructureVertical effectInch="1.3" actualInch="1.9" />
   </armorRating>
-  <portraitUrl>https://www.the-blueprints.com/blueprints/ships/cruisers/65846/view/china_-_chih_yuan_protected_cruiser/</portraitUrl>
+  <portraitUrl>https://www.the-blueprints.com/blueprints/ships/ships-china/90585/view/china_-_rocn_jiyuan_protected_cruiser_1895/</portraitUrl>
   <objectId>84de785d-a41c-4993-973a-d167876f343b</objectId>
  </ShipClass>
  <ShipClass>
@@ -2167,6 +2167,7 @@
    <turretVertical effectInch="0" actualInch="0" />
    <superStructureVertical effectInch="0.1" actualInch="0.2" />
   </armorRating>
+  <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
   <objectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</objectId>
  </ShipClass>
  <ShipClass>
@@ -2192,7 +2193,7 @@
   </builderDesc>
   <engineDesc>
    <english>2-shaft HCR</english>
-   <japanese>	水平型2段膨張式3気筒レシプロ機関×2基</japanese>
+   <japanese>水平型2段膨張式3気筒レシプロ機関×2基</japanese>
    <chineseSimplified>2座复合平卧式蒸汽机，双轴推进</chineseSimplified>
    <chineseTraditional>兩台康邦卧式三氣缸往復式蒸汽機，雙螺旋槳推進</chineseTraditional>
   </engineDesc>
@@ -2996,7 +2997,7 @@
    <turretVertical effectInch="0.8" actualInch="1" />
    <superStructureVertical effectInch="0.1" actualInch="0.1" />
   </armorRating>
-  <portraitUrl>https://zh.wikipedia.org/wiki/File:Chaoyong2.jpg</portraitUrl>
+  <portraitUrl>https://www.tynebuiltships.co.uk/C-Ships/chaoyung1881.html</portraitUrl>
   <objectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</objectId>
  </ShipClass>
  <ShipClass>
@@ -3446,6 +3447,7 @@
    <turretVertical effectInch="1.5" actualInch="2" />
    <superStructureVertical effectInch="0.3" actualInch="0.4" />
   </armorRating>
+  <portraitUrl>https://forum.warthunder.com/t/qing-dynasty-beiyang-fleet-zhiyuan-chih-yuen-protected-cruiser/17129</portraitUrl>
   <objectId>0208979d-6075-4877-98ef-fa0adc0df9ed</objectId>
  </ShipClass>
  <ShipClass>
@@ -3839,6 +3841,7 @@
    <turretVertical effectInch="1" actualInch="1.5" />
    <superStructureVertical effectInch="2.3" actualInch="3.4" />
   </armorRating>
+  <portraitUrl>https://www.the-blueprints.com/blueprints/ships/ships-china/49091/view/china_-_king_yuan_protected_cruiser_1884/</portraitUrl>
   <objectId>7cfe4fb1-5a4a-486f-acd8-27301ef8af77</objectId>
  </ShipClass>
  <ShipClass>
@@ -4237,6 +4240,7 @@
    <turretVertical effectInch="1.1" actualInch="1.5" />
    <superStructureVertical effectInch="2.5" actualInch="3.4" />
   </armorRating>
+  <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
   <objectId>c9332796-cb5f-4d0c-a0e9-b05bc5c05c56</objectId>
  </ShipClass>
  <ShipClass>
@@ -4608,6 +4612,7 @@
    <turretVertical effectInch="0" actualInch="0" />
    <superStructureVertical effectInch="0" actualInch="0" />
   </armorRating>
+  <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
   <objectId>8cb2764f-61b3-4a5d-b992-1f795e2887c6</objectId>
  </ShipClass>
  <ShipClass>
@@ -4881,6 +4886,7 @@
    <turretVertical effectInch="6" actualInch="8" />
    <superStructureVertical effectInch="1.6" actualInch="2.2" />
   </armorRating>
+  <portraitUrl>https://combrig-models.com/index.php/1700/65-japanese-navy-1860-1918/518-fuso1900</portraitUrl>
   <objectId>0d9558bb-88c1-4021-8a3a-209d98a54419</objectId>
  </ShipClass>
  <ShipClass>
@@ -5665,6 +5671,7 @@
    <english>Matsushima</english>
    <japanese>松島</japanese>
    <chineseSimplified>松岛</chineseSimplified>
+   <chineseTraditional />
   </name>
   <type>ArmoredCruiser</type>
   <country>Japan</country>
@@ -6146,6 +6153,7 @@
    <turretVertical effectInch="9.4" actualInch="12" />
    <superStructureVertical effectInch="1.1" actualInch="1.4" />
   </armorRating>
+  <portraitUrl>https://naval-encyclopedia.com/industrial-era/1890-fleets/japan/matsushima-class_cruiser.php</portraitUrl>
   <objectId>5d05cc6f-6559-4d69-b29d-2eeab1139643</objectId>
  </ShipClass>
  <ShipClass>

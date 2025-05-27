@@ -8,9 +8,10 @@
    <chineseSimplified>吉野</chineseSimplified>
   </name>
   <captain>
-   <english>Kawabara</english>
+   <english>Kawara Yōichi</english>
    <japanese>河原要一大佐</japanese>
    <chineseSimplified>河原要一大佐</chineseSimplified>
+   <chineseTraditional />
   </captain>
   <crewRating>1</crewRating>
   <damagePoint>0</damagePoint>
@@ -131,6 +132,7 @@
   <fateDesc>
    <english>unnamed</english>
   </fateDesc>
+  <captainPortraitCode>Kawahara_Yoichi</captainPortraitCode>
   <objectId>cf6393ee-7cbe-4a15-93ce-eb53bc18ada8</objectId>
   <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
  </ShipLog>
@@ -142,7 +144,7 @@
    <chineseSimplified>秋津洲</chineseSimplified>
   </name>
   <captain>
-   <english>Uemura</english>
+   <english>Kamimura Hikonojō</english>
    <japanese>上村彦之丞少佐</japanese>
    <chineseSimplified>上村彦之丞少佐</chineseSimplified>
   </captain>
@@ -260,6 +262,7 @@
   <fateDesc>
    <english>unnamed</english>
   </fateDesc>
+  <captainPortraitCode>Kamimura_Hikonojo</captainPortraitCode>
   <objectId>01092b52-c42d-4f06-9f4e-57762a39aeba</objectId>
   <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
  </ShipLog>
@@ -379,6 +382,7 @@
   <fateDesc>
    <english>unnamed</english>
   </fateDesc>
+  <captainPortraitCode>Tōgō_Heihachirō</captainPortraitCode>
   <objectId>ea56b877-9b5e-48bf-840d-3e8508af98ca</objectId>
   <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
  </ShipLog>
@@ -488,6 +492,7 @@
   <fateDesc>
    <english>unnamed</english>
   </fateDesc>
+  <captainPortraitCode>Fang_Boqian</captainPortraitCode>
   <objectId>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</objectId>
   <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
  </ShipLog>
@@ -585,6 +590,7 @@
   <fateDesc>
    <english>unnamed</english>
   </fateDesc>
+  <captainPortraitCode>Lin_Guoxiang</captainPortraitCode>
   <objectId>93b88a00-313d-4df0-8cfb-2182851c96f7</objectId>
   <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
  </ShipLog>
@@ -701,6 +707,7 @@
   <fateDesc>
    <english>Captured 02/06/1895</english>
   </fateDesc>
+  <captainPortraitCode>Lin_Taizeng</captainPortraitCode>
   <objectId>b5dfd87e-cb47-4a4b-abba-affa96e356c4</objectId>
  </ShipLog>
  <ShipLog>
@@ -816,6 +823,7 @@
   <fateDesc>
    <english>Sunk 02/06/1895</english>
   </fateDesc>
+  <captainPortraitCode>Liu_buchan</captainPortraitCode>
   <objectId>c8a76edb-7330-4ef4-a115-2f468df23494</objectId>
  </ShipLog>
  <ShipLog>
@@ -925,6 +933,7 @@
   <fateDesc>
    <english>Sunk 09/17/1894</english>
   </fateDesc>
+  <captainPortraitCode>Lin_lvzhong</captainPortraitCode>
   <objectId>59969f6c-ed18-4e48-84d2-0b43c3e8ac74</objectId>
  </ShipLog>
  <ShipLog>
@@ -1034,6 +1043,7 @@
   <fateDesc>
    <english>Sunk 09/17/1894</english>
   </fateDesc>
+  <captainPortraitCode>Huang_Jianxun</captainPortraitCode>
   <objectId>6a20093b-9f39-47fd-972f-49eaaefaf1d5</objectId>
  </ShipLog>
  <ShipLog>
@@ -1154,6 +1164,7 @@
   <fateDesc>
    <english>Sunk 02/09/1895</english>
   </fateDesc>
+  <captainPortraitCode>Ye_Zugui</captainPortraitCode>
   <objectId>370f72b3-2243-44ff-ab42-e08d3c6d273c</objectId>
  </ShipLog>
  <ShipLog>
@@ -1274,6 +1285,7 @@
   <fateDesc>
    <english>Sunk 09/17/1894</english>
   </fateDesc>
+  <captainPortraitCode>Deng_Shichang</captainPortraitCode>
   <objectId>a55bdec2-a47a-4d2b-af3c-9588a875e58c</objectId>
  </ShipLog>
  <ShipLog>
@@ -1382,6 +1394,7 @@
   <fateDesc>
    <english>Sunk 09/17/1894</english>
   </fateDesc>
+  <captainPortraitCode>Lin_Yongsheng</captainPortraitCode>
   <objectId>3ecfd394-30a5-45af-95be-f83b75d246b2</objectId>
  </ShipLog>
  <ShipLog>
@@ -1490,6 +1503,7 @@
   <fateDesc>
    <english>Sunk 02/05/1895</english>
   </fateDesc>
+  <captainPortraitCode>Qiu_Baoren</captainPortraitCode>
   <objectId>00fb2b34-3d37-444b-9041-e8540c9304d1</objectId>
  </ShipLog>
  <ShipLog>
@@ -1598,6 +1612,7 @@
   <fateDesc>
    <english>Captured 02/12/1895</english>
   </fateDesc>
+  <captainPortraitCode>Li He</captainPortraitCode>
   <objectId>9ad21ac1-2365-4f33-bfa9-fee5f27b965a</objectId>
  </ShipLog>
  <ShipLog>
@@ -1692,6 +1707,7 @@
   <fateDesc>
    <english>Sunk 09/17/1894</english>
   </fateDesc>
+  <captainPortraitCode>Wu_Jingrong</captainPortraitCode>
   <objectId>61f04aed-26e0-4495-bd04-344f5d223de1</objectId>
  </ShipLog>
  <ShipLog>
@@ -1702,7 +1718,7 @@
    <chineseSimplified>扶桑</chineseSimplified>
   </name>
   <captain>
-   <english>Arai</english>
+   <english>Arai Yukan</english>
    <japanese>新井有貫大佐</japanese>
    <chineseSimplified>新井有贯</chineseSimplified>
   </captain>
@@ -1780,6 +1796,7 @@
   <fateDesc>
    <english>Scrapped 1919</english>
   </fateDesc>
+  <captainPortraitCode>Arai_Yukan</captainPortraitCode>
   <objectId>4d486d3e-0643-4983-8641-a33434c2a4c5</objectId>
  </ShipLog>
  <ShipLog>
@@ -1916,6 +1933,7 @@
   <fateDesc>
    <english>Lost 04/30/1906</english>
   </fateDesc>
+  <captainPortraitCode>Sonojo_Hidaka</captainPortraitCode>
   <objectId>10ae7cc2-8728-40b6-9d4b-4f06087918c6</objectId>
  </ShipLog>
  <ShipLog>
@@ -2053,6 +2071,7 @@
    <english>Scrapped 1922</english>
    <japanese />
   </fateDesc>
+  <captainPortraitCode>Arima Shin'ichi</captainPortraitCode>
   <objectId>1180b828-a3da-4927-ae6a-ea21c6c5c1be</objectId>
  </ShipLog>
  <ShipLog>
@@ -2146,6 +2165,7 @@
   <fateDesc>
    <english>Scrapped 1911</english>
   </fateDesc>
+  <captainPortraitCode>Sakurai_kikunosuke</captainPortraitCode>
   <objectId>3e705d71-1239-4963-8946-2aa151d5e57f</objectId>
  </ShipLog>
  <ShipLog>
@@ -2277,6 +2297,7 @@
   <fateDesc>
    <english>Scrapped 1927</english>
   </fateDesc>
+  <captainPortraitCode>omoto</captainPortraitCode>
   <objectId>e1f10636-ab79-4b42-8316-c3a533f31512</objectId>
  </ShipLog>
  <ShipLog>
@@ -2397,6 +2418,7 @@
   <fateDesc>
    <english>Lost 10/17/1914</english>
   </fateDesc>
+  <captainPortraitCode>Nomura_Tadashi</captainPortraitCode>
   <objectId>25623a6b-a217-4e49-baca-6ea3b7c782a6</objectId>
  </ShipLog>
  <ShipLog>
@@ -2520,6 +2542,7 @@
   <fateDesc>
    <english>Scraapped 1927</english>
   </fateDesc>
+  <captainPortraitCode>Uchida_Masatoshi</captainPortraitCode>
   <objectId>8c1e5af6-3f33-4f97-8f94-5d8a63785c28</objectId>
  </ShipLog>
  <ShipLog>
@@ -2618,6 +2641,7 @@
   <fateDesc>
    <english>Captured 02/12/1895</english>
   </fateDesc>
+  <captainPortraitCode>Chen_Biguang</captainPortraitCode>
   <objectId>0cfda6a2-50de-48bf-8aa6-5338375327ef</objectId>
  </ShipLog>
 </ArrayOfShipLog>

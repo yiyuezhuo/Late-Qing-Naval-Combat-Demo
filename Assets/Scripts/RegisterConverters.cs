@@ -105,6 +105,11 @@ public static class RegisteredConverters
         {
             return ResourceManager.GetShipPortrait(code);
         });
+
+        Register("string (Leader Portrait) => StyleBackground", (ref string code) =>
+        {
+            return ResourceManager.GetLeaderPortrait(code);
+        });
     }
 
     // static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)

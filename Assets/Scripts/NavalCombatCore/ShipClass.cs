@@ -348,6 +348,8 @@ namespace NavalCombatCore
         public ArmorRating armorRating = new();
 
         public string portraitUrl;
+        public string portraitCode;
+        public string portraitTopCode;
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {

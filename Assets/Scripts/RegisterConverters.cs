@@ -95,6 +95,16 @@ public static class RegisteredConverters
             // return "[Not Specified SGM]";
             return obj?.GetMemberName() ?? "[Not Specified SGM]";
         });
+
+        Register("Country => StyleBackground", (ref Country country) =>
+        {
+            return ResourceManager.GetFlag(country.ToString());
+        });
+
+        Register("string (Ship Portrait) => StyleBackground", (ref string code) =>
+        {
+            return ResourceManager.GetShipPortrait(code);
+        });
     }
 
     // static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)

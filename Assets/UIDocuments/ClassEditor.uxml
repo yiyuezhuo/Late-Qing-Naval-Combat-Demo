@@ -34,11 +34,18 @@
                                             <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
                                         </Bindings>
                                     </ui:EnumField>
-                                    <ui:EnumField label="Country" value="Center" type="NavalCombatCore.Country, Assembly-CSharp">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="country" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:EnumField>
+                                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                        <ui:EnumField label="Country" value="Center" type="NavalCombatCore.Country, Assembly-CSharp" style="flex-grow: 1;">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="country" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:EnumField>
+                                        <ui:VisualElement style="flex-grow: 0; -unity-background-scale-mode: scale-to-fit; background-image: resource(&apos;Flags/Japan&apos;); width: 50px;">
+                                            <Bindings>
+                                                <ui:DataBinding property="style.backgroundImage" data-source-path="country" binding-mode="ToTarget" source-to-ui-converters="Country =&gt; StyleBackground" />
+                                            </Bindings>
+                                        </ui:VisualElement>
+                                    </ui:VisualElement>
                                     <ui:IntegerField label="Target Size">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="targetSizeModifier" binding-mode="TwoWay" />
@@ -193,6 +200,32 @@
                                         <ui:Instance template="GlobalStringEditor" data-source-path="boilersDesc">
                                             <AttributeOverrides element-name="GlobalStringLabel" text="Boilers" />
                                         </ui:Instance>
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:ScrollView>
+                        </ui:Tab>
+                        <ui:Tab label="Graphic">
+                            <ui:ScrollView>
+                                <ui:VisualElement style="flex-grow: 1;">
+                                    <ui:TextField label="Portrait Top Code">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="portraitTopCode" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:TextField>
+                                    <ui:VisualElement style="flex-grow: 0; height: 150px; -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;">
+                                        <Bindings>
+                                            <ui:DataBinding property="style.backgroundImage" data-source-path="portraitTopCode" binding-mode="ToTarget" source-to-ui-converters="string (Ship Portrait) =&gt; StyleBackground" />
+                                        </Bindings>
+                                    </ui:VisualElement>
+                                    <ui:TextField label="Portrait Code">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="portraitCode" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:TextField>
+                                    <ui:VisualElement style="flex-grow: 0; height: 300px; -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;">
+                                        <Bindings>
+                                            <ui:DataBinding property="style.backgroundImage" data-source-path="portraitCode" binding-mode="ToTarget" source-to-ui-converters="string (Ship Portrait) =&gt; StyleBackground" />
+                                        </Bindings>
                                     </ui:VisualElement>
                                 </ui:VisualElement>
                             </ui:ScrollView>

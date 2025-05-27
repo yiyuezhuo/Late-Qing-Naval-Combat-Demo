@@ -264,6 +264,7 @@ namespace NavalCombatCore
         public string parentObjectId { get; set; }
 
         public string GetMemberName() => name.mergedName;
+
         
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()

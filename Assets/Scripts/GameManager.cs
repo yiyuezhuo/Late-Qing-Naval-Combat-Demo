@@ -10,7 +10,6 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System;
-using Unity.VisualScripting;
 
 
 
@@ -174,6 +173,15 @@ public class GameManager : MonoBehaviour
 
         //     j++;
         // }
+
+        // var res = Resources.LoadAll<Sprite>("Flags");
+        // var res2 = Resources.LoadAll<Texture>("Flags");
+        // var res3 = Resources.LoadAll<Texture2D>("Flags");
+        // var res4 = Resources.LoadAll<Sprite>("Leader_Portraits");
+        // var res5 = Resources.LoadAll<Texture2D>("Leader_Portraits");
+        // var res6 = Resources.LoadAll<Texture>("Leader_Portraits");
+
+        // Debug.Log(res);
     }
 
     public Dictionary<string, IDF3ModelViewer> objectId2Viewer = new();
@@ -191,21 +199,23 @@ public class GameManager : MonoBehaviour
         // }
 
         // sync ShipView and ShipLog mapping
-            foreach (var shipLog in NavalGameState.Instance.shipLogs)
+        foreach (var shipLog in NavalGameState.Instance.shipLogs)
+        {
+            if (shipLog.IsOnMap() && !objectId2Viewer.ContainsKey(shipLog.objectId))
             {
-                if (shipLog.IsOnMap() && !objectId2Viewer.ContainsKey(shipLog.objectId))
-                {
-                    var obj = Instantiate(natoIconPrefab, earthTransform);
+                var obj = Instantiate(natoIconPrefab, earthTransform);
 
-                    var df3viewer = obj.GetComponent<IDF3ModelViewer>();
-                    df3viewer.modelObjectId = shipLog.objectId;
-                    objectId2Viewer[shipLog.objectId] = df3viewer;
+                var df3viewer = obj.GetComponent<IDF3ModelViewer>();
+                df3viewer.modelObjectId = shipLog.objectId;
+                objectId2Viewer[shipLog.objectId] = df3viewer;
 
-                    var iconViewer = obj.GetComponent<NATOIconViewer>();
-                    iconViewer.shipLogObjectId = shipLog.objectId;
-                }
+                var iconViewer = obj.GetComponent<NATOIconViewer>();
+                iconViewer.shipLogObjectId = shipLog.objectId;
             }
+        }
+
         var shouldRemoved = objectId2Viewer.Where(kv => !EntityManager.Instance.Get<ShipLog>(kv.Key)?.IsOnMap() ?? false).ToList();
+
         foreach ((var shipLog, var viewer) in shouldRemoved)
         {
             Destroy(viewer);

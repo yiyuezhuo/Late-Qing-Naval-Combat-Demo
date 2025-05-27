@@ -505,6 +505,8 @@
    <superStructureVertical effectInch="0.6" actualInch="0.8" />
   </armorRating>
   <portraitUrl>https://upload.wikimedia.org/wikipedia/commons/2/24/Yoshino_The-Naval-Annual1897.jpg</portraitUrl>
+  <portraitCode>Yoshino</portraitCode>
+  <portraitTopCode>Yoshino_Top</portraitTopCode>
   <objectId>fcf5997b-fe22-49ad-9e5b-70080d2221a9</objectId>
  </ShipClass>
  <ShipClass>
@@ -999,6 +1001,8 @@
    <superStructureVertical effectInch="0.4" actualInch="0.5" />
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima#/media/File:Akitsushima_plan_1904.png</portraitUrl>
+  <portraitCode>Akitsushima</portraitCode>
+  <portraitTopCode>Akitsushima_Top</portraitTopCode>
   <objectId>6197af50-741d-4f54-881a-f0eeec00996f</objectId>
  </ShipClass>
  <ShipClass>
@@ -1445,6 +1449,8 @@
    <superStructureVertical effectInch="1.1" actualInch="1.5" />
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_cruiser_Naniwa#/media/File:Naniwa_class_cruiser_left_elevation_and_deck_plan_Brasseys_1888.jpg</portraitUrl>
+  <portraitCode>Naniwa</portraitCode>
+  <portraitTopCode>Naniwa_Top</portraitTopCode>
   <objectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</objectId>
  </ShipClass>
  <ShipClass>
@@ -1856,6 +1862,8 @@
    <superStructureVertical effectInch="1.3" actualInch="1.9" />
   </armorRating>
   <portraitUrl>https://www.the-blueprints.com/blueprints/ships/ships-china/90585/view/china_-_rocn_jiyuan_protected_cruiser_1895/</portraitUrl>
+  <portraitCode>Chi Yuan</portraitCode>
+  <portraitTopCode>Chi Yuan_Top</portraitTopCode>
   <objectId>84de785d-a41c-4993-973a-d167876f343b</objectId>
  </ShipClass>
  <ShipClass>
@@ -2168,6 +2176,8 @@
    <superStructureVertical effectInch="0.1" actualInch="0.2" />
   </armorRating>
   <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
+  <portraitCode>Kuang Yi</portraitCode>
+  <portraitTopCode>Kuang Yi_Top</portraitTopCode>
   <objectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</objectId>
  </ShipClass>
  <ShipClass>
@@ -2604,6 +2614,8 @@
    <superStructureVertical effectInch="2.8" actualInch="4.2" />
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Japanese_battleship_Chen_Yuen.jpg</portraitUrl>
+  <portraitCode>Ting Yuen</portraitCode>
+  <portraitTopCode>Ting Yuen_Top</portraitTopCode>
   <objectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</objectId>
  </ShipClass>
  <ShipClass>
@@ -2998,6 +3010,8 @@
    <superStructureVertical effectInch="0.1" actualInch="0.1" />
   </armorRating>
   <portraitUrl>https://www.tynebuiltships.co.uk/C-Ships/chaoyung1881.html</portraitUrl>
+  <portraitCode>Chao Yong</portraitCode>
+  <portraitTopCode>Chao Yong_Top</portraitTopCode>
   <objectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</objectId>
  </ShipClass>
  <ShipClass>
@@ -3448,6 +3462,8 @@
    <superStructureVertical effectInch="0.3" actualInch="0.4" />
   </armorRating>
   <portraitUrl>https://forum.warthunder.com/t/qing-dynasty-beiyang-fleet-zhiyuan-chih-yuen-protected-cruiser/17129</portraitUrl>
+  <portraitCode>Chih Yuan</portraitCode>
+  <portraitTopCode>Chih Yuan_Top</portraitTopCode>
   <objectId>0208979d-6075-4877-98ef-fa0adc0df9ed</objectId>
  </ShipClass>
  <ShipClass>
@@ -3842,6 +3858,8 @@
    <superStructureVertical effectInch="2.3" actualInch="3.4" />
   </armorRating>
   <portraitUrl>https://www.the-blueprints.com/blueprints/ships/ships-china/49091/view/china_-_king_yuan_protected_cruiser_1884/</portraitUrl>
+  <portraitCode>King Yuan</portraitCode>
+  <portraitTopCode>King Yuan_Top</portraitTopCode>
   <objectId>7cfe4fb1-5a4a-486f-acd8-27301ef8af77</objectId>
  </ShipClass>
  <ShipClass>
@@ -4241,6 +4259,8 @@
    <superStructureVertical effectInch="2.5" actualInch="3.4" />
   </armorRating>
   <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
+  <portraitCode>Ping Yuen</portraitCode>
+  <portraitTopCode>Ping Yuen_Top</portraitTopCode>
   <objectId>c9332796-cb5f-4d0c-a0e9-b05bc5c05c56</objectId>
  </ShipClass>
  <ShipClass>
@@ -4613,6 +4633,8 @@
    <superStructureVertical effectInch="0" actualInch="0" />
   </armorRating>
   <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
+  <portraitCode>Kuang Chia</portraitCode>
+  <portraitTopCode>Kuang Chia_Top</portraitTopCode>
   <objectId>8cb2764f-61b3-4a5d-b992-1f795e2887c6</objectId>
  </ShipClass>
  <ShipClass>
@@ -4887,6 +4909,8 @@
    <superStructureVertical effectInch="1.6" actualInch="2.2" />
   </armorRating>
   <portraitUrl>https://combrig-models.com/index.php/1700/65-japanese-navy-1860-1918/518-fuso1900</portraitUrl>
+  <portraitCode>Fuso</portraitCode>
+  <portraitTopCode>Fuso_Top</portraitTopCode>
   <objectId>0d9558bb-88c1-4021-8a3a-209d98a54419</objectId>
  </ShipClass>
  <ShipClass>
@@ -5391,6 +5415,8 @@
    <superStructureVertical effectInch="1.1" actualInch="1.4" />
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Itsukushima_Brasseys1902.png</portraitUrl>
+  <portraitCode>Itsukushima</portraitCode>
+  <portraitTopCode>Itsukushima_Top</portraitTopCode>
   <objectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</objectId>
  </ShipClass>
  <ShipClass>
@@ -5664,6 +5690,8 @@
    <turretVertical effectInch="0" actualInch="0" />
    <superStructureVertical effectInch="0.6" actualInch="1" />
   </armorRating>
+  <portraitCode>Kongo_Top</portraitCode>
+  <portraitTopCode>Kongo_Top</portraitTopCode>
   <objectId>a333035a-806e-4246-b57f-157148f73332</objectId>
  </ShipClass>
  <ShipClass>
@@ -6154,6 +6182,8 @@
    <superStructureVertical effectInch="1.1" actualInch="1.4" />
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/industrial-era/1890-fleets/japan/matsushima-class_cruiser.php</portraitUrl>
+  <portraitCode>Matsushima</portraitCode>
+  <portraitTopCode>Matsushima_Top</portraitTopCode>
   <objectId>5d05cc6f-6559-4d69-b29d-2eeab1139643</objectId>
  </ShipClass>
  <ShipClass>
@@ -6521,6 +6551,8 @@
    <superStructureVertical effectInch="0.6" actualInch="0.8" />
   </armorRating>
   <portraitUrl>https://zh.wikipedia.org/wiki/%E5%8D%83%E4%BB%A3%E7%94%B0%E8%99%9F%E9%98%B2%E8%AD%B7%E5%B7%A1%E6%B4%8B%E8%89%A6#/media/File:Chiyoda_plan_1904.png</portraitUrl>
+  <portraitCode>Chiyoda</portraitCode>
+  <portraitTopCode>Chiyoda_Top</portraitTopCode>
   <objectId>93917b3f-9a77-4307-8ed2-945de9b551c9</objectId>
  </ShipClass>
 </ArrayOfShipClass>

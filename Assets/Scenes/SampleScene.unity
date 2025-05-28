@@ -599,7 +599,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 88efaf46ccea5504aa63561cf6ab6c56, type: 2}
+  - {fileID: 2100000, guid: 6998466c7b1c9dc4bbac709829ed7a42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -880,7 +880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navalGameState:
     shipClasses: []
-  natoIconPrefab: {fileID: 3470946227472594789, guid: 5bc3798d2013c794f9fb5cf15637bf7c, type: 3}
+  shipUnitPrefab: {fileID: 1887053013969614622, guid: 7433f1bbd0fb1164d8fc0395cb894181, type: 3}
   earthTransform: {fileID: 1503665647}
   stateIconMap:
   - state: 1
@@ -1068,7 +1068,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1083350738}
   cameras: []
-  zoomSpeed: 0.05
   mode: 0
 --- !u!4 &813226749
 Transform:
@@ -1322,7 +1321,7 @@ Camera:
   m_GameObject: {fileID: 1083350735}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1603,7 +1602,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 5}
+  m_SizeDelta: {x: 30, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1420744852
 MonoBehaviour:

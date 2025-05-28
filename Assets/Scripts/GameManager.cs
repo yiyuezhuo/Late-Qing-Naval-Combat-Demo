@@ -16,7 +16,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public NavalGameState navalGameState = NavalGameState.Instance;
-    public GameObject natoIconPrefab;
+    public GameObject shipUnitPrefab;
     public Transform earthTransform;
 
     [Serializable]
@@ -91,45 +91,6 @@ public class GameManager : MonoBehaviour
 
         EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
 
-        // #if UNITY_EDITOR
-
-        //         var shipClassesPath = Path.Combine(Application.persistentDataPath, "ShipClasses.xml");
-        //         if (File.Exists(shipClassesPath))
-        //         {
-        //             var shipClassXml = File.ReadAllText(shipClassesPath);
-        //             navalGameState.ShipClassesFromXml(shipClassXml);
-        //         }
-
-        //         // temp data structure fix
-        //         foreach (var shipClass in navalGameState.shipClasses)
-        //         {
-        //             foreach (var batteryReocrd in shipClass.batteryRecords)
-        //             {
-        //                 if (batteryReocrd.fireControlType == null)
-        //                 {
-        //                     batteryReocrd.fireControlType = new FireControlSystem();
-        //                 }
-        //             }
-        //         }
-
-        //         var shipLogsPath = Path.Combine(Application.persistentDataPath, "ShipLogs.xml");
-        //         if (File.Exists(shipLogsPath))
-        //         {
-        //             var shipLogsXml = File.ReadAllText(shipLogsPath);
-        //             navalGameState.ShipLogsFromXml(shipLogsXml);
-        //         }
-
-        //         // RootShipGroups
-        //         var rootShipGroupsPath = Path.Combine(Application.persistentDataPath, "RootShipGroups.xml");
-        //         if (File.Exists(rootShipGroupsPath))
-        //         {
-        //             var rootShipGroupsXml = File.ReadAllText(rootShipGroupsPath);
-        //             navalGameState.RootShipGroupsFromXml(rootShipGroupsXml);
-        //         }
-
-        //         OOBEditor.Instance.oobTreeView.ExpandAll();
-        // #endif
-
         Func<string, string> _load = (string name) =>
         {
             var path = "Scenarios/Battle of Pungdo/" + name;
@@ -156,23 +117,6 @@ public class GameManager : MonoBehaviour
         NavalGameState.Instance.ResetAndRegisterAll(); // Note FromXml call has call it many times.
 
         // Test
-        // var s = new RapidFiringStatus();
-        // var i = s.info;
-
-        // var j = 0;
-        // foreach (var shipLog in NavalGameState.Instance.shipLogs)
-        // {
-        //     // var icon = Instantiate(natoIconPrefab, earthTransform);
-        //     // var viewer = icon.GetComponent<IDF3ModelViewer>();
-        //     // viewer.model = shipLog;
-        //     shipLog.mapState = MapState.Deployed;
-        //     shipLog.position.LatDeg = 37 + j * 0.1f;
-        //     shipLog.position.LonDeg = 123 + j * 0.1f;
-        //     shipLog.headingDeg = j * 10f;
-        //     shipLog.speedKnots = 2 * j;
-
-        //     j++;
-        // }
 
         // var res = Resources.LoadAll<Sprite>("Flags");
         // var res2 = Resources.LoadAll<Texture>("Flags");
@@ -184,7 +128,7 @@ public class GameManager : MonoBehaviour
         // Debug.Log(res);
     }
 
-    public Dictionary<string, IDF3ModelViewer> objectId2Viewer = new();
+    public Dictionary<string, PortraitViewer> objectId2Viewer = new();
 
     // float viewAccTime;
 
@@ -203,14 +147,18 @@ public class GameManager : MonoBehaviour
         {
             if (shipLog.IsOnMap() && !objectId2Viewer.ContainsKey(shipLog.objectId))
             {
-                var obj = Instantiate(natoIconPrefab, earthTransform);
+                var obj = Instantiate(shipUnitPrefab, earthTransform);
 
-                var df3viewer = obj.GetComponent<IDF3ModelViewer>();
-                df3viewer.modelObjectId = shipLog.objectId;
-                objectId2Viewer[shipLog.objectId] = df3viewer;
+                // var df3viewer = obj.GetComponent<IDF3ModelViewer>();
+                // df3viewer.modelObjectId = shipLog.objectId;
+                // objectId2Viewer[shipLog.objectId] = df3viewer;
 
-                var iconViewer = obj.GetComponent<NATOIconViewer>();
-                iconViewer.shipLogObjectId = shipLog.objectId;
+                // var iconViewer = obj.GetComponent<NATOIconViewer>();
+                // iconViewer.shipLogObjectId = shipLog.objectId;
+
+                var portraitView = obj.GetComponent<PortraitViewer>();
+                portraitView.modelObjectId = shipLog.objectId;
+                objectId2Viewer[shipLog.objectId] = portraitView;
             }
         }
 
@@ -296,20 +244,5 @@ public class GameManager : MonoBehaviour
             return navalGameState.shipLogs[selectedShipLogIndex];
         }
     }
-
-    // [CreateProperty]
-    // public ShipClass shipClassOfSelectedShipLog
-    // {
-    //     get
-    //     {
-    //         var shipLog = selectedShipLog;
-    //         if (shipLog != null)
-    //         {
-    //             return navalGameState.shipClasses.FirstOrDefault(x => x.name.english == shipLog.shipClassStr); // TODO: Use formal ID?
-    //         }
-    //         return null;
-    //     }
-    // }
-
 
 }

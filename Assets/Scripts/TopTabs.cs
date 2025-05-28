@@ -108,8 +108,9 @@ public class TopTabs : SingletonDocument<TopTabs>
         {
             var model = EntityManager.Instance.Get<ShipLog>(objectId);
             var postureType = postureTypeMap.GetValueOrDefault(model);
-            var natoViewer = viewer.GetComponent<NATOIconViewer>();
-            natoViewer.SyncPostureType(postureType);
+            // Sync shader parameter for PortraitViewer?
+            // var natoViewer = viewer.GetComponent<NATOIconViewer>();
+            // natoViewer.SyncPostureType(postureType);
         }
     }
 }

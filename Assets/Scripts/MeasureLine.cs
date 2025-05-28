@@ -89,8 +89,9 @@ public class MeasureLine : MonoBehaviour
 
                 // Update measure text
                 var distNm = distM / 1852;
+                var distYards = distM * 1.09361;
                 var bearing = inverseLine.Azimuth;
-                text.text = $"{distNm.ToString("0.00")}nm {bearing.ToString("0.00")}deg";
+                text.text = $"{distNm.ToString("0.00")}nm\n{distYards.ToString("0.00")}yards\n{bearing.ToString("0.00")}deg";
                 text.transform.position = currentPos;
 
                 if (Input.GetMouseButtonDown(0))

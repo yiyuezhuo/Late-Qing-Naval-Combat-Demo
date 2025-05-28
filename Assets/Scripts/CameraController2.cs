@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,7 +14,34 @@ public class CameraController2 : MonoBehaviour
     bool dragging = false;
 
     // public float MovingSpeed = 0.1f;
-    public float zoomSpeed = 1f;
+    // public float zoomSpeed = 1f;
+
+    // [Serializable]
+    // public class ZoomSpeedReocrd
+    // {
+    //     public float zoomSizeThreashold;
+    //     public float zoomSpeed;
+    // }
+    // public List<ZoomSpeedReocrd> zoomSpeedRecords = new();
+    // public float minSize = 0.001f;
+
+    List<float> zoomLevel = new List<float>
+    {
+        0.004f,
+        0.01f,
+        0.02f,
+        0.04f,
+        0.1f,
+        0.2f,
+        0.4f,
+        1.0f,
+        2.0f,
+        4.0f,
+        10.0f,
+        20.0f,
+        40.0f,
+        100.0f,
+    };
 
     // Vector3 lastTrackedPos;
     float lastTrackedLat;
@@ -82,14 +110,30 @@ public class CameraController2 : MonoBehaviour
         UpdateHitPoint();
     }
 
+    // float GetZoomSpeed()
+    // {
+    //     var record = zoomSpeedRecords.Where(r => cam.orthographicSize <= r.zoomSizeThreashold).FirstOrDefault();
+    //     return record?.zoomSpeed ?? 1;
+    // }
+
     void UpdateZoom(Camera cam)
     {
-        var newSize = cam.orthographicSize - Input.mouseScrollDelta.y * zoomSpeed;
-        if (newSize > 0.001f)
+        var dists = zoomLevel.Select(z => Math.Abs(cam.orthographicSize - z)).ToList();
+        var zoomIdx = dists.IndexOf(dists.Min());
+        var delta = -Math.Sign(Input.mouseScrollDelta.y);
+        var newZoomIdx = zoomIdx + delta;
+        if (newZoomIdx >= 0 && newZoomIdx < zoomLevel.Count)
         {
-            cam.orthographicSize = newSize;
-            // GetHitPoint();
+            cam.orthographicSize = zoomLevel[newZoomIdx];
         }
+
+        // var newSize = cam.orthographicSize - Input.mouseScrollDelta.y * GetZoomSpeed() * zoomSpeed;
+        // var newSize = cam.orthographicSize - GetZoomSpeed() * zoomSpeed;
+        // if (newSize > minSize)
+        // {
+        //     cam.orthographicSize = newSize;
+        //     // GetHitPoint();
+        // }
     }
 
     // Update is called once per frame

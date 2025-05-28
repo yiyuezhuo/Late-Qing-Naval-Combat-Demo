@@ -8,7 +8,14 @@ using System.Linq;
 
 public static class Utils
 {
-    public static float r = 50;
+    public static float r = 50; // 50 world unit (wu) = 6371km (earth radius)
+    public static float earthRadiusKm = 6371;
+    public static float wuToKm = earthRadiusKm / r;
+    public static float wuToNmi = wuToKm / 1.852f;
+    public static float wuToKyd = wuToNmi * 2.025f;
+    public static float wuToYards = wuToKyd * 1000;
+    public static float wuToFoot = wuToYards * 3;
+    public static float footToWu = 1 / wuToFoot;
 
     public static Vector3 LatitudeLongitudeDegToVector3(float latDeg, float lonDeg)
     {
@@ -31,6 +38,11 @@ public static class Utils
     public static float TrueNorthClockwiseDegToUnityDeg(float trueNorthClockwisedeg)
     {
         return 90 - trueNorthClockwisedeg;
+    }
+
+    public static float TrueNorthCWDegToRightCCWDeg(float trueNorthCWDeg)
+    {
+        return 90 - trueNorthCWDeg;
     }
 
     public static (float latDeg, float lonDeg) Vector3ToLatitudeLongitudeDeg(Vector3 point)

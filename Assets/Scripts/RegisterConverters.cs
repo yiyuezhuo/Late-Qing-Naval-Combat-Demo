@@ -98,17 +98,17 @@ public static class RegisteredConverters
 
         Register("Country => StyleBackground", (ref Country country) =>
         {
-            return ResourceManager.GetFlag(country.ToString());
+            return ResourceManager.GetFlagSB(country.ToString());
         });
 
         Register("string (Ship Portrait) => StyleBackground", (ref string code) =>
         {
-            return ResourceManager.GetShipPortrait(code);
+            return ResourceManager.GetShipPortraitSB(code);
         });
 
         Register("string (Leader Portrait) => StyleBackground", (ref string code) =>
         {
-            return ResourceManager.GetLeaderPortrait(code);
+            return ResourceManager.GetLeaderPortraitSB(code);
         });
     }
 

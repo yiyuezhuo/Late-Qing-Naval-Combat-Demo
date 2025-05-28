@@ -106,19 +106,14 @@ namespace NavalCombatCore
             get
             {
                 return GetInfo();
-                // var r = rapidFireBatteryRecord;
-                // if (r == null)
-                //     return "Not Valid";
-
-                // var portClass = r.barrelsLevelPort.Count == 0 ? 0 : r.barrelsLevelPort[0];
-                // var starboardClass = r.barrelsLevelStarboard.Count == 0 ? 0 : r.barrelsLevelStarboard[0];
-
-                // var portCurrent = r.barrelsLevelPort.Count == 0 ? 0 : rapidFireBatteryRecord.barrelsLevelPort[Math.Min(portMountHits, rapidFireBatteryRecord.barrelsLevelPort.Count - 1)];
-                // var starboardCurrent = r.barrelsLevelStarboard.Count == 0 ? 0 : rapidFireBatteryRecord.barrelsLevelStarboard[Math.Min(starboardMountHits, rapidFireBatteryRecord.barrelsLevelStarboard.Count - 1)];
-
-                // return $"{portClass}({portCurrent}) / {starboardClass}({starboardCurrent}) {r.name.mergedName}";
             }
         }
+    }
+
+    public partial class ShipGroup
+    {
+        [CreateProperty]
+        public Leader leaderProp => leader;
     }
 }
 
@@ -189,7 +184,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>
         {
-            var content = GameManager.Instance.navalGameState.ShipLogsToXml();
+            var content = GameManager.Instance.navalGameState.ShipLogsToXML();
             IOManager.Instance.SaveTextFile(content, "ShipLogs", "xml");
         };
 
@@ -265,6 +260,6 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
     {
         IOManager.Instance.textLoaded -= OnShipLogsXmlLoaded;
 
-        GameManager.Instance.navalGameState.ShipLogsFromXml(text);
+        GameManager.Instance.navalGameState.ShipLogsFromXML(text);
     }
 }

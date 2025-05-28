@@ -38,19 +38,31 @@
                     <ui:Instance template="GlobalStringEditor" data-source-path="name">
                         <AttributeOverrides element-name="GlobalStringLabel" text="Group Name" />
                     </ui:Instance>
-                    <ui:Instance template="GlobalStringEditor" data-source-path="captain">
-                        <AttributeOverrides element-name="GlobalStringLabel" text="Captain" />
-                    </ui:Instance>
-                    <ui:EnumField label="Type" value="Center" type="NavalCombatCore.GroupType, Assembly-CSharp">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
-                        </Bindings>
-                    </ui:EnumField>
-                    <ui:EnumField label="Formation" value="Center" type="NavalCombatCore.FormationType, Assembly-CSharp">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="formation" binding-mode="TwoWay" />
-                        </Bindings>
-                    </ui:EnumField>
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:VisualElement style="flex-grow: 1;">
+                            <ui:TextField label="Leader">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="leaderProp.name.mergedName" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:TextField>
+                            <ui:Button text="Set Leader" name="SetLeaderButton" />
+                            <ui:EnumField label="Type" value="Center" type="NavalCombatCore.GroupType, Assembly-CSharp">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:EnumField>
+                            <ui:EnumField label="Formation" value="Center" type="NavalCombatCore.FormationType, Assembly-CSharp">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="formation" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:EnumField>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; flex-basis: 100px; -unity-background-scale-mode: scale-to-fit;">
+                            <Bindings>
+                                <ui:DataBinding property="style.backgroundImage" data-source-path="leaderObjectId" binding-mode="ToTarget" source-to-ui-converters="string (Leader objectID) =&gt; StyleBackground" />
+                            </Bindings>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
                     <Bindings>
                         <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipGroup =&gt; DisplayStyle" />
                     </Bindings>

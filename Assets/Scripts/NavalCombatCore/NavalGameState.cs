@@ -20,11 +20,8 @@ namespace NavalCombatCore
     [Serializable]
     public class NavalGameState
     {
-        public List<ShipClass> shipClasses = new()
-        {
-            // new() { name=new() { english="114514"} },
-            // new() { name=new() { english="abs"} }
-        };
+        public List<Leader> leaders = new();
+        public List<ShipClass> shipClasses = new();
         // public List<ShipLog> shipLogs = new() { new() };
         public List<ShipLog> shipLogs = new();
         // public List<ShipGroup> rootShipGroups = new();
@@ -49,6 +46,10 @@ namespace NavalCombatCore
         {
             EntityManager.Instance.Reset();
 
+            foreach (var leader in leaders)
+            {
+                EntityManager.Instance.Register(leader, null);
+            }
             foreach (var shipClasses in shipClasses)
             {
                 EntityManager.Instance.Register(shipClasses, null);
@@ -64,104 +65,50 @@ namespace NavalCombatCore
             }
         }
 
-        // public void ResetAndRegisterAllShipGroup(ShipGroup shipGroup)
-        // {
-        //     EntityManager.Instance.Register(shipGroup, null);
-        //     foreach (var child in shipGroup.GetChildren())
-        //     {
-        //         if (child is ShipGroup subShipGroup)
-        //         {
-        //             ResetAndRegisterAllShipGroup(subShipGroup);
-        //         }
-        //     }
-        // }
-
-        // static XmlSerializer shipClassListSerializer = new XmlSerializer(typeof(List<ShipClass>));
-        // static XmlSerializer shipLogListSerializer = new XmlSerializer(typeof(List<ShipLog>));
-        // static XmlSerializer shipGroupListSerializer = new XmlSerializer(typeof(List<ShipGroup>));
-
-        public string ShipClassesToXml()
+        public string LeadersToXML()
         {
-            // var settings = new XmlWriterSettings
-            // {
-            //     Indent = true,
-            //     IndentChars = " ",
-            // };
+            return XmlUtils.ToXML(leaders);
+        }
 
-            // using (var textWriter = new StringWriter())
-            // {
-            //     using (XmlWriter xmlWriter = XmlWriter.Create(textWriter, settings))
-            //     {
-            //         shipClassListSerializer.Serialize(xmlWriter, shipClasses);
-            //         string serializedXml = textWriter.ToString();
+        public void LeadersFromXML(string xml)
+        {
+            leaders = XmlUtils.FromXML<List<Leader>>(xml);
 
-            //         return serializedXml;
-            //     }
-            // }
+            ResetAndRegisterAll();
+        }
 
+        public string ShipClassesToXML()
+        {
             var serializedXml = XmlUtils.ToXML(shipClasses);
             return serializedXml;
         }
 
-        public void ShipClassesFromXml(string xml)
+        public void ShipClassesFromXML(string xml)
         {
-            // using (var reader = new StringReader(xml))
-            // {
-            //     shipClasses = (List<ShipClass>)shipClassListSerializer.Deserialize(reader);
-            // }
             shipClasses = XmlUtils.FromXML<List<ShipClass>>(xml);
 
             ResetAndRegisterAll();
         }
 
-        public string ShipLogsToXml()
+        public string ShipLogsToXML()
         {
-            // using (var textWriter = new StringWriter())
-            // {
-            //     using (XmlWriter xmlWriter = XmlWriter.Create(textWriter))
-            //     {
-            //         shipLogListSerializer.Serialize(xmlWriter, shipLogs);
-            //         string serializedXml = textWriter.ToString();
-
-            //         return serializedXml;
-            //     }
-            // }
-
             return XmlUtils.ToXML(shipLogs);
         }
 
-        public void ShipLogsFromXml(string xml)
+        public void ShipLogsFromXML(string xml)
         {
-            // using (var reader = new StringReader(xml))
-            // {
-            //     shipLogs = (List<ShipLog>)shipLogListSerializer.Deserialize(reader);
-            // }
-
             shipLogs = XmlUtils.FromXML<List<ShipLog>>(xml);
 
             ResetAndRegisterAll();
         }
 
-        public string ShipGroupsToXml()
+        public string ShipGroupsToXML()
         {
-            // using (var writer = new StringWriter())
-            // {
-            //     shipGroupListSerializer.Serialize(writer, rootShipGroups);
-            //     return writer.ToString();
-            // }
-
-            // return XmlUtils.ToXML(rootShipGroups);
             return XmlUtils.ToXML(shipGroups);
         }
 
-        public void ShipGroupsFromXml(string xml)
+        public void ShipGroupsFromXML(string xml)
         {
-            // using (var reader = new StringReader(xml))
-            // {
-            //     rootShipGroups = (List<ShipGroup>)shipGroupListSerializer.Deserialize(reader);
-            // }
-
-            // rootShipGroups = XmlUtils.FromXML<List<ShipGroup>>(xml);
             shipGroups = XmlUtils.FromXML<List<ShipGroup>>(xml);
 
             ResetAndRegisterAll();
@@ -186,10 +133,6 @@ namespace NavalCombatCore
                 }
             }
 
-            // foreach (var shipGroup in rootShipGroups)
-            // {
-            //     SyncShipLogParentWithGroupHierarchy(shipGroup, ref shipTracked);
-            // }
             foreach (var shipLog in shipLogs)
             {
                 if (!shipTracked.Contains(shipLog.objectId))
@@ -198,22 +141,6 @@ namespace NavalCombatCore
                 }
             }
         }
-
-        // public void SyncShipLogParentWithGroupHierarchy(ShipGroup shipGroup, ref HashSet<string> shipTracked)
-        // {
-        //     foreach (var child in shipGroup.GetChildren())
-        //     {
-        //         child.parentObjectId = shipGroup.objectId;
-        //         if (child is ShipGroup subShipGroup)
-        //         {
-        //             SyncShipLogParentWithGroupHierarchy(subShipGroup, ref shipTracked);
-        //         }
-        //         if (child is ShipLog subShipLog)
-        //         {
-        //             shipTracked.Add(subShipLog.objectId);
-        //         }
-        //     }
-        // }
 
         public void UpdateTo(NavalGameState newState)
         {
@@ -241,14 +168,6 @@ namespace NavalCombatCore
                     }
                 }
             }
-
-            // foreach (var shipGroup in rootShipGroups)
-            // {
-            //     foreach (var ret in GetShipGroupMembersRecursive(shipGroup))
-            //     {
-            //         yield return ret;
-            //     }
-            // }
         }
 
         public IEnumerable<IShipGroupMember> GetShipGroupMembersRecursive(ShipGroup shipGroup)
@@ -273,9 +192,6 @@ namespace NavalCombatCore
 
         public Dictionary<IShipGroupMember, PostureType> CalcualtePostureMap(IShipGroupMember refGroup)
         {
-            // var members = GetShipGroupMembersRecursive();
-            // var ret = new Dictionary<IShipGroupMember, PostureType>();
-
             var refRoot = FindRoot(refGroup);
             return GetShipGroupMembersRecursive().ToDictionary(
                 g => g,

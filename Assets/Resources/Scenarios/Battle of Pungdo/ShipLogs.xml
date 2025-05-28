@@ -13,7 +13,7 @@
    <chineseSimplified>河原要一大佐</chineseSimplified>
    <chineseTraditional />
   </captain>
-  <crewRating>1</crewRating>
+  <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
    <LatDeg>37.06988</LatDeg>
@@ -148,7 +148,7 @@
    <japanese>上村彦之丞少佐</japanese>
    <chineseSimplified>上村彦之丞少佐</chineseSimplified>
   </captain>
-  <crewRating>1</crewRating>
+  <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
    <LatDeg>37.05812</LatDeg>
@@ -278,7 +278,7 @@
    <japanese>東郷平八郎大佐</japanese>
    <chineseSimplified>东乡平八郎大佐</chineseSimplified>
   </captain>
-  <crewRating>1</crewRating>
+  <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
    <LatDeg>37.0488358</LatDeg>

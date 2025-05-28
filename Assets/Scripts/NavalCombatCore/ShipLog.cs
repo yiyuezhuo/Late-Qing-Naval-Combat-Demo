@@ -265,6 +265,12 @@ namespace NavalCombatCore
 
         public string captainPortraitCode;
 
+        public string leaderObjectId;
+        public Leader leader
+        {
+            get => EntityManager.Instance.Get<Leader>(leaderObjectId);
+        }
+
         public string GetMemberName() => name.mergedName;
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()

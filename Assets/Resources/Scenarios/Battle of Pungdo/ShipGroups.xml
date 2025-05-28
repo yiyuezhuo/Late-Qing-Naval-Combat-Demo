@@ -11,11 +11,7 @@
    <japanese>第一遊撃隊</japanese>
    <chineseSimplified>第一游击队</chineseSimplified>
   </name>
-  <captain>
-   <english>Admiral Tsuboi</english>
-   <japanese>坪井航三海軍少将</japanese>
-   <chineseSimplified>坪井航三</chineseSimplified>
-  </captain>
+  <leaderObjectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</leaderObjectId>
   <type>Squadron</type>
   <formation>LineAhead</formation>
   <objectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</objectId>
@@ -30,11 +26,7 @@
    <japanese>護衛隊</japanese>
    <chineseSimplified>护航队</chineseSimplified>
   </name>
-  <captain>
-   <english>Fang Boqian</english>
-   <japanese>方伯謙</japanese>
-   <chineseSimplified>方伯谦</chineseSimplified>
-  </captain>
+  <leaderObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</leaderObjectId>
   <type>Squadron</type>
   <formation>LineAhead</formation>
   <objectId>96a18446-8d4a-4b89-a219-d514cade9751</objectId>

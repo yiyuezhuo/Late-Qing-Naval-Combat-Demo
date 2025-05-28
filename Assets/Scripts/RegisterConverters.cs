@@ -60,6 +60,11 @@ public static class RegisteredConverters
             return shipLog.shipClass?.name;
         });
 
+        // Register("Leader => ShipLog's ShipClass's Name", (ref NavalCombatCore.ShipLog shipLog) =>
+        // {
+        //     return shipLog.shipClass?.name;
+        // });
+
         Register("List<float> => Count", (ref List<float> floatList) =>
         {
             return floatList.Count;
@@ -83,6 +88,16 @@ public static class RegisteredConverters
         Register("ShipGroup => DisplayStyle (Not)", (ref NavalCombatCore.ShipGroup shipGroup) =>
         {
             return (StyleEnum<DisplayStyle>)(shipGroup == null ? DisplayStyle.Flex : DisplayStyle.None);
+        });
+
+        Register("Leader => DisplayStyle", (ref NavalCombatCore.Leader leader) =>
+        {
+            return (StyleEnum<DisplayStyle>)(leader != null ? DisplayStyle.Flex : DisplayStyle.None);
+        });
+
+        Register("Leader => DisplayStyle (Not)", (ref NavalCombatCore.Leader leader) =>
+        {
+            return (StyleEnum<DisplayStyle>)(leader == null ? DisplayStyle.Flex : DisplayStyle.None);
         });
 
         Register("IShipGroupMember'object ID => string", (ref string objectId) =>
@@ -109,6 +124,14 @@ public static class RegisteredConverters
         Register("string (Leader Portrait) => StyleBackground", (ref string code) =>
         {
             return ResourceManager.GetLeaderPortraitSB(code);
+        });
+
+        Register("string (Leader objectID) => StyleBackground", (ref string leaderObjectId) =>
+        {
+            var leader = EntityManager.Instance.Get<Leader>(leaderObjectId);
+            if (leader == null)
+                return null;
+            return ResourceManager.GetLeaderPortraitSB(leader.portraitCode);
         });
     }
 

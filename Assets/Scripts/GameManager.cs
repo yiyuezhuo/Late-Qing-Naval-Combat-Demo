@@ -97,14 +97,17 @@ public class GameManager : MonoBehaviour
             return Resources.Load<TextAsset>(path).text;
         };
 
+        var leaderXml = _load("Leaders");
+        navalGameState.LeadersFromXML(leaderXml);
+
         var shipClassXml = _load("ShipClasses");
-        navalGameState.ShipClassesFromXml(shipClassXml);
+        navalGameState.ShipClassesFromXML(shipClassXml);
 
         var shipLogsXml = _load("ShipLogs");
-        navalGameState.ShipLogsFromXml(shipLogsXml);
+        navalGameState.ShipLogsFromXML(shipLogsXml);
 
         var rootShipGroupsXml = _load("ShipGroups");
-        navalGameState.ShipGroupsFromXml(rootShipGroupsXml);
+        navalGameState.ShipGroupsFromXML(rootShipGroupsXml);
 
         OOBEditor.Instance.oobTreeView.ExpandAll();
 
@@ -244,5 +247,18 @@ public class GameManager : MonoBehaviour
             return navalGameState.shipLogs[selectedShipLogIndex];
         }
     }
+
+    public string selectedLeaderObjectId;
+
+    [CreateProperty]
+    public Leader selectedLeader
+    {
+        get
+        {
+            return EntityManager.Instance.Get<Leader>(selectedLeaderObjectId);
+        }
+    }
+
+    // public int selected
 
 }

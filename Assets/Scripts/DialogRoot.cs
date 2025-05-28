@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class DialogRoot : SingletonDocument<DialogRoot>
 {
     public VisualTreeAsset shipLogSelectorDocument;
+    public VisualTreeAsset leaderSelectorDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,6 +18,32 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupLeaderSelectorDialogForSpecifyForGroup()
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = leaderSelectorDocument,
+            templateDataSource = GameManager.Instance
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            Debug.Log("tempDialog.onConfirmed");
+
+            var leadersListView = el.Q<ListView>("LeadersListView");
+            var leader = leadersListView.selectedItem as Leader;
+            var selectedGroup = OOBEditor.Instance.currentSelectedShipGroup;
+
+            if (leader != null && selectedGroup != null)
+            {
+                selectedGroup.leaderObjectId = leader.objectId;
+            }
+        };
+
+        tempDialog.Popup();
     }
 
     public void PopupShipLogSelectorDialogForRedeploy()

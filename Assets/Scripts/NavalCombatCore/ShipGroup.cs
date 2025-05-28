@@ -80,7 +80,7 @@ namespace NavalCombatCore
         }
     }
 
-    public class ShipGroup : IShipGroupMember
+    public partial class ShipGroup : IShipGroupMember
     {
         public string objectId { get; set; }
         public string parentObjectId { get; set; }
@@ -95,7 +95,14 @@ namespace NavalCombatCore
             }
         }
         public GlobalString name = new();
-        public GlobalString captain = new();
+        // public GlobalString captain = new();
+
+        public string leaderObjectId;
+        public Leader leader
+        {
+            get => EntityManager.Instance.Get<Leader>(leaderObjectId);
+        }
+
         public GroupType type;
         public FormationType formation;
         

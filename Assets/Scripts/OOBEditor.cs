@@ -67,18 +67,6 @@ public class OOBEditor : HideableDocument<OOBEditor>
             label.dataSource = item.objectId;
         };
 
-        // oobTreeView.Expand
-
-        // oobTreeView.itemsChosen += (selectedItems) =>
-        // {
-        //     var selectedItem = selectedItems.FirstOrDefault();
-        //     if (selectedItem != null)
-        //     {
-        //         currentSelectedGroupMember = selectedItem as IShipGroupMember;
-        //         Debug.Log($"Items chosen: {selectedItem}");
-        //     }
-        // };
-
         oobTreeView.selectionChanged += (selectedItems) =>
         {
             var selectedItem = selectedItems.FirstOrDefault() as IShipGroupMember;
@@ -119,7 +107,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
 
         exportButton.clicked += () =>
         {
-            var content = GameManager.Instance.navalGameState.ShipGroupsToXml();
+            var content = GameManager.Instance.navalGameState.ShipGroupsToXML();
             IOManager.Instance.SaveTextFile(content, "ShipGroups", "xml");
         };
 
@@ -155,7 +143,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
                 }
 
                 NavalGameState.Instance.shipGroups.Remove(shipGroup);
-                
+
                 EntityManager.Instance.Unregister(shipGroup);
 
                 // ResetAndRegisterAll
@@ -188,13 +176,16 @@ public class OOBEditor : HideableDocument<OOBEditor>
                 Sync();
             }
         };
+
+        var setLeaderButton = root.Q<Button>("SetLeaderButton");
+        setLeaderButton.clicked += DialogRoot.Instance.PopupLeaderSelectorDialogForSpecifyForGroup;
     }
 
     public void OnRootShipGroupsXmlLoaded(object sender, string text)
     {
         IOManager.Instance.textLoaded -= OnRootShipGroupsXmlLoaded;
 
-        GameManager.Instance.navalGameState.ShipGroupsFromXml(text);
+        GameManager.Instance.navalGameState.ShipGroupsFromXML(text);
 
         // oobTreeView.ExpandAll();
         // oobTreeView.CollapseAll();

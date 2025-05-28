@@ -15,6 +15,9 @@ public class TopTabs : SingletonDocument<TopTabs>
     {
         base.Awake();
 
+        var leaderEditorButton = root.Q<Button>("LeaderEditorButton");
+        leaderEditorButton.clicked += () => LeaderEditor.Instance.Show();
+
         var shipClassEditorButton = root.Q<Button>("ClassEditorButton");
         shipClassEditorButton.clicked += () => ShipClassEditor.Instance.Show();
 

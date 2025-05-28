@@ -8,7 +8,16 @@ using System.Linq;
 
 public static class Utils
 {
-    public static float r = 50; // 50 world unit (wu) = 6371km (earth radius)
+    // public static float r = 2000000;
+    // public static float r = 1000000;
+    // public static float r = 200000;
+    // public static float r = 75000;
+    // public static float r = 50000;
+    public static float r = 10000;
+    // public static float r = 50000;
+    // public static float r = 5000;
+    // public static float r = 500; // 50 world unit (wu) = 6371km (earth radius)
+    // public static float r = 50;
     public static float earthRadiusKm = 6371;
     public static float wuToKm = earthRadiusKm / r;
     public static float wuToNmi = wuToKm / 1.852f;

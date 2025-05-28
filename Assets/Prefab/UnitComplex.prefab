@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 8210893802879257}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -50}
+  m_LocalPosition: {x: 0, y: 0, z: -5000}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -216,9 +216,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelObjectId: 
   type: 0
+  modelScale: 1
   iconRenderer: {fileID: 8932456351333959008}
   text: {fileID: 8351245507077915882}
   iconTransform: {fileID: 6116372669531575124}
+  leafTransform: {fileID: 3844314408721558330}
 --- !u!1 &2826074642083198633
 GameObject:
   m_ObjectHideFlags: 0

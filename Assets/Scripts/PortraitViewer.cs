@@ -22,6 +22,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public MeshRenderer iconRenderer;
     public TMP_Text text;
     public Transform iconTransform;
+    public Transform leafTransform;
 
     long oldViewHashCode;
 
@@ -38,6 +39,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     void Awake()
     {
         // iconRenderer = GetComponent<MeshRenderer>();
+        leafTransform.localPosition = new Vector3(0, 0, -Utils.r);
     }
 
     public void Update()

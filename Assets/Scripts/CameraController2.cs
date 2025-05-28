@@ -9,6 +9,7 @@ public class CameraController2 : MonoBehaviour
     public Camera cam;
     // public Camera camIcon;
     public List<Camera> cameras;
+    public Transform leafTransform;
     // Vector2 prevMousePos;
     // Vector2 prevCamPos;
     bool dragging = false;
@@ -41,6 +42,18 @@ public class CameraController2 : MonoBehaviour
         20.0f,
         40.0f,
         100.0f,
+        200.0f,
+        400.0f,
+        1000.0f,
+        2000.0f,
+        4000.0f,
+        10000.0f,
+        20000.0f,
+        40000.0f,
+        100000.0f,
+        200000.0f,
+        400000.0f,
+        1000000.0f,
     };
 
     // Vector3 lastTrackedPos;
@@ -69,6 +82,9 @@ public class CameraController2 : MonoBehaviour
 
         cameras = GetComponentsInChildren<Camera>().ToList();
         cam = cameras[0];
+
+        var delta = Math.Min(Utils.r, 1000);
+        leafTransform.localPosition = new Vector3(0, 0, -(Utils.r + delta));
     }
 
     public void ResetToInitialPosition()
@@ -81,7 +97,7 @@ public class CameraController2 : MonoBehaviour
     {
         var ray = cam.ScreenPointToRay(Input.mousePosition);
         // var plane = new Plane(Vector3.forward, Vector3.zero);
-        if(Physics.Raycast(ray, out var hit, 100))
+        if(Physics.Raycast(ray, out var hit))
         {
             return hit.point;
         }
@@ -99,15 +115,19 @@ public class CameraController2 : MonoBehaviour
         var newTrackedPos = GetHitPoint();
         (var newTrackedLat, var newTrackedLon) = Utils.Vector3ToLatitudeLongitudeDeg(newTrackedPos);
 
-        var euler = new Vector3(-(newTrackedLat - lastTrackedLat), newTrackedLon - lastTrackedLon, 0);
+        // var euler = new Vector3(-(newTrackedLat - lastTrackedLat), newTrackedLon - lastTrackedLon, 0);
         // Debug.Log(euler);
         // Debug.Log($"x={euler.x}, y={euler.y}, z={euler.z}");
-        transform.localEulerAngles = transform.localEulerAngles + new Vector3(-(newTrackedLat - lastTrackedLat), newTrackedLon - lastTrackedLon, 0);
-        // transform.Rotate(euler);
+        var delta = new Vector3(-(newTrackedLat - lastTrackedLat), newTrackedLon - lastTrackedLon, 0);
+        if (Math.Max(Math.Abs(delta.x), Math.Abs(delta.y)) > 0.0001)
+        {
+            transform.localEulerAngles = transform.localEulerAngles + delta;
+            // transform.Rotate(euler);
 
-        // var diff = newTrackedPos - lastTrackedPos;
-        // transform.position = transform.position - new Vector3(diff.x * mouseAdjustedCoef.x, 0, diff.z * mouseAdjustedCoef.z);
-        UpdateHitPoint();
+            // var diff = newTrackedPos - lastTrackedPos;
+            // transform.position = transform.position - new Vector3(diff.x * mouseAdjustedCoef.x, 0, diff.z * mouseAdjustedCoef.z);
+            UpdateHitPoint();
+        }
     }
 
     // float GetZoomSpeed()

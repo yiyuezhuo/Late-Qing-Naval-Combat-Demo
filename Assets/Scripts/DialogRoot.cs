@@ -46,6 +46,32 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
+    public void PopupLeaderSelectorDialogForSpecifyForShipLog()
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = leaderSelectorDocument,
+            templateDataSource = GameManager.Instance
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            Debug.Log("tempDialog.onConfirmed");
+
+            var leadersListView = el.Q<ListView>("LeadersListView");
+            var leader = leadersListView.selectedItem as Leader;
+            var selectedShipLog = GameManager.Instance.selectedShipLog;
+
+            if (leader != null && selectedShipLog != null)
+            {
+                selectedShipLog.leaderObjectId = leader.objectId;
+            }
+        };
+
+        tempDialog.Popup();
+    }
+
     public void PopupShipLogSelectorDialogForRedeploy()
     {
         var tempDialog = new TempDialog()

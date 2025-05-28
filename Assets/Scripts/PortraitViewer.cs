@@ -31,7 +31,8 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         return HashCode.Combine(
             type,
             shipLog?.shipClass?.portraitTopCode,
-            shipLog?.captainPortraitCode,
+            // shipLog?.captainPortraitCode,
+            shipLog?.leader?.portraitCode,
             shipLog.shipClass.GetAcronym()
         );
     }

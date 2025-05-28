@@ -21,6 +21,12 @@ namespace NavalCombatCore
         {
             get => shipClass;
         }
+
+        [CreateProperty]
+        public Leader leaderProp
+        {
+            get => leader;
+        }
     }
 
     public partial class BatteryStatus
@@ -218,42 +224,10 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             };
 
             tempDialog.Popup();
-
-            // var el = shipClassSelectorDialogDocument.CloneTree();
-
-            // var shipClassListView = el.Q<ListView>("ShipClassListView");
-            // var confirmButton = el.Q<Button>("ConfirmButton");
-            // var cancelButton = el.Q<Button>("CancelButton");
-
-            // Utils.BindItemsSourceRecursive(el);
-
-            // root.Add(el);
-
-            // cancelButton.clicked += () =>
-            // {
-            //     root.Remove(el);
-            // };
-            // confirmButton.clicked += () =>
-            // {
-            //     root.Remove(el);
-
-            //     var selectedShipLog = GameManager.Instance.selectedShipLog;
-            //     var selectedShipClass = shipClassListView.selectedItem as ShipClass;
-            //     if (selectedShipLog != null && selectedShipClass != null)
-            //     {
-            //         selectedShipLog.shipClassObjectId = selectedShipClass.objectId;
-            //     }
-            // };
-            // el.style.position = Position.Absolute;
-            // el.style.left = new Length(50, LengthUnit.Percent);
-            // el.style.top = new Length(50, LengthUnit.Percent);
-            // el.style.translate = new StyleTranslate(
-            //     new Translate(
-            //         new Length(-50, LengthUnit.Percent),
-            //         new Length(-50, LengthUnit.Percent)
-            //     )
-            // );
         };
+
+        var setLeaderButton = root.Q<Button>("SetCaptainButton");
+        setLeaderButton.clicked += DialogRoot.Instance.PopupLeaderSelectorDialogForSpecifyForShipLog;
     }
 
     void OnShipLogsXmlLoaded(object sender, string text)

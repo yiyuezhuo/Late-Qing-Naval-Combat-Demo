@@ -234,7 +234,7 @@ namespace NavalCombatCore
             get => EntityManager.Instance.Get<ShipClass>(shipClassObjectId);
         }
         public GlobalString name = new();
-        public GlobalString captain = new();
+        // public GlobalString captain = new();
         public int crewRating;
         public float damagePoint; // current damage point vs "max" damage point defined in the class
         public LatLon position = new();
@@ -263,7 +263,7 @@ namespace NavalCombatCore
 
         public string parentObjectId { get; set; }
 
-        public string captainPortraitCode;
+        // public string captainPortraitCode;
 
         public string leaderObjectId;
         public Leader leader

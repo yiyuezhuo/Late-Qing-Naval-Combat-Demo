@@ -37,27 +37,25 @@
                                                 <AttributeOverrides element-name="GlobalStringLabel" text="Ship Name" />
                                             </ui:Instance>
                                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                                <ui:VisualElement style="flex-grow: 1; flex-shrink: 0;">
-                                                    <ui:Instance template="GlobalStringEditor" data-source-path="captain">
-                                                        <AttributeOverrides element-name="GlobalStringLabel" text="Captain" />
-                                                    </ui:Instance>
-                                                    <ui:TextField label="Captain Portrait Code">
+                                                <ui:VisualElement style="flex-grow: 1; flex-shrink: 1;">
+                                                    <ui:TextField label="Captain">
                                                         <Bindings>
-                                                            <ui:DataBinding property="value" data-source-path="captainPortraitCode" binding-mode="TwoWay" />
+                                                            <ui:DataBinding property="value" data-source-path="leaderProp.name.mergedName" binding-mode="ToTarget" />
                                                         </Bindings>
                                                     </ui:TextField>
+                                                    <ui:Button text="Set Captain" name="SetCaptainButton" />
+                                                    <ui:SliderInt label="Crew Rating" high-value="3" low-value="-1" show-input-field="true">
+                                                        <Bindings>
+                                                            <ui:DataBinding property="value" data-source-path="crewRating" binding-mode="TwoWay" />
+                                                        </Bindings>
+                                                    </ui:SliderInt>
                                                 </ui:VisualElement>
-                                                <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; flex-basis: 100px; -unity-background-scale-mode: scale-to-fit;">
+                                                <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; flex-basis: 80px; -unity-background-scale-mode: scale-to-fit;">
                                                     <Bindings>
-                                                        <ui:DataBinding property="style.backgroundImage" data-source-path="captainPortraitCode" binding-mode="ToTarget" source-to-ui-converters="string (Leader Portrait) =&gt; StyleBackground" />
+                                                        <ui:DataBinding property="style.backgroundImage" data-source-path="leaderObjectId" binding-mode="ToTarget" source-to-ui-converters="string (Leader objectID) =&gt; StyleBackground" />
                                                     </Bindings>
                                                 </ui:VisualElement>
                                             </ui:VisualElement>
-                                            <ui:SliderInt label="Crew Rating" high-value="3" low-value="-1" show-input-field="true">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="crewRating" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:SliderInt>
                                             <ui:FloatField label="Latitude">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="position.LatDeg" binding-mode="TwoWay" />

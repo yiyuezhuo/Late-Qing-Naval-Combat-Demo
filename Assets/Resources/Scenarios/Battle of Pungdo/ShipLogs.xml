@@ -7,12 +7,6 @@
    <japanese>吉野</japanese>
    <chineseSimplified>吉野</chineseSimplified>
   </name>
-  <captain>
-   <english>Kawara Yōichi</english>
-   <japanese>河原要一大佐</japanese>
-   <chineseSimplified>河原要一大佐</chineseSimplified>
-   <chineseTraditional />
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -132,7 +126,7 @@
   <fateDesc>
    <english>unnamed</english>
   </fateDesc>
-  <captainPortraitCode>Kawahara_Yoichi</captainPortraitCode>
+  <leaderObjectId>a78127f5-61f9-450b-8013-1f57bfbaef42</leaderObjectId>
   <objectId>cf6393ee-7cbe-4a15-93ce-eb53bc18ada8</objectId>
   <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
  </ShipLog>
@@ -143,11 +137,6 @@
    <japanese>秋津洲</japanese>
    <chineseSimplified>秋津洲</chineseSimplified>
   </name>
-  <captain>
-   <english>Kamimura Hikonojō</english>
-   <japanese>上村彦之丞少佐</japanese>
-   <chineseSimplified>上村彦之丞少佐</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -262,7 +251,7 @@
   <fateDesc>
    <english>unnamed</english>
   </fateDesc>
-  <captainPortraitCode>Kamimura_Hikonojo</captainPortraitCode>
+  <leaderObjectId>43bfbde8-70e0-4d42-8122-3dc082557429</leaderObjectId>
   <objectId>01092b52-c42d-4f06-9f4e-57762a39aeba</objectId>
   <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
  </ShipLog>
@@ -273,11 +262,6 @@
    <japanese>浪速</japanese>
    <chineseSimplified>浪速</chineseSimplified>
   </name>
-  <captain>
-   <english>Togo Heihachiro</english>
-   <japanese>東郷平八郎大佐</japanese>
-   <chineseSimplified>东乡平八郎大佐</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -382,7 +366,7 @@
   <fateDesc>
    <english>unnamed</english>
   </fateDesc>
-  <captainPortraitCode>Tōgō_Heihachirō</captainPortraitCode>
+  <leaderObjectId>bbdc13c1-a909-411c-b949-ad82485ab108</leaderObjectId>
   <objectId>ea56b877-9b5e-48bf-840d-3e8508af98ca</objectId>
   <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
  </ShipLog>
@@ -393,11 +377,6 @@
    <japanese>済遠</japanese>
    <chineseSimplified>济远</chineseSimplified>
   </name>
-  <captain>
-   <english>Fang Boqian</english>
-   <japanese>方伯謙</japanese>
-   <chineseSimplified>方伯谦</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -492,7 +471,7 @@
   <fateDesc>
    <english>unnamed</english>
   </fateDesc>
-  <captainPortraitCode>Fang_Boqian</captainPortraitCode>
+  <leaderObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</leaderObjectId>
   <objectId>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</objectId>
   <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
  </ShipLog>
@@ -503,11 +482,6 @@
    <japanese>広乙</japanese>
    <chineseSimplified>广乙</chineseSimplified>
   </name>
-  <captain>
-   <english>Lin Kuohsiang</english>
-   <japanese>林国祥</japanese>
-   <chineseSimplified>林国祥</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -590,7 +564,7 @@
   <fateDesc>
    <english>unnamed</english>
   </fateDesc>
-  <captainPortraitCode>Lin_Guoxiang</captainPortraitCode>
+  <leaderObjectId>f3e417c3-89d7-4a71-a8b8-84c408d0cb05</leaderObjectId>
   <objectId>93b88a00-313d-4df0-8cfb-2182851c96f7</objectId>
   <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
  </ShipLog>
@@ -601,11 +575,6 @@
    <japanese>鎮遠</japanese>
    <chineseSimplified>镇远</chineseSimplified>
   </name>
-  <captain>
-   <english>Lin Taizen</english>
-   <japanese>林泰曽</japanese>
-   <chineseSimplified>林泰曾</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -707,7 +676,7 @@
   <fateDesc>
    <english>Captured 02/06/1895</english>
   </fateDesc>
-  <captainPortraitCode>Lin_Taizeng</captainPortraitCode>
+  <leaderObjectId>ee91367d-d291-4bad-81f1-b4aa5b1d5bd0</leaderObjectId>
   <objectId>b5dfd87e-cb47-4a4b-abba-affa96e356c4</objectId>
  </ShipLog>
  <ShipLog>
@@ -717,11 +686,6 @@
    <japanese>定遠</japanese>
    <chineseSimplified>定远</chineseSimplified>
   </name>
-  <captain>
-   <english>Liu Buchan</english>
-   <japanese>劉歩蟾</japanese>
-   <chineseSimplified>刘步蟾</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -823,7 +787,7 @@
   <fateDesc>
    <english>Sunk 02/06/1895</english>
   </fateDesc>
-  <captainPortraitCode>Liu_buchan</captainPortraitCode>
+  <leaderObjectId>67623f92-366e-4f7f-a31e-a988494d9bdf</leaderObjectId>
   <objectId>c8a76edb-7330-4ef4-a115-2f468df23494</objectId>
  </ShipLog>
  <ShipLog>
@@ -833,11 +797,6 @@
    <japanese>揚威</japanese>
    <chineseSimplified>扬威</chineseSimplified>
   </name>
-  <captain>
-   <english>Lin lvzhong</english>
-   <japanese>林履中</japanese>
-   <chineseSimplified>林履中</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -933,7 +892,7 @@
   <fateDesc>
    <english>Sunk 09/17/1894</english>
   </fateDesc>
-  <captainPortraitCode>Lin_lvzhong</captainPortraitCode>
+  <leaderObjectId>571f00c5-74c3-42c7-bae4-be54f44d2b76</leaderObjectId>
   <objectId>59969f6c-ed18-4e48-84d2-0b43c3e8ac74</objectId>
  </ShipLog>
  <ShipLog>
@@ -943,11 +902,6 @@
    <japanese>超勇</japanese>
    <chineseSimplified>超勇</chineseSimplified>
   </name>
-  <captain>
-   <english>Huang Jianxun</english>
-   <japanese>黄建勲</japanese>
-   <chineseSimplified>黄建勋</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -1043,7 +997,7 @@
   <fateDesc>
    <english>Sunk 09/17/1894</english>
   </fateDesc>
-  <captainPortraitCode>Huang_Jianxun</captainPortraitCode>
+  <leaderObjectId>96b1f018-4a92-4ef0-81b1-b6b3dc1ff3ed</leaderObjectId>
   <objectId>6a20093b-9f39-47fd-972f-49eaaefaf1d5</objectId>
  </ShipLog>
  <ShipLog>
@@ -1053,11 +1007,6 @@
    <japanese>靖遠</japanese>
    <chineseSimplified>靖远</chineseSimplified>
   </name>
-  <captain>
-   <english>Ye Zugui</english>
-   <japanese>葉祖珪</japanese>
-   <chineseSimplified>叶祖珪</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -1164,7 +1113,7 @@
   <fateDesc>
    <english>Sunk 02/09/1895</english>
   </fateDesc>
-  <captainPortraitCode>Ye_Zugui</captainPortraitCode>
+  <leaderObjectId>2038e8d1-4ca4-4719-9a65-eea886fd0d2c</leaderObjectId>
   <objectId>370f72b3-2243-44ff-ab42-e08d3c6d273c</objectId>
  </ShipLog>
  <ShipLog>
@@ -1174,11 +1123,6 @@
    <japanese>致遠</japanese>
    <chineseSimplified>致远</chineseSimplified>
   </name>
-  <captain>
-   <english>Deng Shichang</english>
-   <japanese>鄧世昌</japanese>
-   <chineseSimplified>邓世昌</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -1285,7 +1229,7 @@
   <fateDesc>
    <english>Sunk 09/17/1894</english>
   </fateDesc>
-  <captainPortraitCode>Deng_Shichang</captainPortraitCode>
+  <leaderObjectId>ca6e9344-d40e-4a16-8ee1-82ae8d5dbdb4</leaderObjectId>
   <objectId>a55bdec2-a47a-4d2b-af3c-9588a875e58c</objectId>
  </ShipLog>
  <ShipLog>
@@ -1295,11 +1239,6 @@
    <japanese>経遠</japanese>
    <chineseSimplified>经远</chineseSimplified>
   </name>
-  <captain>
-   <english>Ling Yongshen</english>
-   <japanese>林永升</japanese>
-   <chineseSimplified>林永升</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -1394,7 +1333,7 @@
   <fateDesc>
    <english>Sunk 09/17/1894</english>
   </fateDesc>
-  <captainPortraitCode>Lin_Yongsheng</captainPortraitCode>
+  <leaderObjectId>ad05fef6-dae8-457e-9f31-e7166a09aede</leaderObjectId>
   <objectId>3ecfd394-30a5-45af-95be-f83b75d246b2</objectId>
  </ShipLog>
  <ShipLog>
@@ -1404,11 +1343,6 @@
    <japanese>来遠</japanese>
    <chineseSimplified>来远</chineseSimplified>
   </name>
-  <captain>
-   <english>Qiu Baoren</english>
-   <japanese>丘宝仁</japanese>
-   <chineseSimplified>丘宝仁</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -1503,7 +1437,7 @@
   <fateDesc>
    <english>Sunk 02/05/1895</english>
   </fateDesc>
-  <captainPortraitCode>Qiu_Baoren</captainPortraitCode>
+  <leaderObjectId>19df649e-5f8a-4c29-b42a-936d15b4c8fe</leaderObjectId>
   <objectId>00fb2b34-3d37-444b-9041-e8540c9304d1</objectId>
  </ShipLog>
  <ShipLog>
@@ -1513,11 +1447,6 @@
    <japanese>平遠</japanese>
    <chineseSimplified>平远</chineseSimplified>
   </name>
-  <captain>
-   <english>Li He</english>
-   <japanese>李和</japanese>
-   <chineseSimplified>李和</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -1612,7 +1541,7 @@
   <fateDesc>
    <english>Captured 02/12/1895</english>
   </fateDesc>
-  <captainPortraitCode>Li He</captainPortraitCode>
+  <leaderObjectId>a30c7e56-bf11-44b2-8f99-febd99701a42</leaderObjectId>
   <objectId>9ad21ac1-2365-4f33-bfa9-fee5f27b965a</objectId>
  </ShipLog>
  <ShipLog>
@@ -1622,11 +1551,6 @@
    <japanese>広甲</japanese>
    <chineseSimplified>广甲</chineseSimplified>
   </name>
-  <captain>
-   <english>Wu Jingrong</english>
-   <japanese>呉敬栄</japanese>
-   <chineseSimplified>吴敬荣</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -1707,7 +1631,7 @@
   <fateDesc>
    <english>Sunk 09/17/1894</english>
   </fateDesc>
-  <captainPortraitCode>Wu_Jingrong</captainPortraitCode>
+  <leaderObjectId>50197d07-3352-4362-9ea5-978742310265</leaderObjectId>
   <objectId>61f04aed-26e0-4495-bd04-344f5d223de1</objectId>
  </ShipLog>
  <ShipLog>
@@ -1717,11 +1641,6 @@
    <japanese>扶桑</japanese>
    <chineseSimplified>扶桑</chineseSimplified>
   </name>
-  <captain>
-   <english>Arai Yukan</english>
-   <japanese>新井有貫大佐</japanese>
-   <chineseSimplified>新井有贯</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -1796,7 +1715,7 @@
   <fateDesc>
    <english>Scrapped 1919</english>
   </fateDesc>
-  <captainPortraitCode>Arai_Yukan</captainPortraitCode>
+  <leaderObjectId>cbc0d169-122c-4c9a-8d48-b189663f0ca7</leaderObjectId>
   <objectId>4d486d3e-0643-4983-8641-a33434c2a4c5</objectId>
  </ShipLog>
  <ShipLog>
@@ -1806,11 +1725,6 @@
    <japanese>橋立</japanese>
    <chineseSimplified>桥立</chineseSimplified>
   </name>
-  <captain>
-   <english>Hidaka Sōnojō</english>
-   <japanese>日高壮之丞大佐</japanese>
-   <chineseSimplified>日高壮之丞</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -1933,7 +1847,7 @@
   <fateDesc>
    <english>Lost 04/30/1906</english>
   </fateDesc>
-  <captainPortraitCode>Sonojo_Hidaka</captainPortraitCode>
+  <leaderObjectId>8e9f6ed9-97a9-48c3-8cee-0a2c79c272b3</leaderObjectId>
   <objectId>10ae7cc2-8728-40b6-9d4b-4f06087918c6</objectId>
  </ShipLog>
  <ShipLog>
@@ -1943,11 +1857,6 @@
    <japanese>厳島</japanese>
    <chineseSimplified>严岛</chineseSimplified>
   </name>
-  <captain>
-   <english>Arima Shin'ichi</english>
-   <japanese>横尾道昱大佐</japanese>
-   <chineseSimplified>横尾道昱</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -2071,7 +1980,7 @@
    <english>Scrapped 1922</english>
    <japanese />
   </fateDesc>
-  <captainPortraitCode>Arima Shin'ichi</captainPortraitCode>
+  <leaderObjectId>c7c3eb89-2eee-49f2-bd59-4732be768140</leaderObjectId>
   <objectId>1180b828-a3da-4927-ae6a-ea21c6c5c1be</objectId>
  </ShipLog>
  <ShipLog>
@@ -2081,11 +1990,6 @@
    <japanese>比叡</japanese>
    <chineseSimplified>比睿</chineseSimplified>
   </name>
-  <captain>
-   <english>Sakurai Kikunojō</english>
-   <japanese>桜井規矩之左右少佐</japanese>
-   <chineseSimplified>樱井规矩之左右</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -2165,7 +2069,7 @@
   <fateDesc>
    <english>Scrapped 1911</english>
   </fateDesc>
-  <captainPortraitCode>Sakurai_kikunosuke</captainPortraitCode>
+  <leaderObjectId>a190c470-bd54-4f67-afe8-c4113c7c3c98</leaderObjectId>
   <objectId>3e705d71-1239-4963-8946-2aa151d5e57f</objectId>
  </ShipLog>
  <ShipLog>
@@ -2175,11 +2079,6 @@
    <japanese>松島</japanese>
    <chineseSimplified>松岛</chineseSimplified>
   </name>
-  <captain>
-   <english>Omoto Tomomichi</english>
-   <japanese>尾本知道大佐</japanese>
-   <chineseSimplified>梶本知道</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -2297,7 +2196,7 @@
   <fateDesc>
    <english>Scrapped 1927</english>
   </fateDesc>
-  <captainPortraitCode>omoto</captainPortraitCode>
+  <leaderObjectId>56106ddf-e7e5-4a8e-b440-c8c01054485d</leaderObjectId>
   <objectId>e1f10636-ab79-4b42-8316-c3a533f31512</objectId>
  </ShipLog>
  <ShipLog>
@@ -2307,11 +2206,6 @@
    <japanese>高千穂</japanese>
    <chineseSimplified>高千穗</chineseSimplified>
   </name>
-  <captain>
-   <english>Nomura Tadashi</english>
-   <japanese>野村貞大佐</japanese>
-   <chineseSimplified>野村贞</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -2418,7 +2312,7 @@
   <fateDesc>
    <english>Lost 10/17/1914</english>
   </fateDesc>
-  <captainPortraitCode>Nomura_Tadashi</captainPortraitCode>
+  <leaderObjectId>5b4492e9-81be-4d24-be9f-907a98487fa3</leaderObjectId>
   <objectId>25623a6b-a217-4e49-baca-6ea3b7c782a6</objectId>
  </ShipLog>
  <ShipLog>
@@ -2428,11 +2322,6 @@
    <japanese>千代田</japanese>
    <chineseSimplified>千代田</chineseSimplified>
   </name>
-  <captain>
-   <english>Uchida Masatoshi</english>
-   <japanese>内田正敏大佐</japanese>
-   <chineseSimplified>内田正敏</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -2542,7 +2431,7 @@
   <fateDesc>
    <english>Scraapped 1927</english>
   </fateDesc>
-  <captainPortraitCode>Uchida_Masatoshi</captainPortraitCode>
+  <leaderObjectId>8154d513-73ac-4ac8-b33a-cb06872ce875</leaderObjectId>
   <objectId>8c1e5af6-3f33-4f97-8f94-5d8a63785c28</objectId>
  </ShipLog>
  <ShipLog>
@@ -2552,11 +2441,6 @@
    <japanese>広丙</japanese>
    <chineseSimplified>广丙</chineseSimplified>
   </name>
-  <captain>
-   <english>Cheng Biguang</english>
-   <japanese>程璧光</japanese>
-   <chineseSimplified>程璧光</chineseSimplified>
-  </captain>
   <crewRating>0</crewRating>
   <damagePoint>0</damagePoint>
   <position>
@@ -2641,7 +2525,7 @@
   <fateDesc>
    <english>Captured 02/12/1895</english>
   </fateDesc>
-  <captainPortraitCode>Chen_Biguang</captainPortraitCode>
+  <leaderObjectId>46a1ffe4-7a2a-43b0-a44c-d29f71c34629</leaderObjectId>
   <objectId>0cfda6a2-50de-48bf-8aa6-5338375327ef</objectId>
  </ShipLog>
 </ArrayOfShipLog>

@@ -47,8 +47,8 @@
    <chineseSimplified>方伯谦</chineseSimplified>
   </name>
   <portraitCode>Fang_Boqian</portraitCode>
-  <navalStrategic>Unknown</navalStrategic>
-  <navalOperational>Unknown</navalOperational>
+  <navalStrategic>BarelyCompetent</navalStrategic>
+  <navalOperational>BarelyCompetent</navalOperational>
   <navalTactical>BarelyCompetent</navalTactical>
   <traits>
    <LeaderTrait>Coward</LeaderTrait>
@@ -326,7 +326,7 @@
    <chineseSimplified>坪井航三</chineseSimplified>
   </name>
   <portraitCode>Tsuboi_kozo</portraitCode>
-  <navalStrategic>Unknown</navalStrategic>
+  <navalStrategic>AboveAverage</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
   <navalTactical>Average</navalTactical>
   <traits />

@@ -197,7 +197,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
-  <traits />
+  <traits>
+   <LeaderTrait>Coward</LeaderTrait>
+  </traits>
   <objectId>50197d07-3352-4362-9ea5-978742310265</objectId>
  </Leader>
  <Leader>

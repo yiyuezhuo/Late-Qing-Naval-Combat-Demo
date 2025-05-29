@@ -103,6 +103,9 @@ public class GameManager : MonoBehaviour
         var shipClassXml = _load("ShipClasses");
         navalGameState.ShipClassesFromXML(shipClassXml);
 
+        var namedShipsXml = _load("NamedShips");
+        navalGameState.NamedShipsFromXML(namedShipsXml);
+
         var shipLogsXml = _load("ShipLogs");
         navalGameState.ShipLogsFromXML(shipLogsXml);
 
@@ -258,6 +261,18 @@ public class GameManager : MonoBehaviour
             return EntityManager.Instance.Get<Leader>(selectedLeaderObjectId);
         }
     }
+
+    public string selectedNamedShipObjectId;
+
+    [CreateProperty]
+    public NamedShip selectedNamedShip
+    {
+        get
+        {
+            return EntityManager.Instance.Get<NamedShip>(selectedNamedShipObjectId);
+        }
+    }
+
 
     // public int selected
 

@@ -7167,39 +7167,28 @@
    </name>
    <mountLocationRecords>
     <MountLocationRecord>
-     <mountLocation>After</mountLocation>
+     <mountLocation>Forward</mountLocation>
      <barrels>2</barrels>
      <mounts>1</mounts>
      <mountArcs>
-      <MountArcRecord startDeg="120" CoverageDeg="120" isCrossDeckFire="false" />
-     </mountArcs>
-     <useRestAngle>false</useRestAngle>
-     <restAngleDeg>0</restAngleDeg>
-     <trainable>true</trainable>
-     <objectId>bbd82db3-8ea0-48f1-bda5-114f91b074b8</objectId>
-    </MountLocationRecord>
-    <MountLocationRecord>
-     <mountLocation>StarboardMidship</mountLocation>
-     <barrels>1</barrels>
-     <mounts>1</mounts>
-     <mountArcs>
-      <MountArcRecord startDeg="75" CoverageDeg="30" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
      </mountArcs>
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
-     <objectId>739c3897-93e4-4f1c-adef-4d6464162815</objectId>
+     <objectId>bbd82db3-8ea0-48f1-bda5-114f91b074b8</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
      <mountLocation>PortMidship</mountLocation>
      <barrels>1</barrels>
      <mounts>1</mounts>
      <mountArcs>
-      <MountArcRecord startDeg="255" CoverageDeg="30" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
      </mountArcs>
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
-     <trainable>false</trainable>
+     <trainable>true</trainable>
      <objectId>deec5431-f1a1-4278-be32-e5b30dffa67e</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -7280,12 +7269,13 @@
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
   <displacementTons>90</displacementTons>
-  <complementMen>0</complementMen>
-  <lengthFoot>0</lengthFoot>
-  <beamFoot>0</beamFoot>
-  <draftFoot>0</draftFoot>
+  <complementMen>25</complementMen>
+  <lengthFoot>127</lengthFoot>
+  <beamFoot>12</beamFoot>
+  <draftFoot>6.5</draftFoot>
   <builderDesc>
    <english>unnamed</english>
+   <chineseSimplified>英国亚罗船厂</chineseSimplified>
   </builderDesc>
   <engineDesc>
    <english>unnamed</english>
@@ -7304,36 +7294,25 @@
      <barrels>2</barrels>
      <mounts>1</mounts>
      <mountArcs>
-      <MountArcRecord startDeg="300" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>false</trainable>
+     <objectId>99348385-66ce-485d-ad49-05417bb04431</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>Midship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
      </mountArcs>
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>true</trainable>
-     <objectId>99348385-66ce-485d-ad49-05417bb04431</objectId>
-    </MountLocationRecord>
-    <MountLocationRecord>
-     <mountLocation>StarboardMidship</mountLocation>
-     <barrels>1</barrels>
-     <mounts>1</mounts>
-     <mountArcs>
-      <MountArcRecord startDeg="165" CoverageDeg="30" isCrossDeckFire="false" />
-     </mountArcs>
-     <useRestAngle>false</useRestAngle>
-     <restAngleDeg>0</restAngleDeg>
-     <trainable>false</trainable>
      <objectId>d0e8b92e-a0a1-4d6a-80b2-47b621fed274</objectId>
-    </MountLocationRecord>
-    <MountLocationRecord>
-     <mountLocation>PortMidship</mountLocation>
-     <barrels>1</barrels>
-     <mounts>1</mounts>
-     <mountArcs>
-      <MountArcRecord startDeg="255" CoverageDeg="30" isCrossDeckFire="false" />
-     </mountArcs>
-     <useRestAngle>false</useRestAngle>
-     <restAngleDeg>0</restAngleDeg>
-     <trainable>false</trainable>
-     <objectId>2dbfc311-837d-462f-be7b-6ec2d8e8c337</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
    <torpedoSettings>
@@ -7368,7 +7347,7 @@
   <targetSizeModifier>-1</targetSizeModifier>
   <damagePoint>172</damagePoint>
   <speedKnots>24</speedKnots>
-  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
   <speedKnotsEngineRoomsLevels>
    <float>24</float>
   </speedKnotsEngineRoomsLevels>
@@ -7398,6 +7377,9 @@
    <turretVertical effectInch="0" actualInch="0" />
    <superStructureVertical effectInch="0" actualInch="0" />
   </armorRating>
+  <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
+  <portraitCode>Tso I</portraitCode>
+  <portraitTopCode>Tso I_Top</portraitTopCode>
   <objectId>16c25805-fc1e-44c7-8e09-59040e760d4c</objectId>
  </ShipClass>
 </ArrayOfShipClass>

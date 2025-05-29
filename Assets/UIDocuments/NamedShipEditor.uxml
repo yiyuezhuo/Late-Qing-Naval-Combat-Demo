@@ -1,0 +1,95 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" class="panel" style="flex-grow: 1;">
+        <ui:Label text="Named Ship" class="title" />
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 0; flex-basis: 25%; flex-shrink: 0; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:ListView name="NamedShipListView" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/NamedShipLabel.uxml?fileID=9197481963319205126&amp;guid=be84ada722b028f4b8b3547e1e58ed36&amp;type=3#NamedShipLabel" show-add-remove-footer="true" reorderable="true" data-source-path="navalGameState.namedShips" style="flex-grow: 1;" />
+                <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;">
+                    <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
+                        <ui:Button text="Import" name="ImportButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Export" name="ExportButton" style="flex-basis: 50px; flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:Button text="Confirm" name="ConfirmButton" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement data-source-path="selectedNamedShip" style="flex-grow: 1;">
+                <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;">
+                    <ui:TextField label="Ship Class" readonly="true">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="shipClassDesc" binding-mode="ToTarget" />
+                        </Bindings>
+                    </ui:TextField>
+                    <ui:Button text="Select A Class" name="SelectShipClassButton" />
+                </ui:VisualElement>
+                <ui:Label text="Not Selected or binding is not valid">
+                    <Bindings>
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="NamedShip =&gt; DisplayStyle (Not)" />
+                    </Bindings>
+                </ui:Label>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 1.5; flex-basis: 100px;">
+                        <ui:ScrollView>
+                            <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                                <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+                            </ui:Instance>
+                            <ui:TextField label="Defaultr Leader" readonly="true">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="defaultLeaderProp.name.mergedName" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:TextField>
+                            <ui:Button text="Select Default Leader" name="SelectDefaultLeaderButton" />
+                            <ui:SliderInt label="Applicable Year Begin" high-value="1945" low-value="1870" show-input-field="true">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="applicableYearBegin" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:SliderInt>
+                            <ui:SliderInt label="Applicable Year End" high-value="1945" low-value="1870" show-input-field="true">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="applicableYearEnd" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:SliderInt>
+                            <ui:Instance template="GlobalStringEditor" data-source-path="builderDesc">
+                                <AttributeOverrides element-name="GlobalStringLabel" text="Builder" />
+                            </ui:Instance>
+                            <ui:TextField label="Launch" data-source-path="launchedDate" />
+                            <ui:TextField label="Complete" data-source-path="completedDate" />
+                            <ui:Instance template="GlobalStringEditor" data-source-path="fateDesc">
+                                <AttributeOverrides element-name="GlobalStringLabel" text="Fate" />
+                            </ui:Instance>
+                        </ui:ScrollView>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                        <ui:ScrollView>
+                            <ui:VisualElement style="flex-grow: 0; height: 100px; flex-shrink: 0; -unity-background-scale-mode: scale-to-fit;">
+                                <Bindings>
+                                    <ui:DataBinding property="style.backgroundImage" data-source-path="shipClassTopPortraitStyleBackground" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 0; height: 200px; flex-shrink: 0; -unity-background-scale-mode: scale-to-fit;">
+                                <Bindings>
+                                    <ui:DataBinding property="style.backgroundImage" data-source-path="shipClassPortraitStyleBackground" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; height: 100px; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 50px; -unity-background-scale-mode: scale-to-fit;">
+                                    <Bindings>
+                                        <ui:DataBinding property="style.backgroundImage" data-source-path="shipClassCountry" binding-mode="ToTarget" source-to-ui-converters="Country =&gt; StyleBackground" />
+                                    </Bindings>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 50px; -unity-background-scale-mode: scale-to-fit;">
+                                    <Bindings>
+                                        <ui:DataBinding property="style.backgroundImage" data-source-path="defaultLeaderStyleBackground" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:ScrollView>
+                    </ui:VisualElement>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="NamedShip =&gt; DisplayStyle" />
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

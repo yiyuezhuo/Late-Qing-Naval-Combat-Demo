@@ -23,6 +23,7 @@ namespace NavalCombatCore
         public List<Leader> leaders = new();
         public List<ShipClass> shipClasses = new();
         // public List<ShipLog> shipLogs = new() { new() };
+        public List<NamedShip> namedShips = new();
         public List<ShipLog> shipLogs = new();
         // public List<ShipGroup> rootShipGroups = new();
         public List<ShipGroup> shipGroups = new();
@@ -53,6 +54,10 @@ namespace NavalCombatCore
             foreach (var shipClasses in shipClasses)
             {
                 EntityManager.Instance.Register(shipClasses, null);
+            }
+            foreach (var namedShip in namedShips)
+            {
+                EntityManager.Instance.Register(namedShip, null);
             }
             foreach (var shipLog in shipLogs)
             {
@@ -86,6 +91,18 @@ namespace NavalCombatCore
         public void ShipClassesFromXML(string xml)
         {
             shipClasses = XmlUtils.FromXML<List<ShipClass>>(xml);
+
+            ResetAndRegisterAll();
+        }
+
+        public string NamedShipsToXML()
+        {
+            return XmlUtils.ToXML(namedShips);
+        }
+
+        public void NamedShipsFromXML(string xml)
+        {
+            namedShips = XmlUtils.FromXML<List<NamedShip>>(xml);
 
             ResetAndRegisterAll();
         }

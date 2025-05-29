@@ -100,6 +100,16 @@ public static class RegisteredConverters
             return (StyleEnum<DisplayStyle>)(leader == null ? DisplayStyle.Flex : DisplayStyle.None);
         });
 
+        Register("NamedShip => DisplayStyle", (ref NavalCombatCore.NamedShip obj) =>
+        {
+            return (StyleEnum<DisplayStyle>)(obj != null ? DisplayStyle.Flex : DisplayStyle.None);
+        });
+
+        Register("NamedShip => DisplayStyle (Not)", (ref NavalCombatCore.NamedShip obj) =>
+        {
+            return (StyleEnum<DisplayStyle>)(obj == null ? DisplayStyle.Flex : DisplayStyle.None);
+        });
+
         Register("IShipGroupMember'object ID => string", (ref string objectId) =>
         {
             var obj = EntityManager.Instance.Get<IShipGroupMember>(objectId);

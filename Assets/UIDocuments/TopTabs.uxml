@@ -15,6 +15,7 @@
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                     <ui:Button text="Leader Editor" name="LeaderEditorButton" />
                     <ui:Button text="Class Editor" name="ClassEditorButton" />
+                    <ui:Button text="Named Ship Editor" name="NamedShipEditorButton" />
                     <ui:Button text="Ship Log Editor" name="ShipLogEditorButton" />
                     <ui:Button text="OOB Editor" name="OOBEditorButton" />
                 </ui:VisualElement>

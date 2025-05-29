@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System;
-using Unity.VisualScripting;
-using Unity.Profiling;
 
 namespace NavalCombatCore
 {
@@ -40,20 +38,6 @@ namespace NavalCombatCore
             var batteryRecord = battery.GetBatteryRecord();
             if (batteryRecord == null)
                 return null;
-            // var shipLog = EntityManager.Instance.GetParent<ShipLog>(battery);
-            // if (shipLog == null)
-            //     return null;
-
-            // var batteryIndex = shipLog.batteryStatus.IndexOf(battery);
-
-            // var shipClass = shipLog.shipClass;
-            // if (shipClass == null)
-            //     return null;
-
-            // if (batteryIndex < 0 || batteryIndex >= shipClass.batteryRecords.Count)
-            //     return null;
-
-            // var batteryRecord = shipClass.batteryRecords[batteryIndex];
 
             if (mountIdx < 0 || mountIdx >= batteryRecord.mountLocationRecords.Count)
                 return null;

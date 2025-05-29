@@ -21,6 +21,9 @@ public class TopTabs : SingletonDocument<TopTabs>
         var shipClassEditorButton = root.Q<Button>("ClassEditorButton");
         shipClassEditorButton.clicked += () => ShipClassEditor.Instance.Show();
 
+        var namedShipEditorButton = root.Q<Button>("NamedShipEditorButton");
+        namedShipEditorButton.clicked += NamedShipEditor.Instance.Show;
+
         var shipLogEditorButton = root.Q<Button>("ShipLogEditorButton");
         shipLogEditorButton.clicked += () => ShipLogEditor.Instance.Show();
 

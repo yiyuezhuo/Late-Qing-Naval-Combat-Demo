@@ -121,6 +121,61 @@ namespace NavalCombatCore
         [CreateProperty]
         public Leader leaderProp => leader;
     }
+
+    public partial class NamedShip
+    {
+        [CreateProperty]
+        public Leader defaultLeaderProp => defaultLeader;
+
+        [CreateProperty]
+        public StyleBackground defaultLeaderStyleBackground
+        {
+            get
+            {
+                var leader = EntityManager.Instance.Get<Leader>(defaultLeaderObjectId);
+                if (leader == null)
+                    return null;
+                return ResourceManager.GetLeaderPortraitSB(leader.portraitCode);
+            }
+        }
+
+        [CreateProperty]
+        public StyleBackground shipClassPortraitStyleBackground
+        {
+            get
+            {
+                var shipClass = EntityManager.Instance.Get<ShipClass>(shipClassObjectId);
+                var portraitCode = shipClass?.portraitCode;
+                if (portraitCode == null)
+                    return null;
+                return ResourceManager.GetShipPortraitSB(portraitCode);
+            }
+        }
+
+        [CreateProperty]
+        public StyleBackground shipClassTopPortraitStyleBackground
+        {
+            get
+            {
+                var portraitCode = EntityManager.Instance.Get<ShipClass>(shipClassObjectId)?.portraitTopCode;
+                if (portraitCode == null)
+                    return null;
+                return ResourceManager.GetShipPortraitSB(portraitCode);
+            }
+        }
+
+        [CreateProperty]
+        public Country shipClassCountry
+        {
+            get => EntityManager.Instance.Get<ShipClass>(shipClassObjectId)?.country ?? Country.General;
+        }
+
+        [CreateProperty]
+        public string shipClassDesc
+        {
+            get => EntityManager.Instance.Get<ShipClass>(shipClassObjectId)?.name.mergedName ?? "[Not Specified]";
+        }
+    }
 }
 
 

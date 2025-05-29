@@ -21,9 +21,9 @@
    <chineseSimplified>上村彦之丞少佐</chineseSimplified>
   </name>
   <portraitCode>Kamimura_Hikonojo</portraitCode>
-  <navalStrategic>Unknown</navalStrategic>
-  <navalOperational>Unknown</navalOperational>
-  <navalTactical>Average</navalTactical>
+  <navalStrategic>AboveAverage</navalStrategic>
+  <navalOperational>Gifted</navalOperational>
+  <navalTactical>AboveAverage</navalTactical>
   <traits />
   <objectId>43bfbde8-70e0-4d42-8122-3dc082557429</objectId>
  </Leader>
@@ -35,8 +35,8 @@
   </name>
   <portraitCode>Tōgō_Heihachirō</portraitCode>
   <navalStrategic>Gifted</navalStrategic>
-  <navalOperational>Gifted</navalOperational>
-  <navalTactical>Gifted</navalTactical>
+  <navalOperational>AboveAverage</navalOperational>
+  <navalTactical>AboveAverage</navalTactical>
   <traits />
   <objectId>bbdc13c1-a909-411c-b949-ad82485ab108</objectId>
  </Leader>
@@ -88,7 +88,7 @@
    <chineseSimplified>刘步蟾</chineseSimplified>
   </name>
   <portraitCode>Liu_buchan</portraitCode>
-  <navalStrategic>Unknown</navalStrategic>
+  <navalStrategic>Average</navalStrategic>
   <navalOperational>Average</navalOperational>
   <navalTactical>Average</navalTactical>
   <traits />
@@ -316,6 +316,7 @@
   <navalTactical>Average</navalTactical>
   <traits>
    <LeaderTrait>NotFromNavalBackground</LeaderTrait>
+   <LeaderTrait>ExperiencedNavalBureaucrat</LeaderTrait>
   </traits>
   <objectId>18963af7-1163-4323-9421-9f2421c9fee1</objectId>
  </Leader>
@@ -344,5 +345,59 @@
   <navalTactical>Average</navalTactical>
   <traits />
   <objectId>a77bd722-8233-4d1c-a65c-b712c07297d0</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Sakamoto Hachirota</english>
+   <japanese>坂元八郎太少佐</japanese>
+   <chineseSimplified>坂元八郎太</chineseSimplified>
+  </name>
+  <portraitCode>Sakamoto_Hachirōda</portraitCode>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <traits />
+  <objectId>8acb59aa-d09c-4b71-b42e-ab3bc111da1b</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Kanō Yunoshin</english>
+   <japanese>鹿野勇之進少佐</japanese>
+   <chineseSimplified>鹿野勇之进</chineseSimplified>
+  </name>
+  <portraitCode>Kano Yūnosuke</portraitCode>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <traits />
+  <objectId>04b9b1b0-330e-4737-a16e-a6038eeb252d</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Cai Tinggan</english>
+   <japanese>蔡廷幹</japanese>
+   <chineseSimplified>蔡廷干</chineseSimplified>
+  </name>
+  <portraitCode>Cai_Tinggan</portraitCode>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <traits />
+  <objectId>0ffb8288-564a-4a0b-8973-e2d8d3610d21</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Wang Ping</english>
+   <japanese>王平</japanese>
+   <chineseSimplified>王平</chineseSimplified>
+  </name>
+  <portraitCode>Wang Ping_Placeholder</portraitCode>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <traits>
+   <LeaderTrait>Coward</LeaderTrait>
+  </traits>
+  <objectId>dd09a700-93ff-4be0-b68e-06922f8d0098</objectId>
  </Leader>
 </ArrayOfLeader>

@@ -40,7 +40,7 @@
                                                 <ui:VisualElement style="flex-grow: 1; flex-shrink: 1;">
                                                     <ui:TextField label="Captain">
                                                         <Bindings>
-                                                            <ui:DataBinding property="value" data-source-path="leaderProp.name.mergedName" binding-mode="ToTarget" />
+                                                            <ui:DataBinding property="value" binding-mode="ToTarget" source-to-ui-converters="ShipLog =&gt; ShipLog&apos;s captain&apos;s name" />
                                                         </Bindings>
                                                     </ui:TextField>
                                                     <ui:Button text="Set Captain" name="SetCaptainButton" />

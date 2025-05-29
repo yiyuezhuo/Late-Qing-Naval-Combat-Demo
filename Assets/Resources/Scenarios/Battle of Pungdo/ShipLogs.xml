@@ -2528,4 +2528,168 @@
   <leaderObjectId>46a1ffe4-7a2a-43b0-a44c-d29f71c34629</leaderObjectId>
   <objectId>0cfda6a2-50de-48bf-8aa6-5338375327ef</objectId>
  </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>57fcc452-53f4-4f1d-b3dd-8633a6ce391b</shipClassObjectId>
+  <name>
+   <english>Akagi</english>
+   <japanese>赤城</japanese>
+   <chineseSimplified>赤城</chineseSimplified>
+  </name>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <leaderObjectId>8acb59aa-d09c-4b71-b42e-ab3bc111da1b</leaderObjectId>
+  <objectId>e55e1b9a-2cc6-44ab-a656-9b1204d34971</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>54101703-8d0d-4bf5-8993-e01db78b5eb5</shipClassObjectId>
+  <name>
+   <english>Saikyo Maru</english>
+   <japanese>西京丸</japanese>
+   <chineseSimplified>西京丸</chineseSimplified>
+  </name>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <leaderObjectId>04b9b1b0-330e-4737-a16e-a6038eeb252d</leaderObjectId>
+  <objectId>c4bd2221-a6e2-4646-a59e-60c9e392a80b</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>6335ebcc-8d76-46d6-80e6-560390bb5279</shipClassObjectId>
+  <name>
+   <english>Fu Lung</english>
+   <japanese>福龍</japanese>
+   <chineseSimplified>福龙</chineseSimplified>
+  </name>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <leaderObjectId>0ffb8288-564a-4a0b-8973-e2d8d3610d21</leaderObjectId>
+  <objectId>42d0aed7-6e98-4146-b55f-0d5f8940328b</objectId>
+ </ShipLog>
+ <ShipLog>
+  <shipClassObjectId>16c25805-fc1e-44c7-8e09-59040e760d4c</shipClassObjectId>
+  <name>
+   <english>Tso I</english>
+   <japanese>第一号</japanese>
+   <chineseSimplified>左一</chineseSimplified>
+  </name>
+  <crewRating>0</crewRating>
+  <damagePoint>0</damagePoint>
+  <position>
+   <LatDeg>0</LatDeg>
+   <LonDeg>0</LonDeg>
+  </position>
+  <speedKnots>0</speedKnots>
+  <headingDeg>0</headingDeg>
+  <mapState>NotDeployed</mapState>
+  <batteryStatus />
+  <torpedoSectorStatus>
+   <ammunition>0</ammunition>
+   <mountStatus />
+  </torpedoSectorStatus>
+  <rapidFiringStatus />
+  <dynamicStatus>
+   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <engineRoomHits>0</engineRoomHits>
+   <propulsionShaftHits>0</propulsionShaftHits>
+   <boilerRoomHits>0</boilerRoomHits>
+  </dynamicStatus>
+  <searchLightHits>
+   <portHit>0</portHit>
+   <starboardHit>0</starboardHit>
+  </searchLightHits>
+  <damageControlRatingHits>0</damageControlRatingHits>
+  <damageEffectRecords />
+  <shipboardFireStatus />
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <leaderObjectId>dd09a700-93ff-4be0-b68e-06922f8d0098</leaderObjectId>
+  <objectId>f134adc9-f5b7-4d86-88a9-27ecd13b70c8</objectId>
+ </ShipLog>
 </ArrayOfShipLog>

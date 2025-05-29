@@ -133,6 +133,11 @@ public static class RegisteredConverters
                 return null;
             return ResourceManager.GetLeaderPortraitSB(leader.portraitCode);
         });
+
+        Register("ShipLog => ShipLog's captain's name", (ref ShipLog shipLog) =>
+        {
+            return shipLog?.leader?.name.mergedName ?? "[Not Specified]";
+        });
     }
 
     // static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)

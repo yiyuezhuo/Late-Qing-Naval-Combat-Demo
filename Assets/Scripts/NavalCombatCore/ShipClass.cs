@@ -33,7 +33,8 @@ namespace NavalCombatCore
         ArmoredCruiser, // CA
         Destroyer, // DD
         PatrolGunboat, // PG
-        TorpedoBoat // TB
+        TorpedoBoat, // TB
+        ArmedMerchantCruiser // AMC
     }
 
     public enum MountLocation // SEEKRIEG like 3x3 location

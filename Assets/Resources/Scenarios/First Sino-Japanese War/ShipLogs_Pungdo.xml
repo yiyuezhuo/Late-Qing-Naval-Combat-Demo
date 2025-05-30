@@ -105,7 +105,7 @@
    </RapidFiringStatus>
   </rapidFiringStatus>
   <dynamicStatus>
-   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
    <engineRoomHits>0</engineRoomHits>
    <propulsionShaftHits>0</propulsionShaftHits>
    <boilerRoomHits>0</boilerRoomHits>
@@ -221,7 +221,7 @@
    </RapidFiringStatus>
   </rapidFiringStatus>
   <dynamicStatus>
-   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
    <engineRoomHits>0</engineRoomHits>
    <propulsionShaftHits>0</propulsionShaftHits>
    <boilerRoomHits>0</boilerRoomHits>
@@ -327,7 +327,7 @@
    </RapidFiringStatus>
   </rapidFiringStatus>
   <dynamicStatus>
-   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
    <engineRoomHits>0</engineRoomHits>
    <propulsionShaftHits>0</propulsionShaftHits>
    <boilerRoomHits>0</boilerRoomHits>
@@ -423,7 +423,7 @@
    </RapidFiringStatus>
   </rapidFiringStatus>
   <dynamicStatus>
-   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
    <engineRoomHits>0</engineRoomHits>
    <propulsionShaftHits>0</propulsionShaftHits>
    <boilerRoomHits>0</boilerRoomHits>
@@ -507,7 +507,7 @@
    </RapidFiringStatus>
   </rapidFiringStatus>
   <dynamicStatus>
-   <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+   <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
    <engineRoomHits>0</engineRoomHits>
    <propulsionShaftHits>0</propulsionShaftHits>
    <boilerRoomHits>0</boilerRoomHits>

@@ -12,7 +12,7 @@
                 </ui:Columns>
             </ui:MultiColumnListView>
         </ui:ScrollView>
-        <ui:VisualElement style="flex-direction: row;">
+        <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
             <ui:Button text="Confirm" name="ConfirmButton" style="flex-basis: 50px; flex-grow: 1;" />
             <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;" />
         </ui:VisualElement>

@@ -1770,7 +1770,7 @@
     </MountLocationRecord>
     <MountLocationRecord>
      <mountLocation>After</mountLocation>
-     <barrels>0</barrels>
+     <barrels>1</barrels>
      <mounts>1</mounts>
      <mountArcs>
       <MountArcRecord startDeg="165" CoverageDeg="30" isCrossDeckFire="false" />

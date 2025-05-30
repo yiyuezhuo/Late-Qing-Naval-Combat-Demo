@@ -1,6 +1,410 @@
 <?xml version="1.0" encoding="utf-16"?>
 <FullState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <navalGameState>
+  <leaders>
+   <Leader>
+    <name>
+     <english>Kawara Yōichi</english>
+     <japanese>河原要一大佐</japanese>
+     <chineseSimplified>河原要一大佐</chineseSimplified>
+     <chineseTraditional />
+    </name>
+    <portraitCode>Kawahara_Yoichi</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>a78127f5-61f9-450b-8013-1f57bfbaef42</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Kamimura Hikonojō</english>
+     <japanese>上村彦之丞少佐</japanese>
+     <chineseSimplified>上村彦之丞少佐</chineseSimplified>
+    </name>
+    <portraitCode>Kamimura_Hikonojo</portraitCode>
+    <navalStrategic>AboveAverage</navalStrategic>
+    <navalOperational>Gifted</navalOperational>
+    <navalTactical>AboveAverage</navalTactical>
+    <traits />
+    <objectId>43bfbde8-70e0-4d42-8122-3dc082557429</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Togo Heihachiro</english>
+     <japanese>東郷平八郎大佐</japanese>
+     <chineseSimplified>东乡平八郎大佐</chineseSimplified>
+    </name>
+    <portraitCode>Tōgō_Heihachirō</portraitCode>
+    <navalStrategic>Gifted</navalStrategic>
+    <navalOperational>AboveAverage</navalOperational>
+    <navalTactical>AboveAverage</navalTactical>
+    <traits />
+    <objectId>bbdc13c1-a909-411c-b949-ad82485ab108</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Fang Boqian</english>
+     <japanese>方伯謙</japanese>
+     <chineseSimplified>方伯谦</chineseSimplified>
+    </name>
+    <portraitCode>Fang_Boqian</portraitCode>
+    <navalStrategic>BarelyCompetent</navalStrategic>
+    <navalOperational>BarelyCompetent</navalOperational>
+    <navalTactical>BarelyCompetent</navalTactical>
+    <traits>
+     <LeaderTrait>Coward</LeaderTrait>
+    </traits>
+    <objectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Lin Kuohsiang</english>
+     <japanese>林国祥</japanese>
+     <chineseSimplified>林国祥</chineseSimplified>
+    </name>
+    <portraitCode>Lin_Guoxiang</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>f3e417c3-89d7-4a71-a8b8-84c408d0cb05</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Lin Taizen</english>
+     <japanese>林泰曽</japanese>
+     <chineseSimplified>林泰曾</chineseSimplified>
+    </name>
+    <portraitCode>Lin_Taizeng</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>ee91367d-d291-4bad-81f1-b4aa5b1d5bd0</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Liu Buchan</english>
+     <japanese>劉歩蟾</japanese>
+     <chineseSimplified>刘步蟾</chineseSimplified>
+    </name>
+    <portraitCode>Liu_buchan</portraitCode>
+    <navalStrategic>Average</navalStrategic>
+    <navalOperational>Average</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>67623f92-366e-4f7f-a31e-a988494d9bdf</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Lin lvzhong</english>
+     <japanese>林履中</japanese>
+     <chineseSimplified>林履中</chineseSimplified>
+    </name>
+    <portraitCode>Lin_lvzhong</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>571f00c5-74c3-42c7-bae4-be54f44d2b76</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Huang Jianxun</english>
+     <japanese>黄建勲</japanese>
+     <chineseSimplified>黄建勋</chineseSimplified>
+    </name>
+    <portraitCode>Huang_Jianxun</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>96b1f018-4a92-4ef0-81b1-b6b3dc1ff3ed</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Ye Zugui</english>
+     <japanese>葉祖珪</japanese>
+     <chineseSimplified>叶祖珪</chineseSimplified>
+    </name>
+    <portraitCode>Ye_Zugui</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>2038e8d1-4ca4-4719-9a65-eea886fd0d2c</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Deng Shichang</english>
+     <japanese>鄧世昌</japanese>
+     <chineseSimplified>邓世昌</chineseSimplified>
+    </name>
+    <portraitCode>Deng_Shichang</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits>
+     <LeaderTrait>Brave</LeaderTrait>
+    </traits>
+    <objectId>ca6e9344-d40e-4a16-8ee1-82ae8d5dbdb4</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Ling Yongshen</english>
+     <japanese>林永升</japanese>
+     <chineseSimplified>林永升</chineseSimplified>
+    </name>
+    <portraitCode>Lin_Yongsheng</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>ad05fef6-dae8-457e-9f31-e7166a09aede</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Qiu Baoren</english>
+     <japanese>丘宝仁</japanese>
+     <chineseSimplified>丘宝仁</chineseSimplified>
+    </name>
+    <portraitCode>Qiu_Baoren</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>19df649e-5f8a-4c29-b42a-936d15b4c8fe</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Li He</english>
+     <japanese>李和</japanese>
+     <chineseSimplified>李和</chineseSimplified>
+    </name>
+    <portraitCode>Li He</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>a30c7e56-bf11-44b2-8f99-febd99701a42</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Wu Jingrong</english>
+     <japanese>呉敬栄</japanese>
+     <chineseSimplified>吴敬荣</chineseSimplified>
+    </name>
+    <portraitCode>Wu_Jingrong</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits>
+     <LeaderTrait>Coward</LeaderTrait>
+    </traits>
+    <objectId>50197d07-3352-4362-9ea5-978742310265</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Arai Yukan</english>
+     <japanese>新井有貫大佐</japanese>
+     <chineseSimplified>新井有贯</chineseSimplified>
+    </name>
+    <portraitCode>Arai_Yukan</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>cbc0d169-122c-4c9a-8d48-b189663f0ca7</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Hidaka Sōnojō</english>
+     <japanese>日高壮之丞大佐</japanese>
+     <chineseSimplified>日高壮之丞</chineseSimplified>
+    </name>
+    <portraitCode>Sonojo_Hidaka</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>8e9f6ed9-97a9-48c3-8cee-0a2c79c272b3</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Arima Shin'ichi</english>
+     <japanese>横尾道昱大佐</japanese>
+     <chineseSimplified>横尾道昱</chineseSimplified>
+    </name>
+    <portraitCode>Arima Shin'ichi</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>c7c3eb89-2eee-49f2-bd59-4732be768140</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Sakurai Kikunojō</english>
+     <japanese>桜井規矩之左右少佐</japanese>
+     <chineseSimplified>樱井规矩之左右</chineseSimplified>
+    </name>
+    <portraitCode>Sakurai_kikunosuke</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>a190c470-bd54-4f67-afe8-c4113c7c3c98</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Omoto Tomomichi</english>
+     <japanese>尾本知道大佐</japanese>
+     <chineseSimplified>梶本知道</chineseSimplified>
+    </name>
+    <portraitCode>omoto</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>56106ddf-e7e5-4a8e-b440-c8c01054485d</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Nomura Tadashi</english>
+     <japanese>野村貞大佐</japanese>
+     <chineseSimplified>野村贞</chineseSimplified>
+    </name>
+    <portraitCode>Nomura_Tadashi</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>5b4492e9-81be-4d24-be9f-907a98487fa3</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Uchida Masatoshi</english>
+     <japanese>内田正敏大佐</japanese>
+     <chineseSimplified>内田正敏</chineseSimplified>
+    </name>
+    <portraitCode>Uchida_Masatoshi</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>8154d513-73ac-4ac8-b33a-cb06872ce875</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Cheng Biguang</english>
+     <japanese>程璧光</japanese>
+     <chineseSimplified>程璧光</chineseSimplified>
+    </name>
+    <portraitCode>Chen_Biguang</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>46a1ffe4-7a2a-43b0-a44c-d29f71c34629</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Ding Ruchang</english>
+     <japanese>丁汝昌</japanese>
+     <chineseSimplified>丁汝昌</chineseSimplified>
+    </name>
+    <portraitCode>Ding_Ruchang</portraitCode>
+    <navalStrategic>Average</navalStrategic>
+    <navalOperational>Average</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits>
+     <LeaderTrait>NotFromNavalBackground</LeaderTrait>
+     <LeaderTrait>ExperiencedNavalBureaucrat</LeaderTrait>
+    </traits>
+    <objectId>18963af7-1163-4323-9421-9f2421c9fee1</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Tsuboi Kōzō</english>
+     <japanese>坪井航三海軍少将</japanese>
+     <chineseSimplified>坪井航三</chineseSimplified>
+    </name>
+    <portraitCode>Tsuboi_kozo</portraitCode>
+    <navalStrategic>AboveAverage</navalStrategic>
+    <navalOperational>AboveAverage</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Itō Sukeyuki</english>
+     <japanese>伊東祐亨中将</japanese>
+     <chineseSimplified>伊东祐亨</chineseSimplified>
+    </name>
+    <portraitCode>Itoh_Sukeyuki</portraitCode>
+    <navalStrategic>AboveAverage</navalStrategic>
+    <navalOperational>Average</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>a77bd722-8233-4d1c-a65c-b712c07297d0</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Sakamoto Hachirota</english>
+     <japanese>坂元八郎太少佐</japanese>
+     <chineseSimplified>坂元八郎太</chineseSimplified>
+    </name>
+    <portraitCode>Sakamoto_Hachirōda</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>8acb59aa-d09c-4b71-b42e-ab3bc111da1b</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Kanō Yunoshin</english>
+     <japanese>鹿野勇之進少佐</japanese>
+     <chineseSimplified>鹿野勇之进</chineseSimplified>
+    </name>
+    <portraitCode>Kano Yūnosuke</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>04b9b1b0-330e-4737-a16e-a6038eeb252d</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Cai Tinggan</english>
+     <japanese>蔡廷幹</japanese>
+     <chineseSimplified>蔡廷干</chineseSimplified>
+    </name>
+    <portraitCode>Cai_Tinggan</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits />
+    <objectId>0ffb8288-564a-4a0b-8973-e2d8d3610d21</objectId>
+   </Leader>
+   <Leader>
+    <name>
+     <english>Wang Ping</english>
+     <japanese>王平</japanese>
+     <chineseSimplified>王平</chineseSimplified>
+    </name>
+    <portraitCode>Wang Ping_Placeholder</portraitCode>
+    <navalStrategic>Unknown</navalStrategic>
+    <navalOperational>Unknown</navalOperational>
+    <navalTactical>Average</navalTactical>
+    <traits>
+     <LeaderTrait>Coward</LeaderTrait>
+    </traits>
+    <objectId>dd09a700-93ff-4be0-b68e-06922f8d0098</objectId>
+   </Leader>
+  </leaders>
   <shipClasses>
    <ShipClass>
     <name>
@@ -507,6 +911,8 @@
      <superStructureVertical effectInch="0.6" actualInch="0.8" />
     </armorRating>
     <portraitUrl>https://upload.wikimedia.org/wikipedia/commons/2/24/Yoshino_The-Naval-Annual1897.jpg</portraitUrl>
+    <portraitCode>Yoshino</portraitCode>
+    <portraitTopCode>Yoshino_Top</portraitTopCode>
     <objectId>fcf5997b-fe22-49ad-9e5b-70080d2221a9</objectId>
    </ShipClass>
    <ShipClass>
@@ -1001,6 +1407,8 @@
      <superStructureVertical effectInch="0.4" actualInch="0.5" />
     </armorRating>
     <portraitUrl>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima#/media/File:Akitsushima_plan_1904.png</portraitUrl>
+    <portraitCode>Akitsushima</portraitCode>
+    <portraitTopCode>Akitsushima_Top</portraitTopCode>
     <objectId>6197af50-741d-4f54-881a-f0eeec00996f</objectId>
    </ShipClass>
    <ShipClass>
@@ -1447,6 +1855,8 @@
      <superStructureVertical effectInch="1.1" actualInch="1.5" />
     </armorRating>
     <portraitUrl>https://en.wikipedia.org/wiki/Japanese_cruiser_Naniwa#/media/File:Naniwa_class_cruiser_left_elevation_and_deck_plan_Brasseys_1888.jpg</portraitUrl>
+    <portraitCode>Naniwa</portraitCode>
+    <portraitTopCode>Naniwa_Top</portraitTopCode>
     <objectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</objectId>
    </ShipClass>
    <ShipClass>
@@ -1857,7 +2267,9 @@
      <turretVertical effectInch="1" actualInch="1.5" />
      <superStructureVertical effectInch="1.3" actualInch="1.9" />
     </armorRating>
-    <portraitUrl>https://www.the-blueprints.com/blueprints/ships/cruisers/65846/view/china_-_chih_yuan_protected_cruiser/</portraitUrl>
+    <portraitUrl>https://www.the-blueprints.com/blueprints/ships/ships-china/90585/view/china_-_rocn_jiyuan_protected_cruiser_1895/</portraitUrl>
+    <portraitCode>Chi Yuan</portraitCode>
+    <portraitTopCode>Chi Yuan_Top</portraitTopCode>
     <objectId>84de785d-a41c-4993-973a-d167876f343b</objectId>
    </ShipClass>
    <ShipClass>
@@ -2169,6 +2581,9 @@
      <turretVertical effectInch="0" actualInch="0" />
      <superStructureVertical effectInch="0.1" actualInch="0.2" />
     </armorRating>
+    <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
+    <portraitCode>Kuang Yi</portraitCode>
+    <portraitTopCode>Kuang Yi_Top</portraitTopCode>
     <objectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</objectId>
    </ShipClass>
    <ShipClass>
@@ -2194,7 +2609,7 @@
     </builderDesc>
     <engineDesc>
      <english>2-shaft HCR</english>
-     <japanese>	水平型2段膨張式3気筒レシプロ機関×2基</japanese>
+     <japanese>水平型2段膨張式3気筒レシプロ機関×2基</japanese>
      <chineseSimplified>2座复合平卧式蒸汽机，双轴推进</chineseSimplified>
      <chineseTraditional>兩台康邦卧式三氣缸往復式蒸汽機，雙螺旋槳推進</chineseTraditional>
     </engineDesc>
@@ -2605,6 +3020,8 @@
      <superStructureVertical effectInch="2.8" actualInch="4.2" />
     </armorRating>
     <portraitUrl>https://en.wikipedia.org/wiki/File:Japanese_battleship_Chen_Yuen.jpg</portraitUrl>
+    <portraitCode>Ting Yuen</portraitCode>
+    <portraitTopCode>Ting Yuen_Top</portraitTopCode>
     <objectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</objectId>
    </ShipClass>
    <ShipClass>
@@ -2998,7 +3415,9 @@
      <turretVertical effectInch="0.8" actualInch="1" />
      <superStructureVertical effectInch="0.1" actualInch="0.1" />
     </armorRating>
-    <portraitUrl>https://zh.wikipedia.org/wiki/File:Chaoyong2.jpg</portraitUrl>
+    <portraitUrl>https://www.tynebuiltships.co.uk/C-Ships/chaoyung1881.html</portraitUrl>
+    <portraitCode>Chao Yong</portraitCode>
+    <portraitTopCode>Chao Yong_Top</portraitTopCode>
     <objectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</objectId>
    </ShipClass>
    <ShipClass>
@@ -3448,6 +3867,9 @@
      <turretVertical effectInch="1.5" actualInch="2" />
      <superStructureVertical effectInch="0.3" actualInch="0.4" />
     </armorRating>
+    <portraitUrl>https://forum.warthunder.com/t/qing-dynasty-beiyang-fleet-zhiyuan-chih-yuen-protected-cruiser/17129</portraitUrl>
+    <portraitCode>Chih Yuan</portraitCode>
+    <portraitTopCode>Chih Yuan_Top</portraitTopCode>
     <objectId>0208979d-6075-4877-98ef-fa0adc0df9ed</objectId>
    </ShipClass>
    <ShipClass>
@@ -3841,6 +4263,9 @@
      <turretVertical effectInch="1" actualInch="1.5" />
      <superStructureVertical effectInch="2.3" actualInch="3.4" />
     </armorRating>
+    <portraitUrl>https://www.the-blueprints.com/blueprints/ships/ships-china/49091/view/china_-_king_yuan_protected_cruiser_1884/</portraitUrl>
+    <portraitCode>King Yuan</portraitCode>
+    <portraitTopCode>King Yuan_Top</portraitTopCode>
     <objectId>7cfe4fb1-5a4a-486f-acd8-27301ef8af77</objectId>
    </ShipClass>
    <ShipClass>
@@ -4239,6 +4664,9 @@
      <turretVertical effectInch="1.1" actualInch="1.5" />
      <superStructureVertical effectInch="2.5" actualInch="3.4" />
     </armorRating>
+    <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
+    <portraitCode>Ping Yuen</portraitCode>
+    <portraitTopCode>Ping Yuen_Top</portraitTopCode>
     <objectId>c9332796-cb5f-4d0c-a0e9-b05bc5c05c56</objectId>
    </ShipClass>
    <ShipClass>
@@ -4610,6 +5038,9 @@
      <turretVertical effectInch="0" actualInch="0" />
      <superStructureVertical effectInch="0" actualInch="0" />
     </armorRating>
+    <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
+    <portraitCode>Kuang Chia</portraitCode>
+    <portraitTopCode>Kuang Chia_Top</portraitTopCode>
     <objectId>8cb2764f-61b3-4a5d-b992-1f795e2887c6</objectId>
    </ShipClass>
    <ShipClass>
@@ -4829,8 +5260,8 @@
       <maxRangeYards>7000</maxRangeYards>
       <effectiveRangeYards>3150</effectiveRangeYards>
       <fireControlRecords>
-       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="6" fireControlEffectiveRange="4" />
-       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="3" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
       </fireControlRecords>
       <damageFactor>7</damageFactor>
       <barrelsLevelPort>
@@ -4883,6 +5314,9 @@
      <turretVertical effectInch="6" actualInch="8" />
      <superStructureVertical effectInch="1.6" actualInch="2.2" />
     </armorRating>
+    <portraitUrl>https://combrig-models.com/index.php/1700/65-japanese-navy-1860-1918/518-fuso1900</portraitUrl>
+    <portraitCode>Fuso</portraitCode>
+    <portraitTopCode>Fuso_Top</portraitTopCode>
     <objectId>0d9558bb-88c1-4021-8a3a-209d98a54419</objectId>
    </ShipClass>
    <ShipClass>
@@ -5306,8 +5740,8 @@
       <maxRangeYards>7500</maxRangeYards>
       <effectiveRangeYards>3375</effectiveRangeYards>
       <fireControlRecords>
-       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="6" fireControlEffectiveRange="4" />
-       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="3" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
       </fireControlRecords>
       <damageFactor>11</damageFactor>
       <barrelsLevelPort>
@@ -5331,8 +5765,8 @@
       <maxRangeYards>7000</maxRangeYards>
       <effectiveRangeYards>3150</effectiveRangeYards>
       <fireControlRecords>
-       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="6" fireControlEffectiveRange="4" />
-       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="3" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
       </fireControlRecords>
       <damageFactor>7</damageFactor>
       <barrelsLevelPort>
@@ -5387,6 +5821,8 @@
      <superStructureVertical effectInch="1.1" actualInch="1.4" />
     </armorRating>
     <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Itsukushima_Brasseys1902.png</portraitUrl>
+    <portraitCode>Itsukushima</portraitCode>
+    <portraitTopCode>Itsukushima_Top</portraitTopCode>
     <objectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</objectId>
    </ShipClass>
    <ShipClass>
@@ -5611,8 +6047,8 @@
       <maxRangeYards>3000</maxRangeYards>
       <effectiveRangeYards>1350</effectiveRangeYards>
       <fireControlRecords>
-       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="6" fireControlEffectiveRange="4" />
-       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="3" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="4" />
       </fireControlRecords>
       <damageFactor>4</damageFactor>
       <barrelsLevelPort>
@@ -5660,6 +6096,8 @@
      <turretVertical effectInch="0" actualInch="0" />
      <superStructureVertical effectInch="0.6" actualInch="1" />
     </armorRating>
+    <portraitCode>Kongo_Top</portraitCode>
+    <portraitTopCode>Kongo_Top</portraitTopCode>
     <objectId>a333035a-806e-4246-b57f-157148f73332</objectId>
    </ShipClass>
    <ShipClass>
@@ -5667,6 +6105,7 @@
      <english>Matsushima</english>
      <japanese>松島</japanese>
      <chineseSimplified>松岛</chineseSimplified>
+     <chineseTraditional />
     </name>
     <type>ArmoredCruiser</type>
     <country>Japan</country>
@@ -6069,8 +6508,8 @@
       <maxRangeYards>7500</maxRangeYards>
       <effectiveRangeYards>3375</effectiveRangeYards>
       <fireControlRecords>
-       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="6" fireControlEffectiveRange="4" />
-       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="3" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
       </fireControlRecords>
       <damageFactor>11</damageFactor>
       <barrelsLevelPort>
@@ -6095,8 +6534,8 @@
       <maxRangeYards>3000</maxRangeYards>
       <effectiveRangeYards>1350</effectiveRangeYards>
       <fireControlRecords>
-       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="6" fireControlEffectiveRange="4" />
-       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="3" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
       </fireControlRecords>
       <damageFactor>4</damageFactor>
       <barrelsLevelPort>
@@ -6148,6 +6587,9 @@
      <turretVertical effectInch="9.4" actualInch="12" />
      <superStructureVertical effectInch="1.1" actualInch="1.4" />
     </armorRating>
+    <portraitUrl>https://naval-encyclopedia.com/industrial-era/1890-fleets/japan/matsushima-class_cruiser.php</portraitUrl>
+    <portraitCode>Matsushima</portraitCode>
+    <portraitTopCode>Matsushima_Top</portraitTopCode>
     <objectId>5d05cc6f-6559-4d69-b29d-2eeab1139643</objectId>
    </ShipClass>
    <ShipClass>
@@ -6459,8 +6901,8 @@
       <maxRangeYards>7000</maxRangeYards>
       <effectiveRangeYards>3150</effectiveRangeYards>
       <fireControlRecords>
-       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="6" fireControlEffectiveRange="4" />
-       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="3" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="4" />
       </fireControlRecords>
       <damageFactor>7</damageFactor>
       <barrelsLevelPort>
@@ -6515,23 +6957,1426 @@
      <superStructureVertical effectInch="0.6" actualInch="0.8" />
     </armorRating>
     <portraitUrl>https://zh.wikipedia.org/wiki/%E5%8D%83%E4%BB%A3%E7%94%B0%E8%99%9F%E9%98%B2%E8%AD%B7%E5%B7%A1%E6%B4%8B%E8%89%A6#/media/File:Chiyoda_plan_1904.png</portraitUrl>
+    <portraitCode>Chiyoda</portraitCode>
+    <portraitTopCode>Chiyoda_Top</portraitTopCode>
     <objectId>93917b3f-9a77-4307-8ed2-945de9b551c9</objectId>
    </ShipClass>
+   <ShipClass>
+    <name>
+     <english>Maya</english>
+     <japanese>摩耶</japanese>
+     <chineseSimplified>摩耶</chineseSimplified>
+    </name>
+    <type>PatrolGunboat</type>
+    <country>Japan</country>
+    <applicableYearBegin>1890</applicableYearBegin>
+    <applicableYearEnd>1894</applicableYearEnd>
+    <displacementTons>612</displacementTons>
+    <complementMen>104</complementMen>
+    <lengthFoot>154</lengthFoot>
+    <beamFoot>28</beamFoot>
+    <draftFoot>9.8</draftFoot>
+    <builderDesc>
+     <english>Onohama, Boke</english>
+    </builderDesc>
+    <engineDesc>
+     <english>HC</english>
+    </engineDesc>
+    <boilersDesc>
+     <english>2 Cylindrical</english>
+    </boilersDesc>
+    <batteryRecords>
+     <BatteryRecord>
+      <name>
+       <english>21cm RKL/22 C/67</english>
+      </name>
+      <damageRating>23</damageRating>
+      <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
+      <fireControlPositions>0</fireControlPositions>
+      <fireControlType>
+       <gunSight>Basic</gunSight>
+       <fireControlInstrument>None</fireControlInstrument>
+       <rangeFinder>None</rangeFinder>
+       <directorControl>None</directorControl>
+       <stabilization>Manual</stabilization>
+       <powerRemoteControl>None</powerRemoteControl>
+      </fireControlType>
+      <rangeYards>6124</rangeYards>
+      <fireControlRadarModifier>0</fireControlRadarModifier>
+      <fireControlRadarName>
+       <english>None</english>
+      </fireControlRadarName>
+      <shellSizeInch>8.3</shellSizeInch>
+      <shellWeightPounds>217.2</shellWeightPounds>
+      <ammunitionCapacity>50</ammunitionCapacity>
+      <fireControlTableRecords>
+       <FireControlTableRecord>
+        <speedThresholdKnot>9</speedThresholdKnot>
+        <shortBroad>7</shortBroad>
+        <shortNarrow>4</shortNarrow>
+        <mediumBroad>4</mediumBroad>
+        <mediumNarrow>3</mediumNarrow>
+        <longBroad>3</longBroad>
+        <longNarrow>2</longNarrow>
+        <extremeBroad>2</extremeBroad>
+        <extremeNarrow>1</extremeNarrow>
+       </FireControlTableRecord>
+       <FireControlTableRecord>
+        <speedThresholdKnot>18</speedThresholdKnot>
+        <shortBroad>5</shortBroad>
+        <shortNarrow>3</shortNarrow>
+        <mediumBroad>3</mediumBroad>
+        <mediumNarrow>2</mediumNarrow>
+        <longBroad>2</longBroad>
+        <longNarrow>1</longNarrow>
+        <extremeBroad>2</extremeBroad>
+        <extremeNarrow>1</extremeNarrow>
+       </FireControlTableRecord>
+       <FireControlTableRecord>
+        <speedThresholdKnot>27</speedThresholdKnot>
+        <shortBroad>4</shortBroad>
+        <shortNarrow>2</shortNarrow>
+        <mediumBroad>2</mediumBroad>
+        <mediumNarrow>1</mediumNarrow>
+        <longBroad>2</longBroad>
+        <longNarrow>1</longNarrow>
+        <extremeBroad>1</extremeBroad>
+        <extremeNarrow>1</extremeNarrow>
+       </FireControlTableRecord>
+       <FireControlTableRecord>
+        <speedThresholdKnot>36</speedThresholdKnot>
+        <shortBroad>3</shortBroad>
+        <shortNarrow>2</shortNarrow>
+        <mediumBroad>2</mediumBroad>
+        <mediumNarrow>1</mediumNarrow>
+        <longBroad>1</longBroad>
+        <longNarrow>1</longNarrow>
+        <extremeBroad>1</extremeBroad>
+        <extremeNarrow>1</extremeNarrow>
+       </FireControlTableRecord>
+       <FireControlTableRecord>
+        <speedThresholdKnot>45</speedThresholdKnot>
+        <shortBroad>3</shortBroad>
+        <shortNarrow>2</shortNarrow>
+        <mediumBroad>2</mediumBroad>
+        <mediumNarrow>1</mediumNarrow>
+        <longBroad>1</longBroad>
+        <longNarrow>1</longNarrow>
+        <extremeBroad>1</extremeBroad>
+        <extremeNarrow>1</extremeNarrow>
+       </FireControlTableRecord>
+      </fireControlTableRecords>
+      <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+      <penetrationTableRecords>
+       <PenetrationTableRecord>
+        <distanceYards>2000</distanceYards>
+        <rateOfFire>1.6</rateOfFire>
+        <rangeBand>Short</rangeBand>
+        <horizontalPenetrationInchs>0.4</horizontalPenetrationInchs>
+        <verticalPenetrationInchs>4.7</verticalPenetrationInchs>
+       </PenetrationTableRecord>
+       <PenetrationTableRecord>
+        <distanceYards>4000</distanceYards>
+        <rateOfFire>1.6</rateOfFire>
+        <rangeBand>Medium</rangeBand>
+        <horizontalPenetrationInchs>0.7</horizontalPenetrationInchs>
+        <verticalPenetrationInchs>3.7</verticalPenetrationInchs>
+       </PenetrationTableRecord>
+       <PenetrationTableRecord>
+        <distanceYards>6000</distanceYards>
+        <rateOfFire>1.6</rateOfFire>
+        <rangeBand>Medium</rangeBand>
+        <horizontalPenetrationInchs>0.8</horizontalPenetrationInchs>
+        <verticalPenetrationInchs>3.2</verticalPenetrationInchs>
+       </PenetrationTableRecord>
+       <PenetrationTableRecord>
+        <distanceYards>8000</distanceYards>
+        <rateOfFire>1.6</rateOfFire>
+        <rangeBand>Medium</rangeBand>
+        <horizontalPenetrationInchs>0.8</horizontalPenetrationInchs>
+        <verticalPenetrationInchs>3.1</verticalPenetrationInchs>
+       </PenetrationTableRecord>
+      </penetrationTableRecords>
+      <mountLocationRecords>
+       <MountLocationRecord>
+        <mountLocation>Forward</mountLocation>
+        <barrels>1</barrels>
+        <mounts>1</mounts>
+        <mountArcs>
+         <MountArcRecord startDeg="240" CoverageDeg="240" isCrossDeckFire="false" />
+        </mountArcs>
+        <useRestAngle>false</useRestAngle>
+        <restAngleDeg>0</restAngleDeg>
+        <trainable>false</trainable>
+        <objectId>8972782d-0bc4-4d9a-850d-c46c783b35eb</objectId>
+       </MountLocationRecord>
+      </mountLocationRecords>
+      <objectId>f6fad67e-129b-4894-a9ec-5b7b225729db</objectId>
+     </BatteryRecord>
+     <BatteryRecord>
+      <name>
+       <english>12cm/25 Krupp C/78</english>
+      </name>
+      <damageRating>12</damageRating>
+      <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
+      <fireControlPositions>0</fireControlPositions>
+      <fireControlType>
+       <gunSight>Basic</gunSight>
+       <fireControlInstrument>None</fireControlInstrument>
+       <rangeFinder>None</rangeFinder>
+       <directorControl>None</directorControl>
+       <stabilization>Manual</stabilization>
+       <powerRemoteControl>None</powerRemoteControl>
+      </fireControlType>
+      <rangeYards>5711</rangeYards>
+      <fireControlRadarModifier>0</fireControlRadarModifier>
+      <fireControlRadarName>
+       <english>None</english>
+      </fireControlRadarName>
+      <shellSizeInch>4.7</shellSizeInch>
+      <shellWeightPounds>44.1</shellWeightPounds>
+      <ammunitionCapacity>60</ammunitionCapacity>
+      <fireControlTableRecords>
+       <FireControlTableRecord>
+        <speedThresholdKnot>9</speedThresholdKnot>
+        <shortBroad>6</shortBroad>
+        <shortNarrow>3</shortNarrow>
+        <mediumBroad>3</mediumBroad>
+        <mediumNarrow>2</mediumNarrow>
+        <longBroad>2</longBroad>
+        <longNarrow>1</longNarrow>
+        <extremeBroad>2</extremeBroad>
+        <extremeNarrow>1</extremeNarrow>
+       </FireControlTableRecord>
+       <FireControlTableRecord>
+        <speedThresholdKnot>18</speedThresholdKnot>
+        <shortBroad>4</shortBroad>
+        <shortNarrow>2</shortNarrow>
+        <mediumBroad>2</mediumBroad>
+        <mediumNarrow>1</mediumNarrow>
+        <longBroad>2</longBroad>
+        <longNarrow>1</longNarrow>
+        <extremeBroad>1</extremeBroad>
+        <extremeNarrow>1</extremeNarrow>
+       </FireControlTableRecord>
+       <FireControlTableRecord>
+        <speedThresholdKnot>27</speedThresholdKnot>
+        <shortBroad>3</shortBroad>
+        <shortNarrow>2</shortNarrow>
+        <mediumBroad>2</mediumBroad>
+        <mediumNarrow>1</mediumNarrow>
+        <longBroad>1</longBroad>
+        <longNarrow>1</longNarrow>
+        <extremeBroad>1</extremeBroad>
+        <extremeNarrow>1</extremeNarrow>
+       </FireControlTableRecord>
+       <FireControlTableRecord>
+        <speedThresholdKnot>36</speedThresholdKnot>
+        <shortBroad>2</shortBroad>
+        <shortNarrow>1</shortNarrow>
+        <mediumBroad>1</mediumBroad>
+        <mediumNarrow>1</mediumNarrow>
+        <longBroad>1</longBroad>
+        <longNarrow>1</longNarrow>
+        <extremeBroad>1</extremeBroad>
+        <extremeNarrow>0</extremeNarrow>
+       </FireControlTableRecord>
+       <FireControlTableRecord>
+        <speedThresholdKnot>45</speedThresholdKnot>
+        <shortBroad>2</shortBroad>
+        <shortNarrow>1</shortNarrow>
+        <mediumBroad>1</mediumBroad>
+        <mediumNarrow>1</mediumNarrow>
+        <longBroad>1</longBroad>
+        <longNarrow>1</longNarrow>
+        <extremeBroad>1</extremeBroad>
+        <extremeNarrow>0</extremeNarrow>
+       </FireControlTableRecord>
+      </fireControlTableRecords>
+      <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+      <penetrationTableRecords>
+       <PenetrationTableRecord>
+        <distanceYards>2000</distanceYards>
+        <rateOfFire>6</rateOfFire>
+        <rangeBand>Medium</rangeBand>
+        <horizontalPenetrationInchs>0.1</horizontalPenetrationInchs>
+        <verticalPenetrationInchs>1.3</verticalPenetrationInchs>
+       </PenetrationTableRecord>
+       <PenetrationTableRecord>
+        <distanceYards>4000</distanceYards>
+        <rateOfFire>4.1</rateOfFire>
+        <rangeBand>Long</rangeBand>
+        <horizontalPenetrationInchs>0.2</horizontalPenetrationInchs>
+        <verticalPenetrationInchs>1</verticalPenetrationInchs>
+       </PenetrationTableRecord>
+       <PenetrationTableRecord>
+        <distanceYards>6000</distanceYards>
+        <rateOfFire>2.4</rateOfFire>
+        <rangeBand>Extreme</rangeBand>
+        <horizontalPenetrationInchs>0.8</horizontalPenetrationInchs>
+        <verticalPenetrationInchs>0.9</verticalPenetrationInchs>
+       </PenetrationTableRecord>
+      </penetrationTableRecords>
+      <mountLocationRecords>
+       <MountLocationRecord>
+        <mountLocation>After</mountLocation>
+        <barrels>1</barrels>
+        <mounts>1</mounts>
+        <mountArcs>
+         <MountArcRecord startDeg="60" CoverageDeg="240" isCrossDeckFire="false" />
+        </mountArcs>
+        <useRestAngle>false</useRestAngle>
+        <restAngleDeg>0</restAngleDeg>
+        <trainable>false</trainable>
+        <objectId>53ee0e34-98f9-4768-ae97-f8b2a68ca60b</objectId>
+       </MountLocationRecord>
+      </mountLocationRecords>
+      <objectId>9e12e634-486c-4eb9-b006-951544cb292f</objectId>
+     </BatteryRecord>
+    </batteryRecords>
+    <torpedoSector>
+     <name>
+      <english>unnamed</english>
+     </name>
+     <mountLocationRecords />
+     <torpedoSettings />
+     <ammunitionCapacity>0</ammunitionCapacity>
+     <damageClass>A</damageClass>
+    </torpedoSector>
+    <rapidFireBatteryRecords>
+     <RapidFireBatteryRecord>
+      <name>
+       <english>25mm/60 Type 96</english>
+      </name>
+      <maxRangeYards>7440</maxRangeYards>
+      <effectiveRangeYards>3348</effectiveRangeYards>
+      <fireControlRecords>
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="9" fireControlEffectiveRange="13" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="7" fireControlEffectiveRange="10" />
+      </fireControlRecords>
+      <damageFactor>5</damageFactor>
+      <barrelsLevelPort>
+       <int>2</int>
+       <int>2</int>
+       <int>1</int>
+       <int>1</int>
+      </barrelsLevelPort>
+      <barrelsLevelStarboard>
+       <int>2</int>
+       <int>2</int>
+       <int>1</int>
+       <int>1</int>
+      </barrelsLevelStarboard>
+     </RapidFireBatteryRecord>
+    </rapidFireBatteryRecords>
+    <targetSizeModifier>-1</targetSizeModifier>
+    <damagePoint>449</damagePoint>
+    <speedKnots>12</speedKnots>
+    <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+    <speedKnotsEngineRoomsLevels>
+     <float>12</float>
+    </speedKnotsEngineRoomsLevels>
+    <speedKnotsPropulsionShaftLevels>
+     <float>12</float>
+     <float>6</float>
+    </speedKnotsPropulsionShaftLevels>
+    <speedKnotsBoilerRooms>
+     <float>12</float>
+     <float>7</float>
+    </speedKnotsBoilerRooms>
+    <speedIncreaseRecord>
+     <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="3" />
+     <SpeedIncreaseRecord thresholdSpeedKnots="4" increaseSpeedKnots="2" />
+     <SpeedIncreaseRecord thresholdSpeedKnots="7" increaseSpeedKnots="1" />
+    </speedIncreaseRecord>
+    <standardTurnDegPer2Min>180</standardTurnDegPer2Min>
+    <emergencyTurnDegPer2Min>225</emergencyTurnDegPer2Min>
+    <armorRating>
+     <armorTypeFactor>0.6</armorTypeFactor>
+     <deck effectInch="0" actualInch="0" />
+     <turretHorizontal effectInch="0" actualInch="0" />
+     <superStructureHorizontal effectInch="0" actualInch="0" />
+     <conningTower effectInch="0" actualInch="0" />
+     <mainBelt effectInch="0" actualInch="0" />
+     <beltEnd effectInch="0" actualInch="0" />
+     <barbette effectInch="0" actualInch="0" />
+     <turretVertical effectInch="0" actualInch="0" />
+     <superStructureVertical effectInch="0" actualInch="0" />
+    </armorRating>
+    <portraitUrl>https://combrig-models.com/index.php/1700/65-japanese-navy-1860-1918/829-maya-1888</portraitUrl>
+    <portraitCode>Maya</portraitCode>
+    <portraitTopCode>Maya_Top</portraitTopCode>
+    <objectId>57fcc452-53f4-4f1d-b3dd-8633a6ce391b</objectId>
+   </ShipClass>
+   <ShipClass>
+    <name>
+     <english>Saikyo Maru</english>
+     <japanese>西京丸</japanese>
+     <chineseSimplified>西京丸</chineseSimplified>
+    </name>
+    <type>ArmedMerchantCruiser</type>
+    <country>Japan</country>
+    <applicableYearBegin>1900</applicableYearBegin>
+    <applicableYearEnd>1900</applicableYearEnd>
+    <displacementTons>2913</displacementTons>
+    <complementMen>150</complementMen>
+    <lengthFoot>325</lengthFoot>
+    <beamFoot>42</beamFoot>
+    <draftFoot>29</draftFoot>
+    <builderDesc>
+     <english>London &amp; Glasgow Shipbuilding Company</english>
+     <japanese> ロンドン＆グラスゴー造船所</japanese>
+     <chineseSimplified>伦敦与格拉斯哥造船厂</chineseSimplified>
+    </builderDesc>
+    <engineDesc>
+     <english>unnamed</english>
+    </engineDesc>
+    <boilersDesc>
+     <english>unnamed</english>
+    </boilersDesc>
+    <batteryRecords>
+     <BatteryRecord>
+      <name>
+       <english>4.7in/40 EOC Pattern P</english>
+      </name>
+      <damageRating>12</damageRating>
+      <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
+      <fireControlPositions>0</fireControlPositions>
+      <fireControlType>
+       <gunSight>Basic</gunSight>
+       <fireControlInstrument>None</fireControlInstrument>
+       <rangeFinder>None</rangeFinder>
+       <directorControl>None</directorControl>
+       <stabilization>Manual</stabilization>
+       <powerRemoteControl>None</powerRemoteControl>
+      </fireControlType>
+      <rangeYards>8412</rangeYards>
+      <fireControlRadarModifier>0</fireControlRadarModifier>
+      <fireControlRadarName>
+       <english>None</english>
+      </fireControlRadarName>
+      <shellSizeInch>4.7</shellSizeInch>
+      <shellWeightPounds>45</shellWeightPounds>
+      <ammunitionCapacity>2200</ammunitionCapacity>
+      <fireControlTableRecords>
+       <FireControlTableRecord>
+        <speedThresholdKnot>9</speedThresholdKnot>
+        <shortBroad>6</shortBroad>
+        <shortNarrow>3</shortNarrow>
+        <mediumBroad>3</mediumBroad>
+        <mediumNarrow>2</mediumNarrow>
+        <longBroad>2</longBroad>
+        <longNarrow>1</longNarrow>
+        <extremeBroad>2</extremeBroad>
+        <extremeNarrow>1</extremeNarrow>
+       </FireControlTableRecord>
+       <FireControlTableRecord>
+        <speedThresholdKnot>18</speedThresholdKnot>
+        <shortBroad>4</shortBroad>
+        <shortNarrow>2</shortNarrow>
+        <mediumBroad>2</mediumBroad>
+        <mediumNarrow>1</mediumNarrow>
+        <longBroad>2</longBroad>
+        <longNarrow>1</longNarrow>
+        <extremeBroad>1</extremeBroad>
+        <extremeNarrow>1</extremeNarrow>
+       </FireControlTableRecord>
+       <FireControlTableRecord>
+        <speedThresholdKnot>27</speedThresholdKnot>
+        <shortBroad>3</shortBroad>
+        <shortNarrow>2</shortNarrow>
+        <mediumBroad>2</mediumBroad>
+        <mediumNarrow>1</mediumNarrow>
+        <longBroad>1</longBroad>
+        <longNarrow>1</longNarrow>
+        <extremeBroad>1</extremeBroad>
+        <extremeNarrow>1</extremeNarrow>
+       </FireControlTableRecord>
+       <FireControlTableRecord>
+        <speedThresholdKnot>36</speedThresholdKnot>
+        <shortBroad>2</shortBroad>
+        <shortNarrow>1</shortNarrow>
+        <mediumBroad>1</mediumBroad>
+        <mediumNarrow>1</mediumNarrow>
+        <longBroad>1</longBroad>
+        <longNarrow>1</longNarrow>
+        <extremeBroad>1</extremeBroad>
+        <extremeNarrow>0</extremeNarrow>
+       </FireControlTableRecord>
+       <FireControlTableRecord>
+        <speedThresholdKnot>45</speedThresholdKnot>
+        <shortBroad>2</shortBroad>
+        <shortNarrow>1</shortNarrow>
+        <mediumBroad>1</mediumBroad>
+        <mediumNarrow>1</mediumNarrow>
+        <longBroad>1</longBroad>
+        <longNarrow>1</longNarrow>
+        <extremeBroad>1</extremeBroad>
+        <extremeNarrow>0</extremeNarrow>
+       </FireControlTableRecord>
+      </fireControlTableRecords>
+      <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+      <penetrationTableRecords>
+       <PenetrationTableRecord>
+        <distanceYards>2000</distanceYards>
+        <rateOfFire>7</rateOfFire>
+        <rangeBand>Short</rangeBand>
+        <horizontalPenetrationInchs>0</horizontalPenetrationInchs>
+        <verticalPenetrationInchs>2.6</verticalPenetrationInchs>
+       </PenetrationTableRecord>
+       <PenetrationTableRecord>
+        <distanceYards>4000</distanceYards>
+        <rateOfFire>5.3</rateOfFire>
+        <rangeBand>Medium</rangeBand>
+        <horizontalPenetrationInchs>0.1</horizontalPenetrationInchs>
+        <verticalPenetrationInchs>1.8</verticalPenetrationInchs>
+       </PenetrationTableRecord>
+       <PenetrationTableRecord>
+        <distanceYards>6000</distanceYards>
+        <rateOfFire>4.1</rateOfFire>
+        <rangeBand>Medium</rangeBand>
+        <horizontalPenetrationInchs>0.3</horizontalPenetrationInchs>
+        <verticalPenetrationInchs>1.5</verticalPenetrationInchs>
+       </PenetrationTableRecord>
+       <PenetrationTableRecord>
+        <distanceYards>8000</distanceYards>
+        <rateOfFire>3.2</rateOfFire>
+        <rangeBand>Long</rangeBand>
+        <horizontalPenetrationInchs>0.5</horizontalPenetrationInchs>
+        <verticalPenetrationInchs>1.2</verticalPenetrationInchs>
+       </PenetrationTableRecord>
+       <PenetrationTableRecord>
+        <distanceYards>10000</distanceYards>
+        <rateOfFire>3</rateOfFire>
+        <rangeBand>Long</rangeBand>
+        <horizontalPenetrationInchs>0.6</horizontalPenetrationInchs>
+        <verticalPenetrationInchs>1.2</verticalPenetrationInchs>
+       </PenetrationTableRecord>
+      </penetrationTableRecords>
+      <mountLocationRecords>
+       <MountLocationRecord>
+        <mountLocation>Forward</mountLocation>
+        <barrels>1</barrels>
+        <mounts>1</mounts>
+        <mountArcs>
+         <MountArcRecord startDeg="240" CoverageDeg="240" isCrossDeckFire="false" />
+        </mountArcs>
+        <useRestAngle>false</useRestAngle>
+        <restAngleDeg>0</restAngleDeg>
+        <trainable>false</trainable>
+        <objectId>c968250a-4e89-4802-90fc-9f60352028a9</objectId>
+       </MountLocationRecord>
+      </mountLocationRecords>
+      <objectId>ec434d3a-78a5-4917-be3d-6bf240a37484</objectId>
+     </BatteryRecord>
+    </batteryRecords>
+    <torpedoSector>
+     <name>
+      <english>None</english>
+     </name>
+     <mountLocationRecords />
+     <torpedoSettings />
+     <ammunitionCapacity>0</ammunitionCapacity>
+     <damageClass>A</damageClass>
+    </torpedoSector>
+    <rapidFireBatteryRecords>
+     <RapidFireBatteryRecord>
+      <name>
+       <english>1x 57mm (A) 2x 47mm (C)</english>
+      </name>
+      <maxRangeYards>7500</maxRangeYards>
+      <effectiveRangeYards>3375</effectiveRangeYards>
+      <fireControlRecords>
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
+      </fireControlRecords>
+      <damageFactor>11</damageFactor>
+      <barrelsLevelPort>
+       <int>2</int>
+       <int>1</int>
+      </barrelsLevelPort>
+      <barrelsLevelStarboard>
+       <int>2</int>
+       <int>1</int>
+      </barrelsLevelStarboard>
+     </RapidFireBatteryRecord>
+    </rapidFireBatteryRecords>
+    <targetSizeModifier>0</targetSizeModifier>
+    <damagePoint>980</damagePoint>
+    <speedKnots>12</speedKnots>
+    <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+    <speedKnotsEngineRoomsLevels>
+     <float>12</float>
+     <float>7</float>
+    </speedKnotsEngineRoomsLevels>
+    <speedKnotsPropulsionShaftLevels>
+     <float>12</float>
+     <float>6</float>
+    </speedKnotsPropulsionShaftLevels>
+    <speedKnotsBoilerRooms>
+     <float>12</float>
+     <float>7</float>
+    </speedKnotsBoilerRooms>
+    <speedIncreaseRecord>
+     <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="2" />
+     <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="1" />
+    </speedIncreaseRecord>
+    <standardTurnDegPer2Min>90</standardTurnDegPer2Min>
+    <emergencyTurnDegPer2Min>120</emergencyTurnDegPer2Min>
+    <armorRating>
+     <armorTypeFactor>0</armorTypeFactor>
+     <deck effectInch="0" actualInch="0" />
+     <turretHorizontal effectInch="0" actualInch="0" />
+     <superStructureHorizontal effectInch="0" actualInch="0" />
+     <conningTower effectInch="0" actualInch="0" />
+     <mainBelt effectInch="0" actualInch="0" />
+     <beltEnd effectInch="0" actualInch="0" />
+     <barbette effectInch="0" actualInch="0" />
+     <turretVertical effectInch="0" actualInch="0" />
+     <superStructureVertical effectInch="0" actualInch="0" />
+    </armorRating>
+    <portraitUrl>https://nntmodell.com/en/Ships/Merchant-Cruiser-Saikyomaru.html</portraitUrl>
+    <portraitCode>Saikyo_Maru</portraitCode>
+    <portraitTopCode>Saikyo_Maru_Top</portraitTopCode>
+    <objectId>54101703-8d0d-4bf5-8993-e01db78b5eb5</objectId>
+   </ShipClass>
+   <ShipClass>
+    <name>
+     <english>Fu Lung</english>
+     <japanese>福龍</japanese>
+     <chineseSimplified>福龙</chineseSimplified>
+    </name>
+    <type>TorpedoBoat</type>
+    <country>China</country>
+    <applicableYearBegin>1900</applicableYearBegin>
+    <applicableYearEnd>1900</applicableYearEnd>
+    <displacementTons>120</displacementTons>
+    <complementMen>20</complementMen>
+    <lengthFoot>140</lengthFoot>
+    <beamFoot>16</beamFoot>
+    <draftFoot>3</draftFoot>
+    <builderDesc>
+     <english>Schichau，Elbing</english>
+     <japanese>ドイツ・シーシャウ社</japanese>
+     <chineseSimplified>德国希肖船厂</chineseSimplified>
+    </builderDesc>
+    <engineDesc>
+     <english>unnamed</english>
+    </engineDesc>
+    <boilersDesc>
+     <english>unnamed</english>
+    </boilersDesc>
+    <batteryRecords />
+    <torpedoSector>
+     <name>
+      <english>Schwartzkpff 14in C/84</english>
+     </name>
+     <mountLocationRecords>
+      <MountLocationRecord>
+       <mountLocation>Forward</mountLocation>
+       <barrels>2</barrels>
+       <mounts>1</mounts>
+       <mountArcs>
+        <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+       </mountArcs>
+       <useRestAngle>false</useRestAngle>
+       <restAngleDeg>0</restAngleDeg>
+       <trainable>false</trainable>
+       <objectId>bbd82db3-8ea0-48f1-bda5-114f91b074b8</objectId>
+      </MountLocationRecord>
+      <MountLocationRecord>
+       <mountLocation>PortMidship</mountLocation>
+       <barrels>1</barrels>
+       <mounts>1</mounts>
+       <mountArcs>
+        <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+        <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+       </mountArcs>
+       <useRestAngle>false</useRestAngle>
+       <restAngleDeg>0</restAngleDeg>
+       <trainable>true</trainable>
+       <objectId>deec5431-f1a1-4278-be32-e5b30dffa67e</objectId>
+      </MountLocationRecord>
+     </mountLocationRecords>
+     <torpedoSettings>
+      <TorpedoSetting rangeYards="440" speedKnots="29" />
+     </torpedoSettings>
+     <ammunitionCapacity>4</ammunitionCapacity>
+     <damageClass>I</damageClass>
+    </torpedoSector>
+    <rapidFireBatteryRecords>
+     <RapidFireBatteryRecord>
+      <name>
+       <english>1pdr revolver Mle 1877-79</english>
+       <japanese>4.7cm保式単装軽速射砲</japanese>
+       <chineseSimplified>37毫米速射炮</chineseSimplified>
+      </name>
+      <maxRangeYards>7000</maxRangeYards>
+      <effectiveRangeYards>3150</effectiveRangeYards>
+      <fireControlRecords>
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="7" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
+      </fireControlRecords>
+      <damageFactor>7</damageFactor>
+      <barrelsLevelPort>
+       <int>1</int>
+      </barrelsLevelPort>
+      <barrelsLevelStarboard>
+       <int>1</int>
+      </barrelsLevelStarboard>
+     </RapidFireBatteryRecord>
+    </rapidFireBatteryRecords>
+    <targetSizeModifier>-1</targetSizeModifier>
+    <damagePoint>198</damagePoint>
+    <speedKnots>24</speedKnots>
+    <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+    <speedKnotsEngineRoomsLevels>
+     <float>24</float>
+    </speedKnotsEngineRoomsLevels>
+    <speedKnotsPropulsionShaftLevels>
+     <float>24</float>
+    </speedKnotsPropulsionShaftLevels>
+    <speedKnotsBoilerRooms>
+     <float>24</float>
+    </speedKnotsBoilerRooms>
+    <speedIncreaseRecord>
+     <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="5" />
+     <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="4" />
+     <SpeedIncreaseRecord thresholdSpeedKnots="10" increaseSpeedKnots="2" />
+     <SpeedIncreaseRecord thresholdSpeedKnots="15" increaseSpeedKnots="1" />
+    </speedIncreaseRecord>
+    <standardTurnDegPer2Min>180</standardTurnDegPer2Min>
+    <emergencyTurnDegPer2Min>225</emergencyTurnDegPer2Min>
+    <armorRating>
+     <armorTypeFactor>0</armorTypeFactor>
+     <deck effectInch="0" actualInch="0" />
+     <turretHorizontal effectInch="0" actualInch="0" />
+     <superStructureHorizontal effectInch="0" actualInch="0" />
+     <conningTower effectInch="0" actualInch="0" />
+     <mainBelt effectInch="0" actualInch="0" />
+     <beltEnd effectInch="0" actualInch="0" />
+     <barbette effectInch="0" actualInch="0" />
+     <turretVertical effectInch="0" actualInch="0" />
+     <superStructureVertical effectInch="0" actualInch="0" />
+    </armorRating>
+    <portraitUrl>https://garystockbridge617.getarchive.net/amp/media/fulong-ship-1886-brasseys-1887-0c1793</portraitUrl>
+    <portraitCode>Fu Lung</portraitCode>
+    <portraitTopCode>Fu Lung_Top</portraitTopCode>
+    <objectId>6335ebcc-8d76-46d6-80e6-560390bb5279</objectId>
+   </ShipClass>
+   <ShipClass>
+    <name>
+     <english>Tso I</english>
+     <japanese>第一号</japanese>
+     <chineseSimplified>左一</chineseSimplified>
+    </name>
+    <type>TorpedoBoat</type>
+    <country>China</country>
+    <applicableYearBegin>1900</applicableYearBegin>
+    <applicableYearEnd>1900</applicableYearEnd>
+    <displacementTons>90</displacementTons>
+    <complementMen>25</complementMen>
+    <lengthFoot>127</lengthFoot>
+    <beamFoot>12</beamFoot>
+    <draftFoot>6.5</draftFoot>
+    <builderDesc>
+     <english>unnamed</english>
+     <chineseSimplified>英国亚罗船厂</chineseSimplified>
+    </builderDesc>
+    <engineDesc>
+     <english>unnamed</english>
+    </engineDesc>
+    <boilersDesc>
+     <english>unnamed</english>
+    </boilersDesc>
+    <batteryRecords />
+    <torpedoSector>
+     <name>
+      <english>Schwartzkopff 14in C/84</english>
+     </name>
+     <mountLocationRecords>
+      <MountLocationRecord>
+       <mountLocation>Forward</mountLocation>
+       <barrels>2</barrels>
+       <mounts>1</mounts>
+       <mountArcs>
+        <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+       </mountArcs>
+       <useRestAngle>false</useRestAngle>
+       <restAngleDeg>0</restAngleDeg>
+       <trainable>false</trainable>
+       <objectId>99348385-66ce-485d-ad49-05417bb04431</objectId>
+      </MountLocationRecord>
+      <MountLocationRecord>
+       <mountLocation>Midship</mountLocation>
+       <barrels>1</barrels>
+       <mounts>1</mounts>
+       <mountArcs>
+        <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+        <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+       </mountArcs>
+       <useRestAngle>false</useRestAngle>
+       <restAngleDeg>0</restAngleDeg>
+       <trainable>true</trainable>
+       <objectId>d0e8b92e-a0a1-4d6a-80b2-47b621fed274</objectId>
+      </MountLocationRecord>
+     </mountLocationRecords>
+     <torpedoSettings>
+      <TorpedoSetting rangeYards="440" speedKnots="29" />
+     </torpedoSettings>
+     <ammunitionCapacity>4</ammunitionCapacity>
+     <damageClass>I</damageClass>
+    </torpedoSector>
+    <rapidFireBatteryRecords>
+     <RapidFireBatteryRecord>
+      <name>
+       <english>1pdr revolver Mle 1877-79</english>
+       <chineseSimplified>3门哈乞开斯47毫米重型速射炮以及4门10管11毫米格林炮</chineseSimplified>
+      </name>
+      <maxRangeYards>7000</maxRangeYards>
+      <effectiveRangeYards>3150</effectiveRangeYards>
+      <fireControlRecords>
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="7" />
+       <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
+      </fireControlRecords>
+      <damageFactor>7</damageFactor>
+      <barrelsLevelPort>
+       <int>2</int>
+       <int>1</int>
+      </barrelsLevelPort>
+      <barrelsLevelStarboard>
+       <int>2</int>
+       <int>1</int>
+      </barrelsLevelStarboard>
+     </RapidFireBatteryRecord>
+    </rapidFireBatteryRecords>
+    <targetSizeModifier>-1</targetSizeModifier>
+    <damagePoint>172</damagePoint>
+    <speedKnots>24</speedKnots>
+    <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+    <speedKnotsEngineRoomsLevels>
+     <float>24</float>
+    </speedKnotsEngineRoomsLevels>
+    <speedKnotsPropulsionShaftLevels>
+     <float>24</float>
+    </speedKnotsPropulsionShaftLevels>
+    <speedKnotsBoilerRooms>
+     <float>24</float>
+    </speedKnotsBoilerRooms>
+    <speedIncreaseRecord>
+     <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="5" />
+     <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="4" />
+     <SpeedIncreaseRecord thresholdSpeedKnots="10" increaseSpeedKnots="2" />
+     <SpeedIncreaseRecord thresholdSpeedKnots="15" increaseSpeedKnots="1" />
+    </speedIncreaseRecord>
+    <standardTurnDegPer2Min>180</standardTurnDegPer2Min>
+    <emergencyTurnDegPer2Min>225</emergencyTurnDegPer2Min>
+    <armorRating>
+     <armorTypeFactor>0</armorTypeFactor>
+     <deck effectInch="0" actualInch="0" />
+     <turretHorizontal effectInch="0" actualInch="0" />
+     <superStructureHorizontal effectInch="0" actualInch="0" />
+     <conningTower effectInch="0" actualInch="0" />
+     <mainBelt effectInch="0" actualInch="0" />
+     <beltEnd effectInch="0" actualInch="0" />
+     <barbette effectInch="0" actualInch="0" />
+     <turretVertical effectInch="0" actualInch="0" />
+     <superStructureVertical effectInch="0" actualInch="0" />
+    </armorRating>
+    <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
+    <portraitCode>Tso I</portraitCode>
+    <portraitTopCode>Tso I_Top</portraitTopCode>
+    <objectId>16c25805-fc1e-44c7-8e09-59040e760d4c</objectId>
+   </ShipClass>
   </shipClasses>
-  <shipLogs>
-   <ShipLog>
+  <namedShips>
+   <NamedShip>
     <shipClassObjectId>fcf5997b-fe22-49ad-9e5b-70080d2221a9</shipClassObjectId>
     <name>
      <english>Yoshino</english>
      <japanese>吉野</japanese>
      <chineseSimplified>吉野</chineseSimplified>
     </name>
-    <captain>
-     <english>Kawabara</english>
-     <japanese>河原要一大佐</japanese>
-     <chineseSimplified>河原要一大佐</chineseSimplified>
-    </captain>
-    <crewRating>1</crewRating>
+    <builderDesc>
+     <english>Amstrong, Elswick</english>
+     <japanese>アームストロング・アンド・ミッチェル会社エルスウィック造船所</japanese>
+     <chineseSimplified>英国阿姆斯特朗兵工厂</chineseSimplified>
+     <chineseTraditional>英國阿姆斯壯造船廠</chineseTraditional>
+    </builderDesc>
+    <fateDesc>
+     <english>unnamed</english>
+    </fateDesc>
+    <applicableYearBegin>1893</applicableYearBegin>
+    <applicableYearEnd>1900</applicableYearEnd>
+    <defaultLeaderObjectId>a78127f5-61f9-450b-8013-1f57bfbaef42</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>4722ebb2-c755-4ef3-a292-7b429aad7676</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>6197af50-741d-4f54-881a-f0eeec00996f</shipClassObjectId>
+    <name>
+     <english>Akitsushima</english>
+     <japanese>秋津洲</japanese>
+     <chineseSimplified>秋津洲</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Yokosuka Navy Yard</english>
+     <japanese>日本横須賀造船所</japanese>
+     <chineseSimplified>日本横须贺海军造船厂</chineseSimplified>
+    </builderDesc>
+    <fateDesc>
+     <english>unnamed</english>
+    </fateDesc>
+    <applicableYearBegin>1894</applicableYearBegin>
+    <applicableYearEnd>1902</applicableYearEnd>
+    <defaultLeaderObjectId>43bfbde8-70e0-4d42-8122-3dc082557429</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>5f1f4c9c-0819-468f-87fd-af3938dea6df</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId>
+    <name>
+     <english>Naniwa</english>
+     <japanese>浪速</japanese>
+     <chineseSimplified>浪速</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Armstong, Elswick</english>
+     <japanese>アームストロング社ロー・ウォーカー造船所</japanese>
+     <chineseSimplified>英国阿姆斯特朗船厂</chineseSimplified>
+    </builderDesc>
+    <fateDesc>
+     <english>unnamed</english>
+    </fateDesc>
+    <applicableYearBegin>1885</applicableYearBegin>
+    <applicableYearEnd>1895</applicableYearEnd>
+    <defaultLeaderObjectId>bbdc13c1-a909-411c-b949-ad82485ab108</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>7855b692-e843-41bb-a7b6-15662ab6de20</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>84de785d-a41c-4993-973a-d167876f343b</shipClassObjectId>
+    <name>
+     <english>Chi Yuan</english>
+     <japanese>済遠</japanese>
+     <chineseSimplified>济远</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Vulcan</english>
+     <japanese>ドイツ、フルカン造船所</japanese>
+     <chineseSimplified>德国伏尔铿船厂</chineseSimplified>
+     <chineseTraditional>德國伏爾鏗造船廠</chineseTraditional>
+    </builderDesc>
+    <fateDesc>
+     <english>unnamed</english>
+    </fateDesc>
+    <applicableYearBegin>1885</applicableYearBegin>
+    <applicableYearEnd>1895</applicableYearEnd>
+    <defaultLeaderObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>14fd6eb4-8fa6-4f4b-b98d-00ec411b5e16</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</shipClassObjectId>
+    <name>
+     <english>Kuang Yi</english>
+     <japanese>広乙</japanese>
+     <chineseSimplified>广乙</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Foochow</english>
+     <japanese>福州船政局</japanese>
+     <chineseSimplified>福州船政局马尾造船所</chineseSimplified>
+    </builderDesc>
+    <fateDesc>
+     <english>Sunk 07/24/1894</english>
+    </fateDesc>
+    <applicableYearBegin>1891</applicableYearBegin>
+    <applicableYearEnd>1894</applicableYearEnd>
+    <defaultLeaderObjectId>f3e417c3-89d7-4a71-a8b8-84c408d0cb05</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>c58b4a18-5e00-4eca-ad5b-6ee74a2b9709</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</shipClassObjectId>
+    <name>
+     <english>Chen Yuan</english>
+     <japanese>鎮遠</japanese>
+     <chineseSimplified>镇远</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Vulcan, Stettin</english>
+     <japanese>ドイツ帝国シュテッティン、フルカン造船所</japanese>
+     <chineseSimplified>德国伏尔铿造船厂</chineseSimplified>
+     <chineseTraditional>德國伏爾鏗造船廠</chineseTraditional>
+    </builderDesc>
+    <launchedDate>11/28/1882</launchedDate>
+    <completedDate>00/00/1885</completedDate>
+    <fateDesc>
+     <english>Captured 02/06/1895</english>
+    </fateDesc>
+    <applicableYearBegin>1885</applicableYearBegin>
+    <applicableYearEnd>1895</applicableYearEnd>
+    <defaultLeaderObjectId>ee91367d-d291-4bad-81f1-b4aa5b1d5bd0</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>da81e4ec-40b5-4f9c-949d-375e86b668bf</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</shipClassObjectId>
+    <name>
+     <english>Ting Yuen</english>
+     <japanese>定遠</japanese>
+     <chineseSimplified>定远</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Vulcan, Stettin</english>
+     <japanese>ドイツ帝国シュテッティン、フルカン造船所</japanese>
+     <chineseSimplified>德国伏尔铿造船厂</chineseSimplified>
+     <chineseTraditional>德國伏爾鏗造船廠</chineseTraditional>
+    </builderDesc>
+    <launchedDate>12/28/1881</launchedDate>
+    <completedDate>00/00/1885</completedDate>
+    <fateDesc>
+     <english>Sunk 02/06/1895</english>
+    </fateDesc>
+    <applicableYearBegin>1885</applicableYearBegin>
+    <applicableYearEnd>1895</applicableYearEnd>
+    <defaultLeaderObjectId>67623f92-366e-4f7f-a31e-a988494d9bdf</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>c12c377d-3a26-4d14-897a-db3beb221060</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</shipClassObjectId>
+    <name>
+     <english>Yang Wei</english>
+     <japanese>揚威</japanese>
+     <chineseSimplified>扬威</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Mitchell</english>
+    </builderDesc>
+    <launchedDate>01/29/1881</launchedDate>
+    <completedDate>07/14/1881</completedDate>
+    <fateDesc>
+     <english>Sunk 09/17/1894</english>
+    </fateDesc>
+    <applicableYearBegin>1881</applicableYearBegin>
+    <applicableYearEnd>1894</applicableYearEnd>
+    <defaultLeaderObjectId>571f00c5-74c3-42c7-bae4-be54f44d2b76</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>695c4c4f-4c3e-475d-b8e0-f28de87685ca</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</shipClassObjectId>
+    <name>
+     <english>Chao Yung</english>
+     <japanese>超勇</japanese>
+     <chineseSimplified>超勇</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Mitchell</english>
+    </builderDesc>
+    <launchedDate>11/04/1880</launchedDate>
+    <completedDate>07/15/1881</completedDate>
+    <fateDesc>
+     <english>Sunk 09/17/1894</english>
+    </fateDesc>
+    <applicableYearBegin>1881</applicableYearBegin>
+    <applicableYearEnd>1894</applicableYearEnd>
+    <defaultLeaderObjectId>96b1f018-4a92-4ef0-81b1-b6b3dc1ff3ed</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>3c8d69bc-78fa-4315-9b27-e6e6bb2678c6</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>0208979d-6075-4877-98ef-fa0adc0df9ed</shipClassObjectId>
+    <name>
+     <english>Ching Yuan</english>
+     <japanese>靖遠</japanese>
+     <chineseSimplified>靖远</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Amstrong</english>
+     <japanese>イギリスのアームストロング社</japanese>
+     <chineseSimplified>阿姆斯特朗-惠特沃斯公司埃尔斯维克造船厂</chineseSimplified>
+    </builderDesc>
+    <launchedDate>12/14/1886</launchedDate>
+    <completedDate>07/09/1887</completedDate>
+    <fateDesc>
+     <english>Sunk 02/09/1895</english>
+    </fateDesc>
+    <applicableYearBegin>1887</applicableYearBegin>
+    <applicableYearEnd>1895</applicableYearEnd>
+    <defaultLeaderObjectId>2038e8d1-4ca4-4719-9a65-eea886fd0d2c</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>eab7b62b-359b-4a48-8539-02b75902e2a2</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>0208979d-6075-4877-98ef-fa0adc0df9ed</shipClassObjectId>
+    <name>
+     <english>Chih Yuan</english>
+     <japanese>致遠</japanese>
+     <chineseSimplified>致远</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Amstrong</english>
+     <japanese>イギリスのアームストロング社</japanese>
+     <chineseSimplified>阿姆斯特朗-惠特沃斯公司埃尔斯维克造船厂</chineseSimplified>
+    </builderDesc>
+    <launchedDate>09/29/1886</launchedDate>
+    <completedDate>07/29/1887</completedDate>
+    <fateDesc>
+     <english>Sunk 09/17/1894</english>
+    </fateDesc>
+    <applicableYearBegin>1887</applicableYearBegin>
+    <applicableYearEnd>1895</applicableYearEnd>
+    <defaultLeaderObjectId>ca6e9344-d40e-4a16-8ee1-82ae8d5dbdb4</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>47957b51-2f28-4364-9b69-0531e1920396</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>7cfe4fb1-5a4a-486f-acd8-27301ef8af77</shipClassObjectId>
+    <name>
+     <english>King Yuan</english>
+     <japanese>経遠</japanese>
+     <chineseSimplified>经远</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Vulcan, Stettin</english>
+    </builderDesc>
+    <launchedDate>01/03/1887</launchedDate>
+    <completedDate>00/00/1889</completedDate>
+    <fateDesc>
+     <english>Sunk 09/17/1894</english>
+    </fateDesc>
+    <applicableYearBegin>1889</applicableYearBegin>
+    <applicableYearEnd>1894</applicableYearEnd>
+    <defaultLeaderObjectId>ad05fef6-dae8-457e-9f31-e7166a09aede</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>b95c048c-1701-400f-901d-becf31eac884</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>7cfe4fb1-5a4a-486f-acd8-27301ef8af77</shipClassObjectId>
+    <name>
+     <english>Lai Yuan</english>
+     <japanese>来遠</japanese>
+     <chineseSimplified>来远</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Vulcan, Stettin</english>
+    </builderDesc>
+    <launchedDate>03/25/1887</launchedDate>
+    <completedDate>00/00/1889</completedDate>
+    <fateDesc>
+     <english>Sunk 02/05/1895</english>
+    </fateDesc>
+    <applicableYearBegin>1889</applicableYearBegin>
+    <applicableYearEnd>1894</applicableYearEnd>
+    <defaultLeaderObjectId>19df649e-5f8a-4c29-b42a-936d15b4c8fe</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>b1447997-60c7-4a81-a2c2-76c4f21e8695</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>c9332796-cb5f-4d0c-a0e9-b05bc5c05c56</shipClassObjectId>
+    <name>
+     <english>Ping Yuen</english>
+     <japanese>平遠</japanese>
+     <chineseSimplified>平远</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Foochow</english>
+    </builderDesc>
+    <launchedDate>06/00/1888</launchedDate>
+    <completedDate>04/00/1889</completedDate>
+    <fateDesc>
+     <english>Captured 02/12/1895</english>
+    </fateDesc>
+    <applicableYearBegin>1889</applicableYearBegin>
+    <applicableYearEnd>1895</applicableYearEnd>
+    <defaultLeaderObjectId>a30c7e56-bf11-44b2-8f99-febd99701a42</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>93af5f5d-0afa-481b-8135-da07ff3dfe0d</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>8cb2764f-61b3-4a5d-b992-1f795e2887c6</shipClassObjectId>
+    <name>
+     <english>Kuang Chia</english>
+     <japanese>広甲</japanese>
+     <chineseSimplified>广甲</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Foochow</english>
+    </builderDesc>
+    <launchedDate>00/00/1887</launchedDate>
+    <completedDate>05/00/1888</completedDate>
+    <fateDesc>
+     <english>Sunk 09/17/1894</english>
+    </fateDesc>
+    <applicableYearBegin>1888</applicableYearBegin>
+    <applicableYearEnd>1894</applicableYearEnd>
+    <defaultLeaderObjectId>50197d07-3352-4362-9ea5-978742310265</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>6b3bdffa-e1c1-4926-9a3b-4c04c7ccc2f7</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>0d9558bb-88c1-4021-8a3a-209d98a54419</shipClassObjectId>
+    <name>
+     <english>Fuso</english>
+     <japanese>扶桑</japanese>
+     <chineseSimplified>扶桑</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Samuda, Poplar</english>
+    </builderDesc>
+    <launchedDate>04/14/1877</launchedDate>
+    <completedDate>01/00/1878</completedDate>
+    <fateDesc>
+     <english>Scrapped 1919</english>
+    </fateDesc>
+    <applicableYearBegin>1894</applicableYearBegin>
+    <applicableYearEnd>1899</applicableYearEnd>
+    <defaultLeaderObjectId>cbc0d169-122c-4c9a-8d48-b189663f0ca7</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>1a287722-9d5f-440a-b25e-73ad5d987c8c</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</shipClassObjectId>
+    <name>
+     <english>Hashidate</english>
+     <japanese>橋立</japanese>
+     <chineseSimplified>桥立</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Yokosuka</english>
+    </builderDesc>
+    <launchedDate>03/24/1891</launchedDate>
+    <completedDate>06/00/1894</completedDate>
+    <fateDesc>
+     <english>Lost 04/30/1906</english>
+    </fateDesc>
+    <applicableYearBegin>1894</applicableYearBegin>
+    <applicableYearEnd>1902</applicableYearEnd>
+    <defaultLeaderObjectId>8e9f6ed9-97a9-48c3-8cee-0a2c79c272b3</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>a30faffb-e4b9-4e55-aec2-db88671265ca</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</shipClassObjectId>
+    <name>
+     <english>Itsukushima</english>
+     <japanese>厳島</japanese>
+     <chineseSimplified>严岛</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>La Seyne</english>
+    </builderDesc>
+    <launchedDate>07/11/1889</launchedDate>
+    <completedDate>08/00/1891</completedDate>
+    <fateDesc>
+     <english>Scrapped 1922</english>
+     <japanese />
+    </fateDesc>
+    <applicableYearBegin>1894</applicableYearBegin>
+    <applicableYearEnd>1902</applicableYearEnd>
+    <defaultLeaderObjectId>c7c3eb89-2eee-49f2-bd59-4732be768140</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>9105d76e-8241-4d51-8347-43448099ba54</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>a333035a-806e-4246-b57f-157148f73332</shipClassObjectId>
+    <name>
+     <english>Hiei</english>
+     <japanese>比叡</japanese>
+     <chineseSimplified>比睿</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Milford Haven, Pembroke</english>
+    </builderDesc>
+    <launchedDate>06/12/1877</launchedDate>
+    <completedDate>03/00/1878</completedDate>
+    <fateDesc>
+     <english>Scrapped 1911</english>
+    </fateDesc>
+    <applicableYearBegin>1880</applicableYearBegin>
+    <applicableYearEnd>1894</applicableYearEnd>
+    <defaultLeaderObjectId>a190c470-bd54-4f67-afe8-c4113c7c3c98</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>cf7b7e83-91a0-4e45-89ac-db0babb1036c</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>5d05cc6f-6559-4d69-b29d-2eeab1139643</shipClassObjectId>
+    <name>
+     <english>Matsushima</english>
+     <japanese>松島</japanese>
+     <chineseSimplified>松岛</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>La Seyne</english>
+    </builderDesc>
+    <launchedDate>01/22/1890</launchedDate>
+    <completedDate>03/00/1891</completedDate>
+    <fateDesc>
+     <english>Scrapped 1927</english>
+    </fateDesc>
+    <applicableYearBegin>1891</applicableYearBegin>
+    <applicableYearEnd>1901</applicableYearEnd>
+    <defaultLeaderObjectId>56106ddf-e7e5-4a8e-b440-c8c01054485d</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>52fe3068-7c3f-4b37-bcbc-88895e925217</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId>
+    <name>
+     <english>Takachiho</english>
+     <japanese>高千穂</japanese>
+     <chineseSimplified>高千穗</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Armstong, Elswick</english>
+     <japanese>アームストロング社ロー・ウォーカー造船所</japanese>
+     <chineseSimplified>英国阿姆斯特朗船厂</chineseSimplified>
+    </builderDesc>
+    <launchedDate>05/16/1885</launchedDate>
+    <completedDate>03/26/1886</completedDate>
+    <fateDesc>
+     <english>Lost 10/17/1914</english>
+    </fateDesc>
+    <applicableYearBegin>1885</applicableYearBegin>
+    <applicableYearEnd>1895</applicableYearEnd>
+    <defaultLeaderObjectId>5b4492e9-81be-4d24-be9f-907a98487fa3</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>e27761a0-d00a-4a7b-bcac-58aab2b8118d</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>93917b3f-9a77-4307-8ed2-945de9b551c9</shipClassObjectId>
+    <name>
+     <english>Chiyoda</english>
+     <japanese>千代田</japanese>
+     <chineseSimplified>千代田</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Clydebank</english>
+     <japanese>トムソン社(スコットランド・クライドバンク)</japanese>
+     <chineseSimplified>苏格兰詹姆斯-乔治·汤姆森公司格拉斯哥造船厂</chineseSimplified>
+    </builderDesc>
+    <launchedDate>06/03/1890</launchedDate>
+    <completedDate>12/00/1890</completedDate>
+    <fateDesc>
+     <english>Scraapped 1927</english>
+    </fateDesc>
+    <applicableYearBegin>1890</applicableYearBegin>
+    <applicableYearEnd>1908</applicableYearEnd>
+    <defaultLeaderObjectId>8154d513-73ac-4ac8-b33a-cb06872ce875</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>d1a1333b-c9cd-44f7-acfa-e70190039282</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</shipClassObjectId>
+    <name>
+     <english>Kuang P'ing</english>
+     <japanese>広丙</japanese>
+     <chineseSimplified>广丙</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Foochow</english>
+     <japanese>福州船政局</japanese>
+     <chineseSimplified>福州船政局马尾造船所</chineseSimplified>
+    </builderDesc>
+    <launchedDate>00/00/1890</launchedDate>
+    <completedDate>00/00/1891</completedDate>
+    <fateDesc>
+     <english>Captured 02/12/1895</english>
+    </fateDesc>
+    <applicableYearBegin>1891</applicableYearBegin>
+    <applicableYearEnd>1894</applicableYearEnd>
+    <defaultLeaderObjectId>46a1ffe4-7a2a-43b0-a44c-d29f71c34629</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>ece5d4b3-84e9-477d-85a1-a989b9acf0b6</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>57fcc452-53f4-4f1d-b3dd-8633a6ce391b</shipClassObjectId>
+    <name>
+     <english>Akagi</english>
+     <japanese>赤城</japanese>
+     <chineseSimplified>赤城</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Onohama, Boke</english>
+    </builderDesc>
+    <fateDesc>
+     <english>unnamed</english>
+    </fateDesc>
+    <applicableYearBegin>1890</applicableYearBegin>
+    <applicableYearEnd>1894</applicableYearEnd>
+    <defaultLeaderObjectId>8acb59aa-d09c-4b71-b42e-ab3bc111da1b</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>cf53fae4-c151-47da-9ee0-1d540c655968</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>54101703-8d0d-4bf5-8993-e01db78b5eb5</shipClassObjectId>
+    <name>
+     <english>Saikyo Maru</english>
+     <japanese>西京丸</japanese>
+     <chineseSimplified>西京丸</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>London &amp; Glasgow Shipbuilding Company</english>
+     <japanese> ロンドン＆グラスゴー造船所</japanese>
+     <chineseSimplified>伦敦与格拉斯哥造船厂</chineseSimplified>
+    </builderDesc>
+    <fateDesc>
+     <english>unnamed</english>
+    </fateDesc>
+    <applicableYearBegin>1900</applicableYearBegin>
+    <applicableYearEnd>1900</applicableYearEnd>
+    <defaultLeaderObjectId>04b9b1b0-330e-4737-a16e-a6038eeb252d</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>fe326406-a6b5-42fe-b052-c79dacf9df1c</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>6335ebcc-8d76-46d6-80e6-560390bb5279</shipClassObjectId>
+    <name>
+     <english>Fu Lung</english>
+     <japanese>福龍</japanese>
+     <chineseSimplified>福龙</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>Schichau，Elbing</english>
+     <japanese>ドイツ・シーシャウ社</japanese>
+     <chineseSimplified>德国希肖船厂</chineseSimplified>
+    </builderDesc>
+    <fateDesc>
+     <english>unnamed</english>
+    </fateDesc>
+    <applicableYearBegin>1900</applicableYearBegin>
+    <applicableYearEnd>1900</applicableYearEnd>
+    <defaultLeaderObjectId>0ffb8288-564a-4a0b-8973-e2d8d3610d21</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>300061b1-9426-4d75-97fa-d1256f55f648</objectId>
+   </NamedShip>
+   <NamedShip>
+    <shipClassObjectId>16c25805-fc1e-44c7-8e09-59040e760d4c</shipClassObjectId>
+    <name>
+     <english>Tso I</english>
+     <japanese>第一号</japanese>
+     <chineseSimplified>左一</chineseSimplified>
+    </name>
+    <builderDesc>
+     <english>unnamed</english>
+     <chineseSimplified>英国亚罗船厂</chineseSimplified>
+    </builderDesc>
+    <fateDesc>
+     <english>unnamed</english>
+    </fateDesc>
+    <applicableYearBegin>1900</applicableYearBegin>
+    <applicableYearEnd>1900</applicableYearEnd>
+    <defaultLeaderObjectId>dd09a700-93ff-4be0-b68e-06922f8d0098</defaultLeaderObjectId>
+    <crewRating>0</crewRating>
+    <objectId>be4eaecb-801e-42aa-aad8-232bf8c6d58d</objectId>
+   </NamedShip>
+  </namedShips>
+  <shipLogs>
+   <ShipLog>
+    <namedShipObjectId>4722ebb2-c755-4ef3-a292-7b429aad7676</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>37.06988</LatDeg>
@@ -6647,25 +8492,12 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <fateDesc>
-     <english>unnamed</english>
-    </fateDesc>
+    <leaderObjectId>a78127f5-61f9-450b-8013-1f57bfbaef42</leaderObjectId>
     <objectId>cf6393ee-7cbe-4a15-93ce-eb53bc18ada8</objectId>
     <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>6197af50-741d-4f54-881a-f0eeec00996f</shipClassObjectId>
-    <name>
-     <english>Akitsushima</english>
-     <japanese>秋津洲</japanese>
-     <chineseSimplified>秋津洲</chineseSimplified>
-    </name>
-    <captain>
-     <english>Uemura</english>
-     <japanese>上村彦之丞少佐</japanese>
-     <chineseSimplified>上村彦之丞少佐</chineseSimplified>
-    </captain>
-    <crewRating>1</crewRating>
+    <namedShipObjectId>5f1f4c9c-0819-468f-87fd-af3938dea6df</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>37.05812</LatDeg>
@@ -6776,25 +8608,12 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <fateDesc>
-     <english>unnamed</english>
-    </fateDesc>
+    <leaderObjectId>43bfbde8-70e0-4d42-8122-3dc082557429</leaderObjectId>
     <objectId>01092b52-c42d-4f06-9f4e-57762a39aeba</objectId>
     <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId>
-    <name>
-     <english>Naniwa</english>
-     <japanese>浪速</japanese>
-     <chineseSimplified>浪速</chineseSimplified>
-    </name>
-    <captain>
-     <english>Togo Heihachiro</english>
-     <japanese>東郷平八郎大佐</japanese>
-     <chineseSimplified>东乡平八郎大佐</chineseSimplified>
-    </captain>
-    <crewRating>1</crewRating>
+    <namedShipObjectId>7855b692-e843-41bb-a7b6-15662ab6de20</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>37.0488358</LatDeg>
@@ -6895,25 +8714,12 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <fateDesc>
-     <english>unnamed</english>
-    </fateDesc>
+    <leaderObjectId>bbdc13c1-a909-411c-b949-ad82485ab108</leaderObjectId>
     <objectId>ea56b877-9b5e-48bf-840d-3e8508af98ca</objectId>
     <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>84de785d-a41c-4993-973a-d167876f343b</shipClassObjectId>
-    <name>
-     <english>Chi Yuan</english>
-     <japanese>済遠</japanese>
-     <chineseSimplified>济远</chineseSimplified>
-    </name>
-    <captain>
-     <english>Fang Boqian</english>
-     <japanese>方伯謙</japanese>
-     <chineseSimplified>方伯谦</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>14fd6eb4-8fa6-4f4b-b98d-00ec411b5e16</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>37.13317</LatDeg>
@@ -7004,25 +8810,12 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <fateDesc>
-     <english>unnamed</english>
-    </fateDesc>
+    <leaderObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</leaderObjectId>
     <objectId>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</objectId>
     <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</shipClassObjectId>
-    <name>
-     <english>Kuang Yi</english>
-     <japanese>広乙</japanese>
-     <chineseSimplified>广乙</chineseSimplified>
-    </name>
-    <captain>
-     <english>Lin Kuohsiang</english>
-     <japanese>林国祥</japanese>
-     <chineseSimplified>林国祥</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>c58b4a18-5e00-4eca-ad5b-6ee74a2b9709</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>37.1285553</LatDeg>
@@ -7101,25 +8894,12 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <fateDesc>
-     <english>unnamed</english>
-    </fateDesc>
+    <leaderObjectId>f3e417c3-89d7-4a71-a8b8-84c408d0cb05</leaderObjectId>
     <objectId>93b88a00-313d-4df0-8cfb-2182851c96f7</objectId>
     <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</shipClassObjectId>
-    <name>
-     <english>Chen Yuan</english>
-     <japanese>鎮遠</japanese>
-     <chineseSimplified>镇远</chineseSimplified>
-    </name>
-    <captain>
-     <english>Lin Taizen</english>
-     <japanese>林泰曽</japanese>
-     <chineseSimplified>林泰曾</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>da81e4ec-40b5-4f9c-949d-375e86b668bf</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -7215,26 +8995,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>11/28/1882</launchedDate>
-    <completedDate>00/00/1885</completedDate>
-    <fateDesc>
-     <english>Captured 02/06/1895</english>
-    </fateDesc>
+    <leaderObjectId>ee91367d-d291-4bad-81f1-b4aa5b1d5bd0</leaderObjectId>
     <objectId>b5dfd87e-cb47-4a4b-abba-affa96e356c4</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</shipClassObjectId>
-    <name>
-     <english>Ting Yuen</english>
-     <japanese>定遠</japanese>
-     <chineseSimplified>定远</chineseSimplified>
-    </name>
-    <captain>
-     <english>Liu Buchan</english>
-     <japanese>劉歩蟾</japanese>
-     <chineseSimplified>刘步蟾</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>c12c377d-3a26-4d14-897a-db3beb221060</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -7330,26 +9095,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>12/28/1881</launchedDate>
-    <completedDate>00/00/1885</completedDate>
-    <fateDesc>
-     <english>Sunk 02/06/1895</english>
-    </fateDesc>
+    <leaderObjectId>67623f92-366e-4f7f-a31e-a988494d9bdf</leaderObjectId>
     <objectId>c8a76edb-7330-4ef4-a115-2f468df23494</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</shipClassObjectId>
-    <name>
-     <english>Yang Wei</english>
-     <japanese>揚威</japanese>
-     <chineseSimplified>扬威</chineseSimplified>
-    </name>
-    <captain>
-     <english>Lin lvzhong</english>
-     <japanese>林履中</japanese>
-     <chineseSimplified>林履中</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>695c4c4f-4c3e-475d-b8e0-f28de87685ca</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -7439,26 +9189,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>01/29/1881</launchedDate>
-    <completedDate>07/14/1881</completedDate>
-    <fateDesc>
-     <english>Sunk 09/17/1894</english>
-    </fateDesc>
+    <leaderObjectId>571f00c5-74c3-42c7-bae4-be54f44d2b76</leaderObjectId>
     <objectId>59969f6c-ed18-4e48-84d2-0b43c3e8ac74</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</shipClassObjectId>
-    <name>
-     <english>Chao Yung</english>
-     <japanese>超勇</japanese>
-     <chineseSimplified>超勇</chineseSimplified>
-    </name>
-    <captain>
-     <english>Huang Jianxun</english>
-     <japanese>黄建勲</japanese>
-     <chineseSimplified>黄建勋</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>3c8d69bc-78fa-4315-9b27-e6e6bb2678c6</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -7548,26 +9283,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>11/04/1880</launchedDate>
-    <completedDate>07/15/1881</completedDate>
-    <fateDesc>
-     <english>Sunk 09/17/1894</english>
-    </fateDesc>
+    <leaderObjectId>96b1f018-4a92-4ef0-81b1-b6b3dc1ff3ed</leaderObjectId>
     <objectId>6a20093b-9f39-47fd-972f-49eaaefaf1d5</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>0208979d-6075-4877-98ef-fa0adc0df9ed</shipClassObjectId>
-    <name>
-     <english>Ching Yuan</english>
-     <japanese>靖遠</japanese>
-     <chineseSimplified>靖远</chineseSimplified>
-    </name>
-    <captain>
-     <english>Ye Zugui</english>
-     <japanese>葉祖珪</japanese>
-     <chineseSimplified>叶祖珪</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>eab7b62b-359b-4a48-8539-02b75902e2a2</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -7668,26 +9388,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>12/14/1886</launchedDate>
-    <completedDate>07/09/1887</completedDate>
-    <fateDesc>
-     <english>Sunk 02/09/1895</english>
-    </fateDesc>
+    <leaderObjectId>2038e8d1-4ca4-4719-9a65-eea886fd0d2c</leaderObjectId>
     <objectId>370f72b3-2243-44ff-ab42-e08d3c6d273c</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>0208979d-6075-4877-98ef-fa0adc0df9ed</shipClassObjectId>
-    <name>
-     <english>Chih Yuan</english>
-     <japanese>致遠</japanese>
-     <chineseSimplified>致远</chineseSimplified>
-    </name>
-    <captain>
-     <english>Deng Shichang</english>
-     <japanese>鄧世昌</japanese>
-     <chineseSimplified>邓世昌</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>47957b51-2f28-4364-9b69-0531e1920396</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -7788,26 +9493,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>09/29/1886</launchedDate>
-    <completedDate>07/29/1887</completedDate>
-    <fateDesc>
-     <english>Sunk 09/17/1894</english>
-    </fateDesc>
+    <leaderObjectId>ca6e9344-d40e-4a16-8ee1-82ae8d5dbdb4</leaderObjectId>
     <objectId>a55bdec2-a47a-4d2b-af3c-9588a875e58c</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>7cfe4fb1-5a4a-486f-acd8-27301ef8af77</shipClassObjectId>
-    <name>
-     <english>King Yuan</english>
-     <japanese>経遠</japanese>
-     <chineseSimplified>经远</chineseSimplified>
-    </name>
-    <captain>
-     <english>Ling Yongshen</english>
-     <japanese>林永升</japanese>
-     <chineseSimplified>林永升</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>b95c048c-1701-400f-901d-becf31eac884</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -7896,26 +9586,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>01/03/1887</launchedDate>
-    <completedDate>00/00/1889</completedDate>
-    <fateDesc>
-     <english>Sunk 09/17/1894</english>
-    </fateDesc>
+    <leaderObjectId>ad05fef6-dae8-457e-9f31-e7166a09aede</leaderObjectId>
     <objectId>3ecfd394-30a5-45af-95be-f83b75d246b2</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>7cfe4fb1-5a4a-486f-acd8-27301ef8af77</shipClassObjectId>
-    <name>
-     <english>Lai Yuan</english>
-     <japanese>来遠</japanese>
-     <chineseSimplified>来远</chineseSimplified>
-    </name>
-    <captain>
-     <english>Qiu Baoren</english>
-     <japanese>丘宝仁</japanese>
-     <chineseSimplified>丘宝仁</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>b1447997-60c7-4a81-a2c2-76c4f21e8695</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -8004,26 +9679,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>03/25/1887</launchedDate>
-    <completedDate>00/00/1889</completedDate>
-    <fateDesc>
-     <english>Sunk 02/05/1895</english>
-    </fateDesc>
+    <leaderObjectId>19df649e-5f8a-4c29-b42a-936d15b4c8fe</leaderObjectId>
     <objectId>00fb2b34-3d37-444b-9041-e8540c9304d1</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>c9332796-cb5f-4d0c-a0e9-b05bc5c05c56</shipClassObjectId>
-    <name>
-     <english>Ping Yuen</english>
-     <japanese>平遠</japanese>
-     <chineseSimplified>平远</chineseSimplified>
-    </name>
-    <captain>
-     <english>Li He</english>
-     <japanese>李和</japanese>
-     <chineseSimplified>李和</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>93af5f5d-0afa-481b-8135-da07ff3dfe0d</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -8112,26 +9772,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>06/00/1888</launchedDate>
-    <completedDate>04/00/1889</completedDate>
-    <fateDesc>
-     <english>Captured 02/12/1895</english>
-    </fateDesc>
+    <leaderObjectId>a30c7e56-bf11-44b2-8f99-febd99701a42</leaderObjectId>
     <objectId>9ad21ac1-2365-4f33-bfa9-fee5f27b965a</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>8cb2764f-61b3-4a5d-b992-1f795e2887c6</shipClassObjectId>
-    <name>
-     <english>Kuang Chia</english>
-     <japanese>広甲</japanese>
-     <chineseSimplified>广甲</chineseSimplified>
-    </name>
-    <captain>
-     <english>Wu Jingrong</english>
-     <japanese>呉敬栄</japanese>
-     <chineseSimplified>吴敬荣</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>6b3bdffa-e1c1-4926-9a3b-4c04c7ccc2f7</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -8206,26 +9851,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>00/00/1887</launchedDate>
-    <completedDate>05/00/1888</completedDate>
-    <fateDesc>
-     <english>Sunk 09/17/1894</english>
-    </fateDesc>
+    <leaderObjectId>50197d07-3352-4362-9ea5-978742310265</leaderObjectId>
     <objectId>61f04aed-26e0-4495-bd04-344f5d223de1</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>0d9558bb-88c1-4021-8a3a-209d98a54419</shipClassObjectId>
-    <name>
-     <english>Fuso</english>
-     <japanese>扶桑</japanese>
-     <chineseSimplified>扶桑</chineseSimplified>
-    </name>
-    <captain>
-     <english>Arai</english>
-     <japanese>新井有貫大佐</japanese>
-     <chineseSimplified>新井有贯</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>1a287722-9d5f-440a-b25e-73ad5d987c8c</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -8294,26 +9924,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>04/14/1877</launchedDate>
-    <completedDate>01/00/1878</completedDate>
-    <fateDesc>
-     <english>Scrapped 1919</english>
-    </fateDesc>
+    <leaderObjectId>cbc0d169-122c-4c9a-8d48-b189663f0ca7</leaderObjectId>
     <objectId>4d486d3e-0643-4983-8641-a33434c2a4c5</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</shipClassObjectId>
-    <name>
-     <english>Hashidate</english>
-     <japanese>橋立</japanese>
-     <chineseSimplified>桥立</chineseSimplified>
-    </name>
-    <captain>
-     <english>Hidaka Sōnojō</english>
-     <japanese>日高壮之丞大佐</japanese>
-     <chineseSimplified>日高壮之丞</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>a30faffb-e4b9-4e55-aec2-db88671265ca</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -8430,26 +10045,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>03/24/1891</launchedDate>
-    <completedDate>06/00/1894</completedDate>
-    <fateDesc>
-     <english>Lost 04/30/1906</english>
-    </fateDesc>
+    <leaderObjectId>8e9f6ed9-97a9-48c3-8cee-0a2c79c272b3</leaderObjectId>
     <objectId>10ae7cc2-8728-40b6-9d4b-4f06087918c6</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</shipClassObjectId>
-    <name>
-     <english>Itsukushima</english>
-     <japanese>厳島</japanese>
-     <chineseSimplified>严岛</chineseSimplified>
-    </name>
-    <captain>
-     <english>Arima Shin'ichi</english>
-     <japanese>横尾道昱大佐</japanese>
-     <chineseSimplified>横尾道昱</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>9105d76e-8241-4d51-8347-43448099ba54</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -8566,27 +10166,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>07/11/1889</launchedDate>
-    <completedDate>08/00/1891</completedDate>
-    <fateDesc>
-     <english>Scrapped 1922</english>
-     <japanese />
-    </fateDesc>
+    <leaderObjectId>c7c3eb89-2eee-49f2-bd59-4732be768140</leaderObjectId>
     <objectId>1180b828-a3da-4927-ae6a-ea21c6c5c1be</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>a333035a-806e-4246-b57f-157148f73332</shipClassObjectId>
-    <name>
-     <english>Hiei</english>
-     <japanese>比叡</japanese>
-     <chineseSimplified>比睿</chineseSimplified>
-    </name>
-    <captain>
-     <english>Sakurai Kikunojō</english>
-     <japanese>桜井規矩之左右少佐</japanese>
-     <chineseSimplified>樱井规矩之左右</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>cf7b7e83-91a0-4e45-89ac-db0babb1036c</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -8660,26 +10244,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>06/12/1877</launchedDate>
-    <completedDate>03/00/1878</completedDate>
-    <fateDesc>
-     <english>Scrapped 1911</english>
-    </fateDesc>
+    <leaderObjectId>a190c470-bd54-4f67-afe8-c4113c7c3c98</leaderObjectId>
     <objectId>3e705d71-1239-4963-8946-2aa151d5e57f</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>5d05cc6f-6559-4d69-b29d-2eeab1139643</shipClassObjectId>
-    <name>
-     <english>Matsushima</english>
-     <japanese>松島</japanese>
-     <chineseSimplified>松岛</chineseSimplified>
-    </name>
-    <captain>
-     <english>Omoto Tomomichi</english>
-     <japanese>尾本知道大佐</japanese>
-     <chineseSimplified>梶本知道</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>52fe3068-7c3f-4b37-bcbc-88895e925217</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -8791,26 +10360,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>01/22/1890</launchedDate>
-    <completedDate>03/00/1891</completedDate>
-    <fateDesc>
-     <english>Scrapped 1927</english>
-    </fateDesc>
+    <leaderObjectId>56106ddf-e7e5-4a8e-b440-c8c01054485d</leaderObjectId>
     <objectId>e1f10636-ab79-4b42-8316-c3a533f31512</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId>
-    <name>
-     <english>Takachiho</english>
-     <japanese>高千穂</japanese>
-     <chineseSimplified>高千穗</chineseSimplified>
-    </name>
-    <captain>
-     <english>Nomura Tadashi</english>
-     <japanese>野村貞大佐</japanese>
-     <chineseSimplified>野村贞</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>e27761a0-d00a-4a7b-bcac-58aab2b8118d</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -8911,26 +10465,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>05/16/1885</launchedDate>
-    <completedDate>03/26/1886</completedDate>
-    <fateDesc>
-     <english>Lost 10/17/1914</english>
-    </fateDesc>
+    <leaderObjectId>5b4492e9-81be-4d24-be9f-907a98487fa3</leaderObjectId>
     <objectId>25623a6b-a217-4e49-baca-6ea3b7c782a6</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>93917b3f-9a77-4307-8ed2-945de9b551c9</shipClassObjectId>
-    <name>
-     <english>Chiyoda</english>
-     <japanese>千代田</japanese>
-     <chineseSimplified>千代田</chineseSimplified>
-    </name>
-    <captain>
-     <english>Uchida Masatoshi</english>
-     <japanese>内田正敏大佐</japanese>
-     <chineseSimplified>内田正敏</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>d1a1333b-c9cd-44f7-acfa-e70190039282</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -9034,26 +10573,11 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>06/03/1890</launchedDate>
-    <completedDate>12/00/1890</completedDate>
-    <fateDesc>
-     <english>Scraapped 1927</english>
-    </fateDesc>
+    <leaderObjectId>8154d513-73ac-4ac8-b33a-cb06872ce875</leaderObjectId>
     <objectId>8c1e5af6-3f33-4f97-8f94-5d8a63785c28</objectId>
    </ShipLog>
    <ShipLog>
-    <shipClassObjectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</shipClassObjectId>
-    <name>
-     <english>Kuang P'ing</english>
-     <japanese>広丙</japanese>
-     <chineseSimplified>广丙</chineseSimplified>
-    </name>
-    <captain>
-     <english>Cheng Biguang</english>
-     <japanese>程璧光</japanese>
-     <chineseSimplified>程璧光</chineseSimplified>
-    </captain>
-    <crewRating>0</crewRating>
+    <namedShipObjectId>ece5d4b3-84e9-477d-85a1-a989b9acf0b6</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
      <LatDeg>0</LatDeg>
@@ -9132,12 +10656,136 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <damageEffectRecords />
     <shipboardFireStatus />
-    <launchedDate>00/00/1890</launchedDate>
-    <completedDate>00/00/1891</completedDate>
-    <fateDesc>
-     <english>Captured 02/12/1895</english>
-    </fateDesc>
+    <leaderObjectId>46a1ffe4-7a2a-43b0-a44c-d29f71c34629</leaderObjectId>
     <objectId>0cfda6a2-50de-48bf-8aa6-5338375327ef</objectId>
+   </ShipLog>
+   <ShipLog>
+    <namedShipObjectId>cf53fae4-c151-47da-9ee0-1d540c655968</namedShipObjectId>
+    <damagePoint>0</damagePoint>
+    <position>
+     <LatDeg>0</LatDeg>
+     <LonDeg>0</LonDeg>
+    </position>
+    <speedKnots>0</speedKnots>
+    <headingDeg>0</headingDeg>
+    <mapState>NotDeployed</mapState>
+    <batteryStatus />
+    <torpedoSectorStatus>
+     <ammunition>0</ammunition>
+     <mountStatus />
+    </torpedoSectorStatus>
+    <rapidFiringStatus />
+    <dynamicStatus>
+     <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+     <engineRoomHits>0</engineRoomHits>
+     <propulsionShaftHits>0</propulsionShaftHits>
+     <boilerRoomHits>0</boilerRoomHits>
+    </dynamicStatus>
+    <searchLightHits>
+     <portHit>0</portHit>
+     <starboardHit>0</starboardHit>
+    </searchLightHits>
+    <damageControlRatingHits>0</damageControlRatingHits>
+    <damageEffectRecords />
+    <shipboardFireStatus />
+    <leaderObjectId>8acb59aa-d09c-4b71-b42e-ab3bc111da1b</leaderObjectId>
+    <objectId>e55e1b9a-2cc6-44ab-a656-9b1204d34971</objectId>
+   </ShipLog>
+   <ShipLog>
+    <namedShipObjectId>fe326406-a6b5-42fe-b052-c79dacf9df1c</namedShipObjectId>
+    <damagePoint>0</damagePoint>
+    <position>
+     <LatDeg>0</LatDeg>
+     <LonDeg>0</LonDeg>
+    </position>
+    <speedKnots>0</speedKnots>
+    <headingDeg>0</headingDeg>
+    <mapState>NotDeployed</mapState>
+    <batteryStatus />
+    <torpedoSectorStatus>
+     <ammunition>0</ammunition>
+     <mountStatus />
+    </torpedoSectorStatus>
+    <rapidFiringStatus />
+    <dynamicStatus>
+     <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+     <engineRoomHits>0</engineRoomHits>
+     <propulsionShaftHits>0</propulsionShaftHits>
+     <boilerRoomHits>0</boilerRoomHits>
+    </dynamicStatus>
+    <searchLightHits>
+     <portHit>0</portHit>
+     <starboardHit>0</starboardHit>
+    </searchLightHits>
+    <damageControlRatingHits>0</damageControlRatingHits>
+    <damageEffectRecords />
+    <shipboardFireStatus />
+    <leaderObjectId>04b9b1b0-330e-4737-a16e-a6038eeb252d</leaderObjectId>
+    <objectId>c4bd2221-a6e2-4646-a59e-60c9e392a80b</objectId>
+   </ShipLog>
+   <ShipLog>
+    <namedShipObjectId>300061b1-9426-4d75-97fa-d1256f55f648</namedShipObjectId>
+    <damagePoint>0</damagePoint>
+    <position>
+     <LatDeg>0</LatDeg>
+     <LonDeg>0</LonDeg>
+    </position>
+    <speedKnots>0</speedKnots>
+    <headingDeg>0</headingDeg>
+    <mapState>NotDeployed</mapState>
+    <batteryStatus />
+    <torpedoSectorStatus>
+     <ammunition>0</ammunition>
+     <mountStatus />
+    </torpedoSectorStatus>
+    <rapidFiringStatus />
+    <dynamicStatus>
+     <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+     <engineRoomHits>0</engineRoomHits>
+     <propulsionShaftHits>0</propulsionShaftHits>
+     <boilerRoomHits>0</boilerRoomHits>
+    </dynamicStatus>
+    <searchLightHits>
+     <portHit>0</portHit>
+     <starboardHit>0</starboardHit>
+    </searchLightHits>
+    <damageControlRatingHits>0</damageControlRatingHits>
+    <damageEffectRecords />
+    <shipboardFireStatus />
+    <leaderObjectId>0ffb8288-564a-4a0b-8973-e2d8d3610d21</leaderObjectId>
+    <objectId>42d0aed7-6e98-4146-b55f-0d5f8940328b</objectId>
+   </ShipLog>
+   <ShipLog>
+    <namedShipObjectId>be4eaecb-801e-42aa-aad8-232bf8c6d58d</namedShipObjectId>
+    <damagePoint>0</damagePoint>
+    <position>
+     <LatDeg>0</LatDeg>
+     <LonDeg>0</LonDeg>
+    </position>
+    <speedKnots>0</speedKnots>
+    <headingDeg>0</headingDeg>
+    <mapState>NotDeployed</mapState>
+    <batteryStatus />
+    <torpedoSectorStatus>
+     <ammunition>0</ammunition>
+     <mountStatus />
+    </torpedoSectorStatus>
+    <rapidFiringStatus />
+    <dynamicStatus>
+     <speedKnotsDirectModifier>0</speedKnotsDirectModifier>
+     <engineRoomHits>0</engineRoomHits>
+     <propulsionShaftHits>0</propulsionShaftHits>
+     <boilerRoomHits>0</boilerRoomHits>
+    </dynamicStatus>
+    <searchLightHits>
+     <portHit>0</portHit>
+     <starboardHit>0</starboardHit>
+    </searchLightHits>
+    <damageControlRatingHits>0</damageControlRatingHits>
+    <damageEffectRecords />
+    <shipboardFireStatus />
+    <leaderObjectId>dd09a700-93ff-4be0-b68e-06922f8d0098</leaderObjectId>
+    <objectId>f134adc9-f5b7-4d86-88a9-27ecd13b70c8</objectId>
    </ShipLog>
   </shipLogs>
   <shipGroups>
@@ -9152,11 +10800,7 @@
      <japanese>第一遊撃隊</japanese>
      <chineseSimplified>第一游击队</chineseSimplified>
     </name>
-    <captain>
-     <english>Admiral Tsuboi</english>
-     <japanese>坪井航三海軍少将</japanese>
-     <chineseSimplified>坪井航三</chineseSimplified>
-    </captain>
+    <leaderObjectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</leaderObjectId>
     <type>Squadron</type>
     <formation>LineAhead</formation>
     <objectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</objectId>
@@ -9171,11 +10815,7 @@
      <japanese>護衛隊</japanese>
      <chineseSimplified>护航队</chineseSimplified>
     </name>
-    <captain>
-     <english>Fang Boqian</english>
-     <japanese>方伯謙</japanese>
-     <chineseSimplified>方伯谦</chineseSimplified>
-    </captain>
+    <leaderObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</leaderObjectId>
     <type>Squadron</type>
     <formation>LineAhead</formation>
     <objectId>96a18446-8d4a-4b89-a219-d514cade9751</objectId>

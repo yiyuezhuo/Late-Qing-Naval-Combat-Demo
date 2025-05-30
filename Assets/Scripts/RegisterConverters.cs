@@ -37,12 +37,16 @@ public static class RegisteredConverters
         Register("ShipClass to DisplayStyle", (ref NavalCombatCore.ShipClass obj) => (StyleEnum<DisplayStyle>)(obj != null ? DisplayStyle.Flex : DisplayStyle.None));
         Register("ShipClass to DisplayStyle (Not)", (ref NavalCombatCore.ShipClass obj) => (StyleEnum<DisplayStyle>)(obj == null ? DisplayStyle.Flex : DisplayStyle.None));
 
+        Register("NamedShip to DisplayStyle", (ref NavalCombatCore.NamedShip obj) => (StyleEnum<DisplayStyle>)(obj != null ? DisplayStyle.Flex : DisplayStyle.None));
+        Register("NamedShip to DisplayStyle (Not)", (ref NavalCombatCore.NamedShip obj) => (StyleEnum<DisplayStyle>)(obj == null ? DisplayStyle.Flex : DisplayStyle.None));
+
         Register("ShipLog to DisplayStyle", (ref NavalCombatCore.ShipLog obj) => (StyleEnum<DisplayStyle>)(obj != null ? DisplayStyle.Flex : DisplayStyle.None));
         Register("ShipLog to DisplayStyle (Not)", (ref NavalCombatCore.ShipLog obj) => (StyleEnum<DisplayStyle>)(obj == null ? DisplayStyle.Flex : DisplayStyle.None));
 
         Register("ShipLog => ShipLog's merge name", (ref NavalCombatCore.ShipLog shipLog) =>
         {
-            return shipLog?.name?.GetMergedName() ?? "[not defined]";
+            // return shipLog?.name?.GetMergedName() ?? "[not defined]";
+            return shipLog?.namedShip?.name.mergedName ?? "[not defined]";
         });
 
         // Register("ShipLog => ShipLog's captain's merge name", (ref NavalCombatCore.ShipLog shipLog) =>
@@ -98,16 +102,6 @@ public static class RegisteredConverters
         Register("Leader => DisplayStyle (Not)", (ref NavalCombatCore.Leader leader) =>
         {
             return (StyleEnum<DisplayStyle>)(leader == null ? DisplayStyle.Flex : DisplayStyle.None);
-        });
-
-        Register("NamedShip => DisplayStyle", (ref NavalCombatCore.NamedShip obj) =>
-        {
-            return (StyleEnum<DisplayStyle>)(obj != null ? DisplayStyle.Flex : DisplayStyle.None);
-        });
-
-        Register("NamedShip => DisplayStyle (Not)", (ref NavalCombatCore.NamedShip obj) =>
-        {
-            return (StyleEnum<DisplayStyle>)(obj == null ? DisplayStyle.Flex : DisplayStyle.None);
         });
 
         Register("IShipGroupMember'object ID => string", (ref string objectId) =>

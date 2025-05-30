@@ -195,7 +195,7 @@ namespace NavalCombatCore
     {
         public string objectId { get; set; }
         // public ShipClass shipClass;
-        public string shipClassObjectId;
+        // public string shipClassObjectId;
         public string namedShipObjectId;
         public NamedShip namedShip
         {
@@ -214,9 +214,9 @@ namespace NavalCombatCore
                 return EntityManager.Instance.Get<ShipClass>(_shipClassObjectId);
             }
         }
-        public GlobalString name = new();
+        // public GlobalString name = new();
         // public GlobalString captain = new();
-        public int crewRating;
+        // public int crewRating;
         public float damagePoint; // current damage point vs "max" damage point defined in the class
         public LatLon position = new();
         public float speedKnots; // current speed vs "max" speed defined in the class
@@ -238,9 +238,9 @@ namespace NavalCombatCore
         public List<ShipboardFireStatus> shipboardFireStatus = new();
 
         // remarks
-        public string launchedDate;
-        public string completedDate;
-        public GlobalString fateDesc = new();
+        // public string launchedDate;
+        // public string completedDate;
+        // public GlobalString fateDesc = new();
 
         public string parentObjectId { get; set; }
 
@@ -252,7 +252,7 @@ namespace NavalCombatCore
             get => EntityManager.Instance.Get<Leader>(leaderObjectId);
         }
 
-        public string GetMemberName() => name.mergedName;
+        public string GetMemberName() => namedShip.name.mergedName ?? "[Not Speicified]";// name.mergedName;
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {

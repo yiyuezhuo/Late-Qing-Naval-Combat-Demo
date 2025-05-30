@@ -1,12 +1,11 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement name="VisualElement" data-source-type="GameManager, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Ship Logs" class="title" />
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="flex-grow: 0; flex-basis: 20%; flex-shrink: 0; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                 <ui:ListView name="ShipLogListView" data-source-path="navalGameState.shipLogs" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/ShipLogLabel.uxml?fileID=9197481963319205126&amp;guid=5651049bc518a7246863972edb054f20&amp;type=3#ShipLogLabel" show-add-remove-footer="true" style="flex-grow: 1;" />
-                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
                     <ui:Button text="Import" name="ImportButton" style="flex-basis: 10px; flex-grow: 1;" />
                     <ui:Button text="Export" name="ExportButton" style="flex-basis: 10px; flex-grow: 1;" />
                 </ui:VisualElement>
@@ -20,12 +19,12 @@
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1;">
                     <ui:VisualElement style="flex-grow: 0; flex-direction: row; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-                        <ui:TextField label="Class Name" readonly="true" style="flex-grow: 1; flex-basis: 100px;">
+                        <ui:TextField label="Named Ship" readonly="true" style="flex-grow: 1; flex-basis: 100px;">
                             <Bindings>
-                                <ui:DataBinding property="value" data-source-path="shipClassProperty" binding-mode="ToTarget" source-to-ui-converters="ShipClass =&gt; ShipClass&apos;s merge name" />
+                                <ui:DataBinding property="value" data-source-path="namedShipDesc" binding-mode="ToTarget" />
                             </Bindings>
                         </ui:TextField>
-                        <ui:Button text="Set Ship Class" name="SetShipClassButton" style="flex-basis: 100px; flex-grow: 1;" />
+                        <ui:Button text="Set Named Ship" name="SetNamedShipButton" style="flex-basis: 100px; flex-grow: 1;" />
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1; opacity: 1;">
                         <ui:TabView>
@@ -33,29 +32,6 @@
                                 <ui:VisualElement style="flex-grow: 1;">
                                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                         <ui:VisualElement style="flex-grow: 1.4; flex-basis: 100px;">
-                                            <ui:Instance template="GlobalStringEditor" data-source-path="name">
-                                                <AttributeOverrides element-name="GlobalStringLabel" text="Ship Name" />
-                                            </ui:Instance>
-                                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                                <ui:VisualElement style="flex-grow: 1; flex-shrink: 1;">
-                                                    <ui:TextField label="Captain">
-                                                        <Bindings>
-                                                            <ui:DataBinding property="value" binding-mode="ToTarget" source-to-ui-converters="ShipLog =&gt; ShipLog&apos;s captain&apos;s name" />
-                                                        </Bindings>
-                                                    </ui:TextField>
-                                                    <ui:Button text="Set Captain" name="SetCaptainButton" />
-                                                    <ui:SliderInt label="Crew Rating" high-value="3" low-value="-1" show-input-field="true">
-                                                        <Bindings>
-                                                            <ui:DataBinding property="value" data-source-path="crewRating" binding-mode="TwoWay" />
-                                                        </Bindings>
-                                                    </ui:SliderInt>
-                                                </ui:VisualElement>
-                                                <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; flex-basis: 80px; -unity-background-scale-mode: scale-to-fit;">
-                                                    <Bindings>
-                                                        <ui:DataBinding property="style.backgroundImage" data-source-path="leaderObjectId" binding-mode="ToTarget" source-to-ui-converters="string (Leader objectID) =&gt; StyleBackground" />
-                                                    </Bindings>
-                                                </ui:VisualElement>
-                                            </ui:VisualElement>
                                             <ui:FloatField label="Latitude">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="position.LatDeg" binding-mode="TwoWay" />
@@ -190,24 +166,9 @@
                                     </ui:VisualElement>
                                 </ui:ScrollView>
                             </ui:Tab>
-                            <ui:Tab label="Remark">
-                                <ui:Instance template="GlobalStringEditor" data-source-path="fateDesc">
-                                    <AttributeOverrides element-name="GlobalStringLabel" text="Fate" />
-                                </ui:Instance>
-                                <ui:TextField label="Launched">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="launchedDate" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:TextField>
-                                <ui:TextField label="Completed">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="completedDate" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:TextField>
-                            </ui:Tab>
                         </ui:TabView>
                         <Bindings>
-                            <ui:DataBinding property="style.display" data-source-path="shipClassProperty" binding-mode="ToTarget" source-to-ui-converters="ShipClass to DisplayStyle" />
+                            <ui:DataBinding property="style.display" data-source-path="namedShipProp" binding-mode="ToTarget" source-to-ui-converters="NamedShip to DisplayStyle" />
                         </Bindings>
                     </ui:VisualElement>
                     <Bindings>

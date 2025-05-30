@@ -27,6 +27,24 @@ namespace NavalCombatCore
         {
             get => leader;
         }
+
+        [CreateProperty]
+        public NamedShip namedShipProp
+        {
+            get => namedShip;
+        }
+
+        [CreateProperty]
+        public string namedShipDesc
+        {
+            get => namedShip?.name.mergedName ?? "[Not Specified]";
+        }
+
+        [CreateProperty]
+        public string captainDesc
+        {
+            get => leader?.name.mergedName ?? "[Not Specified]"; 
+        }
     }
 
     public partial class BatteryStatus
@@ -256,33 +274,36 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             IOManager.Instance.LoadTextFile("xml");
         };
 
-        var setShipClassButton = root.Q<Button>("SetShipClassButton");
-        setShipClassButton.clicked += () =>
-        {
-            var tempDialog = new TempDialog()
-            {
-                root = root,
-                template = shipClassSelectorDialogDocument,
-                templateDataSource = GameManager.Instance
-            };
+        // var setShipClassButton = root.Q<Button>("SetShipClassButton");
+        // setShipClassButton.clicked += () =>
+        // {
+        //     var tempDialog = new TempDialog()
+        //     {
+        //         root = root,
+        //         template = shipClassSelectorDialogDocument,
+        //         templateDataSource = GameManager.Instance
+        //     };
 
-            tempDialog.onConfirmed += (sender, el) =>
-            {
-                var shipClassListView = el.Q<ListView>("ShipClassListView");
+        //     tempDialog.onConfirmed += (sender, el) =>
+        //     {
+        //         var shipClassListView = el.Q<ListView>("ShipClassListView");
 
-                var selectedShipLog = GameManager.Instance.selectedShipLog;
-                var selectedShipClass = shipClassListView.selectedItem as ShipClass;
-                if (selectedShipLog != null && selectedShipClass != null)
-                {
-                    selectedShipLog.shipClassObjectId = selectedShipClass.objectId;
-                }
-            };
+        //         var selectedShipLog = GameManager.Instance.selectedShipLog;
+        //         var selectedShipClass = shipClassListView.selectedItem as ShipClass;
+        //         if (selectedShipLog != null && selectedShipClass != null)
+        //         {
+        //             selectedShipLog.shipClassObjectId = selectedShipClass.objectId;
+        //         }
+        //     };
 
-            tempDialog.Popup();
-        };
+        //     tempDialog.Popup();
+        // };
 
-        var setLeaderButton = root.Q<Button>("SetCaptainButton");
-        setLeaderButton.clicked += DialogRoot.Instance.PopupLeaderSelectorDialogForSpecifyForShipLog;
+        // var setLeaderButton = root.Q<Button>("SetCaptainButton");
+        // setLeaderButton.clicked += DialogRoot.Instance.PopupLeaderSelectorDialogForSpecifyForShipLog;
+
+        var setNamedShipButton = root.Q<Button>("SetNamedShipButton");
+        setNamedShipButton.clicked += DialogRoot.Instance.PopupNamedShipSelctorDialogForShipLog;
     }
 
     void OnShipLogsXmlLoaded(object sender, string text)

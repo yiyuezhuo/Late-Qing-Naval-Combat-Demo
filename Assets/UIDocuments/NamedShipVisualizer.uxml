@@ -1,0 +1,26 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:ScrollView>
+        <ui:VisualElement style="flex-grow: 0; height: 100px; flex-shrink: 0; -unity-background-scale-mode: scale-to-fit;">
+            <Bindings>
+                <ui:DataBinding property="style.backgroundImage" data-source-path="shipClassTopPortraitStyleBackground" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; height: 200px; flex-shrink: 0; -unity-background-scale-mode: scale-to-fit;">
+            <Bindings>
+                <ui:DataBinding property="style.backgroundImage" data-source-path="shipClassPortraitStyleBackground" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; height: 100px; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 50px; -unity-background-scale-mode: scale-to-fit;">
+                <Bindings>
+                    <ui:DataBinding property="style.backgroundImage" data-source-path="shipClassCountry" binding-mode="ToTarget" source-to-ui-converters="Country =&gt; StyleBackground" />
+                </Bindings>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 50px; -unity-background-scale-mode: scale-to-fit;">
+                <Bindings>
+                    <ui:DataBinding property="style.backgroundImage" data-source-path="defaultLeaderStyleBackground" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:ScrollView>
+</ui:UXML>

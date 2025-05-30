@@ -7,7 +7,10 @@ using System;
 namespace NavalCombatCore
 {
 
-
+    /// <summary>
+    /// In historical gaming, NamedShip represents a ship's state in a spcific timestamp. So we may have Yoshino 1894, Yoshino 1900 etc.
+    /// In dynamic gaming, NamedShip always represents lastest state of a ship, and some attribute are explained differently (fate) or droped (applicable years)
+    /// </summary>
     public partial class NamedShip : IObjectIdLabeled
     {
         public string objectId { get; set; }
@@ -29,6 +32,7 @@ namespace NavalCombatCore
         {
             get => EntityManager.Instance.Get<Leader>(defaultLeaderObjectId);
         }
+        public int crewRating;
     }
 
 }

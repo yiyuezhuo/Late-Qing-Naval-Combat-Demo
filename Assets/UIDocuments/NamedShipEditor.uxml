@@ -1,5 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:Template name="NamedShipVisualizer" src="project://database/Assets/UIDocuments/NamedShipVisualizer.uxml?fileID=9197481963319205126&amp;guid=31d24939061571546a16f9a8bd6443ed&amp;type=3#NamedShipVisualizer" />
     <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Named Ship" class="title" />
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
@@ -24,7 +25,7 @@
                 </ui:VisualElement>
                 <ui:Label text="Not Selected or binding is not valid">
                     <Bindings>
-                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="NamedShip =&gt; DisplayStyle (Not)" />
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="NamedShip to DisplayStyle (Not)" />
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
@@ -39,6 +40,11 @@
                                 </Bindings>
                             </ui:TextField>
                             <ui:Button text="Select Default Leader" name="SelectDefaultLeaderButton" />
+                            <ui:SliderInt label="Crew Rating" high-value="10" low-value="-2">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="crewRating" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:SliderInt>
                             <ui:SliderInt label="Applicable Year Begin" high-value="1945" low-value="1870" show-input-field="true">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="applicableYearBegin" binding-mode="TwoWay" />
@@ -60,30 +66,7 @@
                         </ui:ScrollView>
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                        <ui:ScrollView>
-                            <ui:VisualElement style="flex-grow: 0; height: 100px; flex-shrink: 0; -unity-background-scale-mode: scale-to-fit;">
-                                <Bindings>
-                                    <ui:DataBinding property="style.backgroundImage" data-source-path="shipClassTopPortraitStyleBackground" binding-mode="ToTarget" />
-                                </Bindings>
-                            </ui:VisualElement>
-                            <ui:VisualElement style="flex-grow: 0; height: 200px; flex-shrink: 0; -unity-background-scale-mode: scale-to-fit;">
-                                <Bindings>
-                                    <ui:DataBinding property="style.backgroundImage" data-source-path="shipClassPortraitStyleBackground" binding-mode="ToTarget" />
-                                </Bindings>
-                            </ui:VisualElement>
-                            <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; height: 100px; flex-direction: row;">
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 50px; -unity-background-scale-mode: scale-to-fit;">
-                                    <Bindings>
-                                        <ui:DataBinding property="style.backgroundImage" data-source-path="shipClassCountry" binding-mode="ToTarget" source-to-ui-converters="Country =&gt; StyleBackground" />
-                                    </Bindings>
-                                </ui:VisualElement>
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 50px; -unity-background-scale-mode: scale-to-fit;">
-                                    <Bindings>
-                                        <ui:DataBinding property="style.backgroundImage" data-source-path="defaultLeaderStyleBackground" binding-mode="ToTarget" />
-                                    </Bindings>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                        </ui:ScrollView>
+                        <ui:Instance template="NamedShipVisualizer" name="NamedShipVisualizer" />
                     </ui:VisualElement>
                     <Bindings>
                         <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="NamedShip =&gt; DisplayStyle" />

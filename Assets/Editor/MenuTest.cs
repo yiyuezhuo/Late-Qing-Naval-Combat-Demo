@@ -72,73 +72,73 @@ public static class MenuTest
     //     File.WriteAllText(path, convertedShipLogsXML);
     // }
 
-    [MenuItem("Custom/Generate Name Ships")]
-    public static void GenerateNameShips()
-    {
-        Func<string, string> _load = (string name) =>
-        {
-            var path = "Scenarios/Battle of Pungdo/" + name;
-            return Resources.Load<TextAsset>(path).text;
-        };
+    // [MenuItem("Custom/Generate Name Ships")]
+    // public static void GenerateNameShips()
+    // {
+    //     Func<string, string> _load = (string name) =>
+    //     {
+    //         var path = "Scenarios/Battle of Pungdo/" + name;
+    //         return Resources.Load<TextAsset>(path).text;
+    //     };
 
-        var shipLogsXml = _load("ShipLogs");
-        var shipLogs = XmlUtils.FromXML<List<ShipLog>>(shipLogsXml);
+    //     var shipLogsXml = _load("ShipLogs");
+    //     var shipLogs = XmlUtils.FromXML<List<ShipLog>>(shipLogsXml);
 
-        var shipClassesXml = _load("ShipClasses");
-        var shipClasses = XmlUtils.FromXML<List<ShipClass>>(shipClassesXml);
+    //     var shipClassesXml = _load("ShipClasses");
+    //     var shipClasses = XmlUtils.FromXML<List<ShipClass>>(shipClassesXml);
 
-        var namedShips = shipLogs.Select(shipLog =>
-        {
-            var shipClass = shipClasses.FirstOrDefault(shipClass => shipClass.objectId == shipLog.shipClassObjectId);
+    //     var namedShips = shipLogs.Select(shipLog =>
+    //     {
+    //         var shipClass = shipClasses.FirstOrDefault(shipClass => shipClass.objectId == shipLog.shipClassObjectId);
 
-            return new NamedShip()
-            {
-                objectId = System.Guid.NewGuid().ToString(),
-                shipClassObjectId = shipLog.shipClassObjectId,
-                name = shipLog.name,
-                builderDesc = shipClass.builderDesc,
-                launchedDate = shipLog.launchedDate,
-                completedDate = shipLog.completedDate,
-                fateDesc = shipLog.fateDesc,
-                applicableYearBegin = shipClass.applicableYearBegin,
-                applicableYearEnd = shipClass.applicableYearEnd,
-                defaultLeaderObjectId = shipLog.leaderObjectId
-            };
-        }).ToList();
+    //         return new NamedShip()
+    //         {
+    //             objectId = System.Guid.NewGuid().ToString(),
+    //             shipClassObjectId = shipLog.shipClassObjectId,
+    //             name = shipLog.name,
+    //             builderDesc = shipClass.builderDesc,
+    //             launchedDate = shipLog.launchedDate,
+    //             completedDate = shipLog.completedDate,
+    //             fateDesc = shipLog.fateDesc,
+    //             applicableYearBegin = shipClass.applicableYearBegin,
+    //             applicableYearEnd = shipClass.applicableYearEnd,
+    //             defaultLeaderObjectId = shipLog.leaderObjectId
+    //         };
+    //     }).ToList();
 
-        var convertedShipLogsXML = XmlUtils.ToXML(namedShips);
+    //     var convertedShipLogsXML = XmlUtils.ToXML(namedShips);
 
-        string path = EditorUtility.SaveFilePanelInProject(
-            "title", "NamedShips", "xml", "message"
-        );
+    //     string path = EditorUtility.SaveFilePanelInProject(
+    //         "title", "NamedShips", "xml", "message"
+    //     );
 
-        File.WriteAllText(path, convertedShipLogsXML);
-    }
+    //     File.WriteAllText(path, convertedShipLogsXML);
+    // }
 
-    [MenuItem("Custom/Rebase ShipLog to NamedShip")]
-    public static void RebaseShipLogToNamedShip()
-    {
-        Func<string, string> _load = (string name) =>
-        {
-            var path = "Scenarios/Battle of Pungdo/" + name;
-            return Resources.Load<TextAsset>(path).text;
-        };
+    // [MenuItem("Custom/Rebase ShipLog to NamedShip")]
+    // public static void RebaseShipLogToNamedShip()
+    // {
+    //     Func<string, string> _load = (string name) =>
+    //     {
+    //         var path = "Scenarios/Battle of Pungdo/" + name;
+    //         return Resources.Load<TextAsset>(path).text;
+    //     };
 
-        var shipLogs = XmlUtils.FromXML<List<ShipLog>>(_load("ShipLogs"));
-        var namedShips = XmlUtils.FromXML<List<NamedShip>>(_load("NamedShips"));
+    //     var shipLogs = XmlUtils.FromXML<List<ShipLog>>(_load("ShipLogs"));
+    //     var namedShips = XmlUtils.FromXML<List<NamedShip>>(_load("NamedShips"));
 
-        foreach (var shipLog in shipLogs)
-        {
-            var namedShip = namedShips.FirstOrDefault(x => x.name.english == shipLog.name.english);
-            shipLog.namedShipObjectId = namedShip.objectId;
-        }
+    //     foreach (var shipLog in shipLogs)
+    //     {
+    //         var namedShip = namedShips.FirstOrDefault(x => x.name.english == shipLog.name.english);
+    //         shipLog.namedShipObjectId = namedShip.objectId;
+    //     }
 
-        var convertedShipLogsXML = XmlUtils.ToXML(shipLogs);
+    //     var convertedShipLogsXML = XmlUtils.ToXML(shipLogs);
 
-        string path = EditorUtility.SaveFilePanelInProject(
-            "title", "ShipLogs", "xml", "message"
-        );
+    //     string path = EditorUtility.SaveFilePanelInProject(
+    //         "title", "ShipLogs", "xml", "message"
+    //     );
 
-        File.WriteAllText(path, convertedShipLogsXML);
-    }
+    //     File.WriteAllText(path, convertedShipLogsXML);
+    // }
 }

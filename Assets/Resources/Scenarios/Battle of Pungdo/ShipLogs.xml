@@ -2,6 +2,7 @@
 <ArrayOfShipLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <ShipLog>
   <shipClassObjectId>fcf5997b-fe22-49ad-9e5b-70080d2221a9</shipClassObjectId>
+  <namedShipObjectId>4722ebb2-c755-4ef3-a292-7b429aad7676</namedShipObjectId>
   <name>
    <english>Yoshino</english>
    <japanese>吉野</japanese>
@@ -132,6 +133,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>6197af50-741d-4f54-881a-f0eeec00996f</shipClassObjectId>
+  <namedShipObjectId>5f1f4c9c-0819-468f-87fd-af3938dea6df</namedShipObjectId>
   <name>
    <english>Akitsushima</english>
    <japanese>秋津洲</japanese>
@@ -257,6 +259,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId>
+  <namedShipObjectId>7855b692-e843-41bb-a7b6-15662ab6de20</namedShipObjectId>
   <name>
    <english>Naniwa</english>
    <japanese>浪速</japanese>
@@ -372,6 +375,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>84de785d-a41c-4993-973a-d167876f343b</shipClassObjectId>
+  <namedShipObjectId>14fd6eb4-8fa6-4f4b-b98d-00ec411b5e16</namedShipObjectId>
   <name>
    <english>Chi Yuan</english>
    <japanese>済遠</japanese>
@@ -477,6 +481,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</shipClassObjectId>
+  <namedShipObjectId>c58b4a18-5e00-4eca-ad5b-6ee74a2b9709</namedShipObjectId>
   <name>
    <english>Kuang Yi</english>
    <japanese>広乙</japanese>
@@ -570,6 +575,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</shipClassObjectId>
+  <namedShipObjectId>da81e4ec-40b5-4f9c-949d-375e86b668bf</namedShipObjectId>
   <name>
    <english>Chen Yuan</english>
    <japanese>鎮遠</japanese>
@@ -681,6 +687,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</shipClassObjectId>
+  <namedShipObjectId>c12c377d-3a26-4d14-897a-db3beb221060</namedShipObjectId>
   <name>
    <english>Ting Yuen</english>
    <japanese>定遠</japanese>
@@ -792,6 +799,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</shipClassObjectId>
+  <namedShipObjectId>695c4c4f-4c3e-475d-b8e0-f28de87685ca</namedShipObjectId>
   <name>
    <english>Yang Wei</english>
    <japanese>揚威</japanese>
@@ -897,6 +905,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</shipClassObjectId>
+  <namedShipObjectId>3c8d69bc-78fa-4315-9b27-e6e6bb2678c6</namedShipObjectId>
   <name>
    <english>Chao Yung</english>
    <japanese>超勇</japanese>
@@ -1002,6 +1011,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>0208979d-6075-4877-98ef-fa0adc0df9ed</shipClassObjectId>
+  <namedShipObjectId>eab7b62b-359b-4a48-8539-02b75902e2a2</namedShipObjectId>
   <name>
    <english>Ching Yuan</english>
    <japanese>靖遠</japanese>
@@ -1118,6 +1128,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>0208979d-6075-4877-98ef-fa0adc0df9ed</shipClassObjectId>
+  <namedShipObjectId>47957b51-2f28-4364-9b69-0531e1920396</namedShipObjectId>
   <name>
    <english>Chih Yuan</english>
    <japanese>致遠</japanese>
@@ -1234,6 +1245,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>7cfe4fb1-5a4a-486f-acd8-27301ef8af77</shipClassObjectId>
+  <namedShipObjectId>b95c048c-1701-400f-901d-becf31eac884</namedShipObjectId>
   <name>
    <english>King Yuan</english>
    <japanese>経遠</japanese>
@@ -1338,6 +1350,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>7cfe4fb1-5a4a-486f-acd8-27301ef8af77</shipClassObjectId>
+  <namedShipObjectId>b1447997-60c7-4a81-a2c2-76c4f21e8695</namedShipObjectId>
   <name>
    <english>Lai Yuan</english>
    <japanese>来遠</japanese>
@@ -1442,6 +1455,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>c9332796-cb5f-4d0c-a0e9-b05bc5c05c56</shipClassObjectId>
+  <namedShipObjectId>93af5f5d-0afa-481b-8135-da07ff3dfe0d</namedShipObjectId>
   <name>
    <english>Ping Yuen</english>
    <japanese>平遠</japanese>
@@ -1546,6 +1560,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>8cb2764f-61b3-4a5d-b992-1f795e2887c6</shipClassObjectId>
+  <namedShipObjectId>6b3bdffa-e1c1-4926-9a3b-4c04c7ccc2f7</namedShipObjectId>
   <name>
    <english>Kuang Chia</english>
    <japanese>広甲</japanese>
@@ -1636,6 +1651,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>0d9558bb-88c1-4021-8a3a-209d98a54419</shipClassObjectId>
+  <namedShipObjectId>1a287722-9d5f-440a-b25e-73ad5d987c8c</namedShipObjectId>
   <name>
    <english>Fuso</english>
    <japanese>扶桑</japanese>
@@ -1720,6 +1736,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</shipClassObjectId>
+  <namedShipObjectId>a30faffb-e4b9-4e55-aec2-db88671265ca</namedShipObjectId>
   <name>
    <english>Hashidate</english>
    <japanese>橋立</japanese>
@@ -1852,6 +1869,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</shipClassObjectId>
+  <namedShipObjectId>9105d76e-8241-4d51-8347-43448099ba54</namedShipObjectId>
   <name>
    <english>Itsukushima</english>
    <japanese>厳島</japanese>
@@ -1985,6 +2003,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>a333035a-806e-4246-b57f-157148f73332</shipClassObjectId>
+  <namedShipObjectId>cf7b7e83-91a0-4e45-89ac-db0babb1036c</namedShipObjectId>
   <name>
    <english>Hiei</english>
    <japanese>比叡</japanese>
@@ -2074,6 +2093,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>5d05cc6f-6559-4d69-b29d-2eeab1139643</shipClassObjectId>
+  <namedShipObjectId>52fe3068-7c3f-4b37-bcbc-88895e925217</namedShipObjectId>
   <name>
    <english>Matsushima</english>
    <japanese>松島</japanese>
@@ -2201,6 +2221,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId>
+  <namedShipObjectId>e27761a0-d00a-4a7b-bcac-58aab2b8118d</namedShipObjectId>
   <name>
    <english>Takachiho</english>
    <japanese>高千穂</japanese>
@@ -2317,6 +2338,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>93917b3f-9a77-4307-8ed2-945de9b551c9</shipClassObjectId>
+  <namedShipObjectId>d1a1333b-c9cd-44f7-acfa-e70190039282</namedShipObjectId>
   <name>
    <english>Chiyoda</english>
    <japanese>千代田</japanese>
@@ -2436,6 +2458,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</shipClassObjectId>
+  <namedShipObjectId>ece5d4b3-84e9-477d-85a1-a989b9acf0b6</namedShipObjectId>
   <name>
    <english>Kuang P'ing</english>
    <japanese>広丙</japanese>
@@ -2530,6 +2553,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>57fcc452-53f4-4f1d-b3dd-8633a6ce391b</shipClassObjectId>
+  <namedShipObjectId>cf53fae4-c151-47da-9ee0-1d540c655968</namedShipObjectId>
   <name>
    <english>Akagi</english>
    <japanese>赤城</japanese>
@@ -2571,6 +2595,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>54101703-8d0d-4bf5-8993-e01db78b5eb5</shipClassObjectId>
+  <namedShipObjectId>fe326406-a6b5-42fe-b052-c79dacf9df1c</namedShipObjectId>
   <name>
    <english>Saikyo Maru</english>
    <japanese>西京丸</japanese>
@@ -2612,6 +2637,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>6335ebcc-8d76-46d6-80e6-560390bb5279</shipClassObjectId>
+  <namedShipObjectId>300061b1-9426-4d75-97fa-d1256f55f648</namedShipObjectId>
   <name>
    <english>Fu Lung</english>
    <japanese>福龍</japanese>
@@ -2653,6 +2679,7 @@
  </ShipLog>
  <ShipLog>
   <shipClassObjectId>16c25805-fc1e-44c7-8e09-59040e760d4c</shipClassObjectId>
+  <namedShipObjectId>be4eaecb-801e-42aa-aad8-232bf8c6d58d</namedShipObjectId>
   <name>
    <english>Tso I</english>
    <japanese>第一号</japanese>

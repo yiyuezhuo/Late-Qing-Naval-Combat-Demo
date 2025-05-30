@@ -105,11 +105,38 @@ public static class MenuTest
                 defaultLeaderObjectId = shipLog.leaderObjectId
             };
         }).ToList();
-        
+
         var convertedShipLogsXML = XmlUtils.ToXML(namedShips);
 
         string path = EditorUtility.SaveFilePanelInProject(
             "title", "NamedShips", "xml", "message"
+        );
+
+        File.WriteAllText(path, convertedShipLogsXML);
+    }
+
+    [MenuItem("Custom/Rebase ShipLog to NamedShip")]
+    public static void RebaseShipLogToNamedShip()
+    {
+        Func<string, string> _load = (string name) =>
+        {
+            var path = "Scenarios/Battle of Pungdo/" + name;
+            return Resources.Load<TextAsset>(path).text;
+        };
+
+        var shipLogs = XmlUtils.FromXML<List<ShipLog>>(_load("ShipLogs"));
+        var namedShips = XmlUtils.FromXML<List<NamedShip>>(_load("NamedShips"));
+
+        foreach (var shipLog in shipLogs)
+        {
+            var namedShip = namedShips.FirstOrDefault(x => x.name.english == shipLog.name.english);
+            shipLog.namedShipObjectId = namedShip.objectId;
+        }
+
+        var convertedShipLogsXML = XmlUtils.ToXML(shipLogs);
+
+        string path = EditorUtility.SaveFilePanelInProject(
+            "title", "ShipLogs", "xml", "message"
         );
 
         File.WriteAllText(path, convertedShipLogsXML);

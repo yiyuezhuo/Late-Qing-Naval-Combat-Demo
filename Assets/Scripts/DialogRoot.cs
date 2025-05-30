@@ -7,6 +7,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 {
     public VisualTreeAsset shipLogSelectorDocument;
     public VisualTreeAsset leaderSelectorDocument;
+    public VisualTreeAsset namedShipSelectorDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -116,6 +117,30 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             if (selectedNamedShip != null && selectedShipClass != null)
             {
                 selectedNamedShip.shipClassObjectId = selectedShipClass.objectId;
+            }
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupNamedShipSelctorDialogForShipLog()
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = namedShipSelectorDocument,
+            templateDataSource = GameManager.Instance
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            var selectedShipLog = GameManager.Instance.selectedShipLog;
+
+            var namedShipListView = el.Q<ListView>("NamedShipListView");
+            var namedShip = namedShipListView.selectedItem as NamedShip;
+            if (selectedShipLog != null && namedShip != null)
+            {
+                selectedShipLog.namedShipObjectId = namedShip.objectId;
             }
         };
 

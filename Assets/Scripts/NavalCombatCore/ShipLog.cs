@@ -93,21 +93,6 @@ namespace NavalCombatCore
                 return null;
             return shipClass.batteryRecords[idx];
         }
-
-        // public ShipLog GetShipLog()
-        // {
-        //     return EntityManager.Instance.GetParent<ShipLog>(this);
-        // }
-
-        // public BatteryRecord GetBatteryRecord() // TODO: Performance issue?
-        // {
-        //     var shipLog = GetShipLog();
-        //     var idx = shipLog.batteryStatus.IndexOf(this);
-        //     var shipClass = shipLog.shipClass;
-        //     if (idx < 0 || idx >= shipClass.batteryRecords.Count)
-        //         return null;
-        //     return shipClass.batteryRecords[idx];
-        // }
     }
 
     public class TorpedoSectorStatus
@@ -211,11 +196,23 @@ namespace NavalCombatCore
         public string objectId { get; set; }
         // public ShipClass shipClass;
         public string shipClassObjectId;
+        public string namedShipObjectId;
+        public NamedShip namedShip
+        {
+            get => EntityManager.Instance.Get<NamedShip>(namedShipObjectId);
+        }
         // public string shipClassStr;
         public ShipClass shipClass
         {
             // get => NavalGameState.Instance.shipClasses.FirstOrDefault(x => x.name.english == shipClassStr);
-            get => EntityManager.Instance.Get<ShipClass>(shipClassObjectId);
+            // get => EntityManager.Instance.Get<ShipClass>(shipClassObjectId);
+            get
+            {
+                var _shipClassObjectId = namedShip?.shipClassObjectId;
+                if (_shipClassObjectId == null)
+                    return null;
+                return EntityManager.Instance.Get<ShipClass>(_shipClassObjectId);
+            }
         }
         public GlobalString name = new();
         // public GlobalString captain = new();

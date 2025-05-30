@@ -85,6 +85,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public static string scenarioSuffex = "_Pungdo"; // temp hack
+
     public void Start()
     {
         // Debug.Log($"Persistent Path:{Application.persistentDataPath}");
@@ -93,7 +95,7 @@ public class GameManager : MonoBehaviour
 
         Func<string, string> _load = (string name) =>
         {
-            var path = "Scenarios/Battle of Pungdo/" + name;
+            var path = "Scenarios/First Sino-Japanese War/" + name;
             return Resources.Load<TextAsset>(path).text;
         };
 
@@ -106,10 +108,10 @@ public class GameManager : MonoBehaviour
         var namedShipsXml = _load("NamedShips");
         navalGameState.NamedShipsFromXML(namedShipsXml);
 
-        var shipLogsXml = _load("ShipLogs");
+        var shipLogsXml = _load("ShipLogs" + scenarioSuffex);
         navalGameState.ShipLogsFromXML(shipLogsXml);
 
-        var rootShipGroupsXml = _load("ShipGroups");
+        var rootShipGroupsXml = _load("ShipGroups" + scenarioSuffex);
         navalGameState.ShipGroupsFromXML(rootShipGroupsXml);
 
         OOBEditor.Instance.oobTreeView.ExpandAll();

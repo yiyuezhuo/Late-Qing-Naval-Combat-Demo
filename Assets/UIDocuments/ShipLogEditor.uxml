@@ -32,6 +32,7 @@
                                 <ui:VisualElement style="flex-grow: 1;">
                                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                         <ui:VisualElement style="flex-grow: 1.4; flex-basis: 100px;">
+                                            <ui:Button text="Reset Damage/Expenditure State" name="ResetDamageExpenditureStateButton" />
                                             <ui:FloatField label="Latitude">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="position.LatDeg" binding-mode="TwoWay" />

@@ -264,7 +264,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         exportButton.clicked += () =>
         {
             var content = GameManager.Instance.navalGameState.ShipLogsToXML();
-            IOManager.Instance.SaveTextFile(content, "ShipLogs", "xml");
+            IOManager.Instance.SaveTextFile(content, "ShipLogs" + GameManager.scenarioSuffex, "xml");
         };
 
         var importButton = root.Q<Button>("ImportButton");
@@ -274,36 +274,17 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             IOManager.Instance.LoadTextFile("xml");
         };
 
-        // var setShipClassButton = root.Q<Button>("SetShipClassButton");
-        // setShipClassButton.clicked += () =>
-        // {
-        //     var tempDialog = new TempDialog()
-        //     {
-        //         root = root,
-        //         template = shipClassSelectorDialogDocument,
-        //         templateDataSource = GameManager.Instance
-        //     };
-
-        //     tempDialog.onConfirmed += (sender, el) =>
-        //     {
-        //         var shipClassListView = el.Q<ListView>("ShipClassListView");
-
-        //         var selectedShipLog = GameManager.Instance.selectedShipLog;
-        //         var selectedShipClass = shipClassListView.selectedItem as ShipClass;
-        //         if (selectedShipLog != null && selectedShipClass != null)
-        //         {
-        //             selectedShipLog.shipClassObjectId = selectedShipClass.objectId;
-        //         }
-        //     };
-
-        //     tempDialog.Popup();
-        // };
-
-        // var setLeaderButton = root.Q<Button>("SetCaptainButton");
-        // setLeaderButton.clicked += DialogRoot.Instance.PopupLeaderSelectorDialogForSpecifyForShipLog;
-
         var setNamedShipButton = root.Q<Button>("SetNamedShipButton");
         setNamedShipButton.clicked += DialogRoot.Instance.PopupNamedShipSelctorDialogForShipLog;
+
+        var resetDamageExpenditureStateButton = root.Q<Button>("ResetDamageExpenditureStateButton");
+        resetDamageExpenditureStateButton.clicked += () =>
+        {
+            var selectedShipLog = GameManager.Instance.selectedShipLog;
+            if (selectedShipLog == null)
+                return;
+            selectedShipLog.ResetDamageExpenditureState();
+        };
     }
 
     void OnShipLogsXmlLoaded(object sender, string text)

@@ -65,6 +65,12 @@ namespace NavalCombatCore
             var mountLocationRecord = shipClass.torpedoSector.mountLocationRecords[mountIdx];
             return mountLocationRecord;
         }
+
+        public void ResetDamageExpenditureState()
+        {
+            status = MountStatus.Operational;
+            mountsDestroyed = 0;
+        }
     }
 
     public partial class BatteryStatus : IObjectIdLabeled
@@ -93,6 +99,19 @@ namespace NavalCombatCore
                 return null;
             return shipClass.batteryRecords[idx];
         }
+
+        public void ResetDamageExpenditureState()
+        {
+            var batteryRecord = GetBatteryRecord();
+            ammunition.ArmorPiercing = batteryRecord.ammunitionCapacity / 2;
+            ammunition.common = batteryRecord.ammunitionCapacity / 2;
+
+            Utils.SyncListPairLength(batteryRecord.mountLocationRecords, mountStatus, this);
+            foreach (var s in mountStatus)
+                s.ResetDamageExpenditureState();
+
+            fireControlHits = 0;
+        }
     }
 
     public class TorpedoSectorStatus
@@ -107,6 +126,13 @@ namespace NavalCombatCore
         public int portMountHits;
         public int starboardMountHits;
         public int fireControlHits;
+
+        public void ResetDamageExpenditureState()
+        {
+            portMountHits = 0;
+            starboardMountHits = 0;
+            fireControlHits = 0;
+        }
 
         public RapidFireBatteryRecord GetRapidFireBatteryRecord()
         {
@@ -149,12 +175,26 @@ namespace NavalCombatCore
         public int engineRoomHits;
         public int propulsionShaftHits;
         public int boilerRoomHits;
+
+        public void ResetDamageExpenditureState()
+        {
+            speedKnotsDirectModifier = 1;
+            engineRoomHits = 0;
+            propulsionShaftHits = 0;
+            boilerRoomHits = 0;
+        }
     }
 
     public class SearchLightStatus
     {
         public int portHit;
         public int starboardHit;
+
+        public void ResetDamageExpenditureState()
+        {
+            portHit = 0;
+            starboardHit = 0;
+        }
     }
 
     public enum DamageEffectCode
@@ -237,14 +277,7 @@ namespace NavalCombatCore
         public List<DamageEffectRecord> damageEffectRecords = new();
         public List<ShipboardFireStatus> shipboardFireStatus = new();
 
-        // remarks
-        // public string launchedDate;
-        // public string completedDate;
-        // public GlobalString fateDesc = new();
-
         public string parentObjectId { get; set; }
-
-        // public string captainPortraitCode;
 
         public string leaderObjectId;
         public Leader leader
@@ -273,5 +306,35 @@ namespace NavalCombatCore
         }
 
         public bool IsOnMap() => mapState == MapState.Deployed;
+
+        public void ResetDamageExpenditureState()
+        {
+            damagePoint = 0;
+            // foreach (var batteryStatusRec in batteryStatus)
+            // {
+            //     batteryStatusRec.
+            // }
+            var _shipClass = shipClass;
+            Utils.SyncListPairLength(_shipClass.batteryRecords, batteryStatus, this);
+            foreach (var batteryStatusRec in batteryStatus)
+                batteryStatusRec.ResetDamageExpenditureState();
+
+            torpedoSectorStatus.ammunition = _shipClass.torpedoSector.ammunitionCapacity;
+            Utils.SyncListPairLength(_shipClass.torpedoSector.mountLocationRecords, torpedoSectorStatus.mountStatus, this);
+            foreach (var m in torpedoSectorStatus.mountStatus)
+                m.ResetDamageExpenditureState();
+
+            Utils.SyncListPairLength(_shipClass.rapidFireBatteryRecords, rapidFiringStatus, this);
+            foreach (var r in rapidFiringStatus)
+                r.ResetDamageExpenditureState();
+
+            dynamicStatus.ResetDamageExpenditureState();
+            searchLightHits.ResetDamageExpenditureState();
+
+            damageControlRatingHits = 0;
+            damageEffectRecords.Clear();
+            shipboardFireStatus.Clear();
+        }
+
     }
 }

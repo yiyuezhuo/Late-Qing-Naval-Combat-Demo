@@ -11,6 +11,25 @@ namespace NavalCombatCore
         public int semiArmorPiercing;
         public int common;
         public int highExplosive;
+
+        public string Summary()
+        {
+            var words = new List<string>();
+            foreach ((var w, var num) in new (string, int)[]{
+                ("AP", ArmorPiercing),
+                ("SAP", semiArmorPiercing),
+                ("COM", common),
+                ("HE", highExplosive)
+            })
+            {
+                if (num > 0)
+                {
+                    words.Add($"{w}: {num}");
+                }
+            }
+
+            return string.Join(", ", words);
+        }
     }
 
     public enum MountStatus
@@ -111,6 +130,14 @@ namespace NavalCombatCore
                 s.ResetDamageExpenditureState();
 
             fireControlHits = 0;
+        }
+
+        public string Summary()
+        {
+            var batteryRecord = GetBatteryRecord();
+            var barrels = batteryRecord.mountLocationRecords.Sum(r => r.barrels * r.mounts);
+            var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.mountLocationRecord.mounts - m.mountsDestroyed) * m.mountLocationRecord.barrels);
+            return $"x{availableBarrels}/{barrels} {batteryRecord.name.mergedName} ({ammunition.Summary()})";
         }
     }
 
@@ -277,7 +304,7 @@ namespace NavalCombatCore
         public List<DamageEffectRecord> damageEffectRecords = new();
         public List<ShipboardFireStatus> shipboardFireStatus = new();
 
-        public string parentObjectId { get; set; }
+        public string parentObjectId { get; set; } // OOB perspective
 
         public string leaderObjectId;
         public Leader leader
@@ -334,6 +361,24 @@ namespace NavalCombatCore
             damageControlRatingHits = 0;
             damageEffectRecords.Clear();
             shipboardFireStatus.Clear();
+        }
+
+        public string Summary()
+        {
+            var _shipClass = shipClass;
+            var lines = new List<string>();
+
+            lines.AddRange(batteryStatus.Select(bs => bs.Summary()));
+
+            // var torpedoBarrels = _shipClass.torpedoSector.mountLocationRecords.Sum(r => r.barrels * r.mounts);
+            // var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.mountLocationRecord.mounts - m.mountsDestroyed) * m.mountLocationRecord.barrels);
+            // var torpedoAmmu = torpedoSectorStatus.ammunition;
+            // lines.Add($"x{torpedoBarrelsAvailable}/{torpedoBarrels} {_shipClass.torpedoSector.name.mergedName} ({torpedoAmmu})");
+
+            lines.AddRange(rapidFiringStatus.Select(s => s.GetInfo()));
+
+            // lines.Add("DP")
+            return string.Join("\n", lines);
         }
 
     }

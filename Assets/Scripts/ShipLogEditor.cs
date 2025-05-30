@@ -43,7 +43,24 @@ namespace NavalCombatCore
         [CreateProperty]
         public string captainDesc
         {
-            get => leader?.name.mergedName ?? "[Not Specified]"; 
+            get => leader?.name.mergedName ?? "[Not Specified]";
+        }
+
+        [CreateProperty]
+        public string oobParentDesc
+        {
+            get
+            {
+                var member = (IShipGroupMember)this;
+                var parentGroup = member.GetParentGroup();
+                return parentGroup?.name.mergedName ?? "[Not Specified]";
+            }
+        }
+
+        [CreateProperty]
+        public string summary
+        {
+            get => Summary();
         }
     }
 
@@ -217,10 +234,16 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         // shipLogListView.itemsAdded += Utils.MakeCallbackForItemsAdded<ShipLog>(shipLogListView);
         Utils.BindItemsAddedRemoved<ShipLog>(shipLogListView, () => null);
 
-        shipLogListView.selectedIndicesChanged += (IEnumerable<int> ints) =>
+        // shipLogListView.selectedIndicesChanged += (IEnumerable<int> ints) =>
+        // {
+        //     var idx = ints.FirstOrDefault();
+        //     GameManager.Instance.selectedShipLogIndex = idx;
+        // };
+
+        shipLogListView.selectionChanged  += (IEnumerable<object> objs) =>
         {
-            var idx = ints.FirstOrDefault();
-            GameManager.Instance.selectedShipLogIndex = idx;
+            var shipLog = objs.FirstOrDefault() as ShipLog;
+            GameManager.Instance.selectedShipLogObjectId = shipLog.objectId;
         };
 
         var batteryStatusListView = root.Q<ListView>("BatteryStatusListView");

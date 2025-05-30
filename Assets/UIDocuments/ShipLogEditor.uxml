@@ -30,7 +30,7 @@
                         <ui:TabView>
                             <ui:Tab label="Basic">
                                 <ui:VisualElement style="flex-grow: 1;">
-                                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                    <ui:VisualElement style="flex-direction: row;">
                                         <ui:VisualElement style="flex-grow: 1.4; flex-basis: 100px;">
                                             <ui:Button text="Reset Damage/Expenditure State" name="ResetDamageExpenditureStateButton" />
                                             <ui:FloatField label="Latitude">
@@ -58,6 +58,11 @@
                                                     <ui:DataBinding property="value" data-source-path="mapState" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:EnumField>
+                                            <ui:TextField label="OOB Parent" readonly="true">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="oobParentDesc" binding-mode="ToTarget" />
+                                                </Bindings>
+                                            </ui:TextField>
                                         </ui:VisualElement>
                                         <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                                             <ui:FloatField label="Damage Point">

@@ -45,6 +45,11 @@
                                     <ui:DataBinding property="value" data-source-path="crewRating" binding-mode="TwoWay" />
                                 </Bindings>
                             </ui:SliderInt>
+                            <ui:Slider label="Speed Modofier" high-value="1" low-value="-1" show-input-field="true">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="speedModifier" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:Slider>
                             <ui:SliderInt label="Applicable Year Begin" high-value="1945" low-value="1870" show-input-field="true">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="applicableYearBegin" binding-mode="TwoWay" />

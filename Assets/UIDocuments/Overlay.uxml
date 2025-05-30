@@ -1,7 +1,11 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="TopTabs" src="project://database/Assets/UIDocuments/TopTabs.uxml?fileID=9197481963319205126&amp;guid=fdf1e6c71191d5b4fb58707bacc7ac67&amp;type=3#TopTabs" />
+    <ui:Template name="InformationPanel" src="project://database/Assets/UIDocuments/InformationPanel.uxml?fileID=9197481963319205126&amp;guid=795d37a289c8de54ba05d43ff6df085f&amp;type=3#InformationPanel" />
     <ui:Label text="State" name="GameManagerStateLabel" data-source-type="GameManager, Assembly-CSharp" style="left: 0; bottom: 0; position: absolute;">
         <Bindings>
             <ui:DataBinding property="text" data-source-path="stateDesc" binding-mode="ToTarget" />
         </Bindings>
     </ui:Label>
+    <ui:Instance template="TopTabs" style="position: absolute; right: 201px; left: 0;" />
+    <ui:Instance template="InformationPanel" style="position: absolute; right: 0; bottom: 0; top: 0;" />
 </ui:UXML>

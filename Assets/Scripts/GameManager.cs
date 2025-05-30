@@ -11,13 +11,18 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System;
 
-
+public interface IColliderRootProvider
+{
+    GameObject GetRoot();
+}
 
 public class GameManager : MonoBehaviour
 {
     public NavalGameState navalGameState = NavalGameState.Instance;
     public GameObject shipUnitPrefab;
     public Transform earthTransform;
+
+    public LayerMask iconLayerMask;
 
     [Serializable]
     public class StateText2DConfig
@@ -43,7 +48,8 @@ public class GameManager : MonoBehaviour
     public enum State
     {
         Idle,
-        SelectingInsertUnitPosition
+        SelectingInsertUnitPosition,
+        MovingUnit
     }
 
     State _state = State.Idle;
@@ -89,6 +95,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        iconLayerMask = LayerMask.GetMask("Icon");
         // Debug.Log($"Persistent Path:{Application.persistentDataPath}");
 
         EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
@@ -150,19 +157,12 @@ public class GameManager : MonoBehaviour
         //     Debug.Log("2s Tick");
         // }
 
-        // sync ShipView and ShipLog mapping
+        // sync Ship's Viewer and ShipLog mapping
         foreach (var shipLog in NavalGameState.Instance.shipLogs)
         {
             if (shipLog.IsOnMap() && !objectId2Viewer.ContainsKey(shipLog.objectId))
             {
                 var obj = Instantiate(shipUnitPrefab, earthTransform);
-
-                // var df3viewer = obj.GetComponent<IDF3ModelViewer>();
-                // df3viewer.modelObjectId = shipLog.objectId;
-                // objectId2Viewer[shipLog.objectId] = df3viewer;
-
-                // var iconViewer = obj.GetComponent<NATOIconViewer>();
-                // iconViewer.shipLogObjectId = shipLog.objectId;
 
                 var portraitView = obj.GetComponent<PortraitViewer>();
                 portraitView.modelObjectId = shipLog.objectId;
@@ -205,6 +205,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 state = State.Idle;
+                selectedShipLogObjectId = null;
             }
 
             // handle events
@@ -212,6 +213,46 @@ public class GameManager : MonoBehaviour
             {
                 state = State.SelectingInsertUnitPosition;
             }
+
+            if (Input.GetKeyDown(KeyCode.M) && selectedShipLog != null)
+            {
+                state = State.MovingUnit;
+            }
+
+
+            if (state == State.Idle && Input.GetMouseButtonDown(0)) // unit left click chosen
+            {
+                var cam = CameraController2.Instance.cam;
+                var ray = cam.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out var hit, Mathf.Infinity, iconLayerMask))
+                {
+                    Debug.Log($"Hit: {hit.collider}");
+                    var colliderRootProvider = hit.collider.GetComponent<IColliderRootProvider>();
+                    if (colliderRootProvider != null)
+                    {
+                        var root = colliderRootProvider.GetRoot();
+                        var portraitViewer = root.GetComponent<PortraitViewer>();
+                        if (portraitViewer != null)
+                        {
+                            var shipLog = portraitViewer.shipLog;
+                            selectedShipLogObjectId = shipLog.objectId;
+                        }
+                    }
+                    // var viewer = hit.collider.GetComponent<PortraitViewer>();
+                    // Debug.Log(viewer);
+                }
+            }
+
+            if (state == State.MovingUnit && Input.GetMouseButtonDown(0))
+            {
+                state = State.Idle;
+                if (selectedShipLog != null)
+                {
+                    var hitPoint = CameraController2.Instance.GetHitPoint();
+                    selectedShipLog.position = Utils.Vector3ToLatLon(hitPoint);
+                }
+            }
+
         }
 
     }
@@ -240,16 +281,14 @@ public class GameManager : MonoBehaviour
         return selectedShipClass;
     }
 
-    public int selectedShipLogIndex = 0;
+    public string selectedShipLogObjectId;
 
     [CreateProperty]
     public ShipLog selectedShipLog
     {
         get
         {
-            if (selectedShipLogIndex >= navalGameState.shipLogs.Count || selectedShipLogIndex < 0)
-                return null;
-            return navalGameState.shipLogs[selectedShipLogIndex];
+            return EntityManager.Instance.Get<ShipLog>(selectedShipLogObjectId);
         }
     }
 

@@ -1,0 +1,29 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" data-source-path="selectedShipLog" class="panel" style="flex-grow: 1; width: 200px;">
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:Label text="Ship&apos;s name ___________________" style="white-space: normal; flex-wrap: wrap;">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="namedShipDesc" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Ship&apos;sOobParent__________________" style="white-space: normal;">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="oobParentDesc" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Shop&apos;s captain" style="flex-wrap: wrap; white-space: normal;">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="captainDesc" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="summary" style="white-space: normal;">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="summary" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <Bindings>
+                <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipLog to DisplayStyle" />
+            </Bindings>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

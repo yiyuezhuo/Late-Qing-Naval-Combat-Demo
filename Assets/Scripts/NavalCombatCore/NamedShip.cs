@@ -33,7 +33,7 @@ namespace NavalCombatCore
             get => EntityManager.Instance.Get<Leader>(defaultLeaderObjectId);
         }
         public int crewRating;
-        public float speedModifier; // boiler ageing
+        public float speedModifier; // boiler ageing etc, -0.1 => -10%
     }
 
 }

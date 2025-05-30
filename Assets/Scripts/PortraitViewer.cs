@@ -25,7 +25,8 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public Transform leafTransform;
     public Transform textBaseTransform;
     public Transform headingTransform;
-    float scaleFactor = 0.02f;
+    public Transform flagRotationBase;
+    float scaleFactor = 0.015f;
     // public RectTransform canvasRectTransform;
 
     long oldViewHashCode;
@@ -81,6 +82,20 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         // text.transform.localScale = Vector3.one * cam.orthographicSize * scaleFactor;
     }
 
+    void MaintainFlagRotationSize()
+    {
+        var cam = CameraController2.Instance.cam;
+
+        var t = flagRotationBase;
+
+        t.LookAt(t.position + cam.transform.rotation * Vector3.forward,
+                         cam.transform.rotation * Vector3.up);
+
+        var shipLengthFoot = shipLog?.shipClass.lengthFoot ?? 300;
+        var x = shipLengthFoot * Utils.footToWu * modelScale * 10;
+        t.localScale = new Vector3(x, x, x);
+    }
+
     public void Update()
     {
         // UpdateTextLocation();
@@ -100,13 +115,15 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
         MaintainTextDirectionSize();
 
+        text.text = $"{shipLog.shipClass.GetAcronym()} {shipLog.namedShip.name.GetNameFromType(GameManager.Instance.iconLanuageType)}";
+
+        MaintainFlagRotationSize();
+
         var newViewHashCode = GetViewHashCode();
         if (oldViewHashCode == newViewHashCode)
             return;
 
         oldViewHashCode = newViewHashCode;
-
-        text.text = shipLog.namedShip.name.english;
 
         var shipClass = shipLog.shipClass;
         var portraitTopCode = shipClass.portraitTopCode;

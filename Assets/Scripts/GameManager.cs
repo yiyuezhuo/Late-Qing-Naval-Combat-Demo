@@ -315,7 +315,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    public LanguageType iconLanuageType;
     // public int selected
 
 }

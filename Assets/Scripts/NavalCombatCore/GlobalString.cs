@@ -4,6 +4,15 @@ using System.Linq;
 
 namespace NavalCombatCore
 {
+    public enum LanguageType
+    {
+        English,
+        Japanese,
+        ChineseSimplified,
+        ChineseTraditional,
+        All,
+    }
+
     [Serializable]
     public partial class GlobalString
     {
@@ -15,6 +24,18 @@ namespace NavalCombatCore
         {
             var names = new List<string>() { english, japanese, chineseSimplified, chineseTraditional };
             return string.Join("/", names.Where(n => n != null && n.Length > 0));
+        }
+        public string GetNameFromType(LanguageType type)
+        {
+            return type switch
+            {
+                LanguageType.English => english,
+                LanguageType.Japanese => japanese,
+                LanguageType.ChineseSimplified => chineseSimplified,
+                LanguageType.ChineseTraditional => chineseTraditional,
+                LanguageType.All => mergedName,
+                _ => english
+            };
         }
     }
 }

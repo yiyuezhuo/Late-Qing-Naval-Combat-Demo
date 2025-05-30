@@ -15,6 +15,8 @@ public class TopTabs : SingletonDocument<TopTabs>
     {
         base.Awake();
 
+        root.dataSource = GameManager.Instance;
+
         var leaderEditorButton = root.Q<Button>("LeaderEditorButton");
         leaderEditorButton.clicked += () => LeaderEditor.Instance.Show();
 

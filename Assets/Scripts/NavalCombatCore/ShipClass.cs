@@ -373,6 +373,7 @@ namespace NavalCombatCore
             {ShipType.Destroyer, "DD"},
             {ShipType.PatrolGunboat, "PG"},
             {ShipType.TorpedoBoat, "TB"},
+            {ShipType.ArmedMerchantCruiser, "AMC"}
         };
 
         public static string GetAcronymFor(ShipType shipType)

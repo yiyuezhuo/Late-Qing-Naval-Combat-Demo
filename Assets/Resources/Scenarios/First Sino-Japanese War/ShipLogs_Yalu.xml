@@ -347,8 +347,8 @@
   <namedShipObjectId>14fd6eb4-8fa6-4f4b-b98d-00ec411b5e16</namedShipObjectId>
   <damagePoint>0</damagePoint>
   <position>
-   <LatDeg>39.6688271</LatDeg>
-   <LonDeg>123.712456</LonDeg>
+   <LatDeg>39.66826</LatDeg>
+   <LonDeg>123.712448</LonDeg>
   </position>
   <speedKnots>10</speedKnots>
   <headingDeg>270</headingDeg>
@@ -526,8 +526,8 @@
   <namedShipObjectId>da81e4ec-40b5-4f9c-949d-375e86b668bf</namedShipObjectId>
   <damagePoint>0</damagePoint>
   <position>
-   <LatDeg>39.6782875</LatDeg>
-   <LonDeg>123.717857</LonDeg>
+   <LatDeg>39.6738853</LatDeg>
+   <LonDeg>123.711327</LonDeg>
   </position>
   <speedKnots>0</speedKnots>
   <headingDeg>270</headingDeg>
@@ -627,8 +627,8 @@
   <namedShipObjectId>c12c377d-3a26-4d14-897a-db3beb221060</namedShipObjectId>
   <damagePoint>0</damagePoint>
   <position>
-   <LatDeg>39.6743</LatDeg>
-   <LonDeg>123.718</LonDeg>
+   <LatDeg>39.67395</LatDeg>
+   <LonDeg>123.71769</LonDeg>
   </position>
   <speedKnots>0</speedKnots>
   <headingDeg>270</headingDeg>
@@ -1024,8 +1024,8 @@
   <namedShipObjectId>47957b51-2f28-4364-9b69-0531e1920396</namedShipObjectId>
   <damagePoint>0</damagePoint>
   <position>
-   <LatDeg>39.6711121</LatDeg>
-   <LonDeg>123.711731</LonDeg>
+   <LatDeg>39.6703148</LatDeg>
+   <LonDeg>123.711861</LonDeg>
   </position>
   <speedKnots>0</speedKnots>
   <headingDeg>270</headingDeg>
@@ -1130,8 +1130,8 @@
   <namedShipObjectId>b95c048c-1701-400f-901d-becf31eac884</namedShipObjectId>
   <damagePoint>0</damagePoint>
   <position>
-   <LatDeg>39.6733131</LatDeg>
-   <LonDeg>123.7115</LonDeg>
+   <LatDeg>39.6724</LatDeg>
+   <LonDeg>123.711349</LonDeg>
   </position>
   <speedKnots>0</speedKnots>
   <headingDeg>270</headingDeg>

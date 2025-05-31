@@ -4,11 +4,11 @@ This game is the first installment of a demo trilogy for my Late Qing Dynasty hi
 
 The core resolution system is primarily inspired by SEEKRIEG and Dawn of the Battleship (DOB), while UI draws influence from RTW, JTS Naval Campaign, and CMO.
 
-Ship data is largely sourced from the Ship Logs of SEEKRIEG's Yalu start scenario, with additional references taken form DoB's Mahan book. However, I've corrected some evident inaccuracies present in there. Some global string sections may contain inconsistencies, as they pull from multiple sources--SEEKRIEG, DoB data, and general historical materials in English, Japanese and Chinese.
+Ship data is largely sourced from the Ship Logs of SEEKRIEG's Yalu starter scenario, with additional references taken form DoB's Mahan book. However, I've corrected some evident inaccuracies present in there. Some global string sections may contain inconsistencies, as they pull from multiple sources--SEEKRIEG, DoB data, and general historical materials in English, Japanese and Chinese.
 
 Unfortunately, naval engagement involving those ironclad in the first Sino-Japanese war remain an under-researched topic, so minor contradictions in certain details should be expected.
 
-## Devlopment info
+## Devlopment Info
 
 ### Unity related bugs
 
@@ -20,3 +20,12 @@ Unfortunately, naval engagement involving those ironclad in the first Sino-Japan
 ### Unity related warning
 
 - When resources is rewritten in edit time (for example, overrie xml file), Asset-refresh is needed, otherwise `Resources.Load` may load old version of assets.
+
+## Credits
+
+### Libraries
+
+- [GeographicLib.NET](https://github.com/noelex/GeographicLib.NET)
+- [suncalcsharp](https://github.com/webbwebbwebb/suncalcsharp)
+- [UnityStandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser)
+

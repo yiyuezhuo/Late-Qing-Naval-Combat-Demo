@@ -1,11 +1,57 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="TopTabs" src="project://database/Assets/UIDocuments/TopTabs.uxml?fileID=9197481963319205126&amp;guid=fdf1e6c71191d5b4fb58707bacc7ac67&amp;type=3#TopTabs" />
     <ui:Template name="InformationPanel" src="project://database/Assets/UIDocuments/InformationPanel.uxml?fileID=9197481963319205126&amp;guid=795d37a289c8de54ba05d43ff6df085f&amp;type=3#InformationPanel" />
-    <ui:Label text="State" name="GameManagerStateLabel" data-source-type="GameManager, Assembly-CSharp" style="left: 0; bottom: 0; position: absolute;">
-        <Bindings>
-            <ui:DataBinding property="text" data-source-path="stateDesc" binding-mode="ToTarget" />
-        </Bindings>
-    </ui:Label>
+    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" style="flex-grow: 1; bottom: 0; left: 0; position: absolute; flex-direction: row;">
+        <ui:Label text="State" name="GameManagerStateLabel">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="stateDesc" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="Lat:" />
+        <ui:Label>
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="hoveringLatLon.LatDeg" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="Lon:" />
+        <ui:Label>
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="hoveringLatLon.LonDeg" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="Global Time:" />
+        <ui:Label>
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="navalGameState.scenarioState.dateTime" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="TZ:" />
+        <ui:Label />
+        <ui:Label text="Local Time:" />
+        <ui:Label>
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="hoveringLocalDateTime" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="(" />
+        <ui:Label>
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="hoveringDayNightLevel" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:Label text=") Sun Azi:" />
+        <ui:Label>
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="hoveringSunState.azimuthDeg" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="Alt:" />
+        <ui:Label>
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="hoveringSunState.altitudeDeg" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+    </ui:VisualElement>
     <ui:Instance template="TopTabs" style="position: absolute; right: 201px; left: 0;" />
     <ui:Instance template="InformationPanel" style="position: absolute; right: 0; bottom: 0; top: 0;" />
 </ui:UXML>

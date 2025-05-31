@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System;
+using GeographicLib;
+
 
 namespace NavalCombatCore
 {
@@ -288,6 +290,8 @@ namespace NavalCombatCore
         public LatLon position = new();
         public float speedKnots; // current speed vs "max" speed defined in the class
         public float headingDeg;
+        public float desiredSpeedKnots;
+        public float desiredHeadingDeg;
         public MapState mapState;
         // DCR Modifier or DCR modifier type?
 
@@ -381,5 +385,12 @@ namespace NavalCombatCore
             return string.Join("\n", lines);
         }
 
+        public void Step(float deltaSeconds)
+        {
+            var distNm = speedKnots / 3600 * deltaSeconds;
+            var distM = distNm * 1852;
+            double arcLength = Geodesic.WGS84.Direct(position.LatDeg, position.LonDeg, headingDeg, distM, out double lat2, out double lon2);
+            position = new LatLon((float)lat2, (float)lon2);
+        }
     }
 }

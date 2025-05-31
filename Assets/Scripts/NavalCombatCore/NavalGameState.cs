@@ -27,6 +27,7 @@ namespace NavalCombatCore
         public List<ShipLog> shipLogs = new();
         // public List<ShipGroup> rootShipGroups = new();
         public List<ShipGroup> shipGroups = new();
+        public ScenarioState scenarioState = new();
 
         public event EventHandler<List<ShipGroup>> shipGroupsChanged;
 
@@ -220,13 +221,23 @@ namespace NavalCombatCore
         {
             if (member == null)
                 return null;
-            
+
             var p = member;
             while (p.GetParentGroup() != null)
             {
                 p = p.GetParentGroup();
             }
             return p;
+        }
+
+        public void Step(float deltaSeconds)
+        {
+            scenarioState.Step(deltaSeconds);
+
+            foreach (var shipLog in shipLogs)
+            {
+                shipLog.Step(deltaSeconds);
+            }
         }
     }
 }

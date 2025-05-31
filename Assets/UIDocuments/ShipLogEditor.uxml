@@ -49,9 +49,19 @@
                                                     <ui:DataBinding property="value" data-source-path="speedKnots" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:FloatField>
-                                            <ui:FloatField label="Heading">
+                                            <ui:FloatField label="Desired Speed">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="desiredSpeedKnots" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:FloatField>
+                                            <ui:FloatField label="Heading (deg)">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="headingDeg" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:FloatField>
+                                            <ui:FloatField label="Desired Heading">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="desiredHeadingDeg" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:FloatField>
                                             <ui:EnumField label="Map State" value="Center" type="NavalCombatCore.MapState, Assembly-CSharp">

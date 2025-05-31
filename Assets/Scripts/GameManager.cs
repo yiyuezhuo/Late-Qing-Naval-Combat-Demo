@@ -10,6 +10,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System;
+// using SunCalcNet;
 
 public interface IColliderRootProvider
 {
@@ -142,11 +143,64 @@ public class GameManager : MonoBehaviour
         // var res6 = Resources.LoadAll<Texture>("Leader_Portraits");
 
         // Debug.Log(res);
+
+        // for (int year = 1890; year < 2026; year++)
+        // {
+        //     // var date = new DateTime(year, 3, 5, 0, 0, 0, DateTimeKind.Utc);
+        //     var date = new DateTime(year, 9, 17, 4, 30, 0, DateTimeKind.Utc);
+        //     var lat = 39;
+        //     var lng = 123;
+
+        //     var sunPosition = SunCalc.GetSunPosition(date, lat, lng);
+        //     var sunPosition2 = SunCalcSharp.SunCalc.GetPosition(date, lat, lng);
+        //     Debug.Log($"{year} => Azi={sunPosition.Azimuth}, Alt={sunPosition.Altitude}, Azi2={sunPosition2.Azimuth}, Alt2={sunPosition2.Altitude}");
+        // }
+
+        // // get today's sun event times for Milton Keynes
+        // var times = SunCalcSharp.SunCalc.GetTimes(DateTime.UtcNow, 52.0406, -0.7594);
+        // var sunrise = times.Sunrise;
+        // var sunset = times.Sunset;
+
+        // // get position of the sun (azimuth and altitude) at sunrise
+        // var positionAtSunrise = SunCalcSharp.SunCalc.GetPosition(times.Sunrise.Value, 52.0406, -0.7594);
+        // var solarAzimuthAtSunrise = positionAtSunrise.Azimuth;
+        // var solarAltitudeAtSunrise = positionAtSunrise.Altitude;
+
+        // // get solar azimuth in degrees
+        // var azimuthInDegrees = positionAtSunrise.Azimuth * 180 / Math.PI;
+
+        // Debug.Log($"times={times}, sunrise={sunrise}, sunset={sunset}, positionAtSunrise={positionAtSunrise}, solarAzimuthAtSunrise={solarAzimuthAtSunrise}, solarAltitudeAtSunrise={solarAltitudeAtSunrise}, azimuthInDegrees={azimuthInDegrees}");
     }
 
     public Dictionary<string, PortraitViewer> objectId2Viewer = new();
 
+    public LatLon hoveringLatLon = new();
+    public float hoveringTimeZoneOffset;
+    public DateTime hoveringLocalDateTime = new();
+    public SunState hoveringSunState = new();
+
+    [CreateProperty]
+    public DayNightLevel hoveringDayNightLevel
+    {
+        get => hoveringSunState?.GetDayNightLevel() ?? DayNightLevel.Day;
+    }
+
     // float viewAccTime;
+    void UpdateLocationInfoLabel()
+    {
+        var ray = CameraController2.Instance.cam.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            var hitPoint = hit.point;
+
+            hoveringLatLon = Utils.Vector3ToLatLon(hitPoint);
+
+            var scenarioState = NavalGameState.Instance.scenarioState;
+            hoveringTimeZoneOffset = scenarioState.GetTimeZoneOffset(hoveringLatLon.LonDeg);
+            hoveringLocalDateTime = scenarioState.GetLocalDateTime(hoveringLatLon.LonDeg);
+            hoveringSunState = scenarioState.GetSunPosition(hoveringLatLon);
+        }
+    }
 
     public void Update()
     {
@@ -178,6 +232,9 @@ public class GameManager : MonoBehaviour
             Destroy(viewer);
             objectId2Viewer.Remove(shipLog);
         }
+
+        // location browser: current latitude, longitude, time zone, local time, sun altitude, day/night discrete value
+        UpdateLocationInfoLabel();
 
         // Handle Events
 
@@ -221,26 +278,33 @@ public class GameManager : MonoBehaviour
             }
 
 
-            if (state == State.Idle && Input.GetMouseButtonDown(0)) // unit left click chosen
+            if (state == State.Idle) // unit left click chosen
             {
-                var cam = CameraController2.Instance.cam;
-                var ray = cam.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out var hit, Mathf.Infinity, iconLayerMask))
+                if (Input.GetMouseButtonDown(0))
                 {
-                    Debug.Log($"Hit: {hit.collider}");
-                    var colliderRootProvider = hit.collider.GetComponent<IColliderRootProvider>();
-                    if (colliderRootProvider != null)
+                    var cam = CameraController2.Instance.cam;
+                    var ray = cam.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out var hit, Mathf.Infinity, iconLayerMask))
                     {
-                        var root = colliderRootProvider.GetRoot();
-                        var portraitViewer = root.GetComponent<PortraitViewer>();
-                        if (portraitViewer != null)
+                        Debug.Log($"Hit: {hit.collider}");
+                        var colliderRootProvider = hit.collider.GetComponent<IColliderRootProvider>();
+                        if (colliderRootProvider != null)
                         {
-                            var shipLog = portraitViewer.shipLog;
-                            selectedShipLogObjectId = shipLog.objectId;
+                            var root = colliderRootProvider.GetRoot();
+                            var portraitViewer = root.GetComponent<PortraitViewer>();
+                            if (portraitViewer != null)
+                            {
+                                var shipLog = portraitViewer.shipLog;
+                                selectedShipLogObjectId = shipLog.objectId;
+                            }
                         }
+                        // var viewer = hit.collider.GetComponent<PortraitViewer>();
+                        // Debug.Log(viewer);
                     }
-                    // var viewer = hit.collider.GetComponent<PortraitViewer>();
-                    // Debug.Log(viewer);
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    NavalGameState.Instance.Step(60); // Advance 60s with 1 pulse
                 }
             }
 
@@ -253,9 +317,7 @@ public class GameManager : MonoBehaviour
                     selectedShipLog.position = Utils.Vector3ToLatLon(hitPoint);
                 }
             }
-
         }
-
     }
 
     public void OnDestroy()

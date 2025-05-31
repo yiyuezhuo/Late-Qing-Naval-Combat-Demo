@@ -14,15 +14,20 @@ using System;
 
 public class NamedShipEditor : HideableDocument<NamedShipEditor>
 {
+    public ListView namedShipListView;
+
     protected override void Awake()
     {
         base.Awake();
+
+        // var sortingOrder = doc.sortingOrder;
+        // Debug.Log($"NamedShipEditor sortingOrder={sortingOrder}");
 
         root.dataSource = GameManager.Instance;
 
         Utils.BindItemsSourceRecursive(root);
 
-        var namedShipListView = root.Q<ListView>("NamedShipListView");
+        namedShipListView = root.Q<ListView>("NamedShipListView");
         Utils.BindItemsAddedRemoved<NamedShip>(namedShipListView, () => null);
 
         namedShipListView.selectionChanged += (IEnumerable<object> objects) =>
@@ -55,6 +60,37 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
 
         var selectDefaultLeaderButton = root.Q<Button>("SelectDefaultLeaderButton");
         selectDefaultLeaderButton.clicked += DialogRoot.Instance.PopupLeaderSelectorDialogForNamedShip;
+
+        var gotoShipClassButton = root.Q<Button>("GotoShipClassButton");
+        gotoShipClassButton.clicked += () =>
+        {
+            var shipClass = GameManager.Instance.selectedNamedShip?.shipClass;
+            if (shipClass == null)
+                return;
+            var idx = NavalGameState.Instance.shipClasses.IndexOf(shipClass);
+            if (idx != -1)
+            {
+                Hide();
+                ShipClassEditor.Instance.Show();
+                ShipClassEditor.Instance.shipClassListView.SetSelection(idx);
+            }
+        };
+
+        var gotoLeaderButton = root.Q<Button>("GotoLeaderButton");
+        gotoLeaderButton.clicked += () =>
+        {
+            var leader = GameManager.Instance.selectedNamedShip?.defaultLeader;
+            if (leader == null)
+                return;
+
+            var idx = NavalGameState.Instance.leaders.IndexOf(leader);
+            if (idx != -1)
+            {
+                Hide();
+                LeaderEditor.Instance.Show();
+                LeaderEditor.Instance.leadersListView.SetSelection(idx);
+            }
+        };
     }
 
     void OnNamedShipsXMLLoaded(object sender, string text)

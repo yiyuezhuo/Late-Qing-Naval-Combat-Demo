@@ -15,13 +15,14 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement data-source-path="selectedNamedShip" style="flex-grow: 1;">
-                <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;">
-                    <ui:TextField label="Ship Class" readonly="true">
+                <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; flex-direction: row;">
+                    <ui:TextField label="Ship Class" readonly="true" style="flex-grow: 1;">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="shipClassDesc" binding-mode="ToTarget" />
                         </Bindings>
                     </ui:TextField>
-                    <ui:Button text="Select A Class" name="SelectShipClassButton" />
+                    <ui:Button text="Select A Class" name="SelectShipClassButton" style="flex-grow: 1;" />
+                    <ui:Button text="Go to Ship Class" name="GotoShipClassButton" />
                 </ui:VisualElement>
                 <ui:Label text="Not Selected or binding is not valid">
                     <Bindings>
@@ -34,12 +35,15 @@
                             <ui:Instance template="GlobalStringEditor" data-source-path="name">
                                 <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
                             </ui:Instance>
-                            <ui:TextField label="Defaultr Leader" readonly="true">
+                            <ui:TextField label="Default Leader" readonly="true">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="defaultLeaderProp.name.mergedName" binding-mode="ToTarget" />
                                 </Bindings>
                             </ui:TextField>
-                            <ui:Button text="Select Default Leader" name="SelectDefaultLeaderButton" />
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:Button text="Select Default Leader" name="SelectDefaultLeaderButton" style="flex-grow: 1;" />
+                                <ui:Button text="Go to Leader" name="GotoLeaderButton" />
+                            </ui:VisualElement>
                             <ui:SliderInt label="Crew Rating" high-value="10" low-value="-2">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="crewRating" binding-mode="TwoWay" />

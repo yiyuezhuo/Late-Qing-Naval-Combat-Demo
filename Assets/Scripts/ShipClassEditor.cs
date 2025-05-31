@@ -11,11 +11,16 @@ using System.Linq;
 
 public class ShipClassEditor : HideableDocument<ShipClassEditor>
 {
+    public ListView shipClassListView;
     ListView batteryRecordsListView;
 
     protected override void Awake()
     {
         base.Awake();
+
+        // Always not work as expected for some reason
+        // var sortingOrder = doc.sortingOrder;
+        // Debug.Log($"ShipClassEditor sortingOrder={sortingOrder}");
 
         root.dataSource = GameManager.Instance;
 
@@ -24,7 +29,7 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             listView.SetBinding("itemsSource", new DataBinding());
         }
 
-        var shipClassListView = root.Q<ListView>("ShipClassListView");
+        shipClassListView = root.Q<ListView>("ShipClassListView");
         // shipClassListView.itemsAdded += Utils.MakeCallbackForItemsAdded<ShipClass>(shipClassListView);
         Utils.BindItemsAddedRemoved<ShipClass>(shipClassListView, GameManager.Instance.SelectedShipClassProvider);
 

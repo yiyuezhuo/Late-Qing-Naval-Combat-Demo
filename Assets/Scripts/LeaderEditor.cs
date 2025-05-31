@@ -11,6 +11,8 @@ using System.Linq;
 
 public class LeaderEditor : HideableDocument<LeaderEditor>
 {
+    public ListView leadersListView;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Awake()
     {
@@ -20,7 +22,7 @@ public class LeaderEditor : HideableDocument<LeaderEditor>
 
         Utils.BindItemsSourceRecursive(root);
 
-        var leadersListView = root.Q<ListView>("LeadersListView");
+        leadersListView = root.Q<ListView>("LeadersListView");
         Utils.BindItemsAddedRemoved<Leader>(leadersListView, () => null);
 
         leadersListView.selectionChanged += (IEnumerable<object> objects) =>

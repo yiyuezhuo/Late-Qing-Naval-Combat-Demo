@@ -1,0 +1,7 @@
+Label {
+    font-size: 75px;
+}
+
+.link-cursor {
+    cursor: link;
+}

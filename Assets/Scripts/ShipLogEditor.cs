@@ -41,9 +41,45 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
+        public string namedShipDescLink
+        {
+            get
+            {
+                var name = namedShip?.name.mergedName;
+                if (name == null)
+                    return "[Not Specified]";
+                return $"<link=\"namedShip\"><color=#40a0ff><u>{name}</u></color></link>";
+            }
+        }
+
+        [CreateProperty]
+        public string shipClassDescLink
+        {
+            get
+            {
+                var name = shipClass?.name.mergedName;
+                if (name == null)
+                    return "[Not Specified]";
+                return $"Class: <link=\"shipClass\"><color=#40a0ff><u>{name}</u></color></link>";
+            }
+        }
+
+        [CreateProperty]
         public string captainDesc
         {
             get => leader?.name.mergedName ?? "[Not Specified]";
+        }
+
+        [CreateProperty]
+        public string captainDescLink
+        {
+            get
+            {
+                var name = leader?.name.mergedName;
+                if (name == null)
+                    return "[Not Specified]";
+                return $"Captain: <link=\"captain\"><color=#40a0ff><u>{name}</u></color></link>";
+            }
         }
 
         [CreateProperty]
@@ -217,10 +253,14 @@ namespace NavalCombatCore
 public class ShipLogEditor : HideableDocument<ShipLogEditor>
 {
     public VisualTreeAsset shipClassSelectorDialogDocument;
+    public ListView shipLogListView;
 
     protected override void Awake()
     {
         base.Awake();
+
+        // var sortingOrder = doc.sortingOrder;
+        // Debug.Log($"ShipLogEditor sortingOrder={sortingOrder}");
 
         root.dataSource = GameManager.Instance;
 
@@ -230,7 +270,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         // }
         Utils.BindItemsSourceRecursive(root);
 
-        var shipLogListView = root.Q<ListView>("ShipLogListView");
+        shipLogListView = root.Q<ListView>("ShipLogListView");
         // shipLogListView.itemsAdded += Utils.MakeCallbackForItemsAdded<ShipLog>(shipLogListView);
         Utils.BindItemsAddedRemoved<ShipLog>(shipLogListView, () => null);
 
@@ -240,7 +280,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         //     GameManager.Instance.selectedShipLogIndex = idx;
         // };
 
-        shipLogListView.selectionChanged  += (IEnumerable<object> objs) =>
+        shipLogListView.selectionChanged += (IEnumerable<object> objs) =>
         {
             var shipLog = objs.FirstOrDefault() as ShipLog;
             GameManager.Instance.selectedShipLogObjectId = shipLog.objectId;
@@ -307,6 +347,21 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             if (selectedShipLog == null)
                 return;
             selectedShipLog.ResetDamageExpenditureState();
+        };
+
+        var gotoNamedShipButton = root.Q<Button>("GotoNamedShipButton");
+        gotoNamedShipButton.clicked += () =>
+        {
+            var namedShip = GameManager.Instance.selectedShipLog?.namedShip;
+            if (namedShip == null)
+                return;
+            var idx = NavalGameState.Instance.namedShips.IndexOf(namedShip);
+            if (idx != -1)
+            {
+                Hide();
+                NamedShipEditor.Instance.Show();
+                NamedShipEditor.Instance.namedShipListView.SetSelection(idx);
+            }
         };
     }
 

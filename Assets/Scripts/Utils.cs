@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 using System.Linq;
+using UnityEngine.UIElements.Experimental;
 
 public static class Utils
 {
@@ -149,5 +150,31 @@ public static class Utils
                 EntityManager.Instance.Register(el, parent);
             }
         }
+    }
+
+    readonly static string linkCursorClassName = "link-cursor"; // a hand icon
+
+    public static void RegisterLinkTag(Label label, Dictionary<string, Action> handlerMap)
+    {
+        label.RegisterCallback<PointerOverLinkTagEvent>(
+            _ => label.AddToClassList(linkCursorClassName)
+        );
+
+        label.RegisterCallback<PointerOutLinkTagEvent>(
+            _ => label.RemoveFromClassList(linkCursorClassName)
+        );
+
+        label.RegisterCallback<PointerUpLinkTagEvent>(evt =>
+        {
+            var handler = handlerMap.GetValueOrDefault(evt.linkID);
+            if (handler != null)
+            {
+                handler();
+            }
+            else
+            {
+                Debug.LogWarning($"No handler found for linkID {evt.linkID}");
+            }
+        });
     }
 }

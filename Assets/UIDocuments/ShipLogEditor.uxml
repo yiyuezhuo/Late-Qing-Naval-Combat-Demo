@@ -19,12 +19,13 @@
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1;">
                     <ui:VisualElement style="flex-grow: 0; flex-direction: row; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-                        <ui:TextField label="Named Ship" readonly="true" style="flex-grow: 1; flex-basis: 100px;">
+                        <ui:TextField label="Named Ship" readonly="true" style="flex-grow: 1.5; flex-basis: 100px;">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="namedShipDesc" binding-mode="ToTarget" />
                             </Bindings>
                         </ui:TextField>
                         <ui:Button text="Set Named Ship" name="SetNamedShipButton" style="flex-basis: 100px; flex-grow: 1;" />
+                        <ui:Button text="Go to Named Ship" name="GotoNamedShipButton" />
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1; opacity: 1;">
                         <ui:TabView>

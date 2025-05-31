@@ -28,6 +28,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public Transform flagRotationBase;
     float scaleFactor = 0.015f;
     // public RectTransform canvasRectTransform;
+    public MeshRenderer flagRenderer;
 
     long oldViewHashCode;
 
@@ -38,7 +39,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             shipLog?.shipClass?.portraitTopCode,
             // shipLog?.captainPortraitCode,
             shipLog?.leader?.portraitCode,
-            shipLog.shipClass.GetAcronym()
+            shipLog?.shipClass.country
         );
     }
 
@@ -46,6 +47,8 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     {
         // iconRenderer = GetComponent<MeshRenderer>();
         leafTransform.localPosition = new Vector3(0, 0, -Utils.r);
+        // flagMaterial = flagRotationBase.GetComponent<MeshRenderer>().material;
+        flagRenderer.material = flagRenderer.material; // copy material
     }
 
     // void UpdateTextLocation()
@@ -129,5 +132,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         var portraitTopCode = shipClass.portraitTopCode;
         var portraitTop = ResourceManager.GetShipPortraitSprite(portraitTopCode);
         iconRenderer.material.SetTexture("_MainTex", portraitTop.texture);
+
+        flagRenderer.material.SetTexture("_MainTex", ResourceManager.GetFlagSprite(shipClass.country.ToString()).texture);
     }
 }

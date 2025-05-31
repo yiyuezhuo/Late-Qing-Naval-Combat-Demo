@@ -375,6 +375,7 @@ MonoBehaviour:
   textBaseTransform: {fileID: 2123864438152430353}
   headingTransform: {fileID: 5379371941572768635}
   flagRotationBase: {fileID: 8420428801661644135}
+  flagRenderer: {fileID: 5679438803837259729}
 --- !u!1 &2289285744957579221
 GameObject:
   m_ObjectHideFlags: 0

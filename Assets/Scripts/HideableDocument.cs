@@ -28,11 +28,12 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 
 public class SingletonDocument<T> : SingletonMonoBehaviour<T> where T : MonoBehaviour
 {
+    protected UIDocument doc;
     protected VisualElement root;
 
     protected virtual void Awake()
     {
-        var doc = GetComponent<UIDocument>();
+        doc = GetComponent<UIDocument>();
         root = doc.rootVisualElement;
     }
 

@@ -9,7 +9,6 @@ using System.Xml;
 using System.IO;
 using System.Linq;
 using Unity.Properties;
-using System.Threading.Tasks;
 using System;
 
 namespace NavalCombatCore
@@ -97,6 +96,26 @@ namespace NavalCombatCore
         public string summary
         {
             get => Summary();
+        }
+
+        [CreateProperty]
+        public string followedTargetDesc
+        {
+            get => followedTarget?.namedShip?.name.mergedName ?? "[Not Specified]";
+        }
+
+        // [CreateProperty]
+        // public DisplayStyle
+        [CreateProperty]
+        public ShipLog followedTargetProp
+        {
+            get => followedTarget;
+        }
+
+        [CreateProperty]
+        public StyleEnum<DisplayStyle> displayStyleOfControlModeIsFollowTarget
+        {
+            get => controlMode == ControlMode.FollowTarget ? DisplayStyle.Flex : DisplayStyle.None;
         }
     }
 
@@ -363,6 +382,15 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
                 NamedShipEditor.Instance.namedShipListView.SetSelection(idx);
             }
         };
+
+        var resetAllStatesButton = root.Q<Button>("ResetAllStatesButton");
+        resetAllStatesButton.clicked += () =>
+        {
+            foreach (var shipLog in NavalGameState.Instance.shipLogs)
+            {
+                shipLog.ResetDamageExpenditureState();
+            }
+        };
     }
 
     void OnShipLogsXmlLoaded(object sender, string text)
@@ -370,5 +398,15 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         IOManager.Instance.textLoaded -= OnShipLogsXmlLoaded;
 
         GameManager.Instance.navalGameState.ShipLogsFromXML(text);
+    }
+
+    public void PopupWithSelection(ShipLog shipLog)
+    {
+        var idx = NavalGameState.Instance.shipLogs.IndexOf(shipLog);
+        if(shipLog != null && idx != -1)
+        {
+            Show();
+            shipLogListView.SetSelection(idx);
+        }
     }
 }

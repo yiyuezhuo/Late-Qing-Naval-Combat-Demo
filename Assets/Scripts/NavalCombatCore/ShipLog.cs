@@ -260,6 +260,13 @@ namespace NavalCombatCore
         Destroyed
     }
 
+    public enum ControlMode
+    {
+        Independent, // Player/Top AI set desired speed, heading and etc to control the ship directly.
+        FollowTarget,
+        MaintainRelativePosition,
+    }
+
     public partial class ShipLog : IObjectIdLabeled, IDF3Model, IShipGroupMember
     {
         public string objectId { get; set; }
@@ -316,6 +323,19 @@ namespace NavalCombatCore
             get => EntityManager.Instance.Get<Leader>(leaderObjectId);
         }
 
+        public bool emergencyRudder;
+        public bool assistedDeceleration = true;
+        public ControlMode controlMode;
+        public string followedTargetObjectId;
+        public ShipLog followedTarget
+        {
+            get => EntityManager.Instance.Get<ShipLog>(followedTargetObjectId);
+        }
+        public float followDistanceYards = 500;
+        public float relativeTargetObjectId;
+        public float relativeTargetDistanceYards = 500;
+        public float relativeTargetAzimuth;
+
         public string GetMemberName() => namedShip.name.mergedName ?? "[Not Speicified]";// name.mergedName;
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
@@ -340,6 +360,9 @@ namespace NavalCombatCore
 
         public void ResetDamageExpenditureState()
         {
+            desiredHeadingDeg = headingDeg;
+            desiredSpeedKnots = speedKnots;
+
             damagePoint = 0;
             // foreach (var batteryStatusRec in batteryStatus)
             // {
@@ -387,6 +410,46 @@ namespace NavalCombatCore
 
         public void Step(float deltaSeconds)
         {
+            if (controlMode == ControlMode.FollowTarget)
+            {
+                var followedPosition = followedTarget?.position;
+                if (followedPosition != null)
+                {
+                    var inverseLine = Geodesic.WGS84.InverseLine(
+                        position.LatDeg, position.LonDeg,
+                        followedPosition.LatDeg, followedPosition.LonDeg
+                    );
+                    var currentFollowedDistM = inverseLine.Distance;
+                    var currentFollowedDistYards = currentFollowedDistM * 1.09361f;
+                    if (currentFollowedDistYards < followDistanceYards)
+                    {
+                        desiredSpeedKnots = 0; // Too harsh?
+                    }
+                    else
+                    {
+                        desiredSpeedKnots = shipClass.speedKnots;
+                    }
+                    desiredHeadingDeg = (float)inverseLine.Azimuth;
+                }
+            }
+
+            var turnCapPer2Turn = emergencyRudder ? shipClass.emergencyTurnDegPer2Min : shipClass.standardTurnDegPer2Min;
+            var turnCapThisPulse = turnCapPer2Turn / 120 * deltaSeconds;
+            headingDeg = MeasureUtils.MoveAngleTowards(headingDeg, desiredHeadingDeg, turnCapThisPulse);
+
+            if (desiredSpeedKnots > speedKnots)
+            {
+                var accelerationKnotsCapPer2Min = shipClass.speedIncreaseRecord.Where(r => speedKnots >= r.thresholdSpeedKnots).Select(r => r.increaseSpeedKnots).Min();
+                var accelerationKnotsCapThisPulse = accelerationKnotsCapPer2Min / 120f * deltaSeconds;
+                speedKnots += Math.Min(desiredSpeedKnots - speedKnots, accelerationKnotsCapThisPulse);
+            }
+            else if (desiredSpeedKnots < speedKnots)
+            {
+                var decelerationKnotsCapPer2Min = shipClass.speedKnots * (assistedDeceleration ? 0.6f : 0.2f);
+                var decelerationKnotsCapThisPulse = decelerationKnotsCapPer2Min / 120f * deltaSeconds;
+                speedKnots -= Math.Min(speedKnots - desiredSpeedKnots, decelerationKnotsCapThisPulse);
+            }
+
             var distNm = speedKnots / 3600 * deltaSeconds;
             var distM = distNm * 1852;
             double arcLength = Geodesic.WGS84.Direct(position.LatDeg, position.LonDeg, headingDeg, distM, out double lat2, out double lon2);

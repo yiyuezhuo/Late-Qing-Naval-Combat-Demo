@@ -910,6 +910,9 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: cbd1999e31e5dc649b0161a6a409769b, type: 2}
   - postureType: 1
     material: {fileID: 2100000, guid: b352e5d9bc233e44abe8359a017f9e95, type: 2}
+  hoveringLocationInfo: 
+  remainAdvanceSimulationSeconds: 0
+  pulseLengthSeconds: 1
   selectedShipClassIndex: 0
   selectedShipLogObjectId: 
   selectedLeaderObjectId: 
@@ -983,7 +986,7 @@ Camera:
   far clip plane: 10000
   field of view: 60
   orthographic: 1
-  orthographic size: 1
+  orthographic size: 4
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -1102,7 +1105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813226747}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.14359172, y: 0.84606, z: -0.28411162, w: -0.4276032}
+  m_LocalRotation: {x: -0.16020359, y: 0.82927495, z: -0.29925856, w: -0.44393942}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1436,7 +1439,7 @@ Camera:
   far clip plane: 10000
   field of view: 60
   orthographic: 1
-  orthographic size: 1
+  orthographic size: 4
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

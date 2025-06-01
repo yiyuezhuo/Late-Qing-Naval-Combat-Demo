@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
     {
         Idle,
         SelectingInsertUnitPosition,
-        MovingUnit
+        MovingUnit,
+        SelectingFollowedTarget
     }
 
     State _state = State.Idle;
@@ -219,8 +220,40 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public float remainAdvanceSimulationSeconds;
+    // public float simulationRateRaio = 30;
+    float simulationRateRaio = 120;
+    public float pulseLengthSeconds = 1;
+
+    public void UpdateSimulation()
+    {
+        var realSeconds = Time.deltaTime;
+        var advanceSimulationSeconds = realSeconds * simulationRateRaio;
+        while (remainAdvanceSimulationSeconds > 0 && advanceSimulationSeconds > 0)
+        {
+            var pulseSeconds = Math.Min(pulseLengthSeconds, Math.Min(remainAdvanceSimulationSeconds, advanceSimulationSeconds));
+            NavalGameState.Instance.Step(pulseSeconds);
+            remainAdvanceSimulationSeconds -= pulseSeconds;
+            advanceSimulationSeconds -= pulseSeconds;
+        }
+    }
+
+    static Dictionary<KeyCode, float> simulationSecondsAdvanceMap = new()
+    {
+        {KeyCode.Alpha1, 60 * 1},
+        {KeyCode.Alpha2, 60 * 2},
+        {KeyCode.Alpha3, 60 * 3},
+        {KeyCode.Alpha4, 60 * 4},
+        {KeyCode.Alpha5, 60 * 5},
+        {KeyCode.Alpha6, 60 * 6},
+        {KeyCode.Alpha7, 60 * 7},
+        {KeyCode.Alpha8, 60 * 8},
+        {KeyCode.Alpha9, 60 * 9},
+    };
+
     public void Update()
     {
+        UpdateSimulation();
         // viewAccTime += Time.deltaTime;
 
         // if (viewAccTime > 2)
@@ -257,7 +290,75 @@ public class GameManager : MonoBehaviour
 
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            if (state == State.SelectingInsertUnitPosition)
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                state = State.Idle;
+                selectedShipLogObjectId = null;
+                return;
+            }
+
+            var isPressingShift = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+
+            if (state == State.Idle) // unit left click chosen
+            {
+                // handle events
+                if (Input.GetKeyDown(KeyCode.Insert))
+                {
+                    state = State.SelectingInsertUnitPosition;
+                }
+
+                if (Input.GetKeyDown(KeyCode.M) && selectedShipLog != null)
+                {
+                    state = State.MovingUnit;
+                }
+
+                if (Input.GetMouseButtonDown(0) && !isPressingShift) // try select a unit
+                {
+                    var portraitViewer = TryToRaycastUnit();
+                    if (portraitViewer != null)
+                    {
+                        var shipLog = portraitViewer.shipLog;
+                        selectedShipLogObjectId = shipLog.objectId;
+                    }
+                }
+
+                if (Input.GetMouseButtonDown(0) && isPressingShift) // RTW like direction setting
+                {
+                    if (selectedShipLog != null)
+                    {
+                        var hitPoint = CameraController2.Instance.GetHitPoint();
+                        var dstPos = Utils.Vector3ToLatLon(hitPoint);
+
+                        var currentPos = selectedShipLog.position;
+                        var inverseLine = Geodesic.WGS84.InverseLine(
+                            currentPos.LatDeg, currentPos.LonDeg,
+                            dstPos.LatDeg, dstPos.LonDeg
+                        );
+
+                        selectedShipLog.desiredHeadingDeg = (float)inverseLine.Azimuth;
+                    }
+                }
+
+                // simulationSecondsAdvanceMap
+                foreach ((var keyCode, var advanceSimulationSeconds) in simulationSecondsAdvanceMap)
+                {
+                    if (Input.GetKeyDown(keyCode))
+                    {
+                        remainAdvanceSimulationSeconds = advanceSimulationSeconds;
+                    }
+                }
+
+                if (Input.GetKeyDown(KeyCode.F) && selectedShipLog != null) // Follow
+                {
+                    state = State.SelectingFollowedTarget;
+                }
+
+                if (Input.GetKeyDown(KeyCode.L) && selectedShipLog != null) // ship Log
+                {
+                    ShipLogEditor.Instance.PopupWithSelection(selectedShipLog);
+                }
+            }
+            else if (state == State.SelectingInsertUnitPosition)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -276,65 +377,58 @@ public class GameManager : MonoBehaviour
                     DialogRoot.Instance.PopupShipLogSelectorDialogForRedeploy();
                 }
             }
-
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                state = State.Idle;
-                selectedShipLogObjectId = null;
-            }
-
-            // handle events
-            if (Input.GetKeyDown(KeyCode.Insert))
-            {
-                state = State.SelectingInsertUnitPosition;
-            }
-
-            if (Input.GetKeyDown(KeyCode.M) && selectedShipLog != null)
-            {
-                state = State.MovingUnit;
-            }
-
-
-            if (state == State.Idle) // unit left click chosen
+            else if (state == State.MovingUnit)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    var cam = CameraController2.Instance.cam;
-                    var ray = cam.ScreenPointToRay(Input.mousePosition);
-                    if (Physics.Raycast(ray, out var hit, Mathf.Infinity, iconLayerMask))
+                    state = State.Idle;
+                    if (selectedShipLog != null)
                     {
-                        Debug.Log($"Hit: {hit.collider}");
-                        var colliderRootProvider = hit.collider.GetComponent<IColliderRootProvider>();
-                        if (colliderRootProvider != null)
-                        {
-                            var root = colliderRootProvider.GetRoot();
-                            var portraitViewer = root.GetComponent<PortraitViewer>();
-                            if (portraitViewer != null)
-                            {
-                                var shipLog = portraitViewer.shipLog;
-                                selectedShipLogObjectId = shipLog.objectId;
-                            }
-                        }
-                        // var viewer = hit.collider.GetComponent<PortraitViewer>();
-                        // Debug.Log(viewer);
+                        var hitPoint = CameraController2.Instance.GetHitPoint();
+                        selectedShipLog.position = Utils.Vector3ToLatLon(hitPoint);
                     }
                 }
-                if (Input.GetKeyDown(KeyCode.Alpha1))
-                {
-                    NavalGameState.Instance.Step(60); // Advance 60s with 1 pulse
-                }
             }
-
-            if (state == State.MovingUnit && Input.GetMouseButtonDown(0))
+            else if (state == State.SelectingFollowedTarget)
             {
-                state = State.Idle;
-                if (selectedShipLog != null)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    var hitPoint = CameraController2.Instance.GetHitPoint();
-                    selectedShipLog.position = Utils.Vector3ToLatLon(hitPoint);
+                    state = State.Idle;
+                    if (selectedShipLog != null)
+                    {
+                        var portraitViewer = TryToRaycastUnit();
+                        if (portraitViewer != null)
+                        {
+                            var targetShipLog = portraitViewer.shipLog;
+                            if (selectedShipLog != targetShipLog)
+                            {
+                                selectedShipLog.followedTargetObjectId = targetShipLog.objectId;
+                                selectedShipLog.controlMode = ControlMode.FollowTarget;
+                                Debug.Log($"Set Followed Object ID: {selectedShipLog.objectId} -> {targetShipLog.objectId}");
+                            }
+                        }
+                    }
                 }
             }
         }
+    }
+
+    public PortraitViewer TryToRaycastUnit()
+    {
+        var cam = CameraController2.Instance.cam;
+        var ray = cam.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out var hit, Mathf.Infinity, iconLayerMask))
+        {
+            Debug.Log($"Hit: {hit.collider}");
+            var colliderRootProvider = hit.collider.GetComponent<IColliderRootProvider>();
+            if (colliderRootProvider != null)
+            {
+                var root = colliderRootProvider.GetRoot();
+                var portraitViewer = root.GetComponent<PortraitViewer>();
+                return portraitViewer;
+            }
+        }
+        return null;
     }
 
     public void OnDestroy()

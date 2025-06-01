@@ -5,6 +5,7 @@
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="flex-grow: 0; flex-basis: 20%; flex-shrink: 0; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                 <ui:ListView name="ShipLogListView" data-source-path="navalGameState.shipLogs" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/ShipLogLabel.uxml?fileID=9197481963319205126&amp;guid=5651049bc518a7246863972edb054f20&amp;type=3#ShipLogLabel" show-add-remove-footer="true" style="flex-grow: 1;" />
+                <ui:Button text="Reset All States" name="ResetAllStatesButton" />
                 <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
                     <ui:Button text="Import" name="ImportButton" style="flex-basis: 10px; flex-grow: 1;" />
                     <ui:Button text="Export" name="ExportButton" style="flex-basis: 10px; flex-grow: 1;" />
@@ -64,6 +65,37 @@
                                                     <ui:DataBinding property="value" data-source-path="desiredHeadingDeg" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:FloatField>
+                                            <ui:Toggle label="Emergency Rudder">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="emergencyRudder" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:Toggle>
+                                            <ui:Toggle label="Assisted Deceleration">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="assistedDeceleration" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:Toggle>
+                                            <ui:EnumField label="Control Mode" value="Center" type="NavalCombatCore.ControlMode, Assembly-CSharp">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="controlMode" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:EnumField>
+                                            <ui:VisualElement style="flex-grow: 1;">
+                                                <ui:TextField label="Followed Target" readonly="true">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="followedTargetDesc" binding-mode="ToTarget" />
+                                                    </Bindings>
+                                                </ui:TextField>
+                                                <ui:Label text="In map view, select a ship, press F and then press on another ship to set the followed target." />
+                                                <ui:FloatField label="Follow Distance (yards)">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="followDistanceYards" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <Bindings>
+                                                    <ui:DataBinding property="style.display" data-source-path="displayStyleOfControlModeIsFollowTarget" binding-mode="ToTarget" />
+                                                </Bindings>
+                                            </ui:VisualElement>
                                             <ui:EnumField label="Map State" value="Center" type="NavalCombatCore.MapState, Assembly-CSharp">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="mapState" binding-mode="TwoWay" />

@@ -26,6 +26,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public Transform textBaseTransform;
     public Transform headingTransform;
     public Transform flagRotationBase;
+    public Transform arrowBaseTransform;
     float scaleFactor = 0.015f;
     // public RectTransform canvasRectTransform;
     public MeshRenderer flagRenderer;
@@ -99,6 +100,20 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         t.localScale = new Vector3(x, x, x);
     }
 
+    void MaintainArrowRotation()
+    {
+        var isIndependentControlled = shipLog.controlMode == ControlMode.Independent;
+        arrowBaseTransform.gameObject.SetActive(isIndependentControlled);
+
+        if (isIndependentControlled)
+        {
+            arrowBaseTransform.gameObject.SetActive(true);
+            arrowBaseTransform.localEulerAngles = new Vector3(0, 0, -shipLog.desiredHeadingDeg);
+            var s = modelScale;
+            arrowBaseTransform.localScale = new Vector3(s, s, s);
+        }
+    }
+
     public void Update()
     {
         // UpdateTextLocation();
@@ -117,6 +132,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         headingTransform.localEulerAngles = new Vector3(0, 0, zEuler);
 
         MaintainTextDirectionSize();
+        MaintainArrowRotation();
 
         text.text = $"{shipLog.shipClass.GetAcronym()} {shipLog.namedShip.name.GetNameFromType(GameManager.Instance.iconLanuageType)}";
 

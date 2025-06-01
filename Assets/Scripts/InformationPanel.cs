@@ -32,13 +32,14 @@ public class InformationPanel : SingletonDocument<InformationPanel>
         {
             {"namedShip", () => {
                 var shipLog = GameManager.Instance.selectedShipLog;
-                var idx = NavalGameState.Instance.shipLogs.IndexOf(shipLog);
-                if(shipLog != null && idx != -1)
-                {
-                    ShipLogEditor.Instance.Show();
-                    ShipLogEditor.Instance.shipLogListView.SetSelection(idx);
-                }
-            }}
+                ShipLogEditor.Instance.PopupWithSelection(shipLog);
+                // var idx = NavalGameState.Instance.shipLogs.IndexOf(shipLog);
+                // if(shipLog != null && idx != -1)
+                // {
+                //     ShipLogEditor.Instance.Show();
+                //     ShipLogEditor.Instance.shipLogListView.SetSelection(idx);
+                // }
+            } }
         });
 
         var classLabel = root.Q<Label>("ClassLabel");

@@ -21,6 +21,33 @@
                     <ui:DataBinding property="text" data-source-path="captainDescLink" binding-mode="ToTarget" />
                 </Bindings>
             </ui:Label>
+            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Speed (kts):" />
+                <ui:Label text="speedKnots">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="speedKnots" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
+            </ui:VisualElement>
+            <ui:Slider high-value="100" show-input-field="true">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="desiredSpeedKnots" binding-mode="TwoWay" />
+                    <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnots" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Slider>
+            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Heading (deg):" />
+                <ui:Label text="heading">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="headingDeg" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
+            </ui:VisualElement>
+            <ui:Slider high-value="360" show-input-field="true">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="desiredHeadingDeg" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:Slider>
             <ui:Label text="summary" name="SummaryLabel" style="white-space: normal;">
                 <Bindings>
                     <ui:DataBinding property="text" data-source-path="summary" binding-mode="ToTarget" />

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System;
+using Unity.VisualScripting;
 // using SunCalcNet;
 
 public interface IColliderRootProvider
@@ -174,16 +175,18 @@ public class GameManager : MonoBehaviour
 
     public Dictionary<string, PortraitViewer> objectId2Viewer = new();
 
-    public LatLon hoveringLatLon = new();
-    public float hoveringTimeZoneOffset;
-    public DateTime hoveringLocalDateTime = new();
-    public SunState hoveringSunState = new();
+    // public LatLon hoveringLatLon = new();
+    // public float hoveringTimeZoneOffset;
+    // public DateTime hoveringLocalDateTime = new();
+    // public SunState hoveringSunState = new();
 
-    [CreateProperty]
-    public DayNightLevel hoveringDayNightLevel
-    {
-        get => hoveringSunState?.GetDayNightLevel() ?? DayNightLevel.Day;
-    }
+    // [CreateProperty]
+    // public DayNightLevel hoveringDayNightLevel
+    // {
+    //     get => hoveringSunState?.GetDayNightLevel() ?? DayNightLevel.Day;
+    // }
+
+    public string hoveringLocationInfo;
 
     // float viewAccTime;
     void UpdateLocationInfoLabel()
@@ -193,12 +196,26 @@ public class GameManager : MonoBehaviour
         {
             var hitPoint = hit.point;
 
-            hoveringLatLon = Utils.Vector3ToLatLon(hitPoint);
+            var latLon = Utils.Vector3ToLatLon(hitPoint);
 
             var scenarioState = NavalGameState.Instance.scenarioState;
-            hoveringTimeZoneOffset = scenarioState.GetTimeZoneOffset(hoveringLatLon.LonDeg);
-            hoveringLocalDateTime = scenarioState.GetLocalDateTime(hoveringLatLon.LonDeg);
-            hoveringSunState = scenarioState.GetSunPosition(hoveringLatLon);
+
+            var timeZoneOffset = scenarioState.GetTimeZoneOffset(latLon.LonDeg);
+            var timeZoneOffsetF = timeZoneOffset.ToString("+#;-#;0");
+
+            var localDT = scenarioState.GetLocalDateTime(latLon.LonDeg);
+            var sunState = scenarioState.GetSunPosition(latLon);
+
+            var latF = latLon.LatDeg.ToString("0.000");
+            var lonF = latLon.LonDeg.ToString("0.000");
+            var utcDT = scenarioState.dateTime;
+
+            var sunAziF = sunState.azimuthDeg.ToString("0.0");
+            var sunAltF = sunState.altitudeDeg.ToString("0.0");
+
+            var dayNightLevel = sunState.GetDayNightLevel();
+
+            hoveringLocationInfo = $"Lat: {latF} Lon: {lonF} UTC: {utcDT} Local: {localDT} ({dayNightLevel},{timeZoneOffsetF}) Sun Alt: {sunAltF} Azi: {sunAziF}";
         }
     }
 

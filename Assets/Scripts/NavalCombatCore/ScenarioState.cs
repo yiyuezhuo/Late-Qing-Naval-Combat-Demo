@@ -20,9 +20,9 @@ namespace NavalCombatCore
         public float altitudeDeg;
         public DayNightLevel GetDayNightLevel()
         {
-            if (azimuthDeg > 5)
+            if (altitudeDeg > 5)
                 return DayNightLevel.Day;
-            else if (azimuthDeg > 0)
+            else if (altitudeDeg > 0)
                 return DayNightLevel.Twilight;
             return DayNightLevel.Night;
         }
@@ -42,7 +42,7 @@ namespace NavalCombatCore
         {
             var intervals = 24f;
             var degreesPerInterval = 360f / intervals;
-            return (float)Math.Floor(longtitude / degreesPerInterval);
+            return (float)Math.Round(longtitude / degreesPerInterval);
         }
 
         public DateTime GetLocalDateTime(float longitude)

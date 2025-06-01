@@ -7,48 +7,9 @@
                 <ui:DataBinding property="text" data-source-path="stateDesc" binding-mode="ToTarget" />
             </Bindings>
         </ui:Label>
-        <ui:Label text="Lat:" />
-        <ui:Label>
+        <ui:Label text="Localtion Info" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/NotoSansMono_ExtraCondensed-Regular.ttf?fileID=12800000&amp;guid=d3a0126bfd4299043910f2fd8adceef6&amp;type=3#NotoSansMono_ExtraCondensed-Regular&quot;);">
             <Bindings>
-                <ui:DataBinding property="text" data-source-path="hoveringLatLon.LatDeg" binding-mode="ToTarget" />
-            </Bindings>
-        </ui:Label>
-        <ui:Label text="Lon:" />
-        <ui:Label>
-            <Bindings>
-                <ui:DataBinding property="text" data-source-path="hoveringLatLon.LonDeg" binding-mode="ToTarget" />
-            </Bindings>
-        </ui:Label>
-        <ui:Label text="Global Time:" />
-        <ui:Label>
-            <Bindings>
-                <ui:DataBinding property="text" data-source-path="navalGameState.scenarioState.dateTime" binding-mode="ToTarget" />
-            </Bindings>
-        </ui:Label>
-        <ui:Label text="TZ:" />
-        <ui:Label />
-        <ui:Label text="Local Time:" />
-        <ui:Label>
-            <Bindings>
-                <ui:DataBinding property="text" data-source-path="hoveringLocalDateTime" binding-mode="ToTarget" />
-            </Bindings>
-        </ui:Label>
-        <ui:Label text="(" />
-        <ui:Label>
-            <Bindings>
-                <ui:DataBinding property="text" data-source-path="hoveringDayNightLevel" binding-mode="ToTarget" />
-            </Bindings>
-        </ui:Label>
-        <ui:Label text=") Sun Azi:" />
-        <ui:Label>
-            <Bindings>
-                <ui:DataBinding property="text" data-source-path="hoveringSunState.azimuthDeg" binding-mode="ToTarget" />
-            </Bindings>
-        </ui:Label>
-        <ui:Label text="Alt:" />
-        <ui:Label>
-            <Bindings>
-                <ui:DataBinding property="text" data-source-path="hoveringSunState.altitudeDeg" binding-mode="ToTarget" />
+                <ui:DataBinding property="text" data-source-path="hoveringLocationInfo" binding-mode="ToTarget" />
             </Bindings>
         </ui:Label>
     </ui:VisualElement>

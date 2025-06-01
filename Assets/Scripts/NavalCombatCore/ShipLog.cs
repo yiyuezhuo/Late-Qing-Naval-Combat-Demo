@@ -264,7 +264,7 @@ namespace NavalCombatCore
     {
         Independent, // Player/Top AI set desired speed, heading and etc to control the ship directly.
         FollowTarget,
-        MaintainRelativePosition,
+        RelativeToTarget,
     }
 
     public partial class ShipLog : IObjectIdLabeled, IDF3Model, IShipGroupMember
@@ -332,9 +332,13 @@ namespace NavalCombatCore
             get => EntityManager.Instance.Get<ShipLog>(followedTargetObjectId);
         }
         public float followDistanceYards = 500;
-        public float relativeTargetObjectId;
-        public float relativeTargetDistanceYards = 500;
-        public float relativeTargetAzimuth;
+        public string relativeTargetObjectId;
+        public ShipLog relativeToTarget
+        {
+            get => EntityManager.Instance.Get<ShipLog>(relativeTargetObjectId);
+        }
+        public float relativeToTargetDistanceYards = 250;
+        public float relativeToTargetAzimuth = 135; // right-after position
 
         public string GetMemberName() => namedShip.name.mergedName ?? "[Not Speicified]";// name.mergedName;
 
@@ -410,43 +414,154 @@ namespace NavalCombatCore
 
         public void Step(float deltaSeconds)
         {
+            if (speedKnots >= 4)
+            {
+                var useEmergencyRudder = emergencyRudder && speedKnots >= 12;
+
+                var turnCapPer2Min = useEmergencyRudder ? shipClass.emergencyTurnDegPer2Min : shipClass.standardTurnDegPer2Min;
+                var turnCapThisPulse = turnCapPer2Min / 120 * deltaSeconds;
+                var absDeltaDeg = Math.Min(MeasureUtils.GetPositiveAngleDifference(headingDeg, desiredHeadingDeg), turnCapThisPulse);
+                var usePercent = absDeltaDeg / turnCapThisPulse;
+
+                headingDeg = MeasureUtils.MoveAngleTowards(headingDeg, desiredHeadingDeg, turnCapThisPulse);
+
+                var decayPercentPer2Min = (useEmergencyRudder ? 0.5f : 0.75f) * usePercent + 1 * ( 1- usePercent);
+                var decayPercentThisPulse = (float)Math.Pow(decayPercentPer2Min, deltaSeconds / 120f);
+                speedKnots *= decayPercentThisPulse;
+            }
+
+            var accelerationKnotsCapPer2Min = shipClass.speedIncreaseRecord.Where(r => speedKnots >= r.thresholdSpeedKnots).Select(r => r.increaseSpeedKnots).Min();
+            var accelerationKnotsCapPerSec = accelerationKnotsCapPer2Min / 120;
+            var decelerationKnotsCapPer2Min = shipClass.speedKnots * (assistedDeceleration ? 0.6f : 0.2f);
+            var decelerationKnotsCapPerSec = decelerationKnotsCapPer2Min / 120f;
+
             if (controlMode == ControlMode.FollowTarget)
             {
-                var followedPosition = followedTarget?.position;
-                if (followedPosition != null)
+                if (followedTarget != null)
                 {
+                    var followedPosition = followedTarget?.position;
                     var inverseLine = Geodesic.WGS84.InverseLine(
                         position.LatDeg, position.LonDeg,
                         followedPosition.LatDeg, followedPosition.LonDeg
                     );
                     var currentFollowedDistM = inverseLine.Distance;
                     var currentFollowedDistYards = currentFollowedDistM * 1.09361f;
-                    if (currentFollowedDistYards < followDistanceYards)
+
+                    var expectedDistanceDiffYards = currentFollowedDistYards - followDistanceYards;
+
+                    var extraDistanceYards = 0f;
+                    if (speedKnots > followedTarget.speedKnots)
                     {
-                        desiredSpeedKnots = 0; // Too harsh?
+                        var diffKnots = speedKnots - followedTarget.speedKnots;
+                        var decelerationSeconds = diffKnots / decelerationKnotsCapPerSec;
+                        var extraDistanceNm = (diffKnots / 3600) * decelerationSeconds / 2;
+                        extraDistanceYards = extraDistanceNm * 2025.37f;
+                    }
+
+                    if (Math.Abs(expectedDistanceDiffYards) < 20 && Math.Abs(speedKnots - followedTarget.speedKnots) < 1)
+                    {
+                        desiredSpeedKnots = followedTarget.speedKnots;
+                    }
+                    else if (expectedDistanceDiffYards > 0)
+                    {
+                        if (speedKnots < followedTarget.speedKnots)
+                        {
+                            desiredSpeedKnots = shipClass.speedKnots; // max speed
+                        }
+                        else
+                        {
+                            if (currentFollowedDistYards > followDistanceYards + extraDistanceYards)
+                            {
+                                desiredSpeedKnots = shipClass.speedKnots; // max speed
+                            }
+                            else
+                            {
+                                desiredSpeedKnots = followedTarget.speedKnots;
+                            }
+                        }
                     }
                     else
                     {
-                        desiredSpeedKnots = shipClass.speedKnots;
+                        if (speedKnots < followedTarget.speedKnots)
+                        {
+                            desiredSpeedKnots = followedTarget.speedKnots * 0.9f;
+                        }
+                        else if (currentFollowedDistM > extraDistanceYards)
+                        {
+                            desiredSpeedKnots = followedTarget.speedKnots * 0.8f;
+                        }
+                        else
+                        {
+                            desiredSpeedKnots = 0; // Too harsh? But in fact it
+                        }
                     }
-                    desiredHeadingDeg = (float)inverseLine.Azimuth;
+                    desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)inverseLine.Azimuth);
+                }
+            }
+            else if (controlMode == ControlMode.RelativeToTarget)
+            {
+                if (relativeToTarget != null)
+                {
+                    var rtp = relativeToTarget.position;
+                    var azi = MeasureUtils.NormalizeAngle(relativeToTarget.headingDeg + relativeToTargetAzimuth);
+                    var s12 = relativeToTargetDistanceYards * 0.9144;
+                    Geodesic.WGS84.Direct(rtp.LatDeg, rtp.LonDeg, azi, s12, out var targetLat, out var targetLon);
+
+                    var inverseLine = Geodesic.WGS84.InverseLine(
+                        position.LatDeg, position.LonDeg,
+                        targetLat, targetLon
+                    );
+                    var distanceToTargetM = inverseLine.Distance;
+                    var distanceToTargetYards = distanceToTargetM * 1.09361f;
+
+                    var targetPointIsFrontOfShip = MeasureUtils.GetPositiveAngleDifference((float)inverseLine.Azimuth, headingDeg) < 90;
+                    var shipIsFrontOfTarget = MeasureUtils.GetPositiveAngleDifference((float)inverseLine.Azimuth + 180, relativeToTarget.headingDeg) < 90;
+
+                    if (distanceToTargetYards < 20)
+                    {
+                        desiredSpeedKnots = relativeToTarget.speedKnots;
+                        desiredHeadingDeg = relativeToTarget.headingDeg;
+                    }
+                    else if (shipIsFrontOfTarget && !targetPointIsFrontOfShip) // Wait target to "close"
+                    {
+                        desiredSpeedKnots = relativeToTarget.speedKnots * 0.75f;
+                        desiredHeadingDeg = relativeToTarget.headingDeg;
+                    }
+                    else // Move to target
+                    {
+                        desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)inverseLine.Azimuth);
+
+                        if (speedKnots < relativeToTarget.speedKnots)
+                        {
+                            desiredSpeedKnots = shipClass.speedKnots; // max speed
+                        }
+                        else
+                        {
+                            var diffKnots = speedKnots - relativeToTarget.speedKnots;
+                            var decelerationSeconds = diffKnots / decelerationKnotsCapPerSec;
+                            var extraDistanceNm = (diffKnots / 3600) * decelerationSeconds / 2;
+                            var extraDistanceYards = extraDistanceNm * 2025.37f;
+                            if (distanceToTargetYards > extraDistanceYards)
+                            {
+                                desiredSpeedKnots = shipClass.speedKnots; // max speed
+                            }
+                            else
+                            {
+                                desiredSpeedKnots = relativeToTarget.speedKnots * 0.8f;
+                            }
+                        }
+                    }
                 }
             }
 
-            var turnCapPer2Turn = emergencyRudder ? shipClass.emergencyTurnDegPer2Min : shipClass.standardTurnDegPer2Min;
-            var turnCapThisPulse = turnCapPer2Turn / 120 * deltaSeconds;
-            headingDeg = MeasureUtils.MoveAngleTowards(headingDeg, desiredHeadingDeg, turnCapThisPulse);
-
             if (desiredSpeedKnots > speedKnots)
             {
-                var accelerationKnotsCapPer2Min = shipClass.speedIncreaseRecord.Where(r => speedKnots >= r.thresholdSpeedKnots).Select(r => r.increaseSpeedKnots).Min();
-                var accelerationKnotsCapThisPulse = accelerationKnotsCapPer2Min / 120f * deltaSeconds;
+                var accelerationKnotsCapThisPulse = accelerationKnotsCapPerSec * deltaSeconds;
                 speedKnots += Math.Min(desiredSpeedKnots - speedKnots, accelerationKnotsCapThisPulse);
             }
             else if (desiredSpeedKnots < speedKnots)
             {
-                var decelerationKnotsCapPer2Min = shipClass.speedKnots * (assistedDeceleration ? 0.6f : 0.2f);
-                var decelerationKnotsCapThisPulse = decelerationKnotsCapPer2Min / 120f * deltaSeconds;
+                var decelerationKnotsCapThisPulse = decelerationKnotsCapPerSec * deltaSeconds;
                 speedKnots -= Math.Min(speedKnots - desiredSpeedKnots, decelerationKnotsCapThisPulse);
             }
 

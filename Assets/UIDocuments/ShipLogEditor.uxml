@@ -28,7 +28,7 @@
                         <ui:Button text="Set Named Ship" name="SetNamedShipButton" style="flex-basis: 100px; flex-grow: 1;" />
                         <ui:Button text="Go to Named Ship" name="GotoNamedShipButton" />
                     </ui:VisualElement>
-                    <ui:VisualElement style="flex-grow: 1; opacity: 1;">
+                    <ui:VisualElement style="flex-grow: 1; opacity: 1; border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
                         <ui:TabView>
                             <ui:Tab label="Basic">
                                 <ui:VisualElement style="flex-grow: 1;">
@@ -80,13 +80,13 @@
                                                     <ui:DataBinding property="value" data-source-path="controlMode" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:EnumField>
-                                            <ui:VisualElement style="flex-grow: 1;">
+                                            <ui:VisualElement style="flex-grow: 1; border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                                                 <ui:TextField label="Followed Target" readonly="true">
                                                     <Bindings>
                                                         <ui:DataBinding property="value" data-source-path="followedTargetDesc" binding-mode="ToTarget" />
                                                     </Bindings>
                                                 </ui:TextField>
-                                                <ui:Label text="In map view, select a ship, press F and then press on another ship to set the followed target." />
+                                                <ui:Label text="In map view, select a ship, press F and then press on another ship to set the followed target." style="white-space: normal;" />
                                                 <ui:FloatField label="Follow Distance (yards)">
                                                     <Bindings>
                                                         <ui:DataBinding property="value" data-source-path="followDistanceYards" binding-mode="TwoWay" />
@@ -94,6 +94,27 @@
                                                 </ui:FloatField>
                                                 <Bindings>
                                                     <ui:DataBinding property="style.display" data-source-path="displayStyleOfControlModeIsFollowTarget" binding-mode="ToTarget" />
+                                                </Bindings>
+                                            </ui:VisualElement>
+                                            <ui:VisualElement style="flex-grow: 1; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                                                <ui:TextField label="Relative To" readonly="true">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="relativeToTargetDesc" binding-mode="ToTarget" />
+                                                    </Bindings>
+                                                </ui:TextField>
+                                                <ui:Label text="In map view, select a ship, press R and then press on another ship to set the relative to target." style="white-space: normal;" />
+                                                <ui:FloatField label="Relative To Dist (yds)">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="relativeToTargetDistanceYards" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:Slider label="Relative To Azimuth (deg)" high-value="360" show-input-field="true">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="relativeToTargetAzimuth" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:Slider>
+                                                <Bindings>
+                                                    <ui:DataBinding property="style.display" data-source-path="displayStyleOfControlModeIsRelativeToTarget" binding-mode="ToTarget" />
                                                 </Bindings>
                                             </ui:VisualElement>
                                             <ui:EnumField label="Map State" value="Center" type="NavalCombatCore.MapState, Assembly-CSharp">

@@ -117,6 +117,18 @@ namespace NavalCombatCore
         {
             get => controlMode == ControlMode.FollowTarget ? DisplayStyle.Flex : DisplayStyle.None;
         }
+
+        [CreateProperty]
+        public string relativeToTargetDesc
+        {
+            get => relativeToTarget?.namedShip?.name.mergedName ?? "[Not Specified]";
+        }
+
+        [CreateProperty]
+        public StyleEnum<DisplayStyle> displayStyleOfControlModeIsRelativeToTarget
+        {
+            get => controlMode == ControlMode.RelativeToTarget ? DisplayStyle.Flex : DisplayStyle.None;
+        }
     }
 
     public partial class BatteryStatus

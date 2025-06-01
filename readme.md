@@ -8,6 +8,14 @@ Ship data is largely sourced from the Ship Logs of SEEKRIEG's Yalu starter scena
 
 Unfortunately, naval engagement involving those ironclad in the first Sino-Japanese war remain an under-researched topic, so minor contradictions in certain details should be expected.
 
+## Hotkeys
+
+- Shift + Left Click: Set Course
+- D: Distance measureing line
+- F: Set follow target
+- R: Set relative to target
+- L: Open Ship Log editor
+
 ## Devlopment Info
 
 ### Unity related bugs

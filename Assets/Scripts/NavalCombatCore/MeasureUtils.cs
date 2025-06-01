@@ -9,11 +9,11 @@ namespace NavalCombatCore
             // Normalize angles to 0-360 range
             current = NormalizeAngle(current);
             target = NormalizeAngle(target);
-            
+
             // Calculate both possible directional differences (clockwise and counter-clockwise)
             float diff = target - current;
             float absDiff = Math.Abs(diff);
-            
+
             // If direct difference is greater than 180°, choose the other direction
             if (absDiff > 180f)
             {
@@ -26,10 +26,10 @@ namespace NavalCombatCore
                     diff += 360f; // Take the shorter path counter-clockwise
                 }
             }
-            
+
             // Calculate actual movement (not exceeding step size)
             float move = Math.Sign(diff) * Math.Min(Math.Abs(diff), step);
-            
+
             // Apply movement and normalize result
             float result = current + move;
             return NormalizeAngle(result);
@@ -44,6 +44,25 @@ namespace NavalCombatCore
                 angle += 360f; // Convert negative angles to positive equivalents
             }
             return angle;
+        }
+        
+        public static float GetPositiveAngleDifference(float angle1, float angle2)
+        {
+            // Normalize angles to 0-360 range
+            angle1 = NormalizeAngle(angle1);
+            angle2 = NormalizeAngle(angle2);
+            
+            // Calculate both possible directional differences
+            float diff = Math.Abs(angle1 - angle2);
+            
+            // If difference is greater than 180°, take the shorter path around the circle
+            if (diff > 180f)
+            {
+                diff = 360f - diff;
+            }
+            
+            // Return the smallest positive difference
+            return diff;
         }
 
 

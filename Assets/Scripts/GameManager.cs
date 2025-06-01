@@ -52,7 +52,8 @@ public class GameManager : MonoBehaviour
         Idle,
         SelectingInsertUnitPosition,
         MovingUnit,
-        SelectingFollowedTarget
+        SelectingFollowedTarget,
+        SelectingRelativeToTarget
     }
 
     State _state = State.Idle;
@@ -314,7 +315,7 @@ public class GameManager : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0) && !isPressingShift) // try select a unit
                 {
-                    var portraitViewer = TryToRaycastUnit();
+                    var portraitViewer = TryToRaycastViewer();
                     if (portraitViewer != null)
                     {
                         var shipLog = portraitViewer.shipLog;
@@ -322,7 +323,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
 
-                if (Input.GetMouseButtonDown(0) && isPressingShift) // RTW like direction setting
+                if (Input.GetMouseButtonDown(0) && isPressingShift) // RTW-like course setting
                 {
                     if (selectedShipLog != null)
                     {
@@ -335,7 +336,7 @@ public class GameManager : MonoBehaviour
                             dstPos.LatDeg, dstPos.LonDeg
                         );
 
-                        selectedShipLog.desiredHeadingDeg = (float)inverseLine.Azimuth;
+                        selectedShipLog.desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)inverseLine.Azimuth);
                     }
                 }
 
@@ -351,6 +352,11 @@ public class GameManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.F) && selectedShipLog != null) // Follow
                 {
                     state = State.SelectingFollowedTarget;
+                }
+
+                if (Input.GetKeyDown(KeyCode.R) && selectedShipLog != null)
+                {
+                    state = State.SelectingRelativeToTarget;
                 }
 
                 if (Input.GetKeyDown(KeyCode.L) && selectedShipLog != null) // ship Log
@@ -396,7 +402,7 @@ public class GameManager : MonoBehaviour
                     state = State.Idle;
                     if (selectedShipLog != null)
                     {
-                        var portraitViewer = TryToRaycastUnit();
+                        var portraitViewer = TryToRaycastViewer();
                         if (portraitViewer != null)
                         {
                             var targetShipLog = portraitViewer.shipLog;
@@ -410,10 +416,27 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            else if (state == State.SelectingRelativeToTarget)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    state = State.Idle;
+                    if (selectedShipLog != null)
+                    {
+                        var targetShipLog = TryToRaycastShipLog();
+                        if (targetShipLog != null && selectedShipLog != targetShipLog)
+                        {
+                            selectedShipLog.relativeTargetObjectId = targetShipLog.objectId;
+                            selectedShipLog.controlMode = ControlMode.RelativeToTarget;
+                            Debug.Log($"Set Relative To Object ID: {selectedShipLog.objectId} -> {targetShipLog.objectId}");
+                        }
+                    }
+                }
+            }
         }
     }
 
-    public PortraitViewer TryToRaycastUnit()
+    public PortraitViewer TryToRaycastViewer()
     {
         var cam = CameraController2.Instance.cam;
         var ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -429,6 +452,11 @@ public class GameManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public ShipLog TryToRaycastShipLog()
+    {
+        return TryToRaycastViewer()?.shipLog;
     }
 
     public void OnDestroy()

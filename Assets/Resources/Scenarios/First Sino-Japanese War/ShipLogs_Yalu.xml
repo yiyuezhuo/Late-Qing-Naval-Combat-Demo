@@ -125,8 +125,8 @@
   <controlMode>Independent</controlMode>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>cf6393ee-7cbe-4a15-93ce-eb53bc18ada8</objectId>
   <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
  </ShipLog>
@@ -251,8 +251,8 @@
   <followedTargetObjectId>25623a6b-a217-4e49-baca-6ea3b7c782a6</followedTargetObjectId>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>01092b52-c42d-4f06-9f4e-57762a39aeba</objectId>
   <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
  </ShipLog>
@@ -367,8 +367,8 @@
   <followedTargetObjectId>01092b52-c42d-4f06-9f4e-57762a39aeba</followedTargetObjectId>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>ea56b877-9b5e-48bf-840d-3e8508af98ca</objectId>
   <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
  </ShipLog>
@@ -469,11 +469,11 @@
   <leaderObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</leaderObjectId>
   <emergencyRudder>false</emergencyRudder>
   <assistedDeceleration>true</assistedDeceleration>
-  <controlMode>Independent</controlMode>
+  <controlMode>RelativeToTarget</controlMode>
   <followDistanceYards>500</followDistanceYards>
-  <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeTargetObjectId>a55bdec2-a47a-4d2b-af3c-9588a875e58c</relativeTargetObjectId>
+  <relativeToTargetDistanceYards>500</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>225</relativeToTargetAzimuth>
   <objectId>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
  </ShipLog>
@@ -565,8 +565,8 @@
   <controlMode>Independent</controlMode>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>93b88a00-313d-4df0-8cfb-2182851c96f7</objectId>
  </ShipLog>
  <ShipLog>
@@ -671,11 +671,11 @@
   <leaderObjectId>ee91367d-d291-4bad-81f1-b4aa5b1d5bd0</leaderObjectId>
   <emergencyRudder>false</emergencyRudder>
   <assistedDeceleration>true</assistedDeceleration>
-  <controlMode>Independent</controlMode>
+  <controlMode>RelativeToTarget</controlMode>
   <followDistanceYards>500</followDistanceYards>
-  <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeTargetObjectId>c8a76edb-7330-4ef4-a115-2f468df23494</relativeTargetObjectId>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>b5dfd87e-cb47-4a4b-abba-affa96e356c4</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
  </ShipLog>
@@ -784,8 +784,8 @@
   <controlMode>Independent</controlMode>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>c8a76edb-7330-4ef4-a115-2f468df23494</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
  </ShipLog>
@@ -885,11 +885,11 @@
   <leaderObjectId>571f00c5-74c3-42c7-bae4-be54f44d2b76</leaderObjectId>
   <emergencyRudder>false</emergencyRudder>
   <assistedDeceleration>true</assistedDeceleration>
-  <controlMode>Independent</controlMode>
+  <controlMode>RelativeToTarget</controlMode>
   <followDistanceYards>500</followDistanceYards>
-  <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeTargetObjectId>6a20093b-9f39-47fd-972f-49eaaefaf1d5</relativeTargetObjectId>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>59969f6c-ed18-4e48-84d2-0b43c3e8ac74</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
  </ShipLog>
@@ -989,11 +989,11 @@
   <leaderObjectId>96b1f018-4a92-4ef0-81b1-b6b3dc1ff3ed</leaderObjectId>
   <emergencyRudder>false</emergencyRudder>
   <assistedDeceleration>true</assistedDeceleration>
-  <controlMode>Independent</controlMode>
+  <controlMode>RelativeToTarget</controlMode>
   <followDistanceYards>500</followDistanceYards>
-  <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeTargetObjectId>00fb2b34-3d37-444b-9041-e8540c9304d1</relativeTargetObjectId>
+  <relativeToTargetDistanceYards>500</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>6a20093b-9f39-47fd-972f-49eaaefaf1d5</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
  </ShipLog>
@@ -1104,11 +1104,11 @@
   <leaderObjectId>2038e8d1-4ca4-4719-9a65-eea886fd0d2c</leaderObjectId>
   <emergencyRudder>false</emergencyRudder>
   <assistedDeceleration>true</assistedDeceleration>
-  <controlMode>Independent</controlMode>
+  <controlMode>RelativeToTarget</controlMode>
   <followDistanceYards>500</followDistanceYards>
-  <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeTargetObjectId>00fb2b34-3d37-444b-9041-e8540c9304d1</relativeTargetObjectId>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>370f72b3-2243-44ff-ab42-e08d3c6d273c</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
  </ShipLog>
@@ -1219,11 +1219,11 @@
   <leaderObjectId>ca6e9344-d40e-4a16-8ee1-82ae8d5dbdb4</leaderObjectId>
   <emergencyRudder>false</emergencyRudder>
   <assistedDeceleration>true</assistedDeceleration>
-  <controlMode>Independent</controlMode>
+  <controlMode>RelativeToTarget</controlMode>
   <followDistanceYards>500</followDistanceYards>
-  <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeTargetObjectId>c8a76edb-7330-4ef4-a115-2f468df23494</relativeTargetObjectId>
+  <relativeToTargetDistanceYards>500</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>225</relativeToTargetAzimuth>
   <objectId>a55bdec2-a47a-4d2b-af3c-9588a875e58c</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
  </ShipLog>
@@ -1322,11 +1322,11 @@
   <leaderObjectId>ad05fef6-dae8-457e-9f31-e7166a09aede</leaderObjectId>
   <emergencyRudder>false</emergencyRudder>
   <assistedDeceleration>true</assistedDeceleration>
-  <controlMode>Independent</controlMode>
+  <controlMode>RelativeToTarget</controlMode>
   <followDistanceYards>500</followDistanceYards>
-  <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeTargetObjectId>a55bdec2-a47a-4d2b-af3c-9588a875e58c</relativeTargetObjectId>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>3ecfd394-30a5-45af-95be-f83b75d246b2</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
  </ShipLog>
@@ -1425,11 +1425,11 @@
   <leaderObjectId>19df649e-5f8a-4c29-b42a-936d15b4c8fe</leaderObjectId>
   <emergencyRudder>false</emergencyRudder>
   <assistedDeceleration>true</assistedDeceleration>
-  <controlMode>Independent</controlMode>
+  <controlMode>RelativeToTarget</controlMode>
   <followDistanceYards>500</followDistanceYards>
-  <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeTargetObjectId>c8a76edb-7330-4ef4-a115-2f468df23494</relativeTargetObjectId>
+  <relativeToTargetDistanceYards>500</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>00fb2b34-3d37-444b-9041-e8540c9304d1</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
  </ShipLog>
@@ -1531,8 +1531,8 @@
   <controlMode>Independent</controlMode>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>9ad21ac1-2365-4f33-bfa9-fee5f27b965a</objectId>
   <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
  </ShipLog>
@@ -1617,11 +1617,11 @@
   <leaderObjectId>50197d07-3352-4362-9ea5-978742310265</leaderObjectId>
   <emergencyRudder>false</emergencyRudder>
   <assistedDeceleration>true</assistedDeceleration>
-  <controlMode>Independent</controlMode>
+  <controlMode>RelativeToTarget</controlMode>
   <followDistanceYards>500</followDistanceYards>
-  <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeTargetObjectId>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</relativeTargetObjectId>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>61f04aed-26e0-4495-bd04-344f5d223de1</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
  </ShipLog>
@@ -1704,8 +1704,8 @@
   <followedTargetObjectId>3e705d71-1239-4963-8946-2aa151d5e57f</followedTargetObjectId>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>4d486d3e-0643-4983-8641-a33434c2a4c5</objectId>
   <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
  </ShipLog>
@@ -1836,8 +1836,8 @@
   <followedTargetObjectId>1180b828-a3da-4927-ae6a-ea21c6c5c1be</followedTargetObjectId>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>10ae7cc2-8728-40b6-9d4b-4f06087918c6</objectId>
   <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
  </ShipLog>
@@ -1968,8 +1968,8 @@
   <followedTargetObjectId>8c1e5af6-3f33-4f97-8f94-5d8a63785c28</followedTargetObjectId>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>1180b828-a3da-4927-ae6a-ea21c6c5c1be</objectId>
   <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
  </ShipLog>
@@ -2057,8 +2057,8 @@
   <followedTargetObjectId>10ae7cc2-8728-40b6-9d4b-4f06087918c6</followedTargetObjectId>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>3e705d71-1239-4963-8946-2aa151d5e57f</objectId>
   <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
  </ShipLog>
@@ -2183,8 +2183,8 @@
   <controlMode>Independent</controlMode>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>e1f10636-ab79-4b42-8316-c3a533f31512</objectId>
   <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
  </ShipLog>
@@ -2299,8 +2299,8 @@
   <followedTargetObjectId>cf6393ee-7cbe-4a15-93ce-eb53bc18ada8</followedTargetObjectId>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>25623a6b-a217-4e49-baca-6ea3b7c782a6</objectId>
   <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
  </ShipLog>
@@ -2418,8 +2418,8 @@
   <followedTargetObjectId>e1f10636-ab79-4b42-8316-c3a533f31512</followedTargetObjectId>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>8c1e5af6-3f33-4f97-8f94-5d8a63785c28</objectId>
   <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
  </ShipLog>
@@ -2511,8 +2511,8 @@
   <controlMode>Independent</controlMode>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>0cfda6a2-50de-48bf-8aa6-5338375327ef</objectId>
   <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
  </ShipLog>
@@ -2596,8 +2596,8 @@
   <followedTargetObjectId>c4bd2221-a6e2-4646-a59e-60c9e392a80b</followedTargetObjectId>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>e55e1b9a-2cc6-44ab-a656-9b1204d34971</objectId>
   <parentObjectId>325f3d53-3214-456c-9731-e8f8e22fea04</parentObjectId>
  </ShipLog>
@@ -2663,8 +2663,8 @@
   <controlMode>Independent</controlMode>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>c4bd2221-a6e2-4646-a59e-60c9e392a80b</objectId>
   <parentObjectId>325f3d53-3214-456c-9731-e8f8e22fea04</parentObjectId>
  </ShipLog>
@@ -2723,8 +2723,8 @@
   <controlMode>Independent</controlMode>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>42d0aed7-6e98-4146-b55f-0d5f8940328b</objectId>
   <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
  </ShipLog>
@@ -2783,8 +2783,8 @@
   <controlMode>Independent</controlMode>
   <followDistanceYards>500</followDistanceYards>
   <relativeTargetObjectId>0</relativeTargetObjectId>
-  <relativeTargetDistanceYards>500</relativeTargetDistanceYards>
-  <relativeTargetAzimuth>0</relativeTargetAzimuth>
+  <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+  <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>f134adc9-f5b7-4d86-88a9-27ecd13b70c8</objectId>
   <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
  </ShipLog>

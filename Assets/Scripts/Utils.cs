@@ -130,8 +130,13 @@ public static class Utils
 
     public static void SyncListPairLength<T, T2>(List<T> list1, List<T2> list2, object parent) where T2 : IObjectIdLabeled, new()
     {
-        var addElements = list1.Count - list2.Count;
-        var removeElements = list2.Count - list1.Count;
+        SyncListToLength(list1.Count, list2, parent);
+    }
+
+    public static void SyncListToLength<T2>(int expectedLength, List<T2> list2, object parent) where T2 : IObjectIdLabeled, new()
+    {
+        var addElements = expectedLength - list2.Count;
+        var removeElements = list2.Count - expectedLength;
         if (removeElements > 0)
         {
             for (int i = 0; i < removeElements; i++)

@@ -176,15 +176,15 @@ namespace NavalCombatCore
     public partial class MountStatusRecord
     {
         [CreateProperty]
-        public MountLocationRecord mountLocationRecord
+        public MountLocationRecordInfo mountLocationRecordInfo
         {
-            get => GetMountLocationRecord();
+            get => GetMountLocationRecordInfo();
         }
 
         [CreateProperty]
         public MountLocation mountLocation
         {
-            get => mountLocationRecord?.mountLocation ?? MountLocation.NotSpecified;
+            get => mountLocationRecordInfo?.record?.mountLocation ?? MountLocation.NotSpecified;
         }
 
         [CreateProperty]
@@ -192,23 +192,25 @@ namespace NavalCombatCore
         {
             get
             {
-                var r = mountLocationRecord;
-                if (r == null)
-                    return "Invalid";
-                return $"{r.mounts}x{r.barrels} {r.mountLocation}";
+                // var r = mountLocationRecordInfo?.record;
+                // if (r == null)
+                //     return "Invalid";
+                // return $"{r.mounts}x{r.barrels} {r.mountLocation}";
+                return GetMountLocationRecordInfo()?.Summary() ?? "Invalid";
             }
         }
 
         [CreateProperty]
-        public MountLocationRecord torpedoMountLocationRecord
+        public MountLocationRecordInfo torpedoMountLocationRecordInfo
         {
-            get => GetTorpedoMountLocationRecord();
+            get => GetTorpedoMountLocationRecordInfo();
+            // get => GetTorpedoMountLocationRecordInfo()?.Summary() ?? "Invalid";
         }
 
         [CreateProperty]
         public MountLocation torpedoMountLocation
         {
-            get => torpedoMountLocationRecord?.mountLocation ?? MountLocation.NotSpecified;
+            get => torpedoMountLocationRecordInfo?.record?.mountLocation ?? MountLocation.NotSpecified;
         }
 
         [CreateProperty]
@@ -216,10 +218,11 @@ namespace NavalCombatCore
         {
             get
             {
-                var r = torpedoMountLocationRecord;
-                if (r == null)
-                    return "Invalid";
-                return $"{r.mounts}x{r.barrels} {r.mountLocation}";
+                // var r = torpedoMountLocationRecordInfo?.record;
+                // if (r == null)
+                //     return "Invalid";
+                // return $"{r.mounts}x{r.barrels} {r.mountLocation}";
+                return GetTorpedoMountLocationRecordInfo()?.Summary() ?? "Invalid";
             }
         }
     }
@@ -352,11 +355,30 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             var mountStatusMultiColumnListView = el.Q<MultiColumnListView>("MountStatusMultiColumnListView");
             Utils.BindItemsAddedRemoved<MountStatusRecord>(mountStatusMultiColumnListView, () =>
             {
-                var parent = mountStatusMultiColumnListView.parent; // FIXME: ugly hack
-                var templateContainer = parent.parent.parent;
-                var idx = templateContainer.parent.IndexOf(templateContainer);
-                var sourceList = batteryStatusListView.itemsSource;
-                return sourceList[idx];
+                // var parent = mountStatusMultiColumnListView.parent; // FIXME: ugly hack (and is it problematic considering visualization?)
+                // var templateContainer = parent.parent.parent;
+                // var idx = templateContainer.parent.IndexOf(templateContainer);
+                // var sourceList = batteryStatusListView.itemsSource;
+                // var ret = sourceList[idx];
+
+                // var ctx = mountStatusMultiColumnListView.GetHierarchicalDataSourceContext();
+                // // var ret2 =  ctx.dataSource[0];
+                // // var val = PropertyContainer.GetValue<object, NavalCombatCore.BatteryStatus>(ctx.dataSource, ctx.dataSourcePath);
+                // var b2 = PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out NavalCombatCore.BatteryStatus val2);
+                // var b3 = PropertyContainer.TryGetValue((List<NavalCombatCore.BatteryStatus>)ctx.dataSource, ctx.dataSourcePath, out NavalCombatCore.BatteryStatus val3);
+                // var b4 = PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out List<MountStatusRecord> val4);
+                // var b5 = PropertyContainer.TryGetValue((List<NavalCombatCore.BatteryStatus>)ctx.dataSource, ctx.dataSourcePath, out List<MountStatusRecord> val5);
+
+                var ctx2 = el.GetHierarchicalDataSourceContext();
+                var b6 = PropertyContainer.TryGetValue(ctx2.dataSource, ctx2.dataSourcePath, out NavalCombatCore.BatteryStatus val6);
+
+                // List<MountStatusRecord>
+                // var b3 = PropertyContainer.TryGetValue((List<NavalCombatCore.BatteryStatus>)ctx.dataSource, ctx.dataSourcePath, out NavalCombatCore.BatteryStatus val3);
+                // Debug.Log($"val={val}");
+
+                return val6;
+                // return ret;
+                // return sourceList[idx];
                 // return batteryStatusListView.selectedItem;
             }); // TODO: Not always valid?
 

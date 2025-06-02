@@ -32,7 +32,11 @@
                         <ui:DataBinding property="value" data-source-path="maxRateOfFireShootPerMin" binding-mode="TwoWay" />
                     </Bindings>
                 </ui:FloatField>
-                <ui:IntegerField label="Fire Control Positions" />
+                <ui:IntegerField label="Fire Control Positions">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="fireControlPositions" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:IntegerField>
                 <ui:Instance template="FireControlSystemEditor" data-source-path="fireControlType" />
                 <ui:FloatField label="Shell Size (Inch)">
                     <Bindings>

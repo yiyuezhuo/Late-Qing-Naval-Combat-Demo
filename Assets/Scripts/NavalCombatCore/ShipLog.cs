@@ -45,10 +45,49 @@ namespace NavalCombatCore
     {
         public string objectId { get; set; }
         public MountStatus status; // Is "SectorStatus" a better name?
-        public int mountsDestroyed;
+                                   // public int mountsDestroyed;
+        public string targetObjectId;
+        public ShipLog GetFiringTarget() => EntityManager.Instance.Get<ShipLog>(targetObjectId);
 
-        public MountLocationRecord GetMountLocationRecord()
+        public class MountLocationRecordInfo
         {
+            public int recordIndex;
+            public int subIndex;
+            public MountLocationRecord record;
+
+            public string Summary()
+            {
+                return $"#{recordIndex+1} #{subIndex+1} {record.mountLocation} ({record.SummaryArcs()})";
+            }
+        }
+
+        MountLocationRecordInfo GetMountLocationRecordInfo(List<MountLocationRecord> mountLocationRecords, int mountIdx)
+        {
+            if (mountIdx < 0)
+                return null;
+
+            var _recordIndex = 0;
+            var mntLocRecs = mountLocationRecords;
+            while (_recordIndex < mntLocRecs.Count && mntLocRecs[_recordIndex].mounts <= mountIdx)
+            {
+                mountIdx -= mntLocRecs[_recordIndex].mounts;
+                _recordIndex++;
+            }
+            if (_recordIndex < mntLocRecs.Count && mountIdx < mntLocRecs[_recordIndex].mounts)
+            {
+                return new()
+                {
+                    recordIndex = _recordIndex,
+                    subIndex = mountIdx,
+                    record = mntLocRecs[_recordIndex]
+                };
+            }
+            return null;
+        }
+
+        public MountLocationRecordInfo GetMountLocationRecordInfo()
+        {
+
             var battery = EntityManager.Instance.GetParent<BatteryStatus>(this);
 
             if (battery == null)
@@ -60,15 +99,10 @@ namespace NavalCombatCore
             if (batteryRecord == null)
                 return null;
 
-            if (mountIdx < 0 || mountIdx >= batteryRecord.mountLocationRecords.Count)
-                return null;
-
-            var mountLocationRecord = batteryRecord.mountLocationRecords[mountIdx];
-
-            return mountLocationRecord;
+            return GetMountLocationRecordInfo(batteryRecord.mountLocationRecords, mountIdx);
         }
 
-        public MountLocationRecord GetTorpedoMountLocationRecord()
+        public MountLocationRecordInfo GetTorpedoMountLocationRecordInfo()
         {
             var shipLog = EntityManager.Instance.GetParent<ShipLog>(this);
             if (shipLog == null)
@@ -80,17 +114,18 @@ namespace NavalCombatCore
             if (shipClass == null)
                 return null;
 
-            if (mountIdx < 0 || mountIdx >= shipClass.torpedoSector.mountLocationRecords.Count)
+            if (mountIdx < 0)
                 return null;
 
-            var mountLocationRecord = shipClass.torpedoSector.mountLocationRecords[mountIdx];
-            return mountLocationRecord;
+            // var mountLocationRecord = shipClass.torpedoSector.mountLocationRecords[mountIdx];
+            // return mountLocationRecord;
+            return GetMountLocationRecordInfo(shipClass.torpedoSector.mountLocationRecords, mountIdx);
         }
 
         public void ResetDamageExpenditureState()
         {
             status = MountStatus.Operational;
-            mountsDestroyed = 0;
+            // mountsDestroyed = 0;
         }
     }
 
@@ -127,7 +162,8 @@ namespace NavalCombatCore
             ammunition.ArmorPiercing = batteryRecord.ammunitionCapacity / 2;
             ammunition.common = batteryRecord.ammunitionCapacity / 2;
 
-            Utils.SyncListPairLength(batteryRecord.mountLocationRecords, mountStatus, this);
+            var expectedLength = batteryRecord.mountLocationRecords.Sum(r => r.mounts);        
+            Utils.SyncListToLength(expectedLength, mountStatus, this);
             foreach (var s in mountStatus)
                 s.ResetDamageExpenditureState();
 
@@ -137,8 +173,11 @@ namespace NavalCombatCore
         public string Summary()
         {
             var batteryRecord = GetBatteryRecord();
+            if (batteryRecord == null)
+                return "[Not Specified]";
             var barrels = batteryRecord.mountLocationRecords.Sum(r => r.barrels * r.mounts);
-            var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.mountLocationRecord.mounts - m.mountsDestroyed) * m.mountLocationRecord.barrels);
+            // var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.mountLocationRecord.mounts - m.mountsDestroyed) * m.mountLocationRecord.barrels);
+            var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Count();
             return $"x{availableBarrels}/{barrels} {batteryRecord.name.mergedName} ({ammunition.Summary()})";
         }
 
@@ -146,7 +185,8 @@ namespace NavalCombatCore
         {
             var batteryRecord = GetBatteryRecord();
             var firepoweScorePerBarrel = batteryRecord.EvaluateFirepowerPerBarrel();
-            var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.mountLocationRecord.mounts - m.mountsDestroyed) * m.mountLocationRecord.barrels);
+            // var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.mountLocationRecord.mounts - m.mountsDestroyed) * m.mountLocationRecord.barrels);
+            var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Count();
             return availableBarrels * firepoweScorePerBarrel;
         }
     }
@@ -398,7 +438,11 @@ namespace NavalCombatCore
                 batteryStatusRec.ResetDamageExpenditureState();
 
             torpedoSectorStatus.ammunition = _shipClass.torpedoSector.ammunitionCapacity;
-            Utils.SyncListPairLength(_shipClass.torpedoSector.mountLocationRecords, torpedoSectorStatus.mountStatus, this);
+            Utils.SyncListToLength(
+                _shipClass.torpedoSector.mountLocationRecords.Sum(r => r.mounts),
+                torpedoSectorStatus.mountStatus,
+                this
+            );
             foreach (var m in torpedoSectorStatus.mountStatus)
                 m.ResetDamageExpenditureState();
 
@@ -424,7 +468,8 @@ namespace NavalCombatCore
 
             lines.Add("Torpedo:");
             var torpedoBarrels = _shipClass.torpedoSector.mountLocationRecords.Sum(r => r.barrels * r.mounts);
-            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.torpedoMountLocationRecord.mounts - m.mountsDestroyed) * m.torpedoMountLocationRecord.barrels);
+            // var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.torpedoMountLocationRecord.mounts - m.mountsDestroyed) * m.torpedoMountLocationRecord.barrels);
+            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Count();
             var torpedoAmmu = torpedoSectorStatus.ammunition;
             lines.Add($"x{torpedoBarrelsAvailable}/{torpedoBarrels} {_shipClass.torpedoSector.name.mergedName} ({torpedoAmmu})");
 
@@ -607,7 +652,8 @@ namespace NavalCombatCore
 
         public float EvaluateTorpedoThreatScore()
         {
-            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.torpedoMountLocationRecord.mounts - m.mountsDestroyed) * m.torpedoMountLocationRecord.barrels);
+            // var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.torpedoMountLocationRecord.mounts - m.mountsDestroyed) * m.torpedoMountLocationRecord.barrels);
+            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Count();
             return torpedoBarrelsAvailable * shipClass.torpedoSector.EvaluateTorpedoThreatPerBarrel();
         }
 

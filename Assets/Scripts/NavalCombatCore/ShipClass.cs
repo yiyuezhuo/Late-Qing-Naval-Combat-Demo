@@ -151,11 +151,17 @@ namespace NavalCombatCore
 
         [XmlAttribute]
         public bool isCrossDeckFire;
+
+        public string Summary()
+        {
+            var s = isCrossDeckFire ? "C" : "";
+            return $"{startDeg}-{(startDeg + CoverageDeg) % 360}{s}";
+        }
     }
 
     public class MountLocationRecord : IObjectIdLabeled
     {
-        public string objectId{ get; set; }
+        public string objectId { get; set; }
         public MountLocation mountLocation;
         public int barrels; // Single, Double, Triple, Quadruple
         public int mounts;
@@ -164,6 +170,7 @@ namespace NavalCombatCore
         public bool useRestAngle; // If rest angle is not overriden, it's derived from arc.
         public float restAngleDeg; // Graphic purpose only
         public bool trainable; // for torpedo
+        public string SummaryArcs() => string.Join(",", mountArcs.Select(arc => arc.Summary()));
     }
 
     public class BatteryRecord : IObjectIdLabeled

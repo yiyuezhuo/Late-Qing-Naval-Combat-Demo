@@ -30,7 +30,7 @@
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -216,7 +216,7 @@
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>2</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -531,7 +531,7 @@
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -717,7 +717,7 @@
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>2</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -1020,7 +1020,7 @@
     </name>
     <damageRating>34</damageRating>
     <maxRateOfFireShootPerMin>0.4</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -1166,7 +1166,7 @@
     </name>
     <damageRating>17</damageRating>
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>2</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -1460,7 +1460,7 @@
     </name>
     <damageRating>23</damageRating>
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -1587,7 +1587,7 @@
     </name>
     <damageRating>17</damageRating>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -1867,7 +1867,7 @@
     </name>
     <damageRating>13</damageRating>
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -2178,7 +2178,7 @@
     </name>
     <damageRating>38</damageRating>
     <maxRateOfFireShootPerMin>0.6</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -2322,7 +2322,7 @@
     </name>
     <damageRating>17</damageRating>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>2</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -2601,7 +2601,7 @@
     </name>
     <damageRating>30</damageRating>
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -2742,7 +2742,7 @@
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>2</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -2996,7 +2996,7 @@
     </name>
     <damageRating>26</damageRating>
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -3145,7 +3145,7 @@
     </name>
     <damageRating>17</damageRating>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -3435,7 +3435,7 @@
     </name>
     <damageRating>23</damageRating>
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -3565,7 +3565,7 @@
     </name>
     <damageRating>17</damageRating>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -3826,7 +3826,7 @@
     </name>
     <damageRating>34</damageRating>
     <maxRateOfFireShootPerMin>0.5</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -3963,7 +3963,7 @@
     </name>
     <damageRating>17</damageRating>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -4225,7 +4225,7 @@
     </name>
     <damageRating>17</damageRating>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -4352,7 +4352,7 @@
     </name>
     <damageRating>13</damageRating>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -4591,7 +4591,7 @@
     </name>
     <damageRating>27</damageRating>
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -4731,6 +4731,176 @@
     </mountLocationRecords>
     <objectId>f9c082dd-4b93-4123-860b-82b84e403286</objectId>
    </BatteryRecord>
+   <BatteryRecord>
+    <name>
+     <english>15cm/35 EOC</english>
+    </name>
+    <damageRating>16</damageRating>
+    <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
+    <fireControlPositions>1</fireControlPositions>
+    <fireControlType>
+     <gunSight>Basic</gunSight>
+     <fireControlInstrument>None</fireControlInstrument>
+     <rangeFinder>None</rangeFinder>
+     <directorControl>None</directorControl>
+     <stabilization>Manual</stabilization>
+     <powerRemoteControl>None</powerRemoteControl>
+    </fireControlType>
+    <rangeYards>8828</rangeYards>
+    <fireControlRadarModifier>0</fireControlRadarModifier>
+    <fireControlRadarName>
+     <english>None</english>
+    </fireControlRadarName>
+    <shellSizeInch>6</shellSizeInch>
+    <shellWeightPounds>100</shellWeightPounds>
+    <ammunitionCapacity>800</ammunitionCapacity>
+    <fireControlTableRecords>
+     <FireControlTableRecord>
+      <speedThresholdKnot>9</speedThresholdKnot>
+      <shortBroad>6</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>18</speedThresholdKnot>
+      <shortBroad>4</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>27</speedThresholdKnot>
+      <shortBroad>3</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>36</speedThresholdKnot>
+      <shortBroad>2</shortBroad>
+      <shortNarrow>1</shortNarrow>
+      <mediumBroad>1</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>0</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>45</speedThresholdKnot>
+      <shortBroad>2</shortBroad>
+      <shortNarrow>1</shortNarrow>
+      <mediumBroad>1</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>0</extremeNarrow>
+     </FireControlTableRecord>
+    </fireControlTableRecords>
+    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableRecords>
+     <PenetrationTableRecord>
+      <distanceYards>2000</distanceYards>
+      <rateOfFire>7.3</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>4.7</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>4000</distanceYards>
+      <rateOfFire>5.7</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.2</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>3.3</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>6000</distanceYards>
+      <rateOfFire>4.5</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.4</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.6</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>8000</distanceYards>
+      <rateOfFire>3.6</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>0.6</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.2</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>10000</distanceYards>
+      <rateOfFire>3.3</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>0.7</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.1</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+    </penetrationTableRecords>
+    <mountLocationRecords>
+     <MountLocationRecord>
+      <mountLocation>Forward</mountLocation>
+      <barrels>1</barrels>
+      <mounts>1</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="240" CoverageDeg="240" isCrossDeckFire="false" />
+      </mountArcs>
+      <useRestAngle>false</useRestAngle>
+      <restAngleDeg>0</restAngleDeg>
+      <trainable>false</trainable>
+      <objectId>2082399c-7786-449d-868e-388389b76cfb</objectId>
+     </MountLocationRecord>
+     <MountLocationRecord>
+      <mountLocation>StarboardMidship</mountLocation>
+      <barrels>1</barrels>
+      <mounts>1</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      </mountArcs>
+      <useRestAngle>false</useRestAngle>
+      <restAngleDeg>0</restAngleDeg>
+      <trainable>false</trainable>
+      <objectId>8cba875a-7646-4073-8b88-5b0404b4c081</objectId>
+     </MountLocationRecord>
+     <MountLocationRecord>
+      <mountLocation>After</mountLocation>
+      <barrels>1</barrels>
+      <mounts>1</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="60" CoverageDeg="240" isCrossDeckFire="false" />
+      </mountArcs>
+      <useRestAngle>false</useRestAngle>
+      <restAngleDeg>0</restAngleDeg>
+      <trainable>false</trainable>
+      <objectId>6523d84d-15c3-4e31-8b21-ad57c27b0572</objectId>
+     </MountLocationRecord>
+     <MountLocationRecord>
+      <mountLocation>PortMidship</mountLocation>
+      <barrels>1</barrels>
+      <mounts>1</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+      </mountArcs>
+      <useRestAngle>false</useRestAngle>
+      <restAngleDeg>0</restAngleDeg>
+      <trainable>false</trainable>
+      <objectId>fdfe9f92-6f54-4bf5-b614-c9e9ce51e86b</objectId>
+     </MountLocationRecord>
+    </mountLocationRecords>
+    <objectId>19684bcf-8f7b-43df-8a82-ed30365a969b</objectId>
+   </BatteryRecord>
   </batteryRecords>
   <torpedoSector>
    <name>
@@ -4864,7 +5034,7 @@
     </name>
     <damageRating>42</damageRating>
     <maxRateOfFireShootPerMin>0.3</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -5005,7 +5175,7 @@
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>2</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -5363,7 +5533,7 @@
     </name>
     <damageRating>18</damageRating>
     <maxRateOfFireShootPerMin>3.5</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -5514,7 +5684,7 @@
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -5775,7 +5945,7 @@
     </name>
     <damageRating>42</damageRating>
     <maxRateOfFireShootPerMin>0.3</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -5916,7 +6086,7 @@
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>2</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -6264,7 +6434,7 @@
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>2</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -6621,7 +6791,7 @@
     </name>
     <damageRating>23</damageRating>
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -6748,7 +6918,7 @@
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -6963,7 +7133,7 @@
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
-    <fireControlPositions>0</fireControlPositions>
+    <fireControlPositions>1</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>

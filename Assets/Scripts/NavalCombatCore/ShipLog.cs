@@ -141,6 +141,14 @@ namespace NavalCombatCore
             var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.mountLocationRecord.mounts - m.mountsDestroyed) * m.mountLocationRecord.barrels);
             return $"x{availableBarrels}/{barrels} {batteryRecord.name.mergedName} ({ammunition.Summary()})";
         }
+
+        public float EvaluateFirepowerScore()
+        {
+            var batteryRecord = GetBatteryRecord();
+            var firepoweScorePerBarrel = batteryRecord.EvaluateFirepowerPerBarrel();
+            var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.mountLocationRecord.mounts - m.mountsDestroyed) * m.mountLocationRecord.barrels);
+            return availableBarrels * firepoweScorePerBarrel;
+        }
     }
 
     public class TorpedoSectorStatus
@@ -181,8 +189,8 @@ namespace NavalCombatCore
             if (r == null)
                 return "Not Valid";
 
-            var ( portClass, portCurrent) = GetClassCurrentBarrels(r.barrelsLevelPort, portMountHits);
-            var ( starboardClass, starboardCurrent) = GetClassCurrentBarrels(r.barrelsLevelStarboard, starboardMountHits);
+            var (portClass, portCurrent) = GetClassCurrentBarrels(r.barrelsLevelPort, portMountHits);
+            var (starboardClass, starboardCurrent) = GetClassCurrentBarrels(r.barrelsLevelStarboard, starboardMountHits);
 
             return $"{portClass}({portCurrent})/{starboardClass}({starboardCurrent}) {r.name.mergedName}";
         }
@@ -195,6 +203,18 @@ namespace NavalCombatCore
             var barrelsClass = barrelsLevel[0];
             var barrelsCurrent = hit >= barrelsLevel.Count ? 0 : barrelsLevel[hit];
             return (barrelsClass, barrelsCurrent);
+        }
+
+        public float EvaluateFirepowerScore()
+        {
+            var r = rapidFireBatteryRecord;
+            if (r == null)
+                return 0;
+
+            var (portClass, portCurrent) = GetClassCurrentBarrels(r.barrelsLevelPort, portMountHits);
+            var (starboardClass, starboardCurrent) = GetClassCurrentBarrels(r.barrelsLevelStarboard, starboardMountHits);
+            var barrels = portCurrent + starboardCurrent;
+            return GetRapidFireBatteryRecord().EvaluateFirepowerPerBarrel() * barrels;
         }
     }
 
@@ -399,13 +419,16 @@ namespace NavalCombatCore
             var _shipClass = shipClass;
             var lines = new List<string>();
 
+            lines.Add("Battery:");
             lines.AddRange(batteryStatus.Select(bs => bs.Summary()));
 
+            lines.Add("Torpedo:");
             var torpedoBarrels = _shipClass.torpedoSector.mountLocationRecords.Sum(r => r.barrels * r.mounts);
             var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.torpedoMountLocationRecord.mounts - m.mountsDestroyed) * m.torpedoMountLocationRecord.barrels);
             var torpedoAmmu = torpedoSectorStatus.ammunition;
             lines.Add($"x{torpedoBarrelsAvailable}/{torpedoBarrels} {_shipClass.torpedoSector.name.mergedName} ({torpedoAmmu})");
 
+            lines.Add("Rapid Firing Battery:");
             lines.AddRange(rapidFiringStatus.Select(s => s.GetInfo()));
 
             // lines.Add("DP")
@@ -425,7 +448,7 @@ namespace NavalCombatCore
 
                 headingDeg = MeasureUtils.MoveAngleTowards(headingDeg, desiredHeadingDeg, turnCapThisPulse);
 
-                var decayPercentPer2Min = (useEmergencyRudder ? 0.5f : 0.75f) * usePercent + 1 * ( 1- usePercent);
+                var decayPercentPer2Min = (useEmergencyRudder ? 0.5f : 0.75f) * usePercent + 1 * (1 - usePercent);
                 var decayPercentThisPulse = (float)Math.Pow(decayPercentPer2Min, deltaSeconds / 120f);
                 speedKnots *= decayPercentThisPulse;
             }
@@ -569,6 +592,46 @@ namespace NavalCombatCore
             var distM = distNm * 1852;
             double arcLength = Geodesic.WGS84.Direct(position.LatDeg, position.LonDeg, headingDeg, distM, out double lat2, out double lon2);
             position = new LatLon((float)lat2, (float)lon2);
+        }
+
+        public float EvaluateArmorScore()
+        {
+            var weightedArmor = shipClass.armorRating.GetWeightedArmor(TargetAspect.Broad, RangeBand.Short);
+            return weightedArmor;
+        }
+
+        public float EvaluateBatteryFirepower()
+        {
+            return batteryStatus.Sum(bs => bs.EvaluateFirepowerScore());
+        }
+
+        public float EvaluateTorpedoThreatScore()
+        {
+            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.torpedoMountLocationRecord.mounts - m.mountsDestroyed) * m.torpedoMountLocationRecord.barrels);
+            return torpedoBarrelsAvailable * shipClass.torpedoSector.EvaluateTorpedoThreatPerBarrel();
+        }
+
+        public float EvaluateRapidFiringFirepower()
+        {
+            return rapidFiringStatus.Sum(rf => rf.EvaluateFirepowerScore());
+        }
+
+
+        public float EvaluateFirepowerScore()
+        {
+            var batteryFirepower = EvaluateBatteryFirepower();
+            // Torpedo is not handled here
+            var torpedoThreat = EvaluateTorpedoThreatScore();
+            var rapidFiringFirepower = EvaluateRapidFiringFirepower();
+
+            return 1f * batteryFirepower + 1f * torpedoThreat + 1f * rapidFiringFirepower;
+        }
+
+        public float EvaluateGeneralScore()
+        {
+            var armorScore = EvaluateArmorScore();
+            var firepowerScore = EvaluateFirepowerScore();
+            return 1f * armorScore + 1f * firepowerScore;
         }
     }
 }

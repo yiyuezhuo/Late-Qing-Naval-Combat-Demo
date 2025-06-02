@@ -35,7 +35,7 @@
   </name>
   <portraitCode>Tōgō_Heihachirō</portraitCode>
   <navalStrategic>Gifted</navalStrategic>
-  <navalOperational>AboveAverage</navalOperational>
+  <navalOperational>Outstanding</navalOperational>
   <navalTactical>AboveAverage</navalTactical>
   <traits />
   <objectId>bbdc13c1-a909-411c-b949-ad82485ab108</objectId>
@@ -331,7 +331,7 @@
   <portraitCode>Tsuboi_kozo</portraitCode>
   <navalStrategic>AboveAverage</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
-  <navalTactical>Average</navalTactical>
+  <navalTactical>AboveAverage</navalTactical>
   <traits />
   <objectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</objectId>
  </Leader>
@@ -342,7 +342,7 @@
    <chineseSimplified>伊东祐亨</chineseSimplified>
   </name>
   <portraitCode>Itoh_Sukeyuki</portraitCode>
-  <navalStrategic>AboveAverage</navalStrategic>
+  <navalStrategic>Average</navalStrategic>
   <navalOperational>Average</navalOperational>
   <navalTactical>Average</navalTactical>
   <traits />

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
-
+using MathNet.Numerics.Distributions;
+using System.Linq;
 
 namespace NavalCombatCore
 {
@@ -167,7 +168,7 @@ namespace NavalCombatCore
 
     public class BatteryRecord : IObjectIdLabeled
     {
-        public string objectId{ get; set; }
+        public string objectId { get; set; }
         public GlobalString name = new();
         public float damageRating;
         public float maxRateOfFireShootPerMin; // shoot/min
@@ -184,9 +185,6 @@ namespace NavalCombatCore
         public AmmunitionType penetrationTableBaseType;
         public List<PenetrationTableRecord> penetrationTableRecords = new();
         public List<MountLocationRecord> mountLocationRecords = new();
-        // public List<FireControlTableRecord> fireControlTableRecords = new() { new() };
-        // public List<PenetrationTableRecord> penetrationTableRecords = new() { new() };
-        // public List<MountLocationRecord> mountLocationRecords = new() { new() };
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
@@ -218,6 +216,20 @@ namespace NavalCombatCore
             {
                 return (BatteryRecord)serializer.Deserialize(reader);
             }
+        }
+
+        public float EvaluateFirepowerPerBarrel()
+        {
+            var damageScrore = damageRating;
+            var RateOfFireScore = penetrationTableRecords.FirstOrDefault()?.rateOfFire ?? 0;
+            var fireControlScore = fireControlTableRecords.FirstOrDefault()?.shortBroad ?? 0;
+            return damageScrore * RateOfFireScore * fireControlScore;
+        }
+        
+        public float EvaluateFirepowerScore()
+        {
+            var barrels = mountLocationRecords.Sum(m => m.mounts * m.barrels);
+            return barrels * EvaluateFirepowerPerBarrel();
         }
     }
 
@@ -252,6 +264,17 @@ namespace NavalCombatCore
         // public List<TorpedoSetting> torpedoSettings = new() { new() };
         public int ammunitionCapacity;
         public TorpedoDamageClass damageClass;
+
+        public float EvaluateTorpedoThreatPerBarrel()
+        {
+            return 1; // TODO: Add handling for Damage CLass, Speed, and Damage.
+        }
+
+        public float EvaluateTorpedoThreatScore()
+        {
+            var barrels = mountLocationRecords.Sum(r => r.mounts * r.barrels);
+            return barrels * EvaluateTorpedoThreatPerBarrel();
+        }
     }
 
     public class RapidFireBatteryFireControlLevelRecord
@@ -275,6 +298,20 @@ namespace NavalCombatCore
         // public List<int> barrelsLevelStarboard = new() { 0 };
         public List<int> barrelsLevelPort = new();
         public List<int> barrelsLevelStarboard = new();
+
+        public float EvaluateFirepowerPerBarrel()
+        {
+            var damageScore = damageFactor;
+            var rateOfFireScore = 1;
+            var fireControlScore = fireControlRecords.FirstOrDefault()?.fireControlEffectiveRange ?? 0;
+            return damageScore * rateOfFireScore * fireControlScore;
+        }
+
+        public float EvaluateFirepowerScore()
+        {
+            var barrels = barrelsLevelPort.FirstOrDefault() + barrelsLevelStarboard.FirstOrDefault();
+            return barrels * EvaluateFirepowerPerBarrel();
+        }
     }
 
     public class SpeedIncreaseRecord
@@ -295,6 +332,26 @@ namespace NavalCombatCore
         public float actualInch;
     }
 
+    public enum ArmorLocation
+    {
+        Deck,
+        TurretHorizontal,
+        SuperStructureHorizontal,
+        ConningTower,
+        MainBelt,
+        BeltEnd,
+        Barbette,
+        TurretVertical,
+        SuperStructureVertical,
+        Ineffective,
+    }
+
+    public enum TargetAspect
+    {
+        Broad,
+        Narrow
+    }
+
     public class ArmorRating // Carrier is ignored at this point
     {
         public float armorTypeFactor;
@@ -307,24 +364,107 @@ namespace NavalCombatCore
         public ArmorRatingReocrd barbette = new(); // 7V
         public ArmorRatingReocrd turretVertical = new(); // 8V
         public ArmorRatingReocrd superStructureVertical = new(); // 9V
+
+        public float GetArmorEffectiveInch(ArmorLocation loc)
+        {
+            return loc switch
+            {
+                ArmorLocation.Deck => deck.actualInch,
+                ArmorLocation.TurretHorizontal => turretHorizontal.actualInch,
+                ArmorLocation.SuperStructureHorizontal => superStructureHorizontal.actualInch,
+                ArmorLocation.ConningTower => conningTower.actualInch,
+                ArmorLocation.MainBelt => mainBelt.actualInch,
+                ArmorLocation.BeltEnd => beltEnd.actualInch,
+                ArmorLocation.Barbette => barbette.actualInch,
+                ArmorLocation.TurretVertical => turretVertical.actualInch,
+                ArmorLocation.SuperStructureVertical => superStructureVertical.actualInch,
+                _ => mainBelt.actualInch
+            };
+        }
+
+        public static float[,] broadAspectLocationWeightTable = new float[,]
+        {// Short   Medium  Long/Extreme
+            {2,     12,     25}, // 1H DECK
+            {1,     3,      6}, // 2H TURRET
+            {2,     4,      8}, // 3H SUPERSTR
+            {4,     3,      3}, // 4V CON
+            {26,    18,     16}, // 5V MAIN BELT
+            {9,     8,      7}, // 6V BELT ENDS
+            {19,    17,     11}, // 7V BARBETTE
+            {17,    16,     11}, // 8V TURRET
+            {19,    17,     12},  // 9V SUPERSTR
+            {1,     1,      1} // INEFFECTIVE
+        };
+
+        public static float[,] narrowAspectLocationWeightTable = new float[,]
+        {// Short   Medium  Long/Extreme
+            {4,     20,     34}, // 1H DECK
+            {2,     3,      7}, // 2H TURRET
+            {3,     9,      14}, // 3H SUPERSTR
+            {6,     4,      3}, // 4V CON
+            {7,     5,      5}, // 5V MAIN BELT
+            {4,     3,      3}, // 6V BELT ENDS
+            {28,    16,     6}, // 7V BARBETTE
+            {23,    19,     13}, // 8V TURRET
+            {22,    20,     14},  // 9V SUPERSTR
+            {1,     1,      1} // INEFFECTIVE
+        };
+
+        public static double[] GetLocationWeights(TargetAspect targetAspect, RangeBand rangeBand)
+        {
+            var table = targetAspect switch
+            {
+                TargetAspect.Broad => broadAspectLocationWeightTable,
+                TargetAspect.Narrow => narrowAspectLocationWeightTable,
+                _ => broadAspectLocationWeightTable
+            };
+            var colIdx = Math.Min(table.GetLength(1), (int)rangeBand);
+            var rows = table.GetLength(0);
+            var weights = new double[rows];
+            for (int rowIdx = 0; rowIdx < table.GetLength(0); rowIdx++)
+                weights[rowIdx] = table[rowIdx, colIdx];
+            return weights;
+        }
+
+        public float GetWeightedArmor(TargetAspect targetAspect, RangeBand rangeBand)
+        {
+            var weights = GetLocationWeights(targetAspect, rangeBand);
+            var sumWeights = 0.0;
+            var sumArmor = 0.0;
+            for (var i = 0; i < weights.Length; i++)
+            {
+                var loc = (ArmorLocation)i;
+                if (loc != ArmorLocation.Ineffective)
+                {
+                    sumWeights += weights[i];
+                    sumArmor += weights[i] * GetArmorEffectiveInch(loc);
+                }
+            }
+            return (float)(sumArmor / sumWeights);
+        }
+
+        public static ArmorLocation RollArmorLocation(TargetAspect targetAspect, RangeBand rangeBand)
+        {
+            var idx = Categorical.Sample(GetLocationWeights(targetAspect, rangeBand));
+            return (ArmorLocation)idx;
+        }
     }
 
-    [Serializable]
-    public class ShipClass : IObjectIdLabeled
+    public partial class ShipClass : IObjectIdLabeled
     {
         public string objectId { set; get; }
         public GlobalString name = new();
         public ShipType type;
         public Country country;
-        public int applicableYearBegin = 1900;
-        public int applicableYearEnd = 1900;
+        // public int applicableYearBegin = 1900;
+        // public int applicableYearEnd = 1900;
         public float displacementTons;
         public int complementMen;
-        
+
         public float lengthFoot;
         public float beamFoot;
         public float draftFoot;
-        public GlobalString builderDesc = new();
+        // public GlobalString builderDesc = new();
         public GlobalString engineDesc = new();
         public GlobalString boilersDesc = new();
         // public List<BatteryRecord> batteryRecords = new() { new() };
@@ -388,6 +528,52 @@ namespace NavalCombatCore
         public string GetAcronym()
         {
             return GetAcronymFor(type);
+        }
+
+        public float EvaluateArmorScore()
+        {
+            var weightedArmor = armorRating.GetWeightedArmor(TargetAspect.Broad, RangeBand.Short);
+            return weightedArmor;
+        }
+
+        public float EvaluateSurvivability()
+        {
+            // var armorScoreSmoothed = (float)(1 + Math.Sqrt(EvaluateArmorScore()));
+            var armorScoreSmoothed = 1 + EvaluateArmorScore();
+            return damagePoint * armorScoreSmoothed;
+        }
+
+        public float EvaluateBatteryFirepower()
+        {
+            return batteryRecords.Sum(bs => bs.EvaluateFirepowerScore());
+        }
+
+        public float EvaluateTorpedoThreatScore()
+        {
+            return torpedoSector.EvaluateTorpedoThreatScore();
+        }
+
+        public float EvaluateRapidFiringFirepower()
+        {
+            return rapidFireBatteryRecords.Sum(rf => rf.EvaluateFirepowerScore());
+        }
+
+        public float EvaluateFirepowerScore()
+        {
+            var batteryFirepower = EvaluateBatteryFirepower();
+            // Torpedo is not handled here
+            var torpedoThreat = EvaluateTorpedoThreatScore();
+            var rapidFiringFirepower = EvaluateRapidFiringFirepower();
+
+            return 1f * batteryFirepower + 20f * torpedoThreat + 1f * rapidFiringFirepower;
+        }
+        
+        public float EvaluateGeneralScore()
+        {
+            var survivability = EvaluateSurvivability();
+            var firepowerScore = EvaluateFirepowerScore();
+            // var armorScoreSmoothed = 1 + (float)Math.Sqrt(armorScore);
+            return 1f * survivability + 1f * firepowerScore; // TODO: Consider DP?
         }
     }
 }

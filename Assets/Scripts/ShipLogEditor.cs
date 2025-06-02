@@ -13,6 +13,30 @@ using System;
 
 namespace NavalCombatCore
 {
+    public partial class ShipClass
+    {
+        [CreateProperty]
+        public float armorScoreProp => EvaluateArmorScore();
+
+        [CreateProperty]
+        public float survivabilityProp => EvaluateSurvivability();
+
+        [CreateProperty]
+        public float batteryFirepowerProp => EvaluateBatteryFirepower();
+
+        [CreateProperty]
+        public float torpedoThreatScoreProp => EvaluateTorpedoThreatScore();
+
+        [CreateProperty]
+        public float rapidFiringFirepowerProp => EvaluateRapidFiringFirepower();
+
+        [CreateProperty]
+        public float firepoweScoreProp => EvaluateFirepowerScore();
+
+        [CreateProperty]
+        public float generalScoreProp => EvaluateGeneralScore();
+    }
+
     public partial class ShipLog
     {
         [CreateProperty]

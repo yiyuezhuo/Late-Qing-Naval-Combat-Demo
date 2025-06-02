@@ -174,16 +174,6 @@
                                                 <ui:DataBinding property="value" data-source-path="draftFoot" binding-mode="TwoWay" />
                                             </Bindings>
                                         </ui:FloatField>
-                                        <ui:SliderInt label="Applicable Year Begin" value="180" high-value="1945" low-value="1880" show-input-field="true">
-                                            <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="applicableYearBegin" binding-mode="TwoWay" />
-                                            </Bindings>
-                                        </ui:SliderInt>
-                                        <ui:SliderInt label="Applicable Year End" value="42" high-value="1945" low-value="1880" show-input-field="true">
-                                            <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="applicableYearEnd" binding-mode="TwoWay" />
-                                            </Bindings>
-                                        </ui:SliderInt>
                                         <ui:TextField label="Portrait">
                                             <Bindings>
                                                 <ui:DataBinding property="value" data-source-path="portraitUrl" binding-mode="TwoWay" />
@@ -191,9 +181,6 @@
                                         </ui:TextField>
                                     </ui:VisualElement>
                                     <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; padding-left: 1px; padding-bottom: 1px; padding-right: 1px; padding-top: 1px;">
-                                        <ui:Instance template="GlobalStringEditor" data-source-path="builderDesc">
-                                            <AttributeOverrides element-name="GlobalStringLabel" text="Builder" />
-                                        </ui:Instance>
                                         <ui:Instance template="GlobalStringEditor" data-source-path="engineDesc">
                                             <AttributeOverrides element-name="GlobalStringLabel" text="Engines" />
                                         </ui:Instance>
@@ -229,6 +216,45 @@
                                     </ui:VisualElement>
                                 </ui:VisualElement>
                             </ui:ScrollView>
+                        </ui:Tab>
+                        <ui:Tab label="Score">
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <ui:FloatField label="Armor" readonly="true">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="armorScoreProp" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Survivability" readonly="true">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="survivabilityProp" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Battery Firepower" readonly="true">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="batteryFirepowerProp" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Torpedo Threat" readonly="true">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="torpedoThreatScoreProp" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="RF Bty Firepower" readonly="true">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="rapidFiringFirepowerProp" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Firepower" readonly="true">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="firepoweScoreProp" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="General" readonly="true">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="generalScoreProp" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </ui:FloatField>
+                            </ui:VisualElement>
                         </ui:Tab>
                     </ui:TabView>
                     <Bindings>

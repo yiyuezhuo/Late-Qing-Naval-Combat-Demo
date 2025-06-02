@@ -2013,6 +2013,28 @@
     <fireControlHits>0</fireControlHits>
     <objectId>5d2ffcc8-ce50-4f64-ad5c-9e7415ae39e5</objectId>
    </BatteryStatus>
+   <BatteryStatus>
+    <ammunition>
+     <ArmorPiercing>450</ArmorPiercing>
+     <semiArmorPiercing>0</semiArmorPiercing>
+     <common>450</common>
+     <highExplosive>0</highExplosive>
+    </ammunition>
+    <mountStatus>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>776d2dd9-1df8-4b65-acb2-ecf22930c829</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <mountsDestroyed>0</mountsDestroyed>
+      <objectId>9dd2324a-2920-4fd5-a965-75f3ac97a2cf</objectId>
+     </MountStatusRecord>
+    </mountStatus>
+    <fireControlHits>0</fireControlHits>
+    <objectId>06100423-b174-492c-b7e9-4f278f5dc342</objectId>
+   </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
    <ammunition>4</ammunition>

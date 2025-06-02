@@ -8,19 +8,11 @@
   </name>
   <type>LightCruiser</type>
   <country>Japan</country>
-  <applicableYearBegin>1893</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
   <displacementTons>4150</displacementTons>
   <complementMen>360</complementMen>
   <lengthFoot>360</lengthFoot>
   <beamFoot>46</beamFoot>
   <draftFoot>17</draftFoot>
-  <builderDesc>
-   <english>Amstrong, Elswick</english>
-   <japanese>アームストロング・アンド・ミッチェル会社エルスウィック造船所</japanese>
-   <chineseSimplified>英国阿姆斯特朗兵工厂</chineseSimplified>
-   <chineseTraditional>英國阿姆斯壯造船廠</chineseTraditional>
-  </builderDesc>
   <engineDesc>
    <english>2-shaft RC</english>
    <chineseSimplified>2台立式4汽缸往复式蒸汽机</chineseSimplified>
@@ -517,18 +509,11 @@
   </name>
   <type>LightCruiser</type>
   <country>Japan</country>
-  <applicableYearBegin>1894</applicableYearBegin>
-  <applicableYearEnd>1902</applicableYearEnd>
   <displacementTons>3100</displacementTons>
   <complementMen>330</complementMen>
   <lengthFoot>301</lengthFoot>
   <beamFoot>43</beamFoot>
   <draftFoot>17.5</draftFoot>
-  <builderDesc>
-   <english>Yokosuka Navy Yard</english>
-   <japanese>日本横須賀造船所</japanese>
-   <chineseSimplified>日本横须贺海军造船厂</chineseSimplified>
-  </builderDesc>
   <engineDesc>
    <english>2-shaft HTE</english>
    <chineseSimplified>2座水平式三气筒三段鼓胀式蒸汽机</chineseSimplified>
@@ -1013,18 +998,11 @@
   </name>
   <type>ArmoredCruiser</type>
   <country>Japan</country>
-  <applicableYearBegin>1885</applicableYearBegin>
-  <applicableYearEnd>1895</applicableYearEnd>
   <displacementTons>3750</displacementTons>
   <complementMen>325</complementMen>
   <lengthFoot>300</lengthFoot>
   <beamFoot>46</beamFoot>
   <draftFoot>18.5</draftFoot>
-  <builderDesc>
-   <english>Armstong, Elswick</english>
-   <japanese>アームストロング社ロー・ウォーカー造船所</japanese>
-   <chineseSimplified>英国阿姆斯特朗船厂</chineseSimplified>
-  </builderDesc>
   <engineDesc>
    <english>2-shaft HTE</english>
    <japanese>横置2段2気筒レシプロ 2基</japanese>
@@ -1461,19 +1439,11 @@
   </name>
   <type>ArmoredCruiser</type>
   <country>China</country>
-  <applicableYearBegin>1885</applicableYearBegin>
-  <applicableYearEnd>1895</applicableYearEnd>
   <displacementTons>2300</displacementTons>
   <complementMen>200</complementMen>
   <lengthFoot>236</lengthFoot>
   <beamFoot>34</beamFoot>
   <draftFoot>17</draftFoot>
-  <builderDesc>
-   <english>Vulcan</english>
-   <japanese>ドイツ、フルカン造船所</japanese>
-   <chineseSimplified>德国伏尔铿船厂</chineseSimplified>
-   <chineseTraditional>德國伏爾鏗造船廠</chineseTraditional>
-  </builderDesc>
   <engineDesc>
    <english>2-shaft CR</english>
    <chineseTraditional>往復式蒸氣引擎（2機2軸）</chineseTraditional>
@@ -1874,18 +1844,11 @@
   </name>
   <type>PatrolGunboat</type>
   <country>China</country>
-  <applicableYearBegin>1891</applicableYearBegin>
-  <applicableYearEnd>1894</applicableYearEnd>
   <displacementTons>1000</displacementTons>
   <complementMen>120</complementMen>
   <lengthFoot>235</lengthFoot>
   <beamFoot>27</beamFoot>
   <draftFoot>13</draftFoot>
-  <builderDesc>
-   <english>Foochow</english>
-   <japanese>福州船政局</japanese>
-   <chineseSimplified>福州船政局马尾造船所</chineseSimplified>
-  </builderDesc>
   <engineDesc>
    <english>2-shaft HTE</english>
    <japanese>2基の蒸気機関</japanese>
@@ -2188,19 +2151,11 @@
   </name>
   <type>Battleship</type>
   <country>China</country>
-  <applicableYearBegin>1885</applicableYearBegin>
-  <applicableYearEnd>1895</applicableYearEnd>
   <displacementTons>7400</displacementTons>
   <complementMen>350</complementMen>
   <lengthFoot>308</lengthFoot>
   <beamFoot>59</beamFoot>
   <draftFoot>20</draftFoot>
-  <builderDesc>
-   <english>Vulcan, Stettin</english>
-   <japanese>ドイツ帝国シュテッティン、フルカン造船所</japanese>
-   <chineseSimplified>德国伏尔铿造船厂</chineseSimplified>
-   <chineseTraditional>德國伏爾鏗造船廠</chineseTraditional>
-  </builderDesc>
   <engineDesc>
    <english>2-shaft HCR</english>
    <japanese>水平型2段膨張式3気筒レシプロ機関×2基</japanese>
@@ -2626,16 +2581,11 @@
   </name>
   <type>ArmoredCruiser</type>
   <country>China</country>
-  <applicableYearBegin>1881</applicableYearBegin>
-  <applicableYearEnd>1894</applicableYearEnd>
   <displacementTons>1450</displacementTons>
   <complementMen>177</complementMen>
   <lengthFoot>210</lengthFoot>
   <beamFoot>32</beamFoot>
   <draftFoot>15</draftFoot>
-  <builderDesc>
-   <english>Mitchell</english>
-  </builderDesc>
   <engineDesc>
    <english>2-shaft HCR</english>
   </engineDesc>
@@ -3022,18 +2972,11 @@
   </name>
   <type>ArmoredCruiser</type>
   <country>China</country>
-  <applicableYearBegin>1887</applicableYearBegin>
-  <applicableYearEnd>1895</applicableYearEnd>
   <displacementTons>2300</displacementTons>
   <complementMen>260</complementMen>
   <lengthFoot>250</lengthFoot>
   <beamFoot>38</beamFoot>
   <draftFoot>15</draftFoot>
-  <builderDesc>
-   <english>Amstrong</english>
-   <japanese>イギリスのアームストロング社</japanese>
-   <chineseSimplified>阿姆斯特朗-惠特沃斯公司埃尔斯维克造船厂</chineseSimplified>
-  </builderDesc>
   <engineDesc>
    <english>2-shaft HTE</english>
    <japanese>三段膨張三気筒レシプロ機関2基2軸推進</japanese>
@@ -3474,16 +3417,11 @@
   </name>
   <type>ArmoredCruiser</type>
   <country>China</country>
-  <applicableYearBegin>1889</applicableYearBegin>
-  <applicableYearEnd>1894</applicableYearEnd>
   <displacementTons>2850</displacementTons>
   <complementMen>270</complementMen>
   <lengthFoot>270</lengthFoot>
   <beamFoot>39</beamFoot>
   <draftFoot>16.8</draftFoot>
-  <builderDesc>
-   <english>Vulcan, Stettin</english>
-  </builderDesc>
   <engineDesc>
    <english>2-shaft VTE</english>
   </engineDesc>
@@ -3870,16 +3808,11 @@
   </name>
   <type>ArmoredCruiser</type>
   <country>China</country>
-  <applicableYearBegin>1889</applicableYearBegin>
-  <applicableYearEnd>1895</applicableYearEnd>
   <displacementTons>2200</displacementTons>
   <complementMen>202</complementMen>
   <lengthFoot>197</lengthFoot>
   <beamFoot>40</beamFoot>
   <draftFoot>14</draftFoot>
-  <builderDesc>
-   <english>Foochow</english>
-  </builderDesc>
   <engineDesc>
    <english>2-shaft VTE</english>
   </engineDesc>
@@ -4271,16 +4204,11 @@
   </name>
   <type>LightCruiser</type>
   <country>China</country>
-  <applicableYearBegin>1888</applicableYearBegin>
-  <applicableYearEnd>1894</applicableYearEnd>
   <displacementTons>1300</displacementTons>
   <complementMen>150</complementMen>
   <lengthFoot>221</lengthFoot>
   <beamFoot>33</beamFoot>
   <draftFoot>12.5</draftFoot>
-  <builderDesc>
-   <english>Foochow</english>
-  </builderDesc>
   <engineDesc>
    <english>1-shaft reciprocating</english>
   </engineDesc>
@@ -4645,16 +4573,11 @@
   </name>
   <type>Battleship</type>
   <country>Japan</country>
-  <applicableYearBegin>1894</applicableYearBegin>
-  <applicableYearEnd>1899</applicableYearEnd>
   <displacementTons>3800</displacementTons>
   <complementMen>250</complementMen>
   <lengthFoot>220</lengthFoot>
   <beamFoot>48</beamFoot>
   <draftFoot>18</draftFoot>
-  <builderDesc>
-   <english>Samuda, Poplar</english>
-  </builderDesc>
   <engineDesc>
    <english>2-shaft HC</english>
   </engineDesc>
@@ -4921,16 +4844,11 @@
   </name>
   <type>ArmoredCruiser</type>
   <country>Japan</country>
-  <applicableYearBegin>1894</applicableYearBegin>
-  <applicableYearEnd>1902</applicableYearEnd>
   <displacementTons>4220</displacementTons>
   <complementMen>360</complementMen>
   <lengthFoot>301</lengthFoot>
   <beamFoot>51</beamFoot>
   <draftFoot>20</draftFoot>
-  <builderDesc>
-   <english>Yokosuka</english>
-  </builderDesc>
   <engineDesc>
    <english>3-cylinder HTE</english>
   </engineDesc>
@@ -5427,16 +5345,11 @@
   </name>
   <type>ArmoredCruiser</type>
   <country>Japan</country>
-  <applicableYearBegin>1880</applicableYearBegin>
-  <applicableYearEnd>1894</applicableYearEnd>
   <displacementTons>2260</displacementTons>
   <complementMen>314</complementMen>
   <lengthFoot>230</lengthFoot>
   <beamFoot>41</beamFoot>
   <draftFoot>17.3</draftFoot>
-  <builderDesc>
-   <english>Milford Haven, Pembroke</english>
-  </builderDesc>
   <engineDesc>
    <english>1-shaft HC</english>
   </engineDesc>
@@ -5448,8 +5361,8 @@
     <name>
      <english>17cm RKL/25 C/74</english>
     </name>
-    <damageRating>0</damageRating>
-    <maxRateOfFireShootPerMin>0</maxRateOfFireShootPerMin>
+    <damageRating>18</damageRating>
+    <maxRateOfFireShootPerMin>3.5</maxRateOfFireShootPerMin>
     <fireControlPositions>0</fireControlPositions>
     <fireControlType>
      <gunSight>Basic</gunSight>
@@ -5459,7 +5372,7 @@
      <stabilization>Manual</stabilization>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
-    <rangeYards>0</rangeYards>
+    <rangeYards>6294</rangeYards>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -5595,6 +5508,145 @@
     </mountLocationRecords>
     <objectId>ff826eb5-9620-402f-a632-f85a69f0db67</objectId>
    </BatteryRecord>
+   <BatteryRecord>
+    <name>
+     <english>15cm RKL/25 C/75</english>
+    </name>
+    <damageRating>16</damageRating>
+    <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
+    <fireControlPositions>0</fireControlPositions>
+    <fireControlType>
+     <gunSight>Basic</gunSight>
+     <fireControlInstrument>None</fireControlInstrument>
+     <rangeFinder>None</rangeFinder>
+     <directorControl>None</directorControl>
+     <stabilization>Manual</stabilization>
+     <powerRemoteControl>None</powerRemoteControl>
+    </fireControlType>
+    <rangeYards>6110</rangeYards>
+    <fireControlRadarModifier>0</fireControlRadarModifier>
+    <fireControlRadarName>
+     <english>None</english>
+    </fireControlRadarName>
+    <shellSizeInch>5.9</shellSizeInch>
+    <shellWeightPounds>86</shellWeightPounds>
+    <ammunitionCapacity>900</ammunitionCapacity>
+    <fireControlTableRecords>
+     <FireControlTableRecord>
+      <speedThresholdKnot>9</speedThresholdKnot>
+      <shortBroad>6</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>18</speedThresholdKnot>
+      <shortBroad>4</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>27</speedThresholdKnot>
+      <shortBroad>3</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>36</speedThresholdKnot>
+      <shortBroad>2</shortBroad>
+      <shortNarrow>1</shortNarrow>
+      <mediumBroad>1</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>0</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>45</speedThresholdKnot>
+      <shortBroad>2</shortBroad>
+      <shortNarrow>1</shortNarrow>
+      <mediumBroad>1</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>0</extremeNarrow>
+     </FireControlTableRecord>
+    </fireControlTableRecords>
+    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableRecords>
+     <PenetrationTableRecord>
+      <distanceYards>2000</distanceYards>
+      <rateOfFire>6.9</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>3.4</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>4000</distanceYards>
+      <rateOfFire>5.1</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.2</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.6</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>6000</distanceYards>
+      <rateOfFire>4</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.4</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.1</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>8000</distanceYards>
+      <rateOfFire>3.9</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.4</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.1</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+    </penetrationTableRecords>
+    <mountLocationRecords>
+     <MountLocationRecord>
+      <mountLocation>StarboardMidship</mountLocation>
+      <barrels>1</barrels>
+      <mounts>3</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="45" CoverageDeg="90" isCrossDeckFire="false" />
+      </mountArcs>
+      <useRestAngle>false</useRestAngle>
+      <restAngleDeg>0</restAngleDeg>
+      <trainable>false</trainable>
+      <objectId>dde6ccf6-b6cf-4c0d-a907-ccdb09326116</objectId>
+     </MountLocationRecord>
+     <MountLocationRecord>
+      <mountLocation>PortMidship</mountLocation>
+      <barrels>1</barrels>
+      <mounts>3</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="225" CoverageDeg="90" isCrossDeckFire="false" />
+      </mountArcs>
+      <useRestAngle>false</useRestAngle>
+      <restAngleDeg>0</restAngleDeg>
+      <trainable>false</trainable>
+      <objectId>51548692-950d-482a-9511-c75420a42ac8</objectId>
+     </MountLocationRecord>
+    </mountLocationRecords>
+    <objectId>d2c3c2f2-dcaa-4730-a741-48c0c535c3c3</objectId>
+   </BatteryRecord>
   </batteryRecords>
   <torpedoSector>
    <name>
@@ -5703,16 +5755,11 @@
   </name>
   <type>ArmoredCruiser</type>
   <country>Japan</country>
-  <applicableYearBegin>1891</applicableYearBegin>
-  <applicableYearEnd>1901</applicableYearEnd>
   <displacementTons>4220</displacementTons>
   <complementMen>360</complementMen>
   <lengthFoot>301</lengthFoot>
   <beamFoot>51</beamFoot>
   <draftFoot>20</draftFoot>
-  <builderDesc>
-   <english>La Seyne</english>
-  </builderDesc>
   <engineDesc>
    <english>3-cylinder HTE</english>
   </engineDesc>
@@ -6194,18 +6241,11 @@
   </name>
   <type>ArmoredCruiser</type>
   <country>Japan</country>
-  <applicableYearBegin>1890</applicableYearBegin>
-  <applicableYearEnd>1908</applicableYearEnd>
   <displacementTons>2400</displacementTons>
   <complementMen>350</complementMen>
   <lengthFoot>310</lengthFoot>
   <beamFoot>42</beamFoot>
   <draftFoot>14</draftFoot>
-  <builderDesc>
-   <english>Clydebank</english>
-   <japanese>トムソン社(スコットランド・クライドバンク)</japanese>
-   <chineseSimplified>苏格兰詹姆斯-乔治·汤姆森公司格拉斯哥造船厂</chineseSimplified>
-  </builderDesc>
   <engineDesc>
    <english>2-shaft VTE</english>
    <japanese>直立3段3気筒レシプロ 2基,または横置3段3気筒レシプロ 2基</japanese>
@@ -6563,16 +6603,11 @@
   </name>
   <type>PatrolGunboat</type>
   <country>Japan</country>
-  <applicableYearBegin>1890</applicableYearBegin>
-  <applicableYearEnd>1894</applicableYearEnd>
   <displacementTons>612</displacementTons>
   <complementMen>104</complementMen>
   <lengthFoot>154</lengthFoot>
   <beamFoot>28</beamFoot>
   <draftFoot>9.8</draftFoot>
-  <builderDesc>
-   <english>Onohama, Boke</english>
-  </builderDesc>
   <engineDesc>
    <english>HC</english>
   </engineDesc>
@@ -6910,18 +6945,11 @@
   </name>
   <type>ArmedMerchantCruiser</type>
   <country>Japan</country>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
   <displacementTons>2913</displacementTons>
   <complementMen>150</complementMen>
   <lengthFoot>325</lengthFoot>
   <beamFoot>42</beamFoot>
   <draftFoot>29</draftFoot>
-  <builderDesc>
-   <english>London &amp; Glasgow Shipbuilding Company</english>
-   <japanese> ロンドン＆グラスゴー造船所</japanese>
-   <chineseSimplified>伦敦与格拉斯哥造船厂</chineseSimplified>
-  </builderDesc>
   <engineDesc>
    <english>unnamed</english>
   </engineDesc>
@@ -7142,18 +7170,11 @@
   </name>
   <type>TorpedoBoat</type>
   <country>China</country>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
   <displacementTons>120</displacementTons>
   <complementMen>20</complementMen>
   <lengthFoot>140</lengthFoot>
   <beamFoot>16</beamFoot>
   <draftFoot>3</draftFoot>
-  <builderDesc>
-   <english>Schichau，Elbing</english>
-   <japanese>ドイツ・シーシャウ社</japanese>
-   <chineseSimplified>德国希肖船厂</chineseSimplified>
-  </builderDesc>
   <engineDesc>
    <english>unnamed</english>
   </engineDesc>
@@ -7266,17 +7287,11 @@
   </name>
   <type>TorpedoBoat</type>
   <country>China</country>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
   <displacementTons>90</displacementTons>
   <complementMen>25</complementMen>
   <lengthFoot>127</lengthFoot>
   <beamFoot>12</beamFoot>
   <draftFoot>6.5</draftFoot>
-  <builderDesc>
-   <english>unnamed</english>
-   <chineseSimplified>英国亚罗船厂</chineseSimplified>
-  </builderDesc>
   <engineDesc>
    <english>unnamed</english>
   </engineDesc>

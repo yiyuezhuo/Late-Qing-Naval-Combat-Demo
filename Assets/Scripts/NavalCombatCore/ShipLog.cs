@@ -173,6 +173,10 @@ namespace NavalCombatCore
             {
                 yield return mount;
             }
+            foreach (var fireControlSystemStatusRecord in fireControlSystemStatusRecords)
+            {
+                yield return fireControlSystemStatusRecord;
+            }
         }
 
         public BatteryRecord GetBatteryRecord()
@@ -713,6 +717,25 @@ namespace NavalCombatCore
             var armorScore = EvaluateArmorScore();
             var firepowerScore = EvaluateFirepowerScore();
             return 1f * armorScore + 1f * firepowerScore;
+        }
+
+        public HashSet<ShipLog> GetFiringToTargets()
+        {
+            var targets = new HashSet<ShipLog>();
+            foreach (var bs in batteryStatus)
+            {
+                foreach (var mnt in bs.mountStatus)
+                {
+                    var target = mnt.GetFiringTarget();
+                    if (target != null)
+                    {
+                        targets.Add(mnt.GetFiringTarget());
+                    }
+                }
+            }
+            // TODO: Add torpedos?
+            // TODO: Add rapid firing batteries
+            return targets;
         }
     }
 }

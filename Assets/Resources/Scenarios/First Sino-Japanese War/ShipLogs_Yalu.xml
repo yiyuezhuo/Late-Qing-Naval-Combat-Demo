@@ -23,6 +23,7 @@
     <mountStatus>
      <MountStatusRecord>
       <status>Operational</status>
+      <firingTargetObjectId>59969f6c-ed18-4e48-84d2-0b43c3e8ac74</firingTargetObjectId>
       <objectId>2582844d-d6fa-4f43-8b94-2e315b782a0d</objectId>
      </MountStatusRecord>
      <MountStatusRecord>
@@ -2521,6 +2522,7 @@
     <mountStatus>
      <MountStatusRecord>
       <status>Operational</status>
+      <firingTargetObjectId>6a20093b-9f39-47fd-972f-49eaaefaf1d5</firingTargetObjectId>
       <objectId>6f590bc9-b2db-4618-b804-2b0522b81c0a</objectId>
      </MountStatusRecord>
      <MountStatusRecord>

@@ -282,9 +282,13 @@ public class GameManager : MonoBehaviour
 
         foreach ((var shipLog, var viewer) in shouldRemoved)
         {
-            Destroy(viewer);
+            Destroy(viewer); // Or Set Inactive only?
             objectId2Viewer.Remove(shipLog);
         }
+
+        // sync Line renderer to show firing line, fire control line, fired line etc.
+
+        SyncDynamicLines();
 
         // location browser: current latitude, longitude, time zone, local time, sun altitude, day/night discrete value
         UpdateLocationInfoLabel();
@@ -559,4 +563,74 @@ public class GameManager : MonoBehaviour
     public MountStatusRecord selectedMountStatusRecord => EntityManager.Instance.Get<MountStatusRecord>(selectedMountStatusRecordObjectId);
     public string selectedFireControlSystemStatusRecordObjectId;
     public FireControlSystemStatusRecord selectedFireControlSystemStatusRecord => EntityManager.Instance.Get<FireControlSystemStatusRecord>(selectedFireControlSystemStatusRecordObjectId);
+
+    public GameObject dynamicLinePrefab;
+    public Transform dynamicLineContainer;
+    public void SyncDynamicLines()
+    {
+        var firingLinePairs = GetFiringLinePairs().ToList();
+        // TODO: Maintain
+        // dynamicLineContainer.GetChild
+        var dynamicLines = dynamicLineContainer.GetComponentsInChildren<DynamicLine>().ToList();
+        if (dynamicLines.Count < firingLinePairs.Count)
+        {
+            for (int i = dynamicLines.Count; i < firingLinePairs.Count; i++)
+            {
+                var dynamicLine = Instantiate(dynamicLinePrefab, dynamicLineContainer).GetComponent<DynamicLine>();
+                // dynamicLine.gameObject.SetActive(true);
+            }
+            dynamicLines = dynamicLineContainer.GetComponentsInChildren<DynamicLine>().ToList();
+        }
+        else if (dynamicLines.Count > firingLinePairs.Count)
+        {
+            for (int i = firingLinePairs.Count; i < dynamicLines.Count; i++)
+            {
+                var dynamicLine = dynamicLines[i];
+                dynamicLine.gameObject.SetActive(false);
+            }
+        }
+
+        for (var i = 0; i < firingLinePairs.Count; i++)
+        {
+            (var firingShip, var target) = firingLinePairs[i];
+            var dynamicLine = dynamicLines[i];
+            dynamicLine.gameObject.SetActive(true);
+
+            dynamicLine.SetBeginEndByLatLon(firingShip.position, target.position);
+            // dynamicLine.SetColor(Color.black);
+            dynamicLine.SetColor(Color.red);
+        }
+    }
+
+    public IEnumerable<ShipLog> GetShipsRequiringFiringLineRendering()
+    {
+        switch (GamePreference.Instance.firingLineDisplayMode)
+        {
+            case GamePreference.FiringLineDisplayMode.None:
+                break;
+            case GamePreference.FiringLineDisplayMode.SelectedShip:
+                if (selectedShipLog != null)
+                    yield return selectedShipLog;
+                break;
+            // Support other modes
+            case GamePreference.FiringLineDisplayMode.All:
+                foreach (var shipLog in NavalGameState.Instance.shipLogs)
+                {
+                    if (shipLog.mapState == MapState.Deployed)
+                        yield return shipLog;
+                }
+                break;
+        }
+    }
+
+    public IEnumerable<(ShipLog, ShipLog)> GetFiringLinePairs()
+    {
+        foreach (var shipLog in GetShipsRequiringFiringLineRendering())
+        {
+            foreach (var firingTarget in shipLog.GetFiringToTargets())
+            {
+                yield return (shipLog, firingTarget);
+            }
+        }
+    }
 }

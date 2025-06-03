@@ -78,7 +78,7 @@
                         <ui:Instance template="NamedShipVisualizer" name="NamedShipVisualizer" />
                     </ui:VisualElement>
                     <Bindings>
-                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="NamedShip =&gt; DisplayStyle" />
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="NamedShip to DisplayStyle" />
                     </Bindings>
                 </ui:VisualElement>
             </ui:VisualElement>

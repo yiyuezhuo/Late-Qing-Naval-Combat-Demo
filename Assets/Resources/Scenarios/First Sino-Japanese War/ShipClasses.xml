@@ -1150,7 +1150,7 @@
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="120" CoverageDeg="240" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="60" CoverageDeg="240" isCrossDeckFire="false" />
       </mountArcs>
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>

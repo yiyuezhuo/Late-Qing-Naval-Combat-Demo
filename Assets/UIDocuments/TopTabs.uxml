@@ -26,6 +26,15 @@
                     <ui:Button text="OOB Editor" name="OOBEditorButton" />
                 </ui:VisualElement>
             </ui:Tab>
+            <ui:Tab label="Preference">
+                <ui:VisualElement name="GamePreferenceRoot" data-source-type="GamePreference, Assembly-CSharp" style="flex-grow: 1; flex-direction: row;">
+                    <ui:EnumField label="Fire Line Display" value="Center" type="GamePreference+FiringLineDisplayMode, Assembly-CSharp">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="firingLineDisplayMode" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
+                </ui:VisualElement>
+            </ui:Tab>
         </ui:TabView>
     </ui:VisualElement>
 </ui:UXML>

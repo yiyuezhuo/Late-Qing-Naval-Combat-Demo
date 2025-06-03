@@ -61,6 +61,9 @@ public class TopTabs : SingletonDocument<TopTabs>
             IOManager.Instance.textLoaded += OnFullStateXMLLoaded;
             IOManager.Instance.LoadTextFile("xml");
         };
+
+        var gamePreferenceRoot = root.Q<VisualElement>("GamePreferenceRoot");
+        gamePreferenceRoot.dataSource = GamePreference.Instance;
     }
 
     void OnFullStateXMLLoaded(object sender, string text)

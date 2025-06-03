@@ -53,7 +53,9 @@ public class GameManager : MonoBehaviour
         SelectingInsertUnitPosition,
         MovingUnit,
         SelectingFollowedTarget,
-        SelectingRelativeToTarget
+        SelectingRelativeToTarget,
+        SelectingFiringTarget,
+        SelectingFireControlSystemTarget
     }
 
     State _state = State.Idle;
@@ -433,6 +435,40 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            else if (state == State.SelectingFiringTarget)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    state = State.Idle;
+                    ShipLogEditor.Instance.Show();
+                    if (selectedMountStatusRecord != null)
+                    {
+                        var targetShipLog = TryToRaycastShipLog();
+                        if (targetShipLog != null)
+                        {
+                            selectedMountStatusRecord.firingTargetObjectId = targetShipLog.objectId;
+                            Debug.Log($"Set Firing Target: {selectedMountStatusRecord.objectId} -> {targetShipLog.objectId}");
+                        }
+                    }
+                }
+            }
+            else if (state == State.SelectingFireControlSystemTarget)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    state = State.Idle;
+                    ShipLogEditor.Instance.Show();
+                    if (selectedFireControlSystemStatusRecord != null)
+                    {
+                        var targetShipLog = TryToRaycastShipLog();
+                        if (targetShipLog != null)
+                        {
+                            selectedFireControlSystemStatusRecord.targetObjectId = targetShipLog.objectId;
+                            Debug.Log($"Set Fire Control System Target: {selectedFireControlSystemStatusRecord.objectId} -> {targetShipLog.objectId}");
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -519,4 +555,8 @@ public class GameManager : MonoBehaviour
     public LanguageType iconLanuageType;
     // public int selected
 
+    public string selectedMountStatusRecordObjectId;
+    public MountStatusRecord selectedMountStatusRecord => EntityManager.Instance.Get<MountStatusRecord>(selectedMountStatusRecordObjectId);
+    public string selectedFireControlSystemStatusRecordObjectId;
+    public FireControlSystemStatusRecord selectedFireControlSystemStatusRecord => EntityManager.Instance.Get<FireControlSystemStatusRecord>(selectedFireControlSystemStatusRecordObjectId);
 }

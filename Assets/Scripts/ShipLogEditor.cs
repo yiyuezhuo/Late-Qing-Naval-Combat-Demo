@@ -155,6 +155,15 @@ namespace NavalCombatCore
         }
     }
 
+    public partial class FireControlSystemStatusRecord
+    {
+        [CreateProperty]
+        public string info => $"FCS #{GetSubIndex() + 1}";
+
+        [CreateProperty]
+        public string targetDesc => GetTarget()?.namedShip?.name.mergedName ?? "[Not Specified]";
+    }
+
     public partial class BatteryStatus
     {
         [CreateProperty]
@@ -305,6 +314,15 @@ namespace NavalCombatCore
             get => EntityManager.Instance.Get<ShipClass>(shipClassObjectId)?.name.mergedName ?? "[Not Specified]";
         }
     }
+
+    public partial class MountStatusRecord
+    {
+        [CreateProperty]
+        public string firingTargetDesc
+        {
+            get => GetFiringTarget()?.namedShip?.name?.GetMergedName() ?? "[Not Specified]";
+        }
+    }
 }
 
 
@@ -349,40 +367,61 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         // MountStatusMultiColumnListView
         batteryStatusListView.makeItem = () =>
         {
-            var el = batteryStatusListView.itemTemplate.CloneTree();
+            var batteryStatusElement = batteryStatusListView.itemTemplate.CloneTree();
 
-            Utils.BindItemsSourceRecursive(el);
-            var mountStatusMultiColumnListView = el.Q<MultiColumnListView>("MountStatusMultiColumnListView");
+            Utils.BindItemsSourceRecursive(batteryStatusElement);
+
+            var mountStatusMultiColumnListView = batteryStatusElement.Q<MultiColumnListView>("MountStatusMultiColumnListView");
             Utils.BindItemsAddedRemoved<MountStatusRecord>(mountStatusMultiColumnListView, () =>
             {
-                // var parent = mountStatusMultiColumnListView.parent; // FIXME: ugly hack (and is it problematic considering visualization?)
-                // var templateContainer = parent.parent.parent;
-                // var idx = templateContainer.parent.IndexOf(templateContainer);
-                // var sourceList = batteryStatusListView.itemsSource;
-                // var ret = sourceList[idx];
+                var ctx = batteryStatusElement.GetHierarchicalDataSourceContext(); // 
+                var isSucc = PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out NavalCombatCore.BatteryStatus bs);
 
-                // var ctx = mountStatusMultiColumnListView.GetHierarchicalDataSourceContext();
-                // // var ret2 =  ctx.dataSource[0];
-                // // var val = PropertyContainer.GetValue<object, NavalCombatCore.BatteryStatus>(ctx.dataSource, ctx.dataSourcePath);
-                // var b2 = PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out NavalCombatCore.BatteryStatus val2);
-                // var b3 = PropertyContainer.TryGetValue((List<NavalCombatCore.BatteryStatus>)ctx.dataSource, ctx.dataSourcePath, out NavalCombatCore.BatteryStatus val3);
-                // var b4 = PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out List<MountStatusRecord> val4);
-                // var b5 = PropertyContainer.TryGetValue((List<NavalCombatCore.BatteryStatus>)ctx.dataSource, ctx.dataSourcePath, out List<MountStatusRecord> val5);
-
-                var ctx2 = el.GetHierarchicalDataSourceContext();
-                var b6 = PropertyContainer.TryGetValue(ctx2.dataSource, ctx2.dataSourcePath, out NavalCombatCore.BatteryStatus val6);
-
-                // List<MountStatusRecord>
-                // var b3 = PropertyContainer.TryGetValue((List<NavalCombatCore.BatteryStatus>)ctx.dataSource, ctx.dataSourcePath, out NavalCombatCore.BatteryStatus val3);
-                // Debug.Log($"val={val}");
-
-                return val6;
-                // return ret;
-                // return sourceList[idx];
-                // return batteryStatusListView.selectedItem;
+                return bs;
             }); // TODO: Not always valid?
 
-            return el;
+            var firingTargetColumn = mountStatusMultiColumnListView.columns["firingTarget"];
+            firingTargetColumn.makeCell = () =>
+            {
+                var el = firingTargetColumn.cellTemplate.CloneTree();
+                var setButton = el.Q<Button>("SetButton");
+                setButton.clicked += () =>
+                {
+                    var ctx = setButton.GetHierarchicalDataSourceContext();
+                    if (PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out MountStatusRecord mountStatus))
+                    {
+                        GameManager.Instance.selectedMountStatusRecordObjectId = mountStatus.objectId;
+                        GameManager.Instance.state = GameManager.State.SelectingFiringTarget;
+                        Hide();
+                    }
+                };
+                return el;
+            };
+
+            var fireControlSystemMultiColumnListView = batteryStatusElement.Q<MultiColumnListView>("FireControlSystemMultiColumnListView");
+            Utils.BindItemsAddedRemoved<FireControlSystemStatusRecord>(
+                fireControlSystemMultiColumnListView,
+                Utils.MakeDynamicResolveProvider<NavalCombatCore.BatteryStatus>(batteryStatusElement)
+            );
+
+            var targetColumn = fireControlSystemMultiColumnListView.columns["target"];
+            targetColumn.makeCell = () =>
+            {
+                var el = targetColumn.cellTemplate.CloneTree();
+                var setButton = el.Q<Button>("SetButton");
+                setButton.clicked += () =>
+                {
+                    if (Utils.TryResolveCurrentValueForBinding(el, out FireControlSystemStatusRecord r))
+                    {
+                        GameManager.Instance.selectedFireControlSystemStatusRecordObjectId = r.objectId;
+                        GameManager.Instance.state = GameManager.State.SelectingFireControlSystemTarget;
+                        Hide();
+                    }
+                };
+                return el;
+            };
+
+            return batteryStatusElement;
         };
 
         var torpedoMountStatusMultiColumnListView = root.Q<MultiColumnListView>("TorpedoMountStatusMultiColumnListView");
@@ -390,6 +429,21 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         {
             return GameManager.Instance.selectedShipLog;
         });
+        var torpedoMountStatusFiringTargetColumn = torpedoMountStatusMultiColumnListView.columns["firingTarget"];
+        torpedoMountStatusFiringTargetColumn.makeCell = () =>
+        {
+            var el = torpedoMountStatusFiringTargetColumn.cellTemplate.CloneTree();
+
+            var setButton = el.Q<Button>("SetButton");
+            setButton.clicked += () =>
+            {
+                var ctx = setButton.GetHierarchicalDataSourceContext();
+                PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out MountStatusRecord torpedoMountStatus);
+                Debug.Log(torpedoMountStatus);
+            };
+
+            return el;
+        };
 
         var rapidFiringStatusMultiColumnListView = root.Q<MultiColumnListView>("RapidFiringStatusMultiColumnListView");
         Utils.BindItemsAddedRemoved<RapidFiringStatus>(rapidFiringStatusMultiColumnListView, () =>

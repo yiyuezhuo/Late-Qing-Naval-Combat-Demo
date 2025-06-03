@@ -46,8 +46,8 @@ namespace NavalCombatCore
         public string objectId { get; set; }
         public MountStatus status; // Is "SectorStatus" a better name?
                                    // public int mountsDestroyed;
-        public string targetObjectId;
-        public ShipLog GetFiringTarget() => EntityManager.Instance.Get<ShipLog>(targetObjectId);
+        public string firingTargetObjectId;
+        public ShipLog GetFiringTarget() => EntityManager.Instance.Get<ShipLog>(firingTargetObjectId);
 
         public class MountLocationRecordInfo
         {
@@ -128,13 +128,44 @@ namespace NavalCombatCore
             // mountsDestroyed = 0;
         }
     }
+    
+    public enum TrackingSystemState
+    {
+        // If a shooter fire at a target without tracking (FCS is destroyed, too many targeting or barrage fire), the firing is subject to local control penalty (-50% FC)
+        Idle, // Tracking Position is not tracking anything.
+        Destroyed,
+        BeginTracking, // -50% ROF, -2 FC, BeginTracking will transition to Tracking once tracking is maintained at least 2 min 
+        Tracking,
+        Hitting // +2 FC, If target is hit by shooter, Hitting state will matain 2 min unless another hit is scored. 
+    }
+
+    public partial class FireControlSystemStatusRecord : IObjectIdLabeled
+    {
+        public string objectId { set; get; }
+        public string targetObjectId { get; set; }
+        public ShipLog GetTarget() => EntityManager.Instance.Get<ShipLog>(targetObjectId);
+        public TrackingSystemState trackingState;
+
+        public void ResetDamageExpenditureState()
+        {
+            targetObjectId = null;
+            trackingState = TrackingSystemState.Idle;
+        }
+
+        public int GetSubIndex()
+        {
+            var batteryStatus = EntityManager.Instance.GetParent<BatteryStatus>(this);
+            return batteryStatus.fireControlSystemStatusRecords.IndexOf(this);
+        }
+    }
 
     public partial class BatteryStatus : IObjectIdLabeled
     {
         public string objectId { get; set; }
         public BatteryAmmunitionRecord ammunition = new(); // TODO: based on mount instead of battery?
         public List<MountStatusRecord> mountStatus = new();
-        public int fireControlHits;
+        // public int fireControlHits;
+        public List<FireControlSystemStatusRecord> fireControlSystemStatusRecords = new();
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
@@ -162,12 +193,15 @@ namespace NavalCombatCore
             ammunition.ArmorPiercing = batteryRecord.ammunitionCapacity / 2;
             ammunition.common = batteryRecord.ammunitionCapacity / 2;
 
-            var expectedLength = batteryRecord.mountLocationRecords.Sum(r => r.mounts);        
+            var expectedLength = batteryRecord.mountLocationRecords.Sum(r => r.mounts);
             Utils.SyncListToLength(expectedLength, mountStatus, this);
             foreach (var s in mountStatus)
                 s.ResetDamageExpenditureState();
 
-            fireControlHits = 0;
+            // fireControlHits = 0;
+            Utils.SyncListToLength(batteryRecord.fireControlPositions, fireControlSystemStatusRecords, this);
+            foreach (var s in fireControlSystemStatusRecords)
+                s.ResetDamageExpenditureState();
         }
 
         public string Summary()
@@ -326,6 +360,7 @@ namespace NavalCombatCore
         FollowTarget,
         RelativeToTarget,
     }
+
 
     public partial class ShipLog : IObjectIdLabeled, IDF3Model, IShipGroupMember
     {

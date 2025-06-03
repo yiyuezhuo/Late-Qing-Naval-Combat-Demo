@@ -38,7 +38,12 @@
       <objectId>e40840b4-bdfd-4195-be4f-daa3a6bb3aec</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>f4c7cd9d-f784-4306-8301-613ce2019092</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>77c99db6-5cec-405f-a908-e4e74629bddb</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -82,7 +87,16 @@
       <objectId>69e79be7-7e24-43e2-9cda-bc00dc9145c7</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>15520cbe-955d-4cea-b7a7-bfd771c55acb</objectId>
+     </FireControlSystemStatusRecord>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>c087445c-d47c-4bf0-9790-e974b04896bb</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>c1359630-f2eb-4783-8c50-632f0c8934cc</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -181,7 +195,12 @@
       <objectId>c872b2b0-d530-444b-b2ba-eb9db866bcad</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>704954b3-c68f-47f0-821f-4a5fa8ba6a14</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>3e2f9fbe-e0d4-48c7-8b7b-1ca436083d36</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -217,7 +236,16 @@
       <objectId>51cb2b92-6f33-43d9-a067-617c869ec4b5</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>a2cb0b62-1ca1-4bab-9991-4ec7e6b67f63</objectId>
+     </FireControlSystemStatusRecord>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>6bee141e-f5cc-4d1c-8533-935a6e9dc6fe</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>94cb9d02-b052-477d-822c-8003bb55e985</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -305,7 +333,12 @@
       <objectId>09871e70-cb92-4832-bcc1-761aeafd014b</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>a38b972c-5388-4e25-b894-24551290f750</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>6498c64f-26b2-47d6-b609-de82822c9fc9</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -341,7 +374,16 @@
       <objectId>4110f02f-61bc-4648-ab9c-d004793a96e4</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>ae3d780e-da19-467e-8c99-7835e3cb8c2c</objectId>
+     </FireControlSystemStatusRecord>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>60598bf7-f77e-4c23-8e10-c51bf99f59aa</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>2d30d5db-d8bf-4f38-916f-3c388bd45663</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -425,7 +467,12 @@
       <objectId>f82a6e49-5c99-4a6d-8740-c8129e70a0cf</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>785e19b1-a09c-490c-bffd-ad5163b718d4</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>b43d875a-fe28-4b01-b4e6-e2b9c4da799f</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -441,7 +488,12 @@
       <objectId>8c5a3f00-2cad-4e0a-a342-e1e24b05f78f</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>391ae469-8fbf-4f3b-a9e3-83e5dde839e4</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>2ef3acc8-20f2-415e-a3d7-3d28b24d21d5</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -532,7 +584,12 @@
       <objectId>c672a10e-293b-49d5-a409-84117b478e94</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>5871769b-e47d-420f-8d44-0d3b47780705</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>ac0cfd66-4c2c-4c29-81db-e774d352eb86</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -618,7 +675,12 @@
       <objectId>24f4b1fe-c785-4019-934e-0854b216fbb2</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>a84f807b-ab9d-48b0-89d8-70cf3c36cc8b</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>1a854c21-1522-4bba-8d8a-884d4a71b660</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -638,7 +700,16 @@
       <objectId>1adf2d58-ac4e-42c0-9928-b6f6b46f9c21</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>c55aa555-ac43-4b23-919d-119f4b9e2fad</objectId>
+     </FireControlSystemStatusRecord>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>c04fa09e-bf55-466d-9ba2-992fafb17a23</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>ac7f4548-d995-45bc-87fd-78bf5da9dc14</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -721,7 +792,12 @@
       <objectId>534dbfdd-5580-48e0-93c1-114cc4201196</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>60908a89-c42d-400f-b0a3-9b038e75a1ff</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>290c9fef-c06e-4773-9531-616a0976e408</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -741,7 +817,16 @@
       <objectId>37160065-6b4b-4c4a-876e-083a1a30d62c</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>61b12309-36bf-4c85-88d9-d2cbc6546729</objectId>
+     </FireControlSystemStatusRecord>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>168fd1a3-91a4-4e19-a687-c9b852ba0df9</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>9e430710-c219-459a-83af-7214953969fb</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -824,7 +909,12 @@
       <objectId>f003d8d8-c8d4-4cf8-9f08-e7dea50f6405</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>c1598a8f-fcb7-4dea-8a61-50e84a6c9b48</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>dee68176-4223-48f1-8942-a08a539f39c8</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -852,7 +942,16 @@
       <objectId>8fb99143-3ab4-493b-a306-1140174d3cc6</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>8935a2ad-411b-4555-901c-8514c5db8106</objectId>
+     </FireControlSystemStatusRecord>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>a9b52783-d7ab-4307-821c-696d97c7e60d</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>c88c6507-1e5e-411f-bcc8-73aae3156004</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -922,7 +1021,12 @@
       <objectId>37bcd869-3ca7-4ef4-91a0-b8515e83868f</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>e04f0071-1973-4483-84a6-e6f8f78f2fc3</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>baa9d75e-a200-4a41-9a01-bc541830213d</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -950,7 +1054,16 @@
       <objectId>b976498f-e998-4335-ad35-9275ef442307</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>74b97bfd-5341-4629-bc30-e47421fa2c74</objectId>
+     </FireControlSystemStatusRecord>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>91d90435-6156-439f-a9b5-ca614afb90e9</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>ddecaaa3-242a-4df6-805a-b0356de5bfc7</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -1020,7 +1133,12 @@
       <objectId>80aa1504-4be5-4488-a272-2d52d746e168</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>2d510d9f-7c51-4d5f-a47c-eb1ab69cfb78</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>19d894b5-c19d-415d-a08b-d9b65814bb63</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -1040,7 +1158,12 @@
       <objectId>2ce4b83b-d9b5-4561-b6be-516f51b291c1</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>3fe7fb40-9b85-4129-8ec0-9a79563a16b1</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>26bc4b13-f9ef-492c-ae17-e8137769a85d</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -1127,7 +1250,12 @@
       <objectId>0227e58c-c92d-4754-8d32-b6d63b3717a0</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>3b9ada0f-ce7e-4297-b7fb-d7c14502f1fb</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>26121474-fde1-4a91-8051-a565c04f255e</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -1147,7 +1275,12 @@
       <objectId>5c10bf81-b782-4c4e-ada3-c97169a0a192</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>963a7100-63af-4bba-b1ba-c9b486ffb42b</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>63f09fcc-9d8c-429a-a0f1-464737c48e0a</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -1230,7 +1363,12 @@
       <objectId>88029691-be72-48f9-9207-e20f81012700</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>7cb4790d-17e6-441c-be53-6a1abaa2c321</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>e656eec6-e1e2-4924-aeff-12c57e4bb3c7</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -1250,7 +1388,12 @@
       <objectId>cb219eb4-8360-4e9f-a76a-674b65439272</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>bd316d93-7525-4e29-afc6-a176f3a07b2b</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>14754e1b-5ffe-4e46-b056-a40a25cc7c6a</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -1326,7 +1469,12 @@
       <objectId>abd8663b-09f9-48e9-a74f-f5b916e178bc</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>ea0b323d-dea1-4c9b-8850-fe2ce479b92f</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>3b83ec17-1284-429f-ac81-04646f8acadb</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -1346,7 +1494,12 @@
       <objectId>7728f908-73a3-4070-afea-e1f7232b4fbf</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>2d7e7e4d-c5a8-482e-aca9-ad32e65993fa</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>fb574841-485f-4148-8aa0-65f8fa3d00c4</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -1422,7 +1575,12 @@
       <objectId>5d2188f3-284c-4658-8b1b-e8c544b5b6c3</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>d0e89682-139f-44f0-bde7-fe1c9eff1a40</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>6856fc5b-9be5-41ac-9ef3-adfcf230a820</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -1442,7 +1600,12 @@
       <objectId>15fcf344-19b2-4303-9db9-5cc0fe423bb7</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>d964de52-a96f-4570-9fe8-e3b983bc6988</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>57f5e8e9-bd1f-45a9-8de0-9072cdb3f7f9</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -1518,7 +1681,12 @@
       <objectId>80f8ffe4-bdcc-410d-b6cc-70eb558cee80</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>b57a9e3c-62ea-42e0-a092-6e35e29a6e9b</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>bc1ff7d0-d66a-40e3-95c5-73269ff03466</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -1546,7 +1714,12 @@
       <objectId>feeb6e07-9772-418f-9e53-0002bbff4da0</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>78c73f9e-0e2c-4be1-8daf-ab7f34e02ae6</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>58d6dae0-ff05-48a6-b226-301b6f16959d</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -1624,8 +1797,46 @@
       <objectId>d633e4b8-0d9f-4247-a41d-dcc5f772da27</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>20c45fde-2ad4-477c-bbff-5e0a228f1c9a</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>792f257a-8dce-45b5-890c-156ac4d29b1e</objectId>
+   </BatteryStatus>
+   <BatteryStatus>
+    <ammunition>
+     <ArmorPiercing>400</ArmorPiercing>
+     <semiArmorPiercing>0</semiArmorPiercing>
+     <common>400</common>
+     <highExplosive>0</highExplosive>
+    </ammunition>
+    <mountStatus>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <objectId>0873e941-ccc6-42b0-8edb-ce3c5fc6e217</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <objectId>02e822b6-11cf-423f-9f5d-d87d80a1e9ed</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <objectId>8fe284ed-6433-455e-b380-4f6baefaf8ac</objectId>
+     </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <objectId>ead22235-ab16-4f5f-9140-c2c0626b00c5</objectId>
+     </MountStatusRecord>
+    </mountStatus>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>21f15dc2-2b93-4c96-881b-85efec04cb05</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
+    <objectId>dc680043-6caa-4907-b148-11440cdbc8cd</objectId>
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
@@ -1700,7 +1911,12 @@
       <objectId>b2ac7721-7286-4d05-aecc-4a9723b6875d</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>b463bec6-0f8c-4645-8dec-b972f9ad0c50</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>96035f70-56e9-4a13-a497-bd521dd233fb</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -1756,7 +1972,16 @@
       <objectId>4eea4014-2667-458a-818b-b2f7aa6cc011</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>315073f6-888e-4933-ac24-e59ae05b0249</objectId>
+     </FireControlSystemStatusRecord>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>a7b07366-de88-41ad-8bd0-556da78608b4</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>b3245076-0f42-4c56-b0e9-e89b15941b0c</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -1846,7 +2071,12 @@
       <objectId>8ab202c0-e5a5-4adf-a7c0-9d541b88ca68</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>438188b4-ff10-4db4-913a-da1aeb690f5c</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>2612381b-0c5f-439f-b57b-eab89d4395e7</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -1902,7 +2132,16 @@
       <objectId>c78e75b5-717a-40d1-975e-7d94cffb547d</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>f434fac3-2902-4f0d-a99d-56d0bcf56252</objectId>
+     </FireControlSystemStatusRecord>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>feceefa7-29b8-4ead-ba37-710614bd512b</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>637f2f97-7f0c-4864-892d-9764e64e870e</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -2000,7 +2239,12 @@
       <objectId>15c9352c-ead0-4da1-a2a2-4b8b680de526</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>f44d41f9-bc9c-468b-a53b-50043ffe282d</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>5d2ffcc8-ce50-4f64-ad5c-9e7415ae39e5</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -2036,7 +2280,12 @@
       <objectId>1aac64be-79df-4762-8d5a-bdc925ffac85</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>ca6f105b-b93e-4749-ac72-29f60e8816b1</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>06100423-b174-492c-b7e9-4f278f5dc342</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -2112,7 +2361,12 @@
       <objectId>d71ef324-1296-4f80-9341-b4bf750e1d7c</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>529c0a26-1f65-4450-8454-8a88595b50a0</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>2a3f6a2c-912b-463a-8438-ca82c15e89a8</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -2172,7 +2426,16 @@
       <objectId>1b7a6c03-d47b-40a0-a647-df22cdabd647</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>54960f00-9235-4b41-8be2-f6b4e4026a4e</objectId>
+     </FireControlSystemStatusRecord>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>95be0972-ec57-4474-b018-be0da50f71c1</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>a290b33c-60b1-4d4d-8ede-6f20f0b92137</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -2265,7 +2528,12 @@
       <objectId>2dc1b88b-7785-4d7f-b8f0-7c1532dfbe04</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>94d35678-84b8-47d8-9043-c0784e6cc58a</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>97da49f0-bf9f-452b-82bd-189295d5431d</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -2301,7 +2569,16 @@
       <objectId>729925c3-5fbf-4367-b161-3ed5bf119a62</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>a20db157-245f-4a5f-b1ca-a0f80ff2f31f</objectId>
+     </FireControlSystemStatusRecord>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>c7e8c36d-2a00-4dd4-95a2-547220eca058</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>705912f1-e809-48a2-9161-ae2b61e58fc6</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -2421,7 +2698,16 @@
       <objectId>89606fdf-d4f2-4719-874e-9c8d96f7cba0</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>b9738391-1ed5-4243-adf6-21ad95fc4e2f</objectId>
+     </FireControlSystemStatusRecord>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>f3a47b90-a7f4-4193-8203-753b95b4f613</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>c05809db-2536-4518-85ff-0fa27e556a47</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -2509,7 +2795,12 @@
       <objectId>9897fa2f-cdd5-4717-aa29-443de04b9ea4</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>b7330307-9fba-4433-bdb0-23a9083b9b30</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>bb7f4e6a-12b5-43fc-9e38-9d1c6ce05c4b</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -2592,7 +2883,12 @@
       <objectId>b9980938-2c0c-42dc-97e2-a6c4d6a458f4</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>6958c485-0212-44bb-86b8-143cd8a79a5d</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>29b8c3a4-3895-4392-85bd-680bc3837fa9</objectId>
    </BatteryStatus>
    <BatteryStatus>
@@ -2608,7 +2904,12 @@
       <objectId>2f59c4d5-2c6c-4f4b-a429-80d6d7ffefc4</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>8318a351-3aad-4a80-b774-2b6178efa181</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>d82b59c8-6e27-40eb-9355-3e15c4eae621</objectId>
    </BatteryStatus>
   </batteryStatus>
@@ -2675,7 +2976,12 @@
       <objectId>04a1e67c-8e5d-45c4-a3a4-4435a4e01ee1</objectId>
      </MountStatusRecord>
     </mountStatus>
-    <fireControlHits>0</fireControlHits>
+    <fireControlSystemStatusRecords>
+     <FireControlSystemStatusRecord>
+      <trackingState>Idle</trackingState>
+      <objectId>c4142d9c-70ea-4ff2-a1e9-6221855f625b</objectId>
+     </FireControlSystemStatusRecord>
+    </fireControlSystemStatusRecords>
     <objectId>dfe75e9f-89b7-4db3-ab07-ce7f301db330</objectId>
    </BatteryStatus>
   </batteryStatus>

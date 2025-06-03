@@ -45,15 +45,18 @@
             </ui:VisualElement>
             <ui:MultiColumnListView name="MountStatusMultiColumnListView" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" data-source-path="mountStatus">
                 <ui:Columns>
-                    <ui:Column name="mountLocationRecordSummary" title="Info" width="50%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellMountLocationRecordSummary.uxml?fileID=9197481963319205126&amp;guid=a9d6744fd962fc3499fe76d34f17fbdc&amp;type=3#MountStatusCellMountLocationRecordSummary" />
-                    <ui:Column name="status" title="Status" width="35%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellStatus.uxml?fileID=9197481963319205126&amp;guid=59c6fb856a1cee248a8d5aa1a0da437b&amp;type=3#MountStatusCellStatus" />
+                    <ui:Column name="mountLocationRecordSummary" title="Info" width="30%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellMountLocationRecordSummary.uxml?fileID=9197481963319205126&amp;guid=a9d6744fd962fc3499fe76d34f17fbdc&amp;type=3#MountStatusCellMountLocationRecordSummary" />
+                    <ui:Column name="status" title="Status" width="30%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellStatus.uxml?fileID=9197481963319205126&amp;guid=59c6fb856a1cee248a8d5aa1a0da437b&amp;type=3#MountStatusCellStatus" />
+                    <ui:Column width="40%" name="firingTarget" title="Firing Target" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellFiringTarget.uxml?fileID=9197481963319205126&amp;guid=c710d004ac89c594cab790bf1afe6d2a&amp;type=3#MountStatusCellFiringTarget" />
                 </ui:Columns>
             </ui:MultiColumnListView>
-            <ui:IntegerField label="Fire Control Hits">
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="fireControlHits" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:IntegerField>
+            <ui:MultiColumnListView name="FireControlSystemMultiColumnListView" binding-source-selection-mode="AutoAssign" data-source-path="fireControlSystemStatusRecords" show-add-remove-footer="true">
+                <ui:Columns>
+                    <ui:Column title="Info" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordInfo.uxml?fileID=9197481963319205126&amp;guid=69901079725c8bb4891fc5e99a273588&amp;type=3#FireControlSystemStatusRecordInfo" width="20%" />
+                    <ui:Column title="State" width="30%" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordTrackingState.uxml?fileID=9197481963319205126&amp;guid=8054ea02c4bd2af4f864b76234e2059c&amp;type=3#FireControlSystemStatusRecordTrackingState" />
+                    <ui:Column name="target" title="Target" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordTarget.uxml?fileID=9197481963319205126&amp;guid=5f191d2984361ac49966fa831bded75d&amp;type=3#FireControlSystemStatusRecordTarget" width="50%" />
+                </ui:Columns>
+            </ui:MultiColumnListView>
             <Bindings>
                 <ui:DataBinding property="style.display" data-source-path="batteryRecord" binding-mode="ToTarget" source-to-ui-converters="BatteryRecord =&gt; DisplayStyle" />
             </Bindings>

@@ -223,8 +223,9 @@
                                     </ui:SliderInt>
                                     <ui:MultiColumnListView name="TorpedoMountStatusMultiColumnListView" binding-source-selection-mode="AutoAssign" data-source-path="torpedoSectorStatus.mountStatus" show-add-remove-footer="true" header-title="Torpedo Status" show-foldout-header="true">
                                         <ui:Columns>
-                                            <ui:Column title="Info" name="torpedoMountLocationRecordSummary" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellMountTorpedoLocationRecordSummary.uxml?fileID=9197481963319205126&amp;guid=8eee01ca8da27de4dac4f05ca8b5529f&amp;type=3#MountStatusCellMountTorpedoLocationRecordSummary" width="40%" />
-                                            <ui:Column cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellStatus.uxml?fileID=9197481963319205126&amp;guid=59c6fb856a1cee248a8d5aa1a0da437b&amp;type=3#MountStatusCellStatus" title="Status" name="status" width="40%" />
+                                            <ui:Column title="Info" name="torpedoMountLocationRecordSummary" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellMountTorpedoLocationRecordSummary.uxml?fileID=9197481963319205126&amp;guid=8eee01ca8da27de4dac4f05ca8b5529f&amp;type=3#MountStatusCellMountTorpedoLocationRecordSummary" width="30%" />
+                                            <ui:Column cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellStatus.uxml?fileID=9197481963319205126&amp;guid=59c6fb856a1cee248a8d5aa1a0da437b&amp;type=3#MountStatusCellStatus" title="Status" name="status" width="30%" />
+                                            <ui:Column width="40%" name="firingTarget" title="Firing Target" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellFiringTarget.uxml?fileID=9197481963319205126&amp;guid=c710d004ac89c594cab790bf1afe6d2a&amp;type=3#MountStatusCellFiringTarget" />
                                         </ui:Columns>
                                     </ui:MultiColumnListView>
                                 </ui:VisualElement>

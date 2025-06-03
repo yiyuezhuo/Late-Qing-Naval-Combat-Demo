@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using System.Linq;
 using UnityEngine.UIElements.Experimental;
+using Unity.Properties;
 
 public static class Utils
 {
@@ -181,5 +182,20 @@ public static class Utils
                 Debug.LogWarning($"No handler found for linkID {evt.linkID}");
             }
         });
+    }
+
+    public static bool TryResolveCurrentValueForBinding<T>(VisualElement el, out T ret)
+    {
+        var ctx = el.GetHierarchicalDataSourceContext();
+        return PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out ret);
+    }
+
+    public static Func<T> MakeDynamicResolveProvider<T>(VisualElement el)
+    {
+        return () =>
+        {
+            var isSucc = TryResolveCurrentValueForBinding(el, out T ret);
+            return ret;
+        };
     }
 }

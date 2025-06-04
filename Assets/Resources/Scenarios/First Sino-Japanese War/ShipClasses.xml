@@ -845,7 +845,7 @@
      <MountLocationRecord>
       <mountLocation>StarboardMidship</mountLocation>
       <barrels>1</barrels>
-      <mounts>1</mounts>
+      <mounts>2</mounts>
       <mountArcs>
        <MountArcRecord startDeg="30" CoverageDeg="150" isCrossDeckFire="false" />
       </mountArcs>
@@ -4721,7 +4721,7 @@
       <barrels>1</barrels>
       <mounts>2</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="165" CoverageDeg="30" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="255" CoverageDeg="30" isCrossDeckFire="false" />
       </mountArcs>
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
@@ -6573,7 +6573,7 @@
      </MountLocationRecord>
      <MountLocationRecord>
       <mountLocation>StarboardMidship</mountLocation>
-      <barrels>2</barrels>
+      <barrels>1</barrels>
       <mounts>2</mounts>
       <mountArcs>
        <MountArcRecord startDeg="45" CoverageDeg="90" isCrossDeckFire="false" />
@@ -6612,7 +6612,7 @@
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="180" CoverageDeg="145" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="180" CoverageDeg="135" isCrossDeckFire="false" />
       </mountArcs>
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>

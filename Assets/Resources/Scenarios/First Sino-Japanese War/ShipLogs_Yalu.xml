@@ -236,6 +236,10 @@
       <status>Operational</status>
       <objectId>51cb2b92-6f33-43d9-a067-617c869ec4b5</objectId>
      </MountStatusRecord>
+     <MountStatusRecord>
+      <status>Operational</status>
+      <objectId>91327050-1f62-4c44-acac-08bff57645ab</objectId>
+     </MountStatusRecord>
     </mountStatus>
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>

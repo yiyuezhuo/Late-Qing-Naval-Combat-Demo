@@ -35,6 +35,18 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public float generalScoreProp => EvaluateGeneralScore();
+
+        [CreateProperty]
+        public float firepowerBowProp => EvaluateFirepowerScore(0, TargetAspect.Broad, 0, 0);
+
+        [CreateProperty]
+        public float firepowerStarboardProp => EvaluateFirepowerScore(0, TargetAspect.Broad, 0, 90);
+
+        [CreateProperty]
+        public float firepowerSternProp => EvaluateFirepowerScore(0, TargetAspect.Broad, 0, 180);
+
+        [CreateProperty]
+        public float firepowerPortProp => EvaluateFirepowerScore(0, TargetAspect.Broad, 0, 270);
     }
 
     public partial class ShipLog

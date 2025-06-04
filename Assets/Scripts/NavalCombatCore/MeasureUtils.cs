@@ -45,24 +45,63 @@ namespace NavalCombatCore
             }
             return angle;
         }
-        
+
         public static float GetPositiveAngleDifference(float angle1, float angle2)
         {
             // Normalize angles to 0-360 range
             angle1 = NormalizeAngle(angle1);
             angle2 = NormalizeAngle(angle2);
-            
+
             // Calculate both possible directional differences
             float diff = Math.Abs(angle1 - angle2);
-            
+
             // If difference is greater than 180°, take the shorter path around the circle
             if (diff > 180f)
             {
                 diff = 360f - diff;
             }
-            
+
             // Return the smallest positive difference
             return diff;
+        }
+        
+        /// <summary>
+        /// Checks if an angle is within a given arc range
+        /// </summary>
+        /// <param name="angle">The angle to check (in degrees)</param>
+        /// <param name="startAngle">The starting angle of the arc (in degrees)</param>
+        /// <param name="sweepAngle">The sweep angle of the arc (in degrees, positive for clockwise direction)</param>
+        /// <returns>True if the angle is within the arc range, false otherwise</returns>
+        public static bool IsAngleInArc(float angle, float startAngle, float sweepAngle)
+        {
+            // Normalize all angles to 0-360 range
+            angle = NormalizeAngle(angle);
+            startAngle = NormalizeAngle(startAngle);
+            
+            // Calculate the end angle of the arc
+            float endAngle = NormalizeAngle(startAngle + sweepAngle);
+            
+            // Handle arcs that don't cross 0°
+            if (sweepAngle > 0 && startAngle < endAngle)
+            {
+                return angle >= startAngle && angle <= endAngle;
+            }
+            else if (sweepAngle < 0 && startAngle > endAngle)
+            {
+                return angle <= startAngle && angle >= endAngle;
+            }
+            // Handle arcs that cross 0°
+            else
+            {
+                if (sweepAngle > 0) // Clockwise arc crossing 0°
+                {
+                    return angle >= startAngle || angle <= endAngle;
+                }
+                else // Counter-clockwise arc crossing 0°
+                {
+                    return angle <= startAngle || angle >= endAngle;
+                }
+            }
         }
 
 

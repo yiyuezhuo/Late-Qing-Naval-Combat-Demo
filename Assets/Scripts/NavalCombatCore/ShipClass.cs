@@ -122,6 +122,22 @@ namespace NavalCombatCore
         public float longNarrow;
         public float extremeBroad;
         public float extremeNarrow;
+
+        public float GetValue(RangeBand rangeBand, TargetAspect targetAspect)
+        {
+            return (rangeBand, targetAspect) switch
+            {
+                (RangeBand.Short, TargetAspect.Broad) => shortBroad,
+                (RangeBand.Short, TargetAspect.Narrow) => shortNarrow,
+                (RangeBand.Medium, TargetAspect.Broad) => mediumBroad,
+                (RangeBand.Medium, TargetAspect.Narrow) => mediumNarrow,
+                (RangeBand.Long, TargetAspect.Broad) => longBroad,
+                (RangeBand.Long, TargetAspect.Narrow) => longNarrow,
+                (RangeBand.Extreme, TargetAspect.Broad) => extremeBroad,
+                (RangeBand.Extreme, TargetAspect.Narrow) => extremeNarrow,
+                _ => shortBroad
+            };
+        }
     }
 
     public enum AmmunitionType
@@ -157,6 +173,11 @@ namespace NavalCombatCore
             var s = isCrossDeckFire ? "C" : "";
             return $"{startDeg}-{(startDeg + CoverageDeg) % 360}{s}";
         }
+
+        public bool IsInArc(float bearingRelativeToBowDeg)
+        {
+            return MeasureUtils.IsAngleInArc(bearingRelativeToBowDeg, startDeg, CoverageDeg);
+        }
     }
 
     public class MountLocationRecord : IObjectIdLabeled
@@ -171,6 +192,11 @@ namespace NavalCombatCore
         public float restAngleDeg; // Graphic purpose only
         public bool trainable; // for torpedo
         public string SummaryArcs() => string.Join(",", mountArcs.Select(arc => arc.Summary()));
+
+        public bool IsInArc(float bearingRelativeToBowDeg)
+        {
+            return mountArcs.Any(arc => arc.IsInArc(bearingRelativeToBowDeg));
+        }
     }
 
     public class BatteryRecord : IObjectIdLabeled
@@ -232,11 +258,33 @@ namespace NavalCombatCore
             var fireControlScore = fireControlTableRecords.FirstOrDefault()?.shortBroad ?? 0;
             return damageScrore * RateOfFireScore * fireControlScore;
         }
-        
+
         public float EvaluateFirepowerScore()
         {
             var barrels = mountLocationRecords.Sum(m => m.mounts * m.barrels);
             return barrels * EvaluateFirepowerPerBarrel();
+        }
+
+        public float EvaluateFirepowerPerBarrel(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots)
+        {
+            var penetrationItem = penetrationTableRecords.FirstOrDefault(r => distanceYards <= r.distanceYards);
+            if (penetrationItem == null)
+                return 0;
+            var rateOfFire = penetrationItem.rateOfFire;
+            var rangeBand = penetrationItem.rangeBand;
+            var fireControlRow = fireControlTableRecords.FirstOrDefault(r => targetSpeedKnots <= r.speedThresholdKnot);
+            if (fireControlRow == null)
+                return 0;
+            var fireControlValue = fireControlRow.GetValue(rangeBand, targetAspect);
+
+            return damageRating * rateOfFire * fireControlValue;
+        }
+
+        public float EvaluateFirepowerScore(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots, float bearingRelativeToBowDeg)
+        {
+            var firepowerPerBarrel = EvaluateFirepowerPerBarrel(distanceYards, targetAspect, targetSpeedKnots);
+            var avaialbleBarrels = mountLocationRecords.Where(r => r.IsInArc(bearingRelativeToBowDeg)).Sum(r => r.barrels * r.mounts);
+            return firepowerPerBarrel * avaialbleBarrels;
         }
     }
 
@@ -553,6 +601,11 @@ namespace NavalCombatCore
         public float EvaluateBatteryFirepower()
         {
             return batteryRecords.Sum(bs => bs.EvaluateFirepowerScore());
+        }
+
+        public float EvaluateFirepowerScore(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots, float bearingRelativeToBowDeg)
+        {
+            return batteryRecords.Sum(bs => bs.EvaluateFirepowerScore(distanceYards, targetAspect, targetSpeedKnots, bearingRelativeToBowDeg));
         }
 
         public float EvaluateTorpedoThreatScore()

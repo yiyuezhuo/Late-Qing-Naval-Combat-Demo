@@ -45,8 +45,8 @@
             </ui:VisualElement>
             <ui:MultiColumnListView name="MountStatusMultiColumnListView" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" data-source-path="mountStatus">
                 <ui:Columns>
-                    <ui:Column name="mountLocationRecordSummary" title="Info" width="30%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellMountLocationRecordSummary.uxml?fileID=9197481963319205126&amp;guid=a9d6744fd962fc3499fe76d34f17fbdc&amp;type=3#MountStatusCellMountLocationRecordSummary" />
-                    <ui:Column name="status" title="Status" width="30%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellStatus.uxml?fileID=9197481963319205126&amp;guid=59c6fb856a1cee248a8d5aa1a0da437b&amp;type=3#MountStatusCellStatus" />
+                    <ui:Column name="mountLocationRecordSummary" title="Info" width="40%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellMountLocationRecordSummary.uxml?fileID=9197481963319205126&amp;guid=a9d6744fd962fc3499fe76d34f17fbdc&amp;type=3#MountStatusCellMountLocationRecordSummary" />
+                    <ui:Column name="status" title="Status" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellStatus.uxml?fileID=9197481963319205126&amp;guid=59c6fb856a1cee248a8d5aa1a0da437b&amp;type=3#MountStatusCellStatus" />
                     <ui:Column width="40%" name="firingTarget" title="Firing Target" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellFiringTarget.uxml?fileID=9197481963319205126&amp;guid=c710d004ac89c594cab790bf1afe6d2a&amp;type=3#MountStatusCellFiringTarget" />
                 </ui:Columns>
             </ui:MultiColumnListView>

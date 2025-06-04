@@ -232,12 +232,97 @@ namespace NavalCombatCore
 
         public void Step(float deltaSeconds)
         {
+            // pre-advance resolution
+
+            foreach ((var meShipLogs, var otherShipLogs) in GetOpposeSidePairs())
+            {
+                var solver = new WeaponTargetAssignmentSolver();
+                solver.Solve(meShipLogs, otherShipLogs);
+            }
+
+            // advance
             scenarioState.Step(deltaSeconds);
 
             foreach (var shipLog in shipLogs)
             {
                 shipLog.Step(deltaSeconds);
             }
+        }
+
+        public IEnumerable<ShipLog> shipLogsOnMap => shipLogs.Where(x => x.mapState == MapState.Deployed);
+
+        public Dictionary<IShipGroupMember, List<ShipLog>> GroupByShipLogByRootGroup()
+        {
+            var ret = new Dictionary<IShipGroupMember, List<ShipLog>>();
+            foreach (var shipLog in shipLogsOnMap)
+            {
+                var rootParent = (shipLog as IShipGroupMember).GetRootParent();
+                if (!ret.TryGetValue(rootParent, out var list))
+                {
+                    list = ret[rootParent] = new List<ShipLog>();
+                }
+                list.Add(shipLog);
+            }
+            return ret;
+        }
+
+        public IEnumerable<(List<ShipLog>, List<ShipLog>)> GetOpposeSidePairs()
+        {
+            var rootToShipLogs = GroupByShipLogByRootGroup();
+
+            foreach ((var me, var meShipLogs) in rootToShipLogs)
+            {
+                var otherShipLogs = new List<ShipLog>();
+                foreach ((var other, var otherSubShipLogs) in rootToShipLogs)
+                {
+                    if (me == other)
+                        continue;
+                    otherShipLogs.AddRange(otherSubShipLogs);
+                }
+                yield return (meShipLogs, otherShipLogs);
+            }
+        }
+
+        public Dictionary<IShipGroupMember, List<ShipLog>> GroupByShipLogByLevel1Group()
+        {
+            var ret = new Dictionary<IShipGroupMember, List<ShipLog>>();
+            foreach (var shipLog in shipLogsOnMap)
+            {
+                var rootParent = (shipLog as IShipGroupMember).GetParentGroup();
+                if (!ret.TryGetValue(rootParent, out var list))
+                {
+                    list = ret[rootParent] = new List<ShipLog>();
+                }
+                list.Add(shipLog);
+            }
+            return ret;
+        }
+
+        public static Dictionary<ShipLog, IShipGroupMember> InverseContainerToMembersMap(Dictionary<IShipGroupMember, List<ShipLog>> containerToShipLogs)
+        {
+            var ret = new Dictionary<ShipLog, IShipGroupMember>();
+            foreach ((var container, var subShipLogs) in containerToShipLogs)
+            {
+                foreach (var subShipLog in subShipLogs)
+                {
+                    ret[subShipLog] = container;
+                }
+            }
+            return ret;
+        }
+
+        public List<ShipLog> GetSameLevel1GroupShipLogs(ShipLog shipLog)
+        {
+            var containerToShipLogs = GroupByShipLogByLevel1Group();
+            var shipLogToContainer = InverseContainerToMembersMap(containerToShipLogs);
+            return containerToShipLogs[shipLogToContainer[shipLog]];
+        }
+
+        public List<ShipLog> GetSameRootGroupShipLogs(ShipLog shipLog)
+        {
+            var containerToShipLogs = GroupByShipLogByRootGroup();
+            var shipLogToContainer = InverseContainerToMembersMap(containerToShipLogs);
+            return containerToShipLogs[shipLogToContainer[shipLog]];
         }
     }
 }

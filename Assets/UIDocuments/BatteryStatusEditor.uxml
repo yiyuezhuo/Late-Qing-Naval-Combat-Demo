@@ -53,8 +53,9 @@
             <ui:MultiColumnListView name="FireControlSystemMultiColumnListView" binding-source-selection-mode="AutoAssign" data-source-path="fireControlSystemStatusRecords" show-add-remove-footer="true">
                 <ui:Columns>
                     <ui:Column title="Info" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordInfo.uxml?fileID=9197481963319205126&amp;guid=69901079725c8bb4891fc5e99a273588&amp;type=3#FireControlSystemStatusRecordInfo" width="20%" />
-                    <ui:Column title="State" width="30%" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordTrackingState.uxml?fileID=9197481963319205126&amp;guid=8054ea02c4bd2af4f864b76234e2059c&amp;type=3#FireControlSystemStatusRecordTrackingState" />
-                    <ui:Column name="target" title="Target" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordTarget.uxml?fileID=9197481963319205126&amp;guid=5f191d2984361ac49966fa831bded75d&amp;type=3#FireControlSystemStatusRecordTarget" width="50%" />
+                    <ui:Column title="State" width="25%" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordTrackingState.uxml?fileID=9197481963319205126&amp;guid=8054ea02c4bd2af4f864b76234e2059c&amp;type=3#FireControlSystemStatusRecordTrackingState" />
+                    <ui:Column width="15%" title="TK Seconds" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordTrackingSeconds.uxml?fileID=9197481963319205126&amp;guid=9ac4ec727ad405745a0fd4f7e41ed468&amp;type=3#FireControlSystemStatusRecordTrackingSeconds" />
+                    <ui:Column name="target" title="Target" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordTarget.uxml?fileID=9197481963319205126&amp;guid=5f191d2984361ac49966fa831bded75d&amp;type=3#FireControlSystemStatusRecordTarget" width="40%" />
                 </ui:Columns>
             </ui:MultiColumnListView>
             <Bindings>

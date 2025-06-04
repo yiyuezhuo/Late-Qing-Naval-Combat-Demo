@@ -226,7 +226,7 @@ public class GameManager : MonoBehaviour
     public float remainAdvanceSimulationSeconds;
     // public float simulationRateRaio = 30;
     float simulationRateRaio = 120;
-    public float pulseLengthSeconds = 1;
+    float pulseLengthSeconds = 2;
 
     public void UpdateSimulation()
     {
@@ -612,7 +612,25 @@ public class GameManager : MonoBehaviour
                 if (selectedShipLog != null)
                     yield return selectedShipLog;
                 break;
-            // Support other modes
+            case GamePreference.FiringLineDisplayMode.SelectedGroup:
+                if (selectedShipLog == null)
+                    break;
+
+                foreach (var shipLog in NavalGameState.Instance.GetSameLevel1GroupShipLogs(selectedShipLog))
+                {
+                    yield return shipLog;
+                }
+                break;
+            case GamePreference.FiringLineDisplayMode.SelectedRootGroup:
+                if (selectedShipLog == null)
+                    break;
+
+                foreach (var shipLog in NavalGameState.Instance.GetSameRootGroupShipLogs(selectedShipLog))
+                {
+                    yield return shipLog;
+                }
+
+                break;
             case GamePreference.FiringLineDisplayMode.All:
                 foreach (var shipLog in NavalGameState.Instance.shipLogs)
                 {

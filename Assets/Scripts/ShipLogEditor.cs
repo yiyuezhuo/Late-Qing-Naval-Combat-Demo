@@ -22,13 +22,13 @@ namespace NavalCombatCore
         public float survivabilityProp => EvaluateSurvivability();
 
         [CreateProperty]
-        public float batteryFirepowerProp => EvaluateBatteryFirepower();
+        public float batteryFirepowerProp => EvaluateBatteryFirepowerScore();
 
         [CreateProperty]
         public float torpedoThreatScoreProp => EvaluateTorpedoThreatScore();
 
         [CreateProperty]
-        public float rapidFiringFirepowerProp => EvaluateRapidFiringFirepower();
+        public float rapidFiringFirepowerProp => EvaluateRapidFiringFirepowerScore();
 
         [CreateProperty]
         public float firepoweScoreProp => EvaluateFirepowerScore();
@@ -37,16 +37,16 @@ namespace NavalCombatCore
         public float generalScoreProp => EvaluateGeneralScore();
 
         [CreateProperty]
-        public float firepowerBowProp => EvaluateFirepowerScore(0, TargetAspect.Broad, 0, 0);
+        public float firepowerBowProp => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 0);
 
         [CreateProperty]
-        public float firepowerStarboardProp => EvaluateFirepowerScore(0, TargetAspect.Broad, 0, 90);
+        public float firepowerStarboardProp => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 90);
 
         [CreateProperty]
-        public float firepowerSternProp => EvaluateFirepowerScore(0, TargetAspect.Broad, 0, 180);
+        public float firepowerSternProp => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 180);
 
         [CreateProperty]
-        public float firepowerPortProp => EvaluateFirepowerScore(0, TargetAspect.Broad, 0, 270);
+        public float firepowerPortProp => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 270);
     }
 
     public partial class ShipLog
@@ -165,6 +165,40 @@ namespace NavalCombatCore
         {
             get => controlMode == ControlMode.RelativeToTarget ? DisplayStyle.Flex : DisplayStyle.None;
         }
+
+        // Score: presentation & AI debug
+        [CreateProperty]
+        public float armorScoreProp => EvaluateArmorScore();
+
+        [CreateProperty]
+        public float survivabilityProp => EvaluateSurvivability();
+
+        [CreateProperty]
+        public float batteryFirepowerProp => EvaluateBatteryFirepowerScore();
+
+        [CreateProperty]
+        public float torpedoThreatScoreProp => EvaluateTorpedoThreatScore();
+
+        [CreateProperty]
+        public float rapidFiringFirepowerProp => EvaluateRapidFiringFirepowerScore();
+
+        [CreateProperty]
+        public float firepoweScoreProp => EvaluateFirepowerScore();
+
+        [CreateProperty]
+        public float generalScoreProp => EvaluateGeneralScore();
+
+        [CreateProperty]
+        public float firepowerBowProp => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 0);
+
+        [CreateProperty]
+        public float firepowerStarboardProp => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 90);
+
+        [CreateProperty]
+        public float firepowerSternProp => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 180);
+
+        [CreateProperty]
+        public float firepowerPortProp => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 270);
     }
 
     public partial class FireControlSystemStatusRecord

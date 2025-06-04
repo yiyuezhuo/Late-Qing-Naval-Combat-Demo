@@ -135,7 +135,7 @@ namespace NavalCombatCore
     
     public enum TrackingSystemState
     {
-        // If a shooter fire at a target without tracking (FCS is destroyed, too many targeting or barrage fire), the firing is subject to local control penalty (-50% FC)
+        // If a shooter fire at a target without tracking (FCS is destroyed, too many targeting or barrage fire), the firing is subject to Local Control modifier (-50% FC)
         Idle, // Tracking Position is not tracking anything.
         Destroyed,
         BeginTracking, // -50% ROF, -2 FC, BeginTracking will transition to Tracking once tracking is maintained at least 2 min 
@@ -149,11 +149,46 @@ namespace NavalCombatCore
         public string targetObjectId { get; set; }
         public ShipLog GetTarget() => EntityManager.Instance.Get<ShipLog>(targetObjectId);
         public TrackingSystemState trackingState;
+        public float trackingSeconds;
 
-        public void ResetDamageExpenditureState()
+        public void Step(float deltaSeconds)
+        {
+            var target = GetTarget();
+            if (target != null)
+            {
+                trackingSeconds += deltaSeconds;
+                if (trackingSeconds >= 120)
+                {
+                    if (trackingState == TrackingSystemState.BeginTracking)
+                    {
+                        trackingState = TrackingSystemState.Tracking;
+                    }
+                }
+            }
+        }
+
+        public void ResetToIntegrityState()
         {
             targetObjectId = null;
             trackingState = TrackingSystemState.Idle;
+            trackingSeconds = 0;
+        }
+
+        public void SetTrackingTarget(ShipLog target)
+        {
+            if (target == null)
+            {
+                targetObjectId = null;
+                trackingState = TrackingSystemState.Idle;
+                trackingSeconds = 0;
+            }
+            var currentTarget = GetTarget();
+            if (currentTarget == target)
+                return;
+
+            targetObjectId = target?.objectId;
+            trackingState = TrackingSystemState.BeginTracking;
+            trackingSeconds = 0;
         }
 
         public int GetSubIndex()
@@ -163,7 +198,7 @@ namespace NavalCombatCore
         }
     }
 
-    public partial class BatteryStatus : IObjectIdLabeled
+    public partial class BatteryStatus : IObjectIdLabeled, IWTABattery
     {
         public string objectId { get; set; }
         public BatteryAmmunitionRecord ammunition = new(); // TODO: based on mount instead of battery?
@@ -209,7 +244,7 @@ namespace NavalCombatCore
             // fireControlHits = 0;
             Utils.SyncListToLength(batteryRecord.fireControlPositions, fireControlSystemStatusRecords, this);
             foreach (var s in fireControlSystemStatusRecords)
-                s.ResetDamageExpenditureState();
+                s.ResetToIntegrityState();
         }
 
         public string Summary() // Used in information panel
@@ -235,12 +270,69 @@ namespace NavalCombatCore
         public float EvaluateFirepowerScore(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots, float bearingRelativeToBowDeg)
         {
             var batteryRecord = GetBatteryRecord();
+            if (distanceYards > batteryRecord.rangeYards)
+                return 0;
+
             var firepowerPerBarrel = batteryRecord.EvaluateFirepowerPerBarrel(distanceYards, targetAspect, targetSpeedKnots);
             var barrels = mountStatus.Where(
                 m => m.status == MountStatus.Operational &&
                 m.GetMountLocationRecordInfo().record.IsInArc(bearingRelativeToBowDeg)
             ).Sum(m => m.GetMountLocationRecordInfo().record.barrels);
             return barrels * firepowerPerBarrel;
+        }
+
+        public void SetFiringTarget(ShipLog target)
+        {
+            if (target == null)
+            {
+                foreach (var mnt in mountStatus)
+                {
+                    mnt.firingTargetObjectId = null;
+                }
+                return;
+            }
+
+            var shipLog = EntityManager.Instance.GetParent<ShipLog>(this);
+            if (shipLog == null)
+                return;
+
+            var stats = MeasureStats.Measure(shipLog, target);
+            foreach (var fcs in fireControlSystemStatusRecords)
+            {
+                fcs.SetTrackingTarget(target);
+            }
+
+            foreach (var mnt in mountStatus)
+            {
+                if (mnt.status == MountStatus.Operational &&
+                    mnt.GetMountLocationRecordInfo().record.IsInArc(stats.observerToTargetViewBearingRelativeToBowDeg))
+                {
+                    mnt.firingTargetObjectId = target.objectId;
+                }
+            }
+        }
+
+        void IWTABattery.SetFiringTarget(IWTAObject target) => SetFiringTarget(target as ShipLog); // TODO: Support other IWTAObject (land targets?)
+
+        public void ResetFiringTarget()
+        {
+            foreach (var fcs in fireControlSystemStatusRecords)
+            {
+                fcs.SetTrackingTarget(null);
+                // fcs.
+            }
+
+            foreach (var mnt in mountStatus)
+                mnt.firingTargetObjectId = null;
+        }
+
+        public void Step(float deltaSeconds)
+        {
+            // TODO: Use general SubChildren and active to propagate Step command?
+
+            // TODO: Do actual firing resolution
+            foreach (var fcs in fireControlSystemStatusRecords)
+                fcs.Step(deltaSeconds);
         }
     }
 
@@ -366,6 +458,11 @@ namespace NavalCombatCore
         float GetHeadingDeg();
     }
 
+    public interface IDF4Model: IDF3Model
+    {
+        float GetSpeedKnots();
+    }
+
     public enum MapState
     {
         NotDeployed,
@@ -381,7 +478,7 @@ namespace NavalCombatCore
     }
 
 
-    public partial class ShipLog : IObjectIdLabeled, IDF3Model, IShipGroupMember
+    public partial class ShipLog : IObjectIdLabeled, IDF4Model, IShipGroupMember, IWTAObject
     {
         public string objectId { get; set; }
         // public ShipClass shipClass;
@@ -404,9 +501,6 @@ namespace NavalCombatCore
                 return EntityManager.Instance.Get<ShipClass>(_shipClassObjectId);
             }
         }
-        // public GlobalString name = new();
-        // public GlobalString captain = new();
-        // public int crewRating;
         public float damagePoint; // current taken damage point vs "max" damage point defined in the class
         public LatLon position = new();
         public float speedKnots; // current speed vs "max" speed defined in the class
@@ -419,6 +513,7 @@ namespace NavalCombatCore
         public float GetLatitudeDeg() => position.LatDeg;
         public float GetLongitudeDeg() => position.LonDeg;
         public float GetHeadingDeg() => headingDeg;
+        public float GetSpeedKnots() => speedKnots;
 
         public List<BatteryStatus> batteryStatus = new();
         public TorpedoSectorStatus torpedoSectorStatus = new();
@@ -430,6 +525,7 @@ namespace NavalCombatCore
         public List<ShipboardFireStatus> shipboardFireStatus = new();
 
         public string parentObjectId { get; set; } // OOB perspective
+        // Get Parent / Root Parent method is defined in IShipGroupMember
 
         public string leaderObjectId;
         public Leader leader
@@ -536,7 +632,7 @@ namespace NavalCombatCore
 
         public void Step(float deltaSeconds)
         {
-            if (speedKnots >= 4)
+            if (speedKnots >= 4) // Turn and induced speed change
             {
                 var useEmergencyRudder = emergencyRudder && speedKnots >= 12;
 
@@ -691,12 +787,21 @@ namespace NavalCombatCore
             var distM = distNm * 1852;
             double arcLength = Geodesic.WGS84.Direct(position.LatDeg, position.LonDeg, headingDeg, distM, out double lat2, out double lon2);
             position = new LatLon((float)lat2, (float)lon2);
+
+            // 
+
+            foreach (var bs in batteryStatus)
+                bs.Step(deltaSeconds);
         }
 
         public float EvaluateArmorScore()
         {
-            var weightedArmor = shipClass.armorRating.GetWeightedArmor(TargetAspect.Broad, RangeBand.Short);
-            return weightedArmor;
+            return EvaluateArmorScore(TargetAspect.Broad, RangeBand.Short);
+        }
+
+        public float EvaluateArmorScore(TargetAspect targetAspect, RangeBand rangeBand)
+        {
+            return shipClass.EvaluateArmorScore(targetAspect, rangeBand);
         }
 
         public float EvaluateSurvivability()
@@ -706,12 +811,12 @@ namespace NavalCombatCore
             return dp * armorScoreSmoothed;
         }
 
-        public float EvaluateBatteryFirepower()
+        public float EvaluateBatteryFirepowerScore()
         {
             return batteryStatus.Sum(bs => bs.EvaluateFirepowerScore());
         }
 
-        public float EvaluateBatteryFirepower(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots, float bearingRelativeToBowDeg)
+        public float EvaluateBatteryFirepowerScore(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots, float bearingRelativeToBowDeg)
         {
             return batteryStatus.Sum(bs => bs.EvaluateFirepowerScore(distanceYards, targetAspect, targetSpeedKnots, bearingRelativeToBowDeg));
         }
@@ -723,17 +828,17 @@ namespace NavalCombatCore
             return torpedoBarrelsAvailable * shipClass.torpedoSector.EvaluateTorpedoThreatPerBarrel();
         }
 
-        public float EvaluateRapidFiringFirepower()
+        public float EvaluateRapidFiringFirepowerScore()
         {
             return rapidFiringStatus.Sum(rf => rf.EvaluateFirepowerScore());
         }
 
         public float EvaluateFirepowerScore()
         {
-            var batteryFirepower = EvaluateBatteryFirepower();
+            var batteryFirepower = EvaluateBatteryFirepowerScore();
             // Torpedo is not handled here
             var torpedoThreat = EvaluateTorpedoThreatScore();
-            var rapidFiringFirepower = EvaluateRapidFiringFirepower();
+            var rapidFiringFirepower = EvaluateRapidFiringFirepowerScore();
 
             return 1f * batteryFirepower + 1f * torpedoThreat + 1f * rapidFiringFirepower;
         }
@@ -762,6 +867,12 @@ namespace NavalCombatCore
             // TODO: Add torpedos?
             // TODO: Add rapid firing batteries
             return targets;
+        }
+
+        public IEnumerable<IWTABattery> GetBatteries()
+        {
+            foreach (var bs in batteryStatus)
+                yield return bs;
         }
     }
 }

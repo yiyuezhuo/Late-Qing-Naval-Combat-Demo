@@ -1,9 +1,62 @@
 using System;
+using GeographicLib;
+
 
 namespace NavalCombatCore
 {
+    public class MeasureStats
+    {
+        public float distanceYards;
+        public float observerToTargetTrueBearingRelativeToNorthDeg;
+        public float targetToObserverTrueBearingRelativeToNorthDeg;
+        public float observerToTargetViewBearingRelativeToBowDeg;
+        public float targetToObserverViewBearingRelativeToBowDeg;
+        public TargetAspect observerPresentAspectFromTarget;
+        public TargetAspect targetPresentAspectFromObserver;
+
+        public static MeasureStats Measure(IDF3Model observer, IDF3Model target)
+        {
+            var inverseLine = Geodesic.WGS84.InverseLine(
+                observer.GetLatitudeDeg(), observer.GetLongitudeDeg(),
+                target.GetLatitudeDeg(), target.GetLongitudeDeg()
+            );
+            var distM = (float)inverseLine.Distance;
+            var distYards = distM * MeasureUtils.meterToYard;
+            var observerToTargetTrueBearingRelativeToNorthDeg = MeasureUtils.NormalizeAngle((float)inverseLine.Azimuth);
+            var targetToObserverTrueBearingRelativeToNorthDeg = MeasureUtils.NormalizeAngle(observerToTargetTrueBearingRelativeToNorthDeg + 180); // Though not very accurete if distance is extremely long.
+            var observerToTargetViewBearingRelativeToBowDeg = MeasureUtils.NormalizeAngle(observerToTargetTrueBearingRelativeToNorthDeg - observer.GetHeadingDeg());
+            var targetToObserverViewBearingRelativeToBowDeg = MeasureUtils.NormalizeAngle(targetToObserverTrueBearingRelativeToNorthDeg - target.GetHeadingDeg());
+            var observerPresentAspectFromTarget = GetXPresentAspectFromY(observerToTargetViewBearingRelativeToBowDeg);
+            var targetPresentAspectFromObserver = GetXPresentAspectFromY(targetToObserverViewBearingRelativeToBowDeg);
+
+            return new()
+            {
+                distanceYards = distYards,
+                observerToTargetTrueBearingRelativeToNorthDeg = observerToTargetTrueBearingRelativeToNorthDeg,
+                targetToObserverTrueBearingRelativeToNorthDeg = targetToObserverTrueBearingRelativeToNorthDeg,
+                observerToTargetViewBearingRelativeToBowDeg = observerToTargetViewBearingRelativeToBowDeg,
+                targetToObserverViewBearingRelativeToBowDeg = targetToObserverViewBearingRelativeToBowDeg,
+                observerPresentAspectFromTarget = observerPresentAspectFromTarget,
+                targetPresentAspectFromObserver = targetPresentAspectFromObserver
+            };
+        }
+
+        static TargetAspect GetXPresentAspectFromY(float XToYrelativeBearingToBowDeg)
+        {
+            return Math.Min(
+                MeasureUtils.GetPositiveAngleDifference(XToYrelativeBearingToBowDeg, 90),
+                MeasureUtils.GetPositiveAngleDifference(XToYrelativeBearingToBowDeg, 270)
+            ) <= 60 ? TargetAspect.Broad : TargetAspect.Narrow;
+        }
+    }
+
     public static class MeasureUtils
     {
+        public static float yardToMeter = 0.9144f;
+        public static float meterToYard = 1.09361f;
+
+
+
         public static float MoveAngleTowards(float current, float target, float step)
         {
             // Normalize angles to 0-360 range
@@ -64,7 +117,7 @@ namespace NavalCombatCore
             // Return the smallest positive difference
             return diff;
         }
-        
+
         /// <summary>
         /// Checks if an angle is within a given arc range
         /// </summary>
@@ -77,10 +130,10 @@ namespace NavalCombatCore
             // Normalize all angles to 0-360 range
             angle = NormalizeAngle(angle);
             startAngle = NormalizeAngle(startAngle);
-            
+
             // Calculate the end angle of the arc
             float endAngle = NormalizeAngle(startAngle + sweepAngle);
-            
+
             // Handle arcs that don't cross 0°
             if (sweepAngle > 0 && startAngle < endAngle)
             {

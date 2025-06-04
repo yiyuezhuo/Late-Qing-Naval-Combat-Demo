@@ -8,10 +8,10 @@ public class GamePreference
     {
         None,
         SelectedShip,
-        SelectedDivision,
-        SelectedSide,
+        SelectedGroup,
+        SelectedRootGroup,
         All
     }
 
-    public FiringLineDisplayMode firingLineDisplayMode = FiringLineDisplayMode.SelectedShip;
+    public FiringLineDisplayMode firingLineDisplayMode = FiringLineDisplayMode.SelectedRootGroup;
 }

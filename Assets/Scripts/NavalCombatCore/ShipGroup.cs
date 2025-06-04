@@ -36,6 +36,15 @@ namespace NavalCombatCore
         public string GetMemberName();
 
         public ShipGroup GetParentGroup() => EntityManager.Instance.Get<ShipGroup>(parentObjectId);
+        public IShipGroupMember GetRootParent()
+        {
+            var pt = this;
+            while (pt.GetParentGroup() != null)
+            {
+                pt = pt.GetParentGroup();
+            }
+            return pt;
+        }
 
         public void AttachTo(ShipGroup newParent)
         {

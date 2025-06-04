@@ -587,8 +587,12 @@ namespace NavalCombatCore
 
         public float EvaluateArmorScore()
         {
-            var weightedArmor = armorRating.GetWeightedArmor(TargetAspect.Broad, RangeBand.Short);
-            return weightedArmor;
+            return EvaluateArmorScore(TargetAspect.Broad, RangeBand.Short);
+        }
+
+        public float EvaluateArmorScore(TargetAspect targetAspect, RangeBand rangeBand)
+        {
+            return armorRating.GetWeightedArmor(targetAspect, rangeBand);
         }
 
         public float EvaluateSurvivability()
@@ -598,12 +602,12 @@ namespace NavalCombatCore
             return damagePoint * armorScoreSmoothed;
         }
 
-        public float EvaluateBatteryFirepower()
+        public float EvaluateBatteryFirepowerScore()
         {
             return batteryRecords.Sum(bs => bs.EvaluateFirepowerScore());
         }
 
-        public float EvaluateFirepowerScore(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots, float bearingRelativeToBowDeg)
+        public float EvaluateBatteryFirepowerScore(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots, float bearingRelativeToBowDeg)
         {
             return batteryRecords.Sum(bs => bs.EvaluateFirepowerScore(distanceYards, targetAspect, targetSpeedKnots, bearingRelativeToBowDeg));
         }
@@ -613,17 +617,17 @@ namespace NavalCombatCore
             return torpedoSector.EvaluateTorpedoThreatScore();
         }
 
-        public float EvaluateRapidFiringFirepower()
+        public float EvaluateRapidFiringFirepowerScore()
         {
             return rapidFireBatteryRecords.Sum(rf => rf.EvaluateFirepowerScore());
         }
 
         public float EvaluateFirepowerScore()
         {
-            var batteryFirepower = EvaluateBatteryFirepower();
+            var batteryFirepower = EvaluateBatteryFirepowerScore();
             // Torpedo is not handled here
             var torpedoThreat = EvaluateTorpedoThreatScore();
-            var rapidFiringFirepower = EvaluateRapidFiringFirepower();
+            var rapidFiringFirepower = EvaluateRapidFiringFirepowerScore();
 
             return 1f * batteryFirepower + 20f * torpedoThreat + 1f * rapidFiringFirepower;
         }

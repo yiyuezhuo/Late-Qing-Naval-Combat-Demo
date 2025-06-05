@@ -1,5 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:Template name="DoctrineEditor" src="project://database/Assets/UIDocuments/DoctrineEditor.uxml?fileID=9197481963319205126&amp;guid=9963f3ab57e9cd545869989ed4b99a3d&amp;type=3#DoctrineEditor" />
     <ui:Template name="NamedShipVisualizer" src="project://database/Assets/UIDocuments/NamedShipVisualizer.uxml?fileID=9197481963319205126&amp;guid=31d24939061571546a16f9a8bd6443ed&amp;type=3#NamedShipVisualizer" />
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement data-source-type="OOBEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
@@ -34,11 +35,12 @@
                     <ui:Button text="Confirm" name="ConfirmButton" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+            <ui:VisualElement style="flex-grow: 1.2; flex-basis: 100px;">
                 <ui:VisualElement data-source-path="currentSelectedShipGroup" style="flex-grow: 0;">
                     <ui:Instance template="GlobalStringEditor" data-source-path="name">
                         <AttributeOverrides element-name="GlobalStringLabel" text="Group Name" />
                     </ui:Instance>
+                    <ui:Instance template="DoctrineEditor" data-source-path="doctrineProp" style="padding-left: 5px; padding-right: 5px;" />
                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                         <ui:VisualElement style="flex-grow: 1;">
                             <ui:TextField label="Leader">

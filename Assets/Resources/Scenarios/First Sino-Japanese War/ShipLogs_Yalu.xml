@@ -159,6 +159,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>cf6393ee-7cbe-4a15-93ce-eb53bc18ada8</objectId>
   <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>b7241e0d-4ccf-43b2-abdf-d4a5988ae39d</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>5f1f4c9c-0819-468f-87fd-af3938dea6df</namedShipObjectId>
@@ -312,6 +337,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>01092b52-c42d-4f06-9f4e-57762a39aeba</objectId>
   <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>6061b071-5b11-4907-93fd-6b7fccffc181</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>7855b692-e843-41bb-a7b6-15662ab6de20</namedShipObjectId>
@@ -453,6 +503,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>ea56b877-9b5e-48bf-840d-3e8508af98ca</objectId>
   <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>9a91de81-a3c4-4dca-a0a2-9261c317bb96</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>14fd6eb4-8fa6-4f4b-b98d-00ec411b5e16</namedShipObjectId>
@@ -564,6 +639,31 @@
   <relativeToTargetAzimuth>225</relativeToTargetAzimuth>
   <objectId>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>3d21b4b9-44bf-434c-9318-91a287b84c00</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>c58b4a18-5e00-4eca-ad5b-6ee74a2b9709</namedShipObjectId>
@@ -660,6 +760,31 @@
   <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>93b88a00-313d-4df0-8cfb-2182851c96f7</objectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>9351288e-3bf8-421b-8ad4-23710e3010d3</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>da81e4ec-40b5-4f9c-949d-375e86b668bf</namedShipObjectId>
@@ -780,6 +905,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>b5dfd87e-cb47-4a4b-abba-affa96e356c4</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>f3960039-be8e-488a-a10b-ee1b4d5c1b61</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>c12c377d-3a26-4d14-897a-db3beb221060</namedShipObjectId>
@@ -900,6 +1050,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>c8a76edb-7330-4ef4-a115-2f468df23494</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>d072f018-955e-4ad9-8572-dba0775c2740</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>695c4c4f-4c3e-475d-b8e0-f28de87685ca</namedShipObjectId>
@@ -1015,6 +1190,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>59969f6c-ed18-4e48-84d2-0b43c3e8ac74</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>aa66cd17-d38e-481b-a0a7-e17ed0fd1437</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>3c8d69bc-78fa-4315-9b27-e6e6bb2678c6</namedShipObjectId>
@@ -1130,6 +1330,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>6a20093b-9f39-47fd-972f-49eaaefaf1d5</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>8d7c1f7d-94b0-4a04-98db-dcfeeae352b3</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>eab7b62b-359b-4a48-8539-02b75902e2a2</namedShipObjectId>
@@ -1249,6 +1474,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>370f72b3-2243-44ff-ab42-e08d3c6d273c</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>23a18325-18ef-46cb-8752-2504d7943ca7</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>47957b51-2f28-4364-9b69-0531e1920396</namedShipObjectId>
@@ -1368,6 +1618,31 @@
   <relativeToTargetAzimuth>225</relativeToTargetAzimuth>
   <objectId>a55bdec2-a47a-4d2b-af3c-9588a875e58c</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>56185056-05af-40b0-836b-9e932169a0e8</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>b95c048c-1701-400f-901d-becf31eac884</namedShipObjectId>
@@ -1476,6 +1751,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>3ecfd394-30a5-45af-95be-f83b75d246b2</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>8e31deee-c81b-430b-a468-f5b77fa8b5f3</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>b1447997-60c7-4a81-a2c2-76c4f21e8695</namedShipObjectId>
@@ -1584,6 +1884,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>00fb2b34-3d37-444b-9041-e8540c9304d1</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>f1f6df32-35f8-4eab-b279-00a1f4c97ba6</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>93af5f5d-0afa-481b-8135-da07ff3dfe0d</namedShipObjectId>
@@ -1692,6 +2017,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>9ad21ac1-2365-4f33-bfa9-fee5f27b965a</objectId>
   <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>18c097ed-9ca1-4988-b030-71d8799b5b46</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>6b3bdffa-e1c1-4926-9a3b-4c04c7ccc2f7</namedShipObjectId>
@@ -1798,6 +2148,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>61f04aed-26e0-4495-bd04-344f5d223de1</objectId>
   <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>f35a689e-d7d0-4865-aab1-47ca01f30a36</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>1a287722-9d5f-440a-b25e-73ad5d987c8c</namedShipObjectId>
@@ -1926,6 +2301,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>4d486d3e-0643-4983-8641-a33434c2a4c5</objectId>
   <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>9085ea81-17bf-4ae4-93a4-013acd130c4c</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>a30faffb-e4b9-4e55-aec2-db88671265ca</namedShipObjectId>
@@ -2089,6 +2489,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>10ae7cc2-8728-40b6-9d4b-4f06087918c6</objectId>
   <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>ecf0ac0d-69d5-4700-bdea-b5e2136060e6</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>9105d76e-8241-4d51-8347-43448099ba54</namedShipObjectId>
@@ -2252,6 +2677,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>1180b828-a3da-4927-ae6a-ea21c6c5c1be</objectId>
   <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>2aa90b55-062a-40cc-a4aa-f65dba83fd6f</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>cf7b7e83-91a0-4e45-89ac-db0babb1036c</namedShipObjectId>
@@ -2384,6 +2834,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>3e705d71-1239-4963-8946-2aa151d5e57f</objectId>
   <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>9f04fda1-475d-4a2d-af55-ba993f584908</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>52fe3068-7c3f-4b37-bcbc-88895e925217</namedShipObjectId>
@@ -2550,6 +3025,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>e1f10636-ab79-4b42-8316-c3a533f31512</objectId>
   <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>e9182ab6-47e1-463d-89ed-296108dbb64c</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>e27761a0-d00a-4a7b-bcac-58aab2b8118d</namedShipObjectId>
@@ -2691,6 +3191,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>25623a6b-a217-4e49-baca-6ea3b7c782a6</objectId>
   <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>4f90da80-3508-40be-8547-46b48fae1a9e</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>d1a1333b-c9cd-44f7-acfa-e70190039282</namedShipObjectId>
@@ -2818,6 +3343,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>8c1e5af6-3f33-4f97-8f94-5d8a63785c28</objectId>
   <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>19830381-029b-4eed-9868-11c030719667</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>ece5d4b3-84e9-477d-85a1-a989b9acf0b6</namedShipObjectId>
@@ -2915,6 +3465,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>0cfda6a2-50de-48bf-8aa6-5338375327ef</objectId>
   <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>8cfb8f35-393d-4407-b467-2c82f90e7b07</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>cf53fae4-c151-47da-9ee0-1d540c655968</namedShipObjectId>
@@ -3010,6 +3585,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>e55e1b9a-2cc6-44ab-a656-9b1204d34971</objectId>
   <parentObjectId>325f3d53-3214-456c-9731-e8f8e22fea04</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>0df6b3e4-4fe6-4581-9a91-73f3d31da9ac</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>fe326406-a6b5-42fe-b052-c79dacf9df1c</namedShipObjectId>
@@ -3082,6 +3682,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>c4bd2221-a6e2-4646-a59e-60c9e392a80b</objectId>
   <parentObjectId>325f3d53-3214-456c-9731-e8f8e22fea04</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>47379286-703d-401f-8649-25853bbd2280</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>300061b1-9426-4d75-97fa-d1256f55f648</namedShipObjectId>
@@ -3140,6 +3765,31 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>42d0aed7-6e98-4146-b55f-0d5f8940328b</objectId>
   <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>f3bfd5b3-017e-4612-b1dd-9611df6de943</objectId>
+  </doctrine>
  </ShipLog>
  <ShipLog>
   <namedShipObjectId>be4eaecb-801e-42aa-aad8-232bf8c6d58d</namedShipObjectId>
@@ -3198,5 +3848,30 @@
   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
   <objectId>f134adc9-f5b7-4d86-88a9-27ecd13b70c8</objectId>
   <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>092ed1ac-0faf-4f84-b708-53360fbcd60c</objectId>
+  </doctrine>
  </ShipLog>
 </ArrayOfShipLog>

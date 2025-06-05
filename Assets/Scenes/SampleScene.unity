@@ -941,7 +941,6 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: b352e5d9bc233e44abe8359a017f9e95, type: 2}
   hoveringLocationInfo: 
   remainAdvanceSimulationSeconds: 0
-  pulseLengthSeconds: 1
   selectedShipClassIndex: 0
   selectedShipLogObjectId: 
   selectedLeaderObjectId: 
@@ -2042,6 +2041,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleFactor: 0.01
+  updateTextrureScaleX: 0
+  lengthWidthRatio: 0
 --- !u!120 &2803217047718240885
 LineRenderer:
   serializedVersion: 2

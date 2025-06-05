@@ -30,10 +30,18 @@ namespace NavalCombatCore
         Screen,
     }
 
+    public enum GroupController
+    {
+        Inherited, // Root Default Human (can be set in Preference?)
+        Manual, // Human
+        Automatic // AI
+    }
+
     public interface IShipGroupMember : IObjectIdLabeled // Include ShipGroup and ShipLog at times.
     {
         public string parentObjectId { get; set; }
         public string GetMemberName();
+        public Doctrine doctrine{ get; set; }
 
         public ShipGroup GetParentGroup() => EntityManager.Instance.Get<ShipGroup>(parentObjectId);
         public IShipGroupMember GetRootParent()
@@ -114,8 +122,31 @@ namespace NavalCombatCore
 
         public GroupType type;
         public FormationType formation;
-        
-        public string GetMemberName() => name.mergedName;
+        public Doctrine doctrine{ get; set; } = new();
 
+        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            yield return doctrine;
+        }
+
+        public string GetMemberName() => name.mergedName;
+        // public GroupController ResolveController()
+        // {
+        //     if (controller != GroupController.Inherited)
+        //         return controller;
+        //     var parent = (this as IShipGroupMember).GetParentGroup();
+        //     if (parent == null)
+        //         return GroupController.Manual; // Root default is Manual
+        //     return parent.ResolveController();
+        // }
+        // public GroupController ResolveFireController()
+        // {
+        //     if (fireController != GroupController.Inherited)
+        //         return fireController;
+        //     var parent = (this as IShipGroupMember).GetParentGroup();
+        //     if (parent == null)
+        //         return GroupController.Automatic; // Root default is Automatic
+        //     return parent.ResolveFireController();
+        // }
     }
 }

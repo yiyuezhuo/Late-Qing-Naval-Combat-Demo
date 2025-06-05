@@ -583,7 +583,11 @@ namespace NavalCombatCore
             {
                 yield return obj;
             }
+
+            yield return doctrine;
         }
+
+        public Doctrine doctrine{ get; set; } = new();
 
         public bool IsOnMap() => mapState == MapState.Deployed;
 

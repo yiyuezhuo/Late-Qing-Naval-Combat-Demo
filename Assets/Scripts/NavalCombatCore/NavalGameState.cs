@@ -252,10 +252,17 @@ namespace NavalCombatCore
                 foreach ((var meShipLogs, var otherShipLogs) in GetOpposeSidePairs())
                 {
                     var solver = new WeaponTargetAssignmentSolver();
-                    solver.Solve(meShipLogs, otherShipLogs);
+                    solver.Solve(
+                        meShipLogs.Where(s => s.doctrine.GetFireAutomaticType() == AutomaticType.Automatic),
+                        otherShipLogs
+                    );
 
                     var planner = new LowLevelCoursePlanner();
-                    planner.Plan(meShipLogs, otherShipLogs, 360); // Extrapolate 360s
+                    planner.Plan(
+                        meShipLogs.Where(s => s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic),
+                        otherShipLogs,
+                        360
+                    ); // Extrapolate 360s
                 }
             }
 

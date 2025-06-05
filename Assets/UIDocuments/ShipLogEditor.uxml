@@ -1,4 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="DoctrineEditor" src="project://database/Assets/UIDocuments/DoctrineEditor.uxml?fileID=9197481963319205126&amp;guid=9963f3ab57e9cd545869989ed4b99a3d&amp;type=3#DoctrineEditor" />
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement name="VisualElement" data-source-type="GameManager, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Ship Logs" class="title" />
@@ -304,6 +305,9 @@
                                         </ui:FloatField>
                                     </ui:VisualElement>
                                 </ui:VisualElement>
+                            </ui:Tab>
+                            <ui:Tab label="Doctrine">
+                                <ui:Instance template="DoctrineEditor" data-source-path="doctrineProp" />
                             </ui:Tab>
                         </ui:TabView>
                         <Bindings>

@@ -199,6 +199,9 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public float firepowerPortProp => EvaluatePortFirepowerScore();
+
+        [CreateProperty]
+        public Doctrine doctrineProp => doctrine;
     }
 
     public partial class FireControlSystemStatusRecord
@@ -310,6 +313,9 @@ namespace NavalCombatCore
     {
         [CreateProperty]
         public Leader leaderProp => leader;
+
+        [CreateProperty]
+        public Doctrine doctrineProp => doctrine;
     }
 
     public partial class NamedShip

@@ -129,6 +129,7 @@ namespace NavalCombatCore
         public void ResetDamageExpenditureState()
         {
             status = MountStatus.Operational;
+            firingTargetObjectId = null;
             // mountsDestroyed = 0;
         }
     }
@@ -283,12 +284,17 @@ namespace NavalCombatCore
 
         public void SetFiringTarget(ShipLog target)
         {
+            foreach (var mnt in mountStatus)
+            {
+                mnt.firingTargetObjectId = null;
+            }
+            foreach (var fcs in fireControlSystemStatusRecords)
+            {
+                fcs.SetTrackingTarget(null);
+            }
+
             if (target == null)
             {
-                foreach (var mnt in mountStatus)
-                {
-                    mnt.firingTargetObjectId = null;
-                }
                 return;
             }
 
@@ -305,7 +311,7 @@ namespace NavalCombatCore
             foreach (var mnt in mountStatus)
             {
                 if (mnt.status == MountStatus.Operational &&
-                    mnt.GetMountLocationRecordInfo().record.IsInArc(stats.observerToTargetViewBearingRelativeToBowDeg))
+                    mnt.GetMountLocationRecordInfo().record.IsInArc(stats.observerToTargetBearingRelativeToBowDeg))
                 {
                     mnt.firingTargetObjectId = target.objectId;
                 }
@@ -324,6 +330,15 @@ namespace NavalCombatCore
 
             foreach (var mnt in mountStatus)
                 mnt.firingTargetObjectId = null;
+        }
+
+        IWTAObject IWTABattery.GetCurrentFiringTarget()
+        {
+            var targetMounts = mountStatus.Where(m => m.GetFiringTarget() != null).GroupBy(m => m.GetFiringTarget()).Select(g => (g.Key, g.Count())).ToList();
+            if (targetMounts.Count == 0)
+                return null;
+            var maxCount = targetMounts.Max(r => r.Item2);
+            return targetMounts.First(r => r.Item2 == maxCount).Item1;
         }
 
         public void Step(float deltaSeconds)
@@ -478,7 +493,7 @@ namespace NavalCombatCore
     }
 
 
-    public partial class ShipLog : IObjectIdLabeled, IDF4Model, IShipGroupMember, IWTAObject
+    public partial class ShipLog : IObjectIdLabeled, IDF4Model, IShipGroupMember, IWTAObject, IExtrapolable
     {
         public string objectId { get; set; }
         // public ShipClass shipClass;
@@ -874,5 +889,17 @@ namespace NavalCombatCore
             foreach (var bs in batteryStatus)
                 yield return bs;
         }
+
+        public float EvaluateBowFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 0);
+        public float EvaluateStarboardFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 90);
+        public float EvaluateSternFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 180);
+        public float EvaluatePortFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 270);
+        public ControlMode GetControlMode() => controlMode;
+        IExtrapolable IExtrapolable.GetFollowedTarget() => followedTarget;
+        float IExtrapolable.GetFollowDistanceYards() => followDistanceYards;
+        IExtrapolable IExtrapolable.GetRelativeToTarget() => relativeToTarget;
+        float IExtrapolable.GetRelativeToTargetDistanceYards() => relativeToTargetDistanceYards;
+        float IExtrapolable.GetRelativeToTargetAzimuth() => relativeToTargetAzimuth;
+        void IExtrapolable.SetDesiredHeadingDeg(float desiredHeadingDeg) => this.desiredHeadingDeg = desiredHeadingDeg;
     }
 }

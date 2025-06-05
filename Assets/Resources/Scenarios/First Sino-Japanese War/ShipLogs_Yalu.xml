@@ -23,7 +23,6 @@
     <mountStatus>
      <MountStatusRecord>
       <status>Operational</status>
-      <firingTargetObjectId>59969f6c-ed18-4e48-84d2-0b43c3e8ac74</firingTargetObjectId>
       <objectId>2582844d-d6fa-4f43-8b94-2e315b782a0d</objectId>
      </MountStatusRecord>
      <MountStatusRecord>
@@ -42,6 +41,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>f4c7cd9d-f784-4306-8301-613ce2019092</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -91,10 +91,12 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>15520cbe-955d-4cea-b7a7-bfd771c55acb</objectId>
      </FireControlSystemStatusRecord>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>c087445c-d47c-4bf0-9790-e974b04896bb</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -199,6 +201,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>704954b3-c68f-47f0-821f-4a5fa8ba6a14</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -244,10 +247,12 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>a2cb0b62-1ca1-4bab-9991-4ec7e6b67f63</objectId>
      </FireControlSystemStatusRecord>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>6bee141e-f5cc-4d1c-8533-935a6e9dc6fe</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -341,6 +346,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>a38b972c-5388-4e25-b894-24551290f750</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -382,10 +388,12 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>ae3d780e-da19-467e-8c99-7835e3cb8c2c</objectId>
      </FireControlSystemStatusRecord>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>60598bf7-f77e-4c23-8e10-c51bf99f59aa</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -475,6 +483,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>785e19b1-a09c-490c-bffd-ad5163b718d4</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -496,6 +505,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>391ae469-8fbf-4f3b-a9e3-83e5dde839e4</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -592,6 +602,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>5871769b-e47d-420f-8d44-0d3b47780705</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -683,6 +694,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>a84f807b-ab9d-48b0-89d8-70cf3c36cc8b</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -708,10 +720,12 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>c55aa555-ac43-4b23-919d-119f4b9e2fad</objectId>
      </FireControlSystemStatusRecord>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>c04fa09e-bf55-466d-9ba2-992fafb17a23</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -800,6 +814,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>60908a89-c42d-400f-b0a3-9b038e75a1ff</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -825,10 +840,12 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>61b12309-36bf-4c85-88d9-d2cbc6546729</objectId>
      </FireControlSystemStatusRecord>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>168fd1a3-91a4-4e19-a687-c9b852ba0df9</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -917,6 +934,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>c1598a8f-fcb7-4dea-8a61-50e84a6c9b48</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -950,10 +968,12 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>8935a2ad-411b-4555-901c-8514c5db8106</objectId>
      </FireControlSystemStatusRecord>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>a9b52783-d7ab-4307-821c-696d97c7e60d</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1029,6 +1049,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>e04f0071-1973-4483-84a6-e6f8f78f2fc3</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1062,10 +1083,12 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>74b97bfd-5341-4629-bc30-e47421fa2c74</objectId>
      </FireControlSystemStatusRecord>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>91d90435-6156-439f-a9b5-ca614afb90e9</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1141,6 +1164,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>2d510d9f-7c51-4d5f-a47c-eb1ab69cfb78</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1166,6 +1190,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>3fe7fb40-9b85-4129-8ec0-9a79563a16b1</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1258,6 +1283,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>3b9ada0f-ce7e-4297-b7fb-d7c14502f1fb</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1283,6 +1309,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>963a7100-63af-4bba-b1ba-c9b486ffb42b</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1371,6 +1398,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>7cb4790d-17e6-441c-be53-6a1abaa2c321</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1396,6 +1424,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>bd316d93-7525-4e29-afc6-a176f3a07b2b</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1477,6 +1506,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>ea0b323d-dea1-4c9b-8850-fe2ce479b92f</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1502,6 +1532,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>2d7e7e4d-c5a8-482e-aca9-ad32e65993fa</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1583,6 +1614,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>d0e89682-139f-44f0-bde7-fe1c9eff1a40</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1608,6 +1640,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>d964de52-a96f-4570-9fe8-e3b983bc6988</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1689,6 +1722,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>b57a9e3c-62ea-42e0-a092-6e35e29a6e9b</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1722,6 +1756,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>78c73f9e-0e2c-4be1-8daf-ab7f34e02ae6</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1805,6 +1840,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>20c45fde-2ad4-477c-bbff-5e0a228f1c9a</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1838,6 +1874,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>21f15dc2-2b93-4c96-881b-85efec04cb05</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1919,6 +1956,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>b463bec6-0f8c-4645-8dec-b972f9ad0c50</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -1980,10 +2018,12 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>315073f6-888e-4933-ac24-e59ae05b0249</objectId>
      </FireControlSystemStatusRecord>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>a7b07366-de88-41ad-8bd0-556da78608b4</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -2079,6 +2119,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>438188b4-ff10-4db4-913a-da1aeb690f5c</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -2140,10 +2181,12 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>f434fac3-2902-4f0d-a99d-56d0bcf56252</objectId>
      </FireControlSystemStatusRecord>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>feceefa7-29b8-4ead-ba37-710614bd512b</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -2247,6 +2290,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>f44d41f9-bc9c-468b-a53b-50043ffe282d</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -2288,6 +2332,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>ca6f105b-b93e-4749-ac72-29f60e8816b1</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -2369,6 +2414,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>529c0a26-1f65-4450-8454-8a88595b50a0</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -2434,10 +2480,12 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>54960f00-9235-4b41-8be2-f6b4e4026a4e</objectId>
      </FireControlSystemStatusRecord>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>95be0972-ec57-4474-b018-be0da50f71c1</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -2526,7 +2574,6 @@
     <mountStatus>
      <MountStatusRecord>
       <status>Operational</status>
-      <firingTargetObjectId>6a20093b-9f39-47fd-972f-49eaaefaf1d5</firingTargetObjectId>
       <objectId>6f590bc9-b2db-4618-b804-2b0522b81c0a</objectId>
      </MountStatusRecord>
      <MountStatusRecord>
@@ -2537,6 +2584,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>94d35678-84b8-47d8-9043-c0784e6cc58a</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -2578,10 +2626,12 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>a20db157-245f-4a5f-b1ca-a0f80ff2f31f</objectId>
      </FireControlSystemStatusRecord>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>c7e8c36d-2a00-4dd4-95a2-547220eca058</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -2707,10 +2757,12 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>b9738391-1ed5-4243-adf6-21ad95fc4e2f</objectId>
      </FireControlSystemStatusRecord>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>f3a47b90-a7f4-4193-8203-753b95b4f613</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -2804,6 +2856,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>b7330307-9fba-4433-bdb0-23a9083b9b30</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -2892,6 +2945,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>6958c485-0212-44bb-86b8-143cd8a79a5d</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -2913,6 +2967,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>8318a351-3aad-4a80-b774-2b6178efa181</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>
@@ -2985,6 +3040,7 @@
     <fireControlSystemStatusRecords>
      <FireControlSystemStatusRecord>
       <trackingState>Idle</trackingState>
+      <trackingSeconds>0</trackingSeconds>
       <objectId>c4142d9c-70ea-4ff2-a1e9-6221855f625b</objectId>
      </FireControlSystemStatusRecord>
     </fireControlSystemStatusRecords>

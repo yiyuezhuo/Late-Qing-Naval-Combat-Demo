@@ -226,7 +226,7 @@ public class GameManager : MonoBehaviour
     public float remainAdvanceSimulationSeconds;
     // public float simulationRateRaio = 30;
     float simulationRateRaio = 120;
-    float pulseLengthSeconds = 2;
+    float pulseLengthSeconds = 1;
 
     public void UpdateSimulation()
     {
@@ -604,14 +604,19 @@ public class GameManager : MonoBehaviour
 
     public IEnumerable<ShipLog> GetShipsRequiringFiringLineRendering()
     {
+        if (selectedShipLog == null || selectedShipLog.mapState != MapState.Deployed)
+            yield break;
+
         switch (GamePreference.Instance.firingLineDisplayMode)
         {
             case GamePreference.FiringLineDisplayMode.None:
                 break;
+
             case GamePreference.FiringLineDisplayMode.SelectedShip:
                 if (selectedShipLog != null)
                     yield return selectedShipLog;
                 break;
+
             case GamePreference.FiringLineDisplayMode.SelectedGroup:
                 if (selectedShipLog == null)
                     break;
@@ -621,6 +626,7 @@ public class GameManager : MonoBehaviour
                     yield return shipLog;
                 }
                 break;
+
             case GamePreference.FiringLineDisplayMode.SelectedRootGroup:
                 if (selectedShipLog == null)
                     break;
@@ -631,6 +637,7 @@ public class GameManager : MonoBehaviour
                 }
 
                 break;
+
             case GamePreference.FiringLineDisplayMode.All:
                 foreach (var shipLog in NavalGameState.Instance.shipLogs)
                 {

@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
-using TreeEditor;
-using UnityEngine.EventSystems;
 using System.Security;
+using System.Diagnostics;
 
 namespace NavalCombatCore
 {
@@ -25,6 +24,7 @@ namespace NavalCombatCore
     public interface IWTABattery
     {
         float EvaluateFirepowerScore(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots, float bearingRelativeToBowDeg);
+        IWTAObject GetCurrentFiringTarget();
         void SetFiringTarget(IWTAObject target);
         void ResetFiringTarget();
     }
@@ -41,7 +41,7 @@ namespace NavalCombatCore
 
         public float underfireCoef = 0.1f;
         public float overconcentrateCoef = 0.2f;
-        public float changeTargetCoef = 0.25f; // TODO: Enable it in another implementation?
+        public float changeTargetCoef = 0.5f; // TODO: Enable it in another implementation?
 
         public class ShooterRecord
         {
@@ -67,6 +67,8 @@ namespace NavalCombatCore
         public class BatteryRecord
         {
             public IWTABattery original;
+            // Frozen Values
+            public TargetRecord currentTarget;
             // Solver States
             public Dictionary<TargetRecord, float> firepowerScoreMap = new();
             public TargetRecord assignedTarget;
@@ -100,6 +102,8 @@ namespace NavalCombatCore
                 speedKnots = t.GetSpeedKnots(),
             }).ToList();
 
+            var oriToTarget = targets.ToDictionary(t => t.original, t => t);
+
             // pre-calculation
             foreach (var shooter in shooters)
             {
@@ -108,8 +112,14 @@ namespace NavalCombatCore
                     var stats = shooter.measurements[target] = MeasureStats.Measure(shooter.original, target.original);
                     foreach (var battery in shooter.batteries)
                     {
-                        var firepowerScore = battery.original.EvaluateFirepowerScore(stats.distanceYards, stats.targetPresentAspectFromObserver, target.speedKnots, stats.observerToTargetViewBearingRelativeToBowDeg);
+                        var firepowerScore = battery.original.EvaluateFirepowerScore(stats.distanceYards, stats.targetPresentAspectFromObserver, target.speedKnots, stats.observerToTargetBearingRelativeToBowDeg);
                         battery.firepowerScoreMap[target] = firepowerScore;
+
+                        var currentTargetObject = battery.original.GetCurrentFiringTarget();
+                        if (currentTargetObject != null)
+                        {
+                            battery.currentTarget = oriToTarget.GetValueOrDefault(currentTargetObject);
+                        }
                     }
                 }
             }
@@ -130,14 +140,19 @@ namespace NavalCombatCore
                             // var stats = shooter.measurements[target];
                             // var firepowerScore = battery.original.EvaluateFirepowerScore(stats.distanceYards, stats.targetPresentAspectFromObserver, target.speedKnots, stats.observerToTargetViewBearingRelativeToBowDeg);
                             var firepowerScore = battery.firepowerScoreMap[target];
+                            var gain = GetTargettingScoreGain(target.selfFirepowerScore, target.survivability,
+                                    target.underFirepower, target.batteriesCommitted, firepowerScore);
+                            if (battery.currentTarget == target)
+                            {
+                                gain *= 1 + changeTargetCoef;
+                            }
 
                             var decisionRecord = new DecisionRecord()
                             {
                                 shooter = shooter,
                                 battery = battery,
                                 target = target,
-                                gain = GetTargettingScoreGain(target.selfFirepowerScore, target.survivability,
-                                    target.underFirepower, target.batteriesCommitted, firepowerScore),
+                                gain = gain,
                                 firepowerScore = firepowerScore
                             };
                             decisionRecords.Add(decisionRecord);
@@ -149,7 +164,16 @@ namespace NavalCombatCore
                 var maxGain = decisionRecords.Max(r => r.gain);
                 if (maxGain <= 0)
                     break;
+                
                 var bestDecisionRecord = decisionRecords.First(r => r.gain == maxGain);
+
+                // DEBUG
+                // if (bestDecisionRecord.battery.currentTarget != bestDecisionRecord.target)
+                // {
+                //     var r = bestDecisionRecord;
+                //     UnityEngine.Debug.LogWarning($"Retarget: ({r.shooter}, {r.battery}) {r.battery} -> {r.target}");
+                // }
+
                 bestDecisionRecord.battery.assignedTarget = bestDecisionRecord.target; // TODO: Too harsh to battery which is capable to shoot multiply targets?
                 bestDecisionRecord.target.selfFirepowerScore += bestDecisionRecord.firepowerScore;
                 bestDecisionRecord.target.batteriesCommitted += 1;

@@ -9,8 +9,8 @@ namespace NavalCombatCore
         public float distanceYards;
         public float observerToTargetTrueBearingRelativeToNorthDeg;
         public float targetToObserverTrueBearingRelativeToNorthDeg;
-        public float observerToTargetViewBearingRelativeToBowDeg;
-        public float targetToObserverViewBearingRelativeToBowDeg;
+        public float observerToTargetBearingRelativeToBowDeg;
+        public float targetToObserverBearingRelativeToBowDeg;
         public TargetAspect observerPresentAspectFromTarget;
         public TargetAspect targetPresentAspectFromObserver;
 
@@ -34,8 +34,8 @@ namespace NavalCombatCore
                 distanceYards = distYards,
                 observerToTargetTrueBearingRelativeToNorthDeg = observerToTargetTrueBearingRelativeToNorthDeg,
                 targetToObserverTrueBearingRelativeToNorthDeg = targetToObserverTrueBearingRelativeToNorthDeg,
-                observerToTargetViewBearingRelativeToBowDeg = observerToTargetViewBearingRelativeToBowDeg,
-                targetToObserverViewBearingRelativeToBowDeg = targetToObserverViewBearingRelativeToBowDeg,
+                observerToTargetBearingRelativeToBowDeg = observerToTargetViewBearingRelativeToBowDeg,
+                targetToObserverBearingRelativeToBowDeg = targetToObserverViewBearingRelativeToBowDeg,
                 observerPresentAspectFromTarget = observerPresentAspectFromTarget,
                 targetPresentAspectFromObserver = targetPresentAspectFromObserver
             };
@@ -54,7 +54,7 @@ namespace NavalCombatCore
     {
         public static float yardToMeter = 0.9144f;
         public static float meterToYard = 1.09361f;
-
+        public static float navalMileToMeter = 1852f;
 
 
         public static float MoveAngleTowards(float current, float target, float step)

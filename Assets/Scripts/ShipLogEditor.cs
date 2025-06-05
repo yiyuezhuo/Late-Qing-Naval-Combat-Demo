@@ -189,16 +189,16 @@ namespace NavalCombatCore
         public float generalScoreProp => EvaluateGeneralScore();
 
         [CreateProperty]
-        public float firepowerBowProp => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 0);
+        public float firepowerBowProp => EvaluateBowFirepowerScore();
 
         [CreateProperty]
-        public float firepowerStarboardProp => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 90);
+        public float firepowerStarboardProp => EvaluateStarboardFirepowerScore();
 
         [CreateProperty]
-        public float firepowerSternProp => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 180);
+        public float firepowerSternProp => EvaluateSternFirepowerScore();
 
         [CreateProperty]
-        public float firepowerPortProp => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 270);
+        public float firepowerPortProp => EvaluatePortFirepowerScore();
     }
 
     public partial class FireControlSystemStatusRecord
@@ -230,6 +230,12 @@ namespace NavalCombatCore
 
     public partial class MountStatusRecord
     {
+        [CreateProperty]
+        public string firingTargetDesc
+        {
+            get => GetFiringTarget()?.namedShip?.name?.GetMergedName() ?? "[Not Specified]";
+        }
+
         [CreateProperty]
         public MountLocationRecordInfo mountLocationRecordInfo
         {
@@ -358,15 +364,6 @@ namespace NavalCombatCore
         public string shipClassDesc
         {
             get => EntityManager.Instance.Get<ShipClass>(shipClassObjectId)?.name.mergedName ?? "[Not Specified]";
-        }
-    }
-
-    public partial class MountStatusRecord
-    {
-        [CreateProperty]
-        public string firingTargetDesc
-        {
-            get => GetFiringTarget()?.namedShip?.name?.GetMergedName() ?? "[Not Specified]";
         }
     }
 }

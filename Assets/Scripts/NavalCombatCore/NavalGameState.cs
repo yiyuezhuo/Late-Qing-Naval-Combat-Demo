@@ -17,7 +17,19 @@ namespace NavalCombatCore
         Unknown
     }
 
-    [Serializable]
+    public class SimulationClock
+    {
+        public float intervalSeconds;
+        public float accumulateSecond;
+        public int Step(float deltaSeconds)
+        {
+            var unresolved = deltaSeconds + accumulateSecond;
+            var tick = (int)Math.Floor(unresolved / intervalSeconds);
+            accumulateSecond = unresolved % intervalSeconds;
+            return tick;
+        }
+    }
+
     public class NavalGameState
     {
         public List<Leader> leaders = new();
@@ -28,6 +40,8 @@ namespace NavalCombatCore
         // public List<ShipGroup> rootShipGroups = new();
         public List<ShipGroup> shipGroups = new();
         public ScenarioState scenarioState = new();
+
+        public SimulationClock weaponSimulationAssignmentClock = new(){intervalSeconds = 120};
 
         public event EventHandler<List<ShipGroup>> shipGroupsChanged;
 
@@ -233,11 +247,16 @@ namespace NavalCombatCore
         public void Step(float deltaSeconds)
         {
             // pre-advance resolution
-
-            foreach ((var meShipLogs, var otherShipLogs) in GetOpposeSidePairs())
+            if (weaponSimulationAssignmentClock.Step(deltaSeconds) > 0)
             {
-                var solver = new WeaponTargetAssignmentSolver();
-                solver.Solve(meShipLogs, otherShipLogs);
+                foreach ((var meShipLogs, var otherShipLogs) in GetOpposeSidePairs())
+                {
+                    var solver = new WeaponTargetAssignmentSolver();
+                    solver.Solve(meShipLogs, otherShipLogs);
+
+                    var planner = new LowLevelCoursePlanner();
+                    planner.Plan(meShipLogs, otherShipLogs, 360); // Extrapolate 360s
+                }
             }
 
             // advance

@@ -273,16 +273,40 @@ namespace NavalCombatCore
             var batteryRecord = GetBatteryRecord();
             if (distanceYards > batteryRecord.rangeYards)
                 return 0;
-
+            
+            if (!IsMaxDistanceDoctrineRespected(distanceYards))
+                return 0;
+            
             var firepowerPerBarrel = batteryRecord.EvaluateFirepowerPerBarrel(distanceYards, targetAspect, targetSpeedKnots);
             var barrels = mountStatus.Where(
                 m => m.status == MountStatus.Operational &&
-                m.GetMountLocationRecordInfo().record.IsInArc(bearingRelativeToBowDeg)
+                    m.GetMountLocationRecordInfo().record.IsInArc(bearingRelativeToBowDeg)
             ).Sum(m => m.GetMountLocationRecordInfo().record.barrels);
             return barrels * firepowerPerBarrel;
         }
 
-        public void SetFiringTarget(ShipLog target)
+        public bool IsMaxDistanceDoctrineRespected(float distanceYards)
+        {
+            var shellSize = GetBatteryRecord()?.shellSizeInch ?? 0;
+            var doctrine = EntityManager.Instance.GetParent<ShipLog>(this)?.doctrine;
+            if (doctrine == null || shellSize == 0)
+                return true;
+
+            Unspecifiable<float> d = null;
+            if (shellSize > 8)
+            {
+                d = doctrine.GetMaximumFiringDistanceYardsFor200mmPlus();
+            }
+            else if (shellSize > 4)
+            {
+                d = doctrine.GetMaximumFiringDistanceYardsFor100mmTo200mm();
+            }
+            if (d == null || !d.isSpecified)
+                return true;
+            return distanceYards <= d.value;
+        }
+
+        public void SetFiringTargetAutomatic(ShipLog target) // For automatic fire
         {
             foreach (var mnt in mountStatus)
             {
@@ -303,6 +327,10 @@ namespace NavalCombatCore
                 return;
 
             var stats = MeasureStats.Measure(shipLog, target);
+
+            if (!IsMaxDistanceDoctrineRespected(stats.distanceYards))
+                return;
+
             foreach (var fcs in fireControlSystemStatusRecords)
             {
                 fcs.SetTrackingTarget(target);
@@ -318,7 +346,7 @@ namespace NavalCombatCore
             }
         }
 
-        void IWTABattery.SetFiringTarget(IWTAObject target) => SetFiringTarget(target as ShipLog); // TODO: Support other IWTAObject (land targets?)
+        void IWTABattery.SetFiringTarget(IWTAObject target) => SetFiringTargetAutomatic(target as ShipLog); // TODO: Support other IWTAObject (land targets?)
 
         public void ResetFiringTarget()
         {

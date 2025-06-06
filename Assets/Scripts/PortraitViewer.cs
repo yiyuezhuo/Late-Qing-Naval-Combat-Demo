@@ -27,6 +27,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public Transform headingTransform;
     public Transform flagRotationBase;
     public Transform arrowBaseTransform;
+    public Transform cubeColliderTransform;
     float scaleFactor = 0.015f;
     // public RectTransform canvasRectTransform;
     public MeshRenderer flagRenderer;
@@ -126,6 +127,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         var shipLengthFoot = shipLog?.shipClass.lengthFoot ?? 300;
         var shipBeamFoot = shipLog?.shipClass.beamFoot ?? 60;
         iconTransform.localScale = new Vector3(shipLengthFoot * Utils.footToWu * modelScale, shipBeamFoot * Utils.footToWu * modelScale, 1);
+        cubeColliderTransform.localScale = new Vector3(shipLengthFoot * Utils.footToWu * 1, shipBeamFoot * Utils.footToWu * 1, 200 * Utils.footToWu); // 100 foots above-waterline height for LOS calculation  
 
         var zEuler = Utils.TrueNorthCWDegToRightCCWDeg(shipLog.GetHeadingDeg());
         // iconTransform.localEulerAngles = new Vector3(0, 0, zEuler);

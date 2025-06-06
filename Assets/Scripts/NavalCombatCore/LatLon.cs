@@ -10,11 +10,16 @@ namespace NavalCombatCore
         {
 
         }
-        
+
         public LatLon(float latDeg, float lonDeg)
         {
             LatDeg = latDeg;
             LonDeg = lonDeg;
+        }
+
+        public override string ToString()
+        {
+            return $"LatLon({LatDeg}, {LonDeg})";
         }
     }
 

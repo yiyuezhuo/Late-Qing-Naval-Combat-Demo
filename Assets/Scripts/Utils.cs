@@ -15,7 +15,7 @@ public static class Utils
     // public static float r = 200000;
     // public static float r = 75000;
     // public static float r = 50000;
-    public static float r = 10000;
+    public static float r = 10000; // world unit
     // public static float r = 50000;
     // public static float r = 5000;
     // public static float r = 500; // 50 world unit (wu) = 6371km (earth radius)
@@ -27,6 +27,26 @@ public static class Utils
     public static float wuToYards = wuToKyd * 1000;
     public static float wuToFoot = wuToYards * 3;
     public static float footToWu = 1 / wuToFoot;
+
+    public static Vector3 LatitudeLongitudeDegHeightFootToVector3(float latDeg, float lonDeg, float heightFoot)
+    {
+        var latRad = latDeg * Mathf.Deg2Rad;
+        var lonRad = lonDeg * Mathf.Deg2Rad;
+
+        var _r = r + (heightFoot * footToWu);
+
+        var y = _r * Mathf.Sin(latRad);
+        var hr = Mathf.Abs(_r * Mathf.Cos(latRad));
+        var x = hr * Mathf.Sin(lonRad);
+        var z = hr * -Mathf.Cos(lonRad);
+
+        return new Vector3(x, y, z);
+    }
+
+    public static Vector3 LatLonHeightFootToVector3(LatLon latLon, float heightFoot)
+    {
+        return LatitudeLongitudeDegHeightFootToVector3(latLon.LatDeg, latLon.LonDeg, heightFoot);
+    }
 
     public static Vector3 LatitudeLongitudeDegToVector3(float latDeg, float lonDeg)
     {

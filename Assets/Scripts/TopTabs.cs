@@ -64,6 +64,9 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         var gamePreferenceRoot = root.Q<VisualElement>("GamePreferenceRoot");
         gamePreferenceRoot.dataSource = GamePreference.Instance;
+
+        var coreParameterRoot = root.Q<VisualElement>("CoreParameterRoot");
+        coreParameterRoot.dataSource = CoreParameter.Instance;
     }
 
     void OnFullStateXMLLoaded(object sender, string text)

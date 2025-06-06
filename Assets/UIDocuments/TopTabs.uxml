@@ -33,6 +33,28 @@
                             <ui:DataBinding property="value" data-source-path="firingLineDisplayMode" binding-mode="TwoWay" />
                         </Bindings>
                     </ui:EnumField>
+                    <ui:FloatField label="Pulse Legnth (seconds)">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="pulseLengthSeconds" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField label="Simulate Rate Ratio">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="simulationRateRaio" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                </ui:VisualElement>
+                <ui:VisualElement data-source-type="NavalCombatCore.CoreParameter, Assembly-CSharp" name="CoreParameterRoot" style="flex-grow: 1; flex-direction: row;">
+                    <ui:Toggle label="Land Collision">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="checkLandCollision" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
+                    <ui:Toggle label="Ship Collision">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="checkShipCollision" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
                 </ui:VisualElement>
             </ui:Tab>
         </ui:TabView>

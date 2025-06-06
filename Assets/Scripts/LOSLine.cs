@@ -79,7 +79,6 @@ public class LOSLine : MonoBehaviour
                 var endPos = raycastEnd;
 
                 string maskMessage = null;
-                // var maskDistanceM = 0;
                 if (Physics.Raycast(raycastStart, direction, out RaycastHit hit, Mathf.Infinity, losLayerMask))
                 {
                     endPos = hit.point;
@@ -97,9 +96,6 @@ public class LOSLine : MonoBehaviour
                             maskMessage = $"Masked by {root.name} (DEBUG)";
                         }
                     }
-                    // var hitLatLon = Utils.Vector3ToLatLon(hit.point);
-                    // Geodesic.WGS84.Inverse(currentLatLon.LatDeg, currentLatLon.LonDeg, hitLatLon.LatDeg, hitLatLon.LonDeg, out var s12);
-                    // maskDistanceM = s12
                 }
 
                 // Check Earth's curvature, use Geodesic distance and visibility table of SK 5 for size 3
@@ -107,10 +103,10 @@ public class LOSLine : MonoBehaviour
                 var endLatLon = Utils.Vector3ToLatLon(endPos);
                 var inverseLine = Geodesic.WGS84.InverseLine(startLatLon.LatDeg, startLatLon.LonDeg, endLatLon.LatDeg, endLatLon.LonDeg);
 
-                if (inverseLine.Distance > 0)
-                {
-                    Debug.Log($"{currentLatLon} -> {endLatLon}: {inverseLine.Distance}");
-                }
+                // if (inverseLine.Distance > 0)
+                // {
+                //     Debug.Log($"{currentLatLon} -> {endLatLon}: {inverseLine.Distance}");
+                // }
 
                 if (inverseLine.Distance * MeasureUtils.meterToYard > 32900) // blocked by Earth's curvature (SK5 Table D1, Size 4 and up in best visibility)
                 {

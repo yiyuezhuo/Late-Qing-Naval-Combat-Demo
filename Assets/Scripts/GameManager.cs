@@ -130,65 +130,10 @@ public class GameManager : MonoBehaviour
 
         OOBEditor.Instance.oobTreeView.ExpandAll();
 
-        // var fullStateText = Resources.Load<TextAsset>("Scenarios/Battle of Pungdo/FullState").text;
-        // var fullState = FullState.FromXML(fullStateText);
-        // TopTabs.Instance.LoadViewState(fullState.viewState);
-        // NavalGameState.Instance.UpdateTo(fullState.navalGameState);
-
-
         NavalGameState.Instance.ResetAndRegisterAll(); // Note FromXml call has call it many times.
-
-        // Test
-
-        // var res = Resources.LoadAll<Sprite>("Flags");
-        // var res2 = Resources.LoadAll<Texture>("Flags");
-        // var res3 = Resources.LoadAll<Texture2D>("Flags");
-        // var res4 = Resources.LoadAll<Sprite>("Leader_Portraits");
-        // var res5 = Resources.LoadAll<Texture2D>("Leader_Portraits");
-        // var res6 = Resources.LoadAll<Texture>("Leader_Portraits");
-
-        // Debug.Log(res);
-
-        // for (int year = 1890; year < 2026; year++)
-        // {
-        //     // var date = new DateTime(year, 3, 5, 0, 0, 0, DateTimeKind.Utc);
-        //     var date = new DateTime(year, 9, 17, 4, 30, 0, DateTimeKind.Utc);
-        //     var lat = 39;
-        //     var lng = 123;
-
-        //     var sunPosition = SunCalc.GetSunPosition(date, lat, lng);
-        //     var sunPosition2 = SunCalcSharp.SunCalc.GetPosition(date, lat, lng);
-        //     Debug.Log($"{year} => Azi={sunPosition.Azimuth}, Alt={sunPosition.Altitude}, Azi2={sunPosition2.Azimuth}, Alt2={sunPosition2.Altitude}");
-        // }
-
-        // // get today's sun event times for Milton Keynes
-        // var times = SunCalcSharp.SunCalc.GetTimes(DateTime.UtcNow, 52.0406, -0.7594);
-        // var sunrise = times.Sunrise;
-        // var sunset = times.Sunset;
-
-        // // get position of the sun (azimuth and altitude) at sunrise
-        // var positionAtSunrise = SunCalcSharp.SunCalc.GetPosition(times.Sunrise.Value, 52.0406, -0.7594);
-        // var solarAzimuthAtSunrise = positionAtSunrise.Azimuth;
-        // var solarAltitudeAtSunrise = positionAtSunrise.Altitude;
-
-        // // get solar azimuth in degrees
-        // var azimuthInDegrees = positionAtSunrise.Azimuth * 180 / Math.PI;
-
-        // Debug.Log($"times={times}, sunrise={sunrise}, sunset={sunset}, positionAtSunrise={positionAtSunrise}, solarAzimuthAtSunrise={solarAzimuthAtSunrise}, solarAltitudeAtSunrise={solarAltitudeAtSunrise}, azimuthInDegrees={azimuthInDegrees}");
     }
 
     public Dictionary<string, PortraitViewer> objectId2Viewer = new();
-
-    // public LatLon hoveringLatLon = new();
-    // public float hoveringTimeZoneOffset;
-    // public DateTime hoveringLocalDateTime = new();
-    // public SunState hoveringSunState = new();
-
-    // [CreateProperty]
-    // public DayNightLevel hoveringDayNightLevel
-    // {
-    //     get => hoveringSunState?.GetDayNightLevel() ?? DayNightLevel.Day;
-    // }
 
     public string hoveringLocationInfo;
 
@@ -223,21 +168,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public float remainAdvanceSimulationSeconds;
+    public float remainAdvanceSimulationSecondsRequestedByKeyPressing; // Requested by KeyCode 1-9
+    public float remainAdvanceSimulationSecondsRequestedByUpdate;
+    
     // public float simulationRateRaio = 30;
-    float simulationRateRaio = 120;
-    float pulseLengthSeconds = 1;
+    // float simulationRateRaio = 120;
+    // float pulseLengthSeconds = 1;
 
     public void UpdateSimulation()
     {
+        var pulseLengthSeconds = GamePreference.Instance.pulseLengthSeconds;
+        var simulationRateRaio = GamePreference.Instance.simulationRateRaio;
+
         var realSeconds = Time.deltaTime;
-        var advanceSimulationSeconds = realSeconds * simulationRateRaio;
-        while (remainAdvanceSimulationSeconds > 0 && advanceSimulationSeconds > 0)
+        if (remainAdvanceSimulationSecondsRequestedByKeyPressing > pulseLengthSeconds)
         {
-            var pulseSeconds = Math.Min(pulseLengthSeconds, Math.Min(remainAdvanceSimulationSeconds, advanceSimulationSeconds));
-            NavalGameState.Instance.Step(pulseSeconds);
-            remainAdvanceSimulationSeconds -= pulseSeconds;
-            advanceSimulationSeconds -= pulseSeconds;
+            remainAdvanceSimulationSecondsRequestedByUpdate += realSeconds * simulationRateRaio;
+        }
+
+        while (remainAdvanceSimulationSecondsRequestedByKeyPressing > pulseLengthSeconds && remainAdvanceSimulationSecondsRequestedByUpdate > pulseLengthSeconds)
+        {
+            NavalGameState.Instance.Step(pulseLengthSeconds);
+            remainAdvanceSimulationSecondsRequestedByKeyPressing -= pulseLengthSeconds;
+            remainAdvanceSimulationSecondsRequestedByUpdate -= pulseLengthSeconds;
         }
     }
 
@@ -351,7 +304,7 @@ public class GameManager : MonoBehaviour
                 {
                     if (Input.GetKeyDown(keyCode))
                     {
-                        remainAdvanceSimulationSeconds = advanceSimulationSeconds;
+                        remainAdvanceSimulationSecondsRequestedByKeyPressing = advanceSimulationSeconds;
                     }
                 }
 
@@ -658,4 +611,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    
 }

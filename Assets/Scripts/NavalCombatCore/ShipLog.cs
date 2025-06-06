@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using System;
 using GeographicLib;
+using Unity.VisualScripting;
 
 
 namespace NavalCombatCore
@@ -833,12 +834,60 @@ namespace NavalCombatCore
             var distNm = speedKnots / 3600 * deltaSeconds;
             var distM = distNm * 1852;
             double arcLength = Geodesic.WGS84.Direct(position.LatDeg, position.LonDeg, headingDeg, distM, out double lat2, out double lon2);
-            position = new LatLon((float)lat2, (float)lon2);
 
+            var newPosition = new LatLon((float)lat2, (float)lon2);
+
+            var newPositionBlocked = false;
+            if (CoreParameter.Instance.checkLandCollision)
+            {
+                newPositionBlocked = ElevationService.Instance.GetElevation(newPosition) > 0;
+            }
+            if (!newPositionBlocked && CoreParameter.Instance.checkShipCollision)
+            {
+                ShipLog collided = null; // "Collider" check
+                foreach (var other in NavalGameState.Instance.shipLogsOnMap)
+                {
+                    if (other == this)
+                        continue;
+                    var otherPos = other.position;
+
+                    // Exact Method
+                    // Geodesic.WGS84.Inverse(newPosition.LatDeg, newPosition.LonDeg, otherPos.LatDeg, otherPos.LonDeg, out var distanceM, out var azi1, out var azi2);
+                    var (distanceKm, azi1) = MeasureStats.Approximation.CalculateDistanceKmAndBearingDeg(newPosition.LatDeg, newPosition.LonDeg, otherPos.LatDeg, otherPos.LonDeg);
+                    var distanceM = distanceKm * 1000;
+                    var azi2 = azi1;
+
+                    if (MeasureUtils.GetPositiveAngleDifference(headingDeg, (float)azi1) > 90)
+                        continue;
+
+                    var distanceFoot = distanceM * MeasureUtils.meterToFoot;
+                    var lengthFoot = shipClass.lengthFoot;
+                    var otherLengthFoot = other.shipClass.lengthFoot;
+                    if (distanceFoot < lengthFoot / 2 + otherLengthFoot / 2)
+                    {
+                        var diff = MeasureUtils.GetPositiveAngleDifference(other.headingDeg, (float)azi2);
+                        var coef = Math.Abs(diff - 90) / 90;
+                        var otherMix = otherLengthFoot * coef + other.shipClass.beamFoot * (1 - coef);
+                        if (distanceFoot < lengthFoot / 2 + otherMix / 2)
+                        {
+                            collided = other;
+                            break;
+                        }
+                    }
+                }
+                newPositionBlocked = collided != null; // TODO: Handle deliberately hostile ramming and speed change
+            }
+
+            if (!newPositionBlocked)
+            {
+                position = newPosition;
+            }
             // 
 
             foreach (var bs in batteryStatus)
+            {
                 bs.Step(deltaSeconds);
+            }
         }
 
         public float EvaluateArmorScore()

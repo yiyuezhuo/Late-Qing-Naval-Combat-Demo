@@ -203,9 +203,16 @@ namespace NavalCombatCore
 
         public float EvaluateAttackScore(ExtrapolatedRecord shooter, ExtrapolatedRecord target)
         {
-            var stats = MeasureStats.Measure(shooter, target);
-            var distanceScore = Math.Max(0, (36000 - stats.distanceYards) / 36000);
-            var angleScore = shooter.EvaluateSmoothedFirepower(stats.observerToTargetBearingRelativeToBowDeg);
+            // Exact method
+            // var stats = MeasureStats.Measure(shooter, target);
+            // var distanceYards = stats.distanceYards;
+            // var shooterToTargetBearingRelativeToBowDeg = stats.observerToTargetBearingRelativeToBowDeg;
+            // Approximation method
+            var distanceYards = (float)MeasureStats.Approximation.HaversineDistanceYards(shooter, target);
+            var shooterToTargetBearingRelativeToBowDeg = MeasureUtils.GetPositiveAngleDifference((float)MeasureStats.Approximation.CalculateInitialBearing(shooter, target), shooter.headingDeg);
+
+            var distanceScore = Math.Max(0, (36000 - distanceYards) / 36000);
+            var angleScore = shooter.EvaluateSmoothedFirepower(shooterToTargetBearingRelativeToBowDeg);
             var firepowerScore = distanceScore * angleScore;
             var valueScore = target.firepowerScore / target.survivability;
             return firepowerScore * valueScore;

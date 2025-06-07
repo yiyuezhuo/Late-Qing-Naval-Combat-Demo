@@ -1,0 +1,60 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" data-source-path="navalGameState.scenarioState" class="panel" style="flex-grow: 1;">
+        <ui:Label text="Scenario State Editor" class="title" />
+        <ui:VisualElement style="flex-grow: 0;">
+            <ui:VisualElement data-source-path="dateTimeViewModel" style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Year" />
+                <ui:IntegerField style="width: 75px;">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="year" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:IntegerField>
+                <ui:Label text="Month" />
+                <ui:IntegerField style="width: 50px;">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="month" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:IntegerField>
+                <ui:Label text="Day" />
+                <ui:IntegerField style="width: 50px;">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="day" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:IntegerField>
+                <ui:Label text="Hour" />
+                <ui:IntegerField style="width: 50px;">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="hour" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:IntegerField>
+                <ui:Label text="Minute" />
+                <ui:IntegerField style="width: 50px;">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="minute" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:IntegerField>
+                <ui:Label text="Second" />
+                <ui:IntegerField style="width: 50px;">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="second" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:IntegerField>
+            </ui:VisualElement>
+            <ui:Label>
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="dateTime" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:EnumField label="Visibility" value="Center" type="NavalCombatCore.VisibilityDescription, Assembly-CSharp">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="visibility" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:EnumField>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+            <ui:Button text="Import" name="ImportButton" style="flex-basis: 100px; flex-grow: 1;" />
+            <ui:Button text="Export" name="ExportButton" style="flex-basis: 100px; flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:Button text="Confirm" name="ConfirmButton" />
+    </ui:VisualElement>
+</ui:UXML>

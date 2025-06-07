@@ -10,7 +10,6 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System;
-using Unity.VisualScripting;
 // using SunCalcNet;
 
 public interface IColliderRootProvider
@@ -98,7 +97,7 @@ public class GameManager : MonoBehaviour
     }
 
     // public static string scenarioSuffex = "_Pungdo"; // temp hack
-    public static string scenarioSuffex = "_Yalu";
+    public static string scenarioSuffix = "_Yalu";
 
     public void Start()
     {
@@ -122,11 +121,13 @@ public class GameManager : MonoBehaviour
         var namedShipsXml = _load("NamedShips");
         navalGameState.NamedShipsFromXML(namedShipsXml);
 
-        var shipLogsXml = _load("ShipLogs" + scenarioSuffex);
+        var shipLogsXml = _load("ShipLogs" + scenarioSuffix);
         navalGameState.ShipLogsFromXML(shipLogsXml);
 
-        var rootShipGroupsXml = _load("ShipGroups" + scenarioSuffex);
+        var rootShipGroupsXml = _load("ShipGroups" + scenarioSuffix);
         navalGameState.ShipGroupsFromXML(rootShipGroupsXml);
+
+        navalGameState.ScenarioStateFromXML(_load("ScenarioState" + scenarioSuffix));
 
         OOBEditor.Instance.oobTreeView.ExpandAll();
 

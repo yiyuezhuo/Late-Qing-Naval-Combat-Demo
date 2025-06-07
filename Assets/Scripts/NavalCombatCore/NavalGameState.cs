@@ -41,7 +41,7 @@ namespace NavalCombatCore
         public List<ShipGroup> shipGroups = new();
         public ScenarioState scenarioState = new();
 
-        public SimulationClock weaponSimulationAssignmentClock = new(){intervalSeconds = 120};
+        public SimulationClock weaponSimulationAssignmentClock = new() { intervalSeconds = 120 };
 
         public event EventHandler<List<ShipGroup>> shipGroupsChanged;
 
@@ -147,6 +147,16 @@ namespace NavalCombatCore
             SyncShipLogParentWithGroupHierarchy();
 
             shipGroupsChanged?.Invoke(this, shipGroups);
+        }
+
+        public void ScenarioStateFromXML(string xml)
+        {
+            scenarioState = XmlUtils.FromXML<ScenarioState>(xml);
+        }
+
+        public string ScenarioStateToXML()
+        {
+            return XmlUtils.ToXML(scenarioState);
         }
 
         public void SyncShipLogParentWithGroupHierarchy()
@@ -269,11 +279,6 @@ namespace NavalCombatCore
             // advance
             scenarioState.Step(deltaSeconds);
 
-            // foreach (var shipLog in shipLogs)
-            // {
-            //     shipLog.Step(deltaSeconds);
-            // }
-
             foreach (var shipLog in shipLogsOnMap)
                 shipLog.StepProcessTurn(deltaSeconds); // update heading
 
@@ -285,6 +290,8 @@ namespace NavalCombatCore
 
             foreach (var shipLog in shipLogsOnMap)
                 shipLog.StepTryMoveToNewPosition(deltaSeconds); // update position
+
+            PrecalculationContext.Instance.gunneryFireContext.Calculate();
 
             foreach (var shipLog in shipLogsOnMap)
                 shipLog.StepBatteryStatus(deltaSeconds); // gunnery resolution
@@ -364,6 +371,37 @@ namespace NavalCombatCore
             var containerToShipLogs = GroupByShipLogByRootGroup();
             var shipLogToContainer = InverseContainerToMembersMap(containerToShipLogs);
             return containerToShipLogs[shipLogToContainer[shipLog]];
+        }
+
+        public IEnumerable<BatteryStatus> batteryStatusesFireable
+        {
+            get
+            {
+                foreach (var shipLog in shipLogsOnMap)
+                {
+                    foreach (var batteryStatus in shipLog.batteryStatus)
+                    {
+                        yield return batteryStatus;
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<MountStatusRecord> mountStatusesFireable
+        {
+            get
+            {
+                foreach (var bty in batteryStatusesFireable)
+                {
+                    foreach (var mnt in bty.mountStatus)
+                    {
+                        if (mnt.status == MountStatus.Operational)
+                        {
+                            yield return mnt;
+                        }
+                    }
+                }
+            }
         }
     }
 }

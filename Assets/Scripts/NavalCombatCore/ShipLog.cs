@@ -33,6 +33,18 @@ namespace NavalCombatCore
 
             return string.Join(", ", words);
         }
+
+        public int GetValue(AmmunitionType ammo)
+        {
+            return ammo switch
+            {
+                AmmunitionType.ArmorPiercing => ArmorPiercing,
+                AmmunitionType.SemiArmorPiercing => semiArmorPiercing,
+                AmmunitionType.Common => common,
+                AmmunitionType.HighExplosive => highExplosive,
+                _ => 0
+            };
+        }
     }
 
     public enum MountStatus
@@ -82,22 +94,33 @@ namespace NavalCombatCore
 
         public void Step(float deltaSeconds)
         {
+            if (status != MountStatus.Operational)
+                return;
+
             var tgt = GetFiringTarget();
             if (tgt != null)
             {
                 processSeconds += deltaSeconds;
 
+                var fireCtx = PrecalculationContext.Instance.gunneryFireContext;
+
                 // var shooter = GetPlatform();
-                var ctx = GetFullContext();
+                var ctx = fireCtx.mountStatusRecordMap[this].ctx;
                 if (!ctx.fullyResolved)
                     return;
 
                 var shooter = ctx.shipLog;
-                var stats = MeasureStats.MeasureApproximation(shooter, tgt); // TODO: Deduplicate redundant geo calculation, cache in the pulse level cache?
-                var isInArc = ctx.mountLocationRecord.IsInArc(stats.observerToTargetBearingRelativeToBowDeg);
-                var isInRange = stats.distanceYards <= ctx.batteryRecord.rangeYards;
-                if (!isInRange || !isInArc)
+
+                var isFireChecked =  fireCtx.shipLogSupplementaryMap[tgt].batteriesFiredAtMe.Contains(ctx.batteryStatus);
+                if (!isFireChecked) // include range / arc check
                     return;
+                var shooterTargetSup = fireCtx.GetOrCalcualteShipLogPairSupplementary(shooter, tgt);
+                var stats = shooterTargetSup.stats;
+                // var stats = MeasureStats.MeasureApproximation(shooter, tgt); // TODO: Deduplicate redundant geo calculation, cache in the pulse level cache?
+                // var isInArc = ctx.mountLocationRecord.IsInArc(stats.observerToTargetBearingRelativeToBowDeg);
+                // var isInRange = stats.distanceYards <= ctx.batteryRecord.rangeYards;
+                // if (!isInRange || !isInArc)
+                //     return;
 
                 var penRecord = ctx.batteryRecord.penetrationTableRecords.FirstOrDefault(r => stats.distanceYards <= r.distanceYards);
                 if (penRecord == null)
@@ -109,7 +132,7 @@ namespace NavalCombatCore
 
                 var fireControlValue = fireControlRow.GetValue(penRecord.rangeBand, stats.targetPresentAspectFromObserver);
 
-                var maskCheckResult = ServiceLocator.Get<IMaskCheckService>()?.Check(shooter, tgt);
+                var maskCheckResult = shooterTargetSup.GetOrCalcualteMaskCheckResult();
                 // TODO: Add overcenteration
             }
             else

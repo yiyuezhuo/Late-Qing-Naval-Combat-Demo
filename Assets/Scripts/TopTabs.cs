@@ -32,6 +32,9 @@ public class TopTabs : SingletonDocument<TopTabs>
         var oobEditorButton = root.Q<Button>("OOBEditorButton");
         oobEditorButton.clicked += () => OOBEditor.Instance.Show();
 
+        var scenarioStateEditorButton = root.Q<Button>("ScenarioStateEditorButton");
+        scenarioStateEditorButton.clicked += ScenarioStateEditor.Instance.Show;
+
         playerDropdownField = root.Q<DropdownField>("PlayerDropdownField");
 
         NavalGameState.Instance.shipGroupsChanged -= OnRootShipGroupsChanged;

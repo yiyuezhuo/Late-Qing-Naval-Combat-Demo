@@ -28,7 +28,20 @@ namespace NavalCombatCore
         }
     }
 
-    public class ScenarioState
+    public enum VisibilityDescription
+    {
+        DenseFog, // Code: 0-2, 0%
+        LightFog, // COde 3, 1-3%
+        ThinFog, // Code 4, 3-5%
+        Haze, // Code 5, 5-8%
+        LightHaze, // Code 6, 8-18%
+        Clear, // Code 7, 18-37%
+        VeryClear1, // Code 8, 37-60%
+        VeryClear2, // Code 8, 60-85%
+        ExceptionallyClear // Code 9, 85%-95%
+    }
+
+    public partial class ScenarioState
     {
         public DateTime dateTime = new DateTime(1894, 9, 17, 4, 30, 0, DateTimeKind.Utc); // 4:30 +8 (TZ) => 12:30, thus begin time of the Battle of Yalu river
         // public DateTime dateTime = DateTime.Now;
@@ -37,6 +50,7 @@ namespace NavalCombatCore
         // public DateTime dateTime = new DateTime(2013, 9, 7, 0, 0, 0, DateTimeKind.Utc);
         // public DateTime dateTime = new DateTime(2013, 9, 7, 4, 30, 0, DateTimeKind.Utc);
         // public DateTime dateTime = new DateTime(2013, 9, 17, 4, 30, 0, DateTimeKind.Utc);
+        public VisibilityDescription visibility = VisibilityDescription.ExceptionallyClear;
 
         public float GetTimeZoneOffset(float longtitude)
         {

@@ -529,7 +529,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         exportButton.clicked += () =>
         {
             var content = GameManager.Instance.navalGameState.ShipLogsToXML();
-            IOManager.Instance.SaveTextFile(content, "ShipLogs" + GameManager.scenarioSuffex, "xml");
+            IOManager.Instance.SaveTextFile(content, "ShipLogs" + GameManager.scenarioSuffix, "xml");
         };
 
         var importButton = root.Q<Button>("ImportButton");

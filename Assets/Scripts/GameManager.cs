@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
 
     public float remainAdvanceSimulationSecondsRequestedByKeyPressing; // Requested by KeyCode 1-9
     public float remainAdvanceSimulationSecondsRequestedByUpdate;
-    
+
     // public float simulationRateRaio = 30;
     // float simulationRateRaio = 120;
     // float pulseLengthSeconds = 1;
@@ -612,5 +612,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+
 }

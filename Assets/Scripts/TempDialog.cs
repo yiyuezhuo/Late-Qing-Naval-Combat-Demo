@@ -25,18 +25,25 @@ public class TempDialog
 
         root.Add(el);
 
-        confirmButton.clicked += () =>
+        if (confirmButton != null)
         {
-            root.Remove(el);
+            confirmButton.clicked += () =>
+            {
+                root.Remove(el);
 
-            onConfirmed?.Invoke(this, el);
-        };
-        cancelButton.clicked += () =>
+                onConfirmed?.Invoke(this, el);
+            };
+        }
+
+        if (cancelButton != null)
         {
-            root.Remove(el);
+            cancelButton.clicked += () =>
+            {
+                root.Remove(el);
 
-            onCancelled?.Invoke(this, el);
-        };
+                onCancelled?.Invoke(this, el);
+            };
+        }
 
         el.style.position = Position.Absolute;
         el.style.left = new Length(50, LengthUnit.Percent);

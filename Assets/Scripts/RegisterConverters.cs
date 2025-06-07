@@ -142,6 +142,9 @@ public static class RegisteredConverters
         {
             return shipLog?.leader?.name.mergedName ?? "[Not Specified]";
         });
+
+        Register("AmmunitionType => int", (ref AmmunitionType type) => (int)type);
+        Register("int => AmmunitionType", (ref int idx) => (AmmunitionType)idx);
     }
 
     // static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)

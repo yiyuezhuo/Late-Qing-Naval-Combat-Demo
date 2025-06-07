@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:DropdownField data-source-type="NavalCombatCore.MountStatusRecord, Assembly-CSharp" choices="AP,SAP,COM,HE" index="0">
+        <Bindings>
+            <ui:DataBinding property="index" data-source-path="ammunitionType" source-to-ui-converters="AmmunitionType =&gt; int" ui-to-source-converters="int =&gt; AmmunitionType" binding-mode="TwoWay" />
+        </Bindings>
+    </ui:DropdownField>
+</ui:UXML>

@@ -8,6 +8,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset shipLogSelectorDocument;
     public VisualTreeAsset leaderSelectorDocument;
     public VisualTreeAsset namedShipSelectorDocument;
+    public VisualTreeAsset messageDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,6 +20,30 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupMessageDialog(string message, string title = null)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = messageDialogDocument,
+            templateDataSource = null
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var contentTextField = el.Q<TextField>("ContentTextField");
+
+            contentTextField.SetValueWithoutNotify(message);
+            if (title != null)
+            {
+                var titleLabel = el.Q<Label>("TitleLabel");
+                titleLabel.text = title;
+            }
+        };
+
+        tempDialog.Popup();
     }
 
     public void PopupLeaderSelectorDialogForSpecifyForGroup()

@@ -1164,7 +1164,8 @@ MonoBehaviour:
   - postureType: 1
     material: {fileID: 2100000, guid: b352e5d9bc233e44abe8359a017f9e95, type: 2}
   hoveringLocationInfo: 
-  remainAdvanceSimulationSeconds: 0
+  remainAdvanceSimulationSecondsRequestedByKeyPressing: 0
+  remainAdvanceSimulationSecondsRequestedByUpdate: 0
   selectedShipClassIndex: 0
   selectedShipLogObjectId: 
   selectedLeaderObjectId: 
@@ -2423,6 +2424,7 @@ MonoBehaviour:
   shipLogSelectorDocument: {fileID: 9197481963319205126, guid: 31edb5b77f8c151428226ff6586dd5ca, type: 3}
   leaderSelectorDocument: {fileID: 9197481963319205126, guid: 22df8a3a20cf39245be9903bee3fae44, type: 3}
   namedShipSelectorDocument: {fileID: 9197481963319205126, guid: 0cbfd23cf85f99b47a456cb23aa45057, type: 3}
+  messageDialogDocument: {fileID: 9197481963319205126, guid: 7a2a6b4bf5bdf42488d2d2f6c8dd3ceb, type: 3}
 --- !u!114 &2024837593
 MonoBehaviour:
   m_ObjectHideFlags: 0

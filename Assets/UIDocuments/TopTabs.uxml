@@ -27,7 +27,7 @@
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Preference">
-                <ui:VisualElement name="GamePreferenceRoot" data-source-type="GamePreference, Assembly-CSharp" style="flex-grow: 1; flex-direction: row;">
+                <ui:VisualElement name="GamePreferenceRoot" data-source-type="GamePreference, Assembly-CSharp" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:EnumField label="Fire Line Display" value="Center" type="GamePreference+FiringLineDisplayMode, Assembly-CSharp">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="firingLineDisplayMode" binding-mode="TwoWay" />
@@ -44,7 +44,7 @@
                         </Bindings>
                     </ui:FloatField>
                 </ui:VisualElement>
-                <ui:VisualElement data-source-type="NavalCombatCore.CoreParameter, Assembly-CSharp" name="CoreParameterRoot" style="flex-grow: 1; flex-direction: row;">
+                <ui:VisualElement data-source-type="NavalCombatCore.CoreParameter, Assembly-CSharp" name="CoreParameterRoot" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Toggle label="Land Collision">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="checkLandCollision" binding-mode="TwoWay" />

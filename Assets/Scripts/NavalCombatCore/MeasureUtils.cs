@@ -37,6 +37,24 @@ namespace NavalCombatCore
             };
         }
 
+        public static MeasureStats MeasureApproximation(IDF3Model observer, IDF3Model target)
+        {
+            var (DistanceKm, InitialBearingDeg) = Approximation.CalculateDistanceKmAndBearingDeg(observer, target);
+            var distYards = (float)DistanceKm * 1000 * MeasureUtils.meterToYard;
+            var observerToTargetTrueBearingRelativeToNorthDeg = MeasureUtils.NormalizeAngle((float)InitialBearingDeg);
+            var targetToObserverTrueBearingRelativeToNorthDeg = MeasureUtils.NormalizeAngle(observerToTargetTrueBearingRelativeToNorthDeg + 180); // Though not very accurete if distance is extremely long.
+            var observerToTargetBearingRelativeToBowDeg = MeasureUtils.NormalizeAngle(observerToTargetTrueBearingRelativeToNorthDeg - observer.GetHeadingDeg());
+            var targetToObserverBearingRelativeToBowDeg = MeasureUtils.NormalizeAngle(targetToObserverTrueBearingRelativeToNorthDeg - target.GetHeadingDeg());
+            return new()
+            {
+                distanceYards = distYards,
+                observerToTargetTrueBearingRelativeToNorthDeg = observerToTargetTrueBearingRelativeToNorthDeg,
+                targetToObserverTrueBearingRelativeToNorthDeg = targetToObserverTrueBearingRelativeToNorthDeg,
+                observerToTargetBearingRelativeToBowDeg = observerToTargetBearingRelativeToBowDeg,
+                targetToObserverBearingRelativeToBowDeg = targetToObserverBearingRelativeToBowDeg,
+            };
+        }
+
         static TargetAspect GetXPresentAspectFromY(float XToYrelativeBearingToBowDeg)
         {
             return Math.Min(

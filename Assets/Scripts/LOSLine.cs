@@ -6,9 +6,10 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
 using GeographicLib;
+using System.Runtime.InteropServices;
 
 
-public class LOSLine : MonoBehaviour
+public class LOSLine : MonoBehaviour, IMaskCheckService
 {
     public enum State
     {
@@ -36,6 +37,8 @@ public class LOSLine : MonoBehaviour
     void Start()
     {
         losLayerMask = LayerMask.GetMask("LOSAndCollide");
+
+        ServiceLocator.Register<IMaskCheckService>(this);
     }
 
     void Show()
@@ -48,6 +51,85 @@ public class LOSLine : MonoBehaviour
     {
         lineRenderer.enabled = false;
         text.enabled = false;
+    }
+
+    public (MaskCheckResult, Vector3, Vector3) Check2(LatLon src, LatLon dst)
+    {
+        var raycastStart = Utils.LatLonHeightFootToVector3(src, 100);
+        var raycastEnd = Utils.LatLonHeightFootToVector3(dst, 100);
+        var raycastDistance = Vector3.Distance(raycastStart, raycastEnd);
+        var direction = (raycastEnd - raycastStart).normalized;
+
+        var endPos = raycastEnd;
+
+        var result = new MaskCheckResult();
+        if (Physics.Raycast(raycastStart, direction, out RaycastHit hit, raycastDistance, losLayerMask))
+        {
+            endPos = hit.point;
+            var colliderRootProvider = hit.collider.GetComponent<IColliderRootProvider>();
+            if (colliderRootProvider != null)
+            {
+                var root = colliderRootProvider.GetRoot();
+                var shipLog = root?.GetComponent<PortraitViewer>()?.shipLog;
+                if (shipLog != null)
+                {
+                    result.message = $"Masked by {shipLog.namedShip.name.GetMergedName()}";
+                }
+                else
+                {
+                    result.message = $"Masked by {root.name} (DEBUG)";
+                }
+
+                result.isMasked = true;
+                result.maskedObject = root;
+            }
+        }
+
+        return (result, raycastStart, endPos);
+    }
+
+    public MaskCheckResult Check(LatLon src, LatLon dst)
+    {
+        var (maskedResult, startPos, endPos) = Check2(src, dst);
+        return maskedResult;
+    }
+
+    public MaskCheckResult Check(ShipLog observer, ShipLog target)
+    {
+        var src = observer.position;
+        var dst = target.position;
+
+        var raycastStart = Utils.LatLonHeightFootToVector3(src, 100);
+        var raycastEnd = Utils.LatLonHeightFootToVector3(dst, 100);
+        var raycastDistance = Vector3.Distance(raycastStart, raycastEnd);
+        var direction = (raycastEnd - raycastStart).normalized;
+
+        var result = new MaskCheckResult();
+        var raycastHits = Physics.RaycastAll(raycastStart, direction, raycastDistance, losLayerMask);
+        foreach (var raycastHit in raycastHits)
+        {
+            var shipLog = raycastHit.collider.GetComponent<IColliderRootProvider>()?.GetRoot()?.GetComponent<PortraitViewer>()?.shipLog;
+            if (shipLog != null && shipLog != observer && shipLog != target)
+            {
+                var obsSize = observer.shipClass.targetSizeModifier;
+                var blkSize = shipLog.shipClass.targetSizeModifier;
+                var blkTgtDistYards = MeasureStats.Approximation.HaversineDistanceYards(shipLog, target);
+
+                var targetCondition = blkSize >= obsSize;
+                var distanceCond = blkTgtDistYards < 2000;
+
+                if (targetCondition || distanceCond)
+                {
+                    result = new MaskCheckResult
+                    {
+                        isMasked = true,
+                        maskedObject = shipLog,
+                        message = $"{observer.objectId} (size={obsSize}) is masked by {shipLog.objectId} (size={blkSize}, to tgt dist={blkTgtDistYards})"
+                    };
+                }
+            }
+        }
+        return result;
     }
 
     // Update is called once per frame
@@ -72,31 +154,7 @@ public class LOSLine : MonoBehaviour
                 var currentPos = CameraController2.Instance.GetHitPoint();
                 var currentLatLon = Utils.Vector3ToLatLon(currentPos);
 
-                var raycastStart = Utils.LatLonHeightFootToVector3(startLatLon, 100);
-                var raycastEnd = Utils.LatLonHeightFootToVector3(currentLatLon, 100);
-                var direction = (raycastEnd - raycastStart).normalized;
-
-                var endPos = raycastEnd;
-
-                string maskMessage = null;
-                if (Physics.Raycast(raycastStart, direction, out RaycastHit hit, Mathf.Infinity, losLayerMask))
-                {
-                    endPos = hit.point;
-                    var colliderRootProvider = hit.collider.GetComponent<IColliderRootProvider>();
-                    if (colliderRootProvider != null)
-                    {
-                        var root = colliderRootProvider.GetRoot();
-                        var shipLog = root?.GetComponent<PortraitViewer>()?.shipLog;
-                        if (shipLog != null)
-                        {
-                            maskMessage = $"Masked by {shipLog.namedShip.name.GetMergedName()}";
-                        }
-                        else
-                        {
-                            maskMessage = $"Masked by {root.name} (DEBUG)";
-                        }
-                    }
-                }
+                var (maskedResult, startPos, endPos) = Check2(startLatLon, currentLatLon);
 
                 // Check Earth's curvature, use Geodesic distance and visibility table of SK 5 for size 3
                 // Earth bacll itself can work as a collider but the mesh is roughtly approximated for the small area we usually consider so we abandon this approach.
@@ -110,16 +168,16 @@ public class LOSLine : MonoBehaviour
 
                 if (inverseLine.Distance * MeasureUtils.meterToYard > 32900) // blocked by Earth's curvature (SK5 Table D1, Size 4 and up in best visibility)
                 {
-                    maskMessage = $"Blocked by Earth's curvature";
+                    maskedResult.message = $"Blocked by Earth's curvature";
                     var _endLatLon = inverseLine.Position(32900 * MeasureUtils.yardToMeter);
                     endPos = Utils.LatitudeLongitudeDegToVector3((float)_endLatLon.Latitude, (float)_endLatLon.Longitude);
                 }
 
-                var positions = new Vector3[2]{raycastStart, endPos};
+                var positions = new Vector3[2]{startPos, endPos};
                 lineRenderer.positionCount = 2;
                 lineRenderer.SetPositions(positions);
 
-                text.text = maskMessage != null ? maskMessage : "Passed";
+                text.text = maskedResult.message ?? "Passed";
                 text.transform.position = endPos;
 
                 if (Input.GetMouseButtonDown(0))

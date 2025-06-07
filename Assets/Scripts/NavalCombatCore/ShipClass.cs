@@ -197,6 +197,32 @@ namespace NavalCombatCore
         {
             return mountArcs.Any(arc => arc.IsInArc(bearingRelativeToBowDeg));
         }
+
+        public static Dictionary<MountLocation, string> mountLocationAcronymMap = new()
+        {
+            // NotSpecified, // indicate binding error
+            // PortForward,
+            // Forward, // A, B
+            // StarboardForward,
+            // PortMidship,
+            // Midship,
+            // StarboardMidship,
+            // PortAfter,
+            // After, // X, Y
+            // StarboardAfter,
+            {MountLocation.NotSpecified, "NA"},
+            {MountLocation.PortForward, "P/F"},
+            {MountLocation.Forward, "F"},
+            {MountLocation.StarboardForward, "S/F"},
+            {MountLocation.PortMidship, "P/M"},
+            {MountLocation.Midship, "M"},
+            {MountLocation.StarboardMidship, "S/M"},
+            {MountLocation.PortAfter, "P/A"},
+            {MountLocation.After, "A"},
+            {MountLocation.StarboardAfter, "S/A"},
+        };
+
+        public string mountLocationAcronym => mountLocationAcronymMap[mountLocation];
     }
 
     public class BatteryRecord : IObjectIdLabeled

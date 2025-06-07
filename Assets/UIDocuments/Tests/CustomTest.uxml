@@ -5,7 +5,7 @@
         <ui:TextField placeholder-text="filler text" />
         <ui:Toggle />
     </ui:VisualElement>
-    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+    <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
         <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
             <ui:TextField label="Text Field" placeholder-text="filler text" />
             <ui:TextField label="Text Field" placeholder-text="filler text" />
@@ -17,4 +17,6 @@
             <ui:Toggle label="Toggle" />
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:EnumField value="Center" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" style="width: 100px;" />
+    <ui:DropdownField choices="Center,Left" index="0" style="width: 100px;" />
 </ui:UXML>

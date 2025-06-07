@@ -12,9 +12,10 @@ Unfortunately, naval engagement involving those ironclad in the first Sino-Japan
 
 - Shift + Left Click: Set Course
 - D: Distance measureing line
-- F: Set follow target
-- R: Set relative to target
-- L: Open Ship Log editor
+- S: Line of Sight (check ship masking & earth curvature)
+- F: Set follow target (extra parameter requires ship log editor)
+- R: Set relative to target (extra parameter requires ship log editor)
+- L: Open Ship Log editor for the selected ship
 
 ## Devlopment Info
 

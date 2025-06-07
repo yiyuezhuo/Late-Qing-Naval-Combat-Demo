@@ -124,3 +124,12 @@
 .link-cursor {
     cursor: url("project://database/Assets/Textures/signal_flag.png?fileID=2800000&guid=872ba5279dbe95746b30f77407926404&type=3#signal_flag");
 }
+
+.unity-enum-field__text {
+    padding-right: 0;
+    margin-right: 5px;
+}
+
+.unity-base-popup-field__text {
+    margin-right: 5px;
+}

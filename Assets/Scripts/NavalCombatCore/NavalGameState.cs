@@ -269,10 +269,25 @@ namespace NavalCombatCore
             // advance
             scenarioState.Step(deltaSeconds);
 
-            foreach (var shipLog in shipLogs)
-            {
-                shipLog.Step(deltaSeconds);
-            }
+            // foreach (var shipLog in shipLogs)
+            // {
+            //     shipLog.Step(deltaSeconds);
+            // }
+
+            foreach (var shipLog in shipLogsOnMap)
+                shipLog.StepProcessTurn(deltaSeconds); // update heading
+
+            foreach (var shipLog in shipLogsOnMap)
+                shipLog.StepProcessControl(); // set desired heading / desired speed
+
+            foreach (var shipLog in shipLogsOnMap)
+                shipLog.StepProcessSpeed(deltaSeconds); // update speed
+
+            foreach (var shipLog in shipLogsOnMap)
+                shipLog.StepTryMoveToNewPosition(deltaSeconds); // update position
+
+            foreach (var shipLog in shipLogsOnMap)
+                shipLog.StepBatteryStatus(deltaSeconds); // gunnery resolution
         }
 
         public IEnumerable<ShipLog> shipLogsOnMap => shipLogs.Where(x => x.mapState == MapState.Deployed);

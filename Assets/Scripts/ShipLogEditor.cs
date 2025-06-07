@@ -433,6 +433,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             firingTargetColumn.makeCell = () =>
             {
                 var el = firingTargetColumn.cellTemplate.CloneTree();
+
                 var setButton = el.Q<Button>("SetButton");
                 setButton.clicked += () =>
                 {
@@ -444,6 +445,27 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
                         Hide();
                     }
                 };
+
+                return el;
+            };
+
+            var detailColumn = mountStatusMultiColumnListView.columns["detail"];
+            detailColumn.makeCell = () =>
+            {
+                var el = detailColumn.cellTemplate.CloneTree();
+
+                var detailButton = el.Q<Button>("DetailButton");
+                detailButton.clicked += () =>
+                {
+                    var ctx = detailButton.GetHierarchicalDataSourceContext();
+                    if (PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out MountStatusRecord mountStatus))
+                    {
+                        // Debug.Log($"Detail Invoke: {mountStatus.objectId}");
+
+                        DialogRoot.Instance.PopupMessageDialog(mountStatus.DescribeDetail(), "Mount Detail");
+                    }
+                };
+
                 return el;
             };
 

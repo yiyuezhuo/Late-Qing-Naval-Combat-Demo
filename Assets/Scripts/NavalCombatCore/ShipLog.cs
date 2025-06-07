@@ -3,7 +3,7 @@ using System.Data;
 using System.Linq;
 using System;
 using GeographicLib;
-using Unity.VisualScripting;
+using System.Xml.Serialization;
 
 
 namespace NavalCombatCore
@@ -42,6 +42,27 @@ namespace NavalCombatCore
         Destroyed
     }
 
+    public class MountFiringRecord
+    {
+        [XmlAttribute]
+        public string firingTargetObjectId;
+
+        public ShipLog GetFiringTarget() => EntityManager.Instance.Get<ShipLog>(firingTargetObjectId);
+
+        [XmlAttribute]
+        public AmmunitionType ammunitionType;
+
+        [XmlAttribute]
+        public DateTime firingTime;
+
+        [XmlAttribute]
+        public float distanceYards;
+
+        [XmlAttribute]
+        public bool hit;
+        // TODO: Concrete Result
+    }
+
     public partial class MountStatusRecord : IObjectIdLabeled
     {
         public string objectId { get; set; }
@@ -49,6 +70,116 @@ namespace NavalCombatCore
                                    // public int mountsDestroyed;
         public string firingTargetObjectId;
         public ShipLog GetFiringTarget() => EntityManager.Instance.Get<ShipLog>(firingTargetObjectId);
+        public float processSeconds;
+        public AmmunitionType ammunitionType;
+
+        public List<MountFiringRecord> logs = new();
+
+        public string DescribeDetail()
+        {
+            return $"{objectId} detail";
+        }
+
+        public void Step(float deltaSeconds)
+        {
+            var tgt = GetFiringTarget();
+            if (tgt != null)
+            {
+                processSeconds += deltaSeconds;
+
+                // var shooter = GetPlatform();
+                var ctx = GetFullContext();
+                if (!ctx.fullyResolved)
+                    return;
+
+                var shooter = ctx.shipLog;
+                var stats = MeasureStats.MeasureApproximation(shooter, tgt); // TODO: Deduplicate redundant geo calculation, cache in the pulse level cache?
+                var isInArc = ctx.mountLocationRecord.IsInArc(stats.observerToTargetBearingRelativeToBowDeg);
+                var isInRange = stats.distanceYards <= ctx.batteryRecord.rangeYards;
+                if (!isInRange || !isInArc)
+                    return;
+
+                var penRecord = ctx.batteryRecord.penetrationTableRecords.FirstOrDefault(r => stats.distanceYards <= r.distanceYards);
+                if (penRecord == null)
+                    return;
+
+                var fireControlRow = ctx.batteryRecord.fireControlTableRecords.FirstOrDefault(r => tgt.speedKnots <= r.speedThresholdKnot);
+                if (fireControlRow == null)
+                    return;
+
+                var fireControlValue = fireControlRow.GetValue(penRecord.rangeBand, stats.targetPresentAspectFromObserver);
+
+                var maskCheckResult = ServiceLocator.Get<IMaskCheckService>()?.Check(shooter, tgt);
+                // TODO: Add overcenteration
+            }
+            else
+            {
+                processSeconds = 0;
+            }
+        }
+
+        public class FullContext
+        {
+            public BatteryStatus batteryStatus;
+            public ShipLog shipLog;
+            public ShipClass shipClass;
+            public int batteryIdx;
+            public BatteryRecord batteryRecord;
+            public int mountStatusIdx;
+            public int mountRecordIdx;
+            public int mountRecordSubIdx;
+            public MountLocationRecord mountLocationRecord;
+            public bool fullyResolved;
+
+            public void Build(MountStatusRecord mountStatus) // FIXME: Well the code smell is too much
+            {
+                batteryStatus = EntityManager.Instance.GetParent<BatteryStatus>(mountStatus);
+                if (batteryStatus == null)
+                    return;
+
+                shipLog = EntityManager.Instance.GetParent<ShipLog>(batteryStatus);
+                if (shipLog == null)
+                    return;
+
+                shipClass = shipLog.shipClass;
+                if (shipClass == null)
+                    return;
+
+                batteryIdx = shipLog.batteryStatus.IndexOf(batteryStatus);
+                if (batteryIdx < 0 || batteryIdx >= shipClass.batteryRecords.Count)
+                    return;
+
+                batteryRecord = shipClass.batteryRecords[batteryIdx];
+
+                mountStatusIdx = batteryStatus.mountStatus.IndexOf(mountStatus);
+                if (mountStatusIdx < 0)
+                    return;
+
+                var mountIdx = mountStatusIdx;
+                var _recordIndex = 0;
+                var mntLocRecs = batteryRecord.mountLocationRecords;
+                while (_recordIndex < mntLocRecs.Count && mntLocRecs[_recordIndex].mounts <= mountIdx)
+                {
+                    mountIdx -= mntLocRecs[_recordIndex].mounts;
+                    _recordIndex++;
+                }
+                if (_recordIndex < mntLocRecs.Count && mountIdx < mntLocRecs[_recordIndex].mounts)
+                {
+                    mountRecordIdx = _recordIndex;
+                    mountRecordSubIdx = mountIdx;
+                    mountLocationRecord = mntLocRecs[_recordIndex];
+
+                    fullyResolved = true;
+                }
+            }
+        }
+
+        public FullContext GetFullContext()
+        {
+            var ctx = new FullContext();
+            ctx.Build(this);
+            return ctx;
+        }
 
         public class MountLocationRecordInfo
         {
@@ -58,9 +189,10 @@ namespace NavalCombatCore
 
             public string Summary() // Used in Ship Log Editor
             {
-                return $"#{recordIndex + 1} #{subIndex + 1} x{record.barrels} {record.mountLocation} ({record.SummaryArcs()})";
+                return $"#{recordIndex + 1} #{subIndex + 1} x{record.barrels} {record.mountLocationAcronym} ({record.SummaryArcs()})";
             }
         }
+
 
         MountLocationRecordInfo GetMountLocationRecordInfo(List<MountLocationRecord> mountLocationRecords, int mountIdx)
         {
@@ -127,11 +259,17 @@ namespace NavalCombatCore
             return ret;
         }
 
+        public void SetFiringTarget(ShipLog target)
+        {
+            firingTargetObjectId = target?.objectId;
+            processSeconds = 0;
+        }
+
         public void ResetDamageExpenditureState()
         {
             status = MountStatus.Operational;
             firingTargetObjectId = null;
-            // mountsDestroyed = 0;
+            processSeconds = 0;
         }
     }
     
@@ -311,7 +449,7 @@ namespace NavalCombatCore
         {
             foreach (var mnt in mountStatus)
             {
-                mnt.firingTargetObjectId = null;
+                mnt.SetFiringTarget(null);
             }
             foreach (var fcs in fireControlSystemStatusRecords)
             {
@@ -342,7 +480,7 @@ namespace NavalCombatCore
                 if (mnt.status == MountStatus.Operational &&
                     mnt.GetMountLocationRecordInfo().record.IsInArc(stats.observerToTargetBearingRelativeToBowDeg))
                 {
-                    mnt.firingTargetObjectId = target.objectId;
+                    mnt.SetFiringTarget(target);
                 }
             }
         }
@@ -358,7 +496,7 @@ namespace NavalCombatCore
             }
 
             foreach (var mnt in mountStatus)
-                mnt.firingTargetObjectId = null;
+                mnt.SetFiringTarget(null);
         }
 
         IWTAObject IWTABattery.GetCurrentFiringTarget()
@@ -377,6 +515,8 @@ namespace NavalCombatCore
             // TODO: Do actual firing resolution
             foreach (var fcs in fireControlSystemStatusRecords)
                 fcs.Step(deltaSeconds);
+            foreach (var mnt in mountStatus)
+                mnt.Step(deltaSeconds);
         }
     }
 
@@ -678,7 +818,7 @@ namespace NavalCombatCore
             return string.Join("\n", lines);
         }
 
-        public void Step(float deltaSeconds)
+        public void StepProcessTurn(float deltaSeconds)
         {
             if (speedKnots >= 4) // Turn and induced speed change
             {
@@ -695,9 +835,10 @@ namespace NavalCombatCore
                 var decayPercentThisPulse = (float)Math.Pow(decayPercentPer2Min, deltaSeconds / 120f);
                 speedKnots *= decayPercentThisPulse;
             }
+        }
 
-            var accelerationKnotsCapPer2Min = shipClass.speedIncreaseRecord.Where(r => speedKnots >= r.thresholdSpeedKnots).Select(r => r.increaseSpeedKnots).Min();
-            var accelerationKnotsCapPerSec = accelerationKnotsCapPer2Min / 120;
+        public void StepProcessControl()
+        {
             var decelerationKnotsCapPer2Min = shipClass.speedKnots * (assistedDeceleration ? 0.6f : 0.2f);
             var decelerationKnotsCapPerSec = decelerationKnotsCapPer2Min / 120f;
 
@@ -819,17 +960,30 @@ namespace NavalCombatCore
                     }
                 }
             }
+        }
 
+        public void StepProcessSpeed(float deltaSeconds)
+        {
             if (desiredSpeedKnots > speedKnots)
             {
+                var accelerationKnotsCapPer2Min = shipClass.speedIncreaseRecord.Where(r => speedKnots >= r.thresholdSpeedKnots).Select(r => r.increaseSpeedKnots).Min();
+                var accelerationKnotsCapPerSec = accelerationKnotsCapPer2Min / 120;
+
                 var accelerationKnotsCapThisPulse = accelerationKnotsCapPerSec * deltaSeconds;
                 speedKnots += Math.Min(desiredSpeedKnots - speedKnots, accelerationKnotsCapThisPulse);
             }
             else if (desiredSpeedKnots < speedKnots)
             {
+                var decelerationKnotsCapPer2Min = shipClass.speedKnots * (assistedDeceleration ? 0.6f : 0.2f);
+                var decelerationKnotsCapPerSec = decelerationKnotsCapPer2Min / 120f;
+
                 var decelerationKnotsCapThisPulse = decelerationKnotsCapPerSec * deltaSeconds;
                 speedKnots -= Math.Min(speedKnots - desiredSpeedKnots, decelerationKnotsCapThisPulse);
             }
+        }
+
+        public void StepTryMoveToNewPosition(float deltaSeconds)
+        {
 
             var distNm = speedKnots / 3600 * deltaSeconds;
             var distM = distNm * 1852;
@@ -853,6 +1007,7 @@ namespace NavalCombatCore
 
                     // Exact Method
                     // Geodesic.WGS84.Inverse(newPosition.LatDeg, newPosition.LonDeg, otherPos.LatDeg, otherPos.LonDeg, out var distanceM, out var azi1, out var azi2);
+                    // Approximation Method
                     var (distanceKm, azi1) = MeasureStats.Approximation.CalculateDistanceKmAndBearingDeg(newPosition.LatDeg, newPosition.LonDeg, otherPos.LatDeg, otherPos.LonDeg);
                     var distanceM = distanceKm * 1000;
                     var azi2 = azi1;
@@ -882,13 +1037,37 @@ namespace NavalCombatCore
             {
                 position = newPosition;
             }
-            // 
+            else
+            {
+                speedKnots = 0; // TODO: Use a smoother method
+            }
+        }
 
+        public void StepBatteryStatus(float deltaSeconds)
+        {
             foreach (var bs in batteryStatus)
             {
                 bs.Step(deltaSeconds);
             }
         }
+
+        // public void Step(float deltaSeconds)
+        // {
+        //     StepProcessTurn(deltaSeconds);
+
+        //     // var accelerationKnotsCapPer2Min = shipClass.speedIncreaseRecord.Where(r => speedKnots >= r.thresholdSpeedKnots).Select(r => r.increaseSpeedKnots).Min();
+        //     // var accelerationKnotsCapPerSec = accelerationKnotsCapPer2Min / 120;
+        //     // var decelerationKnotsCapPer2Min = shipClass.speedKnots * (assistedDeceleration ? 0.6f : 0.2f);
+        //     // var decelerationKnotsCapPerSec = decelerationKnotsCapPer2Min / 120f;
+
+        //     StepProcessControl();
+
+        //     StepProcessSpeed(deltaSeconds);
+
+        //     StepTryMoveToNewPosition(deltaSeconds);
+
+        //     StepSubObjects(deltaSeconds);
+        // }
 
         public float EvaluateArmorScore()
         {

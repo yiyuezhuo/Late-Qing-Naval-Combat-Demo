@@ -3,6 +3,7 @@
         <ui:Label text="Scenario State Editor" class="title" />
         <ui:VisualElement style="flex-grow: 0;">
             <ui:VisualElement data-source-path="dateTimeViewModel" style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="UTC Datetime (+0):" />
                 <ui:Label text="Year" />
                 <ui:IntegerField style="width: 75px;">
                     <Bindings>

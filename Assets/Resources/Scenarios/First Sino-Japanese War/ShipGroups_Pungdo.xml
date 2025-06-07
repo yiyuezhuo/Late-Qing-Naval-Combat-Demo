@@ -15,6 +15,31 @@
   <type>Squadron</type>
   <formation>LineAhead</formation>
   <objectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</objectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>f71949a6-e447-4edd-9f29-f587ece8ac12</objectId>
+  </doctrine>
  </ShipGroup>
  <ShipGroup>
   <childrenObjectIds>
@@ -30,5 +55,30 @@
   <type>Squadron</type>
   <formation>LineAhead</formation>
   <objectId>96a18446-8d4a-4b89-a219-d514cade9751</objectId>
+  <doctrine>
+   <maneuverAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Manual</value>
+   </maneuverAutomaticType>
+   <fireAutomaticType>
+    <isInherited>true</isInherited>
+    <value>Automatic</value>
+   </fireAutomaticType>
+   <maximumFiringDistanceYardsFor200mmPlus>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor200mmPlus>
+   <maximumFiringDistanceYardsFor100mmTo200mm>
+    <isInherited>true</isInherited>
+    <value>
+     <isSpecified>false</isSpecified>
+     <value>0</value>
+    </value>
+   </maximumFiringDistanceYardsFor100mmTo200mm>
+   <objectId>ef12e5ca-64e5-4697-a1b2-555206f016d6</objectId>
+  </doctrine>
  </ShipGroup>
 </ArrayOfShipGroup>

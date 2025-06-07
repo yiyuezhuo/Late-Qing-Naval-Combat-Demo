@@ -4,6 +4,7 @@ using System.Linq;
 using System;
 using GeographicLib;
 using System.Xml.Serialization;
+using UnityEngine.UIElements;
 
 
 namespace NavalCombatCore
@@ -14,6 +15,14 @@ namespace NavalCombatCore
         public int semiArmorPiercing;
         public int common;
         public int highExplosive;
+
+        public static Dictionary<AmmunitionType, string> ammunitionTypeAcronymMap = new()
+        {
+            { AmmunitionType.ArmorPiercing, "AP" },
+            { AmmunitionType.SemiArmorPiercing, "SAP" },
+            { AmmunitionType.Common, "COM" },
+            { AmmunitionType.HighExplosive, "HE" }
+        };
 
         public string Summary()
         {
@@ -45,6 +54,25 @@ namespace NavalCombatCore
                 _ => 0
             };
         }
+
+        public void CostOne(AmmunitionType ammo)
+        {
+            switch (ammo)
+            {
+                case AmmunitionType.ArmorPiercing:
+                    ArmorPiercing--;
+                    break;
+                case AmmunitionType.SemiArmorPiercing:
+                    semiArmorPiercing--;
+                    break;
+                case AmmunitionType.Common:
+                    common--;
+                    break;
+                case AmmunitionType.HighExplosive:
+                    highExplosive--;
+                    break;
+            }
+        }
     }
 
     public enum MountStatus
@@ -71,15 +99,27 @@ namespace NavalCombatCore
         public float distanceYards;
 
         [XmlAttribute]
+        public float hitProb;
+
+        [XmlAttribute]
         public bool hit;
         // TODO: Concrete Result
+
+        public string Summary()
+        {
+            var target = GetFiringTarget();
+            var targetName = target.namedShip?.name?.GetMergedName();
+            var ammoType = BatteryAmmunitionRecord.ammunitionTypeAcronymMap[ammunitionType];
+            var hitDesc = hit ? "hit" : "miss";
+            return $"{firingTime} {ammoType} -> {targetName}, {distanceYards} yards, P={hitProb * 100}%, {hitDesc}";
+        }
     }
 
     public partial class MountStatusRecord : IObjectIdLabeled
     {
         public string objectId { get; set; }
-        public MountStatus status; // Is "SectorStatus" a better name?
-                                   // public int mountsDestroyed;
+        public MountStatus status;
+        
         public string firingTargetObjectId;
         public ShipLog GetFiringTarget() => EntityManager.Instance.Get<ShipLog>(firingTargetObjectId);
         public float processSeconds;
@@ -89,7 +129,29 @@ namespace NavalCombatCore
 
         public string DescribeDetail()
         {
-            return $"{objectId} detail";
+            var ctx = GetFullContext();
+
+            var lines = new List<string>() { $"Detail: {objectId}" };
+
+            lines.AddRange(logs.Select(r => r.Summary()));
+
+            return string.Join("\n", lines);
+
+            // return $"{ctx.shipLog.namedShip?.name.GetMergedName()}";
+        }
+
+        public static float GetHitProbP100(float fireControlScore)
+        {
+            // Chart I1, Shell=1 row
+            // 0.25~1% for 0-3 (+0.25% / FCS)
+            // 1%-9% for 3-19 (+0.5% / FCS)
+            // 9%-20% for 19-30 (+1% / FCS)
+            fireControlScore = Math.Clamp(fireControlScore, 0, 30);
+            if (fireControlScore <= 3)
+                return 0.25f + fireControlScore * 0.25f;
+            if (fireControlScore <= 19)
+                return 1 + (fireControlScore - 3) * 0.5f;
+            return 9 + (fireControlScore - 19) * 1f;
         }
 
         public void Step(float deltaSeconds)
@@ -109,10 +171,13 @@ namespace NavalCombatCore
                 if (!ctx.fullyResolved)
                     return;
 
+                if (ctx.batteryStatus.ammunition.GetValue(ammunitionType) <= 0) // Later will require re-check
+                    return;
+
                 var shooter = ctx.shipLog;
 
-                var isFireChecked =  fireCtx.shipLogSupplementaryMap[tgt].batteriesFiredAtMe.Contains(ctx.batteryStatus);
-                if (!isFireChecked) // include range / arc check
+                var isFireChecked = fireCtx.shipLogSupplementaryMap[tgt].batteriesFiredAtMe.Contains(ctx.batteryStatus);
+                if (!isFireChecked) // include range / arc check (though ammo should be checked dynamiclly since this loop will update ammo state)
                     return;
                 var shooterTargetSup = fireCtx.GetOrCalcualteShipLogPairSupplementary(shooter, tgt);
                 var stats = shooterTargetSup.stats;
@@ -126,14 +191,126 @@ namespace NavalCombatCore
                 if (penRecord == null)
                     return;
 
+                var shootsPer2Min = penRecord.rateOfFire;
+                if (shootsPer2Min == 0)
+                    return;
+                var secondsPerShoot = 120 / shootsPer2Min;
+
+                // if (processSeconds < secondsPerShoot) // Later will require re-check
+                //     return;
+
                 var fireControlRow = ctx.batteryRecord.fireControlTableRecords.FirstOrDefault(r => tgt.speedKnots <= r.speedThresholdKnot);
                 if (fireControlRow == null)
                     return;
 
-                var fireControlValue = fireControlRow.GetValue(penRecord.rangeBand, stats.targetPresentAspectFromObserver);
+                var fireControlScoreRaw = fireControlRow.GetValue(penRecord.rangeBand, stats.targetPresentAspectFromObserver);
 
                 var maskCheckResult = shooterTargetSup.GetOrCalcualteMaskCheckResult();
-                // TODO: Add overcenteration
+                if (maskCheckResult.isMasked)
+                {
+                    secondsPerShoot *= 2; // ROF / 2 if masked
+                }
+
+                var targetSup = fireCtx.shipLogSupplementaryMap[tgt];
+                var firedAtTargetBatteriesCount = targetSup.batteriesFiredAtMe.Count; // over-concentration
+
+                // TODO: Stack other buffer
+
+                // skip to log ammo consumption and firing "result"
+                while (ctx.batteryStatus.ammunition.GetValue(ammunitionType) > 0 && processSeconds >= secondsPerShoot)
+                {
+                    var fireControlScore = fireControlScoreRaw;
+
+                    // Visibility - apply to all conditions
+                    var visibility = NavalGameState.Instance.scenarioState.visibility;
+                    if (visibility >= VisibilityDescription.VeryClear1)
+                    {
+                        // Code 8-9 (very clear): +1
+                        fireControlScore += 1;
+                    }
+                    else if (visibility >= VisibilityDescription.LightHaze)
+                    {
+                        // Code 6-7 (normal): +0
+                        fireControlScore += 0;
+                    }
+                    else if (visibility >= VisibilityDescription.ThinFog)
+                    {
+                        // Code 4-5 (haze): -2
+                        fireControlScore += -2;
+                    }
+                    else
+                    {
+                        // Patchy fog or squalls
+                        fireControlScore += -4;
+                    }
+
+                    // TODO: Handle Additional for dawn/dusk condition
+                    // Target silhouetted by horizon: +1
+                    // Target in darkness: -2
+                    // None of above: +0
+
+                    // TODO: Handle Additional for night conditions
+                    // No moonlight: -4
+                    // Moonlight: -2
+
+                    // TODO: Handle Additional for illumination (1b or 1c)
+                    // Target afire or illuminated by searchlight: +2
+                    // Target using searchlight OR is illuminated: +1
+
+                    // TODO: Blind Fire
+                    // Firing ship is using Blind Fire (target cannot be seen): -5
+
+                    // TODO: Smoke (cumulative and does not apply to Blind Fire using Radar)
+                    // Target obscured by battle smoke: -1
+                    // Target obscured by funnel smokescreen: -3
+
+                    // TODO: Evasive Action / Emergency Turn
+                    // Target only in EA: -3
+                    // Target ship only in EA: -2
+                    // Target and firing ships in EA: -8
+
+                    // TODO: Target Acquisition
+                    // Firing on different ship from last turn: -2
+                    // Target ship hit by firing ship last turn: +2
+
+                    // TODO: Firing ship under fire
+                    // Under fire from 3 or more ships during this turn: -2
+
+                    // TODO: Over Concentration & Barrage
+                    // 1 ship firing at target with 1 battery: 0
+                    // For each additional primary, secondary or teriary battery of any ship firing at same target: -1
+                    // For every primary, secondary or tertiary battery of any ship using barrage fire at same target: -2
+
+                    // Size of target ship
+                    // TS (from Ship Log of target ship)
+                    fireControlScore += tgt.shipClass.targetSizeModifier;
+
+                    // Pending: Spotter Aircraft
+                    // Spotter aircraft (target visible from firing ship): +2
+
+                    // TODO: Battle factor
+                    // Sea State + Crew Rating (from Ship Log)
+
+                    // Fire Control Radar Modifier
+                    fireControlScore += ctx.batteryRecord.fireControlRadarModifier;
+
+                    var hitProb = GetHitProbP100(fireControlScore) * 0.01f;
+                    var hit = (float)RandomUtils.rand.NextDouble() < hitProb;
+
+                    var logRecord = new MountFiringRecord()
+                    {
+                        firingTargetObjectId = tgt.objectId,
+                        ammunitionType = ammunitionType,
+                        firingTime = NavalGameState.Instance.scenarioState.dateTime,
+                        distanceYards = stats.distanceYards,
+                        hitProb = hitProb,
+                        hit = hit // TODO: enable it
+                    };
+                    logs.Add(logRecord);
+
+                    processSeconds -= secondsPerShoot;
+                    ctx.batteryStatus.ammunition.CostOne(ammunitionType);
+                }
             }
             else
             {

@@ -147,7 +147,7 @@ namespace NavalCombatCore
         ScenarioStateDateTimeViewModel _dateTimeViewModel; // Note it's possible to initialize the view model attribute from empty constructor but this may break core's capabbility to leverage empty constructor
 
         [CreateProperty]
-        ScenarioStateDateTimeViewModel dateTimeViewModel
+        public ScenarioStateDateTimeViewModel dateTimeViewModel
         {
             get
             {

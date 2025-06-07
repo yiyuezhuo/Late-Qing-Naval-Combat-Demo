@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // public static string scenarioSuffex = "_Pungdo"; // temp hack
+    // public static string scenarioSuffix = "_Pungdo"; // temp hack
     public static string scenarioSuffix = "_Yalu";
 
     public void Start()

@@ -220,9 +220,9 @@ public class GameManager : MonoBehaviour
         // }
 
         // sync Ship's Viewer and ShipLog mapping
-        foreach (var shipLog in NavalGameState.Instance.shipLogs)
+        foreach (var shipLog in NavalGameState.Instance.shipLogsOnMap)
         {
-            if (shipLog.IsOnMap() && !objectId2Viewer.ContainsKey(shipLog.objectId))
+            if (!objectId2Viewer.ContainsKey(shipLog.objectId))
             {
                 var obj = Instantiate(shipUnitPrefab, earthTransform);
 
@@ -232,11 +232,11 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        var shouldRemoved = objectId2Viewer.Where(kv => !EntityManager.Instance.Get<ShipLog>(kv.Key)?.IsOnMap() ?? false).ToList();
+        var shouldRemoved = objectId2Viewer.Where(kv => EntityManager.Instance.GetOnMapShipLog(kv.Key) == null).ToList();
 
         foreach ((var shipLog, var viewer) in shouldRemoved)
         {
-            Destroy(viewer); // Or Set Inactive only?
+            Destroy(viewer.gameObject); // Or Set Inactive only?
             objectId2Viewer.Remove(shipLog);
         }
 
@@ -263,12 +263,12 @@ public class GameManager : MonoBehaviour
             if (state == State.Idle) // unit left click chosen
             {
                 // handle events
-                if (Input.GetKeyDown(KeyCode.Insert))
+                if (Input.GetKeyDown(KeyCode.Insert)) // Insert(Deploy) Unit
                 {
                     state = State.SelectingInsertUnitPosition;
                 }
 
-                if (Input.GetKeyDown(KeyCode.M) && selectedShipLog != null)
+                if (Input.GetKeyDown(KeyCode.M) && selectedShipLog != null) // Move Unit
                 {
                     state = State.MovingUnit;
                 }
@@ -283,22 +283,33 @@ public class GameManager : MonoBehaviour
                     }
                 }
 
-                if (Input.GetMouseButtonDown(0) && isPressingShift) // RTW-like course setting
+                if (Input.GetMouseButtonDown(1)) // try select unit and open ShipLog Editor for it
                 {
-                    if (selectedShipLog != null)
+                    var portraitViewer = TryToRaycastViewer();
+                    if (portraitViewer != null)
                     {
-                        var hitPoint = CameraController2.Instance.GetHitPoint();
-                        var dstPos = Utils.Vector3ToLatLon(hitPoint);
-
-                        var currentPos = selectedShipLog.position;
-                        var inverseLine = Geodesic.WGS84.InverseLine(
-                            currentPos.LatDeg, currentPos.LonDeg,
-                            dstPos.LatDeg, dstPos.LonDeg
-                        );
-
-                        selectedShipLog.desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)inverseLine.Azimuth);
+                        var shipLog = portraitViewer.shipLog;
+                        selectedShipLogObjectId = shipLog.objectId;
+                        ShipLogEditor.Instance.Show();
                     }
                 }
+
+                if (Input.GetMouseButtonDown(0) && isPressingShift) // RTW-like course setting
+                    {
+                        if (selectedShipLog != null)
+                        {
+                            var hitPoint = CameraController2.Instance.GetHitPoint();
+                            var dstPos = Utils.Vector3ToLatLon(hitPoint);
+
+                            var currentPos = selectedShipLog.position;
+                            var inverseLine = Geodesic.WGS84.InverseLine(
+                                currentPos.LatDeg, currentPos.LonDeg,
+                                dstPos.LatDeg, dstPos.LonDeg
+                            );
+
+                            selectedShipLog.desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)inverseLine.Azimuth);
+                        }
+                    }
 
                 // simulationSecondsAdvanceMap
                 foreach ((var keyCode, var advanceSimulationSeconds) in simulationSecondsAdvanceMap)

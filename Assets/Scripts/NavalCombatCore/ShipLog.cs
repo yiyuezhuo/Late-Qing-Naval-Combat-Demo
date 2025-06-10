@@ -4,7 +4,6 @@ using System.Linq;
 using System;
 using GeographicLib;
 using System.Xml.Serialization;
-using UnityEngine.UIElements;
 
 
 namespace NavalCombatCore
@@ -55,6 +54,8 @@ namespace NavalCombatCore
             };
         }
 
+        public int GetTotalValue() => ArmorPiercing + semiArmorPiercing + common + highExplosive;
+
         public void CostOne(AmmunitionType ammo)
         {
             switch (ammo)
@@ -87,6 +88,7 @@ namespace NavalCombatCore
         [XmlAttribute]
         public string firingTargetObjectId;
 
+        // public ShipLog GetFiringTarget() => EntityManager.Instance.GetOnMapShipLog(firingTargetObjectId);
         public ShipLog GetFiringTarget() => EntityManager.Instance.Get<ShipLog>(firingTargetObjectId);
 
         [XmlAttribute]
@@ -120,6 +122,8 @@ namespace NavalCombatCore
             var hitDesc = hit ? $"hit {armorLocation} -> {hitPenDetType} -> {shellDamageResult}" : "miss";
             return $"{firingTime} {ammoType} -> {targetName}, {distanceYards} yards, P={hitProb * 100}%, {hitDesc}";
         }
+
+        public override string ToString() => Summary();
     }
 
     public partial class MountStatusRecord : IObjectIdLabeled
@@ -128,7 +132,13 @@ namespace NavalCombatCore
         public MountStatus status;
 
         public string firingTargetObjectId;
-        public ShipLog GetFiringTarget() => EntityManager.Instance.Get<ShipLog>(firingTargetObjectId);
+        public ShipLog GetFiringTarget()
+        {
+            var target = EntityManager.Instance.GetOnMapShipLog(firingTargetObjectId);
+            if (target == null || !target.IsOnMap())
+                return null;
+            return target;
+        }
         public float processSeconds;
         public AmmunitionType ammunitionType;
 
@@ -147,38 +157,6 @@ namespace NavalCombatCore
             // return $"{ctx.shipLog.namedShip?.name.GetMergedName()}";
         }
 
-        // public static float GetHitProbP100(float fireControlScore)
-        // {
-        //     // Chart I1, Shell=1 row
-        //     // 0.25~1% for 0-3 (+0.25% / FCS)
-        //     // 1%-9% for 3-19 (+0.5% / FCS)
-        //     // 9%-20% for 19-30 (+1% / FCS)
-        //     fireControlScore = Math.Clamp(fireControlScore, 0, 30);
-        //     if (fireControlScore <= 3)
-        //         return 0.25f + fireControlScore * 0.25f;
-        //     if (fireControlScore <= 19)
-        //         return 1 + (fireControlScore - 3) * 0.5f;
-        //     return 9 + (fireControlScore - 19) * 1f;
-        // }
-
-        // public static float[,] closeRangeFireControlTable = new float[,]
-        // {//     0-2000      2001-4500 (distance yards)
-        //  //Broad  Narrow  Broad   Narrow
-        //     {15,    12,     12,     10},
-        //     {13,    9,      10,     8},
-        //     {11,    8,      9,      7},
-        //     { 9,    7,      8,      6},
-        //     { 8,    6,      7,      5}
-        // };
-        // public static float[] closeRangeFireControlTableRows = new float[] { 9, 18, 27, 36, float.MaxValue };
-        // public static float GetCloseRangeFireControlScore(float distanceYards, float speedKnots, TargetAspect targetAspect)
-        // {
-        //     var colIdx = (distanceYards > 2000 ? 2 : 0) + (targetAspect == TargetAspect.Broad ? 0 : 1);
-        //     var rowIdx = closeRangeFireControlTableRows.Select((s, i) => (s, i)).Where(si => speedKnots <= si.s).Last().i;
-        //     return closeRangeFireControlTable[rowIdx, colIdx];
-        // }
-
-
         public void Step(float deltaSeconds)
         {
             if (status != MountStatus.Operational)
@@ -196,7 +174,27 @@ namespace NavalCombatCore
                 if (!ctx.fullyResolved)
                     return;
 
-                if (ctx.batteryStatus.ammunition.GetValue(ammunitionType) <= 0) // Later will require re-check
+                var isAmmoSwitchAuto = ctx.shipLog.doctrine.GetAmmunitionSwitchAutomaticType() == AutomaticType.Automatic;
+                if (isAmmoSwitchAuto)
+                {
+                    var tgtArmorScore = tgt.EvaluateArmorScore();
+                    if (tgtArmorScore < 0.5)
+                    {
+                        // ctx.batteryStatus.
+                        ammunitionType = ctx.batteryStatus.ChooseAmmunitionByPreferredType(AmmunitionType.HighExplosive);
+                    }
+                    else
+                    {
+                        ammunitionType = ctx.batteryStatus.ChooseAmmunitionByPreferredType(AmmunitionType.ArmorPiercing);
+                    }
+                    // ammunitionType
+                }
+
+                var ammoFallbackable = ctx.shipLog.doctrine.GetAmmunitionFallbackable();
+                if (!(
+                        ctx.batteryStatus.ammunition.GetValue(ammunitionType) >=0 ||
+                        (ammoFallbackable && ctx.batteryStatus.ammunition.GetTotalValue() <= 0)
+                    )) // Later will require re-check
                     return;
 
                 var shooter = ctx.shipLog;
@@ -247,8 +245,21 @@ namespace NavalCombatCore
                 // TODO: Stack other buffer
 
                 // skip to log ammo consumption and firing "result"
-                while (ctx.batteryStatus.ammunition.GetValue(ammunitionType) > 0 && processSeconds >= secondsPerShoot)
+                while (processSeconds >= secondsPerShoot &&
+                        (
+                            ctx.batteryStatus.ammunition.GetValue(ammunitionType) >= 0 ||
+                            (ammoFallbackable && ctx.batteryStatus.ammunition.GetTotalValue() <= 0)
+                        )
+                )
                 {
+                    processSeconds -= secondsPerShoot;
+                    ctx.batteryStatus.ammunition.CostOne(ammunitionType);
+
+                    if (ammoFallbackable)
+                    {
+                        ammunitionType = ctx.batteryStatus.ChooseAmmunitionByPreferredType(ammunitionType); // TODO: Use doctrine suggested value
+                    }
+
                     var fireControlScore = fireControlScoreRaw;
 
                     // Visibility - apply to all conditions
@@ -327,15 +338,10 @@ namespace NavalCombatCore
                     var hitProb = RuleChart.GetHitProbP100(fireControlScore) * 0.01f;
                     var hit = (float)RandomUtils.rand.NextDouble() < hitProb;
 
-                    // TODO: Resolve damage
                     var armorLocation = RuleChart.RollArmorLocation(stats.targetPresentAspectFromObserver, penRecord.rangeBand);
 
-                    processSeconds -= secondsPerShoot;
-                    ctx.batteryStatus.ammunition.CostOne(ammunitionType);
-
-                    if (armorLocation != ArmorLocation.Ineffective)
+                    if (hit && armorLocation != ArmorLocation.Ineffective)
                     {
-
                         var armorLocationAngleType = RuleChart.armorLocationToAngleType.GetValueOrDefault(armorLocation);
                         var refPenInch = penRecord.GetValue(armorLocationAngleType);
                         var penInch = RuleChart.GetAdjustedPenetrationByType(ctx.batteryRecord.penetrationTableBaseType, refPenInch, ctx.batteryRecord.shellSizeInch, ammunitionType);
@@ -360,6 +366,10 @@ namespace NavalCombatCore
                         logs.Add(logRecord);
 
                         // TODO: Handle damage effect and general (DP caused) damage effect.
+                        tgt.damagePoint += shellDamageResult.damagePoint;
+
+                        var logger = ServiceLocator.Get<ILoggerService>();
+                        logger.Log($"{ctx.shipLog.namedShip.name.GetMergedName()} {ctx.batteryRecord.name.GetMergedName()} -> {tgt.namedShip.name.GetMergedName()} ({logRecord.Summary()})");
                         
                         // TODO: Apply damage point and process side effect
                     }
@@ -540,7 +550,7 @@ namespace NavalCombatCore
     {
         public string objectId { set; get; }
         public string targetObjectId { get; set; }
-        public ShipLog GetTarget() => EntityManager.Instance.Get<ShipLog>(targetObjectId);
+        public ShipLog GetTarget() => EntityManager.Instance.GetOnMapShipLog(targetObjectId);
         public TrackingSystemState trackingState;
         public float trackingSeconds;
 
@@ -749,7 +759,9 @@ namespace NavalCombatCore
             }
 
             foreach (var mnt in mountStatus)
+            {
                 mnt.SetFiringTarget(null);
+            }   
         }
 
         IWTAObject IWTABattery.GetCurrentFiringTarget()
@@ -783,6 +795,23 @@ namespace NavalCombatCore
             lines.AddRange(logsFlatten.Select(log => log.Summary()));
 
             return string.Join("\n", lines);
+        }
+
+        static Dictionary<AmmunitionType, List<AmmunitionType>> ammunitionTypeFallbackChain  = new()
+        {
+            { AmmunitionType.ArmorPiercing, new() { AmmunitionType.SemiArmorPiercing, AmmunitionType.Common, AmmunitionType.HighExplosive} },
+            { AmmunitionType.SemiArmorPiercing, new() { AmmunitionType.Common, AmmunitionType.ArmorPiercing, AmmunitionType.HighExplosive} },
+            { AmmunitionType.Common, new() { AmmunitionType.SemiArmorPiercing, AmmunitionType.HighExplosive, AmmunitionType.ArmorPiercing} },
+            { AmmunitionType.HighExplosive, new() { AmmunitionType.Common, AmmunitionType.SemiArmorPiercing, AmmunitionType.ArmorPiercing} },
+        };
+
+        /// <summary>
+        /// Choose "closest" ammunition type which has > 0 capacity.
+        /// </summary>
+        public AmmunitionType ChooseAmmunitionByPreferredType(AmmunitionType preferAmmu)
+        {
+            var fallbackChain = ammunitionTypeFallbackChain[preferAmmu];
+            return fallbackChain.Prepend(preferAmmu).Where(t => ammunition.GetValue(t) >= 1).DefaultIfEmpty(preferAmmu).First();
         }
     }
 
@@ -965,6 +994,15 @@ namespace NavalCombatCore
         public float GetHeadingDeg() => headingDeg;
         public float GetSpeedKnots() => speedKnots;
 
+        // public void InflictDamagePoint(float damagePointDelta)
+        // {
+        //     damagePoint += damagePointDelta;
+        //     if (damagePoint > shipClass.damagePoint) // TODO: Temp prototyping purpose workaround, in true manner of SK5, the sinking is generally the result of Damage Effect instead of uniform accumulation of DP.
+        //     {
+        //         mapState = MapState.Destroyed; // TODO: How to handle destroyed but how to represent "remain an obstruction" state?
+        //     }
+        // }
+
         public List<BatteryStatus> batteryStatus = new();
         public TorpedoSectorStatus torpedoSectorStatus = new();
         public List<RapidFiringStatus> rapidFiringStatus = new();
@@ -989,14 +1027,23 @@ namespace NavalCombatCore
         public string followedTargetObjectId;
         public ShipLog followedTarget
         {
-            get => EntityManager.Instance.Get<ShipLog>(followedTargetObjectId);
+            get => EntityManager.Instance.GetOnMapShipLog(followedTargetObjectId);
         }
         public float followDistanceYards = 500;
         public string relativeTargetObjectId;
         public ShipLog relativeToTarget
         {
-            get => EntityManager.Instance.Get<ShipLog>(relativeTargetObjectId);
+            get => EntityManager.Instance.GetOnMapShipLog(relativeTargetObjectId);
         }
+        public ControlMode GetEffectiveControlMode()
+        {
+            if (controlMode == ControlMode.FollowTarget && followedTarget != null)
+                return ControlMode.FollowTarget;
+            if (controlMode == ControlMode.RelativeToTarget && relativeToTarget != null)
+                return ControlMode.RelativeToTarget;
+            return ControlMode.Independent;
+        }
+
         public float relativeToTargetDistanceYards = 250;
         public float relativeToTargetAzimuth = 135; // right-after position
 
@@ -1314,6 +1361,16 @@ namespace NavalCombatCore
             foreach (var bs in batteryStatus)
             {
                 bs.Step(deltaSeconds);
+            }
+        }
+
+        public void StepDamageResolution(float deltaSeconds)
+        {
+            if (damagePoint > shipClass.damagePoint) // TODO: Temp workaround, this will be replaced with DE based implementation. 
+            {
+                mapState = MapState.Destroyed;
+                var logger = ServiceLocator.Get<ILoggerService>();
+                logger.LogWarning($"{namedShip.name.GetMergedName()} ({objectId}) is destroyed");
             }
         }
 

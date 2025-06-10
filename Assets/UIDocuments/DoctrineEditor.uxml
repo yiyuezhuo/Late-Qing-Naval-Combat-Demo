@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement data-source-type="NavalCombatCore.Doctrine, Assembly-CSharp" style="flex-grow: 0; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+    <ui:VisualElement data-source-type="NavalCombatCore.Doctrine, Assembly-CSharp" style="flex-grow: 0; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); padding-left: 1px; padding-right: 1px; margin-left: 1px; margin-right: 1px;">
         <ui:Label text="Doctrine" />
         <ui:VisualElement data-source-path="maneuverAutomaticType" style="flex-grow: 0; flex-direction: row;">
             <ui:Label text="Automatic Maneuver:" />
@@ -30,6 +30,44 @@
                     <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
                 </Bindings>
             </ui:EnumField>
+        </ui:VisualElement>
+        <ui:VisualElement data-source-path="ammunitionSwitchAutomaticType" style="flex-grow: 1; flex-direction: row;">
+            <ui:Label text="Ammunition Switch:" />
+            <ui:Label text="Inherit" />
+            <ui:Toggle>
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:Toggle>
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:EnumField value="Center" type="NavalCombatCore.AutomaticType, Assembly-CSharp">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:EnumField>
+                <Bindings>
+                    <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
+                </Bindings>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement data-source-path="ammunitionFallbackable" style="flex-grow: 1; flex-direction: row;">
+            <ui:Label text="Ammunition Fallback:" />
+            <ui:Label text="Inherit" />
+            <ui:Toggle>
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:Toggle>
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:Toggle>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:Toggle>
+                <Bindings>
+                    <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
+                </Bindings>
+            </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement data-source-path="maximumFiringDistanceYardsFor200mmPlus" style="flex-grow: 0; flex-direction: row;">
             <ui:Label text="Max Fire Dist 200mm+ (yards):" />

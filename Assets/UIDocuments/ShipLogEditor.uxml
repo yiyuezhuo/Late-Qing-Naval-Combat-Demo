@@ -139,7 +139,7 @@
                                             </ui:FloatField>
                                             <ui:ProgressBar title="DP Progress">
                                                 <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="damagePoints" binding-mode="ToTarget" />
+                                                    <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="ToTarget" />
                                                     <ui:DataBinding property="highValue" data-source-path="shipClassProperty.damagePoint" binding-mode="ToTarget" />
                                                 </Bindings>
                                             </ui:ProgressBar>

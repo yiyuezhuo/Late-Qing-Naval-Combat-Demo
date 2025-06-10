@@ -123,8 +123,8 @@ public class TopTabs : SingletonDocument<TopTabs>
         var postureTypeMap = NavalGameState.Instance.CalcualtePostureMap(refGroup);
         foreach ((var objectId, var viewer) in GameManager.Instance.objectId2Viewer)
         {
-            var model = EntityManager.Instance.Get<ShipLog>(objectId);
-            var postureType = postureTypeMap.GetValueOrDefault(model);
+            // var model = EntityManager.Instance.Get<ShipLog>(objectId);
+            // var postureType = postureTypeMap.GetValueOrDefault(model);
             // Sync shader parameter for PortraitViewer?
             // var natoViewer = viewer.GetComponent<NATOIconViewer>();
             // natoViewer.SyncPostureType(postureType);

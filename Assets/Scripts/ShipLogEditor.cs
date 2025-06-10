@@ -137,7 +137,7 @@ namespace NavalCombatCore
         [CreateProperty]
         public string followedTargetDesc
         {
-            get => followedTarget?.namedShip?.name.mergedName ?? "[Not Specified]";
+            get => followedTarget?.namedShip?.name.mergedName ?? "[Not Specified or Invalid]";
         }
 
         // [CreateProperty]
@@ -157,7 +157,7 @@ namespace NavalCombatCore
         [CreateProperty]
         public string relativeToTargetDesc
         {
-            get => relativeToTarget?.namedShip?.name.mergedName ?? "[Not Specified]";
+            get => relativeToTarget?.namedShip?.name.mergedName ?? "[Not Specified or Invalid]";
         }
 
         [CreateProperty]

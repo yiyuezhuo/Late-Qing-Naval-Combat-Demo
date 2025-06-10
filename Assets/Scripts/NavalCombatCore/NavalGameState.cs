@@ -295,6 +295,9 @@ namespace NavalCombatCore
 
             foreach (var shipLog in shipLogsOnMap)
                 shipLog.StepBatteryStatus(deltaSeconds); // gunnery resolution
+
+            foreach (var shipLog in shipLogsOnMap)
+                shipLog.StepDamageResolution(deltaSeconds);
         }
 
         public IEnumerable<ShipLog> shipLogsOnMap => shipLogs.Where(x => x.mapState == MapState.Deployed);

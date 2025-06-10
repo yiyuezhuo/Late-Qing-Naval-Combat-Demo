@@ -46,6 +46,8 @@ namespace NavalCombatCore
         public string objectId { get; set; }
         public Inheriable<AutomaticType> maneuverAutomaticType = new() { value = AutomaticType.Manual };
         public Inheriable<AutomaticType> fireAutomaticType = new() { value = AutomaticType.Automatic };
+        public Inheriable<bool> ammunitionFallbackable = new() { value = true };
+        public Inheriable<AutomaticType> ammunitionSwitchAutomaticType = new() { value = AutomaticType.Automatic };
         public InheriableUnspecifiableFloat maximumFiringDistanceYardsFor200mmPlus = new();
         public InheriableUnspecifiableFloat maximumFiringDistanceYardsFor100mmTo200mm = new();
         // public Inheriable<Unspecifiable<float>> maximumFiringDistanceYardsFor100mmTo200mm = new();
@@ -57,6 +59,20 @@ namespace NavalCombatCore
                 return null;
             var parent = member.GetParentGroup();
             return parent?.doctrine;
+        }
+
+        public AutomaticType GetAmmunitionSwitchAutomaticType()
+        {
+            if (!ammunitionSwitchAutomaticType.isInherited)
+                return ammunitionSwitchAutomaticType.value;
+            return GetParentDocrine()?.GetAmmunitionSwitchAutomaticType() ?? AutomaticType.Automatic;
+        }
+
+        public bool GetAmmunitionFallbackable()
+        {
+            if (!ammunitionFallbackable.isInherited)
+                return ammunitionFallbackable.value;
+            return GetParentDocrine()?.GetAmmunitionFallbackable() ?? true;
         }
 
         public AutomaticType GetManeuverAutomaticType() // CMO-like method, look for a better way thought

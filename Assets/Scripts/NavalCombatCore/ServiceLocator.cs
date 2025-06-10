@@ -28,6 +28,7 @@ namespace NavalCombatCore
     public interface ILoggerService
     {
         void Log(string message);
+        void LogWarning(string message);
     }
 
     public class FallbackLogger : ILoggerService
@@ -35,6 +36,11 @@ namespace NavalCombatCore
         public void Log(string message)
         {
             System.Console.WriteLine(message);
+        }
+
+        public void LogWarning(string message)
+        {
+            System.Console.WriteLine("[Warn]:" + message);
         }
     }
 

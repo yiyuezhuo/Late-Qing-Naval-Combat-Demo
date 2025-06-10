@@ -10,6 +10,8 @@ Unfortunately, naval engagement involving those ironclad in the first Sino-Japan
 
 ## Hotkeys
 
+- Left Click: Select Unit
+- Right Click: Select Unit and open Ship Log Editor Viewer for it.
 - Shift + Left Click: Set Course
 - D: Distance measureing line
 - S: Line of Sight (check ship masking & earth curvature)

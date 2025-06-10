@@ -56,7 +56,7 @@ namespace NavalCombatCore
                 TargetAspect.Narrow => narrowAspectLocationWeightTable,
                 _ => broadAspectLocationWeightTable
             };
-            var colIdx = Math.Min(table.GetLength(1), (int)rangeBand);
+            var colIdx = Math.Min(table.GetLength(1) - 1, (int)rangeBand);
             var rows = table.GetLength(0);
             var weights = new double[rows];
             for (int rowIdx = 0; rowIdx < table.GetLength(0); rowIdx++)
@@ -85,7 +85,7 @@ namespace NavalCombatCore
         public static float GetCloseRangeFireControlScore(float distanceYards, float speedKnots, TargetAspect targetAspect)
         {
             var colIdx = (distanceYards > 2000 ? 2 : 0) + (targetAspect == TargetAspect.Broad ? 0 : 1);
-            var rowIdx = closeRangeFireControlTableRows.Select((s, i) => (s, i)).Where(si => speedKnots <= si.s).Last().i;
+            var rowIdx = closeRangeFireControlTableRows.Select((s, i) => (s, i)).Where(si => speedKnots <= si.s).First().i;
             return closeRangeFireControlTable[rowIdx, colIdx];
         }
 
@@ -331,24 +331,82 @@ namespace NavalCombatCore
                 case HitPenDetType.PenetrateWithDetonate:
                     var (baseOffset, subOffsetWeights) = classAHitWeights[ammoType];
                     var colIdx = baseOffset + Categorical.Sample(subOffsetWeights);
-                    
+
                     damagePoint = shellDamageFactorsTable.cells[row.index, colIdx];
                     var damageEffectProb = shellDamageFactorsTable.cells[row.index, 11] * 0.01;
-                    damageEffect = RandomUtils.rand.NextDouble() <  damageEffectProb;
+                    damageEffect = RandomUtils.rand.NextDouble() < damageEffectProb;
                     break;
                 case HitPenDetType.PassThrough:
                     damagePoint = shellDamageFactorsTable.cells[row.index, 12];
                     damageEffectProb = shellDamageFactorsTable.cells[row.index, 13] * 0.01;
-                    damageEffect = RandomUtils.rand.NextDouble() <  damageEffectProb;
+                    damageEffect = RandomUtils.rand.NextDouble() < damageEffectProb;
                     break;
                 case HitPenDetType.NoPenetration:
                     damagePoint = shellDamageFactorsTable.cells[row.index, 14 + (int)ammoType];
                     damageEffectProb = shellDamageFactorsTable.cells[row.index, 18] * 0.01;
-                    damageEffect = RandomUtils.rand.NextDouble() <  damageEffectProb;
+                    damageEffect = RandomUtils.rand.NextDouble() < damageEffectProb;
                     break;
             }
 
-            return new(){damagePoint=damagePoint, causeDamageEffect=damageEffect};
+            return new() { damagePoint = damagePoint, causeDamageEffect = damageEffect };
         }
+
+        // L1 - Damage Determination - Warships 1880 to 1905
+        public static string damageDeterminationTableWarships1880to1905CsvText = @"Roll,Deck (1),Turret (2/8),Superst (3/9),Con (4),Belt M. (5),Belt E (6),Barbette (7),General (G),Fires (F),Torpedo (T)
+2,100,100,104,107,100,120,100,*601,501,100
+2,100,100,104,107,101,121,100,*601,501,100
+2,100,100,104,107,102,121,101,*602,501,101
+2,101,101,107,108,106,123,101,*602,501,102
+2,101,101,107,108,116,123,101,603,502,112
+2,101,101,107,112,116,125,102,603,502,112
+2,104,101,108,112,117,125,102,603,502,117
+2,104,103,108,112,117,126,102,603,502,117
+2,104,103,108,124,117,126,102,*604,503,120
+2,106,103,113,124,118,127,103,*604,503,121
+2,106,103,113,124,118,130,103,*604,503,122
+2,110,104,124,133,118,133,103,*604,503,123
+2,110,104,124,133,120,134,103,*604,506,123
+2,110,104,127,140,120,134,105,605,506,123
+2,113,105,127,140,120,134,105,605,506,123
+2,113,105,128,140,121,135,105,605,506,125
+2,114,106,128,140,123,135,107,*606,507,125
+2,114,106,129,141,123,135,108,*606,507,126
+2,116,107,129,141,123,147,109,*606,507,126
+2,116,108,129,143,123,149,109,607,507,126
+2,116,109,130,143,123,151,109,607,507,126
+2,117,109,130,143,124,151,110,607,508,133
+2,117,109,132,143,125,152,110,608,508,133
+2,117,110,132,144,125,154,110,608,509,134
+2,118,110,140,144,125,154,111,608,509,134
+2,118,110,140,144,126,154,111,608,509,135
+2,118,110,141,145,126,155,112,*609,510,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+2,120,111,141,145,126,155,112,*609,510,147
+2,120,111,143,145,126,157,114,*609,510,152
+2,120,111,143,146,146,167,114,*609,511,152
+2,121,111,143,146,150,167,114,610,511,154
+2,121,112,144,147,151,168,115,610,511,167
+2,125,112,145,147,152,168,115,610,512,167
+2,125,113,145,147,152,169,115,611,512,168
+2,125,113,148,153,154,169,115,611,513,168
+2,125,113,148,153,156,170,146,612,513,169
+2,127,114,148,153,167,171,146,612,514,169
+2,128,114,155,156,168,171,147,612,514,170
+2,130,115,155,156,168,171,147,612,514,171
+2,133,115,156,156,169,172,149,*613,515,172
+2,133,115,156,157,170,172,149,*613,515,173
+2,146,115,157,158,172,173,153,614,515,173
+2,149,132,158,158,172,173,153,614,516,176
+2,150,147,158,159,173,173,170,*615,516,176
+2,152,147,159,160,176,175,170,*615,516,181
+2,152,149,160,160,177,180,170,616,516,181
+2,153,149,160,160,179,180,176,616,517,182
+2,153,160,163,163,180,182,176,617,517,182
+2,166,176,166,163,182,183,182,617,517,182
+2,174,176,178,176,183,183,182,617,517,183";
+
+        public static SimpleTable<float, string, string> damageDeterminationTableWarships1880to1905 = SimpleTable<float, string, string>.FromCSV(damageDeterminationTableWarships1880to1905CsvText,
+            float.Parse, x => x, x => x
+        );
+
     }
 }

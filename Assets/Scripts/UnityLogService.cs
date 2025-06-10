@@ -8,6 +8,8 @@ public class UnityLogService : ILoggerService
         Debug.Log(message);
     }
 
+    public void LogWarning(string message) => Debug.LogWarning(message);
+
     static UnityLogService instance = new UnityLogService();
     public static UnityLogService Instance => instance;
 

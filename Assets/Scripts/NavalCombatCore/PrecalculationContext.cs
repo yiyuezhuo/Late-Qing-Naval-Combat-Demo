@@ -22,6 +22,7 @@ namespace NavalCombatCore
             public class ShipLogSupplementary
             {
                 public HashSet<BatteryStatus> batteriesFiredAtMe = new();
+                public float armorScore;
             }
 
             public class ShipLogPairSupplementary
@@ -66,7 +67,7 @@ namespace NavalCombatCore
 
                 foreach (var shipLog in NavalGameState.Instance.shipLogsOnMap)
                 {
-                    shipLogSupplementaryMap[shipLog] = new();
+                    shipLogSupplementaryMap[shipLog] = new(){armorScore = shipLog.EvaluateArmorScore()};
                     foreach (var bty in shipLog.batteryStatus)
                     {
                         foreach (var mnt in bty.mountStatus)

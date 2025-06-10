@@ -5,6 +5,7 @@ using System.Linq;
 using System;
 using GeographicLib;
 using UnityEngine.UIElements;
+using System.Windows.Forms;
 
 
 namespace NavalCombatCore
@@ -159,27 +160,64 @@ namespace NavalCombatCore
 
             }.ResetDF4ToOriginal()).ToList();
 
+            // Correct Invalid controlMode (E.X a unit is set to follow an invalid target would be treated as independent)
+
             var originalToRecords = records.ToDictionary(r => r.original, r => r);
+
             foreach (var record in records)
             {
-                var followedTarget = record.original.GetFollowedTarget();
-                var relativeToTarget = record.original.GetRelativeToTarget();
-                if (followedTarget != null)
-                    record.followedTarget = originalToRecords.GetValueOrDefault(followedTarget);
-                if (relativeToTarget != null)
-                    record.relativeToTarget = originalToRecords.GetValueOrDefault(relativeToTarget);
+                if (record.controlMode == ControlMode.FollowTarget)
+                {
+                    var followedTarget = record.original.GetFollowedTarget();
+                    if (followedTarget == null)
+                    {
+                        record.controlMode = ControlMode.Independent;
+                    }
+                    else
+                    {
+                        record.followedTarget = originalToRecords[followedTarget];
+                    }
+                }
+                else if (record.controlMode == ControlMode.RelativeToTarget)
+                {
+                    var relativeToTarget = record.original.GetRelativeToTarget();
+                    if (relativeToTarget == null)
+                    {
+                        record.controlMode = ControlMode.Independent;
+                    }
+                    else
+                    {
+                        record.relativeToTarget = originalToRecords[relativeToTarget];
+                    }
+                }
             }
 
-            // var decisionRecords = records.Where(r => r.controlMode == ControlMode.Independent).ToList();
-            // var inducedRecords = records.Where(r => r.controlMode != ControlMode.Independent).ToList();
-            // var leadToSubInducedRecords = inducedRecords.GroupBy(g => g.controlMode switch
+            // foreach (var record in records)
             // {
-            //     ControlMode.FollowTarget => g.followedTarget,
-            //     ControlMode.RelativeToTarget => g.relativeToTarget,
-            //     _ => throw new ArgumentOutOfRangeException($"Unknown Supported ControlMode: {g.controlMode}")
-            // }).ToDictionary(g => g.Key, g => g.ToList());
+            //     var followedTarget = record.original.GetFollowedTarget();
+            //     var relativeToTarget = record.original.GetRelativeToTarget();
+            //     // if (followedTarget != null)
+            //     //     record.followedTarget = originalToRecords.GetValueOrDefault(followedTarget);
+            //     // if (relativeToTarget != null)
+            //     //     record.relativeToTarget = originalToRecords.GetValueOrDefault(relativeToTarget);
+            //     if (followedTarget != null)
+            //         record.followedTarget = originalToRecords[followedTarget];
+            //     if (relativeToTarget != null)
+            //         record.relativeToTarget = originalToRecords[relativeToTarget];
+            // }
 
-            var leadToSubInducedRecords = records.GroupBy(g => g.GetControlLead()).ToDictionary(g => g.Key, g => g.ToList());
+            // var leadToSubInducedRecords = records.GroupBy(g => g.GetControlLead()).ToDictionary(g => g.Key, g => g.ToList());
+            var _leadToSubInducedRecords = records.GroupBy(g =>
+            {
+                var ret = g.GetControlLead();
+                // System.Diagnostics.Debug.Assert(ret != null);
+                if (ret == null)
+                {
+                    throw new ArgumentException($"{g} => {ret}");
+                }
+                return ret;
+            }).ToList();
+            var leadToSubInducedRecords = _leadToSubInducedRecords.ToDictionary(g => g.Key, g => g.ToList());
 
             return (records, originalToRecords, leadToSubInducedRecords);
         }

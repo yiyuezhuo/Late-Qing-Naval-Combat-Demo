@@ -71,6 +71,14 @@ namespace NavalCombatCore
             return entityToParent.GetValueOrDefault(obj) as T;
         }
 
+        public ShipLog GetOnMapShipLog(string id)
+        {
+            var shipLog = Get<ShipLog>(id);
+            if (shipLog == null || !shipLog.IsOnMap())
+                return null;
+            return shipLog;
+        }
+
         static EntityManager _instance;
 
         public static EntityManager Instance

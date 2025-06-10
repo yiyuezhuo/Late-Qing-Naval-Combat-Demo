@@ -103,7 +103,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
     void MaintainArrowRotation()
     {
-        var isIndependentControlled = shipLog.controlMode == ControlMode.Independent;
+        var isIndependentControlled = shipLog.GetEffectiveControlMode() == ControlMode.Independent;
         arrowBaseTransform.gameObject.SetActive(isIndependentControlled);
 
         if (isIndependentControlled)

@@ -1,0 +1,354 @@
+using System;
+using MathNet.Numerics.Distributions;
+using System.Linq;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+
+
+namespace NavalCombatCore
+{
+    public enum HitPenDetType
+    {
+        PenetrateWithDetonate, // Class A
+        PassThrough, // Class B
+        NoPenetration // Class C
+    }
+
+    /// <summary>
+    /// SK5 Table lookup and helpers
+    /// </summary>
+    public static class RuleChart
+    {
+        // Chart J1 - Hit Location - Warships
+        public static float[,] broadAspectLocationWeightTable = new float[,]
+        {// Short   Medium  Long/Extreme
+            {2,     12,     25}, // 1H DECK
+            {1,     3,      6},  // 2H TURRET
+            {2,     4,      8},  // 3H SUPERSTR
+            {4,     3,      3},  // 4V CON
+            {26,    18,     16}, // 5V MAIN BELT
+            {9,     8,      7},  // 6V BELT ENDS
+            {19,    17,     11}, // 7V BARBETTE
+            {17,    16,     11}, // 8V TURRET
+            {19,    17,     12}, // 9V SUPERSTR
+            {1,     1,      1}   // INEFFECTIVE
+        };
+
+        public static float[,] narrowAspectLocationWeightTable = new float[,]
+        {// Short   Medium  Long/Extreme
+            {4,     20,     34}, // 1H DECK
+            {2,     3,      7},  // 2H TURRET
+            {3,     9,      14}, // 3H SUPERSTR
+            {6,     4,      3},  // 4V CON
+            {7,     5,      5},  // 5V MAIN BELT
+            {4,     3,      3},  // 6V BELT ENDS
+            {28,    16,     6},  // 7V BARBETTE
+            {23,    19,     13}, // 8V TURRET
+            {22,    20,     14}, // 9V SUPERSTR
+            {1,     1,      1}   // INEFFECTIVE
+        };
+
+        public static double[] GetLocationWeights(TargetAspect targetAspect, RangeBand rangeBand)
+        {
+            var table = targetAspect switch
+            {
+                TargetAspect.Broad => broadAspectLocationWeightTable,
+                TargetAspect.Narrow => narrowAspectLocationWeightTable,
+                _ => broadAspectLocationWeightTable
+            };
+            var colIdx = Math.Min(table.GetLength(1), (int)rangeBand);
+            var rows = table.GetLength(0);
+            var weights = new double[rows];
+            for (int rowIdx = 0; rowIdx < table.GetLength(0); rowIdx++)
+                weights[rowIdx] = table[rowIdx, colIdx];
+            return weights;
+        }
+
+        public static ArmorLocation RollArmorLocation(TargetAspect targetAspect, RangeBand rangeBand)
+        {
+            var idx = Categorical.Sample(GetLocationWeights(targetAspect, rangeBand));
+            return (ArmorLocation)idx;
+        }
+
+
+        // Chart J6 - Close Range Fire Control
+        public static float[,] closeRangeFireControlTable = new float[,]
+        {//     0-2000      2001-4500 (distance yards)
+         //Broad  Narrow  Broad   Narrow
+            {15,    12,     12,     10},
+            {13,    9,      10,     8},
+            {11,    8,      9,      7},
+            { 9,    7,      8,      6},
+            { 8,    6,      7,      5}
+        };
+        public static float[] closeRangeFireControlTableRows = new float[] { 9, 18, 27, 36, float.MaxValue };
+        public static float GetCloseRangeFireControlScore(float distanceYards, float speedKnots, TargetAspect targetAspect)
+        {
+            var colIdx = (distanceYards > 2000 ? 2 : 0) + (targetAspect == TargetAspect.Broad ? 0 : 1);
+            var rowIdx = closeRangeFireControlTableRows.Select((s, i) => (s, i)).Where(si => speedKnots <= si.s).Last().i;
+            return closeRangeFireControlTable[rowIdx, colIdx];
+        }
+
+        // Chart I1 - Surface Gunfire combat resolution (first row, other row is direct derivation from Binomial Distribution)
+        public static float GetHitProbP100(float fireControlScore)
+        {
+            // Shell=1 row
+            // 0.25~1% for 0-3 (+0.25% / FCS)
+            // 1%-9% for 3-19 (+0.5% / FCS)
+            // 9%-20% for 19-30 (+1% / FCS)
+            fireControlScore = Math.Clamp(fireControlScore, 0, 30);
+            if (fireControlScore <= 3)
+                return 0.25f + fireControlScore * 0.25f;
+            if (fireControlScore <= 19)
+                return 1 + (fireControlScore - 3) * 0.5f;
+            return 9 + (fireControlScore - 19) * 1f;
+        }
+
+        public class SimpleTable<TRow, TCol, TCell>
+        {
+            public TRow[] rows;
+            public TCol[] cols;
+            public TCell[,] cells;
+
+            public static SimpleTable<TRow, TCol, TCell> FromCSV(string text, Func<string, TRow> rowExtractor, Func<string, TCol> colExtractor, Func<string, TCell> cellExtractor)
+            {
+                var lines = text.Split("\n").Select(s => s.Trim().Split(",").ToList()).ToList();
+                var cols = lines[0].Skip(1).Select(colExtractor).ToArray();
+                var rows = lines.Skip(1).Select(line => rowExtractor(line[0])).ToArray();
+
+                var nrows = lines.Count;
+                var ncols = lines[0].Count;
+                var cells = new TCell[nrows, ncols];
+                for (var i = 1; i < nrows; i++)
+                {
+                    for (var j = 1; j < ncols; j++)
+                    {
+                        cells[i, j] = cellExtractor(lines[i][j]);
+                    }
+                }
+                return new SimpleTable<TRow, TCol, TCell>()
+                {
+                    rows = rows,
+                    cols = cols,
+                    cells = cells
+                };
+            }
+        }
+
+        // Chart J4 Raw
+        public static string penetrationTableHighExplosiveShellsText = @",26.5,26,25.5,25,24.5,24,23.5,23,22.5,22,21.5,21,20.5,20,19.5,19,18.5,18,17.5,17,16.5,16,15.5,15,14.5,14,13.5,13,12.5,12,11.5,11,10.5,10,9.5,9,8.5,8,7.5,7,6.5,6,5.5,5,4.5,4,3.5,3,2.5,2,1.5,1,0.5,0
+18,3.6,3.5,3.5,3.4,3.4,3.3,3.3,3.2,3.2,3.2,3.1,3.1,3.1,3,3,3,3,2.9,2.9,2.9,2.9,2.9,2.9,2.9,2.9,2.9,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8
+16,4,3.8,3.7,3.6,3.5,3.4,3.3,3.3,3.2,3.1,3.1,3,3,2.9,2.9,2.8,2.8,2.8,2.7,2.7,2.7,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5
+15,4.4,4.2,4.1,3.9,3.8,3.7,3.5,3.4,3.3,3.2,3.1,3.1,3,2.9,2.9,2.8,2.7,2.7,2.7,2.6,2.6,2.6,2.5,2.5,2.5,2.5,2.4,2.4,2.4,2.4,2.4,2.4,2.4,2.4,2.4,2.4,2.4,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3
+14,5.1,4.9,4.7,4.4,4.3,4.1,3.9,3.7,3.6,3.5,3.3,3.2,3.1,3,2.9,2.8,2.8,2.7,2.6,2.6,2.5,2.5,2.4,2.4,2.4,2.4,2.3,2.3,2.3,2.3,2.3,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2
+13.5,5.7,5.4,5.1,4.9,4.6,4.4,4.2,4,3.8,3.7,3.5,3.4,3.2,3.1,3,2.9,2.8,2.7,2.7,2.6,2.5,2.5,2.4,2.4,2.3,2.3,2.3,2.3,2.2,2.2,2.2,2.2,2.2,2.2,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1
+13,6.4,6,5.7,5.4,5.1,4.8,4.6,4.3,4.1,3.9,3.7,3.6,3.4,3.3,3.1,3,2.9,2.8,2.7,2.6,2.5,2.5,2.4,2.4,2.3,2.3,2.2,2.2,2.2,2.2,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
+12,8.5,7.9,7.4,7,6.5,6.1,5.7,5.4,5,4.7,4.5,4.2,4,3.7,3.5,3.4,3.2,3,2.9,2.8,2.7,2.6,2.5,2.4,2.3,2.2,2.2,2.1,2.1,2.1,2,2,2,2,1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9
+11,,,,,,8.5,7.9,7.3,6.8,6.3,5.8,5.4,5,4.7,4.4,4.1,3.8,3.6,3.4,3.2,3,2.8,2.7,2.5,2.4,2.3,2.2,2.1,2.1,2,2,1.9,1.9,1.8,1.8,1.8,1.8,1.8,1.8,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7
+10,,,,,,,,,,,,7.8,7.2,6.6,6.1,5.6,5.1,4.7,4.3,4,3.7,3.4,3.2,2.9,2.8,2.6,2.4,2.3,2.2,2.1,2,1.9,1.8,1.8,1.7,1.7,1.7,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+9.2,,,,,,,,,,,,,,,,,6.9,6.3,5.7,5.2,4.7,4.3,3.9,3.6,3.3,3,2.8,2.6,2.4,2.2,2.1,2,1.9,1.8,1.7,1.7,1.6,1.6,1.5,1.5,1.5,1.5,1.5,1.5,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4
+8,,,,,,,,,,,,,,,,,,,,,,,6.3,5.6,5,4.5,4,3.6,3.2,2.9,2.6,2.3,2.1,2,1.8,1.7,1.6,1.5,1.4,1.4,1.4,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.2,1.2,1.2,1.2,1.2,1.2
+7.5,,,,,,,,,,,,,,,,,,,,,,,,,,5.9,5.2,4.5,4,3.5,3.1,2.8,2.5,2.2,2,1.8,1.7,1.6,1.5,1.4,1.3,1.3,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,4.8,4,3.4,2.9,2.4,2.1,1.8,1.6,1.4,1.2,1.1,1.1,1,1,1,0.9,0.9,0.9,0.9,0.9,0.9,0.9
+5.5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,4.2,3.5,2.9,2.4,2,1.7,1.5,1.3,1.1,1,1,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9
+5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,3.9,3.2,2.6,2.1,1.7,1.4,1.2,1.1,1,0.9,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8
+4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,3.2,2.4,1.9,1.5,1.2,1,0.8,0.7,0.7,0.6,0.6,0.6,0.6,0.6,0.6
+3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,2.5,1.7,1.2,0.9,0.7,0.6,0.5,0.5,0.5,0.5,0.5";
+
+        public static SimpleTable<float, float, float> penetrationTableHighExplosiveShellsTable = SimpleTable<float, float, float>.FromCSV(
+            penetrationTableHighExplosiveShellsText,
+            float.Parse, float.Parse, x => x == "" ? -1 : float.Parse(x)
+        );
+
+        public static float ResolvePenetrationHEPenetration(float boreInch, float apPenetrationInch)
+        {
+            var t = penetrationTableHighExplosiveShellsTable;
+            var row = t.rows.Select((threshold, index) => (threshold, index)).FirstOrDefault(r => boreInch >= r.threshold);
+            var col = t.cols.Select((threshold, index) => (threshold, index)).FirstOrDefault(r => apPenetrationInch >= r.threshold);
+            var cell = t.cells[row.index, col.index];
+            if (cell != -1)
+                return cell;
+            for (var j = col.index + 1; j < t.cols.Length; j++)
+            {
+                if (t.cells[row.index, j] != -1)
+                    return t.cells[row.index, j];
+            }
+            return 0;
+        }
+
+        // K1 - First Part
+        public static Dictionary<(AmmunitionType, AmmunitionType), float> adjustPenetrationTable = new()
+        {
+            {(AmmunitionType.ArmorPiercing, AmmunitionType.SemiArmorPiercing), 0.75f},
+            {(AmmunitionType.ArmorPiercing, AmmunitionType.Common), 0.5f},
+            {(AmmunitionType.SemiArmorPiercing, AmmunitionType.Common), 0.66f},
+        };
+
+        public static float GetAdjustedPenetrationByType(AmmunitionType baseAmmoType, float basePenetationInch, float boreInch, AmmunitionType currentAmmoType)
+        {
+            if (baseAmmoType == currentAmmoType)
+                return basePenetationInch;
+            if (currentAmmoType == AmmunitionType.HighExplosive)
+            {
+                return ResolvePenetrationHEPenetration(boreInch, basePenetationInch);
+            }
+            if (adjustPenetrationTable.TryGetValue((baseAmmoType, currentAmmoType), out var percent))
+            {
+                return basePenetationInch * percent;
+            }
+            return basePenetationInch;
+        }
+
+
+
+        public static Dictionary<ArmorLocation, ArmorLocationAngleType> armorLocationToAngleType = new()
+        {
+            {ArmorLocation.Deck, ArmorLocationAngleType.Horizontal},
+            {ArmorLocation.TurretHorizontal, ArmorLocationAngleType.Horizontal},
+            {ArmorLocation.SuperStructureHorizontal, ArmorLocationAngleType.Horizontal},
+            {ArmorLocation.ConningTower, ArmorLocationAngleType.Vertical},
+            {ArmorLocation.MainBelt, ArmorLocationAngleType.Vertical},
+            {ArmorLocation.BeltEnd, ArmorLocationAngleType.Vertical},
+            {ArmorLocation.Barbette, ArmorLocationAngleType.Vertical},
+            {ArmorLocation.TurretVertical, ArmorLocationAngleType.Vertical},
+            {ArmorLocation.SuperStructureVertical, ArmorLocationAngleType.Vertical},
+        };
+
+        // K2 - Pass-Through Check  - Armored & K3 - Penetration Results - Unarmored
+        public class AmmoDetonateProbRecord
+        {
+            public float armored;
+            public float unarmored;
+        }
+        public static Dictionary<AmmunitionType, AmmoDetonateProbRecord> ammoDetonateProbMap = new()
+        {
+            {AmmunitionType.ArmorPiercing, new() {armored = 0.3f, unarmored = 0.2f}},
+            {AmmunitionType.SemiArmorPiercing, new() {armored = 0.5f, unarmored = 0.4f}},
+            {AmmunitionType.Common, new() {armored = 0.7f, unarmored = 0.7f}},
+            {AmmunitionType.HighExplosive, new() {armored = 0.9f, unarmored = 0.9f}},
+        };
+
+        public static HitPenDetType ResolveHitPenDetType(float effPenInch, float effArmorInch, AmmunitionType ammoType)
+        {
+            var unarmored = effArmorInch <= 0.5f;
+            if (!unarmored)
+            {
+                if (effPenInch < effArmorInch)
+                    return HitPenDetType.NoPenetration;
+                else if (effPenInch >= effArmorInch && effPenInch < effArmorInch * 2)
+                    return HitPenDetType.PenetrateWithDetonate;
+            }
+            var _detonateProb = ammoDetonateProbMap[ammoType];
+            var detonateProb = unarmored ? _detonateProb.unarmored : _detonateProb.armored;
+            if (RandomUtils.rand.NextDouble() <= detonateProb)
+                return HitPenDetType.PenetrateWithDetonate;
+            return HitPenDetType.PassThrough;
+        }
+
+        // K4 - Shell Damage Factors
+        public static string shellDamageFactorsCsvText = @"Damage Factor,A - AP - 1,A - AP - 2,A - AP -3,A - AP - 4,A - SAP - 1,A - SAP - 2,A - SAP - 3,A - COM - 1,A - COM - 2,A - HE - 1,A - HE - 2,Class A - DE,B - All,Class B - DE,C - AP,C - SAP,C - COM,C - HE,Class C - DE
+5,7,15,18,28,16,19,29,20,21,23,25,38,10,13,9,8,8,7,0
+6,10,20,20,30,20,20,30,20,30,30,30,40,10,14,11,10,9,8,0
+7,10,20,20,40,20,30,40,30,30,30,40,42,15,15,10,10,10,10,0
+8,10,20,30,40,30,30,50,30,30,40,40,44,15,15,15,15,10,10,0
+9,15,30,30,50,30,30,50,40,40,40,50,46,20,16,15,15,15,10,0
+10,15,30,40,60,30,40,60,40,40,50,50,47,20,17,20,15,15,15,0
+11,15,30,40,60,40,40,60,40,50,50,60,49,20,17,20,20,15,15,0
+12,20,40,40,70,40,50,70,50,50,50,60,50,25,17,20,20,20,15,0
+13,20,40,50,70,40,50,70,50,50,60,70,51,25,18,25,20,20,15,0
+14,20,40,50,80,50,50,80,50,60,60,70,52,30,18,25,20,20,20,0
+15,25,50,50,80,50,60,90,60,60,70,80,53,30,19,25,25,25,20,0
+16,25,50,60,90,50,60,90,60,70,70,80,54,30,19,30,25,25,20,8
+17,25,50,60,90,60,60,100,70,70,80,90,55,35,19,30,25,25,25,8
+18,25,50,60,100,60,70,100,70,80,80,90,56,35,20,30,30,25,25,8
+19,30,60,70,100,60,70,110,70,80,90,100,57,40,20,35,30,30,25,9
+20,30,60,70,110,70,80,120,80,80,90,100,58,40,20,35,30,30,25,9
+22,35,70,80,120,70,80,130,90,90,100,110,60,45,21,40,35,35,30,9
+24,35,70,80,130,80,90,140,90,100,110,120,61,50,21,40,40,35,30,9
+26,40,80,90,140,80,100,150,100,110,120,130,63,50,22,45,40,40,35,9
+28,40,80,100,150,90,110,160,110,120,130,140,64,55,22,50,45,40,40,10
+30,45,90,110,170,100,110,170,120,130,140,150,66,60,23,55,50,45,40,10
+32,50,100,110,180,100,120,180,120,130,140,160,67,65,23,55,50,50,45,10
+34,50,100,120,190,110,130,200,130,140,150,170,68,70,24,60,55,50,45,10
+36,55,110,130,200,120,140,210,140,150,160,180,69,70,24,65,60,55,50,10
+38,55,110,130,210,120,140,220,150,160,170,190,70,75,25,65,60,55,50,11
+40,60,120,140,220,130,150,230,160,170,180,200,71,80,25,70,65,60,55,11
+42,65,130,150,230,140,160,240,160,180,190,210,73,85,25,75,65,65,60,11
+44,65,130,150,240,140,170,250,170,180,200,220,74,90,26,75,70,65,60,11
+46,70,140,160,250,150,170,260,180,190,210,230,75,90,26,80,75,70,60,11
+48,70,140,170,260,160,180,280,190,200,220,240,76,95,26,85,75,70,65,11
+50,75,150,180,280,160,190,290,200,210,230,250,76,100,27,90,80,75,70,11
+52,80,160,180,290,170,200,300,200,220,230,260,77,105,27,90,85,80,70,12
+54,80,160,190,300,180,200,310,210,230,240,270,78,110,27,95,85,80,75,12
+56,85,170,200,310,180,210,320,220,240,250,280,79,110,28,100,90,85,75,12
+58,85,170,200,320,190,220,330,230,240,260,290,80,115,28,100,95,85,80,12
+60,90,180,210,330,200,230,350,230,250,270,300,81,120,28,105,95,90,80,12
+62,95,190,220,340,200,230,360,240,260,280,310,82,125,29,110,100,95,85,12
+64,95,190,220,350,210,240,370,250,270,290,320,82,130,29,110,100,95,85,12
+66,100,200,230,360,210,250,380,260,280,300,330,83,135,29,115,105,100,90,12
+68,100,200,240,370,220,260,390,270,290,310,340,84,140,29,120,110,100,90,15
+70,105,210,250,390,230,260,400,270,290,320,350,85,145,30,125,110,105,95,15
+72,110,220,250,400,230,270,410,280,300,320,360,86,150,30,125,115,110,95,15
+74,110,220,260,410,240,280,430,290,310,330,370,86,155,30,130,120,110,100,15
+76,115,230,270,420,250,290,440,300,320,340,380,87,160,30,135,120,115,105,15
+78,115,230,270,430,250,290,450,300,330,350,390,87,165,31,135,125,115,105,15
+80,120,240,280,440,260,300,460,310,340,360,400,88,170,31,140,130,120,110,18
+82,125,250,290,450,270,310,470,320,340,370,410,89,175,31,145,130,125,110,18
+84,125,250,290,460,270,320,480,330,350,380,420,89,180,31,145,135,125,115,18";
+
+        public static SimpleTable<float, string, float> shellDamageFactorsTable = SimpleTable<float, string, float>.FromCSV(shellDamageFactorsCsvText,
+            float.Parse, s => s, float.Parse
+        );
+
+        public class ShellDamageResult
+        {
+            [XmlAttribute]
+            public float damagePoint;
+            [XmlAttribute]
+            public bool causeDamageEffect;
+
+            public override string ToString()
+            {
+                return $"(DP={damagePoint}, DE={causeDamageEffect})";
+            }
+        }
+
+        static Dictionary<AmmunitionType, (int, double[])> classAHitWeights = new()
+        {
+            { AmmunitionType.ArmorPiercing, (0, new double[] { 5, 30, 45, 25 } )},
+            { AmmunitionType.SemiArmorPiercing, (4, new double[] { 25, 50, 25 } )},
+            { AmmunitionType.Common, (7, new double[] { 50, 50 } )},
+            { AmmunitionType.HighExplosive, (9, new double[] { 25, 75 } )}
+        };
+
+        public static ShellDamageResult ResolveShellDamageResult(float damageFactor, HitPenDetType hitPenDetType, AmmunitionType ammoType)
+        {
+            var row = shellDamageFactorsTable.rows.Select((value, index) => (value, index)).Last(r => damageFactor >= r.value);
+            var damagePoint = 0f;
+            var damageEffect = false;
+            switch (hitPenDetType)
+            {
+                case HitPenDetType.PenetrateWithDetonate:
+                    var (baseOffset, subOffsetWeights) = classAHitWeights[ammoType];
+                    var colIdx = baseOffset + Categorical.Sample(subOffsetWeights);
+                    
+                    damagePoint = shellDamageFactorsTable.cells[row.index, colIdx];
+                    var damageEffectProb = shellDamageFactorsTable.cells[row.index, 11] * 0.01;
+                    damageEffect = RandomUtils.rand.NextDouble() <  damageEffectProb;
+                    break;
+                case HitPenDetType.PassThrough:
+                    damagePoint = shellDamageFactorsTable.cells[row.index, 12];
+                    damageEffectProb = shellDamageFactorsTable.cells[row.index, 13] * 0.01;
+                    damageEffect = RandomUtils.rand.NextDouble() <  damageEffectProb;
+                    break;
+                case HitPenDetType.NoPenetration:
+                    damagePoint = shellDamageFactorsTable.cells[row.index, 14 + (int)ammoType];
+                    damageEffectProb = shellDamageFactorsTable.cells[row.index, 18] * 0.01;
+                    damageEffect = RandomUtils.rand.NextDouble() <  damageEffectProb;
+                    break;
+            }
+
+            return new(){damagePoint=damagePoint, causeDamageEffect=damageEffect};
+        }
+    }
+}

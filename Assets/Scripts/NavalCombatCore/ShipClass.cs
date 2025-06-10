@@ -5,6 +5,7 @@ using System.Xml;
 using System.IO;
 using MathNet.Numerics.Distributions;
 using System.Linq;
+using System.Collections;
 
 namespace NavalCombatCore
 {
@@ -155,6 +156,16 @@ namespace NavalCombatCore
         public RangeBand rangeBand;
         public float horizontalPenetrationInchs;
         public float verticalPenetrationInchs;
+
+        public float GetValue(ArmorLocationAngleType angleType)
+        {
+            return angleType switch
+            {
+                ArmorLocationAngleType.Horizontal => horizontalPenetrationInchs,
+                ArmorLocationAngleType.Vertical => verticalPenetrationInchs,
+                _ => verticalPenetrationInchs
+            };
+        }
     }
 
     public class MountArcRecord
@@ -244,6 +255,8 @@ namespace NavalCombatCore
         public AmmunitionType penetrationTableBaseType;
         public List<PenetrationTableRecord> penetrationTableRecords = new();
         public List<MountLocationRecord> mountLocationRecords = new();
+
+        
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
@@ -427,6 +440,12 @@ namespace NavalCombatCore
         Ineffective,
     }
 
+    public enum ArmorLocationAngleType
+    {
+        Horizontal,
+        Vertical
+    }
+
     public enum TargetAspect
     {
         Broad,
@@ -463,53 +482,53 @@ namespace NavalCombatCore
             };
         }
 
-        public static float[,] broadAspectLocationWeightTable = new float[,]
-        {// Short   Medium  Long/Extreme
-            {2,     12,     25}, // 1H DECK
-            {1,     3,      6}, // 2H TURRET
-            {2,     4,      8}, // 3H SUPERSTR
-            {4,     3,      3}, // 4V CON
-            {26,    18,     16}, // 5V MAIN BELT
-            {9,     8,      7}, // 6V BELT ENDS
-            {19,    17,     11}, // 7V BARBETTE
-            {17,    16,     11}, // 8V TURRET
-            {19,    17,     12},  // 9V SUPERSTR
-            {1,     1,      1} // INEFFECTIVE
-        };
+        // public static float[,] broadAspectLocationWeightTable = new float[,]
+        // {// Short   Medium  Long/Extreme
+        //     {2,     12,     25}, // 1H DECK
+        //     {1,     3,      6},  // 2H TURRET
+        //     {2,     4,      8},  // 3H SUPERSTR
+        //     {4,     3,      3},  // 4V CON
+        //     {26,    18,     16}, // 5V MAIN BELT
+        //     {9,     8,      7},  // 6V BELT ENDS
+        //     {19,    17,     11}, // 7V BARBETTE
+        //     {17,    16,     11}, // 8V TURRET
+        //     {19,    17,     12}, // 9V SUPERSTR
+        //     {1,     1,      1}   // INEFFECTIVE
+        // };
 
-        public static float[,] narrowAspectLocationWeightTable = new float[,]
-        {// Short   Medium  Long/Extreme
-            {4,     20,     34}, // 1H DECK
-            {2,     3,      7}, // 2H TURRET
-            {3,     9,      14}, // 3H SUPERSTR
-            {6,     4,      3}, // 4V CON
-            {7,     5,      5}, // 5V MAIN BELT
-            {4,     3,      3}, // 6V BELT ENDS
-            {28,    16,     6}, // 7V BARBETTE
-            {23,    19,     13}, // 8V TURRET
-            {22,    20,     14},  // 9V SUPERSTR
-            {1,     1,      1} // INEFFECTIVE
-        };
+        // public static float[,] narrowAspectLocationWeightTable = new float[,]
+        // {// Short   Medium  Long/Extreme
+        //     {4,     20,     34}, // 1H DECK
+        //     {2,     3,      7},  // 2H TURRET
+        //     {3,     9,      14}, // 3H SUPERSTR
+        //     {6,     4,      3},  // 4V CON
+        //     {7,     5,      5},  // 5V MAIN BELT
+        //     {4,     3,      3},  // 6V BELT ENDS
+        //     {28,    16,     6},  // 7V BARBETTE
+        //     {23,    19,     13}, // 8V TURRET
+        //     {22,    20,     14}, // 9V SUPERSTR
+        //     {1,     1,      1}   // INEFFECTIVE
+        // };
 
-        public static double[] GetLocationWeights(TargetAspect targetAspect, RangeBand rangeBand)
-        {
-            var table = targetAspect switch
-            {
-                TargetAspect.Broad => broadAspectLocationWeightTable,
-                TargetAspect.Narrow => narrowAspectLocationWeightTable,
-                _ => broadAspectLocationWeightTable
-            };
-            var colIdx = Math.Min(table.GetLength(1), (int)rangeBand);
-            var rows = table.GetLength(0);
-            var weights = new double[rows];
-            for (int rowIdx = 0; rowIdx < table.GetLength(0); rowIdx++)
-                weights[rowIdx] = table[rowIdx, colIdx];
-            return weights;
-        }
+        // public static double[] GetLocationWeights(TargetAspect targetAspect, RangeBand rangeBand)
+        // {
+        //     var table = targetAspect switch
+        //     {
+        //         TargetAspect.Broad => broadAspectLocationWeightTable,
+        //         TargetAspect.Narrow => narrowAspectLocationWeightTable,
+        //         _ => broadAspectLocationWeightTable
+        //     };
+        //     var colIdx = Math.Min(table.GetLength(1), (int)rangeBand);
+        //     var rows = table.GetLength(0);
+        //     var weights = new double[rows];
+        //     for (int rowIdx = 0; rowIdx < table.GetLength(0); rowIdx++)
+        //         weights[rowIdx] = table[rowIdx, colIdx];
+        //     return weights;
+        // }
 
         public float GetWeightedArmor(TargetAspect targetAspect, RangeBand rangeBand)
         {
-            var weights = GetLocationWeights(targetAspect, rangeBand);
+            var weights = RuleChart.GetLocationWeights(targetAspect, rangeBand);
             var sumWeights = 0.0;
             var sumArmor = 0.0;
             for (var i = 0; i < weights.Length; i++)
@@ -524,11 +543,11 @@ namespace NavalCombatCore
             return (float)(sumArmor / sumWeights);
         }
 
-        public static ArmorLocation RollArmorLocation(TargetAspect targetAspect, RangeBand rangeBand)
-        {
-            var idx = Categorical.Sample(GetLocationWeights(targetAspect, rangeBand));
-            return (ArmorLocation)idx;
-        }
+        // public static ArmorLocation RollArmorLocation(TargetAspect targetAspect, RangeBand rangeBand)
+        // {
+        //     var idx = Categorical.Sample(GetLocationWeights(targetAspect, rangeBand));
+        //     return (ArmorLocation)idx;
+        // }
     }
 
     public partial class ShipClass : IObjectIdLabeled
@@ -657,7 +676,7 @@ namespace NavalCombatCore
 
             return 1f * batteryFirepower + 20f * torpedoThreat + 1f * rapidFiringFirepower;
         }
-        
+
         public float EvaluateGeneralScore()
         {
             var survivability = EvaluateSurvivability();
@@ -665,5 +684,6 @@ namespace NavalCombatCore
             // var armorScoreSmoothed = 1 + (float)Math.Sqrt(armorScore);
             return 1f * survivability + 1f * firepowerScore; // TODO: Consider DP?
         }
+        
     }
 }

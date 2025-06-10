@@ -492,6 +492,15 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
                 return el;
             };
 
+            var batteryDetailButton = batteryStatusElement.Q<Button>("BatteryDetailButton");
+            batteryDetailButton.clicked += () =>
+            {
+                if (Utils.TryResolveCurrentValueForBinding(batteryDetailButton, out NavalCombatCore.BatteryStatus batteryStatus))
+                {
+                    DialogRoot.Instance.PopupMessageDialog(batteryStatus.DescribeDetail(), "Battery Detail");
+                }
+            };
+
             return batteryStatusElement;
         };
 

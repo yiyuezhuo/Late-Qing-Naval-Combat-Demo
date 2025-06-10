@@ -104,13 +104,20 @@ namespace NavalCombatCore
         [XmlAttribute]
         public bool hit;
         // TODO: Concrete Result
+        [XmlAttribute]
+        public ArmorLocation armorLocation;
+
+        [XmlAttribute]
+        public HitPenDetType hitPenDetType;
+
+        public RuleChart.ShellDamageResult shellDamageResult;
 
         public string Summary()
         {
             var target = GetFiringTarget();
             var targetName = target.namedShip?.name?.GetMergedName();
             var ammoType = BatteryAmmunitionRecord.ammunitionTypeAcronymMap[ammunitionType];
-            var hitDesc = hit ? "hit" : "miss";
+            var hitDesc = hit ? $"hit {armorLocation} -> {hitPenDetType} -> {shellDamageResult}" : "miss";
             return $"{firingTime} {ammoType} -> {targetName}, {distanceYards} yards, P={hitProb * 100}%, {hitDesc}";
         }
     }
@@ -119,7 +126,7 @@ namespace NavalCombatCore
     {
         public string objectId { get; set; }
         public MountStatus status;
-        
+
         public string firingTargetObjectId;
         public ShipLog GetFiringTarget() => EntityManager.Instance.Get<ShipLog>(firingTargetObjectId);
         public float processSeconds;
@@ -140,19 +147,37 @@ namespace NavalCombatCore
             // return $"{ctx.shipLog.namedShip?.name.GetMergedName()}";
         }
 
-        public static float GetHitProbP100(float fireControlScore)
-        {
-            // Chart I1, Shell=1 row
-            // 0.25~1% for 0-3 (+0.25% / FCS)
-            // 1%-9% for 3-19 (+0.5% / FCS)
-            // 9%-20% for 19-30 (+1% / FCS)
-            fireControlScore = Math.Clamp(fireControlScore, 0, 30);
-            if (fireControlScore <= 3)
-                return 0.25f + fireControlScore * 0.25f;
-            if (fireControlScore <= 19)
-                return 1 + (fireControlScore - 3) * 0.5f;
-            return 9 + (fireControlScore - 19) * 1f;
-        }
+        // public static float GetHitProbP100(float fireControlScore)
+        // {
+        //     // Chart I1, Shell=1 row
+        //     // 0.25~1% for 0-3 (+0.25% / FCS)
+        //     // 1%-9% for 3-19 (+0.5% / FCS)
+        //     // 9%-20% for 19-30 (+1% / FCS)
+        //     fireControlScore = Math.Clamp(fireControlScore, 0, 30);
+        //     if (fireControlScore <= 3)
+        //         return 0.25f + fireControlScore * 0.25f;
+        //     if (fireControlScore <= 19)
+        //         return 1 + (fireControlScore - 3) * 0.5f;
+        //     return 9 + (fireControlScore - 19) * 1f;
+        // }
+
+        // public static float[,] closeRangeFireControlTable = new float[,]
+        // {//     0-2000      2001-4500 (distance yards)
+        //  //Broad  Narrow  Broad   Narrow
+        //     {15,    12,     12,     10},
+        //     {13,    9,      10,     8},
+        //     {11,    8,      9,      7},
+        //     { 9,    7,      8,      6},
+        //     { 8,    6,      7,      5}
+        // };
+        // public static float[] closeRangeFireControlTableRows = new float[] { 9, 18, 27, 36, float.MaxValue };
+        // public static float GetCloseRangeFireControlScore(float distanceYards, float speedKnots, TargetAspect targetAspect)
+        // {
+        //     var colIdx = (distanceYards > 2000 ? 2 : 0) + (targetAspect == TargetAspect.Broad ? 0 : 1);
+        //     var rowIdx = closeRangeFireControlTableRows.Select((s, i) => (s, i)).Where(si => speedKnots <= si.s).Last().i;
+        //     return closeRangeFireControlTable[rowIdx, colIdx];
+        // }
+
 
         public void Step(float deltaSeconds)
         {
@@ -204,6 +229,11 @@ namespace NavalCombatCore
                     return;
 
                 var fireControlScoreRaw = fireControlRow.GetValue(penRecord.rangeBand, stats.targetPresentAspectFromObserver);
+                if (stats.distanceYards <= 4500)
+                {
+                    var closeRangeFireControlScore = RuleChart.GetCloseRangeFireControlScore(stats.distanceYards, tgt.speedKnots, stats.targetPresentAspectFromObserver);
+                    fireControlScoreRaw = Math.Max(fireControlScoreRaw, closeRangeFireControlScore);
+                }
 
                 var maskCheckResult = shooterTargetSup.GetOrCalcualteMaskCheckResult();
                 if (maskCheckResult.isMasked)
@@ -294,22 +324,45 @@ namespace NavalCombatCore
                     // Fire Control Radar Modifier
                     fireControlScore += ctx.batteryRecord.fireControlRadarModifier;
 
-                    var hitProb = GetHitProbP100(fireControlScore) * 0.01f;
+                    var hitProb = RuleChart.GetHitProbP100(fireControlScore) * 0.01f;
                     var hit = (float)RandomUtils.rand.NextDouble() < hitProb;
 
-                    var logRecord = new MountFiringRecord()
-                    {
-                        firingTargetObjectId = tgt.objectId,
-                        ammunitionType = ammunitionType,
-                        firingTime = NavalGameState.Instance.scenarioState.dateTime,
-                        distanceYards = stats.distanceYards,
-                        hitProb = hitProb,
-                        hit = hit // TODO: enable it
-                    };
-                    logs.Add(logRecord);
+                    // TODO: Resolve damage
+                    var armorLocation = RuleChart.RollArmorLocation(stats.targetPresentAspectFromObserver, penRecord.rangeBand);
 
                     processSeconds -= secondsPerShoot;
                     ctx.batteryStatus.ammunition.CostOne(ammunitionType);
+
+                    if (armorLocation != ArmorLocation.Ineffective)
+                    {
+
+                        var armorLocationAngleType = RuleChart.armorLocationToAngleType.GetValueOrDefault(armorLocation);
+                        var refPenInch = penRecord.GetValue(armorLocationAngleType);
+                        var penInch = RuleChart.GetAdjustedPenetrationByType(ctx.batteryRecord.penetrationTableBaseType, refPenInch, ctx.batteryRecord.shellSizeInch, ammunitionType);
+
+                        var armorEffInch = tgt.shipClass.armorRating.GetArmorEffectiveInch(armorLocation);
+                        var hitPenDetType = RuleChart.ResolveHitPenDetType(penInch, armorEffInch, ammunitionType);
+
+                        var shellDamageResult = RuleChart.ResolveShellDamageResult(ctx.batteryRecord.damageRating, hitPenDetType, ammunitionType);
+
+                        var logRecord = new MountFiringRecord()
+                        {
+                            firingTargetObjectId = tgt.objectId,
+                            ammunitionType = ammunitionType,
+                            firingTime = NavalGameState.Instance.scenarioState.dateTime,
+                            distanceYards = stats.distanceYards,
+                            hitProb = hitProb,
+                            hit = hit, // TODO: enable it
+                            hitPenDetType = hitPenDetType,
+                            armorLocation = armorLocation,
+                            shellDamageResult = shellDamageResult
+                        };
+                        logs.Add(logRecord);
+
+                        // TODO: Handle damage effect and general (DP caused) damage effect.
+                        
+                        // TODO: Apply damage point and process side effect
+                    }
                 }
             }
             else
@@ -612,10 +665,10 @@ namespace NavalCombatCore
             var batteryRecord = GetBatteryRecord();
             if (distanceYards > batteryRecord.rangeYards)
                 return 0;
-            
+
             if (!IsMaxDistanceDoctrineRespected(distanceYards))
                 return 0;
-            
+
             var firepowerPerBarrel = batteryRecord.EvaluateFirepowerPerBarrel(distanceYards, targetAspect, targetSpeedKnots);
             var barrels = mountStatus.Where(
                 m => m.status == MountStatus.Operational &&
@@ -717,6 +770,19 @@ namespace NavalCombatCore
                 fcs.Step(deltaSeconds);
             foreach (var mnt in mountStatus)
                 mnt.Step(deltaSeconds);
+        }
+
+        public string DescribeDetail()
+        {
+            var lines = new List<string>();
+
+            lines.Add($"Battery Detail: {objectId}");
+
+            var logsFlatten = mountStatus.SelectMany(mount => mount.logs).ToList();
+            logsFlatten.Sort((log1, log2) => log1.firingTime.CompareTo(log2.firingTime));
+            lines.AddRange(logsFlatten.Select(log => log.Summary()));
+
+            return string.Join("\n", lines);
         }
     }
 

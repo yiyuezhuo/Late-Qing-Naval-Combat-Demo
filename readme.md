@@ -41,4 +41,3 @@ Unfortunately, naval engagement involving those ironclad in the first Sino-Japan
 - [MathNet.Numerics](https://github.com/mathnet/mathnet-numerics)
 - [UnityStandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser)
 - [JInt](https://github.com/sebastienros/jint)
-- [acornima](https://github.com/adams85/acornima)

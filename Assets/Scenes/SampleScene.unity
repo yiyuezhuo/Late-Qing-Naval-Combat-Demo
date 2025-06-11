@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ebc32d586ea5a24db012c02d25ebcaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doc: {fileID: 0}
 --- !u!114 &47828244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76bfd23caa860845907cc78a182868c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doc: {fileID: 0}
   shipClassSelectorDialogDocument: {fileID: 9197481963319205126, guid: db23a7561c9db744c87072d260cba012, type: 3}
 --- !u!114 &57620257
 MonoBehaviour:
@@ -435,6 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2197204e863388946b27089df8204a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 0}
   scaleFactor: 0.01
   updateTextrureScaleX: 0
   lengthWidthRatio: 0
@@ -684,6 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86180d80a0ed5f045b3e18931d815435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doc: {fileID: 0}
 --- !u!1 &146311224
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +963,8 @@ MonoBehaviour:
   state: 0
   lineRenderer: {fileID: 75390608}
   text: {fileID: 1633019046}
+  losLayerMask:
+    m_Bits: 0
 --- !u!4 &267460020
 Transform:
   m_ObjectHideFlags: 0
@@ -1213,7 +1219,6 @@ MonoBehaviour:
   shipUnitPrefab: {fileID: 1887053013969614622, guid: 7433f1bbd0fb1164d8fc0395cb894181, type: 3}
   earthTransform: {fileID: 1503665647}
   iconLayerMask:
-    serializedVersion: 2
     m_Bits: 0
   stateIconMap:
   - state: 1
@@ -1227,6 +1232,7 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: cbd1999e31e5dc649b0161a6a409769b, type: 2}
   - postureType: 1
     material: {fileID: 2100000, guid: b352e5d9bc233e44abe8359a017f9e95, type: 2}
+  _state: 0
   hoveringLocationInfo: 
   remainAdvanceSimulationSecondsRequestedByKeyPressing: 0
   remainAdvanceSimulationSecondsRequestedByUpdate: 0
@@ -1384,6 +1390,7 @@ Transform:
   - {fileID: 144228335}
   - {fileID: 1073625111}
   - {fileID: 2024837591}
+  - {fileID: 1853251375}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &813226747
@@ -1418,7 +1425,38 @@ MonoBehaviour:
   cam: {fileID: 1083350738}
   cameras: []
   leafTransform: {fileID: 871059392}
+  dragging: 0
+  zoomLevel:
+  - 0.004
+  - 0.01
+  - 0.02
+  - 0.04
+  - 0.1
+  - 0.2
+  - 0.4
+  - 1
+  - 2
+  - 4
+  - 10
+  - 20
+  - 40
+  - 100
+  - 200
+  - 400
+  - 1000
+  - 2000
+  - 4000
+  - 10000
+  - 20000
+  - 40000
+  - 100000
+  - 200000
+  - 400000
+  - 1000000
+  lastTrackedLat: 0
+  lastTrackedLon: 0
   mode: 0
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &813226749
 Transform:
   m_ObjectHideFlags: 0
@@ -1513,6 +1551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03044d4ea3fbf0f4c91f1db3c4921dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doc: {fileID: 0}
 --- !u!114 &1073625113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1688,6 +1727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a806ab3b4d9aa46b9d30821d3fe811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doc: {fileID: 0}
 --- !u!1 &1383543491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,6 +1773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197682637055dad4fadcee581af45ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doc: {fileID: 0}
 --- !u!114 &1383543494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2254,6 +2295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9637d4b57bda4964683396b2db6df999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doc: {fileID: 0}
 --- !u!114 &1720250564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2285,6 +2327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a806ab3b4d9aa46b9d30821d3fe811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doc: {fileID: 0}
 --- !u!114 &1720250566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2297,6 +2340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6503f4ae57fda9149b8512b5ec3bc8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doc: {fileID: 0}
 --- !u!1 &1829353456
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,6 +2386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 505587994f1a8e4499194a55ba3a36bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doc: {fileID: 0}
   state: 0
 --- !u!114 &1829353459
 MonoBehaviour:
@@ -2359,6 +2404,71 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 3bbb980979e7aba4e9b575f02be858b6, type: 3}
   m_SortingOrder: 1
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+--- !u!1 &1853251374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1853251375}
+  - component: {fileID: 1853251377}
+  - component: {fileID: 1853251376}
+  m_Layer: 0
+  m_Name: JSScriptConsole
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1853251375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853251374}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 802728333}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1853251376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853251374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a045821114c46b449b4162351398f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doc: {fileID: 0}
+--- !u!114 &1853251377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853251374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 9fc041e7491d52d4ba840bd7c006e8c4, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 3765198a203dacf4cbeb7ba228d40399, type: 3}
+  m_SortingOrder: 8
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
   m_WorldSpaceHeight: 1080
@@ -2486,6 +2596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc376cb75b7bdd54697d58b0edc3ac07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doc: {fileID: 0}
   shipLogSelectorDocument: {fileID: 9197481963319205126, guid: 31edb5b77f8c151428226ff6586dd5ca, type: 3}
   leaderSelectorDocument: {fileID: 9197481963319205126, guid: 22df8a3a20cf39245be9903bee3fae44, type: 3}
   namedShipSelectorDocument: {fileID: 9197481963319205126, guid: 0cbfd23cf85f99b47a456cb23aa45057, type: 3}
@@ -2521,6 +2632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2197204e863388946b27089df8204a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 0}
   scaleFactor: 0.01
   updateTextrureScaleX: 0
   lengthWidthRatio: 0

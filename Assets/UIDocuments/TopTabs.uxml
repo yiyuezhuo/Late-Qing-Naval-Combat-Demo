@@ -25,6 +25,7 @@
                     <ui:Button text="Ship Log Editor" name="ShipLogEditorButton" />
                     <ui:Button text="OOB Editor" name="OOBEditorButton" />
                     <ui:Button text="Scenario State Editor" name="ScenarioStateEditorButton" />
+                    <ui:Button text="JS Script Console" name="JSScriptConsoleButton" />
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Preference">

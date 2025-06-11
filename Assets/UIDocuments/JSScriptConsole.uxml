@@ -1,0 +1,22 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement class="panel-dialog" style="flex-grow: 0; height: initial;">
+        <ui:Label text="JS Script Console" name="TitleLabel" class="title" />
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                <ui:Label text="Output:" />
+                <ui:Button text="Clear" name="ClearButton" />
+            </ui:VisualElement>
+            <ui:TextField readonly="true" name="OutputTextField" style="height: 250px;" />
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                <ui:Label text="Input:" />
+                <ui:DropdownField style="flex-grow: 1;" />
+                <ui:Button text="Execute" name="ExecuteButton" />
+            </ui:VisualElement>
+            <ui:TextField vertical-scroller-visibility="Auto" multiline="true" name="InputTextField" style="height: 250px;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1;" />
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

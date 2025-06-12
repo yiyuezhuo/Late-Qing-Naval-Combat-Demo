@@ -374,10 +374,10 @@ namespace NavalCombatCore
     public class RapidFireBatteryFireControlLevelRecord
     {
         [XmlAttribute]
-        public float fireControlMaxRange;
+        public float fireControlMaxRange; // FC value for [eff, Max]
 
         [XmlAttribute]
-        public float fireControlEffectiveRange;
+        public float fireControlEffectiveRange; // FC value for [0, eff]
     }
 
     public class RapidFireBatteryRecord

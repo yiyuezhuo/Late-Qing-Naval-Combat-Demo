@@ -761,12 +761,15 @@ namespace NavalCombatCore
             foreach (var mnt in mountStatus)
             {
                 mnt.SetFiringTarget(null);
-            }   
+            }
         }
 
         IWTAObject IWTABattery.GetCurrentFiringTarget()
         {
-            var targetMounts = mountStatus.Where(m => m.GetFiringTarget() != null).GroupBy(m => m.GetFiringTarget()).Select(g => (g.Key, g.Count())).ToList();
+            var targetMounts = mountStatus.Where(m => m.GetFiringTarget() != null)
+                .GroupBy(m => m.GetFiringTarget())
+                .Select(g => (g.Key, g.Count()))
+                .ToList();
             if (targetMounts.Count == 0)
                 return null;
             var maxCount = targetMounts.Max(r => r.Item2);
@@ -797,7 +800,7 @@ namespace NavalCombatCore
             return string.Join("\n", lines);
         }
 
-        static Dictionary<AmmunitionType, List<AmmunitionType>> ammunitionTypeFallbackChain  = new()
+        static Dictionary<AmmunitionType, List<AmmunitionType>> ammunitionTypeFallbackChain = new()
         {
             { AmmunitionType.ArmorPiercing, new() { AmmunitionType.SemiArmorPiercing, AmmunitionType.Common, AmmunitionType.HighExplosive} },
             { AmmunitionType.SemiArmorPiercing, new() { AmmunitionType.Common, AmmunitionType.ArmorPiercing, AmmunitionType.HighExplosive} },
@@ -813,6 +816,11 @@ namespace NavalCombatCore
             var fallbackChain = ammunitionTypeFallbackChain[preferAmmu];
             return fallbackChain.Prepend(preferAmmu).Where(t => ammunition.GetValue(t) >= 1).DefaultIfEmpty(preferAmmu).First();
         }
+
+        public int GetOverConcentrationCoef()
+        {
+            return 1; // TODO: Handle barrage fire 
+        }
     }
 
     public class TorpedoSectorStatus
@@ -821,7 +829,7 @@ namespace NavalCombatCore
         public List<MountStatusRecord> mountStatus = new();
     }
 
-    public enum RapidFiringBatteryLocation
+    public enum RapidFiringBatteryLocation // Location => Side? Though it's binded in UITK so keep it now.
     {
         Port,
         Starboard
@@ -846,6 +854,7 @@ namespace NavalCombatCore
         public int starboardMountHits;
         public int fireControlHits;
         public List<RapidFiringTargettingStatus> targettingRecords = new();
+        public int ammunition;
 
         public void ResetDamageExpenditureState()
         {
@@ -853,6 +862,10 @@ namespace NavalCombatCore
             starboardMountHits = 0;
             fireControlHits = 0;
             targettingRecords.Clear();
+
+            var rfBtyRec = GetRapidFireBatteryRecord();
+            var barrels = rfBtyRec.barrelsLevelStarboard.FirstOrDefault() + rfBtyRec.barrelsLevelPort.FirstOrDefault();
+            ammunition = barrels * 15;
         }
 
         public RapidFireBatteryRecord GetRapidFireBatteryRecord()
@@ -897,9 +910,114 @@ namespace NavalCombatCore
 
             var (portClass, portCurrent) = GetClassCurrentBarrels(r.barrelsLevelPort, portMountHits);
             var (starboardClass, starboardCurrent) = GetClassCurrentBarrels(r.barrelsLevelStarboard, starboardMountHits);
-            var barrels = portCurrent + starboardCurrent;
-            return GetRapidFireBatteryRecord().EvaluateFirepowerPerBarrel() * barrels;
+            var barrelsCurrent = portCurrent + starboardCurrent;
+
+            var fcRecord = fireControlHits >= r.fireControlRecords.Count ? null : r.fireControlRecords[fireControlHits];
+            var fireControlScore = fcRecord == null ? 0 : fcRecord.fireControlEffectiveRange;
+
+            return fireControlScore * barrelsCurrent * r.damageFactor;
         }
+
+        public float EvaluateFirepowerScore(float distanceYards, float bearingRelativeToBowDeg)
+        {
+            var r = GetRapidFireBatteryRecord();
+            if (distanceYards > r.maxRangeYards)
+                return 0;
+
+            // TODO: Add doctrine for 100mm- batteries
+
+            var isStarboard = MeasureUtils.GetPositiveAngleDifference(bearingRelativeToBowDeg, 45) < 90;
+            var barrelsCurrent = GetAvailableBarrels(isStarboard ? RapidFiringBatteryLocation.Starboard : RapidFiringBatteryLocation.Port);
+
+            var fcRecord = fireControlHits >= r.fireControlRecords.Count ? null : r.fireControlRecords[fireControlHits];
+            var fireControlScore = fcRecord == null ? 0 : (distanceYards <= r.effectiveRangeYards ? fcRecord.fireControlEffectiveRange : fcRecord.fireControlMaxRange);
+
+            return fireControlScore * barrelsCurrent * r.damageFactor;
+        }
+
+        public int GetAvailableBarrels(RapidFiringBatteryLocation side)
+        {
+            var r = GetRapidFireBatteryRecord();
+
+            var (barrelsClass, barrelsCurrent) = side == RapidFiringBatteryLocation.Starboard ?
+                GetClassCurrentBarrels(r.barrelsLevelStarboard, starboardMountHits) :
+                GetClassCurrentBarrels(r.barrelsLevelPort, portMountHits);
+            return barrelsCurrent;
+        }
+
+        public IEnumerable<RapidFiringBatteryStatusOneSide> GetSideBatteries()
+        {
+            foreach (var side in new[] { RapidFiringBatteryLocation.Port, RapidFiringBatteryLocation.Starboard })
+            {
+                if (GetAvailableBarrels(side) > 0)
+                {
+                    yield return new RapidFiringBatteryStatusOneSide()
+                    {
+                        original = this,
+                        side = side
+                    };
+                }
+            }
+        }
+    }
+
+    public class RapidFiringBatteryStatusOneSide : IWTABattery
+    {
+        public RapidFiringStatus original;
+        public RapidFiringBatteryLocation side;
+
+        public float EvaluateFirepowerScore(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots, float bearingRelativeToBowDeg)
+        {
+            var isStarboard = MeasureUtils.GetPositiveAngleDifference(bearingRelativeToBowDeg, 45) < 90;
+            if ((isStarboard && side != RapidFiringBatteryLocation.Starboard) || (!isStarboard && side == RapidFiringBatteryLocation.Starboard))
+                return 0;
+            return original.EvaluateFirepowerScore(distanceYards, bearingRelativeToBowDeg);
+
+            // TODO: Add doctrine for 100mm- batteries
+        }
+
+        IWTAObject IWTABattery.GetCurrentFiringTarget()
+        {
+            var targetCounts = original.targettingRecords.Where(r => r.GetTarget() != null)
+                .GroupBy(r => r.GetTarget())
+                .Select(g => (g.Key, g.Count()))
+                .ToList();
+
+            if (targetCounts.Count == 0)
+                return null;
+
+            var maxCount = targetCounts.Max(g => g.Item2);
+            return targetCounts.First(g => g.Item2 == maxCount).Item1;
+        }
+
+        public void SetFiringTargetAutomatic(ShipLog target)
+        {
+            var matched = original.targettingRecords.FirstOrDefault(r => r.location == side);
+            if (matched == null)
+            {
+                matched = new RapidFiringTargettingStatus
+                {
+                    location = side,
+                    // processingSeconds = 0,
+                    // allocated = 0,
+                    // targetObjectId = target?.objectId
+                };
+                original.targettingRecords.Add(matched);
+            }
+            matched.processingSeconds = 0;
+            matched.allocated = original.GetAvailableBarrels(side);
+            matched.targetObjectId = target?.objectId;
+            // original.targettingRecords.
+        }
+
+        void IWTABattery.SetFiringTarget(IWTAObject target) => SetFiringTargetAutomatic(target as ShipLog); // TODO: Support other IWTAObject (land targets?)
+
+        public void ResetFiringTarget()
+        {
+            original.targettingRecords.RemoveAll(r => r.location == side);
+        }
+
+        int IWTABattery.GetOverConcentrationCoef() => 0; // DoB gives 0, though literally it should be 2
     }
 
     public class DynamicStatus
@@ -1491,6 +1609,12 @@ namespace NavalCombatCore
         {
             foreach (var bs in batteryStatus)
                 yield return bs;
+
+            foreach (var rf in rapidFiringStatus)
+            {
+                foreach (var b in rf.GetSideBatteries())
+                    yield return b;
+            }
         }
 
         public float EvaluateBowFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 0);

@@ -27,6 +27,7 @@ namespace NavalCombatCore
         IWTAObject GetCurrentFiringTarget();
         void SetFiringTarget(IWTAObject target);
         void ResetFiringTarget();
+        int GetOverConcentrationCoef();
     }
 
     public class WeaponTargetAssignmentSolver // WTA Problem Solver
@@ -61,7 +62,7 @@ namespace NavalCombatCore
             public float speedKnots;
             // Solver states
             public float underFirepower;
-            public int batteriesCommitted;
+            public int overConcentrationScore;
         }
 
         public class BatteryRecord
@@ -72,6 +73,7 @@ namespace NavalCombatCore
             // Solver States
             public Dictionary<TargetRecord, float> firepowerScoreMap = new();
             public TargetRecord assignedTarget;
+            public int overConcentrationCoef = 1; // regular corrected fire: +1, barrage fire: +2, RF Batteries: +0 (DoB) or +2 (Literally)?
         }
 
         public class DecisionRecord
@@ -141,7 +143,7 @@ namespace NavalCombatCore
                             // var firepowerScore = battery.original.EvaluateFirepowerScore(stats.distanceYards, stats.targetPresentAspectFromObserver, target.speedKnots, stats.observerToTargetViewBearingRelativeToBowDeg);
                             var firepowerScore = battery.firepowerScoreMap[target];
                             var gain = GetTargettingScoreGain(target.selfFirepowerScore, target.survivability,
-                                    target.underFirepower, target.batteriesCommitted, firepowerScore);
+                                    target.underFirepower, target.overConcentrationScore, firepowerScore);
                             if (battery.currentTarget == target)
                             {
                                 gain *= 1 + changeTargetCoef;
@@ -176,7 +178,7 @@ namespace NavalCombatCore
 
                 bestDecisionRecord.battery.assignedTarget = bestDecisionRecord.target; // TODO: Too harsh to battery which is capable to shoot multiply targets?
                 bestDecisionRecord.target.selfFirepowerScore += bestDecisionRecord.firepowerScore;
-                bestDecisionRecord.target.batteriesCommitted += 1;
+                bestDecisionRecord.target.overConcentrationScore += bestDecisionRecord.battery.overConcentrationCoef;
             }
 
             // Apply result

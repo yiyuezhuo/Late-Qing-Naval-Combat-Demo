@@ -184,6 +184,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>330</ammunition>
     <objectId>18afa0f0-e6d1-4827-a8e3-b55a6ecacb86</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -414,6 +416,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>120</ammunition>
     <objectId>c61571fd-99d5-4d99-bea3-6dd7ba3b9710</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -624,6 +628,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>105</ammunition>
     <objectId>d27c22bd-022c-4937-96ca-9e9a65c7742e</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -787,6 +793,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>60</ammunition>
     <objectId>4ef7243c-c1e8-47d5-b3f6-52f0a039d187</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -938,6 +946,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>60</ammunition>
     <objectId>2b374694-14ac-420c-95ad-0226282a2361</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -1111,6 +1121,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>60</ammunition>
     <objectId>7cec2840-8493-4813-943f-daa7c829e8d1</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -1285,6 +1297,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>60</ammunition>
     <objectId>207a483c-076f-4237-b2af-4cf89a7691b5</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -1451,6 +1465,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>30</ammunition>
     <objectId>52bbd470-6da9-4289-b05a-c426bc87457c</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -1617,6 +1633,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>30</ammunition>
     <objectId>91715fc4-8033-4633-ba34-dcbe9eea2fe4</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -1793,6 +1811,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>120</ammunition>
     <objectId>c7956283-1b31-4dfe-b430-bdc058de1e28</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -1969,6 +1989,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>120</ammunition>
     <objectId>fabb275c-60ab-4a91-8b19-3eca543c6125</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -2609,6 +2631,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>90</ammunition>
     <objectId>458e2513-afa7-40d0-b33e-9c32db5ab4a0</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -2799,6 +2823,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>180</ammunition>
     <objectId>b23708a2-20d8-4eed-ac88-fd137bd2fa0f</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -3037,12 +3063,16 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>90</ammunition>
     <objectId>680ae9f1-42ba-4bbd-a956-93d1830e0fd2</objectId>
    </RapidFiringStatus>
    <RapidFiringStatus>
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>180</ammunition>
     <objectId>db9d100c-100f-4ae6-8064-3072595465c2</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -3281,12 +3311,16 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>90</ammunition>
     <objectId>cd188793-d438-4d52-8f4b-37d2e8223db1</objectId>
    </RapidFiringStatus>
    <RapidFiringStatus>
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>180</ammunition>
     <objectId>3773a686-e9ce-421d-b456-cf50f123ec00</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -3485,6 +3519,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>60</ammunition>
     <objectId>19a8b5be-74dd-4ca1-ac78-198c5f1601e7</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -3730,12 +3766,16 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>240</ammunition>
     <objectId>78160ba3-a361-4674-b90d-19662066f175</objectId>
    </RapidFiringStatus>
    <RapidFiringStatus>
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>90</ammunition>
     <objectId>bb97b066-8051-47e7-a7f3-d84997309fd8</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -3945,6 +3985,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>105</ammunition>
     <objectId>d8a0d625-1b2e-4293-b4f2-92e1a9718a9a</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -4144,6 +4186,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>210</ammunition>
     <objectId>51a6759d-91ae-46c1-8d87-58fa2e39014e</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -4296,6 +4340,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>60</ammunition>
     <objectId>263b0eb7-2b65-428a-af3f-bc40b981f0be</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -4429,6 +4475,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>60</ammunition>
     <objectId>f9ece4ae-62b0-4f42-8356-829213a557e5</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -4538,6 +4586,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>60</ammunition>
     <objectId>af1d6c95-eb41-4091-be76-628622a601b7</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -4635,6 +4685,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>30</ammunition>
     <objectId>9fef3648-95ff-4bd4-b340-ca2248bbe969</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>
@@ -4732,6 +4784,8 @@
     <portMountHits>0</portMountHits>
     <starboardMountHits>0</starboardMountHits>
     <fireControlHits>0</fireControlHits>
+    <targettingRecords />
+    <ammunition>60</ammunition>
     <objectId>901610fe-66e6-4672-b912-1e5fb620051e</objectId>
    </RapidFiringStatus>
   </rapidFiringStatus>

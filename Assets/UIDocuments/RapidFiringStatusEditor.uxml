@@ -22,11 +22,14 @@
                 </Bindings>
             </ui:IntegerField>
         </ui:VisualElement>
-        <ui:IntegerField label="Ammunition">
-            <Bindings>
-                <ui:DataBinding property="value" data-source-path="ammunition" binding-mode="TwoWay" />
-            </Bindings>
-        </ui:IntegerField>
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+            <ui:IntegerField label="Ammunition" style="flex-grow: 1;">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="ammunition" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:IntegerField>
+            <ui:Button text="Detail" name="DetailButton" />
+        </ui:VisualElement>
         <ui:MultiColumnListView name="RapidFiringTargettingStatusMultiColumnListView" data-source-path="targettingRecords" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true">
             <ui:Columns>
                 <ui:Column title="Location" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusLocation.uxml?fileID=9197481963319205126&amp;guid=a321e8305df909049bf049cb9a8ee7a5&amp;type=3#RapidFiringTargettingStatusLocation" />

@@ -547,6 +547,16 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             var el = rapidFiringStatusListView.itemTemplate.CloneTree();
 
             Utils.BindItemsSourceRecursive(el);
+
+            var detailButton = el.Q<Button>("DetailButton");
+            detailButton.clicked += () =>
+            {
+                if (Utils.TryResolveCurrentValueForBinding(el, out RapidFiringStatus r))
+                {
+                    DialogRoot.Instance.PopupMessageDialog(r.DescribeDetail());
+                }
+            };
+
             var rapidFiringTargettingStatusMultiColumnListView = el.Q<MultiColumnListView>("RapidFiringTargettingStatusMultiColumnListView");
 
             Utils.BindItemsAddedRemoved<RapidFiringTargettingStatus>(

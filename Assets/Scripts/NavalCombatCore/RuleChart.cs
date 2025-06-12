@@ -408,5 +408,44 @@ namespace NavalCombatCore
             float.Parse, x => x, x => x
         );
 
+        // W2 - RF Battery Damage
+        public static string rapidFiringBatteryDamageTableCsvText = @"RF Battery Rating,01-25,26-75,76-00
+2,3,4,5
+3,4,6,7
+4,5,8,9
+5,6,9,11
+6,8,11,13
+7,9,13,15
+8,10,15,18
+9,11,17,20
+10,13,19,22
+11,14,21,24
+12,15,23,26
+13,16,24,28
+14,18,26,31
+15,19,28,33
+16,20,30,35
+17,21,32,37
+18,23,34,39
+19,24,36,42
+20,25,38,44
+21,26,39,46
+22,28,41,48
+23,29,43,50
+24,30,45,53
+25,31,47,55";
+
+        public static SimpleTable<float, string, float> rapidFiringBatteryDamageTable = SimpleTable<float, string, float>.FromCSV(
+            rapidFiringBatteryDamageTableCsvText,
+            float.Parse, x => x, float.Parse
+        );
+
+        public static float RollRapidFireBatteryDamage(float rapidFiringBatteryRating)
+        {
+            var rowIdx = rapidFiringBatteryDamageTable.rows.Select((r, i) => (r, i)).LastOrDefault(ri => rapidFiringBatteryRating >= ri.r).i;
+            var colIdx = Categorical.Sample(new double[] { 25, 50, 25 });
+            return rapidFiringBatteryDamageTable.cells[rowIdx, colIdx];
+        }
+
     }
 }

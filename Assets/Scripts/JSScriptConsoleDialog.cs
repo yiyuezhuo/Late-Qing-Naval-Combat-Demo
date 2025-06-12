@@ -9,6 +9,7 @@ using System.Linq;
 using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 
 
@@ -32,9 +33,12 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
         var closeButton = root.Q<Button>("CloseButton");
         builtInScriptDropdownField = root.Q<DropdownField>("BuiltInScriptDropdownField");
 
-        // engine = new Engine(); // Sandboxed Version
+        // engine = new Engine(); // Sandboxed Versionz
         engine = new Engine(cfg => cfg.AllowClr()); // Free Version
-        // engine = new Engine(cfg => cfg.AllowClr(typeof(NavalGameState).Assembly));
+        var assembly = typeof(NavalGameState).Assembly;
+        Debug.Log($"assembly={assembly}");
+        engine = new Engine(cfg => cfg.AllowClr(assembly));
+
         engine.SetValue("log", new Action<object>(msg => OnLog(msg)));
         engine.SetValue("NavalGameState", TypeReference.CreateTypeReference<NavalGameState>(engine));
         // engine.Execute("log('Hello World')");
@@ -64,6 +68,26 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
 
         closeButton.clicked += Hide;
 
+        var readButton = root.Q<Button>("ReadButton");
+        var writeButton = root.Q<Button>("WriteButton");
+
+        readButton.clicked += () =>
+        {
+            var subUrl = builtInScriptDropdownField.text;
+            if (!CheckSubPathVaild(subUrl))
+                return;
+            StartCoroutine(FetchScriptAndUpdate(subUrl));
+        };
+
+        writeButton.clicked += () =>
+        {
+            var subUrl = builtInScriptDropdownField.text;
+            if (!CheckSubPathVaild(subUrl))
+                return;
+
+            OverwriteScript(subUrl, inputTextField.text);
+        };
+
         // dragging support
         root.AddManipulator(new MyDragger());
 
@@ -75,7 +99,26 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
             StartCoroutine(FetchScriptAndUpdate(evt.newValue));
         });
 
-        StartCoroutine(UpdateBuiltInScriptDropdownField()); // Fire and Forget
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            StartCoroutine(UpdateBuiltInScriptDropdownFieldUsingManifest()); // Fire and Forget
+        }
+        else
+        {
+            UpdateBuiltinScriptDowndownFieldUsingFileSystem();
+        }
+    }
+
+    bool CheckSubPathVaild(string subPath)
+    {
+        var subUrl = builtInScriptDropdownField.text;
+        if (subUrl == "")
+        {
+            DialogRoot.Instance.PopupMessageDialog("Path is not valid");
+            return false;
+        }
+        return true;
+            
     }
 
     IEnumerator FetchScriptAndUpdate(string subPath)
@@ -91,7 +134,25 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
         }
     }
 
-    public IEnumerator UpdateBuiltInScriptDropdownField()
+    void OverwriteScript(string subPath, string content)
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        DialogRoot.Instance.PopupMessageDialog("WEBGL platform does not support writing to disk");
+        return;
+#else
+        var path = Application.streamingAssetsPath + subPath;
+        File.WriteAllText(path, content);
+#endif
+    }
+
+    public void UpdateBuiltinScriptDowndownFieldUsingFileSystem()
+    {
+        var files = Directory.GetFiles(Application.streamingAssetsPath + "/BuiltinScripts", "*.js");
+        var paths = files.Select(s => s.Replace('\\', '/').Replace(Application.streamingAssetsPath, "")).ToList();
+        builtInScriptDropdownField.choices = paths;
+    }
+
+    public IEnumerator UpdateBuiltInScriptDropdownFieldUsingManifest()
     {
         // Schedule async tasks
         string streamingAssetsPath = Application.streamingAssetsPath;

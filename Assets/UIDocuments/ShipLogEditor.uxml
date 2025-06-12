@@ -233,14 +233,7 @@
                             </ui:Tab>
                             <ui:Tab label="Rapid Firing Battery">
                                 <ui:VisualElement style="flex-grow: 1;">
-                                    <ui:MultiColumnListView data-source-path="rapidFiringStatus" binding-source-selection-mode="AutoAssign" header-title="Rapid Fire Battey Status" show-foldout-header="true" show-add-remove-footer="true" name="RapidFiringStatusMultiColumnListView" virtualization-method="DynamicHeight">
-                                        <ui:Columns>
-                                            <ui:Column name="info2" title="Info " width="55%" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringStatus/RapidFiringStatusCellInfo.uxml?fileID=9197481963319205126&amp;guid=58e98a2315c32e74aad30b4986ab4fca&amp;type=3#RapidFiringStatusCellInfo" />
-                                            <ui:Column name="portMountsHits" title="Port Hits" width="15%" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringStatus/RapidFiringStatusCellPortMountHits.uxml?fileID=9197481963319205126&amp;guid=59a76a29ea32f414a838e4734f23e63f&amp;type=3#RapidFiringStatusCellPortMountHits" />
-                                            <ui:Column name="startboardHits" title="Stbd Hits" width="15%" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringStatus/RapidFiringStatusCellStarboardMountHits.uxml?fileID=9197481963319205126&amp;guid=a069033f6299c7148a90eb7f02c1e0da&amp;type=3#RapidFiringStatusCellStarboardMountHits" />
-                                            <ui:Column width="15%" name="fireControlHits" title="FC Hits" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringStatus/RapidFiringStatusCellFireControlHits.uxml?fileID=9197481963319205126&amp;guid=879353972eec67a4a9ebf237e99e16ca&amp;type=3#RapidFiringStatusCellFireControlHits" />
-                                        </ui:Columns>
-                                    </ui:MultiColumnListView>
+                                    <ui:ListView name="RapidFiringStatusListView" item-template="project://database/Assets/UIDocuments/RapidFiringStatusEditor.uxml?fileID=9197481963319205126&amp;guid=58d7b5d1e3f7fda4d9e36202f2d4df08&amp;type=3#RapidFiringStatusEditor" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" data-source-path="rapidFiringStatus" virtualization-method="DynamicHeight" show-border="true" />
                                 </ui:VisualElement>
                             </ui:Tab>
                             <ui:Tab label="Score">

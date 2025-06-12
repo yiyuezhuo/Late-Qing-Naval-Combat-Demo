@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement class="panel-dialog" style="flex-grow: 0; height: initial; width: 500px; position: absolute; top: 50%; left: 50%; translate: -50% -50%;">
+    <ui:VisualElement class="panel-dialog" style="flex-grow: 0; height: initial; width: 600px; position: absolute; top: 50%; left: 50%; translate: -50% -50%;">
         <ui:Label text="JS Script Console" name="TitleLabel" class="title" />
         <ui:VisualElement style="flex-grow: 1;">
             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
@@ -13,6 +13,8 @@
             <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-shrink: 0;">
                 <ui:Label text="Input:" />
                 <ui:DropdownField name="BuiltInScriptDropdownField" style="flex-grow: 1;" />
+                <ui:Button text="Read" name="ReadButton" />
+                <ui:Button text="Write" name="WriteButton" />
                 <ui:Button text="Execute" name="ExecuteButton" />
             </ui:VisualElement>
             <ui:TextField vertical-scroller-visibility="Auto" multiline="true" name="InputTextField" style="height: 200px;" />

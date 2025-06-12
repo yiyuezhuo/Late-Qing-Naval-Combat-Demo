@@ -54,7 +54,8 @@ public class GameManager : MonoBehaviour
         SelectingFollowedTarget,
         SelectingRelativeToTarget,
         SelectingFiringTarget,
-        SelectingFireControlSystemTarget
+        SelectingFireControlSystemTarget,
+        SelectingRapidFiringTarget
     }
 
     State _state = State.Idle;
@@ -295,21 +296,21 @@ public class GameManager : MonoBehaviour
                 }
 
                 if (Input.GetMouseButtonDown(0) && isPressingShift) // RTW-like course setting
+                {
+                    if (selectedShipLog != null)
                     {
-                        if (selectedShipLog != null)
-                        {
-                            var hitPoint = CameraController2.Instance.GetHitPoint();
-                            var dstPos = Utils.Vector3ToLatLon(hitPoint);
+                        var hitPoint = CameraController2.Instance.GetHitPoint();
+                        var dstPos = Utils.Vector3ToLatLon(hitPoint);
 
-                            var currentPos = selectedShipLog.position;
-                            var inverseLine = Geodesic.WGS84.InverseLine(
-                                currentPos.LatDeg, currentPos.LonDeg,
-                                dstPos.LatDeg, dstPos.LonDeg
-                            );
+                        var currentPos = selectedShipLog.position;
+                        var inverseLine = Geodesic.WGS84.InverseLine(
+                            currentPos.LatDeg, currentPos.LonDeg,
+                            dstPos.LatDeg, dstPos.LonDeg
+                        );
 
-                            selectedShipLog.desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)inverseLine.Azimuth);
-                        }
+                        selectedShipLog.desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)inverseLine.Azimuth);
                     }
+                }
 
                 // simulationSecondsAdvanceMap
                 foreach ((var keyCode, var advanceSimulationSeconds) in simulationSecondsAdvanceMap)
@@ -438,6 +439,23 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            else if (state == State.SelectingRapidFiringTarget)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    state = State.Idle;
+                    ShipLogEditor.Instance.Show();
+                    if (selectedRapidFiringTargettingStatus != null)
+                    {
+                        var targetShipLog = TryToRaycastShipLog();
+                        if (targetShipLog != null)
+                        {
+                            selectedRapidFiringTargettingStatus.targetObjectId = targetShipLog.objectId;
+                            Debug.Log($"Set Rapid Firing Battery Target: {selectedRapidFiringTargettingStatus} -> {targetShipLog.objectId}");
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -528,6 +546,8 @@ public class GameManager : MonoBehaviour
     public MountStatusRecord selectedMountStatusRecord => EntityManager.Instance.Get<MountStatusRecord>(selectedMountStatusRecordObjectId);
     public string selectedFireControlSystemStatusRecordObjectId;
     public FireControlSystemStatusRecord selectedFireControlSystemStatusRecord => EntityManager.Instance.Get<FireControlSystemStatusRecord>(selectedFireControlSystemStatusRecordObjectId);
+
+    public RapidFiringTargettingStatus selectedRapidFiringTargettingStatus; // TODO: Use object id to reference?
 
     public GameObject dynamicLinePrefab;
     public Transform dynamicLineContainer;

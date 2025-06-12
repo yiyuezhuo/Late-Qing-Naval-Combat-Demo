@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Jint.Runtime.Debugger;
+using System.Runtime.InteropServices;
 
 public class TopTabs : SingletonDocument<TopTabs>
 {
@@ -37,6 +39,9 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         var jsScriptConsoleButton = root.Q<Button>("JSScriptConsoleButton");
         jsScriptConsoleButton.clicked += JSScriptConsoleDialog.Instance.Show;
+
+        var setToFormationPositionButton = root.Q<Button>("SetToFormationPositionButton");
+        setToFormationPositionButton.clicked += SetToFormationPosition;
 
         playerDropdownField = root.Q<DropdownField>("PlayerDropdownField");
 
@@ -73,6 +78,54 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         var coreParameterRoot = root.Q<VisualElement>("CoreParameterRoot");
         coreParameterRoot.dataSource = CoreParameter.Instance;
+    }
+
+    void SetToFormationPosition()
+    {
+        var resolvedSet = NavalGameState.Instance.shipLogsOnMap.Where(s => s.GetEffectiveControlMode() == ControlMode.Independent).ToHashSet();
+        var waitingSet = NavalGameState.Instance.shipLogsOnMap.Where(s => s.GetEffectiveControlMode() != ControlMode.Independent).ToHashSet();
+        while (waitingSet.Count > 0)
+        {
+            var picked = waitingSet.FirstOrDefault(s =>
+            {
+                var controlMode = s.GetEffectiveControlMode();
+                return (controlMode == ControlMode.FollowTarget && resolvedSet.Contains(s.followedTarget)) ||
+                    (controlMode == ControlMode.RelativeToTarget && resolvedSet.Contains(s.relativeToTarget));
+            });
+            if (picked == null)
+            {
+                Debug.LogWarning("Potential looping control refernece");
+                break;
+            }
+            resolvedSet.Add(picked);
+            waitingSet.Remove(picked);
+
+            // Move ship to their "ideal" formation position            
+            switch (picked.GetEffectiveControlMode())
+            {
+                case ControlMode.FollowTarget:
+                    var target = picked.followedTarget;
+                    var distM = picked.followDistanceYards * MeasureUtils.yardToMeter;
+                    Geodesic.WGS84.Direct(target.position.LatDeg, target.position.LonDeg,
+                        MeasureUtils.NormalizeAngle(target.headingDeg + 180), distM, out var lat2, out var lon2);
+                    picked.position = new LatLon((float)lat2, (float)lon2);
+                    picked.headingDeg = target.headingDeg;
+                    picked.speedKnots = target.speedKnots;
+
+                    break;
+                case ControlMode.RelativeToTarget:
+                    target = picked.relativeToTarget;
+                    distM = picked.relativeToTargetDistanceYards * MeasureUtils.yardToMeter;
+                    var angle = MeasureUtils.NormalizeAngle(target.headingDeg + picked.relativeToTargetAzimuth);
+                    Geodesic.WGS84.Direct(target.position.LatDeg, target.position.LonDeg,
+                        angle, distM, out lat2, out lon2);
+                    picked.position = new LatLon((float)lat2, (float)lon2);
+                    picked.headingDeg = target.headingDeg;
+                    picked.speedKnots = target.speedKnots;
+
+                    break;
+            }
+        }
     }
 
     void OnFullStateXMLLoaded(object sender, string text)

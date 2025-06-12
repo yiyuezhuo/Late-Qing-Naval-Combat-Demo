@@ -372,6 +372,15 @@ namespace NavalCombatCore
             get => EntityManager.Instance.Get<ShipClass>(shipClassObjectId)?.name.mergedName ?? "[Not Specified]";
         }
     }
+
+    public partial class RapidFiringTargettingStatus
+    {
+        [CreateProperty]
+        public string targetDesc
+        {
+            get => GetTarget()?.namedShip?.name?.GetMergedName() ?? "[Not Specified or Invalid]";
+        }
+    }
 }
 
 
@@ -525,11 +534,47 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             return el;
         };
 
-        var rapidFiringStatusMultiColumnListView = root.Q<MultiColumnListView>("RapidFiringStatusMultiColumnListView");
-        Utils.BindItemsAddedRemoved<RapidFiringStatus>(rapidFiringStatusMultiColumnListView, () =>
+        // var rapidFiringStatusMultiColumnListView = root.Q<MultiColumnListView>("RapidFiringStatusMultiColumnListView");
+        // Utils.BindItemsAddedRemoved<RapidFiringStatus>(rapidFiringStatusMultiColumnListView, () =>
+        // {
+        //     return GameManager.Instance.selectedShipLog;
+        // });
+
+        var rapidFiringStatusListView = root.Q<ListView>("RapidFiringStatusListView");
+        Utils.BindItemsAddedRemoved<RapidFiringStatus>(rapidFiringStatusListView, () => GameManager.Instance.selectedShipLog);
+        rapidFiringStatusListView.makeItem = () =>
         {
-            return GameManager.Instance.selectedShipLog;
-        });
+            var el = rapidFiringStatusListView.itemTemplate.CloneTree();
+
+            Utils.BindItemsSourceRecursive(el);
+            var rapidFiringTargettingStatusMultiColumnListView = el.Q<MultiColumnListView>("RapidFiringTargettingStatusMultiColumnListView");
+
+            Utils.BindItemsAddedRemoved<RapidFiringTargettingStatus>(
+                rapidFiringTargettingStatusMultiColumnListView,
+                Utils.MakeDynamicResolveProvider<RapidFiringStatus>(el)
+            );
+
+            var targetColumn = rapidFiringTargettingStatusMultiColumnListView.columns["target"];
+            targetColumn.makeCell = () =>
+            {
+                var el = targetColumn.cellTemplate.CloneTree();
+
+                var setButton = el.Q<Button>("SetButton");
+                setButton.clicked += () =>
+                {
+                    if (Utils.TryResolveCurrentValueForBinding(el, out RapidFiringTargettingStatus r))
+                    {
+                        GameManager.Instance.selectedRapidFiringTargettingStatus = r;
+                        GameManager.Instance.state = GameManager.State.SelectingRapidFiringTarget;
+                        Hide();
+                    }
+                };
+
+                return el;
+            };
+
+            return el;
+        };
 
         var confirmButton = root.Q<Button>("ConfirmButton");
         confirmButton.clicked += Hide;

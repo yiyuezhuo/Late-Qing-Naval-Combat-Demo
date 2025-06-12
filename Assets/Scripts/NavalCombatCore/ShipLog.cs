@@ -821,18 +821,38 @@ namespace NavalCombatCore
         public List<MountStatusRecord> mountStatus = new();
     }
 
+    public enum RapidFiringBatteryLocation
+    {
+        Port,
+        Starboard
+    }
+
+    public partial class RapidFiringTargettingStatus
+    {
+        public RapidFiringBatteryLocation location;
+        public float processingSeconds;
+        public int allocated;
+        public string targetObjectId;
+        public ShipLog GetTarget()
+        {
+            return EntityManager.Instance.GetOnMapShipLog(targetObjectId);
+        }
+    }
+
     public partial class RapidFiringStatus : IObjectIdLabeled
     {
         public string objectId { get; set; }
         public int portMountHits;
         public int starboardMountHits;
         public int fireControlHits;
+        public List<RapidFiringTargettingStatus> targettingRecords = new();
 
         public void ResetDamageExpenditureState()
         {
             portMountHits = 0;
             starboardMountHits = 0;
             fireControlHits = 0;
+            targettingRecords.Clear();
         }
 
         public RapidFireBatteryRecord GetRapidFireBatteryRecord()

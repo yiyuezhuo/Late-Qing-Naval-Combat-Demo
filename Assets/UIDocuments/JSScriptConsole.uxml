@@ -12,7 +12,7 @@
             <ui:TextField readonly="true" name="OutputTextField" multiline="true" vertical-scroller-visibility="Auto" style="height: 200px;" />
             <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-shrink: 0;">
                 <ui:Label text="Input:" />
-                <ui:DropdownField style="flex-grow: 1;" />
+                <ui:DropdownField name="BuiltInScriptDropdownField" style="flex-grow: 1;" />
                 <ui:Button text="Execute" name="ExecuteButton" />
             </ui:VisualElement>
             <ui:TextField vertical-scroller-visibility="Auto" multiline="true" name="InputTextField" style="height: 200px;" />

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ManifestModel xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <remark>This file is only used in platform that don't support File System (E.X. WebGL)</remark>
+ <builtinScripts>
+  <string>/BuiltinScripts/Yalu_Setup.js</string>
+ </builtinScripts>
+</ManifestModel>

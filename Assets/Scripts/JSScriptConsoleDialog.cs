@@ -5,10 +5,18 @@ using UnityEngine;
 using Jint.Runtime;
 using NavalCombatCore;
 using Jint.Runtime.Interop;
+using System.Linq;
+using UnityEngine.Networking;
+using System.Collections;
+using System.Collections.Generic;
+
+
 
 public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
 {
     TextField outputTextField;
+    TextField inputTextField;
+    DropdownField builtInScriptDropdownField;
 
     Engine engine;
 
@@ -20,8 +28,9 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
         var clearButton = root.Q<Button>("ClearButton");
         outputTextField = root.Q<TextField>("OutputTextField");
         var executeButton = root.Q<Button>("ExecuteButton");
-        var inputTextField = root.Q<TextField>("InputTextField");
+        inputTextField = root.Q<TextField>("InputTextField");
         var closeButton = root.Q<Button>("CloseButton");
+        builtInScriptDropdownField = root.Q<DropdownField>("BuiltInScriptDropdownField");
 
         // engine = new Engine(); // Sandboxed Version
         engine = new Engine(cfg => cfg.AllowClr()); // Free Version
@@ -58,6 +67,47 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
         // dragging support
         root.AddManipulator(new MyDragger());
 
+        // var textAssets = Resources.LoadAll<TextAsset>("BuiltinEmbedScripts");
+        // var names = textAssets.Select(ts => ts.name).ToList();
+        // builtInScriptDropdownField.choices = names;
+        builtInScriptDropdownField.RegisterValueChangedCallback(evt =>
+        {
+            StartCoroutine(FetchScriptAndUpdate(evt.newValue));
+        });
+
+        StartCoroutine(UpdateBuiltInScriptDropdownField()); // Fire and Forget
+    }
+
+    IEnumerator FetchScriptAndUpdate(string subPath)
+    {
+        var path = Application.streamingAssetsPath + subPath;
+
+        var request = UnityWebRequest.Get(path);
+        Debug.Log("Requesting: " + path);
+        yield return request.SendWebRequest();
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            inputTextField.SetValueWithoutNotify(request.downloadHandler.text);
+        }
+    }
+
+    public IEnumerator UpdateBuiltInScriptDropdownField()
+    {
+        // Schedule async tasks
+        string streamingAssetsPath = Application.streamingAssetsPath;
+        var manifestPath = streamingAssetsPath + "/Manifest.xml";
+
+        var request = UnityWebRequest.Get(manifestPath);
+        Debug.Log($"manifestPath={manifestPath}");
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            // jsonData = request.downloadHandler.text;
+            Debug.Log($"request.downloadHandler.text={request.downloadHandler.text}");
+            var manifestModel = XmlUtils.FromXML<ManifestModel>(request.downloadHandler.text);
+            builtInScriptDropdownField.choices = manifestModel.builtinScripts;
+        }
     }
 
     public void OnLog(object output)

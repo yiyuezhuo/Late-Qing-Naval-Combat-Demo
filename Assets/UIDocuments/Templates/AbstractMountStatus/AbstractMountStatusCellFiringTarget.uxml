@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="NavalCombatCore.MountStatusRecord, Assembly-CSharp" style="flex-grow: 0; flex-direction: row;">
-        <ui:TextField readonly="true" style="width: 150px; flex-grow: 1;">
+        <ui:TextField readonly="true" data-source-type="NavalCombatCore.AbstractMountStatusRecord, Assembly-CSharp" style="width: 150px; flex-grow: 1;">
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="firingTargetDesc" binding-mode="ToTarget" />
             </Bindings>

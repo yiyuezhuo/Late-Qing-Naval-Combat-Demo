@@ -126,7 +126,7 @@ namespace NavalCombatCore
         public override string ToString() => Summary();
     }
 
-    public partial class MountStatusRecord : IObjectIdLabeled
+    public partial class AbstractMountStatusRecord : IObjectIdLabeled
     {
         public string objectId { get; set; }
         public MountStatus status;
@@ -139,6 +139,84 @@ namespace NavalCombatCore
                 return null;
             return target;
         }
+
+        public class MountLocationRecordInfo
+        {
+            public int recordIndex;
+            public int subIndex;
+            public MountLocationRecord record;
+
+            public string Summary() // Used in Ship Log Editor
+            {
+                return $"#{recordIndex + 1} #{subIndex + 1} x{record.barrels} {record.mountLocationAcronym} ({record.SummaryArcs()})";
+            }
+        }
+
+        protected static MountLocationRecordInfo GetMountLocationRecordInfo(List<MountLocationRecord> mountLocationRecords, int mountIdx)
+        {
+            if (mountIdx < 0)
+                return null;
+
+            var _recordIndex = 0;
+            var mntLocRecs = mountLocationRecords;
+            while (_recordIndex < mntLocRecs.Count && mntLocRecs[_recordIndex].mounts <= mountIdx)
+            {
+                mountIdx -= mntLocRecs[_recordIndex].mounts;
+                _recordIndex++;
+            }
+            if (_recordIndex < mntLocRecs.Count && mountIdx < mntLocRecs[_recordIndex].mounts)
+            {
+                return new()
+                {
+                    recordIndex = _recordIndex,
+                    subIndex = mountIdx,
+                    record = mntLocRecs[_recordIndex],
+                };
+            }
+            return null;
+        }
+
+    }
+
+    public partial class TorpedoMountStatusRecord : AbstractMountStatusRecord
+    {
+        public bool ammunitionReady;
+        public float reloadingSeconds;
+        public int firedCount;
+
+
+        public MountLocationRecordInfo GetTorpedoMountLocationRecordInfo()
+        {
+            var shipLog = EntityManager.Instance.GetParent<ShipLog>(this);
+            if (shipLog == null)
+                return null;
+
+            var mountIdx = shipLog.torpedoSectorStatus.mountStatus.IndexOf(this);
+
+            var shipClass = shipLog.shipClass;
+            if (shipClass == null)
+                return null;
+
+            if (mountIdx < 0)
+                return null;
+
+            // var mountLocationRecord = shipClass.torpedoSector.mountLocationRecords[mountIdx];
+            // return mountLocationRecord;
+            var ret = GetMountLocationRecordInfo(shipClass.torpedoSector.mountLocationRecords, mountIdx);
+            // ret.isTorpedo = true;
+            return ret;
+        }
+
+        public void ResetDamageExpenditureState()
+        {
+            ammunitionReady = true;
+            reloadingSeconds = 0;
+            firedCount = 0;
+        }
+    }
+
+    public partial class MountStatusRecord : AbstractMountStatusRecord
+    {
         public float processSeconds;
         public AmmunitionType ammunitionType;
 
@@ -192,7 +270,7 @@ namespace NavalCombatCore
 
                 var ammoFallbackable = ctx.shipLog.doctrine.GetAmmunitionFallbackable();
                 if (!(
-                        ctx.batteryStatus.ammunition.GetValue(ammunitionType) >=0 ||
+                        ctx.batteryStatus.ammunition.GetValue(ammunitionType) >= 0 ||
                         (ammoFallbackable && ctx.batteryStatus.ammunition.GetTotalValue() <= 0)
                     )) // Later will require re-check
                     return;
@@ -464,43 +542,6 @@ namespace NavalCombatCore
             return ctx;
         }
 
-        public class MountLocationRecordInfo
-        {
-            public int recordIndex;
-            public int subIndex;
-            public MountLocationRecord record;
-
-            public string Summary() // Used in Ship Log Editor
-            {
-                return $"#{recordIndex + 1} #{subIndex + 1} x{record.barrels} {record.mountLocationAcronym} ({record.SummaryArcs()})";
-            }
-        }
-
-
-        MountLocationRecordInfo GetMountLocationRecordInfo(List<MountLocationRecord> mountLocationRecords, int mountIdx)
-        {
-            if (mountIdx < 0)
-                return null;
-
-            var _recordIndex = 0;
-            var mntLocRecs = mountLocationRecords;
-            while (_recordIndex < mntLocRecs.Count && mntLocRecs[_recordIndex].mounts <= mountIdx)
-            {
-                mountIdx -= mntLocRecs[_recordIndex].mounts;
-                _recordIndex++;
-            }
-            if (_recordIndex < mntLocRecs.Count && mountIdx < mntLocRecs[_recordIndex].mounts)
-            {
-                return new()
-                {
-                    recordIndex = _recordIndex,
-                    subIndex = mountIdx,
-                    record = mntLocRecs[_recordIndex],
-                };
-            }
-            return null;
-        }
-
         public MountLocationRecordInfo GetMountLocationRecordInfo()
         {
 
@@ -517,28 +558,6 @@ namespace NavalCombatCore
 
             var ret = GetMountLocationRecordInfo(batteryRecord.mountLocationRecords, mountIdx);
             // ret.isTorpedo = false;
-            return ret;
-        }
-
-        public MountLocationRecordInfo GetTorpedoMountLocationRecordInfo()
-        {
-            var shipLog = EntityManager.Instance.GetParent<ShipLog>(this);
-            if (shipLog == null)
-                return null;
-
-            var mountIdx = shipLog.torpedoSectorStatus.mountStatus.IndexOf(this);
-
-            var shipClass = shipLog.shipClass;
-            if (shipClass == null)
-                return null;
-
-            if (mountIdx < 0)
-                return null;
-
-            // var mountLocationRecord = shipClass.torpedoSector.mountLocationRecords[mountIdx];
-            // return mountLocationRecord;
-            var ret = GetMountLocationRecordInfo(shipClass.torpedoSector.mountLocationRecords, mountIdx);
-            // ret.isTorpedo = true;
             return ret;
         }
 
@@ -848,7 +867,7 @@ namespace NavalCombatCore
     public class TorpedoSectorStatus
     {
         public int ammunition;
-        public List<MountStatusRecord> mountStatus = new();
+        public List<TorpedoMountStatusRecord> mountStatus = new();
     }
 
     public enum RapidFiringBatteryLocation // Location => Side? Though it's binded in UITK so keep it now.

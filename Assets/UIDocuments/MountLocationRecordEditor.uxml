@@ -19,6 +19,11 @@
                 </ui:SliderInt>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                <ui:IntegerField label="Fire Limit">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="fireLimit" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:IntegerField>
                 <ui:Toggle label="Trainable">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="trainable" binding-mode="TwoWay" />
@@ -29,9 +34,10 @@
                         <ui:DataBinding property="value" data-source-path="useRestAngle" binding-mode="TwoWay" />
                     </Bindings>
                 </ui:Toggle>
-                <ui:Slider label="Rest Angle" high-value="360" show-input-field="true">
+                <ui:Slider label="Rest Angle" high-value="360" show-input-field="true" style="display: flex;">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="restAngleDeg" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="useRestAngle" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
                     </Bindings>
                 </ui:Slider>
             </ui:VisualElement>

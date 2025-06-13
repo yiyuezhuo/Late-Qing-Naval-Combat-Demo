@@ -231,14 +231,17 @@ namespace NavalCombatCore
         }
     }
 
-    public partial class MountStatusRecord
+    public partial class AbstractMountStatusRecord
     {
         [CreateProperty]
         public string firingTargetDesc
         {
             get => GetFiringTarget()?.namedShip?.name?.GetMergedName() ?? "[Not Specified]";
         }
+    }
 
+    public partial class MountStatusRecord
+    {
         [CreateProperty]
         public MountLocationRecordInfo mountLocationRecordInfo
         {
@@ -263,18 +266,15 @@ namespace NavalCombatCore
                 return GetMountLocationRecordInfo()?.Summary() ?? "Invalid";
             }
         }
+    }
 
+    public partial class TorpedoMountStatusRecord
+    {
         [CreateProperty]
         public MountLocationRecordInfo torpedoMountLocationRecordInfo
         {
             get => GetTorpedoMountLocationRecordInfo();
             // get => GetTorpedoMountLocationRecordInfo()?.Summary() ?? "Invalid";
-        }
-
-        [CreateProperty]
-        public MountLocation torpedoMountLocation
-        {
-            get => torpedoMountLocationRecordInfo?.record?.mountLocation ?? MountLocation.NotSpecified;
         }
 
         [CreateProperty]
@@ -288,6 +288,12 @@ namespace NavalCombatCore
                 // return $"{r.mounts}x{r.barrels} {r.mountLocation}";
                 return GetTorpedoMountLocationRecordInfo()?.Summary() ?? "Invalid";
             }
+        }
+
+        [CreateProperty]
+        public MountLocation torpedoMountLocation
+        {
+            get => torpedoMountLocationRecordInfo?.record?.mountLocation ?? MountLocation.NotSpecified;
         }
     }
 
@@ -527,8 +533,14 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             setButton.clicked += () =>
             {
                 var ctx = setButton.GetHierarchicalDataSourceContext();
-                PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out MountStatusRecord torpedoMountStatus);
-                Debug.Log(torpedoMountStatus);
+                if (PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out TorpedoMountStatusRecord torpedoMountStatusRecord))
+                {
+                    // Debug.Log(torpedoMountStatusRecord);
+                    GameManager.Instance.selectedTorpedoMountStatusRecord = torpedoMountStatusRecord;
+                    GameManager.Instance.state = GameManager.State.SelectingTorpedoFiringTarget;
+                    Hide();
+                }
+                
             };
 
             return el;

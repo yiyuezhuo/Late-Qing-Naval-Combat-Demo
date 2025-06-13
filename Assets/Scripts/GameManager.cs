@@ -55,7 +55,8 @@ public class GameManager : MonoBehaviour
         SelectingRelativeToTarget,
         SelectingFiringTarget,
         SelectingFireControlSystemTarget,
-        SelectingRapidFiringTarget
+        SelectingRapidFiringTarget,
+        SelectingTorpedoFiringTarget
     }
 
     State _state = State.Idle;
@@ -456,6 +457,23 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            else if (state == State.SelectingTorpedoFiringTarget)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    state = State.Idle;
+                    ShipLogEditor.Instance.Show();
+                    if (selectedTorpedoMountStatusRecord != null)
+                    {
+                        var targetShipLog = TryToRaycastShipLog();
+                        if (targetShipLog != null)
+                        {
+                            selectedTorpedoMountStatusRecord.firingTargetObjectId = targetShipLog.objectId;
+                            Debug.Log($"Set Torpedo Tube Target: {selectedTorpedoMountStatusRecord} -> {targetShipLog.objectId}");
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -548,6 +566,7 @@ public class GameManager : MonoBehaviour
     public FireControlSystemStatusRecord selectedFireControlSystemStatusRecord => EntityManager.Instance.Get<FireControlSystemStatusRecord>(selectedFireControlSystemStatusRecordObjectId);
 
     public RapidFiringTargettingStatus selectedRapidFiringTargettingStatus; // TODO: Use object id to reference?
+    public TorpedoMountStatusRecord selectedTorpedoMountStatusRecord;
 
     public GameObject dynamicLinePrefab;
     public Transform dynamicLineContainer;

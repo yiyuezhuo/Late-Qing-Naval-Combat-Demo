@@ -67,17 +67,17 @@ namespace NavalCombatCore
         {
             private const double EarthRadius = 6371000; // m
 
-            public static (double newLat, double newLon) CalculateNewPosition(double lat, double lon, double bearing, double distance)
+            public static (double newLat, double newLon) CalculateNewPosition(double lat, double lon, double bearing, double distanceM)
             {
                 double latRad = DegreesToRadians(lat);
                 double lonRad = DegreesToRadians(lon);
                 double bearingRad = DegreesToRadians(bearing);
 
-                double newLatRad = Math.Asin(Math.Sin(latRad) * Math.Cos(distance / EarthRadius) +
-                                    Math.Cos(latRad) * Math.Sin(distance / EarthRadius) * Math.Cos(bearingRad));
+                double newLatRad = Math.Asin(Math.Sin(latRad) * Math.Cos(distanceM / EarthRadius) +
+                                    Math.Cos(latRad) * Math.Sin(distanceM / EarthRadius) * Math.Cos(bearingRad));
 
-                double newLonRad = lonRad + Math.Atan2(Math.Sin(bearingRad) * Math.Sin(distance / EarthRadius) * Math.Cos(latRad),
-                                                    Math.Cos(distance / EarthRadius) - Math.Sin(latRad) * Math.Sin(newLatRad));
+                double newLonRad = lonRad + Math.Atan2(Math.Sin(bearingRad) * Math.Sin(distanceM / EarthRadius) * Math.Cos(latRad),
+                                                    Math.Cos(distanceM / EarthRadius) - Math.Sin(latRad) * Math.Sin(newLatRad));
 
                 double newLat = RadiansToDegrees(newLatRad);
                 double newLon = RadiansToDegrees(newLonRad);
@@ -221,7 +221,9 @@ namespace NavalCombatCore
         public static float yardToFoot = 3;
         public static float footToYard = 1f / 3;
         public static float meterToFoot = meterToYard * yardToFoot;
-
+        public static float navalMileToKilometer = 1.852f;
+        public static float kilometerToNavalMile = 1f / navalMileToKilometer;
+        public static float kilometerToYard = meterToYard * 1000;
 
         public static float MoveAngleTowards(float current, float target, float step)
         {
@@ -321,6 +323,96 @@ namespace NavalCombatCore
                     return angle <= startAngle || angle >= endAngle;
                 }
             }
+        }
+    }
+
+    public class InterceptionPointSolver
+    {
+        public class Result
+        {
+            public bool success;
+            public float azimuth;
+            public float arrivalSeconds;
+            public float distanceYards;
+        }
+
+        public static Result Calcualte(IDF4Model shooter, IDF4Model target, float speedKnots)
+        {
+
+            var shooterLat = shooter.GetLatitudeDeg();
+            var shooterLon = shooter.GetLongitudeDeg();
+            var targetLat = target.GetLatitudeDeg();
+            var targetLon = target.GetLongitudeDeg();
+
+            var prevArrivalTimeSeconds = 0f;
+
+            for (int i = 0; i < 20; i++) // solved using iteration method, success if approximated fixed point is found
+            {
+
+                var (distanceKm, azi1) = MeasureStats.Approximation.CalculateDistanceKmAndBearingDeg(shooterLat, shooterLon, targetLat, targetLon);
+                var distanceNm = distanceKm * MeasureUtils.kilometerToNavalMile;
+                var arrivalTimeSeconds = distanceNm / speedKnots * 3600;
+
+                var diffSeconds = arrivalTimeSeconds - prevArrivalTimeSeconds;
+                if (Math.Abs(diffSeconds) < 0.1f) // convergence condition, diff < 0.1s
+                {
+                    return new()
+                    {
+                        success = true,
+                        azimuth = (float)azi1,
+                        arrivalSeconds = (float)arrivalTimeSeconds,
+                        distanceYards = (float)distanceKm * 1000 * MeasureUtils.meterToYard
+                    };
+                }
+                prevArrivalTimeSeconds = (float)arrivalTimeSeconds;
+                var movedM = diffSeconds / 3600 * target.GetSpeedKnots() * MeasureUtils.navalMileToMeter;
+                var (_targetLat, _targetLon) = MeasureStats.Approximation.CalculateNewPosition(targetLat, targetLon, target.GetHeadingDeg(), movedM);
+                targetLat = (float)_targetLat;
+                targetLon = (float)_targetLon;
+            }
+
+            return new();
+        }
+    }
+
+    public interface ICollider
+    {
+        public float GetLengthFoot();
+        public float GetBeamFoot();
+        public float GetHeadingDeg();
+        public LatLon GetPosition();
+    }
+
+    public static class CollideUtils
+    {
+        public static bool IsCollided(LatLon newPosition, ICollider self, ICollider other)
+        {
+            var otherPos = other.GetPosition();
+
+            // Exact Method
+            // Geodesic.WGS84.Inverse(newPosition.LatDeg, newPosition.LonDeg, otherPos.LatDeg, otherPos.LonDeg, out var distanceM, out var azi1, out var azi2);
+            // Approximation Method
+            var (distanceKm, azi1) = MeasureStats.Approximation.CalculateDistanceKmAndBearingDeg(newPosition.LatDeg, newPosition.LonDeg, otherPos.LatDeg, otherPos.LonDeg);
+            var distanceM = distanceKm * 1000;
+            var azi2 = azi1;
+
+            if (MeasureUtils.GetPositiveAngleDifference(self.GetHeadingDeg(), (float)azi1) > 90)
+                return false;
+
+            var distanceFoot = distanceM * MeasureUtils.meterToFoot;
+            var lengthFoot = self.GetLengthFoot();
+            var otherLengthFoot = other.GetLengthFoot();
+            if (distanceFoot < lengthFoot / 2 + otherLengthFoot / 2)
+            {
+                var diff = MeasureUtils.GetPositiveAngleDifference(other.GetHeadingDeg(), (float)azi2);
+                var coef = Math.Abs(diff - 90) / 90;
+                var otherMix = otherLengthFoot * coef + other.GetBeamFoot() * (1 - coef);
+                if (distanceFoot < lengthFoot / 2 + otherMix / 2)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
 

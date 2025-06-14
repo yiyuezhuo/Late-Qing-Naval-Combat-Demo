@@ -4,10 +4,25 @@ using TMPro;
 using UnityEngine.UIElements;
 using System;
 
+public interface IPortraitViewerObservable : IObjectIdLabeled, ICollider // Abstraction from ShipLog to support view of torpedo, land battery / target and possbily projectile.
+{
+    // public float GetLengthFoot();
+    // public float GetBeamFoot();
+    // public LatLon GetPosition();
+    // public float GetHeadingDeg();
+
+    public string GetPortraitTopCode(); // main View
+    public Country GetCountry(); // flag
+    public bool IsShowArrow();
+    public GlobalString GetName();
+    public float GetDesiredHeadingDeg();
+    public string GetAcronym();
+}
+
 public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
-{    
+{
     public string modelObjectId;
-    public ShipLog shipLog{get => EntityManager.Instance.Get<ShipLog>(modelObjectId);}
+    public IPortraitViewerObservable model { get => EntityManager.Instance.Get<IPortraitViewerObservable>(modelObjectId); }
 
     public enum Type
     {
@@ -29,7 +44,6 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public Transform arrowBaseTransform;
     public Transform cubeColliderTransform;
     float scaleFactor = 0.015f;
-    // public RectTransform canvasRectTransform;
     public MeshRenderer flagRenderer;
 
     long oldViewHashCode;
@@ -38,37 +52,17 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     {
         return HashCode.Combine(
             type,
-            shipLog?.shipClass?.portraitTopCode,
-            // shipLog?.captainPortraitCode,
-            shipLog?.leader?.portraitCode,
-            shipLog?.shipClass.country
+            model?.GetPortraitTopCode(),
+            // shipLog?.leader?.portraitCode,
+            model?.GetCountry()
         );
     }
 
     void Awake()
     {
-        // iconRenderer = GetComponent<MeshRenderer>();
         leafTransform.localPosition = new Vector3(0, 0, -Utils.r);
-        // flagMaterial = flagRotationBase.GetComponent<MeshRenderer>().material;
         flagRenderer.material = flagRenderer.material; // copy material
     }
-
-    // void UpdateTextLocation()
-    // {
-    //     var targetTransform = transform;
-    //     var mainCamera = CameraController2.Instance.cam;
-
-    //     Vector3 screenPosition = mainCamera.WorldToScreenPoint(targetTransform.position);
-
-    //     RectTransformUtility.ScreenPointToLocalPointInRectangle(
-    //         canvasRectTransform,
-    //         screenPosition,
-    //         mainCamera,
-    //         out Vector2 localPoint
-    //     );
-
-    //     text.rectTransform.localPosition = localPoint;
-    // }
 
     void MaintainTextDirectionSize()
     {
@@ -96,20 +90,21 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         t.LookAt(t.position + cam.transform.rotation * Vector3.forward,
                          cam.transform.rotation * Vector3.up);
 
-        var shipLengthFoot = shipLog?.shipClass.lengthFoot ?? 300;
+        var shipLengthFoot = model?.GetLengthFoot() ?? 300;
         var x = shipLengthFoot * Utils.footToWu * modelScale * 10;
         t.localScale = new Vector3(x, x, x);
     }
 
     void MaintainArrowRotation()
     {
-        var isIndependentControlled = shipLog.GetEffectiveControlMode() == ControlMode.Independent;
-        arrowBaseTransform.gameObject.SetActive(isIndependentControlled);
+        // var isIndependentControlled = model.GetEffectiveControlMode() == ControlMode.Independent;
+        var isShowArrow = model.IsShowArrow();
+        arrowBaseTransform.gameObject.SetActive(isShowArrow);
 
-        if (isIndependentControlled)
+        if (isShowArrow)
         {
             arrowBaseTransform.gameObject.SetActive(true);
-            arrowBaseTransform.localEulerAngles = new Vector3(0, 0, -shipLog.desiredHeadingDeg);
+            arrowBaseTransform.localEulerAngles = new Vector3(0, 0, -model.GetDesiredHeadingDeg());
             var s = modelScale;
             arrowBaseTransform.localScale = new Vector3(s, s, s);
         }
@@ -117,26 +112,21 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
     public void Update()
     {
-        // UpdateTextLocation();
-
-        // transform.localPosition = Utils.LatitudeLongitudeDegToVector3(shipLog.GetLatitudeDeg(), shipLog.GetLongitudeDeg());
-        var latLon = shipLog.position;
+        var latLon = model.GetPosition();
         transform.localEulerAngles = new Vector3(latLon.LatDeg, -latLon.LonDeg, 0);
 
-        // TODO: rescale with length, beam, draft parameter
-        var shipLengthFoot = shipLog?.shipClass.lengthFoot ?? 300;
-        var shipBeamFoot = shipLog?.shipClass.beamFoot ?? 60;
+        var shipLengthFoot = model?.GetLengthFoot() ?? 300;
+        var shipBeamFoot = model?.GetBeamFoot() ?? 60;
         iconTransform.localScale = new Vector3(shipLengthFoot * Utils.footToWu * modelScale, shipBeamFoot * Utils.footToWu * modelScale, 1);
         cubeColliderTransform.localScale = new Vector3(shipLengthFoot * Utils.footToWu * 1, shipBeamFoot * Utils.footToWu * 1, 200 * Utils.footToWu); // 100 foots above-waterline height for LOS calculation  
 
-        var zEuler = Utils.TrueNorthCWDegToRightCCWDeg(shipLog.GetHeadingDeg());
-        // iconTransform.localEulerAngles = new Vector3(0, 0, zEuler);
+        var zEuler = Utils.TrueNorthCWDegToRightCCWDeg(model.GetHeadingDeg());
         headingTransform.localEulerAngles = new Vector3(0, 0, zEuler);
 
         MaintainTextDirectionSize();
         MaintainArrowRotation();
 
-        text.text = $"{shipLog.shipClass.GetAcronym()} {shipLog.namedShip.name.GetNameFromType(GameManager.Instance.iconLanuageType)}";
+        text.text = $"{model.GetAcronym()} {model.GetName().GetNameFromType(GameManager.Instance.iconLanuageType)}";
 
         MaintainFlagRotationSize();
 
@@ -146,11 +136,11 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
         oldViewHashCode = newViewHashCode;
 
-        var shipClass = shipLog.shipClass;
-        var portraitTopCode = shipClass.portraitTopCode;
+        // var shipClass = model.shipClass;
+        var portraitTopCode = model.GetPortraitTopCode();
         var portraitTop = ResourceManager.GetShipPortraitSprite(portraitTopCode);
         iconRenderer.material.SetTexture("_MainTex", portraitTop.texture);
 
-        flagRenderer.material.SetTexture("_MainTex", ResourceManager.GetFlagSprite(shipClass.country.ToString()).texture);
+        flagRenderer.material.SetTexture("_MainTex", ResourceManager.GetFlagSprite(model.GetCountry().ToString()).texture);
     }
 }

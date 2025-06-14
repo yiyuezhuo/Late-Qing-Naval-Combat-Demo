@@ -21,6 +21,8 @@ namespace NavalCombatCore
         {
             return $"LatLon({LatDeg}, {LonDeg})";
         }
+
+        public LatLon Clone() => new LatLon(LatDeg, LonDeg);
     }
 
 }

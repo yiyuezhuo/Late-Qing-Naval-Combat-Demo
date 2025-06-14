@@ -202,7 +202,7 @@ namespace NavalCombatCore
         public bool useRestAngle; // If rest angle is not overriden, it's derived from arc.
         public float restAngleDeg; // Graphic purpose only
         public bool trainable; // for torpedo
-        public int fireLimit; // Mainly for torpedo, 0 denotes no limit, > 0 will restrict max ammunition casted from the mount generated from this record. Handle separated ammunition room or single-shot torpedo tube.
+        public int reloadLimit; // Mainly for torpedo, 0 denotes no limit, > 0 will restrict max ammunition reloaded to the mount generated from this record. It represents separated ammunition room or single-shot torpedo tube.
         public string SummaryArcs() => string.Join(",", mountArcs.Select(arc => arc.Summary()));
 
         public bool IsInArc(float bearingRelativeToBowDeg)

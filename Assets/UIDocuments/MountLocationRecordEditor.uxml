@@ -19,9 +19,9 @@
                 </ui:SliderInt>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                <ui:IntegerField label="Fire Limit">
+                <ui:IntegerField label="Reload Limit">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="fireLimit" binding-mode="TwoWay" />
+                        <ui:DataBinding property="value" data-source-path="reloadLimit" binding-mode="TwoWay" />
                     </Bindings>
                 </ui:IntegerField>
                 <ui:Toggle label="Trainable">

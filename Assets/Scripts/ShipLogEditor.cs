@@ -49,7 +49,35 @@ namespace NavalCombatCore
         public float firepowerPortProp => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 270);
     }
 
-    public partial class ShipLog
+    public partial class LaunchedTorpedo : IPortraitViewerObservable
+    {
+        Country IPortraitViewerObservable.GetCountry() => GetShooter()?.shipClass?.country ?? Country.General;
+        string IPortraitViewerObservable.GetPortraitTopCode() => "Schwartzkopff Torpedo_Top"; // TODO: use true name
+        bool IPortraitViewerObservable.IsShowArrow() => false;
+        GlobalString IPortraitViewerObservable.GetName() => sourceName;
+        float IPortraitViewerObservable.GetDesiredHeadingDeg() => headingDeg;
+        string IPortraitViewerObservable.GetAcronym() => "T";
+
+        [CreateProperty]
+        public string shooterDesc
+        {
+            get => GetShooter()?.namedShip.name.GetMergedName() ?? "[Not Specified or Invalid]";
+        }
+
+        [CreateProperty]
+        public string desiredTargetDesc
+        {
+            get => GetDesiredTarget()?.namedShip.name.GetMergedName() ?? "[Not Specified or Invalid]";
+        }
+
+        [CreateProperty]
+        public string sourceNameDesc
+        {
+            get => sourceName.GetMergedName();
+        }
+    }
+
+    public partial class ShipLog : IPortraitViewerObservable
     {
         [CreateProperty]
         public ShipClass shipClassProperty
@@ -202,6 +230,14 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public Doctrine doctrineProp => doctrine;
+
+        // IPortraitViewerObservable
+        string IPortraitViewerObservable.GetPortraitTopCode() => shipClass.portraitTopCode;
+        Country IPortraitViewerObservable.GetCountry() => shipClass.country;
+        GlobalString IPortraitViewerObservable.GetName() => namedShip?.name;
+        bool IPortraitViewerObservable.IsShowArrow() => GetEffectiveControlMode() == ControlMode.Independent;
+        string IPortraitViewerObservable.GetAcronym() => shipClass.GetAcronym();
+        float IPortraitViewerObservable.GetDesiredHeadingDeg() => desiredHeadingDeg;
     }
 
     public partial class FireControlSystemStatusRecord

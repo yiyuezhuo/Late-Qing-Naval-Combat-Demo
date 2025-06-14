@@ -25,6 +25,7 @@
                     <ui:Button text="Ship Log Editor" name="ShipLogEditorButton" />
                     <ui:Button text="OOB Editor" name="OOBEditorButton" />
                     <ui:Button text="Scenario State Editor" name="ScenarioStateEditorButton" />
+                    <ui:Button text="Launched Torpedo Editor" name="LaunchedTorpedoEditorButton" />
                     <ui:Button text="JS Script Console" name="JSScriptConsoleButton" />
                     <ui:Button text=" Set to Formation Position" name="SetToFormationPositionButton" />
                 </ui:VisualElement>

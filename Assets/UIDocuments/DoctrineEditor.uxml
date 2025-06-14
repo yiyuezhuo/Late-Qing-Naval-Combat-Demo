@@ -121,5 +121,57 @@
                 </Bindings>
             </ui:VisualElement>
         </ui:VisualElement>
+        <ui:VisualElement data-source-path="maximumFiringDistanceYardsFor100mmLess" style="flex-grow: 0; flex-direction: row;">
+            <ui:Label text="Max Fire Dist 100- (yards):" />
+            <ui:Label text="Inherit" />
+            <ui:Toggle>
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:Toggle>
+            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Specified" />
+                <ui:Toggle data-source-path="value">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="isSpecified" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:Toggle>
+                <ui:FloatField data-source-path="value" style="min-width: 100px;">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="isSpecified" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                    </Bindings>
+                </ui:FloatField>
+                <Bindings>
+                    <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
+                </Bindings>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement data-source-path="maximumFiringDistanceYardsForTorpedo" style="flex-grow: 0; flex-direction: row;">
+            <ui:Label text="Max Fire Dist Torpedo (yards):" />
+            <ui:Label text="Inherit" />
+            <ui:Toggle>
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:Toggle>
+            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Specified" />
+                <ui:Toggle data-source-path="value">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="isSpecified" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:Toggle>
+                <ui:FloatField data-source-path="value" style="min-width: 100px;">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="isSpecified" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                    </Bindings>
+                </ui:FloatField>
+                <Bindings>
+                    <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
+                </Bindings>
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -116,14 +116,14 @@ namespace NavalCombatCore
                 var cols = lines[0].Skip(1).Select(colExtractor).ToArray();
                 var rows = lines.Skip(1).Select(line => rowExtractor(line[0])).ToArray();
 
-                var nrows = lines.Count;
-                var ncols = lines[0].Count;
+                var nrows = lines.Count - 1;
+                var ncols = lines[0].Count - 1;
                 var cells = new TCell[nrows, ncols];
-                for (var i = 1; i < nrows; i++)
+                for (var i = 0; i < nrows; i++)
                 {
-                    for (var j = 1; j < ncols; j++)
+                    for (var j = 0; j < ncols; j++)
                     {
-                        cells[i, j] = cellExtractor(lines[i][j]);
+                        cells[i, j] = cellExtractor(lines[i+1][j+1]);
                     }
                 }
                 return new SimpleTable<TRow, TCol, TCell>()

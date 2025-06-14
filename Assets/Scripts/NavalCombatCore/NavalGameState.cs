@@ -4,6 +4,8 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
+using MathNet.Numerics;
 
 
 namespace NavalCombatCore
@@ -40,6 +42,7 @@ namespace NavalCombatCore
         // public List<ShipGroup> rootShipGroups = new();
         public List<ShipGroup> shipGroups = new();
         public ScenarioState scenarioState = new();
+        public List<LaunchedTorpedo> launchedTorpedos = new();
 
         public SimulationClock weaponSimulationAssignmentClock = new() { intervalSeconds = 120 };
 
@@ -291,16 +294,31 @@ namespace NavalCombatCore
             foreach (var shipLog in shipLogsOnMap)
                 shipLog.StepTryMoveToNewPosition(deltaSeconds); // update position
 
-            PrecalculationContext.Instance.gunneryFireContext.Calculate();
-
-            foreach (var shipLog in shipLogsOnMap)
-                shipLog.StepBatteryStatus(deltaSeconds); // gunnery resolution
+            // PrecalculationContext.Instance.gunneryFireContext.Calculate();
+            using (GunneryFireContext.Begin())
+            {
+                foreach (var shipLog in shipLogsOnMap)
+                    shipLog.StepBatteryStatus(deltaSeconds); // gunnery resolution
+            }
 
             foreach (var shipLog in shipLogsOnMap)
                 shipLog.StepDamageResolution(deltaSeconds);
+
+
+            foreach (var launchedTorpedo in launchedTorpedosOnMap)
+                launchedTorpedo.StepMoveToNewPosition(deltaSeconds);
+
+            using (TorpedoAttackContext.Begin())
+            {
+                foreach (var shipLog in shipLogsOnMap)
+                {
+                    shipLog.StepTorpedoSector(deltaSeconds);
+                }
+            }
         }
 
         public IEnumerable<ShipLog> shipLogsOnMap => shipLogs.Where(x => x.mapState == MapState.Deployed);
+        public IEnumerable<LaunchedTorpedo> launchedTorpedosOnMap => launchedTorpedos.Where(x => x.mapState == MapState.Deployed);
 
         public Dictionary<IShipGroupMember, List<ShipLog>> GroupByShipLogByRootGroup()
         {

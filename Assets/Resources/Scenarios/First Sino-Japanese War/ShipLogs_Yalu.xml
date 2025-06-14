@@ -140,42 +140,42 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>12</ammunition>
+   <ammunition>7</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>85270438-5af8-40dc-be60-5370af48912c</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>df6b1b8f-dcdd-4909-b4f9-9e0a3cf591fb</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>2efcc283-27fe-4bd7-8945-2f37cca1ca51</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>23fb9a1f-4804-4a6c-b5fe-1aeb1ebcf726</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>e74b0111-5040-45d7-bcd1-ad73a45f609c</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -380,35 +380,35 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>8</ammunition>
+   <ammunition>4</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>bb8bb280-0897-44c5-97d5-60f0c292c294</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>b0e5e3b7-bda6-4304-babe-e3ddb46b8164</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>79414149-05d9-4442-9957-2396379b15e0</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>c9aea7b7-8deb-4ce7-8a12-de0e563da54b</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -593,35 +593,35 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>8</ammunition>
+   <ammunition>4</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>a9b803e4-2c60-41ec-83be-ff46f227e0c6</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>eae1a43e-892c-446b-bd47-90b6bcadc865</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>e1db1630-51f8-4470-9a68-d51364c1f2c0</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>93ab112f-30ff-43d0-8341-466ec5abd57d</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -759,35 +759,35 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>6</ammunition>
+   <ammunition>2</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>4897651f-81a8-4d7d-b2cb-0eb0aa821bbc</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>fecd10ad-0e6f-46bc-8d94-68ea44015417</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>07f400ee-958c-4af5-b611-94576d0e1ee9</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>13cb209b-e38b-48ec-a451-5ddc1a37ef2f</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -913,35 +913,35 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>6</ammunition>
+   <ammunition>2</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>b62659c7-5e71-4e00-9b22-e7441b0bc036</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>ce62bc22-0351-4934-a8de-f81b9dcc5398</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>1070dfcd-5958-4516-8b87-c60b801b661e</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>d092dd43-fe39-49ff-a919-b3c0b0374229</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -1096,28 +1096,28 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>6</ammunition>
+   <ammunition>3</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>a449d8a3-84af-40ef-bb69-4dbb51112715</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>99dfca49-2069-449a-b511-9330e9639c0a</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>e4520a12-6124-4dde-bb44-32807522ae32</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -1273,28 +1273,28 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>6</ammunition>
+   <ammunition>3</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>8c4635b6-fea9-43c3-8baa-ab5386291f66</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>f591ed8b-911c-417c-a2d0-55ddc56e019e</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>de333c11-6580-47cc-9113-1187684c33f4</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -1783,35 +1783,35 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>6</ammunition>
+   <ammunition>2</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>7179294e-7af0-4528-b20c-d3c4c4af729a</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>0f6d1193-90f3-4ff4-b1a8-39415ef0adb4</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>cd3a86e1-ff6f-419f-9659-0aa71fcd81ec</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>15ba4767-b96d-445c-8c52-2c21c582a1c0</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -1962,35 +1962,35 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>6</ammunition>
+   <ammunition>2</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>13df9620-8e75-431b-adc9-a4bfc9e74092</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>4ab1b1d4-6e87-4128-9469-0e806731eaee</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>c32b0550-a80f-41cc-940c-d72a675a10d9</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>8db31507-753c-4840-8cfa-b9421082db88</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -2134,35 +2134,35 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>6</ammunition>
+   <ammunition>2</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>d6dfded0-e84a-4a60-96e1-76c8326efd66</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>d44df846-d632-4fa7-b538-10236c90fd5e</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>5d81a804-d3ae-4b5f-8a52-ce733213a3a8</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>ac41fc11-3b43-47da-9560-2d0fd11cee7a</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -2296,35 +2296,35 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>6</ammunition>
+   <ammunition>2</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>aabb1087-6f24-4516-af7d-956c36fc2980</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>f14342fe-8078-47f6-beb3-272f0f6a6022</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>3814977e-7069-4031-b810-3a47f67e3fec</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>eb948578-952a-41b9-b2bd-923f73e39e21</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -2458,35 +2458,35 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>6</ammunition>
+   <ammunition>2</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>9cf876fc-e14c-4331-b976-6be0654d8857</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>1e9b253a-9ea3-477f-a5ff-2c5f8f94a6d6</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>0e10c63f-3cfb-4d52-8582-0e91ab14849b</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>f8606043-bd24-4032-aeea-d93fb47517b9</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -2812,21 +2812,21 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>0</ammunition>
+   <ammunition>-2</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>4ecb18c5-29a0-4258-9850-f4af147a0a3f</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>659eed2f-9f63-41a2-a1cb-5ca87016e918</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -3039,35 +3039,35 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>8</ammunition>
+   <ammunition>4</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>6ca6b7df-1954-4340-86b5-8ec8a7e650ed</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>1f396a43-652c-42ae-bcea-1c056712f4d1</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>295870e4-68d2-40e1-83e2-e42dcfeee4f3</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>b07b1ce9-a20d-4b4b-b562-8b99ccb9e6ab</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -3289,35 +3289,35 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>8</ammunition>
+   <ammunition>4</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>b5054266-2e8a-4fb3-bafd-a3d13b05b304</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>0ad8162f-0bb4-454f-bf5e-b3ca0c205558</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>b11548c4-be02-4883-b274-3f68ba423d2e</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>1b182400-82e9-4412-8797-ba6522e267f1</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -3513,21 +3513,21 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>4</ammunition>
+   <ammunition>2</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>5037ebbf-b049-414d-b9db-7224d152416a</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>e3b440f6-1382-4e20-b0ce-690ca2e71142</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -3747,35 +3747,35 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>8</ammunition>
+   <ammunition>4</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>e26a7eaa-ae1a-4ce1-89dc-46473e2c6f6f</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>f273477d-0252-4db3-a051-9b1170adc3ba</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>5a478fb0-2757-4640-9840-4d843f1f6180</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>d6296894-606d-4b9b-a4e0-41b64f009d4c</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -3968,35 +3968,35 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>8</ammunition>
+   <ammunition>4</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>5c7d9e12-c637-4859-95ed-892ba7a91386</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>d1408eca-0f0d-4146-a5e9-f9ad2c01277b</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>0e288d72-45ec-44b9-af42-44fbae76c8d8</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>5b5c8c9e-8204-4d16-a289-c104237e861c</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -4177,28 +4177,28 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>6</ammunition>
+   <ammunition>3</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>ae082896-641e-4901-a582-64617bac5a55</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>4919d306-1af5-4f99-bea2-104d22e5b036</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>d9b0b76c-ed86-40b6-ab4d-cef482121e05</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -4325,35 +4325,35 @@
    </BatteryStatus>
   </batteryStatus>
   <torpedoSectorStatus>
-   <ammunition>6</ammunition>
+   <ammunition>2</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>7c83cfca-2e9d-42e7-9113-6534797ebdf6</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>404dff81-3fba-4728-bf23-8e1f4909f593</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>e61dda5e-8fac-4168-88f5-fbe151d2c892</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>cabda85e-66f7-4f72-b45d-aeffd53218b1</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -4687,21 +4687,21 @@
   <mapState>Deployed</mapState>
   <batteryStatus />
   <torpedoSectorStatus>
-   <ammunition>4</ammunition>
+   <ammunition>1</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>8537f97a-6808-4b18-996e-8f98fef1497e</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>2</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>2</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>cee329df-4af1-48bf-af32-fb07bec79999</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>
@@ -4787,21 +4787,21 @@
   <mapState>Deployed</mapState>
   <batteryStatus />
   <torpedoSectorStatus>
-   <ammunition>4</ammunition>
+   <ammunition>1</ammunition>
    <mountStatus>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>025fa78b-c0bc-42bf-b19f-3e4b65abe9d6</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>2</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>2</reloadedLoad>
     </TorpedoMountStatusRecord>
     <TorpedoMountStatusRecord>
      <status>Operational</status>
      <objectId>f5fca2ec-0b51-4712-b850-24e14422f145</objectId>
-     <ammunitionReady>true</ammunitionReady>
+     <currentLoad>1</currentLoad>
      <reloadingSeconds>0</reloadingSeconds>
-     <firedCount>0</firedCount>
+     <reloadedLoad>1</reloadedLoad>
     </TorpedoMountStatusRecord>
    </mountStatus>
   </torpedoSectorStatus>

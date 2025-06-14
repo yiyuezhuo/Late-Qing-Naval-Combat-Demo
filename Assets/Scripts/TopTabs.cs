@@ -37,6 +37,9 @@ public class TopTabs : SingletonDocument<TopTabs>
         var scenarioStateEditorButton = root.Q<Button>("ScenarioStateEditorButton");
         scenarioStateEditorButton.clicked += ScenarioStateEditor.Instance.Show;
 
+        var launchedTorpedoEditorButton = root.Q<Button>("LaunchedTorpedoEditorButton");
+        launchedTorpedoEditorButton.clicked += LaunchedTorpedoEditor.Instance.Show;
+
         var jsScriptConsoleButton = root.Q<Button>("JSScriptConsoleButton");
         jsScriptConsoleButton.clicked += JSScriptConsoleDialog.Instance.Show;
 

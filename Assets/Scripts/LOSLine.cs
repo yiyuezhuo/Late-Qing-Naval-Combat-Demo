@@ -70,10 +70,10 @@ public class LOSLine : MonoBehaviour, IMaskCheckService
             if (colliderRootProvider != null)
             {
                 var root = colliderRootProvider.GetRoot();
-                var shipLog = root?.GetComponent<PortraitViewer>()?.shipLog;
+                var shipLog = root?.GetComponent<PortraitViewer>()?.model;
                 if (shipLog != null)
                 {
-                    result.message = $"Masked by {shipLog.namedShip.name.GetMergedName()}";
+                    result.message = $"Masked by {shipLog.GetName().GetMergedName()}";
                 }
                 else
                 {
@@ -108,7 +108,7 @@ public class LOSLine : MonoBehaviour, IMaskCheckService
         var raycastHits = Physics.RaycastAll(raycastStart, direction, raycastDistance, losLayerMask);
         foreach (var raycastHit in raycastHits)
         {
-            var shipLog = raycastHit.collider.GetComponent<IColliderRootProvider>()?.GetRoot()?.GetComponent<PortraitViewer>()?.shipLog;
+            var shipLog = raycastHit.collider.GetComponent<IColliderRootProvider>()?.GetRoot()?.GetComponent<PortraitViewer>()?.model as ShipLog; // TODO: if something other than ShipLog can block LOS, add an interface for here
             if (shipLog != null && shipLog != observer && shipLog != target)
             {
                 var obsSize = observer.shipClass.targetSizeModifier;

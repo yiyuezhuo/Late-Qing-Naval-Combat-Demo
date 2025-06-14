@@ -13,7 +13,7 @@ namespace NavalCombatCore
         All,
     }
 
-    [Serializable]
+    // [Serializable]
     public partial class GlobalString
     {
         public string english = "unnamed";
@@ -35,6 +35,17 @@ namespace NavalCombatCore
                 LanguageType.ChineseTraditional => chineseTraditional,
                 LanguageType.All => mergedName,
                 _ => english
+            };
+        }
+
+        public GlobalString Clone()
+        {
+            return new()
+            {
+                english = english,
+                japanese = japanese,
+                chineseSimplified = chineseSimplified,
+                chineseTraditional = chineseTraditional
             };
         }
     }

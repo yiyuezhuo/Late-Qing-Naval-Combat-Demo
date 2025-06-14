@@ -99,7 +99,8 @@ public class GameManager : MonoBehaviour
     }
 
     // public static string scenarioSuffix = "_Pungdo"; // temp hack
-    public static string scenarioSuffix = "_Yalu";
+    // public static string scenarioSuffix = "_Yalu";
+    public static string scenarioSuffix = "_Yalu_Torpedo";
 
     public void Start()
     {
@@ -171,7 +172,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public float remainAdvanceSimulationSecondsRequestedByKeyPressing; // Requested by KeyCode 1-9
+    public float remainAdvanceSimulationSecondsRequestedByKeyPressing; // Requested by KeyCode 1-9 (1-9 min) and BackQuote (`) (1s)
     public float remainAdvanceSimulationSecondsRequestedByUpdate;
 
     // public float simulationRateRaio = 30;
@@ -184,12 +185,12 @@ public class GameManager : MonoBehaviour
         var simulationRateRaio = GamePreference.Instance.simulationRateRaio;
 
         var realSeconds = Time.deltaTime;
-        if (remainAdvanceSimulationSecondsRequestedByKeyPressing > pulseLengthSeconds)
+        if (remainAdvanceSimulationSecondsRequestedByKeyPressing >= pulseLengthSeconds)
         {
             remainAdvanceSimulationSecondsRequestedByUpdate += realSeconds * simulationRateRaio;
         }
 
-        while (remainAdvanceSimulationSecondsRequestedByKeyPressing > pulseLengthSeconds && remainAdvanceSimulationSecondsRequestedByUpdate > pulseLengthSeconds)
+        while (remainAdvanceSimulationSecondsRequestedByKeyPressing >= pulseLengthSeconds && remainAdvanceSimulationSecondsRequestedByUpdate >= pulseLengthSeconds)
         {
             NavalGameState.Instance.Step(pulseLengthSeconds);
             remainAdvanceSimulationSecondsRequestedByKeyPressing -= pulseLengthSeconds;
@@ -199,8 +200,10 @@ public class GameManager : MonoBehaviour
 
     static Dictionary<KeyCode, float> simulationSecondsAdvanceMap = new()
     {
-        {KeyCode.Alpha1, 60 * 1},
-        {KeyCode.Alpha2, 60 * 2},
+        {KeyCode.Tilde, 1}, // 1s
+        {KeyCode.BackQuote, 1},
+        {KeyCode.Alpha1, 60 * 1}, // 1 min
+        {KeyCode.Alpha2, 60 * 2}, // 2 min
         {KeyCode.Alpha3, 60 * 3},
         {KeyCode.Alpha4, 60 * 4},
         {KeyCode.Alpha5, 60 * 5},
@@ -222,24 +225,30 @@ public class GameManager : MonoBehaviour
         // }
 
         // sync Ship's Viewer and ShipLog mapping
-        foreach (var shipLog in NavalGameState.Instance.shipLogsOnMap)
+        List<IPortraitViewerObservable> viewerObservables = new();
+        viewerObservables.AddRange(NavalGameState.Instance.shipLogsOnMap);
+        viewerObservables.AddRange(NavalGameState.Instance.launchedTorpedosOnMap);
+
+        foreach (var observable in viewerObservables)
         {
-            if (!objectId2Viewer.ContainsKey(shipLog.objectId))
+            if (!objectId2Viewer.ContainsKey(observable.objectId))
             {
                 var obj = Instantiate(shipUnitPrefab, earthTransform);
 
                 var portraitView = obj.GetComponent<PortraitViewer>();
-                portraitView.modelObjectId = shipLog.objectId;
-                objectId2Viewer[shipLog.objectId] = portraitView;
+                portraitView.modelObjectId = observable.objectId;
+                objectId2Viewer[observable.objectId] = portraitView;
             }
         }
 
-        var shouldRemoved = objectId2Viewer.Where(kv => EntityManager.Instance.GetOnMapShipLog(kv.Key) == null).ToList();
+        var objectIdSet = viewerObservables.Select(obs => obs.objectId).ToHashSet(); 
 
-        foreach ((var shipLog, var viewer) in shouldRemoved)
+        var shouldRemoved = objectId2Viewer.Where(kv => !objectIdSet.Contains(kv.Key)).ToList();
+
+        foreach ((var objectId, var viewer) in shouldRemoved)
         {
             Destroy(viewer.gameObject); // Or Set Inactive only?
-            objectId2Viewer.Remove(shipLog);
+            objectId2Viewer.Remove(objectId);
         }
 
         // sync Line renderer to show firing line, fire control line, fired line etc.
@@ -277,20 +286,18 @@ public class GameManager : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0) && !isPressingShift) // try select a unit
                 {
-                    var portraitViewer = TryToRaycastViewer();
-                    if (portraitViewer != null)
+                    var shipLog = TryToRaycastShipLog(); // TODO: Handle other click? (like land target?)
+                    if (shipLog != null)
                     {
-                        var shipLog = portraitViewer.shipLog;
                         selectedShipLogObjectId = shipLog.objectId;
                     }
                 }
 
                 if (Input.GetMouseButtonDown(1)) // try select unit and open ShipLog Editor for it
                 {
-                    var portraitViewer = TryToRaycastViewer();
-                    if (portraitViewer != null)
+                    var shipLog = TryToRaycastShipLog(); // TODO: Handle other click?
+                    if (shipLog != null)
                     {
-                        var shipLog = portraitViewer.shipLog;
                         selectedShipLogObjectId = shipLog.objectId;
                         ShipLogEditor.Instance.Show();
                     }
@@ -314,6 +321,15 @@ public class GameManager : MonoBehaviour
                 }
 
                 // simulationSecondsAdvanceMap
+                // Debug.Log($"Input.inputString={Input.inputString}");
+                // foreach(KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
+                // {
+                //     if (Input.GetKeyDown(keyCode))
+                //     {
+                //         Debug.Log("Pressed: " + keyCode);
+                //     }
+                // }
+
                 foreach ((var keyCode, var advanceSimulationSeconds) in simulationSecondsAdvanceMap)
                 {
                     if (Input.GetKeyDown(keyCode))
@@ -375,10 +391,10 @@ public class GameManager : MonoBehaviour
                     state = State.Idle;
                     if (selectedShipLog != null)
                     {
-                        var portraitViewer = TryToRaycastViewer();
-                        if (portraitViewer != null)
+                        var shipLog = TryToRaycastShipLog();
+                        if (shipLog != null)
                         {
-                            var targetShipLog = portraitViewer.shipLog;
+                            var targetShipLog = shipLog;
                             if (selectedShipLog != targetShipLog)
                             {
                                 selectedShipLog.followedTargetObjectId = targetShipLog.objectId;
@@ -497,7 +513,7 @@ public class GameManager : MonoBehaviour
 
     public ShipLog TryToRaycastShipLog()
     {
-        return TryToRaycastViewer()?.shipLog;
+        return TryToRaycastViewer()?.model as ShipLog;
     }
 
     public void OnDestroy()
@@ -661,6 +677,14 @@ public class GameManager : MonoBehaviour
                 yield return (shipLog, firingTarget);
             }
         }
+    }
+
+    public string selectedLaunchedTorpedoObjectId;
+
+    [CreateProperty]
+    public LaunchedTorpedo selectedLaunchedTorpedo
+    {
+        get => EntityManager.Instance.Get<LaunchedTorpedo>(selectedLaunchedTorpedoObjectId);
     }
 
 

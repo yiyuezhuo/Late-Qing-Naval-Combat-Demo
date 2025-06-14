@@ -43,6 +43,10 @@ public static class RegisteredConverters
         Register("ShipLog to DisplayStyle", (ref NavalCombatCore.ShipLog obj) => (StyleEnum<DisplayStyle>)(obj != null ? DisplayStyle.Flex : DisplayStyle.None));
         Register("ShipLog to DisplayStyle (Not)", (ref NavalCombatCore.ShipLog obj) => (StyleEnum<DisplayStyle>)(obj == null ? DisplayStyle.Flex : DisplayStyle.None));
 
+        Register("LaunchedTorpedo to DisplayStyle", (ref NavalCombatCore.LaunchedTorpedo obj) => (StyleEnum<DisplayStyle>)(obj != null ? DisplayStyle.Flex : DisplayStyle.None));
+        Register("LaunchedTorpedo to DisplayStyle (Not)", (ref NavalCombatCore.LaunchedTorpedo obj) => (StyleEnum<DisplayStyle>)(obj == null ? DisplayStyle.Flex : DisplayStyle.None));
+
+
         Register("ShipLog => ShipLog's merge name", (ref NavalCombatCore.ShipLog shipLog) =>
         {
             // return shipLog?.name?.GetMergedName() ?? "[not defined]";

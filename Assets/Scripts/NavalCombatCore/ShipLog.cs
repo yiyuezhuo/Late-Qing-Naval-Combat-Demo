@@ -4,6 +4,9 @@ using System.Linq;
 using System;
 using GeographicLib;
 using System.Xml.Serialization;
+using UnityEngine.UIElements;
+using Palmmedia.ReportGenerator.Core;
+using UnityEngine;
 
 
 namespace NavalCombatCore
@@ -180,9 +183,9 @@ namespace NavalCombatCore
 
     public partial class TorpedoMountStatusRecord : AbstractMountStatusRecord
     {
-        public bool ammunitionReady;
+        public int currentLoad;
         public float reloadingSeconds;
-        public int firedCount;
+        public int reloadedLoad;
 
 
         public MountLocationRecordInfo GetTorpedoMountLocationRecordInfo()
@@ -209,10 +212,93 @@ namespace NavalCombatCore
 
         public void ResetDamageExpenditureState()
         {
-            ammunitionReady = true;
+            var info = GetTorpedoMountLocationRecordInfo().record;
+            currentLoad = info.barrels;
             reloadingSeconds = 0;
-            firedCount = 0;
+            reloadedLoad = info.barrels;
         }
+
+        public void Step(float deltaSeconds)
+        {
+            // reload
+            var platform = EntityManager.Instance.GetParent<ShipLog>(this);
+            var recordInfo = GetTorpedoMountLocationRecordInfo();
+
+            var requested = recordInfo.record.barrels - currentLoad;
+            var ammunitionCap = platform.torpedoSectorStatus.ammunition;
+            var reloadLimitCap = recordInfo.record.reloadLimit - reloadedLoad;
+            var transferred = Math.Min(reloadLimitCap, Math.Min(requested, ammunitionCap));
+
+            if (transferred > 0)
+            {
+                reloadingSeconds += deltaSeconds;
+
+                requested = recordInfo.record.barrels - currentLoad;
+                ammunitionCap = platform.torpedoSectorStatus.ammunition;
+                reloadLimitCap = recordInfo.record.reloadLimit - reloadedLoad;
+                transferred = Math.Min(reloadLimitCap, Math.Min(requested, ammunitionCap));
+
+                while (reloadingSeconds >= 360 && transferred > 0) // 6min torpedo reload time (SK5 & DoB)
+                {
+                    currentLoad += transferred;
+                    platform.torpedoSectorStatus.ammunition -= transferred;
+                    reloadedLoad += transferred;
+                }
+            }
+            else
+            {
+                reloadingSeconds = 0;
+            }
+
+            // fire on target
+            var tgt = GetFiringTarget();
+            var torpedoAttackCtx = TorpedoAttackContext.GetCurrentOrCreateTemp();
+            var classSector = platform.shipClass.torpedoSector;
+
+            if (tgt != null && currentLoad > 0 && classSector.torpedoSettings.Count > 0)
+            {
+                var (distanceKm, azi1) = MeasureStats.Approximation.CalculateDistanceKmAndBearingDeg(platform.position.LatDeg, platform.position.LonDeg, tgt.position.LatDeg, tgt.position.LonDeg);
+                var distYards = (float)distanceKm * MeasureUtils.meterToYard;
+                var doctrineRespected = platform.doctrine.GetMaximumFiringDistanceYardsForTorpedo().IsGreaterThanIfSpecified(distYards);
+                if (doctrineRespected)
+                {
+                    var settingPairs = classSector.torpedoSettings.Select(setting => (setting,
+                        torpedoAttackCtx.GetOrCalculateFireComplexSupplementary(platform, tgt, setting.speedKnots).interceptionPointSolverResult
+                    )).Where(sp => sp.Item2.success && sp.Item2.distanceYards < sp.setting.rangeYards).ToList();
+                    if (settingPairs.Count > 0)
+                    {
+                        var minInterceptionDistYard = settingPairs.Min(sp => sp.Item2.distanceYards);
+                        var bestSettingPair = settingPairs.First(sp => sp.Item2.distanceYards == minInterceptionDistYard);
+                        var setting = bestSettingPair.setting;
+                        var interceptionRes = bestSettingPair.Item2;
+
+                        var bearingRelativeToBowDeg = MeasureUtils.NormalizeAngle(interceptionRes.azimuth - platform.headingDeg);
+                        if (recordInfo.record.IsInArc(bearingRelativeToBowDeg))
+                        {
+                            // Launch Torpedo!
+                            var newTorpedo = new LaunchedTorpedo()
+                            {
+                                sourceName = classSector.name.Clone(),
+                                damageClass = classSector.damageClass,
+                                headingDeg = interceptionRes.azimuth,
+                                position = platform.position.Clone(),
+                                shooterId = platform.objectId,
+                                desiredTargetObjectId = tgt.objectId,
+                                mapState = MapState.Deployed,
+                                speedKnots = setting.speedKnots,
+                                maxRangeYards = setting.rangeYards,
+                                movedDistanceYards = 0
+                            };
+                            NavalGameState.Instance.launchedTorpedos.Add(newTorpedo);
+                            EntityManager.Instance.Register(newTorpedo, null);
+
+                            currentLoad -= 1;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
     public partial class MountStatusRecord : AbstractMountStatusRecord
@@ -245,7 +331,7 @@ namespace NavalCombatCore
             {
                 processSeconds += deltaSeconds;
 
-                var fireCtx = PrecalculationContext.Instance.gunneryFireContext;
+                var fireCtx = GunneryFireContext.GetCurrentOrCreateTemp();
 
                 // var shooter = GetPlatform();
                 var ctx = fireCtx.mountStatusRecordMap[this].ctx;
@@ -278,10 +364,12 @@ namespace NavalCombatCore
                 var shooter = ctx.shipLog;
 
                 var isFireChecked = fireCtx.shipLogSupplementaryMap[tgt].batteriesFiredAtMe.Contains(ctx.batteryStatus);
-                if (!isFireChecked) // include range / arc check (though ammo should be checked dynamiclly since this loop will update ammo state)
+                if (!isFireChecked) // include range / arc / Doctrine check (though ammo should be checked dynamiclly since this loop will update ammo state)
                     return;
                 var shooterTargetSup = fireCtx.GetOrCalcualteShipLogPairSupplementary(shooter, tgt);
                 var stats = shooterTargetSup.stats;
+
+
                 // var stats = MeasureStats.MeasureApproximation(shooter, tgt); // TODO: Deduplicate redundant geo calculation, cache in the pulse level cache?
                 // var isInArc = ctx.mountLocationRecord.IsInArc(stats.observerToTargetBearingRelativeToBowDeg);
                 // var isInRange = stats.distanceYards <= ctx.batteryRecord.rangeYards;
@@ -866,8 +954,16 @@ namespace NavalCombatCore
 
     public class TorpedoSectorStatus
     {
-        public int ammunition;
+        public int ammunition; // Denotes torpedos in magazine, torpedos that had been loaded in tubes is not counted here.
         public List<TorpedoMountStatusRecord> mountStatus = new();
+
+        public void Step(float deltaSeconds)
+        {
+            foreach (var mountStatusRecord in mountStatus)
+            {
+                mountStatusRecord.Step(deltaSeconds);
+            }
+        }
     }
 
     public enum RapidFiringBatteryLocation // Location => Side? Though it's binded in UITK so keep it now.
@@ -1058,7 +1154,7 @@ namespace NavalCombatCore
         {
             var r = GetRapidFireBatteryRecord();
             var shooter = EntityManager.Instance.GetParent<ShipLog>(this);
-            var fireCtx = PrecalculationContext.Instance.gunneryFireContext;
+            var fireCtx = GunneryFireContext.GetCurrentOrCreateTemp();
 
             var unfiredBarrels = (new[] { RapidFiringBatteryLocation.Starboard, RapidFiringBatteryLocation.Port }).ToDictionary(
                 side => side,
@@ -1071,8 +1167,14 @@ namespace NavalCombatCore
                 if (tgt != null)
                 {
                     tgtRec.processingSeconds += deltaSeconds;
+
                     var stTgtSup = fireCtx.GetOrCalcualteShipLogPairSupplementary(shooter, tgt);
                     var stats = stTgtSup.stats;
+
+
+                    var doctrineRespected = shooter.doctrine.GetMaximumFiringDistanceYardsFor100mmLess().IsGreaterThanIfSpecified(stats.distanceYards);
+                    if (!doctrineRespected)
+                        continue;
 
                     var side = MeasureUtils.GetPositiveAngleDifference(stats.observerToTargetBearingRelativeToBowDeg, 45) <= 90 ? RapidFiringBatteryLocation.Starboard : RapidFiringBatteryLocation.Port;
                     var used = 0;
@@ -1319,7 +1421,7 @@ namespace NavalCombatCore
     }
 
 
-    public partial class ShipLog : IObjectIdLabeled, IDF4Model, IShipGroupMember, IWTAObject, IExtrapolable
+    public partial class ShipLog : IObjectIdLabeled, IDF4Model, IShipGroupMember, IWTAObject, IExtrapolable, ICollider
     {
         public string objectId { get; set; }
         // public ShipClass shipClass;
@@ -1431,7 +1533,7 @@ namespace NavalCombatCore
             yield return doctrine;
         }
 
-        public Doctrine doctrine{ get; set; } = new();
+        public Doctrine doctrine { get; set; } = new();
 
         public bool IsOnMap() => mapState == MapState.Deployed;
 
@@ -1450,7 +1552,6 @@ namespace NavalCombatCore
             foreach (var batteryStatusRec in batteryStatus)
                 batteryStatusRec.ResetDamageExpenditureState();
 
-            torpedoSectorStatus.ammunition = _shipClass.torpedoSector.ammunitionCapacity;
             Utils.SyncListToLength(
                 _shipClass.torpedoSector.mountLocationRecords.Sum(r => r.mounts),
                 torpedoSectorStatus.mountStatus,
@@ -1458,6 +1559,7 @@ namespace NavalCombatCore
             );
             foreach (var m in torpedoSectorStatus.mountStatus)
                 m.ResetDamageExpenditureState();
+            torpedoSectorStatus.ammunition = _shipClass.torpedoSector.ammunitionCapacity - torpedoSectorStatus.mountStatus.Sum(m => m.reloadedLoad);
 
             Utils.SyncListPairLength(_shipClass.rapidFireBatteryRecords, rapidFiringStatus, this);
             foreach (var r in rapidFiringStatus)
@@ -1659,7 +1761,6 @@ namespace NavalCombatCore
 
         public void StepTryMoveToNewPosition(float deltaSeconds)
         {
-
             var distNm = speedKnots / 3600 * deltaSeconds;
             var distM = distNm * 1852;
             double arcLength = Geodesic.WGS84.Direct(position.LatDeg, position.LonDeg, headingDeg, distM, out double lat2, out double lon2);
@@ -1678,32 +1779,37 @@ namespace NavalCombatCore
                 {
                     if (other == this)
                         continue;
-                    var otherPos = other.position;
-
-                    // Exact Method
-                    // Geodesic.WGS84.Inverse(newPosition.LatDeg, newPosition.LonDeg, otherPos.LatDeg, otherPos.LonDeg, out var distanceM, out var azi1, out var azi2);
-                    // Approximation Method
-                    var (distanceKm, azi1) = MeasureStats.Approximation.CalculateDistanceKmAndBearingDeg(newPosition.LatDeg, newPosition.LonDeg, otherPos.LatDeg, otherPos.LonDeg);
-                    var distanceM = distanceKm * 1000;
-                    var azi2 = azi1;
-
-                    if (MeasureUtils.GetPositiveAngleDifference(headingDeg, (float)azi1) > 90)
-                        continue;
-
-                    var distanceFoot = distanceM * MeasureUtils.meterToFoot;
-                    var lengthFoot = shipClass.lengthFoot;
-                    var otherLengthFoot = other.shipClass.lengthFoot;
-                    if (distanceFoot < lengthFoot / 2 + otherLengthFoot / 2)
+                    var isCollided = CollideUtils.IsCollided(newPosition, this, other);
+                    if (isCollided)
                     {
-                        var diff = MeasureUtils.GetPositiveAngleDifference(other.headingDeg, (float)azi2);
-                        var coef = Math.Abs(diff - 90) / 90;
-                        var otherMix = otherLengthFoot * coef + other.shipClass.beamFoot * (1 - coef);
-                        if (distanceFoot < lengthFoot / 2 + otherMix / 2)
-                        {
-                            collided = other;
-                            break;
-                        }
+                        collided = other;
                     }
+                    // var otherPos = other.position;
+
+                    // // Exact Method
+                    // // Geodesic.WGS84.Inverse(newPosition.LatDeg, newPosition.LonDeg, otherPos.LatDeg, otherPos.LonDeg, out var distanceM, out var azi1, out var azi2);
+                    // // Approximation Method
+                    // var (distanceKm, azi1) = MeasureStats.Approximation.CalculateDistanceKmAndBearingDeg(newPosition.LatDeg, newPosition.LonDeg, otherPos.LatDeg, otherPos.LonDeg);
+                    // var distanceM = distanceKm * 1000;
+                    // var azi2 = azi1;
+
+                    // if (MeasureUtils.GetPositiveAngleDifference(headingDeg, (float)azi1) > 90)
+                    //     continue;
+
+                    // var distanceFoot = distanceM * MeasureUtils.meterToFoot;
+                    // var lengthFoot = shipClass.lengthFoot;
+                    // var otherLengthFoot = other.shipClass.lengthFoot;
+                    // if (distanceFoot < lengthFoot / 2 + otherLengthFoot / 2)
+                    // {
+                    //     var diff = MeasureUtils.GetPositiveAngleDifference(other.headingDeg, (float)azi2);
+                    //     var coef = Math.Abs(diff - 90) / 90;
+                    //     var otherMix = otherLengthFoot * coef + other.shipClass.beamFoot * (1 - coef);
+                    //     if (distanceFoot < lengthFoot / 2 + otherMix / 2)
+                    //     {
+                    //         collided = other;
+                    //         break;
+                    //     }
+                    // }
                 }
                 newPositionBlocked = collided != null; // TODO: Handle deliberately hostile ramming and speed change
             }
@@ -1716,6 +1822,11 @@ namespace NavalCombatCore
             {
                 speedKnots = 0; // TODO: Use a smoother method
             }
+        }
+
+        public void StepTorpedoSector(float deltaSeconds)
+        {
+            torpedoSectorStatus.Step(deltaSeconds);
         }
 
         public void StepBatteryStatus(float deltaSeconds)
@@ -1830,7 +1941,17 @@ namespace NavalCombatCore
                 }
             }
             // TODO: Add torpedos?
-            // TODO: Add rapid firing batteries
+            foreach (var rfs in rapidFiringStatus)
+            {
+                foreach (var r in rfs.targettingRecords)
+                {
+                    var tgt = r.GetTarget();
+                    if (tgt != null)
+                    {
+                        targets.Add(tgt);
+                    }
+                }
+            }
             return targets;
         }
 
@@ -1857,5 +1978,11 @@ namespace NavalCombatCore
         float IExtrapolable.GetRelativeToTargetDistanceYards() => relativeToTargetDistanceYards;
         float IExtrapolable.GetRelativeToTargetAzimuth() => relativeToTargetAzimuth;
         void IExtrapolable.SetDesiredHeadingDeg(float desiredHeadingDeg) => this.desiredHeadingDeg = desiredHeadingDeg;
+        
+        public LatLon GetPosition() => position;
+        // public float GetHeadingDeg() => headingDeg;
+        public float GetLengthFoot() => shipClass.lengthFoot;
+        public float GetBeamFoot() => shipClass.beamFoot;
+
     }
 }

@@ -5,6 +5,7 @@ using System;
 using GeographicLib;
 using System.Xml.Serialization;
 using System.Diagnostics;
+using MathNet.Numerics.Distributions;
 
 
 namespace NavalCombatCore
@@ -59,8 +60,36 @@ namespace NavalCombatCore
                 if (collidedShipLog != null)
                 {
                     // TODO: Process torpedo attack
+                    var shooter = GetShooter();
+                    var classSector = shooter.shipClass.torpedoSector;
+                    var damageClass = classSector.damageClass;
+                    var pistolType = classSector.pistolType;
+                    var dudProb = classSector.dudProbability;
+
+                    var torpedoDamage = RuleChart.RollTorpedoDamage(damageClass, pistolType);
+
+                    var armorEffInch = 0f;
+                    var p = RandomUtils.rand.NextDouble();
+                    if (p <= 0.45)
+                    {
+                        armorEffInch = collidedShipLog.shipClass.armorRating.GetArmorEffectiveInch(ArmorLocation.MainBelt);
+                    }
+                    else if (p <= 0.75)
+                    {
+                        armorEffInch = collidedShipLog.shipClass.armorRating.GetArmorEffectiveInch(ArmorLocation.BeltEnd);
+                    }
+
+                    if (armorEffInch > 0)
+                    {
+                        var adjustment = RuleChart.GetArmorAdjustment(armorEffInch);
+                        torpedoDamage = Math.Max(0, torpedoDamage - armorEffInch);
+                    }
+
+                    collidedShipLog.damagePoint += torpedoDamage;
+
                     var logger = ServiceLocator.Get<ILoggerService>();
-                    logger.LogWarning($"Torpedo {objectId} collides ship {collidedShipLog.namedShip.name.GetMergedName()}");
+                    logger.LogWarning($"Torpedo {objectId} collides ship {collidedShipLog.namedShip.name.GetMergedName()} armorEffInch={armorEffInch} torpedoDamage={torpedoDamage}");
+
                     newPositionBlocked = true;
                 }
             }

@@ -226,23 +226,25 @@ namespace NavalCombatCore
 
             var requested = recordInfo.record.barrels - currentLoad;
             var ammunitionCap = platform.torpedoSectorStatus.ammunition;
-            var reloadLimitCap = recordInfo.record.reloadLimit - reloadedLoad;
+            var reloadLimitCap = recordInfo.record.reloadLimit == 0 ? int.MaxValue : recordInfo.record.reloadLimit - reloadedLoad;
             var transferred = Math.Min(reloadLimitCap, Math.Min(requested, ammunitionCap));
 
             if (transferred > 0)
             {
                 reloadingSeconds += deltaSeconds;
 
-                requested = recordInfo.record.barrels - currentLoad;
-                ammunitionCap = platform.torpedoSectorStatus.ammunition;
-                reloadLimitCap = recordInfo.record.reloadLimit - reloadedLoad;
-                transferred = Math.Min(reloadLimitCap, Math.Min(requested, ammunitionCap));
 
                 while (reloadingSeconds >= 360 && transferred > 0) // 6min torpedo reload time (SK5 & DoB)
                 {
+                    requested = recordInfo.record.barrels - currentLoad;
+                    ammunitionCap = platform.torpedoSectorStatus.ammunition;
+                    transferred = Math.Min(reloadLimitCap, Math.Min(requested, ammunitionCap));
+
                     currentLoad += transferred;
                     platform.torpedoSectorStatus.ammunition -= transferred;
                     reloadedLoad += transferred;
+
+                    reloadingSeconds -= 360;
                 }
             }
             else

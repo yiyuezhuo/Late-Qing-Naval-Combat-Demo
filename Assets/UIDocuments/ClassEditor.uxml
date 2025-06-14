@@ -131,6 +131,16 @@
                                                     <ui:DataBinding property="value" data-source-path="damageClass" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:EnumField>
+                                            <ui:Slider label="Dub Probability" value="0.5" high-value="1">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="dudProbability" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:Slider>
+                                            <ui:EnumField label="Pistol" value="Center" type="NavalCombatCore.TorpedoPistolType, Assembly-CSharp">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="pistolType" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:EnumField>
                                         </ui:VisualElement>
                                         <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                                             <ui:MultiColumnListView header-title="Settings" show-add-remove-footer="true" show-foldout-header="true" binding-source-selection-mode="AutoAssign" name="TorpedoSettingsMultiColumnListView" data-source-path="torpedoSettings">

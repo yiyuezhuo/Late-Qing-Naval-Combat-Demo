@@ -123,7 +123,7 @@ namespace NavalCombatCore
                 {
                     for (var j = 0; j < ncols; j++)
                     {
-                        cells[i, j] = cellExtractor(lines[i+1][j+1]);
+                        cells[i, j] = cellExtractor(lines[i + 1][j + 1]);
                     }
                 }
                 return new SimpleTable<TRow, TCol, TCell>()
@@ -445,6 +445,44 @@ namespace NavalCombatCore
             var rowIdx = rapidFiringBatteryDamageTable.rows.Select((r, i) => (r, i)).LastOrDefault(ri => rapidFiringBatteryRating >= ri.r).i;
             var colIdx = Categorical.Sample(new double[] { 25, 50, 25 });
             return rapidFiringBatteryDamageTable.cells[rowIdx, colIdx];
+        }
+
+        // T5 - Torpedo Damage Table
+        public static string torpedoDamageTableCsvText = @",A - Con,A - Mag,B - Con,B - Mag,C - Con,C - Mag,D - Con,D - Mag,E - Con,E - Mag,F - Con,F - Mag,G - Con,G - Mag,H - Con,H - Mag,I - Con
+8,1650,2250,1485,2025,1320,1800,1155,1575,1005,1365,855,1170,727,990,640,792,590
+7,1485,2025,1337,1823,1188,1620,1040,1418,904,1229,770,1053,654,891,575,713,525
+8,1375,1875,1238,1688,1100,1500,963,1313,837,1138,713,975,606,825,533,660,485
+10,1265,1725,1139,1553,1012,1380,886,1208,770,1047,656,897,557,759,490,607,445
+10,1210,1650,1089,1485,968,1320,847,1155,737,1001,627,858,533,726,468,581,425
+12,1155,1575,1040,1418,924,1260,809,1103,703,956,599,819,509,693,448,554,405
+10,1100,1500,990,1350,880,1200,770,1050,670,910,570,780,485,660,427,528,390
+10,1045,1425,941,1283,836,1140,732,998,636,865,542,741,460,627,405,502,370
+8,990,1350,891,1215,792,1080,693,945,603,819,513,702,436,594,384,475,350
+9,935,1275,842,1148,748,1020,655,893,569,774,485,663,412,561,362,449,330
+8,825,1125,743,1013,660,900,578,788,502,683,428,585,363,495,320,396,295";
+
+        public static SimpleTable<float, string, float> torpedoDamageTable = SimpleTable<float, string, float>.FromCSV(
+            torpedoDamageTableCsvText,
+            float.Parse, x => x, float.Parse
+        );
+
+        public static float RollTorpedoDamage(TorpedoDamageClass damageClass, TorpedoPistolType pistolType)
+        {
+            var colIdx = Math.Min(torpedoDamageTable.cols.Length - 1, (int)damageClass * 2 + (int)pistolType);
+            var rowIdx = Categorical.Sample(torpedoDamageTable.rows.Select(x => (double)x).ToArray());
+            return torpedoDamageTable.cells[rowIdx, colIdx];
+        }
+
+        public static float[,] armorAdjustmentTable = new float[,]
+        {
+            { 0,   1.4f, 2.5f, 3.5f, 4.5f, 5.5f, 6.5f, 8.0f, 9.5f, 11.0f, 12.5f, 14.0f},
+            { 25,   50,   75,   100,  125,  150,  200,  250,  300,   350,   400,   450}
+        };
+
+        public static float GetArmorAdjustment(float armorEffInch)
+        {
+            var colIdx = Enumerable.Range(0, armorAdjustmentTable.GetLength(1)).Where(col => armorAdjustmentTable[0, col] <= armorEffInch).Last();
+            return armorAdjustmentTable[1, colIdx];
         }
 
     }

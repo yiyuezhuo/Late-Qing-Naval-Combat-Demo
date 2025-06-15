@@ -4,9 +4,6 @@ using System.Linq;
 using System;
 using GeographicLib;
 using System.Xml.Serialization;
-using UnityEngine.UIElements;
-using Palmmedia.ReportGenerator.Core;
-using UnityEngine;
 
 
 namespace NavalCombatCore

@@ -6,6 +6,20 @@ using System.Text;
 using System.Collections.Generic;
 using System.Xml;
 
+public class StreamingAssetReference
+{
+    static StreamingAssetReference instance = new();
+    public static StreamingAssetReference Instance => instance;
+
+    public string leadersPath = "Leaders";
+    public string shipClassesPath;
+    public string namedShipsPath;
+    public string shipLogsPath;
+    public string shipGroupsPath;
+    // scenarioState, launchedTorpedos, weaponSimulationAssignmentClock has little reusability so it's directly tracked by NavalGameState and cannot be replaced by external file.
+
+}
+
 public class FullState
 {
     public NavalGameState navalGameState;

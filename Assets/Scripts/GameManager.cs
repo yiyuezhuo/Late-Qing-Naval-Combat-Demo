@@ -10,6 +10,8 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System;
+using UnityEngine.Networking;
+using System.Collections;
 // using SunCalcNet;
 
 public interface IColliderRootProvider
@@ -100,7 +102,7 @@ public class GameManager : MonoBehaviour
     }
 
     // public static string scenarioSuffix = "_Pungdo"; // temp hack
-    public static string scenarioSuffix = "_Yalu";
+    public static string scenarioSuffix = "_Yalu.xml";
     // public static string scenarioSuffix = "_Yalu_Torpedo";
 
     public void Start()
@@ -110,32 +112,64 @@ public class GameManager : MonoBehaviour
 
         EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
 
-        Func<string, string> _load = (string name) =>
+        StartCoroutine(LoadScenario());
+
+        // Func<string, string> _load = (string name) =>
+        // {
+        //     var path = "Scenarios/First Sino-Japanese War/" + name;
+        //     return Resources.Load<TextAsset>(path).text;
+        // };
+
+        // var leaderXml = _load("Leaders");
+        // navalGameState.LeadersFromXML(leaderXml);
+
+        // var shipClassXml = _load("ShipClasses");
+        // navalGameState.ShipClassesFromXML(shipClassXml);
+
+        // var namedShipsXml = _load("NamedShips");
+        // navalGameState.NamedShipsFromXML(namedShipsXml);
+
+        // var shipLogsXml = _load("ShipLogs" + scenarioSuffix);
+        // navalGameState.ShipLogsFromXML(shipLogsXml);
+
+        // var rootShipGroupsXml = _load("ShipGroups" + scenarioSuffix);
+        // navalGameState.ShipGroupsFromXML(rootShipGroupsXml);
+
+        // navalGameState.ScenarioStateFromXML(_load("ScenarioState" + scenarioSuffix));
+
+        // OOBEditor.Instance.oobTreeView.ExpandAll();
+
+        // NavalGameState.Instance.ResetAndRegisterAll(); // Note FromXml call has call it many times.
+    }
+
+    IEnumerator FetchScenarioFile(string name, Action<string> callback)
+    {
+        var root = Application.streamingAssetsPath + "/Scenarios/First Sino-Japanese War/";
+        var request = UnityWebRequest.Get(root + name);
+        yield return request.SendWebRequest();
+        if (request.result == UnityWebRequest.Result.Success)
         {
-            var path = "Scenarios/First Sino-Japanese War/" + name;
-            return Resources.Load<TextAsset>(path).text;
-        };
+            callback(request.downloadHandler.text);
+        }
+        else
+        {
+            Debug.LogError($"failed to fetch and setup: {name}");
+        }
+    }
 
-        var leaderXml = _load("Leaders");
-        navalGameState.LeadersFromXML(leaderXml);
-
-        var shipClassXml = _load("ShipClasses");
-        navalGameState.ShipClassesFromXML(shipClassXml);
-
-        var namedShipsXml = _load("NamedShips");
-        navalGameState.NamedShipsFromXML(namedShipsXml);
-
-        var shipLogsXml = _load("ShipLogs" + scenarioSuffix);
-        navalGameState.ShipLogsFromXML(shipLogsXml);
-
-        var rootShipGroupsXml = _load("ShipGroups" + scenarioSuffix);
-        navalGameState.ShipGroupsFromXML(rootShipGroupsXml);
-
-        navalGameState.ScenarioStateFromXML(_load("ScenarioState" + scenarioSuffix));
+    IEnumerator LoadScenario()
+    {
+        yield return FetchScenarioFile("Leaders.xml", navalGameState.LeadersFromXML);
+        yield return FetchScenarioFile("ShipClasses.xml", navalGameState.ShipClassesFromXML);
+        yield return FetchScenarioFile("NamedShips.xml", navalGameState.NamedShipsFromXML);
+        yield return FetchScenarioFile("ShipLogs" + scenarioSuffix, navalGameState.ShipLogsFromXML);
+        yield return FetchScenarioFile("ShipGroups" + scenarioSuffix, navalGameState.ShipGroupsFromXML);
+        yield return FetchScenarioFile("ScenarioState" + scenarioSuffix, navalGameState.ScenarioStateFromXML);
 
         OOBEditor.Instance.oobTreeView.ExpandAll();
-
         NavalGameState.Instance.ResetAndRegisterAll(); // Note FromXml call has call it many times.
+
+        Debug.Log("LoadScenario Corountine Completed");
     }
 
     public Dictionary<string, PortraitViewer> objectId2Viewer = new();

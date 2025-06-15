@@ -189,6 +189,11 @@ namespace NavalCombatCore
         {
             return MeasureUtils.IsAngleInArc(bearingRelativeToBowDeg, startDeg, CoverageDeg);
         }
+
+        public bool IsInArc(float bearingRelativeToBowDeg, float relaxedAngle)
+        {
+            return MeasureUtils.IsAngleInArcRelaxed(bearingRelativeToBowDeg, startDeg, CoverageDeg, relaxedAngle);
+        }
     }
 
     public class MountLocationRecord : IObjectIdLabeled
@@ -208,6 +213,11 @@ namespace NavalCombatCore
         public bool IsInArc(float bearingRelativeToBowDeg)
         {
             return mountArcs.Any(arc => arc.IsInArc(bearingRelativeToBowDeg));
+        }
+
+        public bool IsInArcRelaxed(float bearingRelativeToBowDeg, float relaxedAngle)
+        {
+            return mountArcs.Any(arc => arc.IsInArc(bearingRelativeToBowDeg, relaxedAngle));
         }
 
         public static Dictionary<MountLocation, string> mountLocationAcronymMap = new()
@@ -376,6 +386,15 @@ namespace NavalCombatCore
         public float EvaluateTorpedoThreatScore()
         {
             var barrels = mountLocationRecords.Sum(r => r.mounts * r.barrels);
+            return barrels * EvaluateTorpedoThreatPerBarrel();
+        }
+
+        public float EvaluateTorpedoThreatScore(float distanceYards, float bearingRelativeToBowDeg)
+        {
+            var setting = torpedoSettings.FirstOrDefault(setting => setting.rangeYards * CoreParameter.Instance.automaticTorpedoFiringRangeRelaxedCoef >= distanceYards);
+            if (setting == null)
+                return 0;
+            var barrels = mountLocationRecords.Where(m => m.IsInArc(bearingRelativeToBowDeg)).Sum(m => m.mounts * m.barrels);
             return barrels * EvaluateTorpedoThreatPerBarrel();
         }
     }
@@ -669,6 +688,11 @@ namespace NavalCombatCore
         public float EvaluateTorpedoThreatScore()
         {
             return torpedoSector.EvaluateTorpedoThreatScore();
+        }
+
+        public float EvaluateTorpedoThreatScore(float distanceYards, float bearingRelativeToBowDeg)
+        {
+            return torpedoSector.EvaluateTorpedoThreatScore(distanceYards, bearingRelativeToBowDeg);
         }
 
         public float EvaluateRapidFiringFirepowerScore()

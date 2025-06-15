@@ -218,6 +218,11 @@ namespace NavalCombatCore
             reloadedLoad = info.barrels;
         }
 
+        public void SetFiringTarget(ShipLog target)
+        {
+            firingTargetObjectId = target?.objectId;
+        }
+
         public void Step(float deltaSeconds)
         {
             // reload
@@ -653,7 +658,17 @@ namespace NavalCombatCore
 
         public void SetFiringTarget(ShipLog target)
         {
-            firingTargetObjectId = target?.objectId;
+            if (target == null)
+            {
+                firingTargetObjectId = null;
+                processSeconds = 0;
+                return;
+            }
+            if (target.objectId == firingTargetObjectId)
+            {
+                return;
+            }
+            firingTargetObjectId = target.objectId;
             processSeconds = 0;
         }
 
@@ -841,17 +856,17 @@ namespace NavalCombatCore
 
         public void SetFiringTargetAutomatic(ShipLog target) // For automatic fire
         {
-            foreach (var mnt in mountStatus)
-            {
-                mnt.SetFiringTarget(null);
-            }
-            foreach (var fcs in fireControlSystemStatusRecords)
-            {
-                fcs.SetTrackingTarget(null);
-            }
 
             if (target == null)
             {
+                foreach (var mnt in mountStatus)
+                {
+                    mnt.SetFiringTarget(null);
+                }
+                foreach (var fcs in fireControlSystemStatusRecords)
+                {
+                    fcs.SetTrackingTarget(null);
+                }
                 return;
             }
 
@@ -874,6 +889,7 @@ namespace NavalCombatCore
                 if (mnt.status == MountStatus.Operational &&
                     mnt.GetMountLocationRecordInfo().record.IsInArc(stats.observerToTargetBearingRelativeToBowDeg))
                 {
+                    // TODO: Check Range? Though effect of range shoul have been handled in the evaluation. 
                     mnt.SetFiringTarget(target);
                 }
             }
@@ -1422,6 +1438,64 @@ namespace NavalCombatCore
         RelativeToTarget,
     }
 
+    public class TorpedoBattery : IWTABattery
+    {
+        public ShipLog original;
+
+        public float EvaluateFirepowerScore(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots, float bearingRelativeToBowDeg)
+        {
+            var threat = original.EvaluateTorpedoThreatScore(distanceYards, bearingRelativeToBowDeg);
+
+            return threat * 200;
+        }
+        public IWTAObject GetCurrentFiringTarget()
+        {
+            var grouping = original.torpedoSectorStatus.mountStatus
+                .Where(m => m.GetFiringTarget() != null)
+                .GroupBy(m => m.GetFiringTarget())
+                .OrderByDescending(g => g.Count())
+                .FirstOrDefault();
+
+            return grouping?.Key;
+        }
+
+        public void SetFiringTargetAutomatic(ShipLog target)
+        {
+            if (target == null)
+            {
+                foreach (var mnt in original.torpedoSectorStatus.mountStatus)
+                    mnt.SetFiringTarget(null);
+                return;
+            }
+
+            // TODO: Enforce doctrine (torpedo should be handled in specialized doctrine I guess)
+            
+            var stats = MeasureStats.Measure(original, target);
+
+            foreach (var mnt in original.torpedoSectorStatus.mountStatus)
+            {
+                if (mnt.status == MountStatus.Operational)
+                {
+                    var recordInfo = mnt.GetTorpedoMountLocationRecordInfo();
+                    if (recordInfo.record.IsInArc(stats.observerToTargetBearingRelativeToBowDeg))
+                    {
+                        mnt.SetFiringTarget(target);
+                    }
+                }
+            }
+        }
+
+        void IWTABattery.SetFiringTarget(IWTAObject target) => SetFiringTargetAutomatic(target as ShipLog); // TODO: Handle other target
+
+        public void ResetFiringTarget()
+        {
+            foreach (var mount in original.torpedoSectorStatus.mountStatus)
+                mount.SetFiringTarget(null);
+        }
+
+        public int GetOverConcentrationCoef() => 0;
+    }
+
 
     public partial class ShipLog : IObjectIdLabeled, IDF4Model, IShipGroupMember, IWTAObject, IExtrapolable, ICollider
     {
@@ -1906,6 +1980,21 @@ namespace NavalCombatCore
             return torpedoBarrelsAvailable * shipClass.torpedoSector.EvaluateTorpedoThreatPerBarrel();
         }
 
+        public float EvaluateTorpedoThreatScore(float distanceYards, float bearingRelativeToBowDeg)
+        {
+            var sc = shipClass;
+            var classSector = sc.torpedoSector;
+            var setting = classSector.torpedoSettings.FirstOrDefault(setting => setting.rangeYards * CoreParameter.Instance.automaticTorpedoFiringRangeRelaxedCoef >= distanceYards);
+            if (setting == null)
+                return 0;
+            var barrels = torpedoSectorStatus.mountStatus
+                .Where(m => m.status == MountStatus.Operational && m.currentLoad > 0)
+                .Select(m => (m, m.GetTorpedoMountLocationRecordInfo().record))
+                .Where(p => p.Item2.IsInArcRelaxed(bearingRelativeToBowDeg, sc.emergencyTurnDegPer2Min / 2))
+                .Sum(p => Math.Min(p.m.currentLoad, p.Item2.barrels));
+            return barrels * classSector.EvaluateTorpedoThreatPerBarrel();
+        }
+
         public float EvaluateRapidFiringFirepowerScore()
         {
             return rapidFiringStatus.Sum(rf => rf.EvaluateFirepowerScore());
@@ -1967,6 +2056,14 @@ namespace NavalCombatCore
                 foreach (var b in rf.GetSideBatteries())
                     yield return b;
             }
+
+            if (shipClass.torpedoSector.torpedoSettings.Count > 0)
+            {
+                yield return new TorpedoBattery()
+                {
+                    original = this
+                };
+            } 
         }
 
         public float EvaluateBowFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 0);
@@ -1980,7 +2077,7 @@ namespace NavalCombatCore
         float IExtrapolable.GetRelativeToTargetDistanceYards() => relativeToTargetDistanceYards;
         float IExtrapolable.GetRelativeToTargetAzimuth() => relativeToTargetAzimuth;
         void IExtrapolable.SetDesiredHeadingDeg(float desiredHeadingDeg) => this.desiredHeadingDeg = desiredHeadingDeg;
-        
+
         public LatLon GetPosition() => position;
         // public float GetHeadingDeg() => headingDeg;
         public float GetLengthFoot() => shipClass.lengthFoot;

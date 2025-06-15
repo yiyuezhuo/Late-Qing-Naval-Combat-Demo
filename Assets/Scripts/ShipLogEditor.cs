@@ -75,6 +75,12 @@ namespace NavalCombatCore
         {
             get => sourceName.GetMergedName();
         }
+
+        [CreateProperty]
+        public string hitObjectDesc
+        {
+            get => GetHitObject()?.namedShip.name.GetMergedName() ?? "[Not Specified or Invalid]";
+        }
     }
 
     public partial class ShipLog : IPortraitViewerObservable

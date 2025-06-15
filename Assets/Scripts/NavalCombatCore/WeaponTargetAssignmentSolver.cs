@@ -74,6 +74,7 @@ namespace NavalCombatCore
             public Dictionary<TargetRecord, float> firepowerScoreMap = new();
             public TargetRecord assignedTarget;
             public int overConcentrationCoef = 1; // regular corrected fire: +1, barrage fire: +2, RF Batteries: +0 (DoB) or +2 (Literally)?
+            // TODO: Switch to float
         }
 
         public class DecisionRecord
@@ -92,7 +93,8 @@ namespace NavalCombatCore
                 original = s,
                 batteries = s.GetBatteries().Select(b => new BatteryRecord()
                 {
-                    original = b
+                    original = b,
+                    overConcentrationCoef = b.GetOverConcentrationCoef()
                 }).ToList()
             }).ToList();
 

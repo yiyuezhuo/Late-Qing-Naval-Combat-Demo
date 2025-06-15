@@ -56,7 +56,8 @@ public class GameManager : MonoBehaviour
         SelectingFiringTarget,
         SelectingFireControlSystemTarget,
         SelectingRapidFiringTarget,
-        SelectingTorpedoFiringTarget
+        SelectingTorpedoFiringTarget,
+        SelectingTargetMisc
     }
 
     State _state = State.Idle;
@@ -99,8 +100,8 @@ public class GameManager : MonoBehaviour
     }
 
     // public static string scenarioSuffix = "_Pungdo"; // temp hack
-    // public static string scenarioSuffix = "_Yalu";
-    public static string scenarioSuffix = "_Yalu_Torpedo";
+    public static string scenarioSuffix = "_Yalu";
+    // public static string scenarioSuffix = "_Yalu_Torpedo";
 
     public void Start()
     {
@@ -338,19 +339,23 @@ public class GameManager : MonoBehaviour
                     }
                 }
 
-                if (Input.GetKeyDown(KeyCode.F) && selectedShipLog != null) // Follow
+                if (Input.GetKeyDown(KeyCode.F) && selectedShipLog != null) // Set "Follow" Control
                 {
                     state = State.SelectingFollowedTarget;
                 }
 
-                if (Input.GetKeyDown(KeyCode.R) && selectedShipLog != null)
+                if (Input.GetKeyDown(KeyCode.R) && selectedShipLog != null) // Set "Relative To" Control
                 {
                     state = State.SelectingRelativeToTarget;
                 }
 
-                if (Input.GetKeyDown(KeyCode.L) && selectedShipLog != null) // ship Log
+                if (Input.GetKeyDown(KeyCode.L) && selectedShipLog != null) // open ship Log editor
                 {
                     ShipLogEditor.Instance.PopupWithSelection(selectedShipLog);
+                }
+                if (Input.GetKeyDown(KeyCode.Delete) && selectedShipLog != null) // toggle ship on map back up undeployed
+                {
+                    selectedShipLog.mapState = MapState.NotDeployed;
                 }
             }
             else if (state == State.SelectingInsertUnitPosition)
@@ -431,11 +436,13 @@ public class GameManager : MonoBehaviour
                     if (selectedMountStatusRecord != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
-                        if (targetShipLog != null)
-                        {
-                            selectedMountStatusRecord.firingTargetObjectId = targetShipLog.objectId;
-                            Debug.Log($"Set Firing Target: {selectedMountStatusRecord.objectId} -> {targetShipLog.objectId}");
-                        }
+                        selectedMountStatusRecord.firingTargetObjectId = targetShipLog?.objectId;
+                        Debug.Log($"Set Firing Target: {selectedMountStatusRecord.objectId} -> {targetShipLog?.objectId}");
+                        // if (targetShipLog != null)
+                        // {
+                        //     selectedMountStatusRecord.firingTargetObjectId = targetShipLog.objectId;
+                        //     Debug.Log($"Set Firing Target: {selectedMountStatusRecord.objectId} -> {targetShipLog.objectId}");
+                        // }
                     }
                 }
             }
@@ -448,11 +455,14 @@ public class GameManager : MonoBehaviour
                     if (selectedFireControlSystemStatusRecord != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
-                        if (targetShipLog != null)
-                        {
-                            selectedFireControlSystemStatusRecord.targetObjectId = targetShipLog.objectId;
-                            Debug.Log($"Set Fire Control System Target: {selectedFireControlSystemStatusRecord.objectId} -> {targetShipLog.objectId}");
-                        }
+                        selectedFireControlSystemStatusRecord.targetObjectId = targetShipLog?.objectId;
+                        Debug.Log($"Set Fire Control System Target: {selectedFireControlSystemStatusRecord.objectId} -> {targetShipLog?.objectId}");
+
+                        // if (targetShipLog != null)
+                        // {
+                        //     selectedFireControlSystemStatusRecord.targetObjectId = targetShipLog.objectId;
+                        //     Debug.Log($"Set Fire Control System Target: {selectedFireControlSystemStatusRecord.objectId} -> {targetShipLog.objectId}");
+                        // }
                     }
                 }
             }
@@ -465,11 +475,14 @@ public class GameManager : MonoBehaviour
                     if (selectedRapidFiringTargettingStatus != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
-                        if (targetShipLog != null)
-                        {
-                            selectedRapidFiringTargettingStatus.targetObjectId = targetShipLog.objectId;
-                            Debug.Log($"Set Rapid Firing Battery Target: {selectedRapidFiringTargettingStatus} -> {targetShipLog.objectId}");
-                        }
+                        selectedRapidFiringTargettingStatus.targetObjectId = targetShipLog?.objectId;
+                        Debug.Log($"Set Rapid Firing Battery Target: {selectedRapidFiringTargettingStatus} -> {targetShipLog?.objectId}");
+
+                        // if (targetShipLog != null)
+                        // {
+                        //     selectedRapidFiringTargettingStatus.targetObjectId = targetShipLog.objectId;
+                        //     Debug.Log($"Set Rapid Firing Battery Target: {selectedRapidFiringTargettingStatus} -> {targetShipLog.objectId}");
+                        // }
                     }
                 }
             }
@@ -482,11 +495,14 @@ public class GameManager : MonoBehaviour
                     if (selectedTorpedoMountStatusRecord != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
-                        if (targetShipLog != null)
-                        {
-                            selectedTorpedoMountStatusRecord.firingTargetObjectId = targetShipLog.objectId;
-                            Debug.Log($"Set Torpedo Tube Target: {selectedTorpedoMountStatusRecord} -> {targetShipLog.objectId}");
-                        }
+                        selectedTorpedoMountStatusRecord.firingTargetObjectId = targetShipLog?.objectId;
+                        Debug.Log($"Set Torpedo Tube Target: {selectedTorpedoMountStatusRecord} -> {targetShipLog?.objectId}");
+
+                        // if (targetShipLog != null)
+                        // {
+                        //     selectedTorpedoMountStatusRecord.firingTargetObjectId = targetShipLog.objectId;
+                        //     Debug.Log($"Set Torpedo Tube Target: {selectedTorpedoMountStatusRecord} -> {targetShipLog.objectId}");
+                        // }
                     }
                 }
             }

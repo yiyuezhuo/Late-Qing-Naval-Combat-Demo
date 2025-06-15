@@ -11,6 +11,15 @@ using MathNet.Numerics.Distributions;
 namespace NavalCombatCore
 {
 
+    public enum LaunchedTorpedoEndgameType
+    {
+        Undetermined,
+        SelfDestruction, // Collide with land and other things
+        OutOfRange,
+        Dud, // Similar to CMO Malfunction
+        Hit
+    }
+
     public partial class LaunchedTorpedo : IObjectIdLabeled, IDF4Model, ICollider
     {
         public string objectId { get; set; }
@@ -40,6 +49,12 @@ namespace NavalCombatCore
         public TorpedoDamageClass damageClass;
         public GlobalString sourceName;
 
+        // endgame
+        public LaunchedTorpedoEndgameType endgameType;
+        public string hitTargetObjectId;
+        public ShipLog GetHitObject() => EntityManager.Instance.Get<ShipLog>(hitTargetObjectId);
+        public float inflictDamagePoint;
+
         public void StepMoveToNewPosition(float deltaSeconds)
         {
             var distNm = speedKnots / 3600 * deltaSeconds;
@@ -52,6 +67,7 @@ namespace NavalCombatCore
             if (CoreParameter.Instance.checkLandCollision)
             {
                 newPositionBlocked = ElevationService.Instance.GetElevation(newPosition) > 0;
+                endgameType = LaunchedTorpedoEndgameType.SelfDestruction;
             }
 
             if (!newPositionBlocked)
@@ -65,32 +81,47 @@ namespace NavalCombatCore
                     var damageClass = classSector.damageClass;
                     var pistolType = classSector.pistolType;
                     var dudProb = classSector.dudProbability;
-
-                    var torpedoDamage = RuleChart.RollTorpedoDamage(damageClass, pistolType);
-
-                    var armorEffInch = 0f;
-                    var p = RandomUtils.rand.NextDouble();
-                    if (p <= 0.45)
-                    {
-                        armorEffInch = collidedShipLog.shipClass.armorRating.GetArmorEffectiveInch(ArmorLocation.MainBelt);
-                    }
-                    else if (p <= 0.75)
-                    {
-                        armorEffInch = collidedShipLog.shipClass.armorRating.GetArmorEffectiveInch(ArmorLocation.BeltEnd);
-                    }
-
-                    if (armorEffInch > 0)
-                    {
-                        var adjustment = RuleChart.GetArmorAdjustment(armorEffInch);
-                        torpedoDamage = Math.Max(0, torpedoDamage - armorEffInch);
-                    }
-
-                    collidedShipLog.damagePoint += torpedoDamage;
-
-                    var logger = ServiceLocator.Get<ILoggerService>();
-                    logger.LogWarning($"Torpedo {objectId} collides ship {collidedShipLog.namedShip.name.GetMergedName()} armorEffInch={armorEffInch} torpedoDamage={torpedoDamage}");
-
+                    
                     newPositionBlocked = true;
+
+                    if (RandomUtils.rand.NextDouble() <= dudProb)
+                    {
+                        endgameType = LaunchedTorpedoEndgameType.Dud;
+
+                        var logger = ServiceLocator.Get<ILoggerService>();
+                        logger.LogWarning($"Torpedo {objectId} collides ship {collidedShipLog.namedShip.name.GetMergedName()} Dud (Prob={dudProb})");
+                    }
+                    else
+                    {
+                        endgameType = LaunchedTorpedoEndgameType.Hit;
+
+                        var torpedoDamage = RuleChart.RollTorpedoDamage(damageClass, pistolType);
+
+                        var armorEffInch = 0f;
+                        var p = RandomUtils.rand.NextDouble();
+                        if (p <= 0.45)
+                        {
+                            armorEffInch = collidedShipLog.shipClass.armorRating.GetArmorEffectiveInch(ArmorLocation.MainBelt);
+                        }
+                        else if (p <= 0.75)
+                        {
+                            armorEffInch = collidedShipLog.shipClass.armorRating.GetArmorEffectiveInch(ArmorLocation.BeltEnd);
+                        }
+
+                        if (armorEffInch > 0)
+                        {
+                            var adjustment = RuleChart.GetArmorAdjustment(armorEffInch);
+                            torpedoDamage = Math.Max(0, torpedoDamage - armorEffInch);
+                        }
+
+                        collidedShipLog.damagePoint += torpedoDamage;
+
+                        inflictDamagePoint = torpedoDamage;
+                        hitTargetObjectId = collidedShipLog.objectId;
+
+                        var logger = ServiceLocator.Get<ILoggerService>();
+                        logger.LogWarning($"Torpedo {objectId} collides ship {collidedShipLog.namedShip.name.GetMergedName()} armorEffInch={armorEffInch} torpedoDamage={torpedoDamage}");
+                    }
                 }
             }
 
@@ -106,6 +137,7 @@ namespace NavalCombatCore
             if (movedDistanceYards > maxRangeYards)
             {
                 mapState = MapState.Destroyed;
+                endgameType = LaunchedTorpedoEndgameType.OutOfRange;
             }
         }
     }

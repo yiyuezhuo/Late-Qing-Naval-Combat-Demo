@@ -324,6 +324,11 @@ namespace NavalCombatCore
                 }
             }
         }
+
+        public static bool IsAngleInArcRelaxed(float angle, float startAngle, float sweepAngle, float relaxAngle)
+        {
+            return IsAngleInArc(angle, startAngle - relaxAngle, sweepAngle + 2 * relaxAngle);
+        }
     }
 
     public class InterceptionPointSolver

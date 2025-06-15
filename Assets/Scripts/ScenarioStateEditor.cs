@@ -176,7 +176,8 @@ public class ScenarioStateEditor : HideableDocument<ScenarioStateEditor>
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>
         {
-            var content = GameManager.Instance.navalGameState.ScenarioStateToXML();
+            // var content = GameManager.Instance.navalGameState.ScenarioStateToXML();
+            var content = NavalGameState.Instance.ScenarioStateToXML();
             IOManager.Instance.SaveTextFile(content, "ScenarioState" + GameManager.scenarioSuffix, "xml");
         };
 

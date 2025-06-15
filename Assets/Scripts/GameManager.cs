@@ -21,7 +21,9 @@ public interface IColliderRootProvider
 
 public class GameManager : MonoBehaviour
 {
-    public NavalGameState navalGameState = NavalGameState.Instance;
+    [CreateProperty]
+    public NavalGameState navalGameState => NavalGameState.Instance;
+
     public GameObject shipUnitPrefab;
     public Transform earthTransform;
 
@@ -101,9 +103,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // public static string scenarioSuffix = "_Pungdo"; // temp hack
-    public static string scenarioSuffix = "_Yalu.xml";
+    public static string scenarioSuffix = "_Pungdo.xml"; // temp hack
+    // public static string scenarioSuffix = "_Yalu.xml";
     // public static string scenarioSuffix = "_Yalu_Torpedo";
+    public static string initialScenName = "Battle of Yalu River.scen.xml";
 
     public void Start()
     {
@@ -113,33 +116,6 @@ public class GameManager : MonoBehaviour
         EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
 
         StartCoroutine(LoadScenario());
-
-        // Func<string, string> _load = (string name) =>
-        // {
-        //     var path = "Scenarios/First Sino-Japanese War/" + name;
-        //     return Resources.Load<TextAsset>(path).text;
-        // };
-
-        // var leaderXml = _load("Leaders");
-        // navalGameState.LeadersFromXML(leaderXml);
-
-        // var shipClassXml = _load("ShipClasses");
-        // navalGameState.ShipClassesFromXML(shipClassXml);
-
-        // var namedShipsXml = _load("NamedShips");
-        // navalGameState.NamedShipsFromXML(namedShipsXml);
-
-        // var shipLogsXml = _load("ShipLogs" + scenarioSuffix);
-        // navalGameState.ShipLogsFromXML(shipLogsXml);
-
-        // var rootShipGroupsXml = _load("ShipGroups" + scenarioSuffix);
-        // navalGameState.ShipGroupsFromXML(rootShipGroupsXml);
-
-        // navalGameState.ScenarioStateFromXML(_load("ScenarioState" + scenarioSuffix));
-
-        // OOBEditor.Instance.oobTreeView.ExpandAll();
-
-        // NavalGameState.Instance.ResetAndRegisterAll(); // Note FromXml call has call it many times.
     }
 
     IEnumerator FetchScenarioFile(string name, Action<string> callback)

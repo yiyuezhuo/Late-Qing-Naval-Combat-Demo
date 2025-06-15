@@ -29,7 +29,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             root = root,
             template = streamingAssetReferenceDialogDocument,
-            templateDataSource = StreamingAssetReference.Instance
+            // templateDataSource = StreamingAssetReference.Instance
+            templateDataSource = ReferenceManager.Instance
         };
 
         tempDialog.Popup();

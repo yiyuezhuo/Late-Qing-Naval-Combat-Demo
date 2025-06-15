@@ -39,7 +39,8 @@ public class LeaderEditor : HideableDocument<LeaderEditor>
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>
         {
-            var content = GameManager.Instance.navalGameState.LeadersToXML();
+            // var content = GameManager.Instance.navalGameState.LeadersToXML();
+            var content = NavalGameState.Instance.LeadersToXML();
             IOManager.Instance.SaveTextFile(content, "Leaders", "xml");
         };
 
@@ -55,6 +56,8 @@ public class LeaderEditor : HideableDocument<LeaderEditor>
     {
         IOManager.Instance.textLoaded -= OnLeadersXMLLoaded;
 
-        GameManager.Instance.navalGameState.LeadersFromXML(text);
+        // GameManager.Instance.navalGameState.LeadersFromXML(text);
+        NavalGameState.Instance.LeadersFromXML(text);
+        NavalGameState.Instance.ResetAndRegisterAll();
     }
 }

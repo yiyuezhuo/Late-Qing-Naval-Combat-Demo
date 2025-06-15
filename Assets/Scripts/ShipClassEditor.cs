@@ -119,7 +119,8 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>
         {
-            var content = GameManager.Instance.navalGameState.ShipClassesToXML();
+            // var content = GameManager.Instance.navalGameState.ShipClassesToXML();
+            var content = NavalGameState.Instance.ShipClassesToXML();
             IOManager.Instance.SaveTextFile(content, "ShipClasses", "xml");
         };
 
@@ -172,6 +173,8 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
     {
         IOManager.Instance.textLoaded -= OnShipClassesXMLLoaded;
 
-        GameManager.Instance.navalGameState.ShipClassesFromXML(text);
+        // GameManager.Instance.navalGameState.ShipClassesFromXML(text);
+        NavalGameState.Instance.ShipClassesFromXML(text);
+        NavalGameState.Instance.ResetAndRegisterAll();
     }
 }

@@ -5,9 +5,7 @@ using TMPro;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Jint.Runtime.Debugger;
-using System.Runtime.InteropServices;
+using System.Collections;
 
 public class TopTabs : SingletonDocument<TopTabs>
 {
@@ -69,7 +67,7 @@ public class TopTabs : SingletonDocument<TopTabs>
             {
                 // NavalGameState = NavalGameState.Instance,
                 streamingAssetReference = StreamingAssetReference.Instance,
-                navalGameState = StreamingAssetReference.Instance.Detach(),
+                navalGameState = StreamingAssetReference.Instance.Detach(NavalGameState.Instance),
                 viewState = CaptureViewState(),
             };
 
@@ -145,9 +143,26 @@ public class TopTabs : SingletonDocument<TopTabs>
         // if (fullState.streamingAssetReference != null)
         // {
         // }
+        // fullState.streamingAssetReference.TryToCompleteFromStreamingAssetReference(fullState.navalGameState);
+        // StreamingAssetReference.UpdateInstance(fullState.streamingAssetReference);
+
+        // LoadViewState(fullState.viewState);
+        // NavalGameState.UpdateInstance(fullState.navalGameState);
+
+        // StreamingAssetReference.Instance.TryToCompleteFromStreamingAssetReference();
+        // NavalGameState.Instance.UpdateTo(fullState.navalGameState);
+        StartCoroutine(OnFullStateXMLLoadedCoroutine(fullState));
+    }
+
+    IEnumerator OnFullStateXMLLoadedCoroutine(FullState fullState)
+    {
+        yield return fullState.streamingAssetReference.TryToCompleteFromStreamingAssetReference(fullState.navalGameState);
+        StreamingAssetReference.UpdateInstance(fullState.streamingAssetReference);
 
         LoadViewState(fullState.viewState);
-        NavalGameState.Instance.UpdateTo(fullState.navalGameState);
+        NavalGameState.UpdateInstance(fullState.navalGameState);
+
+        Debug.Log("OnFullStateXMLLoadedCoroutine");
     }
 
     public ViewState CaptureViewState()

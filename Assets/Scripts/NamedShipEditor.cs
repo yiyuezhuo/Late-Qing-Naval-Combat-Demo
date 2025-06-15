@@ -44,7 +44,8 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>
         {
-            var content = GameManager.Instance.navalGameState.NamedShipsToXML();
+            // var content = GameManager.Instance.navalGameState.NamedShipsToXML();
+            var content = NavalGameState.Instance.NamedShipsToXML();
             IOManager.Instance.SaveTextFile(content, "NamedShips", "xml");
         };
 
@@ -97,7 +98,9 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
     {
         IOManager.Instance.textLoaded -= OnNamedShipsXMLLoaded;
 
-        GameManager.Instance.navalGameState.NamedShipsFromXML(text);
+        // GameManager.Instance.navalGameState.NamedShipsFromXML(text);
+        NavalGameState.Instance.NamedShipsFromXML(text);
+        NavalGameState.Instance.ResetAndRegisterAll();
     }
 
 }

@@ -4,7 +4,6 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
 using System.Linq;
-using Unity.VisualScripting;
 using MathNet.Numerics;
 
 
@@ -34,10 +33,17 @@ namespace NavalCombatCore
 
     public class NavalGameState
     {
+        // [XmlElement(IsNullable = true)]
+        // [XmlArray(IsNullable = true)]
         public List<Leader> leaders = new();
+
+        // [XmlArray(IsNullable = true)]
         public List<ShipClass> shipClasses = new();
         // public List<ShipLog> shipLogs = new() { new() };
+
+        // [XmlArray(IsNullable = true)]
         public List<NamedShip> namedShips = new();
+
         public List<ShipLog> shipLogs = new();
         // public List<ShipGroup> rootShipGroups = new();
         public List<ShipGroup> shipGroups = new();
@@ -59,6 +65,16 @@ namespace NavalCombatCore
                 }
                 return _instance;
             }
+        }
+        public static void UpdateInstance(NavalGameState newInstance)
+        {
+            _instance = newInstance;
+
+            Instance.ResetAndRegisterAll();
+            Instance.SyncShipLogParentWithGroupHierarchy();
+
+            // rootShipGroupsChanged?.Invoke(this, rootShipGroups);
+            Instance.shipGroupsChanged?.Invoke(Instance, Instance.shipGroups);
         }
 
         public void ResetAndRegisterAll()
@@ -97,7 +113,7 @@ namespace NavalCombatCore
         {
             leaders = XmlUtils.FromXML<List<Leader>>(xml);
 
-            ResetAndRegisterAll();
+            // ResetAndRegisterAll();
         }
 
         public string ShipClassesToXML()
@@ -110,7 +126,7 @@ namespace NavalCombatCore
         {
             shipClasses = XmlUtils.FromXML<List<ShipClass>>(xml);
 
-            ResetAndRegisterAll();
+            // ResetAndRegisterAll();
         }
 
         public string NamedShipsToXML()
@@ -122,7 +138,7 @@ namespace NavalCombatCore
         {
             namedShips = XmlUtils.FromXML<List<NamedShip>>(xml);
 
-            ResetAndRegisterAll();
+            // ResetAndRegisterAll();
         }
 
         public string ShipLogsToXML()
@@ -134,7 +150,7 @@ namespace NavalCombatCore
         {
             shipLogs = XmlUtils.FromXML<List<ShipLog>>(xml);
 
-            ResetAndRegisterAll();
+            // ResetAndRegisterAll();
         }
 
         public string ShipGroupsToXML()
@@ -187,19 +203,19 @@ namespace NavalCombatCore
             }
         }
 
-        public void UpdateTo(NavalGameState newState)
-        {
-            shipClasses = newState.shipClasses;
-            shipLogs = newState.shipLogs;
-            // rootShipGroups = newState.rootShipGroups;
-            shipGroups = newState.shipGroups;
+        // public void UpdateTo(NavalGameState newState)
+        // {
+        //     shipClasses = newState.shipClasses;
+        //     shipLogs = newState.shipLogs;
+        //     // rootShipGroups = newState.rootShipGroups;
+        //     shipGroups = newState.shipGroups;
 
-            ResetAndRegisterAll();
-            SyncShipLogParentWithGroupHierarchy();
+        //     ResetAndRegisterAll();
+        //     SyncShipLogParentWithGroupHierarchy();
 
-            // rootShipGroupsChanged?.Invoke(this, rootShipGroups);
-            shipGroupsChanged?.Invoke(this, shipGroups);
-        }
+        //     // rootShipGroupsChanged?.Invoke(this, rootShipGroups);
+        //     shipGroupsChanged?.Invoke(this, shipGroups);
+        // }
 
         public IEnumerable<IShipGroupMember> GetShipGroupMembersRecursive()
         {

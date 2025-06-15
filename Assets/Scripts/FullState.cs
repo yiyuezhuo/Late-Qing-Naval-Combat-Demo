@@ -21,13 +21,20 @@ public class StreamingAssetReference
     // public string shipGroupsPath;
     // scenarioState, launchedTorpedos, weaponSimulationAssignmentClock has little reusability so it's directly tracked by NavalGameState and cannot be replaced by external file.
 
+    public static void UpdateInstance(StreamingAssetReference newInstance)
+    {
+        instance = newInstance;
+    }
+
     IEnumerator FetchScenarioFile(string name, Action<string> callback)
     {
         var root = Application.streamingAssetsPath + "/Scenarios/First Sino-Japanese War/";
-        var request = UnityWebRequest.Get(root + name);
+        var path = root + name;
+        var request = UnityWebRequest.Get(path);
         yield return request.SendWebRequest();
         if (request.result == UnityWebRequest.Result.Success)
         {
+            Debug.Log($"Success: {path}");
             callback(request.downloadHandler.text);
         }
         else
@@ -38,25 +45,38 @@ public class StreamingAssetReference
 
     public IEnumerator FetchScenarioFileIfApplicable(object obj, string name, Action<string> callback)
     {
-        if (obj == null && name != null && name != "")
+        // Debug.Log($"obj={obj}, obj==null={obj==null} name={name}");
+
+        var objCanFill = obj == null;
+        if (!objCanFill)
         {
+            var list = obj as IList;
+            if (list != null && list.Count == 0)
+            {
+                objCanFill = true;
+            }
+        }
+
+        if (objCanFill && name != null && name != "")
+        {
+            // Debug.Log($"FetchScenarioFile Before: {name} {callback}");
             yield return FetchScenarioFile(name, callback);
+            // Debug.Log($"FetchScenarioFile After: {name} {callback}");
         }
     }
 
-    public IEnumerator TryToCompleteFromStreamingAssetReference()
+    public IEnumerator TryToCompleteFromStreamingAssetReference(NavalGameState s)
     {
-        var s = NavalGameState.Instance;
-
         yield return FetchScenarioFileIfApplicable(s.leaders, leadersPath, s.LeadersFromXML);
         yield return FetchScenarioFileIfApplicable(s.shipClasses, shipClassesPath, s.ShipClassesFromXML);
         yield return FetchScenarioFileIfApplicable(s.namedShips, namedShipsPath, s.NamedShipsFromXML);
+        // Debug.Log("TryToCompleteFromStreamingAssetReference End");
     }
 
-    public NavalGameState Detach()
+    public NavalGameState Detach(NavalGameState _s)
     {
         // deep copy
-        var s = XmlUtils.FromXML<NavalGameState>(XmlUtils.ToXML<NavalGameState>(NavalGameState.Instance));
+        var s = XmlUtils.FromXML<NavalGameState>(XmlUtils.ToXML(_s));
 
         if (leadersPath != null && leadersPath != "")
             s.leaders = null;

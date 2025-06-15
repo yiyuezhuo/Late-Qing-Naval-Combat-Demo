@@ -46,6 +46,9 @@ public class TopTabs : SingletonDocument<TopTabs>
         var setToFormationPositionButton = root.Q<Button>("SetToFormationPositionButton");
         setToFormationPositionButton.clicked += SetToFormationPosition;
 
+        var streamingAssetReferenceDialogButton = root.Q<Button>("StreamingAssetReferenceDialogButton");
+        streamingAssetReferenceDialogButton.clicked += DialogRoot.Instance.PopupStreamingAssetReferenceDialog;
+
         playerDropdownField = root.Q<DropdownField>("PlayerDropdownField");
 
         NavalGameState.Instance.shipGroupsChanged -= OnRootShipGroupsChanged;
@@ -61,9 +64,12 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         saveButton.clicked += () =>
         {
+            
             var fullState = new FullState()
             {
-                navalGameState = NavalGameState.Instance,
+                // NavalGameState = NavalGameState.Instance,
+                streamingAssetReference = StreamingAssetReference.Instance,
+                navalGameState = StreamingAssetReference.Instance.Detach(),
                 viewState = CaptureViewState(),
             };
 
@@ -136,6 +142,10 @@ public class TopTabs : SingletonDocument<TopTabs>
         IOManager.Instance.textLoaded -= OnFullStateXMLLoaded;
 
         var fullState = FullState.FromXML(text);
+        // if (fullState.streamingAssetReference != null)
+        // {
+        // }
+
         LoadViewState(fullState.viewState);
         NavalGameState.Instance.UpdateTo(fullState.navalGameState);
     }

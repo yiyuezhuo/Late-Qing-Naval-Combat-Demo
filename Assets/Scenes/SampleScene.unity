@@ -2621,6 +2621,7 @@ MonoBehaviour:
   leaderSelectorDocument: {fileID: 9197481963319205126, guid: 22df8a3a20cf39245be9903bee3fae44, type: 3}
   namedShipSelectorDocument: {fileID: 9197481963319205126, guid: 0cbfd23cf85f99b47a456cb23aa45057, type: 3}
   messageDialogDocument: {fileID: 9197481963319205126, guid: 7a2a6b4bf5bdf42488d2d2f6c8dd3ceb, type: 3}
+  streamingAssetReferenceDialogDocument: {fileID: 9197481963319205126, guid: 4c9fd23c4a086074cb6ef7ea79164100, type: 3}
 --- !u!114 &2024837593
 MonoBehaviour:
   m_ObjectHideFlags: 0

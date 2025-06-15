@@ -28,6 +28,7 @@
                     <ui:Button text="Launched Torpedo Editor" name="LaunchedTorpedoEditorButton" />
                     <ui:Button text="JS Script Console" name="JSScriptConsoleButton" />
                     <ui:Button text=" Set to Formation Position" name="SetToFormationPositionButton" />
+                    <ui:Button text="Streaming Asset Reference" name="StreamingAssetReferenceDialogButton" />
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Preference">

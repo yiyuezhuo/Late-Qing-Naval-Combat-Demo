@@ -9,6 +9,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset leaderSelectorDocument;
     public VisualTreeAsset namedShipSelectorDocument;
     public VisualTreeAsset messageDialogDocument;
+    public VisualTreeAsset streamingAssetReferenceDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,6 +21,18 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupStreamingAssetReferenceDialog()
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = streamingAssetReferenceDialogDocument,
+            templateDataSource = StreamingAssetReference.Instance
+        };
+
+        tempDialog.Popup();
     }
 
     public void PopupMessageDialog(string message, string title = null)

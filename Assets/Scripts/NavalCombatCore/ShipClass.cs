@@ -194,6 +194,11 @@ namespace NavalCombatCore
         {
             return MeasureUtils.IsAngleInArcRelaxed(bearingRelativeToBowDeg, startDeg, CoverageDeg, relaxedAngle);
         }
+
+        public float AngleDifferenceFromArc(float bearingRelativeToBowDeg)
+        {
+            return MeasureUtils.AngleDifferenceFromArc(bearingRelativeToBowDeg, startDeg, CoverageDeg);
+        }
     }
 
     public class MountLocationRecord : IObjectIdLabeled
@@ -218,6 +223,11 @@ namespace NavalCombatCore
         public bool IsInArcRelaxed(float bearingRelativeToBowDeg, float relaxedAngle)
         {
             return mountArcs.Any(arc => arc.IsInArc(bearingRelativeToBowDeg, relaxedAngle));
+        }
+
+        public float AngleDifferenceFromArc(float bearingRelativeToBowDeg)
+        {
+            return mountArcs.Min(arc => arc.AngleDifferenceFromArc(bearingRelativeToBowDeg));
         }
 
         public static Dictionary<MountLocation, string> mountLocationAcronymMap = new()

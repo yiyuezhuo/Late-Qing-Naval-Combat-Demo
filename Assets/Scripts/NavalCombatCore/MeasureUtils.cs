@@ -329,6 +329,29 @@ namespace NavalCombatCore
         {
             return IsAngleInArc(angle, startAngle - relaxAngle, sweepAngle + 2 * relaxAngle);
         }
+
+        public static float AngleDifferenceFromArc(float angle, float startAngle, float sweepAngle)
+        {
+            // Normalize all angles to 0-360 range
+            angle = NormalizeAngle(angle);
+            startAngle = NormalizeAngle(startAngle);
+            
+            // If the angle is inside the arc, return 0 difference
+            if (IsAngleInArc(angle, startAngle, sweepAngle))
+            {
+                return 0f;
+            }
+            
+            // Calculate the end angle of the arc
+            float endAngle = NormalizeAngle(startAngle + sweepAngle);
+            
+            // Calculate the difference to both start and end angles
+            float diffToStart = Math.Min(Math.Abs(angle - startAngle), 360 - Math.Abs(angle - startAngle));
+            float diffToEnd = Math.Min(Math.Abs(angle - endAngle), 360 - Math.Abs(angle - endAngle));
+            
+            // Return the smaller difference
+            return Math.Min(diffToStart, diffToEnd);
+        }
     }
 
     public class InterceptionPointSolver

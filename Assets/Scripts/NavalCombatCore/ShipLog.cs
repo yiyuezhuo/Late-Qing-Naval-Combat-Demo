@@ -1471,13 +1471,15 @@ namespace NavalCombatCore
             // TODO: Enforce doctrine (torpedo should be handled in specialized doctrine I guess)
             
             var stats = MeasureStats.Measure(original, target);
+            var relaxedAngle = original.shipClass.emergencyTurnDegPer2Min / 2;
 
             foreach (var mnt in original.torpedoSectorStatus.mountStatus)
             {
                 if (mnt.status == MountStatus.Operational)
                 {
                     var recordInfo = mnt.GetTorpedoMountLocationRecordInfo();
-                    if (recordInfo.record.IsInArc(stats.observerToTargetBearingRelativeToBowDeg))
+
+                    if (recordInfo.record.IsInArcRelaxed(stats.observerToTargetBearingRelativeToBowDeg, relaxedAngle))
                     {
                         mnt.SetFiringTarget(target);
                     }
@@ -1984,15 +1986,25 @@ namespace NavalCombatCore
         {
             var sc = shipClass;
             var classSector = sc.torpedoSector;
-            var setting = classSector.torpedoSettings.FirstOrDefault(setting => setting.rangeYards * CoreParameter.Instance.automaticTorpedoFiringRangeRelaxedCoef >= distanceYards);
+            // AngleDifferenceFromArc
+            var setting = classSector.torpedoSettings.LastOrDefault();
             if (setting == null)
                 return 0;
-            var barrels = torpedoSectorStatus.mountStatus
+
+            var rangeCoef = 1 - distanceYards / (100 + setting.rangeYards * CoreParameter.Instance.automaticTorpedoFiringRangeRelaxedCoef);
+            if (rangeCoef <= 0)
+                return 0;
+
+            var effBarrels = torpedoSectorStatus.mountStatus
                 .Where(m => m.status == MountStatus.Operational && m.currentLoad > 0)
                 .Select(m => (m, m.GetTorpedoMountLocationRecordInfo().record))
                 .Where(p => p.Item2.IsInArcRelaxed(bearingRelativeToBowDeg, sc.emergencyTurnDegPer2Min / 2))
-                .Sum(p => Math.Min(p.m.currentLoad, p.Item2.barrels));
-            return barrels * classSector.EvaluateTorpedoThreatPerBarrel();
+                .Sum(
+                    p =>
+                        Math.Min(p.m.currentLoad, p.Item2.barrels) *
+                        (1 - p.Item2.AngleDifferenceFromArc(bearingRelativeToBowDeg) / 360)
+                );
+            return rangeCoef * effBarrels * classSector.EvaluateTorpedoThreatPerBarrel();
         }
 
         public float EvaluateRapidFiringFirepowerScore()

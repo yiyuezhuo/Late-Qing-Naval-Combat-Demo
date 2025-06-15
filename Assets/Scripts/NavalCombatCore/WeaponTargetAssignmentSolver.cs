@@ -143,9 +143,10 @@ namespace NavalCombatCore
                         {
                             // var stats = shooter.measurements[target];
                             // var firepowerScore = battery.original.EvaluateFirepowerScore(stats.distanceYards, stats.targetPresentAspectFromObserver, target.speedKnots, stats.observerToTargetViewBearingRelativeToBowDeg);
-                            var firepowerScore = battery.firepowerScoreMap[target];
+                            var tryAddedFirepowerScore = battery.firepowerScoreMap[target];
+                            var tryAddedOverconcentrationScore = battery.overConcentrationCoef;
                             var gain = GetTargettingScoreGain(target.selfFirepowerScore, target.survivability,
-                                    target.underFirepower, target.overConcentrationScore, firepowerScore);
+                                    target.underFirepower, target.overConcentrationScore, tryAddedFirepowerScore, tryAddedOverconcentrationScore);
                             if (battery.currentTarget == target)
                             {
                                 gain *= 1 + changeTargetCoef;
@@ -157,7 +158,7 @@ namespace NavalCombatCore
                                 battery = battery,
                                 target = target,
                                 gain = gain,
-                                firepowerScore = firepowerScore
+                                firepowerScore = tryAddedFirepowerScore
                             };
                             decisionRecords.Add(decisionRecord);
                         }
@@ -194,26 +195,27 @@ namespace NavalCombatCore
             }
         }
 
-        public float GetTargettingScore(float targetSelfFirepower, float targetSurvivability, float targetUnderFirepower, int batteriesCommitted)
+        public float GetTargettingScore(float targetSelfFirepower, float targetSurvivability, float targetUnderFirepower, int overConcentrationScore)
         {
             var score = targetSelfFirepower / (1 + targetSurvivability) * targetUnderFirepower;
-            if (batteriesCommitted == 1)
+            if (overConcentrationScore == 1)
             {
                 score *= 1 + underfireCoef;
             }
-            else if (batteriesCommitted >= 2)
+            else if (overConcentrationScore >= 2)
             {
-                score *= 1 - overconcentrateCoef * (batteriesCommitted - 1);
+                score *= 1 - overconcentrateCoef * (overConcentrationScore - 1);
             }
             return score;
         }
 
-        public float GetTargettingScoreGain(float targetSelfFirepower, float targetSurvivability, float currentTargetUnderFirepower, int currentBatteriesCommitted, float newBatteryFirepower)
+        public float GetTargettingScoreGain(float targetSelfFirepower, float targetSurvivability, float currentTargetUnderFirepower, int currentOverConcentrationScore,
+            float newBatteryFirepower, int tryAddedOverconcentrationScore)
         {
             var currentScore = GetTargettingScore(targetSelfFirepower, targetSurvivability,
-                currentTargetUnderFirepower, currentBatteriesCommitted);
+                currentTargetUnderFirepower, currentOverConcentrationScore);
             var newScore = GetTargettingScore(targetSelfFirepower, targetSurvivability,
-                currentTargetUnderFirepower + newBatteryFirepower, currentBatteriesCommitted + 1);
+                currentTargetUnderFirepower + newBatteryFirepower, currentOverConcentrationScore + tryAddedOverconcentrationScore);
             return newScore - currentScore;
         }
     }

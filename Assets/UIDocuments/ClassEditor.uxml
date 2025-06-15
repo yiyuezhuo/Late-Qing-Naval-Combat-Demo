@@ -131,7 +131,7 @@
                                                     <ui:DataBinding property="value" data-source-path="damageClass" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:EnumField>
-                                            <ui:Slider label="Dub Probability" value="0.5" high-value="1">
+                                            <ui:Slider label="Dub Probability" value="0.5" high-value="1" show-input-field="true">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="dudProbability" binding-mode="TwoWay" />
                                                 </Bindings>

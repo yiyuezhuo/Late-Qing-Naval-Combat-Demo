@@ -10,7 +10,7 @@ namespace NavalCombatCore
         public bool checkLandCollision = true;
         public bool checkShipCollision = true;
 
-        public float automaticTorpedoFiringRangeRelaxedCoef = 5;
+        public float automaticTorpedoFiringRangeRelaxedCoef = 2.5f;
         // public float automaticTorpedoFiringRelaxedAngle = 60; // Or dynamic resolved using standard or emergency turn?
     }
 }

@@ -20,6 +20,7 @@
                     <ui:Button text="Save" name="SaveButton" />
                     <ui:Button text="Load" name="LoadButton" />
                     <ui:Button text="Selection" name="SelectionBuiltinButton" />
+                    <ui:Button text="Go to Main Menu" name="GoToMainMenuButton" />
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Editor">

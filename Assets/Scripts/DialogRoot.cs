@@ -3,12 +3,15 @@ using NavalCombatCore;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Linq;
+using System;
+using UnityEngine.SceneManagement;
 
 public class ScenarioPickerDialog // ScenarioPicker's root data source
 {
     public List<string> scenarioNames = new();
 
     public string currentDescription;
+    public Action<string> callbackOnceScenarioNameGet;
 
     public void Bind(TempDialog tempDialog)
     {
@@ -40,7 +43,7 @@ public class ScenarioPickerDialog // ScenarioPicker's root data source
 
                             var centerLat = fullState.viewState.GetCenterLatitude();
                             var centerLon = fullState.viewState.GetCenterLongitude();
-                            
+
                             var dateTimeLocal = fullState.navalGameState.scenarioState.GetLocalDateTime(centerLon);
                             var lines = new List<string>()
                             {
@@ -62,7 +65,8 @@ public class ScenarioPickerDialog // ScenarioPicker's root data source
             var scenarioName = scenarioListView.selectedItem as string;
             if (scenarioName != null)
             {
-                GameManager.Instance.StartLoadScenarioCoroutine(scenarioName);
+                // GameManager.Instance.StartLoadScenarioCoroutine(scenarioName);
+                callbackOnceScenarioNameGet(scenarioName);
             }
         };
     }
@@ -89,14 +93,41 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     }
 
-    public void PopupScenarioPickerDialog()
+    public void PopupScenarioPickerDialogForScenarioSwitchInGame()
     {
         ManifestModelCache.Instance.CommitTask(manifestModel =>
         {
             var scenarioNames = manifestModel.scenarioFiles.Select(path => path.Split("/").Last()).ToList();
             var scenarioPickerDialog = new ScenarioPickerDialog()
             {
-                scenarioNames = scenarioNames
+                scenarioNames = scenarioNames,
+                callbackOnceScenarioNameGet = GameManager.Instance.StartLoadScenarioCoroutine
+            };
+            var tempDialog = new TempDialog()
+            {
+                root = root,
+                template = scenarioPickerDialogDocument,
+                templateDataSource = scenarioPickerDialog
+            };
+            scenarioPickerDialog.Bind(tempDialog);
+
+            tempDialog.Popup();
+        });
+    }
+
+    public void PopupScenarioPickerDialogForSwitchingSceneWithSelectedScenario()
+    {
+        ManifestModelCache.Instance.CommitTask(manifestModel =>
+        {
+            var scenarioNames = manifestModel.scenarioFiles.Select(path => path.Split("/").Last()).ToList();
+            var scenarioPickerDialog = new ScenarioPickerDialog()
+            {
+                scenarioNames = scenarioNames,
+                callbackOnceScenarioNameGet = scenarioName =>
+                {
+                    GameManager.initialScenName = scenarioName;
+                    SceneManager.LoadScene("Naval Game");
+                }
             };
             var tempDialog = new TempDialog()
             {

@@ -21,6 +21,8 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 
     public void OnDestroy()
     {
+        Debug.Log($"OnDestroy: {typeof(T)}");
+        
         if (_instance == this)
             _instance = null;
     }

@@ -105,6 +105,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     // public static string scenarioSuffix = "_Pungdo.xml"; // temp hack
     public static string scenarioSuffix = "_Yalu.xml";
+    public static FullState oneShotStartupFullState = null; // one-shot config
     // public static string scenarioSuffix = "_Yalu_Torpedo.xml";
     public static string initialScenName = "Battle of Yalu River.scen.xml";
 
@@ -115,7 +116,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
 
-        StartLoadScenarioCoroutine(initialScenName);
+        if (oneShotStartupFullState == null)
+        {
+            StartLoadScenarioCoroutine(initialScenName);
+        }
+        else
+        {
+            StartCoroutine(CompleteFullStateAndUpdateCoroutine(oneShotStartupFullState));
+            oneShotStartupFullState = null; // one-shot
+        }
     }
 
     public void StartLoadScenarioCoroutine(string scenName)
@@ -132,7 +141,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         });
 
         // OOBEditor.Instance.oobTreeView.ExpandAll(); // ??? NullReferenceException: Object reference not set to an instance of an object?
-        NavalGameState.Instance.ResetAndRegisterAll(); // Note FromXml call has call it many times.
+        // NavalGameState.Instance.ResetAndRegisterAll(); // Note FromXml call has call it many times.
 
         Debug.Log("LoadScenario Corountine Completed");
     }
@@ -144,6 +153,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         LoadViewState(fullState.viewState);
         NavalGameState.UpdateInstance(fullState.navalGameState);
+
+        NavalGameState.Instance.ResetAndRegisterAll();
 
         Debug.Log("OnFullStateXMLLoadedCoroutine");
     }

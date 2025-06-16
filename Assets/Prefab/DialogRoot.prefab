@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8757824858490326340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1245225702119965330}
+  - component: {fileID: 1258121294994496801}
+  - component: {fileID: 5051051528976626265}
+  m_Layer: 0
+  m_Name: DialogRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1245225702119965330
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8757824858490326340}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1258121294994496801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8757824858490326340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 9fc041e7491d52d4ba840bd7c006e8c4, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: dec2f290e92604746b5586a8e3e3c857, type: 3}
+  m_SortingOrder: 10
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+--- !u!114 &5051051528976626265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8757824858490326340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc376cb75b7bdd54697d58b0edc3ac07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipLogSelectorDocument: {fileID: 9197481963319205126, guid: 31edb5b77f8c151428226ff6586dd5ca, type: 3}
+  leaderSelectorDocument: {fileID: 9197481963319205126, guid: 22df8a3a20cf39245be9903bee3fae44, type: 3}
+  namedShipSelectorDocument: {fileID: 9197481963319205126, guid: 0cbfd23cf85f99b47a456cb23aa45057, type: 3}
+  messageDialogDocument: {fileID: 9197481963319205126, guid: 7a2a6b4bf5bdf42488d2d2f6c8dd3ceb, type: 3}
+  streamingAssetReferenceDialogDocument: {fileID: 9197481963319205126, guid: 4c9fd23c4a086074cb6ef7ea79164100, type: 3}
+  scenarioPickerDialogDocument: {fileID: 9197481963319205126, guid: 6025ff5dcb2c58b439b9b9b3964c5f40, type: 3}

@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class TopTabs : SingletonDocument<TopTabs>
 {
@@ -81,7 +83,10 @@ public class TopTabs : SingletonDocument<TopTabs>
         };
 
         var selectionBuiltinButton = root.Q<Button>("SelectionBuiltinButton");
-        selectionBuiltinButton.clicked += DialogRoot.Instance.PopupScenarioPickerDialog;
+        selectionBuiltinButton.clicked += DialogRoot.Instance.PopupScenarioPickerDialogForScenarioSwitchInGame;
+
+        var goToMainMenuButton = root.Q<Button>("GoToMainMenuButton");
+        goToMainMenuButton.clicked += () => SceneManager.LoadScene("Main Menu");
 
         var gamePreferenceRoot = root.Q<VisualElement>("GamePreferenceRoot");
         gamePreferenceRoot.dataSource = GamePreference.Instance;

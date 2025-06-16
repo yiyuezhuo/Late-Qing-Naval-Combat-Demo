@@ -7,14 +7,19 @@
                     <ui:Button text="Next Turn" name="NextTurnButton" />
                     <ui:Label text="Player" style="margin-left: 10px;" />
                     <ui:DropdownField name="PlayerDropdownField" style="width: 300px;" />
-                    <ui:Button text="Save" name="SaveButton" />
-                    <ui:Button text="Load" name="LoadButton" />
                     <ui:Label text="Label" />
                     <ui:EnumField value="Center" type="NavalCombatCore.LanguageType, Assembly-CSharp">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="iconLanuageType" binding-mode="TwoWay" />
                         </Bindings>
                     </ui:EnumField>
+                </ui:VisualElement>
+            </ui:Tab>
+            <ui:Tab label="File">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                    <ui:Button text="Save" name="SaveButton" />
+                    <ui:Button text="Load" name="LoadButton" />
+                    <ui:Button text="Selection" name="SelectionBuiltinButton" />
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Editor">

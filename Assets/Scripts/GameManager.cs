@@ -19,7 +19,7 @@ public interface IColliderRootProvider
     GameObject GetRoot();
 }
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     [CreateProperty]
     public NavalGameState navalGameState => NavalGameState.Instance;
@@ -92,20 +92,20 @@ public class GameManager : MonoBehaviour
         get => state.ToString();
     }
 
-    static GameManager _instance;
-    public static GameManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-                _instance = FindFirstObjectByType<GameManager>();
-            return _instance;
-        }
-    }
+    // static GameManager _instance;
+    // public static GameManager Instance
+    // {
+    //     get
+    //     {
+    //         if (_instance == null)
+    //             _instance = FindFirstObjectByType<GameManager>();
+    //         return _instance;
+    //     }
+    // }
 
-    public static string scenarioSuffix = "_Pungdo.xml"; // temp hack
-    // public static string scenarioSuffix = "_Yalu.xml";
-    // public static string scenarioSuffix = "_Yalu_Torpedo";
+    // public static string scenarioSuffix = "_Pungdo.xml"; // temp hack
+    public static string scenarioSuffix = "_Yalu.xml";
+    // public static string scenarioSuffix = "_Yalu_Torpedo.xml";
     public static string initialScenName = "Battle of Yalu River.scen.xml";
 
     public void Start()
@@ -115,38 +115,58 @@ public class GameManager : MonoBehaviour
 
         EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
 
-        StartCoroutine(LoadScenario());
+        StartLoadScenarioCoroutine(initialScenName);
     }
 
-    IEnumerator FetchScenarioFile(string name, Action<string> callback)
+    public void StartLoadScenarioCoroutine(string scenName)
     {
-        var root = Application.streamingAssetsPath + "/Scenarios/First Sino-Japanese War/";
-        var request = UnityWebRequest.Get(root + name);
-        yield return request.SendWebRequest();
-        if (request.result == UnityWebRequest.Result.Success)
-        {
-            callback(request.downloadHandler.text);
-        }
-        else
-        {
-            Debug.LogError($"failed to fetch and setup: {name}");
-        }
+        StartCoroutine(LoadScenario(scenName));
     }
 
-    IEnumerator LoadScenario()
+    public IEnumerator LoadScenario(string scenName)
     {
-        yield return FetchScenarioFile("Leaders.xml", navalGameState.LeadersFromXML);
-        yield return FetchScenarioFile("ShipClasses.xml", navalGameState.ShipClassesFromXML);
-        yield return FetchScenarioFile("NamedShips.xml", navalGameState.NamedShipsFromXML);
-        yield return FetchScenarioFile("ShipLogs" + scenarioSuffix, navalGameState.ShipLogsFromXML);
-        yield return FetchScenarioFile("ShipGroups" + scenarioSuffix, navalGameState.ShipGroupsFromXML);
-        yield return FetchScenarioFile("ScenarioState" + scenarioSuffix, navalGameState.ScenarioStateFromXML);
+        yield return StreamingAssetReference.FetchScenarioFile(scenName, s =>
+        {
+            var fullState = FullState.FromXML(s);
+            StartCoroutine(CompleteFullStateAndUpdateCoroutine(fullState));
+        });
 
-        OOBEditor.Instance.oobTreeView.ExpandAll();
+        // OOBEditor.Instance.oobTreeView.ExpandAll(); // ??? NullReferenceException: Object reference not set to an instance of an object?
         NavalGameState.Instance.ResetAndRegisterAll(); // Note FromXml call has call it many times.
 
         Debug.Log("LoadScenario Corountine Completed");
     }
+
+    public IEnumerator CompleteFullStateAndUpdateCoroutine(FullState fullState)
+    {
+        yield return fullState.streamingAssetReference.TryToCompleteFromStreamingAssetReference(fullState.navalGameState);
+        StreamingAssetReference.UpdateInstance(fullState.streamingAssetReference);
+
+        LoadViewState(fullState.viewState);
+        NavalGameState.UpdateInstance(fullState.navalGameState);
+
+        Debug.Log("OnFullStateXMLLoadedCoroutine");
+    }
+
+    public ViewState CaptureViewState()
+    {
+        var t = CameraController2.Instance.transform;
+        return new()
+        {
+            xRotation = t.eulerAngles.x,
+            yRotation = t.eulerAngles.y,
+            orthographicSize = CameraController2.Instance.cam.orthographicSize
+        };
+    }
+
+    public void LoadViewState(ViewState viewState)
+    {
+        var c = CameraController2.Instance;
+        foreach (var cam in c.cameras)
+            cam.orthographicSize = viewState.orthographicSize;
+        c.transform.rotation = Quaternion.Euler(viewState.xRotation, viewState.yRotation, 0);
+    }
+
 
     public Dictionary<string, PortraitViewer> objectId2Viewer = new();
 
@@ -542,11 +562,11 @@ public class GameManager : MonoBehaviour
         return TryToRaycastViewer()?.model as ShipLog;
     }
 
-    public void OnDestroy()
-    {
-        if (_instance == this)
-            _instance = null;
-    }
+    // public void OnDestroy()
+    // {
+    //     if (_instance == this)
+    //         _instance = null;
+    // }
 
     public int selectedShipClassIndex = 0;
 

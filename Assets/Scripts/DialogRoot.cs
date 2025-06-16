@@ -1,7 +1,72 @@
+using System.Collections.Generic;
 using NavalCombatCore;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UIElements;
+using System.Linq;
+
+public class ScenarioPickerDialog // ScenarioPicker's root data source
+{
+    public List<string> scenarioNames = new();
+
+    public string currentDescription;
+
+    public void Bind(TempDialog tempDialog)
+    {
+        tempDialog.onCreated += (sender, root) =>
+        {
+            // var root = tempDialog.root;
+            Utils.BindItemsSourceRecursive(root);
+
+            var scenarioListView = root.Q<ListView>("ScenarioListView");
+            scenarioListView.selectionChanged += (IEnumerable<object> objects) =>
+            {
+                Debug.Log("scenarioListView.selectionChanged");
+
+                var scenarioPath = objects.FirstOrDefault() as string;
+                if (scenarioPath != null)
+                {
+                    var scenarioName = scenarioPath.Split("/").Last();
+                    // Update information
+                    // GameManager.Instance.StartLoadScenarioCoroutine(scenarioName);
+                    currentDescription = "Fetching Preview... " + scenarioName; // TODO: Show more informative data like side's deployed units.
+                    DialogRoot.Instance.StartCoroutine(
+                        StreamingAssetReference.FetchScenarioFile(scenarioName, fullStateStr =>
+                        {
+                            var fullState = FullState.FromXML(fullStateStr);
+                            var shipCount = fullState.navalGameState.shipLogs.Count(s => s.mapState == MapState.Deployed);
+                            var dateTimeUTC = fullState.navalGameState.scenarioState.dateTime;
+                            // var dateTimeLocal = fullState.viewState.
+                            // TODO: Fetch class to find country info
+
+                            var centerLat = fullState.viewState.GetCenterLatitude();
+                            var centerLon = fullState.viewState.GetCenterLongitude();
+                            
+                            var dateTimeLocal = fullState.navalGameState.scenarioState.GetLocalDateTime(centerLon);
+                            var lines = new List<string>()
+                            {
+                                scenarioName,
+                                $"UTC DateTime: {dateTimeUTC}",
+                                $"Local DateTime: {dateTimeLocal}",
+                                $"Ship Count (On Map): {shipCount}",
+                                $"Latitude: {centerLat}, Longtitude: {centerLon}"
+                            };
+                            currentDescription = string.Join("\n", lines);
+                        })
+                    );
+                }
+            };
+        };
+        tempDialog.onConfirmed += (obj, root) =>
+        {
+            var scenarioListView = root.Q<ListView>("ScenarioListView");
+            var scenarioName = scenarioListView.selectedItem as string;
+            if (scenarioName != null)
+            {
+                GameManager.Instance.StartLoadScenarioCoroutine(scenarioName);
+            }
+        };
+    }
+}
 
 public class DialogRoot : SingletonDocument<DialogRoot>
 {
@@ -10,6 +75,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset namedShipSelectorDocument;
     public VisualTreeAsset messageDialogDocument;
     public VisualTreeAsset streamingAssetReferenceDialogDocument;
+    public VisualTreeAsset scenarioPickerDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,6 +87,27 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupScenarioPickerDialog()
+    {
+        ManifestModelCache.Instance.CommitTask(manifestModel =>
+        {
+            var scenarioNames = manifestModel.scenarioFiles.Select(path => path.Split("/").Last()).ToList();
+            var scenarioPickerDialog = new ScenarioPickerDialog()
+            {
+                scenarioNames = scenarioNames
+            };
+            var tempDialog = new TempDialog()
+            {
+                root = root,
+                template = scenarioPickerDialogDocument,
+                templateDataSource = scenarioPickerDialog
+            };
+            scenarioPickerDialog.Bind(tempDialog);
+
+            tempDialog.Popup();
+        });
     }
 
     public void PopupStreamingAssetReferenceDialog()

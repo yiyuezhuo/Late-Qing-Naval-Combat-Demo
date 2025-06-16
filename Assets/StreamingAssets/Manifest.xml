@@ -4,4 +4,9 @@
  <builtinScripts>
   <string>/BuiltinScripts/Sample.js</string>
  </builtinScripts>
+ <scenarioFiles>
+  <string>/Scenarios/Battle of Pundo.scen.xml</string>
+  <string>/Scenarios/Battle of Yalu River.scen.xml</string>
+  <string>/Scenarios/Fu Lung vs Saikyo Maru.scen.xml</string>
+ </scenarioFiles>
 </ManifestModel>

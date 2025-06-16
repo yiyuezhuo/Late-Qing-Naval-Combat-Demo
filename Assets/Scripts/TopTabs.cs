@@ -68,7 +68,7 @@ public class TopTabs : SingletonDocument<TopTabs>
                 // NavalGameState = NavalGameState.Instance,
                 streamingAssetReference = StreamingAssetReference.Instance,
                 navalGameState = StreamingAssetReference.Instance.Detach(NavalGameState.Instance),
-                viewState = CaptureViewState(),
+                viewState = GameManager.Instance.CaptureViewState(),
             };
 
             IOManager.Instance.SaveTextFile(fullState.ToXML(), "FullState", "xml");
@@ -79,6 +79,9 @@ public class TopTabs : SingletonDocument<TopTabs>
             IOManager.Instance.textLoaded += OnFullStateXMLLoaded;
             IOManager.Instance.LoadTextFile("xml");
         };
+
+        var selectionBuiltinButton = root.Q<Button>("SelectionBuiltinButton");
+        selectionBuiltinButton.clicked += DialogRoot.Instance.PopupScenarioPickerDialog;
 
         var gamePreferenceRoot = root.Q<VisualElement>("GamePreferenceRoot");
         gamePreferenceRoot.dataSource = GamePreference.Instance;
@@ -140,48 +143,7 @@ public class TopTabs : SingletonDocument<TopTabs>
         IOManager.Instance.textLoaded -= OnFullStateXMLLoaded;
 
         var fullState = FullState.FromXML(text);
-        // if (fullState.streamingAssetReference != null)
-        // {
-        // }
-        // fullState.streamingAssetReference.TryToCompleteFromStreamingAssetReference(fullState.navalGameState);
-        // StreamingAssetReference.UpdateInstance(fullState.streamingAssetReference);
-
-        // LoadViewState(fullState.viewState);
-        // NavalGameState.UpdateInstance(fullState.navalGameState);
-
-        // StreamingAssetReference.Instance.TryToCompleteFromStreamingAssetReference();
-        // NavalGameState.Instance.UpdateTo(fullState.navalGameState);
-        StartCoroutine(OnFullStateXMLLoadedCoroutine(fullState));
-    }
-
-    IEnumerator OnFullStateXMLLoadedCoroutine(FullState fullState)
-    {
-        yield return fullState.streamingAssetReference.TryToCompleteFromStreamingAssetReference(fullState.navalGameState);
-        StreamingAssetReference.UpdateInstance(fullState.streamingAssetReference);
-
-        LoadViewState(fullState.viewState);
-        NavalGameState.UpdateInstance(fullState.navalGameState);
-
-        Debug.Log("OnFullStateXMLLoadedCoroutine");
-    }
-
-    public ViewState CaptureViewState()
-    {
-        var t = CameraController2.Instance.transform;
-        return new()
-        {
-            xRotation = t.eulerAngles.x,
-            yRotation = t.eulerAngles.y,
-            orthographicSize = CameraController2.Instance.cam.orthographicSize
-        };
-    }
-
-    public void LoadViewState(ViewState viewState)
-    {
-        var c = CameraController2.Instance;
-        foreach (var cam in c.cameras)
-            cam.orthographicSize = viewState.orthographicSize;
-        c.transform.rotation = Quaternion.Euler(viewState.xRotation, viewState.yRotation, 0);
+        StartCoroutine(GameManager.Instance.CompleteFullStateAndUpdateCoroutine(fullState));
     }
 
     public void OnRootShipGroupsChanged(object sender, List<ShipGroup> groups)

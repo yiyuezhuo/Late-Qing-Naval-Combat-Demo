@@ -13,7 +13,7 @@ public class BuildProcessor : IPreprocessBuildWithReport
 {
     public int callbackOrder { get { return 100; } }
 
-    
+
     public void OnPreprocessBuild(BuildReport report)
     {
         Debug.Log("Preprocess build started for: " + report.summary.platform);
@@ -27,13 +27,23 @@ public class BuildProcessor : IPreprocessBuildWithReport
 
         Debug.Log($"streamingAssetsPath={streamingAssetsPath}");
 
-        var files = Directory.GetFiles(streamingAssetsPath + "/BuiltinScripts", "*.js");
+        var builtinScripts = Directory.GetFiles(streamingAssetsPath + "/BuiltinScripts", "*.js")
+            .Select(GetRelativeToAndNormalizePath).ToList();
+        var scenarioFiles = Directory.GetFiles(streamingAssetsPath + "/Scenarios", "*.scen.xml")
+                .Select(GetRelativeToAndNormalizePath).ToList();
 
-        var manifestModel = new ManifestModel() { builtinScripts = files.Select(
-            s => s.Replace('\\', '/').Replace(streamingAssetsPath, "")
-        ).ToList() };
+        var manifestModel = new ManifestModel()
+        {
+            builtinScripts = builtinScripts,
+            scenarioFiles = scenarioFiles
+        };
 
         var manifestXml = XmlUtils.ToXML(manifestModel);
         File.WriteAllText(streamingAssetsPath + "/Manifest.xml", manifestXml);
+    }
+
+    static string GetRelativeToAndNormalizePath(string path)
+    {
+        return path.Replace("\\", "/").Replace(Application.streamingAssetsPath, "");
     }
 }

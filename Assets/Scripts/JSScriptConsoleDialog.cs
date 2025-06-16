@@ -101,7 +101,11 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
 
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
-            StartCoroutine(UpdateBuiltInScriptDropdownFieldUsingManifest()); // Fire and Forget
+            // StartCoroutine(UpdateBuiltInScriptDropdownFieldUsingManifest()); // Fire and Forget
+            ManifestModelCache.Instance.CommitTask(manifestModel =>
+            {
+                builtInScriptDropdownField.choices = manifestModel.builtinScripts;
+            });
         }
         else
         {
@@ -152,24 +156,24 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
         builtInScriptDropdownField.choices = paths;
     }
 
-    public IEnumerator UpdateBuiltInScriptDropdownFieldUsingManifest()
-    {
-        // Schedule async tasks
-        string streamingAssetsPath = Application.streamingAssetsPath;
-        var manifestPath = streamingAssetsPath + "/Manifest.xml";
+    // public IEnumerator UpdateBuiltInScriptDropdownFieldUsingManifest()
+    // {
+    //     // Schedule async tasks
+    //     string streamingAssetsPath = Application.streamingAssetsPath;
+    //     var manifestPath = streamingAssetsPath + "/Manifest.xml";
 
-        var request = UnityWebRequest.Get(manifestPath);
-        Debug.Log($"manifestPath={manifestPath}");
-        yield return request.SendWebRequest();
+    //     var request = UnityWebRequest.Get(manifestPath);
+    //     Debug.Log($"manifestPath={manifestPath}");
+    //     yield return request.SendWebRequest();
 
-        if (request.result == UnityWebRequest.Result.Success)
-        {
-            // jsonData = request.downloadHandler.text;
-            Debug.Log($"request.downloadHandler.text={request.downloadHandler.text}");
-            var manifestModel = XmlUtils.FromXML<ManifestModel>(request.downloadHandler.text);
-            builtInScriptDropdownField.choices = manifestModel.builtinScripts;
-        }
-    }
+    //     if (request.result == UnityWebRequest.Result.Success)
+    //     {
+    //         // jsonData = request.downloadHandler.text;
+    //         Debug.Log($"request.downloadHandler.text={request.downloadHandler.text}");
+    //         var manifestModel = XmlUtils.FromXML<ManifestModel>(request.downloadHandler.text);
+    //         builtInScriptDropdownField.choices = manifestModel.builtinScripts;
+    //     }
+    // }
 
     public void OnLog(object output)
     {

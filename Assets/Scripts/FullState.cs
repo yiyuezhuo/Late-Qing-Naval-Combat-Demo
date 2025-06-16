@@ -26,9 +26,9 @@ public class StreamingAssetReference
         instance = newInstance;
     }
 
-    IEnumerator FetchScenarioFile(string name, Action<string> callback)
+    public static IEnumerator FetchScenarioFile(string name, Action<string> callback)
     {
-        var root = Application.streamingAssetsPath + "/Scenarios/First Sino-Japanese War/";
+        var root = Application.streamingAssetsPath + "/Scenarios/";
         var path = root + name;
         var request = UnityWebRequest.Get(path);
         yield return request.SendWebRequest();

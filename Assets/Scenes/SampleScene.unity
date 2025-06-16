@@ -1255,6 +1255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 708640260}
   - component: {fileID: 708640259}
+  - component: {fileID: 708640261}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1319,6 +1320,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &708640261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708640258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fbcc35ac4d7dd4c92b34aebe089580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDone: 0
 --- !u!1 &774573993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,6 +2636,7 @@ MonoBehaviour:
   namedShipSelectorDocument: {fileID: 9197481963319205126, guid: 0cbfd23cf85f99b47a456cb23aa45057, type: 3}
   messageDialogDocument: {fileID: 9197481963319205126, guid: 7a2a6b4bf5bdf42488d2d2f6c8dd3ceb, type: 3}
   streamingAssetReferenceDialogDocument: {fileID: 9197481963319205126, guid: 4c9fd23c4a086074cb6ef7ea79164100, type: 3}
+  scenarioPickerDialogDocument: {fileID: 9197481963319205126, guid: 6025ff5dcb2c58b439b9b9b3964c5f40, type: 3}
 --- !u!114 &2024837593
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,11 +22,15 @@ namespace NavalCombatCore
     {
         public float intervalSeconds;
         public float accumulateSecond;
+        public float elapsedSeconds;
         public int Step(float deltaSeconds)
         {
             var unresolved = deltaSeconds + accumulateSecond;
             var tick = (int)Math.Floor(unresolved / intervalSeconds);
             accumulateSecond = unresolved % intervalSeconds;
+
+            elapsedSeconds += deltaSeconds;
+
             return tick;
         }
     }

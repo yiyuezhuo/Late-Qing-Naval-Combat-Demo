@@ -52,6 +52,8 @@ namespace NavalCombatCore
         // public DateTime dateTime = new DateTime(2013, 9, 17, 4, 30, 0, DateTimeKind.Utc);
         public VisibilityDescription visibility = VisibilityDescription.ExceptionallyClear;
 
+        public string description;
+
         public float GetTimeZoneOffset(float longtitude)
         {
             var intervals = 24f;

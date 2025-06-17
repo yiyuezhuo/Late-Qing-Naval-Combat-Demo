@@ -51,7 +51,9 @@ public class ScenarioPickerDialog // ScenarioPicker's root data source
                                 $"UTC DateTime: {dateTimeUTC}",
                                 $"Local DateTime: {dateTimeLocal}",
                                 $"Ship Count (On Map): {shipCount}",
-                                $"Latitude: {centerLat}, Longtitude: {centerLon}"
+                                $"Latitude: {centerLat}, Longtitude: {centerLon}",
+                                "Description:",
+                                fullState.navalGameState.scenarioState.description
                             };
                             currentDescription = string.Join("\n", lines);
                         })

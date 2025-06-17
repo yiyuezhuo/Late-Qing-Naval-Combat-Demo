@@ -5718,6 +5718,7 @@
   <scenarioState>
    <dateTime>1894-09-17T06:30:00</dateTime>
    <visibility>Clear</visibility>
+   <description>Torpede Boat vs light-armed target, used to train usage of torpedo.</description>
   </scenarioState>
   <launchedTorpedos />
   <weaponSimulationAssignmentClock>

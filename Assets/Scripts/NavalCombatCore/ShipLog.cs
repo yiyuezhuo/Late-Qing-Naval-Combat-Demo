@@ -1423,9 +1423,15 @@ namespace NavalCombatCore
 
     public enum MapState
     {
-        NotDeployed,
-        Deployed,
-        Destroyed
+        NotDeployed, // Logically on "map" (earth), but not in ROI and battlefield (but may enter by event and time), it also works as a placeholder state for new created ShipLog. A unrelevent ship will just not be in the shiplog list.
+        Deployed, // On Map
+        Destroyed // Sunk
+    }
+
+    public enum ShipOperationalState // general performance evaluation,
+    {
+        Operational,
+        FloodingObstruction, // Sinking, all armament are disabled, dynamic will not work. Crews may is fleeing from the ships.
     }
 
     public enum ControlMode
@@ -1528,6 +1534,8 @@ namespace NavalCombatCore
         public MapState mapState;
         // DCR Modifier or DCR modifier type?
 
+        public ShipOperationalState operationalState = ShipOperationalState.Operational;
+
         public float GetLatitudeDeg() => position.LatDeg;
         public float GetLongitudeDeg() => position.LonDeg;
         public float GetHeadingDeg() => headingDeg;
@@ -1548,7 +1556,8 @@ namespace NavalCombatCore
         public DynamicStatus dynamicStatus = new();
         public SearchLightStatus searchLightHits = new();
         public int damageControlRatingHits;
-        public List<DamageEffectRecord> damageEffectRecords = new();
+        public List<DamageEffectRecord> damageEffectRecords = new(); // TODO: Remove
+        public List<DamageEffect> damageEffectSubStates = new();
         public List<ShipboardFireStatus> shipboardFireStatus = new();
 
         public string parentObjectId { get; set; } // OOB perspective

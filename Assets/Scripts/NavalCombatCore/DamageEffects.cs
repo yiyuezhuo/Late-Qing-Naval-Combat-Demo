@@ -3,6 +3,7 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.Collections.Generic;
 using System.Linq;
+using MathNet.Numerics.Distributions;
 
 namespace NavalCombatCore
 {
@@ -20,13 +21,6 @@ namespace NavalCombatCore
         Torpedo // T
     }
 
-    // public interface IDamageEffect
-    // {
-    //     string id { get; }
-    //     void DoEffect(DamageEffectContext ctx);
-    //     string Describe();
-    // }
-
     public class DamageEffectContext
     {
         public ShipLog subject;
@@ -35,60 +29,21 @@ namespace NavalCombatCore
         public HitPenDetType hitPenDetType;
         public AmmunitionType ammunitionType;
         public float shellDiameterInch; // M2: Unspecified Damage severity = D100 + shell diameter (in inches)
-        public int chainNumber; // Additional damage effect would be blocked if chainNumber > 0
+        // public int chainNumber; // Additional damage effect would be blocked if chainNumber > 0
+        public float addtionalDamageEffectProbility; // 0.0~1.0, Addtional DE will use the same probility to cause this DE. If an additional DE is not possible, prob should be set to 0.
+
+        public DamageEffectContext Clone()
+        {
+            return XmlUtils.FromXML<DamageEffectContext>(XmlUtils.ToXML(this));
+        }
+
+        public DamageEffectContext CloneWithAdditionalDEProbToZero()
+        {
+            var clone = Clone();
+            clone.addtionalDamageEffectProbility = 0;
+            return clone;
+        }
     }
-
-    // public class DamageEffect
-
-    // public abstract class SK5DE : IDamageEffect
-    // {
-    //     public abstract string id { get; }
-    //     public abstract void A(DamageEffectContext ctx);
-    //     public abstract void B(DamageEffectContext ctx);
-    //     public abstract void C(DamageEffectContext ctx);
-    //     public abstract void HE(DamageEffectContext ctx);
-    //     public virtual string Describe() => $"DE{id}";
-    //     public void DoEffect(DamageEffectContext ctx)
-    //     {
-    //         if (ctx.ammunitionType == AmmunitionType.HighExplosive)
-    //         {
-    //             HE(ctx);
-    //         }
-    //         switch (ctx.hitPenDetType)
-    //         {
-    //             case HitPenDetType.PenetrateWithDetonate:
-    //                 A(ctx);
-    //                 break;
-    //             case HitPenDetType.PassThrough:
-    //                 B(ctx);
-    //                 break;
-    //             case HitPenDetType.NoPenetration:
-    //                 C(ctx);
-    //                 break;
-    //         }
-    //     }
-    // }
-
-    // public class DE100 : SK5DE
-    // {
-    //     public override string id => "100";
-    //     public override void A(DamageEffectContext ctx)
-    //     {
-    //         ctx.subject.operationalState = (ShipOperationalState)Math.Max((int)ctx.subject.operationalState, (int)ShipOperationalState.FloodingObstruction);
-    //         var subState = new SinkingIfRollPassed()
-    //         {
-    //             rollThreshold = 0.25f, // 25%
-    //             casue = "Magazine explosion."
-    //         };
-    //         subState.BeginDamageSubState(ctx.subject);
-    //     }
-    //     public override void B(DamageEffectContext ctx) => A(ctx);
-    //     public override void C(DamageEffectContext ctx)
-    //     {
-
-    //     }
-    //     public override void HE(DamageEffectContext ctx) => C(ctx);
-    // }
 
     // M1 Damage Effect
     public static class DamageEffectChart // This class is separated from the RuleChart, since it rely on ShipLog heavyly.
@@ -96,6 +51,14 @@ namespace NavalCombatCore
         public static void AddNewDamageEffect(DamageEffectContext ctx)
         {
             var damageEffectId = RuleChart.ResolveDamageEffectId(ctx.cause);
+            AddNewDamageEffect(ctx, damageEffectId);
+        }
+
+        public static void AddNewDamageEffect(DamageEffectContext ctx, string damageEffectId)
+        {
+            if (damageEffectId == null || damageEffectId == "")
+                return;
+            
             if (damageEffectMap.TryGetValue(damageEffectId, out var damageEffectEnforcer))
             {
                 damageEffectEnforcer(ctx);
@@ -113,9 +76,65 @@ namespace NavalCombatCore
         public static bool IsHE(DamageEffectContext ctx) => ctx.ammunitionType == AmmunitionType.HighExplosive;
         public static bool IsAB(DamageEffectContext ctx) => IsA(ctx) || IsB(ctx);
 
+        public static void FireInPrimaryBatteryMagazine(DamageEffectContext ctx)
+        {
+            var primaryBattery = ctx.subject.batteryStatus.FirstOrDefault();
+            if(primaryBattery != null)
+            {
+                // Fire in primary battery magazine. Roll to determine section location of affected magazine.
+                var gp = primaryBattery.mountStatus // Check remanent Ammunition? 
+                    .GroupBy(mnt => mnt.GetMountLocationRecordInfo().record.mountLocation)
+                    .ToList();
+
+                if(gp.Count > 0)
+                {
+                    ctx.subject.damagePoint += ctx.baseDamagePoint * 2; // Triple total DP caused by this hit
+
+                    // Magazines are flooded and all guns serviced by this magazine (located in affected section) may not fire for the duration of battle.
+                    var g = RandomUtils.Sample(gp);
+                    foreach(var bs in g)
+                    {
+                        bs.status = (MountStatus)Math.Max((int)bs.status, (int)MountStatus.Disabled);
+                    }
+                }
+            }
+        }
+
+        public static void RollForAdditionalDamageEffect(DamageEffectContext ctx, float[] rightBounds, string[] damageEffectIds)
+        {
+            if(RandomUtils.NextFloat() < ctx.addtionalDamageEffectProbility)
+            {
+                // var rightBounds = new List<float>(){10, 25, 45, 70, 100};
+                // var damageEffectIds = new List<string>(){"100", "147", "107", "146", ""};
+                var d100 = RandomUtils.D100F();
+                var idx = Enumerable.Range(0, rightBounds.Length).First(i => d100 <= rightBounds[i]);
+                var damageEffectId = damageEffectIds[idx];
+
+                AddNewDamageEffect(ctx.CloneWithAdditionalDEProbToZero(), damageEffectId);
+            }
+        }
+
+        public static void Lost1RandomRapidFiringBatteryBox(DamageEffectContext ctx)
+        {
+            // Permanent loss of 1 box in one Rapid Fire battery. Roll to determine battery (if more than one) and roll to determine location [Port/STBD]
+            if(ctx.subject.rapidFiringStatus.Count > 0)
+            {
+                var rapidFiringStatus = RandomUtils.Sample(ctx.subject.rapidFiringStatus);
+                var hitPort = RandomUtils.NextFloat() < 0.5f;
+                if(hitPort)
+                {
+                    rapidFiringStatus.portMountHits += 1;
+                }
+                else
+                {
+                    rapidFiringStatus.starboardMountHits += 1;
+                }
+            }
+        }
+
         public static Dictionary<string, Action<DamageEffectContext>> damageEffectMap = new() // DE id => Enforcer (enforcer will immdiately update some states and may append persistence DE state)
         {
-            // DE 100
+            // DE 100, shell hit deck above the magazine
             { "100", ctx =>{
                 if(IsAB(ctx)) // A/B
                 {
@@ -139,26 +158,7 @@ namespace NavalCombatCore
                     var d100 = RandomUtils.D100F();
                     if(d100 < 5)
                     {
-                        var primaryBattery = ctx.subject.batteryStatus.FirstOrDefault();
-                        if(primaryBattery != null)
-                        {
-                            // Fire in primary battery magazine. Roll to determine section location of affected magazine.
-                            var gp = primaryBattery.mountStatus // Check remanent Ammunition? 
-                                .GroupBy(mnt => mnt.GetMountLocationRecordInfo().record.mountLocation)
-                                .ToList();
-
-                            if(gp.Count > 0)
-                            {
-                                ctx.subject.damagePoint += ctx.baseDamagePoint * 2; // Triple total DP caused by this hit
-
-                                // Magazines are flooded and all guns serviced by this magazine (located in affected section) may not fire for the duration of battle.
-                                var g = RandomUtils.Sample(gp);
-                                foreach(var bs in g)
-                                {
-                                    bs.status = (MountStatus)Math.Max((int)bs.status, (int)MountStatus.Disabled);
-                                }
-                            }
-                        }
+                        FireInPrimaryBatteryMagazine(ctx);
                     }
                 }
             }},
@@ -168,18 +168,34 @@ namespace NavalCombatCore
                 if(IsAB(ctx))
                 {
                     // Fire in primary battery magazine... (Like DE 100 (C/HE))
-                    
+                    FireInPrimaryBatteryMagazine(ctx);
+
+                    // Additional Damage Effect Roll
+                    RollForAdditionalDamageEffect(ctx,
+                        new []{10f, 25, 45, 70, 100},
+                        new []{"100", "147", "107", "146", ""});
                 }
                 else
                 {
                     // Shipboard fire only, Severity 40. No additional DE
-                    if(IsHE(ctx))
+                    var shipboardFire = new ShipboardFire()
                     {
-                        // Permanent loss of 1 box in one Rapid Fire battery. Roll to determine battery (if more than one) and roll to determine location [Port/STBD]
+                        casue = "DE100 (C/HE): Shipboard fire only.",
+                        severity = 40
+                    };
+                    shipboardFire.BeginAt(ctx.subject);
 
+                    if (IsHE(ctx))
+                    {
+                        Lost1RandomRapidFiringBatteryBox(ctx);
                     }
                 }
-            } }
+            } },
+
+            // DE 102
+            { "DE102", ctx=>{
+                
+            }}
         };
     }
 
@@ -291,7 +307,7 @@ namespace NavalCombatCore
                 {
                     subject = subject,
                     cause = DamageEffectCause.Fires,
-                    chainNumber =1
+                    // chainNumber =1
                 });
             }
 

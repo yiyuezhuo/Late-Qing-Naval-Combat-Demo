@@ -10,13 +10,13 @@ namespace NavalCombatCore
 {
     public partial class BatteryStatus : UnitModule, IWTABattery
     {
-        public string objectId { get; set; }
+        // public string objectId { get; set; }
         public BatteryAmmunitionRecord ammunition = new(); // TODO: based on mount instead of battery?
         public List<MountStatusRecord> mountStatus = new();
         // public int fireControlHits;
         public List<FireControlSystemStatusRecord> fireControlSystemStatusRecords = new();
 
-        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        public override IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
             foreach (var mount in mountStatus)
             {
@@ -64,7 +64,7 @@ namespace NavalCombatCore
                 return "[Not Specified]";
             var barrels = batteryRecord.mountLocationRecords.Sum(r => r.barrels * r.mounts);
             // var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.mountLocationRecord.mounts - m.mountsDestroyed) * m.mountLocationRecord.barrels);
-            var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => m.GetMountLocationRecordInfo().record.barrels);
+            var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => m.barrels);
             return $"{availableBarrels}/{barrels} {batteryRecord.name.mergedName} ({ammunition.Summary()})";
         }
 
@@ -73,7 +73,7 @@ namespace NavalCombatCore
             var batteryRecord = GetBatteryRecord();
             var firepoweScorePerBarrel = batteryRecord.EvaluateFirepowerPerBarrel();
             // var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.mountLocationRecord.mounts - m.mountsDestroyed) * m.mountLocationRecord.barrels);
-            var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => m.GetMountLocationRecordInfo().record.barrels);
+            var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => m.barrels);
             return availableBarrels * firepoweScorePerBarrel;
         }
 
@@ -90,7 +90,7 @@ namespace NavalCombatCore
             var barrels = mountStatus.Where(
                 m => m.status == MountStatus.Operational &&
                     m.GetMountLocationRecordInfo().record.IsInArc(bearingRelativeToBowDeg)
-            ).Sum(m => m.GetMountLocationRecordInfo().record.barrels);
+            ).Sum(m => m.barrels);
             return barrels * firepowerPerBarrel;
         }
 

@@ -141,3 +141,8 @@
     margin-bottom: 4px;
     margin-top: 4px;
 }
+
+.unity-base-field__input {
+    padding-left: 2px;
+    padding-right: 2px;
+}

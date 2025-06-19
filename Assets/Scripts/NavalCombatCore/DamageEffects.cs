@@ -4,6 +4,7 @@ using System.Xml;
 using System.Collections.Generic;
 using System.Linq;
 using MathNet.Numerics.Distributions;
+using Acornima.Ast;
 
 namespace NavalCombatCore
 {
@@ -43,6 +44,8 @@ namespace NavalCombatCore
             clone.addtionalDamageEffectProbility = 0;
             return clone;
         }
+
+        public float RollForSeverity() => RandomUtils.D100F() + shellDiameterInch;
     }
 
     // M1 Damage Effect
@@ -101,11 +104,35 @@ namespace NavalCombatCore
             mount = null;
             if (ctx.subject.batteryStatus.Count <= 1)
                 return false;
+            
             var mounts = ctx.subject.batteryStatus.Skip(1).SelectMany(bs => bs.mountStatus).ToList();
             if (mounts.Count == 0)
                 return false;
             mount = RandomUtils.Sample(mounts);
             return true;
+        }
+
+        public static bool TryGetSecondaryBattery(DamageEffectContext ctx, out BatteryStatus battery)
+        {
+            battery = null;
+            if (ctx.subject.batteryStatus.Count <= 1)
+                return false;
+            battery = ctx.subject.batteryStatus[1];
+            return true;
+        }
+
+        public static bool TryToSampleASecondaryBatteryMount(DamageEffectContext ctx, out MountStatusRecord mount)
+        {
+            mount = null;
+            if (TryGetSecondaryBattery(ctx, out var secondaryBattery))
+            {
+                if (secondaryBattery.mountStatus.Count > 0)
+                {
+                    mount = RandomUtils.Sample(secondaryBattery.mountStatus);
+                    return true;
+                }
+            }
+            return false;
         }
 
         public static bool TryToSampleAAdjacentMount(DamageEffectContext ctx, MountStatusRecord baseMount, out MountStatusRecord adjMount)
@@ -468,7 +495,7 @@ namespace NavalCombatCore
                 if(TryGetPrimaryBattery(ctx, out var primaryBattery))
                 {
                     // primaryBattery.ResetFiringTarget();
-                    var DE = new FireControlSystemDisabledModifier()
+                    var DE = new ControlSystemDisabledModifier()
                     {
                         lifeCycle = StateLifeCycle.GivenTime
                     };
@@ -498,8 +525,133 @@ namespace NavalCombatCore
 
             // DE 108, (hit on secondary battery control system)
             { "DE 108", ctx=>{
+                if(TryGetSecondaryBattery(ctx, out var secondaryBattery))
+                {
+                    var DE = new BatteryMountStatusModifier()
+                    {
+                        casue="DE 108: Damage to secondary battery control system",
+                        lifeCycle = StateLifeCycle.GivenTime
+                    };
+                    DE.BeginAt(secondaryBattery);
 
-            }}
+                    AddShipboardFire(ctx, "DE 108: Shipboard fire severity 10", 10);
+
+                    if(RandomUtils.D100F() <= 70)
+                    {
+                        if(secondaryBattery.fireControlSystemStatusRecords.Count > 0)
+                        {
+                            var fcs = RandomUtils.Sample(secondaryBattery.fireControlSystemStatusRecords);
+                            fcs.trackingState = TrackingSystemState.Destroyed;
+                        }
+                    }
+
+                    RollForAdditionalDamageEffect(ctx, new[]{"110", "124", "140", "143", ""});
+
+                    if(IsHE(ctx))
+                    {
+                        AddShipboardFire(ctx, "DE 108 (HE): Shipboard fire severity 30", 30);
+                    }
+                }
+                else if(RandomUtils.D100F() <= 70)
+                {
+                    AddNewDamageEffect(ctx, "158");
+                }
+            }},
+
+            // DE 109, (hit on ready-use ammo of primary battery and possibly cause fire and more catastrophe)
+            {"109", ctx=>{
+                if(TryGetPrimaryBattery(ctx, out var primaryBattery))
+                {
+                    if(IsAB(ctx))
+                    {
+                        if(IsA(ctx))
+                        {
+                            ctx.subject.damagePoint += ctx.baseDamagePoint * 2;
+                            AddShipboardFire(ctx, "DE 109 (A): Shipboard fire severity 50", 50);
+
+                            var DE = new RiskingInMagazineExplosion()
+                            {
+                                casue = "DE 109 (A): Potential magazine explosion in primary battery ready-use ammo",
+                                lifeCycle = StateLifeCycle.GivenTime,
+                                givenTimeSeconds = 120,
+                                explosionProbPercent = 10,
+                                sinkingThreshold = 25
+                            };
+                            DE.BeginAt(ctx.subject);
+                        }
+                        if(IsB(ctx))
+                        {
+                            ctx.subject.damagePoint += ctx.baseDamagePoint * 2;
+                            AddShipboardFire(ctx, "DE 109 (B): Shipboard fire severity 30", 30);
+                        }
+
+                        if(TryToSampleAPrimaryBatteryMount(ctx, out var mount))
+                        {
+                            var DE = new BatteryMountStatusModifier(){
+                                casue="DE 109 (C/HE): Battery mount temporarily OOA"
+                            };
+                            DE.BeginAt(mount);
+                        }
+
+                        RollForAdditionalDamageEffect(ctx, new[]{"100", "147", "153", "", ""});
+                    }
+                    else
+                    {
+                        if(TryToSampleAPrimaryBatteryMount(ctx, out var mount))
+                        {
+                            var DE = new BatteryMountStatusModifier(){
+                                lifeCycle = StateLifeCycle.SeverityBased,
+                                severity=ctx.RollForSeverity()
+                            };
+                            DE.BeginAt(mount);
+                        }
+                    }
+                }
+            }},
+
+            // DE 110, (hit on ready-use ammo of secondary battery and possibly cause fire and more catastrophe)
+            {"110", ctx=>{
+                if(IsAB(ctx))
+                {
+                    if(TryToSampleASecondaryBatteryMount(ctx, out var mount))
+                    {
+                        ctx.subject.damagePoint += ctx.baseDamagePoint;
+                        mount.status = MaxEnum(mount.status, MountStatus.Disabled);
+
+                        var DE = new RiskingInMagazineExplosion()
+                        {
+                            casue = "DE 110 (A/B): Potential magazine explosion in secondary battery ready-use ammo",
+                            lifeCycle = StateLifeCycle.GivenTime,
+                            givenTimeSeconds = 120,
+                            explosionProbPercent = 5,
+                            sinkingThreshold = 25
+                        };
+                        DE.BeginAt(ctx.subject);
+
+                        RollForAdditionalDamageEffect(ctx, new[]{"100", "161", "132", "132", ""});
+                    }
+                    else
+                    {
+                        AddShipboardFire(ctx, "DE 110 (A/B, no secondary battery): Shipboard fire severity 40", 40);
+                    }
+                }
+                else
+                {
+                    if(TryToSampleASecondaryBatteryMount(ctx, out var mount))
+                    {
+                        mount.status = MaxEnum(mount.status, MountStatus.Disabled);
+                    }
+                    else
+                    {
+                        AddShipboardFire(ctx, "DE 110 (C/HE, no secondary battery): Shipboard fire severity 30", 30);
+                    }
+                }
+            }},
+
+            // DE 111
+            {"111", ctx=>{
+
+            }},
         };
     }
 

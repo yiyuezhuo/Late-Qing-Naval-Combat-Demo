@@ -8,10 +8,11 @@ namespace NavalCombatCore
     public interface IObjectIdLabeled
     {
         string objectId { get; set; }
-        IEnumerable<IObjectIdLabeled> GetSubObjects()
-        {
-            yield break;
-        }
+        IEnumerable<IObjectIdLabeled> GetSubObjects();
+        // IEnumerable<IObjectIdLabeled> GetSubObjects()
+        // {
+        //     yield break;
+        // }
     }
 
     public class EntityManager

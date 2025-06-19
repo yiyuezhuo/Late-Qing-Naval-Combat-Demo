@@ -167,7 +167,7 @@ namespace NavalCombatCore
 
     // }
 
-    public class UnitModule : IObjectIdLabeled, ISubject
+    public abstract class UnitModule : IObjectIdLabeled, ISubject
     {
         public string objectId { get; set; }
         public List<SubState> subStates = new();
@@ -180,6 +180,8 @@ namespace NavalCombatCore
         {
             subStates.Remove(state);
         }
+
+        public abstract IEnumerable<IObjectIdLabeled> GetSubObjects();
     }
 
 
@@ -278,7 +280,7 @@ namespace NavalCombatCore
 
         public string GetMemberName() => namedShip.name.mergedName ?? "[Not Speicified]";// name.mergedName;
 
-        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        public override IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
             foreach (var obj in batteryStatus)
             {
@@ -349,7 +351,7 @@ namespace NavalCombatCore
             lines.Add("Torpedo:");
             var torpedoBarrels = _shipClass.torpedoSector.mountLocationRecords.Sum(r => r.barrels * r.mounts);
             // var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.torpedoMountLocationRecord.mounts - m.mountsDestroyed) * m.torpedoMountLocationRecord.barrels);
-            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => m.GetTorpedoMountLocationRecordInfo().record.barrels);
+            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => m.barrels);
             var torpedoAmmu = torpedoSectorStatus.ammunition;
             lines.Add($"x{torpedoBarrelsAvailable}/{torpedoBarrels} {_shipClass.torpedoSector.name.mergedName} ({torpedoAmmu})");
 
@@ -665,7 +667,7 @@ namespace NavalCombatCore
         public float EvaluateTorpedoThreatScore()
         {
             // var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.torpedoMountLocationRecord.mounts - m.mountsDestroyed) * m.torpedoMountLocationRecord.barrels);
-            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => m.GetTorpedoMountLocationRecordInfo().record.barrels);
+            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => m.barrels);
             return torpedoBarrelsAvailable * shipClass.torpedoSector.EvaluateTorpedoThreatPerBarrel();
         }
 
@@ -688,7 +690,7 @@ namespace NavalCombatCore
                 .Where(p => p.Item2.IsInArcRelaxed(bearingRelativeToBowDeg, sc.emergencyTurnDegPer2Min / 2))
                 .Sum(
                     p =>
-                        Math.Min(p.m.currentLoad, p.Item2.barrels) *
+                        Math.Min(p.m.currentLoad, p.m.barrels) *
                         (1 - p.Item2.AngleDifferenceFromArc(bearingRelativeToBowDeg) / 360)
                 );
             return rangeCoef * effBarrels * classSector.EvaluateTorpedoThreatPerBarrel();

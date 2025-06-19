@@ -26,7 +26,7 @@ namespace NavalCombatCore
 
     public class Leader : IObjectIdLabeled
     {
-        public string objectId{ get; set; }
+        public string objectId { get; set; }
         public GlobalString name = new();
         public string portraitCode;
         public LeaderSkillLevel navalStrategic; // command in a theater / organization / Planning /  generate better combat
@@ -35,5 +35,9 @@ namespace NavalCombatCore
         public List<LeaderTrait> traits = new();
         // public float courage; // determine flee / retreat behaviour and buff ship morale
         // public float staff; // how much buff its commander
+        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            yield break;
+        }
     }
 }

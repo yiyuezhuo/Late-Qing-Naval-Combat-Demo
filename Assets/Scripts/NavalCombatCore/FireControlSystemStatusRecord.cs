@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace NavalCombatCore
 {
     public enum TrackingSystemState
@@ -10,13 +12,18 @@ namespace NavalCombatCore
         Hitting // +2 FC, If target is hit by shooter, Hitting state will matain 2 min unless another hit is scored. 
     }
 
-    public partial class FireControlSystemStatusRecord : IObjectIdLabeled
+    public partial class FireControlSystemStatusRecord : UnitModule
     {
-        public string objectId { set; get; }
+        // public string objectId { set; get; }
         public string targetObjectId { get; set; }
         public ShipLog GetTarget() => EntityManager.Instance.GetOnMapShipLog(targetObjectId);
         public TrackingSystemState trackingState;
         public float trackingSeconds;
+
+        public override IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            yield break;
+        }
 
         public void Step(float deltaSeconds)
         {

@@ -68,6 +68,11 @@ namespace NavalCombatCore
 
         public List<RapidFiringLog> logs = new();
 
+        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            yield break;
+        }
+
         public string DescribeDetail()
         {
             var lines = new List<string>() { $"Detail: {objectId}" };

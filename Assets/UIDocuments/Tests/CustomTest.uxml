@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <LabeledSlider label="Label:1231" value="12.7" />
     <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-        <ui:TextField placeholder-text="filler text" />
+        <ui:TextField value="Hachimi" />
         <ui:Toggle />
     </ui:VisualElement>
     <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
@@ -19,4 +19,8 @@
     </ui:VisualElement>
     <ui:EnumField value="Center" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" style="width: 100px;" />
     <ui:DropdownField choices="Center,Left" index="0" style="width: 100px;" />
+    <ui:TextField placeholder-text="filler text" />
+    <ui:IntegerField value="42" />
+    <ui:FloatField value="42.2" />
+    <ui:LongField value="42" />
 </ui:UXML>

@@ -215,6 +215,11 @@ namespace NavalCombatCore
         public int reloadLimit; // Mainly for torpedo, 0 denotes no limit, > 0 will restrict max ammunition reloaded to the mount generated from this record. It represents separated ammunition room or single-shot torpedo tube.
         public string SummaryArcs() => string.Join(",", mountArcs.Select(arc => arc.Summary()));
 
+        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            yield break;
+        }
+
         public bool IsInArc(float bearingRelativeToBowDeg)
         {
             return mountArcs.Any(arc => arc.IsInArc(bearingRelativeToBowDeg));

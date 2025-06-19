@@ -126,10 +126,11 @@ namespace NavalCombatCore
         public override string ToString() => Summary();
     }
 
-    public partial class AbstractMountStatusRecord : UnitModule
+    public abstract partial class AbstractMountStatusRecord : UnitModule
     {
         // public string objectId { get; set; }
         public MountStatus status;
+        public int barrels;
 
         public string firingTargetObjectId;
         public ShipLog GetFiringTarget()
@@ -184,6 +185,11 @@ namespace NavalCombatCore
         public float reloadingSeconds;
         public int reloadedLoad;
 
+        public override IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            yield break;
+        }
+
 
         public MountLocationRecordInfo GetTorpedoMountLocationRecordInfo()
         {
@@ -210,9 +216,10 @@ namespace NavalCombatCore
         public void ResetDamageExpenditureState()
         {
             var info = GetTorpedoMountLocationRecordInfo().record;
-            currentLoad = info.barrels;
+            barrels = info.barrels;
+            currentLoad = barrels;
             reloadingSeconds = 0;
-            reloadedLoad = info.barrels;
+            reloadedLoad = barrels;
         }
 
         public void SetFiringTarget(ShipLog target)
@@ -226,7 +233,7 @@ namespace NavalCombatCore
             var platform = EntityManager.Instance.GetParent<ShipLog>(this);
             var recordInfo = GetTorpedoMountLocationRecordInfo();
 
-            var requested = recordInfo.record.barrels - currentLoad;
+            var requested = barrels - currentLoad;
             var ammunitionCap = platform.torpedoSectorStatus.ammunition;
             var reloadLimitCap = recordInfo.record.reloadLimit == 0 ? int.MaxValue : recordInfo.record.reloadLimit - reloadedLoad;
             var transferred = Math.Min(reloadLimitCap, Math.Min(requested, ammunitionCap));
@@ -238,7 +245,7 @@ namespace NavalCombatCore
 
                 while (reloadingSeconds >= 360 && transferred > 0) // 6min torpedo reload time (SK5 & DoB)
                 {
-                    requested = recordInfo.record.barrels - currentLoad;
+                    requested = barrels - currentLoad;
                     ammunitionCap = platform.torpedoSectorStatus.ammunition;
                     transferred = Math.Min(reloadLimitCap, Math.Min(requested, ammunitionCap));
 
@@ -311,6 +318,11 @@ namespace NavalCombatCore
         public AmmunitionType ammunitionType;
 
         public List<MountFiringRecord> logs = new();
+
+        public override IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            yield break;
+        }
 
         public string DescribeDetail()
         {
@@ -674,6 +686,7 @@ namespace NavalCombatCore
             status = MountStatus.Operational;
             firingTargetObjectId = null;
             processSeconds = 0;
+            barrels = GetMountLocationRecordInfo().record.barrels;
 
             logs.Clear();
         }

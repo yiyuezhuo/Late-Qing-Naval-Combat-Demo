@@ -54,6 +54,11 @@ namespace NavalCombatCore
         public string hitTargetObjectId;
         public ShipLog GetHitObject() => EntityManager.Instance.Get<ShipLog>(hitTargetObjectId);
         public float inflictDamagePoint;
+        
+        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            yield break;
+        }
 
         public void StepMoveToNewPosition(float deltaSeconds)
         {
@@ -81,7 +86,7 @@ namespace NavalCombatCore
                     var damageClass = classSector.damageClass;
                     var pistolType = classSector.pistolType;
                     var dudProb = classSector.dudProbability;
-                    
+
                     newPositionBlocked = true;
 
                     if (RandomUtils.rand.NextDouble() <= dudProb)

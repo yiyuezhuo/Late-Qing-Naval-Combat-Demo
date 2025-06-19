@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace NavalCombatCore
 {
     public enum AutomaticType
@@ -6,7 +8,7 @@ namespace NavalCombatCore
         Automatic // AI
     }
 
-    public class Inheriable<T> where T: new()
+    public class Inheriable<T> where T : new()
     {
         public bool isInherited = true;
         public T value = new();
@@ -58,6 +60,11 @@ namespace NavalCombatCore
         public InheriableUnspecifiableFloat maximumFiringDistanceYardsFor100mmLess = new(); // rapid firing gun
         public InheriableUnspecifiableFloat maximumFiringDistanceYardsForTorpedo = new();
         // public Inheriable<Unspecifiable<float>> maximumFiringDistanceYardsFor100mmTo200mm = new();
+
+        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            yield break;
+        }
 
         public Doctrine GetParentDocrine()
         {

@@ -27,7 +27,7 @@ namespace NavalCombatCore
     [XmlInclude(typeof(SinkingState))]
     [XmlInclude(typeof(BatteryMountStatusModifier))]
     [XmlInclude(typeof(RateOfFireModifier))]
-    [XmlInclude(typeof(FireControlSystemDisabledModifier))]
+    [XmlInclude(typeof(ControlSystemDisabledModifier))]
     [XmlInclude(typeof(FireControlValueModifier))]
     public class SubState
     {
@@ -208,7 +208,7 @@ namespace NavalCombatCore
 
     public interface IBatteryFireContrlStatusModifier
     {
-        MountStatus GetBatteryFireControlMountStatus();
+        bool GetBatteryFireControlDisabled(); // Tracking system use different status representation for now.
     }
 
 
@@ -233,7 +233,7 @@ namespace NavalCombatCore
         }
     }
 
-    public class FireControlSystemDisabledModifier : SubState, IBatteryMountStatusModifier, IBatteryFireContrlStatusModifier
+    public class ControlSystemDisabledModifier : SubState, IBatteryMountStatusModifier, IBatteryFireContrlStatusModifier
     {
         public MountStatus batteryMountStatus = MountStatus.Disabled;
         public MountStatus batteryFireControlMountStatus = MountStatus.Disabled;
@@ -243,9 +243,9 @@ namespace NavalCombatCore
             return batteryMountStatus;
         }
 
-        public MountStatus GetBatteryFireControlMountStatus()
+        public bool GetBatteryFireControlDisabled()
         {
-            return batteryFireControlMountStatus;
+            return true;
         }
 
         void ResetTrackingState(ISubject subject)
@@ -288,6 +288,32 @@ namespace NavalCombatCore
         public float GetFireControlValueCoef()
         {
             return fireControlValueCoef;
+        }
+    }
+
+    public class RiskingInMagazineExplosion : SubState
+    {
+        public float explosionProbPercent = 10; // 10%
+        public float sinkingThreshold = 25;
+
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            if (subject is ShipLog shipLog) // This sub state can only be attached to ShipLog
+            {
+                if (RandomUtils.D100F() <= explosionProbPercent)
+                {
+                    EndAt(shipLog);
+
+                    shipLog.operationalState = DamageEffectChart.MaxEnum(shipLog.operationalState, ShipOperationalState.FloodingObstruction);
+                    var DE = new SinkingState()
+                    {
+                        lifeCycle = StateLifeCycle.DieRollPassed,
+                        dieRollThreshold = sinkingThreshold
+                    };
+                    DE.BeginAt(shipLog);
+                    // TODO: Impelement "Move ship to a position equivalent to its location midway through MOVEMENT PHASE"
+                }
+            }
         }
     }
 }

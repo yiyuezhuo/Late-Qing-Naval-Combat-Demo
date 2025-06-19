@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using MathNet.Numerics.Distributions;
 using Acornima.Ast;
+using Unity.VisualScripting;
+using System.Security.Cryptography.X509Certificates;
 
 namespace NavalCombatCore
 {
@@ -73,9 +75,13 @@ namespace NavalCombatCore
             }
         }
 
-        public static bool IsA(DamageEffectContext ctx) => ctx.ammunitionType != AmmunitionType.HighExplosive && ctx.hitPenDetType == HitPenDetType.PenetrateWithDetonate;
-        public static bool IsB(DamageEffectContext ctx) => ctx.ammunitionType != AmmunitionType.HighExplosive && ctx.hitPenDetType == HitPenDetType.PassThrough;
-        public static bool IsC(DamageEffectContext ctx) => ctx.ammunitionType != AmmunitionType.HighExplosive && ctx.hitPenDetType == HitPenDetType.NoPenetration;
+        // public static bool IsA(DamageEffectContext ctx) => ctx.ammunitionType != AmmunitionType.HighExplosive && ctx.hitPenDetType == HitPenDetType.PenetrateWithDetonate;
+        // public static bool IsB(DamageEffectContext ctx) => ctx.ammunitionType != AmmunitionType.HighExplosive && ctx.hitPenDetType == HitPenDetType.PassThrough;
+        // public static bool IsC(DamageEffectContext ctx) => ctx.ammunitionType != AmmunitionType.HighExplosive && ctx.hitPenDetType == HitPenDetType.NoPenetration;
+        public static bool IsA(DamageEffectContext ctx) => ctx.hitPenDetType == HitPenDetType.PenetrateWithDetonate;
+        public static bool IsB(DamageEffectContext ctx) => ctx.hitPenDetType == HitPenDetType.PassThrough;
+        public static bool IsC(DamageEffectContext ctx) => ctx.hitPenDetType == HitPenDetType.NoPenetration;
+
         public static bool IsHE(DamageEffectContext ctx) => ctx.ammunitionType == AmmunitionType.HighExplosive;
         public static bool IsAB(DamageEffectContext ctx) => IsA(ctx) || IsB(ctx);
 
@@ -145,6 +151,16 @@ namespace NavalCombatCore
                 return false;
             }
             adjMount = RandomUtils.Sample(potentialList);
+            return true;
+        }
+
+        public static bool TryToSampleATorpedoMount(DamageEffectContext ctx, out TorpedoMountStatusRecord mount)
+        {
+            mount = null;
+            if (ctx.subject.torpedoSectorStatus.mountStatus.Count == 0)
+                return false;
+
+            mount = RandomUtils.Sample(ctx.subject.torpedoSectorStatus.mountStatus);
             return true;
         }
 
@@ -222,15 +238,45 @@ namespace NavalCombatCore
             }
         }
 
+        public static void Lost1RandomRapidFiringBatteryBoxAnd1FCSBox(DamageEffectContext ctx)
+        {
+            // Permanent loss of 1 box in one Rapid Fire battery. Roll to determine battery (if more than one) and roll to determine location [Port/STBD]
+            if (ctx.subject.rapidFiringStatus.Count > 0)
+            {
+                var rapidFiringStatus = RandomUtils.Sample(ctx.subject.rapidFiringStatus);
+                var hitPort = RandomUtils.NextFloat() < 0.5f;
+                if (hitPort)
+                {
+                    rapidFiringStatus.portMountHits += 1;
+                }
+                else
+                {
+                    rapidFiringStatus.starboardMountHits += 1;
+                }
+                rapidFiringStatus.fireControlHits += 1;
+            }
+        }
+
+
         public static void AddShipboardFire(DamageEffectContext ctx, string cause, float severity)
         {
             var shipboardFire = new SubState()
             {
                 lifeCycle = StateLifeCycle.ShipboardFire,
-                casue = cause,
+                cause = cause,
                 severity = severity
             };
             shipboardFire.BeginAt(ctx.subject);
+        }
+
+        public static void SetOOA(MountStatusRecord mount)
+        {
+            mount.status = MaxEnum(mount.status, MountStatus.Disabled);
+        }
+
+        public static void SetOOA(FireControlSystemStatusRecord fcs)
+        {
+            fcs.trackingState = TrackingSystemState.Destroyed;
         }
 
         public static Dictionary<string, Action<DamageEffectContext>> damageEffectMap = new() // DE id => Enforcer (enforcer will immdiately update some states and may append persistence DE state)
@@ -245,13 +291,13 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.DieRollPassed,
                         dieRollThreshold = 25,
-                        casue = "DE100 (A/B): Magazine explosion."
+                        cause = "DE100 (A/B): Magazine explosion."
                     };
                     damageEffect.BeginAt(ctx.subject);
                 }
                 else
                 {
-                    AddShipboardFire(ctx, "DE100 (C/HE): Shipboard fire only.", 50);
+                    AddShipboardFire(ctx, "DE100 (C): Shipboard fire only.", 50);
 
                     var d100 = RandomUtils.D100F();
                     if(d100 < 5)
@@ -276,12 +322,11 @@ namespace NavalCombatCore
                 else
                 {
                     // Shipboard fire only, Severity 40. No additional DE
-                    AddShipboardFire(ctx, "DE100 (C/HE): Shipboard fire only.", 40);
-
-                    if (IsHE(ctx))
-                    {
-                        Lost1RandomRapidFiringBatteryBox(ctx);
-                    }
+                    AddShipboardFire(ctx, "DE100 (C): Shipboard fire only.", 40);
+                }
+                if (IsHE(ctx))
+                {
+                    Lost1RandomRapidFiringBatteryBox(ctx);
                 }
             } },
 
@@ -319,11 +364,10 @@ namespace NavalCombatCore
                             damageEffect.BeginAt(mountStatus);
                         }
                     }
-
-                    if (IsHE(ctx))
-                    {
-                        AddShipboardFire(ctx, "DE102 (HE): Shipboard fire Severity 30.", 30);
-                    }
+                }
+                if (IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE102 (HE): Shipboard fire Severity 30.", 30);
                 }
             } },
 
@@ -342,7 +386,7 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.SeverityBased,
                         severity = severity,
-                        casue = "DE 103: One primary battery turret or gunmount OOA."
+                        cause = "DE 103: One primary battery turret or gunmount OOA."
                     };
                     DE.BeginAt(mountStatus);
                 }
@@ -411,7 +455,7 @@ namespace NavalCombatCore
                         var DE = new RateOfFireModifier()
                         {
                             lifeCycle = StateLifeCycle.Permanent,
-                            casue = "DE 105: Ammo Hoist or handling/handling room in one primary battery turret or gunmount OOA permanently"
+                            cause = "DE 105: Ammo Hoist or handling/handling room in one primary battery turret or gunmount OOA permanently"
                         };
                         DE.BeginAt(mount);
                     }
@@ -420,7 +464,7 @@ namespace NavalCombatCore
                         var DE = new RateOfFireModifier()
                         {
                             lifeCycle = StateLifeCycle.GivenTime,
-                            casue = "DE 104: Ammo Hoist or handling/handling room in one primary battery turret or gunmount OOA next turn"
+                            cause = "DE 104: Ammo Hoist or handling/handling room in one primary battery turret or gunmount OOA next turn"
                         };
                         DE.BeginAt(mount);
                     }
@@ -429,14 +473,14 @@ namespace NavalCombatCore
                     {
                         if(IsA(ctx))
                         {
-                            AddShipboardFire(ctx, "DE 104 (A)", 30);
+                            AddShipboardFire(ctx, "DE 105 (A): Hit on Ammo Hoist or handling room", 30);
                         }
                         RollForAdditionalDamageEffect(ctx, new[]{"109", "109", "102", "179", ""});
                     }
                     // HE: if a CLASS A hit. on a roll of 01-20, fire in primary battery magazine.
                     // Roo to determine section location of affected magazine. Triple total DP caused by this hit.
                     // Magazines are flooded and all guns serviced by this magazine (located in affected section) may not fire for the duration of the battle.
-                    if (IsHE(ctx) && ctx.hitPenDetType == HitPenDetType.PenetrateWithDetonate && RandomUtils.D100F() <= 20)
+                    if (IsHE(ctx) && IsA(ctx) && RandomUtils.D100F() <= 20)
                     {
                         ctx.subject.damagePoint += 2 * ctx.baseDamagePoint;
                         var affectedLocation = mount.mountLocation;
@@ -457,7 +501,7 @@ namespace NavalCombatCore
                     // var word = "";
                     var DE = new RateOfFireModifier()
                     {
-                        casue = $"DE 106: Ammo Hoist or handling/handling room OOA permanently"
+                        cause = $"DE 106: Ammo Hoist or handling/handling room OOA permanently"
                     };
 
                     if (IsAB(ctx))
@@ -470,7 +514,7 @@ namespace NavalCombatCore
                         DE.BeginAt(secOrTerMount);
                     }
 
-                    if(IsHE(ctx) && ctx.hitPenDetType == HitPenDetType.PenetrateWithDetonate && RandomUtils.D100F() <= 10)
+                    if(IsHE(ctx) && IsA(ctx) && RandomUtils.D100F() <= 10)
                     {
                         ctx.subject.damagePoint += ctx.baseDamagePoint; // DOuble total DP caused by this hit
                         var affectedSector = secOrTerMount.mountLocation;
@@ -529,7 +573,7 @@ namespace NavalCombatCore
                 {
                     var DE = new BatteryMountStatusModifier()
                     {
-                        casue="DE 108: Damage to secondary battery control system",
+                        cause="DE 108: Damage to secondary battery control system",
                         lifeCycle = StateLifeCycle.GivenTime
                     };
                     DE.BeginAt(secondaryBattery);
@@ -571,7 +615,7 @@ namespace NavalCombatCore
 
                             var DE = new RiskingInMagazineExplosion()
                             {
-                                casue = "DE 109 (A): Potential magazine explosion in primary battery ready-use ammo",
+                                cause = "DE 109 (A): Potential magazine explosion in primary battery ready-use ammo",
                                 lifeCycle = StateLifeCycle.GivenTime,
                                 givenTimeSeconds = 120,
                                 explosionProbPercent = 10,
@@ -588,7 +632,7 @@ namespace NavalCombatCore
                         if(TryToSampleAPrimaryBatteryMount(ctx, out var mount))
                         {
                             var DE = new BatteryMountStatusModifier(){
-                                casue="DE 109 (C/HE): Battery mount temporarily OOA"
+                                cause="DE 109 (AB): Battery mount temporarily OOA"
                             };
                             DE.BeginAt(mount);
                         }
@@ -620,7 +664,7 @@ namespace NavalCombatCore
 
                         var DE = new RiskingInMagazineExplosion()
                         {
-                            casue = "DE 110 (A/B): Potential magazine explosion in secondary battery ready-use ammo",
+                            cause = "DE 110 (A/B): Potential magazine explosion in secondary battery ready-use ammo",
                             lifeCycle = StateLifeCycle.GivenTime,
                             givenTimeSeconds = 120,
                             explosionProbPercent = 5,
@@ -643,14 +687,504 @@ namespace NavalCombatCore
                     }
                     else
                     {
-                        AddShipboardFire(ctx, "DE 110 (C/HE, no secondary battery): Shipboard fire severity 30", 30);
+                        AddShipboardFire(ctx, "DE 110 (C, no secondary battery): Shipboard fire severity 30", 30);
                     }
                 }
             }},
 
-            // DE 111
+            // DE 111, hit on primary battery's one barrel
             {"111", ctx=>{
+                if(TryToSampleAPrimaryBatteryMount(ctx, out var primaryBatteryMount))
+                {
+                    primaryBatteryMount.barrels = Math.Max(0, primaryBatteryMount.barrels - 1); // One gun in primary battery turret or gunmount OOA. Permannent damage.
 
+                    if(IsAB(ctx))
+                    {
+                        Lost1RandomRapidFiringBatteryBox(ctx);
+
+                        if(RandomUtils.D100F() <= 60)
+                        {
+                            primaryBatteryMount.status = MaxEnum(primaryBatteryMount.status, MountStatus.Disabled);
+                            AddShipboardFire(ctx, "DE 111 (A/B): ready-use ammo fire, severity 50", 50);
+                        }
+                    }
+                    if(IsHE(ctx))
+                    {
+                        AddShipboardFire(ctx, "DE 111 (HE): Shipboard fire severity 30", 30);
+                    }
+                }
+            }},
+
+            // DE 112, Shock damage. Primary battery guns and FCS out of alignment.
+            { "112", ctx=>{
+                if(TryGetPrimaryBattery(ctx, out var primaryBattery))
+                {
+                    var offset = (IsAB(ctx) && !IsHE(ctx)) ? -2 : -1;
+
+                    var DE = new FireControlValueModifier()
+                    {
+                        cause = "DE 112: Shock damage. Primary battery guns and FCS out of alignment",
+                        fireControlValueCoef = 0.5f,
+                        fireControlValueOffset = offset,
+                    };
+                    DE.BeginAt(primaryBattery);
+
+                    if(IsAB(ctx))
+                    {
+                        Lost1RandomRapidFiringBatteryBoxAnd1FCSBox(ctx);
+                        if(RandomUtils.D100F() <= 60)
+                        {
+                            var DE2 = new ControlSystemDisabledModifier()
+                            {
+                                cause="DE 112: Shock Damage Impact Control System",
+                                lifeCycle = StateLifeCycle.GivenTime,
+                            };
+                            DE2.BeginAt(ctx.subject);
+                        }
+                    }
+
+                    if(IsHE(ctx))
+                    {
+                        AddShipboardFire(ctx, "DE 112 (HE): Shipboard fire severity 20", 20);
+                    }
+                }
+            }},
+
+            // DE 113: hit on secondary battery, FCS and rapid RF batteries
+            {"113", ctx=>{
+                if(TryToSampleASecondaryBatteryMount(ctx, out var secondaryMount))
+                {
+                    // secondaryMount.status = MaxEnum(secondaryMount.status, MountStatus.Disabled);
+                    SetOOA(secondaryMount);
+
+                    if (IsAB(ctx))
+                    {
+                        var fcsRecs = ctx.subject.batteryStatus[1].fireControlSystemStatusRecords;
+                        if(fcsRecs.Count > 0)
+                        {
+                            var fcsRec = RandomUtils.Sample(fcsRecs);
+                            SetOOA(fcsRec);
+                            Lost1RandomRapidFiringBatteryBoxAnd1FCSBox(ctx);
+                        }
+
+                        // Port OR Starboard searchlight battery OOA. Permanent damage.
+                        if(RandomUtils.D100F() <= 50)
+                        {
+                            ctx.subject.searchLightHits.portHit += 1;
+                        }
+                        else
+                        {
+                            ctx.subject.searchLightHits.starboardHit += 1;
+                        }
+
+                        RollForAdditionalDamageEffect(ctx, new[]{"114", "113", "161", "132", ""});
+                    }
+                    if(IsHE(ctx))
+                    {
+                        AddShipboardFire(ctx, "DE 113 (HE): Shipboard fire severity 20", 20);
+                    }
+                }
+                else
+                {
+                    var percent = IsAB(ctx) ? 75 : 65;
+                    if(RandomUtils.D100F() <= percent)
+                    {
+                        AddNewDamageEffect(ctx, "111");
+                    }
+                }
+            }},
+
+            // DE 114, hit on secondary magazine or read-use ammo
+            {"114", ctx=>{
+                if(TryToSampleASecondaryBatteryMount(ctx, out var secondaryMount))
+                {
+                    ctx.baseDamagePoint += ctx.baseDamagePoint;
+
+                    if(IsAB(ctx))
+                    {
+                        var affectedMounts = ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus).Where(mnt => mnt.mountLocation == secondaryMount.mountLocation).ToList();
+                        foreach(var mnt in affectedMounts)
+                        {
+                            SetOOA(mnt);
+                        }
+                    }
+                    else
+                    {
+                        SetOOA(secondaryMount);
+                        AddShipboardFire(ctx, "DE 114 (C): Ready-use ammo fire in secondary battery turret or mount. Shipboard fire severity 40", 40);
+                    }
+                    if(IsHE(ctx))
+                    {
+                        AddShipboardFire(ctx, "DE 114 (HE): Shipboard fire severity 30", 30);
+                    }
+                }
+                else
+                {
+                    AddNewDamageEffect(ctx, "101");
+                }
+            }},
+
+            // DE 115, Crew casualties in primary battery turret or gunmount
+            {"115", ctx=>{
+                if(TryToSampleAPrimaryBatteryMount(ctx, out MountStatusRecord mount))
+                {
+                    SetOOA(mount);
+                    var percent = IsAB(ctx) ? 60 : 30;
+                    if(RandomUtils.D100F() <= percent)
+                    {
+                        var fcsRecs = ctx.subject.batteryStatus[0].fireControlSystemStatusRecords;
+                        if(fcsRecs.Count > 0)
+                        {
+                            var fcsRec = RandomUtils.Sample(ctx.subject.batteryStatus[0].fireControlSystemStatusRecords);
+                            SetOOA(fcsRec);
+                        }
+                    }
+                    if(IsAB(ctx))
+                    {
+                        Lost1RandomRapidFiringBatteryBox(ctx);
+                    }
+                    var disabledSeconds = IsHE(ctx) ? 240 : 120;
+                    var DE = new BatteryMountStatusModifier()
+                    {
+                        lifeCycle = StateLifeCycle.GivenTime,
+                        givenTimeSeconds = disabledSeconds,
+                    };
+                    DE.BeginAt(ctx.subject.batteryStatus[0]);
+                }
+            }},
+
+            // DE 116, Damage to engine spaces
+            {"116", ctx=>{
+                if(IsAB(ctx))
+                {
+                    var idx = Categorical.Sample(new[]{10.0, 20, 70});
+                    var speedOffset = idx - 3;
+                    ctx.subject.dynamicStatus.maxSpeedKnotsOffset += speedOffset;
+
+                    if(RandomUtils.D100F() <= 20)
+                    {
+                        ctx.subject.dynamicStatus.engineRoomHits += 1;
+                    }
+
+                    Lost1RandomRapidFiringBatteryBox(ctx);
+                }
+                else
+                {
+                    ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -1;
+                    if(RandomUtils.D100F() <= 40)
+                    {
+                        ctx.subject.dynamicStatus.accelerationOffset += -1; // There will be at least 0.5 knots accleartion though.
+                    }
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 116 (HE): Shipboard fire severity 40", 40);
+                    Lost1RandomRapidFiringBatteryBox(ctx);
+                }
+            }},
+
+            // DE 117, Damage to engine room
+            {"117", ctx=>{
+                var tempEngineRoomHit = 1;
+                if(IsAB(ctx))
+                {
+                    if(RandomUtils.D100F() <= 40)
+                    {
+                        tempEngineRoomHit += 1;
+                    }
+                    if(RandomUtils.D100F() <= 30)
+                    {
+                        AddShipboardFire(ctx, "DE 117 (AB): Shipboard fire severity 30", 30);
+                    }
+                    RollForAdditionalDamageEffect(ctx, new[]{"152", "116", "153", "154", ""});
+                }
+                var DE = new EngineRoomHitModifier()
+                {
+                    cause = "DE 117: Damage to engine room",
+                    lifeCycle = StateLifeCycle.SeverityBased,
+                    severity = ctx.RollForSeverity(),
+                    engineRoomHitOffset = tempEngineRoomHit,
+                };
+                DE.BeginAt(ctx.subject);
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 117 (HE): Shipboard fire severity 30", 30);
+                }
+            }},
+
+            // DE 118, Damage to engine room
+            { "118", ctx=>{
+                if(IsAB(ctx))
+                {
+                    var idx = Categorical.Sample(new[]{60.0, 30, 10});
+                    var speedOffset = -(idx + 1);
+                    ctx.subject.dynamicStatus.maxSpeedKnotsOffset += speedOffset;
+                    ctx.subject.dynamicStatus.accelerationOffset += -1;
+
+                    RollForAdditionalDamageEffect(ctx, new[]{"117", "119", "123", "151", ""});
+                }
+                else
+                {
+                    ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -1;
+                }
+                AddShipboardFire(ctx, "DE 118 (HE): Shipboard fire severity 20", 20);
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 118 (HE): Shipboard fire severity 40", 40);
+                }
+            }},
+
+            // TODO: DE 119, Skip, It's for oil fueled ship so table for 1880-1905 doesn't include it, and it require more state in ship class.
+            // {"119", ctx=>{
+
+            // }},
+
+            // DE 120, Steam Line Damaged
+            {"120", ctx=>{
+                if(IsAB(ctx))
+                {
+                    var DE = new SteamLineDamaged()
+                    {
+                        lifeCycle=StateLifeCycle.SeverityBased,
+                        severity=ctx.RollForSeverity(),
+                        cause="DE 120, Steam Line Damaged"
+                    };
+                    DE.BeginAt(ctx.subject);
+                    var DE2 = new DamageControlRatingModifier()
+                    {
+                        lifeCycle=StateLifeCycle.GivenTime,
+                        fireControlRatingOffset=-1,
+                        cause="DE 120, Steam Line Damaged"
+                    };
+                    DE2.BeginAt(ctx.subject);
+                }
+                else
+                {
+                    ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -1;
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 120 (HE): Damage to Steam Line, Shipboard fire severity 20", 20);
+                }
+            }},
+
+            // DE 121
+            {"121", ctx=>{
+                if(IsAB(ctx))
+                {
+                    var DE = new FeedwaterPumpDamaged()
+                    {
+                        lifeCycle=StateLifeCycle.SeverityBased,
+                        severity=ctx.RollForSeverity(),
+                        cause="DE 121 (A/B), Damage to main feedwater pump"
+                    };
+                    DE.BeginAt(ctx.subject);
+
+                    RollForAdditionalDamageEffect(ctx, new[]{"123", "130", "151", "154", ""});
+                }
+                else
+                {
+                    var DE = new FeedwaterPumpDamaged()
+                    {
+                        lifeCycle=StateLifeCycle.GivenTime,
+                        cause="DE 121 (C), Damage to main feedwater pump"
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 121 (HE): Damage to main feedwater pump, Shipboard fire severity 30", 30);
+                }
+            }},
+
+            // DE 122, Damage to fuel supply (this is not included in the Ironclad DE table as well)
+            {"122", ctx=>{
+                // Damage to fuel supply. For the duration of the game, a roll of 01-10 at the beginning of any MOVEMENT PHASE causes the ship to lose power and reduce to one-half of maxnimum capable speed. 
+                // If power is lost, rolls continue and ship may not begin acceleration until turn following a roll of 01-10 during the DAMAGE PHASE.
+                if(IsAB(ctx))
+                {
+                    var DE = new FuelSupplyDamaged()
+                    {
+                        lifeCycle = StateLifeCycle.Permanent,
+                        cause="DE 122: Damage to fuel supply",
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+                else
+                {
+                    var DE = new FuelSupplyDamaged()
+                    {
+                        lifeCycle = StateLifeCycle.GivenTime,
+                        cause="DE 122: Damage to fuel supply",
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 122 (HE): Damage to fuel supply, Shipboard fire severity 40", 40);
+                }
+            }},
+
+            {"123", ctx=>{
+                if(IsAB(ctx))
+                {
+                    // Flooding in one boiler room. Boiler room is permanently OOA
+                    ctx.subject.dynamicStatus.boilerRoomFloodingHits += 1;
+                    if(RandomUtils.D100F() <= 25)
+                    {
+                        ctx.subject.damagePoint += ctx.baseDamagePoint;
+                    }
+                    RollForAdditionalDamageEffect(ctx, new[]{"168", "170", "180", "182", ""});
+                }
+                else
+                {
+                    AddShipboardFire(ctx, "DE 123 (C): Shipboard fire severity 20", 20);
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 123 (HE): Shipboard fire severity 30", 30);
+                }
+            }},
+
+            // DE 124, Lost off communication to engine room
+            { "124", ctx=>{
+                var DE = new EngineRoomCommunicationDamaged()
+                {
+                    cause="DE 124, Loss of communication to engine room"
+                };
+                DE.BeginAt(ctx.subject);
+
+                RollForAdditionalDamageEffect(ctx, new[]{"147", "147", "127", "163", ""});
+
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 124 (HE): Shipboard fire severity 20", 20);
+                }
+            }},
+
+            // DE 125, Damage to boiler room
+            {"125", ctx=>{
+                if(IsAB(ctx))
+                {
+                    var bolierRoomHitOffset = RandomUtils.D100F() <= 40 ? 2 : 1;
+                    var DE = new BoilerRoomHitModifier
+                    {
+                        lifeCycle = StateLifeCycle.SeverityBased,
+                        severity = ctx.RollForSeverity(),
+                        boilerRoomHitOffset = bolierRoomHitOffset,
+                        cause = "DE 125 (A/B), Damage to boiler room"
+                    };
+                    DE.BeginAt(ctx.subject);
+
+                    RollForAdditionalDamageEffect(ctx, new[]{"126", "119", "118", "154", ""});
+                }
+                else
+                {
+                    var DE = new BoilerRoomHitModifier
+                    {
+                        lifeCycle = StateLifeCycle.GivenTime,
+                        boilerRoomHitOffset = 1,
+                        cause = "DE 125 (C), Damage to boiler room"
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 125 (HE): Shipboard fire severity 30", 30);
+                }
+            }},
+
+            // DE 126
+            {"126", ctx=>{
+                if(IsAB(ctx))
+                {
+                    ctx.subject.dynamicStatus.engineRoomFloodingHits += 1;
+                    if(RandomUtils.D100F() <= 20)
+                    {
+                        ctx.subject.dynamicStatus.boilerRoomFloodingHits += 1;
+                    }
+
+                    if(TryToSampleAPrimaryBatteryMount(ctx, out var primaryMount))
+                    {
+                        foreach(var mnt in ctx.subject.batteryStatus[0].mountStatus.Where(mnt => mnt.mountLocation == primaryMount.mountLocation))
+                        {
+                            var DE = new BatteryMountStatusModifier()
+                            {
+                                lifeCycle = StateLifeCycle.GivenTime,
+                                cause = "DE 126 (A/B)"
+                            };
+                            DE.BeginAt(mnt);
+                        }
+                    }
+
+                    RollForAdditionalDamageEffect(ctx, new[]{"125", "126", "169", "118", ""});
+                }
+                else
+                {
+                    AddShipboardFire(ctx, "DE 126 (C): Shipboard fire severity 20", 20);
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 126 (HE): Shipboard fire severity 30", 30);
+                }
+            }},
+
+            // DE 127, hit on torpedo mount and smoke generator
+            {"127", ctx=>{
+                if(TryToSampleATorpedoMount(ctx, out var torpedoMount))
+                {
+                    var DE = new TorpedoMountDamaged()
+                    {
+                        lifeCycle = StateLifeCycle.Permanent,
+                        operationalPercent = 50,
+                        cause = "DE 127, hit on torpedo mount"
+                    };
+                    DE.BeginAt(torpedoMount);
+
+                    if(IsHE(ctx))
+                    {
+                        var DE2 = new TorpedoMountModifer()
+                        {
+                            lifeCycle = StateLifeCycle.GivenTime,
+                            givenTimeSeconds = 240,
+                            cause = "DE 127 (HE)"
+                        };
+                        DE2.BeginAt(torpedoMount);
+                    }
+                }
+                var DE3 = new SmokeGeneratorDamaged()
+                {
+                    lifeCycle = StateLifeCycle.Permanent,
+                    availablePercent=50,
+                    cause = "DE 127, hit on smoke generator"
+                };
+                DE3.BeginAt(ctx.subject);
+                AddShipboardFire(ctx, "DE 127: hit on torpedo mount, Shipboard fire severity 30", 30);
+                RollForAdditionalDamageEffect(ctx, new[]{"125", "126", "169", "118", ""});
+            }},
+
+            // DE 128, shipboard fire and smoke affect firing
+            {"128", ctx=>{
+                var disableTorpedo = IsHE(ctx);
+
+                var DE = new SectorFireState()
+                {
+                    lifeCycle = StateLifeCycle.ShipboardFire,
+                    severity = 50,
+                    cause = "DE 128, shipboard fire and smoke affect firing",
+                    fireAndSmokeLocation = RandomUtils.Sample(new List<SectorFireState.SectionLocation>(){
+                        SectorFireState.SectionLocation.Front,
+                        SectorFireState.SectionLocation.Midship,
+                        SectorFireState.SectionLocation.After
+                    }),
+                    disableTorpedo=disableTorpedo
+                };
+                DE.BeginAt(ctx.subject);
+                
+                if(IsAB(ctx))
+                {
+                    RollForAdditionalDamageEffect(ctx, new[]{"158", "159", "163", "164", ""});
+                }
             }},
         };
     }

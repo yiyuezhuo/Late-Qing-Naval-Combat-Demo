@@ -76,6 +76,11 @@
                                                     <ui:DataBinding property="value" data-source-path="assistedDeceleration" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:Toggle>
+                                            <ui:FloatField label="Desired Speed (Boiler Room)">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="desiredSpeedKnotsForBoilerRoom" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:FloatField>
                                             <ui:VisualElement style="flex-grow: 1; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                                                 <ui:EnumField label="Control Mode" value="Center" type="NavalCombatCore.ControlMode, Assembly-CSharp">
                                                     <Bindings>
@@ -143,9 +148,14 @@
                                                     <ui:DataBinding property="highValue" data-source-path="shipClassProperty.damagePoint" binding-mode="ToTarget" />
                                                 </Bindings>
                                             </ui:ProgressBar>
-                                            <ui:FloatField label="Speed (knot) Mod.">
+                                            <ui:FloatField label="Max Speed Offset">
                                                 <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="dynamicStatus.speedKnotsDirectModifier" binding-mode="TwoWay" />
+                                                    <ui:DataBinding property="value" data-source-path="dynamicStatus.maxSpeedKnotsOffset" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:FloatField>
+                                            <ui:FloatField label="Acceleration Offset">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="dynamicStatus.accelerationOffset" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:FloatField>
                                             <ui:SliderInt label="Engine Room Hits" high-value="100" show-input-field="true">
@@ -166,6 +176,16 @@
                                                     <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsBoilerRooms" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count" />
                                                 </Bindings>
                                             </ui:SliderInt>
+                                            <ui:IntegerField label="Engine Room Flooding">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="dynamicStatus.engineRoomFloodingHits" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:IntegerField>
+                                            <ui:IntegerField label="Boiler Room Flooding">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="dynamicStatus.boilerRoomFloodingHits" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:IntegerField>
                                             <ui:IntegerField label="Dmg Ctrl Rating">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="damageControlRatingHits" binding-mode="TwoWay" />

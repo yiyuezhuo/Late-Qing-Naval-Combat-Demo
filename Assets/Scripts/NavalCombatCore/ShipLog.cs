@@ -24,14 +24,20 @@ namespace NavalCombatCore
 
     public class DynamicStatus
     {
-        public float speedKnotsDirectModifier;
+        public float maxSpeedKnotsOffset; // May be inflicted by DE (EX. DE 116)
+        public float accelerationOffset; // May be infliceted by DE as well
         public int engineRoomHits;
         public int propulsionShaftHits;
         public int boilerRoomHits;
 
+        // Machinery Space Flooding Hit Percent >= 80% will lead to roll of 75% causing ship to capsize / sink. 
+        public int engineRoomFloodingHits;
+        public int boilerRoomFloodingHits;
+
         public void ResetDamageExpenditureState()
         {
-            speedKnotsDirectModifier = 1;
+            maxSpeedKnotsOffset = 0;
+            accelerationOffset = 0;
             engineRoomHits = 0;
             propulsionShaftHits = 0;
             boilerRoomHits = 0;
@@ -182,6 +188,23 @@ namespace NavalCombatCore
         }
 
         public abstract IEnumerable<IObjectIdLabeled> GetSubObjects();
+
+        public IEnumerable<T> GetSubState<T>()
+        {
+            foreach (var subState in subStates)
+            {
+                if (subState is T t)
+                    yield return t;
+            }
+            var parent = EntityManager.Instance.GetParent<UnitModule>(this);
+            if (parent != null)
+            {
+                foreach (var t in parent.GetSubState<T>())
+                {
+                    yield return t;
+                }
+            }
+        }
     }
 
 
@@ -212,12 +235,13 @@ namespace NavalCombatCore
         public LatLon position = new();
         public float speedKnots; // current speed vs "max" speed defined in the class
         public float headingDeg;
-        public float desiredSpeedKnots;
+        public float desiredSpeedKnot;
         public float desiredHeadingDeg;
         public MapState mapState;
         // DCR Modifier or DCR modifier type?
 
         public ShipOperationalState operationalState = ShipOperationalState.Operational;
+        public float desiredSpeedKnotsForBoilerRoom; // DE 124, process command delay. Desired Speed Knot known by boiler room operator is the "effective" desired speed. 
 
         public float GetLatitudeDeg() => position.LatDeg;
         public float GetLongitudeDeg() => position.LonDeg;
@@ -307,7 +331,7 @@ namespace NavalCombatCore
         public void ResetDamageExpenditureState()
         {
             desiredHeadingDeg = headingDeg;
-            desiredSpeedKnots = speedKnots;
+            desiredSpeedKnotsForBoilerRoom = speedKnots;
 
             damagePoint = 0;
             // foreach (var batteryStatusRec in batteryStatus)
@@ -411,23 +435,23 @@ namespace NavalCombatCore
 
                     if (Math.Abs(expectedDistanceDiffYards) < 20 && Math.Abs(speedKnots - followedTarget.speedKnots) < 1)
                     {
-                        desiredSpeedKnots = followedTarget.speedKnots;
+                        desiredSpeedKnotsForBoilerRoom = followedTarget.speedKnots;
                     }
                     else if (expectedDistanceDiffYards > 0)
                     {
                         if (speedKnots < followedTarget.speedKnots)
                         {
-                            desiredSpeedKnots = shipClass.speedKnots; // max speed
+                            desiredSpeedKnotsForBoilerRoom = shipClass.speedKnots; // max speed
                         }
                         else
                         {
                             if (currentFollowedDistYards > followDistanceYards + extraDistanceYards)
                             {
-                                desiredSpeedKnots = shipClass.speedKnots; // max speed
+                                desiredSpeedKnotsForBoilerRoom = shipClass.speedKnots; // max speed
                             }
                             else
                             {
-                                desiredSpeedKnots = followedTarget.speedKnots;
+                                desiredSpeedKnotsForBoilerRoom = followedTarget.speedKnots;
                             }
                         }
                     }
@@ -435,15 +459,15 @@ namespace NavalCombatCore
                     {
                         if (speedKnots < followedTarget.speedKnots)
                         {
-                            desiredSpeedKnots = followedTarget.speedKnots * 0.9f;
+                            desiredSpeedKnotsForBoilerRoom = followedTarget.speedKnots * 0.9f;
                         }
                         else if (currentFollowedDistM > extraDistanceYards)
                         {
-                            desiredSpeedKnots = followedTarget.speedKnots * 0.8f;
+                            desiredSpeedKnotsForBoilerRoom = followedTarget.speedKnots * 0.8f;
                         }
                         else
                         {
-                            desiredSpeedKnots = 0; // Too harsh? But in fact it
+                            desiredSpeedKnotsForBoilerRoom = 0; // Too harsh? But in fact it
                         }
                     }
                     desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)inverseLine.Azimuth);
@@ -470,12 +494,12 @@ namespace NavalCombatCore
 
                     if (distanceToTargetYards < 20)
                     {
-                        desiredSpeedKnots = relativeToTarget.speedKnots;
+                        desiredSpeedKnotsForBoilerRoom = relativeToTarget.speedKnots;
                         desiredHeadingDeg = relativeToTarget.headingDeg;
                     }
                     else if (shipIsFrontOfTarget && !targetPointIsFrontOfShip) // Wait target to "close"
                     {
-                        desiredSpeedKnots = relativeToTarget.speedKnots * 0.75f;
+                        desiredSpeedKnotsForBoilerRoom = relativeToTarget.speedKnots * 0.75f;
                         desiredHeadingDeg = relativeToTarget.headingDeg;
                     }
                     else // Move to target
@@ -484,7 +508,7 @@ namespace NavalCombatCore
 
                         if (speedKnots < relativeToTarget.speedKnots)
                         {
-                            desiredSpeedKnots = shipClass.speedKnots; // max speed
+                            desiredSpeedKnotsForBoilerRoom = shipClass.speedKnots; // max speed
                         }
                         else
                         {
@@ -494,11 +518,11 @@ namespace NavalCombatCore
                             var extraDistanceYards = extraDistanceNm * 2025.37f;
                             if (distanceToTargetYards > extraDistanceYards)
                             {
-                                desiredSpeedKnots = shipClass.speedKnots; // max speed
+                                desiredSpeedKnotsForBoilerRoom = shipClass.speedKnots; // max speed
                             }
                             else
                             {
-                                desiredSpeedKnots = relativeToTarget.speedKnots * 0.8f;
+                                desiredSpeedKnotsForBoilerRoom = relativeToTarget.speedKnots * 0.8f;
                             }
                         }
                     }
@@ -508,21 +532,27 @@ namespace NavalCombatCore
 
         public void StepProcessSpeed(float deltaSeconds)
         {
-            if (desiredSpeedKnots > speedKnots)
+            var commandBlocked = GetSubState<IDesiredSpeedUpdateToBoilerRoomBlocker>().Any(blocker => blocker.IsDesiredSpeedCommandBlocked());
+            if (!commandBlocked)
+            {
+                desiredSpeedKnotsForBoilerRoom = desiredSpeedKnot;
+            }
+
+            if (desiredSpeedKnotsForBoilerRoom > speedKnots)
             {
                 var accelerationKnotsCapPer2Min = shipClass.speedIncreaseRecord.Where(r => speedKnots >= r.thresholdSpeedKnots).Select(r => r.increaseSpeedKnots).Min();
                 var accelerationKnotsCapPerSec = accelerationKnotsCapPer2Min / 120;
 
                 var accelerationKnotsCapThisPulse = accelerationKnotsCapPerSec * deltaSeconds;
-                speedKnots += Math.Min(desiredSpeedKnots - speedKnots, accelerationKnotsCapThisPulse);
+                speedKnots += Math.Min(desiredSpeedKnotsForBoilerRoom - speedKnots, accelerationKnotsCapThisPulse);
             }
-            else if (desiredSpeedKnots < speedKnots)
+            else if (desiredSpeedKnotsForBoilerRoom < speedKnots)
             {
                 var decelerationKnotsCapPer2Min = shipClass.speedKnots * (assistedDeceleration ? 0.6f : 0.2f);
                 var decelerationKnotsCapPerSec = decelerationKnotsCapPer2Min / 120f;
 
                 var decelerationKnotsCapThisPulse = decelerationKnotsCapPerSec * deltaSeconds;
-                speedKnots -= Math.Min(speedKnots - desiredSpeedKnots, decelerationKnotsCapThisPulse);
+                speedKnots -= Math.Min(speedKnots - desiredSpeedKnotsForBoilerRoom, decelerationKnotsCapThisPulse);
             }
         }
 

@@ -59,7 +59,7 @@ namespace NavalCombatCore
             return "Unknown life cycle";
         }
 
-        public string casue = "";
+        public string cause = "";
         // public bool permanent; // If it's not permanent then this can be damage controlled.
         public bool damageControllable => lifeCycle == StateLifeCycle.SeverityBased || lifeCycle == StateLifeCycle.ShipboardFire;
         public virtual float damageControlPriority => 1;
@@ -196,6 +196,16 @@ namespace NavalCombatCore
         MountStatus GetBatteryMountStatus(); // E.X this may restrict a Operational mount to Damage and OOA
     }
 
+    public interface ITorpedoMountStatusModifier
+    {
+        MountStatus GetTorpedoMountStatus();
+    }
+
+    public interface ILocalizedTorpedoMountStatusModifier
+    {
+        MountStatus GetTorpedoMountStatus(MountLocation mountLocation);
+    }
+
     public interface IRateOfFireModifier
     {
         float GetRateOfFireCoef(); // E.X: this many resctrict a mount ROF to 50% of its original value.
@@ -204,6 +214,13 @@ namespace NavalCombatCore
     public interface IFireControlValueModifier
     {
         float GetFireControlValueCoef();
+        float GetFireControlValueOffset();
+    }
+
+    public interface ILocalizedDirectionalFireControlValueModifier
+    {
+        // float GetFireControlValueCoef(MountLocation mountLocation, float bearingRelativeToBowDeg) => 1;
+        float GetFireControlValueOffset(MountLocation mountLocation, float bearingRelativeToBowDeg);//  => 0;
     }
 
     public interface IBatteryFireContrlStatusModifier
@@ -211,6 +228,36 @@ namespace NavalCombatCore
         bool GetBatteryFireControlDisabled(); // Tracking system use different status representation for now.
     }
 
+    public interface IEngineRoomHitModifier
+    {
+        public int GetEngineRoomHitOffset();
+    }
+
+    public interface IBoilerRoomHitModifier
+    {
+        public int GetBoilerRoomHitOffset();
+    }
+
+    public interface IMaxSpeedModifier
+    {
+        public float GetMaxSpeedKnotOffset() => 0;
+        public float GetMaxSpeedKnotCoef() => 1;
+    }
+
+    public interface IDamageControlRatingModifier
+    {
+        public float GetDamageControlRatingOffset();
+    }
+
+    public interface IDesiredSpeedUpdateToBoilerRoomBlocker // DE 124
+    {
+        public bool IsDesiredSpeedCommandBlocked();
+    }
+
+    public interface ISmokeGeneratorModifier
+    {
+        public bool IsSmokeGeneratorAvailable();
+    }
 
     public class BatteryMountStatusModifier : SubState, IBatteryMountStatusModifier
     {
@@ -284,11 +331,18 @@ namespace NavalCombatCore
     public class FireControlValueModifier : SubState, IFireControlValueModifier
     {
         public float fireControlValueCoef = 0.5f;
+        public float fireControlValueOffset = 0f;
 
         public float GetFireControlValueCoef()
         {
             return fireControlValueCoef;
         }
+
+        public float GetFireControlValueOffset()
+        {
+            return fireControlValueOffset;
+        }
+
     }
 
     public class RiskingInMagazineExplosion : SubState
@@ -316,4 +370,192 @@ namespace NavalCombatCore
             }
         }
     }
+
+    public class EngineRoomHitModifier : SubState, IEngineRoomHitModifier
+    {
+        public int engineRoomHitOffset;
+
+        public int GetEngineRoomHitOffset() => engineRoomHitOffset;
+    }
+
+    public class BoilerRoomHitModifier : SubState, IBoilerRoomHitModifier
+    {
+        public int boilerRoomHitOffset;
+
+        public int GetBoilerRoomHitOffset() => boilerRoomHitOffset;
+    }
+
+    public class SteamLineDamaged : SubState, IMaxSpeedModifier // DE 120 (AB)
+    {
+        public float currentMaxSpeedOffset = 0;
+
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            var currentTurn = turnClock.accumulateSecond / 60;
+            currentMaxSpeedOffset = Math.Max(-10, -currentTurn);
+        }
+
+        public float GetMaxSpeedKnotOffset() => currentMaxSpeedOffset;
+    }
+
+    public class DamageControlRatingModifier : SubState, IDamageControlRatingModifier
+    {
+        public float fireControlRatingOffset = 0;
+        public float GetDamageControlRatingOffset() => fireControlRatingOffset;
+    }
+
+    public class FeedwaterPumpDamaged : SubState, IMaxSpeedModifier
+    {
+        public bool hasLoseAllPropulsion = false;
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            if (!hasLoseAllPropulsion && RandomUtils.D100F() <= 15)
+            {
+                hasLoseAllPropulsion = true;
+            }
+        }
+
+        public float GetMaxSpeedKnotCoef() => hasLoseAllPropulsion ? 0 : 1;
+    }
+
+    public class FuelSupplyDamaged : SubState, IMaxSpeedModifier
+    {
+        public bool active = false;
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            if (RandomUtils.D100F() <= 10)
+            {
+                active = !active;
+            }
+        }
+
+        public float GetMaxSpeedKnotCoef()
+        {
+            return active ? 0.5f : 1;
+        }
+    }
+
+    public class EngineRoomCommunicationDamaged : SubState, IDesiredSpeedUpdateToBoilerRoomBlocker
+    {
+        public bool blocked;
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            blocked = RandomUtils.D100F() >= 75;
+        }
+
+        public bool IsDesiredSpeedCommandBlocked() => blocked;
+    }
+
+    public class TorpedoMountDamaged : SubState, ITorpedoMountStatusModifier
+    {
+        public MountStatus currentStatus;
+        public float operationalPercent = 50;
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            currentStatus = RandomUtils.D100F() <= operationalPercent ? MountStatus.Operational : MountStatus.Disabled;
+        }
+
+        public MountStatus GetTorpedoMountStatus() => currentStatus;
+    }
+
+    public class TorpedoMountModifer : SubState, ITorpedoMountStatusModifier
+    {
+        public MountStatus status;
+        public MountStatus GetTorpedoMountStatus() => status;
+    }
+
+    public class SmokeGeneratorDamaged : SubState, ISmokeGeneratorModifier
+    {
+        public bool IsSmokeGeneratorAvailableCurrent;
+        public float availablePercent = 50;
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            IsSmokeGeneratorAvailableCurrent = RandomUtils.D100F() <= availablePercent;
+        }
+
+        public bool IsSmokeGeneratorAvailable() => IsSmokeGeneratorAvailableCurrent;
+    }
+
+    // public class LabeledSubState : SubState
+    // {
+    //     public string objectId;
+    // }
+
+    // public class BatteryParentSubState : SubState
+    // {
+    //     public List<string> childrenObjectIds = new();
+    //     public override void DoEndAt(ISubject subject)
+    //     {
+    //         // base.DoEndAt(subject);
+    //     }
+    // }
+
+    // DE 128
+    public class SectorFireState : SubState, ILocalizedDirectionalFireControlValueModifier, ILocalizedTorpedoMountStatusModifier
+    {
+        public bool disableTorpedo;
+
+        public enum SectionLocation
+        {
+            Front,
+            Midship,
+            After
+        }
+        public SectionLocation fireAndSmokeLocation;
+
+        SectionLocation GetSectionLocation(MountLocation mountLocation)
+        {
+            if (mountLocation <= MountLocation.StarboardForward)
+                return SectionLocation.Front;
+            else if (mountLocation <= MountLocation.StarboardMidship)
+                return SectionLocation.Midship;
+            return SectionLocation.After;
+        }
+
+        public float GetFireControlValueOffset(MountLocation mountLocation, float bearingRelativeToBowDeg)
+        {
+            if (mountLocation == MountLocation.NotSpecified)
+                return 0;
+
+            var toFront = bearingRelativeToBowDeg <= 45 || bearingRelativeToBowDeg >= 315;
+            var toAfter = bearingRelativeToBowDeg >= 135 && bearingRelativeToBowDeg <= 225;
+
+            var mountSectionLocation = GetSectionLocation(mountLocation);
+
+            if (mountSectionLocation == SectionLocation.Front) // Forward (though include unspecified)
+            {
+                if (fireAndSmokeLocation == SectionLocation.Front || toAfter)
+                {
+                    return -1;
+                }
+                return 0;
+            }
+            else if (mountSectionLocation == SectionLocation.Midship) // Midship
+            {
+                if (fireAndSmokeLocation == SectionLocation.Midship)
+                    return -1;
+                if (fireAndSmokeLocation == SectionLocation.Front && toFront)
+                    return -1;
+                if (fireAndSmokeLocation == SectionLocation.After && toAfter)
+                    return -1;
+                return 0;
+            }
+            else // after
+            {
+                if (mountSectionLocation == SectionLocation.After || toFront)
+                {
+                    return -1;
+                }
+                return 0;
+            }
+        }
+
+        public MountStatus GetTorpedoMountStatus(MountLocation mountLocation)
+        {
+            // TODO: Track if torpedo is deck torpedo (or submerged etc)
+            var mountSectionLocation = GetSectionLocation(mountLocation);
+            return mountSectionLocation == fireAndSmokeLocation ? MountStatus.Disabled : MountStatus.Operational;
+        }
+    }
+
 }

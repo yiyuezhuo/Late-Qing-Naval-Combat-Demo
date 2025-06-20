@@ -196,6 +196,11 @@ namespace NavalCombatCore
         MountStatus GetBatteryMountStatus(); // E.X this may restrict a Operational mount to Damage and OOA
     }
 
+    public interface ILocalizedBatteryMountStatusModifier
+    {
+        MountStatus GetBatteryMountStatus(MountLocation mountLocation);
+    }
+
     public interface ITorpedoMountStatusModifier
     {
         MountStatus GetTorpedoMountStatus();
@@ -230,33 +235,49 @@ namespace NavalCombatCore
 
     public interface IEngineRoomHitModifier
     {
-        public int GetEngineRoomHitOffset();
+        int GetEngineRoomHitOffset();
     }
 
     public interface IBoilerRoomHitModifier
     {
-        public int GetBoilerRoomHitOffset();
+        int GetBoilerRoomHitOffset();
     }
 
-    public interface IMaxSpeedModifier
+    public interface IDynamicModifier
     {
-        public float GetMaxSpeedKnotOffset() => 0;
-        public float GetMaxSpeedKnotCoef() => 1;
+        float GetMaxSpeedKnotOffset() => 0;
+        float GetMaxSpeedKnotCoef() => 1;
+        bool IsEvasiveManeuverBlocked() => false;
+        bool IsCourseChangeBlocked() => false; // EX: steering gear is jammed
+        bool IsSpeedChangeBlocked() => false; // EX: DE 145, bridge destroyed
+        bool IsEmergencyTurnBlocked() => false;
+        float GetDesiredHeadingOffset() => 0;
+        bool IsTurnPortBlocked() => false;
+        bool IsTurnStarboardBlocked() => false;
     }
 
-    public interface IDamageControlRatingModifier
+    public interface IDamageControlModifier
     {
-        public float GetDamageControlRatingOffset();
+        float GetDamageControlRatingOffset();
+        bool IsFightingFireBlocked();
+        bool IsDamageControlBlocked();
+    }
+
+    public interface IElectronicSystemModifier
+    {
+        bool IsSearchLightBlocked();
+        bool IsRadarBlocked(); // Separate Fire Control Radar and Search Radar?
+        bool IsSonarBlock();
     }
 
     public interface IDesiredSpeedUpdateToBoilerRoomBlocker // DE 124
     {
-        public bool IsDesiredSpeedCommandBlocked();
+        bool IsDesiredSpeedCommandBlocked();
     }
 
     public interface ISmokeGeneratorModifier
     {
-        public bool IsSmokeGeneratorAvailable();
+        bool IsSmokeGeneratorAvailable();
     }
 
     public class BatteryMountStatusModifier : SubState, IBatteryMountStatusModifier
@@ -280,10 +301,15 @@ namespace NavalCombatCore
         }
     }
 
+    public class BatteryFireContrlStatusDisabledModifier : SubState, IBatteryFireContrlStatusModifier
+    {
+        public bool GetBatteryFireControlDisabled() => true;
+    }
+
     public class ControlSystemDisabledModifier : SubState, IBatteryMountStatusModifier, IBatteryFireContrlStatusModifier
     {
         public MountStatus batteryMountStatus = MountStatus.Disabled;
-        public MountStatus batteryFireControlMountStatus = MountStatus.Disabled;
+        // public MountStatus batteryFireControlMountStatus = MountStatus.Disabled;
 
         public MountStatus GetBatteryMountStatus()
         {
@@ -385,7 +411,7 @@ namespace NavalCombatCore
         public int GetBoilerRoomHitOffset() => boilerRoomHitOffset;
     }
 
-    public class SteamLineDamaged : SubState, IMaxSpeedModifier // DE 120 (AB)
+    public class SteamLineDamaged : SubState, IDynamicModifier // DE 120 (AB)
     {
         public float currentMaxSpeedOffset = 0;
 
@@ -398,13 +424,36 @@ namespace NavalCombatCore
         public float GetMaxSpeedKnotOffset() => currentMaxSpeedOffset;
     }
 
-    public class DamageControlRatingModifier : SubState, IDamageControlRatingModifier
+    public class DamageControlModifier : SubState, IDamageControlModifier
     {
         public float fireControlRatingOffset = 0;
+        public bool isFightingFireBlocked = false;
+        public bool isDamageControlBlocked = false;
         public float GetDamageControlRatingOffset() => fireControlRatingOffset;
+        public bool IsFightingFireBlocked() => isFightingFireBlocked;
+        public bool IsDamageControlBlocked() => isDamageControlBlocked;
     }
 
-    public class FeedwaterPumpDamaged : SubState, IMaxSpeedModifier
+    public class DynamicModifier : SubState, IDynamicModifier
+    {
+        public float maxSpeedKnotOffset = 0;
+        public float maxSpeedKnotCoef = 1;
+        public bool isEvasiveManeuverBlocked = false;
+        public bool isCourseChangeBlocked = false;
+        public bool isSpeedChangeBlocked = false;
+        public bool isTurnPortBlocked = false;
+        public bool isTurnStarboardBlocked = false;
+
+        public float GetMaxSpeedKnotOffset() => maxSpeedKnotOffset;
+        public float GetMaxSpeedKnotCoef() => maxSpeedKnotCoef;
+        public bool IsEvasiveManeuverBlocked() => isEvasiveManeuverBlocked;
+        public bool IsCourseChangeBlocked() => isCourseChangeBlocked;
+        public bool IsSpeedChangeBlocked() => isSpeedChangeBlocked;
+        public bool IsTurnPortBlocked() => isTurnPortBlocked;
+        public bool IsTurnStarboardBlocked() => isTurnStarboardBlocked;
+    }
+
+    public class FeedwaterPumpDamaged : SubState, IDynamicModifier
     {
         public bool hasLoseAllPropulsion = false;
         public override void DoOnClockTick(ISubject subject, float deltaSeconds)
@@ -418,7 +467,25 @@ namespace NavalCombatCore
         public float GetMaxSpeedKnotCoef() => hasLoseAllPropulsion ? 0 : 1;
     }
 
-    public class FuelSupplyDamaged : SubState, IMaxSpeedModifier
+    public class RudderDamaged : SubState, IDynamicModifier
+    {
+        public float currentDesiredHeadingOffset;
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            if (RandomUtils.D100F() <= 40)
+            {
+                currentDesiredHeadingOffset = RandomUtils.D100F() <= 50 ? -15 : 15;
+            }
+            else
+            {
+                currentDesiredHeadingOffset = 0;
+            }
+        }
+        public bool IsEvasiveManeuverBlocked() => true;
+        public bool IsEmergencyTurnBlocked() => true;
+    }
+
+    public class FuelSupplyDamaged : SubState, IDynamicModifier
     {
         public bool active = false;
         public override void DoOnClockTick(ISubject subject, float deltaSeconds)
@@ -555,6 +622,36 @@ namespace NavalCombatCore
             // TODO: Track if torpedo is deck torpedo (or submerged etc)
             var mountSectionLocation = GetSectionLocation(mountLocation);
             return mountSectionLocation == fireAndSmokeLocation ? MountStatus.Disabled : MountStatus.Operational;
+        }
+    }
+
+    public class MainPowerplantOOA : SubState, IRateOfFireModifier, IDamageControlModifier, IElectronicSystemModifier
+    {
+        // TODO: Add command related things
+
+        // Optional effect
+        public float rateOfFireCoef = 1;
+        public bool isDamageControlBlocked = false;
+
+        public float GetRateOfFireCoef() => rateOfFireCoef;
+
+        public float GetDamageControlRatingOffset() => 0;
+        public bool IsFightingFireBlocked() => false;
+        public bool IsDamageControlBlocked() => isDamageControlBlocked;
+
+        public bool IsSearchLightBlocked() => true;
+        public bool IsRadarBlocked() => true; // Separate Fire Control Radar and Search Radar?
+        public bool IsSonarBlock() => true;
+    }
+
+    public class PowerDistributionSymtemDamaged : SubState, ILocalizedBatteryMountStatusModifier
+    {
+        // TODO: Add command related things
+        public List<MountLocation> locations = new();
+
+        public MountStatus GetBatteryMountStatus(MountLocation mountLocation)
+        {
+            return locations.Contains(mountLocation)? MountStatus.Disabled : MountStatus.Operational;
         }
     }
 

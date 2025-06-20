@@ -242,6 +242,7 @@ namespace NavalCombatCore
 
         public ShipOperationalState operationalState = ShipOperationalState.Operational;
         public float desiredSpeedKnotsForBoilerRoom; // DE 124, process command delay. Desired Speed Knot known by boiler room operator is the "effective" desired speed. 
+        public bool smokeGeneratorDisabled;
 
         public float GetLatitudeDeg() => position.LatDeg;
         public float GetLongitudeDeg() => position.LonDeg;

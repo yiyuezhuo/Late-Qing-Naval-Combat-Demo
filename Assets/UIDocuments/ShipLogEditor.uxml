@@ -201,6 +201,11 @@
                                                     <ui:DataBinding property="value" data-source-path="searchLightHits.starboardHit" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:IntegerField>
+                                            <ui:Toggle label="Smoke Generator Disabled">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="smokeGeneratorDisabled" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:Toggle>
                                         </ui:VisualElement>
                                     </ui:VisualElement>
                                 </ui:VisualElement>

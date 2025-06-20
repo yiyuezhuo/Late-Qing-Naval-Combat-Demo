@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using MathNet.Numerics.Distributions;
 using Acornima.Ast;
-using Unity.VisualScripting;
-using System.Security.Cryptography.X509Certificates;
 
 namespace NavalCombatCore
 {
@@ -220,7 +218,7 @@ namespace NavalCombatCore
         public static void RollForAdditionalDamageEffect(DamageEffectContext ctx, string[] damageEffectIds) =>
             RollForAdditionalDamageEffect(ctx, additionalDamageEffectRightBoundsDefault, damageEffectIds);
 
-        public static void Lost1RandomRapidFiringBatteryBox(DamageEffectContext ctx)
+        public static void LostRandomRapidFiringBatteryBoxAndFCSBox(DamageEffectContext ctx, int batteryBoxLost, int fcsBoxLost)
         {
             // Permanent loss of 1 box in one Rapid Fire battery. Roll to determine battery (if more than one) and roll to determine location [Port/STBD]
             if (ctx.subject.rapidFiringStatus.Count > 0)
@@ -229,34 +227,39 @@ namespace NavalCombatCore
                 var hitPort = RandomUtils.NextFloat() < 0.5f;
                 if (hitPort)
                 {
-                    rapidFiringStatus.portMountHits += 1;
+                    rapidFiringStatus.portMountHits += batteryBoxLost;
                 }
                 else
                 {
-                    rapidFiringStatus.starboardMountHits += 1;
+                    rapidFiringStatus.starboardMountHits += batteryBoxLost;
                 }
+                rapidFiringStatus.fireControlHits += fcsBoxLost;
             }
+        }
+
+        public static void Lost1RandomRapidFiringBatteryBox(DamageEffectContext ctx)
+        {
+            // Permanent loss of 1 box in one Rapid Fire battery. Roll to determine battery (if more than one) and roll to determine location [Port/STBD]
+            LostRandomRapidFiringBatteryBoxAndFCSBox(ctx, 1, 0);
         }
 
         public static void Lost1RandomRapidFiringBatteryBoxAnd1FCSBox(DamageEffectContext ctx)
         {
             // Permanent loss of 1 box in one Rapid Fire battery. Roll to determine battery (if more than one) and roll to determine location [Port/STBD]
-            if (ctx.subject.rapidFiringStatus.Count > 0)
-            {
-                var rapidFiringStatus = RandomUtils.Sample(ctx.subject.rapidFiringStatus);
-                var hitPort = RandomUtils.NextFloat() < 0.5f;
-                if (hitPort)
-                {
-                    rapidFiringStatus.portMountHits += 1;
-                }
-                else
-                {
-                    rapidFiringStatus.starboardMountHits += 1;
-                }
-                rapidFiringStatus.fireControlHits += 1;
-            }
+            LostRandomRapidFiringBatteryBoxAndFCSBox(ctx, 1, 1);
         }
 
+        public static void Lost1RandomSearchlight(DamageEffectContext ctx)
+        {
+            if (RandomUtils.D100F() <= 50)
+            {
+                ctx.subject.searchLightHits.portHit += 1;
+            }
+            else
+            {
+                ctx.subject.searchLightHits.starboardHit += 1;
+            }
+        }
 
         public static void AddShipboardFire(DamageEffectContext ctx, string cause, float severity)
         {
@@ -270,6 +273,11 @@ namespace NavalCombatCore
         }
 
         public static void SetOOA(MountStatusRecord mount)
+        {
+            mount.status = MaxEnum(mount.status, MountStatus.Disabled);
+        }
+
+        public static void SetOOA(TorpedoMountStatusRecord mount)
         {
             mount.status = MaxEnum(mount.status, MountStatus.Disabled);
         }
@@ -768,14 +776,15 @@ namespace NavalCombatCore
                         }
 
                         // Port OR Starboard searchlight battery OOA. Permanent damage.
-                        if(RandomUtils.D100F() <= 50)
-                        {
-                            ctx.subject.searchLightHits.portHit += 1;
-                        }
-                        else
-                        {
-                            ctx.subject.searchLightHits.starboardHit += 1;
-                        }
+                        // if(RandomUtils.D100F() <= 50)
+                        // {
+                        //     ctx.subject.searchLightHits.portHit += 1;
+                        // }
+                        // else
+                        // {
+                        //     ctx.subject.searchLightHits.starboardHit += 1;
+                        // }
+                        Lost1RandomSearchlight(ctx);
 
                         RollForAdditionalDamageEffect(ctx, new[]{"114", "113", "161", "132", ""});
                     }
@@ -950,7 +959,7 @@ namespace NavalCombatCore
                         cause="DE 120, Steam Line Damaged"
                     };
                     DE.BeginAt(ctx.subject);
-                    var DE2 = new DamageControlRatingModifier()
+                    var DE2 = new DamageControlModifier()
                     {
                         lifeCycle=StateLifeCycle.GivenTime,
                         fireControlRatingOffset=-1,
@@ -1180,11 +1189,663 @@ namespace NavalCombatCore
                     disableTorpedo=disableTorpedo
                 };
                 DE.BeginAt(ctx.subject);
-                
+
                 if(IsAB(ctx))
                 {
                     RollForAdditionalDamageEffect(ctx, new[]{"158", "159", "163", "164", ""});
                 }
+            }},
+
+            // DE 129, hit on searchlight and small arms stores (marine's stuff)
+            {"129", ctx=>{
+                Lost1RandomSearchlight(ctx);
+                AddShipboardFire(ctx, "DE 129: Fire in small arms stores. Shipboard fire severity 30", 30);
+                if(RandomUtils.D100F() <= 40)
+                {
+                    ctx.subject.damagePoint += ctx.baseDamagePoint;
+                }
+                // TODO: Reduce effectiveness of boarding party by 50% when performing grapple and board operations, Dave
+                // Well SK5 don't include detailed boarding rule though, though in the battle of yalu China's navy tried it,
+                // the moderate QF firepower is enought to counter it.
+                RollForAdditionalDamageEffect(ctx, new[]{"159", "148", "141", "161", ""});
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 129 (HE): Shipboard fire severity 30", 30);
+                }
+            } },
+
+            // DE 130, hit on torpedo tube and smoke generator
+            {"130", ctx=>{
+                if(TryToSampleATorpedoMount(ctx, out var torpedoMount))
+                {
+                    SetOOA(torpedoMount);
+                }
+
+                ctx.subject.smokeGeneratorDisabled = true;
+
+                if(TryToSampleAPrimaryBatteryMount(ctx, out var primaryMount))
+                {
+                    foreach(var affectedMount in ctx.subject.batteryStatus[0].mountStatus.Where(mnt => mnt.mountLocation == primaryMount.mountLocation))
+                    {
+                        var DE = new BatteryMountStatusModifier()
+                        {
+                            lifeCycle = StateLifeCycle.GivenTime,
+                            cause = "DE 130: Temporary loss of power to primary battery gun in one section"
+                        };
+                        DE.BeginAt(affectedMount);
+                    }
+                }
+
+                RollForAdditionalDamageEffect(ctx, new[]{"132", "132", "104", "124", "142"});
+
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 130 (HE): Shipboard fire severity 30", 30);
+                }
+            }},
+
+            // DE 131, Damage to ASW mount, it's not listed in 1880-1905 table and require extra modeling, so skip. (In fact, it's listed only in the DE table of 1923-1945)
+
+            // DE 132, Hit on rapid fire battery, searchlight, and possibly secondary battery
+            {"132", ctx=>{
+                LostRandomRapidFiringBatteryBoxAndFCSBox(ctx, 2, 0);
+                Lost1RandomSearchlight(ctx);
+                if(RandomUtils.D100F() <= 75)
+                {
+                    if(TryToSampleASecondaryBatteryMount(ctx, out var mount))
+                    {
+                        SetOOA(mount);
+                    }
+                }
+                if(IsAB(ctx))
+                {
+                    RollForAdditionalDamageEffect(ctx, new[]{"114", "104", "106", "113", "129"});
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 132 (HE): Shipboard fire severity 30", 30);
+                }
+            }},
+
+            // DE 133, damage to steering gear
+            {"133", ctx=>{
+                if(IsAB(ctx))
+                {
+                    var isCourceChangeBlocked = RandomUtils.D100F() <= 45;
+                    var DE = new DynamicModifier()
+                    {
+                        lifeCycle = StateLifeCycle.SeverityBased,
+                        severity = ctx.RollForSeverity(),
+                        maxSpeedKnotCoef = 0.5f,
+                        isEvasiveManeuverBlocked = true,
+                        isCourseChangeBlocked = isCourceChangeBlocked,
+                        cause = "DE 133 (A/B), damage to steering gear"
+                    };
+                    DE.BeginAt(ctx.subject);
+
+                    RollForAdditionalDamageEffect(ctx, new[]{"153", "151", "129", "131", "142"});
+                }
+                else
+                {
+                    AddShipboardFire(ctx, "DE 133 (C): Shipboard fire severity 20", 20);
+
+                    var DE = new DynamicModifier()
+                    {
+                        lifeCycle = StateLifeCycle.GivenTime,
+                        maxSpeedKnotCoef = 0.5f,
+                        isEvasiveManeuverBlocked = true,
+                        cause = "DE 133 (C), hit on steering gear"
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 133 (HE): Shipboard fire severity 30", 30);
+                }
+            }},
+
+            // DE 134, damage to rudder
+            {"134", ctx=>{
+                var DE = new RudderDamaged()
+                {
+                    lifeCycle = StateLifeCycle.SeverityBased,
+                    severity = ctx.RollForSeverity(),
+                    cause = "DE 134, damage to rudder"
+                };
+                DE.BeginAt(ctx.subject);
+                if(IsAB(ctx))
+                {
+                    RollForAdditionalDamageEffect(ctx, new[]{"169", "171", "154", "155", ""});
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 134 (HE): Shipboard fire severity 30", 30);
+                }
+            }},
+
+            // DE 135, rudder jammed
+            {"135", ctx=>{
+                var isTurnPortBlocked = false;
+                var isTurnStarboardBlocked = false;
+                if(RandomUtils.D100F() <= 50)
+                {
+                    isTurnPortBlocked = true;
+                }
+                else
+                {
+                    isTurnStarboardBlocked = true;
+                }
+
+                var DE = new DynamicModifier()
+                {
+                    lifeCycle = StateLifeCycle.SeverityBased,
+                    severity = ctx.RollForSeverity(),
+                    isTurnPortBlocked=isTurnPortBlocked,
+                    isTurnStarboardBlocked=isTurnStarboardBlocked,
+                    cause = "DE 135, rudder jammed"
+                };
+
+                if(IsAB(ctx))
+                {
+                    RollForAdditionalDamageEffect(ctx, new[]{"171", "171", "169", "182", ""});
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 135 (HE): Shipboard fire severity 30", 30);
+                }
+            }},
+
+            // DE 136 Aviation fuel storage hit (SKip since it's 1923-1945 only (for seaplane I guess))
+
+            // DE 137 Aircraft stowage hit, (Skip, 1923-1945 only, for seaplane carried ship)
+
+            // DE 138 Hangar fire (Skip, 1923-1945 only, for seaplane carried ship)
+
+            // DE 139 Damage to aircraft operations facilities (skip, 1923-1945 only, for seaplane carried ship)
+
+            // DE 140 Signal bridge destroyed
+            {"140", ctx=>{
+                // TODO: Represent the SK5 command system with some means?
+                if(IsAB(ctx))
+                {
+                    if (RandomUtils.D100F() <= 75)
+                    {
+                        // Fire Control Radar damaged.
+                        if(ctx.subject.batteryStatus.Count > 0)
+                        {
+                            var battery = RandomUtils.Sample(ctx.subject.batteryStatus);
+                            var btyRec = battery.GetBatteryRecord();
+                            if(btyRec.fireControlRadarModifier > 0)
+                            {
+                                battery.fireControlRadarDisabled = true;
+                            }
+                            else
+                            {
+                                var DE = new FireControlValueModifier()
+                                {
+                                    lifeCycle = StateLifeCycle.Permanent,
+                                    fireControlValueOffset = -1
+                                };
+                                DE.BeginAt(battery);
+                            }
+                        }
+                    }
+
+                    RollForAdditionalDamageEffect(ctx, new[]{"124", "143", "142", "157", ""});
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 140 (HE): Shipboard fire severity 30", 30);
+                }
+            } },
+
+            // DE 141, Disruption to communications
+            {"141", ctx=>{
+                // TODO: Process Flag Command Rating related things
+                Lost1RandomRapidFiringBatteryBox(ctx);
+                if(IsAB(ctx))
+                {
+                    RollForAdditionalDamageEffect(ctx, new[]{"158", "159", "156", "157", ""});
+                }
+                if(IsHE(ctx) && RandomUtils.D100F() <= 50)
+                {
+                    AddShipboardFire(ctx, "DE 141 (HE): Shipboard fire severity 50", 50);
+                }
+            } },
+
+            // DE 142, Temporary disruption to shipboard communications
+            {"142", ctx=>{
+                // TODO: Processcommunication related things
+                Lost1RandomSearchlight(ctx);
+                Lost1RandomRapidFiringBatteryBoxAnd1FCSBox(ctx);
+                if(IsAB(ctx))
+                {
+                    RollForAdditionalDamageEffect(ctx, new[]{"124", "129", "140", "144", ""});
+                }
+                else
+                {
+                    if(RandomUtils.D100F() <= 35)
+                    {
+                        if(TryGetPrimaryBattery(ctx, out var primaryBattery))
+                        {
+                            if(primaryBattery.fireControlSystemStatusRecords.Count > 0)
+                            {
+                                var fcsRec = RandomUtils.Sample(primaryBattery.fireControlSystemStatusRecords);
+                                SetOOA(fcsRec);
+                            }
+                        }
+                    }
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 142 (HE): Shipboard fire severity 20", 20);
+                }
+            } },
+
+            // DE 143, Bridge hit
+            {"143", ctx=>{
+                // TODO: Process Bridge Command Rating * Flag Command Rating
+                // TODO: Process kill and replacement of captain
+                var DE = new DynamicModifier()
+                {
+                    lifeCycle = StateLifeCycle.GivenTime,
+                    isCourseChangeBlocked=true,
+                    cause="DE 143, Bridge hit"
+                };
+                DE.BeginAt(ctx.subject);
+                if(IsAB(ctx))
+                {
+                    RollForAdditionalDamageEffect(ctx, new[]{"144", "160", "161", "158", "159"});
+                }
+                else
+                {
+                    AddShipboardFire(ctx, "DE 143 (C): Shipboard fire severity 20", 20);
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 143 (HE): Shipboard fire severity 20", 30);
+                }
+            }},
+
+            // DE 144, Flag Bridge hit
+            {"144", ctx=>{
+                // TODO: Process reduce of command
+                if(RandomUtils.D100F() <= 30)
+                {
+                    AddShipboardFire(ctx, "DE 144 (A/B/C): Shipboard fire severity 30", 30);
+                }
+                if(IsHE(ctx) && RandomUtils.D100F() <= 50)
+                {
+                    AddShipboardFire(ctx, "DE 144 (HE): Shipboard fire severity 30", 30);
+                }
+            } },
+
+            // DE 145, Bridge hit (destoyed or shock only)
+            {"145", ctx=>{
+                if(IsAB(ctx))
+                {
+                    // TODO: Process command related things
+                    // For duration of this damage, ship must continue on same course at same speed.
+                    var DE = new DynamicModifier()
+                    {
+                        lifeCycle = StateLifeCycle.SeverityBased,
+                        severity = ctx.RollForSeverity(),
+                        isCourseChangeBlocked = true,
+                        isSpeedChangeBlocked = true,
+                        cause = "DE 145, Bridge Destroyed"
+                    };
+                    DE.BeginAt(ctx.subject);
+
+                    RollForAdditionalDamageEffect(ctx, new[]{"124", "160", "158", "159", ""});
+                }
+                else
+                {
+                    var DE = new DynamicModifier()
+                    {
+                        lifeCycle = StateLifeCycle.GivenTime,
+                        isCourseChangeBlocked = true,
+                        isSpeedChangeBlocked = true,
+                        cause = "DE 145, Bridge hit"
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 145 (HE): Shipboard fire severity 30", 30);
+                }
+            }},
+
+            // DE 146, Shock and structural damage
+            {"146", ctx=>{
+                // TODO: Process command related things
+                if(IsAB(ctx))
+                {
+                    RollForAdditionalDamageEffect(ctx, new[]{"109", "110", "176", "112", ""});
+                    // No rolls for fighting shipboard fires (CHART N2) can be made during the DAMAGE PHASE of next turn.
+                    var DE = new DamageControlModifier()
+                    {
+                        lifeCycle = StateLifeCycle.GivenTime,
+                        isFightingFireBlocked = true,
+                        cause = "DE 146, Shock and structural damage"
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 146 (HE): Shipboard fire severity 30", 30);
+
+                    var DE = new DamageControlModifier()
+                    {
+                        lifeCycle = StateLifeCycle.GivenTime,
+                        fireControlRatingOffset = -1,
+                        cause = "DE 146 (HE), Shock and structural damage"
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+            } },
+
+            // DE 147, Heavy personnel casualties
+            {"147", ctx=>{
+                var DE = new DamageControlModifier
+                {
+                    lifeCycle = StateLifeCycle.GivenTime,
+                    cause = "DE 147 (HP), Heavy personnel casualties",
+                    isDamageControlBlocked = true
+                };
+                DE.BeginAt(ctx.subject);
+
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 147 (HE): Shipboard fire severity 30", 30);
+                }
+            }},
+
+            // DE 148, funnel damage
+            {"148", ctx=>{
+                // Adjust the total from CHART H by -1 for all guns and reduce maximum speed speed by 1 knot permanently.
+                var DE = new FireControlValueModifier()
+                {
+                    lifeCycle = StateLifeCycle.Permanent,
+                    fireControlValueOffset = -1,
+                    cause = "DE 148, Funnel damage"
+                };
+                DE.BeginAt(ctx.subject);
+
+                ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -1;
+
+                Lost1RandomRapidFiringBatteryBox(ctx);
+                Lost1RandomSearchlight(ctx);
+                RollForAdditionalDamageEffect(ctx, new[]{"132", "151", "161", "", ""});
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 148 (HE): Shipboard fire severity 20", 20);
+                }
+            }},
+
+            // DE 149, Damage to crew spaces
+            {"149", ctx=>{
+                Lost1RandomRapidFiringBatteryBox(ctx);
+                if(IsAB(ctx))
+                {
+                    RollForAdditionalDamageEffect(ctx, new[]{"122", "147", "153", "154", "125"});
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 149 (HE): Damage to crew spaces, Shipboard fire severity 20", 20);
+                }
+            }},
+
+            // DE 150, Damage to galley
+            {"150", ctx=>{
+                Lost1RandomRapidFiringBatteryBoxAnd1FCSBox(ctx);
+                if(IsAB(ctx))
+                {
+                    RollForAdditionalDamageEffect(ctx, new[]{"162", "151", "169", "180", "125"});
+                }
+                if(IsHE(ctx))
+                {
+                    Lost1RandomRapidFiringBatteryBox(ctx);
+                    AddShipboardFire(ctx, "DE 150 (HE): Damage to galley, Shipboard fire severity 30", 30);
+                }
+            }},
+
+            // DE 151, Auxiliary powerplant OOA
+            {"151", ctx=>{
+                // TODO: Implement ship-level communication
+                Lost1RandomRapidFiringBatteryBox(ctx);
+
+                if(IsAB(ctx))
+                {
+                    RollForAdditionalDamageEffect(ctx, new[]{"126", "183", "125", "123", "180"});
+                    ctx.subject.damageControlRatingHits += 1;
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 151 (HE): Auxiliary powerplant OOA, Shipboard fire severity 20", 20);
+                }
+            } },
+
+            // DE 152, Main powerplant OOA
+            {"152", ctx=>{
+                ctx.subject.damageControlRatingHits += 1;
+                if(IsAB(ctx))
+                {
+                    var d100 = RandomUtils.D100F();
+
+                    var DE = new MainPowerplantOOA()
+                    {
+                        lifeCycle = StateLifeCycle.SeverityBased,
+                        severity = ctx.RollForSeverity(),
+                        cause = "DE 152, Main powerplant OOA",
+
+                        rateOfFireCoef = d100 <= 70 ? 0.5f : 1,
+                        isDamageControlBlocked = d100 <= 40
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+            }},
+
+            // DE 153, damage to power distribution system
+            {"153", ctx=>{
+                ctx.subject.damageControlRatingHits += 1;
+
+                if(IsAB(ctx))
+                {
+                    var locations = ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus).Select(mnt => mnt.mountLocation).ToHashSet();
+                    var location =  RandomUtils.Sample(locations.ToList());
+
+                    var DE = new PowerDistributionSymtemDamaged()
+                    {
+                        lifeCycle = StateLifeCycle.SeverityBased,
+                        severity = ctx.RollForSeverity(),
+                        cause = "DE 153, damage to power distribution system",
+                        locations = new(){location}
+                    };
+
+                    RollForAdditionalDamageEffect(ctx, new[]{"110", "116", "133", "124", ""});
+                }
+            }},
+
+            // DE 154, Fuel bunker hit (coal or oil)
+            {"154", ctx=>{
+                // TODO: Process cruise range effect
+                // TODO: Process oil specific things
+                if(IsAB(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 154 (A/C): fuel bunker hit, Shipboard fire severity 20", 20);
+
+                    if(RandomUtils.D100F() <= 20)
+                    {
+                        ctx.subject.dynamicStatus.engineRoomFloodingHits += 1;
+                    }
+
+                    RollForAdditionalDamageEffect(ctx, new[]{"174", "183", "167", "169", ""});
+                }
+                if(IsHE(ctx))
+                {
+                    AddShipboardFire(ctx, "DE 154 (HE): fuel bunker hit, Shipboard fire severity 40", 40);
+                }
+            } },
+
+            // DE 155, Severe fire in flammables storage
+            {"155", ctx=>{
+                AddShipboardFire(ctx, "DE 155 (A/B/C): Severe fire in flammables storage, Shipboard fire severity 50", 50);
+                if(IsHE(ctx))
+                {
+                    Lost1RandomRapidFiringBatteryBox(ctx);
+                    if(RandomUtils.D100F() <= 60)
+                    {
+                        AddShipboardFire(ctx, "DE 155 (HE): Severe fire in flammables storage, Shipboard fire severity 30", 30);
+                    }
+                }
+            }},
+            
+            // DE 156, hit on FCS in primary battery
+            {"156", ctx=>{
+                if(IsAB(ctx))
+                {
+                    if(TryGetPrimaryBattery(ctx, out var primaryBattery))
+                    {
+                        var DE = new BatteryFireContrlStatusDisabledModifier()
+                        {
+                            lifeCycle=StateLifeCycle.GivenTime,
+                            cause = "DE 156 (A/B), hit on FCS in primary battery"
+                        };
+                        DE.BeginAt(primaryBattery);
+                    }
+
+                    Lost1RandomRapidFiringBatteryBox(ctx);
+
+                    RollForAdditionalDamageEffect(ctx, new[]{"159", "130", "174", "", ""});
+                }
+                else
+                {
+                    if(TryGetPrimaryBattery(ctx, out var primaryBattery))
+                    {
+                        if(primaryBattery.fireControlSystemStatusRecords.Count > 0)
+                        {
+                            var fcsRec = RandomUtils.Sample(primaryBattery.fireControlSystemStatusRecords);
+                            var DE = new BatteryFireContrlStatusDisabledModifier()
+                            {
+                                lifeCycle=StateLifeCycle.GivenTime,
+                                cause = "DE 156 (C), hit on FCS in primary battery"
+                            };
+                            DE.BeginAt(fcsRec);
+                        }
+                    }
+                }
+                if(IsHE(ctx))
+                {
+                    ctx.subject.damageControlRatingHits += 1;
+                    AddShipboardFire(ctx, "DE 156 (HE): Shipboard fire severity 20", 20);
+                }
+            }},
+
+            // DE 157, hit on secondary battery FCS
+            {"157", ctx=>{
+                if(TryGetSecondaryBattery(ctx, out var battery))
+                {
+                    AddShipboardFire(ctx, "DE 157 (C): Shipboard fire severity 20", 20);
+
+                    if(IsAB(ctx))
+                    {
+                        var DE = new BatteryFireContrlStatusDisabledModifier()
+                        {
+                            lifeCycle=StateLifeCycle.GivenTime,
+                            cause = "DE 157 (A/B), hit on FCS in secondary battery"
+                        };
+                        DE.BeginAt(battery);
+                    }
+                    else
+                    {
+                        if(battery.fireControlSystemStatusRecords.Count > 0)
+                        {
+                            var fcsRec = RandomUtils.Sample(battery.fireControlSystemStatusRecords);
+                            var DE = new BatteryFireContrlStatusDisabledModifier()
+                            {
+                                lifeCycle=StateLifeCycle.GivenTime,
+                                cause = "DE 157 (A/B), hit on FCS in secondary battery"
+                            };
+                            DE.BeginAt(fcsRec);
+                        }
+                    }
+
+                    if(IsHE(ctx))
+                    {
+                        ctx.subject.damageControlRatingHits += 1;
+                        Lost1RandomRapidFiringBatteryBox(ctx);
+                    }
+                }
+                else
+                {
+                    if(RandomUtils.D100F() <= 75)
+                    {
+                        AddNewDamageEffect(ctx, "156");
+                    }
+                }
+            }},
+
+            // DE 158, hit on FCS of primary battery
+            {"158", ctx=>{
+                if(TryGetPrimaryBattery(ctx, out var battery) && battery.fireControlSystemStatusRecords.Count > 0)
+                {
+                    var severity = ctx.RollForSeverity();
+                    if(IsC(ctx))
+                    {
+                        severity /= 2;
+                    }
+                    var fcsRec = RandomUtils.Sample(battery.fireControlSystemStatusRecords);
+                    var DE = new BatteryFireContrlStatusDisabledModifier()
+                    {
+                        lifeCycle=StateLifeCycle.SeverityBased,
+                        severity = severity,
+                        cause = "DE 158, hit on FCS in primary battery"
+                    };
+                    DE.BeginAt(fcsRec);
+
+                    if(IsAB(ctx))
+                    {
+                        Lost1RandomRapidFiringBatteryBoxAnd1FCSBox(ctx);
+
+                        RollForAdditionalDamageEffect(ctx, new[]{"130", "132", "142", "141", ""});
+                    }
+
+                    if(IsHE(ctx))
+                    {
+                        Lost1RandomRapidFiringBatteryBox(ctx);
+                    }
+                }
+            }},
+
+            // DE 159, Damage to one secondary battery fire control system.
+            {"159", ctx=>{
+                if(TryGetSecondaryBattery(ctx, out var battery) && battery.fireControlSystemStatusRecords.Count > 0)
+                {
+                    var fcsRec = RandomUtils.Sample(battery.fireControlSystemStatusRecords);
+                    var DE = new BatteryFireContrlStatusDisabledModifier()
+                    {
+                        lifeCycle=StateLifeCycle.SeverityBased,
+                        severity = ctx.RollForSeverity(),
+                        cause = "DE 158, hit on FCS in primary battery"
+                    };
+                    DE.BeginAt(fcsRec);
+                    if(IsAB(ctx))
+                    {
+                        RollForAdditionalDamageEffect(ctx, new[]{"158", "141", "163", "", ""});
+                    }
+                }
+                else
+                {
+                    if(RandomUtils.D100F() <= 75)
+                    {
+                        AddNewDamageEffect(ctx, "158");
+                    }
+                }
+            }},
+
+            // DE 160, hit on FCS of primary battery
+            {"160", ctx=>{
+                
             }},
         };
     }

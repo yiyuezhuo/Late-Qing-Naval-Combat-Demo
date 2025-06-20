@@ -11,6 +11,12 @@
         <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;">
             <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; flex-direction: row;">
                 <ui:Button text="Detail" name="BatteryDetailButton" />
+                <ui:Label text="FCR Disabled" />
+                <ui:Toggle>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="fireControlRadarDisabled" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:Toggle>
                 <ui:Label text="Capacity:" />
                 <ui:Label>
                     <Bindings>

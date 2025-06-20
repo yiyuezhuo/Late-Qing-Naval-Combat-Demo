@@ -16,6 +16,8 @@ namespace NavalCombatCore
         // public int fireControlHits;
         public List<FireControlSystemStatusRecord> fireControlSystemStatusRecords = new();
 
+        public bool fireControlRadarDisabled;
+
         public override IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
             foreach (var mount in mountStatus)
@@ -55,6 +57,8 @@ namespace NavalCombatCore
             Utils.SyncListToLength(batteryRecord.fireControlPositions, fireControlSystemStatusRecords, this);
             foreach (var s in fireControlSystemStatusRecords)
                 s.ResetToIntegrityState();
+
+            fireControlRadarDisabled = false;
         }
 
         public string Summary() // Used in information panel

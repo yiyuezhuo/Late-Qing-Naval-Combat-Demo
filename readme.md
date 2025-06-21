@@ -18,7 +18,7 @@ A key example is torpedo effectiveness: in DoB, a 500-yard shot yields a check t
 
 - Left Click: Select Unit
 - Right Click: Select Unit and open Ship Log Editor Viewer for it.
-- Shift + Left Click: Set Course
+- Shift + Left Click: Set Course for the selected unit
 - D: Distance measureing line
 - S: Line of Sight (check ship masking & earth curvature)
 - F: Set follow target (extra parameter requires ship log editor)
@@ -37,6 +37,10 @@ A key example is torpedo effectiveness: in DoB, a 500-yard shot yields a check t
 ### Unity related warning
 
 - When resources is rewritten in edit time (for example, overrie xml file), Asset-refresh is needed, otherwise `Resources.Load` may load old version of assets.
+
+## References:
+
+SK5 Community: https://groups.io/g/SEEKRIEG/topics?sidebar=true
 
 ## Credits
 

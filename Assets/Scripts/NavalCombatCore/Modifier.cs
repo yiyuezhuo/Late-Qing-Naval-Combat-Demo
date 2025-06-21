@@ -11,11 +11,12 @@ namespace NavalCombatCore
 {
     public enum StateLifeCycle
     {
-        Permanent,
-        GivenTime,
-        SeverityBased,
-        ShipboardFire,
-        DieRollPassed // Die rol for every clock tick, if passed the state is removed
+        Permanent, // True permanent, child, or ended by itself
+        GivenTime, // after 120 min, 240 min, ...
+        SeverityBased, // DCR allocation mini game
+        ShipboardFire, // Fire dedicated DCR mechnanism
+        DieRollPassed, // Die rol for every clock tick, if passed the state is removed
+        Dependent // If Parent is ended, the DE State is ended as well
     }
 
     public interface ISubject
@@ -29,14 +30,21 @@ namespace NavalCombatCore
     [XmlInclude(typeof(RateOfFireModifier))]
     [XmlInclude(typeof(ControlSystemDisabledModifier))]
     [XmlInclude(typeof(FireControlValueModifier))]
-    public class SubState
+    public class SubState : IObjectIdLabeled
     {
+        public string objectId { get; set; }
+        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            yield break;
+        }
+
         // Left Cycle Parameter
         public StateLifeCycle lifeCycle;
 
         public float givenTimeSeconds = 120; // For GivenTime
         public float severity = 0; // For SeverityBased and ShipboardFire
         public float dieRollThreshold = 0; // For RollPassed, if die roll <=  the threshold, the state is removed.
+        public string dependentObjectId;
 
         public string DescribeLiftCycle()
         {
@@ -61,13 +69,15 @@ namespace NavalCombatCore
 
         public string cause = "";
         // public bool permanent; // If it's not permanent then this can be damage controlled.
-        public bool damageControllable => lifeCycle == StateLifeCycle.SeverityBased || lifeCycle == StateLifeCycle.ShipboardFire;
+        public virtual bool damageControllable => lifeCycle == StateLifeCycle.SeverityBased || lifeCycle == StateLifeCycle.ShipboardFire;
         public virtual float damageControlPriority => 1;
         public bool damageControlApplied;
         public SimulationClock turnClock = new SimulationClock()
         {
             intervalSeconds = 120, // 1 SK5 Turn, 2 min
         };
+
+        // public List<SubState> children = new();
 
         public virtual void Step(ISubject subject, float deltaSeconds)
         {
@@ -82,6 +92,15 @@ namespace NavalCombatCore
             if (lifeCycle == StateLifeCycle.GivenTime && turnClock.elapsedSeconds > givenTimeSeconds)
             {
                 EndAt(subject);
+            }
+
+            if (lifeCycle == StateLifeCycle.Dependent)
+            {
+                var dependSubState = EntityManager.Instance.Get<SubState>(dependentObjectId);
+                if (dependSubState == null)
+                {
+                    EndAt(subject);
+                }
             }
         }
 
@@ -130,7 +149,7 @@ namespace NavalCombatCore
                     {
                         subject = shipLog,
                         cause = DamageEffectCause.Fires,
-                        // chainNumber =1
+                        source = this,
                     });
                 }
 
@@ -150,11 +169,15 @@ namespace NavalCombatCore
         public virtual void BeginAt(ISubject subject)
         {
             subject.AddSubState(this);
+            EntityManager.Instance.Register(this, subject);
+
             DoBeginAt(subject);
         }
         public virtual void EndAt(ISubject subject)
         {
             subject.RemoveSubState(this);
+            EntityManager.Instance.Unregister(this);
+
             DoEndAt(subject);
         }
 
@@ -173,6 +196,12 @@ namespace NavalCombatCore
         {
             lifeCycle = StateLifeCycle.Permanent; // or something like SeverityBasedPermanent?
         }
+
+        // public void AddChild(SubState subState)
+        // {
+        //     subState.lifeCycle = StateLifeCycle.Permanent; // Controlled by parent
+        //     children.Add(subState);
+        // }
     }
 
 
@@ -247,6 +276,8 @@ namespace NavalCombatCore
     {
         float GetMaxSpeedKnotOffset() => 0;
         float GetMaxSpeedKnotCoef() => 1;
+        float GetMaxSpeedUpperLimit() => -1;
+        // It's all "physic" backed resitrction, they differ from communication / command malfunction induced problem
         bool IsEvasiveManeuverBlocked() => false;
         bool IsCourseChangeBlocked() => false; // EX: steering gear is jammed
         bool IsSpeedChangeBlocked() => false; // EX: DE 145, bridge destroyed
@@ -261,15 +292,20 @@ namespace NavalCombatCore
         float GetDamageControlRatingOffset();
         bool IsFightingFireBlocked();
         bool IsDamageControlBlocked();
+        float GetDamageControlDieRollOffset();
+        bool IsBatteryDamageControlBlock() => false;
     }
 
     public interface IElectronicSystemModifier
     {
-        bool IsSearchLightBlocked();
-        bool IsRadarBlocked(); // Separate Fire Control Radar and Search Radar?
-        bool IsSonarBlock();
+        bool IsSearchLightDisabled() => false;
+        (bool, bool) IsSearchLightDisabledOneSide(RapidFiringBatteryLocation location) => (false, false);
+        bool IsFireControlRadarDisabled() => false; // Separate Fire Control Radar and Search Radar?
+        bool IsSearchRadarDisabled() => false;
+        bool IsSonarDisabled() => false;
     }
 
+    // TODO: merge it into `IDynamicModifier`?
     public interface IDesiredSpeedUpdateToBoilerRoomBlocker // DE 124
     {
         bool IsDesiredSpeedCommandBlocked();
@@ -278,6 +314,26 @@ namespace NavalCombatCore
     public interface ISmokeGeneratorModifier
     {
         bool IsSmokeGeneratorAvailable();
+    }
+
+    public interface IBatteryTargetChangeBlocker
+    {
+        bool IsBatteryTargetChangeBlocked();
+    }
+
+    public interface IFireControlSystemTargetChangeBlocker
+    {
+        bool IsFireControlSystemTargetChangeBlocked();
+    }
+
+    public interface IArmorModifier
+    {
+        float GetMainBeltArmorCoef();
+    }
+
+    public interface ISevereFloodingRollModifier
+    {
+        float GetSevereFloodingRollOffset();
     }
 
     public class BatteryMountStatusModifier : SubState, IBatteryMountStatusModifier
@@ -429,15 +485,20 @@ namespace NavalCombatCore
         public float fireControlRatingOffset = 0;
         public bool isFightingFireBlocked = false;
         public bool isDamageControlBlocked = false;
+        public float damageControlDieRollOffset = 0;
+        public bool isBatteryDamageControlBlock = false;
         public float GetDamageControlRatingOffset() => fireControlRatingOffset;
         public bool IsFightingFireBlocked() => isFightingFireBlocked;
         public bool IsDamageControlBlocked() => isDamageControlBlocked;
+        public float GetDamageControlDieRollOffset() => damageControlDieRollOffset;
+        public bool IsBatteryDamageControlBlock() => isBatteryDamageControlBlock;
     }
 
     public class DynamicModifier : SubState, IDynamicModifier
     {
         public float maxSpeedKnotOffset = 0;
         public float maxSpeedKnotCoef = 1;
+        public float maxSpeedUpperLimit = -1; // -1 denotes upperLimit is disabled
         public bool isEvasiveManeuverBlocked = false;
         public bool isCourseChangeBlocked = false;
         public bool isSpeedChangeBlocked = false;
@@ -446,6 +507,7 @@ namespace NavalCombatCore
 
         public float GetMaxSpeedKnotOffset() => maxSpeedKnotOffset;
         public float GetMaxSpeedKnotCoef() => maxSpeedKnotCoef;
+        public float GetMaxSpeedUpperLimit() => maxSpeedUpperLimit;
         public bool IsEvasiveManeuverBlocked() => isEvasiveManeuverBlocked;
         public bool IsCourseChangeBlocked() => isCourseChangeBlocked;
         public bool IsSpeedChangeBlocked() => isSpeedChangeBlocked;
@@ -455,10 +517,11 @@ namespace NavalCombatCore
 
     public class FeedwaterPumpDamaged : SubState, IDynamicModifier
     {
+        public float lostAllPropulsionPercentage = 15;
         public bool hasLoseAllPropulsion = false;
         public override void DoOnClockTick(ISubject subject, float deltaSeconds)
         {
-            if (!hasLoseAllPropulsion && RandomUtils.D100F() <= 15)
+            if (!hasLoseAllPropulsion && RandomUtils.D100F() <= lostAllPropulsionPercentage)
             {
                 hasLoseAllPropulsion = true;
             }
@@ -638,10 +701,12 @@ namespace NavalCombatCore
         public float GetDamageControlRatingOffset() => 0;
         public bool IsFightingFireBlocked() => false;
         public bool IsDamageControlBlocked() => isDamageControlBlocked;
+        public float GetDamageControlDieRollOffset() => 0;
 
-        public bool IsSearchLightBlocked() => true;
-        public bool IsRadarBlocked() => true; // Separate Fire Control Radar and Search Radar?
-        public bool IsSonarBlock() => true;
+        public bool IsSearchLightDisabled() => true;
+        public bool IsFireControlRadarDisabled() => true; // Separate Fire Control Radar and Search Radar?
+        public bool IsSearchRadarDisabled() => true;
+        public bool IsSonarDisabled() => true;
     }
 
     public class PowerDistributionSymtemDamaged : SubState, ILocalizedBatteryMountStatusModifier
@@ -651,8 +716,303 @@ namespace NavalCombatCore
 
         public MountStatus GetBatteryMountStatus(MountLocation mountLocation)
         {
-            return locations.Contains(mountLocation)? MountStatus.Disabled : MountStatus.Operational;
+            return locations.Contains(mountLocation) ? MountStatus.Disabled : MountStatus.Operational;
         }
     }
 
+    public class BatteryTargetChangeBlocker : SubState, IBatteryTargetChangeBlocker
+    {
+        public bool isBatteryTargetChangeBlocked = true;
+
+        public bool IsBatteryTargetChangeBlocked() => isBatteryTargetChangeBlocked;
+    }
+
+    public class ElectronicSystemModifier : SubState, IElectronicSystemModifier
+    {
+        public bool isSearchLightDisabled = false;
+        public bool isFireControlRadarDisabled = false;
+        public bool isSearchRadarDisabled = false;
+        public bool isSonarDisabled = false;
+
+        public bool IsSearchLightDisabled() => isSearchLightDisabled;
+        public bool IsFireControlRadarDisabled() => isFireControlRadarDisabled; // Separate Fire Control Radar and Search Radar?
+        public bool IsSearchRadarDisabled() => isSearchRadarDisabled;
+        public bool IsSonarDisabled() => isSonarDisabled;
+    }
+
+    public class ArmorModifier : SubState, IArmorModifier
+    {
+        public float mainBeltArmorCoef;
+        public float GetMainBeltArmorCoef() => mainBeltArmorCoef;
+    }
+
+
+    // M6 - Flooding Damage Determination
+    public class SevereFloodingState : SubState
+    {
+        public float dieRollOffset = 0;
+
+        public override bool damageControllable => true;
+
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            var shipLog = subject as ShipLog;
+            if (shipLog != null)
+                return;
+
+            var persistentOffset = shipLog.GetSubStates<ISevereFloodingRollModifier>().Select(mod => mod.GetSevereFloodingRollOffset()).DefaultIfEmpty(0).Max();
+
+            var d = RandomUtils.D100F() + dieRollOffset + persistentOffset;
+            var c = damageControlApplied;
+
+            if (d <= (c ? 15 : 4))
+            {
+                // Counter-flooding temporarily succesful. Ship on even keel.
+            }
+            else if (d <= (c ? 18 : 13))
+            {
+                // Permanent loss of half the remaining ammunition supply for all [PRIMARY/SECONDARY] battery mounts in one section.
+                var locations = shipLog.batteryStatus.SelectMany(bs => bs.mountStatus).Select(mnt => mnt.mountLocation).ToList();
+                if (locations.Count > 0)
+                {
+                    var location = RandomUtils.Sample(locations);
+                    foreach (var battery in shipLog.batteryStatus)
+                    {
+                        var p = ((float)battery.mountStatus.Count(m => m.mountLocation == location)) / battery.mountStatus.Count;
+                        battery.ammunition.CostPercent(p);
+                    }
+                }
+            }
+            else if (d <= (c ? 24 : 26))
+            {
+                // Permanent loss of one primary battery mount due to flooding in barbette.
+                if (shipLog.batteryStatus.Count > 0 && shipLog.batteryStatus[0].mountStatus.Count > 0)
+                {
+                    var mount = RandomUtils.Sample(shipLog.batteryStatus[0].mountStatus);
+                    DamageEffectChart.SetOOA(mount);
+                }
+            }
+            else if (d <= (c ? 36 : 34))
+            {
+                // List to [PORTS/STARBOARD]. Secondary battery guns are unable to fire. Adjust the total from CHART H by -2 for primary battery guns.
+                if (shipLog.batteryStatus.Count > 0)
+                {
+                    var DE = new FireControlValueModifier()
+                    {
+                        lifeCycle = StateLifeCycle.GivenTime,
+                        cause = "M6: List to [PORTS/STARBOARD]",
+                        fireControlValueOffset = -2
+                    };
+                    DE.BeginAt(shipLog.batteryStatus[0]);
+                }
+                if (shipLog.batteryStatus.Count > 1)
+                {
+                    var DE = new BatteryMountStatusModifier()
+                    {
+                        lifeCycle = StateLifeCycle.GivenTime,
+                        cause = "M6: List to [PORTS/STARBOARD]",
+                    };
+                    DE.BeginAt(shipLog.batteryStatus[1]);
+                }
+            }
+            else if (d <= 41)
+            {
+                // Heavy list to [PORT/STARBOARD]. Secondary battery guns are unable to fire.
+                // Adjust the total from CHART H by -3 for primary battery guns.
+                // If hit on location 5V (Main Belt) during next game turn, 
+                // use 1/2 of 5V armor as listed on the Ship Log when checking for shell penetration or torpedo damage.
+                // No Luanch or recovery of aircraft possible.
+                if (shipLog.batteryStatus.Count > 0)
+                {
+                    var DE = new FireControlValueModifier()
+                    {
+                        lifeCycle = StateLifeCycle.GivenTime,
+                        cause = "M6: Heavy list to [PORT/STARBOARD]",
+                        fireControlValueOffset = -3
+                    };
+                    DE.BeginAt(shipLog.batteryStatus[0]);
+                }
+                if (shipLog.batteryStatus.Count > 1)
+                {
+                    var DE = new BatteryMountStatusModifier()
+                    {
+                        lifeCycle = StateLifeCycle.GivenTime,
+                        cause = "M6: Heavy list to [PORT/STARBOARD]",
+                    };
+                    DE.BeginAt(shipLog.batteryStatus[1]);
+                }
+                var DE3 = new ArmorModifier()
+                {
+                    lifeCycle = StateLifeCycle.GivenTime,
+                    mainBeltArmorCoef = 0.5f,
+                    cause = "M6: Heavy list to [PORT/STARBOARD]",
+                };
+                DE3.BeginAt(shipLog);
+            }
+            else if (d <= 46)
+            {
+                // Additional flooding - permanent loss 1 knot speed. Loss of power to all searchlights.
+                // No launch or recovery of aircraft possible.
+                shipLog.dynamicStatus.maxSpeedKnotsOffset += -1;
+
+                var DE = new ElectronicSystemModifier()
+                {
+                    lifeCycle = StateLifeCycle.GivenTime,
+                    isSearchLightDisabled = true
+                };
+                DE.BeginAt(shipLog);
+                // TODO: Process aircraft relaled stuff
+            }
+            else if (d <= 51)
+            {
+                // Additional flooding - permannent loss of 1 knot speed. No radio communication to ships or aircraft. 
+                // Reduce Flag Command Rating by 1.
+                shipLog.dynamicStatus.maxSpeedKnotsOffset += -1;
+                // TODO: Command & Comm
+            }
+            else if (d <= 56)
+            {
+                // Permanent loss of all secondary battery guns in one section due to flooding. 
+                // No launch or recovery of aircraft possible
+                if (shipLog.batteryStatus.Count > 1 && shipLog.batteryStatus[1].mountStatus.Count > 0)
+                {
+                    var location = RandomUtils.Sample(shipLog.batteryStatus[1].mountStatus.Select(mnt => mnt.mountLocation).ToList());
+                    foreach (var mount in shipLog.batteryStatus[1].mountStatus.Where(mnt => mnt.mountLocation == location))
+                    {
+                        DamageEffectChart.SetOOA(mount);
+                    }
+                }
+                // TOOD: Aircraft
+            }
+            else if (d <= 61)
+            {
+                // Additional flooding - add DP equal to 1x a roll of percentile dice. Permannent loss of 1 DCR
+                shipLog.damagePoint += RandomUtils.D100F();
+                shipLog.damageControlRatingHits += 1;
+            }
+            else if (d <= 66)
+            {
+                // Additional flooding - add DP equal to 2x a roll of percentile dice. Reduce Bridge Command Rating by 1
+                shipLog.damagePoint += RandomUtils.D100F() * 2;
+                // TODO: Command
+            }
+            else if (d <= (c ? 76 : 71))
+            {
+                // All [PRIMARY/SECONDARY] battery fire control systems OOA during next game turn.
+                // B1L or B2L order must be given during the next Command Phase for local control (LCS) of battey.
+                var DE = new BatteryFireContrlStatusDisabledModifier()
+                {
+                    lifeCycle = StateLifeCycle.GivenTime,
+                    cause = "M6: All [PRIMARY/SECONDARY] battery fire control systems OOA during next game turn"
+                };
+                DE.BeginAt(shipLog);
+            }
+            else if (d <= (c ? 83 : 81))
+            {
+                // Flooding in shaft tunnel. One prop/shaft is OOA
+                shipLog.dynamicStatus.propulsionShaftHits += 1;
+            }
+            else if (d <= 94)
+            {
+                // One [ENGINE ROOM/BOILER ROOM] is OOA due to flooding
+                if (RandomUtils.NextFloat() < 0.5f)
+                {
+                    shipLog.dynamicStatus.engineRoomHits += 1;
+                }
+                else
+                {
+                    shipLog.dynamicStatus.boilerRoomHits += 1;
+                }
+            }
+            else if (d <= 98)
+            {
+                // Damage to main feedwater pumps.
+                // A roll of 01-20 (01-30) at the beginning of any MOVEMENT PHASE causes the ship to lose all propulsion (as if Bridge Command SS were ordered).
+                // Momentum rules apply. If all propulsion is lost, rolls continue and ship may not begin acceleration until turn following a roll of 01-20 (01-15)
+                var DE = new FeedwaterPumpDamaged()
+                {
+                    lifeCycle = StateLifeCycle.DieRollPassed,
+                    lostAllPropulsionPercentage = c ? 20 : 30, // "Active"
+                    dieRollThreshold = c ? 20 : 15, // Restore
+                    cause = "M6, Damage to main feedwater pump"
+                };
+                DE.BeginAt(shipLog);
+            }
+            else
+            {
+                if (!c)
+                {
+                    // Ship capsizes and begins to sink. Ship will remain an obstruction for all following turns until a roll of 01-25
+                    shipLog.operationalState = ShipOperationalState.FloodingObstruction;
+                    var state = new SinkingState();
+                    state.BeginAt(shipLog);
+                }
+            }
+        }
+    }
+
+    public class SevereFloodingRollModifier : SubState, ISevereFloodingRollModifier
+    {
+        public float severeFloodingRollOffset;
+        public float GetSevereFloodingRollOffset() => severeFloodingRollOffset;
+    }
+
+    public class LossOfCommunicationToFireControlSystemState : SubState, IFireControlSystemTargetChangeBlocker
+    {
+        public bool isFireControlSystemTargetChangeBlocked;
+        public float succPercentage = 40f;
+
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            isFireControlSystemTargetChangeBlocked = RandomUtils.D100F() >= succPercentage;
+        }
+
+        public bool IsFireControlSystemTargetChangeBlocked() => isFireControlSystemTargetChangeBlocked;
+    }
+
+    public class LossOfCommunicationsAndPowerToSearchLight : SubState, IElectronicSystemModifier
+    {
+        public RapidFiringBatteryLocation location;
+        public float succPercentage = 30;
+        public bool isSearchLightDisabled;
+
+        public (bool, bool) IsSearchLightDisabled(RapidFiringBatteryLocation checkLocation) // (matched, value)
+        {
+            if (checkLocation == location)
+            {
+                return (true, isSearchLightDisabled);
+            }
+            return (false, false);
+        }
+    }
+
+    public class LossOfCommunicationToEngineRoom : SubState, IDynamicModifier
+    {
+        public float succPercentage = 50;
+        public bool isSpeedChangeBlocked;
+
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            isSpeedChangeBlocked = RandomUtils.D100F() >= succPercentage;
+        }
+
+        public bool IsSpeedChangeBlocked() => isSpeedChangeBlocked;
+    }
+
+    public class BatteryHandlingRoomAbandoned : SubState // It works as a "countdown" to trigger OOA of a mount 
+    {
+        public override void DoEndAt(ISubject subject)
+        {
+            if (subject is MountStatusRecord mountStatus)
+            {
+                DamageEffectChart.SetOOA(mountStatus);
+            }
+        }
+    }
+
+    // Asterisk labeled family, they may doesn't have many functionally, just a label that some 
+    public class OneShotDamageEffectHappend : SubState
+    {
+        public string damageEffectCode;
+    }
 }

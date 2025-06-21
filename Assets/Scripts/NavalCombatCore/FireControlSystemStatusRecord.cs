@@ -20,10 +20,10 @@ namespace NavalCombatCore
         public TrackingSystemState trackingState;
         public float trackingSeconds;
 
-        public override IEnumerable<IObjectIdLabeled> GetSubObjects()
-        {
-            yield break;
-        }
+        // public override IEnumerable<IObjectIdLabeled> GetSubObjects()
+        // {
+        //     yield break;
+        // }
 
         public void Step(float deltaSeconds)
         {

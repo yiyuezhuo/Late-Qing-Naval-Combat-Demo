@@ -187,19 +187,50 @@ namespace NavalCombatCore
             subStates.Remove(state);
         }
 
-        public abstract IEnumerable<IObjectIdLabeled> GetSubObjects();
-
-        public IEnumerable<T> GetSubState<T>()
+        public virtual IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
             foreach (var subState in subStates)
             {
-                if (subState is T t)
-                    yield return t;
+                yield return subState;
             }
+        }
+
+        // public IEnumerable<T> GetSubState<T>(SubState subState)
+        // {
+        //     if (subState is T t)
+        //     {
+        //         yield return t;
+        //     }
+
+        //     foreach (var childSubState in subState.children)
+        //     {
+        //         foreach (var tt in GetSubState<T>(childSubState))
+        //         {
+        //             yield return tt;
+        //         }
+        //     }
+        // }
+
+        public IEnumerable<T> GetSubStates<T>()
+        {
+            // foreach (var subState in subStates)
+            // {
+            //     foreach (var t in GetSubState<T>(subState))
+            //         yield return t;
+            // }
+
+            foreach (var subState in subStates)
+            {
+                if (subState is T t)
+                {
+                    yield return t;
+                }
+            }
+
             var parent = EntityManager.Instance.GetParent<UnitModule>(this);
             if (parent != null)
             {
-                foreach (var t in parent.GetSubState<T>())
+                foreach (var t in parent.GetSubStates<T>())
                 {
                     yield return t;
                 }
@@ -307,6 +338,10 @@ namespace NavalCombatCore
 
         public override IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
+            foreach (var so in base.GetSubObjects())
+                yield return so;
+
+
             foreach (var obj in batteryStatus)
             {
                 yield return obj;
@@ -533,7 +568,7 @@ namespace NavalCombatCore
 
         public void StepProcessSpeed(float deltaSeconds)
         {
-            var commandBlocked = GetSubState<IDesiredSpeedUpdateToBoilerRoomBlocker>().Any(blocker => blocker.IsDesiredSpeedCommandBlocked());
+            var commandBlocked = GetSubStates<IDesiredSpeedUpdateToBoilerRoomBlocker>().Any(blocker => blocker.IsDesiredSpeedCommandBlocked());
             if (!commandBlocked)
             {
                 desiredSpeedKnotsForBoilerRoom = desiredSpeedKnot;
@@ -796,6 +831,12 @@ namespace NavalCombatCore
                     original = this
                 };
             }
+        }
+
+        public int GetDamageTier()
+        {
+            var maxDamagePoint = shipClass.damagePoint;
+            return (int)Math.Floor((damagePoint / maxDamagePoint) * 10);
         }
 
         public float EvaluateBowFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 0);

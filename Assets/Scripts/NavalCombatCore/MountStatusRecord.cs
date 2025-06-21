@@ -74,6 +74,14 @@ namespace NavalCombatCore
                     break;
             }
         }
+
+        public void CostPercent(float percent)
+        {
+            ArmorPiercing -= (int)Math.Ceiling(ArmorPiercing * percent);
+            semiArmorPiercing -= (int)Math.Ceiling(semiArmorPiercing * percent);
+            common -= (int)Math.Ceiling(common * percent);
+            highExplosive -= (int)Math.Ceiling(highExplosive * percent);
+        }
     }
 
     public enum MountStatus
@@ -185,10 +193,10 @@ namespace NavalCombatCore
         public float reloadingSeconds;
         public int reloadedLoad;
 
-        public override IEnumerable<IObjectIdLabeled> GetSubObjects()
-        {
-            yield break;
-        }
+        // public override IEnumerable<IObjectIdLabeled> GetSubObjects()
+        // {
+        //     yield break;
+        // }
 
 
         public MountLocationRecordInfo GetTorpedoMountLocationRecordInfo()
@@ -319,10 +327,10 @@ namespace NavalCombatCore
 
         public List<MountFiringRecord> logs = new();
 
-        public override IEnumerable<IObjectIdLabeled> GetSubObjects()
-        {
-            yield break;
-        }
+        // public override IEnumerable<IObjectIdLabeled> GetSubObjects()
+        // {
+        //     yield break;
+        // }
 
         public string DescribeDetail()
         {

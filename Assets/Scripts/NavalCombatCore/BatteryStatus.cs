@@ -20,6 +20,9 @@ namespace NavalCombatCore
 
         public override IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
+            foreach (var so in base.GetSubObjects())
+                yield return so;
+
             foreach (var mount in mountStatus)
             {
                 yield return mount;

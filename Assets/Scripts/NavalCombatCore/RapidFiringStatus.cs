@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace NavalCombatCore
 {
-    public enum RapidFiringBatteryLocation // Location => Side? Though it's binded in UITK so keep it now.
+    public enum RapidFiringBatteryLocation // Location => Side? Though it's binded in UITK so keep it now. It's used in searchlight DE as well
     {
         Port,
         Starboard

@@ -4,8 +4,6 @@ using System.Xml;
 using System.Collections.Generic;
 using System.Linq;
 using MathNet.Numerics.Distributions;
-using UnityEngine.UIElements;
-using System.Security.Cryptography.X509Certificates;
 
 namespace NavalCombatCore
 {
@@ -53,10 +51,11 @@ namespace NavalCombatCore
     // M1 Damage Effect
     public static class DamageEffectChart // This class is separated from the RuleChart, since it rely on ShipLog heavyly.
     {
-        public static void AddNewDamageEffect(DamageEffectContext ctx)
+        public static string AddNewDamageEffect(DamageEffectContext ctx)
         {
             var damageEffectId = RuleChart.ResolveDamageEffectId(ctx.cause);
             AddNewDamageEffect(ctx, damageEffectId);
+            return damageEffectId;
         }
 
         public static void AddNewDamageEffect(DamageEffectContext ctx, string damageEffectId)
@@ -1453,7 +1452,7 @@ namespace NavalCombatCore
                 {
                     AddShipboardFire(ctx, "DE 140 (HE): Shipboard fire severity 30", 30);
                 }
-            } },
+            }},
 
             // DE 141, Disruption to communications
             {"141", ctx=>{
@@ -1467,7 +1466,7 @@ namespace NavalCombatCore
                 {
                     AddShipboardFire(ctx, "DE 141 (HE): Shipboard fire severity 50", 50);
                 }
-            } },
+            }},
 
             // DE 142, Temporary disruption to shipboard communications
             {"142", ctx=>{
@@ -1496,7 +1495,7 @@ namespace NavalCombatCore
                 {
                     AddShipboardFire(ctx, "DE 142 (HE): Shipboard fire severity 20", 20);
                 }
-            } },
+            }},
 
             // DE 143, Bridge hit
             {"143", ctx=>{
@@ -1534,7 +1533,7 @@ namespace NavalCombatCore
                 {
                     AddShipboardFire(ctx, "DE 144 (HE): Shipboard fire severity 30", 30);
                 }
-            } },
+            }},
 
             // DE 145, Bridge hit (destoyed or shock only)
             {"145", ctx=>{

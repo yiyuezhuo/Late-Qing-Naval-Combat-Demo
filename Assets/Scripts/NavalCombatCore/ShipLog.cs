@@ -173,7 +173,8 @@ namespace NavalCombatCore
 
     // }
 
-    public abstract class UnitModule : IObjectIdLabeled, ISubject
+    // Abstract class will prevent UITK binding hint so we switch back to concrete class at time.
+    public class UnitModule : IObjectIdLabeled, ISubject
     {
         public string objectId { get; set; }
         public List<SubState> subStates = new();
@@ -367,6 +368,7 @@ namespace NavalCombatCore
         public void ResetDamageExpenditureState()
         {
             desiredHeadingDeg = headingDeg;
+            desiredSpeedKnot = speedKnots;
             desiredSpeedKnotsForBoilerRoom = speedKnots;
 
             damagePoint = 0;

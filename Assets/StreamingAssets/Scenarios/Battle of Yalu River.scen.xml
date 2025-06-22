@@ -18,10 +18,12 @@
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
-    <desiredSpeedKnots>12</desiredSpeedKnots>
+    <desiredSpeedKnot>12</desiredSpeedKnot>
     <desiredHeadingDeg>70</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -78,6 +80,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -176,6 +179,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -240,10 +244,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -321,10 +328,12 @@
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
-    <desiredSpeedKnots>12</desiredSpeedKnots>
+    <desiredSpeedKnot>12</desiredSpeedKnot>
     <desiredHeadingDeg>70</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -381,6 +390,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -470,6 +480,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -525,10 +536,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -607,10 +621,12 @@
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
-    <desiredSpeedKnots>12</desiredSpeedKnots>
+    <desiredSpeedKnot>12</desiredSpeedKnot>
     <desiredHeadingDeg>70</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -649,6 +665,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -729,6 +746,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -784,10 +802,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -866,10 +887,12 @@
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
-    <desiredSpeedKnots>8</desiredSpeedKnots>
+    <desiredSpeedKnot>8</desiredSpeedKnot>
     <desiredHeadingDeg>240</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>8</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -899,6 +922,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -928,6 +952,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -983,10 +1008,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -1064,10 +1092,12 @@
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
-    <desiredSpeedKnots>10</desiredSpeedKnots>
+    <desiredSpeedKnot>10</desiredSpeedKnot>
     <desiredHeadingDeg>270</desiredHeadingDeg>
     <mapState>Destroyed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -1115,6 +1145,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -1170,10 +1201,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -1250,10 +1284,12 @@
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
-    <desiredSpeedKnots>8</desiredSpeedKnots>
+    <desiredSpeedKnot>8</desiredSpeedKnot>
     <desiredHeadingDeg>240</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>8</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -1292,6 +1328,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -1336,6 +1373,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -1382,10 +1420,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -1463,10 +1504,12 @@
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
-    <desiredSpeedKnots>8</desiredSpeedKnots>
+    <desiredSpeedKnot>8</desiredSpeedKnot>
     <desiredHeadingDeg>240</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>8</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -1505,6 +1548,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -1549,6 +1593,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -1595,10 +1640,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -1676,10 +1724,12 @@
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
-    <desiredSpeedKnots>8</desiredSpeedKnots>
+    <desiredSpeedKnot>8</desiredSpeedKnot>
     <desiredHeadingDeg>240</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>8</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -1718,6 +1768,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -1780,6 +1831,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -1798,10 +1850,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -1879,10 +1934,12 @@
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
-    <desiredSpeedKnots>8</desiredSpeedKnots>
+    <desiredSpeedKnot>8</desiredSpeedKnot>
     <desiredHeadingDeg>240</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>8</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -1921,6 +1978,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -1983,6 +2041,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -2001,10 +2060,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -2082,10 +2144,12 @@
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
-    <desiredSpeedKnots>8</desiredSpeedKnots>
+    <desiredSpeedKnot>8</desiredSpeedKnot>
     <desiredHeadingDeg>240</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>8</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -2124,6 +2188,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -2162,6 +2227,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -2217,10 +2283,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -2298,10 +2367,12 @@
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
-    <desiredSpeedKnots>8</desiredSpeedKnots>
+    <desiredSpeedKnot>8</desiredSpeedKnot>
     <desiredHeadingDeg>240</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>8</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -2340,6 +2411,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -2378,6 +2450,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -2433,10 +2506,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -2514,10 +2590,12 @@
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
-    <desiredSpeedKnots>8</desiredSpeedKnots>
+    <desiredSpeedKnot>8</desiredSpeedKnot>
     <desiredHeadingDeg>240</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>8</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -2547,6 +2625,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -2585,6 +2664,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -2630,10 +2710,13 @@
     </torpedoSectorStatus>
     <rapidFiringStatus />
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -2711,10 +2794,12 @@
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
-    <desiredSpeedKnots>8</desiredSpeedKnots>
+    <desiredSpeedKnot>8</desiredSpeedKnot>
     <desiredHeadingDeg>240</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>8</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -2744,6 +2829,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -2782,6 +2868,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -2827,10 +2914,13 @@
     </torpedoSectorStatus>
     <rapidFiringStatus />
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -2908,10 +2998,12 @@
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
-    <desiredSpeedKnots>10</desiredSpeedKnots>
+    <desiredSpeedKnot>10</desiredSpeedKnot>
     <desiredHeadingDeg>270</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -2941,6 +3033,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -2979,6 +3072,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -3024,10 +3118,13 @@
     </torpedoSectorStatus>
     <rapidFiringStatus />
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -3105,10 +3202,12 @@
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
-    <desiredSpeedKnots>8</desiredSpeedKnots>
+    <desiredSpeedKnot>8</desiredSpeedKnot>
     <desiredHeadingDeg>240</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>8</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -3138,6 +3237,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -3194,6 +3294,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -3212,10 +3313,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -3293,10 +3397,12 @@
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
-    <desiredSpeedKnots>12</desiredSpeedKnots>
+    <desiredSpeedKnot>12</desiredSpeedKnot>
     <desiredHeadingDeg>70</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -3353,6 +3459,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -3409,6 +3516,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -3446,10 +3554,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -3528,10 +3639,12 @@
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
-    <desiredSpeedKnots>12</desiredSpeedKnots>
+    <desiredSpeedKnot>12</desiredSpeedKnot>
     <desiredHeadingDeg>70</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -3561,6 +3674,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -3686,6 +3800,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -3750,10 +3865,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -3832,10 +3950,12 @@
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
-    <desiredSpeedKnots>12</desiredSpeedKnots>
+    <desiredSpeedKnot>12</desiredSpeedKnot>
     <desiredHeadingDeg>70</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -3865,6 +3985,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -3990,6 +4111,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -4054,10 +4176,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -4136,10 +4261,12 @@
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
-    <desiredSpeedKnots>12</desiredSpeedKnots>
+    <desiredSpeedKnot>12</desiredSpeedKnot>
     <desiredHeadingDeg>70</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -4187,6 +4314,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -4261,6 +4389,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -4298,10 +4427,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -4380,10 +4512,12 @@
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
-    <desiredSpeedKnots>12</desiredSpeedKnots>
+    <desiredSpeedKnot>12</desiredSpeedKnot>
     <desiredHeadingDeg>70</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -4413,6 +4547,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -4547,6 +4682,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -4611,10 +4747,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -4692,10 +4831,12 @@
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
-    <desiredSpeedKnots>12</desiredSpeedKnots>
+    <desiredSpeedKnot>12</desiredSpeedKnot>
     <desiredHeadingDeg>70</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -4734,6 +4875,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -4814,6 +4956,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -4869,10 +5012,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -4951,10 +5097,12 @@
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
-    <desiredSpeedKnots>12</desiredSpeedKnots>
+    <desiredSpeedKnot>12</desiredSpeedKnot>
     <desiredHeadingDeg>70</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -5071,6 +5219,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -5117,10 +5266,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -5199,10 +5351,12 @@
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
-    <desiredSpeedKnots>10</desiredSpeedKnots>
+    <desiredSpeedKnot>10</desiredSpeedKnot>
     <desiredHeadingDeg>270</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -5250,6 +5404,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -5305,10 +5460,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -5386,10 +5544,12 @@
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
-    <desiredSpeedKnots>12</desiredSpeedKnots>
+    <desiredSpeedKnot>12</desiredSpeedKnot>
     <desiredHeadingDeg>70</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -5419,6 +5579,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
       <subStates />
@@ -5448,6 +5609,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -5466,10 +5628,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -5548,10 +5713,12 @@
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
-    <desiredSpeedKnots>12</desiredSpeedKnots>
+    <desiredSpeedKnot>12</desiredSpeedKnot>
     <desiredHeadingDeg>70</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -5581,6 +5748,7 @@
         <trackingSeconds>0</trackingSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
     </batteryStatus>
     <torpedoSectorStatus>
@@ -5599,10 +5767,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -5680,10 +5851,12 @@
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
-    <desiredSpeedKnots>10</desiredSpeedKnots>
+    <desiredSpeedKnot>10</desiredSpeedKnot>
     <desiredHeadingDeg>270</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus />
     <torpedoSectorStatus>
      <ammunition>1</ammunition>
@@ -5720,10 +5893,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -5801,10 +5977,12 @@
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
-    <desiredSpeedKnots>10</desiredSpeedKnots>
+    <desiredSpeedKnot>10</desiredSpeedKnot>
     <desiredHeadingDeg>270</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus />
     <torpedoSectorStatus>
      <ammunition>1</ammunition>
@@ -5841,10 +6019,13 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <speedKnotsDirectModifier>1</speedKnotsDirectModifier>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
      <portHit>0</portHit>
@@ -6370,6 +6551,7 @@
   <scenarioState>
    <dateTime>1894-09-17T04:30:00Z</dateTime>
    <visibility>Clear</visibility>
+   <seaStateBeaufort>0</seaStateBeaufort>
   </scenarioState>
   <launchedTorpedos />
   <weaponSimulationAssignmentClock>
@@ -6379,8 +6561,8 @@
   </weaponSimulationAssignmentClock>
  </navalGameState>
  <viewState>
-  <xRotation>39.6638374</xRotation>
-  <yRotation>236.389191</yRotation>
-  <orthographicSize>10</orthographicSize>
+  <xRotation>39.6681671</xRotation>
+  <yRotation>236.397644</yRotation>
+  <orthographicSize>4</orthographicSize>
  </viewState>
 </FullState>

@@ -576,11 +576,39 @@ namespace NavalCombatCore
                             // TODO: Handle damage effect and general (DP caused) damage effect.
                             tgt.damagePoint += shellDamageResult.damagePoint;
 
+                            string damageEffectId = null;
+                            // Process Damage Effect
+                            if (RandomUtils.NextFloat() <= shellDamageResult.damageEffectProb)
+                            {
+                                var damageEffectCause = armorLocation switch
+                                {
+                                    ArmorLocation.Deck => DamageEffectCause.Deck,
+                                    ArmorLocation.TurretHorizontal => DamageEffectCause.Turret,
+                                    ArmorLocation.SuperStructureHorizontal => DamageEffectCause.Superstrucure,
+                                    ArmorLocation.ConningTower => DamageEffectCause.ConningTower,
+                                    ArmorLocation.MainBelt => DamageEffectCause.MainBelt,
+                                    ArmorLocation.BeltEnd => DamageEffectCause.BeltEnd,
+                                    ArmorLocation.Barbette => DamageEffectCause.Barbette,
+                                    ArmorLocation.TurretVertical => DamageEffectCause.Turret,
+                                    ArmorLocation.SuperStructureVertical => DamageEffectCause.Superstrucure,
+                                    _ => DamageEffectCause.MainBelt
+                                };
+                                var damageEffectContext = new DamageEffectContext()
+                                {
+                                    subject = tgt,
+                                    baseDamagePoint = shellDamageResult.damagePoint,
+                                    cause = damageEffectCause,
+                                    hitPenDetType = hitPenDetType,
+                                    ammunitionType = ammunitionType,
+                                    shellDiameterInch = ctx.batteryRecord.shellSizeInch,
+                                    addtionalDamageEffectProbility = shellDamageResult.damageEffectProb
+                                };
+
+                                damageEffectId = DamageEffectChart.AddNewDamageEffect(damageEffectContext);
+                            }
+
                             var logger = ServiceLocator.Get<ILoggerService>();
-                            logger.Log($"{ctx.shipLog.namedShip.name.GetMergedName()} {ctx.batteryRecord.name.GetMergedName()} -> {tgt.namedShip.name.GetMergedName()} ({logRecord.Summary()})");
-
-                            // TODO: Apply damage point and process side effect
-
+                            logger.Log($"{ctx.shipLog.namedShip.name.GetMergedName()} {ctx.batteryRecord.name.GetMergedName()} -> {tgt.namedShip.name.GetMergedName()} ({logRecord.Summary()}) (DE: {damageEffectId})");
                         }
                     }
                 }

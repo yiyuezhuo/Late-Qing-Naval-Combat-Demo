@@ -28,9 +28,43 @@ namespace NavalCombatCore
     [XmlInclude(typeof(SinkingState))]
     [XmlInclude(typeof(BatteryMountStatusModifier))]
     [XmlInclude(typeof(RateOfFireModifier))]
+    [XmlInclude(typeof(BatteryFireContrlStatusDisabledModifier))]
     [XmlInclude(typeof(ControlSystemDisabledModifier))]
     [XmlInclude(typeof(FireControlValueModifier))]
-    public class SubState : IObjectIdLabeled
+    [XmlInclude(typeof(RiskingInMagazineExplosion))]
+    [XmlInclude(typeof(EngineRoomHitModifier))]
+    [XmlInclude(typeof(BoilerRoomHitModifier))]
+    [XmlInclude(typeof(SteamLineDamaged))]
+    [XmlInclude(typeof(DamageControlModifier))]
+    [XmlInclude(typeof(DynamicModifier))]
+    [XmlInclude(typeof(FeedwaterPumpDamaged))]
+    [XmlInclude(typeof(RudderDamaged))]
+    [XmlInclude(typeof(FuelSupplyDamaged))]
+    [XmlInclude(typeof(EngineRoomCommunicationDamaged))]
+    [XmlInclude(typeof(TorpedoMountDamaged))]
+    [XmlInclude(typeof(TorpedoMountModifer))]
+    [XmlInclude(typeof(SmokeGeneratorDamaged))]
+    [XmlInclude(typeof(SectorFireState))]
+    [XmlInclude(typeof(MainPowerplantOOA))]
+    [XmlInclude(typeof(PowerDistributionSymtemDamaged))]
+    [XmlInclude(typeof(BatteryTargetChangeBlocker))]
+    [XmlInclude(typeof(ElectronicSystemModifier))]
+    [XmlInclude(typeof(ArmorModifier))]
+    [XmlInclude(typeof(SevereFloodingRollModifier))]
+    [XmlInclude(typeof(LossOfCommunicationToFireControlSystemState))]
+    [XmlInclude(typeof(LossOfCommunicationsAndPowerToSearchLight))]
+    [XmlInclude(typeof(LossOfCommunicationToEngineRoom))]
+    [XmlInclude(typeof(BatteryHandlingRoomAbandoned))]
+    [XmlInclude(typeof(OneShotDamageEffectHappend))]
+    [XmlInclude(typeof(DE602DyanmicModifier))]
+    [XmlInclude(typeof(DE607DyanmicModifier))]
+    [XmlInclude(typeof(ShipSettleState))]
+    [XmlInclude(typeof(DE609Effect))]
+    [XmlInclude(typeof(FiringCircuitDamagedMaster))]
+    [XmlInclude(typeof(FiringCircuitDamagedWorker))]
+    [XmlInclude(typeof(DE806DynamicModifier))]
+    [XmlInclude(typeof(BatteryDamaged))]
+    public partial class SubState : IObjectIdLabeled
     {
         public string objectId { get; set; }
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
@@ -107,7 +141,7 @@ namespace NavalCombatCore
         public virtual void DoStep(ISubject subject, float deltaSeconds)
         { }
 
-        public virtual string Describe() => "General Damage Effect";
+        public virtual string Describe() => $"Damage Effect: {GetType().Name}";
         public virtual void DoOnClockTick(ISubject subject, float deltaSeconds)
         { }
 
@@ -203,22 +237,6 @@ namespace NavalCombatCore
         //     children.Add(subState);
         // }
     }
-
-
-    public class SinkingState : SubState
-    {
-        public override void DoEndAt(ISubject subject)
-        {
-            var shipLog = subject as ShipLog; // This state can only be attached to a ShipLog
-            if (shipLog != null)
-            {
-                shipLog.mapState = MapState.Destroyed; // Sunk
-            }
-        }
-        public override string Describe() => $"Ship destroyed and will remain an obstruction for all following turns until a roll <= {dieRollThreshold}";
-        // public override bool damageControlable => false;
-    }
-
 
     public interface IBatteryMountStatusModifier // Mounts should check its platform's damage effects which implements IBatteryMountEffector to determine its effective status (the state hold by itself is the "permanent" state, while effector may override this value for a given time)
     {
@@ -347,6 +365,20 @@ namespace NavalCombatCore
     public interface ISevereFloodingRollModifier
     {
         float GetSevereFloodingRollOffset();
+    }
+
+    public class SinkingState : SubState
+    {
+        public override void DoEndAt(ISubject subject)
+        {
+            var shipLog = subject as ShipLog; // This state can only be attached to a ShipLog
+            if (shipLog != null)
+            {
+                shipLog.mapState = MapState.Destroyed; // Sunk
+            }
+        }
+        public override string Describe() => $"Ship destroyed and will remain an obstruction for all following turns until a roll <= {dieRollThreshold}";
+        // public override bool damageControlable => false;
     }
 
     public class BatteryMountStatusModifier : SubState, IBatteryMountStatusModifier
@@ -635,20 +667,6 @@ namespace NavalCombatCore
 
         public bool IsSmokeGeneratorAvailable() => IsSmokeGeneratorAvailableCurrent;
     }
-
-    // public class LabeledSubState : SubState
-    // {
-    //     public string objectId;
-    // }
-
-    // public class BatteryParentSubState : SubState
-    // {
-    //     public List<string> childrenObjectIds = new();
-    //     public override void DoEndAt(ISubject subject)
-    //     {
-    //         // base.DoEndAt(subject);
-    //     }
-    // }
 
     // DE 128
     public class SectorFireState : SubState, ILocalizedDirectionalFireControlValueModifier, ILocalizedTorpedoMountStatusModifier
@@ -1127,31 +1145,6 @@ namespace NavalCombatCore
         public float GetMaxSpeedUpperLimit() => maxSpeedUpperLimitApplied ? maxSpeedUpperLimit : -1;
         public bool IsCourseChangeBlocked() => isCourseChangeBlocked;
     }
-
-    // public class DE608DynamicModifier : SubState, IDynamicModifier
-    // {
-    //     public float maxSpeedUpperLimit = -1;
-    //     public float GetMaxSpeedUpperLimit() => maxSpeedUpperLimit;
-    //     public bool IsEvasiveManeuverBlocked() => true;
-    //     public float GetStandardTurnCoef() => 0.5f;
-    //     public float GetEmergencyTurnCoef() => 0.5f;
-
-    //     public override void DoOnClockTick(ISubject subject, float deltaSeconds)
-    //     {
-    //         var d100 = RandomUtils.D100F();
-    //         if (d100 <= 10)
-    //         {
-    //             if (subject is ShipLog shipLog)
-    //             {
-    //                 shipLog.mapState = MapState.Destroyed;
-    //             }
-    //         }
-    //         else if (d100 <= 30)
-    //         {
-    //             maxSpeedUpperLimit = 6;
-    //         }
-    //     }
-    // }
 
     // DE 609, Flooding due to splinter and shell damage near waterline
     public class DE609Effect : SevereFloodingState

@@ -304,12 +304,16 @@ namespace NavalCombatCore
         {
             [XmlAttribute]
             public float damagePoint;
+
+            // [XmlAttribute]
+            // public bool causeDamageEffect;
+
             [XmlAttribute]
-            public bool causeDamageEffect;
+            public float damageEffectProb;
 
             public override string ToString()
             {
-                return $"(DP={damagePoint}, DE={causeDamageEffect})";
+                return $"(DP={damagePoint}, Prob of DE={damageEffectProb})";
             }
         }
 
@@ -325,7 +329,8 @@ namespace NavalCombatCore
         {
             var row = shellDamageFactorsTable.rows.Select((value, index) => (value, index)).Last(r => damageFactor >= r.value);
             var damagePoint = 0f;
-            var damageEffect = false;
+            // var causeDamageEffect = false;
+            double damageEffectProb=0;
             switch (hitPenDetType)
             {
                 case HitPenDetType.PenetrateWithDetonate:
@@ -333,22 +338,26 @@ namespace NavalCombatCore
                     var colIdx = baseOffset + Categorical.Sample(subOffsetWeights);
 
                     damagePoint = shellDamageFactorsTable.cells[row.index, colIdx];
-                    var damageEffectProb = shellDamageFactorsTable.cells[row.index, 11] * 0.01;
-                    damageEffect = RandomUtils.rand.NextDouble() < damageEffectProb;
+                    damageEffectProb = shellDamageFactorsTable.cells[row.index, 11] * 0.01;
+                    // causeDamageEffect = RandomUtils.rand.NextDouble() < damageEffectProb;
                     break;
                 case HitPenDetType.PassThrough:
                     damagePoint = shellDamageFactorsTable.cells[row.index, 12];
                     damageEffectProb = shellDamageFactorsTable.cells[row.index, 13] * 0.01;
-                    damageEffect = RandomUtils.rand.NextDouble() < damageEffectProb;
+                    // causeDamageEffect = RandomUtils.rand.NextDouble() < damageEffectProb;
                     break;
                 case HitPenDetType.NoPenetration:
                     damagePoint = shellDamageFactorsTable.cells[row.index, 14 + (int)ammoType];
                     damageEffectProb = shellDamageFactorsTable.cells[row.index, 18] * 0.01;
-                    damageEffect = RandomUtils.rand.NextDouble() < damageEffectProb;
+                    // causeDamageEffect = RandomUtils.rand.NextDouble() < damageEffectProb;
                     break;
             }
 
-            return new() { damagePoint = damagePoint, causeDamageEffect = damageEffect };
+            return new() {
+                damagePoint = damagePoint,
+                // causeDamageEffect = causeDamageEffect,
+                damageEffectProb = (float)damageEffectProb
+            };
         }
 
 

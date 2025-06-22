@@ -4,7 +4,7 @@ using System.Xml;
 using System.Collections.Generic;
 using System.Linq;
 using MathNet.Numerics.Distributions;
-using Unity.VisualScripting;
+using Unity.VisualScripting.Dependencies.NCalc;
 
 
 namespace NavalCombatCore
@@ -245,6 +245,11 @@ namespace NavalCombatCore
         float GetRateOfFireCoef(); // E.X: this many resctrict a mount ROF to 50% of its original value.
     }
 
+    public interface IBarrageFireBlocker
+    {
+        bool IsBarrageFireBlocked();
+    }
+
     public interface IFireControlValueModifier
     {
         float GetFireControlValueCoef();
@@ -277,6 +282,12 @@ namespace NavalCombatCore
         float GetMaxSpeedKnotOffset() => 0;
         float GetMaxSpeedKnotCoef() => 1;
         float GetMaxSpeedUpperLimit() => -1;
+        float GetStandardTurnCoef() => 1;
+        float GetEmergencyTurnCoef() => 1;
+        float GetStandardTurnUpperLimit() => -1;
+        float GetEmergencyTurnUpperLimit() => -1;
+        float GetAccelerationUpperLimit() => -1;
+
         // It's all "physic" backed resitrction, they differ from communication / command malfunction induced problem
         bool IsEvasiveManeuverBlocked() => false;
         bool IsCourseChangeBlocked() => false; // EX: steering gear is jammed
@@ -294,6 +305,8 @@ namespace NavalCombatCore
         bool IsDamageControlBlocked();
         float GetDamageControlDieRollOffset();
         bool IsBatteryDamageControlBlock() => false;
+        float GetSeveriDieRollOffset() => 0;
+        float GetFightingFireDieRollOffset() => 0;
     }
 
     public interface IElectronicSystemModifier
@@ -482,16 +495,20 @@ namespace NavalCombatCore
 
     public class DamageControlModifier : SubState, IDamageControlModifier
     {
-        public float fireControlRatingOffset = 0;
+        public float damageControlRatingOffset = 0;
         public bool isFightingFireBlocked = false;
         public bool isDamageControlBlocked = false;
         public float damageControlDieRollOffset = 0;
         public bool isBatteryDamageControlBlock = false;
-        public float GetDamageControlRatingOffset() => fireControlRatingOffset;
+        public float severiDieRollOffset = 0;
+        public float fightingFireDieRollOffset = 0;
+        public float GetDamageControlRatingOffset() => damageControlRatingOffset;
         public bool IsFightingFireBlocked() => isFightingFireBlocked;
         public bool IsDamageControlBlocked() => isDamageControlBlocked;
         public float GetDamageControlDieRollOffset() => damageControlDieRollOffset;
         public bool IsBatteryDamageControlBlock() => isBatteryDamageControlBlock;
+        public float GetSeveriDieRollOffset() => severiDieRollOffset;
+        public float GetFightingFireDieRollOffset() => fightingFireDieRollOffset;
     }
 
     public class DynamicModifier : SubState, IDynamicModifier
@@ -499,20 +516,33 @@ namespace NavalCombatCore
         public float maxSpeedKnotOffset = 0;
         public float maxSpeedKnotCoef = 1;
         public float maxSpeedUpperLimit = -1; // -1 denotes upperLimit is disabled
+        public float standardTurnCoef = 1;
+        public float emergencyTurnCoef = 1;
+        public float standardTurnUpperLimit = -1;
+        public float emergencyTurnUpperLimit = -1;
+        public float accelerationUpperLimit = -1;
         public bool isEvasiveManeuverBlocked = false;
         public bool isCourseChangeBlocked = false;
         public bool isSpeedChangeBlocked = false;
         public bool isTurnPortBlocked = false;
         public bool isTurnStarboardBlocked = false;
+        public bool isEmergencyTurnBlocked = false;
 
         public float GetMaxSpeedKnotOffset() => maxSpeedKnotOffset;
         public float GetMaxSpeedKnotCoef() => maxSpeedKnotCoef;
         public float GetMaxSpeedUpperLimit() => maxSpeedUpperLimit;
+        public float GetStandardTurnCoef() => standardTurnCoef;
+        public float GetEmergencyTurnCoef() => emergencyTurnCoef;
+        public float GetStandardTurnUpperLimit() => standardTurnUpperLimit;
+        public float GetEmergencyTurnUpperLimit() => emergencyTurnUpperLimit;
+
+        public float GetAccelerationUpperLimit() => accelerationUpperLimit;
         public bool IsEvasiveManeuverBlocked() => isEvasiveManeuverBlocked;
         public bool IsCourseChangeBlocked() => isCourseChangeBlocked;
         public bool IsSpeedChangeBlocked() => isSpeedChangeBlocked;
         public bool IsTurnPortBlocked() => isTurnPortBlocked;
         public bool IsTurnStarboardBlocked() => isTurnStarboardBlocked;
+        public bool IsEmergencyTurnBlocked() => isEmergencyTurnBlocked;
     }
 
     public class FeedwaterPumpDamaged : SubState, IDynamicModifier
@@ -579,10 +609,10 @@ namespace NavalCombatCore
     public class TorpedoMountDamaged : SubState, ITorpedoMountStatusModifier
     {
         public MountStatus currentStatus;
-        public float operationalPercent = 50;
+        public float operationalPercentange = 50;
         public override void DoOnClockTick(ISubject subject, float deltaSeconds)
         {
-            currentStatus = RandomUtils.D100F() <= operationalPercent ? MountStatus.Operational : MountStatus.Disabled;
+            currentStatus = RandomUtils.D100F() <= operationalPercentange ? MountStatus.Operational : MountStatus.Disabled;
         }
 
         public MountStatus GetTorpedoMountStatus() => currentStatus;
@@ -1014,5 +1044,216 @@ namespace NavalCombatCore
     public class OneShotDamageEffectHappend : SubState
     {
         public string damageEffectCode;
+    }
+
+    public class DE602DyanmicModifier : SubState, IDynamicModifier
+    {
+        public bool isSpeedChangeBlocked;
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            if (subject is ShipLog shipLog)
+            {
+                var dt = shipLog.GetDamageTier();
+                float threshold;
+                if (dt <= 4)
+                    threshold = 50;
+                else if (dt <= 7)
+                    threshold = 30;
+                else
+                    threshold = 10;
+                isSpeedChangeBlocked = RandomUtils.D100F() >= threshold;
+            }
+        }
+
+        public bool IsEmergencyTurnBlocked() => true;
+        public bool IsEvasiveManeuverBlocked() => true;
+        public float GetStandardTurnCoef() => 0.5f;
+        public bool IsSpeedChangeBlocked() => isSpeedChangeBlocked;
+    }
+
+    public class DE607DyanmicModifier : SubState, IDynamicModifier
+    {
+        public bool isCourceChangeBlocked;
+
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            if (subject is ShipLog shipLog)
+            {
+                var dt = shipLog.GetDamageTier();
+
+                float threshold;
+                if (dt <= 4)
+                    threshold = 40;
+                else if (dt <= 8)
+                    threshold = 20;
+                else
+                    threshold = 10;
+
+                isCourceChangeBlocked = RandomUtils.D100F() >= threshold;
+            }
+        }
+    }
+
+    public class ShipSettleState : SubState, IDynamicModifier
+    {
+        public float maxSpeedUpperLimit;
+        public bool maxSpeedUpperLimitApplied;
+        public float maxSpeedUpperLimitAppliedThreshold = -1;
+        public float sinkingThreshold = -1;
+        public float isCourseChangeBlockedThreshold = -1;
+        public bool isCourseChangeBlocked;
+
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            var d100 = RandomUtils.D100F();
+
+            if (d100 <= sinkingThreshold)
+            {
+                if (subject is ShipLog shipLog)
+                {
+                    shipLog.mapState = MapState.Destroyed;
+                }
+            }
+            if (d100 <= maxSpeedUpperLimitAppliedThreshold)
+            {
+                maxSpeedUpperLimitApplied = true;
+            }
+            if (d100 <= isCourseChangeBlockedThreshold)
+            {
+                isCourseChangeBlocked = true;
+            }
+        }
+
+        public float GetMaxSpeedUpperLimit() => maxSpeedUpperLimitApplied ? maxSpeedUpperLimit : -1;
+        public bool IsCourseChangeBlocked() => isCourseChangeBlocked;
+    }
+
+    // public class DE608DynamicModifier : SubState, IDynamicModifier
+    // {
+    //     public float maxSpeedUpperLimit = -1;
+    //     public float GetMaxSpeedUpperLimit() => maxSpeedUpperLimit;
+    //     public bool IsEvasiveManeuverBlocked() => true;
+    //     public float GetStandardTurnCoef() => 0.5f;
+    //     public float GetEmergencyTurnCoef() => 0.5f;
+
+    //     public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+    //     {
+    //         var d100 = RandomUtils.D100F();
+    //         if (d100 <= 10)
+    //         {
+    //             if (subject is ShipLog shipLog)
+    //             {
+    //                 shipLog.mapState = MapState.Destroyed;
+    //             }
+    //         }
+    //         else if (d100 <= 30)
+    //         {
+    //             maxSpeedUpperLimit = 6;
+    //         }
+    //     }
+    // }
+
+    // DE 609, Flooding due to splinter and shell damage near waterline
+    public class DE609Effect : SevereFloodingState
+    {
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            if (subject is ShipLog shipLog)
+            {
+                var seaState = NavalGameState.Instance.scenarioState.seaStateBeaufort;
+                var offset = 10;
+                if (seaState <= 3)
+                { }
+                else if (seaState <= 5)
+                    offset = 10;
+                else if (seaState <= 6)
+                    offset = 20;
+                else if (seaState <= 7)
+                    offset = 30;
+                else
+                    offset = 40;
+
+                var damageTier = shipLog.GetDamageTier();
+                var damageTierRollOffset = damageTier >= 6 ? 30 : 0;
+
+                if (RandomUtils.D100F() + offset + damageTierRollOffset >= 70)
+                {
+                    base.DoOnClockTick(subject, deltaSeconds);
+                }
+            }
+        }
+    }
+
+    public class FiringCircuitDamagedMaster : SubState
+    {
+        public float currentRateOfFireCoef;
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            var d100 = RandomUtils.D100F();
+            if (d100 <= 25)
+            {
+                currentRateOfFireCoef = 1;
+            }
+            else if (d100 <= 75)
+            {
+                currentRateOfFireCoef = 0.5f;
+            }
+            else
+            {
+                currentRateOfFireCoef = 0;
+            }
+        }
+    }
+
+    public class FiringCircuitDamagedWorker : SubState, IRateOfFireModifier, IBarrageFireBlocker // DE *615
+    {
+        public float GetRateOfFireCoef()
+        {
+            var master = EntityManager.Instance.Get<FiringCircuitDamagedMaster>(dependentObjectId);
+            return master.currentRateOfFireCoef;
+        }
+
+        public bool IsBarrageFireBlocked() => true;
+    }
+
+    public class DE806DynamicModifier : SubState, IDynamicModifier
+    {
+        public bool restored;
+        public float maxSpeedKnotCoef = 0;
+
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            if (!restored)
+            {
+                if (RandomUtils.D100F() <= 30)
+                {
+                    restored = true;
+                    maxSpeedKnotCoef = 0.5f;
+                    if (RandomUtils.D100F() <= 60)
+                    {
+                        EndAt(subject);
+                    }
+                }
+            }
+        }
+    }
+
+    public class BatteryDamaged : SubState, IBatteryMountStatusModifier
+    {
+        public MountStatus status = MountStatus.Disabled;
+        public float operationalPercentage;
+
+        public MountStatus GetBatteryMountStatus() => status;
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            if (RandomUtils.D100F() <= operationalPercentage)
+            {
+                status = MountStatus.Operational;
+            }
+            else
+            {
+                status = MountStatus.Disabled;
+            }
+        }
     }
 }

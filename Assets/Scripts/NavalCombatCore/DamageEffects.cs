@@ -4,6 +4,7 @@ using System.Xml;
 using System.Collections.Generic;
 using System.Linq;
 using MathNet.Numerics.Distributions;
+using UnityEngine.UIElements;
 using System.Security.Cryptography.X509Certificates;
 
 namespace NavalCombatCore
@@ -109,7 +110,7 @@ namespace NavalCombatCore
             mount = null;
             if (ctx.subject.batteryStatus.Count <= 1)
                 return false;
-            
+
             var mounts = ctx.subject.batteryStatus.Skip(1).SelectMany(bs => bs.mountStatus).ToList();
             if (mounts.Count == 0)
                 return false;
@@ -1017,7 +1018,7 @@ namespace NavalCombatCore
                     var DE2 = new DamageControlModifier()
                     {
                         lifeCycle=StateLifeCycle.GivenTime,
-                        fireControlRatingOffset=-1,
+                        damageControlRatingOffset=-1,
                         cause="DE 120, Steam Line Damaged"
                     };
                     DE2.BeginAt(ctx.subject);
@@ -1200,7 +1201,7 @@ namespace NavalCombatCore
                     var DE = new TorpedoMountDamaged()
                     {
                         lifeCycle = StateLifeCycle.Permanent,
-                        operationalPercent = 50,
+                        operationalPercentange = 50,
                         cause = "DE 127, hit on torpedo mount"
                     };
                     DE.BeginAt(torpedoMount);
@@ -1592,7 +1593,7 @@ namespace NavalCombatCore
                     var DE = new DamageControlModifier()
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
-                        fireControlRatingOffset = -1,
+                        damageControlRatingOffset = -1,
                         cause = "DE 146 (HE), Shock and structural damage"
                     };
                     DE.BeginAt(ctx.subject);
@@ -2478,7 +2479,7 @@ namespace NavalCombatCore
                 var DE = new DamageControlModifier()
                 {
                     cause="DE 503: Damage control system OOA",
-                    fireControlRatingOffset=10 // For M3 Die Roll
+                    damageControlDieRollOffset=10 // For M3 Die Roll
                 };
                 DE.BeginAt(ctx.subject);
             }},
@@ -2648,15 +2649,904 @@ namespace NavalCombatCore
             {"*601", ctx=>{
                 if(CheckAndEnsureOneShotHappendState(ctx, "*601"))
                 {
-                    
-                    Lost1RandomRapidFiringBatteryBox(ctx);
-                    if(RandomUtils.D100F() <= 70)
+                    var damageTier = ctx.subject.GetDamageTier();
+                    var table = new float[,]{
+                        {4, -1},
+                        {7, -2},
+                        {10, -3}
+                    };
+                    var row = Enumerable.Range(0, table.GetLength(0)).FirstOrDefault(r => damageTier <= table[r, 0]);
+                    var fireControlValueOffset = table[row, 1];
+                    if(TryGetPrimaryBattery(ctx, out var bty))
                     {
+                        var DE = new FireControlValueModifier()
+                        {
+                            fireControlValueOffset=fireControlValueOffset,
+                            cause="DE *601, Primary battery guns and FCS out of alignment"
+                        };
+                        DE.BeginAt(bty);
+                    }
 
+                    var DE2 = new TorpedoMountDamaged()
+                    {
+                        operationalPercentange = 20,
+                        cause="DE *601, damage to torpedo tube mounts"
+                    };
+                    DE2.BeginAt(ctx.subject);
+
+                    Lost1RandomRapidFiringBatteryBox(ctx);
+
+                    if(RandomUtils.D100F() <= 70) // steam leaks due to structural damage
+                    {
+                        var table2 = new float[,,]
+                        {
+                            {
+                                {50, -1},
+                                {80, -2},
+                                {100, -3}
+                            },
+                            {
+                                {10, -2},
+                                {60, -3},
+                                {100, -4}
+                            }
+                        };
+                        var i = damageTier <= 4 ? 0 : 1;
+                        var d100 = RandomUtils.D100F();
+                        var j = Enumerable.Range(0, table2.GetLength(1)).FirstOrDefault(j => d100 <= table2[i, j, 0]);
+                        var maxSpeedKnotsOffset = table2[i, j, 1];
+
+                        ctx.subject.dynamicStatus.maxSpeedKnotsOffset += maxSpeedKnotsOffset;
+
+                        ctx.subject.damageControlRatingHits += 1;
+
+                        // Mast Collapses
+                        // TODO: Command
                     }
                 }
             }},
+
+            // DE *602, Loss of communication to engine rooms and control of helm.
+            {"*602", ctx=>{
+                if(CheckAndEnsureOneShotHappendState(ctx, "*602"))
+                {
+                    var DE = new DE602DyanmicModifier()
+                    {
+                        cause="DE *602, Loss of communication to engine rooms and control of helm."
+                    };
+                    DE.BeginAt(ctx.subject);
+
+                    if(RandomUtils.D100F() <= 75) // damage control system OOA due to casualties and structural damage.
+                    {
+                        var dts = new float[]{3,6,8,10};
+                        var damageTier = ctx.subject.GetDamageTier();
+                        var idx = Enumerable.Range(0, dts.Length).FirstOrDefault(idx => damageTier <= dts[idx]);
+                        ctx.subject.damageControlRatingHits += (-idx-1);
+                    }
+
+                    if(RandomUtils.D100F() <= 60)
+                    {
+                        // All radar system (fire control and search) OOA. Permanent damage
+                        foreach(var bty in ctx.subject.batteryStatus)
+                        {
+                            bty.fireControlRadarDisabled = true;
+                        }
+                    }
+                }
+            }},
+
+            // DE 603, Shipboard fire
+            {"603", ctx=>{
+                var severity = (float)(Math.Round(RandomUtils.NextFloat() * 10) * 10);
+                var damageTier = ctx.subject.GetDamageTier();
+                if(damageTier >= 7)
+                    severity += 20;
+
+                var DE = new RiskingInMagazineExplosion()
+                {
+                    lifeCycle=StateLifeCycle.ShipboardFire,
+                    severity=severity,
+                    explosionProbPercent = 4,
+                    cause="DE 603, Shipboard fire"
+                };
+                DE.BeginAt(ctx.subject);
+
+                if(RandomUtils.D100F() <= 65)
+                {
+                    HashSet<MountLocation> affectedLocations = RandomUtils.D100F() <= 50 ?
+                        new(){MountLocation.Forward, MountLocation.PortForward, MountLocation.StarboardForward} :
+                        new(){MountLocation.After, MountLocation.PortAfter, MountLocation.StarboardAfter};
+
+                    foreach(var mount in ctx.subject.batteryStatus.SelectMany(bty => bty.mountStatus)
+                        .Where(mnt => affectedLocations.Contains(mnt.GetMountLocationRecordInfo().record.mountLocation)))
+                    {
+                        var DE2 = new BatteryMountStatusModifier()
+                        {
+                            lifeCycle=StateLifeCycle.GivenTime,
+                            cause = "DE 603: Loss of power to all weapons"
+                        };
+                        DE2.BeginAt(mount);
+                    }
+
+                    if(damageTier <= 3)
+                    {
+                        ctx.subject.damagePoint += RandomUtils.NextFloat() * 25;
+                    }
+                    else if(damageTier <= 6)
+                    {
+                        ctx.subject.damagePoint += RandomUtils.NextFloat() * 45;
+                    }
+                    else
+                    {
+                        ctx.subject.damagePoint += RandomUtils.NextFloat() * 80;
+                    }
+                }
+            }},
+
+            // DE *604, Compartment flooding causes list to [PORT/STARBOARD].
+            {"*604", ctx=>{
+                if(CheckAndEnsureOneShotHappendState(ctx, "*604"))
+                {
+                    // Secondary battery guns on low side are unable to fire.
+                    if (TryGetSecondaryBattery(ctx, out var battey))
+                    {
+                        HashSet<MountLocation> affectedLocations = RandomUtils.D100F() <= 50 ?
+                            new(){MountLocation.PortMidship, MountLocation.PortForward, MountLocation.PortAfter} :
+                            new(){MountLocation.StarboardMidship, MountLocation.StarboardForward, MountLocation.StarboardAfter};
+
+                        foreach(var mount in battey.mountStatus)
+                        {
+                            var mntLoc = mount.GetMountLocationRecordInfo().record.mountLocation;
+                            if(affectedLocations.Contains(mntLoc))
+                            {
+                                SetOOA(mount);
+                            }
+                        }
+                    }
+
+                    ctx.subject.damageControlRatingHits += 1;
+                    ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -2;
+                    if(TryToSampleAPrimaryOrSecondaryFireControlSystem(ctx, out var fcsRec))
+                    {
+                        fcsRec.trackingState = TrackingSystemState.Destroyed;
+                    }
+                    Lost1RandomSearchlight(ctx);
+                    Lost1RandomRapidFiringBatteryBox(ctx);
+
+                    if(ctx.subject.rapidFiringStatus.Count > 0)
+                    {
+                        var rfRec = RandomUtils.Sample(ctx.subject.rapidFiringStatus);
+                        var rfRecClass = rfRec.GetRapidFireBatteryRecord();
+                        rfRec.fireControlHits += rfRecClass.fireControlRecords.Count();
+                    }
+
+                    if(ctx.subject.GetDamageTier() >= 6 && RandomUtils.D100F() <= 65)
+                    {
+                        AddNewDamageEffect(ctx, "610");
+                    }
+                }
+            }},
+
+            // DE 605, Structural and power distribution damage.
+            {"605", ctx=>{
+                foreach(var bty in ctx.subject.batteryStatus)
+                {
+                    bty.fireControlRadarDisabled = true;
+                }
+
+                var DE = new DamageControlModifier()
+                {
+                    cause = "DE 605, Structural and power distribution damage",
+                    severiDieRollOffset = 20,
+                    fightingFireDieRollOffset = 20
+                };
+                DE.BeginAt(ctx.subject);
+
+                Lost1RandomSearchlight(ctx);
+
+                var p = 60;
+                var damageTier = ctx.subject.GetDamageTier();
+                if(damageTier >= 7)
+                    p = 95;
+                else if(damageTier >= 4)
+                    p = 80;
+                if(RandomUtils.D100F() <= p)
+                {
+                    if(TryToSampleAPrimaryBatteryMount(ctx, out var mount))
+                    {
+                        SetOOA(mount);
+                    }
+                }
+            }},
+
+            // DE *606, Flooding andn structural damage.
+            {"*606", ctx=>{
+                if(CheckAndEnsureOneShotHappendState(ctx, "*606"))
+                {
+                    var DE = new DynamicModifier()
+                    {
+                        standardTurnCoef = 0.5f,
+                        emergencyTurnCoef = 0.5f,
+                        isEvasiveManeuverBlocked = true
+                    };
+                    DE.BeginAt(ctx.subject);
+
+                    ctx.subject.damageControlRatingHits += 1;
+                    // TODO: Command
+                    ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -2;
+                    if(TryToSampleAPrimaryOrSecondaryFireControlSystem(ctx, out var fcsRec))
+                    {
+                        SetOOA(fcsRec);
+                    }
+
+                    if(TryToSampleAPrimaryBatteryMount(ctx, out var mount))
+                    {
+                        SetOOA(mount);
+                    }
+                    var damageTier = ctx.subject.GetDamageTier();
+                    if(damageTier <= 4 && RandomUtils.D100F() > 60)
+                    {
+                        for(int i=0; i<2; i++)
+                        {
+                            if(TryToSampleASecondaryBatteryMount(ctx, out var mount2))
+                            {
+                                SetOOA(mount2);
+                            }
+                        }
+                    }
+                    if(damageTier > 4 && RandomUtils.D100F() > 60)
+                    {
+                        ctx.subject.dynamicStatus.engineRoomHits += 1;
+                    }
+                }
+            }},
+
+            // DE 607, All primary, secondary AND tertiary battery mounts in one or more sections OOA due to structural damage.
+            {"607", ctx=>{
+                var damageTier = ctx.subject.GetDamageTier();
+
+                var locations = ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus).Select(mnt => mnt.GetMountLocationRecordInfo().record.mountLocation).ToList();
+
+                if(locations.Count > 0)
+                {
+                    int affectedSections = 0;
+                    if(damageTier <= 3)
+                        if(RandomUtils.D100F() <= 75)
+                            affectedSections = 1;
+                    else if(damageTier <= 6)
+                        if(RandomUtils.D100F() <= 90)
+                            if(RandomUtils.D100F() <= 30)
+                                affectedSections = 2;
+                            else
+                                affectedSections = 1;
+                    else if(damageTier <= 8)
+                        if(RandomUtils.D100F() <= 60)
+                            affectedSections = 2;
+                        else
+                            affectedSections = 1;
+                    else
+                        if(RandomUtils.D100F() <= 90)
+                            affectedSections = 2;
+                        else
+                            affectedSections = 1;
+
+                    for(var i=0; i<affectedSections; i++)
+                    {
+                        var location = RandomUtils.Sample(locations);
+                        foreach(var mount in ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus))
+                        {
+                            if(mount.GetMountLocationRecordInfo().record.mountLocation == location)
+                            {
+                                SetOOA(mount);
+                            }
+                        }
+                    }
+                }
+
+                if(RandomUtils.D100F() <= 40)
+                {
+                    // Visual communications with other ships in company limited to semaphore only
+                    // TODO: Command
+                    var DE = new DE607DyanmicModifier()
+                    {
+                        cause="DE 607, Visual communications with other ships in company limited to semaphore only"
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+            }},
+
+            // DE 608, Compartment flooding due to splinter and structural damage.
+            {"608", ctx=>{
+                var DE = new DamageControlModifier()
+                {
+                    lifeCycle=StateLifeCycle.GivenTime,
+                    cause="DE 608, Compartment flooding due to splinter and structural damage.",
+                    isDamageControlBlocked = true
+                };
+                DE.BeginAt(ctx.subject);
+
+                // TODO: Command
+                
+                var damageTier = ctx.subject.GetDamageTier();
+                if(damageTier <= 3)
+                {
+                    ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -2;
+                }
+                else if(damageTier <= 7)
+                {
+                    ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -2;
+                    var DE2 = new DynamicModifier()
+                    {
+                        cause="DE 608, Loss of stability and maneuver due to flooding",
+                        isEvasiveManeuverBlocked=true,
+                        standardTurnCoef=0.5f,
+                        emergencyTurnCoef=0.5f,
+                    };
+                    DE2.BeginAt(ctx.subject);
+                }
+                else
+                {
+                    ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -3;
+
+                    var DE2 = new ArmorModifier()
+                    {
+                        cause="DE 608: Main waterline belt is submerged due to flooding",
+                        mainBeltArmorCoef=0.5f,
+                    };
+                    DE2.BeginAt(ctx.subject);
+
+                    // var DE3 = new DE608DynamicModifier()
+                    // {
+                    //     cause="DE 608, Loss of stability and maneuver due to flooding."
+                    // };
+                    // DE3.BeginAt(ctx.subject);
+
+                    var DE3 = new DynamicModifier()
+                    {
+                        cause="DE 608, Loss of stability and maneuver due to flooding.",
+                        isEvasiveManeuverBlocked = true,
+                        standardTurnCoef=0.5f,
+                        emergencyTurnCoef=0.5f,
+                    };
+                    DE3.BeginAt(ctx.subject);
+
+                    var DE4 = new ShipSettleState()
+                    {
+                        cause="DE 608, Loss of stability and maneuver due to flooding.",
+                        maxSpeedUpperLimit=6,
+                        maxSpeedUpperLimitAppliedThreshold=30,
+                        sinkingThreshold=10
+                    };
+                    DE4.BeginAt(ctx.subject);
+                }
+            }},
+
+            // DE *609, Flooding due to splinter and shell damage near waterline.
+            {"*609", ctx=>{
+                if(CheckAndEnsureOneShotHappendState(ctx, "*609"))
+                {
+                    var DE = new DE609Effect()
+                    {
+                        lifeCycle=StateLifeCycle.GivenTime,
+                        givenTimeSeconds=480,
+                        cause="DE *609, Flooding due to splinter and shell damage near waterline."
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+            }},
+
+            // DE 610, Collapse of watertight bulkheads causes flooding for ships.
+            {"610", ctx=>{
+                var damageTier = ctx.subject.GetDamageTier();
+                if(damageTier < 4)
+                {
+                    ctx.subject.damageControlRatingHits += 1;
+                    ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -2;
+                }
+                else
+                {
+                    var d100 = RandomUtils.D100F();
+                    if(d100 <= 45)
+                    {
+                        ctx.subject.damageControlRatingHits += 2;
+                        ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -2;
+                        var DE = new DynamicModifier()
+                        {
+                            isEvasiveManeuverBlocked = true,
+                            standardTurnCoef = 0.5f,
+                            emergencyTurnCoef = 0.5f
+                        };
+                        DE.BeginAt(ctx.subject);
+                    }
+                    else if(d100 <= 70)
+                    {
+                        ctx.subject.damageControlRatingHits += 1;
+
+                        // TODO: Command
+                        
+                        for (int i=0; i<2; i++)
+                        {
+                            if(TryToSampleASecondaryBatteryMount(ctx, out var mount))
+                            {
+                                var location = mount.GetMountLocationRecordInfo().record.mountLocation;
+                                foreach(var mount2 in ctx.subject.batteryStatus[1].mountStatus)
+                                {
+                                    if(mount2.GetMountLocationRecordInfo().record.mountLocation == location)
+                                    {
+                                        SetOOA(mount2);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if(d100 <= 85)
+                    {
+                        var boilerFloodingHit = RandomUtils.D100F() <= 35 ? 2 : 1;
+                        ctx.subject.dynamicStatus.boilerRoomFloodingHits += boilerFloodingHit;
+                    }
+                    else
+                    {
+                        ctx.subject.dynamicStatus.engineRoomFloodingHits += 1;
+                        ctx.subject.damageControlRatingHits += 1;
+                    }
+                }
+            }},
+
+            // DE 611, Steam leaks due to structural damage and flooding.
+            { "611", ctx=>{
+                ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -2;
+                ctx.subject.damageControlRatingHits += 1;
+                Lost1RandomSearchlight(ctx);
+                if(RandomUtils.D100F() <= 50)
+                {
+                    foreach(var bty in ctx.subject.batteryStatus)
+                        bty.fireControlRadarDisabled = true;
+                }
+                var damageTier = ctx.subject.GetDamageTier();
+                if(damageTier <= 5 && RandomUtils.D100F() >= 7)
+                {
+                    ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -1;
+                }
+                if(damageTier > 5 && RandomUtils.D100F() >= 30)
+                {
+                    AddNewDamageEffect(ctx, "608");
+                }
+            }},
+
+            // DE 612, Uncontrolled flooding
+            {"612", ctx=>{
+                var damageTier = ctx.subject.GetDamageTier();
+                if(damageTier < 4)
+                {
+                    ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -1;
+                    ctx.subject.damageControlRatingHits += 1;
+                }
+                else if(damageTier < 6)
+                {
+                    if(RandomUtils.D100F() <= 50)
+                    {
+                        ctx.subject.dynamicStatus.boilerRoomFloodingHits += 1;
+                    }
+                    else
+                    {
+                        ctx.subject.dynamicStatus.engineRoomFloodingHits += 1;
+                    }
+                }
+                else if(damageTier < 8)
+                {
+                    var hit = RandomUtils.D100F() <= 55 ? 2 : 1;
+                    if(RandomUtils.D100F() <= 50)
+                    {
+                        ctx.subject.dynamicStatus.boilerRoomFloodingHits += hit;
+                    }
+                    else
+                    {
+                        ctx.subject.dynamicStatus.engineRoomFloodingHits += hit;
+                    }
+                }
+                else if(damageTier < 10)
+                {
+                    var DE = new ShipSettleState()
+                    {
+                        cause="DE 612, Uncontrolled flooding",
+                        maxSpeedUpperLimit=6,
+                        maxSpeedUpperLimitAppliedThreshold=35,
+                        sinkingThreshold=10
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+                else
+                {
+                    var DE = new ShipSettleState()
+                    {
+                        cause="DE 612, Uncontrolled flooding",
+                        maxSpeedUpperLimit=2,
+                        maxSpeedUpperLimitAppliedThreshold=65,
+                        sinkingThreshold=25
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+            }},
+
+            // DE *613, Flooding in shaft tunnel.
+            {"*613", ctx=>{
+                if(CheckAndEnsureOneShotHappendState(ctx, "*613"))
+                {
+                    var damageTier = ctx.subject.GetDamageTier();
+                    var propHit = 1;
+                    if(damageTier >= 9 && RandomUtils.D100F() <= 75)
+                    {
+                        propHit += 1;
+                    }
+                    if(damageTier >= 6 && damageTier < 9 && RandomUtils.D100F() <= 40)
+                    {
+                        propHit += 1;
+                    }
+                    ctx.subject.dynamicStatus.propulsionShaftHits += propHit;
+                }
+            }},
+
+            // DE 614, Damage to machinery spaces.
+            {"614", ctx=>{
+                var DE = new DynamicModifier()
+                {
+                    cause="DE 614, Damage to machinery spaces.",
+                    accelerationUpperLimit = 1,
+                };
+                DE.BeginAt(ctx.subject);
+
+                var DE2 = new DamageControlModifier()
+                {
+                    lifeCycle=StateLifeCycle.GivenTime,
+                    cause = "DE 614, Temporary interruption to power distribution",
+                    isDamageControlBlocked = true,
+                };
+                DE2.BeginAt(ctx.subject);
+
+                Lost1RandomRapidFiringBatteryBoxAnd1FCSBox(ctx);
+
+                ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -1;
+                var damageTier = ctx.subject.GetDamageTier();
+                if(damageTier < 4)
+                {
+                    if(RandomUtils.D100F() <= 30)
+                    {
+                        ctx.subject.dynamicStatus.engineRoomHits += 1;
+                    }
+                }
+                else if(damageTier < 8)
+                {
+                    if(RandomUtils.D100F() <= 60)
+                    {
+                        ctx.subject.dynamicStatus.engineRoomHits += 1;
+                    }
+                }
+                else
+                {
+                    ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -1;
+                    if(RandomUtils.D100F() <= 85)
+                    {
+                        ctx.subject.dynamicStatus.engineRoomHits += 1;
+                    }
+                }
+            }},
+
+            // DE *615, Damage to firing circuits of primary battery in one section.
+            {"*615", ctx=>{
+                if(CheckAndEnsureOneShotHappendState(ctx, "*615"))
+                {
+                    if(TryToSampleAPrimaryBatteryMount(ctx, out var mount))
+                    {
+                        var location = mount.GetMountLocationRecordInfo().record.mountLocation;
+
+                        var DE = new FiringCircuitDamagedMaster()
+                        {
+                            cause=$"DE *615, Damage to firing circuits of primary battery in {location}"
+                        };
+                        DE.BeginAt(ctx.subject);
+
+                        foreach(var mount2 in ctx.subject.batteryStatus[0].mountStatus)
+                        {
+                            if(mount2.GetMountLocationRecordInfo().record.mountLocation == location)
+                            {
+                                var DE2 = new FiringCircuitDamagedWorker()
+                                {
+                                    lifeCycle=StateLifeCycle.Dependent,
+                                    dependentObjectId=DE.objectId,
+                                    cause=$"DE *615, Damage to firing circuits of primary battery in {location}"
+                                };
+                                DE2.BeginAt(mount2);
+                            }
+                        }
+                    }
+
+                    Lost1RandomRapidFiringBatteryBox(ctx);
+                    if(RandomUtils.D100F() <= 70)
+                    {
+                        foreach(var bty in ctx.subject.batteryStatus)
+                        {
+                            bty.fireControlRadarDisabled = true;
+                        }
+                    }
+                }
+            }},
+
+            // DE 616, Severe structural damage for ships at damage Tier 8 or above.
+            {"616", ctx=>{
+                var damageTier = ctx.subject.GetDamageTier();
+                if(damageTier < 7)
+                {
+                    if(RandomUtils.D100F() < 50)
+                    {
+                        ctx.subject.dynamicStatus.boilerRoomFloodingHits += 1;
+                    }
+                    else
+                    {
+                        ctx.subject.dynamicStatus.engineRoomFloodingHits += 1;
+                    }
+                }
+                else
+                {
+                    ctx.subject.operationalState = ShipOperationalState.FloodingObstruction;
+
+                    var DE = new SinkingState()
+                    {
+                        cause="DE 616: Severe structural damage for ships"
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+            }},
+
+            // DE 617: 
+            { "617", ctx=>{
+                var damageTier = ctx.subject.GetDamageTier();
+
+                float threshold;
+                if(damageTier < 3)
+                    threshold = 65;
+                else if(damageTier < 5)
+                    threshold = 75;
+                else if(damageTier < 7)
+                    threshold = 85;
+                else if(damageTier < 9)
+                    threshold = 95;
+                else
+                    threshold = 99;
+
+                if(RandomUtils.D100F() <= threshold)
+                {
+                    var mounts = ctx.subject.batteryStatus.SelectMany(bty => bty.mountStatus).ToList();
+                    if(mounts.Count > 0)
+                    {
+                        var mount = RandomUtils.Sample(mounts);
+                        var location = mount.GetMountLocationRecordInfo().record.mountLocation;
+                        foreach(var mnt in ctx.subject.batteryStatus.SelectMany(bty => bty.mountStatus)
+                            .Where(mnt => mnt.GetMountLocationRecordInfo().record.mountLocation == location))
+                        {
+                            SetOOA(mnt);
+                        }
+                    }
+                }
+
+                ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -2;
+                ctx.subject.damageControlRatingHits += 1;
+                Lost1RandomSearchlight(ctx);
+                Lost1RandomRapidFiringBatteryBoxAnd1FCSBox(ctx);
+                if(RandomUtils.D100F() <= 65)
+                {
+                    foreach(var bty in ctx.subject.batteryStatus)
+                    {
+                        bty.fireControlRadarDisabled = true;
+                    }
+                }
+
+                if(damageTier >= 9)
+                {
+                    var DE = new ShipSettleState()
+                    {
+                        cause=" DE 617 (Tier 9-10): Ship Begin to settle",
+                        sinkingThreshold=25,
+                        maxSpeedUpperLimitAppliedThreshold=65,
+                        maxSpeedUpperLimit=2
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+                else if(damageTier >= 7)
+                {
+                    if(RandomUtils.D100F() <= 50)
+                    {
+                        ctx.subject.dynamicStatus.engineRoomHits += 1;
+                    }
+                    else
+                    {
+                        ctx.subject.dynamicStatus.boilerRoomHits += 1;
+                    }
+
+                    if(RandomUtils.D100F() >= 55)
+                    {
+                        if(RandomUtils.D100F() <= 50)
+                        {
+                            ctx.subject.dynamicStatus.engineRoomFloodingHits += 1;
+                        }
+                        else
+                        {
+                            ctx.subject.dynamicStatus.boilerRoomFloodingHits += 1;
+                        }
+                    }
+                }
+            }},
+
+            // DE 700-710, for submarine, skip
+
+            // MTB / Small Craft
+            
+            // DE 800, ship destroyed
+            { "800", ctx=>{
+                ctx.subject.mapState = MapState.Destroyed;
+            }},
+
+            // DE 801, Damage to rudder
+            { "801", ctx=>{
+                var DE = new DynamicModifier()
+                {
+                    lifeCycle=StateLifeCycle.GivenTime,
+                    cause="DE 801, Damage to rudder"
+                };
+                DE.BeginAt(ctx.subject);
+            }},
+
+            // DE 802, Fuel fire.
+            {"802", ctx=>{
+                AddShipboardFire(ctx, "DE 802: Shipboard fire severity 30", 30);
+                // TODO: Handle Gasoline-powered ships and diesel-powered ship destroyed roll
+            }},
+
+            // DE 803, Damage to torpedo tubes
+            {"803", ctx=>{
+                if(TryToSampleATorpedoMount(ctx, out var mount))
+                {
+                    var DE = new TorpedoMountDamaged()
+                    {
+                        cause="DE 803, Damage to torpedo tubes",
+                        operationalPercentange=40
+                    };
+                    DE.BeginAt(mount);
+                }
+            }},
+
+            // DE 804, Damage to engine
+            {"804", ctx=>{
+                var DE = new DynamicModifier()
+                {
+                    cause="DE 804: Damage to engine",
+                    maxSpeedUpperLimit=4,
+                };
+                DE.BeginAt(ctx.subject);
+
+                if(RandomUtils.D100F() <= 30)
+                {
+                    var DE2 = new DynamicModifier()
+                    {
+                        lifeCycle=StateLifeCycle.GivenTime,
+                        cause="DE 804: Rudder is jammed"
+                    };
+                    DE2.BeginAt(ctx.subject);
+                }
+            }},
+
+            // DE 805, Damage to engines. Maximum speed reduced by 50%
+            {"805", ctx=>{
+                var DE = new DynamicModifier()
+                {
+                    cause="DE 805: Damage to engines",
+                    maxSpeedKnotCoef=0.5f
+                };
+                DE.BeginAt(ctx.subject);
+            }},
+
+            // DE 806, Damage to engine. Ship is dead in the water (DIW).
+            {"806", ctx=>{
+                var DE = new DE806DynamicModifier()
+                {
+                    cause="DE 806: Damage to engine. Ship is dead in the water (DIW)"
+                };
+                DE.BeginAt(ctx.subject);
+            }},
+
+            // DE 807, Damage to hull
+            {"807", ctx=>{
+                ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -8;
+
+                if(RandomUtils.D100F() <= 25)
+                {
+                    var DE = new DynamicModifier()
+                    {
+                        cause="DE 807: Engine room is flooded and ship is dead in the water (DIW)",
+                        maxSpeedKnotCoef=0
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+            }},
+
+            // DE 808: One torpedo tube damaged and OOA.
+            {"808", ctx=>{
+                if(TryToSampleATorpedoMount(ctx, out var mount))
+                {
+                    SetOOA(mount);
+                }
+            }},
+
+            // DE 809: Damage to one deck gun.
+            {"809", ctx=>{
+                // TODO: Here original text said "one deck gun" so is it proper to use a "mount", though it doesn't seem to small craft will have a mount with multiple barrels.
+                if(RandomUtils.D100F() < 25)
+                {
+                    var mounts = ctx.subject.batteryStatus.SelectMany(bty => bty.mountStatus).ToList();
+                    if(mounts.Count > 0)
+                    {
+                        var mount = RandomUtils.Sample(mounts);
+                        SetOOA(mount);
+                    }
+                    else
+                    {
+                        var DE = new BatteryDamaged(){operationalPercentage=50};
+                        DE.BeginAt(ctx.subject);
+                    }
+                }
+            }},
+
+            // DE 810
+            {"810", ctx=>{
+                Lost1RandomRapidFiringBatteryBox(ctx);
+            }},
+
+            // DE 811
+            {"811", ctx=>{
+                if(TryToSampleATorpedoMount(ctx, out var mount))
+                {
+                    SetOOA(mount);
+                }
+            }},
+
+            // DE 812: One Deck Gun OOA
+            {"812", ctx=>{
+                var mounts = ctx.subject.batteryStatus.SelectMany(bty => bty.mountStatus).ToList();
+                if(mounts.Count > 0)
+                {
+                    var mount = RandomUtils.Sample(mounts);
+                    SetOOA(mount);
+                }
+            }},
+
+            // DE 813: Crew casualties
+            {"813", ctx=>{
+                var givenTimeSeconds = RandomUtils.D100F() <= 20 ? 240 : 120;
+                var DE = new DynamicModifier()
+                {
+                    lifeCycle=StateLifeCycle.GivenTime,
+                    givenTimeSeconds=givenTimeSeconds,
+                    cause="DE 813: Crew casualties",
+                    isCourseChangeBlocked=true,
+                };
+                DE.BeginAt(ctx.subject);
+
+                var DE2 = new BatteryMountStatusModifier()
+                {
+                    lifeCycle=StateLifeCycle.GivenTime,
+                    givenTimeSeconds=givenTimeSeconds,
+                    cause="DE 813: Crew casualties",
+                };
+                DE2.BeginAt(ctx.subject);
+
+                var DE3 = new TorpedoMountModifer()
+                {
+                    lifeCycle=StateLifeCycle.GivenTime,
+                    givenTimeSeconds=givenTimeSeconds,
+                    cause="DE 813: Crew casualties",
+                    status=MountStatus.Disabled,
+                };
+                DE3.BeginAt(ctx.subject);
+            }}
         };
     }
-
 }

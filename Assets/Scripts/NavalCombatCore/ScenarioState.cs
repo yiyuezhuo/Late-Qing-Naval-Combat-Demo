@@ -51,6 +51,7 @@ namespace NavalCombatCore
         // public DateTime dateTime = new DateTime(2013, 9, 7, 4, 30, 0, DateTimeKind.Utc);
         // public DateTime dateTime = new DateTime(2013, 9, 17, 4, 30, 0, DateTimeKind.Utc);
         public VisibilityDescription visibility = VisibilityDescription.ExceptionallyClear;
+        public int seaStateBeaufort;
 
         public string description;
 

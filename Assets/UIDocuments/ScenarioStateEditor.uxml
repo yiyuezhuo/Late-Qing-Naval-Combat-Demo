@@ -51,6 +51,11 @@
                     <ui:DataBinding property="value" data-source-path="visibility" binding-mode="TwoWay" />
                 </Bindings>
             </ui:EnumField>
+            <ui:IntegerField label="Sea State (Beaufort)">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="seaStateBeaufort" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:IntegerField>
             <ui:Label text="Description" />
             <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; height: 200px;">
                 <Bindings>

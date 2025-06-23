@@ -163,7 +163,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
                     GameManager.Instance.state = GameManager.State.SelectingTorpedoFiringTarget;
                     Hide();
                 }
-                
+
             };
 
             return el;
@@ -274,6 +274,19 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
                 shipLog.ResetDamageExpenditureState();
             }
         };
+
+        var shipLogDetailButton = root.Q<Button>("ShipLogDetailButton");
+        shipLogDetailButton.clicked += () =>
+        {
+            var ctx = shipLogDetailButton.GetHierarchicalDataSourceContext();
+            if (PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out ShipLog shipLog))
+            {
+                // Debug.Log($"Detail Invoke: {mountStatus.objectId}");
+
+                DialogRoot.Instance.PopupMessageDialog(shipLog.DescribeDetail(), "ShipLog Detail");
+            }
+        };
+
     }
 
     void OnShipLogsXmlLoaded(object sender, string text)

@@ -4,7 +4,6 @@ using System.Xml;
 using System.Collections.Generic;
 using System.Linq;
 using MathNet.Numerics.Distributions;
-using Unity.VisualScripting.Dependencies.NCalc;
 
 
 namespace NavalCombatCore
@@ -105,7 +104,21 @@ namespace NavalCombatCore
         public string cause = "";
         // public bool permanent; // If it's not permanent then this can be damage controlled.
         public virtual bool damageControllable => lifeCycle == StateLifeCycle.SeverityBased || lifeCycle == StateLifeCycle.ShipboardFire;
-        public virtual float damageControlPriority => 1;
+        public virtual float GetDamageControlPriorityCoef() => 1;
+        public virtual float GetDamageControlPriority()
+        {
+            if (!damageControllable)
+                return 0;
+            if (lifeCycle == StateLifeCycle.ShipboardFire)
+            {
+                return (severity + 100) * GetDamageControlPriorityCoef();
+            }
+            else if (lifeCycle == StateLifeCycle.SeverityBased)
+            {
+                return (100 - severity) * GetDamageControlPriorityCoef();
+            }
+            return GetDamageControlPriorityCoef();
+        }
         public bool damageControlApplied;
         public SimulationClock turnClock = new SimulationClock()
         {
@@ -189,7 +202,7 @@ namespace NavalCombatCore
                     });
                 }
 
-                severity = Math.Min(100, severity + RuleChart.ResolveFightingShipBoardFiresDelta(severity, damageControlApplied));
+                severity = RuleChart.ResolveFightingShipBoardFiresDelta(severity, damageControlApplied);
                 if (severity == 0)
                 {
                     EndAt(subject);
@@ -202,17 +215,49 @@ namespace NavalCombatCore
             }
         }
 
+        ShipLog GetShipLog(ISubject subject)
+        {
+            if (subject is IObjectIdLabeled obj)
+            {
+                while (true)
+                {
+                    if (obj is ShipLog shipLog)
+                        return shipLog;
+
+                    var parent = EntityManager.Instance.GetParent<IObjectIdLabeled>(obj);
+                    if (parent == null)
+                        return null;
+
+                    obj = parent;
+                }
+            }
+            return null;
+        }
+
         public virtual void BeginAt(ISubject subject)
         {
             subject.AddSubState(this);
             EntityManager.Instance.Register(this, subject);
 
+            var shipLog = GetShipLog(subject);
+            if (shipLog != null)
+            {
+                shipLog.AddStringLog($"DE Begin: {description} {cause}");
+            }
+
             DoBeginAt(subject);
         }
+
         public virtual void EndAt(ISubject subject)
         {
             subject.RemoveSubState(this);
             EntityManager.Instance.Unregister(this);
+
+            var shipLog = GetShipLog(subject);
+            if (shipLog != null)
+            {
+                shipLog.AddStringLog($"DE End: {description} {cause}");
+            }
 
             DoEndAt(subject);
         }

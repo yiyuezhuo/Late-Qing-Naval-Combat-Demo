@@ -243,6 +243,26 @@ namespace NavalCombatCore
         [CreateProperty]
         public float maxSpeedKnotsProp => GetMaxSpeedKnots();
 
+        [CreateProperty]
+        public float minSpeedKnotsProp => GetMinSpeedKnots();
+
+        [CreateProperty]
+        public int damageControlRatingProp => GetDamageControlRating();
+
+        public string GetMapStatePrefix()
+        {
+            return mapState switch
+            {
+                MapState.NotDeployed => "_",
+                MapState.Deployed => "",
+                MapState.Destroyed => "+",
+                _ => "Unknown"
+            };
+        }
+
+        [CreateProperty]
+        public string labelName => GetMapStatePrefix() + namedShip.name.GetMergedName();
+
         // IPortraitViewerObservable
         string IPortraitViewerObservable.GetPortraitTopCode() => shipClass.portraitTopCode;
         Country IPortraitViewerObservable.GetCountry() => shipClass.country;

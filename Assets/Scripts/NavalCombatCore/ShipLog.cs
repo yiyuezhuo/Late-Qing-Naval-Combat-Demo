@@ -100,6 +100,7 @@ namespace NavalCombatCore
     public enum ShipOperationalState // general performance evaluation,
     {
         Operational,
+        AbandonShip, // morale check - (though in the battle of yalu, ships may flee but no ships are abandoned)
         FloodingObstruction, // Sinking, all armament are disabled, dynamic will not work. Crews may is fleeing from the ships.
     }
 
@@ -170,6 +171,73 @@ namespace NavalCombatCore
         public int GetOverConcentrationCoef() => 0;
     }
 
+    [XmlInclude(typeof(ShipLogStringLog))]
+    [XmlInclude(typeof(ShipLogBatteryHitLog))]
+    [XmlInclude(typeof(ShipLogRapidFiringGunHitLog))]
+    [XmlInclude(typeof(ShipLogTorpedoHitLog))]
+    public class ShipLogLog
+    {
+        [XmlAttribute]
+        public DateTime time;
+
+        public virtual string Summary() => $"{GetType()}: {time}";
+    }
+
+    public class ShipLogStringLog : ShipLogLog
+    {
+        public string description;
+
+        public override string Summary() => $"{time}: {description}";
+    }
+
+    public class ShipLogBatteryHitLog : ShipLogLog
+    {
+        [XmlAttribute]
+        public ArmorLocation armorLocation;
+
+        [XmlAttribute]
+        public HitPenDetType hitPenDetType;
+
+        [XmlAttribute]
+        public float damagePoint;
+
+        [XmlAttribute]
+        public string damageEffectId;
+
+        public override string Summary() => $"Bty Hit: {time}: {armorLocation} {hitPenDetType} DP:{damagePoint} DE:{damageEffectId}";
+    }
+
+    public class ShipLogRapidFiringGunHitLog : ShipLogLog
+    {
+        [XmlAttribute]
+        public float damagePoint;
+
+        public override string Summary() => $"RF Hit: {time}: DP: {damagePoint}";
+    }
+
+    public class ShipLogTorpedoHitLog : ShipLogLog
+    {
+        [XmlAttribute]
+        public string torpedoObjectId;
+
+        public LaunchedTorpedo GetTorpedo() => EntityManager.Instance.Get<LaunchedTorpedo>(torpedoObjectId);
+
+        [XmlAttribute]
+        public float damagePoint;
+
+        [XmlAttribute]
+        public string damageEffectId;
+
+        public override string Summary() => $"Torpedo Hit: {time}: {GetTorpedo().sourceName} DP:{damagePoint} DE:{damageEffectId}";
+    }
+
+    // public class ShipLogDamageEffectBegin : ShipLogLog
+    // {
+    // }
+
+    // public class ShipLogDamageEffectEnd : ShipLogLog
+    // { 
+    // }
 
     public partial class ShipLog : UnitModule, IDF4Model, IShipGroupMember, IWTAObject, IExtrapolable, ICollider
     {
@@ -297,6 +365,28 @@ namespace NavalCombatCore
         public bool isEvasiveManeuvering;
 
         public float pendingDamagePoint;
+
+        public List<ShipLogLog> logs = new(); // TODO: Switch to structure logging?
+
+        public string DescribeDetail()
+        {
+            var lines = new List<string>()
+            {
+                $"ShipLog Detail: {objectId}"
+            };
+
+            lines.AddRange(logs.Select(r => r.Summary()));
+            return string.Join("\n", lines);
+        }
+
+        public void AddStringLog(string description)
+        {
+            logs.Add(new ShipLogStringLog()
+            {
+                time = NavalGameState.Instance.scenarioState.dateTime,
+                description = description
+            });
+        }
 
         public bool IsOnMap() => mapState == MapState.Deployed;
 
@@ -543,6 +633,9 @@ namespace NavalCombatCore
 
         public float GetMaxSpeedKnots() // cache in context?
         {
+            if (operationalState != ShipOperationalState.Operational)
+                return 0;
+
             var maxSpeedKnots = shipClass.speedKnots + dynamicStatus.maxSpeedKnotsOffset;
 
             var modifiers = GetSubStates<IDynamicModifier>().ToList();
@@ -554,24 +647,30 @@ namespace NavalCombatCore
                 maxSpeedKnots = Math.Clamp((maxSpeedKnots + offset) * coef, 0, upperLimit);
             }
 
-            var propulsionUpperLimit = shipClass.speedKnotsPropulsionShaftLevels[Math.Min(shipClass.speedKnotsPropulsionShaftLevels.Count-1, dynamicStatus.propulsionShaftHits)];
+            var propulsionUpperLimit = shipClass.speedKnotsPropulsionShaftLevels[Math.Min(shipClass.speedKnotsPropulsionShaftLevels.Count - 1, dynamicStatus.propulsionShaftHits)];
             maxSpeedKnots = Math.Min(maxSpeedKnots, propulsionUpperLimit);
 
             var engineRoomHits = dynamicStatus.engineRoomHits + dynamicStatus.engineRoomFloodingHits + GetSubStates<IEngineRoomHitModifier>().Select(m => m.GetEngineRoomHitOffset()).DefaultIfEmpty(0).Sum();
-            var engineUpperLimit = shipClass.speedKnotsEngineRoomsLevels[Math.Min(shipClass.speedKnotsEngineRoomsLevels.Count-1, engineRoomHits)];
+            var engineUpperLimit = shipClass.speedKnotsEngineRoomsLevels[Math.Min(shipClass.speedKnotsEngineRoomsLevels.Count - 1, engineRoomHits)];
             maxSpeedKnots = Math.Min(maxSpeedKnots, engineUpperLimit);
 
             var boilerRoomHits = dynamicStatus.boilerRoomHits + dynamicStatus.boilerRoomFloodingHits + GetSubStates<IBoilerRoomHitModifier>().Select(m => m.GetBoilerRoomHitOffset()).DefaultIfEmpty(0).Sum();
-            var boilerUpperLimit = shipClass.speedKnotsBoilerRooms[Math.Min(shipClass.speedKnotsBoilerRooms.Count-1, boilerRoomHits)];
+            var boilerUpperLimit = shipClass.speedKnotsBoilerRooms[Math.Min(shipClass.speedKnotsBoilerRooms.Count - 1, boilerRoomHits)];
             maxSpeedKnots = Math.Min(maxSpeedKnots, boilerUpperLimit);
 
             return maxSpeedKnots;
         }
 
+        public float GetMinSpeedKnots() => -GetMaxSpeedKnots() / 3;
+
         public void StepProcessSpeed(float deltaSeconds)
         {
             var maxSpeedKnots = GetMaxSpeedKnots();
-            
+            var minSpeedKnots = -maxSpeedKnots / 3;
+
+            desiredSpeedKnots = Math.Clamp(desiredSpeedKnots, minSpeedKnots, maxSpeedKnots);
+            desiredSpeedKnotsForBoilerRoom = Math.Clamp(desiredSpeedKnotsForBoilerRoom, minSpeedKnots, maxSpeedKnots); // not ideal
+
             var commandBlocked = GetSubStates<IDesiredSpeedUpdateToBoilerRoomBlocker>().Any(blocker => blocker.IsDesiredSpeedCommandBlocked());
             if (!commandBlocked)
             {
@@ -581,10 +680,20 @@ namespace NavalCombatCore
             // var modifiers = GetSubStates<IDynamicModifier>().ToList();
 
             // var maxSpeed = shipClass.speedKnots + dynamicStatus.maxSpeedKnotsOffset + GetSubStates<IDynamicModifier>().Max(dm => dm.GetMaxSpeedKnotOffset());
+            var absDesiredSpeedKnotsForBoilerRoom = Math.Abs(desiredSpeedKnotsForBoilerRoom);
+            var absSpeedKnots = Math.Abs(speedKnots);
+            var absSpeedDiff = absDesiredSpeedKnotsForBoilerRoom - absSpeedKnots;
+            var signSpeedKnots = Math.Sign(speedKnots);
+            var signDesiredSpeedKnotsForBoilerRoom = Math.Sign(desiredSpeedKnotsForBoilerRoom);
+            var sameDirection = (signSpeedKnots * signDesiredSpeedKnotsForBoilerRoom) >= 0;
 
-            if (desiredSpeedKnotsForBoilerRoom > speedKnots)
+            if (speedKnots == absDesiredSpeedKnotsForBoilerRoom)
             {
-                var accelerationKnotsCapPer2Min = shipClass.speedIncreaseRecord.Where(r => speedKnots >= r.thresholdSpeedKnots).Select(r => r.increaseSpeedKnots).Min();
+                // Fixed Point
+            }
+            else if (absSpeedDiff > 0 && sameDirection)
+            {
+                var accelerationKnotsCapPer2Min = shipClass.speedIncreaseRecord.Where(r => absSpeedKnots >= r.thresholdSpeedKnots).Select(r => r.increaseSpeedKnots).Min();
 
                 var upperLimit = GetSubStates<IDynamicModifier>().Select(m => m.GetAccelerationUpperLimit()).DefaultIfEmpty(10000).Min();
                 accelerationKnotsCapPer2Min = Math.Min(accelerationKnotsCapPer2Min, upperLimit);
@@ -592,18 +701,18 @@ namespace NavalCombatCore
                 var accelerationKnotsCapPerSec = accelerationKnotsCapPer2Min / 120;
 
                 var accelerationKnotsCapThisPulse = accelerationKnotsCapPerSec * deltaSeconds;
-                speedKnots += Math.Min(desiredSpeedKnotsForBoilerRoom - speedKnots, accelerationKnotsCapThisPulse);
+                speedKnots += signDesiredSpeedKnotsForBoilerRoom * Math.Min(absSpeedDiff, accelerationKnotsCapThisPulse);
             }
-            else if (desiredSpeedKnotsForBoilerRoom < speedKnots)
+            else
             {
                 var decelerationKnotsCapPer2Min = maxSpeedKnots * (assistedDeceleration ? 0.6f : 0.2f);
                 var decelerationKnotsCapPerSec = decelerationKnotsCapPer2Min / 120f;
 
                 var decelerationKnotsCapThisPulse = decelerationKnotsCapPerSec * deltaSeconds;
-                speedKnots -= Math.Min(speedKnots - desiredSpeedKnotsForBoilerRoom, decelerationKnotsCapThisPulse);
+                speedKnots -= signSpeedKnots * Math.Min(sameDirection ? -absSpeedDiff : absSpeedKnots, decelerationKnotsCapThisPulse);
             }
 
-            speedKnots = Math.Clamp(speedKnots, 0, GetMaxSpeedKnots());
+            // speedKnots = Math.Clamp(speedKnots, 0, GetMaxSpeedKnots());
         }
 
         public void StepTryMoveToNewPosition(float deltaSeconds)
@@ -689,6 +798,37 @@ namespace NavalCombatCore
             }
         }
 
+        public int GetDamageControlRating()
+        {
+            return Math.Max(0, shipClass.damageControlRatingUnmodified - damageControlRatingHits);
+        }
+
+        public void DamageControlAssetAllocation()
+        {
+            // Damage Control Rating Allocation
+
+            // Priority
+            // 1. Shipboard fire (high to low)
+            // 2. Low Severity Modifiers (low to high (multiplied by priority))
+            // 3. Other Damage Controllable
+
+            var damageControllableSubStates = GetSubStatesDownward().Where(s => s.damageControllable).ToList();
+
+            // TODO: Doctrine should provide `reset all`, `not reset and allocate remain DCR`, and `not automate anything` mode.
+            // Reset DCA states
+            foreach (var subState in damageControllableSubStates)
+            {
+                subState.damageControlApplied = false;
+            }
+
+            damageControllableSubStates.Sort((left, right) => -left.GetDamageControlPriority().CompareTo(right.GetDamageControlPriority()));
+            var n = Math.Min(GetDamageControlRating(), damageControllableSubStates.Count);
+            for (int i = 0; i < n; i++)
+            {
+                damageControllableSubStates[i].damageControlApplied = true;
+            }
+        }
+
         public override void StepDamageResolution(float deltaSeconds)
         {
             // if (damagePoint > shipClass.damagePoint) // TODO: Temp workaround, this will be replaced with DE based implementation. 
@@ -698,8 +838,14 @@ namespace NavalCombatCore
             //     logger.LogWarning($"{namedShip.name.GetMergedName()} ({objectId}) is destroyed");
             // }
 
+            DamageControlAssetAllocation();
+
+            // Damage Resolution
+
+            // Step current DE and broadcast to sub-objects.
             base.StepDamageResolution(deltaSeconds);
 
+            // Damage Effects from Crossing Damage Tier (possibly sinking caused)
             var p1 = damagePoint / Math.Max(1, shipClass.damagePoint);
 
             damagePoint += pendingDamagePoint;
@@ -707,7 +853,6 @@ namespace NavalCombatCore
 
             var p2 = (damagePoint + pendingDamagePoint) / Math.Max(1, shipClass.damagePoint);
 
-            // Damage Effects from Crossing Damage Tier
             RuleChart.ResolveCrossingDamageTierDamageEffects(p1, p2, out int damageEffectTier, out int damageEffectCount, out bool crossingDamageTierSinking);
 
             for (int i = 0; i < damageEffectCount; i++)
@@ -729,7 +874,8 @@ namespace NavalCombatCore
             var machinerySpaces = shipClass.speedKnotsEngineRoomsLevels.Count + shipClass.speedKnotsBoilerRooms.Count;
             var floodedMachinerySpaces = dynamicStatus.engineRoomFloodingHits + dynamicStatus.boilerRoomFloodingHits;
             var floodedPercent = floodedMachinerySpaces / Math.Max(1, machinerySpaces);
-            if (floodedPercent >= 0.8f)
+
+            if (floodedPercent >= NavalCombatCoreUtils.CalibrateSurviceProbFromTurnProb(0.8f, deltaSeconds))
             {
                 mapState = MapState.Destroyed;
             }

@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Label data-source-type="NavalCombatCore.ShipLog, Assembly-CSharp" style="border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 1px; border-right-width: 1px;">
         <Bindings>
-            <ui:DataBinding property="text" binding-mode="ToTarget" source-to-ui-converters="ShipLog =&gt; ShipLog&apos;s merge name" />
+            <ui:DataBinding property="text" binding-mode="ToTarget" data-source-path="labelName" />
         </Bindings>
     </ui:Label>
 </ui:UXML>

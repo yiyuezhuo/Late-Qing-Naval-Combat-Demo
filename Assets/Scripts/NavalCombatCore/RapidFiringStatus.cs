@@ -324,6 +324,13 @@ namespace NavalCombatCore
                             var damagePoint = RuleChart.RollRapidFireBatteryDamage(r.damageFactor);
                             log.damagePoint = damagePoint;
 
+                            var tgtLog = new ShipLogRapidFiringGunHitLog()
+                            {
+                                time = NavalGameState.Instance.scenarioState.dateTime,
+                                damagePoint = damagePoint
+                            };
+                            tgt.logs.Add(tgtLog);
+
                             // tgt.damagePoint += damagePoint;
                             tgt.AddDamagePoint(damagePoint);
                         }

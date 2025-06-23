@@ -133,7 +133,15 @@ namespace NavalCombatCore
                             baseDamagePoint = torpedoDamage,
                             cause=DamageEffectCause.Torpedo,
                         };
-                        DamageEffectChart.AddNewDamageEffect(ctx);
+                        var damageEffectId = DamageEffectChart.AddNewDamageEffect(ctx);
+
+                        var tgtLog = new ShipLogTorpedoHitLog()
+                        {
+                            time = NavalGameState.Instance.scenarioState.dateTime,
+                            damagePoint = torpedoDamage,
+                            damageEffectId=damageEffectId
+                        };
+                        collidedShipLog.logs.Add(tgtLog);
 
                         var logger = ServiceLocator.Get<ILoggerService>();
                         logger.LogWarning($"Torpedo {objectId} collides ship {collidedShipLog.namedShip.name.GetMergedName()} armorEffInch={armorEffInch} torpedoDamage={torpedoDamage}");

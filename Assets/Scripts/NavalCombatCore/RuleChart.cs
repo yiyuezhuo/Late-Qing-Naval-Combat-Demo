@@ -468,7 +468,7 @@ namespace NavalCombatCore
                 return 0;
             var table = damageControlApplied ? fightingShipboardFireTableDamageControlApplied : fightingShipboardFireTableNoDamageControlApplied;
             var r = Enumerable.Range(0, table.GetLength(0)).Last(r => d100 <= table[r, 0]);
-            return table[r, 1];
+            return Math.Clamp(severity + table[r, 1], 0, 100);
         }
 
         // N2 - Shipboard Fire Damage Effects

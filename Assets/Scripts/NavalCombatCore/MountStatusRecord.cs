@@ -113,7 +113,7 @@ namespace NavalCombatCore
 
         [XmlAttribute]
         public bool hit;
-        // TODO: Concrete Result
+
         [XmlAttribute]
         public ArmorLocation armorLocation;
 
@@ -122,13 +122,16 @@ namespace NavalCombatCore
 
         public RuleChart.ShellDamageResult shellDamageResult;
 
+        [XmlAttribute]
+        public string damageEffectId;
+
         public string Summary()
         {
             var target = GetFiringTarget();
             var targetName = target.namedShip?.name?.GetMergedName();
             var ammoType = BatteryAmmunitionRecord.ammunitionTypeAcronymMap[ammunitionType];
             var hitDesc = hit ? $"hit {armorLocation} -> {hitPenDetType} -> {shellDamageResult}" : "miss";
-            return $"{firingTime} {ammoType} -> {targetName}, {distanceYards} yards, P={hitProb * 100}%, {hitDesc}";
+            return $"{firingTime} {ammoType} -> {targetName}, {distanceYards} yards, P={hitProb * 100}%, {hitDesc} {damageEffectId}";
         }
 
         public override string ToString() => Summary();
@@ -540,7 +543,7 @@ namespace NavalCombatCore
                         // armorLocation = armorLocation,
                         // shellDamageResult = shellDamageResult
                     };
-                    logs.Add(logRecord);
+                    logs.Add(logRecord); // logRecord could be modified in the following code
 
                     if (hit)
                     {
@@ -569,9 +572,16 @@ namespace NavalCombatCore
                             //     shellDamageResult = shellDamageResult
                             // };
                             // logs.Add(logRecord);
-                            logRecord.hitPenDetType = hitPenDetType;
-                            logRecord.armorLocation = armorLocation;
+                            var tgtLog = new ShipLogBatteryHitLog()
+                            {
+                                time = NavalGameState.Instance.scenarioState.dateTime
+                            };
+
+                            tgtLog.hitPenDetType = logRecord.hitPenDetType = hitPenDetType;
+                            tgtLog.armorLocation = logRecord.armorLocation = armorLocation;
                             logRecord.shellDamageResult = shellDamageResult;
+                            tgtLog.damagePoint = shellDamageResult.damagePoint;
+                            tgt.logs.Add(tgtLog);
 
                             // TODO: Handle damage effect and general (DP caused) damage effect.
                             // tgt.damagePoint += shellDamageResult.damagePoint;
@@ -606,6 +616,8 @@ namespace NavalCombatCore
                                 };
 
                                 damageEffectId = DamageEffectChart.AddNewDamageEffect(damageEffectContext);
+
+                                tgtLog.damageEffectId = logRecord.damageEffectId = damageEffectId;
                             }
 
                             var logger = ServiceLocator.Get<ILoggerService>();

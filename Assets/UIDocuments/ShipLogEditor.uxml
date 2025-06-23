@@ -33,199 +33,214 @@
                     <ui:VisualElement style="flex-grow: 1; opacity: 1; border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
                         <ui:TabView>
                             <ui:Tab label="Basic">
-                                <ui:VisualElement style="flex-grow: 1;">
-                                    <ui:VisualElement style="flex-direction: row;">
-                                        <ui:VisualElement style="flex-grow: 1.4; flex-basis: 100px;">
-                                            <ui:Button text="Reset Damage/Expenditure State" name="ResetDamageExpenditureStateButton" />
-                                            <ui:FloatField label="Latitude">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="position.LatDeg" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:FloatField label="Longitude">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="position.LonDeg" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:FloatField label="Speed (knot)">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="speedKnots" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:FloatField label="Desired Speed">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="desiredSpeedKnots" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:FloatField label="Eff Max Speed" enabled="false">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="maxSpeedKnotsProp" binding-mode="ToTarget" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:FloatField label="Heading (deg)">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="headingDeg" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:FloatField label="Desired Heading">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="desiredHeadingDeg" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:Toggle label="Emergency Rudder">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="emergencyRudder" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:Toggle>
-                                            <ui:Toggle label="Assisted Deceleration">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="assistedDeceleration" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:Toggle>
-                                            <ui:FloatField label="Desired Speed (Boiler Room)">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="desiredSpeedKnotsForBoilerRoom" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:Toggle label="Evasive Maneuver">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="isEvasiveManeuvering" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:Toggle>
-                                            <ui:VisualElement style="flex-grow: 1; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-                                                <ui:EnumField label="Control Mode" value="Center" type="NavalCombatCore.ControlMode, Assembly-CSharp">
+                                <ui:ScrollView>
+                                    <ui:VisualElement style="flex-grow: 1;">
+                                        <ui:VisualElement style="flex-direction: row;">
+                                            <ui:VisualElement style="flex-grow: 1.4; flex-basis: 100px;">
+                                                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                                    <ui:Button text="Reset Damage/Expenditure State" name="ResetDamageExpenditureStateButton" />
+                                                    <ui:Button text="Detail" name="ShipLogDetailButton" />
+                                                </ui:VisualElement>
+                                                <ui:EnumField label="Map State" value="Center" type="NavalCombatCore.MapState, Assembly-CSharp">
                                                     <Bindings>
-                                                        <ui:DataBinding property="value" data-source-path="controlMode" binding-mode="TwoWay" />
+                                                        <ui:DataBinding property="value" data-source-path="mapState" binding-mode="TwoWay" />
                                                     </Bindings>
                                                 </ui:EnumField>
-                                                <ui:VisualElement style="flex-grow: 1;">
-                                                    <ui:TextField label="Followed Target" readonly="true">
-                                                        <Bindings>
-                                                            <ui:DataBinding property="value" data-source-path="followedTargetDesc" binding-mode="ToTarget" />
-                                                        </Bindings>
-                                                    </ui:TextField>
-                                                    <ui:Label text="In map view, select a ship, press F and then press on another ship to set the followed target." style="white-space: normal;" />
-                                                    <ui:FloatField label="Follow Distance (yards)">
-                                                        <Bindings>
-                                                            <ui:DataBinding property="value" data-source-path="followDistanceYards" binding-mode="TwoWay" />
-                                                        </Bindings>
-                                                    </ui:FloatField>
+                                                <ui:EnumField label="Operational State" value="Center" type="NavalCombatCore.ShipOperationalState, Assembly-CSharp">
                                                     <Bindings>
-                                                        <ui:DataBinding property="style.display" data-source-path="displayStyleOfControlModeIsFollowTarget" binding-mode="ToTarget" />
+                                                        <ui:DataBinding property="value" data-source-path="operationalState" binding-mode="TwoWay" />
                                                     </Bindings>
-                                                </ui:VisualElement>
-                                                <ui:VisualElement style="flex-grow: 1;">
-                                                    <ui:TextField label="Relative To" readonly="true">
-                                                        <Bindings>
-                                                            <ui:DataBinding property="value" data-source-path="relativeToTargetDesc" binding-mode="ToTarget" />
-                                                        </Bindings>
-                                                    </ui:TextField>
-                                                    <ui:Label text="In map view, select a ship, press R and then press on another ship to set the relative to target." style="white-space: normal;" />
-                                                    <ui:FloatField label="Relative To Dist (yds)">
-                                                        <Bindings>
-                                                            <ui:DataBinding property="value" data-source-path="relativeToTargetDistanceYards" binding-mode="TwoWay" />
-                                                        </Bindings>
-                                                    </ui:FloatField>
-                                                    <ui:Slider label="Relative To Azimuth (deg)" high-value="360" show-input-field="true">
-                                                        <Bindings>
-                                                            <ui:DataBinding property="value" data-source-path="relativeToTargetAzimuth" binding-mode="TwoWay" />
-                                                        </Bindings>
-                                                    </ui:Slider>
+                                                </ui:EnumField>
+                                                <ui:FloatField label="Latitude">
                                                     <Bindings>
-                                                        <ui:DataBinding property="style.display" data-source-path="displayStyleOfControlModeIsRelativeToTarget" binding-mode="ToTarget" />
+                                                        <ui:DataBinding property="value" data-source-path="position.LatDeg" binding-mode="TwoWay" />
                                                     </Bindings>
+                                                </ui:FloatField>
+                                                <ui:FloatField label="Longitude">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="position.LonDeg" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:FloatField label="Speed (knot)">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="speedKnots" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:FloatField label="Desired Speed">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="desiredSpeedKnots" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:FloatField label="Eff Max Speed" enabled="false">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="maxSpeedKnotsProp" binding-mode="ToTarget" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:FloatField label="Heading (deg)">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="headingDeg" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:FloatField label="Desired Heading">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="desiredHeadingDeg" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:Toggle label="Emergency Rudder">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="emergencyRudder" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:Toggle>
+                                                <ui:Toggle label="Assisted Deceleration">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="assistedDeceleration" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:Toggle>
+                                                <ui:FloatField label="Desired Speed (Boiler Room)">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="desiredSpeedKnotsForBoilerRoom" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:Toggle label="Evasive Maneuver">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="isEvasiveManeuvering" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:Toggle>
+                                                <ui:VisualElement style="flex-grow: 1; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                                                    <ui:EnumField label="Control Mode" value="Center" type="NavalCombatCore.ControlMode, Assembly-CSharp">
+                                                        <Bindings>
+                                                            <ui:DataBinding property="value" data-source-path="controlMode" binding-mode="TwoWay" />
+                                                        </Bindings>
+                                                    </ui:EnumField>
+                                                    <ui:VisualElement style="flex-grow: 1;">
+                                                        <ui:TextField label="Followed Target" readonly="true">
+                                                            <Bindings>
+                                                                <ui:DataBinding property="value" data-source-path="followedTargetDesc" binding-mode="ToTarget" />
+                                                            </Bindings>
+                                                        </ui:TextField>
+                                                        <ui:Label text="In map view, select a ship, press F and then press on another ship to set the followed target." style="white-space: normal;" />
+                                                        <ui:FloatField label="Follow Distance (yards)">
+                                                            <Bindings>
+                                                                <ui:DataBinding property="value" data-source-path="followDistanceYards" binding-mode="TwoWay" />
+                                                            </Bindings>
+                                                        </ui:FloatField>
+                                                        <Bindings>
+                                                            <ui:DataBinding property="style.display" data-source-path="displayStyleOfControlModeIsFollowTarget" binding-mode="ToTarget" />
+                                                        </Bindings>
+                                                    </ui:VisualElement>
+                                                    <ui:VisualElement style="flex-grow: 1;">
+                                                        <ui:TextField label="Relative To" readonly="true">
+                                                            <Bindings>
+                                                                <ui:DataBinding property="value" data-source-path="relativeToTargetDesc" binding-mode="ToTarget" />
+                                                            </Bindings>
+                                                        </ui:TextField>
+                                                        <ui:Label text="In map view, select a ship, press R and then press on another ship to set the relative to target." style="white-space: normal;" />
+                                                        <ui:FloatField label="Relative To Dist (yds)">
+                                                            <Bindings>
+                                                                <ui:DataBinding property="value" data-source-path="relativeToTargetDistanceYards" binding-mode="TwoWay" />
+                                                            </Bindings>
+                                                        </ui:FloatField>
+                                                        <ui:Slider label="Relative To Azimuth (deg)" high-value="360" show-input-field="true">
+                                                            <Bindings>
+                                                                <ui:DataBinding property="value" data-source-path="relativeToTargetAzimuth" binding-mode="TwoWay" />
+                                                            </Bindings>
+                                                        </ui:Slider>
+                                                        <Bindings>
+                                                            <ui:DataBinding property="style.display" data-source-path="displayStyleOfControlModeIsRelativeToTarget" binding-mode="ToTarget" />
+                                                        </Bindings>
+                                                    </ui:VisualElement>
                                                 </ui:VisualElement>
+                                                <ui:TextField label="OOB Parent" readonly="true">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="oobParentDesc" binding-mode="ToTarget" />
+                                                    </Bindings>
+                                                </ui:TextField>
                                             </ui:VisualElement>
-                                            <ui:EnumField label="Map State" value="Center" type="NavalCombatCore.MapState, Assembly-CSharp">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="mapState" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:EnumField>
-                                            <ui:TextField label="OOB Parent" readonly="true">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="oobParentDesc" binding-mode="ToTarget" />
-                                                </Bindings>
-                                            </ui:TextField>
-                                        </ui:VisualElement>
-                                        <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                                            <ui:FloatField label="Damage Point">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:ProgressBar>
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="ToTarget" />
-                                                    <ui:DataBinding property="highValue" data-source-path="shipClassProperty.damagePoint" binding-mode="ToTarget" />
-                                                    <ui:DataBinding property="title" data-source-path="damagePointProgrssDesc" binding-mode="ToTarget" />
-                                                </Bindings>
-                                            </ui:ProgressBar>
-                                            <ui:FloatField label="Damage Point (Pending)">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="pendingDamagePoint" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:FloatField label="Max Speed Offset">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="dynamicStatus.maxSpeedKnotsOffset" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:FloatField label="Acceleration Offset">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="dynamicStatus.accelerationOffset" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:SliderInt label="Engine Room Hits" high-value="100" show-input-field="true">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="dynamicStatus.engineRoomHits" binding-mode="TwoWay" />
-                                                    <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsEngineRoomsLevels" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count" />
-                                                </Bindings>
-                                            </ui:SliderInt>
-                                            <ui:SliderInt label="Propulsion/Shaft Hits" high-value="100" show-input-field="true">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="dynamicStatus.propulsionShaftHits" binding-mode="TwoWay" />
-                                                    <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsPropulsionShaftLevels" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count" />
-                                                </Bindings>
-                                            </ui:SliderInt>
-                                            <ui:SliderInt label="Boiler Room Hits" high-value="100" show-input-field="true">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="dynamicStatus.boilerRoomHits" binding-mode="TwoWay" />
-                                                    <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsBoilerRooms" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count" />
-                                                </Bindings>
-                                            </ui:SliderInt>
-                                            <ui:IntegerField label="Engine Room Flooding">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="dynamicStatus.engineRoomFloodingHits" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:IntegerField>
-                                            <ui:IntegerField label="Boiler Room Flooding">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="dynamicStatus.boilerRoomFloodingHits" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:IntegerField>
-                                            <ui:IntegerField label="Dmg Ctrl Rating">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="damageControlRatingHits" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:IntegerField>
-                                            <ui:IntegerField label="Port Searchlight Hits">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="searchLightHits.portHit" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:IntegerField>
-                                            <ui:IntegerField label="Starboard Searchlight Hits">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="searchLightHits.starboardHit" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:IntegerField>
-                                            <ui:Toggle label="Smoke Generator Disabled">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="smokeGeneratorDisabled" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:Toggle>
+                                            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                                <ui:FloatField label="Damage Point">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:ProgressBar>
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="ToTarget" />
+                                                        <ui:DataBinding property="highValue" data-source-path="shipClassProperty.damagePoint" binding-mode="ToTarget" />
+                                                        <ui:DataBinding property="title" data-source-path="damagePointProgrssDesc" binding-mode="ToTarget" />
+                                                    </Bindings>
+                                                </ui:ProgressBar>
+                                                <ui:FloatField label="Damage Point (Pending)">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="pendingDamagePoint" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:FloatField label="Max Speed Offset">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="dynamicStatus.maxSpeedKnotsOffset" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:FloatField label="Acceleration Offset">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="dynamicStatus.accelerationOffset" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:SliderInt label="Engine Room Hits" high-value="100" show-input-field="true">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="dynamicStatus.engineRoomHits" binding-mode="TwoWay" />
+                                                        <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsEngineRoomsLevels" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count" />
+                                                    </Bindings>
+                                                </ui:SliderInt>
+                                                <ui:SliderInt label="Propulsion/Shaft Hits" high-value="100" show-input-field="true">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="dynamicStatus.propulsionShaftHits" binding-mode="TwoWay" />
+                                                        <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsPropulsionShaftLevels" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count" />
+                                                    </Bindings>
+                                                </ui:SliderInt>
+                                                <ui:SliderInt label="Boiler Room Hits" high-value="100" show-input-field="true">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="dynamicStatus.boilerRoomHits" binding-mode="TwoWay" />
+                                                        <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsBoilerRooms" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count" />
+                                                    </Bindings>
+                                                </ui:SliderInt>
+                                                <ui:IntegerField label="Engine Room Flooding">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="dynamicStatus.engineRoomFloodingHits" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:IntegerField>
+                                                <ui:IntegerField label="Boiler Room Flooding">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="dynamicStatus.boilerRoomFloodingHits" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:IntegerField>
+                                                <ui:IntegerField label="Dmg Ctrl Rating Hit">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="damageControlRatingHits" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:IntegerField>
+                                                <ui:IntegerField label="Eff. Dmg Ctrl Rating" enabled="false">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="damageControlRatingProp" binding-mode="ToTarget" />
+                                                    </Bindings>
+                                                </ui:IntegerField>
+                                                <ui:IntegerField label="Port Searchlight Hits">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="searchLightHits.portHit" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:IntegerField>
+                                                <ui:IntegerField label="Starboard Searchlight Hits">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="searchLightHits.starboardHit" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:IntegerField>
+                                                <ui:Toggle label="Smoke Generator Disabled">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="smokeGeneratorDisabled" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:Toggle>
+                                            </ui:VisualElement>
                                         </ui:VisualElement>
                                     </ui:VisualElement>
-                                </ui:VisualElement>
+                                </ui:ScrollView>
                             </ui:Tab>
                             <ui:Tab label="Damage Effects">
                                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">

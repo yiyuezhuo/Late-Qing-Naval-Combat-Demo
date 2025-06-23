@@ -32,7 +32,7 @@
             <ui:Slider high-value="100" show-input-field="true">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="desiredSpeedKnots" binding-mode="TwoWay" />
-                    <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnots" binding-mode="ToTarget" />
+                    <ui:DataBinding property="highValue" data-source-path="maxSpeedKnotsProp" binding-mode="ToTarget" />
                 </Bindings>
             </ui:Slider>
             <ui:VisualElement style="flex-grow: 0; flex-direction: row;">

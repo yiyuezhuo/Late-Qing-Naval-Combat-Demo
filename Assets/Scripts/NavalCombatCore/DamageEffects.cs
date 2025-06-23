@@ -227,7 +227,8 @@ namespace NavalCombatCore
 
                 if (gp.Count > 0)
                 {
-                    ctx.subject.damagePoint += ctx.baseDamagePoint * 2; // Triple total DP caused by this hit
+                    // ctx.subject.damagePoint += ctx.baseDamagePoint * 2; // Triple total DP caused by this hit
+                    ctx.subject.AddDamagePoint(ctx.baseDamagePoint * 2);
 
                     // Magazines are flooded and all guns serviced by this magazine (located in affected section) may not fire for the duration of battle.
                     var g = RandomUtils.Sample(gp);
@@ -304,7 +305,7 @@ namespace NavalCombatCore
 
         public static void AddShipboardFire(DamageEffectContext ctx, string cause, float severity)
         {
-            var shipboardFire = new SubState()
+            var shipboardFire = new ShipboardFireState()
             {
                 lifeCycle = StateLifeCycle.ShipboardFire,
                 cause = cause,
@@ -545,7 +546,9 @@ namespace NavalCombatCore
                     // Magazines are flooded and all guns serviced by this magazine (located in affected section) may not fire for the duration of the battle.
                     if (IsHE(ctx) && IsA(ctx) && RandomUtils.D100F() <= 20)
                     {
-                        ctx.subject.damagePoint += 2 * ctx.baseDamagePoint;
+                        // ctx.subject.damagePoint += 2 * ctx.baseDamagePoint;
+                        ctx.subject.AddDamagePoint(2 * ctx.baseDamagePoint);
+
                         var affectedLocation = mount.mountLocation;
                         foreach(var affectedMount in ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus)
                             .Where(mnt => mnt.mountLocation == affectedLocation))
@@ -579,7 +582,9 @@ namespace NavalCombatCore
 
                     if(IsHE(ctx) && IsA(ctx) && RandomUtils.D100F() <= 10)
                     {
-                        ctx.subject.damagePoint += ctx.baseDamagePoint; // DOuble total DP caused by this hit
+                        // ctx.subject.damagePoint += ctx.baseDamagePoint; // DOuble total DP caused by this hit
+                        ctx.subject.AddDamagePoint(ctx.baseDamagePoint);
+
                         var affectedSector = secOrTerMount.mountLocation;
                         foreach(var affectedMount in ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus)
                             .Where(mnt => mnt.mountLocation == affectedSector))
@@ -673,7 +678,9 @@ namespace NavalCombatCore
                     {
                         if(IsA(ctx))
                         {
-                            ctx.subject.damagePoint += ctx.baseDamagePoint * 2;
+                            // ctx.subject.damagePoint += ctx.baseDamagePoint * 2;
+                            ctx.subject.AddDamagePoint(ctx.baseDamagePoint * 2);
+
                             AddShipboardFire(ctx, "DE 109 (A): Shipboard fire severity 50", 50);
 
                             var DE = new RiskingInMagazineExplosion()
@@ -688,7 +695,9 @@ namespace NavalCombatCore
                         }
                         if(IsB(ctx))
                         {
-                            ctx.subject.damagePoint += ctx.baseDamagePoint * 2;
+                            // ctx.subject.damagePoint += ctx.baseDamagePoint * 2;
+                            ctx.subject.AddDamagePoint(ctx.baseDamagePoint * 2);
+
                             AddShipboardFire(ctx, "DE 109 (B): Shipboard fire severity 30", 30);
                         }
 
@@ -722,7 +731,9 @@ namespace NavalCombatCore
                 {
                     if(TryToSampleASecondaryBatteryMount(ctx, out var mount))
                     {
-                        ctx.subject.damagePoint += ctx.baseDamagePoint;
+                        // ctx.subject.damagePoint += ctx.baseDamagePoint;
+                        ctx.subject.AddDamagePoint(ctx.baseDamagePoint);
+
                         mount.status = MaxEnum(mount.status, MountStatus.Disabled);
 
                         var DE = new RiskingInMagazineExplosion()
@@ -1096,7 +1107,7 @@ namespace NavalCombatCore
                     ctx.subject.dynamicStatus.boilerRoomFloodingHits += 1;
                     if(RandomUtils.D100F() <= 25)
                     {
-                        ctx.subject.damagePoint += ctx.baseDamagePoint;
+                        ctx.subject.AddDamagePoint(ctx.baseDamagePoint);
                     }
                     RollForAdditionalDamageEffect(ctx, new[]{"168", "170", "180", "182", ""});
                 }
@@ -1257,7 +1268,8 @@ namespace NavalCombatCore
                 AddShipboardFire(ctx, "DE 129: Fire in small arms stores. Shipboard fire severity 30", 30);
                 if(RandomUtils.D100F() <= 40)
                 {
-                    ctx.subject.damagePoint += ctx.baseDamagePoint;
+                    // ctx.subject.damagePoint += ctx.baseDamagePoint;
+                    ctx.subject.AddDamagePoint(ctx.baseDamagePoint);
                 }
                 // TODO: Reduce effectiveness of boarding party by 50% when performing grapple and board operations, Dave
                 // Well SK5 don't include detailed boarding rule though, though in the battle of yalu China's navy tried it,
@@ -2110,11 +2122,13 @@ namespace NavalCombatCore
                     var speedKnots = ctx.subject.speedKnots;
                     if(speedKnots >= 20)
                     {
-                        ctx.subject.damagePoint += 2 * ctx.baseDamagePoint;
+                        // ctx.subject.damagePoint += 2 * ctx.baseDamagePoint;
+                        ctx.subject.AddDamagePoint(2 * ctx.baseDamagePoint);
                     }
                     else if(speedKnots >= 14)
                     {
-                        ctx.subject.damagePoint += 1 * ctx.baseDamagePoint;
+                        // ctx.subject.damagePoint += 1 * ctx.baseDamagePoint;
+                        ctx.subject.AddDamagePoint(1 * ctx.baseDamagePoint);
                     }
 
                     var DE = new SevereFloodingState()
@@ -2284,8 +2298,11 @@ namespace NavalCombatCore
             // DE 176, Additional structural damage
             {"176", ctx=>{
                 AddShipboardFire(ctx, "DE 176: Additional structural damage, Shipboard fire severity 20", 20);
-                ctx.subject.damagePoint += ctx.baseDamagePoint;
-                if(IsAB(ctx))
+
+                // ctx.subject.damagePoint += ctx.baseDamagePoint;
+                ctx.subject.AddDamagePoint(ctx.baseDamagePoint);
+
+                if (IsAB(ctx))
                 {
                     RollForAdditionalDamageEffect(ctx, new[]{"122", "105", "103", "118", "120"});
                 }
@@ -2383,11 +2400,13 @@ namespace NavalCombatCore
 
                     if(ctx.subject.speedKnots >= 18)
                     {
-                        ctx.subject.damagePoint += ctx.baseDamagePoint * 2;
+                        // ctx.subject.damagePoint += ctx.baseDamagePoint * 2;
+                        ctx.subject.AddDamagePoint(ctx.baseDamagePoint * 2);
                     }
                     else
                     {
-                        ctx.subject.damagePoint += ctx.baseDamagePoint;
+                        // ctx.subject.damagePoint += ctx.baseDamagePoint;
+                        ctx.subject.AddDamagePoint(ctx.baseDamagePoint);
                     }
 
                     var DE2 = new SevereFloodingState()
@@ -2769,15 +2788,18 @@ namespace NavalCombatCore
 
                     if(damageTier <= 3)
                     {
-                        ctx.subject.damagePoint += RandomUtils.NextFloat() * 25;
+                        // ctx.subject.damagePoint += RandomUtils.NextFloat() * 25;
+                        ctx.subject.AddDamagePoint(RandomUtils.NextFloat() * 25);
                     }
                     else if(damageTier <= 6)
                     {
-                        ctx.subject.damagePoint += RandomUtils.NextFloat() * 45;
+                        // ctx.subject.damagePoint += RandomUtils.NextFloat() * 45;
+                        ctx.subject.AddDamagePoint(RandomUtils.NextFloat() * 45);
                     }
                     else
                     {
-                        ctx.subject.damagePoint += RandomUtils.NextFloat() * 80;
+                        // ctx.subject.damagePoint += RandomUtils.NextFloat() * 80;
+                        ctx.subject.AddDamagePoint(RandomUtils.NextFloat() * 80);
                     }
                 }
             }},

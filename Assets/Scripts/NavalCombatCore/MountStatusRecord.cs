@@ -574,7 +574,8 @@ namespace NavalCombatCore
                             logRecord.shellDamageResult = shellDamageResult;
 
                             // TODO: Handle damage effect and general (DP caused) damage effect.
-                            tgt.damagePoint += shellDamageResult.damagePoint;
+                            // tgt.damagePoint += shellDamageResult.damagePoint;
+                            tgt.AddDamagePoint(shellDamageResult.damagePoint);
 
                             string damageEffectId = null;
                             // Process Damage Effect

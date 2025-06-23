@@ -4,6 +4,8 @@ using System.Linq;
 using System;
 using GeographicLib;
 using System.Xml.Serialization;
+using UnityEngine;
+using TMPro;
 
 
 namespace NavalCombatCore
@@ -168,77 +170,6 @@ namespace NavalCombatCore
         public int GetOverConcentrationCoef() => 0;
     }
 
-    // public class AbstractModifier
-    // {
-
-    // }
-
-    // Abstract class will prevent UITK binding hint so we switch back to concrete class at time.
-    public class UnitModule : IObjectIdLabeled, ISubject
-    {
-        public string objectId { get; set; }
-        public List<SubState> subStates = new();
-
-        public void AddSubState(SubState state)
-        {
-            subStates.Add(state);
-        }
-        public void RemoveSubState(SubState state)
-        {
-            subStates.Remove(state);
-        }
-
-        public virtual IEnumerable<IObjectIdLabeled> GetSubObjects()
-        {
-            foreach (var subState in subStates)
-            {
-                yield return subState;
-            }
-        }
-
-        // public IEnumerable<T> GetSubState<T>(SubState subState)
-        // {
-        //     if (subState is T t)
-        //     {
-        //         yield return t;
-        //     }
-
-        //     foreach (var childSubState in subState.children)
-        //     {
-        //         foreach (var tt in GetSubState<T>(childSubState))
-        //         {
-        //             yield return tt;
-        //         }
-        //     }
-        // }
-
-        public IEnumerable<T> GetSubStates<T>()
-        {
-            // foreach (var subState in subStates)
-            // {
-            //     foreach (var t in GetSubState<T>(subState))
-            //         yield return t;
-            // }
-
-            foreach (var subState in subStates)
-            {
-                if (subState is T t)
-                {
-                    yield return t;
-                }
-            }
-
-            var parent = EntityManager.Instance.GetParent<UnitModule>(this);
-            if (parent != null)
-            {
-                foreach (var t in parent.GetSubStates<T>())
-                {
-                    yield return t;
-                }
-            }
-        }
-    }
-
 
     public partial class ShipLog : UnitModule, IDF4Model, IShipGroupMember, IWTAObject, IExtrapolable, ICollider
     {
@@ -267,7 +198,7 @@ namespace NavalCombatCore
         public LatLon position = new();
         public float speedKnots; // current speed vs "max" speed defined in the class
         public float headingDeg;
-        public float desiredSpeedKnot;
+        public float desiredSpeedKnots;
         public float desiredHeadingDeg;
         public MapState mapState;
         // DCR Modifier or DCR modifier type?
@@ -363,12 +294,16 @@ namespace NavalCombatCore
 
         public Doctrine doctrine { get; set; } = new();
 
+        public bool isEvasiveManeuvering;
+
+        public float pendingDamagePoint;
+
         public bool IsOnMap() => mapState == MapState.Deployed;
 
         public void ResetDamageExpenditureState()
         {
             desiredHeadingDeg = headingDeg;
-            desiredSpeedKnot = speedKnots;
+            desiredSpeedKnots = speedKnots;
             desiredSpeedKnotsForBoilerRoom = speedKnots;
 
             damagePoint = 0;
@@ -424,13 +359,49 @@ namespace NavalCombatCore
             return string.Join("\n", lines);
         }
 
-        public void StepProcessTurn(float deltaSeconds)
+        public void AddDamagePoint(float addedDamagePoint)
         {
-            if (speedKnots >= 4) // Turn and induced speed change
+            // var damageTier = GetDamageTier();
+            // damagePoint += addedDamagePoint;
+            // var newDamageTier = GetDamageTier();
+
+            // for (int dt = damageTier + 1; dt <= newDamageTier; dt++)
+            // {
+            //     var ctx = new DamageEffectContext()
+            //     {
+            //         subject = this,
+            //         cause = DamageEffectCause.General,
+            //     };
+            //     DamageEffectChart.AddNewDamageEffect(ctx);
+            // }
+            pendingDamagePoint += addedDamagePoint;
+        }
+
+        public float GetTurnCap(bool useEmergencyRudder)
+        {
+            if (useEmergencyRudder)
+            {
+                var cap = shipClass.emergencyTurnDegPer2Min;
+                var upperLimit = GetSubStates<IDynamicModifier>().Select(m => m.GetEmergencyTurnUpperLimit()).DefaultIfEmpty(100000).Min();
+                var coef = GetSubStates<IDynamicModifier>().Select(m => m.GetEmergencyTurnCoef()).DefaultIfEmpty(1).Min();
+                return Mathf.Min(cap * coef, upperLimit);
+            }
+            else
+            {
+                var cap = shipClass.standardTurnDegPer2Min;
+                var upperLimit = GetSubStates<IDynamicModifier>().Select(m => m.GetStandardTurnUpperLimit()).DefaultIfEmpty(100000).Min();
+                var coef = GetSubStates<IDynamicModifier>().Select(m => m.GetStandardTurnCoef()).DefaultIfEmpty(1).Min();
+                return Mathf.Min(cap * coef, upperLimit);
+            }
+        }
+
+        public void StepProcessTurn(float deltaSeconds) // Turn and induced speed change
+        {
+            if (speedKnots >= 4) // Turn requires at least 4 knots speed to do
             {
                 var useEmergencyRudder = emergencyRudder && speedKnots >= 12;
+                var turnCapPer2Min = GetTurnCap(useEmergencyRudder);
 
-                var turnCapPer2Min = useEmergencyRudder ? shipClass.emergencyTurnDegPer2Min : shipClass.standardTurnDegPer2Min;
                 var turnCapThisPulse = turnCapPer2Min / 120 * deltaSeconds;
                 var absDeltaDeg = Math.Min(MeasureUtils.GetPositiveAngleDifference(headingDeg, desiredHeadingDeg), turnCapThisPulse);
                 var usePercent = absDeltaDeg / turnCapThisPulse;
@@ -445,7 +416,9 @@ namespace NavalCombatCore
 
         public void StepProcessControl()
         {
-            var decelerationKnotsCapPer2Min = shipClass.speedKnots * (assistedDeceleration ? 0.6f : 0.2f);
+            var maxSpeedKnots = GetMaxSpeedKnots();
+
+            var decelerationKnotsCapPer2Min = maxSpeedKnots * (assistedDeceleration ? 0.6f : 0.2f);
             var decelerationKnotsCapPerSec = decelerationKnotsCapPer2Min / 120f;
 
             if (controlMode == ControlMode.FollowTarget)
@@ -473,23 +446,23 @@ namespace NavalCombatCore
 
                     if (Math.Abs(expectedDistanceDiffYards) < 20 && Math.Abs(speedKnots - followedTarget.speedKnots) < 1)
                     {
-                        desiredSpeedKnotsForBoilerRoom = followedTarget.speedKnots;
+                        desiredSpeedKnots = followedTarget.speedKnots;
                     }
                     else if (expectedDistanceDiffYards > 0)
                     {
                         if (speedKnots < followedTarget.speedKnots)
                         {
-                            desiredSpeedKnotsForBoilerRoom = shipClass.speedKnots; // max speed
+                            desiredSpeedKnots = maxSpeedKnots; // max speed
                         }
                         else
                         {
                             if (currentFollowedDistYards > followDistanceYards + extraDistanceYards)
                             {
-                                desiredSpeedKnotsForBoilerRoom = shipClass.speedKnots; // max speed
+                                desiredSpeedKnots = maxSpeedKnots; // max speed
                             }
                             else
                             {
-                                desiredSpeedKnotsForBoilerRoom = followedTarget.speedKnots;
+                                desiredSpeedKnots = followedTarget.speedKnots;
                             }
                         }
                     }
@@ -497,15 +470,15 @@ namespace NavalCombatCore
                     {
                         if (speedKnots < followedTarget.speedKnots)
                         {
-                            desiredSpeedKnotsForBoilerRoom = followedTarget.speedKnots * 0.9f;
+                            desiredSpeedKnots = followedTarget.speedKnots * 0.9f;
                         }
                         else if (currentFollowedDistM > extraDistanceYards)
                         {
-                            desiredSpeedKnotsForBoilerRoom = followedTarget.speedKnots * 0.8f;
+                            desiredSpeedKnots = followedTarget.speedKnots * 0.8f;
                         }
                         else
                         {
-                            desiredSpeedKnotsForBoilerRoom = 0; // Too harsh? But in fact it
+                            desiredSpeedKnots = 0; // Too harsh? But in fact it
                         }
                     }
                     desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)inverseLine.Azimuth);
@@ -532,12 +505,12 @@ namespace NavalCombatCore
 
                     if (distanceToTargetYards < 20)
                     {
-                        desiredSpeedKnotsForBoilerRoom = relativeToTarget.speedKnots;
+                        desiredSpeedKnots = relativeToTarget.speedKnots;
                         desiredHeadingDeg = relativeToTarget.headingDeg;
                     }
                     else if (shipIsFrontOfTarget && !targetPointIsFrontOfShip) // Wait target to "close"
                     {
-                        desiredSpeedKnotsForBoilerRoom = relativeToTarget.speedKnots * 0.75f;
+                        desiredSpeedKnots = relativeToTarget.speedKnots * 0.75f;
                         desiredHeadingDeg = relativeToTarget.headingDeg;
                     }
                     else // Move to target
@@ -546,7 +519,7 @@ namespace NavalCombatCore
 
                         if (speedKnots < relativeToTarget.speedKnots)
                         {
-                            desiredSpeedKnotsForBoilerRoom = shipClass.speedKnots; // max speed
+                            desiredSpeedKnots = maxSpeedKnots; // max speed
                         }
                         else
                         {
@@ -556,11 +529,11 @@ namespace NavalCombatCore
                             var extraDistanceYards = extraDistanceNm * 2025.37f;
                             if (distanceToTargetYards > extraDistanceYards)
                             {
-                                desiredSpeedKnotsForBoilerRoom = shipClass.speedKnots; // max speed
+                                desiredSpeedKnots = maxSpeedKnots; // max speed
                             }
                             else
                             {
-                                desiredSpeedKnotsForBoilerRoom = relativeToTarget.speedKnots * 0.8f;
+                                desiredSpeedKnots = relativeToTarget.speedKnots * 0.8f;
                             }
                         }
                     }
@@ -568,17 +541,54 @@ namespace NavalCombatCore
             }
         }
 
+        public float GetMaxSpeedKnots() // cache in context?
+        {
+            var maxSpeedKnots = shipClass.speedKnots + dynamicStatus.maxSpeedKnotsOffset;
+
+            var modifiers = GetSubStates<IDynamicModifier>().ToList();
+            if (modifiers.Count > 0)
+            {
+                var coef = modifiers.Select(m => m.GetMaxSpeedKnotCoef()).Min();
+                var offset = modifiers.Select(m => m.GetMaxSpeedKnotOffset()).Min();
+                var upperLimit = modifiers.Select(m => m.GetMaxSpeedUpperLimit()).Min();
+                maxSpeedKnots = Math.Clamp((maxSpeedKnots + offset) * coef, 0, upperLimit);
+            }
+
+            var propulsionUpperLimit = shipClass.speedKnotsPropulsionShaftLevels[Math.Min(shipClass.speedKnotsPropulsionShaftLevels.Count-1, dynamicStatus.propulsionShaftHits)];
+            maxSpeedKnots = Math.Min(maxSpeedKnots, propulsionUpperLimit);
+
+            var engineRoomHits = dynamicStatus.engineRoomHits + dynamicStatus.engineRoomFloodingHits + GetSubStates<IEngineRoomHitModifier>().Select(m => m.GetEngineRoomHitOffset()).DefaultIfEmpty(0).Sum();
+            var engineUpperLimit = shipClass.speedKnotsEngineRoomsLevels[Math.Min(shipClass.speedKnotsEngineRoomsLevels.Count-1, engineRoomHits)];
+            maxSpeedKnots = Math.Min(maxSpeedKnots, engineUpperLimit);
+
+            var boilerRoomHits = dynamicStatus.boilerRoomHits + dynamicStatus.boilerRoomFloodingHits + GetSubStates<IBoilerRoomHitModifier>().Select(m => m.GetBoilerRoomHitOffset()).DefaultIfEmpty(0).Sum();
+            var boilerUpperLimit = shipClass.speedKnotsBoilerRooms[Math.Min(shipClass.speedKnotsBoilerRooms.Count-1, boilerRoomHits)];
+            maxSpeedKnots = Math.Min(maxSpeedKnots, boilerUpperLimit);
+
+            return maxSpeedKnots;
+        }
+
         public void StepProcessSpeed(float deltaSeconds)
         {
+            var maxSpeedKnots = GetMaxSpeedKnots();
+            
             var commandBlocked = GetSubStates<IDesiredSpeedUpdateToBoilerRoomBlocker>().Any(blocker => blocker.IsDesiredSpeedCommandBlocked());
             if (!commandBlocked)
             {
-                desiredSpeedKnotsForBoilerRoom = desiredSpeedKnot;
+                desiredSpeedKnotsForBoilerRoom = desiredSpeedKnots;
             }
+
+            // var modifiers = GetSubStates<IDynamicModifier>().ToList();
+
+            // var maxSpeed = shipClass.speedKnots + dynamicStatus.maxSpeedKnotsOffset + GetSubStates<IDynamicModifier>().Max(dm => dm.GetMaxSpeedKnotOffset());
 
             if (desiredSpeedKnotsForBoilerRoom > speedKnots)
             {
                 var accelerationKnotsCapPer2Min = shipClass.speedIncreaseRecord.Where(r => speedKnots >= r.thresholdSpeedKnots).Select(r => r.increaseSpeedKnots).Min();
+
+                var upperLimit = GetSubStates<IDynamicModifier>().Select(m => m.GetAccelerationUpperLimit()).DefaultIfEmpty(10000).Min();
+                accelerationKnotsCapPer2Min = Math.Min(accelerationKnotsCapPer2Min, upperLimit);
+
                 var accelerationKnotsCapPerSec = accelerationKnotsCapPer2Min / 120;
 
                 var accelerationKnotsCapThisPulse = accelerationKnotsCapPerSec * deltaSeconds;
@@ -586,12 +596,14 @@ namespace NavalCombatCore
             }
             else if (desiredSpeedKnotsForBoilerRoom < speedKnots)
             {
-                var decelerationKnotsCapPer2Min = shipClass.speedKnots * (assistedDeceleration ? 0.6f : 0.2f);
+                var decelerationKnotsCapPer2Min = maxSpeedKnots * (assistedDeceleration ? 0.6f : 0.2f);
                 var decelerationKnotsCapPerSec = decelerationKnotsCapPer2Min / 120f;
 
                 var decelerationKnotsCapThisPulse = decelerationKnotsCapPerSec * deltaSeconds;
                 speedKnots -= Math.Min(speedKnots - desiredSpeedKnotsForBoilerRoom, decelerationKnotsCapThisPulse);
             }
+
+            speedKnots = Math.Clamp(speedKnots, 0, GetMaxSpeedKnots());
         }
 
         public void StepTryMoveToNewPosition(float deltaSeconds)
@@ -677,33 +689,51 @@ namespace NavalCombatCore
             }
         }
 
-        public void StepDamageResolution(float deltaSeconds)
+        public override void StepDamageResolution(float deltaSeconds)
         {
-            if (damagePoint > shipClass.damagePoint) // TODO: Temp workaround, this will be replaced with DE based implementation. 
+            // if (damagePoint > shipClass.damagePoint) // TODO: Temp workaround, this will be replaced with DE based implementation. 
+            // {
+            //     mapState = MapState.Destroyed;
+            //     var logger = ServiceLocator.Get<ILoggerService>();
+            //     logger.LogWarning($"{namedShip.name.GetMergedName()} ({objectId}) is destroyed");
+            // }
+
+            base.StepDamageResolution(deltaSeconds);
+
+            var p1 = damagePoint / Math.Max(1, shipClass.damagePoint);
+
+            damagePoint += pendingDamagePoint;
+            pendingDamagePoint = 0;
+
+            var p2 = (damagePoint + pendingDamagePoint) / Math.Max(1, shipClass.damagePoint);
+
+            // Damage Effects from Crossing Damage Tier
+            RuleChart.ResolveCrossingDamageTierDamageEffects(p1, p2, out int damageEffectTier, out int damageEffectCount, out bool crossingDamageTierSinking);
+
+            for (int i = 0; i < damageEffectCount; i++)
+            {
+                var ctx = new DamageEffectContext()
+                {
+                    subject = this,
+                    cause = DamageEffectCause.General,
+                };
+                DamageEffectChart.AddNewDamageEffect(ctx);
+            }
+
+            if (crossingDamageTierSinking)
             {
                 mapState = MapState.Destroyed;
-                var logger = ServiceLocator.Get<ILoggerService>();
-                logger.LogWarning($"{namedShip.name.GetMergedName()} ({objectId}) is destroyed");
+            }
+
+            // Sinking due to flooded machinery spaces
+            var machinerySpaces = shipClass.speedKnotsEngineRoomsLevels.Count + shipClass.speedKnotsBoilerRooms.Count;
+            var floodedMachinerySpaces = dynamicStatus.engineRoomFloodingHits + dynamicStatus.boilerRoomFloodingHits;
+            var floodedPercent = floodedMachinerySpaces / Math.Max(1, machinerySpaces);
+            if (floodedPercent >= 0.8f)
+            {
+                mapState = MapState.Destroyed;
             }
         }
-
-        // public void Step(float deltaSeconds)
-        // {
-        //     StepProcessTurn(deltaSeconds);
-
-        //     // var accelerationKnotsCapPer2Min = shipClass.speedIncreaseRecord.Where(r => speedKnots >= r.thresholdSpeedKnots).Select(r => r.increaseSpeedKnots).Min();
-        //     // var accelerationKnotsCapPerSec = accelerationKnotsCapPer2Min / 120;
-        //     // var decelerationKnotsCapPer2Min = shipClass.speedKnots * (assistedDeceleration ? 0.6f : 0.2f);
-        //     // var decelerationKnotsCapPerSec = decelerationKnotsCapPer2Min / 120f;
-
-        //     StepProcessControl();
-
-        //     StepProcessSpeed(deltaSeconds);
-
-        //     StepTryMoveToNewPosition(deltaSeconds);
-
-        //     StepSubObjects(deltaSeconds);
-        // }
 
         public float EvaluateArmorScore()
         {
@@ -837,8 +867,9 @@ namespace NavalCombatCore
 
         public int GetDamageTier()
         {
-            var maxDamagePoint = shipClass.damagePoint;
-            return (int)Math.Floor((damagePoint / maxDamagePoint) * 10);
+            // var maxDamagePoint = shipClass.damagePoint;
+            // return (int)Math.Floor((damagePoint / maxDamagePoint) * 10);
+            return RuleChart.GetDamageTier(damagePoint / Math.Max(1, shipClass.damagePoint));
         }
 
         public float EvaluateBowFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 0);

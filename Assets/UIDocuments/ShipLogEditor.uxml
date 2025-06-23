@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="DoctrineEditor" src="project://database/Assets/UIDocuments/DoctrineEditor.uxml?fileID=9197481963319205126&amp;guid=9963f3ab57e9cd545869989ed4b99a3d&amp;type=3#DoctrineEditor" />
     <ui:Template name="SubStateMultiColumnListView" src="project://database/Assets/UIDocuments/SubStateMultiColumnListView.uxml?fileID=9197481963319205126&amp;guid=24ad9cde11c482e408a031471b51bca7&amp;type=3#SubStateMultiColumnListView" />
+    <ui:Template name="DoctrineEditor" src="project://database/Assets/UIDocuments/DoctrineEditor.uxml?fileID=9197481963319205126&amp;guid=9963f3ab57e9cd545869989ed4b99a3d&amp;type=3#DoctrineEditor" />
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement name="VisualElement" data-source-type="GameManager, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Ship Logs" class="title" />
@@ -57,6 +57,11 @@
                                                     <ui:DataBinding property="value" data-source-path="desiredSpeedKnots" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:FloatField>
+                                            <ui:FloatField label="Eff Max Speed" enabled="false">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="maxSpeedKnotsProp" binding-mode="ToTarget" />
+                                                </Bindings>
+                                            </ui:FloatField>
                                             <ui:FloatField label="Heading (deg)">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="headingDeg" binding-mode="TwoWay" />
@@ -82,6 +87,11 @@
                                                     <ui:DataBinding property="value" data-source-path="desiredSpeedKnotsForBoilerRoom" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:FloatField>
+                                            <ui:Toggle label="Evasive Maneuver">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="isEvasiveManeuvering" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:Toggle>
                                             <ui:VisualElement style="flex-grow: 1; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                                                 <ui:EnumField label="Control Mode" value="Center" type="NavalCombatCore.ControlMode, Assembly-CSharp">
                                                     <Bindings>
@@ -143,12 +153,18 @@
                                                     <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="TwoWay" />
                                                 </Bindings>
                                             </ui:FloatField>
-                                            <ui:ProgressBar title="DP Progress">
+                                            <ui:ProgressBar>
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="ToTarget" />
                                                     <ui:DataBinding property="highValue" data-source-path="shipClassProperty.damagePoint" binding-mode="ToTarget" />
+                                                    <ui:DataBinding property="title" data-source-path="damagePointProgrssDesc" binding-mode="ToTarget" />
                                                 </Bindings>
                                             </ui:ProgressBar>
+                                            <ui:FloatField label="Damage Point (Pending)">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="pendingDamagePoint" binding-mode="TwoWay" />
+                                                </Bindings>
+                                            </ui:FloatField>
                                             <ui:FloatField label="Max Speed Offset">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="dynamicStatus.maxSpeedKnotsOffset" binding-mode="TwoWay" />

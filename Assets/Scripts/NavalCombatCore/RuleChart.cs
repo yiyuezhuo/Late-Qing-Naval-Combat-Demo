@@ -3,6 +3,7 @@ using MathNet.Numerics.Distributions;
 using System.Linq;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Acornima.Ast;
 
 
 namespace NavalCombatCore
@@ -330,7 +331,7 @@ namespace NavalCombatCore
             var row = shellDamageFactorsTable.rows.Select((value, index) => (value, index)).Last(r => damageFactor >= r.value);
             var damagePoint = 0f;
             // var causeDamageEffect = false;
-            double damageEffectProb=0;
+            double damageEffectProb = 0;
             switch (hitPenDetType)
             {
                 case HitPenDetType.PenetrateWithDetonate:
@@ -353,7 +354,8 @@ namespace NavalCombatCore
                     break;
             }
 
-            return new() {
+            return new()
+            {
                 damagePoint = damagePoint,
                 // causeDamageEffect = causeDamageEffect,
                 damageEffectProb = (float)damageEffectProb
@@ -459,13 +461,13 @@ namespace NavalCombatCore
             {100, +10}
         };
 
-        public static float ResolveFightingShipBoardFires(float severity, bool damageControlApplied)
+        public static float ResolveFightingShipBoardFiresDelta(float severity, bool damageControlApplied)
         {
             var d100 = RandomUtils.D100F();
             if (damageControlApplied && d100 < 5)
                 return 0;
             var table = damageControlApplied ? fightingShipboardFireTableDamageControlApplied : fightingShipboardFireTableNoDamageControlApplied;
-            var r = Enumerable.Range(0, table.GetLength(0)).First(r => severity <= table[r, 0]);
+            var r = Enumerable.Range(0, table.GetLength(0)).Last(r => d100 <= table[r, 0]);
             return table[r, 1];
         }
 
@@ -550,6 +552,54 @@ namespace NavalCombatCore
             var colIdx = Math.Min((int)cause, damageDeterminationTableWarships1880to1905.cols.Length - 1);
             var rowIdx = Categorical.Sample(damageDeterminationTableWarships1880to1905.rows);
             return damageDeterminationTableWarships1880to1905.cells[rowIdx, colIdx];
+        }
+
+        // public class DamageTierPercentProbRecord
+        // {
+        //     public float percent;
+        //     public float damagePointProb;
+        // }
+
+        public static float[,] damageTierPercentProbRecords = new float[,]
+        {
+            {0, 0.0f, 0.0f},
+            {1, 0.1f, 0.7f}, // Tier 1, cross to tier 1 from tier 0 will have 70% chance to get a general DE
+            {2, 0.2f, 0.8f},
+            {3, 0.3f, 0.75f},
+            {4, 0.4f, 0.85f},
+            {5, 0.5f, 0.8f},
+            {6, 0.59f, 0.9f},
+            {7, 0.68f, 0.85f},
+            {8, 0.77f, 0.95f},
+            {9, 0.86f, 0.9f},
+            {10, 0.95f, 1.0f},
+            {10, 1.01f, 1.0f}
+        };
+
+        public static int GetDamageTier(float p)
+        {
+            var t = damageTierPercentProbRecords;
+            var r = Enumerable.Range(0, t.GetLength(0)).Last(r => p >= t[r, 1]);
+            return (int)t[r, 0];
+        }
+
+        public static void ResolveCrossingDamageTierDamageEffects(float p1, float p2, out int damageEffectTier, out int damageEffectCount, out bool sinking)
+        {
+            var t = damageTierPercentProbRecords;
+            var r1 = Enumerable.Range(0, t.GetLength(0)).Last(r => p1 >= t[r, 1]);
+            var r2 = Enumerable.Range(0, t.GetLength(0)).Last(r => p2 >= t[r, 1]);
+            damageEffectTier = (int)t[r2, 0];
+
+            damageEffectCount = 0;
+            for (int r = r1 + r1; r <= r2; r++)
+            {
+                if (RandomUtils.D100F() <= t[r, 2])
+                {
+                    damageEffectCount++;
+                }
+            }
+
+            sinking = r2 - r1 >= 8;
         }
     }
 }

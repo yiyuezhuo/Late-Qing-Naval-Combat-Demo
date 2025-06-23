@@ -324,7 +324,8 @@ namespace NavalCombatCore
                             var damagePoint = RuleChart.RollRapidFireBatteryDamage(r.damageFactor);
                             log.damagePoint = damagePoint;
 
-                            tgt.damagePoint += damagePoint;
+                            // tgt.damagePoint += damagePoint;
+                            tgt.AddDamagePoint(damagePoint);
                         }
                     }
                 }

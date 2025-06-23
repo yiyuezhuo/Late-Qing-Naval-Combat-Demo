@@ -237,6 +237,12 @@ namespace NavalCombatCore
         [CreateProperty]
         public Doctrine doctrineProp => doctrine;
 
+        [CreateProperty]
+        public string damagePointProgrssDesc => $"DP Progress {(damagePoint / Math.Max(1, shipClass.damagePoint)).ToString("P1")} Damage Tier: {GetDamageTier()}";
+
+        [CreateProperty]
+        public float maxSpeedKnotsProp => GetMaxSpeedKnots();
+
         // IPortraitViewerObservable
         string IPortraitViewerObservable.GetPortraitTopCode() => shipClass.portraitTopCode;
         Country IPortraitViewerObservable.GetCountry() => shipClass.country;
@@ -434,5 +440,14 @@ namespace NavalCombatCore
     {
         [CreateProperty]
         public string description => Describe();
+
+        [CreateProperty]
+        public bool damageControllableProp => damageControllable;
+    }
+
+    public partial class UnitModule
+    {
+        [CreateProperty]
+        public List<SubState> subStatesDownward => GetSubStatesDownward().ToList();
     }
 }

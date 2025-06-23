@@ -10,7 +10,6 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System;
-using UnityEngine.Networking;
 using System.Collections;
 // using SunCalcNet;
 
@@ -242,7 +241,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     static Dictionary<KeyCode, float> simulationSecondsAdvanceMap = new()
     {
-        {KeyCode.Tilde, 1}, // 1s
+        {KeyCode.Tilde, 1}, // 1s, Note Tilde, BackQuote may be blocked by input method. So it's recommended to disable input method.
         {KeyCode.BackQuote, 1},
         {KeyCode.Alpha1, 60 * 1}, // 1 min
         {KeyCode.Alpha2, 60 * 2}, // 2 min
@@ -301,6 +300,22 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         UpdateLocationInfoLabel();
 
         // Handle Events
+
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            // Works on UI as well, debugging purpose.
+            if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.LeftShift))
+            {
+                // Alt + Shift + 1/2/3/...
+                foreach ((var keyCode, var advanceSimulationSeconds) in simulationSecondsAdvanceMap)
+                {
+                    if (Input.GetKeyDown(keyCode))
+                    {
+                        remainAdvanceSimulationSecondsRequestedByKeyPressing = advanceSimulationSeconds;
+                    }
+                }
+            }
+        }
 
         if (!EventSystem.current.IsPointerOverGameObject())
         {

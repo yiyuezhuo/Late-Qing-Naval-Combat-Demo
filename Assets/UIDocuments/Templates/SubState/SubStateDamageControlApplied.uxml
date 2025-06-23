@@ -2,6 +2,7 @@
     <ui:Toggle data-source-type="NavalCombatCore.SubState, Assembly-CSharp">
         <Bindings>
             <ui:DataBinding property="value" data-source-path="damageControlApplied" binding-mode="TwoWay" />
+            <ui:DataBinding property="enabledSelf" data-source-path="damageControllableProp" binding-mode="ToTarget" />
         </Bindings>
     </ui:Toggle>
 </ui:UXML>

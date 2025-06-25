@@ -489,6 +489,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     state = State.Idle;
                     ShipLogEditor.Instance.Show();
+                    // ShipLogEditor.Instance.SoftShow();
                     if (selectedMountStatusRecord != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
@@ -508,6 +509,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     state = State.Idle;
                     ShipLogEditor.Instance.Show();
+                    // ShipLogEditor.Instance.SoftShow();
                     if (selectedFireControlSystemStatusRecord != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();

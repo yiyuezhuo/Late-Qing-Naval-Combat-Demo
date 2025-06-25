@@ -84,7 +84,8 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
                     {
                         GameManager.Instance.selectedMountStatusRecordObjectId = mountStatus.objectId;
                         GameManager.Instance.state = GameManager.State.SelectingFiringTarget;
-                        Hide();
+                        // Hide();
+                        SoftHide();
                     }
                 };
 
@@ -128,7 +129,8 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
                     {
                         GameManager.Instance.selectedFireControlSystemStatusRecordObjectId = r.objectId;
                         GameManager.Instance.state = GameManager.State.SelectingFireControlSystemTarget;
-                        Hide();
+                        // Hide();
+                        SoftHide();
                     }
                 };
                 return el;

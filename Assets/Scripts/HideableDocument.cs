@@ -48,7 +48,12 @@ public class SingletonDocument<T> : SingletonMonoBehaviour<T> where T : MonoBeha
     {
         // root.style.display = DisplayStyle.Flex;
         // doc.enabled = false;
-        doc.enabled = true;
+        if(!doc.enabled)
+            doc.enabled = true;
+            
+        if (root.style.display != DisplayStyle.Flex)
+            root.style.display = DisplayStyle.Flex;
+
         enabled = false; // Hack to invoke OnEnable
         enabled = true;
         OnShow();
@@ -59,6 +64,17 @@ public class SingletonDocument<T> : SingletonMonoBehaviour<T> where T : MonoBeha
         // root.style.display = DisplayStyle.None;
         doc.enabled = false;
     }
+
+    public void SoftHide()
+    {
+        Hide();
+        // root.style.display = DisplayStyle.None;
+    }
+
+    // public void SoftShow()
+    // {
+    //     root.style.display = DisplayStyle.Flex;
+    // }
 }
 
 public class HideableDocument<T> : SingletonDocument<T> where T : MonoBehaviour

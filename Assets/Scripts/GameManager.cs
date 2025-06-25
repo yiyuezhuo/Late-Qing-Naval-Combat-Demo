@@ -282,7 +282,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
         }
 
-        var objectIdSet = viewerObservables.Select(obs => obs.objectId).ToHashSet(); 
+        var objectIdSet = viewerObservables.Select(obs => obs.objectId).ToHashSet();
 
         var shouldRemoved = objectId2Viewer.Where(kv => !objectIdSet.Contains(kv.Key)).ToList();
 
@@ -759,5 +759,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         get => EntityManager.Instance.Get<LaunchedTorpedo>(selectedLaunchedTorpedoObjectId);
     }
 
+
+    // public void ScheduleToSetSelectionForListView(ListView listView, int idx)
+    // {
+    //     StartCoroutine(SetSelectionForListView(listView, idx));
+    // }
 
 }

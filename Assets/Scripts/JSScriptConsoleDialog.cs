@@ -21,9 +21,10 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
 
     Engine engine;
 
-    protected override void Awake()
+    // protected override void Awake()
+    void OnEnable()
     {
-        base.Awake();
+        // base.Awake();
 
         var titleLabel = root.Q<Label>("TitleLabel"); // TODO: Add dragger
         var clearButton = root.Q<Button>("ClearButton");

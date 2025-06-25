@@ -1442,18 +1442,21 @@ namespace NavalCombatCore
                         {
                             var battery = RandomUtils.Sample(ctx.subject.batteryStatus);
                             var btyRec = battery.GetBatteryRecord();
-                            if(btyRec.fireControlRadarModifier > 0)
+                            if(btyRec != null)
                             {
-                                battery.fireControlRadarDisabled = true;
-                            }
-                            else
-                            {
-                                var DE = new FireControlValueModifier()
+                                if(btyRec.fireControlRadarModifier > 0)
                                 {
-                                    lifeCycle = StateLifeCycle.Permanent,
-                                    fireControlValueOffset = -1
-                                };
-                                DE.BeginAt(battery);
+                                    battery.fireControlRadarDisabled = true;
+                                }
+                                else
+                                {
+                                    var DE = new FireControlValueModifier()
+                                    {
+                                        lifeCycle = StateLifeCycle.Permanent,
+                                        fireControlValueOffset = -1
+                                    };
+                                    DE.BeginAt(battery);
+                                }
                             }
                         }
                     }

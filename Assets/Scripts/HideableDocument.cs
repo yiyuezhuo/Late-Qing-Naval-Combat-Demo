@@ -31,12 +31,12 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 public class SingletonDocument<T> : SingletonMonoBehaviour<T> where T : MonoBehaviour
 {
     protected UIDocument doc;
-    protected VisualElement root;
+    protected VisualElement root => doc.rootVisualElement;
 
     protected virtual void Awake()
     {
         doc = GetComponent<UIDocument>();
-        root = doc.rootVisualElement;
+        // root = doc.rootVisualElement;
     }
 
     public virtual void OnShow()
@@ -46,10 +46,19 @@ public class SingletonDocument<T> : SingletonMonoBehaviour<T> where T : MonoBeha
 
     public void Show()
     {
+        // root.style.display = DisplayStyle.Flex;
+        // doc.enabled = false;
+        doc.enabled = true;
+        enabled = false; // Hack to invoke OnEnable
+        enabled = true;
         OnShow();
-        root.style.display = DisplayStyle.Flex;
     }
-    public void Hide() => root.style.display = DisplayStyle.None;
+    // public void Hide() => root.style.display = DisplayStyle.None;
+    public void Hide()
+    {
+        // root.style.display = DisplayStyle.None;
+        doc.enabled = false;
+    }
 }
 
 public class HideableDocument<T> : SingletonDocument<T> where T : MonoBehaviour
@@ -57,6 +66,16 @@ public class HideableDocument<T> : SingletonDocument<T> where T : MonoBehaviour
     protected override void Awake()
     {
         base.Awake();
+        // Hide();
+    }
+
+    // void OnDisable()
+    // {
+    //     Debug.LogWarning($"OnDisable {GetType()}");
+    // }
+
+    void Start()
+    {
         Hide();
     }
 }

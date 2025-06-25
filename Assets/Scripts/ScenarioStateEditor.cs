@@ -164,9 +164,10 @@ namespace NavalCombatCore
 
 public class ScenarioStateEditor : HideableDocument<ScenarioStateEditor>
 {
-    protected override void Awake()
+    // protected override void Awake()
+    void OnEnable()
     {
-        base.Awake();
+        // base.Awake();
 
         root.dataSource = GameManager.Instance;
 

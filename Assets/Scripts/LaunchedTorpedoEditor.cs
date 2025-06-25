@@ -14,9 +14,10 @@ using System;
 public class LaunchedTorpedoEditor : HideableDocument<LaunchedTorpedoEditor>
 {
 
-    protected override void Awake()
+    // protected override void Awake()
+    void OnEnable()
     {
-        base.Awake();
+        // base.Awake();
 
         root.dataSource = GameManager.Instance;
 

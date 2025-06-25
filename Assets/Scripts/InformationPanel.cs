@@ -22,7 +22,7 @@ public class InformationPanel : SingletonDocument<InformationPanel>
                 if(leader != null && idx != -1)
                 {
                     LeaderEditor.Instance.Show();
-                    LeaderEditor.Instance.leadersListView.SetSelection(idx);
+                    StartCoroutine(Utils.SetSelectionForListView(LeaderEditor.Instance.leadersListView, idx));
                 }
             }}
         });
@@ -33,12 +33,6 @@ public class InformationPanel : SingletonDocument<InformationPanel>
             {"namedShip", () => {
                 var shipLog = GameManager.Instance.selectedShipLog;
                 ShipLogEditor.Instance.PopupWithSelection(shipLog);
-                // var idx = NavalGameState.Instance.shipLogs.IndexOf(shipLog);
-                // if(shipLog != null && idx != -1)
-                // {
-                //     ShipLogEditor.Instance.Show();
-                //     ShipLogEditor.Instance.shipLogListView.SetSelection(idx);
-                // }
             } }
         });
 
@@ -51,7 +45,8 @@ public class InformationPanel : SingletonDocument<InformationPanel>
                 if(shipClass != null && idx != -1)
                 {
                     ShipClassEditor.Instance.Show();
-                    ShipClassEditor.Instance.shipClassListView.SetSelection(idx);
+                    // ShipClassEditor.Instance.shipClassListView.SetSelection(idx);
+                    StartCoroutine(Utils.SetSelectionForListView(ShipClassEditor.Instance.shipClassListView, idx));
                 }
             } }
         });

@@ -4,6 +4,7 @@ using GeographicLib;
 using TMPro;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
+using System.Collections;
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
@@ -18,9 +19,12 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
     public VisualTreeAsset shipClassSelectorDialogDocument;
     public ListView shipLogListView;
 
-    protected override void Awake()
+    // protected override void Awake()
+    void OnEnable()
     {
-        base.Awake();
+        // base.Awake();
+
+        // Debug.LogWarning("ShipLogEditor OnEnable");
 
         // var sortingOrder = doc.sortingOrder;
         // Debug.Log($"ShipLogEditor sortingOrder={sortingOrder}");
@@ -262,7 +266,10 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             {
                 Hide();
                 NamedShipEditor.Instance.Show();
-                NamedShipEditor.Instance.namedShipListView.SetSelection(idx);
+                // NamedShipEditor.Instance.namedShipListView.Rebuild();
+                // Data binding will be effective in the next frame, so we need to call the selection in the next frame.
+                // StartCoroutine(SetSelectionForNamedShipListView(idx));
+                StartCoroutine(Utils.SetSelectionForListView(NamedShipEditor.Instance.namedShipListView, idx));
             }
         };
 
@@ -289,6 +296,13 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
 
     }
 
+    // IEnumerator SetSelectionForNamedShipListView(int idx)
+    // {
+    //     // yield return new WaitForNextFrameUnit();
+    //     yield return null;
+    //     NamedShipEditor.Instance.namedShipListView.SetSelection(idx);
+    // }
+
     void OnShipLogsXmlLoaded(object sender, string text)
     {
         IOManager.Instance.textLoaded -= OnShipLogsXmlLoaded;
@@ -301,10 +315,11 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
     public void PopupWithSelection(ShipLog shipLog)
     {
         var idx = NavalGameState.Instance.shipLogs.IndexOf(shipLog);
-        if(shipLog != null && idx != -1)
+        if (shipLog != null && idx != -1)
         {
             Show();
-            shipLogListView.SetSelection(idx);
+            // shipLogListView.SetSelection(idx);
+            StartCoroutine(Utils.SetSelectionForListView(shipLogListView, idx));
         }
     }
 }

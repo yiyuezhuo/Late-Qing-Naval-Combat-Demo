@@ -30,9 +30,10 @@ public class OOBEditor : HideableDocument<OOBEditor>
     }
     public State state = State.Idle;
 
-    protected override void Awake()
+    // protected override void Awake()
+    void OnEnable()
     {
-        base.Awake();
+        // base.Awake();
 
         NavalGameState.Instance.shipGroupsChanged -= OnShipGroupsChanged;
         NavalGameState.Instance.shipGroupsChanged += OnShipGroupsChanged;

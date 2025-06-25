@@ -218,4 +218,13 @@ public static class Utils
             return ret;
         };
     }
+
+    public static IEnumerator SetSelectionForListView(ListView listView, int idx)
+    {
+        // yield return new WaitForNextFrameUnit();
+        yield return null;
+        listView.SetSelection(idx);
+        listView.ScrollToItem(idx);
+    }
+
 }

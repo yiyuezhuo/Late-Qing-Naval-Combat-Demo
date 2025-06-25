@@ -582,7 +582,8 @@ namespace NavalCombatCore
             var r = Enumerable.Range(0, t.GetLength(0)).Last(r => p >= t[r, 1]);
             return (int)t[r, 0];
         }
-
+        
+        // Crossing Tier Damage Effects, "instant sunk" and morale checks  
         public static void ResolveCrossingDamageTierDamageEffects(float p1, float p2, out int damageEffectTier, out int damageEffectCount, out bool sinking)
         {
             var t = damageTierPercentProbRecords;

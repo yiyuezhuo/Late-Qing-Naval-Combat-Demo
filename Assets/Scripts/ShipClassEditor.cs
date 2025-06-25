@@ -14,9 +14,10 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
     public ListView shipClassListView;
     ListView batteryRecordsListView;
 
-    protected override void Awake()
+    // protected override void Awake()
+    void OnEnable()
     {
-        base.Awake();
+        // base.Awake();
 
         // Always not work as expected for some reason
         // var sortingOrder = doc.sortingOrder;

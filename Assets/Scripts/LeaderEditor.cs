@@ -14,9 +14,10 @@ public class LeaderEditor : HideableDocument<LeaderEditor>
     public ListView leadersListView;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    protected override void Awake()
+    // protected override void Awake()\
+    void OnEnable()
     {
-        base.Awake();
+        // base.Awake();
 
         root.dataSource = GameManager.Instance;
 

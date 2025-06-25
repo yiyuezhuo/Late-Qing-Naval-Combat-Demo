@@ -11,14 +11,16 @@ using System.Linq;
 using Unity.Properties;
 using System.Threading.Tasks;
 using System;
+using System.Collections;
 
 public class NamedShipEditor : HideableDocument<NamedShipEditor>
 {
     public ListView namedShipListView;
 
-    protected override void Awake()
+    // protected override void Awake()
+    void OnEnable()
     {
-        base.Awake();
+        // base.Awake();
 
         // var sortingOrder = doc.sortingOrder;
         // Debug.Log($"NamedShipEditor sortingOrder={sortingOrder}");
@@ -73,7 +75,8 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
             {
                 Hide();
                 ShipClassEditor.Instance.Show();
-                ShipClassEditor.Instance.shipClassListView.SetSelection(idx);
+                // ShipClassEditor.Instance.shipClassListView.SetSelection(idx);
+                StartCoroutine(Utils.SetSelectionForListView(ShipClassEditor.Instance.shipClassListView, idx));
             }
         };
 
@@ -89,10 +92,17 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
             {
                 Hide();
                 LeaderEditor.Instance.Show();
-                LeaderEditor.Instance.leadersListView.SetSelection(idx);
+                // LeaderEditor.Instance.leadersListView.SetSelection(idx);
+                StartCoroutine(Utils.SetSelectionForListView(LeaderEditor.Instance.leadersListView, idx));
             }
         };
     }
+
+    // IEnumerator SetSelectionForNamedShipListView(int idx)
+    // {
+    //     yield return new WaitForNextFrameUnit();
+    //     NamedShipEditor.Instance.namedShipListView.SetSelection(idx);
+    // }
 
     void OnNamedShipsXMLLoaded(object sender, string text)
     {

@@ -204,7 +204,7 @@ namespace NavalCombatCore
         [XmlAttribute]
         public string damageEffectId;
 
-        public override string Summary() => $"Bty Hit: {time}: {armorLocation} {hitPenDetType} DP:{damagePoint} DE:{damageEffectId}";
+        public override string Summary() => $"{time}: Bty Hit: {armorLocation} {hitPenDetType} DP:{damagePoint} DE:{damageEffectId}";
     }
 
     public class ShipLogRapidFiringGunHitLog : ShipLogLog
@@ -212,7 +212,7 @@ namespace NavalCombatCore
         [XmlAttribute]
         public float damagePoint;
 
-        public override string Summary() => $"RF Hit: {time}: DP: {damagePoint}";
+        public override string Summary() => $"{time}: RF Hit: DP: {damagePoint}";
     }
 
     public class ShipLogTorpedoHitLog : ShipLogLog
@@ -228,7 +228,7 @@ namespace NavalCombatCore
         [XmlAttribute]
         public string damageEffectId;
 
-        public override string Summary() => $"Torpedo Hit: {time}: {GetTorpedo().sourceName} DP:{damagePoint} DE:{damageEffectId}";
+        public override string Summary() => $"{time}: Torpedo Hit: {GetTorpedo().sourceName} DP:{damagePoint} DE:{damageEffectId}";
     }
 
     // public class ShipLogDamageEffectBegin : ShipLogLog
@@ -705,7 +705,7 @@ namespace NavalCombatCore
             }
             else
             {
-                var decelerationKnotsCapPer2Min = maxSpeedKnots * (assistedDeceleration ? 0.6f : 0.2f);
+                var decelerationKnotsCapPer2Min = shipClass.speedKnots * (assistedDeceleration ? 0.6f : 0.2f);
                 var decelerationKnotsCapPerSec = decelerationKnotsCapPer2Min / 120f;
 
                 var decelerationKnotsCapThisPulse = decelerationKnotsCapPerSec * deltaSeconds;
@@ -842,7 +842,7 @@ namespace NavalCombatCore
 
             // Damage Resolution
 
-            // Step current DE and broadcast to sub-objects.
+            // Step DE attached to this object and broadcast to sub-objects.
             base.StepDamageResolution(deltaSeconds);
 
             // Damage Effects from Crossing Damage Tier (possibly sinking caused)

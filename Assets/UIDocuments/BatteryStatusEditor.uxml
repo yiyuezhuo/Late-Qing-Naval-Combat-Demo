@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
-    <ui:VisualElement data-source-type="NavalCombatCore.BatteryStatus, Assembly-CSharp" style="flex-grow: 1;">
+    <ui:VisualElement data-source-type="NavalCombatCore.BatteryStatus, Assembly-CSharp" style="flex-grow: 1; flex-shrink: 0;">
         <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
             <ui:Label text="battery record&apos;s merged name">
                 <Bindings>
@@ -50,7 +50,7 @@
                     </ui:IntegerField>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:MultiColumnListView name="MountStatusMultiColumnListView" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" data-source-path="mountStatus">
+            <ui:MultiColumnListView name="MountStatusMultiColumnListView" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" data-source-path="mountStatus" style="flex-shrink: 0;">
                 <ui:Columns>
                     <ui:Column name="mountLocationRecordSummary" title="Info" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellMountLocationRecordSummary.uxml?fileID=9197481963319205126&amp;guid=a9d6744fd962fc3499fe76d34f17fbdc&amp;type=3#MountStatusCellMountLocationRecordSummary" />
                     <ui:Column width="5%" title="B" cell-template="project://database/Assets/UIDocuments/Templates/AbstractMountStatus/AbstractMountStatusCellBarrels.uxml?fileID=9197481963319205126&amp;guid=005db7aa940754d469ff7e3345372567&amp;type=3#AbstractMountStatusCellBarrels" />
@@ -61,7 +61,7 @@
                     <ui:Column title="Detail" width="10%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellDetailButton.uxml?fileID=9197481963319205126&amp;guid=24dbe90633e0855488d1fe10d1d10add&amp;type=3#MountStatusCellDetailButton" name="detail" />
                 </ui:Columns>
             </ui:MultiColumnListView>
-            <ui:MultiColumnListView name="FireControlSystemMultiColumnListView" binding-source-selection-mode="AutoAssign" data-source-path="fireControlSystemStatusRecords" show-add-remove-footer="true">
+            <ui:MultiColumnListView name="FireControlSystemMultiColumnListView" binding-source-selection-mode="AutoAssign" data-source-path="fireControlSystemStatusRecords" show-add-remove-footer="true" style="flex-shrink: 0;">
                 <ui:Columns>
                     <ui:Column title="Info" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordInfo.uxml?fileID=9197481963319205126&amp;guid=69901079725c8bb4891fc5e99a273588&amp;type=3#FireControlSystemStatusRecordInfo" width="20%" />
                     <ui:Column title="State" width="25%" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordTrackingState.uxml?fileID=9197481963319205126&amp;guid=8054ea02c4bd2af4f864b76234e2059c&amp;type=3#FireControlSystemStatusRecordTrackingState" />

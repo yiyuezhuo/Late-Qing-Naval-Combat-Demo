@@ -227,4 +227,9 @@ public static class Utils
         listView.ScrollToItem(idx);
     }
 
+    // public static void Test()
+    // {
+    //     Debug.unityLogger.
+    // }
+
 }

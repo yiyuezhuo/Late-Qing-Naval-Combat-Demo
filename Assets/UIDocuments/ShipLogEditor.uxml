@@ -249,8 +249,8 @@
                             </ui:Tab>
                             <ui:Tab label="Battery">
                                 <ui:ScrollView>
-                                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                        <ui:ListView binding-source-selection-mode="AutoAssign" header-title="Battery Status" show-add-remove-footer="true" show-foldout-header="true" name="BatteryStatusListView" item-template="project://database/Assets/UIDocuments/BatteryStatusEditor.uxml?fileID=9197481963319205126&amp;guid=a7e04f44f7a7c42429e749f2381c0861&amp;type=3#BatteryStatusEditor" virtualization-method="DynamicHeight" data-source-path="batteryStatus" style="flex-grow: 1;" />
+                                    <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
+                                        <ui:ListView binding-source-selection-mode="AutoAssign" header-title="Battery Status" show-add-remove-footer="true" show-foldout-header="true" name="BatteryStatusListView" item-template="project://database/Assets/UIDocuments/BatteryStatusEditor.uxml?fileID=9197481963319205126&amp;guid=a7e04f44f7a7c42429e749f2381c0861&amp;type=3#BatteryStatusEditor" virtualization-method="DynamicHeight" data-source-path="batteryStatus" style="flex-shrink: 0; flex-grow: 1;" />
                                     </ui:VisualElement>
                                 </ui:ScrollView>
                             </ui:Tab>

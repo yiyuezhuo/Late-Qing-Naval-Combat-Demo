@@ -67,8 +67,8 @@ public class SingletonDocument<T> : SingletonMonoBehaviour<T> where T : MonoBeha
 
     public void SoftHide()
     {
-        Hide();
-        // root.style.display = DisplayStyle.None;
+        // Hide();
+        root.style.display = DisplayStyle.None;
     }
 
     // public void SoftShow()

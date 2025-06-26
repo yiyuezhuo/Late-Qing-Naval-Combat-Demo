@@ -479,7 +479,7 @@ namespace NavalCombatCore
             {70, 30},
             {80, 35},
             {90, 40},
-            {100, 50}
+            {float.MaxValue, 50}
         };
 
         public static bool ResolveShipboardFireDamageEffect(float severity)

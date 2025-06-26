@@ -279,6 +279,46 @@ namespace NavalCombatCore
             return p;
         }
 
+        public void ProcessZeroSpeedFormationAdjustment()
+        {
+            var immobilizedShipLogs = shipLogs.Where(shipLog => shipLog.mapState != MapState.Deployed || shipLog.GetMaxSpeedKnots() <= 4).ToHashSet(); // `<= 4` => cannot to turn => impossible to main formation
+
+            // var targetToChildrens = shipLogsOnMap.Where(shipLog => shipLog.controlMode != ControlMode.Independent).GroupBy(shipLog => shipLog.controlMode == ControlMode.FollowTarget ? shipLog.followedTarget : shipLog.relativeToTarget).ToList();
+            var immoblizedShipLogToChildrens = immobilizedShipLogs.ToDictionary(x => x, x => new List<ShipLog>());
+            foreach (var shipLog in shipLogsOnMap)
+            {
+                var (controlMode, controlTarget) = shipLog.GetControlModeAndTargetInlucdeNonMap();
+                if (controlTarget != null && immobilizedShipLogs.Contains(controlTarget))
+                {
+                    immoblizedShipLogToChildrens[controlTarget].Add(shipLog);
+                }
+            }
+
+            foreach (var immobilizedShipLog in immobilizedShipLogs)
+            {
+                var children = immoblizedShipLogToChildrens[immobilizedShipLog];
+                if (children.Count > 0)
+                {
+                    var newAnchor = children[0];
+
+                    newAnchor.controlMode = immobilizedShipLog.controlMode;
+                    newAnchor.followDistanceYards = immobilizedShipLog.followDistanceYards;
+                    newAnchor.followedTargetObjectId = immobilizedShipLog.followedTargetObjectId;
+                    newAnchor.relativeToTargetDistanceYards = immobilizedShipLog.relativeToTargetDistanceYards;
+                    newAnchor.relativeTargetObjectId = immobilizedShipLog.relativeTargetObjectId;
+
+                    foreach (var otherChild in children.Skip(1))
+                    {
+                        otherChild.followedTargetObjectId = newAnchor.followedTargetObjectId;
+                        otherChild.relativeTargetObjectId = newAnchor.relativeTargetObjectId;
+                    }
+                }
+
+                if(immobilizedShipLog.mapState == MapState.Deployed)
+                    immobilizedShipLog.controlMode = ControlMode.Independent; // Auto Detach
+            }
+        }
+
         public void Step(float deltaSeconds)
         {
             doingStep = true;
@@ -303,7 +343,10 @@ namespace NavalCombatCore
                 }
             }
 
-            // advance
+            // Reset Formation - zero speed is detached automatically, "children" reset their targets according to detached unit's previous command.
+            ProcessZeroSpeedFormationAdjustment();
+
+            // Advance
             scenarioState.Step(deltaSeconds);
 
             foreach (var shipLog in shipLogsOnMap)

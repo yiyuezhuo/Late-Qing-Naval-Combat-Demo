@@ -2316,6 +2316,7 @@ namespace NavalCombatCore
                     if(damageTier >= 8)
                     {
                         ctx.subject.mapState = MapState.Destroyed; // capsize
+                        AddDescription(ctx, "Sunk due to capsize");
                     }
                     else if(damageTier >= 4)
                     {

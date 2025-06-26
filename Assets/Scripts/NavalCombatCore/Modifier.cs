@@ -466,6 +466,7 @@ namespace NavalCombatCore
             if (shipLog != null)
             {
                 shipLog.mapState = MapState.Destroyed; // Sunk
+                shipLog.AddStringLog("Sunk due to sinking process finished");
             }
         }
         public override string Describe() => $"Sunk When DE ended: {DescribeLiftCycle()}";
@@ -1334,6 +1335,7 @@ namespace NavalCombatCore
                 if (subject is ShipLog shipLog)
                 {
                     shipLog.mapState = MapState.Destroyed;
+                    shipLog.AddStringLog("Sunk due to settle's sinking roll");
                 }
             }
             if (d100 <= maxSpeedUpperLimitAppliedThreshold)

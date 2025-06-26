@@ -348,6 +348,14 @@ namespace NavalCombatCore
                 return ControlMode.RelativeToTarget;
             return ControlMode.Independent;
         }
+        public (ControlMode, ShipLog) GetControlModeAndTargetInlucdeNonMap()
+        {
+            if (controlMode == ControlMode.FollowTarget)
+                return (ControlMode.FollowTarget, EntityManager.Instance.Get<ShipLog>(followedTargetObjectId));
+            if (controlMode == ControlMode.RelativeToTarget)
+                return (ControlMode.RelativeToTarget, EntityManager.Instance.Get<ShipLog>(relativeTargetObjectId));
+            return (ControlMode.Independent, null);
+        }
 
         public float relativeToTargetDistanceYards = 250;
         public float relativeToTargetAzimuth = 135; // right-after position

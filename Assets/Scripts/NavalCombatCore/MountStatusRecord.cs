@@ -472,7 +472,7 @@ namespace NavalCombatCore
                     m => m.GetFireControlValueOffset(ctx.mountLocationRecord.mountLocation, stats.observerToTargetBearingRelativeToBowDeg)
                 ).DefaultIfEmpty(0).Min();
 
-                var fireCOntrolValueModifierCoef = fireControlValueModifiers.Select(m => m.GetFireControlValueCoef()).DefaultIfEmpty(0).Min();
+                var fireCOntrolValueModifierCoef = fireControlValueModifiers.Select(m => m.GetFireControlValueCoef()).DefaultIfEmpty(1).Min();
                 fireControlScoreRaw = Math.Max((fireControlScoreRaw + fireControlValueModifierOffset) * fireCOntrolValueModifierCoef, 0);
 
 

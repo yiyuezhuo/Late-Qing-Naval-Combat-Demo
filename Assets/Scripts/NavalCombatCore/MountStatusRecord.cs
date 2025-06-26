@@ -152,6 +152,7 @@ namespace NavalCombatCore
             return target;
         }
 
+
         public class MountLocationRecordInfo
         {
             public int recordIndex;
@@ -201,6 +202,20 @@ namespace NavalCombatCore
         //     yield break;
         // }
 
+        public MountStatus GetModifiedStatus()
+        {
+            var s = status;
+            foreach (var ms in GetSubStates<ITorpedoMountStatusModifier>().Select(m => m.GetTorpedoMountStatus()))
+            {
+                s = DamageEffectChart.MaxEnum(s, ms);
+            }
+            return s;
+        }
+
+        public bool IsOperational()
+        {
+            return GetModifiedStatus() == MountStatus.Operational;
+        }
 
         public MountLocationRecordInfo GetTorpedoMountLocationRecordInfo()
         {
@@ -335,6 +350,21 @@ namespace NavalCombatCore
         //     yield break;
         // }
 
+        public MountStatus GetModifiedStatus()
+        {
+            var s = status;
+            foreach (var ms in GetSubStates<IBatteryMountStatusModifier>().Select(m => m.GetBatteryMountStatus()))
+            {
+                s = DamageEffectChart.MaxEnum(s, ms);
+            }
+            return s;
+        }
+
+        public bool IsOperational()
+        {
+            return GetModifiedStatus() == MountStatus.Operational;
+        }
+
         public string DescribeDetail()
         {
             var ctx = GetFullContext();
@@ -347,6 +377,7 @@ namespace NavalCombatCore
 
             // return $"{ctx.shipLog.namedShip?.name.GetMergedName()}";
         }
+
 
         public void Step(float deltaSeconds)
         {
@@ -385,46 +416,29 @@ namespace NavalCombatCore
                 if (!(
                         ctx.batteryStatus.ammunition.GetValue(ammunitionType) >= 0 ||
                         (ammoFallbackable && ctx.batteryStatus.ammunition.GetTotalValue() <= 0)
-                    )) // Later will require re-check
+                    )) // Re-check will be required in the following code
                     return;
 
                 var shooter = ctx.shipLog;
 
                 var isFireChecked = fireCtx.shipLogSupplementaryMap[tgt].batteriesFiredAtMe.Contains(ctx.batteryStatus);
-                if (!isFireChecked) // include range / arc / Doctrine check (though ammo should be checked dynamiclly since this loop will update ammo state)
+                if (!isFireChecked) // Include range / arc / Doctrine check (though ammo should be checked dynamiclly since this loop will update ammo state)
                     return;
                 var shooterTargetSup = fireCtx.GetOrCalcualteShipLogPairSupplementary(shooter, tgt);
                 var stats = shooterTargetSup.stats;
-
-
-                // var stats = MeasureStats.MeasureApproximation(shooter, tgt); // TODO: Deduplicate redundant geo calculation, cache in the pulse level cache?
-                // var isInArc = ctx.mountLocationRecord.IsInArc(stats.observerToTargetBearingRelativeToBowDeg);
-                // var isInRange = stats.distanceYards <= ctx.batteryRecord.rangeYards;
-                // if (!isInRange || !isInArc)
-                //     return;
 
                 var penRecord = ctx.batteryRecord.penetrationTableRecords.FirstOrDefault(r => stats.distanceYards <= r.distanceYards);
                 if (penRecord == null)
                     return;
 
-                var shootsPer2Min = penRecord.rateOfFire;
+                // Rate of Fire Resolution
+
+                var shootsPer2MinBase = penRecord.rateOfFire;
+                var shootsPer2Min = shootsPer2MinBase * GetSubStates<IRateOfFireModifier>().Select(m => m.GetRateOfFireCoef()).DefaultIfEmpty(1).Min();
+
                 if (shootsPer2Min == 0)
                     return;
                 var secondsPerShoot = 120 / shootsPer2Min;
-
-                // if (processSeconds < secondsPerShoot) // Later will require re-check
-                //     return;
-
-                var fireControlRow = ctx.batteryRecord.fireControlTableRecords.FirstOrDefault(r => tgt.speedKnots <= r.speedThresholdKnot);
-                if (fireControlRow == null)
-                    return;
-
-                var fireControlScoreRaw = fireControlRow.GetValue(penRecord.rangeBand, stats.targetPresentAspectFromObserver);
-                if (stats.distanceYards <= 4500)
-                {
-                    var closeRangeFireControlScore = RuleChart.GetCloseRangeFireControlScore(stats.distanceYards, tgt.speedKnots, stats.targetPresentAspectFromObserver);
-                    fireControlScoreRaw = Math.Max(fireControlScoreRaw, closeRangeFireControlScore);
-                }
 
                 var maskCheckResult = shooterTargetSup.GetOrCalcualteMaskCheckResult();
                 if (maskCheckResult.isMasked)
@@ -432,10 +446,38 @@ namespace NavalCombatCore
                     secondsPerShoot *= 2; // ROF / 2 if masked
                 }
 
+                // Fire Control Value Resolution
+
+                var fireControlRow = ctx.batteryRecord.fireControlTableRecords.FirstOrDefault(r => tgt.speedKnots <= r.speedThresholdKnot);
+                if (fireControlRow == null)
+                    return;
+
+                var fireControlScoreRaw = fireControlRow.GetValue(penRecord.rangeBand, stats.targetPresentAspectFromObserver);
+
+                // Positive Modifier
+
+                if (stats.distanceYards <= 4500)
+                {
+                    var closeRangeFireControlScore = RuleChart.GetCloseRangeFireControlScore(stats.distanceYards, tgt.speedKnots, stats.targetPresentAspectFromObserver);
+                    fireControlScoreRaw = Math.Max(fireControlScoreRaw, closeRangeFireControlScore);
+                }
+
+                // Negative Modifiers
+
+                var fireControlValueModifiers = GetSubStates<IFireControlValueModifier>().ToList();
+                var fireControlValueModifierOffset = fireControlValueModifiers.Select(m => m.GetFireControlValueOffset()).Sum();
+
+                // var mountLocation = ctx.mountLocationRecord.mountLocation;
+                fireControlValueModifierOffset += GetSubStates<ILocalizedDirectionalFireControlValueModifier>().Select(
+                    m => m.GetFireControlValueOffset(ctx.mountLocationRecord.mountLocation, stats.observerToTargetBearingRelativeToBowDeg)
+                ).DefaultIfEmpty(0).Min();
+
+                var fireCOntrolValueModifierCoef = fireControlValueModifiers.Select(m => m.GetFireControlValueCoef()).DefaultIfEmpty(0).Min();
+                fireControlScoreRaw = Math.Max((fireControlScoreRaw + fireControlValueModifierOffset) * fireCOntrolValueModifierCoef, 0);
+
+
                 var targetSup = fireCtx.shipLogSupplementaryMap[tgt];
                 var firedAtTargetBatteriesCount = targetSup.batteriesFiredAtMe.Count; // over-concentration
-
-                // TODO: Stack other buffer
 
                 // skip to log ammo consumption and firing "result"
                 while (processSeconds >= secondsPerShoot &&
@@ -498,14 +540,55 @@ namespace NavalCombatCore
                     // Target obscured by battle smoke: -1
                     // Target obscured by funnel smokescreen: -3
 
-                    // TODO: Evasive Action / Emergency Turn
+                    // Evasive Action / Emergency Turn
                     // Target only in EA: -3
-                    // Target ship only in EA: -2
+                    // Firing ship only in EA: -2
                     // Target and firing ships in EA: -8
 
-                    // TODO: Target Acquisition
+                    var firingShipEA = ctx.shipLog.IsEvasiveManeuvering();
+                    var targetShipEA = tgt.IsEvasiveManeuvering();
+                    
+                    if (firingShipEA && targetShipEA)
+                    {
+                        fireControlScore -= 8;
+                    }
+                    else if (targetShipEA)
+                    {
+                        fireControlScore -= 3;
+                    }
+                    else if (firingShipEA)
+                    {
+                        fireControlScore -= 2;
+                    }
+
+                    // Target Acquisition
                     // Firing on different ship from last turn: -2
                     // Target ship hit by firing ship last turn: +2
+
+                    var trackingStates = ctx.batteryStatus.fireControlSystemStatusRecords.Where(
+                        fcs => fcs.IsOperational() && fcs.targetObjectId == tgt.objectId
+                    ).Select(fcs => fcs.trackingState).ToList();
+
+                    if (trackingStates.Count == 0)
+                    {
+                        fireControlScore /= 2; // No FCS is tracking target => Local Control: /2 FCS (DoB: -5)
+                        // Well, so Local Control may be better than BeginTracking according to Rulebook.
+                    }
+                    else
+                    {
+                        if (trackingStates.Contains(TrackingSystemState.Hitting))
+                        {
+                            fireControlScore += 2;
+                        }
+                        else if (trackingStates.Contains(TrackingSystemState.Tracking))
+                        {
+                            fireControlScore += 0;
+                        }
+                        else if (trackingStates.Contains(TrackingSystemState.BeginTracking))
+                        {
+                            fireControlScore -= 2;
+                        }
+                    }
 
                     // TODO: Firing ship under fire
                     // Under fire from 3 or more ships during this turn: -2
@@ -526,7 +609,12 @@ namespace NavalCombatCore
                     // Sea State + Crew Rating (from Ship Log)
 
                     // Fire Control Radar Modifier
-                    fireControlScore += ctx.batteryRecord.fireControlRadarModifier;
+                    
+                    if (!GetSubStates<IElectronicSystemModifier>().Any(m => m.IsFireControlRadarDisabled()))
+                    {
+                        var fireControlRadarModifier = ctx.batteryRecord.fireControlRadarModifier;
+                        fireControlScore += fireControlRadarModifier;
+                    }
 
                     var hitProb = RuleChart.GetHitProbP100(fireControlScore) * 0.01f;
                     var hit = (float)RandomUtils.rand.NextDouble() < hitProb;
@@ -555,6 +643,13 @@ namespace NavalCombatCore
                             var penInch = RuleChart.GetAdjustedPenetrationByType(ctx.batteryRecord.penetrationTableBaseType, refPenInch, ctx.batteryRecord.shellSizeInch, ammunitionType);
 
                             var armorEffInch = tgt.shipClass.armorRating.GetArmorEffectiveInch(armorLocation);
+
+                            if (armorLocation == ArmorLocation.MainBelt)
+                            {
+                                var armorCoef = tgt.GetSubStates<IArmorModifier>().Select(m => m.GetMainBeltArmorCoef()).DefaultIfEmpty(1).Min();
+                                armorEffInch *= armorCoef;
+                            }
+
                             var hitPenDetType = RuleChart.ResolveHitPenDetType(penInch, armorEffInch, ammunitionType);
 
                             var shellDamageResult = RuleChart.ResolveShellDamageResult(ctx.batteryRecord.damageRating, hitPenDetType, ammunitionType);

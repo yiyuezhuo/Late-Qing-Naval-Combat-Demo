@@ -28,6 +28,7 @@ namespace NavalCombatCore
         void SetFiringTarget(IWTAObject target);
         void ResetFiringTarget();
         int GetOverConcentrationCoef();
+        bool IsChangeTargetBlocked();
     }
 
     public class WeaponTargetAssignmentSolver // WTA Problem Solver
@@ -74,7 +75,8 @@ namespace NavalCombatCore
             public Dictionary<TargetRecord, float> firepowerScoreMap = new();
             public TargetRecord assignedTarget;
             public int overConcentrationCoef = 1; // regular corrected fire: +1, barrage fire: +2, RF Batteries: +0 (DoB) or +2 (Literally)?
-            // TODO: Switch to float
+                                                  // TODO: Switch to float
+            public bool isChangeTargetBlocked;
         }
 
         public class DecisionRecord
@@ -123,7 +125,25 @@ namespace NavalCombatCore
                         if (currentTargetObject != null)
                         {
                             battery.currentTarget = oriToTarget.GetValueOrDefault(currentTargetObject);
+                            battery.isChangeTargetBlocked = battery.original.IsChangeTargetBlocked();
                         }
+                    }
+                }
+            }
+
+            // Process non-changeable batteries
+            foreach (var shooter in shooters)
+            {
+                foreach (var battery in shooter.batteries)
+                {
+                    if (battery.assignedTarget != null)
+                        continue;
+
+                    if (battery.currentTarget != null && battery.isChangeTargetBlocked)
+                    {
+                        battery.assignedTarget = battery.currentTarget; // TODO: Too harsh to battery which is capable to shoot multiply targets?
+                        battery.currentTarget.selfFirepowerScore += battery.firepowerScoreMap[battery.currentTarget];
+                        battery.currentTarget.overConcentrationScore += battery.overConcentrationCoef;
                     }
                 }
             }
@@ -169,7 +189,7 @@ namespace NavalCombatCore
                 var maxGain = decisionRecords.Max(r => r.gain);
                 if (maxGain <= 0)
                     break;
-                
+
                 var bestDecisionRecord = decisionRecords.First(r => r.gain == maxGain);
 
                 // DEBUG

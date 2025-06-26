@@ -399,5 +399,6 @@ namespace NavalCombatCore
         }
 
         int IWTABattery.GetOverConcentrationCoef() => 0; // DoB gives 0, though literally it should be 2
+        public bool IsChangeTargetBlocked() => false;
     }
 }

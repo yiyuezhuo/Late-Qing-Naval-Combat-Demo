@@ -316,7 +316,7 @@ namespace NavalCombatCore
             }
         }
 
-        public float EvaluateFirepowerPerBarrel()
+        public float EvaluateFirepowerPerBarrel() // all-directional
         {
             var damageScrore = damageRating;
             var RateOfFireScore = penetrationTableRecords.FirstOrDefault()?.rateOfFire ?? 0;
@@ -330,6 +330,7 @@ namespace NavalCombatCore
             return barrels * EvaluateFirepowerPerBarrel();
         }
 
+        // for a specified direction only
         public float EvaluateFirepowerPerBarrel(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots)
         {
             var penetrationItem = penetrationTableRecords.FirstOrDefault(r => distanceYards <= r.distanceYards);

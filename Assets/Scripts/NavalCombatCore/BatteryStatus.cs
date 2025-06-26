@@ -71,16 +71,46 @@ namespace NavalCombatCore
                 return "[Not Specified]";
             var barrels = batteryRecord.mountLocationRecords.Sum(r => r.barrels * r.mounts);
             // var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.mountLocationRecord.mounts - m.mountsDestroyed) * m.mountLocationRecord.barrels);
-            var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => m.barrels);
+            var availableBarrels = mountStatus.Where(m => m.IsOperational()).Sum(m => m.barrels);
             return $"{availableBarrels}/{barrels} {batteryRecord.name.mergedName} ({ammunition.Summary()})";
+        }
+
+        public float GetEffectiveBarrels(IEnumerable<MountStatusRecord> considieredMounts) // modified by ROF, FC value modifier and etc
+        {
+            var barrels = considieredMounts.Sum(m => m.barrels *
+                m.GetSubStates<IRateOfFireModifier>().Select(m => m.GetRateOfFireCoef()).DefaultIfEmpty(1).Min() *
+                m.GetSubStates<IFireControlValueModifier>().Select(m => Math.Max(0, m.GetFireControlValueCoef() + m.GetFireControlValueOffset() * 0.05f)).DefaultIfEmpty(1).Min()
+            );
+
+            var localizedMod = GetSubStates<ILocalizedDirectionalFireControlValueModifier>().FirstOrDefault();
+            if (localizedMod != null)
+            {
+                barrels *= 0.9f;
+            }
+
+            return barrels;
         }
 
         public float EvaluateFirepowerScore()
         {
             var batteryRecord = GetBatteryRecord();
             var firepoweScorePerBarrel = batteryRecord.EvaluateFirepowerPerBarrel();
+
             // var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.mountLocationRecord.mounts - m.mountsDestroyed) * m.mountLocationRecord.barrels);
-            var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => m.barrels);
+
+            // var availableBarrels = mountStatus.Where(
+            //     m => m.IsOperational()
+            // ).Sum(m => m.barrels *
+            //            m.GetSubStates<IRateOfFireModifier>().Select(m => m.GetRateOfFireCoef()).DefaultIfEmpty(1).Min() *
+            //            m.GetSubStates<IFireControlValueModifier>().Select(m => Math.Max(0, m.GetFireControlValueCoef() + m.GetFireControlValueOffset() * 0.05f)).DefaultIfEmpty(1).Min()
+            // );
+
+            var availableBarrels = GetEffectiveBarrels(
+                mountStatus.Where(
+                    m => m.IsOperational()
+                )
+            );
+
             return availableBarrels * firepoweScorePerBarrel;
         }
 
@@ -94,10 +124,22 @@ namespace NavalCombatCore
                 return 0;
 
             var firepowerPerBarrel = batteryRecord.EvaluateFirepowerPerBarrel(distanceYards, targetAspect, targetSpeedKnots);
-            var barrels = mountStatus.Where(
-                m => m.status == MountStatus.Operational &&
-                    m.GetMountLocationRecordInfo().record.IsInArc(bearingRelativeToBowDeg)
-            ).Sum(m => m.barrels);
+
+            // var barrels = mountStatus.Where(
+            //     m => m.IsOperational() &&
+            //          m.GetMountLocationRecordInfo().record.IsInArc(bearingRelativeToBowDeg)
+            // ).Sum(m => m.barrels *
+            //            m.GetSubStates<IRateOfFireModifier>().Select(m => m.GetRateOfFireCoef()).DefaultIfEmpty(1).Min() *
+            //            m.GetSubStates<IFireControlValueModifier>().Select(m => Math.Max(0, m.GetFireControlValueCoef() + m.GetFireControlValueOffset() * 0.05f)).DefaultIfEmpty(1).Min()
+            // );
+
+            var barrels = GetEffectiveBarrels(
+                mountStatus.Where(
+                    m => m.IsOperational() &&
+                         m.GetMountLocationRecordInfo().record.IsInArc(bearingRelativeToBowDeg)
+                )
+            );
+
             return barrels * firepowerPerBarrel;
         }
 
@@ -154,7 +196,7 @@ namespace NavalCombatCore
 
             foreach (var mnt in mountStatus)
             {
-                if (mnt.status == MountStatus.Operational &&
+                if (mnt.IsOperational() &&
                     mnt.GetMountLocationRecordInfo().record.IsInArc(stats.observerToTargetBearingRelativeToBowDeg))
                 {
                     // TODO: Check Range? Though effect of range shoul have been handled in the evaluation. 
@@ -235,6 +277,21 @@ namespace NavalCombatCore
         public int GetOverConcentrationCoef()
         {
             return 1; // TODO: Handle barrage fire 
+        }
+
+        public bool IsChangeTargetBlocked()
+        {
+            var mountChangeAnyBlocked = mountStatus.Any(
+                mnt => mnt.GetSubStates<IBatteryTargetChangeBlocker>()
+                    .Any(m => m.IsBatteryTargetChangeBlocked())
+            );
+
+            var fcsChangeAnyBlocked = fireControlSystemStatusRecords.Any(
+                fcs => fcs.GetSubStates<IFireControlSystemTargetChangeBlocker>()
+                    .Any(m => m.IsFireControlSystemTargetChangeBlocked())
+            );
+
+            return mountChangeAnyBlocked || fcsChangeAnyBlocked;
         }
     }
 }

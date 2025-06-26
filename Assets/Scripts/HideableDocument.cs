@@ -14,7 +14,7 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
         get
         {
             if (_instance == null)
-                _instance = FindFirstObjectByType<T>();
+                _instance = FindFirstObjectByType<T>(FindObjectsInactive.Include);
             return _instance;
         }
     }
@@ -48,21 +48,23 @@ public class SingletonDocument<T> : SingletonMonoBehaviour<T> where T : MonoBeha
     {
         // root.style.display = DisplayStyle.Flex;
         // doc.enabled = false;
-        if(!doc.enabled)
-            doc.enabled = true;
+        // if(!doc.enabled)
+        //     doc.enabled = true;
+        gameObject.SetActive(true);
             
         if (root.style.display != DisplayStyle.Flex)
             root.style.display = DisplayStyle.Flex;
 
-        enabled = false; // Hack to invoke OnEnable
-        enabled = true;
+        // enabled = false; // Hack to invoke OnEnable
+        // enabled = true;
         OnShow();
     }
     // public void Hide() => root.style.display = DisplayStyle.None;
     public void Hide()
     {
         // root.style.display = DisplayStyle.None;
-        doc.enabled = false;
+        // doc.enabled = false;
+        gameObject.SetActive(false);
     }
 
     public void SoftHide()

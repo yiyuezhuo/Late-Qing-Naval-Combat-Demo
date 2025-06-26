@@ -448,7 +448,7 @@ namespace NavalCombatCore
             {50, 0},
             {85, 10},
             {95, 30},
-            {100, 40}
+            {float.MaxValue, 40}
         };
 
         public static float[,] fightingShipboardFireTableDamageControlApplied = new float[,]
@@ -458,16 +458,16 @@ namespace NavalCombatCore
             { 45, -20},
             { 75, -10},
             { 90, 0},
-            {100, +10}
+            {float.MaxValue, +10}
         };
 
-        public static float ResolveFightingShipBoardFiresDelta(float severity, bool damageControlApplied)
+        public static float ResolveFightingShipBoardFiresDelta(float severity, bool damageControlApplied, float d100Offset=0)
         {
-            var d100 = RandomUtils.D100F();
+            var d100 = RandomUtils.D100F() + d100Offset;
             if (damageControlApplied && d100 < 5)
                 return 0;
             var table = damageControlApplied ? fightingShipboardFireTableDamageControlApplied : fightingShipboardFireTableNoDamageControlApplied;
-            var r = Enumerable.Range(0, table.GetLength(0)).Last(r => d100 <= table[r, 0]);
+            var r = Enumerable.Range(0, table.GetLength(0)).First(r => d100 <= table[r, 0]);
             return Math.Clamp(severity + table[r, 1], 0, 100);
         }
 
@@ -562,18 +562,18 @@ namespace NavalCombatCore
 
         public static float[,] damageTierPercentProbRecords = new float[,]
         {
-            {0, 0.0f, 0.0f},
-            {1, 0.1f, 0.7f}, // Tier 1, cross to tier 1 from tier 0 will have 70% chance to get a general DE
-            {2, 0.2f, 0.8f},
-            {3, 0.3f, 0.75f},
-            {4, 0.4f, 0.85f},
-            {5, 0.5f, 0.8f},
-            {6, 0.59f, 0.9f},
-            {7, 0.68f, 0.85f},
-            {8, 0.77f, 0.95f},
-            {9, 0.86f, 0.9f},
-            {10, 0.95f, 1.0f},
-            {10, 1.01f, 1.0f}
+            {0, 0.0f, 0f},
+            {1, 0.1f, 70}, // Tier 1, cross to tier 1 (10%) from tier 0 will have 70% chance to get a general DE
+            {2, 0.2f, 80}, // // Tier 2, cross to tier 2 (20%) from tier 1 will have 80% chance to get a general DE
+            {3, 0.3f, 75},
+            {4, 0.4f, 85},
+            {5, 0.5f, 80},
+            {6, 0.59f, 90},
+            {7, 0.68f, 85},
+            {8, 0.77f, 95},
+            {9, 0.86f, 90},
+            {10, 0.95f, 100},
+            {10, 1.01f, 100}
         };
 
         public static int GetDamageTier(float p)
@@ -582,9 +582,20 @@ namespace NavalCombatCore
             var r = Enumerable.Range(0, t.GetLength(0)).Last(r => p >= t[r, 1]);
             return (int)t[r, 0];
         }
+
+        // M4 Morale Check
+        public static float[,] moraleCheckTable = new float[,]
+        {// Tier    -1,  0 or +1,   +2,  +3
+            {0,     0,     0,       0,   0},
+            {7,     12,    8,       4,   4}, // Tier 7, for crew rating -1~3 percentage to abandon ship
+            {8,     24,    16,      10,  4},
+            {9,     36,    24,      15,  8},
+            {10,    48,    32,      20,  15}
+        };
+        
         
         // Crossing Tier Damage Effects, "instant sunk" and morale checks  
-        public static void ResolveCrossingDamageTierDamageEffects(float p1, float p2, out int damageEffectTier, out int damageEffectCount, out bool sinking)
+        public static void ResolveCrossingDamageTierDamageEffects(float p1, float p2, int crewRating, out int damageEffectTier, out int damageEffectCount, out bool sinking, out bool abandonShip)
         {
             var t = damageTierPercentProbRecords;
             var r1 = Enumerable.Range(0, t.GetLength(0)).Last(r => p1 >= t[r, 1]);
@@ -592,11 +603,29 @@ namespace NavalCombatCore
             damageEffectTier = (int)t[r2, 0];
 
             damageEffectCount = 0;
-            for (int r = r1 + r1; r <= r2; r++)
+            abandonShip = false;
+            for (int r = r1 + 1; r <= r2; r++)
             {
                 if (RandomUtils.D100F() <= t[r, 2])
                 {
                     damageEffectCount++;
+                }
+
+                var row = Enumerable.Range(0, moraleCheckTable.GetLength(0)).FirstOrDefault(row => r == moraleCheckTable[row, 0]);
+                if (row > 0)
+                {
+                    var col = 1;
+                    if (crewRating >= 3)
+                        col = 4;
+                    else if (crewRating >= 2)
+                        col = 3;
+                    else if (crewRating >= 0)
+                        col = 2;
+                    var moraleCheckPercentage = moraleCheckTable[row, col];
+                    if (RandomUtils.D100F() <= moraleCheckPercentage)
+                    {
+                        abandonShip = true;
+                    }
                 }
             }
 

@@ -137,6 +137,7 @@ namespace NavalCombatCore
 
                         var tgtLog = new ShipLogTorpedoHitLog()
                         {
+                            torpedoObjectId=objectId,
                             time = NavalGameState.Instance.scenarioState.dateTime,
                             damagePoint = torpedoDamage,
                             damageEffectId=damageEffectId

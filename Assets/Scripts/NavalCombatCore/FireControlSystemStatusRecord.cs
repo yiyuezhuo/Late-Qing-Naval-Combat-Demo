@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NavalCombatCore
 {
@@ -24,6 +25,17 @@ namespace NavalCombatCore
         // {
         //     yield break;
         // }
+
+        public bool IsOperational()
+        {
+            if (trackingState == TrackingSystemState.Destroyed)
+                return false;
+
+            if (GetSubStates<IBatteryFireContrlStatusModifier>().Any(m => m.GetBatteryFireControlDisabled()))
+                return false;
+
+            return true;
+        }
 
         public void Step(float deltaSeconds)
         {

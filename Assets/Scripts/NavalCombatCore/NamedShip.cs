@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System;
+using System.Xml.Serialization;
 
 
 namespace NavalCombatCore
@@ -13,12 +14,31 @@ namespace NavalCombatCore
     public partial class NamedShip : IObjectIdLabeled
     {
         public string objectId { get; set; }
+
         public string shipClassObjectId;
+
+        [XmlIgnore]
+        ShipClass shipClassCache;
+
         public ShipClass shipClass
         {
             // get => NavalGameState.Instance.shipClasses.FirstOrDefault(x => x.name.english == shipClassStr);
-            get => EntityManager.Instance.Get<ShipClass>(shipClassObjectId);
+            // get => EntityManager.Instance.Get<ShipClass>(shipClassObjectId);
+            get
+            {
+                if (NavalGameState.Instance.doingStep)
+                {
+                    if (shipClassCache == null)
+                    {
+                        shipClassCache = EntityManager.Instance.Get<ShipClass>(shipClassObjectId);
+                    }
+                    return shipClassCache;
+                }
+                return EntityManager.Instance.Get<ShipClass>(shipClassObjectId);
+            }
         }
+
+
         public GlobalString name = new();
         public GlobalString builderDesc = new();
         public string launchedDate;

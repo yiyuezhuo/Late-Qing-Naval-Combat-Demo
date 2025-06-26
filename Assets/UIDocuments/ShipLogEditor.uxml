@@ -243,8 +243,8 @@
                                 </ui:ScrollView>
                             </ui:Tab>
                             <ui:Tab label="Damage Effects">
-                                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                    <ui:Instance template="SubStateMultiColumnListView" style="flex-grow: 1;" />
+                                <ui:VisualElement>
+                                    <ui:Instance template="SubStateMultiColumnListView" />
                                 </ui:VisualElement>
                             </ui:Tab>
                             <ui:Tab label="Battery">

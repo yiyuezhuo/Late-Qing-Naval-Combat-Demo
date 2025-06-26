@@ -56,6 +56,8 @@ namespace NavalCombatCore
 
         public SimulationClock weaponSimulationAssignmentClock = new() { intervalSeconds = 120 };
 
+        public bool doingStep;
+
         public event EventHandler<List<ShipGroup>> shipGroupsChanged;
 
         static NavalGameState _instance;
@@ -279,6 +281,8 @@ namespace NavalCombatCore
 
         public void Step(float deltaSeconds)
         {
+            doingStep = true;
+
             // pre-advance resolution
             if (weaponSimulationAssignmentClock.Step(deltaSeconds) > 0)
             {
@@ -335,6 +339,8 @@ namespace NavalCombatCore
                     shipLog.StepTorpedoSector(deltaSeconds);
                 }
             }
+
+            doingStep = false;
         }
 
         public IEnumerable<ShipLog> shipLogsOnMap => shipLogs.Where(x => x.mapState == MapState.Deployed);
@@ -436,7 +442,7 @@ namespace NavalCombatCore
                 {
                     foreach (var mnt in bty.mountStatus)
                     {
-                        if (mnt.status == MountStatus.Operational)
+                        if (mnt.IsOperational())
                         {
                             yield return mnt;
                         }

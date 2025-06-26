@@ -76,7 +76,7 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
                 Hide();
                 ShipClassEditor.Instance.Show();
                 // ShipClassEditor.Instance.shipClassListView.SetSelection(idx);
-                StartCoroutine(Utils.SetSelectionForListView(ShipClassEditor.Instance.shipClassListView, idx));
+                GameManager.Instance.ScheduleToSetSelectionForListView(ShipClassEditor.Instance.shipClassListView, idx);
             }
         };
 
@@ -93,7 +93,7 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
                 Hide();
                 LeaderEditor.Instance.Show();
                 // LeaderEditor.Instance.leadersListView.SetSelection(idx);
-                StartCoroutine(Utils.SetSelectionForListView(LeaderEditor.Instance.leadersListView, idx));
+                GameManager.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.leadersListView, idx);
             }
         };
     }

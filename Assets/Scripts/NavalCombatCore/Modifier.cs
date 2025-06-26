@@ -46,7 +46,6 @@ namespace NavalCombatCore
     [XmlInclude(typeof(SmokeGeneratorDamaged))]
     [XmlInclude(typeof(SectorFireState))]
     [XmlInclude(typeof(MainPowerplantOOA))]
-    [XmlInclude(typeof(PowerDistributionSymtemDamaged))]
     [XmlInclude(typeof(BatteryTargetChangeBlocker))]
     [XmlInclude(typeof(ElectronicSystemModifier))]
     [XmlInclude(typeof(ArmorModifier))]
@@ -64,6 +63,7 @@ namespace NavalCombatCore
     [XmlInclude(typeof(FiringCircuitDamagedWorker))]
     [XmlInclude(typeof(DE806DynamicModifier))]
     [XmlInclude(typeof(BatteryDamaged))]
+    [XmlInclude(typeof(PlaceholderState))]
     public partial class SubState : IObjectIdLabeled
     {
         public string objectId { get; set; }
@@ -102,8 +102,37 @@ namespace NavalCombatCore
         }
 
         public string cause = "";
+        
         // public bool permanent; // If it's not permanent then this can be damage controlled.
-        public virtual bool damageControllable => lifeCycle == StateLifeCycle.SeverityBased || lifeCycle == StateLifeCycle.ShipboardFire;
+        public virtual bool damageControllable
+        {
+            get
+            {
+                if (lifeCycle == StateLifeCycle.SeverityBased || lifeCycle == StateLifeCycle.ShipboardFire)
+                {
+                    var shipLog = EntityManager.Instance.GetParent<ShipLog>(this);
+                    if (shipLog != null)
+                    {
+                        var damageControlModifiers = shipLog.GetSubStates<IDamageControlModifier>().ToList();
+
+                        if (damageControlModifiers.Any(m => m.IsDamageControlBlocked()))
+                            return false;
+
+                        if (lifeCycle == StateLifeCycle.ShipboardFire &&
+                                damageControlModifiers.Any(m => m.IsFightingFireBlocked()))
+                            return false;
+
+                        if (IsBatteryRelated() && damageControlModifiers.Any(m => m.IsBatteryDamageControlBlock()))
+                            return false;
+                    }
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public virtual bool IsBatteryRelated() => false; // Poor man's tag
+
         public virtual float GetDamageControlPriorityCoef() => 1;
         public virtual float GetDamageControlPriority()
         {
@@ -169,7 +198,14 @@ namespace NavalCombatCore
                 var damageContrlThreshold = severity + (damageControlApplied ? 0 : 20);
                 var permanentThreshold = damageControlApplied ? 2 : 7;
                 var d100 = RandomUtils.D100F();
-                if (d100 > damageContrlThreshold)
+
+                var d100Offset = 0f;
+                if (subject is ShipLog shipLog)
+                {
+                    d100Offset = shipLog.GetSubStates<IDamageControlModifier>().Select(m => m.GetDamageControlDieRollOffset()).Sum();
+                }
+
+                if (d100 + d100Offset > damageContrlThreshold)
                 {
                     OnDamageControllSuccessed(subject, deltaSeconds);
                 }
@@ -185,27 +221,30 @@ namespace NavalCombatCore
 
             if (lifeCycle == StateLifeCycle.ShipboardFire)
             {
-                var shipLog = subject as ShipLog;// Shipboard Fire can only be attached to ShipLog
-
-                // shipLog.damagePoint += severity;
-                shipLog.AddDamagePoint(severity);
-
-                var newDamageEffectCausedByFire = RuleChart.ResolveShipboardFireDamageEffect(severity);
-                if (newDamageEffectCausedByFire)
+                if (subject is ShipLog shipLog) // Shipboard Fire can only be attached to ShipLog
                 {
-                    // Add DE caused by shipbpard fire
-                    DamageEffectChart.AddNewDamageEffect(new DamageEffectContext
+                    // shipLog.damagePoint += severity;
+                    shipLog.AddDamagePoint(severity);
+
+                    var newDamageEffectCausedByFire = RuleChart.ResolveShipboardFireDamageEffect(severity);
+                    if (newDamageEffectCausedByFire)
                     {
-                        subject = shipLog,
-                        cause = DamageEffectCause.Fires,
-                        source = this,
-                    });
-                }
+                        // Add DE caused by shipbpard fire
+                        DamageEffectChart.AddNewDamageEffect(new DamageEffectContext
+                        {
+                            subject = shipLog,
+                            cause = DamageEffectCause.Fires,
+                            source = this,
+                        });
+                    }
 
-                severity = RuleChart.ResolveFightingShipBoardFiresDelta(severity, damageControlApplied);
-                if (severity == 0)
-                {
-                    EndAt(subject);
+                    var d100Offset = shipLog.GetSubStates<IDamageControlModifier>().Select(m => m.GetFightingFireDieRollOffset()).Sum();
+
+                    severity = RuleChart.ResolveFightingShipBoardFiresDelta(severity, damageControlApplied, d100Offset);
+                    if (severity == 0)
+                    {
+                        EndAt(subject);
+                    }
                 }
             }
 
@@ -242,7 +281,7 @@ namespace NavalCombatCore
             var shipLog = GetShipLog(subject);
             if (shipLog != null)
             {
-                shipLog.AddStringLog($"DE Begin: {description} {cause}");
+                shipLog.AddStringLog($"Begin: {description} {cause}");
             }
 
             DoBeginAt(subject);
@@ -256,7 +295,7 @@ namespace NavalCombatCore
             var shipLog = GetShipLog(subject);
             if (shipLog != null)
             {
-                shipLog.AddStringLog($"DE End: {description} {cause}");
+                shipLog.AddStringLog($"End: {description} {cause}");
             }
 
             DoEndAt(subject);
@@ -290,27 +329,27 @@ namespace NavalCombatCore
         MountStatus GetBatteryMountStatus(); // E.X this may restrict a Operational mount to Damage and OOA
     }
 
-    public interface ILocalizedBatteryMountStatusModifier
-    {
-        MountStatus GetBatteryMountStatus(MountLocation mountLocation);
-    }
+    // public interface ILocalizedBatteryMountStatusModifier
+    // {
+    //     MountStatus GetBatteryMountStatus(MountLocation mountLocation);
+    // }
 
     public interface ITorpedoMountStatusModifier
     {
         MountStatus GetTorpedoMountStatus();
     }
 
-    public interface ILocalizedTorpedoMountStatusModifier
-    {
-        MountStatus GetTorpedoMountStatus(MountLocation mountLocation);
-    }
+    // public interface ILocalizedTorpedoMountStatusModifier
+    // {
+    //     MountStatus GetTorpedoMountStatus(MountLocation mountLocation);
+    // }
 
     public interface IRateOfFireModifier
     {
         float GetRateOfFireCoef(); // E.X: this many resctrict a mount ROF to 50% of its original value.
     }
 
-    public interface IBarrageFireBlocker
+    public interface IBarrageFireBlocker // TODO: Support Barrage Fire
     {
         bool IsBarrageFireBlocked();
     }
@@ -346,12 +385,12 @@ namespace NavalCombatCore
     {
         float GetMaxSpeedKnotOffset() => 0;
         float GetMaxSpeedKnotCoef() => 1;
-        float GetMaxSpeedUpperLimit() => 100000;
+        float GetMaxSpeedUpperLimit() => 100_000;
         float GetStandardTurnCoef() => 1;
         float GetEmergencyTurnCoef() => 1;
-        float GetStandardTurnUpperLimit() => 100000;
-        float GetEmergencyTurnUpperLimit() => 100000;
-        float GetAccelerationUpperLimit() => 100000;
+        float GetStandardTurnUpperLimit() => 100_000;
+        float GetEmergencyTurnUpperLimit() => 100_000;
+        float GetAccelerationUpperLimit() => 100_000;
 
         // It's all "physic" backed resitrction, they differ from communication / command malfunction induced problem
         bool IsEvasiveManeuverBlocked() => false;
@@ -365,12 +404,12 @@ namespace NavalCombatCore
 
     public interface IDamageControlModifier
     {
-        float GetDamageControlRatingOffset();
+        int GetDamageControlRatingOffset();
         bool IsFightingFireBlocked();
         bool IsDamageControlBlocked();
         float GetDamageControlDieRollOffset();
         bool IsBatteryDamageControlBlock() => false;
-        float GetSeveriDieRollOffset() => 0;
+        float GetSeverityDieRollOffset() => 0;
         float GetFightingFireDieRollOffset() => 0;
     }
 
@@ -389,7 +428,7 @@ namespace NavalCombatCore
         bool IsDesiredSpeedCommandBlocked();
     }
 
-    public interface ISmokeGeneratorModifier
+    public interface ISmokeGeneratorModifier // TODO: Wait for implementation of smoke generator (though in the battle of yalu, this device is not used though)
     {
         bool IsSmokeGeneratorAvailable();
     }
@@ -442,6 +481,8 @@ namespace NavalCombatCore
             return mountStatus;
         }
         public override string Describe() => $"Battery Mount is disabled ({DescribeLiftCycle()})";
+
+        public override bool IsBatteryRelated() => true;
     }
 
     public class RateOfFireModifier : SubState, IRateOfFireModifier
@@ -454,6 +495,7 @@ namespace NavalCombatCore
         }
 
         public override string Describe() => $"RateOfFireModifier({rateOfFireCoef}) ({DescribeLiftCycle()})";
+        public override bool IsBatteryRelated() => true;
     }
 
     public class BatteryFireContrlStatusDisabledModifier : SubState, IBatteryFireContrlStatusModifier
@@ -461,6 +503,7 @@ namespace NavalCombatCore
         public bool GetBatteryFireControlDisabled() => true;
 
         public override string Describe() => $"BatteryFireContrlStatusDisabledModifier ({DescribeLiftCycle()})";
+        public override bool IsBatteryRelated() => true;
     }
 
     public class ControlSystemDisabledModifier : SubState, IBatteryMountStatusModifier, IBatteryFireContrlStatusModifier
@@ -511,6 +554,7 @@ namespace NavalCombatCore
         }
 
         public override string Describe() => $"ControlSystemDisabledModifier({batteryMountStatus}) ({DescribeLiftCycle()})";
+        public override bool IsBatteryRelated() => true;
     }
 
     public class FireControlValueModifier : SubState, IFireControlValueModifier
@@ -594,19 +638,19 @@ namespace NavalCombatCore
 
     public class DamageControlModifier : SubState, IDamageControlModifier
     {
-        public float damageControlRatingOffset = 0;
+        public int damageControlRatingOffset = 0;
         public bool isFightingFireBlocked = false;
         public bool isDamageControlBlocked = false;
         public float damageControlDieRollOffset = 0;
         public bool isBatteryDamageControlBlock = false;
-        public float severiDieRollOffset = 0;
+        public float severityDieRollOffset = 0;
         public float fightingFireDieRollOffset = 0;
-        public float GetDamageControlRatingOffset() => damageControlRatingOffset;
+        public int GetDamageControlRatingOffset() => damageControlRatingOffset;
         public bool IsFightingFireBlocked() => isFightingFireBlocked;
         public bool IsDamageControlBlocked() => isDamageControlBlocked;
         public float GetDamageControlDieRollOffset() => damageControlDieRollOffset;
         public bool IsBatteryDamageControlBlock() => isBatteryDamageControlBlock;
-        public float GetSeveriDieRollOffset() => severiDieRollOffset;
+        public float GetSeverityDieRollOffset() => severityDieRollOffset;
         public float GetFightingFireDieRollOffset() => fightingFireDieRollOffset;
 
         public override string Describe()
@@ -618,7 +662,7 @@ namespace NavalCombatCore
                 isDamageControlBlocked ? "Damage Control Blocked" : null,
                 damageControlDieRollOffset != 0 ? $"DC Die Roll Offset: {damageControlDieRollOffset}" : null,
                 isBatteryDamageControlBlock ? "Battery DC Blocked" : null,
-                severiDieRollOffset != 0 ? $"Severi Die Roll Offset: {severiDieRollOffset}" : null,
+                severityDieRollOffset != 0 ? $"Severity Die Roll Offset: {severityDieRollOffset}" : null,
                 fightingFireDieRollOffset != 0 ? $"Fighting Fire Die Roll Offset: {fightingFireDieRollOffset}" : null
             };
             return "DamageControlModifier:" + string.Join(";", lines.Where(line => line != null)) + " | " + DescribeLiftCycle();
@@ -787,25 +831,25 @@ namespace NavalCombatCore
     }
 
     // DE 128
-    public class SectorFireState : SubState, ILocalizedDirectionalFireControlValueModifier, ILocalizedTorpedoMountStatusModifier
+    public class SectorFireState : SubState, ILocalizedDirectionalFireControlValueModifier // , ILocalizedTorpedoMountStatusModifier
     {
-        public bool disableTorpedo;
+        // public bool disableTorpedo;
 
-        public enum SectionLocation
+        public enum SectionVLocation
         {
             Front,
             Midship,
             After
         }
-        public SectionLocation fireAndSmokeLocation;
+        public SectionVLocation fireAndSmokeVLocation;
 
-        SectionLocation GetSectionLocation(MountLocation mountLocation)
+        public static SectionVLocation GetSectionLocation(MountLocation mountLocation)
         {
             if (mountLocation <= MountLocation.StarboardForward)
-                return SectionLocation.Front;
+                return SectionVLocation.Front;
             else if (mountLocation <= MountLocation.StarboardMidship)
-                return SectionLocation.Midship;
-            return SectionLocation.After;
+                return SectionVLocation.Midship;
+            return SectionVLocation.After;
         }
 
         public float GetFireControlValueOffset(MountLocation mountLocation, float bearingRelativeToBowDeg)
@@ -818,27 +862,27 @@ namespace NavalCombatCore
 
             var mountSectionLocation = GetSectionLocation(mountLocation);
 
-            if (mountSectionLocation == SectionLocation.Front) // Forward (though include unspecified)
+            if (mountSectionLocation == SectionVLocation.Front) // Forward (though include unspecified)
             {
-                if (fireAndSmokeLocation == SectionLocation.Front || toAfter)
+                if (fireAndSmokeVLocation == SectionVLocation.Front || toAfter)
                 {
                     return -1;
                 }
                 return 0;
             }
-            else if (mountSectionLocation == SectionLocation.Midship) // Midship
+            else if (mountSectionLocation == SectionVLocation.Midship) // Midship
             {
-                if (fireAndSmokeLocation == SectionLocation.Midship)
+                if (fireAndSmokeVLocation == SectionVLocation.Midship)
                     return -1;
-                if (fireAndSmokeLocation == SectionLocation.Front && toFront)
+                if (fireAndSmokeVLocation == SectionVLocation.Front && toFront)
                     return -1;
-                if (fireAndSmokeLocation == SectionLocation.After && toAfter)
+                if (fireAndSmokeVLocation == SectionVLocation.After && toAfter)
                     return -1;
                 return 0;
             }
             else // after
             {
-                if (mountSectionLocation == SectionLocation.After || toFront)
+                if (mountSectionLocation == SectionVLocation.After || toFront)
                 {
                     return -1;
                 }
@@ -846,14 +890,14 @@ namespace NavalCombatCore
             }
         }
 
-        public MountStatus GetTorpedoMountStatus(MountLocation mountLocation)
-        {
-            // TODO: Track if torpedo is deck torpedo (or submerged etc)
-            var mountSectionLocation = GetSectionLocation(mountLocation);
-            return mountSectionLocation == fireAndSmokeLocation ? MountStatus.Disabled : MountStatus.Operational;
-        }
+        // public MountStatus GetTorpedoMountStatus(MountLocation mountLocation)
+        // {
+        //     // TODO: Track if torpedo is deck torpedo (or submerged etc)
+        //     var mountSectionLocation = GetSectionLocation(mountLocation);
+        //     return mountSectionLocation == fireAndSmokeVLocation ? MountStatus.Disabled : MountStatus.Operational;
+        // }
 
-        public override string Describe() => $"SectorFireState(disableTorpedo={disableTorpedo},fireAndSmokeLocation={fireAndSmokeLocation}) ({DescribeLiftCycle()})";
+        public override string Describe() => $"SectorFireState(fireAndSmokeLocation={fireAndSmokeVLocation}) ({DescribeLiftCycle()})";
     }
 
     public class MainPowerplantOOA : SubState, IRateOfFireModifier, IDamageControlModifier, IElectronicSystemModifier
@@ -866,7 +910,7 @@ namespace NavalCombatCore
 
         public float GetRateOfFireCoef() => rateOfFireCoef;
 
-        public float GetDamageControlRatingOffset() => 0;
+        public int GetDamageControlRatingOffset() => 0;
         public bool IsFightingFireBlocked() => false;
         public bool IsDamageControlBlocked() => isDamageControlBlocked;
         public float GetDamageControlDieRollOffset() => 0;
@@ -879,18 +923,18 @@ namespace NavalCombatCore
         public override string Describe() => $"MainPowerplantOOA(rateOfFireCoef={rateOfFireCoef},isDamageControlBlocked={isDamageControlBlocked}) ({DescribeLiftCycle()})";
     }
 
-    public class PowerDistributionSymtemDamaged : SubState, ILocalizedBatteryMountStatusModifier
-    {
-        // TODO: Add command related things
-        public List<MountLocation> locations = new();
+    // public class PowerDistributionSymtemDamaged : SubState, ILocalizedBatteryMountStatusModifier
+    // {
+    //     // TODO: Add command related things
+    //     public List<MountLocation> locations = new();
 
-        public MountStatus GetBatteryMountStatus(MountLocation mountLocation)
-        {
-            return locations.Contains(mountLocation) ? MountStatus.Disabled : MountStatus.Operational;
-        }
+    //     public MountStatus GetBatteryMountStatus(MountLocation mountLocation)
+    //     {
+    //         return locations.Contains(mountLocation) ? MountStatus.Disabled : MountStatus.Operational;
+    //     }
 
-        public override string Describe() => $"PowerDistributionSymtemDamaged(locations={locations}) ({DescribeLiftCycle()})";
-    }
+    //     public override string Describe() => $"PowerDistributionSymtemDamaged(locations={locations}) ({DescribeLiftCycle()})";
+    // }
 
     public class BatteryTargetChangeBlocker : SubState, IBatteryTargetChangeBlocker
     {
@@ -1244,7 +1288,7 @@ namespace NavalCombatCore
         public float GetStandardTurnCoef() => 0.5f;
         public bool IsSpeedChangeBlocked() => isSpeedChangeBlocked;
 
-        public override string Describe() => $"DE602DyanmicModifier: isSpeedChangeBlocked={isSpeedChangeBlocked}), Std Turn Coef: 0.5, Emer Turn Blocked, Evasive Man. Blocked";
+        public override string Describe() => $"DE602-DyanmicModifier: isSpeedChangeBlocked={isSpeedChangeBlocked}), Std Turn Coef: 0.5, Emer Turn Blocked, Evasive Man. Blocked";
     }
 
     public class DE607DyanmicModifier : SubState, IDynamicModifier
@@ -1429,5 +1473,11 @@ namespace NavalCombatCore
         }
 
         public override string Describe() => $"BatteryDamaged(status={status}, operationalPercentage={operationalPercentage}) {DescribeLiftCycle()}";
+        public override bool IsBatteryRelated() => true;
+    }
+
+    public class PlaceholderState: SubState // Can used to as a parent for some dependent sub-states to apply lifecycle constrait
+    {
+        public override string Describe() => $"PlaceholderState({DescribeLiftCycle()}";
     }
 }

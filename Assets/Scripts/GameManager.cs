@@ -762,9 +762,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     }
 
 
-    // public void ScheduleToSetSelectionForListView(ListView listView, int idx)
-    // {
-    //     StartCoroutine(SetSelectionForListView(listView, idx));
-    // }
+    public void ScheduleToSetSelectionForListView(ListView listView, int idx)
+    {
+        StartCoroutine(Utils.SetSelectionForListView(listView, idx));
+    }
 
 }

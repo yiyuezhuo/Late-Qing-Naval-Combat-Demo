@@ -238,7 +238,7 @@ namespace NavalCombatCore
         public Doctrine doctrineProp => doctrine;
 
         [CreateProperty]
-        public string damagePointProgrssDesc => $"DP Progress {(damagePoint / Math.Max(1, shipClass.damagePoint)).ToString("P1")} Damage Tier: {GetDamageTier()}";
+        public string damagePointProgrssDesc => $"DP Progress {(damagePoint / Math.Max(1, shipClass?.damagePoint ?? 0)).ToString("P1")} Damage Tier: {GetDamageTier()}";
 
         [CreateProperty]
         public float maxSpeedKnotsProp => GetMaxSpeedKnots();
@@ -261,7 +261,7 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
-        public string labelName => GetMapStatePrefix() + namedShip.name.GetMergedName();
+        public string labelName => GetMapStatePrefix() + (namedShip?.name?.GetMergedName() ?? "[Named Ship not invalid or not specified]");
 
         // IPortraitViewerObservable
         string IPortraitViewerObservable.GetPortraitTopCode() => shipClass.portraitTopCode;

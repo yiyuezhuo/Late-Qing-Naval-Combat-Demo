@@ -142,13 +142,13 @@ namespace NavalCombatCore
             }
 
             // TODO: Enforce doctrine (torpedo should be handled in specialized doctrine I guess)
-            
+
             var stats = MeasureStats.Measure(original, target);
             var relaxedAngle = original.shipClass.emergencyTurnDegPer2Min / 2;
 
             foreach (var mnt in original.torpedoSectorStatus.mountStatus)
             {
-                if (mnt.status == MountStatus.Operational)
+                if (mnt.IsOperational())
                 {
                     var recordInfo = mnt.GetTorpedoMountLocationRecordInfo();
 
@@ -169,6 +169,7 @@ namespace NavalCombatCore
         }
 
         public int GetOverConcentrationCoef() => 0;
+        public bool IsChangeTargetBlocked() => false;
     }
 
     [XmlInclude(typeof(ShipLogStringLog))]
@@ -245,9 +246,24 @@ namespace NavalCombatCore
         // public ShipClass shipClass;
         // public string shipClassObjectId;
         public string namedShipObjectId;
+
+        [XmlIgnore]
+        NamedShip namedShipCache;
+
         public NamedShip namedShip
         {
-            get => EntityManager.Instance.Get<NamedShip>(namedShipObjectId);
+            get
+            {
+                if (NavalGameState.Instance.doingStep)
+                {
+                    if (namedShipCache == null)
+                    {
+                        namedShipCache = EntityManager.Instance.Get<NamedShip>(namedShipObjectId);
+                    }
+                    return namedShipCache;
+                }
+                return EntityManager.Instance.Get<NamedShip>(namedShipObjectId);
+            }
         }
         // public string shipClassStr;
         public ShipClass shipClass
@@ -256,12 +272,14 @@ namespace NavalCombatCore
             // get => EntityManager.Instance.Get<ShipClass>(shipClassObjectId);
             get
             {
-                var _shipClassObjectId = namedShip?.shipClassObjectId;
-                if (_shipClassObjectId == null)
-                    return null;
-                return EntityManager.Instance.Get<ShipClass>(_shipClassObjectId);
+                // var _shipClassObjectId = namedShip?.shipClassObjectId;
+                // if (_shipClassObjectId == null)
+                //     return null;
+                // return EntityManager.Instance.Get<ShipClass>(_shipClassObjectId);
+                return namedShip?.shipClass;
             }
         }
+
         public float damagePoint; // current taken damage point vs "max" damage point defined in the class
         public LatLon position = new();
         public float speedKnots; // current speed vs "max" speed defined in the class
@@ -430,6 +448,9 @@ namespace NavalCombatCore
         public string Summary()
         {
             var _shipClass = shipClass;
+            if (_shipClass == null)
+                return "[Class Invalid or not binded]";
+
             var lines = new List<string>();
 
             lines.Add("Battery:");
@@ -438,7 +459,7 @@ namespace NavalCombatCore
             lines.Add("Torpedo:");
             var torpedoBarrels = _shipClass.torpedoSector.mountLocationRecords.Sum(r => r.barrels * r.mounts);
             // var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.torpedoMountLocationRecord.mounts - m.mountsDestroyed) * m.torpedoMountLocationRecord.barrels);
-            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => m.barrels);
+            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.IsOperational()).Sum(m => m.barrels);
             var torpedoAmmu = torpedoSectorStatus.ammunition;
             lines.Add($"x{torpedoBarrelsAvailable}/{torpedoBarrels} {_shipClass.torpedoSector.name.mergedName} ({torpedoAmmu})");
 
@@ -469,7 +490,7 @@ namespace NavalCombatCore
 
         public float GetTurnCap(bool useEmergencyRudder)
         {
-            if (useEmergencyRudder)
+            if (useEmergencyRudder && !GetSubStates<IDynamicModifier>().Any(m => m.IsEmergencyTurnBlocked()))
             {
                 var cap = shipClass.emergencyTurnDegPer2Min;
                 var upperLimit = GetSubStates<IDynamicModifier>().Select(m => m.GetEmergencyTurnUpperLimit()).DefaultIfEmpty(100000).Min();
@@ -487,6 +508,16 @@ namespace NavalCombatCore
 
         public void StepProcessTurn(float deltaSeconds) // Turn and induced speed change
         {
+            var mods = GetSubStates<IDynamicModifier>().ToList();
+            if (mods.Any(m => m.IsCourseChangeBlocked()))
+                return;
+            
+            var diffDeg = MeasureUtils.NormalizeAngle(desiredHeadingDeg - headingDeg) - 180;
+            if (diffDeg > 0 && mods.Any(m => m.IsTurnStarboardBlocked()))
+                return;
+            if (diffDeg < 0 && mods.Any(m => m.IsTurnPortBlocked()))
+                return;
+
             if (speedKnots >= 4) // Turn requires at least 4 knots speed to do
             {
                 var useEmergencyRudder = emergencyRudder && speedKnots >= 12;
@@ -496,7 +527,10 @@ namespace NavalCombatCore
                 var absDeltaDeg = Math.Min(MeasureUtils.GetPositiveAngleDifference(headingDeg, desiredHeadingDeg), turnCapThisPulse);
                 var usePercent = absDeltaDeg / turnCapThisPulse;
 
-                headingDeg = MeasureUtils.MoveAngleTowards(headingDeg, desiredHeadingDeg, turnCapThisPulse);
+                var _desiredHeadingDeg = desiredHeadingDeg + mods.Select(m => m.GetDesiredHeadingOffset()).Sum();
+                // GetDesiredHeadingOffset
+
+                headingDeg = MeasureUtils.MoveAngleTowards(headingDeg, _desiredHeadingDeg, turnCapThisPulse);
 
                 var decayPercentPer2Min = (useEmergencyRudder ? 0.5f : 0.75f) * usePercent + 1 * (1 - usePercent);
                 var decayPercentThisPulse = (float)Math.Pow(decayPercentPer2Min, deltaSeconds / 120f);
@@ -633,7 +667,7 @@ namespace NavalCombatCore
 
         public float GetMaxSpeedKnots() // cache in context?
         {
-            if (operationalState != ShipOperationalState.Operational)
+            if (shipClass == null || operationalState != ShipOperationalState.Operational)
                 return 0;
 
             var maxSpeedKnots = shipClass.speedKnots + dynamicStatus.maxSpeedKnotsOffset;
@@ -647,15 +681,15 @@ namespace NavalCombatCore
                 maxSpeedKnots = Math.Clamp((maxSpeedKnots + offset) * coef, 0, upperLimit);
             }
 
-            var propulsionUpperLimit = shipClass.speedKnotsPropulsionShaftLevels[Math.Min(shipClass.speedKnotsPropulsionShaftLevels.Count - 1, dynamicStatus.propulsionShaftHits)];
+            var propulsionUpperLimit = shipClass.speedKnotsPropulsionShaftLevels.ElementAtOrDefault(dynamicStatus.propulsionShaftHits);
             maxSpeedKnots = Math.Min(maxSpeedKnots, propulsionUpperLimit);
 
             var engineRoomHits = dynamicStatus.engineRoomHits + dynamicStatus.engineRoomFloodingHits + GetSubStates<IEngineRoomHitModifier>().Select(m => m.GetEngineRoomHitOffset()).DefaultIfEmpty(0).Sum();
-            var engineUpperLimit = shipClass.speedKnotsEngineRoomsLevels[Math.Min(shipClass.speedKnotsEngineRoomsLevels.Count - 1, engineRoomHits)];
+            var engineUpperLimit = shipClass.speedKnotsEngineRoomsLevels.ElementAtOrDefault(engineRoomHits);
             maxSpeedKnots = Math.Min(maxSpeedKnots, engineUpperLimit);
 
             var boilerRoomHits = dynamicStatus.boilerRoomHits + dynamicStatus.boilerRoomFloodingHits + GetSubStates<IBoilerRoomHitModifier>().Select(m => m.GetBoilerRoomHitOffset()).DefaultIfEmpty(0).Sum();
-            var boilerUpperLimit = shipClass.speedKnotsBoilerRooms[Math.Min(shipClass.speedKnotsBoilerRooms.Count - 1, boilerRoomHits)];
+            var boilerUpperLimit = shipClass.speedKnotsBoilerRooms.ElementAtOrDefault(boilerRoomHits); // default => 0 => Upper Limit => 0 (not movable)
             maxSpeedKnots = Math.Min(maxSpeedKnots, boilerUpperLimit);
 
             return maxSpeedKnots;
@@ -672,7 +706,8 @@ namespace NavalCombatCore
             desiredSpeedKnotsForBoilerRoom = Math.Clamp(desiredSpeedKnotsForBoilerRoom, minSpeedKnots, maxSpeedKnots); // not ideal
 
             var commandBlocked = GetSubStates<IDesiredSpeedUpdateToBoilerRoomBlocker>().Any(blocker => blocker.IsDesiredSpeedCommandBlocked());
-            if (!commandBlocked)
+            var dynamicBlocked = GetSubStates<IDynamicModifier>().Any(m => m.IsSpeedChangeBlocked()); // TODO: Merge?
+            if (!commandBlocked && !dynamicBlocked)
             {
                 desiredSpeedKnotsForBoilerRoom = desiredSpeedKnots;
             }
@@ -800,7 +835,8 @@ namespace NavalCombatCore
 
         public int GetDamageControlRating()
         {
-            return Math.Max(0, shipClass.damageControlRatingUnmodified - damageControlRatingHits);
+            var modOffset = GetSubStates<IDamageControlModifier>().Select(m => m.GetDamageControlRatingOffset()).DefaultIfEmpty(0).Sum();
+            return Math.Max(0, shipClass?.damageControlRatingUnmodified ?? 0 - damageControlRatingHits + modOffset);
         }
 
         public void DamageControlAssetAllocation()
@@ -853,7 +889,7 @@ namespace NavalCombatCore
 
             var p2 = (damagePoint + pendingDamagePoint) / Math.Max(1, shipClass.damagePoint);
 
-            RuleChart.ResolveCrossingDamageTierDamageEffects(p1, p2, out int damageEffectTier, out int damageEffectCount, out bool crossingDamageTierSinking);
+            RuleChart.ResolveCrossingDamageTierDamageEffects(p1, p2, namedShip.crewRating, out int damageEffectTier, out int damageEffectCount, out bool crossingDamageTierSinking, out bool abandonShip);
 
             for (int i = 0; i < damageEffectCount; i++)
             {
@@ -865,12 +901,19 @@ namespace NavalCombatCore
                 DamageEffectChart.AddNewDamageEffect(ctx);
             }
 
+            if (abandonShip)
+            {
+                operationalState = DamageEffectChart.MaxEnum(operationalState, ShipOperationalState.AbandonShip);
+                AddStringLog("Ship Abandoned due to failed morale check");
+            }
+
             if (crossingDamageTierSinking)
             {
                 mapState = MapState.Destroyed;
+                AddStringLog("Sunk due to Catastrophic damage (crossing 8 damage tier in 1 turn)");
             }
 
-            // Sinking due to flooded machinery spaces
+            // Sunk due to flooded machinery spaces
             var machinerySpaces = shipClass.speedKnotsEngineRoomsLevels.Count + shipClass.speedKnotsBoilerRooms.Count;
             var floodedMachinerySpaces = dynamicStatus.engineRoomFloodingHits + dynamicStatus.boilerRoomFloodingHits;
             var floodedPercent = floodedMachinerySpaces / Math.Max(1, machinerySpaces);
@@ -878,6 +921,7 @@ namespace NavalCombatCore
             if (floodedPercent >= NavalCombatCoreUtils.CalibrateSurviceProbFromTurnProb(0.8f, deltaSeconds))
             {
                 mapState = MapState.Destroyed;
+                AddStringLog("Sunk due to flooded machinery spaces");
             }
         }
 
@@ -888,13 +932,13 @@ namespace NavalCombatCore
 
         public float EvaluateArmorScore(TargetAspect targetAspect, RangeBand rangeBand)
         {
-            return shipClass.EvaluateArmorScore(targetAspect, rangeBand);
+            return shipClass?.EvaluateArmorScore(targetAspect, rangeBand) ?? 0;
         }
 
         public float EvaluateSurvivability()
         {
             var armorScoreSmoothed = 1 + EvaluateArmorScore();
-            var dp = shipClass.damagePoint - damagePoint;
+            var dp = shipClass?.damagePoint ?? 0 - damagePoint;
             return dp * armorScoreSmoothed;
         }
 
@@ -911,8 +955,9 @@ namespace NavalCombatCore
         public float EvaluateTorpedoThreatScore()
         {
             // var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.torpedoMountLocationRecord.mounts - m.mountsDestroyed) * m.torpedoMountLocationRecord.barrels);
-            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => m.barrels);
-            return torpedoBarrelsAvailable * shipClass.torpedoSector.EvaluateTorpedoThreatPerBarrel();
+            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.IsOperational()).Sum(m => m.barrels);
+            var torpedoThreatPerBarrel = shipClass?.torpedoSector?.EvaluateTorpedoThreatPerBarrel() ?? 0;
+            return torpedoBarrelsAvailable * torpedoThreatPerBarrel;
         }
 
         public float EvaluateTorpedoThreatScore(float distanceYards, float bearingRelativeToBowDeg)
@@ -929,7 +974,7 @@ namespace NavalCombatCore
                 return 0;
 
             var effBarrels = torpedoSectorStatus.mountStatus
-                .Where(m => m.status == MountStatus.Operational && m.currentLoad > 0)
+                .Where(m => m.IsOperational() && m.currentLoad > 0)
                 .Select(m => (m, m.GetTorpedoMountLocationRecordInfo().record))
                 .Where(p => p.Item2.IsInArcRelaxed(bearingRelativeToBowDeg, sc.emergencyTurnDegPer2Min / 2))
                 .Sum(
@@ -1015,7 +1060,12 @@ namespace NavalCombatCore
         {
             // var maxDamagePoint = shipClass.damagePoint;
             // return (int)Math.Floor((damagePoint / maxDamagePoint) * 10);
-            return RuleChart.GetDamageTier(damagePoint / Math.Max(1, shipClass.damagePoint));
+            return RuleChart.GetDamageTier(damagePoint / Math.Max(1, shipClass?.damagePoint ?? 0));
+        }
+
+        public bool IsEvasiveManeuvering()
+        {
+            return isEvasiveManeuvering && !GetSubStates<IDynamicModifier>().Any(m => m.IsEvasiveManeuverBlocked());
         }
 
         public float EvaluateBowFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 0);

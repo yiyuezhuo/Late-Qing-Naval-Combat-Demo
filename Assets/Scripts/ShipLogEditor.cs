@@ -20,11 +20,21 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
     public ListView shipLogListView;
 
     // protected override void Awake()
+    // {
+    //     base.Awake();
+    //     Bind();
+    // }
+
     void OnEnable()
     {
-        // base.Awake();
-
         // Debug.LogWarning("ShipLogEditor OnEnable");
+        Bind();
+    }
+
+    // protected override void Awake()
+    void Bind()
+    {
+        // base.Awake();
 
         // var sortingOrder = doc.sortingOrder;
         // Debug.Log($"ShipLogEditor sortingOrder={sortingOrder}");
@@ -167,7 +177,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
                     // Debug.Log(torpedoMountStatusRecord);
                     GameManager.Instance.selectedTorpedoMountStatusRecord = torpedoMountStatusRecord;
                     GameManager.Instance.state = GameManager.State.SelectingTorpedoFiringTarget;
-                    Hide();
+                    SoftHide();
                 }
 
             };
@@ -217,7 +227,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
                     {
                         GameManager.Instance.selectedRapidFiringTargettingStatus = r;
                         GameManager.Instance.state = GameManager.State.SelectingRapidFiringTarget;
-                        Hide();
+                        SoftHide();
                     }
                 };
 
@@ -271,7 +281,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
                 // NamedShipEditor.Instance.namedShipListView.Rebuild();
                 // Data binding will be effective in the next frame, so we need to call the selection in the next frame.
                 // StartCoroutine(SetSelectionForNamedShipListView(idx));
-                StartCoroutine(Utils.SetSelectionForListView(NamedShipEditor.Instance.namedShipListView, idx));
+                GameManager.Instance.ScheduleToSetSelectionForListView(NamedShipEditor.Instance.namedShipListView, idx);
             }
         };
 
@@ -321,7 +331,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         {
             Show();
             // shipLogListView.SetSelection(idx);
-            StartCoroutine(Utils.SetSelectionForListView(shipLogListView, idx));
+            GameManager.Instance.ScheduleToSetSelectionForListView(shipLogListView, idx);
         }
     }
 }

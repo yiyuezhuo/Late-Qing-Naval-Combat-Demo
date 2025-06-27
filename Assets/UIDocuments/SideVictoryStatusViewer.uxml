@@ -6,16 +6,40 @@
             </Bindings>
         </ui:Label>
         <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-            <ui:FloatField label="Loss VP" style="flex-basis: 50px; flex-grow: 1;">
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="lossVictoryPoint" binding-mode="ToTarget" />
-                </Bindings>
-            </ui:FloatField>
-            <ui:FloatField label="VP" style="flex-basis: 50px; flex-grow: 1;">
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="victoryPoint" binding-mode="ToTarget" />
-                </Bindings>
-            </ui:FloatField>
+            <ui:VisualElement style="flex-grow: 1; flex-direction: column; flex-basis: 50px;">
+                <ui:FloatField label="Commit VP">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="commitVictoryPoint" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="Self Loss Ratio">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="selfLossRatio" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="VP">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="victoryPoint" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:FloatField>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; flex-direction: column; flex-basis: 50px;">
+                <ui:FloatField label="Loss VP">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="lossVictoryPoint" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="Other Over Self Ratio">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="otherOverSelfLossRatio" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:TextField label="Level">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="victoryLevel" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:TextField>
+            </ui:VisualElement>
         </ui:VisualElement>
         <ui:MultiColumnListView data-source-path="shipTypeLossItems" binding-source-selection-mode="AutoAssign" name="ShipTypeLossItemsMultiColumnListView">
             <ui:Columns>

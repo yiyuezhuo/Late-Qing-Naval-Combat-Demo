@@ -61,6 +61,11 @@
                                             <ui:DataBinding property="value" data-source-path="damageControlRatingUnmodified" binding-mode="TwoWay" />
                                         </Bindings>
                                     </ui:IntegerField>
+                                    <ui:EnumField label="Ram" value="Center" type="NavalCombatCore.RamType, Assembly-CSharp">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="ram" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:EnumField>
                                 </ui:VisualElement>
                                 <ui:VisualElement style="flex-grow: 1; flex-basis: 50%;">
                                     <ui:Instance template="ArmorRatingEditor" data-source-path="armorRating" />

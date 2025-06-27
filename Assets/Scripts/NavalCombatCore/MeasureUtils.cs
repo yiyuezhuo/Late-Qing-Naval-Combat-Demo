@@ -434,7 +434,7 @@ namespace NavalCombatCore
             {
                 var diff = MeasureUtils.GetPositiveAngleDifference(other.GetHeadingDeg(), (float)azi2);
                 var coef = Math.Abs(diff - 90) / 90;
-                var otherMix = otherLengthFoot * coef + other.GetBeamFoot() * (1 - coef);
+                var otherMix = otherLengthFoot * coef + other.GetBeamFoot() * (1 - coef); // not an exact oval
                 if (distanceFoot < lengthFoot / 2 + otherMix / 2)
                 {
                     return true;

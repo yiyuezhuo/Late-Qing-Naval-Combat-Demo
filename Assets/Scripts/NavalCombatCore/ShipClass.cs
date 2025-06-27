@@ -636,6 +636,8 @@ namespace NavalCombatCore
         public string portraitCode;
         public string portraitTopCode;
 
+        public RamType ram;
+
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
             foreach (var batteryRecord in batteryRecords)

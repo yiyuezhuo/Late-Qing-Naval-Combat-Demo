@@ -15,6 +15,13 @@ namespace NavalCombatCore
         NoPenetration // Class C
     }
 
+    public enum RamType
+    {
+        None,
+        Ram, // equipped with ram
+        TrueRamShip // 
+    }
+
     /// <summary>
     /// SK5 Table lookup and helpers
     /// </summary>
@@ -461,7 +468,7 @@ namespace NavalCombatCore
             {float.MaxValue, +10}
         };
 
-        public static float ResolveFightingShipBoardFiresDelta(float severity, bool damageControlApplied, float d100Offset=0)
+        public static float ResolveFightingShipBoardFiresDelta(float severity, bool damageControlApplied, float d100Offset = 0)
         {
             var d100 = RandomUtils.D100F() + d100Offset;
             if (damageControlApplied && d100 < 5)
@@ -592,8 +599,8 @@ namespace NavalCombatCore
             {9,     36,    24,      15,  8},
             {10,    48,    32,      20,  15}
         };
-        
-        
+
+
         // Crossing Tier Damage Effects, "instant sunk" and morale checks  
         public static void ResolveCrossingDamageTierDamageEffects(float p1, float p2, int crewRating, out int damageEffectTier, out int damageEffectCount, out bool sinking, out bool abandonShip)
         {
@@ -631,5 +638,205 @@ namespace NavalCombatCore
 
             sinking = r2 - r1 >= 8;
         }
+
+        public static string rammingTargetSpeedFactorTableCsvText = @"SPEED (kts),20,30,40,50,60,70,80,90,100,110,120,130,140,150,160
+2,2,2,2,2,2,2,2,2,-2,-2,-2,-2,-2,-2,-2
+4,4,4,4,4,4,2,2,2,-2,-2,-2,-4,-4,-4,-4
+6,6,6,6,4,4,4,2,2,-2,-4,-4,-4,-6,-6,-6
+8,8,8,8,6,6,4,2,2,-2,-4,-4,-6,-8,-8,-8
+10,10,10,8,8,6,4,2,2,-2,-4,-6,-8,-8,-10,-10
+12,12,12,10,8,8,6,4,2,-4,-6,-6,-8,-10,-12,-12
+14,14,14,12,10,8,6,4,2,-4,-6,-8,-10,-12,-14,-14
+16,16,14,14,12,10,6,4,2,-4,-6,-8,-12,-14,-14,-16
+18,18,16,14,12,10,8,4,2,-4,-8,-10,-12,-14,-16,-18
+20,20,18,16,14,12,8,4,2,-4,-8,-10,-14,-16,-18,-20
+22,22,20,18,16,12,8,4,2,-4,-8,-12,-16,-18,-20,-22
+24,24,22,20,16,14,10,6,2,-6,-10,-12,-16,-20,-22,-24
+26,26,24,20,18,14,10,6,2,-6,-10,-14,-18,-20,-24,-26
+28,28,26,22,18,16,10,6,2,-6,-10,-14,-18,-22,-26,-28
+30,30,26,24,20,16,12,6,2,-6,-12,-16,-20,-24,-26,-30
+32,32,28,26,22,18,12,6,2,-6,-12,-16,-22,-26,-28,-32";
+
+        public static SimpleTable<float, float, float> rammingTargetSpeedFactorTable = SimpleTable<float, float, float>.FromCSV(
+            rammingTargetSpeedFactorTableCsvText,
+            float.Parse, float.Parse, float.Parse
+        );
+
+        public static string rammingRamSpeedFactorTableCsvText = @"SPEED (kts),20,30,40,50,60,70,80,90,100,110,120,130,140,150,160
+4,2,2,4,4,4,4,4,4,4,4,4,4,4,2,2
+6,4,4,4,6,6,6,6,6,6,6,6,6,4,4,4
+8,4,4,6,8,8,8,8,8,8,8,8,8,6,4,4
+10,4,6,8,8,10,10,10,10,10,10,10,8,8,6,4
+12,6,6,8,10,12,12,12,12,12,12,12,10,8,6,6
+14,6,8,10,12,14,14,14,14,14,14,14,12,10,8,6
+16,6,8,12,14,14,16,16,16,16,16,14,14,12,8,6
+18,8,10,12,14,16,18,18,18,18,18,16,14,12,10,8
+20,8,10,14,16,18,20,20,20,20,20,18,16,14,10,8
+22,8,12,16,18,20,22,22,22,22,22,20,18,16,12,8
+24,10,12,16,20,22,24,24,24,24,24,22,20,16,12,10
+26,10,14,18,20,24,26,26,26,26,26,24,20,18,14,10
+28,10,14,18,22,26,28,28,28,28,28,26,22,18,14,10
+30,12,16,20,24,26,30,30,30,30,30,26,24,20,16,12
+32,12,16,22,26,28,32,32,32,32,32,28,26,22,16,12";
+
+        public static SimpleTable<float, float, float> rammingRamSpeedFactorTable = SimpleTable<float, float, float>.FromCSV(
+            rammingRamSpeedFactorTableCsvText,
+            float.Parse, float.Parse, float.Parse
+        );
+
+        public static string rammingDamageFactorTableCsvText = @"FACTOR,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160
+2,0.02,0.03,0.04,0.05,0.05,0.06,0.06,0.06,0.06,0.06,0.05,0.05,0.04,0.03,0.02
+4,0.04,0.06,0.07,0.09,0.1,0.1,0.11,0.11,0.11,0.1,0.1,0.09,0.07,0.06,0.04
+6,0.05,0.08,0.1,0.12,0.14,0.15,0.16,0.16,0.16,0.15,0.14,0.12,0.1,0.08,0.05
+8,0.07,0.1,0.13,0.15,0.17,0.19,0.2,0.2,0.2,0.19,0.17,0.15,0.13,0.1,0.07
+10,0.08,0.12,0.15,0.18,0.21,0.22,0.23,0.24,0.23,0.22,0.21,0.18,0.15,0.12,0.08
+12,0.09,0.14,0.18,0.21,0.24,0.26,0.27,0.27,0.27,0.26,0.24,0.21,0.18,0.14,-1
+14,0.1,0.15,0.2,0.23,0.26,0.29,0.3,0.3,0.3,0.29,0.26,0.23,0.2,0.15,-1
+16,0.11,0.17,0.21,0.26,0.29,0.31,0.33,0.33,0.33,0.31,0.29,0.26,0.21,-1,-1
+18,0.12,0.18,0.23,0.28,0.31,0.34,0.35,0.36,0.35,0.34,0.31,0.28,0.23,-1,-1
+20,0.13,0.19,0.25,0.29,0.33,0.36,0.38,0.38,0.38,0.36,0.33,0.29,0.25,-1,-1
+22,0.14,0.2,0.26,0.31,0.35,0.38,0.4,0.41,0.4,0.38,0.35,0.31,-1,-1,-1
+24,0.15,0.21,0.28,0.33,0.37,0.4,0.42,0.43,0.42,0.4,0.37,0.33,-1,-1,-1
+26,0.15,0.22,0.29,0.34,0.39,0.42,0.44,0.45,0.44,0.42,0.39,-1,-1,-1,-1
+28,0.16,0.23,0.3,0.36,0.4,0.44,0.46,0.47,0.46,0.44,-1,-1,-1,-1,-1
+30,0.17,0.24,0.31,0.37,0.42,0.45,0.48,0.48,0.48,0.45,-1,-1,-1,-1,-1
+32,0.17,0.25,0.32,0.38,0.43,0.47,0.49,0.5,-1,-1,-1,-1,-1,-1,-1
+34,0.18,0.26,0.33,0.39,0.45,0.48,0.51,0.52,-1,-1,-1,-1,-1,-1,-1
+36,0.18,0.26,0.34,0.41,0.46,0.5,0.52,-1,-1,-1,-1,-1,-1,-1,-1
+38,0.19,0.27,0.35,0.42,0.47,0.51,0.53,-1,-1,-1,-1,-1,-1,-1,-1
+40,0.19,0.28,0.36,0.43,0.48,0.52,-1,-1,-1,-1,-1,-1,-1,-1,-1
+42,0.19,0.28,0.36,0.43,0.49,0.53,-1,-1,-1,-1,-1,-1,-1,-1,-1
+44,0.2,0.29,0.37,0.44,0.5,0.54,-1,-1,-1,-1,-1,-1,-1,-1,-1
+46,-1,-1,0.38,0.45,0.51,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+48,-1,-1,0.39,0.46,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1";
+
+        public static SimpleTable<float, float, float> rammingDamageFactorTable = SimpleTable<float, float, float>.FromCSV(
+            rammingDamageFactorTableCsvText,
+            float.Parse, float.Parse, float.Parse
+        );
+
+        public class RamResolutionResult
+        {
+            public float inflictToRammerDamagePoint;
+            public float inflictToTargetDamagePoint;
+        }
+
+        public class RammingResolutionParameter
+        {
+            public float rammerDamagePoint;
+            public float impactAngle;
+            public RamType ramType;
+            public float targetArmorRealInch;
+            public float targetSpeedKnots;
+            public float rammerTargetSpeedKnots;
+            public float targetBuiltYear;
+            public bool isTargetSubmarine;
+            public bool isTargetNonWarship;
+            public bool isRammerNonWarship;
+            public bool isRammerUnarmored;
+
+            // X4 - ramming - target adjustement (left)
+            public float[,] rammingTargetAdjustmentsTable = new float[,]
+            {//Armor  adjustments
+                {0,     -1},
+                {1,     -2},
+                {3,     -3},
+                {5,     -4},
+                {8,     -5},
+                {11,    -6},
+                {15,    -7},
+            };
+
+            public RamResolutionResult ResolveRamming()
+            {
+                var x1 = rammingTargetSpeedFactorTable;
+                var x1Row = Enumerable.Range(0, x1.rows.Length).Where(r => targetSpeedKnots <= x1.rows[r]).DefaultIfEmpty(x1.rows.Length - 1).First();
+                var x1Col = Enumerable.Range(0, x1.cols.Length).Where(c => impactAngle <= x1.cols[c]).DefaultIfEmpty(x1.cols.Length - 1).First();
+                var damageFactor1 = x1.cells[x1Row, x1Col];
+
+                var x2 = rammingRamSpeedFactorTable;
+                var x2Row = Enumerable.Range(0, x2.rows.Length).Where(r => rammerTargetSpeedKnots <= x2.rows[r]).DefaultIfEmpty(x2.rows.Length - 1).First();
+                var x2Col = Enumerable.Range(0, x2.cols.Length).Where(c => impactAngle <= x2.cols[c]).DefaultIfEmpty(x2.cols.Length - 1).First();
+                var damageFactor2 = x2.cells[x2Row, x2Col];
+
+                var damageFactor = damageFactor1 + damageFactor2;
+
+                var x4 = rammingTargetAdjustmentsTable;
+                var x4Row = Enumerable.Range(0, x4.GetLength(0)).Where(r => x4[r, 0] <= targetArmorRealInch).LastOrDefault();
+                var targetArmorAdjustment = (int)x4[x4Row, 1];
+
+                var targetShipTypeAdjustment = 0;
+                if (isTargetSubmarine)
+                    targetShipTypeAdjustment = 1;
+                else if (isTargetNonWarship)
+                    targetShipTypeAdjustment = 3;
+                else if (targetBuiltYear <= 1905)
+                    targetShipTypeAdjustment = 2;
+                else if (targetBuiltYear <= 1924)
+                    targetShipTypeAdjustment = 1;
+
+                var ramModifier = ramType switch
+                {
+                    RamType.Ram => 5,
+                    RamType.TrueRamShip => 5, // True Ram Ship can reduce damage inflicted to itself but don't inclict more damage to target.
+                    _ => 0
+                };
+
+                var rammerShipTypeAdjustment = isRammerNonWarship ? -3 : 0;
+
+                var x3 = rammingDamageFactorTable;
+                var x3Col = Enumerable.Range(0, x3.cols.Length).Where(c => impactAngle <= x3.cols[c]).DefaultIfEmpty(x3.cols.Length - 1).First();
+
+                var x3Row = Enumerable.Range(0, x3.rows.Length).Where(r => damageFactor <= x3.rows[r]).DefaultIfEmpty(x3.rows.Length - 1).First();
+                x3Row += targetArmorAdjustment + targetShipTypeAdjustment + ramModifier + rammerShipTypeAdjustment;
+                x3Row = Math.Clamp(x3Row, 0, x3.rows.Length - 1);
+                var x3Value = x3.cells[x3Row, x3Col];
+                if (x3Value == -1)
+                {
+                    x3Row = Enumerable.Range(0, x3.rows.Length).Where(r => x3.cells[r, x3Col] != -1).Last();
+                    x3Value = x3.cells[x3Row, x3Col];
+                }
+
+                var inflictToTargetDamagePoint = rammerDamagePoint * x3Value;
+                var rammerMod = 0;
+
+                if (isTargetNonWarship)
+                    rammerMod -= 3;
+                else if (targetArmorRealInch <= 0.5)
+                    rammerMod -= 1;
+                else if (targetArmorRealInch <= 2)
+                    rammerMod += 1;
+                else if(targetArmorRealInch <= 6)
+                    rammerMod += 2;
+                else if(targetArmorRealInch <= 12)
+                    rammerMod += 3;
+                else
+                    rammerMod += 4;
+
+                if (ramType == RamType.None && isRammerNonWarship)
+                    rammerMod -= 3;
+                else if (ramType == RamType.Ram)
+                    rammerMod -= 5;
+                else if (ramType == RamType.TrueRamShip)
+                    rammerMod -= 6;
+
+                var x3Row2 = x3Row + rammerMod;
+                x3Row2 = Math.Clamp(x3Row2, 0, x3.rows.Length - 1);
+                var x3Value2 = x3.cells[x3Row2, x3Col];
+                if (x3Value2 == -1)
+                {
+                    x3Row2 = Enumerable.Range(0, x3.rows.Length).Where(r => x3.cells[r, x3Col] != -1).Last();
+                    x3Value2 = x3.cells[x3Row2, x3Col];
+                }
+                var inflictToRammerDamagePoint = inflictToTargetDamagePoint * x3Value2;
+
+                return new()
+                {
+                    inflictToTargetDamagePoint = inflictToTargetDamagePoint,
+                    inflictToRammerDamagePoint = inflictToRammerDamagePoint
+                };
+            }
+        }
+
     }
 }

@@ -14,6 +14,21 @@ namespace NavalCombatCore
         Sunk // Sunk
     }
 
+    public enum VictoryLevel
+    {
+        DecisiveDefeat,
+        MajorDefeat,
+        Defeat,
+        MinorDefeat,
+        MarginalDefeat,
+        Draw, // 100%~110%
+        MarginalVictory, // 110%~130%
+        MinorVictory, // 130%~150%
+        Victory, // 150%~200%
+        MajorVictory, // 200%~500%, and opposite lost 25%+ (otherwise it degrade to a Victory)
+        DecisiveVictory, // 500%+, and opposite lost 50%+ (otherwise it degrade to a Victory or MarjorVictory)
+    }
+
     public class VictoryStatus
     {
         public List<SideVictoryStatus> sideVictoryStatuses = new();
@@ -48,19 +63,53 @@ namespace NavalCombatCore
                 }
 
                 sideVictoryStatus.lossVictoryPoint = sideVictoryStatus.shipTypeLossItems.Sum(item => item.lossVictoryPoint);
+                sideVictoryStatus.commitVictoryPoint = sideVictoryStatus.shipTypeLossItems.Sum(item => item.commitVictroyPoint);
+                sideVictoryStatus.selfLossRatio = (sideVictoryStatus.lossVictoryPoint + 1) / (sideVictoryStatus.commitVictoryPoint + 1);
 
                 sideVictoryStatuses.Add(sideVictoryStatus);
             }
 
             foreach (var meSideVictoryStatus in sideVictoryStatuses)
             {
-                meSideVictoryStatus.victoryPoint = -meSideVictoryStatus.lossVictoryPoint;
-                foreach (var otherSideVictoryStatus in sideVictoryStatuses)
-                {
-                    if (otherSideVictoryStatus == meSideVictoryStatus)
-                        continue;
-                    meSideVictoryStatus.victoryPoint += otherSideVictoryStatus.lossVictoryPoint;
-                }
+                var selfLossVictoryPoint = meSideVictoryStatus.lossVictoryPoint;
+                var selfCommitVictoryPoint = meSideVictoryStatus.commitVictoryPoint;
+
+                var otherLossVictoryPoint = sideVictoryStatuses.Where(s => s != meSideVictoryStatus).Sum(s => s.lossVictoryPoint);
+                var otherCommitVictoryPoint = sideVictoryStatuses.Where(s => s != meSideVictoryStatus).Sum(s => s.commitVictoryPoint);
+
+                meSideVictoryStatus.victoryPoint = otherLossVictoryPoint - selfLossVictoryPoint; // Diff based VP (JTS Style)
+
+                // TODO: Determine Victroy Level
+                var otherOverSelfLossRatio = meSideVictoryStatus.otherOverSelfLossRatio = (otherLossVictoryPoint + 1) / (selfLossVictoryPoint + 1);
+                var otherLossRatio = (otherLossVictoryPoint + 1) / (otherCommitVictoryPoint + 1);
+                var selfLossRatio = (selfLossVictoryPoint + 1) / (selfCommitVictoryPoint + 1);
+
+                var level = VictoryLevel.Draw;
+
+                if (otherOverSelfLossRatio > 5 && otherLossRatio > 0.5)
+                    level = VictoryLevel.DecisiveDefeat;
+                else if (otherOverSelfLossRatio > 2 && otherLossRatio > 0.25)
+                    level = VictoryLevel.MajorDefeat;
+                else if (otherOverSelfLossRatio > 1.5)
+                    level = VictoryLevel.Victory;
+                else if (otherOverSelfLossRatio > 1.3)
+                    level = VictoryLevel.MinorDefeat;
+                else if (otherOverSelfLossRatio > 1.1)
+                    level = VictoryLevel.MarginalVictory;
+                else if (otherOverSelfLossRatio < 1f / 5 && selfLossRatio > 0.5)
+                    level = VictoryLevel.DecisiveDefeat;
+                else if (otherOverSelfLossRatio < 1f / 2 && selfLossRatio > 0.25)
+                    level = VictoryLevel.MajorDefeat;
+                else if (otherOverSelfLossRatio < 1f / 1.5f)
+                    level = VictoryLevel.Defeat;
+                else if (otherOverSelfLossRatio < 1f / 1.3f)
+                    level = VictoryLevel.MinorDefeat;
+                else if (otherOverSelfLossRatio < 1f / 1.1f)
+                    level = VictoryLevel.MarginalDefeat;
+                else
+                    level = VictoryLevel.Draw;
+
+                meSideVictoryStatus.victoryLevel = level;
             }
 
             return new()
@@ -79,13 +128,17 @@ namespace NavalCombatCore
         public int heavy;
         public int sunk;
         public float lossVictoryPoint;
+        public float commitVictroyPoint; // May be better to call it "strength"?
 
         public void AddToCount(ShipLog shipLog)
         {
+            var shipLogScore = shipLog.shipClass.EvaluateGeneralScore();
+            commitVictroyPoint += shipLogScore;
+
             if (shipLog.mapState == MapState.Destroyed)
             {
                 sunk += 1;
-                lossVictoryPoint += shipLog.shipClass.EvaluateGeneralScore();
+                lossVictoryPoint += shipLogScore;
             }
             else if (shipLog.damagePoint == 0)
             {
@@ -101,7 +154,7 @@ namespace NavalCombatCore
                 else
                     light += 1;
 
-                lossVictoryPoint += Math.Clamp(dp, 0, 1) * 0.5f * shipLog.shipClass.EvaluateGeneralScore();
+                lossVictoryPoint += Math.Clamp(dp, 0, 1) * 0.5f * shipLogScore;
             }
         }
     }
@@ -111,6 +164,11 @@ namespace NavalCombatCore
         public string name;
         public float victoryPoint;
         public float lossVictoryPoint;
+        public float commitVictoryPoint;
+        public float selfLossRatio;
+        public float otherOverSelfLossRatio;
+        public VictoryLevel victoryLevel;
+
         public List<ShipTypeLossItem> shipTypeLossItems = new();
     }
 }

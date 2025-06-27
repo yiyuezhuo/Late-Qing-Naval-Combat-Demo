@@ -152,11 +152,12 @@ public class LOSLine : MonoBehaviour, IMaskCheckService
                     var collidedVerticalFoot = localPoint.x * Utils.wuToFoot;
                     var hitBeltEnd = Math.Abs(collidedVerticalFoot) > collidedShipLog.GetLengthFoot() / 2 * 0.7;
                     var hitArmorLocation = hitBeltEnd ? ArmorLocation.BeltEnd : ArmorLocation.MainBelt;
+                    var impactAngleDeg = Mathf.Abs(Mathf.Atan2(localPoint.x, localPoint.y)) * Mathf.Rad2Deg;
                     return new()
                     {
                         collided = collidedShipLog,
                         collideLocation = hitArmorLocation,
-                        impactAngleDeg=Mathf.Abs(Mathf.Atan2(localPoint.x, localPoint.y))
+                        impactAngleDeg = impactAngleDeg,
                     };
                 }
             }

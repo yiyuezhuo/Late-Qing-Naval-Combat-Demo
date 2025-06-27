@@ -25,6 +25,7 @@
                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                         <ui:Button text="Add Ship" name="AddShipButton" style="flex-basis: 50px; flex-grow: 1;" />
                         <ui:Button text="Remove Ship" name="RemoveShipButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Repair" name="RepairButton" />
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                         <ui:Button text="Import" name="ImportButton" style="flex-basis: 50px; flex-grow: 1;" />

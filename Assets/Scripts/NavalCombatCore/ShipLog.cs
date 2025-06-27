@@ -771,7 +771,7 @@ namespace NavalCombatCore
             {
                 newPositionBlocked = ElevationService.Instance.GetElevation(newPosition) > 0;
             }
-            if (!newPositionBlocked && CoreParameter.Instance.checkShipCollision)
+            if (!newPositionBlocked && CoreParameter.Instance.checkShipCollision && speedKnots > 0) // TODO: Check Reverse Movement
             {
                 // ShipLog collided = null; // "Collider" check
                 // foreach (var other in NavalGameState.Instance.shipLogsOnMap)
@@ -792,9 +792,10 @@ namespace NavalCombatCore
                 {
                     newPositionBlocked = true;
                     var collided = collideCheckResult.collided;
+                    var isHostile = (this as IShipGroupMember).GetRootParent() != (collided as IShipGroupMember).GetRootParent();
 
                     // Handle Ramming Damage
-                    if ((this as IShipGroupMember).GetRootParent() != (collided as IShipGroupMember).GetRootParent())
+                    if (isHostile && speedKnots >= 6)
                     {
                         var targetArmorActualInch = collided.shipClass.armorRating.GetRecord(collideCheckResult.collideLocation).actualInch;
                         var isRammerUnarmored = shipClass.armorRating.GetArmorEffectiveInch(ArmorLocation.MainBelt) > 0 || shipClass.armorRating.GetArmorEffectiveInch(ArmorLocation.Deck) > 0;
@@ -817,6 +818,8 @@ namespace NavalCombatCore
 
                         var ramResolutionResult = rammingResolutionParameter.Resolve();
 
+                        AddStringLog("Ramming to other ship");
+
                         AddDamagePoint(ramResolutionResult.inflictToRammerDamagePoint);
                         if (ramResolutionResult.inflictToRammerDamagePoint / shipClass.damagePoint > 0.1f)
                         {
@@ -831,6 +834,8 @@ namespace NavalCombatCore
                                 addtionalDamageEffectProbility = 0.5f,
                             });
                         }
+
+                        collided.AddStringLog("Rammed by other ship");
 
                         collided.AddDamagePoint(ramResolutionResult.inflictToTargetDamagePoint);
                         if (ramResolutionResult.inflictToTargetDamagePoint / collided.shipClass.damagePoint > 0.1f)

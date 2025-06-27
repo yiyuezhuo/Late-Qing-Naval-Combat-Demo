@@ -13,16 +13,16 @@
     <namedShipObjectId>7855b692-e843-41bb-a7b6-15662ab6de20</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6862564</LatDeg>
-     <LonDeg>123.657028</LonDeg>
+     <LatDeg>39.6869621</LatDeg>
+     <LonDeg>123.675209</LonDeg>
     </position>
-    <speedKnots>12</speedKnots>
+    <speedKnots>6</speedKnots>
     <headingDeg>70</headingDeg>
-    <desiredSpeedKnots>12</desiredSpeedKnots>
+    <desiredSpeedKnots>6</desiredSpeedKnots>
     <desiredHeadingDeg>70</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
-    <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
+    <desiredSpeedKnotsForBoilerRoom>6</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
@@ -234,8 +234,8 @@
       <value>Manual</value>
      </maneuverAutomaticType>
      <fireAutomaticType>
-      <isInherited>true</isInherited>
-      <value>Automatic</value>
+      <isInherited>false</isInherited>
+      <value>Manual</value>
      </fireAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
@@ -285,13 +285,13 @@
      <LatDeg>39.683075</LatDeg>
      <LonDeg>123.680794</LonDeg>
     </position>
-    <speedKnots>8</speedKnots>
-    <headingDeg>240</headingDeg>
-    <desiredSpeedKnots>8</desiredSpeedKnots>
-    <desiredHeadingDeg>240</desiredHeadingDeg>
+    <speedKnots>15</speedKnots>
+    <headingDeg>330</headingDeg>
+    <desiredSpeedKnots>15</desiredSpeedKnots>
+    <desiredHeadingDeg>330</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
-    <desiredSpeedKnotsForBoilerRoom>8</desiredSpeedKnotsForBoilerRoom>
+    <desiredSpeedKnotsForBoilerRoom>15</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
@@ -460,8 +460,8 @@
       <value>Manual</value>
      </maneuverAutomaticType>
      <fireAutomaticType>
-      <isInherited>true</isInherited>
-      <value>Automatic</value>
+      <isInherited>false</isInherited>
+      <value>Manual</value>
      </fireAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
@@ -568,16 +568,7 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
-     <string>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</string>
-     <string>61f04aed-26e0-4495-bd04-344f5d223de1</string>
      <string>a55bdec2-a47a-4d2b-af3c-9588a875e58c</string>
-     <string>3ecfd394-30a5-45af-95be-f83b75d246b2</string>
-     <string>c8a76edb-7330-4ef4-a115-2f468df23494</string>
-     <string>b5dfd87e-cb47-4a4b-abba-affa96e356c4</string>
-     <string>00fb2b34-3d37-444b-9041-e8540c9304d1</string>
-     <string>370f72b3-2243-44ff-ab42-e08d3c6d273c</string>
-     <string>6a20093b-9f39-47fd-972f-49eaaefaf1d5</string>
-     <string>59969f6c-ed18-4e48-84d2-0b43c3e8ac74</string>
     </childrenObjectIds>
     <name>
      <english>Pricipal Squadron</english>
@@ -638,12 +629,7 @@
     </doctrine>
    </ShipGroup>
    <ShipGroup>
-    <childrenObjectIds>
-     <string>0cfda6a2-50de-48bf-8aa6-5338375327ef</string>
-     <string>9ad21ac1-2365-4f33-bfa9-fee5f27b965a</string>
-     <string>42d0aed7-6e98-4146-b55f-0d5f8940328b</string>
-     <string>f134adc9-f5b7-4d86-88a9-27ecd13b70c8</string>
-    </childrenObjectIds>
+    <childrenObjectIds />
     <name>
      <english>Inshore Squadron</english>
      <japanese>別働隊</japanese>
@@ -766,14 +752,7 @@
     </doctrine>
    </ShipGroup>
    <ShipGroup>
-    <childrenObjectIds>
-     <string>e1f10636-ab79-4b42-8316-c3a533f31512</string>
-     <string>8c1e5af6-3f33-4f97-8f94-5d8a63785c28</string>
-     <string>1180b828-a3da-4927-ae6a-ea21c6c5c1be</string>
-     <string>10ae7cc2-8728-40b6-9d4b-4f06087918c6</string>
-     <string>4d486d3e-0643-4983-8641-a33434c2a4c5</string>
-     <string>3e705d71-1239-4963-8946-2aa151d5e57f</string>
-    </childrenObjectIds>
+    <childrenObjectIds />
     <name>
      <english>Battle Squadron</english>
      <japanese>連合艦隊本隊</japanese>
@@ -834,9 +813,6 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
-     <string>cf6393ee-7cbe-4a15-93ce-eb53bc18ada8</string>
-     <string>25623a6b-a217-4e49-baca-6ea3b7c782a6</string>
-     <string>01092b52-c42d-4f06-9f4e-57762a39aeba</string>
      <string>ea56b877-9b5e-48bf-840d-3e8508af98ca</string>
     </childrenObjectIds>
     <name>
@@ -898,10 +874,7 @@
     </doctrine>
    </ShipGroup>
    <ShipGroup>
-    <childrenObjectIds>
-     <string>e55e1b9a-2cc6-44ab-a656-9b1204d34971</string>
-     <string>c4bd2221-a6e2-4646-a59e-60c9e392a80b</string>
-    </childrenObjectIds>
+    <childrenObjectIds />
     <name>
      <english>Observers</english>
     </name>
@@ -973,8 +946,8 @@
   <doingStep>false</doingStep>
  </navalGameState>
  <viewState>
-  <xRotation>39.6913033</xRotation>
-  <yRotation>236.312653</yRotation>
-  <orthographicSize>4</orthographicSize>
+  <xRotation>39.68681</xRotation>
+  <yRotation>236.319183</yRotation>
+  <orthographicSize>2</orthographicSize>
  </viewState>
 </FullState>

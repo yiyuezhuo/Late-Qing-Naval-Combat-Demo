@@ -4,23 +4,27 @@ using NavalCombatCore;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Unity.Properties;
+using Unity.VisualScripting.Dependencies.NCalc;
 
 public class OOBEditor : HideableDocument<OOBEditor>
 {
     public TreeView oobTreeView;
 
-    IShipGroupMember currentSelectedGroupMember;
+    // IShipGroupMember currentSelectedGroupMember;
+    string currentSelectedObjectId;
 
     [CreateProperty]
     public ShipGroup currentSelectedShipGroup
     {
-        get => currentSelectedGroupMember as ShipGroup;
+        // get => currentSelectedGroupMember as ShipGroup;
+        get => EntityManager.Instance.Get<ShipGroup>(currentSelectedObjectId);
     }
 
     [CreateProperty]
     public ShipLog currentSelectedShipLog
     {
-        get => currentSelectedGroupMember as ShipLog;
+        // get => currentSelectedGroupMember as ShipLog;
+        get => EntityManager.Instance.Get<ShipLog>(currentSelectedObjectId);
     }
 
     public enum State
@@ -62,34 +66,41 @@ public class OOBEditor : HideableDocument<OOBEditor>
         };
         oobTreeView.bindItem = (e, i) =>
         {
-            var item = oobTreeView.GetItemDataForIndex<IShipGroupMember>(i);
+            var item = oobTreeView.GetItemDataForIndex<string>(i);
 
             var label = e.Q<Label>();
-            label.dataSource = item.objectId;
+            label.dataSource = item;
         };
 
         oobTreeView.selectionChanged += (selectedItems) =>
         {
-            var selectedItem = selectedItems.FirstOrDefault() as IShipGroupMember;
+            var newSelectedObjectId = selectedItems.FirstOrDefault() as string;
 
             if (state == State.Attaching)
             {
                 state = State.Idle;
 
-                if (currentSelectedGroupMember != null && (selectedItem is ShipGroup selectedShipGroup))
+                if (currentSelectedObjectId != null && newSelectedObjectId != null)
                 {
-                    if (currentSelectedGroupMember.TryAttachTo(selectedShipGroup))
+                    var currentSelectedGroupMember = EntityManager.Instance.Get<IShipGroupMember>(currentSelectedObjectId);
+                    var newSelectedGroupMember = EntityManager.Instance.Get<ShipGroup>(newSelectedObjectId);
+
+                    if (newSelectedGroupMember != null && currentSelectedGroupMember != null)
                     {
-                        Sync();
+                        if (currentSelectedGroupMember.TryAttachTo(newSelectedGroupMember))
+                        {
+                            Sync();
+                        }
+                        else
+                        {
+                            Debug.LogWarning("Not attachable"); // TODO: raise notification?
+                        }
                     }
-                    else
-                    {
-                        Debug.LogWarning("Not attachable"); // TODO: raise notification?
-                    }
+
                 }
             }
 
-            currentSelectedGroupMember = selectedItem;
+            currentSelectedObjectId = newSelectedObjectId;
         };
 
         var createGroupButton = root.Q<Button>("CreateGroupButton");
@@ -102,6 +113,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
         var collapseButton = root.Q<Button>("CollapseButton");
         var addShipButton = root.Q<Button>("AddShipButton");
         var removeShipButton = root.Q<Button>("RemoveShipButton");
+        var repairButton = root.Q<Button>("RepairButton");
 
         expandButton.clicked += () => oobTreeView.ExpandAll();
         collapseButton.clicked += () => oobTreeView.CollapseAll();
@@ -110,7 +122,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
         {
             // var content = GameManager.Instance.navalGameState.ShipGroupsToXML();
             var content = NavalGameState.Instance.ShipGroupsToXML();
-            IOManager.Instance.SaveTextFile(content, "ShipGroups"  + GameManager.scenarioSuffix, "xml");
+            IOManager.Instance.SaveTextFile(content, "ShipGroups" + GameManager.scenarioSuffix, "xml");
         };
 
         importButton.clicked += () =>
@@ -131,7 +143,8 @@ public class OOBEditor : HideableDocument<OOBEditor>
         };
         deleteGroupButton.clicked += () =>
         {
-            var shipGroup = currentSelectedGroupMember as ShipGroup;
+            var shipGroup = EntityManager.Instance.Get<ShipGroup>(currentSelectedObjectId);
+            // var shipGroup = currentSelectedGroupMember as ShipGroup;
             if (shipGroup != null)
             {
                 var parentGroup = (shipGroup as IShipGroupMember).GetParentGroup();
@@ -150,6 +163,10 @@ public class OOBEditor : HideableDocument<OOBEditor>
 
                 // ResetAndRegisterAll
                 NavalGameState.Instance.SyncShipLogParentWithGroupHierarchy();
+            }
+            else
+            {
+                Debug.LogWarning("Not deletable");
             }
             Sync();
         };
@@ -177,10 +194,35 @@ public class OOBEditor : HideableDocument<OOBEditor>
                 ((IShipGroupMember)currentSelectedShipLog).AttachTo(null);
                 Sync();
             }
+            // else
+            // {
+            //     var obj = EntityManager.Instance.Get<object>(currentSelectedObjectId);
+            //     if (obj == null)
+            //     {
+
+            //     }
+            // }
         };
 
         var setLeaderButton = root.Q<Button>("SetLeaderButton");
         setLeaderButton.clicked += DialogRoot.Instance.PopupLeaderSelectorDialogForSpecifyForGroup;
+
+        repairButton.clicked += () =>
+        {
+            foreach (var shipGroup in NavalGameState.Instance.shipGroups)
+            {
+                foreach (var childObjectId in shipGroup.childrenObjectIds.ToList())
+                {
+                    var member = EntityManager.Instance.Get<IShipGroupMember>(childObjectId);
+                    if (member == null)
+                    {
+                        shipGroup.childrenObjectIds.Remove(childObjectId);
+                    }
+                }
+            }
+
+            Sync();
+        };
     }
 
     public void OnRootShipGroupsXmlLoaded(object sender, string text)
@@ -213,10 +255,10 @@ public class OOBEditor : HideableDocument<OOBEditor>
         Sync();
     }
 
-    List<TreeViewItemData<IShipGroupMember>> CreateTreeViewRootItems() // Use List<string> (objectId based denoting?) However Tree Items is a volatile and temp so objectId and other lowered structure doesn't make a lot of senses. 
+    List<TreeViewItemData<string>> CreateTreeViewRootItems() // Use List<string> (objectId based denoting?) However Tree Items is a volatile and temp so objectId and other lowered structure doesn't make a lot of senses. 
     {
         // Collect Estalished groups
-        var items = new List<TreeViewItemData<IShipGroupMember>>();
+        var items = new List<TreeViewItemData<string>>();
         var idx = 0;
 
         var state = NavalGameState.Instance;
@@ -224,7 +266,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
         foreach (var group in state.shipGroups.Where(g => g.parentObjectId == null))
         {
             var subItems = CreateTreeViewItemsForGroup(group, ref idx);
-            var d = new TreeViewItemData<IShipGroupMember>(idx, group, subItems);
+            var d = new TreeViewItemData<string>(idx, group.objectId, subItems);
             idx++;
             items.Add(d);
         }
@@ -244,20 +286,36 @@ public class OOBEditor : HideableDocument<OOBEditor>
         return items;
     }
 
-    List<TreeViewItemData<IShipGroupMember>> CreateTreeViewItemsForGroup(ShipGroup group, ref int idx)
+    List<TreeViewItemData<string>> CreateTreeViewItemsForGroup(ShipGroup group, ref int idx)
     {
-        var ret = new List<TreeViewItemData<IShipGroupMember>>();
-        foreach (var child in group.GetChildren())
+        var ret = new List<TreeViewItemData<string>>();
+        // foreach (var child in group.GetChildren())
+        // {
+        //     if (child is ShipGroup childGroup)
+        //     {
+        //         var childGroupItems = CreateTreeViewItemsForGroup(childGroup, ref idx);
+        //         ret.Add(new TreeViewItemData<string>(idx, childGroup.objectId, childGroupItems));
+        //         idx++;
+        //     }
+        //     if (child is ShipLog childShip)
+        //     {
+        //         ret.Add(new TreeViewItemData<string>(idx, childShip.objectId));
+        //         idx++;
+        //     }
+        // }
+        // childrenObjectIds
+        foreach (var childrenObjectId in group.childrenObjectIds)
         {
-            if (child is ShipGroup childGroup)
+            var childGroup = EntityManager.Instance.Get<ShipGroup>(childrenObjectId);
+            if (childGroup != null)
             {
                 var childGroupItems = CreateTreeViewItemsForGroup(childGroup, ref idx);
-                ret.Add(new TreeViewItemData<IShipGroupMember>(idx, childGroup, childGroupItems));
+                ret.Add(new TreeViewItemData<string>(idx, childGroup.objectId, childGroupItems));
                 idx++;
             }
-            if (child is ShipLog childShip)
+            else // ShipLog or null
             {
-                ret.Add(new TreeViewItemData<IShipGroupMember>(idx, childShip));
+                ret.Add(new TreeViewItemData<string>(idx, childrenObjectId));
                 idx++;
             }
         }

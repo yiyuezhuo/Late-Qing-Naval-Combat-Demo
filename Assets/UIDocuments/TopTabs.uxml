@@ -13,6 +13,7 @@
                             <ui:DataBinding property="value" data-source-path="iconLanuageType" binding-mode="TwoWay" />
                         </Bindings>
                     </ui:EnumField>
+                    <ui:Button text="Victory Status" name="VictoryStatusButton" />
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="File">

@@ -167,6 +167,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>10fd6177-e4f9-4b1f-a5e6-0535495e958c</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -179,6 +180,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>6615d670-1793-40ce-8be6-cabdabb070be</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -191,6 +193,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>afa3625d-ca2b-4368-bb2c-0b7c9e15959e</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -203,6 +206,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>f2333b25-f5ad-4fa2-b91b-feebdf929fbe</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -339,6 +343,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>3e4464c6-1724-45ff-9f6c-6a2344c2dbc9</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -351,6 +356,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>cbedfa9d-ba63-4365-980c-d4b29435ae54</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -363,6 +369,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>be77bcf8-c3f0-45ed-adb2-33a06f424d7d</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -375,6 +382,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>93219c7a-084f-4a01-8b17-5b5997222b5b</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -396,6 +404,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>2c7904ed-268a-4a86-b525-ffb4fae73f62</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -408,6 +417,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>af191256-dfdb-402f-b4b0-47de16130c36</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -420,6 +430,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>dd65b8d4-2b30-4a4d-ac81-f47e1b563832</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -429,6 +440,8 @@
    </torpedoSettings>
    <ammunitionCapacity>12</ammunitionCapacity>
    <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -668,6 +681,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>b4f79a50-9fc0-4e8c-b37f-ce14c547b3f9</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -680,6 +694,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>1cb13059-f677-442d-b255-74985d94e3b5</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -692,6 +707,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>4f138cb4-a95c-47ab-a966-cec3ef238d3a</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -704,6 +720,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>d5c3010f-64c8-40c6-a726-7becb003f9e7</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -840,6 +857,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>dac55c59-f67b-4838-8513-0e1e5f5f80a5</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -852,6 +870,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>a3e58c22-4df1-4583-a673-1243c6433538</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -864,6 +883,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>6fabdd56-d891-4ada-990f-8e8304c16351</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -876,6 +896,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>134b5b1a-8bdd-4ff7-ab8d-8a9df7155f3b</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -897,6 +918,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>a09df97a-fe71-4318-b1e7-abf4d38f7697</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -909,6 +931,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>1b982269-a067-4ecb-aeef-96760e66cbf7</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -918,6 +941,8 @@
    </torpedoSettings>
    <ammunitionCapacity>8</ammunitionCapacity>
    <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -959,7 +984,7 @@
   </speedKnotsEngineRoomsLevels>
   <speedKnotsPropulsionShaftLevels>
    <float>19</float>
-   <float>0</float>
+   <float>10</float>
   </speedKnotsPropulsionShaftLevels>
   <speedKnotsBoilerRooms>
    <float>19</float>
@@ -1143,6 +1168,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>d4c799ae-8076-4aee-a728-d39291422876</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -1155,6 +1181,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>2904f246-cfbe-4a22-b77b-e1b0b5e48534</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -1282,6 +1309,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>095df1cd-015d-4ef0-bd65-dfbafb5f1719</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -1294,6 +1322,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>2a0a7bba-54cb-4a95-b2ec-299e00c9762f</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -1315,6 +1344,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>0400c6df-241c-4989-961d-7c5f0251acf5</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -1327,6 +1357,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>ede615d1-7d9f-414a-bc7c-940e9e6f7d56</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -1339,6 +1370,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>830e0ef0-ef5f-4cab-bb25-98be7285963b</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -1351,6 +1383,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>ba23bf0e-da74-40ac-ac60-9ea766d9e5ae</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -1360,6 +1393,8 @@
    </torpedoSettings>
    <ammunitionCapacity>8</ammunitionCapacity>
    <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -1576,6 +1611,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>02e73bb5-330b-4a7e-97cd-6eb1afa6937a</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -1703,6 +1739,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>06842bcd-8596-457e-9736-8c601ea088f5</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -1724,6 +1761,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>e1a61004-1a99-46e5-aa31-a8f17a020fd0</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -1736,6 +1774,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>70cc5e44-bf76-403f-8bc5-f66740f17d3d</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -1748,6 +1787,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>22c7264d-85f1-4cb2-a76e-3f4bfaa5a3b1</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -1760,6 +1800,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>603e206b-4dea-48d2-8bac-9111f47d7ef6</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -1769,6 +1810,8 @@
    </torpedoSettings>
    <ammunitionCapacity>6</ammunitionCapacity>
    <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -1997,6 +2040,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>8459344c-d0d1-4784-a988-a6759e08799a</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -2009,6 +2053,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>1530880a-1d31-4e57-8348-5f57b1d99eb9</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -2021,6 +2066,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>2c0b8228-e8f7-40cc-bfe2-06cc638c6112</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -2042,6 +2088,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>46fcbc3f-34e4-4174-b9a3-6a948e0e46e5</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -2054,6 +2101,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>adef9cf7-b91e-471a-ba1d-a3d8ae4e8330</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -2066,6 +2114,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>903ea210-006c-44f3-b00b-40d47f369bd8</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -2074,6 +2123,8 @@
    </torpedoSettings>
    <ammunitionCapacity>6</ammunitionCapacity>
    <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -2295,6 +2346,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>7220f30e-670a-424b-9c2d-bd52aba9f941</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -2308,6 +2360,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>b31f58fd-7596-4c18-96f1-e4bf534765fc</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -2438,6 +2491,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>105c9642-f7da-4e6d-bcd4-b359cd151d13</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -2450,6 +2504,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>89f1934a-441c-48a7-953f-3b4bc32b63a2</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -2471,6 +2526,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>ca17b93c-fc27-4b3d-a660-0fe18f31ac9f</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -2483,6 +2539,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>3fb3d553-c260-4bad-818a-c0a906c1bcdf</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -2495,6 +2552,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>76638d85-42dd-4222-b70e-5a16ea41b0f4</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -2503,6 +2561,8 @@
    </torpedoSettings>
    <ammunitionCapacity>6</ammunitionCapacity>
    <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -2717,6 +2777,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>605fd265-9a4f-4e31-8779-99873dd09b64</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -2729,6 +2790,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>df60f3ac-ca97-4372-9bd8-8ce3f1bd3d29</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -2851,6 +2913,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>0f66da61-d297-4b8f-9370-75b2fe7bc2ea</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -2863,6 +2926,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>56953afe-3372-4496-8d9e-1528847dd369</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -2875,6 +2939,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>283cf349-28a3-41a8-9a68-b9a7366785a7</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -2887,6 +2952,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>07cecfd5-6b08-45d9-91c3-ace9cc2190ec</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -2901,6 +2967,8 @@
    <torpedoSettings />
    <ammunitionCapacity>0</ammunitionCapacity>
    <damageClass>A</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -3119,6 +3187,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>5c08ee1e-eb7b-4241-bde0-3a3cb8499a90</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -3131,6 +3200,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>7bd4c02d-5ff9-4b55-bd78-718277ea19be</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -3261,6 +3331,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>8cbae3dc-752e-42e7-891d-9fbd28eaa4fa</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -3273,6 +3344,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>97a4b39a-e606-4b75-9f7c-0ea4070553d3</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -3294,6 +3366,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>c9c5a3a1-ed5f-441d-8856-5fc1fff41b13</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -3306,6 +3379,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>8daef61b-7e99-4c11-b041-8200d293a5b4</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -3318,6 +3392,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>6163b680-79bf-456f-9383-9808d0b6c73c</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -3330,6 +3405,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>53216fa8-3ee4-4514-ba14-050492db5c84</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -3338,6 +3414,8 @@
    </torpedoSettings>
    <ammunitionCapacity>6</ammunitionCapacity>
    <damageClass>H</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -3551,6 +3629,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>71deb1f1-6a1f-403c-ab3a-cde36cbd41c6</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -3681,6 +3760,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>0922ab7e-4b70-475e-b94e-4f260756b867</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -3693,6 +3773,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>50e49fce-af16-4db1-8823-57584178f260</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -3714,6 +3795,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>af69a535-7e9a-4f95-9b68-45c3493fc93d</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -3726,6 +3808,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>7b4347cf-79f6-456a-9147-976e77e52c1d</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -3738,6 +3821,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>f389392f-a666-4a67-9b25-c267e5d5458b</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -3750,6 +3834,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>c121a569-aa38-47cd-8412-9ea2e52621da</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -3758,6 +3843,8 @@
    </torpedoSettings>
    <ammunitionCapacity>6</ammunitionCapacity>
    <damageClass>H</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords />
   <targetSizeModifier>0</targetSizeModifier>
@@ -3949,6 +4036,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>0ac60d88-6946-4eec-ae2a-40106df64f90</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -4079,6 +4167,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>ec5843c6-23cc-46ba-b625-80ff658588b5</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -4091,6 +4180,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>d5c8f216-67bb-4cc4-86ff-bce57b9b0fd7</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -4112,6 +4202,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>a3a366f7-6051-4e78-91ea-1f823e592fbf</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -4124,6 +4215,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>1e0156e1-3fd7-4c7b-a801-3c1c38a5c798</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -4136,6 +4228,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>da76fbb6-3377-47bc-b430-dc942e01120e</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -4148,6 +4241,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>be630bb6-3fd9-4dfd-a0bc-dfa1fa9bebf0</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -4156,6 +4250,8 @@
    </torpedoSettings>
    <ammunitionCapacity>6</ammunitionCapacity>
    <damageClass>H</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords />
   <targetSizeModifier>0</targetSizeModifier>
@@ -4341,6 +4437,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>6911bf5c-238f-4ac0-b001-67a2fa199b17</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -4475,6 +4572,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>b77de37a-48c4-466a-9a56-5acb4ef13693</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -4487,6 +4585,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>be4af16d-79e2-4752-94fe-e07ab346cf94</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -4501,6 +4600,8 @@
    <torpedoSettings />
    <ammunitionCapacity>0</ammunitionCapacity>
    <damageClass>A</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -4714,6 +4815,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>82767135-3227-41fa-9ed5-4b2250b3ca97</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -4726,6 +4828,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>5d272e49-71a8-4a5c-9729-99f4bae15ab9</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -4860,6 +4963,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>2082399c-7786-449d-868e-388389b76cfb</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -4872,6 +4976,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>8cba875a-7646-4073-8b88-5b0404b4c081</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -4884,6 +4989,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>6523d84d-15c3-4e31-8b21-ad57c27b0572</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -4896,6 +5002,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>fdfe9f92-6f54-4bf5-b614-c9e9ce51e86b</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -4917,6 +5024,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>666ad036-fd1d-41a3-93b3-453e11997bff</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -4929,6 +5037,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>15f1fc65-c1f8-4aae-829f-6ff20c613559</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -4938,6 +5047,8 @@
    </torpedoSettings>
    <ammunitionCapacity>0</ammunitionCapacity>
    <damageClass>H</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -5164,6 +5275,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>7e8fd841-8c52-4dfc-a80c-541a0699a1c9</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -5298,6 +5410,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>11e3153a-bef4-42b3-a6c5-a62e9fa60f2d</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -5310,6 +5423,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>b8086b06-be4d-47cf-a97d-99d6138d2c97</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -5322,6 +5436,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>14089bd2-688a-4010-926d-44e2a276117e</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -5334,6 +5449,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>4529abac-ab87-4960-bda4-e3a8c9d1a73f</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -5346,6 +5462,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>b3671fc9-a40d-48d8-8de8-164fe438d1d5</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -5367,6 +5484,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>d4d29201-294f-4526-9652-4ccde0ff53bd</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -5379,6 +5497,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>ec879f5c-acfa-40d3-b224-86a5daf655ea</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -5391,6 +5510,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>0dc5034a-0280-4916-ae83-78665f693401</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -5403,6 +5523,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>b6399c5f-e9a9-4e75-8f76-732a49d2ab26</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -5411,6 +5532,8 @@
    </torpedoSettings>
    <ammunitionCapacity>8</ammunitionCapacity>
    <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -5649,6 +5772,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>e15f5cfb-ad39-44fc-8f86-54289bea3caf</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -5661,6 +5785,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>dc6ae072-5210-4d57-a06e-d3da103f9f2f</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -5673,6 +5798,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>999090bb-78a4-4654-9da9-d79f703dea75</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -5800,6 +5926,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>dde6ccf6-b6cf-4c0d-a907-ccdb09326116</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -5812,6 +5939,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>51548692-950d-482a-9511-c75420a42ac8</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -5833,6 +5961,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>81a2f31c-c106-4e97-8423-6bc62658401a</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -5845,6 +5974,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>aeead6ab-fa5f-4b97-b525-2615030f47c8</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -5854,6 +5984,8 @@
    </torpedoSettings>
    <ammunitionCapacity>4</ammunitionCapacity>
    <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -6075,6 +6207,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>8c5a48aa-d33f-498d-b449-61aea81148dd</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -6209,6 +6342,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>0a09d520-5ce7-4834-b0bc-ef886bc246f9</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -6221,6 +6355,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>cc45fe16-2eba-499c-830b-4c2de860573e</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -6233,6 +6368,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>true</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>7d48b2e4-3efb-47f7-a411-65c0598fcf02</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -6245,6 +6381,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>acb53b19-e99d-4124-bc2a-90f74fad3c02</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -6266,6 +6403,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>9d4cf589-b6b6-4a13-a6ea-1c124e93dca1</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -6278,6 +6416,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>9df29664-78dd-4f57-b157-89398d982273</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -6290,6 +6429,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>bcb8b4ea-3f1b-4bb5-a5d4-ab8b69dfd8a3</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -6302,6 +6442,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>1164f537-c3f9-4d97-ab96-508f9ddfe56b</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -6310,6 +6451,8 @@
    </torpedoSettings>
    <ammunitionCapacity>8</ammunitionCapacity>
    <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -6557,6 +6700,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>5f9c56c3-5c03-4509-98aa-2d0d19ea061a</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -6569,6 +6713,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>2de7a960-76c9-40e2-b8d5-9ae5fb4547d9</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -6581,6 +6726,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>c0a2dc60-670d-4a7b-b4f7-b73675f04e79</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -6593,6 +6739,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>dd762625-ba85-443b-9538-d1fbfcab18c0</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -6605,6 +6752,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>b986059e-20a8-493b-9c8c-f7a985436b91</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -6617,6 +6765,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>e3489534-94ba-45f1-8c0b-85011a645152</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -6629,6 +6778,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>32fece68-5f43-42d8-a58c-b988fdb940d2</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
@@ -6641,6 +6791,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>60ac66b1-734d-4f56-a840-d167f4a7c6be</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -6662,6 +6813,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>3fc3895a-6fef-4195-9448-c3226ee7f932</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -6674,6 +6826,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>81fdfc23-0b30-419d-b5c9-d69443a5a3a6</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -6686,6 +6839,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>87ec94bc-6bbf-410e-8508-48454a5ad00e</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -6695,6 +6849,8 @@
    </torpedoSettings>
    <ammunitionCapacity>6</ammunitionCapacity>
    <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -6907,6 +7063,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>8972782d-0bc4-4d9a-850d-c46c783b35eb</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -7027,6 +7184,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>53ee0e34-98f9-4768-ae97-f8b2a68ca60b</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -7041,6 +7199,8 @@
    <torpedoSettings />
    <ammunitionCapacity>0</ammunitionCapacity>
    <damageClass>A</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -7256,6 +7416,7 @@
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
       <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
       <objectId>c968250a-4e89-4802-90fc-9f60352028a9</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
@@ -7270,6 +7431,8 @@
    <torpedoSettings />
    <ammunitionCapacity>0</ammunitionCapacity>
    <damageClass>A</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -7367,6 +7530,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>bbd82db3-8ea0-48f1-bda5-114f91b074b8</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -7380,6 +7544,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>deec5431-f1a1-4278-be32-e5b30dffa67e</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -7388,6 +7553,8 @@
    </torpedoSettings>
    <ammunitionCapacity>4</ammunitionCapacity>
    <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
@@ -7484,6 +7651,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>99348385-66ce-485d-ad49-05417bb04431</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -7497,6 +7665,7 @@
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
      <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
      <objectId>d0e8b92e-a0a1-4d6a-80b2-47b621fed274</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -7505,6 +7674,8 @@
    </torpedoSettings>
    <ammunitionCapacity>4</ammunitionCapacity>
    <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>

@@ -60,7 +60,10 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         shipLogListView.selectionChanged += (IEnumerable<object> objs) =>
         {
             var shipLog = objs.FirstOrDefault() as ShipLog;
-            GameManager.Instance.selectedShipLogObjectId = shipLog.objectId;
+            if (shipLog != null)
+            {
+                GameManager.Instance.selectedShipLogObjectId = shipLog.objectId;
+            }
         };
 
         var batteryStatusListView = root.Q<ListView>("BatteryStatusListView");

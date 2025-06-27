@@ -269,6 +269,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -563,6 +565,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -830,6 +834,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1036,6 +1042,8 @@
     <relativeToTargetDistanceYards>500</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>225</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1083,199 +1091,6 @@
       </value>
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>3d21b4b9-44bf-434c-9318-91a287b84c00</objectId>
-    </doctrine>
-   </ShipLog>
-   <ShipLog>
-    <subStates />
-    <objectId>93b88a00-313d-4df0-8cfb-2182851c96f7</objectId>
-    <namedShipObjectId>c58b4a18-5e00-4eca-ad5b-6ee74a2b9709</namedShipObjectId>
-    <damagePoint>0</damagePoint>
-    <position>
-     <LatDeg>37.1285553</LatDeg>
-     <LonDeg>126.486893</LonDeg>
-    </position>
-    <speedKnots>10</speedKnots>
-    <headingDeg>270</headingDeg>
-    <desiredSpeedKnots>10</desiredSpeedKnots>
-    <desiredHeadingDeg>270</desiredHeadingDeg>
-    <mapState>Destroyed</mapState>
-    <operationalState>Operational</operationalState>
-    <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
-    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
-    <batteryStatus>
-     <BatteryStatus>
-      <subStates />
-      <objectId>ac0cfd66-4c2c-4c29-81db-e774d352eb86</objectId>
-      <ammunition>
-       <ArmorPiercing>120</ArmorPiercing>
-       <semiArmorPiercing>0</semiArmorPiercing>
-       <common>120</common>
-       <highExplosive>0</highExplosive>
-      </ammunition>
-      <mountStatus>
-       <MountStatusRecord>
-        <subStates />
-        <objectId>ee80c4e5-aaa8-4e29-bf3d-e50f098a9a15</objectId>
-        <status>Operational</status>
-        <barrels>1</barrels>
-        <processSeconds>0</processSeconds>
-        <ammunitionType>ArmorPiercing</ammunitionType>
-        <logs />
-       </MountStatusRecord>
-       <MountStatusRecord>
-        <subStates />
-        <objectId>879c8431-3934-455f-b9ab-9d6fc59048e8</objectId>
-        <status>Operational</status>
-        <barrels>1</barrels>
-        <processSeconds>0</processSeconds>
-        <ammunitionType>ArmorPiercing</ammunitionType>
-        <logs />
-       </MountStatusRecord>
-       <MountStatusRecord>
-        <subStates />
-        <objectId>c672a10e-293b-49d5-a409-84117b478e94</objectId>
-        <status>Operational</status>
-        <barrels>1</barrels>
-        <processSeconds>0</processSeconds>
-        <ammunitionType>ArmorPiercing</ammunitionType>
-        <logs />
-       </MountStatusRecord>
-      </mountStatus>
-      <fireControlSystemStatusRecords>
-       <FireControlSystemStatusRecord>
-        <subStates />
-        <objectId>5871769b-e47d-420f-8d44-0d3b47780705</objectId>
-        <trackingState>Idle</trackingState>
-        <trackingSeconds>0</trackingSeconds>
-       </FireControlSystemStatusRecord>
-      </fireControlSystemStatusRecords>
-      <fireControlRadarDisabled>false</fireControlRadarDisabled>
-     </BatteryStatus>
-    </batteryStatus>
-    <torpedoSectorStatus>
-     <ammunition>2</ammunition>
-     <mountStatus>
-      <TorpedoMountStatusRecord>
-       <subStates />
-       <objectId>b62659c7-5e71-4e00-9b22-e7441b0bc036</objectId>
-       <status>Operational</status>
-       <barrels>1</barrels>
-       <currentLoad>1</currentLoad>
-       <reloadingSeconds>0</reloadingSeconds>
-       <reloadedLoad>1</reloadedLoad>
-      </TorpedoMountStatusRecord>
-      <TorpedoMountStatusRecord>
-       <subStates />
-       <objectId>ce62bc22-0351-4934-a8de-f81b9dcc5398</objectId>
-       <status>Operational</status>
-       <barrels>1</barrels>
-       <currentLoad>1</currentLoad>
-       <reloadingSeconds>0</reloadingSeconds>
-       <reloadedLoad>1</reloadedLoad>
-      </TorpedoMountStatusRecord>
-      <TorpedoMountStatusRecord>
-       <subStates />
-       <objectId>1070dfcd-5958-4516-8b87-c60b801b661e</objectId>
-       <status>Operational</status>
-       <barrels>1</barrels>
-       <currentLoad>1</currentLoad>
-       <reloadingSeconds>0</reloadingSeconds>
-       <reloadedLoad>1</reloadedLoad>
-      </TorpedoMountStatusRecord>
-      <TorpedoMountStatusRecord>
-       <subStates />
-       <objectId>d092dd43-fe39-49ff-a919-b3c0b0374229</objectId>
-       <status>Operational</status>
-       <barrels>1</barrels>
-       <currentLoad>1</currentLoad>
-       <reloadingSeconds>0</reloadingSeconds>
-       <reloadedLoad>1</reloadedLoad>
-      </TorpedoMountStatusRecord>
-     </mountStatus>
-    </torpedoSectorStatus>
-    <rapidFiringStatus>
-     <RapidFiringStatus>
-      <portMountHits>0</portMountHits>
-      <starboardMountHits>0</starboardMountHits>
-      <fireControlHits>0</fireControlHits>
-      <targettingRecords />
-      <ammunition>60</ammunition>
-      <logs />
-      <objectId>2b374694-14ac-420c-95ad-0226282a2361</objectId>
-     </RapidFiringStatus>
-    </rapidFiringStatus>
-    <dynamicStatus>
-     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
-     <accelerationOffset>0</accelerationOffset>
-     <engineRoomHits>0</engineRoomHits>
-     <propulsionShaftHits>0</propulsionShaftHits>
-     <boilerRoomHits>0</boilerRoomHits>
-     <engineRoomFloodingHits>0</engineRoomFloodingHits>
-     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
-    </dynamicStatus>
-    <searchLightHits>
-     <portHit>0</portHit>
-     <starboardHit>0</starboardHit>
-    </searchLightHits>
-    <damageControlRatingHits>0</damageControlRatingHits>
-    <damageEffectRecords />
-    <damageEffects />
-    <shipboardFireStatus />
-    <leaderObjectId>f3e417c3-89d7-4a71-a8b8-84c408d0cb05</leaderObjectId>
-    <emergencyRudder>false</emergencyRudder>
-    <assistedDeceleration>true</assistedDeceleration>
-    <controlMode>Independent</controlMode>
-    <followDistanceYards>500</followDistanceYards>
-    <relativeTargetObjectId>0</relativeTargetObjectId>
-    <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
-    <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
-    <isEvasiveManeuvering>false</isEvasiveManeuvering>
-    <doctrine>
-     <maneuverAutomaticType>
-      <isInherited>true</isInherited>
-      <value>Manual</value>
-     </maneuverAutomaticType>
-     <fireAutomaticType>
-      <isInherited>true</isInherited>
-      <value>Automatic</value>
-     </fireAutomaticType>
-     <ammunitionFallbackable>
-      <isInherited>true</isInherited>
-      <value>true</value>
-     </ammunitionFallbackable>
-     <ammunitionSwitchAutomaticType>
-      <isInherited>true</isInherited>
-      <value>Automatic</value>
-     </ammunitionSwitchAutomaticType>
-     <maximumFiringDistanceYardsFor200mmPlus>
-      <isInherited>true</isInherited>
-      <value>
-       <isSpecified>false</isSpecified>
-       <value>0</value>
-      </value>
-     </maximumFiringDistanceYardsFor200mmPlus>
-     <maximumFiringDistanceYardsFor100mmTo200mm>
-      <isInherited>true</isInherited>
-      <value>
-       <isSpecified>false</isSpecified>
-       <value>0</value>
-      </value>
-     </maximumFiringDistanceYardsFor100mmTo200mm>
-     <maximumFiringDistanceYardsFor100mmLess>
-      <isInherited>true</isInherited>
-      <value>
-       <isSpecified>false</isSpecified>
-       <value>0</value>
-      </value>
-     </maximumFiringDistanceYardsFor100mmLess>
-     <maximumFiringDistanceYardsForTorpedo>
-      <isInherited>true</isInherited>
-      <value>
-       <isSpecified>false</isSpecified>
-       <value>0</value>
-      </value>
-     </maximumFiringDistanceYardsForTorpedo>
-     <objectId>9351288e-3bf8-421b-8ad4-23710e3010d3</objectId>
     </doctrine>
    </ShipLog>
    <ShipLog>
@@ -1450,6 +1265,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1671,6 +1488,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1882,6 +1701,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -2093,6 +1914,8 @@
     <relativeToTargetDistanceYards>500</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -2317,6 +2140,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -2541,6 +2366,8 @@
     <relativeToTargetDistanceYards>500</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>225</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -2746,6 +2573,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -2951,6 +2780,8 @@
     <relativeToTargetDistanceYards>500</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -3156,6 +2987,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -3352,6 +3185,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -3595,6 +3430,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -3907,6 +3744,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -4219,6 +4058,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -4471,6 +4312,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -4791,6 +4634,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -5058,6 +4903,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -5313,6 +5160,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -5507,6 +5356,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -5677,6 +5528,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>325f3d53-3214-456c-9731-e8f8e22fea04</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -5816,6 +5669,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>325f3d53-3214-456c-9731-e8f8e22fea04</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -5943,6 +5798,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -6070,6 +5927,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
     <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -6586,10 +6445,11 @@
    <accumulateSecond>0</accumulateSecond>
    <elapsedSeconds>0</elapsedSeconds>
   </weaponSimulationAssignmentClock>
+  <doingStep>false</doingStep>
  </navalGameState>
  <viewState>
-  <xRotation>39.66817</xRotation>
-  <yRotation>236.397659</yRotation>
-  <orthographicSize>4</orthographicSize>
+  <xRotation>39.6781</xRotation>
+  <yRotation>236.330933</yRotation>
+  <orthographicSize>10</orthographicSize>
  </viewState>
 </FullState>

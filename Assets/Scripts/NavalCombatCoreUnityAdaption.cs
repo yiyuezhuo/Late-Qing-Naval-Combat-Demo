@@ -467,7 +467,14 @@ namespace NavalCombatCore
 
     public partial class UnitModule
     {
+        [XmlIgnore] // For some reason, XmlSeralizer will serialize this readonly property defaultly, so impose this resctrition.
         [CreateProperty]
         public List<SubState> subStatesDownward => GetSubStatesDownward().ToList();
+    }
+
+    public partial class ShipTypeLossItem
+    {
+        [CreateProperty]
+        public string shipTypeDesc => ShipClass.GetAcronymFor(shipType);
     }
 }

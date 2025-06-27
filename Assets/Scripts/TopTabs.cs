@@ -64,7 +64,7 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         saveButton.clicked += () =>
         {
-            
+
             var fullState = new FullState()
             {
                 // NavalGameState = NavalGameState.Instance,
@@ -93,6 +93,9 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         var coreParameterRoot = root.Q<VisualElement>("CoreParameterRoot");
         coreParameterRoot.dataSource = CoreParameter.Instance;
+
+        var victoryStatusButton = root.Q<Button>("VictoryStatusButton");
+        victoryStatusButton.clicked += DialogRoot.Instance.PopupVictoryStatusDialog;
     }
 
     void SetToFormationPosition()

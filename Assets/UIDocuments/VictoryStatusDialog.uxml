@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="NavalCombatCore.VictoryStatus, Assembly-CSharp" class="panel-dialog" style="flex-grow: 0; width: 700px;">
+        <ui:Label text="Victory" class="title" />
+        <ui:ListView name="SideVictoryStatusesListView" data-source-path="sideVictoryStatuses" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/SideVictoryStatusViewer.uxml?fileID=9197481963319205126&amp;guid=00aa82529951f914aaedba9c2a95aec5&amp;type=3#SideVictoryStatusViewer" virtualization-method="DynamicHeight" style="flex-grow: 1;" />
+        <ui:Button text="Confirm" name="ConfirmButton" />
+    </ui:VisualElement>
+</ui:UXML>

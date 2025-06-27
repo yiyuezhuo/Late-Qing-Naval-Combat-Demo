@@ -82,6 +82,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset messageDialogDocument;
     public VisualTreeAsset streamingAssetReferenceDialogDocument;
     public VisualTreeAsset scenarioPickerDialogDocument;
+    public VisualTreeAsset victoryStatusDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -364,4 +365,35 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
+    public void PopupVictoryStatusDialog()
+    {
+        var victoryStatus = VictoryStatus.Generate(NavalGameState.Instance);
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = victoryStatusDocument,
+            templateDataSource = victoryStatus
+        };
+
+        tempDialog.onCreated += (sender, root) =>
+        {
+            // SideVictoryStatusesListView
+            // ShipTypeLossItemsMultiColumnListView
+
+            Utils.BindItemsSourceRecursive(root);
+
+            var sideVictoryStatusesListView = root.Q<ListView>("SideVictoryStatusesListView");
+            sideVictoryStatusesListView.makeItem = () =>
+            {
+                var el = sideVictoryStatusesListView.itemTemplate.CloneTree();
+
+                Utils.BindItemsSourceRecursive(el);
+
+                return el;
+            };
+        };
+
+        tempDialog.Popup();
+    }
 }

@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:TextField data-source-type="NavalCombatCore.ShipTypeLossItem, Assembly-CSharp" enabled="true">
+        <Bindings>
+            <ui:DataBinding property="value" data-source-path="shipTypeDesc" binding-mode="ToTarget" />
+        </Bindings>
+    </ui:TextField>
+</ui:UXML>

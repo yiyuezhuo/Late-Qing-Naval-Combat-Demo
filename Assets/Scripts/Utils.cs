@@ -27,6 +27,7 @@ public static class Utils
     public static float wuToYards = wuToKyd * 1000;
     public static float wuToFoot = wuToYards * 3;
     public static float footToWu = 1 / wuToFoot;
+    public static float yardsToWu = 1 / wuToYards;
 
     public static Vector3 LatitudeLongitudeDegHeightFootToVector3(float latDeg, float lonDeg, float heightFoot)
     {

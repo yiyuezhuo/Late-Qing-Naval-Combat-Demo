@@ -773,44 +773,81 @@ namespace NavalCombatCore
             }
             if (!newPositionBlocked && CoreParameter.Instance.checkShipCollision)
             {
-                ShipLog collided = null; // "Collider" check
-                foreach (var other in NavalGameState.Instance.shipLogsOnMap)
+                // ShipLog collided = null; // "Collider" check
+                // foreach (var other in NavalGameState.Instance.shipLogsOnMap)
+                // {
+                //     if (other == this)
+                //         continue;
+                //     var isCollided = CollideUtils.IsCollided(newPosition, this, other);
+                //     if (isCollided)
+                //     {
+                //         collided = other;
+                //     }
+                // }
+                // newPositionBlocked = collided != null; // TODO: Handle deliberately hostile ramming and speed change
+
+                var maskCheckService = ServiceLocator.Get<IMaskCheckService>();
+                var collideCheckResult = maskCheckService.CollideCheck(this, distNm * MeasureUtils.navalMileToYard + GetLengthFoot() / 2 * MeasureUtils.footToYard);
+                if (collideCheckResult != null)
                 {
-                    if (other == this)
-                        continue;
-                    var isCollided = CollideUtils.IsCollided(newPosition, this, other);
-                    if (isCollided)
+                    newPositionBlocked = true;
+                    var collided = collideCheckResult.collided;
+
+                    // Handle Ramming Damage
+                    if ((this as IShipGroupMember).GetRootParent() != (collided as IShipGroupMember).GetRootParent())
                     {
-                        collided = other;
+                        var targetArmorActualInch = collided.shipClass.armorRating.GetRecord(collideCheckResult.collideLocation).actualInch;
+                        var isRammerUnarmored = shipClass.armorRating.GetArmorEffectiveInch(ArmorLocation.MainBelt) > 0 || shipClass.armorRating.GetArmorEffectiveInch(ArmorLocation.Deck) > 0;
+
+                        // Hostile collision invoke ramming damage only at this point.
+                        var rammingResolutionParameter = new RuleChart.RammingResolutionParameter()
+                        {
+                            rammerDamagePoint = shipClass.damagePoint,
+                            impactAngleDeg = collideCheckResult.impactAngleDeg,
+                            ramType = shipClass.ram,
+                            targetArmorActualInch = targetArmorActualInch,
+                            targetSpeedKnots = collided.speedKnots,
+                            rammerSpeedKnots = speedKnots,
+                            targetBuiltYear = collided.namedShip.applicableYearBegin,
+                            isTargetSubmarine = false, // TODO: Handle Submarine
+                            isTargetNonWarship = false, // TODO: Add more data
+                            isRammerNonWarship = false,
+                            isRammerUnarmored = isRammerUnarmored
+                        };
+
+                        var ramResolutionResult = rammingResolutionParameter.Resolve();
+
+                        AddDamagePoint(ramResolutionResult.inflictToRammerDamagePoint);
+                        if (ramResolutionResult.inflictToRammerDamagePoint / shipClass.damagePoint > 0.1f)
+                        {
+                            DamageEffectChart.AddNewDamageEffect(new()
+                            {
+                                subject = this,
+                                baseDamagePoint = ramResolutionResult.inflictToRammerDamagePoint,
+                                cause = DamageEffectCause.BeltEnd,
+                                hitPenDetType = HitPenDetType.PassThrough,
+                                ammunitionType = AmmunitionType.ArmorPiercing,
+                                shellDiameterInch = 10, // Rulebook isn't very clear for DE for ramming
+                                addtionalDamageEffectProbility = 0.5f,
+                            });
+                        }
+
+                        collided.AddDamagePoint(ramResolutionResult.inflictToTargetDamagePoint);
+                        if (ramResolutionResult.inflictToTargetDamagePoint / collided.shipClass.damagePoint > 0.1f)
+                        {
+                            DamageEffectChart.AddNewDamageEffect(new()
+                            {
+                                subject = collided,
+                                baseDamagePoint = ramResolutionResult.inflictToRammerDamagePoint,
+                                cause = collideCheckResult.collideLocation == ArmorLocation.MainBelt ? DamageEffectCause.MainBelt : DamageEffectCause.BeltEnd,
+                                hitPenDetType = HitPenDetType.PassThrough,
+                                ammunitionType = AmmunitionType.ArmorPiercing,
+                                shellDiameterInch = 10, // Rulebook isn't very clear for DE for ramming
+                                addtionalDamageEffectProbility = 0.5f,
+                            });
+                        }
                     }
-                    // var otherPos = other.position;
-
-                    // // Exact Method
-                    // // Geodesic.WGS84.Inverse(newPosition.LatDeg, newPosition.LonDeg, otherPos.LatDeg, otherPos.LonDeg, out var distanceM, out var azi1, out var azi2);
-                    // // Approximation Method
-                    // var (distanceKm, azi1) = MeasureStats.Approximation.CalculateDistanceKmAndBearingDeg(newPosition.LatDeg, newPosition.LonDeg, otherPos.LatDeg, otherPos.LonDeg);
-                    // var distanceM = distanceKm * 1000;
-                    // var azi2 = azi1;
-
-                    // if (MeasureUtils.GetPositiveAngleDifference(headingDeg, (float)azi1) > 90)
-                    //     continue;
-
-                    // var distanceFoot = distanceM * MeasureUtils.meterToFoot;
-                    // var lengthFoot = shipClass.lengthFoot;
-                    // var otherLengthFoot = other.shipClass.lengthFoot;
-                    // if (distanceFoot < lengthFoot / 2 + otherLengthFoot / 2)
-                    // {
-                    //     var diff = MeasureUtils.GetPositiveAngleDifference(other.headingDeg, (float)azi2);
-                    //     var coef = Math.Abs(diff - 90) / 90;
-                    //     var otherMix = otherLengthFoot * coef + other.shipClass.beamFoot * (1 - coef);
-                    //     if (distanceFoot < lengthFoot / 2 + otherMix / 2)
-                    //     {
-                    //         collided = other;
-                    //         break;
-                    //     }
-                    // }
                 }
-                newPositionBlocked = collided != null; // TODO: Handle deliberately hostile ramming and speed change
             }
 
             if (!newPositionBlocked)

@@ -724,11 +724,11 @@ namespace NavalCombatCore
         public class RammingResolutionParameter
         {
             public float rammerDamagePoint;
-            public float impactAngle;
+            public float impactAngleDeg;
             public RamType ramType;
-            public float targetArmorRealInch;
+            public float targetArmorActualInch;
             public float targetSpeedKnots;
-            public float rammerTargetSpeedKnots;
+            public float rammerSpeedKnots;
             public float targetBuiltYear;
             public bool isTargetSubmarine;
             public bool isTargetNonWarship;
@@ -747,22 +747,22 @@ namespace NavalCombatCore
                 {15,    -7},
             };
 
-            public RamResolutionResult ResolveRamming()
+            public RamResolutionResult Resolve()
             {
                 var x1 = rammingTargetSpeedFactorTable;
                 var x1Row = Enumerable.Range(0, x1.rows.Length).Where(r => targetSpeedKnots <= x1.rows[r]).DefaultIfEmpty(x1.rows.Length - 1).First();
-                var x1Col = Enumerable.Range(0, x1.cols.Length).Where(c => impactAngle <= x1.cols[c]).DefaultIfEmpty(x1.cols.Length - 1).First();
+                var x1Col = Enumerable.Range(0, x1.cols.Length).Where(c => impactAngleDeg <= x1.cols[c]).DefaultIfEmpty(x1.cols.Length - 1).First();
                 var damageFactor1 = x1.cells[x1Row, x1Col];
 
                 var x2 = rammingRamSpeedFactorTable;
-                var x2Row = Enumerable.Range(0, x2.rows.Length).Where(r => rammerTargetSpeedKnots <= x2.rows[r]).DefaultIfEmpty(x2.rows.Length - 1).First();
-                var x2Col = Enumerable.Range(0, x2.cols.Length).Where(c => impactAngle <= x2.cols[c]).DefaultIfEmpty(x2.cols.Length - 1).First();
+                var x2Row = Enumerable.Range(0, x2.rows.Length).Where(r => rammerSpeedKnots <= x2.rows[r]).DefaultIfEmpty(x2.rows.Length - 1).First();
+                var x2Col = Enumerable.Range(0, x2.cols.Length).Where(c => impactAngleDeg <= x2.cols[c]).DefaultIfEmpty(x2.cols.Length - 1).First();
                 var damageFactor2 = x2.cells[x2Row, x2Col];
 
                 var damageFactor = damageFactor1 + damageFactor2;
 
                 var x4 = rammingTargetAdjustmentsTable;
-                var x4Row = Enumerable.Range(0, x4.GetLength(0)).Where(r => x4[r, 0] <= targetArmorRealInch).LastOrDefault();
+                var x4Row = Enumerable.Range(0, x4.GetLength(0)).Where(r => x4[r, 0] <= targetArmorActualInch).LastOrDefault();
                 var targetArmorAdjustment = (int)x4[x4Row, 1];
 
                 var targetShipTypeAdjustment = 0;
@@ -785,7 +785,7 @@ namespace NavalCombatCore
                 var rammerShipTypeAdjustment = isRammerNonWarship ? -3 : 0;
 
                 var x3 = rammingDamageFactorTable;
-                var x3Col = Enumerable.Range(0, x3.cols.Length).Where(c => impactAngle <= x3.cols[c]).DefaultIfEmpty(x3.cols.Length - 1).First();
+                var x3Col = Enumerable.Range(0, x3.cols.Length).Where(c => impactAngleDeg <= x3.cols[c]).DefaultIfEmpty(x3.cols.Length - 1).First();
 
                 var x3Row = Enumerable.Range(0, x3.rows.Length).Where(r => damageFactor <= x3.rows[r]).DefaultIfEmpty(x3.rows.Length - 1).First();
                 x3Row += targetArmorAdjustment + targetShipTypeAdjustment + ramModifier + rammerShipTypeAdjustment;
@@ -802,13 +802,13 @@ namespace NavalCombatCore
 
                 if (isTargetNonWarship)
                     rammerMod -= 3;
-                else if (targetArmorRealInch <= 0.5)
+                else if (targetArmorActualInch <= 0.5)
                     rammerMod -= 1;
-                else if (targetArmorRealInch <= 2)
+                else if (targetArmorActualInch <= 2)
                     rammerMod += 1;
-                else if(targetArmorRealInch <= 6)
+                else if(targetArmorActualInch <= 6)
                     rammerMod += 2;
-                else if(targetArmorRealInch <= 12)
+                else if(targetArmorActualInch <= 12)
                     rammerMod += 3;
                 else
                     rammerMod += 4;

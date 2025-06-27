@@ -192,10 +192,13 @@ namespace NavalCombatCore
             {
                 foreach (var child in shipGroup.GetChildren()) // if it's not resolved, child may be null and raise exception
                 {
-                    child.parentObjectId = shipGroup.objectId;
-                    if (child is ShipLog subShipLog)
+                    if (child != null)
                     {
-                        shipTracked.Add(subShipLog.objectId);
+                        child.parentObjectId = shipGroup.objectId;
+                        if (child is ShipLog subShipLog)
+                        {
+                            shipTracked.Add(subShipLog.objectId);
+                        }
                     }
                 }
             }

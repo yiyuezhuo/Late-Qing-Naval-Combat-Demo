@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
 using GeographicLib;
 using System.Runtime.InteropServices;
+using System;
 
 
 public class LOSLine : MonoBehaviour, IMaskCheckService
@@ -130,6 +131,37 @@ public class LOSLine : MonoBehaviour, IMaskCheckService
             }
         }
         return result;
+    }
+
+    public CollideCheckResult CollideCheck(ShipLog observer, float testDistanceYards) // In General, detectionDistanceYards = moved distance and length / 2
+    {
+        if (GameManager.Instance.objectId2Viewer.TryGetValue(observer.objectId, out var portraitViewer))
+        {
+            var origin = portraitViewer.headingTransform.position;
+            var direction = portraitViewer.headingTransform.right; // right = x-axis, which is the true "forward" in the current implementation detail
+            var maxDistance = testDistanceYards * Utils.yardsToWu;
+
+            var raycastHits = Physics.RaycastAll(origin, direction, maxDistance, losLayerMask);
+            foreach (var raycastHit in raycastHits)
+            {
+                var collidedPortraitViewer = raycastHit.collider.GetComponent<IColliderRootProvider>()?.GetRoot()?.GetComponent<PortraitViewer>();
+                var collidedShipLog = collidedPortraitViewer?.model as ShipLog; // TODO: if something other than ShipLog can block LOS, add an interface for here
+                if (collidedShipLog != null && collidedShipLog != observer)
+                {
+                    var localPoint = collidedPortraitViewer.headingTransform.InverseTransformPoint(raycastHit.point);
+                    var collidedVerticalFoot = localPoint.x * Utils.wuToFoot;
+                    var hitBeltEnd = Math.Abs(collidedVerticalFoot) > collidedShipLog.GetLengthFoot() / 2 * 0.7;
+                    var hitArmorLocation = hitBeltEnd ? ArmorLocation.BeltEnd : ArmorLocation.MainBelt;
+                    return new()
+                    {
+                        collided = collidedShipLog,
+                        collideLocation = hitArmorLocation,
+                        impactAngleDeg=Mathf.Abs(Mathf.Atan2(localPoint.x, localPoint.y))
+                    };
+                }
+            }
+        }
+        return null;
     }
 
     // Update is called once per frame

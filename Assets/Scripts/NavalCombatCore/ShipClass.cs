@@ -509,21 +509,26 @@ namespace NavalCombatCore
         public ArmorRatingReocrd turretVertical = new(); // 8V
         public ArmorRatingReocrd superStructureVertical = new(); // 9V
 
-        public float GetArmorEffectiveInch(ArmorLocation loc)
+        public ArmorRatingReocrd GetRecord(ArmorLocation loc)
         {
             return loc switch
             {
-                ArmorLocation.Deck => deck.actualInch,
-                ArmorLocation.TurretHorizontal => turretHorizontal.actualInch,
-                ArmorLocation.SuperStructureHorizontal => superStructureHorizontal.actualInch,
-                ArmorLocation.ConningTower => conningTower.actualInch,
-                ArmorLocation.MainBelt => mainBelt.actualInch,
-                ArmorLocation.BeltEnd => beltEnd.actualInch,
-                ArmorLocation.Barbette => barbette.actualInch,
-                ArmorLocation.TurretVertical => turretVertical.actualInch,
-                ArmorLocation.SuperStructureVertical => superStructureVertical.actualInch,
-                _ => mainBelt.actualInch
+                ArmorLocation.Deck => deck,
+                ArmorLocation.TurretHorizontal => turretHorizontal,
+                ArmorLocation.SuperStructureHorizontal => superStructureHorizontal,
+                ArmorLocation.ConningTower => conningTower,
+                ArmorLocation.MainBelt => mainBelt,
+                ArmorLocation.BeltEnd => beltEnd,
+                ArmorLocation.Barbette => barbette,
+                ArmorLocation.TurretVertical => turretVertical,
+                ArmorLocation.SuperStructureVertical => superStructureVertical,
+                _ => mainBelt
             };
+        }
+
+        public float GetArmorEffectiveInch(ArmorLocation loc)
+        {
+            return GetRecord(loc).effectInch;
         }
 
         // public static float[,] broadAspectLocationWeightTable = new float[,]

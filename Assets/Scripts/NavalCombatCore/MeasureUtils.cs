@@ -224,6 +224,7 @@ namespace NavalCombatCore
         public static float navalMileToKilometer = 1.852f;
         public static float kilometerToNavalMile = 1f / navalMileToKilometer;
         public static float kilometerToYard = meterToYard * 1000;
+        public static float navalMileToYard = 2025.37183f;
 
         public static float MoveAngleTowards(float current, float target, float step)
         {

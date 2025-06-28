@@ -213,7 +213,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
-    public float remainAdvanceSimulationSecondsRequestedByKeyPressing; // Requested by KeyCode 1-9 (1-9 min) and BackQuote (`) (1s)
+    public float remainAdvanceSimulationSecondsRequestedByUserInput; // Requested by KeyCode 1-9 (1-9 min) and BackQuote (`) (1s)
     public float remainAdvanceSimulationSecondsRequestedByUpdate;
 
     // public float simulationRateRaio = 30;
@@ -226,23 +226,23 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         var simulationRateRaio = GamePreference.Instance.simulationRateRaio;
 
         var realSeconds = Time.deltaTime;
-        if (remainAdvanceSimulationSecondsRequestedByKeyPressing >= pulseLengthSeconds)
+        if (remainAdvanceSimulationSecondsRequestedByUserInput >= pulseLengthSeconds)
         {
             remainAdvanceSimulationSecondsRequestedByUpdate += realSeconds * simulationRateRaio;
         }
 
-        while (remainAdvanceSimulationSecondsRequestedByKeyPressing >= pulseLengthSeconds && remainAdvanceSimulationSecondsRequestedByUpdate >= pulseLengthSeconds)
+        while (remainAdvanceSimulationSecondsRequestedByUserInput >= pulseLengthSeconds && remainAdvanceSimulationSecondsRequestedByUpdate >= pulseLengthSeconds)
         {
             NavalGameState.Instance.Step(pulseLengthSeconds);
-            remainAdvanceSimulationSecondsRequestedByKeyPressing -= pulseLengthSeconds;
+            remainAdvanceSimulationSecondsRequestedByUserInput -= pulseLengthSeconds;
             remainAdvanceSimulationSecondsRequestedByUpdate -= pulseLengthSeconds;
         }
     }
 
     static Dictionary<KeyCode, float> simulationSecondsAdvanceMap = new()
     {
-        {KeyCode.Tilde, 1}, // 1s, Note Tilde, BackQuote may be blocked by input method. So it's recommended to disable input method.
-        {KeyCode.BackQuote, 1},
+        // {KeyCode.Tilde, 1}, // 1s, Note Tilde, BackQuote may be blocked by input method. So it's recommended to disable input method.
+        // {KeyCode.BackQuote, 1},
         {KeyCode.Alpha1, 60 * 1}, // 1 min
         {KeyCode.Alpha2, 60 * 2}, // 2 min
         {KeyCode.Alpha3, 60 * 3},
@@ -311,7 +311,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     if (Input.GetKeyDown(keyCode))
                     {
-                        remainAdvanceSimulationSecondsRequestedByKeyPressing = advanceSimulationSeconds;
+                        remainAdvanceSimulationSecondsRequestedByUserInput = advanceSimulationSeconds;
                     }
                 }
             }
@@ -391,8 +391,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     if (Input.GetKeyDown(keyCode))
                     {
-                        remainAdvanceSimulationSecondsRequestedByKeyPressing = advanceSimulationSeconds;
+                        remainAdvanceSimulationSecondsRequestedByUserInput = advanceSimulationSeconds;
                     }
+                }
+
+                if (Input.GetKeyDown(KeyCode.Tilde) || Input.GetKeyDown(KeyCode.BackQuote))
+                {
+                    remainAdvanceSimulationSecondsRequestedByUserInput = GamePreference.Instance.pulseLengthSeconds;
                 }
 
                 if (Input.GetKeyDown(KeyCode.F) && selectedShipLog != null) // Set "Follow" Control
@@ -767,4 +772,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         StartCoroutine(Utils.SetSelectionForListView(listView, idx));
     }
 
+    [CreateProperty]
+    public bool isEditor => Application.isEditor;
 }

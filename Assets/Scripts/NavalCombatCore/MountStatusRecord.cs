@@ -558,17 +558,11 @@ namespace NavalCombatCore
                     var targetShipEA = tgt.IsEvasiveManeuvering();
                     
                     if (firingShipEA && targetShipEA)
-                    {
                         fireControlScore -= 8;
-                    }
                     else if (targetShipEA)
-                    {
                         fireControlScore -= 3;
-                    }
                     else if (firingShipEA)
-                    {
                         fireControlScore -= 2;
-                    }
 
                     // Target Acquisition
                     // Firing on different ship from last turn: -2

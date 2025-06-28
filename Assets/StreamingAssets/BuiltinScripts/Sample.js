@@ -13,3 +13,8 @@ log(yoshino)
 
 ns = importNamespace("")
 log(ns.GameManager.Instance)
+
+for(var shipLog of NavalGameState.Instance.shipLogsOnMap)
+{
+    log(shipLog.namedShip.name.GetMergedName())
+}

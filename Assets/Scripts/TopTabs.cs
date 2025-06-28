@@ -96,6 +96,43 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         var victoryStatusButton = root.Q<Button>("VictoryStatusButton");
         victoryStatusButton.clicked += DialogRoot.Instance.PopupVictoryStatusDialog;
+
+        var runDebugScriptButton = root.Q<Button>("RunDebugScriptButton");
+        runDebugScriptButton.clicked += () =>
+        {
+            Debug.LogWarning("RunDebugScriptButton clicked");
+
+            // var damageEffectId = "164";
+            // var damageEffectId = "101";
+            foreach (var shipLog in NavalGameState.Instance.shipLogsOnMap)
+            {
+                var ctx = new DamageEffectContext()
+                {
+                    subject = shipLog,
+                    baseDamagePoint = 11,
+                    hitPenDetType = HitPenDetType.PenetrateWithDetonate,
+                    ammunitionType = AmmunitionType.ArmorPiercing,
+                    shellDiameterInch = 10,
+                    addtionalDamageEffectProbility = 1
+                };
+
+                // DamageEffectChart.AddNewDamageEffect(ctx, damageEffectId);
+                DamageEffectChart.AddNewDamageEffect(ctx);
+            }
+        };
+
+        var advance1MinButton = root.Q<Button>("Advance1MinButton");
+        var advance1PulseButton = root.Q<Button>("Advance1PulseButton");
+
+        advance1MinButton.clicked += () =>
+        {
+            GameManager.Instance.remainAdvanceSimulationSecondsRequestedByUserInput = 60;
+        };
+
+        advance1PulseButton.clicked += () =>
+        {
+            GameManager.Instance.remainAdvanceSimulationSecondsRequestedByUserInput = GamePreference.Instance.pulseLengthSeconds;
+        };
     }
 
     void SetToFormationPosition()

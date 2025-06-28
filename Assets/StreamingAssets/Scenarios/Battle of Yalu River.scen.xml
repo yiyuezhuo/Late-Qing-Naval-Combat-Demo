@@ -13,8 +13,8 @@
     <namedShipObjectId>4722ebb2-c755-4ef3-a292-7b429aad7676</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.673275</LatDeg>
-     <LonDeg>123.602654</LonDeg>
+     <LatDeg>39.68345</LatDeg>
+     <LonDeg>123.664276</LonDeg>
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
@@ -326,13 +326,13 @@
     <namedShipObjectId>5f1f4c9c-0819-468f-87fd-af3938dea6df</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.67046</LatDeg>
-     <LonDeg>123.592644</LonDeg>
+     <LatDeg>39.6806335</LatDeg>
+     <LonDeg>123.654266</LonDeg>
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
     <desiredSpeedKnots>12</desiredSpeedKnots>
-    <desiredHeadingDeg>70</desiredHeadingDeg>
+    <desiredHeadingDeg>69.99725</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
@@ -622,13 +622,13 @@
     <namedShipObjectId>7855b692-e843-41bb-a7b6-15662ab6de20</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6690521</LatDeg>
-     <LonDeg>123.587639</LonDeg>
+     <LatDeg>39.6792259</LatDeg>
+     <LonDeg>123.649261</LonDeg>
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
     <desiredSpeedKnots>12</desiredSpeedKnots>
-    <desiredHeadingDeg>70</desiredHeadingDeg>
+    <desiredHeadingDeg>69.9976349</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
@@ -891,8 +891,8 @@
     <namedShipObjectId>14fd6eb4-8fa6-4f4b-b98d-00ec411b5e16</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.68217</LatDeg>
-     <LonDeg>123.718712</LonDeg>
+     <LatDeg>39.710083</LatDeg>
+     <LonDeg>123.773109</LonDeg>
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
@@ -1099,8 +1099,8 @@
     <namedShipObjectId>da81e4ec-40b5-4f9c-949d-375e86b668bf</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6862869</LatDeg>
-     <LonDeg>123.7091</LonDeg>
+     <LatDeg>39.7142</LatDeg>
+     <LonDeg>123.7635</LonDeg>
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
@@ -1322,8 +1322,8 @@
     <namedShipObjectId>c12c377d-3a26-4d14-897a-db3beb221060</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6843</LatDeg>
-     <LonDeg>123.708412</LonDeg>
+     <LatDeg>39.71221</LatDeg>
+     <LonDeg>123.76281</LonDeg>
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
@@ -1545,8 +1545,8 @@
     <namedShipObjectId>695c4c4f-4c3e-475d-b8e0-f28de87685ca</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6942444</LatDeg>
-     <LonDeg>123.711861</LonDeg>
+     <LatDeg>39.7221565</LatDeg>
+     <LonDeg>123.766258</LonDeg>
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
@@ -1758,8 +1758,8 @@
     <namedShipObjectId>3c8d69bc-78fa-4315-9b27-e6e6bb2678c6</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6922569</LatDeg>
-     <LonDeg>123.711174</LonDeg>
+     <LatDeg>39.72017</LatDeg>
+     <LonDeg>123.765572</LonDeg>
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
@@ -1971,8 +1971,8 @@
     <namedShipObjectId>eab7b62b-359b-4a48-8539-02b75902e2a2</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6902657</LatDeg>
-     <LonDeg>123.71048</LonDeg>
+     <LatDeg>39.7181778</LatDeg>
+     <LonDeg>123.764877</LonDeg>
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
@@ -2197,8 +2197,8 @@
     <namedShipObjectId>47957b51-2f28-4364-9b69-0531e1920396</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6832352</LatDeg>
-     <LonDeg>123.713562</LonDeg>
+     <LatDeg>39.7111473</LatDeg>
+     <LonDeg>123.76796</LonDeg>
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
@@ -2423,8 +2423,8 @@
     <namedShipObjectId>b95c048c-1701-400f-901d-becf31eac884</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6852226</LatDeg>
-     <LonDeg>123.714249</LonDeg>
+     <LatDeg>39.7131348</LatDeg>
+     <LonDeg>123.768646</LonDeg>
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
@@ -2630,8 +2630,8 @@
     <namedShipObjectId>b1447997-60c7-4a81-a2c2-76c4f21e8695</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.68828</LatDeg>
-     <LonDeg>123.709793</LonDeg>
+     <LatDeg>39.71619</LatDeg>
+     <LonDeg>123.764191</LonDeg>
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
@@ -2837,13 +2837,13 @@
     <namedShipObjectId>93af5f5d-0afa-481b-8135-da07ff3dfe0d</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.74042</LatDeg>
-     <LonDeg>124.0458</LonDeg>
+     <LatDeg>39.78392</LatDeg>
+     <LonDeg>124.074013</LonDeg>
     </position>
     <speedKnots>10</speedKnots>
-    <headingDeg>270</headingDeg>
+    <headingDeg>240</headingDeg>
     <desiredSpeedKnots>10</desiredSpeedKnots>
-    <desiredHeadingDeg>270</desiredHeadingDeg>
+    <desiredHeadingDeg>240</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
@@ -3044,8 +3044,8 @@
     <namedShipObjectId>6b3bdffa-e1c1-4926-9a3b-4c04c7ccc2f7</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.68416</LatDeg>
-     <LonDeg>123.7194</LonDeg>
+     <LatDeg>39.71207</LatDeg>
+     <LonDeg>123.773796</LonDeg>
     </position>
     <speedKnots>8</speedKnots>
     <headingDeg>240</headingDeg>
@@ -3242,13 +3242,13 @@
     <namedShipObjectId>1a287722-9d5f-440a-b25e-73ad5d987c8c</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6586151</LatDeg>
-     <LonDeg>123.553</LonDeg>
+     <LatDeg>39.6679077</LatDeg>
+     <LonDeg>123.61058</LonDeg>
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
     <desiredSpeedKnots>12</desiredSpeedKnots>
-    <desiredHeadingDeg>70</desiredHeadingDeg>
+    <desiredHeadingDeg>70.00067</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
@@ -3487,13 +3487,13 @@
     <namedShipObjectId>a30faffb-e4b9-4e55-aec2-db88671265ca</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.66143</LatDeg>
-     <LonDeg>123.563011</LonDeg>
+     <LatDeg>39.670723</LatDeg>
+     <LonDeg>123.62059</LonDeg>
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
     <desiredSpeedKnots>12</desiredSpeedKnots>
-    <desiredHeadingDeg>70</desiredHeadingDeg>
+    <desiredHeadingDeg>69.9999161</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
@@ -3801,13 +3801,13 @@
     <namedShipObjectId>9105d76e-8241-4d51-8347-43448099ba54</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.662838</LatDeg>
-     <LonDeg>123.568016</LonDeg>
+     <LatDeg>39.67213</LatDeg>
+     <LonDeg>123.625595</LonDeg>
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
     <desiredSpeedKnots>12</desiredSpeedKnots>
-    <desiredHeadingDeg>70</desiredHeadingDeg>
+    <desiredHeadingDeg>69.99954</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
@@ -4115,13 +4115,13 @@
     <namedShipObjectId>cf7b7e83-91a0-4e45-89ac-db0babb1036c</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6600227</LatDeg>
-     <LonDeg>123.558006</LonDeg>
+     <LatDeg>39.6693153</LatDeg>
+     <LonDeg>123.615585</LonDeg>
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
     <desiredSpeedKnots>12</desiredSpeedKnots>
-    <desiredHeadingDeg>70</desiredHeadingDeg>
+    <desiredHeadingDeg>70.0003</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
@@ -4369,8 +4369,8 @@
     <namedShipObjectId>52fe3068-7c3f-4b37-bcbc-88895e925217</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6656532</LatDeg>
-     <LonDeg>123.578026</LonDeg>
+     <LatDeg>39.6749458</LatDeg>
+     <LonDeg>123.635605</LonDeg>
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
@@ -4691,13 +4691,13 @@
     <namedShipObjectId>e27761a0-d00a-4a7b-bcac-58aab2b8118d</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6718674</LatDeg>
-     <LonDeg>123.597649</LonDeg>
+     <LatDeg>39.68204</LatDeg>
+     <LonDeg>123.659271</LonDeg>
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
     <desiredSpeedKnots>12</desiredSpeedKnots>
-    <desiredHeadingDeg>70</desiredHeadingDeg>
+    <desiredHeadingDeg>69.99688</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
@@ -4960,13 +4960,13 @@
     <namedShipObjectId>d1a1333b-c9cd-44f7-acfa-e70190039282</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6642456</LatDeg>
-     <LonDeg>123.573021</LonDeg>
+     <LatDeg>39.67354</LatDeg>
+     <LonDeg>123.6306</LonDeg>
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
     <desiredSpeedKnots>12</desiredSpeedKnots>
-    <desiredHeadingDeg>70</desiredHeadingDeg>
+    <desiredHeadingDeg>69.99916</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
@@ -5217,13 +5217,13 @@
     <namedShipObjectId>ece5d4b3-84e9-477d-85a1-a989b9acf0b6</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.7388039</LatDeg>
-     <LonDeg>124.040924</LonDeg>
+     <LatDeg>39.78598</LatDeg>
+     <LonDeg>124.078636</LonDeg>
     </position>
-    <speedKnots>10</speedKnots>
-    <headingDeg>270</headingDeg>
+    <speedKnots>9.992722</speedKnots>
+    <headingDeg>241</headingDeg>
     <desiredSpeedKnots>10</desiredSpeedKnots>
-    <desiredHeadingDeg>270</desiredHeadingDeg>
+    <desiredHeadingDeg>239.995178</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
@@ -5350,7 +5350,8 @@
     <leaderObjectId>46a1ffe4-7a2a-43b0-a44c-d29f71c34629</leaderObjectId>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
-    <controlMode>Independent</controlMode>
+    <controlMode>FollowTarget</controlMode>
+    <followedTargetObjectId>9ad21ac1-2365-4f33-bfa9-fee5f27b965a</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
@@ -5413,13 +5414,13 @@
     <namedShipObjectId>cf53fae4-c151-47da-9ee0-1d540c655968</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6610069</LatDeg>
-     <LonDeg>123.547272</LonDeg>
+     <LatDeg>39.67248</LatDeg>
+     <LonDeg>123.603279</LonDeg>
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
     <desiredSpeedKnots>12</desiredSpeedKnots>
-    <desiredHeadingDeg>70</desiredHeadingDeg>
+    <desiredHeadingDeg>69.99944</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
@@ -5585,8 +5586,8 @@
     <namedShipObjectId>fe326406-a6b5-42fe-b052-c79dacf9df1c</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.6624146</LatDeg>
-     <LonDeg>123.552277</LonDeg>
+     <LatDeg>39.67389</LatDeg>
+     <LonDeg>123.608284</LonDeg>
     </position>
     <speedKnots>12</speedKnots>
     <headingDeg>70</headingDeg>
@@ -5726,16 +5727,16 @@
     <namedShipObjectId>300061b1-9426-4d75-97fa-d1256f55f648</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.7338524</LatDeg>
-     <LonDeg>124.048752</LonDeg>
+     <LatDeg>39.7901</LatDeg>
+     <LonDeg>124.087883</LonDeg>
     </position>
-    <speedKnots>10</speedKnots>
-    <headingDeg>270</headingDeg>
-    <desiredSpeedKnots>10</desiredSpeedKnots>
-    <desiredHeadingDeg>270</desiredHeadingDeg>
+    <speedKnots>9.976055</speedKnots>
+    <headingDeg>241.5</headingDeg>
+    <desiredSpeedKnots>9.976055</desiredSpeedKnots>
+    <desiredHeadingDeg>239.993683</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
-    <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
+    <desiredSpeedKnotsForBoilerRoom>9.976055</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus />
     <torpedoSectorStatus>
@@ -5792,7 +5793,8 @@
     <leaderObjectId>0ffb8288-564a-4a0b-8973-e2d8d3610d21</leaderObjectId>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
-    <controlMode>Independent</controlMode>
+    <controlMode>FollowTarget</controlMode>
+    <followedTargetObjectId>f134adc9-f5b7-4d86-88a9-27ecd13b70c8</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
@@ -5855,16 +5857,16 @@
     <namedShipObjectId>be4eaecb-801e-42aa-aad8-232bf8c6d58d</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>39.73598</LatDeg>
-     <LonDeg>124.048561</LonDeg>
+     <LatDeg>39.78804</LatDeg>
+     <LonDeg>124.08326</LonDeg>
     </position>
-    <speedKnots>10</speedKnots>
-    <headingDeg>270</headingDeg>
-    <desiredSpeedKnots>10</desiredSpeedKnots>
-    <desiredHeadingDeg>270</desiredHeadingDeg>
+    <speedKnots>9.976055</speedKnots>
+    <headingDeg>241.5</headingDeg>
+    <desiredSpeedKnots>9.976055</desiredSpeedKnots>
+    <desiredHeadingDeg>239.994415</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
-    <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
+    <desiredSpeedKnotsForBoilerRoom>9.976055</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus />
     <torpedoSectorStatus>
@@ -5921,7 +5923,8 @@
     <leaderObjectId>dd09a700-93ff-4be0-b68e-06922f8d0098</leaderObjectId>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
-    <controlMode>Independent</controlMode>
+    <controlMode>FollowTarget</controlMode>
+    <followedTargetObjectId>0cfda6a2-50de-48bf-8aa6-5338375327ef</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
@@ -6435,21 +6438,22 @@
    </ShipGroup>
   </shipGroups>
   <scenarioState>
-   <dateTime>1894-09-17T04:30:00Z</dateTime>
+   <dateTime>1894-09-17T04:30:00</dateTime>
    <visibility>Clear</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
+   <hasMoonlight>true</hasMoonlight>
   </scenarioState>
   <launchedTorpedos />
   <weaponSimulationAssignmentClock>
    <intervalSeconds>120</intervalSeconds>
-   <accumulateSecond>0</accumulateSecond>
-   <elapsedSeconds>0</elapsedSeconds>
+   <accumulateSecond>1</accumulateSecond>
+   <elapsedSeconds>1</elapsedSeconds>
   </weaponSimulationAssignmentClock>
   <doingStep>false</doingStep>
  </navalGameState>
  <viewState>
-  <xRotation>39.6781</xRotation>
-  <yRotation>236.330933</yRotation>
+  <xRotation>39.7088165</xRotation>
+  <yRotation>236.27356</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>
 </FullState>

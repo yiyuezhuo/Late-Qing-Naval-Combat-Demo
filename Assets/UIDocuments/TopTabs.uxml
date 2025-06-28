@@ -4,16 +4,22 @@
         <ui:TabView>
             <ui:Tab label="General">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
-                    <ui:Button text="Next Turn" name="NextTurnButton" />
-                    <ui:Label text="Player" style="margin-left: 10px;" />
-                    <ui:DropdownField name="PlayerDropdownField" style="width: 300px;" />
-                    <ui:Label text="Label" />
+                    <ui:Button text="Advance 1 Min (1)" name="Advance1MinButton" />
+                    <ui:Button text="Advance 1 pulse (`)" name="Advance1PulseButton" />
+                    <ui:Label text="Player" style="margin-left: 10px; display: none;" />
+                    <ui:DropdownField name="PlayerDropdownField" style="width: 300px; display: none;" />
+                    <ui:Label text="Unit Label" />
                     <ui:EnumField value="Center" type="NavalCombatCore.LanguageType, Assembly-CSharp">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="iconLanuageType" binding-mode="TwoWay" />
                         </Bindings>
                     </ui:EnumField>
                     <ui:Button text="Victory Status" name="VictoryStatusButton" />
+                    <ui:Button text="Run Debug Script" name="RunDebugScriptButton">
+                        <Bindings>
+                            <ui:DataBinding property="style.display" data-source-path="isEditor" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="File">

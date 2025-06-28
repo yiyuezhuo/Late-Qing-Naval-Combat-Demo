@@ -7,7 +7,7 @@
             <ui:VisualElement>
                 <ui:Button text="Select Scenario" name="SelectScenarioButton" class="verylarge" />
                 <ui:Button text="Load Game" name="LoadGameButton" class="verylarge" />
-                <ui:Button text="Gallery" name="GalleryButton" class="verylarge" />
+                <ui:Button text="Gallery" name="GalleryButton" enabled="true" class="verylarge" style="display: none;" />
                 <ui:Button text="Open Source Repository" name="OpenSourceRepositoryButton" class="verylarge" />
                 <ui:Button text="Exit" name="ExitButton" class="verylarge" />
             </ui:VisualElement>

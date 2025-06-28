@@ -35,7 +35,18 @@ namespace NavalCombatCore
 
         public DamageEffectContext Clone()
         {
-            return XmlUtils.FromXML<DamageEffectContext>(XmlUtils.ToXML(this));
+            // return XmlUtils.FromXML<DamageEffectContext>(XmlUtils.ToXML(this)); // Will deep copy subject which will cause unexpected behaviour
+            return new()
+            {
+                subject = subject,
+                baseDamagePoint = baseDamagePoint,
+                cause = cause,
+                hitPenDetType = hitPenDetType,
+                ammunitionType = ammunitionType,
+                shellDiameterInch = shellDiameterInch,
+                addtionalDamageEffectProbility = addtionalDamageEffectProbility,
+                source=source
+            };
         }
 
         public DamageEffectContext CloneWithAdditionalDEProbToZero()
@@ -1896,36 +1907,39 @@ namespace NavalCombatCore
                 if(IsAB(ctx))
                 {
                     var locations = ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus).Select(mnt => mnt.mountLocation).ToHashSet();
-                    var location =  RandomUtils.Sample(locations.ToList());
-
-                    // var DE = new PowerDistributionSymtemDamaged()
-                    // {
-                    //     lifeCycle = StateLifeCycle.SeverityBased,
-                    //     severity = ctx.RollForSeverity(),
-                    //     cause = "DE 153, damage to power distribution system",
-                    //     locations = new(){location}
-                    // };
-
-                    var DEMaster = new PlaceholderState()
+                    if(locations.Count > 0)
                     {
-                        lifeCycle = StateLifeCycle.SeverityBased,
-                        severity = ctx.RollForSeverity(),
-                        cause = "DE 153, damage to power distribution system (master)",
-                    };
-                    DEMaster.BeginAt(ctx.subject);
+                        var location =  RandomUtils.Sample(locations.ToList());
 
-                    foreach(var mount in ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus).Where(mnt => mnt.mountLocation == location))
-                    {
-                        var DESub = new BatteryMountStatusModifier()
+                        // var DE = new PowerDistributionSymtemDamaged()
+                        // {
+                        //     lifeCycle = StateLifeCycle.SeverityBased,
+                        //     severity = ctx.RollForSeverity(),
+                        //     cause = "DE 153, damage to power distribution system",
+                        //     locations = new(){location}
+                        // };
+
+                        var DEMaster = new PlaceholderState()
                         {
-                            lifeCycle=StateLifeCycle.Dependent,
-                            dependentObjectId = DEMaster.objectId,
-                            cause = "DE 153, damage to power distribution system (sub)",
+                            lifeCycle = StateLifeCycle.SeverityBased,
+                            severity = ctx.RollForSeverity(),
+                            cause = "DE 153, damage to power distribution system (master)",
                         };
-                        DESub.BeginAt(mount);
-                    }
+                        DEMaster.BeginAt(ctx.subject);
 
-                    RollForAdditionalDamageEffect(ctx, new[]{"110", "116", "133", "124", ""});
+                        foreach(var mount in ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus).Where(mnt => mnt.mountLocation == location))
+                        {
+                            var DESub = new BatteryMountStatusModifier()
+                            {
+                                lifeCycle=StateLifeCycle.Dependent,
+                                dependentObjectId = DEMaster.objectId,
+                                cause = "DE 153, damage to power distribution system (sub)",
+                            };
+                            DESub.BeginAt(mount);
+                        }
+
+                        RollForAdditionalDamageEffect(ctx, new[]{"110", "116", "133", "124", ""});
+                    }
                 }
             }},
 

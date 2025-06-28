@@ -738,7 +738,8 @@ namespace NavalCombatCore
             // X4 - ramming - target adjustement (left)
             public float[,] rammingTargetAdjustmentsTable = new float[,]
             {//Armor  adjustments
-                {0,     -1},
+                {0,      0},
+                {0.1f,  -1},
                 {1,     -2},
                 {3,     -3},
                 {5,     -4},
@@ -806,9 +807,9 @@ namespace NavalCombatCore
                     rammerMod -= 1;
                 else if (targetArmorActualInch <= 2)
                     rammerMod += 1;
-                else if(targetArmorActualInch <= 6)
+                else if (targetArmorActualInch <= 6)
                     rammerMod += 2;
-                else if(targetArmorActualInch <= 12)
+                else if (targetArmorActualInch <= 12)
                     rammerMod += 3;
                 else
                     rammerMod += 4;
@@ -837,6 +838,41 @@ namespace NavalCombatCore
                 };
             }
         }
+        
+        // Chart C4
+        public static string seaStateGunneryReductionTableCsvText = @"DP of ship,4,5,6,7,8,9,10
+100,-2,-4,-6,-100,-100,-100,-100
+200,-1,-3,-4,-5,-7,-100,-100
+300,-1,-2,-3,-5,-6,-100,-100
+400,0,-2,-3,-4,-5,-9,-100
+500,0,-2,-3,-4,-5,-7,-100
+600,0,-1,-2,-3,-4,-6,-100
+700,0,-1,-2,-3,-4,-5,-100
+800,0,-1,-2,-3,-3,-5,-100
+1000,0,-1,-2,-2,-3,-5,-100
+1200,0,-1,-2,-2,-3,-4,-9
+1500,0,-1,-1,-2,-2,-4,-8
+1900,0,-1,-1,-2,-2,-3,-7
+2500,0,0,-1,-2,-2,-3,-7
+3500,0,0,-1,-1,-2,-2,-6
+5000,0,0,-1,-1,-2,-2,-6";
 
+        public static SimpleTable<float, float, float> seaStateGunneryReductionTable = SimpleTable<float, float, float>.FromCSV(
+            seaStateGunneryReductionTableCsvText,
+            float.Parse, float.Parse, float.Parse
+        );
+
+        public static float ResolveSeaStateOffset(float displacementTons, int seaState, out bool blocked)
+        {
+            blocked = false;
+            if (seaState < 4)
+                return 0;
+            var c4 = seaStateGunneryReductionTable;
+            var row = Enumerable.Range(0, c4.rows.Length).DefaultIfEmpty(c4.rows.Length - 1).First(r => displacementTons <= c4.rows[r]);
+            var col = Enumerable.Range(0, c4.cols.Length).LastOrDefault(c => c4.cols[c] <= seaState);
+            var offset = seaStateGunneryReductionTable.cells[row, col];
+            blocked = offset == -100;
+            return offset;
+        }
     }
 }

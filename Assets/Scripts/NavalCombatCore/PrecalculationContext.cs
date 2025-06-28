@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using NUnit.Framework.Internal;
-using Unity.VisualScripting;
 
 namespace NavalCombatCore
 {
@@ -32,7 +30,7 @@ namespace NavalCombatCore
             if (stack.Count > 0)
                 return stack.Peek();
             var logger = ServiceLocator.Get<ILoggerService>();
-            logger.LogWarning("Misuse of temp ctx will impact performance");
+            logger.LogWarning("Misuse of temp ctx will heavily impact performance");
             var ctx = new T();
             // ctx.Calculate();
             return ctx;
@@ -54,7 +52,8 @@ namespace NavalCombatCore
         public class ShipLogSupplementary
         {
             public HashSet<BatteryStatus> batteriesFiredAtMe = new();
-            public float armorScore;
+            public HashSet<ShipLog> shipLogsFiredAtMe = new();
+            public float armorScore; // Useless now
         }
 
         public class ShipLogPairSupplementary
@@ -134,6 +133,7 @@ namespace NavalCombatCore
                     continue;
 
                 shipLogSupplementaryMap[target].batteriesFiredAtMe.Add(mntSup.ctx.batteryStatus);
+                shipLogSupplementaryMap[target].shipLogsFiredAtMe.Add(mntSup.ctx.shipLog);
             }
         }
 

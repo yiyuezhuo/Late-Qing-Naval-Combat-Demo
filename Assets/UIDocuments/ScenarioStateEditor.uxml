@@ -46,16 +46,27 @@
                     <ui:DataBinding property="text" data-source-path="dateTime" binding-mode="ToTarget" />
                 </Bindings>
             </ui:Label>
-            <ui:EnumField label="Visibility" value="Center" type="NavalCombatCore.VisibilityDescription, Assembly-CSharp">
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="visibility" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:EnumField>
-            <ui:IntegerField label="Sea State (Beaufort)">
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="seaStateBeaufort" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:IntegerField>
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
+                    <ui:EnumField label="Visibility" value="Center" type="NavalCombatCore.VisibilityDescription, Assembly-CSharp">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="visibility" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
+                    <ui:Toggle label="Moon Light">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="hasMoonlight" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
+                    <ui:IntegerField label="Sea State (Beaufort)">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="seaStateBeaufort" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:IntegerField>
+                </ui:VisualElement>
+            </ui:VisualElement>
             <ui:Label text="Description" />
             <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; height: 200px;">
                 <Bindings>

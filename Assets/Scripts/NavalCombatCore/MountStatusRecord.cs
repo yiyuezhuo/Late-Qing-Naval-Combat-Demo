@@ -421,7 +421,8 @@ namespace NavalCombatCore
 
                 var shooter = ctx.shipLog;
 
-                var isFireChecked = fireCtx.shipLogSupplementaryMap[tgt].batteriesFiredAtMe.Contains(ctx.batteryStatus);
+                var targetSup = fireCtx.shipLogSupplementaryMap[tgt];
+                var isFireChecked = targetSup.batteriesFiredAtMe.Contains(ctx.batteryStatus);
                 if (!isFireChecked) // Include range / arc / Doctrine check (though ammo should be checked dynamiclly since this loop will update ammo state)
                     return;
                 var shooterTargetSup = fireCtx.GetOrCalcualteShipLogPairSupplementary(shooter, tgt);
@@ -446,39 +447,6 @@ namespace NavalCombatCore
                     secondsPerShoot *= 2; // ROF / 2 if masked
                 }
 
-                // Fire Control Value Resolution
-
-                var fireControlRow = ctx.batteryRecord.fireControlTableRecords.FirstOrDefault(r => tgt.speedKnots <= r.speedThresholdKnot);
-                if (fireControlRow == null)
-                    return;
-
-                var fireControlScoreRaw = fireControlRow.GetValue(penRecord.rangeBand, stats.targetPresentAspectFromObserver);
-
-                // Positive Modifier
-
-                if (stats.distanceYards <= 4500)
-                {
-                    var closeRangeFireControlScore = RuleChart.GetCloseRangeFireControlScore(stats.distanceYards, tgt.speedKnots, stats.targetPresentAspectFromObserver);
-                    fireControlScoreRaw = Math.Max(fireControlScoreRaw, closeRangeFireControlScore);
-                }
-
-                // Negative Modifiers
-
-                var fireControlValueModifiers = GetSubStates<IFireControlValueModifier>().ToList();
-                var fireControlValueModifierOffset = fireControlValueModifiers.Select(m => m.GetFireControlValueOffset()).Sum();
-
-                // var mountLocation = ctx.mountLocationRecord.mountLocation;
-                fireControlValueModifierOffset += GetSubStates<ILocalizedDirectionalFireControlValueModifier>().Select(
-                    m => m.GetFireControlValueOffset(ctx.mountLocationRecord.mountLocation, stats.observerToTargetBearingRelativeToBowDeg)
-                ).DefaultIfEmpty(0).Min();
-
-                var fireCOntrolValueModifierCoef = fireControlValueModifiers.Select(m => m.GetFireControlValueCoef()).DefaultIfEmpty(1).Min();
-                fireControlScoreRaw = Math.Max((fireControlScoreRaw + fireControlValueModifierOffset) * fireCOntrolValueModifierCoef, 0);
-
-
-                var targetSup = fireCtx.shipLogSupplementaryMap[tgt];
-                var firedAtTargetBatteriesCount = targetSup.batteriesFiredAtMe.Count; // over-concentration
-
                 // skip to log ammo consumption and firing "result"
                 while (processSeconds >= secondsPerShoot &&
                         (
@@ -494,6 +462,37 @@ namespace NavalCombatCore
                     {
                         ammunitionType = ctx.batteryStatus.ChooseAmmunitionByPreferredType(ammunitionType); // TODO: Use doctrine suggested value
                     }
+
+                    // Fire Control Value Resolution
+
+                    var fireControlRow = ctx.batteryRecord.fireControlTableRecords.FirstOrDefault(r => tgt.speedKnots <= r.speedThresholdKnot);
+                    if (fireControlRow == null)
+                        return;
+
+                    var fireControlScoreRaw = fireControlRow.GetValue(penRecord.rangeBand, stats.targetPresentAspectFromObserver);
+
+                    // Positive Modifier
+
+                    if (stats.distanceYards <= 4500)
+                    {
+                        var closeRangeFireControlScore = RuleChart.GetCloseRangeFireControlScore(stats.distanceYards, tgt.speedKnots, stats.targetPresentAspectFromObserver);
+                        fireControlScoreRaw = Math.Max(fireControlScoreRaw, closeRangeFireControlScore);
+                    }
+
+                    // Negative Modifiers
+
+                    var fireControlValueModifiers = GetSubStates<IFireControlValueModifier>().ToList();
+                    var fireControlValueModifierOffset = fireControlValueModifiers.Select(m => m.GetFireControlValueOffset()).Sum();
+
+                    // var mountLocation = ctx.mountLocationRecord.mountLocation;
+                    fireControlValueModifierOffset += GetSubStates<ILocalizedDirectionalFireControlValueModifier>().Select(
+                        m => m.GetFireControlValueOffset(ctx.mountLocationRecord.mountLocation, stats.observerToTargetBearingRelativeToBowDeg)
+                    ).DefaultIfEmpty(0).Min();
+
+                    var fireControlValueModifierCoef = fireControlValueModifiers.Select(m => m.GetFireControlValueCoef()).DefaultIfEmpty(1).Min();
+                    fireControlScoreRaw = Math.Max((fireControlScoreRaw + fireControlValueModifierOffset) * fireControlValueModifierCoef, 0);
+
+                    // var firedAtTargetBatteriesCount = targetSup.batteriesFiredAtMe.Count; // over-concentration
 
                     var fireControlScore = fireControlScoreRaw;
 
@@ -520,14 +519,24 @@ namespace NavalCombatCore
                         fireControlScore += -4;
                     }
 
+                    // TODO: Move to precalculate context?
+                    var sunState = NavalGameState.Instance.scenarioState.GetSunPosition(ctx.shipLog.position);
+                    var sunLevel = sunState.GetDayNightLevel();
+
                     // TODO: Handle Additional for dawn/dusk condition
                     // Target silhouetted by horizon: +1
                     // Target in darkness: -2
                     // None of above: +0
 
-                    // TODO: Handle Additional for night conditions
+                    // Handle Additional for night conditions
                     // No moonlight: -4
                     // Moonlight: -2
+
+                    if (sunLevel == DayNightLevel.Night)
+                    {
+                        var moonlightOffset = NavalGameState.Instance.scenarioState.hasMoonlight ? -2 : -4;
+                        fireControlScore += moonlightOffset;
+                    }
 
                     // TODO: Handle Additional for illumination (1b or 1c)
                     // Target afire or illuminated by searchlight: +2
@@ -590,13 +599,21 @@ namespace NavalCombatCore
                         }
                     }
 
-                    // TODO: Firing ship under fire
+                    // Firing ship under fire
                     // Under fire from 3 or more ships during this turn: -2
 
-                    // TODO: Over Concentration & Barrage
+                    var meShipLogSup = fireCtx.shipLogSupplementaryMap[ctx.shipLog];
+                    if (meShipLogSup.shipLogsFiredAtMe.Count >= 3)
+                    {
+                        fireControlScore -= 2;
+                    }
+
+                    // Over-Concentration & Barrage
                     // 1 ship firing at target with 1 battery: 0
                     // For each additional primary, secondary or teriary battery of any ship firing at same target: -1
                     // For every primary, secondary or tertiary battery of any ship using barrage fire at same target: -2
+
+                    fireControlScore += Math.Min(0, -(targetSup.batteriesFiredAtMe.Count - 1));
 
                     // Size of target ship
                     // TS (from Ship Log of target ship)
@@ -605,11 +622,18 @@ namespace NavalCombatCore
                     // Pending: Spotter Aircraft
                     // Spotter aircraft (target visible from firing ship): +2
 
-                    // TODO: Battle factor
+                    // Battle factor
                     // Sea State + Crew Rating (from Ship Log)
+                    var seaStateOffset = RuleChart.ResolveSeaStateOffset(
+                        ctx.shipClass.displacementTons,
+                        NavalGameState.Instance.scenarioState.seaStateBeaufort,
+                        out bool blocked
+                    );
+                    fireControlScore += seaStateOffset; // Use -100 to soft block
+                    fireControlScore += ctx.shipLog.namedShip.crewRating;
 
                     // Fire Control Radar Modifier
-                    
+
                     if (!GetSubStates<IElectronicSystemModifier>().Any(m => m.IsFireControlRadarDisabled()))
                     {
                         var fireControlRadarModifier = ctx.batteryRecord.fireControlRadarModifier;

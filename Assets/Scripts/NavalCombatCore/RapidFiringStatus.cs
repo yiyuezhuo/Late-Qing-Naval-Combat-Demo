@@ -269,16 +269,26 @@ namespace NavalCombatCore
                             fireControlScore += -4;
                         }
 
+                        // TODO: Move to precalculate context?
+                        var sunState = NavalGameState.Instance.scenarioState.GetSunPosition(shooter.position);
+                        var sunLevel = sunState.GetDayNightLevel();
+
                         // TODO: Handle Additional for dawn/dusk condition
                         // Target silhouetted by horizon: +1
                         // Target in darkness: -2
                         // None of above: +0
                         // (EQ to Batteries)
 
-                        // TODO: Handle Additional for night conditions
+                        // Handle Additional for night conditions
                         // No moonlight: -4
                         // Moonlight: -2
                         // (EQ to Batteries)
+
+                        if (sunLevel == DayNightLevel.Night)
+                        {
+                            var moonlightOffset = NavalGameState.Instance.scenarioState.hasMoonlight ? -2 : -4;
+                            fireControlScore += moonlightOffset;
+                        }
 
                         // TODO: Handle Additional for illumination (1b or 1c)
                         // Target afire or illuminated by searchlight: +2
@@ -288,23 +298,47 @@ namespace NavalCombatCore
                         // TODO: Smoke 
                         // Target obscured by battle smoke or funnel smokescreen: -2
 
-                        // TODO: Evasive Action / Emergency Turn
+                        // Evasive Action / Emergency Turn
                         // Target only in EA: -3
                         // Target ship only in EA: -2
                         // Target and firing ships in EA: -8
                         // (EQ to Batteries)
 
+                        var firingShipEA = shooter.IsEvasiveManeuvering();
+                        var targetShipEA = tgt.IsEvasiveManeuvering();
+                        
+                        if (firingShipEA && targetShipEA)
+                            fireControlScore -= 8;
+                        else if (targetShipEA)
+                            fireControlScore -= 3;
+                        else if (firingShipEA)
+                            fireControlScore -= 2;
+
                         // TODO: Firing ship under fire
                         // Under fire from 3 or more ships during this turn: -2
                         // (EQ to Batteries)
+
+                        var meShipLogSup = fireCtx.shipLogSupplementaryMap[shooter];
+                        if (meShipLogSup.shipLogsFiredAtMe.Count >= 3)
+                        {
+                            fireControlScore -= 2;
+                        }
 
                         // Size of target ship
                         // TS (from Ship Log of target ship)
                         fireControlScore += tgt.shipClass.targetSizeModifier;
 
-                        // TODO: Battle factor
+                        // Battle factor
                         // Sea State + Crew Rating (from Ship Log)
                         // (EQ to Batteries)
+
+                        var seaStateOffset = RuleChart.ResolveSeaStateOffset(
+                            shooter.shipClass.displacementTons,
+                            NavalGameState.Instance.scenarioState.seaStateBeaufort,
+                            out bool blocked
+                        );
+                        fireControlScore += seaStateOffset; // Use -100 to soft block
+                        fireControlScore += shooter.namedShip.crewRating;
 
                         var hitProb = RuleChart.GetHitProbP100(fireControlScore) * 0.01f;
                         var hit = (float)RandomUtils.rand.NextDouble() < hitProb;

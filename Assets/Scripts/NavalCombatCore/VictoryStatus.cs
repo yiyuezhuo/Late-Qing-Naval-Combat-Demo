@@ -87,9 +87,9 @@ namespace NavalCombatCore
                 var level = VictoryLevel.Draw;
 
                 if (otherOverSelfLossRatio > 5 && otherLossRatio > 0.5)
-                    level = VictoryLevel.DecisiveDefeat;
+                    level = VictoryLevel.DecisiveVictory;
                 else if (otherOverSelfLossRatio > 2 && otherLossRatio > 0.25)
-                    level = VictoryLevel.MajorDefeat;
+                    level = VictoryLevel.MajorVictory;
                 else if (otherOverSelfLossRatio > 1.5)
                     level = VictoryLevel.Victory;
                 else if (otherOverSelfLossRatio > 1.3)

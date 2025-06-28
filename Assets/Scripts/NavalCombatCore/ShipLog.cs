@@ -847,7 +847,7 @@ namespace NavalCombatCore
                                 cause = collideCheckResult.collideLocation == ArmorLocation.MainBelt ? DamageEffectCause.MainBelt : DamageEffectCause.BeltEnd,
                                 hitPenDetType = HitPenDetType.PassThrough,
                                 ammunitionType = AmmunitionType.ArmorPiercing,
-                                shellDiameterInch = 10, // Rulebook isn't very clear for DE for ramming
+                                shellDiameterInch = 10, // Rulebook isn't very clear for DE resolution of ramming
                                 addtionalDamageEffectProbility = 0.5f,
                             });
                         }
@@ -1115,6 +1115,7 @@ namespace NavalCombatCore
 
         public bool IsEvasiveManeuvering()
         {
+            // TODO: Add Emergency turn? The evasive maneuver is not impelmented as well
             return isEvasiveManeuvering && !GetSubStates<IDynamicModifier>().Any(m => m.IsEvasiveManeuverBlocked());
         }
 

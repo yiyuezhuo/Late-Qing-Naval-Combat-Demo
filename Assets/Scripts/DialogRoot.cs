@@ -83,6 +83,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset streamingAssetReferenceDialogDocument;
     public VisualTreeAsset scenarioPickerDialogDocument;
     public VisualTreeAsset victoryStatusDocument;
+    public VisualTreeAsset helpDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -392,6 +393,18 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
                 return el;
             };
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupHelpDialogDocument()
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = helpDialogDocument,
+            templateDataSource = null
         };
 
         tempDialog.Popup();

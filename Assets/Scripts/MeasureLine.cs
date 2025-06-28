@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
 
-public class MeasureLine : MonoBehaviour
+public class MeasureLine : SingletonMonoBehaviour<MeasureLine>
 {
     public enum State
     {
@@ -105,7 +105,6 @@ public class MeasureLine : MonoBehaviour
                 break;
         }
 
-        // if (controlPressing && Input.GetKeyDown(KeyCode.D))
         if (!EventSystem.current.IsPointerOverGameObject() && Input.GetKeyDown(KeyCode.D))
         {
             state = State.ChooseStart;

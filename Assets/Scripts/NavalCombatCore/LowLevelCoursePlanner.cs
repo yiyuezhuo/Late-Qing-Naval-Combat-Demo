@@ -32,9 +32,10 @@ namespace NavalCombatCore
 
     public class LowLevelCoursePlanner
     {
-        public float angleStepDeg = 18; // 360 / 18 = 20 test angles => (0, 18, 36, 54, ...)
-        public float attackCoef = 1f;
-        public float defenceCoef = 1f;
+        public float angleStepDeg => CoreParameter.Instance.angleStepDeg; // 360 / 18 = 20 test angles => (0, 18, 36, 54, ...)
+        public float attackCoef => CoreParameter.Instance.attackCoef;
+        // public float defenceCoef = 1f;
+        public float defenceCoef => CoreParameter.Instance.defenceCoef;
 
         public class ExtrapolatedRecord : IDF4Model
         {

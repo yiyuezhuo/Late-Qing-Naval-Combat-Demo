@@ -26,6 +26,8 @@ public class MainMenu : SingletonDocument<MainMenu>
         openSourceRepositoryButton.clicked += () => Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
 
         exitButton.clicked += Application.Quit;
+
+        root.Q<Button>("HelpButton").clicked += () => DialogRoot.Instance.PopupHelpDialogDocument();
     }
 
     void OnFullStateXMLLoaded(object sender, string text)

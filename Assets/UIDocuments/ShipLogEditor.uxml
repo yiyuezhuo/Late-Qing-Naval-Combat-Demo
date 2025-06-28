@@ -244,7 +244,9 @@
                             </ui:Tab>
                             <ui:Tab label="Damage Effects">
                                 <ui:VisualElement>
-                                    <ui:Instance template="SubStateMultiColumnListView" />
+                                    <ui:ScrollView>
+                                        <ui:Instance template="SubStateMultiColumnListView" />
+                                    </ui:ScrollView>
                                 </ui:VisualElement>
                             </ui:Tab>
                             <ui:Tab label="Battery">

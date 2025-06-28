@@ -790,9 +790,10 @@ namespace NavalCombatCore
                 var collideCheckResult = maskCheckService.CollideCheck(this, distNm * MeasureUtils.navalMileToYard + GetLengthFoot() / 2 * MeasureUtils.footToYard);
                 if (collideCheckResult != null)
                 {
-                    newPositionBlocked = true;
                     var collided = collideCheckResult.collided;
                     var isHostile = (this as IShipGroupMember).GetRootParent() != (collided as IShipGroupMember).GetRootParent();
+
+                    newPositionBlocked = isHostile || CoreParameter.Instance.checkFriendlyShipCollision;
 
                     // Handle Ramming Damage
                     if (isHostile && speedKnots >= 6)

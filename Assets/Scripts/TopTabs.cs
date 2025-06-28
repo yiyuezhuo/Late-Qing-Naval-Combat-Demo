@@ -133,6 +133,37 @@ public class TopTabs : SingletonDocument<TopTabs>
         {
             GameManager.Instance.remainAdvanceSimulationSecondsRequestedByUserInput = GamePreference.Instance.pulseLengthSeconds;
         };
+
+        root.Q<Button>("DetachButton").clicked += () =>
+        {
+            var selectedShipLog = GameManager.Instance.selectedShipLog;
+            if (selectedShipLog != null)
+                selectedShipLog.controlMode = ControlMode.Independent;
+        };
+
+        root.Q<Button>("FollowButton").clicked += () =>
+        {
+            if (GameManager.Instance.selectedShipLog != null)
+                GameManager.Instance.state = GameManager.State.SelectingFollowedTarget;
+        };
+
+        root.Q<Button>("RelativeButton").clicked += () =>
+        {
+            if (GameManager.Instance.selectedShipLog != null)
+                GameManager.Instance.state = GameManager.State.SelectingRelativeToTarget;
+        };
+
+        root.Q<Button>("DistanceMeasureButton").clicked += () =>
+        {
+            MeasureLine.Instance.state = MeasureLine.State.ChooseStart;
+        };
+
+        root.Q<Button>("MaskMeasureButton").clicked += () =>
+        {
+            LOSLine.Instance.state = LOSLine.State.ChooseStart;
+        };
+
+        root.Q<Button>("HelpButton").clicked += () => DialogRoot.Instance.PopupHelpDialogDocument();
     }
 
     void SetToFormationPosition()

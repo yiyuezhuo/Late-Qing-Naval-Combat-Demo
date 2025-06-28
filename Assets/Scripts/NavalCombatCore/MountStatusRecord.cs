@@ -635,6 +635,8 @@ namespace NavalCombatCore
                     }
 
                     var hitProb = RuleChart.GetHitProbP100(fireControlScore) * 0.01f;
+                    hitProb *= CoreParameter.Instance.globalHitCoef;
+
                     var hit = (float)RandomUtils.rand.NextDouble() < hitProb;
 
                     var logRecord = new MountFiringRecord()

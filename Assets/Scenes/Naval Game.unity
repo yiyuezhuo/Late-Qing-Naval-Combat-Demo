@@ -1293,7 +1293,7 @@ MonoBehaviour:
   - postureType: 1
     material: {fileID: 2100000, guid: b352e5d9bc233e44abe8359a017f9e95, type: 2}
   hoveringLocationInfo: 
-  remainAdvanceSimulationSecondsRequestedByKeyPressing: 0
+  remainAdvanceSimulationSecondsRequestedByUserInput: 0
   remainAdvanceSimulationSecondsRequestedByUpdate: 0
   selectedShipClassIndex: 0
   selectedShipLogObjectId: 
@@ -2774,10 +2774,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5051051528976626265, guid: cb5c709ed3879e24a943fdf83a5e93f3, type: 3}
-      propertyPath: victoryStatusDocument
-      value: 
-      objectReference: {fileID: 9197481963319205126, guid: a3563e17e57e3a34fa7f72852a1d0720, type: 3}
     - target: {fileID: 8757824858490326340, guid: cb5c709ed3879e24a943fdf83a5e93f3, type: 3}
       propertyPath: m_Name
       value: DialogRoot

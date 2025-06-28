@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 using System;
 
 
-public class LOSLine : MonoBehaviour, IMaskCheckService
+public class LOSLine : SingletonMonoBehaviour<LOSLine>, IMaskCheckService
 {
     public enum State
     {
@@ -223,7 +223,6 @@ public class LOSLine : MonoBehaviour, IMaskCheckService
                 break;
         }
 
-        // if (controlPressing && Input.GetKeyDown(KeyCode.D))
         if (!EventSystem.current.IsPointerOverGameObject() && Input.GetKeyDown(KeyCode.S)) // S denotes line of Sight or Sight line
         {
             state = State.ChooseStart;

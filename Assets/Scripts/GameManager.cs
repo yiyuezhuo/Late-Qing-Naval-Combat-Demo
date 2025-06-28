@@ -400,6 +400,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     remainAdvanceSimulationSecondsRequestedByUserInput = GamePreference.Instance.pulseLengthSeconds;
                 }
 
+                if (Input.GetKeyDown(KeyCode.I) && selectedShipLog != null)
+                {
+                    selectedShipLog.controlMode = ControlMode.Independent;
+                }
+
                 if (Input.GetKeyDown(KeyCode.F) && selectedShipLog != null) // Set "Follow" Control
                 {
                     state = State.SelectingFollowedTarget;

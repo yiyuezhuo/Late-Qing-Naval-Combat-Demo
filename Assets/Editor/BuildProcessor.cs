@@ -93,7 +93,7 @@ public class BuildProcessor : IPreprocessBuildWithReport
 
             if (!assetPath.StartsWith("Assets/"))
                 continue;
-            
+
             VisualTreeAsset vta = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(assetPath);
 
             // Debug.Log($"vta.name={vta.name}");
@@ -133,21 +133,35 @@ public class BuildProcessor : IPreprocessBuildWithReport
             //     var m_VisualElementAssets = field.GetValue(vta); // List<VisualElementAsset>
             //     Debug.Log(m_VisualElementAssets);
 
-                //     var count = m_VisualElementAssets.GetType().GetProperty("Count").GetValue(m_VisualElementAssets);
-                //     Debug.Log(count);
+            //     var count = m_VisualElementAssets.GetType().GetProperty("Count").GetValue(m_VisualElementAssets);
+            //     Debug.Log(count);
 
-                //     foreach (var vea in (IList)m_VisualElementAssets)
-                //     {
-                //         // Debug.Log(vea);
-                //         // m_SerializedData
-                //         var _m_SerializedData = vea.GetType().GetField("m_SerializedData");
-                //         if (_m_SerializedData != null)
-                //         {
-                //             var serializedData = _m_SerializedData.GetValue(vea);
-                //             Debug.Log($"serializedData={serializedData}");
-                //         }
-                //     }
-                // }
+            //     foreach (var vea in (IList)m_VisualElementAssets)
+            //     {
+            //         // Debug.Log(vea);
+            //         // m_SerializedData
+            //         var _m_SerializedData = vea.GetType().GetField("m_SerializedData");
+            //         if (_m_SerializedData != null)
+            //         {
+            //             var serializedData = _m_SerializedData.GetValue(vea);
+            //             Debug.Log($"serializedData={serializedData}");
+            //         }
+            //     }
+            // }
         }
     }
+
+    [MenuItem("Custom/Reserialize scenarios")]
+    public static void ReserializeScenarios()
+    {
+        var scenarioFiles = Directory.GetFiles(Application.streamingAssetsPath + "/Scenarios", "*.scen.xml");
+        foreach (var path in scenarioFiles)
+        {
+            var xml = File.ReadAllText(path);
+            var fullState = XmlUtils.FromXML<FullState>(xml);
+            var reserializedXml = XmlUtils.ToXML(fullState);
+            File.WriteAllText(path, reserializedXml);
+        }
+    }
+    
 }

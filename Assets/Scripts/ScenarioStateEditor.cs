@@ -38,7 +38,7 @@ public class ScenarioStateDateTimeViewModel
                 return;
             }
             var t = dateTimeHolder.GetDateTime();
-            dateTimeHolder.SetDateTime(new DateTime(newYear, t.Month, t.Day, t.Hour, t.Minute, t.Second));
+            dateTimeHolder.SetDateTime(new DateTime(newYear, t.Month, t.Day, t.Hour, t.Minute, t.Second, DateTimeKind.Utc));
             // NavalGameState.Instance.scenarioState.dateTime.Year = 2;
         }
     }
@@ -62,7 +62,7 @@ public class ScenarioStateDateTimeViewModel
             }
             var t = dateTimeHolder.GetDateTime();
             
-            dateTimeHolder.SetDateTime(new System.DateTime(t.Year, newMonth, t.Day, t.Hour, t.Minute, t.Second));
+            dateTimeHolder.SetDateTime(new System.DateTime(t.Year, newMonth, t.Day, t.Hour, t.Minute, t.Second, DateTimeKind.Utc));
         }
     }
 
@@ -80,7 +80,7 @@ public class ScenarioStateDateTimeViewModel
             }
             var t = dateTimeHolder.GetDateTime();
             
-            dateTimeHolder.SetDateTime(new System.DateTime(t.Year, t.Month, newDay, t.Hour, t.Minute, t.Second));
+            dateTimeHolder.SetDateTime(new System.DateTime(t.Year, t.Month, newDay, t.Hour, t.Minute, t.Second, DateTimeKind.Utc));
         }
     }
 
@@ -97,7 +97,7 @@ public class ScenarioStateDateTimeViewModel
             }
             var t = dateTimeHolder.GetDateTime();
             var newHour = value;
-            dateTimeHolder.SetDateTime(new System.DateTime(t.Year, t.Month, t.Day, newHour, t.Minute, t.Second));
+            dateTimeHolder.SetDateTime(new System.DateTime(t.Year, t.Month, t.Day, newHour, t.Minute, t.Second, DateTimeKind.Utc));
         }
     }
 
@@ -115,7 +115,7 @@ public class ScenarioStateDateTimeViewModel
 
             var t = dateTimeHolder.GetDateTime();
             var newMinute = value;
-            dateTimeHolder.SetDateTime(new System.DateTime(t.Year, t.Month, t.Day, t.Hour, newMinute, t.Second));
+            dateTimeHolder.SetDateTime(new System.DateTime(t.Year, t.Month, t.Day, t.Hour, newMinute, t.Second, DateTimeKind.Utc));
         }
     }
 
@@ -132,7 +132,7 @@ public class ScenarioStateDateTimeViewModel
             }
             var t = dateTimeHolder.GetDateTime();
             var newSecond = value;
-            dateTimeHolder.SetDateTime(new System.DateTime(t.Year, t.Month, t.Day, t.Hour, t.Minute, newSecond));
+            dateTimeHolder.SetDateTime(new System.DateTime(t.Year, t.Month, t.Day, t.Hour, t.Minute, newSecond, DateTimeKind.Utc));
         }
     }
 }

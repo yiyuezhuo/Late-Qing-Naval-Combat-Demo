@@ -26,7 +26,7 @@ namespace NavalCombatCore
             // get => EntityManager.Instance.Get<ShipClass>(shipClassObjectId);
             get
             {
-                if (NavalGameState.Instance.doingStep)
+                if (NavalGameState.Instance.scenarioState.doingStep)
                 {
                     if (shipClassCache == null)
                     {

@@ -56,6 +56,9 @@ namespace NavalCombatCore
 
         public string description;
 
+        public SimulationClock weaponSimulationAssignmentClock = new() { intervalSeconds = 120 };
+        public bool doingStep;
+
         public float GetTimeZoneOffset(float longtitude)
         {
             var intervals = 24f;

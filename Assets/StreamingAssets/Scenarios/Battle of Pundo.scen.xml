@@ -6,6 +6,9 @@
   <namedShipsPath>NamedShips.xml</namedShipsPath>
  </streamingAssetReference>
  <navalGameState>
+  <leaders />
+  <shipClasses />
+  <namedShips />
   <shipLogs>
    <ShipLog>
     <subStates />
@@ -1414,17 +1417,18 @@
    </ShipGroup>
   </shipGroups>
   <scenarioState>
-   <dateTime>1894-07-24T23:45:00</dateTime>
+   <dateTime>1894-07-24T23:45:00Z</dateTime>
    <visibility>Clear</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
+   <hasMoonlight>true</hasMoonlight>
+   <weaponSimulationAssignmentClock>
+    <intervalSeconds>120</intervalSeconds>
+    <accumulateSecond>0</accumulateSecond>
+    <elapsedSeconds>0</elapsedSeconds>
+   </weaponSimulationAssignmentClock>
+   <doingStep>false</doingStep>
   </scenarioState>
   <launchedTorpedos />
-  <weaponSimulationAssignmentClock>
-   <intervalSeconds>120</intervalSeconds>
-   <accumulateSecond>0</accumulateSecond>
-   <elapsedSeconds>0</elapsedSeconds>
-  </weaponSimulationAssignmentClock>
-  <doingStep>false</doingStep>
  </navalGameState>
  <viewState>
   <xRotation>37.10052</xRotation>

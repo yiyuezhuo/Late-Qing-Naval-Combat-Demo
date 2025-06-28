@@ -54,9 +54,9 @@ namespace NavalCombatCore
         public ScenarioState scenarioState = new();
         public List<LaunchedTorpedo> launchedTorpedos = new();
 
-        public SimulationClock weaponSimulationAssignmentClock = new() { intervalSeconds = 120 };
+        
 
-        public bool doingStep;
+        
 
         public event EventHandler<List<ShipGroup>> shipGroupsChanged;
 
@@ -324,10 +324,10 @@ namespace NavalCombatCore
 
         public void Step(float deltaSeconds)
         {
-            doingStep = true;
+            scenarioState.doingStep = true;
 
             // pre-advance resolution
-            if (weaponSimulationAssignmentClock.Step(deltaSeconds) > 0)
+            if (scenarioState.weaponSimulationAssignmentClock.Step(deltaSeconds) > 0)
             {
                 foreach ((var meShipLogs, var otherShipLogs) in GetOpposeSidePairs())
                 {
@@ -386,7 +386,7 @@ namespace NavalCombatCore
                 }
             }
 
-            doingStep = false;
+            scenarioState.doingStep = false;
         }
 
         public IEnumerable<ShipLog> shipLogsOnMap => shipLogs.Where(x => x.mapState == MapState.Deployed);

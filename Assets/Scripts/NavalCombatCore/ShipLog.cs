@@ -254,7 +254,7 @@ namespace NavalCombatCore
         {
             get
             {
-                if (NavalGameState.Instance.doingStep)
+                if (NavalGameState.Instance.scenarioState.doingStep)
                 {
                     if (namedShipCache == null)
                     {

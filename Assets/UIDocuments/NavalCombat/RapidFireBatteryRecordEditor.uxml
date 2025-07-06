@@ -1,0 +1,39 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:VisualElement data-source-type="NavalCombatCore.RapidFireBatteryRecord, Assembly-CSharp" style="flex-grow: 1;">
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                    <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+                </ui:Instance>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                <ui:FloatField label="Max Range (yards)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="maxRangeYards" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="Eff. Range (yards)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="effectiveRangeYards" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="Damage Factor">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="damageFactor" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:MultiColumnListView header-title="Fire Control Level" show-add-remove-footer="true" show-foldout-header="true" name="FireControlLevelMultiColumnListView" binding-source-selection-mode="AutoAssign" data-source-path="fireControlRecords" style="flex-basis: 100px; flex-grow: 2;">
+                <ui:Columns>
+                    <ui:Column name="maxRange" title="Max Range" width="50%" cell-template="project://database/Assets/UIDocuments/Templates/RapidFireBatteryFireControlLevelRecord/RapidFireBatteryFireControlLevelRecordCellMaxRange2.uxml?fileID=9197481963319205126&amp;guid=ec5d78df30abf024e80788c0bb671f47&amp;type=3#RapidFireBatteryFireControlLevelRecordCellMaxRange2" />
+                    <ui:Column name="effectiveRange" title="Eff. Range" width="50%" cell-template="project://database/Assets/UIDocuments/Templates/RapidFireBatteryFireControlLevelRecord/RapidFireBatteryFireControlLevelRecordCellEffectiveRange2.uxml?fileID=9197481963319205126&amp;guid=35658726da41a934598bbda5d61854be&amp;type=3#RapidFireBatteryFireControlLevelRecordCellEffectiveRange2" />
+                </ui:Columns>
+            </ui:MultiColumnListView>
+            <ui:ListView name="PortMountsListView" show-add-remove-footer="true" header-title="Port Mounts" show-foldout-header="true" item-template="project://database/Assets/UIDocuments/Templates/FloatEditor.uxml?fileID=9197481963319205126&amp;guid=2eb023c6dc4ecd3419856ce9190844d1&amp;type=3#FloatEditor" binding-source-selection-mode="AutoAssign" data-source-path="barrelsLevelPort" style="flex-basis: 100px; flex-grow: 1;" />
+            <ui:ListView name="StarboardMountsListView" show-foldout-header="true" header-title="Starboard Mounts" show-add-remove-footer="true" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/FloatEditor.uxml?fileID=9197481963319205126&amp;guid=2eb023c6dc4ecd3419856ce9190844d1&amp;type=3#FloatEditor" data-source-path="barrelsLevelStarboard" style="flex-basis: 100px; flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

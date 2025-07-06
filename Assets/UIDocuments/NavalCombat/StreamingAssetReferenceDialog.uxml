@@ -1,0 +1,21 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="ReferenceManager, Assembly-CSharp" data-source-path="streamingAssetReference" class="panel-dialog" style="flex-grow: 0; height: auto;">
+        <ui:Label text="Streaming Asset Reference" class="title" />
+        <ui:TextField label="Leaders Path">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="leadersPath" binding-mode="TwoWay" />
+            </Bindings>
+        </ui:TextField>
+        <ui:TextField label="Ship Classes Path">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="shipClassesPath" binding-mode="TwoWay" />
+            </Bindings>
+        </ui:TextField>
+        <ui:TextField label="Named Ships Path">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="namedShipsPath" binding-mode="TwoWay" />
+            </Bindings>
+        </ui:TextField>
+        <ui:Button text="Confirm" name="ConfirmButton" />
+    </ui:VisualElement>
+</ui:UXML>

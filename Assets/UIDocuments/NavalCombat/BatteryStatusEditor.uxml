@@ -1,0 +1,77 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement data-source-type="NavalCombatCore.BatteryStatus, Assembly-CSharp" style="flex-grow: 1; flex-shrink: 0;">
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
+            <ui:Label text="battery record&apos;s merged name">
+                <Bindings>
+                    <ui:DataBinding property="text" binding-mode="ToTarget" source-to-ui-converters="BatteryStatus =&gt; BatteryStatus&apos;s BatteryRecord&apos;s Name" />
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;">
+            <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; flex-direction: row;">
+                <ui:Button text="Detail" name="BatteryDetailButton" />
+                <ui:Label text="FCR Disabled" />
+                <ui:Toggle>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="fireControlRadarDisabled" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:Toggle>
+                <ui:Label text="Capacity:" />
+                <ui:Label>
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="batteryRecord.ammunitionCapacity" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
+            </ui:VisualElement>
+            <ui:VisualElement data-source-path="ammunition" style="flex-grow: 0;">
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                    <ui:IntegerField label="AP" class="size50" style="flex-grow: 1; flex-basis: 50px;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="ArmorPiercing" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:IntegerField>
+                    <ui:IntegerField label="SAP" class="size50" style="flex-basis: 50px; flex-grow: 1;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="semiArmorPiercing" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:IntegerField>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                    <ui:IntegerField label="COM" class="size50" style="flex-basis: 50px; flex-grow: 1;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="common" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:IntegerField>
+                    <ui:IntegerField label="HE" class="size50" style="flex-basis: 50px; flex-grow: 1;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="highExplosive" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:IntegerField>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:MultiColumnListView name="MountStatusMultiColumnListView" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" data-source-path="mountStatus" style="flex-shrink: 0;">
+                <ui:Columns>
+                    <ui:Column name="mountLocationRecordSummary" title="Info" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellMountLocationRecordSummary.uxml?fileID=9197481963319205126&amp;guid=a9d6744fd962fc3499fe76d34f17fbdc&amp;type=3#MountStatusCellMountLocationRecordSummary" />
+                    <ui:Column width="5%" title="B" cell-template="project://database/Assets/UIDocuments/Templates/AbstractMountStatus/AbstractMountStatusCellBarrels.uxml?fileID=9197481963319205126&amp;guid=005db7aa940754d469ff7e3345372567&amp;type=3#AbstractMountStatusCellBarrels" />
+                    <ui:Column name="status" title="Status" width="15%" cell-template="project://database/Assets/UIDocuments/Templates/AbstractMountStatus/AbstractMountStatusCellStatus.uxml?fileID=9197481963319205126&amp;guid=59c6fb856a1cee248a8d5aa1a0da437b&amp;type=3#AbstractMountStatusCellStatus" />
+                    <ui:Column title="Proc S" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellProcessSeconds.uxml?fileID=9197481963319205126&amp;guid=337b4d9f9cd71ab43b125950dfb24a74&amp;type=3#MountStatusCellProcessSeconds" width="10%" />
+                    <ui:Column title="Ammo" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellAmmunitionType.uxml?fileID=9197481963319205126&amp;guid=ca3ca56a3f8183a45b10f1055f5edd8c&amp;type=3#MountStatusCellAmmunitionType" width="10%" />
+                    <ui:Column width="30%" name="firingTarget" title="Firing Target" cell-template="project://database/Assets/UIDocuments/Templates/AbstractMountStatus/AbstractMountStatusCellFiringTarget.uxml?fileID=9197481963319205126&amp;guid=c710d004ac89c594cab790bf1afe6d2a&amp;type=3#AbstractMountStatusCellFiringTarget" />
+                    <ui:Column title="Detail" width="10%" cell-template="project://database/Assets/UIDocuments/Templates/MountStatus/MountStatusCellDetailButton.uxml?fileID=9197481963319205126&amp;guid=24dbe90633e0855488d1fe10d1d10add&amp;type=3#MountStatusCellDetailButton" name="detail" />
+                </ui:Columns>
+            </ui:MultiColumnListView>
+            <ui:MultiColumnListView name="FireControlSystemMultiColumnListView" binding-source-selection-mode="AutoAssign" data-source-path="fireControlSystemStatusRecords" show-add-remove-footer="true" style="flex-shrink: 0;">
+                <ui:Columns>
+                    <ui:Column title="Info" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordInfo.uxml?fileID=9197481963319205126&amp;guid=69901079725c8bb4891fc5e99a273588&amp;type=3#FireControlSystemStatusRecordInfo" width="20%" />
+                    <ui:Column title="State" width="25%" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordTrackingState.uxml?fileID=9197481963319205126&amp;guid=8054ea02c4bd2af4f864b76234e2059c&amp;type=3#FireControlSystemStatusRecordTrackingState" />
+                    <ui:Column width="15%" title="TK Seconds" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordTrackingSeconds.uxml?fileID=9197481963319205126&amp;guid=9ac4ec727ad405745a0fd4f7e41ed468&amp;type=3#FireControlSystemStatusRecordTrackingSeconds" />
+                    <ui:Column name="target" title="Target" cell-template="project://database/Assets/UIDocuments/Templates/FireControlSystemStatusRecord/FireControlSystemStatusRecordTarget.uxml?fileID=9197481963319205126&amp;guid=5f191d2984361ac49966fa831bded75d&amp;type=3#FireControlSystemStatusRecordTarget" width="40%" />
+                </ui:Columns>
+            </ui:MultiColumnListView>
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="batteryRecord" binding-mode="ToTarget" source-to-ui-converters="BatteryRecord =&gt; DisplayStyle" />
+            </Bindings>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

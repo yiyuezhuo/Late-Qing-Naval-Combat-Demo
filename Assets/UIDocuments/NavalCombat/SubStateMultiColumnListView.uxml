@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:MultiColumnListView data-source-type="NavalCombatCore.UnitModule, Assembly-CSharp" binding-source-selection-mode="AutoAssign" show-add-remove-footer="false" name="SubStateMultiColumnListView" data-source-path="subStatesDownward" virtualization-method="DynamicHeight">
+        <ui:Columns>
+            <ui:Column title="Description" width="45%" cell-template="project://database/Assets/UIDocuments/Templates/SubState/SubStateDescription.uxml?fileID=9197481963319205126&amp;guid=ea4ea9bb1b97ccf4f89e1759fe94b609&amp;type=3#SubStateDescription" />
+            <ui:Column title="Cause" width="45%" cell-template="project://database/Assets/UIDocuments/Templates/SubState/SubStateCause.uxml?fileID=9197481963319205126&amp;guid=c2a3c09f0a0361a4c8820539123e16ce&amp;type=3#SubStateCause" />
+            <ui:Column width="10%" cell-template="project://database/Assets/UIDocuments/Templates/SubState/SubStateDamageControlApplied.uxml?fileID=9197481963319205126&amp;guid=b5fb6af6a4ce3b3428f2fa756a7cbd89&amp;type=3#SubStateDamageControlApplied" title="DCA" />
+        </ui:Columns>
+    </ui:MultiColumnListView>
+</ui:UXML>

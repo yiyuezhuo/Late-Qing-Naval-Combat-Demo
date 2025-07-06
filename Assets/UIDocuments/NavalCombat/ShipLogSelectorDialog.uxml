@@ -1,0 +1,20 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" class="panel-dialog" style="width: 600px;">
+        <ui:Label text="Ship Selector" class="title" />
+        <ui:ScrollView style="flex-grow: 1;">
+            <ui:MultiColumnListView name="ShipLogMultiColumnListView" binding-source-selection-mode="AutoAssign" data-source-path="navalGameState.shipLogs">
+                <ui:Columns>
+                    <ui:Column name="mergedName" title="Name" width="55%" cell-template="project://database/Assets/UIDocuments/Templates/ShipLogSelector/ShipLogSelectorCellName.uxml?fileID=9197481963319205126&amp;guid=9df4829ce26610d42b167ae9b2c12088&amp;type=3#ShipLogSelectorCellName" />
+                    <ui:Column name="shipType" title="Type" width="15%" cell-template="project://database/Assets/UIDocuments/Templates/ShipLogSelector/ShipLogSelectorCellType.uxml?fileID=9197481963319205126&amp;guid=d5d7f335d0e543d4c9f5837f21121ea8&amp;type=3#ShipLogSelectorCellType" />
+                    <ui:Column name="country" title="Country" width="15%" cell-template="project://database/Assets/UIDocuments/Templates/ShipLogSelector/ShipLogSelectorCellCountry.uxml?fileID=9197481963319205126&amp;guid=d18def17761d8664d964359a6dbbbb8a&amp;type=3#ShipLogSelectorCellCountry" />
+                    <ui:Column name="deployState" title="Deploy" width="15%" cell-template="project://database/Assets/UIDocuments/Templates/ShipLogSelector/ShipLogSelectorCellDeployed.uxml?fileID=9197481963319205126&amp;guid=304828501a3bd4a44959dc6deda46a79&amp;type=3#ShipLogSelectorCellDeployed" />
+                </ui:Columns>
+            </ui:MultiColumnListView>
+        </ui:ScrollView>
+        <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-basis: 50px; flex-grow: 1;" />
+            <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

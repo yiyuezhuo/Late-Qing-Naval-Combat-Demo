@@ -1,0 +1,53 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="NavalCombatCore.MountLocationRecord, Assembly-CSharp" style="flex-grow: 1; flex-direction: column;">
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                <ui:EnumField label="Location" value="Center" type="NavalCombatCore.MountLocation, Assembly-CSharp">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="mountLocation" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:EnumField>
+                <ui:IntegerField label="Mounts" password="false" value="1">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="mounts" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:IntegerField>
+                <ui:SliderInt label="Barrels" value="1" high-value="8" show-input-field="true">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="barrels" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:SliderInt>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                <ui:IntegerField label="Reload Limit">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="reloadLimit" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:IntegerField>
+                <ui:Toggle label="Trainable">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="trainable" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:Toggle>
+                <ui:Toggle label="Use Rest Angle">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="useRestAngle" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:Toggle>
+                <ui:Slider label="Rest Angle" high-value="360" show-input-field="true" style="display: flex;">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="restAngleDeg" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="useRestAngle" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                    </Bindings>
+                </ui:Slider>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:MultiColumnListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" header-title="Arcs" show-foldout-header="false" data-source-path="mountArcs" name="MountArcsMultiColumnListView">
+            <ui:Columns>
+                <ui:Column name="begin" title="Begin (Deg)" width="35%" cell-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordStartCell.uxml?fileID=9197481963319205126&amp;guid=12785026fcf97104baac47198b704404&amp;type=3#MountArcRecordStartCell" />
+                <ui:Column title="Coverage (Deg)" name="coverage" cell-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordCoverageCell.uxml?fileID=9197481963319205126&amp;guid=3e2e4b723ac9fa445ba1a5bc768f172c&amp;type=3#MountArcRecordCoverageCell" width="35%" />
+                <ui:Column width="30%" name="isCrossDeckFire" title="Cross Deck Fire" cell-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordIsCrossDeckFireCell.uxml?fileID=9197481963319205126&amp;guid=5fcda22c822c5424fa73fbd5ebc92910&amp;type=3#MountArcRecordIsCrossDeckFireCell" />
+            </ui:Columns>
+        </ui:MultiColumnListView>
+    </ui:VisualElement>
+</ui:UXML>

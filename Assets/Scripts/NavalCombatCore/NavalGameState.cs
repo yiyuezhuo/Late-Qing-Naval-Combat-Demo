@@ -5,7 +5,7 @@ using System.Xml;
 using System.IO;
 using System.Linq;
 using MathNet.Numerics;
-
+using CoreUtils;
 
 namespace NavalCombatCore
 {
@@ -53,10 +53,6 @@ namespace NavalCombatCore
         public List<ShipGroup> shipGroups = new();
         public ScenarioState scenarioState = new();
         public List<LaunchedTorpedo> launchedTorpedos = new();
-
-        
-
-        
 
         public event EventHandler<List<ShipGroup>> shipGroupsChanged;
 

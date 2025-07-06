@@ -1,0 +1,61 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" class="panel" style="flex-grow: 1;">
+        <ui:Label text="Leader Editor" class="title" />
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; flex-basis: 35%; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" name="LeadersListView" item-template="project://database/Assets/UIDocuments/Templates/LeaderLabel.uxml?fileID=9197481963319205126&amp;guid=fa091dc760923344bbd32727d1a496db&amp;type=3#LeaderLabel" data-source-path="navalGameState.leaders" style="flex-grow: 1; flex-shrink: 1;" />
+                <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; flex-direction: row;">
+                    <ui:Button text="Import" name="ImportButton" style="flex-basis: 50px; flex-grow: 1;" />
+                    <ui:Button text="Export" name="ExportButton" style="flex-basis: 50px; flex-grow: 1;" />
+                </ui:VisualElement>
+                <ui:Button text="Confirm" name="ConfirmButton" />
+            </ui:VisualElement>
+            <ui:VisualElement data-source-path="selectedLeader" style="flex-grow: 1;">
+                <ui:Label text="Not Selected or invalid binding">
+                    <Bindings>
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="Leader =&gt; DisplayStyle (Not)" />
+                    </Bindings>
+                </ui:Label>
+                <ui:VisualElement style="flex-grow: 1;">
+                    <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                        <ui:VisualElement style="flex-grow: 1;">
+                            <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                                <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+                            </ui:Instance>
+                            <ui:TextField label="Portrait Code">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="portraitCode" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:TextField>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; flex-basis: 150px; flex-shrink: 0; -unity-background-scale-mode: scale-to-fit;">
+                            <Bindings>
+                                <ui:DataBinding property="style.backgroundImage" data-source-path="portraitCode" binding-mode="ToTarget" source-to-ui-converters="string (Leader Portrait) =&gt; StyleBackground" />
+                            </Bindings>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:EnumField label="Naval Strategic" value="Center" type="NavalCombatCore.LeaderSkillLevel, Assembly-CSharp">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="navalStrategic" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
+                    <ui:EnumField label="Naval Operational" value="Center" type="NavalCombatCore.LeaderSkillLevel, Assembly-CSharp">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="navalOperational" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
+                    <ui:EnumField label="Naval Tactical" value="Center" type="NavalCombatCore.LeaderSkillLevel, Assembly-CSharp">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="navalTactical" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
+                    <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" header-title="Traits" show-foldout-header="true" item-template="project://database/Assets/UIDocuments/Templates/LeaderTraitEditor.uxml?fileID=9197481963319205126&amp;guid=af7a28a3141020b4aa2a856f35f2bb82&amp;type=3#LeaderTraitEditor" data-source-path="traits" />
+                    <Bindings>
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="Leader =&gt; DisplayStyle" />
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,122 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0.49);">
+        <ui:TabView>
+            <ui:Tab label="Command">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                    <ui:Button text="Advance 1 Min (1)" name="Advance1MinButton" />
+                    <ui:Button text="Advance 1 pulse (`)" name="Advance1PulseButton" />
+                    <ui:Button text="Detach (I)" name="DetachButton" />
+                    <ui:Button text="Follow (F)" name="FollowButton" />
+                    <ui:Button text="Relative (R)" name="RelativeButton" />
+                    <ui:Label text="Player" style="margin-left: 10px; display: none;" />
+                    <ui:DropdownField name="PlayerDropdownField" style="width: 300px; display: none;" />
+                    <ui:Button text="Victory Status" name="VictoryStatusButton" />
+                    <ui:Button text="Run Debug Script" name="RunDebugScriptButton">
+                        <Bindings>
+                            <ui:DataBinding property="style.display" data-source-path="isEditor" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                        </Bindings>
+                    </ui:Button>
+                </ui:VisualElement>
+            </ui:Tab>
+            <ui:Tab label="File">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                    <ui:Button text="Save" name="SaveButton" />
+                    <ui:Button text="Load" name="LoadButton" />
+                    <ui:Button text="Selection" name="SelectionBuiltinButton" />
+                    <ui:Button text="Go to Main Menu" name="GoToMainMenuButton" />
+                </ui:VisualElement>
+            </ui:Tab>
+            <ui:Tab label="View">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                    <ui:Label text="Unit Label" />
+                    <ui:EnumField value="Center" type="NavalCombatCore.LanguageType, Assembly-CSharp">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="iconLanuageType" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
+                    <ui:Button text="Distance Measure (D)" name="DistanceMeasureButton" />
+                    <ui:Button text="LOS Measure (S)" name="MaskMeasureButton" />
+                </ui:VisualElement>
+            </ui:Tab>
+            <ui:Tab label="Editor">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                    <ui:Button text="Leader Editor" name="LeaderEditorButton" />
+                    <ui:Button text="Class Editor" name="ClassEditorButton" />
+                    <ui:Button text="Named Ship Editor" name="NamedShipEditorButton" />
+                    <ui:Button text="Ship Log Editor" name="ShipLogEditorButton" />
+                    <ui:Button text="OOB Editor" name="OOBEditorButton" />
+                    <ui:Button text="Scenario State Editor" name="ScenarioStateEditorButton" />
+                    <ui:Button text="Launched Torpedo Editor" name="LaunchedTorpedoEditorButton" />
+                    <ui:Button text="JS Script Console" name="JSScriptConsoleButton" />
+                    <ui:Button text=" Set to Formation Position" name="SetToFormationPositionButton" />
+                    <ui:Button text="Streaming Asset Reference" name="StreamingAssetReferenceDialogButton" />
+                </ui:VisualElement>
+            </ui:Tab>
+            <ui:Tab label="Settings">
+                <ui:VisualElement name="GamePreferenceRoot" data-source-type="GamePreference, Assembly-CSharp" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                    <ui:EnumField label="Fire Line Display" value="Center" type="GamePreference+FiringLineDisplayMode, Assembly-CSharp">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="firingLineDisplayMode" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
+                    <ui:Label text="Pulse Legnth (seconds)" />
+                    <ui:FloatField>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="pulseLengthSeconds" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:Label text="Simulate Rate Ratio" />
+                    <ui:FloatField>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="simulationRateRaio" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                </ui:VisualElement>
+                <ui:VisualElement data-source-type="NavalCombatCore.CoreParameter, Assembly-CSharp" name="CoreParameterRoot" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                    <ui:Label text="Land Collision" />
+                    <ui:Toggle>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="checkLandCollision" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
+                    <ui:Label text="Ship Collision" />
+                    <ui:Toggle>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="checkShipCollision" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
+                    <ui:Label text="Friendly Collsion" />
+                    <ui:Toggle>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="checkFriendlyShipCollision" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
+                    <ui:Label text="Attack Coef" />
+                    <ui:FloatField>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="attackCoef" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:Label text="Def Coef" />
+                    <ui:FloatField>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="defenceCoef" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:Label text="Global Hit Coef" />
+                    <ui:FloatField>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="globalHitCoef" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                </ui:VisualElement>
+            </ui:Tab>
+            <ui:Tab label="Help">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:Button text="Help" name="HelpButton" />
+                </ui:VisualElement>
+            </ui:Tab>
+        </ui:TabView>
+    </ui:VisualElement>
+</ui:UXML>

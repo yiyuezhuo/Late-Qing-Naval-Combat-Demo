@@ -1,0 +1,17 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Textures/Map_of_Battle_of_the_Yalu_River_(1894).jpg?fileID=2800000&amp;guid=edfed1be4dcc485499ee5126922bcbe2&amp;type=3#Map_of_Battle_of_the_Yalu_River_(1894)&quot;); -unity-background-scale-mode: scale-and-crop;" />
+    <ui:VisualElement style="flex-grow: 0; position: absolute; top: 50%; left: 50%; translate: -50% -50%; background-color: rgba(255, 255, 255, 0.78); padding-bottom: 10px; padding-top: 10px; padding-left: 10px; padding-right: 10px;">
+        <ui:VisualElement style="flex-grow: 1; padding-top: 0; padding-bottom: 0;">
+            <ui:Label text="Battle of Yalu River 1894" style="font-size: 38px;" />
+            <ui:VisualElement>
+                <ui:Button text="Select Scenario" name="SelectScenarioButton" class="verylarge" />
+                <ui:Button text="Load Game" name="LoadGameButton" class="verylarge" />
+                <ui:Button text="Gallery" name="GalleryButton" enabled="true" class="verylarge" style="display: none;" />
+                <ui:Button text="Help" name="HelpButton" class="verylarge" />
+                <ui:Button text="Open Source Code Repository" name="OpenSourceRepositoryButton" class="verylarge" />
+                <ui:Button text="Exit" name="ExitButton" class="verylarge" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

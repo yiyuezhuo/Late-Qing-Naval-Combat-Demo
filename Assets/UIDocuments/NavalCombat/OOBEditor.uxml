@@ -1,0 +1,95 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:Template name="DoctrineEditor" src="project://database/Assets/UIDocuments/DoctrineEditor.uxml?fileID=9197481963319205126&amp;guid=9963f3ab57e9cd545869989ed4b99a3d&amp;type=3#DoctrineEditor" />
+    <ui:Template name="NamedShipVisualizer" src="project://database/Assets/UIDocuments/NamedShipVisualizer.uxml?fileID=9197481963319205126&amp;guid=31d24939061571546a16f9a8bd6443ed&amp;type=3#NamedShipVisualizer" />
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement data-source-type="OOBEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
+        <ui:Label text="OOB Editor" class="title" />
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:TreeView name="OOBTreeView" item-template="project://database/Assets/UIDocuments/Templates/OOBEditorLabel.uxml?fileID=9197481963319205126&amp;guid=13dc78db772c3514eb688d39d01f95c7&amp;type=3#OOBEditorLabel" auto-expand="true" />
+                <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;">
+                    <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                        <ui:Label text="State:" />
+                        <ui:Label text="Label">
+                            <Bindings>
+                                <ui:DataBinding property="text" data-source-path="state" binding-mode="ToTarget" />
+                            </Bindings>
+                        </ui:Label>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:Button text="Create Group" name="CreateGroupButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Delete Group" name="DeleteGroupButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Attach" name="AttachButton" style="flex-basis: 50px; flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:Button text="Add Ship" name="AddShipButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Remove Ship" name="RemoveShipButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Repair" name="RepairButton" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:Button text="Import" name="ImportButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Export" name="ExportButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Expand" name="ExpandButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Collapse" name="CollapseButton" style="flex-basis: 50px; flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:Button text="Confirm" name="ConfirmButton" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1.2; flex-basis: 100px;">
+                <ui:VisualElement data-source-path="currentSelectedShipGroup" style="flex-grow: 0;">
+                    <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                        <AttributeOverrides element-name="GlobalStringLabel" text="Group Name" />
+                    </ui:Instance>
+                    <ui:Instance template="DoctrineEditor" data-source-path="doctrineProp" style="padding-left: 5px; padding-right: 5px;" />
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:VisualElement style="flex-grow: 1;">
+                            <ui:TextField label="Leader">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="leaderProp.name.mergedName" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:TextField>
+                            <ui:Button text="Set Leader" name="SetLeaderButton" />
+                            <ui:EnumField label="Type" value="Center" type="NavalCombatCore.GroupType, Assembly-CSharp">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:EnumField>
+                            <ui:EnumField label="Formation" value="Center" type="NavalCombatCore.FormationType, Assembly-CSharp">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="formation" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:EnumField>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; flex-basis: 100px; -unity-background-scale-mode: scale-to-fit;">
+                            <Bindings>
+                                <ui:DataBinding property="style.backgroundImage" data-source-path="leaderObjectId" binding-mode="ToTarget" source-to-ui-converters="string (Leader objectID) =&gt; StyleBackground" />
+                            </Bindings>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipGroup =&gt; DisplayStyle" />
+                    </Bindings>
+                </ui:VisualElement>
+                <ui:VisualElement data-source-path="currentSelectedShipLog" style="flex-grow: 0;">
+                    <ui:Label text="Selected ShipLog&apos;s nama">
+                        <Bindings>
+                            <ui:DataBinding property="text" binding-mode="ToTarget" source-to-ui-converters="ShipLog =&gt; ShipLog&apos;s merge name" />
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Label text="Selected ShipLog&apos;s captain&apos;s name">
+                        <Bindings>
+                            <ui:DataBinding property="text" binding-mode="ToTarget" data-source-path="captainDesc" />
+                        </Bindings>
+                    </ui:Label>
+                    <ui:VisualElement data-source-path="namedShipProp" style="flex-grow: 1;">
+                        <ui:Instance template="NamedShipVisualizer" />
+                    </ui:VisualElement>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipLog to DisplayStyle" />
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

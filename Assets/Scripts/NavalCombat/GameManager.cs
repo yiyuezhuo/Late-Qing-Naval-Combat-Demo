@@ -1,5 +1,4 @@
 using UnityEngine;
-using NavalCombatCore;
 using GeographicLib;
 using TMPro;
 using UnityEngine.UI;
@@ -12,6 +11,9 @@ using UnityEngine.EventSystems;
 using System;
 using System.Collections;
 // using SunCalcNet;
+
+using NavalCombatCore;
+using CoreUtils;
 
 public interface IColliderRootProvider
 {

@@ -11,6 +11,8 @@ using System.Linq;
 using Unity.Properties;
 using System;
 
+using CoreUtils;
+
 namespace NavalCombatCore
 {
     public partial class ShipClass
@@ -290,14 +292,6 @@ namespace NavalCombatCore
         }
     }
 
-    public partial class GlobalString
-    {
-        [CreateProperty]
-        public string mergedName
-        {
-            get => GetMergedName();
-        }
-    }
 
     public partial class AbstractMountStatusRecord
     {
@@ -476,5 +470,17 @@ namespace NavalCombatCore
     {
         [CreateProperty]
         public string shipTypeDesc => ShipClass.GetAcronymFor(shipType);
+    }
+}
+
+namespace CoreUtils
+{
+    public partial class GlobalString
+    {
+        [CreateProperty]
+        public string mergedName
+        {
+            get => GetMergedName();
+        }
     }
 }

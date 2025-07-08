@@ -7,6 +7,8 @@ using System.Xml.Serialization;
 using System.Diagnostics;
 using MathNet.Numerics.Distributions;
 
+using CoreUtils;
+
 
 namespace NavalCombatCore
 {
@@ -54,7 +56,7 @@ namespace NavalCombatCore
         public string hitTargetObjectId;
         public ShipLog GetHitObject() => EntityManager.Instance.Get<ShipLog>(hitTargetObjectId);
         public float inflictDamagePoint;
-        
+
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
             yield break;
@@ -131,16 +133,16 @@ namespace NavalCombatCore
                         {
                             subject = collidedShipLog,
                             baseDamagePoint = torpedoDamage,
-                            cause=DamageEffectCause.Torpedo,
+                            cause = DamageEffectCause.Torpedo,
                         };
                         var damageEffectId = DamageEffectChart.AddNewDamageEffect(ctx);
 
                         var tgtLog = new ShipLogTorpedoHitLog()
                         {
-                            torpedoObjectId=objectId,
+                            torpedoObjectId = objectId,
                             time = NavalGameState.Instance.scenarioState.dateTime,
                             damagePoint = torpedoDamage,
-                            damageEffectId=damageEffectId
+                            damageEffectId = damageEffectId
                         };
                         collidedShipLog.logs.Add(tgtLog);
 

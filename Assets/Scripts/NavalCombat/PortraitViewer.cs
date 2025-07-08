@@ -1,8 +1,11 @@
 using UnityEngine;
-using NavalCombatCore;
 using TMPro;
 using UnityEngine.UIElements;
 using System;
+
+using CoreUtils;
+using NavalCombatCore;
+
 
 public interface IPortraitViewerObservable : IObjectIdLabeled, ICollider // Abstraction from ShipLog to support view of torpedo, land battery / target and possbily projectile.
 {

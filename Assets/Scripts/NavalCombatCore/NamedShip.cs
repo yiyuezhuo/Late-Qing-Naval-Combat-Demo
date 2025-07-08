@@ -4,6 +4,8 @@ using System.Linq;
 using System;
 using System.Xml.Serialization;
 
+using CoreUtils;
+
 
 namespace NavalCombatCore
 {

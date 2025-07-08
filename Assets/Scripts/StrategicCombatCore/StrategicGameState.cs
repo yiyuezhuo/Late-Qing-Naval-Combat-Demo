@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
+using CoreUtils;
+
 
 namespace StrategicCombatCore
 {
@@ -46,13 +48,41 @@ namespace StrategicCombatCore
         public List<CellRecord<T>> records;
     }
 
+    public class StrategicLocationLabel
+    {
+        public int x;
+        public int y;
+        public GlobalString name;
+        // public int size;
+    }
+
     public class StrategicGameState
     {
         [XmlIgnore]
         public TerrainType[,] terrainMatrix; // (x, y) => TerrainType
 
+        public List<StrategicLocationLabel> labels = new();
+
         public event EventHandler mapRebuilt;
         public event EventHandler<(int, int)> mapCellUpdated;
+
+        public int GetMapWidth() => terrainMatrix.GetLength(0);
+        public int GetMapHeight() => terrainMatrix.GetLength(1);
+
+        public void SetMapCellTerrain(int x, int y, TerrainType terrainType)
+        {
+            terrainMatrix[x, y] = terrainType;
+
+            mapCellUpdated?.Invoke(this, (x, y));
+        }
+
+        public void UpdateTo(StrategicGameState newInstance)
+        {
+            terrainMatrix = newInstance.terrainMatrix;
+            labels = newInstance.labels;
+
+            mapRebuilt?.Invoke(this, EventArgs.Empty);
+        }
 
         public SerializedMatrix<TerrainType> serializedMatrix
         {
@@ -65,7 +95,7 @@ namespace StrategicCombatCore
                 {
                     for (var y = 0; y < height; y++)
                     {
-                        records.Add(new CellRecord<TerrainType> { x = x, y = y, value = terrainMatrix[y, x] });
+                        records.Add(new CellRecord<TerrainType> { x = x, y = y, value = terrainMatrix[x, y] });
                     }
                 }
                 return new()
@@ -87,7 +117,7 @@ namespace StrategicCombatCore
             }
         }
 
-        public void GenerateTerrainMat(int width, int height)
+        public void GenerateTerrainMatrix(int width, int height)
         {
             terrainMatrix = new TerrainType[width, height];
 

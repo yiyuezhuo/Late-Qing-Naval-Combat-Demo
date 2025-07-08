@@ -28,6 +28,14 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             );
         };
 
+        root.Q<Button>("ImportMapButton").clicked += () =>
+        {
+            Debug.Log("ImportMapButton clicked");
+
+            IOManager.Instance.textLoaded += OnMapXMLLoaded;
+            IOManager.Instance.LoadTextFile("xml");
+        };
+
         root.Q<Button>("GenerateMapButton").clicked += () =>
         {
             Debug.Log("GenerateMapButton clicked");
@@ -35,7 +43,15 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             var width = StrategicGameManager.Instance.tempMapWidth;
             var height = StrategicGameManager.Instance.tempMapHeight;
 
-            StrategicGameState.Instance.GenerateTerrainMat(width, height);
+            StrategicGameState.Instance.GenerateTerrainMatrix(width, height);
         };
+    }
+
+    void OnMapXMLLoaded(object sender, string text)
+    {
+        IOManager.Instance.textLoaded -= OnMapXMLLoaded;
+
+        var strategicGameState = XmlUtils.FromXML<StrategicGameState>(text);
+        StrategicGameState.Instance.UpdateTo(strategicGameState);
     }
 }

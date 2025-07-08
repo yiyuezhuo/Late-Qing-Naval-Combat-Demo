@@ -72,3 +72,4 @@ MonoBehaviour:
   scenarioPickerDialogDocument: {fileID: 9197481963319205126, guid: 6025ff5dcb2c58b439b9b9b3964c5f40, type: 3}
   victoryStatusDocument: {fileID: 9197481963319205126, guid: a3563e17e57e3a34fa7f72852a1d0720, type: 3}
   helpDialogDocument: {fileID: 9197481963319205126, guid: d099853a82a32fd43899dcdaad9b3ec9, type: 3}
+  locationLabelDialogDocument: {fileID: 9197481963319205126, guid: d41e54b604e35b445bdad39d061b541b, type: 3}

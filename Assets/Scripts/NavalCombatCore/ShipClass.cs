@@ -7,6 +7,8 @@ using MathNet.Numerics.Distributions;
 using System.Linq;
 using System.Collections;
 
+using CoreUtils;
+
 namespace NavalCombatCore
 {
     public enum Country
@@ -282,7 +284,7 @@ namespace NavalCombatCore
         public List<PenetrationTableRecord> penetrationTableRecords = new();
         public List<MountLocationRecord> mountLocationRecords = new();
 
-        
+
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
@@ -740,6 +742,6 @@ namespace NavalCombatCore
             // var armorScoreSmoothed = 1 + (float)Math.Sqrt(armorScore);
             return 1f * survivability + 1f * firepowerScore; // TODO: Consider DP?
         }
-        
+
     }
 }

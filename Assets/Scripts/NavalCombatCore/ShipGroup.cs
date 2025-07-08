@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 // using System.Windows.Forms;
 
+using CoreUtils;
+
 namespace NavalCombatCore
 {
     public enum GroupType
@@ -41,7 +43,7 @@ namespace NavalCombatCore
     {
         public string parentObjectId { get; set; }
         public string GetMemberName();
-        public Doctrine doctrine{ get; set; }
+        public Doctrine doctrine { get; set; }
 
         public ShipGroup GetParentGroup() => EntityManager.Instance.Get<ShipGroup>(parentObjectId);
         public IShipGroupMember GetRootParent()
@@ -122,7 +124,7 @@ namespace NavalCombatCore
 
         public GroupType type;
         public FormationType formation;
-        public Doctrine doctrine{ get; set; } = new();
+        public Doctrine doctrine { get; set; } = new();
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {

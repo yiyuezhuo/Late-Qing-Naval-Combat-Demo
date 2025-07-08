@@ -1,34 +1,49 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:TabView data-source-type="StrategicGameManager, Assembly-CSharp">
-        <ui:Tab label="Map Edit">
-            <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; background-color: rgba(255, 255, 255, 0.49);">
-                <ui:Button text="Export Map" name="ExportMapButton" />
-                <ui:Label text="Terrain" />
-                <ui:EnumField value="Center" type="StrategicCombatCore.TerrainType, Assembly-CSharp">
-                    <Bindings>
-                        <ui:DataBinding property="value" data-source-path="currentTerrainType" binding-mode="TwoWay" />
-                    </Bindings>
-                </ui:EnumField>
-                <ui:Label text="Mode" />
-                <ui:EnumField value="Center" type="StrategicMapEditMode, Assembly-CSharp">
-                    <Bindings>
-                        <ui:DataBinding property="value" data-source-path="mapEditMode" binding-mode="TwoWay" />
-                    </Bindings>
-                </ui:EnumField>
-                <ui:Label text="Width" />
-                <ui:IntegerField>
-                    <Bindings>
-                        <ui:DataBinding property="value" data-source-path="tempMapWidth" binding-mode="TwoWay" />
-                    </Bindings>
-                </ui:IntegerField>
-                <ui:Label text="Height" />
-                <ui:IntegerField>
-                    <Bindings>
-                        <ui:DataBinding property="value" data-source-path="tempMapHeight" binding-mode="TwoWay" />
-                    </Bindings>
-                </ui:IntegerField>
-                <ui:Button text="Generate Map" name="GenerateMapButton" />
-            </ui:VisualElement>
-        </ui:Tab>
-    </ui:TabView>
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(255, 255, 255, 0.49);">
+        <ui:TabView data-source-type="StrategicGameManager, Assembly-CSharp">
+            <ui:Tab label="Map Edit">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                    <ui:Button text="Export Map" name="ExportMapButton" />
+                    <ui:Button text="Import Map" name="ImportMapButton" />
+                    <ui:Label text="Terrain" />
+                    <ui:EnumField value="Center" type="StrategicCombatCore.TerrainType, Assembly-CSharp" style="min-width: 100px;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="currentTerrainType" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
+                    <ui:Label text="Mode" />
+                    <ui:EnumField value="Center" type="StrategicMapEditMode, Assembly-CSharp" style="min-width: 100px;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="mapEditMode" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
+                    <ui:Label text="Width" />
+                    <ui:IntegerField>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="tempMapWidth" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:IntegerField>
+                    <ui:Label text="Height" />
+                    <ui:IntegerField>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="tempMapHeight" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:IntegerField>
+                    <ui:Button text="Generate Map" name="GenerateMapButton" />
+                    <ui:Label text="Reference Map" />
+                    <ui:Toggle>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="showReferenceMap" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
+                    <ui:Label text="Border" />
+                    <ui:Toggle>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="showBorder" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
+                </ui:VisualElement>
+            </ui:Tab>
+        </ui:TabView>
+    </ui:VisualElement>
 </ui:UXML>

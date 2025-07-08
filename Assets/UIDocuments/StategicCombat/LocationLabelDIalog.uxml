@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:VisualElement data-source-type="StrategicCombatCore.StrategicLocationLabel, Assembly-CSharp" class="panel-dialog" style="flex-grow: 0; height: auto;">
+        <ui:Label text="Location Label Editor" class="title" />
+        <ui:Instance template="GlobalStringEditor" data-source-path="name">
+            <AttributeOverrides element-name="GlobalStringLabel" text="Location Name" />
+        </ui:Instance>
+        <ui:Button text="Confirm" name="ConfirmButton" />
+    </ui:VisualElement>
+</ui:UXML>

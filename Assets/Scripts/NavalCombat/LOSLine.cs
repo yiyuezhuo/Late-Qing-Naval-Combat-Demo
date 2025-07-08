@@ -1,5 +1,4 @@
 using UnityEngine;
-using NavalCombatCore;
 // using GeographicLib;
 using TMPro;
 using UnityEngine.UI;
@@ -9,6 +8,8 @@ using GeographicLib;
 using System.Runtime.InteropServices;
 using System;
 
+using NavalCombatCore;
+using CoreUtils;
 
 public class LOSLine : SingletonMonoBehaviour<LOSLine>, IMaskCheckService
 {
@@ -206,7 +207,7 @@ public class LOSLine : SingletonMonoBehaviour<LOSLine>, IMaskCheckService
                     endPos = Utils.LatitudeLongitudeDegToVector3((float)_endLatLon.Latitude, (float)_endLatLon.Longitude);
                 }
 
-                var positions = new Vector3[2]{startPos, endPos};
+                var positions = new Vector3[2] { startPos, endPos };
                 lineRenderer.positionCount = 2;
                 lineRenderer.SetPositions(positions);
 

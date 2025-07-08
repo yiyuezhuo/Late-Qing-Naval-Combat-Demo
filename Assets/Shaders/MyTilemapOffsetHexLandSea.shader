@@ -10,12 +10,15 @@ Shader "Unlit/MyTilemapOffsetHexLandSea"
 
         _Width ("Width", Float) = 1
         _Height ("Height", Float) = 1
-        _Border ("Border", Float) = 1
+        [Toggle] _Border ("Border", Float) = 1
         _BorderPercent ("BorderPercent", Float) = 0.025
         _BorderColor ("BorderColor", Color) = (1,0,0,1)
 
         _WaterBeginIndex ("WaterBeginIndex", Float) = 15
         _TerrainTiling ("TerrainTiling", Float) = 1
+        
+        [Toggle] _ShowReferenceTexture ("Show Reference Texture", Float) = 0
+        _ReferenceTexture ("Reference Texture", 2D) = "white" {}
     }
     SubShader
     {
@@ -61,6 +64,9 @@ Shader "Unlit/MyTilemapOffsetHexLandSea"
 
             float _WaterBeginIndex;
             float _TerrainTiling;
+            
+            float _ShowReferenceTexture;
+            sampler2D _ReferenceTexture;
 
             v2f vert (appdata v)
             {
@@ -142,6 +148,11 @@ Shader "Unlit/MyTilemapOffsetHexLandSea"
                     {
                         return _BorderColor;
                     }
+                }
+
+                if(_ShowReferenceTexture)
+                {
+                    return tex2D(_ReferenceTexture, i.uv);
                 }
 
                 // float2 xy_hex = from_center(min_center);

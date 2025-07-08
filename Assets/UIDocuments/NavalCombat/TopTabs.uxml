@@ -30,7 +30,7 @@
             <ui:Tab label="View">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Label text="Unit Label" />
-                    <ui:EnumField value="Center" type="NavalCombatCore.LanguageType, Assembly-CSharp">
+                    <ui:EnumField value="Center" type="CoreUtils.LanguageType, Assembly-CSharp" style="min-width: 100px;">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="iconLanuageType" binding-mode="TwoWay" />
                         </Bindings>

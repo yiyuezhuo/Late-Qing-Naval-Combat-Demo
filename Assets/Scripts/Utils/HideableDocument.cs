@@ -1,8 +1,4 @@
 using UnityEngine;
-using NavalCombatCore;
-using GeographicLib;
-using TMPro;
-using UnityEngine.UI;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
 

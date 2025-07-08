@@ -42,6 +42,12 @@
                             <ui:DataBinding property="value" data-source-path="showBorder" binding-mode="TwoWay" />
                         </Bindings>
                     </ui:Toggle>
+                    <ui:Label text="Accurate  Sea Land" />
+                    <ui:Toggle>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="showAccurateSeaLand" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
                 </ui:VisualElement>
             </ui:Tab>
         </ui:TabView>

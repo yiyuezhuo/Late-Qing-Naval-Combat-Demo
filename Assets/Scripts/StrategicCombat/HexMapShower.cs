@@ -40,6 +40,20 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         }
     }
 
+    bool _showAccurateSeaLand = true;
+    public bool showAccurateSeaLand
+    {
+        get => _showAccurateSeaLand;
+        set
+        {
+            if (value != _showAccurateSeaLand)
+            {
+                _showAccurateSeaLand = value;
+                material.SetFloat("_AccurateSeaLand", _showAccurateSeaLand ? 1 : 0);
+            }
+        }
+    }
+
     protected override void Awake()
     {
         base.Awake();

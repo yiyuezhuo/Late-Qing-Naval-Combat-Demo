@@ -19,6 +19,8 @@ Shader "Unlit/MyTilemapOffsetHexLandSea"
         
         [Toggle] _ShowReferenceTexture ("Show Reference Texture", Float) = 0
         _ReferenceTexture ("Reference Texture", 2D) = "white" {}
+
+        [Toggle] _AccurateSeaLand ("Accurate Sea Land", Float) = 1
     }
     SubShader
     {
@@ -67,6 +69,8 @@ Shader "Unlit/MyTilemapOffsetHexLandSea"
             
             float _ShowReferenceTexture;
             sampler2D _ReferenceTexture;
+
+            float _AccurateSeaLand;
 
             v2f vert (appdata v)
             {
@@ -159,19 +163,26 @@ Shader "Unlit/MyTilemapOffsetHexLandSea"
 
                 float4 terrainIndexColor = tex2D(_TerrainTypeTex, index);
                 int terrainIndex = terrainIndexColor.r * 255;
-
-                float is_sea = tex2D(_LandSeaTex, i.uv).b > 0.5;
-                if(is_sea && terrainIndex < _WaterBeginIndex)
+                
+                if(_AccurateSeaLand)
                 {
-                    terrainIndex = _WaterBeginIndex;
-                }
-                else if(!is_sea && terrainIndex >= _WaterBeginIndex)
-                {
-                    terrainIndex = 0;
+                    float is_sea = tex2D(_LandSeaTex, i.uv).b > 0.5;
+                    if(is_sea && terrainIndex < _WaterBeginIndex)
+                    {
+                        terrainIndex = _WaterBeginIndex;
+                    }
+                    else if(!is_sea && terrainIndex >= _WaterBeginIndex)
+                    {
+                        terrainIndex = 0;
+                    }
                 }
                 
                 float2 uv_array = fmod(i.uv * _TerrainTiling, 1);
                 float4 ret = UNITY_SAMPLE_TEX2DARRAY(_TerrainTexArray, float3(uv_array, terrainIndex));
+                if(terrainIndex == 15)
+                {
+                    ret = ret * 2; // temp hack to enhance shallow water to be more visible
+                }
                 // ret = sqrt(ret + float4(0.1, 0.1, 0.1, 0));
                 return ret;
                 // return terrainIndexColor * 25;

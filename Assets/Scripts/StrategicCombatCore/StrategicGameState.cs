@@ -41,6 +41,30 @@ namespace StrategicCombatCore
         public T value;
     }
 
+    public enum HexPairFeatureType
+    {
+        Road,
+        Railroad
+    }
+
+    public class HexPairFeatureRecord<T>
+    {
+        [XmlAttribute]
+        public int x1;
+
+        [XmlAttribute]
+        public int y1;
+
+        [XmlAttribute]
+        public int x2;
+
+        [XmlAttribute]
+        public int y2;
+
+        [XmlAttribute]
+        public T value;
+    }
+
     public class SerializedMatrix<T>
     {
         public int width;

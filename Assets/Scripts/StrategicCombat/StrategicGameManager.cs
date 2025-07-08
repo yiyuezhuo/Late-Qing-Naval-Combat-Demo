@@ -19,7 +19,9 @@ public enum StrategicMapEditMode
     Select,
     PaintTerrain,
     CreateOrEditLabel,
-    DeleteLabel
+    DeleteLabel,
+    PaintHexPairFeatureBegin,
+    PaintHexPairFeatureEnd
 }
 
 public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
@@ -46,6 +48,13 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     {
         get => HexMapShower.Instance.showBorder;
         set => HexMapShower.Instance.showBorder = value;
+    }
+
+    [CreateProperty]
+    public bool showAccurateSeaLand
+    {
+        get => HexMapShower.Instance.showAccurateSeaLand;
+        set => HexMapShower.Instance.showAccurateSeaLand = value;
     }
 
     void Start()

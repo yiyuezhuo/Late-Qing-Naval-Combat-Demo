@@ -57,6 +57,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         set => HexMapShower.Instance.showAccurateSeaLand = value;
     }
 
+    public Cell lastSelectedCell;
+
     void Start()
     {
         var width = tempMapWidth;
@@ -172,6 +174,21 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                         if (mapEditMode == StrategicMapEditMode.DeleteLabel)
                         {
                             StrategicGameState.Instance.labels.RemoveAll(l => l.x == cellXY.x && l.y == cellXY.y);
+                        }
+
+                        if (mapEditMode == StrategicMapEditMode.PaintHexPairFeatureBegin)
+                        {
+                            lastSelectedCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+                            mapEditMode = StrategicMapEditMode.PaintHexPairFeatureEnd;
+                        }
+                        else if (mapEditMode == StrategicMapEditMode.PaintHexPairFeatureEnd)
+                        {
+                            if (lastSelectedCell != null)
+                            {
+                                var cell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+                                StrategicGameState.Instance.AddRoad(lastSelectedCell, cell);
+                                mapEditMode = StrategicMapEditMode.PaintHexPairFeatureBegin;
+                            }
                         }
                     }
 

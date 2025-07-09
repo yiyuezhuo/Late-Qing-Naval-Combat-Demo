@@ -368,10 +368,10 @@
    <Cell x="1" y="39" terrain="Desert" country="General" />
    <Cell x="2" y="0" terrain="ShallowWater" country="General" />
    <Cell x="2" y="1" terrain="Field" country="General" />
-   <Cell x="2" y="2" terrain="Field" country="General" />
-   <Cell x="2" y="3" terrain="LightUrban" country="General" />
-   <Cell x="2" y="4" terrain="Field" country="General" />
-   <Cell x="2" y="5" terrain="ForestRough" country="General" />
+   <Cell x="2" y="2" terrain="Field" country="General" roadsStr="0/2" />
+   <Cell x="2" y="3" terrain="LightUrban" country="General" roadsStr="0/1/3" />
+   <Cell x="2" y="4" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="2" y="5" terrain="ForestRough" country="General" roadsStr="1/3" />
    <Cell x="2" y="6" terrain="ForestRough" country="General" />
    <Cell x="2" y="7" terrain="Rough" country="General" />
    <Cell x="2" y="8" terrain="Field" country="General" />
@@ -407,20 +407,20 @@
    <Cell x="2" y="38" terrain="DesertRough" country="General" />
    <Cell x="2" y="39" terrain="Desert" country="General" />
    <Cell x="3" y="0" terrain="ShallowWater" country="General" />
-   <Cell x="3" y="1" terrain="HeavyUrban" country="General" />
+   <Cell x="3" y="1" terrain="HeavyUrban" country="General" roadsStr="5" />
    <Cell x="3" y="2" terrain="Field" country="General" />
-   <Cell x="3" y="3" terrain="Clear" country="General" />
+   <Cell x="3" y="3" terrain="Clear" country="General" roadsStr="4/2" />
    <Cell x="3" y="4" terrain="Forest" country="General" />
-   <Cell x="3" y="5" terrain="ForestRough" country="General" />
-   <Cell x="3" y="6" terrain="ForestRough" country="General" />
-   <Cell x="3" y="7" terrain="ForestRough" country="General" />
-   <Cell x="3" y="8" terrain="Forest" country="General" />
-   <Cell x="3" y="9" terrain="Field" country="General" />
-   <Cell x="3" y="10" terrain="Field" country="General" />
-   <Cell x="3" y="11" terrain="Field" country="General" />
-   <Cell x="3" y="12" terrain="LightUrban" country="General" />
-   <Cell x="3" y="13" terrain="ForestRough" country="General" />
-   <Cell x="3" y="14" terrain="Forest" country="General" />
+   <Cell x="3" y="5" terrain="ForestRough" country="General" roadsStr="0/4" />
+   <Cell x="3" y="6" terrain="ForestRough" country="General" roadsStr="0/3" />
+   <Cell x="3" y="7" terrain="ForestRough" country="General" roadsStr="0/3" />
+   <Cell x="3" y="8" terrain="Forest" country="General" roadsStr="0/3" />
+   <Cell x="3" y="9" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="3" y="10" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="3" y="11" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="3" y="12" terrain="LightUrban" country="General" roadsStr="0/3" />
+   <Cell x="3" y="13" terrain="ForestRough" country="General" roadsStr="0/3" />
+   <Cell x="3" y="14" terrain="Forest" country="General" roadsStr="1/3" />
    <Cell x="3" y="15" terrain="Swamp" country="General" />
    <Cell x="3" y="16" terrain="Swamp" country="General" />
    <Cell x="3" y="17" terrain="ForestRough" country="General" />
@@ -448,8 +448,8 @@
    <Cell x="3" y="39" terrain="Desert" country="General" />
    <Cell x="4" y="0" terrain="ShallowWater" country="General" />
    <Cell x="4" y="1" terrain="HeavyUrban" country="General" />
-   <Cell x="4" y="2" terrain="HeavyUrban" country="General" />
-   <Cell x="4" y="3" terrain="Field" country="General" />
+   <Cell x="4" y="2" terrain="HeavyUrban" country="General" roadsStr="0/1" />
+   <Cell x="4" y="3" terrain="Field" country="General" roadsStr="5/3" />
    <Cell x="4" y="4" terrain="Forest" country="General" />
    <Cell x="4" y="5" terrain="ForestRough" country="General" />
    <Cell x="4" y="6" terrain="ForestRough" country="General" />
@@ -461,7 +461,7 @@
    <Cell x="4" y="12" terrain="ForestRough" country="General" />
    <Cell x="4" y="13" terrain="ForestRough" country="General" />
    <Cell x="4" y="14" terrain="ForestRough" country="General" />
-   <Cell x="4" y="15" terrain="Clear" country="General" />
+   <Cell x="4" y="15" terrain="Clear" country="General" roadsStr="1/4" />
    <Cell x="4" y="16" terrain="Swamp" country="General" />
    <Cell x="4" y="17" terrain="Field" country="General" />
    <Cell x="4" y="18" terrain="Field" country="General" />
@@ -488,7 +488,7 @@
    <Cell x="4" y="39" terrain="Desert" country="General" />
    <Cell x="5" y="0" terrain="ShallowWater" country="General" />
    <Cell x="5" y="1" terrain="Clear" country="General" />
-   <Cell x="5" y="2" terrain="Field" country="General" />
+   <Cell x="5" y="2" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="5" y="3" terrain="Forest" country="General" />
    <Cell x="5" y="4" terrain="ForestRough" country="General" />
    <Cell x="5" y="5" terrain="ForestRough" country="General" />
@@ -501,8 +501,8 @@
    <Cell x="5" y="12" terrain="ForestRough" country="General" />
    <Cell x="5" y="13" terrain="ForestRough" country="General" />
    <Cell x="5" y="14" terrain="Clear" country="General" />
-   <Cell x="5" y="15" terrain="LightUrban" country="General" />
-   <Cell x="5" y="16" terrain="LightUrban" country="General" />
+   <Cell x="5" y="15" terrain="LightUrban" country="General" roadsStr="1/0/4" />
+   <Cell x="5" y="16" terrain="LightUrban" country="General" roadsStr="1/3/2" />
    <Cell x="5" y="17" terrain="Field" country="General" />
    <Cell x="5" y="18" terrain="Field" country="General" />
    <Cell x="5" y="19" terrain="Forest" country="General" />
@@ -529,7 +529,7 @@
    <Cell x="6" y="0" terrain="ShallowWater" country="General" />
    <Cell x="6" y="1" terrain="ShallowWater" country="General" />
    <Cell x="6" y="2" terrain="Field" country="General" />
-   <Cell x="6" y="3" terrain="Field" country="General" />
+   <Cell x="6" y="3" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="6" y="4" terrain="Forest" country="General" />
    <Cell x="6" y="5" terrain="ForestRough" country="General" />
    <Cell x="6" y="6" terrain="Rough" country="General" />
@@ -542,14 +542,14 @@
    <Cell x="6" y="13" terrain="ForestRough" country="General" />
    <Cell x="6" y="14" terrain="ForestRough" country="General" />
    <Cell x="6" y="15" terrain="ForestRough" country="General" />
-   <Cell x="6" y="16" terrain="HeavyUrban" country="General" />
-   <Cell x="6" y="17" terrain="HeavyUrban" country="General" />
-   <Cell x="6" y="18" terrain="Field" country="General" />
-   <Cell x="6" y="19" terrain="Forest" country="General" />
-   <Cell x="6" y="20" terrain="Clear" country="General" />
-   <Cell x="6" y="21" terrain="Field" country="General" />
-   <Cell x="6" y="22" terrain="Field" country="General" />
-   <Cell x="6" y="23" terrain="Field" country="General" />
+   <Cell x="6" y="16" terrain="HeavyUrban" country="General" roadsStr="0/4/5/2" />
+   <Cell x="6" y="17" terrain="HeavyUrban" country="General" roadsStr="0/3/4" />
+   <Cell x="6" y="18" terrain="Field" country="General" roadsStr="1/3/0" />
+   <Cell x="6" y="19" terrain="Forest" country="General" roadsStr="0/3" />
+   <Cell x="6" y="20" terrain="Clear" country="General" roadsStr="0/3" />
+   <Cell x="6" y="21" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="6" y="22" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="6" y="23" terrain="Field" country="General" roadsStr="1/3" />
    <Cell x="6" y="24" terrain="Rough" country="General" />
    <Cell x="6" y="25" terrain="Rough" country="General" />
    <Cell x="6" y="26" terrain="ForestRough" country="General" />
@@ -569,7 +569,7 @@
    <Cell x="7" y="0" terrain="ShallowWater" country="General" />
    <Cell x="7" y="1" terrain="Field" country="General" />
    <Cell x="7" y="2" terrain="Field" country="General" />
-   <Cell x="7" y="3" terrain="Field" country="General" />
+   <Cell x="7" y="3" terrain="Field" country="General" roadsStr="2/4" />
    <Cell x="7" y="4" terrain="Clear" country="General" />
    <Cell x="7" y="5" terrain="Rough" country="General" />
    <Cell x="7" y="6" terrain="ForestRough" country="General" />
@@ -581,15 +581,15 @@
    <Cell x="7" y="12" terrain="Rough" country="General" />
    <Cell x="7" y="13" terrain="ForestRough" country="General" />
    <Cell x="7" y="14" terrain="ForestRough" country="General" />
-   <Cell x="7" y="15" terrain="ForestRough" country="General" />
+   <Cell x="7" y="15" terrain="ForestRough" country="General" roadsStr="5/2" />
    <Cell x="7" y="16" terrain="Swamp" country="General" />
    <Cell x="7" y="17" terrain="Forest" country="General" />
-   <Cell x="7" y="18" terrain="Forest" country="General" />
+   <Cell x="7" y="18" terrain="Forest" country="General" roadsStr="1/4" />
    <Cell x="7" y="19" terrain="Field" country="General" />
    <Cell x="7" y="20" terrain="Field" country="General" />
    <Cell x="7" y="21" terrain="Field" country="General" />
    <Cell x="7" y="22" terrain="Field" country="General" />
-   <Cell x="7" y="23" terrain="Field" country="General" />
+   <Cell x="7" y="23" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="7" y="24" terrain="Field" country="General" />
    <Cell x="7" y="25" terrain="Field" country="General" />
    <Cell x="7" y="26" terrain="Field" country="General" />
@@ -609,7 +609,7 @@
    <Cell x="8" y="0" terrain="ShallowWater" country="General" />
    <Cell x="8" y="1" terrain="ShallowWater" country="General" />
    <Cell x="8" y="2" terrain="Field" country="General" />
-   <Cell x="8" y="3" terrain="Field" country="General" />
+   <Cell x="8" y="3" terrain="Field" country="General" roadsStr="1/5" />
    <Cell x="8" y="4" terrain="Field" country="General" />
    <Cell x="8" y="5" terrain="Rough" country="General" />
    <Cell x="8" y="6" terrain="ForestRough" country="General" />
@@ -621,17 +621,17 @@
    <Cell x="8" y="12" terrain="Field" country="General" />
    <Cell x="8" y="13" terrain="Field" country="General" />
    <Cell x="8" y="14" terrain="Forest" country="General" />
-   <Cell x="8" y="15" terrain="Forest" country="General" />
+   <Cell x="8" y="15" terrain="Forest" country="General" roadsStr="5/2" />
    <Cell x="8" y="16" terrain="ForestRough" country="General" />
    <Cell x="8" y="17" terrain="Forest" country="General" />
    <Cell x="8" y="18" terrain="Forest" country="General" />
-   <Cell x="8" y="19" terrain="Field" country="General" />
+   <Cell x="8" y="19" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="8" y="20" terrain="Field" country="General" />
    <Cell x="8" y="21" terrain="Field" country="General" />
    <Cell x="8" y="22" terrain="Field" country="General" />
    <Cell x="8" y="23" terrain="Field" country="General" />
-   <Cell x="8" y="24" terrain="LightUrban" country="General" />
-   <Cell x="8" y="25" terrain="Field" country="General" />
+   <Cell x="8" y="24" terrain="LightUrban" country="General" roadsStr="0/4" />
+   <Cell x="8" y="25" terrain="Field" country="General" roadsStr="1/3" />
    <Cell x="8" y="26" terrain="Field" country="General" />
    <Cell x="8" y="27" terrain="Field" country="General" />
    <Cell x="8" y="28" terrain="Field" country="General" />
@@ -649,7 +649,7 @@
    <Cell x="9" y="0" terrain="ShallowWater" country="General" />
    <Cell x="9" y="1" terrain="ShallowWater" country="General" />
    <Cell x="9" y="2" terrain="Field" country="General" />
-   <Cell x="9" y="3" terrain="Field" country="General" />
+   <Cell x="9" y="3" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="9" y="4" terrain="Field" country="General" />
    <Cell x="9" y="5" terrain="Rough" country="General" />
    <Cell x="9" y="6" terrain="ForestRough" country="General" />
@@ -658,20 +658,20 @@
    <Cell x="9" y="9" terrain="ForestRough" country="General" />
    <Cell x="9" y="10" terrain="Field" country="General" />
    <Cell x="9" y="11" terrain="Field" country="General" />
-   <Cell x="9" y="12" terrain="LightUrban" country="General" />
-   <Cell x="9" y="13" terrain="Forest" country="General" />
-   <Cell x="9" y="14" terrain="Forest" country="General" />
+   <Cell x="9" y="12" terrain="LightUrban" country="General" roadsStr="0/2" />
+   <Cell x="9" y="13" terrain="Forest" country="General" roadsStr="0/3" />
+   <Cell x="9" y="14" terrain="Forest" country="General" roadsStr="5/3" />
    <Cell x="9" y="15" terrain="Forest" country="General" />
    <Cell x="9" y="16" terrain="ForestRough" country="General" />
    <Cell x="9" y="17" terrain="Forest" country="General" />
    <Cell x="9" y="18" terrain="Field" country="General" />
-   <Cell x="9" y="19" terrain="Field" country="General" />
+   <Cell x="9" y="19" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="9" y="20" terrain="Field" country="General" />
    <Cell x="9" y="21" terrain="Field" country="General" />
    <Cell x="9" y="22" terrain="Field" country="General" />
    <Cell x="9" y="23" terrain="Field" country="General" />
    <Cell x="9" y="24" terrain="Field" country="General" />
-   <Cell x="9" y="25" terrain="Field" country="General" />
+   <Cell x="9" y="25" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="9" y="26" terrain="Field" country="General" />
    <Cell x="9" y="27" terrain="Field" country="General" />
    <Cell x="9" y="28" terrain="Field" country="General" />
@@ -690,7 +690,7 @@
    <Cell x="10" y="1" terrain="ShallowWater" country="General" />
    <Cell x="10" y="2" terrain="ShallowWater" country="General" />
    <Cell x="10" y="3" terrain="Field" country="General" />
-   <Cell x="10" y="4" terrain="Field" country="General" />
+   <Cell x="10" y="4" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="10" y="5" terrain="Rough" country="General" />
    <Cell x="10" y="6" terrain="Rough" country="General" />
    <Cell x="10" y="7" terrain="Rough" country="General" />
@@ -698,7 +698,7 @@
    <Cell x="10" y="9" terrain="ForestRough" country="General" />
    <Cell x="10" y="10" terrain="Field" country="General" />
    <Cell x="10" y="11" terrain="Field" country="General" />
-   <Cell x="10" y="12" terrain="Field" country="General" />
+   <Cell x="10" y="12" terrain="Field" country="General" roadsStr="5/2" />
    <Cell x="10" y="13" terrain="Forest" country="General" />
    <Cell x="10" y="14" terrain="Forest" country="General" />
    <Cell x="10" y="15" terrain="Forest" country="General" />
@@ -706,13 +706,13 @@
    <Cell x="10" y="17" terrain="Forest" country="General" />
    <Cell x="10" y="18" terrain="Field" country="General" />
    <Cell x="10" y="19" terrain="Field" country="General" />
-   <Cell x="10" y="20" terrain="Field" country="General" />
+   <Cell x="10" y="20" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="10" y="21" terrain="Field" country="General" />
    <Cell x="10" y="22" terrain="Field" country="General" />
    <Cell x="10" y="23" terrain="Field" country="General" />
    <Cell x="10" y="24" terrain="Field" country="General" />
    <Cell x="10" y="25" terrain="Field" country="General" />
-   <Cell x="10" y="26" terrain="Field" country="General" />
+   <Cell x="10" y="26" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="10" y="27" terrain="Field" country="General" />
    <Cell x="10" y="28" terrain="Field" country="General" />
    <Cell x="10" y="29" terrain="Field" country="General" />
@@ -730,14 +730,14 @@
    <Cell x="11" y="1" terrain="ShallowWater" country="General" />
    <Cell x="11" y="2" terrain="ShallowWater" country="General" />
    <Cell x="11" y="3" terrain="Field" country="General" />
-   <Cell x="11" y="4" terrain="Field" country="General" />
+   <Cell x="11" y="4" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="11" y="5" terrain="Rough" country="General" />
    <Cell x="11" y="6" terrain="Rough" country="General" />
    <Cell x="11" y="7" terrain="Rough" country="General" />
    <Cell x="11" y="8" terrain="ForestRough" country="General" />
    <Cell x="11" y="9" terrain="ForestRough" country="General" />
    <Cell x="11" y="10" terrain="Field" country="General" />
-   <Cell x="11" y="11" terrain="Field" country="General" />
+   <Cell x="11" y="11" terrain="Field" country="General" roadsStr="5/2" />
    <Cell x="11" y="12" terrain="Field" country="General" />
    <Cell x="11" y="13" terrain="Forest" country="General" />
    <Cell x="11" y="14" terrain="Forest" country="General" />
@@ -746,13 +746,13 @@
    <Cell x="11" y="17" terrain="Field" country="General" />
    <Cell x="11" y="18" terrain="Field" country="General" />
    <Cell x="11" y="19" terrain="Field" country="General" />
-   <Cell x="11" y="20" terrain="Field" country="General" />
+   <Cell x="11" y="20" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="11" y="21" terrain="Field" country="General" />
    <Cell x="11" y="22" terrain="Field" country="General" />
    <Cell x="11" y="23" terrain="Field" country="General" />
    <Cell x="11" y="24" terrain="Field" country="General" />
    <Cell x="11" y="25" terrain="Field" country="General" />
-   <Cell x="11" y="26" terrain="Field" country="General" />
+   <Cell x="11" y="26" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="11" y="27" terrain="Field" country="General" />
    <Cell x="11" y="28" terrain="Field" country="General" />
    <Cell x="11" y="29" terrain="Field" country="General" />
@@ -771,13 +771,13 @@
    <Cell x="12" y="2" terrain="ShallowWater" country="General" />
    <Cell x="12" y="3" terrain="ShallowWater" country="General" />
    <Cell x="12" y="4" terrain="Field" country="General" />
-   <Cell x="12" y="5" terrain="Field" country="General" />
+   <Cell x="12" y="5" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="12" y="6" terrain="Rough" country="General" />
    <Cell x="12" y="7" terrain="Rough" country="General" />
    <Cell x="12" y="8" terrain="ForestRough" country="General" />
    <Cell x="12" y="9" terrain="ForestRough" country="General" />
    <Cell x="12" y="10" terrain="ForestRough" country="General" />
-   <Cell x="12" y="11" terrain="Field" country="General" />
+   <Cell x="12" y="11" terrain="Field" country="General" roadsStr="5/2" />
    <Cell x="12" y="12" terrain="Field" country="General" />
    <Cell x="12" y="13" terrain="Forest" country="General" />
    <Cell x="12" y="14" terrain="Forest" country="General" />
@@ -787,13 +787,13 @@
    <Cell x="12" y="18" terrain="Field" country="General" />
    <Cell x="12" y="19" terrain="Field" country="General" />
    <Cell x="12" y="20" terrain="Field" country="General" />
-   <Cell x="12" y="21" terrain="Field" country="General" />
+   <Cell x="12" y="21" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="12" y="22" terrain="Field" country="General" />
    <Cell x="12" y="23" terrain="Field" country="General" />
    <Cell x="12" y="24" terrain="Field" country="General" />
    <Cell x="12" y="25" terrain="Field" country="General" />
    <Cell x="12" y="26" terrain="Field" country="General" />
-   <Cell x="12" y="27" terrain="Field" country="General" />
+   <Cell x="12" y="27" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="12" y="28" terrain="Field" country="General" />
    <Cell x="12" y="29" terrain="Field" country="General" />
    <Cell x="12" y="30" terrain="Field" country="General" />
@@ -811,12 +811,12 @@
    <Cell x="13" y="2" terrain="ShallowWater" country="General" />
    <Cell x="13" y="3" terrain="ShallowWater" country="General" />
    <Cell x="13" y="4" terrain="Field" country="General" />
-   <Cell x="13" y="5" terrain="Field" country="General" />
+   <Cell x="13" y="5" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="13" y="6" terrain="Rough" country="General" />
    <Cell x="13" y="7" terrain="Rough" country="General" />
    <Cell x="13" y="8" terrain="ForestRough" country="General" />
    <Cell x="13" y="9" terrain="Rough" country="General" />
-   <Cell x="13" y="10" terrain="Rough" country="General" />
+   <Cell x="13" y="10" terrain="Rough" country="General" roadsStr="5/2" />
    <Cell x="13" y="11" terrain="Rough" country="General" />
    <Cell x="13" y="12" terrain="Rough" country="General" />
    <Cell x="13" y="13" terrain="Rough" country="General" />
@@ -827,19 +827,19 @@
    <Cell x="13" y="18" terrain="Field" country="General" />
    <Cell x="13" y="19" terrain="Field" country="General" />
    <Cell x="13" y="20" terrain="Field" country="General" />
-   <Cell x="13" y="21" terrain="Field" country="General" />
-   <Cell x="13" y="22" terrain="LightUrban" country="General" />
-   <Cell x="13" y="23" terrain="Field" country="General" />
-   <Cell x="13" y="24" terrain="Field" country="General" />
-   <Cell x="13" y="25" terrain="Field" country="General" />
-   <Cell x="13" y="26" terrain="Field" country="General" />
-   <Cell x="13" y="27" terrain="LightUrban" country="General" />
-   <Cell x="13" y="28" terrain="Field" country="General" />
-   <Cell x="13" y="29" terrain="Field" country="General" />
-   <Cell x="13" y="30" terrain="Field" country="General" />
+   <Cell x="13" y="21" terrain="Field" country="General" roadsStr="0/2/4" />
+   <Cell x="13" y="22" terrain="LightUrban" country="General" roadsStr="0/3" />
+   <Cell x="13" y="23" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="13" y="24" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="13" y="25" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="13" y="26" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="13" y="27" terrain="LightUrban" country="General" roadsStr="0/2/4/3" />
+   <Cell x="13" y="28" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="13" y="29" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="13" y="30" terrain="Field" country="General" roadsStr="1/3" />
    <Cell x="13" y="31" terrain="Field" country="General" />
    <Cell x="13" y="32" terrain="Field" country="General" />
-   <Cell x="13" y="33" terrain="HeavyUrban" country="General" />
+   <Cell x="13" y="33" terrain="HeavyUrban" country="General" roadsStr="2" />
    <Cell x="13" y="34" terrain="ForestRough" country="General" />
    <Cell x="13" y="35" terrain="ForestRough" country="General" />
    <Cell x="13" y="36" terrain="Rough" country="General" />
@@ -852,11 +852,11 @@
    <Cell x="14" y="3" terrain="ShallowWater" country="General" />
    <Cell x="14" y="4" terrain="ShallowWater" country="General" />
    <Cell x="14" y="5" terrain="Field" country="General" />
-   <Cell x="14" y="6" terrain="Field" country="General" />
-   <Cell x="14" y="7" terrain="Field" country="General" />
+   <Cell x="14" y="6" terrain="Field" country="General" roadsStr="0/4" />
+   <Cell x="14" y="7" terrain="Field" country="General" roadsStr="1/3" />
    <Cell x="14" y="8" terrain="Rough" country="General" />
    <Cell x="14" y="9" terrain="ForestRough" country="General" />
-   <Cell x="14" y="10" terrain="Rough" country="General" />
+   <Cell x="14" y="10" terrain="Rough" country="General" roadsStr="5/2" />
    <Cell x="14" y="11" terrain="Rough" country="General" />
    <Cell x="14" y="12" terrain="ForestRough" country="General" />
    <Cell x="14" y="13" terrain="ForestRough" country="General" />
@@ -867,19 +867,19 @@
    <Cell x="14" y="18" terrain="Field" country="General" />
    <Cell x="14" y="19" terrain="Field" country="General" />
    <Cell x="14" y="20" terrain="Field" country="General" />
-   <Cell x="14" y="21" terrain="Field" country="General" />
+   <Cell x="14" y="21" terrain="Field" country="General" roadsStr="5/2" />
    <Cell x="14" y="22" terrain="Field" country="General" />
    <Cell x="14" y="23" terrain="Field" country="General" />
    <Cell x="14" y="24" terrain="Field" country="General" />
    <Cell x="14" y="25" terrain="Field" country="General" />
    <Cell x="14" y="26" terrain="Field" country="General" />
-   <Cell x="14" y="27" terrain="Field" country="General" />
+   <Cell x="14" y="27" terrain="Field" country="General" roadsStr="5/1" />
    <Cell x="14" y="28" terrain="Field" country="General" />
    <Cell x="14" y="29" terrain="Field" country="General" />
    <Cell x="14" y="30" terrain="Field" country="General" />
-   <Cell x="14" y="31" terrain="Field" country="General" />
-   <Cell x="14" y="32" terrain="LightUrban" country="General" />
-   <Cell x="14" y="33" terrain="Field" country="General" />
+   <Cell x="14" y="31" terrain="Field" country="General" roadsStr="0/4" />
+   <Cell x="14" y="32" terrain="LightUrban" country="General" roadsStr="0/1/3" />
+   <Cell x="14" y="33" terrain="Field" country="General" roadsStr="5/3" />
    <Cell x="14" y="34" terrain="Forest" country="General" />
    <Cell x="14" y="35" terrain="ForestRough" country="General" />
    <Cell x="14" y="36" terrain="ForestRough" country="General" />
@@ -893,9 +893,9 @@
    <Cell x="15" y="4" terrain="ShallowWater" country="General" />
    <Cell x="15" y="5" terrain="Field" country="General" />
    <Cell x="15" y="6" terrain="Field" country="General" />
-   <Cell x="15" y="7" terrain="Field" country="General" />
+   <Cell x="15" y="7" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="15" y="8" terrain="Rough" country="General" />
-   <Cell x="15" y="9" terrain="Rough" country="General" />
+   <Cell x="15" y="9" terrain="Rough" country="General" roadsStr="5/2" />
    <Cell x="15" y="10" terrain="Rough" country="General" />
    <Cell x="15" y="11" terrain="ForestRough" country="General" />
    <Cell x="15" y="12" terrain="ForestRough" country="General" />
@@ -905,20 +905,20 @@
    <Cell x="15" y="16" terrain="Forest" country="General" />
    <Cell x="15" y="17" terrain="Field" country="General" />
    <Cell x="15" y="18" terrain="Forest" country="General" />
-   <Cell x="15" y="19" terrain="Field" country="General" />
-   <Cell x="15" y="20" terrain="Field" country="General" />
+   <Cell x="15" y="19" terrain="Field" country="General" roadsStr="0/2" />
+   <Cell x="15" y="20" terrain="Field" country="General" roadsStr="5/3" />
    <Cell x="15" y="21" terrain="Field" country="General" />
    <Cell x="15" y="22" terrain="Field" country="General" />
    <Cell x="15" y="23" terrain="Field" country="General" />
    <Cell x="15" y="24" terrain="Field" country="General" />
    <Cell x="15" y="25" terrain="Field" country="General" />
    <Cell x="15" y="26" terrain="Field" country="General" />
-   <Cell x="15" y="27" terrain="Field" country="General" />
+   <Cell x="15" y="27" terrain="Field" country="General" roadsStr="4/2" />
    <Cell x="15" y="28" terrain="Field" country="General" />
    <Cell x="15" y="29" terrain="Field" country="General" />
    <Cell x="15" y="30" terrain="Clear" country="General" />
    <Cell x="15" y="31" terrain="LightUrban" country="General" />
-   <Cell x="15" y="32" terrain="Field" country="General" />
+   <Cell x="15" y="32" terrain="Field" country="General" roadsStr="4/1" />
    <Cell x="15" y="33" terrain="Forest" country="General" />
    <Cell x="15" y="34" terrain="ForestRough" country="General" />
    <Cell x="15" y="35" terrain="ForestRough" country="General" />
@@ -934,18 +934,18 @@
    <Cell x="16" y="5" terrain="ShallowWater" country="General" />
    <Cell x="16" y="6" terrain="Field" country="General" />
    <Cell x="16" y="7" terrain="Field" country="General" />
-   <Cell x="16" y="8" terrain="LightUrban" country="General" />
-   <Cell x="16" y="9" terrain="Rough" country="General" />
-   <Cell x="16" y="10" terrain="Rough" country="General" />
-   <Cell x="16" y="11" terrain="ForestRough" country="General" />
-   <Cell x="16" y="12" terrain="ForestRough" country="General" />
+   <Cell x="16" y="8" terrain="LightUrban" country="General" roadsStr="0/4" />
+   <Cell x="16" y="9" terrain="Rough" country="General" roadsStr="5/3/0" />
+   <Cell x="16" y="10" terrain="Rough" country="General" roadsStr="0/3" />
+   <Cell x="16" y="11" terrain="ForestRough" country="General" roadsStr="0/3" />
+   <Cell x="16" y="12" terrain="ForestRough" country="General" roadsStr="1/3" />
    <Cell x="16" y="13" terrain="Field" country="General" />
    <Cell x="16" y="14" terrain="Field" country="General" />
    <Cell x="16" y="15" terrain="Rough" country="General" />
-   <Cell x="16" y="16" terrain="Forest" country="General" />
-   <Cell x="16" y="17" terrain="Field" country="General" />
-   <Cell x="16" y="18" terrain="LightUrban" country="General" />
-   <Cell x="16" y="19" terrain="Field" country="General" />
+   <Cell x="16" y="16" terrain="Forest" country="General" roadsStr="0/2" />
+   <Cell x="16" y="17" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="16" y="18" terrain="LightUrban" country="General" roadsStr="0/2/3" />
+   <Cell x="16" y="19" terrain="Field" country="General" roadsStr="5/3" />
    <Cell x="16" y="20" terrain="Swamp" country="General" />
    <Cell x="16" y="21" terrain="Swamp" country="General" />
    <Cell x="16" y="22" terrain="Field" country="General" />
@@ -953,13 +953,13 @@
    <Cell x="16" y="24" terrain="Field" country="General" />
    <Cell x="16" y="25" terrain="Field" country="General" />
    <Cell x="16" y="26" terrain="Field" country="General" />
-   <Cell x="16" y="27" terrain="Field" country="General" />
+   <Cell x="16" y="27" terrain="Field" country="General" roadsStr="5/1" />
    <Cell x="16" y="28" terrain="Field" country="General" />
    <Cell x="16" y="29" terrain="Field" country="General" />
    <Cell x="16" y="30" terrain="ShallowWater" country="General" />
    <Cell x="16" y="31" terrain="ShallowWater" country="General" />
    <Cell x="16" y="32" terrain="Field" country="General" />
-   <Cell x="16" y="33" terrain="Field" country="General" />
+   <Cell x="16" y="33" terrain="Field" country="General" roadsStr="4/1" />
    <Cell x="16" y="34" terrain="Rough" country="General" />
    <Cell x="16" y="35" terrain="Rough" country="General" />
    <Cell x="16" y="36" terrain="Rough" country="General" />
@@ -978,12 +978,12 @@
    <Cell x="17" y="9" terrain="Forest" country="General" />
    <Cell x="17" y="10" terrain="ForestRough" country="General" />
    <Cell x="17" y="11" terrain="ForestRough" country="General" />
-   <Cell x="17" y="12" terrain="Field" country="General" />
+   <Cell x="17" y="12" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="17" y="13" terrain="Field" country="General" />
    <Cell x="17" y="14" terrain="Field" country="General" />
-   <Cell x="17" y="15" terrain="LightUrban" country="General" />
+   <Cell x="17" y="15" terrain="LightUrban" country="General" roadsStr="5/2" />
    <Cell x="17" y="16" terrain="Field" country="General" />
-   <Cell x="17" y="17" terrain="Field" country="General" />
+   <Cell x="17" y="17" terrain="Field" country="General" roadsStr="5/2" />
    <Cell x="17" y="18" terrain="Clear" country="General" />
    <Cell x="17" y="19" terrain="Field" country="General" />
    <Cell x="17" y="20" terrain="Field" country="General" />
@@ -993,13 +993,13 @@
    <Cell x="17" y="24" terrain="Field" country="General" />
    <Cell x="17" y="25" terrain="Field" country="General" />
    <Cell x="17" y="26" terrain="Field" country="General" />
-   <Cell x="17" y="27" terrain="Field" country="General" />
+   <Cell x="17" y="27" terrain="Field" country="General" roadsStr="4/2" />
    <Cell x="17" y="28" terrain="ShallowWater" country="General" />
    <Cell x="17" y="29" terrain="ShallowWater" country="General" />
    <Cell x="17" y="30" terrain="ShallowWater" country="General" />
    <Cell x="17" y="31" terrain="Field" country="General" />
    <Cell x="17" y="32" terrain="Field" country="General" />
-   <Cell x="17" y="33" terrain="Clear" country="General" />
+   <Cell x="17" y="33" terrain="Clear" country="General" roadsStr="4/1" />
    <Cell x="17" y="34" terrain="Rough" country="General" />
    <Cell x="17" y="35" terrain="Rough" country="General" />
    <Cell x="17" y="36" terrain="Rough" country="General" />
@@ -1019,11 +1019,11 @@
    <Cell x="18" y="10" terrain="Forest" country="General" />
    <Cell x="18" y="11" terrain="ForestRough" country="General" />
    <Cell x="18" y="12" terrain="ForestRough" country="General" />
-   <Cell x="18" y="13" terrain="Field" country="General" />
+   <Cell x="18" y="13" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="18" y="14" terrain="Field" country="General" />
-   <Cell x="18" y="15" terrain="LightUrban" country="General" />
+   <Cell x="18" y="15" terrain="LightUrban" country="General" roadsStr="5/2" />
    <Cell x="18" y="16" terrain="Field" country="General" />
-   <Cell x="18" y="17" terrain="Field" country="General" />
+   <Cell x="18" y="17" terrain="Field" country="General" roadsStr="5/1" />
    <Cell x="18" y="18" terrain="Field" country="General" />
    <Cell x="18" y="19" terrain="Field" country="General" />
    <Cell x="18" y="20" terrain="Swamp" country="General" />
@@ -1033,14 +1033,14 @@
    <Cell x="18" y="24" terrain="ShallowWater" country="General" />
    <Cell x="18" y="25" terrain="Field" country="General" />
    <Cell x="18" y="26" terrain="Field" country="General" />
-   <Cell x="18" y="27" terrain="Field" country="General" />
+   <Cell x="18" y="27" terrain="Field" country="General" roadsStr="5/1" />
    <Cell x="18" y="28" terrain="Field" country="General" />
    <Cell x="18" y="29" terrain="ShallowWater" country="General" />
    <Cell x="18" y="30" terrain="ShallowWater" country="General" />
    <Cell x="18" y="31" terrain="DeepWater" country="General" />
    <Cell x="18" y="32" terrain="ShallowWater" country="General" />
    <Cell x="18" y="33" terrain="Field" country="General" />
-   <Cell x="18" y="34" terrain="Field" country="General" />
+   <Cell x="18" y="34" terrain="Field" country="General" roadsStr="4/1" />
    <Cell x="18" y="35" terrain="Rough" country="General" />
    <Cell x="18" y="36" terrain="Rough" country="General" />
    <Cell x="18" y="37" terrain="Rough" country="General" />
@@ -1059,11 +1059,11 @@
    <Cell x="19" y="10" terrain="Forest" country="General" />
    <Cell x="19" y="11" terrain="Forest" country="General" />
    <Cell x="19" y="12" terrain="ForestRough" country="General" />
-   <Cell x="19" y="13" terrain="Field" country="General" />
-   <Cell x="19" y="14" terrain="Field" country="General" />
+   <Cell x="19" y="13" terrain="Field" country="General" roadsStr="1/4" />
+   <Cell x="19" y="14" terrain="Field" country="General" roadsStr="5/2" />
    <Cell x="19" y="15" terrain="Field" country="General" />
    <Cell x="19" y="16" terrain="Field" country="General" />
-   <Cell x="19" y="17" terrain="Field" country="General" />
+   <Cell x="19" y="17" terrain="Field" country="General" roadsStr="4/2" />
    <Cell x="19" y="18" terrain="Field" country="General" />
    <Cell x="19" y="19" terrain="ShallowWater" country="General" />
    <Cell x="19" y="20" terrain="Field" country="General" />
@@ -1073,14 +1073,14 @@
    <Cell x="19" y="24" terrain="ShallowWater" country="General" />
    <Cell x="19" y="25" terrain="Field" country="General" />
    <Cell x="19" y="26" terrain="Field" country="General" />
-   <Cell x="19" y="27" terrain="Field" country="General" />
+   <Cell x="19" y="27" terrain="Field" country="General" roadsStr="4/2" />
    <Cell x="19" y="28" terrain="Field" country="General" />
    <Cell x="19" y="29" terrain="ShallowWater" country="General" />
    <Cell x="19" y="30" terrain="DeepWater" country="General" />
    <Cell x="19" y="31" terrain="DeepWater" country="General" />
    <Cell x="19" y="32" terrain="ShallowWater" country="General" />
    <Cell x="19" y="33" terrain="Field" country="General" />
-   <Cell x="19" y="34" terrain="Field" country="General" />
+   <Cell x="19" y="34" terrain="Field" country="General" roadsStr="4/1" />
    <Cell x="19" y="35" terrain="Field" country="General" />
    <Cell x="19" y="36" terrain="Field" country="General" />
    <Cell x="19" y="37" terrain="Field" country="General" />
@@ -1100,10 +1100,10 @@
    <Cell x="20" y="11" terrain="Forest" country="General" />
    <Cell x="20" y="12" terrain="Forest" country="General" />
    <Cell x="20" y="13" terrain="Forest" country="General" />
-   <Cell x="20" y="14" terrain="LightUrban" country="General" />
+   <Cell x="20" y="14" terrain="LightUrban" country="General" roadsStr="5/4" />
    <Cell x="20" y="15" terrain="Field" country="General" />
    <Cell x="20" y="16" terrain="Field" country="General" />
-   <Cell x="20" y="17" terrain="Field" country="General" />
+   <Cell x="20" y="17" terrain="Field" country="General" roadsStr="5/2" />
    <Cell x="20" y="18" terrain="Field" country="General" />
    <Cell x="20" y="19" terrain="ShallowWater" country="General" />
    <Cell x="20" y="20" terrain="ShallowWater" country="General" />
@@ -1113,7 +1113,7 @@
    <Cell x="20" y="24" terrain="ShallowWater" country="General" />
    <Cell x="20" y="25" terrain="ShallowWater" country="General" />
    <Cell x="20" y="26" terrain="Clear" country="General" />
-   <Cell x="20" y="27" terrain="Field" country="General" />
+   <Cell x="20" y="27" terrain="Field" country="General" roadsStr="5/1" />
    <Cell x="20" y="28" terrain="Field" country="General" />
    <Cell x="20" y="29" terrain="Field" country="General" />
    <Cell x="20" y="30" terrain="DeepWater" country="General" />
@@ -1121,7 +1121,7 @@
    <Cell x="20" y="32" terrain="DeepWater" country="General" />
    <Cell x="20" y="33" terrain="ShallowWater" country="General" />
    <Cell x="20" y="34" terrain="Field" country="General" />
-   <Cell x="20" y="35" terrain="Field" country="General" />
+   <Cell x="20" y="35" terrain="Field" country="General" roadsStr="4/2" />
    <Cell x="20" y="36" terrain="Field" country="General" />
    <Cell x="20" y="37" terrain="Field" country="General" />
    <Cell x="20" y="38" terrain="Field" country="General" />
@@ -1142,7 +1142,7 @@
    <Cell x="21" y="13" terrain="Forest" country="General" />
    <Cell x="21" y="14" terrain="Field" country="General" />
    <Cell x="21" y="15" terrain="ShallowWater" country="General" />
-   <Cell x="21" y="16" terrain="LightUrban" country="General" />
+   <Cell x="21" y="16" terrain="LightUrban" country="General" roadsStr="5" />
    <Cell x="21" y="17" terrain="Field" country="General" />
    <Cell x="21" y="18" terrain="ShallowWater" country="General" />
    <Cell x="21" y="19" terrain="ShallowWater" country="General" />
@@ -1153,14 +1153,14 @@
    <Cell x="21" y="24" terrain="ShallowWater" country="General" />
    <Cell x="21" y="25" terrain="ShallowWater" country="General" />
    <Cell x="21" y="26" terrain="Clear" country="General" />
-   <Cell x="21" y="27" terrain="Field" country="General" />
+   <Cell x="21" y="27" terrain="Field" country="General" roadsStr="4/1" />
    <Cell x="21" y="28" terrain="Field" country="General" />
    <Cell x="21" y="29" terrain="ShallowWater" country="General" />
-   <Cell x="21" y="30" terrain="HeavyUrban" country="General" />
+   <Cell x="21" y="30" terrain="HeavyUrban" country="General" roadsStr="1" />
    <Cell x="21" y="31" terrain="Clear" country="General" />
    <Cell x="21" y="32" terrain="Field" country="General" />
    <Cell x="21" y="33" terrain="ShallowWater" country="General" />
-   <Cell x="21" y="34" terrain="LightUrban" country="General" />
+   <Cell x="21" y="34" terrain="LightUrban" country="General" roadsStr="5/1" />
    <Cell x="21" y="35" terrain="Field" country="General" />
    <Cell x="21" y="36" terrain="Field" country="General" />
    <Cell x="21" y="37" terrain="Clear" country="General" />
@@ -1194,14 +1194,14 @@
    <Cell x="22" y="25" terrain="ShallowWater" country="General" />
    <Cell x="22" y="26" terrain="ShallowWater" country="General" />
    <Cell x="22" y="27" terrain="Field" country="General" />
-   <Cell x="22" y="28" terrain="LightUrban" country="General" />
+   <Cell x="22" y="28" terrain="LightUrban" country="General" roadsStr="4" />
    <Cell x="22" y="29" terrain="ShallowWater" country="General" />
    <Cell x="22" y="30" terrain="ShallowWater" country="General" />
-   <Cell x="22" y="31" terrain="Field" country="General" />
-   <Cell x="22" y="32" terrain="Field" country="General" />
+   <Cell x="22" y="31" terrain="Field" country="General" roadsStr="0/4" />
+   <Cell x="22" y="32" terrain="Field" country="General" roadsStr="1/3" />
    <Cell x="22" y="33" terrain="Field" country="General" />
    <Cell x="22" y="34" terrain="Clear" country="General" />
-   <Cell x="22" y="35" terrain="Field" country="General" />
+   <Cell x="22" y="35" terrain="Field" country="General" roadsStr="4/2" />
    <Cell x="22" y="36" terrain="Field" country="General" />
    <Cell x="22" y="37" terrain="Field" country="General" />
    <Cell x="22" y="38" terrain="Field" country="General" />
@@ -1238,9 +1238,9 @@
    <Cell x="23" y="29" terrain="ShallowWater" country="General" />
    <Cell x="23" y="30" terrain="ShallowWater" country="General" />
    <Cell x="23" y="31" terrain="Field" country="General" />
-   <Cell x="23" y="32" terrain="Field" country="General" />
-   <Cell x="23" y="33" terrain="Field" country="General" />
-   <Cell x="23" y="34" terrain="ForestRough" country="General" />
+   <Cell x="23" y="32" terrain="Field" country="General" roadsStr="0/4/2" />
+   <Cell x="23" y="33" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="23" y="34" terrain="ForestRough" country="General" roadsStr="5/3" />
    <Cell x="23" y="35" terrain="Field" country="General" />
    <Cell x="23" y="36" terrain="Field" country="General" />
    <Cell x="23" y="37" terrain="Field" country="General" />
@@ -1278,7 +1278,7 @@
    <Cell x="24" y="29" terrain="ShallowWater" country="General" />
    <Cell x="24" y="30" terrain="ShallowWater" country="General" />
    <Cell x="24" y="31" terrain="ShallowWater" country="General" />
-   <Cell x="24" y="32" terrain="Field" country="General" />
+   <Cell x="24" y="32" terrain="Field" country="General" roadsStr="5/1" />
    <Cell x="24" y="33" terrain="Field" country="General" />
    <Cell x="24" y="34" terrain="ForestRough" country="General" />
    <Cell x="24" y="35" terrain="Field" country="General" />
@@ -1318,7 +1318,7 @@
    <Cell x="25" y="29" terrain="ShallowWater" country="General" />
    <Cell x="25" y="30" terrain="ShallowWater" country="General" />
    <Cell x="25" y="31" terrain="ShallowWater" country="General" />
-   <Cell x="25" y="32" terrain="Field" country="General" />
+   <Cell x="25" y="32" terrain="Field" country="General" roadsStr="4/1" />
    <Cell x="25" y="33" terrain="ForestRough" country="General" />
    <Cell x="25" y="34" terrain="Forest" country="General" />
    <Cell x="25" y="35" terrain="Forest" country="General" />
@@ -1359,7 +1359,7 @@
    <Cell x="26" y="30" terrain="ShallowWater" country="General" />
    <Cell x="26" y="31" terrain="ShallowWater" country="General" />
    <Cell x="26" y="32" terrain="ForestRough" country="General" />
-   <Cell x="26" y="33" terrain="ForestRough" country="General" />
+   <Cell x="26" y="33" terrain="ForestRough" country="General" roadsStr="4/2" />
    <Cell x="26" y="34" terrain="Forest" country="General" />
    <Cell x="26" y="35" terrain="Forest" country="General" />
    <Cell x="26" y="36" terrain="LightUrban" country="General" />
@@ -1398,7 +1398,7 @@
    <Cell x="27" y="29" terrain="Field" country="General" />
    <Cell x="27" y="30" terrain="Clear" country="General" />
    <Cell x="27" y="31" terrain="ForestRough" country="General" />
-   <Cell x="27" y="32" terrain="ForestRough" country="General" />
+   <Cell x="27" y="32" terrain="ForestRough" country="General" roadsStr="5/2" />
    <Cell x="27" y="33" terrain="Forest" country="General" />
    <Cell x="27" y="34" terrain="Forest" country="General" />
    <Cell x="27" y="35" terrain="Forest" country="General" />
@@ -1438,7 +1438,7 @@
    <Cell x="28" y="29" terrain="Field" country="General" />
    <Cell x="28" y="30" terrain="Field" country="General" />
    <Cell x="28" y="31" terrain="ForestRough" country="General" />
-   <Cell x="28" y="32" terrain="ForestRough" country="General" />
+   <Cell x="28" y="32" terrain="ForestRough" country="General" roadsStr="5/2" />
    <Cell x="28" y="33" terrain="ForestRough" country="General" />
    <Cell x="28" y="34" terrain="Forest" country="General" />
    <Cell x="28" y="35" terrain="Forest" country="General" />
@@ -1476,8 +1476,8 @@
    <Cell x="29" y="27" terrain="ShallowWater" country="General" />
    <Cell x="29" y="28" terrain="Field" country="General" />
    <Cell x="29" y="29" terrain="Field" country="General" />
-   <Cell x="29" y="30" terrain="Field" country="General" />
-   <Cell x="29" y="31" terrain="ForestRough" country="General" />
+   <Cell x="29" y="30" terrain="Field" country="General" roadsStr="0/2" />
+   <Cell x="29" y="31" terrain="ForestRough" country="General" roadsStr="5/3/1" />
    <Cell x="29" y="32" terrain="ForestRough" country="General" />
    <Cell x="29" y="33" terrain="ForestRough" country="General" />
    <Cell x="29" y="34" terrain="ForestRough" country="General" />
@@ -1515,10 +1515,10 @@
    <Cell x="30" y="26" terrain="ForestRough" country="General" />
    <Cell x="30" y="27" terrain="ForestRough" country="General" />
    <Cell x="30" y="28" terrain="ShallowWater" country="General" />
-   <Cell x="30" y="29" terrain="Field" country="General" />
-   <Cell x="30" y="30" terrain="Field" country="General" />
+   <Cell x="30" y="29" terrain="Field" country="General" roadsStr="0/2" />
+   <Cell x="30" y="30" terrain="Field" country="General" roadsStr="5/3" />
    <Cell x="30" y="31" terrain="ForestRough" country="General" />
-   <Cell x="30" y="32" terrain="ForestRough" country="General" />
+   <Cell x="30" y="32" terrain="ForestRough" country="General" roadsStr="1/4" />
    <Cell x="30" y="33" terrain="ForestRough" country="General" />
    <Cell x="30" y="34" terrain="ForestRough" country="General" />
    <Cell x="30" y="35" terrain="ForestRough" country="General" />
@@ -1551,14 +1551,14 @@
    <Cell x="31" y="22" terrain="Field" country="General" />
    <Cell x="31" y="23" terrain="Field" country="General" />
    <Cell x="31" y="24" terrain="Field" country="General" />
-   <Cell x="31" y="25" terrain="Field" country="General" />
-   <Cell x="31" y="26" terrain="ForestRough" country="General" />
-   <Cell x="31" y="27" terrain="Field" country="General" />
-   <Cell x="31" y="28" terrain="LightUrban" country="General" />
+   <Cell x="31" y="25" terrain="Field" country="General" roadsStr="0/2" />
+   <Cell x="31" y="26" terrain="ForestRough" country="General" roadsStr="0/3" />
+   <Cell x="31" y="27" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="31" y="28" terrain="LightUrban" country="General" roadsStr="5/3" />
    <Cell x="31" y="29" terrain="Field" country="General" />
    <Cell x="31" y="30" terrain="ForestRough" country="General" />
    <Cell x="31" y="31" terrain="ForestRough" country="General" />
-   <Cell x="31" y="32" terrain="ForestRough" country="General" />
+   <Cell x="31" y="32" terrain="ForestRough" country="General" roadsStr="1/4" />
    <Cell x="31" y="33" terrain="Mountain" country="General" />
    <Cell x="31" y="34" terrain="Mountain" country="General" />
    <Cell x="31" y="35" terrain="ForestRough" country="General" />
@@ -1589,9 +1589,9 @@
    <Cell x="32" y="20" terrain="DeepWater" country="General" />
    <Cell x="32" y="21" terrain="ShallowWater" country="General" />
    <Cell x="32" y="22" terrain="ShallowWater" country="General" />
-   <Cell x="32" y="23" terrain="Field" country="General" />
-   <Cell x="32" y="24" terrain="Field" country="General" />
-   <Cell x="32" y="25" terrain="Field" country="General" />
+   <Cell x="32" y="23" terrain="Field" country="General" roadsStr="0/1" />
+   <Cell x="32" y="24" terrain="Field" country="General" roadsStr="0/3" />
+   <Cell x="32" y="25" terrain="Field" country="General" roadsStr="5/3" />
    <Cell x="32" y="26" terrain="ForestRough" country="General" />
    <Cell x="32" y="27" terrain="Field" country="General" />
    <Cell x="32" y="28" terrain="Field" country="General" />
@@ -1599,7 +1599,7 @@
    <Cell x="32" y="30" terrain="ForestRough" country="General" />
    <Cell x="32" y="31" terrain="ForestRough" country="General" />
    <Cell x="32" y="32" terrain="ForestRough" country="General" />
-   <Cell x="32" y="33" terrain="ForestRough" country="General" />
+   <Cell x="32" y="33" terrain="ForestRough" country="General" roadsStr="1/4" />
    <Cell x="32" y="34" terrain="Mountain" country="General" />
    <Cell x="32" y="35" terrain="Mountain" country="General" />
    <Cell x="32" y="36" terrain="ForestRough" country="General" />
@@ -1629,7 +1629,7 @@
    <Cell x="33" y="20" terrain="DeepWater" country="General" />
    <Cell x="33" y="21" terrain="ShallowWater" country="General" />
    <Cell x="33" y="22" terrain="ShallowWater" country="General" />
-   <Cell x="33" y="23" terrain="ForestRough" country="General" />
+   <Cell x="33" y="23" terrain="ForestRough" country="General" roadsStr="4/1" />
    <Cell x="33" y="24" terrain="ForestRough" country="General" />
    <Cell x="33" y="25" terrain="ForestRough" country="General" />
    <Cell x="33" y="26" terrain="Field" country="General" />
@@ -1639,7 +1639,7 @@
    <Cell x="33" y="30" terrain="ForestRough" country="General" />
    <Cell x="33" y="31" terrain="ShallowWater" country="General" />
    <Cell x="33" y="32" terrain="ForestRough" country="General" />
-   <Cell x="33" y="33" terrain="ForestRough" country="General" />
+   <Cell x="33" y="33" terrain="ForestRough" country="General" roadsStr="1/4" />
    <Cell x="33" y="34" terrain="Mountain" country="General" />
    <Cell x="33" y="35" terrain="Mountain" country="General" />
    <Cell x="33" y="36" terrain="Mountain" country="General" />
@@ -1670,7 +1670,7 @@
    <Cell x="34" y="21" terrain="DeepWater" country="General" />
    <Cell x="34" y="22" terrain="ShallowWater" country="General" />
    <Cell x="34" y="23" terrain="Field" country="General" />
-   <Cell x="34" y="24" terrain="Field" country="General" />
+   <Cell x="34" y="24" terrain="Field" country="General" roadsStr="4/1" />
    <Cell x="34" y="25" terrain="Field" country="General" />
    <Cell x="34" y="26" terrain="Field" country="General" />
    <Cell x="34" y="27" terrain="ForestRough" country="General" />
@@ -1680,7 +1680,7 @@
    <Cell x="34" y="31" terrain="DeepWater" country="General" />
    <Cell x="34" y="32" terrain="DeepWater" country="General" />
    <Cell x="34" y="33" terrain="ForestRough" country="General" />
-   <Cell x="34" y="34" terrain="ForestRough" country="General" />
+   <Cell x="34" y="34" terrain="ForestRough" country="General" roadsStr="1/4" />
    <Cell x="34" y="35" terrain="Mountain" country="General" />
    <Cell x="34" y="36" terrain="Mountain" country="General" />
    <Cell x="34" y="37" terrain="Mountain" country="General" />
@@ -1709,8 +1709,8 @@
    <Cell x="35" y="20" terrain="ShallowWater" country="General" />
    <Cell x="35" y="21" terrain="ShallowWater" country="General" />
    <Cell x="35" y="22" terrain="Clear" country="General" />
-   <Cell x="35" y="23" terrain="Field" country="General" />
-   <Cell x="35" y="24" terrain="Field" country="General" />
+   <Cell x="35" y="23" terrain="Field" country="General" roadsStr="0" />
+   <Cell x="35" y="24" terrain="Field" country="General" roadsStr="4/3" />
    <Cell x="35" y="25" terrain="Field" country="General" />
    <Cell x="35" y="26" terrain="ForestRough" country="General" />
    <Cell x="35" y="27" terrain="ForestRough" country="General" />
@@ -1720,10 +1720,10 @@
    <Cell x="35" y="31" terrain="DeepWater" country="General" />
    <Cell x="35" y="32" terrain="DeepWater" country="General" />
    <Cell x="35" y="33" terrain="Clear" country="General" />
-   <Cell x="35" y="34" terrain="ForestRough" country="General" />
-   <Cell x="35" y="35" terrain="ForestRough" country="General" />
-   <Cell x="35" y="36" terrain="Clear" country="General" />
-   <Cell x="35" y="37" terrain="ForestRough" country="General" />
+   <Cell x="35" y="34" terrain="ForestRough" country="General" roadsStr="0/4" />
+   <Cell x="35" y="35" terrain="ForestRough" country="General" roadsStr="0/3" />
+   <Cell x="35" y="36" terrain="Clear" country="General" roadsStr="0/3" />
+   <Cell x="35" y="37" terrain="ForestRough" country="General" roadsStr="1/3" />
    <Cell x="35" y="38" terrain="ForestRough" country="General" />
    <Cell x="35" y="39" terrain="ForestRough" country="General" />
    <Cell x="36" y="0" terrain="DeepWater" country="General" />
@@ -1764,7 +1764,7 @@
    <Cell x="36" y="35" terrain="ForestRough" country="General" />
    <Cell x="36" y="36" terrain="ForestRough" country="General" />
    <Cell x="36" y="37" terrain="ForestRough" country="General" />
-   <Cell x="36" y="38" terrain="ForestRough" country="General" />
+   <Cell x="36" y="38" terrain="ForestRough" country="General" roadsStr="1/4" />
    <Cell x="36" y="39" terrain="ForestRough" country="General" />
    <Cell x="37" y="0" terrain="DeepWater" country="General" />
    <Cell x="37" y="1" terrain="DeepWater" country="General" />
@@ -1785,8 +1785,8 @@
    <Cell x="37" y="16" terrain="ShallowWater" country="General" />
    <Cell x="37" y="17" terrain="ShallowWater" country="General" />
    <Cell x="37" y="18" terrain="Field" country="General" />
-   <Cell x="37" y="19" terrain="LightUrban" country="General" />
-   <Cell x="37" y="20" terrain="Field" country="General" />
+   <Cell x="37" y="19" terrain="LightUrban" country="General" roadsStr="0" />
+   <Cell x="37" y="20" terrain="Field" country="General" roadsStr="1/3" />
    <Cell x="37" y="21" terrain="LightUrban" country="General" />
    <Cell x="37" y="22" terrain="ShallowWater" country="General" />
    <Cell x="37" y="23" terrain="DeepWater" country="General" />
@@ -1804,7 +1804,7 @@
    <Cell x="37" y="35" terrain="DeepWater" country="General" />
    <Cell x="37" y="36" terrain="Clear" country="General" />
    <Cell x="37" y="37" terrain="ForestRough" country="General" />
-   <Cell x="37" y="38" terrain="ForestRough" country="General" />
+   <Cell x="37" y="38" terrain="ForestRough" country="General" roadsStr="1/4" />
    <Cell x="37" y="39" terrain="ForestRough" country="General" />
    <Cell x="38" y="0" terrain="DeepWater" country="General" />
    <Cell x="38" y="1" terrain="DeepWater" country="General" />
@@ -1827,7 +1827,7 @@
    <Cell x="38" y="18" terrain="ForestRough" country="General" />
    <Cell x="38" y="19" terrain="Field" country="General" />
    <Cell x="38" y="20" terrain="Field" country="General" />
-   <Cell x="38" y="21" terrain="LightUrban" country="General" />
+   <Cell x="38" y="21" terrain="LightUrban" country="General" roadsStr="4" />
    <Cell x="38" y="22" terrain="LightUrban" country="General" />
    <Cell x="38" y="23" terrain="ShallowWater" country="General" />
    <Cell x="38" y="24" terrain="DeepWater" country="General" />
@@ -1845,7 +1845,7 @@
    <Cell x="38" y="36" terrain="DeepWater" country="General" />
    <Cell x="38" y="37" terrain="ShallowWater" country="General" />
    <Cell x="38" y="38" terrain="ForestRough" country="General" />
-   <Cell x="38" y="39" terrain="ForestRough" country="General" />
+   <Cell x="38" y="39" terrain="ForestRough" country="General" roadsStr="1/4" />
    <Cell x="39" y="0" terrain="DeepWater" country="General" />
    <Cell x="39" y="1" terrain="DeepWater" country="General" />
    <Cell x="39" y="2" terrain="DeepWater" country="General" />
@@ -1868,7 +1868,7 @@
    <Cell x="39" y="19" terrain="ForestRough" country="General" />
    <Cell x="39" y="20" terrain="Field" country="General" />
    <Cell x="39" y="21" terrain="LightUrban" country="General" />
-   <Cell x="39" y="22" terrain="Field" country="General" />
+   <Cell x="39" y="22" terrain="Field" country="General" roadsStr="1" />
    <Cell x="39" y="23" terrain="ShallowWater" country="General" />
    <Cell x="39" y="24" terrain="DeepWater" country="General" />
    <Cell x="39" y="25" terrain="DeepWater" country="General" />
@@ -1885,7 +1885,7 @@
    <Cell x="39" y="36" terrain="DeepWater" country="General" />
    <Cell x="39" y="37" terrain="ShallowWater" country="General" />
    <Cell x="39" y="38" terrain="ForestRough" country="General" />
-   <Cell x="39" y="39" terrain="ForestRough" country="General" />
+   <Cell x="39" y="39" terrain="ForestRough" country="General" roadsStr="2/4" />
    <Cell x="40" y="0" terrain="DeepWater" country="General" />
    <Cell x="40" y="1" terrain="DeepWater" country="General" />
    <Cell x="40" y="2" terrain="DeepWater" country="General" />
@@ -1909,7 +1909,7 @@
    <Cell x="40" y="20" terrain="ForestRough" country="General" />
    <Cell x="40" y="21" terrain="Field" country="General" />
    <Cell x="40" y="22" terrain="ForestRough" country="General" />
-   <Cell x="40" y="23" terrain="ForestRough" country="General" />
+   <Cell x="40" y="23" terrain="ForestRough" country="General" roadsStr="2/4" />
    <Cell x="40" y="24" terrain="ShallowWater" country="General" />
    <Cell x="40" y="25" terrain="DeepWater" country="General" />
    <Cell x="40" y="26" terrain="DeepWater" country="General" />
@@ -1925,7 +1925,7 @@
    <Cell x="40" y="36" terrain="DeepWater" country="General" />
    <Cell x="40" y="37" terrain="DeepWater" country="General" />
    <Cell x="40" y="38" terrain="ForestRough" country="General" />
-   <Cell x="40" y="39" terrain="LightUrban" country="General" />
+   <Cell x="40" y="39" terrain="LightUrban" country="General" roadsStr="5" />
    <Cell x="41" y="0" terrain="DeepWater" country="General" />
    <Cell x="41" y="1" terrain="DeepWater" country="General" />
    <Cell x="41" y="2" terrain="DeepWater" country="General" />
@@ -1948,7 +1948,7 @@
    <Cell x="41" y="19" terrain="ForestRough" country="General" />
    <Cell x="41" y="20" terrain="ForestRough" country="General" />
    <Cell x="41" y="21" terrain="ForestRough" country="General" />
-   <Cell x="41" y="22" terrain="ForestRough" country="General" />
+   <Cell x="41" y="22" terrain="ForestRough" country="General" roadsStr="1/5" />
    <Cell x="41" y="23" terrain="ForestRough" country="General" />
    <Cell x="41" y="24" terrain="ForestRough" country="General" />
    <Cell x="41" y="25" terrain="DeepWater" country="General" />
@@ -1989,7 +1989,7 @@
    <Cell x="42" y="20" terrain="ForestRough" country="General" />
    <Cell x="42" y="21" terrain="ForestRough" country="General" />
    <Cell x="42" y="22" terrain="ForestRough" country="General" />
-   <Cell x="42" y="23" terrain="Clear" country="General" />
+   <Cell x="42" y="23" terrain="Clear" country="General" roadsStr="1/4" />
    <Cell x="42" y="24" terrain="ForestRough" country="General" />
    <Cell x="42" y="25" terrain="ForestRough" country="General" />
    <Cell x="42" y="26" terrain="DeepWater" country="General" />
@@ -2029,7 +2029,7 @@
    <Cell x="43" y="20" terrain="ForestRough" country="General" />
    <Cell x="43" y="21" terrain="ForestRough" country="General" />
    <Cell x="43" y="22" terrain="Field" country="General" />
-   <Cell x="43" y="23" terrain="Field" country="General" />
+   <Cell x="43" y="23" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="43" y="24" terrain="ForestRough" country="General" />
    <Cell x="43" y="25" terrain="ForestRough" country="General" />
    <Cell x="43" y="26" terrain="ShallowWater" country="General" />
@@ -2070,7 +2070,7 @@
    <Cell x="44" y="21" terrain="ForestRough" country="General" />
    <Cell x="44" y="22" terrain="ForestRough" country="General" />
    <Cell x="44" y="23" terrain="Field" country="General" />
-   <Cell x="44" y="24" terrain="Field" country="General" />
+   <Cell x="44" y="24" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="44" y="25" terrain="ForestRough" country="General" />
    <Cell x="44" y="26" terrain="ShallowWater" country="General" />
    <Cell x="44" y="27" terrain="DeepWater" country="General" />
@@ -2110,7 +2110,7 @@
    <Cell x="45" y="21" terrain="ForestRough" country="General" />
    <Cell x="45" y="22" terrain="Field" country="General" />
    <Cell x="45" y="23" terrain="Field" country="General" />
-   <Cell x="45" y="24" terrain="Field" country="General" />
+   <Cell x="45" y="24" terrain="Field" country="General" roadsStr="2/4" />
    <Cell x="45" y="25" terrain="ForestRough" country="General" />
    <Cell x="45" y="26" terrain="DeepWater" country="General" />
    <Cell x="45" y="27" terrain="DeepWater" country="General" />
@@ -2150,7 +2150,7 @@
    <Cell x="46" y="21" terrain="ShallowWater" country="General" />
    <Cell x="46" y="22" terrain="ForestRough" country="General" />
    <Cell x="46" y="23" terrain="Clear" country="General" />
-   <Cell x="46" y="24" terrain="HeavyUrban" country="General" />
+   <Cell x="46" y="24" terrain="HeavyUrban" country="General" roadsStr="2/5" />
    <Cell x="46" y="25" terrain="Field" country="General" />
    <Cell x="46" y="26" terrain="ShallowWater" country="General" />
    <Cell x="46" y="27" terrain="DeepWater" country="General" />
@@ -2189,7 +2189,7 @@
    <Cell x="47" y="20" terrain="DeepWater" country="General" />
    <Cell x="47" y="21" terrain="ForestRough" country="General" />
    <Cell x="47" y="22" terrain="ForestRough" country="General" />
-   <Cell x="47" y="23" terrain="HeavyUrban" country="General" />
+   <Cell x="47" y="23" terrain="HeavyUrban" country="General" roadsStr="1/5" />
    <Cell x="47" y="24" terrain="HeavyUrban" country="General" />
    <Cell x="47" y="25" terrain="Field" country="General" />
    <Cell x="47" y="26" terrain="DeepWater" country="General" />
@@ -2230,7 +2230,7 @@
    <Cell x="48" y="21" terrain="ForestRough" country="General" />
    <Cell x="48" y="22" terrain="ForestRough" country="General" />
    <Cell x="48" y="23" terrain="ForestRough" country="General" />
-   <Cell x="48" y="24" terrain="HeavyUrban" country="General" />
+   <Cell x="48" y="24" terrain="HeavyUrban" country="General" roadsStr="1/4" />
    <Cell x="48" y="25" terrain="Field" country="General" />
    <Cell x="48" y="26" terrain="Rough" country="General" />
    <Cell x="48" y="27" terrain="ForestRough" country="General" />
@@ -2270,7 +2270,7 @@
    <Cell x="49" y="21" terrain="ShallowWater" country="General" />
    <Cell x="49" y="22" terrain="Field" country="General" />
    <Cell x="49" y="23" terrain="Field" country="General" />
-   <Cell x="49" y="24" terrain="Field" country="General" />
+   <Cell x="49" y="24" terrain="Field" country="General" roadsStr="1/4" />
    <Cell x="49" y="25" terrain="Rough" country="General" />
    <Cell x="49" y="26" terrain="ForestRough" country="General" />
    <Cell x="49" y="27" terrain="Field" country="General" />
@@ -2311,7 +2311,7 @@
    <Cell x="50" y="22" terrain="ShallowWater" country="General" />
    <Cell x="50" y="23" terrain="Field" country="General" />
    <Cell x="50" y="24" terrain="HeavyUrban" country="General" />
-   <Cell x="50" y="25" terrain="Rough" country="General" />
+   <Cell x="50" y="25" terrain="Rough" country="General" roadsStr="2/4" />
    <Cell x="50" y="26" terrain="ForestRough" country="General" />
    <Cell x="50" y="27" terrain="ForestRough" country="General" />
    <Cell x="50" y="28" terrain="ForestRough" country="General" />
@@ -2350,7 +2350,7 @@
    <Cell x="51" y="21" terrain="DeepWater" country="General" />
    <Cell x="51" y="22" terrain="ShallowWater" country="General" />
    <Cell x="51" y="23" terrain="HeavyUrban" country="General" />
-   <Cell x="51" y="24" terrain="HeavyUrban" country="General" />
+   <Cell x="51" y="24" terrain="HeavyUrban" country="General" roadsStr="1/5" />
    <Cell x="51" y="25" terrain="Mountain" country="General" />
    <Cell x="51" y="26" terrain="Mountain" country="General" />
    <Cell x="51" y="27" terrain="ForestRough" country="General" />
@@ -2391,7 +2391,7 @@
    <Cell x="52" y="22" terrain="DeepWater" country="General" />
    <Cell x="52" y="23" terrain="ShallowWater" country="General" />
    <Cell x="52" y="24" terrain="Clear" country="General" />
-   <Cell x="52" y="25" terrain="Mountain" country="General" />
+   <Cell x="52" y="25" terrain="Mountain" country="General" roadsStr="1/4" />
    <Cell x="52" y="26" terrain="Mountain" country="General" />
    <Cell x="52" y="27" terrain="Mountain" country="General" />
    <Cell x="52" y="28" terrain="ForestRough" country="General" />
@@ -2431,7 +2431,7 @@
    <Cell x="53" y="22" terrain="DeepWater" country="General" />
    <Cell x="53" y="23" terrain="ShallowWater" country="General" />
    <Cell x="53" y="24" terrain="HeavyUrban" country="General" />
-   <Cell x="53" y="25" terrain="HeavyUrban" country="General" />
+   <Cell x="53" y="25" terrain="HeavyUrban" country="General" roadsStr="1/4" />
    <Cell x="53" y="26" terrain="Mountain" country="General" />
    <Cell x="53" y="27" terrain="Rough" country="General" />
    <Cell x="53" y="28" terrain="Rough" country="General" />
@@ -2472,7 +2472,7 @@
    <Cell x="54" y="23" terrain="DeepWater" country="General" />
    <Cell x="54" y="24" terrain="Field" country="General" />
    <Cell x="54" y="25" terrain="HeavyUrban" country="General" />
-   <Cell x="54" y="26" terrain="HeavyUrban" country="General" />
+   <Cell x="54" y="26" terrain="HeavyUrban" country="General" roadsStr="4/1" />
    <Cell x="54" y="27" terrain="ForestRough" country="General" />
    <Cell x="54" y="28" terrain="ForestRough" country="General" />
    <Cell x="54" y="29" terrain="ForestRough" country="General" />
@@ -2512,8 +2512,8 @@
    <Cell x="55" y="23" terrain="DeepWater" country="General" />
    <Cell x="55" y="24" terrain="Field" country="General" />
    <Cell x="55" y="25" terrain="HeavyUrban" country="General" />
-   <Cell x="55" y="26" terrain="HeavyUrban" country="General" />
-   <Cell x="55" y="27" terrain="ForestRough" country="General" />
+   <Cell x="55" y="26" terrain="HeavyUrban" country="General" roadsStr="4/0" />
+   <Cell x="55" y="27" terrain="ForestRough" country="General" roadsStr="3/1" />
    <Cell x="55" y="28" terrain="ForestRough" country="General" />
    <Cell x="55" y="29" terrain="ForestRough" country="General" />
    <Cell x="55" y="30" terrain="ForestRough" country="General" />
@@ -2554,14 +2554,14 @@
    <Cell x="56" y="25" terrain="Field" country="General" />
    <Cell x="56" y="26" terrain="Field" country="General" />
    <Cell x="56" y="27" terrain="Field" country="General" />
-   <Cell x="56" y="28" terrain="Field" country="General" />
-   <Cell x="56" y="29" terrain="Field" country="General" />
-   <Cell x="56" y="30" terrain="Field" country="General" />
-   <Cell x="56" y="31" terrain="Field" country="General" />
-   <Cell x="56" y="32" terrain="Field" country="General" />
-   <Cell x="56" y="33" terrain="Rough" country="General" />
-   <Cell x="56" y="34" terrain="Rough" country="General" />
-   <Cell x="56" y="35" terrain="Field" country="General" />
+   <Cell x="56" y="28" terrain="Field" country="General" roadsStr="4/0" />
+   <Cell x="56" y="29" terrain="Field" country="General" roadsStr="3/0" />
+   <Cell x="56" y="30" terrain="Field" country="General" roadsStr="3/0" />
+   <Cell x="56" y="31" terrain="Field" country="General" roadsStr="3/0" />
+   <Cell x="56" y="32" terrain="Field" country="General" roadsStr="3/0" />
+   <Cell x="56" y="33" terrain="Rough" country="General" roadsStr="3/0" />
+   <Cell x="56" y="34" terrain="Rough" country="General" roadsStr="3/0" />
+   <Cell x="56" y="35" terrain="Field" country="General" roadsStr="3" />
    <Cell x="56" y="36" terrain="ForestRough" country="General" />
    <Cell x="56" y="37" terrain="ForestRough" country="General" />
    <Cell x="56" y="38" terrain="ShallowWater" country="General" />

@@ -250,4 +250,31 @@ public static class Utils
             Debug.LogError($"failed to fetch and setup: {path}");
         }
     }
+
+    public static void SyncTransformViewerLength(Transform containerTransform, int length, GameObject prefab)
+    {
+        List<GameObject> childList = new List<GameObject>();
+
+        for (int i = 0; i < containerTransform.childCount; i++)
+        {
+            childList.Add(containerTransform.GetChild(i).gameObject);
+        }
+
+        var diff = length - childList.Count;
+        if (diff > 0)
+        {
+            for (int i = 0; i < diff; i++)
+            {
+                GameObject.Instantiate(prefab, containerTransform);
+            }
+        }
+        else if (diff < 0)
+        {
+            for (int i = 0; i < -diff; i++)
+            {
+                GameObject.Destroy(childList[i]);
+            }
+        }
+
+    }
 }

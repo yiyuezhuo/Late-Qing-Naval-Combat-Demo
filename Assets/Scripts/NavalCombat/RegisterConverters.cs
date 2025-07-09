@@ -5,8 +5,9 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using System.Linq;
-using NavalCombatCore;
 
+using NavalCombatCore;
+using CoreUtils;
 
 
 #if UNITY_EDITOR

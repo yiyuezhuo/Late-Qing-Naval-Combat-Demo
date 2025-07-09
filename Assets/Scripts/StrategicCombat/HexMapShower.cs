@@ -115,21 +115,25 @@ public class HexMapShower : SingletonDocument<HexMapShower>
 
     public void OnMapRebuilt(object sender, EventArgs args)
     {
-        GenerateTextureAndRefreshMaterial(StrategicGameState.Instance.terrainMatrix);
+        // GenerateTextureAndRefreshMaterial(StrategicGameState.Instance.terrainMatrix);
+        GenerateTextureAndRefreshMaterial();
     }
 
     public void OnMapCellUpdated(object sender, (int, int) args)
     {
         var (x, y) = args;
-        Color32 color = new Color32((byte)StrategicGameState.Instance.terrainMatrix[x, y], 0, 0, 255);
+        // Color32 color = new Color32((byte)StrategicGameState.Instance.terrainMatrix[x, y], 0, 0, 255);
+        Color32 color = new Color32((byte)StrategicGameState.Instance.cellMatrix[x, y].terrain, 0, 0, 255);
         terrainTypeTexture.SetPixel(x, y, color);
         terrainTypeTexture.Apply();
     }
 
-    public void GenerateTextureAndRefreshMaterial(TerrainType[,] terrainMatrix)
+    public void GenerateTextureAndRefreshMaterial()
     {
-        var width = terrainMatrix.GetLength(0);
-        var height = terrainMatrix.GetLength(1);
+        var gameState = StrategicGameState.Instance;
+
+        var width = gameState.GetMapWidth();
+        var height = gameState.GetMapHeight();
 
         // Update texture
         terrainTypeTexture = new Texture2D(width, height, TextureFormat.RGBA32, false, true);
@@ -137,7 +141,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         {
             for (int y = 0; y < height; y++)
             {
-                Color32 color = new Color32((byte)terrainMatrix[x, y], 0, 0, 255);
+                Color32 color = new Color32((byte)gameState.cellMatrix[x, y].terrain, 0, 0, 255);
                 terrainTypeTexture.SetPixel(x, y, color);
             }
         }

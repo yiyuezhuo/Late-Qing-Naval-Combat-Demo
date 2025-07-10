@@ -300,6 +300,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1245225702119965330, guid: cb5c709ed3879e24a943fdf83a5e93f3, type: 3}
   m_PrefabInstance: {fileID: 1704686039}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &268472326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 268472327}
+  m_Layer: 0
+  m_Name: RailroadContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &268472327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268472326}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2074895118}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &274498774
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,8 +700,12 @@ MonoBehaviour:
   controlledRenderer: {fileID: 2074895119}
   labelContainerTransform: {fileID: 652267961}
   roadContainerTransform: {fileID: 1336665335}
+  railroadContainerTransform: {fileID: 268472327}
+  riverContainerTransform: {fileID: 1766299595}
   locationLabelPrefab: {fileID: 5792163290863953499, guid: be80ce39c2c2aa94e971853d00d1ec27, type: 3}
   roadPrefab: {fileID: 9006842191024245126, guid: 6285d43d972e56e46a42bc17fa4787be, type: 3}
+  railroadPrefab: {fileID: 9006842191024245126, guid: d895281625e13b641a2133c00adc0b4f, type: 3}
+  riverPrefab: {fileID: 9006842191024245126, guid: 0fb883c7cfb12fa4b9f93a8c09b9704c, type: 3}
 --- !u!1 &1038713090
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,6 +981,7 @@ MonoBehaviour:
   currentTerrainType: 0
   tempMapWidth: 60
   tempMapHeight: 40
+  currentEdgeFeatureType: 0
 --- !u!4 &1689453573
 Transform:
   m_ObjectHideFlags: 0
@@ -1018,6 +1054,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb5c709ed3879e24a943fdf83a5e93f3, type: 3}
+--- !u!1 &1766299594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1766299595}
+  m_Layer: 0
+  m_Name: RiverContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1766299595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766299594}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2074895118}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2074895117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1118,8 @@ Transform:
   m_Children:
   - {fileID: 652267961}
   - {fileID: 1336665335}
+  - {fileID: 268472327}
+  - {fileID: 1766299595}
   m_Father: {fileID: 937397445}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2074895119

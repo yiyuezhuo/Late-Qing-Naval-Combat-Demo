@@ -5,16 +5,22 @@
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Export Map" name="ExportMapButton" />
                     <ui:Button text="Import Map" name="ImportMapButton" />
+                    <ui:Label text="Mode" />
+                    <ui:EnumField value="Center" type="StrategicMapEditMode, Assembly-CSharp" style="min-width: 100px;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="mapEditMode" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
                     <ui:Label text="Terrain" />
                     <ui:EnumField value="Center" type="StrategicCombatCore.TerrainType, Assembly-CSharp" style="min-width: 100px;">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="currentTerrainType" binding-mode="TwoWay" />
                         </Bindings>
                     </ui:EnumField>
-                    <ui:Label text="Mode" />
-                    <ui:EnumField value="Center" type="StrategicMapEditMode, Assembly-CSharp" style="min-width: 100px;">
+                    <ui:Label text="Hex Pair Feature" />
+                    <ui:EnumField value="Center" type="StrategicCombatCore.EdgeFeatureType, Assembly-CSharp" style="min-width: 100px;">
                         <Bindings>
-                            <ui:DataBinding property="value" data-source-path="mapEditMode" binding-mode="TwoWay" />
+                            <ui:DataBinding property="value" data-source-path="currentEdgeFeatureType" binding-mode="TwoWay" />
                         </Bindings>
                     </ui:EnumField>
                     <ui:Label text="Width" />

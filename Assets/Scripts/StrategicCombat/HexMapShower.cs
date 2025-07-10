@@ -4,6 +4,9 @@ using TMPro;
 
 using StrategicCombatCore;
 using System.Linq;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 
 public class HexMapShower : SingletonDocument<HexMapShower>
 {
@@ -12,8 +15,12 @@ public class HexMapShower : SingletonDocument<HexMapShower>
     Material material;
     public Transform labelContainerTransform;
     public Transform roadContainerTransform;
+    public Transform railroadContainerTransform;
+    public Transform riverContainerTransform;
     public GameObject locationLabelPrefab;
     public GameObject roadPrefab;
+    public GameObject railroadPrefab;
+    public GameObject riverPrefab;
 
     bool _showReferenceMap;
     public bool showReferenceMap
@@ -79,22 +86,90 @@ public class HexMapShower : SingletonDocument<HexMapShower>
 
     void OnEdgeFeatureUpdated(object sender, EventArgs args)
     {
-        var roadCellPairs = StrategicGameState.Instance.IterateRoadCellPairs().ToList();
+        BindHexCrossLineRenderers(
+            roadContainerTransform, roadPrefab,
+            StrategicGameState.Instance.IterateCellPairsFor(EdgeFeatureType.Road).ToList()
+        );
 
-        Utils.SyncTransformViewerLength(roadContainerTransform, roadCellPairs.Count, roadPrefab);
+        BindHexCrossLineRenderers(
+            railroadContainerTransform, railroadPrefab,
+            StrategicGameState.Instance.IterateCellPairsFor(EdgeFeatureType.Railroad).ToList(),
+            0, 0.05f, 0.05f
+        );
 
-        var lineRenderers = roadContainerTransform.GetComponentsInChildren<LineRenderer>();
-        for (int i = 0; i < roadCellPairs.Count; i++)
+        BindHexEdgeLineRenderers(
+            riverContainerTransform, riverPrefab,
+            StrategicGameState.Instance.IterateCellPairsFor(EdgeFeatureType.River).ToList()
+        );
+    }
+
+    void BindHexCrossLineRenderers(Transform containerTransform, GameObject prefab, List<(Cell, Cell, EdgeDirection)> cellPairs, float z=0, float xOffset=0, float yOffset=0)
+    {
+        Utils.SyncTransformViewerLength(containerTransform, cellPairs.Count, prefab);
+
+        var height = StrategicGameState.Instance.GetMapHeight();
+        var width = StrategicGameState.Instance.GetMapWidth();
+
+        var lineRenderers = containerTransform.GetComponentsInChildren<LineRenderer>();
+        for (int i = 0; i < cellPairs.Count; i++)
         {
-            var (cellSrc, cellDst) = roadCellPairs[i];
+            var (cellSrc, cellDst, edgeDirection) = cellPairs[i];
             var (xf1, yf1) = CellXYToLocalXY(cellSrc.x, cellSrc.y);
             var (xf2, yf2) = CellXYToLocalXY(cellDst.x, cellDst.y);
 
             var lineRenderer = lineRenderers[i];
             lineRenderer.positionCount = 2;
             lineRenderer.SetPositions(new Vector3[2]{
-                new Vector3(xf1, yf1, 0),
-                new Vector3(xf2, yf2, 0)
+                new Vector3(xf1 + xOffset / width, yf1 + yOffset / height, z),
+                new Vector3(xf2 + xOffset / width, yf2 + yOffset / height, z)
+            });
+        }
+    }
+
+    void BindHexEdgeLineRenderers(Transform containerTransform, GameObject prefab, List<(Cell, Cell, EdgeDirection)> cellPairs, float z = 0, float xOffset = 0, float yOffset = 0)
+    {
+        Utils.SyncTransformViewerLength(containerTransform, cellPairs.Count, prefab);
+
+        var height = StrategicGameState.Instance.GetMapHeight();
+        var width = StrategicGameState.Instance.GetMapWidth();
+
+        var lineRenderers = containerTransform.GetComponentsInChildren<LineRenderer>();
+        for (int i = 0; i < cellPairs.Count; i++)
+        {
+            var (cellSrc, cellDst, edgeDirection) = cellPairs[i];
+
+            var ((dx1, dy1), (dx2, dy2)) = DirectionTo2LocalDxDy(edgeDirection);
+
+            var (xf, yf) = CellXYToLocalXY(cellSrc.x, cellSrc.y);
+
+            // var (xf1, yf1) = CellXYToLocalXY(cellSrc.x, cellSrc.y);
+            // var (xf2, yf2) = CellXYToLocalXY(cellDst.x, cellDst.y);
+            // var xc = (xf1 + xf2) / 2;
+            // var yc = (yf1 + yf2) / 2;
+
+            // var angleDeg = edgeDirection switch
+            // {
+            //     EdgeDirection.Top => 0,
+            //     EdgeDirection.TopRight => -60,
+            //     EdgeDirection.BottomRight => -120,
+            //     EdgeDirection.Bottom => 180,
+            //     EdgeDirection.BottomLeft => 120,
+            //     EdgeDirection.TopLeft => 60,
+            //     _ => 0,
+            // };
+            // var angleRad = angleDeg * Mathf.Deg2Rad;
+
+            // var length = 1f;
+            // var x1 = xc + length * Mathf.Cos(angleRad);
+            // var y1 = yc + length * Mathf.Sin(angleRad);
+            // var x2 = xc + length * Mathf.Cos(angleRad + Mathf.PI);
+            // var y2 = yc + length * Mathf.Sin(angleRad + Mathf.PI);
+
+            var lineRenderer = lineRenderers[i];
+            lineRenderer.positionCount = 2;
+            lineRenderer.SetPositions(new Vector3[2]{
+                new Vector3(xf + dx1,  yf + dy1, z),
+                new Vector3(xf + dx2,  yf + dy2, z)
             });
         }
     }
@@ -158,6 +233,55 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         var width = StrategicGameState.Instance.GetMapWidth();
         var height = StrategicGameState.Instance.GetMapHeight();
         return ((x + dx) / width - 0.5f, (y + dy) / height - 0.5f);
+    }
+
+    // static float rad60 = Mathf.PI / 3f;
+    // static float cos60deg = Mathf.Cos(rad60);
+    // static float sin60deg = Mathf.Sin(rad60);
+
+    // static Dictionary<CornerType, (float, float)> cornerToStandardHexLocation = new()
+    // {
+    //     { CornerType.TopRight, (cos60deg, sin60deg)},
+    //     { CornerType.Right, (1, 0)},
+    //     { CornerType.BottomRight, (cos60deg, -sin60deg)},
+    //     { CornerType.BottomLeft, (-cos60deg, -sin60deg)},
+    //     { CornerType.Left, (-1, 0)},
+    //     { CornerType.TopLeft, (-cos60deg, sin60deg)},
+    // };
+
+    static float cornerOffset = 0.1f;
+
+    static Dictionary<CornerType, (float, float)> cornerToStandardHexLocation = new()
+    {
+        { CornerType.TopRight, (0.5f - cornerOffset, 0.5f)},
+        { CornerType.Right, (0.5f + cornerOffset, 0)},
+        { CornerType.BottomRight, (0.5f - cornerOffset, -0.5f)},
+        { CornerType.BottomLeft, (-0.5f + cornerOffset, -0.5f)},
+        { CornerType.Left, (-0.5f - cornerOffset, 0)},
+        { CornerType.TopLeft, (-0.5f + cornerOffset, 0.5f)},
+    };
+
+    public ((float, float), (float, float)) DirectionTo2LocalDxDy(EdgeDirection edgeDirection)
+    {
+        var (corner1, corner2) = Cell.edgeDirectionToCornerType[edgeDirection];
+        var (dx1, dy1) = cornerToStandardHexLocation[corner1];
+        var (dx2, dy2) = cornerToStandardHexLocation[corner2];
+
+        var gameState = StrategicGameState.Instance;
+
+        var width = gameState.GetMapWidth();
+        var height = gameState.GetMapHeight();
+
+        return (
+            (dx1 / width, dy1 / height),
+            (dx2 / width, dy2 / height)
+        );
+
+
+        // return (
+        //     (dx1 / 0.867f / width / 2, dy1 / height / 2),
+        //     (dx2 / 0.867f / width / 2, dy2 / height / 2)
+        // );
     }
 
     public void OnMapRebuilt(object sender, EventArgs args)

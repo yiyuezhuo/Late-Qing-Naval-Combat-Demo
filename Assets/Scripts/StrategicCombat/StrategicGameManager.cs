@@ -21,7 +21,9 @@ public enum StrategicMapEditMode
     CreateOrEditLabel,
     DeleteLabel,
     PaintHexPairFeatureBegin,
-    PaintHexPairFeatureEnd
+    PaintHexPairFeatureEnd,
+    DeleteHexPairFeatureBegin,
+    DeleteHexPairFeatureEnd
 }
 
 public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
@@ -33,6 +35,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public TerrainType currentTerrainType;
     public int tempMapWidth = 60;
     public int tempMapHeight = 40;
+    public EdgeFeatureType currentEdgeFeatureType;
 
     public static string initialScenPath = "Strategic/StrategicGameState.xml";
 
@@ -186,8 +189,23 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                             if (lastSelectedCell != null)
                             {
                                 var cell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
-                                StrategicGameState.Instance.AddRoad(lastSelectedCell, cell);
+                                StrategicGameState.Instance.AddEdgeFeature(lastSelectedCell, cell, currentEdgeFeatureType);
                                 mapEditMode = StrategicMapEditMode.PaintHexPairFeatureBegin;
+                            }
+                        }
+
+                        if (mapEditMode == StrategicMapEditMode.DeleteHexPairFeatureBegin)
+                        {
+                            lastSelectedCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+                            mapEditMode = StrategicMapEditMode.DeleteHexPairFeatureEnd;
+                        }
+                        else if (mapEditMode == StrategicMapEditMode.DeleteHexPairFeatureEnd)
+                        {
+                            if (lastSelectedCell != null)
+                            {
+                                var cell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+                                StrategicGameState.Instance.DeleteEdgeFeature(lastSelectedCell, cell, currentEdgeFeatureType);
+                                mapEditMode = StrategicMapEditMode.DeleteHexPairFeatureBegin;
                             }
                         }
                     }

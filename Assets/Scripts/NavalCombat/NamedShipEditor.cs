@@ -10,11 +10,23 @@ using System;
 using System.Collections;
 
 using NavalCombatCore;
+using CoreUtils;
 
 
 public class NamedShipEditor : HideableDocument<NamedShipEditor>
 {
     public ListView namedShipListView;
+
+    public string selectedNamedShipObjectId;
+
+    [CreateProperty]
+    public NamedShip selectedNamedShip
+    {
+        get
+        {
+            return EntityManager.Instance.Get<NamedShip>(selectedNamedShipObjectId);
+        }
+    }
 
     // protected override void Awake()
     void OnEnable()
@@ -24,7 +36,7 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
         // var sortingOrder = doc.sortingOrder;
         // Debug.Log($"NamedShipEditor sortingOrder={sortingOrder}");
 
-        root.dataSource = GameManager.Instance;
+        root.dataSource = this;
 
         Utils.BindItemsSourceRecursive(root);
 
@@ -36,7 +48,7 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
             Debug.Log("namedShipListView.selectionChanged");
 
             var namedShip = objects.FirstOrDefault() as NamedShip;
-            GameManager.Instance.selectedNamedShipObjectId = namedShip?.objectId;
+            selectedNamedShipObjectId = namedShip?.objectId;
         };
 
         var confirmButton = root.Q<Button>("ConfirmButton");
@@ -45,8 +57,8 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>
         {
-            // var content = GameManager.Instance.navalGameState.NamedShipsToXML();
-            var content = NavalGameState.Instance.NamedShipsToXML();
+            var gameState = SuperGameState.Instance.GetCurrentGameState();
+            var content = gameState.NamedShipsToXML();
             IOManager.Instance.SaveTextFile(content, "NamedShips", "xml");
         };
 
@@ -66,50 +78,50 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
         var gotoShipClassButton = root.Q<Button>("GotoShipClassButton");
         gotoShipClassButton.clicked += () =>
         {
-            var shipClass = GameManager.Instance.selectedNamedShip?.shipClass;
+            var shipClass = selectedNamedShip?.shipClass;
             if (shipClass == null)
                 return;
-            var idx = NavalGameState.Instance.shipClasses.IndexOf(shipClass);
+
+            var gameState = SuperGameState.Instance.GetCurrentGameState();
+            var idx = gameState.shipClasses.IndexOf(shipClass);
             if (idx != -1)
             {
                 Hide();
                 ShipClassEditor.Instance.Show();
                 // ShipClassEditor.Instance.shipClassListView.SetSelection(idx);
-                GameManager.Instance.ScheduleToSetSelectionForListView(ShipClassEditor.Instance.shipClassListView, idx);
+                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipClassEditor.Instance.shipClassListView, idx);
             }
         };
 
         var gotoLeaderButton = root.Q<Button>("GotoLeaderButton");
         gotoLeaderButton.clicked += () =>
         {
-            var leader = GameManager.Instance.selectedNamedShip?.defaultLeader;
+            var leader = selectedNamedShip?.defaultLeader;
             if (leader == null)
                 return;
 
-            var idx = NavalGameState.Instance.leaders.IndexOf(leader);
+            var gameState = SuperGameState.Instance.GetCurrentGameState();
+            var idx = gameState.leaders.IndexOf(leader);
             if (idx != -1)
             {
                 Hide();
                 LeaderEditor.Instance.Show();
                 // LeaderEditor.Instance.leadersListView.SetSelection(idx);
-                GameManager.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.leadersListView, idx);
+                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.leadersListView, idx);
             }
         };
     }
-
-    // IEnumerator SetSelectionForNamedShipListView(int idx)
-    // {
-    //     yield return new WaitForNextFrameUnit();
-    //     NamedShipEditor.Instance.namedShipListView.SetSelection(idx);
-    // }
 
     void OnNamedShipsXMLLoaded(object sender, string text)
     {
         IOManager.Instance.textLoaded -= OnNamedShipsXMLLoaded;
 
-        // GameManager.Instance.navalGameState.NamedShipsFromXML(text);
-        NavalGameState.Instance.NamedShipsFromXML(text);
-        NavalGameState.Instance.ResetAndRegisterAll();
+        var gameState = SuperGameState.Instance.GetCurrentGameState();
+        gameState.NamedShipsFromXML(text);
+        gameState.ResetAndRegisterAll();
     }
+
+    [CreateProperty]
+    public AbstractGameState currentGameState => SuperGameState.Instance.GetCurrentGameState();
 
 }

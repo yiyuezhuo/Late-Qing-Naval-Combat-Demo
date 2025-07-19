@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5294810617422351352
+--- !u!1 &9194863815105359487
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1582364224588099995}
-  - component: {fileID: 8766700903243145728}
-  - component: {fileID: 8646925395513856420}
+  - component: {fileID: 6190948508758400934}
+  - component: {fileID: 3875539297981296613}
+  - component: {fileID: 4720055286300073151}
   m_Layer: 0
-  m_Name: IOManager
+  m_Name: ClassEditor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1582364224588099995
+--- !u!4 &6190948508758400934
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5294810617422351352}
+  m_GameObject: {fileID: 9194863815105359487}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,27 +33,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8766700903243145728
+--- !u!114 &3875539297981296613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5294810617422351352}
+  m_GameObject: {fileID: 9194863815105359487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31294bb39f1fe50499e979f2c3e3f418, type: 3}
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8646925395513856420
+  m_PanelSettings: {fileID: 11400000, guid: 9fc041e7491d52d4ba840bd7c006e8c4, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 905371ed499c3884aad3d3c5990fef3e, type: 3}
+  m_SortingOrder: 5
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+--- !u!114 &4720055286300073151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5294810617422351352}
+  m_GameObject: {fileID: 9194863815105359487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06680c82a7fcbf14190e6c2487862822, type: 3}
+  m_Script: {fileID: 11500000, guid: 86180d80a0ed5f045b3e18931d815435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedShipClassIndex: 0

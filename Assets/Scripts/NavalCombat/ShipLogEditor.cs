@@ -10,6 +10,7 @@ using Unity.Properties;
 using System;
 
 using NavalCombatCore;
+using CoreUtils;
 
 
 public class ShipLogEditor : HideableDocument<ShipLogEditor>
@@ -22,6 +23,17 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
     //     base.Awake();
     //     Bind();
     // }
+
+    public string selectedShipLogObjectId;
+
+    [CreateProperty]
+    public ShipLog selectedShipLog
+    {
+        get
+        {
+            return EntityManager.Instance.Get<ShipLog>(selectedShipLogObjectId);
+        }
+    }
 
     void OnEnable()
     {
@@ -37,7 +49,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         // var sortingOrder = doc.sortingOrder;
         // Debug.Log($"ShipLogEditor sortingOrder={sortingOrder}");
 
-        root.dataSource = GameManager.Instance;
+        root.dataSource = this;
 
         // foreach (var listView in root.Query<BaseListView>().ToList())
         // {
@@ -49,23 +61,17 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         // shipLogListView.itemsAdded += Utils.MakeCallbackForItemsAdded<ShipLog>(shipLogListView);
         Utils.BindItemsAddedRemoved<ShipLog>(shipLogListView, () => null);
 
-        // shipLogListView.selectedIndicesChanged += (IEnumerable<int> ints) =>
-        // {
-        //     var idx = ints.FirstOrDefault();
-        //     GameManager.Instance.selectedShipLogIndex = idx;
-        // };
-
         shipLogListView.selectionChanged += (IEnumerable<object> objs) =>
         {
             var shipLog = objs.FirstOrDefault() as ShipLog;
             if (shipLog != null)
             {
-                GameManager.Instance.selectedShipLogObjectId = shipLog.objectId;
+                selectedShipLogObjectId = shipLog.objectId;
             }
         };
 
         var batteryStatusListView = root.Q<ListView>("BatteryStatusListView");
-        Utils.BindItemsAddedRemoved<NavalCombatCore.BatteryStatus>(batteryStatusListView, () => GameManager.Instance.selectedShipLog);
+        Utils.BindItemsAddedRemoved<NavalCombatCore.BatteryStatus>(batteryStatusListView, () => selectedShipLog);
         // MountStatusMultiColumnListView
         batteryStatusListView.makeItem = () =>
         {
@@ -90,13 +96,16 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
                 var setButton = el.Q<Button>("SetButton");
                 setButton.clicked += () =>
                 {
-                    var ctx = setButton.GetHierarchicalDataSourceContext();
-                    if (PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out MountStatusRecord mountStatus))
+                    if (SuperGameState.Instance.IsInNavalGame())
                     {
-                        GameManager.Instance.selectedMountStatusRecordObjectId = mountStatus.objectId;
-                        GameManager.Instance.state = GameManager.State.SelectingFiringTarget;
-                        // Hide();
-                        SoftHide();
+                        var ctx = setButton.GetHierarchicalDataSourceContext();
+                        if (PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out MountStatusRecord mountStatus))
+                        {
+                            GameManager.Instance.selectedMountStatusRecordObjectId = mountStatus.objectId;
+                            GameManager.Instance.state = GameManager.State.SelectingFiringTarget;
+                            // Hide();
+                            SoftHide();
+                        }
                     }
                 };
 
@@ -136,12 +145,15 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
                 var setButton = el.Q<Button>("SetButton");
                 setButton.clicked += () =>
                 {
-                    if (Utils.TryResolveCurrentValueForBinding(el, out FireControlSystemStatusRecord r))
+                    if (SuperGameState.Instance.IsInNavalGame())
                     {
-                        GameManager.Instance.selectedFireControlSystemStatusRecordObjectId = r.objectId;
-                        GameManager.Instance.state = GameManager.State.SelectingFireControlSystemTarget;
-                        // Hide();
-                        SoftHide();
+                        if (Utils.TryResolveCurrentValueForBinding(el, out FireControlSystemStatusRecord r))
+                        {
+                            GameManager.Instance.selectedFireControlSystemStatusRecordObjectId = r.objectId;
+                            GameManager.Instance.state = GameManager.State.SelectingFireControlSystemTarget;
+                            // Hide();
+                            SoftHide();
+                        }
                     }
                 };
                 return el;
@@ -162,7 +174,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         var torpedoMountStatusMultiColumnListView = root.Q<MultiColumnListView>("TorpedoMountStatusMultiColumnListView");
         Utils.BindItemsAddedRemoved<MountStatusRecord>(torpedoMountStatusMultiColumnListView, () =>
         {
-            return GameManager.Instance.selectedShipLog;
+            return selectedShipLog;
         });
         var torpedoMountStatusFiringTargetColumn = torpedoMountStatusMultiColumnListView.columns["firingTarget"];
         torpedoMountStatusFiringTargetColumn.makeCell = () =>
@@ -172,28 +184,24 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             var setButton = el.Q<Button>("SetButton");
             setButton.clicked += () =>
             {
-                var ctx = setButton.GetHierarchicalDataSourceContext();
-                if (PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out TorpedoMountStatusRecord torpedoMountStatusRecord))
+                if (SuperGameState.Instance.IsInNavalGame())
                 {
-                    // Debug.Log(torpedoMountStatusRecord);
-                    GameManager.Instance.selectedTorpedoMountStatusRecord = torpedoMountStatusRecord;
-                    GameManager.Instance.state = GameManager.State.SelectingTorpedoFiringTarget;
-                    SoftHide();
+                    var ctx = setButton.GetHierarchicalDataSourceContext();
+                    if (PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out TorpedoMountStatusRecord torpedoMountStatusRecord))
+                    {
+                        // Debug.Log(torpedoMountStatusRecord);
+                        GameManager.Instance.selectedTorpedoMountStatusRecord = torpedoMountStatusRecord;
+                        GameManager.Instance.state = GameManager.State.SelectingTorpedoFiringTarget;
+                        SoftHide();
+                    }
                 }
-
             };
 
             return el;
         };
 
-        // var rapidFiringStatusMultiColumnListView = root.Q<MultiColumnListView>("RapidFiringStatusMultiColumnListView");
-        // Utils.BindItemsAddedRemoved<RapidFiringStatus>(rapidFiringStatusMultiColumnListView, () =>
-        // {
-        //     return GameManager.Instance.selectedShipLog;
-        // });
-
         var rapidFiringStatusListView = root.Q<ListView>("RapidFiringStatusListView");
-        Utils.BindItemsAddedRemoved<RapidFiringStatus>(rapidFiringStatusListView, () => GameManager.Instance.selectedShipLog);
+        Utils.BindItemsAddedRemoved<RapidFiringStatus>(rapidFiringStatusListView, () => selectedShipLog);
         rapidFiringStatusListView.makeItem = () =>
         {
             var el = rapidFiringStatusListView.itemTemplate.CloneTree();
@@ -244,8 +252,8 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>
         {
-            // var content = GameManager.Instance.navalGameState.ShipLogsToXML();
-            var content = NavalGameState.Instance.ShipLogsToXML();
+            var gameState = SuperGameState.Instance.GetCurrentGameState();
+            var content = gameState.ShipLogsToXML();
             IOManager.Instance.SaveTextFile(content, "ShipLogs" + GameManager.scenarioSuffix, "xml");
         };
 
@@ -262,7 +270,6 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         var resetDamageExpenditureStateButton = root.Q<Button>("ResetDamageExpenditureStateButton");
         resetDamageExpenditureStateButton.clicked += () =>
         {
-            var selectedShipLog = GameManager.Instance.selectedShipLog;
             if (selectedShipLog == null)
                 return;
             selectedShipLog.ResetDamageExpenditureState();
@@ -271,10 +278,12 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         var gotoNamedShipButton = root.Q<Button>("GotoNamedShipButton");
         gotoNamedShipButton.clicked += () =>
         {
-            var namedShip = GameManager.Instance.selectedShipLog?.namedShip;
+            var namedShip = selectedShipLog?.namedShip;
             if (namedShip == null)
                 return;
-            var idx = NavalGameState.Instance.namedShips.IndexOf(namedShip);
+
+            var gameState = SuperGameState.Instance.GetCurrentGameState();
+            var idx = gameState.namedShips.IndexOf(namedShip);
             if (idx != -1)
             {
                 Hide();
@@ -282,14 +291,15 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
                 // NamedShipEditor.Instance.namedShipListView.Rebuild();
                 // Data binding will be effective in the next frame, so we need to call the selection in the next frame.
                 // StartCoroutine(SetSelectionForNamedShipListView(idx));
-                GameManager.Instance.ScheduleToSetSelectionForListView(NamedShipEditor.Instance.namedShipListView, idx);
+                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(NamedShipEditor.Instance.namedShipListView, idx);
             }
         };
 
         var resetAllStatesButton = root.Q<Button>("ResetAllStatesButton");
         resetAllStatesButton.clicked += () =>
         {
-            foreach (var shipLog in NavalGameState.Instance.shipLogs)
+            var gameState = SuperGameState.Instance.GetCurrentGameState();
+            foreach (var shipLog in gameState.shipLogs)
             {
                 shipLog.ResetDamageExpenditureState();
             }
@@ -320,19 +330,24 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
     {
         IOManager.Instance.textLoaded -= OnShipLogsXmlLoaded;
 
-        // GameManager.Instance.navalGameState.ShipLogsFromXML(text);
-        NavalGameState.Instance.ShipLogsFromXML(text);
-        NavalGameState.Instance.ResetAndRegisterAll();
+        var gameState = SuperGameState.Instance.GetCurrentGameState();
+        gameState.ShipLogsFromXML(text);
+        gameState.ResetAndRegisterAll();
     }
 
     public void PopupWithSelection(ShipLog shipLog)
     {
-        var idx = NavalGameState.Instance.shipLogs.IndexOf(shipLog);
+        var gameState = SuperGameState.Instance.GetCurrentGameState();
+        var idx = gameState.shipLogs.IndexOf(shipLog);
         if (shipLog != null && idx != -1)
         {
             Show();
             // shipLogListView.SetSelection(idx);
-            GameManager.Instance.ScheduleToSetSelectionForListView(shipLogListView, idx);
+            BehaviourUtils.Instance.ScheduleToSetSelectionForListView(shipLogListView, idx);
         }
     }
+
+    [CreateProperty]
+    public AbstractGameState currentGameState => SuperGameState.Instance.GetCurrentGameState();
+
 }

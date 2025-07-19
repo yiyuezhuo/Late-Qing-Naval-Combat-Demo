@@ -81,6 +81,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 {
     public VisualTreeAsset shipLogSelectorDocument;
     public VisualTreeAsset leaderSelectorDocument;
+    public VisualTreeAsset shipClassSelectorDocument;
     public VisualTreeAsset namedShipSelectorDocument;
     public VisualTreeAsset messageDialogDocument;
     public VisualTreeAsset streamingAssetReferenceDialogDocument;
@@ -205,7 +206,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             root = root,
             template = leaderSelectorDocument,
-            templateDataSource = GameManager.Instance
+            templateDataSource = SuperGameState.Instance // GameManager.Instance
         };
 
         tempDialog.onConfirmed += (sender, el) =>
@@ -231,7 +232,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             root = root,
             template = leaderSelectorDocument,
-            templateDataSource = GameManager.Instance
+            templateDataSource = SuperGameState.Instance // GameManager.Instance
         };
 
         tempDialog.onConfirmed += (sender, el) =>
@@ -257,7 +258,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             root = root,
             template = leaderSelectorDocument,
-            templateDataSource = GameManager.Instance
+            templateDataSource = SuperGameState.Instance // GameManager.Instance
         };
 
         tempDialog.onConfirmed += (sender, el) =>
@@ -266,7 +267,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
             var leadersListView = el.Q<ListView>("LeadersListView");
             var leader = leadersListView.selectedItem as Leader;
-            var selectedNamedShip = GameManager.Instance.selectedNamedShip;
+            // var selectedNamedShip = GameManager.Instance.selectedNamedShip;
+            var selectedNamedShip = NamedShipEditor.Instance.selectedNamedShip;
 
             if (leader != null && selectedNamedShip != null)
             {
@@ -282,13 +284,14 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         var tempDialog = new TempDialog()
         {
             root = root,
-            template = shipLogSelectorDocument,
-            templateDataSource = GameManager.Instance
+            template = shipClassSelectorDocument,
+            templateDataSource = SuperGameState.Instance // GameManager.Instance
         };
 
         tempDialog.onConfirmed += (sender, el) =>
         {
-            var selectedNamedShip = GameManager.Instance.selectedNamedShip;
+            // var selectedNamedShip = GameManager.Instance.selectedNamedShip;
+            var selectedNamedShip = NamedShipEditor.Instance.selectedNamedShip;
 
             var shipClassListView = el.Q<ListView>("ShipClassListView");
             var selectedShipClass = shipClassListView.selectedItem as ShipClass;
@@ -307,12 +310,13 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             root = root,
             template = namedShipSelectorDocument,
-            templateDataSource = GameManager.Instance
+            templateDataSource = SuperGameState.Instance // GameManager.Instance
         };
 
         tempDialog.onConfirmed += (sender, el) =>
         {
-            var selectedShipLog = GameManager.Instance.selectedShipLog;
+            // var selectedShipLog = GameManager.Instance.selectedShipLog;
+            var selectedShipLog = ShipLogEditor.Instance.selectedShipLog;
 
             var namedShipListView = el.Q<ListView>("NamedShipListView");
             var namedShip = namedShipListView.selectedItem as NamedShip;

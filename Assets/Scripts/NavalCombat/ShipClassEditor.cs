@@ -5,14 +5,35 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
 using System.Linq;
+using Unity.Properties;
 
 using NavalCombatCore;
+using CoreUtils;
 
 
 public class ShipClassEditor : HideableDocument<ShipClassEditor>
 {
     public ListView shipClassListView;
     ListView batteryRecordsListView;
+
+    public int selectedShipClassIndex = 0;
+
+    [CreateProperty]
+    public ShipClass selectedShipClass
+    {
+        get
+        {
+            var gameState = SuperGameState.Instance.GetCurrentGameState();
+            if (selectedShipClassIndex >= gameState.shipClasses.Count || selectedShipClassIndex < 0)
+                return null;
+            return gameState.shipClasses[selectedShipClassIndex];
+        }
+    }
+
+    public ShipClass SelectedShipClassProvider()
+    {
+        return selectedShipClass;
+    }
 
     // protected override void Awake()
     void OnEnable()
@@ -23,7 +44,7 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
         // var sortingOrder = doc.sortingOrder;
         // Debug.Log($"ShipClassEditor sortingOrder={sortingOrder}");
 
-        root.dataSource = GameManager.Instance;
+        root.dataSource = this;
 
         foreach (var listView in root.Query<BaseListView>().ToList())
         {
@@ -32,21 +53,22 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
 
         shipClassListView = root.Q<ListView>("ShipClassListView");
         // shipClassListView.itemsAdded += Utils.MakeCallbackForItemsAdded<ShipClass>(shipClassListView);
-        Utils.BindItemsAddedRemoved<ShipClass>(shipClassListView, GameManager.Instance.SelectedShipClassProvider);
+        Utils.BindItemsAddedRemoved<ShipClass>(shipClassListView, SelectedShipClassProvider);
 
         shipClassListView.selectedIndicesChanged += (IEnumerable<int> ints) =>
         {
             var idx = ints.FirstOrDefault();
-            GameManager.Instance.selectedShipClassIndex = idx;
+
+            selectedShipClassIndex = idx;
         };
 
         var speedIncreaseMultiColumnListView = root.Q<MultiColumnListView>("SpeedIncreaseMultiColumnListView");
         // speedIncreaseMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<SpeedIncreaseRecord>(speedIncreaseMultiColumnListView);
-        Utils.BindItemsAddedRemoved<SpeedIncreaseRecord>(speedIncreaseMultiColumnListView, GameManager.Instance.SelectedShipClassProvider);
+        Utils.BindItemsAddedRemoved<SpeedIncreaseRecord>(speedIncreaseMultiColumnListView, SelectedShipClassProvider);
 
         batteryRecordsListView = root.Q<ListView>("BatteryRecordsListView");
         // batteryRecordsListView.itemsAdded += Utils.MakeCallbackForItemsAdded<BatteryRecord>(batteryRecordsListView);
-        Utils.BindItemsAddedRemoved<BatteryRecord>(batteryRecordsListView, GameManager.Instance.SelectedShipClassProvider);
+        Utils.BindItemsAddedRemoved<BatteryRecord>(batteryRecordsListView, SelectedShipClassProvider);
         batteryRecordsListView.makeItem = () =>
         {
             var el = batteryRecordsListView.itemTemplate.CloneTree();
@@ -59,9 +81,9 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             // fireControlTableMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<FireControlTableRecord>(fireControlTableMultiColumnListView);
             // penetrationTableMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<PenetrationTableRecord>(penetrationTableMultiColumnListView);
             // mountsListView.itemsAdded += Utils.MakeCallbackForItemsAdded<MountLocationRecord>(mountsListView);
-            Utils.BindItemsAddedRemoved<FireControlTableRecord>(fireControlTableMultiColumnListView, GameManager.Instance.SelectedShipClassProvider);
-            Utils.BindItemsAddedRemoved<PenetrationTableRecord>(penetrationTableMultiColumnListView, GameManager.Instance.SelectedShipClassProvider);
-            Utils.BindItemsAddedRemoved<MountLocationRecord>(mountsListView, GameManager.Instance.SelectedShipClassProvider);
+            Utils.BindItemsAddedRemoved<FireControlTableRecord>(fireControlTableMultiColumnListView, SelectedShipClassProvider);
+            Utils.BindItemsAddedRemoved<PenetrationTableRecord>(penetrationTableMultiColumnListView, SelectedShipClassProvider);
+            Utils.BindItemsAddedRemoved<MountLocationRecord>(mountsListView, SelectedShipClassProvider);
 
             mountsListView.makeItem = () =>
             {
@@ -69,7 +91,7 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
 
                 var mountsArcsMultiColumnsListView = el2.Q<MultiColumnListView>("MountArcsMultiColumnListView");
                 // mountsArcsMultiColumnsListView.itemsAdded += Utils.MakeCallbackForItemsAdded<MountArcRecord>(mountsArcsMultiColumnsListView);
-                Utils.BindItemsAddedRemoved<MountArcRecord>(mountsArcsMultiColumnsListView, GameManager.Instance.SelectedShipClassProvider);
+                Utils.BindItemsAddedRemoved<MountArcRecord>(mountsArcsMultiColumnsListView, SelectedShipClassProvider);
 
                 Utils.BindItemsSourceRecursive(el2);
 
@@ -81,11 +103,11 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
 
         var torpedoSettingsMultiColumnListView = root.Q<MultiColumnListView>("TorpedoSettingsMultiColumnListView");
         // torpedoSettingsMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<TorpedoSetting>(torpedoSettingsMultiColumnListView);
-        Utils.BindItemsAddedRemoved<TorpedoSetting>(torpedoSettingsMultiColumnListView, GameManager.Instance.SelectedShipClassProvider);
+        Utils.BindItemsAddedRemoved<TorpedoSetting>(torpedoSettingsMultiColumnListView, SelectedShipClassProvider);
 
         var torpedoMountsListView = root.Q<ListView>("TorpedoMountsListView");
         // torpedoMountsListView.itemsAdded += Utils.MakeCallbackForItemsAdded<MountLocationRecord>(torpedoMountsListView);
-        Utils.BindItemsAddedRemoved<MountLocationRecord>(torpedoMountsListView, GameManager.Instance.SelectedShipClassProvider);
+        Utils.BindItemsAddedRemoved<MountLocationRecord>(torpedoMountsListView, SelectedShipClassProvider);
         torpedoMountsListView.makeItem = () =>
         {
             var el = torpedoMountsListView.itemTemplate.CloneTree();
@@ -93,14 +115,14 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             Utils.BindItemsSourceRecursive(el);
             var mountArcsMultiColumnListView = el.Q<MultiColumnListView>("MountArcsMultiColumnListView");
             // mountArcsMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<MountArcRecord>(mountArcsMultiColumnListView);
-            Utils.BindItemsAddedRemoved<MountArcRecord>(mountArcsMultiColumnListView, GameManager.Instance.SelectedShipClassProvider);
+            Utils.BindItemsAddedRemoved<MountArcRecord>(mountArcsMultiColumnListView, SelectedShipClassProvider);
 
             return el;
         };
 
         var rapidFireBatteryListView = root.Q<ListView>("RapidFireBatteryListView");
         // rapidFireBatteryListView.itemsAdded += Utils.MakeCallbackForItemsAdded<RapidFireBatteryRecord>(rapidFireBatteryListView);
-        Utils.BindItemsAddedRemoved<RapidFireBatteryRecord>(rapidFireBatteryListView, GameManager.Instance.SelectedShipClassProvider);
+        Utils.BindItemsAddedRemoved<RapidFireBatteryRecord>(rapidFireBatteryListView, SelectedShipClassProvider);
 
         rapidFireBatteryListView.makeItem = () =>
         {
@@ -109,7 +131,7 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             Utils.BindItemsSourceRecursive(el);
             var fireControlLevelMultiColumnListView = el.Q<MultiColumnListView>("FireControlLevelMultiColumnListView");
             // fireControlLevelMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<RapidFireBatteryFireControlLevelRecord>(fireControlLevelMultiColumnListView);
-            Utils.BindItemsAddedRemoved<RapidFireBatteryFireControlLevelRecord>(fireControlLevelMultiColumnListView, GameManager.Instance.SelectedShipClassProvider);
+            Utils.BindItemsAddedRemoved<RapidFireBatteryFireControlLevelRecord>(fireControlLevelMultiColumnListView, SelectedShipClassProvider);
 
             return el;
         };
@@ -120,8 +142,8 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>
         {
-            // var content = GameManager.Instance.navalGameState.ShipClassesToXML();
-            var content = NavalGameState.Instance.ShipClassesToXML();
+            var gameState = SuperGameState.Instance.GetCurrentGameState();
+            var content = gameState.ShipClassesToXML();
             IOManager.Instance.SaveTextFile(content, "ShipClasses", "xml");
         };
 
@@ -167,15 +189,19 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             batteryRecordsListView.itemsSource[idx] = battryRecord;
         }
 
-        NavalGameState.Instance.ResetAndRegisterAll(); // re-duplicate object id 
+        var gameState = SuperGameState.Instance.GetCurrentGameState();
+        gameState.ResetAndRegisterAll(); // re-duplicate object id 
     }
 
     public void OnShipClassesXMLLoaded(object sender, string text)
     {
         IOManager.Instance.textLoaded -= OnShipClassesXMLLoaded;
 
-        // GameManager.Instance.navalGameState.ShipClassesFromXML(text);
-        NavalGameState.Instance.ShipClassesFromXML(text);
-        NavalGameState.Instance.ResetAndRegisterAll();
+        var gameState = SuperGameState.Instance.GetCurrentGameState();
+        gameState.ShipClassesFromXML(text);
+        gameState.ResetAndRegisterAll();
     }
+
+    [CreateProperty]
+    public AbstractGameState currentGameState => SuperGameState.Instance.GetCurrentGameState();
 }

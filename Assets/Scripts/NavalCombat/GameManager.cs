@@ -351,6 +351,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     if (shipLog != null)
                     {
                         selectedShipLogObjectId = shipLog.objectId;
+
+                        ShipLogEditor.Instance.selectedShipLogObjectId = selectedShipLogObjectId;
                     }
                 }
 
@@ -360,6 +362,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     if (shipLog != null)
                     {
                         selectedShipLogObjectId = shipLog.objectId;
+
+                        ShipLogEditor.Instance.selectedShipLogObjectId = selectedShipLogObjectId;
                         ShipLogEditor.Instance.Show();
                     }
                 }
@@ -610,23 +614,23 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     //         _instance = null;
     // }
 
-    public int selectedShipClassIndex = 0;
+    // public int selectedShipClassIndex = 0;
 
-    [CreateProperty]
-    public ShipClass selectedShipClass
-    {
-        get
-        {
-            if (selectedShipClassIndex >= navalGameState.shipClasses.Count || selectedShipClassIndex < 0)
-                return null;
-            return navalGameState.shipClasses[selectedShipClassIndex];
-        }
-    }
+    // [CreateProperty]
+    // public ShipClass selectedShipClass
+    // {
+    //     get
+    //     {
+    //         if (selectedShipClassIndex >= navalGameState.shipClasses.Count || selectedShipClassIndex < 0)
+    //             return null;
+    //         return navalGameState.shipClasses[selectedShipClassIndex];
+    //     }
+    // }
 
-    public ShipClass SelectedShipClassProvider()
-    {
-        return selectedShipClass;
-    }
+    // public ShipClass SelectedShipClassProvider()
+    // {
+    //     return selectedShipClass;
+    // }
 
     public string selectedShipLogObjectId;
 
@@ -639,27 +643,27 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
-    public string selectedLeaderObjectId;
+    // public string selectedLeaderObjectId;
 
-    [CreateProperty]
-    public Leader selectedLeader
-    {
-        get
-        {
-            return EntityManager.Instance.Get<Leader>(selectedLeaderObjectId);
-        }
-    }
+    // [CreateProperty]
+    // public Leader selectedLeader
+    // {
+    //     get
+    //     {
+    //         return EntityManager.Instance.Get<Leader>(selectedLeaderObjectId);
+    //     }
+    // }
 
-    public string selectedNamedShipObjectId;
+    // public string selectedNamedShipObjectId;
 
-    [CreateProperty]
-    public NamedShip selectedNamedShip
-    {
-        get
-        {
-            return EntityManager.Instance.Get<NamedShip>(selectedNamedShipObjectId);
-        }
-    }
+    // [CreateProperty]
+    // public NamedShip selectedNamedShip
+    // {
+    //     get
+    //     {
+    //         return EntityManager.Instance.Get<NamedShip>(selectedNamedShipObjectId);
+    //     }
+    // }
 
     public LanguageType iconLanuageType;
     // public int selected
@@ -776,10 +780,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     }
 
 
-    public void ScheduleToSetSelectionForListView(ListView listView, int idx)
-    {
-        StartCoroutine(Utils.SetSelectionForListView(listView, idx));
-    }
+    // public void ScheduleToSetSelectionForListView(ListView listView, int idx)
+    // {
+    //     StartCoroutine(Utils.SetSelectionForListView(listView, idx));
+    // }
 
     [CreateProperty]
     public bool isEditor => Application.isEditor;

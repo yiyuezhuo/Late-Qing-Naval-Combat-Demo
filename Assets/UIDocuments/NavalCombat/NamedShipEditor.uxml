@@ -1,11 +1,11 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
-    <ui:Template name="NamedShipVisualizer" src="project://database/Assets/UIDocuments/NamedShipVisualizer.uxml?fileID=9197481963319205126&amp;guid=31d24939061571546a16f9a8bd6443ed&amp;type=3#NamedShipVisualizer" />
-    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" class="panel" style="flex-grow: 1;">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:Template name="NamedShipVisualizer" src="project://database/Assets/UIDocuments/NavalCombat/NamedShipVisualizer.uxml?fileID=9197481963319205126&amp;guid=31d24939061571546a16f9a8bd6443ed&amp;type=3#NamedShipVisualizer" />
+    <ui:VisualElement data-source-type="NamedShipEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Named Ship" class="title" />
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="flex-grow: 0; flex-basis: 25%; flex-shrink: 0; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-                <ui:ListView name="NamedShipListView" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/NamedShipLabel.uxml?fileID=9197481963319205126&amp;guid=be84ada722b028f4b8b3547e1e58ed36&amp;type=3#NamedShipLabel" show-add-remove-footer="true" reorderable="true" data-source-path="navalGameState.namedShips" style="flex-grow: 1;" />
+                <ui:ListView name="NamedShipListView" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/NamedShipLabel.uxml?fileID=9197481963319205126&amp;guid=be84ada722b028f4b8b3547e1e58ed36&amp;type=3#NamedShipLabel" show-add-remove-footer="true" reorderable="true" data-source-path="currentGameState.namedShips" style="flex-grow: 1;" />
                 <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;">
                     <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
                         <ui:Button text="Import" name="ImportButton" style="flex-basis: 50px; flex-grow: 1;" />

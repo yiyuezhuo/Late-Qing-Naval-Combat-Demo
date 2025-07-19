@@ -28,7 +28,9 @@ public class SuperGameState
         };
     }
 
-    // [CreateProperty]
-    // public AbstractGameState currentGameState => GetCurrentGameState();
+    public bool IsInNavalGame() => currentGameMode == GameMode.Naval;
+
+    [CreateProperty]
+    public AbstractGameState currentGameState => GetCurrentGameState();
 
 }

@@ -1,12 +1,10 @@
 using System;
 using UnityEngine;
 using TMPro;
-
-using StrategicCombatCore;
 using System.Linq;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
+
+using StrategicCombatCore;
 
 public class HexMapShower : SingletonDocument<HexMapShower>
 {
@@ -142,29 +140,6 @@ public class HexMapShower : SingletonDocument<HexMapShower>
 
             var (xf, yf) = CellXYToLocalXY(cellSrc.x, cellSrc.y);
 
-            // var (xf1, yf1) = CellXYToLocalXY(cellSrc.x, cellSrc.y);
-            // var (xf2, yf2) = CellXYToLocalXY(cellDst.x, cellDst.y);
-            // var xc = (xf1 + xf2) / 2;
-            // var yc = (yf1 + yf2) / 2;
-
-            // var angleDeg = edgeDirection switch
-            // {
-            //     EdgeDirection.Top => 0,
-            //     EdgeDirection.TopRight => -60,
-            //     EdgeDirection.BottomRight => -120,
-            //     EdgeDirection.Bottom => 180,
-            //     EdgeDirection.BottomLeft => 120,
-            //     EdgeDirection.TopLeft => 60,
-            //     _ => 0,
-            // };
-            // var angleRad = angleDeg * Mathf.Deg2Rad;
-
-            // var length = 1f;
-            // var x1 = xc + length * Mathf.Cos(angleRad);
-            // var y1 = yc + length * Mathf.Sin(angleRad);
-            // var x2 = xc + length * Mathf.Cos(angleRad + Mathf.PI);
-            // var y2 = yc + length * Mathf.Sin(angleRad + Mathf.PI);
-
             var lineRenderer = lineRenderers[i];
             lineRenderer.positionCount = 2;
             lineRenderer.SetPositions(new Vector3[2]{
@@ -189,23 +164,6 @@ public class HexMapShower : SingletonDocument<HexMapShower>
     void UpdateLabels()
     {
         var labels = StrategicGameState.Instance.labels;
-
-        // var texts = labelContainerTransform.GetComponentsInChildren<TMP_Text>();
-        // var diff = labels.Count - texts.Length;
-        // if (diff > 0)
-        // {
-        //     for (int i = 0; i < diff; i++)
-        //     {
-        //         Instantiate(locationLabelPrefab, labelContainerTransform);
-        //     }
-        // }
-        // else if (diff < 0)
-        // {
-        //     for (int i = 0; i < -diff; i++)
-        //     {
-        //         Destroy(texts[i].gameObject);
-        //     }
-        // }
 
         Utils.SyncTransformViewerLength(labelContainerTransform, labels.Count, locationLabelPrefab);
 
@@ -249,7 +207,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
     //     { CornerType.TopLeft, (-cos60deg, sin60deg)},
     // };
 
-    static float cornerOffset = 0.1f;
+    static float cornerOffset = 0.1f; // Not the exact value
 
     static Dictionary<CornerType, (float, float)> cornerToStandardHexLocation = new()
     {

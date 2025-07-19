@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using CoreUtils;
 
 namespace NavalCombatCore
 {
@@ -92,7 +93,7 @@ namespace NavalCombatCore
             {
                 yield return subState;
             }
-            
+
             foreach (var subObject in GetSubObjects())
             {
                 if (subObject is UnitModule unitModule)

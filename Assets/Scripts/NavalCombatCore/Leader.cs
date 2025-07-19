@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 
-using CoreUtils;
-
-namespace NavalCombatCore
+namespace CoreUtils
 {
     public enum LeaderSkillLevel
     {
@@ -34,6 +32,9 @@ namespace NavalCombatCore
         public LeaderSkillLevel navalStrategic; // command in a theater / organization / Planning /  generate better combat
         public LeaderSkillLevel navalOperational; // command a fleet / command in a battle
         public LeaderSkillLevel navalTactical; // command a ship / low-level group
+        public LeaderSkillLevel landStrategic; // command a theater / organization / Planning / improve supply
+        public LeaderSkillLevel landOperational; // Command a division / corp or a stack
+        public LeaderSkillLevel landTactical; // command a battalion / regiment
         public List<LeaderTrait> traits = new();
         // public float courage; // determine flee / retreat behaviour and buff ship morale
         // public float staff; // how much buff its commander

@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
-using NavalCombatCore;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Unity.Properties;
-using Unity.VisualScripting.Dependencies.NCalc;
+
+using CoreUtils;
+using NavalCombatCore;
+
 
 public class OOBEditor : HideableDocument<OOBEditor>
 {
@@ -327,6 +329,6 @@ public class OOBEditor : HideableDocument<OOBEditor>
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             state = State.Idle;
-        }   
+        }
     }
 }

@@ -5,6 +5,8 @@ using System;
 using GeographicLib;
 using System.Xml.Serialization;
 
+using CoreUtils;
+
 
 namespace NavalCombatCore
 {
@@ -556,7 +558,7 @@ namespace NavalCombatCore
 
                     var firingShipEA = ctx.shipLog.IsEvasiveManeuvering();
                     var targetShipEA = tgt.IsEvasiveManeuvering();
-                    
+
                     if (firingShipEA && targetShipEA)
                         fireControlScore -= 8;
                     else if (targetShipEA)

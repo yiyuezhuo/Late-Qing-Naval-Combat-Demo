@@ -1,7 +1,4 @@
 using UnityEngine;
-using NavalCombatCore;
-using GeographicLib;
-using TMPro;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
 using System.Xml.Serialization;
@@ -9,9 +6,11 @@ using System.Xml;
 using System.IO;
 using System.Linq;
 using Unity.Properties;
-using System.Threading.Tasks;
 using System;
 using System.Collections;
+
+using NavalCombatCore;
+
 
 public class NamedShipEditor : HideableDocument<NamedShipEditor>
 {

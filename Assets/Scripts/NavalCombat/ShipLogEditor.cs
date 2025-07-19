@@ -1,7 +1,4 @@
 using UnityEngine;
-using NavalCombatCore;
-using GeographicLib;
-using TMPro;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
 using System.Collections;
@@ -12,6 +9,7 @@ using System.Linq;
 using Unity.Properties;
 using System;
 
+using NavalCombatCore;
 
 
 public class ShipLogEditor : HideableDocument<ShipLogEditor>

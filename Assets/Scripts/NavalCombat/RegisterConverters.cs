@@ -99,12 +99,12 @@ public static class RegisteredConverters
             return (StyleEnum<DisplayStyle>)(shipGroup == null ? DisplayStyle.Flex : DisplayStyle.None);
         });
 
-        Register("Leader => DisplayStyle", (ref NavalCombatCore.Leader leader) =>
+        Register("Leader => DisplayStyle", (ref Leader leader) =>
         {
             return (StyleEnum<DisplayStyle>)(leader != null ? DisplayStyle.Flex : DisplayStyle.None);
         });
 
-        Register("Leader => DisplayStyle (Not)", (ref NavalCombatCore.Leader leader) =>
+        Register("Leader => DisplayStyle (Not)", (ref Leader leader) =>
         {
             return (StyleEnum<DisplayStyle>)(leader == null ? DisplayStyle.Flex : DisplayStyle.None);
         });

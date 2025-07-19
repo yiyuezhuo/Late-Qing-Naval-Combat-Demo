@@ -93,7 +93,7 @@ namespace NavalCombatCore
                 else if (otherOverSelfLossRatio > 1.5)
                     level = VictoryLevel.Victory;
                 else if (otherOverSelfLossRatio > 1.3)
-                    level = VictoryLevel.MinorDefeat;
+                    level = VictoryLevel.MinorVictory;
                 else if (otherOverSelfLossRatio > 1.1)
                     level = VictoryLevel.MarginalVictory;
                 else if (otherOverSelfLossRatio < 1f / 5 && selfLossRatio > 0.5)

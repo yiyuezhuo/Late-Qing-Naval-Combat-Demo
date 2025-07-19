@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using MathNet.Numerics.Distributions;
 
+using CoreUtils;
+
 
 namespace NavalCombatCore
 {
@@ -102,7 +104,7 @@ namespace NavalCombatCore
         }
 
         public string cause = "";
-        
+
         // public bool permanent; // If it's not permanent then this can be damage controlled.
         public virtual bool damageControllable
         {
@@ -1478,7 +1480,7 @@ namespace NavalCombatCore
         public override bool IsBatteryRelated() => true;
     }
 
-    public class PlaceholderState: SubState // Can used to as a parent for some dependent sub-states to apply lifecycle constrait
+    public class PlaceholderState : SubState // Can used to as a parent for some dependent sub-states to apply lifecycle constrait
     {
         public override string Describe() => $"PlaceholderState({DescribeLiftCycle()}";
     }

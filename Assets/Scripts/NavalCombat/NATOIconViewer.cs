@@ -1,20 +1,22 @@
 
-using NavalCombatCore;
 using UnityEngine;
 using TMPro;
 using System.Linq;
 
+using CoreUtils;
+using NavalCombatCore;
+
 public class NATOIconViewer : MonoBehaviour
 {
     public string shipLogObjectId;
-    public ShipLog shipLog{ get => EntityManager.Instance.Get<ShipLog>(shipLogObjectId); } // TODO: Use interface to decouple?
+    public ShipLog shipLog { get => EntityManager.Instance.Get<ShipLog>(shipLogObjectId); } // TODO: Use interface to decouple?
     public TMP_Text text;
 
     MeshRenderer iconRenderer;
 
     void Awake()
     {
-        iconRenderer = GetComponent<MeshRenderer>();   
+        iconRenderer = GetComponent<MeshRenderer>();
     }
 
     public void Update()

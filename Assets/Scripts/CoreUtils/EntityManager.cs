@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace NavalCombatCore
+namespace CoreUtils
 {
 
     public interface IObjectIdLabeled
@@ -15,7 +15,7 @@ namespace NavalCombatCore
         // }
     }
 
-    public class EntityManager
+    public partial class EntityManager
     {
         public Dictionary<string, IObjectIdLabeled> idToEntity = new();
         public Dictionary<IObjectIdLabeled, object> entityToParent = new();
@@ -72,13 +72,14 @@ namespace NavalCombatCore
             return entityToParent.GetValueOrDefault(obj) as T;
         }
 
-        public ShipLog GetOnMapShipLog(string id)
-        {
-            var shipLog = Get<ShipLog>(id);
-            if (shipLog == null || !shipLog.IsOnMap())
-                return null;
-            return shipLog;
-        }
+        // Move to partial method
+        // public ShipLog GetOnMapShipLog(string id)
+        // {
+        //     var shipLog = Get<ShipLog>(id);
+        //     if (shipLog == null || !shipLog.IsOnMap())
+        //         return null;
+        //     return shipLog;
+        // }
 
         static EntityManager _instance;
 

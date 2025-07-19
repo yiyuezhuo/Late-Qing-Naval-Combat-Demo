@@ -115,6 +115,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         iconLayerMask = LayerMask.GetMask("Icon");
         // Debug.Log($"Persistent Path:{Application.persistentDataPath}");
 
+        SuperGameState.Instance.currentGameMode = GameMode.Naval;
+
         EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
 
         if (oneShotStartupFullState == null)

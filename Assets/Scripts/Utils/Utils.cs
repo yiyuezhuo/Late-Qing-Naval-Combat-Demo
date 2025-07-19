@@ -9,6 +9,8 @@ using UnityEngine.UIElements.Experimental;
 using Unity.Properties;
 using UnityEngine.Networking;
 
+using CoreUtils;
+
 public static class Utils
 {
     // public static float r = 2000000;

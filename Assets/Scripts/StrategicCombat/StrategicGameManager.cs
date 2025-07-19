@@ -67,15 +67,29 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         var width = tempMapWidth;
         var height = tempMapHeight;
 
+        SuperGameState.Instance.currentGameMode = GameMode.Strategic;
+
         // Default state
         StrategicGameState.Instance.GenerateTerrainMatrix(width, height);
 
         // Try to fetch default scenario file and update the state
         StartCoroutine(Utils.FetchFile(initialScenPath, (initialScenText) =>
         {
-            var strategicGameState = XmlUtils.FromXML<StrategicGameState>(initialScenText);
-            StrategicGameState.Instance.UpdateTo(strategicGameState);
+            StartCoroutine(
+                OnScenTextLoaded(initialScenText)
+            );
         }));
+    }
+
+    IEnumerator OnScenTextLoaded(string initialScenText)
+    {
+        var strategicGameState = XmlUtils.FromXML<StrategicGameState>(initialScenText);
+        StrategicGameState.Instance.UpdateTo(strategicGameState);
+
+        // TODO: Save StreamingAssetReference state in the StrategicGameState?
+        yield return StreamingAssetReference.Instance.TryToCompleteFromStreamingAssetReference(StrategicGameState.Instance);
+
+        StrategicGameState.Instance.ResetAndRegisterAll();
     }
 
     public Vector2 ToCenter(Vector2 xy)

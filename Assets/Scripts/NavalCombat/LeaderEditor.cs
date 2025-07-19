@@ -1,13 +1,11 @@
 using UnityEngine;
-using NavalCombatCore;
-using GeographicLib;
-using TMPro;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
-using System.Xml.Serialization;
-using System.Xml;
-using System.IO;
 using System.Linq;
+using Unity.Properties;
+
+// using NavalCombatCore;
+using CoreUtils;
 
 public class LeaderEditor : HideableDocument<LeaderEditor>
 {
@@ -19,7 +17,8 @@ public class LeaderEditor : HideableDocument<LeaderEditor>
     {
         // base.Awake();
 
-        root.dataSource = GameManager.Instance;
+        // root.dataSource = GameManager.Instance;
+        root.dataSource = this;
 
         Utils.BindItemsSourceRecursive(root);
 
@@ -28,10 +27,10 @@ public class LeaderEditor : HideableDocument<LeaderEditor>
 
         leadersListView.selectionChanged += (IEnumerable<object> objects) =>
         {
-            Debug.Log("leadersListView.selectionChanged");
-
             var leader = objects.FirstOrDefault() as Leader;
-            GameManager.Instance.selectedLeaderObjectId = leader?.objectId;
+            selectedLeaderObjectId = leader?.objectId;
+            
+            Debug.Log($"leadersListView.selectionChanged: {selectedLeaderObjectId}");
         };
 
         var confirmButton = root.Q<Button>("ConfirmButton");
@@ -40,8 +39,9 @@ public class LeaderEditor : HideableDocument<LeaderEditor>
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>
         {
-            // var content = GameManager.Instance.navalGameState.LeadersToXML();
-            var content = NavalGameState.Instance.LeadersToXML();
+            // var content = NavalGameState.Instance.LeadersToXML();
+            var gameState = SuperGameState.Instance.GetCurrentGameState();
+            var content = gameState.LeadersToXML();
             IOManager.Instance.SaveTextFile(content, "Leaders", "xml");
         };
 
@@ -57,8 +57,26 @@ public class LeaderEditor : HideableDocument<LeaderEditor>
     {
         IOManager.Instance.textLoaded -= OnLeadersXMLLoaded;
 
-        // GameManager.Instance.navalGameState.LeadersFromXML(text);
-        NavalGameState.Instance.LeadersFromXML(text);
-        NavalGameState.Instance.ResetAndRegisterAll();
+        // NavalGameState.Instance.LeadersFromXML(text);
+        // NavalGameState.Instance.ResetAndRegisterAll();
+
+        var gameState = SuperGameState.Instance.GetCurrentGameState();
+        gameState.LeadersFromXML(text);
+        gameState.ResetAndRegisterAll();
+
+    }
+
+    [CreateProperty]
+    public AbstractGameState currentGameState => SuperGameState.Instance.GetCurrentGameState();
+
+    public string selectedLeaderObjectId;
+
+    [CreateProperty]
+    public Leader selectedLeader
+    {
+        get
+        {
+            return EntityManager.Instance.Get<Leader>(selectedLeaderObjectId);
+        }
     }
 }

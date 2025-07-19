@@ -5,6 +5,7 @@ using System;
 using GeographicLib;
 using System.Xml.Serialization;
 
+using CoreUtils;
 
 namespace NavalCombatCore
 {

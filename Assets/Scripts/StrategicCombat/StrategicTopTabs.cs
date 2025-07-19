@@ -18,19 +18,21 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
         root.dataSource = StrategicGameManager.Instance;
 
-        root.Q<Button>("ExportMapButton").clicked += () =>
+        root.Q<Button>("SaveButton").clicked += () =>
         {
-            Debug.Log("ExportMapButton clicked");
+            Debug.Log("SaveButton clicked");
+
+            var gameState = DetachGameState(StrategicGameState.Instance, StreamingAssetReference.Instance);
 
             IOManager.Instance.SaveTextFile(
-                XmlUtils.ToXML(StrategicGameState.Instance),
+                XmlUtils.ToXML(gameState),
                 "StrategicGameState", "xml"
             );
         };
 
-        root.Q<Button>("ImportMapButton").clicked += () =>
+        root.Q<Button>("LoadButton").clicked += () =>
         {
-            Debug.Log("ImportMapButton clicked");
+            Debug.Log("LoadButton clicked");
 
             IOManager.Instance.textLoaded += OnMapXMLLoaded;
             IOManager.Instance.LoadTextFile("xml");
@@ -45,7 +47,30 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
             StrategicGameState.Instance.GenerateTerrainMatrix(width, height);
         };
+
+        root.Q<Button>("LeaderEditorButton").clicked += () =>
+        {
+            LeaderEditor.Instance.Show();
+        };
     }
+
+    StrategicGameState DetachGameState(StrategicGameState _s, StreamingAssetReference sar)
+    {
+        // deep copy
+        var s = XmlUtils.FromXML<StrategicGameState>(XmlUtils.ToXML(_s));
+
+        if (sar.leadersPath != null && sar.leadersPath != "")
+            s.leaders = null;
+
+        if (sar.shipClassesPath != null && sar.shipClassesPath != "")
+            s.shipClasses = null;
+
+        if (sar.namedShipsPath != null && sar.namedShipsPath != "")
+            s.namedShips = null;
+
+        return s;
+    }
+
 
     void OnMapXMLLoaded(object sender, string text)
     {

@@ -7,6 +7,8 @@ using System.Xml.Serialization;
 using UnityEngine;
 using TMPro;
 
+using CoreUtils;
+
 
 namespace NavalCombatCore
 {
@@ -85,7 +87,7 @@ namespace NavalCombatCore
         float GetHeadingDeg();
     }
 
-    public interface IDF4Model: IDF3Model
+    public interface IDF4Model : IDF3Model
     {
         float GetSpeedKnots();
     }
@@ -519,7 +521,7 @@ namespace NavalCombatCore
             var mods = GetSubStates<IDynamicModifier>().ToList();
             if (mods.Any(m => m.IsCourseChangeBlocked()))
                 return;
-            
+
             var diffDeg = MeasureUtils.NormalizeAngle(desiredHeadingDeg - headingDeg) - 180;
             if (diffDeg > 0 && mods.Any(m => m.IsTurnStarboardBlocked()))
                 return;

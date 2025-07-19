@@ -1,5 +1,4 @@
 using UnityEngine;
-using NavalCombatCore;
 using GeographicLib;
 using TMPro;
 using UnityEngine.UIElements;
@@ -7,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
 using UnityEngine.SceneManagement;
+
+using CoreUtils;
+using NavalCombatCore;
 
 
 public class TopTabs : SingletonDocument<TopTabs>
@@ -62,19 +64,7 @@ public class TopTabs : SingletonDocument<TopTabs>
         var saveButton = root.Q<Button>("SaveButton");
         var loadButton = root.Q<Button>("LoadButton");
 
-        saveButton.clicked += () =>
-        {
-
-            var fullState = new FullState()
-            {
-                // NavalGameState = NavalGameState.Instance,
-                streamingAssetReference = StreamingAssetReference.Instance,
-                navalGameState = StreamingAssetReference.Instance.Detach(NavalGameState.Instance),
-                viewState = GameManager.Instance.CaptureViewState(),
-            };
-
-            IOManager.Instance.SaveTextFile(fullState.ToXML(), "FullState", "xml");
-        };
+        saveButton.clicked += OnSaveButtonClicked;
 
         loadButton.clicked += () =>
         {
@@ -164,6 +154,35 @@ public class TopTabs : SingletonDocument<TopTabs>
         };
 
         root.Q<Button>("HelpButton").clicked += () => DialogRoot.Instance.PopupHelpDialogDocument();
+    }
+
+    void OnSaveButtonClicked()
+    {
+        var fullState = new FullState()
+        {
+            streamingAssetReference = StreamingAssetReference.Instance,
+            navalGameState = DetachGameState(NavalGameState.Instance, StreamingAssetReference.Instance),
+            viewState = GameManager.Instance.CaptureViewState(),
+        };
+
+        IOManager.Instance.SaveTextFile(fullState.ToXML(), "FullState", "xml");
+    }
+
+    NavalGameState DetachGameState(NavalGameState _s, StreamingAssetReference sar)
+    {
+        // deep copy
+        var s = XmlUtils.FromXML<NavalGameState>(XmlUtils.ToXML(_s));
+
+        if (sar.leadersPath != null && sar.leadersPath != "")
+            s.leaders = null;
+
+        if (sar.shipClassesPath != null && sar.shipClassesPath != "")
+            s.shipClasses = null;
+
+        if (sar.namedShipsPath != null && sar.namedShipsPath != "")
+            s.namedShips = null;
+
+        return s;
     }
 
     void SetToFormationPosition()

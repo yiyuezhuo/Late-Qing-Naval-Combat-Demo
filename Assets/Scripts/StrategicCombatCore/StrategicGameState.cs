@@ -18,11 +18,10 @@ namespace StrategicCombatCore
         public List<Cell> records;
     }
 
-    public class StrategicGameState
+    public class StrategicGameState : AbstractGameState
     {
         [XmlIgnore]
         public Cell[,] cellMatrix;
-
 
         public SerializedCells serializedCells
         {

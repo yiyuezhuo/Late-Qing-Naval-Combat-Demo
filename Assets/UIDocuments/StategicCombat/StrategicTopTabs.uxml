@@ -3,8 +3,6 @@
         <ui:TabView data-source-type="StrategicGameManager, Assembly-CSharp">
             <ui:Tab label="Map Edit">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
-                    <ui:Button text="Export Map" name="ExportMapButton" />
-                    <ui:Button text="Import Map" name="ImportMapButton" />
                     <ui:Label text="Mode" />
                     <ui:EnumField value="Center" type="StrategicMapEditMode, Assembly-CSharp" style="min-width: 100px;">
                         <Bindings>
@@ -54,6 +52,17 @@
                             <ui:DataBinding property="value" data-source-path="showAccurateSeaLand" binding-mode="TwoWay" />
                         </Bindings>
                     </ui:Toggle>
+                </ui:VisualElement>
+            </ui:Tab>
+            <ui:Tab label="File">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                    <ui:Button text="Save" name="SaveButton" />
+                    <ui:Button text="Load" name="LoadButton" />
+                </ui:VisualElement>
+            </ui:Tab>
+            <ui:Tab label="Editor">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                    <ui:Button text="Leader Editor" name="LeaderEditorButton" />
                 </ui:VisualElement>
             </ui:Tab>
         </ui:TabView>

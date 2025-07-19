@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using MathNet.Numerics;
 using CoreUtils;
+using Acornima.Ast;
 
 namespace NavalCombatCore
 {
@@ -35,21 +36,8 @@ namespace NavalCombatCore
         }
     }
 
-    public class NavalGameState
+    public class NavalGameState : AbstractGameState
     {
-        // [XmlElement(IsNullable = true)]
-        // [XmlArray(IsNullable = true)]
-        public List<Leader> leaders = new();
-
-        // [XmlArray(IsNullable = true)]
-        public List<ShipClass> shipClasses = new();
-        // public List<ShipLog> shipLogs = new() { new() };
-
-        // [XmlArray(IsNullable = true)]
-        public List<NamedShip> namedShips = new();
-
-        public List<ShipLog> shipLogs = new();
-        // public List<ShipGroup> rootShipGroups = new();
         public List<ShipGroup> shipGroups = new();
         public ScenarioState scenarioState = new();
         public List<LaunchedTorpedo> launchedTorpedos = new();
@@ -79,80 +67,40 @@ namespace NavalCombatCore
             Instance.shipGroupsChanged?.Invoke(Instance, Instance.shipGroups);
         }
 
-        public void ResetAndRegisterAll()
+        public override void ResetAndRegisterAll()
         {
-            EntityManager.Instance.Reset();
+            // EntityManager.Instance.Reset();
 
-            foreach (var leader in leaders)
-            {
-                EntityManager.Instance.Register(leader, null);
-            }
-            foreach (var shipClasses in shipClasses)
-            {
-                EntityManager.Instance.Register(shipClasses, null);
-            }
-            foreach (var namedShip in namedShips)
-            {
-                EntityManager.Instance.Register(namedShip, null);
-            }
-            foreach (var shipLog in shipLogs)
-            {
-                EntityManager.Instance.Register(shipLog, null);
-            }
+            // foreach (var leader in leaders)
+            // {
+            //     EntityManager.Instance.Register(leader, null);
+            // }
+            // foreach (var shipClasses in shipClasses)
+            // {
+            //     EntityManager.Instance.Register(shipClasses, null);
+            // }
+            // foreach (var namedShip in namedShips)
+            // {
+            //     EntityManager.Instance.Register(namedShip, null);
+            // }
+            // foreach (var shipLog in shipLogs)
+            // {
+            //     EntityManager.Instance.Register(shipLog, null);
+            // }
+
+            base.ResetAndRegisterAll();
+
             foreach (var shipGroup in shipGroups)
             {
                 EntityManager.Instance.Register(shipGroup, null);
                 // ResetAndRegisterAllShipGroup(shipGroup);
             }
-        }
 
-        public string LeadersToXML()
-        {
-            return XmlUtils.ToXML(leaders);
-        }
-
-        public void LeadersFromXML(string xml)
-        {
-            leaders = XmlUtils.FromXML<List<Leader>>(xml);
-
-            // ResetAndRegisterAll();
-        }
-
-        public string ShipClassesToXML()
-        {
-            var serializedXml = XmlUtils.ToXML(shipClasses);
-            return serializedXml;
-        }
-
-        public void ShipClassesFromXML(string xml)
-        {
-            shipClasses = XmlUtils.FromXML<List<ShipClass>>(xml);
-
-            // ResetAndRegisterAll();
-        }
-
-        public string NamedShipsToXML()
-        {
-            return XmlUtils.ToXML(namedShips);
-        }
-
-        public void NamedShipsFromXML(string xml)
-        {
-            namedShips = XmlUtils.FromXML<List<NamedShip>>(xml);
-
-            // ResetAndRegisterAll();
-        }
-
-        public string ShipLogsToXML()
-        {
-            return XmlUtils.ToXML(shipLogs);
-        }
-
-        public void ShipLogsFromXML(string xml)
-        {
-            shipLogs = XmlUtils.FromXML<List<ShipLog>>(xml);
-
-            // ResetAndRegisterAll();
+            // Since currently no one is referencing torpedo so it's not necessary.
+            foreach (var torpedo in launchedTorpedos)
+            {
+                EntityManager.Instance.Register(torpedo, null);
+            }
         }
 
         public string ShipGroupsToXML()

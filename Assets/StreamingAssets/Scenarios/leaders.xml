@@ -572,4 +572,147 @@
   <traits />
   <objectId>e5a097a6-836a-4d9a-a60f-181218da398e</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Li Hongzhang</english>
+   <japanese>李鴻章</japanese>
+   <chineseSimplified>李鸿章</chineseSimplified>
+  </name>
+  <portraitCode>Li_Hongzhang</portraitCode>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>AboveAverage</landStrategic>
+  <landOperational>AboveAverage</landOperational>
+  <landTactical>AboveAverage</landTactical>
+  <traits />
+  <objectId>f24ac743-e528-4c85-82d4-f089c4cc189c</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Yulu</english>
+   <japanese>裕禄</japanese>
+   <chineseSimplified>裕禄</chineseSimplified>
+  </name>
+  <portraitCode>Yulu</portraitCode>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <objectId>76615ad8-573c-44d8-b405-a7e1af4af893</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Furun</english>
+   <japanese>福潤</japanese>
+   <chineseSimplified>福润</chineseSimplified>
+  </name>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>56b856ce-8f54-4441-a5cd-9af4897dc301</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Li Bingheng</english>
+   <japanese>李秉衡</japanese>
+   <chineseSimplified>李秉衡</chineseSimplified>
+  </name>
+  <portraitCode>Li_Bingheng</portraitCode>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>BarelyCompetent</landOperational>
+  <landTactical>BarelyCompetent</landTactical>
+  <traits />
+  <objectId>bb4f86ad-eebd-424f-a6b1-68ebc7ebfbb5</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Jingxin</english>
+   <japanese>敬信</japanese>
+   <chineseSimplified>敬信</chineseSimplified>
+  </name>
+  <portraitCode />
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>c440758b-a34b-46e0-9dee-2340321f5636</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Sun Yuwen</english>
+   <japanese>孫毓汶</japanese>
+   <chineseSimplified>孙毓汶</chineseSimplified>
+  </name>
+  <portraitCode>Sun_Yuwen</portraitCode>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>c91a7740-8806-4c3a-bf9a-5a5598500a2c</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Yikuang</english>
+   <japanese>奕劻</japanese>
+   <chineseSimplified>奕劻</chineseSimplified>
+  </name>
+  <portraitCode>Yikuang</portraitCode>
+  <navalStrategic>BarelyCompetent</navalStrategic>
+  <navalOperational>BarelyCompetent</navalOperational>
+  <navalTactical>BarelyCompetent</navalTactical>
+  <landStrategic>BarelyCompetent</landStrategic>
+  <landOperational>BarelyCompetent</landOperational>
+  <landTactical>BarelyCompetent</landTactical>
+  <traits />
+  <objectId>080bc4c5-ab61-49f7-bccc-4658a39d4290</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Liu Kunyi</english>
+   <japanese>劉坤一</japanese>
+   <chineseSimplified>刘坤一</chineseSimplified>
+  </name>
+  <portraitCode>Liu_Kunyi</portraitCode>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>3cc91c11-83aa-4474-a41d-4ca2e1ba03b7</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Okazawa Kuwashi</english>
+   <japanese>岡沢精</japanese>
+   <chineseSimplified>冈泽精</chineseSimplified>
+  </name>
+  <portraitCode>Okazawa_Kuwashi</portraitCode>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>07b1845e-a293-416c-9da2-8bcb7f71663b</objectId>
+ </Leader>
 </ArrayOfLeader>

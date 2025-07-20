@@ -308,9 +308,53 @@
      <objectId>e5a097a6-836a-4d9a-a60f-181218da398e</objectId>
     </ministersOfTheNavy>
    </ministryOfTheNavy>
-   <imperialGeneralHeadquarters />
+   <imperialGeneralHeadquarters>
+    <aideDeCampToTheEmperor>
+     <objectId>07b1845e-a293-416c-9da2-8bcb7f71663b</objectId>
+    </aideDeCampToTheEmperor>
+    <directorGeneralOfLogistics>
+     <objectId>95639867-b7d4-4494-a8f2-de417c614f41</objectId>
+    </directorGeneralOfLogistics>
+   </imperialGeneralHeadquarters>
   </japaneseHighCommand>
-  <chineseHighCommand />
+  <chineseHighCommand>
+   <beiyangLocal>
+    <beiyangMinister>
+     <objectId>f24ac743-e528-4c85-82d4-f089c4cc189c</objectId>
+    </beiyangMinister>
+    <viceroyOfZhili>
+     <objectId>f24ac743-e528-4c85-82d4-f089c4cc189c</objectId>
+    </viceroyOfZhili>
+    <generalOfFengTian>
+     <objectId>76615ad8-573c-44d8-b405-a7e1af4af893</objectId>
+    </generalOfFengTian>
+    <governorOfShandong>
+     <objectId>56b856ce-8f54-4441-a5cd-9af4897dc301</objectId>
+    </governorOfShandong>
+    <admiralOfTheBeiyangFleet>
+     <objectId>18963af7-1163-4323-9421-9f2421c9fee1</objectId>
+    </admiralOfTheBeiyangFleet>
+   </beiyangLocal>
+   <ministryOfWar>
+    <ministerOfWarManchu>
+     <objectId>c440758b-a34b-46e0-9dee-2340321f5636</objectId>
+    </ministerOfWarManchu>
+    <ministerOfWarHan>
+     <objectId>c91a7740-8806-4c3a-bf9a-5a5598500a2c</objectId>
+    </ministerOfWarHan>
+   </ministryOfWar>
+   <navalMinistry>
+    <grandMinisterOfTheNavy>
+     <objectId>080bc4c5-ab61-49f7-bccc-4658a39d4290</objectId>
+    </grandMinisterOfTheNavy>
+    <associateMinisterOfTheNavy>
+     <objectId>f24ac743-e528-4c85-82d4-f089c4cc189c</objectId>
+    </associateMinisterOfTheNavy>
+    <assistantMinisterOfTheNavy>
+     <objectId>3cc91c11-83aa-4474-a41d-4ca2e1ba03b7</objectId>
+    </assistantMinisterOfTheNavy>
+   </navalMinistry>
+  </chineseHighCommand>
  </highCommand>
  <serializedCells>
   <width>60</width>

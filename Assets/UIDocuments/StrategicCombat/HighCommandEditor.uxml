@@ -3,39 +3,90 @@
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement data-source-type="StrategicGameManager, Assembly-CSharp" data-source-path="gameState.highCommand" class="panel" style="flex-grow: 1;">
         <ui:Label text="High Command" class="title" />
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
-            <ui:VisualElement data-source-path="japaneseHighCommand" style="flex-grow: 1; flex-basis: 100px;">
-                <ui:VisualElement data-source-path="staffOffice" class="border-box">
-                    <ui:Label text="Staff Office/参謀本部" name="DepartmentName" />
-                    <ui:Instance template="DepartmentPosition" data-source-path="chiefOfStaff" />
-                    <ui:Instance template="DepartmentPosition" data-source-path="deputyChief">
-                        <AttributeOverrides element-name="DepartmentPositionName" text="Deputy chief / 参謀副長" />
-                    </ui:Instance>
+        <ui:ScrollView>
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
+                <ui:VisualElement data-source-path="japaneseHighCommand" style="flex-grow: 1; flex-basis: 100px;">
+                    <ui:Label text="Japan High Command" />
+                    <ui:VisualElement data-source-path="staffOffice" class="border-box">
+                        <ui:Label text="Staff Office/参謀本部" name="DepartmentName" />
+                        <ui:Instance template="DepartmentPosition" data-source-path="chiefOfStaff" />
+                        <ui:Instance template="DepartmentPosition" data-source-path="deputyChief">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Deputy chief / 参謀副長" />
+                        </ui:Instance>
+                    </ui:VisualElement>
+                    <ui:VisualElement data-source-path="imperialJapaneseNavyGeneralStaff" class="border-box">
+                        <ui:Label text="Imperial Japanese Navy General Staff/軍令部" />
+                        <ui:Instance template="DepartmentPosition" data-source-path="chiefOfTheGeneralStaff">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Chief of the General Staff / 軍令部総長" />
+                        </ui:Instance>
+                    </ui:VisualElement>
+                    <ui:VisualElement data-source-path="armyMinistry" class="border-box">
+                        <ui:Label text="Army Ministry/陸軍省" />
+                        <ui:Instance template="DepartmentPosition" data-source-path="ministersOfTheArmy">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Ministers of the Army / 陸軍大臣" />
+                        </ui:Instance>
+                    </ui:VisualElement>
+                    <ui:VisualElement data-source-path="ministryOfTheNavy" class="border-box">
+                        <ui:Label text="Ministry of the Navy/海軍省" />
+                        <ui:Instance template="DepartmentPosition" data-source-path="ministersOfTheNavy">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Ministers of the Navy / 海軍大臣" />
+                        </ui:Instance>
+                    </ui:VisualElement>
+                    <ui:VisualElement data-source-path="imperialGeneralHeadquarters" class="border-box">
+                        <ui:Label text="Imperial General Headquarters/大本営" />
+                        <ui:Label text="(The above are included in the GHQ and not be listed here again)" />
+                        <ui:Instance template="DepartmentPosition" data-source-path="aideDeCampToTheEmperor">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Aide-De-Camp to the Emperor / 侍従武官長" />
+                        </ui:Instance>
+                        <ui:Instance template="DepartmentPosition" data-source-path="directorGeneralOfLogistics">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Director-General of Logistics / 兵站総監" />
+                        </ui:Instance>
+                    </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement data-source-path="imperialJapaneseNavyGeneralStaff" class="border-box">
-                    <ui:Label text="Imperial Japanese Navy General Staff/軍令部" />
-                    <ui:Instance template="DepartmentPosition" data-source-path="chiefOfTheGeneralStaff">
-                        <AttributeOverrides element-name="DepartmentPositionName" text="Chief of the General Staff / 軍令部総長" />
-                    </ui:Instance>
-                </ui:VisualElement>
-                <ui:VisualElement data-source-path="armyMinistry" class="border-box">
-                    <ui:Label text="Army Ministry/陸軍省" />
-                    <ui:Instance template="DepartmentPosition" data-source-path="ministersOfTheArmy">
-                        <AttributeOverrides element-name="DepartmentPositionName" text="Ministers of the Army / 陸軍大臣" />
-                    </ui:Instance>
-                </ui:VisualElement>
-                <ui:VisualElement data-source-path="ministryOfTheNavy" class="border-box">
-                    <ui:Label text="Ministry of the Navy/海軍省" />
-                    <ui:Instance template="DepartmentPosition" data-source-path="ministersOfTheNavy">
-                        <AttributeOverrides element-name="DepartmentPositionName" text="Ministers of the Navy / 海軍大臣" />
-                    </ui:Instance>
-                </ui:VisualElement>
-                <ui:VisualElement data-source-path="imperialGeneralHeadquarters" class="border-box">
-                    <ui:Label text="Imperial General Headquarters/大本営" />
+                <ui:VisualElement data-source-path="chineseHighCommand" style="flex-grow: 1; flex-basis: 100px;">
+                    <ui:Label text="China High Command" />
+                    <ui:VisualElement data-source-path="beiyangLocal" class="border-box">
+                        <ui:Label text="Beiyang / 北洋" />
+                        <ui:Instance template="DepartmentPosition" data-source-path="beiyangMinister">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Beiyang Minister  / 北洋大臣" />
+                        </ui:Instance>
+                        <ui:Instance template="DepartmentPosition" data-source-path="viceroyOfZhili">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Viceroy of Zhili / 直隶总督" />
+                        </ui:Instance>
+                        <ui:Instance template="DepartmentPosition" data-source-path="generalOfFengTian">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="General of Fengtian / 奉天将军" />
+                        </ui:Instance>
+                        <ui:Instance template="DepartmentPosition" data-source-path="governorOfShandong">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Governor of Shandong / 山东巡抚" />
+                        </ui:Instance>
+                        <ui:Instance template="DepartmentPosition" data-source-path="admiralOfTheBeiyangFleet">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Admiral of the Beiyang Fleet / 北洋水师提督" />
+                        </ui:Instance>
+                    </ui:VisualElement>
+                    <ui:VisualElement data-source-path="ministryOfWar" class="border-box">
+                        <ui:Label text="Ministry of War / 兵部" />
+                        <ui:Instance template="DepartmentPosition" data-source-path="ministerOfWarManchu">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Minister of War (Manchu) / 兵部尚书 (满缺)" />
+                        </ui:Instance>
+                        <ui:Instance template="DepartmentPosition" data-source-path="ministerOfWarHan">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Minister of War (Han) / 兵部尚书 (汉缺)" />
+                        </ui:Instance>
+                    </ui:VisualElement>
+                    <ui:VisualElement data-source-path="navalMinistry" class="border-box">
+                        <ui:Label text="Naval Ministry / 总理海军事务衙门" />
+                        <ui:Instance template="DepartmentPosition" data-source-path="grandMinisterOfTheNavy">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Grand Minister of the Navy / 总理大臣" />
+                        </ui:Instance>
+                        <ui:Instance template="DepartmentPosition" data-source-path="associateMinisterOfTheNavy">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Associate Minister of the Navy / 会办大臣" />
+                        </ui:Instance>
+                        <ui:Instance template="DepartmentPosition" data-source-path="assistantMinisterOfTheNavy">
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Assistant Minister of the Navy / 帮办大臣" />
+                        </ui:Instance>
+                    </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement data-source-path="chineseHighCommand" style="flex-grow: 1; flex-basis: 100px;" />
-        </ui:VisualElement>
+        </ui:ScrollView>
         <ui:Button text="Confirm" name="ConfirmButton" />
     </ui:VisualElement>
 </ui:UXML>

@@ -122,7 +122,7 @@
 }
 
 .link-cursor {
-    cursor: url("project://database/Assets/Textures/signal_flag.png?fileID=2800000&guid=872ba5279dbe95746b30f77407926404&type=3#signal_flag");
+    cursor: url("project://database/Assets/Textures/NavalCombat/signal_flag.png?fileID=2800000&guid=872ba5279dbe95746b30f77407926404&type=3#signal_flag");
 }
 
 .unity-enum-field__text {
@@ -149,4 +149,19 @@
 
 .unity-float-field {
     min-width: 35px;
+}
+
+.border-box {
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }

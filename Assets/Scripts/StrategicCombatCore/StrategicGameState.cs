@@ -57,6 +57,8 @@ namespace StrategicCombatCore
 
         public List<StrategicLocationLabel> labels = new();
 
+        public HighCommand highCommand = new();
+
         public event EventHandler mapRebuilt;
         public event EventHandler<(int, int)> mapCellUpdated;
         public event EventHandler edgeFeatureUpdated;
@@ -105,6 +107,7 @@ namespace StrategicCombatCore
             // terrainMatrix = newInstance.terrainMatrix;
             cellMatrix = newInstance.cellMatrix;
             labels = newInstance.labels;
+            highCommand = newInstance.highCommand;
 
             mapRebuilt?.Invoke(this, EventArgs.Empty);
             edgeFeatureUpdated?.Invoke(this, EventArgs.Empty);

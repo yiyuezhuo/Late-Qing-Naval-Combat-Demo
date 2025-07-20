@@ -29,7 +29,7 @@ public enum StrategicMapEditMode
 public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 {
     [CreateProperty]
-    public StrategicGameState navalGameState => StrategicGameState.Instance;
+    public StrategicGameState gameState => StrategicGameState.Instance;
 
     public StrategicMapEditMode mapEditMode;
     public TerrainType currentTerrainType;

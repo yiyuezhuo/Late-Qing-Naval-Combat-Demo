@@ -200,7 +200,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
-    public void PopupLeaderSelectorDialogForSpecifyForGroup()
+    public void PopupLeaderSelectorDialogForCallback(Action<Leader> callback)
     {
         var tempDialog = new TempDialog()
         {
@@ -215,68 +215,120 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
             var leadersListView = el.Q<ListView>("LeadersListView");
             var leader = leadersListView.selectedItem as Leader;
+
+            callback(leader);
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupLeaderSelectorDialogForSpecifyForGroup()
+    {
+        // var tempDialog = new TempDialog()
+        // {
+        //     root = root,
+        //     template = leaderSelectorDocument,
+        //     templateDataSource = SuperGameState.Instance // GameManager.Instance
+        // };
+
+        // tempDialog.onConfirmed += (sender, el) =>
+        // {
+        //     Debug.Log("tempDialog.onConfirmed");
+
+        //     var leadersListView = el.Q<ListView>("LeadersListView");
+        //     var leader = leadersListView.selectedItem as Leader;
+        //     var selectedGroup = OOBEditor.Instance.currentSelectedShipGroup;
+
+        //     if (leader != null && selectedGroup != null)
+        //     {
+        //         selectedGroup.leaderObjectId = leader.objectId;
+        //     }
+        // };
+
+        // tempDialog.Popup();
+
+        PopupLeaderSelectorDialogForCallback(leader =>
+        {
             var selectedGroup = OOBEditor.Instance.currentSelectedShipGroup;
 
             if (leader != null && selectedGroup != null)
             {
                 selectedGroup.leaderObjectId = leader.objectId;
             }
-        };
-
-        tempDialog.Popup();
+        });
     }
 
     public void PopupLeaderSelectorDialogForSpecifyForShipLog()
     {
-        var tempDialog = new TempDialog()
-        {
-            root = root,
-            template = leaderSelectorDocument,
-            templateDataSource = SuperGameState.Instance // GameManager.Instance
-        };
+        // var tempDialog = new TempDialog()
+        // {
+        //     root = root,
+        //     template = leaderSelectorDocument,
+        //     templateDataSource = SuperGameState.Instance // GameManager.Instance
+        // };
 
-        tempDialog.onConfirmed += (sender, el) =>
-        {
-            Debug.Log("tempDialog.onConfirmed");
+        // tempDialog.onConfirmed += (sender, el) =>
+        // {
+        //     Debug.Log("tempDialog.onConfirmed");
 
-            var leadersListView = el.Q<ListView>("LeadersListView");
-            var leader = leadersListView.selectedItem as Leader;
+        //     var leadersListView = el.Q<ListView>("LeadersListView");
+        //     var leader = leadersListView.selectedItem as Leader;
+        //     var selectedShipLog = GameManager.Instance.selectedShipLog;
+
+        //     if (leader != null && selectedShipLog != null)
+        //     {
+        //         selectedShipLog.leaderObjectId = leader.objectId;
+        //     }
+        // };
+
+        // tempDialog.Popup();
+
+        PopupLeaderSelectorDialogForCallback(leader =>
+        {
             var selectedShipLog = GameManager.Instance.selectedShipLog;
 
             if (leader != null && selectedShipLog != null)
             {
                 selectedShipLog.leaderObjectId = leader.objectId;
             }
-        };
-
-        tempDialog.Popup();
+        });
     }
 
     public void PopupLeaderSelectorDialogForNamedShip()
     {
-        var tempDialog = new TempDialog()
-        {
-            root = root,
-            template = leaderSelectorDocument,
-            templateDataSource = SuperGameState.Instance // GameManager.Instance
-        };
+        // var tempDialog = new TempDialog()
+        // {
+        //     root = root,
+        //     template = leaderSelectorDocument,
+        //     templateDataSource = SuperGameState.Instance // GameManager.Instance
+        // };
 
-        tempDialog.onConfirmed += (sender, el) =>
-        {
-            Debug.Log("tempDialog.onConfirmed");
+        // tempDialog.onConfirmed += (sender, el) =>
+        // {
+        //     Debug.Log("tempDialog.onConfirmed");
 
-            var leadersListView = el.Q<ListView>("LeadersListView");
-            var leader = leadersListView.selectedItem as Leader;
-            // var selectedNamedShip = GameManager.Instance.selectedNamedShip;
+        //     var leadersListView = el.Q<ListView>("LeadersListView");
+        //     var leader = leadersListView.selectedItem as Leader;
+        //     // var selectedNamedShip = GameManager.Instance.selectedNamedShip;
+        //     var selectedNamedShip = NamedShipEditor.Instance.selectedNamedShip;
+
+        //     if (leader != null && selectedNamedShip != null)
+        //     {
+        //         selectedNamedShip.defaultLeaderObjectId = leader.objectId;
+        //     }
+        // };
+
+        // tempDialog.Popup();
+
+        PopupLeaderSelectorDialogForCallback(leader =>
+        {
             var selectedNamedShip = NamedShipEditor.Instance.selectedNamedShip;
 
             if (leader != null && selectedNamedShip != null)
             {
                 selectedNamedShip.defaultLeaderObjectId = leader.objectId;
             }
-        };
-
-        tempDialog.Popup();
+        });
     }
 
     public void PopupShipClassSelectorDialogForNamedShip()

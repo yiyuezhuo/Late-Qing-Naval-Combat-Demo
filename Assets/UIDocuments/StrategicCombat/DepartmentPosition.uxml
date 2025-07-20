@@ -1,0 +1,18 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="DepartmentPosition" data-source-type="StrategicCombatCore.DepartmentPosition, Assembly-CSharp" style="flex-direction: row;">
+        <ui:VisualElement name="LeaderBackground" style="width: 80px; -unity-background-scale-mode: scale-to-fit;">
+            <Bindings>
+                <ui:DataBinding property="style.backgroundImage" data-source-path="objectId" binding-mode="ToTarget" source-to-ui-converters="string (Leader objectID) =&gt; StyleBackground" />
+            </Bindings>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:Label text="Chief of Staff / 参謀総長" name="DepartmentPositionName" />
+            <ui:Label text="Leader Name" name="LeaderName">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="leaderName" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="No Effect" name="LeaderEffect" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

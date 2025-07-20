@@ -11,6 +11,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>a78127f5-61f9-450b-8013-1f57bfbaef42</objectId>
  </Leader>
@@ -24,6 +27,9 @@
   <navalStrategic>AboveAverage</navalStrategic>
   <navalOperational>Gifted</navalOperational>
   <navalTactical>AboveAverage</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>43bfbde8-70e0-4d42-8122-3dc082557429</objectId>
  </Leader>
@@ -37,6 +43,9 @@
   <navalStrategic>Gifted</navalStrategic>
   <navalOperational>Outstanding</navalOperational>
   <navalTactical>AboveAverage</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>bbdc13c1-a909-411c-b949-ad82485ab108</objectId>
  </Leader>
@@ -50,6 +59,9 @@
   <navalStrategic>BarelyCompetent</navalStrategic>
   <navalOperational>BarelyCompetent</navalOperational>
   <navalTactical>BarelyCompetent</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits>
    <LeaderTrait>Coward</LeaderTrait>
   </traits>
@@ -65,6 +77,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>f3e417c3-89d7-4a71-a8b8-84c408d0cb05</objectId>
  </Leader>
@@ -78,6 +93,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>ee91367d-d291-4bad-81f1-b4aa5b1d5bd0</objectId>
  </Leader>
@@ -91,6 +109,9 @@
   <navalStrategic>Average</navalStrategic>
   <navalOperational>Average</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>67623f92-366e-4f7f-a31e-a988494d9bdf</objectId>
  </Leader>
@@ -104,6 +125,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>571f00c5-74c3-42c7-bae4-be54f44d2b76</objectId>
  </Leader>
@@ -117,6 +141,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>96b1f018-4a92-4ef0-81b1-b6b3dc1ff3ed</objectId>
  </Leader>
@@ -130,6 +157,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>2038e8d1-4ca4-4719-9a65-eea886fd0d2c</objectId>
  </Leader>
@@ -143,6 +173,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits>
    <LeaderTrait>Brave</LeaderTrait>
   </traits>
@@ -158,6 +191,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>ad05fef6-dae8-457e-9f31-e7166a09aede</objectId>
  </Leader>
@@ -171,6 +207,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>19df649e-5f8a-4c29-b42a-936d15b4c8fe</objectId>
  </Leader>
@@ -184,6 +223,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>a30c7e56-bf11-44b2-8f99-febd99701a42</objectId>
  </Leader>
@@ -197,6 +239,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits>
    <LeaderTrait>Coward</LeaderTrait>
   </traits>
@@ -212,6 +257,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>cbc0d169-122c-4c9a-8d48-b189663f0ca7</objectId>
  </Leader>
@@ -225,6 +273,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>8e9f6ed9-97a9-48c3-8cee-0a2c79c272b3</objectId>
  </Leader>
@@ -238,6 +289,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>c7c3eb89-2eee-49f2-bd59-4732be768140</objectId>
  </Leader>
@@ -251,6 +305,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>a190c470-bd54-4f67-afe8-c4113c7c3c98</objectId>
  </Leader>
@@ -264,6 +321,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>56106ddf-e7e5-4a8e-b440-c8c01054485d</objectId>
  </Leader>
@@ -277,6 +337,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>5b4492e9-81be-4d24-be9f-907a98487fa3</objectId>
  </Leader>
@@ -290,6 +353,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>8154d513-73ac-4ac8-b33a-cb06872ce875</objectId>
  </Leader>
@@ -303,6 +369,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>46a1ffe4-7a2a-43b0-a44c-d29f71c34629</objectId>
  </Leader>
@@ -316,6 +385,9 @@
   <navalStrategic>Average</navalStrategic>
   <navalOperational>Average</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits>
    <LeaderTrait>NotFromNavalBackground</LeaderTrait>
    <LeaderTrait>ExperiencedNavalBureaucrat</LeaderTrait>
@@ -332,6 +404,9 @@
   <navalStrategic>AboveAverage</navalStrategic>
   <navalOperational>AboveAverage</navalOperational>
   <navalTactical>AboveAverage</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</objectId>
  </Leader>
@@ -345,6 +420,9 @@
   <navalStrategic>Average</navalStrategic>
   <navalOperational>Average</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>a77bd722-8233-4d1c-a65c-b712c07297d0</objectId>
  </Leader>
@@ -358,6 +436,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>8acb59aa-d09c-4b71-b42e-ab3bc111da1b</objectId>
  </Leader>
@@ -371,6 +452,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>04b9b1b0-330e-4737-a16e-a6038eeb252d</objectId>
  </Leader>
@@ -384,6 +468,9 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits />
   <objectId>0ffb8288-564a-4a0b-8973-e2d8d3610d21</objectId>
  </Leader>
@@ -397,9 +484,92 @@
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
   <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
   <traits>
    <LeaderTrait>Coward</LeaderTrait>
   </traits>
   <objectId>dd09a700-93ff-4be0-b68e-06922f8d0098</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Arisugawa Taruhito</english>
+   <japanese>有栖川宮熾仁</japanese>
+   <chineseSimplified>有栖川宫炽仁</chineseSimplified>
+  </name>
+  <portraitCode>Arisugawa_Taruhito</portraitCode>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Average</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <objectId>c49be3d3-e058-4a2e-b0a7-c6bd70956afd</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Kawakami Soroku</english>
+   <japanese>川上操六</japanese>
+   <chineseSimplified>川上操六</chineseSimplified>
+  </name>
+  <portraitCode>Kawakami_Soroku</portraitCode>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Average</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <objectId>95639867-b7d4-4494-a8f2-de417c614f41</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Kabayama Sukenori</english>
+   <japanese>樺山資紀</japanese>
+   <chineseSimplified>桦山资纪</chineseSimplified>
+  </name>
+  <portraitCode>Kabayama_Sukenori</portraitCode>
+  <navalStrategic>Average</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>31837e7c-4f0d-492d-bae1-d05617a22da9</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ōyama Iwao</english>
+   <japanese>大山巌</japanese>
+   <chineseSimplified>大山岩</chineseSimplified>
+  </name>
+  <portraitCode>Ōyama_Iwao</portraitCode>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Average</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <objectId>768c74cb-4117-4060-8c01-1ac6a42667d0</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Saigō Jūdō</english>
+   <japanese>西郷従道</japanese>
+   <chineseSimplified>西乡从道</chineseSimplified>
+  </name>
+  <portraitCode>Saigō_Jūdō</portraitCode>
+  <navalStrategic>Average</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>e5a097a6-836a-4d9a-a60f-181218da398e</objectId>
  </Leader>
 </ArrayOfLeader>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-16"?>
 <StrategicGameState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <shipLogs />
  <labels>
   <StrategicLocationLabel>
    <x>14</x>
@@ -282,6 +283,35 @@
    </name>
   </StrategicLocationLabel>
  </labels>
+ <highCommand>
+  <japaneseHighCommand>
+   <staffOffice>
+    <chiefOfStaff>
+     <objectId>c49be3d3-e058-4a2e-b0a7-c6bd70956afd</objectId>
+    </chiefOfStaff>
+    <deputyChief>
+     <objectId>95639867-b7d4-4494-a8f2-de417c614f41</objectId>
+    </deputyChief>
+   </staffOffice>
+   <imperialJapaneseNavyGeneralStaff>
+    <chiefOfTheGeneralStaff>
+     <objectId>31837e7c-4f0d-492d-bae1-d05617a22da9</objectId>
+    </chiefOfTheGeneralStaff>
+   </imperialJapaneseNavyGeneralStaff>
+   <armyMinistry>
+    <ministersOfTheArmy>
+     <objectId>768c74cb-4117-4060-8c01-1ac6a42667d0</objectId>
+    </ministersOfTheArmy>
+   </armyMinistry>
+   <ministryOfTheNavy>
+    <ministersOfTheNavy>
+     <objectId>e5a097a6-836a-4d9a-a60f-181218da398e</objectId>
+    </ministersOfTheNavy>
+   </ministryOfTheNavy>
+   <imperialGeneralHeadquarters />
+  </japaneseHighCommand>
+  <chineseHighCommand />
+ </highCommand>
  <serializedCells>
   <width>60</width>
   <height>40</height>

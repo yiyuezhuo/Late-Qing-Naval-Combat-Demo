@@ -66,6 +66,7 @@
                     <ui:Button text="Ship Class" name="ClassEditorButton" />
                     <ui:Button text="Named Ship" name="NamedShipEditorButton" />
                     <ui:Button text="Ship Log" name="ShipLogEditorButton" />
+                    <ui:Button text="High Command" name="HighCommandEditorButton" />
                 </ui:VisualElement>
             </ui:Tab>
         </ui:TabView>

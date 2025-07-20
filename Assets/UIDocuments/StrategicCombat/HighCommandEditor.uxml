@@ -1,0 +1,41 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="DepartmentPosition" src="project://database/Assets/UIDocuments/StrategicCombat/DepartmentPosition.uxml?fileID=9197481963319205126&amp;guid=c57c3ca88b3307e4683f8da2af67a3cc&amp;type=3#DepartmentPosition" />
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement data-source-type="StrategicGameManager, Assembly-CSharp" data-source-path="gameState.highCommand" class="panel" style="flex-grow: 1;">
+        <ui:Label text="High Command" class="title" />
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
+            <ui:VisualElement data-source-path="japaneseHighCommand" style="flex-grow: 1; flex-basis: 100px;">
+                <ui:VisualElement data-source-path="staffOffice" class="border-box">
+                    <ui:Label text="Staff Office/参謀本部" name="DepartmentName" />
+                    <ui:Instance template="DepartmentPosition" data-source-path="chiefOfStaff" />
+                    <ui:Instance template="DepartmentPosition" data-source-path="deputyChief">
+                        <AttributeOverrides element-name="DepartmentPositionName" text="Deputy chief / 参謀副長" />
+                    </ui:Instance>
+                </ui:VisualElement>
+                <ui:VisualElement data-source-path="imperialJapaneseNavyGeneralStaff" class="border-box">
+                    <ui:Label text="Imperial Japanese Navy General Staff/軍令部" />
+                    <ui:Instance template="DepartmentPosition" data-source-path="chiefOfTheGeneralStaff">
+                        <AttributeOverrides element-name="DepartmentPositionName" text="Chief of the General Staff / 軍令部総長" />
+                    </ui:Instance>
+                </ui:VisualElement>
+                <ui:VisualElement data-source-path="armyMinistry" class="border-box">
+                    <ui:Label text="Army Ministry/陸軍省" />
+                    <ui:Instance template="DepartmentPosition" data-source-path="ministersOfTheArmy">
+                        <AttributeOverrides element-name="DepartmentPositionName" text="Ministers of the Army / 陸軍大臣" />
+                    </ui:Instance>
+                </ui:VisualElement>
+                <ui:VisualElement data-source-path="ministryOfTheNavy" class="border-box">
+                    <ui:Label text="Ministry of the Navy/海軍省" />
+                    <ui:Instance template="DepartmentPosition" data-source-path="ministersOfTheNavy">
+                        <AttributeOverrides element-name="DepartmentPositionName" text="Ministers of the Navy / 海軍大臣" />
+                    </ui:Instance>
+                </ui:VisualElement>
+                <ui:VisualElement data-source-path="imperialGeneralHeadquarters" class="border-box">
+                    <ui:Label text="Imperial General Headquarters/大本営" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement data-source-path="chineseHighCommand" style="flex-grow: 1; flex-basis: 100px;" />
+        </ui:VisualElement>
+        <ui:Button text="Confirm" name="ConfirmButton" />
+    </ui:VisualElement>
+</ui:UXML>

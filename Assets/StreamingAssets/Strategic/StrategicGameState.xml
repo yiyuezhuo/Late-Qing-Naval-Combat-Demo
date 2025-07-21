@@ -356,6 +356,152 @@
    </navalMinistry>
   </chineseHighCommand>
  </highCommand>
+ <landUnits>
+  <LandUnit>
+   <name>
+    <english>Sheng Med Cen</english>
+    <chineseSimplified>盛军中军正营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>1a224c7c-18cf-446f-90b3-551568f435b2</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng Med Sub</english>
+    <chineseSimplified>盛军中军副营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>75dde615-d1a6-4440-8fe3-99de5c6f14c7</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng Med Rgt</english>
+    <chineseSimplified>盛军中军右营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>c62f419b-643c-44e6-a651-c807b19c3bf0</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng Med Aft</english>
+    <chineseSimplified>盛军中军后营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>20979489-2a2f-4dbc-82e0-bc959243fdad</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng Med CZ</english>
+    <chineseSimplified>盛军中军传字正营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>44acbf65-286d-44a8-b75e-b9e403ede455</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng Lft Cen</english>
+    <chineseSimplified>盛军左军正营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>0a986b15-619a-4f21-82e8-1c7b19131d1f</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng Lft Lft</english>
+    <chineseSimplified>盛军左军左营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>0bd7ec00-7cda-401d-ab6a-358fbbf7d504</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng Art Guard</english>
+    <chineseSimplified>盛军亲军炮队营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>f40450f6-b028-4d76-a038-2a72f27660dc</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng Rgt Cen</english>
+    <chineseSimplified>盛军右军正营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>b6bf38a7-b85c-4b33-9da6-04ae02140758</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng Rgt Rgt</english>
+    <chineseSimplified>盛军右军右营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>d2bd16ab-cc21-46f1-82bc-238b918eb3e6</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng Rig Aft</english>
+    <chineseSimplified>盛军右军后营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>f54b7796-3727-46a2-b215-799cd588604a</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng Cav Guard</english>
+    <chineseSimplified>盛军亲兵马小队</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>279747b6-2f59-456d-88e1-66c664d207e2</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng Inf Guard</english>
+    <chineseSimplified>盛军亲兵步小队</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>3a5f2b15-bdfe-42f7-a1c9-3ce5364ffb53</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng New 1</english>
+    <chineseSimplified>盛军新编1营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>6c050d18-d5f1-479c-a34f-d0163c377590</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng New 2</english>
+    <chineseSimplified>盛军新编2营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>19f52aad-c996-4804-b1d9-a58dde32aed6</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng New 3</english>
+    <chineseSimplified>盛军新编3营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>4b921964-d592-406a-bd77-69febf0f8415</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng New 4</english>
+    <chineseSimplified>盛军新编4营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>4be6c875-d190-4ef7-8eae-b53996d23e1a</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sheng New 5</english>
+    <chineseSimplified>盛军新编5营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>4fb2c986-6b0e-4730-ad82-82734aae8604</objectId>
+  </LandUnit>
+ </landUnits>
  <serializedCells>
   <width>60</width>
   <height>40</height>

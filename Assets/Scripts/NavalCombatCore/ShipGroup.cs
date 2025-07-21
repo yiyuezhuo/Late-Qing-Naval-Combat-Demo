@@ -26,18 +26,19 @@ namespace NavalCombatCore
         // circularAndDiamond
     }
 
-    public enum GroupRole
-    {
-        General,
-        Screen,
-    }
+    // public enum GroupRole
+    // {
+    //     General,
+    //     Screen,
+    // }
 
-    public enum GroupController
-    {
-        Inherited, // Root Default Human (can be set in Preference?)
-        Manual, // Human
-        Automatic // AI
-    }
+    // Moved to Doctrine
+    // public enum GroupController
+    // {
+    //     Inherited, // Root Default Human (can be set in Preference?)
+    //     Manual, // Human
+    //     Automatic // AI
+    // }
 
     public interface IShipGroupMember : IObjectIdLabeled // Include ShipGroup and ShipLog at times.
     {

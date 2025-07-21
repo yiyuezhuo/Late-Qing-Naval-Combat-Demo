@@ -59,6 +59,8 @@ namespace StrategicCombatCore
 
         public HighCommand highCommand = new();
 
+        public List<LandUnit> landUnits = new();
+
         public event EventHandler mapRebuilt;
         public event EventHandler<(int, int)> mapCellUpdated;
         public event EventHandler edgeFeatureUpdated;
@@ -108,11 +110,11 @@ namespace StrategicCombatCore
             cellMatrix = newInstance.cellMatrix;
             labels = newInstance.labels;
             highCommand = newInstance.highCommand;
+            landUnits = newInstance.landUnits;
 
             mapRebuilt?.Invoke(this, EventArgs.Empty);
             edgeFeatureUpdated?.Invoke(this, EventArgs.Empty);
         }
-
 
         public void GenerateTerrainMatrix(int width, int height)
         {
@@ -140,6 +142,16 @@ namespace StrategicCombatCore
                         yield return (cell, neighbor, edgeDirection);
                     }
                 }
+            }
+        }
+
+        public override void ResetAndRegisterAll()
+        {
+            base.ResetAndRegisterAll();
+
+            foreach (var landUnit in landUnits)
+            {
+                EntityManager.Instance.Register(landUnit, null);
             }
         }
 

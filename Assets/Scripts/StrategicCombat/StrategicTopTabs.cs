@@ -63,6 +63,8 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         shipLogEditorButton.clicked += () => ShipLogEditor.Instance.Show();
 
         root.Q<Button>("HighCommandEditorButton").clicked += HighCommandEditor.Instance.Show;
+
+        root.Q<Button>("LandUnitEditorButton").clicked += LandUnitEditor.Instance.Show;
     }
 
     StrategicGameState DetachGameState(StrategicGameState _s, StreamingAssetReference sar)

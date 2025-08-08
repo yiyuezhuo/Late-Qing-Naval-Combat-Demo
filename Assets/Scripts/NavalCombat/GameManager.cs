@@ -117,7 +117,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         SuperGameState.Instance.currentGameMode = GameMode.Naval;
 
-        EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
+        // EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
 
         if (oneShotStartupFullState == null)
         {

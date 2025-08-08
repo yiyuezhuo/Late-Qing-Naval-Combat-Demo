@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
+
+using CoreUtils;
 
 namespace NavalCombatCore
 {
-    public class AbstractPrecalculationContext<T> : IDisposable where T: class, new()
+    public class AbstractPrecalculationContext<T> : IDisposable where T : class, new()
     {
         static Stack<T> stack = new();
 

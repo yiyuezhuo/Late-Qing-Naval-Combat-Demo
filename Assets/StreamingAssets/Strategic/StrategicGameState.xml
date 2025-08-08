@@ -282,6 +282,25 @@
     <chineseSimplified>四国</chineseSimplified>
    </name>
   </StrategicLocationLabel>
+  <StrategicLocationLabel>
+   <x>29</x>
+   <y>29</y>
+   <name>
+    <english>Pyongyang</english>
+    <japanese>平壌</japanese>
+    <chineseSimplified>平壤</chineseSimplified>
+   </name>
+  </StrategicLocationLabel>
+  <StrategicLocationLabel>
+   <x>31</x>
+   <y>27</y>
+   <name>
+    <english>Seonghwan</english>
+    <japanese>成歓</japanese>
+    <chineseSimplified>成欢</chineseSimplified>
+    <chineseTraditional>成歡</chineseTraditional>
+   </name>
+  </StrategicLocationLabel>
  </labels>
  <highCommand>
   <japaneseHighCommand>
@@ -356,6 +375,35 @@
    </navalMinistry>
   </chineseHighCommand>
  </highCommand>
+ <landUnitTemplates>
+  <LandUnitTemplate>
+   <name>
+    <english>IJA Infantry Battalion</english>
+    <japanese>日本歩兵大隊</japanese>
+    <chineseSimplified>日军步兵大队</chineseSimplified>
+   </name>
+   <size>Battalion</size>
+   <unitType>Infantry</unitType>
+   <strength>500</strength>
+   <guns>0</guns>
+   <firepowerKgPerMin>0</firepowerKgPerMin>
+   <targettingGain>10</targettingGain>
+   <rangeMeter>400</rangeMeter>
+   <moraleCoef>1</moraleCoef>
+   <densityStrengthPerSqMeter>0.1</densityStrengthPerSqMeter>
+   <assault>0</assault>
+   <ammoCoef>1</ammoCoef>
+   <rationCoef>1</rationCoef>
+   <weaponWeightKgPerStrength>0</weaponWeightKgPerStrength>
+   <carryingRationKg>0</carryingRationKg>
+   <carryingAmmoKg>0</carryingAmmoKg>
+   <isSupport>false</isSupport>
+   <strategicSpeedKmPerDay>0</strategicSpeedKmPerDay>
+   <operationalSpeedKmPerDay>0</operationalSpeedKmPerDay>
+   <tacticalSpeedMPerMin>0</tacticalSpeedMPerMin>
+   <objectId>ee66b675-29a8-4736-ab53-a95c7be5cb83</objectId>
+  </LandUnitTemplate>
+ </landUnitTemplates>
  <landUnits>
   <LandUnit>
    <name>
@@ -500,6 +548,30 @@
    </name>
    <stregnth>500</stregnth>
    <objectId>4fb2c986-6b0e-4730-ad82-82734aae8604</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Ming 1 Inf</english>
+    <chineseSimplified>铭军步1营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>fbcc1c30-266d-4c87-a768-70d2ea882363</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Ming 2 Inf</english>
+    <chineseSimplified>铭军步2营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>25082074-8a17-4adc-8e61-02a3b31d4599</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Ming 3 Inf</english>
+    <chineseSimplified>铭军步3营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>23f7d1fc-4e4a-4fea-a810-7a4bc6870c04</objectId>
   </LandUnit>
  </landUnits>
  <serializedCells>
@@ -1421,7 +1493,7 @@
    <Cell x="22" y="32" terrain="Field" country="General" roadsStr="1/3" />
    <Cell x="22" y="33" terrain="Field" country="General" />
    <Cell x="22" y="34" terrain="Clear" country="General" />
-   <Cell x="22" y="35" terrain="Field" country="General" roadsStr="4/2" />
+   <Cell x="22" y="35" terrain="Field" country="General" roadsStr="4/2/1" />
    <Cell x="22" y="36" terrain="Field" country="General" />
    <Cell x="22" y="37" terrain="Field" country="General" />
    <Cell x="22" y="38" terrain="Field" country="General" />
@@ -1461,7 +1533,7 @@
    <Cell x="23" y="32" terrain="Field" country="General" roadsStr="0/4/2" />
    <Cell x="23" y="33" terrain="Field" country="General" roadsStr="0/3" />
    <Cell x="23" y="34" terrain="ForestRough" country="General" roadsStr="5/3" />
-   <Cell x="23" y="35" terrain="Field" country="General" />
+   <Cell x="23" y="35" terrain="Field" country="General" roadsStr="4/1" />
    <Cell x="23" y="36" terrain="Field" country="General" />
    <Cell x="23" y="37" terrain="Field" country="General" />
    <Cell x="23" y="38" terrain="Field" country="General" />
@@ -1502,7 +1574,7 @@
    <Cell x="24" y="33" terrain="Field" country="General" />
    <Cell x="24" y="34" terrain="ForestRough" country="General" />
    <Cell x="24" y="35" terrain="Field" country="General" />
-   <Cell x="24" y="36" terrain="Field" country="General" />
+   <Cell x="24" y="36" terrain="Field" country="General" roadsStr="4/1" />
    <Cell x="24" y="37" terrain="Field" country="General" />
    <Cell x="24" y="38" terrain="Field" country="General" />
    <Cell x="24" y="39" terrain="Field" country="General" />
@@ -1542,7 +1614,7 @@
    <Cell x="25" y="33" terrain="ForestRough" country="General" />
    <Cell x="25" y="34" terrain="Forest" country="General" />
    <Cell x="25" y="35" terrain="Forest" country="General" />
-   <Cell x="25" y="36" terrain="Field" country="General" />
+   <Cell x="25" y="36" terrain="Field" country="General" roadsStr="4/2" />
    <Cell x="25" y="37" terrain="Field" country="General" />
    <Cell x="25" y="38" terrain="Field" country="General" />
    <Cell x="25" y="39" terrain="Field" country="General" />
@@ -1582,7 +1654,7 @@
    <Cell x="26" y="33" terrain="ForestRough" country="General" roadsStr="4/2" riversStr="2" />
    <Cell x="26" y="34" terrain="Forest" country="General" />
    <Cell x="26" y="35" terrain="Forest" country="General" />
-   <Cell x="26" y="36" terrain="LightUrban" country="General" />
+   <Cell x="26" y="36" terrain="LightUrban" country="General" roadsStr="5" />
    <Cell x="26" y="37" terrain="Forest" country="General" />
    <Cell x="26" y="38" terrain="Forest" country="General" />
    <Cell x="26" y="39" terrain="Forest" country="General" />
@@ -1695,8 +1767,8 @@
    <Cell x="29" y="26" terrain="ShallowWater" country="General" />
    <Cell x="29" y="27" terrain="ShallowWater" country="General" />
    <Cell x="29" y="28" terrain="Field" country="General" />
-   <Cell x="29" y="29" terrain="Field" country="General" />
-   <Cell x="29" y="30" terrain="Field" country="General" roadsStr="0/2" />
+   <Cell x="29" y="29" terrain="LightUrban" country="General" roadsStr="0/2" />
+   <Cell x="29" y="30" terrain="Field" country="General" roadsStr="0/3" />
    <Cell x="29" y="31" terrain="ForestRough" country="General" roadsStr="5/3/1" />
    <Cell x="29" y="32" terrain="ForestRough" country="General" riversStr="5" />
    <Cell x="29" y="33" terrain="ForestRough" country="General" riversStr="4/5/0" />
@@ -1735,8 +1807,8 @@
    <Cell x="30" y="26" terrain="ForestRough" country="General" />
    <Cell x="30" y="27" terrain="ForestRough" country="General" />
    <Cell x="30" y="28" terrain="ShallowWater" country="General" />
-   <Cell x="30" y="29" terrain="Field" country="General" roadsStr="0/2" />
-   <Cell x="30" y="30" terrain="Field" country="General" roadsStr="5/3" />
+   <Cell x="30" y="29" terrain="Field" country="General" roadsStr="2/5" />
+   <Cell x="30" y="30" terrain="Field" country="General" />
    <Cell x="30" y="31" terrain="ForestRough" country="General" />
    <Cell x="30" y="32" terrain="ForestRough" country="General" roadsStr="1/4" />
    <Cell x="30" y="33" terrain="ForestRough" country="General" />

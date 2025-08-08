@@ -1,5 +1,4 @@
 using UnityEngine;
-using GeographicLib;
 using TMPro;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
@@ -63,7 +62,7 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         shipLogEditorButton.clicked += () => ShipLogEditor.Instance.Show();
 
         root.Q<Button>("HighCommandEditorButton").clicked += HighCommandEditor.Instance.Show;
-
+        root.Q<Button>("LandUnitTemplateEditorButton").clicked += LandUnitTemplateEditor.Instance.Show;
         root.Q<Button>("LandUnitEditorButton").clicked += LandUnitEditor.Instance.Show;
     }
 

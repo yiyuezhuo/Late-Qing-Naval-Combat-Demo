@@ -4,8 +4,11 @@
         <ui:Label text="Land Unit Editor" class="title" />
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement data-source-path="currentGameState" style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px;">
-                <ui:ListView name="LandUnitListView" data-source-path="landUnits" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/LandUnitLabel.uxml?fileID=9197481963319205126&amp;guid=c06f535a8a0702e448f9525328086019&amp;type=3#LandUnitLabel" show-add-remove-footer="true" style="flex-grow: 1;" />
-                <ui:Button text="Confirm" name="ConfirmButton" />
+                <ui:ListView name="ObjectListView" data-source-path="landUnits" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/LandUnitLabel.uxml?fileID=9197481963319205126&amp;guid=c06f535a8a0702e448f9525328086019&amp;type=3#LandUnitLabel" show-add-remove-footer="true" reorderable="true" style="flex-grow: 1;" />
+                <ui:VisualElement style="flex-shrink: 0; flex-direction: column; flex-wrap: nowrap;">
+                    <ui:Button text="Copy Last" name="CopyLastButton" />
+                    <ui:Button text="Confirm" name="ConfirmButton" />
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                 <ui:Label text="Not selected or invalid">

@@ -63,11 +63,16 @@
             <ui:Tab label="Editor">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Leader" name="LeaderEditorButton" />
+                    <ui:Button text="High Command" name="HighCommandEditorButton" />
+                    <ui:Button text="Land Unit Template" name="LandUnitTemplateEditorButton" />
+                    <ui:Button text="Land Unit" name="LandUnitEditorButton" />
+                </ui:VisualElement>
+            </ui:Tab>
+            <ui:Tab label="Naval">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Ship Class" name="ClassEditorButton" />
                     <ui:Button text="Named Ship" name="NamedShipEditorButton" />
                     <ui:Button text="Ship Log" name="ShipLogEditorButton" />
-                    <ui:Button text="High Command" name="HighCommandEditorButton" />
-                    <ui:Button text="Land Unit" name="LandUnitEditorButton" />
                 </ui:VisualElement>
             </ui:Tab>
         </ui:TabView>

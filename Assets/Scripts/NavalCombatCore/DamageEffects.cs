@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using MathNet.Numerics.Distributions;
 
+using CoreUtils;
+
 namespace NavalCombatCore
 {
     public enum DamageEffectCause
@@ -45,7 +47,7 @@ namespace NavalCombatCore
                 ammunitionType = ammunitionType,
                 shellDiameterInch = shellDiameterInch,
                 addtionalDamageEffectProbility = addtionalDamageEffectProbility,
-                source=source
+                source = source
             };
         }
 
@@ -368,7 +370,7 @@ namespace NavalCombatCore
         {
             AddLogToSubject(ctx, log);
         }
-        
+
         // public enum VSectionLocation
         // {
         //     Front,

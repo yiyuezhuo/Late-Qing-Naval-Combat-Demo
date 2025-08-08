@@ -20,7 +20,7 @@ namespace CoreUtils
         public Dictionary<string, IObjectIdLabeled> idToEntity = new();
         public Dictionary<IObjectIdLabeled, object> entityToParent = new();
 
-        public event EventHandler<string> newGuidCreated;
+        // public event EventHandler<string> newGuidCreated;
 
         public void Reset()
         {
@@ -36,7 +36,8 @@ namespace CoreUtils
                 {
                     obj.objectId = System.Guid.NewGuid().ToString();
                 } while (idToEntity.ContainsKey(obj.objectId));
-                newGuidCreated?.Invoke(obj, obj.objectId);
+                //  newGuidCreated?.Invoke(obj, obj.objectId);
+                ServiceLocator.Get<ILoggerService>().LogWarning($"New guid created: {obj.objectId} for {obj}");
             }
             idToEntity[obj.objectId] = obj;
             entityToParent[obj] = parent;

@@ -59,6 +59,7 @@ namespace StrategicCombatCore
 
         public HighCommand highCommand = new();
 
+        public List<LandUnitTemplate> landUnitTemplates = new();
         public List<LandUnit> landUnits = new();
 
         public event EventHandler mapRebuilt;
@@ -110,6 +111,7 @@ namespace StrategicCombatCore
             cellMatrix = newInstance.cellMatrix;
             labels = newInstance.labels;
             highCommand = newInstance.highCommand;
+            landUnitTemplates = newInstance.landUnitTemplates;
             landUnits = newInstance.landUnits;
 
             mapRebuilt?.Invoke(this, EventArgs.Empty);
@@ -152,6 +154,11 @@ namespace StrategicCombatCore
             foreach (var landUnit in landUnits)
             {
                 EntityManager.Instance.Register(landUnit, null);
+            }
+
+            foreach (var landUnitTemplate in landUnitTemplates)
+            {
+                EntityManager.Instance.Register(landUnitTemplate, null);
             }
         }
 

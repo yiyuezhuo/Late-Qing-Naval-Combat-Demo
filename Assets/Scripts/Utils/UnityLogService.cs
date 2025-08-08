@@ -1,5 +1,6 @@
-using NavalCombatCore;
 using UnityEngine;
+
+using CoreUtils;
 
 public class UnityLogService : ILoggerService
 {

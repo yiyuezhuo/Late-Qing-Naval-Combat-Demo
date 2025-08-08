@@ -11,6 +11,7 @@ using StrategicCombatCore;
 public abstract class LeftObjectPickerRightEditorStrategic<ST, ET> : HideableDocument<ST> where ET : class, IObjectIdLabeled, new() where ST : MonoBehaviour
 {
     public string selectedId;
+    ListView objectListView;
 
     [CreateProperty]
     public ET selectedObject { get => EntityManager.Instance.Get<ET>(selectedId); }
@@ -21,7 +22,7 @@ public abstract class LeftObjectPickerRightEditorStrategic<ST, ET> : HideableDoc
 
         Utils.BindItemsSourceRecursive(root);
 
-        var objectListView = root.Q<ListView>(GetObjectListViewName());
+        objectListView = root.Q<ListView>("ObjectListView");
         Utils.BindItemsAddedRemoved<ET>(objectListView, () => null);
 
         objectListView.selectionChanged += (IEnumerable<object> objects) =>
@@ -34,9 +35,26 @@ public abstract class LeftObjectPickerRightEditorStrategic<ST, ET> : HideableDoc
 
         var confirmButton = root.Q<Button>("ConfirmButton");
         confirmButton.clicked += Hide;
+
+        var copyLastButton = root.Q<Button>("CopyLastButton");
+        copyLastButton.clicked += () =>
+        {
+            if (Utils.TryResolveCurrentValueForBinding<List<ET>>(objectListView, out var objList))
+            {
+                if (objList.Count >= 1)
+                {
+                    var lastObj = objList[^1];
+                    var newObj = XmlUtils.FromXML<ET>(XmlUtils.ToXML(lastObj));
+                    newObj.objectId = null;
+                    objList.Add(newObj);
+
+                    currentGameState.ResetAndRegisterAll(); // Assign a new guid
+                }
+            }
+        };
     }
 
-    public abstract string GetObjectListViewName();
+    // public abstract string GetObjectListViewName();
 
     [CreateProperty]
     public StrategicGameState currentGameState => StrategicGameState.Instance;
@@ -47,7 +65,7 @@ public abstract class LeftObjectPickerRightEditorStrategic<ST, ET> : HideableDoc
 
 public class LandUnitEditor : LeftObjectPickerRightEditorStrategic<LandUnitEditor, LandUnit>
 {
-    public override string GetObjectListViewName() => "LandUnitListView";
+    // public override string GetObjectListViewName() => "LandUnitListView";
 }
 
 // public class LandUnitEditor : HideableDocument<LandUnitEditor>

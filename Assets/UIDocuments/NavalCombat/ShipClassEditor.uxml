@@ -1,6 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
     <ui:Template name="ArmorRatingEditor" src="project://database/Assets/UIDocuments/NavalCombat/ArmorRatingEditor.uxml?fileID=9197481963319205126&amp;guid=37ee59f7e2be1ae42a09a6e60180ee72&amp;type=3#ArmorRatingEditor" />
+    <ui:Template name="PictureField" src="project://database/Assets/UIDocuments/Common/PictureField.uxml?fileID=9197481963319205126&amp;guid=7e20c3d60b5a8a34a80d1015e6851169&amp;type=3#PictureField" />
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement data-source-type="ShipClassEditor, Assembly-CSharp" class="panel">
         <ui:Label text="Class Editor" class="title" />
@@ -40,7 +41,7 @@
                                                 <ui:DataBinding property="value" data-source-path="country" binding-mode="TwoWay" />
                                             </Bindings>
                                         </ui:EnumField>
-                                        <ui:VisualElement style="flex-grow: 0; -unity-background-scale-mode: scale-to-fit; background-image: resource(&apos;Flags/Japan&apos;); width: 50px;">
+                                        <ui:VisualElement style="flex-grow: 0; -unity-background-scale-mode: scale-to-fit; width: 50px;">
                                             <Bindings>
                                                 <ui:DataBinding property="style.backgroundImage" data-source-path="country" binding-mode="ToTarget" source-to-ui-converters="Country =&gt; StyleBackground" />
                                             </Bindings>
@@ -194,6 +195,12 @@
                                                 <ui:DataBinding property="value" data-source-path="portraitUrl" binding-mode="TwoWay" />
                                             </Bindings>
                                         </ui:TextField>
+                                        <ui:Label text="Remark" />
+                                        <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="height: 100px; min-height: 100px; max-height: 100px;">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:TextField>
                                     </ui:VisualElement>
                                     <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; padding-left: 1px; padding-bottom: 1px; padding-right: 1px; padding-top: 1px;">
                                         <ui:Instance template="GlobalStringEditor" data-source-path="engineDesc">
@@ -209,24 +216,20 @@
                         <ui:Tab label="Graphic">
                             <ui:ScrollView>
                                 <ui:VisualElement style="flex-grow: 1;">
-                                    <ui:TextField label="Portrait Top Code">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="portraitTopCode" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:TextField>
+                                    <ui:Instance template="PictureField" data-source-path="portraitTopReference" name="PortraitTopReferenceField">
+                                        <AttributeOverrides element-name="FieldLabel" text="Portrait Top" />
+                                    </ui:Instance>
                                     <ui:VisualElement style="flex-grow: 0; height: 150px; -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;">
                                         <Bindings>
-                                            <ui:DataBinding property="style.backgroundImage" data-source-path="portraitTopCode" binding-mode="ToTarget" source-to-ui-converters="string (Ship Portrait) =&gt; StyleBackground" />
+                                            <ui:DataBinding property="style.backgroundImage" data-source-path="portraitTopReference.pictureStyleBackground.value" binding-mode="ToTarget" />
                                         </Bindings>
                                     </ui:VisualElement>
-                                    <ui:TextField label="Portrait Code">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="portraitCode" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:TextField>
+                                    <ui:Instance template="PictureField" data-source-path="portraitReference" name="PortraitReferenceField">
+                                        <AttributeOverrides element-name="FieldLabel" text="Portrait" />
+                                    </ui:Instance>
                                     <ui:VisualElement style="flex-grow: 0; height: 300px; -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;">
                                         <Bindings>
-                                            <ui:DataBinding property="style.backgroundImage" data-source-path="portraitCode" binding-mode="ToTarget" source-to-ui-converters="string (Ship Portrait) =&gt; StyleBackground" />
+                                            <ui:DataBinding property="style.backgroundImage" data-source-path="portraitReference.pictureStyleBackground.value" binding-mode="ToTarget" />
                                         </Bindings>
                                     </ui:VisualElement>
                                 </ui:VisualElement>

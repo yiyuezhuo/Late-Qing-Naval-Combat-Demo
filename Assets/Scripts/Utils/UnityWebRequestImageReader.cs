@@ -117,12 +117,14 @@ public class UnityWebRequestImageReader
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
                 // textLoaded?.Invoke(null, webRequest.downloadHandler.text);
+                Debug.Log($"UnityWebRequest succ to get: {task.path}");
+
                 task.texture = DownloadHandlerTexture.GetContent(webRequest);
                 task.state = ImageFetchTask.State.Downloaded;
             }
             else
             {
-                Debug.LogError($"UnityWebRequest failed to get: {task.path}");
+                Debug.LogWarning($"UnityWebRequest failed to get: {task.path}");
                 task.state = ImageFetchTask.State.Fail;
             }
         }

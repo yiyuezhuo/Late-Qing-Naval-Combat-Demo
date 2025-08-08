@@ -14,7 +14,8 @@ public interface IPortraitViewerObservable : IObjectIdLabeled, ICollider // Abst
     // public LatLon GetPosition();
     // public float GetHeadingDeg();
 
-    public string GetPortraitTopCode(); // main View
+    // public string GetPortraitTopCode(); // main View
+    public PictureReference GetPortraitTopReference();
     public Country GetCountry(); // flag
     public bool IsShowArrow();
     public GlobalString GetName();
@@ -49,15 +50,18 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     float scaleFactor = 0.015f;
     public MeshRenderer flagRenderer;
 
+    //
+    Texture2D portraitTex;
+    Texture2D countryTex;
     long oldViewHashCode;
 
     public long GetViewHashCode()
     {
         return HashCode.Combine(
-            type,
-            model?.GetPortraitTopCode(),
+            // type,
+            portraitTex,
             // shipLog?.leader?.portraitCode,
-            model?.GetCountry()
+            countryTex
         );
     }
 
@@ -133,17 +137,16 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
         MaintainFlagRotationSize();
 
+        portraitTex = UnityWebRequestImageReader.Instance.FetchTexture2D(model.GetPortraitTopReference().ResolvePath());
+        countryTex = UnityWebRequestImageReader.Instance.FetchTexture2D(Utils.GetCountryPath(model.GetCountry()));
+
         var newViewHashCode = GetViewHashCode();
         if (oldViewHashCode == newViewHashCode)
             return;
 
         oldViewHashCode = newViewHashCode;
 
-        // var shipClass = model.shipClass;
-        var portraitTopCode = model.GetPortraitTopCode();
-        var portraitTop = ResourceManager.GetShipPortraitSprite(portraitTopCode);
-        iconRenderer.material.SetTexture("_MainTex", portraitTop.texture);
-
-        flagRenderer.material.SetTexture("_MainTex", ResourceManager.GetFlagSprite(model.GetCountry().ToString()).texture);
+        iconRenderer.material.SetTexture("_MainTex", portraitTex);        
+        flagRenderer.material.SetTexture("_MainTex", countryTex);
     }
 }

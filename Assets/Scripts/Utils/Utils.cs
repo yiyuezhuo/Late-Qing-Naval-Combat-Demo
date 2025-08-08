@@ -8,6 +8,8 @@ using System.Linq;
 using UnityEngine.UIElements.Experimental;
 using Unity.Properties;
 using UnityEngine.Networking;
+using System.IO;
+using StrategicCombatCore;
 
 using CoreUtils;
 
@@ -277,6 +279,10 @@ public static class Utils
                 GameObject.Destroy(childList[i]);
             }
         }
+    }
 
+    public static string GetCountryPath(Country country)
+    {
+        return Application.streamingAssetsPath + "/Pictures/Flags/" + country.ToString() + ".png";
     }
 }

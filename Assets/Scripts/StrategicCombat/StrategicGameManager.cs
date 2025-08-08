@@ -91,26 +91,44 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         StrategicGameState.Instance.ResetAndRegisterAll();
 
-        // Temp Conversion for Leaders (portraitCode => PictureReference)
-        // var leaderFolder = Application.streamingAssetsPath + "/Pictures/Leaders";
-        // var files = Directory.GetFiles(leaderFolder);
-        // var fileNames = files.Where(s => !s.EndsWith(".meta")).Select(s => Path.GetFileName(s)).ToList();
-
-        // foreach (var leader in StrategicGameState.Instance.leaders)
-        // {
-        //     // leader.portrait = PictureReference.FromCode(leader.portraitCode);
-        //     var portraitCode = leader.portraitCode;
-        //     // var pathWithoutExt = leaderFolder + portraitCode;
-        //     if (portraitCode != null)
-        //     {
-        //         var match = fileNames.FirstOrDefault(name => name.StartsWith(portraitCode));
-        //         if (match != null)
-        //         {
-        //             leader.portraitReference = new() { path = "Pictures/Leaders/" + match, isBuiltin = true };
-        //         }
-        //     }
-        // }
+        // TempFix();
     }
+
+    // public static void TempFix()
+    // {
+    //     // if(System.Diagnostics.Debugger.IsAttached)
+    //     //     System.Diagnostics.Debugger.Break();
+
+    //     // Debug.Break();
+
+    //     // Temp Conversion for ShipClass (portraitCode => PictureReference)
+    //     var shipFolder = Application.streamingAssetsPath + "/Pictures/Ships";
+    //     var files = Directory.GetFiles(shipFolder);
+    //     var fileNames = files.Where(s => !s.EndsWith(".meta")).Select(s => Path.GetFileName(s)).ToList();
+
+    //     foreach (var shipClass in StrategicGameState.Instance.shipClasses)
+    //     {
+    //         var portraitCode = shipClass.portraitCode;
+    //         if (portraitCode != null)
+    //         {
+    //             var match = fileNames.FirstOrDefault(name => name.StartsWith(portraitCode));
+    //             if (match != null)
+    //             {
+    //                 shipClass.portraitReference = new() { path = "Pictures/Ships/" + match, isBuiltin = true };
+    //             }
+    //         }
+
+    //         var portraitTopCode = shipClass.portraitTopCode;
+    //         if (portraitTopCode != null)
+    //         {
+    //             var match = fileNames.FirstOrDefault(name => name.StartsWith(portraitTopCode));
+    //             if (match != null)
+    //             {
+    //                 shipClass.portraitTopReference = new() { path = "Pictures/Ships/" + match, isBuiltin = true };
+    //             }
+    //         }
+    //     }
+    // }
 
     public Vector2 ToCenter(Vector2 xy)
     {
@@ -251,7 +269,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                     // var x = Mathf.Round(xp);
                     // var y = Mathf.Round(yp);
 
-                        // Debug.Log($"localPoint={localPoint}, np=({xnp}, {ynp}), p=({xp}, {yp}), xy=({x}, {y})");
+                    // Debug.Log($"localPoint={localPoint}, np=({xnp}, {ynp}), p=({xp}, {yp}), xy=({x}, {y})");
                 }
             }
         }

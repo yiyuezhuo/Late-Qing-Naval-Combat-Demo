@@ -176,6 +176,9 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
                 IOManager.Instance.LoadTextFile(OnBatteryXMLLoaded, "xml");
             }
         };
+
+        PictureReferenceBinder.Bind(root.Q<VisualElement>("PortraitTopReferenceField"));
+        PictureReferenceBinder.Bind(root.Q<VisualElement>("PortraitReferenceField"));
     }
 
     public void OnBatteryXMLLoaded(string text)

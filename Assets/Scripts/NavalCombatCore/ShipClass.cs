@@ -624,8 +624,11 @@ namespace NavalCombatCore
         public ArmorRating armorRating = new();
 
         public string portraitUrl;
-        public string portraitCode;
-        public string portraitTopCode;
+        public string remark;
+        // public string portraitCode;
+        // public string portraitTopCode;
+        public PictureReference portraitReference = new();
+        public PictureReference portraitTopReference = new();
 
         public RamType ram;
 

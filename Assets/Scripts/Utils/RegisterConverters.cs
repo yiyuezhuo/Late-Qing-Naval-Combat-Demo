@@ -122,13 +122,15 @@ public static class RegisteredConverters
 
         Register("Country => StyleBackground", (ref Country country) =>
         {
-            return ResourceManager.GetFlagSB(country.ToString());
+            // return ResourceManager.GetFlagSB(country.ToString());
+            // var path = Application.streamingAssetsPath + "/Pictures/Flags/" + country.ToString() + ".png";
+            return UnityWebRequestImageReader.Instance.FetchStyleBackground(Utils.GetCountryPath(country));
         });
 
-        Register("string (Ship Portrait) => StyleBackground", (ref string code) =>
-        {
-            return ResourceManager.GetShipPortraitSB(code);
-        });
+        // Register("string (Ship Portrait) => StyleBackground", (ref string code) =>
+        // {
+        //     return ResourceManager.GetShipPortraitSB(code);
+        // });
 
         // Register("string (Leader Portrait) => StyleBackground", (ref string code) =>
         // {

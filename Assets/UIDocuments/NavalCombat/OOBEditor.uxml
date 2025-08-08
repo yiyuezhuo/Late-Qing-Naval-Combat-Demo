@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
-    <ui:Template name="DoctrineEditor" src="project://database/Assets/UIDocuments/DoctrineEditor.uxml?fileID=9197481963319205126&amp;guid=9963f3ab57e9cd545869989ed4b99a3d&amp;type=3#DoctrineEditor" />
-    <ui:Template name="NamedShipVisualizer" src="project://database/Assets/UIDocuments/NamedShipVisualizer.uxml?fileID=9197481963319205126&amp;guid=31d24939061571546a16f9a8bd6443ed&amp;type=3#NamedShipVisualizer" />
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:Template name="DoctrineEditor" src="project://database/Assets/UIDocuments/NavalCombat/DoctrineEditor.uxml?fileID=9197481963319205126&amp;guid=9963f3ab57e9cd545869989ed4b99a3d&amp;type=3#DoctrineEditor" />
+    <ui:Template name="NamedShipVisualizer" src="project://database/Assets/UIDocuments/NavalCombat/NamedShipVisualizer.uxml?fileID=9197481963319205126&amp;guid=31d24939061571546a16f9a8bd6443ed&amp;type=3#NamedShipVisualizer" />
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement data-source-type="OOBEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="OOB Editor" class="title" />
@@ -63,7 +63,7 @@
                         </ui:VisualElement>
                         <ui:VisualElement style="flex-grow: 0; flex-basis: 100px; -unity-background-scale-mode: scale-to-fit;">
                             <Bindings>
-                                <ui:DataBinding property="style.backgroundImage" data-source-path="leaderObjectId" binding-mode="ToTarget" source-to-ui-converters="string (Leader objectID) =&gt; StyleBackground" />
+                                <ui:DataBinding property="style.backgroundImage" data-source-path="leaderProp.portraitReference.pictureStyleBackground" binding-mode="ToTarget" />
                             </Bindings>
                         </ui:VisualElement>
                     </ui:VisualElement>

@@ -49,12 +49,20 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public float firepowerPortProp => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 270);
+
+        [CreateProperty]
+        public StyleBackground portraitTopStyleBackground => UnityWebRequestImageReader.Instance.FetchStyleBackground(portraitTopReference.ResolvePath());
+
+        [CreateProperty]
+        public StyleBackground portraitStyleBackground => UnityWebRequestImageReader.Instance.FetchStyleBackground(portraitReference.ResolvePath());
     }
 
     public partial class LaunchedTorpedo : IPortraitViewerObservable
     {
+        static PictureReference sharedPortraitTopReference = new() { path = "Pictures/Ships/Schwartzkopff Torpedo_Top", isBuiltin = true };
+
         Country IPortraitViewerObservable.GetCountry() => GetShooter()?.shipClass?.country ?? Country.General;
-        string IPortraitViewerObservable.GetPortraitTopCode() => "Schwartzkopff Torpedo_Top"; // TODO: use true name
+        PictureReference IPortraitViewerObservable.GetPortraitTopReference() => sharedPortraitTopReference;
         bool IPortraitViewerObservable.IsShowArrow() => false;
         GlobalString IPortraitViewerObservable.GetName() => sourceName;
         float IPortraitViewerObservable.GetDesiredHeadingDeg() => headingDeg;
@@ -266,7 +274,8 @@ namespace NavalCombatCore
         public string labelName => GetMapStatePrefix() + (namedShip?.name?.GetMergedName() ?? "[Named Ship not invalid or not specified]");
 
         // IPortraitViewerObservable
-        string IPortraitViewerObservable.GetPortraitTopCode() => shipClass.portraitTopCode;
+        PictureReference IPortraitViewerObservable.GetPortraitTopReference() => shipClass?.portraitTopReference;
+        // string IPortraitViewerObservable.GetPortraitTopCode() => shipClass.portraitTopCode;
         Country IPortraitViewerObservable.GetCountry() => shipClass.country;
         GlobalString IPortraitViewerObservable.GetName() => namedShip?.name;
         bool IPortraitViewerObservable.IsShowArrow() => GetEffectiveControlMode() == ControlMode.Independent;
@@ -408,11 +417,13 @@ namespace NavalCombatCore
         {
             get
             {
-                var shipClass = EntityManager.Instance.Get<ShipClass>(shipClassObjectId);
-                var portraitCode = shipClass?.portraitCode;
-                if (portraitCode == null)
-                    return null;
-                return ResourceManager.GetShipPortraitSB(portraitCode);
+                // var shipClass = EntityManager.Instance.Get<ShipClass>(shipClassObjectId);
+                // var portraitCode = shipClass?.portraitCode;
+                // if (portraitCode == null)
+                //     return null;
+                // return ResourceManager.GetShipPortraitSB(portraitCode);
+
+                return UnityWebRequestImageReader.Instance.FetchStyleBackground(shipClass?.portraitReference?.ResolvePath());
             }
         }
 
@@ -421,10 +432,12 @@ namespace NavalCombatCore
         {
             get
             {
-                var portraitCode = EntityManager.Instance.Get<ShipClass>(shipClassObjectId)?.portraitTopCode;
-                if (portraitCode == null)
-                    return null;
-                return ResourceManager.GetShipPortraitSB(portraitCode);
+                // var portraitCode = EntityManager.Instance.Get<ShipClass>(shipClassObjectId)?.portraitTopCode;
+                // if (portraitCode == null)
+                //     return null;
+                // return ResourceManager.GetShipPortraitSB(portraitCode);
+
+                return UnityWebRequestImageReader.Instance.FetchStyleBackground(shipClass?.portraitTopReference?.ResolvePath());
             }
         }
 

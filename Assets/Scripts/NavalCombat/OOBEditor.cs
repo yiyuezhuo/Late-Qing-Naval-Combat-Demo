@@ -129,8 +129,8 @@ public class OOBEditor : HideableDocument<OOBEditor>
 
         importButton.clicked += () =>
         {
-            IOManager.Instance.textLoaded += OnRootShipGroupsXmlLoaded;
-            IOManager.Instance.LoadTextFile("xml");
+            // IOManager.Instance.textLoaded += OnRootShipGroupsXmlLoaded;
+            IOManager.Instance.LoadTextFile(OnRootShipGroupsXmlLoaded, "xml");
         };
 
         confirmButton.clicked += Hide;
@@ -227,9 +227,9 @@ public class OOBEditor : HideableDocument<OOBEditor>
         };
     }
 
-    public void OnRootShipGroupsXmlLoaded(object sender, string text)
+    public void OnRootShipGroupsXmlLoaded(string text)
     {
-        IOManager.Instance.textLoaded -= OnRootShipGroupsXmlLoaded;
+        // IOManager.Instance.textLoaded -= OnRootShipGroupsXmlLoaded;
 
         // GameManager.Instance.navalGameState.ShipGroupsFromXML(text);
         NavalGameState.Instance.ShipGroupsFromXML(text);

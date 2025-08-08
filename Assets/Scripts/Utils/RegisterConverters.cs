@@ -130,18 +130,18 @@ public static class RegisteredConverters
             return ResourceManager.GetShipPortraitSB(code);
         });
 
-        Register("string (Leader Portrait) => StyleBackground", (ref string code) =>
-        {
-            return ResourceManager.GetLeaderPortraitSB(code);
-        });
+        // Register("string (Leader Portrait) => StyleBackground", (ref string code) =>
+        // {
+        //     return ResourceManager.GetLeaderPortraitSB(code);
+        // });
 
-        Register("string (Leader objectID) => StyleBackground", (ref string leaderObjectId) =>
-        {
-            var leader = EntityManager.Instance.Get<Leader>(leaderObjectId);
-            if (leader == null)
-                return null;
-            return ResourceManager.GetLeaderPortraitSB(leader.portraitCode);
-        });
+        // Register("string (Leader objectID) => StyleBackground", (ref string leaderObjectId) =>
+        // {
+        //     var leader = EntityManager.Instance.Get<Leader>(leaderObjectId);
+        //     if (leader == null)
+        //         return null;
+        //     return ResourceManager.GetLeaderPortraitSB(leader.portraitCode);
+        // });
 
         Register("ShipLog => ShipLog's captain's name", (ref ShipLog shipLog) =>
         {

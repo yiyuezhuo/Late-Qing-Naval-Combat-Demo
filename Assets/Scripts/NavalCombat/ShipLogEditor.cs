@@ -260,8 +260,8 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         var importButton = root.Q<Button>("ImportButton");
         importButton.clicked += () =>
         {
-            IOManager.Instance.textLoaded += OnShipLogsXmlLoaded;
-            IOManager.Instance.LoadTextFile("xml");
+            // IOManager.Instance.textLoaded += OnShipLogsXmlLoaded;
+            IOManager.Instance.LoadTextFile(OnShipLogsXmlLoaded, "xml");
         };
 
         var setNamedShipButton = root.Q<Button>("SetNamedShipButton");
@@ -326,9 +326,9 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
     //     NamedShipEditor.Instance.namedShipListView.SetSelection(idx);
     // }
 
-    void OnShipLogsXmlLoaded(object sender, string text)
+    void OnShipLogsXmlLoaded(string text)
     {
-        IOManager.Instance.textLoaded -= OnShipLogsXmlLoaded;
+        // IOManager.Instance.textLoaded -= OnShipLogsXmlLoaded;
 
         var gameState = SuperGameState.Instance.GetCurrentGameState();
         gameState.ShipLogsFromXML(text);

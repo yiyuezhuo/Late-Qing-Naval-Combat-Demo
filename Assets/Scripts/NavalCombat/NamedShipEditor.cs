@@ -65,8 +65,8 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
         var importButton = root.Q<Button>("ImportButton");
         importButton.clicked += () =>
         {
-            IOManager.Instance.textLoaded += OnNamedShipsXMLLoaded;
-            IOManager.Instance.LoadTextFile("xml");
+            // IOManager.Instance.textLoaded += OnNamedShipsXMLLoaded;
+            IOManager.Instance.LoadTextFile(OnNamedShipsXMLLoaded, "xml");
         };
 
         var selectShipClassButton = root.Q<Button>("SelectShipClassButton");
@@ -112,9 +112,9 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
         };
     }
 
-    void OnNamedShipsXMLLoaded(object sender, string text)
+    void OnNamedShipsXMLLoaded(string text)
     {
-        IOManager.Instance.textLoaded -= OnNamedShipsXMLLoaded;
+        // IOManager.Instance.textLoaded -= OnNamedShipsXMLLoaded;
 
         var gameState = SuperGameState.Instance.GetCurrentGameState();
         gameState.NamedShipsFromXML(text);

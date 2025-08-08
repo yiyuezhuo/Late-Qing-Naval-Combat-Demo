@@ -391,17 +391,17 @@ namespace NavalCombatCore
         [CreateProperty]
         public Leader defaultLeaderProp => defaultLeader;
 
-        [CreateProperty]
-        public StyleBackground defaultLeaderStyleBackground
-        {
-            get
-            {
-                var leader = EntityManager.Instance.Get<Leader>(defaultLeaderObjectId);
-                if (leader == null)
-                    return null;
-                return ResourceManager.GetLeaderPortraitSB(leader.portraitCode);
-            }
-        }
+        // [CreateProperty]
+        // public StyleBackground defaultLeaderStyleBackground
+        // {
+        //     get
+        //     {
+        //         var leader = EntityManager.Instance.Get<Leader>(defaultLeaderObjectId);
+        //         if (leader == null)
+        //             return null;
+        //         return ResourceManager.GetLeaderPortraitSB(leader.portraitCode);
+        //     }
+        // }
 
         [CreateProperty]
         public StyleBackground shipClassPortraitStyleBackground

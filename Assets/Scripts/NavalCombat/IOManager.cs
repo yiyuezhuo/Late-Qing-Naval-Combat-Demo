@@ -5,34 +5,35 @@ using SFB;
 using System;
 using System.Collections;
 using UnityEngine.Networking;
+using System.Collections.Generic;
 
 #if UNITY_WEBGL && !UNITY_EDITOR
-using System.Runtime.InteropServices;
+using System.Runtime.InteropServices; // DllImport
 #endif
 
 public class IOManager : SingletonMonoBehaviour<IOManager>
 {
-    public event EventHandler<string> textLoaded;
+    Action<string> currentCallback;
 
     private IEnumerator OutputRoutine(string url)
     {
         Debug.Log($"OutputRoutine({url})");
-        // var loader = new WWW(url); // TODO: Use UnityWebRequest
-        // yield return loader;
-        // textLoaded?.Invoke(null, loader.text);
 
         using (var webRequest = UnityWebRequest.Get(url))
         {
             yield return webRequest.SendWebRequest();
 
+            var callback = currentCallback;
+            currentCallback = null;
+
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
-                textLoaded?.Invoke(null, webRequest.downloadHandler.text);
+                callback(webRequest.downloadHandler.text);
             }
             else
             {
                 Debug.LogError("UnityWebRequest failed to get");
-                textLoaded?.Invoke(null, null);
+                callback(null);
             }
         }
     }
@@ -53,6 +54,8 @@ public class IOManager : SingletonMonoBehaviour<IOManager>
 
     public void OnFileUpload(string url) {
         Debug.Log($"OnFileUpload({url})");
+
+
         StartCoroutine(OutputRoutine(url));
     }
 #endif
@@ -75,8 +78,10 @@ public class IOManager : SingletonMonoBehaviour<IOManager>
 #endif
     }
 
-    public void LoadTextFile(string ext = "txt")
+    public void LoadTextFile(Action<string> callback, string ext = "txt")
     {
+        currentCallback = callback;
+
         Debug.Log("LoadTextFile");
 #if UNITY_WEBGL && !UNITY_EDITOR
         UploadFile(gameObject.name, "OnFileUpload", $".{ext}", false);
@@ -87,5 +92,20 @@ public class IOManager : SingletonMonoBehaviour<IOManager>
             StartCoroutine(OutputRoutine(new System.Uri(paths[0]).AbsoluteUri));
         }
 #endif
+    }
+
+    public string LoadImagePath(string ext = "txt")
+    {
+        var extensions = new ExtensionFilter[]
+        {
+            new ExtensionFilter("Image Files", "png", "jpg", "jpeg" ),
+            // new ExtensionFilter("All Files", "*" ),
+        };
+        var paths = StandaloneFileBrowser.OpenFilePanel("Title", "", extensions, false);
+        if (paths.Length > 0)
+        {
+            return paths[0].Replace("\\", "/");
+        }
+        return null;
     }
 }

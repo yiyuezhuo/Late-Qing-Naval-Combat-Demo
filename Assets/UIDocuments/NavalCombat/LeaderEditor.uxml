@@ -1,5 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:Template name="PictureField" src="project://database/Assets/UIDocuments/Common/PictureField.uxml?fileID=9197481963319205126&amp;guid=7e20c3d60b5a8a34a80d1015e6851169&amp;type=3#PictureField" />
     <ui:VisualElement data-source-type="LeaderEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Leader Editor" class="title" />
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
@@ -23,18 +24,16 @@
                             <ui:Instance template="GlobalStringEditor" data-source-path="name">
                                 <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
                             </ui:Instance>
-                            <ui:TextField label="Portrait Code">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="portraitCode" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:TextField>
                         </ui:VisualElement>
                         <ui:VisualElement style="flex-grow: 0; flex-basis: 150px; flex-shrink: 0; -unity-background-scale-mode: scale-to-fit;">
                             <Bindings>
-                                <ui:DataBinding property="style.backgroundImage" data-source-path="portraitCode" binding-mode="ToTarget" source-to-ui-converters="string (Leader Portrait) =&gt; StyleBackground" />
+                                <ui:DataBinding property="style.backgroundImage" data-source-path="portraitReference.pictureStyleBackground.value" binding-mode="ToTarget" />
                             </Bindings>
                         </ui:VisualElement>
                     </ui:VisualElement>
+                    <ui:Instance template="PictureField" data-source-path="portraitReference" name="PortaitField">
+                        <AttributeOverrides element-name="FieldLabel" text="Portrait" />
+                    </ui:Instance>
                     <ui:EnumField label="Naval Strategic" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="navalStrategic" binding-mode="TwoWay" />

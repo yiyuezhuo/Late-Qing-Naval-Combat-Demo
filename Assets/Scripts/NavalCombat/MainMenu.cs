@@ -18,8 +18,8 @@ public class MainMenu : SingletonDocument<MainMenu>
 
         loadGameButton.clicked += () =>
         {
-            IOManager.Instance.textLoaded += OnFullStateXMLLoaded;
-            IOManager.Instance.LoadTextFile("xml");
+            // IOManager.Instance.textLoaded += OnFullStateXMLLoaded;
+            IOManager.Instance.LoadTextFile(OnFullStateXMLLoaded, "xml");
         };
 
 
@@ -30,9 +30,9 @@ public class MainMenu : SingletonDocument<MainMenu>
         root.Q<Button>("HelpButton").clicked += () => DialogRoot.Instance.PopupHelpDialogDocument();
     }
 
-    void OnFullStateXMLLoaded(object sender, string text)
+    void OnFullStateXMLLoaded(string text)
     {
-        IOManager.Instance.textLoaded -= OnFullStateXMLLoaded;
+        // IOManager.Instance.textLoaded -= OnFullStateXMLLoaded;
 
         var fullState = FullState.FromXML(text);
         GameManager.oneShotStartupFullState = fullState;

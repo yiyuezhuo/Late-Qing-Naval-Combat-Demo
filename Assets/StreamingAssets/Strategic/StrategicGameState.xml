@@ -573,6 +573,194 @@
    <stregnth>500</stregnth>
    <objectId>23f7d1fc-4e4a-4fea-a810-7a4bc6870c04</objectId>
   </LandUnit>
+  <LandUnit>
+   <name>
+    <english>R Bn, GBK LA</english>
+    <chineseSimplified>古北口练军右营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>532276bd-8fa1-415b-b224-45a279e81bc1</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>SC Bn, Wuyi DIv</english>
+    <chineseSimplified>武毅军副中营</chineseSimplified>
+   </name>
+   <stregnth>200</stregnth>
+   <objectId>ab7db3ab-51ce-4641-9236-0ac311edce20</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>OF Bn, Wuyi Div</english>
+    <chineseSimplified>武毅军老前营</chineseSimplified>
+   </name>
+   <stregnth>200</stregnth>
+   <objectId>65f4f6ea-01c4-4a47-9dc3-d27457bef322</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Art Bty, Wuyi Div</english>
+    <chineseSimplified>武毅军炮队</chineseSimplified>
+   </name>
+   <stregnth>200</stregnth>
+   <objectId>b9fe6dcc-ed60-4859-9748-750372d8b5aa</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Cadets, TJ MA</english>
+    <chineseSimplified>天津武备学堂学生</chineseSimplified>
+   </name>
+   <stregnth>10</stregnth>
+   <objectId>6d2f2148-7f94-4695-97c8-5282e8db3a1a</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>C Bn, ZD LA</english>
+    <japanese>正定練軍中営</japanese>
+    <chineseSimplified>正定练军中营</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <objectId>b81a11c7-164b-4042-80df-f9f5854e256c</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>R Bn, ZD LA</english>
+    <chineseSimplified>正定练军右营</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <objectId>bd7483a0-3682-44b3-9602-0916a70ca39b</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>F Bn, ZD LA</english>
+    <chineseSimplified>正定练军前营</chineseSimplified>
+   </name>
+   <stregnth>210</stregnth>
+   <objectId>3097daff-bd82-4a43-9e34-69e524d54ae6</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>L Bn, ZD LA</english>
+    <chineseSimplified>正定练军左营</chineseSimplified>
+   </name>
+   <stregnth>210</stregnth>
+   <objectId>5eb3077c-f62f-499b-93ba-b6eca8b7b53f</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Cav Coy, Guard</english>
+    <chineseSimplified>亲军马队小队</chineseSimplified>
+   </name>
+   <stregnth>80</stregnth>
+   <objectId>302a7d65-9319-4014-80cd-df5738f49c72</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Cadets, SHG MA</english>
+    <chineseSimplified>山海关武备学堂学生</chineseSimplified>
+   </name>
+   <stregnth>25</stregnth>
+   <objectId>7a9e7efa-c000-4c62-94bc-bbcbea2a974a</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Chief Bn, Ren Div</english>
+    <chineseSimplified>仁字营正营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>8f100840-11d5-4409-a65e-6b5447546a7d</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Sub Bn, Ren Div</english>
+    <chineseSimplified>仁字营副营</chineseSimplified>
+   </name>
+   <stregnth>500</stregnth>
+   <objectId>0a2df1a4-c566-4feb-89bc-9d39c19d683b</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>F Bn Part, Yi Sheng Div</english>
+    <chineseSimplified>义胜前营一部</chineseSimplified>
+   </name>
+   <stregnth>200</stregnth>
+   <objectId>57057021-a645-4b60-ba37-4827ab44a46e</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Cav Bn, LT FA</english>
+    <chineseSimplified>芦台防军马队</chineseSimplified>
+   </name>
+   <stregnth>200</stregnth>
+   <objectId>ed9cc67e-a2c0-4669-8e8c-ec95a82bbf23</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Bn, 11th Inf Regt</english>
+    <chineseSimplified>步兵第11联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>800</stregnth>
+   <objectId>d05c4b4e-c937-4280-bd08-e357d3a3dcba</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Bn, 11th Inf Regt</english>
+    <chineseSimplified>步兵第11联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>800</stregnth>
+   <objectId>78204a0e-7d7c-450e-b10d-826561a70857</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Bn, 21th Inf Regt</english>
+    <chineseSimplified>步兵第21联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>600</stregnth>
+   <remark>2nd Coy is detached.</remark>
+   <objectId>90d60e0e-ccf7-4aba-9a67-986907bdd56f</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>7th Coy, 2nd Bn, 21th Regt</english>
+    <chineseSimplified>步兵第21联队第2大队第7中队</chineseSimplified>
+   </name>
+   <stregnth>200</stregnth>
+   <objectId>309e644c-8005-4c5f-8821-2aeeb8b971cf</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Bn, 21th Regt</english>
+    <chineseSimplified>步兵第21联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>600</stregnth>
+   <remark>11th Coy is detached.</remark>
+   <objectId>a78a315d-c3c2-4b2b-a14b-d82e06d44eb6</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Coy, 5th Cav Bn</english>
+    <chineseSimplified>骑兵第5大队第1中队</chineseSimplified>
+   </name>
+   <stregnth>35</stregnth>
+   <remark>Most cavalries are assigned to other units for communication, scouting and other support role, so the "main" unit have only 35 cavalries (A full Coy should have 159 strength)</remark>
+   <objectId>0abfe5cb-3b7e-4dfa-b722-747763468bdd</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Bn, 5th Field Art Regt</english>
+    <chineseSimplified>野战炮兵第5联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>140</stregnth>
+   <objectId>8809f6a2-bf65-473c-90bc-424a1fca6f48</objectId>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Coy, 5th Eng Bn</english>
+    <chineseSimplified>工兵第5大队第1中队</chineseSimplified>
+   </name>
+   <stregnth>80</stregnth>
+   <objectId>34d10468-a099-494d-b285-e51275e9d004</objectId>
+  </LandUnit>
  </landUnits>
  <serializedCells>
   <width>60</width>

@@ -44,7 +44,7 @@
                                 <ui:Button text="Select Default Leader" name="SelectDefaultLeaderButton" style="flex-grow: 1;" />
                                 <ui:Button text="Go to Leader" name="GotoLeaderButton" />
                             </ui:VisualElement>
-                            <ui:SliderInt label="Crew Rating" high-value="10" low-value="-2">
+                            <ui:SliderInt label="Crew Rating" high-value="10" low-value="-2" show-input-field="true">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="crewRating" binding-mode="TwoWay" />
                                 </Bindings>

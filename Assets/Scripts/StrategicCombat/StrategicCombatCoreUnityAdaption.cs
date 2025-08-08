@@ -1,5 +1,6 @@
 using CoreUtils;
 using Unity.Properties;
+using UnityEngine.UIElements;
 
 namespace StrategicCombatCore
 {
@@ -7,5 +8,8 @@ namespace StrategicCombatCore
     {
         [CreateProperty]
         public string leaderName => EntityManager.Instance.Get<Leader>(objectId)?.name?.GetMergedName() ?? "[Not Defined or Invalid]";
+
+        [CreateProperty]
+        public StyleBackground leaderPortrait => EntityManager.Instance.Get<Leader>(objectId)?.portraitReference?.pictureStyleBackground ?? null;
     }
 }

@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:ScrollView>
+    <ui:ScrollView data-source-type="NavalCombatCore.NamedShip, Assembly-CSharp">
         <ui:VisualElement style="flex-grow: 0; height: 100px; flex-shrink: 0; -unity-background-scale-mode: scale-to-fit;">
             <Bindings>
                 <ui:DataBinding property="style.backgroundImage" data-source-path="shipClassTopPortraitStyleBackground" binding-mode="ToTarget" />
@@ -18,7 +18,7 @@
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 50px; -unity-background-scale-mode: scale-to-fit;">
                 <Bindings>
-                    <ui:DataBinding property="style.backgroundImage" data-source-path="defaultLeaderStyleBackground" binding-mode="ToTarget" />
+                    <ui:DataBinding property="style.backgroundImage" data-source-path="defaultLeaderProp.portraitReference.pictureStyleBackground" binding-mode="ToTarget" />
                 </Bindings>
             </ui:VisualElement>
         </ui:VisualElement>

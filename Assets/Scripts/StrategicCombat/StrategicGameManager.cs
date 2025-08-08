@@ -90,6 +90,26 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         yield return StreamingAssetReference.Instance.TryToCompleteFromStreamingAssetReference(StrategicGameState.Instance);
 
         StrategicGameState.Instance.ResetAndRegisterAll();
+
+        // Temp Conversion for Leaders (portraitCode => PictureReference)
+        // var leaderFolder = Application.streamingAssetsPath + "/Pictures/Leaders";
+        // var files = Directory.GetFiles(leaderFolder);
+        // var fileNames = files.Where(s => !s.EndsWith(".meta")).Select(s => Path.GetFileName(s)).ToList();
+
+        // foreach (var leader in StrategicGameState.Instance.leaders)
+        // {
+        //     // leader.portrait = PictureReference.FromCode(leader.portraitCode);
+        //     var portraitCode = leader.portraitCode;
+        //     // var pathWithoutExt = leaderFolder + portraitCode;
+        //     if (portraitCode != null)
+        //     {
+        //         var match = fileNames.FirstOrDefault(name => name.StartsWith(portraitCode));
+        //         if (match != null)
+        //         {
+        //             leader.portraitReference = new() { path = "Pictures/Leaders/" + match, isBuiltin = true };
+        //         }
+        //     }
+        // }
     }
 
     public Vector2 ToCenter(Vector2 xy)

@@ -79,6 +79,7 @@ namespace StrategicCombatCore
         public string objectId { get; set; }
         public GlobalString name = new();
         public int stregnth;
+        public string remark;
 
         // public LandUnitSize size; // Move to LandUnitTemplate?
         public IEnumerable<IObjectIdLabeled> GetSubObjects()

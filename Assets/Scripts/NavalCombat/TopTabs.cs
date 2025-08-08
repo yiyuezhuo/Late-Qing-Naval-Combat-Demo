@@ -68,8 +68,8 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         loadButton.clicked += () =>
         {
-            IOManager.Instance.textLoaded += OnFullStateXMLLoaded;
-            IOManager.Instance.LoadTextFile("xml");
+            // IOManager.Instance.textLoaded += OnFullStateXMLLoaded;
+            IOManager.Instance.LoadTextFile(OnFullStateXMLLoaded, "xml");
         };
 
         var selectionBuiltinButton = root.Q<Button>("SelectionBuiltinButton");
@@ -233,9 +233,9 @@ public class TopTabs : SingletonDocument<TopTabs>
         }
     }
 
-    void OnFullStateXMLLoaded(object sender, string text)
+    void OnFullStateXMLLoaded(string text)
     {
-        IOManager.Instance.textLoaded -= OnFullStateXMLLoaded;
+        // IOManager.Instance.textLoaded -= OnFullStateXMLLoaded;
 
         var fullState = FullState.FromXML(text);
         StartCoroutine(GameManager.Instance.CompleteFullStateAndUpdateCoroutine(fullState));

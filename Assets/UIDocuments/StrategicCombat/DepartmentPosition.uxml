@@ -2,7 +2,7 @@
     <ui:VisualElement name="DepartmentPosition" data-source-type="StrategicCombatCore.DepartmentPosition, Assembly-CSharp" style="flex-direction: row;">
         <ui:VisualElement name="LeaderBackground" style="width: 80px; -unity-background-scale-mode: scale-to-fit;">
             <Bindings>
-                <ui:DataBinding property="style.backgroundImage" data-source-path="objectId" binding-mode="ToTarget" source-to-ui-converters="string (Leader objectID) =&gt; StyleBackground" />
+                <ui:DataBinding property="style.backgroundImage" data-source-path="leaderPortrait" binding-mode="ToTarget" />
             </Bindings>
         </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1;">

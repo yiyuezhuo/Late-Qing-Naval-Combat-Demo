@@ -29,7 +29,7 @@ public class LeaderEditor : HideableDocument<LeaderEditor>
         {
             var leader = objects.FirstOrDefault() as Leader;
             selectedLeaderObjectId = leader?.objectId;
-            
+
             Debug.Log($"leadersListView.selectionChanged: {selectedLeaderObjectId}");
         };
 
@@ -48,14 +48,17 @@ public class LeaderEditor : HideableDocument<LeaderEditor>
         var importButton = root.Q<Button>("ImportButton");
         importButton.clicked += () =>
         {
-            IOManager.Instance.textLoaded += OnLeadersXMLLoaded;
-            IOManager.Instance.LoadTextFile("xml");
+            // IOManager.Instance.textLoaded += OnLeadersXMLLoaded;
+            IOManager.Instance.LoadTextFile(OnLeadersXMLLoaded, "xml");
         };
+
+        var portaitField = root.Q<VisualElement>("PortaitField");
+        PictureReferenceBinder.Bind(portaitField);
     }
 
-    void OnLeadersXMLLoaded(object sender, string text)
+    void OnLeadersXMLLoaded(string text)
     {
-        IOManager.Instance.textLoaded -= OnLeadersXMLLoaded;
+        /// IOManager.Instance.textLoaded -= OnLeadersXMLLoaded;
 
         // NavalGameState.Instance.LeadersFromXML(text);
         // NavalGameState.Instance.ResetAndRegisterAll();

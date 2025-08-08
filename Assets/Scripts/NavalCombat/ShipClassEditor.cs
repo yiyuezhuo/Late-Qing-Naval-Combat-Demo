@@ -150,8 +150,8 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
         var importButton = root.Q<Button>("ImportButton");
         importButton.clicked += () =>
         {
-            IOManager.Instance.textLoaded += OnShipClassesXMLLoaded;
-            IOManager.Instance.LoadTextFile("xml");
+            // IOManager.Instance.textLoaded += OnShipClassesXMLLoaded;
+            IOManager.Instance.LoadTextFile(OnShipClassesXMLLoaded, "xml");
         };
 
         var exportSelectedBatteryButton = root.Q<Button>("ExportSelectedBatteryButton");
@@ -172,15 +172,15 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             var idx = batteryRecordsListView.selectedIndex;
             if (idx >= 0 && idx < batteryRecordsListView.itemsSource.Count) // TODO: Notify invalid 
             {
-                IOManager.Instance.textLoaded += OnBatteryXMLLoaded;
-                IOManager.Instance.LoadTextFile("xml");
+                // IOManager.Instance.textLoaded += OnBatteryXMLLoaded;
+                IOManager.Instance.LoadTextFile(OnBatteryXMLLoaded, "xml");
             }
         };
     }
 
-    public void OnBatteryXMLLoaded(object sender, string text)
+    public void OnBatteryXMLLoaded(string text)
     {
-        IOManager.Instance.textLoaded -= OnBatteryXMLLoaded;
+        // IOManager.Instance.textLoaded -= OnBatteryXMLLoaded;
 
         var idx = batteryRecordsListView.selectedIndex;
         if (idx >= 0 && idx < batteryRecordsListView.itemsSource.Count) // TODO: Notify invalid 
@@ -193,9 +193,9 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
         gameState.ResetAndRegisterAll(); // re-duplicate object id 
     }
 
-    public void OnShipClassesXMLLoaded(object sender, string text)
+    public void OnShipClassesXMLLoaded(string text)
     {
-        IOManager.Instance.textLoaded -= OnShipClassesXMLLoaded;
+        // IOManager.Instance.textLoaded -= OnShipClassesXMLLoaded;
 
         var gameState = SuperGameState.Instance.GetCurrentGameState();
         gameState.ShipClassesFromXML(text);

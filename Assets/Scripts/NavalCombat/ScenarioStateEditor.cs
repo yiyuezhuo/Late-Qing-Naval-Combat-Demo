@@ -185,14 +185,14 @@ public class ScenarioStateEditor : HideableDocument<ScenarioStateEditor>
         var importButton = root.Q<Button>("ImportButton");
         importButton.clicked += () =>
         {
-            IOManager.Instance.textLoaded += OnImportXmlLoaded;
-            IOManager.Instance.LoadTextFile("xml");
+            // IOManager.Instance.textLoaded += OnImportXmlLoaded;
+            IOManager.Instance.LoadTextFile(OnImportXmlLoaded, "xml");
         };
     }
 
-    void OnImportXmlLoaded(object sender, string text)
+    void OnImportXmlLoaded(string text)
     {
-        IOManager.Instance.textLoaded -= OnImportXmlLoaded;
+        // IOManager.Instance.textLoaded -= OnImportXmlLoaded;
         NavalGameState.Instance.ScenarioStateFromXML(text);
     }
 }

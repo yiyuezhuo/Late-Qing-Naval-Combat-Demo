@@ -26,6 +26,12 @@
                                 <ui:DataBinding property="value" data-source-path="stregnth" binding-mode="TwoWay" />
                             </Bindings>
                         </ui:IntegerField>
+                        <ui:Label text="Remark" />
+                        <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="height: 100px; max-height: 100px; min-height: 100px; white-space: normal;">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
+                            </Bindings>
+                        </ui:TextField>
                     </ui:VisualElement>
                     <Bindings>
                         <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />

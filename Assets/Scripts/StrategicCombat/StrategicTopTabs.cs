@@ -33,8 +33,8 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         {
             Debug.Log("LoadButton clicked");
 
-            IOManager.Instance.textLoaded += OnMapXMLLoaded;
-            IOManager.Instance.LoadTextFile("xml");
+            // IOManager.Instance.textLoaded += OnMapXMLLoaded;
+            IOManager.Instance.LoadTextFile(OnMapXMLLoaded, "xml");
         };
 
         root.Q<Button>("GenerateMapButton").clicked += () =>
@@ -84,9 +84,9 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
     }
 
 
-    void OnMapXMLLoaded(object sender, string text)
+    void OnMapXMLLoaded(string text)
     {
-        IOManager.Instance.textLoaded -= OnMapXMLLoaded;
+        // IOManager.Instance.textLoaded -= OnMapXMLLoaded;
 
         var strategicGameState = XmlUtils.FromXML<StrategicGameState>(text);
         StrategicGameState.Instance.UpdateTo(strategicGameState);

@@ -28,7 +28,8 @@ namespace CoreUtils
     {
         public string objectId { get; set; }
         public GlobalString name = new();
-        public string portraitCode;
+        // public string portraitCode;
+        public PictureReference portraitReference = new();
         public LeaderSkillLevel navalStrategic; // command in a theater / organization / Planning /  generate better combat
         public LeaderSkillLevel navalOperational; // command a fleet / command in a battle
         public LeaderSkillLevel navalTactical; // command a ship / low-level group

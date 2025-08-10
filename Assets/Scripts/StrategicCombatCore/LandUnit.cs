@@ -57,7 +57,7 @@ namespace StrategicCombatCore
         public float rangeMeter; // 0~rangeMeter, 200%~100% firepower, rangeMeter~2*rangemeter, 100%~0% firepower
         public float moraleCoef; // Japanese Regular = 1.0, "elite" chinese (Xiang army) = 0.5, regular chinese = 0.2, recruit = 0.05
         public float densityStrengthPerSqMeter; // Chinese's old dense line tactic will cause more damage, which works like TOAW defense
-        public float assault; // when attack arrive defender's position and defender does not fallback, the firepower is replaced with assault value.
+        public float assault; // when attacker arrive defender's position and defender does not fallback, the firepower is replaced with assault value.
         public float ammoCoef; // Ammo consumption is determined by firepowerKgPerMin and ammoCoef
         public float rationCoef; // Ration consumption is determined by strength and rationCoef (cavalry will have a higher value)
         public float weaponWeightKgPerStrength; // weight (used in capacity consumption of transport, replacement)

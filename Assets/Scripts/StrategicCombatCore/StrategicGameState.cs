@@ -61,6 +61,7 @@ namespace StrategicCombatCore
 
         public List<LandUnitTemplate> landUnitTemplates = new();
         public List<LandUnit> landUnits = new();
+        public List<Weapon> weapons = new();
 
         public event EventHandler mapRebuilt;
         public event EventHandler<(int, int)> mapCellUpdated;
@@ -113,6 +114,7 @@ namespace StrategicCombatCore
             highCommand = newInstance.highCommand;
             landUnitTemplates = newInstance.landUnitTemplates;
             landUnits = newInstance.landUnits;
+            weapons = newInstance.weapons;
 
             mapRebuilt?.Invoke(this, EventArgs.Empty);
             edgeFeatureUpdated?.Invoke(this, EventArgs.Empty);
@@ -160,6 +162,9 @@ namespace StrategicCombatCore
             {
                 EntityManager.Instance.Register(landUnitTemplate, null);
             }
+
+            foreach (var weapon in weapons)
+                EntityManager.Instance.Register(weapon, null);
         }
 
         static StrategicGameState _instance;

@@ -4,7 +4,7 @@
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px;">
                 <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" style="flex-grow: 1;" />
-                <ui:VisualElement>
+                <ui:VisualElement name="ControlButtons">
                     <ui:Button text="Copy Last" name="CopyLastButton" />
                     <ui:Button text="Confirm" name="ConfirmButton" />
                 </ui:VisualElement>
@@ -12,7 +12,7 @@
             <ui:VisualElement style="flex-grow: 1;">
                 <ui:Label text="Not Selected or Invalid" />
                 <ui:VisualElement style="flex-grow: 1;">
-                    <ui:VisualElement style="flex-grow: 1;" />
+                    <ui:VisualElement name="ContentContainer" style="flex-grow: 1;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

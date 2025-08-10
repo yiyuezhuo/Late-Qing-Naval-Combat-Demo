@@ -1177,7 +1177,6 @@ MonoBehaviour:
   remainAdvanceSimulationSecondsRequestedByUserInput: 0
   remainAdvanceSimulationSecondsRequestedByUpdate: 0
   selectedShipLogObjectId: 
-  selectedNamedShipObjectId: 
   iconLanuageType: 0
   selectedMountStatusRecordObjectId: 
   selectedFireControlSystemStatusRecordObjectId: 

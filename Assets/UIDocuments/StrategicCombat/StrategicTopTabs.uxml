@@ -66,6 +66,7 @@
                     <ui:Button text="High Command" name="HighCommandEditorButton" />
                     <ui:Button text="Land Unit Template" name="LandUnitTemplateEditorButton" />
                     <ui:Button text="Land Unit" name="LandUnitEditorButton" />
+                    <ui:Button text="Weapon" name="WeaponEditorButton" />
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Naval">

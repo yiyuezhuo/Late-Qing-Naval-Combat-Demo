@@ -762,6 +762,100 @@
    <objectId>34d10468-a099-494d-b285-e51275e9d004</objectId>
   </LandUnit>
  </landUnits>
+ <weapons>
+  <Weapon>
+   <name>
+    <english>7cm Field Gun</english>
+    <japanese>伊式七糎野砲</japanese>
+    <chineseSimplified>意式七厘米野战炮</chineseSimplified>
+   </name>
+   <pictureReference>
+    <path>Pictures\Weapons\7cm Field Gun.jpg</path>
+    <isBuiltin>true</isBuiltin>
+   </pictureReference>
+   <remark>http://hneck.web.fc2.com/warJAweapon4.htm
+
+●明治13年頃、自国の兵器は国産化が必須という兵器独立論から、仏ﾌﾞﾘｭﾈｰ少佐の意見で墺伊でのﾕｶﾁｳｽ式圧搾青銅(鋼銅)製砲に着目。
+
+●翌年技師を墺伊仏に派遣。伊の青銅野砲1門と製造機械一式を購入し明治15年帰国。明治16年に国産化し制定。
+
+● Around the 13th year of the Meiji era (1880), based on the argument for military equipment independence, which emphasized the necessity of domestic production of weapons, attention was drawn to the Uchatius-type compressed bronze (steel-bronze) cannons from Austria and Italy, following the advice of French Major Brunet.
+
+● The following year, engineers were dispatched to Austria, Italy, and France. One bronze field cannon and a complete set of manufacturing machinery were purchased from Italy, and they returned to Japan in the 15th year of Meiji (1882). Domestic production was achieved and standardized by the 16th year of Meiji (1883).
+
+● 明治13年（1880年）左右，出于“本国兵器必须国产化”的兵器独立论，根据法国布鲁内少校的建议，关注了奥地利和意大利的乌卡提乌斯式压缩青铜（钢铜）制火炮。
+
+● 次年，向奥地利、意大利和法国派遣了工程师。从意大利购入一门青铜野炮及全套制造机械，于明治15年（1882年）回国。明治16年（1883年）实现国产化并正式制定。
+
+----
+
+https://takihomepage.web.fc2.com/7cm.htm
+
+Crew is not strong backed.
+</remark>
+   <rateOfFireRoundPerMinute>
+    <slow>1</slow>
+    <normal>2</normal>
+    <rapid>6</rapid>
+   </rateOfFireRoundPerMinute>
+   <burstRadiusMeter>0</burstRadiusMeter>
+   <shellWeightKg>4.28</shellWeightKg>
+   <weightKg>690</weightKg>
+   <crew>0</crew>
+   <reliability>1</reliability>
+   <melee>0</melee>
+   <effectiveRangeMeter>5000</effectiveRangeMeter>
+   <maxRangeMeter>5000</maxRangeMeter>
+   <load>286</load>
+   <muzzleVelocityMeterPerSecond>428.6</muzzleVelocityMeterPerSecond>
+   <calibreMM>75</calibreMM>
+   <objectId>d55dcd0b-837d-4a11-849f-aff1c1d35864</objectId>
+  </Weapon>
+  <Weapon>
+   <name>
+    <english>7cm Mountain Gun</english>
+    <japanese>伊式七糎山砲</japanese>
+    <chineseSimplified>意式七厘米山地炮</chineseSimplified>
+   </name>
+   <pictureReference>
+    <path>Pictures\Weapons\7cm Mountain Gun.jpg</path>
+    <isBuiltin>true</isBuiltin>
+   </pictureReference>
+   <remark>https://takihomepage.web.fc2.com/7cm.htm
+
+https://en.wikipedia.org/wiki/7_cm_mountain_gun
+
+The 7 cm mountain gun was a Japanese ordnance first used in 1883. It was used in the First Sino-Japanese War as the main artillery, and was used again in the Russo-Japanese War by second-line troops.
+
+From 1880, the Imperial Japanese Army wanted to produce guns on its own. With Italian help, the army designed new 75 mm guns. Because steel was expensive as a raw material in Japan at the time, bronze was used to produce the gun barrel.
+
+7cm山砲は、1883年に初めて使用された日本の火砲である。日清戦争では主力砲として使用され、日露戦争では第二線部隊によって再び使用された。
+
+1880年から、日本陸軍は独自に火砲を製造したいと考えていた。イタリアの支援を得て、陸軍は新しい75mm砲を設計した。当時の日本では鋼鉄が高価な原材料であったため、砲身の製造には青銅が使用された。
+
+7厘米山炮是日本于1883年首次使用的火炮。在甲午战争中作为主力火炮使用，日俄战争期间又被二线部队再次投入使用。
+
+自1880年起，日本陆军就希望自主生产火炮。在意大利的协助下，陆军设计出新型75毫米火炮。由于当时日本钢材昂贵，炮身采用青铜铸造。
+</remark>
+   <rateOfFireRoundPerMinute>
+    <slow>1</slow>
+    <normal>2</normal>
+    <rapid>6</rapid>
+   </rateOfFireRoundPerMinute>
+   <burstRadiusMeter>0</burstRadiusMeter>
+   <shellWeightKg>4.28</shellWeightKg>
+   <weightKg>256</weightKg>
+   <crew>0</crew>
+   <reliability>1</reliability>
+   <melee>0</melee>
+   <effectiveRangeMeter>3000</effectiveRangeMeter>
+   <maxRangeMeter>3000</maxRangeMeter>
+   <load>288</load>
+   <muzzleVelocityMeterPerSecond>256.6</muzzleVelocityMeterPerSecond>
+   <calibreMM>75</calibreMM>
+   <objectId>c76ab8d3-a1c1-4b8a-a1f0-cd21c627c079</objectId>
+  </Weapon>
+ </weapons>
  <serializedCells>
   <width>60</width>
   <height>40</height>

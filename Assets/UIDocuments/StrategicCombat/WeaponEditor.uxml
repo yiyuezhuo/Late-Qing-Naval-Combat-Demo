@@ -1,0 +1,123 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:Template name="PictureField" src="project://database/Assets/UIDocuments/Common/PictureField.uxml?fileID=9197481963319205126&amp;guid=7e20c3d60b5a8a34a80d1015e6851169&amp;type=3#PictureField" />
+    <ui:VisualElement data-source-type="WeaponEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
+        <ui:Label text="Weapon Editor" class="title" />
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px;">
+                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" data-source-path="currentGameState.weapons" item-template="project://database/Assets/UIDocuments/Templates/WeaponLabel.uxml?fileID=9197481963319205126&amp;guid=64322fe9ac2f31b469011ea7d0e190e0&amp;type=3#WeaponLabel" style="flex-grow: 1;" />
+                <ui:VisualElement name="ControlButtons">
+                    <ui:Button text="Copy Last" name="CopyLastButton" />
+                    <ui:Button text="Confirm" name="ConfirmButton" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:Label text="Not Selected or Invalid">
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
+                    </Bindings>
+                </ui:Label>
+                <ui:VisualElement style="flex-grow: 1;">
+                    <ui:VisualElement name="ContentContainer" data-source-path="selectedObject" style="flex-grow: 1;">
+                        <ui:VisualElement style="flex-direction: row;">
+                            <ui:Instance template="GlobalStringEditor" data-source-path="name" style="flex-grow: 1;">
+                                <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+                            </ui:Instance>
+                            <ui:VisualElement style="width: 200px; -unity-background-scale-mode: scale-to-fit;">
+                                <Bindings>
+                                    <ui:DataBinding property="style.backgroundImage" data-source-path="pictureReference.pictureStyleBackground" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:Instance template="PictureField" data-source-path="pictureReference" name="PictureField">
+                            <AttributeOverrides element-name="FieldLabel" text="Picture" />
+                        </ui:Instance>
+                        <ui:VisualElement style="flex-direction: row;">
+                            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                <ui:VisualElement data-source-path="rateOfFireRoundPerMinute" style="border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-left: 1px; margin-bottom: 1px; margin-right: 1px; margin-top: 1px;">
+                                    <ui:Label text="Rate of Fire (round/min)" />
+                                    <ui:FloatField label="Slow">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="slow" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Normal">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="normal" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Rapid">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="rapid" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                </ui:VisualElement>
+                                <ui:IntegerField label="Load">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="load" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:IntegerField>
+                                <ui:FloatField label="Shell Weight (kg)">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="shellWeightKg" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Carrying Weight (kg)">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="weightKg" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:FloatField>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                <ui:FloatField label="Effective Range (meter)">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="effectiveRangeMeter" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Max Range (Meter)">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="maxRangeMeter" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:Slider label="Reliability" high-value="1" show-input-field="true">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="reliability" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:Slider>
+                                <ui:FloatField label="Muzzle Velocity (m/s)">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="muzzleVelocityMeterPerSecond" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Calibre (mm)">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="calibreMM" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:IntegerField label="Crew">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="crew" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:IntegerField>
+                                <ui:FloatField label="Melee">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="melee" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:FloatField>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:Label text="Remark" />
+                        <ui:TextField multiline="true" vertical-scroller-visibility="AlwaysVisible" style="height: 100px; min-height: 100px; max-height: 100px; white-space: normal;">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
+                            </Bindings>
+                        </ui:TextField>
+                    </ui:VisualElement>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

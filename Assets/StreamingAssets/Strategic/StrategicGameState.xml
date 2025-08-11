@@ -801,12 +801,12 @@ Crew is not strong backed.
    <burstRadiusMeter>0</burstRadiusMeter>
    <shellWeightKg>4.28</shellWeightKg>
    <weightKg>690</weightKg>
-   <crew>0</crew>
+   <crew>10</crew>
    <reliability>1</reliability>
-   <melee>0</melee>
+   <meleeAbility>None</meleeAbility>
    <effectiveRangeMeter>5000</effectiveRangeMeter>
    <maxRangeMeter>5000</maxRangeMeter>
-   <load>286</load>
+   <load>142</load>
    <muzzleVelocityMeterPerSecond>428.6</muzzleVelocityMeterPerSecond>
    <calibreMM>75</calibreMM>
    <objectId>d55dcd0b-837d-4a11-849f-aff1c1d35864</objectId>
@@ -845,15 +845,305 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <burstRadiusMeter>0</burstRadiusMeter>
    <shellWeightKg>4.28</shellWeightKg>
    <weightKg>256</weightKg>
-   <crew>0</crew>
+   <crew>10</crew>
    <reliability>1</reliability>
-   <melee>0</melee>
+   <meleeAbility>None</meleeAbility>
    <effectiveRangeMeter>3000</effectiveRangeMeter>
    <maxRangeMeter>3000</maxRangeMeter>
-   <load>288</load>
+   <load>144</load>
    <muzzleVelocityMeterPerSecond>256.6</muzzleVelocityMeterPerSecond>
    <calibreMM>75</calibreMM>
    <objectId>c76ab8d3-a1c1-4b8a-a1f0-cd21c627c079</objectId>
+  </Weapon>
+  <Weapon>
+   <name>
+    <english>Murata Type 13 infantry rifle </english>
+    <japanese>十三年式村田銃</japanese>
+    <chineseSimplified>村田十三年式步枪</chineseSimplified>
+   </name>
+   <pictureReference>
+    <path>Pictures\Weapons\Murata 13 Rifle.jpg</path>
+    <isBuiltin>true</isBuiltin>
+   </pictureReference>
+   <rateOfFireRoundPerMinute>
+    <slow>2</slow>
+    <normal>4</normal>
+    <rapid>6</rapid>
+   </rateOfFireRoundPerMinute>
+   <burstRadiusMeter>0</burstRadiusMeter>
+   <shellWeightKg>0.0272</shellWeightKg>
+   <weightKg>4.6</weightKg>
+   <crew>1</crew>
+   <reliability>1</reliability>
+   <meleeAbility>Bayonet</meleeAbility>
+   <effectiveRangeMeter>325</effectiveRangeMeter>
+   <maxRangeMeter>1300</maxRangeMeter>
+   <load>70</load>
+   <muzzleVelocityMeterPerSecond>435</muzzleVelocityMeterPerSecond>
+   <calibreMM>11</calibreMM>
+   <objectId>bb516fba-fe39-4d6b-a16c-cf2d8ead46f4</objectId>
+  </Weapon>
+  <Weapon>
+   <name>
+    <english>Murata Type 18 infantry rifle </english>
+    <japanese>十八年式村田銃</japanese>
+    <chineseSimplified>村田十八年式步枪</chineseSimplified>
+   </name>
+   <pictureReference>
+    <path>Pictures\Weapons\Murata 18 Rifle.jpg</path>
+    <isBuiltin>true</isBuiltin>
+   </pictureReference>
+   <rateOfFireRoundPerMinute>
+    <slow>2</slow>
+    <normal>4</normal>
+    <rapid>6</rapid>
+   </rateOfFireRoundPerMinute>
+   <burstRadiusMeter>0</burstRadiusMeter>
+   <shellWeightKg>0.0272</shellWeightKg>
+   <weightKg>4.06</weightKg>
+   <crew>1</crew>
+   <reliability>1</reliability>
+   <meleeAbility>Bayonet</meleeAbility>
+   <effectiveRangeMeter>325</effectiveRangeMeter>
+   <maxRangeMeter>1300</maxRangeMeter>
+   <load>70</load>
+   <muzzleVelocityMeterPerSecond>435</muzzleVelocityMeterPerSecond>
+   <calibreMM>11</calibreMM>
+   <objectId>8a79c97b-0998-439e-a863-3cbeb0267b51</objectId>
+  </Weapon>
+  <Weapon>
+   <name>
+    <english>Murata Type 16 cavalary rifle</english>
+    <japanese>十六年式騎銃</japanese>
+    <chineseSimplified>村田十六年式骑兵枪</chineseSimplified>
+   </name>
+   <pictureReference>
+    <isBuiltin>false</isBuiltin>
+   </pictureReference>
+   <remark>http://hneck.web.fc2.com/warJAweapon2.htm
+
+● The overall length of the Type 13 Murata rifle was shortened, and its weight was reduced.
+● It was issued to cavalry, artillery, and transport troops as a successor to the Spencer rifle.
+
+● 十三年式村田枪的全长被缩短，并实现了轻量化。
+● 作为斯宾塞枪的后继型号，它被配发给骑兵、炮兵和辎重兵。
+</remark>
+   <rateOfFireRoundPerMinute>
+    <slow>2</slow>
+    <normal>4</normal>
+    <rapid>6</rapid>
+   </rateOfFireRoundPerMinute>
+   <burstRadiusMeter>0</burstRadiusMeter>
+   <shellWeightKg>0.0272</shellWeightKg>
+   <weightKg>3.6</weightKg>
+   <crew>1</crew>
+   <reliability>1</reliability>
+   <meleeAbility>Buttstroke</meleeAbility>
+   <effectiveRangeMeter>375</effectiveRangeMeter>
+   <maxRangeMeter>1500</maxRangeMeter>
+   <load>30</load>
+   <muzzleVelocityMeterPerSecond>400.2</muzzleVelocityMeterPerSecond>
+   <calibreMM>11</calibreMM>
+   <objectId>8d5d40db-d78a-4289-9651-addfc6e423de</objectId>
+  </Weapon>
+  <Weapon>
+   <name>
+    <english>Murate Type 22 Rifle</english>
+    <japanese>二十二年式村田連発銃</japanese>
+    <chineseSimplified>二十二年式村田步枪</chineseSimplified>
+   </name>
+   <pictureReference>
+    <path>Pictures\Weapons\Murata Type 22 Rifle.jpg</path>
+    <isBuiltin>true</isBuiltin>
+   </pictureReference>
+   <rateOfFireRoundPerMinute>
+    <slow>2</slow>
+    <normal>4</normal>
+    <rapid>6</rapid>
+   </rateOfFireRoundPerMinute>
+   <burstRadiusMeter>0</burstRadiusMeter>
+   <shellWeightKg>0.0155</shellWeightKg>
+   <weightKg>4</weightKg>
+   <crew>1</crew>
+   <reliability>1</reliability>
+   <meleeAbility>Bayonet</meleeAbility>
+   <effectiveRangeMeter>500</effectiveRangeMeter>
+   <maxRangeMeter>2000</maxRangeMeter>
+   <load>70</load>
+   <muzzleVelocityMeterPerSecond>612</muzzleVelocityMeterPerSecond>
+   <calibreMM>8</calibreMM>
+   <objectId>7e844caf-1dab-40f8-bc42-e977d54fd1ae</objectId>
+  </Weapon>
+  <Weapon>
+   <name>
+    <english>Murate Type 22 Carbine</english>
+    <japanese>二十二年式村田連発騎銃</japanese>
+    <chineseSimplified>二十二年式村田骑兵枪</chineseSimplified>
+   </name>
+   <pictureReference>
+    <path>Pictures\Weapons\Murate Type 22 Carbine.jpg</path>
+    <isBuiltin>true</isBuiltin>
+   </pictureReference>
+   <rateOfFireRoundPerMinute>
+    <slow>2</slow>
+    <normal>4</normal>
+    <rapid>6</rapid>
+   </rateOfFireRoundPerMinute>
+   <burstRadiusMeter>0</burstRadiusMeter>
+   <shellWeightKg>0.0155</shellWeightKg>
+   <weightKg>3.853</weightKg>
+   <crew>1</crew>
+   <reliability>1</reliability>
+   <meleeAbility>Buttstroke</meleeAbility>
+   <effectiveRangeMeter>375</effectiveRangeMeter>
+   <maxRangeMeter>1500</maxRangeMeter>
+   <load>30</load>
+   <muzzleVelocityMeterPerSecond>590</muzzleVelocityMeterPerSecond>
+   <calibreMM>8</calibreMM>
+   <objectId>54cb4ae4-4d2a-4bad-a6cf-d1a25408e96c</objectId>
+  </Weapon>
+  <Weapon>
+   <name>
+    <english>Mauser Model 1871</english>
+    <japanese>モーゼルM1871</japanese>
+    <chineseSimplified>11毫米单响步枪</chineseSimplified>
+   </name>
+   <pictureReference>
+    <path>Pictures\Weapons\Mauser Model 1871.jpg</path>
+    <isBuiltin>true</isBuiltin>
+   </pictureReference>
+   <rateOfFireRoundPerMinute>
+    <slow>2</slow>
+    <normal>4</normal>
+    <rapid>6</rapid>
+   </rateOfFireRoundPerMinute>
+   <burstRadiusMeter>0</burstRadiusMeter>
+   <shellWeightKg>0.024</shellWeightKg>
+   <weightKg>4.52</weightKg>
+   <crew>1</crew>
+   <reliability>1</reliability>
+   <meleeAbility>Bayonet</meleeAbility>
+   <effectiveRangeMeter>400</effectiveRangeMeter>
+   <maxRangeMeter>1600</maxRangeMeter>
+   <load>0</load>
+   <muzzleVelocityMeterPerSecond>440</muzzleVelocityMeterPerSecond>
+   <calibreMM>11</calibreMM>
+   <objectId>4ab547f0-7873-4b0c-abc7-4e31a751ce1a</objectId>
+  </Weapon>
+  <Weapon>
+   <name>
+    <english>Gewehr 1888</english>
+    <japanese>Gew88</japanese>
+    <chineseSimplified>1888式委员会步枪</chineseSimplified>
+   </name>
+   <pictureReference>
+    <path>Pictures\Weapons\Gewehr 1888.jpg</path>
+    <isBuiltin>true</isBuiltin>
+   </pictureReference>
+   <rateOfFireRoundPerMinute>
+    <slow>2</slow>
+    <normal>4</normal>
+    <rapid>6</rapid>
+   </rateOfFireRoundPerMinute>
+   <burstRadiusMeter>0</burstRadiusMeter>
+   <shellWeightKg>0.0146</shellWeightKg>
+   <weightKg>3.75</weightKg>
+   <crew>1</crew>
+   <reliability>1</reliability>
+   <meleeAbility>Bayonet</meleeAbility>
+   <effectiveRangeMeter>500</effectiveRangeMeter>
+   <maxRangeMeter>2000</maxRangeMeter>
+   <load>0</load>
+   <muzzleVelocityMeterPerSecond>600</muzzleVelocityMeterPerSecond>
+   <calibreMM>7.92</calibreMM>
+   <objectId>ed6f88d1-def8-4b04-aef7-1fed3654f49c</objectId>
+  </Weapon>
+  <Weapon>
+   <name>
+    <english>Jingal</english>
+    <japanese>抬枪</japanese>
+    <chineseSimplified>抬枪</chineseSimplified>
+   </name>
+   <pictureReference>
+    <path>Pictures\Weapons\Jingal.jpg</path>
+    <isBuiltin>true</isBuiltin>
+   </pictureReference>
+   <remark>Weak Evidence: Muzzle Velocity, Load, ROF</remark>
+   <rateOfFireRoundPerMinute>
+    <slow>0.25</slow>
+    <normal>0.5</normal>
+    <rapid>1</rapid>
+   </rateOfFireRoundPerMinute>
+   <burstRadiusMeter>0</burstRadiusMeter>
+   <shellWeightKg>0.231</shellWeightKg>
+   <weightKg>13.2</weightKg>
+   <crew>4</crew>
+   <reliability>1</reliability>
+   <meleeAbility>None</meleeAbility>
+   <effectiveRangeMeter>250</effectiveRangeMeter>
+   <maxRangeMeter>500</maxRangeMeter>
+   <load>60</load>
+   <muzzleVelocityMeterPerSecond>400</muzzleVelocityMeterPerSecond>
+   <calibreMM>15.9</calibreMM>
+   <objectId>6d80386b-392e-4d34-8bd4-c951698585e1</objectId>
+  </Weapon>
+  <Weapon>
+   <name>
+    <english>PS Light Cannon</english>
+    <japanese>劈山砲</japanese>
+    <chineseSimplified>劈山炮</chineseSimplified>
+   </name>
+   <pictureReference>
+    <path>Pictures\Weapons\Pi Shan Gun.jpg</path>
+    <isBuiltin>true</isBuiltin>
+   </pictureReference>
+   <remark>Weak Evidence: ROF, Load, Shell Weight, MV, </remark>
+   <rateOfFireRoundPerMinute>
+    <slow>0.25</slow>
+    <normal>0.5</normal>
+    <rapid>1</rapid>
+   </rateOfFireRoundPerMinute>
+   <burstRadiusMeter>0</burstRadiusMeter>
+   <shellWeightKg>2</shellWeightKg>
+   <weightKg>50</weightKg>
+   <crew>4</crew>
+   <reliability>1</reliability>
+   <meleeAbility>None</meleeAbility>
+   <effectiveRangeMeter>500</effectiveRangeMeter>
+   <maxRangeMeter>1000</maxRangeMeter>
+   <load>60</load>
+   <muzzleVelocityMeterPerSecond>300</muzzleVelocityMeterPerSecond>
+   <calibreMM>50</calibreMM>
+   <objectId>147555ec-3b5f-413e-8102-a71d41f77924</objectId>
+  </Weapon>
+  <Weapon>
+   <name>
+    <english>Krupp 7.5cm Field Gun</english>
+    <japanese>克式七糎半野砲</japanese>
+    <chineseSimplified>克虏伯7.5厘米山炮</chineseSimplified>
+   </name>
+   <pictureReference>
+    <path>Pictures\Weapons\Krupp 75mm Field Gun.jpg</path>
+    <isBuiltin>true</isBuiltin>
+   </pictureReference>
+   <remark>Weak Evidence: ROF, Crew</remark>
+   <rateOfFireRoundPerMinute>
+    <slow>1</slow>
+    <normal>2</normal>
+    <rapid>6</rapid>
+   </rateOfFireRoundPerMinute>
+   <burstRadiusMeter>0</burstRadiusMeter>
+   <shellWeightKg>5.3</shellWeightKg>
+   <weightKg>405</weightKg>
+   <crew>10</crew>
+   <reliability>1</reliability>
+   <meleeAbility>None</meleeAbility>
+   <effectiveRangeMeter>4300</effectiveRangeMeter>
+   <maxRangeMeter>4300</maxRangeMeter>
+   <load>60</load>
+   <muzzleVelocityMeterPerSecond>280</muzzleVelocityMeterPerSecond>
+   <calibreMM>75</calibreMM>
+   <objectId>61d6a8ff-a045-437d-aaa1-d03b6ac4bfd9</objectId>
   </Weapon>
  </weapons>
  <serializedCells>

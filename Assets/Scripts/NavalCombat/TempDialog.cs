@@ -11,6 +11,8 @@ public class TempDialog
     public event EventHandler<VisualElement> onConfirmed;
     public event EventHandler<VisualElement> onCancelled;
 
+    public bool centering = true;
+
     public void Popup()
     {
         var el = template.CloneTree();
@@ -45,14 +47,17 @@ public class TempDialog
             };
         }
 
-        el.style.position = Position.Absolute;
-        el.style.left = new Length(50, LengthUnit.Percent);
-        el.style.top = new Length(50, LengthUnit.Percent);
-        el.style.translate = new StyleTranslate(
-            new Translate(
-                new Length(-50, LengthUnit.Percent),
-                new Length(-50, LengthUnit.Percent)
-            )
-        );
+        if (centering)
+        {
+            el.style.position = Position.Absolute;
+            el.style.left = new Length(50, LengthUnit.Percent);
+            el.style.top = new Length(50, LengthUnit.Percent);
+            el.style.translate = new StyleTranslate(
+                new Translate(
+                    new Length(-50, LengthUnit.Percent),
+                    new Length(-50, LengthUnit.Percent)
+                )
+            );
+        }
     }
 }

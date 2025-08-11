@@ -155,7 +155,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             {
                 root = root,
                 template = scenarioPickerDialogDocument,
-                templateDataSource = scenarioPickerDialog
+                templateDataSource = scenarioPickerDialog,
+                centering = false
             };
             scenarioPickerDialog.Bind(tempDialog);
 

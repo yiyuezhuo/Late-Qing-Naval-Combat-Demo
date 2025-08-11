@@ -19,52 +19,56 @@
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1;">
-                    <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-                        <ui:VisualElement style="flex-grow: 1;">
-                            <ui:Instance template="GlobalStringEditor" data-source-path="name">
-                                <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+                    <ui:ScrollView>
+                        <ui:VisualElement style="flex-grow: 1; min-width: 500px;">
+                            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 1;">
+                                    <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                                        <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+                                    </ui:Instance>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 0; flex-basis: 150px; flex-shrink: 0; -unity-background-scale-mode: scale-to-fit;">
+                                    <Bindings>
+                                        <ui:DataBinding property="style.backgroundImage" data-source-path="portraitReference.pictureStyleBackground.value" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:Instance template="PictureField" data-source-path="portraitReference" name="PortaitField">
+                                <AttributeOverrides element-name="FieldLabel" text="Portrait" />
                             </ui:Instance>
+                            <ui:EnumField label="Naval Strategic" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="navalStrategic" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:EnumField>
+                            <ui:EnumField label="Naval Operational" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="navalOperational" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:EnumField>
+                            <ui:EnumField label="Naval Tactical" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="navalTactical" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:EnumField>
+                            <ui:EnumField label="Land Strategic" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="landStrategic" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:EnumField>
+                            <ui:EnumField label="Land Operational" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="landOperational" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:EnumField>
+                            <ui:EnumField label="Land Tactical" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="landTactical" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:EnumField>
+                            <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" header-title="Traits" show-foldout-header="true" item-template="project://database/Assets/UIDocuments/Templates/LeaderTraitEditor.uxml?fileID=9197481963319205126&amp;guid=af7a28a3141020b4aa2a856f35f2bb82&amp;type=3#LeaderTraitEditor" data-source-path="traits" />
                         </ui:VisualElement>
-                        <ui:VisualElement style="flex-grow: 0; flex-basis: 150px; flex-shrink: 0; -unity-background-scale-mode: scale-to-fit;">
-                            <Bindings>
-                                <ui:DataBinding property="style.backgroundImage" data-source-path="portraitReference.pictureStyleBackground.value" binding-mode="ToTarget" />
-                            </Bindings>
-                        </ui:VisualElement>
-                    </ui:VisualElement>
-                    <ui:Instance template="PictureField" data-source-path="portraitReference" name="PortaitField">
-                        <AttributeOverrides element-name="FieldLabel" text="Portrait" />
-                    </ui:Instance>
-                    <ui:EnumField label="Naval Strategic" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="navalStrategic" binding-mode="TwoWay" />
-                        </Bindings>
-                    </ui:EnumField>
-                    <ui:EnumField label="Naval Operational" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="navalOperational" binding-mode="TwoWay" />
-                        </Bindings>
-                    </ui:EnumField>
-                    <ui:EnumField label="Naval Tactical" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="navalTactical" binding-mode="TwoWay" />
-                        </Bindings>
-                    </ui:EnumField>
-                    <ui:EnumField label="Land Strategic" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="landStrategic" binding-mode="TwoWay" />
-                        </Bindings>
-                    </ui:EnumField>
-                    <ui:EnumField label="Land Operational" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="landOperational" binding-mode="TwoWay" />
-                        </Bindings>
-                    </ui:EnumField>
-                    <ui:EnumField label="Land Tactical" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="landTactical" binding-mode="TwoWay" />
-                        </Bindings>
-                    </ui:EnumField>
-                    <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" header-title="Traits" show-foldout-header="true" item-template="project://database/Assets/UIDocuments/Templates/LeaderTraitEditor.uxml?fileID=9197481963319205126&amp;guid=af7a28a3141020b4aa2a856f35f2bb82&amp;type=3#LeaderTraitEditor" data-source-path="traits" />
+                    </ui:ScrollView>
                     <Bindings>
                         <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="Leader =&gt; DisplayStyle" />
                     </Bindings>

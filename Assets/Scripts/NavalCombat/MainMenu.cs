@@ -28,6 +28,11 @@ public class MainMenu : SingletonDocument<MainMenu>
         exitButton.clicked += Application.Quit;
 
         root.Q<Button>("HelpButton").clicked += () => DialogRoot.Instance.PopupHelpDialogDocument();
+
+        root.Q<Button>("StrategicModeTestButton").clicked += () =>
+        {
+            SceneManager.LoadScene("Strategic Game");
+        };
     }
 
     void OnFullStateXMLLoaded(string text)

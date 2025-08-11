@@ -23,7 +23,8 @@ namespace StrategicCombatCore
         public float weightKg;
         public int crew;
         public float reliability;
-        public float melee;
+        // public float melee;
+        public MeleeAbility meleeAbility;
         public float effectiveRangeMeter;
         public float maxRangeMeter;
         public int load;
@@ -35,6 +36,15 @@ namespace StrategicCombatCore
             public float slow;
             public float normal;
             public float rapid;
+        }
+
+        public enum MeleeAbility
+        {
+            None,
+            Buttstroke, // Rifle without Bayonet
+            Bayonet,
+            Blade, // Sword,
+            Spear, // Spear, Lance
         }
     }
 }

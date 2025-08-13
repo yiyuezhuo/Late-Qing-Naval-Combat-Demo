@@ -156,7 +156,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 root = root,
                 template = scenarioPickerDialogDocument,
                 templateDataSource = scenarioPickerDialog,
-                centering = false
+                centering = false,
+                fullScreen = true
             };
             scenarioPickerDialog.Bind(tempDialog);
 
@@ -478,7 +479,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             root = root,
             template = helpDialogDocument,
-            templateDataSource = null
+            templateDataSource = null,
+            centering=false
         };
 
         tempDialog.Popup();

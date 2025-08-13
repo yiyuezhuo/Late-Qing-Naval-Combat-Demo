@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 public class PlaneCameraController : SingletonMonoBehaviour<PlaneCameraController>
 {
@@ -29,11 +31,28 @@ public class PlaneCameraController : SingletonMonoBehaviour<PlaneCameraControlle
 
     Vector3 initialPosition;
 
+    InputAction scrollWheelAction;
+    InputAction rightClickAction;
+
     // Start is called before the first frame update
     void Start()
     {
         cam = GetComponent<Camera>();
         initialPosition = transform.position;
+
+        scrollWheelAction = InputSystem.actions.FindAction("ScrollWheel");
+        rightClickAction = InputSystem.actions.FindAction("RightClick");
+
+        // var touchSupported = Touchscreen.current != null;
+        // var touchSupported = Application.isMobilePlatform; // HACK: temp hack since the above check doesn't work for Unity Remote
+        // var touchSupported = Touchscreen.current != null || SystemInfo.deviceModel.Contains("Unity Remote");
+        var touchSupported = true;
+        Debug.Log($"touchSupported={touchSupported}, SystemInfo.deviceModel={SystemInfo.deviceModel}");
+        if (touchSupported)
+        {
+            Debug.LogWarning("EnhancedTouchSupport is Enabled");
+            EnhancedTouchSupport.Enable(); // TODO: The API design suggest that we use an independent class to manage Enable & Disable of it?
+        }
     }
 
     public void ResetToInitialPosition()
@@ -45,6 +64,7 @@ public class PlaneCameraController : SingletonMonoBehaviour<PlaneCameraControlle
     Vector2 GetHitPoint()
     {
         var ray = cam.ScreenPointToRay(Input.mousePosition);
+        // var ray = cam.ScreenPointToRay(Utils.mousePosition);
         var plane = new Plane(Vector3.forward, Vector3.zero);
         if (plane.Raycast(ray, out var distance))
         {
@@ -75,16 +95,20 @@ public class PlaneCameraController : SingletonMonoBehaviour<PlaneCameraControlle
     // Update is called once per frame
     void Update()
     {
-        if(EventSystem.current.IsPointerOverGameObject())
+        if(!dragging && EventSystem.current.IsPointerOverGameObject())
             return;
-        
+
         // Zoom
-        if(Input.mouseScrollDelta.y != 0)
+        var mouseScrollDelta = scrollWheelAction.ReadValue<Vector2>();
+
+        // if (Input.mouseScrollDelta.y != 0)
+        if (mouseScrollDelta.y != 0)
         {
-            switch(mode)
+            switch (mode)
             {
                 case ScrollMode.Orthographic:
-                    var newSize = cam.orthographicSize - Input.mouseScrollDelta.y * zoomSpeed;
+                    // var newSize = cam.orthographicSize - Input.mouseScrollDelta.y * zoomSpeed;
+                    var newSize = cam.orthographicSize - mouseScrollDelta.y * zoomSpeed;
                     if (newSize > 0)
                     {
                         cam.orthographicSize = newSize;
@@ -92,7 +116,8 @@ public class PlaneCameraController : SingletonMonoBehaviour<PlaneCameraControlle
                     }
                     break;
                 case ScrollMode.Perspective:
-                    var newZ = cam.transform.position.z + Input.mouseScrollDelta.y * zSpeed;
+                    // var newZ = cam.transform.position.z + Input.mouseScrollDelta.y * zSpeed;
+                    var newZ = cam.transform.position.z + mouseScrollDelta.y * zSpeed;
                     if (cam.transform.position.z * newZ < 0)
                         break;
                     cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, newZ);
@@ -100,10 +125,32 @@ public class PlaneCameraController : SingletonMonoBehaviour<PlaneCameraControlle
             }
         }
 
-        // Dragging Navigation
-        if(Input.GetMouseButton(1))
+        // Touch Pinch Zooming
+        if (UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches.Count == 2)
         {
-            var mousePosition = (Vector2)Input.mousePosition * mouseAdjustedCoef;
+            var touch1 = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches[0];
+            var touch2 = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches[1];
+
+            float currentDistance = Vector2.Distance(touch1.screenPosition, touch2.screenPosition);
+            
+            float prevDistance = Vector2.Distance(
+                touch1.screenPosition - touch1.delta,
+                touch2.screenPosition - touch2.delta);
+
+            if (prevDistance > 0)
+            {
+                cam.orthographicSize = Mathf.Clamp(
+                    cam.orthographicSize * prevDistance / currentDistance,
+                    0.01f,
+                    1000
+                );
+            }
+        }
+        
+        if (rightClickAction.IsPressed() ||
+            (EnhancedTouchSupport.enabled && UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches.Count == 1))
+        {
+            // var mousePosition = (Vector2)Input.mousePosition * mouseAdjustedCoef;
             if (!dragging)
             {
                 dragging = true;

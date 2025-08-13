@@ -3,28 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 public class CameraController2 : MonoBehaviour
 {
     public Camera cam;
-    // public Camera camIcon;
     public List<Camera> cameras;
     public Transform leafTransform;
-    // Vector2 prevMousePos;
-    // Vector2 prevCamPos;
     bool dragging = false;
-
-    // public float MovingSpeed = 0.1f;
-    // public float zoomSpeed = 1f;
-
-    // [Serializable]
-    // public class ZoomSpeedReocrd
-    // {
-    //     public float zoomSizeThreashold;
-    //     public float zoomSpeed;
-    // }
-    // public List<ZoomSpeedReocrd> zoomSpeedRecords = new();
-    // public float minSize = 0.001f;
 
     List<float> zoomLevel = new List<float>
     {
@@ -74,9 +61,17 @@ public class CameraController2 : MonoBehaviour
 
     Vector3 initialPosition;
 
+    InputAction scrollWheelAction;
+    InputAction rightClickAction;
+
     // Start is called before the first frame update
     void Start()
     {
+        scrollWheelAction = InputSystem.actions.FindAction("ScrollWheel");
+        rightClickAction = InputSystem.actions.FindAction("RightClick");
+
+        EnhancedTouchSupport.Enable();
+
         // cam = GetComponent<Camera>();
         initialPosition = transform.position;
 
@@ -138,23 +133,132 @@ public class CameraController2 : MonoBehaviour
 
     void UpdateZoom(Camera cam)
     {
-        var dists = zoomLevel.Select(z => Math.Abs(cam.orthographicSize - z)).ToList();
-        var zoomIdx = dists.IndexOf(dists.Min());
-        var delta = -Math.Sign(Input.mouseScrollDelta.y);
-        var newZoomIdx = zoomIdx + delta;
-        if (newZoomIdx >= 0 && newZoomIdx < zoomLevel.Count)
+        var delta = -GetZoomDeltaSign();
+        if (delta != 0)
         {
-            cam.orthographicSize = zoomLevel[newZoomIdx];
-        }
+            var dists = zoomLevel.Select(z => Math.Abs(cam.orthographicSize - z)).ToList();
+            var zoomIdx = dists.IndexOf(dists.Min());
 
-        // var newSize = cam.orthographicSize - Input.mouseScrollDelta.y * GetZoomSpeed() * zoomSpeed;
-        // var newSize = cam.orthographicSize - GetZoomSpeed() * zoomSpeed;
-        // if (newSize > minSize)
-        // {
-        //     cam.orthographicSize = newSize;
-        //     // GetHitPoint();
-        // }
+            // var delta = -Math.Sign(Input.mouseScrollDelta.y);
+
+            var newZoomIdx = zoomIdx + delta;
+            if (newZoomIdx >= 0 && newZoomIdx < zoomLevel.Count)
+            {
+                cam.orthographicSize = zoomLevel[newZoomIdx];
+            }
+        }
+        
+        // Touch Pinch Zooming
+        if (UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches.Count == 2)
+        {
+            var touch1 = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches[0];
+            var touch2 = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches[1];
+
+            float currentDistance = Vector2.Distance(touch1.screenPosition, touch2.screenPosition);
+            
+            float prevDistance = Vector2.Distance(
+                touch1.screenPosition - touch1.delta,
+                touch2.screenPosition - touch2.delta);
+
+            if (prevDistance > 0)
+            {
+                cam.orthographicSize = Mathf.Clamp(
+                    cam.orthographicSize * prevDistance / currentDistance,
+                    zoomLevel[0],
+                    zoomLevel[^1]
+                );
+            }
+        }
     }
+
+    private float lastPinchDistance;
+    bool pinching;
+
+    public int GetZoomDeltaSign()
+    {
+        var scrollZoomSign = GetScrollZoomDeltaSign();
+        // var touchZoomSign = GetTouchZoomDeltaSign();
+        // if (scrollZoomSign == 0 && touchZoomSign == 0)
+        //     return 0;
+        // if (scrollZoomSign == 0)
+        //     return touchZoomSign;
+
+        if(scrollZoomSign != 0)
+            return scrollZoomSign;
+
+        // if (UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches.Count == 2)
+        // {
+        //     var touch1 = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches[0];
+        //     var touch2 = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches[1];
+
+        //     float currentDistance = Vector2.Distance(touch1.screenPosition, touch2.screenPosition);
+
+        //     if (!pinching)
+        //     {
+        //         pinching = true;
+        //         lastPinchDistance = currentDistance;
+        //     }
+        //     else
+        //     {
+        //         var diff = currentDistance - lastPinchDistance;
+        //         if (diff >= 100)
+        //         {
+        //             lastPinchDistance = currentDistance;
+        //             pinching = false;
+        //             return 1;
+        //         }
+        //         if (diff <= -100)
+        //         {
+        //             lastPinchDistance = currentDistance;
+        //             pinching = false;
+        //             return -1;
+        //         }
+        //     }
+        // }
+        // else
+        // {
+        //     pinching = false;
+        // }
+
+        return 0;
+    }
+
+    public int GetScrollZoomDeltaSign()
+    {
+        return Math.Sign(Input.mouseScrollDelta.y);
+    }
+
+    // int GetTouchZoomDeltaSign()
+    // {
+    //     if (Input.touchCount == 2)
+    //     {
+    //         Touch touch1 = Input.GetTouch(0);
+    //         Touch touch2 = Input.GetTouch(1);
+
+    //         if (touch1.phase == TouchPhase.Began || touch2.phase == TouchPhase.Began)
+    //         {
+    //             lastPinchDistance = Vector2.Distance(touch1.position, touch2.position);
+    //         }
+    //         else if (touch1.phase == TouchPhase.Moved || touch2.phase == TouchPhase.Moved)
+    //         {
+    //             float currentDistance = Vector2.Distance(touch1.position, touch2.position);
+    //             float delta = currentDistance - lastPinchDistance;
+
+    //             // if (delta > 0)
+    //             // {
+    //             //     return 1;
+    //             // }
+    //             // else if (delta < 0)
+    //             // {
+    //             //     return -1;
+    //             // }
+    //             lastPinchDistance = currentDistance;
+
+    //             return Math.Sign(delta);
+    //         }
+    //     }
+    //     return 0;
+    // }
 
     // Update is called once per frame
     void Update()
@@ -165,20 +269,23 @@ public class CameraController2 : MonoBehaviour
         }
 
         // Zoom
-        // if(Input.mouseScrollDelta.y != 0 && EventSystem.current && !EventSystem.current.IsPointerOverGameObject())
-        // if(Input.mouseScrollDelta.y != 0 && EventSystem.current && !UnityUtils.IsPointerOverNonIconUI())
-        if (Input.mouseScrollDelta.y != 0)
+        // if (Input.mouseScrollDelta.y != 0)
+        // {
+        //     foreach (var camera in cameras)
+        //     {
+        //         UpdateZoom(camera);
+        //     }
+        // }
+        
+        foreach (var camera in cameras)
         {
-            // UpdateZoom(cam);
-            // UpdateZoom(camIcon);
-            foreach (var camera in cameras)
-            {
-                UpdateZoom(camera);
-            }
+            UpdateZoom(camera);
         }
 
         // Dragging Navigation
-        if(Input.GetMouseButton(1))
+        // if (Input.GetMouseButton(1))
+        if (rightClickAction.IsPressed() ||
+            (EnhancedTouchSupport.enabled && UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches.Count == 1))
         {
             // var mousePosition = (Vector2)Input.mousePosition * mouseAdjustedCoef;
             if (!dragging)

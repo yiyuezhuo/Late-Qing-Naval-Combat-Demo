@@ -23,7 +23,7 @@
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement>
-                    <ui:ScrollView>
+                    <ui:ScrollView mode="VerticalAndHorizontal">
                         <ui:TabView style="min-width: 600px;">
                             <ui:Tab label="Basic">
                                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">

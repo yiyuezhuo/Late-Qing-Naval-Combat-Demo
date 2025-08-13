@@ -96,16 +96,17 @@ Shader "Unlit/Earth0_RTW_like2"
                     float v = (latitudeDeg - _ROILatDeg0) / (_ROILatDeg1 - _ROILatDeg0);
                     float2 texCoord = float2(u, v);
                     float h = tex2D(_HeightTexROI, texCoord);
-                    col = h > 0 ? _LandColor : _SeaColor;
-                    // col = float4(0,1,0,1);
+                    // col = h > 0 ? _LandColor : _SeaColor;
+                    col = h > 0 ? (1-sqrt(h)*3.5) * _LandColor : _SeaColor;
                 }
                 else
                 {
                     float2 texCoord = longitudeLatitudeToUV(longLatRad);
-                    // col = float4(1,0,0,1);
                     float h = tex2D(_HeightTex, texCoord);
-                    col = h > 0 ? _LandColor : _SeaColor;
-                    // h = 0;
+                    // col = h > 0 ? _LandColor : _SeaColor;
+                    // col = h > 0 ? h * _LandColor * 10 : _SeaColor;
+                    // col = h > 0 ? (1-h * 20) * _LandColor : _SeaColor;
+                    col = h > 0 ? (1-sqrt(h)*3.5) * _LandColor : _SeaColor;
                 }
 
                 // float h = tex2D(_HeightTex, texCoord);

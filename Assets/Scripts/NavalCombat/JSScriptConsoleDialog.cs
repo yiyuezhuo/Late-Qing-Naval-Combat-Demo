@@ -37,7 +37,7 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
         // engine = new Engine(); // Sandboxed Versionz
         engine = new Engine(cfg => cfg.AllowClr()); // Free Version
         var assembly = typeof(NavalGameState).Assembly;
-        Debug.Log($"assembly={assembly}");
+        // Debug.Log($"assembly={assembly}");
         engine = new Engine(cfg => cfg.AllowClr(assembly));
 
         engine.SetValue("log", new Action<object>(msg => OnLog(msg)));

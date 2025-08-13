@@ -12,6 +12,7 @@ public class TempDialog
     public event EventHandler<VisualElement> onCancelled;
 
     public bool centering = true;
+    public bool fullScreen = false;
 
     public void Popup()
     {
@@ -58,6 +59,11 @@ public class TempDialog
                     new Length(-50, LengthUnit.Percent)
                 )
             );
+        }
+
+        if (fullScreen)
+        {
+            el.style.flexGrow = 1;
         }
     }
 }

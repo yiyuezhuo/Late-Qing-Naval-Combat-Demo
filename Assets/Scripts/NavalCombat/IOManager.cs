@@ -13,6 +13,8 @@ using System.Runtime.InteropServices; // DllImport
 
 public class IOManager : SingletonMonoBehaviour<IOManager>
 {
+    // public event EventHandler<string> textLoaded;
+    // Dictionary<string, Action<string>> urlToCallback = new();
     Action<string> currentCallback;
 
     private IEnumerator OutputRoutine(string url)
@@ -28,11 +30,13 @@ public class IOManager : SingletonMonoBehaviour<IOManager>
 
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
+                // textLoaded?.Invoke(null, webRequest.downloadHandler.text);
                 callback(webRequest.downloadHandler.text);
             }
             else
             {
                 Debug.LogError("UnityWebRequest failed to get");
+                // textLoaded?.Invoke(null, null);
                 callback(null);
             }
         }
@@ -63,7 +67,22 @@ public class IOManager : SingletonMonoBehaviour<IOManager>
     public void SaveTextFile(string _data, string name = "sample", string ext = "txt")
     {
         Debug.Log("SaveTextFile");
-#if UNITY_WEBGL && !UNITY_EDITOR
+
+        // Native File Browser Plugin
+        // #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS)
+
+        // placeholder
+        Debug.Log("?");
+        // Create a dummy text file
+        string filePath = Path.Combine(Application.temporaryCachePath, $"{name}.{ext}");
+        File.WriteAllText(filePath, _data);
+
+        // Export the file
+        NativeFilePicker.ExportFile(filePath, (success) => Debug.Log("File exported: " + success));
+        
+// Standalone File Browser Plugin
+#elif UNITY_WEBGL && !UNITY_EDITOR
         var bytes = System.Text.Encoding.UTF8.GetBytes(_data);
         DownloadFile(gameObject.name, "OnFileDownload", $"{name}.{ext}", bytes, bytes.Length);
 
@@ -83,7 +102,25 @@ public class IOManager : SingletonMonoBehaviour<IOManager>
         currentCallback = callback;
 
         Debug.Log("LoadTextFile");
-#if UNITY_WEBGL && !UNITY_EDITOR
+
+        // Native File Browser
+#if UNITY_ANDROID || UNITY_IOS
+        if (NativeFilePicker.IsFilePickerBusy())
+            return;
+
+        var fileType = NativeFilePicker.ConvertExtensionToFileType(ext);
+
+        // Pick a PDF file
+        NativeFilePicker.PickFile((path) =>
+        {
+            if (path == null)
+                Debug.LogWarning("Operation cancelled");
+            else
+                StartCoroutine(OutputRoutine(new System.Uri(path).AbsoluteUri));
+        }, new string[] { fileType });
+            
+        // Standalone File Browser
+#elif UNITY_WEBGL && !UNITY_EDITOR
         UploadFile(gameObject.name, "OnFileUpload", $".{ext}", false);
 #else
         var paths = StandaloneFileBrowser.OpenFilePanel("Title", "", ext, false);

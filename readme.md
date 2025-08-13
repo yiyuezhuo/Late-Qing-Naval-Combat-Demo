@@ -91,6 +91,7 @@ SK5 Community: https://groups.io/g/SEEKRIEG/topics?sidebar=true
 - [suncalcsharp](https://github.com/webbwebbwebb/suncalcsharp)
 - [MathNet.Numerics](https://github.com/mathnet/mathnet-numerics)
 - [UnityStandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser)
+- [UnityNativeFilePicker](https://github.com/yasirkula/UnityNativeFilePicker)
 - [JInt](https://github.com/sebastienros/jint)
 
 ## Assets

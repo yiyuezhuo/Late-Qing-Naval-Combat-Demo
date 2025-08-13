@@ -21,6 +21,13 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
 
     Engine engine;
 
+    HashSet<RuntimePlatform> fileSystemNotWorkingPlatforms = new() 
+    {
+        RuntimePlatform.WebGLPlayer,
+        RuntimePlatform.Android,
+        RuntimePlatform.IPhonePlayer
+    };
+
     // protected override void Awake()
     void OnEnable()
     {
@@ -100,7 +107,7 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
             StartCoroutine(FetchScriptAndUpdate(evt.newValue));
         });
 
-        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        if (fileSystemNotWorkingPlatforms.Contains(Application.platform)) // FIXME: Fragile 
         {
             // StartCoroutine(UpdateBuiltInScriptDropdownFieldUsingManifest()); // Fire and Forget
             ManifestModelCache.Instance.CommitTask(manifestModel =>
@@ -141,7 +148,10 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
 
     void OverwriteScript(string subPath, string content)
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_ANDROID || UNITY_IOS && !UNITY_EDITOR
+        DialogRoot.Instance.PopupMessageDialog("Mobile platform does not support writing to disk");
+        return;
+#elif UNITY_WEBGL && !UNITY_EDITOR
         DialogRoot.Instance.PopupMessageDialog("WEBGL platform does not support writing to disk");
         return;
 #else
@@ -156,25 +166,6 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
         var paths = files.Select(s => s.Replace('\\', '/').Replace(Application.streamingAssetsPath, "")).ToList();
         builtInScriptDropdownField.choices = paths;
     }
-
-    // public IEnumerator UpdateBuiltInScriptDropdownFieldUsingManifest()
-    // {
-    //     // Schedule async tasks
-    //     string streamingAssetsPath = Application.streamingAssetsPath;
-    //     var manifestPath = streamingAssetsPath + "/Manifest.xml";
-
-    //     var request = UnityWebRequest.Get(manifestPath);
-    //     Debug.Log($"manifestPath={manifestPath}");
-    //     yield return request.SendWebRequest();
-
-    //     if (request.result == UnityWebRequest.Result.Success)
-    //     {
-    //         // jsonData = request.downloadHandler.text;
-    //         Debug.Log($"request.downloadHandler.text={request.downloadHandler.text}");
-    //         var manifestModel = XmlUtils.FromXML<ManifestModel>(request.downloadHandler.text);
-    //         builtInScriptDropdownField.choices = manifestModel.builtinScripts;
-    //     }
-    // }
 
     public void OnLog(object output)
     {

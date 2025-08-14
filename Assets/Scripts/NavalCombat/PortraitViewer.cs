@@ -49,6 +49,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public Transform cubeColliderTransform;
     float scaleFactor = 0.015f;
     public MeshRenderer flagRenderer;
+    public GameObject selectedIndicator;
 
     //
     Texture2D portraitTex;
@@ -119,6 +120,9 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
     public void Update()
     {
+        // selectedIndicator
+        selectedIndicator.SetActive(model.objectId == GameManager.Instance.selectedShipLogObjectId);
+
         var latLon = model.GetPosition();
         transform.localEulerAngles = new Vector3(latLon.LatDeg, -latLon.LonDeg, 0);
 

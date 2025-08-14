@@ -1,6 +1,7 @@
 # Late Qing Naval Combat Demo
 
-## Screenshots
+<details open>
+<summary>Screenshots</summary>
 
 <img src="https://img.itch.zone/aW1hZ2UvMzY4MDI0MC8yMTg5NjcwOC5wbmc=/original/ley724.png">
 <img src="https://img.itch.zone/aW1hZ2UvMzY4MDI0MC8yMTg5NjcyOC5wbmc=/original/RZoWyh.png">
@@ -13,6 +14,9 @@
 <img src="https://img.itch.zone/aW1hZ2UvMzY4MDI0MC8yMTg5Njc1MC5wbmc=/original/pAN66Y.png">
 <img src="https://img.itch.zone/aW1hZ2UvMzY4MDI0MC8yMTg5Njc1Mi5wbmc=/original/hsbsH6.png">
 
+</details>
+
+## Introduction
 
 This game is the first installment of a demo trilogy for my Late Qing Dynasty historical simulation . In the final project, all three parts (RTS naval, classical hex land combat and a political simulation) will be merged into a single, interconnected experience. However, to avoid overcomplicating the design or introducing unnecessary abstraction while focusing on specific aspects, I haven't made significant efforts to isolate components for maximum reusability. Some degree of rewriting is expected--especially as I gain more experience and develop a clearer vision for the game. This will help address technical debt and ultimately result in a stronger open-source project.
 
@@ -32,30 +36,40 @@ On the other hand, gunnery introduce too much attrition compared to historical c
 
 ## Getting Started
 
-- Holding right mouse and drag to navigate
-- Scroll mouse wheel to zoom
-- Press 1 to advance 1 minute
-- Control group lead (icon with a direction arrow) to control a group
-- Change direction by select a group lead and left click on a direction
-- Change speed in the slider of right panel
-- Change or inspect a lot of details in editors.
+- Right-click and drag to move the camera, use the scroll wheel to adjust the zoom level.
+- Press 1 to advance by 1 minute
+- Control group leader (icon with a direction arrow) to control a group
+    - Change direction: Select a group lead and left click a point on globe to set a direction
+    - Change speed: Change value in the slider of right panel
+    - Change or inspect a lot of details in editors.
+- Use F or R to set Follow and relative to relationship, more parameter can be specified in the ShipLog editor.
 
 ## Automation
 
-- Fire is automated defaultly but can be specified in the editor, from doctrine to manual setting target.
-- Move is not automated defaultly but can be enabled in the doctrine in any level. At present, it mostly works as a low level path plannar and  hardly to be called as true AI or programmed opponent.
+- By default, firing is automated, following a somewhat optimal rule, and can be configured in the editor, ranging from doctrine to manual target specification.
+- If a unit follow or is relative to a target, it will adjust its speed and course to reach the desired position.
+- By default, an independent unit (usually the group leader) maintains its current speed and course. However, if automatic movement is enabled in the doctrine, the unit will adjust its course to maximize firepower while minimizing incoming damage. (Speed is not controlled at this point).
 
 ## Shortcuts
 
+Basic:
+
 - Left Click: Select Unit
-- Right Click: Select Unit and open Ship Log Editor Viewer for it.
-- Shift + Left Click: Set Course for the selected unit
+- Right Click: Select Unit and open Ship Log Editor for it.
+- Shift + Left Click: Set course for the selected unit
 - D: Distance measureing line
-- S: Line of Sight (check ship masking & earth curvature)
-- I: Detach unit (set control mode to Indepent)
+- S: Line of Sight (check ship masking & Earth curvature)
+- I: Detach unit (set control mode to Independent)
 - F: Set follow target (extra parameter requires ship log editor)
 - R: Set relative to target (extra parameter requires ship log editor)
-- L: Open Ship Log editor for the selected ship
+- L: Open Ship Log Editor for the selected ship
+- Esc: Reset UI to idle state.
+
+Edit:
+
+- Insert: Insert a ShipLog on map. (Deploy a "non-deployed" ship to map).
+- Delete: Delete selected ship.
+- M: Move selected ship to another point.
 
 ## TODO List
 
@@ -66,18 +80,21 @@ On the other hand, gunnery introduce too much attrition compared to historical c
 - [ ] Land battery
 - [ ] Better AI
 
-## Devlopment Info
+## Communities
+
+Discord Server: https://discord.gg/HmDW2XuE
+
+## Devlopment
 
 ### Unity related bugs
 
-- UITK sometimes lost cellTemplate reference (need to attach templates again)
-- UITK sometime ignore cellTemplate reference (need to "touch" files in Unity or external editor for some reason)
-- UITK's sorting order not work properly (though "most" works so I just don't rely it heavyly)
-= When delete a instance of a template from UITK's designer, Template tag may be corrupeted so other instance of the same template will be hidden visually (though they still exist). So it's recommended to delete instance by manually modifiying uxml file entries.
-
-### Unity related warning
-
-- When resources is rewritten in edit time (for example, overrie xml file), Asset-refresh is needed, otherwise `Resources.Load` may load old version of assets.
+- UITK sometimes lost cellTemplate reference (need to reattaching templates)
+    - A build processor will check this and block building if missing references are detected.
+    - To fix: Run `Custom/Build Manifest for platform without File System` menu item to re-check and try re-import them until fixed.
+    - Note: This bug typically occurs when siwtching platforms.
+- UITK occasionally ignores cellTemplate reference (workaround: touch"  files in Unity or external editor to trigger a refresh)
+- Deleting a template instance in UITK's designer may corrupet the Template tag, causing other instance of the same template will become  visually hidden (they still exist actually).
+    So it's recommended to delete instance by manually modifiying uxml file entries instead of designer.
 
 ## References:
 

@@ -117,7 +117,7 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
         }
         else
         {
-            UpdateBuiltinScriptDowndownFieldUsingFileSystem();
+            UpdateBuiltinScriptDropdownFieldUsingFileSystem();
         }
     }
 
@@ -160,7 +160,7 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
 #endif
     }
 
-    public void UpdateBuiltinScriptDowndownFieldUsingFileSystem()
+    public void UpdateBuiltinScriptDropdownFieldUsingFileSystem()
     {
         var files = Directory.GetFiles(Application.streamingAssetsPath + "/BuiltinScripts", "*.js");
         var paths = files.Select(s => s.Replace('\\', '/').Replace(Application.streamingAssetsPath, "")).ToList();

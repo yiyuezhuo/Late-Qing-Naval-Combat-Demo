@@ -6,6 +6,7 @@
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Advance 1 Min (1)" name="Advance1MinButton" />
                     <ui:Button text="Advance 1 pulse (`)" name="Advance1PulseButton" />
+                    <ui:Button text="Set Course (Shift + Left Click)" name="SetCourseButton" />
                     <ui:Button text="Detach (I)" name="DetachButton" />
                     <ui:Button text="Follow (F)" name="FollowButton" />
                     <ui:Button text="Relative (R)" name="RelativeButton" />
@@ -121,6 +122,7 @@
             <ui:Tab label="Help">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                     <ui:Button text="Help" name="HelpButton" />
+                    <ui:Button text="Open Source Repo &amp; Readme" name="OpenOpenSourceRepoButton" />
                 </ui:VisualElement>
             </ui:Tab>
         </ui:TabView>

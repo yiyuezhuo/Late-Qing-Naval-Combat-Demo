@@ -65,6 +65,11 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         root.Q<Button>("LandUnitTemplateEditorButton").clicked += LandUnitTemplateEditor.Instance.Show;
         root.Q<Button>("LandUnitEditorButton").clicked += LandUnitEditor.Instance.Show;
         root.Q<Button>("WeaponEditorButton").clicked += WeaponEditor.Instance.Show;
+
+        root.Q<Button>("ReturnToMainMenuButton").clicked += () =>
+        {
+            SceneManager.LoadScene("Main Menu");
+        };
     }
 
     StrategicGameState DetachGameState(StrategicGameState _s, StreamingAssetReference sar)

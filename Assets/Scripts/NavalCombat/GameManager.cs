@@ -62,7 +62,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         SelectingFireControlSystemTarget,
         SelectingRapidFiringTarget,
         SelectingTorpedoFiringTarget,
-        SelectingTargetMisc
+        SelectingTargetMisc,
+        SelectingCourseTarget
     }
 
     State _state = State.Idle;
@@ -258,6 +259,23 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {KeyCode.Alpha9, 60 * 9},
     };
 
+    public void SetSelectedShipCourseTowardPointer()
+    {
+        if (selectedShipLog != null)
+        {
+            var hitPoint = CameraController2.Instance.GetHitPoint();
+            var dstPos = Utils.Vector3ToLatLon(hitPoint);
+
+            var currentPos = selectedShipLog.position;
+            var inverseLine = Geodesic.WGS84.InverseLine(
+                currentPos.LatDeg, currentPos.LonDeg,
+                dstPos.LatDeg, dstPos.LonDeg
+            );
+
+            selectedShipLog.desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)inverseLine.Azimuth);
+        }
+    }
+
     public void Update()
     {
         UpdateSimulation();
@@ -359,9 +377,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 if (Input.GetMouseButtonDown(1)) // try select unit and open ShipLog Editor for it
                 {
                     var shipLog = TryToRaycastShipLog(); // TODO: Handle other click?
-                    if (shipLog != null)
+                    // if (shipLog != null)
+                    if (shipLog != null && selectedShipLogObjectId == shipLog.objectId)
                     {
-                        selectedShipLogObjectId = shipLog.objectId;
+                        // selectedShipLogObjectId = shipLog.objectId;
 
                         ShipLogEditor.Instance.selectedShipLogObjectId = selectedShipLogObjectId;
                         ShipLogEditor.Instance.Show();
@@ -370,19 +389,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
                 if (Input.GetMouseButtonDown(0) && isPressingShift) // RTW-like course setting
                 {
-                    if (selectedShipLog != null)
-                    {
-                        var hitPoint = CameraController2.Instance.GetHitPoint();
-                        var dstPos = Utils.Vector3ToLatLon(hitPoint);
-
-                        var currentPos = selectedShipLog.position;
-                        var inverseLine = Geodesic.WGS84.InverseLine(
-                            currentPos.LatDeg, currentPos.LonDeg,
-                            dstPos.LatDeg, dstPos.LonDeg
-                        );
-
-                        selectedShipLog.desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)inverseLine.Azimuth);
-                    }
+                    SetSelectedShipCourseTowardPointer();
                 }
 
                 // simulationSecondsAdvanceMap
@@ -582,6 +589,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     }
                 }
             }
+            else if (state == State.SelectingCourseTarget)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    state = State.Idle;
+                    SetSelectedShipCourseTowardPointer();
+                }
+            }
         }
     }
 
@@ -589,18 +604,40 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         var cam = CameraController2.Instance.cam;
         var ray = cam.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out var hit, Mathf.Infinity, iconLayerMask))
+
+        var hits = Physics.RaycastAll(ray, Mathf.Infinity, iconLayerMask);
+        if (hits.Length == 0)
+            return null;
+
+        var dists = hits.Select(hit =>
         {
-            Debug.Log($"Hit: {hit.collider}");
-            var colliderRootProvider = hit.collider.GetComponent<IColliderRootProvider>();
-            if (colliderRootProvider != null)
-            {
-                var root = colliderRootProvider.GetRoot();
-                var portraitViewer = root.GetComponent<PortraitViewer>();
-                return portraitViewer;
-            }
+            var colliderScreenPos = cam.WorldToScreenPoint(hit.collider.bounds.center);
+            var colliderScreenPos2D = new Vector2(colliderScreenPos.x, colliderScreenPos.y);
+            return Vector2.Distance(colliderScreenPos2D, Input.mousePosition);
+        }).ToList();
+        var minDist = dists.Min();
+        var idx = dists.IndexOf(minDist);
+        var colliderRootProvider = hits[idx].collider.GetComponent<IColliderRootProvider>();
+        if (colliderRootProvider != null)
+        {
+            var root = colliderRootProvider.GetRoot();
+            var portraitViewer = root.GetComponent<PortraitViewer>();
+            return portraitViewer;
         }
         return null;
+
+        // if (Physics.Raycast(ray, out var hit, Mathf.Infinity, iconLayerMask))
+        // {
+        //     Debug.Log($"Hit: {hit.collider}");
+        //     var colliderRootProvider = hit.collider.GetComponent<IColliderRootProvider>();
+        //     if (colliderRootProvider != null)
+        //     {
+        //         var root = colliderRootProvider.GetRoot();
+        //         var portraitViewer = root.GetComponent<PortraitViewer>();
+        //         return portraitViewer;
+        //     }
+        // }
+        // return null;
     }
 
     public ShipLog TryToRaycastShipLog()

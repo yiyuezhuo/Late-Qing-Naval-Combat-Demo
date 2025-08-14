@@ -154,6 +154,17 @@ public class TopTabs : SingletonDocument<TopTabs>
         };
 
         root.Q<Button>("HelpButton").clicked += () => DialogRoot.Instance.PopupHelpDialogDocument();
+
+        root.Q<Button>("SetCourseButton").clicked += () =>
+        {
+            // GameManager.Instance.StartSetCourse();
+            GameManager.Instance.state = GameManager.State.SelectingCourseTarget;
+        };
+
+        root.Q<Button>("OpenOpenSourceRepoButton").clicked += () =>
+        {
+            Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
+        };
     }
 
     void OnSaveButtonClicked()

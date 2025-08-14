@@ -58,6 +58,7 @@
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Save" name="SaveButton" />
                     <ui:Button text="Load" name="LoadButton" />
+                    <ui:Button text="Return To Main Menu" name="ReturnToMainMenuButton" />
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Editor">

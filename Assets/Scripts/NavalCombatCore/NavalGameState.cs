@@ -7,6 +7,7 @@ using System.Linq;
 using MathNet.Numerics;
 using CoreUtils;
 using Acornima.Ast;
+using System.Runtime.ExceptionServices;
 
 namespace NavalCombatCore
 {
@@ -228,41 +229,120 @@ namespace NavalCombatCore
 
         public void ProcessZeroSpeedFormationAdjustment()
         {
-            var immobilizedShipLogs = shipLogs.Where(shipLog => shipLog.mapState != MapState.Deployed || shipLog.GetMaxSpeedKnots() <= 4).ToHashSet(); // `<= 4` => cannot to turn => impossible to main formation
+            // var immobilizedShipLogs = shipLogs.Where(shipLog => shipLog.mapState != MapState.Deployed || shipLog.GetMaxSpeedKnots() <= 4).ToHashSet(); // `<= 4` => cannot to turn => impossible to main formation
 
-            // var targetToChildrens = shipLogsOnMap.Where(shipLog => shipLog.controlMode != ControlMode.Independent).GroupBy(shipLog => shipLog.controlMode == ControlMode.FollowTarget ? shipLog.followedTarget : shipLog.relativeToTarget).ToList();
-            var immoblizedShipLogToChildrens = immobilizedShipLogs.ToDictionary(x => x, x => new List<ShipLog>());
-            foreach (var shipLog in shipLogsOnMap)
+            // var immoblizedShipLogToChildrens = immobilizedShipLogs.ToDictionary(x => x, x => new List<ShipLog>());
+            // foreach (var shipLog in shipLogsOnMap)
+            // {
+            //     var (controlMode, controlTarget) = shipLog.GetControlModeAndTargetInlucdeNonMap();
+            //     if (controlTarget != null && immobilizedShipLogs.Contains(controlTarget))
+            //     {
+            //         immoblizedShipLogToChildrens[controlTarget].Add(shipLog);
+            //     }
+            // }
+
+            // foreach (var immobilizedShipLog in immobilizedShipLogs)
+            // {
+            //     var children = immoblizedShipLogToChildrens[immobilizedShipLog];
+            //     if (children.Count > 0)
+            //     {
+            //         var newAnchor = children[0];
+
+            //         newAnchor.controlMode = immobilizedShipLog.controlMode;
+            //         newAnchor.followDistanceYards = immobilizedShipLog.followDistanceYards;
+            //         newAnchor.followedTargetObjectId = immobilizedShipLog.followedTargetObjectId;
+            //         newAnchor.relativeToTargetDistanceYards = immobilizedShipLog.relativeToTargetDistanceYards;
+            //         newAnchor.relativeTargetObjectId = immobilizedShipLog.relativeTargetObjectId;
+            //         newAnchor.relativeToTargetAzimuth = immobilizedShipLog.relativeToTargetAzimuth;
+
+            //         foreach (var otherChild in children.Skip(1))
+            //         {
+            //             otherChild.followedTargetObjectId = newAnchor.objectId;
+            //             otherChild.relativeTargetObjectId = newAnchor.objectId;
+            //         }
+            //     }
+
+            //     if (immobilizedShipLog.mapState == MapState.Deployed)
+            //         immobilizedShipLog.controlMode = ControlMode.Independent; // Auto Detach
+            // }
+
+            var immobilizedShipLogIds = shipLogs.Where(shipLog => shipLog.mapState != MapState.Deployed || shipLog.GetMaxSpeedKnots() <= 4).Select(shipLog => shipLog.objectId).ToHashSet(); // `<= 4` => cannot to turn => impossible to main formation
+
+            var fixedAny = false;
+            do
             {
-                var (controlMode, controlTarget) = shipLog.GetControlModeAndTargetInlucdeNonMap();
-                if (controlTarget != null && immobilizedShipLogs.Contains(controlTarget))
+                fixedAny = false;
+
+                foreach (var shipLog in shipLogsOnMap)
                 {
-                    immoblizedShipLogToChildrens[controlTarget].Add(shipLog);
-                }
-            }
-
-            foreach (var immobilizedShipLog in immobilizedShipLogs)
-            {
-                var children = immoblizedShipLogToChildrens[immobilizedShipLog];
-                if (children.Count > 0)
-                {
-                    var newAnchor = children[0];
-
-                    newAnchor.controlMode = immobilizedShipLog.controlMode;
-                    newAnchor.followDistanceYards = immobilizedShipLog.followDistanceYards;
-                    newAnchor.followedTargetObjectId = immobilizedShipLog.followedTargetObjectId;
-                    newAnchor.relativeToTargetDistanceYards = immobilizedShipLog.relativeToTargetDistanceYards;
-                    newAnchor.relativeTargetObjectId = immobilizedShipLog.relativeTargetObjectId;
-
-                    foreach (var otherChild in children.Skip(1))
+                    if (shipLog.controlMode == ControlMode.FollowTarget && immobilizedShipLogIds.Contains(shipLog.followedTargetObjectId))
                     {
-                        otherChild.followedTargetObjectId = newAnchor.followedTargetObjectId;
-                        otherChild.relativeTargetObjectId = newAnchor.relativeTargetObjectId;
+                        var immobilizedShipLog = EntityManager.Instance.Get<ShipLog>(shipLog.followedTargetObjectId);
+                        shipLog.followedTargetObjectId = immobilizedShipLog.followedTargetObjectId;
+                        fixedAny = true;
+                    }
+                    else if (shipLog.controlMode == ControlMode.RelativeToTarget && immobilizedShipLogIds.Contains(shipLog.relativeTargetObjectId))
+                    {
+                        var immobilizedShipLog = EntityManager.Instance.Get<ShipLog>(shipLog.relativeTargetObjectId);
+                        // FixRelativeTree(immobilizedShipLog, immobilizedShipLog.relativeToTargetAzimuth, immobilizedShipLog.relativeToTargetDistanceYards, true);
+                        FixRelativeTree2(immobilizedShipLog, true);
+                        fixedAny = true;
                     }
                 }
+            } while (fixedAny);
+        }
 
-                if(immobilizedShipLog.mapState == MapState.Deployed)
-                    immobilizedShipLog.controlMode = ControlMode.Independent; // Auto Detach
+        void FixRelativeTree(ShipLog displacedShipLog, float azimuth, float distance, bool first)
+        {
+            // var displacedShipLog = EntityManager.Instance.Get<ShipLog>(displacedId);
+
+            var subs = shipLogsOnMap.Where(shipLog => shipLog.controlMode == ControlMode.RelativeToTarget && shipLog.relativeTargetObjectId == displacedShipLog.objectId).ToList();
+            if (subs.Count == 0)
+                return;
+            var newAnchor = subs[0];
+
+            var azimuth2 = newAnchor.relativeToTargetAzimuth;
+            var distance2 = newAnchor.relativeToTargetDistanceYards;
+
+            if (first)
+            {
+                newAnchor.relativeTargetObjectId = displacedShipLog.relativeTargetObjectId;
+            }
+            
+            newAnchor.relativeToTargetAzimuth = azimuth;
+            newAnchor.relativeToTargetDistanceYards = distance;
+
+            foreach (var sub in subs.Skip(1))
+            {
+                sub.relativeTargetObjectId = newAnchor.objectId;
+            }
+
+            FixRelativeTree(newAnchor, azimuth2, distance2, false);
+        }
+
+        void FixRelativeTree2(ShipLog displacedShipLog, bool first)
+        {
+            var subs = shipLogsOnMap.Where(shipLog => shipLog.controlMode == ControlMode.RelativeToTarget && shipLog.relativeTargetObjectId == displacedShipLog.objectId).ToList();
+            if (subs.Count > 0)
+            {
+                FixRelativeTree2(subs[0], false);
+                foreach (var sub in subs.Skip(1))
+                {
+                    sub.relativeTargetObjectId = subs[0].objectId;
+                }
+            }
+            if (first)
+            {
+                if (subs.Count > 0)
+                {
+                    subs[0].relativeTargetObjectId = displacedShipLog.relativeTargetObjectId;
+                }
+            }
+            else
+            {
+                var relativeToTarget = EntityManager.Instance.Get<ShipLog>(displacedShipLog.relativeTargetObjectId);
+                displacedShipLog.relativeToTargetAzimuth = relativeToTarget.relativeToTargetAzimuth;
+                displacedShipLog.relativeToTargetDistanceYards = relativeToTarget.relativeToTargetDistanceYards;
             }
         }
 

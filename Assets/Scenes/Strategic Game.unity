@@ -906,6 +906,7 @@ MonoBehaviour:
   roadPrefab: {fileID: 9006842191024245126, guid: 6285d43d972e56e46a42bc17fa4787be, type: 3}
   railroadPrefab: {fileID: 9006842191024245126, guid: d895281625e13b641a2133c00adc0b4f, type: 3}
   riverPrefab: {fileID: 9006842191024245126, guid: 0fb883c7cfb12fa4b9f93a8c09b9704c, type: 3}
+  mapRenderer: {fileID: 2074895119}
 --- !u!1001 &995054351
 PrefabInstance:
   m_ObjectHideFlags: 0

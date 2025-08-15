@@ -10,6 +10,7 @@ using Unity.Properties;
 using UnityEngine.Networking;
 using System.IO;
 using StrategicCombatCore;
+using UnityEngine.SceneManagement;
 
 using CoreUtils;
 
@@ -284,5 +285,18 @@ public static class Utils
     public static string GetCountryPath(Country country)
     {
         return Application.streamingAssetsPath + "/Pictures/Flags/" + country.ToString() + ".png";
+    }
+
+    public static bool SceneInBuildSettings(string sceneName)
+    {
+        int count = SceneManager.sceneCountInBuildSettings;
+        for (int i = 0; i < count; i++)
+        {
+            string path = SceneUtility.GetScenePathByBuildIndex(i);
+            string name = System.IO.Path.GetFileNameWithoutExtension(path);
+            if (name == sceneName)
+                return true;
+        }
+        return false;
     }
 }

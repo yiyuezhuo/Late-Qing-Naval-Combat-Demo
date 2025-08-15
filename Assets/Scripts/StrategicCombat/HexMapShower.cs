@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 using System.Collections.Generic;
+using System.Collections;
 
 using StrategicCombatCore;
 
@@ -19,6 +20,8 @@ public class HexMapShower : SingletonDocument<HexMapShower>
     public GameObject roadPrefab;
     public GameObject railroadPrefab;
     public GameObject riverPrefab;
+
+    public SpriteRenderer mapRenderer;
 
     bool _showReferenceMap;
     public bool showReferenceMap
@@ -149,10 +152,93 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         }
     }
 
+    static string terrainStr = "Clear,Rough,Mountain,Forest,Jungle,Desert,Swamp,Rough_Forest,Rough_Jungle,Rough_Desert,Tropical Mountain,Sand Desert,Heavy Urban,Light Urban,Field,Shallow Water,Deep Water";
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // UnityWebRequestImageReader.Instance.FetchSprite("Assets/Textures/China/China.png");
+        StartCoroutine(TerrainArrayCoroutine());
+        StartCoroutine(ReferenceMapCoroutine()); // TODO: Delay to first reference toggle click?
+    }
 
+    IEnumerator TerrainArrayCoroutine()
+    {
+        var terrainNames = terrainStr.Split(",");
+        var terrainPaths = terrainNames.Select(name => $"{Application.streamingAssetsPath}/Pictures/Terrain/{name}.jpg").ToList();
+        var textures = terrainPaths.Select(path => UnityWebRequestImageReader.Instance.FetchTexture2D(path)).ToList();
+
+        // Polling texture fetching
+        var completed = true;
+        for (int j = 0; j < 600; j++) // 60s timeout
+        {
+            completed = true;
+
+            for (var i = 0; i < terrainPaths.Count; i++)
+            {
+                var texture = textures[i];
+                if (texture == null)
+                {
+                    var path = terrainPaths[i];
+                    textures[i] = UnityWebRequestImageReader.Instance.FetchTexture2D(path);
+                    completed = false;
+                }
+            }
+
+            if (completed)
+                break;
+
+            Debug.Log("Retrying to fetch textures...");
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        // Create Texture Array
+        if (completed)
+        {
+            int width = textures[0].width;
+            int height = textures[0].height;
+
+            int slices = textures.Count;
+            // TextureFormat format = TextureFormat.RGBA32;
+            TextureFormat format = TextureFormat.RGB24;
+            bool mipChain = false;
+
+            // Create the texture array and apply the parameters
+            Texture2DArray textureArray = new Texture2DArray(width, height, slices, format, mipChain);
+
+            // Copy each texture into the array
+            for (int i = 0; i < textures.Count; i++)
+            {
+                // Debug.Log($"Texture readable: {textures[i].isReadable}");
+                Graphics.CopyTexture(textures[i], 0, 0, textureArray, i, 0);
+            }
+
+            textureArray.Apply(true);
+
+            mapRenderer.sharedMaterial.SetTexture("_TerrainTexArray", textureArray);
+            Debug.Log("Dynamic Texture Array Creation Complated");
+        }
+        else
+        {
+            Debug.LogError("Load Dynamic Texture Array failed");
+        }
+    }
+
+    IEnumerator ReferenceMapCoroutine()
+    {
+        var path = $"{Application.streamingAssetsPath}/Pictures/Maps/First_Sino_Japanese_War_Reference.jpg";
+        for (int i = 0; i < 600; i++) // 60s timeout
+        {
+            var texture = UnityWebRequestImageReader.Instance.FetchTexture2D(path);
+            if (texture != null)
+            {
+                mapRenderer.sharedMaterial.SetTexture("_ReferenceTexture", texture);
+                Debug.Log("Reference Map is loaded");
+                yield break;
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
+        Debug.LogError("Reference Map is not loaded");
     }
 
     // Update is called once per frame

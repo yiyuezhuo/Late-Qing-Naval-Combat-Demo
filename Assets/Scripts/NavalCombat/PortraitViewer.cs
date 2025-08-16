@@ -121,6 +121,9 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public void Update()
     {
         // selectedIndicator
+        if (model == null)
+            return;
+
         selectedIndicator.SetActive(model.objectId == GameManager.Instance.selectedShipLogObjectId);
 
         var latLon = model.GetPosition();

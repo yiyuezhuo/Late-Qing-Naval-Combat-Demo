@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Packed Assets
+  m_EditorClassIdentifier: 
+  m_GroupName: Packed Assets
+  m_GUID: 6a0b3f8ac96a3d041b8450333339e62d
+  m_SerializeEntries:
+  - m_GUID: 66b5022ebceec0c45ab313697c7471d4
+    m_Address: Assets/Textures/NavalCombat/GIS/roi_105_146_15_55_uint16_9840x9600.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 5b66bf5b9a9b8c6459df8d84871e0184, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 59998d5566c99904c89ae3c5667ea7a6, type: 2}
+    - {fileID: 11400000, guid: f881dc4e42679214abb455ff576b3efb, type: 2}

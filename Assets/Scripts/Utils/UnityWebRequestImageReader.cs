@@ -11,13 +11,17 @@ public class ImageFetchTask
     {
         Downloading,
         Fail,
-        Downloaded
+        Downloaded,
+        Processed,
+        Continued
     }
 
     public string path;
     // public UnityWebRequest request;
     public Texture2D texture;
-    public State state;
+    public State state = State.Downloading;
+    public Action<Texture2D> postprocessCallback = null;
+    public Action<Texture2D> continueCallback = null;
 
     StyleBackground _styleBackground;
     public StyleBackground styleBackground
@@ -64,10 +68,11 @@ public class ImageFetchTask
 public class UnityWebRequestImageReader
 {
     Dictionary<string, ImageFetchTask> taskMap = new();
+    public List<ImageFetchTask> activingTasks = new();
 
     public StyleBackground FetchStyleBackground(string path)
     {
-        if(path == null)
+        if (path == null)
             return null;
 
         var task = EnsureDownloadCompletedOrStartedAndGetTask(path);
@@ -96,31 +101,65 @@ public class UnityWebRequestImageReader
     {
         if (!taskMap.TryGetValue(path, out var task))
         {
-            task = taskMap[path] = new()
+            task = new()
             {
                 path = path,
                 state = ImageFetchTask.State.Downloading,
             };
-            // GameManager.Instance.StartCoroutine(Request(task));
+            
             IOManager.Instance.StartCoroutine(Request(task));
         }
         return task;
     }
 
+    public void RequestIfNotRequestedYet(ImageFetchTask task)
+    {
+        if (taskMap.TryGetValue(task.path, out var taskPrev))
+        {
+            if (taskPrev.state == ImageFetchTask.State.Continued && task.continueCallback != null)
+            {
+                task.continueCallback(taskPrev.texture);
+            }
+            return;
+        }
+        IOManager.Instance.StartCoroutine(Request(task));
+    }
+
     IEnumerator Request(ImageFetchTask task)
     {
-        // using (var webRequest = UnityWebRequest.Get(task.path))
+        taskMap[task.path] = task;
+        activingTasks.Add(task);
+
         using (var webRequest = UnityWebRequestTexture.GetTexture(task.path))
         {
             yield return webRequest.SendWebRequest();
+
+            // ImageConversion.LoadImage
+
+            activingTasks.Remove(task);
 
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
                 // textLoaded?.Invoke(null, webRequest.downloadHandler.text);
                 Debug.Log($"UnityWebRequest succ to get: {task.path}");
 
-                task.texture = DownloadHandlerTexture.GetContent(webRequest);
+                var texture = DownloadHandlerTexture.GetContent(webRequest);
+                task.texture = texture;
                 task.state = ImageFetchTask.State.Downloaded;
+
+                if (task.postprocessCallback != null)
+                {
+                    task.postprocessCallback(texture);
+                }
+
+                task.state = ImageFetchTask.State.Processed;
+
+                if (task.continueCallback != null)
+                {
+                    task.continueCallback(texture);
+                }
+
+                task.state = ImageFetchTask.State.Continued;
             }
             else
             {

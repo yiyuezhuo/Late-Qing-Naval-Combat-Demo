@@ -215,7 +215,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
 
             textureArray.Apply(true);
 
-            mapRenderer.sharedMaterial.SetTexture("_TerrainTexArray", textureArray);
+            mapRenderer.material.SetTexture("_TerrainTexArray", textureArray);
             Debug.Log("Dynamic Texture Array Creation Complated");
         }
         else
@@ -232,7 +232,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
             var texture = UnityWebRequestImageReader.Instance.FetchTexture2D(path);
             if (texture != null)
             {
-                mapRenderer.sharedMaterial.SetTexture("_ReferenceTexture", texture);
+                mapRenderer.material.SetTexture("_ReferenceTexture", texture);
                 Debug.Log("Reference Map is loaded");
                 yield break;
             }

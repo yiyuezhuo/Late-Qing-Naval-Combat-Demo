@@ -124,7 +124,8 @@ public class OOBEditor : HideableDocument<OOBEditor>
         {
             // var content = GameManager.Instance.navalGameState.ShipGroupsToXML();
             var content = NavalGameState.Instance.ShipGroupsToXML();
-            IOManager.Instance.SaveTextFile(content, "ShipGroups" + GameManager.scenarioSuffix, "xml");
+            // IOManager.Instance.SaveTextFile(content, "ShipGroups" + GameManager.scenarioSuffix, "xml");
+            IOManager.Instance.SaveTextFile(content, "ShipGroups.xml", "xml");
         };
 
         importButton.clicked += () =>

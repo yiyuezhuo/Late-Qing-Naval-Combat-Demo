@@ -18,7 +18,7 @@
                 <ui:Label text="Longitude" />
                 <ui:FloatField style="flex-grow: 1;">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="longtitude" binding-mode="TwoWay" />
+                        <ui:DataBinding property="value" data-source-path="longitude" binding-mode="TwoWay" />
                     </Bindings>
                 </ui:FloatField>
             </ui:VisualElement>

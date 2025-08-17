@@ -165,6 +165,12 @@ public class TopTabs : SingletonDocument<TopTabs>
         {
             Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
         };
+
+        root.Q<Button>("ReturnToStrategicGameButton").clicked += () =>
+        {
+            // StrategicGameManager.startupConfig.mode = StrategicGameManager.StartupConfig.Mode.Empty;
+            SceneManager.LoadScene("Strategic Game");
+        };
     }
 
     void OnSaveButtonClicked()

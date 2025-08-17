@@ -35,6 +35,7 @@ public class MainMenu : SingletonDocument<MainMenu>
         {
             strategicModeTestButton.clicked += () =>
             {
+                StrategicGameManager.startupConfig = new();
                 SceneManager.LoadScene("Strategic Game");
             };
         }
@@ -49,7 +50,9 @@ public class MainMenu : SingletonDocument<MainMenu>
         // IOManager.Instance.textLoaded -= OnFullStateXMLLoaded;
 
         var fullState = FullState.FromXML(text);
-        GameManager.oneShotStartupFullState = fullState;
+        // GameManager.oneShotStartupFullState = fullState;
+        GameManager.startupConfig.fullState = fullState;
+        GameManager.startupConfig.mode = GameManager.StartupConfig.Mode.FullState;
         SceneManager.LoadScene("Naval Game");
     }
 

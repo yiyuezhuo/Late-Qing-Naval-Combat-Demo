@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 using StrategicCombatCore;
 using CoreUtils;
-using Unity.VisualScripting;
 
 public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 {
@@ -99,7 +98,7 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
             var dst = groundControlPoints.Select(cell =>
             {
-                return ((double)cell.longtitude, (double)cell.latitude);
+                return ((double)cell.longitude, (double)cell.latitude);
             }).ToList();
 
             var tps = new ThinPlateSpline(src, dst);
@@ -113,7 +112,7 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
                     {
                         (var x, var y) = HexMapShower.CellXYToLocalXY(cell.x, cell.y);
                         (var longtitude, var latitude) = tps.Transform(x, y);
-                        cell.longtitude = (float)longtitude;
+                        cell.longitude = (float)longtitude;
                         cell.latitude = (float)latitude;
                     }
                 }

@@ -10,9 +10,13 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 using CoreUtils;
 using StrategicCombatCore;
+using NavalCombatCore;
+
 
 public enum StrategicMapEditMode
 {
@@ -37,7 +41,24 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public int tempMapHeight = 40;
     public EdgeFeatureType currentEdgeFeatureType;
 
-    public static string initialScenPath = "Strategic/StrategicGameState.xml";
+    public class StartupConfig
+    {
+        public enum Mode
+        {
+            Empty,
+            LocalizedCamera,
+            ScenPath
+        }
+
+        public Mode mode = Mode.ScenPath;
+        public Vector2 cameraPosXY;
+        public float cameraZoom;
+        public string scenPath = "Strategic/StrategicGameState.xml";
+    }
+
+    public static StartupConfig startupConfig = new StartupConfig();
+
+    // public static string initialScenPath = "Strategic/StrategicGameState.xml";
 
     [CreateProperty]
     public bool showReferenceMap
@@ -70,16 +91,51 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         SuperGameState.Instance.currentGameMode = GameMode.Strategic;
 
         // Default state
-        StrategicGameState.Instance.GenerateTerrainMatrix(width, height);
-
-        // Try to fetch default scenario file and update the state
-        StartCoroutine(Utils.FetchFile(initialScenPath, (initialScenText) =>
+        if (StrategicGameState.Instance.cellMatrix == null)
         {
-            StartCoroutine(
-                OnScenTextLoaded(initialScenText)
-            );
-        }));
+            StrategicGameState.Instance.GenerateTerrainMatrix(width, height);
+        }
 
+        if (startupConfig.mode == StartupConfig.Mode.Empty)
+        {
+            Debug.Log("Empty mode startup");
+
+            HexMapShower.Instance.GenerateTextureAndRefreshMaterial();
+        }
+        else if (startupConfig.mode == StartupConfig.Mode.LocalizedCamera)
+        {
+            Debug.Log("LocalizedCamera mode startup");
+
+            RestoreFromReturnFromNavalGame();
+            HexMapShower.Instance.GenerateTextureAndRefreshMaterial();
+        }
+        else if (startupConfig.mode == StartupConfig.Mode.ScenPath)
+        {
+            Debug.Log($"ScenPath mode startup: {startupConfig.scenPath}");
+
+            // Try to fetch default scenario file and update the state
+            StartCoroutine(Utils.FetchFile(startupConfig.scenPath, initialScenText =>
+            {
+                StartCoroutine(
+                    OnScenTextLoaded(initialScenText)
+                );
+            }));
+        }
+    }
+
+    public void PrepareReturnFromNavalGame()
+    {
+        startupConfig.mode = StartupConfig.Mode.LocalizedCamera;
+        var pos = PlaneCameraController.Instance.transform.position;
+        startupConfig.cameraPosXY = new Vector2(pos.x, pos.y);
+        startupConfig.cameraZoom = PlaneCameraController.Instance.cam.orthographicSize;
+    }
+
+    public void RestoreFromReturnFromNavalGame()
+    {
+        var trans = PlaneCameraController.Instance.transform;
+        trans.position = new Vector3(startupConfig.cameraPosXY.x, startupConfig.cameraPosXY.y, trans.position.z);
+        PlaneCameraController.Instance.cam.orthographicSize = startupConfig.cameraZoom;
     }
 
     IEnumerator OnScenTextLoaded(string initialScenText)
@@ -97,38 +153,10 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     // public static void TempFix()
     // {
-    //     // if(System.Diagnostics.Debugger.IsAttached)
-    //     //     System.Diagnostics.Debugger.Break();
-
-    //     // Debug.Break();
-
-    //     // Temp Conversion for ShipClass (portraitCode => PictureReference)
-    //     var shipFolder = Application.streamingAssetsPath + "/Pictures/Ships";
-    //     var files = Directory.GetFiles(shipFolder);
-    //     var fileNames = files.Where(s => !s.EndsWith(".meta")).Select(s => Path.GetFileName(s)).ToList();
-
-    //     foreach (var shipClass in StrategicGameState.Instance.shipClasses)
-    //     {
-    //         var portraitCode = shipClass.portraitCode;
-    //         if (portraitCode != null)
-    //         {
-    //             var match = fileNames.FirstOrDefault(name => name.StartsWith(portraitCode));
-    //             if (match != null)
-    //             {
-    //                 shipClass.portraitReference = new() { path = "Pictures/Ships/" + match, isBuiltin = true };
-    //             }
-    //         }
-
-    //         var portraitTopCode = shipClass.portraitTopCode;
-    //         if (portraitTopCode != null)
-    //         {
-    //             var match = fileNames.FirstOrDefault(name => name.StartsWith(portraitTopCode));
-    //             if (match != null)
-    //             {
-    //                 shipClass.portraitTopReference = new() { path = "Pictures/Ships/" + match, isBuiltin = true };
-    //             }
-    //         }
-    //     }
+    //     // foreach (var cell in StrategicGameState.Instance.cellMatrix)
+    //     // {
+    //     //     cell.longitude = cell.longtitude;
+    //     // }
     // }
 
     public Vector2 ToCenter(Vector2 xy)

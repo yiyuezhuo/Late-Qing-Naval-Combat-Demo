@@ -147,7 +147,9 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 scenarioNames = scenarioNames,
                 callbackOnceScenarioNameGet = scenarioName =>
                 {
-                    GameManager.initialScenName = scenarioName;
+                    // GameManager.initialScenName = scenarioName;
+                    GameManager.startupConfig.builtinScenName = scenarioName;
+                    GameManager.startupConfig.mode = GameManager.StartupConfig.Mode.BuiltinScenName;
                     SceneManager.LoadScene("Naval Game");
                 }
             };

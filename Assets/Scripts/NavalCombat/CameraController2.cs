@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NavalCombatCore;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -125,12 +126,6 @@ public class CameraController2 : MonoBehaviour
         }
     }
 
-    // float GetZoomSpeed()
-    // {
-    //     var record = zoomSpeedRecords.Where(r => cam.orthographicSize <= r.zoomSizeThreashold).FirstOrDefault();
-    //     return record?.zoomSpeed ?? 1;
-    // }
-
     void UpdateZoom(Camera cam)
     {
         var delta = -GetZoomDeltaSign();
@@ -171,54 +166,12 @@ public class CameraController2 : MonoBehaviour
         }
     }
 
-    private float lastPinchDistance;
-    bool pinching;
-
     public int GetZoomDeltaSign()
     {
         var scrollZoomSign = GetScrollZoomDeltaSign();
-        // var touchZoomSign = GetTouchZoomDeltaSign();
-        // if (scrollZoomSign == 0 && touchZoomSign == 0)
-        //     return 0;
-        // if (scrollZoomSign == 0)
-        //     return touchZoomSign;
 
         if(scrollZoomSign != 0)
             return scrollZoomSign;
-
-        // if (UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches.Count == 2)
-        // {
-        //     var touch1 = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches[0];
-        //     var touch2 = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches[1];
-
-        //     float currentDistance = Vector2.Distance(touch1.screenPosition, touch2.screenPosition);
-
-        //     if (!pinching)
-        //     {
-        //         pinching = true;
-        //         lastPinchDistance = currentDistance;
-        //     }
-        //     else
-        //     {
-        //         var diff = currentDistance - lastPinchDistance;
-        //         if (diff >= 100)
-        //         {
-        //             lastPinchDistance = currentDistance;
-        //             pinching = false;
-        //             return 1;
-        //         }
-        //         if (diff <= -100)
-        //         {
-        //             lastPinchDistance = currentDistance;
-        //             pinching = false;
-        //             return -1;
-        //         }
-        //     }
-        // }
-        // else
-        // {
-        //     pinching = false;
-        // }
 
         return 0;
     }
@@ -228,37 +181,10 @@ public class CameraController2 : MonoBehaviour
         return Math.Sign(Input.mouseScrollDelta.y);
     }
 
-    // int GetTouchZoomDeltaSign()
-    // {
-    //     if (Input.touchCount == 2)
-    //     {
-    //         Touch touch1 = Input.GetTouch(0);
-    //         Touch touch2 = Input.GetTouch(1);
-
-    //         if (touch1.phase == TouchPhase.Began || touch2.phase == TouchPhase.Began)
-    //         {
-    //             lastPinchDistance = Vector2.Distance(touch1.position, touch2.position);
-    //         }
-    //         else if (touch1.phase == TouchPhase.Moved || touch2.phase == TouchPhase.Moved)
-    //         {
-    //             float currentDistance = Vector2.Distance(touch1.position, touch2.position);
-    //             float delta = currentDistance - lastPinchDistance;
-
-    //             // if (delta > 0)
-    //             // {
-    //             //     return 1;
-    //             // }
-    //             // else if (delta < 0)
-    //             // {
-    //             //     return -1;
-    //             // }
-    //             lastPinchDistance = currentDistance;
-
-    //             return Math.Sign(delta);
-    //         }
-    //     }
-    //     return 0;
-    // }
+    public void SetCameraLocation(LatLon latLon)
+    {
+        transform.rotation = Quaternion.Euler(latLon.LatDeg, -latLon.LonDeg, 0);
+    }
 
     // Update is called once per frame
     void Update()

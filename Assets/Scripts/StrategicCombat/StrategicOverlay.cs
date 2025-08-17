@@ -7,7 +7,7 @@ public class StrategicOverlay : SingletonDocument<StrategicOverlay>
     {
         base.Awake();
 
-        root.dataSource = GameManager.Instance;
+        root.dataSource = StrategicGameManager.Instance;
     }
 
 

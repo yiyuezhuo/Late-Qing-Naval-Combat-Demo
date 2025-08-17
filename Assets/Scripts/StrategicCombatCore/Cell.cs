@@ -90,7 +90,10 @@ namespace StrategicCombatCore
         public List<EdgeDirection> rivers = new();
 
         [XmlAttribute]
-        public float longtitude;
+        public float longitude;
+
+        // [XmlAttribute]
+        // public float longitude;
 
         [XmlAttribute]
         public float latitude;

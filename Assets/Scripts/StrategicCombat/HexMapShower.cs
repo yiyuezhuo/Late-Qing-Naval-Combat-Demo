@@ -279,20 +279,6 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         return ((x + dx) / width - 0.5f, (y + dy) / height - 0.5f);
     }
 
-    // static float rad60 = Mathf.PI / 3f;
-    // static float cos60deg = Mathf.Cos(rad60);
-    // static float sin60deg = Mathf.Sin(rad60);
-
-    // static Dictionary<CornerType, (float, float)> cornerToStandardHexLocation = new()
-    // {
-    //     { CornerType.TopRight, (cos60deg, sin60deg)},
-    //     { CornerType.Right, (1, 0)},
-    //     { CornerType.BottomRight, (cos60deg, -sin60deg)},
-    //     { CornerType.BottomLeft, (-cos60deg, -sin60deg)},
-    //     { CornerType.Left, (-1, 0)},
-    //     { CornerType.TopLeft, (-cos60deg, sin60deg)},
-    // };
-
     static float cornerOffset = 0.1f; // Not the exact value
 
     static Dictionary<CornerType, (float, float)> cornerToStandardHexLocation = new()

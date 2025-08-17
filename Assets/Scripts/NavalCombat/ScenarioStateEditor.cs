@@ -179,7 +179,8 @@ public class ScenarioStateEditor : HideableDocument<ScenarioStateEditor>
         {
             // var content = GameManager.Instance.navalGameState.ScenarioStateToXML();
             var content = NavalGameState.Instance.ScenarioStateToXML();
-            IOManager.Instance.SaveTextFile(content, "ScenarioState" + GameManager.scenarioSuffix, "xml");
+            // IOManager.Instance.SaveTextFile(content, "ScenarioState" + GameManager.scenarioSuffix, "xml");
+            IOManager.Instance.SaveTextFile(content, "ScenarioState.xml", "xml");
         };
 
         var importButton = root.Q<Button>("ImportButton");

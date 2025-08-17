@@ -106,10 +106,29 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     // }
 
     // public static string scenarioSuffix = "_Pungdo.xml"; // temp hack
-    public static string scenarioSuffix = "_Yalu.xml";
+    // public static string scenarioSuffix = "_Yalu.xml";
+
+    public class StartupConfig
+    {
+        public enum Mode
+        {
+            Empty,
+            LocalizedCameraOnly,
+            BuiltinScenName,
+            FullState
+        }
+
+        public Mode mode = Mode.BuiltinScenName;
+        public FullState fullState = null;
+        public string builtinScenName = "Battle of Yalu River.scen.xml";
+        public LatLon cameraLocation;
+    }
+
+    public static StartupConfig startupConfig = new();
+
     public static FullState oneShotStartupFullState = null; // one-shot config
     // public static string scenarioSuffix = "_Yalu_Torpedo.xml";
-    public static string initialScenName = "Battle of Yalu River.scen.xml";
+    // public static string initialScenName = "Battle of Yalu River.scen.xml";
 
     public void Start()
     {
@@ -120,14 +139,29 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         // EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
 
-        if (oneShotStartupFullState == null)
+        if (startupConfig.mode == StartupConfig.Mode.Empty)
         {
-            StartLoadScenarioCoroutine(initialScenName);
+            Debug.Log("Empty Startup");
         }
-        else
+        if (startupConfig.mode == StartupConfig.Mode.LocalizedCameraOnly)
         {
-            StartCoroutine(CompleteFullStateAndUpdateCoroutine(oneShotStartupFullState));
-            oneShotStartupFullState = null; // one-shot
+            Debug.Log("LocalizedCameraOnly Startup");
+            CameraController2.Instance.SetCameraLocation(startupConfig.cameraLocation);
+        }
+        else if (startupConfig.mode == StartupConfig.Mode.BuiltinScenName)
+        {
+            Debug.Log($"BuiltinScenName Startup: {startupConfig.builtinScenName}");
+
+            // StartLoadScenarioCoroutine(initialScenName);
+            StartLoadScenarioCoroutine(startupConfig.builtinScenName);
+        }
+        else if (startupConfig.mode == StartupConfig.Mode.FullState)
+        {
+            Debug.Log($"FullState Startup");
+
+            // StartCoroutine(CompleteFullStateAndUpdateCoroutine(oneShotStartupFullState));
+            StartCoroutine(CompleteFullStateAndUpdateCoroutine(startupConfig.fullState));
+            // oneShotStartupFullState = null; // one-shot
         }
     }
 

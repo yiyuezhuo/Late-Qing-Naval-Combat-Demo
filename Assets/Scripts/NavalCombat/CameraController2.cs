@@ -65,6 +65,12 @@ public class CameraController2 : MonoBehaviour
     InputAction scrollWheelAction;
     InputAction rightClickAction;
 
+    void Awake()
+    {
+        cameras = GetComponentsInChildren<Camera>().ToList();
+        cam = cameras[0];
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,11 +79,10 @@ public class CameraController2 : MonoBehaviour
 
         EnhancedTouchSupport.Enable();
 
-        // cam = GetComponent<Camera>();
         initialPosition = transform.position;
 
-        cameras = GetComponentsInChildren<Camera>().ToList();
-        cam = cameras[0];
+        // cameras = GetComponentsInChildren<Camera>().ToList();
+        // cam = cameras[0];
 
         var delta = Math.Min(Utils.r, 1000);
         leafTransform.localPosition = new Vector3(0, 0, -(Utils.r + delta));
@@ -181,9 +186,15 @@ public class CameraController2 : MonoBehaviour
         return Math.Sign(Input.mouseScrollDelta.y);
     }
 
-    public void SetCameraLocation(LatLon latLon)
+    public void SetCameraState(LatLon latLon, float zoom)
     {
         transform.rotation = Quaternion.Euler(latLon.LatDeg, -latLon.LonDeg, 0);
+
+        foreach (var camera in cameras)
+        {
+            Debug.LogWarning($"camera.orthographicSize = zoom => {zoom}");
+            camera.orthographicSize = zoom;
+        }
     }
 
     // Update is called once per frame

@@ -87,6 +87,11 @@ public class HexMapShower : SingletonDocument<HexMapShower>
 
     void OnEdgeFeatureUpdated(object sender, EventArgs args)
     {
+        RefreshEdgeFeature();
+    }
+
+    void RefreshEdgeFeature()
+    {
         BindHexCrossLineRenderers(
             roadContainerTransform, roadPrefab,
             StrategicGameState.Instance.IterateCellPairsFor(EdgeFeatureType.Road).ToList()
@@ -312,6 +317,12 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         //     (dx1 / 0.867f / width / 2, dy1 / height / 2),
         //     (dx2 / 0.867f / width / 2, dy2 / height / 2)
         // );
+    }
+
+    public void Refresh()
+    {
+        GenerateTextureAndRefreshMaterial();
+        RefreshEdgeFeature();
     }
 
     public void OnMapRebuilt(object sender, EventArgs args)

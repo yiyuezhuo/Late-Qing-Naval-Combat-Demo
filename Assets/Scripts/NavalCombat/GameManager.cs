@@ -146,7 +146,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         if (startupConfig.mode == StartupConfig.Mode.LocalizedCameraOnly)
         {
             Debug.Log("LocalizedCameraOnly Startup");
-            CameraController2.Instance.SetCameraLocation(startupConfig.cameraLocation);
+            CameraController2.Instance.SetCameraState(startupConfig.cameraLocation, 40);
         }
         else if (startupConfig.mode == StartupConfig.Mode.BuiltinScenName)
         {

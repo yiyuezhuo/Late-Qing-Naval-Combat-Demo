@@ -100,14 +100,14 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         {
             Debug.Log("Empty mode startup");
 
-            HexMapShower.Instance.GenerateTextureAndRefreshMaterial();
+            HexMapShower.Instance.Refresh();
         }
         else if (startupConfig.mode == StartupConfig.Mode.LocalizedCamera)
         {
             Debug.Log("LocalizedCamera mode startup");
 
             RestoreFromReturnFromNavalGame();
-            HexMapShower.Instance.GenerateTextureAndRefreshMaterial();
+            HexMapShower.Instance.Refresh();
         }
         else if (startupConfig.mode == StartupConfig.Mode.ScenPath)
         {

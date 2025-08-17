@@ -1,0 +1,121 @@
+using System;
+using System.Collections.Generic;
+using MathNet.Numerics.LinearAlgebra;
+
+public class ThinPlateSpline
+{
+    private readonly List<Vector<double>> src; // GCP positions in plane (x,y)
+    private readonly List<Vector<double>> dst; // Corresponding lat/lon (X,Y)
+    private Vector<double> wX, wY;             // Weights for TPS
+    private Vector<double> aX, aY;             // Affine coefficients
+
+    public ThinPlateSpline(List<(double x, double y)> srcPoints, List<(double X, double Y)> dstPoints)
+    {
+        if (srcPoints.Count != dstPoints.Count) throw new ArgumentException("Number of GCPs must match.");
+        if (srcPoints.Count < 3) throw new ArgumentException("At least 3 GCPs are required.");
+
+        int n = srcPoints.Count;
+        src = new List<Vector<double>>(n);
+        dst = new List<Vector<double>>(n);
+
+        for (int i = 0; i < n; i++)
+        {
+            src.Add(Vector<double>.Build.DenseOfArray(new double[] { srcPoints[i].x, srcPoints[i].y }));
+            dst.Add(Vector<double>.Build.DenseOfArray(new double[] { dstPoints[i].X, dstPoints[i].Y }));
+        }
+
+        Solve();
+    }
+
+    private void Solve()
+    {
+        int n = src.Count;
+
+        // Matrix K (n×n), K_ij = U(||pi - pj||)
+        var K = Matrix<double>.Build.Dense(n, n, (i, j) =>
+        {
+            if (i == j) return 0.0;
+            double r = (src[i] - src[j]).L2Norm();
+            return U(r);
+        });
+
+        // Matrix P (n×3), P_i = [1, xi, yi]
+        var P = Matrix<double>.Build.Dense(n, 3, (i, j) =>
+        {
+            if (j == 0) return 1.0;
+            return src[i][j - 1];
+        });
+
+        // Build system matrix L = [K P; P^T 0]
+        var L = Matrix<double>.Build.Dense(n + 3, n + 3);
+        L.SetSubMatrix(0, 0, K);
+        L.SetSubMatrix(0, n, P);
+        L.SetSubMatrix(n, 0, P.Transpose());
+
+        // Target vectors Vx, Vy (size n+3, last 3 are zeros)
+        var Vx = Vector<double>.Build.Dense(n + 3);
+        var Vy = Vector<double>.Build.Dense(n + 3);
+        for (int i = 0; i < n; i++)
+        {
+            Vx[i] = dst[i][0];
+            Vy[i] = dst[i][1];
+        }
+
+        // Solve L * coeff = V
+        var coeffX = L.Solve(Vx);
+        var coeffY = L.Solve(Vy);
+
+        // Split coefficients into weights (w) and affine (a)
+        wX = coeffX.SubVector(0, n);
+        aX = coeffX.SubVector(n, 3);
+
+        wY = coeffY.SubVector(0, n);
+        aY = coeffY.SubVector(n, 3);
+    }
+
+    private double U(double r)
+    {
+        if (r == 0) return 0;
+        return r * r * Math.Log(r * r);
+    }
+
+    // Transform a new point (x,y) -> (X,Y)
+    public (double X, double Y) Transform(double x, double y)
+    {
+        var pt = Vector<double>.Build.DenseOfArray(new double[] { x, y });
+        int n = src.Count;
+
+        // f(x) = a0 + a1*x + a2*y + sum_i w_i * U(|x - p_i|)
+        double fx = aX[0] + aX[1] * x + aX[2] * y;
+        double fy = aY[0] + aY[1] * x + aY[2] * y;
+
+        for (int i = 0; i < n; i++)
+        {
+            double r = (pt - src[i]).L2Norm();
+            double u = U(r);
+            fx += wX[i] * u;
+            fy += wY[i] * u;
+        }
+
+        return (fx, fy);
+    }
+
+    public static string Test()
+    {
+        // Define Ground Control Points (pixel/plane -> lat/lon)
+        var src = new List<(double, double)> {
+            (100, 200), (300, 400), (500, 100), (250, 600)
+        };
+
+        var dst = new List<(double, double)> {
+            (120.1, 30.5), (120.3, 30.7), (120.6, 30.4), (120.2, 30.9)
+        };
+
+        // Build TPS model
+        var tps = new ThinPlateSpline(src, dst);
+
+        // Transform a new point (plane -> lat/lon)
+        var result = tps.Transform(400, 300);
+        return $"Lat/Lon = {result.X}, {result.Y}";
+    }
+}

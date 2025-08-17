@@ -66,7 +66,7 @@ namespace StrategicCombatCore
     }
 
 
-    public class Cell
+    public partial class Cell
     {
         [XmlAttribute]
         public int x;
@@ -88,6 +88,15 @@ namespace StrategicCombatCore
 
         [XmlIgnore]
         public List<EdgeDirection> rivers = new();
+
+        [XmlAttribute]
+        public float longtitude;
+
+        [XmlAttribute]
+        public float latitude;
+
+        [XmlAttribute]
+        public bool groundControlPoint; // GCP (Ground Control Point) lon & lat would be used to infer other cell's lat & lon (Georeference).
 
         string EncodeBoolArray(List<EdgeDirection> arr)
         {

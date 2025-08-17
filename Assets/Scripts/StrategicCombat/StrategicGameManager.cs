@@ -79,6 +79,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 OnScenTextLoaded(initialScenText)
             );
         }));
+
     }
 
     IEnumerator OnScenTextLoaded(string initialScenText)
@@ -199,78 +200,86 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
                     if (cellXY.x >= 0 && cellXY.x < StrategicGameState.Instance.GetMapWidth() && cellXY.y >= 0 && cellXY.y < StrategicGameState.Instance.GetMapHeight())
                     {
-                        if (mapEditMode == StrategicMapEditMode.PaintTerrain)
-                        {
-                            StrategicGameState.Instance.SetMapCellTerrain(cellXY.x, cellXY.y, currentTerrainType);
-
-                            Debug.Log($"SetMapCellTerrain({cellXY.x}, {cellXY.y}, {currentTerrainType})");
-                        }
-
-                        if (mapEditMode == StrategicMapEditMode.CreateOrEditLabel)
-                        {
-                            var label = StrategicGameState.Instance.labels.FirstOrDefault(l => l.x == cellXY.x && l.y == cellXY.y);
-                            if (label == null)
-                            {
-                                label = new StrategicLocationLabel
-                                {
-                                    x = cellXY.x,
-                                    y = cellXY.y,
-                                    name = new()
-                                };
-                                StrategicGameState.Instance.labels.Add(label);
-                            }
-
-                            DialogRoot.Instance.PopupLocationLabelDialog(label);
-
-                            // Launch temp dialog to edit global string
-                            Debug.Log($"CreateOrEditLabel({cellXY.x}, {cellXY.y}, {currentTerrainType})");
-                        }
-
-                        if (mapEditMode == StrategicMapEditMode.DeleteLabel)
-                        {
-                            StrategicGameState.Instance.labels.RemoveAll(l => l.x == cellXY.x && l.y == cellXY.y);
-                        }
-
-                        if (mapEditMode == StrategicMapEditMode.PaintHexPairFeatureBegin)
-                        {
-                            lastSelectedCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
-                            mapEditMode = StrategicMapEditMode.PaintHexPairFeatureEnd;
-                        }
-                        else if (mapEditMode == StrategicMapEditMode.PaintHexPairFeatureEnd)
-                        {
-                            if (lastSelectedCell != null)
-                            {
-                                var cell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
-                                StrategicGameState.Instance.AddEdgeFeature(lastSelectedCell, cell, currentEdgeFeatureType);
-                                mapEditMode = StrategicMapEditMode.PaintHexPairFeatureBegin;
-                            }
-                        }
-
-                        if (mapEditMode == StrategicMapEditMode.DeleteHexPairFeatureBegin)
-                        {
-                            lastSelectedCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
-                            mapEditMode = StrategicMapEditMode.DeleteHexPairFeatureEnd;
-                        }
-                        else if (mapEditMode == StrategicMapEditMode.DeleteHexPairFeatureEnd)
-                        {
-                            if (lastSelectedCell != null)
-                            {
-                                var cell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
-                                StrategicGameState.Instance.DeleteEdgeFeature(lastSelectedCell, cell, currentEdgeFeatureType);
-                                mapEditMode = StrategicMapEditMode.DeleteHexPairFeatureBegin;
-                            }
-                        }
+                        HandleClick(cellXY);
                     }
-
-                    // var xnp = localPoint.x + 0.5f;
-                    // var ynp = localPoint.y + 0.5f;
-                    // var xp = xnp * StrategicGameState.Instance.GetMapLength();
-                    // var yp = ynp * StrategicGameState.Instance.GetMapHeight();
-                    // var x = Mathf.Round(xp);
-                    // var y = Mathf.Round(yp);
-
-                    // Debug.Log($"localPoint={localPoint}, np=({xnp}, {ynp}), p=({xp}, {yp}), xy=({x}, {y})");
                 }
+            }
+        }
+    }
+
+    void HandleClick(Vector2Int cellXY)
+    {
+        if (mapEditMode == StrategicMapEditMode.Select)
+        {
+            lastSelectedCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+        }
+        else
+        {
+            HandleEditClick(cellXY);
+        }
+    }
+
+    void HandleEditClick(Vector2Int cellXY)
+    {
+        if (mapEditMode == StrategicMapEditMode.PaintTerrain)
+        {
+            StrategicGameState.Instance.SetMapCellTerrain(cellXY.x, cellXY.y, currentTerrainType);
+
+            Debug.Log($"SetMapCellTerrain({cellXY.x}, {cellXY.y}, {currentTerrainType})");
+        }
+
+        if (mapEditMode == StrategicMapEditMode.CreateOrEditLabel)
+        {
+            var label = StrategicGameState.Instance.labels.FirstOrDefault(l => l.x == cellXY.x && l.y == cellXY.y);
+            if (label == null)
+            {
+                label = new StrategicLocationLabel
+                {
+                    x = cellXY.x,
+                    y = cellXY.y,
+                    name = new()
+                };
+                StrategicGameState.Instance.labels.Add(label);
+            }
+
+            DialogRoot.Instance.PopupLocationLabelDialog(label);
+
+            // Launch temp dialog to edit global string
+            Debug.Log($"CreateOrEditLabel({cellXY.x}, {cellXY.y}, {currentTerrainType})");
+        }
+
+        if (mapEditMode == StrategicMapEditMode.DeleteLabel)
+        {
+            StrategicGameState.Instance.labels.RemoveAll(l => l.x == cellXY.x && l.y == cellXY.y);
+        }
+
+        if (mapEditMode == StrategicMapEditMode.PaintHexPairFeatureBegin)
+        {
+            lastSelectedCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+            mapEditMode = StrategicMapEditMode.PaintHexPairFeatureEnd;
+        }
+        else if (mapEditMode == StrategicMapEditMode.PaintHexPairFeatureEnd)
+        {
+            if (lastSelectedCell != null)
+            {
+                var cell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+                StrategicGameState.Instance.AddEdgeFeature(lastSelectedCell, cell, currentEdgeFeatureType);
+                mapEditMode = StrategicMapEditMode.PaintHexPairFeatureBegin;
+            }
+        }
+
+        if (mapEditMode == StrategicMapEditMode.DeleteHexPairFeatureBegin)
+        {
+            lastSelectedCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+            mapEditMode = StrategicMapEditMode.DeleteHexPairFeatureEnd;
+        }
+        else if (mapEditMode == StrategicMapEditMode.DeleteHexPairFeatureEnd)
+        {
+            if (lastSelectedCell != null)
+            {
+                var cell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+                StrategicGameState.Instance.DeleteEdgeFeature(lastSelectedCell, cell, currentEdgeFeatureType);
+                mapEditMode = StrategicMapEditMode.DeleteHexPairFeatureBegin;
             }
         }
     }

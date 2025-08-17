@@ -1,4 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="StrategicTopTabs" src="project://database/Assets/UIDocuments/StategicCombat/StrategicTopTabs.uxml?fileID=9197481963319205126&amp;guid=8ea38bc395056514380ad7e8dfdb2b39&amp;type=3#StrategicTopTabs" />
-    <ui:Instance template="StrategicTopTabs" />
+    <ui:Template name="StrategicTopTabs" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicTopTabs.uxml?fileID=9197481963319205126&amp;guid=8ea38bc395056514380ad7e8dfdb2b39&amp;type=3#StrategicTopTabs" />
+    <ui:Template name="StrategicInformationPanel" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicInformationPanel.uxml?fileID=9197481963319205126&amp;guid=9f9bc0290d3dcf348856ddad27571109&amp;type=3#StrategicInformationPanel" />
+    <ui:Instance template="StrategicTopTabs" style="right: 201px; left: 0; position: absolute;" />
+    <ui:Instance template="StrategicInformationPanel" style="position: absolute; right: 0; bottom: 0; top: 0;" />
 </ui:UXML>

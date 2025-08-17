@@ -270,7 +270,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         }
     }
 
-    public (float, float) CellXYToLocalXY(int x, int y)
+    public static (float, float) CellXYToLocalXY(int x, int y)
     {
         var dx = 0.5f;
         var dy = x % 2 == 0 ? 0.5f : 1f;

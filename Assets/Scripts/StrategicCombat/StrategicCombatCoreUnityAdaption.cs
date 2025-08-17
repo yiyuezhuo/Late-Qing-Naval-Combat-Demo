@@ -12,4 +12,10 @@ namespace StrategicCombatCore
         [CreateProperty]
         public StyleBackground leaderPortrait => EntityManager.Instance.Get<Leader>(objectId)?.portraitReference?.pictureStyleBackground ?? null;
     }
+
+    public partial class Cell
+    {
+        [CreateProperty]
+        public string brief => $"({x}, {y}), {terrain}";
+    }
 }

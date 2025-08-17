@@ -85,6 +85,15 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
         // FetchHighPrecisionTextures();
     }
 
+    private void OnDestroy()
+    {
+        if (baseHeightTextureAssetReference != null && baseHeightTextureAssetReference.IsValid())
+            baseHeightTextureAssetReference.ReleaseAsset();
+
+        if (roiHeightTextureAssetReference != null && roiHeightTextureAssetReference.IsValid())
+            roiHeightTextureAssetReference.ReleaseAsset();
+    }
+
     // void FetchHighPrecisionTextures() // TODO: This method should not be placed in "ElevationProvider" though.
     // {
     //     UnityWebRequestImageReader.Instance.RequestIfNotRequestedYet(new ImageFetchTask()

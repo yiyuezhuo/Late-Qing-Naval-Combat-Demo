@@ -52,6 +52,7 @@
                             <ui:DataBinding property="value" data-source-path="showAccurateSeaLand" binding-mode="TwoWay" />
                         </Bindings>
                     </ui:Toggle>
+                    <ui:Button text="TPS Georeferencing" name="TPSGeoreferencingButton" />
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="File">

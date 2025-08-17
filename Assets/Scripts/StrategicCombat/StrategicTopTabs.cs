@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 using StrategicCombatCore;
 using CoreUtils;
+using Unity.VisualScripting;
 
 public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 {
@@ -69,6 +70,54 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         root.Q<Button>("ReturnToMainMenuButton").clicked += () =>
         {
             SceneManager.LoadScene("Main Menu");
+        };
+
+        root.Q<Button>("TPSGeoreferencingButton").clicked += () =>
+        {
+            Debug.Log("TPSGeoreferencingButton is clicked");
+
+            var cellMat = StrategicGameState.Instance.cellMatrix;
+
+            var groundControlPoints = new List<Cell>();
+            for (int i = 0; i < cellMat.GetLength(0); i++)
+            {
+                for (int j = 0; j < cellMat.GetLength(1); j++)
+                {
+                    var cell = cellMat[i, j];
+                    if (cell.groundControlPoint)
+                    {
+                        groundControlPoints.Add(cell);
+                    }
+                }
+            }
+
+            var src = groundControlPoints.Select(cell =>
+            {
+                (var x, var y) = HexMapShower.CellXYToLocalXY(cell.x, cell.y);
+                return ((double)x, (double)y);
+            }).ToList();
+
+            var dst = groundControlPoints.Select(cell =>
+            {
+                return ((double)cell.longtitude, (double)cell.latitude);
+            }).ToList();
+
+            var tps = new ThinPlateSpline(src, dst);
+
+            for (int i = 0; i < cellMat.GetLength(0); i++)
+            {
+                for (int j = 0; j < cellMat.GetLength(1); j++)
+                {
+                    var cell = cellMat[i, j];
+                    if (!cell.groundControlPoint)
+                    {
+                        (var x, var y) = HexMapShower.CellXYToLocalXY(cell.x, cell.y);
+                        (var longtitude, var latitude) = tps.Transform(x, y);
+                        cell.longtitude = (float)longtitude;
+                        cell.latitude = (float)latitude;
+                    }
+                }
+            }
         };
     }
 

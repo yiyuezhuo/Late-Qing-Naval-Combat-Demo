@@ -1,0 +1,19 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="StrategicCombatCore.StrategicGroupMemberReference, Assembly-CSharp" style="flex-direction: row; height: 60px;">
+        <ui:Button text="Set" name="SetButton" />
+        <ui:VisualElement style="flex-shrink: 0; width: 150px; -unity-background-scale-mode: scale-to-fit;">
+            <Bindings>
+                <ui:DataBinding property="style.backgroundImage" data-source-path="icon" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:Label text="Name">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Desc1" />
+            <ui:Label text="Desc2" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -3,8 +3,8 @@ namespace CoreUtils
     public enum Country
     {
         General,
-        Japan,
         China, // Qing
+        Japan,
         Britain,
         France,
         Russia,

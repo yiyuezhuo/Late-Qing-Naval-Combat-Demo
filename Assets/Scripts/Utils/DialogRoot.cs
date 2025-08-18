@@ -89,6 +89,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset victoryStatusDocument;
     public VisualTreeAsset helpDialogDocument;
     public VisualTreeAsset locationLabelDialogDocument;
+    public VisualTreeAsset subordinatePickerDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -100,6 +101,25 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupSubordinatePickerDialog(Action<List<IObjectIdLabeled>> confirmCallback)
+    {
+        var subordinatePickerDialog = new SubordinatePickerDialog()
+        {
+            confirmCallback = confirmCallback
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = subordinatePickerDialogDocument,
+            templateDataSource = subordinatePickerDialog,
+        };
+        tempDialog.onCreated += subordinatePickerDialog.OnCreated;
+        tempDialog.onConfirmed += subordinatePickerDialog.OnConfirmed;
+        
+        tempDialog.Popup();
     }
 
     public void PopupLocationLabelDialog(StrategicLocationLabel label)

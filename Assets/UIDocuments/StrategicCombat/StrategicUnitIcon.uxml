@@ -1,0 +1,26 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="StrategicCombatCore.StrategicGroup, Assembly-CSharp" style="background-color: rgb(243, 230, 88); border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-shrink: 0; width: 100px; height: 100px;">
+        <ui:Label text="III" style="position: relative; height: 17px; -unity-text-align: upper-center;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="sizeStr" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:VisualElement style="flex-grow: 1; align-items: center;">
+            <ui:VisualElement style="flex-grow: 1;" />
+            <ui:VisualElement style="flex-grow: 0; position: relative; height: 45px; width: 60px; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-image: url(&quot;project://database/Assets/Textures/NavalCombat/dashed_arrow.png?fileID=2800000&amp;guid=4b94cc21bd40cc34da408913afa783d3&amp;type=3#dashed_arrow&quot;); background-color: rgb(240, 240, 240); -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;">
+                <Bindings>
+                    <ui:DataBinding property="style.backgroundImage" data-source-path="typeIcon" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:Label text="114514" style="position: relative; height: 23px; -unity-text-align: upper-center; font-size: 15px;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="combinedSubUnitSize" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <Bindings>
+            <ui:DataBinding property="style.backgroundColor" data-source-path="countryColor" binding-mode="ToTarget" />
+        </Bindings>
+    </ui:VisualElement>
+</ui:UXML>

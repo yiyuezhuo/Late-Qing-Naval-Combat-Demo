@@ -62,6 +62,7 @@ namespace StrategicCombatCore
         public List<LandUnitTemplate> landUnitTemplates = new();
         public List<LandUnit> landUnits = new();
         public List<Weapon> weapons = new();
+        public List<StrategicGroup> strategicGroups = new();
 
         public event EventHandler mapRebuilt;
         public event EventHandler<(int, int)> mapCellUpdated;
@@ -115,6 +116,9 @@ namespace StrategicCombatCore
             landUnitTemplates = newInstance.landUnitTemplates;
             landUnits = newInstance.landUnits;
             weapons = newInstance.weapons;
+            strategicGroups = newInstance.strategicGroups;
+
+            shipLogs = newInstance.shipLogs;
 
             mapRebuilt?.Invoke(this, EventArgs.Empty);
             edgeFeatureUpdated?.Invoke(this, EventArgs.Empty);
@@ -165,6 +169,9 @@ namespace StrategicCombatCore
 
             foreach (var weapon in weapons)
                 EntityManager.Instance.Register(weapon, null);
+
+            foreach (var strategicGroup in strategicGroups)
+                EntityManager.Instance.Register(strategicGroup, null);
         }
 
         static StrategicGameState _instance;

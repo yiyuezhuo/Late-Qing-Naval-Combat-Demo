@@ -1,0 +1,17 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="SubordinatePickerDialog, Assembly-CSharp" class="panel-dialog">
+        <ui:Label text="Subordinate Picker" class="title" />
+        <ui:TabView style="flex-grow: 1;">
+            <ui:Tab label="Ship">
+                <ui:ListView name="ShipListView" binding-source-selection-mode="AutoAssign" selection-type="Multiple" item-template="project://database/Assets/UIDocuments/Templates/ShipLogLabel.uxml?fileID=9197481963319205126&amp;guid=5651049bc518a7246863972edb054f20&amp;type=3#ShipLogLabel" data-source-path="unassignedShipLogs" />
+            </ui:Tab>
+            <ui:Tab label="Land Unit">
+                <ui:ListView name="LandUnitListView" binding-source-selection-mode="AutoAssign" selection-type="Multiple" data-source-path="unassignedLandUnits" item-template="project://database/Assets/UIDocuments/Templates/LandUnitLabel.uxml?fileID=9197481963319205126&amp;guid=c06f535a8a0702e448f9525328086019&amp;type=3#LandUnitLabel" />
+            </ui:Tab>
+            <ui:Tab label="Group">
+                <ui:ListView name="GroupListView" binding-source-selection-mode="AutoAssign" selection-type="Multiple" data-source-path="unassignedGroups" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupLabel.uxml?fileID=9197481963319205126&amp;guid=34ee77fc95e8a904caa681718cd94b24&amp;type=3#StrategicGroupLabel" />
+            </ui:Tab>
+        </ui:TabView>
+        <ui:Button text="Confirm" name="ConfirmButton" />
+    </ui:VisualElement>
+</ui:UXML>

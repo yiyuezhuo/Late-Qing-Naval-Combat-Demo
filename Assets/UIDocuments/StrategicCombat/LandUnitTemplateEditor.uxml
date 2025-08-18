@@ -23,7 +23,7 @@
                                 <ui:Instance template="GlobalStringEditor" data-source-path="name">
                                     <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
                                 </ui:Instance>
-                                <ui:EnumField label="Size" value="Center" type="StrategicCombatCore.LandUnitSize, Assembly-CSharp">
+                                <ui:EnumField label="Size" value="Center" type="StrategicCombatCore.StrategicUnitSize, Assembly-CSharp">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="size" binding-mode="TwoWay" />
                                     </Bindings>

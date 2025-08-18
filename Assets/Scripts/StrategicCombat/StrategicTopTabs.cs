@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 using StrategicCombatCore;
 using CoreUtils;
+using NavalCombatCore;
 
 public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 {
@@ -74,50 +75,75 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         root.Q<Button>("TPSGeoreferencingButton").clicked += () =>
         {
             Debug.Log("TPSGeoreferencingButton is clicked");
-
-            var cellMat = StrategicGameState.Instance.cellMatrix;
-
-            var groundControlPoints = new List<Cell>();
-            for (int i = 0; i < cellMat.GetLength(0); i++)
-            {
-                for (int j = 0; j < cellMat.GetLength(1); j++)
-                {
-                    var cell = cellMat[i, j];
-                    if (cell.groundControlPoint)
-                    {
-                        groundControlPoints.Add(cell);
-                    }
-                }
-            }
-
-            var src = groundControlPoints.Select(cell =>
-            {
-                (var x, var y) = HexMapShower.CellXYToLocalXY(cell.x, cell.y);
-                return ((double)x, (double)y);
-            }).ToList();
-
-            var dst = groundControlPoints.Select(cell =>
-            {
-                return ((double)cell.longitude, (double)cell.latitude);
-            }).ToList();
-
-            var tps = new ThinPlateSpline(src, dst);
-
-            for (int i = 0; i < cellMat.GetLength(0); i++)
-            {
-                for (int j = 0; j < cellMat.GetLength(1); j++)
-                {
-                    var cell = cellMat[i, j];
-                    if (!cell.groundControlPoint)
-                    {
-                        (var x, var y) = HexMapShower.CellXYToLocalXY(cell.x, cell.y);
-                        (var longtitude, var latitude) = tps.Transform(x, y);
-                        cell.longitude = (float)longtitude;
-                        cell.latitude = (float)latitude;
-                    }
-                }
-            }
+            DoTPSGeoreferencing();
         };
+
+        root.Q<Button>("CreateDefaultShipLogButton").clicked += () =>
+        {
+            StrategicGameState.Instance.shipLogs = StrategicGameState.Instance.namedShips.Select(namedShip =>
+            {
+                var shipLog = new ShipLog();
+                shipLog.namedShipObjectId = namedShip.objectId;
+                return shipLog;
+            }).ToList();
+
+            StrategicGameState.Instance.ResetAndRegisterAll();
+
+            foreach (var shipLog in StrategicGameState.Instance.shipLogs)
+            {
+                shipLog.ResetDamageExpenditureState();
+            }
+
+            StrategicGameState.Instance.ResetAndRegisterAll();
+        };
+
+        root.Q<Button>("StrategicGroupEditorButton").clicked += StrategicGroupEditor.Instance.Show;
+    }
+
+    void DoTPSGeoreferencing()
+    {
+        var cellMat = StrategicGameState.Instance.cellMatrix;
+
+        var groundControlPoints = new List<Cell>();
+        for (int i = 0; i < cellMat.GetLength(0); i++)
+        {
+            for (int j = 0; j < cellMat.GetLength(1); j++)
+            {
+                var cell = cellMat[i, j];
+                if (cell.groundControlPoint)
+                {
+                    groundControlPoints.Add(cell);
+                }
+            }
+        }
+
+        var src = groundControlPoints.Select(cell =>
+        {
+            (var x, var y) = HexMapShower.CellXYToLocalXY(cell.x, cell.y);
+            return ((double)x, (double)y);
+        }).ToList();
+
+        var dst = groundControlPoints.Select(cell =>
+        {
+            return ((double)cell.longitude, (double)cell.latitude);
+        }).ToList();
+
+        var tps = new ThinPlateSpline(src, dst);
+
+        for (int i = 0; i < cellMat.GetLength(0); i++)
+        {
+            for (int j = 0; j < cellMat.GetLength(1); j++)
+            {
+                var cell = cellMat[i, j];
+                if (!cell.groundControlPoint)
+                {
+                    (var x, var y) = HexMapShower.CellXYToLocalXY(cell.x, cell.y);
+                    (var longtitude, var latitude) = tps.Transform(x, y);
+                    cell.longitude = (float)longtitude;
+                    cell.latitude = (float)latitude;
+                }
+            }
+        }
     }
 
     StrategicGameState DetachGameState(StrategicGameState _s, StreamingAssetReference sar)

@@ -6,9 +6,6 @@
   <namedShipsPath>NamedShips.xml</namedShipsPath>
  </streamingAssetReference>
  <navalGameState>
-  <leaders />
-  <shipClasses />
-  <namedShips />
   <shipLogs>
    <ShipLog>
     <subStates />
@@ -1302,6 +1299,9 @@
      <chineseSimplified>第一游击队</chineseSimplified>
     </name>
     <leaderObjectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</leaderObjectId>
+    <leaderReference>
+     <referenceObjectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</referenceObjectId>
+    </leaderReference>
     <type>Squadron</type>
     <formation>LineAhead</formation>
     <objectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</objectId>
@@ -1364,6 +1364,9 @@
      <chineseSimplified>护航队</chineseSimplified>
     </name>
     <leaderObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</leaderObjectId>
+    <leaderReference>
+     <referenceObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</referenceObjectId>
+    </leaderReference>
     <type>Squadron</type>
     <formation>LineAhead</formation>
     <objectId>96a18446-8d4a-4b89-a219-d514cade9751</objectId>

@@ -12,8 +12,16 @@
                     <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget" />
                 </Bindings>
             </ui:Label>
-            <ui:Label text="Desc1" />
-            <ui:Label text="Desc2" />
+            <ui:Label text="Desc1">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="desc1" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Desc2">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="desc2" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

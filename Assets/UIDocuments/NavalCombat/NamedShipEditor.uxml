@@ -39,7 +39,7 @@
                                     </ui:Instance>
                                     <ui:TextField label="Default Leader" readonly="true">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="defaultLeaderProp.name.mergedName" binding-mode="ToTarget" />
+                                            <ui:DataBinding property="value" data-source-path="defaultLeaderReference.name" binding-mode="ToTarget" />
                                         </Bindings>
                                     </ui:TextField>
                                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">

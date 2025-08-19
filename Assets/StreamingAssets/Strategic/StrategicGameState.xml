@@ -7279,6 +7279,18 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
     <StrategicGroupMemberReference>
      <referenceId>d3278b6a-74fa-437a-86d2-8f86e357418d</referenceId>
     </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>aaafd726-b53c-430d-9dce-238fdfd4e654</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>fcdfa465-8628-45f0-b4b7-a1dea549feef</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>60e0837e-d31b-4f54-87b1-a1762fd2acdf</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>dfc596b4-ef97-474b-b987-8b34cfdcadf9</referenceId>
+    </StrategicGroupMemberReference>
    </subordinatesCombined>
    <subordinatesInCommandOfChain />
    <objectId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</objectId>
@@ -7286,6 +7298,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   <StrategicGroup>
    <name>
     <english>2nd Flying Squadron</english>
+    <japanese>第二遊撃隊</japanese>
     <chineseSimplified>第二游击队</chineseSimplified>
    </name>
    <type>Fleet</type>
@@ -7297,13 +7310,17 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>unnamed</english>
+    <english>Torpedo Boats</english>
     <chineseSimplified>鱼雷艇队</chineseSimplified>
    </name>
    <type>Fleet</type>
    <size>Regiment</size>
    <country>Japan</country>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>094afec3-9fe0-4e4a-8f36-7e2b082c6b5e</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <subordinatesInCommandOfChain />
    <objectId>f6bd836d-5641-4a06-952d-2329545b8a1a</objectId>
   </StrategicGroup>
@@ -7350,6 +7367,40 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    </subordinatesCombined>
    <subordinatesInCommandOfChain />
    <objectId>8961f909-0f74-4ef1-b983-315e9a93204a</objectId>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Imperial General Headquarters</english>
+    <japanese>大本営</japanese>
+    <chineseSimplified>大本营</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Army</size>
+   <country>Japan</country>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <subordinatesInCommandOfChain />
+   <objectId>380340b3-7ec3-4404-9601-c0470d750510</objectId>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Beiyang Fleet</english>
+    <japanese>北洋艦隊</japanese>
+    <chineseSimplified>北洋水师</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Division</size>
+   <country>China</country>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>8961f909-0f74-4ef1-b983-315e9a93204a</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <subordinatesInCommandOfChain />
+   <objectId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</objectId>
   </StrategicGroup>
  </strategicGroups>
  <serializedCells>

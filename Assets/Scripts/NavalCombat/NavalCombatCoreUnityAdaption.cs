@@ -395,6 +395,18 @@ namespace NavalCombatCore
         public Doctrine doctrineProp => doctrine;
     }
 
+    public partial class LeaderReference
+    {
+        [CreateProperty]
+        public StyleBackground portrait
+        {
+            get => Get()?.portraitReference?.pictureStyleBackground ?? null;
+        }
+
+        [CreateProperty]
+        public string name => Get()?.name?.mergedName ?? "[Not Specified or Invalid]"; 
+    }
+
     public partial class NamedShip
     {
         [CreateProperty]

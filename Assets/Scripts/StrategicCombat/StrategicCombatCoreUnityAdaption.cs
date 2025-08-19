@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 using UnityEngine;
 using Unity.VisualScripting;
 using NavalCombatCore;
+using UnityEngine.InputSystem.Utilities;
 
 namespace StrategicCombatCore
 {
@@ -96,6 +97,38 @@ namespace StrategicCombatCore
                     return group.typeIcon;
                 }
                 return null;
+            }
+        }
+
+        [CreateProperty]
+        public string desc1
+        {
+            get
+            {
+                var obj = Get();
+                if (obj == null)
+                    return "";
+                if (obj is ShipLog shipLog)
+                {
+                    var tons = shipLog?.shipClass?.displacementTons;
+                    var type = shipLog?.shipClass?.type;
+                    var crews = shipLog?.shipClass?.complementMen;
+                    return $"{type}, {tons} tons, {crews} men";
+                }
+                if (obj is StrategicGroup group)
+                {
+                    return $"{group.type}, {group.combinedSubUnitSize} sub units";
+                }
+                return "";
+            }
+        }
+
+        [CreateProperty]
+        public string desc2
+        {
+            get
+            {
+                return "";
             }
         }
     }

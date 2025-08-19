@@ -7,7 +7,6 @@
    <chineseSimplified>河原要一大佐</chineseSimplified>
    <chineseTraditional />
   </name>
-  <portraitCode>Kawahara_Yoichi</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Kawahara_Yoichi.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -27,7 +26,6 @@
    <japanese>上村彦之丞少佐</japanese>
    <chineseSimplified>上村彦之丞少佐</chineseSimplified>
   </name>
-  <portraitCode>Kamimura_Hikonojo</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Kamimura_Hikonojo.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -47,7 +45,6 @@
    <japanese>東郷平八郎大佐</japanese>
    <chineseSimplified>东乡平八郎大佐</chineseSimplified>
   </name>
-  <portraitCode>Tōgō_Heihachirō</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Tōgō_Heihachirō.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -67,7 +64,6 @@
    <japanese>方伯謙</japanese>
    <chineseSimplified>方伯谦</chineseSimplified>
   </name>
-  <portraitCode>Fang_Boqian</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Fang_Boqian.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -89,7 +85,6 @@
    <japanese>林国祥</japanese>
    <chineseSimplified>林国祥</chineseSimplified>
   </name>
-  <portraitCode>Lin_Guoxiang</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Lin_Guoxiang.png</path>
    <isBuiltin>true</isBuiltin>
@@ -109,7 +104,6 @@
    <japanese>林泰曽</japanese>
    <chineseSimplified>林泰曾</chineseSimplified>
   </name>
-  <portraitCode>Lin_Taizeng</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Lin_Taizeng.png</path>
    <isBuiltin>true</isBuiltin>
@@ -129,7 +123,6 @@
    <japanese>劉歩蟾</japanese>
    <chineseSimplified>刘步蟾</chineseSimplified>
   </name>
-  <portraitCode>Liu_buchan</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Liu_buchan.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -149,7 +142,6 @@
    <japanese>林履中</japanese>
    <chineseSimplified>林履中</chineseSimplified>
   </name>
-  <portraitCode>Lin_Lvzhong</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Lin_Lvzhong.png</path>
    <isBuiltin>true</isBuiltin>
@@ -169,7 +161,6 @@
    <japanese>黄建勲</japanese>
    <chineseSimplified>黄建勋</chineseSimplified>
   </name>
-  <portraitCode>Huang_Jianxun</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Huang_Jianxun.png</path>
    <isBuiltin>true</isBuiltin>
@@ -189,7 +180,6 @@
    <japanese>葉祖珪</japanese>
    <chineseSimplified>叶祖珪</chineseSimplified>
   </name>
-  <portraitCode>Ye_Zugui</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Ye_Zugui.png</path>
    <isBuiltin>true</isBuiltin>
@@ -209,7 +199,6 @@
    <japanese>鄧世昌</japanese>
    <chineseSimplified>邓世昌</chineseSimplified>
   </name>
-  <portraitCode>Deng_Shichang</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Deng_Shichang.png</path>
    <isBuiltin>true</isBuiltin>
@@ -231,7 +220,6 @@
    <japanese>林永升</japanese>
    <chineseSimplified>林永升</chineseSimplified>
   </name>
-  <portraitCode>Lin_Yongsheng</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Lin_Yongsheng.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -251,7 +239,6 @@
    <japanese>丘宝仁</japanese>
    <chineseSimplified>丘宝仁</chineseSimplified>
   </name>
-  <portraitCode>Qiu_Baoren</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Qiu_Baoren.png</path>
    <isBuiltin>true</isBuiltin>
@@ -271,7 +258,6 @@
    <japanese>李和</japanese>
    <chineseSimplified>李和</chineseSimplified>
   </name>
-  <portraitCode>Li He</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Li He.png</path>
    <isBuiltin>true</isBuiltin>
@@ -291,7 +277,6 @@
    <japanese>呉敬栄</japanese>
    <chineseSimplified>吴敬荣</chineseSimplified>
   </name>
-  <portraitCode>Wu_Jingrong</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Wu_Jingrong.png</path>
    <isBuiltin>true</isBuiltin>
@@ -313,7 +298,6 @@
    <japanese>新井有貫大佐</japanese>
    <chineseSimplified>新井有贯</chineseSimplified>
   </name>
-  <portraitCode>Arai_Yukan</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Arai_Yukan.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -333,7 +317,6 @@
    <japanese>日高壮之丞大佐</japanese>
    <chineseSimplified>日高壮之丞</chineseSimplified>
   </name>
-  <portraitCode>Sonojo_Hidaka</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Sonojo_Hidaka.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -353,7 +336,6 @@
    <japanese>横尾道昱大佐</japanese>
    <chineseSimplified>横尾道昱</chineseSimplified>
   </name>
-  <portraitCode>Arima Shin'ichi</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Arima Shin'ichi.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -373,7 +355,6 @@
    <japanese>桜井規矩之左右少佐</japanese>
    <chineseSimplified>樱井规矩之左右</chineseSimplified>
   </name>
-  <portraitCode>Sakurai_Kikunosuke</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Sakurai_Kikunosuke.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -393,7 +374,6 @@
    <japanese>尾本知道大佐</japanese>
    <chineseSimplified>梶本知道</chineseSimplified>
   </name>
-  <portraitCode>Omoto</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Omoto.jpeg</path>
    <isBuiltin>true</isBuiltin>
@@ -413,7 +393,6 @@
    <japanese>野村貞大佐</japanese>
    <chineseSimplified>野村贞</chineseSimplified>
   </name>
-  <portraitCode>Nomura_Tadashi</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Nomura_Tadashi.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -433,7 +412,6 @@
    <japanese>内田正敏大佐</japanese>
    <chineseSimplified>内田正敏</chineseSimplified>
   </name>
-  <portraitCode>Uchida_Masatoshi</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Uchida_Masatoshi.png</path>
    <isBuiltin>true</isBuiltin>
@@ -453,7 +431,6 @@
    <japanese>程璧光</japanese>
    <chineseSimplified>程璧光</chineseSimplified>
   </name>
-  <portraitCode>Chen_Biguang</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Chen_Biguang.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -473,7 +450,6 @@
    <japanese>丁汝昌</japanese>
    <chineseSimplified>丁汝昌</chineseSimplified>
   </name>
-  <portraitCode>Ding_Ruchang</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Ding_Ruchang.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -496,7 +472,6 @@
    <japanese>坪井航三海軍少将</japanese>
    <chineseSimplified>坪井航三</chineseSimplified>
   </name>
-  <portraitCode>Tsuboi_Kozo</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Tsuboi_Kozo.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -516,7 +491,6 @@
    <japanese>伊東祐亨中将</japanese>
    <chineseSimplified>伊东祐亨</chineseSimplified>
   </name>
-  <portraitCode>Itoh_Sukeyuki</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Itoh_Sukeyuki.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -536,7 +510,6 @@
    <japanese>坂元八郎太少佐</japanese>
    <chineseSimplified>坂元八郎太</chineseSimplified>
   </name>
-  <portraitCode>Sakamoto_Hachirōda</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Sakamoto_Hachirōda.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -556,7 +529,6 @@
    <japanese>鹿野勇之進少佐</japanese>
    <chineseSimplified>鹿野勇之进</chineseSimplified>
   </name>
-  <portraitCode>Kano Yūnosuke</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Kano Yūnosuke.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -576,7 +548,6 @@
    <japanese>蔡廷幹</japanese>
    <chineseSimplified>蔡廷干</chineseSimplified>
   </name>
-  <portraitCode>Cai_Tinggan</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Cai_Tinggan.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -596,7 +567,6 @@
    <japanese>王平</japanese>
    <chineseSimplified>王平</chineseSimplified>
   </name>
-  <portraitCode>Wang Ping_Placeholder</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Wang Ping_Placeholder.png</path>
    <isBuiltin>true</isBuiltin>
@@ -618,7 +588,6 @@
    <japanese>有栖川宮熾仁</japanese>
    <chineseSimplified>有栖川宫炽仁</chineseSimplified>
   </name>
-  <portraitCode>Arisugawa_Taruhito</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Arisugawa_Taruhito.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -638,7 +607,6 @@
    <japanese>川上操六</japanese>
    <chineseSimplified>川上操六</chineseSimplified>
   </name>
-  <portraitCode>Kawakami_Soroku</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Kawakami_Soroku.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -658,7 +626,6 @@
    <japanese>樺山資紀</japanese>
    <chineseSimplified>桦山资纪</chineseSimplified>
   </name>
-  <portraitCode>Kabayama_Sukenori</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Kabayama_Sukenori.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -678,7 +645,6 @@
    <japanese>大山巌</japanese>
    <chineseSimplified>大山岩</chineseSimplified>
   </name>
-  <portraitCode>Ōyama_Iwao</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Ōyama_Iwao.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -698,7 +664,6 @@
    <japanese>西郷従道</japanese>
    <chineseSimplified>西乡从道</chineseSimplified>
   </name>
-  <portraitCode>Saigō_Jūdō</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Saigō_Jūdō.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -718,7 +683,6 @@
    <japanese>李鴻章</japanese>
    <chineseSimplified>李鸿章</chineseSimplified>
   </name>
-  <portraitCode>Li_Hongzhang</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Li_Hongzhang.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -738,7 +702,6 @@
    <japanese>裕禄</japanese>
    <chineseSimplified>裕禄</chineseSimplified>
   </name>
-  <portraitCode>Yulu</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Yulu.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -776,7 +739,6 @@
    <japanese>李秉衡</japanese>
    <chineseSimplified>李秉衡</chineseSimplified>
   </name>
-  <portraitCode>Li_Bingheng</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Li_Bingheng.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -796,7 +758,6 @@
    <japanese>敬信</japanese>
    <chineseSimplified>敬信</chineseSimplified>
   </name>
-  <portraitCode />
   <portraitReference>
    <path>Pictures/Leaders/Arai_Yukan.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -816,7 +777,6 @@
    <japanese>孫毓汶</japanese>
    <chineseSimplified>孙毓汶</chineseSimplified>
   </name>
-  <portraitCode>Sun_Yuwen</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Sun_Yuwen.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -836,7 +796,6 @@
    <japanese>奕劻</japanese>
    <chineseSimplified>奕劻</chineseSimplified>
   </name>
-  <portraitCode>Yikuang</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Yikuang.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -856,7 +815,6 @@
    <japanese>劉坤一</japanese>
    <chineseSimplified>刘坤一</chineseSimplified>
   </name>
-  <portraitCode>Liu_Kunyi</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Liu_Kunyi.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -876,7 +834,6 @@
    <japanese>岡沢精</japanese>
    <chineseSimplified>冈泽精</chineseSimplified>
   </name>
-  <portraitCode>Okazawa_Kuwashi</portraitCode>
   <portraitReference>
    <path>Pictures/Leaders/Okazawa_Kuwashi.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -889,5 +846,24 @@
   <landTactical>Unknown</landTactical>
   <traits />
   <objectId>07b1845e-a293-416c-9da2-8bcb7f71663b</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Arima Shinichi</english>
+   <japanese>有馬新一</japanese>
+   <chineseSimplified>有马新一</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Arima_Shinnichi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>d1ed8a2d-2a72-4e99-87a9-97aeb892d014</objectId>
  </Leader>
 </ArrayOfLeader>

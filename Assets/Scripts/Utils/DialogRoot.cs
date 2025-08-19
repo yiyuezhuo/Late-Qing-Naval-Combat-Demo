@@ -118,7 +118,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         };
         tempDialog.onCreated += subordinatePickerDialog.OnCreated;
         tempDialog.onConfirmed += subordinatePickerDialog.OnConfirmed;
-        
+
         tempDialog.Popup();
     }
 
@@ -277,7 +277,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
             if (leader != null && selectedGroup != null)
             {
-                selectedGroup.leaderObjectId = leader.objectId;
+                // selectedGroup.leaderObjectId = leader.objectId;
+                selectedGroup.leaderReference.referenceObjectId = leader.objectId;
             }
         });
     }
@@ -350,7 +351,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
             if (leader != null && selectedNamedShip != null)
             {
-                selectedNamedShip.defaultLeaderObjectId = leader.objectId;
+                // selectedNamedShip.defaultLeaderObjectId = leader.objectId;
+                selectedNamedShip.defaultLeaderReference.referenceObjectId = leader.objectId;
             }
         });
     }

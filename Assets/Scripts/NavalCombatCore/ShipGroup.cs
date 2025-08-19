@@ -117,10 +117,12 @@ namespace NavalCombatCore
         public GlobalString name = new();
         // public GlobalString captain = new();
 
-        public string leaderObjectId;
+        // public string leaderObjectId;
+        public LeaderReference leaderReference = new();
         public Leader leader
         {
-            get => EntityManager.Instance.Get<Leader>(leaderObjectId);
+            // get => EntityManager.Instance.Get<Leader>(leaderObjectId);
+            get => EntityManager.Instance.Get<Leader>(leaderReference?.referenceObjectId);
         }
 
         public GroupType type;

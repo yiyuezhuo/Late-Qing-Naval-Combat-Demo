@@ -148,16 +148,23 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         StrategicGameState.Instance.ResetAndRegisterAll();
 
-        // TempFix();
+        TempFix();
     }
 
-    // public static void TempFix()
-    // {
-    //     // foreach (var cell in StrategicGameState.Instance.cellMatrix)
-    //     // {
-    //     //     cell.longitude = cell.longtitude;
-    //     // }
-    // }
+    public static void TempFix()
+    {
+        // foreach (var namedShip in StrategicGameState.Instance.namedShips)
+        // {
+        //     namedShip.defaultLeaderReference = new LeaderReference()
+        //     {
+        //         referenceObjectId = namedShip.defaultLeaderObjectId
+        //     };
+        // }
+        // foreach (var cell in StrategicGameState.Instance.cellMatrix)
+        // {
+        //     cell.longitude = cell.longtitude;
+        // }
+    }
 
     public Vector2 ToCenter(Vector2 xy)
     {

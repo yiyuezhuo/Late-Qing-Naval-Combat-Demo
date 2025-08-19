@@ -18,7 +18,7 @@
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 50px; -unity-background-scale-mode: scale-to-fit;">
                 <Bindings>
-                    <ui:DataBinding property="style.backgroundImage" data-source-path="defaultLeaderProp.portraitReference.pictureStyleBackground" binding-mode="ToTarget" />
+                    <ui:DataBinding property="style.backgroundImage" data-source-path="defaultLeaderReference.portrait" binding-mode="ToTarget" />
                 </Bindings>
             </ui:VisualElement>
         </ui:VisualElement>

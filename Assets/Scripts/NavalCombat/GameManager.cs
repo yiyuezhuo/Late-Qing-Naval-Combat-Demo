@@ -195,6 +195,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         NavalGameState.Instance.ResetAndRegisterAll();
 
         Debug.Log("OnFullStateXMLLoadedCoroutine");
+
+        TempFix();
+    }
+
+    void TempFix()
+    {
+        // foreach (var shipGroup in navalGameState.shipGroups)
+        // {
+        //     shipGroup.leaderReference.referenceObjectId = shipGroup.leaderObjectId;
+        // }
     }
 
     public ViewState CaptureViewState()

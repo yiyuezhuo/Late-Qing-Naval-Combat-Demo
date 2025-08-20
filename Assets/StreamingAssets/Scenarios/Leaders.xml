@@ -866,4 +866,42 @@
   <traits />
   <objectId>d1ed8a2d-2a72-4e99-87a9-97aeb892d014</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Hiroshi Oda</english>
+   <japanese>小田亨</japanese>
+   <chineseSimplified>小田亨</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Hiroshi Oda.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>be818bd7-d326-4a8b-9b94-5adb4d24f60b</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Tasuku Serata</english>
+   <japanese>世良田亮</japanese>
+   <chineseSimplified>世良田亮</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Tasuku_Serata.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>e999703a-07c9-4cf4-8f59-2c3284fe6d3d</objectId>
+ </Leader>
 </ArrayOfLeader>

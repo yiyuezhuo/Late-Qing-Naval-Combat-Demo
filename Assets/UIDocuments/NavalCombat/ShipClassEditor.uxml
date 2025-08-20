@@ -164,52 +164,59 @@
                             </ui:Tab>
                             <ui:Tab label="Remark">
                                 <ui:ScrollView>
-                                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                        <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                                            <ui:FloatField label="Displacement (tons)">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="displacementTons" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:IntegerField label="Complement (men)">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="complementMen" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:IntegerField>
-                                            <ui:FloatField label="Length (foot)">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="lengthFoot" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:FloatField label="Beam (foot)">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="beamFoot" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:FloatField label="Draft (foot)">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="draftFoot" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:TextField label="Portrait">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="portraitUrl" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:TextField>
-                                            <ui:Label text="Remark" />
-                                            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="height: 100px; min-height: 100px; max-height: 100px;">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
-                                                </Bindings>
-                                            </ui:TextField>
+                                    <ui:VisualElement>
+                                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                                <ui:FloatField label="Displacement (tons)">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="displacementTons" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:IntegerField label="Complement (men)">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="complementMen" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:IntegerField>
+                                                <ui:FloatField label="Length (foot)">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="lengthFoot" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:FloatField label="Beam (foot)">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="beamFoot" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:FloatField label="Draft (foot)">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="draftFoot" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:FloatField>
+                                                <ui:TextField label="Portrait">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="portraitUrl" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:TextField>
+                                            </ui:VisualElement>
+                                            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; padding-left: 1px; padding-bottom: 1px; padding-right: 1px; padding-top: 1px;">
+                                                <ui:Instance template="GlobalStringEditor" data-source-path="engineDesc">
+                                                    <AttributeOverrides element-name="GlobalStringLabel" text="Engines" />
+                                                </ui:Instance>
+                                                <ui:Instance template="GlobalStringEditor" data-source-path="boilersDesc">
+                                                    <AttributeOverrides element-name="GlobalStringLabel" text="Boilers" />
+                                                </ui:Instance>
+                                            </ui:VisualElement>
                                         </ui:VisualElement>
-                                        <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; padding-left: 1px; padding-bottom: 1px; padding-right: 1px; padding-top: 1px;">
-                                            <ui:Instance template="GlobalStringEditor" data-source-path="engineDesc">
-                                                <AttributeOverrides element-name="GlobalStringLabel" text="Engines" />
-                                            </ui:Instance>
-                                            <ui:Instance template="GlobalStringEditor" data-source-path="boilersDesc">
-                                                <AttributeOverrides element-name="GlobalStringLabel" text="Boilers" />
-                                            </ui:Instance>
+                                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                            <ui:VisualElement style="flex-grow: 1; flex-basis: 0;">
+                                                <ui:Label text="Remark" />
+                                                <ui:TextField multiline="true" vertical-scroller-visibility="Auto" value="__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________" style="height: 250px; white-space: normal;">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
+                                                    </Bindings>
+                                                </ui:TextField>
+                                            </ui:VisualElement>
+                                            <ui:VisualElement style="flex-basis: 0;" />
                                         </ui:VisualElement>
                                     </ui:VisualElement>
                                 </ui:ScrollView>

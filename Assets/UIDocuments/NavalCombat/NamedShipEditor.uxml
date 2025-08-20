@@ -69,8 +69,16 @@
                                     <ui:Instance template="GlobalStringEditor" data-source-path="builderDesc">
                                         <AttributeOverrides element-name="GlobalStringLabel" text="Builder" />
                                     </ui:Instance>
-                                    <ui:TextField label="Launch" data-source-path="launchedDate" />
-                                    <ui:TextField label="Complete" data-source-path="completedDate" />
+                                    <ui:TextField label="Launch">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="launchedDate" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:TextField>
+                                    <ui:TextField label="Complete">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="completedDate" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:TextField>
                                     <ui:Instance template="GlobalStringEditor" data-source-path="fateDesc">
                                         <AttributeOverrides element-name="GlobalStringLabel" text="Fate" />
                                     </ui:Instance>

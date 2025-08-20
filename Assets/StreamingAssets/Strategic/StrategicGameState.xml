@@ -6078,6 +6078,1361 @@
     <objectId>f2235a73-0f6e-4c25-97e3-bd3cccf2fa5d</objectId>
    </doctrine>
   </ShipLog>
+  <ShipLog>
+   <subStates />
+   <objectId>01004ad8-7c55-427b-95dc-7e80c11fc95f</objectId>
+   <namedShipObjectId>b86fb717-db2d-4130-ab94-f2e22400398a</namedShipObjectId>
+   <damagePoint>0</damagePoint>
+   <position>
+    <LatDeg>0</LatDeg>
+    <LonDeg>0</LonDeg>
+   </position>
+   <speedKnots>0</speedKnots>
+   <headingDeg>0</headingDeg>
+   <desiredSpeedKnots>0</desiredSpeedKnots>
+   <desiredHeadingDeg>0</desiredHeadingDeg>
+   <mapState>NotDeployed</mapState>
+   <operationalState>Operational</operationalState>
+   <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
+   <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
+   <batteryStatus>
+    <BatteryStatus>
+     <subStates />
+     <objectId>bd565d7c-5de1-4fdb-8b97-d634f71de3e0</objectId>
+     <ammunition>
+      <ArmorPiercing>150</ArmorPiercing>
+      <semiArmorPiercing>0</semiArmorPiercing>
+      <common>150</common>
+      <highExplosive>0</highExplosive>
+     </ammunition>
+     <mountStatus>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>89da7acd-d37d-4ef4-a3e2-f79696099bfa</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>b3c57429-2a59-426d-97ca-39285c5b0306</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>5e1c8898-82ef-4735-80e0-dfd5627f7d5a</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+     </mountStatus>
+     <fireControlSystemStatusRecords>
+      <FireControlSystemStatusRecord>
+       <subStates />
+       <objectId>f0b991b3-5d06-47f6-9c75-87db98c88b98</objectId>
+       <trackingState>Idle</trackingState>
+       <trackingSeconds>0</trackingSeconds>
+      </FireControlSystemStatusRecord>
+     </fireControlSystemStatusRecords>
+     <fireControlRadarDisabled>false</fireControlRadarDisabled>
+    </BatteryStatus>
+    <BatteryStatus>
+     <subStates />
+     <objectId>708fce69-9f4d-4f3b-99e0-93a40409dc8e</objectId>
+     <ammunition>
+      <ArmorPiercing>450</ArmorPiercing>
+      <semiArmorPiercing>0</semiArmorPiercing>
+      <common>450</common>
+      <highExplosive>0</highExplosive>
+     </ammunition>
+     <mountStatus>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>07e4e928-dc81-42d8-8ebd-a7fc30d1cbd5</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>59f60f4e-777d-4de2-8244-e2c423b1daee</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>2eae553a-feeb-41f7-8bd5-8cb770a6f9ce</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>944688f7-7167-419e-9477-9ca1e2060576</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>b932a807-1cee-46d0-aa5e-f198c9fad5dd</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>a04fb5f1-f394-439a-9782-ece761511bbd</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+     </mountStatus>
+     <fireControlSystemStatusRecords>
+      <FireControlSystemStatusRecord>
+       <subStates />
+       <objectId>eddaf2a6-69f5-4a42-9d81-0232b1f2815a</objectId>
+       <trackingState>Idle</trackingState>
+       <trackingSeconds>0</trackingSeconds>
+      </FireControlSystemStatusRecord>
+     </fireControlSystemStatusRecords>
+     <fireControlRadarDisabled>false</fireControlRadarDisabled>
+    </BatteryStatus>
+   </batteryStatus>
+   <torpedoSectorStatus>
+    <ammunition>2</ammunition>
+    <mountStatus>
+     <TorpedoMountStatusRecord>
+      <subStates />
+      <objectId>b3872598-bfca-42af-8f47-b698dba493c0</objectId>
+      <status>Operational</status>
+      <barrels>1</barrels>
+      <currentLoad>1</currentLoad>
+      <reloadingSeconds>0</reloadingSeconds>
+      <reloadedLoad>1</reloadedLoad>
+     </TorpedoMountStatusRecord>
+     <TorpedoMountStatusRecord>
+      <subStates />
+      <objectId>ea087970-bc4a-40d9-a314-f5f0742b54ee</objectId>
+      <status>Operational</status>
+      <barrels>1</barrels>
+      <currentLoad>1</currentLoad>
+      <reloadingSeconds>0</reloadingSeconds>
+      <reloadedLoad>1</reloadedLoad>
+     </TorpedoMountStatusRecord>
+    </mountStatus>
+   </torpedoSectorStatus>
+   <rapidFiringStatus>
+    <RapidFiringStatus>
+     <portMountHits>0</portMountHits>
+     <starboardMountHits>0</starboardMountHits>
+     <fireControlHits>0</fireControlHits>
+     <targettingRecords />
+     <ammunition>60</ammunition>
+     <logs />
+     <objectId>892d3ca2-e75e-452f-b7d5-e47917074577</objectId>
+    </RapidFiringStatus>
+   </rapidFiringStatus>
+   <dynamicStatus>
+    <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+    <accelerationOffset>0</accelerationOffset>
+    <engineRoomHits>0</engineRoomHits>
+    <propulsionShaftHits>0</propulsionShaftHits>
+    <boilerRoomHits>0</boilerRoomHits>
+    <engineRoomFloodingHits>0</engineRoomFloodingHits>
+    <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
+   </dynamicStatus>
+   <searchLightHits>
+    <portHit>0</portHit>
+    <starboardHit>0</starboardHit>
+   </searchLightHits>
+   <damageControlRatingHits>0</damageControlRatingHits>
+   <damageEffectRecords />
+   <damageEffects />
+   <shipboardFireStatus />
+   <emergencyRudder>false</emergencyRudder>
+   <assistedDeceleration>true</assistedDeceleration>
+   <controlMode>Independent</controlMode>
+   <followDistanceYards>500</followDistanceYards>
+   <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+   <isEvasiveManeuvering>false</isEvasiveManeuvering>
+   <pendingDamagePoint>0</pendingDamagePoint>
+   <logs />
+   <doctrine>
+    <maneuverAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Manual</value>
+    </maneuverAutomaticType>
+    <fireAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </fireAutomaticType>
+    <ammunitionFallbackable>
+     <isInherited>true</isInherited>
+     <value>true</value>
+    </ammunitionFallbackable>
+    <ammunitionSwitchAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </ammunitionSwitchAutomaticType>
+    <maximumFiringDistanceYardsFor200mmPlus>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor200mmPlus>
+    <maximumFiringDistanceYardsFor100mmTo200mm>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmTo200mm>
+    <maximumFiringDistanceYardsFor100mmLess>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmLess>
+    <maximumFiringDistanceYardsForTorpedo>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsForTorpedo>
+    <objectId>4a35ad9a-23fd-4818-aedb-8238655039c2</objectId>
+   </doctrine>
+  </ShipLog>
+  <ShipLog>
+   <subStates />
+   <objectId>f4e9a246-d4a8-4a2d-9952-81500801203e</objectId>
+   <namedShipObjectId>3576de52-b215-4773-a033-13141d11ae44</namedShipObjectId>
+   <damagePoint>0</damagePoint>
+   <position>
+    <LatDeg>0</LatDeg>
+    <LonDeg>0</LonDeg>
+   </position>
+   <speedKnots>0</speedKnots>
+   <headingDeg>0</headingDeg>
+   <desiredSpeedKnots>0</desiredSpeedKnots>
+   <desiredHeadingDeg>0</desiredHeadingDeg>
+   <mapState>NotDeployed</mapState>
+   <operationalState>Operational</operationalState>
+   <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
+   <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
+   <batteryStatus>
+    <BatteryStatus>
+     <subStates />
+     <objectId>d561f7c1-7cd4-4234-992e-b81e5759d2bc</objectId>
+     <ammunition>
+      <ArmorPiercing>30</ArmorPiercing>
+      <semiArmorPiercing>0</semiArmorPiercing>
+      <common>30</common>
+      <highExplosive>0</highExplosive>
+     </ammunition>
+     <mountStatus>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>5aeb983e-c2d8-4564-ac3b-cb9328bc846f</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>d70d964e-b1b7-4e4e-a69e-9fab35acf8b5</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+     </mountStatus>
+     <fireControlSystemStatusRecords>
+      <FireControlSystemStatusRecord>
+       <subStates />
+       <objectId>6640a5af-2ede-4bbb-bd28-c2e28aa0a41d</objectId>
+       <trackingState>Idle</trackingState>
+       <trackingSeconds>0</trackingSeconds>
+      </FireControlSystemStatusRecord>
+     </fireControlSystemStatusRecords>
+     <fireControlRadarDisabled>false</fireControlRadarDisabled>
+    </BatteryStatus>
+    <BatteryStatus>
+     <subStates />
+     <objectId>100f72ca-2e25-4c35-a1be-5d3fc261f893</objectId>
+     <ammunition>
+      <ArmorPiercing>40</ArmorPiercing>
+      <semiArmorPiercing>0</semiArmorPiercing>
+      <common>40</common>
+      <highExplosive>0</highExplosive>
+     </ammunition>
+     <mountStatus>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>ba4ac46f-f3e6-4367-9450-4094be7b2630</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>56290c68-11db-4693-be50-17c40bda15fe</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>08718b69-cd81-44c7-afb8-e2b8f93b7483</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>73e3f5ea-7b00-4043-90a2-8ce3f36f52ff</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>8c4eef9f-b91e-42d7-8fef-19352949eb0a</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+     </mountStatus>
+     <fireControlSystemStatusRecords>
+      <FireControlSystemStatusRecord>
+       <subStates />
+       <objectId>20faa696-73e2-4b1e-8b30-d47005412eb3</objectId>
+       <trackingState>Idle</trackingState>
+       <trackingSeconds>0</trackingSeconds>
+      </FireControlSystemStatusRecord>
+     </fireControlSystemStatusRecords>
+     <fireControlRadarDisabled>false</fireControlRadarDisabled>
+    </BatteryStatus>
+   </batteryStatus>
+   <torpedoSectorStatus>
+    <ammunition>2</ammunition>
+    <mountStatus>
+     <TorpedoMountStatusRecord>
+      <subStates />
+      <objectId>5c1a7c79-3d35-4de8-a3d4-6d4b228d1808</objectId>
+      <status>Operational</status>
+      <barrels>1</barrels>
+      <currentLoad>1</currentLoad>
+      <reloadingSeconds>0</reloadingSeconds>
+      <reloadedLoad>1</reloadedLoad>
+     </TorpedoMountStatusRecord>
+     <TorpedoMountStatusRecord>
+      <subStates />
+      <objectId>20df3ef0-ebca-4120-829b-412f467b79d9</objectId>
+      <status>Operational</status>
+      <barrels>1</barrels>
+      <currentLoad>1</currentLoad>
+      <reloadingSeconds>0</reloadingSeconds>
+      <reloadedLoad>1</reloadedLoad>
+     </TorpedoMountStatusRecord>
+    </mountStatus>
+   </torpedoSectorStatus>
+   <rapidFiringStatus>
+    <RapidFiringStatus>
+     <portMountHits>0</portMountHits>
+     <starboardMountHits>0</starboardMountHits>
+     <fireControlHits>0</fireControlHits>
+     <targettingRecords />
+     <ammunition>30</ammunition>
+     <logs />
+     <objectId>99a48d0c-9f3c-4ad5-9545-bdd53cae9435</objectId>
+    </RapidFiringStatus>
+   </rapidFiringStatus>
+   <dynamicStatus>
+    <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+    <accelerationOffset>0</accelerationOffset>
+    <engineRoomHits>0</engineRoomHits>
+    <propulsionShaftHits>0</propulsionShaftHits>
+    <boilerRoomHits>0</boilerRoomHits>
+    <engineRoomFloodingHits>0</engineRoomFloodingHits>
+    <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
+   </dynamicStatus>
+   <searchLightHits>
+    <portHit>0</portHit>
+    <starboardHit>0</starboardHit>
+   </searchLightHits>
+   <damageControlRatingHits>0</damageControlRatingHits>
+   <damageEffectRecords />
+   <damageEffects />
+   <shipboardFireStatus />
+   <emergencyRudder>false</emergencyRudder>
+   <assistedDeceleration>true</assistedDeceleration>
+   <controlMode>Independent</controlMode>
+   <followDistanceYards>500</followDistanceYards>
+   <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+   <isEvasiveManeuvering>false</isEvasiveManeuvering>
+   <pendingDamagePoint>0</pendingDamagePoint>
+   <logs />
+   <doctrine>
+    <maneuverAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Manual</value>
+    </maneuverAutomaticType>
+    <fireAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </fireAutomaticType>
+    <ammunitionFallbackable>
+     <isInherited>true</isInherited>
+     <value>true</value>
+    </ammunitionFallbackable>
+    <ammunitionSwitchAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </ammunitionSwitchAutomaticType>
+    <maximumFiringDistanceYardsFor200mmPlus>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor200mmPlus>
+    <maximumFiringDistanceYardsFor100mmTo200mm>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmTo200mm>
+    <maximumFiringDistanceYardsFor100mmLess>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmLess>
+    <maximumFiringDistanceYardsForTorpedo>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsForTorpedo>
+    <objectId>34b465d2-dbe0-402c-a04c-50fe4ae60f30</objectId>
+   </doctrine>
+  </ShipLog>
+  <ShipLog>
+   <subStates />
+   <objectId>6a88e57c-f643-4dde-b19a-42b3ac06b91e</objectId>
+   <namedShipObjectId>5b4a018b-cfc9-4945-847c-209135461ffc</namedShipObjectId>
+   <damagePoint>0</damagePoint>
+   <position>
+    <LatDeg>0</LatDeg>
+    <LonDeg>0</LonDeg>
+   </position>
+   <speedKnots>0</speedKnots>
+   <headingDeg>0</headingDeg>
+   <desiredSpeedKnots>0</desiredSpeedKnots>
+   <desiredHeadingDeg>0</desiredHeadingDeg>
+   <mapState>NotDeployed</mapState>
+   <operationalState>Operational</operationalState>
+   <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
+   <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
+   <batteryStatus>
+    <BatteryStatus>
+     <subStates />
+     <objectId>66e5cc20-7d13-4eb2-8e38-e7b01fa9ecca</objectId>
+     <ammunition>
+      <ArmorPiercing>30</ArmorPiercing>
+      <semiArmorPiercing>0</semiArmorPiercing>
+      <common>30</common>
+      <highExplosive>0</highExplosive>
+     </ammunition>
+     <mountStatus>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>8486feeb-c36c-42e3-8e7f-45b9eb85ef2c</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>13c96e88-8f4c-44f0-8a58-613c28c0f775</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+     </mountStatus>
+     <fireControlSystemStatusRecords>
+      <FireControlSystemStatusRecord>
+       <subStates />
+       <objectId>093c4ce9-67e0-44fc-85cf-5451e28c9536</objectId>
+       <trackingState>Idle</trackingState>
+       <trackingSeconds>0</trackingSeconds>
+      </FireControlSystemStatusRecord>
+     </fireControlSystemStatusRecords>
+     <fireControlRadarDisabled>false</fireControlRadarDisabled>
+    </BatteryStatus>
+    <BatteryStatus>
+     <subStates />
+     <objectId>7b17ba6c-0247-4cef-a51d-9366935b284d</objectId>
+     <ammunition>
+      <ArmorPiercing>40</ArmorPiercing>
+      <semiArmorPiercing>0</semiArmorPiercing>
+      <common>40</common>
+      <highExplosive>0</highExplosive>
+     </ammunition>
+     <mountStatus>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>95f2548a-871c-4790-b270-bcdf31b4e07e</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>de3199a4-5281-4c40-a15b-f4ad8e2e511e</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>90abafed-6e3f-4649-afd0-b80b2547141a</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>92e320cf-d8a0-4003-86a8-963db08c5269</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>127f5a5d-6512-42e3-a9ac-a2919f136754</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+     </mountStatus>
+     <fireControlSystemStatusRecords>
+      <FireControlSystemStatusRecord>
+       <subStates />
+       <objectId>2f06b452-f53d-4f87-acac-840a8c376015</objectId>
+       <trackingState>Idle</trackingState>
+       <trackingSeconds>0</trackingSeconds>
+      </FireControlSystemStatusRecord>
+     </fireControlSystemStatusRecords>
+     <fireControlRadarDisabled>false</fireControlRadarDisabled>
+    </BatteryStatus>
+   </batteryStatus>
+   <torpedoSectorStatus>
+    <ammunition>2</ammunition>
+    <mountStatus>
+     <TorpedoMountStatusRecord>
+      <subStates />
+      <objectId>1d2635a9-af9c-47a9-82b0-872cd89e79b5</objectId>
+      <status>Operational</status>
+      <barrels>1</barrels>
+      <currentLoad>1</currentLoad>
+      <reloadingSeconds>0</reloadingSeconds>
+      <reloadedLoad>1</reloadedLoad>
+     </TorpedoMountStatusRecord>
+     <TorpedoMountStatusRecord>
+      <subStates />
+      <objectId>e4acc83f-5d02-462d-80a6-75bd07660892</objectId>
+      <status>Operational</status>
+      <barrels>1</barrels>
+      <currentLoad>1</currentLoad>
+      <reloadingSeconds>0</reloadingSeconds>
+      <reloadedLoad>1</reloadedLoad>
+     </TorpedoMountStatusRecord>
+    </mountStatus>
+   </torpedoSectorStatus>
+   <rapidFiringStatus>
+    <RapidFiringStatus>
+     <portMountHits>0</portMountHits>
+     <starboardMountHits>0</starboardMountHits>
+     <fireControlHits>0</fireControlHits>
+     <targettingRecords />
+     <ammunition>30</ammunition>
+     <logs />
+     <objectId>e4b6b32e-47d6-48e5-a94b-614ea94d41ff</objectId>
+    </RapidFiringStatus>
+   </rapidFiringStatus>
+   <dynamicStatus>
+    <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+    <accelerationOffset>0</accelerationOffset>
+    <engineRoomHits>0</engineRoomHits>
+    <propulsionShaftHits>0</propulsionShaftHits>
+    <boilerRoomHits>0</boilerRoomHits>
+    <engineRoomFloodingHits>0</engineRoomFloodingHits>
+    <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
+   </dynamicStatus>
+   <searchLightHits>
+    <portHit>0</portHit>
+    <starboardHit>0</starboardHit>
+   </searchLightHits>
+   <damageControlRatingHits>0</damageControlRatingHits>
+   <damageEffectRecords />
+   <damageEffects />
+   <shipboardFireStatus />
+   <emergencyRudder>false</emergencyRudder>
+   <assistedDeceleration>true</assistedDeceleration>
+   <controlMode>Independent</controlMode>
+   <followDistanceYards>500</followDistanceYards>
+   <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+   <isEvasiveManeuvering>false</isEvasiveManeuvering>
+   <pendingDamagePoint>0</pendingDamagePoint>
+   <logs />
+   <doctrine>
+    <maneuverAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Manual</value>
+    </maneuverAutomaticType>
+    <fireAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </fireAutomaticType>
+    <ammunitionFallbackable>
+     <isInherited>true</isInherited>
+     <value>true</value>
+    </ammunitionFallbackable>
+    <ammunitionSwitchAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </ammunitionSwitchAutomaticType>
+    <maximumFiringDistanceYardsFor200mmPlus>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor200mmPlus>
+    <maximumFiringDistanceYardsFor100mmTo200mm>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmTo200mm>
+    <maximumFiringDistanceYardsFor100mmLess>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmLess>
+    <maximumFiringDistanceYardsForTorpedo>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsForTorpedo>
+    <objectId>583f19f4-04a5-4d33-9fa1-60d221357d33</objectId>
+   </doctrine>
+  </ShipLog>
+  <ShipLog>
+   <subStates />
+   <objectId>3527bfa6-542e-4041-a1fb-95ddee6c1ef0</objectId>
+   <namedShipObjectId>c94832ea-fce0-4a50-a6e9-7a0e1e2d9aa4</namedShipObjectId>
+   <damagePoint>0</damagePoint>
+   <position>
+    <LatDeg>0</LatDeg>
+    <LonDeg>0</LonDeg>
+   </position>
+   <speedKnots>0</speedKnots>
+   <headingDeg>0</headingDeg>
+   <desiredSpeedKnots>0</desiredSpeedKnots>
+   <desiredHeadingDeg>0</desiredHeadingDeg>
+   <mapState>NotDeployed</mapState>
+   <operationalState>Operational</operationalState>
+   <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
+   <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
+   <batteryStatus>
+    <BatteryStatus>
+     <subStates />
+     <objectId>31e43684-a4da-4287-b6ac-81ee5182ebd2</objectId>
+     <ammunition>
+      <ArmorPiercing>30</ArmorPiercing>
+      <semiArmorPiercing>0</semiArmorPiercing>
+      <common>30</common>
+      <highExplosive>0</highExplosive>
+     </ammunition>
+     <mountStatus>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>660f9814-013c-4656-bf89-8563f5486db4</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>4fbdf497-91f6-4c51-913c-ff80b1588253</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+     </mountStatus>
+     <fireControlSystemStatusRecords>
+      <FireControlSystemStatusRecord>
+       <subStates />
+       <objectId>39d86565-f493-44d7-9066-502821898c95</objectId>
+       <trackingState>Idle</trackingState>
+       <trackingSeconds>0</trackingSeconds>
+      </FireControlSystemStatusRecord>
+     </fireControlSystemStatusRecords>
+     <fireControlRadarDisabled>false</fireControlRadarDisabled>
+    </BatteryStatus>
+    <BatteryStatus>
+     <subStates />
+     <objectId>47022729-85fb-4b52-84e9-c9e2ed8f4885</objectId>
+     <ammunition>
+      <ArmorPiercing>40</ArmorPiercing>
+      <semiArmorPiercing>0</semiArmorPiercing>
+      <common>40</common>
+      <highExplosive>0</highExplosive>
+     </ammunition>
+     <mountStatus>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>2ceefdf3-0717-48f2-9f0c-28c16f038b2c</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>0dbb0ae3-4391-4f16-b48c-b6388dc88dd2</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>19e9fd16-5913-4b11-b118-cd5ad92577a0</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>7f7aa178-c24e-4829-abfd-5ad558642b03</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>42ba729e-7cd3-44be-be87-27196703bb7a</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+     </mountStatus>
+     <fireControlSystemStatusRecords>
+      <FireControlSystemStatusRecord>
+       <subStates />
+       <objectId>ac0934fe-6689-4bba-8b58-6ae3c1f7cc8d</objectId>
+       <trackingState>Idle</trackingState>
+       <trackingSeconds>0</trackingSeconds>
+      </FireControlSystemStatusRecord>
+     </fireControlSystemStatusRecords>
+     <fireControlRadarDisabled>false</fireControlRadarDisabled>
+    </BatteryStatus>
+   </batteryStatus>
+   <torpedoSectorStatus>
+    <ammunition>2</ammunition>
+    <mountStatus>
+     <TorpedoMountStatusRecord>
+      <subStates />
+      <objectId>c5ad1ad4-0044-4eb1-b12b-b7c16b49146a</objectId>
+      <status>Operational</status>
+      <barrels>1</barrels>
+      <currentLoad>1</currentLoad>
+      <reloadingSeconds>0</reloadingSeconds>
+      <reloadedLoad>1</reloadedLoad>
+     </TorpedoMountStatusRecord>
+     <TorpedoMountStatusRecord>
+      <subStates />
+      <objectId>21a63331-1588-4130-bea8-e5512cab4ea9</objectId>
+      <status>Operational</status>
+      <barrels>1</barrels>
+      <currentLoad>1</currentLoad>
+      <reloadingSeconds>0</reloadingSeconds>
+      <reloadedLoad>1</reloadedLoad>
+     </TorpedoMountStatusRecord>
+    </mountStatus>
+   </torpedoSectorStatus>
+   <rapidFiringStatus>
+    <RapidFiringStatus>
+     <portMountHits>0</portMountHits>
+     <starboardMountHits>0</starboardMountHits>
+     <fireControlHits>0</fireControlHits>
+     <targettingRecords />
+     <ammunition>30</ammunition>
+     <logs />
+     <objectId>a0ee0d06-e8aa-41ed-9f8d-7b721d3e73ae</objectId>
+    </RapidFiringStatus>
+   </rapidFiringStatus>
+   <dynamicStatus>
+    <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+    <accelerationOffset>0</accelerationOffset>
+    <engineRoomHits>0</engineRoomHits>
+    <propulsionShaftHits>0</propulsionShaftHits>
+    <boilerRoomHits>0</boilerRoomHits>
+    <engineRoomFloodingHits>0</engineRoomFloodingHits>
+    <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
+   </dynamicStatus>
+   <searchLightHits>
+    <portHit>0</portHit>
+    <starboardHit>0</starboardHit>
+   </searchLightHits>
+   <damageControlRatingHits>0</damageControlRatingHits>
+   <damageEffectRecords />
+   <damageEffects />
+   <shipboardFireStatus />
+   <emergencyRudder>false</emergencyRudder>
+   <assistedDeceleration>true</assistedDeceleration>
+   <controlMode>Independent</controlMode>
+   <followDistanceYards>500</followDistanceYards>
+   <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+   <isEvasiveManeuvering>false</isEvasiveManeuvering>
+   <pendingDamagePoint>0</pendingDamagePoint>
+   <logs />
+   <doctrine>
+    <maneuverAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Manual</value>
+    </maneuverAutomaticType>
+    <fireAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </fireAutomaticType>
+    <ammunitionFallbackable>
+     <isInherited>true</isInherited>
+     <value>true</value>
+    </ammunitionFallbackable>
+    <ammunitionSwitchAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </ammunitionSwitchAutomaticType>
+    <maximumFiringDistanceYardsFor200mmPlus>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor200mmPlus>
+    <maximumFiringDistanceYardsFor100mmTo200mm>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmTo200mm>
+    <maximumFiringDistanceYardsFor100mmLess>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmLess>
+    <maximumFiringDistanceYardsForTorpedo>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsForTorpedo>
+    <objectId>e5923261-5665-40d5-a373-59e8f5a1b2b6</objectId>
+   </doctrine>
+  </ShipLog>
+  <ShipLog>
+   <subStates />
+   <objectId>19eb6bb6-f846-402a-8808-201b84f5683b</objectId>
+   <namedShipObjectId>5763c614-30dd-47bf-b35a-2a8cbaba816d</namedShipObjectId>
+   <damagePoint>0</damagePoint>
+   <position>
+    <LatDeg>0</LatDeg>
+    <LonDeg>0</LonDeg>
+   </position>
+   <speedKnots>0</speedKnots>
+   <headingDeg>0</headingDeg>
+   <desiredSpeedKnots>0</desiredSpeedKnots>
+   <desiredHeadingDeg>0</desiredHeadingDeg>
+   <mapState>NotDeployed</mapState>
+   <operationalState>Operational</operationalState>
+   <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
+   <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
+   <batteryStatus>
+    <BatteryStatus>
+     <subStates />
+     <objectId>3c6a0b7b-2bd3-4212-bb6f-40cd2d11c304</objectId>
+     <ammunition>
+      <ArmorPiercing>30</ArmorPiercing>
+      <semiArmorPiercing>0</semiArmorPiercing>
+      <common>30</common>
+      <highExplosive>0</highExplosive>
+     </ammunition>
+     <mountStatus>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>dcb42c87-5f07-47dd-b53c-1a8b86daab3e</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+     </mountStatus>
+     <fireControlSystemStatusRecords>
+      <FireControlSystemStatusRecord>
+       <subStates />
+       <objectId>b281febd-ea2f-4093-9b33-20f73560bba0</objectId>
+       <trackingState>Idle</trackingState>
+       <trackingSeconds>0</trackingSeconds>
+      </FireControlSystemStatusRecord>
+     </fireControlSystemStatusRecords>
+     <fireControlRadarDisabled>false</fireControlRadarDisabled>
+    </BatteryStatus>
+    <BatteryStatus>
+     <subStates />
+     <objectId>e2f5ad20-dab7-40cf-9084-0b06898f70ec</objectId>
+     <ammunition>
+      <ArmorPiercing>40</ArmorPiercing>
+      <semiArmorPiercing>0</semiArmorPiercing>
+      <common>40</common>
+      <highExplosive>0</highExplosive>
+     </ammunition>
+     <mountStatus>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>860f6a24-e33f-4313-a559-9c6b8fbcaa59</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>bed1ddb4-4b8d-4b20-b006-1802aada2318</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>fb45ba2a-63a7-49ab-97c5-fce2523404da</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>925c3f11-64b8-488d-959d-14a2e71fb401</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+     </mountStatus>
+     <fireControlSystemStatusRecords>
+      <FireControlSystemStatusRecord>
+       <subStates />
+       <objectId>ad1b7668-ef3d-4bde-9c48-96edcb306ec1</objectId>
+       <trackingState>Idle</trackingState>
+       <trackingSeconds>0</trackingSeconds>
+      </FireControlSystemStatusRecord>
+     </fireControlSystemStatusRecords>
+     <fireControlRadarDisabled>false</fireControlRadarDisabled>
+    </BatteryStatus>
+   </batteryStatus>
+   <torpedoSectorStatus>
+    <ammunition>0</ammunition>
+    <mountStatus />
+   </torpedoSectorStatus>
+   <rapidFiringStatus>
+    <RapidFiringStatus>
+     <portMountHits>0</portMountHits>
+     <starboardMountHits>0</starboardMountHits>
+     <fireControlHits>0</fireControlHits>
+     <targettingRecords />
+     <ammunition>30</ammunition>
+     <logs />
+     <objectId>459b59ce-492e-48b6-bc5b-55f0336f4d07</objectId>
+    </RapidFiringStatus>
+   </rapidFiringStatus>
+   <dynamicStatus>
+    <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+    <accelerationOffset>0</accelerationOffset>
+    <engineRoomHits>0</engineRoomHits>
+    <propulsionShaftHits>0</propulsionShaftHits>
+    <boilerRoomHits>0</boilerRoomHits>
+    <engineRoomFloodingHits>0</engineRoomFloodingHits>
+    <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
+   </dynamicStatus>
+   <searchLightHits>
+    <portHit>0</portHit>
+    <starboardHit>0</starboardHit>
+   </searchLightHits>
+   <damageControlRatingHits>0</damageControlRatingHits>
+   <damageEffectRecords />
+   <damageEffects />
+   <shipboardFireStatus />
+   <emergencyRudder>false</emergencyRudder>
+   <assistedDeceleration>true</assistedDeceleration>
+   <controlMode>Independent</controlMode>
+   <followDistanceYards>500</followDistanceYards>
+   <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+   <isEvasiveManeuvering>false</isEvasiveManeuvering>
+   <pendingDamagePoint>0</pendingDamagePoint>
+   <logs />
+   <doctrine>
+    <maneuverAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Manual</value>
+    </maneuverAutomaticType>
+    <fireAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </fireAutomaticType>
+    <ammunitionFallbackable>
+     <isInherited>true</isInherited>
+     <value>true</value>
+    </ammunitionFallbackable>
+    <ammunitionSwitchAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </ammunitionSwitchAutomaticType>
+    <maximumFiringDistanceYardsFor200mmPlus>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor200mmPlus>
+    <maximumFiringDistanceYardsFor100mmTo200mm>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmTo200mm>
+    <maximumFiringDistanceYardsFor100mmLess>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmLess>
+    <maximumFiringDistanceYardsForTorpedo>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsForTorpedo>
+    <objectId>f7b44472-dbdb-49a1-8701-8b531b9c6ec3</objectId>
+   </doctrine>
+  </ShipLog>
+  <ShipLog>
+   <subStates />
+   <objectId>38486925-cdd2-4457-9d76-8b5ad860b523</objectId>
+   <namedShipObjectId>79e50935-13e8-406e-920b-2e9739bb4330</namedShipObjectId>
+   <damagePoint>0</damagePoint>
+   <position>
+    <LatDeg>0</LatDeg>
+    <LonDeg>0</LonDeg>
+   </position>
+   <speedKnots>0</speedKnots>
+   <headingDeg>0</headingDeg>
+   <desiredSpeedKnots>0</desiredSpeedKnots>
+   <desiredHeadingDeg>0</desiredHeadingDeg>
+   <mapState>NotDeployed</mapState>
+   <operationalState>Operational</operationalState>
+   <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
+   <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
+   <batteryStatus>
+    <BatteryStatus>
+     <subStates />
+     <objectId>69f06d47-2e36-48bc-836e-f52e0b82854b</objectId>
+     <ammunition>
+      <ArmorPiercing>30</ArmorPiercing>
+      <semiArmorPiercing>0</semiArmorPiercing>
+      <common>30</common>
+      <highExplosive>0</highExplosive>
+     </ammunition>
+     <mountStatus>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>43c40971-7647-471e-a4ed-4940d9164f02</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>5b4995e0-4f44-4f3e-ac19-50032268d23e</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>c66c96c6-96a4-47c0-8680-5e7227e91dba</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>5b6ae774-a296-4cc0-bb47-fcbdda5389f1</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+     </mountStatus>
+     <fireControlSystemStatusRecords>
+      <FireControlSystemStatusRecord>
+       <subStates />
+       <objectId>d383d4f0-19c5-49d7-b160-d907a7cabcf1</objectId>
+       <trackingState>Idle</trackingState>
+       <trackingSeconds>0</trackingSeconds>
+      </FireControlSystemStatusRecord>
+     </fireControlSystemStatusRecords>
+     <fireControlRadarDisabled>false</fireControlRadarDisabled>
+    </BatteryStatus>
+    <BatteryStatus>
+     <subStates />
+     <objectId>02066c65-680f-433c-807d-d9b9a4255981</objectId>
+     <ammunition>
+      <ArmorPiercing>40</ArmorPiercing>
+      <semiArmorPiercing>0</semiArmorPiercing>
+      <common>40</common>
+      <highExplosive>0</highExplosive>
+     </ammunition>
+     <mountStatus>
+      <MountStatusRecord>
+       <subStates />
+       <objectId>78ae9782-eb7c-4ba5-b81f-0fbbf19b055a</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <processSeconds>0</processSeconds>
+       <ammunitionType>ArmorPiercing</ammunitionType>
+       <logs />
+      </MountStatusRecord>
+     </mountStatus>
+     <fireControlSystemStatusRecords>
+      <FireControlSystemStatusRecord>
+       <subStates />
+       <objectId>713f691f-3352-4d7c-9f7d-1defaea58200</objectId>
+       <trackingState>Idle</trackingState>
+       <trackingSeconds>0</trackingSeconds>
+      </FireControlSystemStatusRecord>
+     </fireControlSystemStatusRecords>
+     <fireControlRadarDisabled>false</fireControlRadarDisabled>
+    </BatteryStatus>
+   </batteryStatus>
+   <torpedoSectorStatus>
+    <ammunition>1</ammunition>
+    <mountStatus>
+     <TorpedoMountStatusRecord>
+      <subStates />
+      <objectId>ca2cc6a8-8dab-4237-987c-c60af21c7426</objectId>
+      <status>Operational</status>
+      <barrels>1</barrels>
+      <currentLoad>1</currentLoad>
+      <reloadingSeconds>0</reloadingSeconds>
+      <reloadedLoad>1</reloadedLoad>
+     </TorpedoMountStatusRecord>
+     <TorpedoMountStatusRecord>
+      <subStates />
+      <objectId>540e4c05-332f-4027-915d-309195e76dbd</objectId>
+      <status>Operational</status>
+      <barrels>2</barrels>
+      <currentLoad>2</currentLoad>
+      <reloadingSeconds>0</reloadingSeconds>
+      <reloadedLoad>2</reloadedLoad>
+     </TorpedoMountStatusRecord>
+    </mountStatus>
+   </torpedoSectorStatus>
+   <rapidFiringStatus>
+    <RapidFiringStatus>
+     <portMountHits>0</portMountHits>
+     <starboardMountHits>0</starboardMountHits>
+     <fireControlHits>0</fireControlHits>
+     <targettingRecords />
+     <ammunition>30</ammunition>
+     <logs />
+     <objectId>daa0c739-cd8e-4d5f-92f4-f98c38ecb12a</objectId>
+    </RapidFiringStatus>
+   </rapidFiringStatus>
+   <dynamicStatus>
+    <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+    <accelerationOffset>0</accelerationOffset>
+    <engineRoomHits>0</engineRoomHits>
+    <propulsionShaftHits>0</propulsionShaftHits>
+    <boilerRoomHits>0</boilerRoomHits>
+    <engineRoomFloodingHits>0</engineRoomFloodingHits>
+    <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
+   </dynamicStatus>
+   <searchLightHits>
+    <portHit>0</portHit>
+    <starboardHit>0</starboardHit>
+   </searchLightHits>
+   <damageControlRatingHits>0</damageControlRatingHits>
+   <damageEffectRecords />
+   <damageEffects />
+   <shipboardFireStatus />
+   <emergencyRudder>false</emergencyRudder>
+   <assistedDeceleration>true</assistedDeceleration>
+   <controlMode>Independent</controlMode>
+   <followDistanceYards>500</followDistanceYards>
+   <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+   <isEvasiveManeuvering>false</isEvasiveManeuvering>
+   <pendingDamagePoint>0</pendingDamagePoint>
+   <logs />
+   <doctrine>
+    <maneuverAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Manual</value>
+    </maneuverAutomaticType>
+    <fireAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </fireAutomaticType>
+    <ammunitionFallbackable>
+     <isInherited>true</isInherited>
+     <value>true</value>
+    </ammunitionFallbackable>
+    <ammunitionSwitchAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </ammunitionSwitchAutomaticType>
+    <maximumFiringDistanceYardsFor200mmPlus>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor200mmPlus>
+    <maximumFiringDistanceYardsFor100mmTo200mm>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmTo200mm>
+    <maximumFiringDistanceYardsFor100mmLess>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmLess>
+    <maximumFiringDistanceYardsForTorpedo>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsForTorpedo>
+    <objectId>0a4b00f3-824b-442b-9021-1fee10192cca</objectId>
+   </doctrine>
+  </ShipLog>
  </shipLogs>
  <labels>
   <StrategicLocationLabel>
@@ -7304,7 +8659,20 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <type>Fleet</type>
    <size>Regiment</size>
    <country>Japan</country>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>f4e9a246-d4a8-4a2d-9952-81500801203e</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>19eb6bb6-f846-402a-8808-201b84f5683b</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>38486925-cdd2-4457-9d76-8b5ad860b523</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>6a88e57c-f643-4dde-b19a-42b3ac06b91e</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <subordinatesInCommandOfChain />
    <objectId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</objectId>
   </StrategicGroup>
@@ -7401,6 +8769,22 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    </subordinatesCombined>
    <subordinatesInCommandOfChain />
    <objectId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</objectId>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Beiyang HQ</english>
+    <chineseSimplified>北洋 HQ</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Army</size>
+   <country>China</country>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <subordinatesInCommandOfChain />
+   <objectId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</objectId>
   </StrategicGroup>
  </strategicGroups>
  <serializedCells>

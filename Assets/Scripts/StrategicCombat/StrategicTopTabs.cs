@@ -80,12 +80,20 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
         root.Q<Button>("CreateDefaultShipLogButton").clicked += () =>
         {
-            StrategicGameState.Instance.shipLogs = StrategicGameState.Instance.namedShips.Select(namedShip =>
-            {
-                var shipLog = new ShipLog();
-                shipLog.namedShipObjectId = namedShip.objectId;
-                return shipLog;
-            }).ToList();
+            var createdObjectIds = StrategicGameState.Instance.shipLogs.Select(shipLog => shipLog.namedShip.objectId).Where(id => id != null && id != "").ToHashSet();
+
+            // StrategicGameState.Instance.shipLogs = StrategicGameState.Instance.namedShips
+            StrategicGameState.Instance.shipLogs.AddRange(StrategicGameState.Instance.namedShips
+                .Where(namedShip => !createdObjectIds.Contains(namedShip.objectId))
+                .Select(namedShip =>
+                {
+                    Debug.LogWarning($"Create new ship log for: {namedShip.name.GetMergedName()}");
+                    
+                    var shipLog = new ShipLog();
+                    shipLog.namedShipObjectId = namedShip.objectId;
+                    return shipLog;
+                })
+            );
 
             StrategicGameState.Instance.ResetAndRegisterAll();
 

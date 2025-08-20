@@ -68,6 +68,8 @@ namespace NavalCombatCore
         {
             yield break;
         }
+
+        public bool notAvailableForFirstSinoJapaneseWar;
     }
 
 }

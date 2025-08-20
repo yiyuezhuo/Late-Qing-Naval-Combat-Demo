@@ -82,6 +82,11 @@
                                     <ui:Instance template="GlobalStringEditor" data-source-path="fateDesc">
                                         <AttributeOverrides element-name="GlobalStringLabel" text="Fate" />
                                     </ui:Instance>
+                                    <ui:Toggle label="Not Available at Beginning">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="notAvailableForFirstSinoJapaneseWar" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:Toggle>
                                 </ui:ScrollView>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">

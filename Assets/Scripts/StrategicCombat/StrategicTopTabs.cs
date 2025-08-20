@@ -84,11 +84,11 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
             // StrategicGameState.Instance.shipLogs = StrategicGameState.Instance.namedShips
             StrategicGameState.Instance.shipLogs.AddRange(StrategicGameState.Instance.namedShips
-                .Where(namedShip => !createdObjectIds.Contains(namedShip.objectId))
+                .Where(namedShip => !createdObjectIds.Contains(namedShip.objectId) && !namedShip.notAvailableForFirstSinoJapaneseWar)
                 .Select(namedShip =>
                 {
                     Debug.LogWarning($"Create new ship log for: {namedShip.name.GetMergedName()}");
-                    
+
                     var shipLog = new ShipLog();
                     shipLog.namedShipObjectId = namedShip.objectId;
                     return shipLog;

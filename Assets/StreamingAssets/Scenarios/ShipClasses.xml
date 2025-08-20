@@ -8304,9 +8304,9 @@ Hashidate ((橋立, 1894)
    <float>8</float>
   </speedKnotsBoilerRooms>
   <speedIncreaseRecord>
-   <SpeedIncreaseRecord thresholdSpeedKnots="3" increaseSpeedKnots="3" />
-   <SpeedIncreaseRecord thresholdSpeedKnots="6" increaseSpeedKnots="2" />
-   <SpeedIncreaseRecord thresholdSpeedKnots="7" increaseSpeedKnots="1" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="3" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="3" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="6" increaseSpeedKnots="1" />
   </speedIncreaseRecord>
   <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
   <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
@@ -8679,9 +8679,9 @@ Musashi (武蔵, 1884)
    <float>7</float>
   </speedKnotsBoilerRooms>
   <speedIncreaseRecord>
-   <SpeedIncreaseRecord thresholdSpeedKnots="3" increaseSpeedKnots="3" />
-   <SpeedIncreaseRecord thresholdSpeedKnots="6" increaseSpeedKnots="2" />
-   <SpeedIncreaseRecord thresholdSpeedKnots="7" increaseSpeedKnots="1" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="3" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="3" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="6" increaseSpeedKnots="1" />
   </speedIncreaseRecord>
   <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
   <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
@@ -9110,10 +9110,10 @@ Japanese wiki don't mention 75mm gun.
    <float>9</float>
   </speedKnotsBoilerRooms>
   <speedIncreaseRecord>
-   <SpeedIncreaseRecord thresholdSpeedKnots="3" increaseSpeedKnots="4" />
-   <SpeedIncreaseRecord thresholdSpeedKnots="6" increaseSpeedKnots="3" />
-   <SpeedIncreaseRecord thresholdSpeedKnots="9" increaseSpeedKnots="2" />
-   <SpeedIncreaseRecord thresholdSpeedKnots="10" increaseSpeedKnots="1" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="4" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="3" increaseSpeedKnots="3" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="6" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="9" increaseSpeedKnots="1" />
   </speedIncreaseRecord>
   <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
   <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
@@ -9149,5 +9149,690 @@ In SK5 data, RF gun seeme come from QF 6-pounder Hotchkiss gun, but the Japanese
   </portraitTopReference>
   <ram>None</ram>
   <objectId>bc352008-8dea-4116-a254-16815040ab45</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>TB 5</english>
+   <japanese>第五号型水雷艇</japanese>
+   <chineseSimplified>第五号型鱼雷艇</chineseSimplified>
+  </name>
+  <type>TorpedoBoat</type>
+  <country>Japan</country>
+  <displacementTons>54</displacementTons>
+  <complementMen>16</complementMen>
+  <lengthFoot>115</lengthFoot>
+  <beamFoot>11</beamFoot>
+  <draftFoot>3</draftFoot>
+  <engineDesc>
+   <english>HC</english>
+   <japanese>直立式2気筒2段膨張レシプロ1基</japanese>
+  </engineDesc>
+  <boilersDesc>
+   <english>1 Locomotive</english>
+   <japanese>汽車缶1基</japanese>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>38cm M1887</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>280302ba-a04b-4341-ba88-5f9d8e138788</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>Midship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>9423fba1-8703-4a8f-b407-f1fa8af6abe7</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="440" speedKnots="28" />
+    <TorpedoSetting rangeYards="660" speedKnots="27" />
+   </torpedoSettings>
+   <ammunitionCapacity>2</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>1pdr Hotchkiss</english>
+    </name>
+    <maxRangeYards>3000</maxRangeYards>
+    <effectiveRangeYards>1350</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <damageFactor>4</damageFactor>
+    <barrelsLevelPort>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>133</damagePoint>
+  <speedKnots>19</speedKnots>
+  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>19</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>19</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>19</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="5" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="3" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="9" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="11" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+  </armorRating>
+  <remark>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%BA%94%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
+
+三等水雷艇 - 第五号型水雷艇
+
+
+第5号 第6号 第7号 第8号 第9号 第10号 第11号 第12号 第13号 第14号 第16号 第17号 第18号 第19号
+
+TB 5 Class
+TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
+  <portraitReference>
+   <path>Pictures\Ships\TB5.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\TB15_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <ram>None</ram>
+  <objectId>da0b0c38-0f49-433d-82b3-eb9171b21fcf</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>TB 15</english>
+   <japanese>第十五号型水雷艇</japanese>
+   <chineseSimplified>第十五号型鱼雷艇</chineseSimplified>
+  </name>
+  <type>TorpedoBoat</type>
+  <country>Japan</country>
+  <displacementTons>53</displacementTons>
+  <complementMen>20</complementMen>
+  <lengthFoot>112</lengthFoot>
+  <beamFoot>12</beamFoot>
+  <draftFoot>3</draftFoot>
+  <engineDesc>
+   <english>HC</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>1 Nomand</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>38cm M1887</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>7ced5cb3-4e15-4ce9-84ed-43817ef29a75</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>Midship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>05fe3d9d-515e-4c1b-8be5-ea4902e32d4a</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="440" speedKnots="28" />
+    <TorpedoSetting rangeYards="660" speedKnots="27" />
+   </torpedoSettings>
+   <ammunitionCapacity>2</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>1pdr Hotchkiss</english>
+    </name>
+    <maxRangeYards>3000</maxRangeYards>
+    <effectiveRangeYards>1350</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="6" fireControlEffectiveRange="4" />
+    </fireControlRecords>
+    <damageFactor>4</damageFactor>
+    <barrelsLevelPort>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>132</damagePoint>
+  <speedKnots>20</speedKnots>
+  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>20</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>20</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>20</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="5" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="3" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="9" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="11" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+  </armorRating>
+  <remark>https://ja.wikipedia.org/wiki/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
+
+三等水雷艇, 第15号型
+
+
+- 第15号
+- 第20号
+
+</remark>
+  <portraitReference>
+   <path>Pictures\Ships\TB15_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\TB15_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <ram>None</ram>
+  <objectId>b533df9b-7e87-48dc-89a2-d470f34e4993</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>TB 21</english>
+   <japanese>第二十一号型水雷艇</japanese>
+   <chineseSimplified>第二十一号鱼雷艇</chineseSimplified>
+  </name>
+  <type>TorpedoBoat</type>
+  <country>Japan</country>
+  <displacementTons>80</displacementTons>
+  <complementMen>21</complementMen>
+  <lengthFoot>118</lengthFoot>
+  <beamFoot>13</beamFoot>
+  <draftFoot>5</draftFoot>
+  <engineDesc>
+   <english>HC</english>
+   <japanese>直立式3気筒3段膨張レシプロ1基 1軸</japanese>
+   <chineseSimplified>立式三缸三段膨胀往复式发动机1台</chineseSimplified>
+  </engineDesc>
+  <boilersDesc>
+   <english>1 Nomand</english>
+   <japanese>ノルマン式水管缶1基</japanese>
+   <chineseSimplified>诺尔曼式水管锅炉1台</chineseSimplified>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>38cm M1887</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>NotSpecified</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>false</trainable>
+     <reloadLimit>1</reloadLimit>
+     <objectId>95a7af5a-430c-41ef-b05a-a33b6c4b6088</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>NotSpecified</mountLocation>
+     <barrels>1</barrels>
+     <mounts>2</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>true</trainable>
+     <reloadLimit>1</reloadLimit>
+     <objectId>49588325-51e7-42e0-904f-b6e288d35d49</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="440" speedKnots="28" />
+    <TorpedoSetting rangeYards="660" speedKnots="27" />
+   </torpedoSettings>
+   <ammunitionCapacity>3</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>1pdr Hotchkiss</english>
+    </name>
+    <maxRangeYards>3000</maxRangeYards>
+    <effectiveRangeYards>1350</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <damageFactor>4</damageFactor>
+    <barrelsLevelPort>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>162</damagePoint>
+  <speedKnots>21</speedKnots>
+  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>21</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>21</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>21</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="5" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="4" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="9" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="13" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+  </armorRating>
+  <remark>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
+
+二等水雷艇 - 第二十一号型水雷艇
+
+
+第21号 第24号
+
+Class II Torpedo Boats - TB 21 Class
+
+TB 21, TB 24</remark>
+  <portraitReference>
+   <path>Pictures\Ships\TB21.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\TB21_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <ram>None</ram>
+  <objectId>529d8f0b-7f08-4326-891c-80647dfb43b7</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>TB 22</english>
+   <japanese>第二十二号型水雷艇</japanese>
+   <chineseSimplified>第二十二型鱼雷艇</chineseSimplified>
+  </name>
+  <type>TorpedoBoat</type>
+  <country>Japan</country>
+  <displacementTons>85</displacementTons>
+  <complementMen>20</complementMen>
+  <lengthFoot>128</lengthFoot>
+  <beamFoot>16</beamFoot>
+  <draftFoot>3.5</draftFoot>
+  <engineDesc>
+   <english>VTE</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>1 Locomotive</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>35cm C/91</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>57e1a2c4-4055-4645-a628-3945a50fcb99</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>Midship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>2</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>732fdb65-a6fd-46dc-9338-fc37ba3e192d</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="440" speedKnots="29" />
+   </torpedoSettings>
+   <ammunitionCapacity>3</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>1pdr Hotchkiss</english>
+    </name>
+    <maxRangeYards>3000</maxRangeYards>
+    <effectiveRangeYards>1350</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <damageFactor>4</damageFactor>
+    <barrelsLevelPort>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>167</damagePoint>
+  <speedKnots>19</speedKnots>
+  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>19</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>19</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>19</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="5" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="3" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="9" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="11" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+  </armorRating>
+  <remark>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
+
+二等水雷艇 - 第二十二号型水雷艇
+
+
+第22号 第23号 第25号 第31号 第32号 第33号 第34号 第35号 第36号 第37号 第38号 第44号 第45号 第46号 第47号 第48号 第49号 第60号 第61号
+
+TB 22, 23, 25, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 48, 49, 60, 61
+
+</remark>
+  <portraitReference>
+   <path>Pictures\Ships\TB22.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\TB21_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <ram>None</ram>
+  <objectId>de44bc06-9c4e-4cd0-ad7e-801e68ce9c40</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Kotaka</english>
+   <japanese>小鷹</japanese>
+   <chineseSimplified>小鹰</chineseSimplified>
+  </name>
+  <type>TorpedoBoat</type>
+  <country>Japan</country>
+  <displacementTons>203</displacementTons>
+  <complementMen>30</complementMen>
+  <lengthFoot>0</lengthFoot>
+  <beamFoot>0</beamFoot>
+  <draftFoot>0</draftFoot>
+  <engineDesc>
+   <english>HC</english>
+   <japanese>直立2気筒2段膨張レシプロ 2基</japanese>
+   <chineseSimplified>直立双缸双胀往复式发动机2台</chineseSimplified>
+  </engineDesc>
+  <boilersDesc>
+   <english>2 Iocomotive </english>
+   <japanese>汽車缶 2基</japanese>
+   <chineseSimplified>蒸汽机车锅炉2个</chineseSimplified>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>14'' Whitehead</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>1</barrels>
+     <mounts>2</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>b76a9271-9bfc-4079-88fe-dad61eae14ce</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>Midship</mountLocation>
+     <barrels>2</barrels>
+     <mounts>2</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>73eec912-1ec8-4cd0-ac50-db5fd74c0722</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="600" speedKnots="20" />
+   </torpedoSettings>
+   <ammunitionCapacity>6</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>1pdr Hotchkiss</english>
+    </name>
+    <maxRangeYards>3000</maxRangeYards>
+    <effectiveRangeYards>1350</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="6" fireControlEffectiveRange="4" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="3" />
+    </fireControlRecords>
+    <damageFactor>4</damageFactor>
+    <barrelsLevelPort>
+     <int>2</int>
+     <int>2</int>
+     <int>1</int>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>2</int>
+     <int>2</int>
+     <int>1</int>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>259</damagePoint>
+  <speedKnots>19</speedKnots>
+  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>19</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>19</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>19</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="5" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="3" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="9" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="11" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>180</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>225</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+  </armorRating>
+  <remark>https://en.wikipedia.org/wiki/Japanese_torpedo_boat_Kotaka
+
+Complement is inferred</remark>
+  <portraitReference>
+   <path>Pictures\Ships\Kotaka.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\Kotaka_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <ram>None</ram>
+  <objectId>b25727cc-97fe-418d-a76e-6ddcb8650229</objectId>
  </ShipClass>
 </ArrayOfShipClass>

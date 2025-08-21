@@ -388,6 +388,58 @@
   <objectId>6b3bdffa-e1c1-4926-9a3b-4c04c7ccc2f7</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</shipClassObjectId>
+  <name>
+   <english>Kuang P'ing</english>
+   <japanese>広丙</japanese>
+   <chineseSimplified>广丙</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>Foochow</english>
+   <japanese>福州船政局</japanese>
+   <chineseSimplified>福州船政局马尾造船所</chineseSimplified>
+  </builderDesc>
+  <launchedDate>00/00/1890</launchedDate>
+  <completedDate>00/00/1891</completedDate>
+  <fateDesc>
+   <english>Captured 02/12/1895</english>
+  </fateDesc>
+  <applicableYearBegin>1891</applicableYearBegin>
+  <applicableYearEnd>1894</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>46a1ffe4-7a2a-43b0-a44c-d29f71c34629</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>ece5d4b3-84e9-477d-85a1-a989b9acf0b6</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>6335ebcc-8d76-46d6-80e6-560390bb5279</shipClassObjectId>
+  <name>
+   <english>Fu Lung</english>
+   <japanese>福龍</japanese>
+   <chineseSimplified>福龙</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>Schichau，Elbing</english>
+   <japanese>ドイツ・シーシャウ社</japanese>
+   <chineseSimplified>德国希肖船厂</chineseSimplified>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>0ffb8288-564a-4a0b-8973-e2d8d3610d21</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>300061b1-9426-4d75-97fa-d1256f55f648</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>0d9558bb-88c1-4021-8a3a-209d98a54419</shipClassObjectId>
   <name>
    <english>Fuso</english>
@@ -568,33 +620,6 @@
   <objectId>d1a1333b-c9cd-44f7-acfa-e70190039282</objectId>
  </NamedShip>
  <NamedShip>
-  <shipClassObjectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</shipClassObjectId>
-  <name>
-   <english>Kuang P'ing</english>
-   <japanese>広丙</japanese>
-   <chineseSimplified>广丙</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>Foochow</english>
-   <japanese>福州船政局</japanese>
-   <chineseSimplified>福州船政局马尾造船所</chineseSimplified>
-  </builderDesc>
-  <launchedDate>00/00/1890</launchedDate>
-  <completedDate>00/00/1891</completedDate>
-  <fateDesc>
-   <english>Captured 02/12/1895</english>
-  </fateDesc>
-  <applicableYearBegin>1891</applicableYearBegin>
-  <applicableYearEnd>1894</applicableYearEnd>
-  <defaultLeaderReference>
-   <referenceObjectId>46a1ffe4-7a2a-43b0-a44c-d29f71c34629</referenceObjectId>
-  </defaultLeaderReference>
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <objectId>ece5d4b3-84e9-477d-85a1-a989b9acf0b6</objectId>
- </NamedShip>
- <NamedShip>
   <shipClassObjectId>57fcc452-53f4-4f1d-b3dd-8633a6ce391b</shipClassObjectId>
   <name>
    <english>Akagi</english>
@@ -641,55 +666,6 @@
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <objectId>fe326406-a6b5-42fe-b052-c79dacf9df1c</objectId>
- </NamedShip>
- <NamedShip>
-  <shipClassObjectId>6335ebcc-8d76-46d6-80e6-560390bb5279</shipClassObjectId>
-  <name>
-   <english>Fu Lung</english>
-   <japanese>福龍</japanese>
-   <chineseSimplified>福龙</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>Schichau，Elbing</english>
-   <japanese>ドイツ・シーシャウ社</japanese>
-   <chineseSimplified>德国希肖船厂</chineseSimplified>
-  </builderDesc>
-  <fateDesc>
-   <english>unnamed</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference>
-   <referenceObjectId>0ffb8288-564a-4a0b-8973-e2d8d3610d21</referenceObjectId>
-  </defaultLeaderReference>
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <objectId>300061b1-9426-4d75-97fa-d1256f55f648</objectId>
- </NamedShip>
- <NamedShip>
-  <shipClassObjectId>16c25805-fc1e-44c7-8e09-59040e760d4c</shipClassObjectId>
-  <name>
-   <english>Tso I</english>
-   <japanese>第一号</japanese>
-   <chineseSimplified>左一</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>unnamed</english>
-   <chineseSimplified>英国亚罗船厂</chineseSimplified>
-  </builderDesc>
-  <fateDesc>
-   <english>unnamed</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference>
-   <referenceObjectId>dd09a700-93ff-4be0-b68e-06922f8d0098</referenceObjectId>
-  </defaultLeaderReference>
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <objectId>be4eaecb-801e-42aa-aad8-232bf8c6d58d</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>a333035a-806e-4246-b57f-157148f73332</shipClassObjectId>
@@ -1300,5 +1276,131 @@
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <objectId>4732996b-1361-4825-8813-3c8675674200</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>16c25805-fc1e-44c7-8e09-59040e760d4c</shipClassObjectId>
+  <name>
+   <english>Tso I</english>
+   <japanese>第一号</japanese>
+   <chineseSimplified>左一</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+   <chineseSimplified>英国亚罗船厂</chineseSimplified>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>dd09a700-93ff-4be0-b68e-06922f8d0098</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>be4eaecb-801e-42aa-aad8-232bf8c6d58d</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8f11a05a-2bca-433e-8ce2-a326b3bb4795</shipClassObjectId>
+  <name>
+   <english>You I</english>
+   <japanese>右一</japanese>
+   <chineseSimplified>右一</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>5d12f240-bab7-42f2-b300-d2ff1047ee8e</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8f11a05a-2bca-433e-8ce2-a326b3bb4795</shipClassObjectId>
+  <name>
+   <english>You II</english>
+   <japanese />
+   <chineseSimplified>右二</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>28b36553-f368-4615-9f5f-c90d9aac8fdf</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8f11a05a-2bca-433e-8ce2-a326b3bb4795</shipClassObjectId>
+  <name>
+   <english>You III</english>
+   <chineseSimplified>右二</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>c782695a-88eb-456d-8895-1a3c1c4b713c</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8f11a05a-2bca-433e-8ce2-a326b3bb4795</shipClassObjectId>
+  <name>
+   <english>Tso II</english>
+   <chineseSimplified>左二</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>8d35f90b-837f-498c-82ef-514a8ecf2161</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8f11a05a-2bca-433e-8ce2-a326b3bb4795</shipClassObjectId>
+  <name>
+   <english>Tso III</english>
+   <chineseSimplified>左三</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>a783e220-b138-4667-969c-38a92546da76</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

@@ -4745,6 +4745,134 @@
  </ShipClass>
  <ShipClass>
   <name>
+   <english>Fu Lung</english>
+   <japanese>福龍</japanese>
+   <chineseSimplified>福龙</chineseSimplified>
+  </name>
+  <type>TorpedoBoat</type>
+  <country>China</country>
+  <displacementTons>120</displacementTons>
+  <complementMen>20</complementMen>
+  <lengthFoot>140</lengthFoot>
+  <beamFoot>16</beamFoot>
+  <draftFoot>3</draftFoot>
+  <engineDesc>
+   <english>unnamed</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>unnamed</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>Schwartzkpff 14in C/84</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>2</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>bbd82db3-8ea0-48f1-bda5-114f91b074b8</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>PortMidship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>deec5431-f1a1-4278-be32-e5b30dffa67e</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="440" speedKnots="29" />
+   </torpedoSettings>
+   <ammunitionCapacity>4</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>1pdr revolver Mle 1877-79</english>
+     <japanese>4.7cm保式単装軽速射砲</japanese>
+     <chineseSimplified>37毫米速射炮</chineseSimplified>
+    </name>
+    <maxRangeYards>7000</maxRangeYards>
+    <effectiveRangeYards>3150</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="7" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
+    </fireControlRecords>
+    <damageFactor>7</damageFactor>
+    <barrelsLevelPort>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>198</damagePoint>
+  <speedKnots>24</speedKnots>
+  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>24</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>24</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>24</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="5" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="4" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="10" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="15" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>180</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>225</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+  </armorRating>
+  <portraitUrl>https://garystockbridge617.getarchive.net/amp/media/fulong-ship-1886-brasseys-1887-0c1793</portraitUrl>
+  <portraitReference>
+   <path>Pictures/Ships/Fu Lung.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures/Ships/Fu Lung_Top.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <ram>None</ram>
+  <objectId>6335ebcc-8d76-46d6-80e6-560390bb5279</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
    <english>Fuso</english>
    <japanese>扶桑</japanese>
    <chineseSimplified>扶桑</chineseSimplified>
@@ -7653,263 +7781,6 @@ Hashidate ((橋立, 1894)
  </ShipClass>
  <ShipClass>
   <name>
-   <english>Fu Lung</english>
-   <japanese>福龍</japanese>
-   <chineseSimplified>福龙</chineseSimplified>
-  </name>
-  <type>TorpedoBoat</type>
-  <country>China</country>
-  <displacementTons>120</displacementTons>
-  <complementMen>20</complementMen>
-  <lengthFoot>140</lengthFoot>
-  <beamFoot>16</beamFoot>
-  <draftFoot>3</draftFoot>
-  <engineDesc>
-   <english>unnamed</english>
-  </engineDesc>
-  <boilersDesc>
-   <english>unnamed</english>
-  </boilersDesc>
-  <batteryRecords />
-  <torpedoSector>
-   <name>
-    <english>Schwartzkpff 14in C/84</english>
-   </name>
-   <mountLocationRecords>
-    <MountLocationRecord>
-     <mountLocation>Forward</mountLocation>
-     <barrels>2</barrels>
-     <mounts>1</mounts>
-     <mountArcs>
-      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
-     </mountArcs>
-     <useRestAngle>false</useRestAngle>
-     <restAngleDeg>0</restAngleDeg>
-     <trainable>false</trainable>
-     <reloadLimit>0</reloadLimit>
-     <objectId>bbd82db3-8ea0-48f1-bda5-114f91b074b8</objectId>
-    </MountLocationRecord>
-    <MountLocationRecord>
-     <mountLocation>PortMidship</mountLocation>
-     <barrels>1</barrels>
-     <mounts>1</mounts>
-     <mountArcs>
-      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
-      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
-     </mountArcs>
-     <useRestAngle>false</useRestAngle>
-     <restAngleDeg>0</restAngleDeg>
-     <trainable>true</trainable>
-     <reloadLimit>0</reloadLimit>
-     <objectId>deec5431-f1a1-4278-be32-e5b30dffa67e</objectId>
-    </MountLocationRecord>
-   </mountLocationRecords>
-   <torpedoSettings>
-    <TorpedoSetting rangeYards="440" speedKnots="29" />
-   </torpedoSettings>
-   <ammunitionCapacity>4</ammunitionCapacity>
-   <damageClass>I</damageClass>
-   <dudProbability>0.5</dudProbability>
-   <pistolType>Contact</pistolType>
-  </torpedoSector>
-  <rapidFireBatteryRecords>
-   <RapidFireBatteryRecord>
-    <name>
-     <english>1pdr revolver Mle 1877-79</english>
-     <japanese>4.7cm保式単装軽速射砲</japanese>
-     <chineseSimplified>37毫米速射炮</chineseSimplified>
-    </name>
-    <maxRangeYards>7000</maxRangeYards>
-    <effectiveRangeYards>3150</effectiveRangeYards>
-    <fireControlRecords>
-     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="7" />
-     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
-    </fireControlRecords>
-    <damageFactor>7</damageFactor>
-    <barrelsLevelPort>
-     <int>1</int>
-    </barrelsLevelPort>
-    <barrelsLevelStarboard>
-     <int>1</int>
-    </barrelsLevelStarboard>
-   </RapidFireBatteryRecord>
-  </rapidFireBatteryRecords>
-  <targetSizeModifier>-1</targetSizeModifier>
-  <damagePoint>198</damagePoint>
-  <speedKnots>24</speedKnots>
-  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
-  <speedKnotsEngineRoomsLevels>
-   <float>24</float>
-  </speedKnotsEngineRoomsLevels>
-  <speedKnotsPropulsionShaftLevels>
-   <float>24</float>
-  </speedKnotsPropulsionShaftLevels>
-  <speedKnotsBoilerRooms>
-   <float>24</float>
-  </speedKnotsBoilerRooms>
-  <speedIncreaseRecord>
-   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="5" />
-   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="4" />
-   <SpeedIncreaseRecord thresholdSpeedKnots="10" increaseSpeedKnots="2" />
-   <SpeedIncreaseRecord thresholdSpeedKnots="15" increaseSpeedKnots="1" />
-  </speedIncreaseRecord>
-  <standardTurnDegPer2Min>180</standardTurnDegPer2Min>
-  <emergencyTurnDegPer2Min>225</emergencyTurnDegPer2Min>
-  <armorRating>
-   <armorTypeFactor>0</armorTypeFactor>
-   <deck effectInch="0" actualInch="0" />
-   <turretHorizontal effectInch="0" actualInch="0" />
-   <superStructureHorizontal effectInch="0" actualInch="0" />
-   <conningTower effectInch="0" actualInch="0" />
-   <mainBelt effectInch="0" actualInch="0" />
-   <beltEnd effectInch="0" actualInch="0" />
-   <barbette effectInch="0" actualInch="0" />
-   <turretVertical effectInch="0" actualInch="0" />
-   <superStructureVertical effectInch="0" actualInch="0" />
-  </armorRating>
-  <portraitUrl>https://garystockbridge617.getarchive.net/amp/media/fulong-ship-1886-brasseys-1887-0c1793</portraitUrl>
-  <portraitReference>
-   <path>Pictures/Ships/Fu Lung.png</path>
-   <isBuiltin>true</isBuiltin>
-  </portraitReference>
-  <portraitTopReference>
-   <path>Pictures/Ships/Fu Lung_Top.png</path>
-   <isBuiltin>true</isBuiltin>
-  </portraitTopReference>
-  <ram>None</ram>
-  <objectId>6335ebcc-8d76-46d6-80e6-560390bb5279</objectId>
- </ShipClass>
- <ShipClass>
-  <name>
-   <english>Tso I</english>
-   <japanese>第一号</japanese>
-   <chineseSimplified>左一</chineseSimplified>
-  </name>
-  <type>TorpedoBoat</type>
-  <country>China</country>
-  <displacementTons>90</displacementTons>
-  <complementMen>25</complementMen>
-  <lengthFoot>127</lengthFoot>
-  <beamFoot>12</beamFoot>
-  <draftFoot>6.5</draftFoot>
-  <engineDesc>
-   <english>unnamed</english>
-  </engineDesc>
-  <boilersDesc>
-   <english>unnamed</english>
-  </boilersDesc>
-  <batteryRecords />
-  <torpedoSector>
-   <name>
-    <english>Schwartzkopff 14in C/84</english>
-   </name>
-   <mountLocationRecords>
-    <MountLocationRecord>
-     <mountLocation>Forward</mountLocation>
-     <barrels>2</barrels>
-     <mounts>1</mounts>
-     <mountArcs>
-      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
-     </mountArcs>
-     <useRestAngle>false</useRestAngle>
-     <restAngleDeg>0</restAngleDeg>
-     <trainable>false</trainable>
-     <reloadLimit>0</reloadLimit>
-     <objectId>99348385-66ce-485d-ad49-05417bb04431</objectId>
-    </MountLocationRecord>
-    <MountLocationRecord>
-     <mountLocation>Midship</mountLocation>
-     <barrels>1</barrels>
-     <mounts>1</mounts>
-     <mountArcs>
-      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
-      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
-     </mountArcs>
-     <useRestAngle>false</useRestAngle>
-     <restAngleDeg>0</restAngleDeg>
-     <trainable>true</trainable>
-     <reloadLimit>0</reloadLimit>
-     <objectId>d0e8b92e-a0a1-4d6a-80b2-47b621fed274</objectId>
-    </MountLocationRecord>
-   </mountLocationRecords>
-   <torpedoSettings>
-    <TorpedoSetting rangeYards="440" speedKnots="29" />
-   </torpedoSettings>
-   <ammunitionCapacity>4</ammunitionCapacity>
-   <damageClass>I</damageClass>
-   <dudProbability>0.5</dudProbability>
-   <pistolType>Contact</pistolType>
-  </torpedoSector>
-  <rapidFireBatteryRecords>
-   <RapidFireBatteryRecord>
-    <name>
-     <english>1pdr revolver Mle 1877-79</english>
-     <chineseSimplified>3门哈乞开斯47毫米重型速射炮以及4门10管11毫米格林炮</chineseSimplified>
-    </name>
-    <maxRangeYards>7000</maxRangeYards>
-    <effectiveRangeYards>3150</effectiveRangeYards>
-    <fireControlRecords>
-     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="7" />
-     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
-    </fireControlRecords>
-    <damageFactor>7</damageFactor>
-    <barrelsLevelPort>
-     <int>2</int>
-     <int>1</int>
-    </barrelsLevelPort>
-    <barrelsLevelStarboard>
-     <int>2</int>
-     <int>1</int>
-    </barrelsLevelStarboard>
-   </RapidFireBatteryRecord>
-  </rapidFireBatteryRecords>
-  <targetSizeModifier>-1</targetSizeModifier>
-  <damagePoint>172</damagePoint>
-  <speedKnots>24</speedKnots>
-  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
-  <speedKnotsEngineRoomsLevels>
-   <float>24</float>
-  </speedKnotsEngineRoomsLevels>
-  <speedKnotsPropulsionShaftLevels>
-   <float>24</float>
-  </speedKnotsPropulsionShaftLevels>
-  <speedKnotsBoilerRooms>
-   <float>24</float>
-  </speedKnotsBoilerRooms>
-  <speedIncreaseRecord>
-   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="5" />
-   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="4" />
-   <SpeedIncreaseRecord thresholdSpeedKnots="10" increaseSpeedKnots="2" />
-   <SpeedIncreaseRecord thresholdSpeedKnots="15" increaseSpeedKnots="1" />
-  </speedIncreaseRecord>
-  <standardTurnDegPer2Min>180</standardTurnDegPer2Min>
-  <emergencyTurnDegPer2Min>225</emergencyTurnDegPer2Min>
-  <armorRating>
-   <armorTypeFactor>0</armorTypeFactor>
-   <deck effectInch="0" actualInch="0" />
-   <turretHorizontal effectInch="0" actualInch="0" />
-   <superStructureHorizontal effectInch="0" actualInch="0" />
-   <conningTower effectInch="0" actualInch="0" />
-   <mainBelt effectInch="0" actualInch="0" />
-   <beltEnd effectInch="0" actualInch="0" />
-   <barbette effectInch="0" actualInch="0" />
-   <turretVertical effectInch="0" actualInch="0" />
-   <superStructureVertical effectInch="0" actualInch="0" />
-  </armorRating>
-  <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
-  <portraitReference>
-   <path>Pictures/Ships/Tso I.png</path>
-   <isBuiltin>true</isBuiltin>
-  </portraitReference>
-  <portraitTopReference>
-   <path>Pictures/Ships/Tso I_Top.png</path>
-   <isBuiltin>true</isBuiltin>
-  </portraitTopReference>
-  <ram>None</ram>
-  <objectId>16c25805-fc1e-44c7-8e09-59040e760d4c</objectId>
- </ShipClass>
- <ShipClass>
-  <name>
    <english>Katsuragi</english>
    <japanese>葛城</japanese>
    <chineseSimplified>葛城</chineseSimplified>
@@ -9218,6 +9089,7 @@ In SK5 data, RF gun seeme come from QF 6-pounder Hotchkiss gun, but the Japanese
    <RapidFireBatteryRecord>
     <name>
      <english>1pdr Hotchkiss</english>
+     <japanese>47mm保式単装速射砲1門</japanese>
     </name>
     <maxRangeYards>3000</maxRangeYards>
     <effectiveRangeYards>1350</effectiveRangeYards>
@@ -9353,6 +9225,7 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
    <RapidFireBatteryRecord>
     <name>
      <english>1pdr Hotchkiss</english>
+     <japanese>ノルデンフェルト式25mm4連装機砲1基</japanese>
     </name>
     <maxRangeYards>3000</maxRangeYards>
     <effectiveRangeYards>1350</effectiveRangeYards>
@@ -9492,6 +9365,7 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
    <RapidFireBatteryRecord>
     <name>
      <english>1pdr Hotchkiss</english>
+     <japanese>47mm保式単装軽速射砲1基</japanese>
     </name>
     <maxRangeYards>3000</maxRangeYards>
     <effectiveRangeYards>1350</effectiveRangeYards>
@@ -9627,6 +9501,7 @@ TB 21, TB 24</remark>
    <RapidFireBatteryRecord>
     <name>
      <english>1pdr Hotchkiss</english>
+     <japanese>47mm保式単装軽速射砲2基</japanese>
     </name>
     <maxRangeYards>3000</maxRangeYards>
     <effectiveRangeYards>1350</effectiveRangeYards>
@@ -9707,9 +9582,9 @@ TB 22, 23, 25, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 48, 49, 60, 61
   <country>Japan</country>
   <displacementTons>203</displacementTons>
   <complementMen>30</complementMen>
-  <lengthFoot>0</lengthFoot>
-  <beamFoot>0</beamFoot>
-  <draftFoot>0</draftFoot>
+  <lengthFoot>165</lengthFoot>
+  <beamFoot>19</beamFoot>
+  <draftFoot>5.6</draftFoot>
   <engineDesc>
    <english>HC</english>
    <japanese>直立2気筒2段膨張レシプロ 2基</japanese>
@@ -9834,5 +9709,264 @@ Complement is inferred</remark>
   </portraitTopReference>
   <ram>None</ram>
   <objectId>b25727cc-97fe-418d-a76e-6ddcb8650229</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Tso I</english>
+   <japanese>第一号</japanese>
+   <chineseSimplified>左一</chineseSimplified>
+  </name>
+  <type>TorpedoBoat</type>
+  <country>China</country>
+  <displacementTons>90</displacementTons>
+  <complementMen>25</complementMen>
+  <lengthFoot>127</lengthFoot>
+  <beamFoot>12</beamFoot>
+  <draftFoot>6.5</draftFoot>
+  <engineDesc>
+   <english>unnamed</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>unnamed</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>Schwartzkopff 14in C/84</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>2</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>99348385-66ce-485d-ad49-05417bb04431</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>Midship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>d0e8b92e-a0a1-4d6a-80b2-47b621fed274</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="440" speedKnots="29" />
+   </torpedoSettings>
+   <ammunitionCapacity>4</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>1pdr revolver Mle 1877-79</english>
+     <chineseSimplified>3门哈乞开斯47毫米重型速射炮以及4门10管11毫米格林炮</chineseSimplified>
+    </name>
+    <maxRangeYards>7000</maxRangeYards>
+    <effectiveRangeYards>3150</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="7" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
+    </fireControlRecords>
+    <damageFactor>7</damageFactor>
+    <barrelsLevelPort>
+     <int>2</int>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>2</int>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>172</damagePoint>
+  <speedKnots>24</speedKnots>
+  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>24</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>24</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>24</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="5" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="4" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="10" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="15" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>180</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>225</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+  </armorRating>
+  <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
+  <portraitReference>
+   <path>Pictures/Ships/Tso I.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures/Ships/Tso I_Top.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <ram>None</ram>
+  <objectId>16c25805-fc1e-44c7-8e09-59040e760d4c</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Right I</english>
+   <japanese>右一</japanese>
+   <chineseSimplified>右一</chineseSimplified>
+  </name>
+  <type>TorpedoBoat</type>
+  <country>China</country>
+  <displacementTons>74</displacementTons>
+  <complementMen>28</complementMen>
+  <lengthFoot>110.59</lengthFoot>
+  <beamFoot>11.51</beamFoot>
+  <draftFoot>3.51</draftFoot>
+  <engineDesc>
+   <english>unnamed</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>unnamed</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>38cm M1887</english>
+    <chineseSimplified />
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>7344e370-45d9-4a61-a399-7bb1f5bc6729</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>Midship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>eedcdc48-7fea-4541-981d-1ea29daf8d69</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="440" speedKnots="28" />
+    <TorpedoSetting rangeYards="660" speedKnots="27" />
+   </torpedoSettings>
+   <ammunitionCapacity>4</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>37mm RF Gun</english>
+     <chineseSimplified>一门37毫米口径的哈乞开斯五管速射炮</chineseSimplified>
+    </name>
+    <maxRangeYards>7000</maxRangeYards>
+    <effectiveRangeYards>3150</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="7" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
+    </fireControlRecords>
+    <damageFactor>7</damageFactor>
+    <barrelsLevelPort>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>157</damagePoint>
+  <speedKnots>15.5</speedKnots>
+  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>15.5</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>15.5</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>15.5</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="3" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="3" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="9" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+  </armorRating>
+  <remark>Not supported by SK5 data. Very poorly supported by fact.
+
+https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1%BC%E9%9B%B7%E8%89%87/15701446?fr=aladdin</remark>
+  <portraitReference>
+   <path>Pictures\Ships\TB 26.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\TB15_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <ram>None</ram>
+  <objectId>8f11a05a-2bca-433e-8ce2-a326b3bb4795</objectId>
  </ShipClass>
 </ArrayOfShipClass>

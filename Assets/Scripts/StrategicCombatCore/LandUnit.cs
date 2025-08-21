@@ -63,14 +63,16 @@ namespace StrategicCombatCore
         }
     }
 
-    public class LandUnit : IObjectIdLabeled
+    public class LandUnit : IObjectIdLabeled, IStrategicGroupMemberReferenceable
     {
         public string objectId { get; set; }
         public GlobalString name = new();
         public int stregnth;
         public string remark;
 
-        public string strategicGroupId;
+        // public string strategicGroupId;
+        public StrategicGroupReference strategicGroupReference{ get; set; } = new();
+        public void SetStrategicGroupReference(StrategicGroup group) => IStrategicGroupMemberReferenceable.SetStrategicGroupReference(this, group);
 
         // public LandUnitSize size; // Move to LandUnitTemplate?
         public IEnumerable<IObjectIdLabeled> GetSubObjects()

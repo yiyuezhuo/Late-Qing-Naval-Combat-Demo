@@ -25,13 +25,23 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
                 {
                     Debug.Log("reference SetButton clicked");
 
-                    DialogRoot.Instance.PopupSubordinatePickerDialog(objects => {
-                        if (Utils.TryResolveCurrentValueForBinding(setButton, out StrategicGroupMemberReference reference))
+                    DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables => {
+                        if (Utils.TryResolveCurrentValueForBinding(setButton, out StrategicGroupMemberReference fieldReference))
                         {
-                            var element = objects.FirstOrDefault();
-                            if (element != null)
+                            var oldObj = fieldReference.Get();
+                            if (oldObj != null)
                             {
-                                reference.referenceId = element.objectId;
+                                // oldObj.SetStrategicGroupReference(null);
+                                oldObj.strategicGroupReference.referenceId = null;
+                            }
+
+                            var selectedReferenceable = selectedReferenceables.FirstOrDefault();
+                            if (selectedReferenceable != null && selectedObject != null)
+                            {
+                                selectedReferenceable.SetStrategicGroupReference(null);
+                                fieldReference.referenceId = selectedReferenceable.objectId;
+                                selectedReferenceable.strategicGroupReference.referenceId = selectedObject.objectId;
+                                // reference.referenceId = element.objectId;
                             }
                         }
                     });

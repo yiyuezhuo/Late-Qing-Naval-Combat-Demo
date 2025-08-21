@@ -92,11 +92,51 @@ namespace StrategicCombatCore
                 {
                     return shipLog?.shipClass?.portraitStyleBackground ?? null;
                 }
+                // if (obj is StrategicGroup group)
+                // {
+                //     return group.typeIcon;
+                // }
+                return null;
+            }
+        }
+
+        [CreateProperty]
+        public bool isShip
+        {
+            get
+            {
+                var obj = Get();
+                return obj is ShipLog;
+            }
+        }
+
+        [CreateProperty]
+        public StyleBackground icon2
+        {
+            get
+            {
+                var obj = Get();
+                if (obj == null)
+                    return null;
                 if (obj is StrategicGroup group)
                 {
                     return group.typeIcon;
                 }
                 return null;
+            }
+        }
+
+        [CreateProperty]
+        public string sizeStr
+        {
+            get
+            {
+                var obj = Get();
+                if (obj is StrategicGroup group)
+                {
+                    return group.sizeStr;
+                }
+                return "";
             }
         }
 
@@ -113,7 +153,8 @@ namespace StrategicCombatCore
                     var tons = shipLog?.shipClass?.displacementTons;
                     var type = shipLog?.shipClass?.type;
                     var crews = shipLog?.shipClass?.complementMen;
-                    return $"{type}, {tons} tons, {crews} men";
+                    var className = shipLog?.shipClass?.name.mergedName;
+                    return $"{type}, {tons} tons, {crews} men, (class: {className})";
                 }
                 if (obj is StrategicGroup group)
                 {

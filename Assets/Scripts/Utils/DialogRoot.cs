@@ -103,7 +103,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     }
 
-    public void PopupSubordinatePickerDialog(Action<List<IObjectIdLabeled>> confirmCallback)
+    public void PopupSubordinatePickerDialog(Action<List<IStrategicGroupMemberReferenceable>> confirmCallback)
     {
         var subordinatePickerDialog = new SubordinatePickerDialog()
         {

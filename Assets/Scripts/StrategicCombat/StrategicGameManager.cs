@@ -153,6 +153,15 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public static void TempFix()
     {
+        // foreach (var group in StrategicGameState.Instance.strategicGroups)
+        // {
+        //     foreach (var subordinate in group.subordinatesCombined)
+        //     {
+        //         var obj = subordinate.Get();
+        //         obj.strategicGroupReference.referenceId = group.objectId;
+        //     }
+        // }
+        
         // foreach (var namedShip in StrategicGameState.Instance.namedShips)
         // {
         //     namedShip.defaultLeaderReference = new LeaderReference()

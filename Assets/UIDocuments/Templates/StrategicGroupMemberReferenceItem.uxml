@@ -1,9 +1,26 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="StrategicCombatCore.StrategicGroupMemberReference, Assembly-CSharp" style="flex-direction: row; height: 60px;">
         <ui:Button text="Set" name="SetButton" />
-        <ui:VisualElement style="flex-shrink: 0; width: 150px; -unity-background-scale-mode: scale-to-fit;">
+        <ui:Button text="Goto" name="GotoButton" />
+        <ui:VisualElement style="flex-shrink: 0; width: 120px; -unity-background-scale-mode: scale-to-fit; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgb(240, 240, 240);">
             <Bindings>
                 <ui:DataBinding property="style.backgroundImage" data-source-path="icon" binding-mode="ToTarget" />
+                <ui:DataBinding property="style.display" data-source-path="isShip" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+            </Bindings>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-shrink: 0; width: 100px;">
+            <ui:Label text="XX" style="font-size: 11px; -unity-text-align: upper-center; margin-bottom: 0; padding-bottom: 0; padding-top: 0; margin-top: 0;">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="sizeStr" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:VisualElement style="flex-grow: 1; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgb(240, 240, 240);">
+                <Bindings>
+                    <ui:DataBinding property="style.backgroundImage" data-source-path="icon2" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:VisualElement>
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="isShip" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
             </Bindings>
         </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1;">

@@ -9,9 +9,9 @@ namespace StrategicCombatCore
     {
         public string referenceId;
 
-        public IObjectIdLabeled Get()
+        public IStrategicGroupMemberReferenceable Get()
         {
-            return EntityManager.Instance.Get<IObjectIdLabeled>(referenceId);
+            return EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(referenceId);
         }
 
         public int GetCombinedSubUnitSize()
@@ -25,7 +25,48 @@ namespace StrategicCombatCore
         }
     }
 
-    public partial class StrategicGroup : IObjectIdLabeled
+    public partial class StrategicGroupReference
+    {
+        public string referenceId;
+
+        public StrategicGroup Get()
+        {
+            return EntityManager.Instance.Get<StrategicGroup>(referenceId);
+        }
+
+        public bool isReferenceAny() => referenceId != null && referenceId != "";
+
+
+    }
+
+    public interface IStrategicGroupMemberReferenceable : IObjectIdLabeled
+    {
+        StrategicGroupReference strategicGroupReference { get; set; }
+
+        void SetStrategicGroupReference(StrategicGroup group);
+
+        // group == null => Unset
+        static void SetStrategicGroupReference(IStrategicGroupMemberReferenceable self, StrategicGroup group)
+        {
+            var oldGroup = self.strategicGroupReference.Get();
+            if (oldGroup != null)
+            {
+                oldGroup.subordinatesCombined.RemoveAll(r => r.referenceId == self.objectId);
+            }
+
+            if (group == null)
+            {
+                self.strategicGroupReference.referenceId = null;
+            }
+            else
+            {
+                self.strategicGroupReference.referenceId = group.objectId;
+                group.subordinatesCombined.Add(new StrategicGroupMemberReference() { referenceId=group.objectId});
+            }
+        }
+    }
+
+    public partial class StrategicGroup : IObjectIdLabeled, IStrategicGroupMemberReferenceable
     {
         public string objectId { get; set; }
         public GlobalString name = new();
@@ -40,9 +81,11 @@ namespace StrategicCombatCore
         public StrategicUnitSize size;
         public Country country;
         public List<StrategicGroupMemberReference> subordinatesCombined = new();
-        public List<StrategicGroupMemberReference> subordinatesInCommandOfChain = new();
+        // public List<StrategicGroupMemberReference> subordinatesInCommandOfChain = new();
 
-        public string strategicGroupId;
+        // public string strategicGroupId;
+        public StrategicGroupReference strategicGroupReference{ get; set; } = new();
+        public void SetStrategicGroupReference(StrategicGroup group) => IStrategicGroupMemberReferenceable.SetStrategicGroupReference(this, group);
 
         public static Dictionary<StrategicUnitSize, string> sizeStrMap = new()
         {

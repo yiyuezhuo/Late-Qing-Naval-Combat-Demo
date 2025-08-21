@@ -138,6 +138,14 @@ public static class Utils
                 {
                     EntityManager.Instance.Unregister(labeledObj);
                 }
+                if (v is StrategicGroupMemberReference strategicGroupMemberReference)
+                {
+                    var obj = strategicGroupMemberReference.Get();
+                    // obj.strategicGroupReference.referenceId = null;
+                    // obj.SetStrategicGroupReference(null);
+                    if(obj != null)
+                        obj.strategicGroupReference.referenceId = null;
+                }
             }
         };
     }

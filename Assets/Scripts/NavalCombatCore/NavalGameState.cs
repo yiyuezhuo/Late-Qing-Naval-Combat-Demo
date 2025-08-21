@@ -6,8 +6,6 @@ using System.IO;
 using System.Linq;
 using MathNet.Numerics;
 using CoreUtils;
-using Acornima.Ast;
-using System.Runtime.ExceptionServices;
 
 namespace NavalCombatCore
 {

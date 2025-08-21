@@ -75,3 +75,4 @@ MonoBehaviour:
   helpDialogDocument: {fileID: 9197481963319205126, guid: d099853a82a32fd43899dcdaad9b3ec9, type: 3}
   locationLabelDialogDocument: {fileID: 9197481963319205126, guid: d41e54b604e35b445bdad39d061b541b, type: 3}
   subordinatePickerDialogDocument: {fileID: 9197481963319205126, guid: e420e095d56a2e8459a8ffea946107a6, type: 3}
+  strategicGroupPickerDialogDocument: {fileID: 9197481963319205126, guid: d8ca426e4e204724686473d7a2501aa9, type: 3}

@@ -8,13 +8,13 @@
                 <ui:DataBinding property="style.display" data-source-path="isShip" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
             </Bindings>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-shrink: 0; width: 100px;">
+        <ui:VisualElement style="flex-shrink: 0; width: 60px;">
             <ui:Label text="XX" style="font-size: 11px; -unity-text-align: upper-center; margin-bottom: 0; padding-bottom: 0; padding-top: 0; margin-top: 0;">
                 <Bindings>
                     <ui:DataBinding property="text" data-source-path="sizeStr" binding-mode="ToTarget" />
                 </Bindings>
             </ui:Label>
-            <ui:VisualElement style="flex-grow: 1; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgb(240, 240, 240);">
+            <ui:VisualElement style="flex-grow: 1; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgb(240, 240, 240); -unity-background-scale-mode: scale-to-fit;">
                 <Bindings>
                     <ui:DataBinding property="style.backgroundImage" data-source-path="icon2" binding-mode="ToTarget" />
                 </Bindings>

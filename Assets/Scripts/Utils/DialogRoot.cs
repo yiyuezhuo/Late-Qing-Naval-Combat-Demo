@@ -77,6 +77,8 @@ public class ScenarioPickerDialog // ScenarioPicker's root data source
     }
 }
 
+
+
 public class DialogRoot : SingletonDocument<DialogRoot>
 {
     public VisualTreeAsset shipLogSelectorDocument;
@@ -90,6 +92,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset helpDialogDocument;
     public VisualTreeAsset locationLabelDialogDocument;
     public VisualTreeAsset subordinatePickerDialogDocument;
+    public VisualTreeAsset strategicGroupPickerDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -101,6 +104,25 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupStrategicGroupPickerDialog(Action<StrategicGroup> callback)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = strategicGroupPickerDialogDocument,
+            templateDataSource = StrategicGameManager.Instance,
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            var objectListView = el.Q<ListView>("ObjectListView");
+            var strategicGroup = objectListView.selectedItem as StrategicGroup;
+            callback(strategicGroup);
+        };
+
+        tempDialog.Popup();
     }
 
     public void PopupSubordinatePickerDialog(Action<List<IStrategicGroupMemberReferenceable>> confirmCallback)
@@ -504,7 +526,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             root = root,
             template = helpDialogDocument,
             templateDataSource = null,
-            centering=false
+            centering = false
         };
 
         tempDialog.Popup();

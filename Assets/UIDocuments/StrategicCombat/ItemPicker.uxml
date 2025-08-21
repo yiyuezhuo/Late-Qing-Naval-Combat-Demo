@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement class="panel-dialog">
+        <ui:Label text="Picker" />
+        <ui:ListView binding-source-selection-mode="AutoAssign" />
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1; flex-basis: 50px;" />
+            <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

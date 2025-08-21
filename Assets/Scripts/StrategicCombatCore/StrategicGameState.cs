@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Xml.Serialization;
-
+using Acornima.Ast;
 using CoreUtils;
 
 
@@ -64,6 +64,25 @@ namespace StrategicCombatCore
         public List<Weapon> weapons = new();
         public List<StrategicGroup> strategicGroups = new();
 
+        public SerializedHexInfo serializedHexInfo
+        {
+            get
+            {
+                return new()
+                {
+                    records = hexInfoMap.Values.Where(r => !r.IsEmpty()).ToList() // TODO: Filter out empty situation?
+                };
+            }
+            set
+            {
+                hexInfoMap = value.records.ToDictionary(r => (r.x, r.y), r => r);
+            }
+        }
+        [XmlIgnore]
+        public Dictionary<(int, int), HexInfo> hexInfoMap = new();
+
+        public StrategicScenarioState scenarioState = new();
+
         public event EventHandler mapRebuilt;
         public event EventHandler<(int, int)> mapCellUpdated;
         public event EventHandler edgeFeatureUpdated;
@@ -117,6 +136,8 @@ namespace StrategicCombatCore
             landUnits = newInstance.landUnits;
             weapons = newInstance.weapons;
             strategicGroups = newInstance.strategicGroups;
+            hexInfoMap = newInstance.hexInfoMap;
+            scenarioState = newInstance.scenarioState;
 
             shipLogs = newInstance.shipLogs;
 

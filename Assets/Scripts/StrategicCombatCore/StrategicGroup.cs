@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Xml.Serialization;
 using CoreUtils;
+using NavalCombatCore;
+using Unity.VisualScripting;
 
 namespace StrategicCombatCore
 {
@@ -75,11 +78,72 @@ namespace StrategicCombatCore
             General,
             HeadQuarter,
             Infantry,
-            Fleet
+            Fleet,
+            CoastArtillery
         }
         public Type type;
         public StrategicUnitSize size;
         public Country country;
+        public enum DeployState
+        {
+            NotDeployed,
+            Combined,
+            Independent
+        }
+        public DeployState deployState;
+        public int independentX = -1;
+        public int independentY = -1;
+
+        [XmlIgnore]
+        public int x
+        {
+            get
+            {
+                if (deployState == DeployState.NotDeployed)
+                {
+                    return -1;
+                }
+                else if (deployState == DeployState.Combined)
+                {
+                    return strategicGroupReference.Get()?.x ?? -1;
+                }
+                return independentX;
+            }
+            set
+            {
+                if (deployState == DeployState.NotDeployed)
+                {
+                    independentX = value;
+                }
+            }
+        }
+
+        [XmlIgnore]
+        public int y
+        {
+            get
+            {
+                if (deployState == DeployState.NotDeployed)
+                {
+                    return -1;
+                }
+                else if (deployState == DeployState.Combined)
+                {
+                    return strategicGroupReference.Get()?.y ?? -1;
+                }
+                return independentX;
+            }
+            set
+            {
+                if (deployState == DeployState.NotDeployed)
+                {
+                    independentX = value;
+                }
+            }
+        }
+
+        public LeaderReference leaderReference = new();
+
         public List<StrategicGroupMemberReference> subordinatesCombined = new();
         // public List<StrategicGroupMemberReference> subordinatesInCommandOfChain = new();
 

@@ -25,7 +25,8 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
                 {
                     Debug.Log("reference SetButton clicked");
 
-                    DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables => {
+                    DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables =>
+                    {
                         if (Utils.TryResolveCurrentValueForBinding(setButton, out StrategicGroupMemberReference fieldReference))
                         {
                             var oldObj = fieldReference.Get();
@@ -48,6 +49,18 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
                 }
             };
             return item;
+        };
+
+        var setLeaderButton = root.Q<Button>("SetLeaderButton");
+        setLeaderButton.clicked += () =>
+        {
+            DialogRoot.Instance.PopupLeaderSelectorDialogForCallback(leader =>
+            {
+                if (Utils.TryResolveCurrentValueForBinding(setLeaderButton, out StrategicGroup group))
+                {
+                    group.leaderReference.referenceObjectId = leader.objectId;
+                }
+            });
         };
     }
 }

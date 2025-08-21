@@ -125,10 +125,13 @@ public class HexMapShower : SingletonDocument<HexMapShower>
 
             var lineRenderer = lineRenderers[i];
             lineRenderer.positionCount = 2;
-            lineRenderer.SetPositions(new Vector3[2]{
-                new Vector3(xf1 + xOffset / width, yf1 + yOffset / height, z),
-                new Vector3(xf2 + xOffset / width, yf2 + yOffset / height, z)
-            });
+            var p0 = controlledRenderer.transform.TransformPoint(xf1 + xOffset / width, yf1 + yOffset / height, z);
+            var p1 = controlledRenderer.transform.TransformPoint(xf2 + xOffset / width, yf2 + yOffset / height, z);
+            lineRenderer.SetPositions(new Vector3[2]{p0, p1});
+            // lineRenderer.SetPositions(new Vector3[2]{
+            //     new Vector3(xf1 + xOffset / width, yf1 + yOffset / height, z),
+            //     new Vector3(xf2 + xOffset / width, yf2 + yOffset / height, z)
+            // });
         }
     }
 
@@ -150,10 +153,9 @@ public class HexMapShower : SingletonDocument<HexMapShower>
 
             var lineRenderer = lineRenderers[i];
             lineRenderer.positionCount = 2;
-            lineRenderer.SetPositions(new Vector3[2]{
-                new Vector3(xf + dx1,  yf + dy1, z),
-                new Vector3(xf + dx2,  yf + dy2, z)
-            });
+            var p0 = controlledRenderer.transform.TransformPoint(xf + dx1, yf + dy1, z);
+            var p1 = controlledRenderer.transform.TransformPoint(xf + dx2, yf + dy2, z);
+            lineRenderer.SetPositions(new Vector3[2]{p0, p1});
         }
     }
 
@@ -271,7 +273,9 @@ public class HexMapShower : SingletonDocument<HexMapShower>
             // var dy = label.x % 2 == 0 ? 0.5f : 1f;
             // text.transform.localPosition = new Vector3((label.x + dx) / width - 0.5f, (label.y + dy) / height - 0.5f, 0);
             var (xf, yf) = CellXYToLocalXY(label.x, label.y);
-            text.transform.localPosition = new Vector3(xf, yf, 0);
+            // text.transform.localPosition = new Vector3(xf, yf, 0);
+            // text.transform.position = controlledRenderer.transform.TransformPoint(new Vector3(xf, yf, 0));
+            text.transform.position = controlledRenderer.transform.TransformPoint(xf, yf, 0);
         }
     }
 
@@ -374,7 +378,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         controlledRenderer.material = material;
 
         // Update scale
-        transform.localScale = new Vector3(width, height, 0);
-
+        // transform.localScale = new Vector3(width, height, 0);
+        controlledRenderer.transform.localScale = new Vector3(width * 0.867f, height, 0);
     }
 }

@@ -16,6 +16,8 @@ using UnityEngine.SceneManagement;
 using CoreUtils;
 using StrategicCombatCore;
 using NavalCombatCore;
+using Unity.VisualScripting;
+using UnityEditorInternal;
 
 
 public enum StrategicMapEditMode
@@ -27,7 +29,8 @@ public enum StrategicMapEditMode
     PaintHexPairFeatureBegin,
     PaintHexPairFeatureEnd,
     DeleteHexPairFeatureBegin,
-    DeleteHexPairFeatureEnd
+    DeleteHexPairFeatureEnd,
+    WaitOneshotCellClickCallback
 }
 
 public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
@@ -82,6 +85,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     }
 
     public Cell lastSelectedCell;
+    Action<Cell> oneshotCellClickCallback;
 
     void Start()
     {
@@ -161,7 +165,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         //         obj.strategicGroupReference.referenceId = group.objectId;
         //     }
         // }
-        
+
         // foreach (var namedShip in StrategicGameState.Instance.namedShips)
         // {
         //     namedShip.defaultLeaderReference = new LeaderReference()
@@ -248,7 +252,36 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                     }
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.Insert))
+            {
+                ScheduleOneshotCellClickCallback(cell =>
+                {
+                    DialogRoot.Instance.PopupStrategicGroupPickerDialog(group =>
+                    {
+                        var hexInfoMap = StrategicGameState.Instance.hexInfoMap;
+                        if (!hexInfoMap.TryGetValue((cell.x, cell.y), out var cellInfo))
+                        {
+                            cellInfo = hexInfoMap[(cell.x, cell.y)] = new();
+                            cellInfo.x = cell.x;
+                            cellInfo.y = cell.y;
+                        }
+                        cellInfo.strategicGroupReference.Add(new() { referenceId = group.objectId });
+                        group.deployState = StrategicGroup.DeployState.Independent;
+                        group.x = cellInfo.x;
+                        group.y = cellInfo.y;
+                    });
+                    // Debug.Log("ScheduleOneshotCellClickCallback"); // Popup Dialog to select a group.
+                    mapEditMode = StrategicMapEditMode.Select;
+                });
+            }
         }
+    }
+
+    public void ScheduleOneshotCellClickCallback(Action<Cell> callback)
+    {
+        mapEditMode = StrategicMapEditMode.WaitOneshotCellClickCallback;
+        oneshotCellClickCallback = callback;
     }
 
     void HandleClick(Vector2Int cellXY)
@@ -256,6 +289,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         if (mapEditMode == StrategicMapEditMode.Select)
         {
             lastSelectedCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+        }
+        else if (mapEditMode == StrategicMapEditMode.WaitOneshotCellClickCallback)
+        {
+            oneshotCellClickCallback(StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y]);
+            mapEditMode = StrategicMapEditMode.Select;
         }
         else
         {

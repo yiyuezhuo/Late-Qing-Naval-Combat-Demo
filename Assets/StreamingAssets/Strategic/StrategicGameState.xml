@@ -12007,8 +12007,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Independent</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <independentX>30</independentX>
+   <independentY>28</independentY>
    <leaderReference>
     <referenceObjectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</referenceObjectId>
    </leaderReference>
@@ -12023,6 +12023,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>3db5fe0c-1720-49dd-847d-520e55f183c7</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <xProp>30</xProp>
+   <yProp>28</yProp>
    <objectId>f8481328-de97-4466-af47-6c302493b6ef</objectId>
    <strategicGroupReference>
     <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
@@ -12037,9 +12039,9 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <type>Fleet</type>
    <size>Regiment</size>
    <country>Japan</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <deployState>Independent</deployState>
+   <independentX>30</independentX>
+   <independentY>27</independentY>
    <leaderReference>
     <referenceObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</referenceObjectId>
    </leaderReference>
@@ -12060,6 +12062,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>dfc596b4-ef97-474b-b987-8b34cfdcadf9</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <xProp>30</xProp>
+   <yProp>27</yProp>
    <objectId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</objectId>
    <strategicGroupReference>
     <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
@@ -12074,9 +12078,9 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <type>Fleet</type>
    <size>Regiment</size>
    <country>Japan</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <deployState>Independent</deployState>
+   <independentX>30</independentX>
+   <independentY>26</independentY>
    <leaderReference />
    <subordinatesCombined>
     <StrategicGroupMemberReference>
@@ -12092,6 +12096,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>6a88e57c-f643-4dde-b19a-42b3ac06b91e</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <xProp>30</xProp>
+   <yProp>26</yProp>
    <objectId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</objectId>
    <strategicGroupReference>
     <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
@@ -12105,9 +12111,9 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <type>Fleet</type>
    <size>Regiment</size>
    <country>Japan</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <deployState>Independent</deployState>
+   <independentX>30</independentX>
+   <independentY>25</independentY>
    <leaderReference />
    <subordinatesCombined>
     <StrategicGroupMemberReference>
@@ -12123,6 +12129,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>6374bb0b-b59f-454f-a223-eb4e414b78b7</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <xProp>30</xProp>
+   <yProp>25</yProp>
    <objectId>f6bd836d-5641-4a06-952d-2329545b8a1a</objectId>
    <strategicGroupReference>
     <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
@@ -12157,6 +12165,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>94ec5c84-7729-4ad1-89ef-e7e7d8dac32f</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
    <objectId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</objectId>
    <strategicGroupReference>
     <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
@@ -12191,6 +12201,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>8546e7a0-5d78-4188-9238-fcb709e443c5</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
    <objectId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</objectId>
    <strategicGroupReference>
     <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
@@ -12225,6 +12237,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>f23a08cc-7532-40ad-8593-0d977ecda4aa</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
    <objectId>6374bb0b-b59f-454f-a223-eb4e414b78b7</objectId>
    <strategicGroupReference>
     <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
@@ -12258,6 +12272,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
    <objectId>e7da4734-5986-4765-9687-5c818df24f09</objectId>
    <strategicGroupReference>
     <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
@@ -12272,10 +12288,12 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <size>Bridge</size>
    <country>Japan</country>
    <deployState>Independent</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <independentX>31</independentX>
+   <independentY>28</independentY>
    <leaderReference />
    <subordinatesCombined />
+   <xProp>31</xProp>
+   <yProp>28</yProp>
    <objectId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</objectId>
    <strategicGroupReference>
     <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
@@ -12290,9 +12308,9 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <type>HeadQuarter</type>
    <size>Army</size>
    <country>Japan</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <deployState>Independent</deployState>
+   <independentX>42</independentX>
+   <independentY>23</independentY>
    <leaderReference>
     <referenceObjectId>c49be3d3-e058-4a2e-b0a7-c6bd70956afd</referenceObjectId>
    </leaderReference>
@@ -12304,6 +12322,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <xProp>42</xProp>
+   <yProp>23</yProp>
    <objectId>380340b3-7ec3-4404-9601-c0470d750510</objectId>
    <strategicGroupReference />
   </StrategicGroup>
@@ -12316,8 +12336,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <size>Regiment</size>
    <country>China</country>
    <deployState>Independent</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <independentX>30</independentX>
+   <independentY>28</independentY>
    <leaderReference>
     <referenceObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</referenceObjectId>
    </leaderReference>
@@ -12329,6 +12349,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>bd251362-367a-4c21-a06d-edac91c83068</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <xProp>30</xProp>
+   <yProp>28</yProp>
    <objectId>8961f909-0f74-4ef1-b983-315e9a93204a</objectId>
    <strategicGroupReference>
     <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
@@ -12342,7 +12364,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <type>Fleet</type>
    <size>Regiment</size>
    <country>China</country>
-   <deployState>NotDeployed</deployState>
+   <deployState>Combined</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -12404,6 +12426,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>15b46965-615f-4370-bb6b-96f11eef63b5</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <xProp>22</xProp>
+   <yProp>28</yProp>
    <objectId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</objectId>
    <strategicGroupReference>
     <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
@@ -12418,9 +12442,9 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <type>Fleet</type>
    <size>Division</size>
    <country>China</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <deployState>Independent</deployState>
+   <independentX>22</independentX>
+   <independentY>28</independentY>
    <leaderReference>
     <referenceObjectId>ca6e9344-d40e-4a16-8ee1-82ae8d5dbdb4</referenceObjectId>
    </leaderReference>
@@ -12432,6 +12456,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <xProp>22</xProp>
+   <yProp>28</yProp>
    <objectId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</objectId>
    <strategicGroupReference>
     <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
@@ -12445,11 +12471,13 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <type>CoastArtillery</type>
    <size>Regiment</size>
    <country>China</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <deployState>Independent</deployState>
+   <independentX>21</independentX>
+   <independentY>30</independentY>
    <leaderReference />
    <subordinatesCombined />
+   <xProp>21</xProp>
+   <yProp>30</yProp>
    <objectId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</objectId>
    <strategicGroupReference>
     <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
@@ -12463,11 +12491,13 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <type>CoastArtillery</type>
    <size>Regiment</size>
    <country>China</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <deployState>Independent</deployState>
+   <independentX>22</independentX>
+   <independentY>28</independentY>
    <leaderReference />
    <subordinatesCombined />
+   <xProp>22</xProp>
+   <yProp>28</yProp>
    <objectId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</objectId>
    <strategicGroupReference>
     <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
@@ -12481,11 +12511,13 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <type>Infantry</type>
    <size>Bridge</size>
    <country>China</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <deployState>Independent</deployState>
+   <independentX>31</independentX>
+   <independentY>27</independentY>
    <leaderReference />
    <subordinatesCombined />
+   <xProp>31</xProp>
+   <yProp>27</yProp>
    <objectId>490423ba-377f-498f-afce-5f90463901d4</objectId>
    <strategicGroupReference>
     <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
@@ -12499,9 +12531,9 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <type>HeadQuarter</type>
    <size>Army</size>
    <country>China</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <deployState>Independent</deployState>
+   <independentX>14</independentX>
+   <independentY>32</independentY>
    <leaderReference>
     <referenceObjectId>f24ac743-e528-4c85-82d4-f089c4cc189c</referenceObjectId>
    </leaderReference>
@@ -12519,6 +12551,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <xProp>14</xProp>
+   <yProp>32</yProp>
    <objectId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</objectId>
    <strategicGroupReference />
   </StrategicGroup>
@@ -14937,23 +14971,98 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <HexInfo>
     <x>30</x>
     <y>28</y>
-    <strategicGroupReference>
-     <StrategicGroupReference>
-      <referenceId>8961f909-0f74-4ef1-b983-315e9a93204a</referenceId>
-     </StrategicGroupReference>
+    <strategicGroupReferences>
      <StrategicGroupReference>
       <referenceId>f8481328-de97-4466-af47-6c302493b6ef</referenceId>
      </StrategicGroupReference>
-    </strategicGroupReference>
+     <StrategicGroupReference>
+      <referenceId>8961f909-0f74-4ef1-b983-315e9a93204a</referenceId>
+     </StrategicGroupReference>
+    </strategicGroupReferences>
    </HexInfo>
    <HexInfo>
     <x>31</x>
     <y>28</y>
-    <strategicGroupReference>
+    <strategicGroupReferences>
      <StrategicGroupReference>
       <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
      </StrategicGroupReference>
-    </strategicGroupReference>
+    </strategicGroupReferences>
+   </HexInfo>
+   <HexInfo>
+    <x>42</x>
+    <y>23</y>
+    <strategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
+     </StrategicGroupReference>
+    </strategicGroupReferences>
+   </HexInfo>
+   <HexInfo>
+    <x>31</x>
+    <y>27</y>
+    <strategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
+     </StrategicGroupReference>
+    </strategicGroupReferences>
+   </HexInfo>
+   <HexInfo>
+    <x>30</x>
+    <y>27</y>
+    <strategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
+     </StrategicGroupReference>
+    </strategicGroupReferences>
+   </HexInfo>
+   <HexInfo>
+    <x>30</x>
+    <y>26</y>
+    <strategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</referenceId>
+     </StrategicGroupReference>
+    </strategicGroupReferences>
+   </HexInfo>
+   <HexInfo>
+    <x>30</x>
+    <y>25</y>
+    <strategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
+     </StrategicGroupReference>
+    </strategicGroupReferences>
+   </HexInfo>
+   <HexInfo>
+    <x>22</x>
+    <y>28</y>
+    <strategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+     </StrategicGroupReference>
+     <StrategicGroupReference>
+      <referenceId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</referenceId>
+     </StrategicGroupReference>
+    </strategicGroupReferences>
+   </HexInfo>
+   <HexInfo>
+    <x>21</x>
+    <y>30</y>
+    <strategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</referenceId>
+     </StrategicGroupReference>
+    </strategicGroupReferences>
+   </HexInfo>
+   <HexInfo>
+    <x>14</x>
+    <y>32</y>
+    <strategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
+     </StrategicGroupReference>
+    </strategicGroupReferences>
    </HexInfo>
   </records>
  </serializedHexInfo>

@@ -41,21 +41,44 @@
                                 </ui:TextField>
                                 <ui:Button text="Set" name="SetLeaderButton" />
                             </ui:VisualElement>
-                            <ui:EnumField label="Type" value="Center" type="StrategicCombatCore.StrategicGroup+Type, Assembly-CSharp">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:EnumField>
-                            <ui:EnumField label="Size" value="Center" type="StrategicCombatCore.StrategicUnitSize, Assembly-CSharp">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="size" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:EnumField>
-                            <ui:EnumField label="Country" value="Center" type="CoreUtils.Country, Assembly-CSharp">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="country" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:EnumField>
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                    <ui:EnumField label="Type" value="Center" type="StrategicCombatCore.StrategicGroup+Type, Assembly-CSharp">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:EnumField>
+                                    <ui:EnumField label="Size" value="Center" type="StrategicCombatCore.StrategicUnitSize, Assembly-CSharp">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="size" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:EnumField>
+                                    <ui:IntegerField label="X">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="xProp" binding-mode="TwoWay" />
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isXYEditable" binding-mode="ToTarget" />
+                                        </Bindings>
+                                    </ui:IntegerField>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                    <ui:EnumField label="Country" value="Center" type="CoreUtils.Country, Assembly-CSharp">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="country" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:EnumField>
+                                    <ui:EnumField label="Deploy State" value="Center" type="StrategicCombatCore.StrategicGroup+DeployState, Assembly-CSharp">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="deployState" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:EnumField>
+                                    <ui:IntegerField label="Y">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="yProp" binding-mode="TwoWay" />
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isXYEditable" binding-mode="ToTarget" />
+                                        </Bindings>
+                                    </ui:IntegerField>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
                             <ui:ListView name="SubordinatesCombinedListView" header-title="Subordinates (Combined)" show-add-remove-footer="true" show-foldout-header="true" binding-source-selection-mode="AutoAssign" data-source-path="subordinatesCombined" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" fixed-item-height="60" />
                         </ui:VisualElement>
                     </ui:ScrollView>

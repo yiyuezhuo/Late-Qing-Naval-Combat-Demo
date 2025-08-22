@@ -111,7 +111,7 @@ namespace StrategicCombatCore
             }
             set
             {
-                if (deployState == DeployState.NotDeployed)
+                if (deployState == DeployState.Independent)
                 {
                     independentX = value;
                 }
@@ -131,13 +131,13 @@ namespace StrategicCombatCore
                 {
                     return strategicGroupReference.Get()?.y ?? -1;
                 }
-                return independentX;
+                return independentY;
             }
             set
             {
-                if (deployState == DeployState.NotDeployed)
+                if (deployState == DeployState.Independent)
                 {
-                    independentX = value;
+                    independentY = value;
                 }
             }
         }
@@ -165,6 +165,28 @@ namespace StrategicCombatCore
             { StrategicUnitSize.Platoon, "···" },
             { StrategicUnitSize.Squad, "··" },
         };
+
+        public void DeployToXY(int toX, int toY)
+        {
+            var hexInfoMap = StrategicGameState.Instance.hexInfoMap;
+
+            if (deployState == DeployState.Independent && x != -1 && y != -1 && hexInfoMap.TryGetValue((x, y), out var cellInfo))
+            {
+                cellInfo.strategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
+            }
+
+            deployState = DeployState.Independent;
+            x = toX;
+            y = toY;
+
+            if (!hexInfoMap.TryGetValue((x, y), out cellInfo))
+            {
+                cellInfo = hexInfoMap[(x, y)] = new();
+                cellInfo.x = x;
+                cellInfo.y = y;
+            }
+            cellInfo.strategicGroupReferences.Add(new() { referenceId = objectId });
+        }
 
         public int GetCombinedSubUnitSize()
         {

@@ -157,6 +157,17 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public static void TempFix()
     {
+        // foreach (var hexInfo in StrategicGameState.Instance.hexInfoMap.Values)
+        // {
+        //     hexInfo.strategicGroupReference.Clear();
+        // }
+
+        // foreach (var group in StrategicGameState.Instance.strategicGroups)
+        // {
+        //     if(group.deployState == StrategicGroup.DeployState.Independent)
+        //         group.DeployToXY(group.x, group.y);
+        // }
+
         // foreach (var group in StrategicGameState.Instance.strategicGroups)
         // {
         //     foreach (var subordinate in group.subordinatesCombined)
@@ -166,17 +177,17 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         //     }
         // }
 
-        // foreach (var namedShip in StrategicGameState.Instance.namedShips)
-        // {
-        //     namedShip.defaultLeaderReference = new LeaderReference()
-        //     {
-        //         referenceObjectId = namedShip.defaultLeaderObjectId
-        //     };
-        // }
-        // foreach (var cell in StrategicGameState.Instance.cellMatrix)
-        // {
-        //     cell.longitude = cell.longtitude;
-        // }
+            // foreach (var namedShip in StrategicGameState.Instance.namedShips)
+            // {
+            //     namedShip.defaultLeaderReference = new LeaderReference()
+            //     {
+            //         referenceObjectId = namedShip.defaultLeaderObjectId
+            //     };
+            // }
+            // foreach (var cell in StrategicGameState.Instance.cellMatrix)
+            // {
+            //     cell.longitude = cell.longtitude;
+            // }
     }
 
     public Vector2 ToCenter(Vector2 xy)
@@ -259,17 +270,18 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 {
                     DialogRoot.Instance.PopupStrategicGroupPickerDialog(group =>
                     {
-                        var hexInfoMap = StrategicGameState.Instance.hexInfoMap;
-                        if (!hexInfoMap.TryGetValue((cell.x, cell.y), out var cellInfo))
-                        {
-                            cellInfo = hexInfoMap[(cell.x, cell.y)] = new();
-                            cellInfo.x = cell.x;
-                            cellInfo.y = cell.y;
-                        }
-                        cellInfo.strategicGroupReference.Add(new() { referenceId = group.objectId });
-                        group.deployState = StrategicGroup.DeployState.Independent;
-                        group.x = cellInfo.x;
-                        group.y = cellInfo.y;
+                        group.DeployToXY(cell.x, cell.y);
+                        // var hexInfoMap = StrategicGameState.Instance.hexInfoMap;
+                        // if (!hexInfoMap.TryGetValue((cell.x, cell.y), out var cellInfo))
+                        // {
+                        //     cellInfo = hexInfoMap[(cell.x, cell.y)] = new();
+                        //     cellInfo.x = cell.x;
+                        //     cellInfo.y = cell.y;
+                        // }
+                        // cellInfo.strategicGroupReferences.Add(new() { referenceId = group.objectId });
+                        // group.deployState = StrategicGroup.DeployState.Independent;
+                        // group.x = cellInfo.x;
+                        // group.y = cellInfo.y;
                     });
                     // Debug.Log("ScheduleOneshotCellClickCallback"); // Popup Dialog to select a group.
                     mapEditMode = StrategicMapEditMode.Select;

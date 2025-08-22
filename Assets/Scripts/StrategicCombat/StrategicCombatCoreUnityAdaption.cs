@@ -6,6 +6,7 @@ using UnityEngine;
 using Unity.VisualScripting;
 using NavalCombatCore;
 using UnityEngine.InputSystem.Utilities;
+using Unity.Collections;
 
 namespace StrategicCombatCore
 {
@@ -56,6 +57,23 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public StyleBackground typeIcon => UnityWebRequestImageReader.Instance.FetchStyleBackground($"{Application.streamingAssetsPath}/Pictures/GroupTypeIcons/{type}.png");
+
+        [CreateProperty]
+        public int xProp
+        {
+            get => x;
+            set => x = value;
+        }
+
+        [CreateProperty]
+        public int yProp
+        {
+            get => y;
+            set => y = value;
+        }
+
+        [CreateProperty]
+        public bool isXYEditable => deployState == DeployState.Independent;
     }
 
     public partial class StrategicGroupMemberReference

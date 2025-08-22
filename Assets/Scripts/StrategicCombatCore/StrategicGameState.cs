@@ -174,6 +174,18 @@ namespace StrategicCombatCore
             }
         }
 
+        // public IEnumerable<StrategicGroup> GetIndependentStrategicGroups() => strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent);
+        public IEnumerable<StrategicGroup> GetIndependentStrategicGroups()
+        {
+            foreach (var hexInfo in hexInfoMap.Values)
+            {
+                foreach (var groupRef in hexInfo.strategicGroupReferences)
+                {
+                    yield return groupRef.Get();
+                }
+            }
+        }
+
         public override void ResetAndRegisterAll()
         {
             base.ResetAndRegisterAll();

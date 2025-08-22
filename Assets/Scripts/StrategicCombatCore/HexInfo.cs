@@ -7,11 +7,11 @@ namespace StrategicCombatCore
     {
         public int x;
         public int y;
-        public List<StrategicGroupReference> strategicGroupReference = new();
+        public List<StrategicGroupReference> strategicGroupReferences = new();
 
         public bool IsEmpty() // Don't need a dedicated representation
         {
-            return strategicGroupReference.Count == 0;
+            return strategicGroupReferences.Count == 0;
         }
     }
 

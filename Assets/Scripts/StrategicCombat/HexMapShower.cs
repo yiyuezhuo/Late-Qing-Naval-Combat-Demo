@@ -4,6 +4,7 @@ using TMPro;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.UIElements;
 
 using StrategicCombatCore;
 
@@ -12,14 +13,18 @@ public class HexMapShower : SingletonDocument<HexMapShower>
     public Renderer controlledRenderer;
     Texture2D terrainTypeTexture;
     Material material;
+
     public Transform labelContainerTransform;
     public Transform roadContainerTransform;
     public Transform railroadContainerTransform;
     public Transform riverContainerTransform;
+    public Transform strategicGroupIconTransform;
+
     public GameObject locationLabelPrefab;
     public GameObject roadPrefab;
     public GameObject railroadPrefab;
     public GameObject riverPrefab;
+    public GameObject strategicGroupIconPrefab;
 
     public SpriteRenderer mapRenderer;
 
@@ -159,6 +164,22 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         }
     }
 
+    void BindStrategicGroupIcons(Transform containerTransform, GameObject prefab, List<StrategicGroup> strategicGroups)
+    {
+        Utils.SyncTransformViewerLength(containerTransform, strategicGroups.Count, prefab);
+
+        var worldSpaceGroupIcons = containerTransform.GetComponentsInChildren<WorldSpaceGroupIcon>();
+        for (int i = 0; i < strategicGroups.Count; i++)
+        {
+            var strategicGroup = strategicGroups[i];
+            var worldSpaceGroupIcon = worldSpaceGroupIcons[i];
+            worldSpaceGroupIcon.SetDataSource(strategicGroup);
+
+            var (xf, yf) = CellXYToLocalXY(strategicGroup.x, strategicGroup.y);
+            worldSpaceGroupIcon.transform.position = controlledRenderer.transform.TransformPoint(xf, yf, 0);
+        }
+    }
+
     static string terrainStr = "Clear,Rough,Mountain,Forest,Jungle,Desert,Swamp,Rough_Forest,Rough_Jungle,Rough_Desert,Tropical Mountain,Sand Desert,Heavy Urban,Light Urban,Field,Shallow Water,Deep Water";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -252,6 +273,9 @@ public class HexMapShower : SingletonDocument<HexMapShower>
     void Update()
     {
         UpdateLabels();
+
+        var independentStrategicGroups = StrategicGameState.Instance.GetIndependentStrategicGroups().ToList();
+        BindStrategicGroupIcons(strategicGroupIconTransform, strategicGroupIconPrefab, independentStrategicGroups);
     }
 
     void UpdateLabels()

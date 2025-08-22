@@ -34,7 +34,7 @@ public abstract class LeftObjectPickerRightEditorStrategic<ST, ET> : HideableDoc
         };
 
         var confirmButton = root.Q<Button>("ConfirmButton");
-        confirmButton.clicked += Hide;
+        confirmButton.clicked += OnConfirmButtonClicked;
 
         var copyLastButton = root.Q<Button>("CopyLastButton");
         copyLastButton.clicked += () =>
@@ -55,6 +55,16 @@ public abstract class LeftObjectPickerRightEditorStrategic<ST, ET> : HideableDoc
     }
 
     // public abstract string GetObjectListViewName();
+
+    protected virtual void OnConfirmButtonClicked()
+    {
+        OnConfirmButtonClickedBefore();
+        Hide();
+    }
+
+    protected virtual void OnConfirmButtonClickedBefore()
+    {
+    }
 
     [CreateProperty]
     public StrategicGameState currentGameState => StrategicGameState.Instance;

@@ -83,9 +83,25 @@ namespace StrategicCombatCore
 
         public StrategicScenarioState scenarioState = new();
 
+        public List<SideState> sideStates = new();
+        [XmlIgnore]
+        public Dictionary<Country, SideState> countryToSideStateMap = new();
+
         public event EventHandler mapRebuilt;
         public event EventHandler<(int, int)> mapCellUpdated;
         public event EventHandler edgeFeatureUpdated;
+
+        public void RebuildCacheForSideStates()
+        {
+            countryToSideStateMap.Clear();
+            foreach (var sideState in sideStates)
+            {
+                foreach (var country in sideState.countries)
+                {
+                    countryToSideStateMap[country] = sideState;
+                }
+            }
+        }
 
         public void AddEdgeFeature(Cell cell1, Cell cell2, EdgeFeatureType edgeFeatureType)
         {
@@ -141,8 +157,12 @@ namespace StrategicCombatCore
 
             shipLogs = newInstance.shipLogs;
 
+            sideStates = newInstance.sideStates;
+
             mapRebuilt?.Invoke(this, EventArgs.Empty);
             edgeFeatureUpdated?.Invoke(this, EventArgs.Empty);
+
+            RebuildCacheForSideStates();
         }
 
         public void GenerateTerrainMatrix(int width, int height)
@@ -205,6 +225,9 @@ namespace StrategicCombatCore
 
             foreach (var strategicGroup in strategicGroups)
                 EntityManager.Instance.Register(strategicGroup, null);
+
+            foreach (var sideState in sideStates)
+                EntityManager.Instance.Register(sideState, null);
         }
 
         static StrategicGameState _instance;

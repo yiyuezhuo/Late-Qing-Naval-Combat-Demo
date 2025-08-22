@@ -12560,6 +12560,28 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
  <scenarioState>
   <dateTime>1894-07-25T00:00:00Z</dateTime>
  </scenarioState>
+ <sideStates>
+  <SideState>
+   <name>
+    <english>China</english>
+   </name>
+   <countries>
+    <Country>China</Country>
+   </countries>
+   <victoryPoints>0</victoryPoints>
+   <objectId>dd43c3f3-1a02-46ca-b287-4ac069c23218</objectId>
+  </SideState>
+  <SideState>
+   <name>
+    <english>Japan</english>
+   </name>
+   <countries>
+    <Country>Japan</Country>
+   </countries>
+   <victoryPoints>0</victoryPoints>
+   <objectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</objectId>
+  </SideState>
+ </sideStates>
  <serializedCells>
   <width>60</width>
   <height>40</height>

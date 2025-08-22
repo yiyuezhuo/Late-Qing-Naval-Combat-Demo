@@ -7,6 +7,7 @@ using System.Collections;
 using UnityEngine.UIElements;
 
 using StrategicCombatCore;
+using MathNet.Numerics.Integration;
 
 public class HexMapShower : SingletonDocument<HexMapShower>
 {
@@ -169,14 +170,66 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         Utils.SyncTransformViewerLength(containerTransform, strategicGroups.Count, prefab);
 
         var worldSpaceGroupIcons = containerTransform.GetComponentsInChildren<WorldSpaceGroupIcon>();
+        var groupToView = new Dictionary<StrategicGroup, WorldSpaceGroupIcon>();
         for (int i = 0; i < strategicGroups.Count; i++)
         {
             var strategicGroup = strategicGroups[i];
             var worldSpaceGroupIcon = worldSpaceGroupIcons[i];
             worldSpaceGroupIcon.SetDataSource(strategicGroup);
 
-            var (xf, yf) = CellXYToLocalXY(strategicGroup.x, strategicGroup.y);
-            worldSpaceGroupIcon.transform.position = controlledRenderer.transform.TransformPoint(xf, yf, 0);
+            // var (xf, yf) = CellXYToLocalXY(strategicGroup.x, strategicGroup.y);
+            // worldSpaceGroupIcon.transform.position = controlledRenderer.transform.TransformPoint(xf, yf, 0);
+
+            groupToView[strategicGroup] = worldSpaceGroupIcon;
+        }
+
+        foreach (var g in strategicGroups.GroupBy(group => (group.x, group.y)))
+        {
+            (var x, var y) = g.Key;
+            var (xf, yf) = CellXYToLocalXY(x, y);
+            var vec = controlledRenderer.transform.TransformPoint(xf, yf, 0);
+
+            // var gl = g.GroupBy(_g => _g.country).ToList();
+            var gl = g.GroupBy(_g => StrategicGameState.Instance.countryToSideStateMap[_g.country]).ToList();
+
+            if (gl.Count == 1)
+            {
+                TransformStack(
+                    gl[0].Select(gp => groupToView[gp].transform).ToList(),
+                    new Vector3(vec.x, vec.y, 0),
+                    0.05f
+                );
+            }
+            else
+            {
+                TransformStack(
+                    gl[0].Select(gp => groupToView[gp].transform).ToList(),
+                    new Vector3(vec.x, vec.y + 0.25f, 0),
+                    0.05f
+                );
+
+                TransformStack(
+                    gl.Skip(1).SelectMany(x => x).Select(gp => groupToView[gp].transform).ToList(),
+                    new Vector3(vec.x, vec.y - 0.25f, 0),
+                    0.05f
+                );
+            }
+        }
+    }
+
+    void TransformStack(List<Transform> transforms, Vector3 basePos, float stackSpace)
+    {
+        var count = transforms.Count;
+        if (count == 1)
+        {
+            transforms[0].position = basePos;
+            return;
+        }
+        var step = stackSpace / (count - 1);
+        for (int i = 0; i < count; i++)
+        {
+            var delta = -stackSpace / 2 + i * step;
+            transforms[i].position = basePos + new Vector3(delta, delta, 0);
         }
     }
 

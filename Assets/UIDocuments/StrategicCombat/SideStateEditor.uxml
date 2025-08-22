@@ -1,0 +1,44 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:VisualElement data-source-type="SideStateEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
+        <ui:Label text="Side State" class="title" />
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px;">
+                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" data-source-path="currentGameState.sideStates" item-template="project://database/Assets/UIDocuments/Templates/SideStateLabel.uxml?fileID=9197481963319205126&amp;guid=56e87efa05095aa4d96dea7ac2c70118&amp;type=3#SideStateLabel" style="flex-grow: 1;" />
+                <ui:VisualElement name="ControlButtons">
+                    <ui:Button text="Copy Last" name="CopyLastButton" />
+                    <ui:Button text="Confirm" name="ConfirmButton" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:Label text="Not Selected or Invalid">
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
+                    </Bindings>
+                </ui:Label>
+                <ui:VisualElement style="flex-grow: 1;">
+                    <ui:VisualElement name="ContentContainer" data-source-path="selectedObject">
+                        <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                            <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+                        </ui:Instance>
+                        <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="countries" show-add-remove-footer="true" item-template="project://database/Assets/UIDocuments/Templates/CountryEnumField.uxml?fileID=9197481963319205126&amp;guid=f760d6fe0c512a842b3944c72b90e696&amp;type=3#CountryEnumField" />
+                        <ui:FloatField label="Victory Points" style="align-items: auto;">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="victoryPoints" binding-mode="TwoWay" />
+                            </Bindings>
+                        </ui:FloatField>
+                        <ui:Label text="Remark" />
+                        <ui:TextField style="min-height: 100px;">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
+                            </Bindings>
+                        </ui:TextField>
+                    </ui:VisualElement>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

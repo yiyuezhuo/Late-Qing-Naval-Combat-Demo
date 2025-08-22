@@ -70,6 +70,7 @@
                     <ui:Button text="Land Unit" name="LandUnitEditorButton" />
                     <ui:Button text="Weapon" name="WeaponEditorButton" />
                     <ui:Button text="Group" name="StrategicGroupEditorButton" />
+                    <ui:Button text="Side State" name="SideStateButton" />
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Naval">

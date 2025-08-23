@@ -23,6 +23,9 @@ namespace StrategicCombatCore
     {
         [CreateProperty]
         public string brief => $"({x}, {y}), {terrain}";
+
+        [CreateProperty]
+        public int cellInfoGroupCount => StrategicGameState.Instance.hexInfoMap.GetValueOrDefault((x, y))?.strategicGroupReferences?.Count ?? 0;
     }
 
     public static class StyleConstants
@@ -74,6 +77,7 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public bool isXYEditable => deployState == DeployState.Independent;
+
     }
 
     public partial class StrategicGroupMemberReference

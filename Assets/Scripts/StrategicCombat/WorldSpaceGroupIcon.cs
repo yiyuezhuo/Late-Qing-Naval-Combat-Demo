@@ -6,6 +6,7 @@ public class WorldSpaceGroupIcon : MonoBehaviour
 {
     UIDocument doc;
     VisualElement root; // => doc.rootVisualElement;
+    public StrategicGroup currentDataSource;
 
     void Awake()
     {
@@ -15,6 +16,7 @@ public class WorldSpaceGroupIcon : MonoBehaviour
 
     public void SetDataSource(StrategicGroup group)
     {
+        currentDataSource = group;
         root.dataSource = group;
     }
 

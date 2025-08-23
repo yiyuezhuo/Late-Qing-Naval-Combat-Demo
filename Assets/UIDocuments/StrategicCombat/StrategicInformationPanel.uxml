@@ -1,41 +1,67 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="StrategicUnitIcon" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicUnitIcon.uxml?fileID=9197481963319205126&amp;guid=aa3ccbfdf5107f4488fcd49416ef81e1&amp;type=3#StrategicUnitIcon" />
     <ui:VisualElement data-source-type="StrategicGameManager, Assembly-CSharp" style="flex-grow: 1; width: 200px; background-color: rgb(240, 240, 240);">
         <ui:Label text="Date Time">
             <Bindings>
                 <ui:DataBinding property="text" data-source-path="gameState.scenarioState.dateTime" binding-mode="ToTarget" />
             </Bindings>
         </ui:Label>
-        <ui:VisualElement data-source-path="lastSelectedCell" style="flex-shrink: 0;">
-            <ui:Label text="Hex Coordinate &amp; Terrain">
-                <Bindings>
-                    <ui:DataBinding property="text" data-source-path="brief" binding-mode="ToTarget" />
-                </Bindings>
-            </ui:Label>
-            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                <ui:Label text="Latitude" />
-                <ui:FloatField style="flex-grow: 1;">
+        <ui:VisualElement>
+            <ui:VisualElement data-source-path="lastSelectedCell" style="flex-shrink: 0; border-bottom-width: 1px; border-top-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:Label text="Hex Coordinate &amp; Terrain">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="latitude" binding-mode="TwoWay" />
+                        <ui:DataBinding property="text" data-source-path="brief" binding-mode="ToTarget" />
                     </Bindings>
-                </ui:FloatField>
-            </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                <ui:Label text="Longitude" />
-                <ui:FloatField style="flex-grow: 1;">
+                </ui:Label>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:Label text="Latitude" />
+                    <ui:FloatField style="flex-grow: 1;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="latitude" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:Label text="Longitude" />
+                    <ui:FloatField style="flex-grow: 1;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="longitude" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                </ui:VisualElement>
+                <ui:Toggle label="Ground Control Point">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="longitude" binding-mode="TwoWay" />
+                        <ui:DataBinding property="value" data-source-path="groundControlPoint" binding-mode="TwoWay" />
                     </Bindings>
-                </ui:FloatField>
+                </ui:Toggle>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:Label text="Group Count:" />
+                    <ui:Label text="n">
+                        <Bindings>
+                            <ui:DataBinding property="text" data-source-path="cellInfoGroupCount" binding-mode="ToTarget" />
+                        </Bindings>
+                    </ui:Label>
+                </ui:VisualElement>
+                <ui:Button text="Go to  Location (Tactical) " name="GoToLocationAtTacticalModeButton" style="flex-wrap: nowrap;" />
+                <ui:Button text="Resolve Naval Combat" name="ResolveNavalCombatButton" style="display: none;" />
+                <ui:Button text="Resolve Land Combat" name="ResolveLandCombatButton" style="display: none;" />
             </ui:VisualElement>
-            <ui:Toggle label="Ground Control Point">
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="groundControlPoint" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:Toggle>
-            <ui:Button text="Go to  Location (Tactical) " name="GoToLocationAtTacticalModeButton" style="flex-wrap: nowrap;" />
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="selectedCellValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+            </Bindings>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-shrink: 0;">
-            <ui:Label text="Label" />
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:VisualElement data-source-path="lastSelectedStrategicGroup" style="flex-shrink: 0; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:Label text="Group Name" style="flex-wrap: wrap;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="name.mergedName" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
+                <ui:Instance template="StrategicUnitIcon" />
+            </ui:VisualElement>
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="selectedStrategicGroupValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+            </Bindings>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

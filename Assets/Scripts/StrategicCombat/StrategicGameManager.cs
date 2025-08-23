@@ -85,6 +85,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     }
 
     public Cell lastSelectedCell;
+    public StrategicGroup lastSelectedStrategicGroup;
     Action<Cell> oneshotCellClickCallback;
 
     void Start()
@@ -239,27 +240,80 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public void Update()
     {
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     var ray = PlaneCameraController.Instance.cam.ScreenPointToRay(Input.mousePosition);
+        //     if (Physics.Raycast(ray, out var hitInfo))
+        //     {
+        //         Debug.Log($"hitInfo.collider={hitInfo.collider}");
+        //     }
+        // }
+
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             if (Input.GetMouseButtonDown(0))
             {
                 var cam = PlaneCameraController.Instance.cam;
-                var worldPoint = cam.ScreenToWorldPoint(Input.mousePosition);
 
-                var hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-                if (hit.collider != null)
+                // UITK World Spcace enforce a 3D collider, so we can only use 3D Raycast
+                var ray = cam.ScreenPointToRay(Input.mousePosition);
+                if (mapEditMode == StrategicMapEditMode.Select && Physics.Raycast(ray, out var hitInfo) && hitInfo.collider.CompareTag("Icon"))
                 {
-                    Debug.Log($"Hit: {hit.collider} {hit.point}");
-
-                    var localPoint = hit.collider.transform.InverseTransformPoint(hit.point);
-                    var uv = new Vector2(localPoint.x + 0.5f, localPoint.y + 0.5f);
-                    var cellXY = GetCellXY(uv);
-
-                    Debug.Log($"localPoint={localPoint}, cellXY={cellXY}");
-
-                    if (cellXY.x >= 0 && cellXY.x < StrategicGameState.Instance.GetMapWidth() && cellXY.y >= 0 && cellXY.y < StrategicGameState.Instance.GetMapHeight())
+                    // Group Inco Click
+                    Debug.Log($"hitInfo.collider={hitInfo.collider}");
+                    var group = hitInfo.collider.GetComponent<WorldSpaceGroupIcon>()?.currentDataSource;
+                    var groupSide = group.side;
+                    var hexInfo = group.hexInfo;
+                    var currentStack = group.currentStack;
+                    var topStackGroup = currentStack[^1];
+                    Debug.Log($"group={group}, groupSide={groupSide}, hexInfo={hexInfo}, currentStack={currentStack}, topStackGroup={topStackGroup}");
+                    if (lastSelectedStrategicGroup != topStackGroup)
                     {
-                        HandleClick(cellXY);
+                        lastSelectedStrategicGroup = topStackGroup;
+                    }
+                    else
+                    {
+                        hexInfo.strategicGroupReferences.RemoveAll(r => r.referenceId == topStackGroup.objectId);
+                        hexInfo.strategicGroupReferences.Insert(0, new() { referenceId = topStackGroup.objectId });
+                        currentStack = group.currentStack;
+                        topStackGroup = currentStack[^1];
+
+                        lastSelectedStrategicGroup = topStackGroup;
+                    }
+
+                    lastSelectedCell = group.cell;
+
+                    // hexInfo.strategicGroupReferences.Select(r => r.Get()).Where(g => g.country)
+                }
+                else
+                {
+                    
+
+                    var worldPoint = cam.ScreenToWorldPoint(Input.mousePosition);
+
+                    var hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                    if (hit.collider != null)
+                    {
+                        if (hit.collider.CompareTag("Map"))
+                        {
+                            // Map Click
+                            Debug.Log($"Hit: {hit.collider} {hit.point}");
+
+                            var localPoint = hit.collider.transform.InverseTransformPoint(hit.point);
+                            var uv = new Vector2(localPoint.x + 0.5f, localPoint.y + 0.5f);
+                            var cellXY = GetCellXY(uv);
+
+                            Debug.Log($"localPoint={localPoint}, cellXY={cellXY}");
+
+                            if (cellXY.x >= 0 && cellXY.x < StrategicGameState.Instance.GetMapWidth() && cellXY.y >= 0 && cellXY.y < StrategicGameState.Instance.GetMapHeight())
+                            {
+                                HandleMapClick(cellXY);
+                            }
+                        }
+                        // else if (hit.collider.CompareTag("Icon"))
+                        // {
+                        //     Debug.Log($"Icon Hit: {hit.collider} {hit.point}");
+                        // }
                     }
                 }
             }
@@ -271,24 +325,29 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                     DialogRoot.Instance.PopupStrategicGroupPickerDialog(group =>
                     {
                         group.DeployToXY(cell.x, cell.y);
-                        // var hexInfoMap = StrategicGameState.Instance.hexInfoMap;
-                        // if (!hexInfoMap.TryGetValue((cell.x, cell.y), out var cellInfo))
-                        // {
-                        //     cellInfo = hexInfoMap[(cell.x, cell.y)] = new();
-                        //     cellInfo.x = cell.x;
-                        //     cellInfo.y = cell.y;
-                        // }
-                        // cellInfo.strategicGroupReferences.Add(new() { referenceId = group.objectId });
-                        // group.deployState = StrategicGroup.DeployState.Independent;
-                        // group.x = cellInfo.x;
-                        // group.y = cellInfo.y;
                     });
                     // Debug.Log("ScheduleOneshotCellClickCallback"); // Popup Dialog to select a group.
                     mapEditMode = StrategicMapEditMode.Select;
                 });
             }
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                ScheduleOneshotCellClickCallback(cell =>
+                {
+                    if (lastSelectedStrategicGroup != null)
+                    {
+                        lastSelectedStrategicGroup.DeployToXY(cell.x, cell.y);
+                    }
+                });
+            }
         }
     }
+
+    [CreateProperty]
+    public bool selectedCellValid => lastSelectedCell != null;
+
+    [CreateProperty]
+    public bool selectedStrategicGroupValid => lastSelectedStrategicGroup != null;
 
     public void ScheduleOneshotCellClickCallback(Action<Cell> callback)
     {
@@ -296,11 +355,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         oneshotCellClickCallback = callback;
     }
 
-    void HandleClick(Vector2Int cellXY)
+    void HandleMapClick(Vector2Int cellXY)
     {
         if (mapEditMode == StrategicMapEditMode.Select)
         {
             lastSelectedCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+            lastSelectedStrategicGroup = null;
         }
         else if (mapEditMode == StrategicMapEditMode.WaitOneshotCellClickCallback)
         {
@@ -309,11 +369,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
         else
         {
-            HandleEditClick(cellXY);
+            HandleMapEditClick(cellXY);
         }
     }
 
-    void HandleEditClick(Vector2Int cellXY)
+    void HandleMapEditClick(Vector2Int cellXY)
     {
         if (mapEditMode == StrategicMapEditMode.PaintTerrain)
         {

@@ -25,5 +25,10 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
                 SceneManager.LoadScene("Naval Game");
             }
         };
+
+        root.Q<Button>("ResolveNavalCombatButton").clicked += () =>
+        {
+            Debug.Log("ResolveNavalCombatButton clicked");
+        };
     }
 }

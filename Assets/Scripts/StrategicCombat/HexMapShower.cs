@@ -194,7 +194,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
 
             if (gl.Count == 1)
             {
-                TransformStack(
+                LayoutStackTransform(
                     gl[0].Select(gp => groupToView[gp].transform).ToList(),
                     new Vector3(vec.x, vec.y, 0),
                     0.05f
@@ -202,22 +202,30 @@ public class HexMapShower : SingletonDocument<HexMapShower>
             }
             else
             {
-                TransformStack(
+                gl.Sort((gp1, gp2) => gp1.Key.name.english[0].CompareTo(gp2.Key.name.english[0])); // FIXME: Fragile to empty string
+
+                LayoutStackTransform(
                     gl[0].Select(gp => groupToView[gp].transform).ToList(),
                     new Vector3(vec.x, vec.y + 0.25f, 0),
                     0.05f
                 );
 
-                TransformStack(
-                    gl.Skip(1).SelectMany(x => x).Select(gp => groupToView[gp].transform).ToList(),
+                // Assume 2 sides can be in the same hex at most.
+                LayoutStackTransform(
+                    gl[1].Select(gp => groupToView[gp].transform).ToList(),
                     new Vector3(vec.x, vec.y - 0.25f, 0),
                     0.05f
                 );
+                // LayoutStackTransform(
+                //     gl.Skip(1).SelectMany(x => x).Select(gp => groupToView[gp].transform).ToList(),
+                //     new Vector3(vec.x, vec.y - 0.25f, 0),
+                //     0.05f
+                // );
             }
         }
     }
 
-    void TransformStack(List<Transform> transforms, Vector3 basePos, float stackSpace)
+    void LayoutStackTransform(List<Transform> transforms, Vector3 basePos, float stackSpace)
     {
         var count = transforms.Count;
         if (count == 1)

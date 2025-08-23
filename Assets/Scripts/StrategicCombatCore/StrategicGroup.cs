@@ -149,6 +149,23 @@ namespace StrategicCombatCore
 
         // public string strategicGroupId;
         public StrategicGroupReference strategicGroupReference{ get; set; } = new();
+
+        public SideState side => StrategicGameState.Instance.countryToSideStateMap.GetValueOrDefault(country);
+        public HexInfo hexInfo => StrategicGameState.Instance.hexInfoMap.GetValueOrDefault((x, y));
+
+        [XmlIgnore]
+        public List<StrategicGroup> currentStack
+        {
+            get
+            {
+                var currentSide = side;
+                return hexInfo.strategicGroupReferences.Select(r => r.Get()).Where(g => g.side == currentSide).ToList();
+            }
+        }
+
+        [XmlIgnore]
+        public Cell cell => StrategicGameState.Instance.cellMatrix[x, y];
+
         public void SetStrategicGroupReference(StrategicGroup group) => IStrategicGroupMemberReferenceable.SetStrategicGroupReference(this, group);
 
         public static Dictionary<StrategicUnitSize, string> sizeStrMap = new()
@@ -165,6 +182,11 @@ namespace StrategicCombatCore
             { StrategicUnitSize.Platoon, "···" },
             { StrategicUnitSize.Squad, "··" },
         };
+
+        public override string ToString()
+        {
+            return $"StrategicGroup({name.GetMergedName()})";
+        }
 
         public void DeployToXY(int toX, int toY)
         {

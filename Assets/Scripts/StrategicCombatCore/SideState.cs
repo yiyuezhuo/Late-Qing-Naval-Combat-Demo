@@ -14,5 +14,10 @@ namespace StrategicCombatCore
         public List<Country> countries = new();
         public float victoryPoints;
         public string remark;
+
+        public override string ToString()
+        {
+            return $"SideState({name.mergedName})";
+        }
     }
 }

@@ -201,7 +201,9 @@ namespace StrategicCombatCore
             {
                 foreach (var groupRef in hexInfo.strategicGroupReferences)
                 {
-                    yield return groupRef.Get();
+                    var group = groupRef.Get();
+                    if (group != null)
+                        yield return group;
                 }
             }
         }

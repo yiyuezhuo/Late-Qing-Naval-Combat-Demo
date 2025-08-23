@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement data-source-type="StrategicCombatCore.StrategicGroup, Assembly-CSharp" picking-mode="Ignore" style="background-color: rgb(243, 230, 88); border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-shrink: 0; width: 100px; height: 100px;">
+    <ui:VisualElement data-source-type="StrategicCombatCore.StrategicGroup, Assembly-CSharp" style="background-color: rgb(243, 230, 88); border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-shrink: 0; width: 100px; height: 100px;">
         <ui:Label text="III" picking-mode="Ignore" style="position: relative; height: 17px; -unity-text-align: upper-center;">
             <Bindings>
                 <ui:DataBinding property="text" data-source-path="sizeStr" binding-mode="ToTarget" />

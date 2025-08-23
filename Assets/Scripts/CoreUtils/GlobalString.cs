@@ -48,5 +48,23 @@ namespace CoreUtils
                 chineseTraditional = chineseTraditional
             };
         }
+
+        public GlobalString Add(GlobalString other)
+        {
+            return new()
+            {
+                english = ValidAdd(english, other.english),
+                japanese = ValidAdd(japanese, other.japanese),
+                chineseSimplified = ValidAdd(chineseSimplified, other.chineseSimplified),
+                chineseTraditional = ValidAdd(chineseTraditional, other.chineseTraditional)
+            };
+        }
+
+        string ValidAdd(string a, string b)
+        {
+            if (a == null || a == "")
+                return null;
+            return a + b;
+        }
     }
 }

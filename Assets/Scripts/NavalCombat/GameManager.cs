@@ -122,6 +122,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         public FullState fullState = null;
         public string builtinScenName = "Battle of Yalu River.scen.xml";
         public LatLon cameraLocation;
+        // public bool requireAutoDeployAll = false;
+        public ScenarioSetupGenerator scenarioSetupGenerator;
     }
 
     public static StartupConfig startupConfig = new();
@@ -193,6 +195,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         NavalGameState.UpdateInstance(fullState.navalGameState);
 
         NavalGameState.Instance.ResetAndRegisterAll();
+
+        if (startupConfig.scenarioSetupGenerator != null)
+        {
+            startupConfig.scenarioSetupGenerator.Setup();
+        }
 
         Debug.Log("OnFullStateXMLLoadedCoroutine");
 

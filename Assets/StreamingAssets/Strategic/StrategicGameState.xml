@@ -12138,7 +12138,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>unnamed</english>
+    <english>1st Torpedo Boat Group</english>
     <chineseSimplified>第1鱼雷艇队</chineseSimplified>
    </name>
    <type>Fleet</type>
@@ -12174,7 +12174,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>unnamed</english>
+    <english>2nd Torpedo Boat Group</english>
     <chineseSimplified>第2鱼雷艇队</chineseSimplified>
    </name>
    <type>Fleet</type>
@@ -12210,7 +12210,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>unnamed</english>
+    <english>3rd Torpedo Boat Group</english>
     <chineseSimplified>第3鱼雷艇队</chineseSimplified>
    </name>
    <type>Fleet</type>
@@ -12247,6 +12247,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   <StrategicGroup>
    <name>
     <english>Combined Fleet</english>
+    <japanese>連合艦隊</japanese>
     <chineseSimplified>联合舰队</chineseSimplified>
    </name>
    <type>Fleet</type>
@@ -12281,7 +12282,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>unnamed</english>
+    <english>9th Combined Bridge</english>
+    <japanese>混成旅団</japanese>
     <chineseSimplified>第九混成旅团</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -12330,6 +12332,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   <StrategicGroup>
    <name>
     <english>Escort</english>
+    <japanese>護衛隊</japanese>
     <chineseSimplified>护航队</chineseSimplified>
    </name>
    <type>Fleet</type>
@@ -12465,7 +12468,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>unnamed</english>
+    <english>Port of Arthur Coast Bty</english>
     <chineseSimplified>旅顺岸防炮</chineseSimplified>
    </name>
    <type>CoastArtillery</type>
@@ -12485,7 +12488,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>unnamed</english>
+    <english>Weihaiwei Coast Bty</english>
     <chineseSimplified>威海卫岸防炮</chineseSimplified>
    </name>
    <type>CoastArtillery</type>
@@ -12505,8 +12508,9 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english />
-    <chineseSimplified>元山军</chineseSimplified>
+    <english>Asan Corp</english>
+    <japanese>牙山軍</japanese>
+    <chineseSimplified>牙山军</chineseSimplified>
    </name>
    <type>Infantry</type>
    <size>Bridge</size>
@@ -12526,7 +12530,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   <StrategicGroup>
    <name>
     <english>Beiyang HQ</english>
-    <chineseSimplified>北洋 HQ</chineseSimplified>
+    <japanese>北洋HQ</japanese>
+    <chineseSimplified>北洋HQ</chineseSimplified>
    </name>
    <type>HeadQuarter</type>
    <size>Army</size>
@@ -12564,6 +12569,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   <SideState>
    <name>
     <english>China</english>
+    <japanese>中国</japanese>
+    <chineseSimplified>中国</chineseSimplified>
    </name>
    <countries>
     <Country>China</Country>
@@ -12574,6 +12581,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   <SideState>
    <name>
     <english>Japan</english>
+    <japanese>日本</japanese>
+    <chineseSimplified>日本</chineseSimplified>
    </name>
    <countries>
     <Country>Japan</Country>
@@ -15061,10 +15070,10 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
     <y>28</y>
     <strategicGroupReferences>
      <StrategicGroupReference>
-      <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+      <referenceId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</referenceId>
      </StrategicGroupReference>
      <StrategicGroupReference>
-      <referenceId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</referenceId>
+      <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
      </StrategicGroupReference>
     </strategicGroupReferences>
    </HexInfo>

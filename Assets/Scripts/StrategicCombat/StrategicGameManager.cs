@@ -49,7 +49,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         public enum Mode
         {
             Empty,
-            LocalizedCamera,
+            ReturnFromNavalGame,
             ScenPath
         }
 
@@ -107,7 +107,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
             HexMapShower.Instance.Refresh();
         }
-        else if (startupConfig.mode == StartupConfig.Mode.LocalizedCamera)
+        else if (startupConfig.mode == StartupConfig.Mode.ReturnFromNavalGame)
         {
             Debug.Log("LocalizedCamera mode startup");
 
@@ -130,7 +130,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public void PrepareReturnFromNavalGame()
     {
-        startupConfig.mode = StartupConfig.Mode.LocalizedCamera;
+        startupConfig.mode = StartupConfig.Mode.ReturnFromNavalGame;
         var pos = PlaneCameraController.Instance.transform.position;
         startupConfig.cameraPosXY = new Vector2(pos.x, pos.y);
         startupConfig.cameraZoom = PlaneCameraController.Instance.cam.orthographicSize;
@@ -141,6 +141,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         var trans = PlaneCameraController.Instance.transform;
         trans.position = new Vector3(startupConfig.cameraPosXY.x, startupConfig.cameraPosXY.y, trans.position.z);
         PlaneCameraController.Instance.cam.orthographicSize = startupConfig.cameraZoom;
+
+        StrategicGameState.Instance.ResetAndRegisterAll();
     }
 
     IEnumerator OnScenTextLoaded(string initialScenText)
@@ -332,15 +334,20 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             }
             if (Input.GetKeyDown(KeyCode.M))
             {
-                ScheduleOneshotCellClickCallback(cell =>
-                {
-                    if (lastSelectedStrategicGroup != null)
-                    {
-                        lastSelectedStrategicGroup.DeployToXY(cell.x, cell.y);
-                    }
-                });
+                StartToEditMove();
             }
         }
+    }
+
+    public void StartToEditMove()
+    {
+        ScheduleOneshotCellClickCallback(cell =>
+        {
+            if (lastSelectedStrategicGroup != null)
+            {
+                lastSelectedStrategicGroup.DeployToXY(cell.x, cell.y);
+            }
+        });
     }
 
     [CreateProperty]

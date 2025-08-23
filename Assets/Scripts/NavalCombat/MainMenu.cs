@@ -50,9 +50,13 @@ public class MainMenu : SingletonDocument<MainMenu>
         // IOManager.Instance.textLoaded -= OnFullStateXMLLoaded;
 
         var fullState = FullState.FromXML(text);
-        // GameManager.oneShotStartupFullState = fullState;
-        GameManager.startupConfig.fullState = fullState;
-        GameManager.startupConfig.mode = GameManager.StartupConfig.Mode.FullState;
+        // GameManager.startupConfig.fullState = fullState;
+        // GameManager.startupConfig.mode = GameManager.StartupConfig.Mode.FullState;
+        GameManager.startupConfig = new()
+        {
+            fullState = fullState,
+            mode = GameManager.StartupConfig.Mode.FullState
+        };
         SceneManager.LoadScene("Naval Game");
     }
 

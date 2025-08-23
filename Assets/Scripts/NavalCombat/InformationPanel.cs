@@ -50,6 +50,7 @@ public class InformationPanel : SingletonDocument<InformationPanel>
                 }
             } }
         });
+
     }
 
     // Update is called once per frame

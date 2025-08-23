@@ -43,7 +43,7 @@
                     </ui:Label>
                 </ui:VisualElement>
                 <ui:Button text="Go to  Location (Tactical) " name="GoToLocationAtTacticalModeButton" style="flex-wrap: nowrap;" />
-                <ui:Button text="Resolve Naval Combat" name="ResolveNavalCombatButton" style="display: none;" />
+                <ui:Button text="Resolve Naval Combat" name="ResolveNavalCombatButton" style="display: flex;" />
                 <ui:Button text="Resolve Land Combat" name="ResolveLandCombatButton" style="display: none;" />
             </ui:VisualElement>
             <Bindings>
@@ -58,6 +58,7 @@
                     </Bindings>
                 </ui:Label>
                 <ui:Instance template="StrategicUnitIcon" />
+                <ui:Button text="Move (Edit, M)" name="EditMoveButton" />
             </ui:VisualElement>
             <Bindings>
                 <ui:DataBinding property="style.display" data-source-path="selectedStrategicGroupValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />

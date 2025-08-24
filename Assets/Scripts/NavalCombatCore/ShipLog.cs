@@ -183,18 +183,23 @@ namespace NavalCombatCore
         [XmlAttribute]
         public DateTime time;
 
-        public virtual string Summary() => $"{GetType()}: {time}";
+        public virtual string Summary() => $"{time}: {SummaryContent()}";
+        public virtual string SummaryContent() => $"{GetType()}";
     }
 
-    public class ShipLogStringLog : ShipLogLog
+    public partial class ShipLogStringLog : ShipLogLog
     {
         public string description;
 
-        public override string Summary() => $"{time}: {description}";
+        // public override string Summary() => $"{time}: {description}";
+        public override string SummaryContent() => description;
     }
 
     public class ShipLogBatteryHitLog : ShipLogLog
     {
+        [XmlAttribute]
+        public string shooterId;
+
         [XmlAttribute]
         public ArmorLocation armorLocation;
 
@@ -207,15 +212,20 @@ namespace NavalCombatCore
         [XmlAttribute]
         public string damageEffectId;
 
-        public override string Summary() => $"{time}: Bty Hit: {armorLocation} {hitPenDetType} DP:{damagePoint} DE:{damageEffectId}";
+        // public override string Summary() => $"{time}: Bty Hit: {armorLocation} {hitPenDetType} DP:{damagePoint} DE:{damageEffectId}";
+        public override string SummaryContent() => $"Bty Hit: {armorLocation} {hitPenDetType} DP:{damagePoint} DE:{damageEffectId} (by {EntityManager.Instance.Get<ShipLog>(shooterId)?.namedShip?.name?.GetShortName()})";
     }
 
     public class ShipLogRapidFiringGunHitLog : ShipLogLog
     {
         [XmlAttribute]
+        public string shooterId;
+
+        [XmlAttribute]
         public float damagePoint;
 
-        public override string Summary() => $"{time}: RF Hit: DP: {damagePoint}";
+        // public override string Summary() => $"{time}: RF Hit: DP: {damagePoint}";
+        public override string SummaryContent() => $"RF Hit: DP: {damagePoint} (by {EntityManager.Instance.Get<ShipLog>(shooterId)?.namedShip?.name?.GetShortName()})";
     }
 
     public class ShipLogTorpedoHitLog : ShipLogLog
@@ -231,16 +241,9 @@ namespace NavalCombatCore
         [XmlAttribute]
         public string damageEffectId;
 
-        public override string Summary() => $"{time}: Torpedo Hit: {GetTorpedo().sourceName.english} DP:{damagePoint} DE:{damageEffectId}";
+        // public override string Summary() => $"{time}: Torpedo Hit: {GetTorpedo().sourceName.english} DP:{damagePoint} DE:{damageEffectId}";
+        public override string SummaryContent() => $"Torpedo Hit: {GetTorpedo().sourceName.english} DP:{damagePoint} DE:{damageEffectId}";
     }
-
-    // public class ShipLogDamageEffectBegin : ShipLogLog
-    // {
-    // }
-
-    // public class ShipLogDamageEffectEnd : ShipLogLog
-    // { 
-    // }
 
     public partial class ShipLog : UnitModule, IDF4Model, IShipGroupMember, IWTAObject, IExtrapolable, ICollider
     {
@@ -410,11 +413,23 @@ namespace NavalCombatCore
 
         public void AddStringLog(string description)
         {
-            logs.Add(new ShipLogStringLog()
+            // logs.Add(new ShipLogStringLog()
+            // {
+            //     time = NavalGameState.Instance.scenarioState.dateTime,
+            //     description = description
+            // });
+            AddLog(new ShipLogStringLog()
             {
                 time = NavalGameState.Instance.scenarioState.dateTime,
                 description = description
             });
+        }
+
+        public void AddLog(ShipLogLog log)
+        {
+            logs.Add(log);
+            // NavalGameState.Instance.tempSubjectLogs.Add(new() { subjectId = objectId, log = log });
+            NavalGameState.Instance.tempSubjectLogs.Insert(0, new() { subjectId = objectId, log = log });
         }
 
         public bool IsOnMap() => mapState == MapState.Deployed;

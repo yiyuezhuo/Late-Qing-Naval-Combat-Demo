@@ -404,7 +404,7 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
-        public string name => Get()?.name?.mergedName ?? "[Not Specified or Invalid]"; 
+        public string name => Get()?.name?.mergedName ?? "[Not Specified or Invalid]";
     }
 
     public partial class NamedShip
@@ -495,6 +495,19 @@ namespace NavalCombatCore
     {
         [CreateProperty]
         public string shipTypeDesc => ShipClass.GetAcronymFor(shipType);
+    }
+
+    public partial class SubjectLog
+    {
+        [CreateProperty]
+        public string summaryContent
+        {
+            get
+            {
+                var subjectName = EntityManager.Instance.Get<ShipLog>(subjectId)?.namedShip?.name.GetShortName() ?? "[Invalid]";
+                return $"{subjectName} {log.SummaryContent()}";
+            }
+        }
     }
 }
 

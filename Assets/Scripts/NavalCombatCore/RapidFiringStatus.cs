@@ -362,10 +362,12 @@ namespace NavalCombatCore
 
                             var tgtLog = new ShipLogRapidFiringGunHitLog()
                             {
+                                shooterId = shooter.objectId,
                                 time = NavalGameState.Instance.scenarioState.dateTime,
                                 damagePoint = damagePoint
                             };
-                            tgt.logs.Add(tgtLog);
+                            // tgt.logs.Add(tgtLog);
+                            tgt.AddLog(tgtLog);
 
                             // tgt.damagePoint += damagePoint;
                             tgt.AddDamagePoint(damagePoint);

@@ -691,6 +691,7 @@ namespace NavalCombatCore
                             // logs.Add(logRecord);
                             var tgtLog = new ShipLogBatteryHitLog()
                             {
+                                shooterId = shooter.objectId,
                                 time = NavalGameState.Instance.scenarioState.dateTime
                             };
 
@@ -698,7 +699,8 @@ namespace NavalCombatCore
                             tgtLog.armorLocation = logRecord.armorLocation = armorLocation;
                             logRecord.shellDamageResult = shellDamageResult;
                             tgtLog.damagePoint = shellDamageResult.damagePoint;
-                            tgt.logs.Add(tgtLog);
+                            // tgt.logs.Add(tgtLog);
+                            tgt.AddLog(tgtLog);
 
                             // TODO: Handle damage effect and general (DP caused) damage effect.
                             // tgt.damagePoint += shellDamageResult.damagePoint;

@@ -1,3 +1,4 @@
+using NavalCombatCore;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,6 +9,9 @@ public class Overlay : SingletonDocument<Overlay>
         base.Awake();
 
         root.dataSource = GameManager.Instance;
+        Utils.BindItemsSourceRecursive(root);
+
+        root.Q<Button>("ClearLogButton").clicked += () => NavalGameState.Instance.tempSubjectLogs.Clear();
     }
 
 

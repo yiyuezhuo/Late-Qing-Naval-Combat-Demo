@@ -35,11 +35,18 @@ namespace NavalCombatCore
         }
     }
 
+    public partial class SubjectLog
+    {
+        public string subjectId;
+        public ShipLogLog log;
+    }
+
     public class NavalGameState : AbstractGameState
     {
         public List<ShipGroup> shipGroups = new();
         public ScenarioState scenarioState = new();
         public List<LaunchedTorpedo> launchedTorpedos = new();
+        public List<SubjectLog> tempSubjectLogs = new();
 
         public event EventHandler<List<ShipGroup>> shipGroupsChanged;
 
@@ -306,7 +313,7 @@ namespace NavalCombatCore
             {
                 newAnchor.relativeTargetObjectId = displacedShipLog.relativeTargetObjectId;
             }
-            
+
             newAnchor.relativeToTargetAzimuth = azimuth;
             newAnchor.relativeToTargetDistanceYards = distance;
 
@@ -347,6 +354,8 @@ namespace NavalCombatCore
         public void Step(float deltaSeconds)
         {
             scenarioState.doingStep = true;
+
+            // tempSubjectLogs.Clear();
 
             // pre-advance resolution
             if (scenarioState.weaponSimulationAssignmentClock.Step(deltaSeconds) > 0)

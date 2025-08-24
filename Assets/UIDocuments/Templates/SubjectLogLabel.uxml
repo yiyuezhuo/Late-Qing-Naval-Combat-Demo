@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Label text="Log" data-source-type="NavalCombatCore.SubjectLog, Assembly-CSharp" style="font-size: 10px; margin-left: 0; padding-left: 0; padding-bottom: 0; padding-right: 0; padding-top: 0; margin-top: 0; margin-bottom: 0; margin-right: 0; white-space: normal;">
+        <Bindings>
+            <ui:DataBinding property="text" data-source-path="summaryContent" binding-mode="ToTarget" />
+        </Bindings>
+    </ui:Label>
+</ui:UXML>

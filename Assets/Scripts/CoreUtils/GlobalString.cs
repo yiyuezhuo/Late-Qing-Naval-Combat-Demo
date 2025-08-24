@@ -21,6 +21,7 @@ namespace CoreUtils
         public string chineseSimplified;
         public string chineseTraditional;
         public static LanguageType mergeMode = LanguageType.All;
+        public static LanguageType shortMode = LanguageType.English;
         public string GetMergedNamePure()
         {
             var names = new List<string>() { english, japanese, chineseSimplified, chineseTraditional };
@@ -29,6 +30,10 @@ namespace CoreUtils
         public string GetMergedName()
         {
             return GetNameFromType(mergeMode);
+        }
+        public string GetShortName()
+        {
+            return GetNameFromType(shortMode);
         }
         public string GetNameFromType(LanguageType type)
         {

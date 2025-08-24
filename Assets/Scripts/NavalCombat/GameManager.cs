@@ -237,6 +237,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public Dictionary<string, PortraitViewer> objectId2Viewer = new();
 
     public string hoveringLocationInfo;
+    public bool currentLogOnly = true;
 
     // float viewAccTime;
     void UpdateLocationInfoLabel()
@@ -327,6 +328,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
+    void SetRemainAdvanceSimulationSecondsRequestedByUserInput(float value)
+    {
+        if (currentLogOnly)
+            NavalGameState.Instance.tempSubjectLogs.Clear();
+
+        remainAdvanceSimulationSecondsRequestedByUserInput = value;
+    }
+
     public void Update()
     {
         UpdateSimulation();
@@ -384,7 +393,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     if (Input.GetKeyDown(keyCode))
                     {
-                        remainAdvanceSimulationSecondsRequestedByUserInput = advanceSimulationSeconds;
+                        // remainAdvanceSimulationSecondsRequestedByUserInput = advanceSimulationSeconds;
+                        SetRemainAdvanceSimulationSecondsRequestedByUserInput(advanceSimulationSeconds);
                     }
                 }
             }
@@ -457,13 +467,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     if (Input.GetKeyDown(keyCode))
                     {
-                        remainAdvanceSimulationSecondsRequestedByUserInput = advanceSimulationSeconds;
+
+                        // remainAdvanceSimulationSecondsRequestedByUserInput = advanceSimulationSeconds;
+                        SetRemainAdvanceSimulationSecondsRequestedByUserInput(advanceSimulationSeconds);
                     }
                 }
 
                 if (Input.GetKeyDown(KeyCode.Tilde) || Input.GetKeyDown(KeyCode.BackQuote))
                 {
-                    remainAdvanceSimulationSecondsRequestedByUserInput = GamePreference.Instance.pulseLengthSeconds;
+                    // remainAdvanceSimulationSecondsRequestedByUserInput = GamePreference.Instance.pulseLengthSeconds;
+                    SetRemainAdvanceSimulationSecondsRequestedByUserInput(GamePreference.Instance.pulseLengthSeconds);
                 }
 
                 if (Input.GetKeyDown(KeyCode.I) && selectedShipLog != null)

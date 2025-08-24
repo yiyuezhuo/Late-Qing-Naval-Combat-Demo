@@ -16,8 +16,6 @@ using UnityEngine.SceneManagement;
 using CoreUtils;
 using StrategicCombatCore;
 using NavalCombatCore;
-using Unity.VisualScripting;
-using UnityEditorInternal;
 
 
 public enum StrategicMapEditMode
@@ -57,6 +55,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         public Vector2 cameraPosXY;
         public float cameraZoom;
         public string scenPath = "Strategic/StrategicGameState.xml";
+        public List<ShipLog> syncShipLogs;
     }
 
     public static StartupConfig startupConfig = new StartupConfig();
@@ -109,7 +108,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
         else if (startupConfig.mode == StartupConfig.Mode.ReturnFromNavalGame)
         {
-            Debug.Log("LocalizedCamera mode startup");
+            Debug.Log("ReturnFromNavalGame mode startup");
 
             RestoreFromReturnFromNavalGame();
             HexMapShower.Instance.Refresh();
@@ -130,10 +129,17 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public void PrepareReturnFromNavalGame()
     {
-        startupConfig.mode = StartupConfig.Mode.ReturnFromNavalGame;
         var pos = PlaneCameraController.Instance.transform.position;
-        startupConfig.cameraPosXY = new Vector2(pos.x, pos.y);
-        startupConfig.cameraZoom = PlaneCameraController.Instance.cam.orthographicSize;
+
+        startupConfig = new()
+        {
+            mode = StartupConfig.Mode.ReturnFromNavalGame,
+            cameraPosXY = new Vector2(pos.x, pos.y),
+            cameraZoom = PlaneCameraController.Instance.cam.orthographicSize
+        };
+        // startupConfig.mode = StartupConfig.Mode.ReturnFromNavalGame;
+        // startupConfig.cameraPosXY = new Vector2(pos.x, pos.y);
+        // startupConfig.cameraZoom = PlaneCameraController.Instance.cam.orthographicSize;
     }
 
     public void RestoreFromReturnFromNavalGame()
@@ -141,6 +147,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         var trans = PlaneCameraController.Instance.transform;
         trans.position = new Vector3(startupConfig.cameraPosXY.x, startupConfig.cameraPosXY.y, trans.position.z);
         PlaneCameraController.Instance.cam.orthographicSize = startupConfig.cameraZoom;
+
+        if (startupConfig.syncShipLogs != null)
+        {
+            StrategicGameState.Instance.UpdatePartialShipLogs(startupConfig.syncShipLogs);
+        }
 
         StrategicGameState.Instance.ResetAndRegisterAll();
     }

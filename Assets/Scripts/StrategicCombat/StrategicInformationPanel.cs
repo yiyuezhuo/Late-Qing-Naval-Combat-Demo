@@ -20,8 +20,6 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
             {
                 StrategicGameManager.Instance.PrepareReturnFromNavalGame();
 
-                // GameManager.startupConfig.mode = GameManager.StartupConfig.Mode.LocalizedCameraOnly;
-                // GameManager.startupConfig.cameraLocation = new LatLon(cell.latitude, cell.longitude);
                 GameManager.startupConfig = new()
                 {
                     mode = GameManager.StartupConfig.Mode.LocalizedCameraOnly,
@@ -35,22 +33,31 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
         {
             Debug.Log("ResolveNavalCombatButton clicked");
             TryGotoTacticalNavalCombat(StrategicGameManager.Instance.lastSelectedCell);
-            // var builder = new LocalNavalCombatBuilder();
-            // builder.TryToSwitch(StrategicGameManager.Instance.lastSelectedCell);
-            // builder.TryGotoTacticalNavalCombat(StrategicGameManager.Instance.lastSelectedCell);
         };
 
         root.Q<Button>("EditMoveButton").clicked += () =>
         {
             StrategicGameManager.Instance.StartToEditMove();
         };
+
+        var strategicGroupNameLabel = root.Q<Label>("StrategicGroupNameLabel");
+        Utils.RegisterLinkTag(strategicGroupNameLabel, new()
+        {
+            {"nameLink", () =>{
+                var group = StrategicGameManager.Instance.lastSelectedStrategicGroup;
+                var idx = StrategicGameState.Instance.strategicGroups.IndexOf(group);
+                if(group!=null && idx != -1)
+                {
+                    StrategicGroupEditor.Instance.Show();
+                    BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
+                }
+            }}
+        });
     }
 
     public void TryGotoTacticalNavalCombat(Cell cell)
     {
         var builder = new LocalNavalCombatBuilder();
-        // builder.TryToSwitch(StrategicGameManager.Instance.lastSelectedCell);
-        // builder.TryGotoTacticalNavalCombat(StrategicGameManager.Instance.lastSelectedCell);
 
         var fullState = builder.BuildFullState(cell);
         if (fullState != null)

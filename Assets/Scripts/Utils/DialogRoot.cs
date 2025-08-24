@@ -309,68 +309,21 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         });
     }
 
-    public void PopupLeaderSelectorDialogForSpecifyForShipLog()
-    {
-        // var tempDialog = new TempDialog()
-        // {
-        //     root = root,
-        //     template = leaderSelectorDocument,
-        //     templateDataSource = SuperGameState.Instance // GameManager.Instance
-        // };
+    // public void PopupLeaderSelectorDialogForSpecifyForShipLog()
+    // {
+    //     PopupLeaderSelectorDialogForCallback(leader =>
+    //     {
+    //         var selectedShipLog = GameManager.Instance.selectedShipLog;
 
-        // tempDialog.onConfirmed += (sender, el) =>
-        // {
-        //     Debug.Log("tempDialog.onConfirmed");
-
-        //     var leadersListView = el.Q<ListView>("LeadersListView");
-        //     var leader = leadersListView.selectedItem as Leader;
-        //     var selectedShipLog = GameManager.Instance.selectedShipLog;
-
-        //     if (leader != null && selectedShipLog != null)
-        //     {
-        //         selectedShipLog.leaderObjectId = leader.objectId;
-        //     }
-        // };
-
-        // tempDialog.Popup();
-
-        PopupLeaderSelectorDialogForCallback(leader =>
-        {
-            var selectedShipLog = GameManager.Instance.selectedShipLog;
-
-            if (leader != null && selectedShipLog != null)
-            {
-                selectedShipLog.leaderObjectId = leader.objectId;
-            }
-        });
-    }
+    //         if (leader != null && selectedShipLog != null)
+    //         {
+    //             selectedShipLog.leaderObjectId = leader.objectId;
+    //         }
+    //     });
+    // }
 
     public void PopupLeaderSelectorDialogForNamedShip()
     {
-        // var tempDialog = new TempDialog()
-        // {
-        //     root = root,
-        //     template = leaderSelectorDocument,
-        //     templateDataSource = SuperGameState.Instance // GameManager.Instance
-        // };
-
-        // tempDialog.onConfirmed += (sender, el) =>
-        // {
-        //     Debug.Log("tempDialog.onConfirmed");
-
-        //     var leadersListView = el.Q<ListView>("LeadersListView");
-        //     var leader = leadersListView.selectedItem as Leader;
-        //     // var selectedNamedShip = GameManager.Instance.selectedNamedShip;
-        //     var selectedNamedShip = NamedShipEditor.Instance.selectedNamedShip;
-
-        //     if (leader != null && selectedNamedShip != null)
-        //     {
-        //         selectedNamedShip.defaultLeaderObjectId = leader.objectId;
-        //     }
-        // };
-
-        // tempDialog.Popup();
-
         PopupLeaderSelectorDialogForCallback(leader =>
         {
             var selectedNamedShip = NamedShipEditor.Instance.selectedNamedShip;

@@ -6150,7 +6150,7 @@
     <objectId>f2235a73-0f6e-4c25-97e3-bd3cccf2fa5d</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
+    <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
    </strategicGroupReference>
   </ShipLog>
   <ShipLog>
@@ -10261,7 +10261,7 @@
     <objectId>8ae57099-bd4e-46f8-b742-672a78619220</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
+    <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
    </strategicGroupReference>
   </ShipLog>
   <ShipLog>
@@ -10390,7 +10390,7 @@
     <objectId>cd66fcdb-09b3-40b8-9fa5-9f0023b210df</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
+    <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
    </strategicGroupReference>
   </ShipLog>
   <ShipLog>
@@ -10519,7 +10519,7 @@
     <objectId>33b69972-48cb-4a9f-ac77-26df34b09ede</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
+    <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
    </strategicGroupReference>
   </ShipLog>
   <ShipLog>
@@ -10648,7 +10648,7 @@
     <objectId>8336a5f0-8693-4495-83bc-0b8ee587c0cc</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
+    <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
    </strategicGroupReference>
   </ShipLog>
   <ShipLog>
@@ -10777,7 +10777,7 @@
     <objectId>afcc0159-dce7-4128-b7fa-78af29108cef</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
+    <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
    </strategicGroupReference>
   </ShipLog>
  </shipLogs>
@@ -12144,7 +12144,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <type>Fleet</type>
    <size>Regiment</size>
    <country>Japan</country>
-   <deployState>NotDeployed</deployState>
+   <deployState>Combined</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference />
@@ -12165,8 +12165,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>94ec5c84-7729-4ad1-89ef-e7e7d8dac32f</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
-   <xProp>-1</xProp>
-   <yProp>-1</yProp>
+   <xProp>30</xProp>
+   <yProp>25</yProp>
    <objectId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</objectId>
    <strategicGroupReference>
     <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
@@ -12180,7 +12180,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <type>Fleet</type>
    <size>Regiment</size>
    <country>Japan</country>
-   <deployState>NotDeployed</deployState>
+   <deployState>Combined</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference />
@@ -12201,8 +12201,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>8546e7a0-5d78-4188-9238-fcb709e443c5</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
-   <xProp>-1</xProp>
-   <yProp>-1</yProp>
+   <xProp>30</xProp>
+   <yProp>25</yProp>
    <objectId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</objectId>
    <strategicGroupReference>
     <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
@@ -12216,7 +12216,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <type>Fleet</type>
    <size>Regiment</size>
    <country>Japan</country>
-   <deployState>NotDeployed</deployState>
+   <deployState>Combined</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference />
@@ -12237,8 +12237,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>f23a08cc-7532-40ad-8593-0d977ecda4aa</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
-   <xProp>-1</xProp>
-   <yProp>-1</yProp>
+   <xProp>30</xProp>
+   <yProp>25</yProp>
    <objectId>6374bb0b-b59f-454f-a223-eb4e414b78b7</objectId>
    <strategicGroupReference>
     <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
@@ -12410,6 +12410,27 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
     <StrategicGroupMemberReference>
      <referenceId>2e660a27-1cd9-4746-96ec-4aa6b1ffc494</referenceId>
     </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <xProp>22</xProp>
+   <yProp>28</yProp>
+   <objectId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</objectId>
+   <strategicGroupReference>
+    <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Beiyang Fleet Torpedo Boats</english>
+    <chineseSimplified>北洋水师鱼雷艇队</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Regiment</size>
+   <country>China</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined>
     <StrategicGroupMemberReference>
      <referenceId>fd1e0847-33dd-4269-95fd-0cc4c0e070bd</referenceId>
     </StrategicGroupMemberReference>
@@ -12431,7 +12452,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    </subordinatesCombined>
    <xProp>22</xProp>
    <yProp>28</yProp>
-   <objectId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</objectId>
+   <objectId>88450a80-6c3f-4450-b4d1-95a10190dbab</objectId>
    <strategicGroupReference>
     <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
    </strategicGroupReference>
@@ -12457,6 +12478,9 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <xProp>22</xProp>

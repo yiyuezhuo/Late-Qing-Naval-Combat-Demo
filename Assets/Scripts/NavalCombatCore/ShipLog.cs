@@ -231,7 +231,7 @@ namespace NavalCombatCore
         [XmlAttribute]
         public string damageEffectId;
 
-        public override string Summary() => $"{time}: Torpedo Hit: {GetTorpedo().sourceName} DP:{damagePoint} DE:{damageEffectId}";
+        public override string Summary() => $"{time}: Torpedo Hit: {GetTorpedo().sourceName.english} DP:{damagePoint} DE:{damageEffectId}";
     }
 
     // public class ShipLogDamageEffectBegin : ShipLogLog
@@ -322,10 +322,11 @@ namespace NavalCombatCore
         public string parentObjectId { get; set; } // OOB perspective
         // Get Parent / Root Parent method is defined in IShipGroupMember
 
-        public string leaderObjectId;
+        // public string leaderObjectId;
         public Leader leader
         {
-            get => EntityManager.Instance.Get<Leader>(leaderObjectId);
+            // get => EntityManager.Instance.Get<Leader>(leaderObjectId);
+            get => namedShip.defaultLeaderReference.Get();
         }
 
         public bool emergencyRudder;

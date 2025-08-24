@@ -169,6 +169,7 @@ public class TopTabs : SingletonDocument<TopTabs>
         root.Q<Button>("ReturnToStrategicGameButton").clicked += () =>
         {
             // StrategicGameManager.startupConfig.mode = StrategicGameManager.StartupConfig.Mode.Empty;
+            StrategicGameManager.startupConfig.syncShipLogs = NavalGameState.Instance.shipLogs;
             SceneManager.LoadScene("Strategic Game");
         };
     }

@@ -78,6 +78,26 @@ namespace StrategicCombatCore
         [CreateProperty]
         public bool isXYEditable => deployState == DeployState.Independent;
 
+        [CreateProperty]
+        public StrategicGroupReference strategicGroupReferenceProp => strategicGroupReference;
+
+        [CreateProperty]
+        public string nameLink
+        {
+            get
+            {
+                var rawName = name.GetMergedName();
+                if (rawName == null)
+                    rawName = "_";
+                return $"<link=\"nameLink\"><color=#40a0ff><u>{rawName}</u></color></link>";
+            }
+        }
+    }
+
+    public partial class StrategicGroupReference
+    {
+        [CreateProperty]
+        public string name => Get()?.name?.mergedName ?? "[Not Set or Invalid]";
     }
 
     public partial class StrategicGroupMemberReference

@@ -8,7 +8,7 @@
         </ui:Label>
         <ui:VisualElement>
             <ui:VisualElement data-source-path="lastSelectedCell" style="flex-shrink: 0; border-bottom-width: 1px; border-top-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-                <ui:Label text="Hex Coordinate &amp; Terrain">
+                <ui:Label text="Hex Coordinate &amp; Terrain" style="white-space: normal;">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="brief" binding-mode="ToTarget" />
                     </Bindings>
@@ -52,9 +52,9 @@
         </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1;">
             <ui:VisualElement data-source-path="lastSelectedStrategicGroup" style="flex-shrink: 0; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-                <ui:Label text="Group Name" style="flex-wrap: wrap;">
+                <ui:Label text="Group Name___________________________________________" name="StrategicGroupNameLabel" style="white-space: normal;">
                     <Bindings>
-                        <ui:DataBinding property="text" data-source-path="name.mergedName" binding-mode="ToTarget" />
+                        <ui:DataBinding property="text" data-source-path="nameLink" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:Label>
                 <ui:Instance template="StrategicUnitIcon" />

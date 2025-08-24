@@ -24,6 +24,8 @@ namespace StrategicCombatCore
                 return 0;
             if (obj is StrategicGroup group)
                 return group.GetCombinedSubUnitSize();
+            if(obj is ShipLog shipLog && shipLog.mapState == MapState.Destroyed)
+                return 0;
             return 1; // Otherwise (Subunit), translate to 1. 
         }
     }

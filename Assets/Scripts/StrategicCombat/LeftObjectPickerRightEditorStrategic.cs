@@ -11,7 +11,7 @@ using StrategicCombatCore;
 public abstract class LeftObjectPickerRightEditorStrategic<ST, ET> : HideableDocument<ST> where ET : class, IObjectIdLabeled, new() where ST : MonoBehaviour
 {
     public string selectedId;
-    ListView objectListView;
+    public ListView objectListView;
 
     [CreateProperty]
     public ET selectedObject { get => EntityManager.Instance.Get<ET>(selectedId); }

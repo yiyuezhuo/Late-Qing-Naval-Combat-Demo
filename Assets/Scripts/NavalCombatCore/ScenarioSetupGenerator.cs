@@ -17,7 +17,10 @@ namespace NavalCombatCore
             var gameState = NavalGameState.Instance;
             var topShipGroups = gameState.shipGroups.Where(g => g.parentObjectId == null).ToList();
 
-            if (topShipGroups.Count == 1)
+            if (topShipGroups.Count == 0)
+            {
+            }
+            else if (topShipGroups.Count == 1)
             {
                 SetupShipGroup(topShipGroups[0], ref anchor, angleDeg);
             }
@@ -82,7 +85,7 @@ namespace NavalCombatCore
         public List<ShipLog> CollectDirectSubShips(ShipGroup group)
         {
             return group.childrenObjectIds.Select(id => EntityManager.Instance.Get<ShipLog>(id))
-                .Where(shipLog => shipLog != null)
+                .Where(shipLog => shipLog != null && shipLog.mapState != MapState.Destroyed)
                 .ToList();
         }
 

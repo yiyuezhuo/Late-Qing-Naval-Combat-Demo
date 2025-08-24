@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Xml.Serialization;
-using Acornima.Ast;
 using CoreUtils;
-
+using NavalCombatCore;
 
 namespace StrategicCombatCore
 {
@@ -206,6 +205,20 @@ namespace StrategicCombatCore
                         yield return group;
                 }
             }
+        }
+
+        public void UpdatePartialShipLogs(List<ShipLog> otherShipLogs)
+        {
+            foreach (var otherShipLog in otherShipLogs)
+            {
+                var idx = shipLogs.FindIndex(shipLog => shipLog.objectId == otherShipLog.objectId);
+                if (idx != -1)
+                {
+                    shipLogs[idx] = otherShipLog;
+                }
+            }
+
+            // ResetAndRegisterAll();
         }
 
         public override void ResetAndRegisterAll()

@@ -17,7 +17,7 @@
                         <ui:DataBinding property="text" data-source-path="oobParentDesc" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:Label>
-                <ui:Label text="Ship&apos;s captain" name="CaptainLabel" style="flex-wrap: wrap; white-space: normal;">
+                <ui:Label text="Ship&apos;s captain" name="CaptainLabel" style="white-space: normal;">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="captainDescLink" binding-mode="ToTarget" />
                     </Bindings>

@@ -753,7 +753,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     //     }
     // }
 
-    public LanguageType iconLanuageType;
+    // public LanguageType iconLanuageType;
     // public int selected
 
     public string selectedMountStatusRecordObjectId;

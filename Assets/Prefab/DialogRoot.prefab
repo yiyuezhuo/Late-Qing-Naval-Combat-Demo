@@ -49,9 +49,13 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: dec2f290e92604746b5586a8e3e3c857, type: 3}
   m_SortingOrder: 10
+  m_Position: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
   m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
 --- !u!114 &5051051528976626265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,3 +80,4 @@ MonoBehaviour:
   locationLabelDialogDocument: {fileID: 9197481963319205126, guid: d41e54b604e35b445bdad39d061b541b, type: 3}
   subordinatePickerDialogDocument: {fileID: 9197481963319205126, guid: e420e095d56a2e8459a8ffea946107a6, type: 3}
   strategicGroupPickerDialogDocument: {fileID: 9197481963319205126, guid: d8ca426e4e204724686473d7a2501aa9, type: 3}
+  gamePreferenceDialogDocument: {fileID: 9197481963319205126, guid: d36e21b721ef0904fa96150894be669f, type: 3}

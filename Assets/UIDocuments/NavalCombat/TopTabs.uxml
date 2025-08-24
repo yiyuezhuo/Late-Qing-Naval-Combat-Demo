@@ -29,14 +29,8 @@
                     <ui:Button text="Return to Strategic Game" name="ReturnToStrategicGameButton" />
                 </ui:VisualElement>
             </ui:Tab>
-            <ui:Tab label="View">
+            <ui:Tab label="Tools">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
-                    <ui:Label text="Unit Label" />
-                    <ui:EnumField value="Center" type="CoreUtils.LanguageType, Assembly-CSharp" style="min-width: 100px;">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="iconLanuageType" binding-mode="TwoWay" />
-                        </Bindings>
-                    </ui:EnumField>
                     <ui:Button text="Distance Measure (D)" name="DistanceMeasureButton" />
                     <ui:Button text="LOS Measure (S)" name="MaskMeasureButton" />
                 </ui:VisualElement>
@@ -55,75 +49,15 @@
                     <ui:Button text="Streaming Asset Reference" name="StreamingAssetReferenceDialogButton" />
                 </ui:VisualElement>
             </ui:Tab>
-            <ui:Tab label="Settings">
-                <ui:TabView>
-                    <ui:Tab label="Game Preference">
-                        <ui:VisualElement name="GamePreferenceRoot" data-source-type="GamePreference, Assembly-CSharp" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
-                            <ui:EnumField label="Fire Line Display" value="Center" type="GamePreference+FiringLineDisplayMode, Assembly-CSharp">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="firingLineDisplayMode" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:EnumField>
-                            <ui:Label text="Pulse Legnth (seconds)" />
-                            <ui:FloatField>
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="pulseLengthSeconds" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:FloatField>
-                            <ui:Label text="Simulate Rate Ratio" />
-                            <ui:FloatField>
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="simulationRateRaio" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:FloatField>
-                        </ui:VisualElement>
-                    </ui:Tab>
-                    <ui:Tab label="Core Parameter">
-                        <ui:VisualElement data-source-type="NavalCombatCore.CoreParameter, Assembly-CSharp" name="CoreParameterRoot" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
-                            <ui:Label text="Land Collision" />
-                            <ui:Toggle>
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="checkLandCollision" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:Toggle>
-                            <ui:Label text="Ship Collision" />
-                            <ui:Toggle>
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="checkShipCollision" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:Toggle>
-                            <ui:Label text="Friendly Collsion" />
-                            <ui:Toggle>
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="checkFriendlyShipCollision" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:Toggle>
-                            <ui:Label text="Attack Coef" />
-                            <ui:FloatField>
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="attackCoef" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:FloatField>
-                            <ui:Label text="Def Coef" />
-                            <ui:FloatField>
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="defenceCoef" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:FloatField>
-                            <ui:Label text="Global Hit Coef" />
-                            <ui:FloatField>
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="globalHitCoef" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:FloatField>
-                        </ui:VisualElement>
-                    </ui:Tab>
-                </ui:TabView>
-            </ui:Tab>
             <ui:Tab label="Help">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                     <ui:Button text="Help" name="HelpButton" />
                     <ui:Button text="Open Source Repo &amp; Readme" name="OpenOpenSourceRepoButton" />
+                </ui:VisualElement>
+            </ui:Tab>
+            <ui:Tab label="Settings">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:Button text="Game Preference" name="GamePreferenceButton" />
                 </ui:VisualElement>
             </ui:Tab>
         </ui:TabView>

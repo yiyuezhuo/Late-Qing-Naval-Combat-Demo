@@ -353,7 +353,8 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         {
             var label = labels[i];
             var text = texts[i];
-            text.text = label.name.english;
+            // text.text = label.name.english;
+            text.text = label.name.GetNameFromType(GamePreference.Instance.shortLabelLanguageType);
             // var dx = 0.5f;
             // var dy = label.x % 2 == 0 ? 0.5f : 1f;
             // text.transform.localPosition = new Vector3((label.x + dx) / width - 0.5f, (label.y + dy) / height - 0.5f, 0);

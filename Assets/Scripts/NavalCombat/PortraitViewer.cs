@@ -140,7 +140,8 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         MaintainTextDirectionSize();
         MaintainArrowRotation();
 
-        text.text = $"{model.GetAcronym()} {model.GetName().GetNameFromType(GameManager.Instance.iconLanuageType)}";
+        // text.text = $"{model.GetAcronym()} {model.GetName().GetNameFromType(GameManager.Instance.iconLanuageType)}";
+        text.text = $"{model.GetAcronym()} {model.GetName().GetNameFromType(GamePreference.Instance.shortLabelLanguageType)}";
 
         MaintainFlagRotationSize();
 

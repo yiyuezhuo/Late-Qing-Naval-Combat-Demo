@@ -10787,6 +10787,7 @@
    <y>32</y>
    <name>
     <english>Tien Tsin</english>
+    <japanese>天津</japanese>
     <chineseSimplified>天津</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10795,6 +10796,7 @@
    <y>33</y>
    <name>
     <english>PeKing</english>
+    <japanese>北平</japanese>
     <chineseSimplified>北京</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10803,6 +10805,7 @@
    <y>30</y>
    <name>
     <english>Port Arthur</english>
+    <japanese>旅順</japanese>
     <chineseSimplified>旅顺</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10811,6 +10814,7 @@
    <y>28</y>
    <name>
     <english>Wei Hai Wei</english>
+    <japanese>威海衛</japanese>
     <chineseSimplified>威海卫</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10883,6 +10887,7 @@
    <y>28</y>
    <name>
     <english>Soul</english>
+    <japanese>京城</japanese>
     <chineseSimplified>汉城</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10931,6 +10936,7 @@
    <y>34</y>
    <name>
     <english>Kin tschou</english>
+    <japanese>錦州</japanese>
     <chineseSimplified>锦州</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10963,6 +10969,7 @@
    <y>36</y>
    <name>
     <english>Mukden</english>
+    <japanese>奉天</japanese>
     <chineseSimplified>奉天</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10971,6 +10978,7 @@
    <y>35</y>
    <name>
     <english>Kalgan</english>
+    <japanese>張家界</japanese>
     <chineseSimplified>张家界</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -11043,6 +11051,7 @@
    <y>31</y>
    <name>
     <english>Anju</english>
+    <japanese>安州</japanese>
     <chineseSimplified>安州</chineseSimplified>
    </name>
   </StrategicLocationLabel>

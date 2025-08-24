@@ -20,20 +20,25 @@ namespace CoreUtils
         public string japanese;
         public string chineseSimplified;
         public string chineseTraditional;
-        public string GetMergedName()
+        public static LanguageType mergeMode = LanguageType.All;
+        public string GetMergedNamePure()
         {
             var names = new List<string>() { english, japanese, chineseSimplified, chineseTraditional };
             return string.Join("/", names.Where(n => n != null && n.Length > 0));
+        }
+        public string GetMergedName()
+        {
+            return GetNameFromType(mergeMode);
         }
         public string GetNameFromType(LanguageType type)
         {
             return type switch
             {
                 LanguageType.English => english,
-                LanguageType.Japanese => japanese,
-                LanguageType.ChineseSimplified => chineseSimplified,
-                LanguageType.ChineseTraditional => chineseTraditional,
-                LanguageType.All => GetMergedName(),
+                LanguageType.Japanese => japanese ?? english,
+                LanguageType.ChineseSimplified => chineseSimplified ?? english,
+                LanguageType.ChineseTraditional => chineseTraditional ?? english,
+                LanguageType.All => GetMergedNamePure(),
                 _ => english
             };
         }

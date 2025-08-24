@@ -93,6 +93,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset locationLabelDialogDocument;
     public VisualTreeAsset subordinatePickerDialogDocument;
     public VisualTreeAsset strategicGroupPickerDialogDocument;
+    public VisualTreeAsset gamePreferenceDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -104,6 +105,18 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupGamePreferenceDialog()
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = gamePreferenceDialogDocument,
+            templateDataSource = GamePreference.Instance,
+        };
+
+        tempDialog.Popup();
     }
 
     public void PopupStrategicGroupPickerDialog(Action<StrategicGroup> callback)

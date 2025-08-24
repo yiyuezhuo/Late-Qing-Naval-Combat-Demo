@@ -81,6 +81,11 @@
                     <ui:Button text="Create Default Ship Log" name="CreateDefaultShipLogButton" />
                 </ui:VisualElement>
             </ui:Tab>
+            <ui:Tab label="Settings">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:Button text="Game Preference" name="GamePreferenceButton" />
+                </ui:VisualElement>
+            </ui:Tab>
         </ui:TabView>
     </ui:VisualElement>
 </ui:UXML>

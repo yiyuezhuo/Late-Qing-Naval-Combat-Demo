@@ -78,11 +78,11 @@ public class TopTabs : SingletonDocument<TopTabs>
         var goToMainMenuButton = root.Q<Button>("GoToMainMenuButton");
         goToMainMenuButton.clicked += () => SceneManager.LoadScene("Main Menu");
 
-        var gamePreferenceRoot = root.Q<VisualElement>("GamePreferenceRoot");
-        gamePreferenceRoot.dataSource = GamePreference.Instance;
+        // var gamePreferenceRoot = root.Q<VisualElement>("GamePreferenceRoot");
+        // gamePreferenceRoot.dataSource = GamePreference.Instance;
 
-        var coreParameterRoot = root.Q<VisualElement>("CoreParameterRoot");
-        coreParameterRoot.dataSource = CoreParameter.Instance;
+        // var coreParameterRoot = root.Q<VisualElement>("CoreParameterRoot");
+        // coreParameterRoot.dataSource = CoreParameter.Instance;
 
         var victoryStatusButton = root.Q<Button>("VictoryStatusButton");
         victoryStatusButton.clicked += DialogRoot.Instance.PopupVictoryStatusDialog;
@@ -172,6 +172,8 @@ public class TopTabs : SingletonDocument<TopTabs>
             StrategicGameManager.startupConfig.syncShipLogs = NavalGameState.Instance.shipLogs;
             SceneManager.LoadScene("Strategic Game");
         };
+
+        root.Q<Button>("GamePreferenceButton").clicked += DialogRoot.Instance.PopupGamePreferenceDialog;
     }
 
     void OnSaveButtonClicked()

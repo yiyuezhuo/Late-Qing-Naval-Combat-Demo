@@ -1,0 +1,94 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="GamePreference, Assembly-CSharp" class="panel-dialog" style="height: auto;">
+        <ui:Label text="Game Preference" class="title" />
+        <ui:TabView>
+            <ui:Tab label="View">
+                <ui:VisualElement style="flex-grow: 1;">
+                    <ui:EnumField label="Firing Line Display" value="Center" type="GamePreference+FiringLineDisplayMode, Assembly-CSharp">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="firingLineDisplayMode" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
+                    <ui:FloatField label="Pulse Length (Sec)">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="pulseLengthSeconds" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField label="Simulation Rate Raio">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="simulationRateRaio" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:EnumField label="Short Label Language" value="Center" type="CoreUtils.LanguageType, Assembly-CSharp">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="shortLabelLanguageType" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
+                    <ui:EnumField label="Long Label Language" value="Center" type="CoreUtils.LanguageType, Assembly-CSharp">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="longLabelLanguageType" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
+                </ui:VisualElement>
+            </ui:Tab>
+            <ui:Tab label="Naval Tactical Core">
+                <ui:VisualElement data-source-path="navalCombatCoreParameter" style="flex-grow: 1;">
+                    <ui:TabView>
+                        <ui:Tab label="Balance &amp; Performance">
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <ui:Toggle label="Land Collision">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="checkLandCollision" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:Toggle>
+                                <ui:Toggle label="Ship Collision">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="checkShipCollision" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:Toggle>
+                                <ui:Toggle label="Friendly Ship Collision">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="checkFriendlyShipCollision" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:Toggle>
+                                <ui:Slider label="Global Hit Coef" high-value="1" show-input-field="true">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="globalHitCoef" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:Slider>
+                            </ui:VisualElement>
+                        </ui:Tab>
+                        <ui:Tab label="AI">
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <ui:FloatField label="Angle Step (Deg)">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="angleStepDeg" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Attack Coef">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="attackCoef" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Defence Coef">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="defenceCoef" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Auto Torpedo Firing Range Relaxed Coef">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="automaticTorpedoFiringRangeRelaxedCoef" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:FloatField>
+                            </ui:VisualElement>
+                        </ui:Tab>
+                    </ui:TabView>
+                </ui:VisualElement>
+            </ui:Tab>
+            <ui:Tab label="Strategic Core">
+                <ui:VisualElement style="flex-grow: 1;" />
+            </ui:Tab>
+        </ui:TabView>
+        <ui:Button text="Confirm" name="ConfirmButton" />
+    </ui:VisualElement>
+</ui:UXML>

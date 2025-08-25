@@ -234,10 +234,15 @@ public static class Utils
         };
     }
 
-    public static IEnumerator SetSelectionForListView(ListView listView, int idx)
+    public static IEnumerator SetSelectionForListViewNextFrame(ListView listView, int idx)
     {
         // yield return new WaitForNextFrameUnit();
         yield return null;
+        SetSelectionForListView(listView, idx);
+    }
+
+    public static void SetSelectionForListView(ListView listView, int idx)
+    {
         listView.SetSelection(idx);
         listView.ScrollToItem(idx);
     }

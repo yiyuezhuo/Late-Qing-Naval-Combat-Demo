@@ -10823,6 +10823,7 @@
    <y>16</y>
    <name>
     <english>Shang hai</english>
+    <japanese>上海</japanese>
     <chineseSimplified>上海</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10831,6 +10832,7 @@
    <y>15</y>
    <name>
     <english>Hang Tschou</english>
+    <japanese>杭州</japanese>
     <chineseSimplified>杭州</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10839,6 +10841,7 @@
    <y>8</y>
    <name>
     <english>Fu Tschou</english>
+    <japanese>福州</japanese>
     <chineseSimplified>福州</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10847,6 +10850,7 @@
    <y>6</y>
    <name>
     <english>Thai Pe</english>
+    <japanese>台北</japanese>
     <chineseSimplified>台北</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10855,6 +10859,7 @@
    <y>2</y>
    <name>
     <english>Hong Kong</english>
+    <japanese>香港</japanese>
     <chineseSimplified>香港</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10863,6 +10868,7 @@
    <y>14</y>
    <name>
     <english>Ning Po</english>
+    <japanese>寧波</japanese>
     <chineseSimplified>宁波</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10871,6 +10877,7 @@
    <y>18</y>
    <name>
     <english>Nan King</english>
+    <japanese>南京</japanese>
     <chineseSimplified>南京</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10879,6 +10886,7 @@
    <y>12</y>
    <name>
     <english>Nan Tschang</english>
+    <japanese>南昌</japanese>
     <chineseSimplified>南昌</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10896,6 +10904,7 @@
    <y>26</y>
    <name>
     <english>Tokyo</english>
+    <japanese>東京</japanese>
     <chineseSimplified>东京</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10904,6 +10913,7 @@
    <y>23</y>
    <name>
     <english>Kioto</english>
+    <japanese>京都</japanese>
     <chineseSimplified>京都</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10912,6 +10922,7 @@
    <y>27</y>
    <name>
     <english>Tsi Nan</english>
+    <japanese>済南</japanese>
     <chineseSimplified>济南</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10920,6 +10931,7 @@
    <y>24</y>
    <name>
     <english>Kai Fong</english>
+    <japanese>開封</japanese>
     <chineseSimplified>开封</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10928,6 +10940,7 @@
    <y>22</y>
    <name>
     <english>Siu tschou</english>
+    <japanese>徐州</japanese>
     <chineseSimplified>徐州</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10945,6 +10958,7 @@
    <y>39</y>
    <name>
     <english>Vladivostok</english>
+    <japanese>ウラジオストク</japanese>
     <chineseSimplified>海参崴</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10953,6 +10967,7 @@
    <y>23</y>
    <name>
     <english>Yellow Sea</english>
+    <japanese>黄海</japanese>
     <chineseSimplified>黄海</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10961,6 +10976,7 @@
    <y>23</y>
    <name>
     <english>Tsushima</english>
+    <japanese>対馬</japanese>
     <chineseSimplified>对马</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10987,6 +11003,7 @@
    <y>16</y>
    <name>
     <english>Wu Tschang</english>
+    <japanese>武昌</japanese>
     <chineseSimplified>武昌</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -10995,6 +11012,7 @@
    <y>12</y>
    <name>
     <english>Tschang Scha</english>
+    <japanese>長沙</japanese>
     <chineseSimplified>长沙</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -11003,6 +11021,7 @@
    <y>3</y>
    <name>
     <english>Canton</english>
+    <japanese>広州</japanese>
     <chineseSimplified>广州</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -11011,6 +11030,7 @@
    <y>8</y>
    <name>
     <english>Okinawa</english>
+    <japanese>沖縄</japanese>
     <chineseSimplified>冲绳</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -11019,6 +11039,7 @@
    <y>11</y>
    <name>
     <english>Amami Oshima</english>
+    <japanese>奄美大島</japanese>
     <chineseSimplified>奄美大岛</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -11027,6 +11048,7 @@
    <y>20</y>
    <name>
     <english>Quelpart</english>
+    <japanese>済州島</japanese>
     <chineseSimplified>济州岛</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -11035,6 +11057,7 @@
    <y>19</y>
    <name>
     <english>Nagasaki</english>
+    <japanese>長崎</japanese>
     <chineseSimplified>长崎</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -11043,6 +11066,7 @@
    <y>37</y>
    <name>
     <english>Hakodate</english>
+    <japanese>函館</japanese>
     <chineseSimplified>函馆</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -11060,6 +11084,7 @@
    <y>23</y>
    <name>
     <english>Fu-san-po</english>
+    <japanese>釜山</japanese>
     <chineseSimplified>釜山</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -11068,6 +11093,7 @@
    <y>22</y>
    <name>
     <english>Shikoku</english>
+    <japanese>四国</japanese>
     <chineseSimplified>四国</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -11113,6 +11139,7 @@
    <y>23</y>
    <name>
     <english>Hiroshima</english>
+    <japanese>広島</japanese>
     <chineseSimplified>广岛</chineseSimplified>
    </name>
   </StrategicLocationLabel>
@@ -11425,7 +11452,9 @@
    </name>
    <stregnth>200</stregnth>
    <objectId>ab7db3ab-51ce-4641-9236-0ac311edce20</objectId>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
+   </strategicGroupReference>
   </LandUnit>
   <LandUnit>
    <name>
@@ -12291,8 +12320,50 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
   </StrategicGroup>
   <StrategicGroup>
    <name>
+    <english>11th Inf Regt</english>
+    <japanese>第十一歩兵連隊</japanese>
+    <chineseSimplified>第十一步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <xProp>31</xProp>
+   <yProp>28</yProp>
+   <objectId>5a7f6397-7e25-45b6-8423-98b3e22e815a</objectId>
+   <strategicGroupReference>
+    <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>21th Inf Regt</english>
+    <japanese>第二十一歩兵連隊</japanese>
+    <chineseSimplified>第21步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <xProp>31</xProp>
+   <yProp>28</yProp>
+   <objectId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</objectId>
+   <strategicGroupReference>
+    <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
     <english>9th Combined Bridge</english>
-    <japanese>混成旅団</japanese>
+    <japanese>第九混成旅団</japanese>
     <chineseSimplified>第九混成旅团</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -12302,10 +12373,86 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <independentX>31</independentX>
    <independentY>28</independentY>
    <leaderReference />
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>5a7f6397-7e25-45b6-8423-98b3e22e815a</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <xProp>31</xProp>
    <yProp>28</yProp>
    <objectId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</objectId>
+   <strategicGroupReference>
+    <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>10th Bde</english>
+    <japanese>第十歩兵旅団</japanese>
+    <chineseSimplified>第十步兵旅团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Bridge</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>420f4cce-0a91-432d-9df6-a79bf52ce8d5</objectId>
+   <strategicGroupReference />
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>5th Div</english>
+    <japanese>第五師団</japanese>
+    <chineseSimplified>第五师团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Division</size>
+   <country>Japan</country>
+   <deployState>Independent</deployState>
+   <independentX>42</independentX>
+   <independentY>23</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</objectId>
+   <strategicGroupReference>
+    <referenceId>2895a7b5-5422-45c0-a01b-a516c966f9c1</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>1st Corp</english>
+    <japanese>第一軍</japanese>
+    <chineseSimplified>第一军</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Corp</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>2895a7b5-5422-45c0-a01b-a516c966f9c1</objectId>
    <strategicGroupReference>
     <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
    </strategicGroupReference>
@@ -12330,7 +12477,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
+     <referenceId>2895a7b5-5422-45c0-a01b-a516c966f9c1</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <xProp>42</xProp>
@@ -12552,7 +12699,12 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <independentX>31</independentX>
    <independentY>27</independentY>
    <leaderReference />
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>ab7db3ab-51ce-4641-9236-0ac311edce20</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference />
+   </subordinatesCombined>
    <xProp>31</xProp>
    <yProp>27</yProp>
    <objectId>490423ba-377f-498f-afce-5f90463901d4</objectId>
@@ -15057,6 +15209,9 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
     <x>42</x>
     <y>23</y>
     <strategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
+     </StrategicGroupReference>
      <StrategicGroupReference>
       <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
      </StrategicGroupReference>

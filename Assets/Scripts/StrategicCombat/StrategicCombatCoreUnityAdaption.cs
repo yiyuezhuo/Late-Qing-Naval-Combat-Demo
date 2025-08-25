@@ -110,15 +110,20 @@ namespace StrategicCombatCore
                 var obj = Get();
                 if (obj == null)
                     return "[Undefined or Invalid]";
+                // TODO: Move casting to interface method
                 if (obj is ShipLog shipLog)
                 {
-                    return shipLog?.namedShip?.name?.mergedName;
+                    return shipLog?.namedShip?.name?.mergedName ?? "[Undefined or Invalid ShipLog]";
                 }
                 if (obj is StrategicGroup group)
                 {
-                    return group?.name?.mergedName;
+                    return group?.name?.mergedName ?? "[Undefined or Invalid StrategicGroup]";
                 }
-                return "[Undefined or Invalid]";
+                if (obj is LandUnit landUnit)
+                {
+                    return landUnit?.name?.mergedName ?? "[Undefined or Invalid LandUnit]";
+                }
+                return "[Undefined or Invalid Unknown Type]";
             }
         }
 
@@ -190,17 +195,23 @@ namespace StrategicCombatCore
                 var obj = Get();
                 if (obj == null)
                     return "";
+                // TODO: Move casting to interface method
                 if (obj is ShipLog shipLog)
                 {
                     var tons = shipLog?.shipClass?.displacementTons;
                     var type = shipLog?.shipClass?.type;
                     var crews = shipLog?.shipClass?.complementMen;
                     var className = shipLog?.shipClass?.name.mergedName;
+                    
                     return $"{type}, {tons} tons, {crews} men, (class: {className})";
                 }
                 if (obj is StrategicGroup group)
                 {
                     return $"{group.type}, {group.combinedSubUnitSize} sub units";
+                }
+                if (obj is LandUnit landUnit)
+                {
+                    return $"{landUnit.stregnth} men";
                 }
                 return "";
             }
@@ -211,6 +222,16 @@ namespace StrategicCombatCore
         {
             get
             {
+                var obj = Get();
+                if (obj == null)
+                    return "";
+
+                if (obj is ShipLog shipLog)
+                {
+                    var maxSpeed = shipLog.GetMaxSpeedKnots();
+                    return $"{shipLog.mapState}, {shipLog.operationalState}, {maxSpeed} kts, DP: {shipLog.damagePoint} / {shipLog.shipClass.damagePoint}";
+                }
+
                 return "";
             }
         }

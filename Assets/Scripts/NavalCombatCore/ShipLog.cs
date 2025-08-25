@@ -242,7 +242,7 @@ namespace NavalCombatCore
         public string damageEffectId;
 
         // public override string Summary() => $"{time}: Torpedo Hit: {GetTorpedo().sourceName.english} DP:{damagePoint} DE:{damageEffectId}";
-        public override string SummaryContent() => $"Torpedo Hit: {GetTorpedo().sourceName.english} DP:{damagePoint} DE:{damageEffectId}";
+        public override string SummaryContent() => $"Torpedo Hit: {GetTorpedo()?.sourceName?.GetShortName()} DP:{damagePoint} DE:{damageEffectId}"; // TODO: Record LaunchedTorpedo in the strategic game?
     }
 
     public partial class ShipLog : UnitModule, IDF4Model, IShipGroupMember, IWTAObject, IExtrapolable, ICollider

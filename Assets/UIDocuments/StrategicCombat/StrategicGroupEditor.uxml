@@ -88,6 +88,12 @@
                                 <ui:Button text="Goto" name="GotoParentButton" />
                             </ui:VisualElement>
                             <ui:ListView name="SubordinatesCombinedListView" header-title="Subordinates (Combined)" show-add-remove-footer="true" show-foldout-header="true" binding-source-selection-mode="AutoAssign" data-source-path="subordinatesCombined" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" fixed-item-height="60" />
+                            <ui:Label text="Remark" />
+                            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:TextField>
                         </ui:VisualElement>
                     </ui:ScrollView>
                     <Bindings>

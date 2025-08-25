@@ -16,6 +16,7 @@ using UnityEngine.SceneManagement;
 using CoreUtils;
 using StrategicCombatCore;
 using NavalCombatCore;
+using System.Text.RegularExpressions;
 
 
 public enum StrategicMapEditMode
@@ -154,6 +155,27 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
 
         StrategicGameState.Instance.ResetAndRegisterAll();
+
+        // Other update
+        // TODO: Move to Core
+
+        // Reset independent but empty groups (generally caused by combat) in conflict hex deploy-state to combined. So they may be "rebuilt" in the location of higher command.
+        foreach (var cellGroupsGrouping in StrategicGameState.Instance.strategicGroups
+            .Where(g => g.deployState == StrategicGroup.DeployState.Independent)
+            .GroupBy(g => g.cell))
+        {
+            var sideGroupsGroupings = cellGroupsGrouping.GroupBy(g => g.side).ToList();
+            if (sideGroupsGroupings.Count >= 2)
+            {
+                foreach (var group in cellGroupsGrouping)
+                {
+                    if (group.GetCombinedSubUnitSize() == 0)
+                    {
+                        group.deployState = StrategicGroup.DeployState.Combined;
+                    }
+                }
+            }
+        }
     }
 
     IEnumerator OnScenTextLoaded(string initialScenText)

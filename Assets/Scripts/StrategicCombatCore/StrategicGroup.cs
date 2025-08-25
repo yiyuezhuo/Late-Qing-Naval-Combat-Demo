@@ -170,6 +170,8 @@ namespace StrategicCombatCore
 
         public void SetStrategicGroupReference(StrategicGroup group) => IStrategicGroupMemberReferenceable.SetStrategicGroupReference(this, group);
 
+        public string remark;
+
         public static Dictionary<StrategicUnitSize, string> sizeStrMap = new()
         {
             { StrategicUnitSize.Unspecified, "" },

@@ -904,4 +904,137 @@
   <traits />
   <objectId>e999703a-07c9-4cf4-8f59-2c3284fe6d3d</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Yamagata Aritomo</english>
+   <japanese>山縣有朋</japanese>
+   <chineseSimplified>山县有朋</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Yamagata_Aritomo.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>AboveAverage</landStrategic>
+  <landOperational>AboveAverage</landOperational>
+  <landTactical>AboveAverage</landTactical>
+  <traits />
+  <objectId>e1cf0e2b-7d5a-4b25-a89a-2ad1c22f7e20</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Katsura Tarō</english>
+   <japanese>桂太郎</japanese>
+   <chineseSimplified>桂太郎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Katsura Taro.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>d12ec66d-14e6-44eb-b261-968e64c32ca7</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ōshima Yoshimasa</english>
+   <japanese>大島義昌</japanese>
+   <chineseSimplified>大岛义昌</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Oshima_Yoshimasa.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>86a4739c-08c2-4c33-8e60-8a26b101535c</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nozu Michitsura</english>
+   <japanese>野津道貫</japanese>
+   <chineseSimplified>野津道贯</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Nozu Michitsura.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>294116ce-1fd4-41ef-a81e-d721e3864af9</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nishijima Sukeyoshi</english>
+   <japanese>西島助義</japanese>
+   <chineseSimplified>西岛助义</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Sukeyoshi Nishijima.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>6dfc4fa7-680b-4487-80e1-5de0ade8eb61</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ye Zhichao</english>
+   <japanese>葉志超</japanese>
+   <chineseSimplified>叶志超</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Ye Zhichao.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Average</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <objectId>db26b666-2166-41cd-9411-4d3d3f0e9f41</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Takeda Takehide</english>
+   <japanese>武田秀山</japanese>
+   <chineseSimplified>武田秀山</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Takehide Takeda.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>16a04cba-2db3-4388-abaf-ec73c3d258d1</objectId>
+ </Leader>
 </ArrayOfLeader>

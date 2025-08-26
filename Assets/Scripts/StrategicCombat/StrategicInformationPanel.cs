@@ -18,14 +18,38 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
 
             if (Utils.TryResolveCurrentValueForBinding(goToLocationAtTacticalModeButton, out Cell cell))
             {
-                StrategicGameManager.Instance.PrepareReturnFromNavalGame();
+                // StrategicGameManager.Instance.PrepareReturnFromNavalGame();
+
+                // GameManager.startupConfig = new()
+                // {
+                //     mode = GameManager.StartupConfig.Mode.LocalizedCameraOnly,
+                //     cameraLocation = new LatLon(cell.latitude, cell.longitude)
+                // };
+                // SceneManager.LoadScene("Naval Game");
 
                 GameManager.startupConfig = new()
                 {
-                    mode = GameManager.StartupConfig.Mode.LocalizedCameraOnly,
-                    cameraLocation = new LatLon(cell.latitude, cell.longitude)
+                    fullState = new()
+                    {
+                        streamingAssetReference = StreamingAssetReference.Instance, // Copy?
+                        navalGameState = new(),
+                        viewState = new()
+                        {
+                            xRotation = cell.latitude,
+                            yRotation = 360 - cell.longitude,
+                            orthographicSize = 20
+                        }
+                    },
+                    mode = GameManager.StartupConfig.Mode.FullState,
+                    scenarioSetupGenerator = new()
+                    {
+                        anchor = new LatLon(cell.latitude, cell.longitude)
+                    }
                 };
+
+                StrategicGameManager.Instance.PrepareReturnFromNavalGame();
                 SceneManager.LoadScene("Naval Game");
+
             }
         };
 

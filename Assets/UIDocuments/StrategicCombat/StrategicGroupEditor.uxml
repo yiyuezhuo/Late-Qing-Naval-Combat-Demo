@@ -68,7 +68,7 @@
                                     </ui:EnumField>
                                     <ui:EnumField label="Deploy State" value="Center" type="StrategicCombatCore.StrategicGroup+DeployState, Assembly-CSharp">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="deployState" binding-mode="TwoWay" />
+                                            <ui:DataBinding property="value" data-source-path="deployStateProp" binding-mode="TwoWay" />
                                         </Bindings>
                                     </ui:EnumField>
                                     <ui:IntegerField label="Y">

@@ -123,7 +123,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         public string builtinScenName = "Battle of Yalu River.scen.xml";
         public LatLon cameraLocation;
         // public bool requireAutoDeployAll = false;
-        public ScenarioSetupGenerator scenarioSetupGenerator;
+        public ScenarioDynamicSetupGenerator scenarioSetupGenerator;
     }
 
     public static StartupConfig startupConfig = new();

@@ -3,10 +3,11 @@ using CoreUtils;
 using Unity.Properties;
 using UnityEngine.UIElements;
 using UnityEngine;
-using Unity.VisualScripting;
 using NavalCombatCore;
 using UnityEngine.InputSystem.Utilities;
 using Unity.Collections;
+using System.Xml.Serialization;
+
 
 namespace StrategicCombatCore
 {
@@ -92,6 +93,15 @@ namespace StrategicCombatCore
                 return $"<link=\"nameLink\"><color=#40a0ff><u>{rawName}</u></color></link>";
             }
         }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public DeployState deployStateProp
+        {
+            get => deployState;
+            set => SetDeployState(value);
+        }
+
     }
 
     public partial class StrategicGroupReference

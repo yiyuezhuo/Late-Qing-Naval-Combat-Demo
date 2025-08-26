@@ -1,10 +1,8 @@
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
-using Unity.VisualScripting;
 
 namespace StrategicCombatCore
 {
@@ -92,7 +90,7 @@ namespace StrategicCombatCore
             Combined,
             Independent
         }
-        public DeployState deployState;
+        public DeployState deployState; // generally, deployState should be set with SetDeployState()
         public int independentX = -1;
         public int independentY = -1;
 
@@ -212,6 +210,40 @@ namespace StrategicCombatCore
                 cellInfo.y = y;
             }
             cellInfo.strategicGroupReferences.Add(new() { referenceId = objectId });
+        }
+
+        public void RemoveFromMap()
+        {
+            var hexInfoMap = StrategicGameState.Instance.hexInfoMap;
+
+            if (deployState == DeployState.Independent && x != -1 && y != -1 && hexInfoMap.TryGetValue((x, y), out var cellInfo))
+            {
+                cellInfo.strategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
+            }
+
+            independentX = -1;
+            independentY = -1;
+        }
+
+        public void SetDeployState(DeployState newState)
+        {
+            if (newState == DeployState.Independent)
+            {
+                var parentGroup = strategicGroupReference.Get();
+                if (parentGroup != null)
+                {
+                    DeployToXY(parentGroup.x, parentGroup.y);
+                }
+                else
+                {
+                    DeployToXY(0, 0);
+                }
+            }
+            else if (newState == DeployState.NotDeployed || newState == DeployState.Combined)
+            {
+                RemoveFromMap();
+                deployState = newState;
+            }
         }
 
         public int GetCombinedSubUnitSize()

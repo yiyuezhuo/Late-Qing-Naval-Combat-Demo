@@ -13846,7 +13846,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <Cell x="15" y="27" terrain="Field" country="General" longitude="118.181862" latitude="36.9218" groundControlPoint="false" roadsStr="4/2" riversStr="0" />
    <Cell x="15" y="28" terrain="Field" country="General" longitude="118.127327" latitude="37.4566841" groundControlPoint="false" riversStr="1/2/3/4" />
    <Cell x="15" y="29" terrain="Field" country="General" longitude="118.074059" latitude="37.9907875" groundControlPoint="false" riversStr="2" />
-   <Cell x="15" y="30" terrain="Clear" country="General" longitude="118.023636" latitude="38.52467" groundControlPoint="false" />
+   <Cell x="15" y="30" terrain="ShallowWater" country="General" longitude="118.023636" latitude="38.52467" groundControlPoint="false" />
    <Cell x="15" y="31" terrain="LightUrban" country="General" longitude="117.98" latitude="39.06" groundControlPoint="true" />
    <Cell x="15" y="32" terrain="Field" country="General" longitude="117.950928" latitude="39.600235" groundControlPoint="false" roadsStr="4/1" railroadsStr="1/4" />
    <Cell x="15" y="33" terrain="Forest" country="General" longitude="117.929581" latitude="40.1421738" groundControlPoint="false" />
@@ -14326,7 +14326,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <Cell x="27" y="27" terrain="ShallowWater" country="General" longitude="124.682991" latitude="37.09392" groundControlPoint="false" />
    <Cell x="27" y="28" terrain="ShallowWater" country="General" longitude="124.664589" latitude="37.6346779" groundControlPoint="false" />
    <Cell x="27" y="29" terrain="Field" country="General" longitude="124.647026" latitude="38.17478" groundControlPoint="false" />
-   <Cell x="27" y="30" terrain="Clear" country="General" longitude="124.629486" latitude="38.713665" groundControlPoint="false" />
+   <Cell x="27" y="30" terrain="ShallowWater" country="General" longitude="124.629486" latitude="38.713665" groundControlPoint="false" />
    <Cell x="27" y="31" terrain="ForestRough" country="General" longitude="124.611366" latitude="39.25088" groundControlPoint="false" />
    <Cell x="27" y="32" terrain="ForestRough" country="General" longitude="124.59285" latitude="39.78636" groundControlPoint="false" roadsStr="5/2" riversStr="5/0/1" />
    <Cell x="27" y="33" terrain="Forest" country="General" longitude="124.574867" latitude="40.32042" groundControlPoint="false" riversStr="3" />

@@ -171,7 +171,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 {
                     if (group.GetCombinedSubUnitSize() == 0)
                     {
-                        group.deployState = StrategicGroup.DeployState.Combined;
+                        // group.deployState = StrategicGroup.DeployState.Combined;
+                        // group.RemoveFromMap();
+                        group.SetDeployState(StrategicGroup.DeployState.Combined);
                     }
                 }
             }

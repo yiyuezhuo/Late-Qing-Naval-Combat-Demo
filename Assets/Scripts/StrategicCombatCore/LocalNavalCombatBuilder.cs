@@ -21,6 +21,10 @@ namespace StrategicCombatCore
                 // objectId // resolved by EntityManager
                 parentObjectId = parentShipGroup.objectId,
                 name = strategicGroup.name.Clone(),
+                leaderReference = new()
+                {
+                    referenceObjectId = strategicGroup.leaderReference.referenceObjectId
+                }
             };
 
             localEntityManager.Register(shipGroup, null);

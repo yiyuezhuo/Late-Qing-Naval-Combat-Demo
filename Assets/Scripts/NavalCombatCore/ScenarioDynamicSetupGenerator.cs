@@ -6,7 +6,7 @@ using GeographicLib;
 
 namespace NavalCombatCore
 {
-    public class ScenarioSetupGenerator
+    public class ScenarioDynamicSetupGenerator
     {
         public float distanceYards = 12000;
         public float angleDeg = 45;

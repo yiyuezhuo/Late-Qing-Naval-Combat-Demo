@@ -46,7 +46,7 @@
                         <ui:VisualElement style="flex-grow: 1;">
                             <ui:TextField label="Leader">
                                 <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="leaderProp.name.mergedName" binding-mode="ToTarget" />
+                                    <ui:DataBinding property="value" data-source-path="leaderReference.name" binding-mode="ToTarget" />
                                 </Bindings>
                             </ui:TextField>
                             <ui:Button text="Set Leader" name="SetLeaderButton" />
@@ -63,7 +63,7 @@
                         </ui:VisualElement>
                         <ui:VisualElement style="flex-grow: 0; flex-basis: 100px; -unity-background-scale-mode: scale-to-fit;">
                             <Bindings>
-                                <ui:DataBinding property="style.backgroundImage" data-source-path="leaderProp.portraitReference.pictureStyleBackground" binding-mode="ToTarget" />
+                                <ui:DataBinding property="style.backgroundImage" data-source-path="leaderReference.portrait" binding-mode="ToTarget" />
                             </Bindings>
                         </ui:VisualElement>
                     </ui:VisualElement>

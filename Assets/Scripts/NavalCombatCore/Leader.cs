@@ -39,6 +39,8 @@ namespace CoreUtils
         public List<LeaderTrait> traits = new();
         // public float courage; // determine flee / retreat behaviour and buff ship morale
         // public float staff; // how much buff its commander
+        public string remark;
+
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
             yield break;

@@ -1403,4 +1403,50 @@
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <objectId>a783e220-b138-4667-969c-38a92546da76</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>033caeff-4831-4ecf-9416-cde0f648bb59</shipClassObjectId>
+  <name>
+   <english>Fuji</english>
+   <japanese>富士</japanese>
+   <chineseSimplified>富士</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>Armstrong, Whitworth</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1897</applicableYearBegin>
+  <applicableYearEnd>1901</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>a2fca3f8-a344-4c97-9f2e-191b70ccc96a</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>true</notAvailableForFirstSinoJapaneseWar>
+  <objectId>451ec14a-541b-4c41-b981-2ed95d9f0661</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>033caeff-4831-4ecf-9416-cde0f648bb59</shipClassObjectId>
+  <name>
+   <english>Yashima</english>
+   <japanese>八島</japanese>
+   <chineseSimplified>八岛</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>Armstrong Whitworth, Elswick </english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1897</applicableYearBegin>
+  <applicableYearEnd>1901</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>d1ed8a2d-2a72-4e99-87a9-97aeb892d014</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>true</notAvailableForFirstSinoJapaneseWar>
+  <objectId>13db4215-f2e6-4876-a9bc-a788d29a57ff</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

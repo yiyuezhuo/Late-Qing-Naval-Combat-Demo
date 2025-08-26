@@ -1037,4 +1037,64 @@
   <traits />
   <objectId>16a04cba-2db3-4388-abaf-ec73c3d258d1</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Liu Kunyi</english>
+   <japanese>劉坤一</japanese>
+   <chineseSimplified>刘坤一</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Liu Kunyi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Average</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Liu_Kunyi</remark>
+  <objectId>edf4fbab-471a-4ad5-8156-64de120a1781</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Zhang Zhidong</english>
+   <japanese>張之洞</japanese>
+   <chineseSimplified>张之洞</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Zhang Zhidong.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Average</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Zhang_Zhidong</remark>
+  <objectId>a1fd8ac3-c5e2-4e38-b934-924b84e00cb1</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Miura Isao</english>
+   <japanese>三浦功</japanese>
+   <chineseSimplified>三浦功</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Miura_Isao.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E4%B8%89%E6%B5%A6%E5%8A%9F_(%E6%B5%B7%E8%BB%8D%E8%BB%8D%E4%BA%BA)</remark>
+  <objectId>a2fca3f8-a344-4c97-9f2e-191b70ccc96a</objectId>
+ </Leader>
 </ArrayOfLeader>

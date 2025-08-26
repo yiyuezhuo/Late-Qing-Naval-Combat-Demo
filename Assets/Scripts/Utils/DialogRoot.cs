@@ -94,6 +94,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset subordinatePickerDialogDocument;
     public VisualTreeAsset strategicGroupPickerDialogDocument;
     public VisualTreeAsset gamePreferenceDialogDocument;
+    public VisualTreeAsset batteryArcIndicatorDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -105,6 +106,45 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupBatteryArcIndicatorDialog(ShipClass shipClass)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = batteryArcIndicatorDialogDocument,
+        };
+
+        tempDialog.onCreated += (sender, root) =>
+        {
+            // var batteryArcIndicator = root.Q<BatteryArcIndicator>("BatteryArcIndicator");
+            // batteryArcIndicator.currentShipClass = shipClass;
+
+            var uiMap = new Dictionary<MountLocation, BatteryArcIndicator>()
+            {
+                {MountLocation.PortForward, root.Q<BatteryArcIndicator>("PortForward")},
+                {MountLocation.Forward, root.Q<BatteryArcIndicator>("Forward")},
+                {MountLocation.StarboardForward, root.Q<BatteryArcIndicator>("StarboardForward")},
+                {MountLocation.PortMidship, root.Q<BatteryArcIndicator>("PortMidship")},
+                {MountLocation.Midship, root.Q<BatteryArcIndicator>("Midship")},
+                {MountLocation.StarboardMidship, root.Q<BatteryArcIndicator>("StarboardMidship")},
+                {MountLocation.PortAfter, root.Q<BatteryArcIndicator>("PortAfter")},
+                {MountLocation.After, root.Q<BatteryArcIndicator>("After")},
+                {MountLocation.StarboardAfter, root.Q<BatteryArcIndicator>("StarboardAfter")},
+            };
+
+            foreach (var grouping in shipClass.batteryRecords.SelectMany(btyRec => btyRec.mountLocationRecords).GroupBy(mntRec => mntRec.mountLocation))
+            {
+                var startEndTopZeroCWAngles = grouping.SelectMany(g => g.mountArcs)
+                    .Select(arcRec => (arcRec.startDeg, arcRec.startDeg + arcRec.CoverageDeg)).ToList();
+
+                var ui = uiMap[grouping.Key];
+                ui.startEndTopZeroCWAngles = startEndTopZeroCWAngles;
+            }
+        };
+
+        tempDialog.Popup();
     }
 
     public void PopupGamePreferenceDialog()

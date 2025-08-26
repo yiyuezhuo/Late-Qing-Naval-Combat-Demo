@@ -1,0 +1,24 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style-extra.uss?fileID=7433441132597879392&amp;guid=5cc820f5d4c4c0340b49df8c67580211&amp;type=3#style-extra" />
+    <ui:VisualElement class="panel-dialog" style="flex-grow: 0; height: auto; width: 300px;">
+        <ui:Label text="Battery Arc Indicator" class="title" />
+        <ui:VisualElement style="flex-grow: 1; align-items: center;">
+            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                <BatteryArcIndicator name="PortForward" style="justify-content: center;" />
+                <BatteryArcIndicator name="Forward" style="justify-content: center;" />
+                <BatteryArcIndicator name="StarboardForward" style="justify-content: center;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                <BatteryArcIndicator name="PortMidship" style="justify-content: center;" />
+                <BatteryArcIndicator name="Midship" style="justify-content: center;" />
+                <BatteryArcIndicator name="StarboardMidship" style="justify-content: center;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                <BatteryArcIndicator name="PortAfter" style="justify-content: center;" />
+                <BatteryArcIndicator name="After" style="justify-content: center;" />
+                <BatteryArcIndicator name="StarboardAfter" style="justify-content: center;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Button text="Confirm" name="ConfirmButton" />
+    </ui:VisualElement>
+</ui:UXML>

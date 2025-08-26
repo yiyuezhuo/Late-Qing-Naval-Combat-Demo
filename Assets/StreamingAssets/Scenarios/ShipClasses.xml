@@ -2089,7 +2089,7 @@
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="210" CoverageDeg="150" isCrossDeckFire="false" />
       </mountArcs>
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
@@ -10358,7 +10358,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
       <objectId>f43a6cc9-8eda-4da7-91a5-fc1f35fa1b48</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
-      <mountLocation>StarboardMidship</mountLocation>
+      <mountLocation>PortMidship</mountLocation>
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>

@@ -179,6 +179,15 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
 
         PictureReferenceBinder.Bind(root.Q<VisualElement>("PortraitTopReferenceField"));
         PictureReferenceBinder.Bind(root.Q<VisualElement>("PortraitReferenceField"));
+
+        var batteryArcIndicatorDialogButton = root.Q<Button>("BatteryArcIndicatorDialogButton");
+        batteryArcIndicatorDialogButton.clicked += () =>
+        {
+            if (Utils.TryResolveCurrentValueForBinding(batteryArcIndicatorDialogButton, out ShipClass shipClass))
+            {
+                DialogRoot.Instance.PopupBatteryArcIndicatorDialog(shipClass);
+            }
+        };
     }
 
     public void OnBatteryXMLLoaded(string text)

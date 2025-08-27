@@ -67,6 +67,7 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             selectedShipClassIndex = idx;
         };
 
+        // TODO: Switch to Data Binding from callback (though how to bind list is very poorly documented)
         sectorArcIndicatorBinder.BindUI(root.Q<VisualElement>("SectorArcIndicator"));
         torpedoSectorArcIndicatorBinder.BindUI(root.Q<VisualElement>("TorpedoSectorArcIndicator"));
 

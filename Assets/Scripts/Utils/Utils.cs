@@ -143,7 +143,7 @@ public static class Utils
                     var obj = strategicGroupMemberReference.Get();
                     // obj.strategicGroupReference.referenceId = null;
                     // obj.SetStrategicGroupReference(null);
-                    if(obj != null)
+                    if (obj != null)
                         obj.strategicGroupReference.referenceId = null;
                 }
             }
@@ -311,5 +311,20 @@ public static class Utils
                 return true;
         }
         return false;
+    }
+
+    static int circlePoints = 72;
+
+    public static void DrawCircleForLineRenderer(LineRenderer lineRenderer, float latDeg, float lonDeg, float rangeM)
+    {
+        var points = new Vector3[circlePoints+1];
+        for (int i = 0; i <= circlePoints; i++)
+        {
+            var bearingDeg = 360f * ((float)i / circlePoints);
+            var (lat2Deg, lon2Deg) = MeasureStats.Approximation.CalculateNewPosition(latDeg, lonDeg, bearingDeg, rangeM);
+            points[i] = LatitudeLongitudeDegHeightFootToVector3((float)lat2Deg, (float)lon2Deg, 100);
+        }
+        lineRenderer.positionCount = circlePoints+1;
+        lineRenderer.SetPositions(points);
     }
 }

@@ -14,6 +14,7 @@ using System.Collections;
 
 using NavalCombatCore;
 using CoreUtils;
+using System.Threading;
 
 public interface IColliderRootProvider
 {
@@ -29,6 +30,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public Transform earthTransform;
 
     public LayerMask iconLayerMask;
+
+    public LineRenderer primaryBatteryRangeLine;
+    public LineRenderer secondaryBatteryRangeLine;
+    public LineRenderer tertiaryBatteryRangeLine;
+    public LineRenderer rapidFireBatteryRangeLine;
+    public LineRenderer torpedoRangeLine;
+    public LineRenderer visibilityRangeLine;
 
     [Serializable]
     public class StateText2DConfig
@@ -377,6 +385,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         // sync Line renderer to show firing line, fire control line, fired line etc.
 
         SyncDynamicLines();
+
+        SyncRangeLine();
 
         // location browser: current latitude, longitude, time zone, local time, sun altitude, day/night discrete value
         UpdateLocationInfoLabel();
@@ -812,6 +822,63 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             dynamicLine.SetBeginEndByLatLon(firingShip.position, target.position);
             // dynamicLine.SetColor(Color.black);
             dynamicLine.SetColor(Color.red);
+        }
+    }
+
+    void SyncRangeLine()
+    {
+        var shipLog = selectedShipLog;
+        var shipClass = shipLog?.shipClass;
+
+        var hasPrimaryBattery = shipClass != null && shipClass.batteryRecords.Count >= 1;
+        primaryBatteryRangeLine.gameObject.SetActive(hasPrimaryBattery);
+        if (hasPrimaryBattery)
+        {
+            var primaryBatteryRecord = shipClass.batteryRecords[0];
+            var rangeM = MeasureUtils.yardToMeter * primaryBatteryRecord.rangeYards;
+            Utils.DrawCircleForLineRenderer(primaryBatteryRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg, rangeM);
+        }
+
+        var hasSecondBattery = shipClass != null && shipClass.batteryRecords.Count >= 2;
+        secondaryBatteryRangeLine.gameObject.SetActive(hasSecondBattery);
+        if (hasSecondBattery)
+        {
+            Utils.DrawCircleForLineRenderer(secondaryBatteryRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg,
+                shipClass.batteryRecords[1].rangeYards * MeasureUtils.yardToMeter);
+        }
+
+        var hasTertiaryBattery = shipClass != null && shipClass.batteryRecords.Count >= 3;
+        tertiaryBatteryRangeLine.gameObject.SetActive(hasTertiaryBattery);
+        if (hasTertiaryBattery)
+        {
+            Utils.DrawCircleForLineRenderer(tertiaryBatteryRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg,
+                shipClass.batteryRecords[2].rangeYards * MeasureUtils.yardToMeter);
+        }
+
+        var hasOneRapidFiringBattery = shipClass != null && shipClass.rapidFireBatteryRecords.Count >= 1;
+        rapidFireBatteryRangeLine.gameObject.SetActive(hasOneRapidFiringBattery);
+        if (hasOneRapidFiringBattery)
+        {
+            Utils.DrawCircleForLineRenderer(rapidFireBatteryRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg,
+                shipClass.rapidFireBatteryRecords[0].maxRangeYards * MeasureUtils.yardToMeter);
+        }
+
+        var hasTorpedo = shipClass != null && shipClass.torpedoSector.torpedoSettings.Count >= 1;
+        torpedoRangeLine.gameObject.SetActive(hasTorpedo);
+        if (hasTorpedo)
+        {
+            Utils.DrawCircleForLineRenderer(torpedoRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg,
+                shipClass.torpedoSector.torpedoSettings[0].rangeYards * MeasureUtils.yardToMeter);
+        }
+
+        var hasVisibilityCap = shipClass != null;
+        visibilityRangeLine.gameObject.SetActive(hasVisibilityCap);
+        if (hasVisibilityCap)
+        {
+            Utils.DrawCircleForLineRenderer(visibilityRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg,
+                32900 * MeasureUtils.yardToMeter); // 32900 yards: D1 Surface Visibility, 4 and up -> 4 in Exceptionally Clear (smoke is not considered)
+            // TODO: Handle observer's target size, and visibility condition.
+            // Night change can be used to detect day/night error.
         }
     }
 

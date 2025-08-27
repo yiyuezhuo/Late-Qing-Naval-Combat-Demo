@@ -349,6 +349,20 @@
                                 <ui:Tab label="Doctrine">
                                     <ui:Instance template="DoctrineEditor" data-source-path="doctrineProp" />
                                 </ui:Tab>
+                                <ui:Tab label="Time Loc">
+                                    <ui:VisualElement style="flex-grow: 1;">
+                                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                            <ui:Button text="Plot Trajectory on Map" name="PlotTrajectoryOnMapButton" />
+                                        </ui:VisualElement>
+                                        <ui:MultiColumnListView data-source-path="timeLocLogs" binding-source-selection-mode="AutoAssign">
+                                            <ui:Columns>
+                                                <ui:Column title="Time" name="time" width="33%" cell-template="project://database/Assets/UIDocuments/Templates/TimeLoc/TimeLocCellTime.uxml?fileID=9197481963319205126&amp;guid=f272e386b8ddfbf4c9178e49b02084db&amp;type=3#TimeLocCellTime" />
+                                                <ui:Column name="lat" cell-template="project://database/Assets/UIDocuments/Templates/TimeLoc/TimeLocLatDeg.uxml?fileID=9197481963319205126&amp;guid=117edb5e87e300148893b7cbc050b5ec&amp;type=3#TimeLocLatDeg" width="33%" title="Lat" />
+                                                <ui:Column name="lon" title="Lon" width="33%" cell-template="project://database/Assets/UIDocuments/Templates/TimeLoc/TimeLocLonDeg.uxml?fileID=9197481963319205126&amp;guid=84ffd55a81957b44bb57520ef661a118&amp;type=3#TimeLocLonDeg" />
+                                            </ui:Columns>
+                                        </ui:MultiColumnListView>
+                                    </ui:VisualElement>
+                                </ui:Tab>
                             </ui:TabView>
                         </ui:ScrollView>
                         <Bindings>

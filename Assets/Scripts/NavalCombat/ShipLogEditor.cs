@@ -318,6 +318,20 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             }
         };
 
+        var plotTrajectoryOnMapButton = root.Q<Button>("PlotTrajectoryOnMapButton");
+        plotTrajectoryOnMapButton.clicked += () =>
+        {
+            if (SuperGameState.Instance.currentGameMode == GameMode.Naval)
+            {
+                Debug.Log("plot trajectory on map");
+
+                if (Utils.TryResolveCurrentValueForBinding(plotTrajectoryOnMapButton, out ShipLog shipLog))
+                {
+                    DialogRoot.Instance.PopupPlotTrajectoryDialog(shipLog);
+                }
+            }
+        };
+
     }
 
     // IEnumerator SetSelectionForNamedShipListView(int idx)

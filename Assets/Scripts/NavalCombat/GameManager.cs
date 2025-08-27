@@ -38,6 +38,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public LineRenderer torpedoRangeLine;
     public LineRenderer visibilityRangeLine;
 
+    public GameObject shipLogTrajectoryPrefab;
+    public Transform shipLogTrajectoriesTransform;
+
     [Serializable]
     public class StateText2DConfig
     {
@@ -828,6 +831,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     void SyncRangeLine()
     {
         var shipLog = selectedShipLog;
+        if (shipLog != null && shipLog.mapState == MapState.Destroyed)
+            shipLog = null;
         var shipClass = shipLog?.shipClass;
 
         var hasPrimaryBattery = shipClass != null && shipClass.batteryRecords.Count >= 1;
@@ -879,6 +884,29 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 32900 * MeasureUtils.yardToMeter); // 32900 yards: D1 Surface Visibility, 4 and up -> 4 in Exceptionally Clear (smoke is not considered)
             // TODO: Handle observer's target size, and visibility condition.
             // Night change can be used to detect day/night error.
+        }
+    }
+
+    public void AddShipLogTrajectory(ShipLog shipLog, Color color)
+    {
+        if (shipLog == null)
+            return;
+
+        var obj = Instantiate(shipLogTrajectoryPrefab, shipLogTrajectoriesTransform);
+        var lineRenderer = obj.GetComponent<LineRenderer>();
+        lineRenderer.startColor = color;
+        lineRenderer.endColor = color;
+        lineRenderer.positionCount = shipLog.timeLocLogs.Count;
+        lineRenderer.SetPositions(shipLog.timeLocLogs.Select(r => Utils.LatitudeLongitudeDegHeightFootToVector3(r.latDeg, r.lonDeg, 30)).ToArray());
+        // shipLog.timeLocLogs
+    }
+
+    public void ClearShipLogTrajectories()
+    {
+        var parent = shipLogTrajectoriesTransform;
+        for (int i = parent.childCount - 1; i >= 0; i--)
+        {
+            Destroy(parent.GetChild(i).gameObject);
         }
     }
 

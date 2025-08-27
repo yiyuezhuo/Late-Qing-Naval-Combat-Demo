@@ -417,6 +417,9 @@ namespace NavalCombatCore
                 }
             }
 
+            foreach (var shipLog in shipLogsOnMap)
+                shipLog.StepLogging();
+
             scenarioState.doingStep = false;
         }
 

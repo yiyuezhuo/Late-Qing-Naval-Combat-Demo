@@ -82,3 +82,4 @@ MonoBehaviour:
   strategicGroupPickerDialogDocument: {fileID: 9197481963319205126, guid: d8ca426e4e204724686473d7a2501aa9, type: 3}
   gamePreferenceDialogDocument: {fileID: 9197481963319205126, guid: d36e21b721ef0904fa96150894be669f, type: 3}
   batteryArcIndicatorDialogDocument: {fileID: 9197481963319205126, guid: 56ed18c232204f54db09ba227b4e17aa, type: 3}
+  plotTrajectoryDialogDocument: {fileID: 9197481963319205126, guid: 373ff4ebd81384941b066769b9c05f8b, type: 3}

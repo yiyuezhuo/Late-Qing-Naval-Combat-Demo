@@ -1,0 +1,38 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="PlotTrajectoryViewModel, Assembly-CSharp" class="panel-dialog" style="height: auto; width: 500px;">
+        <ui:Label text="Plot Trajectory" class="title" />
+        <ui:TextField enabled="false">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="shipLogName" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:TextField>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:SliderInt label="Red" high-value="255" show-input-field="true" fill="true">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="red" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:SliderInt>
+                <ui:SliderInt label="Green" high-value="255" fill="true" show-input-field="true">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="green" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:SliderInt>
+                <ui:SliderInt label="Blue" high-value="255" fill="true" show-input-field="true">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="blue" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:SliderInt>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; width: 90px;">
+                <Bindings>
+                    <ui:DataBinding property="style.backgroundColor" data-source-path="color" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-basis: 50px; flex-grow: 1;" />
+            <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

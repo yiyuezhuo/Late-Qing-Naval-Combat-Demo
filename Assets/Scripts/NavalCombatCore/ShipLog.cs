@@ -245,6 +245,18 @@ namespace NavalCombatCore
         public override string SummaryContent() => $"Torpedo Hit: {GetTorpedo()?.sourceName?.GetShortName()} DP:{damagePoint} DE:{damageEffectId}"; // TODO: Record LaunchedTorpedo in the strategic game?
     }
 
+    public class TimeLoc
+    {
+        [XmlAttribute]
+        public DateTime time;
+
+        [XmlAttribute]
+        public float latDeg;
+
+        [XmlAttribute]
+        public float lonDeg;
+    }
+
     public partial class ShipLog : UnitModule, IDF4Model, IShipGroupMember, IWTAObject, IExtrapolable, ICollider
     {
         // public string objectId { get; set; }
@@ -323,7 +335,7 @@ namespace NavalCombatCore
         public List<ShipboardFireStatus> shipboardFireStatus = new();
 
         public string parentObjectId { get; set; } // OOB perspective
-        // Get Parent / Root Parent method is defined in IShipGroupMember
+                                                    // Get Parent / Root Parent method is defined in IShipGroupMember
 
         // public string leaderObjectId;
         public Leader leader
@@ -399,13 +411,14 @@ namespace NavalCombatCore
         public float pendingDamagePoint;
 
         public List<ShipLogLog> logs = new(); // TODO: Switch to structure logging?
+        public List<TimeLoc> timeLocLogs = new();
 
         public string DescribeDetail()
         {
             var lines = new List<string>()
-            {
-                $"ShipLog Detail: {objectId}"
-            };
+                {
+                    $"ShipLog Detail: {objectId}"
+                };
 
             lines.AddRange(logs.Select(r => r.Summary()));
             return string.Join("\n", lines);
@@ -899,6 +912,22 @@ namespace NavalCombatCore
             foreach (var rf in rapidFiringStatus)
             {
                 rf.Step(deltaSeconds);
+            }
+        }
+
+        public void StepLogging()
+        {
+            if (mapState == MapState.Deployed)
+            {
+                if (timeLocLogs.Count == 0 || timeLocLogs[^1].time.Minute != NavalGameState.Instance.scenarioState.dateTime.Minute)
+                {
+                    timeLocLogs.Add(new TimeLoc
+                    {
+                        time = NavalGameState.Instance.scenarioState.dateTime,
+                        latDeg = position.LatDeg,
+                        lonDeg = position.LonDeg
+                    });
+                }
             }
         }
 

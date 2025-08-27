@@ -174,6 +174,8 @@ public class TopTabs : SingletonDocument<TopTabs>
         };
 
         root.Q<Button>("GamePreferenceButton").clicked += DialogRoot.Instance.PopupGamePreferenceDialog;
+
+        root.Q<Button>("ClearTrajectoriesButton").clicked += GameManager.Instance.ClearShipLogTrajectories;
     }
 
     void OnSaveButtonClicked()

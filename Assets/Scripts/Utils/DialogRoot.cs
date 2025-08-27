@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 using System.Linq;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.Properties;
 
 using NavalCombatCore;
 using StrategicCombatCore;
@@ -148,6 +149,37 @@ public class SectorArcIndicatorBinder
     }
 }
 
+public class PlotTrajectoryViewModel
+{
+    public string shipLogObjectId;
+
+    [CreateProperty]
+    public string shipLogName => EntityManager.Instance.Get<ShipLog>(shipLogObjectId)?.namedShip.name.GetMergedName();
+
+    public Color32 color;
+
+    [CreateProperty]
+    public int red
+    {
+        get => color.r;
+        set => color = new Color32((byte)value, color.g, color.b, 255);
+    }
+
+    [CreateProperty]
+    public int green
+    {
+        get => color.g;
+        set => color = new Color32(color.r, (byte)value, color.b, 255);
+    }
+
+    [CreateProperty]
+    public int blue
+    {
+        get => color.b;
+        set => color = new Color32(color.r, color.g, (byte)value, 255);
+    }
+}
+
 
 public class DialogRoot : SingletonDocument<DialogRoot>
 {
@@ -165,6 +197,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset strategicGroupPickerDialogDocument;
     public VisualTreeAsset gamePreferenceDialogDocument;
     public VisualTreeAsset batteryArcIndicatorDialogDocument;
+    public VisualTreeAsset plotTrajectoryDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -176,6 +209,31 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupPlotTrajectoryDialog(ShipLog shipLog)
+    {
+        var model = new PlotTrajectoryViewModel()
+        {
+            shipLogObjectId = shipLog.objectId,
+            color = Color.blue,
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = plotTrajectoryDialogDocument,
+            templateDataSource = model
+        };
+
+        tempDialog.onConfirmed += (sender, root) =>
+        {
+            Debug.Log("PopupPlotTrajectoryDialog Confirm");
+
+            GameManager.Instance.AddShipLogTrajectory(EntityManager.Instance.Get<ShipLog>(model.shipLogObjectId), model.color);
+        };
+
+        tempDialog.Popup();
     }
 
     public void PopupBatteryArcIndicatorDialog(ShipClass shipClass)

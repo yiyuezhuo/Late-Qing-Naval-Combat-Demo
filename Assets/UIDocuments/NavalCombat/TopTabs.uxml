@@ -33,6 +33,7 @@
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Distance Measure (D)" name="DistanceMeasureButton" />
                     <ui:Button text="LOS Measure (S)" name="MaskMeasureButton" />
+                    <ui:Button text="Clear Trajectories" name="ClearTrajectoriesButton" />
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Editor">

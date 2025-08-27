@@ -3410,7 +3410,7 @@
      <barrels>1</barrels>
      <mounts>1</mounts>
      <mountArcs>
-      <MountArcRecord startDeg="245" CoverageDeg="30" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
      </mountArcs>
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
@@ -4782,7 +4782,7 @@
      <objectId>bbd82db3-8ea0-48f1-bda5-114f91b074b8</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
-     <mountLocation>PortMidship</mountLocation>
+     <mountLocation>Midship</mountLocation>
      <barrels>1</barrels>
      <mounts>1</mounts>
      <mountArcs>
@@ -5237,7 +5237,7 @@
      <barrels>1</barrels>
      <mounts>1</mounts>
      <mountArcs>
-      <MountArcRecord startDeg="165" CoverageDeg="30" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="255" CoverageDeg="30" isCrossDeckFire="false" />
      </mountArcs>
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
@@ -5717,7 +5717,7 @@
      <barrels>1</barrels>
      <mounts>1</mounts>
      <mountArcs>
-      <MountArcRecord startDeg="75" CoverageDeg="30" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="165" CoverageDeg="30" isCrossDeckFire="false" />
      </mountArcs>
      <useRestAngle>false</useRestAngle>
      <restAngleDeg>0</restAngleDeg>
@@ -8764,7 +8764,7 @@ Japanese wiki don't mention 75mm gun.
       <objectId>c1164bba-ada8-48c6-9e36-f26e88cb0509</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
-      <mountLocation>NotSpecified</mountLocation>
+      <mountLocation>PortForward</mountLocation>
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
@@ -8891,7 +8891,7 @@ Japanese wiki don't mention 75mm gun.
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="120" CoverageDeg="240" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="60" CoverageDeg="240" isCrossDeckFire="false" />
       </mountArcs>
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>

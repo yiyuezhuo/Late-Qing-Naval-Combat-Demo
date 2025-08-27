@@ -2,6 +2,7 @@
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
     <ui:Template name="ArmorRatingEditor" src="project://database/Assets/UIDocuments/NavalCombat/ArmorRatingEditor.uxml?fileID=9197481963319205126&amp;guid=37ee59f7e2be1ae42a09a6e60180ee72&amp;type=3#ArmorRatingEditor" />
     <ui:Template name="PictureField" src="project://database/Assets/UIDocuments/Common/PictureField.uxml?fileID=9197481963319205126&amp;guid=7e20c3d60b5a8a34a80d1015e6851169&amp;type=3#PictureField" />
+    <ui:Template name="SectorArcIndicator" src="project://database/Assets/UIDocuments/NavalCombat/SectorArcIndicator.uxml?fileID=9197481963319205126&amp;guid=14d5cc59ee5d6b241bb994f29d79fdb2&amp;type=3#SectorArcIndicator" />
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement data-source-type="ShipClassEditor, Assembly-CSharp" class="panel">
         <ui:Label text="Class Editor" class="title" />
@@ -304,6 +305,22 @@
                                                 <ui:DataBinding property="value" data-source-path="firepowerPortProp" binding-mode="ToTarget" />
                                             </Bindings>
                                         </ui:FloatField>
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:Tab>
+                            <ui:Tab label="Sector Arcs">
+                                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                    <ui:VisualElement>
+                                        <ui:Label text="Battery Sector Arcs" style="-unity-text-align: upper-center;" />
+                                        <ui:VisualElement style="flex-grow: 1; width: 200px; margin-top: 50px;">
+                                            <ui:Instance template="SectorArcIndicator" name="SectorArcIndicator" />
+                                        </ui:VisualElement>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement>
+                                        <ui:Label text="Torpedo Sector Arcs" style="-unity-text-align: upper-center;" />
+                                        <ui:VisualElement style="flex-grow: 1; width: 200px; padding-top: 50px;">
+                                            <ui:Instance template="SectorArcIndicator" name="TorpedoSectorArcIndicator" />
+                                        </ui:VisualElement>
                                     </ui:VisualElement>
                                 </ui:VisualElement>
                             </ui:Tab>

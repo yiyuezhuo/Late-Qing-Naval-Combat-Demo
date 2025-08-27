@@ -18,6 +18,9 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
 
     public int selectedShipClassIndex = 0;
 
+    SectorArcIndicatorBinder sectorArcIndicatorBinder = new();
+    SectorArcIndicatorBinder torpedoSectorArcIndicatorBinder = new();
+
     [CreateProperty]
     public ShipClass selectedShipClass
     {
@@ -59,7 +62,25 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
         {
             var idx = ints.FirstOrDefault();
 
+            // Debug.Log($"selectedIndicesChanged: {idx}");
+
             selectedShipClassIndex = idx;
+        };
+
+        sectorArcIndicatorBinder.BindUI(root.Q<VisualElement>("SectorArcIndicator"));
+        torpedoSectorArcIndicatorBinder.BindUI(root.Q<VisualElement>("TorpedoSectorArcIndicator"));
+
+        shipClassListView.selectionChanged += (objs) =>
+        {
+            // Debug.Log($"selectionChanged: {objs}");
+            var currentShipClass = objs.FirstOrDefault() as ShipClass;
+            if (currentShipClass != null)
+            {
+                Debug.Log($"currentShipClass: {currentShipClass}");
+
+                sectorArcIndicatorBinder.BindBatteryData(currentShipClass);
+                torpedoSectorArcIndicatorBinder.BindTorpedoData(currentShipClass);
+            }
         };
 
         var speedIncreaseMultiColumnListView = root.Q<MultiColumnListView>("SpeedIncreaseMultiColumnListView");

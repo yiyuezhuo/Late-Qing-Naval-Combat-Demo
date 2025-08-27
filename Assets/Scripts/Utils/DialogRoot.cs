@@ -77,6 +77,76 @@ public class ScenarioPickerDialog // ScenarioPicker's root data source
     }
 }
 
+public class SectorArcIndicatorBinder
+{
+    // VisualElement root;
+    Dictionary<MountLocation, BatteryArcIndicator> uiMap;
+
+    public void BindUI(VisualElement root)
+    {
+
+        uiMap = new Dictionary<MountLocation, BatteryArcIndicator>()
+        {
+            {MountLocation.PortForward, root.Q<BatteryArcIndicator>("PortForward")},
+            {MountLocation.Forward, root.Q<BatteryArcIndicator>("Forward")},
+            {MountLocation.StarboardForward, root.Q<BatteryArcIndicator>("StarboardForward")},
+            {MountLocation.PortMidship, root.Q<BatteryArcIndicator>("PortMidship")},
+            {MountLocation.Midship, root.Q<BatteryArcIndicator>("Midship")},
+            {MountLocation.StarboardMidship, root.Q<BatteryArcIndicator>("StarboardMidship")},
+            {MountLocation.PortAfter, root.Q<BatteryArcIndicator>("PortAfter")},
+            {MountLocation.After, root.Q<BatteryArcIndicator>("After")},
+            {MountLocation.StarboardAfter, root.Q<BatteryArcIndicator>("StarboardAfter")},
+        };
+    }
+
+    public void BindBatteryData(ShipClass shipClass)
+    {
+        var updatedSet = new HashSet<MountLocation>();
+        foreach (var grouping in shipClass.batteryRecords.SelectMany(btyRec => btyRec.mountLocationRecords).GroupBy(mntRec => mntRec.mountLocation))
+        {
+            updatedSet.Add(grouping.Key);
+            if (uiMap.TryGetValue(grouping.Key, out var ui))
+            {
+                var startEndTopZeroCWAngles = grouping.SelectMany(g => g.mountArcs)
+                    .Select(arcRec => (arcRec.startDeg, arcRec.startDeg + arcRec.CoverageDeg))
+                    .ToList();
+
+                // ui.startEndTopZeroCWAngles = startEndTopZeroCWAngles;
+                ui.UpdateStartEndTopZeroCWAngles(startEndTopZeroCWAngles);
+            }
+        }
+        foreach (var (mntLoc, ui) in uiMap)
+        {
+            if (!updatedSet.Contains(mntLoc))
+            {
+                ui.UpdateStartEndTopZeroCWAngles(new());
+            }
+        }
+    }
+
+    public void BindTorpedoData(ShipClass shipClass)
+    {
+        var updatedSet = new HashSet<MountLocation>();
+        foreach (var grouping in shipClass.torpedoSector.mountLocationRecords.GroupBy(mntRec => mntRec.mountLocation))
+        {
+            if (uiMap.TryGetValue(grouping.Key, out var ui))
+            {
+                updatedSet.Add(grouping.Key);
+                var startEndTopZeroCWAngles = grouping.SelectMany(g => g.mountArcs)
+                    .Select(arcRec => (arcRec.startDeg, arcRec.startDeg + arcRec.CoverageDeg))
+                    .ToList();
+                ui.UpdateStartEndTopZeroCWAngles(startEndTopZeroCWAngles);
+            }
+        }
+        foreach (var (mntLoc, ui) in uiMap)
+        {
+            if (!updatedSet.Contains(mntLoc))
+            {
+                ui.UpdateStartEndTopZeroCWAngles(new());
+            }
+        }
+    }
+}
 
 
 public class DialogRoot : SingletonDocument<DialogRoot>
@@ -121,27 +191,33 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             // var batteryArcIndicator = root.Q<BatteryArcIndicator>("BatteryArcIndicator");
             // batteryArcIndicator.currentShipClass = shipClass;
 
-            var uiMap = new Dictionary<MountLocation, BatteryArcIndicator>()
-            {
-                {MountLocation.PortForward, root.Q<BatteryArcIndicator>("PortForward")},
-                {MountLocation.Forward, root.Q<BatteryArcIndicator>("Forward")},
-                {MountLocation.StarboardForward, root.Q<BatteryArcIndicator>("StarboardForward")},
-                {MountLocation.PortMidship, root.Q<BatteryArcIndicator>("PortMidship")},
-                {MountLocation.Midship, root.Q<BatteryArcIndicator>("Midship")},
-                {MountLocation.StarboardMidship, root.Q<BatteryArcIndicator>("StarboardMidship")},
-                {MountLocation.PortAfter, root.Q<BatteryArcIndicator>("PortAfter")},
-                {MountLocation.After, root.Q<BatteryArcIndicator>("After")},
-                {MountLocation.StarboardAfter, root.Q<BatteryArcIndicator>("StarboardAfter")},
-            };
+            // var uiMap = new Dictionary<MountLocation, BatteryArcIndicator>()
+            // {
+            //     {MountLocation.PortForward, root.Q<BatteryArcIndicator>("PortForward")},
+            //     {MountLocation.Forward, root.Q<BatteryArcIndicator>("Forward")},
+            //     {MountLocation.StarboardForward, root.Q<BatteryArcIndicator>("StarboardForward")},
+            //     {MountLocation.PortMidship, root.Q<BatteryArcIndicator>("PortMidship")},
+            //     {MountLocation.Midship, root.Q<BatteryArcIndicator>("Midship")},
+            //     {MountLocation.StarboardMidship, root.Q<BatteryArcIndicator>("StarboardMidship")},
+            //     {MountLocation.PortAfter, root.Q<BatteryArcIndicator>("PortAfter")},
+            //     {MountLocation.After, root.Q<BatteryArcIndicator>("After")},
+            //     {MountLocation.StarboardAfter, root.Q<BatteryArcIndicator>("StarboardAfter")},
+            // };
 
-            foreach (var grouping in shipClass.batteryRecords.SelectMany(btyRec => btyRec.mountLocationRecords).GroupBy(mntRec => mntRec.mountLocation))
-            {
-                var startEndTopZeroCWAngles = grouping.SelectMany(g => g.mountArcs)
-                    .Select(arcRec => (arcRec.startDeg, arcRec.startDeg + arcRec.CoverageDeg)).ToList();
+            // foreach (var grouping in shipClass.batteryRecords.SelectMany(btyRec => btyRec.mountLocationRecords).GroupBy(mntRec => mntRec.mountLocation))
+            // {
+            //     if (uiMap.TryGetValue(grouping.Key, out var ui))
+            //     {
+            //         var startEndTopZeroCWAngles = grouping.SelectMany(g => g.mountArcs)
+            //             .Select(arcRec => (arcRec.startDeg, arcRec.startDeg + arcRec.CoverageDeg)).ToList();
 
-                var ui = uiMap[grouping.Key];
-                ui.startEndTopZeroCWAngles = startEndTopZeroCWAngles;
-            }
+            //         ui.startEndTopZeroCWAngles = startEndTopZeroCWAngles;
+            //     }
+            // }
+
+            var binder = new SectorArcIndicatorBinder();
+            binder.BindUI(root);
+            binder.BindBatteryData(shipClass);
         };
 
         tempDialog.Popup();

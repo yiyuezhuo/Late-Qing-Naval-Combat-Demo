@@ -11,7 +11,8 @@ public partial class BatteryArcIndicator : VisualElement
     public static readonly string ussClassName = "battery-arc-indicator";
 
     // public ShipClass currentShipClass;
-    public List<(float, float)> startEndTopZeroCWAngles = new();
+    // public List<(float, float)> startEndTopZeroCWAngles = new();
+    public List<(float, float)> startEndTopZeroCWAngles = null;
 
     public BatteryArcIndicator()
     {
@@ -19,6 +20,12 @@ public partial class BatteryArcIndicator : VisualElement
 
         generateVisualContent += GenerateVisualContent;
     }
+
+    public void UpdateStartEndTopZeroCWAngles(List<(float, float)> value)
+    {
+        startEndTopZeroCWAngles = value;
+        MarkDirtyRepaint();
+    } 
 
     void GenerateVisualContent(MeshGenerationContext context)
     {

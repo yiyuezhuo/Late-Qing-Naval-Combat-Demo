@@ -1,0 +1,19 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; align-items: center;">
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+            <BatteryArcIndicator name="PortForward" style="justify-content: center;" />
+            <BatteryArcIndicator name="Forward" style="justify-content: center;" />
+            <BatteryArcIndicator name="StarboardForward" style="justify-content: center;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+            <BatteryArcIndicator name="PortMidship" style="justify-content: center;" />
+            <BatteryArcIndicator name="Midship" style="justify-content: center;" />
+            <BatteryArcIndicator name="StarboardMidship" style="justify-content: center;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+            <BatteryArcIndicator name="PortAfter" style="justify-content: center;" />
+            <BatteryArcIndicator name="After" style="justify-content: center;" />
+            <BatteryArcIndicator name="StarboardAfter" style="justify-content: center;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

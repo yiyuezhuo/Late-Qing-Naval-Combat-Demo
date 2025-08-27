@@ -730,5 +730,10 @@ namespace NavalCombatCore
             return 1f * survivability + 1f * firepowerScore; // TODO: Consider DP?
         }
 
+        public override string ToString()
+        {
+            return $"ShipClass({name.GetMergedName()})";
+        }
+
     }
 }

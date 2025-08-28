@@ -6754,7 +6754,7 @@ Hiei (比叡, 1878)</remark>
   <targetSizeModifier>1</targetSizeModifier>
   <damagePoint>1180</damagePoint>
   <speedKnots>16</speedKnots>
-  <damageControlRatingUnmodified>16</damageControlRatingUnmodified>
+  <damageControlRatingUnmodified>3</damageControlRatingUnmodified>
   <speedKnotsEngineRoomsLevels>
    <float>16</float>
    <float>9</float>

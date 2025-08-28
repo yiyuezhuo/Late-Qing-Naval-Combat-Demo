@@ -216,7 +216,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         var model = new PlotTrajectoryViewModel()
         {
             shipLogObjectId = shipLog.objectId,
-            color = Color.blue,
+            color = shipLog.shipClass.country == Country.China ? Color.red : Color.blue,
         };
 
         var tempDialog = new TempDialog()

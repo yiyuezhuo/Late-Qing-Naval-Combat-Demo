@@ -251,6 +251,10 @@ namespace NavalCombatCore
         public string damagePointProgrssDesc => $"DP Progress {(damagePoint / Math.Max(1, shipClass?.damagePoint ?? 0)).ToString("P1")} Damage Tier: {GetDamageTier()}";
 
         [CreateProperty]
+        public string damagePointProgrssDescShort => $"DP {damagePoint:F0}/{shipClass?.damagePoint} ({(damagePoint / Math.Max(1, shipClass?.damagePoint ?? 0)).ToString("P1")})";
+
+
+        [CreateProperty]
         public float maxSpeedKnotsProp => GetMaxSpeedKnots();
 
         [CreateProperty]
@@ -272,6 +276,18 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public string labelName => GetMapStatePrefix() + (namedShip?.name?.GetMergedName() ?? "[Named Ship not invalid or not specified]");
+
+        [CreateProperty]
+        public string damageEffectDesc
+        {
+            get
+            {
+                var totalSubStates = GetSubStatesDownward().ToList();
+                var severityStatesCount = totalSubStates.Where(de => de.lifeCycle == StateLifeCycle.SeverityBased || de.lifeCycle == StateLifeCycle.ShipboardFire).Count();
+                var dcr = shipClass?.damageControlRatingUnmodified - damageControlRatingHits;
+                return $"Dmg Ctrl: {severityStatesCount}/{dcr} T:{totalSubStates.Count}";
+            }
+        }
 
         // IPortraitViewerObservable
         PictureReference IPortraitViewerObservable.GetPortraitTopReference() => shipClass?.portraitTopReference;

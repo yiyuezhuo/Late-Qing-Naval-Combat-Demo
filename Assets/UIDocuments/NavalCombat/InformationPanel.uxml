@@ -50,6 +50,18 @@
                         <ui:DataBinding property="value" data-source-path="desiredHeadingDeg" binding-mode="TwoWay" />
                     </Bindings>
                 </ui:Slider>
+                <ui:ProgressBar>
+                    <Bindings>
+                        <ui:DataBinding property="highValue" data-source-path="shipClassProperty.damagePoint" binding-mode="ToTarget" />
+                        <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="ToTarget" />
+                        <ui:DataBinding property="title" data-source-path="damagePointProgrssDescShort" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:ProgressBar>
+                <ui:Label text="_ DEs">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="damageEffectDesc" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
                 <ui:Label text="summary" name="SummaryLabel" style="white-space: normal;">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="summary" binding-mode="ToTarget" />

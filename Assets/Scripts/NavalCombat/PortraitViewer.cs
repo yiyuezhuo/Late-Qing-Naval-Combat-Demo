@@ -50,6 +50,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     float scaleFactor = 0.015f;
     public MeshRenderer flagRenderer;
     public GameObject selectedIndicator;
+    public MeshRenderer healthBarRenderer;
 
     //
     Texture2D portraitTex;
@@ -123,6 +124,17 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         // selectedIndicator
         if (model == null)
             return;
+
+        // TODO: Temp Hack
+        if (model is ShipLog shipLog)
+        {
+            var p = Math.Min(1, shipLog.damagePoint / Math.Max(1, shipLog?.shipClass.damagePoint ?? 0));
+            healthBarRenderer.material.SetFloat("_FillAmount", 1 - p);
+        }
+        else
+        {
+            healthBarRenderer.gameObject.SetActive(false);
+        }
 
         selectedIndicator.SetActive(model.objectId == GameManager.Instance.selectedShipLogObjectId);
 

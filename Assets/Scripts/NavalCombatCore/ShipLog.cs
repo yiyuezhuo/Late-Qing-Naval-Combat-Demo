@@ -330,9 +330,9 @@ namespace NavalCombatCore
         public DynamicStatus dynamicStatus = new();
         public SearchLightStatus searchLightHits = new();
         public int damageControlRatingHits;
-        public List<DamageEffectRecord> damageEffectRecords = new(); // TODO: Remove
-        public List<SubState> damageEffects = new();
-        public List<ShipboardFireStatus> shipboardFireStatus = new();
+        // public List<DamageEffectRecord> damageEffectRecords = new(); // TODO: Remove
+        // public List<SubState> damageEffects = new();
+        // public List<ShipboardFireStatus> shipboardFireStatus = new();
 
         public string parentObjectId { get; set; } // OOB perspective
                                                     // Get Parent / Root Parent method is defined in IShipGroupMember
@@ -480,8 +480,8 @@ namespace NavalCombatCore
             searchLightHits.ResetDamageExpenditureState();
 
             damageControlRatingHits = 0;
-            damageEffectRecords.Clear();
-            shipboardFireStatus.Clear();
+            // damageEffectRecords.Clear();
+            // shipboardFireStatus.Clear();
         }
 
         public string Summary()

@@ -1,0 +1,23 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="CoreUtils.PictureReference, Assembly-CSharp" style="flex-direction: column;">
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:Label text="Label" name="FieldLabel" style="flex-grow: 1;" />
+            <ui:Label text="Builtin" />
+            <ui:Toggle>
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="isBuiltin" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:Toggle>
+            <ui:Button text="Set" name="SetButton">
+                <Bindings>
+                    <ui:DataBinding property="enabledSelf" data-source-path="setButtonAvailable" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+        <ui:TextField style="flex-grow: 1; flex-shrink: 1;">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="path" binding-mode="TwoWay" />
+            </Bindings>
+        </ui:TextField>
+    </ui:VisualElement>
+</ui:UXML>

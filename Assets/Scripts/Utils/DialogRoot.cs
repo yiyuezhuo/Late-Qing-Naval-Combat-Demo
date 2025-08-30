@@ -9,6 +9,7 @@ using Unity.Properties;
 using NavalCombatCore;
 using StrategicCombatCore;
 using CoreUtils;
+using NavalCombat;
 
 public class ScenarioPickerDialog // ScenarioPicker's root data source
 {
@@ -198,6 +199,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset gamePreferenceDialogDocument;
     public VisualTreeAsset batteryArcIndicatorDialogDocument;
     public VisualTreeAsset plotTrajectoryDialogDocument;
+    public VisualTreeAsset eventStateEditorDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -209,6 +211,55 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public class EventStateEditorDialogDataSource
+    {
+        public EventState eventState;
+        public EventItem currentEventItem;
+    }
+
+    public void PopupEventStateEditorDialog()
+    {
+        var dataSource = new EventStateEditorDialogDataSource()
+        {
+            eventState = EventState.Instance,
+            currentEventItem = null
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = eventStateEditorDialogDocument,
+            templateDataSource = dataSource,
+            draggable = true
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            Utils.BindItemsSourceRecursive(el);
+
+            var objectListView = el.Q<ListView>("ObjectListView");
+            Utils.BindItemsAddedRemoved<EventItem>(objectListView, () => null);
+
+            objectListView.selectionChanged += (IEnumerable<object> objects) =>
+            {
+                Debug.Log("LeftObjectPickerRightEditorStrategic.selectionChanged");
+
+                var obj = objects.FirstOrDefault() as EventItem;
+                dataSource.currentEventItem = obj;
+                // selectedId = obj?.objectId;
+            };
+
+            PictureReferenceBinder.Bind(el.Q<VisualElement>("PathField"));
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+
+        };
+
+        tempDialog.Popup();
     }
 
     public void PopupPlotTrajectoryDialog(ShipLog shipLog)
@@ -246,33 +297,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
         tempDialog.onCreated += (sender, root) =>
         {
-            // var batteryArcIndicator = root.Q<BatteryArcIndicator>("BatteryArcIndicator");
-            // batteryArcIndicator.currentShipClass = shipClass;
-
-            // var uiMap = new Dictionary<MountLocation, BatteryArcIndicator>()
-            // {
-            //     {MountLocation.PortForward, root.Q<BatteryArcIndicator>("PortForward")},
-            //     {MountLocation.Forward, root.Q<BatteryArcIndicator>("Forward")},
-            //     {MountLocation.StarboardForward, root.Q<BatteryArcIndicator>("StarboardForward")},
-            //     {MountLocation.PortMidship, root.Q<BatteryArcIndicator>("PortMidship")},
-            //     {MountLocation.Midship, root.Q<BatteryArcIndicator>("Midship")},
-            //     {MountLocation.StarboardMidship, root.Q<BatteryArcIndicator>("StarboardMidship")},
-            //     {MountLocation.PortAfter, root.Q<BatteryArcIndicator>("PortAfter")},
-            //     {MountLocation.After, root.Q<BatteryArcIndicator>("After")},
-            //     {MountLocation.StarboardAfter, root.Q<BatteryArcIndicator>("StarboardAfter")},
-            // };
-
-            // foreach (var grouping in shipClass.batteryRecords.SelectMany(btyRec => btyRec.mountLocationRecords).GroupBy(mntRec => mntRec.mountLocation))
-            // {
-            //     if (uiMap.TryGetValue(grouping.Key, out var ui))
-            //     {
-            //         var startEndTopZeroCWAngles = grouping.SelectMany(g => g.mountArcs)
-            //             .Select(arcRec => (arcRec.startDeg, arcRec.startDeg + arcRec.CoverageDeg)).ToList();
-
-            //         ui.startEndTopZeroCWAngles = startEndTopZeroCWAngles;
-            //     }
-            // }
-
             var binder = new SectorArcIndicatorBinder();
             binder.BindUI(root);
             binder.BindBatteryData(shipClass);
@@ -419,7 +443,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             root = root,
             template = messageDialogDocument,
-            templateDataSource = null
+            templateDataSource = null,
+            draggable = true
         };
 
         tempDialog.onCreated += (sender, el) =>

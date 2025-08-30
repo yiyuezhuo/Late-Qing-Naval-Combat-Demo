@@ -15,6 +15,7 @@ using System.Collections;
 using NavalCombatCore;
 using CoreUtils;
 using System.Threading;
+using NavalCombat;
 
 public interface IColliderRootProvider
 {
@@ -214,8 +215,22 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         Debug.Log("OnFullStateXMLLoadedCoroutine");
 
+        EventState.UpdateTo(fullState.eventState);
+
+        loaded?.Invoke(this, EventArgs.Empty);
+
+        if (!NavalGameState.Instance.scenarioState.firstLoaded)
+        {
+            NavalGameState.Instance.scenarioState.firstLoaded = true;
+            firstLoaded?.Invoke(this, EventArgs.Empty);
+        }
+
         TempFix();
     }
+
+    public EventHandler firstLoaded;
+    public EventHandler loaded;
+    public EventHandler minuteChanged;
 
     void TempFix()
     {
@@ -301,9 +316,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         while (remainAdvanceSimulationSecondsRequestedByUserInput >= pulseLengthSeconds && remainAdvanceSimulationSecondsRequestedByUpdate >= pulseLengthSeconds)
         {
+            var lastMin = NavalGameState.Instance.scenarioState.dateTime.Minute;
+
             NavalGameState.Instance.Step(pulseLengthSeconds);
             remainAdvanceSimulationSecondsRequestedByUserInput -= pulseLengthSeconds;
             remainAdvanceSimulationSecondsRequestedByUpdate -= pulseLengthSeconds;
+
+            if (NavalGameState.Instance.scenarioState.dateTime.Minute != lastMin)
+            {
+                minuteChanged?.Invoke(this, EventArgs.Empty);
+            }
         }
     }
 

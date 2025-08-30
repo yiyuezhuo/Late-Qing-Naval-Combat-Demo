@@ -58,6 +58,7 @@ namespace NavalCombatCore
 
         public SimulationClock weaponSimulationAssignmentClock = new() { intervalSeconds = 120 };
         public bool doingStep;
+        public bool firstLoaded; // if false, loading will trigger First Load Scenario Trigger and set to true. Save Edit will set it back to false in the file.
 
         public float GetTimeZoneOffset(float longtitude)
         {

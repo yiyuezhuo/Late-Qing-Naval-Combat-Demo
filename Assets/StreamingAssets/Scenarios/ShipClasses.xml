@@ -2375,8 +2375,8 @@
       <barrels>2</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="10" CoverageDeg="160" isCrossDeckFire="false" />
-       <MountArcRecord startDeg="250" CoverageDeg="40" isCrossDeckFire="true" />
+       <MountArcRecord startDeg="0" CoverageDeg="180" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="265" CoverageDeg="40" isCrossDeckFire="true" />
       </mountArcs>
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
@@ -2389,8 +2389,8 @@
       <barrels>2</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="190" CoverageDeg="160" isCrossDeckFire="false" />
-       <MountArcRecord startDeg="70" CoverageDeg="40" isCrossDeckFire="true" />
+       <MountArcRecord startDeg="180" CoverageDeg="180" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="85" CoverageDeg="40" isCrossDeckFire="true" />
       </mountArcs>
       <useRestAngle>false</useRestAngle>
       <restAngleDeg>0</restAngleDeg>
@@ -10284,7 +10284,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
       <verticalPenetrationInchs>2.1</verticalPenetrationInchs>
      </PenetrationTableRecord>
      <PenetrationTableRecord>
-      <distanceYards>120000</distanceYards>
+      <distanceYards>12000</distanceYards>
       <rateOfFire>3.1</rateOfFire>
       <rangeBand>Long</rangeBand>
       <horizontalPenetrationInchs>1</horizontalPenetrationInchs>

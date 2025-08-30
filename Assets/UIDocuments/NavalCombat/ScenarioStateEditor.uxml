@@ -88,6 +88,11 @@
                             <ui:DataBinding property="value" data-source-path="doingStep" binding-mode="TwoWay" />
                         </Bindings>
                     </ui:Toggle>
+                    <ui:Toggle label="First Loaded">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="firstLoaded" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:Label text="Description" />

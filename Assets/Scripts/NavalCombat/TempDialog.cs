@@ -13,6 +13,7 @@ public class TempDialog
 
     public bool centering = true;
     public bool fullScreen = false;
+    public bool draggable = false;
 
     public void Popup()
     {
@@ -64,6 +65,11 @@ public class TempDialog
         if (fullScreen)
         {
             el.style.flexGrow = 1;
+        }
+
+        if (draggable)
+        {
+            root.AddManipulator(new MyDragger());
         }
     }
 }

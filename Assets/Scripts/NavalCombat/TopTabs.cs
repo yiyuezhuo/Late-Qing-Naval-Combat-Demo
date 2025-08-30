@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 using CoreUtils;
 using NavalCombatCore;
+using NavalCombat;
 
 
 public class TopTabs : SingletonDocument<TopTabs>
@@ -176,6 +177,8 @@ public class TopTabs : SingletonDocument<TopTabs>
         root.Q<Button>("GamePreferenceButton").clicked += DialogRoot.Instance.PopupGamePreferenceDialog;
 
         root.Q<Button>("ClearTrajectoriesButton").clicked += GameManager.Instance.ClearShipLogTrajectories;
+
+        root.Q<Button>("EventEditorDialogButton").clicked += DialogRoot.Instance.PopupEventStateEditorDialog;
     }
 
     void OnSaveButtonClicked()
@@ -185,6 +188,7 @@ public class TopTabs : SingletonDocument<TopTabs>
             streamingAssetReference = StreamingAssetReference.Instance,
             navalGameState = DetachGameState(NavalGameState.Instance, StreamingAssetReference.Instance),
             viewState = GameManager.Instance.CaptureViewState(),
+            eventState = EventState.Instance
         };
 
         IOManager.Instance.SaveTextFile(fullState.ToXML(), "FullState", "xml");

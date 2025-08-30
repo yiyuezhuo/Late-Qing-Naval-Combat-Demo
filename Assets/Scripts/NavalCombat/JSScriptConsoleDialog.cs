@@ -11,7 +11,79 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
+public class ScriptEngine
+{
+    Engine engine;
 
+    void Initialize()
+    {
+        engine = new Engine(cfg => cfg.AllowClr()); // Free Version
+        var assembly = typeof(NavalGameState).Assembly;
+        // Debug.Log($"assembly={assembly}");
+        engine = new Engine(cfg => cfg.AllowClr(assembly));
+
+        engine.SetValue("log", new Action<object>(msg => OnLog(msg)));
+        engine.SetValue("NavalGameState", TypeReference.CreateTypeReference<NavalGameState>(engine));
+        engine.SetValue("msgBox", new Action<object>(arg => DialogRoot.Instance.PopupMessageDialog(arg as string)));
+    }
+
+    public void Execute(string script)
+    {
+        try
+        {
+            // engine.Execute(inputTextField.text);
+            // var res = engine.Evaluate(inputTextField.text);
+            var res = engine.Evaluate(script);
+            var obj = res.ToObject();
+            if (obj != null)
+            {
+                OnReturn(obj);
+            }
+        }
+        catch (JavaScriptException ex)
+        {
+            OnJSError(ex);
+        }
+    }
+
+    public EventHandler<object> onLog;
+    public EventHandler<JavaScriptException> onJSError;
+    public EventHandler<object> onReturn;
+
+    public void OnLog(object output)
+    {
+        onLog?.Invoke(this, output);
+    }
+
+    public void OnJSError(JavaScriptException ex)
+    {
+        onJSError?.Invoke(this, ex);
+        // Debug.LogWarning(ex);
+        // outputTextField.SetValueWithoutNotify(outputTextField.value + "[Error]: " + ex + "\n");
+    }
+
+    public void OnReturn(object obj)
+    {
+        onReturn?.Invoke(this, obj);
+        // Debug.Log(obj);
+        // outputTextField.SetValueWithoutNotify(outputTextField.value + "[Return]: " + obj + "\n");
+    }
+
+    static ScriptEngine instance;
+
+    public static ScriptEngine Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new ScriptEngine();
+                instance.Initialize();
+            }
+            return instance;
+        }
+    }
+}
 
 public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
 {
@@ -19,7 +91,7 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
     TextField inputTextField;
     DropdownField builtInScriptDropdownField;
 
-    Engine engine;
+    // Engine engine;
 
     HashSet<RuntimePlatform> fileSystemNotWorkingPlatforms = new() 
     {
@@ -41,32 +113,32 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
         var closeButton = root.Q<Button>("CloseButton");
         builtInScriptDropdownField = root.Q<DropdownField>("BuiltInScriptDropdownField");
 
-        // engine = new Engine(); // Sandboxed Versionz
-        engine = new Engine(cfg => cfg.AllowClr()); // Free Version
-        var assembly = typeof(NavalGameState).Assembly;
-        // Debug.Log($"assembly={assembly}");
-        engine = new Engine(cfg => cfg.AllowClr(assembly));
+        // engine = new Engine(cfg => cfg.AllowClr()); // Free Version
+        // var assembly = typeof(NavalGameState).Assembly;
+        // engine = new Engine(cfg => cfg.AllowClr(assembly));
 
-        engine.SetValue("log", new Action<object>(msg => OnLog(msg)));
-        engine.SetValue("NavalGameState", TypeReference.CreateTypeReference<NavalGameState>(engine));
-        // engine.Execute("log('Hello World')");
+        // engine.SetValue("log", new Action<object>(msg => OnLog(msg)));
+        // engine.SetValue("NavalGameState", TypeReference.CreateTypeReference<NavalGameState>(engine));
 
         executeButton.clicked += () =>
         {
-            try
-            {
-                // engine.Execute(inputTextField.text);
-                var res = engine.Evaluate(inputTextField.text);
-                var obj = res.ToObject();
-                if (obj != null)
-                {
-                    OnReturn(obj);
-                }
-            }
-            catch (JavaScriptException ex)
-            {
-                OnJSError(ex);
-            }
+            ScriptEngine.Instance.Execute(inputTextField.text);
+
+            // try
+            // {
+            //     // engine.Execute(inputTextField.text);
+            //     // var res = engine.Evaluate(inputTextField.text);
+            //     var res = engine.Evaluate(inputTextField.text);
+            //     var obj = res.ToObject();
+            //     if (obj != null)
+            //     {
+            //         OnReturn(obj);
+            //     }
+            // }
+            // catch (JavaScriptException ex)
+            // {
+            //     OnJSError(ex);
+            // }
         };
 
         clearButton.clicked += () =>
@@ -119,6 +191,33 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
         {
             UpdateBuiltinScriptDropdownFieldUsingFileSystem();
         }
+
+        BindToScriptEngine();
+    }
+
+    void OnDisable()
+    {
+        UnbindToScriptEngine();
+    }
+
+    void BindToScriptEngine()
+    {
+        Debug.Log("BindToScriptEngine");
+
+        var scriptEngine = ScriptEngine.Instance;
+        scriptEngine.onLog += OnLog;
+        scriptEngine.onJSError += OnJSError;
+        scriptEngine.onReturn += OnReturn;
+    }
+
+    void UnbindToScriptEngine()
+    {
+        Debug.Log("UnbindToScriptEngine");
+
+        var scriptEngine = ScriptEngine.Instance;
+        scriptEngine.onLog -= OnLog;
+        scriptEngine.onJSError -= OnJSError;
+        scriptEngine.onReturn -= OnReturn;
     }
 
     bool CheckSubPathVaild(string subPath)
@@ -167,19 +266,19 @@ public class JSScriptConsoleDialog : HideableDocument<JSScriptConsoleDialog>
         builtInScriptDropdownField.choices = paths;
     }
 
-    public void OnLog(object output)
+    public void OnLog(object sender, object output)
     {
         Debug.Log(output);
         outputTextField.SetValueWithoutNotify(outputTextField.value + "[Log]: " + output + "\n");
     }
 
-    public void OnJSError(JavaScriptException ex)
+    public void OnJSError(object sender, JavaScriptException ex)
     {
         Debug.LogWarning(ex);
         outputTextField.SetValueWithoutNotify(outputTextField.value + "[Error]: " + ex + "\n");
     }
 
-    public void OnReturn(object obj)
+    public void OnReturn(object sender, object obj)
     {
         Debug.Log(obj);
         outputTextField.SetValueWithoutNotify(outputTextField.value + "[Return]: " + obj + "\n");

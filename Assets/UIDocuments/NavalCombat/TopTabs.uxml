@@ -24,6 +24,7 @@
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Save" name="SaveButton" />
                     <ui:Button text="Load" name="LoadButton" />
+                    <ui:Button text="Save (Edit)" name="SaveEditButton" />
                     <ui:Button text="Selection" name="SelectionBuiltinButton" />
                     <ui:Button text="Go to Main Menu" name="GoToMainMenuButton" />
                     <ui:Button text="Return to Strategic Game" name="ReturnToStrategicGameButton" />
@@ -48,6 +49,7 @@
                     <ui:Button text="JS Script Console" name="JSScriptConsoleButton" />
                     <ui:Button text=" Set to Formation Position" name="SetToFormationPositionButton" />
                     <ui:Button text="Streaming Asset Reference" name="StreamingAssetReferenceDialogButton" />
+                    <ui:Button text="Event Editor" name="EventEditorDialogButton" />
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Help">

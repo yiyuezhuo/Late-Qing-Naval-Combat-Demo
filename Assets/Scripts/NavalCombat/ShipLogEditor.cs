@@ -41,6 +41,13 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         Bind();
     }
 
+    public EventHandler shown;
+
+    protected override void OnShow()
+    {
+        shown?.Invoke(this, EventArgs.Empty);
+    }
+
     // protected override void Awake()
     void Bind()
     {

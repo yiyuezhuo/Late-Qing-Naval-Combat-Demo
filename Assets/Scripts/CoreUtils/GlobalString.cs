@@ -76,5 +76,15 @@ namespace CoreUtils
                 return null;
             return a + b;
         }
+
+        public bool EqualsAny(string str)
+        {
+            return english == str || japanese == str || chineseSimplified == str || chineseTraditional == str;
+        }
+
+        public override string ToString()
+        {
+            return $"GlobalString({english}, {japanese}, {chineseSimplified}, {chineseTraditional})";
+        }
     }
 }

@@ -35,7 +35,7 @@ public class SingletonDocument<T> : SingletonMonoBehaviour<T> where T : MonoBeha
         // root = doc.rootVisualElement;
     }
 
-    public virtual void OnShow()
+    protected virtual void OnShow()
     {
 
     }
@@ -47,7 +47,7 @@ public class SingletonDocument<T> : SingletonMonoBehaviour<T> where T : MonoBeha
         // if(!doc.enabled)
         //     doc.enabled = true;
         gameObject.SetActive(true);
-            
+
         if (root.style.display != DisplayStyle.Flex)
             root.style.display = DisplayStyle.Flex;
 
@@ -61,12 +61,21 @@ public class SingletonDocument<T> : SingletonMonoBehaviour<T> where T : MonoBeha
         // root.style.display = DisplayStyle.None;
         // doc.enabled = false;
         gameObject.SetActive(false);
+
+        OnHidden();
     }
 
     public void SoftHide()
     {
         // Hide();
         root.style.display = DisplayStyle.None;
+
+        OnHidden();
+    }
+    
+    protected virtual void OnHidden()
+    {
+
     }
 
     // public void SoftShow()

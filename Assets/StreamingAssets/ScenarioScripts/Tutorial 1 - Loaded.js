@@ -11,7 +11,13 @@ var Phase = {
     WaitForCameraZoom : 2,
     WaitForTimeAdvanced : 3,
     WaitForUnitSelection : 4,
-    WaitForSpeedChanged : 5
+    WaitForSpeedChanged : 5,
+    WaitForCourseChanged : 6,
+    WaitForShipLogEditorOpened : 7,
+    WaitForNamedShipEditorOpened : 8,
+    WaitForShipClassEditorOpened : 9,
+    WaitForShipClassEditorHidden : 10,
+    End : 11
 }
 
 var phase = Phase.WaitForCameraMove;

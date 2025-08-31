@@ -9,6 +9,7 @@ using Unity.Properties;
 
 using NavalCombatCore;
 using CoreUtils;
+using System;
 
 
 public class ShipClassEditor : HideableDocument<ShipClassEditor>
@@ -210,6 +211,19 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
                 DialogRoot.Instance.PopupBatteryArcIndicatorDialog(shipClass);
             }
         };
+    }
+
+    public EventHandler shown;
+    public EventHandler hidden;
+
+    protected override void OnShow()
+    {
+        shown?.Invoke(this, EventArgs.Empty);
+    }
+
+    protected override void OnHidden()
+    {
+        hidden?.Invoke(this, EventArgs.Empty);
     }
 
     public void OnBatteryXMLLoaded(string text)

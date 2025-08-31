@@ -112,6 +112,13 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
         };
     }
 
+    public EventHandler shown;
+
+    protected override void OnShow()
+    {
+        shown?.Invoke(this, EventArgs.Empty);
+    }
+
     void OnNamedShipsXMLLoaded(string text)
     {
         // IOManager.Instance.textLoaded -= OnNamedShipsXMLLoaded;

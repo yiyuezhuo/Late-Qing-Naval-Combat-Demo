@@ -8,7 +8,8 @@ log(1+1+1)
 var NavalCombatCore = importNamespace('NavalCombatCore');
 log(NavalCombatCore.ShipClass)
 
-yoshino = NavalCombatCore.ScriptHelpers.GetShipLogByName("吉野")
+// yoshino = NavalCombatCore.ScriptHelpers.GetShipLogByName("吉野")
+yoshino = getShipLogByName("Yoshino")
 log(yoshino)
 
 ns = importNamespace("")

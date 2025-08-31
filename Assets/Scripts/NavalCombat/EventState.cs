@@ -5,7 +5,6 @@ using UnityEngine;
 using System.Collections;
 
 using CoreUtils;
-using System.Windows.Forms;
 
 namespace NavalCombat
 {
@@ -21,6 +20,7 @@ namespace NavalCombat
         ShipLogEditorOpened,
         NamedShipEditorOpened,
         ShipClassEditorOpened,
+        ShipClassEditorClosed
     }
 
     public class EventItem
@@ -76,34 +76,19 @@ namespace NavalCombat
         {
             var manager = GameManager.Instance;
             var cameraController = CameraController2.Instance;
+            var shipLogEditor = ShipLogEditor.Instance;
+            var namedShipEditor = NamedShipEditor.Instance;
+            var shipClassEditor = ShipClassEditor.Instance;
 
             foreach (var grouping in eventItems.GroupBy(x => x.eventType))
             {
                 var eventType = grouping.Key;
                 if (eventType == EventType.FirstLoaded)
                 {
-                    // manager.firstLoaded = null; // TODO: use -= ?
-                    // manager.firstLoaded += (sender, args) =>
-                    // {
-                    //     foreach (var item in grouping)
-                    //     {
-                    //         ScriptEngine.Instance.Execute(item.script);
-                    //     }
-                    // };
-
                     ResetAndBind(ref manager.firstLoaded, grouping);
                 }
                 else if (eventType == EventType.PerMinute)
                 {
-                    // manager.minuteChanged = null;
-                    // manager.minuteChanged += (sender, args) =>
-                    // {
-                    //     foreach (var item in grouping)
-                    //     {
-                    //         ScriptEngine.Instance.Execute(item.script);
-                    //     }
-                    // };
-
                     ResetAndBind(ref manager.minuteChanged, grouping);
                 }
                 else if (eventType == EventType.CameraMoved)
@@ -117,6 +102,22 @@ namespace NavalCombat
                 else if (eventType == EventType.UnitClicked)
                 {
                     ResetAndBind(ref manager.shipLogClicked, grouping);
+                }
+                else if (eventType == EventType.ShipLogEditorOpened)
+                {
+                    ResetAndBind(ref shipLogEditor.shown, grouping);
+                }
+                else if (eventType == EventType.NamedShipEditorOpened)
+                {
+                    ResetAndBind(ref namedShipEditor.shown, grouping);
+                }
+                else if (eventType == EventType.ShipClassEditorOpened)
+                {
+                    ResetAndBind(ref shipClassEditor.shown, grouping);
+                }
+                else if (eventType == EventType.ShipClassEditorClosed)
+                {
+                    ResetAndBind(ref shipClassEditor.hidden, grouping);
                 }
             }
         }

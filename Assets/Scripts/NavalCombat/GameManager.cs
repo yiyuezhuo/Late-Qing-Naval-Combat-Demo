@@ -133,7 +133,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         public Mode mode = Mode.BuiltinScenName;
         public FullState fullState = null;
         // public string builtinScenName = "Battle of Yalu River.scen.xml";
-        public string builtinScenName = "Tutorial - Single Ship.scen.xml";
+        public string builtinScenName = "Tutorial 1 - Single Ship.scen.xml";
         public LatLon cameraLocation;
         // public bool requireAutoDeployAll = false;
         public ScenarioDynamicSetupGenerator scenarioSetupGenerator;
@@ -221,6 +221,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         Debug.Log("OnFullStateXMLLoadedCoroutine");
 
         // Other Initialization
+        ScriptEngine.Instance.Reset(); // Better location to invoke reset of Script Engine?
 
         loaded?.Invoke(this, EventArgs.Empty);
 

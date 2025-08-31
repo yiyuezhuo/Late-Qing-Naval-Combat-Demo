@@ -4,7 +4,7 @@
         <ui:Label text="Event Editor" class="title" />
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="flex-grow: 1; flex-basis: 50px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" name="ObjectListView" item-template="project://database/Assets/UIDocuments/Templates/EventItemLabel.uxml?fileID=9197481963319205126&amp;guid=bf0a8247f23abb74cb06658f04dd583c&amp;type=3#EventItemLabel" data-source-path="eventState.eventItems" style="flex-grow: 1;" />
+                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" name="ObjectListView" item-template="project://database/Assets/UIDocuments/Templates/EventItemLabel.uxml?fileID=9197481963319205126&amp;guid=bf0a8247f23abb74cb06658f04dd583c&amp;type=3#EventItemLabel" data-source-path="eventState.eventItems" reorderable="true" style="flex-grow: 1;" />
                 <ui:Button text="Refresh All" name="RefreshAllButton" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">

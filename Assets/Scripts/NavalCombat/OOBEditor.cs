@@ -253,7 +253,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
         oobTreeView.ExpandAll(); // Set Default behaviour?
     }
 
-    public override void OnShow()
+    protected override void OnShow()
     {
         Sync();
     }

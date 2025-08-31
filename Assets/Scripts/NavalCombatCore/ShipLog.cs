@@ -335,7 +335,7 @@ namespace NavalCombatCore
         // public List<ShipboardFireStatus> shipboardFireStatus = new();
 
         public string parentObjectId { get; set; } // OOB perspective
-                                                    // Get Parent / Root Parent method is defined in IShipGroupMember
+                                                   // Get Parent / Root Parent method is defined in IShipGroupMember
 
         // public string leaderObjectId;
         public Leader leader
@@ -1183,6 +1183,11 @@ namespace NavalCombatCore
         // public float GetHeadingDeg() => headingDeg;
         public float GetLengthFoot() => shipClass.lengthFoot;
         public float GetBeamFoot() => shipClass.beamFoot;
+
+        public override string ToString()
+        {
+            return $"ShipLog({namedShip.name}, {objectId})";
+        }
 
     }
 }

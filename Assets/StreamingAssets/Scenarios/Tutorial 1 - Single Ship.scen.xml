@@ -342,6 +342,7 @@
     </pathReference>
    </EventItem>
    <EventItem>
+    <name>Per Minute</name>
     <eventType>PerMinute</eventType>
     <pathReference>
      <path>ScenarioScripts\Tutorial 1 - Advance 1 min.js</path>
@@ -349,9 +350,42 @@
     </pathReference>
    </EventItem>
    <EventItem>
+    <name>Unit Clicked</name>
     <eventType>UnitClicked</eventType>
     <pathReference>
      <path>ScenarioScripts\Tutorial 1 - Unit Clicked.js</path>
+     <isBuiltin>true</isBuiltin>
+    </pathReference>
+   </EventItem>
+   <EventItem>
+    <name>ShipLog Editor Shown</name>
+    <eventType>ShipLogEditorOpened</eventType>
+    <pathReference>
+     <path>ScenarioScripts\Tutorial 1 - Ship Log Editor Shown.js</path>
+     <isBuiltin>true</isBuiltin>
+    </pathReference>
+   </EventItem>
+   <EventItem>
+    <name>Ship Class Editor Shown</name>
+    <eventType>ShipClassEditorOpened</eventType>
+    <pathReference>
+     <path>ScenarioScripts\Tutorial 1 - Ship Class Editor Shown.js</path>
+     <isBuiltin>true</isBuiltin>
+    </pathReference>
+   </EventItem>
+   <EventItem>
+    <name>Ship Class Editor Closed</name>
+    <eventType>ShipClassEditorClosed</eventType>
+    <pathReference>
+     <path>ScenarioScripts\Tutorial 1 - Ship Class Hidden.js</path>
+     <isBuiltin>true</isBuiltin>
+    </pathReference>
+   </EventItem>
+   <EventItem>
+    <name>Named Ship Editor Shown</name>
+    <eventType>NamedShipEditorOpened</eventType>
+    <pathReference>
+     <path>ScenarioScripts\Tutorial 1 - Named Ship Editor Shown.js</path>
      <isBuiltin>true</isBuiltin>
     </pathReference>
    </EventItem>

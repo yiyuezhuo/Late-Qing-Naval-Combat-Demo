@@ -25,6 +25,28 @@ public class ScriptEngine
         engine.SetValue("log", new Action<object>(msg => OnLog(msg)));
         engine.SetValue("NavalGameState", TypeReference.CreateTypeReference<NavalGameState>(engine));
         engine.SetValue("msgBox", new Action<object>(arg => DialogRoot.Instance.PopupMessageDialog(arg as string)));
+        engine.SetValue("msgBoxDelay", new Action<object, object>(MsgDelay));
+        // engine.SetValue("msgBoxDelay", new Action<object, object>((msg, seconds) => {
+        //     DialogRoot.Instance.PopupMessageDialog(msg as string));
+        // });
+    }
+
+    static void Msg(object msg)
+    {
+        DialogRoot.Instance.PopupMessageDialog(msg as string);
+    }
+
+    static IEnumerator DoMsgDelay(string msg, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        DialogRoot.Instance.PopupMessageDialog(msg);
+    }
+
+    static void MsgDelay(object msg, object seconds)
+    {
+        var _msg = msg as string;
+        var _seconds = (float)(double)seconds;
+        BehaviourUtils.Instance.StartCoroutine(DoMsgDelay(_msg, _seconds));
     }
 
     public void Execute(string script)

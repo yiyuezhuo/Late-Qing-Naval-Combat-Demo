@@ -16,7 +16,8 @@ namespace NavalCombat
         CameraZoomed,
         PerSecond,
         PerMinute,
-        Advanced,
+        // Advanced,
+        UnitClicked,
         ShipLogEditorOpened,
         NamedShipEditorOpened,
         ShipClassEditorOpened,
@@ -74,33 +75,62 @@ namespace NavalCombat
         void Register()
         {
             var manager = GameManager.Instance;
+            var cameraController = CameraController2.Instance;
 
             foreach (var grouping in eventItems.GroupBy(x => x.eventType))
             {
                 var eventType = grouping.Key;
                 if (eventType == EventType.FirstLoaded)
                 {
-                    manager.firstLoaded = null; // TODO: use -= ?
-                    manager.firstLoaded += (sender, args) =>
-                    {
-                        foreach (var item in grouping)
-                        {
-                            ScriptEngine.Instance.Execute(item.script);
-                        }
-                    };
+                    // manager.firstLoaded = null; // TODO: use -= ?
+                    // manager.firstLoaded += (sender, args) =>
+                    // {
+                    //     foreach (var item in grouping)
+                    //     {
+                    //         ScriptEngine.Instance.Execute(item.script);
+                    //     }
+                    // };
+
+                    ResetAndBind(ref manager.firstLoaded, grouping);
                 }
                 else if (eventType == EventType.PerMinute)
                 {
-                    manager.minuteChanged = null;
-                    manager.minuteChanged += (sender, args) =>
-                    {
-                        foreach (var item in grouping)
-                        {
-                            ScriptEngine.Instance.Execute(item.script);
-                        }
-                    };
+                    // manager.minuteChanged = null;
+                    // manager.minuteChanged += (sender, args) =>
+                    // {
+                    //     foreach (var item in grouping)
+                    //     {
+                    //         ScriptEngine.Instance.Execute(item.script);
+                    //     }
+                    // };
+
+                    ResetAndBind(ref manager.minuteChanged, grouping);
+                }
+                else if (eventType == EventType.CameraMoved)
+                {
+                    ResetAndBind(ref cameraController.cameraMoved, grouping);
+                }
+                else if (eventType == EventType.CameraZoomed)
+                {
+                    ResetAndBind(ref cameraController.cameraZoomed, grouping);
+                }
+                else if (eventType == EventType.UnitClicked)
+                {
+                    ResetAndBind(ref manager.shipLogClicked, grouping);
                 }
             }
+        }
+
+        void ResetAndBind(ref System.EventHandler eventHandler, IGrouping<EventType, EventItem> grouping)
+        {
+            eventHandler = null; // TODO: use -= ?
+            eventHandler += (sender, args) =>
+            {
+                foreach (var item in grouping)
+                {
+                    ScriptEngine.Instance.Execute(item.script);
+                }
+            };
         }
     }
 }

@@ -67,7 +67,18 @@ public class BuildProcessor : IPreprocessBuildWithReport
         var builtinScripts = Directory.GetFiles(streamingAssetsPath + "/BuiltinScripts", "*.js")
             .Select(GetRelativeToAndNormalizePath).ToList();
         var scenarioFiles = Directory.GetFiles(streamingAssetsPath + "/Scenarios", "*.scen.xml")
-                .Select(GetRelativeToAndNormalizePath).ToList();
+            .Select(GetRelativeToAndNormalizePath).ToList();
+
+        scenarioFiles.Sort((left, right) =>
+        {
+            var leftTutorial = left.Contains("Tutorial"); // TODO: Introduce extra info?
+            var rightTutorial = right.Contains("Tutorial");
+            if (leftTutorial && !rightTutorial)
+                return -1;
+            if (!leftTutorial && rightTutorial)
+                return 1;
+            return left.CompareTo(right);
+        });
 
         var manifestModel = new ManifestModel()
         {

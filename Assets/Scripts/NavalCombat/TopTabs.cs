@@ -65,7 +65,9 @@ public class TopTabs : SingletonDocument<TopTabs>
         var saveButton = root.Q<Button>("SaveButton");
         var loadButton = root.Q<Button>("LoadButton");
 
-        saveButton.clicked += OnSaveButtonClicked;
+        saveButton.clicked += () => OnSaveButtonClicked(false);
+
+        root.Q<Button>("SaveEditButton").clicked += () => OnSaveButtonClicked(true);
 
         loadButton.clicked += () =>
         {
@@ -181,7 +183,7 @@ public class TopTabs : SingletonDocument<TopTabs>
         root.Q<Button>("EventEditorDialogButton").clicked += DialogRoot.Instance.PopupEventStateEditorDialog;
     }
 
-    void OnSaveButtonClicked()
+    void OnSaveButtonClicked(bool editSave=false)
     {
         var fullState = new FullState()
         {
@@ -190,6 +192,11 @@ public class TopTabs : SingletonDocument<TopTabs>
             viewState = GameManager.Instance.CaptureViewState(),
             eventState = EventState.Instance
         };
+
+        if (editSave)
+        {
+            fullState.navalGameState.scenarioState.firstLoaded = false;
+        }
 
         IOManager.Instance.SaveTextFile(fullState.ToXML(), "FullState", "xml");
     }

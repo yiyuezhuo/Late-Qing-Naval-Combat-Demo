@@ -65,6 +65,9 @@ public class CameraController2 : MonoBehaviour
     InputAction scrollWheelAction;
     InputAction rightClickAction;
 
+    public EventHandler cameraMoved;
+    public EventHandler cameraZoomed;
+
     void Awake()
     {
         cameras = GetComponentsInChildren<Camera>().ToList();
@@ -146,6 +149,8 @@ public class CameraController2 : MonoBehaviour
             {
                 cam.orthographicSize = zoomLevel[newZoomIdx];
             }
+
+            cameraZoomed?.Invoke(this, EventArgs.Empty);
         }
         
         // Touch Pinch Zooming
@@ -237,6 +242,10 @@ public class CameraController2 : MonoBehaviour
         }
         else
         {
+            if (dragging)
+            {
+                cameraMoved?.Invoke(this, EventArgs.Empty);
+            }
             dragging = false;
         }
     }

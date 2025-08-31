@@ -132,7 +132,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         public Mode mode = Mode.BuiltinScenName;
         public FullState fullState = null;
-        public string builtinScenName = "Battle of Yalu River.scen.xml";
+        // public string builtinScenName = "Battle of Yalu River.scen.xml";
+        public string builtinScenName = "Tutorial - Single Ship.scen.xml";
         public LatLon cameraLocation;
         // public bool requireAutoDeployAll = false;
         public ScenarioDynamicSetupGenerator scenarioSetupGenerator;
@@ -235,6 +236,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public EventHandler firstLoaded;
     public EventHandler loaded;
     public EventHandler minuteChanged;
+    public EventHandler shipLogClicked;
 
     void TempFix()
     {
@@ -471,6 +473,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                         selectedShipLogObjectId = shipLog.objectId;
 
                         ShipLogEditor.Instance.selectedShipLogObjectId = selectedShipLogObjectId;
+
+                        shipLogClicked?.Invoke(this, EventArgs.Empty);
                     }
                 }
 

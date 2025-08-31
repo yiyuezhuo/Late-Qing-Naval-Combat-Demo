@@ -273,7 +273,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             var pathField = el.Q<VisualElement>("PathField");
             PathReferenceBinder.BindJSReference(pathField);
             PathReferenceBinder.AddCallback(pathField, () =>{
-                if (Utils.TryResolveCurrentValueForBinding(refreshButton, out EventItem eventItem))
+                if (Utils.TryResolveCurrentValueForBinding(refreshButton, out EventItem eventItem)) // TODO: Temp Hack
                 {
                     BehaviourUtils.Instance.StartCoroutine(eventItem.Refresh());
                 }

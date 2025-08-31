@@ -8,6 +8,6 @@ public class WeaponEditor : LeftObjectPickerRightEditorStrategic<WeaponEditor, W
     {
         base.OnEnable();
 
-        PictureReferenceBinder.Bind(root.Q<VisualElement>("PictureField"));
+        PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("PictureField"));
     }
 }

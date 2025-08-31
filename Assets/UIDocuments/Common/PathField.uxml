@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement data-source-type="CoreUtils.PictureReference, Assembly-CSharp" style="flex-direction: column;">
+    <ui:VisualElement data-source-type="CoreUtils.PathReference, Assembly-CSharp" style="flex-direction: column;">
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:Label text="Label" name="FieldLabel" style="flex-grow: 1;" />
             <ui:Label text="Builtin" />

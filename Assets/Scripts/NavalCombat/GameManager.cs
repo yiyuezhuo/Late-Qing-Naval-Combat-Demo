@@ -200,8 +200,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public IEnumerator CompleteFullStateAndUpdateCoroutine(FullState fullState)
     {
+        // Loading
         yield return fullState.streamingAssetReference.TryToCompleteFromStreamingAssetReference(fullState.navalGameState);
         StreamingAssetReference.UpdateInstance(fullState.streamingAssetReference);
+
+        EventState.UpdateTo(fullState.eventState);
+        yield return EventState.Instance.SyncAndRegister();
 
         LoadViewState(fullState.viewState);
         NavalGameState.UpdateInstance(fullState.navalGameState);
@@ -215,7 +219,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         Debug.Log("OnFullStateXMLLoadedCoroutine");
 
-        EventState.UpdateTo(fullState.eventState);
+        // Other Initialization
 
         loaded?.Invoke(this, EventArgs.Empty);
 

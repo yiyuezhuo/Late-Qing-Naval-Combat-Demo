@@ -131,18 +131,55 @@ public class IOManager : SingletonMonoBehaviour<IOManager>
 #endif
     }
 
-    public string LoadImagePath(string ext = "txt")
+    public string LoadPath(ExtensionFilter[] extensions)
     {
-        var extensions = new ExtensionFilter[]
-        {
-            new ExtensionFilter("Image Files", "png", "jpg", "jpeg" ),
-            // new ExtensionFilter("All Files", "*" ),
-        };
         var paths = StandaloneFileBrowser.OpenFilePanel("Title", "", extensions, false);
         if (paths.Length > 0)
         {
             return paths[0].Replace("\\", "/");
         }
         return null;
+    }
+
+    static ExtensionFilter[] imageExtensions = new ExtensionFilter[]
+    {
+        new ExtensionFilter("Images", "png", "jpg", "jpeg", "gif"),
+    };
+
+    public string LoadImagePath()
+    {
+        // var extensions = new ExtensionFilter[]
+        // {
+        //     new ExtensionFilter("Image Files", "png", "jpg", "jpeg" ),
+        //     // new ExtensionFilter("All Files", "*" ),
+        // };
+        // var paths = StandaloneFileBrowser.OpenFilePanel("Title", "", extensions, false);
+        // if (paths.Length > 0)
+        // {
+        //     return paths[0].Replace("\\", "/");
+        // }
+        // return null;
+
+        return LoadPath(imageExtensions);
+    }
+
+    static ExtensionFilter[] jsExtensions = new ExtensionFilter[]
+    {
+        new ExtensionFilter("JavaScript", "js"),
+    };
+
+    public string LoadJSPath()
+    {
+        return LoadPath(jsExtensions);
+    }
+
+    static ExtensionFilter[] xmlExtensions = new ExtensionFilter[]
+    {
+        new ExtensionFilter("XML", "xml"),
+    };
+
+    public string LoadXMLPath()
+    {
+        return LoadPath(jsExtensions);
     }
 }

@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Properties;
+using UnityEngine;
+using System.Collections;
 
 using CoreUtils;
+using System.Windows.Forms;
 
 namespace NavalCombat
 {
@@ -24,11 +27,20 @@ namespace NavalCombat
         public string name;
         public EventType eventType;
         // public string scriptPath;
-        public PictureReference pathReference = new();
-        public string script;
+        // public PictureReference pathReference = new();
+        public TextReference pathReference = new();
+
+        [CreateProperty]
+        public string script => pathReference.text;
 
         [CreateProperty]
         public string labelName => $"{name}|{eventType}";
+
+        public IEnumerator Refresh()
+        {
+            pathReference.TryToClearCache();
+            yield return pathReference.RequestIfNotLoadedYet(); 
+        }
     }
 
     public class EventState
@@ -43,7 +55,23 @@ namespace NavalCombat
 
         public List<EventItem> eventItems = new();
 
-        public void Register()
+        public IEnumerator SyncAndRegister()
+        {
+            yield return BehaviourUtils.Instance.StartAndWaitAll(eventItems.Select(item => item.pathReference.RequestIfNotLoadedYet()));
+            Register();
+        }
+
+        public IEnumerator RefreshAll()
+        {
+            // foreach (var item in eventItems)
+            // {
+            //     yield return item.Refresh();
+            // }
+            // eventItems.Select(item => IOManager.Instance.StartCoroutine(item.Refresh()));
+            yield return BehaviourUtils.Instance.StartAndWaitAll(eventItems.Select(item => item.Refresh()));
+        }
+
+        void Register()
         {
             var manager = GameManager.Instance;
 
@@ -52,7 +80,7 @@ namespace NavalCombat
                 var eventType = grouping.Key;
                 if (eventType == EventType.FirstLoaded)
                 {
-                    manager.firstLoaded = null;
+                    manager.firstLoaded = null; // TODO: use -= ?
                     manager.firstLoaded += (sender, args) =>
                     {
                         foreach (var item in grouping)

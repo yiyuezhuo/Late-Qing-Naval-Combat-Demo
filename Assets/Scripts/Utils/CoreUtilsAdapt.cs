@@ -1,10 +1,14 @@
 using Unity.Properties;
 using UnityEngine.UIElements;
 using UnityEngine;
+using System;
+using System.Collections;
+using UnityEngine.Networking;
+using System.Collections.Generic;
 
 namespace CoreUtils
 {
-    public partial class PictureReference
+    public partial class PathReference
     {
         public string ResolvePath()
         {
@@ -27,7 +31,10 @@ namespace CoreUtils
 #endif
             }
         }
+    }
 
+    public partial class PictureReference
+    {
         [CreateProperty]
         public StyleBackground pictureStyleBackground
         {
@@ -35,6 +42,52 @@ namespace CoreUtils
             {
                 var path = ResolvePath();
                 return UnityWebRequestImageReader.Instance.FetchStyleBackground(path);
+            }
+        }
+    }
+
+    // works like a UnityWebRequest wrapper. Fetch value after request sent
+    public partial class TextReference
+    {
+        IEnumerator Request()
+        {
+            var path = ResolvePath();
+            using (var webRequest = UnityWebRequest.Get(path))
+            {
+                yield return webRequest.SendWebRequest();
+                pathToText[path] = webRequest.downloadHandler.text;
+            }
+        }
+
+        public IEnumerator RequestIfNotLoadedYet()
+        {
+            var path = ResolvePath();
+            if (path == null)
+                yield break;
+            if (!pathToText.ContainsKey(path))
+                yield return Request();
+            // if it is loaded, a coroutine which isDone=true is returned, so no one frame delay would be introduced.
+        }
+
+        public void TryToClearCache()
+        {
+            var path = ResolvePath();
+
+            if (path == null)
+                return;
+
+            if (pathToText.ContainsKey(path))
+                pathToText.Remove(path);
+        }
+
+        public string text
+        {
+            get
+            {
+                var path = ResolvePath();
+                if (path == null)
+                    return null;
+                return pathToText.GetValueOrDefault(path);
             }
         }
     }

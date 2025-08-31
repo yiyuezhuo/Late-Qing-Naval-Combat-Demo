@@ -53,7 +53,7 @@ public class LeaderEditor : HideableDocument<LeaderEditor>
         };
 
         var portaitField = root.Q<VisualElement>("PortaitField");
-        PictureReferenceBinder.Bind(portaitField);
+        PathReferenceBinder.BindPictureReference(portaitField);
     }
 
     void OnLeadersXMLLoaded(string text)

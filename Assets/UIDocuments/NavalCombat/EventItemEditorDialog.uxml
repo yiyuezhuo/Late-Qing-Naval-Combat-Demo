@@ -1,39 +1,50 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="PathField" src="project://database/Assets/UIDocuments/Common/PathField.uxml?fileID=9197481963319205126&amp;guid=9188b5e7d6765164fae8cbb89413e8dc&amp;type=3#PathField" />
-    <ui:VisualElement data-source-type="DialogRoot+EventStateEditorDialogDataSource, Assembly-CSharp" class="panel-dialog" style="flex-grow: 0; width: 600px;">
+    <ui:VisualElement data-source-type="DialogRoot+EventStateEditorDialogDataSource, Assembly-CSharp" class="panel-dialog" style="flex-grow: 0; width: 650px;">
         <ui:Label text="Event Editor" class="title" />
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="flex-grow: 1; flex-basis: 50px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                 <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" name="ObjectListView" item-template="project://database/Assets/UIDocuments/Templates/EventItemLabel.uxml?fileID=9197481963319205126&amp;guid=bf0a8247f23abb74cb06658f04dd583c&amp;type=3#EventItemLabel" data-source-path="eventState.eventItems" style="flex-grow: 1;" />
+                <ui:Button text="Refresh All" name="RefreshAllButton" />
             </ui:VisualElement>
-            <ui:VisualElement data-source-path="currentEventItem" style="flex-grow: 1; flex-basis: 50px;">
-                <ui:VisualElement style="flex-direction: row;">
-                    <ui:Label text="Name" />
-                    <ui:TextField style="flex-grow: 1;">
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
+                <ui:VisualElement data-source-path="currentEventItem" style="flex-grow: 1;">
+                    <ui:VisualElement style="flex-direction: row;">
+                        <ui:Label text="Name" />
+                        <ui:TextField style="flex-grow: 1;">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="name" binding-mode="TwoWay" />
+                            </Bindings>
+                        </ui:TextField>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row;">
+                        <ui:Label text="Event" />
+                        <ui:EnumField value="Center" type="NavalCombat.EventType, Assembly-CSharp" style="flex-grow: 1;">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="eventType" binding-mode="TwoWay" />
+                            </Bindings>
+                        </ui:EnumField>
+                    </ui:VisualElement>
+                    <ui:Instance template="PathField" data-source-path="pathReference" name="PathField">
+                        <AttributeOverrides element-name="FieldLabel" text="Script" />
+                    </ui:Instance>
+                    <ui:VisualElement style="flex-direction: row;">
+                        <ui:Label text="Preview" style="flex-grow: 1;" />
+                        <ui:Button text="Refresh" name="RefreshButton" />
+                    </ui:VisualElement>
+                    <ui:TextField multiline="true" vertical-scroller-visibility="Auto" readonly="true" style="white-space: normal; flex-grow: 1; flex-shrink: 1;">
                         <Bindings>
-                            <ui:DataBinding property="value" data-source-path="name" binding-mode="TwoWay" />
+                            <ui:DataBinding property="value" data-source-path="script" binding-mode="ToTarget" />
                         </Bindings>
                     </ui:TextField>
                 </ui:VisualElement>
-                <ui:VisualElement style="flex-direction: row;">
-                    <ui:Label text="Event" />
-                    <ui:EnumField value="Center" type="NavalCombat.EventType, Assembly-CSharp" style="flex-grow: 1;">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="eventType" binding-mode="TwoWay" />
-                        </Bindings>
-                    </ui:EnumField>
-                </ui:VisualElement>
-                <ui:Instance template="PathField" data-source-path="pathReference" name="PathField">
-                    <AttributeOverrides element-name="FieldLabel" text="Script" />
-                </ui:Instance>
-                <ui:Label text="Preview" />
-                <ui:TextField multiline="true" vertical-scroller-visibility="Auto" readonly="true" style="white-space: normal; flex-grow: 1;">
-                    <Bindings>
-                        <ui:DataBinding property="value" data-source-path="script" binding-mode="ToTarget" />
-                    </Bindings>
-                </ui:TextField>
+                <Bindings>
+                    <ui:DataBinding property="style.display" data-source-path="isCurrentSelectionValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                </Bindings>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Button text="Confirm" name="ConfirmButton" />
+        <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

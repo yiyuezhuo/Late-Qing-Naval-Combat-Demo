@@ -217,6 +217,9 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     {
         public EventState eventState;
         public EventItem currentEventItem;
+
+        [CreateProperty]
+        public bool isCurrentSelectionValid => currentEventItem != null;
     }
 
     public void PopupEventStateEditorDialog()
@@ -251,12 +254,35 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 // selectedId = obj?.objectId;
             };
 
-            PictureReferenceBinder.Bind(el.Q<VisualElement>("PathField"));
+            // el.Q<Button>("RefreshButton").clicked += TextReference.ClearCache; // TODO: switch local
+            el.Q<Button>("RefreshAllButton").clicked += () =>
+            {
+                EventState.Instance.RefreshAll();
+            };
+
+            var refreshButton = el.Q<Button>("RefreshButton");
+            refreshButton.clicked += () =>
+            {
+                Debug.Log(EventState.Instance.eventItems);
+                if (Utils.TryResolveCurrentValueForBinding(refreshButton, out EventItem eventItem))
+                {
+                    BehaviourUtils.Instance.StartCoroutine(eventItem.Refresh());
+                }
+            };
+
+            var pathField = el.Q<VisualElement>("PathField");
+            PathReferenceBinder.BindJSReference(pathField);
+            PathReferenceBinder.AddCallback(pathField, () =>{
+                if (Utils.TryResolveCurrentValueForBinding(refreshButton, out EventItem eventItem))
+                {
+                    BehaviourUtils.Instance.StartCoroutine(eventItem.Refresh());
+                }
+            });
         };
 
         tempDialog.onConfirmed += (sender, el) =>
         {
-
+            BehaviourUtils.Instance.StartCoroutine(EventState.Instance.SyncAndRegister());
         };
 
         tempDialog.Popup();

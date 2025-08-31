@@ -199,8 +199,8 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             }
         };
 
-        PictureReferenceBinder.Bind(root.Q<VisualElement>("PortraitTopReferenceField"));
-        PictureReferenceBinder.Bind(root.Q<VisualElement>("PortraitReferenceField"));
+        PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("PortraitTopReferenceField"));
+        PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("PortraitReferenceField"));
 
         var batteryArcIndicatorDialogButton = root.Q<Button>("BatteryArcIndicatorDialogButton");
         batteryArcIndicatorDialogButton.clicked += () =>

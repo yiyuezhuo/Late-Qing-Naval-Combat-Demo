@@ -1186,7 +1186,7 @@ namespace NavalCombatCore
 
         public override string ToString()
         {
-            return $"ShipLog({namedShip.name}, {objectId})";
+            return $"ShipLog({namedShip?.name}, {objectId})";
         }
 
     }

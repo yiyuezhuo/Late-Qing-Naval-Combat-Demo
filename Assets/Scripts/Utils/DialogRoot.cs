@@ -235,7 +235,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             root = root,
             template = eventStateEditorDialogDocument,
             templateDataSource = dataSource,
-            draggable = true
+            draggable = false
         };
 
         tempDialog.onCreated += (sender, el) =>

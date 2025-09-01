@@ -106,20 +106,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         get => state.ToString();
     }
 
-    // static GameManager _instance;
-    // public static GameManager Instance
-    // {
-    //     get
-    //     {
-    //         if (_instance == null)
-    //             _instance = FindFirstObjectByType<GameManager>();
-    //         return _instance;
-    //     }
-    // }
-
-    // public static string scenarioSuffix = "_Pungdo.xml"; // temp hack
-    // public static string scenarioSuffix = "_Yalu.xml";
-
     public class StartupConfig
     {
         public enum Mode
@@ -133,7 +119,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         public Mode mode = Mode.BuiltinScenName;
         public FullState fullState = null;
         // public string builtinScenName = "Battle of Yalu River.scen.xml";
-        public string builtinScenName = "Tutorial 1 - Single Ship.scen.xml";
+        // public string builtinScenName = "Tutorial 1 - Single Ship.scen.xml";
+        public string builtinScenName = "Tutorial 2 - Ship Group.scen.xml";
         public LatLon cameraLocation;
         // public bool requireAutoDeployAll = false;
         public ScenarioDynamicSetupGenerator scenarioSetupGenerator;

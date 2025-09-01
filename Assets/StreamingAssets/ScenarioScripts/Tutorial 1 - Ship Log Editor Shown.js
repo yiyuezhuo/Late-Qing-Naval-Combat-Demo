@@ -1,7 +1,7 @@
 if(phase === Phase.WaitForShipLogEditorOpened)
 {
     msgBoxDelay(`
-Ship Log Editor is displayed. You can switch different tabs to see different information. Ship Log record unit's 'dynamic' information like damage and weapon states (ammunition, firing target, availability).
+Ship Log Editor is displayed. You can switch different tabs to see different information. Ship Log record unit's 'dynamic' information like damage and weapon states (ammunition, firing target, availability), doctrine and etc.
 
 Some advance command can only be formed in the Ship Log Editor.
 

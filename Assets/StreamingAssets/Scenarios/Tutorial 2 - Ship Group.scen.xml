@@ -227,11 +227,232 @@
     </doctrine>
     <strategicGroupReference />
    </ShipLog>
+   <ShipLog>
+    <subStates />
+    <objectId>371bff12-0a78-422c-94db-b03c5b9fe012</objectId>
+    <namedShipObjectId>da81e4ec-40b5-4f9c-949d-375e86b668bf</namedShipObjectId>
+    <damagePoint>0</damagePoint>
+    <position>
+     <LatDeg>39.6647835</LatDeg>
+     <LonDeg>123.511322</LonDeg>
+    </position>
+    <speedKnots>10</speedKnots>
+    <headingDeg>180</headingDeg>
+    <desiredSpeedKnots>10</desiredSpeedKnots>
+    <desiredHeadingDeg>180</desiredHeadingDeg>
+    <mapState>Deployed</mapState>
+    <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
+    <batteryStatus>
+     <BatteryStatus>
+      <subStates />
+      <objectId>614a6f2f-09db-44c6-b3ec-606f4c054f4f</objectId>
+      <ammunition>
+       <ArmorPiercing>100</ArmorPiercing>
+       <semiArmorPiercing>0</semiArmorPiercing>
+       <common>100</common>
+       <highExplosive>0</highExplosive>
+      </ammunition>
+      <mountStatus>
+       <MountStatusRecord>
+        <subStates />
+        <objectId>1185f950-f878-4e25-ba81-ea1ea4d56f85</objectId>
+        <status>Operational</status>
+        <barrels>2</barrels>
+        <processSeconds>0</processSeconds>
+        <ammunitionType>ArmorPiercing</ammunitionType>
+        <logs />
+       </MountStatusRecord>
+       <MountStatusRecord>
+        <subStates />
+        <objectId>4ad5fab2-7e73-4b64-83b0-67df8f6234ea</objectId>
+        <status>Operational</status>
+        <barrels>2</barrels>
+        <processSeconds>0</processSeconds>
+        <ammunitionType>ArmorPiercing</ammunitionType>
+        <logs />
+       </MountStatusRecord>
+      </mountStatus>
+      <fireControlSystemStatusRecords>
+       <FireControlSystemStatusRecord>
+        <subStates />
+        <objectId>a7f978e5-2308-4476-9861-af2d7b85252d</objectId>
+        <trackingState>Idle</trackingState>
+        <trackingSeconds>0</trackingSeconds>
+       </FireControlSystemStatusRecord>
+      </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
+     </BatteryStatus>
+     <BatteryStatus>
+      <subStates />
+      <objectId>9978b1f3-16cc-45a9-bb55-0c3bb411d602</objectId>
+      <ammunition>
+       <ArmorPiercing>75</ArmorPiercing>
+       <semiArmorPiercing>0</semiArmorPiercing>
+       <common>75</common>
+       <highExplosive>0</highExplosive>
+      </ammunition>
+      <mountStatus>
+       <MountStatusRecord>
+        <subStates />
+        <objectId>49709fbe-e1dd-4fee-a997-06e94b4e7938</objectId>
+        <status>Operational</status>
+        <barrels>1</barrels>
+        <processSeconds>0</processSeconds>
+        <ammunitionType>ArmorPiercing</ammunitionType>
+        <logs />
+       </MountStatusRecord>
+       <MountStatusRecord>
+        <subStates />
+        <objectId>49d54558-d65b-4bbd-8d1f-fe614961fade</objectId>
+        <status>Operational</status>
+        <barrels>1</barrels>
+        <processSeconds>0</processSeconds>
+        <ammunitionType>ArmorPiercing</ammunitionType>
+        <logs />
+       </MountStatusRecord>
+      </mountStatus>
+      <fireControlSystemStatusRecords>
+       <FireControlSystemStatusRecord>
+        <subStates />
+        <objectId>c11a6a98-019e-4046-840a-46526e8d93ab</objectId>
+        <trackingState>Idle</trackingState>
+        <trackingSeconds>0</trackingSeconds>
+       </FireControlSystemStatusRecord>
+       <FireControlSystemStatusRecord>
+        <subStates />
+        <objectId>f8e6dd0c-c40d-4135-8637-ecd73a307002</objectId>
+        <trackingState>Idle</trackingState>
+        <trackingSeconds>0</trackingSeconds>
+       </FireControlSystemStatusRecord>
+      </fireControlSystemStatusRecords>
+      <fireControlRadarDisabled>false</fireControlRadarDisabled>
+     </BatteryStatus>
+    </batteryStatus>
+    <torpedoSectorStatus>
+     <ammunition>3</ammunition>
+     <mountStatus>
+      <TorpedoMountStatusRecord>
+       <subStates />
+       <objectId>2bee074d-9146-49a9-814e-66ebd5a3490a</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <currentLoad>1</currentLoad>
+       <reloadingSeconds>0</reloadingSeconds>
+       <reloadedLoad>1</reloadedLoad>
+      </TorpedoMountStatusRecord>
+      <TorpedoMountStatusRecord>
+       <subStates />
+       <objectId>550ea4b7-46ce-4275-acf1-26eda1dd192e</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <currentLoad>1</currentLoad>
+       <reloadingSeconds>0</reloadingSeconds>
+       <reloadedLoad>1</reloadedLoad>
+      </TorpedoMountStatusRecord>
+      <TorpedoMountStatusRecord>
+       <subStates />
+       <objectId>783bc50f-6b61-412e-90d2-1232eeba3d4e</objectId>
+       <status>Operational</status>
+       <barrels>1</barrels>
+       <currentLoad>1</currentLoad>
+       <reloadingSeconds>0</reloadingSeconds>
+       <reloadedLoad>1</reloadedLoad>
+      </TorpedoMountStatusRecord>
+     </mountStatus>
+    </torpedoSectorStatus>
+    <rapidFiringStatus>
+     <RapidFiringStatus>
+      <portMountHits>0</portMountHits>
+      <starboardMountHits>0</starboardMountHits>
+      <fireControlHits>0</fireControlHits>
+      <targettingRecords />
+      <ammunition>60</ammunition>
+      <logs />
+      <objectId>6ad06d15-62fe-471a-80a3-40c18d066156</objectId>
+     </RapidFiringStatus>
+    </rapidFiringStatus>
+    <dynamicStatus>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
+     <engineRoomHits>0</engineRoomHits>
+     <propulsionShaftHits>0</propulsionShaftHits>
+     <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
+    </dynamicStatus>
+    <searchLightHits>
+     <portHit>0</portHit>
+     <starboardHit>0</starboardHit>
+    </searchLightHits>
+    <damageControlRatingHits>0</damageControlRatingHits>
+    <emergencyRudder>false</emergencyRudder>
+    <assistedDeceleration>true</assistedDeceleration>
+    <controlMode>Independent</controlMode>
+    <followDistanceYards>500</followDistanceYards>
+    <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+    <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+    <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
+    <timeLocLogs />
+    <parentObjectId>0a72dc07-7f11-4da8-9032-fbe481fc4cb3</parentObjectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>bb7c4e18-fe18-41df-bbfd-93fb20c360aa</objectId>
+    </doctrine>
+    <strategicGroupReference />
+   </ShipLog>
   </shipLogs>
   <shipGroups>
    <ShipGroup>
     <childrenObjectIds>
      <string>63c4dbd1-2a57-4fdf-88aa-46b23ea91728</string>
+     <string>371bff12-0a78-422c-94db-b03c5b9fe012</string>
     </childrenObjectIds>
     <name>
      <english>Beiyang Fleet</english>
@@ -311,8 +532,8 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>39.6666527</xRotation>
-  <yRotation>236.433716</yRotation>
+  <xRotation>39.669838</xRotation>
+  <yRotation>236.444519</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>
  <eventState>
@@ -321,71 +542,31 @@
     <name>Scenario Loaded</name>
     <eventType>FirstLoaded</eventType>
     <pathReference>
-     <path>ScenarioScripts\Tutorial 1 - Loaded.js</path>
+     <path>ScenarioScripts\Tutorial 2 - Loaded.js</path>
      <isBuiltin>true</isBuiltin>
     </pathReference>
    </EventItem>
    <EventItem>
-    <name>Camera Moved</name>
-    <eventType>CameraMoved</eventType>
+    <name>Distance Measured</name>
+    <eventType>DistanceMeasureLineFixed</eventType>
     <pathReference>
-     <path>ScenarioScripts\Tutorial 1 - Camera Moved.js</path>
+     <path>ScenarioScripts\Tutorial 2 - Distance Measure Line Fixed.js</path>
      <isBuiltin>true</isBuiltin>
     </pathReference>
    </EventItem>
    <EventItem>
-    <name>Camera Zoomed</name>
-    <eventType>CameraZoomed</eventType>
-    <pathReference>
-     <path>ScenarioScripts\Tutorial 1 - Camera Zoomed.js</path>
-     <isBuiltin>true</isBuiltin>
-    </pathReference>
-   </EventItem>
-   <EventItem>
-    <name>Per Minute</name>
+    <name>1 min advanced</name>
     <eventType>PerMinute</eventType>
     <pathReference>
-     <path>ScenarioScripts\Tutorial 1 - Advance 1 min.js</path>
+     <path>ScenarioScripts\Tutorial 2 - Advance 1 min.js</path>
      <isBuiltin>true</isBuiltin>
     </pathReference>
    </EventItem>
    <EventItem>
-    <name>Unit Clicked</name>
-    <eventType>UnitClicked</eventType>
-    <pathReference>
-     <path>ScenarioScripts\Tutorial 1 - Unit Clicked.js</path>
-     <isBuiltin>true</isBuiltin>
-    </pathReference>
-   </EventItem>
-   <EventItem>
-    <name>ShipLog Editor Shown</name>
+    <name>Ship Log Editor Shown</name>
     <eventType>ShipLogEditorOpened</eventType>
     <pathReference>
-     <path>ScenarioScripts\Tutorial 1 - Ship Log Editor Shown.js</path>
-     <isBuiltin>true</isBuiltin>
-    </pathReference>
-   </EventItem>
-   <EventItem>
-    <name>Named Ship Editor Shown</name>
-    <eventType>NamedShipEditorOpened</eventType>
-    <pathReference>
-     <path>ScenarioScripts\Tutorial 1 - Named Ship Editor Shown.js</path>
-     <isBuiltin>true</isBuiltin>
-    </pathReference>
-   </EventItem>
-   <EventItem>
-    <name>Ship Class Editor Shown</name>
-    <eventType>ShipClassEditorOpened</eventType>
-    <pathReference>
-     <path>ScenarioScripts\Tutorial 1 - Ship Class Editor Shown.js</path>
-     <isBuiltin>true</isBuiltin>
-    </pathReference>
-   </EventItem>
-   <EventItem>
-    <name>Ship Class Editor Closed</name>
-    <eventType>ShipClassEditorClosed</eventType>
-    <pathReference>
-     <path>ScenarioScripts\Tutorial 1 - Ship Class Hidden.js</path>
+     <path>ScenarioScripts\Tutorial 2 - Ship Log Editor Shown.js</path>
      <isBuiltin>true</isBuiltin>
     </pathReference>
    </EventItem>

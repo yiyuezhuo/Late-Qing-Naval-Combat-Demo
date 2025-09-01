@@ -20,13 +20,67 @@ public class ScriptEngine
 
         engine.SetValue("log", new Action<object>(msg => OnLog(msg)));
         engine.SetValue("NavalGameState", TypeReference.CreateTypeReference<NavalGameState>(engine));
-        engine.SetValue("msgBox", new Action<object>(arg => DialogRoot.Instance.PopupMessageDialog(arg as string)));
+        engine.SetValue("msgBox", new Action<object>(Msg));
         engine.SetValue("msgBoxDelay", new Action<object, object>(MsgDelay));
         engine.SetValue("getShipLogByName", new Func<object, object>(GetShipLogByName));
+        engine.SetValue("getDistanceYard", new Func<object, object, float>(GetDistanceYard));
+        engine.SetValue("getPositiveAngleDifference", new Func<object, object, float>(GetPositiveAngleDifference));
+        engine.SetValue("calculateInitialBearing", new Func<object, object, float>(CalculateInitialBearing));
+        engine.SetValue("measure", new Func<object, object, MeasureStats>(Measure));
+        // GetPositiveAngleDifference
         // engine.SetValue("getUnitByName", )
         // engine.SetValue("msgBoxDelay", new Action<object, object>((msg, seconds) => {
         //     DialogRoot.Instance.PopupMessageDialog(msg as string));
         // });
+    }
+
+    static MeasureStats Measure(object arg1, object arg2)
+    {
+        if (arg1 is ShipLog shipLog1 && arg2 is ShipLog shipLog2)
+        {
+            return MeasureStats.Measure(shipLog1, shipLog2);
+        }
+        return null;
+    }
+
+    static float GetPositiveAngleDifference(object arg1, object arg2)
+    {
+        if (arg1 is ShipLog shipLog1)
+        {
+            if (arg2 is ShipLog shipLog2)
+            {
+                return MeasureUtils.GetPositiveAngleDifference(shipLog1.GetHeadingDeg(), shipLog2.GetHeadingDeg());
+            }
+        }
+        if (arg1 is double heading1)
+        {
+            if (arg2 is double heading2)
+            {
+                return MeasureUtils.GetPositiveAngleDifference((float)heading1, (float)heading2);
+            }
+        }
+        return -1;
+    }
+
+    static float CalculateInitialBearing(object arg1, object arg2)
+    {
+        if (arg1 is ShipLog shipLog1 && arg2 is ShipLog shipLog2)
+        {
+            var angle = (float)MeasureStats.Approximation.CalculateInitialBearing(shipLog1, shipLog2);
+            return angle;
+        }
+        return -1;
+    }
+
+    static float GetDistanceYard(object ship1, object ship2)
+    {
+        var shipLog1 = ship1 as ShipLog;
+        var shipLog2 = ship2 as ShipLog;
+        if (shipLog1 == null || shipLog2 == null)
+            return -1;
+        var distKm = MeasureStats.Approximation.HaversineDistanceKm(shipLog1.position.LatDeg, shipLog1.position.LonDeg, shipLog2.position.LatDeg, shipLog2.position.LonDeg);
+        var distYards = MeasureUtils.kilometerToYard * (float)distKm;
+        return distYards;
     }
 
     static ShipLog GetShipLogByName(object name)
@@ -41,13 +95,14 @@ public class ScriptEngine
 
     static void Msg(object msg)
     {
-        DialogRoot.Instance.PopupMessageDialog(msg as string);
+        MsgDelay(msg, 0.0);
     }
 
     static IEnumerator DoMsgDelay(string msg, float seconds)
     {
         yield return new WaitForSeconds(seconds);
         DialogRoot.Instance.PopupMessageDialog(msg);
+        // NavalGameState.Instance.tempSubjectLogs.A
     }
 
     static void MsgDelay(object msg, object seconds)

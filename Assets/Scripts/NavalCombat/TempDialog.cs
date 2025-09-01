@@ -67,9 +67,9 @@ public class TempDialog
             el.style.flexGrow = 1;
         }
 
-        if (draggable)
-        {
-            root.AddManipulator(new MyDragger());
-        }
+        // if (draggable)
+        // {
+        //     root.AddManipulator(new MyDragger());
+        // }
     }
 }

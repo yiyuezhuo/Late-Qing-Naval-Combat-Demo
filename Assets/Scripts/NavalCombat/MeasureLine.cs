@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
+using System;
 
 public class MeasureLine : SingletonMonoBehaviour<MeasureLine>
 {
@@ -22,6 +23,8 @@ public class MeasureLine : SingletonMonoBehaviour<MeasureLine>
     public LatLon startLatLon;
     public LineRenderer lineRenderer;
     public TMP_Text text;
+
+    public EventHandler distanceMeasureLineFixed;
 
     void Awake()
     {
@@ -92,12 +95,14 @@ public class MeasureLine : SingletonMonoBehaviour<MeasureLine>
                 var distNm = distM / 1852;
                 var distYards = distM * 1.09361;
                 var bearing = inverseLine.Azimuth;
-                text.text = $"{distNm.ToString("0.00")}nm\n{distYards.ToString("0.00")}yards\n{bearing.ToString("0.00")}deg";
+                text.text = $"{distNm:0.00}nm\n{distYards:0.00}yards\n{bearing:0.00}deg";
                 text.transform.position = currentPos;
 
                 if (Input.GetMouseButtonDown(0))
                 {
                     state = State.Fixed;
+                    
+                    distanceMeasureLineFixed?.Invoke(this, EventArgs.Empty);
                 }
                 break;
 

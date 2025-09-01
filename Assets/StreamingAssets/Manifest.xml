@@ -7,6 +7,7 @@
  </builtinScripts>
  <scenarioFiles>
   <string>/Scenarios/Tutorial 1 - Single Ship.scen.xml</string>
+  <string>/Scenarios/Tutorial 2 - Ship Group.scen.xml</string>
   <string>/Scenarios/Battle of Pundo.scen.xml</string>
   <string>/Scenarios/Battle of Yalu River.scen.xml</string>
   <string>/Scenarios/Chih Yuan vs Naniwa.scen.xml</string>

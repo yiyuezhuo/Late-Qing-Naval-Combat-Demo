@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Unity.Properties;
+using System;
 
 using CoreUtils;
 using NavalCombatCore;
@@ -253,9 +254,13 @@ public class OOBEditor : HideableDocument<OOBEditor>
         oobTreeView.ExpandAll(); // Set Default behaviour?
     }
 
+    public EventHandler shown;
+
     protected override void OnShow()
     {
         Sync();
+
+        shown?.Invoke(this, EventArgs.Empty);
     }
 
     List<TreeViewItemData<string>> CreateTreeViewRootItems() // Use List<string> (objectId based denoting?) However Tree Items is a volatile and temp so objectId and other lowered structure doesn't make a lot of senses. 

@@ -3,11 +3,13 @@
  <remark>This file is only used in platform that don't support File System (E.X. WebGL)</remark>
  <builtinScripts>
   <string>/BuiltinScripts/ApplyDamageEffectToAllShips.js</string>
+  <string>/BuiltinScripts/CheckFireExchange.js</string>
   <string>/BuiltinScripts/Sample.js</string>
  </builtinScripts>
  <scenarioFiles>
   <string>/Scenarios/Tutorial 1 - Single Ship.scen.xml</string>
   <string>/Scenarios/Tutorial 2 - Ship Group.scen.xml</string>
+  <string>/Scenarios/Tutorial 3 - Combat.scen.xml</string>
   <string>/Scenarios/Battle of Pundo.scen.xml</string>
   <string>/Scenarios/Battle of Yalu River.scen.xml</string>
   <string>/Scenarios/Chih Yuan vs Naniwa.scen.xml</string>

@@ -21,7 +21,8 @@ namespace NavalCombat
         NamedShipEditorOpened,
         ShipClassEditorOpened,
         ShipClassEditorClosed,
-        DistanceMeasureLineFixed
+        DistanceMeasureLineFixed,
+        OrderOfBattleEditorShown
     }
 
     public class EventItem
@@ -81,6 +82,7 @@ namespace NavalCombat
             var namedShipEditor = NamedShipEditor.Instance;
             var shipClassEditor = ShipClassEditor.Instance;
             var distanceMeasureLine = MeasureLine.Instance;
+            var orderOfBattleEditor = OOBEditor.Instance;
 
             foreach (var grouping in eventItems.GroupBy(x => x.eventType))
             {
@@ -124,6 +126,10 @@ namespace NavalCombat
                 else if (eventType == EventType.DistanceMeasureLineFixed)
                 {
                     ResetAndBind(ref distanceMeasureLine.distanceMeasureLineFixed, grouping);
+                }
+                else if (eventType == EventType.OrderOfBattleEditorShown)
+                {
+                    ResetAndBind(ref orderOfBattleEditor.shown, grouping);
                 }
             }
         }

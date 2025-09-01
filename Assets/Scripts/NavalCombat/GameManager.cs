@@ -120,7 +120,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         public FullState fullState = null;
         // public string builtinScenName = "Battle of Yalu River.scen.xml";
         // public string builtinScenName = "Tutorial 1 - Single Ship.scen.xml";
-        public string builtinScenName = "Tutorial 2 - Ship Group.scen.xml";
+        // public string builtinScenName = "Tutorial 2 - Ship Group.scen.xml";
+        public string builtinScenName = "Tutorial 3 - Combat.scen.xml";
         public LatLon cameraLocation;
         // public bool requireAutoDeployAll = false;
         public ScenarioDynamicSetupGenerator scenarioSetupGenerator;
@@ -319,6 +320,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             if (NavalGameState.Instance.scenarioState.dateTime.Minute != lastMin)
             {
                 minuteChanged?.Invoke(this, EventArgs.Empty);
+                // Debug.LogWarning("minuteChanged published");
             }
         }
     }

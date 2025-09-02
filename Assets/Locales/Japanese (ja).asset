@@ -15,11 +15,16 @@ MonoBehaviour:
   m_Identifier:
     m_Code: ja
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 3978892934965625039
   m_LocaleName: Japanese (ja)
   m_CustomFormatCultureCode: 
   m_UseCustomFormatter: 0
   m_SortOrder: 1
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3978892934965625039
+      type: {class: FallbackLocale, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Locale: {fileID: 11400000, guid: 274f079081775a14e9d0ac7f9d22edf0, type: 2}

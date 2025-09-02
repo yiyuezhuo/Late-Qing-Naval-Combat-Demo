@@ -46,6 +46,704 @@ MonoBehaviour:
     m_Localized: Help
     m_Metadata:
       m_Items: []
+  - m_Id: 60491600400384
+    m_Localized: Advance 1 Min (1)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60672865636352
+    m_Localized: Advance 1 pulse (`)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60764813168640
+    m_Localized: Set Course (Shift + Left Click)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60962738180096
+    m_Localized: Detach (I)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61033085046784
+    m_Localized: Follow (F)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61093424304128
+    m_Localized: Relative (R)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61178581258240
+    m_Localized: Victory Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61279122919424
+    m_Localized: Run Debug Script
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61563505119232
+    m_Localized: Command
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61646443286528
+    m_Localized: File
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61714353262592
+    m_Localized: Tools
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61775904673792
+    m_Localized: Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61863393660928
+    m_Localized: Help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62414676201472
+    m_Localized: Open Source Repo & Readme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62530900365312
+    m_Localized: Game Preference
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62652379992064
+    m_Localized: Leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62707518312448
+    m_Localized: Ship Class
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62777823236096
+    m_Localized: Named Ship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62878209708032
+    m_Localized: Ship Log
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63004600864768
+    m_Localized: Order of Battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63058589945856
+    m_Localized: Scenario State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63113422082048
+    m_Localized: Launched Torpedo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63193810112512
+    m_Localized: JS Script Console
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63271861915648
+    m_Localized: ' Set to Formation Position'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63363125776384
+    m_Localized: Streaming Asset Reference
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63469409439744
+    m_Localized: Event Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63539483676672
+    m_Localized: Distance Measure (D)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63593606975488
+    m_Localized: LOS Measure (S)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63691988570112
+    m_Localized: Clear Trajectories
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63771139280896
+    m_Localized: Save
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63823110901760
+    m_Localized: Load
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63872989564928
+    m_Localized: Save (Edit)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64033224560640
+    m_Localized: Go to Main Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64130729545728
+    m_Localized: Return to Strategic Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66136210837504
+    m_Localized: Scenario Picker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66269346435072
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66345015873536
+    m_Localized: Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66490650497024
+    m_Localized: Ship Class Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66691591213056
+    m_Localized: Not Selected or invalid binding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66810558451712
+    m_Localized: Basic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66886194335744
+    m_Localized: Dynamic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67032395190272
+    m_Localized: Battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67081078476800
+    m_Localized: Rapid Fire Battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67160241770496
+    m_Localized: Torpedo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67808446287872
+    m_Localized: Remark
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67915635920896
+    m_Localized: Graphic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68037681778688
+    m_Localized: Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68131466416128
+    m_Localized: Sector Arcs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69223554125824
+    m_Localized: Type
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69304797794304
+    m_Localized: Country
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69380098134016
+    m_Localized: Target Size
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69481491238912
+    m_Localized: Damage Point
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69540668674048
+    m_Localized: Dmg Ctrl Rating
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69683560222720
+    m_Localized: Ram
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69805702549504
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69856625594368
+    m_Localized: Japanese
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69902473531392
+    m_Localized: Chinese (Sim)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69955997044736
+    m_Localized: Chinese (Trad)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70084606988288
+    m_Localized: Armor Typ Factor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70194946543616
+    m_Localized: Actual (inch)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70293768540160
+    m_Localized: 1H Deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70649298718720
+    m_Localized: 2H Turret
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70709734445056
+    m_Localized: 3H Super Strcuture
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70784229478400
+    m_Localized: 4V Conning Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70856400867328
+    m_Localized: 5V Main Belt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70935744516096
+    m_Localized: 6V Belt End
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71317958856704
+    m_Localized: 7V Barbette
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71879542607872
+    m_Localized: 8V Turret
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71943333777408
+    m_Localized: 9V Super Structure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72086405681152
+    m_Localized: Speed (Knots)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72174813220864
+    m_Localized: Standard Turn (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72282850103296
+    m_Localized: Emergency Turn (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72368984330240
+    m_Localized: Speed-Increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72703874338816
+    m_Localized: Engine Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72912348024832
+    m_Localized: Propulsion/Shaft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73056715968512
+    m_Localized: Boiler Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73144209149952
+    m_Localized: Import To Selected
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73361998385152
+    m_Localized: Export Selected
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73428046090240
+    m_Localized: Show Arc in a Dialog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73607310643200
+    m_Localized: FC Radar Modifier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73674033631232
+    m_Localized: Range (Yards)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73757923905536
+    m_Localized: Damage Rating
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73929584185344
+    m_Localized: Max ROF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73982021373952
+    m_Localized: Fire Control Positions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 74151416729600
+    m_Localized: Shell Size (Inch)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 74227052613632
+    m_Localized: Shell Weight (pounds)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 74290944446464
+    m_Localized: Ammunition Capacity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 74394027855872
+    m_Localized: Fire Control Table
+    m_Metadata:
+      m_Items: []
+  - m_Id: 74500038889472
+    m_Localized: Penetration Base Ammo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 74592103862272
+    m_Localized: Penetration Table
+    m_Metadata:
+      m_Items: []
+  - m_Id: 74786790871040
+    m_Localized: Mounts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75382616920064
+    m_Localized: Director
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75550552657920
+    m_Localized: Stabilization
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75929063428096
+    m_Localized: Power Remote Control
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75982746324992
+    m_Localized: Range-Finder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76055131623424
+    m_Localized: Instrument
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76110559350784
+    m_Localized: Gun Sight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77184133402624
+    m_Localized: Location
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77417353482240
+    m_Localized: Barrels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77483069837312
+    m_Localized: Reload Limit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77676326588416
+    m_Localized: Trainable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77742776946688
+    m_Localized: Use Rest Angle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78205500952576
+    m_Localized: Rest Angle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81564987461632
+    m_Localized: Import
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81630221471744
+    m_Localized: Export
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81865190576128
+    m_Localized: Max Range (yards)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81948619476992
+    m_Localized: Eff. Range (yards)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82020178497536
+    m_Localized: Damage Factor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82083797700608
+    m_Localized: Fire Control Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82174159785984
+    m_Localized: Port Mounts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82260835078144
+    m_Localized: Starboard Mounts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82506625486848
+    m_Localized: Damage Class
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82584522100736
+    m_Localized: Dub Probability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83091256938496
+    m_Localized: Pistol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84849651781632
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85386828877824
+    m_Localized: Displacement (tons)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85458081714176
+    m_Localized: Complement (men)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86174229762048
+    m_Localized: Length (foot)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86429511880704
+    m_Localized: Beam (foot)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86574546718720
+    m_Localized: Draft (foot)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86749654716416
+    m_Localized: Portrait
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90678081785856
+    m_Localized: Armor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90739557699584
+    m_Localized: Survivability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90796797366272
+    m_Localized: Battery Firepower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90854183833600
+    m_Localized: Torpedo Threat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90932348882944
+    m_Localized: RF Bty Firepower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91012703358976
+    m_Localized: Firepower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91087680737280
+    m_Localized: General
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91148133240832
+    m_Localized: Bty Bow FP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91231503421440
+    m_Localized: Bty Starboard FP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91326852534272
+    m_Localized: Bty Stern FP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91387397312512
+    m_Localized: Bty Port FP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91517060026368
+    m_Localized: Battery Sector Arcs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91572517113856
+    m_Localized: Torpedo Sector Arcs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 100213576077312
+    m_Localized: Select A Class
+    m_Metadata:
+      m_Items: []
+  - m_Id: 100318664364032
+    m_Localized: Go to Ship Class
+    m_Metadata:
+      m_Items: []
+  - m_Id: 100436700467200
+    m_Localized: Default Leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 100642477215744
+    m_Localized: Select Default Leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 100719363002368
+    m_Localized: Go to Leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 100779911974912
+    m_Localized: Crew Rating
+    m_Metadata:
+      m_Items: []
+  - m_Id: 100841559855104
+    m_Localized: Speed Modifier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101004500176896
+    m_Localized: Applicable Year Begin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101116425179136
+    m_Localized: Applicable Year End
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101219756052480
+    m_Localized: Launch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101318590631936
+    m_Localized: Complete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101401436524544
+    m_Localized: Not Available at Beginning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101562673958912
+    m_Localized: Ship Log Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101851304988672
+    m_Localized: Set Named Ship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101988341288960
+    m_Localized: Go to Named Ship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102287982366720
+    m_Localized: Reset All States
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102561132220416
+    m_Localized: Reset Damage/Expenditure State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102671505330176
+    m_Localized: Detail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102766418235392
+    m_Localized: Map State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103091476795392
+    m_Localized: Operational State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103175836831744
+    m_Localized: Latitude
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103239598641152
+    m_Localized: Longitude
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103301821140992
+    m_Localized: Speed (knot)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103378971168768
+    m_Localized: Desired Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103504963866624
+    m_Localized: Eff Max Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103576539664384
+    m_Localized: Heading (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103665672818688
+    m_Localized: Desired Heading
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108135269961728
+    m_Localized: Emergency Rudder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108219353174016
+    m_Localized: Assisted Deceleration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108278006321152
+    m_Localized: Desired Speed (Boiler Room)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108362114699264
+    m_Localized: Evasive Maneuver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108421879336960
+    m_Localized: Control Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108481593643008
+    m_Localized: Followed Target
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108539181436928
+    m_Localized: In map view, select a ship, press F and then press on another ship
+      to set the followed target.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108725697941504
+    m_Localized: Follow Distance (yards)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108810804563968
+    m_Localized: Relative To
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108931957035008
+    m_Localized: OOB Parent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109014291222528
+    m_Localized: Relative To Dist (yds)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109121220808704
+    m_Localized: Relative To Azimuth (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109243442827264
+    m_Localized: In map view, select a ship, press R and then press on another ship
+      to set the relative to target.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

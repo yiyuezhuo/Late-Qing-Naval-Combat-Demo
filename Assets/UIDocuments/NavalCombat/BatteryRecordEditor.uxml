@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
-    <ui:Template name="FireControlSystemEditor" src="project://database/Assets/UIDocuments/FireControlSystemEditor.uxml?fileID=9197481963319205126&amp;guid=c29461650190bff438b825e8531626e6&amp;type=3#FireControlSystemEditor" />
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:Template name="FireControlSystemEditor" src="project://database/Assets/UIDocuments/NavalCombat/FireControlSystemEditor.uxml?fileID=9197481963319205126&amp;guid=c29461650190bff438b825e8531626e6&amp;type=3#FireControlSystemEditor" />
     <ui:VisualElement data-source-type="NavalCombatCore.BatteryRecord, Assembly-CSharp" style="flex-grow: 1;">
         <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
@@ -10,6 +10,7 @@
                 <ui:FloatField label="FC Radar Modifier">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="fireControlRadarModifier" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73607310643200)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:Instance template="GlobalStringEditor" data-source-path="fireControlRadarName">
@@ -20,37 +21,44 @@
                 <ui:FloatField label="Range (Yards)">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="rangeYards" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73674033631232)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="Damage Rating">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="damageRating" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73757923905536)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="Max ROF">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="maxRateOfFireShootPerMin" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73929584185344)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:IntegerField label="Fire Control Positions">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="fireControlPositions" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73982021373952)" />
                     </Bindings>
                 </ui:IntegerField>
                 <ui:Instance template="FireControlSystemEditor" data-source-path="fireControlType" />
                 <ui:FloatField label="Shell Size (Inch)">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="shellSizeInch" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(74151416729600)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="Shell Weight (pounds)">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="shellWeightPounds" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(74227052613632)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:IntegerField label="Ammunition Capacity">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="ammunitionCapacity" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(74290944446464)" />
                     </Bindings>
                 </ui:IntegerField>
             </ui:VisualElement>
@@ -67,10 +75,14 @@
                 <ui:Column name="extremeBroad" title="E/B" cell-template="project://database/Assets/UIDocuments/Templates/FireControlTableRecord/FireControlTableRecordExtremeBroad.uxml?fileID=9197481963319205126&amp;guid=1bb41510ad8dcca4a9de0673efb78cfb&amp;type=3#FireControlTableRecordExtremeBroad" width="11%" />
                 <ui:Column name="extremeNarrow" title="E/N" cell-template="project://database/Assets/UIDocuments/Templates/FireControlTableRecord/FireControlTableRecordExtremeNarrow.uxml?fileID=9197481963319205126&amp;guid=3bc307bf85d3c594aace6ce31b6eb20f&amp;type=3#FireControlTableRecordExtremeNarrow" width="11%" />
             </ui:Columns>
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(74394027855872)" />
+            </Bindings>
         </ui:MultiColumnListView>
-        <ui:EnumField label="Penetration Base Ammu" value="Center" type="NavalCombatCore.AmmunitionType, Assembly-CSharp">
+        <ui:EnumField label="Penetration Base Ammo" value="Center" type="NavalCombatCore.AmmunitionType, Assembly-CSharp">
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="penetrationTableBaseType" binding-mode="TwoWay" />
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(74500038889472)" />
             </Bindings>
         </ui:EnumField>
         <ui:MultiColumnListView binding-source-selection-mode="AutoAssign" header-title="Penetration Table" show-add-remove-footer="true" show-foldout-header="true" name="PenetrationTableMultiColumnListView" data-source-path="penetrationTableRecords">
@@ -81,7 +93,14 @@
                 <ui:Column name="horizontalPenetrationInch" visible="true" title="Hor Pen" cell-template="project://database/Assets/UIDocuments/Templates/PenetrationTableRecord/PenetrationTableRecordHorizontalPenetrationCell.uxml?fileID=9197481963319205126&amp;guid=1addbdac246e8d14587dc33da2c292ec&amp;type=3#PenetrationTableRecordHorizontalPenetrationCell" width="20%" />
                 <ui:Column name="verticalPenetrationInch" title="Vert Pen" cell-template="project://database/Assets/UIDocuments/Templates/PenetrationTableRecord/PenetrationTableRecordVerticalPenetrationCell.uxml?fileID=9197481963319205126&amp;guid=5584ef34bfb3eac48938af85c4608e0a&amp;type=3#PenetrationTableRecordVerticalPenetrationCell" width="20%" />
             </ui:Columns>
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(74592103862272)" />
+            </Bindings>
         </ui:MultiColumnListView>
-        <ui:ListView show-foldout-header="true" show-add-remove-footer="true" header-title="Mounts" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/MountLocationRecordEditor.uxml?fileID=9197481963319205126&amp;guid=83e697c363f8eb349b6713defb6ef393&amp;type=3#MountLocationRecordEditor" name="MountsListView" data-source-path="mountLocationRecords" virtualization-method="DynamicHeight" />
+        <ui:ListView show-foldout-header="true" show-add-remove-footer="true" header-title="Mounts" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/NavalCombat/MountLocationRecordEditor.uxml?fileID=9197481963319205126&amp;guid=83e697c363f8eb349b6713defb6ef393&amp;type=3#MountLocationRecordEditor" name="MountsListView" data-source-path="mountLocationRecords" virtualization-method="DynamicHeight">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(74786790871040)" />
+            </Bindings>
+        </ui:ListView>
     </ui:VisualElement>
 </ui:UXML>

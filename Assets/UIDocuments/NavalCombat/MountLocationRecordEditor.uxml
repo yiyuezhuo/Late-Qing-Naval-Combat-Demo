@@ -5,16 +5,19 @@
                 <ui:EnumField label="Location" value="Center" type="NavalCombatCore.MountLocation, Assembly-CSharp">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="mountLocation" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77184133402624)" />
                     </Bindings>
                 </ui:EnumField>
                 <ui:IntegerField label="Mounts" password="false" value="1">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="mounts" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(74786790871040)" />
                     </Bindings>
                 </ui:IntegerField>
                 <ui:SliderInt label="Barrels" value="1" high-value="8" show-input-field="true">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="barrels" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77417353482240)" />
                     </Bindings>
                 </ui:SliderInt>
             </ui:VisualElement>
@@ -22,22 +25,26 @@
                 <ui:IntegerField label="Reload Limit">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="reloadLimit" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77483069837312)" />
                     </Bindings>
                 </ui:IntegerField>
                 <ui:Toggle label="Trainable">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="trainable" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77676326588416)" />
                     </Bindings>
                 </ui:Toggle>
-                <ui:Toggle label="Use Rest Angle">
+                <ui:Toggle label="Use Rest Angle" style="display: none;">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="useRestAngle" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77742776946688)" />
                     </Bindings>
                 </ui:Toggle>
                 <ui:Slider label="Rest Angle" high-value="360" show-input-field="true" style="display: flex;">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="restAngleDeg" binding-mode="TwoWay" />
                         <ui:DataBinding property="style.display" data-source-path="useRestAngle" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(78205500952576)" />
                     </Bindings>
                 </ui:Slider>
             </ui:VisualElement>

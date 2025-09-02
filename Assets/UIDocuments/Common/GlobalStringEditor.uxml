@@ -4,21 +4,25 @@
         <ui:TextField label="English">
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="english" binding-mode="TwoWay" />
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69805702549504)" />
             </Bindings>
         </ui:TextField>
         <ui:TextField label="Japanese">
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="japanese" binding-mode="TwoWay" />
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69856625594368)" />
             </Bindings>
         </ui:TextField>
         <ui:TextField label="Chinese (Sim)">
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="chineseSimplified" binding-mode="TwoWay" />
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69902473531392)" />
             </Bindings>
         </ui:TextField>
         <ui:TextField label="Chinese (Trad)">
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="chineseTraditional" binding-mode="TwoWay" />
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69955997044736)" />
             </Bindings>
         </ui:TextField>
     </ui:VisualElement>

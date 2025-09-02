@@ -4,64 +4,199 @@
         <ui:TabView>
             <ui:Tab label="Command">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
-                    <ui:Button text="Advance 1 Min (1)" name="Advance1MinButton" />
-                    <ui:Button text="Advance 1 pulse (`)" name="Advance1PulseButton" />
-                    <ui:Button text="Set Course (Shift + Left Click)" name="SetCourseButton" />
-                    <ui:Button text="Detach (I)" name="DetachButton" />
-                    <ui:Button text="Follow (F)" name="FollowButton" />
-                    <ui:Button text="Relative (R)" name="RelativeButton" />
+                    <ui:Button text="Advance 1 Min (1)" name="Advance1MinButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(60491600400384)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Advance 1 pulse (`)" name="Advance1PulseButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(60672865636352)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Set Course (Shift + Left Click)" name="SetCourseButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(60764813168640)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Detach (I)" name="DetachButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(60962738180096)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Follow (F)" name="FollowButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61033085046784)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Relative (R)" name="RelativeButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61093424304128)" />
+                        </Bindings>
+                    </ui:Button>
                     <ui:Label text="Player" style="margin-left: 10px; display: none;" />
                     <ui:DropdownField name="PlayerDropdownField" style="width: 300px; display: none;" />
-                    <ui:Button text="Victory Status" name="VictoryStatusButton" />
+                    <ui:Button text="Victory Status" name="VictoryStatusButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61178581258240)" />
+                        </Bindings>
+                    </ui:Button>
                     <ui:Button text="Run Debug Script" name="RunDebugScriptButton">
                         <Bindings>
                             <ui:DataBinding property="style.display" data-source-path="isEditor" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61279122919424)" />
                         </Bindings>
                     </ui:Button>
                 </ui:VisualElement>
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61563505119232)" />
+                </Bindings>
             </ui:Tab>
             <ui:Tab label="File">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
-                    <ui:Button text="Save" name="SaveButton" />
-                    <ui:Button text="Load" name="LoadButton" />
-                    <ui:Button text="Save (Edit)" name="SaveEditButton" />
-                    <ui:Button text="Selection" name="SelectionBuiltinButton" />
-                    <ui:Button text="Go to Main Menu" name="GoToMainMenuButton" />
-                    <ui:Button text="Return to Strategic Game" name="ReturnToStrategicGameButton" />
+                    <ui:Button text="Save" name="SaveButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63771139280896)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Load" name="LoadButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63823110901760)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Save (Edit)" name="SaveEditButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63872989564928)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Selection" name="SelectionBuiltinButton" style="display: none;" />
+                    <ui:Button text="Go to Main Menu" name="GoToMainMenuButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(64033224560640)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Return to Strategic Game" name="ReturnToStrategicGameButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(64130729545728)" />
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61646443286528)" />
+                </Bindings>
             </ui:Tab>
             <ui:Tab label="Tools">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
-                    <ui:Button text="Distance Measure (D)" name="DistanceMeasureButton" />
-                    <ui:Button text="LOS Measure (S)" name="MaskMeasureButton" />
-                    <ui:Button text="Clear Trajectories" name="ClearTrajectoriesButton" />
+                    <ui:Button text="Distance Measure (D)" name="DistanceMeasureButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63539483676672)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="LOS Measure (S)" name="MaskMeasureButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63593606975488)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Clear Trajectories" name="ClearTrajectoriesButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63691988570112)" />
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61714353262592)" />
+                </Bindings>
             </ui:Tab>
             <ui:Tab label="Editor">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
-                    <ui:Button text="Leader" name="LeaderEditorButton" />
-                    <ui:Button text="Ship Class" name="ClassEditorButton" />
-                    <ui:Button text="Named Ship" name="NamedShipEditorButton" />
-                    <ui:Button text="Ship Log" name="ShipLogEditorButton" />
-                    <ui:Button text="Order of Battle" name="OOBEditorButton" />
-                    <ui:Button text="Scenario State" name="ScenarioStateEditorButton" />
-                    <ui:Button text="Launched Torpedo" name="LaunchedTorpedoEditorButton" />
-                    <ui:Button text="JS Script Console" name="JSScriptConsoleButton" />
-                    <ui:Button text=" Set to Formation Position" name="SetToFormationPositionButton" />
-                    <ui:Button text="Streaming Asset Reference" name="StreamingAssetReferenceDialogButton" />
-                    <ui:Button text="Event Editor" name="EventEditorDialogButton" />
+                    <ui:Button text="Leader" name="LeaderEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62652379992064)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Ship Class" name="ClassEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62707518312448)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Named Ship" name="NamedShipEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62777823236096)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Ship Log" name="ShipLogEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62878209708032)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Order of Battle" name="OOBEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63004600864768)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Scenario State" name="ScenarioStateEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63058589945856)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Launched Torpedo" name="LaunchedTorpedoEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63113422082048)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="JS Script Console" name="JSScriptConsoleButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63193810112512)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text=" Set to Formation Position" name="SetToFormationPositionButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63271861915648)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Streaming Asset Reference" name="StreamingAssetReferenceDialogButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63363125776384)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Event Editor" name="EventEditorDialogButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63469409439744)" />
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61775904673792)" />
+                </Bindings>
             </ui:Tab>
             <ui:Tab label="Help">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                    <ui:Button text="Help" name="HelpButton" />
-                    <ui:Button text="Open Source Repo &amp; Readme" name="OpenOpenSourceRepoButton" />
+                    <ui:Button text="Help" name="HelpButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7671924822016)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Open Source Repo &amp; Readme" name="OpenOpenSourceRepoButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62414676201472)" />
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7671924822016)" />
+                </Bindings>
             </ui:Tab>
             <ui:Tab label="Settings">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                    <ui:Button text="Game Preference" name="GamePreferenceButton" />
+                    <ui:Button text="Game Preference" name="GamePreferenceButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62530900365312)" />
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(6979457814528)" />
+                </Bindings>
             </ui:Tab>
         </ui:TabView>
     </ui:VisualElement>

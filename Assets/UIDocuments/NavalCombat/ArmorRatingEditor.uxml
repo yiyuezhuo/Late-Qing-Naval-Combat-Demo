@@ -6,56 +6,70 @@
                 <ui:FloatField label="Armor Typ Factor" style="flex-grow: 0;">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="armorTypeFactor" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(70084606988288)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="1H Deck">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="deck.effectInch" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(70293768540160)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="2H Turret">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="turretHorizontal.effectInch" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(70649298718720)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="3H Super Strcuture">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="superStructureHorizontal.effectInch" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(70709734445056)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="4V Conning Tower">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="conningTower.effectInch" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(70784229478400)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="5V Main Belt">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="mainBelt.effectInch" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(70856400867328)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="6V Belt End">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="beltEnd.effectInch" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(70935744516096)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="7V Barbette">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="barbette.effectInch" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(71317958856704)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="8V Turret">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="turretVertical.effectInch" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(71879542607872)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="9V Super Structure">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="superStructureVertical.effectInch" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(71943333777408)" />
                     </Bindings>
                 </ui:FloatField>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
-                <ui:Label text="Actual" style="-unity-text-align: upper-center; padding-bottom: 3px; padding-top: 3px;" />
+                <ui:Label text="Actual (inch)" style="-unity-text-align: upper-center; padding-bottom: 3px; padding-top: 3px;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(70194946543616)" />
+                    </Bindings>
+                </ui:Label>
                 <ui:FloatField>
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="deck.actualInch" binding-mode="TwoWay" />

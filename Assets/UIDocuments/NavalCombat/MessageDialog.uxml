@@ -2,6 +2,10 @@
     <ui:VisualElement class="panel-dialog" style="flex-grow: 0; width: 600px; height: 400px;">
         <ui:Label text="Message" name="TitleLabel" class="title" />
         <ui:TextField multiline="true" vertical-scroller-visibility="Auto" readonly="true" name="ContentTextField" style="flex-grow: 1; flex-shrink: 1; white-space: normal;" />
-        <ui:Button text="Confirm" name="ConfirmButton" />
+        <ui:Button text="Confirm" name="ConfirmButton">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+            </Bindings>
+        </ui:Button>
     </ui:VisualElement>
 </ui:UXML>

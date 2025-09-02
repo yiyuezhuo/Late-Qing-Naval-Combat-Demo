@@ -6,7 +6,11 @@
                 <ui:DataBinding property="value" data-source-path="path" binding-mode="TwoWay" />
             </Bindings>
         </ui:TextField>
-        <ui:Label text="Builtin" />
+        <ui:Label text="Builtin">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(204325797924864)" />
+            </Bindings>
+        </ui:Label>
         <ui:Toggle>
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="isBuiltin" binding-mode="TwoWay" />
@@ -15,6 +19,7 @@
         <ui:Button text="Set" name="SetButton">
             <Bindings>
                 <ui:DataBinding property="enabledSelf" data-source-path="setButtonAvailable" binding-mode="ToTarget" />
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
             </Bindings>
         </ui:Button>
     </ui:VisualElement>

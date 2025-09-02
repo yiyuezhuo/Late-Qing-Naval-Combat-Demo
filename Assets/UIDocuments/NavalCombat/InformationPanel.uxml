@@ -23,7 +23,11 @@
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-                    <ui:Label text="Speed (kts):" />
+                    <ui:Label text="Speed (kts):">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(197904029093888)" />
+                        </Bindings>
+                    </ui:Label>
                     <ui:Label text="speedKnots">
                         <Bindings>
                             <ui:DataBinding property="text" data-source-path="speedKnots" binding-mode="ToTarget" />
@@ -38,7 +42,11 @@
                     </Bindings>
                 </ui:Slider>
                 <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-                    <ui:Label text="Heading (deg):" />
+                    <ui:Label text="Heading (deg):">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(197982118645760)" />
+                        </Bindings>
+                    </ui:Label>
                     <ui:Label text="heading">
                         <Bindings>
                             <ui:DataBinding property="text" data-source-path="headingDeg" binding-mode="ToTarget" />

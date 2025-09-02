@@ -1,94 +1,127 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="GamePreference, Assembly-CSharp" class="panel-dialog" style="height: auto;">
-        <ui:Label text="Game Preference" class="title" />
+        <ui:Label text="Game Preference" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62530900365312)" />
+            </Bindings>
+        </ui:Label>
         <ui:TabView>
             <ui:Tab label="View">
                 <ui:VisualElement style="flex-grow: 1;">
                     <ui:EnumField label="Firing Line Display" value="Center" type="GamePreference+FiringLineDisplayMode, Assembly-CSharp">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="firingLineDisplayMode" binding-mode="TwoWay" />
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181359496302592)" />
                         </Bindings>
                     </ui:EnumField>
-                    <ui:FloatField label="Pulse Length (Sec)">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="pulseLengthSeconds" binding-mode="TwoWay" />
-                        </Bindings>
-                    </ui:FloatField>
-                    <ui:FloatField label="Simulation Rate Raio">
+                    <ui:FloatField label="Simulation Rate Ratio">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="simulationRateRaio" binding-mode="TwoWay" />
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(183231472898048)" />
                         </Bindings>
                     </ui:FloatField>
                     <ui:EnumField label="Short Label Language" value="Center" type="CoreUtils.LanguageType, Assembly-CSharp">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="shortLabelLanguageType" binding-mode="TwoWay" />
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(183326205448192)" />
                         </Bindings>
                     </ui:EnumField>
                     <ui:EnumField label="Long Label Language" value="Center" type="CoreUtils.LanguageType, Assembly-CSharp">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="longLabelLanguageType" binding-mode="TwoWay" />
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(183392467062784)" />
                         </Bindings>
                     </ui:EnumField>
                 </ui:VisualElement>
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181035691839488)" />
+                </Bindings>
             </ui:Tab>
             <ui:Tab label="Naval Tactical Core">
                 <ui:VisualElement data-source-path="navalCombatCoreParameter" style="flex-grow: 1;">
                     <ui:TabView>
                         <ui:Tab label="Balance &amp; Performance">
                             <ui:VisualElement style="flex-grow: 1;">
+                                <ui:FloatField label="Pulse Length (Sec)">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="pulseLengthSeconds" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181492749340672)" />
+                                    </Bindings>
+                                </ui:FloatField>
                                 <ui:Toggle label="Land Collision">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="checkLandCollision" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181842193584128)" />
                                     </Bindings>
                                 </ui:Toggle>
                                 <ui:Toggle label="Ship Collision">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="checkShipCollision" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181907335319552)" />
                                     </Bindings>
                                 </ui:Toggle>
                                 <ui:Toggle label="Friendly Ship Collision">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="checkFriendlyShipCollision" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181959990611968)" />
                                     </Bindings>
                                 </ui:Toggle>
                                 <ui:Slider label="Global Hit Coef" high-value="1" show-input-field="true">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="globalHitCoef" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(182042853281792)" />
                                     </Bindings>
                                 </ui:Slider>
                             </ui:VisualElement>
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(192325730603008)" />
+                            </Bindings>
                         </ui:Tab>
                         <ui:Tab label="AI">
                             <ui:VisualElement style="flex-grow: 1;">
                                 <ui:FloatField label="Angle Step (Deg)">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="angleStepDeg" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(192567536422912)" />
                                     </Bindings>
                                 </ui:FloatField>
                                 <ui:FloatField label="Attack Coef">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="attackCoef" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(192657399386112)" />
                                     </Bindings>
                                 </ui:FloatField>
                                 <ui:FloatField label="Defence Coef">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="defenceCoef" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(192743994986496)" />
                                     </Bindings>
                                 </ui:FloatField>
                                 <ui:FloatField label="Auto Torpedo Firing Range Relaxed Coef">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="automaticTorpedoFiringRangeRelaxedCoef" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(192797694660608)" />
                                     </Bindings>
                                 </ui:FloatField>
                             </ui:VisualElement>
                         </ui:Tab>
                     </ui:TabView>
                 </ui:VisualElement>
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181094349180928)" />
+                </Bindings>
             </ui:Tab>
             <ui:Tab label="Strategic Core">
                 <ui:VisualElement style="flex-grow: 1;" />
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181271285895168)" />
+                </Bindings>
             </ui:Tab>
         </ui:TabView>
-        <ui:Button text="Confirm" name="ConfirmButton" />
+        <ui:Button text="Confirm" name="ConfirmButton">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+            </Bindings>
+        </ui:Button>
     </ui:VisualElement>
 </ui:UXML>

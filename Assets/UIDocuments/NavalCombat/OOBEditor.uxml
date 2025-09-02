@@ -4,7 +4,11 @@
     <ui:Template name="NamedShipVisualizer" src="project://database/Assets/UIDocuments/NavalCombat/NamedShipVisualizer.uxml?fileID=9197481963319205126&amp;guid=31d24939061571546a16f9a8bd6443ed&amp;type=3#NamedShipVisualizer" />
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement data-source-type="OOBEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
-        <ui:Label text="OOB Editor" class="title" />
+        <ui:Label text="OOB Editor" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(175848642220032)" />
+            </Bindings>
+        </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                 <ui:TreeView name="OOBTreeView" item-template="project://database/Assets/UIDocuments/Templates/OOBEditorLabel.uxml?fileID=9197481963319205126&amp;guid=13dc78db772c3514eb688d39d01f95c7&amp;type=3#OOBEditorLabel" auto-expand="true" />
@@ -18,22 +22,66 @@
                         </ui:Label>
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                        <ui:Button text="Create Group" name="CreateGroupButton" style="flex-basis: 50px; flex-grow: 1;" />
-                        <ui:Button text="Delete Group" name="DeleteGroupButton" style="flex-basis: 50px; flex-grow: 1;" />
-                        <ui:Button text="Attach" name="AttachButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Create Group" name="CreateGroupButton" style="flex-basis: 50px; flex-grow: 1;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(173479221170176)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Delete Group" name="DeleteGroupButton" style="flex-basis: 50px; flex-grow: 1;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(173542366416896)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Attach" name="AttachButton" style="flex-basis: 50px; flex-grow: 1;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(174143452123136)" />
+                            </Bindings>
+                        </ui:Button>
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                        <ui:Button text="Add Ship" name="AddShipButton" style="flex-basis: 50px; flex-grow: 1;" />
-                        <ui:Button text="Remove Ship" name="RemoveShipButton" style="flex-basis: 50px; flex-grow: 1;" />
-                        <ui:Button text="Repair" name="RepairButton" />
+                        <ui:Button text="Add Ship" name="AddShipButton" style="flex-basis: 50px; flex-grow: 1;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(174208438669312)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Remove Ship" name="RemoveShipButton" style="flex-basis: 50px; flex-grow: 1;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(174272255004672)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Repair" name="RepairButton">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(174328152494080)" />
+                            </Bindings>
+                        </ui:Button>
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                        <ui:Button text="Import" name="ImportButton" style="flex-basis: 50px; flex-grow: 1;" />
-                        <ui:Button text="Export" name="ExportButton" style="flex-basis: 50px; flex-grow: 1;" />
-                        <ui:Button text="Expand" name="ExpandButton" style="flex-basis: 50px; flex-grow: 1;" />
-                        <ui:Button text="Collapse" name="CollapseButton" style="flex-basis: 50px; flex-grow: 1;" />
+                        <ui:Button text="Import" name="ImportButton" style="flex-basis: 50px; flex-grow: 1;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(81564987461632)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Export" name="ExportButton" style="flex-basis: 50px; flex-grow: 1;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(81630221471744)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Expand" name="ExpandButton" style="flex-basis: 50px; flex-grow: 1;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(174671699546112)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Collapse" name="CollapseButton" style="flex-basis: 50px; flex-grow: 1;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(174758467112960)" />
+                            </Bindings>
+                        </ui:Button>
                     </ui:VisualElement>
-                    <ui:Button text="Confirm" name="ConfirmButton" />
+                    <ui:Button text="Confirm" name="ConfirmButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1.2; flex-basis: 100px;">
@@ -47,17 +95,24 @@
                             <ui:TextField label="Leader">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="leaderReference.name" binding-mode="ToTarget" />
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172656676212736)" />
                                 </Bindings>
                             </ui:TextField>
-                            <ui:Button text="Set Leader" name="SetLeaderButton" />
+                            <ui:Button text="Set Leader" name="SetLeaderButton">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(173227382575104)" />
+                                </Bindings>
+                            </ui:Button>
                             <ui:EnumField label="Type" value="Center" type="NavalCombatCore.GroupType, Assembly-CSharp">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)" />
                                 </Bindings>
                             </ui:EnumField>
                             <ui:EnumField label="Formation" value="Center" type="NavalCombatCore.FormationType, Assembly-CSharp">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="formation" binding-mode="TwoWay" />
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(173393841917952)" />
                                 </Bindings>
                             </ui:EnumField>
                         </ui:VisualElement>

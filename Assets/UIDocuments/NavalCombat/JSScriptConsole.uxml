@@ -1,21 +1,53 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement class="panel-dialog" style="flex-grow: 0; height: initial; width: 600px; position: absolute; top: 50%; left: 50%; translate: -50% -50%;">
-        <ui:Label text="JS Script Console" name="TitleLabel" class="title" />
+        <ui:Label text="JS Script Console" name="TitleLabel" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63193810112512)" />
+            </Bindings>
+        </ui:Label>
         <ui:VisualElement style="flex-grow: 1;">
             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                <ui:Label text="Output:" />
-                <ui:Button text="Clear" name="ClearButton" />
+                <ui:Label text="Output:">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(180187490324480)" />
+                    </Bindings>
+                </ui:Label>
+                <ui:Button text="Clear" name="ClearButton">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(180255345774592)" />
+                    </Bindings>
+                </ui:Button>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row-reverse;">
-                    <ui:Button text="Close" name="CloseButton" />
+                    <ui:Button text="Close" name="CloseButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(180316792328192)" />
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:TextField readonly="true" name="OutputTextField" multiline="true" vertical-scroller-visibility="Auto" style="height: 200px; white-space: normal;" />
             <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-shrink: 0;">
-                <ui:Label text="Input:" />
+                <ui:Label text="Input:">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(180369204350976)" />
+                    </Bindings>
+                </ui:Label>
                 <ui:DropdownField name="BuiltInScriptDropdownField" style="flex-grow: 1; flex-shrink: 1;" />
-                <ui:Button text="Read" name="ReadButton" />
-                <ui:Button text="Write" name="WriteButton" />
-                <ui:Button text="Execute" name="ExecuteButton" />
+                <ui:Button text="Read" name="ReadButton">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(180503392718848)" />
+                    </Bindings>
+                </ui:Button>
+                <ui:Button text="Write" name="WriteButton">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(180556253532160)" />
+                    </Bindings>
+                </ui:Button>
+                <ui:Button text="Execute" name="ExecuteButton">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(180622292848640)" />
+                    </Bindings>
+                </ui:Button>
             </ui:VisualElement>
             <ui:TextField vertical-scroller-visibility="Auto" multiline="true" name="InputTextField" style="height: 200px;" />
         </ui:VisualElement>

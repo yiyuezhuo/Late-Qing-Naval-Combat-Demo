@@ -744,6 +744,612 @@ MonoBehaviour:
       to set the relative to target.
     m_Metadata:
       m_Items: []
+  - m_Id: 167166449717248
+    m_Localized: Damage Point (Pending)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167332305080320
+    m_Localized: Max Speed Offset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167467596550144
+    m_Localized: Acceleration Offset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167528338460672
+    m_Localized: Engine Room Hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167707988889600
+    m_Localized: Propulsion/Shaft Hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167773285814272
+    m_Localized: Propulsion/Shaft Hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167850461007872
+    m_Localized: Engine Room Flooding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168014307299328
+    m_Localized: Boiler Room Flooding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168102635147264
+    m_Localized: Dmg Ctrl Rating Hit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168174043172864
+    m_Localized: Eff. Dmg Ctrl Rating
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168576851546112
+    m_Localized: Port Searchlight Hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168654257426432
+    m_Localized: Starboard Searchlight Hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168731373899776
+    m_Localized: Smoke Generator Disabled
+    m_Metadata:
+      m_Items: []
+  - m_Id: 169093392666624
+    m_Localized: 'Capacity:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 169182760701952
+    m_Localized: FCR Disabled
+    m_Metadata:
+      m_Items: []
+  - m_Id: 169342341386240
+    m_Localized: AP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 169446628560896
+    m_Localized: SAP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 169509849305088
+    m_Localized: COM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 169589046153216
+    m_Localized: HE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 169759578165248
+    m_Localized: Torpedo Ammunition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 169838204588032
+    m_Localized: Torpedo Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: 169997592334336
+    m_Localized: Port Mount Hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 170232922148864
+    m_Localized: Startboard Mount Hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 170314136457216
+    m_Localized: Ammunition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 170635940237312
+    m_Localized: Rapid Firing Bty FP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171090770563072
+    m_Localized: Doctrine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171150631669760
+    m_Localized: 'Automatic Maneuver:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171216725512192
+    m_Localized: 'Automatic Fire:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171280755757056
+    m_Localized: 'Ammunition Switch:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171344655978496
+    m_Localized: 'Ammunition Fallback:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171474327080960
+    m_Localized: 'Max Fire Dist 200mm+ (yards):'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171582267494400
+    m_Localized: 'Max Fire Dist 100-200mm (yards):'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171927823618048
+    m_Localized: 'Max Fire Dist 100- (yards):'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172027870351360
+    m_Localized: 'Max Fire Dist Torpedo (yards):'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172169117732864
+    m_Localized: Specified
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172442062065664
+    m_Localized: Plot Trajectory on Map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172656676212736
+    m_Localized: Leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 173227382575104
+    m_Localized: Set Leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 173393841917952
+    m_Localized: Formation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 173479221170176
+    m_Localized: Create Group
+    m_Metadata:
+      m_Items: []
+  - m_Id: 173542366416896
+    m_Localized: Delete Group
+    m_Metadata:
+      m_Items: []
+  - m_Id: 174143452123136
+    m_Localized: Attach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 174208438669312
+    m_Localized: Add Ship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 174272255004672
+    m_Localized: Remove Ship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 174328152494080
+    m_Localized: Repair
+    m_Metadata:
+      m_Items: []
+  - m_Id: 174671699546112
+    m_Localized: Expand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 174758467112960
+    m_Localized: Collapse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 175848642220032
+    m_Localized: OOB Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176067203207168
+    m_Localized: Scenario State Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176145213067264
+    m_Localized: 'UTC Datetime (+0):'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176249026285568
+    m_Localized: Year
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176295079743488
+    m_Localized: Month
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176345788878848
+    m_Localized: Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176389145399296
+    m_Localized: Hour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176449056837632
+    m_Localized: Minute
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176506451693568
+    m_Localized: Second
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176578996375552
+    m_Localized: Visibility
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176640765890560
+    m_Localized: Moon Light
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177281374523392
+    m_Localized: Sea State (Beaufort)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177375146577920
+    m_Localized: Weapon Target Assignment Clock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177487902052352
+    m_Localized: Interval Seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177547612164096
+    m_Localized: Accumulate Second
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177712775467008
+    m_Localized: Elapsed Seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177996994088960
+    m_Localized: Doing Step
+    m_Metadata:
+      m_Items: []
+  - m_Id: 178062957907968
+    m_Localized: First Loaded
+    m_Metadata:
+      m_Items: []
+  - m_Id: 178159569506304
+    m_Localized: Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 178457222483968
+    m_Localized: Launched Torpedo Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179033234640896
+    m_Localized: Shooter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179088108720128
+    m_Localized: Desired Target
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179146103361536
+    m_Localized: Length (ft)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179207059181568
+    m_Localized: Beam (ft)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179393781207040
+    m_Localized: Endgame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179460328034304
+    m_Localized: Hit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179505769123840
+    m_Localized: Inflict DP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179965292875776
+    m_Localized: Moved Dist (yards)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180187490324480
+    m_Localized: 'Output:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180255345774592
+    m_Localized: Clear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180316792328192
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180369204350976
+    m_Localized: 'Input:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180503392718848
+    m_Localized: Read
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180556253532160
+    m_Localized: Write
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180622292848640
+    m_Localized: Execute
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181035691839488
+    m_Localized: View
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181094349180928
+    m_Localized: Naval Tactical Core
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181271285895168
+    m_Localized: Strategic Core
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181359496302592
+    m_Localized: Firing Line Display
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181492749340672
+    m_Localized: Pulse Length (Sec)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181842193584128
+    m_Localized: Land Collision
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181907335319552
+    m_Localized: Ship Collision
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181959990611968
+    m_Localized: Friendly Ship Collision
+    m_Metadata:
+      m_Items: []
+  - m_Id: 182042853281792
+    m_Localized: Global Hit Coef
+    m_Metadata:
+      m_Items: []
+  - m_Id: 183231472898048
+    m_Localized: Simulation Rate Ratio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 183326205448192
+    m_Localized: Short Label Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 183392467062784
+    m_Localized: Long Label Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 191682492141568
+    m_Localized: "\r\n## Getting Started\r\n\r\n- Right-click and drag to move the
+      camera, use the scroll wheel to adjust the zoom level.\r\n- Press 1 to advance
+      by 1 minute\r\n- Control group leader (icon with a direction arrow) to control
+      a group\r\n    - Change direction: Select a group lead and left click a point
+      on globe to set a direction\r\n    - Change speed: Change value in the slider
+      of right panel\r\n    - Change or inspect a lot of details in editors.\r\n-
+      Use F or R to set Follow and relative to relationship, more parameter can be
+      specified in the ShipLog editor.\r\n\r\n## Automation\r\n\r\n- By default,
+      firing is automated, following a somewhat optimal rule, and can be configured
+      in the editor, ranging from doctrine to manual target specification.\r\n- If
+      a unit follow or is relative to a target, it will adjust its speed and course
+      to reach the desired position.\r\n- By default, an independent unit (usually
+      the group leader) maintains its current speed and course. However, if automatic
+      movement is enabled in the doctrine, the unit will adjust its course to maximize
+      firepower while minimizing incoming damage. (Speed is not controlled at this
+      point).\r\n\r\n## Shortcuts\r\n\r\nBasic:\r\n\r\n- Left Click: Select Unit\r\n-
+      Right Click: Select Unit and open Ship Log Editor for it.\r\n- Shift + Left
+      Click: Set course for the selected unit\r\n- D: Distance measuring line\r\n-
+      S: Line of Sight (check ship masking & Earth curvature)\r\n- I: Detach unit
+      (set control mode to Independent)\r\n- F: Set follow target (extra parameter
+      requires ship log editor)\r\n- R: Set relative to target (extra parameter requires
+      ship log editor)\r\n- L: Open Ship Log Editor for the selected ship\r\n- Esc:
+      Reset UI to idle state.\r\n\r\nEdit:\r\n\r\n- Insert: Insert a ShipLog on map.
+      (Deploy a \"non-deployed\" ship to map).\r\n- Delete: Delete selected ship.\r\n-
+      M: Move selected ship to another point.\r\n\r\n## Core\r\n\r\nMost core is
+      based on the rulebook of SEEKRIEG 5, Dawn of the Battleship also give some
+      insights.\r\n\r\n## Report bugs and Suggestions\r\n\r\nhttps://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 192325730603008
+    m_Localized: Balance & Performance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 192567536422912
+    m_Localized: Angle Step (Deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 192657399386112
+    m_Localized: Attack Coef
+    m_Metadata:
+      m_Items: []
+  - m_Id: 192743994986496
+    m_Localized: Defence Coef
+    m_Metadata:
+      m_Items: []
+  - m_Id: 192797694660608
+    m_Localized: Auto Torpedo Firing Range Relaxed Coef
+    m_Metadata:
+      m_Items: []
+  - m_Id: 194184474169344
+    m_Localized: Leader Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 194508010196992
+    m_Localized: Naval Strategic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 194584245866496
+    m_Localized: Naval Operational
+    m_Metadata:
+      m_Items: []
+  - m_Id: 194690319814656
+    m_Localized: Naval Tactical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 194758976376832
+    m_Localized: Land Strategic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 194853557932032
+    m_Localized: Land Operational
+    m_Metadata:
+      m_Items: []
+  - m_Id: 194926723371008
+    m_Localized: Land Tactical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 195151726809088
+    m_Localized: Traits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 195358933815296
+    m_Localized: Strategic Group Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 195698978623488
+    m_Localized: Copy Last
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196209509306368
+    m_Localized: Size
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196313234444288
+    m_Localized: Deploy State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196392573898752
+    m_Localized: Parent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196510937157632
+    m_Localized: Set
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196569347035136
+    m_Localized: Goto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196633377280000
+    m_Localized: Subordinates
+    m_Metadata:
+      m_Items: []
+  - m_Id: 197904029093888
+    m_Localized: 'Speed (kts):'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 197982118645760
+    m_Localized: 'Heading (deg):'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 198315876192256
+    m_Localized: Red
+    m_Metadata:
+      m_Items: []
+  - m_Id: 198371681406976
+    m_Localized: Green
+    m_Metadata:
+      m_Items: []
+  - m_Id: 198439205507072
+    m_Localized: Blue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 198486290763776
+    m_Localized: Plot Trajectory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 198656025858048
+    m_Localized: Logs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 198769003630592
+    m_Localized: Current Only
+    m_Metadata:
+      m_Items: []
+  - m_Id: 199598750208000
+    m_Localized: Weapon Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 201659243991040
+    m_Localized: Rate of Fire (round/min)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 201774524436480
+    m_Localized: Slow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 201834121302016
+    m_Localized: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 201910847705088
+    m_Localized: Rapid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 201982494806016
+    m_Localized: Load
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202068557729792
+    m_Localized: Shell Weight (kg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202474302115840
+    m_Localized: Carrying Weight (kg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202595253260288
+    m_Localized: Effective Range (meter)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202867606196224
+    m_Localized: Max Range (Meter)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202953144832000
+    m_Localized: Burst Radius (m)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203040533155840
+    m_Localized: Reliability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203087232536576
+    m_Localized: Muzzle Velocity (m/s)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203230497378304
+    m_Localized: Calibre (mm)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203293432909824
+    m_Localized: Melee Ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203352530653184
+    m_Localized: Crew
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203648816287744
+    m_Localized: Subordinate Picker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203801048551424
+    m_Localized: Ship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203857801678848
+    m_Localized: Land Unit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203935249502208
+    m_Localized: Group
+    m_Metadata:
+      m_Items: []
+  - m_Id: 204325797924864
+    m_Localized: Builtin
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

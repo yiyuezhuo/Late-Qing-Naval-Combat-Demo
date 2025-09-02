@@ -227,6 +227,7 @@
                                                     <ui:FloatField label="Damage Point">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="TwoWay" />
+                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69481491238912)" />
                                                         </Bindings>
                                                     </ui:FloatField>
                                                     <ui:ProgressBar>
@@ -239,69 +240,82 @@
                                                     <ui:FloatField label="Damage Point (Pending)">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="pendingDamagePoint" binding-mode="TwoWay" />
+                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(167166449717248)" />
                                                         </Bindings>
                                                     </ui:FloatField>
                                                     <ui:FloatField label="Max Speed Offset">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="dynamicStatus.maxSpeedKnotsOffset" binding-mode="TwoWay" />
+                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(167332305080320)" />
                                                         </Bindings>
                                                     </ui:FloatField>
                                                     <ui:FloatField label="Acceleration Offset">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="dynamicStatus.accelerationOffset" binding-mode="TwoWay" />
+                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(167467596550144)" />
                                                         </Bindings>
                                                     </ui:FloatField>
                                                     <ui:SliderInt label="Engine Room Hits" high-value="100" show-input-field="true">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="dynamicStatus.engineRoomHits" binding-mode="TwoWay" />
                                                             <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsEngineRoomsLevels" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count" />
+                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(167528338460672)" />
                                                         </Bindings>
                                                     </ui:SliderInt>
                                                     <ui:SliderInt label="Propulsion/Shaft Hits" high-value="100" show-input-field="true">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="dynamicStatus.propulsionShaftHits" binding-mode="TwoWay" />
                                                             <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsPropulsionShaftLevels" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count" />
+                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(167707988889600)" />
                                                         </Bindings>
                                                     </ui:SliderInt>
                                                     <ui:SliderInt label="Boiler Room Hits" high-value="100" show-input-field="true">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="dynamicStatus.boilerRoomHits" binding-mode="TwoWay" />
                                                             <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsBoilerRooms" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count" />
+                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(167773285814272)" />
                                                         </Bindings>
                                                     </ui:SliderInt>
                                                     <ui:IntegerField label="Engine Room Flooding">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="dynamicStatus.engineRoomFloodingHits" binding-mode="TwoWay" />
+                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(167850461007872)" />
                                                         </Bindings>
                                                     </ui:IntegerField>
                                                     <ui:IntegerField label="Boiler Room Flooding">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="dynamicStatus.boilerRoomFloodingHits" binding-mode="TwoWay" />
+                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(168014307299328)" />
                                                         </Bindings>
                                                     </ui:IntegerField>
                                                     <ui:IntegerField label="Dmg Ctrl Rating Hit">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="damageControlRatingHits" binding-mode="TwoWay" />
+                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(168102635147264)" />
                                                         </Bindings>
                                                     </ui:IntegerField>
                                                     <ui:IntegerField label="Eff. Dmg Ctrl Rating" enabled="false">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="damageControlRatingProp" binding-mode="ToTarget" />
+                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(168174043172864)" />
                                                         </Bindings>
                                                     </ui:IntegerField>
                                                     <ui:IntegerField label="Port Searchlight Hits">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="searchLightHits.portHit" binding-mode="TwoWay" />
+                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(168576851546112)" />
                                                         </Bindings>
                                                     </ui:IntegerField>
                                                     <ui:IntegerField label="Starboard Searchlight Hits">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="searchLightHits.starboardHit" binding-mode="TwoWay" />
+                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(168654257426432)" />
                                                         </Bindings>
                                                     </ui:IntegerField>
                                                     <ui:Toggle label="Smoke Generator Disabled">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="smokeGeneratorDisabled" binding-mode="TwoWay" />
+                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(168731373899776)" />
                                                         </Bindings>
                                                     </ui:Toggle>
                                                 </ui:VisualElement>
@@ -332,6 +346,7 @@
                                             <Bindings>
                                                 <ui:DataBinding property="highValue" data-source-path="shipClassProperty.torpedoSector.ammunitionCapacity" binding-mode="ToTarget" />
                                                 <ui:DataBinding property="value" data-source-path="torpedoSectorStatus.ammunition" binding-mode="TwoWay" />
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(169759578165248)" />
                                             </Bindings>
                                         </ui:SliderInt>
                                         <ui:MultiColumnListView name="TorpedoMountStatusMultiColumnListView" binding-source-selection-mode="AutoAssign" data-source-path="torpedoSectorStatus.mountStatus" show-add-remove-footer="true" header-title="Torpedo Status" show-foldout-header="true">
@@ -344,6 +359,9 @@
                                                 <ui:Column width="10%" title="Reloaded Load" cell-template="project://database/Assets/UIDocuments/Templates/TorpedoMountStatusRecord/TorpedoMountStatusRecordReloadedLoad%201.uxml?fileID=9197481963319205126&amp;guid=70a49f292e5e2264d8161ba10d56b569&amp;type=3#TorpedoMountStatusRecordReloadedLoad 1" />
                                                 <ui:Column width="30%" name="firingTarget" title="Firing Target" cell-template="project://database/Assets/UIDocuments/Templates/AbstractMountStatus/AbstractMountStatusCellFiringTarget.uxml?fileID=9197481963319205126&amp;guid=c710d004ac89c594cab790bf1afe6d2a&amp;type=3#AbstractMountStatusCellFiringTarget" />
                                             </ui:Columns>
+                                            <Bindings>
+                                                <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(169838204588032)" />
+                                            </Bindings>
                                         </ui:MultiColumnListView>
                                     </ui:VisualElement>
                                 </ui:Tab>
@@ -358,36 +376,43 @@
                                             <ui:FloatField label="Armor" readonly="true">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="armorScoreProp" binding-mode="ToTarget" />
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(90678081785856)" />
                                                 </Bindings>
                                             </ui:FloatField>
                                             <ui:FloatField label="Survivability" readonly="true">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="survivabilityProp" binding-mode="ToTarget" />
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(90739557699584)" />
                                                 </Bindings>
                                             </ui:FloatField>
                                             <ui:FloatField label="Battery Firepower" readonly="true">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="batteryFirepowerProp" binding-mode="ToTarget" />
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(90796797366272)" />
                                                 </Bindings>
                                             </ui:FloatField>
                                             <ui:FloatField label="Torpedo Threat" readonly="true">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="torpedoThreatScoreProp" binding-mode="ToTarget" />
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(90854183833600)" />
                                                 </Bindings>
                                             </ui:FloatField>
                                             <ui:FloatField label="Rapid Firing Bty FP" readonly="true">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="rapidFiringFirepowerProp" binding-mode="ToTarget" />
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(170635940237312)" />
                                                 </Bindings>
                                             </ui:FloatField>
                                             <ui:FloatField label="Firepower" readonly="true">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="firepoweScoreProp" binding-mode="ToTarget" />
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(91012703358976)" />
                                                 </Bindings>
                                             </ui:FloatField>
                                             <ui:FloatField label="General" readonly="true">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="generalScoreProp" binding-mode="ToTarget" />
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(91087680737280)" />
                                                 </Bindings>
                                             </ui:FloatField>
                                         </ui:VisualElement>
@@ -395,21 +420,25 @@
                                             <ui:FloatField label="Bty Bow FP" readonly="true">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="firepowerBowProp" binding-mode="ToTarget" />
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(91148133240832)" />
                                                 </Bindings>
                                             </ui:FloatField>
                                             <ui:FloatField label="Bty Starboard FP" readonly="true">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="firepowerStarboardProp" binding-mode="ToTarget" />
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(91231503421440)" />
                                                 </Bindings>
                                             </ui:FloatField>
                                             <ui:FloatField label="Bty Stern FP" readonly="true">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="firepowerSternProp" binding-mode="ToTarget" />
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(91326852534272)" />
                                                 </Bindings>
                                             </ui:FloatField>
                                             <ui:FloatField label="Bty Port FP" readonly="true">
                                                 <Bindings>
                                                     <ui:DataBinding property="value" data-source-path="firepowerPortProp" binding-mode="ToTarget" />
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(91387397312512)" />
                                                 </Bindings>
                                             </ui:FloatField>
                                         </ui:VisualElement>
@@ -421,7 +450,11 @@
                                 <ui:Tab label="Time Loc">
                                     <ui:VisualElement style="flex-grow: 1;">
                                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                            <ui:Button text="Plot Trajectory on Map" name="PlotTrajectoryOnMapButton" />
+                                            <ui:Button text="Plot Trajectory on Map" name="PlotTrajectoryOnMapButton">
+                                                <Bindings>
+                                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172442062065664)" />
+                                                </Bindings>
+                                            </ui:Button>
                                         </ui:VisualElement>
                                         <ui:MultiColumnListView data-source-path="timeLocLogs" binding-source-selection-mode="AutoAssign">
                                             <ui:Columns>

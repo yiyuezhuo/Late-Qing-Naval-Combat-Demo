@@ -2,19 +2,32 @@
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
     <ui:Template name="StrategicUnitIcon" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicUnitIcon.uxml?fileID=9197481963319205126&amp;guid=aa3ccbfdf5107f4488fcd49416ef81e1&amp;type=3#StrategicUnitIcon" />
     <ui:VisualElement data-source-type="StrategicGroupEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
-        <ui:Label text="Strategic Group Editor" class="title" />
+        <ui:Label text="Strategic Group Editor" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195358933815296)" />
+            </Bindings>
+        </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px;">
                 <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupLabel.uxml?fileID=9197481963319205126&amp;guid=34ee77fc95e8a904caa681718cd94b24&amp;type=3#StrategicGroupLabel" data-source-path="currentGameState.strategicGroups" style="flex-grow: 1;" />
-                <ui:VisualElement name="ControlButtons">
-                    <ui:Button text="Copy Last" name="CopyLastButton" />
-                    <ui:Button text="Confirm" name="ConfirmButton" />
+                <ui:VisualElement name="ControlButtons" style="flex-shrink: 0;">
+                    <ui:Button text="Copy Last" name="CopyLastButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195698978623488)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Confirm" name="ConfirmButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1;">
                 <ui:Label text="Not Selected or Invalid">
                     <Bindings>
                         <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66691591213056)" />
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1;">
@@ -37,20 +50,27 @@
                                 <ui:TextField label="Leader" readonly="true" style="flex-grow: 1;">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="leaderReference.name" binding-mode="ToTarget" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172656676212736)" />
                                     </Bindings>
                                 </ui:TextField>
-                                <ui:Button text="Set" name="SetLeaderButton" />
+                                <ui:Button text="Set" name="SetLeaderButton">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
+                                    </Bindings>
+                                </ui:Button>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                 <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                                     <ui:EnumField label="Type" value="Center" type="StrategicCombatCore.StrategicGroup+Type, Assembly-CSharp">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)" />
                                         </Bindings>
                                     </ui:EnumField>
                                     <ui:EnumField label="Size" value="Center" type="StrategicCombatCore.StrategicUnitSize, Assembly-CSharp">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="size" binding-mode="TwoWay" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196209509306368)" />
                                         </Bindings>
                                     </ui:EnumField>
                                     <ui:IntegerField label="X">
@@ -64,11 +84,13 @@
                                     <ui:EnumField label="Country" value="Center" type="CoreUtils.Country, Assembly-CSharp">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="country" binding-mode="TwoWay" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69304797794304)" />
                                         </Bindings>
                                     </ui:EnumField>
                                     <ui:EnumField label="Deploy State" value="Center" type="StrategicCombatCore.StrategicGroup+DeployState, Assembly-CSharp">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="deployStateProp" binding-mode="TwoWay" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196313234444288)" />
                                         </Bindings>
                                     </ui:EnumField>
                                     <ui:IntegerField label="Y">
@@ -83,12 +105,25 @@
                                 <ui:TextField enabled="false" label="Parent" style="flex-grow: 1;">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="strategicGroupReferenceProp.name" binding-mode="ToTarget" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196392573898752)" />
                                     </Bindings>
                                 </ui:TextField>
-                                <ui:Button text="Goto" name="GotoParentButton" />
+                                <ui:Button text="Goto" name="GotoParentButton">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196569347035136)" />
+                                    </Bindings>
+                                </ui:Button>
                             </ui:VisualElement>
-                            <ui:ListView name="SubordinatesCombinedListView" header-title="Subordinates (Combined)" show-add-remove-footer="true" show-foldout-header="true" binding-source-selection-mode="AutoAssign" data-source-path="subordinatesCombined" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" fixed-item-height="60" />
-                            <ui:Label text="Remark" />
+                            <ui:ListView name="SubordinatesCombinedListView" header-title="Subordinates" show-add-remove-footer="true" show-foldout-header="true" binding-source-selection-mode="AutoAssign" data-source-path="subordinatesCombined" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" fixed-item-height="60">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196633377280000)" />
+                                </Bindings>
+                            </ui:ListView>
+                            <ui:Label text="Remark">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)" />
+                                </Bindings>
+                            </ui:Label>
                             <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />

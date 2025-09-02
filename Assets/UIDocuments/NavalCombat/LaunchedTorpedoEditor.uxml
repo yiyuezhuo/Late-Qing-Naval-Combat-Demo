@@ -1,16 +1,25 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
     <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" class="panel" style="flex-grow: 1;">
-        <ui:Label text="Launched Torpedo Editor" class="title" />
+        <ui:Label text="Launched Torpedo Editor" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(178457222483968)" />
+            </Bindings>
+        </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; flex-basis: 250px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                 <ui:ListView name="LaunchedTorpedoListView" data-source-path="navalGameState.launchedTorpedos" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" item-template="project://database/Assets/UIDocuments/Templates/LaunchedTorpedoLabel.uxml?fileID=9197481963319205126&amp;guid=c1536dd9bb64c0a4faacc098bd65a3fb&amp;type=3#LaunchedTorpedoLabel" style="flex-grow: 1;" />
-                <ui:Button text="Confirm&#10;" name="ConfirmButton" />
+                <ui:Button text="Confirm" name="ConfirmButton">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                    </Bindings>
+                </ui:Button>
             </ui:VisualElement>
             <ui:VisualElement data-source-path="selectedLaunchedTorpedo" style="flex-grow: 1;">
                 <ui:Label text="Not Selected or binding is invalid">
                     <Bindings>
                         <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="LaunchedTorpedo to DisplayStyle (Not)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66691591213056)" />
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
@@ -22,6 +31,7 @@
                             <ui:TextField label="Shooter" readonly="true" style="flex-grow: 1;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="shooterDesc" binding-mode="ToTarget" />
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(179033234640896)" />
                                 </Bindings>
                             </ui:TextField>
                         </ui:VisualElement>
@@ -29,34 +39,40 @@
                             <ui:TextField label="Desired Target" readonly="true" style="flex-grow: 1;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="desiredTargetDesc" binding-mode="ToTarget" />
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(179088108720128)" />
                                 </Bindings>
                             </ui:TextField>
                         </ui:VisualElement>
                         <ui:FloatField label="Length (ft)">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="lengthFoot" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(179146103361536)" />
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField label="Beam (ft)">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="beamFoot" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(179207059181568)" />
                             </Bindings>
                         </ui:FloatField>
                         <ui:EnumField label="Endgame" value="Center" type="NavalCombatCore.LaunchedTorpedoEndgameType, Assembly-CSharp">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="endgameType" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(179393781207040)" />
                             </Bindings>
                         </ui:EnumField>
                         <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
                             <ui:TextField label="Hit" readonly="true" style="flex-grow: 1;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="hitObjectDesc" binding-mode="ToTarget" />
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(179460328034304)" />
                                 </Bindings>
                             </ui:TextField>
                         </ui:VisualElement>
                         <ui:FloatField label="Inflict DP">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="inflictDamagePoint" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(179505769123840)" />
                             </Bindings>
                         </ui:FloatField>
                         <Bindings>
@@ -67,41 +83,49 @@
                         <ui:FloatField label="Latitude">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="position.LatDeg" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103175836831744)" />
                             </Bindings>
                         </ui:FloatField>
-                        <ui:FloatField label="Longtitude">
+                        <ui:FloatField label="Longitude">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="position.LonDeg" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103239598641152)" />
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField label="Speed (kts)">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="speedKnots" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103301821140992)" />
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField label="Heading (Deg)">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="headingDeg" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103576539664384)" />
                             </Bindings>
                         </ui:FloatField>
                         <ui:EnumField label="Map State" value="Center" type="NavalCombatCore.MapState, Assembly-CSharp">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="mapState" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(102766418235392)" />
                             </Bindings>
                         </ui:EnumField>
                         <ui:FloatField label="Max Range (yards)">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="maxRangeYards" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(81865190576128)" />
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField label="Moved Dist (yards)">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="movedDistanceYards" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(179965292875776)" />
                             </Bindings>
                         </ui:FloatField>
                         <ui:EnumField label="Damage Class" value="Center" type="NavalCombatCore.TorpedoDamageClass, Assembly-CSharp">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="damageClass" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(82506625486848)" />
                             </Bindings>
                         </ui:EnumField>
                     </ui:VisualElement>

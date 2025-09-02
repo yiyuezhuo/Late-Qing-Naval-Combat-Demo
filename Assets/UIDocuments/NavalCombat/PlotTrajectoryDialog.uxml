@@ -1,6 +1,10 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="PlotTrajectoryViewModel, Assembly-CSharp" class="panel-dialog" style="height: auto; width: 500px;">
-        <ui:Label text="Plot Trajectory" class="title" />
+        <ui:Label text="Plot Trajectory" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(198486290763776)" />
+            </Bindings>
+        </ui:Label>
         <ui:TextField enabled="false">
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="shipLogName" binding-mode="ToTarget" />
@@ -11,16 +15,19 @@
                 <ui:SliderInt label="Red" high-value="255" show-input-field="true" fill="true">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="red" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(198315876192256)" />
                     </Bindings>
                 </ui:SliderInt>
                 <ui:SliderInt label="Green" high-value="255" fill="true" show-input-field="true">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="green" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(198371681406976)" />
                     </Bindings>
                 </ui:SliderInt>
                 <ui:SliderInt label="Blue" high-value="255" fill="true" show-input-field="true">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="blue" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(198439205507072)" />
                     </Bindings>
                 </ui:SliderInt>
             </ui:VisualElement>
@@ -31,8 +38,16 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement style="flex-direction: row;">
-            <ui:Button text="Confirm" name="ConfirmButton" style="flex-basis: 50px; flex-grow: 1;" />
-            <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;" />
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-basis: 50px; flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                </Bindings>
+            </ui:Button>
+            <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66269346435072)" />
+                </Bindings>
+            </ui:Button>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

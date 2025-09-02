@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using Unity.Properties;
 
 public class MainMenu : SingletonDocument<MainMenu>
 {
     protected override void Awake()
     {
         base.Awake();
+
+        root.dataSource = this;
 
         var selectScenarioButton = root.Q<Button>("SelectScenarioButton");
         var loadGameButton = root.Q<Button>("LoadGameButton");
@@ -43,7 +46,12 @@ public class MainMenu : SingletonDocument<MainMenu>
         {
             strategicModeTestButton.style.display = DisplayStyle.None;
         }
+
+        root.Q<Button>("SettingButton").clicked += DialogRoot.Instance.PopupGamePreferenceDialog;
     }
+
+    [CreateProperty]
+    public string versionStr => $"Version: {Application.version}";
 
     void OnFullStateXMLLoaded(string text)
     {

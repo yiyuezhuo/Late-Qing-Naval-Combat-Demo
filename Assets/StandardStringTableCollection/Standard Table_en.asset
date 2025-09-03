@@ -1678,6 +1678,14 @@ MonoBehaviour:
     m_Localized: None
     m_Metadata:
       m_Items: []
+  - m_Id: 463235159068672
+    m_Localized: UI Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 541644539203584
+    m_Localized: Fire Control Hits
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

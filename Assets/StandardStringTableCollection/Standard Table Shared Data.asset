@@ -1649,6 +1649,14 @@ MonoBehaviour:
     m_Key: Undamaged
     m_Metadata:
       m_Items: []
+  - m_Id: 463235159068672
+    m_Key: UI Localization
+    m_Metadata:
+      m_Items: []
+  - m_Id: 541644539203584
+    m_Key: Fire Control Hits
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

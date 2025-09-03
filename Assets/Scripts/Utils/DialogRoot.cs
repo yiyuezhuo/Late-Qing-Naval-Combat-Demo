@@ -5,11 +5,14 @@ using System.Linq;
 using System;
 using UnityEngine.SceneManagement;
 using Unity.Properties;
+using UnityEngine.Localization.Settings;
+using System.Collections;
 
 using NavalCombatCore;
 using StrategicCombatCore;
 using CoreUtils;
 using NavalCombat;
+using UnityEngine.Localization;
 
 public class ScenarioPickerDialog // ScenarioPicker's root data source
 {
@@ -340,7 +343,82 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             templateDataSource = GamePreference.Instance,
         };
 
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var localeDropdownField = el.Q<DropdownField>("LocaleDropdownField");
+            StartCoroutine(SetupLocale(localeDropdownField));
+        };
+
         tempDialog.Popup();
+    }
+
+    IEnumerator SetupLocale(DropdownField localeDropdownField)
+    {
+        yield return LocalizationSettings.InitializationOperation;
+
+        localeDropdownField.choices = LocalizationSettings.AvailableLocales.Locales.Select(LocaleToNativeName).ToList();
+
+        // LocalizationSettings.SelectedLocale.Identifier.CultureInfo.NativeName
+        // en
+        // ja
+        // zh-Hans
+        // zh-Hant
+
+        var locales = LocalizationSettings.AvailableLocales.Locales;
+        for (var i = 0; i < locales.Count; i++)
+            if (LocaleToNativeName(locales[i]) == LocaleToNativeName(LocalizationSettings.SelectedLocale))
+                localeDropdownField.index = i;
+
+        localeDropdownField.RegisterValueChangedCallback(evt => SwitchToLocaleByName(evt.newValue));
+    }
+
+    // static string LocaleToNativeName(UnityEngine.Localization.Locale locale) => locale.Identifier.CultureInfo.NativeName;
+    static string LocaleToNativeName(UnityEngine.Localization.Locale locale)
+    {
+        var name = locale.Identifier.CultureInfo.Name;
+        switch (name)
+        {
+            case "en":
+                return "English";
+            case "ja":
+                return "日本語";
+            case "zh-Hans":
+                return "简体中文";
+            case "zh-Hant":
+                return "繁體中文";
+            default:
+                return name;
+        }
+    }
+
+    static void SwitchToLocaleByName(string s)
+    {
+        // UnityEngine.Localization.Locale selectedLocale = null;
+
+        // var locales = LocalizationSettings.AvailableLocales.Locales;
+        // for (var i = 0; i < locales.Count; i++)
+        //     if (LocaleToNativeName(locales[i]) == s)
+        //         selectedLocale = locales[i];
+
+        var selectedLocale = LocalizationSettings.AvailableLocales.Locales.FirstOrDefault(locale => LocaleToNativeName(locale) == s);
+
+        if (selectedLocale != null)
+        {
+            LocalizationSettings.SelectedLocale = selectedLocale;
+            SetShortLabelLanguageTypeByLocale(selectedLocale);
+        }
+    }
+
+    static void SetShortLabelLanguageTypeByLocale(Locale locale)
+    {
+        GamePreference.Instance.shortLabelLanguageType = locale.Identifier.CultureInfo.Name switch
+        {
+            "en" => LanguageType.English,
+            "ja" => LanguageType.Japanese,
+            "zh-Hans" => LanguageType.ChineseSimplified,
+            "zh-Hant" => LanguageType.ChineseTraditional,
+            _ =>LanguageType.English
+        };
     }
 
     public void PopupStrategicGroupPickerDialog(Action<StrategicGroup> callback)

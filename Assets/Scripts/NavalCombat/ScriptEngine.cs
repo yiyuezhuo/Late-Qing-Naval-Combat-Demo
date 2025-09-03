@@ -6,6 +6,8 @@ using NavalCombatCore;
 using Jint.Runtime.Interop;
 using System.Linq;
 using System.Collections;
+using UnityEngine.Localization.Settings;
+
 
 public class ScriptEngine
 {
@@ -27,11 +29,32 @@ public class ScriptEngine
         engine.SetValue("getPositiveAngleDifference", new Func<object, object, float>(GetPositiveAngleDifference));
         engine.SetValue("calculateInitialBearing", new Func<object, object, float>(CalculateInitialBearing));
         engine.SetValue("measure", new Func<object, object, MeasureStats>(Measure));
+        engine.SetValue("getLocalized", new Func<object, object, object, object, string>(GetLocalizedObj));
         // GetPositiveAngleDifference
         // engine.SetValue("getUnitByName", )
         // engine.SetValue("msgBoxDelay", new Action<object, object>((msg, seconds) => {
         //     DialogRoot.Instance.PopupMessageDialog(msg as string));
         // });
+    }
+
+    static string GetLocalizedObj(object english, object japanese, object chineseSimplified, object chineseTraditional)
+        => GetLocalized(english as string, japanese as string, chineseSimplified as string, chineseTraditional as string);
+
+    static string GetLocalized(string english, string japanese, string chineseSimplified, string chineseTraditional)
+    {
+        var name = LocalizationSettings.SelectedLocale.Identifier.CultureInfo.Name;
+        switch (name)
+        {
+            case "en":
+                return english;
+            case "ja":
+                return japanese;
+            case "zh-Hans":
+                return chineseSimplified;
+            case "zh-Hant":
+                return chineseTraditional;
+        }
+        return english;
     }
 
     static MeasureStats Measure(object arg1, object arg2)

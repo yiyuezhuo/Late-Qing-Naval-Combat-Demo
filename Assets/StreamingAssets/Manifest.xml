@@ -3,6 +3,7 @@
  <remark>This file is only used in platform that don't support File System (E.X. WebGL)</remark>
  <builtinScripts>
   <string>/BuiltinScripts/ApplyDamageEffectToAllShips.js</string>
+  <string>/BuiltinScripts/CheckAnyHitScored.js</string>
   <string>/BuiltinScripts/CheckFireExchange.js</string>
   <string>/BuiltinScripts/Sample.js</string>
  </builtinScripts>

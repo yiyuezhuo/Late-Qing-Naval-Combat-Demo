@@ -1,19 +1,32 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
     <ui:VisualElement data-source-type="LandUnitEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
-        <ui:Label text="Land Unit Editor" class="title" />
+        <ui:Label text="Land Unit Editor" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(352354123288576)" />
+            </Bindings>
+        </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement data-source-path="currentGameState" style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px;">
                 <ui:ListView name="ObjectListView" data-source-path="landUnits" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/LandUnitLabel.uxml?fileID=9197481963319205126&amp;guid=c06f535a8a0702e448f9525328086019&amp;type=3#LandUnitLabel" show-add-remove-footer="true" reorderable="true" style="flex-grow: 1;" />
                 <ui:VisualElement style="flex-shrink: 0; flex-direction: column; flex-wrap: nowrap;">
-                    <ui:Button text="Copy Last" name="CopyLastButton" />
-                    <ui:Button text="Confirm" name="ConfirmButton" />
+                    <ui:Button text="Copy Last" name="CopyLastButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195698978623488)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Confirm" name="ConfirmButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                 <ui:Label text="Not selected or invalid">
                     <Bindings>
                         <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66691591213056)" />
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1;">
@@ -24,9 +37,14 @@
                         <ui:IntegerField label="Strength">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="stregnth" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(352622210617344)" />
                             </Bindings>
                         </ui:IntegerField>
-                        <ui:Label text="Remark" />
+                        <ui:Label text="Remark">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)" />
+                            </Bindings>
+                        </ui:Label>
                         <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="height: 100px; max-height: 100px; min-height: 100px; white-space: normal;">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />

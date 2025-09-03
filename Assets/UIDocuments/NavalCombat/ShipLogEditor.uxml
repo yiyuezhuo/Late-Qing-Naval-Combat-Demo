@@ -332,6 +332,9 @@
                                             <ui:Instance template="SubStateMultiColumnListView" />
                                         </ui:ScrollView>
                                     </ui:VisualElement>
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(364176851243008)" />
+                                    </Bindings>
                                 </ui:Tab>
                                 <ui:Tab label="Battery">
                                     <ui:ScrollView>
@@ -339,6 +342,9 @@
                                             <ui:ListView binding-source-selection-mode="AutoAssign" header-title="Battery Status" show-add-remove-footer="true" show-foldout-header="true" name="BatteryStatusListView" item-template="project://database/Assets/UIDocuments/NavalCombat/BatteryStatusEditor.uxml?fileID=9197481963319205126&amp;guid=a7e04f44f7a7c42429e749f2381c0861&amp;type=3#BatteryStatusEditor" virtualization-method="DynamicHeight" data-source-path="batteryStatus" style="flex-shrink: 0; flex-grow: 1;" />
                                         </ui:VisualElement>
                                     </ui:ScrollView>
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67032395190272)" />
+                                    </Bindings>
                                 </ui:Tab>
                                 <ui:Tab label="Torpedo">
                                     <ui:VisualElement style="flex-grow: 1;">
@@ -364,11 +370,17 @@
                                             </Bindings>
                                         </ui:MultiColumnListView>
                                     </ui:VisualElement>
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67160241770496)" />
+                                    </Bindings>
                                 </ui:Tab>
                                 <ui:Tab label="Rapid Firing Battery">
                                     <ui:VisualElement style="flex-grow: 1;">
                                         <ui:ListView name="RapidFiringStatusListView" item-template="project://database/Assets/UIDocuments/NavalCombat/RapidFiringStatusEditor.uxml?fileID=9197481963319205126&amp;guid=58d7b5d1e3f7fda4d9e36202f2d4df08&amp;type=3#RapidFiringStatusEditor" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" data-source-path="rapidFiringStatus" virtualization-method="DynamicHeight" show-border="true" />
                                     </ui:VisualElement>
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67081078476800)" />
+                                    </Bindings>
                                 </ui:Tab>
                                 <ui:Tab label="Score">
                                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
@@ -443,9 +455,15 @@
                                             </ui:FloatField>
                                         </ui:VisualElement>
                                     </ui:VisualElement>
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(68037681778688)" />
+                                    </Bindings>
                                 </ui:Tab>
                                 <ui:Tab label="Doctrine">
                                     <ui:Instance template="DoctrineEditor" data-source-path="doctrineProp" />
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171090770563072)" />
+                                    </Bindings>
                                 </ui:Tab>
                                 <ui:Tab label="Time Loc">
                                     <ui:VisualElement style="flex-grow: 1;">
@@ -464,6 +482,9 @@
                                             </ui:Columns>
                                         </ui:MultiColumnListView>
                                     </ui:VisualElement>
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(364519395856384)" />
+                                    </Bindings>
                                 </ui:Tab>
                             </ui:TabView>
                         </ui:ScrollView>

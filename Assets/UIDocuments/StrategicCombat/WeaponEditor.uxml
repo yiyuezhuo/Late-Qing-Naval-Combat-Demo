@@ -11,8 +11,16 @@
             <ui:VisualElement style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px;">
                 <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" data-source-path="currentGameState.weapons" item-template="project://database/Assets/UIDocuments/Templates/WeaponLabel.uxml?fileID=9197481963319205126&amp;guid=64322fe9ac2f31b469011ea7d0e190e0&amp;type=3#WeaponLabel" style="flex-grow: 1;" />
                 <ui:VisualElement name="ControlButtons" style="flex-shrink: 0;">
-                    <ui:Button text="Copy Last" name="CopyLastButton" />
-                    <ui:Button text="Confirm" name="ConfirmButton" />
+                    <ui:Button text="Copy Last" name="CopyLastButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195698978623488)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Confirm" name="ConfirmButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1;">

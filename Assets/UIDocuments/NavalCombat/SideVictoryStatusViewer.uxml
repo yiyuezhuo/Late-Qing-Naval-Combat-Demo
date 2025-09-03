@@ -10,16 +10,19 @@
                 <ui:FloatField label="Commit VP">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="commitVictoryPoint" binding-mode="ToTarget" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(361652219973632)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="Self Loss Ratio">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="selfLossRatio" binding-mode="ToTarget" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(361720696180736)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="VP">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="victoryPoint" binding-mode="ToTarget" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(361844428148736)" />
                     </Bindings>
                 </ui:FloatField>
             </ui:VisualElement>
@@ -27,16 +30,19 @@
                 <ui:FloatField label="Loss VP">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="lossVictoryPoint" binding-mode="ToTarget" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(361923528527872)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="Other Over Self Ratio">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="otherOverSelfLossRatio" binding-mode="ToTarget" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(361979753172992)" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:TextField label="Level">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="victoryLevel" binding-mode="ToTarget" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362084455583744)" />
                     </Bindings>
                 </ui:TextField>
             </ui:VisualElement>

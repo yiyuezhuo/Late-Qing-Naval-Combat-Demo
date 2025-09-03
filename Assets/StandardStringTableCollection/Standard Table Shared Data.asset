@@ -1321,6 +1321,178 @@ MonoBehaviour:
     m_Key: Builtin
     m_Metadata:
       m_Items: []
+  - m_Id: 348264442007552
+    m_Key: Map Edit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348352971182080
+    m_Key: Terrain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348401381838848
+    m_Key: Hex Pair Feature
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348472202661888
+    m_Key: Width
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348760607199232
+    m_Key: Height
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348843553755136
+    m_Key: Generate Map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348895013670912
+    m_Key: Reference Map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349057530368000
+    m_Key: Border
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349119039836160
+    m_Key: Accurate Sea Land
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349825385795584
+    m_Key: TPS Georeferencing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350010866307072
+    m_Key: Naval
+    m_Metadata:
+      m_Items: []
+  - m_Id: 352354123288576
+    m_Key: Land Unit Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 352622210617344
+    m_Key: Strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 356740144730112
+    m_Key: High Command
+    m_Metadata:
+      m_Items: []
+  - m_Id: 356932872998912
+    m_Key: Weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 357022840819712
+    m_Key: Side State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 358301486977024
+    m_Key: Create Default Ship Log
+    m_Metadata:
+      m_Items: []
+  - m_Id: 358609889955840
+    m_Key: Ground Control Point
+    m_Metadata:
+      m_Items: []
+  - m_Id: 358716039401472
+    m_Key: 'Group Count:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 358782179381248
+    m_Key: 'Go to  Location (Tactical) '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 360882632298496
+    m_Key: Resolve Naval Combat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 360963381039104
+    m_Key: Move (Edit, M)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361652219973632
+    m_Key: Commit VP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361720696180736
+    m_Key: Self Loss Ratio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361844428148736
+    m_Key: VP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361923528527872
+    m_Key: Loss VP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361979753172992
+    m_Key: Other Over Self Ratio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362084455583744
+    m_Key: Victory Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362247664340992
+    m_Key: Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362769544810496
+    m_Key: Inherit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363410065362944
+    m_Key: (DEBUG) Strategic Mode Test
+    m_Metadata:
+      m_Items: []
+  - m_Id: 364176851243008
+    m_Key: Damage Effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 364519395856384
+    m_Key: Time Loc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 366036853100544
+    m_Key: Japan High Command
+    m_Metadata:
+      m_Items: []
+  - m_Id: 366123675193344
+    m_Key: China High Command
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368036151988224
+    m_Key: Tutorial 1 - Single Ship.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368041239678976
+    m_Key: Tutorial 2 - Ship Group.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368095237148672
+    m_Key: Tutorial 3 - Combat.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368128871272448
+    m_Key: Battle of Pundo.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368199792758784
+    m_Key: Battle of Yalu River.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368206742720512
+    m_Key: Chih Yuan vs Naniwa.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368283557203968
+    m_Key: Fu Lung vs Saikyo Maru.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368336296382464
+    m_Key: Ting Yuen vs Fuji.scen.xml
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

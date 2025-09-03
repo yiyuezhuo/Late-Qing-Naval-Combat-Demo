@@ -2,11 +2,19 @@
     <ui:Template name="DepartmentPosition" src="project://database/Assets/UIDocuments/StrategicCombat/DepartmentPosition.uxml?fileID=9197481963319205126&amp;guid=c57c3ca88b3307e4683f8da2af67a3cc&amp;type=3#DepartmentPosition" />
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement data-source-type="StrategicGameManager, Assembly-CSharp" data-source-path="gameState.highCommand" class="panel" style="flex-grow: 1;">
-        <ui:Label text="High Command" class="title" />
+        <ui:Label text="High Command" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(356740144730112)" />
+            </Bindings>
+        </ui:Label>
         <ui:ScrollView>
             <ui:VisualElement style="flex-grow: 1; flex-direction: row; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
                 <ui:VisualElement data-source-path="japaneseHighCommand" style="flex-grow: 1; flex-basis: 100px;">
-                    <ui:Label text="Japan High Command" />
+                    <ui:Label text="Japan High Command">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(366036853100544)" />
+                        </Bindings>
+                    </ui:Label>
                     <ui:VisualElement data-source-path="staffOffice" class="border-box">
                         <ui:Label text="Staff Office/参謀本部" name="DepartmentName" />
                         <ui:Instance template="DepartmentPosition" data-source-path="chiefOfStaff" />
@@ -44,7 +52,11 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement data-source-path="chineseHighCommand" style="flex-grow: 1; flex-basis: 100px;">
-                    <ui:Label text="China High Command" />
+                    <ui:Label text="China High Command">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(366123675193344)" />
+                        </Bindings>
+                    </ui:Label>
                     <ui:VisualElement data-source-path="beiyangLocal" class="border-box">
                         <ui:Label text="Beiyang / 北洋" />
                         <ui:Instance template="DepartmentPosition" data-source-path="beiyangMinister">
@@ -87,6 +99,10 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:ScrollView>
-        <ui:Button text="Confirm" name="ConfirmButton" />
+        <ui:Button text="Confirm" name="ConfirmButton">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+            </Bindings>
+        </ui:Button>
     </ui:VisualElement>
 </ui:UXML>

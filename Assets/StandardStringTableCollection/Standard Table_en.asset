@@ -1350,6 +1350,178 @@ MonoBehaviour:
     m_Localized: Builtin
     m_Metadata:
       m_Items: []
+  - m_Id: 348264442007552
+    m_Localized: Map Edit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348352971182080
+    m_Localized: Terrain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348401381838848
+    m_Localized: Hex Pair Feature
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348472202661888
+    m_Localized: Width
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348760607199232
+    m_Localized: Height
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348843553755136
+    m_Localized: Generate Map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348895013670912
+    m_Localized: Reference Map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349057530368000
+    m_Localized: Border
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349119039836160
+    m_Localized: Accurate Sea Land
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349825385795584
+    m_Localized: TPS Georeferencing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350010866307072
+    m_Localized: Naval
+    m_Metadata:
+      m_Items: []
+  - m_Id: 352354123288576
+    m_Localized: Land Unit Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 352622210617344
+    m_Localized: Strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 356740144730112
+    m_Localized: High Command
+    m_Metadata:
+      m_Items: []
+  - m_Id: 356932872998912
+    m_Localized: Weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 357022840819712
+    m_Localized: Side State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 358301486977024
+    m_Localized: Create Default Ship Log
+    m_Metadata:
+      m_Items: []
+  - m_Id: 358609889955840
+    m_Localized: Ground Control Point
+    m_Metadata:
+      m_Items: []
+  - m_Id: 358716039401472
+    m_Localized: 'Group Count:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 358782179381248
+    m_Localized: 'Go to Location (Tactical) '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 360882632298496
+    m_Localized: Resolve Naval Combat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 360963381039104
+    m_Localized: Move (Edit, M)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361652219973632
+    m_Localized: Commit VP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361720696180736
+    m_Localized: Self Loss Ratio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361844428148736
+    m_Localized: VP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361923528527872
+    m_Localized: Loss VP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361979753172992
+    m_Localized: Other Over Self Ratio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362084455583744
+    m_Localized: Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362247664340992
+    m_Localized: Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362769544810496
+    m_Localized: Inherit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363410065362944
+    m_Localized: (DEBUG) Strategic Mode Test
+    m_Metadata:
+      m_Items: []
+  - m_Id: 364176851243008
+    m_Localized: Damage Effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 364519395856384
+    m_Localized: Time Loc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 366036853100544
+    m_Localized: Japan High Command
+    m_Metadata:
+      m_Items: []
+  - m_Id: 366123675193344
+    m_Localized: China High Command
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368036151988224
+    m_Localized: Tutorial 1 - Single Ship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368041239678976
+    m_Localized: Tutorial 2 - Ship Group
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368095237148672
+    m_Localized: Tutorial 3 - Combat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368128871272448
+    m_Localized: Battle of Pundo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368199792758784
+    m_Localized: Battle of Yalu River
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368206742720512
+    m_Localized: Chih Yuan vs Naniwa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368283557203968
+    m_Localized: Fu Lung vs Saikyo Maru
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368336296382464
+    m_Localized: Ting Yuen vs Fuji
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

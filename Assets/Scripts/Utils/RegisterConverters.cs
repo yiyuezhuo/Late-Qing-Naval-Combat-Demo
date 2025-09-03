@@ -152,6 +152,8 @@ public static class RegisteredConverters
 
         Register("AmmunitionType => int", (ref AmmunitionType type) => (int)type);
         Register("int => AmmunitionType", (ref int idx) => (AmmunitionType)idx);
+
+        Register("String => Localized String", (ref string s) => MyLocale.Get(s));
     }
 
     // static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)

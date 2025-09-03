@@ -1522,6 +1522,162 @@ MonoBehaviour:
     m_Localized: Ting Yuen vs Fuji
     m_Metadata:
       m_Items: []
+  - m_Id: 420875259777024
+    m_Localized: Distance Yards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421496956293120
+    m_Localized: Rate of Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421655471624192
+    m_Localized: Vert Pen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825840058368
+    m_Localized: Range Band
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421986616119296
+    m_Localized: Hor Pen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422942581886976
+    m_Localized: Tgt Spd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423123285086208
+    m_Localized: S/N
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423307851239424
+    m_Localized: S/B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423446477180928
+    m_Localized: M/N
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423571761041408
+    m_Localized: M/B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423735007547392
+    m_Localized: L/N
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423870420652032
+    m_Localized: L/B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424010313273344
+    m_Localized: E/N
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424211451121664
+    m_Localized: E/B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428298691317760
+    m_Localized: Begin (Deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428507395690496
+    m_Localized: Cross Deck Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428662761099264
+    m_Localized: Coverage (Deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432726236368896
+    m_Localized: Max Range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432869492822016
+    m_Localized: Eff. Range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 438632269385728
+    m_Localized: Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 439650642202624
+    m_Localized: Proc S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 440158039740416
+    m_Localized: Ammo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 440353376866304
+    m_Localized: Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: 441904065581056
+    m_Localized: Firing Target
+    m_Metadata:
+      m_Items: []
+  - m_Id: 442082067648512
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444321398165504
+    m_Localized: Target
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444460959436800
+    m_Localized: TK Seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444627070652416
+    m_Localized: State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 448163456126976
+    m_Localized: Current Load
+    m_Metadata:
+      m_Items: []
+  - m_Id: 448366644989952
+    m_Localized: Reloading S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 448598740996096
+    m_Localized: Reloaded Load
+    m_Metadata:
+      m_Items: []
+  - m_Id: 452835600404480
+    m_Localized: Processing (Seconds)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 453092904177664
+    m_Localized: Allocated
+    m_Metadata:
+      m_Items: []
+  - m_Id: 453951067164672
+    m_Localized: Time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455759852376064
+    m_Localized: Heavy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455934696132608
+    m_Localized: Light
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456043114696704
+    m_Localized: Med
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456192087986176
+    m_Localized: Sunk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456322233044992
+    m_Localized: None
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

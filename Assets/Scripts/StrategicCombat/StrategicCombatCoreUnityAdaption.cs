@@ -212,7 +212,7 @@ namespace StrategicCombatCore
                     var type = shipLog?.shipClass?.type;
                     var crews = shipLog?.shipClass?.complementMen;
                     var className = shipLog?.shipClass?.name.mergedName;
-                    
+
                     return $"{type}, {tons} tons, {crews} men, (class: {className})";
                 }
                 if (obj is StrategicGroup group)
@@ -245,5 +245,29 @@ namespace StrategicCombatCore
                 return "";
             }
         }
+
     }
+
+    public partial class WeaponRecord
+    {
+        [CreateProperty]
+        public string name => Get()?.name?.mergedName ?? "[Undefined or Invalid]";
+
+    }
+
+    public partial class LandUnitTemplate
+    {
+        [CreateProperty]
+        public int weaponStrength => GetWeaponStrength();
+
+        [CreateProperty]
+        public int weaponGuns => GetWeaponGuns();
+    }
+
+    public partial class LandUnit
+    {
+        [CreateProperty]
+        public string landUnitTemplateName => GetLandUnitTemplate()?.name?.mergedName ?? "[Undefined or Invalid]";
+    }
+
 }

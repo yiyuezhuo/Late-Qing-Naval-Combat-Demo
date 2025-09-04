@@ -31,6 +31,14 @@
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1;">
                     <ui:VisualElement data-source-path="selectedObject" style="flex-grow: 1;">
+                        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                            <ui:TextField label="Land Unit Template" enabled="false" style="flex-grow: 1;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="landUnitTemplateName" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:TextField>
+                            <ui:Button text="Set" name="SetLandUnitTemplateButton" />
+                        </ui:VisualElement>
                         <ui:Instance template="GlobalStringEditor" data-source-path="name">
                             <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
                         </ui:Instance>

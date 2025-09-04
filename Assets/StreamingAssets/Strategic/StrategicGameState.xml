@@ -251,9 +251,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -263,6 +260,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -546,9 +544,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -558,6 +553,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -814,9 +810,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -826,6 +819,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1022,9 +1016,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -1034,6 +1025,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1218,9 +1210,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -1230,6 +1219,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1441,9 +1431,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -1453,6 +1440,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1664,9 +1652,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -1676,6 +1661,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1877,9 +1863,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -1889,6 +1872,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2090,9 +2074,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -2102,6 +2083,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2316,9 +2298,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -2328,6 +2307,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2542,9 +2522,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -2554,6 +2531,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2749,9 +2727,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -2761,6 +2736,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2956,9 +2932,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -2968,6 +2941,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3163,9 +3137,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -3175,6 +3146,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3361,9 +3333,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -3373,6 +3342,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3605,9 +3575,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -3617,6 +3584,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3916,9 +3884,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -3928,6 +3893,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -4229,9 +4195,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -4241,6 +4204,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -4482,9 +4446,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -4494,6 +4455,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -4804,9 +4766,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -4816,6 +4775,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5072,9 +5032,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -5084,6 +5041,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5328,9 +5286,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -5340,6 +5295,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5524,9 +5480,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -5536,6 +5489,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5695,9 +5649,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -5707,6 +5658,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5834,9 +5786,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -5846,6 +5795,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5961,9 +5911,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -5973,6 +5920,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6090,9 +6038,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -6102,6 +6047,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6343,9 +6289,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -6355,6 +6298,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6576,9 +6520,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -6588,6 +6529,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6811,9 +6753,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -6823,6 +6762,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7046,9 +6986,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -7058,6 +6995,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7242,9 +7180,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -7254,6 +7189,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7459,9 +7395,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -7471,6 +7404,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7588,9 +7522,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -7600,6 +7531,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7715,9 +7647,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -7727,6 +7656,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7842,9 +7772,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -7854,6 +7781,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7971,9 +7899,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -7983,6 +7908,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8100,9 +8026,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -8112,6 +8035,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8229,9 +8153,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -8241,6 +8162,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8358,9 +8280,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -8370,6 +8289,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8487,9 +8407,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -8499,6 +8416,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8616,9 +8534,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -8628,6 +8543,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8745,9 +8661,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -8757,6 +8670,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8872,9 +8786,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -8884,6 +8795,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9001,9 +8913,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -9013,6 +8922,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9128,9 +9038,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -9140,6 +9047,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9255,9 +9163,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -9267,6 +9172,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9382,9 +9288,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -9394,6 +9297,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9511,9 +9415,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -9523,6 +9424,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9649,9 +9551,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -9661,6 +9560,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9787,9 +9687,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -9799,6 +9696,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9925,9 +9823,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -9937,6 +9832,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10072,9 +9968,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -10084,6 +9977,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10201,9 +10095,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -10213,6 +10104,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10330,9 +10222,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -10342,6 +10231,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10459,9 +10349,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -10471,6 +10358,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10588,9 +10476,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -10600,6 +10485,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10717,9 +10603,6 @@
     <starboardHit>0</starboardHit>
    </searchLightHits>
    <damageControlRatingHits>0</damageControlRatingHits>
-   <damageEffectRecords />
-   <damageEffects />
-   <shipboardFireStatus />
    <emergencyRudder>false</emergencyRudder>
    <assistedDeceleration>true</assistedDeceleration>
    <controlMode>Independent</controlMode>
@@ -10729,6 +10612,7 @@
    <isEvasiveManeuvering>false</isEvasiveManeuvering>
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
+   <timeLocLogs />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11226,7 +11110,7 @@
    </name>
    <size>Battalion</size>
    <unitType>Infantry</unitType>
-   <strength>500</strength>
+   <strength>560</strength>
    <guns>0</guns>
    <firepowerKgPerMin>0</firepowerKgPerMin>
    <targettingGain>10</targettingGain>
@@ -11243,7 +11127,322 @@
    <strategicSpeedKmPerDay>0</strategicSpeedKmPerDay>
    <operationalSpeedKmPerDay>0</operationalSpeedKmPerDay>
    <tacticalSpeedMPerMin>0</tacticalSpeedMPerMin>
+   <weaponRecordss>
+    <WeaponRecord>
+     <weaponObjectId>bb516fba-fe39-4d6b-a16c-cf2d8ead46f4</weaponObjectId>
+     <count>500</count>
+    </WeaponRecord>
+   </weaponRecordss>
+   <remark>每个步兵营560人
+x4 步兵中队（每个步兵中队136人）
+
+Each infantry battalion has 560 personnel
+x4 infantry companies (each infantry company has 136 personnel)
+
+各歩兵大隊560人
+x4 歩兵中隊（各歩兵中隊136人）
+
+每個步兵營560人
+x4 步兵中隊（每個步兵中隊136人）
+
+</remark>
    <objectId>ee66b675-29a8-4736-ab53-a95c7be5cb83</objectId>
+  </LandUnitTemplate>
+  <LandUnitTemplate>
+   <name>
+    <english>Field Gun Btn</english>
+    <chineseSimplified>野炮大队</chineseSimplified>
+   </name>
+   <size>Battalion</size>
+   <unitType>Artillery</unitType>
+   <strength>290</strength>
+   <guns>0</guns>
+   <firepowerKgPerMin>0</firepowerKgPerMin>
+   <targettingGain>0</targettingGain>
+   <rangeMeter>0</rangeMeter>
+   <moraleCoef>0</moraleCoef>
+   <densityStrengthPerSqMeter>0</densityStrengthPerSqMeter>
+   <assault>0</assault>
+   <ammoCoef>0</ammoCoef>
+   <rationCoef>0</rationCoef>
+   <weaponWeightKgPerStrength>0</weaponWeightKgPerStrength>
+   <carryingRationKg>0</carryingRationKg>
+   <carryingAmmoKg>0</carryingAmmoKg>
+   <isSupport>true</isSupport>
+   <strategicSpeedKmPerDay>0</strategicSpeedKmPerDay>
+   <operationalSpeedKmPerDay>0</operationalSpeedKmPerDay>
+   <tacticalSpeedMPerMin>0</tacticalSpeedMPerMin>
+   <weaponRecordss>
+    <WeaponRecord>
+     <weaponObjectId>d55dcd0b-837d-4a11-849f-aff1c1d35864</weaponObjectId>
+     <count>12</count>
+    </WeaponRecord>
+   </weaponRecordss>
+   <remark>每个炮兵营270-290人，12门火炮
+x2 炮兵中队（每个炮兵连111人，6门火炮）
+
+Each artillery battalion has 270-290 personnel and 12 artillery pieces
+x2 artillery batteries (each artillery battery has 111 personnel and 6 artillery pieces)
+
+各砲兵大隊270-290人、砲12門
+x2 砲兵中隊（各砲兵中隊111人、砲6門）
+
+每個砲兵營270-290人，12門火砲
+x2 砲兵中隊（每個砲兵中隊111人，6門火砲）
+</remark>
+   <objectId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</objectId>
+  </LandUnitTemplate>
+  <LandUnitTemplate>
+   <name>
+    <english>Mountain Gun Btn</english>
+    <chineseSimplified>山炮大队</chineseSimplified>
+   </name>
+   <size>Battalion</size>
+   <unitType>Artillery</unitType>
+   <strength>290</strength>
+   <guns>0</guns>
+   <firepowerKgPerMin>0</firepowerKgPerMin>
+   <targettingGain>0</targettingGain>
+   <rangeMeter>0</rangeMeter>
+   <moraleCoef>0</moraleCoef>
+   <densityStrengthPerSqMeter>0</densityStrengthPerSqMeter>
+   <assault>0</assault>
+   <ammoCoef>0</ammoCoef>
+   <rationCoef>0</rationCoef>
+   <weaponWeightKgPerStrength>0</weaponWeightKgPerStrength>
+   <carryingRationKg>0</carryingRationKg>
+   <carryingAmmoKg>0</carryingAmmoKg>
+   <isSupport>true</isSupport>
+   <strategicSpeedKmPerDay>0</strategicSpeedKmPerDay>
+   <operationalSpeedKmPerDay>0</operationalSpeedKmPerDay>
+   <tacticalSpeedMPerMin>0</tacticalSpeedMPerMin>
+   <weaponRecordss>
+    <WeaponRecord>
+     <weaponObjectId>c76ab8d3-a1c1-4b8a-a1f0-cd21c627c079</weaponObjectId>
+     <count>12</count>
+    </WeaponRecord>
+   </weaponRecordss>
+   <remark>每个炮兵营270-290人，12门火炮
+x2 炮兵中队（每个炮兵连111人，6门火炮）
+
+Each artillery battalion has 270-290 personnel and 12 artillery pieces
+x2 artillery batteries (each artillery battery has 111 personnel and 6 artillery pieces)
+
+各砲兵大隊270-290人、砲12門
+x2 砲兵中隊（各砲兵中隊111人、砲6門）
+
+每個砲兵營270-290人，12門火砲
+x2 砲兵中隊（每個砲兵中隊111人，6門火砲）</remark>
+   <objectId>615420ac-a799-4d02-9f2a-76f03a1cdd67</objectId>
+  </LandUnitTemplate>
+  <LandUnitTemplate>
+   <name>
+    <english>Huai Elite Btn</english>
+    <chineseSimplified>淮军精锐营团</chineseSimplified>
+   </name>
+   <size>Battalion</size>
+   <unitType>Infantry</unitType>
+   <strength>505</strength>
+   <guns>0</guns>
+   <firepowerKgPerMin>0</firepowerKgPerMin>
+   <targettingGain>0</targettingGain>
+   <rangeMeter>0</rangeMeter>
+   <moraleCoef>0</moraleCoef>
+   <densityStrengthPerSqMeter>0</densityStrengthPerSqMeter>
+   <assault>0</assault>
+   <ammoCoef>0</ammoCoef>
+   <rationCoef>0</rationCoef>
+   <weaponWeightKgPerStrength>0</weaponWeightKgPerStrength>
+   <carryingRationKg>0</carryingRationKg>
+   <carryingAmmoKg>0</carryingAmmoKg>
+   <isSupport>false</isSupport>
+   <strategicSpeedKmPerDay>0</strategicSpeedKmPerDay>
+   <operationalSpeedKmPerDay>0</operationalSpeedKmPerDay>
+   <tacticalSpeedMPerMin>0</tacticalSpeedMPerMin>
+   <weaponRecordss>
+    <WeaponRecord>
+     <weaponObjectId>4ab547f0-7873-4b0c-abc7-4e31a751ce1a</weaponObjectId>
+     <count>500</count>
+    </WeaponRecord>
+   </weaponRecordss>
+   <remark>
+防军非国家制兵，分别隶属于各省督抚或统兵大臣，故无统一的营制饷章，而是各自为政。同治年间（1862~1874年），各省防军营制饷章大体沿袭湘，淮军旧制。马步队均已营为单位。步队每营505人（营官在外），另有长夫180人；马队每营277人（长夫在外）。
+
+Provincial armies were not standardized national forces but instead operated under the jurisdiction of respective provincial governors or military commanders. As such, there was no unified organizational structure or pay system, and each unit operated independently. During the Tongzhi reign (1862–1874), most provincial armies adopted organizational and pay systems modeled after the Hunan and Huai Armies. Both infantry and cavalry were organized into battalions. An infantry battalion consisted of 505 soldiers (excluding the battalion commander), along with 180 laborers. A cavalry battalion comprised 277 personnel (excluding laborers).
+
+防軍は国家の正規軍ではなく、各省の総督や軍指揮官に隷属していたため、統一的な編制や俸給体系はなく、それぞれが独自に運営されていた。同治年間（1862～1874年）には、各省の防軍の編制と俸給体系は、湘軍や淮軍の旧制をほぼ継承していた。歩兵と騎兵はいずれも「営」（大隊）を単位とした。歩兵営は505名（営官を除く）、さらに人夫180名を附した。騎兵営は277名（人夫を除く）で構成されていた。
+
+防軍非國家制兵，分別隸屬於各省督撫或統兵大臣，故無統一的營制餉章，而是各自為政。同治年間（1862～1874年），各省防軍營制餉章大體沿襲湘、淮軍舊制。馬步隊均以營為單位。步隊每營505人（營官在外），另有長夫180人；馬隊每營277人（長夫在外）。
+
+</remark>
+   <objectId>b2cbae67-61da-4561-aca8-729c8a291c85</objectId>
+  </LandUnitTemplate>
+  <LandUnitTemplate>
+   <name>
+    <english>Huai Gun Btn</english>
+    <chineseSimplified>淮军炮营</chineseSimplified>
+   </name>
+   <size>Battalion</size>
+   <unitType>Artillery</unitType>
+   <strength>170</strength>
+   <guns>0</guns>
+   <firepowerKgPerMin>0</firepowerKgPerMin>
+   <targettingGain>0</targettingGain>
+   <rangeMeter>0</rangeMeter>
+   <moraleCoef>0</moraleCoef>
+   <densityStrengthPerSqMeter>0</densityStrengthPerSqMeter>
+   <assault>0</assault>
+   <ammoCoef>0</ammoCoef>
+   <rationCoef>0</rationCoef>
+   <weaponWeightKgPerStrength>0</weaponWeightKgPerStrength>
+   <carryingRationKg>0</carryingRationKg>
+   <carryingAmmoKg>0</carryingAmmoKg>
+   <isSupport>true</isSupport>
+   <strategicSpeedKmPerDay>0</strategicSpeedKmPerDay>
+   <operationalSpeedKmPerDay>0</operationalSpeedKmPerDay>
+   <tacticalSpeedMPerMin>0</tacticalSpeedMPerMin>
+   <weaponRecordss>
+    <WeaponRecord>
+     <weaponObjectId>61d6a8ff-a045-437d-aaa1-d03b6ac4bfd9</weaponObjectId>
+     <count>6</count>
+    </WeaponRecord>
+   </weaponRecordss>
+   <remark>至1871年以后，李鸿章在组建开火炮队的基础上，又添置了最新式的德国克虏伯后膛4磅钢炮114门，并仿照德国炮营之制成立了新式炮队19小营。其具体营制为：每营配钢炮6门，每门炮编官兵24名；配正副车2辆，马13匹，另有铁工车，木工车，伙食车，行李车7辆，连同营管，哨官，号手，鼓手，医生等，全营共计170余人，车19辆，马130匹。
+
+After 1871, Li Hongzhang added 114 state-of-the-art German Krupp 4-pound steel breech-loading cannons to the existing artillery units and established 19 new-style artillery battalions modeled after the German artillery system. Each battalion was equipped with 6 steel cannons, with 24 officers and soldiers assigned per cannon. Additionally, each battalion had 2 primary and auxiliary ammunition wagons, 13 horses, and 7 other vehicles (including ironwork wagons, woodwork wagons, field kitchens, and baggage wagons). With the inclusion of battalion commanders, company officers, buglers, drummers, and medics, each battalion totaled over 170 personnel, 19 vehicles, and 130 horses.
+
+1871年以降、李鸿章は既存の砲兵部隊に最新式のドイツ製クルップ式4ポンド後装式鋼砲114門を追加し、ドイツの砲兵編成を模範として新式の砲兵小隊19隊を設立した。各小隊は鋼砲6門を装備し、各砲に将兵24名が配属された。さらに、各小隊は正副弾薬車2両、馬13頭、および鉄工車、木工車、炊事車、行李車など7両の車両を有した。小隊指揮官、中隊長、喇叭手、太鼓手、医者を含め、各小隊の総人員は170名以上、車両19両、馬130頭であった。
+
+1871年以後，李鴻章在組建開火砲隊的基礎上，又添置了最新式的德國克虜伯後膛4磅鋼砲114門，並仿照德國砲營之制成立了新式砲隊19小營。具體營制為：每營配鋼砲6門，每門砲編官兵24名；配正副車2輛，馬13匹，另有鐵工車、木工車、伙食車、行李車等7輛。連同營管、哨官、號手、鼓手、醫生等，全營共計170餘人，車19輛，馬130匹。</remark>
+   <objectId>909cc573-4465-44ea-ad72-2cfb11b1782e</objectId>
+  </LandUnitTemplate>
+  <LandUnitTemplate>
+   <name>
+    <english>IJA Eng Btn</english>
+    <chineseSimplified>日本工兵大队</chineseSimplified>
+   </name>
+   <size>Unspecified</size>
+   <unitType>Infantry</unitType>
+   <strength>0</strength>
+   <guns>0</guns>
+   <firepowerKgPerMin>0</firepowerKgPerMin>
+   <targettingGain>0</targettingGain>
+   <rangeMeter>0</rangeMeter>
+   <moraleCoef>0</moraleCoef>
+   <densityStrengthPerSqMeter>0</densityStrengthPerSqMeter>
+   <assault>0</assault>
+   <ammoCoef>0</ammoCoef>
+   <rationCoef>0</rationCoef>
+   <weaponWeightKgPerStrength>0</weaponWeightKgPerStrength>
+   <carryingRationKg>0</carryingRationKg>
+   <carryingAmmoKg>0</carryingAmmoKg>
+   <isSupport>false</isSupport>
+   <strategicSpeedKmPerDay>0</strategicSpeedKmPerDay>
+   <operationalSpeedKmPerDay>0</operationalSpeedKmPerDay>
+   <tacticalSpeedMPerMin>0</tacticalSpeedMPerMin>
+   <weaponRecordss />
+   <remark>工兵营520人
+x3 工兵中队（每个工兵连126人）
+
+Engineer Battalion: 520 personnel
+x3 Engineer Companies (each Engineer Company: 126 personnel)
+
+工兵大隊：520名
+x3 工兵中隊（各工兵中隊：126名）
+
+工兵營：520人
+x3 工兵中隊（每個工兵中隊：126人）
+
+</remark>
+   <objectId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</objectId>
+  </LandUnitTemplate>
+  <LandUnitTemplate>
+   <name>
+    <english>IJA Cav Btn</english>
+    <chineseSimplified>日军骑兵大队</chineseSimplified>
+   </name>
+   <size>Unspecified</size>
+   <unitType>Infantry</unitType>
+   <strength>652</strength>
+   <guns>0</guns>
+   <firepowerKgPerMin>0</firepowerKgPerMin>
+   <targettingGain>0</targettingGain>
+   <rangeMeter>0</rangeMeter>
+   <moraleCoef>0</moraleCoef>
+   <densityStrengthPerSqMeter>0</densityStrengthPerSqMeter>
+   <assault>0</assault>
+   <ammoCoef>0</ammoCoef>
+   <rationCoef>0</rationCoef>
+   <weaponWeightKgPerStrength>0</weaponWeightKgPerStrength>
+   <carryingRationKg>0</carryingRationKg>
+   <carryingAmmoKg>0</carryingAmmoKg>
+   <isSupport>false</isSupport>
+   <strategicSpeedKmPerDay>0</strategicSpeedKmPerDay>
+   <operationalSpeedKmPerDay>0</operationalSpeedKmPerDay>
+   <tacticalSpeedMPerMin>0</tacticalSpeedMPerMin>
+   <weaponRecordss>
+    <WeaponRecord>
+     <weaponObjectId>8d5d40db-d78a-4289-9651-addfc6e423de</weaponObjectId>
+     <count>500</count>
+    </WeaponRecord>
+   </weaponRecordss>
+   <remark>骑兵大队：
+3个骑兵中队：514-652人
+
+Cavalry Battalion:
+3 Cavalry Companies: 514-652 personnel
+
+騎兵大隊：
+3個騎兵中隊：514-652名
+
+騎兵大隊：
+3個騎兵中隊：514-652人
+
+
+</remark>
+   <objectId>8be881bc-e719-42ef-98d6-c911dba7f4ab</objectId>
+  </LandUnitTemplate>
+  <LandUnitTemplate>
+   <name>
+    <english>Huai Cav Bn</english>
+    <chineseSimplified>淮军精锐马队</chineseSimplified>
+   </name>
+   <size>Battalion</size>
+   <unitType>Cavalry</unitType>
+   <strength>277</strength>
+   <guns>0</guns>
+   <firepowerKgPerMin>0</firepowerKgPerMin>
+   <targettingGain>0</targettingGain>
+   <rangeMeter>0</rangeMeter>
+   <moraleCoef>0</moraleCoef>
+   <densityStrengthPerSqMeter>0</densityStrengthPerSqMeter>
+   <assault>0</assault>
+   <ammoCoef>0</ammoCoef>
+   <rationCoef>0</rationCoef>
+   <weaponWeightKgPerStrength>0</weaponWeightKgPerStrength>
+   <carryingRationKg>0</carryingRationKg>
+   <carryingAmmoKg>0</carryingAmmoKg>
+   <isSupport>false</isSupport>
+   <strategicSpeedKmPerDay>0</strategicSpeedKmPerDay>
+   <operationalSpeedKmPerDay>0</operationalSpeedKmPerDay>
+   <tacticalSpeedMPerMin>0</tacticalSpeedMPerMin>
+   <weaponRecordss>
+    <WeaponRecord>
+     <weaponObjectId>4ab547f0-7873-4b0c-abc7-4e31a751ce1a</weaponObjectId>
+     <count>250</count>
+    </WeaponRecord>
+   </weaponRecordss>
+   <remark>马队每营277人（长夫在外）
+
+Each cavalry battalion has 277 personnel (excluding laborers)
+
+各騎兵大隊は277名（人夫を除く）
+
+每營騎兵277人（長夫在外）
+
+
+</remark>
+   <objectId>fccb992e-ed5d-4f51-baba-080eb556d9ae</objectId>
   </LandUnitTemplate>
  </landUnitTemplates>
  <landUnits>
@@ -11253,6 +11452,7 @@
     <chineseSimplified>盛军中军正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>1a224c7c-18cf-446f-90b3-551568f435b2</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11262,6 +11462,7 @@
     <chineseSimplified>盛军中军副营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>75dde615-d1a6-4440-8fe3-99de5c6f14c7</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11271,6 +11472,7 @@
     <chineseSimplified>盛军中军右营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>c62f419b-643c-44e6-a651-c807b19c3bf0</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11280,6 +11482,7 @@
     <chineseSimplified>盛军中军后营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>20979489-2a2f-4dbc-82e0-bc959243fdad</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11289,6 +11492,7 @@
     <chineseSimplified>盛军中军传字正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>44acbf65-286d-44a8-b75e-b9e403ede455</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11298,6 +11502,7 @@
     <chineseSimplified>盛军左军正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>0a986b15-619a-4f21-82e8-1c7b19131d1f</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11307,6 +11512,7 @@
     <chineseSimplified>盛军左军左营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>0bd7ec00-7cda-401d-ab6a-358fbbf7d504</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11316,6 +11522,7 @@
     <chineseSimplified>盛军亲军炮队营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
    <objectId>f40450f6-b028-4d76-a038-2a72f27660dc</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11325,6 +11532,7 @@
     <chineseSimplified>盛军右军正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>b6bf38a7-b85c-4b33-9da6-04ae02140758</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11334,6 +11542,7 @@
     <chineseSimplified>盛军右军右营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>d2bd16ab-cc21-46f1-82bc-238b918eb3e6</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11343,6 +11552,7 @@
     <chineseSimplified>盛军右军后营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>f54b7796-3727-46a2-b215-799cd588604a</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11352,6 +11562,7 @@
     <chineseSimplified>盛军亲兵马小队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>279747b6-2f59-456d-88e1-66c664d207e2</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11361,6 +11572,7 @@
     <chineseSimplified>盛军亲兵步小队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>3a5f2b15-bdfe-42f7-a1c9-3ce5364ffb53</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11370,6 +11582,7 @@
     <chineseSimplified>盛军新编1营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>6c050d18-d5f1-479c-a34f-d0163c377590</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11379,6 +11592,7 @@
     <chineseSimplified>盛军新编2营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>19f52aad-c996-4804-b1d9-a58dde32aed6</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11388,6 +11602,7 @@
     <chineseSimplified>盛军新编3营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>4b921964-d592-406a-bd77-69febf0f8415</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11397,6 +11612,7 @@
     <chineseSimplified>盛军新编4营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>4be6c875-d190-4ef7-8eae-b53996d23e1a</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11406,6 +11622,7 @@
     <chineseSimplified>盛军新编5营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>4fb2c986-6b0e-4730-ad82-82734aae8604</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11415,6 +11632,7 @@
     <chineseSimplified>铭军步1营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>fbcc1c30-266d-4c87-a768-70d2ea882363</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11424,6 +11642,7 @@
     <chineseSimplified>铭军步2营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>25082074-8a17-4adc-8e61-02a3b31d4599</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11433,6 +11652,7 @@
     <chineseSimplified>铭军步3营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>23f7d1fc-4e4a-4fea-a810-7a4bc6870c04</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -11442,6 +11662,7 @@
     <chineseSimplified>古北口练军右营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>532276bd-8fa1-415b-b224-45a279e81bc1</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11453,6 +11674,7 @@
     <chineseSimplified>武毅军副中营</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>ab7db3ab-51ce-4641-9236-0ac311edce20</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11464,6 +11686,7 @@
     <chineseSimplified>武毅军老前营</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>65f4f6ea-01c4-4a47-9dc3-d27457bef322</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11475,6 +11698,7 @@
     <chineseSimplified>武毅军炮队</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
+   <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
    <objectId>b9fe6dcc-ed60-4859-9748-750372d8b5aa</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11486,6 +11710,7 @@
     <chineseSimplified>天津武备学堂学生</chineseSimplified>
    </name>
    <stregnth>10</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>6d2f2148-7f94-4695-97c8-5282e8db3a1a</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11498,6 +11723,7 @@
     <chineseSimplified>正定练军中营</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>b81a11c7-164b-4042-80df-f9f5854e256c</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11509,6 +11735,7 @@
     <chineseSimplified>正定练军右营</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>bd7483a0-3682-44b3-9602-0916a70ca39b</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11520,6 +11747,7 @@
     <chineseSimplified>正定练军前营</chineseSimplified>
    </name>
    <stregnth>210</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>3097daff-bd82-4a43-9e34-69e524d54ae6</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11531,6 +11759,7 @@
     <chineseSimplified>正定练军左营</chineseSimplified>
    </name>
    <stregnth>210</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>5eb3077c-f62f-499b-93ba-b6eca8b7b53f</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11542,6 +11771,7 @@
     <chineseSimplified>亲军马队小队</chineseSimplified>
    </name>
    <stregnth>80</stregnth>
+   <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>302a7d65-9319-4014-80cd-df5738f49c72</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11553,6 +11783,7 @@
     <chineseSimplified>山海关武备学堂学生</chineseSimplified>
    </name>
    <stregnth>25</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>7a9e7efa-c000-4c62-94bc-bbcbea2a974a</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11564,6 +11795,7 @@
     <chineseSimplified>仁字营正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>8f100840-11d5-4409-a65e-6b5447546a7d</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11575,6 +11807,7 @@
     <chineseSimplified>仁字营副营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>0a2df1a4-c566-4feb-89bc-9d39c19d683b</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11586,6 +11819,7 @@
     <chineseSimplified>义胜前营一部</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
+   <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>57057021-a645-4b60-ba37-4827ab44a46e</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11597,6 +11831,7 @@
     <chineseSimplified>芦台防军马队</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
+   <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>ed9cc67e-a2c0-4669-8e8c-ec95a82bbf23</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -11608,6 +11843,7 @@
     <chineseSimplified>步兵第11联队第2大队</chineseSimplified>
    </name>
    <stregnth>800</stregnth>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <objectId>d05c4b4e-c937-4280-bd08-e357d3a3dcba</objectId>
    <strategicGroupReference>
     <referenceId>5a7f6397-7e25-45b6-8423-98b3e22e815a</referenceId>
@@ -11619,6 +11855,7 @@
     <chineseSimplified>步兵第11联队第3大队</chineseSimplified>
    </name>
    <stregnth>800</stregnth>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <objectId>78204a0e-7d7c-450e-b10d-826561a70857</objectId>
    <strategicGroupReference>
     <referenceId>5a7f6397-7e25-45b6-8423-98b3e22e815a</referenceId>
@@ -11631,6 +11868,7 @@
    </name>
    <stregnth>600</stregnth>
    <remark>2nd Coy is detached.</remark>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <objectId>90d60e0e-ccf7-4aba-9a67-986907bdd56f</objectId>
    <strategicGroupReference>
     <referenceId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</referenceId>
@@ -11642,6 +11880,7 @@
     <chineseSimplified>步兵第21联队第2大队第7中队</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <objectId>309e644c-8005-4c5f-8821-2aeeb8b971cf</objectId>
    <strategicGroupReference>
     <referenceId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</referenceId>
@@ -11654,6 +11893,7 @@
    </name>
    <stregnth>600</stregnth>
    <remark>11th Coy is detached.</remark>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <objectId>a78a315d-c3c2-4b2b-a14b-d82e06d44eb6</objectId>
    <strategicGroupReference>
     <referenceId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</referenceId>
@@ -11666,6 +11906,7 @@
    </name>
    <stregnth>35</stregnth>
    <remark>Most cavalries are assigned to other units for communication, scouting and other support role, so the "main" unit have only 35 cavalries (A full Coy should have 159 strength)</remark>
+   <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
    <objectId>0abfe5cb-3b7e-4dfa-b722-747763468bdd</objectId>
    <strategicGroupReference>
     <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
@@ -11677,6 +11918,7 @@
     <chineseSimplified>野战炮兵第5联队第3大队</chineseSimplified>
    </name>
    <stregnth>140</stregnth>
+   <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
    <objectId>8809f6a2-bf65-473c-90bc-424a1fca6f48</objectId>
    <strategicGroupReference>
     <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
@@ -11688,6 +11930,7 @@
     <chineseSimplified>工兵第5大队第1中队</chineseSimplified>
    </name>
    <stregnth>80</stregnth>
+   <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
    <objectId>34d10468-a099-494d-b285-e51275e9d004</objectId>
    <strategicGroupReference>
     <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
@@ -11741,6 +11984,7 @@ Crew is not strong backed.
    <load>142</load>
    <muzzleVelocityMeterPerSecond>428.6</muzzleVelocityMeterPerSecond>
    <calibreMM>75</calibreMM>
+   <isGun>true</isGun>
    <objectId>d55dcd0b-837d-4a11-849f-aff1c1d35864</objectId>
   </Weapon>
   <Weapon>
@@ -11785,6 +12029,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <load>144</load>
    <muzzleVelocityMeterPerSecond>256.6</muzzleVelocityMeterPerSecond>
    <calibreMM>75</calibreMM>
+   <isGun>true</isGun>
    <objectId>c76ab8d3-a1c1-4b8a-a1f0-cd21c627c079</objectId>
   </Weapon>
   <Weapon>
@@ -11813,6 +12058,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <load>70</load>
    <muzzleVelocityMeterPerSecond>435</muzzleVelocityMeterPerSecond>
    <calibreMM>11</calibreMM>
+   <isGun>false</isGun>
    <objectId>bb516fba-fe39-4d6b-a16c-cf2d8ead46f4</objectId>
   </Weapon>
   <Weapon>
@@ -11841,6 +12087,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <load>70</load>
    <muzzleVelocityMeterPerSecond>435</muzzleVelocityMeterPerSecond>
    <calibreMM>11</calibreMM>
+   <isGun>false</isGun>
    <objectId>8a79c97b-0998-439e-a863-3cbeb0267b51</objectId>
   </Weapon>
   <Weapon>
@@ -11876,6 +12123,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <load>30</load>
    <muzzleVelocityMeterPerSecond>400.2</muzzleVelocityMeterPerSecond>
    <calibreMM>11</calibreMM>
+   <isGun>false</isGun>
    <objectId>8d5d40db-d78a-4289-9651-addfc6e423de</objectId>
   </Weapon>
   <Weapon>
@@ -11904,6 +12152,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <load>70</load>
    <muzzleVelocityMeterPerSecond>612</muzzleVelocityMeterPerSecond>
    <calibreMM>8</calibreMM>
+   <isGun>false</isGun>
    <objectId>7e844caf-1dab-40f8-bc42-e977d54fd1ae</objectId>
   </Weapon>
   <Weapon>
@@ -11932,6 +12181,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <load>30</load>
    <muzzleVelocityMeterPerSecond>590</muzzleVelocityMeterPerSecond>
    <calibreMM>8</calibreMM>
+   <isGun>false</isGun>
    <objectId>54cb4ae4-4d2a-4bad-a6cf-d1a25408e96c</objectId>
   </Weapon>
   <Weapon>
@@ -11960,6 +12210,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <load>0</load>
    <muzzleVelocityMeterPerSecond>440</muzzleVelocityMeterPerSecond>
    <calibreMM>11</calibreMM>
+   <isGun>false</isGun>
    <objectId>4ab547f0-7873-4b0c-abc7-4e31a751ce1a</objectId>
   </Weapon>
   <Weapon>
@@ -11988,6 +12239,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <load>0</load>
    <muzzleVelocityMeterPerSecond>600</muzzleVelocityMeterPerSecond>
    <calibreMM>7.92</calibreMM>
+   <isGun>false</isGun>
    <objectId>ed6f88d1-def8-4b04-aef7-1fed3654f49c</objectId>
   </Weapon>
   <Weapon>
@@ -12017,6 +12269,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <load>60</load>
    <muzzleVelocityMeterPerSecond>400</muzzleVelocityMeterPerSecond>
    <calibreMM>15.9</calibreMM>
+   <isGun>false</isGun>
    <objectId>6d80386b-392e-4d34-8bd4-c951698585e1</objectId>
   </Weapon>
   <Weapon>
@@ -12046,6 +12299,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <load>60</load>
    <muzzleVelocityMeterPerSecond>300</muzzleVelocityMeterPerSecond>
    <calibreMM>50</calibreMM>
+   <isGun>false</isGun>
    <objectId>147555ec-3b5f-413e-8102-a71d41f77924</objectId>
   </Weapon>
   <Weapon>
@@ -12075,6 +12329,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <load>60</load>
    <muzzleVelocityMeterPerSecond>280</muzzleVelocityMeterPerSecond>
    <calibreMM>75</calibreMM>
+   <isGun>true</isGun>
    <objectId>61d6a8ff-a045-437d-aaa1-d03b6ac4bfd9</objectId>
   </Weapon>
  </weapons>

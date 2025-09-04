@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="StrategicGameManager, Assembly-CSharp" class="panel-dialog">
+        <ui:Label text="Weapon Picker" class="title" />
+        <ui:ListView binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/WeaponLabel.uxml?fileID=9197481963319205126&amp;guid=64322fe9ac2f31b469011ea7d0e190e0&amp;type=3#WeaponLabel" data-source-path="gameState.weapons" name="ObjectListView" style="flex-grow: 1;" />
+        <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1; flex-basis: 50px;" />
+            <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

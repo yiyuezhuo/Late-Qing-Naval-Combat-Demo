@@ -65,6 +65,24 @@ using StrategicCombatCore;
 
 public class LandUnitEditor : LeftObjectPickerRightEditorStrategic<LandUnitEditor, LandUnit>
 {
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        var setLandUnitTemplateButton = root.Q<Button>("SetLandUnitTemplateButton");
+        setLandUnitTemplateButton.clicked += () =>
+        {
+            Debug.Log("SetLandUnitTemplateButton clicked");
+
+            DialogRoot.Instance.PopupLandUnitTemplatePickerDialog(template =>
+            {
+                if (Utils.TryResolveCurrentValueForBinding<LandUnit>(setLandUnitTemplateButton, out var landUnit))
+                {
+                    landUnit.landUnitTemplateId = template.objectId;
+                }
+            });
+        };
+    }
     // public override string GetObjectListViewName() => "LandUnitListView";
 }
 

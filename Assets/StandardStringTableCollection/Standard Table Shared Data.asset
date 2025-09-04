@@ -1657,6 +1657,14 @@ MonoBehaviour:
     m_Key: Fire Control Hits
     m_Metadata:
       m_Items: []
+  - m_Id: 719572929515520
+    m_Key: Show Unit Label On Map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 719817927200768
+    m_Key: Show Damage Point Bar On Map
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

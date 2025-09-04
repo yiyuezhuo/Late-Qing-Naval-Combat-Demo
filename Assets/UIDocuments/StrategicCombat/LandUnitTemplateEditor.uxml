@@ -17,112 +17,137 @@
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1;">
-                    <ui:VisualElement data-source-path="selectedObject" style="flex-grow: 1;">
-                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: nowrap;">
-                            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                                <ui:Instance template="GlobalStringEditor" data-source-path="name">
-                                    <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
-                                </ui:Instance>
-                                <ui:EnumField label="Size" value="Center" type="StrategicCombatCore.StrategicUnitSize, Assembly-CSharp">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="size" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:EnumField>
-                                <ui:EnumField label="Type" value="Center" type="StrategicCombatCore.LandUnitType, Assembly-CSharp">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="unitType" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:EnumField>
-                                <ui:IntegerField label="Strength">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="strength" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:IntegerField>
-                                <ui:IntegerField label="Guns">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="guns" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:IntegerField>
-                                <ui:FloatField label="Firepower (Kg/Min)">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="firepowerKgPerMin" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="Targetting Gain">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="targettingGain" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="Range (m)">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="rangeMeter" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
+                    <ui:ScrollView>
+                        <ui:VisualElement data-source-path="selectedObject" style="flex-grow: 1;">
+                            <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-wrap: nowrap;">
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                    <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                                        <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+                                    </ui:Instance>
+                                    <ui:EnumField label="Size" value="Center" type="StrategicCombatCore.StrategicUnitSize, Assembly-CSharp">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="size" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:EnumField>
+                                    <ui:EnumField label="Type" value="Center" type="StrategicCombatCore.LandUnitType, Assembly-CSharp">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="unitType" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:EnumField>
+                                    <ui:IntegerField label="Base Strength">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="strength" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:IntegerField>
+                                    <ui:IntegerField label="Guns">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="guns" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:IntegerField>
+                                    <ui:FloatField label="Firepower (Kg/Min)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="firepowerKgPerMin" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Targetting Gain">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="targettingGain" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Range (m)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="rangeMeter" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:IntegerField label="Weapon Strength" enabled="false">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="weaponStrength" binding-mode="ToTarget" />
+                                        </Bindings>
+                                    </ui:IntegerField>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                    <ui:FloatField label="Morale Coef">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="moraleCoef" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Density (Str/M^2)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="densityStrengthPerSqMeter" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Assault">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="assault" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Ammo Coef">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="ammoCoef" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Ration Coef">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="rationCoef" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Wpn Weight (Kg/Str)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="weaponWeightKgPerStrength" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Carrying Ration (Kg)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="carryingRationKg" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Carrying Ammo (kg)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="carryingAmmoKg" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:Toggle label="Is Support">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="isSupport" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:Toggle>
+                                    <ui:FloatField label="Strategic Speed (Km/Day)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="strategicSpeedKmPerDay" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Operational Speed (Km/Day)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="operationalSpeedKmPerDay" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Tactical Speed (M/Min)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="tacticalSpeedMPerMin" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:IntegerField label="Weapon Guns" enabled="false">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="weaponGuns" binding-mode="ToTarget" />
+                                        </Bindings>
+                                    </ui:IntegerField>
+                                </ui:VisualElement>
                             </ui:VisualElement>
-                            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                                <ui:FloatField label="Morale Coef">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="moraleCoef" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="Density (Str/M^2)">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="densityStrengthPerSqMeter" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="Assault">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="assault" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="Ammo Coef">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="ammoCoef" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="Ration Coef">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="rationCoef" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="Wpn Weight (Kg/Str)">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="weaponWeightKgPerStrength" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="Carrying Ration (Kg)">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="carryingRationKg" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="Carrying Ammo (kg)">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="carryingAmmoKg" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:Toggle label="Is Support">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="isSupport" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:Toggle>
-                                <ui:FloatField label="Strategic Speed (Km/Day)">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="strategicSpeedKmPerDay" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="Operational Speed (Km/Day)">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="operationalSpeedKmPerDay" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="Tactical Speed (M/Min)">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="tacticalSpeedMPerMin" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                            </ui:VisualElement>
+                            <ui:MultiColumnListView binding-source-selection-mode="AutoAssign" data-source-path="weaponRecordss" name="WeaponRecordsMultiColumnListView" show-add-remove-footer="true" header-title="Weapons" show-foldout-header="true" style="flex-shrink: 0;">
+                                <ui:Columns>
+                                    <ui:Column title="Set" width="10%" cell-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordSetButton.uxml?fileID=9197481963319205126&amp;guid=3df99646c39699645a4701a7be214463&amp;type=3#LandUnitTemplateWeaponRecordSetButton" name="set" />
+                                    <ui:Column title="Count" width="10%" cell-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordCount.uxml?fileID=9197481963319205126&amp;guid=afed79ce87b7e534b9179442c01328c1&amp;type=3#LandUnitTemplateWeaponRecordCount" />
+                                    <ui:Column title="Weapon" min-width="80%" cell-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordName.uxml?fileID=9197481963319205126&amp;guid=d09d7097024a78a42829e2c739f7e4ad&amp;type=3#LandUnitTemplateWeaponRecordName" />
+                                </ui:Columns>
+                            </ui:MultiColumnListView>
+                            <ui:Label text="Remark" />
+                            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="min-height: 200px; white-space: normal;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:TextField>
                         </ui:VisualElement>
-                    </ui:VisualElement>
+                    </ui:ScrollView>
                     <Bindings>
                         <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
                     </Bindings>

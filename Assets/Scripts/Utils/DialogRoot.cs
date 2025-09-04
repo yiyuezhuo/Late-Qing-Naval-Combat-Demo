@@ -203,6 +203,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset batteryArcIndicatorDialogDocument;
     public VisualTreeAsset plotTrajectoryDialogDocument;
     public VisualTreeAsset eventStateEditorDialogDocument;
+    public VisualTreeAsset weaponPickerDialogDocument;
+    public VisualTreeAsset landUnitTemplateDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -419,6 +421,44 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             "zh-Hant" => LanguageType.ChineseTraditional,
             _ =>LanguageType.English
         };
+    }
+
+    public void PopupLandUnitTemplatePickerDialog(Action<LandUnitTemplate> callback)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = landUnitTemplateDialogDocument,
+            templateDataSource = StrategicGameManager.Instance,
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            var objectListView = el.Q<ListView>("ObjectListView");
+            var landUnitTemplate = objectListView.selectedItem as LandUnitTemplate;
+            callback(landUnitTemplate);
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupWeaponPickerDialog(Action<Weapon> callback)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = weaponPickerDialogDocument,
+            templateDataSource = StrategicGameManager.Instance,
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            var objectListView = el.Q<ListView>("ObjectListView");
+            var weapon = objectListView.selectedItem as Weapon;
+            callback(weapon);
+        };
+
+        tempDialog.Popup();
     }
 
     public void PopupStrategicGroupPickerDialog(Action<StrategicGroup> callback)

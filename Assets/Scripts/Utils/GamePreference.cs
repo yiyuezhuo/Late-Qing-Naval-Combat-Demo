@@ -24,6 +24,8 @@ public class GamePreference
 
     // public LanguageType shortLabelLanguageType = LanguageType.English;
     // public LanguageType longLabelLanguageType = LanguageType.All;
+    public bool showUnitLabel = true;
+    public bool showDamagePointBar = true;
 
     [CreateProperty]
     public LanguageType shortLabelLanguageType

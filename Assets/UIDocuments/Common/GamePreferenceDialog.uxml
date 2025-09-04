@@ -37,6 +37,24 @@
                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(183231472898048)" />
                         </Bindings>
                     </ui:FloatField>
+                    <ui:FloatField label="Pulse Length (Sec)">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="pulseLengthSeconds" binding-mode="TwoWay" />
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181492749340672)" />
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:Toggle label="Unit Label">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(719572929515520)" />
+                            <ui:DataBinding property="value" data-source-path="showUnitLabel" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
+                    <ui:Toggle label="Show Damage Point Bar On Map">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(719817927200768)" />
+                            <ui:DataBinding property="value" data-source-path="showDamagePointBar" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181035691839488)" />
@@ -47,12 +65,6 @@
                     <ui:TabView>
                         <ui:Tab label="Balance &amp; Performance">
                             <ui:VisualElement style="flex-grow: 1;">
-                                <ui:FloatField label="Pulse Length (Sec)">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="pulseLengthSeconds" binding-mode="TwoWay" />
-                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181492749340672)" />
-                                    </Bindings>
-                                </ui:FloatField>
                                 <ui:Toggle label="Land Collision">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="checkLandCollision" binding-mode="TwoWay" />

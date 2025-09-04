@@ -126,8 +126,10 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             return;
 
         // TODO: Temp Hack
-        if (model is ShipLog shipLog)
+        if (model is ShipLog shipLog && GamePreference.Instance.showDamagePointBar)
         {
+            healthBarRenderer.gameObject.SetActive(true);
+
             var p = Math.Min(1, shipLog.damagePoint / Math.Max(1, shipLog?.shipClass.damagePoint ?? 0));
             healthBarRenderer.material.SetFloat("_FillAmount", 1 - p);
         }
@@ -153,6 +155,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         MaintainArrowRotation();
 
         // text.text = $"{model.GetAcronym()} {model.GetName().GetNameFromType(GameManager.Instance.iconLanuageType)}";
+        text.enabled = GamePreference.Instance.showUnitLabel;
         text.text = $"{model.GetAcronym()} {model.GetName().GetNameFromType(GamePreference.Instance.shortLabelLanguageType)}";
 
         MaintainFlagRotationSize();

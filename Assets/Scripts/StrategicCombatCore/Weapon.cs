@@ -30,6 +30,7 @@ namespace StrategicCombatCore
         public int load;
         public float muzzleVelocityMeterPerSecond;
         public float calibreMM;
+        public bool isGun;
 
         public class RateOfFire // Round per minute
         {

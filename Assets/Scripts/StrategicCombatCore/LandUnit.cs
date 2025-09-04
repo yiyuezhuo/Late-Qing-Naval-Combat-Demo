@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using System.Linq;
 using CoreUtils;
 
 namespace StrategicCombatCore
@@ -33,7 +33,16 @@ namespace StrategicCombatCore
     {
     }
 
-    public class LandUnitTemplate : IObjectIdLabeled
+    public partial class WeaponRecord
+    {
+        public string weaponObjectId;
+        public int count;
+
+        public Weapon Get() => EntityManager.Instance.Get<Weapon>(weaponObjectId);
+    }
+
+
+    public partial class LandUnitTemplate : IObjectIdLabeled
     {
         public string objectId { get; set; }
         public GlobalString name = new();
@@ -55,7 +64,14 @@ namespace StrategicCombatCore
         public bool isSupport; // Line-Filler vs Support unit
         public float strategicSpeedKmPerDay; // Consistent speed move speed on some level of road
         public float operationalSpeedKmPerDay; // Not-consistent speed but also move on non-road field
-        public float tacticalSpeedMPerMin; // Base advance speed in assault. 
+        public float tacticalSpeedMPerMin; // Base advance speed in assault.
+
+        public List<WeaponRecord> weaponRecordss = new();
+
+        public string remark;
+
+        public int GetWeaponStrength() => weaponRecordss.Sum(wpnRec => wpnRec.count * wpnRec.Get()?.crew ?? 0);
+        public int GetWeaponGuns() => weaponRecordss.Sum(wpnRec => wpnRec.count * ((wpnRec.Get()?.isGun ?? false) ? 1 : 0));
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
@@ -63,7 +79,7 @@ namespace StrategicCombatCore
         }
     }
 
-    public class LandUnit : IObjectIdLabeled, IStrategicGroupMemberReferenceable
+    public partial class LandUnit : IObjectIdLabeled, IStrategicGroupMemberReferenceable
     {
         public string objectId { get; set; }
         public GlobalString name = new();
@@ -72,6 +88,10 @@ namespace StrategicCombatCore
 
         // public string strategicGroupId;
         public StrategicGroupReference strategicGroupReference{ get; set; } = new();
+
+        public string landUnitTemplateId;
+        public LandUnitTemplate GetLandUnitTemplate() => EntityManager.Instance.Get<LandUnitTemplate>(landUnitTemplateId);
+
         public void SetStrategicGroupReference(StrategicGroup group) => IStrategicGroupMemberReferenceable.SetStrategicGroupReference(this, group);
 
         // public LandUnitSize size; // Move to LandUnitTemplate?

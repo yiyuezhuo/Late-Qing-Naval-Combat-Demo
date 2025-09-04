@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using System.Reflection;
 using CoreUtils;
 
 
 namespace StrategicCombatCore
 {
-    public class Weapon : IObjectIdLabeled
+    public partial class Weapon : IObjectIdLabeled
     {
         public string objectId { get; set; }
         public GlobalString name = new();

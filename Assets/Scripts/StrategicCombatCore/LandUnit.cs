@@ -26,7 +26,7 @@ namespace StrategicCombatCore
         Artillery,
         Enginner,
         Supply,
-        MilitaryPolicy,
+        MilitaryPolice,
     }
 
     public interface ITreeNode

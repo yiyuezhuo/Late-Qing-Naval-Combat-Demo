@@ -5,7 +5,6 @@ using UnityEngine.UIElements;
 using UnityEngine;
 using NavalCombatCore;
 using UnityEngine.InputSystem.Utilities;
-using Unity.Collections;
 using System.Xml.Serialization;
 
 
@@ -179,6 +178,10 @@ namespace StrategicCombatCore
                 {
                     return group.typeIcon;
                 }
+                else if (obj is LandUnit landUnit)
+                {
+                    return landUnit.GetLandUnitTemplate()?.typeIcon ?? null;
+                }
                 return null;
             }
         }
@@ -192,6 +195,11 @@ namespace StrategicCombatCore
                 if (obj is StrategicGroup group)
                 {
                     return group.sizeStr;
+                }
+                else if (obj is LandUnit landUnit)
+                {
+                    var sizeStr = StrategicGroup.sizeStrMap.GetValueOrDefault(landUnit.GetLandUnitTemplate()?.size ?? StrategicUnitSize.Squad); // Move Dictionary to more common location
+                    return sizeStr;
                 }
                 return "";
             }
@@ -262,12 +270,19 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public int weaponGuns => GetWeaponGuns();
+
+        [CreateProperty]
+        public StyleBackground typeIcon => UnityWebRequestImageReader.Instance.FetchStyleBackground($"{Application.streamingAssetsPath}/Pictures/LandUnitType/{unitType}.png");
     }
 
     public partial class LandUnit
     {
         [CreateProperty]
         public string landUnitTemplateName => GetLandUnitTemplate()?.name?.mergedName ?? "[Undefined or Invalid]";
+    }
+
+    public partial class Weapon
+    {
     }
 
 }

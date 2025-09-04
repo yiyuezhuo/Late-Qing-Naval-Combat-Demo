@@ -38,6 +38,7 @@
                                 </Bindings>
                             </ui:TextField>
                             <ui:Button text="Set" name="SetLandUnitTemplateButton" />
+                            <ui:Button text="Goto" name="GotoLandUnitTemplateButton" />
                         </ui:VisualElement>
                         <ui:Instance template="GlobalStringEditor" data-source-path="name">
                             <AttributeOverrides element-name="GlobalStringLabel" text="Name" />

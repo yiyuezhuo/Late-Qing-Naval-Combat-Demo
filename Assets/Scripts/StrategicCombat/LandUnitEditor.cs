@@ -82,6 +82,21 @@ public class LandUnitEditor : LeftObjectPickerRightEditorStrategic<LandUnitEdito
                 }
             });
         };
+
+        var gotoLandUnitTemplateButton = root.Q<Button>("GotoLandUnitTemplateButton");
+        gotoLandUnitTemplateButton.clicked += () =>
+        {
+            if (Utils.TryResolveCurrentValueForBinding<LandUnit>(gotoLandUnitTemplateButton, out var landUnit))
+            {
+                var idx = currentGameState.landUnitTemplates.IndexOf(EntityManager.Instance.Get<LandUnitTemplate>(landUnit.landUnitTemplateId));
+                if (idx != -1)
+                {
+                    LandUnitTemplateEditor.Instance.Show();
+                    BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitTemplateEditor.Instance.objectListView, idx);
+                    // BehaviourUtils.Instance.ScheduleToSetSelectionForListView(objectListView, idx);
+                }
+            }
+        };
     }
     // public override string GetObjectListViewName() => "LandUnitListView";
 }

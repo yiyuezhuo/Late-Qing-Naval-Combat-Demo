@@ -9,14 +9,16 @@ using CoreUtils;
 
 public class SubordinatePickerDialog
 {
-    [CreateProperty]
-    public List<ShipLog> unassignedShipLogs => StrategicGameState.Instance.shipLogs.Where(shipLog => !shipLog.strategicGroupReference.isReferenceAny()).ToList();
+    public bool showNonParentGroupOnly = true;
 
     [CreateProperty]
-    public List<LandUnit> unassignedLandUnits => StrategicGameState.Instance.landUnits.Where(landUnit => !landUnit.strategicGroupReference.isReferenceAny()).ToList();
+    public List<ShipLog> unassignedShipLogs => !showNonParentGroupOnly ? StrategicGameState.Instance.shipLogs : StrategicGameState.Instance.shipLogs.Where(shipLog => !shipLog.strategicGroupReference.isReferenceAny()).ToList();
 
     [CreateProperty]
-    public List<StrategicGroup> unassignedGroups => StrategicGameState.Instance.strategicGroups.Where(group => !group.strategicGroupReference.isReferenceAny()).ToList();
+    public List<LandUnit> unassignedLandUnits => !showNonParentGroupOnly ? StrategicGameState.Instance.landUnits : StrategicGameState.Instance.landUnits.Where(landUnit => !landUnit.strategicGroupReference.isReferenceAny()).ToList();
+
+    [CreateProperty]
+    public List<StrategicGroup> unassignedGroups => !showNonParentGroupOnly ? StrategicGameState.Instance.strategicGroups : StrategicGameState.Instance.strategicGroups.Where(group => !group.strategicGroupReference.isReferenceAny()).ToList();
 
     ListView shipListView;
     ListView landUnitListView;

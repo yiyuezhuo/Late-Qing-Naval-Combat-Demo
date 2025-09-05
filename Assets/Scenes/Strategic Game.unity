@@ -155,9 +155,9 @@ Transform:
   - {fileID: 1990763642}
   - {fileID: 864922102}
   - {fileID: 1238427552}
-  - {fileID: 863707609}
-  - {fileID: 240713473}
   - {fileID: 1426881763}
+  - {fileID: 240713473}
+  - {fileID: 863707609}
   - {fileID: 1187428662}
   - {fileID: 666010435}
   - {fileID: 1657592755}
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: 9fc041e7491d52d4ba840bd7c006e8c4, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 84a8d9b4c2e1acc478b1f9a07d565bd8, type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Position: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
@@ -892,7 +892,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: 9fc041e7491d52d4ba840bd7c006e8c4, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: ab84f2635763a784c91f5583633d982d, type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Position: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
@@ -1493,7 +1493,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: 9fc041e7491d52d4ba840bd7c006e8c4, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 416c49e53c79fc242b03d7e45472ffca, type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Position: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920

@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="StrategicGroupMemberReferenceItem" src="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" />
+    <ui:VisualElement data-source-type="StrategicCombatCore.SubStrategicCombatItem, Assembly-CSharp" style="flex-grow: 1;">
+        <ui:Instance template="StrategicGroupMemberReferenceItem" data-source-path="groupReference" style="flex-shrink: 0;" />
+        <ui:Slider label="Commit Percent" value="42" high-value="1" show-input-field="true">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="commitPercent" binding-mode="TwoWay" />
+            </Bindings>
+        </ui:Slider>
+    </ui:VisualElement>
+</ui:UXML>

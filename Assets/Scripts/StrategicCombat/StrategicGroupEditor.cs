@@ -10,6 +10,49 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
 {
     ListView subordinatesCombinedListView;
 
+    public void BindGotoButton(VisualElement item)
+    {
+        // var setButton = item.Q<Button>("SetButton");
+        // setButton.clicked += () =>
+        // {
+        //     if (Utils.TryResolveCurrentValueForBinding(setButton, out StrategicGroupMemberReference fieldReference))
+        //     {
+        //         Debug.Log("reference SetButton clicked");
+
+        //         DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables =>
+        //         {
+        //             var oldObj = fieldReference.Get();
+        //             if (oldObj != null)
+        //             {
+        //                 // oldObj.SetStrategicGroupReference(null);
+        //                 oldObj.strategicGroupReference.referenceId = null;
+        //             }
+
+        //             var selectedReferenceable = selectedReferenceables.FirstOrDefault();
+        //             if (selectedReferenceable != null && selectedObject != null)
+        //             {
+        //                 selectedReferenceable.SetStrategicGroupReference(null);
+        //                 fieldReference.referenceId = selectedReferenceable.objectId;
+        //                 selectedReferenceable.strategicGroupReference.referenceId = selectedObject.objectId;
+        //                 // reference.referenceId = element.objectId;
+        //             }
+        //         });
+        //     }
+        // };
+
+        var gotoButton = item.Q<Button>("GotoButton");
+        gotoButton.clicked += () =>
+        {
+            if (Utils.TryResolveCurrentValueForBinding(gotoButton, out StrategicGroupMemberReference fieldReference))
+            {
+                Debug.Log("reference GotoButton clicked");
+
+                var gotoObj = fieldReference.Get();
+                GotoReferenceable(gotoObj);
+            }
+        };
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -19,6 +62,7 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
         subordinatesCombinedListView.makeItem = () =>
         {
             var item = subordinatesCombinedListView.itemTemplate.CloneTree();
+            // BindStrategicGroupMemberReference(item);
 
             var setButton = item.Q<Button>("SetButton");
             setButton.clicked += () =>
@@ -44,22 +88,23 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
                             selectedReferenceable.strategicGroupReference.referenceId = selectedObject.objectId;
                             // reference.referenceId = element.objectId;
                         }
-                    });
+                    }, true);
                 }
             };
 
-            var gotoButton = item.Q<Button>("GotoButton");
-            gotoButton.clicked += () =>
-            {
-                if (Utils.TryResolveCurrentValueForBinding(gotoButton, out StrategicGroupMemberReference fieldReference))
-                {
-                    Debug.Log("reference GotoButton clicked");
+            // var gotoButton = item.Q<Button>("GotoButton");
+            // gotoButton.clicked += () =>
+            // {
+            //     if (Utils.TryResolveCurrentValueForBinding(gotoButton, out StrategicGroupMemberReference fieldReference))
+            //     {
+            //         Debug.Log("reference GotoButton clicked");
 
-                    var gotoObj = fieldReference.Get();
-                    GotoReferenceable(gotoObj);
-                }
+            //         var gotoObj = fieldReference.Get();
+            //         GotoReferenceable(gotoObj);
+            //     }
+            // };
 
-            };
+            BindGotoButton(item);
 
             return item;
         };

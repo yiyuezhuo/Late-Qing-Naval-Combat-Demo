@@ -205,6 +205,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset eventStateEditorDialogDocument;
     public VisualTreeAsset weaponPickerDialogDocument;
     public VisualTreeAsset landUnitTemplateDialogDocument;
+    public VisualTreeAsset subStrategicCombatDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -216,6 +217,52 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupSubStrategicCombatDialog(SubStrategicCombat combat)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = subStrategicCombatDialogDocument,
+            templateDataSource = combat,
+            draggable = false
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var listViews = new ListView[] { el.Q<ListView>("AttackerListView"), el.Q<ListView>("DefenderListView") };
+            foreach (var listView in listViews)
+            {
+                Utils.BindItemsAddedRemoved<SubStrategicCombatItem>(listView, () => null);
+                listView.makeItem = () =>
+                {
+                    var item = listView.itemTemplate.CloneTree();
+
+                    var setButton = item.Q<Button>("SetButton");
+                    setButton.clicked += () =>
+                    {
+                        if (Utils.TryResolveCurrentValueForBinding(setButton, out StrategicGroupMemberReference fieldReference))
+                        {
+                            PopupSubordinatePickerDialog(selectedReferenceables =>
+                            {
+                                var selectedReferenceable = selectedReferenceables.FirstOrDefault();
+                                if (selectedReferenceable != null)
+                                {
+                                    fieldReference.referenceId = selectedReferenceable.objectId;
+                                }
+                            }, false);
+                        }
+                    };
+
+                    StrategicGroupEditor.Instance.BindGotoButton(item);
+
+                    return item;
+                };
+            }
+        };
+
+        tempDialog.Popup();
     }
 
     public class EventStateEditorDialogDataSource
@@ -480,11 +527,12 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
-    public void PopupSubordinatePickerDialog(Action<List<IStrategicGroupMemberReferenceable>> confirmCallback)
+    public void PopupSubordinatePickerDialog(Action<List<IStrategicGroupMemberReferenceable>> confirmCallback, bool showNonParentGroupOnly)
     {
         var subordinatePickerDialog = new SubordinatePickerDialog()
         {
-            confirmCallback = confirmCallback
+            confirmCallback = confirmCallback,
+            showNonParentGroupOnly = showNonParentGroupOnly
         };
 
         var tempDialog = new TempDialog()

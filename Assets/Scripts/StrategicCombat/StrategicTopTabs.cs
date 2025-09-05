@@ -110,6 +110,11 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         root.Q<Button>("SideStateButton").clicked += SideStateEditor.Instance.Show;
 
         root.Q<Button>("GamePreferenceButton").clicked += DialogRoot.Instance.PopupGamePreferenceDialog;
+
+        root.Q<Button>("SubStrategicCombatResolverButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupSubStrategicCombatDialog(new());
+        };
     }
 
     void DoTPSGeoreferencing()

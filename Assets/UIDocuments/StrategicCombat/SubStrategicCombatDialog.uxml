@@ -1,0 +1,27 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="StrategicCombatCore.SubStrategicCombat, Assembly-CSharp" class="panel-dialog" style="flex-grow: 1; width: 1000px;">
+        <ui:Label text="Sub Strategic Combat Resolver" class="title" />
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:Label text="Combat Info" />
+            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                <ui:Button text="Confirm" name="ConfirmButton" />
+                <ui:Button text="Step" name="StepButton" />
+            </ui:VisualElement>
+            <ui:EnumField label="Type" value="Center" type="StrategicCombatCore.SubStrategicCombatType, Assembly-CSharp">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:EnumField>
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row; border-top-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                    <ui:Label text="Attackers:" />
+                    <ui:ListView data-source-path="attackers" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/SubStrategicCombatItem.uxml?fileID=9197481963319205126&amp;guid=589eeaae747a86049b55c18393799292&amp;type=3#SubStrategicCombatItem" show-add-remove-footer="true" name="AttackerListView" fixed-item-height="90" style="flex-grow: 1;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                    <ui:Label text="Defenders:" />
+                    <ui:ListView data-source-path="defenders" item-template="project://database/Assets/UIDocuments/Templates/SubStrategicCombatItem.uxml?fileID=9197481963319205126&amp;guid=589eeaae747a86049b55c18393799292&amp;type=3#SubStrategicCombatItem" binding-source-selection-mode="AutoAssign" show-foldout-header="false" show-add-remove-footer="true" name="DefenderListView" fixed-item-height="90" style="flex-grow: 1;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

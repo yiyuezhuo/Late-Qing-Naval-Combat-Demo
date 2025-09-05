@@ -1,7 +1,9 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="StrategicCombatCore.StrategicGroupMemberReference, Assembly-CSharp" style="flex-direction: row; height: 60px;">
-        <ui:Button text="Set" name="SetButton" />
-        <ui:Button text="Goto" name="GotoButton" />
+        <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; justify-content: center;">
+            <ui:Button text="Set" name="SetButton" />
+            <ui:Button text="Goto" name="GotoButton" />
+        </ui:VisualElement>
         <ui:VisualElement style="flex-shrink: 0; width: 120px; -unity-background-scale-mode: scale-to-fit; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgb(240, 240, 240);">
             <Bindings>
                 <ui:DataBinding property="style.backgroundImage" data-source-path="icon" binding-mode="ToTarget" />

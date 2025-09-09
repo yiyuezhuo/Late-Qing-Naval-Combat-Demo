@@ -11361,7 +11361,7 @@ x3 工兵中隊（每個工兵中隊：126人）
     <english>IJA Cav Btn</english>
     <chineseSimplified>日军骑兵大队</chineseSimplified>
    </name>
-   <size>Unspecified</size>
+   <size>Battalion</size>
    <unitType>Infantry</unitType>
    <strength>652</strength>
    <guns>0</guns>

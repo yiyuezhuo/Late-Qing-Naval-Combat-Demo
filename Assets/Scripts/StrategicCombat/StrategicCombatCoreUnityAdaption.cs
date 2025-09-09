@@ -281,6 +281,31 @@ namespace StrategicCombatCore
         public string landUnitTemplateName => GetLandUnitTemplate()?.name?.mergedName ?? "[Undefined or Invalid]";
     }
 
+    // public partial class SubStrategicCombat.CombatSideState
+    // {
+    //     [CreateProperty]
+    //     public float moraleDynamic => GetMoraleDynamic();
+    // }
+
+    public partial class SubStrategicCombat
+    {
+        public partial class CombatSideState
+        {
+            [CreateProperty]
+            public float moraleDynamic => GetMoraleDynamic();
+
+            [CreateProperty]
+            public float firepower => GetFirepower();
+        }
+
+        [CreateProperty]
+        public float distanceMeterProp
+        {
+            get => distanceMeter;
+            set => distanceMeter = value;
+        }
+    }
+
     public partial class Weapon
     {
     }

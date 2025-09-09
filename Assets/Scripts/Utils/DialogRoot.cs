@@ -231,7 +231,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
         tempDialog.onCreated += (sender, el) =>
         {
-            var listViews = new ListView[] { el.Q<ListView>("AttackerListView"), el.Q<ListView>("DefenderListView") };
+            // var listViews = new ListView[] { el.Q<ListView>("AttackerListView"), el.Q<ListView>("DefenderListView") };
+            var listViews = el.Query<ListView>("CombatItemListView").ToList();
             foreach (var listView in listViews)
             {
                 Utils.BindItemsAddedRemoved<SubStrategicCombatItem>(listView, () => null);

@@ -1,0 +1,41 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="VisualElement" data-source-type="StrategicCombatCore.SubStrategicCombat+CombatSideState, Assembly-CSharp" style="flex-grow: 1;">
+        <ui:Slider label="Suppression" high-value="3" show-input-field="true" fill="true">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="suppression" binding-mode="TwoWay" />
+            </Bindings>
+        </ui:Slider>
+        <ui:Slider label="Effectiveness" high-value="1" show-input-field="true" fill="true">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="effectiveness" binding-mode="TwoWay" />
+            </Bindings>
+        </ui:Slider>
+        <ui:Slider label="Loss" high-value="1" show-input-field="true" fill="true">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="lossPercent" binding-mode="TwoWay" />
+            </Bindings>
+        </ui:Slider>
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+            <ui:VisualElement style="flex-direction: column; flex-basis: 10px; flex-grow: 1;">
+                <ui:FloatField label="Morale">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="morale" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 10px;">
+                <ui:FloatField label="Modified" enabled="false">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="moraleDynamic" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="Combat Value" enabled="false">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="firepower" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:FloatField>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:ListView data-source-path="items" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/SubStrategicCombatItem.uxml?fileID=9197481963319205126&amp;guid=589eeaae747a86049b55c18393799292&amp;type=3#SubStrategicCombatItem" show-add-remove-footer="true" name="CombatItemListView" fixed-item-height="90" style="flex-grow: 1;" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -14,6 +14,8 @@ namespace CoreUtils
         Italy,
         Austria, // Austria-Hugary
         Turkey, // Ottoman
-        Holland
+        Holland,
+        Korea,
+        Portugal
     }
 }

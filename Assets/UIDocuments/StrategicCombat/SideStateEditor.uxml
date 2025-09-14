@@ -21,12 +21,21 @@
                         <ui:Instance template="GlobalStringEditor" data-source-path="name">
                             <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
                         </ui:Instance>
+                        <ui:Label text="Countries" />
                         <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="countries" show-add-remove-footer="true" item-template="project://database/Assets/UIDocuments/Templates/CountryEnumField.uxml?fileID=9197481963319205126&amp;guid=f760d6fe0c512a842b3944c72b90e696&amp;type=3#CountryEnumField" />
                         <ui:FloatField label="Victory Points" style="align-items: auto;">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="victoryPoints" binding-mode="TwoWay" />
                             </Bindings>
                         </ui:FloatField>
+                        <ui:Label text="Diplomacy" />
+                        <ui:MultiColumnListView data-source-path="diplomacyRelations" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" name="DiplomacyRelationMultiColumnListView">
+                            <ui:Columns>
+                                <ui:Column title="Side" width="60%" cell-template="project://database/Assets/UIDocuments/Templates/DiplomacyRelation/DiplomacyRelationSideObjectId.uxml?fileID=9197481963319205126&amp;guid=b067ef04f8e5e114484ba54288bedfb9&amp;type=3#DiplomacyRelationSideObjectId" name="side" />
+                                <ui:Column title="Relation" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/DiplomacyRelation/DiplomacyRelationRelationValue.uxml?fileID=9197481963319205126&amp;guid=8a657807ac5102c43954c376c4348023&amp;type=3#DiplomacyRelationRelationValue" />
+                                <ui:Column title="State" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/DiplomacyRelation/DiplomacyRelationState.uxml?fileID=9197481963319205126&amp;guid=32f719b1d96df5147a61d07cd63f4d58&amp;type=3#DiplomacyRelationState" />
+                            </ui:Columns>
+                        </ui:MultiColumnListView>
                         <ui:Label text="Remark" />
                         <ui:TextField style="min-height: 100px;">
                             <Bindings>

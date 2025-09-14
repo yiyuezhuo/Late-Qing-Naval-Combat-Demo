@@ -204,6 +204,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset plotTrajectoryDialogDocument;
     public VisualTreeAsset eventStateEditorDialogDocument;
     public VisualTreeAsset weaponPickerDialogDocument;
+    public VisualTreeAsset sideStatePickerDialogDocument;
     public VisualTreeAsset landUnitTemplateDialogDocument;
     public VisualTreeAsset subStrategicCombatDialogDocument;
 
@@ -504,6 +505,25 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             var objectListView = el.Q<ListView>("ObjectListView");
             var weapon = objectListView.selectedItem as Weapon;
             callback(weapon);
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupSideStatePickerDialog(Action<SideState> callback)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = sideStatePickerDialogDocument,
+            templateDataSource = StrategicGameManager.Instance,
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            var objectListView = el.Q<ListView>("ObjectListView");
+            var sideState = objectListView.selectedItem as SideState;
+            callback(sideState);
         };
 
         tempDialog.Popup();

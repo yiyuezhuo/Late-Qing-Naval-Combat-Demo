@@ -3,9 +3,20 @@
         <ui:TabView data-source-type="StrategicGameManager, Assembly-CSharp">
             <ui:Tab label="Command">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                    <ui:Button text="Resolve Turn" name="NextTurnButton" />
-                    <ui:Button text="Sub Combat Resolver" name="SubStrategicCombatResolverButton" />
+                    <ui:Button text="Resolve Turn" name="NextTurnButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3470675827920896)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Sub Combat Resolver" name="SubStrategicCombatResolverButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3474825257062400)" />
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61563505119232)" />
+                </Bindings>
             </ui:Tab>
             <ui:Tab label="Map Edit">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
@@ -138,15 +149,19 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(356740144730112)" />
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Land Unit Template" name="LandUnitTemplateEditorButton" />
-                    <ui:Button text="Land Unit" name="LandUnitEditorButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203857801678848)" />
-                        </Bindings>
-                    </ui:Button>
                     <ui:Button text="Weapon" name="WeaponEditorButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(356932872998912)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Land Unit Template" name="LandUnitTemplateEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3468143747567616)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Land Unit" name="LandUnitEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203857801678848)" />
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Group" name="StrategicGroupEditorButton">

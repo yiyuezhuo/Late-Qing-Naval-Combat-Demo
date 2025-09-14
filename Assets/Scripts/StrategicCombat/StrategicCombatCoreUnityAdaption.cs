@@ -310,4 +310,10 @@ namespace StrategicCombatCore
     {
     }
 
+    public partial class DiplomacyRelation
+    {
+        [CreateProperty]
+        public string sideName => GetSideState()?.name?.mergedName ?? "[Undefined or Invalid]";
+    }
+
 }

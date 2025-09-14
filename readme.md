@@ -17,6 +17,11 @@
 
 </details>
 
+## Links
+
+- Steam: https://store.steampowered.com/app/3996220/First_SinoJapanese_War/
+- Itch (Webgl build has bug now so it's older but working version): https://yiyuezhuo.itch.io/battle-of-yalu-river-1894 
+
 ## Introduction
 
 This game is the first installment of a demo trilogy for my Late Qing Dynasty historical simulation . In the final project, all three parts (RTS naval, classical hex land combat and a political simulation) will be merged into a single, interconnected experience. However, to avoid overcomplicating the design or introducing unnecessary abstraction while focusing on specific aspects, I haven't made significant efforts to isolate components for maximum reusability. Some degree of rewriting is expected--especially as I gain more experience and develop a clearer vision for the game. This will help address technical debt and ultimately result in a stronger open-source project.

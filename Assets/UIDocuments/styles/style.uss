@@ -180,3 +180,7 @@
     width: 30px;
     height: 100px;
 }
+
+.fix-height-float-field-container .unity-float-field {
+    height: 20px;
+}

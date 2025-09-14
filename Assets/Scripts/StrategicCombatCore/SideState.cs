@@ -3,6 +3,24 @@ using System.Collections.Generic;
 
 namespace StrategicCombatCore
 {
+    public enum DiplomacyState
+    {
+        Neutral,
+        War
+    }
+
+    public partial class DiplomacyRelation
+    {
+        public string sideObjectId;
+        public float relationValue;
+        public DiplomacyState state;
+
+        public SideState GetSideState()
+        {
+            return EntityManager.Instance.Get<SideState>(sideObjectId);
+        }
+    }
+
     public class SideState : IObjectIdLabeled
     {
         public string objectId { get; set; }
@@ -12,6 +30,7 @@ namespace StrategicCombatCore
         }
         public GlobalString name = new();
         public List<Country> countries = new();
+        public List<DiplomacyRelation> diplomacyRelations = new();
         public float victoryPoints;
         public string remark;
 

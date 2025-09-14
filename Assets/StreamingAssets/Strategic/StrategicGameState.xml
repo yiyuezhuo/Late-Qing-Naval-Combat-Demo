@@ -13451,6 +13451,18 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <countries>
     <Country>China</Country>
    </countries>
+   <diplomacyRelations>
+    <DiplomacyRelation>
+     <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
+     <relationValue>-100</relationValue>
+     <state>War</state>
+    </DiplomacyRelation>
+    <DiplomacyRelation>
+     <sideObjectId>86452665-ae11-4f1d-b056-59d7272e083e</sideObjectId>
+     <relationValue>0</relationValue>
+     <state>War</state>
+    </DiplomacyRelation>
+   </diplomacyRelations>
    <victoryPoints>0</victoryPoints>
    <objectId>dd43c3f3-1a02-46ca-b287-4ac069c23218</objectId>
   </SideState>
@@ -13463,8 +13475,79 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <countries>
     <Country>Japan</Country>
    </countries>
+   <diplomacyRelations>
+    <DiplomacyRelation>
+     <sideObjectId>dd43c3f3-1a02-46ca-b287-4ac069c23218</sideObjectId>
+     <relationValue>-100</relationValue>
+     <state>War</state>
+    </DiplomacyRelation>
+    <DiplomacyRelation>
+     <sideObjectId>86452665-ae11-4f1d-b056-59d7272e083e</sideObjectId>
+     <relationValue>0</relationValue>
+     <state>War</state>
+    </DiplomacyRelation>
+   </diplomacyRelations>
    <victoryPoints>0</victoryPoints>
    <objectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</objectId>
+  </SideState>
+  <SideState>
+   <name>
+    <english>Korea</english>
+    <chineseSimplified>朝鲜</chineseSimplified>
+   </name>
+   <countries>
+    <Country>Korea</Country>
+   </countries>
+   <diplomacyRelations>
+    <DiplomacyRelation>
+     <sideObjectId>dd43c3f3-1a02-46ca-b287-4ac069c23218</sideObjectId>
+     <relationValue>0</relationValue>
+     <state>War</state>
+    </DiplomacyRelation>
+    <DiplomacyRelation>
+     <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
+     <relationValue>0</relationValue>
+     <state>War</state>
+    </DiplomacyRelation>
+   </diplomacyRelations>
+   <victoryPoints>0</victoryPoints>
+   <objectId>86452665-ae11-4f1d-b056-59d7272e083e</objectId>
+  </SideState>
+  <SideState>
+   <name>
+    <english>Britain</english>
+    <chineseSimplified>英国</chineseSimplified>
+   </name>
+   <countries>
+    <Country>Britain</Country>
+   </countries>
+   <diplomacyRelations />
+   <victoryPoints>0</victoryPoints>
+   <objectId>ce8f94e9-7710-47b8-af2e-88c4cc8c8c0f</objectId>
+  </SideState>
+  <SideState>
+   <name>
+    <english>Portugal</english>
+    <chineseSimplified>葡萄牙</chineseSimplified>
+   </name>
+   <countries>
+    <Country>Portugal</Country>
+   </countries>
+   <diplomacyRelations />
+   <victoryPoints>0</victoryPoints>
+   <objectId>b0834e29-87e8-46c8-851b-2d0bd493b96f</objectId>
+  </SideState>
+  <SideState>
+   <name>
+    <english>Russia</english>
+    <chineseSimplified>俄国</chineseSimplified>
+   </name>
+   <countries>
+    <Country>Russia</Country>
+   </countries>
+   <diplomacyRelations />
+   <victoryPoints>0</victoryPoints>
+   <objectId>6900b3ca-0f12-491a-9799-2e499a9d6e3e</objectId>
   </SideState>
  </sideStates>
  <serializedCells>

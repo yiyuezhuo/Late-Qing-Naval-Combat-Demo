@@ -85,5 +85,6 @@ MonoBehaviour:
   plotTrajectoryDialogDocument: {fileID: 9197481963319205126, guid: 373ff4ebd81384941b066769b9c05f8b, type: 3}
   eventStateEditorDialogDocument: {fileID: 9197481963319205126, guid: a18df0a69fc174a4e9d5ddb9e24c2441, type: 3}
   weaponPickerDialogDocument: {fileID: 9197481963319205126, guid: a3ca71c35328cbd45b0dc360d456539c, type: 3}
+  sideStatePickerDialogDocument: {fileID: 9197481963319205126, guid: ea9fb05e437108449aec64653e74825c, type: 3}
   landUnitTemplateDialogDocument: {fileID: 9197481963319205126, guid: 1c4daf37e2bdf844f9c558239e91d91f, type: 3}
   subStrategicCombatDialogDocument: {fileID: 9197481963319205126, guid: c0c39b5062d9ced46adf159d65c4d5d6, type: 3}

@@ -295,7 +295,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 70709734445056
-    m_Localized: 3H Super Strcuture
+    m_Localized: 3H Super Structure
     m_Metadata:
       m_Items: []
   - m_Id: 70784229478400
@@ -1692,6 +1692,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 719817927200768
     m_Localized: Show Damage Point Bar On Map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3468143747567616
+    m_Localized: Land Unit Template
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3468951746678784
+    m_Localized: Is Gun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3470675827920896
+    m_Localized: Resolve Turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3474825257062400
+    m_Localized: 'Sub Combat Resolver '
     m_Metadata:
       m_Items: []
   references:

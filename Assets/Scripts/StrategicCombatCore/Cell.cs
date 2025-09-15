@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Xml.Serialization;
 
@@ -135,6 +136,63 @@ namespace StrategicCombatCore
             get => EncodeBoolArray(rivers);
             set => rivers = DecodeBoolArray(value);
         }
+
+        [XmlAttribute]
+        public string sideObjectIdHex;
+
+        [XmlAttribute]
+        public string sideObjectIdTopEdge;
+
+        [XmlAttribute]
+        public string sideObjectIdTopRight;
+
+        [XmlAttribute]
+        public string sideObjectIdBottomRight;
+
+        [XmlAttribute]
+        public string sideObjectIdBottom;
+
+        [XmlAttribute]
+        public string sideObjectIdBottomLeft;
+
+        [XmlAttribute]
+        public string sideObjectIdTopLeft;
+
+        public SideState GetHexSide()
+        {
+            return EntityManager.Instance.Get<SideState>(sideObjectIdHex);
+        }
+
+        public SideState GetEdgeSide(EdgeDirection edgeDirection)
+        {
+            var edgeObjectId = edgeDirection switch
+            {
+                EdgeDirection.Top => sideObjectIdTopEdge,
+                EdgeDirection.TopRight => sideObjectIdTopRight,
+                EdgeDirection.BottomRight => sideObjectIdBottomRight,
+                EdgeDirection.Bottom => sideObjectIdBottom,
+                EdgeDirection.BottomLeft => sideObjectIdBottomLeft,
+                EdgeDirection.TopLeft => sideObjectIdTopLeft,
+                _ => sideObjectIdHex
+            };
+            return EntityManager.Instance.Get<SideState>(edgeObjectId);
+        }
+
+        // public List<StrategicGroupReference> serializedStrategicGroupReferences
+        // {
+        //     get
+        //     {
+        //         if (strategicGroupReferences.Count == 0)
+        //             return null;
+        //         return strategicGroupReferences;
+        //     }
+        //     // get => strategicGroupReferences;
+        //     set => strategicGroupReferences = value ?? new();
+        // }
+
+        // Used by XmlSerializer
+        public bool ShouldSerializeStrategicGroupReferences() => StrategicGroupReferences != null && StrategicGroupReferences.Count > 0;
+        public List<StrategicGroupReference> StrategicGroupReferences = new();
 
         public static Dictionary<EdgeDirection, (int, int)> directionToOffsetEven = new()
         {

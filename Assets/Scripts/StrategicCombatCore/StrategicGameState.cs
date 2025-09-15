@@ -63,22 +63,22 @@ namespace StrategicCombatCore
         public List<Weapon> weapons = new();
         public List<StrategicGroup> strategicGroups = new();
 
-        public SerializedHexInfo serializedHexInfo
-        {
-            get
-            {
-                return new()
-                {
-                    records = hexInfoMap.Values.Where(r => !r.IsEmpty()).ToList() // TODO: Filter out empty situation?
-                };
-            }
-            set
-            {
-                hexInfoMap = value.records.ToDictionary(r => (r.x, r.y), r => r);
-            }
-        }
-        [XmlIgnore]
-        public Dictionary<(int, int), HexInfo> hexInfoMap = new();
+        // public SerializedHexInfo serializedHexInfo
+        // {
+        //     get
+        //     {
+        //         return new()
+        //         {
+        //             records = hexInfoMap.Values.Where(r => !r.IsEmpty()).ToList() // TODO: Filter out empty situation?
+        //         };
+        //     }
+        //     set
+        //     {
+        //         hexInfoMap = value.records.ToDictionary(r => (r.x, r.y), r => r);
+        //     }
+        // }
+        // [XmlIgnore]
+        // public Dictionary<(int, int), HexInfo> hexInfoMap = new();
 
         public StrategicScenarioState scenarioState = new();
 
@@ -151,7 +151,7 @@ namespace StrategicCombatCore
             landUnits = newInstance.landUnits;
             weapons = newInstance.weapons;
             strategicGroups = newInstance.strategicGroups;
-            hexInfoMap = newInstance.hexInfoMap;
+            // hexInfoMap = newInstance.hexInfoMap;
             scenarioState = newInstance.scenarioState;
 
             shipLogs = newInstance.shipLogs;
@@ -196,14 +196,22 @@ namespace StrategicCombatCore
         // public IEnumerable<StrategicGroup> GetIndependentStrategicGroups() => strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent);
         public IEnumerable<StrategicGroup> GetIndependentStrategicGroups()
         {
-            foreach (var hexInfo in hexInfoMap.Values)
+            // foreach (var hexInfo in hexInfoMap.Values)
+            // {
+            //     foreach (var groupRef in hexInfo.strategicGroupReferences)
+            //     {
+            //         var group = groupRef.Get();
+            //         if (group != null)
+            //             yield return group;
+            //     }
+            // }
+
+            // strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent).Select(group => group.cell).ToHashSet();
+
+            foreach (var group in strategicGroups)
             {
-                foreach (var groupRef in hexInfo.strategicGroupReferences)
-                {
-                    var group = groupRef.Get();
-                    if (group != null)
-                        yield return group;
-                }
+                if (group.deployState == StrategicGroup.DeployState.Independent)
+                    yield return group;
             }
         }
 

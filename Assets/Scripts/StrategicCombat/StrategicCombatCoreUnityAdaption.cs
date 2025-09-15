@@ -24,8 +24,11 @@ namespace StrategicCombatCore
         [CreateProperty]
         public string brief => $"({x}, {y}), {terrain}";
 
+        // [CreateProperty]
+        // public int cellInfoGroupCount => StrategicGameState.Instance.hexInfoMap.GetValueOrDefault((x, y))?.strategicGroupReferences?.Count ?? 0;
+
         [CreateProperty]
-        public int cellInfoGroupCount => StrategicGameState.Instance.hexInfoMap.GetValueOrDefault((x, y))?.strategicGroupReferences?.Count ?? 0;
+        public int cellInfoGroupCount => StrategicGroupReferences?.Count ?? 0;
     }
 
     public static class StyleConstants

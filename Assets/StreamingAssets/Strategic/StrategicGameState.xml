@@ -13810,7 +13810,13 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <Cell x="6" y="13" terrain="ForestRough" country="General" longitude="114.431686" latitude="28.8184834" groundControlPoint="false" />
    <Cell x="6" y="14" terrain="ForestRough" country="General" longitude="114.36232" latitude="29.3732586" groundControlPoint="false" />
    <Cell x="6" y="15" terrain="ForestRough" country="General" longitude="114.29287" latitude="29.9265919" groundControlPoint="false" riversStr="5" />
-   <Cell x="6" y="16" terrain="HeavyUrban" country="General" longitude="114.22332" latitude="30.47851" groundControlPoint="false" roadsStr="0/4/5/2" riversStr="1/0/5/4" />
+   <Cell x="6" y="16" terrain="HeavyUrban" country="General" longitude="114.22332" latitude="30.47851" groundControlPoint="false" roadsStr="0/4/5/2" riversStr="1/0/5/4">
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>536fe1cd-f87d-4781-b90b-21dbb4b67ce4</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
+   </Cell>
    <Cell x="6" y="17" terrain="HeavyUrban" country="General" longitude="114.153664" latitude="31.0290451" groundControlPoint="false" roadsStr="0/3/4" riversStr="3/4" />
    <Cell x="6" y="18" terrain="Field" country="General" longitude="114.08387" latitude="31.5782318" groundControlPoint="false" roadsStr="1/3/0" />
    <Cell x="6" y="19" terrain="Forest" country="General" longitude="114.013962" latitude="32.1261139" groundControlPoint="false" roadsStr="0/3" />
@@ -14107,7 +14113,13 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <Cell x="13" y="30" terrain="Field" country="General" longitude="116.943886" latitude="38.48355" groundControlPoint="false" roadsStr="1/3" />
    <Cell x="13" y="31" terrain="Field" country="General" longitude="116.90052" latitude="39.02067" groundControlPoint="false" />
    <Cell x="13" y="32" terrain="Field" country="General" longitude="116.8678" latitude="39.5609436" groundControlPoint="false" />
-   <Cell x="13" y="33" terrain="HeavyUrban" country="General" longitude="116.843727" latitude="40.10338" groundControlPoint="false" roadsStr="2/5" />
+   <Cell x="13" y="33" terrain="HeavyUrban" country="General" longitude="116.843727" latitude="40.10338" groundControlPoint="false" roadsStr="2/5">
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
+   </Cell>
    <Cell x="13" y="34" terrain="ForestRough" country="General" longitude="116.825378" latitude="40.64659" groundControlPoint="false" />
    <Cell x="13" y="35" terrain="ForestRough" country="General" longitude="116.811111" latitude="41.18982" groundControlPoint="false" />
    <Cell x="13" y="36" terrain="Rough" country="General" longitude="116.80011" latitude="41.73268" groundControlPoint="false" />
@@ -14146,7 +14158,13 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <Cell x="14" y="29" terrain="Field" country="General" longitude="117.559494" latitude="37.70201" groundControlPoint="false" riversStr="3" />
    <Cell x="14" y="30" terrain="Field" country="General" longitude="117.50602" latitude="38.2361" groundControlPoint="false" />
    <Cell x="14" y="31" terrain="Field" country="General" longitude="117.4578" latitude="38.771" groundControlPoint="false" roadsStr="0/4" />
-   <Cell x="14" y="32" terrain="LightUrban" country="General" longitude="117.420547" latitude="39.3092232" groundControlPoint="false" roadsStr="0/1/3" railroadsStr="1" />
+   <Cell x="14" y="32" terrain="LightUrban" country="General" longitude="117.420547" latitude="39.3092232" groundControlPoint="false" roadsStr="0/1/3" railroadsStr="1">
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
+   </Cell>
    <Cell x="14" y="33" terrain="Field" country="General" longitude="117.394676" latitude="39.85088" groundControlPoint="false" roadsStr="5/3" />
    <Cell x="14" y="34" terrain="Forest" country="General" longitude="117.375229" latitude="40.3936348" groundControlPoint="false" />
    <Cell x="14" y="35" terrain="ForestRough" country="General" longitude="117.359993" latitude="40.93645" groundControlPoint="false" />
@@ -14424,7 +14442,13 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <Cell x="21" y="27" terrain="Field" country="General" longitude="121.448677" latitude="37.0435829" groundControlPoint="false" roadsStr="4/1" />
    <Cell x="21" y="28" terrain="Field" country="General" longitude="121.41703" latitude="37.58409" groundControlPoint="false" />
    <Cell x="21" y="29" terrain="ShallowWater" country="General" longitude="121.387474" latitude="38.1244049" groundControlPoint="false" />
-   <Cell x="21" y="30" terrain="HeavyUrban" country="General" longitude="121.359032" latitude="38.6637535" groundControlPoint="false" roadsStr="1" />
+   <Cell x="21" y="30" terrain="HeavyUrban" country="General" longitude="121.359032" latitude="38.6637535" groundControlPoint="false" roadsStr="1">
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
+   </Cell>
    <Cell x="21" y="31" terrain="Clear" country="General" longitude="121.328209" latitude="39.2000961" groundControlPoint="false" />
    <Cell x="21" y="32" terrain="Field" country="General" longitude="121.295654" latitude="39.73358" groundControlPoint="false" />
    <Cell x="21" y="33" terrain="ShallowWater" country="General" longitude="121.266" latitude="40.2664833" groundControlPoint="false" />
@@ -14462,7 +14486,16 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <Cell x="22" y="25" terrain="ShallowWater" country="General" longitude="122.071648" latitude="35.7061234" groundControlPoint="false" />
    <Cell x="22" y="26" terrain="ShallowWater" country="General" longitude="122.03907" latitude="36.24701" groundControlPoint="false" />
    <Cell x="22" y="27" terrain="Field" country="General" longitude="122.007774" latitude="36.7880135" groundControlPoint="false" />
-   <Cell x="22" y="28" terrain="LightUrban" country="General" longitude="121.978371" latitude="37.3291626" groundControlPoint="false" roadsStr="4" />
+   <Cell x="22" y="28" terrain="LightUrban" country="General" longitude="121.978371" latitude="37.3291626" groundControlPoint="false" roadsStr="4">
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</referenceId>
+     </StrategicGroupReference>
+     <StrategicGroupReference>
+      <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
+   </Cell>
    <Cell x="22" y="29" terrain="ShallowWater" country="General" longitude="121.951164" latitude="37.8703346" groundControlPoint="false" />
    <Cell x="22" y="30" terrain="ShallowWater" country="General" longitude="121.925812" latitude="38.41109" groundControlPoint="false" />
    <Cell x="22" y="31" terrain="Field" country="General" longitude="121.9" latitude="38.95" groundControlPoint="true" roadsStr="0/4" />
@@ -14779,10 +14812,37 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <Cell x="30" y="22" terrain="ShallowWater" country="General" longitude="126.366577" latitude="34.115696" groundControlPoint="false" />
    <Cell x="30" y="23" terrain="Field" country="General" longitude="126.348412" latitude="34.65491" groundControlPoint="false" />
    <Cell x="30" y="24" terrain="Clear" country="General" longitude="126.329819" latitude="35.19419" groundControlPoint="false" />
-   <Cell x="30" y="25" terrain="Field" country="General" longitude="126.312218" latitude="35.7337341" groundControlPoint="false" />
-   <Cell x="30" y="26" terrain="ForestRough" country="General" longitude="126.29631" latitude="36.2735825" groundControlPoint="false" />
-   <Cell x="30" y="27" terrain="ForestRough" country="General" longitude="126.28231" latitude="36.8136749" groundControlPoint="false" />
-   <Cell x="30" y="28" terrain="ShallowWater" country="General" longitude="126.270042" latitude="37.35383" groundControlPoint="false" />
+   <Cell x="30" y="25" terrain="Field" country="General" longitude="126.312218" latitude="35.7337341" groundControlPoint="false">
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
+   </Cell>
+   <Cell x="30" y="26" terrain="ForestRough" country="General" longitude="126.29631" latitude="36.2735825" groundControlPoint="false">
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
+   </Cell>
+   <Cell x="30" y="27" terrain="ForestRough" country="General" longitude="126.28231" latitude="36.8136749" groundControlPoint="false">
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
+   </Cell>
+   <Cell x="30" y="28" terrain="ShallowWater" country="General" longitude="126.270042" latitude="37.35383" groundControlPoint="false">
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>f8481328-de97-4466-af47-6c302493b6ef</referenceId>
+     </StrategicGroupReference>
+     <StrategicGroupReference>
+      <referenceId>8961f909-0f74-4ef1-b983-315e9a93204a</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
+   </Cell>
    <Cell x="30" y="29" terrain="Field" country="General" longitude="126.259094" latitude="37.8937836" groundControlPoint="false" roadsStr="2/5" />
    <Cell x="30" y="30" terrain="Field" country="General" longitude="126.24894" latitude="38.4332237" groundControlPoint="false" />
    <Cell x="30" y="31" terrain="ForestRough" country="General" longitude="126.239128" latitude="38.97187" groundControlPoint="false" />
@@ -14821,8 +14881,20 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <Cell x="31" y="24" terrain="Field" country="General" longitude="126.841232" latitude="35.4563751" groundControlPoint="false" />
    <Cell x="31" y="25" terrain="Field" country="General" longitude="126.82708" latitude="35.9957924" groundControlPoint="false" roadsStr="0/2" />
    <Cell x="31" y="26" terrain="ForestRough" country="General" longitude="126.814972" latitude="36.53554" groundControlPoint="false" roadsStr="0/3" />
-   <Cell x="31" y="27" terrain="Field" country="General" longitude="126.80484" latitude="37.07551" groundControlPoint="false" roadsStr="0/3" />
-   <Cell x="31" y="28" terrain="LightUrban" country="General" longitude="126.796326" latitude="37.6154976" groundControlPoint="false" roadsStr="5/3" />
+   <Cell x="31" y="27" terrain="Field" country="General" longitude="126.80484" latitude="37.07551" groundControlPoint="false" roadsStr="0/3">
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
+   </Cell>
+   <Cell x="31" y="28" terrain="LightUrban" country="General" longitude="126.796326" latitude="37.6154976" groundControlPoint="false" roadsStr="5/3">
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
+   </Cell>
    <Cell x="31" y="29" terrain="Field" country="General" longitude="126.788933" latitude="38.155262" groundControlPoint="false" />
    <Cell x="31" y="30" terrain="ForestRough" country="General" longitude="126.782158" latitude="38.6945343" groundControlPoint="false" />
    <Cell x="31" y="31" terrain="ForestRough" country="General" longitude="126.775665" latitude="39.23311" groundControlPoint="false" />
@@ -15257,7 +15329,16 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <Cell x="42" y="20" terrain="ForestRough" country="General" longitude="132.48671" latitude="32.82761" groundControlPoint="false" />
    <Cell x="42" y="21" terrain="ForestRough" country="General" longitude="132.489075" latitude="33.3615875" groundControlPoint="false" />
    <Cell x="42" y="22" terrain="ForestRough" country="General" longitude="132.496918" latitude="33.89591" groundControlPoint="false" />
-   <Cell x="42" y="23" terrain="Clear" country="General" longitude="132.512833" latitude="34.4308739" groundControlPoint="false" roadsStr="4/2" />
+   <Cell x="42" y="23" terrain="Clear" country="General" longitude="132.512833" latitude="34.4308739" groundControlPoint="false" roadsStr="4/2">
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
+     </StrategicGroupReference>
+     <StrategicGroupReference>
+      <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
+   </Cell>
    <Cell x="42" y="24" terrain="ForestRough" country="General" longitude="132.538651" latitude="34.96675" groundControlPoint="false" />
    <Cell x="42" y="25" terrain="ForestRough" country="General" longitude="132.574142" latitude="35.5037155" groundControlPoint="false" />
    <Cell x="42" y="26" terrain="ShallowWater" country="General" longitude="132.617035" latitude="36.0418129" groundControlPoint="false" />

@@ -151,7 +151,7 @@ namespace StrategicCombatCore
         public StrategicGroupReference strategicGroupReference{ get; set; } = new();
 
         public SideState side => StrategicGameState.Instance.countryToSideStateMap.GetValueOrDefault(country);
-        public HexInfo hexInfo => StrategicGameState.Instance.hexInfoMap.GetValueOrDefault((x, y));
+        // public HexInfo hexInfo => StrategicGameState.Instance.hexInfoMap.GetValueOrDefault((x, y));
 
         [XmlIgnore]
         public List<StrategicGroup> currentStack
@@ -159,7 +159,8 @@ namespace StrategicCombatCore
             get
             {
                 var currentSide = side;
-                return hexInfo.strategicGroupReferences.Select(r => r.Get()).Where(g => g.side == currentSide).ToList();
+                // return hexInfo.strategicGroupReferences.Select(r => r.Get()).Where(g => g.side == currentSide).ToList();
+                return cell.StrategicGroupReferences.Select(r => r.Get()).Where(g => g.side == currentSide).ToList();
             }
         }
 
@@ -172,7 +173,7 @@ namespace StrategicCombatCore
 
         public static Dictionary<StrategicUnitSize, string> sizeStrMap = new()
         {
-            { StrategicUnitSize.Unspecified, "" },
+            { StrategicUnitSize.Unspecified, " " },
             { StrategicUnitSize.ArmyGroup, "XXXXX" },
             { StrategicUnitSize.Army, "XXXX" },
             { StrategicUnitSize.Corp, "XXX" },
@@ -192,33 +193,36 @@ namespace StrategicCombatCore
 
         public void DeployToXY(int toX, int toY)
         {
-            var hexInfoMap = StrategicGameState.Instance.hexInfoMap;
+            // var hexInfoMap = StrategicGameState.Instance.hexInfoMap;
 
-            if (deployState == DeployState.Independent && x != -1 && y != -1 && hexInfoMap.TryGetValue((x, y), out var cellInfo))
+            if (deployState == DeployState.Independent && x != -1 && y != -1)
             {
-                cellInfo.strategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
+                // cellInfo.strategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
+                cell.StrategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
             }
 
             deployState = DeployState.Independent;
             x = toX;
             y = toY;
 
-            if (!hexInfoMap.TryGetValue((x, y), out cellInfo))
-            {
-                cellInfo = hexInfoMap[(x, y)] = new();
-                cellInfo.x = x;
-                cellInfo.y = y;
-            }
-            cellInfo.strategicGroupReferences.Add(new() { referenceId = objectId });
+            cell.StrategicGroupReferences.Add(new() { referenceId = objectId });
+            // if (!hexInfoMap.TryGetValue((x, y), out cellInfo))
+            // {
+            //     cellInfo = hexInfoMap[(x, y)] = new();
+            //     cellInfo.x = x;
+            //     cellInfo.y = y;
+            // }
+            // cellInfo.strategicGroupReferences.Add(new() { referenceId = objectId });
         }
 
         public void RemoveFromMap()
         {
-            var hexInfoMap = StrategicGameState.Instance.hexInfoMap;
+            // var hexInfoMap = StrategicGameState.Instance.hexInfoMap;
 
-            if (deployState == DeployState.Independent && x != -1 && y != -1 && hexInfoMap.TryGetValue((x, y), out var cellInfo))
+            if (deployState == DeployState.Independent && x != -1 && y != -1)
             {
-                cellInfo.strategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
+                // cellInfo.strategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
+                cell.StrategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
             }
 
             independentX = -1;

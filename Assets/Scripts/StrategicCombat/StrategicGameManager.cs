@@ -195,6 +195,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public static void TempFix()
     {
+        // foreach (var ((x, y), hexInfo) in StrategicGameState.Instance.hexInfoMap)
+        // {
+        //     var hex = StrategicGameState.Instance.cellMatrix[x, y];
+        //     hex.StrategicGroupReferences.AddRange(hexInfo.strategicGroupReferences);
+        // }
+
         // foreach (var hexInfo in StrategicGameState.Instance.hexInfoMap.Values)
         // {
         //     hexInfo.strategicGroupReference.Clear();
@@ -215,17 +221,17 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         //     }
         // }
 
-            // foreach (var namedShip in StrategicGameState.Instance.namedShips)
-            // {
-            //     namedShip.defaultLeaderReference = new LeaderReference()
-            //     {
-            //         referenceObjectId = namedShip.defaultLeaderObjectId
-            //     };
-            // }
-            // foreach (var cell in StrategicGameState.Instance.cellMatrix)
-            // {
-            //     cell.longitude = cell.longtitude;
-            // }
+        // foreach (var namedShip in StrategicGameState.Instance.namedShips)
+        // {
+        //     namedShip.defaultLeaderReference = new LeaderReference()
+        //     {
+        //         referenceObjectId = namedShip.defaultLeaderObjectId
+        //     };
+        // }
+        // foreach (var cell in StrategicGameState.Instance.cellMatrix)
+        // {
+        //     cell.longitude = cell.longtitude;
+        // }
     }
 
     public Vector2 ToCenter(Vector2 xy)
@@ -300,18 +306,19 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                     Debug.Log($"hitInfo.collider={hitInfo.collider}");
                     var group = hitInfo.collider.GetComponent<WorldSpaceGroupIcon>()?.currentDataSource;
                     var groupSide = group.side;
-                    var hexInfo = group.hexInfo;
+                    // var hexInfo = group.hexInfo;
+                    var strategicGroupReferences = group.cell.StrategicGroupReferences;
                     var currentStack = group.currentStack;
                     var topStackGroup = currentStack[^1];
-                    Debug.Log($"group={group}, groupSide={groupSide}, hexInfo={hexInfo}, currentStack={currentStack}, topStackGroup={topStackGroup}");
+                    Debug.Log($"group={group}, groupSide={groupSide}, currentStack={currentStack}, topStackGroup={topStackGroup}");
                     if (lastSelectedStrategicGroup != topStackGroup)
                     {
                         lastSelectedStrategicGroup = topStackGroup;
                     }
                     else
                     {
-                        hexInfo.strategicGroupReferences.RemoveAll(r => r.referenceId == topStackGroup.objectId);
-                        hexInfo.strategicGroupReferences.Insert(0, new() { referenceId = topStackGroup.objectId });
+                        strategicGroupReferences.RemoveAll(r => r.referenceId == topStackGroup.objectId);
+                        strategicGroupReferences.Insert(0, new() { referenceId = topStackGroup.objectId });
                         currentStack = group.currentStack;
                         topStackGroup = currentStack[^1];
 

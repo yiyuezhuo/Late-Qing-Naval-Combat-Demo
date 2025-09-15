@@ -95,7 +95,8 @@ namespace StrategicCombatCore
         {
             var gameState = StrategicGameState.Instance;
 
-            var strategicGroups = gameState.hexInfoMap.GetValueOrDefault((cell.x, cell.y))?.strategicGroupReferences?.Select(r => r.Get())?.ToList();
+            // var strategicGroups = gameState.hexInfoMap.GetValueOrDefault((cell.x, cell.y))?.strategicGroupReferences?.Select(r => r.Get())?.ToList();
+            var strategicGroups = cell.StrategicGroupReferences?.Select(r => r.Get())?.ToList();
             strategicGroups = strategicGroups ?? new List<StrategicGroup>();
 
             ScanStrategicGroups(strategicGroups);

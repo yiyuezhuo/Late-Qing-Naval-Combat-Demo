@@ -12,16 +12,17 @@ public class ImageFetchTask
         Downloading,
         Fail,
         Downloaded,
-        Processed,
-        Continued
+        // Processed,
+        // Continued
     }
 
     public string path;
     // public UnityWebRequest request;
     public Texture2D texture;
     public State state = State.Downloading;
-    public Action<Texture2D> postprocessCallback = null;
-    public Action<Texture2D> continueCallback = null;
+    // public Action<Texture2D> postprocessCallback = null;
+    public List<Action<Texture2D>> textureCallbacks = new();
+    public List<Action<Sprite>> spriteCallbacks = new();
 
     StyleBackground _styleBackground;
     public StyleBackground styleBackground
@@ -112,13 +113,26 @@ public class UnityWebRequestImageReader
         return task;
     }
 
-    public void RequestIfNotRequestedYet(ImageFetchTask task)
+    public void RequestIfNotRequestedYetOtherwiseExecuteDirectly(ImageFetchTask task)
     {
         if (taskMap.TryGetValue(task.path, out var taskPrev))
         {
-            if (taskPrev.state == ImageFetchTask.State.Continued && task.continueCallback != null)
+            if (taskPrev.state == ImageFetchTask.State.Downloaded)
             {
-                task.continueCallback(taskPrev.texture);
+                // task.continueCallback(taskPrev.texture);
+                foreach (var textureCallback in task.textureCallbacks)
+                {
+                    textureCallback(taskPrev.texture);
+                }
+                foreach (var spriteCallback in task.spriteCallbacks)
+                {
+                    spriteCallback(taskPrev.sprite);
+                }
+            }
+            else
+            {
+                taskPrev.textureCallbacks.AddRange(task.textureCallbacks);
+                taskPrev.spriteCallbacks.AddRange(task.spriteCallbacks);
             }
             return;
         }
@@ -147,19 +161,30 @@ public class UnityWebRequestImageReader
                 task.texture = texture;
                 task.state = ImageFetchTask.State.Downloaded;
 
-                if (task.postprocessCallback != null)
+                // if (task.postprocessCallback != null)
+                // {
+                //     task.postprocessCallback(texture);
+                // }
+
+                // task.state = ImageFetchTask.State.Processed;
+
+                // if (task.callbacks != null)
+                // {
+                //     task.continueCallback(texture);
+                // }
+
+                // task.state = ImageFetchTask.State.Continued;
+                foreach (var textureCallback in task.textureCallbacks)
                 {
-                    task.postprocessCallback(texture);
+                    textureCallback(texture);
                 }
+                task.textureCallbacks.Clear();
 
-                task.state = ImageFetchTask.State.Processed;
-
-                if (task.continueCallback != null)
+                foreach (var spriteCallback in task.spriteCallbacks)
                 {
-                    task.continueCallback(texture);
+                    spriteCallback(task.sprite);
                 }
-
-                task.state = ImageFetchTask.State.Continued;
+                task.spriteCallbacks.Clear();
             }
             else
             {

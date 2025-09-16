@@ -8,6 +8,9 @@ using UnityEngine.UIElements;
 
 using StrategicCombatCore;
 using MathNet.Numerics.Integration;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
+using Unity.VisualScripting;
+using CoreUtils;
 
 public class HexMapShower : SingletonDocument<HexMapShower>
 {
@@ -20,12 +23,14 @@ public class HexMapShower : SingletonDocument<HexMapShower>
     public Transform railroadContainerTransform;
     public Transform riverContainerTransform;
     public Transform strategicGroupIconTransform;
+    public Transform sideFlagContainerTransform;
 
     public GameObject locationLabelPrefab;
     public GameObject roadPrefab;
     public GameObject railroadPrefab;
     public GameObject riverPrefab;
     public GameObject strategicGroupIconPrefab;
+    public GameObject sideFlagPrefab;
 
     public SpriteRenderer mapRenderer;
 
@@ -67,6 +72,20 @@ public class HexMapShower : SingletonDocument<HexMapShower>
             {
                 _showAccurateSeaLand = value;
                 material.SetFloat("_AccurateSeaLand", _showAccurateSeaLand ? 1 : 0);
+            }
+        }
+    }
+
+    bool _showSideFlag = true;
+    public bool showSideFlag
+    {
+        get => _showSideFlag;
+        set
+        {
+            if (value != _showSideFlag)
+            {
+                _showSideFlag = value;
+                sideFlagContainerTransform.gameObject.SetActive(showSideFlag);
             }
         }
     }
@@ -164,6 +183,28 @@ public class HexMapShower : SingletonDocument<HexMapShower>
             lineRenderer.SetPositions(new Vector3[2]{p0, p1});
         }
     }
+
+    // void BindSideFlags(Transform containerTransform, GameObject prefab, Cell[,] cellMatrix)
+    // {
+    //     var width = cellMatrix.GetLength(0);
+    //     var height = cellMatrix.GetLength(1);
+    //     var length = width * height;
+
+    //     Utils.SyncTransformViewerLength(containerTransform, length, prefab);
+    //     var viewers = containerTransform.GetComponentsInChildren<SpriteRenderer>();
+
+    //     foreach (var cell in cellMatrix)
+    //     {
+    //         var id = cell.x + cell.y * width;
+    //         var viewer = viewers[id];
+
+    //         var (xf, yf) = CellXYToLocalXY(cell.x, cell.y);
+    //         var vec = controlledRenderer.transform.TransformPoint(xf, yf, 0);
+
+    //         viewer.transform.position = new Vector3(vec.x, vec.y, 0);
+    //         viewer.sprite = UnityWebRequestImageReader.Instance.FetchSprite(Application.streamingAssetsPath + $"/Pictures/Flags/China.png");
+    //     }
+    // }
 
     void BindStrategicGroupIcons(Transform containerTransform, GameObject prefab, List<StrategicGroup> strategicGroups)
     {
@@ -339,6 +380,16 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         BindStrategicGroupIcons(strategicGroupIconTransform, strategicGroupIconPrefab, independentStrategicGroups);
     }
 
+    // void OnSideFlagsUpdated(object sender, EventArgs args)
+    // {
+    //     RefreshBindSideFlags();
+    // }
+
+    // public void RefreshBindSideFlags()
+    // {
+    //     BindSideFlags(sideFlagContainerTransform, sideFlagPrefab, StrategicGameState.Instance.cellMatrix);
+    // }
+
     void UpdateLabels()
     {
         var labels = StrategicGameState.Instance.labels;
@@ -415,10 +466,99 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         RefreshEdgeFeature();
     }
 
+
+    class CellViewer
+    {
+        public SpriteRenderer flagRenderer;
+    }
+
+    Dictionary<(int, int), CellViewer> cellViewerMap = new();
+
     public void OnMapRebuilt(object sender, EventArgs args)
     {
         // GenerateTextureAndRefreshMaterial(StrategicGameState.Instance.terrainMatrix);
         GenerateTextureAndRefreshMaterial();
+
+        // Build Cell-oriented viewer map
+        var width = StrategicGameState.Instance.GetMapWidth();
+        var height = StrategicGameState.Instance.GetMapHeight();
+
+        for (var x = 0; x < width; x++)
+        {
+            for (var y = 0; y < height; y++)
+            {
+                cellViewerMap[(x, y)] = new();
+            }
+        }
+
+        var length = width * height;
+
+        Utils.SyncTransformViewerLength(sideFlagContainerTransform, length, sideFlagPrefab);
+        var sideFlagRenderers = sideFlagContainerTransform.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var ((x, y), cellViewer) in cellViewerMap)
+        {
+            var idx = x + y * width;
+            cellViewer.flagRenderer = sideFlagRenderers[idx];
+
+            var (xf, yf) = CellXYToLocalXY(x, y);
+            var vec = controlledRenderer.transform.TransformPoint(xf, yf, 0);
+
+            cellViewer.flagRenderer.transform.position = new Vector3(vec.x, vec.y, 0);
+        }
+
+        RefreshSideFlags(); // SideState may not be ready here, so StrategicGameManager will require an extra call.
+        // foreach (var (xy, cellViewer) in cellViewerMap)
+        // {
+        //     // Performance Issue?
+        //     // UnityWebRequestImageReader.Instance.RequestIfNotRequestedYetOtherwiseExecuteDirectly(new()
+        //     // {
+        //     //     path = Application.streamingAssetsPath + "/Pictures/Flags/China.png",
+        //     //     spriteCallbacks = new()
+        //     //     {
+        //     //         sprite =>
+        //     //         {
+        //     //             cellViewr.flagRenderer.sprite = sprite;
+        //     //         }
+        //     //     }
+        //     // });
+        //     SyncSideFlag(xy);
+        // }
+    }
+
+    public void RefreshSideFlags()
+    {
+        foreach (var xy in cellViewerMap.Keys)
+        {
+            SyncSideFlag(xy);
+        }
+    }
+
+    void SyncSideFlag((int, int) xy)
+    {
+        var (x, y) = xy;
+        var cellViewer = cellViewerMap[xy];
+
+        var hexSideStateObjectId = StrategicGameState.Instance.cellMatrix[x, y].sideObjectIdHex;
+        // var hexSideStateObjectId = "dd43c3f3-1a02-46ca-b287-4ac069c23218";
+        if (hexSideStateObjectId == null)
+            return;
+        var sideState = EntityManager.Instance.Get<SideState>(hexSideStateObjectId);
+        if (sideState == null || sideState.countries.Count == 0)
+            return;
+        var name = sideState.countries[0].ToString();
+        var path = $"{Application.streamingAssetsPath}/Pictures/Flags/{name}.png";
+        // var path = $"{Application.streamingAssetsPath}/Pictures/Flags/Japan.png";
+        UnityWebRequestImageReader.Instance.RequestIfNotRequestedYetOtherwiseExecuteDirectly(new()
+        {
+            path = path,
+            spriteCallbacks = new()
+            {
+                sprite =>
+                {
+                    cellViewer.flagRenderer.sprite = sprite;
+                }
+            }
+        });
     }
 
     public void OnMapCellUpdated(object sender, (int, int) args)
@@ -428,6 +568,8 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         Color32 color = new Color32((byte)StrategicGameState.Instance.cellMatrix[x, y].terrain, 0, 0, 255);
         terrainTypeTexture.SetPixel(x, y, color);
         terrainTypeTexture.Apply();
+
+        SyncSideFlag((x, y));
     }
 
     public void GenerateTextureAndRefreshMaterial()

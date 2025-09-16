@@ -115,6 +115,14 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         {
             DialogRoot.Instance.PopupSubStrategicCombatDialog(new());
         };
+
+        root.Q<Button>("SelectSideButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupSideStatePickerDialog(sideState =>
+            {
+                StrategicGameManager.Instance.currentSideStateObjectId = sideState?.objectId;
+            });
+        };
     }
 
     void DoTPSGeoreferencing()

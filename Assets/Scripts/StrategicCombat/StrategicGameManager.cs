@@ -17,19 +17,22 @@ using CoreUtils;
 using StrategicCombatCore;
 using NavalCombatCore;
 using System.Text.RegularExpressions;
+using JetBrains.Annotations;
 
 
 public enum StrategicMapEditMode
 {
     Select,
     PaintTerrain,
+    PaintHexControlSide,
     CreateOrEditLabel,
     DeleteLabel,
     PaintHexPairFeatureBegin,
     PaintHexPairFeatureEnd,
     DeleteHexPairFeatureBegin,
     DeleteHexPairFeatureEnd,
-    WaitOneshotCellClickCallback
+    WaitOneshotCellClickCallback,
+    
 }
 
 public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
@@ -87,6 +90,19 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public Cell lastSelectedCell;
     public StrategicGroup lastSelectedStrategicGroup;
     Action<Cell> oneshotCellClickCallback;
+
+    [CreateProperty]
+    public bool showSideFlag
+    {
+        get => HexMapShower.Instance.showSideFlag;
+        set => HexMapShower.Instance.showSideFlag = value;
+    }
+
+    public string currentSideStateObjectId;
+
+    [CreateProperty]
+    public string currentSideStateName => EntityManager.Instance.Get<SideState>(currentSideStateObjectId)?.name?.mergedName ?? "";
+
 
     void Start()
     {
@@ -190,11 +206,15 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         StrategicGameState.Instance.ResetAndRegisterAll();
 
+        HexMapShower.Instance.RefreshSideFlags();
+
         TempFix();
     }
 
     public static void TempFix()
     {
+        // HexMapShower.Instance.RefreshBindSideFlags();
+
         // foreach (var ((x, y), hexInfo) in StrategicGameState.Instance.hexInfoMap)
         // {
         //     var hex = StrategicGameState.Instance.cellMatrix[x, y];
@@ -429,6 +449,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             StrategicGameState.Instance.SetMapCellTerrain(cellXY.x, cellXY.y, currentTerrainType);
 
             Debug.Log($"SetMapCellTerrain({cellXY.x}, {cellXY.y}, {currentTerrainType})");
+        }
+        if (mapEditMode == StrategicMapEditMode.PaintHexControlSide)
+        {
+            StrategicGameState.Instance.SetMapControlSide(cellXY.x, cellXY.y, currentSideStateObjectId);
+
+            Debug.Log($"PaintHexControlSide({cellXY.x}, {cellXY.y}, {currentTerrainType})");
         }
 
         if (mapEditMode == StrategicMapEditMode.CreateOrEditLabel)

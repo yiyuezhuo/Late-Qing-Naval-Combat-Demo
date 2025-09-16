@@ -141,6 +141,13 @@ namespace StrategicCombatCore
             mapCellUpdated?.Invoke(this, (x, y));
         }
 
+        public void SetMapControlSide(int x, int y, string sideStateObjectId)
+        {
+            cellMatrix[x, y].sideObjectIdHex = sideStateObjectId;
+
+            mapCellUpdated?.Invoke(this, (x, y));
+        }
+
         public void UpdateTo(StrategicGameState newInstance)
         {
             // terrainMatrix = newInstance.terrainMatrix;

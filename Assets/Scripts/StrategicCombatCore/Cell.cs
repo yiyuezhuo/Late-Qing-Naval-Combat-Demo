@@ -78,8 +78,8 @@ namespace StrategicCombatCore
         [XmlAttribute]
         public TerrainType terrain;
 
-        [XmlAttribute]
-        public Country country;
+        // [XmlAttribute]
+        // public Country country;
 
         [XmlIgnore]
         public List<EdgeDirection> roads = new();

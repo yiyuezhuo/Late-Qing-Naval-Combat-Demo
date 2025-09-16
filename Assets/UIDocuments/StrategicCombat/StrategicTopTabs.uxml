@@ -110,6 +110,18 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(349825385795584)" />
                         </Bindings>
                     </ui:Button>
+                    <ui:Label text="Side" />
+                    <ui:Toggle>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="showSideFlag" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
+                    <ui:TextField enabled="false">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="currentSideStateName" binding-mode="ToTarget" />
+                        </Bindings>
+                    </ui:TextField>
+                    <ui:Button text="Select" name="SelectSideButton" />
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(348264442007552)" />

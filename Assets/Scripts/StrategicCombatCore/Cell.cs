@@ -100,8 +100,19 @@ namespace StrategicCombatCore
         [XmlAttribute]
         public float latitude;
 
+        // [XmlAttribute]
+        // public bool groundControlPoint; // GCP (Ground Control Point) lon & lat would be used to infer other cell's lat & lon (Georeference).
+
         [XmlAttribute]
-        public bool groundControlPoint; // GCP (Ground Control Point) lon & lat would be used to infer other cell's lat & lon (Georeference).
+        public bool GroundControlPoint; // GCP (Ground Control Point) lon & lat would be used to infer other cell's lat & lon (Georeference).
+
+        public GlobalString Label; // nullable
+                                   // public bool ShouldSerializeLabel() => Label != null;
+
+        public bool IsCoast;
+        public bool ShouldSerializeIsCoast() => IsCoast;
+
+        public bool ShouldSerializeGroundControlPoint() => GroundControlPoint;
 
         string EncodeBoolArray(List<EdgeDirection> arr)
         {

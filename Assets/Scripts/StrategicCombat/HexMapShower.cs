@@ -84,7 +84,8 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         }
     }
 
-    bool _showSideFlag = true;
+    // bool _showSideFlag = true;
+    bool _showSideFlag;
     public bool showSideFlag
     {
         get => _showSideFlag;
@@ -98,7 +99,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         }
     }
 
-    CellLabelDisplayMode _cellLabelDisplayMode;
+    CellLabelDisplayMode _cellLabelDisplayMode = CellLabelDisplayMode.Label;
     public CellLabelDisplayMode cellLabelDisplayMode
     {
         get => _cellLabelDisplayMode;
@@ -107,8 +108,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
             if (value != _cellLabelDisplayMode)
             {
                 _cellLabelDisplayMode = value;
-                // Refresh();
-
+                RefreshCellLabelDisplayMode();
             }
         }
     }
@@ -121,6 +121,8 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         gameState.mapRebuilt += OnMapRebuilt;
         gameState.mapCellUpdated += OnMapCellUpdated;
         gameState.edgeFeatureUpdated += OnEdgeFeatureUpdated;
+
+        sideFlagContainerTransform.gameObject.SetActive(showSideFlag);
     }
 
     public override void OnDestroy()
@@ -397,7 +399,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
     // Update is called once per frame
     void Update()
     {
-        UpdateLabels();
+        // UpdateLabels();
 
         var independentStrategicGroups = StrategicGameState.Instance.GetIndependentStrategicGroups().ToList();
         BindStrategicGroupIcons(strategicGroupIconTransform, strategicGroupIconPrefab, independentStrategicGroups);
@@ -427,31 +429,31 @@ public class HexMapShower : SingletonDocument<HexMapShower>
     //     BindSideFlags(sideFlagContainerTransform, sideFlagPrefab, StrategicGameState.Instance.cellMatrix);
     // }
 
-    void UpdateLabels()
-    {
-        var labels = StrategicGameState.Instance.labels;
+    // void UpdateLabels()
+    // {
+    //     var labels = StrategicGameState.Instance.labels;
 
-        Utils.SyncTransformViewerLength(labelContainerTransform, labels.Count, locationLabelPrefab);
+    //     Utils.SyncTransformViewerLength(labelContainerTransform, labels.Count, locationLabelPrefab);
 
-        // Bind
-        var texts = labelContainerTransform.GetComponentsInChildren<TMP_Text>();
-        var width = StrategicGameState.Instance.GetMapWidth();
-        var height = StrategicGameState.Instance.GetMapHeight();
-        for (int i = 0; i < labels.Count; i++)
-        {
-            var label = labels[i];
-            var text = texts[i];
-            // text.text = label.name.english;
-            text.text = label.name.GetNameFromType(GamePreference.Instance.shortLabelLanguageType);
-            // var dx = 0.5f;
-            // var dy = label.x % 2 == 0 ? 0.5f : 1f;
-            // text.transform.localPosition = new Vector3((label.x + dx) / width - 0.5f, (label.y + dy) / height - 0.5f, 0);
-            var (xf, yf) = CellXYToLocalXY(label.x, label.y);
-            // text.transform.localPosition = new Vector3(xf, yf, 0);
-            // text.transform.position = controlledRenderer.transform.TransformPoint(new Vector3(xf, yf, 0));
-            text.transform.position = controlledRenderer.transform.TransformPoint(xf, yf, 0);
-        }
-    }
+    //     // Bind
+    //     var texts = labelContainerTransform.GetComponentsInChildren<TMP_Text>();
+    //     var width = StrategicGameState.Instance.GetMapWidth();
+    //     var height = StrategicGameState.Instance.GetMapHeight();
+    //     for (int i = 0; i < labels.Count; i++)
+    //     {
+    //         var label = labels[i];
+    //         var text = texts[i];
+    //         // text.text = label.name.english;
+    //         text.text = label.name.GetNameFromType(GamePreference.Instance.shortLabelLanguageType);
+    //         // var dx = 0.5f;
+    //         // var dy = label.x % 2 == 0 ? 0.5f : 1f;
+    //         // text.transform.localPosition = new Vector3((label.x + dx) / width - 0.5f, (label.y + dy) / height - 0.5f, 0);
+    //         var (xf, yf) = CellXYToLocalXY(label.x, label.y);
+    //         // text.transform.localPosition = new Vector3(xf, yf, 0);
+    //         // text.transform.position = controlledRenderer.transform.TransformPoint(new Vector3(xf, yf, 0));
+    //         text.transform.position = controlledRenderer.transform.TransformPoint(xf, yf, 0);
+    //     }
+    // }
 
     public static (float, float) CellXYToLocalXY(int x, int y)
     {
@@ -503,10 +505,10 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         RefreshEdgeFeature();
     }
 
-
     class CellViewer
     {
         public SpriteRenderer flagRenderer;
+        public TMP_Text text;
     }
 
     Dictionary<(int, int), CellViewer> cellViewerMap = new();
@@ -532,34 +534,59 @@ public class HexMapShower : SingletonDocument<HexMapShower>
 
         Utils.SyncTransformViewerLength(sideFlagContainerTransform, length, sideFlagPrefab);
         var sideFlagRenderers = sideFlagContainerTransform.GetComponentsInChildren<SpriteRenderer>();
+
+        Utils.SyncTransformViewerLength(cellLabelContainerTransform, length, cellLabelPrefab);
+        var cellLabels = cellLabelContainerTransform.GetComponentsInChildren<TMP_Text>();
+
         foreach (var ((x, y), cellViewer) in cellViewerMap)
         {
             var idx = x + y * width;
             cellViewer.flagRenderer = sideFlagRenderers[idx];
+            cellViewer.text = cellLabels[idx];
 
             var (xf, yf) = CellXYToLocalXY(x, y);
             var vec = controlledRenderer.transform.TransformPoint(xf, yf, 0);
 
             cellViewer.flagRenderer.transform.position = new Vector3(vec.x, vec.y, 0);
+            cellViewer.flagRenderer.gameObject.name = $"Flag_{x}_{y}";
+
+            cellViewer.text.transform.position = new Vector3(vec.x, vec.y, 0);
+            cellViewer.text.gameObject.name = $"Text_{x}_{y}";
         }
 
         RefreshSideFlags(); // SideState may not be ready here, so StrategicGameManager will require an extra call in the startup.
-        // foreach (var (xy, cellViewer) in cellViewerMap)
-        // {
-        //     // Performance Issue?
-        //     // UnityWebRequestImageReader.Instance.RequestIfNotRequestedYetOtherwiseExecuteDirectly(new()
-        //     // {
-        //     //     path = Application.streamingAssetsPath + "/Pictures/Flags/China.png",
-        //     //     spriteCallbacks = new()
-        //     //     {
-        //     //         sprite =>
-        //     //         {
-        //     //             cellViewr.flagRenderer.sprite = sprite;
-        //     //         }
-        //     //     }
-        //     // });
-        //     SyncSideFlag(xy);
-        // }
+        RefreshCellLabelDisplayMode();
+    }
+
+    public void RefreshCellLabelDisplayMode(int x, int y)
+    {
+        var cellViewer = cellViewerMap[(x, y)];
+
+        // CellLabelDisplayMode
+        if (cellLabelDisplayMode == CellLabelDisplayMode.None)
+        {
+            cellViewer.text.text = "";
+        }
+        else if (cellLabelDisplayMode == CellLabelDisplayMode.Label)
+        {
+            cellViewer.text.text = StrategicGameState.Instance.cellMatrix[x, y].Label?.GetShortName() ?? "";
+        }
+        else if (cellLabelDisplayMode == CellLabelDisplayMode.XY)
+        {
+            cellViewer.text.text = $"({x}, {y})";
+        }
+        else if (cellLabelDisplayMode == CellLabelDisplayMode.Coast)
+        {
+            cellViewer.text.text = StrategicGameState.Instance.cellMatrix[x, y].IsCoast ? "Coast" : "";
+        }
+    }
+
+    public void RefreshCellLabelDisplayMode()
+    {
+        foreach (var (x, y) in cellViewerMap.Keys)
+        {
+            RefreshCellLabelDisplayMode(x, y);
+        }
     }
 
     public void RefreshSideFlags()
@@ -610,6 +637,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         terrainTypeTexture.Apply();
 
         SyncSideFlag((x, y));
+        RefreshCellLabelDisplayMode(x, y);
     }
 
     public void GenerateTextureAndRefreshMaterial()

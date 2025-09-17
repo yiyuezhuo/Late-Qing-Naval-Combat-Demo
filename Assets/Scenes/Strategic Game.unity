@@ -674,6 +674,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387545150}
   m_CullTransparentMesh: 1
+--- !u!1 &540693174
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 540693175}
+  m_Layer: 0
+  m_Name: CellLabelContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &540693175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540693174}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937397445}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &563569381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -999,6 +1030,7 @@ Transform:
   - {fileID: 1766299595}
   - {fileID: 1215834149}
   - {fileID: 1015478983}
+  - {fileID: 540693175}
   - {fileID: 1921406419}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1021,12 +1053,14 @@ MonoBehaviour:
   riverContainerTransform: {fileID: 1766299595}
   strategicGroupIconTransform: {fileID: 1215834149}
   sideFlagContainerTransform: {fileID: 1015478983}
+  cellLabelContainerTransform: {fileID: 540693175}
   locationLabelPrefab: {fileID: 5792163290863953499, guid: be80ce39c2c2aa94e971853d00d1ec27, type: 3}
   roadPrefab: {fileID: 9006842191024245126, guid: 6285d43d972e56e46a42bc17fa4787be, type: 3}
   railroadPrefab: {fileID: 9006842191024245126, guid: d895281625e13b641a2133c00adc0b4f, type: 3}
   riverPrefab: {fileID: 9006842191024245126, guid: 0fb883c7cfb12fa4b9f93a8c09b9704c, type: 3}
   strategicGroupIconPrefab: {fileID: 3524373397051295401, guid: eeb18b7201b1c32459b68dbd2dd3ea19, type: 3}
   sideFlagPrefab: {fileID: 1746349559027256155, guid: d57d9a28a3ff0754ba88fe1543293865, type: 3}
+  cellLabelPrefab: {fileID: 5792163290863953499, guid: be80ce39c2c2aa94e971853d00d1ec27, type: 3}
   mapRenderer: {fileID: 2074895119}
   pathLineRenderer: {fileID: 1921406418}
 --- !u!1001 &995054351

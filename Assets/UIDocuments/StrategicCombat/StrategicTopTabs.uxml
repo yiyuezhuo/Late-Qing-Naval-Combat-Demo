@@ -122,6 +122,12 @@
                         </Bindings>
                     </ui:TextField>
                     <ui:Button text="Select" name="SelectSideButton" />
+                    <ui:Label text="Cell Label" />
+                    <ui:EnumField value="Center" type="CellLabelDisplayMode, Assembly-CSharp">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="cellLabelDisplayMode" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:EnumField>
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(348264442007552)" />

@@ -1,4 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
     <ui:VisualElement data-source-type="StrategicCombatCore.Cell+&lt;&gt;c, Assembly-CSharp" class="panel-dialog">
         <ui:Label text="Cell Editor" class="title" />
         <ui:VisualElement data-source-type="StrategicCombatCore.Cell, Assembly-CSharp" style="flex-grow: 1;">
@@ -10,6 +11,17 @@
                                 <ui:DataBinding property="text" data-source-path="brief" binding-mode="ToTarget" />
                             </Bindings>
                         </ui:Label>
+                        <ui:Toggle label="Cell Label Created">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="labelCreated" binding-mode="TwoWay" />
+                            </Bindings>
+                        </ui:Toggle>
+                        <ui:VisualElement style="flex-grow: 1;">
+                            <ui:Instance template="GlobalStringEditor" data-source-path="Label" />
+                            <Bindings>
+                                <ui:DataBinding property="style.display" data-source-path="labelCreated" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                            </Bindings>
+                        </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:Tab>
                 <ui:Tab label="Control">

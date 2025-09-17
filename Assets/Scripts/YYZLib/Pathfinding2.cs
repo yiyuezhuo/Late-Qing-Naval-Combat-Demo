@@ -181,7 +181,8 @@ namespace YYZ.PathFinding2
                 var u = q.Min;
                 q.Remove(u);
 
-                if(allTargetSet.Contains(u.Value));
+                // if(allTargetSet.Contains(u.Value));
+                if(allTargetSet.Contains(u.Value))
                     allTargetSet.Remove(u.Value);
 
                 if(u.Cost != costArr[u.Value])

@@ -135,7 +135,7 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             for (int j = 0; j < cellMat.GetLength(1); j++)
             {
                 var cell = cellMat[i, j];
-                if (cell.groundControlPoint)
+                if (cell.GroundControlPoint)
                 {
                     groundControlPoints.Add(cell);
                 }
@@ -160,7 +160,7 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             for (int j = 0; j < cellMat.GetLength(1); j++)
             {
                 var cell = cellMat[i, j];
-                if (!cell.groundControlPoint)
+                if (!cell.GroundControlPoint)
                 {
                     (var x, var y) = HexMapShower.CellXYToLocalXY(cell.x, cell.y);
                     (var longtitude, var latitude) = tps.Transform(x, y);

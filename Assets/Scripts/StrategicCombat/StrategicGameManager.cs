@@ -16,8 +16,6 @@ using UnityEngine.SceneManagement;
 using CoreUtils;
 using StrategicCombatCore;
 using NavalCombatCore;
-using System.Text.RegularExpressions;
-using JetBrains.Annotations;
 
 
 public enum StrategicMapEditMode
@@ -25,14 +23,13 @@ public enum StrategicMapEditMode
     Select,
     PaintTerrain,
     PaintHexControlSide,
-    CreateOrEditLabel,
-    DeleteLabel,
+    // CreateOrEditLabel,
+    // DeleteLabel,
     PaintHexPairFeatureBegin,
     PaintHexPairFeatureEnd,
     DeleteHexPairFeatureBegin,
     DeleteHexPairFeatureEnd,
     WaitOneshotCellClickCallback,
-    
 }
 
 public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
@@ -103,6 +100,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     [CreateProperty]
     public string currentSideStateName => EntityManager.Instance.Get<SideState>(currentSideStateObjectId)?.name?.mergedName ?? "";
 
+    [CreateProperty]
+    public CellLabelDisplayMode cellLabelDisplayMode
+    {
+        get => HexMapShower.Instance.cellLabelDisplayMode;
+        set => HexMapShower.Instance.cellLabelDisplayMode = value;
+    }
 
     void Start()
     {
@@ -207,12 +210,24 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         StrategicGameState.Instance.ResetAndRegisterAll();
 
         HexMapShower.Instance.RefreshSideFlags();
+        // HexMapShower.Instance.showSideFlag = false;
 
         TempFix();
     }
 
     public static void TempFix()
     {
+        // foreach (var label in StrategicGameState.Instance.labels)
+        // {
+        //     var cell = StrategicGameState.Instance.cellMatrix[label.x, label.y];
+        //     cell.Label = label.name;
+        // }
+
+        // foreach (var cell in StrategicGameState.Instance.cellMatrix)
+        // {
+        //     cell.GroundControlPoint = cell.groundControlPoint;
+        // }
+
         // HexMapShower.Instance.RefreshBindSideFlags();
 
         // foreach (var ((x, y), hexInfo) in StrategicGameState.Instance.hexInfoMap)
@@ -457,30 +472,30 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             Debug.Log($"PaintHexControlSide({cellXY.x}, {cellXY.y}, {currentTerrainType})");
         }
 
-        if (mapEditMode == StrategicMapEditMode.CreateOrEditLabel)
-        {
-            var label = StrategicGameState.Instance.labels.FirstOrDefault(l => l.x == cellXY.x && l.y == cellXY.y);
-            if (label == null)
-            {
-                label = new StrategicLocationLabel
-                {
-                    x = cellXY.x,
-                    y = cellXY.y,
-                    name = new()
-                };
-                StrategicGameState.Instance.labels.Add(label);
-            }
+        // if (mapEditMode == StrategicMapEditMode.CreateOrEditLabel)
+        // {
+        //     var label = StrategicGameState.Instance.labels.FirstOrDefault(l => l.x == cellXY.x && l.y == cellXY.y);
+        //     if (label == null)
+        //     {
+        //         label = new StrategicLocationLabel
+        //         {
+        //             x = cellXY.x,
+        //             y = cellXY.y,
+        //             name = new()
+        //         };
+        //         StrategicGameState.Instance.labels.Add(label);
+        //     }
 
-            DialogRoot.Instance.PopupLocationLabelDialog(label);
+        //     DialogRoot.Instance.PopupLocationLabelDialog(label);
 
-            // Launch temp dialog to edit global string
-            Debug.Log($"CreateOrEditLabel({cellXY.x}, {cellXY.y}, {currentTerrainType})");
-        }
+        //     // Launch temp dialog to edit global string
+        //     Debug.Log($"CreateOrEditLabel({cellXY.x}, {cellXY.y}, {currentTerrainType})");
+        // }
 
-        if (mapEditMode == StrategicMapEditMode.DeleteLabel)
-        {
-            StrategicGameState.Instance.labels.RemoveAll(l => l.x == cellXY.x && l.y == cellXY.y);
-        }
+        // if (mapEditMode == StrategicMapEditMode.DeleteLabel)
+        // {
+        //     StrategicGameState.Instance.labels.RemoveAll(l => l.x == cellXY.x && l.y == cellXY.y);
+        // }
 
         if (mapEditMode == StrategicMapEditMode.PaintHexPairFeatureBegin)
         {

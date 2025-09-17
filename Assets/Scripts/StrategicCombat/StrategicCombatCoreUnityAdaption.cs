@@ -52,6 +52,23 @@ namespace StrategicCombatCore
         [CreateProperty]
         public string sideNameTopLeft => EntityManager.Instance.Get<SideState>(sideObjectIdTopLeft)?.name?.mergedName ?? "";
 
+        [XmlIgnore]
+        [CreateProperty]
+        public bool labelCreated
+        {
+            get => Label != null;
+            set
+            {
+                if (value)
+                {
+                    Label = new();
+                }
+                else
+                {
+                    Label = null;
+                }
+            }
+        }
     }
 
     public static class StyleConstants

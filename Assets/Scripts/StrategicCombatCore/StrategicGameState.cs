@@ -54,7 +54,7 @@ namespace StrategicCombatCore
             }
         }
 
-        public List<StrategicLocationLabel> labels = new();
+        // public List<StrategicLocationLabel> labels = new();
 
         public HighCommand highCommand = new();
 
@@ -83,6 +83,7 @@ namespace StrategicCombatCore
         public StrategicScenarioState scenarioState = new();
 
         public List<SideState> sideStates = new();
+
         [XmlIgnore]
         public Dictionary<Country, SideState> countryToSideStateMap = new();
 
@@ -154,7 +155,7 @@ namespace StrategicCombatCore
         {
             // terrainMatrix = newInstance.terrainMatrix;
             cellMatrix = newInstance.cellMatrix;
-            labels = newInstance.labels;
+            // labels = newInstance.labels;
             highCommand = newInstance.highCommand;
             landUnitTemplates = newInstance.landUnitTemplates;
             landUnits = newInstance.landUnits;

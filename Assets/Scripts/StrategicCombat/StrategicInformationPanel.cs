@@ -1,8 +1,10 @@
+using System.Linq;
 using NavalCombatCore;
 using StrategicCombatCore;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using YYZ.PathFinding;
 
 public class StrategicInformationPanel : SingletonDocument<StrategicInformationPanel>
 {
@@ -77,6 +79,38 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
                 }
             }}
         });
+
+        var cellEditButton = root.Q<Button>("CellEditButton");
+        cellEditButton.clicked += () =>
+        {
+            if (Utils.TryResolveCurrentValueForBinding(cellEditButton, out Cell cell))
+            {
+                DialogRoot.Instance.PopupCellEditorDialog(cell);
+            }
+        };
+
+        var moveButton = root.Q<Button>("MoveButton");
+        moveButton.clicked += () =>
+        {
+            StrategicGameManager.Instance.ScheduleOneshotCellClickCallback(cell =>
+            {
+                if (Utils.TryResolveCurrentValueForBinding(moveButton, out StrategicGroup strategicGroup))
+                {
+                    // TODO: Set PlannedPath
+                    if (strategicGroup.deployState == StrategicGroup.DeployState.Independent)
+                    {
+                        var srcCell = strategicGroup.cell;
+                        var dstCell = cell;
+                        var graph = new DynamicCellGraph();
+                        var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
+                        strategicGroup.plannedPath.Clear();
+                        strategicGroup.plannedPath.AddRange(pathCells.Select(c => new XY() { x = c.x, y = c.y }));
+
+                        Debug.Log("Set path");
+                    }
+                }
+            });
+        };
     }
 
     public void TryGotoTacticalNavalCombat(Cell cell)

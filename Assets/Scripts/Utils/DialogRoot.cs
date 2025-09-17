@@ -207,6 +207,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset sideStatePickerDialogDocument;
     public VisualTreeAsset landUnitTemplateDialogDocument;
     public VisualTreeAsset subStrategicCombatDialogDocument;
+    public VisualTreeAsset cellEditorDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -218,6 +219,32 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupCellEditorDialog(Cell cell)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = cellEditorDialogDocument,
+            templateDataSource = cell,
+            draggable = false
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            el.Q<Button>("SideObjectIdHexButton").clicked += () => PopupSideStatePickerDialog(sideState => cell.sideObjectIdHex = sideState.objectId);
+            el.Q<Button>("SideObjectIdTopButton").clicked += () => PopupSideStatePickerDialog(sideState => cell.sideObjectIdTop = sideState.objectId);
+            el.Q<Button>("SideObjectIdTopRightButton").clicked += () => PopupSideStatePickerDialog(sideState => cell.sideObjectIdTopRight = sideState.objectId);
+            el.Q<Button>("SideObjectIdBottomRightButton").clicked += () => PopupSideStatePickerDialog(sideState => cell.sideObjectIdBottomRight = sideState.objectId);
+            el.Q<Button>("SideObjectIdBottomButton").clicked += () => PopupSideStatePickerDialog(sideState => cell.sideObjectIdBottom = sideState.objectId);
+            el.Q<Button>("SideObjectIdBottomLeftButton").clicked += () => PopupSideStatePickerDialog(sideState => cell.sideObjectIdBottomLeft = sideState.objectId);
+            el.Q<Button>("SideObjectIdTopLeftButton").clicked += () => PopupSideStatePickerDialog(sideState => cell.sideObjectIdTopLeft = sideState.objectId);
+        };
+
+        tempDialog.onConfirmed += (sender, args) => StrategicGameState.Instance.InvokeMapCellUpdated(cell.x, cell.y);
+
+        tempDialog.Popup();
     }
 
     public void PopupSubStrategicCombatDialog(SubStrategicCombat combat)

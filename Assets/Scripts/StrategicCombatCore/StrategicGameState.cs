@@ -90,6 +90,8 @@ namespace StrategicCombatCore
         public event EventHandler<(int, int)> mapCellUpdated;
         public event EventHandler edgeFeatureUpdated;
 
+        public void InvokeMapCellUpdated(int x, int y) => mapCellUpdated?.Invoke(this, (x, y));
+
         public void RebuildCacheForSideStates()
         {
             countryToSideStateMap.Clear();

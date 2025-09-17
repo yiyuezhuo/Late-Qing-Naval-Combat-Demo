@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Diagnostics;
 using System.Linq;
 using System.Xml.Serialization;
@@ -141,7 +142,7 @@ namespace StrategicCombatCore
         public string sideObjectIdHex;
 
         [XmlAttribute]
-        public string sideObjectIdTopEdge;
+        public string sideObjectIdTop;
 
         [XmlAttribute]
         public string sideObjectIdTopRight;
@@ -167,7 +168,7 @@ namespace StrategicCombatCore
         {
             var edgeObjectId = edgeDirection switch
             {
-                EdgeDirection.Top => sideObjectIdTopEdge,
+                EdgeDirection.Top => sideObjectIdTop,
                 EdgeDirection.TopRight => sideObjectIdTopRight,
                 EdgeDirection.BottomRight => sideObjectIdBottomRight,
                 EdgeDirection.Bottom => sideObjectIdBottom,
@@ -262,6 +263,26 @@ namespace StrategicCombatCore
                 return gameState.cellMatrix[x2, y2];
             }
             return null;
+        }
+        
+        static List<EdgeDirection> defaultDirectionsOrder = new()
+        {
+            EdgeDirection.Top,
+            EdgeDirection.TopRight,
+            EdgeDirection.BottomRight,
+            EdgeDirection.Bottom,
+            EdgeDirection.BottomLeft,
+            EdgeDirection.TopLeft,
+        };
+
+        public IEnumerable<Cell> GetNeighbors()
+        {
+            foreach (var edge in defaultDirectionsOrder)
+            {
+                var hex = GetNeighbor(edge);
+                if (hex != null)
+                    yield return hex;
+            }
         }
 
         public bool TryGetDirection((int, int) xy, out EdgeDirection edgeDirection)

@@ -119,6 +119,12 @@
                                     <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196633377280000)" />
                                 </Bindings>
                             </ui:ListView>
+                            <ui:MultiColumnListView data-source-path="plannedPath" binding-source-selection-mode="AutoAssign" header-title="Planned Path" show-foldout-header="true">
+                                <ui:Columns>
+                                    <ui:Column title="X" cell-template="project://database/Assets/UIDocuments/Templates/XY/XYX.uxml?fileID=9197481963319205126&amp;guid=e6f56269358ebb74080f0357091b0a52&amp;type=3#XYX" width="50%" />
+                                    <ui:Column title="Y" cell-template="project://database/Assets/UIDocuments/Templates/XY/XYY.uxml?fileID=9197481963319205126&amp;guid=4120b764c7821e34facd779fd946c21b&amp;type=3#XYY" width="50%" />
+                                </ui:Columns>
+                            </ui:MultiColumnListView>
                             <ui:Label text="Remark">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)" />

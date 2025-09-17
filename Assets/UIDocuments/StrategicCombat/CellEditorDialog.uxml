@@ -1,0 +1,86 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="StrategicCombatCore.Cell+&lt;&gt;c, Assembly-CSharp" class="panel-dialog">
+        <ui:Label text="Cell Editor" class="title" />
+        <ui:VisualElement data-source-type="StrategicCombatCore.Cell, Assembly-CSharp" style="flex-grow: 1;">
+            <ui:TabView>
+                <ui:Tab label="Basic">
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:Label text="brief">
+                            <Bindings>
+                                <ui:DataBinding property="text" data-source-path="brief" binding-mode="ToTarget" />
+                            </Bindings>
+                        </ui:Label>
+                    </ui:VisualElement>
+                </ui:Tab>
+                <ui:Tab label="Control">
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                            <ui:Label text="Cell" />
+                            <ui:TextField enabled="false" style="flex-grow: 1;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="sideNameHex" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:TextField>
+                            <ui:Button text="Set" name="SideObjectIdHexButton" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                            <ui:Label text="Top" />
+                            <ui:TextField enabled="false" style="flex-grow: 1;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="sideNameTop" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:TextField>
+                            <ui:Button text="Set" name="SideObjectIdTopButton" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                            <ui:Label text="Top Right" />
+                            <ui:TextField enabled="false" style="flex-grow: 1;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="sideNameTopRight" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:TextField>
+                            <ui:Button text="Set" name="SideObjectIdTopRightButton" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                            <ui:Label text="Bottom Right" />
+                            <ui:TextField enabled="false" style="flex-grow: 1;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="sideNameBottomRight" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:TextField>
+                            <ui:Button text="Set" name="SideObjectIdBottomRightButton" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                            <ui:Label text="Bottom" />
+                            <ui:TextField enabled="false" style="flex-grow: 1;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="sideNameBottom" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:TextField>
+                            <ui:Button text="Set" name="SideObjectIdBottomButton" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                            <ui:Label text="Bottom Left" />
+                            <ui:TextField enabled="false" style="flex-grow: 1;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="sideNameBottomLeft" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:TextField>
+                            <ui:Button text="Set" name="SideObjectIdBottomLeftButton" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                            <ui:Label text="Top Left" />
+                            <ui:TextField enabled="false" style="flex-grow: 1;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="sideNameTopLeft" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:TextField>
+                            <ui:Button text="Set" name="SideObjectIdTopLeftButton" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:Tab>
+            </ui:TabView>
+        </ui:VisualElement>
+        <ui:Button text="Confirm" name="ConfirmButton" />
+    </ui:VisualElement>
+</ui:UXML>

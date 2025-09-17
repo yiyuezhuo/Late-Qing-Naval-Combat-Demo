@@ -19,6 +19,7 @@ namespace StrategicCombatCore
         public StyleBackground leaderPortrait => EntityManager.Instance.Get<Leader>(objectId)?.portraitReference?.pictureStyleBackground ?? null;
     }
 
+
     public partial class Cell
     {
         [CreateProperty]
@@ -29,6 +30,28 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public int cellInfoGroupCount => StrategicGroupReferences?.Count ?? 0;
+
+        [CreateProperty]
+        public string sideNameHex => EntityManager.Instance.Get<SideState>(sideObjectIdHex)?.name?.mergedName ?? "";
+
+        [CreateProperty]
+        public string sideNameTop => EntityManager.Instance.Get<SideState>(sideObjectIdTop)?.name?.mergedName ?? "";
+
+        [CreateProperty]
+        public string sideNameTopRight => EntityManager.Instance.Get<SideState>(sideObjectIdTopRight)?.name?.mergedName ?? "";
+
+        [CreateProperty]
+        public string sideNameBottomRight => EntityManager.Instance.Get<SideState>(sideObjectIdBottomRight)?.name?.mergedName ?? "";
+
+        [CreateProperty]
+        public string sideNameBottom => EntityManager.Instance.Get<SideState>(sideObjectIdBottom)?.name?.mergedName ?? "";
+
+        [CreateProperty]
+        public string sideNameBottomLeft => EntityManager.Instance.Get<SideState>(sideObjectIdBottomLeft)?.name?.mergedName ?? "";
+
+        [CreateProperty]
+        public string sideNameTopLeft => EntityManager.Instance.Get<SideState>(sideObjectIdTopLeft)?.name?.mergedName ?? "";
+
     }
 
     public static class StyleConstants

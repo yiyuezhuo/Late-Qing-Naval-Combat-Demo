@@ -68,6 +68,15 @@ namespace StrategicCombatCore
             }
         }
     }
+    
+    public class XY
+    {
+        [XmlAttribute]
+        public int x;
+
+        [XmlAttribute]
+        public int y;
+    }
 
     public partial class StrategicGroup : IObjectIdLabeled, IStrategicGroupMemberReferenceable
     {
@@ -148,7 +157,7 @@ namespace StrategicCombatCore
         // public List<StrategicGroupMemberReference> subordinatesInCommandOfChain = new();
 
         // public string strategicGroupId;
-        public StrategicGroupReference strategicGroupReference{ get; set; } = new();
+        public StrategicGroupReference strategicGroupReference { get; set; } = new();
 
         public SideState side => StrategicGameState.Instance.countryToSideStateMap.GetValueOrDefault(country);
         // public HexInfo hexInfo => StrategicGameState.Instance.hexInfoMap.GetValueOrDefault((x, y));
@@ -169,7 +178,9 @@ namespace StrategicCombatCore
 
         public void SetStrategicGroupReference(StrategicGroup group) => IStrategicGroupMemberReferenceable.SetStrategicGroupReference(this, group);
 
-        public string remark;
+        public string remark; // Referenced by UITK
+
+        public List<XY> plannedPath = new();
 
         public static Dictionary<StrategicUnitSize, string> sizeStrMap = new()
         {

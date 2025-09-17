@@ -4,13 +4,17 @@ using TMPro;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
-using UnityEngine.UIElements;
 
 using StrategicCombatCore;
-using MathNet.Numerics.Integration;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
-using Unity.VisualScripting;
 using CoreUtils;
+
+public enum CellLabelDisplayMode
+{
+    None,
+    Label,
+    XY,
+    Coast
+}
 
 public class HexMapShower : SingletonDocument<HexMapShower>
 {
@@ -24,6 +28,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
     public Transform riverContainerTransform;
     public Transform strategicGroupIconTransform;
     public Transform sideFlagContainerTransform;
+    public Transform cellLabelContainerTransform;
 
     public GameObject locationLabelPrefab;
     public GameObject roadPrefab;
@@ -31,8 +36,11 @@ public class HexMapShower : SingletonDocument<HexMapShower>
     public GameObject riverPrefab;
     public GameObject strategicGroupIconPrefab;
     public GameObject sideFlagPrefab;
+    public GameObject cellLabelPrefab;
 
     public SpriteRenderer mapRenderer;
+
+    public LineRenderer pathLineRenderer;
 
     bool _showReferenceMap;
     public bool showReferenceMap
@@ -90,6 +98,21 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         }
     }
 
+    CellLabelDisplayMode _cellLabelDisplayMode;
+    public CellLabelDisplayMode cellLabelDisplayMode
+    {
+        get => _cellLabelDisplayMode;
+        set
+        {
+            if (value != _cellLabelDisplayMode)
+            {
+                _cellLabelDisplayMode = value;
+                // Refresh();
+
+            }
+        }
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -134,7 +157,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         );
     }
 
-    void BindHexCrossLineRenderers(Transform containerTransform, GameObject prefab, List<(Cell, Cell, EdgeDirection)> cellPairs, float z=0, float xOffset=0, float yOffset=0)
+    void BindHexCrossLineRenderers(Transform containerTransform, GameObject prefab, List<(Cell, Cell, EdgeDirection)> cellPairs, float z = 0, float xOffset = 0, float yOffset = 0)
     {
         Utils.SyncTransformViewerLength(containerTransform, cellPairs.Count, prefab);
 
@@ -152,7 +175,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
             lineRenderer.positionCount = 2;
             var p0 = controlledRenderer.transform.TransformPoint(xf1 + xOffset / width, yf1 + yOffset / height, z);
             var p1 = controlledRenderer.transform.TransformPoint(xf2 + xOffset / width, yf2 + yOffset / height, z);
-            lineRenderer.SetPositions(new Vector3[2]{p0, p1});
+            lineRenderer.SetPositions(new Vector3[2] { p0, p1 });
             // lineRenderer.SetPositions(new Vector3[2]{
             //     new Vector3(xf1 + xOffset / width, yf1 + yOffset / height, z),
             //     new Vector3(xf2 + xOffset / width, yf2 + yOffset / height, z)
@@ -180,7 +203,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
             lineRenderer.positionCount = 2;
             var p0 = controlledRenderer.transform.TransformPoint(xf + dx1, yf + dy1, z);
             var p1 = controlledRenderer.transform.TransformPoint(xf + dx2, yf + dy2, z);
-            lineRenderer.SetPositions(new Vector3[2]{p0, p1});
+            lineRenderer.SetPositions(new Vector3[2] { p0, p1 });
         }
     }
 
@@ -378,6 +401,20 @@ public class HexMapShower : SingletonDocument<HexMapShower>
 
         var independentStrategicGroups = StrategicGameState.Instance.GetIndependentStrategicGroups().ToList();
         BindStrategicGroupIcons(strategicGroupIconTransform, strategicGroupIconPrefab, independentStrategicGroups);
+
+        var selectedGroup = StrategicGameManager.Instance.lastSelectedStrategicGroup;
+        if (selectedGroup != null)
+        {
+            var positions = selectedGroup.plannedPath.Select(xy =>
+            {
+                var (xf, yf) = CellXYToLocalXY(xy.x, xy.y);
+                var pos = controlledRenderer.transform.TransformPoint(xf, yf, 0);
+                return new Vector3(pos.x, pos.y, 0);
+            }).ToArray();
+
+            pathLineRenderer.positionCount = positions.Length;
+            pathLineRenderer.SetPositions(positions);
+        }
     }
 
     // void OnSideFlagsUpdated(object sender, EventArgs args)
@@ -506,7 +543,7 @@ public class HexMapShower : SingletonDocument<HexMapShower>
             cellViewer.flagRenderer.transform.position = new Vector3(vec.x, vec.y, 0);
         }
 
-        RefreshSideFlags(); // SideState may not be ready here, so StrategicGameManager will require an extra call.
+        RefreshSideFlags(); // SideState may not be ready here, so StrategicGameManager will require an extra call in the startup.
         // foreach (var (xy, cellViewer) in cellViewerMap)
         // {
         //     // Performance Issue?
@@ -540,11 +577,14 @@ public class HexMapShower : SingletonDocument<HexMapShower>
 
         var hexSideStateObjectId = StrategicGameState.Instance.cellMatrix[x, y].sideObjectIdHex;
         // var hexSideStateObjectId = "dd43c3f3-1a02-46ca-b287-4ac069c23218";
-        if (hexSideStateObjectId == null)
-            return;
+        // if (hexSideStateObjectId == null)
+        //     return;
         var sideState = EntityManager.Instance.Get<SideState>(hexSideStateObjectId);
         if (sideState == null || sideState.countries.Count == 0)
+        {
+            cellViewer.flagRenderer.sprite = null;
             return;
+        }
         var name = sideState.countries[0].ToString();
         var path = $"{Application.streamingAssetsPath}/Pictures/Flags/{name}.png";
         // var path = $"{Application.streamingAssetsPath}/Pictures/Flags/Japan.png";

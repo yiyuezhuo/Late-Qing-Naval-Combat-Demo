@@ -2,6 +2,7 @@
 using NavalCombatCore;
 using Unity.Properties;
 using CoreUtils;
+using System;
 
 public class GamePreference
 {
@@ -27,11 +28,20 @@ public class GamePreference
     public bool showUnitLabel = true;
     public bool showDamagePointBar = true;
 
+    public event EventHandler shortLabelLanguageTypeChanged;
+
     [CreateProperty]
     public LanguageType shortLabelLanguageType
     {
         get => GlobalString.shortMode;
-        set => GlobalString.shortMode = value;
+        set
+        {
+            if (value != GlobalString.shortMode)
+            {
+                GlobalString.shortMode = value;
+                shortLabelLanguageTypeChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
     }
 
     [CreateProperty]

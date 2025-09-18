@@ -123,6 +123,19 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
                 StrategicGameManager.Instance.currentSideStateObjectId = sideState?.objectId;
             });
         };
+
+        root.Q<Button>("Advance1HourButton").clicked += () =>
+        {
+            StrategicGameState.Instance.Advance1Hour();
+        };
+
+        root.Q<Button>("Advance1DayButton").clicked += () =>
+        {
+            for (int i = 0; i < 24; i++)
+            {
+                StrategicGameState.Instance.Advance1Hour();
+            }
+        };
     }
 
     void DoTPSGeoreferencing()

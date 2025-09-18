@@ -16,6 +16,7 @@ using UnityEngine.SceneManagement;
 using CoreUtils;
 using StrategicCombatCore;
 using NavalCombatCore;
+using YYZ.PathFinding;
 
 
 public enum StrategicMapEditMode
@@ -29,6 +30,7 @@ public enum StrategicMapEditMode
     PaintHexPairFeatureEnd,
     DeleteHexPairFeatureBegin,
     DeleteHexPairFeatureEnd,
+    ToggleCoast,
     WaitOneshotCellClickCallback,
 }
 
@@ -146,6 +148,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             }));
         }
     }
+
+
+    // public override void OnDestroy()
+    // {
+    //     base.OnDestroy();
+    // }
 
     public void PrepareReturnFromNavalGame()
     {
@@ -326,6 +334,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         //         Debug.Log($"hitInfo.collider={hitInfo.collider}");
         //     }
         // }
+        var controlPressing = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+        var altPressing = Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt);
 
         if (!EventSystem.current.IsPointerOverGameObject())
         {
@@ -366,7 +376,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 }
                 else
                 {
-                    
+
 
                     var worldPoint = cam.ScreenToWorldPoint(Input.mousePosition);
 
@@ -409,11 +419,72 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                     mapEditMode = StrategicMapEditMode.Select;
                 });
             }
-            if (Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(KeyCode.M) && altPressing)
             {
                 StartToEditMove();
             }
+            if (Input.GetKeyDown(KeyCode.M) && !altPressing)
+            {
+                StartToMakeNewMove();
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                StartToAppendMove();
+            }
         }
+    }
+
+    public void StartToAppendMove()
+    {
+        ScheduleOneshotCellClickCallback(cell =>
+        {
+            var strategicGroup = lastSelectedStrategicGroup;
+
+            var p = strategicGroup.plannedPath;
+            var appending = p.Count >= 2;
+            var srcCell = appending ? StrategicGameState.Instance.cellMatrix[p[^1].x, p[^1].y] : strategicGroup.cell;
+            var dstCell = cell;
+
+            IGraphEnumerable<Cell> graph = strategicGroup.IsArmy() ? new DynamicCellGraphArmy() : new DynamicCellGraphNavy();
+
+            var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
+            if (appending)
+            {
+                strategicGroup.plannedPath.AddRange(pathCells.Skip(1).Select(c => new XY() { x = c.x, y = c.y }));
+            }
+            else
+            {
+                strategicGroup.plannedPath.Clear();
+                strategicGroup.plannedPath.AddRange(pathCells.Select(c => new XY() { x = c.x, y = c.y }));
+                strategicGroup.moveProgressionKm = 0;
+            }
+
+            Debug.Log("Append path");
+        });
+    }
+
+    public void StartToMakeNewMove()
+    {
+        ScheduleOneshotCellClickCallback(cell =>
+        {
+            var strategicGroup = lastSelectedStrategicGroup;
+            // TODO: Set PlannedPath
+            if (strategicGroup.deployState == StrategicGroup.DeployState.Independent)
+            {
+                var srcCell = strategicGroup.cell;
+                var dstCell = cell;
+
+                IGraphEnumerable<Cell> graph = strategicGroup.IsArmy() ? new DynamicCellGraphArmy() : new DynamicCellGraphNavy();
+
+                var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
+                strategicGroup.plannedPath.Clear();
+                strategicGroup.plannedPath.AddRange(pathCells.Select(c => new XY() { x = c.x, y = c.y }));
+                strategicGroup.moveProgressionKm = 0;
+
+                Debug.Log("Set path");
+            }
+
+        });
     }
 
     public void StartToEditMove()
@@ -471,31 +542,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
             Debug.Log($"PaintHexControlSide({cellXY.x}, {cellXY.y}, {currentTerrainType})");
         }
+        if (mapEditMode == StrategicMapEditMode.ToggleCoast)
+        {
+            StrategicGameState.Instance.ToggleCoast(cellXY.x, cellXY.y);
 
-        // if (mapEditMode == StrategicMapEditMode.CreateOrEditLabel)
-        // {
-        //     var label = StrategicGameState.Instance.labels.FirstOrDefault(l => l.x == cellXY.x && l.y == cellXY.y);
-        //     if (label == null)
-        //     {
-        //         label = new StrategicLocationLabel
-        //         {
-        //             x = cellXY.x,
-        //             y = cellXY.y,
-        //             name = new()
-        //         };
-        //         StrategicGameState.Instance.labels.Add(label);
-        //     }
-
-        //     DialogRoot.Instance.PopupLocationLabelDialog(label);
-
-        //     // Launch temp dialog to edit global string
-        //     Debug.Log($"CreateOrEditLabel({cellXY.x}, {cellXY.y}, {currentTerrainType})");
-        // }
-
-        // if (mapEditMode == StrategicMapEditMode.DeleteLabel)
-        // {
-        //     StrategicGameState.Instance.labels.RemoveAll(l => l.x == cellXY.x && l.y == cellXY.y);
-        // }
+            Debug.Log($"ToggleCoast({cellXY.x}, {cellXY.y})");
+        }
 
         if (mapEditMode == StrategicMapEditMode.PaintHexPairFeatureBegin)
         {
@@ -527,4 +579,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             }
         }
     }
+
+    // public void Advance1Hour()
+    // {
+    //     StrategicGameState.Instance.Advance1Hour(1);
+    // }
 }

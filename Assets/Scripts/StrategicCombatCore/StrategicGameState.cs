@@ -151,6 +151,14 @@ namespace StrategicCombatCore
             mapCellUpdated?.Invoke(this, (x, y));
         }
 
+        public void ToggleCoast(int x, int y)
+        {
+            var cell = cellMatrix[x, y];
+            cell.IsCoast = !cell.IsCoast;
+
+            mapCellUpdated?.Invoke(this, (x, y));
+        }
+
         public void UpdateTo(StrategicGameState newInstance)
         {
             // terrainMatrix = newInstance.terrainMatrix;
@@ -238,6 +246,48 @@ namespace StrategicCombatCore
 
             // ResetAndRegisterAll();
         }
+
+    public void Advance1Hour()
+    {
+        scenarioState.dateTime.AddHours(1);
+
+        foreach (var strategicGroup in strategicGroups)
+        {
+            if (strategicGroup.deployState == StrategicGroup.DeployState.Independent)
+            {
+                if (strategicGroup.plannedPath.Count == 0)
+                {
+                    strategicGroup.moveProgressionKm = 0;
+                }
+                else
+                {
+                    var speedKmPerHour = strategicGroup.GetSpeedKmPerHour();
+                    var moveKmCap = speedKmPerHour * 1;
+                    while (moveKmCap > 0 && strategicGroup.plannedPath.Count >= 2)
+                    {
+                        var nextDistKm = 50 - strategicGroup.moveProgressionKm;
+                        if (moveKmCap < nextDistKm)
+                        {
+                            strategicGroup.moveProgressionKm += moveKmCap;
+                            moveKmCap = 0;
+                        }
+                        else
+                        {
+                            moveKmCap -= nextDistKm;
+                            strategicGroup.plannedPath.RemoveAt(0);
+                            strategicGroup.DeployToXY(strategicGroup.plannedPath[0].x, strategicGroup.plannedPath[0].y);
+                            strategicGroup.moveProgressionKm = 0;
+                            if (strategicGroup.plannedPath.Count < 2)
+                            {
+                                strategicGroup.plannedPath.Clear();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 
         public override void ResetAndRegisterAll()
         {

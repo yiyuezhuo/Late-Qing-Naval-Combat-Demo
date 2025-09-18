@@ -180,6 +180,8 @@ namespace StrategicCombatCore
 
         public string remark; // Referenced by UITK
 
+        public float moveProgressionKm = 0;
+
         public List<XY> plannedPath = new();
 
         public static Dictionary<StrategicUnitSize, string> sizeStrMap = new()
@@ -201,6 +203,9 @@ namespace StrategicCombatCore
         {
             return $"StrategicGroup({name.GetMergedName()})";
         }
+
+        public bool IsNavy() => type == Type.Fleet;
+        public bool IsArmy() => type != Type.Fleet;
 
         public void DeployToXY(int toX, int toY)
         {
@@ -274,6 +279,15 @@ namespace StrategicCombatCore
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
             yield break;
+        }
+
+        public float GetSpeedKmPerHour()
+        {
+            if (IsArmy())
+            {
+                return 1; // 1km/h for general infantry
+            }
+            return 10; // 10km/h, cruise speed for ships
         }
     }
 }

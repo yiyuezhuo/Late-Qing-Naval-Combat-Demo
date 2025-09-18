@@ -90,27 +90,9 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
         };
 
         var moveButton = root.Q<Button>("MoveButton");
-        moveButton.clicked += () =>
-        {
-            StrategicGameManager.Instance.ScheduleOneshotCellClickCallback(cell =>
-            {
-                if (Utils.TryResolveCurrentValueForBinding(moveButton, out StrategicGroup strategicGroup))
-                {
-                    // TODO: Set PlannedPath
-                    if (strategicGroup.deployState == StrategicGroup.DeployState.Independent)
-                    {
-                        var srcCell = strategicGroup.cell;
-                        var dstCell = cell;
-                        var graph = new DynamicCellGraph();
-                        var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
-                        strategicGroup.plannedPath.Clear();
-                        strategicGroup.plannedPath.AddRange(pathCells.Select(c => new XY() { x = c.x, y = c.y }));
+        moveButton.clicked += StrategicGameManager.Instance.StartToMakeNewMove;
 
-                        Debug.Log("Set path");
-                    }
-                }
-            });
-        };
+        root.Q<Button>("MoveAppendButton").clicked += StrategicGameManager.Instance.StartToAppendMove;
     }
 
     public void TryGotoTacticalNavalCombat(Cell cell)

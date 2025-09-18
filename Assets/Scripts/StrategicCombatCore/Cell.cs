@@ -109,8 +109,18 @@ namespace StrategicCombatCore
         public GlobalString Label; // nullable
                                    // public bool ShouldSerializeLabel() => Label != null;
 
+        [XmlAttribute("IsCoast")]
         public bool IsCoast;
         public bool ShouldSerializeIsCoast() => IsCoast;
+
+        // Move XmlElement to XmlAttribute hack
+        // [XmlElement("IsCoast")]
+        // public bool IsCoast2
+        // {
+        //     get => IsCoast;
+        //     set => IsCoast = value;
+        // }
+        // public bool ShouldSerializeIsCoast2() => false;
 
         public bool ShouldSerializeGroundControlPoint() => GroundControlPoint;
 
@@ -174,6 +184,9 @@ namespace StrategicCombatCore
         {
             return EntityManager.Instance.Get<SideState>(sideObjectIdHex);
         }
+
+        public bool IsArmyPassable() => IsCoast || (terrain != TerrainType.ShallowWater && terrain != TerrainType.DeepWater);
+        public bool IsNavyPassable() => IsCoast || terrain == TerrainType.ShallowWater || terrain == TerrainType.DeepWater;
 
         public SideState GetEdgeSide(EdgeDirection edgeDirection)
         {

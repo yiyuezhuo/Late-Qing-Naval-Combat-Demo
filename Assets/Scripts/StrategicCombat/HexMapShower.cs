@@ -16,19 +16,20 @@ public enum CellLabelDisplayMode
     Coast
 }
 
-public class HexMapShower : SingletonDocument<HexMapShower>
+public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
 {
     public Renderer controlledRenderer;
     Texture2D terrainTypeTexture;
     Material material;
 
-    public Transform labelContainerTransform;
+    // public Transform labelContainerTransform;
     public Transform roadContainerTransform;
     public Transform railroadContainerTransform;
     public Transform riverContainerTransform;
     public Transform strategicGroupIconTransform;
     public Transform sideFlagContainerTransform;
     public Transform cellLabelContainerTransform;
+    public Transform pathLineContainerTransform;
 
     public GameObject locationLabelPrefab;
     public GameObject roadPrefab;
@@ -37,10 +38,11 @@ public class HexMapShower : SingletonDocument<HexMapShower>
     public GameObject strategicGroupIconPrefab;
     public GameObject sideFlagPrefab;
     public GameObject cellLabelPrefab;
+    public GameObject pathLinePrefab;
 
     public SpriteRenderer mapRenderer;
 
-    public LineRenderer pathLineRenderer;
+    // public LineRenderer pathLineRenderer;
 
     bool _showReferenceMap;
     public bool showReferenceMap
@@ -113,9 +115,9 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         }
     }
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
+        // base.Awake();
 
         var gameState = StrategicGameState.Instance;
         gameState.mapRebuilt += OnMapRebuilt;
@@ -123,16 +125,28 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         gameState.edgeFeatureUpdated += OnEdgeFeatureUpdated;
 
         sideFlagContainerTransform.gameObject.SetActive(showSideFlag);
+
+        GamePreference.Instance.shortLabelLanguageTypeChanged += OnShortLabelLanguageTypeChanged;
     }
 
     public override void OnDestroy()
     {
-        base.Awake();
+        base.OnDestroy();
 
         var gameState = StrategicGameState.Instance;
         gameState.mapRebuilt -= OnMapRebuilt;
         gameState.mapCellUpdated -= OnMapCellUpdated;
         gameState.edgeFeatureUpdated -= OnEdgeFeatureUpdated;
+
+        GamePreference.Instance.shortLabelLanguageTypeChanged -= OnShortLabelLanguageTypeChanged;
+    }
+
+    void OnShortLabelLanguageTypeChanged(object sender, EventArgs e)
+    {
+        if (cellLabelDisplayMode == CellLabelDisplayMode.Label)
+        {
+            RefreshCellLabelDisplayMode();
+        }
     }
 
     void OnEdgeFeatureUpdated(object sender, EventArgs args)
@@ -404,19 +418,38 @@ public class HexMapShower : SingletonDocument<HexMapShower>
         var independentStrategicGroups = StrategicGameState.Instance.GetIndependentStrategicGroups().ToList();
         BindStrategicGroupIcons(strategicGroupIconTransform, strategicGroupIconPrefab, independentStrategicGroups);
 
+        var pathLineActiveStrategicGroups = new List<StrategicGroup>();
+
         var selectedGroup = StrategicGameManager.Instance.lastSelectedStrategicGroup;
         if (selectedGroup != null)
         {
-            var positions = selectedGroup.plannedPath.Select(xy =>
-            {
-                var (xf, yf) = CellXYToLocalXY(xy.x, xy.y);
-                var pos = controlledRenderer.transform.TransformPoint(xf, yf, 0);
-                return new Vector3(pos.x, pos.y, 0);
-            }).ToArray();
-
-            pathLineRenderer.positionCount = positions.Length;
-            pathLineRenderer.SetPositions(positions);
+            pathLineActiveStrategicGroups.Add(selectedGroup);
         }
+
+        Utils.SyncTransformViewerLength(pathLineContainerTransform, pathLineActiveStrategicGroups.Count, pathLinePrefab);
+        var pathLineControllers = pathLineContainerTransform.GetComponentsInChildren<PathLineController>();
+
+        for (int i = 0; i < pathLineActiveStrategicGroups.Count; i++)
+        {
+            var group = pathLineActiveStrategicGroups[i];
+            var controller = pathLineControllers[i];
+            var progressPercent = group.moveProgressionKm / 50;
+            controller.Sync(group.plannedPath, progressPercent);
+        }
+
+        // var selectedGroup = StrategicGameManager.Instance.lastSelectedStrategicGroup;
+        // if (selectedGroup != null)
+        // {
+        //     var positions = selectedGroup.plannedPath.Select(xy =>
+        //     {
+        //         var (xf, yf) = CellXYToLocalXY(xy.x, xy.y);
+        //         var pos = controlledRenderer.transform.TransformPoint(xf, yf, 0);
+        //         return new Vector3(pos.x, pos.y, 0);
+        //     }).ToArray();
+
+        //     pathLineRenderer.positionCount = positions.Length;
+        //     pathLineRenderer.SetPositions(positions);
+        // }
     }
 
     // void OnSideFlagsUpdated(object sender, EventArgs args)

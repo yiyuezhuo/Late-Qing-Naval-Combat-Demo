@@ -413,7 +413,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 {
                     DialogRoot.Instance.PopupStrategicGroupPickerDialog(group =>
                     {
-                        group.DeployToXY(cell.x, cell.y);
+                        group.MoveToXY(cell.x, cell.y, false);
                     });
                     // Debug.Log("ScheduleOneshotCellClickCallback"); // Popup Dialog to select a group.
                     mapEditMode = StrategicMapEditMode.Select;
@@ -493,7 +493,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         {
             if (lastSelectedStrategicGroup != null)
             {
-                lastSelectedStrategicGroup.DeployToXY(cell.x, cell.y);
+                lastSelectedStrategicGroup.MoveToXY(cell.x, cell.y, false);
             }
         });
     }

@@ -200,7 +200,57 @@ namespace StrategicCombatCore
                 EdgeDirection.TopLeft => sideObjectIdTopLeft,
                 _ => sideObjectIdHex
             };
+            if (edgeObjectId == null)
+            {
+                edgeObjectId = sideObjectIdHex;
+            }
             return EntityManager.Instance.Get<SideState>(edgeObjectId);
+        }
+
+        public void RefreshControlState()
+        {
+            var sides = StrategicGroupReferences.Select(r => r.Get().side).ToHashSet();
+
+            // If hex is not in conflict, reset edge control state
+            if (sides.Count <= 1)
+            {
+                sideObjectIdTop = null;
+                sideObjectIdTopRight = null;
+                sideObjectIdBottomRight = null;
+                sideObjectIdBottom = null;
+                sideObjectIdBottomLeft = null;
+                sideObjectIdTopLeft = null;
+            }
+            // if hex is controlled by only 1 side, update its cell control state.
+            if (sides.Count == 1)
+            {
+                sideObjectIdHex = sides.First().objectId;
+            }
+        }
+
+        public void SetEdgeSide(EdgeDirection edgeDirection, SideState sideState)
+        {
+            switch (edgeDirection)
+            {
+                case EdgeDirection.Top:
+                    sideObjectIdTop = sideState.objectId;
+                    break;
+                case EdgeDirection.TopRight:
+                    sideObjectIdTopRight = sideState.objectId;
+                    break;
+                case EdgeDirection.BottomRight:
+                    sideObjectIdBottomRight = sideState.objectId;
+                    break;
+                case EdgeDirection.Bottom:
+                    sideObjectIdBottom = sideState.objectId;
+                    break;
+                case EdgeDirection.BottomLeft:
+                    sideObjectIdBottomLeft = sideState.objectId;
+                    break;
+                case EdgeDirection.TopLeft:
+                    sideObjectIdTopLeft = sideState.objectId;
+                    break;
+            }
         }
 
         // public List<StrategicGroupReference> serializedStrategicGroupReferences

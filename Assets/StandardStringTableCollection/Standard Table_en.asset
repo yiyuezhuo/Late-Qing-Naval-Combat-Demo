@@ -1435,7 +1435,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 360963381039104
-    m_Localized: Move (Edit, M)
+    m_Localized: Move (Edit, Alt+M)
     m_Metadata:
       m_Items: []
   - m_Id: 361652219973632

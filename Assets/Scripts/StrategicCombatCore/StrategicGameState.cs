@@ -247,46 +247,46 @@ namespace StrategicCombatCore
             // ResetAndRegisterAll();
         }
 
-    public void Advance1Hour()
-    {
-        scenarioState.dateTime.AddHours(1);
-
-        foreach (var strategicGroup in strategicGroups)
+        public void Advance1Hour()
         {
-            if (strategicGroup.deployState == StrategicGroup.DeployState.Independent)
+            scenarioState.dateTime.AddHours(1);
+
+            foreach (var strategicGroup in strategicGroups)
             {
-                if (strategicGroup.plannedPath.Count == 0)
+                if (strategicGroup.deployState == StrategicGroup.DeployState.Independent)
                 {
-                    strategicGroup.moveProgressionKm = 0;
-                }
-                else
-                {
-                    var speedKmPerHour = strategicGroup.GetSpeedKmPerHour();
-                    var moveKmCap = speedKmPerHour * 1;
-                    while (moveKmCap > 0 && strategicGroup.plannedPath.Count >= 2)
+                    if (strategicGroup.plannedPath.Count == 0)
                     {
-                        var nextDistKm = 50 - strategicGroup.moveProgressionKm;
-                        if (moveKmCap < nextDistKm)
+                        strategicGroup.moveProgressionKm = 0;
+                    }
+                    else
+                    {
+                        var speedKmPerHour = strategicGroup.GetSpeedKmPerHour();
+                        var moveKmCap = speedKmPerHour * 1;
+                        while (moveKmCap > 0 && strategicGroup.plannedPath.Count >= 2)
                         {
-                            strategicGroup.moveProgressionKm += moveKmCap;
-                            moveKmCap = 0;
-                        }
-                        else
-                        {
-                            moveKmCap -= nextDistKm;
-                            strategicGroup.plannedPath.RemoveAt(0);
-                            strategicGroup.DeployToXY(strategicGroup.plannedPath[0].x, strategicGroup.plannedPath[0].y);
-                            strategicGroup.moveProgressionKm = 0;
-                            if (strategicGroup.plannedPath.Count < 2)
+                            var nextDistKm = 50 - strategicGroup.moveProgressionKm;
+                            if (moveKmCap < nextDistKm)
                             {
-                                strategicGroup.plannedPath.Clear();
+                                strategicGroup.moveProgressionKm += moveKmCap;
+                                moveKmCap = 0;
+                            }
+                            else
+                            {
+                                moveKmCap -= nextDistKm;
+                                strategicGroup.plannedPath.RemoveAt(0);
+                                strategicGroup.MoveToXY(strategicGroup.plannedPath[0].x, strategicGroup.plannedPath[0].y, true);
+                                strategicGroup.moveProgressionKm = 0;
+                                if (strategicGroup.plannedPath.Count < 2)
+                                {
+                                    strategicGroup.plannedPath.Clear();
+                                }
                             }
                         }
                     }
                 }
             }
         }
-    }
 
 
         public override void ResetAndRegisterAll()

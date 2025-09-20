@@ -207,13 +207,14 @@ namespace StrategicCombatCore
         public bool IsNavy() => type == Type.Fleet;
         public bool IsArmy() => type != Type.Fleet;
 
-        public void DeployToXY(int toX, int toY)
+        // From Vacuum or to vacuum, or move to other cell through vacuum.
+        public void MoveToXY(int toX, int toY, bool moveThroughEdge)
         {
-            // var hexInfoMap = StrategicGameState.Instance.hexInfoMap;
+            var prevCell = cell;
+            var toCell = StrategicGameState.Instance.cellMatrix[toX, toY];
 
             if (deployState == DeployState.Independent && x != -1 && y != -1)
             {
-                // cellInfo.strategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
                 cell.StrategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
             }
 
@@ -222,17 +223,45 @@ namespace StrategicCombatCore
             y = toY;
 
             cell.StrategicGroupReferences.Add(new() { referenceId = objectId });
-            // if (!hexInfoMap.TryGetValue((x, y), out cellInfo))
-            // {
-            //     cellInfo = hexInfoMap[(x, y)] = new();
-            //     cellInfo.x = x;
-            //     cellInfo.y = y;
-            // }
-            // cellInfo.strategicGroupReferences.Add(new() { referenceId = objectId });
+
+            if (moveThroughEdge && toCell.TryGetDirection(prevCell, out var edge))
+            {
+                toCell.SetEdgeSide(edge, side);
+            }
+            toCell.RefreshControlState();
+            prevCell.RefreshControlState();
+            StrategicGameState.Instance.InvokeMapCellUpdated(toCell.x, toCell.y);
+            StrategicGameState.Instance.InvokeMapCellUpdated(prevCell.x, prevCell.y);
         }
+
+        // Move through edge. Track edge control and refresh related state.
+        // public void MoveToXY(int toX, int toY)
+        // {
+        //     var prevCell = cell;
+        //     var toCell = StrategicGameState.Instance.cellMatrix[toX, toY];
+
+        //     if (deployState == DeployState.Independent && x != -1 && y != -1)
+        //     {
+        //         cell.StrategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
+        //     }
+
+        //     deployState = DeployState.Independent;
+        //     x = toX;
+        //     y = toY;
+
+        //     cell.StrategicGroupReferences.Add(new() { referenceId = objectId });
+
+        //     toCell.RefreshControlState();
+        //     prevCell.RefreshControlState();
+        //     if (toCell.TryGetDirection(prevCell, out var edge))
+        //     {
+        //         toCell.SetEdgeSide(edge, side);
+        //     }
+        // }
 
         public void RemoveFromMap()
         {
+            var prevCell = cell;
             // var hexInfoMap = StrategicGameState.Instance.hexInfoMap;
 
             if (deployState == DeployState.Independent && x != -1 && y != -1)
@@ -243,6 +272,8 @@ namespace StrategicCombatCore
 
             independentX = -1;
             independentY = -1;
+
+            prevCell.RefreshControlState();
         }
 
         public void SetDeployState(DeployState newState)
@@ -252,11 +283,11 @@ namespace StrategicCombatCore
                 var parentGroup = strategicGroupReference.Get();
                 if (parentGroup != null)
                 {
-                    DeployToXY(parentGroup.x, parentGroup.y);
+                    MoveToXY(parentGroup.x, parentGroup.y, false);
                 }
                 else
                 {
-                    DeployToXY(0, 0);
+                    MoveToXY(0, 0, false);
                 }
             }
             else if (newState == DeployState.NotDeployed || newState == DeployState.Combined)
@@ -285,10 +316,60 @@ namespace StrategicCombatCore
         {
             if (IsArmy())
             {
-                return 1; // 1km/h for general infantry
+                var nextCell = GetPathNextCell();
+                if (nextCell != null && cell.TryGetDirection(nextCell, out var edge))
+                {
+                    if (cell.GetEdgeSide(edge).objectId != side.objectId)
+                        return 0; // edge control block
+                    return GetSpeedKmPerHour(cell, nextCell);
+                }
+                return 0;
             }
             return 10; // 10km/h, cruise speed for ships
         }
+
+        public Cell GetPathNextCell()
+        {
+            if (plannedPath.Count >= 2)
+            {
+                var nextXY = plannedPath[1];
+                return StrategicGameState.Instance.cellMatrix[nextXY.x, nextXY.y];
+            }
+            return null;
+        }
+
+        public static float GetSpeedKmPerHour(Cell src, Cell dst)
+        {
+            if (src.TryGetDirection(dst, out var edge))
+            {
+                var terrainSpeed = terrainToSpeedKmPerHour.GetValueOrDefault(dst.terrain, 1);
+                if (src.roads.Contains(edge) || src.railroads.Contains(edge))
+                {
+                    terrainSpeed = 2f;
+                }
+                return terrainSpeed;
+            }
+            return 1;
+        }
+
+        // Road/Railroad: 2
+        public static Dictionary<TerrainType, float> terrainToSpeedKmPerHour = new()
+        {
+            // {TerrainType.Clear, 1},  // 1km/h for general infantry
+            {TerrainType.Clear, 0.9f},
+            { TerrainType.Rough, 0.5f},
+            {TerrainType.Mountain, 0.3f},
+            {TerrainType.Forest, 0.5f},
+            {TerrainType.Jungle, 0.5f},
+            {TerrainType.Desert, 1f},
+            {TerrainType.Swamp, 0.3f},
+            {TerrainType.ForestRough, 0.4f},
+            {TerrainType.JungleRough, 0.4f},
+            {TerrainType.DesertRough, 0.5f},
+            {TerrainType.TropicalMountain, 0.3f},
+            {TerrainType.SandDesert, 0.3f},
+            {TerrainType.Field, 1f},
+        };
     }
 }
 

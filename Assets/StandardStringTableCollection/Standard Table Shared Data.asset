@@ -1406,7 +1406,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 360963381039104
-    m_Key: Move (Edit, M)
+    m_Key: Move (Edit, Alt+M)
     m_Metadata:
       m_Items: []
   - m_Id: 361652219973632
@@ -1679,6 +1679,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 3474825257062400
     m_Key: 'Sub Combat Resolver '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5977875414683648
+    m_Key: New Entry 1
     m_Metadata:
       m_Items: []
   m_Metadata:

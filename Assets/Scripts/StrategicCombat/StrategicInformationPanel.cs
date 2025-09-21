@@ -90,9 +90,9 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
         };
 
         var moveButton = root.Q<Button>("MoveButton");
-        moveButton.clicked += StrategicGameManager.Instance.StartToMakeNewMove;
+        moveButton.clicked += StrategicGameManager.Instance.TryToStartMakeNewMove;
 
-        root.Q<Button>("MoveAppendButton").clicked += StrategicGameManager.Instance.StartToAppendMove;
+        root.Q<Button>("MoveAppendButton").clicked += StrategicGameManager.Instance.TryToStartAppendMove;
     }
 
     public void TryGotoTacticalNavalCombat(Cell cell)

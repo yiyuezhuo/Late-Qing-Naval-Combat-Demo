@@ -214,23 +214,44 @@ namespace StrategicCombatCore
         // public IEnumerable<StrategicGroup> GetIndependentStrategicGroups() => strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent);
         public IEnumerable<StrategicGroup> GetIndependentStrategicGroups()
         {
-            // foreach (var hexInfo in hexInfoMap.Values)
-            // {
-            //     foreach (var groupRef in hexInfo.strategicGroupReferences)
-            //     {
-            //         var group = groupRef.Get();
-            //         if (group != null)
-            //             yield return group;
-            //     }
-            // }
-
-            // strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent).Select(group => group.cell).ToHashSet();
-
             foreach (var group in strategicGroups)
             {
                 if (group.deployState == StrategicGroup.DeployState.Independent)
                     yield return group;
             }
+        }
+
+        public IEnumerable<StrategicGroup> GetObservabledStrategicGroups()
+        {
+            foreach (var group in strategicGroups)
+            {
+                if (group.deployState == StrategicGroup.DeployState.Independent)
+                {
+                    if (IsGroupObservable(group))
+                        yield return group;
+                }
+            }
+        }
+
+        public bool IsGroupObservable(StrategicGroup group)
+        {
+            if (!scenarioState.enableFogOfWar)
+            {
+                return true;
+            }
+            var viewerSideId = scenarioState.fogOfWarViewerSideObjectId;
+            var groupSide = group?.side;
+            if (groupSide.objectId == viewerSideId)
+                return true;
+
+            return group.cell.GetNeighbors().Prepend(group.cell).Any(cell =>
+            {
+                if (cell.sideObjectIdHex == viewerSideId)
+                    return true;
+                if (cell.StrategicGroupReferences.Any(g => g.Get()?.side?.objectId == viewerSideId))
+                    return true;
+                return false;
+            });
         }
 
         public void UpdatePartialShipLogs(List<ShipLog> otherShipLogs)
@@ -249,7 +270,7 @@ namespace StrategicCombatCore
 
         public void Advance1Hour()
         {
-            scenarioState.dateTime.AddHours(1);
+            scenarioState.dateTime = scenarioState.dateTime.AddHours(1);
 
             foreach (var strategicGroup in strategicGroups)
             {

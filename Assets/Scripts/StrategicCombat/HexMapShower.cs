@@ -415,9 +415,14 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     {
         // UpdateLabels();
 
-        var independentStrategicGroups = StrategicGameState.Instance.GetIndependentStrategicGroups().ToList();
-        BindStrategicGroupIcons(strategicGroupIconTransform, strategicGroupIconPrefab, independentStrategicGroups);
+        // Update Independent Strategic Groups
+        // var independentStrategicGroups = StrategicGameState.Instance.GetIndependentStrategicGroups().ToList();
+        // BindStrategicGroupIcons(strategicGroupIconTransform, strategicGroupIconPrefab, independentStrategicGroups);
 
+        var observableStrategicGroups = StrategicGameState.Instance.GetObservabledStrategicGroups().ToList();
+        BindStrategicGroupIcons(strategicGroupIconTransform, strategicGroupIconPrefab, observableStrategicGroups);
+
+        // Update Path Lines
         var pathLineActiveStrategicGroups = new List<StrategicGroup>();
 
         var selectedGroup = StrategicGameManager.Instance.lastSelectedStrategicGroup;
@@ -436,57 +441,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
             var progressPercent = group.moveProgressionKm / 50;
             controller.Sync(group.plannedPath, progressPercent);
         }
-
-        // var selectedGroup = StrategicGameManager.Instance.lastSelectedStrategicGroup;
-        // if (selectedGroup != null)
-        // {
-        //     var positions = selectedGroup.plannedPath.Select(xy =>
-        //     {
-        //         var (xf, yf) = CellXYToLocalXY(xy.x, xy.y);
-        //         var pos = controlledRenderer.transform.TransformPoint(xf, yf, 0);
-        //         return new Vector3(pos.x, pos.y, 0);
-        //     }).ToArray();
-
-        //     pathLineRenderer.positionCount = positions.Length;
-        //     pathLineRenderer.SetPositions(positions);
-        // }
     }
-
-    // void OnSideFlagsUpdated(object sender, EventArgs args)
-    // {
-    //     RefreshBindSideFlags();
-    // }
-
-    // public void RefreshBindSideFlags()
-    // {
-    //     BindSideFlags(sideFlagContainerTransform, sideFlagPrefab, StrategicGameState.Instance.cellMatrix);
-    // }
-
-    // void UpdateLabels()
-    // {
-    //     var labels = StrategicGameState.Instance.labels;
-
-    //     Utils.SyncTransformViewerLength(labelContainerTransform, labels.Count, locationLabelPrefab);
-
-    //     // Bind
-    //     var texts = labelContainerTransform.GetComponentsInChildren<TMP_Text>();
-    //     var width = StrategicGameState.Instance.GetMapWidth();
-    //     var height = StrategicGameState.Instance.GetMapHeight();
-    //     for (int i = 0; i < labels.Count; i++)
-    //     {
-    //         var label = labels[i];
-    //         var text = texts[i];
-    //         // text.text = label.name.english;
-    //         text.text = label.name.GetNameFromType(GamePreference.Instance.shortLabelLanguageType);
-    //         // var dx = 0.5f;
-    //         // var dy = label.x % 2 == 0 ? 0.5f : 1f;
-    //         // text.transform.localPosition = new Vector3((label.x + dx) / width - 0.5f, (label.y + dy) / height - 0.5f, 0);
-    //         var (xf, yf) = CellXYToLocalXY(label.x, label.y);
-    //         // text.transform.localPosition = new Vector3(xf, yf, 0);
-    //         // text.transform.position = controlledRenderer.transform.TransformPoint(new Vector3(xf, yf, 0));
-    //         text.transform.position = controlledRenderer.transform.TransformPoint(xf, yf, 0);
-    //     }
-    // }
 
     public static (float, float) CellXYToLocalXY(int x, int y)
     {

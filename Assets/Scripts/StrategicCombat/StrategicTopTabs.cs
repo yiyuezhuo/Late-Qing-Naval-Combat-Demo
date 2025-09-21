@@ -136,6 +136,14 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
                 StrategicGameState.Instance.Advance1Hour();
             }
         };
+
+        root.Q<Button>("SetFogOrWarViewerButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupSideStatePickerDialog(sideState =>
+            {
+                StrategicGameState.Instance.scenarioState.fogOfWarViewerSideObjectId = sideState?.objectId;
+            });
+        };
     }
 
     void DoTPSGeoreferencing()

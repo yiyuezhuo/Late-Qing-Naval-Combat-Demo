@@ -352,23 +352,25 @@ namespace StrategicCombatCore
             return 1;
         }
 
+        static float speedBase = 0.9f;
+
         // Road/Railroad: 2
         public static Dictionary<TerrainType, float> terrainToSpeedKmPerHour = new()
         {
             // {TerrainType.Clear, 1},  // 1km/h for general infantry
-            {TerrainType.Clear, 0.9f},
-            { TerrainType.Rough, 0.5f},
-            {TerrainType.Mountain, 0.3f},
-            {TerrainType.Forest, 0.5f},
-            {TerrainType.Jungle, 0.5f},
-            {TerrainType.Desert, 1f},
-            {TerrainType.Swamp, 0.3f},
-            {TerrainType.ForestRough, 0.4f},
-            {TerrainType.JungleRough, 0.4f},
-            {TerrainType.DesertRough, 0.5f},
-            {TerrainType.TropicalMountain, 0.3f},
-            {TerrainType.SandDesert, 0.3f},
-            {TerrainType.Field, 1f},
+            {TerrainType.Clear, speedBase},
+            {TerrainType.Rough, speedBase * 0.5f},
+            {TerrainType.Mountain, speedBase * 0.3f},
+            {TerrainType.Forest, speedBase * 0.5f},
+            {TerrainType.Jungle, speedBase * 0.5f},
+            {TerrainType.Desert, speedBase},
+            {TerrainType.Swamp, speedBase * 0.3f},
+            {TerrainType.ForestRough, speedBase * 0.4f},
+            {TerrainType.JungleRough, speedBase * 0.4f},
+            {TerrainType.DesertRough, speedBase * 0.5f},
+            {TerrainType.TropicalMountain, speedBase * 0.3f},
+            {TerrainType.SandDesert, speedBase * 0.3f},
+            {TerrainType.Field, speedBase},
         };
     }
 }

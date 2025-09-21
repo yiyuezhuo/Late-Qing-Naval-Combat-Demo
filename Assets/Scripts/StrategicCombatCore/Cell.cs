@@ -338,7 +338,7 @@ namespace StrategicCombatCore
             }
             return null;
         }
-        
+
         static List<EdgeDirection> defaultDirectionsOrder = new()
         {
             EdgeDirection.Top,
@@ -392,6 +392,11 @@ namespace StrategicCombatCore
         {
             var directions = GetEdgeDirectionsFor(edgeFeatureType);
             directions.RemoveAll(d => d == edgeDirection);
+        }
+
+        public override string ToString()
+        {
+            return $"Cell({x}, {y}, {terrain})";
         }
 
         // [XmlIgnore]

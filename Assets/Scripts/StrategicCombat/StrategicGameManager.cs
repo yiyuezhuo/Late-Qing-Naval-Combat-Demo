@@ -425,17 +425,20 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             }
             if (Input.GetKeyDown(KeyCode.M) && !altPressing)
             {
-                StartToMakeNewMove();
+                TryToStartMakeNewMove();
             }
             if (Input.GetKeyDown(KeyCode.A))
             {
-                StartToAppendMove();
+                TryToStartAppendMove();
             }
         }
     }
 
-    public void StartToAppendMove()
+    public void TryToStartAppendMove()
     {
+        if (lastSelectedStrategicGroup == null)
+            return;
+
         ScheduleOneshotCellClickCallback(cell =>
         {
             var strategicGroup = lastSelectedStrategicGroup;
@@ -463,8 +466,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         });
     }
 
-    public void StartToMakeNewMove()
+    public void TryToStartMakeNewMove()
     {
+        if (lastSelectedStrategicGroup == null)
+            return;
+
         ScheduleOneshotCellClickCallback(cell =>
         {
             var strategicGroup = lastSelectedStrategicGroup;
@@ -579,6 +585,16 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             }
         }
     }
+
+    [CreateProperty]
+    public bool enableFogOfWar
+    {
+        get => StrategicGameState.Instance.scenarioState.enableFogOfWar;
+        set => StrategicGameState.Instance.scenarioState.enableFogOfWar = value;
+    }
+
+    [CreateProperty]
+    public string fogOfWarViewerSideStateName => EntityManager.Instance.Get<SideState>(StrategicGameState.Instance.scenarioState.fogOfWarViewerSideObjectId)?.name?.GetMergedName() ?? "";
 
     // public void Advance1Hour()
     // {

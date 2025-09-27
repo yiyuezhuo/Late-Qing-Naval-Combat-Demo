@@ -144,6 +144,11 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
                 StrategicGameState.Instance.scenarioState.fogOfWarViewerSideObjectId = sideState?.objectId;
             });
         };
+
+        root.Q<Button>("StrategicMissionEditorButton").clicked += () =>
+        {
+            StrategicMissionEditor.Instance.Show();
+        };
     }
 
     void DoTPSGeoreferencing()

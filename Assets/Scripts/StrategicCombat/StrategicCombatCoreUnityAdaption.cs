@@ -359,4 +359,57 @@ namespace StrategicCombatCore
         public string sideName => GetSideState()?.name?.mergedName ?? "[Undefined or Invalid]";
     }
 
+
+    public partial class LocalNavalCombatBuilder
+    {
+
+        public class LocalNavalCombatBuilderOneSide
+        {
+            public LocalNavalCombatBuilder builder;
+            public string topGroupObjectId;
+
+            public Country GetCountry(ShipGroup shipGroup)
+            {
+                foreach (var childrenObjectId in shipGroup.childrenObjectIds)
+                {
+                    var child = builder.localEntityManager.Get<IObjectIdLabeled>(childrenObjectId);
+                    if (child is ShipLog shipLog)
+                    {
+                        return shipLog.shipClass.country;
+                    }
+                    else if (child is ShipGroup subShipGroup)
+                    {
+                        var ret = GetCountry(subShipGroup);
+                        if (ret != Country.General)
+                            return ret;
+                    }
+                }
+                return Country.General;
+            }
+
+            public Country GetCountry() => GetCountry(builder.localEntityManager.Get<ShipGroup>(topGroupObjectId));
+
+            // public Leader GetLeader(ShipGroup shipGroup)
+            // {
+
+            // }
+        }
+
+
+        public LocalNavalCombatBuilderOneSide side0; // generally "left"
+        public LocalNavalCombatBuilderOneSide side1; // generally "right"
+    }
+
+    public partial class StrategicMission
+    {
+        [CreateProperty]
+        public bool isPatrol => type == MissionType.Patrol;
+
+        [CreateProperty]
+        public bool isSupply => type == MissionType.Supply;
+
+        [CreateProperty]
+        public bool isOneWayUnload => type == MissionType.OneWayUnload;
+    }
+
 }

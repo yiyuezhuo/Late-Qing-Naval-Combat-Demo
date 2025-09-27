@@ -32,6 +32,7 @@ public enum StrategicMapEditMode
     DeleteHexPairFeatureEnd,
     ToggleCoast,
     WaitOneshotCellClickCallback,
+    WaypointPlotting
 }
 
 public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
@@ -326,20 +327,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public void Update()
     {
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     var ray = PlaneCameraController.Instance.cam.ScreenPointToRay(Input.mousePosition);
-        //     if (Physics.Raycast(ray, out var hitInfo))
-        //     {
-        //         Debug.Log($"hitInfo.collider={hitInfo.collider}");
-        //     }
-        // }
         var controlPressing = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
         var altPressing = Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt);
 
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0)) // left click
             {
                 var cam = PlaneCameraController.Instance.cam;
 
@@ -348,19 +341,23 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 if (mapEditMode == StrategicMapEditMode.Select && Physics.Raycast(ray, out var hitInfo) && hitInfo.collider.CompareTag("Icon"))
                 {
                     // Group Inco Click
+
                     Debug.Log($"hitInfo.collider={hitInfo.collider}");
+
                     var group = hitInfo.collider.GetComponent<WorldSpaceGroupIcon>()?.currentDataSource;
                     var groupSide = group.side;
                     // var hexInfo = group.hexInfo;
                     var strategicGroupReferences = group.cell.StrategicGroupReferences;
                     var currentStack = group.currentStack;
                     var topStackGroup = currentStack[^1];
+
                     Debug.Log($"group={group}, groupSide={groupSide}, currentStack={currentStack}, topStackGroup={topStackGroup}");
-                    if (lastSelectedStrategicGroup != topStackGroup)
+
+                    if (lastSelectedStrategicGroup != topStackGroup) // New Click => Select
                     {
                         lastSelectedStrategicGroup = topStackGroup;
                     }
-                    else
+                    else // Repeat Click => Toggle Stack
                     {
                         strategicGroupReferences.RemoveAll(r => r.referenceId == topStackGroup.objectId);
                         strategicGroupReferences.Insert(0, new() { referenceId = topStackGroup.objectId });
@@ -376,8 +373,6 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 }
                 else
                 {
-
-
                     var worldPoint = cam.ScreenToWorldPoint(Input.mousePosition);
 
                     var hit = Physics2D.Raycast(worldPoint, Vector2.zero);
@@ -399,10 +394,6 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                                 HandleMapClick(cellXY);
                             }
                         }
-                        // else if (hit.collider.CompareTag("Icon"))
-                        // {
-                        //     Debug.Log($"Icon Hit: {hit.collider} {hit.point}");
-                        // }
                     }
                 }
             }
@@ -430,6 +421,10 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             if (Input.GetKeyDown(KeyCode.A))
             {
                 TryToStartAppendMove();
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                mapEditMode = StrategicMapEditMode.Select;
             }
         }
     }
@@ -527,6 +522,39 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         {
             oneshotCellClickCallback(StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y]);
             mapEditMode = StrategicMapEditMode.Select;
+        }
+        else if (mapEditMode == StrategicMapEditMode.WaypointPlotting)
+        {
+            var selectedMission = StrategicMissionEditor.Instance.selectedObject;
+            if (selectedMission != null)
+            {
+                if (selectedMission.waypoints.Count == 0)
+                {
+                    selectedMission.waypoints.Add(new XY() { x = cellXY.x, y = cellXY.y }); // set start
+                }
+                else
+                {
+                    var lastWaypoint = selectedMission.waypoints[^1];
+                    var srcCell = StrategicGameState.Instance.cellMatrix[lastWaypoint.x, lastWaypoint.y];
+                    var dstCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+
+                    IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy(); // TODO: Generalize to army?
+
+                    var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
+                    if (pathCells.Count < 2)
+                    {
+                        selectedMission.waypoints.Clear();
+                    }
+                    else
+                    {
+                        selectedMission.waypoints.AddRange(pathCells.Skip(1).Select(cell => new XY() { x = cell.x, y = cell.y }));
+                    }
+                }
+            }
+            else
+            {
+                mapEditMode = StrategicMapEditMode.Select;
+            }
         }
         else
         {

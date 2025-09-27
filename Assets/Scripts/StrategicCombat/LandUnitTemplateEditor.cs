@@ -7,6 +7,7 @@ using Unity.Properties;
 // using NavalCombatCore;
 using CoreUtils;
 using StrategicCombatCore;
+using System.Diagnostics.Tracing;
 
 
 public class LandUnitTemplateEditor : LeftObjectPickerRightEditorStrategic<LandUnitTemplateEditor, LandUnitTemplate>
@@ -34,6 +35,30 @@ public class LandUnitTemplateEditor : LeftObjectPickerRightEditorStrategic<LandU
                     {
                         weaponRecord.weaponObjectId = weapon.objectId;
                     });
+                }
+            };
+
+            return el;
+        };
+
+        var weaponColumn = weaponRecordsMultiColumnListView.columns["weapon"];
+        weaponColumn.makeCell = () =>
+        {
+            var el = weaponColumn.cellTemplate.CloneTree();
+            var gotoButton = el.Q<Button>("GotoButton");
+            gotoButton.clicked += () =>
+            {
+                if (Utils.TryResolveCurrentValueForBinding(gotoButton, out WeaponRecord weaponRecord))
+                {
+                    var weapon = weaponRecord.Get();
+                    var gameState = StrategicGameState.Instance;
+                    var idx = gameState.weapons.IndexOf(weapon);
+                    if (idx != -1)
+                    {
+                        // Hide();
+                        WeaponEditor.Instance.Show();
+                        BehaviourUtils.Instance.ScheduleToSetSelectionForListView(WeaponEditor.Instance.objectListView, idx);
+                    }
                 }
             };
 

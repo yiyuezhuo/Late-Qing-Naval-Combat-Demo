@@ -1,0 +1,82 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:Template name="StrategicGroupMemberReferenceItem" src="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" />
+    <ui:VisualElement data-source-type="StrategicMissionEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
+        <ui:Label text="Strategic Mission Editor" class="title" />
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px; flex-shrink: 0;">
+                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" data-source-path="currentGameState.missions" item-template="project://database/Assets/UIDocuments/Templates/StrategicMissionLabel.uxml?fileID=9197481963319205126&amp;guid=243e3c2e0774069448e3ae1435722b77&amp;type=3#StrategicMissionLabel" style="flex-grow: 1;" />
+                <ui:VisualElement name="ControlButtons">
+                    <ui:Button text="Copy Last" name="CopyLastButton" />
+                    <ui:Button text="Confirm" name="ConfirmButton" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:Label text="Not Selected or Invalid">
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
+                    </Bindings>
+                </ui:Label>
+                <ui:VisualElement style="flex-grow: 1;">
+                    <ui:VisualElement name="ContentContainer" data-source-path="selectedObject" style="flex-grow: 1;">
+                        <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                            <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+                        </ui:Instance>
+                        <ui:EnumField label="Type" value="Center" type="StrategicCombatCore.StrategicMission+MissionType, Assembly-CSharp">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
+                            </Bindings>
+                        </ui:EnumField>
+                        <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="groups" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" show-add-remove-footer="true" header-title="Assigned Groups" show-foldout-header="true" name="GroupsListView" />
+                        <ui:VisualElement style="flex-grow: 0;">
+                            <ui:EnumField label="Patrol State" value="Center" type="StrategicCombatCore.StrategicMission+PatrolState, Assembly-CSharp">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="patrolState" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:EnumField>
+                            <Bindings>
+                                <ui:DataBinding property="style.display" data-source-path="isPatrol" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                            </Bindings>
+                        </ui:VisualElement>
+                        <ui:VisualElement>
+                            <ui:EnumField label="Supply State" value="Center" type="StrategicCombatCore.StrategicMission+SupplyState, Assembly-CSharp">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="supplyState" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:EnumField>
+                            <ui:Label text="Source Unit" />
+                            <ui:Instance template="StrategicGroupMemberReferenceItem" data-source-path="startHq" />
+                            <ui:Label text="Destination Unit" />
+                            <ui:Instance template="StrategicGroupMemberReferenceItem" data-source-path="destinationHq" />
+                            <Bindings>
+                                <ui:DataBinding property="style.display" data-source-path="isSupply" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                            </Bindings>
+                        </ui:VisualElement>
+                        <ui:VisualElement>
+                            <ui:EnumField label="One Way Unload State" value="Center" type="StrategicCombatCore.StrategicMission+OneWayUnloadState, Assembly-CSharp">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="oneWayUnloadState" binding-mode="TwoWay" />
+                                </Bindings>
+                            </ui:EnumField>
+                            <Bindings>
+                                <ui:DataBinding property="style.display" data-source-path="isOneWayUnload" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                            </Bindings>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-direction: row;">
+                            <ui:Button text="Edit Waypoints" name="EditWaypointsButton" />
+                        </ui:VisualElement>
+                        <ui:MultiColumnTreeView data-source-path="waypoints">
+                            <ui:Columns>
+                                <ui:Column title="X" name="x" width="50%" cell-template="project://database/Assets/UIDocuments/Templates/XY/XYX.uxml?fileID=9197481963319205126&amp;guid=e6f56269358ebb74080f0357091b0a52&amp;type=3#XYX" />
+                                <ui:Column title="Y" name="y" width="50%" cell-template="project://database/Assets/UIDocuments/Templates/XY/XYY.uxml?fileID=9197481963319205126&amp;guid=4120b764c7821e34facd779fd946c21b&amp;type=3#XYY" />
+                            </ui:Columns>
+                        </ui:MultiColumnTreeView>
+                    </ui:VisualElement>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

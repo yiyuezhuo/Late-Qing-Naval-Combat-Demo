@@ -12,34 +12,6 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
 
     public void BindGotoButton(VisualElement item)
     {
-        // var setButton = item.Q<Button>("SetButton");
-        // setButton.clicked += () =>
-        // {
-        //     if (Utils.TryResolveCurrentValueForBinding(setButton, out StrategicGroupMemberReference fieldReference))
-        //     {
-        //         Debug.Log("reference SetButton clicked");
-
-        //         DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables =>
-        //         {
-        //             var oldObj = fieldReference.Get();
-        //             if (oldObj != null)
-        //             {
-        //                 // oldObj.SetStrategicGroupReference(null);
-        //                 oldObj.strategicGroupReference.referenceId = null;
-        //             }
-
-        //             var selectedReferenceable = selectedReferenceables.FirstOrDefault();
-        //             if (selectedReferenceable != null && selectedObject != null)
-        //             {
-        //                 selectedReferenceable.SetStrategicGroupReference(null);
-        //                 fieldReference.referenceId = selectedReferenceable.objectId;
-        //                 selectedReferenceable.strategicGroupReference.referenceId = selectedObject.objectId;
-        //                 // reference.referenceId = element.objectId;
-        //             }
-        //         });
-        //     }
-        // };
-
         var gotoButton = item.Q<Button>("GotoButton");
         gotoButton.clicked += () =>
         {

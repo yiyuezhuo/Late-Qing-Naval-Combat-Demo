@@ -30,6 +30,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     public Transform sideFlagContainerTransform;
     public Transform cellLabelContainerTransform;
     public Transform pathLineContainerTransform;
+    public Transform missionWaypointLineContainerTransform;
 
     public GameObject locationLabelPrefab;
     public GameObject roadPrefab;
@@ -39,6 +40,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     public GameObject sideFlagPrefab;
     public GameObject cellLabelPrefab;
     public GameObject pathLinePrefab;
+    public GameObject missionWaypointLinePrefab;
 
     public SpriteRenderer mapRenderer;
 
@@ -413,15 +415,21 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     // Update is called once per frame
     void Update()
     {
-        // UpdateLabels();
+        UpdateStrategicGroupIcons();
+        UpdatePathLines();
+        UpdateMissionWaypointLines();
+    }
 
-        // Update Independent Strategic Groups
-        // var independentStrategicGroups = StrategicGameState.Instance.GetIndependentStrategicGroups().ToList();
-        // BindStrategicGroupIcons(strategicGroupIconTransform, strategicGroupIconPrefab, independentStrategicGroups);
-
-        var observableStrategicGroups = StrategicGameState.Instance.GetObservabledStrategicGroups().ToList();
+    void UpdateStrategicGroupIcons()
+    {
+        // var observableStrategicGroups = StrategicGameState.Instance.GetObservabledStrategicGroups().ToList();
+        var observableStrategicGroups = StrategicGameState.Instance.GetOrderedObservableStrategicGroups().ToList();
+        // GetOrderedObservableStrategicGroups
         BindStrategicGroupIcons(strategicGroupIconTransform, strategicGroupIconPrefab, observableStrategicGroups);
+    }
 
+    void UpdatePathLines()
+    {
         // Update Path Lines
         var pathLineActiveStrategicGroups = new List<StrategicGroup>();
 
@@ -440,6 +448,28 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
             var controller = pathLineControllers[i];
             var progressPercent = group.moveProgressionKm / 50;
             controller.Sync(group.plannedPath, progressPercent);
+        }
+    }
+
+    void UpdateMissionWaypointLines()
+    {
+        var missionWaypointLines = new List<List<XY>>();
+
+        if (StrategicGameManager.Instance.mapEditMode == StrategicMapEditMode.WaypointPlotting)
+        {
+            var waypoints = StrategicMissionEditor.Instance.selectedObject.waypoints;
+            if (waypoints != null)
+                missionWaypointLines.Add(waypoints);
+        }
+
+        Utils.SyncTransformViewerLength(missionWaypointLineContainerTransform, missionWaypointLines.Count, missionWaypointLinePrefab);
+        var missionWaypointLineControllers = missionWaypointLineContainerTransform.GetComponentsInChildren<WaypointController>();
+
+        for (int i = 0; i < missionWaypointLines.Count; i++)
+        {
+            var missionWaypointLine = missionWaypointLines[i];
+            var controller = missionWaypointLineControllers[i];
+            controller.Sync(missionWaypointLine);
         }
     }
 

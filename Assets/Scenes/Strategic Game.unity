@@ -161,6 +161,7 @@ Transform:
   - {fileID: 1187428662}
   - {fileID: 666010435}
   - {fileID: 1657592755}
+  - {fileID: 1990924172}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &106435573
@@ -762,6 +763,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47dd7155f10bbdf4d9771388894e1255, type: 3}
+--- !u!1 &588873091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 588873092}
+  m_Layer: 0
+  m_Name: MissionWaypointContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &588873092
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588873091}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937397445}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &652267960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,6 +1064,7 @@ Transform:
   - {fileID: 1015478983}
   - {fileID: 540693175}
   - {fileID: 1819725383}
+  - {fileID: 588873092}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &937397446
@@ -1054,6 +1087,7 @@ MonoBehaviour:
   sideFlagContainerTransform: {fileID: 1015478983}
   cellLabelContainerTransform: {fileID: 540693175}
   pathLineContainerTransform: {fileID: 1819725383}
+  missionWaypointLineContainerTransform: {fileID: 588873092}
   locationLabelPrefab: {fileID: 5792163290863953499, guid: be80ce39c2c2aa94e971853d00d1ec27, type: 3}
   roadPrefab: {fileID: 9006842191024245126, guid: 6285d43d972e56e46a42bc17fa4787be, type: 3}
   railroadPrefab: {fileID: 9006842191024245126, guid: d895281625e13b641a2133c00adc0b4f, type: 3}
@@ -1062,6 +1096,7 @@ MonoBehaviour:
   sideFlagPrefab: {fileID: 1746349559027256155, guid: d57d9a28a3ff0754ba88fe1543293865, type: 3}
   cellLabelPrefab: {fileID: 5792163290863953499, guid: be80ce39c2c2aa94e971853d00d1ec27, type: 3}
   pathLinePrefab: {fileID: 5562614255133263553, guid: 9764680f81772704684c1ec0d87acf5d, type: 3}
+  missionWaypointLinePrefab: {fileID: 7422386927956527519, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
   mapRenderer: {fileID: 2074895119}
 --- !u!1001 &995054351
 PrefabInstance:
@@ -1987,6 +2022,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6778656633859413932, guid: b5cab293e81a6c042bc9a4c52eee4ea9, type: 3}
   m_PrefabInstance: {fileID: 1990763641}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1990924171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1990924172}
+  - component: {fileID: 1990924174}
+  - component: {fileID: 1990924173}
+  m_Layer: 0
+  m_Name: StrategicMissionEditor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1990924172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990924171}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 14881314}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1990924173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990924171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a3a21bbcd53e54ebbfc421f8818a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StrategicMissionEditor
+  selectedId: 
+--- !u!114 &1990924174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990924171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
+  m_PanelSettings: {fileID: 11400000, guid: 9fc041e7491d52d4ba840bd7c006e8c4, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 5738e75848e25674c9d90efc32c976fc, type: 3}
+  m_SortingOrder: 0
+  m_Position: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
 --- !u!1 &2074895117
 GameObject:
   m_ObjectHideFlags: 0

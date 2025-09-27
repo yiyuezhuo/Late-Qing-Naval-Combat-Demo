@@ -144,7 +144,7 @@
                                 <ui:Columns>
                                     <ui:Column title="Set" width="10%" cell-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordSetButton.uxml?fileID=9197481963319205126&amp;guid=3df99646c39699645a4701a7be214463&amp;type=3#LandUnitTemplateWeaponRecordSetButton" name="set" />
                                     <ui:Column title="Count" width="10%" cell-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordCount.uxml?fileID=9197481963319205126&amp;guid=afed79ce87b7e534b9179442c01328c1&amp;type=3#LandUnitTemplateWeaponRecordCount" />
-                                    <ui:Column title="Weapon" min-width="80%" cell-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordName.uxml?fileID=9197481963319205126&amp;guid=d09d7097024a78a42829e2c739f7e4ad&amp;type=3#LandUnitTemplateWeaponRecordName" />
+                                    <ui:Column title="Weapon" cell-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordName.uxml?fileID=9197481963319205126&amp;guid=d09d7097024a78a42829e2c739f7e4ad&amp;type=3#LandUnitTemplateWeaponRecordName" width="80%" name="weapon" />
                                 </ui:Columns>
                             </ui:MultiColumnListView>
                             <ui:Label text="Remark" />

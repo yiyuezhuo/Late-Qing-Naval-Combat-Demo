@@ -234,31 +234,6 @@ namespace StrategicCombatCore
             StrategicGameState.Instance.InvokeMapCellUpdated(prevCell.x, prevCell.y);
         }
 
-        // Move through edge. Track edge control and refresh related state.
-        // public void MoveToXY(int toX, int toY)
-        // {
-        //     var prevCell = cell;
-        //     var toCell = StrategicGameState.Instance.cellMatrix[toX, toY];
-
-        //     if (deployState == DeployState.Independent && x != -1 && y != -1)
-        //     {
-        //         cell.StrategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
-        //     }
-
-        //     deployState = DeployState.Independent;
-        //     x = toX;
-        //     y = toY;
-
-        //     cell.StrategicGroupReferences.Add(new() { referenceId = objectId });
-
-        //     toCell.RefreshControlState();
-        //     prevCell.RefreshControlState();
-        //     if (toCell.TryGetDirection(prevCell, out var edge))
-        //     {
-        //         toCell.SetEdgeSide(edge, side);
-        //     }
-        // }
-
         public void RemoveFromMap()
         {
             var prevCell = cell;

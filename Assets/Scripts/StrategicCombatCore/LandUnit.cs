@@ -11,6 +11,8 @@ namespace StrategicCombatCore
         public string objectId { get; set; }
         public GlobalString name = new();
         public int stregnth;
+        public float supplyTons;
+        public float supplyGeneratedTons; // Super Depot generate ~10,000 tons supply (Freight)
         public string remark;
 
         // public string strategicGroupId;

@@ -84,6 +84,8 @@ namespace StrategicCombatCore
 
         public List<SideState> sideStates = new();
 
+        public List<StrategicMission> missions = new();
+
         [XmlIgnore]
         public Dictionary<Country, SideState> countryToSideStateMap = new();
 
@@ -176,6 +178,8 @@ namespace StrategicCombatCore
 
             sideStates = newInstance.sideStates;
 
+            missions = newInstance.missions;
+
             mapRebuilt?.Invoke(this, EventArgs.Empty);
             edgeFeatureUpdated?.Invoke(this, EventArgs.Empty);
 
@@ -229,6 +233,18 @@ namespace StrategicCombatCore
                 {
                     if (IsGroupObservable(group))
                         yield return group;
+                }
+            }
+        }
+
+        public IEnumerable<StrategicGroup> GetOrderedObservableStrategicGroups()
+        {
+            var relatedCells = strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent).Select(group => group.cell).ToHashSet();
+            foreach (var cell in relatedCells)
+            {
+                foreach (var group in cell.StrategicGroupReferences.Select(rp => rp.Get()).Where(group => group != null && IsGroupObservable(group)))
+                {
+                    yield return group;
                 }
             }
         }

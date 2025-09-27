@@ -10959,7 +10959,7 @@ After 1871, Li Hongzhang added 114 state-of-the-art German Krupp 4-pound steel b
     <chineseSimplified>日本工兵大队</chineseSimplified>
    </name>
    <size>Battalion</size>
-   <unitType>Infantry</unitType>
+   <unitType>Enginner</unitType>
    <strength>0</strength>
    <guns>0</guns>
    <firepowerKgPerMin>0</firepowerKgPerMin>
@@ -11081,6 +11081,33 @@ Each cavalry battalion has 277 personnel (excluding laborers)
 </remark>
    <objectId>fccb992e-ed5d-4f51-baba-080eb556d9ae</objectId>
   </LandUnitTemplate>
+  <LandUnitTemplate>
+   <name>
+    <english>Depot</english>
+    <chineseSimplified>仓库</chineseSimplified>
+   </name>
+   <size>Unspecified</size>
+   <unitType>Supply</unitType>
+   <strength>0</strength>
+   <guns>0</guns>
+   <firepowerKgPerMin>0</firepowerKgPerMin>
+   <targettingGain>0</targettingGain>
+   <rangeMeter>0</rangeMeter>
+   <moraleCoef>0</moraleCoef>
+   <densityStrengthPerSqMeter>0</densityStrengthPerSqMeter>
+   <assault>0</assault>
+   <ammoCoef>0</ammoCoef>
+   <rationCoef>0</rationCoef>
+   <weaponWeightKgPerStrength>0</weaponWeightKgPerStrength>
+   <carryingRationKg>0</carryingRationKg>
+   <carryingAmmoKg>0</carryingAmmoKg>
+   <isSupport>false</isSupport>
+   <strategicSpeedKmPerDay>0</strategicSpeedKmPerDay>
+   <operationalSpeedKmPerDay>0</operationalSpeedKmPerDay>
+   <tacticalSpeedMPerMin>0</tacticalSpeedMPerMin>
+   <weaponRecordss />
+   <objectId>3648c0eb-1297-4a05-a022-886cd284b133</objectId>
+  </LandUnitTemplate>
  </landUnitTemplates>
  <landUnits>
   <LandUnit>
@@ -11089,6 +11116,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>1a224c7c-18cf-446f-90b3-551568f435b2</objectId>
    <strategicGroupReference />
@@ -11099,6 +11128,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军副营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>75dde615-d1a6-4440-8fe3-99de5c6f14c7</objectId>
    <strategicGroupReference />
@@ -11109,6 +11140,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军右营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>c62f419b-643c-44e6-a651-c807b19c3bf0</objectId>
    <strategicGroupReference />
@@ -11119,6 +11152,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军后营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>20979489-2a2f-4dbc-82e0-bc959243fdad</objectId>
    <strategicGroupReference />
@@ -11129,6 +11164,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军传字正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>44acbf65-286d-44a8-b75e-b9e403ede455</objectId>
    <strategicGroupReference />
@@ -11139,6 +11176,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军左军正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>0a986b15-619a-4f21-82e8-1c7b19131d1f</objectId>
    <strategicGroupReference />
@@ -11149,6 +11188,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军左军左营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>0bd7ec00-7cda-401d-ab6a-358fbbf7d504</objectId>
    <strategicGroupReference />
@@ -11159,6 +11200,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军亲军炮队营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
    <objectId>f40450f6-b028-4d76-a038-2a72f27660dc</objectId>
    <strategicGroupReference />
@@ -11169,6 +11212,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军右军正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>b6bf38a7-b85c-4b33-9da6-04ae02140758</objectId>
    <strategicGroupReference />
@@ -11179,6 +11224,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军右军右营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>d2bd16ab-cc21-46f1-82bc-238b918eb3e6</objectId>
    <strategicGroupReference />
@@ -11189,6 +11236,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军右军后营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>f54b7796-3727-46a2-b215-799cd588604a</objectId>
    <strategicGroupReference />
@@ -11199,6 +11248,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军亲兵马小队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>279747b6-2f59-456d-88e1-66c664d207e2</objectId>
    <strategicGroupReference />
@@ -11209,6 +11260,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军亲兵步小队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>3a5f2b15-bdfe-42f7-a1c9-3ce5364ffb53</objectId>
    <strategicGroupReference />
@@ -11219,6 +11272,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编1营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>6c050d18-d5f1-479c-a34f-d0163c377590</objectId>
    <strategicGroupReference />
@@ -11229,6 +11284,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编2营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>19f52aad-c996-4804-b1d9-a58dde32aed6</objectId>
    <strategicGroupReference />
@@ -11239,6 +11296,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编3营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>4b921964-d592-406a-bd77-69febf0f8415</objectId>
    <strategicGroupReference />
@@ -11249,6 +11308,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编4营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>4be6c875-d190-4ef7-8eae-b53996d23e1a</objectId>
    <strategicGroupReference />
@@ -11259,6 +11320,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编5营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>4fb2c986-6b0e-4730-ad82-82734aae8604</objectId>
    <strategicGroupReference />
@@ -11269,6 +11332,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>铭军步1营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>fbcc1c30-266d-4c87-a768-70d2ea882363</objectId>
    <strategicGroupReference />
@@ -11279,6 +11344,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>铭军步2营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>25082074-8a17-4adc-8e61-02a3b31d4599</objectId>
    <strategicGroupReference />
@@ -11289,6 +11356,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>铭军步3营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>23f7d1fc-4e4a-4fea-a810-7a4bc6870c04</objectId>
    <strategicGroupReference />
@@ -11299,6 +11368,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>古北口练军右营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>532276bd-8fa1-415b-b224-45a279e81bc1</objectId>
    <strategicGroupReference>
@@ -11311,6 +11382,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>武毅军副中营</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>ab7db3ab-51ce-4641-9236-0ac311edce20</objectId>
    <strategicGroupReference>
@@ -11323,6 +11396,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>武毅军老前营</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>65f4f6ea-01c4-4a47-9dc3-d27457bef322</objectId>
    <strategicGroupReference>
@@ -11335,6 +11410,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>武毅军炮队</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
    <objectId>b9fe6dcc-ed60-4859-9748-750372d8b5aa</objectId>
    <strategicGroupReference>
@@ -11347,6 +11424,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>天津武备学堂学生</chineseSimplified>
    </name>
    <stregnth>10</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>6d2f2148-7f94-4695-97c8-5282e8db3a1a</objectId>
    <strategicGroupReference>
@@ -11360,6 +11439,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正定练军中营</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>b81a11c7-164b-4042-80df-f9f5854e256c</objectId>
    <strategicGroupReference>
@@ -11372,6 +11453,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正定练军右营</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>bd7483a0-3682-44b3-9602-0916a70ca39b</objectId>
    <strategicGroupReference>
@@ -11384,6 +11467,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正定练军前营</chineseSimplified>
    </name>
    <stregnth>210</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>3097daff-bd82-4a43-9e34-69e524d54ae6</objectId>
    <strategicGroupReference>
@@ -11396,6 +11481,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正定练军左营</chineseSimplified>
    </name>
    <stregnth>210</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>5eb3077c-f62f-499b-93ba-b6eca8b7b53f</objectId>
    <strategicGroupReference>
@@ -11408,6 +11495,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>亲军马队小队</chineseSimplified>
    </name>
    <stregnth>80</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>302a7d65-9319-4014-80cd-df5738f49c72</objectId>
    <strategicGroupReference>
@@ -11420,6 +11509,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>山海关武备学堂学生</chineseSimplified>
    </name>
    <stregnth>25</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>7a9e7efa-c000-4c62-94bc-bbcbea2a974a</objectId>
    <strategicGroupReference>
@@ -11432,6 +11523,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>仁字营正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>8f100840-11d5-4409-a65e-6b5447546a7d</objectId>
    <strategicGroupReference>
@@ -11444,6 +11537,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>仁字营副营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>0a2df1a4-c566-4feb-89bc-9d39c19d683b</objectId>
    <strategicGroupReference>
@@ -11456,6 +11551,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>义胜前营一部</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>57057021-a645-4b60-ba37-4827ab44a46e</objectId>
    <strategicGroupReference>
@@ -11468,6 +11565,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>芦台防军马队</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>ed9cc67e-a2c0-4669-8e8c-ec95a82bbf23</objectId>
    <strategicGroupReference>
@@ -11480,6 +11579,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第11联队第2大队</chineseSimplified>
    </name>
    <stregnth>800</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <objectId>d05c4b4e-c937-4280-bd08-e357d3a3dcba</objectId>
    <strategicGroupReference>
@@ -11492,6 +11593,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第11联队第3大队</chineseSimplified>
    </name>
    <stregnth>800</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <objectId>78204a0e-7d7c-450e-b10d-826561a70857</objectId>
    <strategicGroupReference>
@@ -11504,6 +11607,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第21联队第1大队</chineseSimplified>
    </name>
    <stregnth>600</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>2nd Coy is detached.</remark>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <objectId>90d60e0e-ccf7-4aba-9a67-986907bdd56f</objectId>
@@ -11517,6 +11622,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第21联队第2大队第7中队</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <objectId>309e644c-8005-4c5f-8821-2aeeb8b971cf</objectId>
    <strategicGroupReference>
@@ -11529,6 +11636,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第21联队第3大队</chineseSimplified>
    </name>
    <stregnth>600</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>11th Coy is detached.</remark>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <objectId>a78a315d-c3c2-4b2b-a14b-d82e06d44eb6</objectId>
@@ -11542,6 +11651,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>骑兵第5大队第1中队</chineseSimplified>
    </name>
    <stregnth>35</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Most cavalries are assigned to other units for communication, scouting and other support role, so the "main" unit have only 35 cavalries (A full Coy should have 159 strength)</remark>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
    <objectId>0abfe5cb-3b7e-4dfa-b722-747763468bdd</objectId>
@@ -11555,6 +11666,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>野战炮兵第5联队第3大队</chineseSimplified>
    </name>
    <stregnth>140</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
    <objectId>8809f6a2-bf65-473c-90bc-424a1fca6f48</objectId>
    <strategicGroupReference>
@@ -11567,10 +11680,84 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>工兵第5大队第1中队</chineseSimplified>
    </name>
    <stregnth>80</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
    <objectId>34d10468-a099-494d-b285-e51275e9d004</objectId>
    <strategicGroupReference>
     <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>China Super Depot</english>
+    <chineseSimplified>中国总仓库</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>10000</supplyGeneratedTons>
+   <remark>Generic Super Depot Supply Source.</remark>
+   <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <objectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</objectId>
+   <strategicGroupReference>
+    <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Japan Super Depot</english>
+    <chineseSimplified>日本总仓库</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>10000</supplyGeneratedTons>
+   <remark>Generic Super Depot Supply Source.</remark>
+   <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <objectId>4bed7260-ce35-4876-bc7f-ae025cec21b4</objectId>
+   <strategicGroupReference>
+    <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Beiyang Depot</english>
+    <chineseSimplified>北洋仓库</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <objectId>f4d6ffd3-4566-46bb-a178-5811cf748be5</objectId>
+   <strategicGroupReference>
+    <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Korea IJA Depot</english>
+    <chineseSimplified>日军朝鲜仓库</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <objectId>69fa8dac-d422-4297-9726-e145ece4ab13</objectId>
+   <strategicGroupReference>
+    <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Seonghwan Depot</english>
+    <chineseSimplified>成欢仓库</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <objectId>0c66f06a-2031-478c-8899-bce39dc614ba</objectId>
+   <strategicGroupReference>
+    <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
    </strategicGroupReference>
   </LandUnit>
  </landUnits>
@@ -11997,6 +12184,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>3db5fe0c-1720-49dd-847d-520e55f183c7</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>30</xProp>
    <yProp>28</yProp>
@@ -12037,6 +12225,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>dfc596b4-ef97-474b-b987-8b34cfdcadf9</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>30</xProp>
    <yProp>27</yProp>
@@ -12072,6 +12261,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>6a88e57c-f643-4dde-b19a-42b3ac06b91e</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>30</xProp>
    <yProp>26</yProp>
@@ -12106,6 +12296,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>6374bb0b-b59f-454f-a223-eb4e414b78b7</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>30</xProp>
    <yProp>25</yProp>
@@ -12143,6 +12334,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>94ec5c84-7729-4ad1-89ef-e7e7d8dac32f</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>30</xProp>
    <yProp>25</yProp>
@@ -12180,6 +12372,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>8546e7a0-5d78-4188-9238-fcb709e443c5</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>30</xProp>
    <yProp>25</yProp>
@@ -12217,6 +12410,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>f23a08cc-7532-40ad-8593-0d977ecda4aa</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>30</xProp>
    <yProp>25</yProp>
@@ -12254,6 +12448,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
    <yProp>-1</yProp>
@@ -12290,6 +12485,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
 
 海军军令部（Gunreibu）是大日本帝国海军的作战指挥机构。与隶属内阁、负责军政与人事的海军省不同，军令部直属于天皇，在天皇统帅权下辅佐谋划，全面负责海军的作战与指挥事务。
 </remark>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
    <yProp>23</yProp>
@@ -12321,6 +12517,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>78204a0e-7d7c-450e-b10d-826561a70857</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>31</xProp>
    <yProp>28</yProp>
@@ -12355,6 +12552,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>a78a315d-c3c2-4b2b-a14b-d82e06d44eb6</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>31</xProp>
    <yProp>28</yProp>
@@ -12380,6 +12578,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
+     <referenceId>69fa8dac-d422-4297-9726-e145ece4ab13</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
      <referenceId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
@@ -12395,6 +12596,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>34d10468-a099-494d-b285-e51275e9d004</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>31</xProp>
    <yProp>28</yProp>
@@ -12417,6 +12619,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <independentY>-1</independentY>
    <leaderReference />
    <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
    <yProp>23</yProp>
@@ -12439,6 +12642,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <independentY>-1</independentY>
    <leaderReference />
    <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
    <yProp>23</yProp>
@@ -12468,6 +12672,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>dc778b97-f5fe-4a1a-869f-58133cb451ab</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
    <yProp>23</yProp>
@@ -12500,6 +12705,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <remark>広島</remark>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
    <yProp>23</yProp>
@@ -12521,6 +12727,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <independentY>-1</independentY>
    <leaderReference />
    <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
    <yProp>23</yProp>
@@ -12543,6 +12750,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <independentY>-1</independentY>
    <leaderReference />
    <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
    <yProp>23</yProp>
@@ -12572,6 +12780,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>e0686526-37a4-459a-bc5b-0b0345a980e2</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
    <yProp>23</yProp>
@@ -12594,6 +12803,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <independentY>-1</independentY>
    <leaderReference />
    <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
    <yProp>23</yProp>
@@ -12616,6 +12826,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <independentY>-1</independentY>
    <leaderReference />
    <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
    <yProp>23</yProp>
@@ -12645,6 +12856,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>8debdc25-a274-4158-a38c-c4dc36162a2d</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
    <yProp>23</yProp>
@@ -12677,6 +12889,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <remark>名古屋</remark>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
    <yProp>23</yProp>
@@ -12708,6 +12921,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
    <yProp>23</yProp>
@@ -12733,12 +12947,16 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
+     <referenceId>4bed7260-ce35-4876-bc7f-ae025cec21b4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
      <referenceId>2895a7b5-5422-45c0-a01b-a516c966f9c1</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
      <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
    <yProp>23</yProp>
@@ -12768,6 +12986,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>bd251362-367a-4c21-a06d-edac91c83068</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>30</xProp>
    <yProp>28</yProp>
@@ -12828,6 +13047,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>2e660a27-1cd9-4746-96ec-4aa6b1ffc494</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>22</xProp>
    <yProp>28</yProp>
@@ -12868,6 +13088,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>15b46965-615f-4370-bb6b-96f11eef63b5</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>22</xProp>
    <yProp>28</yProp>
@@ -12902,6 +13123,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>22</xProp>
    <yProp>28</yProp>
@@ -12923,6 +13145,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <independentY>30</independentY>
    <leaderReference />
    <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>21</xProp>
    <yProp>30</yProp>
@@ -12944,6 +13167,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <independentY>28</independentY>
    <leaderReference />
    <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>22</xProp>
    <yProp>28</yProp>
@@ -12968,6 +13192,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
     <referenceObjectId>db26b666-2166-41cd-9411-4d3d3f0e9f41</referenceObjectId>
    </leaderReference>
    <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>0c66f06a-2031-478c-8899-bce39dc614ba</referenceId>
+    </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
      <referenceId>532276bd-8fa1-415b-b224-45a279e81bc1</referenceId>
     </StrategicGroupMemberReference>
@@ -13014,6 +13241,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>ed9cc67e-a2c0-4669-8e8c-ec95a82bbf23</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>31</xProp>
    <yProp>27</yProp>
@@ -13039,6 +13267,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
+     <referenceId>f4d6ffd3-4566-46bb-a178-5811cf748be5</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
      <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
@@ -13051,6 +13282,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>14</xProp>
    <yProp>32</yProp>
@@ -13073,6 +13305,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <independentY>16</independentY>
    <leaderReference />
    <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>6</xProp>
    <yProp>16</yProp>
@@ -13096,6 +13329,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference />
    <subordinatesCombined>
     <StrategicGroupMemberReference>
+     <referenceId>82e4ac06-f614-432e-a82f-c0c1dfc055df</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
      <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
@@ -13103,6 +13339,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <remark />
+   <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>13</xProp>
    <yProp>33</yProp>
@@ -13112,6 +13349,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
  </strategicGroups>
  <scenarioState>
   <dateTime>1894-07-25T00:00:00Z</dateTime>
+  <enableFogOfWar>false</enableFogOfWar>
  </scenarioState>
  <sideStates>
   <SideState>
@@ -13222,6 +13460,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <objectId>6900b3ca-0f12-491a-9799-2e499a9d6e3e</objectId>
   </SideState>
  </sideStates>
+ <missions />
  <serializedCells>
   <width>60</width>
   <height>40</height>
@@ -14046,7 +14285,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <Cell x="17" y="38" terrain="ForestRough" longitude="118.974274" latitude="42.87909" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
    <Cell x="17" y="39" terrain="ForestRough" longitude="118.971771" latitude="43.4165344" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
    <Cell x="18" y="0" terrain="Mountain" longitude="120.882172" latitude="21.8600826" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-   <Cell x="18" y="1" terrain="Mountain" longitude="120.837219" latitude="22.4276562" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+   <Cell x="18" y="1" terrain="Mountain" longitude="120.837219" latitude="22.4276562" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
    <Cell x="18" y="2" terrain="Mountain" longitude="120.792984" latitude="22.9950371" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
    <Cell x="18" y="3" terrain="Mountain" longitude="120.749847" latitude="23.561861" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
    <Cell x="18" y="4" terrain="Field" longitude="120.708122" latitude="24.1276474" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -15470,7 +15709,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <Cell x="48" y="19" terrain="DeepWater" longitude="135.749023" latitude="32.13535" />
    <Cell x="48" y="20" terrain="DeepWater" longitude="135.754959" latitude="32.66451" />
    <Cell x="48" y="21" terrain="ShallowWater" longitude="135.765182" latitude="33.1937637" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
-   <Cell x="48" y="22" terrain="ForestRough" longitude="135.7822" latitude="33.72347" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
+   <Cell x="48" y="22" terrain="ForestRough" longitude="135.7822" latitude="33.72347" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
    <Cell x="48" y="23" terrain="ForestRough" longitude="135.8108" latitude="34.2541237" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
    <Cell x="48" y="24" terrain="HeavyUrban" longitude="135.86084" latitude="34.7864647" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" roadsStr="4/0" railroadsStr="0/4" />
    <Cell x="48" y="25" terrain="Field" longitude="135.9308" latitude="35.3208" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" roadsStr="1/3" railroadsStr="1/3" />
@@ -15806,7 +16045,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <Cell x="56" y="23" terrain="DeepWater" longitude="140.6234" latitude="34.0362" />
    <Cell x="56" y="24" terrain="ShallowWater" longitude="140.696686" latitude="34.5643044" />
    <Cell x="56" y="25" terrain="Field" longitude="140.774139" latitude="35.0939369" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
-   <Cell x="56" y="26" terrain="Field" longitude="140.850861" latitude="35.62578" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
+   <Cell x="56" y="26" terrain="Field" longitude="140.850861" latitude="35.62578" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
    <Cell x="56" y="27" terrain="Field" longitude="140.922668" latitude="36.1602821" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
    <Cell x="56" y="28" terrain="Field" longitude="140.990616" latitude="36.69691" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
    <Cell x="56" y="29" terrain="Field" longitude="141.056976" latitude="37.2349" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" roadsStr="0" railroadsStr="0/4" />

@@ -6,7 +6,7 @@ using NavalCombatCore;
 
 namespace StrategicCombatCore
 {
-    public class LocalNavalCombatBuilder
+    public partial class LocalNavalCombatBuilder
     {
         List<ShipGroup> shipGroups = new();
         List<ShipLog> shipLogs = new();

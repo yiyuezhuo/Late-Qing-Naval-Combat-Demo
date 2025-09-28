@@ -1,6 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
     <ui:Template name="StrategicUnitIcon" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicUnitIcon.uxml?fileID=9197481963319205126&amp;guid=aa3ccbfdf5107f4488fcd49416ef81e1&amp;type=3#StrategicUnitIcon" />
+    <ui:Template name="IStrategicGroupMemberReferenceableParentDepotUI" src="project://database/Assets/UIDocuments/Templates/IStrategicGroupMemberReferenceableParentDepotUI.uxml?fileID=9197481963319205126&amp;guid=a4efcf1499aee3c4e856250902f80d71&amp;type=3#IStrategicGroupMemberReferenceableParentDepotUI" />
     <ui:VisualElement data-source-type="StrategicGroupEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Strategic Group Editor" class="title">
             <Bindings>
@@ -101,19 +102,7 @@
                                     </ui:IntegerField>
                                 </ui:VisualElement>
                             </ui:VisualElement>
-                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                <ui:TextField enabled="false" label="Parent" style="flex-grow: 1;">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="strategicGroupReferenceProp.name" binding-mode="ToTarget" />
-                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196392573898752)" />
-                                    </Bindings>
-                                </ui:TextField>
-                                <ui:Button text="Goto" name="GotoParentButton">
-                                    <Bindings>
-                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196569347035136)" />
-                                    </Bindings>
-                                </ui:Button>
-                            </ui:VisualElement>
+                            <ui:Instance template="IStrategicGroupMemberReferenceableParentDepotUI" name="IStrategicGroupMemberReferenceableParentDepotUI" />
                             <ui:ListView name="SubordinatesCombinedListView" header-title="Subordinates" show-add-remove-footer="true" show-foldout-header="true" binding-source-selection-mode="AutoAssign" data-source-path="subordinatesCombined" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" fixed-item-height="60" reorderable="true">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196633377280000)" />

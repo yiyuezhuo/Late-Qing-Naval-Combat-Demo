@@ -54,7 +54,7 @@
                                 <AttributeOverrides element-name="FieldLabel" text="Portrait" />
                             </ui:Instance>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                <ui:VisualElement style="flex-grow: 1;">
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                                     <ui:EnumField label="Naval Strategic" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="navalStrategic" binding-mode="TwoWay" />
@@ -74,7 +74,7 @@
                                         </Bindings>
                                     </ui:EnumField>
                                 </ui:VisualElement>
-                                <ui:VisualElement style="flex-grow: 1;">
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                                     <ui:EnumField label="Land Strategic" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="landStrategic" binding-mode="TwoWay" />

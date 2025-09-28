@@ -36,6 +36,8 @@ namespace StrategicCombatCore
         }
 
         public float GetStrength() => stregnth;
+
+        // public LandUnit GetCurrentSourceDepot() => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
     }
 }
 

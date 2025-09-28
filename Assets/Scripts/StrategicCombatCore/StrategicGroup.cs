@@ -64,9 +64,44 @@ namespace StrategicCombatCore
             else
             {
                 self.strategicGroupReference.referenceId = group.objectId;
-                group.subordinatesCombined.Add(new StrategicGroupMemberReference() { referenceId=group.objectId});
+                group.subordinatesCombined.Add(new StrategicGroupMemberReference() { referenceId = group.objectId });
             }
         }
+
+        // LandUnit GetCurrentSourceDepot();
+
+        public LandUnit GetCurrentSourceDepot()
+        {
+            var pt = strategicGroupReference.Get();
+            var accessed = new HashSet<StrategicGroup>() { pt };
+            while (pt != null)
+            {
+                foreach (var subordinateRef in pt.subordinatesCombined)
+                {
+                    var subordinate = subordinateRef.Get();
+                    if (subordinate is LandUnit landUnit && landUnit != this)
+                    {
+                        var landUnitTemplate = landUnit.GetLandUnitTemplate();
+                        if (landUnitTemplate != null && landUnitTemplate.unitType == LandUnitType.Supply)
+                        {
+                            return landUnit;
+                        }
+                    }
+                }
+                pt = pt.strategicGroupReference.Get();
+
+                if (accessed.Contains(pt))
+                {
+                    ServiceLocator.Get<ILoggerService>().LogWarning("Looping OOB Detected!");
+                    return null;
+                }
+                accessed.Add(pt);
+            }
+            return null;
+        }
+
+        public string GetParentName() => strategicGroupReference.Get()?.name?.mergedName ?? "[Undefined or Invalid]";
+        public string GetCurrentSourceDepotName() => GetCurrentSourceDepot()?.name?.mergedName ?? "[Not Defined]";
     }
     
     public class XY
@@ -186,7 +221,7 @@ namespace StrategicCombatCore
 
         public static Dictionary<StrategicUnitSize, string> sizeStrMap = new()
         {
-            { StrategicUnitSize.Unspecified, " " },
+            { StrategicUnitSize.Unspecified, "O" },
             { StrategicUnitSize.ArmyGroup, "XXXXX" },
             { StrategicUnitSize.Army, "XXXX" },
             { StrategicUnitSize.Corp, "XXX" },
@@ -332,7 +367,7 @@ namespace StrategicCombatCore
             return 1;
         }
 
-        static float speedBase = 0.9f;
+        static float speedBase = 0.9f; // 0.9km/h
 
         // Road/Railroad: 2
         public static Dictionary<TerrainType, float> terrainToSpeedKmPerHour = new()
@@ -352,6 +387,8 @@ namespace StrategicCombatCore
             {TerrainType.SandDesert, speedBase * 0.3f},
             {TerrainType.Field, speedBase},
         };
+
+        // public LandUnit GetCurrentSourceDepot() => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
     }
 }
 

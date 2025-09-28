@@ -64,18 +64,6 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
                 }
             };
 
-            // var gotoButton = item.Q<Button>("GotoButton");
-            // gotoButton.clicked += () =>
-            // {
-            //     if (Utils.TryResolveCurrentValueForBinding(gotoButton, out StrategicGroupMemberReference fieldReference))
-            //     {
-            //         Debug.Log("reference GotoButton clicked");
-
-            //         var gotoObj = fieldReference.Get();
-            //         GotoReferenceable(gotoObj);
-            //     }
-            // };
-
             BindGotoButton(item);
 
             return item;
@@ -93,21 +81,91 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
             });
         };
 
-        var gotoParentButton = root.Q<Button>("GotoParentButton");
-        gotoParentButton.clicked += () =>
-        {
-            if (Utils.TryResolveCurrentValueForBinding(gotoParentButton, out StrategicGroup group))
-            {
-                var parentGroup = group.strategicGroupReference.Get();
-                var idx = StrategicGameState.Instance.strategicGroups.IndexOf(parentGroup);
-                if (parentGroup != null && idx != -1)
-                {
-                    // BehaviourUtils.Instance.ScheduleToSetSelectionForListView(objectListView, idx);
-                    Utils.SetSelectionForListView(objectListView, idx);
-                }
-            }
-        };
+        // BindIStrategicGroupMemberReferenceable(root, this);
+        Utils.BindIStrategicGroupMemberReferenceable(root, this);
+
+        // var gotoParentButton = root.Q<Button>("GotoParentButton");
+        // gotoParentButton.clicked += () =>
+        // {
+        //     if (Utils.TryResolveCurrentValueForBinding(gotoParentButton, out IStrategicGroupMemberReferenceable group))
+        //     {
+        //         var parentGroup = group.strategicGroupReference.Get();
+        //         var idx = StrategicGameState.Instance.strategicGroups.IndexOf(parentGroup);
+        //         if (parentGroup != null && idx != -1)
+        //         {
+        //             // BehaviourUtils.Instance.ScheduleToSetSelectionForListView(objectListView, idx);
+        //             Utils.SetSelectionForListView(objectListView, idx);
+        //         }
+        //     }
+        // };
+
+        // var currentSourceDepotButton = root.Q<Button>("CurrentSourceDepotButton");
+        // currentSourceDepotButton.clicked += () =>
+        // {
+        //     if (Utils.TryResolveCurrentValueForBinding(currentSourceDepotButton, out IStrategicGroupMemberReferenceable group))
+        //     {
+        //         var currentSourceDepot = group.GetCurrentSourceDepot();
+        //         if (currentSourceDepot != null)
+        //         {
+        //             var idx = StrategicGameState.Instance.landUnits.IndexOf(currentSourceDepot);
+        //             if (idx != -1)
+        //             {
+        //                 // Hide();
+        //                 LandUnitEditor.Instance.Show();
+        //                 BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
+        //             }
+        //         }
+        //     }
+        // };
     }
+
+    // TODO: Move to a neutral location
+    // public static void BindIStrategicGroupMemberReferenceable<T>(VisualElement root, SingletonDocument<T> meDoc) where T : MonoBehaviour
+    // {
+    //     var gotoParentButton = root.Q<Button>("GotoParentButton");
+    //     gotoParentButton.clicked += () =>
+    //     {
+    //         if (Utils.TryResolveCurrentValueForBinding(gotoParentButton, out IStrategicGroupMemberReferenceable group))
+    //         {
+    //             var parentGroup = group.strategicGroupReference.Get();
+    //             var idx = StrategicGameState.Instance.strategicGroups.IndexOf(parentGroup);
+    //             if (parentGroup != null && idx != -1)
+    //             {
+    //                 // gameObject
+    //                 if (!StrategicGroupEditor.Instance.gameObject.activeSelf)
+    //                 {
+    //                     meDoc.Hide();
+    //                     StrategicGroupEditor.Instance.Show();
+    //                 }
+    //                 // Utils.SetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
+    //                 BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
+    //             }
+    //         }
+    //     };
+
+    //     var currentSourceDepotButton = root.Q<Button>("CurrentSourceDepotButton");
+    //     currentSourceDepotButton.clicked += () =>
+    //     {
+    //         if (Utils.TryResolveCurrentValueForBinding(currentSourceDepotButton, out IStrategicGroupMemberReferenceable group))
+    //         {
+    //             var currentSourceDepot = group.GetCurrentSourceDepot();
+    //             if (currentSourceDepot != null)
+    //             {
+    //                 var idx = StrategicGameState.Instance.landUnits.IndexOf(currentSourceDepot);
+    //                 if (idx != -1)
+    //                 {
+    //                     // Hide();
+    //                     if (!LandUnitEditor.Instance.gameObject.activeSelf)
+    //                     {
+    //                         meDoc.Hide();
+    //                         LandUnitEditor.Instance.Show();
+    //                     }
+    //                     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
+    //                 }
+    //             }
+    //         }
+    //     };
+    // }
 
     void GotoReferenceable(IStrategicGroupMemberReferenceable gotoObj)
     {
@@ -125,6 +183,7 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
             var idx = StrategicGameState.Instance.shipLogs.IndexOf(shipLog);
             if (shipLog != null && idx != -1)
             {
+                Hide();
                 ShipLogEditor.Instance.Show();
                 BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipLogEditor.Instance.shipLogListView, idx);
             }
@@ -134,6 +193,7 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
             var idx = StrategicGameState.Instance.landUnits.IndexOf(landUnit);
             if (landUnit != null && idx != -1)
             {
+                Hide();
                 LandUnitEditor.Instance.Show();
                 BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
             }

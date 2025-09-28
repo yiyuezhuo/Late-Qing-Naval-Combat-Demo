@@ -339,14 +339,9 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             }
         };
 
-    }
+        Utils.BindIStrategicGroupMemberReferenceable(root, this);
 
-    // IEnumerator SetSelectionForNamedShipListView(int idx)
-    // {
-    //     // yield return new WaitForNextFrameUnit();
-    //     yield return null;
-    //     NamedShipEditor.Instance.namedShipListView.SetSelection(idx);
-    // }
+    }
 
     void OnShipLogsXmlLoaded(string text)
     {

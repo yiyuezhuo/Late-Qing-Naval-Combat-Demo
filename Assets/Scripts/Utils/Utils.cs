@@ -317,14 +317,61 @@ public static class Utils
 
     public static void DrawCircleForLineRenderer(LineRenderer lineRenderer, float latDeg, float lonDeg, float rangeM)
     {
-        var points = new Vector3[circlePoints+1];
+        var points = new Vector3[circlePoints + 1];
         for (int i = 0; i <= circlePoints; i++)
         {
             var bearingDeg = 360f * ((float)i / circlePoints);
             var (lat2Deg, lon2Deg) = MeasureStats.Approximation.CalculateNewPosition(latDeg, lonDeg, bearingDeg, rangeM);
             points[i] = LatitudeLongitudeDegHeightFootToVector3((float)lat2Deg, (float)lon2Deg, 100);
         }
-        lineRenderer.positionCount = circlePoints+1;
+        lineRenderer.positionCount = circlePoints + 1;
         lineRenderer.SetPositions(points);
+    }
+    
+    public static void BindIStrategicGroupMemberReferenceable<T>(VisualElement root, SingletonDocument<T> meDoc) where T : MonoBehaviour
+    {
+        var gotoParentButton = root.Q<Button>("GotoParentButton");
+        gotoParentButton.clicked += () =>
+        {
+            if (TryResolveCurrentValueForBinding(gotoParentButton, out IStrategicGroupMemberReferenceable group))
+            {
+                var parentGroup = group.strategicGroupReference.Get();
+                var idx = StrategicGameState.Instance.strategicGroups.IndexOf(parentGroup);
+                if (parentGroup != null && idx != -1)
+                {
+                    // gameObject
+                    if (!StrategicGroupEditor.Instance.gameObject.activeSelf)
+                    {
+                        meDoc.Hide();
+                        StrategicGroupEditor.Instance.Show();
+                    }
+                    // Utils.SetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
+                    BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
+                }
+            }
+        };
+
+        var currentSourceDepotButton = root.Q<Button>("CurrentSourceDepotButton");
+        currentSourceDepotButton.clicked += () =>
+        {
+            if (TryResolveCurrentValueForBinding(currentSourceDepotButton, out IStrategicGroupMemberReferenceable group))
+            {
+                var currentSourceDepot = group.GetCurrentSourceDepot();
+                if (currentSourceDepot != null)
+                {
+                    var idx = StrategicGameState.Instance.landUnits.IndexOf(currentSourceDepot);
+                    if (idx != -1)
+                    {
+                        // Hide();
+                        if (!LandUnitEditor.Instance.gameObject.activeSelf)
+                        {
+                            meDoc.Hide();
+                            LandUnitEditor.Instance.Show();
+                        }
+                        BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
+                    }
+                }
+            }
+        };
     }
 }

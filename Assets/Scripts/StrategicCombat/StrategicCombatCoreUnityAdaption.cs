@@ -6,7 +6,7 @@ using UnityEngine;
 using NavalCombatCore;
 using UnityEngine.InputSystem.Utilities;
 using System.Xml.Serialization;
-
+using StrategicCombatCore;
 
 namespace StrategicCombatCore
 {
@@ -144,6 +144,14 @@ namespace StrategicCombatCore
             set => SetDeployState(value);
         }
 
+        // IStrategicGroupMemberReferenceable Shared
+        # region
+        [CreateProperty]
+        public string parentName => ((IStrategicGroupMemberReferenceable)this).GetParentName();
+
+        [CreateProperty]
+        public string currentSourceDepotName => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepotName();
+        #endregion
     }
 
     public partial class StrategicGroupReference
@@ -322,13 +330,16 @@ namespace StrategicCombatCore
     {
         [CreateProperty]
         public string landUnitTemplateName => GetLandUnitTemplate()?.name?.mergedName ?? "[Undefined or Invalid]";
-    }
 
-    // public partial class SubStrategicCombat.CombatSideState
-    // {
-    //     [CreateProperty]
-    //     public float moraleDynamic => GetMoraleDynamic();
-    // }
+        // IStrategicGroupMemberReferenceable Shared
+        # region
+        [CreateProperty]
+        public string parentName => ((IStrategicGroupMemberReferenceable)this).GetParentName();
+
+        [CreateProperty]
+        public string currentSourceDepotName => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepotName();
+        #endregion
+    }
 
     public partial class SubStrategicCombat
     {
@@ -412,4 +423,17 @@ namespace StrategicCombatCore
         public bool isOneWayUnload => type == MissionType.OneWayUnload;
     }
 
+
+}
+
+namespace NavalCombatCore
+{
+    public partial class ShipLog
+    {
+        [CreateProperty]
+        public string parentName => ((IStrategicGroupMemberReferenceable)this).GetParentName();
+
+        [CreateProperty]
+        public string currentSourceDepotName => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepotName();
+    }
 }

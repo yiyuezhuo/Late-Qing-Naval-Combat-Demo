@@ -1,5 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:Template name="IStrategicGroupMemberReferenceableParentDepotUI" src="project://database/Assets/UIDocuments/Templates/IStrategicGroupMemberReferenceableParentDepotUI.uxml?fileID=9197481963319205126&amp;guid=a4efcf1499aee3c4e856250902f80d71&amp;type=3#IStrategicGroupMemberReferenceableParentDepotUI" />
     <ui:VisualElement data-source-type="LandUnitEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Land Unit Editor" class="title">
             <Bindings>
@@ -59,6 +60,7 @@
                                 <ui:DataBinding property="value" data-source-path="supplyGeneratedTons" binding-mode="TwoWay" />
                             </Bindings>
                         </ui:FloatField>
+                        <ui:Instance template="IStrategicGroupMemberReferenceableParentDepotUI" />
                         <ui:Label text="Remark">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)" />

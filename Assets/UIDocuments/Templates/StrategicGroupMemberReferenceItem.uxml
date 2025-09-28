@@ -26,17 +26,17 @@
             </Bindings>
         </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1;">
-            <ui:Label text="Name">
+            <ui:Label text="Name" style="margin-bottom: 0; margin-top: 0;">
                 <Bindings>
                     <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget" />
                 </Bindings>
             </ui:Label>
-            <ui:Label text="Desc1">
+            <ui:Label text="Desc1" style="margin-top: 0; margin-bottom: 0;">
                 <Bindings>
                     <ui:DataBinding property="text" data-source-path="desc1" binding-mode="ToTarget" />
                 </Bindings>
             </ui:Label>
-            <ui:Label text="Desc2">
+            <ui:Label text="Desc2" style="margin-top: 0; margin-bottom: 0;">
                 <Bindings>
                     <ui:DataBinding property="text" data-source-path="desc2" binding-mode="ToTarget" />
                 </Bindings>

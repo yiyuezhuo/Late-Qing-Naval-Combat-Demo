@@ -332,13 +332,16 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            if (Input.GetMouseButtonDown(0)) // left click
+            var leftClicking = Input.GetMouseButtonDown(0);
+            var rightClicking = Input.GetMouseButtonDown(1);
+
+            if (leftClicking || rightClicking) // left click
             {
                 var cam = PlaneCameraController.Instance.cam;
 
                 // UITK World Spcace enforce a 3D collider, so we can only use 3D Raycast
                 var ray = cam.ScreenPointToRay(Input.mousePosition);
-                if (mapEditMode == StrategicMapEditMode.Select && Physics.Raycast(ray, out var hitInfo) && hitInfo.collider.CompareTag("Icon"))
+                if (mapEditMode == StrategicMapEditMode.Select && Physics.Raycast(ray, out var hitInfo) && hitInfo.collider.CompareTag("Icon")) // click on group
                 {
                     // Group Inco Click
 
@@ -353,25 +356,39 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
                     Debug.Log($"group={group}, groupSide={groupSide}, currentStack={currentStack}, topStackGroup={topStackGroup}");
 
-                    if (lastSelectedStrategicGroup != topStackGroup) // New Click => Select
+                    if (rightClicking && lastSelectedStrategicGroup == topStackGroup)
                     {
-                        lastSelectedStrategicGroup = topStackGroup;
+                        // lastSelectedStrategicGroup = topStackGroup;
+                        var idx = StrategicGameState.Instance.strategicGroups.IndexOf(topStackGroup);
+                        if (group != null && idx != -1)
+                        {
+                            StrategicGroupEditor.Instance.Show();
+                            BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
+                        }
                     }
-                    else // Repeat Click => Toggle Stack
-                    {
-                        strategicGroupReferences.RemoveAll(r => r.referenceId == topStackGroup.objectId);
-                        strategicGroupReferences.Insert(0, new() { referenceId = topStackGroup.objectId });
-                        currentStack = group.currentStack;
-                        topStackGroup = currentStack[^1];
 
-                        lastSelectedStrategicGroup = topStackGroup;
+                    if (leftClicking)
+                    {
+                        if (lastSelectedStrategicGroup != topStackGroup) // New Click => Select
+                        {
+                            lastSelectedStrategicGroup = topStackGroup;
+                        }
+                        else // Repeat Left Click => Toggle Stack
+                        {
+                            strategicGroupReferences.RemoveAll(r => r.referenceId == topStackGroup.objectId);
+                            strategicGroupReferences.Insert(0, new() { referenceId = topStackGroup.objectId });
+                            currentStack = group.currentStack;
+                            topStackGroup = currentStack[^1];
+
+                            lastSelectedStrategicGroup = topStackGroup;
+                        }
                     }
 
                     lastSelectedCell = group.cell;
 
                     // hexInfo.strategicGroupReferences.Select(r => r.Get()).Where(g => g.country)
                 }
-                else
+                else // click on map (cell)
                 {
                     var worldPoint = cam.ScreenToWorldPoint(Input.mousePosition);
 

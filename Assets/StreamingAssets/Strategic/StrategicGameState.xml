@@ -261,6 +261,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -554,6 +556,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -820,6 +824,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1026,6 +1032,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1220,6 +1228,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1441,6 +1451,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1662,6 +1674,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1873,6 +1887,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2084,6 +2100,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2308,6 +2326,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2532,6 +2552,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2737,6 +2759,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2942,6 +2966,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3147,6 +3173,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3343,6 +3371,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3585,6 +3615,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3894,6 +3926,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -4205,6 +4239,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -4456,6 +4492,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -4776,6 +4814,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5042,6 +5082,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5296,6 +5338,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5490,6 +5534,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5659,6 +5705,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5796,6 +5844,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5921,6 +5971,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6048,6 +6100,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6299,6 +6353,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6530,6 +6586,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6763,6 +6821,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6996,6 +7056,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7190,6 +7252,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7405,6 +7469,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7532,6 +7598,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7657,6 +7725,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7782,6 +7852,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7909,6 +7981,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8036,6 +8110,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8163,6 +8239,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8290,6 +8368,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8417,6 +8497,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8544,6 +8626,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8671,6 +8755,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8796,6 +8882,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8923,6 +9011,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9048,6 +9138,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9173,6 +9265,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9298,6 +9392,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9425,6 +9521,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9561,6 +9659,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9697,6 +9797,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9833,6 +9935,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9978,6 +10082,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10105,6 +10211,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10232,6 +10340,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10359,6 +10469,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10486,6 +10598,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10613,6 +10727,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10711,6 +10827,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10807,6 +10925,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10903,6 +11023,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10999,6 +11121,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11095,6 +11219,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11191,6 +11317,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11287,6 +11415,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11383,6 +11513,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11479,6 +11611,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11575,6 +11709,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11671,6 +11807,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11767,6 +11905,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11863,6 +12003,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11959,6 +12101,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12055,6 +12199,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12151,6 +12297,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12247,6 +12395,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12343,6 +12493,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12439,6 +12591,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12537,6 +12691,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12635,6 +12791,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12733,6 +12891,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -13558,7 +13718,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>正定練軍中営</japanese>
     <chineseSimplified>正定练军中营</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
+   <stregnth>500</stregnth>
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -13572,7 +13732,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>R Bn, ZD LA</english>
     <chineseSimplified>正定练军右营</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
+   <stregnth>500</stregnth>
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -13878,6 +14038,34 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <objectId>0c66f06a-2031-478c-8899-bce39dc614ba</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Weihaiwei Depot</english>
+    <chineseSimplified>威海卫仓库</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <objectId>08cbd225-e688-4354-aaa2-9509a71af1e2</objectId>
+   <strategicGroupReference>
+    <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Port of Arthur Depot</english>
+    <chineseSimplified>旅顺仓库</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <objectId>49888c20-7d72-4eae-ab87-02be51361b92</objectId>
+   <strategicGroupReference>
+    <referenceId>580cfa37-58f2-41f6-af34-9ba1906a5eee</referenceId>
    </strategicGroupReference>
   </LandUnit>
  </landUnits>
@@ -15249,7 +15437,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <yProp>28</yProp>
    <objectId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</objectId>
    <strategicGroupReference>
-    <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
+    <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
@@ -15260,9 +15448,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <type>CoastArtillery</type>
    <size>Regiment</size>
    <country>China</country>
-   <deployState>Independent</deployState>
-   <independentX>21</independentX>
-   <independentY>30</independentY>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
    <leaderReference />
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
@@ -15271,7 +15459,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <yProp>30</yProp>
    <objectId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</objectId>
    <strategicGroupReference>
-    <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
+    <referenceId>580cfa37-58f2-41f6-af34-9ba1906a5eee</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
@@ -15282,9 +15470,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <type>CoastArtillery</type>
    <size>Regiment</size>
    <country>China</country>
-   <deployState>Independent</deployState>
-   <independentX>22</independentX>
-   <independentY>28</independentY>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
    <leaderReference />
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
@@ -15293,7 +15481,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <yProp>28</yProp>
    <objectId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</objectId>
    <strategicGroupReference>
-    <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
+    <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
@@ -15390,13 +15578,10 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>f4d6ffd3-4566-46bb-a178-5811cf748be5</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+     <referenceId>580cfa37-58f2-41f6-af34-9ba1906a5eee</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</referenceId>
+     <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -15495,7 +15680,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <xProp>29</xProp>
    <yProp>28</yProp>
    <objectId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</objectId>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+   </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
    <name>
@@ -15528,7 +15715,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <xProp>28</xProp>
    <yProp>28</yProp>
    <objectId>643148ed-5d9c-4329-b6b0-9c91c90fa4d2</objectId>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+   </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
    <name>
@@ -15556,7 +15745,83 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <xProp>23</xProp>
    <yProp>28</yProp>
    <objectId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</objectId>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Beiyang Fleet Admiral Department</english>
+    <chineseSimplified>北洋水师提督府</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Corp</size>
+   <country>China</country>
+   <deployState>Independent</deployState>
+   <independentX>22</independentX>
+   <independentY>28</independentY>
+   <leaderReference>
+    <referenceObjectId>18963af7-1163-4323-9421-9f2421c9fee1</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>08cbd225-e688-4354-aaa2-9509a71af1e2</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>643148ed-5d9c-4329-b6b0-9c91c90fa4d2</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>22</xProp>
+   <yProp>28</yProp>
+   <objectId>c1bab757-235c-4e54-8dd7-048a36abd130</objectId>
+   <strategicGroupReference>
+    <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Port of Arthur Base HQ</english>
+    <chineseSimplified>旅顺基地HQ</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Division</size>
+   <country>China</country>
+   <deployState>Independent</deployState>
+   <independentX>21</independentX>
+   <independentY>30</independentY>
+   <leaderReference>
+    <referenceObjectId>130f7855-e669-4969-b7e7-1c975b8541c6</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>49888c20-7d72-4eae-ab87-02be51361b92</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>21</xProp>
+   <yProp>30</yProp>
+   <objectId>580cfa37-58f2-41f6-af34-9ba1906a5eee</objectId>
+   <strategicGroupReference>
+    <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
+   </strategicGroupReference>
   </StrategicGroup>
  </strategicGroups>
  <scenarioState>
@@ -16672,7 +16937,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
     </Label>
     <StrategicGroupReferences>
      <StrategicGroupReference>
-      <referenceId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</referenceId>
+      <referenceId>580cfa37-58f2-41f6-af34-9ba1906a5eee</referenceId>
      </StrategicGroupReference>
     </StrategicGroupReferences>
    </Cell>
@@ -16727,10 +16992,10 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
     </Label>
     <StrategicGroupReferences>
      <StrategicGroupReference>
-      <referenceId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</referenceId>
+      <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
      </StrategicGroupReference>
      <StrategicGroupReference>
-      <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+      <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
      </StrategicGroupReference>
     </StrategicGroupReferences>
    </Cell>

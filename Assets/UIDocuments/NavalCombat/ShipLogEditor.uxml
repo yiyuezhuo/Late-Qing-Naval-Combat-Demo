@@ -1,6 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="SubStateMultiColumnListView" src="project://database/Assets/UIDocuments/NavalCombat/SubStateMultiColumnListView.uxml?fileID=9197481963319205126&amp;guid=24ad9cde11c482e408a031471b51bca7&amp;type=3#SubStateMultiColumnListView" />
     <ui:Template name="DoctrineEditor" src="project://database/Assets/UIDocuments/NavalCombat/DoctrineEditor.uxml?fileID=9197481963319205126&amp;guid=9963f3ab57e9cd545869989ed4b99a3d&amp;type=3#DoctrineEditor" />
+    <ui:Template name="IStrategicGroupMemberReferenceableParentDepotUI" src="project://database/Assets/UIDocuments/Templates/IStrategicGroupMemberReferenceableParentDepotUI.uxml?fileID=9197481963319205126&amp;guid=a4efcf1499aee3c4e856250902f80d71&amp;type=3#IStrategicGroupMemberReferenceableParentDepotUI" />
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement name="VisualElement" data-source-type="ShipLogEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Ship Log Editor" class="title">
@@ -485,6 +486,21 @@
                                     <Bindings>
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(364519395856384)" />
                                     </Bindings>
+                                </ui:Tab>
+                                <ui:Tab label="Strategic">
+                                    <ui:VisualElement style="flex-grow: 1;">
+                                        <ui:FloatField label="Supply Tons">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="supplyTons" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:FloatField label="Fixed Hours">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="fixedHours" binding-mode="TwoWay" />
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:Instance template="IStrategicGroupMemberReferenceableParentDepotUI" />
+                                    </ui:VisualElement>
                                 </ui:Tab>
                             </ui:TabView>
                         </ui:ScrollView>

@@ -1097,4 +1097,25 @@
   <remark>https://ja.wikipedia.org/wiki/%E4%B8%89%E6%B5%A6%E5%8A%9F_(%E6%B5%B7%E8%BB%8D%E8%BB%8D%E4%BA%BA)</remark>
   <objectId>a2fca3f8-a344-4c97-9f2e-191b70ccc96a</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Gong Zhaoyu</english>
+   <japanese>龔照玙</japanese>
+   <chineseSimplified>龚照玙</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Gong Zhaoyu.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>BarelyCompetent</landOperational>
+  <landTactical>BarelyCompetent</landTactical>
+  <traits>
+   <LeaderTrait>Coward</LeaderTrait>
+  </traits>
+  <objectId>130f7855-e669-4969-b7e7-1c975b8541c6</objectId>
+ </Leader>
 </ArrayOfLeader>

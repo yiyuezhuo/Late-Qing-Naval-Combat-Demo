@@ -97,6 +97,9 @@ public class LandUnitEditor : LeftObjectPickerRightEditorStrategic<LandUnitEdito
                 }
             }
         };
+
+        // StrategicGroupEditor.BindIStrategicGroupMemberReferenceable(root, this);
+        Utils.BindIStrategicGroupMemberReferenceable(root, this);
     }
     // public override string GetObjectListViewName() => "LandUnitListView";
 }

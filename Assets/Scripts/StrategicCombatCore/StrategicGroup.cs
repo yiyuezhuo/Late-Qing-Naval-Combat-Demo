@@ -210,7 +210,6 @@ namespace StrategicCombatCore
         // From Vacuum or to vacuum, or move to other cell through vacuum.
         public void MoveToXY(int toX, int toY, bool moveThroughEdge)
         {
-            var prevCell = cell;
             var toCell = StrategicGameState.Instance.cellMatrix[toX, toY];
 
             if (deployState == DeployState.Independent && x != -1 && y != -1)
@@ -224,14 +223,20 @@ namespace StrategicCombatCore
 
             cell.StrategicGroupReferences.Add(new() { referenceId = objectId });
 
-            if (moveThroughEdge && toCell.TryGetDirection(prevCell, out var edge))
+            if (moveThroughEdge)
             {
-                toCell.SetEdgeSide(edge, side);
+                var prevCell = cell;
+                if (toCell.TryGetDirection(prevCell, out var edge))
+                {
+                    toCell.SetEdgeSide(edge, side);
+                }
+
+                prevCell.RefreshControlState();
+                StrategicGameState.Instance.InvokeMapCellUpdated(prevCell.x, prevCell.y);
             }
+
             toCell.RefreshControlState();
-            prevCell.RefreshControlState();
             StrategicGameState.Instance.InvokeMapCellUpdated(toCell.x, toCell.y);
-            StrategicGameState.Instance.InvokeMapCellUpdated(prevCell.x, prevCell.y);
         }
 
         public void RemoveFromMap()

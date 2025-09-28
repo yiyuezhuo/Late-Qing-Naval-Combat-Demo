@@ -10505,4 +10505,157 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
   <ram>None</ram>
   <objectId>033caeff-4831-4ecf-9416-cde0f648bb59</objectId>
  </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Generic IJN Transport</english>
+   <chineseSimplified>通用日军运输船</chineseSimplified>
+  </name>
+  <type>Transport</type>
+  <country>Japan</country>
+  <displacementTons>3000</displacementTons>
+  <complementMen>150</complementMen>
+  <lengthFoot>325</lengthFoot>
+  <beamFoot>42</beamFoot>
+  <draftFoot>29</draftFoot>
+  <engineDesc>
+   <english>unnamed</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>unnamed</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>unnamed</english>
+   </name>
+   <mountLocationRecords />
+   <torpedoSettings />
+   <ammunitionCapacity>0</ammunitionCapacity>
+   <damageClass>A</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords />
+  <targetSizeModifier>0</targetSizeModifier>
+  <damagePoint>1000</damagePoint>
+  <speedKnots>12</speedKnots>
+  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>12</float>
+   <float>7</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>12</float>
+   <float>6</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>12</float>
+   <float>7</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>90</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>120</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+  </armorRating>
+  <remark>Generic IJN Transport</remark>
+  <portraitReference>
+   <path>Pictures/Ships/Saikyo_Maru.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures/Ships/Saikyo_Maru_Top.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <ram>None</ram>
+  <objectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Generic China Transport</english>
+   <chineseSimplified>通用清军运输船</chineseSimplified>
+  </name>
+  <type>Transport</type>
+  <country>China</country>
+  <displacementTons>3000</displacementTons>
+  <complementMen>150</complementMen>
+  <lengthFoot>325</lengthFoot>
+  <beamFoot>42</beamFoot>
+  <draftFoot>29</draftFoot>
+  <engineDesc>
+   <english>unnamed</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>unnamed</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>unnamed</english>
+   </name>
+   <mountLocationRecords />
+   <torpedoSettings />
+   <ammunitionCapacity>0</ammunitionCapacity>
+   <damageClass>A</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords />
+  <targetSizeModifier>0</targetSizeModifier>
+  <damagePoint>1000</damagePoint>
+  <speedKnots>12</speedKnots>
+  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>12</float>
+   <float>7</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>12</float>
+   <float>6</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>12</float>
+   <float>7</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>90</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>120</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+  </armorRating>
+  <portraitReference>
+   <path>Pictures/Ships/Saikyo_Maru.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures/Ships/Saikyo_Maru_Top.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <ram>None</ram>
+  <objectId>f499fddd-e799-4b6b-a71a-e46201c985a2</objectId>
+ </ShipClass>
 </ArrayOfShipClass>

@@ -22,7 +22,8 @@ namespace NavalCombatCore
         Destroyer, // DD
         PatrolGunboat, // PG
         TorpedoBoat, // TB
-        ArmedMerchantCruiser // AMC
+        ArmedMerchantCruiser, // AMC
+        Transport // TR, Transport or merchant ship
     }
 
     public enum MountLocation // SEEKRIEG like 3x3 location
@@ -653,7 +654,8 @@ namespace NavalCombatCore
             {ShipType.Destroyer, "DD"},
             {ShipType.PatrolGunboat, "PG"},
             {ShipType.TorpedoBoat, "TB"},
-            {ShipType.ArmedMerchantCruiser, "AMC"}
+            {ShipType.ArmedMerchantCruiser, "AMC"},
+            {ShipType.Transport, "TR"}
         };
 
         public static string GetAcronymFor(ShipType shipType)

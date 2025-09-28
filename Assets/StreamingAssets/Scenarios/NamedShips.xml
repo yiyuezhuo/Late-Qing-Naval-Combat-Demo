@@ -1449,4 +1449,466 @@
   <notAvailableForFirstSinoJapaneseWar>true</notAvailableForFirstSinoJapaneseWar>
   <objectId>13db4215-f2e6-4876-a9bc-a788d29a57ff</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Enshū Maru</english>
+   <japanese>遠江丸</japanese>
+   <chineseSimplified>远江丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>f3b9f536-d8e0-4679-b73d-c018bd26646c</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Kagoshima Maru</english>
+   <japanese>鹿兒島丸</japanese>
+   <chineseSimplified>鹿儿岛丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>bdbb4804-81b9-4586-9b5e-8bdd4bf77d2c</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Yamaguchi Maru</english>
+   <japanese>山口丸</japanese>
+   <chineseSimplified>山口丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>e7454721-0f13-41c7-ae18-487bba6a2a28</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Kinshū Maru</english>
+   <japanese>金州丸</japanese>
+   <chineseSimplified>金州丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>631dc3d4-5e5a-42bd-949e-046c7a9a229e</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Miki Maru</english>
+   <japanese>三池丸</japanese>
+   <chineseSimplified>三池丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>84f20929-89f8-46b5-9da1-5362f695d7a0</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Toyohashi Maru</english>
+   <japanese>豐橋丸</japanese>
+   <chineseSimplified>封桥丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>15d98f04-0f31-4564-aca7-d692964e3b1d</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Shibata Maru</english>
+   <japanese>新發田丸</japanese>
+   <chineseSimplified>新发田丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>af7e8e29-25ca-4853-bcd8-763d5e68316e</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Ariake Maru</english>
+   <japanese>有明丸</japanese>
+   <chineseSimplified>有明丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>2ef747f7-1800-48a7-8ffa-039cd09ad7e5</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Sōya Maru</english>
+   <japanese>宗谷丸</japanese>
+   <chineseSimplified>宗谷丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>9a88c0f3-1d75-47f4-8bb0-74aafe50abfd</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Hyōgo Maru</english>
+   <japanese>兵庫丸</japanese>
+   <chineseSimplified>兵库丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>131eb933-c6ad-4bea-a263-cb9276e04647</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Kokura Maru</english>
+   <japanese>小倉丸</japanese>
+   <chineseSimplified>小仓丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>76d9777a-8f19-4dec-87db-07c6c5ca4115</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Tateyama Maru</english>
+   <japanese>立山丸</japanese>
+   <chineseSimplified>立山丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>0ad53356-5ac9-4f9d-9a7c-307030928482</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Sakata Maru</english>
+   <japanese>酒田丸</japanese>
+   <chineseSimplified>酒田丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>c656d4a5-7e3e-4484-88bf-c03743e9a5a9</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Nagoya Maru</english>
+   <japanese>名古屋丸</japanese>
+   <chineseSimplified>名古屋丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>667ffa05-ef82-475a-aaef-c909cc4e15d4</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Hiroshima Maru</english>
+   <japanese>廣島丸</japanese>
+   <chineseSimplified>广岛丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>b3e4a091-75e3-479b-866b-c13339fdff5f</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Satsuma Maru</english>
+   <japanese>薩摩丸</japanese>
+   <chineseSimplified>萨摩丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>d2685bc0-ae0e-445e-8f84-253bdab9a131</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Sorachi Maru</english>
+   <japanese>空知丸</japanese>
+   <chineseSimplified>空知丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>b0c890cd-d6a0-478f-9eda-65b5fd392968</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
+  <name>
+   <english>Wakanoura Maru</english>
+   <japanese>和歌浦丸</japanese>
+   <chineseSimplified>和歌浦丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>cd670f7c-da3f-4738-8838-d2284a740f32</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>f499fddd-e799-4b6b-a71a-e46201c985a2</shipClassObjectId>
+  <name>
+   <english>Ai Ren</english>
+   <japanese>愛仁</japanese>
+   <chineseSimplified>爱仁</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>228aa6dd-7b58-4342-b8dc-cdb7d64ba9b8</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>f499fddd-e799-4b6b-a71a-e46201c985a2</shipClassObjectId>
+  <name>
+   <english>Fei Jing</english>
+   <japanese>飛鯨</japanese>
+   <chineseSimplified>飞鲸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>23cdabb1-9433-4aca-9cbc-2481ad2c79d4</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>f499fddd-e799-4b6b-a71a-e46201c985a2</shipClassObjectId>
+  <name>
+   <english>Kowshing</english>
+   <japanese>高陞</japanese>
+   <chineseSimplified>高升</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>29c5ff53-f29e-4e48-926f-d234e26ac0ed</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>f499fddd-e799-4b6b-a71a-e46201c985a2</shipClassObjectId>
+  <name>
+   <english>Cao Jiang</english>
+   <japanese>操江</japanese>
+   <chineseSimplified>操江</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>e93ec8f2-d273-4daf-b228-f700c2116f44</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

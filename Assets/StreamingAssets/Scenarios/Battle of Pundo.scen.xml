@@ -257,10 +257,6 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <damageEffectRecords />
-    <damageEffects />
-    <shipboardFireStatus />
-    <leaderObjectId>a78127f5-61f9-450b-8013-1f57bfbaef42</leaderObjectId>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -270,6 +266,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
+    <timeLocLogs />
     <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -318,6 +315,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>fe3bd2c6-925d-409d-8f72-7dd82a79b2f0</objectId>
     </doctrine>
+    <strategicGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -551,10 +549,6 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <damageEffectRecords />
-    <damageEffects />
-    <shipboardFireStatus />
-    <leaderObjectId>43bfbde8-70e0-4d42-8122-3dc082557429</leaderObjectId>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -565,6 +559,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
+    <timeLocLogs />
     <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -613,6 +608,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>5d46722f-05bc-4e9b-98ec-099fa5f3279f</objectId>
     </doctrine>
+    <strategicGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -819,10 +815,6 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <damageEffectRecords />
-    <damageEffects />
-    <shipboardFireStatus />
-    <leaderObjectId>bbdc13c1-a909-411c-b949-ad82485ab108</leaderObjectId>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -833,6 +825,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
+    <timeLocLogs />
     <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -881,6 +874,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>e341e25f-d1dc-4210-9e0a-d9e2f6cfaa90</objectId>
     </doctrine>
+    <strategicGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1027,10 +1021,6 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <damageEffectRecords />
-    <damageEffects />
-    <shipboardFireStatus />
-    <leaderObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</leaderObjectId>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -1040,6 +1030,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
+    <timeLocLogs />
     <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1088,6 +1079,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>171c1563-a5d3-4969-b209-4c0ffde7fb18</objectId>
     </doctrine>
+    <strategicGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1222,10 +1214,6 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <damageEffectRecords />
-    <damageEffects />
-    <shipboardFireStatus />
-    <leaderObjectId>f3e417c3-89d7-4a71-a8b8-84c408d0cb05</leaderObjectId>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -1236,6 +1224,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
+    <timeLocLogs />
     <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1284,6 +1273,201 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>6e609ed5-a3cb-47dd-923e-7b43f59b295f</objectId>
     </doctrine>
+    <strategicGroupReference />
+   </ShipLog>
+   <ShipLog>
+    <subStates />
+    <objectId>7e13e6ba-5e69-4703-9ecc-cbe8d123328b</objectId>
+    <namedShipObjectId>29c5ff53-f29e-4e48-926f-d234e26ac0ed</namedShipObjectId>
+    <damagePoint>0</damagePoint>
+    <position>
+     <LatDeg>37.2283173</LatDeg>
+     <LonDeg>125.9919</LonDeg>
+    </position>
+    <speedKnots>0</speedKnots>
+    <headingDeg>120</headingDeg>
+    <desiredSpeedKnots>0</desiredSpeedKnots>
+    <desiredHeadingDeg>120</desiredHeadingDeg>
+    <mapState>Deployed</mapState>
+    <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
+    <batteryStatus />
+    <torpedoSectorStatus>
+     <ammunition>0</ammunition>
+     <mountStatus />
+    </torpedoSectorStatus>
+    <rapidFiringStatus />
+    <dynamicStatus>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
+     <engineRoomHits>0</engineRoomHits>
+     <propulsionShaftHits>0</propulsionShaftHits>
+     <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
+    </dynamicStatus>
+    <searchLightHits>
+     <portHit>0</portHit>
+     <starboardHit>0</starboardHit>
+    </searchLightHits>
+    <damageControlRatingHits>0</damageControlRatingHits>
+    <emergencyRudder>false</emergencyRudder>
+    <assistedDeceleration>true</assistedDeceleration>
+    <controlMode>Independent</controlMode>
+    <followDistanceYards>500</followDistanceYards>
+    <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+    <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+    <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
+    <timeLocLogs />
+    <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>c9c47cdc-ac14-4c3d-9e19-091f75e51c0e</objectId>
+    </doctrine>
+    <strategicGroupReference />
+   </ShipLog>
+   <ShipLog>
+    <subStates />
+    <objectId>e08112a9-f94c-4758-939d-46368d073e89</objectId>
+    <namedShipObjectId>e93ec8f2-d273-4daf-b228-f700c2116f44</namedShipObjectId>
+    <damagePoint>0</damagePoint>
+    <position>
+     <LatDeg>37.24954</LatDeg>
+     <LonDeg>125.923119</LonDeg>
+    </position>
+    <speedKnots>0</speedKnots>
+    <headingDeg>120</headingDeg>
+    <desiredSpeedKnots>0</desiredSpeedKnots>
+    <desiredHeadingDeg>120</desiredHeadingDeg>
+    <mapState>Deployed</mapState>
+    <operationalState>Operational</operationalState>
+    <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
+    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
+    <batteryStatus />
+    <torpedoSectorStatus>
+     <ammunition>0</ammunition>
+     <mountStatus />
+    </torpedoSectorStatus>
+    <rapidFiringStatus />
+    <dynamicStatus>
+     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <accelerationOffset>0</accelerationOffset>
+     <engineRoomHits>0</engineRoomHits>
+     <propulsionShaftHits>0</propulsionShaftHits>
+     <boilerRoomHits>0</boilerRoomHits>
+     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
+    </dynamicStatus>
+    <searchLightHits>
+     <portHit>0</portHit>
+     <starboardHit>0</starboardHit>
+    </searchLightHits>
+    <damageControlRatingHits>0</damageControlRatingHits>
+    <emergencyRudder>false</emergencyRudder>
+    <assistedDeceleration>true</assistedDeceleration>
+    <controlMode>Independent</controlMode>
+    <followDistanceYards>500</followDistanceYards>
+    <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+    <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+    <isEvasiveManeuvering>false</isEvasiveManeuvering>
+    <pendingDamagePoint>0</pendingDamagePoint>
+    <logs />
+    <timeLocLogs />
+    <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>92c4a777-0bb5-4965-ae2d-c0d81f89c736</objectId>
+    </doctrine>
+    <strategicGroupReference />
    </ShipLog>
   </shipLogs>
   <shipGroups>
@@ -1298,7 +1482,6 @@
      <japanese>第一遊撃隊</japanese>
      <chineseSimplified>第一游击队</chineseSimplified>
     </name>
-    <leaderObjectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</leaderObjectId>
     <leaderReference>
      <referenceObjectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</referenceObjectId>
     </leaderReference>
@@ -1357,13 +1540,14 @@
     <childrenObjectIds>
      <string>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</string>
      <string>93b88a00-313d-4df0-8cfb-2182851c96f7</string>
+     <string>7e13e6ba-5e69-4703-9ecc-cbe8d123328b</string>
+     <string>e08112a9-f94c-4758-939d-46368d073e89</string>
     </childrenObjectIds>
     <name>
      <english>Escort Group</english>
      <japanese>護衛隊</japanese>
      <chineseSimplified>护航队</chineseSimplified>
     </name>
-    <leaderObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</leaderObjectId>
     <leaderReference>
      <referenceObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</referenceObjectId>
     </leaderReference>
@@ -1430,12 +1614,17 @@
     <elapsedSeconds>0</elapsedSeconds>
    </weaponSimulationAssignmentClock>
    <doingStep>false</doingStep>
+   <firstLoaded>true</firstLoaded>
   </scenarioState>
   <launchedTorpedos />
+  <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>37.10052</xRotation>
-  <yRotation>233.572235</yRotation>
-  <orthographicSize>20</orthographicSize>
+  <xRotation>37.1949158</xRotation>
+  <yRotation>233.66803</yRotation>
+  <orthographicSize>40</orthographicSize>
  </viewState>
+ <eventState>
+  <eventItems />
+ </eventState>
 </FullState>

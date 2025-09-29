@@ -63,23 +63,6 @@ namespace StrategicCombatCore
         public List<Weapon> weapons = new();
         public List<StrategicGroup> strategicGroups = new();
 
-        // public SerializedHexInfo serializedHexInfo
-        // {
-        //     get
-        //     {
-        //         return new()
-        //         {
-        //             records = hexInfoMap.Values.Where(r => !r.IsEmpty()).ToList() // TODO: Filter out empty situation?
-        //         };
-        //     }
-        //     set
-        //     {
-        //         hexInfoMap = value.records.ToDictionary(r => (r.x, r.y), r => r);
-        //     }
-        // }
-        // [XmlIgnore]
-        // public Dictionary<(int, int), HexInfo> hexInfoMap = new();
-
         public StrategicScenarioState scenarioState = new();
 
         public List<SideState> sideStates = new();
@@ -288,41 +271,54 @@ namespace StrategicCombatCore
         {
             scenarioState.dateTime = scenarioState.dateTime.AddHours(1);
 
-            foreach (var strategicGroup in strategicGroups)
+            Advance1HourForMission();
+            Advance1HourForMovement();
+        }
+
+        public void Advance1HourForMovement()
+        {
+            foreach (var strategicGroup in IterIndependentStrategicGroups())
             {
-                if (strategicGroup.deployState == StrategicGroup.DeployState.Independent)
+                if (strategicGroup.plannedPath.Count == 0)
                 {
-                    if (strategicGroup.plannedPath.Count == 0)
+                    strategicGroup.moveProgressionKm = 0;
+                }
+                else
+                {
+                    var speedKmPerHour = strategicGroup.GetSpeedKmPerHour();
+                    var moveKmCap = speedKmPerHour * 1;
+                    while (moveKmCap > 0 && strategicGroup.plannedPath.Count >= 2)
                     {
-                        strategicGroup.moveProgressionKm = 0;
-                    }
-                    else
-                    {
-                        var speedKmPerHour = strategicGroup.GetSpeedKmPerHour();
-                        var moveKmCap = speedKmPerHour * 1;
-                        while (moveKmCap > 0 && strategicGroup.plannedPath.Count >= 2)
+                        var nextDistKm = 50 - strategicGroup.moveProgressionKm;
+                        if (moveKmCap < nextDistKm)
                         {
-                            var nextDistKm = 50 - strategicGroup.moveProgressionKm;
-                            if (moveKmCap < nextDistKm)
+                            strategicGroup.moveProgressionKm += moveKmCap;
+                            moveKmCap = 0;
+                        }
+                        else
+                        {
+                            moveKmCap -= nextDistKm;
+                            strategicGroup.plannedPath.RemoveAt(0);
+                            strategicGroup.MoveToXY(strategicGroup.plannedPath[0].x, strategicGroup.plannedPath[0].y, true);
+                            strategicGroup.moveProgressionKm = 0;
+                            if (strategicGroup.plannedPath.Count < 2)
                             {
-                                strategicGroup.moveProgressionKm += moveKmCap;
-                                moveKmCap = 0;
-                            }
-                            else
-                            {
-                                moveKmCap -= nextDistKm;
-                                strategicGroup.plannedPath.RemoveAt(0);
-                                strategicGroup.MoveToXY(strategicGroup.plannedPath[0].x, strategicGroup.plannedPath[0].y, true);
-                                strategicGroup.moveProgressionKm = 0;
-                                if (strategicGroup.plannedPath.Count < 2)
-                                {
-                                    strategicGroup.plannedPath.Clear();
-                                }
+                                strategicGroup.plannedPath.Clear();
                             }
                         }
                     }
                 }
             }
+        }
+
+        public void Advance1HourForMission()
+        {
+            
+        }
+
+        public IEnumerable<StrategicGroup> IterIndependentStrategicGroups()
+        {
+            return strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent);
         }
 
 

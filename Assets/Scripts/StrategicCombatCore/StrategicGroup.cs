@@ -193,6 +193,26 @@ namespace StrategicCombatCore
 
         // public string strategicGroupId;
         public StrategicGroupReference strategicGroupReference { get; set; } = new();
+        public string assignedMissionObjectId;
+
+        public void SetAssignedMission(StrategicMission mission)
+        {
+            var oldMission = EntityManager.Instance.Get<StrategicMission>(assignedMissionObjectId);
+            if (oldMission != null)
+            {
+                oldMission.groups.RemoveAll(r => r.referenceId == objectId);
+            }
+
+            if (mission == null)
+            {
+                assignedMissionObjectId = null;
+            }
+            else
+            {
+                assignedMissionObjectId = mission.objectId;
+                mission.groups.Add(new() { referenceId = objectId });
+            }
+        }
 
         public SideState side => StrategicGameState.Instance.countryToSideStateMap.GetValueOrDefault(country);
         // public HexInfo hexInfo => StrategicGameState.Instance.hexInfoMap.GetValueOrDefault((x, y));

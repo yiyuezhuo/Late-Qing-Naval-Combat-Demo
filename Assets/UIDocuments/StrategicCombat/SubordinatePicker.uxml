@@ -1,25 +1,26 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement data-source-type="SubordinatePickerDialog, Assembly-CSharp" class="panel-dialog">
         <ui:Label text="Subordinate Picker" class="title">
             <Bindings>
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203648816287744)" />
             </Bindings>
         </ui:Label>
-        <ui:TabView style="flex-grow: 1;">
+        <ui:TabView name="MainTabView" class="grow" style="flex-grow: 1;">
             <ui:Tab label="Ship">
-                <ui:ListView name="ShipListView" binding-source-selection-mode="AutoAssign" selection-type="Multiple" item-template="project://database/Assets/UIDocuments/Templates/ShipLogLabel.uxml?fileID=9197481963319205126&amp;guid=5651049bc518a7246863972edb054f20&amp;type=3#ShipLogLabel" data-source-path="unassignedShipLogs" />
+                <ui:ListView name="ShipListView" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/ShipLogLabel.uxml?fileID=9197481963319205126&amp;guid=5651049bc518a7246863972edb054f20&amp;type=3#ShipLogLabel" data-source-path="filteredShipLogs" selection-type="Multiple" style="flex-grow: 1;" />
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203801048551424)" />
                 </Bindings>
             </ui:Tab>
             <ui:Tab label="Land Unit">
-                <ui:ListView name="LandUnitListView" binding-source-selection-mode="AutoAssign" selection-type="Multiple" data-source-path="unassignedLandUnits" item-template="project://database/Assets/UIDocuments/Templates/LandUnitLabel.uxml?fileID=9197481963319205126&amp;guid=c06f535a8a0702e448f9525328086019&amp;type=3#LandUnitLabel" />
+                <ui:ListView name="LandUnitListView" binding-source-selection-mode="AutoAssign" selection-type="Multiple" data-source-path="filteredLandUnits" item-template="project://database/Assets/UIDocuments/Templates/LandUnitLabel.uxml?fileID=9197481963319205126&amp;guid=c06f535a8a0702e448f9525328086019&amp;type=3#LandUnitLabel" style="flex-grow: 1;" />
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203857801678848)" />
                 </Bindings>
             </ui:Tab>
             <ui:Tab label="Group">
-                <ui:ListView name="GroupListView" binding-source-selection-mode="AutoAssign" selection-type="Multiple" data-source-path="unassignedGroups" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupLabel.uxml?fileID=9197481963319205126&amp;guid=34ee77fc95e8a904caa681718cd94b24&amp;type=3#StrategicGroupLabel" />
+                <ui:ListView name="GroupListView" binding-source-selection-mode="AutoAssign" selection-type="Multiple" data-source-path="filteredGroups" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupLabel.uxml?fileID=9197481963319205126&amp;guid=34ee77fc95e8a904caa681718cd94b24&amp;type=3#StrategicGroupLabel" style="flex-grow: 1;" />
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203935249502208)" />
                 </Bindings>

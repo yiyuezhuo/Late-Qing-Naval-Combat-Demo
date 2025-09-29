@@ -18,13 +18,18 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
     public virtual void OnDestroy()
     {
         Debug.Log($"OnDestroy: {typeof(T)}");
-        
+
         if (_instance == this)
             _instance = null;
     }
 }
 
-public class SingletonDocument<T> : SingletonMonoBehaviour<T> where T : MonoBehaviour
+public interface IHidable
+{
+    void Hide();
+}
+
+public class SingletonDocument<T> : SingletonMonoBehaviour<T>, IHidable where T : MonoBehaviour
 {
     protected UIDocument doc;
     protected VisualElement root => doc.rootVisualElement;
@@ -72,7 +77,7 @@ public class SingletonDocument<T> : SingletonMonoBehaviour<T> where T : MonoBeha
 
         OnHidden();
     }
-    
+
     protected virtual void OnHidden()
     {
 

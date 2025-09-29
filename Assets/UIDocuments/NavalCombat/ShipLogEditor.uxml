@@ -223,6 +223,20 @@
                                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(108931957035008)" />
                                                         </Bindings>
                                                     </ui:TextField>
+                                                    <ui:VisualElement style="flex-grow: 1; border-top-width: 1px; border-left-width: 1px; border-bottom-width: 1px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; margin-left: 2px; margin-right: 2px;">
+                                                        <ui:Label text="Strategic" />
+                                                        <ui:FloatField label="Supply Tons">
+                                                            <Bindings>
+                                                                <ui:DataBinding property="value" data-source-path="supplyTons" binding-mode="TwoWay" />
+                                                            </Bindings>
+                                                        </ui:FloatField>
+                                                        <ui:FloatField label="Fixed Hours">
+                                                            <Bindings>
+                                                                <ui:DataBinding property="value" data-source-path="fixedHours" binding-mode="TwoWay" />
+                                                            </Bindings>
+                                                        </ui:FloatField>
+                                                        <ui:Instance template="IStrategicGroupMemberReferenceableParentDepotUI" />
+                                                    </ui:VisualElement>
                                                 </ui:VisualElement>
                                                 <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                                                     <ui:FloatField label="Damage Point">
@@ -486,21 +500,6 @@
                                     <Bindings>
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(364519395856384)" />
                                     </Bindings>
-                                </ui:Tab>
-                                <ui:Tab label="Strategic">
-                                    <ui:VisualElement style="flex-grow: 1;">
-                                        <ui:FloatField label="Supply Tons">
-                                            <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="supplyTons" binding-mode="TwoWay" />
-                                            </Bindings>
-                                        </ui:FloatField>
-                                        <ui:FloatField label="Fixed Hours">
-                                            <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="fixedHours" binding-mode="TwoWay" />
-                                            </Bindings>
-                                        </ui:FloatField>
-                                        <ui:Instance template="IStrategicGroupMemberReferenceableParentDepotUI" />
-                                    </ui:VisualElement>
                                 </ui:Tab>
                             </ui:TabView>
                         </ui:ScrollView>

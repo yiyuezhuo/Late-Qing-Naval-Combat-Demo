@@ -138,14 +138,6 @@ public static class Utils
                 {
                     EntityManager.Instance.Unregister(labeledObj);
                 }
-                if (v is StrategicGroupMemberReference strategicGroupMemberReference)
-                {
-                    var obj = strategicGroupMemberReference.Get();
-                    // obj.strategicGroupReference.referenceId = null;
-                    // obj.SetStrategicGroupReference(null);
-                    if (obj != null)
-                        obj.strategicGroupReference.referenceId = null;
-                }
             }
         };
     }
@@ -154,6 +146,46 @@ public static class Utils
     {
         listView.itemsAdded += MakeCallbackForItemsAdded<T>(listView, parentProvider);
         listView.itemsRemoved += MakeCallbackForItemsRemoved(listView);
+    }
+
+    public static void BindParentGroupChildrenAddedRemoved<T>(BaseListView listView, Func<object> parentProvider) where T : new()
+    {
+        // listView.itemsAdded += MakeCallbackForItemsAdded<T>(listView, parentProvider);
+        // listView.itemsRemoved += MakeCallbackForItemsRemoved(listView);
+        BindItemsAddedRemoved<T>(listView, parentProvider);
+
+        listView.itemsRemoved += (IEnumerable<int> index) =>
+        {
+            foreach (var i in index)
+            {
+                var v = listView.itemsSource[i];
+                if (v is StrategicGroupMemberReference strategicGroupMemberReference)
+                {
+                    var obj = strategicGroupMemberReference.Get();
+                    if (obj != null)
+                        obj.strategicGroupReference.referenceId = null;
+                }
+            }
+        };
+    }
+
+    public static void BindMissionMembershipAddedRemoved<T>(BaseListView listView, Func<object> parentProvider) where T : new()
+    {
+        BindItemsAddedRemoved<T>(listView, parentProvider);
+        
+        listView.itemsRemoved += (IEnumerable<int> index) =>
+        {
+            foreach (var i in index)
+            {
+                var v = listView.itemsSource[i];
+                if (v is StrategicGroupMemberReference strategicGroupMemberReference)
+                {
+                    var obj = strategicGroupMemberReference.Get() as StrategicGroup;
+                    if (obj != null)
+                        obj.assignedMissionObjectId = null;
+                }
+            }
+        };
     }
 
     public static void BindItemsSourceRecursive(VisualElement root)
@@ -327,7 +359,7 @@ public static class Utils
         lineRenderer.positionCount = circlePoints + 1;
         lineRenderer.SetPositions(points);
     }
-    
+
     public static void BindIStrategicGroupMemberReferenceable<T>(VisualElement root, SingletonDocument<T> meDoc) where T : MonoBehaviour
     {
         var gotoParentButton = root.Q<Button>("GotoParentButton");
@@ -372,6 +404,156 @@ public static class Utils
                     }
                 }
             }
+        };
+    }
+
+    static void GotoReferenceable(IStrategicGroupMemberReferenceable gotoObj, IHidable meDoc)
+    {
+        if (gotoObj is StrategicGroup group)
+        {
+            var idx = StrategicGameState.Instance.strategicGroups.IndexOf(group);
+            if (group != null && idx != -1)
+            {
+                // BehaviourUtils.Instance.ScheduleToSetSelectionForListView(objectListView, idx);
+                // SetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
+                if ((object)meDoc != StrategicGroupEditor.Instance)
+                {
+                    meDoc?.Hide();
+                    StrategicGroupEditor.Instance.Show();
+                }
+                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
+            }
+        }
+        else if (gotoObj is ShipLog shipLog)
+        {
+            var idx = StrategicGameState.Instance.shipLogs.IndexOf(shipLog);
+            if (shipLog != null && idx != -1)
+            {
+                if ((object)meDoc != ShipLogEditor.Instance)
+                {
+                    meDoc?.Hide();
+                    ShipLogEditor.Instance.Show();
+                }
+                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipLogEditor.Instance.shipLogListView, idx);
+            }
+        }
+        else if (gotoObj is LandUnit landUnit)
+        {
+            var idx = StrategicGameState.Instance.landUnits.IndexOf(landUnit);
+            if (landUnit != null && idx != -1)
+            {
+                if ((object)meDoc != LandUnitEditor.Instance)
+                {
+                    meDoc?.Hide();
+                    LandUnitEditor.Instance.Show();
+                }
+                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
+            }
+        }
+    }
+
+    public static void BindGotoButton(VisualElement item, IHidable meDoc)
+    {
+        var gotoButton = item.Q<Button>("GotoButton");
+        gotoButton.clicked += () =>
+        {
+            if (TryResolveCurrentValueForBinding(gotoButton, out StrategicGroupMemberReference fieldReference))
+            {
+                Debug.Log("reference GotoButton clicked");
+
+                var gotoObj = fieldReference.Get();
+                GotoReferenceable(gotoObj, meDoc);
+            }
+        };
+    }
+
+    public static void BindStrategicGroupMemberReferenceListView(ListView subordinatesCombinedListView, VisualElement contentContainer, IHidable meDoc)
+    {
+        // BindItemsAddedRemoved<StrategicGroupMemberReference>(subordinatesCombinedListView, () => null);
+        BindParentGroupChildrenAddedRemoved<StrategicGroupMemberReference>(subordinatesCombinedListView, () => null);
+
+        subordinatesCombinedListView.makeItem = () =>
+        {
+            var item = subordinatesCombinedListView.itemTemplate.CloneTree();
+            // BindStrategicGroupMemberReference(item);
+
+            var setButton = item.Q<Button>("SetButton");
+            setButton.clicked += () =>
+            {
+                if (TryResolveCurrentValueForBinding(contentContainer, out StrategicGroup selectedStrategicGroup) &&
+                    TryResolveCurrentValueForBinding(setButton, out StrategicGroupMemberReference fieldReference))
+                {
+                    Debug.Log("reference SetButton clicked");
+
+                    DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables =>
+                    {
+                        var oldObj = fieldReference.Get();
+                        if (oldObj != null)
+                        {
+                            // oldObj.SetStrategicGroupReference(null);
+                            oldObj.strategicGroupReference.referenceId = null;
+                        }
+
+                        var selectedReferenceable = selectedReferenceables.FirstOrDefault();
+
+                        if (selectedReferenceable != null && selectedStrategicGroup != null)
+                        {
+                            selectedReferenceable.SetStrategicGroupReference(null);
+                            fieldReference.referenceId = selectedReferenceable.objectId;
+                            selectedReferenceable.strategicGroupReference.referenceId = selectedStrategicGroup.objectId;
+                        }
+                    }, SubordinatePickerDialog.Mode.ParentUnassignedMember);
+                }
+            };
+
+            BindGotoButton(item, meDoc);
+
+            return item;
+        };
+    }
+
+    public static void BindMissionMembership(ListView subordinatesCombinedListView, VisualElement contentContainer, IHidable meDoc)
+    {
+        // BindItemsAddedRemoved<StrategicGroupMemberReference>(subordinatesCombinedListView, () => null);
+        BindMissionMembershipAddedRemoved<StrategicGroupMemberReference>(subordinatesCombinedListView, () => null);
+
+        subordinatesCombinedListView.makeItem = () =>
+        {
+            var item = subordinatesCombinedListView.itemTemplate.CloneTree();
+            // BindStrategicGroupMemberReference(item);
+
+            var setButton = item.Q<Button>("SetButton");
+            setButton.clicked += () =>
+            {
+                if (TryResolveCurrentValueForBinding(contentContainer, out StrategicMission selectedMission) &&
+                    TryResolveCurrentValueForBinding(setButton, out StrategicGroupMemberReference fieldReference))
+                {
+                    Debug.Log("reference SetButton clicked");
+
+                    DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables =>
+                    {
+                        var oldObj = fieldReference.Get() as StrategicGroup;
+                        if (oldObj != null)
+                        {
+                            // oldObj.SetStrategicGroupReference(null);
+                            oldObj.assignedMissionObjectId = null;
+                        }
+
+                        var dialogSelectedStrategicGroup = selectedReferenceables.FirstOrDefault() as StrategicGroup;
+
+                        if (dialogSelectedStrategicGroup != null && selectedMission != null)
+                        {
+                            dialogSelectedStrategicGroup.SetAssignedMission(null);
+                            fieldReference.referenceId = dialogSelectedStrategicGroup.objectId;
+                            dialogSelectedStrategicGroup.assignedMissionObjectId = selectedMission.objectId;
+                        }
+                    }, SubordinatePickerDialog.Mode.MissionUnassignedGroup);
+                }
+            };
+
+            BindGotoButton(item, meDoc);
+
+            return item;
         };
     }
 }

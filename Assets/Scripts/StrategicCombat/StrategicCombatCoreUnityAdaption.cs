@@ -152,6 +152,9 @@ namespace StrategicCombatCore
         [CreateProperty]
         public string currentSourceDepotName => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepotName();
         #endregion
+
+        [CreateProperty]
+        public string assignedMissionName => EntityManager.Instance.Get<StrategicMission>(assignedMissionObjectId)?.name?.mergedName ?? "[Undefined or Invalid]";
     }
 
     public partial class StrategicGroupReference

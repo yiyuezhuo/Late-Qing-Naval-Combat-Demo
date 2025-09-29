@@ -280,11 +280,12 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                                 {
                                     fieldReference.referenceId = selectedReferenceable.objectId;
                                 }
-                            }, false);
+                            }, SubordinatePickerDialog.Mode.Free);
                         }
                     };
 
-                    StrategicGroupEditor.Instance.BindGotoButton(item);
+                    // StrategicGroupEditor.Instance.BindGotoButton(item);
+                    Utils.BindGotoButton(item, null); // TODO: Remove strange reference of StrategicGroupEditor
 
                     return item;
                 };
@@ -556,13 +557,20 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
-    public void PopupStrategicGroupPickerDialog(Action<StrategicGroup> callback)
+    public void PopupStrategicGroupPickerDialog(Action<StrategicGroup> callback, Func<StrategicGroup, bool> filter = null)
     {
+        var strategicGroups = StrategicGameManager.Instance.gameState.strategicGroups;
+        if (filter != null)
+        {
+            strategicGroups = strategicGroups.Where(filter).ToList();
+        }
+
         var tempDialog = new TempDialog()
         {
             root = root,
             template = strategicGroupPickerDialogDocument,
-            templateDataSource = StrategicGameManager.Instance,
+            // templateDataSource = StrategicGameManager.Instance,
+            templateDataSource = strategicGroups
         };
 
         tempDialog.onConfirmed += (sender, el) =>
@@ -575,12 +583,12 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
-    public void PopupSubordinatePickerDialog(Action<List<IStrategicGroupMemberReferenceable>> confirmCallback, bool showNonParentGroupOnly)
+    public void PopupSubordinatePickerDialog(Action<List<IStrategicGroupMemberReferenceable>> confirmCallback, SubordinatePickerDialog.Mode mode)
     {
         var subordinatePickerDialog = new SubordinatePickerDialog()
         {
             confirmCallback = confirmCallback,
-            showNonParentGroupOnly = showNonParentGroupOnly
+            mode = mode
         };
 
         var tempDialog = new TempDialog()

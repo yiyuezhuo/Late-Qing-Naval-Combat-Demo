@@ -6,19 +6,37 @@ using StrategicCombatCore;
 using System.Linq;
 using System;
 using CoreUtils;
+using UnityEngine;
 
 public class SubordinatePickerDialog
 {
-    public bool showNonParentGroupOnly = true;
+    public enum Mode
+    {
+        Free,
+        ParentUnassignedMember,
+        Depot,
+        MissionUnassignedGroup
+    }
 
-    [CreateProperty]
-    public List<ShipLog> unassignedShipLogs => !showNonParentGroupOnly ? StrategicGameState.Instance.shipLogs : StrategicGameState.Instance.shipLogs.Where(shipLog => !shipLog.strategicGroupReference.isReferenceAny()).ToList();
+    // public bool showNonParentGroupOnly = true;
+    public Mode mode = Mode.ParentUnassignedMember;
 
-    [CreateProperty]
-    public List<LandUnit> unassignedLandUnits => !showNonParentGroupOnly ? StrategicGameState.Instance.landUnits : StrategicGameState.Instance.landUnits.Where(landUnit => !landUnit.strategicGroupReference.isReferenceAny()).ToList();
+    // [CreateProperty]
+    // public List<ShipLog> unassignedShipLogs => !showNonParentGroupOnly ? StrategicGameState.Instance.shipLogs : StrategicGameState.Instance.shipLogs.Where(shipLog => !shipLog.strategicGroupReference.isReferenceAny()).ToList();
 
-    [CreateProperty]
-    public List<StrategicGroup> unassignedGroups => !showNonParentGroupOnly ? StrategicGameState.Instance.strategicGroups : StrategicGameState.Instance.strategicGroups.Where(group => !group.strategicGroupReference.isReferenceAny()).ToList();
+    // [CreateProperty]
+    // public List<LandUnit> unassignedLandUnits => !showNonParentGroupOnly ? StrategicGameState.Instance.landUnits : StrategicGameState.Instance.landUnits.Where(landUnit => !landUnit.strategicGroupReference.isReferenceAny()).ToList();
+
+    // [CreateProperty]
+    // public List<StrategicGroup> unassignedGroups => !showNonParentGroupOnly ? StrategicGameState.Instance.strategicGroups : StrategicGameState.Instance.strategicGroups.Where(group => !group.strategicGroupReference.isReferenceAny()).ToList();
+
+    public List<ShipLog> filteredShipLogs;
+    public List<LandUnit> filteredLandUnits;
+    public List<StrategicGroup> filteredGroups;
+
+    // public List<ShipLog> MakeUnassignedShipLogs() => !showNonParentGroupOnly ? StrategicGameState.Instance.shipLogs : StrategicGameState.Instance.shipLogs.Where(shipLog => !shipLog.strategicGroupReference.isReferenceAny()).ToList();
+    // public List<LandUnit> MakeUnassignedLandUnits() => !showNonParentGroupOnly ? StrategicGameState.Instance.landUnits : StrategicGameState.Instance.landUnits.Where(landUnit => !landUnit.strategicGroupReference.isReferenceAny()).ToList();
+    // public List<StrategicGroup> MakeUnassignedGroups() => !showNonParentGroupOnly ? StrategicGameState.Instance.strategicGroups : StrategicGameState.Instance.strategicGroups.Where(group => !group.strategicGroupReference.isReferenceAny()).ToList();
 
     ListView shipListView;
     ListView landUnitListView;
@@ -28,9 +46,37 @@ public class SubordinatePickerDialog
 
     public void OnCreated(object sender, VisualElement el)
     {
+        var mainTabView = el.Q<TabView>("MainTabView");
+
         shipListView = el.Q<ListView>("ShipListView");
         landUnitListView = el.Q<ListView>("LandUnitListView");
         groupListView = el.Q<ListView>("GroupListView");
+
+        filteredShipLogs = StrategicGameState.Instance.shipLogs;
+        filteredLandUnits = StrategicGameState.Instance.landUnits;
+        filteredGroups = StrategicGameState.Instance.strategicGroups;
+
+        if (mode == Mode.ParentUnassignedMember)
+        {
+            Debug.Log(1);
+            filteredShipLogs = filteredShipLogs.Where(shipLog => !shipLog.strategicGroupReference.isReferenceAny()).ToList();
+            filteredLandUnits = filteredLandUnits.Where(landUnit => !landUnit.strategicGroupReference.isReferenceAny()).ToList();
+            filteredGroups = filteredGroups.Where(group => !group.strategicGroupReference.isReferenceAny()).ToList();
+        }
+        else if (mode == Mode.Depot)
+        {
+            mainTabView.selectedTabIndex = 1;
+            filteredShipLogs = new();
+            filteredLandUnits = filteredLandUnits.Where(landUnit => landUnit.GetLandUnitTemplate()?.unitType == LandUnitType.Supply).ToList();
+            filteredGroups = new();
+        }
+        else if (mode == Mode.MissionUnassignedGroup)
+        {
+            mainTabView.selectedTabIndex = 2;
+            filteredShipLogs = new();
+            filteredLandUnits = new();
+            filteredGroups = filteredGroups.Where(group => group.assignedMissionObjectId == null).ToList();
+        }
     }
 
     public void OnConfirmed(object sender, VisualElement el)

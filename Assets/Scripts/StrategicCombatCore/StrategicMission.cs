@@ -3,6 +3,13 @@ using CoreUtils;
 
 namespace StrategicCombatCore
 {
+    public partial class LandUnitReference
+    {
+        public string objectId;
+
+        public LandUnit Get() => EntityManager.Instance.Get<LandUnit>(objectId);
+    }
+
     public partial class StrategicMission : IObjectIdLabeled
     {
         public string objectId { get; set; }
@@ -47,15 +54,31 @@ namespace StrategicCombatCore
 
         public SupplyState supplyState;
 
-        public StrategicGroupMemberReference startHq;
-        public StrategicGroupMemberReference destinationHq;
+        // public StrategicGroupMemberReference startHq;
+        // public StrategicGroupMemberReference destinationHq;
+        // public string sourceDepotObjectId;
+        // public string targetDepotObjectId;
+        public LandUnitReference sourceDepotReference = new();
+        public LandUnitReference targetDepotReference = new();
 
         public enum OneWayUnloadState
         {
             Assembling,
             StartToDestination
         }
-        
+
         public OneWayUnloadState oneWayUnloadState;
+
+        public Cell GetWaypointStartCell()
+        {
+            var xy = waypoints[0];
+            return waypoints.Count == 0 ? null : StrategicGameState.Instance.cellMatrix[xy.x, xy.y];
+        }
+
+        public Cell GetWaypointDestinationCell()
+        {
+            var xy = waypoints[^1];
+            return waypoints.Count == 0 ? null : StrategicGameState.Instance.cellMatrix[xy.x, xy.y];
+        }
     }
 }

@@ -1,6 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
-    <ui:Template name="StrategicGroupMemberReferenceItem" src="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" />
     <ui:VisualElement data-source-type="StrategicMissionEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Strategic Mission Editor" class="title" />
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
@@ -45,10 +44,24 @@
                                         <ui:DataBinding property="value" data-source-path="supplyState" binding-mode="TwoWay" />
                                     </Bindings>
                                 </ui:EnumField>
-                                <ui:Label text="Source Unit" />
-                                <ui:Instance template="StrategicGroupMemberReferenceItem" data-source-path="startHq" />
-                                <ui:Label text="Destination Unit" />
-                                <ui:Instance template="StrategicGroupMemberReferenceItem" data-source-path="destinationHq" />
+                                <ui:VisualElement data-source-path="sourceDepotReference" style="flex-grow: 1; flex-direction: row;">
+                                    <ui:Label text="Source Depot" style="width: 120px;" />
+                                    <ui:Button text="Set" name="SetSourceDepotButton" />
+                                    <ui:Button text="Source Depot Name" name="GotoSourceDepotButton" style="flex-grow: 1;">
+                                        <Bindings>
+                                            <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget" />
+                                        </Bindings>
+                                    </ui:Button>
+                                </ui:VisualElement>
+                                <ui:VisualElement data-source-path="targetDepotReference" style="flex-grow: 1; flex-direction: row;">
+                                    <ui:Label text="Target Depot" style="width: 120px;" />
+                                    <ui:Button text="Set" name="SetTargetDepotButton" />
+                                    <ui:Button text="Target Depot Name" name="GotoTargetDepotButton" style="flex-grow: 1;">
+                                        <Bindings>
+                                            <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget" />
+                                        </Bindings>
+                                    </ui:Button>
+                                </ui:VisualElement>
                                 <Bindings>
                                     <ui:DataBinding property="style.display" data-source-path="isSupply" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
                                 </Bindings>

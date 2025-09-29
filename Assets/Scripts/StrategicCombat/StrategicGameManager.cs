@@ -388,7 +388,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
                     // hexInfo.strategicGroupReferences.Select(r => r.Get()).Where(g => g.country)
                 }
-                else // click on map (cell)
+                else if(leftClicking) // click on map (cell)
                 {
                     var worldPoint = cam.ScreenToWorldPoint(Input.mousePosition);
 

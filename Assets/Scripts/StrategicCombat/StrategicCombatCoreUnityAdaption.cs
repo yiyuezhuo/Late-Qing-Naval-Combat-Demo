@@ -424,6 +424,18 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public bool isOneWayUnload => type == MissionType.OneWayUnload;
+
+        // [CreateProperty]
+        // public string sourceDepotName => EntityManager.Instance.Get<LandUnit>(sourceDepotObjectId)?.name?.mergedName ?? "[Not defined or Invalid]";
+
+        // [CreateProperty]
+        // public string targetDepotName => EntityManager.Instance.Get<LandUnit>(targetDepotObjectId)?.name?.mergedName ?? "[Not defined or Invalid]";
+    }
+
+    public partial class LandUnitReference
+    {
+        [CreateProperty]
+        public string name => Get()?.name?.mergedName ?? "[Not defined or Invalid]";
     }
 
 

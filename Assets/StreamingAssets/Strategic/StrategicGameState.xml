@@ -14569,6 +14569,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
      <referenceId>6a88e57c-f643-4dde-b19a-42b3ac06b91e</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <assignedMissionObjectId>f4c0d26b-9520-4dbc-94ca-865fa88a85d0</assignedMissionObjectId>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>30</xProp>
@@ -15937,7 +15938,32 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <objectId>6900b3ca-0f12-491a-9799-2e499a9d6e3e</objectId>
   </SideState>
  </sideStates>
- <missions />
+ <missions>
+  <StrategicMission>
+   <name>
+    <english>Test Mission</english>
+   </name>
+   <groups>
+    <StrategicGroupMemberReference>
+     <referenceId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</referenceId>
+    </StrategicGroupMemberReference>
+   </groups>
+   <waypoints>
+    <XY x="28" y="27" />
+    <XY x="28" y="26" />
+    <XY x="28" y="25" />
+    <XY x="28" y="24" />
+    <XY x="28" y="23" />
+   </waypoints>
+   <type>Patrol</type>
+   <patrolState>Assembling</patrolState>
+   <supplyState>Assembling</supplyState>
+   <sourceDepotReference />
+   <targetDepotReference />
+   <oneWayUnloadState>Assembling</oneWayUnloadState>
+   <objectId>f4c0d26b-9520-4dbc-94ca-865fa88a85d0</objectId>
+  </StrategicMission>
+ </missions>
  <serializedCells>
   <width>60</width>
   <height>40</height>
@@ -17308,7 +17334,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <Cell x="29" y="19" terrain="ShallowWater" longitude="125.8734" latitude="32.76768" />
    <Cell x="29" y="20" terrain="ShallowWater" longitude="125.868828" latitude="33.3092766" />
    <Cell x="29" y="21" terrain="ShallowWater" longitude="125.856377" latitude="33.8497772" />
-   <Cell x="29" y="22" terrain="Field" longitude="125.838478" latitude="34.3895836" />
+   <Cell x="29" y="22" terrain="ShallowWater" longitude="125.838478" latitude="34.3895836" />
    <Cell x="29" y="23" terrain="ShallowWater" longitude="125.818428" latitude="34.92921" />
    <Cell x="29" y="24" terrain="ShallowWater" longitude="125.7983" latitude="35.4689636" />
    <Cell x="29" y="25" terrain="ShallowWater" longitude="125.779274" latitude="36.0089722" />

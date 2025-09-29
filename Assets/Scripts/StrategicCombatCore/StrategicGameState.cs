@@ -5,6 +5,7 @@ using System.Linq;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
+using YYZ.PathFinding;
 
 namespace StrategicCombatCore
 {
@@ -313,7 +314,83 @@ namespace StrategicCombatCore
 
         public void Advance1HourForMission()
         {
-            
+            // Update Missions
+            foreach (var mission in missions)
+            {
+                if (mission.waypoints.Count >= 2)
+                {
+                    var cells = mission.groups.Select(groupRef => (groupRef.Get() as StrategicGroup)?.cell).ToHashSet();
+                    if (cells.Count == 1)
+                    {
+                        var groupingCell = cells.First();
+                        if (mission.patrolState == StrategicMission.PatrolState.Assembling && groupingCell == mission.GetWaypointStartCell())
+                        {
+                            mission.patrolState = StrategicMission.PatrolState.StartToDestination;
+                        }
+                        else if (mission.patrolState == StrategicMission.PatrolState.StartToDestination && groupingCell == mission.GetWaypointDestinationCell())
+                        {
+                            mission.patrolState = StrategicMission.PatrolState.DestinationToStart;
+                        }
+                        else if (mission.patrolState == StrategicMission.PatrolState.DestinationToStart && groupingCell == mission.GetWaypointStartCell())
+                        {
+                            // mission.patrolState = StrategicMission.PatrolState.Assembling;
+                            mission.patrolState = StrategicMission.PatrolState.StartToDestination;
+                        }
+                    }
+                }
+            }
+
+
+            // Update Strategic Groups
+            foreach (var strategicGroup in IterIndependentStrategicGroups())
+            {
+                var mission = EntityManager.Instance.Get<StrategicMission>(strategicGroup.assignedMissionObjectId);
+                if (mission != null && mission.waypoints.Count >= 2)
+                {
+                    if (mission.type == StrategicMission.MissionType.Patrol)
+                    {
+                        if (strategicGroup.plannedPath.Count == 0) // Create new path if path is empty
+                        {
+                            if (mission.patrolState == StrategicMission.PatrolState.Assembling)
+                            {
+                                var groupCell = strategicGroup.cell;
+                                var waypointStartCell = mission.GetWaypointStartCell();
+                                if (groupCell != waypointStartCell)
+                                {
+                                    IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy();
+                                    var pathCells = PathFinding<Cell>.AStar(graph, groupCell, waypointStartCell);
+                                    if (pathCells.Count >= 2)
+                                    {
+                                        strategicGroup.plannedPath.AddRange(pathCells.Select(cell => new XY() { x = cell.x, y = cell.y }));
+                                    }
+                                }
+                            }
+                            else if (mission.patrolState == StrategicMission.PatrolState.StartToDestination)
+                            {
+                                var groupCell = strategicGroup.cell;
+                                var waypointStartCell = mission.GetWaypointStartCell();
+                                if (groupCell == waypointStartCell)
+                                {
+                                    strategicGroup.plannedPath.Clear();
+                                    strategicGroup.plannedPath.AddRange(mission.waypoints);
+                                }
+                            }
+                            else if (mission.patrolState == StrategicMission.PatrolState.DestinationToStart)
+                            {
+                                var groupCell = strategicGroup.cell;
+                                var waypointDestinationCell = mission.GetWaypointDestinationCell();
+                                if (groupCell != null && waypointDestinationCell != null)
+                                {
+                                    strategicGroup.plannedPath.Clear();
+                                    strategicGroup.plannedPath.AddRange(mission.waypoints);
+                                    strategicGroup.plannedPath.Reverse();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
         }
 
         public IEnumerable<StrategicGroup> IterIndependentStrategicGroups()
@@ -344,6 +421,9 @@ namespace StrategicCombatCore
 
             foreach (var sideState in sideStates)
                 EntityManager.Instance.Register(sideState, null);
+
+            foreach (var mission in missions)
+                EntityManager.Instance.Register(mission, null);
         }
 
         static StrategicGameState _instance;

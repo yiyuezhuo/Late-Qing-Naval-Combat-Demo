@@ -15,7 +15,7 @@ public class SubordinatePickerDialog
         Free,
         ParentUnassignedMember,
         Depot,
-        MissionUnassignedGroup
+        MissionUnassignedFleetGroup
     }
 
     // public bool showNonParentGroupOnly = true;
@@ -70,12 +70,12 @@ public class SubordinatePickerDialog
             filteredLandUnits = filteredLandUnits.Where(landUnit => landUnit.GetLandUnitTemplate()?.unitType == LandUnitType.Supply).ToList();
             filteredGroups = new();
         }
-        else if (mode == Mode.MissionUnassignedGroup)
+        else if (mode == Mode.MissionUnassignedFleetGroup)
         {
             mainTabView.selectedTabIndex = 2;
             filteredShipLogs = new();
             filteredLandUnits = new();
-            filteredGroups = filteredGroups.Where(group => group.assignedMissionObjectId == null).ToList();
+            filteredGroups = filteredGroups.Where(group => group.assignedMissionObjectId == null && group.type == StrategicGroup.Type.Fleet).ToList();
         }
     }
 

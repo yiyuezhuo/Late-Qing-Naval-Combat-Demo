@@ -547,7 +547,7 @@ public static class Utils
                             fieldReference.referenceId = dialogSelectedStrategicGroup.objectId;
                             dialogSelectedStrategicGroup.assignedMissionObjectId = selectedMission.objectId;
                         }
-                    }, SubordinatePickerDialog.Mode.MissionUnassignedGroup);
+                    }, SubordinatePickerDialog.Mode.MissionUnassignedFleetGroup);
                 }
             };
 

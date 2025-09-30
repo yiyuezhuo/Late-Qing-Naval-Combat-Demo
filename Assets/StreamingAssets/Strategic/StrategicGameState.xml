@@ -14070,7 +14070,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
   </LandUnit>
   <LandUnit>
    <name>
-    <english>3rd Eng Regt</english>
+    <english>3rd Eng Btn</english>
     <chineseSimplified>第三工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
@@ -14084,7 +14084,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
   </LandUnit>
   <LandUnit>
    <name>
-    <english>5th Eng Regt</english>
+    <english>5th Eng Btn</english>
     <chineseSimplified>第五工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
@@ -14098,7 +14098,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
   </LandUnit>
   <LandUnit>
    <name>
-    <english>1st Eng Regt</english>
+    <english>1st Eng Btn</english>
     <chineseSimplified>第一工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
@@ -14112,7 +14112,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
   </LandUnit>
   <LandUnit>
    <name>
-    <english>2nd Eng Regt</english>
+    <english>2nd Eng Btn</english>
     <chineseSimplified>第二工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
@@ -14126,7 +14126,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
   </LandUnit>
   <LandUnit>
    <name>
-    <english>6th Eng Regt</english>
+    <english>6th Eng Btn</english>
     <chineseSimplified>第六工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
@@ -14137,6 +14137,75 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <strategicGroupReference>
     <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
    </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Cav Btn</english>
+    <chineseSimplified>第一骑兵大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
+   <objectId>9383e113-f7f4-42f2-b32c-4fcd821336de</objectId>
+   <strategicGroupReference>
+    <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Cav Btn</english>
+    <chineseSimplified>第二骑兵大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
+   <objectId>0ae1f8e4-52a8-4256-8d98-b88378d9a528</objectId>
+   <strategicGroupReference>
+    <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Cav Btn</english>
+    <chineseSimplified>第三骑兵大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <remark>秋山好古</remark>
+   <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
+   <objectId>2bd37132-e136-43e8-831b-3413c45be55a</objectId>
+   <strategicGroupReference>
+    <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>5th Cav Btn</english>
+    <chineseSimplified>第五骑兵大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
+   <objectId>77e9aa0f-8850-41e2-a7f4-554a0f3f007b</objectId>
+   <strategicGroupReference>
+    <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>6th Cav Btn</english>
+    <chineseSimplified>第六骑兵大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
+   <objectId>f19f58a9-7866-40e8-9589-15672295ab95</objectId>
+   <strategicGroupReference />
   </LandUnit>
  </landUnits>
  <weapons>
@@ -15234,6 +15303,7 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
   <StrategicGroup>
    <name>
     <english>2nd Army</english>
+    <japanese>第二軍</japanese>
     <chineseSimplified>第二军</chineseSimplified>
    </name>
    <type>HeadQuarter</type>
@@ -15305,6 +15375,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>1st Div</english>
+    <japanese>第一師団</japanese>
     <chineseSimplified>第一师团</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -15324,7 +15395,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>8e96a6fd-cc26-4141-8d7b-7525ef0cc8c4</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>a9254508-4f4f-46ae-ba00-7d06e6623944</referenceId>
+     <referenceId>9383e113-f7f4-42f2-b32c-4fcd821336de</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
      <referenceId>522876be-0947-4332-8bd4-4ff4590fe99b</referenceId>
@@ -15346,6 +15417,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>2nd Div</english>
+    <japanese>第二師団</japanese>
     <chineseSimplified>第二师团</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -15354,7 +15426,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>c16d70ef-caf1-4753-882c-09d2676527d8</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
      <referenceId>eb801c55-b700-4916-85de-e57350a8530d</referenceId>
@@ -15363,7 +15437,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>93c85a86-de1e-4419-b334-ab132482ac2c</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>a0f49643-52ec-460d-a178-3ad2994cf4eb</referenceId>
+     <referenceId>0ae1f8e4-52a8-4256-8d98-b88378d9a528</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
      <referenceId>b8955e93-c485-445a-bea6-03cb3334ff86</referenceId>
@@ -15405,7 +15479,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>50981db4-4301-4799-85d2-1810b49b2e58</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>890d3a3f-5ed7-4bd8-b7fa-dc7eb43f444d</referenceId>
+     <referenceId>2bd37132-e136-43e8-831b-3413c45be55a</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
      <referenceId>5a6008b4-3d17-4ab8-b1a1-6db59608317b</referenceId>
@@ -15447,7 +15521,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>420f4cce-0a91-432d-9df6-a79bf52ce8d5</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>a245e024-f46e-421e-ade2-a6d5beb34d7c</referenceId>
+     <referenceId>77e9aa0f-8850-41e2-a7f4-554a0f3f007b</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
      <referenceId>2acf5724-c334-4d1c-99a5-7412c7337c9c</referenceId>
@@ -15469,6 +15543,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>6th Div</english>
+    <japanese>第六師団</japanese>
     <chineseSimplified>第六师团</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -15477,7 +15552,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>1142c402-080a-4392-9586-6fc6e63e10f0</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
      <referenceId>77135c77-356b-4eca-a404-77d41ce53d37</referenceId>
@@ -15486,7 +15563,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <referenceId>f085019b-b735-4ad1-bfb5-b94b94aa267b</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>063d79cc-455d-4543-b0c1-94c8abd36db3</referenceId>
+     <referenceId>f19f58a9-7866-40e8-9589-15672295ab95</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
      <referenceId>e5b44beb-48e2-4296-9a8f-98f89f7d1cc4</referenceId>
@@ -15554,7 +15631,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>Combined</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>facbfd37-a2ef-4cda-b2f2-249087b3a00a</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
      <referenceId>fa3430e2-124a-46dd-a18e-c20a42555159</referenceId>
@@ -15575,6 +15654,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>11th Inf Regt</english>
+    <japanese>第十二歩兵旅団</japanese>
     <chineseSimplified>第十一步兵旅团</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -15583,7 +15663,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>dd2e9dab-4833-47d7-b927-203f9375f9df</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
      <referenceId>a76c17c1-c4be-4917-8422-54553be670b5</referenceId>
@@ -15604,6 +15686,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>12th Inf Regt</english>
+    <japanese>第十二歩兵旅団</japanese>
     <chineseSimplified>第十二步兵旅团</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -15612,7 +15695,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>65f00168-7828-4b73-a421-0c4935841be0</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
      <referenceId>f97d2f58-fb9e-487b-a8fb-999246e1804f</referenceId>
@@ -15633,6 +15718,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>1st Inf Bde</english>
+    <japanese>第一歩兵旅団</japanese>
     <chineseSimplified>第一步兵旅团</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -15664,6 +15750,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>2nd Inf Bde</english>
+    <japanese>第二歩兵旅団</japanese>
     <chineseSimplified>第二步兵旅团</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -15695,6 +15782,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>3rd Inf Bde</english>
+    <japanese>第三歩兵旅団</japanese>
     <chineseSimplified>第三步兵旅团</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -15703,7 +15791,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>0c8c9249-c840-405b-b838-54c30dbc9ac7</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
      <referenceId>5eb01bdd-7b9a-401a-89be-3382df10e892</referenceId>
@@ -15724,6 +15814,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>4th Inf Bde</english>
+    <japanese>第四歩兵旅団</japanese>
     <chineseSimplified>第四步兵旅团</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -15732,7 +15823,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>78bc2b3b-d960-4a50-9602-f8e63a8e757c</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
      <referenceId>9e0224f3-d2ad-4b79-bb3b-939b2096bf03</referenceId>
@@ -15762,7 +15855,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>Combined</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>90580c6c-279e-4d53-8e35-14913b55c6b0</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
      <referenceId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</referenceId>
@@ -15792,7 +15887,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>Combined</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>c18c415d-a39c-4fcd-8fb7-c7427b53d4cc</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
      <referenceId>10a4192d-931c-469b-b315-716438d8c28b</referenceId>
@@ -15898,7 +15995,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>Combined</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>64f6e1f1-3972-4b04-98c7-0f3769d63568</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -15912,6 +16011,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>13th Inf Regt</english>
+    <japanese>第十三歩兵連隊</japanese>
     <chineseSimplified>第十三步兵联队</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -15934,6 +16034,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>14th Inf Regt</english>
+    <japanese>第十四歩兵連隊</japanese>
     <chineseSimplified>第十四步兵联队</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -15942,7 +16043,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>5d641ae9-68f4-4fcf-89f8-020dcf7e8ff7</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -15956,6 +16059,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>15th Inf Regt</english>
+    <japanese>第十五歩兵連隊</japanese>
     <chineseSimplified>第十五步兵联队</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -15978,6 +16082,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>16st Inf Regt</english>
+    <japanese>第十六歩兵連隊</japanese>
     <chineseSimplified>第十六步兵联队</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -15986,7 +16091,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>81603dfe-975d-48e4-8cab-f2ad76f6367d</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16000,6 +16107,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>17th Inf Regt</english>
+    <japanese>第十七歩兵連隊</japanese>
     <chineseSimplified>第十七步兵联队</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -16008,7 +16116,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>edb68fc5-87f5-465b-a74b-e2d039b1d752</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16031,7 +16141,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>Combined</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>dc71fa74-56e7-4aea-b992-251320183b4b</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16054,7 +16166,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>Combined</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>e5edb69e-8498-4d5c-94e4-6f4a7672ef01</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16068,6 +16182,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>1st Inf Regt</english>
+    <japanese>第一歩兵連隊</japanese>
     <chineseSimplified>第一步兵联队</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -16134,7 +16249,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>Combined</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>9077d990-6797-4dc7-82a3-621dc67b4240</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16148,6 +16265,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>23th Inf Regt</english>
+    <japanese>第二十三歩兵連隊</japanese>
     <chineseSimplified>第二十三步兵联队</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -16170,6 +16288,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>24th Inf Regt</english>
+    <japanese>第二十四歩兵連隊</japanese>
     <chineseSimplified>第二十四步兵联队</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -16178,7 +16297,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>991fee9a-5718-43ad-82a3-26d166ab3e07</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16192,6 +16313,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>2nd Inf Regt</english>
+    <japanese>第二歩兵連隊</japanese>
     <chineseSimplified>第二步兵联队</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -16200,7 +16322,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>aa6651f0-9826-4d1d-9b2a-b42ca9eca5eb</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16214,6 +16338,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>3rd Inf Regt</english>
+    <japanese>第三歩兵連隊</japanese>
     <chineseSimplified>第三步兵联队</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -16222,7 +16347,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>85beba13-9b12-4da0-aae1-32500d3c8941</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16236,6 +16363,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>4th Inf Regt</english>
+    <japanese>第四歩兵連隊</japanese>
     <chineseSimplified>第四步兵联队</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -16244,7 +16372,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>f99757b8-a31e-438d-aef3-a55104e3c427</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16258,6 +16388,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>5th Inf Regt</english>
+    <japanese>第五歩兵連隊</japanese>
     <chineseSimplified>第五步兵联队</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -16266,7 +16397,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>58595c28-22c0-4b36-a0c9-719034668fa3</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16281,6 +16414,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <name>
     <english>6th Inf Regt</english>
     <japanese>第六歩兵連隊</japanese>
+    <chineseSimplified>第六步兵联队</chineseSimplified>
    </name>
    <type>Infantry</type>
    <size>Regiment</size>
@@ -16288,7 +16422,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>Combined</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>f1cbac7d-8df1-4430-b7b1-dd32e8e5fb3f</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16311,7 +16447,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>Combined</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>ba2d73dd-e705-4102-968d-da2b4b8c2ecd</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16324,117 +16462,8 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>1st Cav Regt</english>
-    <chineseSimplified>第一骑兵联队</chineseSimplified>
-   </name>
-   <type>Cavalry</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>-1</xProp>
-   <yProp>-1</yProp>
-   <objectId>a9254508-4f4f-46ae-ba00-7d06e6623944</objectId>
-   <strategicGroupReference>
-    <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>2nd Cav Regt</english>
-    <chineseSimplified>第二骑兵联队</chineseSimplified>
-   </name>
-   <type>Cavalry</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>-1</xProp>
-   <yProp>-1</yProp>
-   <objectId>a0f49643-52ec-460d-a178-3ad2994cf4eb</objectId>
-   <strategicGroupReference>
-    <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>3rd Cav Regt</english>
-    <chineseSimplified>第三骑兵联队</chineseSimplified>
-   </name>
-   <type>Cavalry</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>-1</xProp>
-   <yProp>-1</yProp>
-   <objectId>890d3a3f-5ed7-4bd8-b7fa-dc7eb43f444d</objectId>
-   <strategicGroupReference>
-    <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>5th Cav Regt</english>
-    <chineseSimplified>第五骑兵联队</chineseSimplified>
-   </name>
-   <type>Cavalry</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>-1</xProp>
-   <yProp>-1</yProp>
-   <objectId>a245e024-f46e-421e-ade2-a6d5beb34d7c</objectId>
-   <strategicGroupReference>
-    <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>6th Cav Regt</english>
-    <chineseSimplified>第六骑兵联队</chineseSimplified>
-   </name>
-   <type>Cavalry</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>-1</xProp>
-   <yProp>-1</yProp>
-   <objectId>063d79cc-455d-4543-b0c1-94c8abd36db3</objectId>
-   <strategicGroupReference>
-    <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
     <english>1st Art Regt</english>
+    <japanese>第一砲兵連隊</japanese>
     <chineseSimplified>第一炮兵联队</chineseSimplified>
    </name>
    <type>Artillery</type>
@@ -16443,7 +16472,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>7a0ee432-3d99-40d8-8c97-c9e81754fdce</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16457,6 +16488,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>2nd Art Regt</english>
+    <japanese>第二砲兵連隊</japanese>
     <chineseSimplified>第二炮兵联队</chineseSimplified>
    </name>
    <type>Artillery</type>
@@ -16465,7 +16497,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>1f29b4dc-c71e-4cbd-9cb4-d9553f96dfc1</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16479,6 +16513,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>3rh Art Regt</english>
+    <japanese>第三砲兵連隊</japanese>
     <chineseSimplified>第三炮兵联队</chineseSimplified>
    </name>
    <type>Artillery</type>
@@ -16487,7 +16522,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>1a8b6c44-74bd-44f7-9b68-681523ac1edc</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16501,6 +16538,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>5th Art Regt</english>
+    <japanese>第五砲兵連隊</japanese>
     <chineseSimplified>第五炮兵联队</chineseSimplified>
    </name>
    <type>Artillery</type>
@@ -16509,7 +16547,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>2ea769ec-5df1-49c6-ac8d-47344913408b</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16523,6 +16563,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>6th Art Regt</english>
+    <japanese>第六砲兵連隊</japanese>
     <chineseSimplified>第六炮兵联队</chineseSimplified>
    </name>
    <type>Artillery</type>
@@ -16531,7 +16572,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
+   <leaderReference>
+    <referenceObjectId>31b3fddd-e37a-4c4f-861c-ef5939dc481c</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
@@ -16772,6 +16815,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>Torpedo Boats</english>
+    <japanese>魚雷艇隊</japanese>
     <chineseSimplified>鱼雷艇队</chineseSimplified>
    </name>
    <type>Fleet</type>

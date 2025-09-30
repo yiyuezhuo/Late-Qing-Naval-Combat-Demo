@@ -1199,4 +1199,610 @@
   <remark>https://en.wikipedia.org/wiki/Nogi_Maresuke</remark>
   <objectId>c77c5187-72e7-452c-bbd2-6d635c7c3368</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Sakuma Samata</english>
+   <japanese>佐久間左馬太</japanese>
+   <chineseSimplified>佐久间左马太</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Sakuma_Samata.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Sakuma_Samata</remark>
+  <objectId>c16d70ef-caf1-4753-882c-09d2676527d8</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Kuroki Tamemoto</english>
+   <japanese>黒木為楨</japanese>
+   <chineseSimplified>黑木为桢</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Kuroki Tamemoto.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Kuroki_Tamemoto</remark>
+  <objectId>1142c402-080a-4392-9586-6fc6e63e10f0</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Tatsumi Naofumi</english>
+   <japanese>立見尚文</japanese>
+   <chineseSimplified>立见尚文</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Tatsumi Naofumi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Tatsumi_Naofumi</remark>
+  <objectId>facbfd37-a2ef-4cda-b2f2-249087b3a00a</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ōdera Yasuzumi</english>
+   <japanese>大寺安純</japanese>
+   <chineseSimplified>大寺安纯</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Ōdera Yasuzumi.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/%C5%8Cdera_Yasuzumi</remark>
+  <objectId>dd2e9dab-4833-47d7-b927-203f9375f9df</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Hasegawa Yoshimichi</english>
+   <japanese>長谷川好道</japanese>
+   <chineseSimplified>长谷川好道</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Hasegawa_Yoshimichi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Hasegawa_Yoshimichi</remark>
+  <objectId>65f00168-7828-4b73-a421-0c4935841be0</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Yamaguchi Motomi</english>
+   <japanese>山口素臣</japanese>
+   <chineseSimplified>山口素臣</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Yamaguchi Motomi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Yamaguchi_Motomi</remark>
+  <objectId>0c8c9249-c840-405b-b838-54c30dbc9ac7</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Prince Fushimi Sadanaru</english>
+   <japanese>伏見宮貞愛親王</japanese>
+   <chineseSimplified>伏见宫贞爱亲王</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Fushimi Sadanaru.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Prince_Fushimi_Sadanaru</remark>
+  <objectId>78bc2b3b-d960-4a50-9602-f8e63a8e757c</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ōsako Naoharu</english>
+   <japanese>大迫尚敏</japanese>
+   <chineseSimplified>大迫尚敏</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Ōsako Naoharu.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/%C5%8Csako_Naoharu</remark>
+  <objectId>90580c6c-279e-4d53-8e35-14913b55c6b0</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ōshima Hisanao</english>
+   <japanese>大島久直</japanese>
+   <chineseSimplified>大岛久直</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Ōshima Hisanao.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/%C5%8Cshima_Hisanao</remark>
+  <objectId>c18c415d-a39c-4fcd-8fb7-c7427b53d4cc</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Tomioka Sanzo</english>
+   <japanese>富岡三造</japanese>
+   <chineseSimplified>富冈三造</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Tomioka Sanzo.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://shozokan.nich.go.jp/collection/object/SZK001475-356
+https://shirakaba.link/betula/%E5%AF%8C%E5%B2%A1%E4%B8%89%E9%80%A0</remark>
+  <objectId>9077d990-6797-4dc7-82a3-621dc67b4240</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Tomoyasu Harunobu</english>
+   <japanese>友安治延</japanese>
+   <chineseSimplified>右安治延</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Tomoyasu Harunobu.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>http://bujinkensyokai.web.fc2.com/yamaguchigd.html</remark>
+  <objectId>64f6e1f1-3972-4b04-98c7-0f3769d63568</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Aihara Tsuneyo</english>
+   <japanese>粟飯原常世</japanese>
+   <chineseSimplified>粟饭原常世</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Aihara Tsuneyo.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://shozokan.nich.go.jp/collection/object/SZK001476-228</remark>
+  <objectId>e5edb69e-8498-4d5c-94e4-6f4a7672ef01</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Miyoshi Nariyuki</english>
+   <japanese>三好成行</japanese>
+   <chineseSimplified>三好成行</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Miyoshi_Nariyuki.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E4%B8%89%E5%A5%BD%E6%88%90%E8%A1%8C</remark>
+  <objectId>ba2d73dd-e705-4102-968d-da2b4b8c2ecd</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Satō Tadashi</english>
+   <japanese>佐藤正</japanese>
+   <chineseSimplified>佐藤正</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Satō_Tadashi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E6%AD%A3_(%E9%99%B8%E8%BB%8D%E8%8D%89%E5%89%B5%E6%9C%9F)</remark>
+  <objectId>dc71fa74-56e7-4aea-b992-251320183b4b</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Tsukamoto Katsuyoshi</english>
+   <japanese>塚本勝嘉</japanese>
+   <chineseSimplified>琢本胜嘉</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Tsukamoto_Katsuyoshi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E5%A1%9A%E6%9C%AC%E5%8B%9D%E5%98%89</remark>
+  <objectId>f1cbac7d-8df1-4430-b7b1-dd32e8e5fb3f</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nakaki Yukiue</english>
+   <japanese>仲木之植</japanese>
+   <chineseSimplified>仲木之植</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Nakaki Yukiue.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>http://bujinkensyokai.web.fc2.com/yamaguchigc.html</remark>
+  <objectId>f99757b8-a31e-438d-aef3-a55104e3c427</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Fukushima Yōchi</english>
+   <japanese>福島庸智</japanese>
+   <chineseSimplified>福岛庸智</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Fukushima Yōchi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://shirakaba.link/betula/%E7%A6%8F%E5%B3%B6%E5%BA%B8%E6%99%BA
+https://shozokan.nich.go.jp/collection/object/SZK001475-164</remark>
+  <objectId>81603dfe-975d-48e4-8cab-f2ad76f6367d</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Watanabe Susumu</english>
+   <japanese>渡部進</japanese>
+   <chineseSimplified>渡部进</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Watanabe Susumu.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>http://bujinkensyokai.web.fc2.com/isikawag.html</remark>
+  <objectId>58595c28-22c0-4b36-a0c9-719034668fa3</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Takimoto Miki</english>
+   <japanese>滝本美輝</japanese>
+   <chineseSimplified>泷本美辉</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Takimoto Miki.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://shozokan.nich.go.jp/collection/object/SZK001476-268</remark>
+  <objectId>edb68fc5-87f5-465b-a74b-e2d039b1d752</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Oki Jūsetsu</english>
+   <japanese>隠岐重節</japanese>
+   <chineseSimplified>隐岐重节</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Oki Jūsetsu.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>http://bujinkensyokai.web.fc2.com/chibag.html</remark>
+  <objectId>76fbca5c-9b5e-4de1-9aae-a7ddcc3cb640</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Kono Michiyoshi</english>
+   <japanese>河野通好 </japanese>
+   <chineseSimplified>河野通好</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Kono Michiyoshi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://kotobank.jp/word/%E6%B2%B3%E9%87%8E%E9%80%9A%E5%A5%BD-1074280
+https://shozokan.nich.go.jp/collection/object/SZK001476-353</remark>
+  <objectId>48a59ce3-612b-4005-9c7e-2c0286caa533</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Isechi Yoshinari</english>
+   <japanese>伊瀬知好成</japanese>
+   <chineseSimplified>伊濑知好成</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Isechi Yoshinari.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E4%BC%8A%E7%80%AC%E7%9F%A5%E5%A5%BD%E6%88%90</remark>
+  <objectId>aa6651f0-9826-4d1d-9b2a-b42ca9eca5eb</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Kimura Aritsune</english>
+   <japanese>木村有恒</japanese>
+   <chineseSimplified>有村有恒</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Kimura Aritsune.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E6%9C%A8%E6%9D%91%E6%9C%89%E6%81%92</remark>
+  <objectId>85beba13-9b12-4da0-aae1-32500d3c8941</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Masumitsu Kunisuke</english>
+   <japanese>益満邦介</japanese>
+   <chineseSimplified>益满邦介</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Masumitsu Kunisuke.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>http://bujinkensyokai.web.fc2.com/kagosimagb.html</remark>
+  <objectId>5d641ae9-68f4-4fcf-89f8-020dcf7e8ff7</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Yoshida Seiichi</english>
+   <japanese>吉田清一</japanese>
+   <chineseSimplified>吉田清一</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Yoshida Seiichi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E5%90%89%E7%94%B0%E6%B8%85%E4%B8%80</remark>
+  <objectId>991fee9a-5718-43ad-82a3-26d166ab3e07</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Shibata Masataka</english>
+   <japanese>柴田正孝</japanese>
+   <chineseSimplified>柴田正孝</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Shibata Masataka.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://jahis.law.nagoya-u.ac.jp/who/docs/who1-2968
+https://shozokan.nich.go.jp/collection/object/SZK001476-752</remark>
+  <objectId>2ea769ec-5df1-49c6-ac8d-47344913408b</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Shibano Yoshihiro</english>
+   <japanese>柴野義広</japanese>
+   <chineseSimplified>柴野义广</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Shibano Yoshihiro.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E6%9F%B4%E9%87%8E%E7%BE%A9%E5%BA%83
+https://shozokan.nich.go.jp/collection/object/SZK001474-505</remark>
+  <objectId>1a8b6c44-74bd-44f7-9b68-681523ac1edc</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nishimura Seiichi</english>
+   <japanese>西村精一</japanese>
+   <chineseSimplified>西村精一</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Nishimura_Seiichi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%9D%91%E7%B2%BE%E4%B8%80</remark>
+  <objectId>1f29b4dc-c71e-4cbd-9cb4-d9553f96dfc1</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Imazu Takanori</english>
+   <japanese>今津孝則</japanese>
+   <chineseSimplified>今津孝则</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Imazu Takanori.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://shozokan.nich.go.jp/collection/object/SZK001475-307</remark>
+  <objectId>7a0ee432-3d99-40d8-8c97-c9e81754fdce</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ishii Hayata</english>
+   <japanese>石井隼太</japanese>
+   <chineseSimplified>石井隼太</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Ishii Hayata.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E7%9F%B3%E4%BA%95%E9%9A%BC%E5%A4%AA
+https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
+  <objectId>31b3fddd-e37a-4c4f-861c-ef5939dc481c</objectId>
+ </Leader>
 </ArrayOfLeader>

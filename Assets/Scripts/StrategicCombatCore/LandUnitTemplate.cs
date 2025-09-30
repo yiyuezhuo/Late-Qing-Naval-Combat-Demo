@@ -26,7 +26,7 @@ namespace StrategicCombatCore
         Infantry,
         Cavalry,
         Artillery,
-        Enginner,
+        Engineer,
         Supply,
         MilitaryPolice,
     }

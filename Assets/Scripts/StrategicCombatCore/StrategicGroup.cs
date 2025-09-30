@@ -122,6 +122,9 @@ namespace StrategicCombatCore
             General,
             HeadQuarter,
             Infantry,
+            Cavalry, // Cavalry Regiment
+            Artillery,
+            Engineer,
             Fleet,
             CoastArtillery
         }

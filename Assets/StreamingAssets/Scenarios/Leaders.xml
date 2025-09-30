@@ -811,25 +811,6 @@
  </Leader>
  <Leader>
   <name>
-   <english>Liu Kunyi</english>
-   <japanese>劉坤一</japanese>
-   <chineseSimplified>刘坤一</chineseSimplified>
-  </name>
-  <portraitReference>
-   <path>Pictures/Leaders/Liu_Kunyi.jpg</path>
-   <isBuiltin>true</isBuiltin>
-  </portraitReference>
-  <navalStrategic>Unknown</navalStrategic>
-  <navalOperational>Unknown</navalOperational>
-  <navalTactical>Unknown</navalTactical>
-  <landStrategic>Unknown</landStrategic>
-  <landOperational>Unknown</landOperational>
-  <landTactical>Unknown</landTactical>
-  <traits />
-  <objectId>3cc91c11-83aa-4474-a41d-4ca2e1ba03b7</objectId>
- </Leader>
- <Leader>
-  <name>
    <english>Okazawa Kuwashi</english>
    <japanese>岡沢精</japanese>
    <chineseSimplified>冈泽精</chineseSimplified>
@@ -1117,5 +1098,105 @@
    <LeaderTrait>Coward</LeaderTrait>
   </traits>
   <objectId>130f7855-e669-4969-b7e7-1c975b8541c6</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Li Hanzhang</english>
+   <japanese>李瀚章</japanese>
+   <chineseSimplified>李瀚章</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Li Hanzhang.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>ce13834a-c139-4bae-aafc-c238f00c349a</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Shi Duo</english>
+   <japanese>世鐸</japanese>
+   <chineseSimplified>世铎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Shi Duo.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>BarelyCompetent</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>c77de671-ced0-4f50-9701-3916f904c97a</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Yamaji Motoharu</english>
+   <japanese>山地元治</japanese>
+   <chineseSimplified>山地元治</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Yamaji_Motoharu.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Yamaji_Motoharu
+
+</remark>
+  <objectId>62e7ff5c-a5f1-4b45-bad1-aea4b44f6d7c</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nishi Kanjirō</english>
+   <japanese>西寛二郎</japanese>
+   <chineseSimplified>西宽二郎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Nishi Kanjirō.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Nishi_Kanjir%C5%8D</remark>
+  <objectId>adaab4f1-0e61-4792-8ae6-44444b0c4c1f</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nogi Maresuke</english>
+   <japanese>乃木希典</japanese>
+   <chineseSimplified>乃木希典</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Maresuke_Nogi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Average</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Nogi_Maresuke</remark>
+  <objectId>c77c5187-72e7-452c-bbd2-6d635c7c3368</objectId>
  </Leader>
 </ArrayOfLeader>

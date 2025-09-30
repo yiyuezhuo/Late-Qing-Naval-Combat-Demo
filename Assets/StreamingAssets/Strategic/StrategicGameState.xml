@@ -13013,7 +13013,7 @@
      <objectId>f24ac743-e528-4c85-82d4-f089c4cc189c</objectId>
     </associateMinisterOfTheNavy>
     <assistantMinisterOfTheNavy>
-     <objectId>3cc91c11-83aa-4474-a41d-4ca2e1ba03b7</objectId>
+     <objectId>edf4fbab-471a-4ad5-8156-64de120a1781</objectId>
     </assistantMinisterOfTheNavy>
    </navalMinistry>
   </chineseHighCommand>
@@ -13239,7 +13239,7 @@ After 1871, Li Hongzhang added 114 state-of-the-art German Krupp 4-pound steel b
     <chineseSimplified>日本工兵大队</chineseSimplified>
    </name>
    <size>Battalion</size>
-   <unitType>Enginner</unitType>
+   <unitType>Engineer</unitType>
    <strength>0</strength>
    <guns>0</guns>
    <firepowerKgPerMin>0</firepowerKgPerMin>
@@ -13279,7 +13279,7 @@ x3 工兵中隊（每個工兵中隊：126人）
     <chineseSimplified>日军骑兵大队</chineseSimplified>
    </name>
    <size>Battalion</size>
-   <unitType>Infantry</unitType>
+   <unitType>Cavalry</unitType>
    <strength>652</strength>
    <guns>0</guns>
    <firepowerKgPerMin>0</firepowerKgPerMin>
@@ -14068,6 +14068,76 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <referenceId>580cfa37-58f2-41f6-af34-9ba1906a5eee</referenceId>
    </strategicGroupReference>
   </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Eng Regt</english>
+    <chineseSimplified>第三工兵大队</chineseSimplified>
+   </name>
+   <stregnth>520</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
+   <objectId>71dece21-c1af-4eb8-b030-94ff6263c6a1</objectId>
+   <strategicGroupReference>
+    <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>5th Eng Regt</english>
+    <chineseSimplified>第五工兵大队</chineseSimplified>
+   </name>
+   <stregnth>520</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
+   <objectId>21ea6501-23fc-4280-a9f0-6bf283ee6ef6</objectId>
+   <strategicGroupReference>
+    <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Eng Regt</english>
+    <chineseSimplified>第一工兵大队</chineseSimplified>
+   </name>
+   <stregnth>520</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
+   <objectId>744fdb08-5b3c-4d46-b292-15b599fa4cab</objectId>
+   <strategicGroupReference>
+    <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Eng Regt</english>
+    <chineseSimplified>第二工兵大队</chineseSimplified>
+   </name>
+   <stregnth>520</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
+   <objectId>786dbf87-3093-41ee-afa8-a34843395250</objectId>
+   <strategicGroupReference>
+    <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>6th Eng Regt</english>
+    <chineseSimplified>第六工兵大队</chineseSimplified>
+   </name>
+   <stregnth>520</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
+   <objectId>bb39d25f-aed9-431a-9014-e9cc7856372b</objectId>
+   <strategicGroupReference>
+    <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
  </landUnits>
  <weapons>
   <Weapon>
@@ -14468,942 +14538,237 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
  <strategicGroups>
   <StrategicGroup>
    <name>
-    <english>1st Flying Squadron</english>
-    <japanese>第一遊撃隊</japanese>
-    <chineseSimplified>第一游击队</chineseSimplified>
-   </name>
-   <type>Fleet</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Independent</deployState>
-   <independentX>30</independentX>
-   <independentY>28</independentY>
-   <leaderReference>
-    <referenceObjectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</referenceObjectId>
-   </leaderReference>
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>c8198b1f-9963-4c1c-affb-356ea51d2c3c</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>421c78a3-1760-4730-aa53-03fb6b94e4aa</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>3db5fe0c-1720-49dd-847d-520e55f183c7</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>30</xProp>
-   <yProp>28</yProp>
-   <objectId>f8481328-de97-4466-af47-6c302493b6ef</objectId>
-   <strategicGroupReference>
-    <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>Battle Squadron</english>
-    <japanese>連合艦隊本隊</japanese>
-    <chineseSimplified>联合舰队本队</chineseSimplified>
-   </name>
-   <type>Fleet</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Independent</deployState>
-   <independentX>30</independentX>
-   <independentY>27</independentY>
-   <leaderReference>
-    <referenceObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</referenceObjectId>
-   </leaderReference>
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>d3278b6a-74fa-437a-86d2-8f86e357418d</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>aaafd726-b53c-430d-9dce-238fdfd4e654</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>fcdfa465-8628-45f0-b4b7-a1dea549feef</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>60e0837e-d31b-4f54-87b1-a1762fd2acdf</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>dfc596b4-ef97-474b-b987-8b34cfdcadf9</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>30</xProp>
-   <yProp>27</yProp>
-   <objectId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</objectId>
-   <strategicGroupReference>
-    <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>2nd Flying Squadron</english>
-    <japanese>第二遊撃隊</japanese>
-    <chineseSimplified>第二游击队</chineseSimplified>
-   </name>
-   <type>Fleet</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Independent</deployState>
-   <independentX>30</independentX>
-   <independentY>26</independentY>
-   <leaderReference />
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>f4e9a246-d4a8-4a2d-9952-81500801203e</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>19eb6bb6-f846-402a-8808-201b84f5683b</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>38486925-cdd2-4457-9d76-8b5ad860b523</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>6a88e57c-f643-4dde-b19a-42b3ac06b91e</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <assignedMissionObjectId>f4c0d26b-9520-4dbc-94ca-865fa88a85d0</assignedMissionObjectId>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>30</xProp>
-   <yProp>26</yProp>
-   <objectId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</objectId>
-   <strategicGroupReference>
-    <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>Torpedo Boats</english>
-    <chineseSimplified>鱼雷艇队</chineseSimplified>
-   </name>
-   <type>Fleet</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Independent</deployState>
-   <independentX>30</independentX>
-   <independentY>25</independentY>
-   <leaderReference />
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>094afec3-9fe0-4e4a-8f36-7e2b082c6b5e</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>6374bb0b-b59f-454f-a223-eb4e414b78b7</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>30</xProp>
-   <yProp>25</yProp>
-   <objectId>f6bd836d-5641-4a06-952d-2329545b8a1a</objectId>
-   <strategicGroupReference>
-    <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>1st Torpedo Boat Group</english>
-    <chineseSimplified>第1鱼雷艇队</chineseSimplified>
-   </name>
-   <type>Fleet</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>727bd4de-63a2-48e6-a933-4d0f29089d07</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>f319488b-027f-4f1b-bd96-50c2411a9ee4</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>a39ec70a-1528-4c4a-a9d5-fb81d82f10c4</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>24afb896-9699-4c0d-85cf-0832c093cb29</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>94ec5c84-7729-4ad1-89ef-e7e7d8dac32f</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>30</xProp>
-   <yProp>25</yProp>
-   <objectId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</objectId>
-   <strategicGroupReference>
-    <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>2nd Torpedo Boat Group</english>
-    <chineseSimplified>第2鱼雷艇队</chineseSimplified>
-   </name>
-   <type>Fleet</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>f23a08cc-7532-40ad-8593-0d977ecda4aa</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>bb109694-7b96-4cd9-8089-483a1acdbc01</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>30a2867f-fe2a-4a31-a7f6-8edb20bd8880</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>5aa9f324-4c59-4604-ac07-9b7081e8d983</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>8546e7a0-5d78-4188-9238-fcb709e443c5</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>30</xProp>
-   <yProp>25</yProp>
-   <objectId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</objectId>
-   <strategicGroupReference>
-    <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>3rd Torpedo Boat Group</english>
-    <chineseSimplified>第3鱼雷艇队</chineseSimplified>
-   </name>
-   <type>Fleet</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>f0ec24db-f070-4512-82d5-024394b360f3</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>0d0f865c-cb0a-4925-96f9-2291c6ad8cce</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>057bdd79-5f63-44a5-8d52-f247c1b55e30</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>0f08fd08-b996-4d86-8b18-4013ec5740ed</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>f23a08cc-7532-40ad-8593-0d977ecda4aa</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>30</xProp>
-   <yProp>25</yProp>
-   <objectId>6374bb0b-b59f-454f-a223-eb4e414b78b7</objectId>
-   <strategicGroupReference>
-    <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>Combined Fleet</english>
-    <japanese>連合艦隊</japanese>
-    <chineseSimplified>联合舰队</chineseSimplified>
-   </name>
-   <type>Fleet</type>
-   <size>Division</size>
-   <country>Japan</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference>
-    <referenceObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</referenceObjectId>
-   </leaderReference>
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>f8481328-de97-4466-af47-6c302493b6ef</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>-1</xProp>
-   <yProp>-1</yProp>
-   <objectId>e7da4734-5986-4765-9687-5c818df24f09</objectId>
-   <strategicGroupReference>
-    <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>Imperial Japanese Navy General Staff </english>
-    <japanese>軍令部</japanese>
-    <chineseSimplified>军令部</chineseSimplified>
+    <english>Grand Council</english>
+    <japanese>軍機処</japanese>
+    <chineseSimplified>军机处</chineseSimplified>
    </name>
    <type>HeadQuarter</type>
-   <size>Corp</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <size>ArmyGroup</size>
+   <country>China</country>
+   <deployState>Independent</deployState>
+   <independentX>13</independentX>
+   <independentY>33</independentY>
    <leaderReference>
-    <referenceObjectId>31837e7c-4f0d-492d-bae1-d05617a22da9</referenceObjectId>
+    <referenceObjectId>c77de671-ced0-4f50-9701-3916f904c97a</referenceObjectId>
    </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
-     <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
+     <referenceId>82e4ac06-f614-432e-a82f-c0c1dfc055df</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>d9103ed8-50ae-49ca-810c-6eb72e30264c</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>536fe1cd-f87d-4781-b90b-21dbb4b67ce4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>6f2ff133-e2e6-429d-b719-88f9124b76b8</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
-   <remark>https://ja.wikipedia.org/wiki/%E8%BB%8D%E4%BB%A4%E9%83%A8
+   <remark>尽管世铎是名义上的军机处领导者（军机大臣领班），但实际主要决策人物是翁同龢（户部尚书，帝师，“帝党”）与孙毓汶（兵部尚书，“后党”）。
 
-軍令部（ぐんれいぶ）は、大日本帝国海軍の軍令機関。海軍省が内閣に従属し軍政・人事を担当するのに対し、軍令部は天皇に直属し、その統帥を輔翼する立場から、海軍全体の作戦・指揮を統括する。
+Although Shiduo was the nominal leader of the Grand Council (lead grand councillor), the actual key decision-makers were Weng Tonghe (Minister of Revenue, the emperor's tutor, "Emperor's Faction") and Sun Yuwen (Minister of War, "Empress Dowager's Faction").
 
-The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military command organ. While the Navy Ministry was subordinate to the cabinet and handled military administration and personnel matters, the Naval General Staff was directly under the Emperor, overseeing the Navy's overall operations and command from a position of assisting His Majesty's supreme command.
+世鐸は名目上の軍機処の責任者（軍機大臣筆頭）であったが、実際の主要な决策者は翁同龢（戸部尚書、皇帝の先生、「帝党」）と孫毓汶（兵部尚書、「太后党」）であった。
 
-海军军令部（Gunreibu）是大日本帝国海军的作战指挥机构。与隶属内阁、负责军政与人事的海军省不同，军令部直属于天皇，在天皇统帅权下辅佐谋划，全面负责海军的作战与指挥事务。
+儘管世鐸是名義上的軍機處領導者（軍機大臣領班），但實際主要决策人物是翁同龢（戶部尚書，帝師，「帝黨」）與孫毓汶（兵部尚書，「太后黨」）。
+
 </remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
-   <xProp>42</xProp>
-   <yProp>23</yProp>
-   <objectId>ae078a24-3dee-4111-a4dc-bf301c6cde33</objectId>
-   <strategicGroupReference>
-    <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>11th Inf Regt</english>
-    <japanese>第十一歩兵連隊</japanese>
-    <chineseSimplified>第十一步兵联队</chineseSimplified>
-   </name>
-   <type>Infantry</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference>
-    <referenceObjectId>6dfc4fa7-680b-4487-80e1-5de0ade8eb61</referenceObjectId>
-   </leaderReference>
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>d05c4b4e-c937-4280-bd08-e357d3a3dcba</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>78204a0e-7d7c-450e-b10d-826561a70857</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>31</xProp>
-   <yProp>28</yProp>
-   <objectId>5a7f6397-7e25-45b6-8423-98b3e22e815a</objectId>
-   <strategicGroupReference>
-    <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>21th Inf Regt</english>
-    <japanese>第二十一歩兵連隊</japanese>
-    <chineseSimplified>第21步兵联队</chineseSimplified>
-   </name>
-   <type>Infantry</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference>
-    <referenceObjectId>16a04cba-2db3-4388-abaf-ec73c3d258d1</referenceObjectId>
-   </leaderReference>
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>90d60e0e-ccf7-4aba-9a67-986907bdd56f</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>309e644c-8005-4c5f-8821-2aeeb8b971cf</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>a78a315d-c3c2-4b2b-a14b-d82e06d44eb6</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>31</xProp>
-   <yProp>28</yProp>
-   <objectId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</objectId>
-   <strategicGroupReference>
-    <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>9th Combined Bridge</english>
-    <japanese>第九混成旅団</japanese>
-    <chineseSimplified>第九混成旅团</chineseSimplified>
-   </name>
-   <type>Infantry</type>
-   <size>Bridge</size>
-   <country>Japan</country>
-   <deployState>Independent</deployState>
-   <independentX>31</independentX>
-   <independentY>28</independentY>
-   <leaderReference>
-    <referenceObjectId>86a4739c-08c2-4c33-8e60-8a26b101535c</referenceObjectId>
-   </leaderReference>
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>69fa8dac-d422-4297-9726-e145ece4ab13</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>5a7f6397-7e25-45b6-8423-98b3e22e815a</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>0abfe5cb-3b7e-4dfa-b722-747763468bdd</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>8809f6a2-bf65-473c-90bc-424a1fca6f48</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>34d10468-a099-494d-b285-e51275e9d004</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>31</xProp>
-   <yProp>28</yProp>
-   <objectId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</objectId>
-   <strategicGroupReference>
-    <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>12th Inf Regt</english>
-    <japanese>第十二歩兵連隊</japanese>
-    <chineseSimplified>第十二步兵联队</chineseSimplified>
-   </name>
-   <type>Infantry</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>42</xProp>
-   <yProp>23</yProp>
-   <objectId>fa3430e2-124a-46dd-a18e-c20a42555159</objectId>
-   <strategicGroupReference>
-    <referenceId>420f4cce-0a91-432d-9df6-a79bf52ce8d5</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>22th Inf Regt</english>
-    <japanese>第二十二歩兵連隊</japanese>
-    <chineseSimplified>第二十二步兵联队</chineseSimplified>
-   </name>
-   <type>Infantry</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>42</xProp>
-   <yProp>23</yProp>
-   <objectId>dc778b97-f5fe-4a1a-869f-58133cb451ab</objectId>
-   <strategicGroupReference>
-    <referenceId>420f4cce-0a91-432d-9df6-a79bf52ce8d5</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>10th Bde</english>
-    <japanese>第十歩兵旅団</japanese>
-    <chineseSimplified>第十步兵旅团</chineseSimplified>
-   </name>
-   <type>Infantry</type>
-   <size>Bridge</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>fa3430e2-124a-46dd-a18e-c20a42555159</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>dc778b97-f5fe-4a1a-869f-58133cb451ab</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>42</xProp>
-   <yProp>23</yProp>
-   <objectId>420f4cce-0a91-432d-9df6-a79bf52ce8d5</objectId>
-   <strategicGroupReference>
-    <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>5th Div</english>
-    <japanese>第五師団</japanese>
-    <chineseSimplified>第五师团</chineseSimplified>
-   </name>
-   <type>Infantry</type>
-   <size>Division</size>
-   <country>Japan</country>
-   <deployState>Independent</deployState>
-   <independentX>42</independentX>
-   <independentY>23</independentY>
-   <leaderReference>
-    <referenceObjectId>294116ce-1fd4-41ef-a81e-d721e3864af9</referenceObjectId>
-   </leaderReference>
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>420f4cce-0a91-432d-9df6-a79bf52ce8d5</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <remark>広島</remark>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>42</xProp>
-   <yProp>23</yProp>
-   <objectId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</objectId>
-   <strategicGroupReference>
-    <referenceId>2895a7b5-5422-45c0-a01b-a516c966f9c1</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>6th Inf Regt</english>
-    <japanese>第六歩兵連隊</japanese>
-   </name>
-   <type>Infantry</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>42</xProp>
-   <yProp>23</yProp>
-   <objectId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</objectId>
-   <strategicGroupReference>
-    <referenceId>990958dd-5d87-4b4e-8f6c-e6503905f2f5</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>18th Inf Regt</english>
-    <japanese>第十八歩兵連隊</japanese>
-    <chineseSimplified>第十八步兵联队</chineseSimplified>
-   </name>
-   <type>Infantry</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>42</xProp>
-   <yProp>23</yProp>
-   <objectId>e0686526-37a4-459a-bc5b-0b0345a980e2</objectId>
-   <strategicGroupReference>
-    <referenceId>990958dd-5d87-4b4e-8f6c-e6503905f2f5</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>5th Inf Bde</english>
-    <japanese>第五歩兵旅団</japanese>
-    <chineseSimplified>第五步兵旅团</chineseSimplified>
-   </name>
-   <type>Infantry</type>
-   <size>Bridge</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>e0686526-37a4-459a-bc5b-0b0345a980e2</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>42</xProp>
-   <yProp>23</yProp>
-   <objectId>990958dd-5d87-4b4e-8f6c-e6503905f2f5</objectId>
-   <strategicGroupReference>
-    <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>7th Inf Regt</english>
-    <japanese>第七歩兵連隊</japanese>
-    <chineseSimplified>第七步兵联队</chineseSimplified>
-   </name>
-   <type>Infantry</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>42</xProp>
-   <yProp>23</yProp>
-   <objectId>10a4192d-931c-469b-b315-716438d8c28b</objectId>
-   <strategicGroupReference>
-    <referenceId>50981db4-4301-4799-85d2-1810b49b2e58</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>19th Inf Regt</english>
-    <japanese>第十九歩兵連隊</japanese>
-    <chineseSimplified>第十九步兵联队</chineseSimplified>
-   </name>
-   <type>Infantry</type>
-   <size>Regiment</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>42</xProp>
-   <yProp>23</yProp>
-   <objectId>8debdc25-a274-4158-a38c-c4dc36162a2d</objectId>
-   <strategicGroupReference>
-    <referenceId>50981db4-4301-4799-85d2-1810b49b2e58</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>6th Inf Bde</english>
-    <japanese>第六歩兵旅団</japanese>
-    <chineseSimplified>第六步兵旅团</chineseSimplified>
-   </name>
-   <type>Infantry</type>
-   <size>Bridge</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>10a4192d-931c-469b-b315-716438d8c28b</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>8debdc25-a274-4158-a38c-c4dc36162a2d</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>42</xProp>
-   <yProp>23</yProp>
-   <objectId>50981db4-4301-4799-85d2-1810b49b2e58</objectId>
-   <strategicGroupReference>
-    <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>3rd Div</english>
-    <japanese>第三師団</japanese>
-    <chineseSimplified>第三师团</chineseSimplified>
-   </name>
-   <type>Infantry</type>
-   <size>Division</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference>
-    <referenceObjectId>d12ec66d-14e6-44eb-b261-968e64c32ca7</referenceObjectId>
-   </leaderReference>
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>990958dd-5d87-4b4e-8f6c-e6503905f2f5</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>50981db4-4301-4799-85d2-1810b49b2e58</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <remark>名古屋</remark>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>42</xProp>
-   <yProp>23</yProp>
-   <objectId>597e3e29-935d-4e3c-8465-7064622245c6</objectId>
-   <strategicGroupReference>
-    <referenceId>2895a7b5-5422-45c0-a01b-a516c966f9c1</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>1st Corp</english>
-    <japanese>第一軍</japanese>
-    <chineseSimplified>第一军</chineseSimplified>
-   </name>
-   <type>HeadQuarter</type>
-   <size>Corp</size>
-   <country>Japan</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference>
-    <referenceObjectId>e1cf0e2b-7d5a-4b25-a89a-2ad1c22f7e20</referenceObjectId>
-   </leaderReference>
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>42</xProp>
-   <yProp>23</yProp>
-   <objectId>2895a7b5-5422-45c0-a01b-a516c966f9c1</objectId>
-   <strategicGroupReference>
-    <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>Imperial General Headquarters</english>
-    <japanese>大本営</japanese>
-    <chineseSimplified>大本营</chineseSimplified>
-   </name>
-   <type>HeadQuarter</type>
-   <size>Army</size>
-   <country>Japan</country>
-   <deployState>Independent</deployState>
-   <independentX>42</independentX>
-   <independentY>23</independentY>
-   <leaderReference>
-    <referenceObjectId>c49be3d3-e058-4a2e-b0a7-c6bd70956afd</referenceObjectId>
-   </leaderReference>
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>4bed7260-ce35-4876-bc7f-ae025cec21b4</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>2895a7b5-5422-45c0-a01b-a516c966f9c1</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>42</xProp>
-   <yProp>23</yProp>
-   <objectId>380340b3-7ec3-4404-9601-c0470d750510</objectId>
+   <xProp>13</xProp>
+   <yProp>33</yProp>
+   <objectId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</objectId>
    <strategicGroupReference />
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>Escort</english>
-    <japanese>護衛隊</japanese>
-    <chineseSimplified>护航队</chineseSimplified>
+    <english>Viceroy of Huguang</english>
+    <japanese>湖広総督</japanese>
+    <chineseSimplified>湖广总督</chineseSimplified>
    </name>
-   <type>Fleet</type>
-   <size>Regiment</size>
+   <type>HeadQuarter</type>
+   <size>Army</size>
    <country>China</country>
    <deployState>Independent</deployState>
-   <independentX>30</independentX>
-   <independentY>28</independentY>
+   <independentX>6</independentX>
+   <independentY>16</independentY>
    <leaderReference>
-    <referenceObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</referenceObjectId>
+    <referenceObjectId>a1fd8ac3-c5e2-4e38-b934-924b84e00cb1</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined>
-    <StrategicGroupMemberReference>
-     <referenceId>ef0818cb-bd71-4c9f-8a21-7564293e8e87</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>bd251362-367a-4c21-a06d-edac91c83068</referenceId>
-    </StrategicGroupMemberReference>
-   </subordinatesCombined>
+   <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
-   <xProp>30</xProp>
-   <yProp>28</yProp>
-   <objectId>8961f909-0f74-4ef1-b983-315e9a93204a</objectId>
+   <xProp>6</xProp>
+   <yProp>16</yProp>
+   <objectId>536fe1cd-f87d-4781-b90b-21dbb4b67ce4</objectId>
    <strategicGroupReference>
-    <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+    <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>Beiyang Main Fleet</english>
-    <chineseSimplified>北洋水师本队</chineseSimplified>
+    <english>Viceroy of Liangguang</english>
+    <japanese>両広総督</japanese>
+    <chineseSimplified>两广总督</chineseSimplified>
    </name>
-   <type>Fleet</type>
-   <size>Regiment</size>
+   <type>HeadQuarter</type>
+   <size>Army</size>
    <country>China</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <deployState>Independent</deployState>
+   <independentX>2</independentX>
+   <independentY>3</independentY>
+   <leaderReference>
+    <referenceObjectId>ce13834a-c139-4bae-aafc-c238f00c349a</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>2</xProp>
+   <yProp>3</yProp>
+   <objectId>6f2ff133-e2e6-429d-b719-88f9124b76b8</objectId>
+   <strategicGroupReference>
+    <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Viceroy of Liangjiang / Minister of Nanyang</english>
+    <japanese>両江総督 / 南洋大臣</japanese>
+    <chineseSimplified>两江总督 / 南洋大臣</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Army</size>
+   <country>China</country>
+   <deployState>Independent</deployState>
+   <independentX>16</independentX>
+   <independentY>18</independentY>
+   <leaderReference>
+    <referenceObjectId>edf4fbab-471a-4ad5-8156-64de120a1781</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>16</xProp>
+   <yProp>18</yProp>
+   <objectId>d9103ed8-50ae-49ca-810c-6eb72e30264c</objectId>
+   <strategicGroupReference>
+    <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Viceroy of Zhili / Minister of Beiyang</english>
+    <japanese>直隷総督 / 北洋大臣</japanese>
+    <chineseSimplified>直隶总督 / 北洋大臣</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Army</size>
+   <country>China</country>
+   <deployState>Independent</deployState>
+   <independentX>14</independentX>
+   <independentY>32</independentY>
+   <leaderReference>
+    <referenceObjectId>f24ac743-e528-4c85-82d4-f089c4cc189c</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>f4d6ffd3-4566-46bb-a178-5811cf748be5</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>580cfa37-58f2-41f6-af34-9ba1906a5eee</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>14</xProp>
+   <yProp>32</yProp>
+   <objectId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</objectId>
+   <strategicGroupReference>
+    <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Beiyang Fleet Admiral Department</english>
+    <chineseSimplified>北洋水师提督府</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Corp</size>
+   <country>China</country>
+   <deployState>Independent</deployState>
+   <independentX>22</independentX>
+   <independentY>28</independentY>
    <leaderReference>
     <referenceObjectId>18963af7-1163-4323-9421-9f2421c9fee1</referenceObjectId>
    </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
-     <referenceId>aeed1a31-c157-4284-8b22-c913c7a2c81f</referenceId>
+     <referenceId>08cbd225-e688-4354-aaa2-9509a71af1e2</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>6cefa1da-a93d-4609-9cfb-f4611630b720</referenceId>
+     <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>28f1dcab-2f22-43ce-a149-d395b50cbc16</referenceId>
+     <referenceId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>19943ec0-4bdd-467c-a588-868c35634ad9</referenceId>
+     <referenceId>643148ed-5d9c-4329-b6b0-9c91c90fa4d2</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>e3e44dea-d17e-46aa-8f41-98c76dc1e8b1</referenceId>
+     <referenceId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>bafad292-eb14-403f-a174-1d78070a2ab8</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>8acd6e07-10f7-49e1-bacb-c6ee36d9c410</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>53dc72c9-9e9f-4100-8134-e36c916458ab</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>0a6a2d83-843f-4624-bb35-dd7de70f37a4</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>6c1b93a0-da74-4c0c-9831-23df030cd726</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>52256483-b20e-4987-9ef8-3f33401152d9</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>2e660a27-1cd9-4746-96ec-4aa6b1ffc494</referenceId>
+     <referenceId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>22</xProp>
    <yProp>28</yProp>
-   <objectId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</objectId>
+   <objectId>c1bab757-235c-4e54-8dd7-048a36abd130</objectId>
    <strategicGroupReference>
-    <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+    <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>Beiyang Fleet Torpedo Boats</english>
-    <chineseSimplified>北洋水师鱼雷艇队</chineseSimplified>
+    <english>Port of Arthur Base</english>
+    <chineseSimplified>旅顺基地</chineseSimplified>
    </name>
-   <type>Fleet</type>
-   <size>Regiment</size>
+   <type>HeadQuarter</type>
+   <size>Division</size>
    <country>China</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
+   <deployState>Independent</deployState>
+   <independentX>21</independentX>
+   <independentY>30</independentY>
+   <leaderReference>
+    <referenceObjectId>130f7855-e669-4969-b7e7-1c975b8541c6</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
-     <referenceId>fd1e0847-33dd-4269-95fd-0cc4c0e070bd</referenceId>
+     <referenceId>49888c20-7d72-4eae-ab87-02be51361b92</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>1340b046-5835-4966-a58e-03f978ede66b</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>cfb7d36f-2872-42e7-8ca3-7ed901635a39</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>4f22fc40-b885-47f7-be7a-ce1db111d444</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>f9bc4f6f-34bc-4299-adde-b3948ab8fc03</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>15b46965-615f-4370-bb6b-96f11eef63b5</referenceId>
+     <referenceId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
-   <xProp>22</xProp>
-   <yProp>28</yProp>
-   <objectId>88450a80-6c3f-4450-b4d1-95a10190dbab</objectId>
+   <xProp>21</xProp>
+   <yProp>30</yProp>
+   <objectId>580cfa37-58f2-41f6-af34-9ba1906a5eee</objectId>
    <strategicGroupReference>
-    <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+    <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
@@ -15437,50 +14802,6 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <xProp>22</xProp>
    <yProp>28</yProp>
    <objectId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</objectId>
-   <strategicGroupReference>
-    <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>Port of Arthur Coast Bty</english>
-    <chineseSimplified>旅顺岸防炮</chineseSimplified>
-   </name>
-   <type>CoastArtillery</type>
-   <size>Regiment</size>
-   <country>China</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>21</xProp>
-   <yProp>30</yProp>
-   <objectId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</objectId>
-   <strategicGroupReference>
-    <referenceId>580cfa37-58f2-41f6-af34-9ba1906a5eee</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>Weihaiwei Coast Bty</english>
-    <chineseSimplified>威海卫岸防炮</chineseSimplified>
-   </name>
-   <type>CoastArtillery</type>
-   <size>Regiment</size>
-   <country>China</country>
-   <deployState>Combined</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>22</xProp>
-   <yProp>28</yProp>
-   <objectId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</objectId>
    <strategicGroupReference>
     <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
    </strategicGroupReference>
@@ -15561,96 +14882,137 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>Beiyang</english>
-    <japanese>北洋</japanese>
-    <chineseSimplified>北洋</chineseSimplified>
+    <english>Beiyang Fleet Torpedo Boats</english>
+    <chineseSimplified>北洋水师鱼雷艇队</chineseSimplified>
    </name>
-   <type>HeadQuarter</type>
-   <size>Army</size>
+   <type>Fleet</type>
+   <size>Regiment</size>
    <country>China</country>
-   <deployState>Independent</deployState>
-   <independentX>14</independentX>
-   <independentY>32</independentY>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>fd1e0847-33dd-4269-95fd-0cc4c0e070bd</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>1340b046-5835-4966-a58e-03f978ede66b</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>cfb7d36f-2872-42e7-8ca3-7ed901635a39</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>4f22fc40-b885-47f7-be7a-ce1db111d444</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>f9bc4f6f-34bc-4299-adde-b3948ab8fc03</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>15b46965-615f-4370-bb6b-96f11eef63b5</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>22</xProp>
+   <yProp>28</yProp>
+   <objectId>88450a80-6c3f-4450-b4d1-95a10190dbab</objectId>
+   <strategicGroupReference>
+    <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Beiyang Main Fleet</english>
+    <chineseSimplified>北洋水师本队</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Regiment</size>
+   <country>China</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
    <leaderReference>
-    <referenceObjectId>f24ac743-e528-4c85-82d4-f089c4cc189c</referenceObjectId>
+    <referenceObjectId>18963af7-1163-4323-9421-9f2421c9fee1</referenceObjectId>
    </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
-     <referenceId>f4d6ffd3-4566-46bb-a178-5811cf748be5</referenceId>
+     <referenceId>aeed1a31-c157-4284-8b22-c913c7a2c81f</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>580cfa37-58f2-41f6-af34-9ba1906a5eee</referenceId>
+     <referenceId>6cefa1da-a93d-4609-9cfb-f4611630b720</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+     <referenceId>28f1dcab-2f22-43ce-a149-d395b50cbc16</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
+     <referenceId>19943ec0-4bdd-467c-a588-868c35634ad9</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>e3e44dea-d17e-46aa-8f41-98c76dc1e8b1</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>bafad292-eb14-403f-a174-1d78070a2ab8</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>8acd6e07-10f7-49e1-bacb-c6ee36d9c410</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>53dc72c9-9e9f-4100-8134-e36c916458ab</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>0a6a2d83-843f-4624-bb35-dd7de70f37a4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>6c1b93a0-da74-4c0c-9831-23df030cd726</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>52256483-b20e-4987-9ef8-3f33401152d9</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>2e660a27-1cd9-4746-96ec-4aa6b1ffc494</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
-   <xProp>14</xProp>
-   <yProp>32</yProp>
-   <objectId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</objectId>
+   <xProp>22</xProp>
+   <yProp>28</yProp>
+   <objectId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</objectId>
    <strategicGroupReference>
-    <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
+    <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>Nanyang</english>
-    <japanese>南洋</japanese>
-    <chineseSimplified>南洋</chineseSimplified>
+    <english>Escort</english>
+    <japanese>護衛隊</japanese>
+    <chineseSimplified>护航队</chineseSimplified>
    </name>
-   <type>HeadQuarter</type>
-   <size>Army</size>
+   <type>Fleet</type>
+   <size>Regiment</size>
    <country>China</country>
    <deployState>Independent</deployState>
-   <independentX>6</independentX>
-   <independentY>16</independentY>
-   <leaderReference />
-   <subordinatesCombined />
-   <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath />
-   <xProp>6</xProp>
-   <yProp>16</yProp>
-   <objectId>536fe1cd-f87d-4781-b90b-21dbb4b67ce4</objectId>
-   <strategicGroupReference>
-    <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
-   </strategicGroupReference>
-  </StrategicGroup>
-  <StrategicGroup>
-   <name>
-    <english>Grand Council</english>
-    <japanese>軍機処</japanese>
-    <chineseSimplified>军机处</chineseSimplified>
-   </name>
-   <type>HeadQuarter</type>
-   <size>ArmyGroup</size>
-   <country>China</country>
-   <deployState>Independent</deployState>
-   <independentX>13</independentX>
-   <independentY>33</independentY>
-   <leaderReference />
+   <independentX>30</independentX>
+   <independentY>28</independentY>
+   <leaderReference>
+    <referenceObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</referenceObjectId>
+   </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
-     <referenceId>82e4ac06-f614-432e-a82f-c0c1dfc055df</referenceId>
+     <referenceId>ef0818cb-bd71-4c9f-8a21-7564293e8e87</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>536fe1cd-f87d-4781-b90b-21dbb4b67ce4</referenceId>
+     <referenceId>bd251362-367a-4c21-a06d-edac91c83068</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
-   <remark />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
-   <xProp>13</xProp>
-   <yProp>33</yProp>
-   <objectId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</objectId>
-   <strategicGroupReference />
+   <xProp>30</xProp>
+   <yProp>28</yProp>
+   <objectId>8961f909-0f74-4ef1-b983-315e9a93204a</objectId>
+   <strategicGroupReference>
+    <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+   </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
    <name>
@@ -15681,6 +15043,80 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <xProp>29</xProp>
    <yProp>28</yProp>
    <objectId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</objectId>
+   <strategicGroupReference>
+    <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Port of Arthur Coast Bty</english>
+    <chineseSimplified>旅顺岸防炮</chineseSimplified>
+   </name>
+   <type>CoastArtillery</type>
+   <size>Regiment</size>
+   <country>China</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>21</xProp>
+   <yProp>30</yProp>
+   <objectId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</objectId>
+   <strategicGroupReference>
+    <referenceId>580cfa37-58f2-41f6-af34-9ba1906a5eee</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Weihaiwei Coast Bty</english>
+    <chineseSimplified>威海卫岸防炮</chineseSimplified>
+   </name>
+   <type>CoastArtillery</type>
+   <size>Regiment</size>
+   <country>China</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>22</xProp>
+   <yProp>28</yProp>
+   <objectId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</objectId>
+   <strategicGroupReference>
+    <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Ai Ren</english>
+    <japanese>愛仁</japanese>
+    <chineseSimplified>爱仁</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Battalion</size>
+   <country>China</country>
+   <deployState>Independent</deployState>
+   <independentX>23</independentX>
+   <independentY>28</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>9bc80e40-bf0f-4427-acb2-efaf8727a684</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath>
+    <XY x="23" y="28" />
+    <XY x="22" y="28" />
+   </plannedPath>
+   <xProp>23</xProp>
+   <yProp>28</yProp>
+   <objectId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</objectId>
    <strategicGroupReference>
     <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
    </strategicGroupReference>
@@ -15722,106 +15158,1650 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>Ai Ren</english>
-    <japanese>愛仁</japanese>
-    <chineseSimplified>爱仁</chineseSimplified>
+    <english>Imperial General Headquarters</english>
+    <japanese>大本営</japanese>
+    <chineseSimplified>大本营</chineseSimplified>
    </name>
-   <type>Fleet</type>
-   <size>Battalion</size>
-   <country>China</country>
+   <type>HeadQuarter</type>
+   <size>ArmyGroup</size>
+   <country>Japan</country>
    <deployState>Independent</deployState>
-   <independentX>23</independentX>
-   <independentY>28</independentY>
+   <independentX>42</independentX>
+   <independentY>23</independentY>
+   <leaderReference>
+    <referenceObjectId>c49be3d3-e058-4a2e-b0a7-c6bd70956afd</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>4bed7260-ce35-4876-bc7f-ae025cec21b4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>2895a7b5-5422-45c0-a01b-a516c966f9c1</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>5fe39499-f5f7-416a-9ca3-951f077a937d</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>380340b3-7ec3-4404-9601-c0470d750510</objectId>
+   <strategicGroupReference />
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>1st Army</english>
+    <japanese>第一軍</japanese>
+    <chineseSimplified>第一军</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Army</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference>
+    <referenceObjectId>e1cf0e2b-7d5a-4b25-a89a-2ad1c22f7e20</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <remark>https://en.wikipedia.org/wiki/First_Army_(Japan)
+
+The Japanese 1st Army was initially raised during the First Sino-Japanese War from 1 September 1894 – 28 May 1895 under the command of General Yamagata Aritomo. It participated in all of the major battles of that conflict, and was demobilized at the successful end of that war.
+
+It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 1905 under the command of General Kuroki Tamemoto. Its forces were the first to land in Korea and Manchuria and it fought in most of the major campaigns of the war, including the Battle of Yalu River, Battle of Motien Pass, Battle of Liaoyang, Battle of Shaho, Battle of Sandepu, and Battle of Mukden. It was again demobilized at the end of that conflict.
+
+</remark>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>2895a7b5-5422-45c0-a01b-a516c966f9c1</objectId>
+   <strategicGroupReference>
+    <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>2nd Army</english>
+    <chineseSimplified>第二军</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Army</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference>
+    <referenceObjectId>768c74cb-4117-4060-8c01-1ac6a42667d0</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>5fe39499-f5f7-416a-9ca3-951f077a937d</objectId>
+   <strategicGroupReference>
+    <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Imperial Japanese Navy General Staff </english>
+    <japanese>軍令部</japanese>
+    <chineseSimplified>军令部</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Army</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference>
+    <referenceObjectId>31837e7c-4f0d-492d-bae1-d05617a22da9</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <remark>https://ja.wikipedia.org/wiki/%E8%BB%8D%E4%BB%A4%E9%83%A8
+
+軍令部（ぐんれいぶ）は、大日本帝国海軍の軍令機関。海軍省が内閣に従属し軍政・人事を担当するのに対し、軍令部は天皇に直属し、その統帥を輔翼する立場から、海軍全体の作戦・指揮を統括する。
+
+The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military command organ. While the Navy Ministry was subordinate to the cabinet and handled military administration and personnel matters, the Naval General Staff was directly under the Emperor, overseeing the Navy's overall operations and command from a position of assisting His Majesty's supreme command.
+
+海军军令部（Gunreibu）是大日本帝国海军的作战指挥机构。与隶属内阁、负责军政与人事的海军省不同，军令部直属于天皇，在天皇统帅权下辅佐谋划，全面负责海军的作战与指挥事务。
+</remark>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>ae078a24-3dee-4111-a4dc-bf301c6cde33</objectId>
+   <strategicGroupReference>
+    <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>1st Div</english>
+    <chineseSimplified>第一师团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Division</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference>
+    <referenceObjectId>62e7ff5c-a5f1-4b45-bad1-aea4b44f6d7c</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>f73090fe-6417-426c-96c7-3ba0a0638216</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>8e96a6fd-cc26-4141-8d7b-7525ef0cc8c4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>a9254508-4f4f-46ae-ba00-7d06e6623944</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>522876be-0947-4332-8bd4-4ff4590fe99b</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>744fdb08-5b3c-4d46-b292-15b599fa4cab</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <remark>东京</remark>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</objectId>
+   <strategicGroupReference>
+    <referenceId>5fe39499-f5f7-416a-9ca3-951f077a937d</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>2nd Div</english>
+    <chineseSimplified>第二师团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Division</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
    <leaderReference />
    <subordinatesCombined>
     <StrategicGroupMemberReference>
-     <referenceId>9bc80e40-bf0f-4427-acb2-efaf8727a684</referenceId>
+     <referenceId>eb801c55-b700-4916-85de-e57350a8530d</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>93c85a86-de1e-4419-b334-ab132482ac2c</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>a0f49643-52ec-460d-a178-3ad2994cf4eb</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>b8955e93-c485-445a-bea6-03cb3334ff86</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>786dbf87-3093-41ee-afa8-a34843395250</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <remark>仙台</remark>
    <moveProgressionKm>0</moveProgressionKm>
-   <plannedPath>
-    <XY x="23" y="28" />
-    <XY x="22" y="28" />
-   </plannedPath>
-   <xProp>23</xProp>
-   <yProp>28</yProp>
-   <objectId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</objectId>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>1d4474c1-4e1a-4851-adb4-28c1595e3358</objectId>
    <strategicGroupReference>
-    <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+    <referenceId>5fe39499-f5f7-416a-9ca3-951f077a937d</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>Beiyang Fleet Admiral Department</english>
-    <chineseSimplified>北洋水师提督府</chineseSimplified>
+    <english>3rd Div</english>
+    <japanese>第三師団</japanese>
+    <chineseSimplified>第三师团</chineseSimplified>
    </name>
-   <type>HeadQuarter</type>
-   <size>Corp</size>
-   <country>China</country>
+   <type>Infantry</type>
+   <size>Division</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference>
+    <referenceObjectId>d12ec66d-14e6-44eb-b261-968e64c32ca7</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>990958dd-5d87-4b4e-8f6c-e6503905f2f5</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>50981db4-4301-4799-85d2-1810b49b2e58</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>890d3a3f-5ed7-4bd8-b7fa-dc7eb43f444d</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>5a6008b4-3d17-4ab8-b1a1-6db59608317b</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>71dece21-c1af-4eb8-b030-94ff6263c6a1</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <remark>名古屋</remark>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>597e3e29-935d-4e3c-8465-7064622245c6</objectId>
+   <strategicGroupReference>
+    <referenceId>2895a7b5-5422-45c0-a01b-a516c966f9c1</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>5th Div</english>
+    <japanese>第五師団</japanese>
+    <chineseSimplified>第五师团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Division</size>
+   <country>Japan</country>
    <deployState>Independent</deployState>
-   <independentX>22</independentX>
+   <independentX>42</independentX>
+   <independentY>23</independentY>
+   <leaderReference>
+    <referenceObjectId>294116ce-1fd4-41ef-a81e-d721e3864af9</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>420f4cce-0a91-432d-9df6-a79bf52ce8d5</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>a245e024-f46e-421e-ade2-a6d5beb34d7c</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>2acf5724-c334-4d1c-99a5-7412c7337c9c</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>21ea6501-23fc-4280-a9f0-6bf283ee6ef6</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <remark>広島</remark>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</objectId>
+   <strategicGroupReference>
+    <referenceId>2895a7b5-5422-45c0-a01b-a516c966f9c1</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>6th Div</english>
+    <chineseSimplified>第六师团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Division</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>77135c77-356b-4eca-a404-77d41ce53d37</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>f085019b-b735-4ad1-bfb5-b94b94aa267b</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>063d79cc-455d-4543-b0c1-94c8abd36db3</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>e5b44beb-48e2-4296-9a8f-98f89f7d1cc4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>bb39d25f-aed9-431a-9014-e9cc7856372b</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</objectId>
+   <strategicGroupReference>
+    <referenceId>5fe39499-f5f7-416a-9ca3-951f077a937d</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Combined Fleet</english>
+    <japanese>連合艦隊</japanese>
+    <chineseSimplified>联合舰队</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Division</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference>
+    <referenceObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>f8481328-de97-4466-af47-6c302493b6ef</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>e7da4734-5986-4765-9687-5c818df24f09</objectId>
+   <strategicGroupReference>
+    <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>10th Bde</english>
+    <japanese>第十歩兵旅団</japanese>
+    <chineseSimplified>第十步兵旅团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Bridge</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>fa3430e2-124a-46dd-a18e-c20a42555159</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>dc778b97-f5fe-4a1a-869f-58133cb451ab</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>420f4cce-0a91-432d-9df6-a79bf52ce8d5</objectId>
+   <strategicGroupReference>
+    <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>11th Inf Regt</english>
+    <chineseSimplified>第十一步兵旅团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Bridge</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>a76c17c1-c4be-4917-8422-54553be670b5</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>e476fcb0-a7c9-478c-b685-d77291ea06b3</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>77135c77-356b-4eca-a404-77d41ce53d37</objectId>
+   <strategicGroupReference>
+    <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>12th Inf Regt</english>
+    <chineseSimplified>第十二步兵旅团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Bridge</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>f97d2f58-fb9e-487b-a8fb-999246e1804f</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>e212bfd1-456d-4fc7-8bd3-d57dc997b2f1</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>f085019b-b735-4ad1-bfb5-b94b94aa267b</objectId>
+   <strategicGroupReference>
+    <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>1st Inf Bde</english>
+    <chineseSimplified>第一步兵旅团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Bridge</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference>
+    <referenceObjectId>c77c5187-72e7-452c-bbd2-6d635c7c3368</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>5862b272-0953-46a8-a6f8-bb7353b671b2</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>bbfbf098-0b5e-400c-90a1-5af53c5e4533</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>f73090fe-6417-426c-96c7-3ba0a0638216</objectId>
+   <strategicGroupReference>
+    <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>2nd Inf Bde</english>
+    <chineseSimplified>第二步兵旅团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Bridge</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference>
+    <referenceObjectId>adaab4f1-0e61-4792-8ae6-44444b0c4c1f</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>fa371e9a-6add-4f6c-84f0-52b5e427e75a</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>645d9e54-c6e8-4bef-a17e-558a9f632285</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>8e96a6fd-cc26-4141-8d7b-7525ef0cc8c4</objectId>
+   <strategicGroupReference>
+    <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>3rd Inf Bde</english>
+    <chineseSimplified>第三步兵旅团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Bridge</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>5eb01bdd-7b9a-401a-89be-3382df10e892</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>ccc60016-86aa-40c9-b402-40174ba04ed6</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>eb801c55-b700-4916-85de-e57350a8530d</objectId>
+   <strategicGroupReference>
+    <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>4th Inf Bde</english>
+    <chineseSimplified>第四步兵旅团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Bridge</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>9e0224f3-d2ad-4b79-bb3b-939b2096bf03</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>bcef7d21-574b-4323-b651-0e67445b25cc</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>93c85a86-de1e-4419-b334-ab132482ac2c</objectId>
+   <strategicGroupReference>
+    <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>5th Inf Bde</english>
+    <japanese>第五歩兵旅団</japanese>
+    <chineseSimplified>第五步兵旅团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Bridge</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>e0686526-37a4-459a-bc5b-0b0345a980e2</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>990958dd-5d87-4b4e-8f6c-e6503905f2f5</objectId>
+   <strategicGroupReference>
+    <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>6th Inf Bde</english>
+    <japanese>第六歩兵旅団</japanese>
+    <chineseSimplified>第六步兵旅团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Bridge</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>10a4192d-931c-469b-b315-716438d8c28b</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>8debdc25-a274-4158-a38c-c4dc36162a2d</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>50981db4-4301-4799-85d2-1810b49b2e58</objectId>
+   <strategicGroupReference>
+    <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>9th Combined Bridge</english>
+    <japanese>第九混成旅団</japanese>
+    <chineseSimplified>第九混成旅团</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Bridge</size>
+   <country>Japan</country>
+   <deployState>Independent</deployState>
+   <independentX>31</independentX>
    <independentY>28</independentY>
    <leaderReference>
-    <referenceObjectId>18963af7-1163-4323-9421-9f2421c9fee1</referenceObjectId>
+    <referenceObjectId>86a4739c-08c2-4c33-8e60-8a26b101535c</referenceObjectId>
    </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
-     <referenceId>08cbd225-e688-4354-aaa2-9509a71af1e2</referenceId>
+     <referenceId>69fa8dac-d422-4297-9726-e145ece4ab13</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+     <referenceId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</referenceId>
+     <referenceId>5a7f6397-7e25-45b6-8423-98b3e22e815a</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>643148ed-5d9c-4329-b6b0-9c91c90fa4d2</referenceId>
+     <referenceId>0abfe5cb-3b7e-4dfa-b722-747763468bdd</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</referenceId>
+     <referenceId>8809f6a2-bf65-473c-90bc-424a1fca6f48</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</referenceId>
+     <referenceId>34d10468-a099-494d-b285-e51275e9d004</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
-   <xProp>22</xProp>
+   <xProp>31</xProp>
    <yProp>28</yProp>
-   <objectId>c1bab757-235c-4e54-8dd7-048a36abd130</objectId>
+   <objectId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</objectId>
    <strategicGroupReference>
-    <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
+    <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>Port of Arthur Base HQ</english>
-    <chineseSimplified>旅顺基地HQ</chineseSimplified>
+    <english>11th Inf Regt</english>
+    <japanese>第十一歩兵連隊</japanese>
+    <chineseSimplified>第十一步兵联队</chineseSimplified>
    </name>
-   <type>HeadQuarter</type>
-   <size>Division</size>
-   <country>China</country>
-   <deployState>Independent</deployState>
-   <independentX>21</independentX>
-   <independentY>30</independentY>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
    <leaderReference>
-    <referenceObjectId>130f7855-e669-4969-b7e7-1c975b8541c6</referenceObjectId>
+    <referenceObjectId>6dfc4fa7-680b-4487-80e1-5de0ade8eb61</referenceObjectId>
    </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
-     <referenceId>49888c20-7d72-4eae-ab87-02be51361b92</referenceId>
+     <referenceId>d05c4b4e-c937-4280-bd08-e357d3a3dcba</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</referenceId>
+     <referenceId>78204a0e-7d7c-450e-b10d-826561a70857</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
-   <xProp>21</xProp>
-   <yProp>30</yProp>
-   <objectId>580cfa37-58f2-41f6-af34-9ba1906a5eee</objectId>
+   <xProp>31</xProp>
+   <yProp>28</yProp>
+   <objectId>5a7f6397-7e25-45b6-8423-98b3e22e815a</objectId>
    <strategicGroupReference>
-    <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
+    <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>12th Inf Regt</english>
+    <japanese>第十二歩兵連隊</japanese>
+    <chineseSimplified>第十二步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>fa3430e2-124a-46dd-a18e-c20a42555159</objectId>
+   <strategicGroupReference>
+    <referenceId>420f4cce-0a91-432d-9df6-a79bf52ce8d5</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>13th Inf Regt</english>
+    <chineseSimplified>第十三步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>a76c17c1-c4be-4917-8422-54553be670b5</objectId>
+   <strategicGroupReference>
+    <referenceId>77135c77-356b-4eca-a404-77d41ce53d37</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>14th Inf Regt</english>
+    <chineseSimplified>第十四步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>f97d2f58-fb9e-487b-a8fb-999246e1804f</objectId>
+   <strategicGroupReference>
+    <referenceId>f085019b-b735-4ad1-bfb5-b94b94aa267b</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>15th Inf Regt</english>
+    <chineseSimplified>第十五步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>bbfbf098-0b5e-400c-90a1-5af53c5e4533</objectId>
+   <strategicGroupReference>
+    <referenceId>f73090fe-6417-426c-96c7-3ba0a0638216</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>16st Inf Regt</english>
+    <chineseSimplified>第十六步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>ccc60016-86aa-40c9-b402-40174ba04ed6</objectId>
+   <strategicGroupReference>
+    <referenceId>eb801c55-b700-4916-85de-e57350a8530d</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>17th Inf Regt</english>
+    <chineseSimplified>第十七步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>bcef7d21-574b-4323-b651-0e67445b25cc</objectId>
+   <strategicGroupReference>
+    <referenceId>93c85a86-de1e-4419-b334-ab132482ac2c</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>18th Inf Regt</english>
+    <japanese>第十八歩兵連隊</japanese>
+    <chineseSimplified>第十八步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>e0686526-37a4-459a-bc5b-0b0345a980e2</objectId>
+   <strategicGroupReference>
+    <referenceId>990958dd-5d87-4b4e-8f6c-e6503905f2f5</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>19th Inf Regt</english>
+    <japanese>第十九歩兵連隊</japanese>
+    <chineseSimplified>第十九步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>8debdc25-a274-4158-a38c-c4dc36162a2d</objectId>
+   <strategicGroupReference>
+    <referenceId>50981db4-4301-4799-85d2-1810b49b2e58</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>1st Inf Regt</english>
+    <chineseSimplified>第一步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>5862b272-0953-46a8-a6f8-bb7353b671b2</objectId>
+   <strategicGroupReference>
+    <referenceId>f73090fe-6417-426c-96c7-3ba0a0638216</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>21th Inf Regt</english>
+    <japanese>第二十一歩兵連隊</japanese>
+    <chineseSimplified>第21步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference>
+    <referenceObjectId>16a04cba-2db3-4388-abaf-ec73c3d258d1</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>90d60e0e-ccf7-4aba-9a67-986907bdd56f</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>309e644c-8005-4c5f-8821-2aeeb8b971cf</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>a78a315d-c3c2-4b2b-a14b-d82e06d44eb6</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>31</xProp>
+   <yProp>28</yProp>
+   <objectId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</objectId>
+   <strategicGroupReference>
+    <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>22th Inf Regt</english>
+    <japanese>第二十二歩兵連隊</japanese>
+    <chineseSimplified>第二十二步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>dc778b97-f5fe-4a1a-869f-58133cb451ab</objectId>
+   <strategicGroupReference>
+    <referenceId>420f4cce-0a91-432d-9df6-a79bf52ce8d5</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>23th Inf Regt</english>
+    <chineseSimplified>第二十三步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>e476fcb0-a7c9-478c-b685-d77291ea06b3</objectId>
+   <strategicGroupReference>
+    <referenceId>77135c77-356b-4eca-a404-77d41ce53d37</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>24th Inf Regt</english>
+    <chineseSimplified>第二十四步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>e212bfd1-456d-4fc7-8bd3-d57dc997b2f1</objectId>
+   <strategicGroupReference>
+    <referenceId>f085019b-b735-4ad1-bfb5-b94b94aa267b</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>2nd Inf Regt</english>
+    <chineseSimplified>第二步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>fa371e9a-6add-4f6c-84f0-52b5e427e75a</objectId>
+   <strategicGroupReference>
+    <referenceId>8e96a6fd-cc26-4141-8d7b-7525ef0cc8c4</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>3rd Inf Regt</english>
+    <chineseSimplified>第三步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>645d9e54-c6e8-4bef-a17e-558a9f632285</objectId>
+   <strategicGroupReference>
+    <referenceId>8e96a6fd-cc26-4141-8d7b-7525ef0cc8c4</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>4th Inf Regt</english>
+    <chineseSimplified>第四步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>5eb01bdd-7b9a-401a-89be-3382df10e892</objectId>
+   <strategicGroupReference>
+    <referenceId>eb801c55-b700-4916-85de-e57350a8530d</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>5th Inf Regt</english>
+    <chineseSimplified>第五步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>9e0224f3-d2ad-4b79-bb3b-939b2096bf03</objectId>
+   <strategicGroupReference>
+    <referenceId>93c85a86-de1e-4419-b334-ab132482ac2c</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>6th Inf Regt</english>
+    <japanese>第六歩兵連隊</japanese>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</objectId>
+   <strategicGroupReference>
+    <referenceId>990958dd-5d87-4b4e-8f6c-e6503905f2f5</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>7th Inf Regt</english>
+    <japanese>第七歩兵連隊</japanese>
+    <chineseSimplified>第七步兵联队</chineseSimplified>
+   </name>
+   <type>Infantry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>10a4192d-931c-469b-b315-716438d8c28b</objectId>
+   <strategicGroupReference>
+    <referenceId>50981db4-4301-4799-85d2-1810b49b2e58</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>1st Cav Regt</english>
+    <chineseSimplified>第一骑兵联队</chineseSimplified>
+   </name>
+   <type>Cavalry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>a9254508-4f4f-46ae-ba00-7d06e6623944</objectId>
+   <strategicGroupReference>
+    <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>2nd Cav Regt</english>
+    <chineseSimplified>第二骑兵联队</chineseSimplified>
+   </name>
+   <type>Cavalry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>a0f49643-52ec-460d-a178-3ad2994cf4eb</objectId>
+   <strategicGroupReference>
+    <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>3rd Cav Regt</english>
+    <chineseSimplified>第三骑兵联队</chineseSimplified>
+   </name>
+   <type>Cavalry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>890d3a3f-5ed7-4bd8-b7fa-dc7eb43f444d</objectId>
+   <strategicGroupReference>
+    <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>5th Cav Regt</english>
+    <chineseSimplified>第五骑兵联队</chineseSimplified>
+   </name>
+   <type>Cavalry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>a245e024-f46e-421e-ade2-a6d5beb34d7c</objectId>
+   <strategicGroupReference>
+    <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>6th Cav Regt</english>
+    <chineseSimplified>第六骑兵联队</chineseSimplified>
+   </name>
+   <type>Cavalry</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>063d79cc-455d-4543-b0c1-94c8abd36db3</objectId>
+   <strategicGroupReference>
+    <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>1st Art Regt</english>
+    <chineseSimplified>第一炮兵联队</chineseSimplified>
+   </name>
+   <type>Artillery</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>522876be-0947-4332-8bd4-4ff4590fe99b</objectId>
+   <strategicGroupReference>
+    <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>2nd Art Regt</english>
+    <chineseSimplified>第二炮兵联队</chineseSimplified>
+   </name>
+   <type>Artillery</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>b8955e93-c485-445a-bea6-03cb3334ff86</objectId>
+   <strategicGroupReference>
+    <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>3rh Art Regt</english>
+    <chineseSimplified>第三炮兵联队</chineseSimplified>
+   </name>
+   <type>Artillery</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>5a6008b4-3d17-4ab8-b1a1-6db59608317b</objectId>
+   <strategicGroupReference>
+    <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>5th Art Regt</english>
+    <chineseSimplified>第五炮兵联队</chineseSimplified>
+   </name>
+   <type>Artillery</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>2acf5724-c334-4d1c-99a5-7412c7337c9c</objectId>
+   <strategicGroupReference>
+    <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>6th Art Regt</english>
+    <chineseSimplified>第六炮兵联队</chineseSimplified>
+   </name>
+   <type>Artillery</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>NotDeployed</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>-1</xProp>
+   <yProp>-1</yProp>
+   <objectId>e5b44beb-48e2-4296-9a8f-98f89f7d1cc4</objectId>
+   <strategicGroupReference>
+    <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>1st Flying Squadron</english>
+    <japanese>第一遊撃隊</japanese>
+    <chineseSimplified>第一游击队</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Independent</deployState>
+   <independentX>30</independentX>
+   <independentY>28</independentY>
+   <leaderReference>
+    <referenceObjectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>c8198b1f-9963-4c1c-affb-356ea51d2c3c</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>421c78a3-1760-4730-aa53-03fb6b94e4aa</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>3db5fe0c-1720-49dd-847d-520e55f183c7</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>30</xProp>
+   <yProp>28</yProp>
+   <objectId>f8481328-de97-4466-af47-6c302493b6ef</objectId>
+   <strategicGroupReference>
+    <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>1st Torpedo Boat Group</english>
+    <chineseSimplified>第1鱼雷艇队</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>727bd4de-63a2-48e6-a933-4d0f29089d07</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>f319488b-027f-4f1b-bd96-50c2411a9ee4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>a39ec70a-1528-4c4a-a9d5-fb81d82f10c4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>24afb896-9699-4c0d-85cf-0832c093cb29</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>94ec5c84-7729-4ad1-89ef-e7e7d8dac32f</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>30</xProp>
+   <yProp>25</yProp>
+   <objectId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</objectId>
+   <strategicGroupReference>
+    <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>2nd Flying Squadron</english>
+    <japanese>第二遊撃隊</japanese>
+    <chineseSimplified>第二游击队</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Independent</deployState>
+   <independentX>30</independentX>
+   <independentY>26</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>f4e9a246-d4a8-4a2d-9952-81500801203e</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>19eb6bb6-f846-402a-8808-201b84f5683b</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>38486925-cdd2-4457-9d76-8b5ad860b523</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>6a88e57c-f643-4dde-b19a-42b3ac06b91e</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <assignedMissionObjectId>f4c0d26b-9520-4dbc-94ca-865fa88a85d0</assignedMissionObjectId>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>30</xProp>
+   <yProp>26</yProp>
+   <objectId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</objectId>
+   <strategicGroupReference>
+    <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>2nd Torpedo Boat Group</english>
+    <chineseSimplified>第2鱼雷艇队</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>f23a08cc-7532-40ad-8593-0d977ecda4aa</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>bb109694-7b96-4cd9-8089-483a1acdbc01</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>30a2867f-fe2a-4a31-a7f6-8edb20bd8880</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>5aa9f324-4c59-4604-ac07-9b7081e8d983</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>8546e7a0-5d78-4188-9238-fcb709e443c5</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>30</xProp>
+   <yProp>25</yProp>
+   <objectId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</objectId>
+   <strategicGroupReference>
+    <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>3rd Torpedo Boat Group</english>
+    <chineseSimplified>第3鱼雷艇队</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>f0ec24db-f070-4512-82d5-024394b360f3</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>0d0f865c-cb0a-4925-96f9-2291c6ad8cce</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>057bdd79-5f63-44a5-8d52-f247c1b55e30</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>0f08fd08-b996-4d86-8b18-4013ec5740ed</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>f23a08cc-7532-40ad-8593-0d977ecda4aa</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>30</xProp>
+   <yProp>25</yProp>
+   <objectId>6374bb0b-b59f-454f-a223-eb4e414b78b7</objectId>
+   <strategicGroupReference>
+    <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Battle Squadron</english>
+    <japanese>連合艦隊本隊</japanese>
+    <chineseSimplified>联合舰队本队</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Independent</deployState>
+   <independentX>30</independentX>
+   <independentY>27</independentY>
+   <leaderReference>
+    <referenceObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>d3278b6a-74fa-437a-86d2-8f86e357418d</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>aaafd726-b53c-430d-9dce-238fdfd4e654</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>fcdfa465-8628-45f0-b4b7-a1dea549feef</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>60e0837e-d31b-4f54-87b1-a1762fd2acdf</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>dfc596b4-ef97-474b-b987-8b34cfdcadf9</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>30</xProp>
+   <yProp>27</yProp>
+   <objectId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</objectId>
+   <strategicGroupReference>
+    <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Torpedo Boats</english>
+    <chineseSimplified>鱼雷艇队</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Independent</deployState>
+   <independentX>30</independentX>
+   <independentY>25</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>094afec3-9fe0-4e4a-8f36-7e2b082c6b5e</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>6374bb0b-b59f-454f-a223-eb4e414b78b7</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>30</xProp>
+   <yProp>25</yProp>
+   <objectId>f6bd836d-5641-4a06-952d-2329545b8a1a</objectId>
+   <strategicGroupReference>
+    <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
  </strategicGroups>
@@ -16057,6 +17037,11 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <japanese>広州</japanese>
      <chineseSimplified>广州</chineseSimplified>
     </Label>
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>6f2ff133-e2e6-429d-b719-88f9124b76b8</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
    </Cell>
    <Cell x="2" y="4" terrain="Field" longitude="113.080467" latitude="23.6529064" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/3" />
    <Cell x="2" y="5" terrain="ForestRough" longitude="113.013985" latitude="24.2178555" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/3" />
@@ -16719,6 +17704,11 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <japanese>南京</japanese>
      <chineseSimplified>南京</chineseSimplified>
     </Label>
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>d9103ed8-50ae-49ca-810c-6eb72e30264c</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
    </Cell>
    <Cell x="16" y="19" terrain="Field" longitude="119.144341" latitude="32.3564568" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/3" riversStr="2/3" />
    <Cell x="16" y="20" terrain="Swamp" longitude="119.09919" latitude="32.8994865" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />

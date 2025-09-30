@@ -226,6 +226,20 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public static void TempFix()
     {
+        // foreach (var group in StrategicGameState.Instance.strategicGroups)
+        // {
+        //     var parentGroup = group.strategicGroupReference.Get();
+        //     if (parentGroup != null)
+        //     {
+        //         var matched = parentGroup.subordinatesCombined.Any(ordRef => ordRef.Get() == group);
+        //         if (!matched)
+        //         {
+        //             Debug.Log($"Fix: {group.name.mergedName}");
+        //             group.strategicGroupReference.referenceId = null;
+        //         }
+        //     }
+        // }
+
         // foreach (var label in StrategicGameState.Instance.labels)
         // {
         //     var cell = StrategicGameState.Instance.cellMatrix[label.x, label.y];

@@ -48,10 +48,16 @@ public abstract class LeftObjectPickerRightEditorStrategic<ST, ET> : HideableDoc
                     newObj.objectId = null;
                     objList.Add(newObj);
 
+                    ProcessCopliedLastOne(newObj);
+
                     currentGameState.ResetAndRegisterAll(); // Assign a new guid
                 }
             }
         };
+    }
+
+    protected virtual void ProcessCopliedLastOne(ET obj)
+    {
     }
 
     // public abstract string GetObjectListViewName();

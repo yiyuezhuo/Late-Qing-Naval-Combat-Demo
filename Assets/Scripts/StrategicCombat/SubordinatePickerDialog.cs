@@ -58,7 +58,7 @@ public class SubordinatePickerDialog
 
         if (mode == Mode.ParentUnassignedMember)
         {
-            Debug.Log(1);
+            // Debug.Log(1);
             filteredShipLogs = filteredShipLogs.Where(shipLog => !shipLog.strategicGroupReference.isReferenceAny()).ToList();
             filteredLandUnits = filteredLandUnits.Where(landUnit => !landUnit.strategicGroupReference.isReferenceAny()).ToList();
             filteredGroups = filteredGroups.Where(group => !group.strategicGroupReference.isReferenceAny()).ToList();

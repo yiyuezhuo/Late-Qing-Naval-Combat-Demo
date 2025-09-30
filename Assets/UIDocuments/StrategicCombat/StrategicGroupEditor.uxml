@@ -17,6 +17,7 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195698978623488)" />
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="Sort" name="SortButton" />
                     <ui:Button text="Confirm" name="ConfirmButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />

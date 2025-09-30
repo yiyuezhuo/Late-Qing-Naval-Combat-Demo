@@ -5,25 +5,11 @@ using UnityEngine.UIElements;
 using System.Collections.Generic;
 using System.Linq;
 using NavalCombatCore;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<StrategicGroupEditor, StrategicGroup>
 {
     ListView subordinatesCombinedListView;
-
-    // public void BindGotoButton(VisualElement item)
-    // {
-    //     var gotoButton = item.Q<Button>("GotoButton");
-    //     gotoButton.clicked += () =>
-    //     {
-    //         if (Utils.TryResolveCurrentValueForBinding(gotoButton, out StrategicGroupMemberReference fieldReference))
-    //         {
-    //             Debug.Log("reference GotoButton clicked");
-
-    //             var gotoObj = fieldReference.Get();
-    //             GotoReferenceable(gotoObj);
-    //         }
-    //     };
-    // }
 
     protected override void OnEnable()
     {
@@ -32,46 +18,6 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
         var contentContainer = root.Q<VisualElement>("ContentContainer");
         subordinatesCombinedListView = root.Q<ListView>("SubordinatesCombinedListView");
         Utils.BindStrategicGroupMemberReferenceListView(subordinatesCombinedListView, contentContainer, this);
-
-        // Utils.BindItemsAddedRemoved<StrategicGroupMemberReference>(subordinatesCombinedListView, () => null);
-        // subordinatesCombinedListView.makeItem = () =>
-        // {
-        //     var item = subordinatesCombinedListView.itemTemplate.CloneTree();
-        //     // BindStrategicGroupMemberReference(item);
-
-        //     var setButton = item.Q<Button>("SetButton");
-        //     setButton.clicked += () =>
-        //     {
-        //         if (Utils.TryResolveCurrentValueForBinding(contentContainer, out StrategicGroup selectedStrategicGroup) &&
-        //             Utils.TryResolveCurrentValueForBinding(setButton, out StrategicGroupMemberReference fieldReference))
-        //         {
-        //             Debug.Log("reference SetButton clicked");
-
-        //             DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables =>
-        //             {
-        //                 var oldObj = fieldReference.Get();
-        //                 if (oldObj != null)
-        //                 {
-        //                     // oldObj.SetStrategicGroupReference(null);
-        //                     oldObj.strategicGroupReference.referenceId = null;
-        //                 }
-
-        //                 var selectedReferenceable = selectedReferenceables.FirstOrDefault();
-
-        //                 if (selectedReferenceable != null && selectedStrategicGroup != null)
-        //                 {
-        //                     selectedReferenceable.SetStrategicGroupReference(null);
-        //                     fieldReference.referenceId = selectedReferenceable.objectId;
-        //                     selectedReferenceable.strategicGroupReference.referenceId = selectedStrategicGroup.objectId;
-        //                 }
-        //             }, true);
-        //         }
-        //     };
-
-        //     BindGotoButton(item);
-
-        //     return item;
-        // };
 
         var setLeaderButton = root.Q<Button>("SetLeaderButton");
         setLeaderButton.clicked += () =>
@@ -106,38 +52,36 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
                 }
             }
         };
+
+        root.Q<Button>("SortButton").clicked += () =>
+        {
+            StrategicGameState.Instance.strategicGroups.Sort((group0, group1) =>
+            {
+                // by country
+                var res = group0.country.CompareTo(group1.country);
+                if (res != 0)
+                    return res;
+                
+                // by size
+                res = group0.size.CompareTo(group1.size);
+                if (res != 0)
+                    return res;
+                
+                // by type
+                res = group0.type.CompareTo(group1.type);
+                if (res != 0)
+                    return res;
+                
+                // by name
+                return group0.name.GetMergedName().CompareTo(group1.name.GetMergedName());
+            });
+        };
     }
 
-    // void GotoReferenceable(IStrategicGroupMemberReferenceable gotoObj)
-    // {
-    //     if (gotoObj is StrategicGroup group)
-    //     {
-    //         var idx = StrategicGameState.Instance.strategicGroups.IndexOf(group);
-    //         if (group != null && idx != -1)
-    //         {
-    //             // BehaviourUtils.Instance.ScheduleToSetSelectionForListView(objectListView, idx);
-    //             Utils.SetSelectionForListView(objectListView, idx);
-    //         }
-    //     }
-    //     else if (gotoObj is ShipLog shipLog)
-    //     {
-    //         var idx = StrategicGameState.Instance.shipLogs.IndexOf(shipLog);
-    //         if (shipLog != null && idx != -1)
-    //         {
-    //             Hide();
-    //             ShipLogEditor.Instance.Show();
-    //             BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipLogEditor.Instance.shipLogListView, idx);
-    //         }
-    //     }
-    //     else if (gotoObj is LandUnit landUnit)
-    //     {
-    //         var idx = StrategicGameState.Instance.landUnits.IndexOf(landUnit);
-    //         if (landUnit != null && idx != -1)
-    //         {
-    //             Hide();
-    //             LandUnitEditor.Instance.Show();
-    //             BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
-    //         }
-    //     }
-    // }
+    protected override void ProcessCopliedLastOne(StrategicGroup group)
+    {
+        group.strategicGroupReference.referenceId = null;
+        group.assignedMissionObjectId = null;
+    }
+
 }

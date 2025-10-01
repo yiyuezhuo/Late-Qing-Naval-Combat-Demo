@@ -2236,6 +2236,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 14881314}
     m_Modifications:
+    - target: {fileID: 3907901425346988176, guid: 0c54c912c9e79e74990d94f0f14efdd4, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4995963955763420072, guid: 0c54c912c9e79e74990d94f0f14efdd4, type: 3}
       propertyPath: m_Name
       value: UnityWebRequestImageReaderShower

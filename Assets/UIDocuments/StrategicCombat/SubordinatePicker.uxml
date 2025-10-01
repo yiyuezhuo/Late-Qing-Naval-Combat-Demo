@@ -26,10 +26,13 @@
                 </Bindings>
             </ui:Tab>
         </ui:TabView>
-        <ui:Button text="Confirm" name="ConfirmButton">
-            <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
-            </Bindings>
-        </ui:Button>
+        <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1; flex-basis: 50px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                </Bindings>
+            </ui:Button>
+            <ui:Button text="Cancel" name="CancelButton" style="flex-grow: 1; flex-basis: 50px;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

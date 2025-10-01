@@ -5,7 +5,6 @@ using UnityEngine.UIElements;
 using System.Collections.Generic;
 using System.Linq;
 using NavalCombatCore;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<StrategicGroupEditor, StrategicGroup>
 {

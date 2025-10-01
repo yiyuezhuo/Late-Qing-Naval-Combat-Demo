@@ -4,6 +4,36 @@ using System.Collections;
 using System;
 
 using CoreUtils;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+
+public class StreamingTextAssetManager
+{
+    static StreamingTextAssetManager instance = new();
+    public static StreamingTextAssetManager Instance => instance;
+
+    public List<UnityWebRequest> busyUnityWebRequests = new();
+
+    public IEnumerator FetchText(string path, Action<string> callback)
+    {
+        var request = UnityWebRequest.Get(path);
+
+        busyUnityWebRequests.Add(request);
+
+        yield return request.SendWebRequest();
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log($"Success: {path}");
+            callback(request.downloadHandler.text);
+
+            busyUnityWebRequests.Remove(request);
+        }
+        else
+        {
+            Debug.LogError($"failed to fetch and setup: {path}");
+        }
+    }
+}
 
 public class StreamingAssetReference
 {
@@ -17,26 +47,38 @@ public class StreamingAssetReference
     // public string shipGroupsPath;
     // scenarioState, launchedTorpedos, weaponSimulationAssignmentClock has little reusability so it's directly tracked by NavalGameState and cannot be replaced by external file.
 
+    // [XmlIgnore]
+    // public List<UnityWebRequest> busyUnityWebRequests = new();
+
     public static void UpdateInstance(StreamingAssetReference newInstance)
     {
         instance = newInstance;
     }
 
-    public static IEnumerator FetchScenarioFile(string name, Action<string> callback)
+    public IEnumerator FetchScenarioFile(string name, Action<string> callback)
     {
         var root = Application.streamingAssetsPath + "/Scenarios/";
         var path = root + name;
-        var request = UnityWebRequest.Get(path);
-        yield return request.SendWebRequest();
-        if (request.result == UnityWebRequest.Result.Success)
-        {
-            Debug.Log($"Success: {path}");
-            callback(request.downloadHandler.text);
-        }
-        else
-        {
-            Debug.LogError($"failed to fetch and setup: {name}");
-        }
+        return StreamingTextAssetManager.Instance.FetchText(path, callback);
+
+        // var root = Application.streamingAssetsPath + "/Scenarios/";
+        // var path = root + name;
+        // var request = UnityWebRequest.Get(path);
+
+        // busyUnityWebRequests.Add(request);
+
+        // yield return request.SendWebRequest();
+        // if (request.result == UnityWebRequest.Result.Success)
+        // {
+        //     Debug.Log($"Success: {path}");
+        //     callback(request.downloadHandler.text);
+
+        //     busyUnityWebRequests.Remove(request);
+        // }
+        // else
+        // {
+        //     Debug.LogError($"failed to fetch and setup: {name}");
+        // }
     }
 
     public IEnumerator FetchScenarioFileIfApplicable(object obj, string name, Action<string> callback)

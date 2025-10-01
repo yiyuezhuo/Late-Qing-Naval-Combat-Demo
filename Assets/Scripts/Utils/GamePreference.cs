@@ -3,6 +3,12 @@ using NavalCombatCore;
 using Unity.Properties;
 using CoreUtils;
 using System;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using UnityEngine.UIElements;
 
 public class GamePreference
 {
@@ -53,4 +59,66 @@ public class GamePreference
 
     [CreateProperty]
     public CoreParameter navalCombatCoreParameter => CoreParameter.Instance;
+
+    public void SetShortLabelLanguageTypeByLocale(Locale locale)
+    {
+        shortLabelLanguageType = locale.Identifier.CultureInfo.Name switch
+        {
+            "en" => LanguageType.English,
+            "ja" => LanguageType.Japanese,
+            "zh-Hans" => LanguageType.ChineseSimplified,
+            "zh-Hant" => LanguageType.ChineseTraditional,
+            _ => LanguageType.English
+        };
+    }
+
+    public void SwitchToLocaleByName(string s)
+    {
+        var selectedLocale = LocalizationSettings.AvailableLocales.Locales.FirstOrDefault(locale => LocaleToNativeName(locale) == s);
+
+        if (selectedLocale != null)
+        {
+            LocalizationSettings.SelectedLocale = selectedLocale;
+            SetShortLabelLanguageTypeByLocale(selectedLocale);
+        }
+    }
+
+    static string LocaleToNativeName(UnityEngine.Localization.Locale locale)
+    {
+        var name = locale.Identifier.CultureInfo.Name;
+        switch (name)
+        {
+            case "en":
+                return "English";
+            case "ja":
+                return "日本語";
+            case "zh-Hans":
+                return "简体中文";
+            case "zh-Hant":
+                return "繁體中文";
+            default:
+                return name;
+        }
+    }
+    
+    public IEnumerator SetupLocale(DropdownField localeDropdownField)
+    {
+        yield return LocalizationSettings.InitializationOperation;
+
+        localeDropdownField.choices = LocalizationSettings.AvailableLocales.Locales.Select(LocaleToNativeName).ToList();
+
+        // LocalizationSettings.SelectedLocale.Identifier.CultureInfo.NativeName
+        // en
+        // ja
+        // zh-Hans
+        // zh-Hant
+
+        var locales = LocalizationSettings.AvailableLocales.Locales;
+        for (var i = 0; i < locales.Count; i++)
+            if (LocaleToNativeName(locales[i]) == LocaleToNativeName(LocalizationSettings.SelectedLocale))
+                localeDropdownField.index = i;
+
+        localeDropdownField.RegisterValueChangedCallback(evt => SwitchToLocaleByName(evt.newValue));
+    }
+
 }

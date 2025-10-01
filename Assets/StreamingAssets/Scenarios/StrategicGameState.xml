@@ -13115,7 +13115,7 @@ x2 砲兵中隊（每個砲兵中隊111人，6門火砲）
     <chineseSimplified>山炮大队</chineseSimplified>
    </name>
    <size>Battalion</size>
-   <unitType>Artillery</unitType>
+   <unitType>MountainArtillery</unitType>
    <strength>290</strength>
    <guns>0</guns>
    <firepowerKgPerMin>0</firepowerKgPerMin>
@@ -14205,7 +14205,919 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
    <objectId>f19f58a9-7866-40e8-9589-15672295ab95</objectId>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 22th Regt</english>
+    <chineseSimplified>第22联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>9b66d180-e9c0-4ee7-89e1-edda7c79ca9e</objectId>
+   <strategicGroupReference>
+    <referenceId>dc778b97-f5fe-4a1a-869f-58133cb451ab</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 22th Regt</english>
+    <chineseSimplified>第22联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>41e14bd1-f7d2-42b9-ac31-3365bb68115a</objectId>
+   <strategicGroupReference>
+    <referenceId>dc778b97-f5fe-4a1a-869f-58133cb451ab</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 22th Regt</english>
+    <chineseSimplified>第22联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>d521272c-705e-4d1f-b66e-e10c970a4d49</objectId>
+   <strategicGroupReference>
+    <referenceId>dc778b97-f5fe-4a1a-869f-58133cb451ab</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 12th Regt</english>
+    <chineseSimplified>第12联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>9206fa6b-d455-4a6c-8d05-df374032a67d</objectId>
+   <strategicGroupReference>
+    <referenceId>fa3430e2-124a-46dd-a18e-c20a42555159</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 12th Regt</english>
+    <chineseSimplified>第12联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>31bfdf8e-72a4-4cfe-b870-3cd04aef5557</objectId>
+   <strategicGroupReference>
+    <referenceId>fa3430e2-124a-46dd-a18e-c20a42555159</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 12th Regt</english>
+    <chineseSimplified>第12联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>69257650-5568-4745-bf2b-4dbf77eee35b</objectId>
+   <strategicGroupReference>
+    <referenceId>fa3430e2-124a-46dd-a18e-c20a42555159</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 19th Regt</english>
+    <chineseSimplified>第19联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>fc5f0aba-1dc3-4a12-abfa-dc6082a9843e</objectId>
+   <strategicGroupReference>
+    <referenceId>8debdc25-a274-4158-a38c-c4dc36162a2d</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 19th Regt</english>
+    <chineseSimplified>第19联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>f75409d5-81c3-4fe4-a6b1-eb60989de5f1</objectId>
+   <strategicGroupReference>
+    <referenceId>8debdc25-a274-4158-a38c-c4dc36162a2d</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 19th Regt</english>
+    <chineseSimplified>第19联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>7fc0b19f-3496-4ea2-b2c0-14a0e2f41c3a</objectId>
+   <strategicGroupReference>
+    <referenceId>8debdc25-a274-4158-a38c-c4dc36162a2d</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 7th Regt</english>
+    <chineseSimplified>第7联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>a99aa3f3-569b-424a-acfc-108e9f4642f8</objectId>
+   <strategicGroupReference>
+    <referenceId>10a4192d-931c-469b-b315-716438d8c28b</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 7th Regt</english>
+    <chineseSimplified>第7联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>095acc25-5782-4bbe-8889-b0412cb4b7c0</objectId>
+   <strategicGroupReference>
+    <referenceId>10a4192d-931c-469b-b315-716438d8c28b</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 7th Regt</english>
+    <chineseSimplified>第7联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>6862c389-a5ce-48f3-b518-89ed59482fdc</objectId>
+   <strategicGroupReference>
+    <referenceId>10a4192d-931c-469b-b315-716438d8c28b</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 18th Regt</english>
+    <chineseSimplified>第18联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>6cc0bc3c-9727-45b6-9ac0-33a98a87b8cf</objectId>
+   <strategicGroupReference>
+    <referenceId>e0686526-37a4-459a-bc5b-0b0345a980e2</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 18th Regt</english>
+    <chineseSimplified>第18联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>6e68c251-1d8f-4cfb-b6b9-17aceda85a68</objectId>
+   <strategicGroupReference>
+    <referenceId>e0686526-37a4-459a-bc5b-0b0345a980e2</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 18th Regt</english>
+    <chineseSimplified>第18联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>a7160e12-e738-4284-bbdb-53b88dfc4ca2</objectId>
+   <strategicGroupReference>
+    <referenceId>e0686526-37a4-459a-bc5b-0b0345a980e2</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 6th Regt</english>
+    <chineseSimplified>第6联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>b72f7677-0389-432a-8023-7c43c742ac19</objectId>
+   <strategicGroupReference>
+    <referenceId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2rd Btn, 6th Regt</english>
+    <chineseSimplified>第6联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>5ca34a45-9308-49b6-9c6d-eb7f76bcb5e9</objectId>
+   <strategicGroupReference>
+    <referenceId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 6th Regt</english>
+    <chineseSimplified>第6联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>5c90d03a-de15-476f-a1ad-378d29c73a5c</objectId>
+   <strategicGroupReference>
+    <referenceId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 4th Regt</english>
+    <chineseSimplified>第4联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>64a7fcbd-f578-4a78-b936-83654522c7a3</objectId>
+   <strategicGroupReference>
+    <referenceId>5eb01bdd-7b9a-401a-89be-3382df10e892</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 4th Regt</english>
+    <chineseSimplified>第4联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>068da9d0-7f9e-4807-8f22-15560ec5dc8a</objectId>
+   <strategicGroupReference>
+    <referenceId>5eb01bdd-7b9a-401a-89be-3382df10e892</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 4th Regt</english>
+    <chineseSimplified>第4联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>ead160b3-693d-4492-a3cb-4925f3434415</objectId>
+   <strategicGroupReference>
+    <referenceId>5eb01bdd-7b9a-401a-89be-3382df10e892</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 16th Regt</english>
+    <chineseSimplified>第16联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>2952840f-eb81-4225-8682-6e65448aa023</objectId>
+   <strategicGroupReference>
+    <referenceId>ccc60016-86aa-40c9-b402-40174ba04ed6</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 16th Regt</english>
+    <chineseSimplified>第16联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>5d97c2bb-c5be-44e9-9c58-a74eb5212e41</objectId>
+   <strategicGroupReference>
+    <referenceId>ccc60016-86aa-40c9-b402-40174ba04ed6</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 16th Regt</english>
+    <chineseSimplified>第16联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>60de5790-f50c-4ec5-bbf9-8f91bf3c681c</objectId>
+   <strategicGroupReference>
+    <referenceId>ccc60016-86aa-40c9-b402-40174ba04ed6</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 5th Regt</english>
+    <chineseSimplified>第5联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>a3f4ea7c-a9e3-4024-8f38-a129528ab6f9</objectId>
+   <strategicGroupReference>
+    <referenceId>9e0224f3-d2ad-4b79-bb3b-939b2096bf03</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 5th Regt</english>
+    <chineseSimplified>第5联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>ec63f55c-17b7-49c6-8b4f-116f77fba90b</objectId>
+   <strategicGroupReference>
+    <referenceId>9e0224f3-d2ad-4b79-bb3b-939b2096bf03</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 5th Regt</english>
+    <chineseSimplified>第5联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>c731ac41-c894-4afc-860f-eed6b3d3556f</objectId>
+   <strategicGroupReference>
+    <referenceId>9e0224f3-d2ad-4b79-bb3b-939b2096bf03</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 17th Regt</english>
+    <chineseSimplified>第17联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>d67d33f1-1c03-430f-9ab5-e48a24fbeb0a</objectId>
+   <strategicGroupReference>
+    <referenceId>bcef7d21-574b-4323-b651-0e67445b25cc</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 17th Regt</english>
+    <chineseSimplified>第17联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>dc733a40-cac6-4c90-8c1a-794d86d21b02</objectId>
+   <strategicGroupReference>
+    <referenceId>bcef7d21-574b-4323-b651-0e67445b25cc</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 17th Regt</english>
+    <chineseSimplified>第17联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>39b41a0c-82d8-4489-9aa0-387650bf1fe6</objectId>
+   <strategicGroupReference>
+    <referenceId>bcef7d21-574b-4323-b651-0e67445b25cc</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 1st Regt</english>
+    <chineseSimplified>第1联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>d937a0ae-1ce7-4479-b051-afb218946d47</objectId>
+   <strategicGroupReference>
+    <referenceId>5862b272-0953-46a8-a6f8-bb7353b671b2</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 1st Regt</english>
+    <chineseSimplified>第1联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>55ef32a1-592c-4a97-bdc2-5d2bd423c890</objectId>
+   <strategicGroupReference>
+    <referenceId>5862b272-0953-46a8-a6f8-bb7353b671b2</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 1st Regt</english>
+    <chineseSimplified>第1联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>75715540-89ba-4cd9-b97d-4751991143e0</objectId>
+   <strategicGroupReference>
+    <referenceId>5862b272-0953-46a8-a6f8-bb7353b671b2</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 15th Regt</english>
+    <chineseSimplified>第15联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>ecc7bf8b-9f78-46a2-9baa-7818b56b5863</objectId>
+   <strategicGroupReference>
+    <referenceId>bbfbf098-0b5e-400c-90a1-5af53c5e4533</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 15th Regt</english>
+    <chineseSimplified>第15联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>0e2c0a7c-c5e9-47be-ac78-882f04d9a595</objectId>
+   <strategicGroupReference>
+    <referenceId>bbfbf098-0b5e-400c-90a1-5af53c5e4533</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 15th Regt</english>
+    <chineseSimplified>第15联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>921ac2aa-21fb-40f0-94bf-9bba129b040a</objectId>
+   <strategicGroupReference>
+    <referenceId>bbfbf098-0b5e-400c-90a1-5af53c5e4533</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 2nd Regt</english>
+    <chineseSimplified>第2联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>72ac4c13-088b-4452-a43e-bab0bd9866fc</objectId>
+   <strategicGroupReference>
+    <referenceId>fa371e9a-6add-4f6c-84f0-52b5e427e75a</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 2nd Regt</english>
+    <chineseSimplified>第2联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>f8695aa7-4690-4f4f-9e98-39a2ccd46892</objectId>
+   <strategicGroupReference>
+    <referenceId>fa371e9a-6add-4f6c-84f0-52b5e427e75a</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 2nd Regt</english>
+    <chineseSimplified>第2联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>763a0932-b790-4adb-b9ba-187e22eb50f9</objectId>
+   <strategicGroupReference>
+    <referenceId>fa371e9a-6add-4f6c-84f0-52b5e427e75a</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 3rd Regt</english>
+    <chineseSimplified>第3联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>7a3c9270-111c-4fe6-863d-8fbe39ec2696</objectId>
+   <strategicGroupReference>
+    <referenceId>645d9e54-c6e8-4bef-a17e-558a9f632285</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 3rd Regt</english>
+    <chineseSimplified>第3联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>fd8e3d19-ab24-4e6b-9ef9-3af173be41c4</objectId>
+   <strategicGroupReference>
+    <referenceId>645d9e54-c6e8-4bef-a17e-558a9f632285</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 3rd Regt</english>
+    <chineseSimplified>第3联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>fcc5d9e3-1e0b-4c8a-bc57-8918506d9ced</objectId>
+   <strategicGroupReference>
+    <referenceId>645d9e54-c6e8-4bef-a17e-558a9f632285</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 14th Regt</english>
+    <chineseSimplified>第14联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>513c4a86-8168-4d3c-8e5f-11c6d704ebbb</objectId>
+   <strategicGroupReference>
+    <referenceId>f97d2f58-fb9e-487b-a8fb-999246e1804f</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 14th Regt</english>
+    <chineseSimplified>第14联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>204aa4c9-6cd6-4e54-9c52-bebf3d461f01</objectId>
+   <strategicGroupReference>
+    <referenceId>f97d2f58-fb9e-487b-a8fb-999246e1804f</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 14th Regt</english>
+    <chineseSimplified>第14联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>19b23c0b-d645-483f-b82f-139224d379f5</objectId>
+   <strategicGroupReference>
+    <referenceId>f97d2f58-fb9e-487b-a8fb-999246e1804f</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Btn, 24th Regt</english>
+    <chineseSimplified>第24联队第1大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>e4240780-b29d-4e82-ab68-6a290f4e9337</objectId>
+   <strategicGroupReference>
+    <referenceId>e212bfd1-456d-4fc7-8bd3-d57dc997b2f1</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Btn, 24th Regt</english>
+    <chineseSimplified>第24联队第2大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>d7e31f80-f3a3-4a7c-b467-ef35ab4ccc29</objectId>
+   <strategicGroupReference>
+    <referenceId>e212bfd1-456d-4fc7-8bd3-d57dc997b2f1</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Btn, 24th Regt</english>
+    <chineseSimplified>第24联队第3大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <objectId>f1063f6c-eaec-479e-8436-6c8397397640</objectId>
+   <strategicGroupReference>
+    <referenceId>e212bfd1-456d-4fc7-8bd3-d57dc997b2f1</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Shanghai Depot</english>
+    <chineseSimplified>上海仓库</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <objectId>7a652a81-3d4e-4caf-86a1-9ebfe5130b60</objectId>
+   <strategicGroupReference>
+    <referenceId>ff0665fc-3324-4015-b532-f94b1f7c6d97</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Fuzhou Depot</english>
+    <chineseSimplified>福州仓库</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <objectId>e44d9f9b-f6d1-4e29-9c58-c2c5e2cf3eb7</objectId>
+   <strategicGroupReference>
+    <referenceId>741e2594-9434-4915-89e2-d17985701961</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Bn, 1st Art Regt</english>
+    <chineseSimplified>第一炮兵联队第一大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <objectId>327d1e37-cc6b-4319-bf54-e0faa4526c16</objectId>
+   <strategicGroupReference>
+    <referenceId>522876be-0947-4332-8bd4-4ff4590fe99b</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2st Bn, 1st Art Regt</english>
+    <chineseSimplified>第一炮兵联队第二大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <objectId>fba1472f-19a2-448d-8c41-e3f0aa5459f3</objectId>
+   <strategicGroupReference>
+    <referenceId>522876be-0947-4332-8bd4-4ff4590fe99b</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Bn, 1st Art Regt</english>
+    <chineseSimplified>第一炮兵联队第三大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
+   <objectId>9efb6f22-ea00-47b3-a1a7-5981ea3a3233</objectId>
+   <strategicGroupReference>
+    <referenceId>522876be-0947-4332-8bd4-4ff4590fe99b</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Bn ,2nd Art Regt</english>
+    <chineseSimplified>第二炮兵联队第一大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <objectId>6c18dbb3-294d-4442-838f-d476b8392205</objectId>
+   <strategicGroupReference>
+    <referenceId>b8955e93-c485-445a-bea6-03cb3334ff86</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Bn ,2nd Art Regt</english>
+    <chineseSimplified>第二炮兵联队第二大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <objectId>fa9c0c09-9e70-4294-87f4-3db67334d577</objectId>
+   <strategicGroupReference>
+    <referenceId>b8955e93-c485-445a-bea6-03cb3334ff86</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Bn, 2nd Art Regt</english>
+    <chineseSimplified>第二炮兵联队第三大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
+   <objectId>9c048763-2666-4119-aa60-173746573dea</objectId>
+   <strategicGroupReference>
+    <referenceId>b8955e93-c485-445a-bea6-03cb3334ff86</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Bn, 3rd Art Regt</english>
+    <chineseSimplified>第三炮兵联队第一大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <objectId>edd1c129-2003-494f-b81e-40cd0a7d212e</objectId>
+   <strategicGroupReference>
+    <referenceId>5a6008b4-3d17-4ab8-b1a1-6db59608317b</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Bn, 3rd Art Regt</english>
+    <chineseSimplified>第三炮兵联队第二大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <objectId>efacaa00-8a19-4a08-8611-d97f9e5884f4</objectId>
+   <strategicGroupReference>
+    <referenceId>5a6008b4-3d17-4ab8-b1a1-6db59608317b</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Bn, 3rd Art Regt</english>
+    <chineseSimplified>第三炮兵联队第三大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
+   <objectId>c7f7557a-cf77-4a26-bf49-bdf686f771f7</objectId>
+   <strategicGroupReference>
+    <referenceId>5a6008b4-3d17-4ab8-b1a1-6db59608317b</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Bn, 5th Art Regt</english>
+    <chineseSimplified>第五炮兵联队第一大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <objectId>20f41b70-41ef-4e64-8106-eb400ed6ba16</objectId>
+   <strategicGroupReference>
+    <referenceId>2acf5724-c334-4d1c-99a5-7412c7337c9c</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Bn, 5th Art Regt</english>
+    <chineseSimplified>第五炮兵联队第二大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <objectId>3e62679d-f3b8-4970-961f-2516545bb311</objectId>
+   <strategicGroupReference>
+    <referenceId>2acf5724-c334-4d1c-99a5-7412c7337c9c</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Bn, 5th Art Regt</english>
+    <chineseSimplified>第五炮兵联队第三大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
+   <objectId>405d806c-db60-40ea-9619-9e08cd712e28</objectId>
+   <strategicGroupReference>
+    <referenceId>2acf5724-c334-4d1c-99a5-7412c7337c9c</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>1st Bn, 6th Art Regt</english>
+    <chineseSimplified>第六炮兵联队第一大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <objectId>cb02c455-68cd-409b-a14f-b4027eaaf3b6</objectId>
+   <strategicGroupReference>
+    <referenceId>e5b44beb-48e2-4296-9a8f-98f89f7d1cc4</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>2nd Bn, 6th Art Regt</english>
+    <chineseSimplified>第六炮兵联队第二大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <objectId>3488f64a-2d81-47eb-9249-f64018aba4e8</objectId>
+   <strategicGroupReference>
+    <referenceId>e5b44beb-48e2-4296-9a8f-98f89f7d1cc4</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>3rd Bn, 6th Art Regt</english>
+    <chineseSimplified>第六炮兵联队第三大队</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
+   <objectId>c0acf4ca-6b18-4ee4-9017-9172d4e08a6e</objectId>
+   <strategicGroupReference>
+    <referenceId>e5b44beb-48e2-4296-9a8f-98f89f7d1cc4</referenceId>
+   </strategicGroupReference>
   </LandUnit>
  </landUnits>
  <weapons>
@@ -14636,6 +15548,9 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
     <StrategicGroupMemberReference>
      <referenceId>6f2ff133-e2e6-429d-b719-88f9124b76b8</referenceId>
     </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>741e2594-9434-4915-89e2-d17985701961</referenceId>
+    </StrategicGroupMemberReference>
    </subordinatesCombined>
    <remark>尽管世铎是名义上的军机处领导者（军机大臣领班），但实际主要决策人物是翁同龢（户部尚书，帝师，“帝党”）与孙毓汶（兵部尚书，“后党”）。
 
@@ -14693,7 +15608,11 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <leaderReference>
     <referenceObjectId>ce13834a-c139-4bae-aafc-c238f00c349a</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>95da6c1b-d4eb-401a-98e0-1cefe2e59ea6</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>2</xProp>
@@ -14705,9 +15624,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>Viceroy of Liangjiang / Minister of Nanyang</english>
-    <japanese>両江総督 / 南洋大臣</japanese>
-    <chineseSimplified>两江总督 / 南洋大臣</chineseSimplified>
+    <english>Viceroy of Liangjiang &amp; Minister of Nanyang</english>
+    <japanese>両江総督 &amp; 南洋大臣</japanese>
+    <chineseSimplified>两江总督 &amp; 南洋大臣</chineseSimplified>
    </name>
    <type>HeadQuarter</type>
    <size>Army</size>
@@ -14718,7 +15637,11 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <leaderReference>
     <referenceObjectId>edf4fbab-471a-4ad5-8156-64de120a1781</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>ff0665fc-3324-4015-b532-f94b1f7c6d97</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>16</xProp>
@@ -14730,9 +15653,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
   </StrategicGroup>
   <StrategicGroup>
    <name>
-    <english>Viceroy of Zhili / Minister of Beiyang</english>
-    <japanese>直隷総督 / 北洋大臣</japanese>
-    <chineseSimplified>直隶总督 / 北洋大臣</chineseSimplified>
+    <english>Viceroy of Zhili &amp; Minister of Beiyang</english>
+    <japanese>直隷総督 &amp; 北洋大臣</japanese>
+    <chineseSimplified>直隶总督 &amp; 北洋大臣</chineseSimplified>
    </name>
    <type>HeadQuarter</type>
    <size>Army</size>
@@ -15654,7 +16577,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
   <StrategicGroup>
    <name>
     <english>11th Inf Regt</english>
-    <japanese>第十二歩兵旅団</japanese>
+    <japanese>第十一歩兵旅団</japanese>
     <chineseSimplified>第十一步兵旅团</chineseSimplified>
    </name>
    <type>Infantry</type>
@@ -15998,7 +16921,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>64f6e1f1-3972-4b04-98c7-0f3769d63568</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>9206fa6b-d455-4a6c-8d05-df374032a67d</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>31bfdf8e-72a4-4cfe-b870-3cd04aef5557</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>69257650-5568-4745-bf2b-4dbf77eee35b</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
@@ -16046,7 +16979,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>5d641ae9-68f4-4fcf-89f8-020dcf7e8ff7</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>513c4a86-8168-4d3c-8e5f-11c6d704ebbb</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>204aa4c9-6cd6-4e54-9c52-bebf3d461f01</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>19b23c0b-d645-483f-b82f-139224d379f5</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16068,8 +17011,20 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
+   <leaderReference>
+    <referenceObjectId>48a59ce3-612b-4005-9c7e-2c0286caa533</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>ecc7bf8b-9f78-46a2-9baa-7818b56b5863</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>0e2c0a7c-c5e9-47be-ac78-882f04d9a595</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>921ac2aa-21fb-40f0-94bf-9bba129b040a</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16094,7 +17049,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>81603dfe-975d-48e4-8cab-f2ad76f6367d</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>2952840f-eb81-4225-8682-6e65448aa023</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>5d97c2bb-c5be-44e9-9c58-a74eb5212e41</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>60de5790-f50c-4ec5-bbf9-8f91bf3c681c</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16119,7 +17084,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>edb68fc5-87f5-465b-a74b-e2d039b1d752</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>d67d33f1-1c03-430f-9ab5-e48a24fbeb0a</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>dc733a40-cac6-4c90-8c1a-794d86d21b02</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>39b41a0c-82d8-4489-9aa0-387650bf1fe6</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16144,7 +17119,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>dc71fa74-56e7-4aea-b992-251320183b4b</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>6cc0bc3c-9727-45b6-9ac0-33a98a87b8cf</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>6e68c251-1d8f-4cfb-b6b9-17aceda85a68</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>a7160e12-e738-4284-bbdb-53b88dfc4ca2</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
@@ -16169,7 +17154,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>e5edb69e-8498-4d5c-94e4-6f4a7672ef01</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>fc5f0aba-1dc3-4a12-abfa-dc6082a9843e</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>f75409d5-81c3-4fe4-a6b1-eb60989de5f1</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>7fc0b19f-3496-4ea2-b2c0-14a0e2f41c3a</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
@@ -16191,8 +17186,20 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <deployState>NotDeployed</deployState>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
-   <leaderReference />
-   <subordinatesCombined />
+   <leaderReference>
+    <referenceObjectId>76fbca5c-9b5e-4de1-9aae-a7ddcc3cb640</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>d937a0ae-1ce7-4479-b051-afb218946d47</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>55ef32a1-592c-4a97-bdc2-5d2bd423c890</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>75715540-89ba-4cd9-b97d-4751991143e0</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16252,7 +17259,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>9077d990-6797-4dc7-82a3-621dc67b4240</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>9b66d180-e9c0-4ee7-89e1-edda7c79ca9e</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>41e14bd1-f7d2-42b9-ac31-3365bb68115a</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>d521272c-705e-4d1f-b66e-e10c970a4d49</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
@@ -16300,7 +17317,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>991fee9a-5718-43ad-82a3-26d166ab3e07</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>e4240780-b29d-4e82-ab68-6a290f4e9337</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>d7e31f80-f3a3-4a7c-b467-ef35ab4ccc29</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>f1063f6c-eaec-479e-8436-6c8397397640</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16325,7 +17352,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>aa6651f0-9826-4d1d-9b2a-b42ca9eca5eb</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>72ac4c13-088b-4452-a43e-bab0bd9866fc</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>f8695aa7-4690-4f4f-9e98-39a2ccd46892</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>763a0932-b790-4adb-b9ba-187e22eb50f9</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16350,7 +17387,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>85beba13-9b12-4da0-aae1-32500d3c8941</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>7a3c9270-111c-4fe6-863d-8fbe39ec2696</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>fd8e3d19-ab24-4e6b-9ef9-3af173be41c4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>fcc5d9e3-1e0b-4c8a-bc57-8918506d9ced</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16375,7 +17422,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>f99757b8-a31e-438d-aef3-a55104e3c427</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>64a7fcbd-f578-4a78-b936-83654522c7a3</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>068da9d0-7f9e-4807-8f22-15560ec5dc8a</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>ead160b3-693d-4492-a3cb-4925f3434415</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16400,7 +17457,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>58595c28-22c0-4b36-a0c9-719034668fa3</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>a3f4ea7c-a9e3-4024-8f38-a129528ab6f9</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>ec63f55c-17b7-49c6-8b4f-116f77fba90b</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>c731ac41-c894-4afc-860f-eed6b3d3556f</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16425,7 +17492,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>f1cbac7d-8df1-4430-b7b1-dd32e8e5fb3f</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>b72f7677-0389-432a-8023-7c43c742ac19</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>5ca34a45-9308-49b6-9c6d-eb7f76bcb5e9</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>5c90d03a-de15-476f-a1ad-378d29c73a5c</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
@@ -16450,7 +17527,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>ba2d73dd-e705-4102-968d-da2b4b8c2ecd</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>a99aa3f3-569b-424a-acfc-108e9f4642f8</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>095acc25-5782-4bbe-8889-b0412cb4b7c0</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>6862c389-a5ce-48f3-b518-89ed59482fdc</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
@@ -16475,7 +17562,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>7a0ee432-3d99-40d8-8c97-c9e81754fdce</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>327d1e37-cc6b-4319-bf54-e0faa4526c16</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>fba1472f-19a2-448d-8c41-e3f0aa5459f3</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>9efb6f22-ea00-47b3-a1a7-5981ea3a3233</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16500,7 +17597,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>1f29b4dc-c71e-4cbd-9cb4-d9553f96dfc1</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>6c18dbb3-294d-4442-838f-d476b8392205</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>fa9c0c09-9e70-4294-87f4-3db67334d577</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>9c048763-2666-4119-aa60-173746573dea</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16525,7 +17632,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>1a8b6c44-74bd-44f7-9b68-681523ac1edc</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>edd1c129-2003-494f-b81e-40cd0a7d212e</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>efacaa00-8a19-4a08-8611-d97f9e5884f4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>c7f7557a-cf77-4a26-bf49-bdf686f771f7</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16550,7 +17667,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>2ea769ec-5df1-49c6-ac8d-47344913408b</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>20f41b70-41ef-4e64-8106-eb400ed6ba16</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>3e62679d-f3b8-4970-961f-2516545bb311</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>405d806c-db60-40ea-9619-9e08cd712e28</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16575,7 +17702,17 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <leaderReference>
     <referenceObjectId>31b3fddd-e37a-4c4f-861c-ef5939dc481c</referenceObjectId>
    </leaderReference>
-   <subordinatesCombined />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>cb02c455-68cd-409b-a14f-b4027eaaf3b6</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>3488f64a-2d81-47eb-9249-f64018aba4e8</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>c0acf4ca-6b18-4ee4-9017-9172d4e08a6e</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>-1</xProp>
@@ -16848,6 +17985,135 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
     <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Shanghai Base</english>
+    <chineseSimplified>上海基地</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Division</size>
+   <country>China</country>
+   <deployState>Independent</deployState>
+   <independentX>21</independentX>
+   <independentY>16</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>7a652a81-3d4e-4caf-86a1-9ebfe5130b60</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>31fe37b1-d813-4e17-a7e8-c7b29610514e</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <remark>吴淞</remark>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>21</xProp>
+   <yProp>16</yProp>
+   <objectId>ff0665fc-3324-4015-b532-f94b1f7c6d97</objectId>
+   <strategicGroupReference>
+    <referenceId>d9103ed8-50ae-49ca-810c-6eb72e30264c</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Nanayang Fleet</english>
+    <chineseSimplified>南洋水师</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Unspecified</size>
+   <country>China</country>
+   <deployState>Independent</deployState>
+   <independentX>21</independentX>
+   <independentY>16</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>21</xProp>
+   <yProp>16</yProp>
+   <objectId>31fe37b1-d813-4e17-a7e8-c7b29610514e</objectId>
+   <strategicGroupReference>
+    <referenceId>ff0665fc-3324-4015-b532-f94b1f7c6d97</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Viceroy of Minzhe</english>
+    <chineseSimplified>闽浙总督</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Army</size>
+   <country>China</country>
+   <deployState>Independent</deployState>
+   <independentX>16</independentX>
+   <independentY>8</independentY>
+   <leaderReference>
+    <referenceObjectId>6fb39207-8bd4-49b4-9294-7273a115fcc6</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>e44d9f9b-f6d1-4e29-9c58-c2c5e2cf3eb7</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>cb51bc0c-d189-4747-bd49-f61180c10499</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <remark>马尾基地
+福州船政局</remark>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>16</xProp>
+   <yProp>8</yProp>
+   <objectId>741e2594-9434-4915-89e2-d17985701961</objectId>
+   <strategicGroupReference>
+    <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Fujian Fleet</english>
+    <chineseSimplified>福建水师</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Unspecified</size>
+   <country>China</country>
+   <deployState>Independent</deployState>
+   <independentX>16</independentX>
+   <independentY>8</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>16</xProp>
+   <yProp>8</yProp>
+   <objectId>cb51bc0c-d189-4747-bd49-f61180c10499</objectId>
+   <strategicGroupReference>
+    <referenceId>741e2594-9434-4915-89e2-d17985701961</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Guangdong Fleet</english>
+    <chineseSimplified>广东水师</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Unspecified</size>
+   <country>China</country>
+   <deployState>Independent</deployState>
+   <independentX>2</independentX>
+   <independentY>3</independentY>
+   <leaderReference />
+   <subordinatesCombined />
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>2</xProp>
+   <yProp>3</yProp>
+   <objectId>95da6c1b-d4eb-401a-98e0-1cefe2e59ea6</objectId>
+   <strategicGroupReference>
+    <referenceId>6f2ff133-e2e6-429d-b719-88f9124b76b8</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
  </strategicGroups>
  <scenarioState>
   <dateTime>1894-07-25T00:00:00Z</dateTime>
@@ -17084,6 +18350,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
     <StrategicGroupReferences>
      <StrategicGroupReference>
       <referenceId>6f2ff133-e2e6-429d-b719-88f9124b76b8</referenceId>
+     </StrategicGroupReference>
+     <StrategicGroupReference>
+      <referenceId>95da6c1b-d4eb-401a-98e0-1cefe2e59ea6</referenceId>
      </StrategicGroupReference>
     </StrategicGroupReferences>
    </Cell>
@@ -17732,6 +19001,14 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <japanese>福州</japanese>
      <chineseSimplified>福州</chineseSimplified>
     </Label>
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>741e2594-9434-4915-89e2-d17985701961</referenceId>
+     </StrategicGroupReference>
+     <StrategicGroupReference>
+      <referenceId>cb51bc0c-d189-4747-bd49-f61180c10499</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
    </Cell>
    <Cell x="16" y="9" terrain="Rough" longitude="119.55542" latitude="26.87223" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/3/0" />
    <Cell x="16" y="10" terrain="Rough" longitude="119.513557" latitude="27.4258957" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/3" />
@@ -17975,6 +19252,14 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <japanese>上海</japanese>
      <chineseSimplified>上海</chineseSimplified>
     </Label>
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>ff0665fc-3324-4015-b532-f94b1f7c6d97</referenceId>
+     </StrategicGroupReference>
+     <StrategicGroupReference>
+      <referenceId>31fe37b1-d813-4e17-a7e8-c7b29610514e</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
    </Cell>
    <Cell x="21" y="17" terrain="Field" longitude="121.768318" latitude="31.6287212" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="3/4" />
    <Cell x="21" y="18" terrain="ShallowWater" longitude="121.743996" latitude="32.1722336" />

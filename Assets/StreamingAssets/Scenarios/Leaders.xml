@@ -1805,4 +1805,24 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-505</remark>
 https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <objectId>31b3fddd-e37a-4c4f-861c-ef5939dc481c</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Tan Zhonglin</english>
+   <japanese>譚鍾麟</japanese>
+   <chineseSimplified>谭钟麟</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Tan_Zhonglin.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Tan_Zhonglin</remark>
+  <objectId>6fb39207-8bd4-49b4-9294-7273a115fcc6</objectId>
+ </Leader>
 </ArrayOfLeader>

@@ -15,6 +15,9 @@ using System.Collections;
 using NavalCombatCore;
 using CoreUtils;
 using NavalCombat;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+
 
 public interface IColliderRootProvider
 {
@@ -134,6 +137,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public void Start()
     {
+        GamePreference.Instance.SetShortLabelLanguageTypeByLocale(LocalizationSettings.SelectedLocale);
+
         iconLayerMask = LayerMask.GetMask("Icon");
         // Debug.Log($"Persistent Path:{Application.persistentDataPath}");
 
@@ -174,7 +179,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public IEnumerator LoadScenario(string scenName)
     {
-        yield return StreamingAssetReference.FetchScenarioFile(scenName, s =>
+        yield return StreamingAssetReference.Instance.FetchScenarioFile(scenName, s =>
         {
             var fullState = FullState.FromXML(s);
             StartCoroutine(CompleteFullStateAndUpdateCoroutine(fullState));

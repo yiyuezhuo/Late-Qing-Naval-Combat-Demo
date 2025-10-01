@@ -11,6 +11,8 @@ using UnityEngine.EventSystems;
 using System;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 
 using CoreUtils;
@@ -58,7 +60,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         public Mode mode = Mode.ScenPath;
         public Vector2 cameraPosXY;
         public float cameraZoom;
-        public string scenPath = "Strategic/StrategicGameState.xml";
+        public string scenSubPath = "Scenarios/StrategicGameState.xml";
         public List<ShipLog> syncShipLogs;
     }
 
@@ -112,6 +114,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     void Start()
     {
+        GamePreference.Instance.SetShortLabelLanguageTypeByLocale(LocalizationSettings.SelectedLocale);
+
         var width = tempMapWidth;
         var height = tempMapHeight;
 
@@ -138,10 +142,17 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
         else if (startupConfig.mode == StartupConfig.Mode.ScenPath)
         {
-            Debug.Log($"ScenPath mode startup: {startupConfig.scenPath}");
+            Debug.Log($"ScenPath mode startup: {startupConfig.scenSubPath}");
 
             // Try to fetch default scenario file and update the state
-            StartCoroutine(Utils.FetchFile(startupConfig.scenPath, initialScenText =>
+            // StartCoroutine(Utils.FetchFile(startupConfig.scenPath, initialScenText =>
+            // {
+            //     StartCoroutine(
+            //         OnScenTextLoaded(initialScenText)
+            //     );
+            // }))
+            var scenFullPath = Application.streamingAssetsPath + "/" + startupConfig.scenSubPath;
+            StartCoroutine(StreamingTextAssetManager.Instance.FetchText(scenFullPath, initialScenText =>
             {
                 StartCoroutine(
                     OnScenTextLoaded(initialScenText)

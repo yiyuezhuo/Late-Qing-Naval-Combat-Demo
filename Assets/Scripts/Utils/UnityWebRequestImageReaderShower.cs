@@ -18,12 +18,16 @@ public class UnityWebRequestImageReaderShower : SingletonDocument<UnityWebReques
     {
         var reader = UnityWebRequestImageReader.Instance;
         var paths = reader.activingTasks.Select(task => task.path).ToList();
+        paths.AddRange(AssetReferenceManager.Instance.loadingAssetReferences.Select(assetRef => $"Addressable Asset: {assetRef.RuntimeKey}"));
+        // paths.AddRange(AssetReferenceManager.Instance.loadingAssetReferences.Select(assetRef => $"Addressable Asset: {assetRef.SubObjectName}"));
+        paths.AddRange(StreamingTextAssetManager.Instance.busyUnityWebRequests.Select(req => req.url));
+
         if (paths.Count == 0)
         {
             root.style.display = DisplayStyle.None;
             return;
         }
         root.style.display = DisplayStyle.Flex;
-        statusLabel.text = "Fetching\n" + string.Join("\n", paths);
+        statusLabel.text = $"Fetching {paths.Count} files\n" + string.Join("\n", paths);
     }
 }

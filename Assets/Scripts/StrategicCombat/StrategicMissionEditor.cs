@@ -3,7 +3,6 @@ using UnityEngine.UIElements;
 using UnityEngine;
 using CoreUtils;
 using System.Linq;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 public class StrategicMissionEditor : LeftObjectPickerRightEditorStrategic<StrategicMissionEditor, StrategicMission>
 {
@@ -23,47 +22,11 @@ public class StrategicMissionEditor : LeftObjectPickerRightEditorStrategic<Strat
         // Utils.BindStrategicGroupMemberReferenceListView(groupsListView, contentContainer, this);
         Utils.BindMissionMembership(groupsListView, contentContainer, this);
 
-        BindSetGotoButton(root.Q<Button>("SetSourceDepotButton"), root.Q<Button>("GotoSourceDepotButton"));
-        BindSetGotoButton(root.Q<Button>("SetTargetDepotButton"), root.Q<Button>("GotoTargetDepotButton"));
-
-        // var setSourceDepotButton = root.Q<Button>("SetSourceDepotButton");
-        // setSourceDepotButton.clicked += () =>
-        // {
-        //     if (Utils.TryResolveCurrentValueForBinding(setSourceDepotButton, out StrategicMission mission))
-        //     {
-        //         DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables =>
-        //         {
-        //             var depot = selectedReferenceables.FirstOrDefault() as LandUnit;
-        //             if (depot != null)
-        //             {
-        //                 mission.sourceDepotObjectId = depot.objectId;
-        //             }
-
-        //         }, SubordinatePickerDialog.Mode.Depot);
-        //     }
-        // };
-
-        // var gotoSourceDepotButton = root.Q<Button>("GotoSourceDepotButton");
-        // gotoSourceDepotButton.clicked += () =>
-        // {
-        //     if (Utils.TryResolveCurrentValueForBinding(setSourceDepotButton, out StrategicMission mission))
-        //     {
-        //         var sourceDepot = EntityManager.Instance.Get<LandUnit>(mission.sourceDepotObjectId);
-        //         if (sourceDepot == null)
-        //             return;
-
-        //         var idx = StrategicGameState.Instance.landUnits.IndexOf(sourceDepot);
-        //         if (idx != -1)
-        //         {
-        //             Hide();
-        //             LandUnitEditor.Instance.Show();
-        //             BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
-        //         }
-        //     }
-        // };
+        BindDepotSetGotoButton(root.Q<Button>("SetSourceDepotButton"), root.Q<Button>("GotoSourceDepotButton"));
+        BindDepotSetGotoButton(root.Q<Button>("SetTargetDepotButton"), root.Q<Button>("GotoTargetDepotButton"));
     }
 
-    public void BindSetGotoButton(Button setButton, Button gotoButton)
+    public void BindDepotSetGotoButton(Button setButton, Button gotoButton)
     {
         setButton.clicked += () =>
         {

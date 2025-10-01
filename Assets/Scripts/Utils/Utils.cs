@@ -488,13 +488,18 @@ public static class Utils
                     DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables =>
                     {
                         var oldObj = fieldReference.Get();
+                        var selectedReferenceable = selectedReferenceables.FirstOrDefault();
+
+                        if(oldObj?.objectId == selectedReferenceable.objectId)
+                        {
+                            return;
+                        }
+
                         if (oldObj != null)
                         {
                             // oldObj.SetStrategicGroupReference(null);
                             oldObj.strategicGroupReference.referenceId = null;
                         }
-
-                        var selectedReferenceable = selectedReferenceables.FirstOrDefault();
 
                         if (selectedReferenceable != null && selectedStrategicGroup != null)
                         {

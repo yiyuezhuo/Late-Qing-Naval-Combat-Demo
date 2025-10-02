@@ -1685,6 +1685,94 @@ MonoBehaviour:
     m_Key: New Entry 1
     m_Metadata:
       m_Items: []
+  - m_Id: 10965740016013312
+    m_Key: FAQ Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053239853813760
+    m_Key: Advance 1 Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053309105967104
+    m_Key: Advance 1 Hour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053369889820672
+    m_Key: Fog-of-War
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053435773947904
+    m_Key: Viewer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053585590292480
+    m_Key: Side
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053729928876032
+    m_Key: Select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053781254574080
+    m_Key: Cell Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053886028288000
+    m_Key: Missions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054042698125312
+    m_Key: Strategic Mission Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054227549491200
+    m_Key: Assigned Groups
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054307501314048
+    m_Key: Patrol State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054384923971584
+    m_Key: Supply State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054514137894912
+    m_Key: Source Depot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054619624640512
+    m_Key: Target Depot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054689036177408
+    m_Key: One Way Unload State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054754807058432
+    m_Key: Edit Waypoints
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054955223486464
+    m_Key: Parent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11055115978575872
+    m_Key: Mission
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11055191308275712
+    m_Key: Planned Path
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11055268416360448
+    m_Key: Move Progression
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11055325324677120
+    m_Key: Sort
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

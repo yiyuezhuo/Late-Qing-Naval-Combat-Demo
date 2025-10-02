@@ -217,7 +217,8 @@ namespace NavalCombatCore
 
         public float GetTargettingScore(float targetSelfFirepower, float targetSurvivability, float targetUnderFirepower, int overConcentrationScore)
         {
-            var score = targetSelfFirepower / (1 + targetSurvivability) * targetUnderFirepower;
+            // var score = targetSelfFirepower / (1 + targetSurvivability) * targetUnderFirepower;
+            var score = (1 + targetSelfFirepower) / (1 + targetSurvivability) * targetUnderFirepower;
             if (overConcentrationScore == 1)
             {
                 score *= 1 + underfireCoef;

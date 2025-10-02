@@ -36,6 +36,7 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7671924822016)" />
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="FAQ" name="FAQButton" class="verylarge" />
                     <ui:Button text="Open Source Code Repository" name="OpenSourceRepositoryButton" class="verylarge">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7050274443264)" />

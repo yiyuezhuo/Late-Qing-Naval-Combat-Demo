@@ -10876,7 +10876,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>6e5768ce-6058-423c-ac81-cf6cab2dc826</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -10974,7 +10976,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>4c17e474-a453-48a0-b353-4fce4f54c533</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -11072,7 +11076,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>534a1346-bbcb-4741-a94f-dc95fdc6e616</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -11170,7 +11176,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>f4e0440d-0c11-4be6-831e-36de285e1dd2</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -11268,7 +11276,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>4eff8972-1878-4201-9f3b-1e69c894a251</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -11366,7 +11376,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>aafc4c82-5014-4f8f-8b00-5c47729f028a</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -11464,7 +11476,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>687dce60-89ed-4f0e-a7b4-048afb9b6c40</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -11562,7 +11576,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>992239d0-7bd1-4c3c-b925-b8761e182058</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -11660,7 +11676,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>f2e568fb-611b-4fe9-94cb-46bdc03ac66a</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -11758,7 +11776,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>42bef4b0-ce44-475e-a356-592419d0ab2f</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -11856,7 +11876,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>90cdaeb3-7ac6-448f-85be-a164f9222d76</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -11954,7 +11976,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>2251925f-3ad4-4003-97de-56612be7e2f1</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -12052,7 +12076,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>b96ad426-e457-434e-b141-dc0965f35f56</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -12150,7 +12176,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>e91c9321-ef04-4338-ac54-4ffaaae48e1f</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -12248,7 +12276,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>b5ec58c5-1993-47f5-9c4b-20496fb6d01f</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -12346,7 +12376,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>65c69ab0-6f43-4e53-ae55-e820b16bf7d9</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -12444,7 +12476,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>c93c6d47-cca7-41c3-a6f8-e89cd93f32cf</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -12542,7 +12576,9 @@
     </maximumFiringDistanceYardsForTorpedo>
     <objectId>cba2aa40-1e2b-42a3-a6a1-27602961a213</objectId>
    </doctrine>
-   <strategicGroupReference />
+   <strategicGroupReference>
+    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+   </strategicGroupReference>
   </ShipLog>
   <ShipLog>
    <subStates />
@@ -12942,6 +12978,306 @@
    </doctrine>
    <strategicGroupReference>
     <referenceId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</referenceId>
+   </strategicGroupReference>
+  </ShipLog>
+  <ShipLog>
+   <subStates />
+   <objectId>92f37c48-f99b-42b5-9958-0217bf1a121e</objectId>
+   <namedShipObjectId>95ef9985-e6fe-4ce0-a813-6e506f78484b</namedShipObjectId>
+   <damagePoint>0</damagePoint>
+   <position>
+    <LatDeg>0</LatDeg>
+    <LonDeg>0</LonDeg>
+   </position>
+   <speedKnots>0</speedKnots>
+   <headingDeg>0</headingDeg>
+   <desiredSpeedKnots>0</desiredSpeedKnots>
+   <desiredHeadingDeg>0</desiredHeadingDeg>
+   <mapState>NotDeployed</mapState>
+   <operationalState>Operational</operationalState>
+   <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
+   <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
+   <batteryStatus />
+   <torpedoSectorStatus>
+    <ammunition>0</ammunition>
+    <mountStatus />
+   </torpedoSectorStatus>
+   <rapidFiringStatus />
+   <dynamicStatus>
+    <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+    <accelerationOffset>0</accelerationOffset>
+    <engineRoomHits>0</engineRoomHits>
+    <propulsionShaftHits>0</propulsionShaftHits>
+    <boilerRoomHits>0</boilerRoomHits>
+    <engineRoomFloodingHits>0</engineRoomFloodingHits>
+    <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
+   </dynamicStatus>
+   <searchLightHits>
+    <portHit>0</portHit>
+    <starboardHit>0</starboardHit>
+   </searchLightHits>
+   <damageControlRatingHits>0</damageControlRatingHits>
+   <emergencyRudder>false</emergencyRudder>
+   <assistedDeceleration>true</assistedDeceleration>
+   <controlMode>Independent</controlMode>
+   <followDistanceYards>500</followDistanceYards>
+   <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+   <isEvasiveManeuvering>false</isEvasiveManeuvering>
+   <pendingDamagePoint>0</pendingDamagePoint>
+   <logs />
+   <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
+   <doctrine>
+    <maneuverAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Manual</value>
+    </maneuverAutomaticType>
+    <fireAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </fireAutomaticType>
+    <ammunitionFallbackable>
+     <isInherited>true</isInherited>
+     <value>true</value>
+    </ammunitionFallbackable>
+    <ammunitionSwitchAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </ammunitionSwitchAutomaticType>
+    <maximumFiringDistanceYardsFor200mmPlus>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor200mmPlus>
+    <maximumFiringDistanceYardsFor100mmTo200mm>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmTo200mm>
+    <maximumFiringDistanceYardsFor100mmLess>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmLess>
+    <maximumFiringDistanceYardsForTorpedo>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsForTorpedo>
+    <objectId>2ad0f75b-1d4c-4fb2-a165-91e83bc7a60a</objectId>
+   </doctrine>
+   <strategicGroupReference>
+    <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
+   </strategicGroupReference>
+  </ShipLog>
+  <ShipLog>
+   <subStates />
+   <objectId>fc703e57-12f4-4a4b-82d4-9b5804b9568c</objectId>
+   <namedShipObjectId>8625e60d-6083-45a7-91f4-50aac0d7989c</namedShipObjectId>
+   <damagePoint>0</damagePoint>
+   <position>
+    <LatDeg>0</LatDeg>
+    <LonDeg>0</LonDeg>
+   </position>
+   <speedKnots>0</speedKnots>
+   <headingDeg>0</headingDeg>
+   <desiredSpeedKnots>0</desiredSpeedKnots>
+   <desiredHeadingDeg>0</desiredHeadingDeg>
+   <mapState>NotDeployed</mapState>
+   <operationalState>Operational</operationalState>
+   <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
+   <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
+   <batteryStatus />
+   <torpedoSectorStatus>
+    <ammunition>0</ammunition>
+    <mountStatus />
+   </torpedoSectorStatus>
+   <rapidFiringStatus />
+   <dynamicStatus>
+    <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+    <accelerationOffset>0</accelerationOffset>
+    <engineRoomHits>0</engineRoomHits>
+    <propulsionShaftHits>0</propulsionShaftHits>
+    <boilerRoomHits>0</boilerRoomHits>
+    <engineRoomFloodingHits>0</engineRoomFloodingHits>
+    <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
+   </dynamicStatus>
+   <searchLightHits>
+    <portHit>0</portHit>
+    <starboardHit>0</starboardHit>
+   </searchLightHits>
+   <damageControlRatingHits>0</damageControlRatingHits>
+   <emergencyRudder>false</emergencyRudder>
+   <assistedDeceleration>true</assistedDeceleration>
+   <controlMode>Independent</controlMode>
+   <followDistanceYards>500</followDistanceYards>
+   <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+   <isEvasiveManeuvering>false</isEvasiveManeuvering>
+   <pendingDamagePoint>0</pendingDamagePoint>
+   <logs />
+   <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
+   <doctrine>
+    <maneuverAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Manual</value>
+    </maneuverAutomaticType>
+    <fireAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </fireAutomaticType>
+    <ammunitionFallbackable>
+     <isInherited>true</isInherited>
+     <value>true</value>
+    </ammunitionFallbackable>
+    <ammunitionSwitchAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </ammunitionSwitchAutomaticType>
+    <maximumFiringDistanceYardsFor200mmPlus>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor200mmPlus>
+    <maximumFiringDistanceYardsFor100mmTo200mm>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmTo200mm>
+    <maximumFiringDistanceYardsFor100mmLess>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmLess>
+    <maximumFiringDistanceYardsForTorpedo>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsForTorpedo>
+    <objectId>a5bfb31f-1567-46e1-94c6-b36674e6933e</objectId>
+   </doctrine>
+   <strategicGroupReference>
+    <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
+   </strategicGroupReference>
+  </ShipLog>
+  <ShipLog>
+   <subStates />
+   <objectId>489e5198-4b16-492a-8a62-0bd1ec839489</objectId>
+   <namedShipObjectId>90f19df6-3c15-45b7-91eb-ee7f4e99d8d9</namedShipObjectId>
+   <damagePoint>0</damagePoint>
+   <position>
+    <LatDeg>0</LatDeg>
+    <LonDeg>0</LonDeg>
+   </position>
+   <speedKnots>0</speedKnots>
+   <headingDeg>0</headingDeg>
+   <desiredSpeedKnots>0</desiredSpeedKnots>
+   <desiredHeadingDeg>0</desiredHeadingDeg>
+   <mapState>NotDeployed</mapState>
+   <operationalState>Operational</operationalState>
+   <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
+   <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
+   <batteryStatus />
+   <torpedoSectorStatus>
+    <ammunition>0</ammunition>
+    <mountStatus />
+   </torpedoSectorStatus>
+   <rapidFiringStatus />
+   <dynamicStatus>
+    <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+    <accelerationOffset>0</accelerationOffset>
+    <engineRoomHits>0</engineRoomHits>
+    <propulsionShaftHits>0</propulsionShaftHits>
+    <boilerRoomHits>0</boilerRoomHits>
+    <engineRoomFloodingHits>0</engineRoomFloodingHits>
+    <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
+   </dynamicStatus>
+   <searchLightHits>
+    <portHit>0</portHit>
+    <starboardHit>0</starboardHit>
+   </searchLightHits>
+   <damageControlRatingHits>0</damageControlRatingHits>
+   <emergencyRudder>false</emergencyRudder>
+   <assistedDeceleration>true</assistedDeceleration>
+   <controlMode>Independent</controlMode>
+   <followDistanceYards>500</followDistanceYards>
+   <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
+   <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+   <isEvasiveManeuvering>false</isEvasiveManeuvering>
+   <pendingDamagePoint>0</pendingDamagePoint>
+   <logs />
+   <timeLocLogs />
+   <supplyTons>0</supplyTons>
+   <fixedHours>0</fixedHours>
+   <doctrine>
+    <maneuverAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Manual</value>
+    </maneuverAutomaticType>
+    <fireAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </fireAutomaticType>
+    <ammunitionFallbackable>
+     <isInherited>true</isInherited>
+     <value>true</value>
+    </ammunitionFallbackable>
+    <ammunitionSwitchAutomaticType>
+     <isInherited>true</isInherited>
+     <value>Automatic</value>
+    </ammunitionSwitchAutomaticType>
+    <maximumFiringDistanceYardsFor200mmPlus>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor200mmPlus>
+    <maximumFiringDistanceYardsFor100mmTo200mm>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmTo200mm>
+    <maximumFiringDistanceYardsFor100mmLess>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsFor100mmLess>
+    <maximumFiringDistanceYardsForTorpedo>
+     <isInherited>true</isInherited>
+     <value>
+      <isSpecified>false</isSpecified>
+      <value>0</value>
+     </value>
+    </maximumFiringDistanceYardsForTorpedo>
+    <objectId>2263355d-925d-432d-9b0a-e04d74d5eef5</objectId>
+   </doctrine>
+   <strategicGroupReference>
+    <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
    </strategicGroupReference>
   </ShipLog>
  </shipLogs>
@@ -15711,6 +16047,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
      <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
+     <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
      <referenceId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
@@ -16276,6 +16615,9 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
    <subordinatesCombined>
     <StrategicGroupMemberReference>
      <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <remark>https://ja.wikipedia.org/wiki/%E8%BB%8D%E4%BB%A4%E9%83%A8
@@ -18114,6 +18456,115 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
     <referenceId>6f2ff133-e2e6-429d-b719-88f9124b76b8</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>IJN Transports</english>
+    <chineseSimplified>日军运输船队</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Independent</deployState>
+   <independentX>42</independentX>
+   <independentY>23</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>ce853438-efba-4760-8772-0f20af195c6d</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>ff2a2be8-4dc0-4f2e-a9d3-204b97464787</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>ed519773-97f2-438c-8c29-ed23388a4892</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>884e9470-40e5-4f94-8907-06f780895d64</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>dd69551a-c7e2-422f-87f1-1c372a532910</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>9a9658a3-ccae-48d8-89ea-23386df96a8b</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>f5a5d796-24fa-4a66-b3a3-fbfdd6fc24f4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>e45890c4-72a7-4e0f-9bd6-d8ca1ebb4a1a</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>293055e0-877d-42f5-b9f5-1105e2bb87d4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>175c9300-b657-4f6d-8fc5-726591619f02</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>a9a2f4a3-9116-4e0f-830c-bf1e8673f38b</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>09455c86-4e7e-4306-b329-32cbb07918f0</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>7f46bb1a-da14-4469-83e2-90b523558657</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>300356d2-20bf-4c19-a64f-6debfa317b57</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>07cda472-bc97-4e2c-9e25-2f0a020f2c31</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>c1bef169-989d-49a9-b307-29e530f139b2</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>1f00ac7d-fed4-4916-afb1-981145dda0e7</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>8bff33f7-f824-4147-883f-a2335263aafb</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>748b4491-cf73-4f62-8f7d-075e0dcdec09</objectId>
+   <strategicGroupReference>
+    <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>China Transports</english>
+    <chineseSimplified>清军运输船队</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Regiment</size>
+   <country>China</country>
+   <deployState>Independent</deployState>
+   <independentX>22</independentX>
+   <independentY>28</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>92f37c48-f99b-42b5-9958-0217bf1a121e</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>fc703e57-12f4-4a4b-82d4-9b5804b9568c</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>489e5198-4b16-492a-8a62-0bd1ec839489</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>22</xProp>
+   <yProp>28</yProp>
+   <objectId>c42825cb-ad36-44f1-842b-49019caa5d23</objectId>
+   <strategicGroupReference>
+    <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
  </strategicGroups>
  <scenarioState>
   <dateTime>1894-07-25T00:00:00Z</dateTime>
@@ -19337,10 +19788,13 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
     </Label>
     <StrategicGroupReferences>
      <StrategicGroupReference>
-      <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
+      <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
      </StrategicGroupReference>
      <StrategicGroupReference>
-      <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+      <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
+     </StrategicGroupReference>
+     <StrategicGroupReference>
+      <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
      </StrategicGroupReference>
     </StrategicGroupReferences>
    </Cell>
@@ -20291,6 +20745,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
      <chineseSimplified>广岛</chineseSimplified>
     </Label>
     <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+     </StrategicGroupReference>
      <StrategicGroupReference>
       <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
      </StrategicGroupReference>

@@ -1,13 +1,25 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
     <ui:VisualElement data-source-type="StrategicMissionEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
-        <ui:Label text="Strategic Mission Editor" class="title" />
+        <ui:Label text="Strategic Mission Editor" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054042698125312)" />
+            </Bindings>
+        </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px; flex-shrink: 0;">
                 <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" data-source-path="currentGameState.missions" item-template="project://database/Assets/UIDocuments/Templates/StrategicMissionLabel.uxml?fileID=9197481963319205126&amp;guid=243e3c2e0774069448e3ae1435722b77&amp;type=3#StrategicMissionLabel" style="flex-grow: 1;" />
                 <ui:VisualElement name="ControlButtons">
-                    <ui:Button text="Copy Last" name="CopyLastButton" />
-                    <ui:Button text="Confirm" name="ConfirmButton" />
+                    <ui:Button text="Copy Last" name="CopyLastButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195698978623488)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Confirm" name="ConfirmButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1;">
@@ -25,13 +37,19 @@
                             <ui:EnumField label="Type" value="Center" type="StrategicCombatCore.StrategicMission+MissionType, Assembly-CSharp">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)" />
                                 </Bindings>
                             </ui:EnumField>
-                            <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="groups" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" show-add-remove-footer="true" header-title="Assigned Groups" show-foldout-header="true" name="GroupsListView" fixed-item-height="60" />
+                            <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="groups" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" show-add-remove-footer="true" header-title="Assigned Groups" show-foldout-header="true" name="GroupsListView" fixed-item-height="60">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054227549491200)" />
+                                </Bindings>
+                            </ui:ListView>
                             <ui:VisualElement style="flex-grow: 0;">
                                 <ui:EnumField label="Patrol State" value="Center" type="StrategicCombatCore.StrategicMission+PatrolState, Assembly-CSharp">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="patrolState" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054307501314048)" />
                                     </Bindings>
                                 </ui:EnumField>
                                 <Bindings>
@@ -42,11 +60,20 @@
                                 <ui:EnumField label="Supply State" value="Center" type="StrategicCombatCore.StrategicMission+SupplyState, Assembly-CSharp">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="supplyState" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054384923971584)" />
                                     </Bindings>
                                 </ui:EnumField>
                                 <ui:VisualElement data-source-path="sourceDepotReference" style="flex-grow: 1; flex-direction: row;">
-                                    <ui:Label text="Source Depot" style="width: 120px;" />
-                                    <ui:Button text="Set" name="SetSourceDepotButton" />
+                                    <ui:Label text="Source Depot" style="width: 120px;">
+                                        <Bindings>
+                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054514137894912)" />
+                                        </Bindings>
+                                    </ui:Label>
+                                    <ui:Button text="Set" name="SetSourceDepotButton">
+                                        <Bindings>
+                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
+                                        </Bindings>
+                                    </ui:Button>
                                     <ui:Button text="Source Depot Name" name="GotoSourceDepotButton" style="flex-grow: 1;">
                                         <Bindings>
                                             <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget" />
@@ -54,8 +81,16 @@
                                     </ui:Button>
                                 </ui:VisualElement>
                                 <ui:VisualElement data-source-path="targetDepotReference" style="flex-grow: 1; flex-direction: row;">
-                                    <ui:Label text="Target Depot" style="width: 120px;" />
-                                    <ui:Button text="Set" name="SetTargetDepotButton" />
+                                    <ui:Label text="Target Depot" style="width: 120px;">
+                                        <Bindings>
+                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054619624640512)" />
+                                        </Bindings>
+                                    </ui:Label>
+                                    <ui:Button text="Set" name="SetTargetDepotButton">
+                                        <Bindings>
+                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
+                                        </Bindings>
+                                    </ui:Button>
                                     <ui:Button text="Target Depot Name" name="GotoTargetDepotButton" style="flex-grow: 1;">
                                         <Bindings>
                                             <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget" />
@@ -70,6 +105,7 @@
                                 <ui:EnumField label="One Way Unload State" value="Center" type="StrategicCombatCore.StrategicMission+OneWayUnloadState, Assembly-CSharp">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="oneWayUnloadState" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054689036177408)" />
                                     </Bindings>
                                 </ui:EnumField>
                                 <Bindings>
@@ -77,7 +113,11 @@
                                 </Bindings>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-direction: row;">
-                                <ui:Button text="Edit Waypoints" name="EditWaypointsButton" />
+                                <ui:Button text="Edit Waypoints" name="EditWaypointsButton">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054754807058432)" />
+                                    </Bindings>
+                                </ui:Button>
                             </ui:VisualElement>
                             <ui:MultiColumnListView binding-source-selection-mode="AutoAssign" data-source-path="waypoints">
                                 <ui:Columns>

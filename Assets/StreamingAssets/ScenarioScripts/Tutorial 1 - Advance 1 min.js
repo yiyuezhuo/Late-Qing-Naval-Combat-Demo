@@ -79,7 +79,7 @@ Now right-click the unit or left-click on unit's name hyper link in the informat
 `
 航向已更改。
 
-现在右键单击单位，或左键单击信息面板中的单位名称超链接，即可打开舰艇动态状态编辑器（本游戏与CMO一样，游戏和“编辑器”使用相同的UI）。
+现在右键单击单位，或左键单击信息面板中的单位名称超链接，即可打开舰艇动态状态编辑器（本游戏类似CMO，游戏和“编辑器”使用相同的界面）。
 `,
 `
 航向已更改。

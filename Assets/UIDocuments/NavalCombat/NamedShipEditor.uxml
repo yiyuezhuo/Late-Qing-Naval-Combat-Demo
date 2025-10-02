@@ -133,6 +133,12 @@
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                                 <ui:Instance template="NamedShipVisualizer" name="NamedShipVisualizer" />
+                                <ui:Label text="Remark" />
+                                <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="min-height: 100px; white-space: normal;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:TextField>
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:ScrollView>

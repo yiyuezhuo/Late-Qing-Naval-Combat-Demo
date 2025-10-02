@@ -38,8 +38,16 @@
                                     <ui:DataBinding property="value" data-source-path="landUnitTemplateName" binding-mode="ToTarget" />
                                 </Bindings>
                             </ui:TextField>
-                            <ui:Button text="Set" name="SetLandUnitTemplateButton" />
-                            <ui:Button text="Goto" name="GotoLandUnitTemplateButton" />
+                            <ui:Button text="Set" name="SetLandUnitTemplateButton">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
+                                </Bindings>
+                            </ui:Button>
+                            <ui:Button text="Goto" name="GotoLandUnitTemplateButton">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196569347035136)" />
+                                </Bindings>
+                            </ui:Button>
                         </ui:VisualElement>
                         <ui:Instance template="GlobalStringEditor" data-source-path="name">
                             <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
@@ -53,11 +61,13 @@
                         <ui:FloatField label="Supply (tons)">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="supplyTons" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11056970263597056)" />
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField label="Supply Generation (tons)">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="supplyGeneratedTons" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11057038760775680)" />
                             </Bindings>
                         </ui:FloatField>
                         <ui:Instance template="IStrategicGroupMemberReferenceableParentDepotUI" />

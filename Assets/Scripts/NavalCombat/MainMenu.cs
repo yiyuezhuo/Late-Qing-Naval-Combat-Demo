@@ -26,11 +26,19 @@ public class MainMenu : SingletonDocument<MainMenu>
         };
 
 
-        openSourceRepositoryButton.clicked += () => Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
+        // openSourceRepositoryButton.clicked += () => Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
+        openSourceRepositoryButton.clicked += () =>
+        {
+            DialogRoot.Instance.PopupConfirmDialog("Open online open resource repository link with browser?\nhttps://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo", () =>
+            {
+                Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
+            });
+        };
 
         exitButton.clicked += Application.Quit;
 
         root.Q<Button>("HelpButton").clicked += () => DialogRoot.Instance.PopupHelpDialogDocument();
+        root.Q<Button>("FAQButton").clicked += () => DialogRoot.Instance.PopupFAQDialogDocument();
 
         var strategicModeTestButton = root.Q<Button>("StrategicModeTestButton");
 

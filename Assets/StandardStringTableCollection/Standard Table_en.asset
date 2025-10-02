@@ -1710,6 +1710,150 @@ MonoBehaviour:
     m_Localized: 'Sub Combat Resolver '
     m_Metadata:
       m_Items: []
+  - m_Id: 10965740016013312
+    m_Localized: "## Localization Quality Issues?\r\n\r\nThe development base language
+      is English, which remains the most polished version. If you encounter questionable
+      translations in other languages, please verify against the English version
+      first.\r\n\r\nCurrent localization approach:\r\n\r\n- **Basic UI**: English
+      and Simplified Chinese versions are manually crafted. Japanese and Traditional
+      Chinese are LLM-translated based on the above two languages.\r\n- **Remarks**:
+      Source content with its orignal language appears at the top; translation follow
+      below.\r\n- **Long Texts** (Help, tutorials, Steam page, etc.): English version
+      are manually written; other languages are LLM-translated from English.\r\n-
+      **Dynamic Content** (Damage effects, combat logs, etc.): Not yet localized.\r\n\r\n##
+      Why Don\u2019t Ships Sink Immediately After Reaching 100% Damage Points?\r\n\r\nIn
+      the SK5 system, reaching 100% Damage Points (DP) does not guarantee a ship
+      will sink. A vessel might survive well beyond 100% DP \u2014 or sink instantly
+      from the first hit.\r\n\r\nDP primarily drives the generation of General Damage
+      Effects, which can severely impair a ship\u2019s combat capability. The 100%
+      DP mark indicates a high probability that the ship becomes mission-killed (combat
+      ineffective).\r\n\r\nMechanically, 100% DP is the threshold at which General
+      Damage Effect checks stop. Beyond this point, no further General DE rolls occur
+      \u2014 making the ship relatively less likely to sink per additional damage
+      taken (imagine critical explosion chances are \"used up\", so more hole in
+      the shell above water has no more effect to sink the ship). That said, specific
+      damage effects from normal hits can still cause the ship to sink.\r\n\r\n##
+      How to Enable Movement AI\r\n\r\nSelect a group in the OOB Editor, turn off
+      \"Inherited\" in the automatic movement field, and set it to \"Automatic.\"
+      The group will then change its course according to certain principles. This
+      setting is usually applied to a top-level group, such as \"Japan Fleet\" or
+      \"China Fleet,\" but it can also be set at a subordinate level for partial
+      automation.\r\n\r\nThe AI is still in a prototype state (for example, it plans
+      its course but does not modify speed), so it is not enabled by default. The
+      game currently recommends sandbox-style gameplay, where the player controls
+      both sides simultaneously and observes the outcome\u2014similar to how solitary
+      wargamer does play their miniatures, but with help of auto-resolution powered
+      by computer.\r\n\r\n## Editing is Not Intuitive\r\n\r\nI haven\u2019t written
+      related material since major rework is expected. If you really want to edit
+      something and find it frustrating, contact me (via GitHub issue or Discord
+      server) to let me know someone is really interested, I would write a temp document
+      to explain how to do it in the current stage.\r\n\n## Why are so many standard
+      UI elements named \"Editor\"? I don't want to \"edit\" anything\u2014I just
+      want to play.\r\n\r\nI aim to recreate a sandbox experience similar to Vassal
+      and Tabletop Simulator (TTS), where editing allows players to introduce custom
+      rules and house rules without coding. On the ohter hand, in games like Command:
+      Modern Operations (CMO), players often use edit mode to streamline experimentation\u2014a
+      feature I want to incorporate into game.\r\n\r\n## Why is so much image loading
+      done at runtime?\r\n\r\nI want to emulate Tabletop Simulator's approach of
+      loading images dynamically during gameplay.\r\n\r\n## Why Is the Game So Large?
+      Shouldn't It Be a Mini Game liek RTW Given the \"Minimalist\" Graphics?\r\n\r\nSimilar
+      to games like CMO, the majority of the installation size comes from GIS elevation
+      data. While titles such as Rule the Wave avoid this overhead by using vector
+      data, this project uses raster data \u2014 even though ocean depth data has
+      been clamped.\r\n\r\nThe reason for retaining elevation data is to support
+      a planned tactical land combat generator, which will utilize terrain elevation
+      in future updates. Also elevation data will render location more recognizable
+      and pretty.\r\n\r\n## Is the Strategic Game Playable Now?\r\n\r\nNo, only the
+      naval tactical game is currently playable (to some extent). The exposed strategic
+      game mode only gives a *feel* for what the full strategic experience will eventually
+      be like. \r\n\r\nThis area may also be of interest to open-source contributors,
+      as the strategic game is now the main focus of development.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053239853813760
+    m_Localized: Advance 1 Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053309105967104
+    m_Localized: Advance 1 Hour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053369889820672
+    m_Localized: Fog-of-War
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053435773947904
+    m_Localized: Viewer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053585590292480
+    m_Localized: Side
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053729928876032
+    m_Localized: Select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053781254574080
+    m_Localized: Cell Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11053886028288000
+    m_Localized: Missions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054042698125312
+    m_Localized: Strategic Mission Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054227549491200
+    m_Localized: Assigned Groups
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054307501314048
+    m_Localized: Patrol State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054384923971584
+    m_Localized: Supply State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054514137894912
+    m_Localized: Source Depot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054619624640512
+    m_Localized: Target Depot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054689036177408
+    m_Localized: One Way Unload State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054754807058432
+    m_Localized: Edit Waypoints
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11054955223486464
+    m_Localized: Parent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11055115978575872
+    m_Localized: Mission
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11055191308275712
+    m_Localized: Planned Path
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11055268416360448
+    m_Localized: Move Progression
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11055325324677120
+    m_Localized: Sort
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

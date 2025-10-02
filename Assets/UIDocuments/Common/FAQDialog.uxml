@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement class="panel-dialog" style="height: auto; flex-grow: 1; width: auto;">
+        <ui:Label text="FAQ" class="title" />
+        <ui:TextField multiline="true" vertical-scroller-visibility="Auto" readonly="true" style="white-space: normal; flex-grow: 1; flex-shrink: 1;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="value" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(10965740016013312)" />
+            </Bindings>
+        </ui:TextField>
+        <ui:Button text="Confirm" name="ConfirmButton" />
+    </ui:VisualElement>
+</ui:UXML>

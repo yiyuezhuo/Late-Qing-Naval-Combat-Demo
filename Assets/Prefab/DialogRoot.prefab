@@ -73,10 +73,12 @@ MonoBehaviour:
   shipClassSelectorDocument: {fileID: 9197481963319205126, guid: db23a7561c9db744c87072d260cba012, type: 3}
   namedShipSelectorDocument: {fileID: 9197481963319205126, guid: 0cbfd23cf85f99b47a456cb23aa45057, type: 3}
   messageDialogDocument: {fileID: 9197481963319205126, guid: 7a2a6b4bf5bdf42488d2d2f6c8dd3ceb, type: 3}
+  confirmDialogDocument: {fileID: 9197481963319205126, guid: f6e170f178c88a947a49a12863522ca5, type: 3}
   streamingAssetReferenceDialogDocument: {fileID: 9197481963319205126, guid: 4c9fd23c4a086074cb6ef7ea79164100, type: 3}
   scenarioPickerDialogDocument: {fileID: 9197481963319205126, guid: 6025ff5dcb2c58b439b9b9b3964c5f40, type: 3}
   victoryStatusDocument: {fileID: 9197481963319205126, guid: a3563e17e57e3a34fa7f72852a1d0720, type: 3}
   helpDialogDocument: {fileID: 9197481963319205126, guid: d099853a82a32fd43899dcdaad9b3ec9, type: 3}
+  faqDialogDocument: {fileID: 9197481963319205126, guid: ec3d6affeb06f9e40a75316e527105ca, type: 3}
   locationLabelDialogDocument: {fileID: 9197481963319205126, guid: d41e54b604e35b445bdad39d061b541b, type: 3}
   subordinatePickerDialogDocument: {fileID: 9197481963319205126, guid: e420e095d56a2e8459a8ffea946107a6, type: 3}
   strategicGroupPickerDialogDocument: {fileID: 9197481963319205126, guid: d8ca426e4e204724686473d7a2501aa9, type: 3}

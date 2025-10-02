@@ -490,7 +490,7 @@ public static class Utils
                         var oldObj = fieldReference.Get();
                         var selectedReferenceable = selectedReferenceables.FirstOrDefault();
 
-                        if(oldObj?.objectId == selectedReferenceable.objectId)
+                        if(selectedStrategicGroup.objectId == selectedReferenceable.objectId) // Prevent Looping, currently this will compromise UITK update?
                         {
                             return;
                         }

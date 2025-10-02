@@ -147,7 +147,11 @@
                                     <ui:Column title="Weapon" cell-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordName.uxml?fileID=9197481963319205126&amp;guid=d09d7097024a78a42829e2c739f7e4ad&amp;type=3#LandUnitTemplateWeaponRecordName" width="80%" name="weapon" />
                                 </ui:Columns>
                             </ui:MultiColumnListView>
-                            <ui:Label text="Remark" />
+                            <ui:Label text="Remark">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)" />
+                                </Bindings>
+                            </ui:Label>
                             <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="min-height: 200px; white-space: normal;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />

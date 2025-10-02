@@ -17,7 +17,11 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195698978623488)" />
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Sort" name="SortButton" />
+                    <ui:Button text="Sort" name="SortButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11055325324677120)" />
+                        </Bindings>
+                    </ui:Button>
                     <ui:Button text="Confirm" name="ConfirmButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
@@ -105,7 +109,11 @@
                             </ui:VisualElement>
                             <ui:Instance template="IStrategicGroupMemberReferenceableParentDepotUI" name="IStrategicGroupMemberReferenceableParentDepotUI" />
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                <ui:Label text="Mission" />
+                                <ui:Label text="Mission">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11055115978575872)" />
+                                    </Bindings>
+                                </ui:Label>
                                 <ui:Button text="Mission Name" name="GotoAssignedMissionButton" style="flex-grow: 1;">
                                     <Bindings>
                                         <ui:DataBinding property="text" data-source-path="assignedMissionName" binding-mode="ToTarget" />
@@ -120,6 +128,7 @@
                             <ui:FloatField label="Move Progression">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="moveProgressionKm" binding-mode="TwoWay" />
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11055268416360448)" />
                                 </Bindings>
                             </ui:FloatField>
                             <ui:MultiColumnListView data-source-path="plannedPath" binding-source-selection-mode="AutoAssign" header-title="Planned Path" show-foldout-header="true">
@@ -127,6 +136,9 @@
                                     <ui:Column title="X" cell-template="project://database/Assets/UIDocuments/Templates/XY/XYX.uxml?fileID=9197481963319205126&amp;guid=e6f56269358ebb74080f0357091b0a52&amp;type=3#XYX" width="50%" />
                                     <ui:Column title="Y" cell-template="project://database/Assets/UIDocuments/Templates/XY/XYY.uxml?fileID=9197481963319205126&amp;guid=4120b764c7821e34facd779fd946c21b&amp;type=3#XYY" width="50%" />
                                 </ui:Columns>
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11055191308275712)" />
+                                </Bindings>
                             </ui:MultiColumnListView>
                             <ui:Label text="Remark">
                                 <Bindings>

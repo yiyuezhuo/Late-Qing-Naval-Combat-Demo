@@ -1447,6 +1447,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>true</notAvailableForFirstSinoJapaneseWar>
+  <remark />
   <objectId>13db4215-f2e6-4876-a9bc-a788d29a57ff</objectId>
  </NamedShip>
  <NamedShip>
@@ -1468,6 +1469,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>f3b9f536-d8e0-4679-b73d-c018bd26646c</objectId>
  </NamedShip>
  <NamedShip>
@@ -1489,6 +1491,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>bdbb4804-81b9-4586-9b5e-8bdd4bf77d2c</objectId>
  </NamedShip>
  <NamedShip>
@@ -1510,6 +1513,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>e7454721-0f13-41c7-ae18-487bba6a2a28</objectId>
  </NamedShip>
  <NamedShip>
@@ -1531,6 +1535,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>631dc3d4-5e5a-42bd-949e-046c7a9a229e</objectId>
  </NamedShip>
  <NamedShip>
@@ -1552,6 +1557,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>84f20929-89f8-46b5-9da1-5362f695d7a0</objectId>
  </NamedShip>
  <NamedShip>
@@ -1573,6 +1579,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>15d98f04-0f31-4564-aca7-d692964e3b1d</objectId>
  </NamedShip>
  <NamedShip>
@@ -1594,6 +1601,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>af7e8e29-25ca-4853-bcd8-763d5e68316e</objectId>
  </NamedShip>
  <NamedShip>
@@ -1615,6 +1623,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>2ef747f7-1800-48a7-8ffa-039cd09ad7e5</objectId>
  </NamedShip>
  <NamedShip>
@@ -1636,6 +1645,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>9a88c0f3-1d75-47f4-8bb0-74aafe50abfd</objectId>
  </NamedShip>
  <NamedShip>
@@ -1657,6 +1667,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>131eb933-c6ad-4bea-a263-cb9276e04647</objectId>
  </NamedShip>
  <NamedShip>
@@ -1678,6 +1689,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>76d9777a-8f19-4dec-87db-07c6c5ca4115</objectId>
  </NamedShip>
  <NamedShip>
@@ -1699,6 +1711,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>0ad53356-5ac9-4f9d-9a7c-307030928482</objectId>
  </NamedShip>
  <NamedShip>
@@ -1720,6 +1733,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>c656d4a5-7e3e-4484-88bf-c03743e9a5a9</objectId>
  </NamedShip>
  <NamedShip>
@@ -1741,6 +1755,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>667ffa05-ef82-475a-aaef-c909cc4e15d4</objectId>
  </NamedShip>
  <NamedShip>
@@ -1762,6 +1777,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>b3e4a091-75e3-479b-866b-c13339fdff5f</objectId>
  </NamedShip>
  <NamedShip>
@@ -1783,6 +1799,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>d2685bc0-ae0e-445e-8f84-253bdab9a131</objectId>
  </NamedShip>
  <NamedShip>
@@ -1804,6 +1821,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>b0c890cd-d6a0-478f-9eda-65b5fd392968</objectId>
  </NamedShip>
  <NamedShip>
@@ -1825,6 +1843,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>cd670f7c-da3f-4738-8838-d2284a740f32</objectId>
  </NamedShip>
  <NamedShip>
@@ -1846,6 +1865,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>228aa6dd-7b58-4342-b8dc-cdb7d64ba9b8</objectId>
  </NamedShip>
  <NamedShip>
@@ -1867,6 +1887,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>23cdabb1-9433-4aca-9cbc-2481ad2c79d4</objectId>
  </NamedShip>
  <NamedShip>
@@ -1888,6 +1909,7 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>29c5ff53-f29e-4e48-926f-d234e26ac0ed</objectId>
  </NamedShip>
  <NamedShip>
@@ -1909,6 +1931,124 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship</remark>
   <objectId>e93ec8f2-d273-4daf-b228-f700c2116f44</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>f499fddd-e799-4b6b-a71a-e46201c985a2</shipClassObjectId>
+  <name>
+   <english>Li Yun</english>
+   <chineseSimplified>利运</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship
+
+“利运”舰，原来是轮船招商局的货轮，排水量1080吨，轮机110匹马力，后被北洋海军以87431两银购得，改造为运输舰。该舰流传下来的资料甚少，目前所知的仅仅是甲申事变时期，曾载运中国军队前往朝鲜登陆平乱，甲午战争重曾频繁在北洋一代执行运输任务，参加了运送铭字军前往大东沟的行动。甲午战争后，招商局轮船的序列中仍有一艘“利运”号，是否为同一艘船，还需要假以时间来考证判断。
+
+陈悦 (2015), "北洋海军舰船志"
+
+The "Li Yun" ship was originally a cargo vessel of the China Merchants Steam Navigation Company, with a displacement of 1,080 tons and an engine of 110 horsepower. It was later purchased by the Beiyang Navy for 87,431 taels of silver and converted into a transport ship. Very little information about this ship has survived. Currently, it is only known that during the Gapsin Coup, it transported Chinese troops to Korea for a landing to suppress the rebellion. During the First Sino-Japanese War, it frequently carried out transport missions in the Beiyang region and participated in the operation to transport the Ming Army to Dadonggou. After the First Sino-Japanese War, a ship named "Li Yun" still appeared in the fleet of the China Merchants Steam Navigation Company. Whether it is the same ship requires further research and time to verify.
+
+Chen Yue (2015), "Records of Beiyang Navy Warships"
+
+「利運」艦は、元々は輪船招商局の貨物船で、排水量1080トン、機関110馬力であった。後に北洋海軍が87431両の銀で購入し、輸送艦に改造した。この艦について伝わる資料は非常に少なく、現在知られているのは、甲申事変の際に中国軍隊を朝鮮に輸送し、平乱のために上陸させたこと、日清戦争中に北洋地域で頻繁に輸送任務に就き、銘字軍を大東溝に輸送する作戦に参加したことだけである。日清戦争後、輪船招商局の艦隊リストには依然として「利運」という艦が存在していたが、同一の艦であるかどうかは、今後の研究と時間を待って判断する必要がある。
+
+陳悦 (2015)、『北洋海軍艦船志』
+
+「利運」艦，原來是輪船招商局的貨輪，排水量1080噸，輪機110匹馬力，後被北洋海軍以87431兩銀購得，改造為運輸艦。該艦流傳下來的資料甚少，目前所知的僅僅是甲申事變時期，曾載運中國軍隊前往朝鮮登陸平亂，甲午戰爭中曾頻繁在北洋一帶執行運輸任務，參加了運送銘字軍前往大東溝的行動。甲午戰爭後，招商局輪船的序列中仍有一艘「利運」號，是否為同一艘船，還需要假以時間來考證判斷。
+
+陳悅 (2015), 《北洋海軍艦船誌》
+
+</remark>
+  <objectId>95ef9985-e6fe-4ce0-a813-6e506f78484b</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>f499fddd-e799-4b6b-a71a-e46201c985a2</shipClassObjectId>
+  <name>
+   <english>Hai Jing</english>
+   <chineseSimplified>海镜</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship
+
+“海镜”舰，是福建船政建造的第13艘军舰，属于“付波”级的改型军舰，由法籍顾问安乐陶监造，1873年2月28日开工，当年11月8日下水，军舰为全木制结构，舰型上属于旧式炮舰改成的商船。排水量1258吨，动力采用一套普通立式蒸汽机，功率600匹马力，设计航速9节。该舰建成后，很快被改造作为商轮调拨给轮船招商局，用作台湾海峡的往来运输，北洋建成海防之后又被调往北洋，隶属北洋海军，曾参与过甲申平定朝鲜叛乱事件。甲午战争中，作为小型运输舰的“海镜”并未参与战斗，在旅顺被日军虏获拆毁。
+
+陈悦 (2015), "北洋海军舰船志"
+
+The "Hai Jing" ship was the 13th warship built by the Fuzhou Shipbuilding Administration, belonging to a modified version of the "Fu Bo" class. It was supervised by the French advisor Anle Tao, with construction starting on February 28, 1873, and launching on November 8 of the same year. The ship was entirely wooden and was structurally an old-style gunboat converted into a merchant vessel. It had a displacement of 1,258 tons and was powered by a standard vertical steam engine with 600 horsepower, designed to reach a speed of 9 knots. After its completion, it was quickly converted into a merchant ship and allocated to the China Merchants Steam Navigation Company for transport across the Taiwan Strait. After the Beiyang coastal defense was established, it was transferred to the Beiyang Navy and participated in the suppression of the Korean rebellion during the Gapsin Coup. During the First Sino-Japanese War, the "Hai Jing," as a small transport ship, did not engage in combat and was captured and dismantled by the Japanese army in Lushun.
+
+Chen Yue (2015), "Records of Beiyang Navy Warships"
+
+「海鏡」艦は、福建船政が建造した13番目の軍艦で、「付波」級の改良型軍艦に属し、フランス人顧問の安乐陶によって監督建造された。1873年2月28日起工、同年11月8日に進水した。この軍艦は全木造構造で、艦型としては旧式の砲艦を商船に改造したものである。排水量1258トン、動力は普通の立式蒸気機関1基を使用し、出力は600馬力、設計速力は9ノットであった。竣工後、すぐに商船に改造され輪船招商局に配属され、台湾海峡の往来輸送に用いられた。北洋海防が成立した後は北洋に転属し、北洋海軍に所属し、甲申の朝鮮平乱事件にも参加した。日清戦争では、小型輸送艦としての「海鏡」は戦闘に参加せず、旅順で日本軍に捕獲され解体された。
+
+陳悦 (2015)、『北洋海軍艦船志』
+
+「海鏡」艦，是福建船政建造的第13艘軍艦，屬於「付波」級的改型軍艦，由法籍顧問安樂陶監造，1873年2月28日開工，當年11月8日下水，軍艦為全木製結構，艦型上屬於舊式炮艦改成的商船。排水量1258噸，動力採用一套普通立式蒸汽機，功率600匹馬力，設計航速9節。該艦建成後，很快被改造作為商輪調撥給輪船招商局，用作台灣海峽的往來運輸，北洋建成海防之後又被調往北洋，隸屬北洋海軍，曾參與過甲申平定朝鮮叛亂事件。甲午戰爭中，作為小型運輸艦的「海鏡」並未參與戰鬥，在旅順被日軍虜獲拆毀。
+
+陳悅 (2015), 《北洋海軍艦船誌》
+
+</remark>
+  <objectId>8625e60d-6083-45a7-91f4-50aac0d7989c</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>f499fddd-e799-4b6b-a71a-e46201c985a2</shipClassObjectId>
+  <name>
+   <english>Tai An</english>
+   <chineseSimplified>泰安</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder Generic Ship
+
+“泰安”舰是北洋海军内另一艘由福建建造的军舰，在福建船政的建造序列里排序为第19，同型还有一艘“登瀛洲”舰。该级舰舰形较大，军舰长达65.4米，宽10.72米，舰首吃水3.52米，舰尾吃水4.16米，排水量达到 1258吨。动力系统采用了1台船政自造的立式二气缸蒸汽机，装备两座方式锅炉，功率500匹马力，单轴推进，设计航速10节，完工时由于船政经费紧张，没有配备任何五倍。
+
+陈悦 (2015), "北洋海军舰船志"
+
+The "Tai An" ship was another warship in the Beiyang Navy built in Fujian, ranked 19th in the construction sequence of the Fuzhou Shipbuilding Administration. Another ship of the same class was the "Deng Ying Zhou." This class of ships was relatively large, with a length of 65.4 meters, a width of 10.72 meters, a draft of 3.52 meters at the bow, and 4.16 meters at the stern, and a displacement of 1,258 tons. The power system used a vertical two-cylinder steam engine manufactured by the Fuzhou Shipbuilding Administration, equipped with two square boilers, producing 500 horsepower. It was single-shaft propelled with a designed speed of 10 knots. Due to budget constraints at the time of completion, it was not equipped with any weapons.
+
+Chen Yue (2015), "Records of Beiyang Navy Warships"
+
+「泰安」艦は、北洋海軍内で福建で建造されたもう一隻の軍艦であり、福建船政の建造序列では19番目に位置する。同型艦にはもう一隻「登瀛洲」艦がある。このクラスの艦は艦形が大きく、全長65.4メートル、幅10.72メートル、艦首吃水3.52メートル、艦尾吃水4.16メートル、排水量1258トンに達した。動力系統は、船政自ら製造した立式二気筒蒸気機関1基を採用し、二基の方形ボイラーを装備、出力500馬力、単軸推進で設計速力は10ノットであった。竣工時、船政の資金難により、任何の武器も装備されなかった。
+
+陳悦 (2015)、『北洋海軍艦船志』
+
+「泰安」艦是北洋海軍內另一艘由福建建造的軍艦，在福建船政的建造序列裡排序為第19，同型還有一艘「登瀛洲」艦。該級艦艦形較大，軍艦長達65.4米，寬10.72米，艦首吃水3.52米，艦尾吃水4.16米，排水量達到1258噸。動力系統採用了1台船政自造的立式二氣缸蒸汽機，裝備兩座方形鍋爐，功率500匹馬力，單軸推進，設計航速10節，完工時由於船政經費緊張，沒有配備任何武器。
+
+陳悅 (2015), 《北洋海軍艦船誌》
+
+</remark>
+  <objectId>90f19df6-3c15-45b7-91eb-ee7f4e99d8d9</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

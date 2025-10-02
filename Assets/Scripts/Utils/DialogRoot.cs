@@ -192,10 +192,12 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset shipClassSelectorDocument;
     public VisualTreeAsset namedShipSelectorDocument;
     public VisualTreeAsset messageDialogDocument;
+    public VisualTreeAsset confirmDialogDocument;
     public VisualTreeAsset streamingAssetReferenceDialogDocument;
     public VisualTreeAsset scenarioPickerDialogDocument;
     public VisualTreeAsset victoryStatusDocument;
     public VisualTreeAsset helpDialogDocument;
+    public VisualTreeAsset faqDialogDocument;
     public VisualTreeAsset locationLabelDialogDocument;
     public VisualTreeAsset subordinatePickerDialogDocument;
     public VisualTreeAsset strategicGroupPickerDialogDocument;
@@ -354,7 +356,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
             var pathField = el.Q<VisualElement>("PathField");
             PathReferenceBinder.BindJSReference(pathField);
-            PathReferenceBinder.AddCallback(pathField, () =>{
+            PathReferenceBinder.AddCallback(pathField, () =>
+            {
                 if (Utils.TryResolveCurrentValueForBinding(refreshButton, out EventItem eventItem)) // TODO: Temp Hack
                 {
                     BehaviourUtils.Instance.StartCoroutine(eventItem.Refresh());
@@ -703,6 +706,33 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
+    public void PopupConfirmDialog(string message, Action confirmCallback, string title = null)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = confirmDialogDocument,
+            templateDataSource = null,
+            draggable = true
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var contentTextField = el.Q<TextField>("ContentTextField");
+
+            contentTextField.SetValueWithoutNotify(message);
+            if (title != null)
+            {
+                var titleLabel = el.Q<Label>("TitleLabel");
+                titleLabel.text = title;
+            }
+        };
+
+        tempDialog.onConfirmed += (sender, el) => confirmCallback();
+
+        tempDialog.Popup();
+    }
+
     public void PopupLeaderSelectorDialogForCallback(Action<Leader> callback)
     {
         var tempDialog = new TempDialog()
@@ -727,29 +757,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupLeaderSelectorDialogForSpecifyForGroup()
     {
-        // var tempDialog = new TempDialog()
-        // {
-        //     root = root,
-        //     template = leaderSelectorDocument,
-        //     templateDataSource = SuperGameState.Instance // GameManager.Instance
-        // };
-
-        // tempDialog.onConfirmed += (sender, el) =>
-        // {
-        //     Debug.Log("tempDialog.onConfirmed");
-
-        //     var leadersListView = el.Q<ListView>("LeadersListView");
-        //     var leader = leadersListView.selectedItem as Leader;
-        //     var selectedGroup = OOBEditor.Instance.currentSelectedShipGroup;
-
-        //     if (leader != null && selectedGroup != null)
-        //     {
-        //         selectedGroup.leaderObjectId = leader.objectId;
-        //     }
-        // };
-
-        // tempDialog.Popup();
-
         PopupLeaderSelectorDialogForCallback(leader =>
         {
             var selectedGroup = OOBEditor.Instance.currentSelectedShipGroup;
@@ -761,19 +768,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             }
         });
     }
-
-    // public void PopupLeaderSelectorDialogForSpecifyForShipLog()
-    // {
-    //     PopupLeaderSelectorDialogForCallback(leader =>
-    //     {
-    //         var selectedShipLog = GameManager.Instance.selectedShipLog;
-
-    //         if (leader != null && selectedShipLog != null)
-    //         {
-    //             selectedShipLog.leaderObjectId = leader.objectId;
-    //         }
-    //     });
-    // }
 
     public void PopupLeaderSelectorDialogForNamedShip()
     {
@@ -935,6 +929,19 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             root = root,
             template = helpDialogDocument,
+            templateDataSource = null,
+            centering = false
+        };
+
+        tempDialog.Popup();
+    }
+    
+    public void PopupFAQDialogDocument()
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = faqDialogDocument,
             templateDataSource = null,
             centering = false
         };

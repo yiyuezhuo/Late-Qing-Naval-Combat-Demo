@@ -70,6 +70,8 @@ namespace NavalCombatCore
         }
 
         public bool notAvailableForFirstSinoJapaneseWar;
+
+        public string remark;
     }
 
 }

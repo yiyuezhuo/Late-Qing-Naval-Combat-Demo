@@ -10570,7 +10570,9 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
    <turretVertical effectInch="0" actualInch="0" />
    <superStructureVertical effectInch="0" actualInch="0" />
   </armorRating>
-  <remark>Generic IJN Transport</remark>
+  <remark>Generic Placeholder IJN Transport
+
+Portrait is taken from Saikyō Maru (西京丸)</remark>
   <portraitReference>
    <path>Pictures/Ships/Saikyo_Maru.png</path>
    <isBuiltin>true</isBuiltin>
@@ -10647,6 +10649,9 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
    <turretVertical effectInch="0" actualInch="0" />
    <superStructureVertical effectInch="0" actualInch="0" />
   </armorRating>
+  <remark>Generic Placeholder China Transport
+
+Portrait is taken from Saikyō Maru (西京丸)</remark>
   <portraitReference>
    <path>Pictures/Ships/Saikyo_Maru.png</path>
    <isBuiltin>true</isBuiltin>

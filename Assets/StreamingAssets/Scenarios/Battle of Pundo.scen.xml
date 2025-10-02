@@ -267,6 +267,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <fixedHours>0</fixedHours>
     <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -560,6 +562,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <fixedHours>0</fixedHours>
     <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -826,6 +830,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <fixedHours>0</fixedHours>
     <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1031,6 +1037,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <fixedHours>0</fixedHours>
     <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1225,6 +1233,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <fixedHours>0</fixedHours>
     <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1281,16 +1291,16 @@
     <namedShipObjectId>29c5ff53-f29e-4e48-926f-d234e26ac0ed</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.2283173</LatDeg>
-     <LonDeg>125.9919</LonDeg>
+     <LatDeg>37.23969</LatDeg>
+     <LonDeg>126.002609</LonDeg>
     </position>
-    <speedKnots>0</speedKnots>
+    <speedKnots>10</speedKnots>
     <headingDeg>120</headingDeg>
-    <desiredSpeedKnots>0</desiredSpeedKnots>
+    <desiredSpeedKnots>10</desiredSpeedKnots>
     <desiredHeadingDeg>120</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
-    <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
+    <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus />
     <torpedoSectorStatus>
@@ -1322,6 +1332,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <fixedHours>0</fixedHours>
     <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1378,16 +1390,16 @@
     <namedShipObjectId>e93ec8f2-d273-4daf-b228-f700c2116f44</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.24954</LatDeg>
-     <LonDeg>125.923119</LonDeg>
+     <LatDeg>37.25994</LatDeg>
+     <LonDeg>125.949921</LonDeg>
     </position>
-    <speedKnots>0</speedKnots>
+    <speedKnots>10</speedKnots>
     <headingDeg>120</headingDeg>
-    <desiredSpeedKnots>0</desiredSpeedKnots>
+    <desiredSpeedKnots>10</desiredSpeedKnots>
     <desiredHeadingDeg>120</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
-    <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
+    <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus />
     <torpedoSectorStatus>
@@ -1419,6 +1431,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <fixedHours>0</fixedHours>
     <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1620,8 +1634,8 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>37.1949158</xRotation>
-  <yRotation>233.66803</yRotation>
+  <xRotation>37.1679878</xRotation>
+  <yRotation>233.6855</yRotation>
   <orthographicSize>40</orthographicSize>
  </viewState>
  <eventState>

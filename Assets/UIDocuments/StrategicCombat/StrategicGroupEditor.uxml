@@ -145,7 +145,7 @@
                                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)" />
                                 </Bindings>
                             </ui:Label>
-                            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal;">
+                            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 100px;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
                                 </Bindings>

@@ -1681,10 +1681,6 @@ MonoBehaviour:
     m_Key: 'Sub Combat Resolver '
     m_Metadata:
       m_Items: []
-  - m_Id: 5977875414683648
-    m_Key: New Entry 1
-    m_Metadata:
-      m_Items: []
   - m_Id: 10965740016013312
     m_Key: FAQ Text
     m_Metadata:
@@ -1771,6 +1767,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 11055325324677120
     m_Key: Sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11056970263597056
+    m_Key: Supply (tons)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11057038760775680
+    m_Key: Supply Generation (tons)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11325371015925760
+    m_Key: Edit
     m_Metadata:
       m_Items: []
   m_Metadata:

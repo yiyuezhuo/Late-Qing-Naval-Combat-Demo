@@ -18,6 +18,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E6%B2%B3%E5%8E%9F%E8%A6%81%E4%B8%80</remark>
   <objectId>a78127f5-61f9-450b-8013-1f57bfbaef42</objectId>
  </Leader>
  <Leader>
@@ -37,6 +38,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Kamimura_Hikonoj%C5%8D</remark>
   <objectId>43bfbde8-70e0-4d42-8122-3dc082557429</objectId>
  </Leader>
  <Leader>
@@ -56,6 +58,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/T%C5%8Dg%C5%8D_Heihachir%C5%8D</remark>
   <objectId>bbdc13c1-a909-411c-b949-ad82485ab108</objectId>
  </Leader>
  <Leader>
@@ -77,6 +80,7 @@
   <traits>
    <LeaderTrait>Coward</LeaderTrait>
   </traits>
+  <remark>https://en.wikipedia.org/wiki/Fang_Boqian</remark>
   <objectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</objectId>
  </Leader>
  <Leader>
@@ -96,6 +100,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://baike.baidu.com/item/%E6%9E%97%E5%9B%BD%E7%A5%A5/8717195</remark>
   <objectId>f3e417c3-89d7-4a71-a8b8-84c408d0cb05</objectId>
  </Leader>
  <Leader>
@@ -115,6 +120,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://zh.wikipedia.org/wiki/%E6%9E%97%E6%B3%B0%E6%9B%BE</remark>
   <objectId>ee91367d-d291-4bad-81f1-b4aa5b1d5bd0</objectId>
  </Leader>
  <Leader>
@@ -134,6 +140,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Liu_Buchan</remark>
   <objectId>67623f92-366e-4f7f-a31e-a988494d9bdf</objectId>
  </Leader>
  <Leader>
@@ -153,6 +160,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://zh.wikipedia.org/wiki/%E6%9E%97%E5%B1%A5%E4%B8%AD</remark>
   <objectId>571f00c5-74c3-42c7-bae4-be54f44d2b76</objectId>
  </Leader>
  <Leader>
@@ -172,6 +180,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://zh.wikipedia.org/zh-hans/%E9%BB%84%E5%BB%BA%E5%8B%8B</remark>
   <objectId>96b1f018-4a92-4ef0-81b1-b6b3dc1ff3ed</objectId>
  </Leader>
  <Leader>
@@ -191,6 +200,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://zh.wikipedia.org/zh-hant/%E5%8F%B6%E7%A5%96%E7%8F%AA</remark>
   <objectId>2038e8d1-4ca4-4719-9a65-eea886fd0d2c</objectId>
  </Leader>
  <Leader>
@@ -212,6 +222,7 @@
   <traits>
    <LeaderTrait>Brave</LeaderTrait>
   </traits>
+  <remark>https://en.wikipedia.org/wiki/Deng_Shichang</remark>
   <objectId>ca6e9344-d40e-4a16-8ee1-82ae8d5dbdb4</objectId>
  </Leader>
  <Leader>
@@ -231,6 +242,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Lin_Yongsheng</remark>
   <objectId>ad05fef6-dae8-457e-9f31-e7166a09aede</objectId>
  </Leader>
  <Leader>
@@ -250,6 +262,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://baike.baidu.com/item/%E9%82%B1%E5%AE%9D%E4%BB%81/8717162</remark>
   <objectId>19df649e-5f8a-4c29-b42a-936d15b4c8fe</objectId>
  </Leader>
  <Leader>
@@ -269,6 +282,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://zh.wikipedia.org/wiki/%E6%9D%8E%E5%92%8C_(%E5%8C%97%E6%B4%8B%E6%B0%B4%E5%B8%AB)</remark>
   <objectId>a30c7e56-bf11-44b2-8f99-febd99701a42</objectId>
  </Leader>
  <Leader>
@@ -290,6 +304,7 @@
   <traits>
    <LeaderTrait>Coward</LeaderTrait>
   </traits>
+  <remark>https://baike.baidu.com/item/%E5%90%B4%E6%95%AC%E8%8D%A3/6067577</remark>
   <objectId>50197d07-3352-4362-9ea5-978742310265</objectId>
  </Leader>
  <Leader>
@@ -309,6 +324,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E6%96%B0%E4%BA%95%E6%9C%89%E8%B2%AB</remark>
   <objectId>cbc0d169-122c-4c9a-8d48-b189663f0ca7</objectId>
  </Leader>
  <Leader>
@@ -328,6 +344,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Hidaka_S%C5%8Dnoj%C5%8D</remark>
   <objectId>8e9f6ed9-97a9-48c3-8cee-0a2c79c272b3</objectId>
  </Leader>
  <Leader>
@@ -347,12 +364,13 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://shozokan.nich.go.jp/collection/object/SZK001477-156</remark>
   <objectId>c7c3eb89-2eee-49f2-bd59-4732be768140</objectId>
  </Leader>
  <Leader>
   <name>
    <english>Sakurai Kikunojō</english>
-   <japanese>桜井規矩之左右少佐</japanese>
+   <japanese>桜井規矩之左右</japanese>
    <chineseSimplified>樱井规矩之左右</chineseSimplified>
   </name>
   <portraitReference>
@@ -366,12 +384,14 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>
+https://ja.wikipedia.org/wiki/%E6%A1%9C%E4%BA%95%E8%A6%8F%E7%9F%A9%E4%B9%8B%E5%B7%A6%E5%8F%B3</remark>
   <objectId>a190c470-bd54-4f67-afe8-c4113c7c3c98</objectId>
  </Leader>
  <Leader>
   <name>
    <english>Omoto Tomomichi</english>
-   <japanese>尾本知道大佐</japanese>
+   <japanese>尾本知道</japanese>
    <chineseSimplified>梶本知道</chineseSimplified>
   </name>
   <portraitReference>
@@ -385,12 +405,14 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://jahis.law.nagoya-u.ac.jp/who/docs/who1-601
+https://shozokan.nich.go.jp/collection/object/SZK001477-059</remark>
   <objectId>56106ddf-e7e5-4a8e-b440-c8c01054485d</objectId>
  </Leader>
  <Leader>
   <name>
    <english>Nomura Tadashi</english>
-   <japanese>野村貞大佐</japanese>
+   <japanese>野村貞</japanese>
    <chineseSimplified>野村贞</chineseSimplified>
   </name>
   <portraitReference>
@@ -404,12 +426,13 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E9%87%8E%E6%9D%91%E8%B2%9E</remark>
   <objectId>5b4492e9-81be-4d24-be9f-907a98487fa3</objectId>
  </Leader>
  <Leader>
   <name>
    <english>Uchida Masatoshi</english>
-   <japanese>内田正敏大佐</japanese>
+   <japanese>内田正敏</japanese>
    <chineseSimplified>内田正敏</chineseSimplified>
   </name>
   <portraitReference>
@@ -423,6 +446,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E5%86%85%E7%94%B0%E6%AD%A3%E6%95%8F</remark>
   <objectId>8154d513-73ac-4ac8-b33a-cb06872ce875</objectId>
  </Leader>
  <Leader>
@@ -442,6 +466,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Cheng_Biguang</remark>
   <objectId>46a1ffe4-7a2a-43b0-a44c-d29f71c34629</objectId>
  </Leader>
  <Leader>
@@ -464,12 +489,13 @@
    <LeaderTrait>NotFromNavalBackground</LeaderTrait>
    <LeaderTrait>ExperiencedNavalBureaucrat</LeaderTrait>
   </traits>
+  <remark>https://en.wikipedia.org/wiki/Ding_Ruchang</remark>
   <objectId>18963af7-1163-4323-9421-9f2421c9fee1</objectId>
  </Leader>
  <Leader>
   <name>
    <english>Tsuboi Kōzō</english>
-   <japanese>坪井航三海軍少将</japanese>
+   <japanese>坪井航三</japanese>
    <chineseSimplified>坪井航三</chineseSimplified>
   </name>
   <portraitReference>
@@ -483,12 +509,13 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Tsuboi_K%C5%8Dz%C5%8D</remark>
   <objectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</objectId>
  </Leader>
  <Leader>
   <name>
    <english>Itō Sukeyuki</english>
-   <japanese>伊東祐亨中将</japanese>
+   <japanese>伊東祐亨</japanese>
    <chineseSimplified>伊东祐亨</chineseSimplified>
   </name>
   <portraitReference>
@@ -502,12 +529,13 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/It%C5%8D_Sukeyuki</remark>
   <objectId>a77bd722-8233-4d1c-a65c-b712c07297d0</objectId>
  </Leader>
  <Leader>
   <name>
    <english>Sakamoto Hachirota</english>
-   <japanese>坂元八郎太少佐</japanese>
+   <japanese>坂元八郎太</japanese>
    <chineseSimplified>坂元八郎太</chineseSimplified>
   </name>
   <portraitReference>
@@ -521,12 +549,13 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E5%9D%82%E5%85%83%E5%85%AB%E9%83%8E%E5%A4%AA</remark>
   <objectId>8acb59aa-d09c-4b71-b42e-ab3bc111da1b</objectId>
  </Leader>
  <Leader>
   <name>
    <english>Kanō Yunoshin</english>
-   <japanese>鹿野勇之進少佐</japanese>
+   <japanese>鹿野勇之進</japanese>
    <chineseSimplified>鹿野勇之进</chineseSimplified>
   </name>
   <portraitReference>
@@ -540,11 +569,12 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E9%B9%BF%E9%87%8E%E5%8B%87%E4%B9%8B%E9%80%B2</remark>
   <objectId>04b9b1b0-330e-4737-a16e-a6038eeb252d</objectId>
  </Leader>
  <Leader>
   <name>
-   <english>Cai Tinggan</english>
+   <english>Tsai Tingkan</english>
    <japanese>蔡廷幹</japanese>
    <chineseSimplified>蔡廷干</chineseSimplified>
   </name>
@@ -559,6 +589,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Tsai_Tingkan</remark>
   <objectId>0ffb8288-564a-4a0b-8973-e2d8d3610d21</objectId>
  </Leader>
  <Leader>
@@ -599,6 +630,7 @@
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Prince_Arisugawa_Taruhito</remark>
   <objectId>c49be3d3-e058-4a2e-b0a7-c6bd70956afd</objectId>
  </Leader>
  <Leader>
@@ -618,6 +650,7 @@
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Kawakami_Soroku</remark>
   <objectId>95639867-b7d4-4494-a8f2-de417c614f41</objectId>
  </Leader>
  <Leader>
@@ -637,6 +670,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Kabayama_Sukenori</remark>
   <objectId>31837e7c-4f0d-492d-bae1-d05617a22da9</objectId>
  </Leader>
  <Leader>
@@ -656,6 +690,7 @@
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/%C5%8Cyama_Iwao</remark>
   <objectId>768c74cb-4117-4060-8c01-1ac6a42667d0</objectId>
  </Leader>
  <Leader>
@@ -675,6 +710,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Saig%C5%8D_J%C5%ABd%C5%8D</remark>
   <objectId>e5a097a6-836a-4d9a-a60f-181218da398e</objectId>
  </Leader>
  <Leader>
@@ -694,6 +730,9 @@
   <landOperational>AboveAverage</landOperational>
   <landTactical>AboveAverage</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Li_Hongzhang
+
+</remark>
   <objectId>f24ac743-e528-4c85-82d4-f089c4cc189c</objectId>
  </Leader>
  <Leader>
@@ -713,6 +752,7 @@
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Yulu_(viceroy)</remark>
   <objectId>76615ad8-573c-44d8-b405-a7e1af4af893</objectId>
  </Leader>
  <Leader>
@@ -731,6 +771,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://baike.baidu.com/item/%E7%A6%8F%E6%BD%A4/7807874</remark>
   <objectId>56b856ce-8f54-4441-a5cd-9af4897dc301</objectId>
  </Leader>
  <Leader>
@@ -750,6 +791,7 @@
   <landOperational>BarelyCompetent</landOperational>
   <landTactical>BarelyCompetent</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Li_Bingheng</remark>
   <objectId>bb4f86ad-eebd-424f-a6b1-68ebc7ebfbb5</objectId>
  </Leader>
  <Leader>
@@ -769,6 +811,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://zh.wikipedia.org/zh-hans/%E6%95%AC%E4%BF%A1</remark>
   <objectId>c440758b-a34b-46e0-9dee-2340321f5636</objectId>
  </Leader>
  <Leader>
@@ -788,6 +831,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://zh.wikipedia.org/zh-tw/%E5%AD%99%E6%AF%93%E6%B1%B6</remark>
   <objectId>c91a7740-8806-4c3a-bf9a-5a5598500a2c</objectId>
  </Leader>
  <Leader>
@@ -807,6 +851,7 @@
   <landOperational>BarelyCompetent</landOperational>
   <landTactical>BarelyCompetent</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Yikuang</remark>
   <objectId>080bc4c5-ab61-49f7-bccc-4658a39d4290</objectId>
  </Leader>
  <Leader>
@@ -826,6 +871,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E5%B2%A1%E6%B2%A2%E7%B2%BE</remark>
   <objectId>07b1845e-a293-416c-9da2-8bcb7f71663b</objectId>
  </Leader>
  <Leader>
@@ -845,6 +891,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E6%9C%89%E9%A6%AC%E6%96%B0%E4%B8%80</remark>
   <objectId>d1ed8a2d-2a72-4e99-87a9-97aeb892d014</objectId>
  </Leader>
  <Leader>
@@ -864,6 +911,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://shozokan.nich.go.jp/collection/object/SZK001477-122</remark>
   <objectId>be818bd7-d326-4a8b-9b94-5adb4d24f60b</objectId>
  </Leader>
  <Leader>
@@ -883,6 +931,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E4%B8%96%E8%89%AF%E7%94%B0%E4%BA%AE</remark>
   <objectId>e999703a-07c9-4cf4-8f59-2c3284fe6d3d</objectId>
  </Leader>
  <Leader>
@@ -902,6 +951,7 @@
   <landOperational>AboveAverage</landOperational>
   <landTactical>AboveAverage</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Yamagata_Aritomo</remark>
   <objectId>e1cf0e2b-7d5a-4b25-a89a-2ad1c22f7e20</objectId>
  </Leader>
  <Leader>
@@ -921,6 +971,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Katsura_Tar%C5%8D</remark>
   <objectId>d12ec66d-14e6-44eb-b261-968e64c32ca7</objectId>
  </Leader>
  <Leader>
@@ -940,6 +991,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/%C5%8Cshima_Yoshimasa</remark>
   <objectId>86a4739c-08c2-4c33-8e60-8a26b101535c</objectId>
  </Leader>
  <Leader>
@@ -959,6 +1011,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Nozu_Michitsura</remark>
   <objectId>294116ce-1fd4-41ef-a81e-d721e3864af9</objectId>
  </Leader>
  <Leader>
@@ -978,6 +1031,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%B3%B6%E5%8A%A9%E7%BE%A9</remark>
   <objectId>6dfc4fa7-680b-4487-80e1-5de0ade8eb61</objectId>
  </Leader>
  <Leader>
@@ -997,6 +1051,7 @@
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
+  <remark>https://zh.wikipedia.org/zh-hant/%E8%91%89%E5%BF%97%E8%B6%85</remark>
   <objectId>db26b666-2166-41cd-9411-4d3d3f0e9f41</objectId>
  </Leader>
  <Leader>
@@ -1016,6 +1071,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E6%AD%A6%E7%94%B0%E7%A7%80%E5%B1%B1</remark>
   <objectId>16a04cba-2db3-4388-abaf-ec73c3d258d1</objectId>
  </Leader>
  <Leader>
@@ -1097,6 +1153,7 @@
   <traits>
    <LeaderTrait>Coward</LeaderTrait>
   </traits>
+  <remark>https://zh.wikipedia.org/w/index.php?title=%E9%BE%94%E7%85%A7%E5%B6%BC&amp;oldformat=true&amp;variant=zh-cn</remark>
   <objectId>130f7855-e669-4969-b7e7-1c975b8541c6</objectId>
  </Leader>
  <Leader>
@@ -1116,6 +1173,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://zh.wikipedia.org/zh-hant/%E6%9D%8E%E7%80%9A%E7%AB%A0</remark>
   <objectId>ce13834a-c139-4bae-aafc-c238f00c349a</objectId>
  </Leader>
  <Leader>
@@ -1135,6 +1193,7 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://en.wikipedia.org/wiki/Shiduo</remark>
   <objectId>c77de671-ced0-4f50-9701-3916f904c97a</objectId>
  </Leader>
  <Leader>
@@ -1824,5 +1883,122 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <traits />
   <remark>https://en.wikipedia.org/wiki/Tan_Zhonglin</remark>
   <objectId>6fb39207-8bd4-49b4-9294-7273a115fcc6</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Wei Rugui</english>
+   <chineseSimplified>卫汝贵</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\China_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Wei_Rugui</remark>
+  <objectId>d780f176-90ac-4161-985c-18d2058b2a60</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Wei Rucheng</english>
+   <chineseSimplified>卫汝成</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\China_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://zh-classical.wikipedia.org/wiki/%E8%A1%9B%E6%B1%9D%E6%88%90</remark>
+  <objectId>49db5d3e-1838-4652-b27d-3aa00dfa1150</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Song Qing</english>
+   <chineseSimplified>宋庆</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Song_Qing.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Song_Qing_(Qing_dynasty)</remark>
+  <objectId>9ee1c989-2e58-4379-b193-c7cbb6e58c1e</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ma Yukun</english>
+   <chineseSimplified>马玉昆</chineseSimplified>
+   <chineseTraditional>马玉崑</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Ma_Yukun.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Ma_Yukun</remark>
+  <objectId>87f37339-bbe2-42a6-baa2-af5120ba387e</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Shao Youlian</english>
+   <japanese>邵友濂</japanese>
+   <chineseSimplified>邵友濂</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Shao Youlian.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://zh.wikipedia.org/zh-hant/%E9%82%B5%E5%8F%8B%E6%BF%82</remark>
+  <objectId>06a26f9a-f9c9-413e-a683-5cd860138bcb</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Liu Yongfu</english>
+   <japanese>劉永福</japanese>
+   <chineseSimplified>刘永福</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Liu_Yongfu.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>AboveAverage</landStrategic>
+  <landOperational>Outstanding</landOperational>
+  <landTactical>Gifted</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Liu_Yongfu</remark>
+  <objectId>a95ed312-db84-4aef-94da-9616b743c08e</objectId>
  </Leader>
 </ArrayOfLeader>

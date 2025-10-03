@@ -1747,7 +1747,7 @@ MonoBehaviour:
       related material since major rework is expected. If you really want to edit
       something and find it frustrating, contact me (via GitHub issue or Discord
       server) to let me know someone is really interested, I would write a temp document
-      to explain how to do it in the current stage.\r\n\n## Why are so many standard
+      to explain how to do it in the current stage.\r\n\r\n## Why are so many standard
       UI elements named \"Editor\"? I don't want to \"edit\" anything\u2014I just
       want to play.\r\n\r\nI aim to recreate a sandbox experience similar to Vassal
       and Tabletop Simulator (TTS), where editing allows players to introduce custom
@@ -1852,6 +1852,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 11055325324677120
     m_Localized: Sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11056970263597056
+    m_Localized: Supply (tons)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11057038760775680
+    m_Localized: Supply Generation (tons)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11325371015925760
+    m_Localized: Edit
     m_Metadata:
       m_Items: []
   references:

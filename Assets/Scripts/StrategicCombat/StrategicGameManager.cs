@@ -237,6 +237,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public static void TempFix()
     {
+        // var lines = string.Join("\n", StrategicGameState.Instance.landUnits.Select(landUnit => landUnit.name.chineseSimplified));
+        // Debug.Log(lines);
+
         // foreach (var group in StrategicGameState.Instance.strategicGroups)
         // {
         //     var parentGroup = group.strategicGroupReference.Get();

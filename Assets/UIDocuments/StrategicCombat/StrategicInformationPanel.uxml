@@ -55,7 +55,11 @@
                         </Bindings>
                     </ui:Label>
                 </ui:VisualElement>
-                <ui:Button text="Edit" name="CellEditButton" />
+                <ui:Button text="Edit" name="CellEditButton">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11325371015925760)" />
+                    </Bindings>
+                </ui:Button>
                 <ui:Button text="Go to  Location (Tactical) " name="GoToLocationAtTacticalModeButton" style="flex-wrap: nowrap;">
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(358782179381248)" />

@@ -100,6 +100,8 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             foreach (var shipLog in StrategicGameState.Instance.shipLogs)
             {
                 shipLog.ResetDamageExpenditureState();
+                if (shipLog.mapState == MapState.NotDeployed) // NotDeployed in strategic game is not defined now
+                    shipLog.mapState = MapState.Deployed;
             }
 
             StrategicGameState.Instance.ResetAndRegisterAll();

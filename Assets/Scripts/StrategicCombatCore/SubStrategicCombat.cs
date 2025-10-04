@@ -30,7 +30,7 @@ namespace StrategicCombatCore
             var obj = groupReference.Get();
             if (obj is LandUnit landUnit)
             {
-                return landUnit.GetStrength() * commitPercent;
+                return landUnit.GetStrengthMen() * commitPercent;
             }
             // TODO: Add ship log
             return 0;

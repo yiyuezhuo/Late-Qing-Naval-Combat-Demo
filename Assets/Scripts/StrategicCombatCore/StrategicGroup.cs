@@ -22,10 +22,15 @@ namespace StrategicCombatCore
                 return 0;
             if (obj is StrategicGroup group)
                 return group.GetCombinedSubUnitSize();
-            if(obj is ShipLog shipLog && shipLog.mapState == MapState.Destroyed)
+            if (obj is ShipLog shipLog && shipLog.mapState == MapState.Destroyed)
                 return 0;
             return 1; // Otherwise (Subunit), translate to 1. 
         }
+
+        public int GetSubUnitSize() => Get()?.GetSubUnitSize() ?? 0;
+        public int GetStrengthMen() => Get()?.GetStrengthMen() ?? 0;
+        public float GetShipTons() => Get()?.GetShipTons() ?? 0f;
+        public float GetCombinedPowerPoint(bool isTop) => Get()?.GetCombinedPowerPoint(isTop) ?? 0f;
     }
 
     public partial class StrategicGroupReference
@@ -38,70 +43,6 @@ namespace StrategicCombatCore
         }
 
         public bool isReferenceAny() => referenceId != null && referenceId != "";
-
-
-    }
-
-    public interface IStrategicGroupMemberReferenceable : IObjectIdLabeled
-    {
-        StrategicGroupReference strategicGroupReference { get; set; }
-
-        void SetStrategicGroupReference(StrategicGroup group);
-
-        // group == null => Unset
-        static void SetStrategicGroupReference(IStrategicGroupMemberReferenceable self, StrategicGroup group)
-        {
-            var oldGroup = self.strategicGroupReference.Get();
-            if (oldGroup != null)
-            {
-                oldGroup.subordinatesCombined.RemoveAll(r => r.referenceId == self.objectId);
-            }
-
-            if (group == null)
-            {
-                self.strategicGroupReference.referenceId = null;
-            }
-            else
-            {
-                self.strategicGroupReference.referenceId = group.objectId;
-                group.subordinatesCombined.Add(new StrategicGroupMemberReference() { referenceId = group.objectId });
-            }
-        }
-
-        // LandUnit GetCurrentSourceDepot();
-
-        public LandUnit GetCurrentSourceDepot()
-        {
-            var pt = strategicGroupReference.Get();
-            var accessed = new HashSet<StrategicGroup>() { pt };
-            while (pt != null)
-            {
-                foreach (var subordinateRef in pt.subordinatesCombined)
-                {
-                    var subordinate = subordinateRef.Get();
-                    if (subordinate is LandUnit landUnit && landUnit != this)
-                    {
-                        var landUnitTemplate = landUnit.GetLandUnitTemplate();
-                        if (landUnitTemplate != null && landUnitTemplate.unitType == LandUnitType.Supply)
-                        {
-                            return landUnit;
-                        }
-                    }
-                }
-                pt = pt.strategicGroupReference.Get();
-
-                if (accessed.Contains(pt))
-                {
-                    ServiceLocator.Get<ILoggerService>().LogWarning("Looping OOB Detected!");
-                    return null;
-                }
-                accessed.Add(pt);
-            }
-            return null;
-        }
-
-        public string GetParentName() => strategicGroupReference.Get()?.name?.mergedName ?? "[Undefined or Invalid]";
-        public string GetCurrentSourceDepotName() => GetCurrentSourceDepot()?.name?.mergedName ?? "[Not Defined]";
     }
     
     public class XY
@@ -265,6 +206,40 @@ namespace StrategicCombatCore
         public bool IsNavy() => type == Type.Fleet;
         public bool IsArmy() => type != Type.Fleet;
 
+        public int GetSubUnitSize() => subordinatesCombined.Sum(r => r.GetSubUnitSize());
+        public int GetStrengthMen() => subordinatesCombined.Sum(r => r.GetStrengthMen());
+        public float GetShipTons() => subordinatesCombined.Sum(r => r.GetShipTons());
+        public float GetCombinedPowerPoint(bool isTop)
+        {
+            if (!isTop && deployState != DeployState.Combined)
+                return 0;
+            return subordinatesCombined.Sum(r => r.GetCombinedPowerPoint(false));
+        }
+
+        public float GetSupplyCostTonsPerDay() // Combined
+        {
+            var supplySum = 0f;
+            foreach (var subordinateRef in subordinatesCombined)
+            {
+                var subordinate = subordinateRef.Get();
+                if (subordinate == null)
+                    continue;
+                if (subordinate is LandUnit landUnit && landUnit?.GetLandUnitTemplate()?.unitType != LandUnitType.Supply)
+                {
+                    supplySum += landUnit.GetSupplyCostTonsPerDay();
+                }
+                else if (subordinate is ShipLog shipLog)
+                {
+                    supplySum += shipLog.GetSupplyCostTonsPerDay();
+                }
+                else if (subordinate is StrategicGroup group)
+                {
+                    supplySum += group.GetSupplyCostTonsPerDay();
+                }
+            }
+            return supplySum;
+        }
+
         // From Vacuum or to vacuum, or move to other cell through vacuum.
         public void MoveToXY(int toX, int toY, bool moveThroughEdge)
         {
@@ -299,10 +274,15 @@ namespace StrategicCombatCore
 
         public void RemoveFromMap()
         {
+            if (x == -1 && y == -1)
+            {
+                return;
+            }
+
             var prevCell = cell;
             // var hexInfoMap = StrategicGameState.Instance.hexInfoMap;
 
-            if (deployState == DeployState.Independent && x != -1 && y != -1)
+            if (deployState == DeployState.Independent)
             {
                 // cellInfo.strategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
                 cell.StrategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);

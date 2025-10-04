@@ -16,7 +16,7 @@
         </ui:VisualElement>
         <ui:Label text="114514" picking-mode="Ignore" style="position: relative; height: 23px; -unity-text-align: upper-center; font-size: 15px;">
             <Bindings>
-                <ui:DataBinding property="text" data-source-path="combinedSubUnitSize" binding-mode="ToTarget" />
+                <ui:DataBinding property="text" data-source-path="combinedPowerPointRounded" binding-mode="ToTarget" />
             </Bindings>
         </ui:Label>
         <Bindings>

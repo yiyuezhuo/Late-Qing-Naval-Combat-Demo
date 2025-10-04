@@ -120,6 +120,11 @@
                                     </Bindings>
                                 </ui:Button>
                             </ui:VisualElement>
+                            <ui:Label text="Subordinate summary">
+                                <Bindings>
+                                    <ui:DataBinding property="text" data-source-path="subordinateSummary" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:Label>
                             <ui:ListView name="SubordinatesCombinedListView" header-title="Subordinates" show-add-remove-footer="true" show-foldout-header="true" binding-source-selection-mode="AutoAssign" data-source-path="subordinatesCombined" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" fixed-item-height="60" reorderable="true">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196633377280000)" />

@@ -762,7 +762,8 @@ https://shozokan.nich.go.jp/collection/object/SZK001477-059</remark>
    <chineseSimplified>福润</chineseSimplified>
   </name>
   <portraitReference>
-   <isBuiltin>false</isBuiltin>
+   <path>Pictures\Leaders\China_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
@@ -1887,6 +1888,7 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
  <Leader>
   <name>
    <english>Wei Rugui</english>
+   <japanese>衛汝貴</japanese>
    <chineseSimplified>卫汝贵</chineseSimplified>
   </name>
   <portraitReference>
@@ -1906,6 +1908,7 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
  <Leader>
   <name>
    <english>Wei Rucheng</english>
+   <japanese>衛汝成</japanese>
    <chineseSimplified>卫汝成</chineseSimplified>
   </name>
   <portraitReference>
@@ -1925,6 +1928,7 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
  <Leader>
   <name>
    <english>Song Qing</english>
+   <japanese>宋慶</japanese>
    <chineseSimplified>宋庆</chineseSimplified>
   </name>
   <portraitReference>
@@ -2000,5 +2004,67 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <traits />
   <remark>https://en.wikipedia.org/wiki/Liu_Yongfu</remark>
   <objectId>a95ed312-db84-4aef-94da-9616b743c08e</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Zuo Baogui</english>
+   <japanese>左宝貴</japanese>
+   <chineseSimplified>左宝贵</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Zuo Baogui.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>BarelyCompetent</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>AboveAverage</landTactical>
+  <traits>
+   <LeaderTrait>Brave</LeaderTrait>
+  </traits>
+  <remark>https://en.wikipedia.org/wiki/Zuo_Baogui</remark>
+  <objectId>aa91f6bf-bf4f-4586-bd0c-7a4252add98f</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Feng Shenga</english>
+   <japanese>豊升阿</japanese>
+   <chineseSimplified>丰升阿</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\China_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://baike.baidu.com/item/%E4%B8%B0%E5%8D%87%E9%98%BF/6156842</remark>
+  <objectId>122123c2-900d-413a-9be0-745d9d16f843</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nie Shicheng</english>
+   <japanese>聶士成</japanese>
+   <chineseSimplified>聂士成</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Nie Shicheng.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>AboveAverage</landStrategic>
+  <landOperational>AboveAverage</landOperational>
+  <landTactical>AboveAverage</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Nie_Shicheng</remark>
+  <objectId>1ef07b4f-587c-410b-9737-fe9db3b5e4cb</objectId>
  </Leader>
 </ArrayOfLeader>

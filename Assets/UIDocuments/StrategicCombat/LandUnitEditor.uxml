@@ -52,24 +52,36 @@
                         <ui:Instance template="GlobalStringEditor" data-source-path="name">
                             <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
                         </ui:Instance>
-                        <ui:IntegerField label="Strength">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="stregnth" binding-mode="TwoWay" />
-                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(352622210617344)" />
-                            </Bindings>
-                        </ui:IntegerField>
-                        <ui:FloatField label="Supply (tons)">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="supplyTons" binding-mode="TwoWay" />
-                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11056970263597056)" />
-                            </Bindings>
-                        </ui:FloatField>
-                        <ui:FloatField label="Supply Generation (tons)">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="supplyGeneratedTons" binding-mode="TwoWay" />
-                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11057038760775680)" />
-                            </Bindings>
-                        </ui:FloatField>
+                        <ui:VisualElement style="flex-direction: row;">
+                            <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
+                                <ui:IntegerField label="Strength">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="stregnth" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(352622210617344)" />
+                                    </Bindings>
+                                </ui:IntegerField>
+                                <ui:FloatField label="Supply (tons)">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="supplyTons" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11056970263597056)" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Supply Generation (tons)">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="supplyGeneratedTons" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11057038760775680)" />
+                                    </Bindings>
+                                </ui:FloatField>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
+                                <ui:FloatField label="Supply Cost (Ton/Day/man)" enabled="false">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="supplyCostTonsPerMenDay" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Supply Cost (Ton/Day)" enabled="false" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
                         <ui:Instance template="IStrategicGroupMemberReferenceableParentDepotUI" />
                         <ui:Label text="Remark">
                             <Bindings>

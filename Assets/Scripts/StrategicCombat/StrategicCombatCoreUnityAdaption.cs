@@ -7,6 +7,7 @@ using NavalCombatCore;
 using UnityEngine.InputSystem.Utilities;
 using System.Xml.Serialization;
 using StrategicCombatCore;
+using System;
 
 namespace StrategicCombatCore
 {
@@ -99,6 +100,9 @@ namespace StrategicCombatCore
         public int combinedSubUnitSize => GetCombinedSubUnitSize();
 
         [CreateProperty]
+        public int combinedPowerPointRounded => Mathf.RoundToInt(GetCombinedPowerPoint(true));
+
+        [CreateProperty]
         public Color countryColor => StyleConstants.countryColorMap.GetValueOrDefault(country, Color.gray);
 
         [CreateProperty]
@@ -155,6 +159,9 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public string assignedMissionName => EntityManager.Instance.Get<StrategicMission>(assignedMissionObjectId)?.name?.mergedName ?? "[Undefined or Invalid]";
+
+        [CreateProperty]
+        public string subordinateSummary => $"{combinedSubUnitSize} sub units, {GetStrengthMen()} men, {GetShipTons()} tons ships, {GetSupplyCostTonsPerDay()} tons supply cost/day";
     }
 
     public partial class StrategicGroupReference
@@ -259,6 +266,7 @@ namespace StrategicCombatCore
             }
         }
 
+        // Visitor
         [CreateProperty]
         public string desc1
         {
@@ -279,7 +287,9 @@ namespace StrategicCombatCore
                 }
                 if (obj is StrategicGroup group)
                 {
-                    return $"{group.type}, {group.combinedSubUnitSize} sub units";
+                    var shipTons = group.GetShipTons();
+                    var shipTonsStr = shipTons == 0 ? "" : $"{shipTons} tons ships";
+                    return $"{group.type}, {group.combinedSubUnitSize} sub units, {group.GetStrengthMen()} men, {shipTonsStr}";
                 }
                 if (obj is LandUnit landUnit)
                 {
@@ -301,7 +311,16 @@ namespace StrategicCombatCore
                 if (obj is ShipLog shipLog)
                 {
                     var maxSpeed = shipLog.GetMaxSpeedKnots();
-                    return $"{shipLog.mapState}, {shipLog.operationalState}, {maxSpeed} kts, DP: {shipLog.damagePoint} / {shipLog.shipClass.damagePoint}";
+                    // var mapStateStr = shipLog.mapState == MapState.Deployed ? $"{shipLog.mapState}" : $"<b>{shipLog.mapState}</b>";
+                    // var operationalStateStr = shipLog.operationalState == ShipOperationalState.Operational ? $"{shipLog.operationalState}" : $"<b>{shipLog.operationalState}</b>";
+                    var mapStateStr = shipLog.mapState == MapState.Deployed ? $"{shipLog.mapState}" : $"<b><color=\"red\">{shipLog.mapState}</color></b>";
+                    var operationalStateStr = shipLog.operationalState == ShipOperationalState.Operational ? $"{shipLog.operationalState}" : $"<b><color=\"red\">{shipLog.operationalState}</color></b>";
+                    return $"{mapStateStr}, {operationalStateStr}, {maxSpeed} kts, DP: {shipLog.damagePoint} / {shipLog.shipClass.damagePoint}";
+                }
+                else if (obj is StrategicGroup group)
+                {
+                    var deployStateStr = group.deployState == StrategicGroup.DeployState.Combined ? $"{group.deployState}" : $"<b>{group.deployState}</b>";
+                    return $"{deployStateStr}";
                 }
 
                 return "";
@@ -342,6 +361,9 @@ namespace StrategicCombatCore
         [CreateProperty]
         public string currentSourceDepotName => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepotName();
         #endregion
+
+        [CreateProperty]
+        public float supplyCostTonsPerMenDay => GetSupplyCostTonsPerMenDay();
     }
 
     public partial class SubStrategicCombat

@@ -272,8 +272,39 @@ namespace StrategicCombatCore
         {
             scenarioState.dateTime = scenarioState.dateTime.AddHours(1);
 
+            Advance1HourForSupply();
             Advance1HourForMission();
             Advance1HourForMovement();
+        }
+
+        public void Advance1HourForSupply()
+        {
+            foreach (var landUnit in landUnits)
+            {
+                landUnit.supplyTons = Math.Max(0, landUnit.supplyTons + (landUnit.supplyGeneratedTons - landUnit.GetSupplyCostTonsPerDay()) / 24);
+            }
+            foreach (var shipLog in shipLogs)
+            {
+                shipLog.supplyTons = Math.Max(0, shipLog.supplyTons - shipLog.GetSupplyCostTonsPerDay() / 24);
+            }
+
+            if (scenarioState.dateTime.Hour == 0) // per day
+            {
+                DoLandSupplyNetworkTransfer();
+            }
+        }
+
+        public void DoLandSupplyNetworkTransfer()
+        {
+            var cache = new Dictionary<(SideState, Cell, Cell), List<Cell>>();
+            foreach (var landUnit in landUnits)
+            {
+                var sourceDepot = ((IStrategicGroupMemberReferenceable)landUnit).GetCurrentSourceDepot();
+                if (sourceDepot != null)
+                {
+                    
+                }
+            }
         }
 
         public void Advance1HourForMovement()

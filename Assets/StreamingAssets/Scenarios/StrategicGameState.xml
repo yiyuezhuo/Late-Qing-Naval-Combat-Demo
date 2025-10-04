@@ -261,7 +261,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>415</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -556,7 +556,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>310</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -824,7 +824,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>375</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -1032,7 +1032,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>230</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -1228,7 +1228,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>100</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -1451,7 +1451,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>740</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -1674,7 +1674,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>740</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -1887,7 +1887,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>145</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -2100,7 +2100,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>145</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -2326,7 +2326,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>230</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -2552,7 +2552,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>230</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -2759,7 +2759,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>285</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -2966,7 +2966,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>285</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -3173,7 +3173,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>220</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -3371,7 +3371,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>130</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -3615,7 +3615,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>380</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -3926,7 +3926,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>422</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -4239,7 +4239,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>422</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -4492,7 +4492,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>226</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -4814,7 +4814,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>422</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -5082,7 +5082,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>375</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -5338,7 +5338,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>240</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -5534,7 +5534,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>100</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -5705,7 +5705,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>61.2</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -5844,7 +5844,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>291.3</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -5971,7 +5971,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>12</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -6100,7 +6100,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>9</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -6353,7 +6353,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>226</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -6586,7 +6586,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>147.6</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -6821,7 +6821,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>147.6</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -7056,7 +7056,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>147.6</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -7252,7 +7252,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>152.5</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -7469,7 +7469,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>175</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -7598,7 +7598,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.3</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -7725,7 +7725,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.3</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -7852,7 +7852,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -7981,7 +7981,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -8110,7 +8110,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -8239,7 +8239,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -8368,7 +8368,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -8497,7 +8497,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -8626,7 +8626,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -8755,7 +8755,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -8882,7 +8882,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -9011,7 +9011,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -9138,7 +9138,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -9265,7 +9265,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -9392,7 +9392,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -9521,7 +9521,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -9659,7 +9659,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>8</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -9797,7 +9797,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>8.5</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -9935,7 +9935,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>8.5</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -10082,7 +10082,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>20.3</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -10211,7 +10211,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>7.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -10340,7 +10340,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>7.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -10469,7 +10469,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>7.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -10598,7 +10598,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>7.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -10727,7 +10727,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>7.4</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -10827,7 +10827,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -10927,7 +10927,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -11027,7 +11027,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -11127,7 +11127,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -11227,7 +11227,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -11327,7 +11327,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -11427,7 +11427,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -11527,7 +11527,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -11627,7 +11627,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -11727,7 +11727,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -11827,7 +11827,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -11927,7 +11927,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -12027,7 +12027,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -12127,7 +12127,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -12227,7 +12227,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -12327,7 +12327,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -12427,7 +12427,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -12527,7 +12527,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -12627,7 +12627,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -12727,7 +12727,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -12827,7 +12827,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -12927,7 +12927,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -13027,7 +13027,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -13127,7 +13127,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -13227,7 +13227,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>0</supplyTons>
+   <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
    <doctrine>
     <maneuverAutomaticType>
@@ -13741,7 +13741,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>1a224c7c-18cf-446f-90b3-551568f435b2</objectId>
@@ -13756,7 +13756,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军副营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>75dde615-d1a6-4440-8fe3-99de5c6f14c7</objectId>
@@ -13771,7 +13771,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军右营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>c62f419b-643c-44e6-a651-c807b19c3bf0</objectId>
@@ -13786,7 +13786,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军后营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>20979489-2a2f-4dbc-82e0-bc959243fdad</objectId>
@@ -13801,7 +13801,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军传字正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>44acbf65-286d-44a8-b75e-b9e403ede455</objectId>
@@ -13816,7 +13816,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军左军正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>0a986b15-619a-4f21-82e8-1c7b19131d1f</objectId>
@@ -13831,7 +13831,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军左军左营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>0bd7ec00-7cda-401d-ab6a-358fbbf7d504</objectId>
@@ -13846,7 +13846,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军亲军炮队营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>17.5000019</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
    <objectId>f40450f6-b028-4d76-a038-2a72f27660dc</objectId>
@@ -13861,7 +13861,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军右军正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>b6bf38a7-b85c-4b33-9da6-04ae02140758</objectId>
@@ -13876,7 +13876,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军右军右营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>d2bd16ab-cc21-46f1-82bc-238b918eb3e6</objectId>
@@ -13891,7 +13891,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军右军后营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>f54b7796-3727-46a2-b215-799cd588604a</objectId>
@@ -13906,7 +13906,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军亲兵马小队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>7</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>279747b6-2f59-456d-88e1-66c664d207e2</objectId>
@@ -13921,7 +13921,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军亲兵步小队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>3a5f2b15-bdfe-42f7-a1c9-3ce5364ffb53</objectId>
@@ -13936,7 +13936,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编1营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>6c050d18-d5f1-479c-a34f-d0163c377590</objectId>
@@ -13951,7 +13951,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编2营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>19f52aad-c996-4804-b1d9-a58dde32aed6</objectId>
@@ -13966,7 +13966,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编3营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>4b921964-d592-406a-bd77-69febf0f8415</objectId>
@@ -13981,7 +13981,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编4营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>4be6c875-d190-4ef7-8eae-b53996d23e1a</objectId>
@@ -13996,7 +13996,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编5营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>4fb2c986-6b0e-4730-ad82-82734aae8604</objectId>
@@ -14011,7 +14011,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>铭军步1营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>fbcc1c30-266d-4c87-a768-70d2ea882363</objectId>
@@ -14024,7 +14024,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>铭军步2营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>25082074-8a17-4adc-8e61-02a3b31d4599</objectId>
@@ -14037,7 +14037,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>铭军步3营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>23f7d1fc-4e4a-4fea-a810-7a4bc6870c04</objectId>
@@ -14050,7 +14050,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>古北口练军右营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>532276bd-8fa1-415b-b224-45a279e81bc1</objectId>
@@ -14065,7 +14065,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>武毅军副中营</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>1.4</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>ab7db3ab-51ce-4641-9236-0ac311edce20</objectId>
@@ -14080,7 +14080,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>武毅军老前营</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>1.4</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>65f4f6ea-01c4-4a47-9dc3-d27457bef322</objectId>
@@ -14095,7 +14095,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>武毅军炮队</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>7.000001</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
    <objectId>b9fe6dcc-ed60-4859-9748-750372d8b5aa</objectId>
@@ -14110,7 +14110,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>天津武备学堂学生</chineseSimplified>
    </name>
    <stregnth>10</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>0.07000001</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>6d2f2148-7f94-4695-97c8-5282e8db3a1a</objectId>
@@ -14125,7 +14125,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正定练军中营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>b81a11c7-164b-4042-80df-f9f5854e256c</objectId>
@@ -14140,7 +14140,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正定练军右营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>bd7483a0-3682-44b3-9602-0916a70ca39b</objectId>
@@ -14155,7 +14155,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正定练军前营</chineseSimplified>
    </name>
    <stregnth>210</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>1.47</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>3097daff-bd82-4a43-9e34-69e524d54ae6</objectId>
@@ -14170,7 +14170,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正定练军左营</chineseSimplified>
    </name>
    <stregnth>210</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>1.47</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>5eb3077c-f62f-499b-93ba-b6eca8b7b53f</objectId>
@@ -14185,7 +14185,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>亲军马队小队</chineseSimplified>
    </name>
    <stregnth>80</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>1.12000012</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>302a7d65-9319-4014-80cd-df5738f49c72</objectId>
@@ -14200,7 +14200,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>山海关武备学堂学生</chineseSimplified>
    </name>
    <stregnth>25</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>0.175</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>7a9e7efa-c000-4c62-94bc-bbcbea2a974a</objectId>
@@ -14215,7 +14215,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>仁字营正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>8f100840-11d5-4409-a65e-6b5447546a7d</objectId>
@@ -14230,7 +14230,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>仁字营副营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>0a2df1a4-c566-4feb-89bc-9d39c19d683b</objectId>
@@ -14245,7 +14245,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>义胜前营一部</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>1.4</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>57057021-a645-4b60-ba37-4827ab44a46e</objectId>
@@ -14260,7 +14260,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>芦台防军马队</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>2.8</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>ed9cc67e-a2c0-4669-8e8c-ec95a82bbf23</objectId>
@@ -14275,7 +14275,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第11联队第2大队</chineseSimplified>
    </name>
    <stregnth>800</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.6</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <objectId>d05c4b4e-c937-4280-bd08-e357d3a3dcba</objectId>
@@ -14290,7 +14290,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第11联队第3大队</chineseSimplified>
    </name>
    <stregnth>800</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>5.6</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <objectId>78204a0e-7d7c-450e-b10d-826561a70857</objectId>
@@ -14305,7 +14305,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第21联队第1大队</chineseSimplified>
    </name>
    <stregnth>600</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>4.20000029</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>2nd Coy is detached.</remark>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
@@ -14321,7 +14321,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第21联队第2大队第7中队</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>1.4</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <objectId>309e644c-8005-4c5f-8821-2aeeb8b971cf</objectId>
@@ -14336,7 +14336,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第21联队第3大队</chineseSimplified>
    </name>
    <stregnth>600</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>4.20000029</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>11th Coy is detached.</remark>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
@@ -14352,7 +14352,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>骑兵第5大队第1中队</chineseSimplified>
    </name>
    <stregnth>35</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>0.49</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Most cavalries are assigned to other units for communication, scouting and other support role, so the "main" unit have only 35 cavalries (A full Coy should have 159 strength)</remark>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
@@ -14368,7 +14368,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>野战炮兵第5联队第3大队</chineseSimplified>
    </name>
    <stregnth>140</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>4.90000057</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
    <objectId>8809f6a2-bf65-473c-90bc-424a1fca6f48</objectId>
@@ -14383,7 +14383,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>工兵第5大队第1中队</chineseSimplified>
    </name>
    <stregnth>80</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>0.560000062</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
    <objectId>34d10468-a099-494d-b285-e51275e9d004</objectId>
@@ -14398,7 +14398,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>中国总仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>25519.5957</supplyTons>
    <supplyGeneratedTons>10000</supplyGeneratedTons>
    <remark>Generic Super Depot Supply Source.</remark>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -14414,7 +14414,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>日本总仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>40209.21</supplyTons>
    <supplyGeneratedTons>10000</supplyGeneratedTons>
    <remark>Generic Super Depot Supply Source.</remark>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -14430,7 +14430,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>北洋仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>25209.877</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <objectId>f4d6ffd3-4566-46bb-a178-5811cf748be5</objectId>
@@ -14445,7 +14445,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>日军朝鲜仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>115.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <objectId>69fa8dac-d422-4297-9726-e145ece4ab13</objectId>
@@ -14460,7 +14460,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>成欢仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>153.450012</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <objectId>0c66f06a-2031-478c-8899-bce39dc614ba</objectId>
@@ -14475,7 +14475,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>威海卫仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>24591.4277</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <objectId>08cbd225-e688-4354-aaa2-9509a71af1e2</objectId>
@@ -14505,7 +14505,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>第三工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.64000034</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
    <objectId>71dece21-c1af-4eb8-b030-94ff6263c6a1</objectId>
@@ -14520,7 +14520,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>第五工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.64000034</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
    <objectId>21ea6501-23fc-4280-a9f0-6bf283ee6ef6</objectId>
@@ -14535,7 +14535,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>第一工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.64000034</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
    <objectId>744fdb08-5b3c-4d46-b292-15b599fa4cab</objectId>
@@ -14550,7 +14550,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>第二工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.64000034</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
    <objectId>786dbf87-3093-41ee-afa8-a34843395250</objectId>
@@ -14565,7 +14565,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>第六工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.64000034</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
    <objectId>bb39d25f-aed9-431a-9014-e9cc7856372b</objectId>
@@ -15630,7 +15630,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军前军正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>11888857-f4d5-4240-a43d-ea18d17ac389</objectId>
@@ -15644,7 +15644,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军前军左营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>ac4d2790-5ef2-48c1-b301-912561c88438</objectId>
@@ -15658,7 +15658,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军前军起营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>c7b655f1-28f4-4ac4-8a39-94a6bec7b65c</objectId>
@@ -15672,7 +15672,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军前军邱营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>bf325b20-bd37-4b2a-a8c2-ba3832fb249d</objectId>
@@ -15686,7 +15686,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军本部1营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -15701,7 +15701,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军本部2营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -15716,7 +15716,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军本部3营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -15731,7 +15731,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军本部4营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -15746,7 +15746,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>台北仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>30</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <objectId>d1e66b3d-8881-42a0-a844-2adb36da7408</objectId>
@@ -15760,7 +15760,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>黑旗军1营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -15775,7 +15775,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>黑旗军2营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -15790,7 +15790,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>奉军左营马队</chineseSimplified>
    </name>
    <stregnth>277</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.87800026</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>77b32998-03ab-4809-8c98-75b4072fca59</objectId>
@@ -15804,7 +15804,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>奉军左营步队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>5db0a7ec-4bbf-4b9f-8e5e-18a1d625235f</objectId>
@@ -15818,7 +15818,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>靖边中营马队</chineseSimplified>
    </name>
    <stregnth>277</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.87800026</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>1a03e2b6-6ba3-4a25-b699-aaaa32ffa837</objectId>
@@ -15832,7 +15832,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>靖边中营步队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>8bcaec1b-b23a-483d-bfb7-337a1a160833</objectId>
@@ -15846,7 +15846,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>靖边前营步队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>6d97cf92-3e15-4888-b879-cd1f09dcf794</objectId>
@@ -15860,7 +15860,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>靖边右营步队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>3ca989bd-80b8-42fe-8a1f-83bc03b448af</objectId>
@@ -15874,7 +15874,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>靖边后营步队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>6a8ccd1c-c6dc-45d3-bde4-fcebc91983cd</objectId>
@@ -15888,7 +15888,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>靖边亲军炮队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>17.5000019</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
    <objectId>6ecaecbe-e81a-4ec6-8d39-f142c468ce21</objectId>
@@ -15902,7 +15902,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>奉天仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>279.72</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <objectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</objectId>
@@ -15917,7 +15917,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正红旗步队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>a0f79c00-bacd-4eed-90ec-ef9e8937d354</objectId>
@@ -15932,7 +15932,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正蓝旗步队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <objectId>ef754eee-c64a-40a4-8b3b-e1282c86390f</objectId>
@@ -15947,7 +15947,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛字左翼马队</chineseSimplified>
    </name>
    <stregnth>277</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.87800026</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>c76ec82a-ecb1-414c-b9e5-045aa6f990e2</objectId>
@@ -15962,7 +15962,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛字右翼马队</chineseSimplified>
    </name>
    <stregnth>277</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.87800026</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>8f6e5350-06a9-49d0-8889-0455c7d944ea</objectId>
@@ -15977,7 +15977,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>吉字左翼马队</chineseSimplified>
    </name>
    <stregnth>277</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.87800026</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>ac518e02-50af-40e7-a761-af253ae65973</objectId>
@@ -15992,7 +15992,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>吉字右翼马队</chineseSimplified>
    </name>
    <stregnth>277</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>3.87800026</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <objectId>bb9bf2b3-67bf-4b76-8321-a65a29b937ad</objectId>

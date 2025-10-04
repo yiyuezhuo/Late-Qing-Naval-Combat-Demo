@@ -46,6 +46,7 @@ namespace StrategicCombatCore
         public static float baseNormalSupplyCostTonPerMenDay = 0.001f;
         public static float baseCombatSupplyCostTonPerMenDay = 0.005f;
         public static float carryDays = 7;
+        public static float depotReserveDays = 30;
 
         static Dictionary<LandUnitType, float> supplyCostCoefMap = new()
         {
@@ -55,6 +56,12 @@ namespace StrategicCombatCore
 
         public float GetSupplyCapTons()
         {
+            var template = GetLandUnitTemplate();
+            if (template == null)
+                return 0;
+            if (template.unitType == LandUnitType.Supply)
+                return GetSupplyCostTonsPerDayForDepot() * depotReserveDays;
+
             return GetSupplyCostTonsPerDay() * carryDays;
         }
 
@@ -66,7 +73,8 @@ namespace StrategicCombatCore
             if (template == null)
                 return 0;
             if (template.unitType == LandUnitType.Supply)
-                return GetSupplyCostTonsPerDayForDepot();
+                return 0; // request & sent is not modeled as supply cost itself (since we may introduce supply's cost due to itself later)
+            // return GetSupplyCostTonsPerDayForDepot();
 
             var unitTypeCoef = supplyCostCoefMap.GetValueOrDefault(template.unitType, 1);
             return baseNormalSupplyCostTonPerMenDay * unitTypeCoef;

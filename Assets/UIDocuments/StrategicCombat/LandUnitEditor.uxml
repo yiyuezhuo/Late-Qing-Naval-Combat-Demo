@@ -79,7 +79,16 @@
                                         <ui:DataBinding property="value" data-source-path="supplyCostTonsPerMenDay" binding-mode="ToTarget" />
                                     </Bindings>
                                 </ui:FloatField>
-                                <ui:FloatField label="Supply Cost (Ton/Day)" enabled="false" />
+                                <ui:FloatField label="Supply Cost (Ton/Day)" enabled="false">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="supplyCostTonsPerDay" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Supply Cap (tons)" enabled="false">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="supplyCapTons" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </ui:FloatField>
                             </ui:VisualElement>
                         </ui:VisualElement>
                         <ui:Instance template="IStrategicGroupMemberReferenceableParentDepotUI" />

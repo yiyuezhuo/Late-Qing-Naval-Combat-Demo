@@ -151,6 +151,19 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         {
             StrategicMissionEditor.Instance.Show();
         };
+
+        root.Q<Button>("ResetSupplyButton").clicked += () =>
+        {
+            var gameState = StrategicGameState.Instance;
+            foreach (var landUnit in gameState.landUnits)
+            {
+                landUnit.supplyTons = landUnit.GetSupplyCapTons();
+            }
+            foreach (var shipLog in gameState.shipLogs)
+            {
+                shipLog.supplyTons = shipLog.GetSupplyCapTons();
+            }
+        };
     }
 
     void DoTPSGeoreferencing()

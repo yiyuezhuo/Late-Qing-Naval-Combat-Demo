@@ -364,6 +364,12 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public float supplyCostTonsPerMenDay => GetSupplyCostTonsPerMenDay();
+
+        [CreateProperty]
+        public float supplyCostTonsPerDay => GetSupplyCostTonsPerDay();
+
+        [CreateProperty]
+        public float supplyCapTons => GetSupplyCapTons();
     }
 
     public partial class SubStrategicCombat

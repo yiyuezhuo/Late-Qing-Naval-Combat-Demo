@@ -50,6 +50,44 @@ namespace StrategicCombatCore
         }
     }
 
+    public class DynamicLandSupplyNetworkingGraph : IGraphEnumerable<Cell>
+    {
+        public SideState side;
+
+        public IEnumerable<Cell> Neighbors(Cell pos)
+        {
+            foreach (var nei in pos.GetNeighbors())
+            {
+                if (nei.IsArmyPassable() && IsLandSupplyPassable(pos, nei))
+                    yield return nei;
+            }
+        }
+
+        bool IsLandSupplyPassable(Cell src, Cell dst)
+        {
+            if (dst.GetHexSide() == side)
+                return true;
+            if (src.TryGetDirection(dst, out var edge) && src.GetEdgeSide(edge) == side)
+                return true;
+            return false;
+        }
+
+        public float EstimateCost(Cell src, Cell dst)
+        {
+            // return Math.Abs(src.x - dst.x) + Math.Abs(src.y - dst.y);
+            return (Math.Abs(src.x - dst.x) + Math.Abs(src.y - dst.y)) / 2f;
+        }
+
+        // public float MoveCost(Cell src, Cell dst) => 1;
+        public float MoveCost(Cell src, Cell dst) => 1f / StrategicGroup.GetSpeedKmPerHour(src, dst);
+
+        public IEnumerable<Cell> Nodes()
+        {
+            foreach (var cell in StrategicGameState.Instance.cellMatrix)
+                yield return cell;
+        }
+    }
+
     public class DynamicCellGraphNavy : IGraphEnumerable<Cell>
     {
         public IEnumerable<Cell> Neighbors(Cell pos)

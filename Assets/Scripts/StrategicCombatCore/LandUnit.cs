@@ -23,6 +23,8 @@ namespace StrategicCombatCore
 
         public void SetStrategicGroupReference(StrategicGroup group) => IStrategicGroupMemberReferenceable.SetStrategicGroupReference(this, group);
 
+        public SupplyTransferState supplyTransferState = new();
+
         // public LandUnitSize size; // Move to LandUnitTemplate?
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
@@ -89,6 +91,28 @@ namespace StrategicCombatCore
             if (firstDepot.Get() == this)
                 return parentGroup.GetSupplyCostTonsPerDay();
             return 0;
+        }
+
+        public Cell cell
+        {
+            get
+            {
+                var parentGroup = strategicGroupReference.Get();
+                if (parentGroup == null || !parentGroup.IsOnMap())
+                    return null;
+                return parentGroup.cell;
+            }
+        }
+
+        public SideState side
+        {
+            get
+            {
+                var parentGroup = strategicGroupReference.Get();
+                if (parentGroup == null)
+                    return null;
+                return parentGroup.side;
+            }
         }
 
         // public LandUnit GetCurrentSourceDepot() => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();

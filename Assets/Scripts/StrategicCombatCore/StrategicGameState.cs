@@ -296,15 +296,8 @@ namespace StrategicCombatCore
 
         public void DoLandSupplyNetworkTransfer()
         {
-            var cache = new Dictionary<(SideState, Cell, Cell), List<Cell>>();
-            foreach (var landUnit in landUnits)
-            {
-                var sourceDepot = ((IStrategicGroupMemberReferenceable)landUnit).GetCurrentSourceDepot();
-                if (sourceDepot != null)
-                {
-                    
-                }
-            }
+            var resolver = new LandSupplyNetworkResolver();
+            resolver.Resolve();
         }
 
         public void Advance1HourForMovement()

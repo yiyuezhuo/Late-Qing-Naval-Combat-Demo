@@ -206,6 +206,18 @@ namespace StrategicCombatCore
         public bool IsNavy() => type == Type.Fleet;
         public bool IsArmy() => type != Type.Fleet;
 
+        public bool IsOnMap()
+        {
+            var pt = this;
+            while (pt !=null && pt.deployState != DeployState.NotDeployed) // Combined or Independent
+            {
+                if (pt.deployState == DeployState.Independent)
+                    return true;
+                pt = pt.strategicGroupReference.Get(); 
+            }
+            return false;
+        }
+
         public int GetSubUnitSize() => subordinatesCombined.Sum(r => r.GetSubUnitSize());
         public int GetStrengthMen() => subordinatesCombined.Sum(r => r.GetStrengthMen());
         public float GetShipTons() => subordinatesCombined.Sum(r => r.GetShipTons());

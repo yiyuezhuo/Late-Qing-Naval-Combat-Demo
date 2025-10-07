@@ -253,18 +253,6 @@ namespace StrategicCombatCore
             }
         }
 
-        // public List<StrategicGroupReference> serializedStrategicGroupReferences
-        // {
-        //     get
-        //     {
-        //         if (strategicGroupReferences.Count == 0)
-        //             return null;
-        //         return strategicGroupReferences;
-        //     }
-        //     // get => strategicGroupReferences;
-        //     set => strategicGroupReferences = value ?? new();
-        // }
-
         // Used by XmlSerializer
         public bool ShouldSerializeStrategicGroupReferences() => StrategicGroupReferences != null && StrategicGroupReferences.Count > 0;
         public List<StrategicGroupReference> StrategicGroupReferences = new();

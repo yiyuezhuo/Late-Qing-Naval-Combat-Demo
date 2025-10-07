@@ -466,6 +466,12 @@ namespace StrategicCombatCore
         public string name => Get()?.name?.mergedName ?? "[Not defined or Invalid]";
     }
 
+    public partial class SupplyFlowRecord
+    {
+        [CreateProperty]
+        public string otherObjectName =>  GetOther()?.name?.mergedName ?? "[Not defined or Invalid]";
+    }
+
 
 }
 

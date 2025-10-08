@@ -2067,4 +2067,64 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <remark>https://en.wikipedia.org/wiki/Nie_Shicheng</remark>
   <objectId>1ef07b4f-587c-410b-9737-fe9db3b5e4cb</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Inoue Yoshika</english>
+   <japanese>井上良馨</japanese>
+   <chineseSimplified>井上良馨</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Inoue_Yoshika.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Inoue_Yoshika</remark>
+  <objectId>cf6cab8d-b542-4930-aaeb-bc24eccace43</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Shibayama Yahachi</english>
+   <japanese>柴山矢八</japanese>
+   <chineseSimplified>柴山矢八</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Shibayama Yahachi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Shibayama_Yahachi</remark>
+  <objectId>55bcaa87-3db0-4dba-8138-9d4b345d0cb9</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Arichi Shinanojō</english>
+   <japanese>有地品之允</japanese>
+   <chineseSimplified>有地品之允</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Arichi_Shinanojo.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Arichi_Shinanoj%C5%8D</remark>
+  <objectId>7cdf6552-9b13-431b-ba02-8bfa99c1faf8</objectId>
+ </Leader>
 </ArrayOfLeader>

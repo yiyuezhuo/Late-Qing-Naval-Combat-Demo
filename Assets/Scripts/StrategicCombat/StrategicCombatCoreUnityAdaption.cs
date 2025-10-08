@@ -370,6 +370,12 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public float supplyCapTons => GetSupplyCapTons();
+
+        // [CreateProperty]
+        // public float supplyTonsProp => supplyTons;
+
+        // [CreateProperty]
+        // public GlobalString nameProp => name;
     }
 
     public partial class SubStrategicCombat
@@ -469,7 +475,7 @@ namespace StrategicCombatCore
     public partial class SupplyFlowRecord
     {
         [CreateProperty]
-        public string otherObjectName =>  GetOther()?.name?.mergedName ?? "[Not defined or Invalid]";
+        public string otherObjectName =>  GetOther()?.GetName()?.mergedName ?? "[Not defined or Invalid]";
     }
 
 
@@ -484,5 +490,11 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public string currentSourceDepotName => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepotName();
+
+        [CreateProperty]
+        public float supplyCostTonsPerDay => GetSupplyCostTonsPerDay();
+
+        [CreateProperty]
+        public float supplyCapTons => GetSupplyCapTons();
     }
 }

@@ -1,8 +1,9 @@
+using CoreUtils;
 using StrategicCombatCore;
 
 namespace NavalCombatCore
 {
-    public partial class ShipLog : IStrategicGroupMemberReferenceable
+    public partial class ShipLog : IStrategicGroupMemberReferenceable, ISupplyNetworkNode
     {
         // public string strategicGroupId;
         public StrategicGroupReference strategicGroupReference { get; set; } = new();
@@ -10,6 +11,8 @@ namespace NavalCombatCore
         public float supplyTons;
         public float fixedHours; // Fixed by Tactical Combat Resolution
                                  // GetDepot
+
+        public SupplyTransferState supplyTransferState = new();
 
         public int GetStrengthMen() => shipClass?.complementMen ?? 0;
         public float GetShipTons() => shipClass?.displacementTons ?? 0;
@@ -37,6 +40,14 @@ namespace NavalCombatCore
         {
             return (shipClass?.displacementTons ?? 0) / 10 / 7; // ~1.5% of displacement of supply is consumed per day
         }
+
+        GlobalString ISupplyNetworkNode.GetName() => namedShip?.name;
+        public float GetSupplyTons() => supplyTons;
+        public void SetSupplyTons(float value) => supplyTons = value;
+        public SupplyTransferState GetSupplyTransferState() => supplyTransferState;
+        public Cell cell => strategicGroupReference.GetCell();
+        public SideState side => strategicGroupReference.GetSide();
+        public bool IsDepotSameCellOnlySupply() => true;
 
         // public LandUnit GetCurrentSourceDepot() => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
 

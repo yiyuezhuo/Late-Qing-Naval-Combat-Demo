@@ -263,6 +263,14 @@
    <timeLocLogs />
    <supplyTons>415</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -558,6 +566,14 @@
    <timeLocLogs />
    <supplyTons>310</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -826,6 +842,14 @@
    <timeLocLogs />
    <supplyTons>375</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1034,6 +1058,14 @@
    <timeLocLogs />
    <supplyTons>230</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1230,6 +1262,14 @@
    <timeLocLogs />
    <supplyTons>100</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1453,6 +1493,14 @@
    <timeLocLogs />
    <supplyTons>740</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1676,6 +1724,14 @@
    <timeLocLogs />
    <supplyTons>740</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1889,6 +1945,14 @@
    <timeLocLogs />
    <supplyTons>145</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2102,6 +2166,14 @@
    <timeLocLogs />
    <supplyTons>145</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2328,6 +2400,14 @@
    <timeLocLogs />
    <supplyTons>230</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2554,6 +2634,14 @@
    <timeLocLogs />
    <supplyTons>230</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2761,6 +2849,14 @@
    <timeLocLogs />
    <supplyTons>285</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2968,6 +3064,14 @@
    <timeLocLogs />
    <supplyTons>285</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3175,6 +3279,14 @@
    <timeLocLogs />
    <supplyTons>220</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3373,6 +3485,14 @@
    <timeLocLogs />
    <supplyTons>130</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3617,6 +3737,14 @@
    <timeLocLogs />
    <supplyTons>380</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3928,6 +4056,14 @@
    <timeLocLogs />
    <supplyTons>422</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -4241,6 +4377,14 @@
    <timeLocLogs />
    <supplyTons>422</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -4494,6 +4638,14 @@
    <timeLocLogs />
    <supplyTons>226</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -4816,6 +4968,14 @@
    <timeLocLogs />
    <supplyTons>422</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5084,6 +5244,14 @@
    <timeLocLogs />
    <supplyTons>375</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5340,6 +5508,14 @@
    <timeLocLogs />
    <supplyTons>240</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5536,6 +5712,14 @@
    <timeLocLogs />
    <supplyTons>100</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5707,6 +5891,14 @@
    <timeLocLogs />
    <supplyTons>61.2</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5846,6 +6038,14 @@
    <timeLocLogs />
    <supplyTons>291.3</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5973,6 +6173,14 @@
    <timeLocLogs />
    <supplyTons>12</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6102,6 +6310,14 @@
    <timeLocLogs />
    <supplyTons>9</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6355,6 +6571,14 @@
    <timeLocLogs />
    <supplyTons>226</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6588,6 +6812,14 @@
    <timeLocLogs />
    <supplyTons>147.6</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6823,6 +7055,14 @@
    <timeLocLogs />
    <supplyTons>147.6</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7058,6 +7298,14 @@
    <timeLocLogs />
    <supplyTons>147.6</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7254,6 +7502,14 @@
    <timeLocLogs />
    <supplyTons>152.5</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7471,6 +7727,14 @@
    <timeLocLogs />
    <supplyTons>175</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7600,6 +7864,14 @@
    <timeLocLogs />
    <supplyTons>5.3</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7727,6 +7999,14 @@
    <timeLocLogs />
    <supplyTons>5.3</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7854,6 +8134,14 @@
    <timeLocLogs />
    <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7983,6 +8271,14 @@
    <timeLocLogs />
    <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8112,6 +8408,14 @@
    <timeLocLogs />
    <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8241,6 +8545,14 @@
    <timeLocLogs />
    <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8370,6 +8682,14 @@
    <timeLocLogs />
    <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8499,6 +8819,14 @@
    <timeLocLogs />
    <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8628,6 +8956,14 @@
    <timeLocLogs />
    <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8757,6 +9093,14 @@
    <timeLocLogs />
    <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8884,6 +9228,14 @@
    <timeLocLogs />
    <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9013,6 +9365,14 @@
    <timeLocLogs />
    <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9140,6 +9500,14 @@
    <timeLocLogs />
    <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9267,6 +9635,14 @@
    <timeLocLogs />
    <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9394,6 +9770,14 @@
    <timeLocLogs />
    <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9523,6 +9907,14 @@
    <timeLocLogs />
    <supplyTons>5.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9661,6 +10053,14 @@
    <timeLocLogs />
    <supplyTons>8</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9799,6 +10199,14 @@
    <timeLocLogs />
    <supplyTons>8.5</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9937,6 +10345,14 @@
    <timeLocLogs />
    <supplyTons>8.5</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10084,6 +10500,14 @@
    <timeLocLogs />
    <supplyTons>20.3</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10213,6 +10637,14 @@
    <timeLocLogs />
    <supplyTons>7.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10342,6 +10774,14 @@
    <timeLocLogs />
    <supplyTons>7.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10471,6 +10911,14 @@
    <timeLocLogs />
    <supplyTons>7.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10600,6 +11048,14 @@
    <timeLocLogs />
    <supplyTons>7.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10729,6 +11185,14 @@
    <timeLocLogs />
    <supplyTons>7.4</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10829,6 +11293,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10929,6 +11401,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11029,6 +11509,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11129,6 +11617,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11229,6 +11725,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11329,6 +11833,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11429,6 +11941,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11529,6 +12049,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11629,6 +12157,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11729,6 +12265,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11829,6 +12373,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11929,6 +12481,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12029,6 +12589,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12129,6 +12697,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12229,6 +12805,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12329,6 +12913,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12429,6 +13021,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12529,6 +13129,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12629,6 +13237,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12729,6 +13345,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12829,6 +13453,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12929,6 +13561,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -13029,6 +13669,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -13129,6 +13777,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -13229,6 +13885,14 @@
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
    <fixedHours>0</fixedHours>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -13744,6 +14408,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>1a224c7c-18cf-446f-90b3-551568f435b2</objectId>
    <strategicGroupReference>
     <referenceId>8807adb3-1eca-45a9-9274-573ad9f29e3c</referenceId>
@@ -13759,6 +14431,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>75dde615-d1a6-4440-8fe3-99de5c6f14c7</objectId>
    <strategicGroupReference>
     <referenceId>8807adb3-1eca-45a9-9274-573ad9f29e3c</referenceId>
@@ -13774,6 +14454,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>c62f419b-643c-44e6-a651-c807b19c3bf0</objectId>
    <strategicGroupReference>
     <referenceId>8807adb3-1eca-45a9-9274-573ad9f29e3c</referenceId>
@@ -13789,6 +14477,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>20979489-2a2f-4dbc-82e0-bc959243fdad</objectId>
    <strategicGroupReference>
     <referenceId>8807adb3-1eca-45a9-9274-573ad9f29e3c</referenceId>
@@ -13804,6 +14500,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>44acbf65-286d-44a8-b75e-b9e403ede455</objectId>
    <strategicGroupReference>
     <referenceId>8807adb3-1eca-45a9-9274-573ad9f29e3c</referenceId>
@@ -13819,6 +14523,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>0a986b15-619a-4f21-82e8-1c7b19131d1f</objectId>
    <strategicGroupReference>
     <referenceId>7da4fd10-12a7-4c69-8107-b16396cee390</referenceId>
@@ -13834,6 +14546,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>0bd7ec00-7cda-401d-ab6a-358fbbf7d504</objectId>
    <strategicGroupReference>
     <referenceId>7da4fd10-12a7-4c69-8107-b16396cee390</referenceId>
@@ -13849,6 +14569,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>17.5000019</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>f40450f6-b028-4d76-a038-2a72f27660dc</objectId>
    <strategicGroupReference>
     <referenceId>7da4fd10-12a7-4c69-8107-b16396cee390</referenceId>
@@ -13864,6 +14592,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>b6bf38a7-b85c-4b33-9da6-04ae02140758</objectId>
    <strategicGroupReference>
     <referenceId>df089c53-6033-4d2c-8df2-849dd7593f57</referenceId>
@@ -13879,6 +14615,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>d2bd16ab-cc21-46f1-82bc-238b918eb3e6</objectId>
    <strategicGroupReference>
     <referenceId>df089c53-6033-4d2c-8df2-849dd7593f57</referenceId>
@@ -13894,6 +14638,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>f54b7796-3727-46a2-b215-799cd588604a</objectId>
    <strategicGroupReference>
     <referenceId>df089c53-6033-4d2c-8df2-849dd7593f57</referenceId>
@@ -13909,6 +14661,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>7</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>279747b6-2f59-456d-88e1-66c664d207e2</objectId>
    <strategicGroupReference>
     <referenceId>df089c53-6033-4d2c-8df2-849dd7593f57</referenceId>
@@ -13924,6 +14684,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>3a5f2b15-bdfe-42f7-a1c9-3ce5364ffb53</objectId>
    <strategicGroupReference>
     <referenceId>df089c53-6033-4d2c-8df2-849dd7593f57</referenceId>
@@ -13939,6 +14707,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>6c050d18-d5f1-479c-a34f-d0163c377590</objectId>
    <strategicGroupReference>
     <referenceId>7b96de0e-6c80-4b23-a3f4-2176cfe99148</referenceId>
@@ -13954,6 +14730,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>19f52aad-c996-4804-b1d9-a58dde32aed6</objectId>
    <strategicGroupReference>
     <referenceId>7b96de0e-6c80-4b23-a3f4-2176cfe99148</referenceId>
@@ -13969,6 +14753,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>4b921964-d592-406a-bd77-69febf0f8415</objectId>
    <strategicGroupReference>
     <referenceId>7b96de0e-6c80-4b23-a3f4-2176cfe99148</referenceId>
@@ -13984,6 +14776,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>4be6c875-d190-4ef7-8eae-b53996d23e1a</objectId>
    <strategicGroupReference>
     <referenceId>7b96de0e-6c80-4b23-a3f4-2176cfe99148</referenceId>
@@ -13999,6 +14799,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>4fb2c986-6b0e-4730-ad82-82734aae8604</objectId>
    <strategicGroupReference>
     <referenceId>7b96de0e-6c80-4b23-a3f4-2176cfe99148</referenceId>
@@ -14014,6 +14822,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>fbcc1c30-266d-4c87-a768-70d2ea882363</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -14027,6 +14843,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>25082074-8a17-4adc-8e61-02a3b31d4599</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -14040,6 +14864,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>23f7d1fc-4e4a-4fea-a810-7a4bc6870c04</objectId>
    <strategicGroupReference />
   </LandUnit>
@@ -14053,6 +14885,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>532276bd-8fa1-415b-b224-45a279e81bc1</objectId>
    <strategicGroupReference>
     <referenceId>f11d4aee-dea9-4776-913c-a1d684510b06</referenceId>
@@ -14068,6 +14908,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>1.4</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>ab7db3ab-51ce-4641-9236-0ac311edce20</objectId>
    <strategicGroupReference>
     <referenceId>f11d4aee-dea9-4776-913c-a1d684510b06</referenceId>
@@ -14083,6 +14931,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>1.4</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>65f4f6ea-01c4-4a47-9dc3-d27457bef322</objectId>
    <strategicGroupReference>
     <referenceId>f11d4aee-dea9-4776-913c-a1d684510b06</referenceId>
@@ -14098,6 +14954,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>7.000001</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>b9fe6dcc-ed60-4859-9748-750372d8b5aa</objectId>
    <strategicGroupReference>
     <referenceId>f11d4aee-dea9-4776-913c-a1d684510b06</referenceId>
@@ -14113,6 +14977,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0.07000001</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>6d2f2148-7f94-4695-97c8-5282e8db3a1a</objectId>
    <strategicGroupReference>
     <referenceId>f11d4aee-dea9-4776-913c-a1d684510b06</referenceId>
@@ -14128,6 +15000,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>b81a11c7-164b-4042-80df-f9f5854e256c</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -14143,6 +15023,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>bd7483a0-3682-44b3-9602-0916a70ca39b</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -14158,6 +15046,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>1.47</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>3097daff-bd82-4a43-9e34-69e524d54ae6</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -14173,6 +15069,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>1.47</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>5eb3077c-f62f-499b-93ba-b6eca8b7b53f</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -14188,6 +15092,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>1.12000012</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>302a7d65-9319-4014-80cd-df5738f49c72</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -14203,6 +15115,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0.175</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>7a9e7efa-c000-4c62-94bc-bbcbea2a974a</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -14218,6 +15138,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>8f100840-11d5-4409-a65e-6b5447546a7d</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -14233,6 +15161,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>0a2df1a4-c566-4feb-89bc-9d39c19d683b</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -14248,6 +15184,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>1.4</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>57057021-a645-4b60-ba37-4827ab44a46e</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -14263,6 +15207,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>2.8</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>ed9cc67e-a2c0-4669-8e8c-ec95a82bbf23</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -14278,6 +15230,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>5.6</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>d05c4b4e-c937-4280-bd08-e357d3a3dcba</objectId>
    <strategicGroupReference>
     <referenceId>5a7f6397-7e25-45b6-8423-98b3e22e815a</referenceId>
@@ -14293,6 +15253,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>5.6</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>78204a0e-7d7c-450e-b10d-826561a70857</objectId>
    <strategicGroupReference>
     <referenceId>5a7f6397-7e25-45b6-8423-98b3e22e815a</referenceId>
@@ -14309,6 +15277,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>2nd Coy is detached.</remark>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>90d60e0e-ccf7-4aba-9a67-986907bdd56f</objectId>
    <strategicGroupReference>
     <referenceId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</referenceId>
@@ -14324,6 +15300,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>1.4</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>309e644c-8005-4c5f-8821-2aeeb8b971cf</objectId>
    <strategicGroupReference>
     <referenceId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</referenceId>
@@ -14340,6 +15324,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>11th Coy is detached.</remark>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>a78a315d-c3c2-4b2b-a14b-d82e06d44eb6</objectId>
    <strategicGroupReference>
     <referenceId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</referenceId>
@@ -14356,6 +15348,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Most cavalries are assigned to other units for communication, scouting and other support role, so the "main" unit have only 35 cavalries (A full Coy should have 159 strength)</remark>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>0abfe5cb-3b7e-4dfa-b722-747763468bdd</objectId>
    <strategicGroupReference>
     <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
@@ -14371,6 +15371,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>4.90000057</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>8809f6a2-bf65-473c-90bc-424a1fca6f48</objectId>
    <strategicGroupReference>
     <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
@@ -14386,6 +15394,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0.560000062</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>34d10468-a099-494d-b285-e51275e9d004</objectId>
    <strategicGroupReference>
     <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
@@ -14402,6 +15418,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyGeneratedTons>10000</supplyGeneratedTons>
    <remark>Generic Super Depot Supply Source.</remark>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</objectId>
    <strategicGroupReference>
     <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
@@ -14418,6 +15442,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyGeneratedTons>10000</supplyGeneratedTons>
    <remark>Generic Super Depot Supply Source.</remark>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>4bed7260-ce35-4876-bc7f-ae025cec21b4</objectId>
    <strategicGroupReference>
     <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
@@ -14433,6 +15465,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>25209.877</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>f4d6ffd3-4566-46bb-a178-5811cf748be5</objectId>
    <strategicGroupReference>
     <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
@@ -14448,6 +15488,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>115.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>69fa8dac-d422-4297-9726-e145ece4ab13</objectId>
    <strategicGroupReference>
     <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
@@ -14463,6 +15511,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>153.450012</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>0c66f06a-2031-478c-8899-bce39dc614ba</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
@@ -14478,6 +15534,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>24591.4277</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>08cbd225-e688-4354-aaa2-9509a71af1e2</objectId>
    <strategicGroupReference>
     <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
@@ -14493,6 +15557,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>49888c20-7d72-4eae-ab87-02be51361b92</objectId>
    <strategicGroupReference>
     <referenceId>580cfa37-58f2-41f6-af34-9ba1906a5eee</referenceId>
@@ -14508,6 +15580,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.64000034</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>71dece21-c1af-4eb8-b030-94ff6263c6a1</objectId>
    <strategicGroupReference>
     <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
@@ -14523,6 +15603,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.64000034</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>21ea6501-23fc-4280-a9f0-6bf283ee6ef6</objectId>
    <strategicGroupReference>
     <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
@@ -14538,6 +15626,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.64000034</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>744fdb08-5b3c-4d46-b292-15b599fa4cab</objectId>
    <strategicGroupReference>
     <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
@@ -14553,6 +15649,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.64000034</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>786dbf87-3093-41ee-afa8-a34843395250</objectId>
    <strategicGroupReference>
     <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
@@ -14568,6 +15672,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.64000034</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>bb39d25f-aed9-431a-9014-e9cc7856372b</objectId>
    <strategicGroupReference>
     <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
@@ -14583,6 +15695,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>9383e113-f7f4-42f2-b32c-4fcd821336de</objectId>
    <strategicGroupReference>
     <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
@@ -14598,6 +15718,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>0ae1f8e4-52a8-4256-8d98-b88378d9a528</objectId>
    <strategicGroupReference>
     <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
@@ -14614,6 +15742,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>秋山好古</remark>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>2bd37132-e136-43e8-831b-3413c45be55a</objectId>
    <strategicGroupReference>
     <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
@@ -14629,6 +15765,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>77e9aa0f-8850-41e2-a7f4-554a0f3f007b</objectId>
    <strategicGroupReference>
     <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
@@ -14644,6 +15788,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>f19f58a9-7866-40e8-9589-15672295ab95</objectId>
    <strategicGroupReference>
     <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
@@ -14659,6 +15811,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>9b66d180-e9c0-4ee7-89e1-edda7c79ca9e</objectId>
    <strategicGroupReference>
     <referenceId>dc778b97-f5fe-4a1a-869f-58133cb451ab</referenceId>
@@ -14674,6 +15834,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>41e14bd1-f7d2-42b9-ac31-3365bb68115a</objectId>
    <strategicGroupReference>
     <referenceId>dc778b97-f5fe-4a1a-869f-58133cb451ab</referenceId>
@@ -14689,6 +15857,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>d521272c-705e-4d1f-b66e-e10c970a4d49</objectId>
    <strategicGroupReference>
     <referenceId>dc778b97-f5fe-4a1a-869f-58133cb451ab</referenceId>
@@ -14704,6 +15880,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>9206fa6b-d455-4a6c-8d05-df374032a67d</objectId>
    <strategicGroupReference>
     <referenceId>fa3430e2-124a-46dd-a18e-c20a42555159</referenceId>
@@ -14719,6 +15903,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>31bfdf8e-72a4-4cfe-b870-3cd04aef5557</objectId>
    <strategicGroupReference>
     <referenceId>fa3430e2-124a-46dd-a18e-c20a42555159</referenceId>
@@ -14734,6 +15926,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>69257650-5568-4745-bf2b-4dbf77eee35b</objectId>
    <strategicGroupReference>
     <referenceId>fa3430e2-124a-46dd-a18e-c20a42555159</referenceId>
@@ -14749,6 +15949,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>fc5f0aba-1dc3-4a12-abfa-dc6082a9843e</objectId>
    <strategicGroupReference>
     <referenceId>8debdc25-a274-4158-a38c-c4dc36162a2d</referenceId>
@@ -14764,6 +15972,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>f75409d5-81c3-4fe4-a6b1-eb60989de5f1</objectId>
    <strategicGroupReference>
     <referenceId>8debdc25-a274-4158-a38c-c4dc36162a2d</referenceId>
@@ -14779,6 +15995,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>7fc0b19f-3496-4ea2-b2c0-14a0e2f41c3a</objectId>
    <strategicGroupReference>
     <referenceId>8debdc25-a274-4158-a38c-c4dc36162a2d</referenceId>
@@ -14794,6 +16018,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>a99aa3f3-569b-424a-acfc-108e9f4642f8</objectId>
    <strategicGroupReference>
     <referenceId>10a4192d-931c-469b-b315-716438d8c28b</referenceId>
@@ -14809,6 +16041,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>095acc25-5782-4bbe-8889-b0412cb4b7c0</objectId>
    <strategicGroupReference>
     <referenceId>10a4192d-931c-469b-b315-716438d8c28b</referenceId>
@@ -14824,6 +16064,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>6862c389-a5ce-48f3-b518-89ed59482fdc</objectId>
    <strategicGroupReference>
     <referenceId>10a4192d-931c-469b-b315-716438d8c28b</referenceId>
@@ -14839,6 +16087,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>6cc0bc3c-9727-45b6-9ac0-33a98a87b8cf</objectId>
    <strategicGroupReference>
     <referenceId>e0686526-37a4-459a-bc5b-0b0345a980e2</referenceId>
@@ -14854,6 +16110,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>6e68c251-1d8f-4cfb-b6b9-17aceda85a68</objectId>
    <strategicGroupReference>
     <referenceId>e0686526-37a4-459a-bc5b-0b0345a980e2</referenceId>
@@ -14869,6 +16133,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>a7160e12-e738-4284-bbdb-53b88dfc4ca2</objectId>
    <strategicGroupReference>
     <referenceId>e0686526-37a4-459a-bc5b-0b0345a980e2</referenceId>
@@ -14884,6 +16156,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>b72f7677-0389-432a-8023-7c43c742ac19</objectId>
    <strategicGroupReference>
     <referenceId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</referenceId>
@@ -14899,6 +16179,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>5ca34a45-9308-49b6-9c6d-eb7f76bcb5e9</objectId>
    <strategicGroupReference>
     <referenceId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</referenceId>
@@ -14914,6 +16202,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>5c90d03a-de15-476f-a1ad-378d29c73a5c</objectId>
    <strategicGroupReference>
     <referenceId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</referenceId>
@@ -14929,6 +16225,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>64a7fcbd-f578-4a78-b936-83654522c7a3</objectId>
    <strategicGroupReference>
     <referenceId>5eb01bdd-7b9a-401a-89be-3382df10e892</referenceId>
@@ -14944,6 +16248,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>068da9d0-7f9e-4807-8f22-15560ec5dc8a</objectId>
    <strategicGroupReference>
     <referenceId>5eb01bdd-7b9a-401a-89be-3382df10e892</referenceId>
@@ -14959,6 +16271,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>ead160b3-693d-4492-a3cb-4925f3434415</objectId>
    <strategicGroupReference>
     <referenceId>5eb01bdd-7b9a-401a-89be-3382df10e892</referenceId>
@@ -14974,6 +16294,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>2952840f-eb81-4225-8682-6e65448aa023</objectId>
    <strategicGroupReference>
     <referenceId>ccc60016-86aa-40c9-b402-40174ba04ed6</referenceId>
@@ -14989,6 +16317,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>5d97c2bb-c5be-44e9-9c58-a74eb5212e41</objectId>
    <strategicGroupReference>
     <referenceId>ccc60016-86aa-40c9-b402-40174ba04ed6</referenceId>
@@ -15004,6 +16340,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>60de5790-f50c-4ec5-bbf9-8f91bf3c681c</objectId>
    <strategicGroupReference>
     <referenceId>ccc60016-86aa-40c9-b402-40174ba04ed6</referenceId>
@@ -15019,6 +16363,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>a3f4ea7c-a9e3-4024-8f38-a129528ab6f9</objectId>
    <strategicGroupReference>
     <referenceId>9e0224f3-d2ad-4b79-bb3b-939b2096bf03</referenceId>
@@ -15034,6 +16386,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>ec63f55c-17b7-49c6-8b4f-116f77fba90b</objectId>
    <strategicGroupReference>
     <referenceId>9e0224f3-d2ad-4b79-bb3b-939b2096bf03</referenceId>
@@ -15049,6 +16409,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>c731ac41-c894-4afc-860f-eed6b3d3556f</objectId>
    <strategicGroupReference>
     <referenceId>9e0224f3-d2ad-4b79-bb3b-939b2096bf03</referenceId>
@@ -15064,6 +16432,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>d67d33f1-1c03-430f-9ab5-e48a24fbeb0a</objectId>
    <strategicGroupReference>
     <referenceId>bcef7d21-574b-4323-b651-0e67445b25cc</referenceId>
@@ -15079,6 +16455,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>dc733a40-cac6-4c90-8c1a-794d86d21b02</objectId>
    <strategicGroupReference>
     <referenceId>bcef7d21-574b-4323-b651-0e67445b25cc</referenceId>
@@ -15094,6 +16478,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>39b41a0c-82d8-4489-9aa0-387650bf1fe6</objectId>
    <strategicGroupReference>
     <referenceId>bcef7d21-574b-4323-b651-0e67445b25cc</referenceId>
@@ -15109,6 +16501,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>d937a0ae-1ce7-4479-b051-afb218946d47</objectId>
    <strategicGroupReference>
     <referenceId>5862b272-0953-46a8-a6f8-bb7353b671b2</referenceId>
@@ -15124,6 +16524,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>55ef32a1-592c-4a97-bdc2-5d2bd423c890</objectId>
    <strategicGroupReference>
     <referenceId>5862b272-0953-46a8-a6f8-bb7353b671b2</referenceId>
@@ -15139,6 +16547,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>75715540-89ba-4cd9-b97d-4751991143e0</objectId>
    <strategicGroupReference>
     <referenceId>5862b272-0953-46a8-a6f8-bb7353b671b2</referenceId>
@@ -15154,6 +16570,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>ecc7bf8b-9f78-46a2-9baa-7818b56b5863</objectId>
    <strategicGroupReference>
     <referenceId>bbfbf098-0b5e-400c-90a1-5af53c5e4533</referenceId>
@@ -15169,6 +16593,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>0e2c0a7c-c5e9-47be-ac78-882f04d9a595</objectId>
    <strategicGroupReference>
     <referenceId>bbfbf098-0b5e-400c-90a1-5af53c5e4533</referenceId>
@@ -15184,6 +16616,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>921ac2aa-21fb-40f0-94bf-9bba129b040a</objectId>
    <strategicGroupReference>
     <referenceId>bbfbf098-0b5e-400c-90a1-5af53c5e4533</referenceId>
@@ -15199,6 +16639,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>72ac4c13-088b-4452-a43e-bab0bd9866fc</objectId>
    <strategicGroupReference>
     <referenceId>fa371e9a-6add-4f6c-84f0-52b5e427e75a</referenceId>
@@ -15214,6 +16662,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>f8695aa7-4690-4f4f-9e98-39a2ccd46892</objectId>
    <strategicGroupReference>
     <referenceId>fa371e9a-6add-4f6c-84f0-52b5e427e75a</referenceId>
@@ -15229,6 +16685,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>763a0932-b790-4adb-b9ba-187e22eb50f9</objectId>
    <strategicGroupReference>
     <referenceId>fa371e9a-6add-4f6c-84f0-52b5e427e75a</referenceId>
@@ -15244,6 +16708,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>7a3c9270-111c-4fe6-863d-8fbe39ec2696</objectId>
    <strategicGroupReference>
     <referenceId>645d9e54-c6e8-4bef-a17e-558a9f632285</referenceId>
@@ -15259,6 +16731,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>fd8e3d19-ab24-4e6b-9ef9-3af173be41c4</objectId>
    <strategicGroupReference>
     <referenceId>645d9e54-c6e8-4bef-a17e-558a9f632285</referenceId>
@@ -15274,6 +16754,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>fcc5d9e3-1e0b-4c8a-bc57-8918506d9ced</objectId>
    <strategicGroupReference>
     <referenceId>645d9e54-c6e8-4bef-a17e-558a9f632285</referenceId>
@@ -15289,6 +16777,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>513c4a86-8168-4d3c-8e5f-11c6d704ebbb</objectId>
    <strategicGroupReference>
     <referenceId>f97d2f58-fb9e-487b-a8fb-999246e1804f</referenceId>
@@ -15304,6 +16800,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>204aa4c9-6cd6-4e54-9c52-bebf3d461f01</objectId>
    <strategicGroupReference>
     <referenceId>f97d2f58-fb9e-487b-a8fb-999246e1804f</referenceId>
@@ -15319,6 +16823,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>19b23c0b-d645-483f-b82f-139224d379f5</objectId>
    <strategicGroupReference>
     <referenceId>f97d2f58-fb9e-487b-a8fb-999246e1804f</referenceId>
@@ -15334,6 +16846,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>e4240780-b29d-4e82-ab68-6a290f4e9337</objectId>
    <strategicGroupReference>
     <referenceId>e212bfd1-456d-4fc7-8bd3-d57dc997b2f1</referenceId>
@@ -15349,6 +16869,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>d7e31f80-f3a3-4a7c-b467-ef35ab4ccc29</objectId>
    <strategicGroupReference>
     <referenceId>e212bfd1-456d-4fc7-8bd3-d57dc997b2f1</referenceId>
@@ -15364,6 +16892,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>f1063f6c-eaec-479e-8436-6c8397397640</objectId>
    <strategicGroupReference>
     <referenceId>e212bfd1-456d-4fc7-8bd3-d57dc997b2f1</referenceId>
@@ -15379,6 +16915,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>7a652a81-3d4e-4caf-86a1-9ebfe5130b60</objectId>
    <strategicGroupReference>
     <referenceId>ff0665fc-3324-4015-b532-f94b1f7c6d97</referenceId>
@@ -15394,6 +16938,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>e44d9f9b-f6d1-4e29-9c58-c2c5e2cf3eb7</objectId>
    <strategicGroupReference>
     <referenceId>741e2594-9434-4915-89e2-d17985701961</referenceId>
@@ -15409,6 +16961,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>327d1e37-cc6b-4319-bf54-e0faa4526c16</objectId>
    <strategicGroupReference>
     <referenceId>522876be-0947-4332-8bd4-4ff4590fe99b</referenceId>
@@ -15424,6 +16984,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>fba1472f-19a2-448d-8c41-e3f0aa5459f3</objectId>
    <strategicGroupReference>
     <referenceId>522876be-0947-4332-8bd4-4ff4590fe99b</referenceId>
@@ -15439,6 +17007,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>9efb6f22-ea00-47b3-a1a7-5981ea3a3233</objectId>
    <strategicGroupReference>
     <referenceId>522876be-0947-4332-8bd4-4ff4590fe99b</referenceId>
@@ -15454,6 +17030,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>6c18dbb3-294d-4442-838f-d476b8392205</objectId>
    <strategicGroupReference>
     <referenceId>b8955e93-c485-445a-bea6-03cb3334ff86</referenceId>
@@ -15469,6 +17053,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>fa9c0c09-9e70-4294-87f4-3db67334d577</objectId>
    <strategicGroupReference>
     <referenceId>b8955e93-c485-445a-bea6-03cb3334ff86</referenceId>
@@ -15484,6 +17076,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>9c048763-2666-4119-aa60-173746573dea</objectId>
    <strategicGroupReference>
     <referenceId>b8955e93-c485-445a-bea6-03cb3334ff86</referenceId>
@@ -15499,6 +17099,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>edd1c129-2003-494f-b81e-40cd0a7d212e</objectId>
    <strategicGroupReference>
     <referenceId>5a6008b4-3d17-4ab8-b1a1-6db59608317b</referenceId>
@@ -15514,6 +17122,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>efacaa00-8a19-4a08-8611-d97f9e5884f4</objectId>
    <strategicGroupReference>
     <referenceId>5a6008b4-3d17-4ab8-b1a1-6db59608317b</referenceId>
@@ -15529,6 +17145,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>c7f7557a-cf77-4a26-bf49-bdf686f771f7</objectId>
    <strategicGroupReference>
     <referenceId>5a6008b4-3d17-4ab8-b1a1-6db59608317b</referenceId>
@@ -15544,6 +17168,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>20f41b70-41ef-4e64-8106-eb400ed6ba16</objectId>
    <strategicGroupReference>
     <referenceId>2acf5724-c334-4d1c-99a5-7412c7337c9c</referenceId>
@@ -15559,6 +17191,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>3e62679d-f3b8-4970-961f-2516545bb311</objectId>
    <strategicGroupReference>
     <referenceId>2acf5724-c334-4d1c-99a5-7412c7337c9c</referenceId>
@@ -15574,6 +17214,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>405d806c-db60-40ea-9619-9e08cd712e28</objectId>
    <strategicGroupReference>
     <referenceId>2acf5724-c334-4d1c-99a5-7412c7337c9c</referenceId>
@@ -15589,6 +17237,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>cb02c455-68cd-409b-a14f-b4027eaaf3b6</objectId>
    <strategicGroupReference>
     <referenceId>e5b44beb-48e2-4296-9a8f-98f89f7d1cc4</referenceId>
@@ -15604,6 +17260,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>3488f64a-2d81-47eb-9249-f64018aba4e8</objectId>
    <strategicGroupReference>
     <referenceId>e5b44beb-48e2-4296-9a8f-98f89f7d1cc4</referenceId>
@@ -15619,6 +17283,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>c0acf4ca-6b18-4ee4-9017-9172d4e08a6e</objectId>
    <strategicGroupReference>
     <referenceId>e5b44beb-48e2-4296-9a8f-98f89f7d1cc4</referenceId>
@@ -15633,6 +17305,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>11888857-f4d5-4240-a43d-ea18d17ac389</objectId>
    <strategicGroupReference>
     <referenceId>1a1422a1-96c0-401d-b71e-fc10e508e678</referenceId>
@@ -15647,6 +17327,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>ac4d2790-5ef2-48c1-b301-912561c88438</objectId>
    <strategicGroupReference>
     <referenceId>1a1422a1-96c0-401d-b71e-fc10e508e678</referenceId>
@@ -15661,6 +17349,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>c7b655f1-28f4-4ac4-8a39-94a6bec7b65c</objectId>
    <strategicGroupReference>
     <referenceId>1a1422a1-96c0-401d-b71e-fc10e508e678</referenceId>
@@ -15675,6 +17371,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>bf325b20-bd37-4b2a-a8c2-ba3832fb249d</objectId>
    <strategicGroupReference>
     <referenceId>1a1422a1-96c0-401d-b71e-fc10e508e678</referenceId>
@@ -15690,6 +17394,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>228a782c-0855-431d-982b-d491daa9f777</objectId>
    <strategicGroupReference>
     <referenceId>123b42e1-1cc9-41c6-a612-10a6768eb0e0</referenceId>
@@ -15705,6 +17417,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>516b1836-bf28-4962-980c-fff048a6cf60</objectId>
    <strategicGroupReference>
     <referenceId>123b42e1-1cc9-41c6-a612-10a6768eb0e0</referenceId>
@@ -15720,6 +17440,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>d053e22e-33f7-4f40-af28-d44857794f02</objectId>
    <strategicGroupReference>
     <referenceId>123b42e1-1cc9-41c6-a612-10a6768eb0e0</referenceId>
@@ -15735,6 +17463,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>cce9eb79-905b-43b5-8f96-113334e435a8</objectId>
    <strategicGroupReference>
     <referenceId>123b42e1-1cc9-41c6-a612-10a6768eb0e0</referenceId>
@@ -15749,6 +17485,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>30</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>d1e66b3d-8881-42a0-a844-2adb36da7408</objectId>
    <strategicGroupReference>
     <referenceId>511bc6d0-2ab7-4fa4-99df-bb674c494284</referenceId>
@@ -15764,6 +17508,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>1b768a62-c168-4904-a143-b70aa2bdcee0</objectId>
    <strategicGroupReference>
     <referenceId>04002987-63e3-4f8e-ac77-9c6595f47f60</referenceId>
@@ -15779,6 +17531,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>9e4567ad-f1f7-4ab1-bec6-1e0b1a25060d</objectId>
    <strategicGroupReference>
     <referenceId>04002987-63e3-4f8e-ac77-9c6595f47f60</referenceId>
@@ -15793,6 +17553,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.87800026</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>77b32998-03ab-4809-8c98-75b4072fca59</objectId>
    <strategicGroupReference>
     <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
@@ -15807,6 +17575,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>5db0a7ec-4bbf-4b9f-8e5e-18a1d625235f</objectId>
    <strategicGroupReference>
     <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
@@ -15821,6 +17597,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.87800026</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>1a03e2b6-6ba3-4a25-b699-aaaa32ffa837</objectId>
    <strategicGroupReference>
     <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
@@ -15835,6 +17619,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>8bcaec1b-b23a-483d-bfb7-337a1a160833</objectId>
    <strategicGroupReference>
     <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
@@ -15849,6 +17641,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>6d97cf92-3e15-4888-b879-cd1f09dcf794</objectId>
    <strategicGroupReference>
     <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
@@ -15863,6 +17663,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>3ca989bd-80b8-42fe-8a1f-83bc03b448af</objectId>
    <strategicGroupReference>
     <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
@@ -15877,6 +17685,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>6a8ccd1c-c6dc-45d3-bde4-fcebc91983cd</objectId>
    <strategicGroupReference>
     <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
@@ -15891,6 +17707,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>17.5000019</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>6ecaecbe-e81a-4ec6-8d39-f142c468ce21</objectId>
    <strategicGroupReference>
     <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
@@ -15905,6 +17729,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>279.72</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</objectId>
    <strategicGroupReference>
     <referenceId>fd8fd83b-bfa2-4c3b-8396-3dd0d796abad</referenceId>
@@ -15920,6 +17752,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>a0f79c00-bacd-4eed-90ec-ef9e8937d354</objectId>
    <strategicGroupReference>
     <referenceId>c57852e7-58fc-4373-87f0-016a1043d705</referenceId>
@@ -15935,6 +17775,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>ef754eee-c64a-40a4-8b3b-e1282c86390f</objectId>
    <strategicGroupReference>
     <referenceId>c57852e7-58fc-4373-87f0-016a1043d705</referenceId>
@@ -15950,6 +17798,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.87800026</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>c76ec82a-ecb1-414c-b9e5-045aa6f990e2</objectId>
    <strategicGroupReference>
     <referenceId>c57852e7-58fc-4373-87f0-016a1043d705</referenceId>
@@ -15965,6 +17821,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.87800026</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>8f6e5350-06a9-49d0-8889-0455c7d944ea</objectId>
    <strategicGroupReference>
     <referenceId>c57852e7-58fc-4373-87f0-016a1043d705</referenceId>
@@ -15980,6 +17844,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.87800026</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>ac518e02-50af-40e7-a761-af253ae65973</objectId>
    <strategicGroupReference>
     <referenceId>c57852e7-58fc-4373-87f0-016a1043d705</referenceId>
@@ -15995,9 +17867,86 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <supplyTons>3.87800026</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
    <objectId>bb9bf2b3-67bf-4b76-8321-a65a29b937ad</objectId>
    <strategicGroupReference>
     <referenceId>c57852e7-58fc-4373-87f0-016a1043d705</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Yokosuka Depot</english>
+    <japanese>横須賀倉庫</japanese>
+    <chineseSimplified>横须贺仓库</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
+   <objectId>f2e89083-25ff-4e73-9470-e6b74fcbeb07</objectId>
+   <strategicGroupReference>
+    <referenceId>7a345c0d-2607-49d0-b2ce-39c7ef2dde2c</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Hiroshima Depot</english>
+    <japanese>広島倉庫</japanese>
+    <chineseSimplified>广岛仓库</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
+   <objectId>449422d2-5026-4fd5-b7b7-48aa3f1384f4</objectId>
+   <strategicGroupReference>
+    <referenceId>b2684ea7-b75a-4b7b-ab15-b102e3c7d4ae</referenceId>
+   </strategicGroupReference>
+  </LandUnit>
+  <LandUnit>
+   <name>
+    <english>Nagasaki Depot</english>
+    <japanese>長崎倉庫</japanese>
+    <chineseSimplified>长崎仓库</chineseSimplified>
+   </name>
+   <stregnth>0</stregnth>
+   <supplyTons>0</supplyTons>
+   <supplyGeneratedTons>0</supplyGeneratedTons>
+   <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+   <supplyTransferState>
+    <requestRecord>
+     <targetSupplyTons>0</targetSupplyTons>
+     <flowSupplyTons>0</flowSupplyTons>
+     <cost>0</cost>
+    </requestRecord>
+    <requestedRecords />
+   </supplyTransferState>
+   <objectId>5d57c765-a31d-423e-8cd8-7064c565049c</objectId>
+   <strategicGroupReference>
+    <referenceId>4ed57fd0-50a3-4f92-a40f-7f3310470b79</referenceId>
    </strategicGroupReference>
   </LandUnit>
  </landUnits>
@@ -17218,10 +19167,13 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
    </leaderReference>
    <subordinatesCombined>
     <StrategicGroupMemberReference>
-     <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
+     <referenceId>b2684ea7-b75a-4b7b-ab15-b102e3c7d4ae</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+     <referenceId>7a345c0d-2607-49d0-b2ce-39c7ef2dde2c</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>4ed57fd0-50a3-4f92-a40f-7f3310470b79</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <remark>https://ja.wikipedia.org/wiki/%E8%BB%8D%E4%BB%A4%E9%83%A8
@@ -17525,13 +19477,16 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <type>Fleet</type>
    <size>Division</size>
    <country>Japan</country>
-   <deployState>NotDeployed</deployState>
-   <independentX>-1</independentX>
-   <independentY>-1</independentY>
+   <deployState>Independent</deployState>
+   <independentX>30</independentX>
+   <independentY>27</independentY>
    <leaderReference>
     <referenceObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</referenceObjectId>
    </leaderReference>
    <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
+    </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
      <referenceId>f8481328-de97-4466-af47-6c302493b6ef</referenceId>
     </StrategicGroupMemberReference>
@@ -17539,19 +19494,16 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
      <referenceId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
      <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
-   <xProp>-1</xProp>
-   <yProp>-1</yProp>
+   <xProp>30</xProp>
+   <yProp>27</yProp>
    <objectId>e7da4734-5986-4765-9687-5c818df24f09</objectId>
    <strategicGroupReference>
-    <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
+    <referenceId>b2684ea7-b75a-4b7b-ab15-b102e3c7d4ae</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
@@ -18951,9 +20903,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <type>Fleet</type>
    <size>Regiment</size>
    <country>Japan</country>
-   <deployState>Independent</deployState>
-   <independentX>30</independentX>
-   <independentY>27</independentY>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
    <leaderReference>
     <referenceObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</referenceObjectId>
    </leaderReference>
@@ -19229,7 +21181,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <yProp>23</yProp>
    <objectId>748b4491-cf73-4f62-8f7d-075e0dcdec09</objectId>
    <strategicGroupReference>
-    <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
+    <referenceId>b2684ea7-b75a-4b7b-ab15-b102e3c7d4ae</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
@@ -19872,6 +21824,102 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <objectId>f11d4aee-dea9-4776-913c-a1d684510b06</objectId>
    <strategicGroupReference>
     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Kure Naval District</english>
+    <japanese>呉鎮守府</japanese>
+    <chineseSimplified>吴镇守府</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Corp</size>
+   <country>Japan</country>
+   <deployState>Combined</deployState>
+   <independentX>-1</independentX>
+   <independentY>-1</independentY>
+   <leaderReference>
+    <referenceObjectId>7cdf6552-9b13-431b-ba02-8bfa99c1faf8</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>449422d2-5026-4fd5-b7b7-48aa3f1384f4</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <remark>https://en.wikipedia.org/wiki/Kure_Naval_District</remark>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>b2684ea7-b75a-4b7b-ab15-b102e3c7d4ae</objectId>
+   <strategicGroupReference>
+    <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Yokosuka Naval District</english>
+    <japanese>横須賀鎮守府</japanese>
+    <chineseSimplified>横须贺镇守府</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Corp</size>
+   <country>Japan</country>
+   <deployState>Independent</deployState>
+   <independentX>55</independentX>
+   <independentY>25</independentY>
+   <leaderReference>
+    <referenceObjectId>cf6cab8d-b542-4930-aaeb-bc24eccace43</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>f2e89083-25ff-4e73-9470-e6b74fcbeb07</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <remark>https://en.wikipedia.org/wiki/Yokosuka_Naval_District</remark>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>55</xProp>
+   <yProp>25</yProp>
+   <objectId>7a345c0d-2607-49d0-b2ce-39c7ef2dde2c</objectId>
+   <strategicGroupReference>
+    <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>Sasebo Naval District  </english>
+    <japanese>佐世保鎮守府</japanese>
+    <chineseSimplified>佐世保镇守府</chineseSimplified>
+   </name>
+   <type>HeadQuarter</type>
+   <size>Corp</size>
+   <country>Japan</country>
+   <deployState>Independent</deployState>
+   <independentX>37</independentX>
+   <independentY>19</independentY>
+   <leaderReference>
+    <referenceObjectId>55bcaa87-3db0-4dba-8138-9d4b345d0cb9</referenceObjectId>
+   </leaderReference>
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>5d57c765-a31d-423e-8cd8-7064c565049c</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <remark>https://en.wikipedia.org/wiki/Sasebo_Naval_District</remark>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>37</xProp>
+   <yProp>19</yProp>
+   <objectId>4ed57fd0-50a3-4f92-a40f-7f3310470b79</objectId>
+   <strategicGroupReference>
+    <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
  </strategicGroups>
@@ -21538,10 +23586,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      </StrategicGroupReference>
     </StrategicGroupReferences>
    </Cell>
-   <Cell x="30" y="27" terrain="ForestRough" longitude="126.28231" latitude="36.8136749" IsCoast="true">
+   <Cell x="30" y="27" terrain="ForestRough" longitude="126.28231" latitude="36.8136749" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d">
     <StrategicGroupReferences>
      <StrategicGroupReference>
-      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
+      <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
      </StrategicGroupReference>
     </StrategicGroupReferences>
    </Cell>
@@ -21878,6 +23926,11 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <japanese>長崎</japanese>
      <chineseSimplified>长崎</chineseSimplified>
     </Label>
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>4ed57fd0-50a3-4f92-a40f-7f3310470b79</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
    </Cell>
    <Cell x="37" y="20" terrain="Field" longitude="129.92305" latitude="33.2124825" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
    <Cell x="37" y="21" terrain="LightUrban" longitude="129.924637" latitude="33.7498436" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
@@ -22048,8 +24101,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <Cell x="41" y="20" terrain="ForestRough" longitude="131.966431" latitude="33.120388" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
    <Cell x="41" y="21" terrain="ForestRough" longitude="131.971024" latitude="33.65524" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
    <Cell x="41" y="22" terrain="ForestRough" longitude="131.981277" latitude="34.19049" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" roadsStr="1/4" />
-   <Cell x="41" y="23" terrain="ForestRough" longitude="131.999008" latitude="34.7264023" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
-   <Cell x="41" y="24" terrain="ForestRough" longitude="132.024979" latitude="35.2631874" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
+   <Cell x="41" y="23" terrain="ForestRough" longitude="131.999008" latitude="34.7264023" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
+   <Cell x="41" y="24" terrain="ShallowWater" longitude="132.024979" latitude="35.2631874" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
    <Cell x="41" y="25" terrain="ShallowWater" longitude="132.0583" latitude="35.80096" />
    <Cell x="41" y="26" terrain="DeepWater" longitude="132.096985" latitude="36.33975" />
    <Cell x="41" y="27" terrain="DeepWater" longitude="132.138672" latitude="36.8795128" />
@@ -22088,7 +24141,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <Cell x="42" y="20" terrain="ForestRough" longitude="132.48671" latitude="32.82761" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
    <Cell x="42" y="21" terrain="ForestRough" longitude="132.489075" latitude="33.3615875" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
    <Cell x="42" y="22" terrain="ForestRough" longitude="132.496918" latitude="33.89591" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
-   <Cell x="42" y="23" terrain="Clear" longitude="132.512833" latitude="34.4308739" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" roadsStr="4/2">
+   <Cell x="42" y="23" terrain="Clear" longitude="132.512833" latitude="34.4308739" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" roadsStr="4/2">
     <Label>
      <english>Hiroshima</english>
      <japanese>広島</japanese>
@@ -22645,7 +24698,13 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <Cell x="55" y="22" terrain="DeepWater" longitude="139.9887" latitude="33.79689" />
    <Cell x="55" y="23" terrain="DeepWater" longitude="140.057892" latitude="34.3245163" />
    <Cell x="55" y="24" terrain="Field" longitude="140.134308" latitude="34.8533669" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
-   <Cell x="55" y="25" terrain="HeavyUrban" longitude="140.213913" latitude="35.3840446" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" roadsStr="0/4" railroadsStr="0/4" />
+   <Cell x="55" y="25" terrain="HeavyUrban" longitude="140.213913" latitude="35.3840446" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" roadsStr="0/4" railroadsStr="0/4">
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>7a345c0d-2607-49d0-b2ce-39c7ef2dde2c</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
+   </Cell>
    <Cell x="55" y="26" terrain="HeavyUrban" longitude="140.288956" latitude="35.9176064" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" roadsStr="0/4/3" railroadsStr="0/5/3/4" />
    <Cell x="55" y="27" terrain="ForestRough" longitude="140.357559" latitude="36.4540024" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" roadsStr="3" railroadsStr="0/3" />
    <Cell x="55" y="28" terrain="ForestRough" longitude="140.424011" latitude="36.992054" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" railroadsStr="1/3" />

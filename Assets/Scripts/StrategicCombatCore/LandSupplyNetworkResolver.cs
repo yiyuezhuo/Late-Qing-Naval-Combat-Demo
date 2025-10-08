@@ -9,15 +9,31 @@ using YYZ.PathFinding;
 
 namespace StrategicCombatCore
 {
+    public interface ISupplyNetworkNode
+    {
+        // SupplyTransferState supplyTransferState { get; }
+        // float supplyTons { get; set; }
+        // GlobalString name{ get; }
+        GlobalString GetName();
+        float GetSupplyTons(); // Move supplyTons to SupplyTransferState? (though if so, SupplyTransferState should be named to other thing)
+        void SetSupplyTons(float value);
+        SupplyTransferState GetSupplyTransferState();
+        string objectId { get; set; }
+        Cell cell { get; }
+        SideState side { get; }
+        bool IsDepotSameCellOnlySupply();
+    }
+
+
     public partial class SupplyFlowRecord
     {
         public string otherObjectId;
         public float targetSupplyTons; // requested 
         public float flowSupplyTons;
         public float cost;
-        public LandUnit GetOther()
+        public ISupplyNetworkNode GetOther()
         {
-            return EntityManager.Instance.Get<LandUnit>(otherObjectId);
+            return EntityManager.Instance.Get<ISupplyNetworkNode>(otherObjectId);
         }
         public void Clear()
         {
@@ -57,17 +73,18 @@ namespace StrategicCombatCore
 
         public class Bundle
         {
-            public LandUnit unit;
-            public LandUnitTemplate template;
+            // public LandUnit unit;
+            public ISupplyNetworkNode unit;
+            // public LandUnitTemplate template;
             public bool isDepot;
             public LandUnit depot;
             public float supplyCapTons;
             // public float virtualAssignedFlowTons;
-            public float GetDeficit() => supplyCapTons - unit.supplyTons;
+            public float GetDeficit() => supplyCapTons - unit.GetSupplyTons();
             public float GetDeficitAfterRequest()
             {
-                var requestTons = unit.supplyTransferState.requestRecord.targetSupplyTons;
-                var requestedTons = unit.supplyTransferState.requestedRecords.Sum(r => r.targetSupplyTons);
+                var requestTons = unit.GetSupplyTransferState().requestRecord.targetSupplyTons;
+                var requestedTons = unit.GetSupplyTransferState().requestedRecords.Sum(r => r.targetSupplyTons);
                 return GetDeficit() + (requestedTons - requestTons);
             }
         }
@@ -94,22 +111,31 @@ namespace StrategicCombatCore
 
                 var depot = ((IStrategicGroupMemberReferenceable)landUnit).GetCurrentSourceDepot();
 
-                // Handle PathFinding here
-
                 bundleMap[landUnit.objectId] = new()
                 {
                     unit = landUnit,
-                    template = template,
                     isDepot = template.unitType == LandUnitType.Supply,
                     depot = depot,
                     supplyCapTons = landUnit.GetSupplyCapTons()
+                };
+            }
+            foreach (var shipLog in gameState.shipLogs)
+            {
+                var depot = ((IStrategicGroupMemberReferenceable)shipLog).GetCurrentSourceDepot();
+
+                bundleMap[shipLog.objectId] = new()
+                {
+                    unit = shipLog,
+                    isDepot = false,
+                    depot = depot,
+                    supplyCapTons = shipLog.GetSupplyCapTons()
                 };
             }
 
             // Clear states
             foreach (var bundle in bundleMap.Values)
             {
-                bundle.unit.supplyTransferState.Clear();
+                bundle.unit.GetSupplyTransferState().Clear();
             }
 
             // Non-depot units request supply
@@ -122,7 +148,7 @@ namespace StrategicCombatCore
             var depotBundles = bundleMap.Values.Where(b => b.isDepot).ToList();
 
             // while (true)
-            for (int i = 0; i < depotBundles.Count; i++)
+            for (int i = 0; i < maxIterations; i++)
             {
                 var updateAny = false;
 
@@ -140,7 +166,7 @@ namespace StrategicCombatCore
                     break;
 
                 // Debug
-                if (i == depotBundles.Count - 1)
+                if (i == maxIterations - 1)
                 {
                     ServiceLocator.Get<ILoggerService>().LogWarning($"Potential infinite loop in Depot request chain iteration");
                 }
@@ -148,22 +174,22 @@ namespace StrategicCombatCore
 
             // Virtual Supply Distribution flow iteration
             // while (true)
-            for (int i = 0; i < depotBundles.Count; i++)
+            for (int i = 0; i < maxIterations; i++)
             {
                 var updateAny = false;
 
                 foreach (var depotBundle in depotBundles)
                 {
-                    if (depotBundle.unit.supplyTons <= 1e-3)
+                    if (depotBundle.unit.GetSupplyTons() <= 1e-3)
                         continue;
 
-                    var unresolvedTons = depotBundle.unit.supplyTransferState.GetUnresolvedRequestedTons();
+                    var unresolvedTons = depotBundle.unit.GetSupplyTransferState().GetUnresolvedRequestedTons();
                     if (unresolvedTons <= 1e-3)
                         continue;
 
-                    var flow = Math.Min(depotBundle.unit.supplyTons, unresolvedTons);
+                    var flow = Math.Min(depotBundle.unit.GetSupplyTons(), unresolvedTons);
                     // TODO: Handle supply priority here
-                    depotBundle.unit.supplyTransferState.DoFlow(flow);
+                    depotBundle.unit.GetSupplyTransferState().DoFlow(flow);
 
                     updateAny = true;
                 }
@@ -172,7 +198,7 @@ namespace StrategicCombatCore
                     break;
 
                 // Debug
-                if (i == depotBundles.Count - 1)
+                if (i == maxIterations - 1)
                 {
                     ServiceLocator.Get<ILoggerService>().LogWarning($"Potential infinite loop in Virtual Supply Distribution flow iteration");
                 }
@@ -181,22 +207,25 @@ namespace StrategicCombatCore
             // Apply real flow
             foreach (var depotBundle in depotBundles)
             {
-                foreach (var requestedRecord in depotBundle.unit.supplyTransferState.requestedRecords)
+                foreach (var requestedRecord in depotBundle.unit.GetSupplyTransferState().requestedRecords)
                 {
                     var requestUnit = requestedRecord.GetOther();
                     if (requestUnit != null)
                     {
                         var flowTons = requestedRecord.flowSupplyTons;
-                        requestUnit.supplyTons += flowTons;
-                        depotBundle.unit.supplyTons -= flowTons; // In the process, it may be negative temporarily.
+                        // requestUnit.supplyTons += flowTons;
+                        // requestUnit.AddSupplyTons(flowTons);
+                        requestUnit.SetSupplyTons(requestUnit.GetSupplyTons() + flowTons);
+                        // depotBundle.unit.supplyTons -= flowTons; // In the process, it may be negative temporarily.
+                        depotBundle.unit.SetSupplyTons(depotBundle.unit.GetSupplyTons() - flowTons);
 
-                        requestUnit.supplyTransferState.requestRecord.flowSupplyTons += flowTons;
+                        requestUnit.GetSupplyTransferState().requestRecord.flowSupplyTons += flowTons;
                     }
                 }
             }
         }
 
-        float DoPathFinding(LandUnit requestUnit, LandUnit requestedUnit)
+        float DoPathFinding(ISupplyNetworkNode requestUnit, ISupplyNetworkNode requestedUnit)
         {
             var srcCell = requestUnit.cell;
             var dstCell = requestedUnit.cell;
@@ -216,14 +245,22 @@ namespace StrategicCombatCore
             return float.PositiveInfinity;
         }
 
-        bool TryToAddSupplyRequestTarget(LandUnit requestUnit, LandUnit requestedUnit, float supplyTons)
+        bool TryToAddSupplyRequestTarget(ISupplyNetworkNode requestUnit, ISupplyNetworkNode requestedUnit, float supplyTons)
         {
-            var sourceDepotRecord = requestUnit.supplyTransferState.requestRecord;
+            var sourceDepotRecord = requestUnit.GetSupplyTransferState().requestRecord;
+
+            var cost = DoPathFinding(requestUnit, requestedUnit);
+            if (cost == float.PositiveInfinity ||
+                (requestUnit.IsDepotSameCellOnlySupply() && cost > 0))
+            {
+                return false;        
+            }
+
             if (sourceDepotRecord.otherObjectId != requestedUnit.objectId)
             {
-                var cost = DoPathFinding(requestUnit, requestedUnit); // Not create record
-                if (cost == float.PositiveInfinity)
-                    return false;
+                // var cost = DoPathFinding(requestUnit, requestedUnit); // Not create record
+                // if (cost == float.PositiveInfinity)
+                //     return false;
 
                 sourceDepotRecord.otherObjectId = requestedUnit.objectId;
                 sourceDepotRecord.targetSupplyTons = supplyTons;
@@ -235,12 +272,12 @@ namespace StrategicCombatCore
                 sourceDepotRecord.targetSupplyTons += supplyTons;
             }
 
-            var matchedRecord = requestedUnit.supplyTransferState.requestedRecords.FirstOrDefault(r => r.otherObjectId == requestUnit.objectId);
+            var matchedRecord = requestedUnit.GetSupplyTransferState().requestedRecords.FirstOrDefault(r => r.otherObjectId == requestUnit.objectId);
             if (matchedRecord == null)
             {
-                var cost = DoPathFinding(requestUnit, requestedUnit);
-                if (cost == float.PositiveInfinity)
-                    return false;
+                // var cost = DoPathFinding(requestUnit, requestedUnit);
+                // if (cost == float.PositiveInfinity)
+                //     return false;
 
                 var requestedRecord = new SupplyFlowRecord()
                 {
@@ -249,7 +286,7 @@ namespace StrategicCombatCore
                     flowSupplyTons = 0,
                     cost = cost
                 };
-                requestedUnit.supplyTransferState.requestedRecords.Add(requestedRecord);
+                requestedUnit.GetSupplyTransferState().requestedRecords.Add(requestedRecord);
             }
             else
             {

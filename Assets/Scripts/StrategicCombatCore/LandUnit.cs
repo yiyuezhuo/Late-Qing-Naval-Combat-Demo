@@ -6,7 +6,7 @@ namespace StrategicCombatCore
 {
 
 
-    public partial class LandUnit : IObjectIdLabeled, IStrategicGroupMemberReferenceable
+    public partial class LandUnit : IObjectIdLabeled, IStrategicGroupMemberReferenceable, ISupplyNetworkNode
     {
         public string objectId { get; set; }
         public GlobalString name = new();
@@ -93,28 +93,36 @@ namespace StrategicCombatCore
             return 0;
         }
 
-        public Cell cell
-        {
-            get
-            {
-                var parentGroup = strategicGroupReference.Get();
-                if (parentGroup == null || !parentGroup.IsOnMap())
-                    return null;
-                return parentGroup.cell;
-            }
-        }
+        // public Cell cell
+        // {
+        //     get
+        //     {
+        //         var parentGroup = strategicGroupReference.Get();
+        //         if (parentGroup == null || !parentGroup.IsOnMap())
+        //             return null;
+        //         return parentGroup.cell;
+        //     }
+        // }
+        public Cell cell => strategicGroupReference.GetCell();
 
-        public SideState side
-        {
-            get
-            {
-                var parentGroup = strategicGroupReference.Get();
-                if (parentGroup == null)
-                    return null;
-                return parentGroup.side;
-            }
-        }
+        // public SideState side
+        // {
+        //     get
+        //     {
+        //         var parentGroup = strategicGroupReference.Get();
+        //         if (parentGroup == null)
+        //             return null;
+        //         return parentGroup.side;
+        //     }
+        // }
+        public SideState side => strategicGroupReference.GetSide();
 
+        GlobalString ISupplyNetworkNode.GetName() => name;
+        // public void AddSupplyTons(float addedSupplyTons) => supplyTons += addedSupplyTons;
+        public float GetSupplyTons() => supplyTons;
+        public void SetSupplyTons(float value) => supplyTons = value;
+        public SupplyTransferState GetSupplyTransferState() => supplyTransferState;
+        public bool IsDepotSameCellOnlySupply() => false;
         // public LandUnit GetCurrentSourceDepot() => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
     }
 }

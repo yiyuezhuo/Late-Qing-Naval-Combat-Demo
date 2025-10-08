@@ -41,6 +41,20 @@ namespace StrategicCombatCore
         {
             return EntityManager.Instance.Get<StrategicGroup>(referenceId);
         }
+        public Cell GetCell()
+        {
+            var parentGroup = Get();
+            if (parentGroup == null || !parentGroup.IsOnMap())
+                return null;
+            return parentGroup.cell;
+        }
+        public SideState GetSide()
+        {
+            var parentGroup = Get();
+            if (parentGroup == null)
+                return null;
+            return parentGroup.side;
+        }
 
         public bool isReferenceAny() => referenceId != null && referenceId != "";
     }

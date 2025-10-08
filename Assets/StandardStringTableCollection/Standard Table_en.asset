@@ -1866,6 +1866,58 @@ MonoBehaviour:
     m_Localized: Edit
     m_Metadata:
       m_Items: []
+  - m_Id: 12861103689863168
+    m_Localized: Supply Request Source
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12861369730371584
+    m_Localized: Supply Path Cost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12861462399324160
+    m_Localized: Request (tons)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12861537225707520
+    m_Localized: Received (tons)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12862045579546624
+    m_Localized: Supply Requested Records
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12863097431298048
+    m_Localized: Supply Cost (Ton/Day/man)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12863234526318592
+    m_Localized: Supply Cost (Ton/Day)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12863374507020288
+    m_Localized: Supply Cap (tons)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13048824291037184
+    m_Localized: Delivered
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13049886162980864
+    m_Localized: Cost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13050199028699136
+    m_Localized: Request
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13050728995786752
+    m_Localized: Request Supply Unit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13052626003988480
+    m_Localized: Strategic
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

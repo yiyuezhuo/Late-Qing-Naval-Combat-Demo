@@ -68,12 +68,12 @@
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                 <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
-                                    <ui:FloatField label="Supply (tons)">
+                                    <ui:DoubleField label="Supply (tons)">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="supplyTons" binding-mode="TwoWay" />
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11056970263597056)" />
+                                            <ui:DataBinding property="value" data-source-path="supplyTons" binding-mode="TwoWay" />
                                         </Bindings>
-                                    </ui:FloatField>
+                                    </ui:DoubleField>
                                     <ui:FloatField label="Supply Cost (Ton/Day)" enabled="false">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="supplyCostTonsPerDay" binding-mode="ToTarget" />
@@ -94,12 +94,12 @@
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(12863374507020288)" />
                                         </Bindings>
                                     </ui:FloatField>
-                                    <ui:FloatField label="Supply Generation (tons)">
+                                    <ui:DoubleField label="Supply Generation (tons)">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="supplyGeneratedTons" binding-mode="TwoWay" />
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11057038760775680)" />
+                                            <ui:DataBinding property="value" data-source-path="supplyGeneratedTons" binding-mode="TwoWay" />
                                         </Bindings>
-                                    </ui:FloatField>
+                                    </ui:DoubleField>
                                 </ui:VisualElement>
                             </ui:VisualElement>
                             <ui:VisualElement data-source-path="supplyTransferState">

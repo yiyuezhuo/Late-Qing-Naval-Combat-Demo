@@ -129,7 +129,14 @@
                 </Bindings>
             </ui:Tab>
             <ui:Tab label="Strategic Core">
-                <ui:VisualElement style="flex-grow: 1;" />
+                <ui:VisualElement style="flex-grow: 1;">
+                    <ui:FloatField label="Day Advance Hour Interval (Sec)">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="dayAdvanceHourIntervalSeconds" binding-mode="TwoWay" />
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(13207618627211264)" />
+                        </Bindings>
+                    </ui:FloatField>
+                </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181271285895168)" />
                 </Bindings>

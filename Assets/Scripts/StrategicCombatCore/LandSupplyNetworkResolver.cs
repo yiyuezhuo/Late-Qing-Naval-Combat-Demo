@@ -15,8 +15,8 @@ namespace StrategicCombatCore
         // float supplyTons { get; set; }
         // GlobalString name{ get; }
         GlobalString GetName();
-        float GetSupplyTons(); // Move supplyTons to SupplyTransferState? (though if so, SupplyTransferState should be named to other thing)
-        void SetSupplyTons(float value);
+        double GetSupplyTons(); // Move supplyTons to SupplyTransferState? (though if so, SupplyTransferState should be named to other thing)
+        void SetSupplyTons(double value);
         SupplyTransferState GetSupplyTransferState();
         string objectId { get; set; }
         Cell cell { get; }
@@ -28,8 +28,8 @@ namespace StrategicCombatCore
     public partial class SupplyFlowRecord
     {
         public string otherObjectId;
-        public float targetSupplyTons; // requested 
-        public float flowSupplyTons;
+        public double targetSupplyTons; // requested 
+        public double flowSupplyTons;
         public float cost;
         public ISupplyNetworkNode GetOther()
         {
@@ -53,11 +53,11 @@ namespace StrategicCombatCore
             requestRecord.Clear();
             requestedRecords.Clear();
         }
-        public float GetUnresolvedRequestedTons()
+        public double GetUnresolvedRequestedTons()
         {
             return requestedRecords.Sum(r => r.targetSupplyTons - r.flowSupplyTons);
         }
-        public void DoFlow(float flowTons)
+        public void DoFlow(double flowTons)
         {
             var satifyPercent = flowTons / GetUnresolvedRequestedTons();
             foreach (var r in requestedRecords)
@@ -80,8 +80,8 @@ namespace StrategicCombatCore
             public LandUnit depot;
             public float supplyCapTons;
             // public float virtualAssignedFlowTons;
-            public float GetDeficit() => supplyCapTons - unit.GetSupplyTons();
-            public float GetDeficitAfterRequest()
+            public double GetDeficit() => supplyCapTons - unit.GetSupplyTons();
+            public double GetDeficitAfterRequest()
             {
                 var requestTons = unit.GetSupplyTransferState().requestRecord.targetSupplyTons;
                 var requestedTons = unit.GetSupplyTransferState().requestedRecords.Sum(r => r.targetSupplyTons);
@@ -94,12 +94,6 @@ namespace StrategicCombatCore
         public void Resolve()
         {
             var gameState = StrategicGameState.Instance;
-
-            // Clear states
-            // foreach (var landUnit in gameState.landUnits)
-            // {
-            //     landUnit.supplyTransferState.Clear();
-            // }
 
             // Collect and freeze related information
             var bundleMap = new Dictionary<string, Bundle>();
@@ -152,13 +146,17 @@ namespace StrategicCombatCore
             {
                 var updateAny = false;
 
+                Bundle processingBundle = null; // debug purpose
                 foreach (var depotBundle in depotBundles)
                 {
                     var deficit = depotBundle.GetDeficitAfterRequest();
                     if (deficit > 1e-3 && depotBundle.depot != null)
                     {
-                        updateAny = updateAny || TryToAddSupplyRequestTarget(depotBundle.unit, depotBundle.depot, deficit);
+                        var updateThisBundle = TryToAddSupplyRequestTarget(depotBundle.unit, depotBundle.depot, deficit);
+                        updateAny = updateAny || updateThisBundle;
                         // updateAny = true;
+                        if (updateThisBundle) // debug purpose
+                            processingBundle = depotBundle;
                     }
                 }
 
@@ -168,7 +166,12 @@ namespace StrategicCombatCore
                 // Debug
                 if (i == maxIterations - 1)
                 {
-                    ServiceLocator.Get<ILoggerService>().LogWarning($"Potential infinite loop in Depot request chain iteration");
+                    ServiceLocator.Get<ILoggerService>().LogError($"Potential infinite loop in Depot request chain iteration");
+                    var deficit1 = processingBundle.GetDeficitAfterRequest();
+                    var ret1 = TryToAddSupplyRequestTarget(processingBundle.unit, processingBundle.depot, deficit1);
+                    var deficit2 = processingBundle.GetDeficitAfterRequest();
+                    var ret2 = TryToAddSupplyRequestTarget(processingBundle.unit, processingBundle.depot, deficit2);
+                    var deficit3 = processingBundle.GetDeficitAfterRequest();
                 }
             }
 
@@ -200,7 +203,7 @@ namespace StrategicCombatCore
                 // Debug
                 if (i == maxIterations - 1)
                 {
-                    ServiceLocator.Get<ILoggerService>().LogWarning($"Potential infinite loop in Virtual Supply Distribution flow iteration");
+                    ServiceLocator.Get<ILoggerService>().LogError($"Potential infinite loop in Virtual Supply Distribution flow iteration");
                 }
             }
 
@@ -245,7 +248,7 @@ namespace StrategicCombatCore
             return float.PositiveInfinity;
         }
 
-        bool TryToAddSupplyRequestTarget(ISupplyNetworkNode requestUnit, ISupplyNetworkNode requestedUnit, float supplyTons)
+        bool TryToAddSupplyRequestTarget(ISupplyNetworkNode requestUnit, ISupplyNetworkNode requestedUnit, double supplyTons)
         {
             var sourceDepotRecord = requestUnit.GetSupplyTransferState().requestRecord;
 

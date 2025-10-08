@@ -8,6 +8,7 @@ namespace CoreUtils
     {
         void Log(string message);
         void LogWarning(string message);
+        void LogError(string message);
     }
 
     public class FallbackLogger : ILoggerService
@@ -20,6 +21,11 @@ namespace CoreUtils
         public void LogWarning(string message)
         {
             System.Console.WriteLine("[Warn]:" + message);
+        }
+
+        public void LogError(string message)
+        {
+            System.Console.WriteLine("[Error]:" + message);
         }
     }
 

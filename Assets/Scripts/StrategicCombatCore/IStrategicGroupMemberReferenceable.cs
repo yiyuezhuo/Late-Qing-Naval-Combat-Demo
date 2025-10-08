@@ -60,7 +60,7 @@ namespace StrategicCombatCore
 
                 if (accessed.Contains(pt))
                 {
-                    ServiceLocator.Get<ILoggerService>().LogWarning("Looping OOB Detected!");
+                    ServiceLocator.Get<ILoggerService>().LogError("Looping OOB Detected!");
                     return null;
                 }
                 accessed.Add(pt);

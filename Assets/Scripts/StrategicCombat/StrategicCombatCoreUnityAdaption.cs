@@ -370,12 +370,6 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public float supplyCapTons => GetSupplyCapTons();
-
-        // [CreateProperty]
-        // public float supplyTonsProp => supplyTons;
-
-        // [CreateProperty]
-        // public GlobalString nameProp => name;
     }
 
     public partial class SubStrategicCombat

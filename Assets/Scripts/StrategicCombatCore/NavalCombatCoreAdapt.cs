@@ -8,7 +8,7 @@ namespace NavalCombatCore
         // public string strategicGroupId;
         public StrategicGroupReference strategicGroupReference { get; set; } = new();
         public void SetStrategicGroupReference(StrategicGroup group) => IStrategicGroupMemberReferenceable.SetStrategicGroupReference(this, group);
-        public float supplyTons;
+        public double supplyTons;
         public float fixedHours; // Fixed by Tactical Combat Resolution
                                  // GetDepot
 
@@ -42,8 +42,8 @@ namespace NavalCombatCore
         }
 
         GlobalString ISupplyNetworkNode.GetName() => namedShip?.name;
-        public float GetSupplyTons() => supplyTons;
-        public void SetSupplyTons(float value) => supplyTons = value;
+        public double GetSupplyTons() => supplyTons;
+        public void SetSupplyTons(double value) => supplyTons = value;
         public SupplyTransferState GetSupplyTransferState() => supplyTransferState;
         public Cell cell => strategicGroupReference.GetCell();
         public SideState side => strategicGroupReference.GetSide();

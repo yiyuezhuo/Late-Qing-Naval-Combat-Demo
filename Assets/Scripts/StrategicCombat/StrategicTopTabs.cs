@@ -12,6 +12,8 @@ using NavalCombatCore;
 
 public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 {
+    Button advance1DayButton;
+
     protected override void Awake()
     {
         base.Awake();
@@ -131,12 +133,14 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             StrategicGameState.Instance.Advance1Hour();
         };
 
-        root.Q<Button>("Advance1DayButton").clicked += () =>
+        advance1DayButton = root.Q<Button>("Advance1DayButton");
+        advance1DayButton.clicked += () =>
         {
-            for (int i = 0; i < 24; i++)
-            {
-                StrategicGameState.Instance.Advance1Hour();
-            }
+            // for (int i = 0; i < 24; i++)
+            // {
+            //     StrategicGameState.Instance.Advance1Hour();
+            // }
+            StartCoroutine(Advance1Day());
         };
 
         root.Q<Button>("SetFogOrWarViewerButton").clicked += () =>
@@ -164,6 +168,19 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
                 shipLog.supplyTons = shipLog.GetSupplyCapTons();
             }
         };
+    }
+
+    IEnumerator Advance1Day()
+    {
+        advance1DayButton.SetEnabled(false);
+
+        for (int i = 0; i < 24; i++)
+        {
+            StrategicGameState.Instance.Advance1Hour();
+            yield return new WaitForSeconds(GamePreference.Instance.dayAdvanceHourIntervalSeconds);
+        }
+
+        advance1DayButton.SetEnabled(true);
     }
 
     void DoTPSGeoreferencing()

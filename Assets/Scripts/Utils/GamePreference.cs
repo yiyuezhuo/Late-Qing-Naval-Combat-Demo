@@ -34,6 +34,8 @@ public class GamePreference
     public bool showUnitLabel = true;
     public bool showDamagePointBar = true;
 
+    public float dayAdvanceHourIntervalSeconds = 0.05f;
+
     public event EventHandler shortLabelLanguageTypeChanged;
 
     [CreateProperty]

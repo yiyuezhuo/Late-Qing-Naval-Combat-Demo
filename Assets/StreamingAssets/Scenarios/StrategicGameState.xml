@@ -5889,7 +5889,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>61.2</supplyTons>
+   <supplyTons>61.200000762939453</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -6036,7 +6036,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>291.3</supplyTons>
+   <supplyTons>291.29998779296875</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -6810,7 +6810,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>147.6</supplyTons>
+   <supplyTons>147.60000610351563</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -7053,7 +7053,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>147.6</supplyTons>
+   <supplyTons>147.60000610351563</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -7296,7 +7296,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>147.6</supplyTons>
+   <supplyTons>147.60000610351563</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -7862,7 +7862,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.3</supplyTons>
+   <supplyTons>5.3000001907348633</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -7997,7 +7997,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.3</supplyTons>
+   <supplyTons>5.3000001907348633</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -8132,7 +8132,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.4</supplyTons>
+   <supplyTons>5.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -8269,7 +8269,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.4</supplyTons>
+   <supplyTons>5.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -8406,7 +8406,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.4</supplyTons>
+   <supplyTons>5.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -8543,7 +8543,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.4</supplyTons>
+   <supplyTons>5.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -8680,7 +8680,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.4</supplyTons>
+   <supplyTons>5.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -8817,7 +8817,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.4</supplyTons>
+   <supplyTons>5.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -8954,7 +8954,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.4</supplyTons>
+   <supplyTons>5.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -9091,7 +9091,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.4</supplyTons>
+   <supplyTons>5.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -9226,7 +9226,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.4</supplyTons>
+   <supplyTons>5.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -9363,7 +9363,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.4</supplyTons>
+   <supplyTons>5.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -9498,7 +9498,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.4</supplyTons>
+   <supplyTons>5.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -9633,7 +9633,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.4</supplyTons>
+   <supplyTons>5.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -9768,7 +9768,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.4</supplyTons>
+   <supplyTons>5.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -9905,7 +9905,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>5.4</supplyTons>
+   <supplyTons>5.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -10498,7 +10498,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>20.3</supplyTons>
+   <supplyTons>20.299999237060547</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -10635,7 +10635,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>7.4</supplyTons>
+   <supplyTons>7.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -10772,7 +10772,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>7.4</supplyTons>
+   <supplyTons>7.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -10909,7 +10909,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>7.4</supplyTons>
+   <supplyTons>7.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -11046,7 +11046,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>7.4</supplyTons>
+   <supplyTons>7.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -11183,7 +11183,7 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
-   <supplyTons>7.4</supplyTons>
+   <supplyTons>7.4000000953674316</supplyTons>
    <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
@@ -14405,7 +14405,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14428,7 +14428,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军副营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14451,7 +14451,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军右营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14474,7 +14474,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军后营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14497,7 +14497,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军中军传字正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14520,7 +14520,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军左军正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14543,7 +14543,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军左军左营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14566,7 +14566,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军亲军炮队营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>17.5000019</supplyTons>
+   <supplyTons>105.00000762939453</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
    <supplyTransferState>
@@ -14589,7 +14589,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军右军正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14612,7 +14612,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军右军右营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14635,7 +14635,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军右军后营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14658,7 +14658,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军亲兵马小队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>7</supplyTons>
+   <supplyTons>31.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <supplyTransferState>
@@ -14681,7 +14681,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军亲兵步小队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14704,7 +14704,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编1营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14727,7 +14727,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编2营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14750,7 +14750,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编3营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14773,7 +14773,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编4营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14796,7 +14796,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛军新编5营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14819,7 +14819,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>铭军步1营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14840,7 +14840,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>铭军步2营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14861,7 +14861,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>铭军步3营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14882,7 +14882,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>古北口练军右营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14905,7 +14905,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>武毅军副中营</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
-   <supplyTons>1.4</supplyTons>
+   <supplyTons>4.2000002861022949</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14928,7 +14928,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>武毅军老前营</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
-   <supplyTons>1.4</supplyTons>
+   <supplyTons>4.2000002861022949</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14951,7 +14951,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>武毅军炮队</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
-   <supplyTons>7.000001</supplyTons>
+   <supplyTons>42</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
    <supplyTransferState>
@@ -14974,7 +14974,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>天津武备学堂学生</chineseSimplified>
    </name>
    <stregnth>10</stregnth>
-   <supplyTons>0.07000001</supplyTons>
+   <supplyTons>0.21000000834465027</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14997,7 +14997,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正定练军中营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -15020,7 +15020,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正定练军右营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -15043,7 +15043,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正定练军前营</chineseSimplified>
    </name>
    <stregnth>210</stregnth>
-   <supplyTons>1.47</supplyTons>
+   <supplyTons>4.4099998474121094</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -15066,7 +15066,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正定练军左营</chineseSimplified>
    </name>
    <stregnth>210</stregnth>
-   <supplyTons>1.47</supplyTons>
+   <supplyTons>4.4099998474121094</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -15089,7 +15089,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>亲军马队小队</chineseSimplified>
    </name>
    <stregnth>80</stregnth>
-   <supplyTons>1.12000012</supplyTons>
+   <supplyTons>5.0399999618530273</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <supplyTransferState>
@@ -15112,7 +15112,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>山海关武备学堂学生</chineseSimplified>
    </name>
    <stregnth>25</stregnth>
-   <supplyTons>0.175</supplyTons>
+   <supplyTons>0.52500003576278687</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -15135,7 +15135,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>仁字营正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -15158,7 +15158,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>仁字营副营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -15181,7 +15181,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>义胜前营一部</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
-   <supplyTons>1.4</supplyTons>
+   <supplyTons>4.2000002861022949</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -15204,7 +15204,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>芦台防军马队</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
-   <supplyTons>2.8</supplyTons>
+   <supplyTons>12.59999942779541</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <supplyTransferState>
@@ -15227,7 +15227,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第11联队第2大队</chineseSimplified>
    </name>
    <stregnth>800</stregnth>
-   <supplyTons>5.6</supplyTons>
+   <supplyTons>16.80000114440918</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -15250,7 +15250,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第11联队第3大队</chineseSimplified>
    </name>
    <stregnth>800</stregnth>
-   <supplyTons>5.6</supplyTons>
+   <supplyTons>16.80000114440918</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -15273,7 +15273,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第21联队第1大队</chineseSimplified>
    </name>
    <stregnth>600</stregnth>
-   <supplyTons>4.20000029</supplyTons>
+   <supplyTons>12.600000381469727</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>2nd Coy is detached.</remark>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
@@ -15297,7 +15297,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第21联队第2大队第7中队</chineseSimplified>
    </name>
    <stregnth>200</stregnth>
-   <supplyTons>1.4</supplyTons>
+   <supplyTons>4.2000002861022949</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -15320,7 +15320,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>步兵第21联队第3大队</chineseSimplified>
    </name>
    <stregnth>600</stregnth>
-   <supplyTons>4.20000029</supplyTons>
+   <supplyTons>12.600000381469727</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>11th Coy is detached.</remark>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
@@ -15344,7 +15344,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>骑兵第5大队第1中队</chineseSimplified>
    </name>
    <stregnth>35</stregnth>
-   <supplyTons>0.49</supplyTons>
+   <supplyTons>2.2049999237060547</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Most cavalries are assigned to other units for communication, scouting and other support role, so the "main" unit have only 35 cavalries (A full Coy should have 159 strength)</remark>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
@@ -15368,7 +15368,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>野战炮兵第5联队第3大队</chineseSimplified>
    </name>
    <stregnth>140</stregnth>
-   <supplyTons>4.90000057</supplyTons>
+   <supplyTons>29.400001525878906</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
    <supplyTransferState>
@@ -15391,7 +15391,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>工兵第5大队第1中队</chineseSimplified>
    </name>
    <stregnth>80</stregnth>
-   <supplyTons>0.560000062</supplyTons>
+   <supplyTons>1.6800000667572021</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
    <supplyTransferState>
@@ -15414,7 +15414,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>中国总仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>25519.5957</supplyTons>
+   <supplyTons>28135.716796875</supplyTons>
    <supplyGeneratedTons>10000</supplyGeneratedTons>
    <remark>Generic Super Depot Supply Source.</remark>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -15438,7 +15438,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>日本总仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>40209.21</supplyTons>
+   <supplyTons>40662.359375</supplyTons>
    <supplyGeneratedTons>10000</supplyGeneratedTons>
    <remark>Generic Super Depot Supply Source.</remark>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -15462,7 +15462,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>北洋仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>25209.877</supplyTons>
+   <supplyTons>26831.9765625</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <supplyTransferState>
@@ -15485,7 +15485,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>日军朝鲜仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>115.5</supplyTons>
+   <supplyTons>412.64996337890625</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <supplyTransferState>
@@ -15508,7 +15508,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>成欢仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>153.450012</supplyTons>
+   <supplyTons>575.54998779296875</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <supplyTransferState>
@@ -15531,7 +15531,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>威海卫仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>24591.4277</supplyTons>
+   <supplyTons>24591.427734375</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <supplyTransferState>
@@ -15577,7 +15577,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>第三工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
-   <supplyTons>3.64000034</supplyTons>
+   <supplyTons>10.920000076293945</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
    <supplyTransferState>
@@ -15600,7 +15600,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>第五工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
-   <supplyTons>3.64000034</supplyTons>
+   <supplyTons>10.920000076293945</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
    <supplyTransferState>
@@ -15623,7 +15623,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>第一工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
-   <supplyTons>3.64000034</supplyTons>
+   <supplyTons>10.920000076293945</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
    <supplyTransferState>
@@ -15646,7 +15646,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>第二工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
-   <supplyTons>3.64000034</supplyTons>
+   <supplyTons>10.920000076293945</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
    <supplyTransferState>
@@ -15669,7 +15669,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>第六工兵大队</chineseSimplified>
    </name>
    <stregnth>520</stregnth>
-   <supplyTons>3.64000034</supplyTons>
+   <supplyTons>10.920000076293945</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
    <supplyTransferState>
@@ -17302,7 +17302,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军前军正营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17324,7 +17324,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军前军左营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17346,7 +17346,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军前军起营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17368,7 +17368,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军前军邱营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17390,7 +17390,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军本部1营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -17413,7 +17413,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军本部2营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -17436,7 +17436,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军本部3营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -17459,7 +17459,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>毅军本部4营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -17482,7 +17482,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>台北仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>30</supplyTons>
+   <supplyTons>90</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <supplyTransferState>
@@ -17504,7 +17504,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>黑旗军1营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -17527,7 +17527,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>黑旗军2营</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -17550,7 +17550,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>奉军左营马队</chineseSimplified>
    </name>
    <stregnth>277</stregnth>
-   <supplyTons>3.87800026</supplyTons>
+   <supplyTons>17.450998306274414</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <supplyTransferState>
@@ -17572,7 +17572,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>奉军左营步队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17594,7 +17594,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>靖边中营马队</chineseSimplified>
    </name>
    <stregnth>277</stregnth>
-   <supplyTons>3.87800026</supplyTons>
+   <supplyTons>17.450998306274414</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <supplyTransferState>
@@ -17616,7 +17616,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>靖边中营步队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17638,7 +17638,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>靖边前营步队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17660,7 +17660,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>靖边右营步队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17682,7 +17682,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>靖边后营步队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17704,7 +17704,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>靖边亲军炮队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>17.5000019</supplyTons>
+   <supplyTons>105.00000762939453</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
    <supplyTransferState>
@@ -17726,7 +17726,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>奉天仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>279.72</supplyTons>
+   <supplyTons>1213.739990234375</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <supplyTransferState>
@@ -17749,7 +17749,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正红旗步队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17772,7 +17772,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>正蓝旗步队</chineseSimplified>
    </name>
    <stregnth>500</stregnth>
-   <supplyTons>3.5</supplyTons>
+   <supplyTons>10.5</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17795,7 +17795,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛字左翼马队</chineseSimplified>
    </name>
    <stregnth>277</stregnth>
-   <supplyTons>3.87800026</supplyTons>
+   <supplyTons>17.450998306274414</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <supplyTransferState>
@@ -17818,7 +17818,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>盛字右翼马队</chineseSimplified>
    </name>
    <stregnth>277</stregnth>
-   <supplyTons>3.87800026</supplyTons>
+   <supplyTons>17.450998306274414</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <supplyTransferState>
@@ -17841,7 +17841,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>吉字左翼马队</chineseSimplified>
    </name>
    <stregnth>277</stregnth>
-   <supplyTons>3.87800026</supplyTons>
+   <supplyTons>17.450998306274414</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <supplyTransferState>
@@ -17864,7 +17864,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>吉字右翼马队</chineseSimplified>
    </name>
    <stregnth>277</stregnth>
-   <supplyTons>3.87800026</supplyTons>
+   <supplyTons>17.450998306274414</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <supplyTransferState>
@@ -17910,7 +17910,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <chineseSimplified>广岛仓库</chineseSimplified>
    </name>
    <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <supplyTons>40015.70703125</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <supplyTransferState>
@@ -21175,6 +21175,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
      <referenceId>8bff33f7-f824-4147-883f-a2335263aafb</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <assignedMissionObjectId>47b1909c-1fcb-4a18-8146-929b570cae27</assignedMissionObjectId>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
    <xProp>42</xProp>
@@ -22059,11 +22060,52 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    </waypoints>
    <type>Patrol</type>
    <patrolState>Assembling</patrolState>
-   <supplyState>Assembling</supplyState>
+   <supplyState>AssemblingAndLoading</supplyState>
    <sourceDepotReference />
    <targetDepotReference />
    <oneWayUnloadState>Assembling</oneWayUnloadState>
    <objectId>f4c0d26b-9520-4dbc-94ca-865fa88a85d0</objectId>
+  </StrategicMission>
+  <StrategicMission>
+   <name>
+    <english>Supply Mission</english>
+   </name>
+   <groups>
+    <StrategicGroupMemberReference>
+     <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+    </StrategicGroupMemberReference>
+   </groups>
+   <waypoints>
+    <XY x="42" y="23" />
+    <XY x="42" y="22" />
+    <XY x="41" y="21" />
+    <XY x="40" y="22" />
+    <XY x="39" y="21" />
+    <XY x="38" y="22" />
+    <XY x="37" y="22" />
+    <XY x="36" y="23" />
+    <XY x="35" y="23" />
+    <XY x="34" y="23" />
+    <XY x="33" y="23" />
+    <XY x="32" y="23" />
+    <XY x="31" y="22" />
+    <XY x="30" y="23" />
+    <XY x="30" y="24" />
+    <XY x="30" y="25" />
+    <XY x="30" y="26" />
+    <XY x="30" y="27" />
+    <XY x="30" y="28" />
+    <XY x="31" y="28" />
+   </waypoints>
+   <type>Supply</type>
+   <patrolState>Assembling</patrolState>
+   <supplyState>AssemblingAndLoading</supplyState>
+   <sourceDepotReference />
+   <targetDepotReference>
+    <objectId>69fa8dac-d422-4297-9726-e145ece4ab13</objectId>
+   </targetDepotReference>
+   <oneWayUnloadState>Assembling</oneWayUnloadState>
+   <objectId>47b1909c-1fcb-4a18-8146-929b570cae27</objectId>
   </StrategicMission>
  </missions>
  <serializedCells>
@@ -24149,13 +24191,13 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </Label>
     <StrategicGroupReferences>
      <StrategicGroupReference>
-      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
-     </StrategicGroupReference>
-     <StrategicGroupReference>
       <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
      </StrategicGroupReference>
      <StrategicGroupReference>
       <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
+     </StrategicGroupReference>
+     <StrategicGroupReference>
+      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
      </StrategicGroupReference>
     </StrategicGroupReferences>
    </Cell>

@@ -1918,6 +1918,10 @@ MonoBehaviour:
     m_Localized: Strategic
     m_Metadata:
       m_Items: []
+  - m_Id: 13207618627211264
+    m_Localized: Day Advance Hour Interval (Sec)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -45,15 +45,16 @@ namespace StrategicCombatCore
             return stregnth / 500f; // 1 "battalion" =~= 1 pwr pt
         }
 
-        public static float baseNormalSupplyCostTonPerMenDay = 0.001f;
-        public static float baseCombatSupplyCostTonPerMenDay = 0.005f;
+        // public static float baseNormalSupplyCostTonPerMenDay = 0.001f;
+        public static float baseNormalSupplyCostTonPerMenDay = 0.003f; // 3kg/Day/Man 
+        public static float baseCombatSupplyCostTonPerMenDay = 0.015f;
         public static float carryDays = 7;
         public static float depotReserveDays = 30;
 
         static Dictionary<LandUnitType, float> supplyCostCoefMap = new()
         {
-            {LandUnitType.Cavalry, 2f},
-            {LandUnitType.Artillery, 5f},
+            {LandUnitType.Cavalry, 3f},
+            {LandUnitType.Artillery, 10f},
         };
 
         public float GetSupplyCapTons()

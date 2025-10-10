@@ -417,7 +417,24 @@ namespace StrategicCombatCore
             {TerrainType.Field, speedBase},
         };
 
-        // public LandUnit GetCurrentSourceDepot() => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
+        public IEnumerable<T> WalkGroupMembers<T>() where T: IStrategicGroupMemberReferenceable
+        {
+            foreach(var subordinateRef in subordinatesCombined)
+            {
+                var subordinate = subordinateRef.Get();
+
+                if (subordinate is T obj && obj != null)
+                    yield return obj;
+                
+                if(subordinate is StrategicGroup group && group != null)
+                {
+                    foreach(var subObj in group.WalkGroupMembers<T>())
+                    {
+                        yield return subObj;
+                    }
+                }
+            }
+        }
     }
 }
 

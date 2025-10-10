@@ -41,6 +41,8 @@ namespace NavalCombatCore
             return (shipClass?.displacementTons ?? 0) / 10 / 7; // ~1.5% of displacement of supply is consumed per day
         }
 
+        public double GetSupplyPercent() => supplyTons / GetSupplyCapTons();
+
         GlobalString ISupplyNetworkNode.GetName() => namedShip?.name;
         public double GetSupplyTons() => supplyTons;
         public void SetSupplyTons(double value) => supplyTons = value;

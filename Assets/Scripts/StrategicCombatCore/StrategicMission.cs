@@ -21,7 +21,7 @@ namespace StrategicCombatCore
 
         // General Parameter
         public GlobalString name = new();
-        public List<StrategicGroupMemberReference> groups = new();
+        public List<StrategicGroupMemberReference> groups = new(); // assigned groups
         public List<XY> waypoints = new();
 
         public enum MissionType
@@ -45,11 +45,9 @@ namespace StrategicCombatCore
 
         public enum SupplyState
         {
-            Assembling,
-            Loading,
-            StartToDestination,
-            Unloading,
-            DestinationToStart
+            AssemblingAndLoading,
+            StartToDestinationAndUnloading,
+            DestinationToStartAndLoading
         }
 
         public SupplyState supplyState;
@@ -79,6 +77,22 @@ namespace StrategicCombatCore
         {
             var xy = waypoints[^1];
             return waypoints.Count == 0 ? null : StrategicGameState.Instance.cellMatrix[xy.x, xy.y];
+        }
+
+
+        public IEnumerable<T> WalkGroupMembers<T>() where T: IStrategicGroupMemberReferenceable
+        {
+            foreach(var groupRef in groups)
+            {
+                var group = groupRef.Get() as StrategicGroup;
+                if(group != null)
+                {
+                    foreach(var obj in group.WalkGroupMembers<T>())
+                    {
+                        yield return obj;
+                    }
+                }
+            }
         }
     }
 }

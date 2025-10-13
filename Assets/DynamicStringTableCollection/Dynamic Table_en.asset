@@ -287,7 +287,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 79846300094464
-    m_Localized: DE 124, Lost off communication to engine room
+    m_Localized: DE 124, Loss of communication to engine room
     m_Metadata:
       m_Items: []
   - m_Id: 81899512565760
@@ -801,11 +801,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 88254411608064
-    m_Localized: DE 181, Bow of ship breaks off.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 88275966136320
-    m_Localized: 'DE 181: Bow of ship breaks off'
+    m_Localized: DE 181, Bow of ship breaks off
     m_Metadata:
       m_Items: []
   - m_Id: 88295645810688
@@ -834,11 +830,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 89183160537088
-    m_Localized: DE 503, Damage control system OOA.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 89204861865984
-    m_Localized: 'DE 503: Damage control system OOA'
+    m_Localized: DE 503, Damage control system OOA
     m_Metadata:
       m_Items: []
   - m_Id: 89220888301568
@@ -932,12 +924,8 @@ MonoBehaviour:
     m_Localized: DE 605, Structural and power distribution damage.
     m_Metadata:
       m_Items: []
-  - m_Id: 89970154573824
-    m_Localized: DE 605, Structural and power distribution damage
-    m_Metadata:
-      m_Items: []
   - m_Id: 89988060057600
-    m_Localized: DE *606, Flooding andn structural damage.
+    m_Localized: DE *606, Flooding and structural damage.
     m_Metadata:
       m_Items: []
   - m_Id: 90223008190464
@@ -960,10 +948,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 90349307072512
     m_Localized: 'DE 608: Main waterline belt is submerged due to flooding'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 90389735968768
-    m_Localized: DE 608, Loss of stability and maneuver due to flooding.
     m_Metadata:
       m_Items: []
   - m_Id: 90418190127104

@@ -1355,7 +1355,7 @@ namespace NavalCombatCore
             // DE 124, Lost off communication to engine room
             { "124", ctx=>{
                 AddDescription(ctx, Localize(
-                    "DE 124, Lost of communication to engine room"
+                    "DE 124, Loss of communication to engine room"
                 ));
 
                 var DE = new EngineRoomCommunicationDamaged()
@@ -3857,7 +3857,7 @@ namespace NavalCombatCore
                     var DE4 = new ShipSettleState()
                     {
                         cause=Localize(
-                            "DE 608, Loss of stability and maneuver due to flooding."
+                            "DE 608: Loss of stability and maneuver due to flooding"
                         ),
                         maxSpeedUpperLimit=6,
                         maxSpeedUpperLimitAppliedThreshold=30,

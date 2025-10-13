@@ -371,21 +371,8 @@ namespace NavalCombatCore
             AddLogToSubject(ctx, log);
         }
 
-        // public enum VSectionLocation
-        // {
-        //     Front,
-        //     Midship,
-        //     After
-        // }
-
-        // public static VSectionLocation GetVSectionLocation(MountLocation mountLocation)
-        // {
-        //     if (mountLocation <= MountLocation.StarboardForward)
-        //         return VSectionLocation.Front;
-        //     else if (mountLocation <= MountLocation.StarboardMidship)
-        //         return VSectionLocation.Midship;
-        //     return VSectionLocation.After;
-        // }
+        static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+        static string LocalizeFor(object obj) => ServiceLocator.Get<ILocalizeService>().GetFor(obj);
 
         public static Dictionary<string, Action<DamageEffectContext>> damageEffectMap = new() // DE id => Enforcer (enforcer will immdiately update some states and may append persistence DE state)
         {
@@ -393,7 +380,10 @@ namespace NavalCombatCore
             { "100", ctx =>{
                 if(IsAB(ctx)) // A/B
                 {
-                    AddDescription(ctx, "DE 100, Magazine explosion");
+                    // AddDescription(ctx, "DE 100, Magazine explosion");
+                    AddDescription(ctx, Localize(
+                        "DE 100, Magazine explosion"
+                    ));
 
                     // ctx.subject.operationalState = (ShipOperationalState)Math.Max((int)ctx.subject.operationalState, (int)ShipOperationalState.FloodingObstruction);
                     ctx.subject.operationalState = MaxEnum(ctx.subject.operationalState, ShipOperationalState.FloodingObstruction);
@@ -401,15 +391,22 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.DieRollPassed,
                         dieRollThreshold = 25,
-                        cause = "DE100 (A/B): Magazine explosion."
+                        // cause = "DE100 (A/B): Magazine explosion."
+                        cause = Localize(
+                            "DE100 (A/B): Magazine explosion."
+                        )
                     };
                     damageEffect.BeginAt(ctx.subject);
                 }
                 else
                 {
-                    AddDescription(ctx, "DE 100, Shipboard fire only");
+                    AddDescription(ctx, Localize(
+                        "DE 100, Shipboard fire only"
+                    ));
 
-                    AddShipboardFire(ctx, "DE100 (C): Shipboard fire only.", 50);
+                    AddShipboardFire(ctx, Localize(
+                        "DE100 (C): Shipboard fire only."
+                    ), 50);
 
                     var d100 = RandomUtils.D100F();
                     if(d100 < 5)
@@ -423,7 +420,9 @@ namespace NavalCombatCore
             { "101", ctx=>{
                 if(IsAB(ctx))
                 {
-                    AddDescription(ctx, "DE 101, Fire in primary battery magazine");
+                    AddDescription(ctx, Localize(
+                        "DE 101, Fire in primary battery magazine"
+                    ));
 
                     // Fire in primary battery magazine... (Like DE 100 (C/HE))
                     FireInPrimaryBatteryMagazine(ctx);
@@ -435,10 +434,13 @@ namespace NavalCombatCore
                 }
                 else
                 {
-                    AddDescription(ctx, "DE 101, shipboard fire only");
+                    AddDescription(ctx, Localize(
+                        "DE 101, shipboard fire only"
+                    ));
 
                     // Shipboard fire only, Severity 40. No additional DE
-                    AddShipboardFire(ctx, "DE100 (C): Shipboard fire only.", 40);
+                    AddShipboardFire(ctx, Localize(
+                        "DE101 (C): Shipboard fire only."), 40);
                 }
                 if (IsHE(ctx))
                 {
@@ -451,7 +453,9 @@ namespace NavalCombatCore
                 if(IsAB(ctx))
                 {
                     // Flooding in primary battery barbette. Roll to determine location of mount. Mount is permanently OOA for the duration of the game.
-                    AddDescription(ctx, "DE 102, Flooding in primary battery barbette.");
+                    AddDescription(ctx, Localize(
+                        "DE 102, Flooding in primary battery barbette."
+                    ));
 
                     if (TryToSampleAPrimaryBatteryMount(ctx, out var mountStatus))
                     {
@@ -467,7 +471,9 @@ namespace NavalCombatCore
                     // Damage to primary battery barbette. On addtional roll of 01-30 mount is permanently OOA for the duration of the game.
                     // Mount is OOA next game turn only on roll of 31-00. Roll to determine location of mount.
 
-                    AddDescription(ctx, "DE 102, Damage to primary battery barbette.");
+                    AddDescription(ctx, Localize(
+                        "DE 102, Damage to primary battery barbette."
+                    ));
 
                     if (TryToSampleAPrimaryBatteryMount(ctx, out var mountStatus))
                     {
@@ -488,13 +494,17 @@ namespace NavalCombatCore
                 }
                 if (IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE102 (HE): Shipboard fire Severity 30.", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE102 (HE): Shipboard fire Severity 30."
+                    ), 30);
                 }
             } },
 
             // DE 103 (Hit on primary battery mount)
             {"103", ctx=>{
-                AddDescription(ctx, "DE 103, Hit on a primary battery mount.");
+                AddDescription(ctx, Localize(
+                    "DE 103, Hit on a primary battery mount."
+                ));
 
                 if(TryToSampleAPrimaryBatteryMount(ctx, out var mountStatus))
                 {
@@ -508,7 +518,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.SeverityBased,
                         severity = severity,
-                        cause = "DE 103: One primary battery turret or gunmount OOA."
+                        cause = Localize(
+                            "DE 103: One primary battery turret or gunmount OOA."
+                        )
                     };
                     DE.BeginAt(mountStatus);
                 }
@@ -524,14 +536,18 @@ namespace NavalCombatCore
 
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 103 (HE): Shipboard Fire 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 103 (HE): Shipboard Fire 30"
+                    ), 30);
                     Lost1RandomRapidFiringBatteryBox(ctx);
                 }
             }},
 
             // DE 104 (Hit on Non-Primary Battery Mount)
             {"104", ctx=>{
-                AddDescription(ctx, "DE 104, Hit on Non-Primary Battery Mount");
+                AddDescription(ctx, Localize(
+                    "DE 104, Hit on Non-Primary Battery Mount"
+                ));
 
                 if(TryToSampleASecondaryOrTertiaryBatteryMount(ctx, out var secondaryOrTertiaryMount))
                 {
@@ -556,7 +572,11 @@ namespace NavalCombatCore
                     }
                     if(IsHE(ctx))
                     {
-                        AddShipboardFire(ctx, "DE 104 (HE): shipboard fire Severity 30", 30);
+                        AddShipboardFire(ctx, Localize(
+                            Localize(
+                                "DE 104 (HE): shipboard fire Severity 30"
+                            )
+                        ), 30);
                     }
                 }
                 else // If no secondary or tertiary battery, use DE103 on a roll of 01-65. Otherwise no effect.
@@ -570,7 +590,9 @@ namespace NavalCombatCore
 
             // DE 105 (Hit on Ammo Hoist or handling room)
             {"105", ctx=>{
-                AddDescription(ctx, "DE 105, Hit on Ammo Hoist or handling room");
+                AddDescription(ctx, Localize(
+                    "DE 105, Hit on Ammo Hoist or handling room"
+                ));
 
                 if(TryToSampleAPrimaryBatteryMount(ctx, out var mount))
                 {
@@ -580,7 +602,9 @@ namespace NavalCombatCore
                         var DE = new RateOfFireModifier()
                         {
                             lifeCycle = StateLifeCycle.Permanent,
-                            cause = "DE 105: Ammo Hoist or handling/handling room in one primary battery turret or gunmount OOA permanently"
+                            cause = Localize(
+                                "DE 105: Ammo Hoist or handling/handling room in one primary battery turret or gunmount OOA permanently"
+                            )
                         };
                         DE.BeginAt(mount);
                     }
@@ -589,7 +613,9 @@ namespace NavalCombatCore
                         var DE = new RateOfFireModifier()
                         {
                             lifeCycle = StateLifeCycle.GivenTime,
-                            cause = "DE 104: Ammo Hoist or handling/handling room in one primary battery turret or gunmount OOA next turn"
+                            cause = Localize(
+                                "DE 104: Ammo Hoist or handling/handling room in one primary battery turret or gunmount OOA next turn"
+                            )
                         };
                         DE.BeginAt(mount);
                     }
@@ -598,7 +624,9 @@ namespace NavalCombatCore
                     {
                         if(IsA(ctx))
                         {
-                            AddShipboardFire(ctx, "DE 105 (A): Hit on Ammo Hoist or handling room", 30);
+                            AddShipboardFire(ctx, Localize(
+                                "DE 105 (A): Hit on Ammo Hoist or handling room"
+                            ), 30);
                         }
                         RollForAdditionalDamageEffect(ctx, new[]{"109", "109", "102", "179", ""});
                     }
@@ -622,7 +650,9 @@ namespace NavalCombatCore
 
             // DE 106, Ammo Hoist or handling/handling room OOA permanently
             { "106", ctx=>{
-                AddDescription(ctx, "DE 106, Ammo Hoist or handling/handling room OOA permanently");
+                AddDescription(ctx, Localize(
+                    "DE 106: Ammo Hoist or handling/handling room OOA permanently"
+                ));
 
                 if(TryToSampleASecondaryOrTertiaryBatteryMount(ctx, out var secOrTerMount))
                 {
@@ -630,7 +660,9 @@ namespace NavalCombatCore
                     // var word = "";
                     var DE = new RateOfFireModifier()
                     {
-                        cause = $"DE 106: Ammo Hoist or handling/handling room OOA permanently"
+                        cause = Localize(
+                            "DE 106: Ammo Hoist or handling/handling room OOA permanently"
+                        )
                     };
 
                     if (IsAB(ctx))
@@ -667,7 +699,9 @@ namespace NavalCombatCore
 
             // DE 107 (Hit on control system of primary battery)
             {"107", ctx=>{
-                AddDescription(ctx, "DE 107, Hit on control system of primary battery");
+                AddDescription(ctx, Localize(
+                    "DE 107, Hit on control system of primary battery"
+                ));
 
                 if(TryGetPrimaryBattery(ctx, out var primaryBattery))
                 {
@@ -702,18 +736,24 @@ namespace NavalCombatCore
 
             // DE 108, (hit on secondary battery control system)
             { "DE 108", ctx=>{
-                AddDescription(ctx, "DE 108, hit on secondary battery control system");
+                AddDescription(ctx, Localize(
+                    "DE 108, hit on secondary battery control system"
+                ));
 
                 if(TryGetSecondaryBattery(ctx, out var secondaryBattery))
                 {
                     var DE = new BatteryMountStatusModifier()
                     {
-                        cause="DE 108: Damage to secondary battery control system",
+                        cause=Localize(
+                            "DE 108: Damage to secondary battery control system"
+                        ),
                         lifeCycle = StateLifeCycle.GivenTime
                     };
                     DE.BeginAt(secondaryBattery);
 
-                    AddShipboardFire(ctx, "DE 108: Shipboard fire severity 10", 10);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 108: Shipboard fire severity 10"
+                    ), 10);
 
                     if(RandomUtils.D100F() <= 70)
                     {
@@ -728,7 +768,9 @@ namespace NavalCombatCore
 
                     if(IsHE(ctx))
                     {
-                        AddShipboardFire(ctx, "DE 108 (HE): Shipboard fire severity 30", 30);
+                        AddShipboardFire(ctx, Localize(
+                            "DE 108 (HE): Shipboard fire severity 30"
+                        ), 30);
                     }
                 }
                 else if(RandomUtils.D100F() <= 70)
@@ -739,7 +781,9 @@ namespace NavalCombatCore
 
             // DE 109, (hit on ready-use ammo of primary battery and possibly cause fire and more catastrophe)
             {"109", ctx=>{
-                AddDescription(ctx, "DE 108, hit on ready-use ammo of primary battery and possibly cause fire and more catastrophe");
+                AddDescription(ctx, Localize(
+                    "DE 108, hit on ready-use ammo of primary battery and possibly cause fire and more catastrophe"
+                ));
 
                 if(TryGetPrimaryBattery(ctx, out var primaryBattery))
                 {
@@ -750,11 +794,15 @@ namespace NavalCombatCore
                             // ctx.subject.damagePoint += ctx.baseDamagePoint * 2;
                             ctx.subject.AddDamagePoint(ctx.baseDamagePoint * 2);
 
-                            AddShipboardFire(ctx, "DE 109 (A): Shipboard fire severity 50", 50);
+                            AddShipboardFire(ctx, Localize(
+                                "DE 109 (A): Shipboard fire severity 50"
+                            ), 50);
 
                             var DE = new RiskingInMagazineExplosion()
                             {
-                                cause = "DE 109 (A): Potential magazine explosion in primary battery ready-use ammo",
+                                cause = Localize(
+                                    "DE 109 (A): Potential magazine explosion in primary battery ready-use ammo"
+                                ),
                                 lifeCycle = StateLifeCycle.GivenTime,
                                 givenTimeSeconds = 120,
                                 explosionProbPercent = 10,
@@ -767,13 +815,17 @@ namespace NavalCombatCore
                             // ctx.subject.damagePoint += ctx.baseDamagePoint * 2;
                             ctx.subject.AddDamagePoint(ctx.baseDamagePoint * 2);
 
-                            AddShipboardFire(ctx, "DE 109 (B): Shipboard fire severity 30", 30);
+                            AddShipboardFire(ctx, Localize(
+                                "DE 109 (B): Shipboard fire severity 30"
+                            ), 30);
                         }
 
                         if(TryToSampleAPrimaryBatteryMount(ctx, out var mount))
                         {
                             var DE = new BatteryMountStatusModifier(){
-                                cause="DE 109 (AB): Battery mount temporarily OOA"
+                                cause=Localize(
+                                    "DE 109 (AB): Battery mount temporarily OOA"
+                                )
                             };
                             DE.BeginAt(mount);
                         }
@@ -796,7 +848,9 @@ namespace NavalCombatCore
 
             // DE 110, (hit on ready-use ammo of secondary battery and possibly cause fire and more catastrophe)
             {"110", ctx=>{
-                AddDescription(ctx, "DE 110, hit on ready-use ammo of secondary battery and possibly cause fire and more catastrophe");
+                AddDescription(ctx, Localize(
+                    "DE 110, hit on ready-use ammo of secondary battery and possibly cause fire and more catastrophe"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -809,7 +863,9 @@ namespace NavalCombatCore
 
                         var DE = new RiskingInMagazineExplosion()
                         {
-                            cause = "DE 110 (A/B): Potential magazine explosion in secondary battery ready-use ammo",
+                            cause = Localize(
+                                "DE 110 (A/B): Potential magazine explosion due to hit in secondary battery ready-use ammo"
+                            ),
                             lifeCycle = StateLifeCycle.GivenTime,
                             givenTimeSeconds = 120,
                             explosionProbPercent = 5,
@@ -821,7 +877,9 @@ namespace NavalCombatCore
                     }
                     else
                     {
-                        AddShipboardFire(ctx, "DE 110 (A/B, no secondary battery): Shipboard fire severity 40", 40);
+                        AddShipboardFire(ctx, Localize(
+                            "DE 110 (A/B, no secondary battery): Shipboard fire severity 40"
+                        ), 40);
                     }
                 }
                 else
@@ -832,14 +890,18 @@ namespace NavalCombatCore
                     }
                     else
                     {
-                        AddShipboardFire(ctx, "DE 110 (C, no secondary battery): Shipboard fire severity 30", 30);
+                        AddShipboardFire(ctx, Localize(
+                            "DE 110 (C, no secondary battery): Shipboard fire severity 30"
+                        ), 30);
                     }
                 }
             }},
 
             // DE 111, hit on primary battery's one barrel
             {"111", ctx=>{
-                AddDescription(ctx, "DE 111, hit on primary battery's one barrel");
+                AddDescription(ctx, Localize(
+                    "DE 111, hit on primary battery's one barrel"
+                ));
 
                 if(TryToSampleAPrimaryBatteryMount(ctx, out var primaryBatteryMount))
                 {
@@ -852,19 +914,25 @@ namespace NavalCombatCore
                         if(RandomUtils.D100F() <= 60)
                         {
                             primaryBatteryMount.status = MaxEnum(primaryBatteryMount.status, MountStatus.Disabled);
-                            AddShipboardFire(ctx, "DE 111 (A/B): ready-use ammo fire, severity 50", 50);
+                            AddShipboardFire(ctx, Localize(
+                                "DE 111 (A/B): ready-use ammo fire, severity 50"
+                            ), 50);
                         }
                     }
                     if(IsHE(ctx))
                     {
-                        AddShipboardFire(ctx, "DE 111 (HE): Shipboard fire severity 30", 30);
+                        AddShipboardFire(ctx, Localize(
+                            "DE 111 (HE): Shipboard fire severity 30"
+                        ), 30);
                     }
                 }
             }},
 
             // DE 112, Shock damage. Primary battery guns and FCS out of alignment.
             { "112", ctx=>{
-                AddDescription(ctx, "DE 112, Shock damage. Primary battery guns and FCS out of alignment.");
+                AddDescription(ctx, Localize(
+                    "DE 112: Shock damage. Primary battery guns and FCS out of alignment"
+                ));
 
                 if(TryGetPrimaryBattery(ctx, out var primaryBattery))
                 {
@@ -872,7 +940,9 @@ namespace NavalCombatCore
 
                     var DE = new FireControlValueModifier()
                     {
-                        cause = "DE 112: Shock damage. Primary battery guns and FCS out of alignment",
+                        cause = Localize(
+                            "DE 112: Shock damage. Primary battery guns and FCS out of alignment"
+                        ),
                         fireControlValueCoef = 0.5f,
                         fireControlValueOffset = offset,
                     };
@@ -885,7 +955,9 @@ namespace NavalCombatCore
                         {
                             var DE2 = new ControlSystemDisabledModifier()
                             {
-                                cause="DE 112: Shock Damage Impact Control System",
+                                cause=Localize(
+                                    "DE 112: Shock Damage Impact Control System"
+                                ),
                                 lifeCycle = StateLifeCycle.GivenTime,
                             };
                             DE2.BeginAt(ctx.subject);
@@ -894,14 +966,18 @@ namespace NavalCombatCore
 
                     if(IsHE(ctx))
                     {
-                        AddShipboardFire(ctx, "DE 112 (HE): Shipboard fire severity 20", 20);
+                        AddShipboardFire(ctx, Localize(
+                            "DE 112 (HE): Shipboard fire severity 20"
+                        ), 20);
                     }
                 }
             }},
 
             // DE 113: hit on secondary battery, FCS and rapid RF batteries
             {"113", ctx=>{
-                AddDescription(ctx, "DE 113: hit on secondary battery, FCS and rapid RF batteries");
+                AddDescription(ctx, Localize(
+                    "DE 113: hit on secondary battery, FCS and rapid RF batteries"
+                ));
 
                 if(TryToSampleASecondaryBatteryMount(ctx, out var secondaryMount))
                 {
@@ -933,7 +1009,9 @@ namespace NavalCombatCore
                     }
                     if(IsHE(ctx))
                     {
-                        AddShipboardFire(ctx, "DE 113 (HE): Shipboard fire severity 20", 20);
+                        AddShipboardFire(ctx, Localize(
+                            "DE 113 (HE): Shipboard fire severity 20"
+                        ), 20);
                     }
                 }
                 else
@@ -948,7 +1026,9 @@ namespace NavalCombatCore
 
             // DE 114, hit on secondary magazine or read-use ammo
             {"114", ctx=>{
-                AddDescription(ctx, "DE 114, hit on secondary magazine or read-use ammo");
+                AddDescription(ctx, Localize(
+                    "DE 114, hit on secondary magazine or read-use ammo"
+                ));
 
                 if(TryToSampleASecondaryBatteryMount(ctx, out var secondaryMount))
                 {
@@ -965,11 +1045,15 @@ namespace NavalCombatCore
                     else
                     {
                         SetOOA(secondaryMount);
-                        AddShipboardFire(ctx, "DE 114 (C): Ready-use ammo fire in secondary battery turret or mount. Shipboard fire severity 40", 40);
+                        AddShipboardFire(ctx, Localize(
+                            "DE 114 (C): Ready-use ammo fire in secondary battery turret or mount. Shipboard fire severity 40"
+                        ), 40);
                     }
                     if(IsHE(ctx))
                     {
-                        AddShipboardFire(ctx, "DE 114 (HE): Shipboard fire severity 30", 30);
+                        AddShipboardFire(ctx, Localize(
+                            "DE 114 (HE): Shipboard fire severity 30"
+                        ), 30);
                     }
                 }
                 else
@@ -980,7 +1064,9 @@ namespace NavalCombatCore
 
             // DE 115, Crew casualties in primary battery turret or gunmount
             {"115", ctx=>{
-                AddDescription(ctx, "DE 115, Crew casualties in primary battery turret or gunmount");
+                AddDescription(ctx, Localize(
+                    "DE 115, Crew casualties in primary battery turret or gunmount"
+                ));
 
                 if(TryToSampleAPrimaryBatteryMount(ctx, out MountStatusRecord mount))
                 {
@@ -1011,7 +1097,9 @@ namespace NavalCombatCore
 
             // DE 116, Damage to engine spaces
             {"116", ctx=>{
-                AddDescription(ctx, "DE 116, Damage to engine spaces");
+                AddDescription(ctx, Localize(
+                    "DE 116, Damage to engine spaces"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -1036,14 +1124,18 @@ namespace NavalCombatCore
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 116 (HE): Shipboard fire severity 40", 40);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 116 (HE): Shipboard fire severity 40"
+                    ), 40);
                     Lost1RandomRapidFiringBatteryBox(ctx);
                 }
             }},
 
             // DE 117, Damage to engine room
             {"117", ctx=>{
-                AddDescription(ctx, "DE 117, Damage to engine room");
+                AddDescription(ctx, Localize(
+                    "DE 117: Damage to engine room"
+                ));
 
                 var tempEngineRoomHit = 1;
                 if(IsAB(ctx))
@@ -1054,13 +1146,17 @@ namespace NavalCombatCore
                     }
                     if(RandomUtils.D100F() <= 30)
                     {
-                        AddShipboardFire(ctx, "DE 117 (AB): Shipboard fire severity 30", 30);
+                        AddShipboardFire(ctx, Localize(
+                            "DE 117 (AB): Shipboard fire severity 30"
+                        ), 30);
                     }
                     RollForAdditionalDamageEffect(ctx, new[]{"152", "116", "153", "154", ""});
                 }
                 var DE = new EngineRoomHitModifier()
                 {
-                    cause = "DE 117: Damage to engine room",
+                    cause = Localize(
+                        "DE 117: Damage to engine room"
+                    ),
                     lifeCycle = StateLifeCycle.SeverityBased,
                     severity = ctx.RollForSeverity(),
                     engineRoomHitOffset = tempEngineRoomHit,
@@ -1068,13 +1164,17 @@ namespace NavalCombatCore
                 DE.BeginAt(ctx.subject);
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 117 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 117 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 118, Damage to engine room
             { "118", ctx=>{
-                AddDescription(ctx, "DE 118, Damage to engine room");
+                AddDescription(ctx, Localize(
+                    "DE 118, Damage to engine room"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -1089,10 +1189,14 @@ namespace NavalCombatCore
                 {
                     ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -1;
                 }
-                AddShipboardFire(ctx, "DE 118 (HE): Shipboard fire severity 20", 20);
+                AddShipboardFire(ctx, Localize(
+                    "DE 118 (HE): Shipboard fire severity 20"
+                ), 20);
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 118 (HE): Shipboard fire severity 40", 40);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 118 (HE): Shipboard fire severity 40"
+                    ), 40);
                 }
             }},
 
@@ -1103,7 +1207,9 @@ namespace NavalCombatCore
 
             // DE 120, Steam Line Damaged
             {"120", ctx=>{
-                AddDescription(ctx, "DE 120, Steam Line Damaged");
+                AddDescription(ctx, Localize(
+                    "DE 120, Steam Line Damaged"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -1111,14 +1217,18 @@ namespace NavalCombatCore
                     {
                         lifeCycle=StateLifeCycle.SeverityBased,
                         severity=ctx.RollForSeverity(),
-                        cause="DE 120, Steam Line Damaged"
+                        cause=Localize(
+                            "DE 120, Steam Line Damaged"
+                        )
                     };
                     DE.BeginAt(ctx.subject);
                     var DE2 = new DamageControlModifier()
                     {
                         lifeCycle=StateLifeCycle.GivenTime,
                         damageControlRatingOffset=-1,
-                        cause="DE 120, Steam Line Damaged"
+                        cause=Localize(
+                            "DE 120, Steam Line Damaged"
+                        )
                     };
                     DE2.BeginAt(ctx.subject);
                 }
@@ -1128,13 +1238,17 @@ namespace NavalCombatCore
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 120 (HE): Damage to Steam Line, Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 120 (HE): Damage to Steam Line, Shipboard fire severity 20"
+                    ), 20);
                 }
             }},
 
             // DE 121, Damage to main feedwater pump
             {"121", ctx=>{
-                AddDescription(ctx, "DE 121, Damage to main feedwater pump");
+                AddDescription(ctx, Localize(
+                    "DE 121, Damage to main feedwater pump"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -1142,7 +1256,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle=StateLifeCycle.SeverityBased,
                         severity=ctx.RollForSeverity(),
-                        cause="DE 121 (A/B), Damage to main feedwater pump"
+                        cause=Localize(
+                            "DE 121 (A/B), Damage to main feedwater pump"
+                        )
                     };
                     DE.BeginAt(ctx.subject);
 
@@ -1153,13 +1269,17 @@ namespace NavalCombatCore
                     var DE = new FeedwaterPumpDamaged()
                     {
                         lifeCycle=StateLifeCycle.GivenTime,
-                        cause="DE 121 (C), Damage to main feedwater pump"
+                        cause=Localize(
+                            "DE 121 (C), Damage to main feedwater pump"
+                        )
                     };
                     DE.BeginAt(ctx.subject);
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 121 (HE): Damage to main feedwater pump, Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 121 (HE): Damage to main feedwater pump, Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
@@ -1168,14 +1288,18 @@ namespace NavalCombatCore
                 // Damage to fuel supply. For the duration of the game, a roll of 01-10 at the beginning of any MOVEMENT PHASE causes the ship to lose power and reduce to one-half of maxnimum capable speed. 
                 // If power is lost, rolls continue and ship may not begin acceleration until turn following a roll of 01-10 during the DAMAGE PHASE.
 
-                AddDescription(ctx, "DE 122, Damage to fuel supply");
+                AddDescription(ctx, Localize(
+                    "DE 122: Damage to fuel supply"
+                ));
 
                 if (IsAB(ctx))
                 {
                     var DE = new FuelSupplyDamaged()
                     {
                         lifeCycle = StateLifeCycle.Permanent,
-                        cause="DE 122: Damage to fuel supply",
+                        cause=Localize(
+                            "DE 122: Damage to fuel supply"
+                        ),
                     };
                     DE.BeginAt(ctx.subject);
                 }
@@ -1184,19 +1308,25 @@ namespace NavalCombatCore
                     var DE = new FuelSupplyDamaged()
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
-                        cause="DE 122: Damage to fuel supply",
+                        cause=Localize(
+                            "DE 122: Damage to fuel supply"
+                        ),
                     };
                     DE.BeginAt(ctx.subject);
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 122 (HE): Damage to fuel supply, Shipboard fire severity 40", 40);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 122 (HE): Damage to fuel supply, Shipboard fire severity 40"
+                    ), 40);
                 }
             }},
 
             // DE 123, Flooding in one boiler room
             { "123", ctx=>{
-                AddDescription(ctx, "DE 123, Flooding in one boiler room");
+                AddDescription(ctx, Localize(
+                    "DE 123, Flooding in one boiler room"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -1210,21 +1340,29 @@ namespace NavalCombatCore
                 }
                 else
                 {
-                    AddShipboardFire(ctx, "DE 123 (C): Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 123 (C): Shipboard fire severity 20"
+                    ), 20);
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 123 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 123 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 124, Lost off communication to engine room
             { "124", ctx=>{
-                AddDescription(ctx, "DE 124, Lost off communication to engine room");
+                AddDescription(ctx, Localize(
+                    "DE 124, Lost of communication to engine room"
+                ));
 
                 var DE = new EngineRoomCommunicationDamaged()
                 {
-                    cause="DE 124, Loss of communication to engine room"
+                    cause=Localize(
+                        "DE 124, Loss of communication to engine room"
+                    )
                 };
                 DE.BeginAt(ctx.subject);
 
@@ -1232,13 +1370,17 @@ namespace NavalCombatCore
 
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 124 (HE): Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 124 (HE): Shipboard fire severity 20"
+                    ), 20);
                 }
             }},
 
             // DE 125, Damage to boiler room
             {"125", ctx=>{
-                AddDescription(ctx, "DE 125, Damage to boiler room");
+                AddDescription(ctx, Localize(
+                    "DE 125, Damage to boiler room"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -1248,7 +1390,9 @@ namespace NavalCombatCore
                         lifeCycle = StateLifeCycle.SeverityBased,
                         severity = ctx.RollForSeverity(),
                         boilerRoomHitOffset = bolierRoomHitOffset,
-                        cause = "DE 125 (A/B), Damage to boiler room"
+                        cause = Localize(
+                            "DE 125 (A/B), Damage to boiler room"
+                        )
                     };
                     DE.BeginAt(ctx.subject);
 
@@ -1260,19 +1404,25 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
                         boilerRoomHitOffset = 1,
-                        cause = "DE 125 (C), Damage to boiler room"
+                        cause = Localize(
+                            "DE 125 (C), Damage to boiler room"
+                        )
                     };
                     DE.BeginAt(ctx.subject);
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 125 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 125 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 126, Heavy flooding in one engine room
             {"126", ctx=>{
-                AddDescription(ctx, "DE 126, Heavy flooding in one engine room");
+                AddDescription(ctx, Localize(
+                    "DE 126, Heavy flooding in one engine room"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -1299,17 +1449,23 @@ namespace NavalCombatCore
                 }
                 else
                 {
-                    AddShipboardFire(ctx, "DE 126 (C): Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 126 (C): Shipboard fire severity 20"
+                    ), 20);
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 126 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 126 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 127, hit on torpedo mount and smoke generator
             {"127", ctx=>{
-                AddDescription(ctx, "DE 127, hit on torpedo mount and smoke generator");
+                AddDescription(ctx, Localize(
+                    "DE 127, hit on torpedo mount and smoke generator"
+                ));
 
                 if(TryToSampleATorpedoMount(ctx, out var torpedoMount))
                 {
@@ -1317,7 +1473,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.Permanent,
                         operationalPercentange = 50,
-                        cause = "DE 127, hit on torpedo mount"
+                        cause = Localize(
+                            "DE 127, hit on torpedo mount"
+                        )
                     };
                     DE.BeginAt(torpedoMount);
 
@@ -1336,16 +1494,22 @@ namespace NavalCombatCore
                 {
                     lifeCycle = StateLifeCycle.Permanent,
                     availablePercent=50,
-                    cause = "DE 127, hit on smoke generator"
+                    cause = Localize(
+                        "DE 127, hit on smoke generator"
+                    )
                 };
                 DE3.BeginAt(ctx.subject);
-                AddShipboardFire(ctx, "DE 127: hit on torpedo mount, Shipboard fire severity 30", 30);
+                AddShipboardFire(ctx, Localize(
+                    "DE 127: hit on torpedo mount, Shipboard fire severity 30"
+                ), 30);
                 RollForAdditionalDamageEffect(ctx, new[]{"125", "126", "169", "118", ""});
             }},
 
             // DE 128, shipboard fire and smoke affect firing
             {"128", ctx=>{
-                AddDescription(ctx, "DE 128, shipboard fire and smoke affect firing");
+                AddDescription(ctx, Localize(
+                    "DE 128, shipboard fire and smoke affect firing"
+                ));
 
                 // var disableTorpedo = IsHE(ctx);
 
@@ -1359,7 +1523,9 @@ namespace NavalCombatCore
                 {
                     lifeCycle = StateLifeCycle.ShipboardFire,
                     severity = 50,
-                    cause = "DE 128, shipboard fire and smoke affect firing",
+                    cause = Localize(
+                        "DE 128, shipboard fire and smoke affect firing"
+                    ),
                     fireAndSmokeVLocation = fireAndSmokeVLocation,
                     // disableTorpedo=disableTorpedo
                 };
@@ -1376,34 +1542,16 @@ namespace NavalCombatCore
                             {
                                 lifeCycle=StateLifeCycle.Dependent,
                                 dependentObjectId=DE.objectId,
-                                cause = "DE 128, shipboard fire and smoke affect firing (sub)",
+                                cause = Localize(
+                                    "DE 128, shipboard fire and smoke affect firing (sub)"
+                                ),
                             };
                             DESub.BeginAt(torpedoMount);
                         }
                     }
                 }
 
-                // var fireAndSmokeLocation = RandomUtils.Sample(new List<SectorFireState.SectionLocation>(){
-                //     SectorFireState.SectionLocation.Front,
-                //     SectorFireState.SectionLocation.Midship,
-                //     SectorFireState.SectionLocation.After
-                // });
-
-                // var DEMaster = new PlaceholderState()
-                // {
-                //     lifeCycle = StateLifeCycle.ShipboardFire,
-                //     severity = 50,
-                //     cause = $"DE 128, shipboard fire and smoke affect firing ({fireAndSmokeLocation}, master)",
-                // };
-                // DEMaster.BeginAt(ctx.subject);
-
-                // foreach(var btyMount in ctx.subject.batteryStatus.SelectMany(bty => bty.mountStatus))
-                // {
-                //     var mountLocation = btyMount.mountLocation;
-
-                // }
-
-                    if (IsAB(ctx))
+                if (IsAB(ctx))
                 {
                     RollForAdditionalDamageEffect(ctx, new[]{"158", "159", "163", "164", ""});
                 }
@@ -1411,10 +1559,14 @@ namespace NavalCombatCore
 
             // DE 129, hit on searchlight and small arms stores (marine's stuff)
             {"129", ctx=>{
-                AddDescription(ctx, "DE 129, hit on searchlight and small arms stores");
+                AddDescription(ctx, Localize(
+                    "DE 129, hit on searchlight and small arms stores"
+                ));
 
                 Lost1RandomSearchlight(ctx);
-                AddShipboardFire(ctx, "DE 129: Fire in small arms stores. Shipboard fire severity 30", 30);
+                AddShipboardFire(ctx, Localize(
+                    "DE 129: Fire in small arms stores. Shipboard fire severity 30"
+                ), 30);
                 if(RandomUtils.D100F() <= 40)
                 {
                     // ctx.subject.damagePoint += ctx.baseDamagePoint;
@@ -1426,13 +1578,17 @@ namespace NavalCombatCore
                 RollForAdditionalDamageEffect(ctx, new[]{"159", "148", "141", "161", ""});
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 129 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 129 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             } },
 
             // DE 130, hit on torpedo tube and smoke generator
             {"130", ctx=>{
-                AddDescription(ctx, "DE 130, hit on torpedo tube and smoke generator");
+                AddDescription(ctx, Localize(
+                    "DE 130, hit on torpedo tube and smoke generator"
+                ));
 
                 if(TryToSampleATorpedoMount(ctx, out var torpedoMount))
                 {
@@ -1448,7 +1604,9 @@ namespace NavalCombatCore
                         var DE = new BatteryMountStatusModifier()
                         {
                             lifeCycle = StateLifeCycle.GivenTime,
-                            cause = "DE 130: Temporary loss of power to primary battery gun in one section"
+                            cause = Localize(
+                                "DE 130: Temporary loss of power to primary battery gun in one section"
+                            )
                         };
                         DE.BeginAt(affectedMount);
                     }
@@ -1458,7 +1616,9 @@ namespace NavalCombatCore
 
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 130 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 130 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
@@ -1466,7 +1626,9 @@ namespace NavalCombatCore
 
             // DE 132, Hit on rapid fire battery, searchlight, and possibly secondary battery
             {"132", ctx=>{
-                AddDescription(ctx, "DE 132, Hit on rapid fire battery, searchlight, and possibly secondary battery");
+                AddDescription(ctx, Localize(
+                    "DE 132, Hit on rapid fire battery, searchlight, and possibly secondary battery"
+                ));
 
                 LostRandomRapidFiringBatteryBoxAndFCSBox(ctx, 2, 0);
                 Lost1RandomSearchlight(ctx);
@@ -1483,13 +1645,17 @@ namespace NavalCombatCore
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 132 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 132 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 133, damage to steering gear
             {"133", ctx=>{
-                AddDescription(ctx, "DE 133, damage to steering gear");
+                AddDescription(ctx, Localize(
+                    "DE 133, damage to steering gear"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -1501,7 +1667,9 @@ namespace NavalCombatCore
                         maxSpeedKnotCoef = 0.5f,
                         isEvasiveManeuverBlocked = true,
                         isCourseChangeBlocked = isCourceChangeBlocked,
-                        cause = "DE 133 (A/B), damage to steering gear"
+                        cause = Localize(
+                            "DE 133 (A/B), damage to steering gear"
+                        )
                     };
                     DE.BeginAt(ctx.subject);
 
@@ -1509,32 +1677,42 @@ namespace NavalCombatCore
                 }
                 else
                 {
-                    AddShipboardFire(ctx, "DE 133 (C): Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 133 (C): Shipboard fire severity 20"
+                    ), 20);
 
                     var DE = new DynamicModifier()
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
                         maxSpeedKnotCoef = 0.5f,
                         isEvasiveManeuverBlocked = true,
-                        cause = "DE 133 (C), hit on steering gear"
+                        cause = Localize(
+                            "DE 133 (C), hit on steering gear"
+                        )
                     };
                     DE.BeginAt(ctx.subject);
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 133 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 133 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 134, damage to rudder
             {"134", ctx=>{
-                AddDescription(ctx, "DE 134, damage to rudder");
+                AddDescription(ctx, Localize(
+                    "DE 134, damage to rudder"
+                ));
 
                 var DE = new RudderDamaged()
                 {
                     lifeCycle = StateLifeCycle.SeverityBased,
                     severity = ctx.RollForSeverity(),
-                    cause = "DE 134, damage to rudder"
+                    cause = Localize(
+                        "DE 134, damage to rudder"
+                    )
                 };
                 DE.BeginAt(ctx.subject);
                 if(IsAB(ctx))
@@ -1543,13 +1721,17 @@ namespace NavalCombatCore
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 134 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 134 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 135, rudder jammed
             {"135", ctx=>{
-                AddDescription(ctx, "DE 135, rudder jammed");
+                AddDescription(ctx, Localize(
+                    "DE 135, rudder jammed"
+                ));
 
                 var isTurnPortBlocked = false;
                 var isTurnStarboardBlocked = false;
@@ -1568,7 +1750,9 @@ namespace NavalCombatCore
                     severity = ctx.RollForSeverity(),
                     isTurnPortBlocked=isTurnPortBlocked,
                     isTurnStarboardBlocked=isTurnStarboardBlocked,
-                    cause = "DE 135, rudder jammed"
+                    cause = Localize(
+                        "DE 135, rudder jammed"
+                    )
                 };
 
                 if(IsAB(ctx))
@@ -1577,7 +1761,9 @@ namespace NavalCombatCore
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 135 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 135 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
@@ -1591,7 +1777,9 @@ namespace NavalCombatCore
 
             // DE 140 Signal bridge destroyed
             {"140", ctx=>{
-                AddDescription(ctx, "DE 140 Signal bridge destroyed");
+                AddDescription(ctx, Localize(
+                    "DE 140 Signal bridge destroyed"
+                ));
 
                 // TODO: Represent the SK5 command system with some means?
                 if (IsAB(ctx))
@@ -1626,13 +1814,17 @@ namespace NavalCombatCore
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 140 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 140 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 141, Disruption to communications
             {"141", ctx=>{
-                AddDescription(ctx, "DE 141, Disruption to communications");
+                AddDescription(ctx, Localize(
+                    "DE 141, Disruption to communications"
+                ));
 
                 // TODO: Process Flag Command Rating related things
                 Lost1RandomRapidFiringBatteryBox(ctx);
@@ -1642,13 +1834,17 @@ namespace NavalCombatCore
                 }
                 if(IsHE(ctx) && RandomUtils.D100F() <= 50)
                 {
-                    AddShipboardFire(ctx, "DE 141 (HE): Shipboard fire severity 50", 50);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 141 (HE): Shipboard fire severity 50"
+                    ), 50);
                 }
             }},
 
             // DE 142, Temporary disruption to shipboard communications
             {"142", ctx=>{
-                AddDescription(ctx, "DE 142, Temporary disruption to shipboard communications");
+                AddDescription(ctx, Localize(
+                    "DE 142, Temporary disruption to shipboard communications"
+                ));
 
                 // TODO: Processcommunication related things
                 Lost1RandomSearchlight(ctx);
@@ -1673,13 +1869,17 @@ namespace NavalCombatCore
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 142 (HE): Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 142 (HE): Shipboard fire severity 20"
+                    ), 20);
                 }
             }},
 
             // DE 143, Bridge hit
             {"143", ctx=>{
-                AddDescription(ctx, "Bridge hit");
+                AddDescription(ctx, Localize(
+                    "DE 143, Bridge hit"
+                ));
 
                 // TODO: Process Bridge Command Rating * Flag Command Rating
                 // TODO: Process kill and replacement of captain
@@ -1696,32 +1896,44 @@ namespace NavalCombatCore
                 }
                 else
                 {
-                    AddShipboardFire(ctx, "DE 143 (C): Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 143 (C): Shipboard fire severity 20"
+                    ), 20);
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 143 (HE): Shipboard fire severity 20", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 143 (HE): Shipboard fire severity 20"
+                    ), 30);
                 }
             }},
 
             // DE 144, Flag Bridge hit
             {"144", ctx=>{
-                AddDescription(ctx, "DE 144, Flag Bridge hit");
+                AddDescription(ctx, Localize(
+                    "DE 144, Flag Bridge hit"
+                ));
 
                 // TODO: Process reduce of command
                 if (RandomUtils.D100F() <= 30)
                 {
-                    AddShipboardFire(ctx, "DE 144 (A/B/C): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 144 (A/B/C): Shipboard fire severity 30"
+                    ), 30);
                 }
                 if(IsHE(ctx) && RandomUtils.D100F() <= 50)
                 {
-                    AddShipboardFire(ctx, "DE 144 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 144 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 145, Bridge hit (destoyed or shock only)
             {"145", ctx=>{
-                AddDescription(ctx, "DE 145, Bridge hit");
+                AddDescription(ctx, Localize(
+                    "DE 145, Bridge hit"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -1733,7 +1945,9 @@ namespace NavalCombatCore
                         severity = ctx.RollForSeverity(),
                         isCourseChangeBlocked = true,
                         isSpeedChangeBlocked = true,
-                        cause = "DE 145, Bridge Destroyed"
+                        cause = Localize(
+                            "DE 145, Bridge Destroyed"
+                        )
                     };
                     DE.BeginAt(ctx.subject);
 
@@ -1746,19 +1960,25 @@ namespace NavalCombatCore
                         lifeCycle = StateLifeCycle.GivenTime,
                         isCourseChangeBlocked = true,
                         isSpeedChangeBlocked = true,
-                        cause = "DE 145, Bridge hit"
+                        cause = Localize(
+                            "DE 145, Bridge hit"
+                        )
                     };
                     DE.BeginAt(ctx.subject);
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 145 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 145 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 146, Shock and structural damage
             {"146", ctx=>{
-                AddDescription(ctx, "DE 146, Shock and structural damage");
+                AddDescription(ctx, Localize(
+                    "DE 146, Shock and structural damage"
+                ));
 
                 // TODO: Process command related things
                 if (IsAB(ctx))
@@ -1769,19 +1989,25 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
                         isFightingFireBlocked = true,
-                        cause = "DE 146, Shock and structural damage"
+                        cause = Localize(
+                            "DE 146, Shock and structural damage"
+                        )
                     };
                     DE.BeginAt(ctx.subject);
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 146 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 146 (HE): Shipboard fire severity 30"
+                    ), 30);
 
                     var DE = new DamageControlModifier()
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
                         damageControlRatingOffset = -1,
-                        cause = "DE 146 (HE), Shock and structural damage"
+                        cause = Localize(
+                            "DE 146 (HE), Shock and structural damage"
+                        )
                     };
                     DE.BeginAt(ctx.subject);
                 }
@@ -1789,32 +2015,42 @@ namespace NavalCombatCore
 
             // DE 147, Heavy personnel casualties
             {"147", ctx=>{
-                AddDescription(ctx, "DE 147, Heavy personnel casualties");
+                AddDescription(ctx, Localize(
+                    "DE 147, Heavy personnel casualties"
+                ));
 
                 var DE = new DamageControlModifier
                 {
                     lifeCycle = StateLifeCycle.GivenTime,
-                    cause = "DE 147 (HP), Heavy personnel casualties",
+                    cause = Localize(
+                        "DE 147 (HP), Heavy personnel casualties"
+                    ),
                     isDamageControlBlocked = true
                 };
                 DE.BeginAt(ctx.subject);
 
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 147 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 147 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 148, funnel damage
             {"148", ctx=>{
-                AddDescription(ctx, "DE 148, funnel damage");
+                AddDescription(ctx, Localize(
+                    "DE 148, funnel damage"
+                ));
 
                 // Adjust the total from CHART H by -1 for all guns and reduce maximum speed speed by 1 knot permanently.
                 var DE = new FireControlValueModifier()
                 {
                     lifeCycle = StateLifeCycle.Permanent,
                     fireControlValueOffset = -1,
-                    cause = "DE 148, Funnel damage"
+                    cause = Localize(
+                        "DE 148, Funnel damage"
+                    )
                 };
                 DE.BeginAt(ctx.subject);
 
@@ -1825,13 +2061,17 @@ namespace NavalCombatCore
                 RollForAdditionalDamageEffect(ctx, new[]{"132", "151", "161", "", ""});
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 148 (HE): Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 148 (HE): Shipboard fire severity 20"
+                    ), 20);
                 }
             }},
 
             // DE 149, Damage to crew spaces
             {"149", ctx=>{
-                AddDescription(ctx, "DE 149, Damage to crew spaces");
+                AddDescription(ctx, Localize(
+                    "DE 149, Damage to crew spaces"
+                ));
 
                 Lost1RandomRapidFiringBatteryBox(ctx);
                 if(IsAB(ctx))
@@ -1840,13 +2080,17 @@ namespace NavalCombatCore
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 149 (HE): Damage to crew spaces, Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 149 (HE): Damage to crew spaces, Shipboard fire severity 20"
+                    ), 20);
                 }
             }},
 
             // DE 150, Damage to galley
             {"150", ctx=>{
-                AddDescription(ctx, "DE 150, Damage to galley");
+                AddDescription(ctx, Localize(
+                    "DE 150, Damage to galley"
+                ));
 
                 Lost1RandomRapidFiringBatteryBoxAnd1FCSBox(ctx);
                 if(IsAB(ctx))
@@ -1856,13 +2100,17 @@ namespace NavalCombatCore
                 if(IsHE(ctx))
                 {
                     Lost1RandomRapidFiringBatteryBox(ctx);
-                    AddShipboardFire(ctx, "DE 150 (HE): Damage to galley, Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 150 (HE): Damage to galley, Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 151, Auxiliary powerplant OOA
             {"151", ctx=>{
-                AddDescription(ctx, "DE 151, Auxiliary powerplant OOA");
+                AddDescription(ctx, Localize(
+                    "DE 151, Auxiliary powerplant OOA"
+                ));
 
                 // TODO: Implement ship-level communication
                 Lost1RandomRapidFiringBatteryBox(ctx);
@@ -1874,13 +2122,17 @@ namespace NavalCombatCore
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 151 (HE): Auxiliary powerplant OOA, Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 151 (HE): Auxiliary powerplant OOA, Shipboard fire severity 20"
+                    ), 20);
                 }
             } },
 
             // DE 152, Main powerplant OOA
             {"152", ctx=>{
-                AddDescription(ctx, "DE 152, Main powerplant OOA");
+                AddDescription(ctx, Localize(
+                    "DE 152, Main powerplant OOA"
+                ));
 
                 ctx.subject.damageControlRatingHits += 1;
                 if(IsAB(ctx))
@@ -1891,7 +2143,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.SeverityBased,
                         severity = ctx.RollForSeverity(),
-                        cause = "DE 152, Main powerplant OOA",
+                        cause = Localize(
+                            "DE 152, Main powerplant OOA"
+                        ),
 
                         rateOfFireCoef = d100 <= 70 ? 0.5f : 1,
                         isDamageControlBlocked = d100 <= 40
@@ -1902,7 +2156,9 @@ namespace NavalCombatCore
 
             // DE 153, damage to power distribution system
             {"153", ctx=>{
-                AddDescription(ctx, "DE 153, damage to power distribution system");
+                AddDescription(ctx, Localize(
+                    "DE 153, damage to power distribution system"
+                ));
 
                 ctx.subject.damageControlRatingHits += 1;
 
@@ -1925,7 +2181,9 @@ namespace NavalCombatCore
                         {
                             lifeCycle = StateLifeCycle.SeverityBased,
                             severity = ctx.RollForSeverity(),
-                            cause = "DE 153, damage to power distribution system (master)",
+                            cause = Localize(
+                                "DE 153, damage to power distribution system (master)"
+                            ),
                         };
                         DEMaster.BeginAt(ctx.subject);
 
@@ -1935,7 +2193,9 @@ namespace NavalCombatCore
                             {
                                 lifeCycle=StateLifeCycle.Dependent,
                                 dependentObjectId = DEMaster.objectId,
-                                cause = "DE 153, damage to power distribution system (sub)",
+                                cause = Localize(
+                                    "DE 153, damage to power distribution system (sub)"
+                                ),
                             };
                             DESub.BeginAt(mount);
                         }
@@ -1947,13 +2207,17 @@ namespace NavalCombatCore
 
             // DE 154, Fuel bunker hit (coal or oil)
             {"154", ctx=>{
-                AddDescription(ctx, "DE 154, Fuel bunker hit (coal or oil)");
+                AddDescription(ctx, Localize(
+                    "DE 154, Fuel bunker hit (coal or oil)"
+                ));
 
                 // TODO: Process cruise range effect
                 // TODO: Process oil specific things
                 if (IsAB(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 154 (A/C): fuel bunker hit, Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 154 (A/C): fuel bunker hit, Shipboard fire severity 20"
+                    ), 20);
 
                     if(RandomUtils.D100F() <= 20)
                     {
@@ -1964,28 +2228,38 @@ namespace NavalCombatCore
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 154 (HE): fuel bunker hit, Shipboard fire severity 40", 40);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 154 (HE): fuel bunker hit, Shipboard fire severity 40"
+                    ), 40);
                 }
             } },
 
             // DE 155, Severe fire in flammables storage
             {"155", ctx=>{
-                AddDescription(ctx, "DE 155, Severe fire in flammables storage");
+                AddDescription(ctx, Localize(
+                    "DE 155, Severe fire in flammables storage"
+                ));
 
-                AddShipboardFire(ctx, "DE 155 (A/B/C): Severe fire in flammables storage, Shipboard fire severity 50", 50);
+                AddShipboardFire(ctx, Localize(
+                    "DE 155 (A/B/C): Severe fire in flammables storage, Shipboard fire severity 50"
+                ), 50);
                 if(IsHE(ctx))
                 {
                     Lost1RandomRapidFiringBatteryBox(ctx);
                     if(RandomUtils.D100F() <= 60)
                     {
-                        AddShipboardFire(ctx, "DE 155 (HE): Severe fire in flammables storage, Shipboard fire severity 30", 30);
+                        AddShipboardFire(ctx, Localize(
+                            "DE 155 (HE): Severe fire in flammables storage, Shipboard fire severity 30"
+                        ), 30);
                     }
                 }
             }},
             
             // DE 156, hit on FCS in primary battery
             {"156", ctx=>{
-                AddDescription(ctx, "DE 156, hit on FCS in primary battery");
+                AddDescription(ctx, Localize(
+                    "DE 156, hit on FCS in primary battery"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -1994,7 +2268,9 @@ namespace NavalCombatCore
                         var DE = new BatteryFireContrlStatusDisabledModifier()
                         {
                             lifeCycle=StateLifeCycle.GivenTime,
-                            cause = "DE 156 (A/B), hit on FCS in primary battery"
+                            cause = Localize(
+                                "DE 156 (A/B), hit on FCS in primary battery"
+                            )
                         };
                         DE.BeginAt(primaryBattery);
                     }
@@ -2013,7 +2289,9 @@ namespace NavalCombatCore
                             var DE = new BatteryFireContrlStatusDisabledModifier()
                             {
                                 lifeCycle=StateLifeCycle.GivenTime,
-                                cause = "DE 156 (C), hit on FCS in primary battery"
+                                cause = Localize(
+                                    "DE 156 (C), hit on FCS in primary battery"
+                                )
                             };
                             DE.BeginAt(fcsRec);
                         }
@@ -2022,24 +2300,32 @@ namespace NavalCombatCore
                 if(IsHE(ctx))
                 {
                     ctx.subject.damageControlRatingHits += 1;
-                    AddShipboardFire(ctx, "DE 156 (HE): Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 156 (HE): Shipboard fire severity 20"
+                    ), 20);
                 }
             }},
 
             // DE 157, hit on secondary battery FCS
             {"157", ctx=>{
-                AddDescription(ctx, "DE 157, hit on secondary battery FCS");
+                AddDescription(ctx, Localize(
+                    "DE 157, hit on secondary battery FCS"
+                ));
 
                 if(TryGetSecondaryBattery(ctx, out var battery))
                 {
-                    AddShipboardFire(ctx, "DE 157 (C): Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 157 (C): Shipboard fire severity 20"
+                    ), 20);
 
                     if(IsAB(ctx))
                     {
                         var DE = new BatteryFireContrlStatusDisabledModifier()
                         {
                             lifeCycle=StateLifeCycle.GivenTime,
-                            cause = "DE 157 (A/B), hit on FCS in secondary battery"
+                            cause = Localize(
+                                "DE 157 (A/B), hit on FCS in secondary battery"
+                            )
                         };
                         DE.BeginAt(battery);
                     }
@@ -2051,7 +2337,9 @@ namespace NavalCombatCore
                             var DE = new BatteryFireContrlStatusDisabledModifier()
                             {
                                 lifeCycle=StateLifeCycle.GivenTime,
-                                cause = "DE 157 (A/B), hit on FCS in secondary battery"
+                                cause = Localize(
+                                    "DE 157 (A/B), hit on FCS in secondary battery"
+                                )
                             };
                             DE.BeginAt(fcsRec);
                         }
@@ -2074,7 +2362,9 @@ namespace NavalCombatCore
 
             // DE 158, hit on FCS of primary battery
             {"158", ctx=>{
-                AddDescription(ctx, "DE 158, hit on FCS of primary battery");
+                AddDescription(ctx, Localize(
+                    "DE 158, hit on FCS in primary battery"
+                ));
 
                 if(TryGetPrimaryBattery(ctx, out var battery) && battery.fireControlSystemStatusRecords.Count > 0)
                 {
@@ -2088,7 +2378,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle=StateLifeCycle.SeverityBased,
                         severity = severity,
-                        cause = "DE 158, hit on FCS in primary battery"
+                        cause = Localize(
+                            "DE 158, hit on FCS in primary battery"
+                        )
                     };
                     DE.BeginAt(fcsRec);
 
@@ -2108,7 +2400,9 @@ namespace NavalCombatCore
 
             // DE 159, Damage to one secondary battery fire control system.
             {"159", ctx=>{
-                AddDescription(ctx, "DE 159, Damage to one secondary battery fire control system.");
+                AddDescription(ctx, Localize(
+                    "DE 159, Damage to one secondary battery fire control system."
+                ));
 
                 if(TryGetSecondaryBattery(ctx, out var battery) && battery.fireControlSystemStatusRecords.Count > 0)
                 {
@@ -2117,7 +2411,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle=StateLifeCycle.SeverityBased,
                         severity = ctx.RollForSeverity(),
-                        cause = "DE 158, hit on FCS in primary battery"
+                        cause = Localize(
+                            "DE 158, hit on FCS in primary battery"
+                        )
                     };
                     DE.BeginAt(fcsRec);
                     if(IsAB(ctx))
@@ -2136,7 +2432,9 @@ namespace NavalCombatCore
 
             // DE 160, hit on FCS of primary battery
             {"160", ctx=>{
-                AddDescription(ctx, "DE 160, hit on FCS of primary battery");
+                AddDescription(ctx, Localize(
+                    "DE 160, hit on FCS of primary battery"
+                ));
 
                 if(TryToSampleAPrimaryFireControlSystem(ctx, out var fcsRec))
                 {
@@ -2147,14 +2445,18 @@ namespace NavalCombatCore
                     }
                     if(IsHE(ctx))
                     {
-                        AddShipboardFire(ctx, "DE 160 (HE): Shipboard fire severity 20", 20);
+                        AddShipboardFire(ctx, Localize(
+                            "DE 160 (HE): Shipboard fire severity 20"
+                        ), 20);
                     }
                 }
             }},
 
             // DE 161, hit on FCS of secondary battery
             {"161", ctx=>{
-                AddDescription(ctx, "DE 161, hit on FCS of secondary battery");
+                AddDescription(ctx, Localize(
+                    "DE 161, hit on FCS of secondary battery"
+                ));
 
                 if(TryToSampleASecondaryFireControlSystem(ctx, out var fcsRec))
                 {
@@ -2165,7 +2467,9 @@ namespace NavalCombatCore
                     }
                     if(IsHE(ctx))
                     {
-                        AddShipboardFire(ctx, "DE 161 (HE): Shipboard fire severity 20", 20);
+                        AddShipboardFire(ctx, Localize(
+                            "DE 161 (HE): Shipboard fire severity 20"
+                        ), 20);
                     }
                 }
                 else
@@ -2179,7 +2483,9 @@ namespace NavalCombatCore
 
             // DE 162, Damage to primary or secondary battery plotting room or transmitting station. (Start from 1906 table)
             {"162", ctx=>{
-                AddDescription(ctx, "DE 162, Damage to primary or secondary battery plotting room or transmitting station.");
+                AddDescription(ctx, Localize(
+                    "DE 162, Damage to primary or secondary battery plotting room or transmitting station."
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -2190,7 +2496,9 @@ namespace NavalCombatCore
                         {
                             lifeCycle=StateLifeCycle.SeverityBased,
                             severity = ctx.RollForSeverity(),
-                            cause = "DE 162, damage to battery plotting room or transmitting station"
+                            cause = Localize(
+                                "DE 162, damage to battery plotting room or transmitting station"
+                            )
                         };
                         DE.BeginAt(battery);
 
@@ -2214,27 +2522,35 @@ namespace NavalCombatCore
 
             // DE 163, gunnery officer killed
             {"163", ctx=>{
-                AddDescription(ctx, "DE 163, gunnery officer killed");
+                AddDescription(ctx, Localize(
+                    "DE 163, gunnery officer killed"
+                ));
 
                 if(TryGetPrimaryBattery(ctx, out var battery))
                 {
                     var DE = new BatteryTargetChangeBlocker()
                     {
                         lifeCycle=StateLifeCycle.GivenTime,
-                        cause="DE 163, Gunnery officer killed"
+                        cause=Localize(
+                            "DE 163, gunnery officer killed"
+                        )
                     };
                     DE.BeginAt(battery);
 
                     var DE2 = new ElectronicSystemModifier()
                     {
                         lifeCycle=StateLifeCycle.GivenTime,
-                        cause="DE 163, Gunnery officer killed",
+                        cause=Localize(
+                            "DE 163, gunnery officer killed"
+                        ),
                         isFireControlRadarDisabled = true,
                     };
                     DE.BeginAt(battery);
                 }
 
-                AddShipboardFire(ctx, "DE 163 (A/B/C): Shipboard fire severity 20", 20);
+                AddShipboardFire(ctx, Localize(
+                    "DE 163 (A/B/C): Shipboard fire severity 20"
+                ), 20);
                 Lost1RandomSearchlight(ctx);
                 Lost1RandomRapidFiringBatteryBox(ctx);
 
@@ -2243,7 +2559,9 @@ namespace NavalCombatCore
 
             // DE 164, hit on Fire Control Radar (1923+ only)
             {"164", ctx=>{
-                AddDescription(ctx, "DE 164, hit on Fire Control Radar");
+                AddDescription(ctx, Localize(
+                    "DE 164, hit on Fire Control Radar"
+                ));
 
                 if(ctx.subject.batteryStatus.Count > 0)
                 {
@@ -2260,13 +2578,17 @@ namespace NavalCombatCore
                         {
                             var DE = new FireControlValueModifier()
                             {
-                                cause="DE 164, hit on FCR",
+                                cause=Localize(
+                                    "DE 164, hit on FCR"
+                                ),
                                 fireControlValueOffset = -1
                             };
                             DE.BeginAt(battery);
                         }
 
-                        AddShipboardFire(ctx, "DE 163 (A/B): Shipboard fire severity 20", 20);
+                        AddShipboardFire(ctx, Localize(
+                            "DE 163 (A/B): Shipboard fire severity 20"
+                        ), 20);
                         Lost1RandomRapidFiringBatteryBox(ctx);
                     }
                     else
@@ -2279,7 +2601,9 @@ namespace NavalCombatCore
                                 lifeCycle=StateLifeCycle.SeverityBased,
                                 severity=ctx.RollForSeverity(),
                                 isFireControlRadarDisabled = true,
-                                cause="DE 164, hit on FCR",
+                                cause=Localize(
+                                    "DE 164, hit on FCR"
+                                ),
                             };
                             DE.BeginAt(battery);
                         }
@@ -2301,9 +2625,13 @@ namespace NavalCombatCore
 
             // DE 166, Damage to officer's accommodations
             {"166", ctx=>{
-                AddDescription(ctx, "DE 166, Damage to officer's accommodations");
+                AddDescription(ctx, Localize(
+                    "DE 166, Damage to officer's accommodations"
+                ));
 
-                AddShipboardFire(ctx, "DE 166: Shipboard fire severity 20", 20);
+                AddShipboardFire(ctx, Localize(
+                    "DE 166: Shipboard fire severity 20"
+                ), 20);
                 Lost1RandomRapidFiringBatteryBox(ctx);
                 if(IsAB(ctx))
                 {
@@ -2311,20 +2639,26 @@ namespace NavalCombatCore
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 166 (HE): Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 166 (HE): Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 167, Heavy flooding causes list to [PORT/STARBOARD]
             {"167", ctx=>{
-                AddDescription(ctx, "DE 167, Heavy flooding causes list to [PORT/STARBOARD]");
+                AddDescription(ctx, Localize(
+                    "DE 167, Heavy flooding causes list to [PORT/STARBOARD]"
+                ));
 
                 if(IsAB(ctx))
                 {
                     var DE = new BatteryMountStatusModifier()
                     {
                         lifeCycle=StateLifeCycle.GivenTime,
-                        cause = "DE 167, Heavy flooding causes list to [PORT/STARBOARD]"
+                        cause = Localize(
+                            "DE 167, Heavy flooding causes list to [PORT/STARBOARD]"
+                        )
                     };
                     DE.BeginAt(ctx.subject);
 
@@ -2332,7 +2666,9 @@ namespace NavalCombatCore
                     if(damageTier >= 8)
                     {
                         ctx.subject.mapState = MapState.Destroyed; // capsize
-                        AddDescription(ctx, "Sunk due to capsize");
+                        AddDescription(ctx, Localize(
+                            "Sunk due to capsize (DE 167)"
+                        ));
                     }
                     else if(damageTier >= 4)
                     {
@@ -2356,7 +2692,9 @@ namespace NavalCombatCore
 
             // DE 168, severe flooding
             {"168", ctx=>{
-                AddDescription(ctx, "DE 168, severe flooding");
+                AddDescription(ctx, Localize(
+                    "DE 168, severe flooding"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -2376,7 +2714,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
                         givenTimeSeconds = 360,
-                        cause = "DE 168 (A/B), Severe Flooding",
+                        cause = Localize(
+                            "DE 168 (A/B), Severe Flooding"
+                        ),
                     };
                     DE.BeginAt(ctx.subject);
 
@@ -2390,7 +2730,9 @@ namespace NavalCombatCore
 
             // DE 169, Compartment flooding
             {"169", ctx=>{
-                AddDescription(ctx, "DE 169, Compartment flooding");
+                AddDescription(ctx, Localize(
+                    "DE 169, Compartment flooding"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -2400,7 +2742,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
                         givenTimeSeconds = 240,
-                        cause = "DE 169, Compartment Flooding",
+                        cause = Localize(
+                            "DE 169, Compartment Flooding"
+                        ),
                     };
                     DE.BeginAt(ctx.subject);
 
@@ -2408,13 +2752,17 @@ namespace NavalCombatCore
                 }
                 else
                 {
-                    AddShipboardFire(ctx, "DE 169 (C): Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 169 (C): Shipboard fire severity 20"
+                    ), 20);
                 }
             }},
 
             // DE 170, Main waterline belt is submerged due to flooding and list.
             {"170", ctx=>{
-                AddDescription(ctx, "DE 170, Main waterline belt is submerged due to flooding and list.");
+                AddDescription(ctx, Localize(
+                    "DE 170, Main waterline belt is submerged due to flooding and list."
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -2422,7 +2770,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle=StateLifeCycle.Permanent,
                         mainBeltArmorCoef = 0.5f,
-                        cause= "DE 170 (A/B): Main waterline belt is submerged due to flooding and list."
+                        cause= Localize(
+                            "DE 170 (A/B): Main waterline belt is submerged due to flooding and list."
+                        )
                     };
                     DE.BeginAt(ctx.subject);
 
@@ -2442,13 +2792,17 @@ namespace NavalCombatCore
                 }
                 else
                 {
-                    AddShipboardFire(ctx, "DE 170 (C): Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 170 (C): Shipboard fire severity 20"
+                    ), 20);
                 }
             }},
 
             // DE 171, Damage to prop/shaft
             {"171", ctx=>{
-                AddDescription(ctx, "DE 171, Damage to prop/shaft");
+                AddDescription(ctx, Localize(
+                    "DE 171, Damage to prop/shaft"
+                ));
 
                 ctx.subject.dynamicStatus.propulsionShaftHits += 1;
                 if(IsAB(ctx))
@@ -2457,13 +2811,17 @@ namespace NavalCombatCore
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 171 (HE): Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 171 (HE): Shipboard fire severity 20"
+                    ), 20);
                 }
             }},
 
             // DE 172, Uncontrolled flooding possible.
             {"172", ctx=>{
-                AddDescription(ctx, "DE 172, Uncontrolled flooding possible.");
+                AddDescription(ctx, Localize(
+                    "DE 172, Uncontrolled flooding possible."
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -2472,7 +2830,9 @@ namespace NavalCombatCore
                         lifeCycle = StateLifeCycle.GivenTime,
                         givenTimeSeconds = 360,
                         dieRollOffset = 10,
-                        cause = "DE 172 (A/B): Uncontrolled flooding possible",
+                        cause = Localize(
+                            "DE 172 (A/B): Uncontrolled flooding possible"
+                        ),
                     };
                     DE.BeginAt(ctx.subject);
 
@@ -2486,7 +2846,9 @@ namespace NavalCombatCore
 
             // DE 173, Possible severe damage to watertight bulkhead for ships with damaged machinery spaces.
             {"173", ctx=>{
-                AddDescription(ctx, "DE 173, Possible severe damage to watertight bulkhead for ships with damaged machinery spaces.");
+                AddDescription(ctx, Localize(
+                    "DE 173, Possible severe damage to watertight bulkhead for ships with damaged machinery spaces."
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -2497,7 +2859,9 @@ namespace NavalCombatCore
                         {
                             lifeCycle = StateLifeCycle.GivenTime,
                             givenTimeSeconds = 360,
-                            cause = "DE 173 (A/B): Possible severe damage to watertight bulkhead for ships with damaged machinery spaces",
+                            cause = Localize(
+                                "DE 173 (A/B): Possible severe damage to watertight bulkhead for ships with damaged machinery spaces"
+                            ),
                         };
                         DE.BeginAt(ctx.subject);
                     }
@@ -2517,16 +2881,22 @@ namespace NavalCombatCore
 
             // DE 174, Damage to crew's mess
             {"174", ctx=>{
-                AddDescription(ctx, "DE 174, Damage to crew's mess");
+                AddDescription(ctx, Localize(
+                    "DE 174, Damage to crew's mess"
+                ));
 
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 174 (HE): Damage to crew's mess, Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 174 (HE): Damage to crew's mess, Shipboard fire severity 30"
+                    ), 30);
                     LostRandomRapidFiringBatteryBoxAndFCSBox(ctx, 2, 0);
                 }
                 else
                 {
-                    AddShipboardFire(ctx, "DE 174 (A/B/C): Damage to crew's mess, Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 174 (A/B/C): Damage to crew's mess, Shipboard fire severity 30"
+                    ), 30);
                     Lost1RandomRapidFiringBatteryBoxAnd1FCSBox(ctx);
                     if(IsAB(ctx))
                     {
@@ -2537,24 +2907,34 @@ namespace NavalCombatCore
 
             // DE 175, Damage to junior officer's quarters.
             {"175", ctx=>{
-                AddDescription(ctx, "DE 175, Damage to junior officer's quarters.");
+                AddDescription(ctx, Localize(
+                    "DE 175, Damage to junior officer's quarters."
+                ));
 
-                AddShipboardFire(ctx, "DE 175: Damage to junior officer's quarters, Shipboard fire severity 20", 20);
+                AddShipboardFire(ctx, Localize(
+                    "DE 175: Damage to junior officer's quarters, Shipboard fire severity 20"
+                ), 20);
                 if(IsAB(ctx))
                 {
                     RollForAdditionalDamageEffect(ctx, new[]{"120", "121", "122", "123", "120"});
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 175 (HE): Damage to junior officer's quarters, Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 175 (HE): Damage to junior officer's quarters, Shipboard fire severity 20"
+                    ), 20);
                 }
             }},
 
             // DE 176, Additional structural damage
             {"176", ctx=>{
-                AddDescription(ctx, "DE 176, Additional structural damage");
+                AddDescription(ctx, Localize(
+                    "DE 176, Additional structural damage"
+                ));
 
-                AddShipboardFire(ctx, "DE 176: Additional structural damage, Shipboard fire severity 20", 20);
+                AddShipboardFire(ctx, Localize(
+                    "DE 176: Additional structural damage, Shipboard fire severity 20"
+                ), 20);
 
                 // ctx.subject.damagePoint += ctx.baseDamagePoint;
                 ctx.subject.AddDamagePoint(ctx.baseDamagePoint);
@@ -2567,25 +2947,33 @@ namespace NavalCombatCore
 
             // DE 177, Damage to sick bay
             {"177", ctx=>{
-                AddDescription(ctx, "DE 177, Damage to sick bay");
+                AddDescription(ctx, Localize(
+                    "DE 177, Damage to sick bay"
+                ));
 
                 if(IsAB(ctx))
                 {
                     RollForAdditionalDamageEffect(ctx, new[]{"162", "110", "118", "120", "123"});
                     if(IsA(ctx))
                     {
-                        AddShipboardFire(ctx, "DE 177(A): Damage to sick bay, Shipboard fire severity 30", 30);
+                        AddShipboardFire(ctx, Localize(
+                            "DE 177(A): Damage to sick bay, Shipboard fire severity 30"
+                        ), 30);
                     }
                 }
                 else
                 {
-                    AddShipboardFire(ctx, "DE 177(C): Damage to sick bay, Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 177(C): Damage to sick bay, Shipboard fire severity 20"
+                    ), 20);
                 }
             }},
 
             // DE 178, Damage to senior officer's quaters
             {"178", ctx=>{
-                AddDescription(ctx, "DE 178, Damage to senior officer's quaters");
+                AddDescription(ctx, Localize(
+                    "DE 178, Damage to senior officer's quaters"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -2594,17 +2982,23 @@ namespace NavalCombatCore
                 }
                 else
                 {
-                    AddShipboardFire(ctx, "DE 178(C): Damage to senior officer's quaters, Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 178(C): Damage to senior officer's quaters, Shipboard fire severity 20"
+                    ), 20);
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 178(HE): Damage to senior officer's quaters, Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 178(HE): Damage to senior officer's quaters, Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 179, Loss of belt armor plate.
             {"179", ctx=>{
-                AddDescription(ctx, "DE 179, Loss of belt armor plate.");
+                AddDescription(ctx, Localize(
+                    "DE 179, Loss of belt armor plate."
+                ));
 
                 if(!IsHE(ctx) || IsA(ctx))
                 {
@@ -2626,7 +3020,9 @@ namespace NavalCombatCore
 
             // DE 180, Loss of systems due to flooding
             {"180", ctx=>{
-                AddDescription(ctx, "DE 180, Loss of systems due to flooding");
+                AddDescription(ctx, Localize(
+                    "DE 180, Loss of systems due to flooding"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -2634,7 +3030,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
                         givenTimeSeconds = 180,
-                        cause = "DE 180 (A/B): Loss of systems due to flooding",
+                        cause = Localize(
+                            "DE 180 (A/B): Loss of systems due to flooding"
+                        ),
                     };
                     DE.BeginAt(ctx.subject);
                 }
@@ -2647,13 +3045,17 @@ namespace NavalCombatCore
                 }
                 if(IsHE(ctx))
                 {
-                    AddShipboardFire(ctx, "DE 180 (HE): Loss of systems due to flooding, Shipboard fire severity 30", 30);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 180 (HE): Loss of systems due to flooding, Shipboard fire severity 30"
+                    ), 30);
                 }
             }},
 
             // DE 181, Bow of ship breaks off.
             {"181", ctx=>{
-                AddDescription(ctx, "DE 181, Bow of ship breaks off.");
+                AddDescription(ctx, Localize(
+                    "DE 181: Bow of ship breaks off"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -2680,7 +3082,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
                         givenTimeSeconds = 480,
-                        cause = "DE 181: Bow of ship breaks off",
+                        cause = Localize(
+                            "DE 181: Bow of ship breaks off"
+                        ),
                     };
                     DE2.BeginAt(ctx.subject);
                 }
@@ -2688,7 +3092,9 @@ namespace NavalCombatCore
 
             // DE 182, Progressive loss of power systems due to flooding
             {"182", ctx=>{
-                AddDescription(ctx, "DE 182, Progressive loss of power systems due to flooding");
+                AddDescription(ctx, Localize(
+                    "DE 182: Progressive loss of power systems due to flooding"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -2696,7 +3102,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
                         givenTimeSeconds = 360,
-                        cause = "DE 182: Progressive loss of power systems due to flooding",
+                        cause = Localize(
+                            "DE 182: Progressive loss of power systems due to flooding"
+                        ),
                     };
                     DE.BeginAt(ctx.subject);
                 }
@@ -2715,7 +3123,9 @@ namespace NavalCombatCore
 
             // DE 183, Damage to waterline bulkheads causes additional flooding.
             {"183", ctx=>{
-                AddDescription(ctx, "DE 183, Damage to waterline bulkheads causes additional flooding.");
+                AddDescription(ctx, Localize(
+                    "DE 183: Damage to waterline bulkheads causes additional flooding"
+                ));
 
                 if(IsAB(ctx))
                 {
@@ -2723,7 +3133,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
                         givenTimeSeconds = 240,
-                        cause = "DE 183: Damage to waterline bulkheads causes additional flooding",
+                        cause = Localize(
+                            "DE 183: Damage to waterline bulkheads causes additional flooding"
+                        ),
                     };
                     DE.BeginAt(ctx.subject);
 
@@ -2731,7 +3143,9 @@ namespace NavalCombatCore
                 }
                 else
                 {
-                    AddShipboardFire(ctx, "DE 183 (C): Damage to waterline bulkheads causes additional flooding, Shipboard fire severity 20", 20);
+                    AddShipboardFire(ctx, Localize(
+                        "DE 183 (C): Damage to waterline bulkheads causes additional flooding, Shipboard fire severity 20"
+                    ), 20);
                 }
                 if(IsHE(ctx) && RandomUtils.D100F() <= 20 && IsA(ctx))
                 {
@@ -2746,7 +3160,9 @@ namespace NavalCombatCore
 
             // DE 501, Permanent damage to flooding valves or circuits.
             {"501", ctx=>{
-                AddDescription(ctx, "DE 501, Permanent damage to flooding valves or circuits.");
+                AddDescription(ctx, Localize(
+                    "DE 501, Permanent damage to flooding valves or circuits."
+                ));
 
                 // Ref: https://groups.io/g/SEEKRIEG/topic/67567107#msg3706
                 // The reference to DE101/114 is an artifact from an earlier playtest
@@ -2754,7 +3170,9 @@ namespace NavalCombatCore
                 // rolls against CHART M6.
                 var DE = new SevereFloodingRollModifier()
                 {
-                    cause = "Permanent damage to flooding valves or circuits.",
+                    cause = Localize(
+                        "Permanent damage to flooding valves or circuits."
+                    ),
                     severeFloodingRollOffset=10
                 };
                 DE.BeginAt(ctx.subject); // M6
@@ -2762,18 +3180,24 @@ namespace NavalCombatCore
 
             // DE 502, Damage Control party trapped by fires
             {"502", ctx=>{
-                AddDescription(ctx, "DE 502, Damage Control party trapped by fires");
+                AddDescription(ctx, Localize(
+                    "DE 502, Damage Control party trapped by fires"
+                ));
 
                 ctx.subject.damageControlRatingHits += 1;
             }},
 
             // DE 503, Damage control system OOA.
             {"503", ctx=>{
-                AddDescription(ctx, "DE 503, Damage control system OOA.");
+                AddDescription(ctx, Localize(
+                    "DE 503: Damage control system OOA"
+                ));
 
                 var DE = new DamageControlModifier()
                 {
-                    cause="DE 503: Damage control system OOA",
+                    cause=Localize(
+                        "DE 503: Damage control system OOA"
+                    ),
                     damageControlDieRollOffset=10 // For M3 Die Roll
                 };
                 DE.BeginAt(ctx.subject);
@@ -2781,7 +3205,9 @@ namespace NavalCombatCore
 
             // DE 504, Loss of power to fire control radar.
             {"504", ctx=>{
-                AddDescription(ctx, "DE 504, Loss of power to fire control radar.");
+                AddDescription(ctx, Localize(
+                    "DE 504, Loss of power to fire control radar."
+                ));
 
                 foreach(var battery in ctx.subject.batteryStatus)
                 {
@@ -2798,7 +3224,9 @@ namespace NavalCombatCore
 
             // DE 505, Loss of power to surface OR air seartch radar.
             {"505", ctx=>{
-                AddDescription(ctx, "DE 505, Loss of power to surface OR air seartch radar.");
+                AddDescription(ctx, Localize(
+                    "DE 505, Loss of power to surface OR air seartch radar."
+                ));
 
                 // TODO: Radar
                 ctx.subject.searchLightHits.portHit += 1;
@@ -2807,11 +3235,15 @@ namespace NavalCombatCore
 
             // DE 506, Gunnery damage control party trapped by fires.
             { "506", ctx=>{
-                AddDescription(ctx, "DE 506, Gunnery damage control party trapped by fires.");
+                AddDescription(ctx, Localize(
+                    "DE 506: Gunnery damage control party trapped by fires"
+                ));
 
                 var DE = new DamageControlModifier()
                 {
-                    cause = "DE 506: Gunnery damage control party trapped by fires",
+                    cause = Localize(
+                        "DE 506: Gunnery damage control party trapped by fires"
+                    ),
                     isBatteryDamageControlBlock = true,
                 };
                 DE.BeginAt(ctx.subject);
@@ -2819,7 +3251,9 @@ namespace NavalCombatCore
 
             // DE 507, Localized damage to fire-fighting systems.
             {"507", ctx=>{
-                AddDescription(ctx, "DE 507, Localized damage to fire-fighting systems.");
+                AddDescription(ctx, Localize(
+                    "DE 507, Localized damage to fire-fighting systems."
+                ));
 
                 if(ctx.source is SubState subState)
                 {
@@ -2829,7 +3263,9 @@ namespace NavalCombatCore
 
             // DE 508, Damage to circuit in one primary OR secondary battery fire control system.
             {"508", ctx=>{
-                AddDescription(ctx, "DE 508, Damage to circuit in one primary OR secondary battery fire control system.");
+                AddDescription(ctx, Localize(
+                    "DE 508, Damage to circuit in one primary OR secondary battery fire control system."
+                ));
 
                 if(TryToSampleAPrimaryOrSecondaryFireControlSystem(ctx, out var fcsRec))
                 {
@@ -2839,13 +3275,17 @@ namespace NavalCombatCore
 
             // DE 509, Loss communications to one primary OR secondary battery fire control system.
             {"509", ctx=>{
-                AddDescription(ctx, "DE 509, Loss communications to one primary OR secondary battery fire control system.");
+                AddDescription(ctx, Localize(
+                    "DE 509, Loss communications to one primary OR secondary battery fire control system."
+                ));
 
                 if(TryToSampleAPrimaryOrSecondaryFireControlSystem(ctx, out var fcsRec))
                 {
                     var DE = new LossOfCommunicationToFireControlSystemState()
                     {
-                        cause = "DE 509, Loss communications to one primary OR secondary battery fire control system."
+                        cause = Localize(
+                            "DE 509, Loss communications to one primary OR secondary battery fire control system."
+                        )
                     };
                     DE.BeginAt(ctx.subject);
                 }
@@ -2853,7 +3293,9 @@ namespace NavalCombatCore
 
             // DE 510, Damage to power distribution system.
             {"510", ctx=>{
-                AddDescription(ctx, "DE 510, Damage to power distribution system.");
+                AddDescription(ctx, Localize(
+                    "DE 510, Damage to power distribution system."
+                ));
 
                 // TODO: Command
                 var locations = ctx.subject.batteryStatus.SelectMany(bty => bty.mountStatus).Select(mnt => mnt.GetMountLocationRecordInfo().record.mountLocation).ToList();
@@ -2877,13 +3319,17 @@ namespace NavalCombatCore
 
             // DE 511, Loss of communications and power to one searchlight battery.
             {"511", ctx=>{
-                AddDescription(ctx, "DE 511, Loss of communications and power to one searchlight battery.");
+                AddDescription(ctx, Localize(
+                    "DE 511, Loss of communications and power to one searchlight battery."
+                ));
 
                 var DE = new LossOfCommunicationsAndPowerToSearchLight()
                 {
                     location = RandomUtils.D100F() <= 50 ? RapidFiringBatteryLocation.Port : RapidFiringBatteryLocation.Starboard,
                     succPercentage = 30,
-                    cause="DE 511, Loss of communications and power to one searchlight battery."
+                    cause=Localize(
+                        "DE 511, Loss of communications and power to one searchlight battery."
+                    )
                 };
                 DE.BeginAt(ctx.subject);
 
@@ -2892,14 +3338,18 @@ namespace NavalCombatCore
 
             // DE 512, Communication curcuits destroyed - no radio communications possible
             {"512", ctx=>{
-                AddDescription(ctx, "DE 512, Communication curcuits destroyed");
+                AddDescription(ctx, Localize(
+                    "DE 512, Communication curcuits destroyed"
+                ));
 
                 // TODO: Handle Command
             } },
 
             // DE 513, Disruption to communications circuits - no radio communications possible.
             { "513", ctx=>{
-                AddDescription(ctx, "DE 513, Disruption to communications circuits");
+                AddDescription(ctx, Localize(
+                    "DE 513, Disruption to communications circuits"
+                ));
 
                 // TODO: Command
                 Lost1RandomSearchlight(ctx);
@@ -2907,12 +3357,16 @@ namespace NavalCombatCore
 
             // DE 514, Loss of communication to engine room
             { "514", ctx=>{
-                AddDescription(ctx, "DE 514, Loss of communication to engine room");
+                AddDescription(ctx, Localize(
+                    "DE 514, Loss of communication to engine room"
+                ));
 
                 // TODO: Command
                 var DE = new LossOfCommunicationToEngineRoom()
                 {
-                    cause = "DE 514, Loss of communication to engine room",
+                    cause = Localize(
+                        "DE 514, Loss of communication to engine room"
+                    ),
                     succPercentage = 50,
                 };
                 DE.BeginAt(ctx.subject);
@@ -2920,7 +3374,9 @@ namespace NavalCombatCore
 
             // DE 515, Primary battery handling or handling room abandoned.
             {"515", ctx=>{
-                AddDescription(ctx, "DE 515, Primary battery handling or handling room abandoned.");
+                AddDescription(ctx, Localize(
+                    "DE 515, Primary battery handling or handling room abandoned."
+                ));
 
                 if(TryToSampleAPrimaryBatteryMount(ctx, out var mount))
                 {
@@ -2928,7 +3384,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
                         givenTimeSeconds = 240,
-                        cause = "DE 515, Primary battery handling or handling room abandoned."
+                        cause = Localize(
+                            "DE 515, Primary battery handling or handling room abandoned."
+                        )
                     };
                     DE.BeginAt(mount);
 
@@ -2938,7 +3396,9 @@ namespace NavalCombatCore
 
             // DE 516, One primary battery turret or gunmount abandoned.
             {"516", ctx=>{
-                AddDescription(ctx, "DE 516, One primary battery turret or gunmount abandoned.");
+                AddDescription(ctx, Localize(
+                    "DE 516, One primary battery turret or gunmount abandoned"
+                ));
 
                 if(ctx.source is SubState subState)
                 {
@@ -2948,7 +3408,9 @@ namespace NavalCombatCore
                         {
                             lifeCycle = StateLifeCycle.Dependent,
                             dependentObjectId = subState.objectId,
-                            cause="DE 516, One primary battery turret or gunmount abandoned"
+                            cause=Localize(
+                                "DE 516, One primary battery turret or gunmount abandoned"
+                            )
                         };
                         DE.BeginAt(mount);
                     }
@@ -2959,7 +3421,9 @@ namespace NavalCombatCore
 
             // DE 517, One secondary battery turret or gunmount adandoned
             {"517", ctx=>{
-                AddDescription(ctx, "DE 517, One secondary battery turret or gunmount adandoned");
+                AddDescription(ctx, Localize(
+                    "DE 517, One secondary battery turret or gunmount adandoned"
+                ));
 
                 if(TryToSampleASecondaryBatteryMount(ctx, out var mount))
                 {
@@ -2970,7 +3434,9 @@ namespace NavalCombatCore
 
             // DE *601, Primary battery guns and FCS out of alignment and damage to torpedo tube mounts.
             {"*601", ctx=>{
-                AddDescription(ctx, "DE *601, Primary battery guns and FCS out of alignment and damage to torpedo tube mounts.");
+                AddDescription(ctx, Localize(
+                    "DE *601, Primary battery guns and FCS out of alignment and damage to torpedo tube mounts."
+                ));
 
                 if(CheckAndEnsureOneShotHappendState(ctx, "*601"))
                 {
@@ -2987,7 +3453,9 @@ namespace NavalCombatCore
                         var DE = new FireControlValueModifier()
                         {
                             fireControlValueOffset=fireControlValueOffset,
-                            cause="DE *601, Primary battery guns and FCS out of alignment"
+                            cause=Localize(
+                                "DE *601, Primary battery guns and FCS out of alignment"
+                            )
                         };
                         DE.BeginAt(bty);
                     }
@@ -2995,7 +3463,9 @@ namespace NavalCombatCore
                     var DE2 = new TorpedoMountDamaged()
                     {
                         operationalPercentange = 20,
-                        cause="DE *601, damage to torpedo tube mounts"
+                        cause=Localize(
+                            "DE *601, damage to torpedo tube mounts"
+                        )
                     };
                     DE2.BeginAt(ctx.subject);
 
@@ -3033,13 +3503,17 @@ namespace NavalCombatCore
 
             // DE *602, Loss of communication to engine rooms and control of helm.
             {"*602", ctx=>{
-                AddDescription(ctx, "DE *602, Loss of communication to engine rooms and control of helm.");
+                AddDescription(ctx, Localize(
+                    "DE *602, Loss of communication to engine rooms and control of helm."
+                ));
 
                 if(CheckAndEnsureOneShotHappendState(ctx, "*602"))
                 {
                     var DE = new DE602DyanmicModifier()
                     {
-                        cause="DE *602, Loss of communication to engine rooms and control of helm."
+                        cause=Localize(
+                            "DE *602, Loss of communication to engine rooms and control of helm."
+                        )
                     };
                     DE.BeginAt(ctx.subject);
 
@@ -3064,7 +3538,9 @@ namespace NavalCombatCore
 
             // DE 603, Shipboard fire
             {"603", ctx=>{
-                AddDescription(ctx, "DE 603, Shipboard fire");
+                AddDescription(ctx, Localize(
+                    "DE 603, Shipboard fire"
+                ));
 
                 var severity = (float)(Math.Round(RandomUtils.NextFloat() * 10) * 10);
                 var damageTier = ctx.subject.GetDamageTier();
@@ -3076,7 +3552,9 @@ namespace NavalCombatCore
                     lifeCycle=StateLifeCycle.ShipboardFire,
                     severity=severity,
                     explosionProbPercent = 4,
-                    cause="DE 603, Shipboard fire"
+                    cause=Localize(
+                        "DE 603, Shipboard fire"
+                    )
                 };
                 DE.BeginAt(ctx.subject);
 
@@ -3092,7 +3570,9 @@ namespace NavalCombatCore
                         var DE2 = new BatteryMountStatusModifier()
                         {
                             lifeCycle=StateLifeCycle.GivenTime,
-                            cause = "DE 603: Loss of power to all weapons"
+                            cause = Localize(
+                                "DE 603: Loss of power to all weapons"
+                            )
                         };
                         DE2.BeginAt(mount);
                     }
@@ -3117,7 +3597,9 @@ namespace NavalCombatCore
 
             // DE *604, Compartment flooding causes list to [PORT/STARBOARD].
             {"*604", ctx=>{
-                AddDescription(ctx, "DE *604, Compartment flooding causes list to [PORT/STARBOARD].");
+                AddDescription(ctx, Localize(
+                    "DE *604, Compartment flooding causes list to [PORT/STARBOARD]."
+                ));
 
                 if(CheckAndEnsureOneShotHappendState(ctx, "*604"))
                 {
@@ -3163,7 +3645,9 @@ namespace NavalCombatCore
 
             // DE 605, Structural and power distribution damage.
             {"605", ctx=>{
-                AddDescription(ctx, "DE 605, Structural and power distribution damage.");
+                AddDescription(ctx, Localize(
+                    "DE 605, Structural and power distribution damage"
+                ));
 
                 foreach(var bty in ctx.subject.batteryStatus)
                 {
@@ -3172,7 +3656,9 @@ namespace NavalCombatCore
 
                 var DE = new DamageControlModifier()
                 {
-                    cause = "DE 605, Structural and power distribution damage",
+                    cause = Localize(
+                        "DE 605, Structural and power distribution damage"
+                    ),
                     severityDieRollOffset = 20,
                     fightingFireDieRollOffset = 20
                 };
@@ -3195,9 +3681,11 @@ namespace NavalCombatCore
                 }
             }},
 
-            // DE *606, Flooding andn structural damage.
+            // DE *606, Flooding and structural damage.
             {"*606", ctx=>{
-                AddDescription(ctx, "DE *606, Flooding andn structural damage.");
+                AddDescription(ctx, Localize(
+                    "DE *606, Flooding and structural damage."
+                ));
 
                 if(CheckAndEnsureOneShotHappendState(ctx, "*606"))
                 {
@@ -3241,7 +3729,9 @@ namespace NavalCombatCore
 
             // DE 607, All primary, secondary AND tertiary battery mounts in one or more sections OOA due to structural damage.
             {"607", ctx=>{
-                AddDescription(ctx, "DE 607, All primary, secondary AND tertiary battery mounts in one or more sections OOA due to structural damage.");
+                AddDescription(ctx, Localize(
+                    "DE 607, All primary, secondary AND tertiary battery mounts in one or more sections OOA due to structural damage."
+                ));
 
                 var damageTier = ctx.subject.GetDamageTier();
 
@@ -3289,7 +3779,9 @@ namespace NavalCombatCore
                     // TODO: Command
                     var DE = new DE607DyanmicModifier()
                     {
-                        cause="DE 607, Visual communications with other ships in company limited to semaphore only"
+                        cause=Localize(
+                            "DE 607, Visual communications with other ships in company limited to semaphore only"
+                        )
                     };
                     DE.BeginAt(ctx.subject);
                 }
@@ -3297,12 +3789,16 @@ namespace NavalCombatCore
 
             // DE 608, Compartment flooding due to splinter and structural damage.
             {"608", ctx=>{
-                AddDescription(ctx, "DE 608, Compartment flooding due to splinter and structural damage.");
+                AddDescription(ctx, Localize(
+                    "DE 608, Compartment flooding due to splinter and structural damage."
+                ));
 
                 var DE = new DamageControlModifier()
                 {
                     lifeCycle=StateLifeCycle.GivenTime,
-                    cause="DE 608, Compartment flooding due to splinter and structural damage.",
+                    cause=Localize(
+                        "DE 608, Compartment flooding due to splinter and structural damage."
+                    ),
                     isDamageControlBlocked = true
                 };
                 DE.BeginAt(ctx.subject);
@@ -3319,7 +3815,9 @@ namespace NavalCombatCore
                     ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -2;
                     var DE2 = new DynamicModifier()
                     {
-                        cause="DE 608, Loss of stability and maneuver due to flooding",
+                        cause=Localize(
+                            "DE 608, Loss of stability and maneuver due to flooding"
+                        ),
                         isEvasiveManeuverBlocked=true,
                         standardTurnCoef=0.5f,
                         emergencyTurnCoef=0.5f,
@@ -3332,7 +3830,9 @@ namespace NavalCombatCore
 
                     var DE2 = new ArmorModifier()
                     {
-                        cause="DE 608: Main waterline belt is submerged due to flooding",
+                        cause=Localize(
+                            "DE 608: Main waterline belt is submerged due to flooding"
+                        ),
                         mainBeltArmorCoef=0.5f,
                     };
                     DE2.BeginAt(ctx.subject);
@@ -3345,7 +3845,9 @@ namespace NavalCombatCore
 
                     var DE3 = new DynamicModifier()
                     {
-                        cause="DE 608, Loss of stability and maneuver due to flooding.",
+                        cause=Localize(
+                            "DE 608: Loss of stability and maneuver due to flooding"
+                        ),
                         isEvasiveManeuverBlocked = true,
                         standardTurnCoef=0.5f,
                         emergencyTurnCoef=0.5f,
@@ -3354,7 +3856,9 @@ namespace NavalCombatCore
 
                     var DE4 = new ShipSettleState()
                     {
-                        cause="DE 608, Loss of stability and maneuver due to flooding.",
+                        cause=Localize(
+                            "DE 608, Loss of stability and maneuver due to flooding."
+                        ),
                         maxSpeedUpperLimit=6,
                         maxSpeedUpperLimitAppliedThreshold=30,
                         sinkingThreshold=10
@@ -3365,7 +3869,9 @@ namespace NavalCombatCore
 
             // DE *609, Flooding due to splinter and shell damage near waterline.
             {"*609", ctx=>{
-                AddDescription(ctx, "DE *609, Flooding due to splinter and shell damage near waterline.");
+                AddDescription(ctx, Localize(
+                    "DE *609, Flooding due to splinter and shell damage near waterline."
+                ));
 
                 if(CheckAndEnsureOneShotHappendState(ctx, "*609"))
                 {
@@ -3373,7 +3879,9 @@ namespace NavalCombatCore
                     {
                         lifeCycle=StateLifeCycle.GivenTime,
                         givenTimeSeconds=480,
-                        cause="DE *609, Flooding due to splinter and shell damage near waterline."
+                        cause=Localize(
+                            "DE *609, Flooding due to splinter and shell damage near waterline."
+                        )
                     };
                     DE.BeginAt(ctx.subject);
                 }
@@ -3381,7 +3889,9 @@ namespace NavalCombatCore
 
             // DE 610, Collapse of watertight bulkheads causes flooding for ships.
             {"610", ctx=>{
-                AddDescription(ctx, "DE 610, Collapse of watertight bulkheads causes flooding for ships.");
+                AddDescription(ctx, Localize(
+                    "DE 610, Collapse of watertight bulkheads causes flooding for ships."
+                ));
 
                 var damageTier = ctx.subject.GetDamageTier();
                 if(damageTier < 4)
@@ -3440,7 +3950,9 @@ namespace NavalCombatCore
 
             // DE 611, Steam leaks due to structural damage and flooding.
             { "611", ctx=>{
-                AddDescription(ctx, "DE 611, Steam leaks due to structural damage and flooding.");
+                AddDescription(ctx, Localize(
+                    "DE 611, Steam leaks due to structural damage and flooding."
+                ));
 
                 ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -2;
                 ctx.subject.damageControlRatingHits += 1;
@@ -3463,7 +3975,9 @@ namespace NavalCombatCore
 
             // DE 612, Uncontrolled flooding
             {"612", ctx=>{
-                AddDescription(ctx, "DE 612, Uncontrolled flooding");
+                AddDescription(ctx, Localize(
+                    "DE 612, Uncontrolled flooding"
+                ));
 
                 var damageTier = ctx.subject.GetDamageTier();
                 if(damageTier < 4)
@@ -3498,7 +4012,9 @@ namespace NavalCombatCore
                 {
                     var DE = new ShipSettleState()
                     {
-                        cause="DE 612, Uncontrolled flooding",
+                        cause=Localize(
+                            "DE 612, Uncontrolled flooding"
+                        ),
                         maxSpeedUpperLimit=6,
                         maxSpeedUpperLimitAppliedThreshold=35,
                         sinkingThreshold=10
@@ -3509,7 +4025,9 @@ namespace NavalCombatCore
                 {
                     var DE = new ShipSettleState()
                     {
-                        cause="DE 612, Uncontrolled flooding",
+                        cause=Localize(
+                            "DE 612, Uncontrolled flooding"
+                        ),
                         maxSpeedUpperLimit=2,
                         maxSpeedUpperLimitAppliedThreshold=65,
                         sinkingThreshold=25
@@ -3520,7 +4038,9 @@ namespace NavalCombatCore
 
             // DE *613, Flooding in shaft tunnel.
             {"*613", ctx=>{
-                AddDescription(ctx, "DE *613, Flooding in shaft tunnel.");
+                AddDescription(ctx, Localize(
+                    "DE *613, Flooding in shaft tunnel."
+                ));
 
                 if(CheckAndEnsureOneShotHappendState(ctx, "*613"))
                 {
@@ -3540,11 +4060,15 @@ namespace NavalCombatCore
 
             // DE 614, Damage to machinery spaces.
             {"614", ctx=>{
-                AddDescription(ctx, "DE 614, Damage to machinery spaces.");
+                AddDescription(ctx, Localize(
+                    "DE 614, Damage to machinery spaces."
+                ));
 
                 var DE = new DynamicModifier()
                 {
-                    cause="DE 614, Damage to machinery spaces.",
+                    cause=Localize(
+                        "DE 614, Damage to machinery spaces."
+                    ),
                     accelerationUpperLimit = 1,
                 };
                 DE.BeginAt(ctx.subject);
@@ -3552,7 +4076,9 @@ namespace NavalCombatCore
                 var DE2 = new DamageControlModifier()
                 {
                     lifeCycle=StateLifeCycle.GivenTime,
-                    cause = "DE 614, Temporary interruption to power distribution",
+                    cause = Localize(
+                        "DE 614, Temporary interruption to power distribution"
+                    ),
                     isDamageControlBlocked = true,
                 };
                 DE2.BeginAt(ctx.subject);
@@ -3587,7 +4113,9 @@ namespace NavalCombatCore
 
             // DE *615, Damage to firing circuits of primary battery in one section.
             {"*615", ctx=>{
-                AddDescription(ctx, "DE *615, Damage to firing circuits of primary battery in one section.");
+                AddDescription(ctx, Localize(
+                    "DE *615, Damage to firing circuits of primary battery in one section."
+                ));
 
                 if(CheckAndEnsureOneShotHappendState(ctx, "*615"))
                 {
@@ -3597,7 +4125,11 @@ namespace NavalCombatCore
 
                         var DE = new FiringCircuitDamagedMaster()
                         {
-                            cause=$"DE *615, Damage to firing circuits of primary battery in {location}"
+                            // cause=$"DE *615, Damage to firing circuits of primary battery in {location}"
+                            cause=Localize(
+                                "DE *615, Damage to firing circuits of primary battery in {0}",
+                                location
+                            )
                         };
                         DE.BeginAt(ctx.subject);
 
@@ -3609,7 +4141,11 @@ namespace NavalCombatCore
                                 {
                                     lifeCycle=StateLifeCycle.Dependent,
                                     dependentObjectId=DE.objectId,
-                                    cause=$"DE *615, Damage to firing circuits of primary battery in {location}"
+                                    // cause=$"DE *615, Damage to firing circuits of primary battery in {location}"
+                                    cause=Localize(
+                                        "DE *615, Damage to firing circuits of primary battery in {0}",
+                                        location
+                                    )
                                 };
                                 DE2.BeginAt(mount2);
                             }
@@ -3629,7 +4165,9 @@ namespace NavalCombatCore
 
             // DE 616, Severe structural damage for ships at damage Tier 8 or above.
             {"616", ctx=>{
-                AddDescription(ctx, "DE 616, Severe structural damage for ships at damage Tier 8 or above.");
+                AddDescription(ctx, Localize(
+                    "DE 616, Severe structural damage for ships at damage Tier 8 or above."
+                ));
 
                 var damageTier = ctx.subject.GetDamageTier();
                 if(damageTier < 7)
@@ -3649,7 +4187,9 @@ namespace NavalCombatCore
 
                     var DE = new SinkingState()
                     {
-                        cause="DE 616: Severe structural damage for ships"
+                        cause=Localize(
+                            "DE 616: Severe structural damage for ships"
+                        )
                     };
                     DE.BeginAt(ctx.subject);
                 }
@@ -3657,7 +4197,9 @@ namespace NavalCombatCore
 
             // DE 617, Battery in a section is OOA
             { "617", ctx=>{
-                AddDescription(ctx, "DE 617, Battery in a section is OOA");
+                AddDescription(ctx, Localize(
+                    "DE 617, Battery in a section is OOA"
+                ));
 
                 var damageTier = ctx.subject.GetDamageTier();
 
@@ -3704,7 +4246,9 @@ namespace NavalCombatCore
                 {
                     var DE = new ShipSettleState()
                     {
-                        cause=" DE 617 (Tier 9-10): Ship Begin to settle",
+                        cause=Localize(
+                            "DE 617 (Tier 9-10): Ship Begin to settle"
+                        ),
                         sinkingThreshold=25,
                         maxSpeedUpperLimitAppliedThreshold=65,
                         maxSpeedUpperLimit=2
@@ -3742,40 +4286,54 @@ namespace NavalCombatCore
             
             // DE 800, ship destroyed
             { "800", ctx=>{
-                AddDescription(ctx, "DE 800, ship destroyed");
+                AddDescription(ctx, Localize(
+                    "DE 800, ship destroyed"
+                ));
 
                 ctx.subject.mapState = MapState.Destroyed;
             }},
 
             // DE 801, Damage to rudder
             { "801", ctx=>{
-                AddDescription(ctx, "DE 801, Damage to rudder");
+                AddDescription(ctx, Localize(
+                    "DE 801, Damage to rudder"
+                ));
 
                 var DE = new DynamicModifier()
                 {
                     lifeCycle=StateLifeCycle.GivenTime,
-                    cause="DE 801, Damage to rudder"
+                    cause=Localize(
+                        "DE 801, Damage to rudder"
+                    )
                 };
                 DE.BeginAt(ctx.subject);
             }},
 
             // DE 802, Fuel fire.
             {"802", ctx=>{
-                AddDescription(ctx, "DE 802, Fuel fire.");
+                AddDescription(ctx, Localize(
+                    "DE 802, Fuel fire."
+                ));
 
-                AddShipboardFire(ctx, "DE 802: Shipboard fire severity 30", 30);
+                AddShipboardFire(ctx, Localize(
+                    "DE 802: Shipboard fire severity 30"
+                ), 30);
                 // TODO: Handle Gasoline-powered ships and diesel-powered ship destroyed roll
             }},
 
             // DE 803, Damage to torpedo tubes
             {"803", ctx=>{
-                AddDescription(ctx, "DE 803, Damage to torpedo tubes");
+                AddDescription(ctx, Localize(
+                    "DE 803, Damage to torpedo tubes"
+                ));
 
                 if(TryToSampleATorpedoMount(ctx, out var mount))
                 {
                     var DE = new TorpedoMountDamaged()
                     {
-                        cause="DE 803, Damage to torpedo tubes",
+                        cause=Localize(
+                            "DE 803, Damage to torpedo tubes"
+                        ),
                         operationalPercentange=40
                     };
                     DE.BeginAt(mount);
@@ -3784,11 +4342,15 @@ namespace NavalCombatCore
 
             // DE 804, Damage to engine
             {"804", ctx=>{
-                AddDescription(ctx, "DE 804, Damage to engine");
+                AddDescription(ctx, Localize(
+                    "DE 804, Damage to engine"
+                ));
 
                 var DE = new DynamicModifier()
                 {
-                    cause="DE 804: Damage to engine",
+                    cause=Localize(
+                        "DE 804: Damage to engine"
+                    ),
                     maxSpeedUpperLimit=4,
                 };
                 DE.BeginAt(ctx.subject);
@@ -3798,7 +4360,9 @@ namespace NavalCombatCore
                     var DE2 = new DynamicModifier()
                     {
                         lifeCycle=StateLifeCycle.GivenTime,
-                        cause="DE 804: Rudder is jammed"
+                        cause=Localize(
+                            "DE 804: Rudder is jammed"
+                        )
                     };
                     DE2.BeginAt(ctx.subject);
                 }
@@ -3806,11 +4370,15 @@ namespace NavalCombatCore
 
             // DE 805, Damage to engines. Maximum speed reduced by 50%
             {"805", ctx=>{
-                AddDescription(ctx, "DE 805, Damage to engines. Maximum speed reduced by 50%");
+                AddDescription(ctx, Localize(
+                    "DE 805, Damage to engines. Maximum speed reduced by 50%"
+                ));
 
                 var DE = new DynamicModifier()
                 {
-                    cause="DE 805: Damage to engines",
+                    cause=Localize(
+                        "DE 805: Damage to engines"
+                    ),
                     maxSpeedKnotCoef=0.5f
                 };
                 DE.BeginAt(ctx.subject);
@@ -3818,18 +4386,24 @@ namespace NavalCombatCore
 
             // DE 806, Damage to engine. Ship is dead in the water (DIW).
             {"806", ctx=>{
-                AddDescription(ctx, "DE 806, Damage to engine. Ship is dead in the water (DIW).");
+                AddDescription(ctx, Localize(
+                    "DE 806, Damage to engine. Ship is dead in the water (DIW)."
+                ));
 
                 var DE = new DE806DynamicModifier()
                 {
-                    cause="DE 806: Damage to engine. Ship is dead in the water (DIW)"
+                    cause=Localize(
+                        "DE 806: Damage to engine. Ship is dead in the water (DIW)"
+                    )
                 };
                 DE.BeginAt(ctx.subject);
             }},
 
             // DE 807, Damage to hull
             {"807", ctx=>{
-                AddDescription(ctx, "DE 807, Damage to hull");
+                AddDescription(ctx, Localize(
+                    "DE 807, Damage to hull"
+                ));
 
                 ctx.subject.dynamicStatus.maxSpeedKnotsOffset += -8;
 
@@ -3837,7 +4411,9 @@ namespace NavalCombatCore
                 {
                     var DE = new DynamicModifier()
                     {
-                        cause="DE 807: Engine room is flooded and ship is dead in the water (DIW)",
+                        cause=Localize(
+                            "DE 807: Engine room is flooded and ship is dead in the water (DIW)"
+                        ),
                         maxSpeedKnotCoef=0
                     };
                     DE.BeginAt(ctx.subject);
@@ -3846,7 +4422,9 @@ namespace NavalCombatCore
 
             // DE 808: One torpedo tube damaged and OOA.
             {"808", ctx=>{
-                AddDescription(ctx, "DE 808: One torpedo tube damaged and OOA.");
+                AddDescription(ctx, Localize(
+                    "DE 808: One torpedo tube damaged and OOA."
+                ));
 
                 if(TryToSampleATorpedoMount(ctx, out var mount))
                 {
@@ -3856,7 +4434,9 @@ namespace NavalCombatCore
 
             // DE 809: Damage to one deck gun.
             {"809", ctx=>{
-                AddDescription(ctx, "DE 809: Damage to one deck gun.");
+                AddDescription(ctx, Localize(
+                    "DE 809: Damage to one deck gun."
+                ));
 
                 // TODO: Here original text said "one deck gun" so is it proper to use a "mount", though it doesn't seem to small craft will have a mount with multiple barrels.
                 if (RandomUtils.D100F() < 25)
@@ -3877,14 +4457,18 @@ namespace NavalCombatCore
 
             // DE 810, lost some rapid firing batteries
             {"810", ctx=>{
-                AddDescription(ctx, "DE 810, damage to rapid firing batteries");
+                AddDescription(ctx, Localize(
+                    "DE 810, damage to rapid firing batteries"
+                ));
 
                 Lost1RandomRapidFiringBatteryBox(ctx);
             }},
 
             // DE 811, damage to torpedo mount
             {"811", ctx=>{
-                AddDescription(ctx, "DE 811, damage to torpedo mount");
+                AddDescription(ctx, Localize(
+                    "DE 811, damage to torpedo mount"
+                ));
 
                 if(TryToSampleATorpedoMount(ctx, out var mount))
                 {
@@ -3894,7 +4478,9 @@ namespace NavalCombatCore
 
             // DE 812: One Deck Gun OOA
             {"812", ctx=>{
-                AddDescription(ctx, "DE 812: One Deck Gun OOA");
+                AddDescription(ctx, Localize(
+                    "DE 812: One Deck Gun OOA"
+                ));
 
                 var mounts = ctx.subject.batteryStatus.SelectMany(bty => bty.mountStatus).ToList();
                 if(mounts.Count > 0)
@@ -3906,14 +4492,18 @@ namespace NavalCombatCore
 
             // DE 813: Crew casualties
             {"813", ctx=>{
-                AddDescription(ctx, "DE 813: Crew casualties");
+                AddDescription(ctx, Localize(
+                    "DE 813: Crew casualties"
+                ));
 
                 var givenTimeSeconds = RandomUtils.D100F() <= 20 ? 240 : 120;
                 var DE = new DynamicModifier()
                 {
                     lifeCycle=StateLifeCycle.GivenTime,
                     givenTimeSeconds=givenTimeSeconds,
-                    cause="DE 813: Crew casualties",
+                    cause=Localize(
+                        "DE 813: Crew casualties"
+                    ),
                     isCourseChangeBlocked=true,
                 };
                 DE.BeginAt(ctx.subject);
@@ -3922,7 +4512,9 @@ namespace NavalCombatCore
                 {
                     lifeCycle=StateLifeCycle.GivenTime,
                     givenTimeSeconds=givenTimeSeconds,
-                    cause="DE 813: Crew casualties",
+                    cause=Localize(
+                        "DE 813: Crew casualties"
+                    ),
                 };
                 DE2.BeginAt(ctx.subject);
 
@@ -3930,7 +4522,9 @@ namespace NavalCombatCore
                 {
                     lifeCycle=StateLifeCycle.GivenTime,
                     givenTimeSeconds=givenTimeSeconds,
-                    cause="DE 813: Crew casualties",
+                    cause=Localize(
+                        "DE 813: Crew casualties"
+                    ),
                     status=MountStatus.Disabled,
                 };
                 DE3.BeginAt(ctx.subject);

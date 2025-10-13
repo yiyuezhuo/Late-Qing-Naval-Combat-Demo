@@ -1,0 +1,1096 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Dynamic Table Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Dynamic Table
+  m_TableCollectionNameGuidString: 01319b87f42fa3748a3c6cf56860807e
+  m_Entries:
+  - m_Id: 239253229568
+    m_Key: DE 100, Magazine explosion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 290541178880
+    m_Key: 'DE100 (A/B): Magazine explosion.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 312053764096
+    m_Key: DE 100, Shipboard fire only
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334283575296
+    m_Key: 'DE100 (C): Shipboard fire only.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363098443776
+    m_Key: DE 101, Fire in primary battery magazine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 390772461568
+    m_Key: DE 101, shipboard fire only
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416563236864
+    m_Key: 'DE101 (C): Shipboard fire only.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 622579060736
+    m_Key: DE 102, Flooding in primary battery barbette.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 648688603136
+    m_Key: DE 102, Damage to primary battery barbette.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 671304290304
+    m_Key: 'DE102 (HE): Shipboard fire Severity 30.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696704995328
+    m_Key: DE 103, Hit on a primary battery mount.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 720914518016
+    m_Key: 'DE 103: One primary battery turret or gunmount OOA.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 741290446848
+    m_Key: 'DE 103 (HE): Shipboard Fire 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 760810737664
+    m_Key: DE 104, Hit on Non-Primary Battery Mount
+    m_Metadata:
+      m_Items: []
+  - m_Id: 785234169856
+    m_Key: 'DE 104 (HE): shipboard fire Severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 806230855680
+    m_Key: DE 105, Hit on Ammo Hoist or handling room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 835393851392
+    m_Key: 'DE 105: Ammo Hoist or handling/handling room in one primary battery turret
+      or gunmount OOA permanently'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 871351619584
+    m_Key: 'DE 104: Ammo Hoist or handling/handling room in one primary battery turret
+      or gunmount OOA next turn'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904830554112
+    m_Key: 'DE 105 (A): Hit on Ammo Hoist or handling room'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1743750074368
+    m_Key: 'DE 106: Ammo Hoist or handling/handling room OOA permanently'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1794324992000
+    m_Key: DE 107, Hit on control system of primary battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1795369373696
+    m_Key: DE 108, hit on secondary battery control system
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1848456679424
+    m_Key: 'DE 108: Damage to secondary battery control system'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1868534812672
+    m_Key: 'DE 108: Shipboard fire severity 10'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1888432590848
+    m_Key: 'DE 108 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1920519016448
+    m_Key: DE 108, hit on ready-use ammo of primary battery and possibly cause fire
+      and more catastrophe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2053411344384
+    m_Key: 'DE 109 (A): Shipboard fire severity 50'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2077683781632
+    m_Key: 'DE 109 (A): Potential magazine explosion in primary battery ready-use
+      ammo'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2099112480768
+    m_Key: 'DE 109 (B): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2117219291136
+    m_Key: 'DE 109 (AB): Battery mount temporarily OOA'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2149691592704
+    m_Key: DE 110, hit on ready-use ammo of secondary battery and possibly cause
+      fire and more catastrophe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2192146337792
+    m_Key: 'DE 110 (A/B): Potential magazine explosion due to hit in secondary battery
+      ready-use ammo'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2218272657408
+    m_Key: 'DE 110 (A/B, no secondary battery): Shipboard fire severity 40'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2246819090432
+    m_Key: 'DE 110 (C, no secondary battery): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2268868546560
+    m_Key: DE 111, hit on primary battery's one barrel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2292088213504
+    m_Key: 'DE 111 (A/B): ready-use ammo fire, severity 50'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2310845140992
+    m_Key: 'DE 111 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8421312729088
+    m_Key: 'DE 112: Shock damage. Primary battery guns and FCS out of alignment'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8439805415424
+    m_Key: 'DE 112: Shock Damage Impact Control System'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8458025472000
+    m_Key: 'DE 112 (HE): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8478955048960
+    m_Key: 'DE 113: hit on secondary battery, FCS and rapid RF batteries'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8502829027328
+    m_Key: 'DE 113 (HE): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8525448908800
+    m_Key: DE 114, hit on secondary magazine or read-use ammo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8554884534272
+    m_Key: 'DE 114 (C): Ready-use ammo fire in secondary battery turret or mount.
+      Shipboard fire severity 40'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8581153460224
+    m_Key: 'DE 114 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8588342497280
+    m_Key: DE 115, Crew casualties in primary battery turret or gunmount
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79086275432448
+    m_Key: DE 116, Damage to engine spaces
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79139463401472
+    m_Key: 'DE 116 (HE): Shipboard fire severity 40'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79298930839552
+    m_Key: 'DE 117: Damage to engine room'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79317620658176
+    m_Key: 'DE 117 (AB): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79362801700864
+    m_Key: 'DE 117 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79393994739712
+    m_Key: DE 118, Damage to engine room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79416362962944
+    m_Key: 'DE 118 (HE): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79436420124672
+    m_Key: 'DE 118 (HE): Shipboard fire severity 40'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79452425588736
+    m_Key: DE 120, Steam Line Damaged
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79488052006912
+    m_Key: 'DE 120 (HE): Damage to Steam Line, Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79590955061248
+    m_Key: DE 121, Damage to main feedwater pump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79611192578048
+    m_Key: DE 121 (A/B), Damage to main feedwater pump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79630100500480
+    m_Key: DE 121 (C), Damage to main feedwater pump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79648576409600
+    m_Key: 'DE 121 (HE): Damage to main feedwater pump, Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79721804763136
+    m_Key: 'DE 122: Damage to fuel supply'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79754490974208
+    m_Key: 'DE 122 (HE): Damage to fuel supply, Shipboard fire severity 40'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79792420065280
+    m_Key: DE 123, Flooding in one boiler room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79813026680832
+    m_Key: 'DE 123 (C): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79829329940480
+    m_Key: 'DE 123 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79846300094464
+    m_Key: DE 124, Lost of communication to engine room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81899512565760
+    m_Key: DE 125, Damage to boiler room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81924615475200
+    m_Key: DE 125 (A/B), Damage to boiler room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81943615672320
+    m_Key: DE 125 (C), Damage to boiler room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81975127478272
+    m_Key: 'DE 125 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81992265404416
+    m_Key: DE 126, Heavy flooding in one engine room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82024918061056
+    m_Key: 'DE 126 (C): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82056572473344
+    m_Key: 'DE 126 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82074272436224
+    m_Key: DE 127, hit on torpedo mount and smoke generator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82091313893376
+    m_Key: DE 127, hit on torpedo mount
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82113568870400
+    m_Key: DE 127, hit on smoke generator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82133009469440
+    m_Key: 'DE 127: hit on torpedo mount, Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82155365109760
+    m_Key: DE 128, shipboard fire and smoke affect firing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82176521179136
+    m_Key: DE 128, shipboard fire and smoke affect firing (sub)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82924520771584
+    m_Key: DE 129, hit on searchlight and small arms stores
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82953054621696
+    m_Key: 'DE 129: Fire in small arms stores. Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82973694791680
+    m_Key: 'DE 129 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82991201816576
+    m_Key: DE 130, hit on torpedo tube and smoke generator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83010822770688
+    m_Key: 'DE 130: Temporary loss of power to primary battery gun in one section'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83027360911360
+    m_Key: 'DE 130 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83054930071552
+    m_Key: DE 132, Hit on rapid fire battery, searchlight, and possibly secondary
+      battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83074995621888
+    m_Key: 'DE 132 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83094419443712
+    m_Key: DE 133, damage to steering gear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83110651400192
+    m_Key: DE 133 (A/B), damage to steering gear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83131476119552
+    m_Key: 'DE 133 (C): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83148140089344
+    m_Key: DE 133 (C), hit on steering gear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83163382190080
+    m_Key: 'DE 133 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83180834689024
+    m_Key: DE 134, damage to rudder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83196953399296
+    m_Key: 'DE 134 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83231808065536
+    m_Key: DE 135, rudder jammed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83306454093824
+    m_Key: 'DE 135 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83328985894912
+    m_Key: DE 140 Signal bridge destroyed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83368613679104
+    m_Key: 'DE 140 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83389018968064
+    m_Key: DE 141, Disruption to communications
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83405976539136
+    m_Key: 'DE 141 (HE): Shipboard fire severity 50'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83425656213504
+    m_Key: DE 142, Temporary disruption to shipboard communications
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83452701085696
+    m_Key: 'DE 142 (HE): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83761011789824
+    m_Key: DE 143, Bridge hit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83788996186112
+    m_Key: 'DE 143 (C): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83819648159744
+    m_Key: DE 144, Flag Bridge hit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83837004189696
+    m_Key: 'DE 144 (A/B/C): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83852619583488
+    m_Key: 'DE 144 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83873704349696
+    m_Key: DE 145, Bridge hit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83897989369856
+    m_Key: DE 145, Bridge Destroyed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83933464793088
+    m_Key: 'DE 145 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83954604085248
+    m_Key: DE 146, Shock and structural damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84797977956352
+    m_Key: 'DE 146 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84838964695040
+    m_Key: DE 146 (HE), Shock and structural damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84855578333184
+    m_Key: DE 147, Heavy personnel casualties
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84870820433920
+    m_Key: DE 147 (HP), Heavy personnel casualties
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84891204751360
+    m_Key: 'DE 147 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84907138912256
+    m_Key: DE 148, funnel damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84926587899904
+    m_Key: 'DE 148 (HE): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84940814979072
+    m_Key: DE 149, Damage to crew spaces
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84964139503616
+    m_Key: 'DE 149 (HE): Damage to crew spaces, Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84995621949440
+    m_Key: DE 150, Damage to galley
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85012051038208
+    m_Key: 'DE 150 (HE): Damage to galley, Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85027876147200
+    m_Key: DE 151, Auxiliary powerplant OOA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85048373710848
+    m_Key: 'DE 151 (HE): Auxiliary powerplant OOA, Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85065960427520
+    m_Key: DE 152, Main powerplant OOA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85094930485248
+    m_Key: DE 153, damage to power distribution system
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85123313340416
+    m_Key: DE 153, damage to power distribution system (master)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85142204485632
+    m_Key: DE 153, damage to power distribution system (sub)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85197770625024
+    m_Key: DE 154, Fuel bunker hit (coal or oil)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85225201373184
+    m_Key: 'DE 154 (A/C): fuel bunker hit, Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85244990099456
+    m_Key: 'DE 154 (HE): fuel bunker hit, Shipboard fire severity 40'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85262815891456
+    m_Key: DE 155, Severe fire in flammables storage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85280541020160
+    m_Key: 'DE 155 (A/B/C): Severe fire in flammables storage, Shipboard fire severity
+      50'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85296487763968
+    m_Key: 'DE 155 (HE): Severe fire in flammables storage, Shipboard fire severity
+      30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85314791706624
+    m_Key: DE 156, hit on FCS in primary battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85329417244672
+    m_Key: DE 156 (A/B), hit on FCS in primary battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85347675049984
+    m_Key: DE 156 (C), hit on FCS in primary battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85361667248128
+    m_Key: 'DE 156 (HE): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85377991479296
+    m_Key: DE 157, hit on secondary battery FCS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85394152132608
+    m_Key: 'DE 157 (C): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85970344644608
+    m_Key: DE 157 (A/B), hit on FCS in secondary battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85988032024576
+    m_Key: DE 158, hit on FCS in primary battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86057263206400
+    m_Key: DE 159, Damage to one secondary battery fire control system.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86071943270400
+    m_Key: DE 160, hit on FCS of primary battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86134744584192
+    m_Key: 'DE 160 (HE): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86150905237504
+    m_Key: DE 161, hit on FCS of secondary battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86172698841088
+    m_Key: 'DE 161 (HE): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86196207915008
+    m_Key: DE 162, Damage to primary or secondary battery plotting room or transmitting
+      station.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86216147636224
+    m_Key: DE 162, damage to battery plotting room or transmitting station
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86235185582080
+    m_Key: DE 163, gunnery officer killed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86285383012352
+    m_Key: 'DE 163 (A/B/C): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86320120238080
+    m_Key: DE 164, hit on Fire Control Radar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86351690764288
+    m_Key: DE 164, hit on FCR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86368535089152
+    m_Key: 'DE 163 (A/B): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86408322256896
+    m_Key: DE 166, Damage to officer's accommodations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86453104840704
+    m_Key: 'DE 166: Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86468741206016
+    m_Key: 'DE 166 (HE): Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86486369865728
+    m_Key: 'DE 167, Heavy flooding causes list to [PORT/STARBOARD]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86502727651328
+    m_Key: Sunk due to capsize (DE 167)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86643173920768
+    m_Key: DE 168, severe flooding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86660848717824
+    m_Key: DE 168 (A/B), Severe Flooding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86678687092736
+    m_Key: DE 169, Compartment flooding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86705710993408
+    m_Key: 'DE 169 (C): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86721137643520
+    m_Key: DE 170, Main waterline belt is submerged due to flooding and list.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86742021083136
+    m_Key: 'DE 170 (A/B): Main waterline belt is submerged due to flooding and list.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86760035618816
+    m_Key: 'DE 170 (C): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86776481484800
+    m_Key: DE 171, Damage to prop/shaft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86795133554688
+    m_Key: 'DE 171 (HE): Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86811134824448
+    m_Key: DE 172, Uncontrolled flooding possible.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86829950472192
+    m_Key: 'DE 172 (A/B): Uncontrolled flooding possible'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86859285434368
+    m_Key: DE 173, Possible severe damage to watertight bulkhead for ships with damaged
+      machinery spaces.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86866013097984
+    m_Key: 'DE 173 (A/B): Possible severe damage to watertight bulkhead for ships
+      with damaged machinery spaces'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86893921996800
+    m_Key: DE 174, Damage to crew's mess
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86916625764352
+    m_Key: 'DE 174 (HE): Damage to crew''s mess, Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86936670343168
+    m_Key: 'DE 174 (A/B/C): Damage to crew''s mess, Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 87982750732288
+    m_Key: DE 175, Damage to junior officer's quarters.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 87998554869760
+    m_Key: 'DE 175: Damage to junior officer''s quarters, Shipboard fire severity
+      20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88021162168320
+    m_Key: 'DE 175 (HE): Damage to junior officer''s quarters, Shipboard fire severity
+      20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88039524831232
+    m_Key: DE 176, Additional structural damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88054129397760
+    m_Key: 'DE 176: Additional structural damage, Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075306438656
+    m_Key: DE 177, Damage to sick bay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88090770837504
+    m_Key: 'DE 177(A): Damage to sick bay, Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88106646278144
+    m_Key: 'DE 177(C): Damage to sick bay, Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88127466803200
+    m_Key: DE 178, Damage to senior officer's quaters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88148681592832
+    m_Key: 'DE 178(C): Damage to senior officer''s quaters, Shipboard fire severity
+      20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88162900283392
+    m_Key: 'DE 178(HE): Damage to senior officer''s quaters, Shipboard fire severity
+      30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88185947983872
+    m_Key: DE 179, Loss of belt armor plate.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88204302258176
+    m_Key: DE 180, Loss of systems due to flooding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88222539091968
+    m_Key: 'DE 180 (A/B): Loss of systems due to flooding'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88239337279488
+    m_Key: 'DE 180 (HE): Loss of systems due to flooding, Shipboard fire severity
+      30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88254411608064
+    m_Key: DE 181, Bow of ship breaks off.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88275966136320
+    m_Key: 'DE 181: Bow of ship breaks off'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88295645810688
+    m_Key: 'DE 182: Progressive loss of power systems due to flooding'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88344949854208
+    m_Key: 'DE 183: Damage to waterline bulkheads causes additional flooding.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89061559275520
+    m_Key: 'DE 183 (C): Damage to waterline bulkheads causes additional flooding,
+      Shipboard fire severity 20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89115594493952
+    m_Key: DE 501, Permanent damage to flooding valves or circuits.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89133055381504
+    m_Key: Permanent damage to flooding valves or circuits.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89155222278144
+    m_Key: DE 502, Damage Control party trapped by fires
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89183160537088
+    m_Key: DE 503, Damage control system OOA.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89204861865984
+    m_Key: 'DE 503: Damage control system OOA'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89220888301568
+    m_Key: DE 504, Loss of power to fire control radar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89238445658112
+    m_Key: DE 505, Loss of power to surface OR air seartch radar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89265494724608
+    m_Key: 'DE 506: Gunnery damage control party trapped by fires'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89391202209792
+    m_Key: DE 507, Localized damage to fire-fighting systems.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89437272444928
+    m_Key: DE 508, Damage to circuit in one primary OR secondary battery fire control
+      system.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89461096091648
+    m_Key: DE 509, Loss communications to one primary OR secondary battery fire control
+      system.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89480784154624
+    m_Key: DE 510, Damage to power distribution system.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89537935740928
+    m_Key: DE 511, Loss of communications and power to one searchlight battery.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89557988708352
+    m_Key: DE 512, Communication curcuits destroyed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89598769926144
+    m_Key: DE 513, Disruption to communications circuits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89616620883968
+    m_Key: DE 514, Loss of communication to engine room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89633800753152
+    m_Key: DE 515, Primary battery handling or handling room abandoned.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89686548320256
+    m_Key: DE 516, One primary battery turret or gunmount abandoned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89744123531264
+    m_Key: DE 517, One secondary battery turret or gunmount adandoned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89783843590144
+    m_Key: DE *601, Primary battery guns and FCS out of alignment and damage to torpedo
+      tube mounts.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89807516241920
+    m_Key: DE *601, Primary battery guns and FCS out of alignment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89815208595456
+    m_Key: DE *601, damage to torpedo tube mounts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89850872762368
+    m_Key: DE *602, Loss of communication to engine rooms and control of helm.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89871978500096
+    m_Key: DE 603, Shipboard fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89896477429760
+    m_Key: 'DE 603: Loss of power to all weapons'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89923748794368
+    m_Key: DE *604, Compartment flooding causes list to [PORT/STARBOARD].
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89950474899456
+    m_Key: DE 605, Structural and power distribution damage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89970154573824
+    m_Key: DE 605, Structural and power distribution damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89988060057600
+    m_Key: DE *606, Flooding andn structural damage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90223008190464
+    m_Key: DE 607, All primary, secondary AND tertiary battery mounts in one or more
+      sections OOA due to structural damage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90258403921920
+    m_Key: DE 607, Visual communications with other ships in company limited to semaphore
+      only
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90283687186432
+    m_Key: DE 608, Compartment flooding due to splinter and structural damage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90328419438592
+    m_Key: DE 608, Loss of stability and maneuver due to flooding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90349307072512
+    m_Key: 'DE 608: Main waterline belt is submerged due to flooding'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90389735968768
+    m_Key: DE 608, Loss of stability and maneuver due to flooding.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90418190127104
+    m_Key: DE *609, Flooding due to splinter and shell damage near waterline.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90954796797952
+    m_Key: DE 610, Collapse of watertight bulkheads causes flooding for ships.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90981397073920
+    m_Key: DE 611, Steam leaks due to structural damage and flooding.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91000728621056
+    m_Key: DE 612, Uncontrolled flooding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91038158589952
+    m_Key: DE *613, Flooding in shaft tunnel.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91055950827520
+    m_Key: DE 614, Damage to machinery spaces.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91080978239488
+    m_Key: DE 614, Temporary interruption to power distribution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91102432104448
+    m_Key: DE *615, Damage to firing circuits of primary battery in one section.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91124477366272
+    m_Key: DE *615, Damage to firing circuits of primary battery in {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91158195376128
+    m_Key: DE 616, Severe structural damage for ships at damage Tier 8 or above.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91182887243776
+    m_Key: 'DE 616: Severe structural damage for ships'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91203565162496
+    m_Key: DE 617, Battery in a section is OOA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91225547509760
+    m_Key: 'DE 617 (Tier 9-10): Ship Begin to settle'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91271244451840
+    m_Key: DE 800, ship destroyed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91288843751424
+    m_Key: DE 801, Damage to rudder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91342857998336
+    m_Key: DE 802, Fuel fire.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91359891066880
+    m_Key: 'DE 802: Shipboard fire severity 30'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91378668965888
+    m_Key: DE 803, Damage to torpedo tubes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91398994563072
+    m_Key: DE 804, Damage to engine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91423506075648
+    m_Key: 'DE 804: Rudder is jammed'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91440685944832
+    m_Key: DE 805, Damage to engines. Maximum speed reduced by 50%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91457605767168
+    m_Key: 'DE 805: Damage to engines'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91477218332672
+    m_Key: DE 806, Damage to engine. Ship is dead in the water (DIW).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91501796954112
+    m_Key: DE 807, Damage to hull
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91518922297344
+    m_Key: 'DE 807: Engine room is flooded and ship is dead in the water (DIW)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91536609677312
+    m_Key: 'DE 808: One torpedo tube damaged and OOA.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91552459952128
+    m_Key: 'DE 809: Damage to one deck gun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91568754823168
+    m_Key: DE 810, damage to rapid firing batteries
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91586471563264
+    m_Key: DE 811, damage to torpedo mount
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91612304281600
+    m_Key: 'DE 812: One Deck Gun OOA'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91631958790144
+    m_Key: 'DE 813: Crew casualties'
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2559787594128818235
+  references:
+    version: 2
+    RefIds:
+    - rid: 2559787594128818235
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1760258163327

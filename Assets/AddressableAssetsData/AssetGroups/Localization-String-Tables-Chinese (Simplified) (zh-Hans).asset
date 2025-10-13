@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-Chinese (Simplified) (zh-Hans)
   m_GUID: 03f439781c3951c4ca5b2ee9c498a582
   m_SerializeEntries:
+  - m_GUID: d98d79af62658cd47876a3369a80abbb
+    m_Address: Dynamic Table_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: eea025b36958f934d8cc0e35fd057e06
     m_Address: Standard Table_zh-Hans
     m_ReadOnly: 1

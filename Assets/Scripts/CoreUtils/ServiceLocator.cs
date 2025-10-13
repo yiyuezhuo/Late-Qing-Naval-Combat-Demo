@@ -29,11 +29,24 @@ namespace CoreUtils
         }
     }
 
+    public interface ILocalizeService
+    {
+        string Get(string key, params object[] args);
+        string GetFor(object obj);
+    }
+
+    public class FallbackLocalizeService : ILocalizeService
+    {
+        public string Get(string key, params object[] args) => string.Format(key, args);
+        public string GetFor(object obj) => Get(obj.ToString());
+    }
+
     public static class ServiceLocator
     {
         static Dictionary<Type, object> services = new()
         {
             {typeof(ILoggerService), new FallbackLogger()},
+            {typeof(ILocalizeService), new FallbackLocalizeService()}
             // {typeof(IMaskCheckService), new FallbackMaskChecker()}
         };
 

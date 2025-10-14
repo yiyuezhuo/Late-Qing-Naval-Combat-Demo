@@ -122,6 +122,16 @@
                                 </ui:FloatField>
                             </ui:VisualElement>
                         </ui:Tab>
+                        <ui:Tab label="Misc">
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <ui:SliderInt label="Reference Time Zone" high-value="12" low-value="-12" show-input-field="true">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="referenceTimeZoneOffset" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(15401230043615232)" />
+                                    </Bindings>
+                                </ui:SliderInt>
+                            </ui:VisualElement>
+                        </ui:Tab>
                     </ui:TabView>
                 </ui:VisualElement>
                 <Bindings>

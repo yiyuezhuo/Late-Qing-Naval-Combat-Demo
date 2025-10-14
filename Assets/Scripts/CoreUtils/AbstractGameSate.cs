@@ -29,7 +29,7 @@ namespace CoreUtils
         public List<NamedShip> namedShips = new();
         public List<ShipLog> shipLogs = new();
 
-
+        public int referenceTimeZoneOffset = +8; // +8 timezone
 
         public string LeadersToXML()
         {

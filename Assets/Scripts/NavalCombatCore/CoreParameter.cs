@@ -17,6 +17,8 @@ namespace NavalCombatCore
         public float globalHitCoef = 1f;
 
         public float automaticTorpedoFiringRangeRelaxedCoef = 2.5f;
+
+        public int referenceTimeZoneOffset = +8; // Though it should be a view parameter instead of Core?
         // public float automaticTorpedoFiringRelaxedAngle = 60; // Or dynamic resolved using standard or emergency turn?
     }
 }

@@ -33,12 +33,14 @@ namespace CoreUtils
     {
         string Get(string key, params object[] args);
         string GetFor(object obj);
+        string GetEnum<T>(T enumValue);
     }
 
     public class FallbackLocalizeService : ILocalizeService
     {
         public string Get(string key, params object[] args) => string.Format(key, args);
         public string GetFor(object obj) => Get(obj.ToString());
+        public string GetEnum<T>(T enumValue) => GetFor(enumValue);
     }
 
     public static class ServiceLocator

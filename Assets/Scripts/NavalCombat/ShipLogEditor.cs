@@ -321,9 +321,11 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             {
                 // Debug.Log($"Detail Invoke: {mountStatus.objectId}");
 
-                DialogRoot.Instance.PopupMessageDialog(shipLog.DescribeDetail(), "ShipLog Detail");
+                DialogRoot.Instance.PopupMessageDialog(shipLog.DescribeDetail(), Localize("ShipLog Detail"));
             }
         };
+
+        static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
         var plotTrajectoryOnMapButton = root.Q<Button>("PlotTrajectoryOnMapButton");
         plotTrajectoryOnMapButton.clicked += () =>

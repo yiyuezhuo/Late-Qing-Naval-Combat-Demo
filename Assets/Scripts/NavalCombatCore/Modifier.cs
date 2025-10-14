@@ -30,7 +30,7 @@ namespace NavalCombatCore
     [XmlInclude(typeof(SinkingState))]
     [XmlInclude(typeof(BatteryMountStatusModifier))]
     [XmlInclude(typeof(RateOfFireModifier))]
-    [XmlInclude(typeof(BatteryFireContrlStatusDisabledModifier))]
+    [XmlInclude(typeof(BatteryFireControlStatusDisabledModifier))]
     [XmlInclude(typeof(ControlSystemDisabledModifier))]
     [XmlInclude(typeof(FireControlValueModifier))]
     [XmlInclude(typeof(RiskingInMagazineExplosion))]
@@ -86,24 +86,39 @@ namespace NavalCombatCore
         {
             if (lifeCycle == StateLifeCycle.Permanent)
             {
-                return "Permanent";
+                return Localize(
+                    "Permanent"
+                );
             }
             else if (lifeCycle == StateLifeCycle.GivenTime)
             {
-                return $"For {givenTimeSeconds} seconds";
+                return Localize(
+                    "For {0} seconds",
+                    givenTimeSeconds
+                );
             }
             else if (lifeCycle == StateLifeCycle.SeverityBased || lifeCycle == StateLifeCycle.ShipboardFire)
             {
-                return $"Severity: {severity}";
+                return Localize(
+                    "Severity: {0}",
+                    severity
+                );
             }
             else if (lifeCycle == StateLifeCycle.DieRollPassed)
             {
-                return $"DieRoll: {dieRollThreshold}";
+                return Localize(
+                    "DieRoll: {0}",
+                    dieRollThreshold
+                );
             }
-            return "Unknown life cycle";
+            return Localize(
+                "Unknown life cycle"
+            );
         }
 
         public string cause = "";
+
+        protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
         // public bool permanent; // If it's not permanent then this can be damage controlled.
         public virtual bool damageControllable
@@ -186,7 +201,11 @@ namespace NavalCombatCore
         public virtual void DoStep(ISubject subject, float deltaSeconds)
         { }
 
-        public virtual string Describe() => $"Sub State: {GetType().Name}";
+        public virtual string Describe() => Localize(
+            "Sub State: {0}",
+            GetType().Name
+        );
+
         public virtual void DoOnClockTick(ISubject subject, float deltaSeconds)
         { }
 
@@ -283,7 +302,11 @@ namespace NavalCombatCore
             var shipLog = GetShipLog(subject);
             if (shipLog != null)
             {
-                shipLog.AddStringLog($"Begin: {description} {cause}");
+                // shipLog.AddStringLog($"Begin: {description} {cause}");
+                shipLog.AddStringLog(Localize(
+                    "Begin: {0} {1}",
+                    description, cause
+                ));
             }
 
             DoBeginAt(subject);
@@ -297,7 +320,10 @@ namespace NavalCombatCore
             var shipLog = GetShipLog(subject);
             if (shipLog != null)
             {
-                shipLog.AddStringLog($"End: {description} {cause}");
+                shipLog.AddStringLog(Localize(
+                    "End: {0} {1}",
+                    description, cause
+                ));
             }
 
             DoEndAt(subject);
@@ -457,7 +483,10 @@ namespace NavalCombatCore
 
     public class ShipboardFireState : SubState
     {
-        public override string Describe() => $"Shipboard Fire Severity: {severity}";
+        public override string Describe() => Localize(
+            "Shipboard Fire Severity: {0}",
+            severity
+        );
     }
 
     public class SinkingState : SubState
@@ -468,10 +497,15 @@ namespace NavalCombatCore
             if (shipLog != null)
             {
                 shipLog.mapState = MapState.Destroyed; // Sunk
-                shipLog.AddStringLog("Sunk due to sinking process finished");
+                shipLog.AddStringLog(Localize(
+                    "Sunk due to sinking process finished"
+                ));
             }
         }
-        public override string Describe() => $"Sunk When DE ended: {DescribeLiftCycle()}";
+        public override string Describe() => Localize(
+            "Sunk When DE ended: {0}",
+            DescribeLiftCycle()
+        );
         // public override bool damageControlable => false;
     }
 
@@ -483,7 +517,10 @@ namespace NavalCombatCore
         {
             return mountStatus;
         }
-        public override string Describe() => $"Battery Mount is disabled ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "Battery Mount is disabled ({0})",
+            DescribeLiftCycle()
+        );
 
         public override bool IsBatteryRelated() => true;
     }
@@ -497,15 +534,21 @@ namespace NavalCombatCore
             return rateOfFireCoef;
         }
 
-        public override string Describe() => $"RateOfFireModifier({rateOfFireCoef}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "RateOfFireModifier({0}) ({1})",
+            rateOfFireCoef, DescribeLiftCycle()
+        );
         public override bool IsBatteryRelated() => true;
     }
 
-    public class BatteryFireContrlStatusDisabledModifier : SubState, IBatteryFireContrlStatusModifier
+    public class BatteryFireControlStatusDisabledModifier : SubState, IBatteryFireContrlStatusModifier
     {
         public bool GetBatteryFireControlDisabled() => true;
 
-        public override string Describe() => $"BatteryFireContrlStatusDisabledModifier ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "BatteryFireControlStatusDisabledModifier ({0})",
+            DescribeLiftCycle()
+        );
         public override bool IsBatteryRelated() => true;
     }
 
@@ -556,7 +599,10 @@ namespace NavalCombatCore
             ResetTrackingState(subject);
         }
 
-        public override string Describe() => $"ControlSystemDisabledModifier({batteryMountStatus}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "ControlSystemDisabledModifier({0}) ({1})",
+            batteryMountStatus, DescribeLiftCycle()
+        );
         public override bool IsBatteryRelated() => true;
     }
 
@@ -575,7 +621,10 @@ namespace NavalCombatCore
             return fireControlValueOffset;
         }
 
-        public override string Describe() => $"FireControlValueModifier(coef={fireControlValueCoef}, offset={fireControlValueOffset}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "FireControlValueModifier(coef={0}, offset={1}) ({2})",
+            fireControlValueCoef, fireControlValueOffset, DescribeLiftCycle()
+        );
     }
 
     public class RiskingInMagazineExplosion : SubState
@@ -603,7 +652,10 @@ namespace NavalCombatCore
             }
         }
 
-        public override string Describe() => $"RiskingInMagazineExplosion(explosionProbPercent={explosionProbPercent}, sinkingThreshold={sinkingThreshold}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "RiskingInMagazineExplosion(explosionProbPercent={0}, sinkingThreshold={1}) ({2})",
+            explosionProbPercent, sinkingThreshold, DescribeLiftCycle()
+        );
     }
 
     public class EngineRoomHitModifier : SubState, IEngineRoomHitModifier
@@ -612,7 +664,10 @@ namespace NavalCombatCore
 
         public int GetEngineRoomHitOffset() => engineRoomHitOffset;
 
-        public override string Describe() => $"EngineRoomHitModifier(offset={engineRoomHitOffset}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "EngineRoomHitModifier(offset={0}) ({1})",
+            engineRoomHitOffset, DescribeLiftCycle()
+        );
     }
 
     public class BoilerRoomHitModifier : SubState, IBoilerRoomHitModifier
@@ -621,7 +676,10 @@ namespace NavalCombatCore
 
         public int GetBoilerRoomHitOffset() => boilerRoomHitOffset;
 
-        public override string Describe() => $"BoilerRoomHitModifier(offset={boilerRoomHitOffset}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "BoilerRoomHitModifier(offset={0}) ({1})",
+            boilerRoomHitOffset, DescribeLiftCycle()
+        );
     }
 
     public class SteamLineDamaged : SubState, IDynamicModifier // DE 120 (AB)
@@ -636,7 +694,10 @@ namespace NavalCombatCore
 
         public float GetMaxSpeedKnotOffset() => currentMaxSpeedOffset;
 
-        public override string Describe() => $"SteamLineDamaged(offset={currentMaxSpeedOffset}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "SteamLineDamaged(speedOffset={0}) ({1})",
+            currentMaxSpeedOffset, DescribeLiftCycle()
+        );
     }
 
     public class DamageControlModifier : SubState, IDamageControlModifier
@@ -660,15 +721,15 @@ namespace NavalCombatCore
         {
             var lines = new List<string>()
             {
-                damageControlRatingOffset != 0 ? $"DC Rating Offset: {damageControlRatingOffset}" : null,
-                isFightingFireBlocked ? "Fighting Fire Blocked" : null,
-                isDamageControlBlocked ? "Damage Control Blocked" : null,
-                damageControlDieRollOffset != 0 ? $"DC Die Roll Offset: {damageControlDieRollOffset}" : null,
-                isBatteryDamageControlBlock ? "Battery DC Blocked" : null,
-                severityDieRollOffset != 0 ? $"Severity Die Roll Offset: {severityDieRollOffset}" : null,
-                fightingFireDieRollOffset != 0 ? $"Fighting Fire Die Roll Offset: {fightingFireDieRollOffset}" : null
+                damageControlRatingOffset != 0 ? $"{Localize("DC Rating Offset")}: {damageControlRatingOffset}" : null,
+                isFightingFireBlocked ? Localize("Fighting Fire Blocked") : null,
+                isDamageControlBlocked ? Localize("Damage Control Blocked") : null,
+                damageControlDieRollOffset != 0 ? $"{Localize("DC Die Roll Offset")}: {damageControlDieRollOffset}" : null,
+                isBatteryDamageControlBlock ? Localize("Battery DC Blocked") : null,
+                severityDieRollOffset != 0 ? $"{Localize("Severity Die Roll Offset")}: {severityDieRollOffset}" : null,
+                fightingFireDieRollOffset != 0 ? $"{Localize("Fighting Fire Die Roll Offset")}: {fightingFireDieRollOffset}" : null
             };
-            return "DamageControlModifier:" + string.Join(";", lines.Where(line => line != null)) + " | " + DescribeLiftCycle();
+            return Localize("DamageControlModifier:") + string.Join(";", lines.Where(line => line != null)) + " | " + DescribeLiftCycle();
         }
     }
 
@@ -693,22 +754,22 @@ namespace NavalCombatCore
         {
             var lines = new List<string>()
             {
-                maxSpeedKnotOffset != 0 ? $"Speed Offset: {maxSpeedKnotOffset}" : null,
-                maxSpeedKnotCoef != 1 ? $"Speed Coef: {maxSpeedKnotCoef}" : null,
-                maxSpeedUpperLimit != 100000 ? $"Speed Upper Limit: {maxSpeedUpperLimit}" : null,
-                standardTurnCoef != 1 ? $"Std Turn Coef: {standardTurnCoef}" : null,
-                emergencyTurnCoef != 1 ? $"Emer Turn Coef: {emergencyTurnCoef}" : null,
-                standardTurnUpperLimit != 100000 ? $"Std Turn Upper Limit: {standardTurnUpperLimit}" : null,
-                emergencyTurnUpperLimit != 100000 ? $"Emer Turn Upper Limit: {emergencyTurnUpperLimit}" : null,
-                accelerationUpperLimit != 100000 ? $"Accel Upper Limit: {accelerationUpperLimit}" : null,
-                isEvasiveManeuverBlocked ? "Evasive Blocked" : null,
-                isCourseChangeBlocked ? "Course Change Blocked" : null,
-                isSpeedChangeBlocked ? "Speed Change Blocked" : null,
-                isTurnPortBlocked ? "Turn Port Blocked" : null,
-                isTurnStarboardBlocked ? "Turn Starboard Blocked" : null,
-                isEmergencyTurnBlocked ? "Emer Turn Blocked" : null
+                maxSpeedKnotOffset != 0 ? Localize("Speed Offset: {0}", maxSpeedKnotOffset) : null,
+                maxSpeedKnotCoef != 1 ? Localize("Speed Coef: {0}", maxSpeedKnotCoef) : null,
+                maxSpeedUpperLimit != 100000 ? Localize("Speed Upper Limit: {0}", maxSpeedUpperLimit) : null,
+                standardTurnCoef != 1 ? Localize("Std Turn Coef: {0}", standardTurnCoef) : null,
+                emergencyTurnCoef != 1 ? Localize("Emer Turn Coef: {0}", emergencyTurnCoef) : null,
+                standardTurnUpperLimit != 100000 ? Localize("Std Turn Upper Limit: {0}", standardTurnUpperLimit) : null,
+                emergencyTurnUpperLimit != 100000 ? Localize("Emer Turn Upper Limit: {0}", emergencyTurnUpperLimit) : null,
+                accelerationUpperLimit != 100000 ? Localize("Accel Upper Limit: {0}", accelerationUpperLimit) : null,
+                isEvasiveManeuverBlocked ? Localize("Evasive Blocked") : null,
+                isCourseChangeBlocked ? Localize("Course Change Blocked") : null,
+                isSpeedChangeBlocked ? Localize("Speed Change Blocked") : null,
+                isTurnPortBlocked ? Localize("Turn Port Blocked") : null,
+                isTurnStarboardBlocked ? Localize("Turn Starboard Blocked") : null,
+                isEmergencyTurnBlocked ? Localize("Emer Turn Blocked") : null
             };
-            return "DynamicModifier:" + string.Join(";", lines.Where(line => line != null)) + " | " + DescribeLiftCycle();
+            return Localize("DynamicModifier:") + string.Join(";", lines.Where(line => line != null)) + " | " + DescribeLiftCycle();
         }
 
         public float GetMaxSpeedKnotOffset() => maxSpeedKnotOffset;
@@ -742,7 +803,10 @@ namespace NavalCombatCore
 
         public float GetMaxSpeedKnotCoef() => hasLoseAllPropulsion ? 0 : 1;
 
-        public override string Describe() => $"FeedwaterPumpDamaged(lostAllPropulsionPercentage={lostAllPropulsionPercentage}, hasLoseAllPropulsion={hasLoseAllPropulsion}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "FeedwaterPumpDamaged(lostAllPropulsionPercentage={0}, hasLoseAllPropulsion={1}) ({2})",
+            lostAllPropulsionPercentage, hasLoseAllPropulsion, DescribeLiftCycle()
+        );
     }
 
     public class RudderDamaged : SubState, IDynamicModifier
@@ -762,7 +826,10 @@ namespace NavalCombatCore
         public bool IsEvasiveManeuverBlocked() => true;
         public bool IsEmergencyTurnBlocked() => true;
 
-        public override string Describe() => $"RudderDamaged(currentDesiredHeadingOffset={currentDesiredHeadingOffset}, ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "RudderDamaged(currentDesiredHeadingOffset={0}, ({1})",
+            currentDesiredHeadingOffset, DescribeLiftCycle()
+        );
     }
 
     public class FuelSupplyDamaged : SubState, IDynamicModifier
@@ -781,7 +848,10 @@ namespace NavalCombatCore
             return active ? 0.5f : 1;
         }
 
-        public override string Describe() => $"FuelSupplyDamaged(active={active} (if active, speed coef=0.5)), ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "FuelSupplyDamaged(active={0} (if active, speed coef=0.5)), ({1})",
+            active, DescribeLiftCycle()
+        );
     }
 
     public class EngineRoomCommunicationDamaged : SubState, IDesiredSpeedUpdateToBoilerRoomBlocker
@@ -794,7 +864,10 @@ namespace NavalCombatCore
 
         public bool IsDesiredSpeedCommandBlocked() => blocked;
 
-        public override string Describe() => $"EngineRoomCommunicationDamaged(blocked={blocked}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "EngineRoomCommunicationDamaged(blocked={0}) ({1})",
+            blocked, DescribeLiftCycle()
+        );
     }
 
     public class TorpedoMountDamaged : SubState, ITorpedoMountStatusModifier
@@ -808,7 +881,10 @@ namespace NavalCombatCore
 
         public MountStatus GetTorpedoMountStatus() => currentStatus;
 
-        public override string Describe() => $"TorpedoMountDamaged(currentStatus={currentStatus},operationalPercentange={operationalPercentange}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "TorpedoMountDamaged(currentStatus={0},operationalPercentange={1}) ({2})",
+            currentStatus, operationalPercentange, DescribeLiftCycle()
+        );
     }
 
     public class TorpedoMountModifer : SubState, ITorpedoMountStatusModifier
@@ -816,7 +892,10 @@ namespace NavalCombatCore
         public MountStatus status;
         public MountStatus GetTorpedoMountStatus() => status;
 
-        public override string Describe() => $"TorpedoMountModifer(status={status}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "TorpedoMountModifer(status={0}) ({1})",
+            status, DescribeLiftCycle()
+        );
     }
 
     public class SmokeGeneratorDamaged : SubState, ISmokeGeneratorModifier
@@ -830,7 +909,10 @@ namespace NavalCombatCore
 
         public bool IsSmokeGeneratorAvailable() => isSmokeGeneratorAvailableCurrent;
 
-        public override string Describe() => $"SmokeGeneratorDamaged(IsSmokeGeneratorAvailableCurrent={isSmokeGeneratorAvailableCurrent},availablePercent={availablePercent}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "SmokeGeneratorDamaged(IsSmokeGeneratorAvailableCurrent={0},availablePercent={1}) ({2})",
+            isSmokeGeneratorAvailableCurrent, availablePercent, DescribeLiftCycle()
+        );
     }
 
     // DE 128
@@ -900,7 +982,10 @@ namespace NavalCombatCore
         //     return mountSectionLocation == fireAndSmokeVLocation ? MountStatus.Disabled : MountStatus.Operational;
         // }
 
-        public override string Describe() => $"SectorFireState(fireAndSmokeLocation={fireAndSmokeVLocation}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "SectorFireState(fireAndSmokeLocation={0}) ({1})",
+            fireAndSmokeVLocation, DescribeLiftCycle()
+        );
     }
 
     public class MainPowerplantOOA : SubState, IRateOfFireModifier, IDamageControlModifier, IElectronicSystemModifier
@@ -923,7 +1008,10 @@ namespace NavalCombatCore
         public bool IsSearchRadarDisabled() => true;
         public bool IsSonarDisabled() => true;
 
-        public override string Describe() => $"MainPowerplantOOA(rateOfFireCoef={rateOfFireCoef},isDamageControlBlocked={isDamageControlBlocked}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "MainPowerplantOOA(rateOfFireCoef={0},isDamageControlBlocked={1}) ({2})",
+            rateOfFireCoef, isDamageControlBlocked, DescribeLiftCycle()
+        );
     }
 
     // public class PowerDistributionSymtemDamaged : SubState, ILocalizedBatteryMountStatusModifier
@@ -945,7 +1033,10 @@ namespace NavalCombatCore
 
         public bool IsBatteryTargetChangeBlocked() => isBatteryTargetChangeBlocked;
 
-        public override string Describe() => $"BatteryTargetChangeBlocker(blocked={isBatteryTargetChangeBlocked}) ({DescribeLiftCycle()})";
+        public override string Describe() => Localize(
+            "BatteryTargetChangeBlocker(blocked={0}) ({1})",
+            isBatteryTargetChangeBlocked, DescribeLiftCycle()
+        );
     }
 
     public class ElectronicSystemModifier : SubState, IElectronicSystemModifier
@@ -964,12 +1055,12 @@ namespace NavalCombatCore
         {
             var lines = new List<string>()
             {
-                isSearchLightDisabled ? "Search Light Disabled" : null,
-                isFireControlRadarDisabled ? "Fire Control Radar Disabled" : null,
-                isSearchRadarDisabled ? "Search Radar Disabled" : null,
-                isSonarDisabled ? "Sonar Disabled" : null
+                isSearchLightDisabled ? Localize("Search Light Disabled") : null,
+                isFireControlRadarDisabled ? Localize("Fire Control Radar Disabled") : null,
+                isSearchRadarDisabled ? Localize("Search Radar Disabled") : null,
+                isSonarDisabled ? Localize("Sonar Disabled") : null
             };
-            return "ElectronicSystemModifier:" + string.Join(";", lines.Where(line => line != null)) + " | " + DescribeLiftCycle();
+            return Localize("ElectronicSystemModifier:") + string.Join(";", lines.Where(line => line != null)) + " | " + DescribeLiftCycle();
         }
     }
 
@@ -978,7 +1069,10 @@ namespace NavalCombatCore
         public float mainBeltArmorCoef;
         public float GetMainBeltArmorCoef() => mainBeltArmorCoef;
 
-        public override string Describe() => $"ArmorModifier(mainBeltArmorCoef={mainBeltArmorCoef}) {DescribeLiftCycle()}";
+        public override string Describe() => Localize(
+            "ArmorModifier(mainBeltArmorCoef={0}) {1}",
+            mainBeltArmorCoef, DescribeLiftCycle()
+        );
     }
 
 
@@ -1035,7 +1129,7 @@ namespace NavalCombatCore
                     var DE = new FireControlValueModifier()
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
-                        cause = "M6: List to [PORTS/STARBOARD]",
+                        cause = Localize("M6: List to [PORTS/STARBOARD]"),
                         fireControlValueOffset = -2
                     };
                     DE.BeginAt(shipLog.batteryStatus[0]);
@@ -1045,7 +1139,7 @@ namespace NavalCombatCore
                     var DE = new BatteryMountStatusModifier()
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
-                        cause = "M6: List to [PORTS/STARBOARD]",
+                        cause = Localize("M6: List to [PORTS/STARBOARD]"),
                     };
                     DE.BeginAt(shipLog.batteryStatus[1]);
                 }
@@ -1062,7 +1156,7 @@ namespace NavalCombatCore
                     var DE = new FireControlValueModifier()
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
-                        cause = "M6: Heavy list to [PORT/STARBOARD]",
+                        cause = Localize("M6: Heavy list to [PORT/STARBOARD]"),
                         fireControlValueOffset = -3
                     };
                     DE.BeginAt(shipLog.batteryStatus[0]);
@@ -1072,7 +1166,7 @@ namespace NavalCombatCore
                     var DE = new BatteryMountStatusModifier()
                     {
                         lifeCycle = StateLifeCycle.GivenTime,
-                        cause = "M6: Heavy list to [PORT/STARBOARD]",
+                        cause = Localize("M6: Heavy list to [PORT/STARBOARD]"),
                     };
                     DE.BeginAt(shipLog.batteryStatus[1]);
                 }
@@ -1080,7 +1174,7 @@ namespace NavalCombatCore
                 {
                     lifeCycle = StateLifeCycle.GivenTime,
                     mainBeltArmorCoef = 0.5f,
-                    cause = "M6: Heavy list to [PORT/STARBOARD]",
+                    cause = Localize("M6: Heavy list to [PORT/STARBOARD]"),
                 };
                 DE3.BeginAt(shipLog);
             }
@@ -1137,10 +1231,12 @@ namespace NavalCombatCore
             {
                 // All [PRIMARY/SECONDARY] battery fire control systems OOA during next game turn.
                 // B1L or B2L order must be given during the next Command Phase for local control (LCS) of battey.
-                var DE = new BatteryFireContrlStatusDisabledModifier()
+                var DE = new BatteryFireControlStatusDisabledModifier()
                 {
                     lifeCycle = StateLifeCycle.GivenTime,
-                    cause = "M6: All [PRIMARY/SECONDARY] battery fire control systems OOA during next game turn"
+                    cause = Localize(
+                        "M6: All [PRIMARY/SECONDARY] battery fire control systems OOA during next game turn"
+                    )
                 };
                 DE.BeginAt(shipLog);
             }
@@ -1171,7 +1267,7 @@ namespace NavalCombatCore
                     lifeCycle = StateLifeCycle.DieRollPassed,
                     lostAllPropulsionPercentage = c ? 20 : 30, // "Active"
                     dieRollThreshold = c ? 20 : 15, // Restore
-                    cause = "M6, Damage to main feedwater pump"
+                    cause = Localize("M6, Damage to main feedwater pump")
                 };
                 DE.BeginAt(shipLog);
             }
@@ -1187,7 +1283,10 @@ namespace NavalCombatCore
             }
         }
 
-        public override string Describe() => $"SevereFloodingState(dieRollOffset={dieRollOffset}) {DescribeLiftCycle()}";
+        public override string Describe() => Localize(
+            "SevereFloodingState(dieRollOffset={0}) {1}",
+            dieRollOffset, DescribeLiftCycle()
+        );
     }
 
     public class SevereFloodingRollModifier : SubState, ISevereFloodingRollModifier
@@ -1195,7 +1294,10 @@ namespace NavalCombatCore
         public float severeFloodingRollOffset;
         public float GetSevereFloodingRollOffset() => severeFloodingRollOffset;
 
-        public override string Describe() => $"SevereFloodingRollModifier(severeFloodingRollOffset={severeFloodingRollOffset}) {DescribeLiftCycle()}";
+        public override string Describe() => Localize(
+            "SevereFloodingRollModifier(severeFloodingRollOffset={0}) {1}",
+            severeFloodingRollOffset, DescribeLiftCycle()
+        );
     }
 
     public class LossOfCommunicationToFireControlSystemState : SubState, IFireControlSystemTargetChangeBlocker
@@ -1210,7 +1312,10 @@ namespace NavalCombatCore
 
         public bool IsFireControlSystemTargetChangeBlocked() => isFireControlSystemTargetChangeBlocked;
 
-        public override string Describe() => $"LossOfCommunicationToFireControlSystemState(blocked={isFireControlSystemTargetChangeBlocked},succPercentage={succPercentage}) {DescribeLiftCycle()}";
+        public override string Describe() => Localize(
+            "LossOfCommunicationToFireControlSystemState(blocked={0},succPercentage={1}) {2}",
+            isFireControlSystemTargetChangeBlocked, succPercentage, DescribeLiftCycle()
+        );
     }
 
     public class LossOfCommunicationsAndPowerToSearchLight : SubState, IElectronicSystemModifier
@@ -1228,7 +1333,10 @@ namespace NavalCombatCore
             return (false, false);
         }
 
-        public override string Describe() => $"LossOfCommunicationsAndPowerToSearchLight(location={location},succPercentage={succPercentage},isSearchLightDisabled={isSearchLightDisabled}) {DescribeLiftCycle()}";
+        public override string Describe() => Localize(
+            "LossOfCommunicationsAndPowerToSearchLight(location={0},succPercentage={1},isSearchLightDisabled={2}) {3}",
+            location, succPercentage, isSearchLightDisabled, DescribeLiftCycle()
+        );
     }
 
     public class LossOfCommunicationToEngineRoom : SubState, IDynamicModifier
@@ -1243,7 +1351,10 @@ namespace NavalCombatCore
 
         public bool IsSpeedChangeBlocked() => isSpeedChangeBlocked;
 
-        public override string Describe() => $"LossOfCommunicationToEngineRoom(succPercentage={succPercentage},isSpeedChangeBlocked={isSpeedChangeBlocked}) {DescribeLiftCycle()}";
+        public override string Describe() => Localize(
+            "LossOfCommunicationToEngineRoom(succPercentage={0},isSpeedChangeBlocked={1}) {2}",
+            succPercentage, isSpeedChangeBlocked, DescribeLiftCycle()
+        );
     }
 
     public class BatteryHandlingRoomAbandoned : SubState // It works as a "countdown" to trigger OOA of a mount 
@@ -1256,7 +1367,10 @@ namespace NavalCombatCore
             }
         }
 
-        public override string Describe() => $"BatteryHandlingRoomAbandoned {DescribeLiftCycle()}";
+        public override string Describe() => Localize(
+            "BatteryHandlingRoomAbandoned {0}",
+            DescribeLiftCycle()
+        );
     }
 
     // Asterisk labeled family, they may doesn't have many functionally, just a label that some 
@@ -1264,7 +1378,10 @@ namespace NavalCombatCore
     {
         public string damageEffectCode;
 
-        public override string Describe() => $"OneShotDamageEffectHappend: {damageEffectCode}";
+        public override string Describe() => Localize(
+            "OneShotDamageEffectHappend: {0}",
+            damageEffectCode
+        );
     }
 
     public class DE602DyanmicModifier : SubState, IDynamicModifier
@@ -1291,7 +1408,10 @@ namespace NavalCombatCore
         public float GetStandardTurnCoef() => 0.5f;
         public bool IsSpeedChangeBlocked() => isSpeedChangeBlocked;
 
-        public override string Describe() => $"DE602-DyanmicModifier: isSpeedChangeBlocked={isSpeedChangeBlocked}), Std Turn Coef: 0.5, Emer Turn Blocked, Evasive Man. Blocked";
+        public override string Describe() => Localize(
+            "DE602-DyanmicModifier: isSpeedChangeBlocked={0}), Std Turn Coef: 0.5, Emer Turn Blocked, Evasive Man. Blocked",
+            isSpeedChangeBlocked
+        );
     }
 
     public class DE607DyanmicModifier : SubState, IDynamicModifier
@@ -1316,7 +1436,10 @@ namespace NavalCombatCore
             }
         }
 
-        public override string Describe() => $"DE607DyanmicModifier: isCourceChangeBlocked={isCourceChangeBlocked})";
+        public override string Describe() => Localize(
+            "DE607DyanmicModifier: isCourceChangeBlocked={0}",
+            isCourceChangeBlocked
+        );
     }
 
     public class ShipSettleState : SubState, IDynamicModifier
@@ -1337,7 +1460,9 @@ namespace NavalCombatCore
                 if (subject is ShipLog shipLog)
                 {
                     shipLog.mapState = MapState.Destroyed;
-                    shipLog.AddStringLog("Sunk due to settle's sinking roll");
+                    shipLog.AddStringLog(Localize(
+                        "Sunk due to settle's sinking roll"
+                    ));
                 }
             }
             if (d100 <= maxSpeedUpperLimitAppliedThreshold)
@@ -1357,13 +1482,13 @@ namespace NavalCombatCore
         {
             var lines = new List<string>()
             {
-                maxSpeedUpperLimitApplied ? $"Speed Upper Limit: {maxSpeedUpperLimit}" : null,
-                maxSpeedUpperLimitAppliedThreshold >= 0 ? $"Speed Limit Threshold: {maxSpeedUpperLimitAppliedThreshold}" : null,
-                sinkingThreshold >= 0 ? $"Sinking Threshold: {sinkingThreshold}" : null,
-                isCourseChangeBlockedThreshold >= 0 ? $"Course Block Threshold: {isCourseChangeBlockedThreshold}" : null,
-                isCourseChangeBlocked ? "Course Change Blocked" : null
+                maxSpeedUpperLimitApplied ? Localize("Speed Upper Limit: {0}", maxSpeedUpperLimit) : null,
+                maxSpeedUpperLimitAppliedThreshold >= 0 ? Localize("Speed Limit Threshold: {0}", maxSpeedUpperLimitAppliedThreshold) : null,
+                sinkingThreshold >= 0 ? Localize("Sinking Threshold: {0}", sinkingThreshold) : null,
+                isCourseChangeBlockedThreshold >= 0 ? Localize("Course Block Threshold: {0}", isCourseChangeBlockedThreshold) : null,
+                isCourseChangeBlocked ? Localize("Course Change Blocked") : null
             };
-            return "ShipSettleState:" + string.Join(";", lines.Where(line => line != null));
+            return Localize("ShipSettleState:") + string.Join(";", lines.Where(line => line != null));
         }
     }
 
@@ -1397,7 +1522,7 @@ namespace NavalCombatCore
             }
         }
 
-        public override string Describe() => $"DE609Effect";
+        public override string Describe() => Localize("DE609Effect");
     }
 
     public class FiringCircuitDamagedMaster : SubState
@@ -1420,7 +1545,10 @@ namespace NavalCombatCore
             }
         }
 
-        public override string Describe() => $"FiringCircuitDamagedMaster(currentRateOfFireCoef={currentRateOfFireCoef}) {DescribeLiftCycle()}";
+        public override string Describe() => Localize(
+            "FiringCircuitDamagedMaster(currentRateOfFireCoef={0}) {1}",
+            currentRateOfFireCoef, DescribeLiftCycle()
+        );
     }
 
     public class FiringCircuitDamagedWorker : SubState, IRateOfFireModifier, IBarrageFireBlocker // DE *615
@@ -1432,6 +1560,10 @@ namespace NavalCombatCore
         }
 
         public bool IsBarrageFireBlocked() => true;
+
+        public override string Describe() => Localize(
+            "FiringCircuitDamagedWorker"
+        );
     }
 
     public class DE806DynamicModifier : SubState, IDynamicModifier
@@ -1455,7 +1587,10 @@ namespace NavalCombatCore
             }
         }
 
-        public override string Describe() => $"DE806DynamicModifier(restored={restored}, maxSpeedKnotCoef={maxSpeedKnotCoef}) {DescribeLiftCycle()}";
+        public override string Describe() => Localize(
+            "DE806DynamicModifier(restored={0}, maxSpeedKnotCoef={1}) {2}",
+            restored, maxSpeedKnotCoef, DescribeLiftCycle()
+        );
     }
 
     public class BatteryDamaged : SubState, IBatteryMountStatusModifier
@@ -1476,12 +1611,18 @@ namespace NavalCombatCore
             }
         }
 
-        public override string Describe() => $"BatteryDamaged(status={status}, operationalPercentage={operationalPercentage}) {DescribeLiftCycle()}";
+        public override string Describe() => Localize(
+            "BatteryDamaged(status={0}, operationalPercentage={1}) {2}",
+            status, operationalPercentage, DescribeLiftCycle()
+        );
         public override bool IsBatteryRelated() => true;
     }
 
     public class PlaceholderState : SubState // Can used to as a parent for some dependent sub-states to apply lifecycle constrait
     {
-        public override string Describe() => $"PlaceholderState({DescribeLiftCycle()}";
+        public override string Describe() => Localize(
+            "PlaceholderState({0})",
+            DescribeLiftCycle()
+        );
     }
 }

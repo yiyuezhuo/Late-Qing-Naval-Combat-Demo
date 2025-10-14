@@ -31,6 +31,8 @@ public class UnityLocalizationService: ILocalizeService
     {
         return Get(obj.ToString());
     }
+
+    public string GetEnum<T>(T enumValue) => Get($"{typeof(T).Name}.{enumValue}");
     
     static UnityLocalizationService instance = new();
     public static UnityLocalizationService Instance => instance;

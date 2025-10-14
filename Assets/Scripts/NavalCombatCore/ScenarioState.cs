@@ -59,6 +59,13 @@ namespace NavalCombatCore
         public SimulationClock weaponSimulationAssignmentClock = new() { intervalSeconds = 120 };
         public bool doingStep;
         public bool firstLoaded; // if false, loading will trigger First Load Scenario Trigger and set to true. Save Edit will set it back to false in the file.
+        // public int referenceTimeZoneOffset = +8; // +8 timezone
+
+        // public DateTimeOffset GetReferenceTimeZoneDateTimeOffset()
+        // {
+        //     var dateTimeOffset = new DateTimeOffset(dateTime);
+        //     return dateTimeOffset.ToOffset(TimeSpan.FromHours(referenceTimeZoneOffset));
+        // }
 
         public float GetTimeZoneOffset(float longtitude)
         {

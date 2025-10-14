@@ -42,7 +42,7 @@ namespace CoreUtils
                 LanguageType.English => english,
                 LanguageType.Japanese => japanese ?? english,
                 LanguageType.ChineseSimplified => chineseSimplified ?? english,
-                LanguageType.ChineseTraditional => chineseTraditional ?? english,
+                LanguageType.ChineseTraditional => (chineseTraditional ?? chineseSimplified) ?? english,
                 LanguageType.All => GetMergedNamePure(),
                 _ => english
             };

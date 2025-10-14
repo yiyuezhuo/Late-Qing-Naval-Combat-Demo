@@ -4,8 +4,6 @@ using System.Linq;
 using System;
 using GeographicLib;
 using System.Xml.Serialization;
-using UnityEngine;
-using TMPro;
 
 using CoreUtils;
 
@@ -183,8 +181,18 @@ namespace NavalCombatCore
         [XmlAttribute]
         public DateTime time;
 
-        public virtual string Summary() => $"{time}: {SummaryContent()}";
+        public DateTimeOffset GetReferenceTimeZoneDateTimeOffset()
+        {
+            var dateTimeOffset = new DateTimeOffset(time);
+            return dateTimeOffset.ToOffset(TimeSpan.FromHours(CoreParameter.Instance.referenceTimeZoneOffset));
+        }
+
+        // public virtual string Summary() => $"{time}: {SummaryContent()}";
+        public virtual string Summary() => $"{GetReferenceTimeZoneDateTimeOffset().ToString("yyyy-MM-dd HH:mm:ss z")}: {SummaryContent()}";
         public virtual string SummaryContent() => $"{GetType()}";
+
+        protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+        protected static string LocalizeEnum<T>(T obj) => ServiceLocator.Get<ILocalizeService>().GetEnum(obj);
     }
 
     public partial class ShipLogStringLog : ShipLogLog
@@ -213,7 +221,10 @@ namespace NavalCombatCore
         public string damageEffectId;
 
         // public override string Summary() => $"{time}: Bty Hit: {armorLocation} {hitPenDetType} DP:{damagePoint} DE:{damageEffectId}";
-        public override string SummaryContent() => $"Bty Hit: {armorLocation} {hitPenDetType} DP:{damagePoint} DE:{damageEffectId} (by {EntityManager.Instance.Get<ShipLog>(shooterId)?.namedShip?.name?.GetShortName()})";
+        public override string SummaryContent() => Localize(
+            "Bty Hit: {0} {1} DP:{2} DE:{3} (by {4})",
+            LocalizeEnum(armorLocation), LocalizeEnum(hitPenDetType), damagePoint, damageEffectId, EntityManager.Instance.Get<ShipLog>(shooterId)?.namedShip?.name?.GetShortName()
+        );
     }
 
     public class ShipLogRapidFiringGunHitLog : ShipLogLog
@@ -225,7 +236,10 @@ namespace NavalCombatCore
         public float damagePoint;
 
         // public override string Summary() => $"{time}: RF Hit: DP: {damagePoint}";
-        public override string SummaryContent() => $"RF Hit: DP: {damagePoint} (by {EntityManager.Instance.Get<ShipLog>(shooterId)?.namedShip?.name?.GetShortName()})";
+        public override string SummaryContent() => Localize(
+            "RF Hit: DP: {0} (by {1})",
+            damagePoint, EntityManager.Instance.Get<ShipLog>(shooterId)?.namedShip?.name?.GetShortName()
+        );
     }
 
     public class ShipLogTorpedoHitLog : ShipLogLog
@@ -242,7 +256,10 @@ namespace NavalCombatCore
         public string damageEffectId;
 
         // public override string Summary() => $"{time}: Torpedo Hit: {GetTorpedo().sourceName.english} DP:{damagePoint} DE:{damageEffectId}";
-        public override string SummaryContent() => $"Torpedo Hit: {GetTorpedo()?.sourceName?.GetShortName()} DP:{damagePoint} DE:{damageEffectId}"; // TODO: Record LaunchedTorpedo in the strategic game?
+        public override string SummaryContent() => Localize(
+            "Torpedo Hit: {0} DP:{1} DE:{2}",
+            GetTorpedo()?.sourceName?.GetShortName(), damagePoint, damageEffectId
+        ); // TODO: Record LaunchedTorpedo in the strategic game?
     }
 
     public class TimeLoc
@@ -413,11 +430,17 @@ namespace NavalCombatCore
         public List<ShipLogLog> logs = new(); // TODO: Switch to structure logging?
         public List<TimeLoc> timeLocLogs = new();
 
+        protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+        protected static string LocalizeFor(object obj) => ServiceLocator.Get<ILocalizeService>().GetFor(obj);
+
         public string DescribeDetail()
         {
             var lines = new List<string>()
                 {
-                    $"ShipLog Detail: {objectId}"
+                    Localize(
+                        "ShipLog Detail: {0}",
+                        objectId
+                    )
                 };
 
             lines.AddRange(logs.Select(r => r.Summary()));
@@ -492,17 +515,23 @@ namespace NavalCombatCore
 
             var lines = new List<string>();
 
-            lines.Add("Battery:");
+            lines.Add(Localize(
+                "Battery:"
+            ));
             lines.AddRange(batteryStatus.Select(bs => bs.Summary()));
 
-            lines.Add("Torpedo:");
+            lines.Add(Localize(
+                "Torpedo:"
+            ));
             var torpedoBarrels = _shipClass.torpedoSector.mountLocationRecords.Sum(r => r.barrels * r.mounts);
             // var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.torpedoMountLocationRecord.mounts - m.mountsDestroyed) * m.torpedoMountLocationRecord.barrels);
             var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.IsOperational()).Sum(m => m.barrels);
             var torpedoAmmu = torpedoSectorStatus.ammunition;
             lines.Add($"x{torpedoBarrelsAvailable}/{torpedoBarrels} {_shipClass.torpedoSector.name.mergedName} ({torpedoAmmu})");
 
-            lines.Add("Rapid Firing Battery:");
+            lines.Add(Localize(
+                "Rapid Firing Battery:"
+            ));
             lines.AddRange(rapidFiringStatus.Select(s => s.GetInfo()));
 
             // lines.Add("DP")
@@ -534,14 +563,14 @@ namespace NavalCombatCore
                 var cap = shipClass.emergencyTurnDegPer2Min;
                 var upperLimit = GetSubStates<IDynamicModifier>().Select(m => m.GetEmergencyTurnUpperLimit()).DefaultIfEmpty(100000).Min();
                 var coef = GetSubStates<IDynamicModifier>().Select(m => m.GetEmergencyTurnCoef()).DefaultIfEmpty(1).Min();
-                return Mathf.Min(cap * coef, upperLimit);
+                return Math.Min(cap * coef, upperLimit);
             }
             else
             {
                 var cap = shipClass.standardTurnDegPer2Min;
                 var upperLimit = GetSubStates<IDynamicModifier>().Select(m => m.GetStandardTurnUpperLimit()).DefaultIfEmpty(100000).Min();
                 var coef = GetSubStates<IDynamicModifier>().Select(m => m.GetStandardTurnCoef()).DefaultIfEmpty(1).Min();
-                return Mathf.Min(cap * coef, upperLimit);
+                return Math.Min(cap * coef, upperLimit);
             }
         }
 
@@ -850,7 +879,9 @@ namespace NavalCombatCore
 
                         var ramResolutionResult = rammingResolutionParameter.Resolve();
 
-                        AddStringLog("Ramming to other ship");
+                        AddStringLog(Localize(
+                            "Ramming to other ship"
+                        ));
 
                         AddDamagePoint(ramResolutionResult.inflictToRammerDamagePoint);
                         if (ramResolutionResult.inflictToRammerDamagePoint / shipClass.damagePoint > 0.1f)
@@ -867,7 +898,9 @@ namespace NavalCombatCore
                             });
                         }
 
-                        collided.AddStringLog("Rammed by other ship");
+                        collided.AddStringLog(Localize(
+                            "Rammed by other ship"
+                        ));
 
                         collided.AddDamagePoint(ramResolutionResult.inflictToTargetDamagePoint);
                         if (ramResolutionResult.inflictToTargetDamagePoint / collided.shipClass.damagePoint > 0.1f)
@@ -1002,13 +1035,17 @@ namespace NavalCombatCore
             if (abandonShip)
             {
                 operationalState = DamageEffectChart.MaxEnum(operationalState, ShipOperationalState.AbandonShip);
-                AddStringLog("Ship Abandoned due to failed morale check");
+                AddStringLog(Localize(
+                    "Ship Abandoned due to failed morale check"
+                ));
             }
 
             if (crossingDamageTierSinking)
             {
                 mapState = MapState.Destroyed;
-                AddStringLog("Sunk due to Catastrophic damage (crossing 8 damage tier in 1 turn)");
+                AddStringLog(Localize(
+                    "Sunk due to Catastrophic damage (crossing 8 damage tier in 1 turn)"
+                ));
             }
 
             // Sunk due to flooded machinery spaces
@@ -1019,7 +1056,9 @@ namespace NavalCombatCore
             if (floodedPercent >= NavalCombatCoreUtils.CalibrateSurviceProbFromTurnProb(0.8f, deltaSeconds))
             {
                 mapState = MapState.Destroyed;
-                AddStringLog("Sunk due to flooded machinery spaces");
+                AddStringLog(Localize(
+                    "Sunk due to flooded machinery spaces"
+                ));
             }
         }
 

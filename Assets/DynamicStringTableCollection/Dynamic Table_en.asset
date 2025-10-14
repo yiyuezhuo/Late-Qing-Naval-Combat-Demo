@@ -809,7 +809,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 88344949854208
-    m_Localized: 'DE 183: Damage to waterline bulkheads causes additional flooding.'
+    m_Localized: 'DE 183: Damage to waterline bulkheads causes additional flooding'
     m_Metadata:
       m_Items: []
   - m_Id: 89061559275520
@@ -943,7 +943,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 90328419438592
-    m_Localized: DE 608, Loss of stability and maneuver due to flooding
+    m_Localized: 'DE 608: Loss of stability and maneuver due to flooding'
     m_Metadata:
       m_Items: []
   - m_Id: 90349307072512
@@ -1072,6 +1072,452 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 91631958790144
     m_Localized: 'DE 813: Crew casualties'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572330553806848
+    m_Localized: Permanent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572420324495360
+    m_Localized: For {0} seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572446928965632
+    m_Localized: 'Severity: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572454273191936
+    m_Localized: 'Die Roll: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572482324697088
+    m_Localized: Unknown life cycle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572646888214528
+    m_Localized: 'Sub State: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572692081840128
+    m_Localized: 'Shipboard Fire Severity: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572721882370048
+    m_Localized: Sunk due to sinking process finished
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572750290391040
+    m_Localized: 'Sunk When DE ended: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572758075019264
+    m_Localized: Battery Mount is disabled ({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572807202902016
+    m_Localized: Rate Of Fire Modifier({0}) ({1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572837624188928
+    m_Localized: Battery Fire Control Status Disabled Modifier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572858901893120
+    m_Localized: Control System Disabled Modifier({0}) ({1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572881144287232
+    m_Localized: Fire Control Value Modifier(coef={0}, offset={1}) ({2})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572921359273984
+    m_Localized: Risking In Magazine Explosion(Explosion Prob Percent={0}, Sinking
+      Threshold={1}) ({2})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 572952711696384
+    m_Localized: Engine Room Hit Modifier(offset={0}) ({1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573398352302080
+    m_Localized: Boiler Room Hit Modifier(offset={0}) ({1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573418317189120
+    m_Localized: Steam Line Damaged(Speed Offset={0}) ({1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573441524273152
+    m_Localized: DC Rating Offset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573454946045952
+    m_Localized: Fighting Fire Blocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573465943511040
+    m_Localized: Damage Control Blocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573482007695360
+    m_Localized: DC Die Roll Offset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573498852020224
+    m_Localized: Battery DC Blocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573512244432896
+    m_Localized: Severity Die Roll Offset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573525976584192
+    m_Localized: Fighting Fire Die Roll Offset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573549405966336
+    m_Localized: 'Damage Control Modifier:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573573070229504
+    m_Localized: 'Speed Offset: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573587515412480
+    m_Localized: 'Speed Coef: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573613549457408
+    m_Localized: 'Speed Upper Limit: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573630301507584
+    m_Localized: 'Std Turn Coef: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573644402757632
+    m_Localized: 'Emer Turn Coef: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573659288342528
+    m_Localized: 'Std Turn Upper Limit: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573680222113792
+    m_Localized: 'Emer Turn Upper Limit: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573696533762048
+    m_Localized: 'Accel Upper Limit: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573711301906432
+    m_Localized: Evasive Blocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573728980897792
+    m_Localized: Course Change Blocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573745078636544
+    m_Localized: Speed Change Blocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573773151113216
+    m_Localized: Turn Port Blocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573790179987456
+    m_Localized: Turn Starboard Blocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573805237538816
+    m_Localized: Emer Turn Blocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573834719301632
+    m_Localized: Feedwater Pump Damaged(Lost All Propulsion Percentage={0}, Has Lose
+      All Propulsion={1}) ({2})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573855036510208
+    m_Localized: Rudder Damaged(Current Desired Heading Offset={0}, ({1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573881536122880
+    m_Localized: Fuel Supply Damaged(active={0} (if active, speed coef=0.5)), ({1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573940185075712
+    m_Localized: Engine Room Communication Damaged(blocked={0}) ({1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573961395671040
+    m_Localized: Torpedo Mount Damaged(Current Status={0},Operational Percentange={1})
+      ({2})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 573980739801088
+    m_Localized: Torpedo Mount Modifer(status={0}) ({1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574004487950336
+    m_Localized: Smoke Generator Damaged(Is Smoke Generator Available Current={0},
+      Available Percent={1}) ({2})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574038847688704
+    m_Localized: Sector Fire State(Fire And Smoke Location={0}) ({1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574055687819264
+    m_Localized: Main Powerplant OOA(Rate Of Fire Coef={0}, Is Damage Control Blocked={1})
+      ({2})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574076197965824
+    m_Localized: Battery Target Change Blocker(blocked={0}) ({1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574094388662272
+    m_Localized: Search Light Disabled
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574107785269248
+    m_Localized: Fire Control Radar Disabled
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574119407685632
+    m_Localized: Search Radar Disabled
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574132695240704
+    m_Localized: Sonar Disabled
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574147719237632
+    m_Localized: 'Electronic System Modifier:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574166258061312
+    m_Localized: Armor Modifier(Main Belt Armor Coef={0}) {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574201024647168
+    m_Localized: 'M6: List to [PORTS/STARBOARD]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574216489046016
+    m_Localized: 'M6: Heavy list to [PORT/STARBOARD]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574298663849984
+    m_Localized: 'M6: All [PRIMARY/SECONDARY] battery fire control systems OOA during
+      next game turn'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574325767442432
+    m_Localized: M6, Damage to main feedwater pump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574354825580544
+    m_Localized: Severe Flooding State(Die Roll Offset={0}) {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574372139667456
+    m_Localized: Severe Flooding Roll Modifier(Severe Flooding Roll Offset={0}) {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574402888110080
+    m_Localized: Loss Of Communication To Fire Control System State(blocked={0},
+      Succ Percentage={1}) {2}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574432973852672
+    m_Localized: Loss Of Communications And Power To Search Light(Location={0}, Succ
+      Percentage={1}, Is Search Light Disabled={2}) {3}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574455358853120
+    m_Localized: Loss Of Communication To Engine Room(Succ Percentage={0}, Is Speed
+      Change Blocked={1}) {2}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574474723954688
+    m_Localized: Battery Handling Room Abandoned {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574490972688384
+    m_Localized: 'One Shot Damage Effect Happend: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574516411142144
+    m_Localized: 'DE602-Dyanmic Modifier: Is Speed Change Blocked={0}), Std Turn
+      Coef: 0.5, Emer Turn Blocked, Evasive Man. Blocked'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574539785998336
+    m_Localized: 'DE607 Dyanmic Modifier: Is Cource Change Blocked={0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574557737619456
+    m_Localized: Sunk due to settle's sinking roll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574582790197248
+    m_Localized: 'Speed Limit Threshold: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574606542540800
+    m_Localized: 'Sinking Threshold: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574648951148544
+    m_Localized: 'Course Block Threshold: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574666395258880
+    m_Localized: 'Ship Settle State:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574731104980992
+    m_Localized: DE609 Effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574748423262208
+    m_Localized: Firing Circuit Damaged Master(Current Rate Of Fire Coef={0}) {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574768564310016
+    m_Localized: DE806 Dynamic Modifier(Restored={0}, Max Speed Knot Coef={1}) {2}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574791289049088
+    m_Localized: BatteryDamaged(Status={0}, Operational Percentage={1}) {2}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 574835182440448
+    m_Localized: Placeholder State({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696084512542720
+    m_Localized: 'Bty Hit: {0} {1} DP:{2} DE:{3} (by {4})'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696172324491264
+    m_Localized: 'RF Hit: DP: {0} (by {1})'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696331578019840
+    m_Localized: 'Torpedo Hit: {0} DP:{1} DE:{2}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696489757806592
+    m_Localized: 'ShipLog Detail: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696567184658432
+    m_Localized: 'Battery:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696593285812224
+    m_Localized: 'Rapid Firing Battery:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696645274210304
+    m_Localized: Ramming to other ship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696708448817152
+    m_Localized: Rammed by other ship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696759631908864
+    m_Localized: Ship Abandoned due to failed morale check
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696849473900544
+    m_Localized: Sunk due to Catastrophic damage (crossing 8 damage tier in 1 turn)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 710343376146432
+    m_Localized: Sunk due to flooded machinery spaces
+    m_Metadata:
+      m_Items: []
+  - m_Id: 711036275167232
+    m_Localized: 'Begin: {0} {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 711078264344576
+    m_Localized: 'End: {0} {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 714153054081024
+    m_Localized: Deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 714635638116352
+    m_Localized: Turret Horizontal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 714768522055680
+    m_Localized: Super Structure Horizontal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 715024257159168
+    m_Localized: Conning Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 715100929036288
+    m_Localized: Main Belt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 715104418697216
+    m_Localized: Belt End
+    m_Metadata:
+      m_Items: []
+  - m_Id: 715108210348032
+    m_Localized: Barbette
+    m_Metadata:
+      m_Items: []
+  - m_Id: 715205610475520
+    m_Localized: Turret Vertical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 715224816193536
+    m_Localized: Super Structure Vertical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 715266922811392
+    m_Localized: Ineffective
+    m_Metadata:
+      m_Items: []
+  - m_Id: 715662823165952
+    m_Localized: Penetrate With Detonate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 715696511815680
+    m_Localized: Pass Through
+    m_Metadata:
+      m_Items: []
+  - m_Id: 715711082827776
+    m_Localized: No Penetration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 806271504257024
+    m_Localized: ShipLog Detail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 806530913570816
+    m_Localized: Battery Fire Control Status Disabled Modifier ({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 807313151266816
+    m_Localized: Firing Circuit Damaged (Worker)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 807815729549312
+    m_Localized: 'Dynamic Modifier:'
     m_Metadata:
       m_Items: []
   references:

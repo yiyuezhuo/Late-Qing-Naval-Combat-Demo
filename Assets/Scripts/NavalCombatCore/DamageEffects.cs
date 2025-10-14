@@ -2265,7 +2265,7 @@ namespace NavalCombatCore
                 {
                     if(TryGetPrimaryBattery(ctx, out var primaryBattery))
                     {
-                        var DE = new BatteryFireContrlStatusDisabledModifier()
+                        var DE = new BatteryFireControlStatusDisabledModifier()
                         {
                             lifeCycle=StateLifeCycle.GivenTime,
                             cause = Localize(
@@ -2286,7 +2286,7 @@ namespace NavalCombatCore
                         if(primaryBattery.fireControlSystemStatusRecords.Count > 0)
                         {
                             var fcsRec = RandomUtils.Sample(primaryBattery.fireControlSystemStatusRecords);
-                            var DE = new BatteryFireContrlStatusDisabledModifier()
+                            var DE = new BatteryFireControlStatusDisabledModifier()
                             {
                                 lifeCycle=StateLifeCycle.GivenTime,
                                 cause = Localize(
@@ -2320,7 +2320,7 @@ namespace NavalCombatCore
 
                     if(IsAB(ctx))
                     {
-                        var DE = new BatteryFireContrlStatusDisabledModifier()
+                        var DE = new BatteryFireControlStatusDisabledModifier()
                         {
                             lifeCycle=StateLifeCycle.GivenTime,
                             cause = Localize(
@@ -2334,7 +2334,7 @@ namespace NavalCombatCore
                         if(battery.fireControlSystemStatusRecords.Count > 0)
                         {
                             var fcsRec = RandomUtils.Sample(battery.fireControlSystemStatusRecords);
-                            var DE = new BatteryFireContrlStatusDisabledModifier()
+                            var DE = new BatteryFireControlStatusDisabledModifier()
                             {
                                 lifeCycle=StateLifeCycle.GivenTime,
                                 cause = Localize(
@@ -2374,7 +2374,7 @@ namespace NavalCombatCore
                         severity /= 2;
                     }
                     var fcsRec = RandomUtils.Sample(battery.fireControlSystemStatusRecords);
-                    var DE = new BatteryFireContrlStatusDisabledModifier()
+                    var DE = new BatteryFireControlStatusDisabledModifier()
                     {
                         lifeCycle=StateLifeCycle.SeverityBased,
                         severity = severity,
@@ -2407,7 +2407,7 @@ namespace NavalCombatCore
                 if(TryGetSecondaryBattery(ctx, out var battery) && battery.fireControlSystemStatusRecords.Count > 0)
                 {
                     var fcsRec = RandomUtils.Sample(battery.fireControlSystemStatusRecords);
-                    var DE = new BatteryFireContrlStatusDisabledModifier()
+                    var DE = new BatteryFireControlStatusDisabledModifier()
                     {
                         lifeCycle=StateLifeCycle.SeverityBased,
                         severity = ctx.RollForSeverity(),
@@ -2492,7 +2492,7 @@ namespace NavalCombatCore
                     if(ctx.subject.batteryStatus.Count > 0)
                     {
                         var battery = RandomUtils.Sample(ctx.subject.batteryStatus);
-                        var DE = new BatteryFireContrlStatusDisabledModifier()
+                        var DE = new BatteryFireControlStatusDisabledModifier()
                         {
                             lifeCycle=StateLifeCycle.SeverityBased,
                             severity = ctx.RollForSeverity(),
@@ -3816,7 +3816,7 @@ namespace NavalCombatCore
                     var DE2 = new DynamicModifier()
                     {
                         cause=Localize(
-                            "DE 608, Loss of stability and maneuver due to flooding"
+                            "DE 608: Loss of stability and maneuver due to flooding"
                         ),
                         isEvasiveManeuverBlocked=true,
                         standardTurnCoef=0.5f,
@@ -3836,12 +3836,6 @@ namespace NavalCombatCore
                         mainBeltArmorCoef=0.5f,
                     };
                     DE2.BeginAt(ctx.subject);
-
-                    // var DE3 = new DE608DynamicModifier()
-                    // {
-                    //     cause="DE 608, Loss of stability and maneuver due to flooding."
-                    // };
-                    // DE3.BeginAt(ctx.subject);
 
                     var DE3 = new DynamicModifier()
                     {

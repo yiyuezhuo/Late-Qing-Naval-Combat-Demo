@@ -1856,6 +1856,122 @@ MonoBehaviour:
     m_Localized: Automatic
     m_Metadata:
       m_Items: []
+  - m_Id: 1543969483427840
+    m_Localized: 'DP Progress {0} Damage Tier: {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547822383665152
+    m_Localized: 'Dense Fog (Code: 0-2, 0%)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547873096994816
+    m_Localized: Light Fog (Code 3, 1-3%)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547900439662592
+    m_Localized: Thin Fog (Code 4, 3-5%)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547910115921920
+    m_Localized: ' Haze (Code 5, 5-8%)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547918647136256
+    m_Localized: Light Haze (Code 6, 8-18%)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547927564226560
+    m_Localized: Clear (Code 7, 18-37%)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547944567934976
+    m_Localized: Very Clear 1 (Code 8, 37-60%)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547953522774016
+    m_Localized: Very Clear 2 (Code 8, 60-85%)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547966697082880
+    m_Localized: Exceptionally Clear (Code 9, 85%-95%)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1583349342310400
+    m_Localized: Undetermined
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1583398931566592
+    m_Localized: Self Destruction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1583407668301824
+    m_Localized: Out Of Range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1583415608119296
+    m_Localized: Dud
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1583424948834304
+    m_Localized: Hit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587300724805632
+    m_Localized: Unknown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587343598981120
+    m_Localized: Barely Competent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587377602203648
+    m_Localized: Average
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587388436090880
+    m_Localized: Above Average
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587404068261888
+    m_Localized: Outstanding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587414214283264
+    m_Localized: Gifted
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587487899815936
+    m_Localized: Not Specified
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587498716925952
+    m_Localized: Coward
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587506904207360
+    m_Localized: Brave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587515221512192
+    m_Localized: Experienced Captain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587523538817024
+    m_Localized: Experienced Tactician
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587531055009792
+    m_Localized: Experienced Strategist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587540328615936
+    m_Localized: Experienced Naval Bureaucrat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587548088078336
+    m_Localized: Not From Naval Background
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

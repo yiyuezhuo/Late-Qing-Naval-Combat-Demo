@@ -178,6 +178,9 @@ public static class RegisteredConverters
         RegisterEnumIntTwoWay<RapidFiringBatteryLocation>();
         RegisterEnumIntTwoWay<AutomaticType>();
         RegisterEnumIntTwoWay<VisibilityDescription>();
+        RegisterEnumIntTwoWay<LaunchedTorpedoEndgameType>();
+        RegisterEnumIntTwoWay<LeaderSkillLevel>();
+        RegisterEnumIntTwoWay<LeaderTrait>();
     }
 
     // static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)

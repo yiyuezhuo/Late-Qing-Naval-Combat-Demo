@@ -1847,6 +1847,122 @@ MonoBehaviour:
     m_Key: AutomaticType.Automatic
     m_Metadata:
       m_Items: []
+  - m_Id: 1543969483427840
+    m_Key: 'DP Progress {0} Damage Tier: {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547822383665152
+    m_Key: VisibilityDescription.DenseFog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547873096994816
+    m_Key: VisibilityDescription.LightFog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547900439662592
+    m_Key: VisibilityDescription.ThinFog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547910115921920
+    m_Key: VisibilityDescription.Haze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547918647136256
+    m_Key: VisibilityDescription.LightHaze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547927564226560
+    m_Key: VisibilityDescription.Clear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547944567934976
+    m_Key: VisibilityDescription.VeryClear1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547953522774016
+    m_Key: VisibilityDescription.VeryClear2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1547966697082880
+    m_Key: VisibilityDescription.ExceptionallyClear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1583349342310400
+    m_Key: LaunchedTorpedoEndgameType.Undetermined
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1583398931566592
+    m_Key: LaunchedTorpedoEndgameType.SelfDestruction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1583407668301824
+    m_Key: LaunchedTorpedoEndgameType.OutOfRange
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1583415608119296
+    m_Key: LaunchedTorpedoEndgameType.Dud
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1583424948834304
+    m_Key: LaunchedTorpedoEndgameType.Hit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587300724805632
+    m_Key: LeaderSkillLevel.Unknown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587343598981120
+    m_Key: LeaderSkillLevel.BarelyCompetent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587377602203648
+    m_Key: LeaderSkillLevel.Average
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587388436090880
+    m_Key: LeaderSkillLevel.AboveAverage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587404068261888
+    m_Key: LeaderSkillLevel.Outstanding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587414214283264
+    m_Key: LeaderSkillLevel.Gifted
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587487899815936
+    m_Key: LeaderTrait.NotSpecified
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587498716925952
+    m_Key: LeaderTrait.Coward
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587506904207360
+    m_Key: LeaderTrait.Brave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587515221512192
+    m_Key: LeaderTrait.ExperiencedCaptain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587523538817024
+    m_Key: LeaderTrait.ExperiencedTactician
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587531055009792
+    m_Key: LeaderTrait.ExperiencedStrategist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587540328615936
+    m_Key: LeaderTrait.ExperiencedNavalBureaucrat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1587548088078336
+    m_Key: LeaderTrait.NotFromNavalBackground
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

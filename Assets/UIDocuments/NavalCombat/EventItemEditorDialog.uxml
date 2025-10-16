@@ -1,16 +1,28 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="PathField" src="project://database/Assets/UIDocuments/Common/PathField.uxml?fileID=9197481963319205126&amp;guid=9188b5e7d6765164fae8cbb89413e8dc&amp;type=3#PathField" />
     <ui:VisualElement data-source-type="DialogRoot+EventStateEditorDialogDataSource, Assembly-CSharp" class="panel-dialog" style="flex-grow: 0; width: 650px;">
-        <ui:Label text="Event Editor" class="title" />
+        <ui:Label text="Event Editor" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63469409439744)" />
+            </Bindings>
+        </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="flex-grow: 1; flex-basis: 50px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                 <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" name="ObjectListView" item-template="project://database/Assets/UIDocuments/Templates/EventItemLabel.uxml?fileID=9197481963319205126&amp;guid=bf0a8247f23abb74cb06658f04dd583c&amp;type=3#EventItemLabel" data-source-path="eventState.eventItems" reorderable="true" style="flex-grow: 1;" />
-                <ui:Button text="Refresh All" name="RefreshAllButton" />
+                <ui:Button text="Refresh All" name="RefreshAllButton">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16180405650231296)" />
+                    </Bindings>
+                </ui:Button>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
                 <ui:VisualElement data-source-path="currentEventItem" style="flex-grow: 1;">
                     <ui:VisualElement style="flex-direction: row;">
-                        <ui:Label text="Name" />
+                        <ui:Label text="Name">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16180703542284288)" />
+                            </Bindings>
+                        </ui:Label>
                         <ui:TextField style="flex-grow: 1;">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="name" binding-mode="TwoWay" />
@@ -18,7 +30,11 @@
                         </ui:TextField>
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-direction: row;">
-                        <ui:Label text="Event" />
+                        <ui:Label text="Event">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16180627780571136)" />
+                            </Bindings>
+                        </ui:Label>
                         <ui:EnumField value="Center" type="NavalCombat.EventType, Assembly-CSharp" style="flex-grow: 1;">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="eventType" binding-mode="TwoWay" />
@@ -29,8 +45,16 @@
                         <AttributeOverrides element-name="FieldLabel" text="Script" />
                     </ui:Instance>
                     <ui:VisualElement style="flex-direction: row;">
-                        <ui:Label text="Preview" style="flex-grow: 1;" />
-                        <ui:Button text="Refresh" name="RefreshButton" />
+                        <ui:Label text="Preview" style="flex-grow: 1;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16180481919455232)" />
+                            </Bindings>
+                        </ui:Label>
+                        <ui:Button text="Refresh" name="RefreshButton">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16180543747690496)" />
+                            </Bindings>
+                        </ui:Button>
                     </ui:VisualElement>
                     <ui:TextField multiline="true" vertical-scroller-visibility="Auto" readonly="true" style="white-space: normal; flex-grow: 1; flex-shrink: 1;">
                         <Bindings>
@@ -44,7 +68,11 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
-            <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1;" />
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                </Bindings>
+            </ui:Button>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

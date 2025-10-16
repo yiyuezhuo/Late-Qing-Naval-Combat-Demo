@@ -55,12 +55,12 @@
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(179207059181568)" />
                             </Bindings>
                         </ui:FloatField>
-                        <ui:EnumField label="Endgame" value="Center" type="NavalCombatCore.LaunchedTorpedoEndgameType, Assembly-CSharp">
+                        <LocalizedEnumField label="Endgame" type-str="NavalCombatCore.LaunchedTorpedoEndgameType">
                             <Bindings>
-                                <ui:DataBinding property="value" data-source-path="endgameType" binding-mode="TwoWay" />
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(179393781207040)" />
+                                <ui:DataBinding property="value" data-source-path="endgameType" source-to-ui-converters="LaunchedTorpedoEndgameType =&gt; int" ui-to-source-converters="int =&gt; LaunchedTorpedoEndgameType" binding-mode="TwoWay" />
                             </Bindings>
-                        </ui:EnumField>
+                        </LocalizedEnumField>
                         <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
                             <ui:TextField label="Hit" readonly="true" style="flex-grow: 1;">
                                 <Bindings>
@@ -104,12 +104,12 @@
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103576539664384)" />
                             </Bindings>
                         </ui:FloatField>
-                        <ui:EnumField label="Map State" value="Center" type="NavalCombatCore.MapState, Assembly-CSharp">
+                        <LocalizedEnumField label="Map State" type-str="NavalCombatCore.MapState">
                             <Bindings>
-                                <ui:DataBinding property="value" data-source-path="mapState" binding-mode="TwoWay" />
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(102766418235392)" />
+                                <ui:DataBinding property="value" data-source-path="mapState" source-to-ui-converters="MapState =&gt; int" ui-to-source-converters="int =&gt; MapState" binding-mode="TwoWay" />
                             </Bindings>
-                        </ui:EnumField>
+                        </LocalizedEnumField>
                         <ui:FloatField label="Max Range (yards)">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="maxRangeYards" binding-mode="TwoWay" />

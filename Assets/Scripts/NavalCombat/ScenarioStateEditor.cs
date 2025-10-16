@@ -144,6 +144,12 @@ namespace NavalCombatCore
         public DateTime GetDateTime() => dateTime;
         public void SetDateTime(DateTime dt) => dateTime = dt;
 
+        public DateTimeOffset GetReferenceTimeZoneDateTimeOffset()
+        {
+            var dateTimeOffset = new DateTimeOffset(dateTime);
+            return dateTimeOffset.ToOffset(TimeSpan.FromHours(CoreParameter.Instance.referenceTimeZoneOffset));
+        }
+
         ScenarioStateDateTimeViewModel _dateTimeViewModel; // Note it's possible to initialize the view model attribute from empty constructor but this may break core's capabbility to leverage empty constructor
 
         [CreateProperty]
@@ -158,6 +164,9 @@ namespace NavalCombatCore
                 return _dateTimeViewModel;
             }
         }
+
+        [CreateProperty]
+        public DateTimeOffset referenceTimeZoneDateTimeOffset => GetReferenceTimeZoneDateTimeOffset();
     }
 }
 

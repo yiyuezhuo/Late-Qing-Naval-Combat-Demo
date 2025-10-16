@@ -55,44 +55,44 @@
                             </ui:Instance>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                 <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                                    <ui:EnumField label="Naval Strategic" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
+                                    <LocalizedEnumField label="Naval Strategic" type-str="CoreUtils.LeaderSkillLevel">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="navalStrategic" binding-mode="TwoWay" />
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(194508010196992)" />
+                                            <ui:DataBinding property="value" data-source-path="navalStrategic" source-to-ui-converters="LeaderSkillLevel =&gt; int" ui-to-source-converters="int =&gt; LeaderSkillLevel" binding-mode="TwoWay" />
                                         </Bindings>
-                                    </ui:EnumField>
-                                    <ui:EnumField label="Naval Operational" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
+                                    </LocalizedEnumField>
+                                    <LocalizedEnumField label="Naval Operational" type-str="CoreUtils.LeaderSkillLevel">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="navalOperational" binding-mode="TwoWay" />
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(194584245866496)" />
+                                            <ui:DataBinding property="value" data-source-path="navalOperational" source-to-ui-converters="LeaderSkillLevel =&gt; int" ui-to-source-converters="int =&gt; LeaderSkillLevel" binding-mode="TwoWay" />
                                         </Bindings>
-                                    </ui:EnumField>
-                                    <ui:EnumField label="Naval Tactical" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
+                                    </LocalizedEnumField>
+                                    <LocalizedEnumField label="Naval Tactical" type-str="CoreUtils.LeaderSkillLevel">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="navalTactical" binding-mode="TwoWay" />
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(194690319814656)" />
+                                            <ui:DataBinding property="value" data-source-path="navalTactical" source-to-ui-converters="LeaderSkillLevel =&gt; int" ui-to-source-converters="int =&gt; LeaderSkillLevel" binding-mode="TwoWay" />
                                         </Bindings>
-                                    </ui:EnumField>
+                                    </LocalizedEnumField>
                                 </ui:VisualElement>
                                 <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                                    <ui:EnumField label="Land Strategic" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
+                                    <LocalizedEnumField label="Land Strategic" type-str="CoreUtils.LeaderSkillLevel">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="landStrategic" binding-mode="TwoWay" />
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(194758976376832)" />
+                                            <ui:DataBinding property="value" data-source-path="landStrategic" source-to-ui-converters="LeaderSkillLevel =&gt; int" ui-to-source-converters="int =&gt; LeaderSkillLevel" binding-mode="TwoWay" />
                                         </Bindings>
-                                    </ui:EnumField>
-                                    <ui:EnumField label="Land Operational" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
+                                    </LocalizedEnumField>
+                                    <LocalizedEnumField type-str="CoreUtils.LeaderSkillLevel" label="Land Operational">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="landOperational" binding-mode="TwoWay" />
+                                            <ui:DataBinding property="value" data-source-path="landOperational" source-to-ui-converters="LeaderSkillLevel =&gt; int" ui-to-source-converters="int =&gt; LeaderSkillLevel" binding-mode="TwoWay" />
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(194853557932032)" />
                                         </Bindings>
-                                    </ui:EnumField>
-                                    <ui:EnumField label="Land Tactical" value="Center" type="CoreUtils.LeaderSkillLevel, Assembly-CSharp">
+                                    </LocalizedEnumField>
+                                    <LocalizedEnumField type-str="CoreUtils.LeaderSkillLevel" label="Land Tactical">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="landTactical" binding-mode="TwoWay" />
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(194926723371008)" />
+                                            <ui:DataBinding property="value" data-source-path="landTactical" source-to-ui-converters="LeaderSkillLevel =&gt; int" ui-to-source-converters="int =&gt; LeaderSkillLevel" binding-mode="TwoWay" />
                                         </Bindings>
-                                    </ui:EnumField>
+                                    </LocalizedEnumField>
                                 </ui:VisualElement>
                             </ui:VisualElement>
                             <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" header-title="Traits" show-foldout-header="true" item-template="project://database/Assets/UIDocuments/Templates/LeaderTraitEditor.uxml?fileID=9197481963319205126&amp;guid=af7a28a3141020b4aa2a856f35f2bb82&amp;type=3#LeaderTraitEditor" data-source-path="traits">

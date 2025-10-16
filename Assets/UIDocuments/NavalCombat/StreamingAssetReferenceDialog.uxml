@@ -1,21 +1,32 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="ReferenceManager, Assembly-CSharp" data-source-path="streamingAssetReference" class="panel-dialog" style="flex-grow: 0; height: auto;">
-        <ui:Label text="Streaming Asset Reference" class="title" />
+        <ui:Label text="Streaming Asset Reference" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63363125776384)" />
+            </Bindings>
+        </ui:Label>
         <ui:TextField label="Leaders Path">
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="leadersPath" binding-mode="TwoWay" />
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16179749791109120)" />
             </Bindings>
         </ui:TextField>
         <ui:TextField label="Ship Classes Path">
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="shipClassesPath" binding-mode="TwoWay" />
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16179887976648704)" />
             </Bindings>
         </ui:TextField>
         <ui:TextField label="Named Ships Path">
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="namedShipsPath" binding-mode="TwoWay" />
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16180009527578624)" />
             </Bindings>
         </ui:TextField>
-        <ui:Button text="Confirm" name="ConfirmButton" />
+        <ui:Button text="Confirm" name="ConfirmButton">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+            </Bindings>
+        </ui:Button>
     </ui:VisualElement>
 </ui:UXML>

@@ -1934,6 +1934,38 @@ MonoBehaviour:
     m_Localized: Reference Time Zone
     m_Metadata:
       m_Items: []
+  - m_Id: 16179749791109120
+    m_Localized: Leaders Path
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16179887976648704
+    m_Localized: Ship Classes Path
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16180009527578624
+    m_Localized: Named Ships Path
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16180405650231296
+    m_Localized: Refresh All
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16180481919455232
+    m_Localized: Preview
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16180543747690496
+    m_Localized: Refresh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16180627780571136
+    m_Localized: Event
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16180703542284288
+    m_Localized: Name
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

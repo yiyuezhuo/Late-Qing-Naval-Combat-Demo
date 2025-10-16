@@ -73,9 +73,14 @@
                     </Bindings>
                 </ui:IntegerField>
             </ui:VisualElement>
-            <ui:Label>
+            <ui:Label text="UTC Time">
                 <Bindings>
                     <ui:DataBinding property="text" data-source-path="dateTime" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Offset Time">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="referenceTimeZoneDateTimeOffset" binding-mode="ToTarget" />
                 </Bindings>
             </ui:Label>
             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
@@ -144,7 +149,7 @@
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(178159569506304)" />
                 </Bindings>
             </ui:Label>
-            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; height: 200px;">
+            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="description" binding-mode="TwoWay" />
                 </Bindings>

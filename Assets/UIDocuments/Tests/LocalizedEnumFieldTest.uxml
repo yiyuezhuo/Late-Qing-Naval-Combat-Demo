@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:DropdownField label="ABC" />
+    <ExampleField value="123" />
+    <ExampleField2 />
+    <ExampleField3 label="11" type-str="CoreUtils.Country" />
+</ui:UXML>

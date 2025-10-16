@@ -154,6 +154,9 @@ public static class RegisteredConverters
         Register("int => AmmunitionType", (ref int idx) => (AmmunitionType)idx);
 
         Register("String => Localized String", (ref string s) => MyLocale.Get(s));
+
+        RegisterEnumIntTwoWay<Country>();
+        RegisterEnumIntTwoWay<RamType>();
     }
 
     // static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)
@@ -168,5 +171,12 @@ public static class RegisteredConverters
         var group = new ConverterGroup(name);
         group.AddConverter(converter);
         ConverterGroups.RegisterConverterGroup(group);
+    }
+
+    static void RegisterEnumIntTwoWay<T>() where T : Enum
+    {
+        var enumTypeName = typeof(T).Name;
+        Register($"{enumTypeName} => int", (ref T enumValue) => Convert.ToInt32(enumValue));
+        Register($"int => {enumTypeName}", (ref int intValue) => (T)Enum.ToObject(typeof(T), intValue));
     }
 }

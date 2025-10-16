@@ -1,0 +1,23 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
+            <LocalizedEnumField type-str="CoreUtils.Country" value="0" />
+            <LocalizedEnumField type-str="CoreUtils.Country" value="0" />
+            <LocalizedEnumField type-str="CoreUtils.Country" value="0" name="LocalizedEnumField" />
+            <LocalizedEnumField type-str="CoreUtils.Country" value="0" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
+            <ui:FloatField label="Float Field" value="42.2" />
+            <ui:FloatField label="Float Field" value="42.2" />
+            <ui:FloatField label="Float Field" value="42.2" />
+            <ui:FloatField label="Float Field" value="42.2" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
+            <ui:DropdownField label="Dropdown" />
+            <ui:DropdownField label="Dropdown" />
+            <ui:DropdownField label="Dropdown" />
+            <ui:DropdownField label="Dropdown" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

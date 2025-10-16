@@ -81,18 +81,18 @@
                                                             </Bindings>
                                                         </ui:Button>
                                                     </ui:VisualElement>
-                                                    <ui:EnumField label="Map State" value="Center" type="NavalCombatCore.MapState, Assembly-CSharp">
+                                                    <LocalizedEnumField label="Map State" type-str="NavalCombatCore.MapState">
                                                         <Bindings>
-                                                            <ui:DataBinding property="value" data-source-path="mapState" binding-mode="TwoWay" />
                                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(102766418235392)" />
+                                                            <ui:DataBinding property="value" data-source-path="mapState" binding-mode="TwoWay" source-to-ui-converters="MapState =&gt; int" ui-to-source-converters="int =&gt; MapState" />
                                                         </Bindings>
-                                                    </ui:EnumField>
-                                                    <ui:EnumField label="Operational State" value="Center" type="NavalCombatCore.ShipOperationalState, Assembly-CSharp">
+                                                    </LocalizedEnumField>
+                                                    <LocalizedEnumField label="Operational State" type-str="NavalCombatCore.ShipOperationalState">
                                                         <Bindings>
-                                                            <ui:DataBinding property="value" data-source-path="operationalState" binding-mode="TwoWay" />
                                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103091476795392)" />
+                                                            <ui:DataBinding property="value" data-source-path="operationalState" source-to-ui-converters="ShipOperationalState =&gt; int" ui-to-source-converters="int =&gt; ShipOperationalState" binding-mode="TwoWay" />
                                                         </Bindings>
-                                                    </ui:EnumField>
+                                                    </LocalizedEnumField>
                                                     <ui:FloatField label="Latitude">
                                                         <Bindings>
                                                             <ui:DataBinding property="value" data-source-path="position.LatDeg" binding-mode="TwoWay" />
@@ -160,12 +160,12 @@
                                                         </Bindings>
                                                     </ui:Toggle>
                                                     <ui:VisualElement style="flex-grow: 1; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-                                                        <ui:EnumField label="Control Mode" value="Center" type="NavalCombatCore.ControlMode, Assembly-CSharp">
+                                                        <LocalizedEnumField label="Control Mode" type-str="NavalCombatCore.ControlMode">
                                                             <Bindings>
-                                                                <ui:DataBinding property="value" data-source-path="controlMode" binding-mode="TwoWay" />
                                                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(108421879336960)" />
+                                                                <ui:DataBinding property="value" data-source-path="controlMode" source-to-ui-converters="ControlMode =&gt; int" ui-to-source-converters="int =&gt; ControlMode" binding-mode="TwoWay" />
                                                             </Bindings>
-                                                        </ui:EnumField>
+                                                        </LocalizedEnumField>
                                                         <ui:VisualElement style="flex-grow: 1;">
                                                             <ui:TextField label="Followed Target" readonly="true">
                                                                 <Bindings>

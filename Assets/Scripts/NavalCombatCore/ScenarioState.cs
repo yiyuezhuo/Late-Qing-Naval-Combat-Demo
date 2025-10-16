@@ -31,7 +31,7 @@ namespace NavalCombatCore
     public enum VisibilityDescription
     {
         DenseFog, // Code: 0-2, 0%
-        LightFog, // COde 3, 1-3%
+        LightFog, // Code 3, 1-3%
         ThinFog, // Code 4, 3-5%
         Haze, // Code 5, 5-8%
         LightHaze, // Code 6, 8-18%

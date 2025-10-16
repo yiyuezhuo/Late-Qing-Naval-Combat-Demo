@@ -294,7 +294,7 @@
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
-    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
       <distanceYards>2000</distanceYards>
@@ -815,7 +815,7 @@
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
-    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
       <distanceYards>2000</distanceYards>
@@ -2920,7 +2920,7 @@
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
-    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
       <distanceYards>2000</distanceYards>
@@ -5573,7 +5573,7 @@
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
-    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
       <distanceYards>2000</distanceYards>
@@ -6538,7 +6538,7 @@ Hiei (比叡, 1878)</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
-    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
       <distanceYards>2000</distanceYards>
@@ -6914,7 +6914,7 @@ Hashidate ((橋立, 1894)
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
-    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
       <distanceYards>2000</distanceYards>

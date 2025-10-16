@@ -157,6 +157,27 @@ public static class RegisteredConverters
 
         RegisterEnumIntTwoWay<Country>();
         RegisterEnumIntTwoWay<RamType>();
+        RegisterEnumIntTwoWay<ShipType>();
+        RegisterEnumIntTwoWay<RangeBand>();
+
+        RegisterEnumIntTwoWay<GunSightType>();
+        RegisterEnumIntTwoWay<FireControlInstrumentType>();
+        RegisterEnumIntTwoWay<RangeFinderType>();
+        RegisterEnumIntTwoWay<DirectorControlType>();
+        RegisterEnumIntTwoWay<StabilizationType>();
+        RegisterEnumIntTwoWay<PowerRemoteControlType>();
+        RegisterEnumIntTwoWay<MountLocation>();
+        RegisterEnumIntTwoWay<TorpedoPistolType>();
+
+        RegisterEnumIntTwoWay<MapState>();
+        RegisterEnumIntTwoWay<ShipOperationalState>();
+        RegisterEnumIntTwoWay<ControlMode>();
+        RegisterEnumIntTwoWay<TrackingSystemState>();
+        RegisterEnumIntTwoWay<MountStatus>();
+
+        RegisterEnumIntTwoWay<RapidFiringBatteryLocation>();
+        RegisterEnumIntTwoWay<AutomaticType>();
+        RegisterEnumIntTwoWay<VisibilityDescription>();
     }
 
     // static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)

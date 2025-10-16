@@ -21,12 +21,12 @@
                     <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
                 </Bindings>
             </ui:Toggle>
-            <ui:EnumField value="Center" type="NavalCombatCore.AutomaticType, Assembly-CSharp" style="min-width: 100px;">
+            <LocalizedEnumField type-str="NavalCombatCore.AutomaticType">
                 <Bindings>
-                    <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay" />
+                    <ui:DataBinding property="value" data-source-path="value" source-to-ui-converters="AutomaticType =&gt; int" ui-to-source-converters="int =&gt; AutomaticType" binding-mode="TwoWay" />
                     <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
                 </Bindings>
-            </ui:EnumField>
+            </LocalizedEnumField>
         </ui:VisualElement>
         <ui:VisualElement data-source-path="fireAutomaticType" style="flex-grow: 0; flex-direction: row;">
             <ui:Label text="Automatic Fire:">
@@ -44,12 +44,12 @@
                     <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
                 </Bindings>
             </ui:Toggle>
-            <ui:EnumField value="Center" type="NavalCombatCore.AutomaticType, Assembly-CSharp" style="min-width: 100px;">
+            <LocalizedEnumField type-str="NavalCombatCore.AutomaticType">
                 <Bindings>
-                    <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay" />
+                    <ui:DataBinding property="value" data-source-path="value" source-to-ui-converters="AutomaticType =&gt; int" ui-to-source-converters="int =&gt; AutomaticType" binding-mode="TwoWay" />
                     <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
                 </Bindings>
-            </ui:EnumField>
+            </LocalizedEnumField>
         </ui:VisualElement>
         <ui:VisualElement data-source-path="ammunitionSwitchAutomaticType" style="flex-grow: 1; flex-direction: row;">
             <ui:Label text="Ammunition Switch:">
@@ -67,12 +67,12 @@
                     <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
                 </Bindings>
             </ui:Toggle>
-            <ui:VisualElement style="flex-grow: 1;">
-                <ui:EnumField value="Center" type="NavalCombatCore.AutomaticType, Assembly-CSharp">
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                <LocalizedEnumField type-str="NavalCombatCore.AutomaticType">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay" />
+                        <ui:DataBinding property="value" data-source-path="value" source-to-ui-converters="AutomaticType =&gt; int" ui-to-source-converters="int =&gt; AutomaticType" binding-mode="TwoWay" />
                     </Bindings>
-                </ui:EnumField>
+                </LocalizedEnumField>
                 <Bindings>
                     <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
                 </Bindings>

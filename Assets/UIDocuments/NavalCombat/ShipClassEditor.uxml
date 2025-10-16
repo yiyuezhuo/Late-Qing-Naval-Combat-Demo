@@ -49,19 +49,19 @@
                                         <ui:Instance template="GlobalStringEditor" data-source-path="name">
                                             <AttributeOverrides element-name="GlobalStringLabel" text="Class Name" />
                                         </ui:Instance>
-                                        <ui:EnumField label="Type" value="Center" type="NavalCombatCore.ShipType, Assembly-CSharp">
+                                        <LocalizedEnumField label="Type" type-str="NavalCombatCore.ShipType">
                                             <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
                                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)" />
+                                                <ui:DataBinding property="value" data-source-path="type" source-to-ui-converters="ShipType =&gt; int" ui-to-source-converters="int =&gt; ShipType" binding-mode="TwoWay" />
                                             </Bindings>
-                                        </ui:EnumField>
+                                        </LocalizedEnumField>
                                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                            <ui:EnumField label="Country" value="Center" type="CoreUtils.Country, Assembly-CSharp" style="flex-grow: 1;">
+                                            <LocalizedEnumField type-str="CoreUtils.Country" label="Country" style="flex-grow: 1;">
                                                 <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="country" binding-mode="TwoWay" />
+                                                    <ui:DataBinding property="value" data-source-path="country" source-to-ui-converters="Country =&gt; int" ui-to-source-converters="int =&gt; Country" binding-mode="TwoWay" />
                                                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69304797794304)" />
                                                 </Bindings>
-                                            </ui:EnumField>
+                                            </LocalizedEnumField>
                                             <ui:VisualElement style="flex-grow: 0; -unity-background-scale-mode: scale-to-fit; width: 50px;">
                                                 <Bindings>
                                                     <ui:DataBinding property="style.backgroundImage" data-source-path="country" binding-mode="ToTarget" source-to-ui-converters="Country =&gt; StyleBackground" />
@@ -86,12 +86,6 @@
                                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69540668674048)" />
                                             </Bindings>
                                         </ui:IntegerField>
-                                        <ui:EnumField label="Ram" value="Center" type="NavalCombatCore.RamType, Assembly-CSharp">
-                                            <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="ram" binding-mode="TwoWay" />
-                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69683560222720)" />
-                                            </Bindings>
-                                        </ui:EnumField>
                                         <LocalizedEnumField label="Ram" type-str="NavalCombatCore.RamType">
                                             <Bindings>
                                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69683560222720)" />
@@ -219,12 +213,12 @@
                                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(82584522100736)" />
                                                     </Bindings>
                                                 </ui:Slider>
-                                                <ui:EnumField label="Pistol" value="Center" type="NavalCombatCore.TorpedoPistolType, Assembly-CSharp">
+                                                <LocalizedEnumField label="Pistol" type-str="NavalCombatCore.TorpedoPistolType">
                                                     <Bindings>
-                                                        <ui:DataBinding property="value" data-source-path="pistolType" binding-mode="TwoWay" />
                                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(83091256938496)" />
+                                                        <ui:DataBinding property="value" data-source-path="pistolType" binding-mode="TwoWay" source-to-ui-converters="TorpedoPistolType =&gt; int" ui-to-source-converters="int =&gt; TorpedoPistolType" />
                                                     </Bindings>
-                                                </ui:EnumField>
+                                                </LocalizedEnumField>
                                             </ui:VisualElement>
                                             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                                                 <ui:MultiColumnListView header-title="Settings" show-add-remove-footer="true" show-foldout-header="true" binding-source-selection-mode="AutoAssign" name="TorpedoSettingsMultiColumnListView" data-source-path="torpedoSettings">

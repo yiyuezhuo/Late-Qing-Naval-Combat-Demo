@@ -12,7 +12,7 @@ namespace CoreUtils
         Spain,
         Germany,
         Italy,
-        Austria, // Austria-Hugary
+        AustriaHugary, // Austria-Hugary
         Turkey, // Ottoman
         Holland,
         Korea,

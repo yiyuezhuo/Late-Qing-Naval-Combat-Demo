@@ -85,9 +85,7 @@ namespace StrategicCombatCore
             {Country.Spain, Color.darkOrange},
             {Country.Germany, Color.black},
             {Country.Italy, Color.greenYellow},
-            {Country.Austria, Color.silver},
-            {Country.Turkey, Color.darkGreen},
-            {Country.Holland, Color.pink},
+            {Country.AustriaHugary, Color.silver},
         };
     }
 

@@ -196,3 +196,8 @@
 .unity-tab-view.grow .unity-tab {
     flex-grow: 1;
 }
+
+.localized-enum-field {
+    margin-bottom: 0;
+    margin-top: 0;
+}

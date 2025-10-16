@@ -11,6 +11,8 @@ public partial class LocalizedEnumField : BaseField<int>
 {
     DropdownField m_Input;
 
+    public new static readonly string ussClassName = "localized-enum-field";
+
 
     // Default constructor is required for compatibility with UXML factory
     public LocalizedEnumField() : this(null)
@@ -23,6 +25,8 @@ public partial class LocalizedEnumField : BaseField<int>
     // bound to.
     public LocalizedEnumField(string label) : base(label, new DropdownField() { })
     {
+        AddToClassList(ussClassName);
+
         // This is the input element instantiated for the base constructor.
         m_Input = this.Q<DropdownField>(className: inputUssClassName);
 

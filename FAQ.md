@@ -10,7 +10,7 @@ Current localization approach:
 - **Basic UI**: English and Simplified Chinese versions are manually crafted. Japanese and Traditional Chinese are LLM-translated based on the above two languages.
 - **Remarks**: Source content with its orignal language appears at the top; translation follow below.
 - **Long Texts** (Help, tutorials, Steam page, etc.): English version are manually written; other languages are LLM-translated from English.
-- **Dynamic Content** (Damage effects, combat logs, etc.): Not yet localized.
+- **Dynamic Content** (Damage effects, combat logs, etc.): Similar to Basic UI.
 
 ## Why Don’t Ships Sink Immediately After Reaching 100% Damage Points?
 

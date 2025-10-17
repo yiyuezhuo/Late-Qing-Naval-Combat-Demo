@@ -10,7 +10,12 @@ Shader "Unlit/Earth0_RTW_like2"
         _ROILonDeg1 ("ROI Longitude Deg 1", Float) = 146 // 131
         _LandColor ("Land Color", Color) = (0, 1, 0, 1)
         _SeaColor ("Sea Color", Color) = (0, 0, 1, 1)
+
+        _LandColorDark ("Land Color (Dark)", Color) = (0.0588, 0.1568, 0.1843)
+        _SeaColorDark ("Sea Color (Dark)", Color) = (0.0235, 0.0274, 0.0431, 1)
+
         [Toggle] _UseROI ("Use ROI", Float) = 1
+        [Toggle] _UseDark ("Use Dark", Float) = 0
     }
     SubShader
     {
@@ -60,7 +65,27 @@ Shader "Unlit/Earth0_RTW_like2"
             float4 _LandColor;
             float4 _SeaColor;
 
+            float4 _LandColorDark;
+            float4 _SeaColorDark;
+
             float _UseROI;
+            float _UseDark;
+
+
+            float4 getColorLight(float h) // JTS-like
+            {
+                return h > 0 ? (1-sqrt(h)*3.5) * _LandColor : _SeaColor;
+            }
+
+            float4 getColorDark(float h) // Google Map dark theme like
+            {
+                return h > 0 ? (1-sqrt(h)*3.5) * _LandColorDark : _SeaColorDark;
+            }
+
+            float4 getColor(float h)
+            {
+                return _UseDark ? getColorDark(h) : getColorLight(h);
+            }
 
             v2f vert (appdata v)
             {
@@ -97,7 +122,7 @@ Shader "Unlit/Earth0_RTW_like2"
                     float2 texCoord = float2(u, v);
                     float h = tex2D(_HeightTexROI, texCoord);
                     // col = h > 0 ? _LandColor : _SeaColor;
-                    col = h > 0 ? (1-sqrt(h)*3.5) * _LandColor : _SeaColor;
+                    col = getColor(h);
                 }
                 else
                 {
@@ -106,7 +131,7 @@ Shader "Unlit/Earth0_RTW_like2"
                     // col = h > 0 ? _LandColor : _SeaColor;
                     // col = h > 0 ? h * _LandColor * 10 : _SeaColor;
                     // col = h > 0 ? (1-h * 20) * _LandColor : _SeaColor;
-                    col = h > 0 ? (1-sqrt(h)*3.5) * _LandColor : _SeaColor;
+                    col = getColor(h);
                 }
 
                 // float h = tex2D(_HeightTex, texCoord);

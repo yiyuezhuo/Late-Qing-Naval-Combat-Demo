@@ -36,6 +36,36 @@ public class GamePreference
 
     public float dayAdvanceHourIntervalSeconds = 0.05f;
 
+    bool _earthDarkThemeSetup = false;
+    bool _earthDarkTheme;
+
+    [CreateProperty]
+    public bool earthDarkTheme
+    {
+        get
+        {
+            if (_earthDarkThemeSetup || !SuperGameState.Instance.IsInNavalGame())
+            {
+                return _earthDarkTheme;
+            }
+
+            _earthDarkThemeSetup = true;
+            _earthDarkTheme = SphereController.Instance?.earthDarkTheme ?? false;
+            return _earthDarkTheme;
+        }
+        set
+        {
+            if (!SuperGameState.Instance.IsInNavalGame())
+                return;
+
+            _earthDarkTheme = value;
+            SphereController.Instance.earthDarkTheme = _earthDarkTheme;
+        }
+    }
+
+    [CreateProperty]
+    public bool earthDarkThemeEnabled => SuperGameState.Instance.IsInNavalGame();
+
     public event EventHandler shortLabelLanguageTypeChanged;
 
     [CreateProperty]

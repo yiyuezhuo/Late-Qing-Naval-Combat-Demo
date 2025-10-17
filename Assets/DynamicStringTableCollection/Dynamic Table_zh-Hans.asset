@@ -532,15 +532,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 85094930485248
-    m_Localized: "DE 153, \u8F93\u914D\u7535\u7CFB\u7EDF\u53D7\u635F"
+    m_Localized: "DE 153, \u914D\u7535\u7CFB\u7EDF\u53D7\u635F"
     m_Metadata:
       m_Items: []
   - m_Id: 85123313340416
-    m_Localized: "DE 153, \u8F93\u914D\u7535\u7CFB\u7EDF\u53D7\u635F (\u4E3B)"
+    m_Localized: "DE 153, \u914D\u7535\u7CFB\u7EDF\u53D7\u635F (\u4E3B)"
     m_Metadata:
       m_Items: []
   - m_Id: 85142204485632
-    m_Localized: "DE 153, \u4F9B\u80FD\u5206\u914D\u7CFB\u7EDF\u53D7\u635F (\u6B21)"
+    m_Localized: "DE 153, \u914D\u7535\u7CFB\u7EDF\u53D7\u635F (\u6B21)"
     m_Metadata:
       m_Items: []
   - m_Id: 85197770625024

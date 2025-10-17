@@ -159,7 +159,7 @@ namespace NavalCombatCore
         }
     }
 
-    public class SideVictoryStatus
+    public partial class SideVictoryStatus
     {
         public string name;
         public float victoryPoint;

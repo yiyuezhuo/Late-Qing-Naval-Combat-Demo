@@ -526,6 +526,14 @@ namespace NavalCombatCore
             }
         }
     }
+
+    public partial class SideVictoryStatus
+    {
+        static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
+        [CreateProperty]
+        public string victoryLevelStr => Localize($"{nameof(VictoryLevel)}.{victoryLevel}");
+    }
 }
 
 namespace CoreUtils

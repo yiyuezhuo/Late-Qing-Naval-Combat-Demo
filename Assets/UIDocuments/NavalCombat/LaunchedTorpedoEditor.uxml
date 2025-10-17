@@ -129,6 +129,9 @@
                             </Bindings>
                         </ui:EnumField>
                     </ui:VisualElement>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="LaunchedTorpedo to DisplayStyle" />
+                    </Bindings>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

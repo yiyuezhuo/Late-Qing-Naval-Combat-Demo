@@ -1963,6 +1963,70 @@ MonoBehaviour:
     m_Key: LeaderTrait.NotFromNavalBackground
     m_Metadata:
       m_Items: []
+  - m_Id: 1762542319472640
+    m_Key: None
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1762566935842816
+    m_Key: FiringLineDisplayMode.SelectedShip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1762607951941632
+    m_Key: FiringLineDisplayMode.SelectedGroup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1762629485498368
+    m_Key: FiringLineDisplayMode.SelectedRootGroup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1762639463747584
+    m_Key: FiringLineDisplayMode.All
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763241312817152
+    m_Key: VictoryLevel.DecisiveDefeat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763245943328768
+    m_Key: VictoryLevel.MajorDefeat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763255518924800
+    m_Key: VictoryLevel.Defeat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763265232932864
+    m_Key: VictoryLevel.MinorDefeat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763272753319936
+    m_Key: VictoryLevel.MarginalDefeat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763281511026688
+    m_Key: VictoryLevel.Draw
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763288859447296
+    m_Key: VictoryLevel.MarginalVictory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763302088282112
+    m_Key: VictoryLevel.MinorVictory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763311810678784
+    m_Key: VictoryLevel.Victory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763319704358912
+    m_Key: VictoryLevel.MajorVictory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763326868230144
+    m_Key: VictoryLevel.DecisiveVictory
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

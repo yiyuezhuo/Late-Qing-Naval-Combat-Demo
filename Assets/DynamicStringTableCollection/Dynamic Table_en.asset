@@ -1972,6 +1972,70 @@ MonoBehaviour:
     m_Localized: Not From Naval Background
     m_Metadata:
       m_Items: []
+  - m_Id: 1762566935842816
+    m_Localized: Selected Ship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1762542319472640
+    m_Localized: None
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1762607951941632
+    m_Localized: Selected Group
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1762629485498368
+    m_Localized: Selected Root Group
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1762639463747584
+    m_Localized: All
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763241312817152
+    m_Localized: Decisive Defeat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763245943328768
+    m_Localized: Major Defeat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763255518924800
+    m_Localized: Defeat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763265232932864
+    m_Localized: Minor Defeat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763272753319936
+    m_Localized: Marginal Defeat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763281511026688
+    m_Localized: Draw
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763288859447296
+    m_Localized: Marginal Victory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763302088282112
+    m_Localized: Minor Victory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763311810678784
+    m_Localized: Victory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763319704358912
+    m_Localized: Major Victory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763326868230144
+    m_Localized: Decisive Victory
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

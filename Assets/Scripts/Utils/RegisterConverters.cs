@@ -154,6 +154,7 @@ public static class RegisteredConverters
         Register("int => AmmunitionType", (ref int idx) => (AmmunitionType)idx);
 
         Register("String => Localized String", (ref string s) => MyLocale.Get(s));
+        Register("String => Localized String (dynamic)", (ref string s) => Localize(s));
 
         RegisterEnumIntTwoWay<Country>();
         RegisterEnumIntTwoWay<RamType>();
@@ -181,6 +182,8 @@ public static class RegisteredConverters
         RegisterEnumIntTwoWay<LaunchedTorpedoEndgameType>();
         RegisterEnumIntTwoWay<LeaderSkillLevel>();
         RegisterEnumIntTwoWay<LeaderTrait>();
+        RegisterEnumIntTwoWay<GamePreference.FiringLineDisplayMode>();
+        RegisterEnumIntTwoWay<VictoryLevel>();
     }
 
     // static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)
@@ -188,6 +191,8 @@ public static class RegisteredConverters
     //     return shipLog.shipClass;
     //     // return GameManager.Instance.navalGameState.shipClasses.FirstOrDefault(x => x.name.english == shipLog.shipClassStr);
     // }
+
+    static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
 
     static void Register<TSource, TDestination>(string name, TypeConverter<TSource, TDestination> converter)

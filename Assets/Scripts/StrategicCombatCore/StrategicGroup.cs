@@ -187,7 +187,7 @@ namespace StrategicCombatCore
         }
 
         [XmlIgnore]
-        public Cell cell => StrategicGameState.Instance.cellMatrix[x, y];
+        public Cell cell => x != -1 && y != -1 ? StrategicGameState.Instance.cellMatrix[x, y] : null;
 
         public void SetStrategicGroupReference(StrategicGroup group) => IStrategicGroupMemberReferenceable.SetStrategicGroupReference(this, group);
 
@@ -270,21 +270,22 @@ namespace StrategicCombatCore
         public void MoveToXY(int toX, int toY, bool moveThroughEdge)
         {
             var toCell = StrategicGameState.Instance.cellMatrix[toX, toY];
+            var prevCell =  cell;
 
-            if (deployState == DeployState.Independent && x != -1 && y != -1)
+            if (deployState == DeployState.Independent && prevCell != null)
             {
-                cell.StrategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
+                prevCell.StrategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
             }
 
             deployState = DeployState.Independent;
             x = toX;
             y = toY;
 
-            cell.StrategicGroupReferences.Add(new() { referenceId = objectId });
+            toCell.StrategicGroupReferences.Add(new() { referenceId = objectId });
 
-            if (moveThroughEdge)
+            if (moveThroughEdge && IsArmy())
             {
-                var prevCell = cell;
+                
                 if (toCell.TryGetDirection(prevCell, out var edge))
                 {
                     toCell.SetEdgeSide(edge, side);

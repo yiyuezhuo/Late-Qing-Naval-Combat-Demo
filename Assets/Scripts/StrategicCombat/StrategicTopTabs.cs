@@ -251,7 +251,9 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
     {
         // IOManager.Instance.textLoaded -= OnMapXMLLoaded;
 
-        var strategicGameState = XmlUtils.FromXML<StrategicGameState>(text);
-        StrategicGameState.Instance.UpdateTo(strategicGameState);
+        // var strategicGameState = XmlUtils.FromXML<StrategicGameState>(text);
+        // StrategicGameState.Instance.UpdateTo(strategicGameState);
+
+        StartCoroutine(StrategicGameManager.Instance.OnScenTextLoaded(text));
     }
 }

@@ -209,7 +209,14 @@ namespace StrategicCombatCore
 
         public void RefreshControlState()
         {
-            var sides = StrategicGroupReferences.Select(r => r.Get().side).ToHashSet();
+            if (!IsArmyPassable())
+                return;
+            
+            var sides = StrategicGroupReferences
+                .Select(r => r.Get())
+                .Where(g => g != null && g.IsArmy())
+                .Select(g => g.side)
+                .ToHashSet();
 
             // If hex is not in conflict, reset edge control state
             if (sides.Count <= 1)
@@ -347,13 +354,20 @@ namespace StrategicCombatCore
             }
         }
 
-        public bool TryGetDirection((int, int) xy, out EdgeDirection edgeDirection)
-        {
-            var offsetToDirection = x % 2 == 0 ? offsetToDirectionEven : offsetToDirectionsetOdd;
-            return offsetToDirection.TryGetValue(xy, out edgeDirection);
-        }
+        // public bool TryGetDirection((int, int) xy, out EdgeDirection edgeDirection)
+        // {
+        //     var offsetToDirection = x % 2 == 0 ? offsetToDirectionEven : offsetToDirectionsetOdd;
+        //     return offsetToDirection.TryGetValue(xy, out edgeDirection);
+        // }
 
-        public bool TryGetDirection(Cell other, out EdgeDirection edgeDirection) => TryGetDirection((other.x - x, other.y - y), out edgeDirection);
+        // public bool TryGetDirection(Cell other, out EdgeDirection edgeDirection) => TryGetDirection((other.x - x, other.y - y), out edgeDirection);
+        
+        public bool TryGetDirection(Cell other, out EdgeDirection edgeDirection)
+        {
+            var dxy = (other.x - x, other.y - y);
+            var offsetToDirection = x % 2 == 0 ? offsetToDirectionEven : offsetToDirectionsetOdd;
+            return offsetToDirection.TryGetValue(dxy, out edgeDirection);
+        }
 
         public List<EdgeDirection> GetEdgeDirectionsFor(EdgeFeatureType edgeFeatureType)
         {

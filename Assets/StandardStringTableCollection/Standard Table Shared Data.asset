@@ -1889,6 +1889,14 @@ MonoBehaviour:
     m_Key: Earth Dark Theme
     m_Metadata:
       m_Items: []
+  - m_Id: 16832839338856448
+    m_Key: Move (New, M)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16832983358672896
+    m_Key: Move (Append, A)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -219,7 +219,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
     }
 
-    IEnumerator OnScenTextLoaded(string initialScenText)
+    public IEnumerator OnScenTextLoaded(string initialScenText)
     {
         var strategicGameState = XmlUtils.FromXML<StrategicGameState>(initialScenText);
         StrategicGameState.Instance.UpdateTo(strategicGameState);

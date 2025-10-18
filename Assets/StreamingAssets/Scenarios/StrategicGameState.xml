@@ -15694,6 +15694,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <stregnth>0</stregnth>
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
+   <remark>秋山好古</remark>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
    <supplyTransferState>
     <requestRecord>
@@ -15740,7 +15741,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <stregnth>0</stregnth>
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
-   <remark>秋山好古</remark>
+   <remark />
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
    <supplyTransferState>
     <requestRecord>
@@ -23257,7 +23258,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <Cell x="23" y="25" terrain="ShallowWater" longitude="122.59211" latitude="35.9884033" />
    <Cell x="23" y="26" terrain="ShallowWater" longitude="122.562744" latitude="36.5296249" />
    <Cell x="23" y="27" terrain="Field" longitude="122.535049" latitude="37.07104" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-   <Cell x="23" y="28" terrain="Field" longitude="122.5094" latitude="37.6125565" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218">
+   <Cell x="23" y="28" terrain="Field" longitude="122.5094" latitude="37.6125565" IsCoast="true" sideObjectIdHex="">
     <StrategicGroupReferences>
      <StrategicGroupReference>
       <referenceId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</referenceId>
@@ -23507,7 +23508,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <Cell x="28" y="25" terrain="ShallowWater" longitude="125.262993" latitude="35.74161" />
    <Cell x="28" y="26" terrain="ShallowWater" longitude="125.242729" latitude="36.2820663" />
    <Cell x="28" y="27" terrain="ShallowWater" longitude="125.22406" latitude="36.8227" />
-   <Cell x="28" y="28" terrain="ShallowWater" longitude="125.206963" latitude="37.3633156" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218">
+   <Cell x="28" y="28" terrain="ShallowWater" longitude="125.206963" latitude="37.3633156" sideObjectIdHex="">
     <StrategicGroupReferences>
      <StrategicGroupReference>
       <referenceId>643148ed-5d9c-4329-b6b0-9c91c90fa4d2</referenceId>
@@ -23553,7 +23554,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <Cell x="29" y="25" terrain="ShallowWater" longitude="125.779274" latitude="36.0089722" />
    <Cell x="29" y="26" terrain="ShallowWater" longitude="125.761887" latitude="36.5492363" />
    <Cell x="29" y="27" terrain="ShallowWater" longitude="125.746246" latitude="37.0896225" />
-   <Cell x="29" y="28" terrain="Field" longitude="125.732071" latitude="37.6298752" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218">
+   <Cell x="29" y="28" terrain="Field" longitude="125.732071" latitude="37.6298752" IsCoast="true" sideObjectIdHex="">
     <StrategicGroupReferences>
      <StrategicGroupReference>
       <referenceId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</referenceId>
@@ -23628,7 +23629,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      </StrategicGroupReference>
     </StrategicGroupReferences>
    </Cell>
-   <Cell x="30" y="27" terrain="ForestRough" longitude="126.28231" latitude="36.8136749" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d">
+   <Cell x="30" y="27" terrain="ForestRough" longitude="126.28231" latitude="36.8136749" IsCoast="true" sideObjectIdHex="">
     <StrategicGroupReferences>
      <StrategicGroupReference>
       <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>

@@ -164,9 +164,16 @@ public class TopTabs : SingletonDocument<TopTabs>
             GameManager.Instance.state = GameManager.State.SelectingCourseTarget;
         };
 
+        // root.Q<Button>("OpenOpenSourceRepoButton").clicked += () =>
+        // {
+        //     Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
+        // };
         root.Q<Button>("OpenOpenSourceRepoButton").clicked += () =>
         {
-            Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
+            DialogRoot.Instance.PopupConfirmDialog("Open online open resource repository link with browser?\nhttps://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo", () =>
+            {
+                Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
+            });
         };
 
         root.Q<Button>("ReturnToStrategicGameButton").clicked += () =>

@@ -64,6 +64,7 @@ namespace StrategicCombatCore
             Assembling,
             StartToDestination,
             DestinationToStart,
+            Completed
         }
 
         public NavalTransferState navalTransferState;

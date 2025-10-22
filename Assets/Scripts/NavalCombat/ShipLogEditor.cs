@@ -343,6 +343,14 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
 
         Utils.BindIStrategicGroupMemberReferenceable(root, this);
 
+        var loadedGroupListView = root.Q<ListView>("LoadedGroupListView");
+        loadedGroupListView.makeItem = () =>
+        {
+            var el = loadedGroupListView.itemTemplate.CloneTree();
+            Utils.BindGotoButton(el, this);
+            return el;
+        };
+
     }
 
     void OnShipLogsXmlLoaded(string text)

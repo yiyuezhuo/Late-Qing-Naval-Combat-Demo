@@ -321,7 +321,9 @@ namespace StrategicCombatCore
                 else if (obj is StrategicGroup group)
                 {
                     var deployStateStr = group.deployState == StrategicGroup.DeployState.Combined ? $"{group.deployState}" : $"<b>{group.deployState}</b>";
-                    return $"{deployStateStr}";
+                    var autoCombinedableStr = group.autoCombinable ? " <b>Auto-Combinedable</b>" : "";
+                    var dissolvableStr = group.dissolvable ? " <b><color=\"red\">Dissolvable</color></b>" : "";
+                    return $"{deployStateStr}{autoCombinedableStr}{dissolvableStr}";
                 }
 
                 return "";

@@ -238,14 +238,14 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public static void TempFix()
     {
-        foreach(var group in StrategicGameState.Instance.strategicGroups)
-        {
-            foreach(var unitRef in group.subordinatesCombined)
-            {
-                var unit = unitRef.Get();
-                unit.strategicGroupReference.referenceId = group.objectId;
-            }
-        }
+        // foreach(var group in StrategicGameState.Instance.strategicGroups)
+        // {
+        //     foreach(var unitRef in group.subordinatesCombined)
+        //     {
+        //         var unit = unitRef.Get();
+        //         unit.strategicGroupReference.referenceId = group.objectId;
+        //     }
+        // }
 
         // var lines = string.Join("\n", StrategicGameState.Instance.landUnits.Select(landUnit => landUnit.name.chineseSimplified));
         // Debug.Log(lines);

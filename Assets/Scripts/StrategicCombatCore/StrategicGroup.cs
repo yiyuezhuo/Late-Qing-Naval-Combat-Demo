@@ -280,7 +280,7 @@ namespace StrategicCombatCore
         public void MoveToXY(int toX, int toY, bool moveThroughEdge)
         {
             var toCell = StrategicGameState.Instance.cellMatrix[toX, toY];
-            var prevCell =  cell;
+            var prevCell = cell;
 
             if (deployState == DeployState.Independent && prevCell != null)
             {
@@ -295,7 +295,7 @@ namespace StrategicCombatCore
 
             if (moveThroughEdge && IsArmy())
             {
-                
+
                 if (toCell.TryGetDirection(prevCell, out var edge))
                 {
                     toCell.SetEdgeSide(edge, side);
@@ -305,18 +305,37 @@ namespace StrategicCombatCore
                 StrategicGameState.Instance.InvokeMapCellUpdated(prevCell.x, prevCell.y);
             }
 
+
             toCell.RefreshControlState();
             StrategicGameState.Instance.InvokeMapCellUpdated(toCell.x, toCell.y);
         }
-
-        public void RemoveFromMap()
+        
+        public void UnloadFromContainer()
         {
-            if (x == -1 && y == -1)
+            if(containerObjectId != null)
+            {
+                var container = EntityManager.Instance.Get<ShipLog>(containerObjectId);
+                if(container != null)
+                {
+                    var containerGroup = container.strategicGroupReference.Get();
+                    if(containerGroup != null)
+                    {
+                        MoveToXY(containerGroup.x, containerGroup.y, false);
+                        container.loadedGroups.RemoveAll(r => r.referenceId == objectId);
+                    }
+                }
+            }
+        }
+
+        public void RemoveFromMap() // When Independent is transitioned to Combined or NotDeployed
+        {
+            var prevCell = cell;
+
+            if (prevCell == null)
             {
                 return;
             }
-
-            var prevCell = cell;
+            
             // var hexInfoMap = StrategicGameState.Instance.hexInfoMap;
 
             if (deployState == DeployState.Independent)
@@ -327,6 +346,8 @@ namespace StrategicCombatCore
 
             independentX = -1;
             independentY = -1;
+
+            // deployState = DeployState.NotDeployed;
 
             prevCell.RefreshControlState();
         }
@@ -462,7 +483,10 @@ namespace StrategicCombatCore
             else if (deployState == DeployState.Independent)
             {
             }
+            // deployState = DeployState.NotDeployed;
+            RemoveFromMap();
             deployState = DeployState.NotDeployed;
+
             containerObjectId = shipLog.objectId;
             shipLog.loadedGroups.Add(new() { referenceId = objectId });
         }

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using YYZ.PathFinding;
 
 namespace StrategicCombatCore
@@ -223,7 +223,10 @@ namespace StrategicCombatCore
 
         public IEnumerable<StrategicGroup> GetOrderedObservableStrategicGroups()
         {
-            var relatedCells = strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent).Select(group => group.cell).ToHashSet();
+            // var relatedCells = strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent).Select(group => group.cell).ToHashSet();
+            var independentGroups = strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent).ToList();
+            var independentCells = independentGroups.Select(group => group.cell).ToList();
+            var relatedCells = independentCells.ToHashSet();
             foreach (var cell in relatedCells)
             {
                 foreach (var group in cell.StrategicGroupReferences.Select(rp => rp.Get()).Where(group => group != null && IsGroupObservable(group)))
@@ -275,6 +278,36 @@ namespace StrategicCombatCore
             Advance1HourForSupply();
             Advance1HourForMission();
             Advance1HourForMovement();
+
+            CombinedAutoCombinableAndDissolvable();
+        }
+
+        void CombinedAutoCombinableAndDissolvable()
+        {
+            foreach(var group in strategicGroups)
+            {
+                var parentGroup = group.strategicGroupReference.Get();
+                if (group.autoCombinable && group.deployState == StrategicGroup.DeployState.Independent)
+                {
+                    if (parentGroup.x == group.x && parentGroup.y == group.y)
+                    {
+                        group.RemoveFromMap();
+                        group.deployState = StrategicGroup.DeployState.Combined;
+                        group.autoCombinable = false;
+                    }
+                }
+                if(group.dissolvable && group.deployState == StrategicGroup.DeployState.Combined)
+                {
+                    foreach (var memberRef in group.subordinatesCombined.ToList())
+                    {
+                        var member = memberRef.Get();
+                        group.MoveElementTo(member, parentGroup);
+                    }
+                    group.AttachTo(null);
+
+                    EntityManager.Instance.Unregister(group);
+                }
+            }
         }
 
         public void Advance1HourForSupply()
@@ -407,7 +440,6 @@ namespace StrategicCombatCore
                                 // Do Split & Load
                                 var transportShips = mission.WalkGroupMembers<ShipLog>().Where(shipLog => shipLog?.shipClass?.type == ShipType.Transport).ToList();
                                 var cargoGroups = groups.Where(g => g.type != StrategicGroup.Type.Fleet).ToList();
-
                                 TransferSplitter.SequenceSplit(transportShips, cargoGroups);
 
                                 mission.navalTransferState = StrategicMission.NavalTransferState.StartToDestination;
@@ -424,21 +456,60 @@ namespace StrategicCombatCore
                             if (groupingCell == mission.GetWaypointDestinationCell())
                             {
                                 // Do Unload & pre-recombine
+                                foreach(var fleetGroup in fleetGroups)
+                                {
+                                    foreach(var shipLog in fleetGroup.WalkGroupMembers<ShipLog>())
+                                    {
+                                        if(shipLog?.shipClass?.type == ShipType.Transport)
+                                        {
+                                            foreach(var loadedGroupRef in shipLog.loadedGroups.ToList())
+                                            {
+                                                var loadedGroup = loadedGroupRef.Get() as StrategicGroup;
+                                                if(loadedGroup != null)
+                                                {
+                                                    // loadedGroup.MoveToXY(groupingCell.x, groupingCell.y, false);
+                                                    loadedGroup.UnloadFromContainer();
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
                                 mission.navalTransferState = StrategicMission.NavalTransferState.DestinationToStart;
                             }
                         }
                     }
                     else if(mission.navalTransferState == StrategicMission.NavalTransferState.DestinationToStart)
                     {
-                        if (cells.Count == 1)
+                        var cargoGroupsInStartCell = groups.Where(g =>
+                            g.cell == mission.GetWaypointStartCell() &&
+                            g.type != StrategicGroup.Type.Fleet &&
+                            g.deployState == StrategicGroup.DeployState.Independent // Though they're independent when assigned, they may become NotDeployed in trasport process.
+                        ).ToList();
+
+                        if (cargoGroupsInStartCell.Count == 0)
                         {
-                            var groupingCell = cells.First();
-                            if (groupingCell == mission.GetWaypointStartCell())
+                            mission.navalTransferState = StrategicMission.NavalTransferState.Completed;
+                        }
+                        else
+                        {
+                            var fleetGroups = groups.Where(g => g.type == StrategicGroup.Type.Fleet).ToList();
+                            var fleetCells = fleetGroups.Select(g => g.cell).Where(cell => cell != null).ToHashSet();
+
+                            if (fleetCells.Count == 1)
                             {
-                                // Do Split & Load
-                                mission.navalTransferState = StrategicMission.NavalTransferState.StartToDestination;
+                                var groupingCell = cells.First();
+                                if (groupingCell == mission.GetWaypointStartCell())
+                                {
+                                    // Do Split & Load
+                                    var transportShips = mission.WalkGroupMembers<ShipLog>().Where(shipLog => shipLog?.shipClass?.type == ShipType.Transport).ToList();
+                                    TransferSplitter.SequenceSplit(transportShips, cargoGroupsInStartCell);
+
+                                    mission.navalTransferState = StrategicMission.NavalTransferState.StartToDestination;
+                                }
                             }
                         }
+                        
                     }
                 }
             }
@@ -517,11 +588,11 @@ namespace StrategicCombatCore
                             {
                                 HandleMissionAssembly(strategicGroup, mission);
                             }
-                            else if (mission.navalTransferState == StrategicMission.NavalTransferState.StartToDestination)
+                            else if (mission.navalTransferState == StrategicMission.NavalTransferState.StartToDestination && strategicGroup.type == StrategicGroup.Type.Fleet)
                             {
                                 HandleMissionStartToDestination(strategicGroup, mission);
                             }
-                            else if(mission.navalTransferState == StrategicMission.NavalTransferState.DestinationToStart)
+                            else if(mission.navalTransferState == StrategicMission.NavalTransferState.DestinationToStart && strategicGroup.type == StrategicGroup.Type.Fleet)
                             {
                                 HandleMissionDestinationToStart(strategicGroup, mission);
                             }

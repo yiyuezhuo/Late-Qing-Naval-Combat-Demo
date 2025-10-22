@@ -30,6 +30,10 @@ On the other hand, gunnery introduce too much attrition compared to historical c
 
 ## Devlopment
 
+### Doc
+
+Deepwiki automatically generates doc (not very accurate but useful): https://deepwiki.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
+
 ### Unity related bugs
 
 - UITK sometimes lost cellTemplate reference (need to reattaching templates)

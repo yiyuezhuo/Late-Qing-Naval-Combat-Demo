@@ -291,7 +291,7 @@ namespace StrategicCombatCore
                 }
                 if (obj is LandUnit landUnit)
                 {
-                    return $"{landUnit.stregnth} men";
+                    return $"{landUnit.strength} men";
                 }
                 return "";
             }
@@ -368,6 +368,9 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public float supplyCapTons => GetSupplyCapTons();
+
+        [CreateProperty]
+        public double transferWeightTons => GetTransferWeightTons();
     }
 
     public partial class SubStrategicCombat
@@ -449,7 +452,7 @@ namespace StrategicCombatCore
         public bool isSupply => type == MissionType.Supply;
 
         [CreateProperty]
-        public bool isOneWayUnload => type == MissionType.OneWayUnload;
+        public bool isNavalTransfer => type == MissionType.NavalTransfer;
 
         // [CreateProperty]
         // public string sourceDepotName => EntityManager.Instance.Get<LandUnit>(sourceDepotObjectId)?.name?.mergedName ?? "[Not defined or Invalid]";

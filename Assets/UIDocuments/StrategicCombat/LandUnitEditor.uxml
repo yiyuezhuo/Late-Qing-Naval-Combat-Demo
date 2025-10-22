@@ -1,6 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
     <ui:Template name="IStrategicGroupMemberReferenceableParentDepotUI" src="project://database/Assets/UIDocuments/Templates/IStrategicGroupMemberReferenceableParentDepotUI.uxml?fileID=9197481963319205126&amp;guid=a4efcf1499aee3c4e856250902f80d71&amp;type=3#IStrategicGroupMemberReferenceableParentDepotUI" />
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement data-source-type="LandUnitEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Land Unit Editor" class="title">
             <Bindings>
@@ -59,12 +60,22 @@
                                 <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
                                     <ui:IntegerField label="Strength">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="stregnth" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(352622210617344)" />
+                                            <ui:DataBinding property="value" data-source-path="strength" binding-mode="TwoWay" />
                                         </Bindings>
                                     </ui:IntegerField>
                                 </ui:VisualElement>
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;" />
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
+                                    <ui:Toggle label="Manual Override">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="strengthManualOverride" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:Toggle>
+                                    <ui:DoubleField label="Transfer Weight (tons)" enabled="false">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="transferWeightTons" binding-mode="ToTarget" />
+                                        </Bindings>
+                                    </ui:DoubleField>
+                                </ui:VisualElement>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                 <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">

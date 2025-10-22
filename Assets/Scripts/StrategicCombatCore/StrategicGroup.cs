@@ -3,6 +3,7 @@ using System.Linq;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 namespace StrategicCombatCore
 {
@@ -90,9 +91,18 @@ namespace StrategicCombatCore
         {
             NotDeployed,
             Combined,
-            Independent
+            Independent,
+            // Loaded, // Similar to NotDeployed, but it's actually attached loaded in a ship. Used to naval transfer
+            // VolatileIndependent // Similar to Independent, but it would "dissolve" automatically if it's possible to combine to its parent. Use to naval transfer
         }
         public DeployState deployState; // generally, deployState should be set with SetDeployState()
+        
+        // Independent sub states:
+        public bool autoCombinable; // if true, it will convert from independent to combining when applicable 
+        public bool dissolvable; // if true, it would "dissolve" automatically if combine is applicable.
+        
+        public string containerObjectId; // Generally shipLog's objectId.
+        
         public int independentX = -1;
         public int independentY = -1;
 
@@ -418,22 +428,100 @@ namespace StrategicCombatCore
             {TerrainType.Field, speedBase},
         };
 
-        public IEnumerable<T> WalkGroupMembers<T>() where T: IStrategicGroupMemberReferenceable
+        public IEnumerable<T> WalkGroupMembers<T>(bool includeNotCombined=false) where T : IStrategicGroupMemberReferenceable
         {
-            foreach(var subordinateRef in subordinatesCombined)
+            foreach (var subordinateRef in subordinatesCombined)
             {
                 var subordinate = subordinateRef.Get();
 
                 if (subordinate is T obj && obj != null)
                     yield return obj;
-                
-                if(subordinate is StrategicGroup group && group != null)
+
+                if (subordinate is StrategicGroup group && group != null &&
+                    (includeNotCombined || group.deployState == DeployState.Combined))
                 {
-                    foreach(var subObj in group.WalkGroupMembers<T>())
+                    foreach (var subObj in group.WalkGroupMembers<T>(includeNotCombined))
                     {
                         yield return subObj;
                     }
                 }
+            }
+        }
+
+        public double GetTransferWeightTons()
+        {
+            return WalkGroupMembers<LandUnit>().Sum(landUnit => landUnit.GetTransferWeightTons());
+        }
+
+        public void LoadToShip(ShipLog shipLog)
+        {
+            if (deployState == DeployState.Combined)
+            {
+                autoCombinable = true;
+            }
+            else if (deployState == DeployState.Independent)
+            {
+            }
+            deployState = DeployState.NotDeployed;
+            containerObjectId = shipLog.objectId;
+            shipLog.loadedGroups.Add(new() { referenceId = objectId });
+        }
+
+        public void AttachTo(StrategicGroup newParentGroup)
+        {
+            var oldParentGroup = strategicGroupReference.Get();
+            if (oldParentGroup != null)
+            {
+                oldParentGroup.subordinatesCombined.RemoveAll(f => f.referenceId == objectId);
+            }
+            if (newParentGroup != null)
+            {
+                newParentGroup.subordinatesCombined.Add(new() { referenceId = objectId });
+            }
+            strategicGroupReference.referenceId = newParentGroup?.objectId;
+        }
+
+        public void TransferLandUnit(LandUnit subLandUnit, StrategicGroup toGroup)
+        {
+            subordinatesCombined.RemoveAll(f => f.referenceId == subLandUnit.objectId);
+            toGroup.subordinatesCombined.Add(new() { referenceId = subLandUnit.objectId });
+        }
+        
+        public void Split()
+        {
+            if (subordinatesCombined.Count < 2)
+                return;
+
+            var newGroup = new StrategicGroup()
+            {
+                name = name.Add("/2"),
+                type = type,
+                size = size,
+                country = country,
+                deployState = deployState,
+                independentX = independentX,
+                independentY = independentY,
+            };
+            var gameState = StrategicGameState.Instance;
+            var idx = gameState.strategicGroups.IndexOf(this);
+            gameState.strategicGroups.Insert(idx + 1, newGroup);
+            EntityManager.Instance.Register(newGroup, null);
+
+            newGroup.AttachTo(strategicGroupReference.Get());
+
+            var transferElements = Enumerable.Range(0, subordinatesCombined.Count)
+                .Where(idx => idx % 2 == 1)
+                .Select(idx => subordinatesCombined[idx])
+                .ToList();
+
+            // var idxs = Enumerable.Range(0, subordinatesCombined.Count)
+            //      .Where(idx => idx % 2 == 1).ToList();
+            // var transferElements = idxs.Select(idx => subordinatesCombined[idx]);
+            
+            foreach(var transferElement in transferElements)
+            {
+                subordinatesCombined.Remove(transferElement);
+                newGroup.subordinatesCombined.Add(transferElement);
             }
         }
     }

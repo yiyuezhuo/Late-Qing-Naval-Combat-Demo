@@ -271,6 +271,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -574,6 +575,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -850,6 +852,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1066,6 +1069,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1270,6 +1274,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1501,6 +1506,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1732,6 +1738,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -1953,6 +1960,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2174,6 +2182,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2408,6 +2417,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2642,6 +2652,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -2857,6 +2868,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3072,6 +3084,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3287,6 +3300,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3493,6 +3507,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -3745,6 +3760,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -4064,6 +4080,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -4385,6 +4402,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -4646,6 +4664,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -4976,6 +4995,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5252,6 +5272,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5516,6 +5537,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5720,6 +5742,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -5899,6 +5922,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6046,6 +6070,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6181,6 +6206,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6318,6 +6344,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6579,6 +6606,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -6820,6 +6848,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7063,6 +7092,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7306,6 +7336,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7510,6 +7541,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7735,6 +7767,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -7872,6 +7905,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8007,6 +8041,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8142,6 +8177,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8279,6 +8315,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8416,6 +8453,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8553,6 +8591,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8690,6 +8729,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8827,6 +8867,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -8964,6 +9005,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9101,6 +9143,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9236,6 +9279,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9373,6 +9417,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9508,6 +9553,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9643,6 +9689,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9778,6 +9825,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -9915,6 +9963,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10061,6 +10110,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10207,6 +10257,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10353,6 +10404,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10508,6 +10560,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10645,6 +10698,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10782,6 +10836,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -10919,6 +10974,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11056,6 +11112,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11193,6 +11250,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11301,6 +11359,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11409,6 +11468,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11517,6 +11577,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11625,6 +11686,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11733,6 +11795,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11841,6 +11904,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -11949,6 +12013,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12057,6 +12122,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12165,6 +12231,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12273,6 +12340,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12381,6 +12449,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12489,6 +12558,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12597,6 +12667,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12705,6 +12776,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12813,6 +12885,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -12921,6 +12994,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -13029,6 +13103,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -13137,6 +13212,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -13245,6 +13321,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -13353,6 +13430,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -13461,6 +13539,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -13569,6 +13648,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -13677,6 +13757,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -13785,6 +13866,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -13893,6 +13975,7 @@
     </requestRecord>
     <requestedRecords />
    </supplyTransferState>
+   <loadedGroups />
    <doctrine>
     <maneuverAutomaticType>
      <isInherited>true</isInherited>
@@ -14404,8 +14487,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍中軍正営</japanese>
     <chineseSimplified>盛军中军正营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14427,8 +14511,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍中軍副営</japanese>
     <chineseSimplified>盛军中军副营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14450,8 +14535,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍中軍右営</japanese>
     <chineseSimplified>盛军中军右营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14473,8 +14559,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍中軍後営</japanese>
     <chineseSimplified>盛军中军后营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14496,8 +14583,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍中軍伝字正営</japanese>
     <chineseSimplified>盛军中军传字正营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14519,8 +14607,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍左軍正営</japanese>
     <chineseSimplified>盛军左军正营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14542,8 +14631,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍左軍左営</japanese>
     <chineseSimplified>盛军左军左营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14565,8 +14655,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍親軍砲隊営</japanese>
     <chineseSimplified>盛军亲军炮队营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>105.00000762939453</supplyTons>
+   <strength>170</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>35.700004577636719</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
    <supplyTransferState>
@@ -14588,8 +14679,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍右軍正営</japanese>
     <chineseSimplified>盛军右军正营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14611,8 +14703,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍右軍右営</japanese>
     <chineseSimplified>盛军右军右营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14634,8 +14727,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍右軍後営</japanese>
     <chineseSimplified>盛军右军后营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14657,8 +14751,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍親兵馬小队</japanese>
     <chineseSimplified>盛军亲兵马小队</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>31.5</supplyTons>
+   <strength>277</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>17.450998306274414</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
    <supplyTransferState>
@@ -14680,8 +14775,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍親兵歩小队</japanese>
     <chineseSimplified>盛军亲兵步小队</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14703,8 +14799,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍新編第1営</japanese>
     <chineseSimplified>盛军新编1营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14726,8 +14823,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍新編第2営</japanese>
     <chineseSimplified>盛军新编2营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14749,8 +14847,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍新編第3営</japanese>
     <chineseSimplified>盛军新编3营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14772,8 +14871,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍新編第4営</japanese>
     <chineseSimplified>盛军新编4营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14795,8 +14895,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛軍新編第5営</japanese>
     <chineseSimplified>盛军新编5营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14818,8 +14919,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>銘軍歩兵第1営</japanese>
     <chineseSimplified>铭军步1营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14839,8 +14941,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>銘軍歩兵第2営</japanese>
     <chineseSimplified>铭军步2营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14860,8 +14963,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>銘軍歩兵第3営</japanese>
     <chineseSimplified>铭军步3营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14881,8 +14985,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>古北口練軍右営</japanese>
     <chineseSimplified>古北口练军右营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -14904,7 +15009,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>武毅軍副中営</japanese>
     <chineseSimplified>武毅军副中营</chineseSimplified>
    </name>
-   <stregnth>200</stregnth>
+   <strength>200</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>4.2000002861022949</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -14927,7 +15033,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>武毅軍老前営</japanese>
     <chineseSimplified>武毅军老前营</chineseSimplified>
    </name>
-   <stregnth>200</stregnth>
+   <strength>200</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>4.2000002861022949</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -14950,8 +15057,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>武毅軍砲隊</japanese>
     <chineseSimplified>武毅军炮队</chineseSimplified>
    </name>
-   <stregnth>200</stregnth>
-   <supplyTons>42</supplyTons>
+   <strength>170</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>35.700004577636719</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
    <supplyTransferState>
@@ -14973,7 +15081,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>天津武備学堂学生</japanese>
     <chineseSimplified>天津武备学堂学生</chineseSimplified>
    </name>
-   <stregnth>10</stregnth>
+   <strength>10</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>0.21000000834465027</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -14996,8 +15105,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>正定練軍中営</japanese>
     <chineseSimplified>正定练军中营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -15019,8 +15129,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>正定練軍右営</japanese>
     <chineseSimplified>正定练军右营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -15042,7 +15153,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>正定練軍前営</japanese>
     <chineseSimplified>正定练军前营</chineseSimplified>
    </name>
-   <stregnth>210</stregnth>
+   <strength>210</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>4.4099998474121094</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -15065,7 +15177,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>正定練軍左営</japanese>
     <chineseSimplified>正定练军左营</chineseSimplified>
    </name>
-   <stregnth>210</stregnth>
+   <strength>210</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>4.4099998474121094</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -15088,7 +15201,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>親軍馬隊小队</japanese>
     <chineseSimplified>亲军马队小队</chineseSimplified>
    </name>
-   <stregnth>80</stregnth>
+   <strength>80</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>5.0399999618530273</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
@@ -15111,7 +15225,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>山海関武備学堂学生</japanese>
     <chineseSimplified>山海关武备学堂学生</chineseSimplified>
    </name>
-   <stregnth>25</stregnth>
+   <strength>25</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>0.52500003576278687</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -15134,8 +15249,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>仁字営正営</japanese>
     <chineseSimplified>仁字营正营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -15157,8 +15273,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>仁字営副営</japanese>
     <chineseSimplified>仁字营副营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -15180,7 +15297,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>義勝前営一部</japanese>
     <chineseSimplified>义胜前营一部</chineseSimplified>
    </name>
-   <stregnth>200</stregnth>
+   <strength>200</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>4.2000002861022949</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -15203,7 +15321,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>芦台防軍馬隊</japanese>
     <chineseSimplified>芦台防军马队</chineseSimplified>
    </name>
-   <stregnth>200</stregnth>
+   <strength>200</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>12.59999942779541</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
@@ -15226,7 +15345,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>歩兵第11連隊第2大隊</japanese>
     <chineseSimplified>步兵第11联队第2大队</chineseSimplified>
    </name>
-   <stregnth>800</stregnth>
+   <strength>800</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>16.80000114440918</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
@@ -15249,7 +15369,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>歩兵第11連隊第3大隊</japanese>
     <chineseSimplified>步兵第11联队第3大队</chineseSimplified>
    </name>
-   <stregnth>800</stregnth>
+   <strength>800</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>16.80000114440918</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
@@ -15272,7 +15393,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>歩兵第21連隊第1大隊</japanese>
     <chineseSimplified>步兵第21联队第1大队</chineseSimplified>
    </name>
-   <stregnth>600</stregnth>
+   <strength>600</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>12.600000381469727</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>2nd Coy is detached.</remark>
@@ -15296,7 +15418,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>歩兵第21連隊第2大隊第7中隊</japanese>
     <chineseSimplified>步兵第21联队第2大队第7中队</chineseSimplified>
    </name>
-   <stregnth>200</stregnth>
+   <strength>200</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>4.2000002861022949</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
@@ -15319,7 +15442,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>歩兵第21連隊第3大隊</japanese>
     <chineseSimplified>步兵第21联队第3大队</chineseSimplified>
    </name>
-   <stregnth>600</stregnth>
+   <strength>600</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>12.600000381469727</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>11th Coy is detached.</remark>
@@ -15343,7 +15467,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>騎兵第5大隊第1中隊</japanese>
     <chineseSimplified>骑兵第5大队第1中队</chineseSimplified>
    </name>
-   <stregnth>35</stregnth>
+   <strength>35</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>2.2049999237060547</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Most cavalries are assigned to other units for communication, scouting and other support role, so the "main" unit have only 35 cavalries (A full Coy should have 159 strength)</remark>
@@ -15367,7 +15492,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>野戦炮兵第5連隊第3大隊</japanese>
     <chineseSimplified>野战炮兵第5联队第3大队</chineseSimplified>
    </name>
-   <stregnth>140</stregnth>
+   <strength>140</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>29.400001525878906</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
@@ -15390,7 +15516,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>工兵第5大隊第1中隊</japanese>
     <chineseSimplified>工兵第5大队第1中队</chineseSimplified>
    </name>
-   <stregnth>80</stregnth>
+   <strength>80</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>1.6800000667572021</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
@@ -15413,8 +15540,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>中国総倉庫</japanese>
     <chineseSimplified>中国总仓库</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>28135.716796875</supplyTons>
+   <strength>0</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>27768.607421875</supplyTons>
    <supplyGeneratedTons>10000</supplyGeneratedTons>
    <remark>Generic Super Depot Supply Source.</remark>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -15437,8 +15565,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>日本総倉庫</japanese>
     <chineseSimplified>日本总仓库</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>40662.359375</supplyTons>
+   <strength>0</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>46702.2578125</supplyTons>
    <supplyGeneratedTons>10000</supplyGeneratedTons>
    <remark>Generic Super Depot Supply Source.</remark>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -15461,8 +15590,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>北洋倉庫</japanese>
     <chineseSimplified>北洋仓库</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>26831.9765625</supplyTons>
+   <strength>0</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>26460.81640625</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <supplyTransferState>
@@ -15484,7 +15614,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>日本軍朝鮮倉庫</japanese>
     <chineseSimplified>日军朝鲜仓库</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
+   <strength>0</strength>
+   <strengthManualOverride>false</strengthManualOverride>
    <supplyTons>412.64996337890625</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -15507,8 +15638,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>成歓倉庫</japanese>
     <chineseSimplified>成欢仓库</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>575.54998779296875</supplyTons>
+   <strength>0</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>550.800048828125</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <supplyTransferState>
@@ -15530,7 +15662,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>威海衛倉庫</japanese>
     <chineseSimplified>威海卫仓库</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
+   <strength>0</strength>
+   <strengthManualOverride>false</strengthManualOverride>
    <supplyTons>24591.427734375</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -15553,7 +15686,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>旅順倉庫</japanese>
     <chineseSimplified>旅顺仓库</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
+   <strength>0</strength>
+   <strengthManualOverride>false</strengthManualOverride>
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -15576,7 +15710,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第三工兵大隊</japanese>
     <chineseSimplified>第三工兵大队</chineseSimplified>
    </name>
-   <stregnth>520</stregnth>
+   <strength>520</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>10.920000076293945</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
@@ -15599,7 +15734,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第五工兵大隊</japanese>
     <chineseSimplified>第五工兵大队</chineseSimplified>
    </name>
-   <stregnth>520</stregnth>
+   <strength>520</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>10.920000076293945</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
@@ -15622,7 +15758,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第一工兵大隊</japanese>
     <chineseSimplified>第一工兵大队</chineseSimplified>
    </name>
-   <stregnth>520</stregnth>
+   <strength>520</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>10.920000076293945</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
@@ -15645,7 +15782,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第二工兵大隊</japanese>
     <chineseSimplified>第二工兵大队</chineseSimplified>
    </name>
-   <stregnth>520</stregnth>
+   <strength>520</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>10.920000076293945</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
@@ -15668,7 +15806,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第六工兵大隊</japanese>
     <chineseSimplified>第六工兵大队</chineseSimplified>
    </name>
-   <stregnth>520</stregnth>
+   <strength>520</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>10.920000076293945</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>6c212fd6-0b31-461a-9e3f-ef7db7913d63</landUnitTemplateId>
@@ -15691,8 +15830,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第一騎兵大隊</japanese>
     <chineseSimplified>第一骑兵大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>652</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>41.075996398925781</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>秋山好古</remark>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
@@ -15715,8 +15855,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第二騎兵大隊</japanese>
     <chineseSimplified>第二骑兵大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>652</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>41.075996398925781</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
    <supplyTransferState>
@@ -15738,8 +15879,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第三騎兵大隊</japanese>
     <chineseSimplified>第三骑兵大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>652</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>41.075996398925781</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark />
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
@@ -15762,8 +15904,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第五騎兵大隊</japanese>
     <chineseSimplified>第五骑兵大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>652</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>41.075996398925781</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
    <supplyTransferState>
@@ -15785,8 +15928,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第六騎兵大隊</japanese>
     <chineseSimplified>第六骑兵大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>652</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>41.075996398925781</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>8be881bc-e719-42ef-98d6-c911dba7f4ab</landUnitTemplateId>
    <supplyTransferState>
@@ -15808,8 +15952,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第22連隊第1大隊</japanese>
     <chineseSimplified>第22联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -15831,8 +15976,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第22連隊第2大隊</japanese>
     <chineseSimplified>第22联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -15854,8 +16000,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第22連隊第3大隊</japanese>
     <chineseSimplified>第22联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -15877,8 +16024,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第12連隊第1大隊</japanese>
     <chineseSimplified>第12联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -15900,8 +16048,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第12連隊第2大隊</japanese>
     <chineseSimplified>第12联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -15923,8 +16072,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第12連隊第3大隊</japanese>
     <chineseSimplified>第12联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -15946,8 +16096,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第19連隊第1大隊</japanese>
     <chineseSimplified>第19联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -15969,8 +16120,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第19連隊第2大隊</japanese>
     <chineseSimplified>第19联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -15992,8 +16144,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第19連隊第3大隊</japanese>
     <chineseSimplified>第19联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16015,8 +16168,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第7連隊第1大隊</japanese>
     <chineseSimplified>第7联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16038,8 +16192,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第7連隊第2大隊</japanese>
     <chineseSimplified>第7联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16061,8 +16216,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第7連隊第3大隊</japanese>
     <chineseSimplified>第7联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16084,8 +16240,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第18連隊第1大隊</japanese>
     <chineseSimplified>第18联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16107,8 +16264,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第18連隊第2大隊</japanese>
     <chineseSimplified>第18联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16130,8 +16288,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第18連隊第3大隊</japanese>
     <chineseSimplified>第18联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16153,8 +16312,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第6連隊第1大隊</japanese>
     <chineseSimplified>第6联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16176,8 +16336,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第6連隊第2大隊</japanese>
     <chineseSimplified>第6联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16199,8 +16360,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第6連隊第3大隊</japanese>
     <chineseSimplified>第6联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16222,8 +16384,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第4連隊第1大隊</japanese>
     <chineseSimplified>第4联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16245,8 +16408,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第4連隊第2大隊</japanese>
     <chineseSimplified>第4联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16268,8 +16432,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第4連隊第3大隊</japanese>
     <chineseSimplified>第4联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16291,8 +16456,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第16連隊第1大隊</japanese>
     <chineseSimplified>第16联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16314,8 +16480,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第16連隊第2大隊</japanese>
     <chineseSimplified>第16联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16337,8 +16504,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第16連隊第3大隊</japanese>
     <chineseSimplified>第16联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16360,8 +16528,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第5連隊第1大隊</japanese>
     <chineseSimplified>第5联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16383,8 +16552,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第5連隊第2大隊</japanese>
     <chineseSimplified>第5联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16406,8 +16576,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第5連隊第3大隊</japanese>
     <chineseSimplified>第5联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16429,8 +16600,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第17連隊第1大隊</japanese>
     <chineseSimplified>第17联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16452,8 +16624,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第17連隊第2大隊</japanese>
     <chineseSimplified>第17联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16475,8 +16648,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第17連隊第3大隊</japanese>
     <chineseSimplified>第17联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16498,8 +16672,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第1連隊第1大隊</japanese>
     <chineseSimplified>第1联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16521,8 +16696,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第1連隊第2大隊</japanese>
     <chineseSimplified>第1联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16544,8 +16720,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第1連隊第3大隊</japanese>
     <chineseSimplified>第1联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16567,8 +16744,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第15連隊第1大隊</japanese>
     <chineseSimplified>第15联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16590,8 +16768,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第15連隊第2大隊</japanese>
     <chineseSimplified>第15联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16613,8 +16792,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第15連隊第3大隊</japanese>
     <chineseSimplified>第15联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16636,8 +16816,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第2連隊第1大隊</japanese>
     <chineseSimplified>第2联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16659,8 +16840,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第2連隊第2大隊</japanese>
     <chineseSimplified>第2联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16682,8 +16864,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第2連隊第3大隊</japanese>
     <chineseSimplified>第2联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16705,8 +16888,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第3連隊第1大隊</japanese>
     <chineseSimplified>第3联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16728,8 +16912,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第3連隊第2大隊</japanese>
     <chineseSimplified>第3联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16751,8 +16936,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第3連隊第3大隊</japanese>
     <chineseSimplified>第3联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16774,8 +16960,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第14連隊第1大隊</japanese>
     <chineseSimplified>第14联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16797,8 +16984,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第14連隊第2大隊</japanese>
     <chineseSimplified>第14联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16820,8 +17008,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第14連隊第3大隊</japanese>
     <chineseSimplified>第14联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16843,8 +17032,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第24連隊第1大隊</japanese>
     <chineseSimplified>第24联队第1大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16866,8 +17056,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第24連隊第2大隊</japanese>
     <chineseSimplified>第24联队第2大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16889,8 +17080,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第24連隊第3大隊</japanese>
     <chineseSimplified>第24联队第3大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>560</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>11.760000228881836</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>ee66b675-29a8-4736-ab53-a95c7be5cb83</landUnitTemplateId>
    <supplyTransferState>
@@ -16912,7 +17104,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>上海倉庫</japanese>
     <chineseSimplified>上海仓库</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
+   <strength>0</strength>
+   <strengthManualOverride>false</strengthManualOverride>
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -16935,7 +17128,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>福州倉庫</japanese>
     <chineseSimplified>福州仓库</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
+   <strength>0</strength>
+   <strengthManualOverride>false</strengthManualOverride>
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -16958,8 +17152,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第一炮兵連隊第一大隊</japanese>
     <chineseSimplified>第一炮兵联队第一大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>60.900005340576172</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
    <supplyTransferState>
@@ -16981,8 +17176,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第一炮兵連隊第二大隊</japanese>
     <chineseSimplified>第一炮兵联队第二大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>60.900005340576172</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
    <supplyTransferState>
@@ -17004,8 +17200,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第一炮兵連隊第三大隊</japanese>
     <chineseSimplified>第一炮兵联队第三大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>6.0900001525878906</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
    <supplyTransferState>
@@ -17027,8 +17224,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第二炮兵連隊第一大隊</japanese>
     <chineseSimplified>第二炮兵联队第一大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>60.900005340576172</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
    <supplyTransferState>
@@ -17050,8 +17248,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第二炮兵連隊第二大隊</japanese>
     <chineseSimplified>第二炮兵联队第二大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>60.900005340576172</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
    <supplyTransferState>
@@ -17073,8 +17272,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第二炮兵連隊第三大隊</japanese>
     <chineseSimplified>第二炮兵联队第三大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>6.0900001525878906</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
    <supplyTransferState>
@@ -17096,8 +17296,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第三炮兵連隊第一大隊</japanese>
     <chineseSimplified>第三炮兵联队第一大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>60.900005340576172</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
    <supplyTransferState>
@@ -17119,8 +17320,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第三炮兵連隊第二大隊</japanese>
     <chineseSimplified>第三炮兵联队第二大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>60.900005340576172</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
    <supplyTransferState>
@@ -17142,8 +17344,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第三炮兵連隊第三大隊</japanese>
     <chineseSimplified>第三炮兵联队第三大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>6.0900001525878906</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
    <supplyTransferState>
@@ -17165,8 +17368,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第五炮兵連隊第一大隊</japanese>
     <chineseSimplified>第五炮兵联队第一大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>60.900005340576172</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
    <supplyTransferState>
@@ -17188,8 +17392,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第五炮兵連隊第二大隊</japanese>
     <chineseSimplified>第五炮兵联队第二大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>60.900005340576172</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
    <supplyTransferState>
@@ -17211,8 +17416,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第五炮兵連隊第三大隊</japanese>
     <chineseSimplified>第五炮兵联队第三大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>6.0900001525878906</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
    <supplyTransferState>
@@ -17234,8 +17440,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第六炮兵連隊第一大隊</japanese>
     <chineseSimplified>第六炮兵联队第一大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>60.900005340576172</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
    <supplyTransferState>
@@ -17257,8 +17464,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第六炮兵連隊第二大隊</japanese>
     <chineseSimplified>第六炮兵联队第二大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>60.900005340576172</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>c0d7fdd9-27a0-4433-a437-5ded823c7ee2</landUnitTemplateId>
    <supplyTransferState>
@@ -17280,8 +17488,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>第六炮兵連隊第三大隊</japanese>
     <chineseSimplified>第六炮兵联队第三大队</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>0</supplyTons>
+   <strength>290</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>6.0900001525878906</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>615420ac-a799-4d02-9f2a-76f03a1cdd67</landUnitTemplateId>
    <supplyTransferState>
@@ -17302,8 +17511,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Yi Army Front Cen</english>
     <chineseSimplified>毅军前军正营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17324,8 +17534,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Yi Army Front Lft</english>
     <chineseSimplified>毅军前军左营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17346,8 +17557,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Yi Army Front Qi</english>
     <chineseSimplified>毅军前军起营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17368,8 +17580,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Yi Army Front Qiu</english>
     <chineseSimplified>毅军前军邱营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17390,8 +17603,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Yi Army Main 1</english>
     <chineseSimplified>毅军本部1营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -17413,8 +17627,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Yi Army Main 2</english>
     <chineseSimplified>毅军本部2营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -17436,8 +17651,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Yi Army Main 3</english>
     <chineseSimplified>毅军本部3营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -17459,8 +17675,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Yi Army Main 4</english>
     <chineseSimplified>毅军本部4营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -17482,8 +17699,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Taipei Depot</english>
     <chineseSimplified>台北仓库</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>90</supplyTons>
+   <strength>0</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>90.9000015258789</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <supplyTransferState>
@@ -17504,8 +17722,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Black Flag Bn 1</english>
     <chineseSimplified>黑旗军1营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -17527,8 +17746,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Black Flag Bn 2</english>
     <chineseSimplified>黑旗军2营</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <remark>Placeholder name</remark>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
@@ -17550,7 +17770,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Feng Left Cav Bn</english>
     <chineseSimplified>奉军左营马队</chineseSimplified>
    </name>
-   <stregnth>277</stregnth>
+   <strength>277</strength>
+   <strengthManualOverride>false</strengthManualOverride>
    <supplyTons>17.450998306274414</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
@@ -17572,8 +17793,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Feng Left Inf Bn</english>
     <chineseSimplified>奉军左营步队</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17594,7 +17816,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Jing Bian Center Cav Bn</english>
     <chineseSimplified>靖边中营马队</chineseSimplified>
    </name>
-   <stregnth>277</stregnth>
+   <strength>277</strength>
+   <strengthManualOverride>false</strengthManualOverride>
    <supplyTons>17.450998306274414</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
@@ -17616,8 +17839,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Jing Bian Center Inf Bn</english>
     <chineseSimplified>靖边中营步队</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17638,8 +17862,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Jing Bian Front Inf Bn</english>
     <chineseSimplified>靖边前营步队</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17660,8 +17885,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Jing Bian RIght Inf Bn</english>
     <chineseSimplified>靖边右营步队</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17682,8 +17908,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Jing Bian After Inf Bn</english>
     <chineseSimplified>靖边后营步队</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17704,7 +17931,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Jing Bian Guard Artillery Bn</english>
     <chineseSimplified>靖边亲军炮队</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
+   <strength>500</strength>
+   <strengthManualOverride>true</strengthManualOverride>
    <supplyTons>105.00000762939453</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>909cc573-4465-44ea-ad72-2cfb11b1782e</landUnitTemplateId>
@@ -17726,8 +17954,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <english>Feng Tian Depot</english>
     <chineseSimplified>奉天仓库</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
-   <supplyTons>1213.739990234375</supplyTons>
+   <strength>0</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>1216.8900146484375</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <supplyTransferState>
@@ -17749,8 +17978,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>正紅旗歩兵隊</japanese>
     <chineseSimplified>正红旗步队</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17772,8 +18002,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>正藍旗歩兵隊</japanese>
     <chineseSimplified>正蓝旗步队</chineseSimplified>
    </name>
-   <stregnth>500</stregnth>
-   <supplyTons>10.5</supplyTons>
+   <strength>505</strength>
+   <strengthManualOverride>false</strengthManualOverride>
+   <supplyTons>10.604999542236328</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
    <supplyTransferState>
@@ -17795,7 +18026,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛字左翼騎馬隊</japanese>
     <chineseSimplified>盛字左翼马队</chineseSimplified>
    </name>
-   <stregnth>277</stregnth>
+   <strength>277</strength>
+   <strengthManualOverride>false</strengthManualOverride>
    <supplyTons>17.450998306274414</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
@@ -17818,7 +18050,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>盛字右翼騎馬隊</japanese>
     <chineseSimplified>盛字右翼马队</chineseSimplified>
    </name>
-   <stregnth>277</stregnth>
+   <strength>277</strength>
+   <strengthManualOverride>false</strengthManualOverride>
    <supplyTons>17.450998306274414</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
@@ -17841,7 +18074,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>吉字左翼騎馬隊 </japanese>
     <chineseSimplified>吉字左翼马队</chineseSimplified>
    </name>
-   <stregnth>277</stregnth>
+   <strength>277</strength>
+   <strengthManualOverride>false</strengthManualOverride>
    <supplyTons>17.450998306274414</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
@@ -17864,7 +18098,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>吉字右翼騎馬隊</japanese>
     <chineseSimplified>吉字右翼马队</chineseSimplified>
    </name>
-   <stregnth>277</stregnth>
+   <strength>277</strength>
+   <strengthManualOverride>false</strengthManualOverride>
    <supplyTons>17.450998306274414</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>fccb992e-ed5d-4f51-baba-080eb556d9ae</landUnitTemplateId>
@@ -17887,7 +18122,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>横須賀倉庫</japanese>
     <chineseSimplified>横须贺仓库</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
+   <strength>0</strength>
+   <strengthManualOverride>false</strengthManualOverride>
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -17910,7 +18146,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>広島倉庫</japanese>
     <chineseSimplified>广岛仓库</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
+   <strength>0</strength>
+   <strengthManualOverride>false</strengthManualOverride>
    <supplyTons>40015.70703125</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -17933,7 +18170,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <japanese>長崎倉庫</japanese>
     <chineseSimplified>长崎仓库</chineseSimplified>
    </name>
-   <stregnth>0</stregnth>
+   <strength>0</strength>
+   <strengthManualOverride>false</strengthManualOverride>
    <supplyTons>0</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -18358,6 +18596,8 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <size>Division</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>21</independentX>
    <independentY>30</independentY>
    <leaderReference>
@@ -18406,6 +18646,8 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    <size>ArmyGroup</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>13</independentX>
    <independentY>33</independentY>
    <leaderReference>
@@ -18463,6 +18705,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Army</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>6</independentX>
    <independentY>16</independentY>
    <leaderReference>
@@ -18488,6 +18732,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Army</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>2</independentX>
    <independentY>3</independentY>
    <leaderReference>
@@ -18517,6 +18763,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Army</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>16</independentX>
    <independentY>18</independentY>
    <leaderReference>
@@ -18546,6 +18794,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Army</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>14</independentX>
    <independentY>32</independentY>
    <leaderReference>
@@ -18593,6 +18843,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Corp</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>22</independentX>
    <independentY>28</independentY>
    <leaderReference>
@@ -18640,6 +18892,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Division</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>21</independentX>
    <independentY>30</independentY>
    <leaderReference>
@@ -18674,6 +18928,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Division</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>22</independentX>
    <independentY>28</independentY>
    <leaderReference>
@@ -18709,6 +18965,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Bridge</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>31</independentX>
    <independentY>27</independentY>
    <leaderReference>
@@ -18771,6 +19029,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Regiment</size>
    <country>China</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference />
@@ -18813,6 +19073,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Regiment</size>
    <country>China</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -18875,6 +19137,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Regiment</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>30</independentX>
    <independentY>28</independentY>
    <leaderReference>
@@ -18907,6 +19171,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Regiment</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>29</independentX>
    <independentY>28</independentY>
    <leaderReference />
@@ -18940,6 +19206,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Regiment</size>
    <country>China</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference />
@@ -18963,6 +19231,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Regiment</size>
    <country>China</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference />
@@ -18986,6 +19256,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Battalion</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>23</independentX>
    <independentY>28</independentY>
    <leaderReference />
@@ -19016,6 +19288,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Battalion</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>28</independentX>
    <independentY>28</independentY>
    <leaderReference />
@@ -19051,6 +19325,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>ArmyGroup</size>
    <country>Japan</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>42</independentX>
    <independentY>23</independentY>
    <leaderReference>
@@ -19087,6 +19363,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Army</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19126,6 +19404,8 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
    <size>Army</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19161,6 +19441,8 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
    <size>Army</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19204,6 +19486,8 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
    <size>Division</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19255,6 +19539,8 @@ It was formed in May 1888 (Meiji 21) based on the Tokyo Garrison. At the same ti
    <size>Division</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19310,6 +19596,8 @@ It participated in Japan's major wars until the dissolution of the Imperial Japa
    <size>Division</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19369,6 +19657,8 @@ It is one of the oldest divisions among the approximately 200 Army divisions.
    <size>Division</size>
    <country>Japan</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>42</independentX>
    <independentY>23</independentY>
    <leaderReference>
@@ -19424,6 +19714,8 @@ It was a division composed of soldiers from Shimane, Hiroshima, and Yamaguchi, w
    <size>Division</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19479,6 +19771,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Division</size>
    <country>Japan</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>30</independentX>
    <independentY>27</independentY>
    <leaderReference>
@@ -19517,6 +19811,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Bridge</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19549,6 +19845,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Bridge</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19581,6 +19879,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Bridge</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19613,6 +19913,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Bridge</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19645,6 +19947,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Bridge</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19677,6 +19981,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Bridge</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19709,6 +20015,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Bridge</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19741,6 +20049,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Bridge</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19773,6 +20083,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Bridge</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19805,6 +20117,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Bridge</size>
    <country>Japan</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>31</independentX>
    <independentY>28</independentY>
    <leaderReference>
@@ -19849,6 +20163,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19882,6 +20198,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19918,6 +20236,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference />
@@ -19942,6 +20262,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -19978,6 +20300,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20014,6 +20338,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20050,6 +20376,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20086,6 +20414,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20122,6 +20452,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20158,6 +20490,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20193,6 +20527,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20229,6 +20565,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20265,6 +20603,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference />
@@ -20289,6 +20629,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20325,6 +20667,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20361,6 +20705,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20397,6 +20743,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20433,6 +20781,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>NotDeployed</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20469,6 +20819,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20505,6 +20857,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20541,6 +20895,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20576,6 +20932,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20611,6 +20969,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20646,6 +21006,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20681,6 +21043,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20716,6 +21080,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>30</independentX>
    <independentY>28</independentY>
    <leaderReference>
@@ -20751,6 +21117,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference />
@@ -20790,6 +21158,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>30</independentX>
    <independentY>26</independentY>
    <leaderReference />
@@ -20827,6 +21197,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference />
@@ -20866,6 +21238,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference />
@@ -20905,6 +21279,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -20946,6 +21322,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>30</independentX>
    <independentY>25</independentY>
    <leaderReference />
@@ -20983,6 +21361,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Division</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>21</independentX>
    <independentY>16</independentY>
    <leaderReference />
@@ -21014,6 +21394,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Unspecified</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>21</independentX>
    <independentY>16</independentY>
    <leaderReference />
@@ -21037,6 +21419,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Army</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>16</independentX>
    <independentY>8</independentY>
    <leaderReference>
@@ -21071,6 +21455,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Unspecified</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>16</independentX>
    <independentY>8</independentY>
    <leaderReference />
@@ -21094,6 +21480,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Unspecified</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>2</independentX>
    <independentY>3</independentY>
    <leaderReference />
@@ -21117,6 +21505,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>Japan</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>42</independentX>
    <independentY>23</independentY>
    <leaderReference />
@@ -21196,6 +21586,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Regiment</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>22</independentX>
    <independentY>28</independentY>
    <leaderReference />
@@ -21229,6 +21621,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <size>Division</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>14</independentX>
    <independentY>32</independentY>
    <leaderReference>
@@ -21281,6 +21675,8 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    <size>Regiment</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>27</independentX>
    <independentY>32</independentY>
    <leaderReference />
@@ -21326,6 +21722,8 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    <size>Regiment</size>
    <country>China</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference />
@@ -21359,6 +21757,8 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    <size>Regiment</size>
    <country>China</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference />
@@ -21398,6 +21798,8 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    <size>Bridge</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>21</independentX>
    <independentY>30</independentY>
    <leaderReference>
@@ -21455,6 +21857,8 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    <size>Regiment</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>27</independentX>
    <independentY>32</independentY>
    <leaderReference>
@@ -21499,6 +21903,8 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    <size>Regiment</size>
    <country>China</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -21537,6 +21943,8 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    <size>Corp</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>20</independentX>
    <independentY>6</independentY>
    <leaderReference>
@@ -21569,6 +21977,8 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    <size>Regiment</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>20</independentX>
    <independentY>6</independentY>
    <leaderReference>
@@ -21601,6 +22011,8 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    <size>Bridge</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>26</independentX>
    <independentY>36</independentY>
    <leaderReference>
@@ -21685,6 +22097,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <size>Army</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>26</independentX>
    <independentY>36</independentY>
    <leaderReference>
@@ -21720,6 +22134,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <size>Bridge</size>
    <country>China</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>26</independentX>
    <independentY>36</independentY>
    <leaderReference>
@@ -21797,6 +22213,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <size>Bridge</size>
    <country>China</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -21838,6 +22256,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <size>Corp</size>
    <country>Japan</country>
    <deployState>Combined</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>-1</independentX>
    <independentY>-1</independentY>
    <leaderReference>
@@ -21874,6 +22294,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <size>Corp</size>
    <country>Japan</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>55</independentX>
    <independentY>25</independentY>
    <leaderReference>
@@ -21904,6 +22326,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <size>Corp</size>
    <country>Japan</country>
    <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
    <independentX>37</independentX>
    <independentY>19</independentY>
    <leaderReference>
@@ -22064,7 +22488,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <supplyState>AssemblingAndLoading</supplyState>
    <sourceDepotReference />
    <targetDepotReference />
-   <oneWayUnloadState>Assembling</oneWayUnloadState>
+   <navalTransferState>Assembling</navalTransferState>
    <objectId>f4c0d26b-9520-4dbc-94ca-865fa88a85d0</objectId>
   </StrategicMission>
   <StrategicMission>
@@ -22105,7 +22529,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <targetDepotReference>
     <objectId>69fa8dac-d422-4297-9726-e145ece4ab13</objectId>
    </targetDepotReference>
-   <oneWayUnloadState>Assembling</oneWayUnloadState>
+   <navalTransferState>Assembling</navalTransferState>
    <objectId>47b1909c-1fcb-4a18-8146-929b570cae27</objectId>
   </StrategicMission>
  </missions>

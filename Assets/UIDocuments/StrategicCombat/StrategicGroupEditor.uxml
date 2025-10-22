@@ -2,6 +2,7 @@
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
     <ui:Template name="StrategicUnitIcon" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicUnitIcon.uxml?fileID=9197481963319205126&amp;guid=aa3ccbfdf5107f4488fcd49416ef81e1&amp;type=3#StrategicUnitIcon" />
     <ui:Template name="IStrategicGroupMemberReferenceableParentDepotUI" src="project://database/Assets/UIDocuments/Templates/IStrategicGroupMemberReferenceableParentDepotUI.uxml?fileID=9197481963319205126&amp;guid=a4efcf1499aee3c4e856250902f80d71&amp;type=3#IStrategicGroupMemberReferenceableParentDepotUI" />
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement data-source-type="StrategicGroupEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Strategic Group Editor" class="title">
             <Bindings>
@@ -120,11 +121,18 @@
                                     </Bindings>
                                 </ui:Button>
                             </ui:VisualElement>
-                            <ui:Label text="Subordinate summary">
-                                <Bindings>
-                                    <ui:DataBinding property="text" data-source-path="subordinateSummary" binding-mode="ToTarget" />
-                                </Bindings>
-                            </ui:Label>
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:Label text="Subordinate summary" style="flex-grow: 1;">
+                                    <Bindings>
+                                        <ui:DataBinding property="text" data-source-path="subordinateSummary" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:Button text="Split" name="SplitButton">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(18007625104527360)" />
+                                    </Bindings>
+                                </ui:Button>
+                            </ui:VisualElement>
                             <ui:ListView name="SubordinatesCombinedListView" header-title="Subordinates" show-add-remove-footer="true" show-foldout-header="true" binding-source-selection-mode="AutoAssign" data-source-path="subordinatesCombined" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" fixed-item-height="60" reorderable="true">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196633377280000)" />

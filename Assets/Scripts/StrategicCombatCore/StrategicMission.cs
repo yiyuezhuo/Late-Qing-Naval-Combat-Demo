@@ -28,7 +28,7 @@ namespace StrategicCombatCore
         {
             Patrol,
             Supply, // Transports load supplies from host and transfer to detination.
-            OneWayUnload // Load is handled by player before task launched. Used for unland army unit or amphibious assault.
+            NavalTransfer // Load is handled by player before task launched. Used for unland army unit or amphibious assault.
         }
 
         public MissionType type = MissionType.Patrol;
@@ -59,13 +59,18 @@ namespace StrategicCombatCore
         public LandUnitReference sourceDepotReference = new();
         public LandUnitReference targetDepotReference = new();
 
-        public enum OneWayUnloadState
+        public enum NavalTransferState
         {
             Assembling,
-            StartToDestination
+            StartToDestination,
+            DestinationToStart,
         }
 
-        public OneWayUnloadState oneWayUnloadState;
+        public NavalTransferState navalTransferState;
+
+        // public List<StrategicGroupMemberReference> loadTargetGroups = new();
+        // Non-Fleet groups in assigned groups are transported groups.
+        // Naval Transfer's destination is the end cell of waypoint.
 
         public Cell GetWaypointStartCell()
         {

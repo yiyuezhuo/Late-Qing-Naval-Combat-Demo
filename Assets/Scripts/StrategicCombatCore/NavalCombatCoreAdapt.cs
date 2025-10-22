@@ -1,6 +1,8 @@
 using CoreUtils;
 using StrategicCombatCore;
 
+using System.Collections.Generic;
+
 namespace NavalCombatCore
 {
     public partial class ShipLog : IStrategicGroupMemberReferenceable, ISupplyNetworkNode
@@ -50,8 +52,9 @@ namespace NavalCombatCore
         public Cell cell => strategicGroupReference.GetCell();
         public SideState side => strategicGroupReference.GetSide();
         public bool IsDepotSameCellOnlySupply() => true;
+        public double GetTransferableWeightTons() => (shipClass?.displacementTons ?? 0) * 0.4; // 40%
 
         // public LandUnit GetCurrentSourceDepot() => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
-
+        public List<StrategicGroupMemberReference> loadedGroups = new();
     }
 }

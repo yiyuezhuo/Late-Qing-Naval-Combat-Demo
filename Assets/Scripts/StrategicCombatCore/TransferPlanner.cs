@@ -1,0 +1,146 @@
+using System.Collections.Generic;
+using System.Linq;
+using CoreUtils;
+using NavalCombatCore;
+
+namespace StrategicCombatCore
+{
+    public class TransferSplitter
+    {
+        // public List<ShipLog> transports;
+        // public List<StrategicGroup> waitLoadGroups;
+
+        List<ShipLog> ships;
+        // List<StrategicGroup> containers,
+        List<IStrategicGroupMemberReferenceable> building = new(); // LandUnit or StrategicGroup, for current ship only
+        // ShipLog currentShip;
+        double currentTransferableWeightTons;
+        double currentCostTons;
+
+        bool isEnd;
+
+        void ResolveBuilding(bool endCurrentShip)
+        {
+            // Handle Established groups
+            foreach(var establishedGroup in building.OfType<StrategicGroup>())
+            {
+                // establishedGroup.autoCombinable = true;
+                // establishedGroup.deployState = StrategicGroup.DeployState.NotDeployed;
+                // establishedGroup.containerObjectId = ships[0].objectId;
+                establishedGroup.LoadToShip(ships[0]);
+            }
+
+            // Handle LandUnits
+            foreach(var g in building.OfType<LandUnit>().GroupBy(u => u.strategicGroupReference.Get()))
+            {
+                var originalParent = g.Key;
+                var subLandUnits = g.ToList();
+
+                var newDissolvableGroup = new StrategicGroup()
+                {
+                    name = ships[0]?.namedShip.name.Add(" loaded"),
+                    type = originalParent.type,
+                    size = originalParent.size,
+                    country = originalParent.country,
+                    // autoCombinable = true,
+                    dissolvable = true,
+                    // containerObjectId = ships[0].objectId,
+                };
+                StrategicGameState.Instance.strategicGroups.Add(newDissolvableGroup);
+                EntityManager.Instance.Register(newDissolvableGroup, null);
+
+                newDissolvableGroup.AttachTo(originalParent);
+                newDissolvableGroup.deployState = StrategicGroup.DeployState.Combined;
+                newDissolvableGroup.LoadToShip(ships[0]);
+
+                foreach (var subLandUnit in subLandUnits)
+                {
+                    // TODO: Refactor
+                    originalParent.TransferLandUnit(subLandUnit, newDissolvableGroup);
+                }
+
+                // originalParent.subordinatesCombined.Add(new() { referenceId = newDissolvableGroup.objectId });
+            }
+
+
+            if (endCurrentShip)
+            {
+                if (ships.Count == 0)
+                {
+                    isEnd = true;
+                    return;
+                }
+
+                ships.RemoveAt(0);
+            }
+            else
+            {
+                currentTransferableWeightTons -= currentCostTons;
+            }
+
+            building.Clear();
+            currentCostTons = 0;
+        }
+
+        public void SplitLoadWalk(StrategicGroup root)
+        {
+            foreach (var refItem in root.subordinatesCombined)
+            {
+                if (isEnd)
+                    return;
+
+                var item = refItem.Get();
+                if (item is StrategicGroup subRoot && subRoot.deployState == StrategicGroup.DeployState.Combined)
+                {
+                    SplitLoadWalk(subRoot);
+                }
+                else if (item is LandUnit landUnit)
+                {
+                    var cost = landUnit.GetTransferWeightTons();
+                    if (currentCostTons + cost <= currentTransferableWeightTons)
+                    {
+                        currentCostTons += cost;
+                        building.Add(landUnit);
+                    }
+                    else
+                    {
+                        ResolveBuilding(true);
+                    }
+                }
+            }
+
+            if (!isEnd)
+            {
+                var idSet = root.subordinatesCombined.Select(r => r.referenceId).ToHashSet();
+                building.RemoveAll(el => idSet.Contains(el.objectId));
+                building.Add(root);
+            }
+        }
+        
+        public static void SequenceSplit(List<ShipLog> transportShips, List<StrategicGroup> cargoGroups)
+        {
+            if (transportShips.Count == 0 || cargoGroups.Count == 0)
+            {
+                return;
+            }
+            
+            var splitter = new TransferSplitter()
+            {
+                ships = transportShips,
+                currentTransferableWeightTons = transportShips[0].GetShipTons(),
+            };
+
+            foreach(var cargoGroup in cargoGroups)
+            {
+                splitter.SplitLoadWalk(cargoGroup);
+
+                if (splitter.isEnd) // ships are "used up"
+                    break;
+                else
+                {
+                    splitter.ResolveBuilding(false);
+                }
+            }
+        }
+    }
+}

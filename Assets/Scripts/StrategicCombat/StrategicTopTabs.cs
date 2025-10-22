@@ -156,9 +156,33 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             StrategicMissionEditor.Instance.Show();
         };
 
-        root.Q<Button>("ResetSupplyButton").clicked += () =>
+        root.Q<Button>("ResetStrengthSupplyButton").clicked += () =>
         {
             var gameState = StrategicGameState.Instance;
+
+            // Reset Strength
+
+            foreach(var landUnit in gameState.landUnits)
+            {
+                // tempfix
+                // landUnit.strength = landUnit.stregnth;
+                // var template = landUnit.GetLandUnitTemplate();
+                // if (template != null && landUnit.strength != 0 && landUnit.strength != template.strength
+                //     && !(landUnit.strength == 500 && template.strength == 505))
+                // {
+                //     landUnit.strengthManualOverride = true;
+                // }
+                
+                var template = landUnit.GetLandUnitTemplate();
+
+                if(template != null && !landUnit.strengthManualOverride)
+                {
+                    landUnit.strength = template.strength;
+                }
+            }
+
+            // Reset Supply
+
             foreach (var landUnit in gameState.landUnits)
             {
                 landUnit.supplyTons = landUnit.GetSupplyCapTons();

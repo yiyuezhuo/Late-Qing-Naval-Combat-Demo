@@ -70,6 +70,17 @@ namespace CoreUtils
             };
         }
 
+        public GlobalString Add(string s) // In general, s should be pure numerical or simple enough acronym 
+        {
+            return Add(new GlobalString()
+            {
+                english = s,
+                japanese = s,
+                chineseSimplified = s,
+                chineseTraditional = s
+            });
+        }
+
         string ValidAdd(string a, string b)
         {
             if (a == null || a == "")

@@ -60,20 +60,29 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
                 var res = group0.country.CompareTo(group1.country);
                 if (res != 0)
                     return res;
-                
+
                 // by size
                 res = group0.size.CompareTo(group1.size);
                 if (res != 0)
                     return res;
-                
+
                 // by type
                 res = group0.type.CompareTo(group1.type);
                 if (res != 0)
                     return res;
-                
+
                 // by name
                 return group0.name.GetMergedName().CompareTo(group1.name.GetMergedName());
             });
+        };
+
+        var splitButton = root.Q<Button>("SplitButton");
+        splitButton.clicked += () => 
+        {
+            if(Utils.TryResolveCurrentValueForBinding(splitButton, out StrategicGroup group))
+            {
+                group.Split();
+            }
         };
     }
 

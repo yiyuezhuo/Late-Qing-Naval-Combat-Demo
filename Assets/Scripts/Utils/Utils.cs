@@ -535,6 +535,12 @@ public static class Utils
                 {
                     Debug.Log("reference SetButton clicked");
 
+                    var pickerMode = selectedMission.type switch
+                    {
+                        StrategicMission.MissionType.NavalTransfer => SubordinatePickerDialog.Mode.MissionUnassignedGroup,
+                        _ => SubordinatePickerDialog.Mode.MissionUnassignedFleetGroup
+                    };
+
                     DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables =>
                     {
                         var oldObj = fieldReference.Get() as StrategicGroup;
@@ -552,7 +558,8 @@ public static class Utils
                             fieldReference.referenceId = dialogSelectedStrategicGroup.objectId;
                             dialogSelectedStrategicGroup.assignedMissionObjectId = selectedMission.objectId;
                         }
-                    }, SubordinatePickerDialog.Mode.MissionUnassignedFleetGroup);
+                    }, pickerMode);
+                    // }, SubordinatePickerDialog.Mode.MissionUnassignedFleetGroup);
                 }
             };
 

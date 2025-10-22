@@ -10,7 +10,9 @@ namespace StrategicCombatCore
     {
         public string objectId { get; set; }
         public GlobalString name = new();
-        public int stregnth;
+        public int strength;
+        // public int strength;
+        public bool strengthManualOverride;
         public double supplyTons;
         public double supplyGeneratedTons; // Super Depot generate ~10,000 tons supply (Freight)
         public string remark;
@@ -34,28 +36,31 @@ namespace StrategicCombatCore
         public float GetFirepower(IFirepowerContext ctx)
         {
             var template = GetLandUnitTemplate();
-            return template.GetFirepower(ctx) * stregnth / template.strength;
+            return template.GetFirepower(ctx) * strength / template.strength;
         }
 
-        public int GetStrengthMen() => stregnth;
+        public int GetStrengthMen() => strength;
         public float GetShipTons() => 0f;
         public int GetSubUnitSize() => 1;
         public float GetCombinedPowerPoint(bool isTop)
         {
-            return stregnth / 500f; // 1 "battalion" =~= 1 pwr pt
+            return strength / 500f; // 1 "battalion" =~= 1 pwr pt
         }
 
+        // Later those value may derived from weapon and template parameter, but now it's determined simply with strength and type.
+
         // public static float baseNormalSupplyCostTonPerMenDay = 0.001f;
-        public static float baseNormalSupplyCostTonPerMenDay = 0.003f; // 3kg/Day/Man 
-        public static float baseCombatSupplyCostTonPerMenDay = 0.015f;
-        public static float carryDays = 7;
-        public static float depotReserveDays = 30;
+        static float baseNormalSupplyCostTonPerMenDay = 0.003f; // 3kg/Day/Man 
+        static float baseCombatSupplyCostTonPerMenDay = 0.015f;
+        static float carryDays = 7;
+        static float depotReserveDays = 30;
 
         static Dictionary<LandUnitType, float> supplyCostCoefMap = new()
         {
             {LandUnitType.Cavalry, 3f},
             {LandUnitType.Artillery, 10f},
         };
+
 
         public float GetSupplyCapTons()
         {
@@ -68,7 +73,7 @@ namespace StrategicCombatCore
             return GetSupplyCostTonsPerDay() * carryDays;
         }
 
-        public float GetSupplyCostTonsPerDay() => GetSupplyCostTonsPerMenDay() * stregnth;
+        public float GetSupplyCostTonsPerDay() => GetSupplyCostTonsPerMenDay() * strength;
 
         public float GetSupplyCostTonsPerMenDay()
         {
@@ -94,6 +99,23 @@ namespace StrategicCombatCore
             return 0;
         }
 
+        static double baseNormalTransferWeightTonPerMen = 0.5; // 500kg per man
+
+        static Dictionary<LandUnitType, double> transferWeightCoefMap = new()
+        {
+            {LandUnitType.Cavalry, 2},
+            {LandUnitType.Artillery, 3},
+        };
+
+        public double GetTransferWeightTons()
+        {
+            var template = GetLandUnitTemplate();
+            if (template == null)
+                return 0;
+            var unitTypeCoef = transferWeightCoefMap.GetValueOrDefault(template.unitType, 1);
+            return strength * baseNormalTransferWeightTonPerMen * unitTypeCoef + supplyTons;
+        }
+
         public Cell cell => strategicGroupReference.GetCell();
 
         public SideState side => strategicGroupReference.GetSide();
@@ -103,6 +125,8 @@ namespace StrategicCombatCore
         public void SetSupplyTons(double value) => supplyTons = value;
         public SupplyTransferState GetSupplyTransferState() => supplyTransferState;
         public bool IsDepotSameCellOnlySupply() => false;
+
+        // public double GetTransferWeightTons() => supplyTons + supplyGeneratedTons;
     }
 }
 

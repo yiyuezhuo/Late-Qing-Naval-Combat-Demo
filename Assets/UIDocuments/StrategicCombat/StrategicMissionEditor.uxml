@@ -1,5 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement data-source-type="StrategicMissionEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Strategic Mission Editor" class="title">
             <Bindings>
@@ -102,14 +103,14 @@
                                 </Bindings>
                             </ui:VisualElement>
                             <ui:VisualElement>
-                                <ui:EnumField label="One Way Unload State" value="Center" type="StrategicCombatCore.StrategicMission+OneWayUnloadState, Assembly-CSharp">
+                                <ui:EnumField label="One Way Unload State" type="StrategicCombatCore.StrategicMission+NavalTransferState, Assembly-CSharp">
                                     <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="oneWayUnloadState" binding-mode="TwoWay" />
-                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054689036177408)" />
+                                        <ui:DataBinding property="value" data-source-path="navalTransferState" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(17966874605817856)" />
                                     </Bindings>
                                 </ui:EnumField>
                                 <Bindings>
-                                    <ui:DataBinding property="style.display" data-source-path="isOneWayUnload" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                                    <ui:DataBinding property="style.display" data-source-path="isNavalTransfer" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
                                 </Bindings>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-direction: row;">

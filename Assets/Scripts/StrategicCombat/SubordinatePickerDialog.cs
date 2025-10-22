@@ -15,7 +15,8 @@ public class SubordinatePickerDialog
         Free,
         ParentUnassignedMember,
         Depot,
-        MissionUnassignedFleetGroup
+        MissionUnassignedFleetGroup, // Patrol, Supply
+        MissionUnassignedGroup // Naval Transfer (non-fleet group would be transferred and fleet will be used to tranport or escort)
     }
 
     // public bool showNonParentGroupOnly = true;
@@ -75,7 +76,21 @@ public class SubordinatePickerDialog
             mainTabView.selectedTabIndex = 2;
             filteredShipLogs = new();
             filteredLandUnits = new();
-            filteredGroups = filteredGroups.Where(group => group.assignedMissionObjectId == null && group.type == StrategicGroup.Type.Fleet).ToList();
+            filteredGroups = filteredGroups.Where(
+                group => group.assignedMissionObjectId == null &&
+                group.deployState == StrategicGroup.DeployState.Independent &&
+                group.type == StrategicGroup.Type.Fleet
+            ).ToList();
+        }
+        else if(mode == Mode.MissionUnassignedGroup)
+        {
+            mainTabView.selectedTabIndex = 2;
+            filteredShipLogs = new();
+            filteredLandUnits = new();
+            filteredGroups = filteredGroups.Where(
+                group => group.assignedMissionObjectId == null &&
+                group.deployState == StrategicGroup.DeployState.Independent
+            ).ToList();
         }
     }
 

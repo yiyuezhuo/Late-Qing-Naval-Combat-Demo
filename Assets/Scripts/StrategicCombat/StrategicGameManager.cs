@@ -19,6 +19,7 @@ using CoreUtils;
 using StrategicCombatCore;
 using NavalCombatCore;
 using YYZ.PathFinding;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 
 public enum StrategicMapEditMode
@@ -237,6 +238,15 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public static void TempFix()
     {
+        foreach(var group in StrategicGameState.Instance.strategicGroups)
+        {
+            foreach(var unitRef in group.subordinatesCombined)
+            {
+                var unit = unitRef.Get();
+                unit.strategicGroupReference.referenceId = group.objectId;
+            }
+        }
+
         // var lines = string.Join("\n", StrategicGameState.Instance.landUnits.Select(landUnit => landUnit.name.chineseSimplified));
         // Debug.Log(lines);
 

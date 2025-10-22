@@ -126,6 +126,8 @@ namespace StrategicCombatCore
         public SupplyTransferState GetSupplyTransferState() => supplyTransferState;
         public bool IsDepotSameCellOnlySupply() => false;
 
+        public override string ToString() => $"LandUnit({name.GetMergedName()})";
+
         // public double GetTransferWeightTons() => supplyTons + supplyGeneratedTons;
     }
 }

@@ -19,6 +19,14 @@ namespace StrategicCombatCore
 
         bool isEnd;
 
+        static GlobalString loadedSuffix = new()
+        {
+            english = " loaded",
+            japanese = " 積載",
+            chineseSimplified = " 装载",
+            chineseTraditional = " 装载",
+        };
+
         void ResolveBuilding(bool endCurrentShip)
         {
             // Handle Established groups
@@ -38,9 +46,11 @@ namespace StrategicCombatCore
 
                 var newDissolvableGroup = new StrategicGroup()
                 {
-                    name = ships[0]?.namedShip.name.Add(" loaded"),
-                    type = originalParent.type,
-                    size = originalParent.size,
+                    name = ships[0]?.namedShip.name.Add(loadedSuffix),
+                    // type = originalParent.type,
+                    // size = originalParent.size,
+                    type = StrategicGroup.Type.General, // replace it with a naval transfer type?
+                    size = StrategicUnitSize.Unspecified,
                     country = originalParent.country,
                     // autoCombinable = true,
                     dissolvable = true,
@@ -65,13 +75,15 @@ namespace StrategicCombatCore
 
             if (endCurrentShip)
             {
+                ships.RemoveAt(0);
+
                 if (ships.Count == 0)
                 {
                     isEnd = true;
                     return;
                 }
 
-                ships.RemoveAt(0);
+                currentTransferableWeightTons = ships[0].GetTransferableWeightTons();
             }
             else
             {
@@ -84,7 +96,7 @@ namespace StrategicCombatCore
 
         public void SplitLoadWalk(StrategicGroup root)
         {
-            foreach (var refItem in root.subordinatesCombined)
+            foreach (var refItem in root.subordinatesCombined.ToList()) // New subordinate may be added but would not be considered in the iteration.
             {
                 if (isEnd)
                     return;
@@ -127,7 +139,7 @@ namespace StrategicCombatCore
             var splitter = new TransferSplitter()
             {
                 ships = transportShips,
-                currentTransferableWeightTons = transportShips[0].GetShipTons(),
+                currentTransferableWeightTons = transportShips[0].GetTransferableWeightTons(),
             };
 
             foreach(var cargoGroup in cargoGroups)

@@ -160,6 +160,9 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public string subordinateSummary => $"{combinedSubUnitSize} sub units, {GetStrengthMen()} men, {GetShipTons()} tons ships, {GetSupplyCostTonsPerDay()} tons supply cost/day";
+
+        [CreateProperty]
+        public string containerName => EntityManager.Instance.Get<ShipLog>(containerObjectId)?.namedShip?.name?.mergedName ?? "[Undefined or Invalid]";
     }
 
     public partial class StrategicGroupReference

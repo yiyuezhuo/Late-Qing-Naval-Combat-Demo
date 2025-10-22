@@ -49,3 +49,7 @@ The reason for retaining elevation data is to support a planned tactical land co
 No, only the naval tactical game is currently playable (to some extent). The exposed strategic game mode only gives a *feel* for what the full strategic experience will eventually be like. 
 
 This area may also be of interest to open-source contributors, as the strategic game is now the main focus of development.
+
+## What is DE XXX (like DE 101?)
+
+DE XXX is "Damage Effect XXX" listed in SK5, though I can't list them since they're behind a paywall, you can check source code to determine their effect in this game. They're not always equivalent.

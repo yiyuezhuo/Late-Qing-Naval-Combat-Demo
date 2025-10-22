@@ -11517,7 +11517,7 @@
     <objectId>4c17e474-a453-48a0-b353-4fce4f54c533</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+    <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
    </strategicGroupReference>
   </ShipLog>
   <ShipLog>
@@ -11735,7 +11735,7 @@
     <objectId>f4e0440d-0c11-4be6-831e-36de285e1dd2</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+    <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
    </strategicGroupReference>
   </ShipLog>
   <ShipLog>
@@ -11953,7 +11953,7 @@
     <objectId>aafc4c82-5014-4f8f-8b00-5c47729f028a</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+    <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
    </strategicGroupReference>
   </ShipLog>
   <ShipLog>
@@ -12171,7 +12171,7 @@
     <objectId>992239d0-7bd1-4c3c-b925-b8761e182058</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+    <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
    </strategicGroupReference>
   </ShipLog>
   <ShipLog>
@@ -12389,7 +12389,7 @@
     <objectId>42bef4b0-ce44-475e-a356-592419d0ab2f</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+    <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
    </strategicGroupReference>
   </ShipLog>
   <ShipLog>
@@ -12607,7 +12607,7 @@
     <objectId>2251925f-3ad4-4003-97de-56612be7e2f1</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+    <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
    </strategicGroupReference>
   </ShipLog>
   <ShipLog>
@@ -12825,7 +12825,7 @@
     <objectId>e91c9321-ef04-4338-ac54-4ffaaae48e1f</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+    <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
    </strategicGroupReference>
   </ShipLog>
   <ShipLog>
@@ -13043,7 +13043,7 @@
     <objectId>65c69ab0-6f43-4e53-ae55-e820b16bf7d9</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+    <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
    </strategicGroupReference>
   </ShipLog>
   <ShipLog>
@@ -13261,7 +13261,7 @@
     <objectId>cba2aa40-1e2b-42a3-a6a1-27602961a213</objectId>
    </doctrine>
    <strategicGroupReference>
-    <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
+    <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
    </strategicGroupReference>
   </ShipLog>
   <ShipLog>
@@ -15567,7 +15567,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    </name>
    <strength>0</strength>
    <strengthManualOverride>false</strengthManualOverride>
-   <supplyTons>46702.2578125</supplyTons>
+   <supplyTons>46702.265625</supplyTons>
    <supplyGeneratedTons>10000</supplyGeneratedTons>
    <remark>Generic Super Depot Supply Source.</remark>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -18148,7 +18148,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    </name>
    <strength>0</strength>
    <strengthManualOverride>false</strengthManualOverride>
-   <supplyTons>40015.70703125</supplyTons>
+   <supplyTons>40015.71484375</supplyTons>
    <supplyGeneratedTons>0</supplyGeneratedTons>
    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
    <supplyTransferState>
@@ -19681,6 +19681,7 @@ It is one of the oldest divisions among the approximately 200 Army divisions.
      <referenceId>21ea6501-23fc-4280-a9f0-6bf283ee6ef6</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
+   <assignedMissionObjectId>66b539de-9565-4b07-94cb-df83eb246750</assignedMissionObjectId>
    <remark>http://www.yhigasi6.com/meiji/meiji4/riku4.html
 
 1873年（明治6年）に設置された広島鎮台を母体に1888年（明治21年）5月14日に編成された。
@@ -21515,55 +21516,28 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
      <referenceId>ce853438-efba-4760-8772-0f20af195c6d</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>ff2a2be8-4dc0-4f2e-a9d3-204b97464787</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
      <referenceId>ed519773-97f2-438c-8c29-ed23388a4892</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>884e9470-40e5-4f94-8907-06f780895d64</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
      <referenceId>dd69551a-c7e2-422f-87f1-1c372a532910</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>9a9658a3-ccae-48d8-89ea-23386df96a8b</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
      <referenceId>f5a5d796-24fa-4a66-b3a3-fbfdd6fc24f4</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>e45890c4-72a7-4e0f-9bd6-d8ca1ebb4a1a</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
      <referenceId>293055e0-877d-42f5-b9f5-1105e2bb87d4</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>175c9300-b657-4f6d-8fc5-726591619f02</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
      <referenceId>a9a2f4a3-9116-4e0f-830c-bf1e8673f38b</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>09455c86-4e7e-4306-b329-32cbb07918f0</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
      <referenceId>7f46bb1a-da14-4469-83e2-90b523558657</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>300356d2-20bf-4c19-a64f-6debfa317b57</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
      <referenceId>07cda472-bc97-4e2c-9e25-2f0a020f2c31</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>c1bef169-989d-49a9-b307-29e530f139b2</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
      <referenceId>1f00ac7d-fed4-4916-afb1-981145dda0e7</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>8bff33f7-f824-4147-883f-a2335263aafb</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <assignedMissionObjectId>47b1909c-1fcb-4a18-8146-929b570cae27</assignedMissionObjectId>
@@ -21572,6 +21546,60 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>748b4491-cf73-4f62-8f7d-075e0dcdec09</objectId>
+   <strategicGroupReference>
+    <referenceId>b2684ea7-b75a-4b7b-ab15-b102e3c7d4ae</referenceId>
+   </strategicGroupReference>
+  </StrategicGroup>
+  <StrategicGroup>
+   <name>
+    <english>IJN Transports/2</english>
+    <japanese>日本軍輸送船団/2</japanese>
+    <chineseSimplified>日军运输船队/2</chineseSimplified>
+   </name>
+   <type>Fleet</type>
+   <size>Regiment</size>
+   <country>Japan</country>
+   <deployState>Independent</deployState>
+   <autoCombinable>false</autoCombinable>
+   <dissolvable>false</dissolvable>
+   <independentX>42</independentX>
+   <independentY>23</independentY>
+   <leaderReference />
+   <subordinatesCombined>
+    <StrategicGroupMemberReference>
+     <referenceId>ff2a2be8-4dc0-4f2e-a9d3-204b97464787</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>884e9470-40e5-4f94-8907-06f780895d64</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>9a9658a3-ccae-48d8-89ea-23386df96a8b</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>e45890c4-72a7-4e0f-9bd6-d8ca1ebb4a1a</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>175c9300-b657-4f6d-8fc5-726591619f02</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>09455c86-4e7e-4306-b329-32cbb07918f0</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>300356d2-20bf-4c19-a64f-6debfa317b57</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>c1bef169-989d-49a9-b307-29e530f139b2</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>8bff33f7-f824-4147-883f-a2335263aafb</referenceId>
+    </StrategicGroupMemberReference>
+   </subordinatesCombined>
+   <assignedMissionObjectId>66b539de-9565-4b07-94cb-df83eb246750</assignedMissionObjectId>
+   <moveProgressionKm>0</moveProgressionKm>
+   <plannedPath />
+   <xProp>42</xProp>
+   <yProp>23</yProp>
+   <objectId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</objectId>
    <strategicGroupReference>
     <referenceId>b2684ea7-b75a-4b7b-ab15-b102e3c7d4ae</referenceId>
    </strategicGroupReference>
@@ -22273,6 +22301,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <StrategicGroupMemberReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
+    </StrategicGroupMemberReference>
    </subordinatesCombined>
    <remark>https://en.wikipedia.org/wiki/Kure_Naval_District</remark>
    <moveProgressionKm>0</moveProgressionKm>
@@ -22531,6 +22562,37 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    </targetDepotReference>
    <navalTransferState>Assembling</navalTransferState>
    <objectId>47b1909c-1fcb-4a18-8146-929b570cae27</objectId>
+  </StrategicMission>
+  <StrategicMission>
+   <name>
+    <english>Naval Transfer</english>
+   </name>
+   <groups>
+    <StrategicGroupMemberReference>
+     <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
+    </StrategicGroupMemberReference>
+   </groups>
+   <waypoints>
+    <XY x="42" y="23" />
+    <XY x="42" y="22" />
+    <XY x="41" y="21" />
+    <XY x="40" y="22" />
+    <XY x="39" y="21" />
+    <XY x="38" y="22" />
+    <XY x="37" y="22" />
+    <XY x="36" y="23" />
+    <XY x="35" y="23" />
+   </waypoints>
+   <type>NavalTransfer</type>
+   <patrolState>Assembling</patrolState>
+   <supplyState>AssemblingAndLoading</supplyState>
+   <sourceDepotReference />
+   <targetDepotReference />
+   <navalTransferState>Assembling</navalTransferState>
+   <objectId>66b539de-9565-4b07-94cb-df83eb246750</objectId>
   </StrategicMission>
  </missions>
  <serializedCells>
@@ -24615,6 +24677,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <chineseSimplified>广岛</chineseSimplified>
     </Label>
     <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
+     </StrategicGroupReference>
      <StrategicGroupReference>
       <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
      </StrategicGroupReference>

@@ -77,11 +77,30 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
         };
 
         var splitButton = root.Q<Button>("SplitButton");
-        splitButton.clicked += () => 
+        splitButton.clicked += () =>
         {
-            if(Utils.TryResolveCurrentValueForBinding(splitButton, out StrategicGroup group))
+            if (Utils.TryResolveCurrentValueForBinding(splitButton, out StrategicGroup group))
             {
                 group.Split();
+            }
+        };
+
+        var gotoContainerButton = root.Q<Button>("GotoContainerButton");
+        gotoContainerButton.clicked += () =>
+        {
+            if(Utils.TryResolveCurrentValueForBinding(gotoContainerButton, out StrategicGroup group))
+            {
+                var container = EntityManager.Instance.Get<ShipLog>(group.containerObjectId);
+                if(container != null)
+                {
+                    var idx = StrategicGameState.Instance.shipLogs.IndexOf(container);
+                    if (idx != -1)
+                    {
+                        Hide();
+                        ShipLogEditor.Instance.Show();
+                        BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipLogEditor.Instance.shipLogListView, idx);
+                    }
+                }
             }
         };
     }

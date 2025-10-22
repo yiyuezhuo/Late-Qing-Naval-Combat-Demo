@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 namespace StrategicCombatCore
 {
@@ -486,7 +486,7 @@ namespace StrategicCombatCore
             subordinatesCombined.RemoveAll(f => f.referenceId == subLandUnit.objectId);
             toGroup.subordinatesCombined.Add(new() { referenceId = subLandUnit.objectId });
         }
-        
+
         public void Split()
         {
             if (subordinatesCombined.Count < 2)
@@ -498,9 +498,9 @@ namespace StrategicCombatCore
                 type = type,
                 size = size,
                 country = country,
-                deployState = deployState,
-                independentX = independentX,
-                independentY = independentY,
+                deployState = DeployState.NotDeployed,
+                // independentX = independentX,
+                // independentY = independentY,
             };
             var gameState = StrategicGameState.Instance;
             var idx = gameState.strategicGroups.IndexOf(this);
@@ -508,6 +508,11 @@ namespace StrategicCombatCore
             EntityManager.Instance.Register(newGroup, null);
 
             newGroup.AttachTo(strategicGroupReference.Get());
+
+            if (deployState == DeployState.Independent)
+            {
+                newGroup.MoveToXY(independentX, independentY, false);
+            }
 
             var transferElements = Enumerable.Range(0, subordinatesCombined.Count)
                 .Where(idx => idx % 2 == 1)
@@ -517,12 +522,21 @@ namespace StrategicCombatCore
             // var idxs = Enumerable.Range(0, subordinatesCombined.Count)
             //      .Where(idx => idx % 2 == 1).ToList();
             // var transferElements = idxs.Select(idx => subordinatesCombined[idx]);
-            
-            foreach(var transferElement in transferElements)
+
+            foreach (var transferElementRef in transferElements)
             {
-                subordinatesCombined.Remove(transferElement);
-                newGroup.subordinatesCombined.Add(transferElement);
+                // subordinatesCombined.Remove(transferElement);
+                // newGroup.subordinatesCombined.Add(transferElement);
+                var element = transferElementRef.Get();
+                MoveElementTo(element, newGroup);
             }
+        }
+        
+        public void MoveElementTo(IStrategicGroupMemberReferenceable element, StrategicGroup otherGroup)
+        {
+            subordinatesCombined.RemoveAll(r => r.referenceId == element.objectId);
+            otherGroup.subordinatesCombined.Add(new() { referenceId = element.objectId });
+            element.strategicGroupReference.referenceId = otherGroup.objectId;
         }
     }
 }

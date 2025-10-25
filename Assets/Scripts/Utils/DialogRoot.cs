@@ -210,6 +210,9 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset landUnitTemplateDialogDocument;
     public VisualTreeAsset subStrategicCombatDialogDocument;
     public VisualTreeAsset cellEditorDialogDocument;
+    public VisualTreeAsset pendingNavalCombatDialogDocument;
+    public VisualTreeAsset navalCombatResolverDialogDocument;
+    public VisualTreeAsset oobTreeDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -221,6 +224,98 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupOOBTreeDialog()
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = oobTreeDialogDocument,
+            templateDataSource = null,
+            draggable = false
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var oobTreeView = el.Q<TreeView>("OOBTreeView");
+
+            var tree = new FullGroupTree();
+            // var treeViewRootItems = 
+            var treeViewerBuilder = new UITKTreeViewerBuilder<IStrategicGroupMemberReferenceable, string>()
+            {
+                tree=tree
+            };
+            var rootItems = treeViewerBuilder.CreateTreeViewRootItems(StrategicGameState.Instance.strategicGroups);
+            oobTreeView.SetRootItems(rootItems);
+            oobTreeView.Rebuild();
+            oobTreeView.ExpandAll();
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupNavalCombatResolverDialog(PendingNavalCombat pendingNavalCombat)
+    {
+        var resolver = new NavalCombatResolver()
+        {
+            root = null, // defer
+            cell = StrategicGameState.Instance.cellMatrix[pendingNavalCombat.xy.x, pendingNavalCombat.xy.y]
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = navalCombatResolverDialogDocument,
+            templateDataSource = resolver,
+            draggable = false
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            resolver.root = el;
+            resolver.Bind();
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupPendingNavalCombatDialog()
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = pendingNavalCombatDialogDocument,
+            templateDataSource = StrategicGameState.Instance,
+            draggable = false
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            el.Q<Button>("ClearButton").clicked += () =>
+            {
+                StrategicGameState.Instance.pendingNavalCombats.Clear();
+                tempDialog.root.Remove(el);
+            };
+
+            var pendingNavalCombatsListView = el.Q<ListView>("PendingNavalCombatsListView");
+            pendingNavalCombatsListView.makeItem = () =>
+            {
+                var el = pendingNavalCombatsListView.itemTemplate.CloneTree();
+
+                el.Q<Button>().clicked += () =>
+                {
+                    if (Utils.TryResolveCurrentValueForBinding(el, out PendingNavalCombat pendingNavalCombat))
+                    {
+                        PopupNavalCombatResolverDialog(pendingNavalCombat);
+                    }
+                };
+
+                return el;
+            };
+        };
+        
+        tempDialog.Popup();
     }
 
     public void PopupCellEditorDialog(Cell cell)

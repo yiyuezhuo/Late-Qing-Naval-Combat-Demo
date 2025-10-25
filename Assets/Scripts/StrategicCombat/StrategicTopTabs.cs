@@ -162,7 +162,7 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
             // Reset Strength
 
-            foreach(var landUnit in gameState.landUnits)
+            foreach (var landUnit in gameState.landUnits)
             {
                 // tempfix
                 // landUnit.strength = landUnit.stregnth;
@@ -172,10 +172,10 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
                 // {
                 //     landUnit.strengthManualOverride = true;
                 // }
-                
+
                 var template = landUnit.GetLandUnitTemplate();
 
-                if(template != null && !landUnit.strengthManualOverride)
+                if (template != null && !landUnit.strengthManualOverride)
                 {
                     landUnit.strength = template.strength;
                 }
@@ -191,6 +191,16 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             {
                 shipLog.supplyTons = shipLog.GetSupplyCapTons();
             }
+        };
+
+        root.Q<Button>("PendingNavalCombatsButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupPendingNavalCombatDialog();
+        };
+
+        root.Q<Button>("OOBTreeButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupOOBTreeDialog();
         };
     }
 

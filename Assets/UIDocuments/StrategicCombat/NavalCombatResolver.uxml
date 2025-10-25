@@ -1,0 +1,51 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="NavalCombatResolverSide" src="project://database/Assets/UIDocuments/StrategicCombat/NavalCombatResolverSide.uxml?fileID=9197481963319205126&amp;guid=fb66a733c1744544f96d1000e81708d4&amp;type=3#NavalCombatResolverSide" />
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement name="VisualElement" data-source-type="NavalCombatResolver, Assembly-CSharp" class="panel-dialog" style="width: 800px; height: auto;">
+        <ui:Label text="Naval Combat Resolver" class="title" />
+        <ui:Label text="Naval Combat in Hex (114, 514)" style="align-self: center;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="battleName" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="1894/7/25" style="align-self: center;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="datetimeStr" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:Instance template="NavalCombatResolverSide" name="LeftSideContainer" data-source-path="leftSideState" style="flex-grow: 1; flex-basis: 50px; border-right-width: 1px; border-left-color: rgb(153, 153, 153); border-right-color: rgb(153, 153, 153); border-top-color: rgb(153, 153, 153); border-bottom-color: rgb(153, 153, 153);" />
+            <ui:Instance template="NavalCombatResolverSide" name="RightSideContainer" data-source-path="rightSideState" style="flex-grow: 1; flex-basis: 50px;" />
+        </ui:VisualElement>
+        <ui:VisualElement data-source-path="scenarioDynamicSetupGenerator" style="flex-grow: 1; flex-direction: row;">
+            <ui:Label text="Distance (Yards)" />
+            <ui:FloatField>
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="distanceYards" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:Label text="Angle (Deg)" />
+            <ui:FloatField>
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="angleDeg" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:Label text="Latitude" />
+            <ui:FloatField>
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="anchor.LatDeg" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:Label text="Longitude" />
+            <ui:FloatField>
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="anchor.LonDeg" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:Button text="Resolve" name="ResolveButton" style="flex-basis: 50px; flex-grow: 1;" />
+            <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

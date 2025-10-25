@@ -1,0 +1,26 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement data-source-type="NavalCombatResolver+OneSideState, Assembly-CSharp" style="flex-grow: 0; flex-shrink: 0;">
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row; height: 75px; flex-shrink: 0;">
+            <ui:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6527069497977903076&amp;guid=cbad865a621d3244bbf09ebb76bba9f8&amp;type=3#console.warnicon@2x&quot;); -unity-background-scale-mode: scale-to-fit; width: 100px;">
+                <Bindings>
+                    <ui:DataBinding property="style.backgroundImage" data-source-path="leaderPortrait" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; flex-basis: 50px; flex-shrink: 0; background-image: url(&quot;project://database/Assets/Textures/Japan.png?fileID=2800000&amp;guid=8f03853e0d076c64aa8a65a99f19b13f&amp;type=3#Japan&quot;); -unity-background-scale-mode: scale-to-fit;">
+                <Bindings>
+                    <ui:DataBinding property="style.backgroundImage" data-source-path="countryFlag" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:Label text="Description">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="description" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:TreeView name="OOBTreeView" style="flex-grow: 0; min-height: 350px;" />
+        <ui:Button text="Withdraw" name="WithdrawButton" />
+    </ui:VisualElement>
+</ui:UXML>

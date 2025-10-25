@@ -14,6 +14,8 @@ namespace StrategicCombatCore
         // HashSet<string> objectIds = new();
         EntityManager localEntityManager = new();
 
+        public List<ShipGroup> rootShipGroups = new();
+
         void Scan(ShipGroup parentShipGroup, StrategicGroup strategicGroup)
         {
             var shipGroup = new ShipGroup()
@@ -73,6 +75,7 @@ namespace StrategicCombatCore
                 name = side.name.Add(fleetNameSuffix),
             };
             shipGroups.Add(shipGroup);
+            rootShipGroups.Add(shipGroup);
             localEntityManager.Register(shipGroup, null);
 
             foreach (var strategicGroup in strategicGroups)

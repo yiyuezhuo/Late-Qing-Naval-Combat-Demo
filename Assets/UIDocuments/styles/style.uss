@@ -201,3 +201,8 @@
     margin-bottom: 0;
     margin-top: 0;
 }
+
+.unity-toggle__checkmark.unity-foldout__checkmark {
+    margin-right: 0;
+    margin-left: 0;
+}

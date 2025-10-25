@@ -4,7 +4,6 @@ using System.Linq;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using YYZ.PathFinding;
 
 namespace StrategicCombatCore
@@ -69,6 +68,8 @@ namespace StrategicCombatCore
         public List<SideState> sideStates = new();
 
         public List<StrategicMission> missions = new();
+
+        public List<PendingNavalCombat> pendingNavalCombats = new();
 
         [XmlIgnore]
         public Dictionary<Country, SideState> countryToSideStateMap = new();
@@ -163,6 +164,7 @@ namespace StrategicCombatCore
             sideStates = newInstance.sideStates;
 
             missions = newInstance.missions;
+            pendingNavalCombats = newInstance.pendingNavalCombats;
 
             mapRebuilt?.Invoke(this, EventArgs.Empty);
             edgeFeatureUpdated?.Invoke(this, EventArgs.Empty);
@@ -280,6 +282,28 @@ namespace StrategicCombatCore
             Advance1HourForMovement();
 
             CombinedAutoCombinableAndDissolvable();
+
+            RefreshPendingNavalCombats();
+        }
+
+        public void RefreshPendingNavalCombats()
+        {
+            pendingNavalCombats.Clear();
+
+            foreach (var g in strategicGroups.Where(g => g.Combatable()).GroupBy(g => g.cell))
+            {
+                var cell = g.Key;
+                var side2GroupsGp = g.GroupBy(g => g.side).ToList();
+                if (side2GroupsGp.Count >= 2)
+                {
+                    var pendingCombat = new PendingNavalCombat()
+                    {
+                        xy = new XY() { x = cell.x, y = cell.y },
+                    };
+                    EntityManager.Instance.Register(pendingCombat, null);
+                    pendingNavalCombats.Add(pendingCombat);
+                }
+            }
         }
 
         void CombinedAutoCombinableAndDissolvable()
@@ -670,6 +694,9 @@ namespace StrategicCombatCore
 
             foreach (var mission in missions)
                 EntityManager.Instance.Register(mission, null);
+
+            foreach(var pendingNavalCombat in pendingNavalCombats)
+                EntityManager.Instance.Register(pendingNavalCombat, null);
         }
 
         static StrategicGameState _instance;

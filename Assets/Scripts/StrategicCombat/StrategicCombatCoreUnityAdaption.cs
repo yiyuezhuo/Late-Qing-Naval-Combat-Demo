@@ -163,6 +163,12 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public string containerName => EntityManager.Instance.Get<ShipLog>(containerObjectId)?.namedShip?.name?.mergedName ?? "[Undefined or Invalid]";
+
+        [CreateProperty]
+        public bool isIndependent => deployState == DeployState.Independent;
+
+        [CreateProperty]
+        public bool isActivePosture => posture == GroupPostureType.Active;
     }
 
     public partial class StrategicGroupReference
@@ -416,36 +422,60 @@ namespace StrategicCombatCore
             public LocalNavalCombatBuilder builder;
             public string topGroupObjectId;
 
-            public Country GetCountry(ShipGroup shipGroup)
+            public IEnumerable<T> Walk<T>(ShipGroup shipGroup) where T : IObjectIdLabeled
             {
                 foreach (var childrenObjectId in shipGroup.childrenObjectIds)
                 {
                     var child = builder.localEntityManager.Get<IObjectIdLabeled>(childrenObjectId);
-                    if (child is ShipLog shipLog)
+                    if (child is T t)
                     {
-                        return shipLog.shipClass.country;
+                        yield return t;
                     }
-                    else if (child is ShipGroup subShipGroup)
+                    if (child is ShipGroup subShipGroup)
                     {
-                        var ret = GetCountry(subShipGroup);
-                        if (ret != Country.General)
-                            return ret;
+                        foreach (var ret in Walk<T>(subShipGroup))
+                        {
+                            yield return ret;
+                        }
                     }
+                }
+            }
+
+            public IEnumerable<T> WalkRootGroup<T>() where T : IObjectIdLabeled => Walk<T>(GetRootGroup());
+
+            public ShipGroup GetRootGroup() => builder.localEntityManager.Get<ShipGroup>(topGroupObjectId);
+
+            public Country GetCountry()
+            {
+                foreach (var shipLog in WalkRootGroup<ShipLog>())
+                {
+                    var country = shipLog?.shipClass?.country ?? Country.General;
+                    if (country != Country.General)
+                        return country;
                 }
                 return Country.General;
             }
-
-            public Country GetCountry() => GetCountry(builder.localEntityManager.Get<ShipGroup>(topGroupObjectId));
-
-            // public Leader GetLeader(ShipGroup shipGroup)
-            // {
-
-            // }
+            
+            public Leader GetLeader()
+            {
+                foreach (var obj in WalkRootGroup<IObjectIdLabeled>())
+                {
+                    if (obj is ShipGroup shipGroup && shipGroup.leader != null)
+                    {
+                        return shipGroup.leader;
+                    }
+                    else if (obj is ShipLog shipLog && shipLog.leader != null)
+                    {
+                        return shipLog.leader;
+                    }
+                }
+                return null;
+            }
         }
 
 
-        public LocalNavalCombatBuilderOneSide side0; // generally "left"
-        public LocalNavalCombatBuilderOneSide side1; // generally "right"
+        public LocalNavalCombatBuilderOneSide GetSide0() => new() { builder=this, topGroupObjectId=rootShipGroups[0].objectId}; // generally "left"
+        public LocalNavalCombatBuilderOneSide GetSide1() => new() { builder=this, topGroupObjectId=rootShipGroups[1].objectId}; // generally "right"
     }
 
     public partial class StrategicMission
@@ -478,7 +508,11 @@ namespace StrategicCombatCore
         public string otherObjectName =>  GetOther()?.GetName()?.mergedName ?? "[Not defined or Invalid]";
     }
 
-
+    public partial class PendingNavalCombat
+    {
+        [CreateProperty]
+        public string name => $"Combat in Hex ({xy.x} {xy.y})";
+    }
 }
 
 namespace NavalCombatCore

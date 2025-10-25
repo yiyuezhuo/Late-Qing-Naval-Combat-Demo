@@ -1,0 +1,13 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement data-source-type="StrategicCombatCore.StrategicGameState, Assembly-CSharp" class="panel-dialog">
+        <ui:Label text="Pending Naval Combats" class="title" />
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:ListView name="PendingNavalCombatsListView" data-source-path="pendingNavalCombats" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/PendingNavalCombatButton.uxml?fileID=9197481963319205126&amp;guid=0887cb17ad9351f47b5c074c2469b08b&amp;type=3#PendingNavalCombatButton" style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Button text="Clear" name="ClearButton" style="flex-basis: 50px; flex-grow: 1;" />
+            <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -91,3 +91,6 @@ MonoBehaviour:
   landUnitTemplateDialogDocument: {fileID: 9197481963319205126, guid: 1c4daf37e2bdf844f9c558239e91d91f, type: 3}
   subStrategicCombatDialogDocument: {fileID: 9197481963319205126, guid: c0c39b5062d9ced46adf159d65c4d5d6, type: 3}
   cellEditorDialogDocument: {fileID: 9197481963319205126, guid: e1f75737c8e5d784390dc4d69576f9e0, type: 3}
+  pendingNavalCombatDialogDocument: {fileID: 9197481963319205126, guid: b922bdd96eea048448ad29dbbb52e463, type: 3}
+  navalCombatResolverDialogDocument: {fileID: 9197481963319205126, guid: 8b82dc010a608754e90c7b7c522b5638, type: 3}
+  oobTreeDialogDocument: {fileID: 9197481963319205126, guid: 26f52764249f2c04d80b6be882c8e36e, type: 3}

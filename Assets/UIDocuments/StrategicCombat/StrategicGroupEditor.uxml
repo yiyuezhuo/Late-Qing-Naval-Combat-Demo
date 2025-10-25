@@ -112,7 +112,7 @@
                                 </ui:VisualElement>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
                                     <ui:Label text="X" />
                                     <ui:IntegerField style="width: 50px;">
                                         <Bindings>
@@ -121,7 +121,7 @@
                                         </Bindings>
                                     </ui:IntegerField>
                                 </ui:VisualElement>
-                                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
                                     <ui:Label text="Y" />
                                     <ui:IntegerField style="width: 50px;">
                                         <Bindings>
@@ -130,7 +130,7 @@
                                         </Bindings>
                                     </ui:IntegerField>
                                 </ui:VisualElement>
-                                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
                                     <ui:Label text="Autocombinable" />
                                     <ui:Toggle>
                                         <Bindings>
@@ -138,13 +138,35 @@
                                         </Bindings>
                                     </ui:Toggle>
                                 </ui:VisualElement>
-                                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
                                     <ui:Label text="Dissolvable" />
                                     <ui:Toggle style="margin-right: 10px;">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="dissolvable" binding-mode="TwoWay" />
                                         </Bindings>
                                     </ui:Toggle>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-direction: row;">
+                                    <ui:Label text="Posture" />
+                                    <ui:EnumField value="Center" type="StrategicCombatCore.StrategicGroup+GroupPostureType, Assembly-CSharp" style="width: 100px;">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="posture" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:EnumField>
+                                    <Bindings>
+                                        <ui:DataBinding property="style.display" data-source-path="isIndependent" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                                    </Bindings>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-direction: row;">
+                                    <ui:Label text="Restored Hours" />
+                                    <ui:IntegerField>
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="restoredHours" binding-mode="TwoWay" />
+                                        </Bindings>
+                                    </ui:IntegerField>
+                                    <Bindings>
+                                        <ui:DataBinding property="style.display" data-source-path="isActivePosture" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
+                                    </Bindings>
                                 </ui:VisualElement>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">

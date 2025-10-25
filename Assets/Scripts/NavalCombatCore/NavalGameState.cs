@@ -4,7 +4,6 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
 using System.Linq;
-using MathNet.Numerics;
 using CoreUtils;
 
 namespace NavalCombatCore
@@ -75,25 +74,6 @@ namespace NavalCombatCore
 
         public override void ResetAndRegisterAll()
         {
-            // EntityManager.Instance.Reset();
-
-            // foreach (var leader in leaders)
-            // {
-            //     EntityManager.Instance.Register(leader, null);
-            // }
-            // foreach (var shipClasses in shipClasses)
-            // {
-            //     EntityManager.Instance.Register(shipClasses, null);
-            // }
-            // foreach (var namedShip in namedShips)
-            // {
-            //     EntityManager.Instance.Register(namedShip, null);
-            // }
-            // foreach (var shipLog in shipLogs)
-            // {
-            //     EntityManager.Instance.Register(shipLog, null);
-            // }
-
             base.ResetAndRegisterAll();
 
             foreach (var shipGroup in shipGroups)

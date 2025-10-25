@@ -207,6 +207,16 @@ namespace StrategicCombatCore
 
         public List<XY> plannedPath = new();
 
+        public enum GroupPostureType
+        {
+            Active,
+            Disengaged, // Disengaged/Retreat will not block hostile movement and would not engaged in combat generation and resolution
+            Reorganized // Victory side of combat will be in reorganized state for 12 hours, so defeated side would retreat without risk
+        }
+
+        public GroupPostureType posture;
+        public int restoredHours;
+
         public static Dictionary<StrategicUnitSize, string> sizeStrMap = new()
         {
             { StrategicUnitSize.Unspecified, "O" },
@@ -555,13 +565,15 @@ namespace StrategicCombatCore
                 MoveElementTo(element, newGroup);
             }
         }
-        
+
         public void MoveElementTo(IStrategicGroupMemberReferenceable element, StrategicGroup otherGroup)
         {
             subordinatesCombined.RemoveAll(r => r.referenceId == element.objectId);
             otherGroup.subordinatesCombined.Add(new() { referenceId = element.objectId });
             element.strategicGroupReference.referenceId = otherGroup.objectId;
         }
+
+        public bool Combatable() => deployState == DeployState.Independent && posture != GroupPostureType.Disengaged;
     }
 }
 

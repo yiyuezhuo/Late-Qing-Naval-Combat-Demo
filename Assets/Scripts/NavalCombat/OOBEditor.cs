@@ -265,7 +265,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
 
     List<TreeViewItemData<string>> CreateTreeViewRootItems() // Use List<string> (objectId based denoting?) However Tree Items is a volatile and temp so objectId and other lowered structure doesn't make a lot of senses. 
     {
-        // Collect Estalished groups
+        // Collect Established groups
         var items = new List<TreeViewItemData<string>>();
         var idx = 0;
 
@@ -279,39 +279,13 @@ public class OOBEditor : HideableDocument<OOBEditor>
             items.Add(d);
         }
 
-        // Collect un-grouped ships
-        // foreach (var ship in state.shipLogs)
-        // {
-        //     var parent = (ship as IShipGroupMember).GetParentGroup();
-        //     if (ship.parentObjectId == null)
-        //     {
-        //         var d = new TreeViewItemData<IShipGroupMember>(idx, ship);
-        //         idx++;
-        //         items.Add(d);
-        //     }
-        // }
-
         return items;
     }
 
     List<TreeViewItemData<string>> CreateTreeViewItemsForGroup(ShipGroup group, ref int idx)
     {
         var ret = new List<TreeViewItemData<string>>();
-        // foreach (var child in group.GetChildren())
-        // {
-        //     if (child is ShipGroup childGroup)
-        //     {
-        //         var childGroupItems = CreateTreeViewItemsForGroup(childGroup, ref idx);
-        //         ret.Add(new TreeViewItemData<string>(idx, childGroup.objectId, childGroupItems));
-        //         idx++;
-        //     }
-        //     if (child is ShipLog childShip)
-        //     {
-        //         ret.Add(new TreeViewItemData<string>(idx, childShip.objectId));
-        //         idx++;
-        //     }
-        // }
-        // childrenObjectIds
+
         foreach (var childrenObjectId in group.childrenObjectIds)
         {
             var childGroup = EntityManager.Instance.Get<ShipGroup>(childrenObjectId);

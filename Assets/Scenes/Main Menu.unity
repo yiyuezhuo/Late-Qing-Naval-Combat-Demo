@@ -380,6 +380,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5051051528976626265, guid: cb5c709ed3879e24a943fdf83a5e93f3, type: 3}
+      propertyPath: pendingNavalCombatDialogDocument
+      value: 
+      objectReference: {fileID: 9197481963319205126, guid: b922bdd96eea048448ad29dbbb52e463, type: 3}
+    - target: {fileID: 5051051528976626265, guid: cb5c709ed3879e24a943fdf83a5e93f3, type: 3}
+      propertyPath: navalCombatResolverDialogDocument
+      value: 
+      objectReference: {fileID: 9197481963319205126, guid: 8b82dc010a608754e90c7b7c522b5638, type: 3}
     - target: {fileID: 8757824858490326340, guid: cb5c709ed3879e24a943fdf83a5e93f3, type: 3}
       propertyPath: m_Name
       value: DialogRoot

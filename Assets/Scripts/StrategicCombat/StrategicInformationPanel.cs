@@ -4,7 +4,6 @@ using StrategicCombatCore;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-using YYZ.PathFinding;
 
 public class StrategicInformationPanel : SingletonDocument<StrategicInformationPanel>
 {

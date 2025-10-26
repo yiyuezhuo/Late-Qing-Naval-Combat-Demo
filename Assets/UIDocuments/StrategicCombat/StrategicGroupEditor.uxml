@@ -177,7 +177,7 @@
                                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054955223486464)" />
                                             </Bindings>
                                         </ui:Label>
-                                        <ui:Button text="Parent Name" name="GotoParentButton" style="flex-grow: 1;">
+                                        <ui:Button text="Parent Name" name="GotoParentButton" style="flex-grow: 1; text-overflow: ellipsis;">
                                             <Bindings>
                                                 <ui:DataBinding property="text" data-source-path="parentName" binding-mode="ToTarget" />
                                             </Bindings>

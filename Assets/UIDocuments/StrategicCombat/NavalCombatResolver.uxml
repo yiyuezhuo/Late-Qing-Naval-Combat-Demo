@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="NavalCombatResolverSide" src="project://database/Assets/UIDocuments/StrategicCombat/NavalCombatResolverSide.uxml?fileID=9197481963319205126&amp;guid=fb66a733c1744544f96d1000e81708d4&amp;type=3#NavalCombatResolverSide" />
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
-    <ui:VisualElement name="VisualElement" data-source-type="NavalCombatResolver, Assembly-CSharp" class="panel-dialog" style="width: 800px; height: auto;">
+    <ui:VisualElement data-source-type="NavalCombatResolver, Assembly-CSharp" class="panel-dialog" style="width: 800px; height: auto;">
         <ui:Label text="Naval Combat Resolver" class="title" />
         <ui:Label text="Naval Combat in Hex (114, 514)" style="align-self: center;">
             <Bindings>

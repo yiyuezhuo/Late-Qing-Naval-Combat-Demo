@@ -13,7 +13,7 @@ public interface ITree<IndexT, DataT>
     DataT GetData(IndexT node);
 }
 
-public class UITKTreeViewerBuilder<IndexT, DataT>
+public class UITKTreeViewBuilder<IndexT, DataT>
 {
     public ITree<IndexT, DataT> tree;
     // public Func<IndexT, DataT> f;

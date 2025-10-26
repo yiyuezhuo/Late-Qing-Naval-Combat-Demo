@@ -66,6 +66,8 @@ public class GamePreference
     [CreateProperty]
     public bool earthDarkThemeEnabled => SuperGameState.Instance.IsInNavalGame();
 
+    public bool forcedNavalCombatResolution = true;
+
     public event EventHandler shortLabelLanguageTypeChanged;
 
     [CreateProperty]

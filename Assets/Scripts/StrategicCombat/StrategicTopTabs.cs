@@ -130,16 +130,15 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
         root.Q<Button>("Advance1HourButton").clicked += () =>
         {
+            if (CheckHasPendingNavalCombatAndPopupIfAny())
+                return;
+
             StrategicGameState.Instance.Advance1Hour();
         };
 
         advance1DayButton = root.Q<Button>("Advance1DayButton");
         advance1DayButton.clicked += () =>
-        {
-            // for (int i = 0; i < 24; i++)
-            // {
-            //     StrategicGameState.Instance.Advance1Hour();
-            // }
+        {            
             StartCoroutine(Advance1Day());
         };
 
@@ -204,12 +203,26 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         };
     }
 
+    bool CheckHasPendingNavalCombatAndPopupIfAny()
+    {
+        if (GamePreference.Instance.forcedNavalCombatResolution &&
+            StrategicGameState.Instance.pendingNavalCombats.Count > 0)
+        {
+            DialogRoot.Instance.PopupPendingNavalCombatDialog();
+            return true;
+        }
+        return false;
+    }
+
     IEnumerator Advance1Day()
     {
         advance1DayButton.SetEnabled(false);
 
         for (int i = 0; i < 24; i++)
         {
+            if (CheckHasPendingNavalCombatAndPopupIfAny())
+                break;
+
             StrategicGameState.Instance.Advance1Hour();
             yield return new WaitForSeconds(GamePreference.Instance.dayAdvanceHourIntervalSeconds);
         }

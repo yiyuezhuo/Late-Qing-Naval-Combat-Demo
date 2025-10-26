@@ -20,7 +20,11 @@
                 </ui:Label>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:TreeView name="OOBTreeView" style="flex-grow: 0; min-height: 350px;" />
-        <ui:Button text="Withdraw" name="WithdrawButton" />
+        <ui:VisualElement style="flex-grow: 1; max-height: 360px; min-height: 350px;">
+            <ui:ScrollView style="flex-grow: 1;">
+                <ui:TreeView name="OOBTreeView" />
+            </ui:ScrollView>
+            <ui:Button text="Withdraw" name="WithdrawButton" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -79,6 +79,7 @@ namespace StrategicCombatCore
         public event EventHandler edgeFeatureUpdated;
 
         public void InvokeMapCellUpdated(int x, int y) => mapCellUpdated?.Invoke(this, (x, y));
+        public void InvokeMapRebuilt()  => mapRebuilt?.Invoke(this, EventArgs.Empty);
 
         public void RebuildCacheForSideStates()
         {
@@ -290,7 +291,7 @@ namespace StrategicCombatCore
         {
             pendingNavalCombats.Clear();
 
-            foreach (var g in strategicGroups.Where(g => g.Combatable()).GroupBy(g => g.cell))
+            foreach (var g in strategicGroups.Where(g => g.NavalCombatable()).GroupBy(g => g.cell))
             {
                 var cell = g.Key;
                 var side2GroupsGp = g.GroupBy(g => g.side).ToList();
@@ -299,6 +300,15 @@ namespace StrategicCombatCore
                     var pendingCombat = new PendingNavalCombat()
                     {
                         xy = new XY() { x = cell.x, y = cell.y },
+                        sideState0 = new()
+                        {
+                            sideObjectId = side2GroupsGp[0].Key.objectId,
+                            groupObjectIds = side2GroupsGp[0].Select(g => g.objectId).ToList()
+                        },
+                        sideState1=new(){
+                            sideObjectId = side2GroupsGp[1].Key.objectId,
+                            groupObjectIds = side2GroupsGp[1].Select(g => g.objectId).ToList()
+                        }
                     };
                     EntityManager.Instance.Register(pendingCombat, null);
                     pendingNavalCombats.Add(pendingCombat);

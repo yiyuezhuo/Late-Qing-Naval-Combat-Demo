@@ -8,6 +8,7 @@ using UnityEngine.InputSystem.Utilities;
 using System.Xml.Serialization;
 using StrategicCombatCore;
 using System;
+using Acornima.Ast;
 
 namespace StrategicCombatCore
 {
@@ -414,13 +415,17 @@ namespace StrategicCombatCore
     }
 
 
-    public partial class LocalNavalCombatBuilder
+    public partial class LocalNavalCombatBuilder : ITree<IShipGroupMember, string>
     {
 
         public class LocalNavalCombatBuilderOneSide
         {
+            // required parameters
             public LocalNavalCombatBuilder builder;
-            public string topGroupObjectId;
+            public int innerIndex;
+
+            public string topGroupObjectId => builder.rootShipGroups[innerIndex].objectId;
+            public PendingNavalCombat.PendingNavalCombatSideState pendingNavalCombatSideState => innerIndex == 0 ? builder.pendingNavalCombat.sideState0 : builder.pendingNavalCombat.sideState1;
 
             public IEnumerable<T> Walk<T>(ShipGroup shipGroup) where T : IObjectIdLabeled
             {
@@ -474,8 +479,23 @@ namespace StrategicCombatCore
         }
 
 
-        public LocalNavalCombatBuilderOneSide GetSide0() => new() { builder=this, topGroupObjectId=rootShipGroups[0].objectId}; // generally "left"
-        public LocalNavalCombatBuilderOneSide GetSide1() => new() { builder=this, topGroupObjectId=rootShipGroups[1].objectId}; // generally "right"
+        public LocalNavalCombatBuilderOneSide GetSide0() => new() { builder = this, innerIndex=0}; // generally "left"
+        public LocalNavalCombatBuilderOneSide GetSide1() => new() { builder = this, innerIndex=1}; // generally "right"
+
+        public IShipGroupMember GetParent(IShipGroupMember node) => node.GetParentGroup();
+
+        public IEnumerable<IShipGroupMember> GetChildren(IShipGroupMember node)
+        {
+            if (node is ShipGroup shipGroup)
+            {
+                foreach (var childId in shipGroup.childrenObjectIds)
+                {
+                    yield return localEntityManager.Get<IShipGroupMember>(childId);
+                }
+            }
+        }
+
+        public string GetData(IShipGroupMember node) => node.GetMemberName();
     }
 
     public partial class StrategicMission

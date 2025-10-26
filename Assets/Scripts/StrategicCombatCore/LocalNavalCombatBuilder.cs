@@ -8,6 +8,9 @@ namespace StrategicCombatCore
 {
     public partial class LocalNavalCombatBuilder
     {
+        // required parameter
+        public PendingNavalCombat pendingNavalCombat;
+
         List<ShipGroup> shipGroups = new();
         List<ShipLog> shipLogs = new();
         // Dictionary<StrategicGroup, ShipGroup> strateicGroupToShipGroup = new();
@@ -84,25 +87,28 @@ namespace StrategicCombatCore
             }
         }
 
-        void ScanStrategicGroups(List<StrategicGroup> strategicGroups)
-        {
-            var groupings = strategicGroups.GroupBy(g => g.side).ToList();
+        // void ScanStrategicGroups(List<StrategicGroup> strategicGroups)
+        // {
+        //     var groupings = strategicGroups.GroupBy(g => g.side).ToList();
 
-            foreach (var grouping in groupings)
-            {
-                StartScan(grouping.Key, grouping.ToList());
-            }
-        }
+        //     foreach (var grouping in groupings)
+        //     {
+        //         StartScan(grouping.Key, grouping.ToList());
+        //     }
+        // }
 
-        public FullState BuildFullState(Cell cell)
+        // public FullState BuildFullState(Cell cell)
+        public FullState BuildFullState()
         {
             var gameState = StrategicGameState.Instance;
 
             // var strategicGroups = gameState.hexInfoMap.GetValueOrDefault((cell.x, cell.y))?.strategicGroupReferences?.Select(r => r.Get())?.ToList();
-            var strategicGroups = cell.StrategicGroupReferences?.Select(r => r.Get())?.ToList();
-            strategicGroups = strategicGroups ?? new List<StrategicGroup>();
+            // var strategicGroups = cell.StrategicGroupReferences?.Select(r => r.Get())?.ToList();
+            // strategicGroups = strategicGroups ?? new List<StrategicGroup>();
 
-            ScanStrategicGroups(strategicGroups);
+            // ScanStrategicGroups(strategicGroups);
+            StartScan(pendingNavalCombat.sideState0.side, pendingNavalCombat.sideState0.GetGroups());
+            StartScan(pendingNavalCombat.sideState1.side, pendingNavalCombat.sideState1.GetGroups());
 
             return new FullState()
             {
@@ -118,8 +124,8 @@ namespace StrategicCombatCore
                 },
                 viewState = new()
                 {
-                    xRotation = cell.latitude,
-                    yRotation = 360 - cell.longitude,
+                    xRotation = pendingNavalCombat.cell.latitude,
+                    yRotation = 360 - pendingNavalCombat.cell.longitude,
                     orthographicSize = 20
                 }
             };

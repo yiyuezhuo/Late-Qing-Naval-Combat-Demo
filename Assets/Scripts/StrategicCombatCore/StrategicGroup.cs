@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
+using YYZ.PathFinding;
 
 namespace StrategicCombatCore
 {
@@ -533,8 +534,6 @@ namespace StrategicCombatCore
                 size = size,
                 country = country,
                 deployState = DeployState.NotDeployed,
-                // independentX = independentX,
-                // independentY = independentY,
             };
             var gameState = StrategicGameState.Instance;
             var idx = gameState.strategicGroups.IndexOf(this);
@@ -553,14 +552,8 @@ namespace StrategicCombatCore
                 .Select(idx => subordinatesCombined[idx])
                 .ToList();
 
-            // var idxs = Enumerable.Range(0, subordinatesCombined.Count)
-            //      .Where(idx => idx % 2 == 1).ToList();
-            // var transferElements = idxs.Select(idx => subordinatesCombined[idx]);
-
             foreach (var transferElementRef in transferElements)
             {
-                // subordinatesCombined.Remove(transferElement);
-                // newGroup.subordinatesCombined.Add(transferElement);
                 var element = transferElementRef.Get();
                 MoveElementTo(element, newGroup);
             }
@@ -574,6 +567,37 @@ namespace StrategicCombatCore
         }
 
         public bool Combatable() => deployState == DeployState.Independent && posture != GroupPostureType.Disengaged;
+        public bool NavalCombatable() => deployState == DeployState.Independent && posture != GroupPostureType.Disengaged && type == Type.Fleet;
+
+        public void StartReturnToBase() // Return to group's depot's location and go to disengaged state, mainly used by fleet group
+        {
+            if (deployState != DeployState.Independent)
+                return;
+
+            posture = GroupPostureType.Disengaged;
+
+            var depot = ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
+            var depotGroup = depot?.strategicGroupReference.Get();
+            if (depotGroup != null && depotGroup.x != -1 && depotGroup.y != -1)
+            {
+                
+                // depotGroup.x
+                plannedPath.Clear();
+
+                var waypointStartCell = StrategicGameState.Instance.cellMatrix[depotGroup.x, depotGroup.y];
+
+                var graph = new DynamicCellGraphNavy();
+                var pathCells = PathFinding<Cell>.AStar(graph, cell, waypointStartCell);
+                if (pathCells.Count >= 2)
+                {
+                    plannedPath.AddRange(pathCells.Select(cell => new XY() { x = cell.x, y = cell.y }));
+                }
+            }
+            else
+            {
+                // TODO: Dismiss or retreat to a relative "safe" location determined dynamically?
+            }
+        }
     }
 }
 

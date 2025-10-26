@@ -550,6 +550,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             if (lastSelectedStrategicGroup != null)
             {
                 lastSelectedStrategicGroup.MoveToXY(cell.x, cell.y, false);
+                lastSelectedStrategicGroup.plannedPath.Clear();
             }
         });
     }

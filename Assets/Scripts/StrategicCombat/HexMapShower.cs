@@ -519,7 +519,8 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
 
     public void Refresh()
     {
-        GenerateTextureAndRefreshMaterial();
+        // GenerateTextureAndRefreshMaterial();
+        RefreshMap();
         RefreshEdgeFeature();
     }
 
@@ -531,7 +532,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
 
     Dictionary<(int, int), CellViewer> cellViewerMap = new();
 
-    public void OnMapRebuilt(object sender, EventArgs args)
+    public void RefreshMap()
     {
         // GenerateTextureAndRefreshMaterial(StrategicGameState.Instance.terrainMatrix);
         GenerateTextureAndRefreshMaterial();
@@ -574,6 +575,11 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
 
         RefreshSideFlags(); // SideState may not be ready here, so StrategicGameManager will require an extra call in the startup.
         RefreshCellLabelDisplayMode();
+    }
+
+    public void OnMapRebuilt(object sender, EventArgs args)
+    {
+        RefreshMap();
     }
 
     public void RefreshCellLabelDisplayMode(int x, int y)

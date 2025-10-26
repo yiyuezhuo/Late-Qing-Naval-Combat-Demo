@@ -15,9 +15,17 @@ public class TempDialog
     public bool fullScreen = false;
     public bool draggable = false;
 
+    VisualElement el;
+
+    public void Close()
+    {
+        root.Remove(el);
+    }
+
     public void Popup()
     {
-        var el = template.CloneTree();
+        // var el = template.CloneTree();
+        el = template.CloneTree();
         el.dataSource = templateDataSource;
 
         onCreated?.Invoke(this, el);
@@ -33,7 +41,8 @@ public class TempDialog
         {
             confirmButton.clicked += () =>
             {
-                root.Remove(el);
+                // root.Remove(el);
+                Close();
 
                 onConfirmed?.Invoke(this, el);
             };
@@ -43,7 +52,8 @@ public class TempDialog
         {
             cancelButton.clicked += () =>
             {
-                root.Remove(el);
+                // root.Remove(el);
+                Close();
 
                 onCancelled?.Invoke(this, el);
             };

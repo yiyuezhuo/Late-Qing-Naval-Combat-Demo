@@ -242,14 +242,14 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
             var tree = new FullGroupTree();
             // var treeViewRootItems = 
-            var treeViewerBuilder = new UITKTreeViewerBuilder<IStrategicGroupMemberReferenceable, string>()
+            var treeViewerBuilder = new UITKTreeViewBuilder<IStrategicGroupMemberReferenceable, string>()
             {
                 tree=tree
             };
             var rootItems = treeViewerBuilder.CreateTreeViewRootItems(StrategicGameState.Instance.strategicGroups);
             oobTreeView.SetRootItems(rootItems);
             oobTreeView.Rebuild();
-            oobTreeView.ExpandAll();
+            // oobTreeView.ExpandAll();
         };
 
         tempDialog.Popup();
@@ -257,10 +257,12 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupNavalCombatResolverDialog(PendingNavalCombat pendingNavalCombat)
     {
+        // TODO: Very bad code smell (tangle) here, try to improve when I have enough spare time
         var resolver = new NavalCombatResolver()
         {
             root = null, // defer
-            cell = StrategicGameState.Instance.cellMatrix[pendingNavalCombat.xy.x, pendingNavalCombat.xy.y]
+            // cell = StrategicGameState.Instance.cellMatrix[pendingNavalCombat.xy.x, pendingNavalCombat.xy.y]
+            pendingNavalCombat = pendingNavalCombat,
         };
 
         var tempDialog = new TempDialog()
@@ -270,6 +272,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             templateDataSource = resolver,
             draggable = false
         };
+
+        resolver.closed += (sender, args) => tempDialog.Close();
 
         tempDialog.onCreated += (sender, el) =>
         {

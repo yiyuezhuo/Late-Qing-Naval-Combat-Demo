@@ -1913,6 +1913,62 @@ MonoBehaviour:
     m_Key: Split
     m_Metadata:
       m_Items: []
+  - m_Id: 20016919312240640
+    m_Key: Autocombinable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20017044138921984
+    m_Key: Dissolvable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20017285961519104
+    m_Key: Posture
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20017347689091072
+    m_Key: Restored Hours
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20018373838147584
+    m_Key: Supply & Naval transfer state is shown in the strategic tab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20021307036569600
+    m_Key: Naval Combat Resolver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20021405099397120
+    m_Key: Resolve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20022026288402432
+    m_Key: Distance (Yards)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20022132588843008
+    m_Key: Angle (Deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20022328123101184
+    m_Key: Withdraw
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20022511426768896
+    m_Key: Delay (Clear)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20022621116207104
+    m_Key: Pending Naval Combats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20022935840002048
+    m_Key: OOB Tree
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20025699336884224
+    m_Key: Container
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

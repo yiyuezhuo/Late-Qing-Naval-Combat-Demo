@@ -20,15 +20,6 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
 
             if (Utils.TryResolveCurrentValueForBinding(goToLocationAtTacticalModeButton, out Cell cell))
             {
-                // StrategicGameManager.Instance.PrepareReturnFromNavalGame();
-
-                // GameManager.startupConfig = new()
-                // {
-                //     mode = GameManager.StartupConfig.Mode.LocalizedCameraOnly,
-                //     cameraLocation = new LatLon(cell.latitude, cell.longitude)
-                // };
-                // SceneManager.LoadScene("Naval Game");
-
                 GameManager.startupConfig = new()
                 {
                     fullState = new()
@@ -54,12 +45,6 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
 
             }
         };
-
-        // root.Q<Button>("ResolveNavalCombatButton").clicked += () =>
-        // {
-        //     Debug.Log("ResolveNavalCombatButton clicked");
-        //     // TryGotoTacticalNavalCombat(StrategicGameManager.Instance.lastSelectedCell);
-        // };
 
         root.Q<Button>("EditMoveButton").clicked += () =>
         {
@@ -94,28 +79,5 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
 
         root.Q<Button>("MoveAppendButton").clicked += StrategicGameManager.Instance.TryToStartAppendMove;
     }
-
-    // [Obsolete]
-    // public static void TryGotoTacticalNavalCombat(Cell cell)
-    // {
-    //     var builder = new LocalNavalCombatBuilder();
-
-    //     var fullState = builder.BuildFullState(cell);
-    //     if (fullState != null)
-    //     {
-    //         GameManager.startupConfig = new()
-    //         {
-    //             fullState = fullState,
-    //             mode = GameManager.StartupConfig.Mode.FullState,
-    //             scenarioSetupGenerator = new()
-    //             {
-    //                 anchor=new LatLon(cell.latitude, cell.longitude)
-    //             }
-    //         };
-
-    //         StrategicGameManager.Instance.PrepareReturnFromNavalGame();
-    //         SceneManager.LoadScene("Naval Game");
-    //     }
-    // }
 
 }

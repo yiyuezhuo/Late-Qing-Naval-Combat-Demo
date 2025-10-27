@@ -262,7 +262,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>415</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -566,7 +565,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>310</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -843,7 +841,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>375</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -1060,7 +1057,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>230</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -1265,7 +1261,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>100</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -1497,7 +1492,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>740</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -1729,7 +1723,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>740</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -1951,7 +1944,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>145</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -2173,7 +2165,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>145</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -2408,7 +2399,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>230</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -2643,7 +2633,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>230</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -2859,7 +2848,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>285</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -3075,7 +3063,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>285</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -3291,7 +3278,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>220</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -3498,7 +3484,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>130</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -3751,7 +3736,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>380</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -4071,7 +4055,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>422</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -4393,7 +4376,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>422</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -4655,7 +4637,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>226</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -4986,7 +4967,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>422</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -5263,7 +5243,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>375</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -5528,7 +5507,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>240</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -5733,7 +5711,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>100</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -5913,7 +5890,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>61.200000762939453</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -6061,7 +6037,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>291.29998779296875</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -6197,7 +6172,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>12</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -6335,7 +6309,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>9</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -6597,7 +6570,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>226</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -6839,7 +6811,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>147.60000610351563</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -7083,7 +7054,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>147.60000610351563</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -7327,7 +7297,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>147.60000610351563</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -7532,7 +7501,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>152.5</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -7758,7 +7726,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>175</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -7896,7 +7863,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.3000001907348633</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -8032,7 +7998,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.3000001907348633</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -8168,7 +8133,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -8306,7 +8270,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -8444,7 +8407,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -8582,7 +8544,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -8720,7 +8681,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -8858,7 +8818,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -8996,7 +8955,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -9134,7 +9092,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -9270,7 +9227,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -9408,7 +9364,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -9544,7 +9499,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -9680,7 +9634,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -9816,7 +9769,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -9954,7 +9906,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>5.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -10101,7 +10052,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>8</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -10248,7 +10198,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>8.5</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -10395,7 +10344,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>8.5</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -10551,7 +10499,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>20.299999237060547</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -10689,7 +10636,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>7.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -10827,7 +10773,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>7.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -10965,7 +10910,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>7.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -11103,7 +11047,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>7.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -11241,7 +11184,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>7.4000000953674316</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -11350,7 +11292,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -11459,7 +11400,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -11568,7 +11508,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -11677,7 +11616,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -11786,7 +11724,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -11895,7 +11832,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -12004,7 +11940,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -12113,7 +12048,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -12222,7 +12156,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -12331,7 +12264,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -12440,7 +12372,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -12549,7 +12480,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -12658,7 +12588,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -12767,7 +12696,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -12876,7 +12804,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -12985,7 +12912,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -13094,7 +13020,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -13203,7 +13128,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -13312,7 +13236,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -13421,7 +13344,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -13530,7 +13452,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -13639,7 +13560,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -13748,7 +13668,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -13857,7 +13776,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -13966,7 +13884,6 @@
    <logs />
    <timeLocLogs />
    <supplyTons>1500</supplyTons>
-   <fixedHours>0</fixedHours>
    <supplyTransferState>
     <requestRecord>
      <targetSupplyTons>0</targetSupplyTons>
@@ -18629,6 +18546,8 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
 </remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>21</xProp>
    <yProp>30</yProp>
    <objectId>d9c2462c-21c4-4d6a-869b-0a628697cce0</objectId>
@@ -18690,6 +18609,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
 </remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>13</xProp>
    <yProp>33</yProp>
    <objectId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</objectId>
@@ -18715,6 +18636,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>6</xProp>
    <yProp>16</yProp>
    <objectId>536fe1cd-f87d-4781-b90b-21dbb4b67ce4</objectId>
@@ -18746,6 +18669,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>2</xProp>
    <yProp>3</yProp>
    <objectId>6f2ff133-e2e6-429d-b719-88f9124b76b8</objectId>
@@ -18777,6 +18702,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>16</xProp>
    <yProp>18</yProp>
    <objectId>d9103ed8-50ae-49ca-810c-6eb72e30264c</objectId>
@@ -18826,6 +18753,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>14</xProp>
    <yProp>32</yProp>
    <objectId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</objectId>
@@ -18861,20 +18790,13 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
      <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
-     <referenceId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>643148ed-5d9c-4329-b6b0-9c91c90fa4d2</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
-     <referenceId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</referenceId>
-    </StrategicGroupMemberReference>
-    <StrategicGroupMemberReference>
      <referenceId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</referenceId>
     </StrategicGroupMemberReference>
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>22</xProp>
    <yProp>28</yProp>
    <objectId>c1bab757-235c-4e54-8dd7-048a36abd130</objectId>
@@ -18911,6 +18833,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <plannedPath>
     <XY x="21" y="30" />
    </plannedPath>
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>21</xProp>
    <yProp>30</yProp>
    <objectId>580cfa37-58f2-41f6-af34-9ba1906a5eee</objectId>
@@ -18948,6 +18872,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>22</xProp>
    <yProp>28</yProp>
    <objectId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</objectId>
@@ -19012,6 +18938,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>31</xProp>
    <yProp>27</yProp>
    <objectId>490423ba-377f-498f-afce-5f90463901d4</objectId>
@@ -19056,6 +18984,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>22</xProp>
    <yProp>28</yProp>
    <objectId>88450a80-6c3f-4450-b4d1-95a10190dbab</objectId>
@@ -19120,6 +19050,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>22</xProp>
    <yProp>28</yProp>
    <objectId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</objectId>
@@ -19154,6 +19086,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>30</xProp>
    <yProp>28</yProp>
    <objectId>8961f909-0f74-4ef1-b983-315e9a93204a</objectId>
@@ -19171,8 +19105,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Regiment</size>
    <country>China</country>
    <deployState>Independent</deployState>
-   <autoCombinable>false</autoCombinable>
-   <dissolvable>false</dissolvable>
+   <autoCombinable>true</autoCombinable>
+   <dissolvable>true</dissolvable>
    <independentX>29</independentX>
    <independentY>28</independentY>
    <leaderReference />
@@ -19189,11 +19123,13 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <XY x="29" y="28" />
     <XY x="30" y="28" />
    </plannedPath>
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>29</xProp>
    <yProp>28</yProp>
    <objectId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</objectId>
    <strategicGroupReference>
-    <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+    <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
@@ -19214,6 +19150,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>21</xProp>
    <yProp>30</yProp>
    <objectId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</objectId>
@@ -19239,6 +19177,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>22</xProp>
    <yProp>28</yProp>
    <objectId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</objectId>
@@ -19256,8 +19196,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Battalion</size>
    <country>China</country>
    <deployState>Independent</deployState>
-   <autoCombinable>false</autoCombinable>
-   <dissolvable>false</dissolvable>
+   <autoCombinable>true</autoCombinable>
+   <dissolvable>true</dissolvable>
    <independentX>23</independentX>
    <independentY>28</independentY>
    <leaderReference />
@@ -19271,11 +19211,13 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <XY x="23" y="28" />
     <XY x="22" y="28" />
    </plannedPath>
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>23</xProp>
    <yProp>28</yProp>
    <objectId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</objectId>
    <strategicGroupReference>
-    <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+    <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
@@ -19288,8 +19230,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <size>Battalion</size>
    <country>China</country>
    <deployState>Independent</deployState>
-   <autoCombinable>false</autoCombinable>
-   <dissolvable>false</dissolvable>
+   <autoCombinable>true</autoCombinable>
+   <dissolvable>true</dissolvable>
    <independentX>28</independentX>
    <independentY>28</independentY>
    <leaderReference />
@@ -19308,11 +19250,13 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <XY x="23" y="28" />
     <XY x="22" y="28" />
    </plannedPath>
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>28</xProp>
    <yProp>28</yProp>
    <objectId>643148ed-5d9c-4329-b6b0-9c91c90fa4d2</objectId>
    <strategicGroupReference>
-    <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+    <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
    </strategicGroupReference>
   </StrategicGroup>
   <StrategicGroup>
@@ -19348,6 +19292,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>380340b3-7ec3-4404-9601-c0470d750510</objectId>
@@ -19387,6 +19333,8 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
 </remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>2895a7b5-5422-45c0-a01b-a516c966f9c1</objectId>
@@ -19424,6 +19372,8 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>5fe39499-f5f7-416a-9ca3-951f077a937d</objectId>
@@ -19469,6 +19419,8 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
 </remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>ae078a24-3dee-4111-a4dc-bf301c6cde33</objectId>
@@ -19522,6 +19474,8 @@ It was formed in May 1888 (Meiji 21) based on the Tokyo Garrison. At the same ti
 1888年（明治21年）5月，以東京鎮台為基礎組建而成。與此同時，第2師團至第6師團也分別通過改組各自的鎮台而成立。包括第1師團在內的這六個師團是日本歷史最悠久的師團。</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</objectId>
@@ -19579,6 +19533,8 @@ It participated in Japan's major wars until the dissolution of the Imperial Japa
 </remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>1d4474c1-4e1a-4851-adb4-28c1595e3358</objectId>
@@ -19640,6 +19596,8 @@ It is one of the oldest divisions among the approximately 200 Army divisions.
 </remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>597e3e29-935d-4e3c-8465-7064622245c6</objectId>
@@ -19698,6 +19656,8 @@ It was a division composed of soldiers from Shimane, Hiroshima, and Yamaguchi, w
 </remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</objectId>
@@ -19755,6 +19715,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
 </remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</objectId>
@@ -19795,6 +19757,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>30</xProp>
    <yProp>27</yProp>
    <objectId>e7da4734-5986-4765-9687-5c818df24f09</objectId>
@@ -19829,6 +19793,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>420f4cce-0a91-432d-9df6-a79bf52ce8d5</objectId>
@@ -19863,6 +19829,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>77135c77-356b-4eca-a404-77d41ce53d37</objectId>
@@ -19897,6 +19865,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>f085019b-b735-4ad1-bfb5-b94b94aa267b</objectId>
@@ -19931,6 +19901,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>f73090fe-6417-426c-96c7-3ba0a0638216</objectId>
@@ -19965,6 +19937,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>8e96a6fd-cc26-4141-8d7b-7525ef0cc8c4</objectId>
@@ -19999,6 +19973,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>eb801c55-b700-4916-85de-e57350a8530d</objectId>
@@ -20033,6 +20009,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>93c85a86-de1e-4419-b334-ab132482ac2c</objectId>
@@ -20067,6 +20045,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>990958dd-5d87-4b4e-8f6c-e6503905f2f5</objectId>
@@ -20101,6 +20081,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>50981db4-4301-4799-85d2-1810b49b2e58</objectId>
@@ -20147,6 +20129,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>31</xProp>
    <yProp>28</yProp>
    <objectId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</objectId>
@@ -20182,6 +20166,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1875年 	広島</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>31</xProp>
    <yProp>28</yProp>
    <objectId>5a7f6397-7e25-45b6-8423-98b3e22e815a</objectId>
@@ -20220,6 +20206,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark> 1875年 	丸亀</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>fa3430e2-124a-46dd-a18e-c20a42555159</objectId>
@@ -20246,6 +20234,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1875年 	熊本</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>a76c17c1-c4be-4917-8422-54553be670b5</objectId>
@@ -20284,6 +20274,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark> 1875年 	小倉</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>f97d2f58-fb9e-487b-a8fb-999246e1804f</objectId>
@@ -20322,6 +20314,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1884年 	高崎</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>bbfbf098-0b5e-400c-90a1-5af53c5e4533</objectId>
@@ -20360,6 +20354,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1884年 	新発田</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>ccc60016-86aa-40c9-b402-40174ba04ed6</objectId>
@@ -20398,6 +20394,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1885年 	秋田</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>bcef7d21-574b-4323-b651-0e67445b25cc</objectId>
@@ -20436,6 +20434,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1884年 	豊橋</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>e0686526-37a4-459a-bc5b-0b0345a980e2</objectId>
@@ -20474,6 +20474,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1885年 	名古屋</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>8debdc25-a274-4158-a38c-c4dc36162a2d</objectId>
@@ -20511,6 +20513,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>5862b272-0953-46a8-a6f8-bb7353b671b2</objectId>
@@ -20549,6 +20553,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1884年 	広島</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>31</xProp>
    <yProp>28</yProp>
    <objectId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</objectId>
@@ -20587,6 +20593,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1884年 	松山</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>dc778b97-f5fe-4a1a-869f-58133cb451ab</objectId>
@@ -20613,6 +20621,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1884年 	熊本</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>e476fcb0-a7c9-478c-b685-d77291ea06b3</objectId>
@@ -20651,6 +20661,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark> 	1884年 	小倉</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>e212bfd1-456d-4fc7-8bd3-d57dc997b2f1</objectId>
@@ -20689,6 +20701,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1871年 	水戸</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>fa371e9a-6add-4f6c-84f0-52b5e427e75a</objectId>
@@ -20727,6 +20741,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1871年 	東京</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>645d9e54-c6e8-4bef-a17e-558a9f632285</objectId>
@@ -20765,6 +20781,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1871年 	仙台</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>5eb01bdd-7b9a-401a-89be-3382df10e892</objectId>
@@ -20803,6 +20821,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1874年 	青森</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>9e0224f3-d2ad-4b79-bb3b-939b2096bf03</objectId>
@@ -20841,6 +20861,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>1874年 	名古屋</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</objectId>
@@ -20879,6 +20901,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark> 1875年 	金沢</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>10a4192d-931c-469b-b315-716438d8c28b</objectId>
@@ -20916,6 +20940,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>522876be-0947-4332-8bd4-4ff4590fe99b</objectId>
@@ -20953,6 +20979,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>b8955e93-c485-445a-bea6-03cb3334ff86</objectId>
@@ -20990,6 +21018,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>5a6008b4-3d17-4ab8-b1a1-6db59608317b</objectId>
@@ -21027,6 +21057,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>2acf5724-c334-4d1c-99a5-7412c7337c9c</objectId>
@@ -21064,6 +21096,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>-1</xProp>
    <yProp>-1</yProp>
    <objectId>e5b44beb-48e2-4296-9a8f-98f89f7d1cc4</objectId>
@@ -21101,6 +21135,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>30</xProp>
    <yProp>28</yProp>
    <objectId>f8481328-de97-4466-af47-6c302493b6ef</objectId>
@@ -21142,6 +21178,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>30</xProp>
    <yProp>25</yProp>
    <objectId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</objectId>
@@ -21181,6 +21219,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <assignedMissionObjectId>f4c0d26b-9520-4dbc-94ca-865fa88a85d0</assignedMissionObjectId>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>30</xProp>
    <yProp>26</yProp>
    <objectId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</objectId>
@@ -21222,6 +21262,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>30</xProp>
    <yProp>25</yProp>
    <objectId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</objectId>
@@ -21263,6 +21305,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>30</xProp>
    <yProp>25</yProp>
    <objectId>6374bb0b-b59f-454f-a223-eb4e414b78b7</objectId>
@@ -21306,6 +21350,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>30</xProp>
    <yProp>27</yProp>
    <objectId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</objectId>
@@ -21345,6 +21391,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>Placeholder oob for Torpedo formation, following OOB after the battle of Port Arthur.</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>30</xProp>
    <yProp>25</yProp>
    <objectId>f6bd836d-5641-4a06-952d-2329545b8a1a</objectId>
@@ -21378,6 +21426,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <remark>吴淞</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>21</xProp>
    <yProp>16</yProp>
    <objectId>ff0665fc-3324-4015-b532-f94b1f7c6d97</objectId>
@@ -21403,6 +21453,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>21</xProp>
    <yProp>16</yProp>
    <objectId>31fe37b1-d813-4e17-a7e8-c7b29610514e</objectId>
@@ -21439,6 +21491,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
 福州船政局</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>16</xProp>
    <yProp>8</yProp>
    <objectId>741e2594-9434-4915-89e2-d17985701961</objectId>
@@ -21464,6 +21518,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>16</xProp>
    <yProp>8</yProp>
    <objectId>cb51bc0c-d189-4747-bd49-f61180c10499</objectId>
@@ -21489,6 +21545,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <subordinatesCombined />
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>2</xProp>
    <yProp>3</yProp>
    <objectId>95da6c1b-d4eb-401a-98e0-1cefe2e59ea6</objectId>
@@ -21543,6 +21601,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <assignedMissionObjectId>47b1909c-1fcb-4a18-8146-929b570cae27</assignedMissionObjectId>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>748b4491-cf73-4f62-8f7d-075e0dcdec09</objectId>
@@ -21597,6 +21657,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <assignedMissionObjectId>66b539de-9565-4b07-94cb-df83eb246750</assignedMissionObjectId>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</objectId>
@@ -21621,6 +21683,15 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <leaderReference />
    <subordinatesCombined>
     <StrategicGroupMemberReference>
+     <referenceId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
+     <referenceId>643148ed-5d9c-4329-b6b0-9c91c90fa4d2</referenceId>
+    </StrategicGroupMemberReference>
+    <StrategicGroupMemberReference>
      <referenceId>92f37c48-f99b-42b5-9958-0217bf1a121e</referenceId>
     </StrategicGroupMemberReference>
     <StrategicGroupMemberReference>
@@ -21632,6 +21703,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>22</xProp>
    <yProp>28</yProp>
    <objectId>c42825cb-ad36-44f1-842b-49019caa5d23</objectId>
@@ -21686,6 +21759,8 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
 </remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>14</xProp>
    <yProp>32</yProp>
    <objectId>71e28861-3373-4cd5-8e0c-c5eed491d5db</objectId>
@@ -21733,6 +21808,8 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <XY x="29" y="30" />
     <XY x="29" y="29" />
    </plannedPath>
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>27</xProp>
    <yProp>32</yProp>
    <objectId>8807adb3-1eca-45a9-9274-573ad9f29e3c</objectId>
@@ -21768,6 +21845,8 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>14</xProp>
    <yProp>32</yProp>
    <objectId>7da4fd10-12a7-4c69-8107-b16396cee390</objectId>
@@ -21809,6 +21888,8 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>14</xProp>
    <yProp>32</yProp>
    <objectId>df089c53-6033-4d2c-8df2-849dd7593f57</objectId>
@@ -21868,6 +21949,8 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
 </remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>21</xProp>
    <yProp>30</yProp>
    <objectId>7b96de0e-6c80-4b23-a3f4-2176cfe99148</objectId>
@@ -21914,6 +21997,8 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <XY x="29" y="30" />
     <XY x="29" y="29" />
    </plannedPath>
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>27</xProp>
    <yProp>32</yProp>
    <objectId>1a1422a1-96c0-401d-b71e-fc10e508e678</objectId>
@@ -21954,6 +22039,8 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>21</xProp>
    <yProp>30</yProp>
    <objectId>123b42e1-1cc9-41c6-a612-10a6768eb0e0</objectId>
@@ -21988,6 +22075,8 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>20</xProp>
    <yProp>6</yProp>
    <objectId>511bc6d0-2ab7-4fa4-99df-bb674c494284</objectId>
@@ -22022,6 +22111,8 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>20</xProp>
    <yProp>6</yProp>
    <objectId>04002987-63e3-4f8e-ac77-9c6595f47f60</objectId>
@@ -22108,6 +22199,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <XY x="29" y="30" />
     <XY x="29" y="29" />
    </plannedPath>
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>26</xProp>
    <yProp>36</yProp>
    <objectId>49f0c009-c700-468b-9268-e9084351835c</objectId>
@@ -22145,6 +22238,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>26</xProp>
    <yProp>36</yProp>
    <objectId>fd8fd83b-bfa2-4c3b-8396-3dd0d796abad</objectId>
@@ -22224,6 +22319,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <XY x="29" y="30" />
     <XY x="29" y="29" />
    </plannedPath>
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>26</xProp>
    <yProp>36</yProp>
    <objectId>c57852e7-58fc-4373-87f0-016a1043d705</objectId>
@@ -22267,6 +22364,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    </subordinatesCombined>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>31</xProp>
    <yProp>27</yProp>
    <objectId>f11d4aee-dea9-4776-913c-a1d684510b06</objectId>
@@ -22308,6 +22407,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <remark>https://en.wikipedia.org/wiki/Kure_Naval_District</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>42</xProp>
    <yProp>23</yProp>
    <objectId>b2684ea7-b75a-4b7b-ab15-b102e3c7d4ae</objectId>
@@ -22340,6 +22441,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <remark>https://en.wikipedia.org/wiki/Yokosuka_Naval_District</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>55</xProp>
    <yProp>25</yProp>
    <objectId>7a345c0d-2607-49d0-b2ce-39c7ef2dde2c</objectId>
@@ -22372,6 +22475,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <remark>https://en.wikipedia.org/wiki/Sasebo_Naval_District</remark>
    <moveProgressionKm>0</moveProgressionKm>
    <plannedPath />
+   <posture>Active</posture>
+   <restoredHours>0</restoredHours>
    <xProp>37</xProp>
    <yProp>19</yProp>
    <objectId>4ed57fd0-50a3-4f92-a40f-7f3310470b79</objectId>
@@ -22595,6 +22700,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <objectId>66b539de-9565-4b07-94cb-df83eb246750</objectId>
   </StrategicMission>
  </missions>
+ <pendingNavalCombats />
  <serializedCells>
   <width>60</width>
   <height>40</height>

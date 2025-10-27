@@ -73,7 +73,8 @@ public class NavalCombatResolver
     {
         Debug.Log("OnResolve");
 
-        StrategicGameState.Instance.pendingNavalCombats.RemoveAll(c => c.xy.x == cell.x && c.xy.y == cell.y); // Assume a hex has only at most 1 pending combat.
+        // It should be removed from the pending list once returning from naval tactical game.
+        // StrategicGameState.Instance.pendingNavalCombats.RemoveAll(c => c.xy.x == cell.x && c.xy.y == cell.y); // Assume a hex has only at most 1 pending combat.
 
         TryGotoTacticalNavalCombat();
     }
@@ -91,9 +92,10 @@ public class NavalCombatResolver
                 mode = GameManager.StartupConfig.Mode.FullState,
                 scenarioSetupGenerator = new()
                 {
-                    anchor=new LatLon(cell.latitude, cell.longitude)
+                    anchor = new LatLon(cell.latitude, cell.longitude)
                 }
             };
+            StrategicGameState.Instance.scenarioState.pendingNavalCombatId = pendingNavalCombat.objectId;
 
             StrategicGameManager.Instance.PrepareReturnFromNavalGame();
             SceneManager.LoadScene("Naval Game");
@@ -148,7 +150,7 @@ public class NavalCombatResolver
                 var effectedGroups = sideBuilder.pendingNavalCombatSideState.GetGroups();
                 foreach (var group in effectedGroups)
                 {
-                    group.StartReturnToBase();
+                    group.StartReturnToBase(24);
                 }
 
                 StrategicGameState.Instance.RefreshPendingNavalCombats(); // Or just remove the current combat? Refresh would re-assign new id to combats, which may not ideal to me.

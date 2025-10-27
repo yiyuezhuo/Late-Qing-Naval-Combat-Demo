@@ -19,7 +19,6 @@ using CoreUtils;
 using StrategicCombatCore;
 using NavalCombatCore;
 using YYZ.PathFinding;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 
 public enum StrategicMapEditMode
@@ -63,6 +62,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         public float cameraZoom;
         public string scenSubPath = "Scenarios/StrategicGameState.xml";
         public List<ShipLog> syncShipLogs;
+        public VictoryStatus victoryStatus;
     }
 
     public static StartupConfig startupConfig = new StartupConfig();
@@ -140,18 +140,33 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
             RestoreFromReturnFromNavalGame();
             HexMapShower.Instance.Refresh();
+
+            // TODO: Those logic should move to gameState?
+            var scenarioState = StrategicGameState.Instance.scenarioState;
+            var pendingNavalCombat = EntityManager.Instance.Get<PendingNavalCombat>(scenarioState.pendingNavalCombatId);
+            var victoryStatus = startupConfig.victoryStatus;
+
+            if (victoryStatus != null)
+            {
+                DialogRoot.Instance.PopupVictoryStatusDialog(victoryStatus);
+            }
+            if (pendingNavalCombat != null)
+            {
+                StrategicGameState.Instance.pendingNavalCombats.RemoveAll(c => c.objectId == pendingNavalCombat.objectId);
+            }
+            if (victoryStatus != null && victoryStatus.sideVictoryStatuses.Count >= 2 && pendingNavalCombat != null)
+            {
+                HandleVictoryStatus(pendingNavalCombat.sideState0, victoryStatus.sideVictoryStatuses[0]);
+                HandleVictoryStatus(pendingNavalCombat.sideState1, victoryStatus.sideVictoryStatuses[1]);
+            }
+
+            scenarioState.pendingNavalCombatId = null;
         }
         else if (startupConfig.mode == StartupConfig.Mode.ScenPath)
         {
             Debug.Log($"ScenPath mode startup: {startupConfig.scenSubPath}");
 
             // Try to fetch default scenario file and update the state
-            // StartCoroutine(Utils.FetchFile(startupConfig.scenPath, initialScenText =>
-            // {
-            //     StartCoroutine(
-            //         OnScenTextLoaded(initialScenText)
-            //     );
-            // }))
             var scenFullPath = Application.streamingAssetsPath + "/" + startupConfig.scenSubPath;
             StartCoroutine(StreamingTextAssetManager.Instance.FetchText(scenFullPath, initialScenText =>
             {
@@ -161,12 +176,37 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             }));
         }
     }
+    
+    // TODO: Move to core
+    void HandleVictoryStatus(PendingNavalCombat.PendingNavalCombatSideState sideState, SideVictoryStatus sideVictoryStatus)
+    {
+        var side = sideState.side;
+        var groups = sideState.GetGroups();
 
-
-    // public override void OnDestroy()
-    // {
-    //     base.OnDestroy();
-    // }
+        if (sideVictoryStatus.victoryLevel < VictoryLevel.Draw)
+        {
+            side.victoryPoints -= 1;
+        }
+        if (sideVictoryStatus.victoryLevel > VictoryLevel.Draw)
+        {
+            side.victoryPoints += 1;
+        }
+        if (sideVictoryStatus.victoryLevel <= VictoryLevel.Draw)
+        {
+            foreach (var group in groups)
+            {
+                group.StartReturnToBase(24);
+            }
+        }
+        else
+        {
+            foreach(var group in groups)
+            {
+                group.StartReorgnize(12);
+            }
+            // reorgnize for a given time interval. (Combat time + 12h)
+        }
+    }
 
     public void PrepareReturnFromNavalGame()
     {
@@ -533,9 +573,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 IGraphEnumerable<Cell> graph = strategicGroup.IsArmy() ? new DynamicCellGraphArmy() : new DynamicCellGraphNavy();
 
                 var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
-                strategicGroup.plannedPath.Clear();
+                // strategicGroup.plannedPath.Clear();
+                // strategicGroup.moveProgressionKm = 0;
+                strategicGroup.ClearPlannedPath();
                 strategicGroup.plannedPath.AddRange(pathCells.Select(c => new XY() { x = c.x, y = c.y }));
-                strategicGroup.moveProgressionKm = 0;
+                
 
                 Debug.Log("Set path");
             }
@@ -550,7 +592,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             if (lastSelectedStrategicGroup != null)
             {
                 lastSelectedStrategicGroup.MoveToXY(cell.x, cell.y, false);
-                lastSelectedStrategicGroup.plannedPath.Clear();
+                // lastSelectedStrategicGroup.plannedPath.Clear();
+                lastSelectedStrategicGroup.ClearPlannedPath();
             }
         });
     }

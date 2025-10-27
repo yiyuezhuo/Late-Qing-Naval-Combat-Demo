@@ -230,6 +230,11 @@
                                                             </Bindings>
                                                         </ui:Label>
                                                         <ui:Instance template="IStrategicGroupMemberReferenceableParentDepotUI" />
+                                                        <ui:Label text="Supply &amp; Naval transfer state is shown in the strategic tab">
+                                                            <Bindings>
+                                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20018373838147584)" />
+                                                            </Bindings>
+                                                        </ui:Label>
                                                     </ui:VisualElement>
                                                 </ui:VisualElement>
                                                 <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
@@ -551,11 +556,6 @@
                                                 </ui:FloatField>
                                             </ui:VisualElement>
                                         </ui:VisualElement>
-                                        <ui:FloatField label="Fixed Hours">
-                                            <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="fixedHours" binding-mode="TwoWay" />
-                                            </Bindings>
-                                        </ui:FloatField>
                                         <ui:ListView binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" header-title="Loaded Group" show-foldout-header="true" data-source-path="loadedGroups" fixed-item-height="60" name="LoadedGroupListView">
                                             <Bindings>
                                                 <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(17964320211767296)" />

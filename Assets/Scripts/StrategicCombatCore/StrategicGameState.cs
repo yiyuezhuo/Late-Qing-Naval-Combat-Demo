@@ -281,10 +281,26 @@ namespace StrategicCombatCore
             Advance1HourForSupply();
             Advance1HourForMission();
             Advance1HourForMovement();
+            Advance1HourForGroupPosture();
 
             CombinedAutoCombinableAndDissolvable();
 
             RefreshPendingNavalCombats();
+        }
+
+        public void Advance1HourForGroupPosture()
+        {
+            foreach(var group in GetIndependentStrategicGroups())
+            {
+                if (group.restoredHours > 0)
+                {
+                    group.restoredHours -= 1;
+                }
+                if(group.restoredHours == 0 && group.posture != StrategicGroup.GroupPostureType.Active)
+                {
+                    group.posture = StrategicGroup.GroupPostureType.Active;
+                }
+            }
         }
 
         public void RefreshPendingNavalCombats()
@@ -318,7 +334,7 @@ namespace StrategicCombatCore
 
         void CombinedAutoCombinableAndDissolvable()
         {
-            foreach(var group in strategicGroups)
+            foreach(var group in strategicGroups.ToList())
             {
                 var parentGroup = group.strategicGroupReference.Get();
                 if (group.autoCombinable && group.deployState == StrategicGroup.DeployState.Independent)
@@ -340,19 +356,39 @@ namespace StrategicCombatCore
                     group.AttachTo(null);
 
                     EntityManager.Instance.Unregister(group);
+                    strategicGroups.Remove(group);
                 }
             }
         }
 
         public void Advance1HourForSupply()
         {
-            foreach (var landUnit in landUnits)
+            // foreach (var landUnit in landUnits)
+            // {
+            //     landUnit.supplyTons = Math.Max(0, landUnit.supplyTons + (landUnit.supplyGeneratedTons - landUnit.GetSupplyCostTonsPerDay()) / 24);
+            // }
+            // foreach (var shipLog in shipLogs)
+            // {
+            //     shipLog.supplyTons = Math.Max(0, shipLog.supplyTons - shipLog.GetSupplyCostTonsPerDay() / 24);
+            // }
+
+            foreach(var group in GetIndependentStrategicGroups())
             {
-                landUnit.supplyTons = Math.Max(0, landUnit.supplyTons + (landUnit.supplyGeneratedTons - landUnit.GetSupplyCostTonsPerDay()) / 24);
+                foreach(var landUnit in group.WalkGroupMembers<LandUnit>())
+                {
+                    landUnit.supplyTons = Math.Max(0, landUnit.supplyTons + (landUnit.supplyGeneratedTons - landUnit.GetSupplyCostTonsPerDay()) / 24);
+                }
             }
-            foreach (var shipLog in shipLogs)
+
+            foreach(var group in GetIndependentStrategicGroups())
             {
-                shipLog.supplyTons = Math.Max(0, shipLog.supplyTons - shipLog.GetSupplyCostTonsPerDay() / 24);
+                if (group.plannedPath.Count == 0)
+                    continue;
+                
+                foreach(var shipLog in group.WalkGroupMembers<ShipLog>())
+                {
+                    shipLog.supplyTons = Math.Max(0, shipLog.supplyTons - shipLog.GetSupplyCostTonsPerDay() / 24);
+                }
             }
 
             if (scenarioState.dateTime.Hour == 0) // per day

@@ -88,7 +88,10 @@ public class TopTabs : SingletonDocument<TopTabs>
         // coreParameterRoot.dataSource = CoreParameter.Instance;
 
         var victoryStatusButton = root.Q<Button>("VictoryStatusButton");
-        victoryStatusButton.clicked += DialogRoot.Instance.PopupVictoryStatusDialog;
+        // var victoryStatus = VictoryStatus.Generate(NavalGameState.Instance);
+        victoryStatusButton.clicked += () => DialogRoot.Instance.PopupVictoryStatusDialog(
+            VictoryStatus.Generate(NavalGameState.Instance)
+        );
 
         var runDebugScriptButton = root.Q<Button>("RunDebugScriptButton");
         runDebugScriptButton.clicked += () =>
@@ -180,6 +183,8 @@ public class TopTabs : SingletonDocument<TopTabs>
         {
             // StrategicGameManager.startupConfig.mode = StrategicGameManager.StartupConfig.Mode.Empty;
             StrategicGameManager.startupConfig.syncShipLogs = NavalGameState.Instance.shipLogs;
+            StrategicGameManager.startupConfig.victoryStatus = VictoryStatus.Generate(NavalGameState.Instance);
+
             SceneManager.LoadScene("Strategic Game");
         };
 

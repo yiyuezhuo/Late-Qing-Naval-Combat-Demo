@@ -401,6 +401,12 @@ namespace StrategicCombatCore
 
         public float GetSpeedKmPerHour()
         {
+            if (posture == GroupPostureType.Reorganized)
+            {
+                return 0;
+            }
+            var disengagedMod = posture == GroupPostureType.Disengaged ? 1.1f : 1;
+            
             if (IsArmy())
             {
                 var nextCell = GetPathNextCell();
@@ -408,11 +414,11 @@ namespace StrategicCombatCore
                 {
                     if (cell.GetEdgeSide(edge).objectId != side.objectId)
                         return 0; // edge control block
-                    return GetSpeedKmPerHour(cell, nextCell);
+                    return GetSpeedKmPerHour(cell, nextCell) * disengagedMod;
                 }
                 return 0;
             }
-            return 10; // 10km/h, cruise speed for ships
+            return 10 * disengagedMod; // 10km/h, cruise speed for ships
         }
 
         public Cell GetPathNextCell()
@@ -569,20 +575,23 @@ namespace StrategicCombatCore
         public bool Combatable() => deployState == DeployState.Independent && posture != GroupPostureType.Disengaged;
         public bool NavalCombatable() => deployState == DeployState.Independent && posture != GroupPostureType.Disengaged && type == Type.Fleet;
 
-        public void StartReturnToBase() // Return to group's depot's location and go to disengaged state, mainly used by fleet group
+        public void StartReturnToBase(int disengagedHours) // Return to group's depot's location and go to disengaged state, mainly used by fleet group
         {
             if (deployState != DeployState.Independent)
                 return;
 
-            posture = GroupPostureType.Disengaged;
+            if (disengagedHours > 0)
+            {
+                posture = GroupPostureType.Disengaged;
+                restoredHours = disengagedHours;
+            }
 
             var depot = ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
             var depotGroup = depot?.strategicGroupReference.Get();
             if (depotGroup != null && depotGroup.x != -1 && depotGroup.y != -1)
             {
-                
-                // depotGroup.x
-                plannedPath.Clear();
+
+                ClearPlannedPath();
 
                 var waypointStartCell = StrategicGameState.Instance.cellMatrix[depotGroup.x, depotGroup.y];
 
@@ -597,6 +606,24 @@ namespace StrategicCombatCore
             {
                 // TODO: Dismiss or retreat to a relative "safe" location determined dynamically?
             }
+        }
+        
+        public void StartReorgnize(int reorgnizedHours)
+        {
+            if (deployState != DeployState.Independent)
+                return;
+
+            if(reorgnizedHours > 0)
+            {
+                posture = GroupPostureType.Reorganized;
+                restoredHours = reorgnizedHours;
+            }
+        }
+        
+        public void ClearPlannedPath()
+        {
+            plannedPath.Clear();
+            moveProgressionKm = 0;
         }
     }
 }

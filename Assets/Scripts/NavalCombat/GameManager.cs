@@ -127,6 +127,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         public LatLon cameraLocation;
         // public bool requireAutoDeployAll = false;
         public ScenarioDynamicSetupGenerator scenarioSetupGenerator;
+
+        public bool IsFromStrategic() => scenarioSetupGenerator != null;
     }
 
     public static StartupConfig startupConfig = new();
@@ -1007,4 +1009,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     [CreateProperty]
     public bool isEditor => Application.isEditor;
+
+    [CreateProperty]
+    public bool isFromStrategic => startupConfig.IsFromStrategic();
 }

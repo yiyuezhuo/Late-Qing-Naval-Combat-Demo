@@ -24,7 +24,11 @@
             <ui:ScrollView style="flex-grow: 1;">
                 <ui:TreeView name="OOBTreeView" />
             </ui:ScrollView>
-            <ui:Button text="Withdraw" name="WithdrawButton" />
+            <ui:Button text="Withdraw" name="WithdrawButton">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022328123101184)" />
+                </Bindings>
+            </ui:Button>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -78,6 +78,7 @@
                     <ui:Button text="Return to Strategic Game" name="ReturnToStrategicGameButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(64130729545728)" />
+                            <ui:DataBinding property="enabledSelf" data-source-path="isFromStrategic" binding-mode="ToTarget" />
                         </Bindings>
                     </ui:Button>
                 </ui:VisualElement>

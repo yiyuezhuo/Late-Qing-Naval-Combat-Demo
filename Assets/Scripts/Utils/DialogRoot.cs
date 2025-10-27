@@ -255,7 +255,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
-    public void PopupNavalCombatResolverDialog(PendingNavalCombat pendingNavalCombat)
+    public TempDialog PopupNavalCombatResolverDialog(PendingNavalCombat pendingNavalCombat)
     {
         // TODO: Very bad code smell (tangle) here, try to improve when I have enough spare time
         var resolver = new NavalCombatResolver()
@@ -282,6 +282,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         };
 
         tempDialog.Popup();
+
+        return tempDialog;
     }
 
     public void PopupPendingNavalCombatDialog()
@@ -311,7 +313,14 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 {
                     if (Utils.TryResolveCurrentValueForBinding(el, out PendingNavalCombat pendingNavalCombat))
                     {
-                        PopupNavalCombatResolverDialog(pendingNavalCombat);
+                        var resolverDialog = PopupNavalCombatResolverDialog(pendingNavalCombat);
+                        resolverDialog.onClosed += (sender, resolverEl) =>
+                        {
+                            if(StrategicGameState.Instance.pendingNavalCombats.Count == 0)
+                            {
+                                tempDialog.Close();
+                            }
+                        };
                     }
                 };
 
@@ -990,9 +999,10 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
-    public void PopupVictoryStatusDialog()
+    public void PopupVictoryStatusDialog(VictoryStatus victoryStatus)
     {
-        var victoryStatus = VictoryStatus.Generate(NavalGameState.Instance);
+        // StrategicGameManager.startupConfig.victoryStatus
+        // var victoryStatus = VictoryStatus.Generate(NavalGameState.Instance);
 
         var tempDialog = new TempDialog()
         {

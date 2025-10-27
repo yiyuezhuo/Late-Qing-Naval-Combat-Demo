@@ -10,6 +10,7 @@ public class TempDialog
     public event EventHandler<VisualElement> onCreated;
     public event EventHandler<VisualElement> onConfirmed;
     public event EventHandler<VisualElement> onCancelled;
+    public event EventHandler<VisualElement> onClosed;
 
     public bool centering = true;
     public bool fullScreen = false;
@@ -19,6 +20,7 @@ public class TempDialog
 
     public void Close()
     {
+        onClosed?.Invoke(this, el);
         root.Remove(el);
     }
 

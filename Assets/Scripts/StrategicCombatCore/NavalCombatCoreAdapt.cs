@@ -11,8 +11,10 @@ namespace NavalCombatCore
         public StrategicGroupReference strategicGroupReference { get; set; } = new();
         public void SetStrategicGroupReference(StrategicGroup group) => IStrategicGroupMemberReferenceable.SetStrategicGroupReference(this, group);
         public double supplyTons;
-        public float fixedHours; // Fixed by Tactical Combat Resolution
-                                 // GetDepot
+        
+        // Move to strategic group's posture and restored hour
+        // public float fixedHours; // Fixed by Tactical Combat Resolution
+        //                          // GetDepot
 
         public SupplyTransferState supplyTransferState = new();
 

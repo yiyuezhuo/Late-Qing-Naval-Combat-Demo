@@ -2088,4 +2088,28 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
 </remark>
   <objectId>90f19df6-3c15-45b7-91eb-ee7f4e99d8d9</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>2a8a05c0-666b-48ca-9168-70719e6f6d42</shipClassObjectId>
+  <name>
+   <english>Blanco Encalada</english>
+   <japanese>ブランコ・エンカラーダ</japanese>
+   <chineseSimplified>白朗古·恩卡拉达</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>Armstrong, Newcastle</english>
+  </builderDesc>
+  <launchedDate>09/09/1893</launchedDate>
+  <completedDate>04/00/1894</completedDate>
+  <fateDesc>
+   <english>Discarded 1946</english>
+  </fateDesc>
+  <applicableYearBegin>1894</applicableYearBegin>
+  <applicableYearEnd>1919</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>true</notAvailableForFirstSinoJapaneseWar>
+  <remark>Hypothetical Blanco Encalada is bought from Chile</remark>
+  <objectId>5931eace-e011-43fc-958b-f8d3c6e74153</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

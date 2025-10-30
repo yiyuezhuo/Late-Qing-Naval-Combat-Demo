@@ -1,5 +1,6 @@
 using CoreUtils;
 using System.Collections.Generic;
+using NavalCombatCore;
 
 namespace StrategicCombatCore
 {
@@ -21,6 +22,7 @@ namespace StrategicCombatCore
         }
     }
 
+
     public class SideState : IObjectIdLabeled
     {
         public string objectId { get; set; }
@@ -33,6 +35,9 @@ namespace StrategicCombatCore
         public List<DiplomacyRelation> diplomacyRelations = new();
         public float victoryPoints;
         public string remark;
+
+        public AmmunitionLoadoutWeightRecord defaultAmmunitionLoadoutWeightRecord = new();
+        public List<AmmunitionLoadoutWeightRecord> extraAmmunitionLoadoutWeightRecords = new();
 
         public override string ToString()
         {

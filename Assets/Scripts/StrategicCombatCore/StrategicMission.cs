@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using CoreUtils;
+using NavalCombatCore;
 
 namespace StrategicCombatCore
 {
@@ -86,17 +87,28 @@ namespace StrategicCombatCore
         }
 
 
-        public IEnumerable<T> WalkGroupMembers<T>() where T: IStrategicGroupMemberReferenceable
+        public IEnumerable<T> WalkGroupMembers<T>() where T : IStrategicGroupMemberReferenceable
         {
-            foreach(var groupRef in groups)
+            foreach (var groupRef in groups)
             {
                 var group = groupRef.Get() as StrategicGroup;
-                if(group != null)
+                if (group != null)
                 {
-                    foreach(var obj in group.WalkGroupMembers<T>())
+                    foreach (var obj in group.WalkGroupMembers<T>())
                     {
                         yield return obj;
                     }
+                }
+            }
+        }
+        
+        public IEnumerable<ShipLog> WalkGroupMembersDeployedShips()
+        {
+            foreach(var shipLog in WalkGroupMembers<ShipLog>())
+            {
+                if(shipLog.mapState == MapState.Deployed)
+                {
+                    yield return shipLog;
                 }
             }
         }

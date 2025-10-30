@@ -1,5 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="CombatSideStateView" src="project://database/Assets/UIDocuments/StrategicCombat/CombatSideStateView.uxml?fileID=9197481963319205126&amp;guid=e4f2defc8051c184582353143ebb1374&amp;type=3#CombatSideStateView" />
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement data-source-type="StrategicCombatCore.SubStrategicCombat, Assembly-CSharp" class="panel-dialog" style="width: 1000px; height: 600px;">
         <ui:Label text="Sub Strategic Combat Resolver" class="title" />
         <ui:VisualElement style="flex-grow: 1;">

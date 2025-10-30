@@ -278,6 +278,7 @@ namespace StrategicCombatCore
         {
             scenarioState.dateTime = scenarioState.dateTime.AddHours(1);
 
+            
             Advance1HourForSupply();
             Advance1HourForMission();
             Advance1HourForMovement();
@@ -363,40 +364,43 @@ namespace StrategicCombatCore
 
         public void Advance1HourForSupply()
         {
-            // foreach (var landUnit in landUnits)
-            // {
-            //     landUnit.supplyTons = Math.Max(0, landUnit.supplyTons + (landUnit.supplyGeneratedTons - landUnit.GetSupplyCostTonsPerDay()) / 24);
-            // }
-            // foreach (var shipLog in shipLogs)
-            // {
-            //     shipLog.supplyTons = Math.Max(0, shipLog.supplyTons - shipLog.GetSupplyCostTonsPerDay() / 24);
-            // }
-
-            foreach(var group in GetIndependentStrategicGroups())
+            foreach (var group in GetIndependentStrategicGroups())
             {
-                foreach(var landUnit in group.WalkGroupMembers<LandUnit>())
+                foreach (var landUnit in group.WalkGroupMembers<LandUnit>())
                 {
                     landUnit.supplyTons = Math.Max(0, landUnit.supplyTons + (landUnit.supplyGeneratedTons - landUnit.GetSupplyCostTonsPerDay()) / 24);
                 }
             }
 
-            foreach(var group in GetIndependentStrategicGroups())
+            foreach (var group in GetIndependentStrategicGroups())
             {
-                if (group.plannedPath.Count == 0)
-                    continue;
-                
-                foreach(var shipLog in group.WalkGroupMembers<ShipLog>())
+                if (group.plannedPath.Count > 0) // Only moving (has plannedPath) ship cost supply.
                 {
-                    shipLog.supplyTons = Math.Max(0, shipLog.supplyTons - shipLog.GetSupplyCostTonsPerDay() / 24);
+                    foreach (var shipLog in group.WalkGroupMembersDeployedShips())
+                    {
+                        shipLog.supplyTons = Math.Max(0, shipLog.supplyTons - shipLog.GetSupplyCostTonsPerDay() / 24);
+                    }
+                }
+                else
+                {
+                    // Ship ammunition replenishment if it's in home port (hex where its depot is't located in)
+                    if(group.IsInDepotLocation())
+                    {
+                        foreach(var shipLog in group.WalkGroupMembersDeployedShips())
+                        {
+                            // TODO: Introduce RTW-like side level ammo doctrine.
+                        }
+                    }
                 }
             }
+
 
             if (scenarioState.dateTime.Hour == 0) // per day
             {
                 DoLandSupplyNetworkTransfer();
             }
         }
-
+        
         public void DoLandSupplyNetworkTransfer()
         {
             var resolver = new LandSupplyNetworkResolver();
@@ -469,7 +473,7 @@ namespace StrategicCombatCore
                 {
                     var groups = mission.groups.Select(groupRef => groupRef.Get() as StrategicGroup).Where(g => g != null).ToList();
                     var cells = groups.Select(g => g.cell).Where(cell => cell != null).ToHashSet(); // is assigned groups assembled to the same hex?
-                    var ships = mission.WalkGroupMembers<ShipLog>().ToList();
+                    var ships = mission.WalkGroupMembersDeployedShips().ToList();
                     if (cells.Count == 1)
                     {
                         var groupingCell = cells.First();
@@ -508,7 +512,7 @@ namespace StrategicCombatCore
                             if (groupingCell == mission.GetWaypointStartCell())
                             {
                                 // Do Split & Load
-                                var transportShips = mission.WalkGroupMembers<ShipLog>().Where(shipLog => shipLog?.shipClass?.type == ShipType.Transport).ToList();
+                                var transportShips = mission.WalkGroupMembersDeployedShips().Where(shipLog => shipLog?.shipClass?.type == ShipType.Transport).ToList();
                                 var cargoGroups = groups.Where(g => g.type != StrategicGroup.Type.Fleet).ToList();
                                 TransferSplitter.SequenceSplit(transportShips, cargoGroups);
 
@@ -528,7 +532,7 @@ namespace StrategicCombatCore
                                 // Do Unload & pre-recombine
                                 foreach(var fleetGroup in fleetGroups)
                                 {
-                                    foreach(var shipLog in fleetGroup.WalkGroupMembers<ShipLog>())
+                                    foreach(var shipLog in fleetGroup.WalkGroupMembersDeployedShips())
                                     {
                                         if(shipLog?.shipClass?.type == ShipType.Transport)
                                         {
@@ -572,7 +576,7 @@ namespace StrategicCombatCore
                                 if (groupingCell == mission.GetWaypointStartCell())
                                 {
                                     // Do Split & Load
-                                    var transportShips = mission.WalkGroupMembers<ShipLog>().Where(shipLog => shipLog?.shipClass?.type == ShipType.Transport).ToList();
+                                    var transportShips = mission.WalkGroupMembersDeployedShips().Where(shipLog => shipLog?.shipClass?.type == ShipType.Transport).ToList();
                                     TransferSplitter.SequenceSplit(transportShips, cargoGroupsInStartCell);
 
                                     mission.navalTransferState = StrategicMission.NavalTransferState.StartToDestination;
@@ -632,7 +636,7 @@ namespace StrategicCombatCore
                             var targetDepot = mission.targetDepotReference.Get();
                             if (targetDepot != null && strategicGroup.cell == targetDepot.cell)
                             {
-                                foreach (var ship in mission.WalkGroupMembers<ShipLog>())
+                                foreach (var ship in mission.WalkGroupMembersDeployedShips())
                                 {
                                     if (ship?.shipClass.type == ShipType.Transport)
                                     {

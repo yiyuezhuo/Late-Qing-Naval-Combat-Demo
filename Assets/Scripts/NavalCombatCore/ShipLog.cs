@@ -274,6 +274,50 @@ namespace NavalCombatCore
         public float lonDeg;
     }
 
+    public class AmmunitionLoadoutWeightRecord
+    {
+        public float shellSizeInchLow = 0;
+        public float shellSizeInchHigh = 999;
+        public float armorPiercing = 50;
+        public float semiArmorPiercing;
+        public float common = 50;
+        public float highExplosive;
+
+        public float GetTotalWeight() => armorPiercing + semiArmorPiercing + common + highExplosive;
+    }
+
+    public class ResetDamageExpenditureStateContext
+    {
+        public List<AmmunitionLoadoutWeightRecord> ammunitionLoadoutWeightRecords = new() {};
+
+        public void SetAmmunition(float shellSizeInch, int capacity, BatteryAmmunitionRecord record)
+        {
+            var matchedRecord = ammunitionLoadoutWeightRecords.FirstOrDefault(r => shellSizeInch >= r.shellSizeInchLow && shellSizeInch <= r.shellSizeInchHigh);
+            matchedRecord ??= new();
+            var weightSum = matchedRecord.GetTotalWeight();
+            weightSum = weightSum == 0 ? 1 : weightSum;
+
+            record.ArmorPiercing = (int)(matchedRecord.armorPiercing * capacity / weightSum);
+            record.semiArmorPiercing = (int)(matchedRecord.semiArmorPiercing * capacity / weightSum);
+            record.common = (int)(matchedRecord.common * capacity / weightSum);
+            record.highExplosive = (int)(matchedRecord.highExplosive * capacity / weightSum);
+
+            var resolved = record.ArmorPiercing + record.semiArmorPiercing + record.common + record.highExplosive;
+            var unresolved = capacity - resolved;
+            if(unresolved > 0)
+            {
+                if (record.ArmorPiercing > 0)
+                    record.ArmorPiercing += unresolved;
+                else if (record.semiArmorPiercing > 0)
+                    record.semiArmorPiercing += unresolved;
+                else if (record.common > 0)
+                    record.common += unresolved;
+                else
+                    record.highExplosive += unresolved;
+            }
+        }
+    }
+
     public partial class ShipLog : UnitModule, IDF4Model, IShipGroupMember, IWTAObject, IExtrapolable, ICollider
     {
         // public string objectId { get; set; }
@@ -331,15 +375,6 @@ namespace NavalCombatCore
         public float GetLongitudeDeg() => position.LonDeg;
         public float GetHeadingDeg() => headingDeg;
         public float GetSpeedKnots() => speedKnots;
-
-        // public void InflictDamagePoint(float damagePointDelta)
-        // {
-        //     damagePoint += damagePointDelta;
-        //     if (damagePoint > shipClass.damagePoint) // TODO: Temp prototyping purpose workaround, in true manner of SK5, the sinking is generally the result of Damage Effect instead of uniform accumulation of DP.
-        //     {
-        //         mapState = MapState.Destroyed; // TODO: How to handle destroyed but how to represent "remain an obstruction" state?
-        //     }
-        // }
 
         public List<BatteryStatus> batteryStatus = new();
         public TorpedoSectorStatus torpedoSectorStatus = new();
@@ -470,7 +505,7 @@ namespace NavalCombatCore
 
         public bool IsOnMap() => mapState == MapState.Deployed;
 
-        public void ResetDamageExpenditureState()
+        public void ResetDamageExpenditureState(ResetDamageExpenditureStateContext ctx)
         {
             desiredHeadingDeg = headingDeg;
             desiredSpeedKnots = speedKnots;
@@ -484,7 +519,7 @@ namespace NavalCombatCore
             var _shipClass = shipClass;
             Utils.SyncListPairLength(_shipClass.batteryRecords, batteryStatus, this);
             foreach (var batteryStatusRec in batteryStatus)
-                batteryStatusRec.ResetDamageExpenditureState();
+                batteryStatusRec.ResetDamageExpenditureState(ctx);
 
             Utils.SyncListToLength(
                 _shipClass.torpedoSector.mountLocationRecords.Sum(r => r.mounts),

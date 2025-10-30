@@ -58,5 +58,6 @@ namespace NavalCombatCore
 
         // public LandUnit GetCurrentSourceDepot() => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
         public List<StrategicGroupMemberReference> loadedGroups = new();
+
     }
 }

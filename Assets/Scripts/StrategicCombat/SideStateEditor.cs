@@ -1,5 +1,6 @@
 using StrategicCombatCore;
 using UnityEngine.UIElements;
+using NavalCombatCore;
 
 public class SideStateEditor : LeftObjectPickerRightEditorStrategic<SideStateEditor, SideState>
 {
@@ -32,6 +33,9 @@ public class SideStateEditor : LeftObjectPickerRightEditorStrategic<SideStateEdi
 
             return el;
         };
+
+        var extraAmmunitionLoadoutWeightRecordsMultiColumnListView = root.Q<MultiColumnListView>("ExtraAmmunitionLoadoutWeightRecordsMultiColumnListView");
+        Utils.BindItemsAddedRemoved<AmmunitionLoadoutWeightRecord>(extraAmmunitionLoadoutWeightRecordsMultiColumnListView, () => null);
 
         // PictureReferenceBinder.Bind(root.Q<VisualElement>("PictureField"));
     }

@@ -22512,6 +22512,15 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </DiplomacyRelation>
    </diplomacyRelations>
    <victoryPoints>0</victoryPoints>
+   <defaultAmmunitionLoadoutWeightRecord>
+    <shellSizeInchLow>0</shellSizeInchLow>
+    <shellSizeInchHigh>999</shellSizeInchHigh>
+    <armorPiercing>50</armorPiercing>
+    <semiArmorPiercing>0</semiArmorPiercing>
+    <common>50</common>
+    <highExplosive>0</highExplosive>
+   </defaultAmmunitionLoadoutWeightRecord>
+   <extraAmmunitionLoadoutWeightRecords />
    <objectId>dd43c3f3-1a02-46ca-b287-4ac069c23218</objectId>
   </SideState>
   <SideState>
@@ -22536,6 +22545,15 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </DiplomacyRelation>
    </diplomacyRelations>
    <victoryPoints>0</victoryPoints>
+   <defaultAmmunitionLoadoutWeightRecord>
+    <shellSizeInchLow>0</shellSizeInchLow>
+    <shellSizeInchHigh>999</shellSizeInchHigh>
+    <armorPiercing>50</armorPiercing>
+    <semiArmorPiercing>0</semiArmorPiercing>
+    <common>50</common>
+    <highExplosive>0</highExplosive>
+   </defaultAmmunitionLoadoutWeightRecord>
+   <extraAmmunitionLoadoutWeightRecords />
    <objectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</objectId>
   </SideState>
   <SideState>
@@ -22560,6 +22578,15 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </DiplomacyRelation>
    </diplomacyRelations>
    <victoryPoints>0</victoryPoints>
+   <defaultAmmunitionLoadoutWeightRecord>
+    <shellSizeInchLow>0</shellSizeInchLow>
+    <shellSizeInchHigh>999</shellSizeInchHigh>
+    <armorPiercing>50</armorPiercing>
+    <semiArmorPiercing>0</semiArmorPiercing>
+    <common>50</common>
+    <highExplosive>0</highExplosive>
+   </defaultAmmunitionLoadoutWeightRecord>
+   <extraAmmunitionLoadoutWeightRecords />
    <objectId>86452665-ae11-4f1d-b056-59d7272e083e</objectId>
   </SideState>
   <SideState>
@@ -22573,6 +22600,15 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    </countries>
    <diplomacyRelations />
    <victoryPoints>0</victoryPoints>
+   <defaultAmmunitionLoadoutWeightRecord>
+    <shellSizeInchLow>0</shellSizeInchLow>
+    <shellSizeInchHigh>999</shellSizeInchHigh>
+    <armorPiercing>50</armorPiercing>
+    <semiArmorPiercing>0</semiArmorPiercing>
+    <common>50</common>
+    <highExplosive>0</highExplosive>
+   </defaultAmmunitionLoadoutWeightRecord>
+   <extraAmmunitionLoadoutWeightRecords />
    <objectId>ce8f94e9-7710-47b8-af2e-88c4cc8c8c0f</objectId>
   </SideState>
   <SideState>
@@ -22586,6 +22622,15 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    </countries>
    <diplomacyRelations />
    <victoryPoints>0</victoryPoints>
+   <defaultAmmunitionLoadoutWeightRecord>
+    <shellSizeInchLow>0</shellSizeInchLow>
+    <shellSizeInchHigh>999</shellSizeInchHigh>
+    <armorPiercing>50</armorPiercing>
+    <semiArmorPiercing>0</semiArmorPiercing>
+    <common>50</common>
+    <highExplosive>0</highExplosive>
+   </defaultAmmunitionLoadoutWeightRecord>
+   <extraAmmunitionLoadoutWeightRecords />
    <objectId>b0834e29-87e8-46c8-851b-2d0bd493b96f</objectId>
   </SideState>
   <SideState>
@@ -22599,6 +22644,15 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    </countries>
    <diplomacyRelations />
    <victoryPoints>0</victoryPoints>
+   <defaultAmmunitionLoadoutWeightRecord>
+    <shellSizeInchLow>0</shellSizeInchLow>
+    <shellSizeInchHigh>999</shellSizeInchHigh>
+    <armorPiercing>50</armorPiercing>
+    <semiArmorPiercing>0</semiArmorPiercing>
+    <common>50</common>
+    <highExplosive>0</highExplosive>
+   </defaultAmmunitionLoadoutWeightRecord>
+   <extraAmmunitionLoadoutWeightRecords />
    <objectId>6900b3ca-0f12-491a-9799-2e499a9d6e3e</objectId>
   </SideState>
  </sideStates>

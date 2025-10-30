@@ -619,11 +619,36 @@ namespace StrategicCombatCore
                 restoredHours = reorgnizedHours;
             }
         }
-        
+
         public void ClearPlannedPath()
         {
             plannedPath.Clear();
             moveProgressionKm = 0;
+        }
+
+        public StrategicGroup GetDepotGroup()
+        {
+            var groupDepot = ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
+            return groupDepot?.strategicGroupReference.Get();
+        }
+
+        public bool IsInDepotLocation()
+        {
+            var depotGroup = GetDepotGroup();
+            if (depotGroup == null)
+                return false;
+            return depotGroup.x == x && depotGroup.y == y;
+        }
+        
+        public IEnumerable<ShipLog> WalkGroupMembersDeployedShips()
+        {
+            foreach(var shipLog in WalkGroupMembers<ShipLog>())
+            {
+                if(shipLog.mapState == MapState.Deployed)
+                {
+                    yield return shipLog;
+                }
+            }
         }
     }
 }

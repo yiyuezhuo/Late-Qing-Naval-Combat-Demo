@@ -101,7 +101,17 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
             foreach (var shipLog in StrategicGameState.Instance.shipLogs)
             {
-                shipLog.ResetDamageExpenditureState();
+                var side = shipLog.strategicGroupReference.Get()?.side;
+                var ammunitionLoadoutWeightRecords = side != null ?
+                    side.extraAmmunitionLoadoutWeightRecords.Append(side.defaultAmmunitionLoadoutWeightRecord).ToList() : 
+                    null;
+                ResetDamageExpenditureStateContext ctx = new()
+                {
+                    ammunitionLoadoutWeightRecords = ammunitionLoadoutWeightRecords ?? new()
+                };
+
+                shipLog.ResetDamageExpenditureState(ctx); // Impose SideState's doctrine
+                
                 if (shipLog.mapState == MapState.NotDeployed) // NotDeployed in strategic game is not defined now
                     shipLog.mapState = MapState.Deployed;
             }

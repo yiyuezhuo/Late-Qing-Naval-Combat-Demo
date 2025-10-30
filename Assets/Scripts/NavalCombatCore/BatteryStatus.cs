@@ -46,11 +46,13 @@ namespace NavalCombatCore
             return shipClass.batteryRecords[idx];
         }
 
-        public void ResetDamageExpenditureState()
+        public void ResetDamageExpenditureState(ResetDamageExpenditureStateContext ctx)
         {
             var batteryRecord = GetBatteryRecord();
-            ammunition.ArmorPiercing = batteryRecord.ammunitionCapacity / 2;
-            ammunition.common = batteryRecord.ammunitionCapacity / 2;
+
+            // ammunition.ArmorPiercing = batteryRecord.ammunitionCapacity / 2;
+            // ammunition.common = batteryRecord.ammunitionCapacity / 2;
+            ctx.SetAmmunition(batteryRecord.shellSizeInch, batteryRecord.ammunitionCapacity, ammunition);
 
             var expectedLength = batteryRecord.mountLocationRecords.Sum(r => r.mounts);
             Utils.SyncListToLength(expectedLength, mountStatus, this);

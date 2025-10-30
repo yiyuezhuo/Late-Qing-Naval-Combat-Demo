@@ -280,7 +280,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         {
             if (selectedShipLog == null)
                 return;
-            selectedShipLog.ResetDamageExpenditureState();
+            selectedShipLog.ResetDamageExpenditureState(new());
         };
 
         var gotoNamedShipButton = root.Q<Button>("GotoNamedShipButton");
@@ -309,7 +309,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             var gameState = SuperGameState.Instance.GetCurrentGameState();
             foreach (var shipLog in gameState.shipLogs)
             {
-                shipLog.ResetDamageExpenditureState();
+                shipLog.ResetDamageExpenditureState(new());
             }
         };
 

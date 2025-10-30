@@ -80,44 +80,44 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             DoTPSGeoreferencing();
         };
 
-        root.Q<Button>("CreateDefaultShipLogButton").clicked += () =>
-        {
-            var createdObjectIds = StrategicGameState.Instance.shipLogs.Select(shipLog => shipLog.namedShip.objectId).Where(id => id != null && id != "").ToHashSet();
+        // root.Q<Button>("CreateDefaultShipLogButton").clicked += () =>
+        // {
+        //     var createdObjectIds = StrategicGameState.Instance.shipLogs.Select(shipLog => shipLog.namedShip.objectId).Where(id => id != null && id != "").ToHashSet();
 
-            // StrategicGameState.Instance.shipLogs = StrategicGameState.Instance.namedShips
-            StrategicGameState.Instance.shipLogs.AddRange(StrategicGameState.Instance.namedShips
-                .Where(namedShip => !createdObjectIds.Contains(namedShip.objectId) && !namedShip.notAvailableForFirstSinoJapaneseWar)
-                .Select(namedShip =>
-                {
-                    Debug.LogWarning($"Create new ship log for: {namedShip.name.GetMergedName()}");
+        //     // StrategicGameState.Instance.shipLogs = StrategicGameState.Instance.namedShips
+        //     StrategicGameState.Instance.shipLogs.AddRange(StrategicGameState.Instance.namedShips
+        //         .Where(namedShip => !createdObjectIds.Contains(namedShip.objectId) && !namedShip.notAvailableForFirstSinoJapaneseWar)
+        //         .Select(namedShip =>
+        //         {
+        //             Debug.LogWarning($"Create new ship log for: {namedShip.name.GetMergedName()}");
 
-                    var shipLog = new ShipLog();
-                    shipLog.namedShipObjectId = namedShip.objectId;
-                    return shipLog;
-                })
-            );
+        //             var shipLog = new ShipLog();
+        //             shipLog.namedShipObjectId = namedShip.objectId;
+        //             return shipLog;
+        //         })
+        //     );
 
-            StrategicGameState.Instance.ResetAndRegisterAll();
+        //     StrategicGameState.Instance.ResetAndRegisterAll();
 
-            foreach (var shipLog in StrategicGameState.Instance.shipLogs)
-            {
-                var side = shipLog.strategicGroupReference.Get()?.side;
-                var ammunitionLoadoutWeightRecords = side != null ?
-                    side.extraAmmunitionLoadoutWeightRecords.Append(side.defaultAmmunitionLoadoutWeightRecord).ToList() : 
-                    null;
-                ResetDamageExpenditureStateContext ctx = new()
-                {
-                    ammunitionLoadoutWeightRecords = ammunitionLoadoutWeightRecords ?? new()
-                };
+        //     foreach (var shipLog in StrategicGameState.Instance.shipLogs)
+        //     {
+        //         var side = shipLog.strategicGroupReference.Get()?.side;
+        //         var ammunitionLoadoutWeightRecords = side != null ?
+        //             side.extraAmmunitionLoadoutWeightRecords.Append(side.defaultAmmunitionLoadoutWeightRecord).ToList() : 
+        //             null;
+        //         ResetDamageExpenditureStateContext ctx = new()
+        //         {
+        //             ammunitionLoadoutWeightRecords = ammunitionLoadoutWeightRecords ?? new()
+        //         };
 
-                shipLog.ResetDamageExpenditureState(ctx); // Impose SideState's doctrine
+        //         shipLog.ResetDamageExpenditureState(ctx); // Impose SideState's doctrine
                 
-                if (shipLog.mapState == MapState.NotDeployed) // NotDeployed in strategic game is not defined now
-                    shipLog.mapState = MapState.Deployed;
-            }
+        //         if (shipLog.mapState == MapState.NotDeployed) // NotDeployed in strategic game is not defined now
+        //             shipLog.mapState = MapState.Deployed;
+        //     }
 
-            StrategicGameState.Instance.ResetAndRegisterAll();
-        };
+        //     StrategicGameState.Instance.ResetAndRegisterAll();
+        // };
 
         root.Q<Button>("StrategicGroupEditorButton").clicked += StrategicGroupEditor.Instance.Show;
 
@@ -169,6 +169,10 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         {
             var gameState = StrategicGameState.Instance;
 
+            // Create default and reset shiplog states
+
+            gameState.CreateDefaultAndResetShipLogStates();
+
             // Reset Strength
 
             foreach (var landUnit in gameState.landUnits)
@@ -200,6 +204,8 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             {
                 shipLog.supplyTons = shipLog.GetSupplyCapTons();
             }
+
+            
         };
 
         root.Q<Button>("PendingNavalCombatsButton").clicked += () =>

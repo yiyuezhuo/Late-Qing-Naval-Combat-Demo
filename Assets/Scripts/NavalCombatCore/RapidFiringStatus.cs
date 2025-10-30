@@ -89,11 +89,17 @@ namespace NavalCombatCore
             fireControlHits = 0;
             targettingRecords.Clear();
 
-            var rfBtyRec = GetRapidFireBatteryRecord();
-            var barrels = rfBtyRec.barrelsLevelStarboard.FirstOrDefault() + rfBtyRec.barrelsLevelPort.FirstOrDefault();
-            ammunition = barrels * 15;
+            ResetExpenditureState();
 
             logs.Clear();
+        }
+
+        public void ResetExpenditureState()
+        {
+            var rfBtyRec = GetRapidFireBatteryRecord();
+            var barrels = rfBtyRec.barrelsLevelStarboard.FirstOrDefault() + rfBtyRec.barrelsLevelPort.FirstOrDefault();
+            // ammunition = barrels * 15; // 15 turns RF "max speed firing"
+            ammunition = (int)Math.Ceiling(barrels * ShipClass.rapidFiringGunAmmoCapacityTacticalTurns);
         }
 
         public RapidFireBatteryRecord GetRapidFireBatteryRecord()

@@ -115,15 +115,18 @@ namespace StrategicCombatCore
             }
             foreach (var shipLog in gameState.shipLogs)
             {
-                var depot = ((IStrategicGroupMemberReferenceable)shipLog).GetCurrentSourceDepot();
-
-                bundleMap[shipLog.objectId] = new()
+                if(Math.Abs(shipLog.supplyTons - shipLog.GetSupplyCapTons()) > 1e-4)
                 {
-                    unit = shipLog,
-                    isDepot = false,
-                    depot = depot,
-                    supplyCapTons = shipLog.GetSupplyCapTons()
-                };
+                    var depot = ((IStrategicGroupMemberReferenceable)shipLog).GetCurrentSourceDepot();
+
+                    bundleMap[shipLog.objectId] = new()
+                    {
+                        unit = shipLog,
+                        isDepot = false,
+                        depot = depot,
+                        supplyCapTons = shipLog.GetSupplyCapTons()
+                    };
+                }
             }
 
             // Clear states

@@ -672,6 +672,24 @@ namespace NavalCombatCore
             return GetAcronymFor(type);
         }
 
+        public static float torpedoWeightPounds = 845; // Whitehead Mk1 845 lbs
+        public static float rapidFiringGunAmmoCapacityTacticalTurns = 15;
+        public static float rapidFiringGunAmmoWeightPoundsPerRound = 50;
+        public static float rapidFiringGunAverageRoundPerMin = 10;
+
+        // Move to ShipClass
+        public float GetMaxAmmoWeightPounds()
+        {
+            var btyWeightPounds = batteryRecords.Sum(r => r.ammunitionCapacity * r.shellWeightPounds);
+            var torpedoWeightPounds = torpedoSector.ammunitionCapacity * ShipClass.torpedoWeightPounds;
+            // Rapid fire battery assume 30 min "rapid firing" capacity, 10 round/min ROF, 5 pounds/round (47mm Hotchkiss)
+            var rapidFiringBarrels = rapidFireBatteryRecords.Sum(r => r.barrelsLevelPort.FirstOrDefault() + r.barrelsLevelStarboard.FirstOrDefault());
+            var rapidFiringAmmo = rapidFiringBarrels * rapidFiringGunAmmoCapacityTacticalTurns;
+            var rapidFiringEqRound = rapidFiringAmmo * 2 * rapidFiringGunAverageRoundPerMin;
+            var rfBtyWeightPounds = rapidFiringEqRound * rapidFiringGunAmmoWeightPoundsPerRound;
+            return btyWeightPounds + torpedoWeightPounds + rfBtyWeightPounds;
+        }
+
         public float EvaluateArmorScore()
         {
             return EvaluateArmorScore(TargetAspect.Broad, RangeBand.Short);

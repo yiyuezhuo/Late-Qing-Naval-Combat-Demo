@@ -52,7 +52,8 @@ namespace NavalCombatCore
 
             // ammunition.ArmorPiercing = batteryRecord.ammunitionCapacity / 2;
             // ammunition.common = batteryRecord.ammunitionCapacity / 2;
-            ctx.SetAmmunition(batteryRecord.shellSizeInch, batteryRecord.ammunitionCapacity, ammunition);
+            // ctx.SetAmmunition(batteryRecord.shellSizeInch, batteryRecord.ammunitionCapacity, ammunition);
+            ResetExpenditureState(ctx);
 
             var expectedLength = batteryRecord.mountLocationRecords.Sum(r => r.mounts);
             Utils.SyncListToLength(expectedLength, mountStatus, this);
@@ -65,6 +66,11 @@ namespace NavalCombatCore
                 s.ResetToIntegrityState();
 
             fireControlRadarDisabled = false;
+        }
+
+        public void ResetExpenditureState(ResetDamageExpenditureStateContext ctx)
+        {
+            ctx.SetAmmunition(batteryRecord.shellSizeInch, batteryRecord.ammunitionCapacity, ammunition);
         }
 
         public string Summary() // Used in information panel

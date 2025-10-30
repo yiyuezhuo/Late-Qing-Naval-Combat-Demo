@@ -1,6 +1,7 @@
 using CoreUtils;
 using System.Collections.Generic;
 using NavalCombatCore;
+using System.Linq;
 
 namespace StrategicCombatCore
 {
@@ -42,6 +43,15 @@ namespace StrategicCombatCore
         public override string ToString()
         {
             return $"SideState({name.mergedName})";
+        }
+
+        public ResetDamageExpenditureStateContext GetResetDamageExpenditureStateContext()
+        {
+            var merged = extraAmmunitionLoadoutWeightRecords.Append(defaultAmmunitionLoadoutWeightRecord).ToList();
+            return new()
+            {
+                ammunitionLoadoutWeightRecords = merged
+            };
         }
     }
 }

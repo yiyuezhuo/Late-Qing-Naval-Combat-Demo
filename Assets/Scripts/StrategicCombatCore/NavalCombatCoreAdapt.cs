@@ -35,9 +35,20 @@ namespace NavalCombatCore
             var meShipClass = shipClass;
             if (meShipClass == null)
                 return 0;
-            if (meShipClass.type == ShipType.Transport)
-                return shipClass.displacementTons / 2; // 50% of displacement for supply (coal + load) for transport ship
-            return shipClass.displacementTons / 10; // 10% of displacement for supply (coal only) for combat ship
+            
+            // if (meShipClass.type == ShipType.Transport)
+            //     return shipClass.displacementTons / 2; // 50% of displacement for supply (coal + load) for transport ship
+            // return shipClass.displacementTons / 10; // 10% of displacement for supply (coal only) for combat ship
+
+            // 50% of displacement for supply (coal + load) for transport ship
+            // 10% of displacement for supply (coal only) for combat ship
+            var fuelAndCargoSupplyTonsCoef = meShipClass.type == ShipType.Transport ? 0.5f : 0.1f;
+            var fuelAndCargoSupplyTons = shipClass.displacementTons * fuelAndCargoSupplyTonsCoef;
+            
+            var ammoGapPounds = GetGapAmmoWeightsPounds();
+            var ammoGapTons = ammoGapPounds / 2204.623f;
+
+            return fuelAndCargoSupplyTons + ammoGapTons;
         }
 
         public float GetSupplyCostTonsPerDay()
@@ -58,6 +69,8 @@ namespace NavalCombatCore
 
         // public LandUnit GetCurrentSourceDepot() => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
         public List<StrategicGroupMemberReference> loadedGroups = new();
+
+        // public SideState side => strategicGroupReference.Get()?.side;
 
     }
 }

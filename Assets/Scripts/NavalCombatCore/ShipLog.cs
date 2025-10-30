@@ -22,6 +22,11 @@ namespace NavalCombatCore
                 mountStatusRecord.Step(deltaSeconds);
             }
         }
+
+        public int GetAmmunitionMagazinePlusLoaded()
+        {
+            return ammunition + mountStatus.Sum(mnt => mnt.currentLoad);
+        }
     }
 
     public class DynamicStatus
@@ -302,7 +307,7 @@ namespace NavalCombatCore
             record.common = (int)(matchedRecord.common * capacity / weightSum);
             record.highExplosive = (int)(matchedRecord.highExplosive * capacity / weightSum);
 
-            var resolved = record.ArmorPiercing + record.semiArmorPiercing + record.common + record.highExplosive;
+            var resolved = record.GetTotalValue();
             var unresolved = capacity - resolved;
             if(unresolved > 0)
             {
@@ -505,6 +510,7 @@ namespace NavalCombatCore
 
         public bool IsOnMap() => mapState == MapState.Deployed;
 
+        // The method sync list, reset damage and expenditures and misc dynamic states (like processing seconds).
         public void ResetDamageExpenditureState(ResetDamageExpenditureStateContext ctx)
         {
             desiredHeadingDeg = headingDeg;
@@ -512,10 +518,7 @@ namespace NavalCombatCore
             desiredSpeedKnotsForBoilerRoom = speedKnots;
 
             damagePoint = 0;
-            // foreach (var batteryStatusRec in batteryStatus)
-            // {
-            //     batteryStatusRec.
-            // }
+
             var _shipClass = shipClass;
             Utils.SyncListPairLength(_shipClass.batteryRecords, batteryStatus, this);
             foreach (var batteryStatusRec in batteryStatus)
@@ -540,6 +543,24 @@ namespace NavalCombatCore
             damageControlRatingHits = 0;
             // damageEffectRecords.Clear();
             // shipboardFireStatus.Clear();
+        }
+
+        public void ResetExpenditureState(ResetDamageExpenditureStateContext ctx)
+        {
+            foreach (var batteryStatusRec in batteryStatus)
+                batteryStatusRec.ResetExpenditureState(ctx);
+
+            ResetTorpedoExpenditureState();
+
+            foreach (var r in rapidFiringStatus)
+                r.ResetExpenditureState();
+        }
+
+        public void ResetTorpedoExpenditureState()
+        {
+            foreach (var m in torpedoSectorStatus.mountStatus)
+                m.currentLoad = m.GetTorpedoMountLocationRecordInfo().record.barrels;
+            torpedoSectorStatus.ammunition = shipClass.torpedoSector.ammunitionCapacity - torpedoSectorStatus.mountStatus.Sum(m => m.reloadedLoad);
         }
 
         public string Summary()
@@ -575,19 +596,6 @@ namespace NavalCombatCore
 
         public void AddDamagePoint(float addedDamagePoint)
         {
-            // var damageTier = GetDamageTier();
-            // damagePoint += addedDamagePoint;
-            // var newDamageTier = GetDamageTier();
-
-            // for (int dt = damageTier + 1; dt <= newDamageTier; dt++)
-            // {
-            //     var ctx = new DamageEffectContext()
-            //     {
-            //         subject = this,
-            //         cause = DamageEffectCause.General,
-            //     };
-            //     DamageEffectChart.AddNewDamageEffect(ctx);
-            // }
             pendingDamagePoint += addedDamagePoint;
         }
 
@@ -1239,6 +1247,22 @@ namespace NavalCombatCore
         {
             // TODO: Add Emergency turn? The evasive maneuver is not impelmented as well
             return isEvasiveManeuvering && !GetSubStates<IDynamicModifier>().Any(m => m.IsEvasiveManeuverBlocked());
+        }
+
+        public float GetCurentAmmoWeightsPounds()
+        {
+            var btyWeightPounds = batteryStatus.Sum(r => r.ammunition.GetTotalValue() * (r.GetBatteryRecord()?.shellWeightPounds ?? 0));
+            var torpedoWeightPounds = torpedoSectorStatus.GetAmmunitionMagazinePlusLoaded() * ShipClass.torpedoWeightPounds;
+            var rfBtyWeightPounds = rapidFiringStatus.Sum(r => r.ammunition) * 2 * ShipClass.rapidFiringGunAverageRoundPerMin * ShipClass.rapidFiringGunAmmoWeightPoundsPerRound;
+
+            return btyWeightPounds + torpedoWeightPounds + rfBtyWeightPounds;
+        }
+        
+        public float GetGapAmmoWeightsPounds()
+        {
+            var maxAmmoWeightPounds = shipClass?.GetMaxAmmoWeightPounds() ?? 0;
+            var currentAmmoWeightPounds = GetCurentAmmoWeightsPounds();
+            return maxAmmoWeightPounds - currentAmmoWeightPounds;
         }
 
         public float EvaluateBowFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 0);

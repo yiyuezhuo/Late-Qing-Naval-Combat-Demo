@@ -278,7 +278,7 @@ namespace StrategicCombatCore
         {
             scenarioState.dateTime = scenarioState.dateTime.AddHours(1);
 
-            
+
             Advance1HourForSupply();
             Advance1HourForMission();
             Advance1HourForMovement();
@@ -381,24 +381,49 @@ namespace StrategicCombatCore
                         shipLog.supplyTons = Math.Max(0, shipLog.supplyTons - shipLog.GetSupplyCostTonsPerDay() / 24);
                     }
                 }
-                else
-                {
-                    // Ship ammunition replenishment if it's in home port (hex where its depot is't located in)
-                    if(group.IsInDepotLocation())
-                    {
-                        foreach(var shipLog in group.WalkGroupMembersDeployedShips())
-                        {
-                            // TODO: Introduce RTW-like side level ammo doctrine.
-                        }
-                    }
-                }
+                // else
+                // {
+                //     // Ship ammunition replenishment if it's in home port (hex where its depot is't located in)
+                //     if(group.IsInDepotLocation())
+                //     {
+                //         foreach(var shipLog in group.WalkGroupMembersDeployedShips())
+                //         {
+                //             // TODO: Introduce RTW-like side level ammo doctrine.
+                //         }
+                //     }
+                // }
             }
 
 
             if (scenarioState.dateTime.Hour == 0) // per day
             {
                 DoLandSupplyNetworkTransfer();
+
+                // Ship ammunition replenishment, if supply percentage >= 10% of displacement (standard fuel capacity), convert supply to ammo
+                DoShipAmmunitionReplenishment();
             }
+        }
+        
+        public void DoShipAmmunitionReplenishment()
+        {
+            foreach (var group in GetIndependentStrategicGroups())
+            {
+                if (group.plannedPath.Count == 0 && group.IsInDepotLocation())
+                {
+                    foreach (var shipLog in group.WalkGroupMembersDeployedShips())
+                    {
+                        // TODO: Introduce RTW-like side level ammo doctrine.
+                        var ammoGapTons = shipLog.GetGapAmmoWeightsPounds() / 2204.623f;
+                        if (ammoGapTons > 0 && shipLog.supplyTons >= shipLog.GetSupplyCapTons() * 0.1)
+                        {
+                            shipLog.supplyTons -= ammoGapTons;
+                            // shipLog.ResetDamageExpenditureState();
+                            var ctx = shipLog.side?.GetResetDamageExpenditureStateContext() ?? new();
+                            shipLog.ResetExpenditureState(ctx);
+                        }
+                    }
+                }
+            }   
         }
         
         public void DoLandSupplyNetworkTransfer()
@@ -717,6 +742,48 @@ namespace StrategicCombatCore
         public IEnumerable<StrategicGroup> IterIndependentStrategicGroups()
         {
             return strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent);
+        }
+
+        public void CreateDefaultAndResetShipLogStates()
+        {
+            var createdObjectIds = shipLogs.Select(shipLog => shipLog.namedShip.objectId).Where(id => id != null && id != "").ToHashSet();
+
+            // StrategicGameState.Instance.shipLogs = StrategicGameState.Instance.namedShips
+            shipLogs.AddRange(namedShips
+                .Where(namedShip => !createdObjectIds.Contains(namedShip.objectId) && !namedShip.notAvailableForFirstSinoJapaneseWar)
+                .Select(namedShip =>
+                {
+                    // Debug.LogWarning($"Create new ship log for: {namedShip.name.GetMergedName()}");
+                    ServiceLocator.Get<ILoggerService>().LogWarning($"Create new ship log for: {namedShip.name.GetMergedName()}");
+
+                    var shipLog = new ShipLog();
+                    shipLog.namedShipObjectId = namedShip.objectId;
+                    return shipLog;
+                })
+            );
+
+            ResetAndRegisterAll();
+
+            foreach (var shipLog in shipLogs)
+            {
+                // var side = shipLog.strategicGroupReference.Get()?.side;
+                // var ammunitionLoadoutWeightRecords = side != null ?
+                //     side.extraAmmunitionLoadoutWeightRecords.Append(side.defaultAmmunitionLoadoutWeightRecord).ToList() : 
+                //     null;
+                // ResetDamageExpenditureStateContext ctx = new()
+                // {
+                //     ammunitionLoadoutWeightRecords = ammunitionLoadoutWeightRecords ?? new()
+                // };
+
+                var ctx = shipLog.side?.GetResetDamageExpenditureStateContext() ?? new();
+
+                shipLog.ResetDamageExpenditureState(ctx); // Impose SideState's doctrine
+                
+                if (shipLog.mapState == MapState.NotDeployed) // NotDeployed in strategic game is not defined now
+                    shipLog.mapState = MapState.Deployed;
+            }
+
+            ResetAndRegisterAll();
         }
 
         public override void ResetAndRegisterAll()

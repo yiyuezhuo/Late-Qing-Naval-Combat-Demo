@@ -352,6 +352,11 @@ namespace NavalCombatCore
         //     yield break;
         // }
 
+        public void TrimMissingLogs()
+        {
+            logs.RemoveAll(x => !x.hit);
+        }
+
         public MountStatus GetModifiedStatus()
         {
             var s = status;

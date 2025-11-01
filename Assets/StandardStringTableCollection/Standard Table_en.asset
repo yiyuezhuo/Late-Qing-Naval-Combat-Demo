@@ -765,7 +765,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 167773285814272
-    m_Localized: Propulsion/Shaft Hits
+    m_Localized: Boiler Room Hits
     m_Metadata:
       m_Items: []
   - m_Id: 167850461007872
@@ -837,7 +837,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 170314136457216
-    m_Localized: Ammunition
+    m_Localized: Ammunition (2min)
     m_Metadata:
       m_Items: []
   - m_Id: 170635940237312

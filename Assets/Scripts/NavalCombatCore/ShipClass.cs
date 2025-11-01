@@ -23,7 +23,8 @@ namespace NavalCombatCore
         PatrolGunboat, // PG
         TorpedoBoat, // TB
         ArmedMerchantCruiser, // AMC
-        Transport // TR, Transport or merchant ship
+        Transport, // TR, Transport or merchant ship
+        Repair, // AR, Auxiliary Repair
     }
 
     public enum MountLocation // SEEKRIEG like 3x3 location
@@ -655,7 +656,8 @@ namespace NavalCombatCore
             {ShipType.PatrolGunboat, "PG"},
             {ShipType.TorpedoBoat, "TB"},
             {ShipType.ArmedMerchantCruiser, "AMC"},
-            {ShipType.Transport, "TR"}
+            {ShipType.Transport, "TR"},
+            {ShipType.Repair, "AR"}
         };
 
         public static string GetAcronymFor(ShipType shipType)
@@ -673,9 +675,9 @@ namespace NavalCombatCore
         }
 
         public static float torpedoWeightPounds = 845; // Whitehead Mk1 845 lbs
-        public static float rapidFiringGunAmmoCapacityTacticalTurns = 15;
-        public static float rapidFiringGunAmmoWeightPoundsPerRound = 50;
-        public static float rapidFiringGunAverageRoundPerMin = 10;
+        public static float rapidFiringGunAmmoCapacityTacticalTurns = 15; // SK5 default rule: RF Gun can fire for 15 tactical turns (30 min)
+        public static float rapidFiringGunAmmoWeightPoundsPerRound = 50; // 50 pounds, (47mm Hotchkiss)
+        public static float rapidFiringGunAverageRoundPerMin = 10; // 10 round/min (47mm Hotchkiss)
 
         // Move to ShipClass
         public float GetMaxAmmoWeightPounds()

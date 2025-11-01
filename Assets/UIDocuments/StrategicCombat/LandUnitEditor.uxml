@@ -56,6 +56,21 @@
                                 <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
                             </ui:Instance>
                             <ui:Instance template="IStrategicGroupMemberReferenceableParentDepotUI" />
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:IntegerField label="Port" style="flex-grow: 1; flex-basis: 50px;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="portLevel" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:IntegerField>
+                                <ui:IntegerField label="Repair Shipyard" style="flex-grow: 1; flex-basis: 50px;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="repairShipyardLevel" binding-mode="TwoWay" />
+                                    </Bindings>
+                                </ui:IntegerField>
+                                <Bindings>
+                                    <ui:DataBinding property="style.display" data-source-path="isPort" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                                </Bindings>
+                            </ui:VisualElement>
                             <ui:VisualElement style="flex-direction: row;">
                                 <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
                                     <ui:IntegerField label="Strength">

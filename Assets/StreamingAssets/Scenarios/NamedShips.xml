@@ -2112,4 +2112,47 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <remark>Hypothetical Blanco Encalada is bought from Chile</remark>
   <objectId>5931eace-e011-43fc-958b-f8d3c6e74153</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>9f03bf64-9016-4a6a-91b9-16f5c99985c4</shipClassObjectId>
+  <name>
+   <english>Genzan Maru</english>
+   <japanese>元山丸</japanese>
+   <chineseSimplified>元山丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>30c2bc31-e780-487f-b9ca-c6fef0ee7678</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>9f03bf64-9016-4a6a-91b9-16f5c99985c4</shipClassObjectId>
+  <name>
+   <english>Shinagawa Maru</english>
+   <japanese>品川丸</japanese>
+   <chineseSimplified>品川丸</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>unnamed</english>
+  </builderDesc>
+  <fateDesc>
+   <english>unnamed</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Placeholder </remark>
+  <objectId>b1772596-7c1d-44ec-ad71-292c584f75a6</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

@@ -300,6 +300,15 @@ namespace StrategicCombatCore
                 }
                 if (obj is LandUnit landUnit)
                 {
+                    var unitType = landUnit.GetLandUnitTemplate()?.unitType;
+                    if (unitType == LandUnitType.Supply)
+                    {
+                        return $"Supply: {landUnit.supplyTons} tons";
+                    }
+                    else if(unitType == LandUnitType.Port)
+                    {
+                        return $"Port: {landUnit.portLevel}, Repair Shipyard: {landUnit.repairShipyardLevel}";
+                    }
                     return $"{landUnit.strength} men";
                 }
                 return "";
@@ -382,6 +391,9 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public double transferWeightTons => GetTransferWeightTons();
+
+        [CreateProperty]
+        public bool isPort => GetLandUnitTemplate()?.unitType == LandUnitType.Port;
     }
 
     public partial class SubStrategicCombat

@@ -44,31 +44,8 @@ namespace NavalCombatCore
             }
         }
 
-
-        // public IEnumerable<T> GetSubState<T>(SubState subState)
-        // {
-        //     if (subState is T t)
-        //     {
-        //         yield return t;
-        //     }
-
-        //     foreach (var childSubState in subState.children)
-        //     {
-        //         foreach (var tt in GetSubState<T>(childSubState))
-        //         {
-        //             yield return tt;
-        //         }
-        //     }
-        // }
-
         public IEnumerable<T> GetSubStates<T>() // Upward, E.X a status modifer defined in ShipLog will effect all battery' mount, while a status modieifer defined on mount just effect a mount.
         {
-            // foreach (var subState in subStates)
-            // {
-            //     foreach (var t in GetSubState<T>(subState))
-            //         yield return t;
-            // }
-
             foreach (var subState in subStates)
             {
                 if (subState is T t)
@@ -104,6 +81,59 @@ namespace NavalCombatCore
                     }
                 }
             }
+        }
+
+        public void ClearSubStates()
+        {
+            subStates.Clear();
+
+            foreach (var subObject in GetSubObjects())
+            {
+                if (subObject is UnitModule unitModule)
+                {
+                    unitModule.ClearSubStates();
+                }
+            }
+        }
+        
+        public bool ApplyCampaignPersistenceEffectAndCheckSunk()
+        {
+            foreach (var subState in subStates.ToList())
+            {
+                var campaignPersistence = subState.GetCampaignPersistence();
+                if (campaignPersistence == CampaignPersistence.Clear)
+                {
+                    subStates.Remove(subState);
+                }
+                else if (campaignPersistence == CampaignPersistence.Volatile)
+                {
+                    if (subState.damageControllable)
+                    {
+                        subStates.Remove(subState);
+                    }
+                }
+                else if (campaignPersistence == CampaignPersistence.Maintained)
+                {
+
+                }
+                else if (campaignPersistence == CampaignPersistence.DestinedSunk)
+                {
+                    return true;
+                }
+            }
+
+            foreach (var subObject in GetSubObjects())
+            {
+                if (subObject is UnitModule unitModule)
+                {
+                    var sunk = unitModule.ApplyCampaignPersistenceEffectAndCheckSunk();
+                    
+                    if (sunk)
+                        return true;
+                }
+            }
+            
+            return false;
         }
     }
 }

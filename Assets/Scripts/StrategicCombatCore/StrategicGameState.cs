@@ -268,10 +268,15 @@ namespace StrategicCombatCore
                 if (idx != -1)
                 {
                     shipLogs[idx] = otherShipLog;
+
+                    // Post-Housekeeping
+                    otherShipLog.TacticalToStrategicPostHousekeeping();
                 }
+
+                
             }
 
-            // ResetAndRegisterAll();
+            // ResetAndRegisterAll(); // Handled by external
         }
 
         public void Advance1Hour()

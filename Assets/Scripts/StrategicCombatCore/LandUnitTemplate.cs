@@ -30,6 +30,7 @@ namespace StrategicCombatCore
         Engineer,
         Supply,
         MilitaryPolice,
+        Port
     }
 
     // public interface ITreeNode

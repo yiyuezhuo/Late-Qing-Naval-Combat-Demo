@@ -1,6 +1,6 @@
 using CoreUtils;
 using StrategicCombatCore;
-
+using System;
 using System.Collections.Generic;
 
 namespace NavalCombatCore
@@ -69,6 +69,36 @@ namespace NavalCombatCore
 
         // public LandUnit GetCurrentSourceDepot() => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
         public List<StrategicGroupMemberReference> loadedGroups = new();
+
+        public void TacticalToStrategicPostHousekeeping()
+        {
+            timeLocLogs.Clear();
+
+            damagePoint = Math.Min(damagePoint, shipClass.damagePoint);
+            foreach (var rfStatus in rapidFiringStatus)
+            {
+                rfStatus.targettingRecords.Clear();
+            }
+
+            TrimMissingLogs();
+
+            var sunk = ApplyCampaignPersistenceEffectAndCheckSunk();
+            if (sunk)
+            {
+                mapState = MapState.Deployed; // TODO: Log and VP count?
+            }
+        }
+        
+        /// <summary>
+        /// Trim logs, missing hit logs are removed. Hitting and hit records are reserved. (maybe generate a dedicated records?)
+        /// </summary>
+        public void TrimMissingLogs()
+        {
+            foreach(var bty in batteryStatus)
+            {
+                bty.TrimMissingLogs();
+            }
+        }
 
         // public SideState side => strategicGroupReference.Get()?.side;
 

@@ -105,15 +105,6 @@ namespace NavalCombatCore
             var batteryRecord = GetBatteryRecord();
             var firepoweScorePerBarrel = batteryRecord.EvaluateFirepowerPerBarrel();
 
-            // var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.mountLocationRecord.mounts - m.mountsDestroyed) * m.mountLocationRecord.barrels);
-
-            // var availableBarrels = mountStatus.Where(
-            //     m => m.IsOperational()
-            // ).Sum(m => m.barrels *
-            //            m.GetSubStates<IRateOfFireModifier>().Select(m => m.GetRateOfFireCoef()).DefaultIfEmpty(1).Min() *
-            //            m.GetSubStates<IFireControlValueModifier>().Select(m => Math.Max(0, m.GetFireControlValueCoef() + m.GetFireControlValueOffset() * 0.05f)).DefaultIfEmpty(1).Min()
-            // );
-
             var availableBarrels = GetEffectiveBarrels(
                 mountStatus.Where(
                     m => m.IsOperational()
@@ -133,14 +124,6 @@ namespace NavalCombatCore
                 return 0;
 
             var firepowerPerBarrel = batteryRecord.EvaluateFirepowerPerBarrel(distanceYards, targetAspect, targetSpeedKnots);
-
-            // var barrels = mountStatus.Where(
-            //     m => m.IsOperational() &&
-            //          m.GetMountLocationRecordInfo().record.IsInArc(bearingRelativeToBowDeg)
-            // ).Sum(m => m.barrels *
-            //            m.GetSubStates<IRateOfFireModifier>().Select(m => m.GetRateOfFireCoef()).DefaultIfEmpty(1).Min() *
-            //            m.GetSubStates<IFireControlValueModifier>().Select(m => Math.Max(0, m.GetFireControlValueCoef() + m.GetFireControlValueOffset() * 0.05f)).DefaultIfEmpty(1).Min()
-            // );
 
             var barrels = GetEffectiveBarrels(
                 mountStatus.Where(
@@ -301,6 +284,14 @@ namespace NavalCombatCore
             );
 
             return mountChangeAnyBlocked || fcsChangeAnyBlocked;
+        }
+
+        public void TrimMissingLogs()
+        {
+            foreach(var mnt in mountStatus)
+            {
+                
+            }
         }
     }
 }

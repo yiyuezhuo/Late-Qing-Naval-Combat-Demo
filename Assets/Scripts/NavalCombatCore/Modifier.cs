@@ -20,6 +20,14 @@ namespace NavalCombatCore
         Dependent // If Parent is ended, the DE State is ended as well
     }
 
+    public enum CampaignPersistence
+    {
+        Clear, // Removed if state is transitioned to campaign or strategic.
+        Volatile, // If DCA applicable, removed, otherwise, maintained.
+        Maintained, // Maintained sub state, this may be repaired in the long time (campaign or strategic) mode.
+        DestinedSunk, // Though the ship is not sunk, ship would be sunk due to this DE in the the short => long transition.
+    }
+
     public interface ISubject
     {
         void AddSubState(SubState state);
@@ -350,6 +358,8 @@ namespace NavalCombatCore
         //     subState.lifeCycle = StateLifeCycle.Permanent; // Controlled by parent
         //     children.Add(subState);
         // }
+
+        public virtual CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Clear;
     }
 
     public interface IBatteryMountStatusModifier // Mounts should check its platform's damage effects which implements IBatteryMountEffector to determine its effective status (the state hold by itself is the "permanent" state, while effector may override this value for a given time)
@@ -357,20 +367,10 @@ namespace NavalCombatCore
         MountStatus GetBatteryMountStatus(); // E.X this may restrict a Operational mount to Damage and OOA
     }
 
-    // public interface ILocalizedBatteryMountStatusModifier
-    // {
-    //     MountStatus GetBatteryMountStatus(MountLocation mountLocation);
-    // }
-
     public interface ITorpedoMountStatusModifier
     {
         MountStatus GetTorpedoMountStatus();
     }
-
-    // public interface ILocalizedTorpedoMountStatusModifier
-    // {
-    //     MountStatus GetTorpedoMountStatus(MountLocation mountLocation);
-    // }
 
     public interface IRateOfFireModifier
     {
@@ -507,6 +507,7 @@ namespace NavalCombatCore
             DescribeLiftCycle()
         );
         // public override bool damageControlable => false;
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.DestinedSunk;
     }
 
     public class BatteryMountStatusModifier : SubState, IBatteryMountStatusModifier
@@ -523,6 +524,8 @@ namespace NavalCombatCore
         );
 
         public override bool IsBatteryRelated() => true;
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class RateOfFireModifier : SubState, IRateOfFireModifier
@@ -539,6 +542,8 @@ namespace NavalCombatCore
             rateOfFireCoef, DescribeLiftCycle()
         );
         public override bool IsBatteryRelated() => true;
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class BatteryFireControlStatusDisabledModifier : SubState, IBatteryFireContrlStatusModifier
@@ -550,6 +555,8 @@ namespace NavalCombatCore
             DescribeLiftCycle()
         );
         public override bool IsBatteryRelated() => true;
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class ControlSystemDisabledModifier : SubState, IBatteryMountStatusModifier, IBatteryFireContrlStatusModifier
@@ -604,6 +611,8 @@ namespace NavalCombatCore
             batteryMountStatus, DescribeLiftCycle()
         );
         public override bool IsBatteryRelated() => true;
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class FireControlValueModifier : SubState, IFireControlValueModifier
@@ -625,6 +634,8 @@ namespace NavalCombatCore
             "FireControlValueModifier(coef={0}, offset={1}) ({2})",
             fireControlValueCoef, fireControlValueOffset, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class RiskingInMagazineExplosion : SubState
@@ -656,6 +667,8 @@ namespace NavalCombatCore
             "RiskingInMagazineExplosion(explosionProbPercent={0}, sinkingThreshold={1}) ({2})",
             explosionProbPercent, sinkingThreshold, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Clear;
     }
 
     public class EngineRoomHitModifier : SubState, IEngineRoomHitModifier
@@ -668,6 +681,8 @@ namespace NavalCombatCore
             "EngineRoomHitModifier(offset={0}) ({1})",
             engineRoomHitOffset, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class BoilerRoomHitModifier : SubState, IBoilerRoomHitModifier
@@ -680,6 +695,8 @@ namespace NavalCombatCore
             "BoilerRoomHitModifier(offset={0}) ({1})",
             boilerRoomHitOffset, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class SteamLineDamaged : SubState, IDynamicModifier // DE 120 (AB)
@@ -698,6 +715,8 @@ namespace NavalCombatCore
             "SteamLineDamaged(speedOffset={0}) ({1})",
             currentMaxSpeedOffset, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class DamageControlModifier : SubState, IDamageControlModifier
@@ -731,6 +750,8 @@ namespace NavalCombatCore
             };
             return Localize("DamageControlModifier:") + string.Join(";", lines.Where(line => line != null)) + " | " + DescribeLiftCycle();
         }
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class DynamicModifier : SubState, IDynamicModifier
@@ -787,6 +808,8 @@ namespace NavalCombatCore
         public bool IsTurnPortBlocked() => isTurnPortBlocked;
         public bool IsTurnStarboardBlocked() => isTurnStarboardBlocked;
         public bool IsEmergencyTurnBlocked() => isEmergencyTurnBlocked;
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class FeedwaterPumpDamaged : SubState, IDynamicModifier
@@ -807,6 +830,8 @@ namespace NavalCombatCore
             "FeedwaterPumpDamaged(lostAllPropulsionPercentage={0}, hasLoseAllPropulsion={1}) ({2})",
             lostAllPropulsionPercentage, hasLoseAllPropulsion, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class RudderDamaged : SubState, IDynamicModifier
@@ -830,6 +855,8 @@ namespace NavalCombatCore
             "RudderDamaged(currentDesiredHeadingOffset={0}, ({1})",
             currentDesiredHeadingOffset, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class FuelSupplyDamaged : SubState, IDynamicModifier
@@ -852,6 +879,8 @@ namespace NavalCombatCore
             "FuelSupplyDamaged(active={0} (if active, speed coef=0.5)), ({1})",
             active, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class EngineRoomCommunicationDamaged : SubState, IDesiredSpeedUpdateToBoilerRoomBlocker
@@ -868,6 +897,8 @@ namespace NavalCombatCore
             "EngineRoomCommunicationDamaged(blocked={0}) ({1})",
             blocked, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class TorpedoMountDamaged : SubState, ITorpedoMountStatusModifier
@@ -885,6 +916,8 @@ namespace NavalCombatCore
             "TorpedoMountDamaged(currentStatus={0},operationalPercentange={1}) ({2})",
             currentStatus, operationalPercentange, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class TorpedoMountModifer : SubState, ITorpedoMountStatusModifier
@@ -896,6 +929,8 @@ namespace NavalCombatCore
             "TorpedoMountModifer(status={0}) ({1})",
             status, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class SmokeGeneratorDamaged : SubState, ISmokeGeneratorModifier
@@ -913,6 +948,8 @@ namespace NavalCombatCore
             "SmokeGeneratorDamaged(IsSmokeGeneratorAvailableCurrent={0},availablePercent={1}) ({2})",
             isSmokeGeneratorAvailableCurrent, availablePercent, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     // DE 128
@@ -986,6 +1023,8 @@ namespace NavalCombatCore
             "SectorFireState(fireAndSmokeLocation={0}) ({1})",
             fireAndSmokeVLocation, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Clear;
     }
 
     public class MainPowerplantOOA : SubState, IRateOfFireModifier, IDamageControlModifier, IElectronicSystemModifier
@@ -1012,20 +1051,9 @@ namespace NavalCombatCore
             "MainPowerplantOOA(rateOfFireCoef={0},isDamageControlBlocked={1}) ({2})",
             rateOfFireCoef, isDamageControlBlocked, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
-
-    // public class PowerDistributionSymtemDamaged : SubState, ILocalizedBatteryMountStatusModifier
-    // {
-    //     // TODO: Add command related things
-    //     public List<MountLocation> locations = new();
-
-    //     public MountStatus GetBatteryMountStatus(MountLocation mountLocation)
-    //     {
-    //         return locations.Contains(mountLocation) ? MountStatus.Disabled : MountStatus.Operational;
-    //     }
-
-    //     public override string Describe() => $"PowerDistributionSymtemDamaged(locations={locations}) ({DescribeLiftCycle()})";
-    // }
 
     public class BatteryTargetChangeBlocker : SubState, IBatteryTargetChangeBlocker
     {
@@ -1037,6 +1065,8 @@ namespace NavalCombatCore
             "BatteryTargetChangeBlocker(blocked={0}) ({1})",
             isBatteryTargetChangeBlocked, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class ElectronicSystemModifier : SubState, IElectronicSystemModifier
@@ -1062,6 +1092,8 @@ namespace NavalCombatCore
             };
             return Localize("ElectronicSystemModifier:") + string.Join(";", lines.Where(line => line != null)) + " | " + DescribeLiftCycle();
         }
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class ArmorModifier : SubState, IArmorModifier
@@ -1073,6 +1105,8 @@ namespace NavalCombatCore
             "ArmorModifier(mainBeltArmorCoef={0}) {1}",
             mainBeltArmorCoef, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
 
@@ -1287,6 +1321,8 @@ namespace NavalCombatCore
             "SevereFloodingState(dieRollOffset={0}) {1}",
             dieRollOffset, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Clear;
     }
 
     public class SevereFloodingRollModifier : SubState, ISevereFloodingRollModifier
@@ -1298,6 +1334,8 @@ namespace NavalCombatCore
             "SevereFloodingRollModifier(severeFloodingRollOffset={0}) {1}",
             severeFloodingRollOffset, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class LossOfCommunicationToFireControlSystemState : SubState, IFireControlSystemTargetChangeBlocker
@@ -1316,6 +1354,8 @@ namespace NavalCombatCore
             "LossOfCommunicationToFireControlSystemState(blocked={0},succPercentage={1}) {2}",
             isFireControlSystemTargetChangeBlocked, succPercentage, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class LossOfCommunicationsAndPowerToSearchLight : SubState, IElectronicSystemModifier
@@ -1337,6 +1377,8 @@ namespace NavalCombatCore
             "LossOfCommunicationsAndPowerToSearchLight(location={0},succPercentage={1},isSearchLightDisabled={2}) {3}",
             location, succPercentage, isSearchLightDisabled, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class LossOfCommunicationToEngineRoom : SubState, IDynamicModifier
@@ -1355,6 +1397,8 @@ namespace NavalCombatCore
             "LossOfCommunicationToEngineRoom(succPercentage={0},isSpeedChangeBlocked={1}) {2}",
             succPercentage, isSpeedChangeBlocked, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class BatteryHandlingRoomAbandoned : SubState // It works as a "countdown" to trigger OOA of a mount 
@@ -1371,6 +1415,8 @@ namespace NavalCombatCore
             "BatteryHandlingRoomAbandoned {0}",
             DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     // Asterisk labeled family, they may doesn't have many functionally, just a label that some 
@@ -1382,6 +1428,8 @@ namespace NavalCombatCore
             "OneShotDamageEffectHappend: {0}",
             damageEffectCode
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Clear;
     }
 
     public class DE602DyanmicModifier : SubState, IDynamicModifier
@@ -1412,6 +1460,8 @@ namespace NavalCombatCore
             "DE602-DyanmicModifier: isSpeedChangeBlocked={0}), Std Turn Coef: 0.5, Emer Turn Blocked, Evasive Man. Blocked",
             isSpeedChangeBlocked
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class DE607DyanmicModifier : SubState, IDynamicModifier
@@ -1440,6 +1490,8 @@ namespace NavalCombatCore
             "DE607DyanmicModifier: isCourceChangeBlocked={0}",
             isCourceChangeBlocked
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class ShipSettleState : SubState, IDynamicModifier
@@ -1490,6 +1542,8 @@ namespace NavalCombatCore
             };
             return Localize("ShipSettleState:") + string.Join(";", lines.Where(line => line != null));
         }
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.DestinedSunk;
     }
 
     // DE 609, Flooding due to splinter and shell damage near waterline
@@ -1523,6 +1577,8 @@ namespace NavalCombatCore
         }
 
         public override string Describe() => Localize("DE609Effect");
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class FiringCircuitDamagedMaster : SubState
@@ -1549,6 +1605,8 @@ namespace NavalCombatCore
             "FiringCircuitDamagedMaster(currentRateOfFireCoef={0}) {1}",
             currentRateOfFireCoef, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Clear;
     }
 
     public class FiringCircuitDamagedWorker : SubState, IRateOfFireModifier, IBarrageFireBlocker // DE *615
@@ -1564,6 +1622,8 @@ namespace NavalCombatCore
         public override string Describe() => Localize(
             "FiringCircuitDamagedWorker"
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Clear;
     }
 
     public class DE806DynamicModifier : SubState, IDynamicModifier
@@ -1591,6 +1651,8 @@ namespace NavalCombatCore
             "DE806DynamicModifier(restored={0}, maxSpeedKnotCoef={1}) {2}",
             restored, maxSpeedKnotCoef, DescribeLiftCycle()
         );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class BatteryDamaged : SubState, IBatteryMountStatusModifier
@@ -1616,6 +1678,8 @@ namespace NavalCombatCore
             status, operationalPercentage, DescribeLiftCycle()
         );
         public override bool IsBatteryRelated() => true;
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
     }
 
     public class PlaceholderState : SubState // Can used to as a parent for some dependent sub-states to apply lifecycle constrait

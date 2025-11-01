@@ -47,6 +47,10 @@ namespace StrategicCombatCore
             return strength / 500f; // 1 "battalion" =~= 1 pwr pt
         }
 
+        // WITP-like port & repire shipyard, only valid is unit template is a port.
+        public int portLevel;
+        public int repairShipyardLevel;
+
         // Later those value may derived from weapon and template parameter, but now it's determined simply with strength and type.
 
         // public static float baseNormalSupplyCostTonPerMenDay = 0.001f;

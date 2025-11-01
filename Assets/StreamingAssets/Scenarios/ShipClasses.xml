@@ -10508,6 +10508,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
  <ShipClass>
   <name>
    <english>Generic IJN Transport</english>
+   <japanese>日本軍の汎用輸送船</japanese>
    <chineseSimplified>通用日军运输船</chineseSimplified>
   </name>
   <type>Transport</type>
@@ -10587,6 +10588,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
  <ShipClass>
   <name>
    <english>Generic China Transport</english>
+   <japanese>通用の清軍輸送船</japanese>
    <chineseSimplified>通用清军运输船</chineseSimplified>
   </name>
   <type>Transport</type>
@@ -11213,5 +11215,88 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
   </portraitTopReference>
   <ram>Ram</ram>
   <objectId>2a8a05c0-666b-48ca-9168-70719e6f6d42</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Genzan Maru</english>
+   <japanese>元山丸</japanese>
+   <chineseSimplified>元山丸</chineseSimplified>
+  </name>
+  <type>Repair</type>
+  <country>Japan</country>
+  <displacementTons>2198</displacementTons>
+  <complementMen>150</complementMen>
+  <lengthFoot>327</lengthFoot>
+  <beamFoot>33.6614151</beamFoot>
+  <draftFoot>10.5643</draftFoot>
+  <engineDesc>
+   <english>unnamed</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>unnamed</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>unnamed</english>
+   </name>
+   <mountLocationRecords />
+   <torpedoSettings />
+   <ammunitionCapacity>0</ammunitionCapacity>
+   <damageClass>A</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords />
+  <targetSizeModifier>0</targetSizeModifier>
+  <damagePoint>1000</damagePoint>
+  <speedKnots>9</speedKnots>
+  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>9</float>
+   <float>5</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>9</float>
+   <float>4</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>9</float>
+   <float>4</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>90</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>120</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+  </armorRating>
+  <portraitUrl>https://lib.s.kaiyodai.ac.jp/library/digital/nishinkaisen_htmls/genzanmaru.html  </portraitUrl>
+  <remark>https://lib.s.kaiyodai.ac.jp/library/digital/nishinkaisen_htmls/genzanmaru.html
+
+総トン数2,198GT 長さ99.7m、幅10.26m、深さ3.22m、主機140馬力、速力9ノット 
+
+日清戦争の頃の工作船とはスパイ船ではなく、艦艇に附随して戦闘後、船體水線以下の修理で入渠を要する艦艇以外の船を迅速に応急修理をする船のことを言う。 日清戦争では元山丸、品川丸の二隻が工作船として徴用された。</remark>
+  <portraitReference>
+   <path>Pictures\Ships\genzan maru.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures/Ships/Saikyo_Maru_Top.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <ram>None</ram>
+  <objectId>9f03bf64-9016-4a6a-91b9-16f5c99985c4</objectId>
  </ShipClass>
 </ArrayOfShipClass>

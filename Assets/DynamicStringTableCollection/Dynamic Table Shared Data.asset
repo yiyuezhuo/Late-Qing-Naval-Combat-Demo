@@ -2027,6 +2027,10 @@ MonoBehaviour:
     m_Key: VictoryLevel.DecisiveVictory
     m_Metadata:
       m_Items: []
+  - m_Id: 7330216285999104
+    m_Key: ShipType.Repair
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

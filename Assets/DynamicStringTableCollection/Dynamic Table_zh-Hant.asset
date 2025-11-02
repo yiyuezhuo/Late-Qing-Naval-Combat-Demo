@@ -2048,6 +2048,10 @@ MonoBehaviour:
     m_Localized: "\u6C7A\u5B9A\u6027\u52DD\u5229"
     m_Metadata:
       m_Items: []
+  - m_Id: 7330216285999104
+    m_Localized: "\u4FEE\u7406\u8239 (AR)"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

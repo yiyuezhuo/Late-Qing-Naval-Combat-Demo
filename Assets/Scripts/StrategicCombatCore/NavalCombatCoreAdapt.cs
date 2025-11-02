@@ -70,33 +70,59 @@ namespace NavalCombatCore
         // public LandUnit GetCurrentSourceDepot() => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
         public List<StrategicGroupMemberReference> loadedGroups = new();
 
+        public float repairPriority;
+
         public void TacticalToStrategicPostHousekeeping()
         {
             timeLocLogs.Clear();
 
+            // Truncate damage point to 100%
             damagePoint = Math.Min(damagePoint, shipClass.damagePoint);
-            foreach (var rfStatus in rapidFiringStatus)
+
+            // Reset Battery Status
+            foreach (var btyStatus in batteryStatus)
             {
-                rfStatus.targettingRecords.Clear();
+                foreach (var btyMnt in btyStatus.mountStatus)
+                {
+                    btyMnt.ResetTargetting();
+                }
+                
+                foreach(var fcRec in btyStatus.fireControlSystemStatusRecords)
+                {
+                    fcRec.ResetTargetting();
+                }
             }
 
-            TrimMissingLogs();
+            // Reset Torpedo States
+            foreach(var torpedoMnt in torpedoSectorStatus.mountStatus)
+            {
+                torpedoMnt.ResetTargetting();
+            }
 
+            // Reset Rapid Firing Status
+            foreach (var rfStatus in rapidFiringStatus)
+            {
+                rfStatus.ResetTargetting();
+            }
+
+            TrimMissHitLogs();
+
+            // Sub-states housekeeping
             var sunk = ApplyCampaignPersistenceEffectAndCheckSunk();
             if (sunk)
             {
-                mapState = MapState.Deployed; // TODO: Log and VP count?
+                mapState = MapState.Destroyed; // TODO: Log and VP count?
             }
         }
         
         /// <summary>
         /// Trim logs, missing hit logs are removed. Hitting and hit records are reserved. (maybe generate a dedicated records?)
         /// </summary>
-        public void TrimMissingLogs()
+        public void TrimMissHitLogs()
         {
             foreach(var bty in batteryStatus)
             {
-                bty.TrimMissingLogs();
+                bty.TrimMissHitLogs();
             }
         }
 

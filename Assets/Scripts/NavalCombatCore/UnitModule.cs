@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -5,6 +6,13 @@ using CoreUtils;
 
 namespace NavalCombatCore
 {
+    public class RepairableSubStateRecord
+    {
+        public ISubject subject;
+        public SubState subState;
+        // TODO: would add cost & priority here if refining is required.
+    }
+
     // Abstract class will prevent UITK binding hint so we switch back to concrete class at time.
     public partial class UnitModule : IObjectIdLabeled, ISubject
     {
@@ -95,7 +103,7 @@ namespace NavalCombatCore
                 }
             }
         }
-        
+
         public bool ApplyCampaignPersistenceEffectAndCheckSunk()
         {
             foreach (var subState in subStates.ToList())
@@ -109,7 +117,7 @@ namespace NavalCombatCore
                 {
                     if (subState.damageControllable)
                     {
-                        subStates.Remove(subState);
+                        subStates.Remove(subState); // TODO: Or use EndAt? But we may don't want sid-effect of it.
                     }
                 }
                 else if (campaignPersistence == CampaignPersistence.Maintained)
@@ -127,13 +135,36 @@ namespace NavalCombatCore
                 if (subObject is UnitModule unitModule)
                 {
                     var sunk = unitModule.ApplyCampaignPersistenceEffectAndCheckSunk();
-                    
+
                     if (sunk)
                         return true;
                 }
             }
-            
+
             return false;
+        }
+        
+        public IEnumerable<RepairableSubStateRecord> CollectRepairableSubStateRecords()
+        {
+            foreach (var subState in subStates)
+            {
+                yield return new()
+                {
+                    subject = this,
+                    subState = subState
+                };
+            }
+            
+            foreach(var subObject in GetSubObjects())
+            {
+                if(subObject is UnitModule unitModule)
+                {
+                    foreach(var r in unitModule.CollectRepairableSubStateRecords())
+                    {
+                        yield return r;
+                    }
+                }
+            }
         }
     }
 }

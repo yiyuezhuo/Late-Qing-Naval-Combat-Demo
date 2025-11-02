@@ -154,6 +154,11 @@ namespace NavalCombatCore
             return target;
         }
 
+        public virtual void ResetTargetting()
+        {
+            firingTargetObjectId = null;
+        }
+
 
         public class MountLocationRecordInfo
         {
@@ -241,8 +246,15 @@ namespace NavalCombatCore
             return ret;
         }
 
+        // public override void ResetTargetting()
+        // {
+        //     base.ResetTargetting();
+        // }
+
         public void ResetDamageExpenditureState()
         {
+            ResetTargetting();
+
             var info = GetTorpedoMountLocationRecordInfo().record;
             barrels = info.barrels;
             currentLoad = barrels;
@@ -352,7 +364,14 @@ namespace NavalCombatCore
         //     yield break;
         // }
 
-        public void TrimMissingLogs()
+        public override void ResetTargetting()
+        {
+            base.ResetTargetting();
+
+            processSeconds = 0;
+        }
+
+        public void TrimMissHitLogs()
         {
             logs.RemoveAll(x => !x.hit);
         }
@@ -857,8 +876,8 @@ namespace NavalCombatCore
         public void ResetDamageExpenditureState()
         {
             status = MountStatus.Operational;
-            firingTargetObjectId = null;
-            processSeconds = 0;
+            
+            ResetTargetting();
             barrels = GetMountLocationRecordInfo().record.barrels;
 
             logs.Clear();

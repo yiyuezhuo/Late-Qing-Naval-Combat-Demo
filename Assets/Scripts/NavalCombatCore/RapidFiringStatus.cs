@@ -82,12 +82,18 @@ namespace NavalCombatCore
             return string.Join("\n", lines);
         }
 
+        public void ResetTargetting()
+        {
+            targettingRecords.Clear();
+        }
+
         public void ResetDamageExpenditureState()
         {
             portMountHits = 0;
             starboardMountHits = 0;
             fireControlHits = 0;
-            targettingRecords.Clear();
+
+            ResetTargetting();
 
             ResetExpenditureState();
 

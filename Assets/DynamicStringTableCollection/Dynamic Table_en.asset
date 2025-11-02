@@ -2036,6 +2036,10 @@ MonoBehaviour:
     m_Localized: Decisive Victory
     m_Metadata:
       m_Items: []
+  - m_Id: 7330216285999104
+    m_Localized: Repair Ship (AR)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

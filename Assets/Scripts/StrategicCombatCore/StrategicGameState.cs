@@ -283,15 +283,24 @@ namespace StrategicCombatCore
         {
             scenarioState.dateTime = scenarioState.dateTime.AddHours(1);
 
-
             Advance1HourForSupply();
             Advance1HourForMission();
             Advance1HourForMovement();
             Advance1HourForGroupPosture();
+            Advance1HourForRepair();
 
             CombinedAutoCombinableAndDissolvable();
 
             RefreshPendingNavalCombats();
+        }
+
+        public void Advance1HourForRepair()
+        {
+            if (scenarioState.dateTime.Hour == 0) // per day
+            {
+                var damageRepairResolver = new DamageRepairResolver();
+                damageRepairResolver.Resolve();
+            }
         }
 
         public void Advance1HourForGroupPosture()

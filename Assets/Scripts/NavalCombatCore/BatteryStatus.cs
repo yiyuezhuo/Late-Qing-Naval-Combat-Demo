@@ -286,11 +286,11 @@ namespace NavalCombatCore
             return mountChangeAnyBlocked || fcsChangeAnyBlocked;
         }
 
-        public void TrimMissingLogs()
+        public void TrimMissHitLogs()
         {
             foreach(var mnt in mountStatus)
             {
-                
+                mnt.TrimMissHitLogs();
             }
         }
     }

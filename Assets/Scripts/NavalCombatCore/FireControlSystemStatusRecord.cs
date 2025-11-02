@@ -55,6 +55,15 @@ namespace NavalCombatCore
             }
         }
 
+        public void ResetTargetting()
+        {
+            trackingSeconds = 0;
+            if(trackingState != TrackingSystemState.Destroyed)
+            {
+                trackingState = TrackingSystemState.Idle;
+            }
+        }
+
         public void ResetToIntegrityState()
         {
             targetObjectId = null;

@@ -2031,6 +2031,140 @@ MonoBehaviour:
     m_Key: ShipType.Repair
     m_Metadata:
       m_Items: []
+  - m_Id: 7927664641478656
+    m_Key: hit {0} -> {1} -> (DP={2}, Prob of DE={3})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7927719838519296
+    m_Key: '{0} {1} -> {2}, {3} yards, Prob of Hit={4}% {5} {6}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7927758988152832
+    m_Key: miss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7929510965710848
+    m_Key: hit -> {0} DP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7929576212303872
+    m_Key: '{0} -> {1}, {2} yards, PoH={3}%, {4}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7935299495301120
+    m_Key: Combat in Hex ({0} {1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7935301802168320
+    m_Key: The battle of Cell ({0}, {1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7954009010376704
+    m_Key: Engaged in combat at ({0}, {1}) in {2}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7978918537236480
+    m_Key: 'Tick: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8052074727772160
+    m_Key: Damage Repair({0}, {1}, Priority=({2}, {3}), Repair Point Cost={4}, Major={5},
+      Mapped Damage Points={6})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053211476430848
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.ShipOperationalState
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053417811021824
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.MaxSpeedOffset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053440523177984
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.AccelerationOffset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053465022107648
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.EngineRoomHits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053496160620544
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.EngineRoomFlooding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053532294549504
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.PropulsionShaftHis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053558999683072
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.BoilerRoomHits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053578767437824
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.BoilerRoomFlooding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053593820794880
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.DamageControlRatingHit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053619947114496
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.PortSearchlightHits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053670723358720
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.StarboardSearchlightHits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054115034370048
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.SmokeGeneratorDisabled
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054150694342656
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.SubState
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054169543544832
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.BatteryMountStatus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054203764871168
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.FiringControlSystemState
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054222823788544
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.TorpedoMountStatus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054262652899328
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.RapidFireBatteryPortMountHits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054341614866432
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.RapidFireBatteryStartboardMountHits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054374032642048
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.RapidFireBatteryFireControlHits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054410883796992
+    m_Key: StrategicCombatCore.DamageRepairRecord+Type.PureDamagePoint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054877412036608
+    m_Key: 'Repair Cell: ({0}, {1}, Requesting repair ships count={2}, Requested
+      repair damages={3})'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8055373006802944
+    m_Key: 'Repair (Succ, Prob={0}): {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8055391902142464
+    m_Key: 'Repair (Failed, Prob={0}): {1}'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

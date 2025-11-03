@@ -103,6 +103,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public string currentSideStateObjectId;
 
+    public bool currentLogOnly = true;
+
     [CreateProperty]
     public string currentSideStateName => EntityManager.Instance.Get<SideState>(currentSideStateObjectId)?.name?.mergedName ?? "";
 
@@ -141,26 +143,25 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             RestoreFromReturnFromNavalGame();
             HexMapShower.Instance.Refresh();
 
-            // TODO: Those logic should move to gameState?
-            var scenarioState = StrategicGameState.Instance.scenarioState;
-            var pendingNavalCombat = EntityManager.Instance.Get<PendingNavalCombat>(scenarioState.pendingNavalCombatId);
-            var victoryStatus = startupConfig.victoryStatus;
+            // var scenarioState = StrategicGameState.Instance.scenarioState;
+            // var pendingNavalCombat = EntityManager.Instance.Get<PendingNavalCombat>(scenarioState.pendingNavalCombatId);
+            // var victoryStatus = startupConfig.victoryStatus;
 
-            if (victoryStatus != null)
-            {
-                DialogRoot.Instance.PopupVictoryStatusDialog(victoryStatus);
-            }
-            if (pendingNavalCombat != null)
-            {
-                StrategicGameState.Instance.pendingNavalCombats.RemoveAll(c => c.objectId == pendingNavalCombat.objectId);
-            }
-            if (victoryStatus != null && victoryStatus.sideVictoryStatuses.Count >= 2 && pendingNavalCombat != null)
-            {
-                HandleVictoryStatus(pendingNavalCombat.sideState0, victoryStatus.sideVictoryStatuses[0]);
-                HandleVictoryStatus(pendingNavalCombat.sideState1, victoryStatus.sideVictoryStatuses[1]);
-            }
+            // if (victoryStatus != null)
+            // {
+            //     DialogRoot.Instance.PopupVictoryStatusDialog(victoryStatus);
+            // }
+            // if (pendingNavalCombat != null)
+            // {
+            //     StrategicGameState.Instance.pendingNavalCombats.RemoveAll(c => c.objectId == pendingNavalCombat.objectId);
+            // }
+            // if (victoryStatus != null && victoryStatus.sideVictoryStatuses.Count >= 2 && pendingNavalCombat != null)
+            // {
+            //     HandleVictoryStatus(pendingNavalCombat.sideState0, victoryStatus.sideVictoryStatuses[0]);
+            //     HandleVictoryStatus(pendingNavalCombat.sideState1, victoryStatus.sideVictoryStatuses[1]);
+            // }
 
-            scenarioState.pendingNavalCombatId = null;
+            // scenarioState.pendingNavalCombatId = null;
         }
         else if (startupConfig.mode == StartupConfig.Mode.ScenPath)
         {
@@ -178,35 +179,35 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     }
 
     // TODO: Move to core
-    void HandleVictoryStatus(PendingNavalCombat.PendingNavalCombatSideState sideState, SideVictoryStatus sideVictoryStatus)
-    {
-        var side = sideState.side;
-        var groups = sideState.GetGroups();
+    // void HandleVictoryStatus(PendingNavalCombat.PendingNavalCombatSideState sideState, SideVictoryStatus sideVictoryStatus)
+    // {
+    //     var side = sideState.side;
+    //     var groups = sideState.GetGroups();
 
-        if (sideVictoryStatus.victoryLevel < VictoryLevel.Draw)
-        {
-            side.victoryPoints -= 1;
-        }
-        if (sideVictoryStatus.victoryLevel > VictoryLevel.Draw)
-        {
-            side.victoryPoints += 1;
-        }
-        if (sideVictoryStatus.victoryLevel <= VictoryLevel.Draw)
-        {
-            foreach (var group in groups)
-            {
-                group.StartReturnToBase(24);
-            }
-        }
-        else
-        {
-            foreach (var group in groups)
-            {
-                group.StartReorgnize(12);
-            }
-            // reorgnize for a given time interval. (Combat time + 12h)
-        }
-    }
+    //     if (sideVictoryStatus.victoryLevel < VictoryLevel.Draw)
+    //     {
+    //         side.victoryPoints -= 1;
+    //     }
+    //     if (sideVictoryStatus.victoryLevel > VictoryLevel.Draw)
+    //     {
+    //         side.victoryPoints += 1;
+    //     }
+    //     if (sideVictoryStatus.victoryLevel <= VictoryLevel.Draw)
+    //     {
+    //         foreach (var group in groups)
+    //         {
+    //             group.StartReturnToBase(24);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         foreach (var group in groups)
+    //         {
+    //             group.StartReorgnize(12);
+    //         }
+    //         // reorgnize for a given time interval. (Combat time + 12h)
+    //     }
+    // }
 
     public void PrepareReturnFromNavalGame()
     {
@@ -229,35 +230,20 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         trans.position = new Vector3(startupConfig.cameraPosXY.x, startupConfig.cameraPosXY.y, trans.position.z);
         PlaneCameraController.Instance.cam.orthographicSize = startupConfig.cameraZoom;
 
-        if (startupConfig.syncShipLogs != null)
-        {
-            StrategicGameState.Instance.UpdatePartialShipLogs(startupConfig.syncShipLogs);
-        }
+        StrategicGameState.Instance.UpdateFromTacticalResult(startupConfig.syncShipLogs, startupConfig.victoryStatus);
 
-        StrategicGameState.Instance.ResetAndRegisterAll();
+        // if (startupConfig.syncShipLogs != null)
+        // {
+        //     StrategicGameState.Instance.UpdatePartialShipLogs(startupConfig.syncShipLogs);
+        // }
 
-        // Other update
-        // TODO: Move to Core
+        // StrategicGameState.Instance.ResetAndRegisterAll();
 
-        // Reset independent but empty groups (generally caused by combat) in conflict hex deploy-state to combined. So they may be "rebuilt" in the location of higher command.
-        foreach (var cellGroupsGrouping in StrategicGameState.Instance.strategicGroups
-            .Where(g => g.deployState == StrategicGroup.DeployState.Independent)
-            .GroupBy(g => g.cell))
-        {
-            var sideGroupsGroupings = cellGroupsGrouping.GroupBy(g => g.side).ToList();
-            if (sideGroupsGroupings.Count >= 2)
-            {
-                foreach (var group in cellGroupsGrouping)
-                {
-                    if (group.GetCombinedSubUnitSize() == 0)
-                    {
-                        // group.deployState = StrategicGroup.DeployState.Combined;
-                        // group.RemoveFromMap();
-                        group.SetDeployState(StrategicGroup.DeployState.Combined);
-                    }
-                }
-            }
-        }
+        // // Other update
+        // // TODO: Move to Core
+
+        // StrategicGameState.Instance.CleanupIndependentStrategicGroups();
+        // StrategicGameState.Instance.HandlePendingNavalCombat(startupConfig.victoryStatus);
     }
 
     public IEnumerator OnScenTextLoaded(string initialScenText)

@@ -2054,6 +2054,10 @@ MonoBehaviour:
     m_Localized: Container
     m_Metadata:
       m_Items: []
+  - m_Id: 22531724602413056
+    m_Localized: Forcecd Naval Combat Resolution
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

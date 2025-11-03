@@ -12,7 +12,6 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
     {
         base.Awake();
 
-
         var goToLocationAtTacticalModeButton = root.Q<Button>("GoToLocationAtTacticalModeButton");
         goToLocationAtTacticalModeButton.clicked += () =>
         {

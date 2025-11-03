@@ -50,12 +50,27 @@ namespace NavalCombatCore
         [XmlAttribute]
         public float damagePoint;
 
+        protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
         public string Summary()
         {
             var target = GetFiringTarget();
             var targetName = target.namedShip?.name?.GetMergedName();
-            var hitDesc = hit ? $"hit -> {damagePoint} DP" : "miss";
-            return $"{firingTime} -> {targetName}, {distanceYards} yards, P={hitProb * 100}%, {hitDesc}";
+            // var hitDesc = hit ? $"hit -> {damagePoint} DP" : "miss";
+            var hitDesc = hit ? Localize(
+                "hit -> {0} DP",
+                damagePoint
+            ) : Localize("miss");
+
+            return Localize(
+                "{0} -> {1}, {2} yards, PoH={3}%, {4}",
+                firingTime,
+                targetName,
+                distanceYards,
+                hitProb * 100,
+                hitDesc
+            );
+            // return $"{firingTime} -> {targetName}, {distanceYards} yards, P={hitProb * 100}%, {hitDesc}";
         }
     }
 

@@ -18,7 +18,7 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
     {
         base.Awake();
 
-        root.dataSource = StrategicGameManager.Instance;
+        // root.dataSource = StrategicGameManager.Instance;
 
         root.Q<Button>("SaveButton").clicked += () =>
         {
@@ -80,45 +80,6 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             DoTPSGeoreferencing();
         };
 
-        // root.Q<Button>("CreateDefaultShipLogButton").clicked += () =>
-        // {
-        //     var createdObjectIds = StrategicGameState.Instance.shipLogs.Select(shipLog => shipLog.namedShip.objectId).Where(id => id != null && id != "").ToHashSet();
-
-        //     // StrategicGameState.Instance.shipLogs = StrategicGameState.Instance.namedShips
-        //     StrategicGameState.Instance.shipLogs.AddRange(StrategicGameState.Instance.namedShips
-        //         .Where(namedShip => !createdObjectIds.Contains(namedShip.objectId) && !namedShip.notAvailableForFirstSinoJapaneseWar)
-        //         .Select(namedShip =>
-        //         {
-        //             Debug.LogWarning($"Create new ship log for: {namedShip.name.GetMergedName()}");
-
-        //             var shipLog = new ShipLog();
-        //             shipLog.namedShipObjectId = namedShip.objectId;
-        //             return shipLog;
-        //         })
-        //     );
-
-        //     StrategicGameState.Instance.ResetAndRegisterAll();
-
-        //     foreach (var shipLog in StrategicGameState.Instance.shipLogs)
-        //     {
-        //         var side = shipLog.strategicGroupReference.Get()?.side;
-        //         var ammunitionLoadoutWeightRecords = side != null ?
-        //             side.extraAmmunitionLoadoutWeightRecords.Append(side.defaultAmmunitionLoadoutWeightRecord).ToList() : 
-        //             null;
-        //         ResetDamageExpenditureStateContext ctx = new()
-        //         {
-        //             ammunitionLoadoutWeightRecords = ammunitionLoadoutWeightRecords ?? new()
-        //         };
-
-        //         shipLog.ResetDamageExpenditureState(ctx); // Impose SideState's doctrine
-                
-        //         if (shipLog.mapState == MapState.NotDeployed) // NotDeployed in strategic game is not defined now
-        //             shipLog.mapState = MapState.Deployed;
-        //     }
-
-        //     StrategicGameState.Instance.ResetAndRegisterAll();
-        // };
-
         root.Q<Button>("StrategicGroupEditorButton").clicked += StrategicGroupEditor.Instance.Show;
 
         root.Q<Button>("SideStateButton").clicked += SideStateEditor.Instance.Show;
@@ -142,6 +103,9 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         {
             if (CheckHasPendingNavalCombatAndPopupIfAny())
                 return;
+
+            if (StrategicGameManager.Instance.currentLogOnly)
+                StrategicGameState.Instance.ClearLogs();
 
             StrategicGameState.Instance.Advance1Hour();
         };
@@ -238,6 +202,9 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         {
             if (CheckHasPendingNavalCombatAndPopupIfAny())
                 break;
+            
+            if(StrategicGameManager.Instance.currentLogOnly && i == 0)
+                StrategicGameState.Instance.ClearLogs();
 
             StrategicGameState.Instance.Advance1Hour();
             yield return new WaitForSeconds(GamePreference.Instance.dayAdvanceHourIntervalSeconds);

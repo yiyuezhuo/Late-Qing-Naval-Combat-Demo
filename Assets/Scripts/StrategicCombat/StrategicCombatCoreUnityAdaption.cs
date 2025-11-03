@@ -541,8 +541,15 @@ namespace StrategicCombatCore
 
     public partial class PendingNavalCombat
     {
+        protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
         [CreateProperty]
-        public string name => $"Combat in Hex ({xy.x} {xy.y})";
+        public string name => Localize(
+            "Combat in Hex ({0} {1})",
+            xy.x,
+            xy.y
+        );
+        // public string name => $"Combat in Hex ({xy.x} {xy.y})";
     }
 }
 
@@ -561,5 +568,15 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public float supplyCapTons => GetSupplyCapTons();
+    }
+}
+
+// Move to a dedicated file?
+namespace CoreUtils
+{
+    public partial class LazyLocalizedString
+    {
+        [CreateProperty]
+        public string resolvedString => Resolve();
     }
 }

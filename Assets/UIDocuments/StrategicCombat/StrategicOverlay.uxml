@@ -3,4 +3,30 @@
     <ui:Template name="StrategicInformationPanel" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicInformationPanel.uxml?fileID=9197481963319205126&amp;guid=9f9bc0290d3dcf348856ddad27571109&amp;type=3#StrategicInformationPanel" />
     <ui:Instance template="StrategicTopTabs" style="right: 201px; left: 0; position: absolute;" />
     <ui:Instance template="StrategicInformationPanel" style="position: absolute; right: 0; bottom: 0; top: 0;" />
+    <ui:VisualElement data-source-type="StrategicGameManager, Assembly-CSharp" style="flex-grow: 1; bottom: 0; left: 0; position: absolute; width: 350px; height: 150px; background-color: rgba(255, 255, 255, 0.2);">
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+            <ui:Label text="Logs">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(198656025858048)" />
+                </Bindings>
+            </ui:Label>
+            <ui:VisualElement style="flex-grow: 1;" />
+            <ui:Label text="Current Only">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(198769003630592)" />
+                </Bindings>
+            </ui:Label>
+            <ui:Toggle name="CurrentLogOnlyToggle">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="currentLogOnly" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:Toggle>
+            <ui:Button text="Clear" name="ClearLogButton">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(180255345774592)" />
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+        <ui:ListView name="LastLogListView" data-source-path="gameState.logs" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/LazyLocalizedStringLabel.uxml?fileID=9197481963319205126&amp;guid=6a6fea6fc6c129443ab403d9a03952de&amp;type=3#LazyLocalizedStringLabel" virtualization-method="DynamicHeight" fixed-item-height="10" style="flex-grow: 1;" />
+    </ui:VisualElement>
 </ui:UXML>

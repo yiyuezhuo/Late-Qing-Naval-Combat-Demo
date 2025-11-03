@@ -34,7 +34,7 @@ public class NavalCombatResolver // Dialog
     {
         builder = new LocalNavalCombatBuilder()
         {
-            pendingNavalCombat=pendingNavalCombat,
+            pendingNavalCombat = pendingNavalCombat,
         };
         // fullState = builder.BuildFullState(cell);
         fullState = builder.BuildFullState();
@@ -62,9 +62,16 @@ public class NavalCombatResolver // Dialog
 
         root.Q<Button>("ResolveButton").clicked += OnResolve;
     }
+    
+    protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
     [CreateProperty]
-    public string battleName => $"The battle of Cell ({cell.x}, {cell.y})";
+    public string battleName => Localize(
+        "The battle of Cell ({0}, {1})",
+        cell.x,
+        cell.y
+    );
+    // public string battleName => $"The battle of Cell ({cell.x}, {cell.y})";
 
     [CreateProperty]
     public string datetimeStr => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(

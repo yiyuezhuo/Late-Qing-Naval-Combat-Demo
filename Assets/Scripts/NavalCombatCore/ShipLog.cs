@@ -489,11 +489,6 @@ namespace NavalCombatCore
 
         public void AddStringLog(string description)
         {
-            // logs.Add(new ShipLogStringLog()
-            // {
-            //     time = NavalGameState.Instance.scenarioState.dateTime,
-            //     description = description
-            // });
             AddLog(new ShipLogStringLog()
             {
                 time = NavalGameState.Instance.scenarioState.dateTime,

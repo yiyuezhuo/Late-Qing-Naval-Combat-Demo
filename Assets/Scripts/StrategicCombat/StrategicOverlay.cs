@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using StrategicCombatCore;
 
 public class StrategicOverlay : SingletonDocument<StrategicOverlay>
 {
@@ -8,6 +9,10 @@ public class StrategicOverlay : SingletonDocument<StrategicOverlay>
         base.Awake();
 
         root.dataSource = StrategicGameManager.Instance;
+        Utils.BindItemsSourceRecursive(root);
+
+        root.Q<Button>("ClearLogButton").clicked += () => StrategicGameState.Instance.logs.Clear();
+
     }
 
 

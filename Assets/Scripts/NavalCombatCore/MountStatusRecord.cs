@@ -127,15 +127,42 @@ namespace NavalCombatCore
         [XmlAttribute]
         public string damageEffectId;
 
+        protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+        protected static string LocalizeEnum<T>(T obj) => ServiceLocator.Get<ILocalizeService>().GetEnum(obj);
+
         public string Summary()
         {
             var target = GetFiringTarget();
             var targetName = target?.namedShip?.name?.GetMergedName();
+
+            // return Localize(
+            //     "(DP={0}, Prob of DE={1})",
+            //     damagePoint,
+            //     damageEffectProb
+            // );
+
             var ammoType = BatteryAmmunitionRecord.ammunitionTypeAcronymMap[ammunitionType];
-            var hitDesc = hit ? $"hit {armorLocation} -> {hitPenDetType} -> {shellDamageResult}" : "miss";
+            // var hitDesc = hit ? $"hit {armorLocation} -> {hitPenDetType} -> {shellDamageResult}" : "miss";
+            var hitDesc = hit ? Localize(
+                "hit {0} -> {1} -> (DP={2}, Prob of DE={3})",
+                LocalizeEnum(armorLocation),
+                LocalizeEnum(hitPenDetType),
+                shellDamageResult.damagePoint,
+                shellDamageResult.damageEffectProb
+            ) : Localize("miss");
 
             var firingTimeStr = CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(firingTime);
-            return $"{firingTimeStr} {ammoType} -> {targetName}, {distanceYards} yards, P={hitProb * 100}%, {hitDesc} {damageEffectId}";
+            // return $"{firingTimeStr} {ammoType} -> {targetName}, {distanceYards} yards, Prob of Hit={hitProb * 100}%, {hitDesc} {damageEffectId}";
+            return Localize(
+                "{0} {1} -> {2}, {3} yards, Prob of Hit={4}% {5} {6}",
+                firingTimeStr,
+                ammoType,
+                targetName,
+                distanceYards,
+                hitProb * 100,
+                hitDesc,
+                damageEffectId
+            );
         }
 
         public override string ToString() => Summary();

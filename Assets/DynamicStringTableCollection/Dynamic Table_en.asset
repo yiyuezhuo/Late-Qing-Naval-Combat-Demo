@@ -2040,6 +2040,140 @@ MonoBehaviour:
     m_Localized: Repair Ship (AR)
     m_Metadata:
       m_Items: []
+  - m_Id: 7927664641478656
+    m_Localized: hit {0} -> {1} -> (DP={2}, Prob of DE={3})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7927719838519296
+    m_Localized: '{0} {1} -> {2}, {3} yards, Prob of Hit={4}% {5} {6}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7927758988152832
+    m_Localized: miss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7929510965710848
+    m_Localized: hit -> {0} DP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7929576212303872
+    m_Localized: '{0} -> {1}, {2} yards, PoH={3}%, {4}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7935299495301120
+    m_Localized: Combat in Hex ({0} {1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7935301802168320
+    m_Localized: The battle of Cell ({0}, {1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7954009010376704
+    m_Localized: Engaged in combat at ({0}, {1}) in {2}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7978918537236480
+    m_Localized: 'Tick: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8052074727772160
+    m_Localized: Damage Repair({0}, {1}, Priority=({2}, {3}), Repair Point Cost={4},
+      Major={5}, Mapped Damage Points={6})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053211476430848
+    m_Localized: Ship Operational State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053670723358720
+    m_Localized: Starboard Searchlight Hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053619947114496
+    m_Localized: Port Searchlight Hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053593820794880
+    m_Localized: Damage Control Rating Hit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053578767437824
+    m_Localized: Boiler Room Flooding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053558999683072
+    m_Localized: Boiler Room Hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053532294549504
+    m_Localized: Propulsion Shaft His
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053496160620544
+    m_Localized: Engine Room Flooding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053465022107648
+    m_Localized: Engine Room Hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053440523177984
+    m_Localized: Acceleration Offset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8053417811021824
+    m_Localized: Max Speed Offset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054410883796992
+    m_Localized: Pure Damage Point
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054374032642048
+    m_Localized: Rapid Fire Battery Fire Control Hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054341614866432
+    m_Localized: Rapid Fire Battery Startboard Mount Hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054262652899328
+    m_Localized: Rapid Fire Battery Port Mount Hits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054222823788544
+    m_Localized: Torpedo Mount Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054203764871168
+    m_Localized: Firing Control System State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054169543544832
+    m_Localized: Battery Mount Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054150694342656
+    m_Localized: Sub State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054115034370048
+    m_Localized: Smoke Generator Disabled
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8054877412036608
+    m_Localized: 'Repair Cell: ({0}, {1}, Requesting repair ships count={2}, Requested
+      repair damages={3})'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8055373006802944
+    m_Localized: 'Repair (Succ, Prob={0}): {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8055391902142464
+    m_Localized: 'Repair (Failed, Prob={0}): {1}'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

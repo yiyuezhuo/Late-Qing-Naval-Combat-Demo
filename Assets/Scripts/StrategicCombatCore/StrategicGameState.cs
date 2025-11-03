@@ -71,6 +71,12 @@ namespace StrategicCombatCore
 
         public List<PendingNavalCombat> pendingNavalCombats = new();
 
+        public List<LazyLocalizedString> logs = new();
+        // public List<LazyLocalizedString> logs = new()
+        // {
+        //     LazyLocalizedString.MakeRaw("Game Started")
+        // };
+
         [XmlIgnore]
         public Dictionary<Country, SideState> countryToSideStateMap = new();
 
@@ -167,6 +173,8 @@ namespace StrategicCombatCore
             missions = newInstance.missions;
             pendingNavalCombats = newInstance.pendingNavalCombats;
 
+            logs = newInstance.logs;
+
             mapRebuilt?.Invoke(this, EventArgs.Empty);
             edgeFeatureUpdated?.Invoke(this, EventArgs.Empty);
 
@@ -260,8 +268,24 @@ namespace StrategicCombatCore
             });
         }
 
+        static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
         public void UpdatePartialShipLogs(List<ShipLog> otherShipLogs)
         {
+            var pendingNavalCombat = EntityManager.Instance.Get<PendingNavalCombat>(scenarioState.pendingNavalCombatId);
+
+            // Or add this log in the tactical game start?
+            var engagedLog = "Engaged in a combat";
+            if(pendingNavalCombat != null)
+            {
+                engagedLog = Localize(
+                    "Engaged in combat at ({0}, {1}) in {2}",
+                    pendingNavalCombat.xy.x,
+                    pendingNavalCombat.xy.y,
+                    CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(scenarioState.dateTime)
+                );
+            }
+
             foreach (var otherShipLog in otherShipLogs)
             {
                 var idx = shipLogs.FindIndex(shipLog => shipLog.objectId == otherShipLog.objectId);
@@ -272,7 +296,11 @@ namespace StrategicCombatCore
                     // Post-Housekeeping
                     otherShipLog.TacticalToStrategicPostHousekeeping();
                     // Re-attach olg log trimmed in generated game.
-                    otherShipLog.InsertLogs(oldShipLog); 
+                    otherShipLog.logs.Insert(0, new ShipLogStringLog(){
+                        time = scenarioState.dateTime,
+                        description = engagedLog
+                    });
+                    otherShipLog.InsertLogs(oldShipLog);
 
                     shipLogs[idx] = otherShipLog;
                 }
@@ -281,9 +309,109 @@ namespace StrategicCombatCore
             // ResetAndRegisterAll(); // Handled by external
         }
 
+        public void CleanupIndependentStrategicGroups()
+        {
+            // Reset independent but empty groups (generally caused by combat) in conflict hex deploy-state to combined. So they may be "rebuilt" in the location of higher command.
+            foreach (var cellGroupsGrouping in strategicGroups
+                .Where(g => g.deployState == StrategicGroup.DeployState.Independent)
+                .GroupBy(g => g.cell))
+            {
+                var sideGroupsGroupings = cellGroupsGrouping.GroupBy(g => g.side).ToList();
+                if (sideGroupsGroupings.Count >= 2)
+                {
+                    foreach (var group in cellGroupsGrouping)
+                    {
+                        if (group.GetCombinedSubUnitSize() == 0)
+                        {
+                            // group.deployState = StrategicGroup.DeployState.Combined;
+                            // group.RemoveFromMap();
+                            group.SetDeployState(StrategicGroup.DeployState.Combined);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void UpdateFromTacticalResult(List<ShipLog> syncShipLogs, VictoryStatus victoryStatus)
+        {
+            ResetAndRegisterAll(); // to resolve pendingNavalCombat
+
+            if (syncShipLogs != null)
+            {
+                UpdatePartialShipLogs(syncShipLogs);
+            }
+
+            ResetAndRegisterAll(); // to update ShipLog to new one
+
+            // Other update
+            // TODO: Move to Core
+
+            CleanupIndependentStrategicGroups();
+            HandlePendingNavalCombat(victoryStatus);
+        }
+
+        public void HandlePendingNavalCombat(VictoryStatus victoryStatus)
+        {
+            var pendingNavalCombat = EntityManager.Instance.Get<PendingNavalCombat>(scenarioState.pendingNavalCombatId);
+
+            if (victoryStatus != null)
+            {
+                DialogRoot.Instance.PopupVictoryStatusDialog(victoryStatus);
+            }
+            if (pendingNavalCombat != null)
+            {
+                pendingNavalCombats.RemoveAll(c => c.objectId == pendingNavalCombat.objectId);
+            }
+            if (victoryStatus != null && victoryStatus.sideVictoryStatuses.Count >= 2 && pendingNavalCombat != null)
+            {
+                HandleVictoryStatus(pendingNavalCombat.sideState0, victoryStatus.sideVictoryStatuses[0]);
+                HandleVictoryStatus(pendingNavalCombat.sideState1, victoryStatus.sideVictoryStatuses[1]);
+            }
+
+            scenarioState.pendingNavalCombatId = null;
+        }
+        
+        void HandleVictoryStatus(PendingNavalCombat.PendingNavalCombatSideState sideState, SideVictoryStatus sideVictoryStatus)
+        {
+            var side = sideState.side;
+            var groups = sideState.GetGroups();
+
+            if (sideVictoryStatus.victoryLevel < VictoryLevel.Draw)
+            {
+                side.victoryPoints -= 1;
+            }
+            if (sideVictoryStatus.victoryLevel > VictoryLevel.Draw)
+            {
+                side.victoryPoints += 1;
+            }
+            if (sideVictoryStatus.victoryLevel <= VictoryLevel.Draw)
+            {
+                foreach (var group in groups)
+                {
+                    group.StartReturnToBase(24);
+                }
+            }
+            else
+            {
+                foreach (var group in groups)
+                {
+                    group.StartReorgnize(12);
+                }
+                // reorgnize for a given time interval. (Combat time + 12h)
+            }
+        }
+
         public void Advance1Hour()
         {
             scenarioState.dateTime = scenarioState.dateTime.AddHours(1);
+
+            if(scenarioState.dateTime.Hour == 0)
+            {
+                AddLog(LazyLocalizedString.MakeTemplate(
+                    "Tick: {0}",
+                    LazyLocalizedString.MakeRaw(CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(scenarioState.dateTime))
+                ));
+            }
 
             Advance1HourForSupply();
             Advance1HourForMission();
@@ -782,25 +910,23 @@ namespace StrategicCombatCore
 
             foreach (var shipLog in shipLogs)
             {
-                // var side = shipLog.strategicGroupReference.Get()?.side;
-                // var ammunitionLoadoutWeightRecords = side != null ?
-                //     side.extraAmmunitionLoadoutWeightRecords.Append(side.defaultAmmunitionLoadoutWeightRecord).ToList() : 
-                //     null;
-                // ResetDamageExpenditureStateContext ctx = new()
-                // {
-                //     ammunitionLoadoutWeightRecords = ammunitionLoadoutWeightRecords ?? new()
-                // };
-
                 var ctx = shipLog.side?.GetResetDamageExpenditureStateContext() ?? new();
 
                 shipLog.ResetDamageExpenditureState(ctx); // Impose SideState's doctrine
-                
+
                 if (shipLog.mapState == MapState.NotDeployed) // NotDeployed in strategic game is not defined now
                     shipLog.mapState = MapState.Deployed;
             }
 
             ResetAndRegisterAll();
         }
+
+        public void AddLog(LazyLocalizedString log)
+        {
+            logs.Insert(0, log);
+        }
+
+        public void ClearLogs() => logs.Clear();
 
         public override void ResetAndRegisterAll()
         {

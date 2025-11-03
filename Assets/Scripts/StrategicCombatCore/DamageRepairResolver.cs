@@ -16,7 +16,7 @@ namespace StrategicCombatCore
         public enum Type
         {
             ShipOperationalState, // Major, Abandon Ship, Flooding Obstruction => Operational
-            MaxSpeedOffet,
+            MaxSpeedOffset,
             AccelerationOffset,
             EngineRoomHits,
             EngineRoomFlooding, // Major
@@ -25,7 +25,7 @@ namespace StrategicCombatCore
             BoilerRoomFlooding, // Major
             DamageControlRatingHit,
             PortSearchlightHits,
-            StartboardSearchlightHits,
+            StarboardSearchlightHits,
             SmokeGeneratorDisabled,
             SubState,
             BatteryMountStatus,
@@ -52,6 +52,20 @@ namespace StrategicCombatCore
         public override string ToString()
         {
             return $"DamageRepairRecord({type}, {shipLog?.namedShip?.name.GetMergedName()}, Priority=({manualPriority}, {autoPriority}), repairPointCost={repairPointCost}, major={major}, mappedDamagePoints={mappedDamagePoints})";
+        }
+
+        public LazyLocalizedString GetLazyLocalizedDesc()
+        {
+            return LazyLocalizedString.MakeTemplate(
+                "Damage Repair({0}, {1}, Priority=({2}, {3}), Repair Point Cost={4}, Major={5}, Mapped Damage Points={6})",
+                LazyLocalizedString.MakeEnum(type),
+                LazyLocalizedString.MakeGlobalStringLong(shipLog?.namedShip?.name),
+                LazyLocalizedString.MakeRaw(manualPriority),
+                LazyLocalizedString.MakeRaw(autoPriority),
+                LazyLocalizedString.MakeRaw(repairPointCost),
+                LazyLocalizedString.MakeLocalizedRequired(major.ToString()),
+                LazyLocalizedString.MakeRaw(mappedDamagePoints)
+            );
         }
 
         public static int CompareTo(DamageRepairRecord left, DamageRepairRecord right)
@@ -110,7 +124,7 @@ namespace StrategicCombatCore
                 {
                     yield return new()
                     {
-                        type = Type.MaxSpeedOffet,
+                        type = Type.MaxSpeedOffset,
                         shipLog = shipLog,
                         autoPriority = 25,
                         callback = () =>
@@ -244,7 +258,7 @@ namespace StrategicCombatCore
             {
                 yield return new()
                 {
-                    type = Type.StartboardSearchlightHits,
+                    type = Type.StarboardSearchlightHits,
                     shipLog = shipLog,
                     autoPriority = 1,
                     repairPointCost = baseCost * 0.05f,
@@ -396,22 +410,6 @@ namespace StrategicCombatCore
 
     public class DamageRepairResolver
     {
-        // IEnumerable<DamageRepairRecord> CollectDamageRepairRecords()
-        // {
-        //     foreach(var group in StrategicGameState.Instance.GetIndependentStrategicGroups())
-        //     {
-        //         // If group is in a cell containing friendly port or shipyard.
-
-        //         foreach(var shipLog in group.WalkGroupMembersDeployedShips())
-        //         {
-        //             foreach(var rec in DamageRepairRecord.Extract(shipLog))
-        //             {
-        //                 yield return rec;
-        //             }
-        //         }
-        //     }
-        // }
-
         public class RepairCapacity
         {
             public float displacementUpperTons;
@@ -432,6 +430,17 @@ namespace StrategicCombatCore
             public override string ToString()
             {
                 return $"DamageRepairResolver.Bundle({sideState}, {cell}, #ports={ports.Count}, #repairCapacities={repairCapacities.Count}, #shipLogs={shipLogs.Count}, #damageRepairRecords={damageRepairRecords.Count})";
+            }
+
+            public LazyLocalizedString GetLazyLocalizedDesc()
+            {
+                return LazyLocalizedString.MakeTemplate(
+                    "Repair Cell: ({0}, {1}, Requesting repair ships count={2}, Requested repair damages={3})",
+                    LazyLocalizedString.MakeGlobalStringShort(sideState.name),
+                    LazyLocalizedString.MakeRaw($"({cell.x}, {cell.y})"),
+                    LazyLocalizedString.MakeRaw(repairCapacities.Count),
+                    LazyLocalizedString.MakeRaw(damageRepairRecords.Count)
+                );
             }
 
             public float GetRepairPointsForDisplacementTons(float displacementTons)
@@ -470,42 +479,28 @@ namespace StrategicCombatCore
                         r.callback(); // Concreate repair, such as Sub state removed, max speed negative offset removed.
                         r.shipLog.damagePoint = Math.Max(0, r.shipLog.damagePoint - r.mappedDamagePoints); // Note for SK5 system, resolved damagePoint is somewhat a "good" thing (potension risk is reduced). The "bad" thing is damage effect caused by damage tier crossed or other side effect which usually happend at the same time.
 
-                        ServiceLocator.Get<ILoggerService>().Log($"Repair (Succ, Prob={1-failProb}): {r}");
+                        ServiceLocator.Get<ILoggerService>().Log($"Repair (Succ, Prob={1 - failProb}): {r}");
+
+                        StrategicGameState.Instance.AddLog(LazyLocalizedString.MakeTemplate(
+                            "Repair (Succ, Prob={0}): {1}",
+                            LazyLocalizedString.MakeRaw(1 - failProb),
+                            r.GetLazyLocalizedDesc()
+                        ));
 
                         return true;
                     }
                     else
                     {
-                        ServiceLocator.Get<ILoggerService>().Log($"Repair (Failed, Prob={1-failProb}: {r}");
+                        ServiceLocator.Get<ILoggerService>().Log($"Repair (Failed, Prob={1 - failProb}: {r}");
+                        
+                        StrategicGameState.Instance.AddLog(LazyLocalizedString.MakeTemplate(
+                            "Repair (Failed, Prob={0}): {1}",
+                            LazyLocalizedString.MakeRaw(1 - failProb),
+                            r.GetLazyLocalizedDesc()
+                        ));
                     }
                 }
                 return false;
-
-                // if(!r.major || IsRepairbleForDisplacementTons(displacementTons, r.repairPointCost))
-                // {
-                //     var unresolvedCost = r.repairPointCost;
-                //     foreach (var cap in repairCapacities)
-                //     {
-                //         if (unresolvedCost == 0)
-                //         {
-                //             break;
-                //         }
-
-                //         if (cap.repairPoints > 0)
-                //         {
-                //             var resolvedCost = Math.Min(unresolvedCost, cap.repairPoints);
-                //             unresolvedCost -= resolvedCost;
-                //             cap.repairPoints -= resolvedCost;
-
-                //             r.callback(); // Concreate repair, such as Sub state removed, max speed negative offset removed.
-                //             r.shipLog.damagePoint = Math.Max(0, r.shipLog.damagePoint - r.mappedDamagePoints); // Note for SK5 system, resolved damagePoint is somewhat a "good" thing (potension risk is reduced). The "bad" thing is damage effect caused by damage tier crossed or other side effect which usually happend at the same time.
-
-                //             ServiceLocator.Get<ILoggerService>().Log($"Repair: {r}");
-                //         }
-                //     }
-                //     return true;
-                // }
-                // return false;
             }
             
             public void Resolve()
@@ -589,6 +584,8 @@ namespace StrategicCombatCore
                 if(bundle.repairCapacities.Count > 0 && bundle.damageRepairRecords.Count > 0)
                 {
                     ServiceLocator.Get<ILoggerService>().Log($"DamageRepairResolver.Bundle: {bundle}");
+
+                    StrategicGameState.Instance.AddLog(bundle.GetLazyLocalizedDesc());
 
                     bundle.Resolve();
                 }

@@ -3,6 +3,7 @@ using MathNet.Numerics.Distributions;
 using System.Linq;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using CoreUtils;
 
 namespace NavalCombatCore
 {
@@ -320,6 +321,17 @@ namespace NavalCombatCore
             public override string ToString()
             {
                 return $"(DP={damagePoint}, Prob of DE={damageEffectProb})";
+            }
+
+            protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
+            public string Summary()
+            {
+                return Localize(
+                    "(DP={0}, Prob of DE={1})",
+                    damagePoint,
+                    damageEffectProb
+                );
             }
         }
 

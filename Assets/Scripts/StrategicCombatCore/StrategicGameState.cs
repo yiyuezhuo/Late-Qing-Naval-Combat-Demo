@@ -267,13 +267,15 @@ namespace StrategicCombatCore
                 var idx = shipLogs.FindIndex(shipLog => shipLog.objectId == otherShipLog.objectId);
                 if (idx != -1)
                 {
-                    shipLogs[idx] = otherShipLog;
+                    var oldShipLog = shipLogs[idx];
 
                     // Post-Housekeeping
                     otherShipLog.TacticalToStrategicPostHousekeeping();
-                }
+                    // Re-attach olg log trimmed in generated game.
+                    otherShipLog.InsertLogs(oldShipLog); 
 
-                
+                    shipLogs[idx] = otherShipLog;
+                }
             }
 
             // ResetAndRegisterAll(); // Handled by external

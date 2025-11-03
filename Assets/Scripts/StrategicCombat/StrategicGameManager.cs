@@ -176,7 +176,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             }));
         }
     }
-    
+
     // TODO: Move to core
     void HandleVictoryStatus(PendingNavalCombat.PendingNavalCombatSideState sideState, SideVictoryStatus sideVictoryStatus)
     {
@@ -200,7 +200,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
         else
         {
-            foreach(var group in groups)
+            foreach (var group in groups)
             {
                 group.StartReorgnize(12);
             }
@@ -466,7 +466,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
                     // hexInfo.strategicGroupReferences.Select(r => r.Get()).Where(g => g.country)
                 }
-                else if(leftClicking) // click on map (cell)
+                else if (leftClicking) // click on map (cell)
                 {
                     var worldPoint = cam.ScreenToWorldPoint(Input.mousePosition);
 
@@ -577,7 +577,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 // strategicGroup.moveProgressionKm = 0;
                 strategicGroup.ClearPlannedPath();
                 strategicGroup.plannedPath.AddRange(pathCells.Select(c => new XY() { x = c.x, y = c.y }));
-                
+
 
                 Debug.Log("Set path");
             }
@@ -723,6 +723,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     [CreateProperty]
     public string fogOfWarViewerSideStateName => EntityManager.Instance.Get<SideState>(StrategicGameState.Instance.scenarioState.fogOfWarViewerSideObjectId)?.name?.GetMergedName() ?? "";
 
+    [CreateProperty]
+    public string referenceTimeZoneDateTimeOffsetString => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(gameState.scenarioState.dateTime);
     // public void Advance1Hour()
     // {
     //     StrategicGameState.Instance.Advance1Hour(1);

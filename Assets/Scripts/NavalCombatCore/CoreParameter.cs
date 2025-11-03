@@ -1,4 +1,7 @@
 
+using System.Data;
+using System;
+
 namespace NavalCombatCore
 {
     public class CoreParameter
@@ -19,6 +22,20 @@ namespace NavalCombatCore
         public float automaticTorpedoFiringRangeRelaxedCoef = 2.5f;
 
         public int referenceTimeZoneOffset = +8; // Though it should be a view parameter instead of Core?
-        // public float automaticTorpedoFiringRelaxedAngle = 60; // Or dynamic resolved using standard or emergency turn?
+                                                 // public float automaticTorpedoFiringRelaxedAngle = 60; // Or dynamic resolved using standard or emergency turn?
+
+        /// <summary>
+        /// Convert UTC DateTime to Reference TimeZone DateTimeOffset
+        /// </summary>
+        /// <param name="time"> UTC DateTime</param>
+        /// <returns></returns>
+        public DateTimeOffset GetReferenceTimeZoneDateTimeOffset(DateTime time)
+        {
+            // $"{CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffset(time).ToString("yyyy-MM-dd HH:mm:ss z")}: {SummaryContent()}";
+            var dateTimeOffset = new DateTimeOffset(time);
+            return dateTimeOffset.ToOffset(TimeSpan.FromHours(referenceTimeZoneOffset));
+        }
+
+        public string GetReferenceTimeZoneDateTimeOffsetString(DateTime time) => GetReferenceTimeZoneDateTimeOffset(time).ToString("yyyy-MM-dd HH:mm:ss z");
     }
 }

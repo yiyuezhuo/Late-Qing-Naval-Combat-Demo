@@ -2,6 +2,7 @@ using CoreUtils;
 using StrategicCombatCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NavalCombatCore
 {
@@ -114,19 +115,57 @@ namespace NavalCombatCore
                 mapState = MapState.Destroyed; // TODO: Log and VP count?
             }
         }
-        
+
         /// <summary>
         /// Trim logs, missing hit logs are removed. Hitting and hit records are reserved. (maybe generate a dedicated records?)
         /// </summary>
         public void TrimMissHitLogs()
         {
-            foreach(var bty in batteryStatus)
+            foreach (var bty in batteryStatus)
             {
                 bty.TrimMissHitLogs();
             }
         }
 
-        // public SideState side => strategicGroupReference.Get()?.side;
+        public void ClearLogs()
+        {
+            logs.Clear();
 
+            foreach (var bty in batteryStatus)
+            {
+                foreach (var btyMnt in bty.mountStatus)
+                {
+                    // btyMnt.ClearLogs();
+                    btyMnt.logs.Clear();
+                }
+            }
+
+            foreach (var rf in rapidFiringStatus)
+            {
+                // rf.ClearLogs();
+                rf.logs.Clear();
+            }
+        }
+
+        public void InsertLogs(ShipLog other)
+        {
+            // logs.AddRange(other.logs);
+            logs.InsertRange(0, other.logs);
+
+            foreach (var (selfBty, otherBty) in batteryStatus.Zip(other.batteryStatus, (x, y) => (x, y)))
+            {
+                foreach (var (selfMnt, otherMnt) in selfBty.mountStatus.Zip(otherBty.mountStatus, (x, y) => (x, y)))
+                {
+                    // selfMnt.logs.AddRange(otherMnt.logs);
+                    selfMnt.logs.InsertRange(0, otherMnt.logs);
+                }
+            }
+
+            foreach (var (selfRf, otherRf) in rapidFiringStatus.Zip(other.rapidFiringStatus, (x, y) => (x, y)))
+            {
+                // selfRf.logs.AddRange(otherRf.logs);
+                selfRf.logs.InsertRange(0, otherRf.logs);
+            }
+        }
     }
 }

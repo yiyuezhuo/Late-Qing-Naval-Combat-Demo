@@ -70,6 +70,11 @@ namespace NavalCombatCore
 
         public List<RapidFiringLog> logs = new();
 
+        // public void ClearLogs()
+        // {
+        //     logs.Clear();
+        // }
+
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
             yield break;

@@ -4,7 +4,7 @@
     <ui:VisualElement data-source-type="StrategicGameManager, Assembly-CSharp" style="flex-grow: 1; width: 200px; background-color: rgb(240, 240, 240);">
         <ui:Label text="Date Time">
             <Bindings>
-                <ui:DataBinding property="text" data-source-path="gameState.scenarioState.dateTime" binding-mode="ToTarget" />
+                <ui:DataBinding property="text" data-source-path="referenceTimeZoneDateTimeOffsetString" binding-mode="ToTarget" />
             </Bindings>
         </ui:Label>
         <ui:VisualElement>

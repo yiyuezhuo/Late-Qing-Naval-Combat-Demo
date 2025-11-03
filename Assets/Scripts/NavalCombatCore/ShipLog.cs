@@ -186,14 +186,14 @@ namespace NavalCombatCore
         [XmlAttribute]
         public DateTime time;
 
-        public DateTimeOffset GetReferenceTimeZoneDateTimeOffset()
-        {
-            var dateTimeOffset = new DateTimeOffset(time);
-            return dateTimeOffset.ToOffset(TimeSpan.FromHours(CoreParameter.Instance.referenceTimeZoneOffset));
-        }
+        // public DateTimeOffset GetReferenceTimeZoneDateTimeOffset()
+        // {
+        //     var dateTimeOffset = new DateTimeOffset(time);
+        //     return dateTimeOffset.ToOffset(TimeSpan.FromHours(CoreParameter.Instance.referenceTimeZoneOffset));
+        // }
 
         // public virtual string Summary() => $"{time}: {SummaryContent()}";
-        public virtual string Summary() => $"{GetReferenceTimeZoneDateTimeOffset().ToString("yyyy-MM-dd HH:mm:ss z")}: {SummaryContent()}";
+        public virtual string Summary() => $"{CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(time)}: {SummaryContent()}";
         public virtual string SummaryContent() => $"{GetType()}";
 
         protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);

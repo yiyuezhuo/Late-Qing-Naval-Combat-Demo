@@ -130,10 +130,12 @@ namespace NavalCombatCore
         public string Summary()
         {
             var target = GetFiringTarget();
-            var targetName = target.namedShip?.name?.GetMergedName();
+            var targetName = target?.namedShip?.name?.GetMergedName();
             var ammoType = BatteryAmmunitionRecord.ammunitionTypeAcronymMap[ammunitionType];
             var hitDesc = hit ? $"hit {armorLocation} -> {hitPenDetType} -> {shellDamageResult}" : "miss";
-            return $"{firingTime} {ammoType} -> {targetName}, {distanceYards} yards, P={hitProb * 100}%, {hitDesc} {damageEffectId}";
+
+            var firingTimeStr = CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(firingTime);
+            return $"{firingTimeStr} {ammoType} -> {targetName}, {distanceYards} yards, P={hitProb * 100}%, {hitDesc} {damageEffectId}";
         }
 
         public override string ToString() => Summary();
@@ -363,6 +365,8 @@ namespace NavalCombatCore
         // {
         //     yield break;
         // }
+
+        // public void ClearLogs() => logs.Clear();
 
         public override void ResetTargetting()
         {

@@ -45,6 +45,7 @@ namespace StrategicCombatCore
                 if (shipLog != null)
                 {
                     var shipLogCloned = XmlUtils.FromXML<ShipLog>(XmlUtils.ToXML(shipLog));
+                    shipLogCloned.ClearLogs(); // Detach old logs for sandboxing
                     
                     localEntityManager.Register(shipLogCloned, null);
                     shipLogs.Add(shipLogCloned);

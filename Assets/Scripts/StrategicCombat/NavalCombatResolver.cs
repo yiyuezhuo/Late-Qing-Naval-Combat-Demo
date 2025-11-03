@@ -12,7 +12,7 @@ using System;
 using UnityEngine;
 
 
-public class NavalCombatResolver
+public class NavalCombatResolver // Dialog
 {
     // parameters
     public VisualElement root;
@@ -67,7 +67,10 @@ public class NavalCombatResolver
     public string battleName => $"The battle of Cell ({cell.x}, {cell.y})";
 
     [CreateProperty]
-    public string datetimeStr => fullState.navalGameState.scenarioState.dateTime.ToString();
+    public string datetimeStr => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(
+        fullState.navalGameState.scenarioState.dateTime
+    );
+    // public string datetimeStr => fullState.navalGameState.scenarioState.dateTime.ToString();
 
     public void OnResolve()
     {

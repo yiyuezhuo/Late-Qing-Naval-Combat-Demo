@@ -207,6 +207,28 @@ namespace StrategicCombatCore
             return EntityManager.Instance.Get<SideState>(edgeObjectId);
         }
 
+        public float GetMassCenterY(SideState side)
+        {
+            var hexControlled = side.objectId == sideObjectIdHex;
+            var ret = 0f;
+
+            if (sideObjectIdTop == side.objectId || (sideObjectIdTop == null && hexControlled))
+                ret += 1f;
+            if (sideObjectIdTopRight == side.objectId || (sideObjectIdTopRight == null && hexControlled))
+                ret += 1f;
+            if (sideObjectIdTopLeft == side.objectId || (sideObjectIdTopLeft == null && hexControlled))
+                ret += 1f;
+            
+            if (sideObjectIdBottomRight == side.objectId || (sideObjectIdBottomRight == null && hexControlled))
+                ret -= 1f;
+            if (sideObjectIdBottom == side.objectId || (sideObjectIdBottom == null && hexControlled))
+                ret -= 1f;
+            if (sideObjectIdBottomLeft == side.objectId || (sideObjectIdBottomLeft == null && hexControlled))
+                ret -= 1f;
+
+            return ret;
+        }
+
         public void RefreshControlState()
         {
             if (!IsArmyPassable())

@@ -272,7 +272,8 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
             var vec = controlledRenderer.transform.TransformPoint(xf, yf, 0);
 
             // var gl = g.GroupBy(_g => _g.country).ToList();
-            var gl = g.GroupBy(_g => StrategicGameState.Instance.countryToSideStateMap[_g.country]).ToList();
+            // var gl = g.GroupBy(_g => StrategicGameState.Instance.countryToSideStateMap[_g.country]).ToList();
+            var gl = g.GroupBy(_g => _g.side).ToList();
 
             if (gl.Count == 1)
             {
@@ -284,25 +285,41 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
             }
             else
             {
-                gl.Sort((gp1, gp2) => gp1.Key.name.english[0].CompareTo(gp2.Key.name.english[0])); // FIXME: Fragile to empty string
+                // gl.Sort((gp1, gp2) => gp1.Key.name.english[0].CompareTo(gp2.Key.name.english[0])); // FIXME: Fragile to empty string
+                var cell = gl.First().First().cell;
+
+                var side0yScore = cell.GetMassCenterY(gl[0].Key);
+                var side1yScore = cell.GetMassCenterY(gl[1].Key);
+
+                var gTop = gl[0];
+                var gBottom = gl[1];
+
+                if (side0yScore < side1yScore)
+                {
+                    gTop = gl[1];
+                    gBottom = gl[0];
+                }
+                else if(side0yScore == side1yScore)
+                {
+                    if(gl[0].Key.name.english[0] > gl[1].Key.name.english[1])
+                    {
+                        gTop = gl[1];
+                        gBottom = gl[0];
+                    }
+                }
 
                 LayoutStackTransform(
-                    gl[0].Select(gp => groupToView[gp].transform).ToList(),
+                    gTop.Select(gp => groupToView[gp].transform).ToList(),
                     new Vector3(vec.x, vec.y + 0.25f, 0),
                     0.05f
                 );
 
                 // Assume 2 sides can be in the same hex at most.
                 LayoutStackTransform(
-                    gl[1].Select(gp => groupToView[gp].transform).ToList(),
+                    gBottom.Select(gp => groupToView[gp].transform).ToList(),
                     new Vector3(vec.x, vec.y - 0.25f, 0),
                     0.05f
                 );
-                // LayoutStackTransform(
-                //     gl.Skip(1).SelectMany(x => x).Select(gp => groupToView[gp].transform).ToList(),
-                //     new Vector3(vec.x, vec.y - 0.25f, 0),
-                //     0.05f
-                // );
             }
         }
     }

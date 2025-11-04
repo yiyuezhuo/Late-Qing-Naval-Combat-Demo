@@ -1973,6 +1973,66 @@ MonoBehaviour:
     m_Key: Forcecd Naval Combat Resolution
     m_Metadata:
       m_Items: []
+  - m_Id: 22684994306215936
+    m_Key: Cell Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22685229057216512
+    m_Key: Control
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22685304105897984
+    m_Key: Cell Label Created
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22686222733971456
+    m_Key: Cell
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22686275959689216
+    m_Key: Top
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22686345685798912
+    m_Key: Top Right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22686405161029632
+    m_Key: Bottom Right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22686455018721280
+    m_Key: Bottom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22686514888216576
+    m_Key: Bottom Left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22686561738592256
+    m_Key: Bottom Left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22686643682709504
+    m_Key: Top Left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22822124227563520
+    m_Key: Manual Override
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22822235791855616
+    m_Key: Repair Shipyard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22822577254338560
+    m_Key: Transfer Weight (tons)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22822775456174080
+    m_Key: Port
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -60,11 +60,13 @@
                                 <ui:IntegerField label="Port" style="flex-grow: 1; flex-basis: 50px;">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="portLevel" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22822775456174080)" />
                                     </Bindings>
                                 </ui:IntegerField>
                                 <ui:IntegerField label="Repair Shipyard" style="flex-grow: 1; flex-basis: 50px;">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="repairShipyardLevel" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22822235791855616)" />
                                     </Bindings>
                                 </ui:IntegerField>
                                 <Bindings>
@@ -76,6 +78,7 @@
                                     <ui:IntegerField label="Strength">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="strength" binding-mode="TwoWay" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(352622210617344)" />
                                         </Bindings>
                                     </ui:IntegerField>
                                 </ui:VisualElement>
@@ -83,11 +86,13 @@
                                     <ui:Toggle label="Manual Override">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="strengthManualOverride" binding-mode="TwoWay" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22822124227563520)" />
                                         </Bindings>
                                     </ui:Toggle>
                                     <ui:DoubleField label="Transfer Weight (tons)" enabled="false">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="transferWeightTons" binding-mode="ToTarget" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22822577254338560)" />
                                         </Bindings>
                                     </ui:DoubleField>
                                 </ui:VisualElement>

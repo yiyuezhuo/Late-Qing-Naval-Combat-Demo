@@ -1,7 +1,11 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
     <ui:VisualElement data-source-type="StrategicCombatCore.Cell+&lt;&gt;c, Assembly-CSharp" class="panel-dialog">
-        <ui:Label text="Cell Editor" class="title" />
+        <ui:Label text="Cell Editor" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22684994306215936)" />
+            </Bindings>
+        </ui:Label>
         <ui:VisualElement data-source-type="StrategicCombatCore.Cell, Assembly-CSharp" style="flex-grow: 1;">
             <ui:TabView>
                 <ui:Tab label="Basic">
@@ -14,6 +18,7 @@
                         <ui:Toggle label="Cell Label Created">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="labelCreated" binding-mode="TwoWay" />
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22685304105897984)" />
                             </Bindings>
                         </ui:Toggle>
                         <ui:VisualElement style="flex-grow: 1;">
@@ -23,76 +28,142 @@
                             </Bindings>
                         </ui:VisualElement>
                     </ui:VisualElement>
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66810558451712)" />
+                    </Bindings>
                 </ui:Tab>
                 <ui:Tab label="Control">
                     <ui:VisualElement style="flex-grow: 1;">
                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                            <ui:Label text="Cell" />
+                            <ui:Label text="Cell">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22686222733971456)" />
+                                </Bindings>
+                            </ui:Label>
                             <ui:TextField enabled="false" style="flex-grow: 1;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="sideNameHex" binding-mode="ToTarget" />
                                 </Bindings>
                             </ui:TextField>
-                            <ui:Button text="Set" name="SideObjectIdHexButton" />
+                            <ui:Button text="Set" name="SideObjectIdHexButton">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
+                                </Bindings>
+                            </ui:Button>
                         </ui:VisualElement>
                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                            <ui:Label text="Top" />
+                            <ui:Label text="Top">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22686275959689216)" />
+                                </Bindings>
+                            </ui:Label>
                             <ui:TextField enabled="false" style="flex-grow: 1;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="sideNameTop" binding-mode="ToTarget" />
                                 </Bindings>
                             </ui:TextField>
-                            <ui:Button text="Set" name="SideObjectIdTopButton" />
+                            <ui:Button text="Set" name="SideObjectIdTopButton">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
+                                </Bindings>
+                            </ui:Button>
                         </ui:VisualElement>
                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                            <ui:Label text="Top Right" />
+                            <ui:Label text="Top Right">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22686345685798912)" />
+                                </Bindings>
+                            </ui:Label>
                             <ui:TextField enabled="false" style="flex-grow: 1;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="sideNameTopRight" binding-mode="ToTarget" />
                                 </Bindings>
                             </ui:TextField>
-                            <ui:Button text="Set" name="SideObjectIdTopRightButton" />
+                            <ui:Button text="Set" name="SideObjectIdTopRightButton">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
+                                </Bindings>
+                            </ui:Button>
                         </ui:VisualElement>
                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                            <ui:Label text="Bottom Right" />
+                            <ui:Label text="Bottom Right">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22686405161029632)" />
+                                </Bindings>
+                            </ui:Label>
                             <ui:TextField enabled="false" style="flex-grow: 1;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="sideNameBottomRight" binding-mode="ToTarget" />
                                 </Bindings>
                             </ui:TextField>
-                            <ui:Button text="Set" name="SideObjectIdBottomRightButton" />
+                            <ui:Button text="Set" name="SideObjectIdBottomRightButton">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
+                                </Bindings>
+                            </ui:Button>
                         </ui:VisualElement>
                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                            <ui:Label text="Bottom" />
+                            <ui:Label text="Bottom">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22686455018721280)" />
+                                </Bindings>
+                            </ui:Label>
                             <ui:TextField enabled="false" style="flex-grow: 1;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="sideNameBottom" binding-mode="ToTarget" />
                                 </Bindings>
                             </ui:TextField>
-                            <ui:Button text="Set" name="SideObjectIdBottomButton" />
+                            <ui:Button text="Set" name="SideObjectIdBottomButton">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
+                                </Bindings>
+                            </ui:Button>
                         </ui:VisualElement>
                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                            <ui:Label text="Bottom Left" />
+                            <ui:Label text="Bottom Left">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22686514888216576)" />
+                                </Bindings>
+                            </ui:Label>
                             <ui:TextField enabled="false" style="flex-grow: 1;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="sideNameBottomLeft" binding-mode="ToTarget" />
                                 </Bindings>
                             </ui:TextField>
-                            <ui:Button text="Set" name="SideObjectIdBottomLeftButton" />
+                            <ui:Button text="Set" name="SideObjectIdBottomLeftButton">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
+                                </Bindings>
+                            </ui:Button>
                         </ui:VisualElement>
                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                            <ui:Label text="Top Left" />
+                            <ui:Label text="Top Left">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22686643682709504)" />
+                                </Bindings>
+                            </ui:Label>
                             <ui:TextField enabled="false" style="flex-grow: 1;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="sideNameTopLeft" binding-mode="ToTarget" />
                                 </Bindings>
                             </ui:TextField>
-                            <ui:Button text="Set" name="SideObjectIdTopLeftButton" />
+                            <ui:Button text="Set" name="SideObjectIdTopLeftButton">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
+                                </Bindings>
+                            </ui:Button>
                         </ui:VisualElement>
                     </ui:VisualElement>
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22685229057216512)" />
+                    </Bindings>
                 </ui:Tab>
             </ui:TabView>
         </ui:VisualElement>
-        <ui:Button text="Confirm" name="ConfirmButton" />
+        <ui:Button text="Confirm" name="ConfirmButton">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+            </Bindings>
+        </ui:Button>
     </ui:VisualElement>
 </ui:UXML>

@@ -167,8 +167,11 @@ namespace StrategicCombatCore
         [CreateProperty]
         public bool isIndependent => deployState == DeployState.Independent;
 
+        // [CreateProperty]
+        // public bool isActivePosture => posture == GroupPostureType.Active;
+
         [CreateProperty]
-        public bool isActivePosture => posture == GroupPostureType.Active;
+        public bool isInRestorableState => posture == GroupPostureType.Disengaged || posture == GroupPostureType.Reorganized;
     }
 
     public partial class StrategicGroupReference

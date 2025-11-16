@@ -70,6 +70,7 @@ namespace StrategicCombatCore
         public List<StrategicMission> missions = new();
 
         public List<PendingNavalCombat> pendingNavalCombats = new();
+        public List<LandBattle> landBattles = new();
 
         public List<LazyLocalizedString> logs = new();
         // public List<LazyLocalizedString> logs = new()
@@ -405,7 +406,7 @@ namespace StrategicCombatCore
         {
             scenarioState.dateTime = scenarioState.dateTime.AddHours(1);
 
-            if(scenarioState.dateTime.Hour == 0)
+            if (scenarioState.dateTime.Hour == 0)
             {
                 AddLog(LazyLocalizedString.MakeTemplate(
                     "Tick: {0}",
@@ -422,7 +423,10 @@ namespace StrategicCombatCore
             CombinedAutoCombinableAndDissolvable();
 
             RefreshPendingNavalCombats();
+
+            HandleLandBattleEnterExit();
         }
+        
 
         public void Advance1HourForRepair()
         {
@@ -435,18 +439,116 @@ namespace StrategicCombatCore
 
         public void Advance1HourForGroupPosture()
         {
-            foreach(var group in GetIndependentStrategicGroups())
+            foreach (var group in GetIndependentStrategicGroups())
             {
                 if (group.restoredHours > 0)
                 {
                     group.restoredHours -= 1;
                 }
-                if(group.restoredHours == 0 && group.posture != StrategicGroup.GroupPostureType.Active)
+                if (group.restoredHours == 0 && group.posture != StrategicGroup.GroupPostureType.Active)
                 {
                     group.posture = StrategicGroup.GroupPostureType.Active;
                 }
             }
         }
+
+        HashSet<(Cell, SideState, SideState)> CollectHappeningBattleKeys()
+        {
+            var happeningBattleKeys = new HashSet<(Cell, SideState, SideState)>(); // Cell, Attacker, Defender
+
+            foreach (var g in strategicGroups.Where(g => g.LandCombatable()).GroupBy(g => g.cell))
+            {
+                var cell = g.Key;
+                var side2GroupsGp = g.GroupBy(g => g.side).ToList();
+                var hexSide = cell.GetHexSide();
+                if (hexSide != null && side2GroupsGp.Count >= 2)
+                {
+                    var g0 = side2GroupsGp[0];
+                    var g1 = side2GroupsGp[1];
+
+                    var g0hasActive = g0.Any(g => g.posture == StrategicGroup.GroupPostureType.Active);
+                    var g1hasActive = g1.Any(g => g.posture == StrategicGroup.GroupPostureType.Active);
+                    if (g0hasActive || g1hasActive)
+                    {
+                        SideState attacker = null;
+                        SideState defender = null;
+                        if (g0hasActive && g1hasActive)
+                        {
+                            var isG0HexController = g0.Key == hexSide;
+                            if (isG0HexController)
+                            {
+                                attacker = g1.Key;
+                                defender = g0.Key;
+                            }
+                        }
+                        else if (g0hasActive)
+                        {
+                            attacker = g0.Key;
+                            defender = g1.Key;
+                        }
+                        else // if(g1hasActive)
+                        {
+                            attacker = g1.Key;
+                            defender = g0.Key;
+                        }
+                        happeningBattleKeys.Add((cell, attacker, defender));
+                    }
+                }
+            }
+
+            return happeningBattleKeys;
+        }
+        
+        void HandleLandBattleEnterExit()
+        {
+            var happeningBattleKeys = CollectHappeningBattleKeys();
+            var prevHappendBattlesMap = landBattles.Where(b => !b.end).ToDictionary(b => b.GetKey(), b => b);
+            var prevHappendBattleKeys = prevHappendBattlesMap.Keys.ToHashSet();
+
+            // Create new battle
+
+            foreach (var happenningBattleKey in happeningBattleKeys)
+            {
+                if (!prevHappendBattleKeys.Contains(happenningBattleKey))
+                {
+                    var (cell, attacker, defender) = happenningBattleKey;
+                    var battle = new LandBattle()
+                    {
+                        cellXY = new() { x = cell.x, y = cell.y },
+                        attacker = new() { sideId = attacker.objectId },
+                        defender = new() { sideId = defender.objectId },
+                    };
+                    EntityManager.Instance.Register(battle, null);
+
+                    landBattles.Add(battle);
+
+                    AddLog($"New land battle begin: {battle.cellXY} {attacker.name.GetShortName()} vs {defender.name.GetShortName()}");
+                }
+            }
+
+            // Set concluded/invalid battle to ended.
+            foreach(var prevHappendBattleKey in prevHappendBattleKeys)
+            {
+                if(!happeningBattleKeys.Contains(prevHappendBattleKey))
+                {
+                    var battle = prevHappendBattlesMap[prevHappendBattleKey];
+                    battle.end = true;
+
+                    var (cell, attacker, defender) = prevHappendBattleKey;
+                    var cellGroups = cell.StrategicGroupReferences.Select(gr => gr.Get());
+                    battle.attackerVictory = cellGroups.Any(
+                        g => g.IsOnMap() &&
+                        g.posture != StrategicGroup.GroupPostureType.Disengaged &&
+                        g.side == attacker &&
+                        g.type != StrategicGroup.Type.Fleet
+                    );
+
+                    var vicDesc = battle.attackerVictory ? "Attacker Victory" : "Defender Victory";
+                    AddLog($"Land battle end: {battle.cellXY} {attacker.name.GetShortName()} vs {defender.name.GetShortName()}, {vicDesc}");
+                }
+            }
+        }
+
 
         public void RefreshPendingNavalCombats()
         {
@@ -926,6 +1028,11 @@ namespace StrategicCombatCore
             logs.Insert(0, log);
         }
 
+        public void AddLog(string rawLog) // mainly for debug purpose
+        {
+            logs.Insert(0, LazyLocalizedString.MakeRaw(rawLog));
+        }
+
         public void ClearLogs() => logs.Clear();
 
         public override void ResetAndRegisterAll()
@@ -954,8 +1061,11 @@ namespace StrategicCombatCore
             foreach (var mission in missions)
                 EntityManager.Instance.Register(mission, null);
 
-            foreach(var pendingNavalCombat in pendingNavalCombats)
+            foreach (var pendingNavalCombat in pendingNavalCombats)
                 EntityManager.Instance.Register(pendingNavalCombat, null);
+
+            foreach (var landBattle in landBattles)
+                EntityManager.Instance.Register(landBattle, null);
         }
 
         static StrategicGameState _instance;

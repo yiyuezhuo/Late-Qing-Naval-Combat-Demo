@@ -185,6 +185,14 @@ namespace StrategicCombatCore
             return EntityManager.Instance.Get<SideState>(sideObjectIdHex);
         }
 
+        [XmlAttribute]
+        public string landBattleId;
+
+        public LandBattle GetLandBattle()
+        {
+            return EntityManager.Instance.Get<LandBattle>(landBattleId);
+        }
+
         public bool IsArmyPassable() => IsCoast || (terrain != TerrainType.ShallowWater && terrain != TerrainType.DeepWater);
         public bool IsNavyPassable() => IsCoast || terrain == TerrainType.ShallowWater || terrain == TerrainType.DeepWater;
 

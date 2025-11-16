@@ -185,7 +185,7 @@
                                         </Bindings>
                                     </ui:IntegerField>
                                     <Bindings>
-                                        <ui:DataBinding property="style.display" data-source-path="isActivePosture" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
+                                        <ui:DataBinding property="style.display" data-source-path="isInRestorableState" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
                                     </Bindings>
                                 </ui:VisualElement>
                             </ui:VisualElement>

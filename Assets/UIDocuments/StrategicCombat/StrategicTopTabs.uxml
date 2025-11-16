@@ -24,7 +24,7 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022621116207104)" />
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Sub Combat Resolver" name="SubStrategicCombatResolverButton" style="display: none;">
+                    <ui:Button text="Sub Combat Resolver" name="SubStrategicCombatResolverButton" style="display: flex;">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3474825257062400)" />
                         </Bindings>

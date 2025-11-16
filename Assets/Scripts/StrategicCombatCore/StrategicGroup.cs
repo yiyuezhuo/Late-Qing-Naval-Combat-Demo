@@ -68,6 +68,11 @@ namespace StrategicCombatCore
 
         [XmlAttribute]
         public int y;
+
+        public override string ToString()
+        {
+            return $"XY({x}, {y})";
+        }
     }
 
     public partial class StrategicGroup : IObjectIdLabeled, IStrategicGroupMemberReferenceable
@@ -211,6 +216,7 @@ namespace StrategicCombatCore
         public enum GroupPostureType
         {
             Active,
+            Passive, // Land Only
             Disengaged, // Disengaged/Retreat will not block hostile movement and would not engaged in combat generation and resolution
             Reorganized // Victory side of combat will be in reorganized state for 12 hours, so defeated side would retreat without risk
         }
@@ -574,6 +580,7 @@ namespace StrategicCombatCore
 
         public bool Combatable() => deployState == DeployState.Independent && posture != GroupPostureType.Disengaged;
         public bool NavalCombatable() => deployState == DeployState.Independent && posture != GroupPostureType.Disengaged && type == Type.Fleet;
+        public bool LandCombatable() => deployState == DeployState.Independent && posture != GroupPostureType.Disengaged && type != Type.Fleet;
 
         public void StartReturnToBase(int disengagedHours) // Return to group's depot's location and go to disengaged state, mainly used by fleet group
         {

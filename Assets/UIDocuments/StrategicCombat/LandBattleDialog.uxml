@@ -1,0 +1,17 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement class="panel-dialog" style="flex-grow: 1;">
+        <ui:Label text="Land Battle" class="title" />
+        <ui:Label text="Land Battle at (,)" />
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:TabView>
+                <ui:Tab label="Current">
+                    <ui:VisualElement style="flex-grow: 1;" />
+                </ui:Tab>
+                <ui:Tab label="Log" />
+            </ui:TabView>
+        </ui:VisualElement>
+        <ui:VisualElement>
+            <ui:Button text="Confirm" name="ConfirmButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

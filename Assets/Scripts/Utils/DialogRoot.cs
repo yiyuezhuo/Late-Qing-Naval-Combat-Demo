@@ -213,6 +213,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset pendingNavalCombatDialogDocument;
     public VisualTreeAsset navalCombatResolverDialogDocument;
     public VisualTreeAsset oobTreeDialogDocument;
+    public VisualTreeAsset landBattleDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -224,6 +225,25 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupLandBattleDialog(LandBattle landBattle)
+    {
+        var landBattleDialog = new LandBattleDialog()
+        {
+            landBattle = landBattle,
+            attacker = landBattle.CollectDynamicSideState(landBattle.attacker),
+            defender = landBattle.CollectDynamicSideState(landBattle.defender),
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = landBattleDialogDocument,
+            templateDataSource = landBattleDialog,
+        };
+
+        tempDialog.Popup();
     }
 
     public void PopupOOBTreeDialog()

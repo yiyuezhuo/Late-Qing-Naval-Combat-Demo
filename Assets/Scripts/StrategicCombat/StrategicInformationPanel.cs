@@ -77,6 +77,22 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
         moveButton.clicked += StrategicGameManager.Instance.TryToStartMakeNewMove;
 
         root.Q<Button>("MoveAppendButton").clicked += StrategicGameManager.Instance.TryToStartAppendMove;
+
+        var landBattleButton = root.Q<Button>("LandBattleButton");
+        landBattleButton.clicked += () =>
+        {
+            Debug.Log("LandBattleButton clicked");
+
+            // PopupLandBattleDialog(ce)
+            if(Utils.TryResolveCurrentValueForBinding<Cell>(landBattleButton, out var cell))
+            {
+                var landBattle = cell.GetLandBattle();
+                if(landBattle != null)
+                {
+                    DialogRoot.Instance.PopupLandBattleDialog(landBattle);
+                }
+            }
+        };
     }
 
 }

@@ -424,7 +424,7 @@ namespace StrategicCombatCore
 
             RefreshPendingNavalCombats();
 
-            HandleLandBattleEnterExit();
+            HandleLandBattleBeginEnd();
         }
         
 
@@ -499,7 +499,7 @@ namespace StrategicCombatCore
             return happeningBattleKeys;
         }
         
-        void HandleLandBattleEnterExit()
+        void HandleLandBattleBeginEnd()
         {
             var happeningBattleKeys = CollectHappeningBattleKeys();
             var prevHappendBattlesMap = landBattles.Where(b => !b.end).ToDictionary(b => b.GetKey(), b => b);
@@ -517,10 +517,13 @@ namespace StrategicCombatCore
                         cellXY = new() { x = cell.x, y = cell.y },
                         attacker = new() { sideId = attacker.objectId },
                         defender = new() { sideId = defender.objectId },
+                        beginDateTime = scenarioState.dateTime
                     };
-                    EntityManager.Instance.Register(battle, null);
+                    EntityManager.Instance.Register(battle, null); // ID assigned here
 
                     landBattles.Add(battle);
+
+                    cell.landBattleId = battle.objectId;
 
                     AddLog($"New land battle begin: {battle.cellXY} {attacker.name.GetShortName()} vs {defender.name.GetShortName()}");
                 }
@@ -533,6 +536,7 @@ namespace StrategicCombatCore
                 {
                     var battle = prevHappendBattlesMap[prevHappendBattleKey];
                     battle.end = true;
+                    battle.endDateTime = scenarioState.dateTime;
 
                     var (cell, attacker, defender) = prevHappendBattleKey;
                     var cellGroups = cell.StrategicGroupReferences.Select(gr => gr.Get());
@@ -542,6 +546,8 @@ namespace StrategicCombatCore
                         g.side == attacker &&
                         g.type != StrategicGroup.Type.Fleet
                     );
+
+                    cell.landBattleId = null;
 
                     var vicDesc = battle.attackerVictory ? "Attacker Victory" : "Defender Victory";
                     AddLog($"Land battle end: {battle.cellXY} {attacker.name.GetShortName()} vs {defender.name.GetShortName()}, {vicDesc}");

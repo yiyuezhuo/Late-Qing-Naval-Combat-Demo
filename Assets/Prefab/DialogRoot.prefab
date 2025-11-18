@@ -94,3 +94,4 @@ MonoBehaviour:
   pendingNavalCombatDialogDocument: {fileID: 9197481963319205126, guid: b922bdd96eea048448ad29dbbb52e463, type: 3}
   navalCombatResolverDialogDocument: {fileID: 9197481963319205126, guid: 8b82dc010a608754e90c7b7c522b5638, type: 3}
   oobTreeDialogDocument: {fileID: 9197481963319205126, guid: 26f52764249f2c04d80b6be882c8e36e, type: 3}
+  landBattleDialogDocument: {fileID: 9197481963319205126, guid: 36202abd3c2bb5a46b5e6427fbab1096, type: 3}

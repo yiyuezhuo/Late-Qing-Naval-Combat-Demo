@@ -133,6 +133,7 @@ namespace StrategicCombatCore
         public override string ToString() => $"LandUnit({name.GetMergedName()})";
 
         // public double GetTransferWeightTons() => supplyTons + supplyGeneratedTons;
+        public float GetCurrentCommandUsage() => strength;
     }
 }
 

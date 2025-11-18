@@ -66,6 +66,11 @@
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(358782179381248)" />
                     </Bindings>
                 </ui:Button>
+                <ui:Button text="Land Battle" name="LandBattleButton">
+                    <Bindings>
+                        <ui:DataBinding property="enabledSelf" data-source-path="hasActiveLandBattle" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Button>
                 <ui:Button text="Resolve Land Combat" name="ResolveLandCombatButton" style="display: none;" />
             </ui:VisualElement>
             <Bindings>

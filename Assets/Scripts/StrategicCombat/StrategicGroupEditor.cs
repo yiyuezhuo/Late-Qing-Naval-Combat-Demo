@@ -30,6 +30,25 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
             });
         };
 
+        var gotoLeaderButton = root.Q<Button>("GotoLeaderButton");
+        gotoLeaderButton.clicked += () =>
+        {
+            if (Utils.TryResolveCurrentValueForBinding<StrategicGroup>(gotoLeaderButton, out var group))
+            {
+                var leader = group.leaderReference.Get();
+                if (leader != null)
+                {
+                    var idx = StrategicGameState.Instance.leaders.IndexOf(leader);
+                    if (idx != -1)
+                    {
+                        Hide();
+                        LeaderEditor.Instance.Show();
+                        BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.leadersListView, idx);
+                    }
+                }
+            }
+        };
+
         // BindIStrategicGroupMemberReferenceable(root, this);
         Utils.BindIStrategicGroupMemberReferenceable(root, this);
 

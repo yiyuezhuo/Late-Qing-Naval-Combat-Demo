@@ -53,12 +53,16 @@
                                 </ui:VisualElement>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                <ui:TextField label="Leader" readonly="true" style="flex-grow: 1;">
+                                <ui:Label text="Leader">
                                     <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="leaderReference.name" binding-mode="ToTarget" />
-                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172656676212736)" />
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172656676212736)" />
                                     </Bindings>
-                                </ui:TextField>
+                                </ui:Label>
+                                <ui:Button text="Leader Name" name="GotoLeaderButton" style="flex-grow: 1;">
+                                    <Bindings>
+                                        <ui:DataBinding property="text" data-source-path="leaderReference.name" binding-mode="ToTarget" />
+                                    </Bindings>
+                                </ui:Button>
                                 <ui:Button text="Set" name="SetLeaderButton">
                                     <Bindings>
                                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
@@ -255,6 +259,11 @@
                                     </Bindings>
                                 </ui:Button>
                             </ui:VisualElement>
+                            <ui:Label text="Command Desc">
+                                <Bindings>
+                                    <ui:DataBinding property="text" data-source-path="commandDesc" binding-mode="ToTarget" />
+                                </Bindings>
+                            </ui:Label>
                             <ui:ListView name="SubordinatesCombinedListView" header-title="Subordinates" show-add-remove-footer="true" show-foldout-header="true" binding-source-selection-mode="AutoAssign" data-source-path="subordinatesCombined" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" fixed-item-height="60" reorderable="true">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196633377280000)" />

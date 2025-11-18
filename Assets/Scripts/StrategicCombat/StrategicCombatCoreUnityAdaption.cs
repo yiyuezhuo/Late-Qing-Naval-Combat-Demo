@@ -8,6 +8,7 @@ using UnityEngine.InputSystem.Utilities;
 using System.Xml.Serialization;
 using StrategicCombatCore;
 using System;
+using System.Linq;
 
 namespace StrategicCombatCore
 {
@@ -70,6 +71,9 @@ namespace StrategicCombatCore
                 }
             }
         }
+
+        [CreateProperty]
+        public bool hasActiveLandBattle => landBattleId != null;
     }
 
     public static class StyleConstants
@@ -172,6 +176,28 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public bool isInRestorableState => posture == GroupPostureType.Disengaged || posture == GroupPostureType.Reorganized;
+
+        // [CreateProperty]
+        // public float commandCapacity => GetCommandCapacity();
+
+        // [CreateProperty]
+        // public float combinedCommandUsage => GetCombinedCommandUsage();
+
+        // [CreateProperty]
+        // public string commandDesc => $"Command: {GetCombinedCommandUsage()}/{GetCommandCapacity()}, Chance Cost: {GetChanceCostModifier():+0.00%;-0.00%;0.00%}, Tactical Modifier: {GetTacticalModifier():+0.00%;-0.00%;0.00%}";
+    
+        [CreateProperty]
+        public string commandDesc
+        {
+            get
+            {
+                var (usageDirect, usage, accCostMod, currentLayerCostMod) = GetAverageAccumulatedChanceCostModifier();
+                // var costMod = GetChanceCostModifier();
+                var commandCap = GetCommandCapacity();
+                var tacMod = GetTacticalModifier();
+                return $"Command: {usage}/{commandCap}, Chance Cost: {currentLayerCostMod:+0.00%;-0.00%;0.00%} (Acc Avg: {accCostMod:+0.00%;-0.00%;0.00%}), Tactical Modifier: {tacMod:+0.00%;-0.00%;0.00%}";
+            }
+        }
     }
 
     public partial class StrategicGroupReference
@@ -553,6 +579,37 @@ namespace StrategicCombatCore
             xy.y
         );
         // public string name => $"Combat in Hex ({xy.x} {xy.y})";
+    }
+
+    public partial class LandBattleSideStateDynamic
+    {
+        public partial class LandUnitBundle
+        {
+            [CreateProperty]
+            public StyleBackground icon => landUnit?.GetLandUnitTemplate()?.typeIcon ?? null;
+
+            [CreateProperty]
+            public string desc => $"{landUnit.name.GetShortName()}, S: {landUnit.strength}, L: {battleUnitState.accumulatedStrengthLoss} (+{battleUnitState.currentStrengthLoss})";
+        }
+
+        [CreateProperty]
+        public StyleBackground leaderPortrait => battleLeader.portraitReference?.pictureStyleBackground ?? null;
+
+        [CreateProperty]
+        public string summary
+        {
+            get
+            {
+                var strengh = topGroupBundles.Sum(b => b.group.GetStrengthMen());
+                var currentLoss = landUnitBundles.Sum(b => b.battleUnitState.currentStrengthLoss);
+                var accLos = landUnitBundles.Sum(b => b.battleUnitState.accumulatedStrengthLoss); 
+                return $"Land Units: {landUnitBundles.Count}, Strength: {strengh}, Loss: {accLos} (+{currentLoss})";
+            }
+        }
+
+        [CreateProperty]
+        public StyleBackground countryFlag => UnityWebRequestImageReader.Instance.FetchTexture2D(Utils.GetCountryPath(country));
+
     }
 }
 

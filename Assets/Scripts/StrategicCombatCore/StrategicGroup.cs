@@ -1,9 +1,13 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
+using Unity.VisualScripting;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
+using UnityEngine.Localization.PropertyVariants.TrackedProperties;
 using YYZ.PathFinding;
 
 namespace StrategicCombatCore
@@ -646,16 +650,142 @@ namespace StrategicCombatCore
                 return false;
             return depotGroup.x == x && depotGroup.y == y;
         }
-        
+
         public IEnumerable<ShipLog> WalkGroupMembersDeployedShips()
         {
-            foreach(var shipLog in WalkGroupMembers<ShipLog>())
+            foreach (var shipLog in WalkGroupMembers<ShipLog>())
             {
-                if(shipLog.mapState == MapState.Deployed)
+                if (shipLog.mapState == MapState.Deployed)
                 {
                     yield return shipLog;
                 }
             }
+        }
+
+        static float baseCommandUnitSize = 500; // battalion
+        static float baseCommandUnit = 3;
+        static float baseCommandCapacity = baseCommandUnitSize * baseCommandUnit;
+
+        public float GetCommandCapacity() => baseCommandCapacity;
+
+        public float GetCombinedCommandUsage()
+        {
+            var combinedCommandUsage = subordinatesCombined.Sum(subordinateRef =>
+            {
+                var subordinate = subordinateRef.Get();
+                if (subordinate is LandUnit landUnit)
+                {
+                    return landUnit.GetCurrentCommandUsage();
+                }
+                else if (subordinate is StrategicGroup group && group.deployState == DeployState.Combined)
+                {
+                    return group.GetCombinedCommandUsage() / 3;
+                }
+                return 0;
+            });
+
+            return combinedCommandUsage;
+        }
+
+        public float GetCombinedCommandUsageFlatten()
+        {
+            var combinedCommandUsage = subordinatesCombined.Sum(subordinateRef =>
+            {
+                var subordinate = subordinateRef.Get();
+                if (subordinate is LandUnit landUnit)
+                {
+                    return landUnit.GetCurrentCommandUsage();
+                }
+                else if (subordinate is StrategicGroup group && group.deployState == DeployState.Combined)
+                {
+                    return group.GetCombinedCommandUsageFlatten();
+                }
+                return 0;
+            });
+
+            return combinedCommandUsage;
+        }
+
+        public class LeaderSkillLevelInfo
+        {
+            public float chanceCostModifier;
+            public float tacticalModifier;
+        }
+
+        public static Dictionary<LeaderSkillLevel, LeaderSkillLevelInfo> leaderSkillLevelInfo = new()
+        {
+            { LeaderSkillLevel.Unknown, new() { chanceCostModifier = 0.3f, tacticalModifier = 0 } },
+            { LeaderSkillLevel.BarelyCompetent, new() { chanceCostModifier = 0.4f, tacticalModifier = -0.1f } },
+            { LeaderSkillLevel.Average, new() { chanceCostModifier = 0.3f, tacticalModifier = 0}},
+            { LeaderSkillLevel.AboveAverage, new() { chanceCostModifier = 0.2f, tacticalModifier = 0.1f}},
+            { LeaderSkillLevel.Outstanding, new() { chanceCostModifier = 0.1f, tacticalModifier = 0.2f}},
+            { LeaderSkillLevel.Gifted, new() { chanceCostModifier = 0.0f, tacticalModifier = 0.3f}},
+        };
+
+        public static float GetChanceCostModifier(float usage, float cap, LeaderSkillLevel leaderSkillLevel)
+        {
+            return leaderSkillLevelInfo[leaderSkillLevel].chanceCostModifier + 0.1f * Math.Max(0, usage - cap) / baseCommandUnitSize;
+        }
+
+        public LeaderSkillLevel GetLeaderSkillLevel() => leaderReference.Get()?.landOperational ?? LeaderSkillLevel.Unknown;
+
+        public float GetChanceCostModifier()
+        {
+            // var usage = GetCombinedCommandUsage();
+            // var cap = GetCommandCapacity();
+
+            // var leaderSkillLevel = GetLeaderSkillLevel();
+            // return leaderSkillLevelInfo[leaderSkillLevel].chanceCostModifier + 0.1f * Math.Max(0, usage - cap) / baseCommandUnitSize;
+            return GetChanceCostModifier(
+                GetCombinedCommandUsage(),
+                GetCommandCapacity(),
+                GetLeaderSkillLevel()
+            );
+        }
+
+        public float GetTacticalModifier()
+        {
+            var usage = GetCombinedCommandUsage();
+            var cap = GetCommandCapacity();
+
+            var leaderSkillLevel = leaderReference.Get()?.landTactical ?? LeaderSkillLevel.Unknown;
+            var baseMod = leaderSkillLevelInfo[leaderSkillLevel].tacticalModifier;
+            return baseMod / Math.Max(1, usage / cap);
+        }
+
+        public (float, float, float, float) GetAverageAccumulatedChanceCostModifier() // return command usage (direct), command usage (used), acc modifier
+        {
+            // var currentLayerModifier = GetChanceCostModifier();
+
+            var usageDirect = 0f;
+            var usage = 0f;
+            var accCostModWeight = 0f;
+            foreach(var subordinateRef in subordinatesCombined)
+            {
+                var subordinate = subordinateRef.Get();
+                if(subordinate is LandUnit landUnit)
+                {
+                    var subUsage = landUnit.GetCurrentCommandUsage();
+                    usageDirect += subUsage;
+                    usage += subUsage;
+                }
+                else if (subordinate is StrategicGroup group && group.deployState == DeployState.Combined)
+                {
+                    var (subUsageDirect, subUsage, subAccCostMod, _) = group.GetAverageAccumulatedChanceCostModifier();
+                    usageDirect += subUsageDirect;
+                    usage += subUsage / 3;
+                    accCostModWeight += subUsageDirect * subAccCostMod;
+                }
+            }
+
+            var currentLayerCostMod = GetChanceCostModifier(
+                usage,
+                GetCommandCapacity(),
+                GetLeaderSkillLevel()
+            );
+
+            var accCostMod = accCostModWeight / usageDirect + currentLayerCostMod;
+            return (usageDirect, usage, accCostMod, currentLayerCostMod);
         }
     }
 }

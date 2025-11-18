@@ -1710,6 +1710,7 @@ MonoBehaviour:
   tempMapHeight: 40
   currentEdgeFeatureType: 0
   currentSideStateObjectId: 
+  currentLogOnly: 1
 --- !u!4 &1689453573
 Transform:
   m_ObjectHideFlags: 0

@@ -1,14 +1,20 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement class="panel-dialog" style="flex-grow: 1;">
+    <ui:Template name="LandBattleSideStateDynamicTemplate" src="project://database/Assets/UIDocuments/Templates/LandBattleSideStateDynamicTemplate.uxml?fileID=9197481963319205126&amp;guid=4d91dd3a3a70490419ba52a845cb74ca&amp;type=3#LandBattleSideStateDynamicTemplate" />
+    <ui:VisualElement data-source-type="LandBattleDialog, Assembly-CSharp" class="panel-dialog" style="width: 700px; height: 500px;">
         <ui:Label text="Land Battle" class="title" />
-        <ui:Label text="Land Battle at (,)" />
-        <ui:VisualElement style="flex-grow: 1;">
-            <ui:TabView>
-                <ui:Tab label="Current">
-                    <ui:VisualElement style="flex-grow: 1;" />
-                </ui:Tab>
-                <ui:Tab label="Log" />
-            </ui:TabView>
+        <ui:Label text="Land Battle Title" style="-unity-text-align: upper-center;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="title" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="DateTime Range" style="-unity-text-align: upper-center;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="dateTimeRange" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:Instance template="LandBattleSideStateDynamicTemplate" data-source-path="attacker" style="flex-basis: 100px; flex-grow: 1;" />
+            <ui:Instance template="LandBattleSideStateDynamicTemplate" data-source-path="defender" style="flex-grow: 1; flex-basis: 100px;" />
         </ui:VisualElement>
         <ui:VisualElement>
             <ui:Button text="Confirm" name="ConfirmButton" />

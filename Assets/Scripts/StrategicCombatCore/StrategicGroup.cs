@@ -1,13 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
-using Unity.VisualScripting;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
-using UnityEngine.Localization.PropertyVariants.TrackedProperties;
 using YYZ.PathFinding;
 
 namespace StrategicCombatCore
@@ -743,14 +739,19 @@ namespace StrategicCombatCore
             );
         }
 
+        public static float GetTacticalModifier(float usage, float cap, LeaderSkillLevel leaderSkillLevel)
+        {
+            var baseMod = leaderSkillLevelInfo[leaderSkillLevel].tacticalModifier;
+            return baseMod / Math.Max(1, usage / cap);
+        }
+
         public float GetTacticalModifier()
         {
             var usage = GetCombinedCommandUsage();
             var cap = GetCommandCapacity();
 
             var leaderSkillLevel = leaderReference.Get()?.landTactical ?? LeaderSkillLevel.Unknown;
-            var baseMod = leaderSkillLevelInfo[leaderSkillLevel].tacticalModifier;
-            return baseMod / Math.Max(1, usage / cap);
+            return GetTacticalModifier(usage, cap, leaderSkillLevel);
         }
 
         public (float, float, float, float) GetAverageAccumulatedChanceCostModifier() // return command usage (direct), command usage (used), acc modifier

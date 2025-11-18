@@ -232,8 +232,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         var landBattleDialog = new LandBattleDialog()
         {
             landBattle = landBattle,
-            attacker = landBattle.CollectDynamicSideState(landBattle.attacker),
-            defender = landBattle.CollectDynamicSideState(landBattle.defender),
+            attacker = landBattle.GetAttackerDynamic(),
+            defender = landBattle.GetDefenderDynamic(),
         };
 
         var tempDialog = new TempDialog()

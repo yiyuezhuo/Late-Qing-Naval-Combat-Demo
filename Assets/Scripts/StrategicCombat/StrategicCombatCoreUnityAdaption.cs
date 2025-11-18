@@ -589,7 +589,7 @@ namespace StrategicCombatCore
             public StyleBackground icon => landUnit?.GetLandUnitTemplate()?.typeIcon ?? null;
 
             [CreateProperty]
-            public string desc => $"{landUnit.name.GetShortName()}, S: {landUnit.strength}, L: {battleUnitState.accumulatedStrengthLoss} (+{battleUnitState.currentStrengthLoss})";
+            public string desc => $"{landUnit.name.GetShortName()}, S: {landUnit.strength}, L: {battleUnitState.accumulatedStrengthLoss} (+{battleUnitState.currentStrengthLoss}) CM:{chanceCostModifier:+0.00%;-0.00%;0.00%}, TM: {tacticalModifier:+0.00%;-0.00%;0.00%}";
         }
 
         [CreateProperty]
@@ -603,7 +603,7 @@ namespace StrategicCombatCore
                 var strengh = topGroupBundles.Sum(b => b.group.GetStrengthMen());
                 var currentLoss = landUnitBundles.Sum(b => b.battleUnitState.currentStrengthLoss);
                 var accLos = landUnitBundles.Sum(b => b.battleUnitState.accumulatedStrengthLoss); 
-                return $"Land Units: {landUnitBundles.Count}, Strength: {strengh}, Loss: {accLos} (+{currentLoss})";
+                return $"Land Units: {landUnitBundles.Count}, Strength: {strengh}, Loss: {accLos} (+{currentLoss}), avg CM: {leadingGroupBundle.accumulatedChanceCostModifier:+0.00%;-0.00%;0.00%}, avg TM: {leadingGroupBundle.averageTacticalModifier:+0.00%;-0.00%;0.00%}";
             }
         }
 

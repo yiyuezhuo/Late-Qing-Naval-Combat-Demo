@@ -553,6 +553,12 @@ namespace StrategicCombatCore
                     AddLog($"Land battle end: {battle.cellXY} {attacker.name.GetShortName()} vs {defender.name.GetShortName()}, {vicDesc}");
                 }
             }
+
+            // Resolve undetermined battle
+            foreach(var landBattle in landBattles.Where(b => !b.end))
+            {
+                landBattle.Step();
+            }
         }
 
 

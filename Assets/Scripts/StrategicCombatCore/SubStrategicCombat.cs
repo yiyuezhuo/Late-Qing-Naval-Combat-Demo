@@ -119,7 +119,7 @@ namespace StrategicCombatCore
         {
             public float strength;
             public float strengthPerHex;
-            public float caombatValue; // firepower
+            public float combatValue; // firepower
             public float inflictCombatValuePerHex;
             public float inflictedCombatValuePerHex;
         }
@@ -133,7 +133,7 @@ namespace StrategicCombatCore
             {
                 strength = strength,
                 strengthPerHex = strength / hexEquivalent,
-                caombatValue = firepower,
+                combatValue = firepower,
                 // TODO: Handle Depth effect
                 inflictCombatValuePerHex = firepower / hexEquivalent
             };

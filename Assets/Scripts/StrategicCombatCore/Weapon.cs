@@ -38,11 +38,27 @@ namespace StrategicCombatCore
         public float calibreMM;
         public bool isGun;
 
+        // obsolete
         public float GetFirepower(IFirepowerContext ctx)
         {
             var roundPerMinute = rateOfFireRoundPerMinute.Get(ctx.rofType);
             var accCoef = Math.Max(0, 1 - ctx.distanceMeter / effectiveRangeMeter / 2);
             return roundPerMinute * shellWeightKg * accCoef;
+        }
+
+        public float GetLethality() // SB Style Leth value
+        {
+            if(isGun) // Gun
+            {
+                // SB x CO2 EQ Mapping
+                // r0 => 1
+                // r1 => 1 + 0.5 + 0.5 = 2
+                // r2 => 1 + 2/3 + 2/3 + 1/3 + 1/3 = 3
+                var burstRadiusCoef = 1 + burstRadiusMeter / 10;
+                return rateOfFireRoundPerMinute.rapid * shellWeightKg * 3.5f * reliability * burstRadiusCoef;
+            }
+            // Rifle
+            return rateOfFireRoundPerMinute.rapid * reliability;
         }
 
         public class RateOfFire // Round per minute

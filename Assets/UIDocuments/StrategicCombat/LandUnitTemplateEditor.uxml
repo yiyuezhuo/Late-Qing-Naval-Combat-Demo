@@ -41,76 +41,16 @@
                                             </Bindings>
                                         </ui:VisualElement>
                                     </ui:VisualElement>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                                     <ui:IntegerField label="Base Strength">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="strength" binding-mode="TwoWay" />
                                         </Bindings>
                                     </ui:IntegerField>
-                                    <ui:IntegerField label="Guns">
+                                    <ui:FloatField label="Marksmanship">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="guns" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:IntegerField>
-                                    <ui:FloatField label="Firepower (Kg/Min)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="firepowerKgPerMin" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Targetting Gain">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="targettingGain" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Range (m)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="rangeMeter" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:IntegerField label="Weapon Strength" enabled="false">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="weaponStrength" binding-mode="ToTarget" />
-                                        </Bindings>
-                                    </ui:IntegerField>
-                                </ui:VisualElement>
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                                    <ui:FloatField label="Morale Coef">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="moraleCoef" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Density (Str/M^2)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="densityStrengthPerSqMeter" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Assault">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="assault" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Ammo Coef">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="ammoCoef" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Ration Coef">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="rationCoef" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Wpn Weight (Kg/Str)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="weaponWeightKgPerStrength" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Carrying Ration (Kg)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="carryingRationKg" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Carrying Ammo (kg)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="carryingAmmoKg" binding-mode="TwoWay" />
+                                            <ui:DataBinding property="value" data-source-path="marksmanship" binding-mode="TwoWay" />
                                         </Bindings>
                                     </ui:FloatField>
                                     <ui:Toggle label="Is Support">
@@ -118,26 +58,21 @@
                                             <ui:DataBinding property="value" data-source-path="isSupport" binding-mode="TwoWay" />
                                         </Bindings>
                                     </ui:Toggle>
-                                    <ui:FloatField label="Strategic Speed (Km/Day)">
+                                    <ui:IntegerField label="Weapon Strength" enabled="false">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="strategicSpeedKmPerDay" binding-mode="TwoWay" />
+                                            <ui:DataBinding property="value" data-source-path="weaponStrength" binding-mode="ToTarget" />
                                         </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Operational Speed (Km/Day)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="operationalSpeedKmPerDay" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Tactical Speed (M/Min)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="tacticalSpeedMPerMin" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:FloatField>
+                                    </ui:IntegerField>
                                     <ui:IntegerField label="Weapon Guns" enabled="false">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="weaponGuns" binding-mode="ToTarget" />
                                         </Bindings>
                                     </ui:IntegerField>
+                                    <ui:FloatField label="lethality" enabled="false">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="lethality" binding-mode="ToTarget" />
+                                        </Bindings>
+                                    </ui:FloatField>
                                 </ui:VisualElement>
                             </ui:VisualElement>
                             <ui:MultiColumnListView binding-source-selection-mode="AutoAssign" data-source-path="weaponRecordss" name="WeaponRecordsMultiColumnListView" show-add-remove-footer="true" header-title="Weapons" show-foldout-header="true" style="flex-shrink: 0;">

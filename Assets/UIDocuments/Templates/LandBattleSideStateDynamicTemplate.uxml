@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="StrategicCombatCore.LandBattleSideStateDynamic, Assembly-CSharp" style="flex-grow: 1; flex-basis: 100px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-        <ui:VisualElement style="flex-direction: row; height: 100px;">
+        <ui:VisualElement style="flex-direction: row; height: 90px;">
             <ui:VisualElement style="flex-basis: 75px; -unity-background-scale-mode: scale-to-fit;">
                 <Bindings>
                     <ui:DataBinding property="style.backgroundImage" data-source-path="leaderPortrait" binding-mode="ToTarget" />
@@ -20,7 +20,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1;">
-            <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="landUnitBundles" item-template="project://database/Assets/UIDocuments/Templates/LandUnitBundleTemplate.uxml?fileID=9197481963319205126&amp;guid=64bc5901d82a16e46a6bc306e67b22ac&amp;type=3#LandUnitBundleTemplate" style="flex-grow: 1;" />
+            <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="landUnitBundles" item-template="project://database/Assets/UIDocuments/Templates/LandUnitBundleTemplate.uxml?fileID=9197481963319205126&amp;guid=64bc5901d82a16e46a6bc306e67b22ac&amp;type=3#LandUnitBundleTemplate" fixed-item-height="34" style="flex-grow: 1;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

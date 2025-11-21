@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CoreUtils;
@@ -133,7 +134,37 @@ namespace StrategicCombatCore
         public override string ToString() => $"LandUnit({name.GetMergedName()})";
 
         // public double GetTransferWeightTons() => supplyTons + supplyGeneratedTons;
-        public float GetCurrentCommandUsage() => strength;
+        public float GetDirectCommandUsage() => strength;
+
+        static Dictionary<LandUnitType, float> typeChanceCoefMap = new()
+        {
+            {LandUnitType.Cavalry, 3},
+            {LandUnitType.Engineer, 1.5f},
+            {LandUnitType.Artillery, 0.5f},
+            {LandUnitType.MountainArtillery, 0.75f}
+        };
+
+        public float GetChance()
+        {
+            var unitType = GetLandUnitTemplate()?.unitType ?? LandUnitType.Infantry;
+            var typeChanceCoef = typeChanceCoefMap.GetValueOrDefault(unitType, 1);
+            return strength * typeChanceCoef;
+        }
+
+        // public float GetTargetWeight()
+        // {
+            
+        // }
+
+        public float GetLethality()
+        {
+            var template = GetLandUnitTemplate();
+            if(template != null && template.strength > 0)
+            {
+                return template.GetLethality() * strength / template.strength;
+            }
+            return 0;
+        }
     }
 }
 

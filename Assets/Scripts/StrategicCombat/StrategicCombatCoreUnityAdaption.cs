@@ -393,6 +393,9 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public StyleBackground typeIcon => UnityWebRequestImageReader.Instance.FetchStyleBackground($"{Application.streamingAssetsPath}/Pictures/LandUnitType/{unitType}.png");
+
+        [CreateProperty]
+        public float lethality => GetLethality();
     }
 
     public partial class LandUnit
@@ -589,7 +592,10 @@ namespace StrategicCombatCore
             public StyleBackground icon => landUnit?.GetLandUnitTemplate()?.typeIcon ?? null;
 
             [CreateProperty]
-            public string desc => $"{landUnit.name.GetShortName()}, S: {landUnit.strength}, L: {battleUnitState.accumulatedStrengthLoss} (+{battleUnitState.currentStrengthLoss}) CM:{chanceCostModifier:+0.00%;-0.00%;0.00%}, TM: {tacticalModifier:+0.00%;-0.00%;0.00%}";
+            public string desc => $"{landUnit.name.GetShortName()}";
+
+            [CreateProperty]
+            public string desc2 => $"S: {landUnit.strength}, L: {battleUnitState.accumulatedStrengthLoss} (+{battleUnitState.currentStrengthLoss}) CM:{chanceCostModifier:+0.00%;-0.00%;0.00%}, TM: {tacticalModifier:+0.00%;-0.00%;0.00%}";
         }
 
         [CreateProperty]

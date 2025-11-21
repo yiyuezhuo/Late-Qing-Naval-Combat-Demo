@@ -671,7 +671,7 @@ namespace StrategicCombatCore
                 var subordinate = subordinateRef.Get();
                 if (subordinate is LandUnit landUnit)
                 {
-                    return landUnit.GetCurrentCommandUsage();
+                    return landUnit.GetDirectCommandUsage();
                 }
                 else if (subordinate is StrategicGroup group && group.deployState == DeployState.Combined)
                 {
@@ -690,7 +690,7 @@ namespace StrategicCombatCore
                 var subordinate = subordinateRef.Get();
                 if (subordinate is LandUnit landUnit)
                 {
-                    return landUnit.GetCurrentCommandUsage();
+                    return landUnit.GetDirectCommandUsage();
                 }
                 else if (subordinate is StrategicGroup group && group.deployState == DeployState.Combined)
                 {
@@ -766,7 +766,7 @@ namespace StrategicCombatCore
                 var subordinate = subordinateRef.Get();
                 if(subordinate is LandUnit landUnit)
                 {
-                    var subUsage = landUnit.GetCurrentCommandUsage();
+                    var subUsage = landUnit.GetDirectCommandUsage();
                     usageDirect += subUsage;
                     usage += subUsage;
                 }

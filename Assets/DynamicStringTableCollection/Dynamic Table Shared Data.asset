@@ -2165,6 +2165,14 @@ MonoBehaviour:
     m_Key: 'Repair (Failed, Prob={0}): {1}'
     m_Metadata:
       m_Items: []
+  - m_Id: 14776414064250880
+    m_Key: Confirm to return to main menu?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14776479621222400
+    m_Key: Confirm to conclude the battle and return to strategic game?
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

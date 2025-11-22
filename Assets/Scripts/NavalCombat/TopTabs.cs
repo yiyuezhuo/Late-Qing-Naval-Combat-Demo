@@ -16,6 +16,8 @@ public class TopTabs : SingletonDocument<TopTabs>
 {
     DropdownField playerDropdownField;
 
+    static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
     protected override void Awake()
     {
         base.Awake();
@@ -77,9 +79,6 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         var selectionBuiltinButton = root.Q<Button>("SelectionBuiltinButton");
         selectionBuiltinButton.clicked += DialogRoot.Instance.PopupScenarioPickerDialogForScenarioSwitchInGame;
-
-        var goToMainMenuButton = root.Q<Button>("GoToMainMenuButton");
-        goToMainMenuButton.clicked += () => SceneManager.LoadScene("Main Menu");
 
         // var gamePreferenceRoot = root.Q<VisualElement>("GamePreferenceRoot");
         // gamePreferenceRoot.dataSource = GamePreference.Instance;
@@ -179,13 +178,33 @@ public class TopTabs : SingletonDocument<TopTabs>
             });
         };
 
+        var goToMainMenuButton = root.Q<Button>("GoToMainMenuButton");
+        // goToMainMenuButton.clicked += () => SceneManager.LoadScene("Main Menu");
+        goToMainMenuButton.clicked += () =>
+        {
+            DialogRoot.Instance.PopupConfirmDialog(Localize(
+                "Confirm to return to main menu?"
+            ), () =>
+                {
+                    SceneManager.LoadScene("Main Menu");
+                }
+            );
+        };
+
         root.Q<Button>("ReturnToStrategicGameButton").clicked += () =>
         {
-            // StrategicGameManager.startupConfig.mode = StrategicGameManager.StartupConfig.Mode.Empty;
-            StrategicGameManager.startupConfig.syncShipLogs = NavalGameState.Instance.shipLogs;
-            StrategicGameManager.startupConfig.victoryStatus = VictoryStatus.Generate(NavalGameState.Instance);
+            // StrategicGameManager.startupConfig.syncShipLogs = NavalGameState.Instance.shipLogs;
+            // StrategicGameManager.startupConfig.victoryStatus = VictoryStatus.Generate(NavalGameState.Instance);
 
-            SceneManager.LoadScene("Strategic Game");
+            // SceneManager.LoadScene("Strategic Game");
+
+            DialogRoot.Instance.PopupConfirmDialog("Confirm to conclude the battle and return to strategic game?", () =>
+            {
+                StrategicGameManager.startupConfig.syncShipLogs = NavalGameState.Instance.shipLogs;
+                StrategicGameManager.startupConfig.victoryStatus = VictoryStatus.Generate(NavalGameState.Instance);
+
+                SceneManager.LoadScene("Strategic Game");
+            });
         };
 
         root.Q<Button>("GamePreferenceButton").clicked += DialogRoot.Instance.PopupGamePreferenceDialog;
@@ -193,6 +212,13 @@ public class TopTabs : SingletonDocument<TopTabs>
         root.Q<Button>("ClearTrajectoriesButton").clicked += GameManager.Instance.ClearShipLogTrajectories;
 
         root.Q<Button>("EventEditorDialogButton").clicked += DialogRoot.Instance.PopupEventStateEditorDialog;
+
+        root.Q<Button>("FAQButton").clicked += () => DialogRoot.Instance.PopupFAQDialogDocument();
+
+        root.Q<Button>("AIButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupAIDialog();
+        };
     }
 
     void OnSaveButtonClicked(bool editSave=false)

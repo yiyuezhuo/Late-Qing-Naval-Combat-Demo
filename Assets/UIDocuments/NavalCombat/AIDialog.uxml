@@ -1,0 +1,20 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="AIDialog, Assembly-CSharp" class="panel-dialog">
+        <ui:Label text="AI Selection Dialog" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(29457016264757248)" />
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="It is used to quickly set top-level movement automation. Other types and hierarchies of automation can be configured in the OOB Editor." style="white-space: normal;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(29441593993498624)" />
+            </Bindings>
+        </ui:Label>
+        <ui:ListView binding-source-selection-mode="AutoAssign" name="AIDialogItemListView" item-template="project://database/Assets/UIDocuments/Templates/AIDialogItem.uxml?fileID=9197481963319205126&amp;guid=056a32fa6331e464dbd5fcff74900c67&amp;type=3#AIDialogItem" data-source-path="items" virtualization-method="DynamicHeight" show-border="true" style="flex-grow: 1;" />
+        <ui:Button text="Confirm" name="ConfirmButton">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+            </Bindings>
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

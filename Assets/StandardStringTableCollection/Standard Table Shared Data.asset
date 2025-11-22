@@ -2033,6 +2033,19 @@ MonoBehaviour:
     m_Key: Port
     m_Metadata:
       m_Items: []
+  - m_Id: 29441593993498624
+    m_Key: It is used to quickly set top-level movement automation. Other types and
+      hierarchies of automation can be configured in the group doctrine of OOB Editor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29444952267853824
+    m_Key: Manual
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29445070475923456
+    m_Key: Automatical
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

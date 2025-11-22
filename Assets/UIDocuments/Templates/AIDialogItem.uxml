@@ -1,0 +1,24 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="AIDialogItem, Assembly-CSharp" style="flex-grow: 1;">
+        <ui:Label text="Group Name">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:RadioButtonGroup value="0">
+            <ui:RadioButton label="Manual" value="true">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(29444952267853824)" />
+                </Bindings>
+            </ui:RadioButton>
+            <ui:RadioButton label="Automatical">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(29445070475923456)" />
+                </Bindings>
+            </ui:RadioButton>
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="movementAutomaticalIndex" binding-mode="TwoWay" />
+            </Bindings>
+        </ui:RadioButtonGroup>
+    </ui:VisualElement>
+</ui:UXML>

@@ -2118,6 +2118,20 @@ MonoBehaviour:
     m_Localized: Port
     m_Metadata:
       m_Items: []
+  - m_Id: 29441593993498624
+    m_Localized: It is used to quickly set top-level movement automation. Other types
+      and hierarchies of automation can be configured in the group doctrine of OOB
+      Editor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29444952267853824
+    m_Localized: Manual
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29445070475923456
+    m_Localized: Automatical
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

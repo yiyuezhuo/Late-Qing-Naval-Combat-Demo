@@ -206,3 +206,7 @@
     margin-right: 0;
     margin-left: 0;
 }
+
+.long-dropdown {
+    width: 150px;
+}

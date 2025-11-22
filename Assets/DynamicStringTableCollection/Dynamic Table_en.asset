@@ -2174,6 +2174,14 @@ MonoBehaviour:
     m_Localized: 'Repair (Failed, Prob={0}): {1}'
     m_Metadata:
       m_Items: []
+  - m_Id: 14776414064250880
+    m_Localized: Confirm to return to main menu?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14776479621222400
+    m_Localized: Confirm to conclude the battle and return to strategic game?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

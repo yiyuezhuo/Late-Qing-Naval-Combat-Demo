@@ -71,7 +71,14 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
         root.Q<Button>("ReturnToMainMenuButton").clicked += () =>
         {
-            SceneManager.LoadScene("Main Menu");
+            // if(DialogRoot.D)
+            DialogRoot.Instance.PopupConfirmDialog(Localize(
+                "Confirm to return to main menu?"
+            ), () =>
+                {
+                    SceneManager.LoadScene("Main Menu");
+                }
+            );
         };
 
         root.Q<Button>("TPSGeoreferencingButton").clicked += () =>
@@ -182,6 +189,8 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             DialogRoot.Instance.PopupOOBTreeDialog();
         };
     }
+
+    static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
     bool CheckHasPendingNavalCombatAndPopupIfAny()
     {

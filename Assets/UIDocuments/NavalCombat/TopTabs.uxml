@@ -14,6 +14,7 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(60672865636352)" />
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="AI" name="AIButton" />
                     <ui:Button text="Set Course (Shift + Left Click)" name="SetCourseButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(60764813168640)" />
@@ -39,6 +40,12 @@
                     <ui:Button text="Victory Status" name="VictoryStatusButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61178581258240)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Return to Strategic Game" name="ReturnToStrategicGameButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(64130729545728)" />
+                            <ui:DataBinding property="enabledSelf" data-source-path="isFromStrategic" binding-mode="ToTarget" />
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Run Debug Script" name="RunDebugScriptButton">
@@ -73,12 +80,6 @@
                     <ui:Button text="Go to Main Menu" name="GoToMainMenuButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(64033224560640)" />
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Return to Strategic Game" name="ReturnToStrategicGameButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(64130729545728)" />
-                            <ui:DataBinding property="enabledSelf" data-source-path="isFromStrategic" binding-mode="ToTarget" />
                         </Bindings>
                     </ui:Button>
                 </ui:VisualElement>
@@ -182,6 +183,7 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62414676201472)" />
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="FAQ" name="FAQButton" />
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7671924822016)" />

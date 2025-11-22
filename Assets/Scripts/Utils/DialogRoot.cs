@@ -214,17 +214,35 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset navalCombatResolverDialogDocument;
     public VisualTreeAsset oobTreeDialogDocument;
     public VisualTreeAsset landBattleDialogDocument;
+    public VisualTreeAsset aiDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void PopupAIDialog()
+    {
+        var topShipGroups = NavalGameState.Instance.shipGroups.Where(g => g.parentObjectId == null);
+        var items = topShipGroups.Select(g => new AIDialogItem(){topGroup=g}).ToList();
+        var aiDialog = new AIDialog()
+        {
+            items = items
+        };
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=aiDialogDocument,
+            templateDataSource=aiDialog
+        };
+        
+        tempDialog.Popup();
     }
 
     public void PopupLandBattleDialog(LandBattle landBattle)

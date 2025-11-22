@@ -1,4 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
     <ui:VisualElement data-source-type="NavalCombatCore.Doctrine, Assembly-CSharp" style="flex-grow: 0; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); padding-left: 1px; padding-right: 1px; margin-left: 1px; margin-right: 1px;">
         <ui:Label text="Doctrine">
             <Bindings>
@@ -21,7 +22,7 @@
                     <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
                 </Bindings>
             </ui:Toggle>
-            <LocalizedEnumField type-str="NavalCombatCore.AutomaticType">
+            <LocalizedEnumField type-str="NavalCombatCore.AutomaticType" class="long-dropdown">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="value" source-to-ui-converters="AutomaticType =&gt; int" ui-to-source-converters="int =&gt; AutomaticType" binding-mode="TwoWay" />
                     <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
@@ -44,7 +45,7 @@
                     <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
                 </Bindings>
             </ui:Toggle>
-            <LocalizedEnumField type-str="NavalCombatCore.AutomaticType">
+            <LocalizedEnumField type-str="NavalCombatCore.AutomaticType" class="long-dropdown">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="value" source-to-ui-converters="AutomaticType =&gt; int" ui-to-source-converters="int =&gt; AutomaticType" binding-mode="TwoWay" />
                     <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
@@ -68,7 +69,7 @@
                 </Bindings>
             </ui:Toggle>
             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                <LocalizedEnumField type-str="NavalCombatCore.AutomaticType">
+                <LocalizedEnumField type-str="NavalCombatCore.AutomaticType" class="long-dropdown">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="value" source-to-ui-converters="AutomaticType =&gt; int" ui-to-source-converters="int =&gt; AutomaticType" binding-mode="TwoWay" />
                     </Bindings>

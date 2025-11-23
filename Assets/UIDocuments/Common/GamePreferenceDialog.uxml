@@ -69,6 +69,12 @@
                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22531724602413056)" />
                         </Bindings>
                     </ui:Toggle>
+                    <ui:Toggle label="Show AI Dialog when first loaded">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(29569167348371456)" />
+                            <ui:DataBinding property="value" data-source-path="showAIDialog" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181035691839488)" />
@@ -126,6 +132,30 @@
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="defenceCoef" binding-mode="TwoWay" />
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(192743994986496)" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Distance Coef">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="distanceCoef" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(29733244267827200)" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Extrapolate Seconds">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="extrapolateSeconds" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(29774939210551296)" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Combat Expected Range (Low, yard)">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="expectedCombatRangeYardLow" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(29814887477317632)" />
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField label="Combat Expected Range (High, yard)">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="expectedCombatRangeYardHigh" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(29815062811807744)" />
                                     </Bindings>
                                 </ui:FloatField>
                                 <ui:FloatField label="Auto Torpedo Firing Range Relaxed Coef">

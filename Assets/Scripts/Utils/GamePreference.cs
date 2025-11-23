@@ -9,6 +9,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UIElements;
+using UnityEngine;
+
 
 public class GamePreference
 {
@@ -67,6 +69,7 @@ public class GamePreference
     public bool earthDarkThemeEnabled => SuperGameState.Instance.IsInNavalGame();
 
     public bool forcedNavalCombatResolution = true;
+    public bool showAIDialog = true;
 
     public event EventHandler shortLabelLanguageTypeChanged;
 
@@ -155,4 +158,44 @@ public class GamePreference
         localeDropdownField.RegisterValueChangedCallback(evt => SwitchToLocaleByName(evt.newValue));
     }
 
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    public static void Setup()
+    {
+        var p = GamePreference.Instance;
+        p.forcedNavalCombatResolution = PlayerPrefs.GetInt("forcedNavalCombatResolution", 1) == 1;
+        p.showAIDialog = PlayerPrefs.GetInt("showAIDialog", 1) == 1;
+    }
+
+    public void SaveToPlayerPrefs()
+    {
+        PlayerPrefs.SetInt("forcedNavalCombatResolution", forcedNavalCombatResolution ? 1 : 0);
+        PlayerPrefs.SetInt("showAIDialog", showAIDialog ? 1 : 0);
+
+        PlayerPrefs.Save();
+    }
+
+    public void ResetPlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+}
+
+namespace NavalCombatCore
+{
+    public partial class CoreParameter
+    {
+        [CreateProperty]
+        public float expectedCombatRangeYardLow
+        {
+            get => LowLevelCoursePlanner.expectedCombatRangeYardLow;
+            set => LowLevelCoursePlanner.expectedCombatRangeYardLow = value;
+        }
+
+        [CreateProperty]
+        public float expectedCombatRangeYardHigh
+        {
+            get => LowLevelCoursePlanner.expectedCombatRangeYardHigh;
+            set => LowLevelCoursePlanner.expectedCombatRangeYardHigh = value;
+        }
+    }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using CoreUtils;
 using NavalCombatCore;
-using NUnit.Framework.Internal;
 
 namespace StrategicCombatCore
 {
@@ -115,15 +114,15 @@ namespace StrategicCombatCore
                 public LandUnit landUnit => landUnitBundle.landUnit;
                 public float GetLethality() => landUnitBundle.landUnit.GetLethality();
                 
-                static float menPerEqHex = 40;
-
                 public float GetEqHexWidth() => commitStrength / menPerEqHex;
                 public float GetMenPerEqHex() => menPerEqHex;
 
+                // SB Style parameters
+                public static float menPerEqHex = 40;
                 // SB-Style combat value
-                static float lowCombatValue = 6;
-                static float highCombatValue = 60;
-                static float combatValueBase = 10000;
+                public static float lowCombatValue = 6;
+                public static float highCombatValue = 60;
+                public static float combatValueBase = 10000;
 
                 public void Fire(RoleBundle target) // A SB style Fire (3 fires for a SB turn)
                 {

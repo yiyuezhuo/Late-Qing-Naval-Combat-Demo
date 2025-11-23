@@ -577,6 +577,11 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             StartCoroutine(GamePreference.Instance.SetupLocale(localeDropdownField));
         };
 
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            GamePreference.Instance.SaveToPlayerPrefs();
+        };
+
         tempDialog.Popup();
     }
 

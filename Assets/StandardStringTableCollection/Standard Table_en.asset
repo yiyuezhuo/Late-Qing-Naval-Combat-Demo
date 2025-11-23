@@ -2132,6 +2132,34 @@ MonoBehaviour:
     m_Localized: Automatical
     m_Metadata:
       m_Items: []
+  - m_Id: 29457016264757248
+    m_Localized: AI Selection Dialog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29569167348371456
+    m_Localized: Show AI Dialog when first loaded
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29733244267827200
+    m_Localized: Distance Coef
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29772178943283200
+    m_Localized: Ting Yuen vs Three View
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29774939210551296
+    m_Localized: Extrapolate Seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29814887477317632
+    m_Localized: Combat Expected Range (Low, yard)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29815062811807744
+    m_Localized: Combat Expected Range (High, yard)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

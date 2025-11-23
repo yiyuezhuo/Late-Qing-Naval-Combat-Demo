@@ -120,10 +120,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         public Mode mode = Mode.BuiltinScenName;
         public FullState fullState = null;
-        public string builtinScenName = "Battle of Yalu River.scen.xml";
+        // public string builtinScenName = "Battle of Yalu River.scen.xml";
         // public string builtinScenName = "Tutorial 1 - Single Ship.scen.xml";
         // public string builtinScenName = "Tutorial 2 - Ship Group.scen.xml";
         // public string builtinScenName = "Tutorial 3 - Combat.scen.xml";
+        public string builtinScenName = "Ting Yuen vs Three View.scen.xml";
         public LatLon cameraLocation;
         // public bool requireAutoDeployAll = false;
         public ScenarioDynamicSetupGenerator scenarioSetupGenerator;
@@ -223,6 +224,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             NavalGameState.Instance.scenarioState.firstLoaded = true;
             firstLoaded?.Invoke(this, EventArgs.Empty);
+
+            if(GamePreference.Instance.showAIDialog && navalGameState.shipGroups.Count > 0) // > 0 filter out "view only" mode implicitly
+            {
+                DialogRoot.Instance.PopupAIDialog();
+            }
         }
 
         TempFix();
@@ -293,9 +299,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
             var dayNightLevel = sunState.GetDayNightLevel();
 
-            hoveringLocationInfo = $"Lat: {latF} Lon: {lonF} UTC: {utcDT} Local: {localDT} ({dayNightLevel},{timeZoneOffsetF}) Sun Alt: {sunAltF} Azi: {sunAziF}";
+            // hoveringLocationInfo = $"Lat: {latF} Lon: {lonF} UTC: {utcDT} Local: {localDT} ({dayNightLevel},{timeZoneOffsetF}) Sun Alt: {sunAltF} Azi: {sunAziF}";
+            hoveringLocationInfo = Localize(
+                "Lat: {0} Lon: {1} UTC: {2} Local: {3} ({4},{5}) Sun Alt: {6} Azi: {7}",
+                latF, lonF, utcDT, localDT, dayNightLevel, timeZoneOffsetF, sunAltF, sunAziF
+            );
         }
     }
+
+    static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
     public float remainAdvanceSimulationSecondsRequestedByUserInput; // Requested by KeyCode 1-9 (1-9 min) and BackQuote (`) (1s)
     public float remainAdvanceSimulationSecondsRequestedByUpdate;

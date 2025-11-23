@@ -36,6 +36,7 @@ namespace NavalCombatCore
         public float attackCoef => CoreParameter.Instance.attackCoef;
         // public float defenceCoef = 1f;
         public float defenceCoef => CoreParameter.Instance.defenceCoef;
+        public float distanceCoef => CoreParameter.Instance.distanceCoef;
 
         public class ExtrapolatedRecord : IDF4Model
         {
@@ -248,12 +249,18 @@ namespace NavalCombatCore
             var distanceYards = (float)MeasureStats.Approximation.HaversineDistanceYards(shooter, target);
             var shooterToTargetBearingRelativeToBowDeg = MeasureUtils.GetPositiveAngleDifference((float)MeasureStats.Approximation.CalculateInitialBearing(shooter, target), shooter.headingDeg);
 
-            var distanceScore = Math.Max(0, (36000 - distanceYards) / 36000);
+            var distanceScore = Math.Max(0, (36000 - distanceYards) / 36000); // 1 ~ 0 (0 yards ~ 36000 yards)
             var angleScore = shooter.EvaluateSmoothedFirepower(shooterToTargetBearingRelativeToBowDeg);
             var firepowerScore = distanceScore * angleScore;
             var valueScore = target.firepowerScore / target.survivability;
             return firepowerScore * valueScore;
         }
+
+        // public enum AttackScoreMode
+        // {
+        //     Attacker,
+        //     Defender
+        // }
 
         public float EvaluateAttackScore(ExtrapolatedRecord shooter, List<ExtrapolatedRecord> targets)
         {
@@ -265,11 +272,52 @@ namespace NavalCombatCore
             return shooters.Sum(s => EvaluateAttackScore(s, targets));
         }
 
+        public static float expectedCombatRangeYardLow = 3500;
+        public static float expectedCombatRangeYardHigh = 12000;
+
+        public float EvaluateDistanceScore(ExtrapolatedRecord shooter, List<ExtrapolatedRecord> targets)
+        {
+            if(targets.Count == 0)
+                return 0;
+
+            var minDistYard = targets.Min(target => (float)MeasureStats.Approximation.HaversineDistanceYards(shooter, target));
+            // var minDistYard = targets.Select(target => (float)MeasureStats.Approximation.HaversineDistanceYards(shooter, target)).DefaultIfEmpty(0).Max();
+            
+            // var distScore = 0f;
+            // if(minDistYard < expectedCombatRangeYardLow)
+            //     distScore = minDistYard / expectedCombatRangeYardLow; // Prefer to keep > 2000 yards
+            // if(minDistYard < expectedCombatRangeYardHigh)
+            //     distScore = 1; // Make no preference for (2000, 8000) yards
+            // distScore = (expectedCombatRangeYardHigh + expectedCombatRangeYardLow - minDistYard) / expectedCombatRangeYardLow; // 2000 ~ 0 (8000 yards ~ 10000 yards) (prefer at least keep contact)
+            var distScore = 0f;
+            if(minDistYard < expectedCombatRangeYardLow)
+            {
+                distScore = MathF.Log(Math.Max(minDistYard, 1) / expectedCombatRangeYardLow); // Prefer to keep > 2000 yards
+            }
+            else if(minDistYard < expectedCombatRangeYardHigh)
+            {
+                distScore = 1; // Make no preference for (2000, 8000) yards
+            }
+            else
+            {
+                distScore = (expectedCombatRangeYardHigh - minDistYard) / expectedCombatRangeYardLow; // 2000 ~ 0 (8000 yards ~ 10000 yards) (prefer at least keep contact)
+            }
+
+            return distScore * shooter.survivability;
+        }
+
+        public float EvaluateDistanceScore(List<ExtrapolatedRecord> shooters, List<ExtrapolatedRecord> targets)
+        {
+            return shooters.Sum(shooter => EvaluateDistanceScore(shooter, targets));
+        }
+
         public float EvaluateFirefightScore(List<ExtrapolatedRecord> freidnly, List<ExtrapolatedRecord> enemy)
         {
             var attackScore = EvaluateAttackScore(freidnly, enemy);
             var defenceScore = -EvaluateAttackScore(enemy, freidnly);
-            return attackScore * attackCoef + defenceScore * defenceCoef;
+            // return attackScore * attackCoef + defenceScore * defenceCoef;
+            var distanceScore = EvaluateDistanceScore(freidnly, enemy);
+            return attackScore * attackCoef + defenceScore * defenceCoef + distanceScore * distanceCoef;
         }
 
         public class TrialRecord

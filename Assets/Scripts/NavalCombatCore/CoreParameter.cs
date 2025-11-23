@@ -4,7 +4,7 @@ using System;
 
 namespace NavalCombatCore
 {
-    public class CoreParameter
+    public partial class CoreParameter
     {
         static CoreParameter instance = new CoreParameter();
         public static CoreParameter Instance => instance;
@@ -17,6 +17,8 @@ namespace NavalCombatCore
         public float attackCoef = 1f;
         // public float defenceCoef = 1f;
         public float defenceCoef = 0.1f;
+        public float distanceCoef = 1;
+        public float extrapolateSeconds=360;
         public float globalHitCoef = 1f;
 
         public float automaticTorpedoFiringRangeRelaxedCoef = 2.5f;

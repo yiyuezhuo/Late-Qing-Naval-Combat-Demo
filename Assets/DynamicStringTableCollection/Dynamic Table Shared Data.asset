@@ -2173,6 +2173,10 @@ MonoBehaviour:
     m_Key: Confirm to conclude the battle and return to strategic game?
     m_Metadata:
       m_Items: []
+  - m_Id: 14952757292863488
+    m_Key: 'Lat: {0} Lon: {1} UTC: {2} Local: {3} ({4},{5}) Sun Alt: {6} Azi: {7}'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

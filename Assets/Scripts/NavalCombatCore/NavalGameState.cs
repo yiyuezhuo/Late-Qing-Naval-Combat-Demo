@@ -352,7 +352,7 @@ namespace NavalCombatCore
                     planner.Plan(
                         meShipLogs.Where(s => s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic),
                         otherShipLogs,
-                        360
+                        CoreParameter.Instance.extrapolateSeconds
                     ); // Extrapolate 360s
                 }
             }

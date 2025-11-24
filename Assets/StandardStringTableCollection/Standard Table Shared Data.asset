@@ -2074,6 +2074,22 @@ MonoBehaviour:
     m_Key: Combat Expected Range (High, yard)
     m_Metadata:
       m_Items: []
+  - m_Id: 30180907463380992
+    m_Key: Suppression
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30180994474217472
+    m_Key: Fatigue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30181108206964736
+    m_Key: Morale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30245956232056832
+    m_Key: Land Battle
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -81,6 +81,18 @@
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(352622210617344)" />
                                         </Bindings>
                                     </ui:IntegerField>
+                                    <ui:Slider label="Suppression" high-value="1" show-input-field="true" fill="true">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="suppression" binding-mode="TwoWay" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30180907463380992)" />
+                                        </Bindings>
+                                    </ui:Slider>
+                                    <ui:Slider label="Fatigue" high-value="1" show-input-field="true" fill="true">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="fatigue" binding-mode="TwoWay" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30180994474217472)" />
+                                        </Bindings>
+                                    </ui:Slider>
                                 </ui:VisualElement>
                                 <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
                                     <ui:Toggle label="Manual Override">
@@ -89,6 +101,12 @@
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22822124227563520)" />
                                         </Bindings>
                                     </ui:Toggle>
+                                    <ui:Slider label="Morale" high-value="1" show-input-field="true" fill="true">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="morale" binding-mode="TwoWay" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30181108206964736)" />
+                                        </Bindings>
+                                    </ui:Slider>
                                     <ui:DoubleField label="Transfer Weight (tons)" enabled="false">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="transferWeightTons" binding-mode="ToTarget" />

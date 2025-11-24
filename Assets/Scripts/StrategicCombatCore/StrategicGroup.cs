@@ -247,6 +247,12 @@ namespace StrategicCombatCore
         public bool IsNavy() => type == Type.Fleet;
         public bool IsArmy() => type != Type.Fleet;
 
+        public bool IsIndependent() => deployState == DeployState.Independent;
+
+        /// <summary>
+        /// Is On Map (Independent or as combined sub unit in the another independent group)
+        /// </summary>
+        /// <returns></returns>
         public bool IsOnMap()
         {
             var pt = this;

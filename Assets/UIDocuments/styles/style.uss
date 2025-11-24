@@ -210,3 +210,17 @@
 .long-dropdown {
     width: 150px;
 }
+
+.unity-radio-button__checkmark-background {
+    width: 18px;
+    height: 18px;
+    padding-top: 3px;
+    padding-bottom: 0;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.unity-radio-button__checkmark {
+    width: 9px;
+    height: 9px;
+}

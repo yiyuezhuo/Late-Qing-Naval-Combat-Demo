@@ -2160,6 +2160,22 @@ MonoBehaviour:
     m_Localized: Combat Expected Range (High, yard)
     m_Metadata:
       m_Items: []
+  - m_Id: 30180907463380992
+    m_Localized: Suppression
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30180994474217472
+    m_Localized: Fatigue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30181108206964736
+    m_Localized: Morale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30245956232056832
+    m_Localized: Land Battle
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

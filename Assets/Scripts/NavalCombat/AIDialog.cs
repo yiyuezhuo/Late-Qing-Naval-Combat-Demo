@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using NavalCombatCore;
 using Unity.Properties;
+using UnityEngine.UIElements;
 
 public class AIDialogItem
 {

@@ -239,8 +239,9 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             root=root,
             template=aiDialogDocument,
-            templateDataSource=aiDialog
+            templateDataSource=aiDialog,
         };
+        // tempDialog.onCreated += aiDialog.OnCreated;
         
         tempDialog.Popup();
     }
@@ -260,6 +261,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             template = landBattleDialogDocument,
             templateDataSource = landBattleDialog,
         };
+
+        tempDialog.onCreated += landBattleDialog.OnCreated;
 
         tempDialog.Popup();
     }

@@ -20,7 +20,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1;">
-            <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="landUnitBundles" item-template="project://database/Assets/UIDocuments/Templates/LandUnitBundleTemplate.uxml?fileID=9197481963319205126&amp;guid=64bc5901d82a16e46a6bc306e67b22ac&amp;type=3#LandUnitBundleTemplate" fixed-item-height="34" style="flex-grow: 1;" />
+            <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="landUnitBundles" item-template="project://database/Assets/UIDocuments/Templates/LandUnitBundleTemplate.uxml?fileID=9197481963319205126&amp;guid=64bc5901d82a16e46a6bc306e67b22ac&amp;type=3#LandUnitBundleTemplate" fixed-item-height="34" name="LandUnitBundleListView" style="flex-grow: 1;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

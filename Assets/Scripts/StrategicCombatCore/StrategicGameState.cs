@@ -424,9 +424,18 @@ namespace StrategicCombatCore
 
             RefreshPendingNavalCombats();
 
+            RestoreLandUnitEffectivness(); // Restore here so player can check states after damage
+
             HandleLandBattleBeginEnd();
         }
-        
+
+        void RestoreLandUnitEffectivness()
+        {
+           foreach(var landUnit in IterOnMapLandUnits())
+            {
+                landUnit.RestoreEffectivness();
+            }
+        }
 
         public void Advance1HourForRepair()
         {
@@ -1000,6 +1009,17 @@ namespace StrategicCombatCore
         public IEnumerable<StrategicGroup> IterIndependentStrategicGroups()
         {
             return strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent);
+        }
+
+        public IEnumerable<LandUnit> IterOnMapLandUnits()
+        {
+            foreach(var group in IterIndependentStrategicGroups())
+            {
+                foreach(var landUnit in group.WalkGroupMembers<LandUnit>())
+                {
+                    yield return landUnit;
+                }
+            }
         }
 
         public void CreateDefaultAndResetShipLogStates()

@@ -12,8 +12,13 @@ namespace StrategicCombatCore
         public string objectId { get; set; }
         public GlobalString name = new();
         public int strength;
-        // public int strength;
         public bool strengthManualOverride;
+
+        // Effectivenss
+        public float suppression; // 0.0~1.0 (0%~100%), generally used in 1 hour combat resolution, restored after 1 hour.
+        public float morale = 1; // 0.0~1.0 (0%~100%)
+        public float fatigue; // 0.0~1.0 (0%~100%)
+        
         public double supplyTons;
         public double supplyGeneratedTons; // Super Depot generate ~10,000 tons supply (Freight)
         public string remark;
@@ -32,6 +37,24 @@ namespace StrategicCombatCore
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
             yield break;
+        }
+
+        /// <summary>
+        /// Restore suppression, morale, fatigue
+        /// </summary>
+        public void RestoreEffectivness()
+        {
+            if(strength <= 0)
+            {
+                suppression = 1;
+                morale = 0;
+                fatigue = 1;
+                return;
+            }
+
+            suppression = Math.Max(0, suppression - Math.Max(0.25f, suppression * 0.8f)); // -80% of max suppression of 25% suppression
+            morale = Math.Min(1, morale + 0.1f); // +10% morale per turn
+            fatigue = Math.Max(0, fatigue - 0.025f); // -2.5% fatigue per turn
         }
 
         public float GetFirepower(IFirepowerContext ctx)
@@ -161,7 +184,11 @@ namespace StrategicCombatCore
             var template = GetLandUnitTemplate();
             if(template != null && template.strength > 0)
             {
-                return template.GetLethality() * strength / template.strength;
+                var leth = template.GetLethality() * strength / template.strength;
+                leth *= suppression / 2 + 0.5f; // 0~100% suppression (-0%~-50%) leth
+                leth *= morale / 2 + 0.5f;
+                leth *= fatigue / 2 + 0.5f;
+                return leth;
             }
             return 0;
         }

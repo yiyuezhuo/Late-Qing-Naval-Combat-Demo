@@ -591,11 +591,29 @@ namespace StrategicCombatCore
             [CreateProperty]
             public StyleBackground icon => landUnit?.GetLandUnitTemplate()?.typeIcon ?? null;
 
+            // [CreateProperty]
+            // public string desc => $"{landUnit.name.GetShortName()}";
             [CreateProperty]
-            public string desc => $"{landUnit.name.GetShortName()}";
+            public string desc => $"<link=\"nameLink\"><color=#40a0ff><u>{landUnit.name.GetShortName()}</u></color></link>";
+
 
             [CreateProperty]
             public string desc2 => $"S: {landUnit.strength}, L: {battleUnitState.accumulatedStrengthLoss} (+{battleUnitState.currentStrengthLoss}) CM:{chanceCostModifier:+0.00%;-0.00%;0.00%}, TM: {tacticalModifier:+0.00%;-0.00%;0.00%}";
+
+            [CreateProperty]
+            public Length strengthPercent => new Length(
+                ((float)landUnit.strength) / Math.Max(1, landUnit.strength + battleUnitState.accumulatedStrengthLoss) * 100,
+                LengthUnit.Percent
+            );
+
+            [CreateProperty]
+            public Length suppressionSuppPercent => new Length((1 - landUnit.suppression) * 100, LengthUnit.Percent);
+
+            [CreateProperty]
+            public Length moralePercent => new Length(landUnit.morale * 100, LengthUnit.Percent);
+
+            [CreateProperty]
+            public Length fatigueSuppPercent => new Length((1 - landUnit.fatigue) * 100, LengthUnit.Percent);
         }
 
         [CreateProperty]

@@ -28,10 +28,13 @@ public class LandBattleDialog
         get
         {
             var beginDateTimeStr = CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(landBattle.beginDateTime);
-            var endDateTimeStr = landBattle.end ? CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(landBattle.endDateTime) : "(Continued)";
+            var endDateTimeStr = landBattle.end ? CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(landBattle.endDateTime) : "now";
             return $"{beginDateTimeStr} - {endDateTimeStr}";
         }
     }
+
+    [CreateProperty]
+    public string summary => $"Attacker Situation: {landBattle.attackerSituation:+0.00%;-0.00%;0.00%}";
 
     public void OnCreated(object sender, VisualElement root)
     {

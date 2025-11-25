@@ -12,6 +12,11 @@
                 <ui:DataBinding property="text" data-source-path="dateTimeRange" binding-mode="ToTarget" />
             </Bindings>
         </ui:Label>
+        <ui:Label text="Summary" style="-unity-text-align: upper-center;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="summary" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:Instance template="LandBattleSideStateDynamicTemplate" data-source-path="attacker" style="flex-basis: 100px; flex-grow: 1;" />
             <ui:Instance template="LandBattleSideStateDynamicTemplate" data-source-path="defender" style="flex-grow: 1; flex-basis: 100px;" />

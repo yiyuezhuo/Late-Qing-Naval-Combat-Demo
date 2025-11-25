@@ -44,6 +44,7 @@ namespace StrategicCombatCore
 
         public bool end;
         public bool attackerVictory;
+        public float attackerSituation; // global tactical modifier from viewpoint of the attacker
         public DateTime beginDateTime;
         public DateTime endDateTime;
 
@@ -59,14 +60,14 @@ namespace StrategicCombatCore
         public LandBattleSideStateDynamic GetAttackerDynamic()
         {
             LandBattleSideStateDynamic ret = new();
-            ret.Initialize(GetCell(), attacker);
+            ret.Initialize(GetCell(), attacker, this);
             return ret;
         }
 
         public LandBattleSideStateDynamic GetDefenderDynamic()
         {
             LandBattleSideStateDynamic ret = new();
-            ret.Initialize(GetCell(), defender);
+            ret.Initialize(GetCell(), defender, this);
             return ret;
         }
 
@@ -87,7 +88,7 @@ namespace StrategicCombatCore
                 var attackerInitiative = RandomUtils.NextFloat() < atkChancePercent;
                 var (initiative, passive) = attackerInitiative ? (atk, def) : (def, atk);
                 
-                var subCombat = initiative.GenerateSubCombatAsInitiative(passive);
+                var subCombat = initiative.GenerateSubCombatAsInitiative(passive, attackerInitiative);
                 if(subCombat == null)
                 {
                     break;

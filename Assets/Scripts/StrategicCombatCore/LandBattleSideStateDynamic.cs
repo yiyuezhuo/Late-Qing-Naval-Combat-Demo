@@ -30,6 +30,7 @@ namespace StrategicCombatCore
 
         public partial class LandUnitBundle
         {
+            public LandBattleSideStateDynamic sideStateDynamic;
             public LandUnit landUnit;
             // Reference LandBattleUnitState?
             public LandBattleUnitState battleUnitState; 
@@ -80,6 +81,9 @@ namespace StrategicCombatCore
         {
             public class RoleBundle
             {
+                public LandBattleSubCombat subCombat;
+                public bool isGlobalAttacker;
+                public bool isLocalInitiative;
                 public LandUnitBundle landUnitBundle;
                 public int commitStrength;
 
@@ -113,6 +117,22 @@ namespace StrategicCombatCore
 
                     target.InflictStrengthLoss(inflictLoss);
                     target.InflictEffectivenessLoss(inflictLossF);
+
+                    // Handle breakthrough which push the situation (progression)
+                    if(isLocalInitiative && landUnit.suppression < 0.5f && landUnit.morale > 0.5f && target.landUnit.suppression > 0.5f && target.landUnit.morale < 0.5f)
+                    {
+                        var chancePercent = subCombat.chanceUsage / Math.Max(1, target.landUnitBundle.sideStateDynamic.maxChance);
+                        var landBattle = landUnitBundle.sideStateDynamic.landBattle;
+                        if(isGlobalAttacker)
+                        {
+                            landBattle.attackerSituation += chancePercent;
+                        }
+                        else
+                        {
+                            landBattle.attackerSituation -= chancePercent;
+                        }
+                        landBattle.attackerSituation = Math.Clamp(landBattle.attackerSituation, -1, 1);
+                    }
                 }
 
                 public void InflictStrengthLoss(int inflictLoss)
@@ -163,7 +183,7 @@ namespace StrategicCombatCore
             }
         }
 
-
+        public LandBattle landBattle;
         public Cell cell;
         public StrategicGroupBundle leadingGroupBundle = new(); // group has highest flatten command cost
         public List<StrategicGroupBundle> topGroupBundles = new();
@@ -178,8 +198,9 @@ namespace StrategicCombatCore
         LandBattleSideState battleSideState;
         Dictionary<string, LandBattleUnitState> idToBattleUnitState;
 
-        public void Initialize(Cell cell, LandBattleSideState battleSideState)
+        public void Initialize(Cell cell, LandBattleSideState battleSideState, LandBattle landBattle)
         {
+            this.landBattle = landBattle;
             this.cell = cell;
             this.battleSideState = battleSideState;
             idToBattleUnitState = battleSideState.unitStates.ToDictionary(s => s.unitId, s => s);
@@ -263,6 +284,7 @@ namespace StrategicCombatCore
                     }
                     var landUnitBundle = new LandUnitBundle()
                     {
+                        sideStateDynamic = this,
                         landUnit = landUnit,
                         battleUnitState=battleUnitState,
                         parent = parentBundle
@@ -314,11 +336,6 @@ namespace StrategicCombatCore
             }
         }
 
-        // public float GetChance()
-        // {
-        //     return landUnitBundles.Sum(b => b.landUnit.GetDirectCommandUsage()); // TODO: Use an independent value to differentiate unit-level command difficulty and chance value?
-        // }
-
         public float chancePercent => chance / maxChance;
 
         public LandUnitBundle RollSubCombatTarget()
@@ -339,10 +356,28 @@ namespace StrategicCombatCore
             return RandomUtils.Sample(validLandUnitBundles, weights);
         }
 
-        public LandBattleSubCombat GenerateSubCombatAsInitiative(LandBattleSideStateDynamic other)
+        float GetRefCommitOdd(float attackerSituation)
+        {
+            if(attackerSituation >= 0)
+            {
+                if(RandomUtils.NextFloat() > 0.5f * (1 - attackerSituation))
+                {
+                    return RandomUtils.NextFloat() * 1 + 1 + attackerSituation;
+                }
+                else
+                {
+                    return 1 / (RandomUtils.NextFloat() * (1 - attackerSituation) + 1 );
+                }
+            }
+            return 1 / GetRefCommitOdd(-attackerSituation);
+        }
+
+        public LandBattleSubCombat GenerateSubCombatAsInitiative(LandBattleSideStateDynamic other, bool attackerInitiative)
         {
             var target = new LandBattleSubCombat.RoleBundle()
             {
+                isGlobalAttacker=!attackerInitiative,
+                isLocalInitiative=false,
                 landUnitBundle=other.RollSubCombatTarget()
             };
             if(target.landUnitBundle == null)
@@ -350,16 +385,22 @@ namespace StrategicCombatCore
 
             var attacker = new LandBattleSubCombat.RoleBundle()
             {
+                isGlobalAttacker=attackerInitiative,
+                isLocalInitiative=true,
                 landUnitBundle=RollSubCombatAttacker() // TODO: Introduce postive correlation for history engagement?
             };
             if(attacker.landUnitBundle == null)
                 return null;
 
-            var refCommitOdd = RandomUtils.NextFloat() * 1 + 1; // 1:1 ~ 2:1
-            if(RandomUtils.NextFloat() <= 0.5f)
-            {
-                refCommitOdd = 1 / refCommitOdd;
-            }
+            var attackerSituation = Math.Clamp(landBattle.attackerSituation, -1, 1);
+
+            // var refCommitOdd = RandomUtils.NextFloat() * 1 + 1; // 1:1 ~ 2:1
+            // if(RandomUtils.NextFloat() <= 0.5f)
+            // {
+            //     refCommitOdd = 1 / refCommitOdd;
+            // }
+
+            var refCommitOdd = GetRefCommitOdd(attackerSituation);
 
             var attackerCommitableStrength = attacker.GetCommitableStrength();
             var targetCommitableStrength = target.GetCommitableStrength();
@@ -370,12 +411,18 @@ namespace StrategicCombatCore
             attacker.commitStrength = Math.Max(1, attackerCommitStrength);
             target.commitStrength = Math.Max(1, targetCommitStrength);
 
-            return new()
+            var subCombat = new LandBattleSubCombat()
             {
                 attacker=attacker,
                 target=target,
                 chanceUsage=Math.Min(attackerCommitStrength, targetCommitStrength) // TODO: Use more detailed method
             };
+
+            // FIXME: Code smell...
+            attacker.subCombat = subCombat;
+            target.subCombat = subCombat;
+
+            return subCombat;
         }
 
         public override string ToString()

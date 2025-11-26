@@ -7,34 +7,49 @@ using NavalCombatCore;
 namespace StrategicCombatCore
 {
 
-    public class LandBattleUnitState // mainly logging for loss of engaged units
+    public partial class LandBattleUnitState // mainly logging for loss of engaged units
     {
         public string unitId;
         public int currentStrengthLoss;
         public int accumulatedStrengthLoss;
+        public int currentStrengthKill; // kill
+        public int accumulatedStrengthKill;
         // Current Strength is accessed from the concrete LandUnit
+
+        // frozen attributes
+        public int endStrength;
+        // public bool end;
 
         public LandUnit GetLandUnit() => EntityManager.Instance.Get<LandUnit>(unitId);
 
         public void StepResetState()
         {
             currentStrengthLoss = 0;
+            currentStrengthKill = 0;
         }
+
+        // public int GetStrength() => end ? endStrength : EntityManager.Instance.Get<LandUnit>(unitId)?.strength ?? 0;
     }
 
-    public class LandBattleSideState
+    public partial class LandBattleSideState
     {
         public string sideId;
         public List<LandBattleUnitState> unitStates = new();
-        public float globalTacticalModifier; // TODO: Represent it in Hex instead of Battle?
+        // public float globalTacticalModifier; // TODO: Represent it in Hex instead of Battle?
+
+        // frozen attributes
+        public string currentLeaderId; // set in dynamic resolve
+        public Country currentCountry;
+        // public bool end;
 
         public SideState GetSide() => EntityManager.Instance.Get<SideState>(sideId);
+        public Leader GetLeader() => EntityManager.Instance.Get<Leader>(currentLeaderId);
         public float GetTotalCurrentStrengthLoss() => unitStates.Sum(u => u.currentStrengthLoss);
         public float GetTotalAccumulatedStrengthLoss() => unitStates.Sum(u => u.accumulatedStrengthLoss);
     }
 
 
-    public class LandBattle : IObjectIdLabeled
+    public partial class LandBattle : IObjectIdLabeled
     {
         public string objectId { get; set; }
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
@@ -61,6 +76,7 @@ namespace StrategicCombatCore
         {
             LandBattleSideStateDynamic ret = new();
             ret.Initialize(GetCell(), attacker, this);
+
             return ret;
         }
 
@@ -68,6 +84,7 @@ namespace StrategicCombatCore
         {
             LandBattleSideStateDynamic ret = new();
             ret.Initialize(GetCell(), defender, this);
+
             return ret;
         }
 
@@ -98,9 +115,55 @@ namespace StrategicCombatCore
 
                 subCombat.Resolve();
                 foreach(var dynamic in dynamics)
+                {
                     dynamic.chance -= subCombat.chanceUsage;
-
+                }
             }
+
+            // Update log states
+            UpdateLogState(attacker, atk);
+            UpdateLogState(defender, def);
+
+            endDateTime = StrategicGameState.Instance.scenarioState.dateTime;
+        }
+
+        void UpdateLogState(LandBattleSideState landBattleSideState, LandBattleSideStateDynamic landBattleSideStateDyanmic)
+        {
+            landBattleSideState.currentLeaderId = landBattleSideStateDyanmic.battleLeader?.objectId;
+            landBattleSideState.currentCountry = landBattleSideStateDyanmic.country;
+
+            foreach(var landUnitBundle in landBattleSideStateDyanmic.landUnitBundles)
+            {
+                landUnitBundle.battleUnitState.endStrength = landUnitBundle.landUnit.strength;
+            }
+        }
+
+        public void GoToEnd()
+        {
+            end = true;
+            // endDateTime = StrategicGameState.Instance.scenarioState.dateTime;
+
+            // var attackerDynamic = GetAttackerDynamic();
+            // var defenderDynamic = GetDefenderDynamic();
+
+            // attacker.currentLeaderId = attackerDynamic.battleLeader.objectId;
+            // defender.currentLeaderId = defenderDynamic.battleLeader.objectId;
+            
+            // attacker.currentCountry = attackerDynamic.country;
+            // defender.currentCountry = defenderDynamic.country;
+
+            // attacker.end = true;
+            // defender.end = true;
+
+            // foreach(var landUnitBundle in attackerDynamic.landUnitBundles.Concat(defenderDynamic.landUnitBundles))
+            // {
+            //     landUnitBundle.battleUnitState.endStrength = landUnitBundle.landUnit.strength;
+            //     landUnitBundle.battleUnitState.end = true;
+            // }
+            // foreach(var unitState in attacker.unitStates.Concat(defender.unitStates))
+            // {
+            //     unitState.end = true;
+            // }
         }
     }
 }

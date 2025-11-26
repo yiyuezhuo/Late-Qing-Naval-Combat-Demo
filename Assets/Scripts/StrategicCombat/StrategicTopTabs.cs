@@ -175,8 +175,6 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             {
                 shipLog.supplyTons = shipLog.GetSupplyCapTons();
             }
-
-            
         };
 
         root.Q<Button>("PendingNavalCombatsButton").clicked += () =>
@@ -187,6 +185,11 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         root.Q<Button>("OOBTreeButton").clicked += () =>
         {
             DialogRoot.Instance.PopupOOBTreeDialog();
+        };
+
+        root.Q<Button>("LandBattleEditorButton").clicked += () =>
+        {
+            LandBattleEditor.Instance.Show();
         };
     }
 

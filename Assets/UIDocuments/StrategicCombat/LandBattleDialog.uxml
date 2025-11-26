@@ -1,27 +1,41 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="LandBattleSideStateDynamicTemplate" src="project://database/Assets/UIDocuments/Templates/LandBattleSideStateDynamicTemplate.uxml?fileID=9197481963319205126&amp;guid=4d91dd3a3a70490419ba52a845cb74ca&amp;type=3#LandBattleSideStateDynamicTemplate" />
-    <ui:VisualElement data-source-type="LandBattleDialog, Assembly-CSharp" class="panel-dialog" style="width: 700px; height: 500px;">
-        <ui:Label text="Land Battle" class="title" />
-        <ui:Label text="Land Battle Title" style="-unity-text-align: upper-center;">
+    <ui:Template name="LandBattleViewTemplate" src="project://database/Assets/UIDocuments/Templates/LandBattleViewTemplate.uxml?fileID=9197481963319205126&amp;guid=56d29b40cb985e745a83d011c11b992d&amp;type=3#LandBattleViewTemplate" />
+    <ui:VisualElement data-source-type="LandBattleDialogLazy, Assembly-CSharp" class="panel-dialog" style="width: 750px; height: 500px;">
+        <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+            <ui:VisualElement data-source-path="landBattleDialog" style="flex-grow: 1;">
+                <ui:Label text="Land Battle" class="title" />
+                <ui:Label text="Land Battle Title" style="-unity-text-align: upper-center;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="title" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="DateTime Range" style="-unity-text-align: upper-center;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="dateTimeRange" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="Summary" style="-unity-text-align: upper-center;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="summary" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:Instance template="LandBattleSideStateDynamicTemplate" data-source-path="attacker" name="AttackerState" style="flex-basis: 100px; flex-grow: 1;" />
+                    <ui:Instance template="LandBattleSideStateDynamicTemplate" data-source-path="defender" name="DefenderState" style="flex-grow: 1; flex-basis: 100px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
             <Bindings>
-                <ui:DataBinding property="text" data-source-path="title" binding-mode="ToTarget" />
+                <ui:DataBinding property="style.display" data-source-path="isLandBattleEnd" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
             </Bindings>
-        </ui:Label>
-        <ui:Label text="DateTime Range" style="-unity-text-align: upper-center;">
-            <Bindings>
-                <ui:DataBinding property="text" data-source-path="dateTimeRange" binding-mode="ToTarget" />
-            </Bindings>
-        </ui:Label>
-        <ui:Label text="Summary" style="-unity-text-align: upper-center;">
-            <Bindings>
-                <ui:DataBinding property="text" data-source-path="summary" binding-mode="ToTarget" />
-            </Bindings>
-        </ui:Label>
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-            <ui:Instance template="LandBattleSideStateDynamicTemplate" data-source-path="attacker" style="flex-basis: 100px; flex-grow: 1;" />
-            <ui:Instance template="LandBattleSideStateDynamicTemplate" data-source-path="defender" style="flex-grow: 1; flex-basis: 100px;" />
         </ui:VisualElement>
-        <ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+            <ui:Instance template="LandBattleViewTemplate" data-source-path="landBattle" style="flex-grow: 1;" />
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="isLandBattleEnd" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+            </Bindings>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-shrink: 0;">
             <ui:Button text="Confirm" name="ConfirmButton" />
         </ui:VisualElement>
     </ui:VisualElement>

@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement data-source-type="StrategicCombatCore.LandBattleSideStateDynamic, Assembly-CSharp" style="flex-grow: 1; flex-basis: 100px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-        <ui:VisualElement style="flex-direction: row; height: 90px;">
-            <ui:VisualElement name="LeaderPortrait" style="flex-basis: 75px; -unity-background-scale-mode: scale-to-fit;">
+    <ui:VisualElement data-source-type="StrategicCombatCore.LandBattleSideState, Assembly-CSharp" style="flex-grow: 1;">
+        <ui:VisualElement style="flex-direction: row; flex-basis: 100px;">
+            <ui:VisualElement style="flex-basis: 100px; -unity-background-scale-mode: scale-to-fit;">
                 <Bindings>
                     <ui:DataBinding property="style.backgroundImage" data-source-path="leaderPortrait" binding-mode="ToTarget" />
                 </Bindings>
@@ -12,15 +12,13 @@
                 </Bindings>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1;">
-                <ui:Label text="Summary" style="white-space: normal;">
+                <ui:Label text="Side Summary" style="white-space: normal;">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="summary" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:Label>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1;">
-            <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="landUnitBundles" item-template="project://database/Assets/UIDocuments/Templates/LandUnitBundleTemplate.uxml?fileID=9197481963319205126&amp;guid=64bc5901d82a16e46a6bc306e67b22ac&amp;type=3#LandUnitBundleTemplate" fixed-item-height="34" name="LandUnitBundleListView" style="flex-grow: 1;" />
-        </ui:VisualElement>
+        <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="unitStates" item-template="project://database/Assets/UIDocuments/Templates/LandBattleUnitState.uxml?fileID=9197481963319205126&amp;guid=1f06aa44eb122c548b9d8f64a634526e&amp;type=3#LandBattleUnitState" virtualization-method="DynamicHeight" style="flex-grow: 1;" />
     </ui:VisualElement>
 </ui:UXML>

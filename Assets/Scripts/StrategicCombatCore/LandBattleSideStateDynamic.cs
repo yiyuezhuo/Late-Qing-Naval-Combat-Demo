@@ -115,6 +115,8 @@ namespace StrategicCombatCore
 
                     ServiceLocator.Get<ILoggerService>().Log($"Fire: {this} -> {target}: {inflictLoss}");
 
+                    landUnitBundle.battleUnitState.currentStrengthKill += inflictLoss;
+                    landUnitBundle.battleUnitState.accumulatedStrengthKill += inflictLoss;
                     target.InflictStrengthLoss(inflictLoss);
                     target.InflictEffectivenessLoss(inflictLossF);
 

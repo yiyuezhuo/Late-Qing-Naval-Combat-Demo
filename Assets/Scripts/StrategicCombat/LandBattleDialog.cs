@@ -1,7 +1,49 @@
+using CoreUtils;
 using NavalCombatCore;
 using StrategicCombatCore;
 using Unity.Properties;
 using UnityEngine.UIElements;
+using UnityEngine;
+using System;
+
+public class LandBattleDialogLazy : IDataSourceViewHashProvider
+{
+    public string landBattleId;
+
+    [CreateProperty]
+    public LandBattleDialog landBattleDialog
+    {
+        get
+        {
+            Debug.LogWarning("landBattleDialog refreshed");
+
+            var landBattle = EntityManager.Instance.Get<LandBattle>(landBattleId);
+            
+            if(landBattle.end)
+                return null;
+            
+            return new LandBattleDialog()
+            {
+                landBattle = landBattle,
+                attacker = landBattle.GetAttackerDynamic(),
+                defender = landBattle.GetDefenderDynamic(),
+            };
+        }
+    }
+
+    [CreateProperty]
+    public LandBattle landBattle => EntityManager.Instance.Get<LandBattle>(landBattleId);
+
+    [CreateProperty]
+    public bool isLandBattleEnd => landBattle?.end ?? false;
+
+    // lazy refresh when time advanced.
+    public long  GetViewHashCode()
+    {
+        return HashCode.Combine(StrategicGameState.Instance.scenarioState.dateTime);
+    }
+
+}
 
 public class LandBattleDialog
 {
@@ -18,7 +60,8 @@ public class LandBattleDialog
     {
         get
         {
-            return $"The battle of {landBattle.cellXY}";
+            // return $"The battle of {landBattle.cellXY}";
+            return $"The battle of {StrategicGameState.Instance.GetCellName(landBattle.cellXY)}";
         }
     }
 
@@ -36,7 +79,7 @@ public class LandBattleDialog
     [CreateProperty]
     public string summary => $"Attacker Situation: {landBattle.attackerSituation:+0.00%;-0.00%;0.00%}";
 
-    public void OnCreated(object sender, VisualElement root)
+    public static void OnCreated(object sender, VisualElement root)
     {
         foreach(var listView in root.Query<ListView>("LandUnitBundleListView").ToList())
         {
@@ -62,4 +105,5 @@ public class LandBattleDialog
             };
         }
     }
+
 }

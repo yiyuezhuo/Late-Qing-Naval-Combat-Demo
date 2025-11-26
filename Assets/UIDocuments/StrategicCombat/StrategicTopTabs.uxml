@@ -24,7 +24,7 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022621116207104)" />
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Sub Combat Resolver" name="SubStrategicCombatResolverButton" style="display: flex;">
+                    <ui:Button text="Sub Combat Resolver" name="SubStrategicCombatResolverButton" style="display: none;">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3474825257062400)" />
                         </Bindings>
@@ -132,6 +132,11 @@
                     <ui:Button text="OOB Tree" name="OOBTreeButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022935840002048)" />
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Land Battle" name="LandBattleEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30245956232056832)" />
                         </Bindings>
                     </ui:Button>
                 </ui:VisualElement>

@@ -598,7 +598,7 @@ namespace StrategicCombatCore
 
 
             [CreateProperty]
-            public string desc2 => $"S: {landUnit.strength}, L: {battleUnitState.accumulatedStrengthLoss} (+{battleUnitState.currentStrengthLoss}) CM:{chanceCostModifier:+0.00%;-0.00%;0.00%}, TM: {tacticalModifier:+0.00%;-0.00%;0.00%}";
+            public string desc2 => $"S: {landUnit.strength}, L: {battleUnitState.accumulatedStrengthLoss} (+{battleUnitState.currentStrengthLoss}) K:{battleUnitState.accumulatedStrengthKill} (+{battleUnitState.currentStrengthKill}) CM:{chanceCostModifier:+0.00%;-0.00%;0.00%}, TM: {tacticalModifier:+0.00%;-0.00%;0.00%}";
 
             [CreateProperty]
             public Length strengthPercent => new Length(
@@ -626,14 +626,90 @@ namespace StrategicCombatCore
             {
                 var strengh = topGroupBundles.Sum(b => b.group.GetStrengthMen());
                 var currentLoss = landUnitBundles.Sum(b => b.battleUnitState.currentStrengthLoss);
-                var accLos = landUnitBundles.Sum(b => b.battleUnitState.accumulatedStrengthLoss); 
-                return $"Land Units: {landUnitBundles.Count}, Strength: {strengh}, Loss: {accLos} (+{currentLoss}), avg CM: {leadingGroupBundle.accumulatedChanceCostModifier:+0.00%;-0.00%;0.00%}, avg TM: {leadingGroupBundle.averageTacticalModifier:+0.00%;-0.00%;0.00%}";
+                var accLos = landUnitBundles.Sum(b => b.battleUnitState.accumulatedStrengthLoss);
+
+                var costModifierStr = strengh == 0 ? "" : $"{leadingGroupBundle.accumulatedChanceCostModifier:+0.00%;-0.00%;0.00%}";
+                var tacticalModifierStr = strengh == 0 ? "" : $"{leadingGroupBundle.averageTacticalModifier:+0.00%;-0.00%;0.00%}";
+                
+                return $"Land Units: {landUnitBundles.Count}, Strength: {strengh}, Loss: {accLos} (+{currentLoss}), avg CM: {costModifierStr}, avg TM: {tacticalModifierStr}";
             }
         }
 
         [CreateProperty]
         public StyleBackground countryFlag => UnityWebRequestImageReader.Instance.FetchTexture2D(Utils.GetCountryPath(country));
 
+    }
+
+    public partial class LandBattle
+    {
+        [CreateProperty]
+        public string labelName
+        {
+            get
+            {
+                var beginDateTimeStr = CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(beginDateTime);
+                var endDateTimeStr = end ? CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(endDateTime) : "now";
+                var cellName = StrategicGameState.Instance.GetCellName(cellXY);
+                return $"{cellName} {beginDateTimeStr} ~ {endDateTimeStr}";
+            }
+        }
+
+        [CreateProperty]
+        public string title
+        {
+            get
+            {
+                // return $"The battle of {landBattle.cellXY}";
+                return $"The battle of {StrategicGameState.Instance.GetCellName(cellXY)}";
+            }
+        }
+
+        [CreateProperty]
+        public string summary => attackerVictory ? "Attacker Victory" : "Defender Victory";
+
+        [CreateProperty]
+        public string dateTimeRange
+        {
+            get
+            {
+                var beginDateTimeStr = CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(beginDateTime);
+                var endDateTimeStr = end ? CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(endDateTime) : "now";
+                return $"{beginDateTimeStr} - {endDateTimeStr}";
+            }
+        }
+    }
+
+    public partial class LandBattleSideState
+    {
+        [CreateProperty]
+        public StyleBackground leaderPortrait => GetLeader()?.portraitReference?.pictureStyleBackground ?? null;
+
+        [CreateProperty]
+        public StyleBackground countryFlag => UnityWebRequestImageReader.Instance.FetchTexture2D(Utils.GetCountryPath(currentCountry));
+
+        [CreateProperty]
+        public string summary
+        {
+            get
+            {
+                var currentStrength = unitStates.Sum(u => u.endStrength);
+                var lossStrength = unitStates.Sum(u => u.accumulatedStrengthLoss);
+                var commitStrength = currentStrength + lossStrength;
+                return $"Commit: {commitStrength}, Loss: {lossStrength}, Remain: {currentStrength}";
+            }
+        }
+    }
+
+    public partial class LandBattleUnitState
+    {
+        [CreateProperty]
+        public StyleBackground icon => GetLandUnit()?.GetLandUnitTemplate()?.typeIcon ?? null;
+
+        [CreateProperty]
+        public string name => $"{GetLandUnit()?.name?.GetShortName()}";
+
+        [CreateProperty]
+        public string desc => $"Strength: {endStrength}, Lost: {accumulatedStrengthLoss}, Kill:{accumulatedStrengthKill})";
     }
 }
 

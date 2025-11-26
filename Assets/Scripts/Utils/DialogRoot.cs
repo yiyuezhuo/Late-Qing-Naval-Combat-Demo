@@ -248,21 +248,47 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupLandBattleDialog(LandBattle landBattle)
     {
-        var landBattleDialog = new LandBattleDialog()
+        // var landBattleDialog = new LandBattleDialog()
+        // {
+        //     landBattle = landBattle,
+        //     attacker = landBattle.GetAttackerDynamic(),
+        //     defender = landBattle.GetDefenderDynamic(),
+        // };
+        var landBattleDialogDynamic = new LandBattleDialogLazy()
         {
-            landBattle = landBattle,
-            attacker = landBattle.GetAttackerDynamic(),
-            defender = landBattle.GetDefenderDynamic(),
+            landBattleId = landBattle.objectId
         };
 
         var tempDialog = new TempDialog()
         {
             root = root,
             template = landBattleDialogDocument,
-            templateDataSource = landBattleDialog,
+            templateDataSource = landBattleDialogDynamic,
         };
 
-        tempDialog.onCreated += landBattleDialog.OnCreated;
+        // tempDialog.onCreated += LandBattleDialog.OnCreated;
+
+        // FIXME: Code smell
+
+        var attacker = landBattle.GetAttackerDynamic();
+        var defender = landBattle.GetDefenderDynamic();
+
+        tempDialog.onCreated += (sender, root) => {
+
+            LandBattleDialog.OnCreated(sender, root);
+
+            attacker.battleLeader.portraitReference.RequestIfNotRequestedYetOtherwiseExecuteDirectly(styleBackground =>
+            {
+                var el = root.Q<VisualElement>("AttackerState").Q<VisualElement>("LeaderPortrait");
+                el.style.backgroundImage = styleBackground;
+            });
+
+            defender.battleLeader.portraitReference.RequestIfNotRequestedYetOtherwiseExecuteDirectly(styleBackground =>
+            {
+                var el = root.Q<VisualElement>("DefenderState").Q<VisualElement>("LeaderPortrait");
+                el.style.backgroundImage = styleBackground;
+            });
+        };
 
         tempDialog.Popup();
     }

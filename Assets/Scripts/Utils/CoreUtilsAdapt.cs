@@ -44,6 +44,19 @@ namespace CoreUtils
                 return UnityWebRequestImageReader.Instance.FetchStyleBackground(path);
             }
         }
+
+        public void RequestIfNotRequestedYetOtherwiseExecuteDirectly(Action<StyleBackground> callback)
+        {
+            var path = ResolvePath();
+            UnityWebRequestImageReader.Instance.RequestIfNotRequestedYetOtherwiseExecuteDirectly(new()
+            {
+                path=path,
+                styleBackgroundCallbacks = new()
+                {
+                    callback
+                }
+            });
+        }
     }
 
     // works like a UnityWebRequest wrapper. Fetch value after request sent

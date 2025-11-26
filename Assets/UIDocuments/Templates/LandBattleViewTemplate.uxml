@@ -1,0 +1,28 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="LandBattleSideState" src="project://database/Assets/UIDocuments/Templates/LandBattleSideState.uxml?fileID=9197481963319205126&amp;guid=658dc0adb2a6fe548b4568c7c9589c1e&amp;type=3#LandBattleSideState" />
+    <ui:VisualElement name="ContentContainer" data-source-type="StrategicCombatCore.LandBattle, Assembly-CSharp" style="flex-grow: 1;">
+        <ui:Label text="Title" style="-unity-text-align: upper-center;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="title" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="Datetime Range" style="-unity-text-align: upper-center;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="dateTimeRange" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="Summary" style="-unity-text-align: upper-center;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="summary" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:Instance template="LandBattleSideState" data-source-path="attacker" style="flex-grow: 1;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                <ui:Instance template="LandBattleSideState" data-source-path="defender" style="flex-grow: 1;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

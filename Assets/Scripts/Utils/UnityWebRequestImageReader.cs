@@ -23,6 +23,7 @@ public class ImageFetchTask
     // public Action<Texture2D> postprocessCallback = null;
     public List<Action<Texture2D>> textureCallbacks = new();
     public List<Action<Sprite>> spriteCallbacks = new();
+    public List<Action<StyleBackground>> styleBackgroundCallbacks = new();
 
     StyleBackground _styleBackground;
     public StyleBackground styleBackground
@@ -185,6 +186,12 @@ public class UnityWebRequestImageReader
                     spriteCallback(task.sprite);
                 }
                 task.spriteCallbacks.Clear();
+
+                foreach(var styleBackgroundCallback in task.styleBackgroundCallbacks)
+                {
+                    styleBackgroundCallback(task.styleBackground);
+                }
+                task.styleBackgroundCallbacks.Clear();
             }
             else
             {

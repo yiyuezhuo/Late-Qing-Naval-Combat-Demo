@@ -355,7 +355,7 @@ namespace StrategicCombatCore
         {
             var pendingNavalCombat = EntityManager.Instance.Get<PendingNavalCombat>(scenarioState.pendingNavalCombatId);
 
-            if (victoryStatus != null)
+            if (victoryStatus != null && victoryStatus.sideVictoryStatuses.Count > 0) // soft-skip victory status present by "look at only" mode.
             {
                 DialogRoot.Instance.PopupVictoryStatusDialog(victoryStatus);
             }
@@ -544,8 +544,9 @@ namespace StrategicCombatCore
                 if(!happeningBattleKeys.Contains(prevHappendBattleKey))
                 {
                     var battle = prevHappendBattlesMap[prevHappendBattleKey];
-                    battle.end = true;
-                    battle.endDateTime = scenarioState.dateTime;
+                    // battle.end = true;
+                    // battle.endDateTime = scenarioState.dateTime;
+                    battle.GoToEnd();
 
                     var (cell, attacker, defender) = prevHappendBattleKey;
                     var cellGroups = cell.StrategicGroupReferences.Select(gr => gr.Get());
@@ -1067,6 +1068,11 @@ namespace StrategicCombatCore
 
         public void ClearLogs() => logs.Clear();
 
+        public string GetCellName(XY cellXY)
+        {
+            var cell = cellMatrix[cellXY.x, cellXY.y];
+            return cell?.Label?.GetShortName() ?? $"({cellXY.x}, {cellXY.y})";
+        }
         public override void ResetAndRegisterAll()
         {
             base.ResetAndRegisterAll();

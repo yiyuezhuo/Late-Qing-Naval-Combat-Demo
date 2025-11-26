@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
+using UnityEngine.Localization;
 using YYZ.PathFinding;
 
 namespace StrategicCombatCore
@@ -793,6 +794,22 @@ namespace StrategicCombatCore
 
             var accCostMod = accCostModWeight / usageDirect + currentLayerCostMod;
             return (usageDirect, usage, accCostMod, currentLayerCostMod);
+        }
+
+        public LazyLocalizedString GetCommandDesc()
+        {
+            var (usageDirect, usage, accCostMod, currentLayerCostMod) = GetAverageAccumulatedChanceCostModifier();
+            // var costMod = GetChanceCostModifier();
+            var commandCap = GetCommandCapacity();
+            var tacMod = GetTacticalModifier();
+            return LazyLocalizedString.MakeTemplate(
+                "Command: {0}/{1}, Chance Cost: {2} (Acc Avg: {3}), Tactical Modifier: {4}",
+                LazyLocalizedString.MakeRaw(usage),
+                LazyLocalizedString.MakeRaw(commandCap),
+                LazyLocalizedString.MakeRaw($"{currentLayerCostMod:+0.00%;-0.00%;0.00%}"),
+                LazyLocalizedString.MakeRaw($"{accCostMod:+0.00%;-0.00%;0.00%}"),
+                LazyLocalizedString.MakeRaw($"{tacMod:+0.00%;-0.00%;0.00%}")
+            );
         }
     }
 }

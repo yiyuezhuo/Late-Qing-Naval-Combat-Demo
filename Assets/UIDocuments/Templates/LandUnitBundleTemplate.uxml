@@ -6,11 +6,13 @@
             </Bindings>
         </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1;">
-            <ui:Label text="name desc" data-source-type="StrategicCombatCore.LandBattleSideStateDynamic+LandUnitBundle, Assembly-CSharp" name="NameLabel" style="font-size: 12px; margin-bottom: 0; margin-top: 0;">
-                <Bindings>
-                    <ui:DataBinding property="text" data-source-path="desc" binding-mode="ToTarget" />
-                </Bindings>
-            </ui:Label>
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                <ui:Button text="name" name="NameButton" style="-unity-text-align: middle-left; font-size: 12px; margin-top: 1px; margin-bottom: 0; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="desc" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Button>
+            </ui:VisualElement>
             <ui:Label text="desc2" style="font-size: 12px; margin-bottom: 0; margin-top: 0;">
                 <Bindings>
                     <ui:DataBinding property="text" data-source-path="desc2" binding-mode="ToTarget" />

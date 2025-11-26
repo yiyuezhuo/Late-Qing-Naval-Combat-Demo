@@ -1,15 +1,24 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="StrategicCombatCore.LandBattleSideStateDynamic, Assembly-CSharp" style="flex-grow: 1; flex-basis: 100px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
         <ui:VisualElement style="flex-direction: row; height: 90px;">
-            <ui:VisualElement name="LeaderPortrait" style="flex-basis: 75px; -unity-background-scale-mode: scale-to-fit;">
-                <Bindings>
-                    <ui:DataBinding property="style.backgroundImage" data-source-path="leaderPortrait" binding-mode="ToTarget" />
-                </Bindings>
-            </ui:VisualElement>
-            <ui:VisualElement style="flex-basis: 50px; -unity-background-scale-mode: scale-to-fit;">
-                <Bindings>
-                    <ui:DataBinding property="style.backgroundImage" data-source-path="countryFlag" binding-mode="ToTarget" />
-                </Bindings>
+            <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-shrink: 0;">
+                    <ui:VisualElement name="LeaderPortrait" style="flex-basis: 75px; -unity-background-scale-mode: scale-to-fit;">
+                        <Bindings>
+                            <ui:DataBinding property="style.backgroundImage" data-source-path="leaderPortrait" binding-mode="ToTarget" />
+                        </Bindings>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-basis: 50px; -unity-background-scale-mode: scale-to-fit;">
+                        <Bindings>
+                            <ui:DataBinding property="style.backgroundImage" data-source-path="countryFlag" binding-mode="ToTarget" />
+                        </Bindings>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Label text="Leader Name">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="leaderName" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1;">
                 <ui:Label text="Summary" style="white-space: normal;">

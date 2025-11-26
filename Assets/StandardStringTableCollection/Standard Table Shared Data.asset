@@ -2090,6 +2090,42 @@ MonoBehaviour:
     m_Key: Land Battle
     m_Metadata:
       m_Items: []
+  - m_Id: 31018587440975872
+    m_Key: Weapons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31018692369879040
+    m_Key: Base Strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31018754567213056
+    m_Key: Marksmanship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31018805913882624
+    m_Key: Is Support
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31018885450469376
+    m_Key: Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31018950474764288
+    m_Key: Weapon Strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31019012437217280
+    m_Key: Weapon Guns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31019118972538880
+    m_Key: Lethality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31020139601891328
+    m_Key: Count
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

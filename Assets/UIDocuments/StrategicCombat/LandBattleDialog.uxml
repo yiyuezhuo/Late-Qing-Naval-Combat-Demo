@@ -4,7 +4,11 @@
     <ui:VisualElement data-source-type="LandBattleDialogLazy, Assembly-CSharp" class="panel-dialog" style="width: 750px; height: 500px;">
         <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
             <ui:VisualElement data-source-path="landBattleDialog" style="flex-grow: 1;">
-                <ui:Label text="Land Battle" class="title" />
+                <ui:Label text="Land Battle" class="title">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30245956232056832)" />
+                    </Bindings>
+                </ui:Label>
                 <ui:Label text="Land Battle Title" style="-unity-text-align: upper-center;">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="title" binding-mode="ToTarget" />
@@ -36,7 +40,11 @@
             </Bindings>
         </ui:VisualElement>
         <ui:VisualElement style="flex-shrink: 0;">
-            <ui:Button text="Confirm" name="ConfirmButton" />
+            <ui:Button text="Confirm" name="ConfirmButton">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                </Bindings>
+            </ui:Button>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

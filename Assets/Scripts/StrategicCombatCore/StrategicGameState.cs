@@ -534,7 +534,13 @@ namespace StrategicCombatCore
 
                     cell.landBattleId = battle.objectId;
 
-                    AddLog($"New land battle begin: {battle.cellXY} {attacker.name.GetShortName()} vs {defender.name.GetShortName()}");
+                    // AddLog($"New land battle begin: {battle.cellXY} {attacker.name.GetShortName()} vs {defender.name.GetShortName()}");
+                    AddLog(LazyLocalizedString.MakeTemplate(
+                        "New land battle begin: {0} {1} vs {2}",
+                        GetCellNameLazyStr(battle.cellXY),
+                        LazyLocalizedString.MakeGlobalStringShort(attacker.name),
+                        LazyLocalizedString.MakeGlobalStringShort(defender.name)
+                    ));
                 }
             }
 
@@ -560,7 +566,16 @@ namespace StrategicCombatCore
                     cell.landBattleId = null;
 
                     var vicDesc = battle.attackerVictory ? "Attacker Victory" : "Defender Victory";
-                    AddLog($"Land battle end: {battle.cellXY} {attacker.name.GetShortName()} vs {defender.name.GetShortName()}, {vicDesc}");
+                    // AddLog($"Land battle end: {battle.cellXY} {attacker.name.GetShortName()} vs {defender.name.GetShortName()}, {vicDesc}");
+                    AddLog(LazyLocalizedString.MakeTemplate(
+                        "Land battle end: {0} {1}, {2} ({3}) vs {4} ({5})",
+                        LazyLocalizedString.MakeRaw(battle.cellXY),
+                        LazyLocalizedString.MakeLocalizedRequired(vicDesc),
+                        LazyLocalizedString.MakeGlobalStringShort(attacker.name),
+                        battle.attacker.GetSummary(),
+                        LazyLocalizedString.MakeGlobalStringShort(defender.name),
+                        battle.defender.GetSummary()
+                    ));
                 }
             }
 
@@ -1070,9 +1085,21 @@ namespace StrategicCombatCore
 
         public string GetCellName(XY cellXY)
         {
-            var cell = cellMatrix[cellXY.x, cellXY.y];
-            return cell?.Label?.GetShortName() ?? $"({cellXY.x}, {cellXY.y})";
+            // var cell = cellMatrix[cellXY.x, cellXY.y];
+            // return cell?.Label?.GetShortName() ?? $"({cellXY.x}, {cellXY.y})";
+            return GetCellNameLazyStr(cellXY).Resolve();
         }
+
+        public LazyLocalizedString GetCellNameLazyStr(XY cellXY)
+        {
+            var cell = cellMatrix[cellXY.x, cellXY.y];
+            if(cell == null || cell.Label == null)
+            {
+                return LazyLocalizedString.MakeRaw($"({cellXY.x}, {cellXY.y})"); // TODO: Add WITP-like "near XXX" desc
+            }
+            return LazyLocalizedString.MakeGlobalStringShort(cell.Label);
+        }
+
         public override void ResetAndRegisterAll()
         {
             base.ResetAndRegisterAll();

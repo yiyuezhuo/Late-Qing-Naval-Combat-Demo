@@ -186,18 +186,21 @@ namespace StrategicCombatCore
         // [CreateProperty]
         // public string commandDesc => $"Command: {GetCombinedCommandUsage()}/{GetCommandCapacity()}, Chance Cost: {GetChanceCostModifier():+0.00%;-0.00%;0.00%}, Tactical Modifier: {GetTacticalModifier():+0.00%;-0.00%;0.00%}";
     
+        // [CreateProperty]
+        // public string commandDesc
+        // {
+        //     get
+        //     {
+        //         var (usageDirect, usage, accCostMod, currentLayerCostMod) = GetAverageAccumulatedChanceCostModifier();
+        //         // var costMod = GetChanceCostModifier();
+        //         var commandCap = GetCommandCapacity();
+        //         var tacMod = GetTacticalModifier();
+        //         return $"Command: {usage}/{commandCap}, Chance Cost: {currentLayerCostMod:+0.00%;-0.00%;0.00%} (Acc Avg: {accCostMod:+0.00%;-0.00%;0.00%}), Tactical Modifier: {tacMod:+0.00%;-0.00%;0.00%}";
+        //     }
+        // }
+
         [CreateProperty]
-        public string commandDesc
-        {
-            get
-            {
-                var (usageDirect, usage, accCostMod, currentLayerCostMod) = GetAverageAccumulatedChanceCostModifier();
-                // var costMod = GetChanceCostModifier();
-                var commandCap = GetCommandCapacity();
-                var tacMod = GetTacticalModifier();
-                return $"Command: {usage}/{commandCap}, Chance Cost: {currentLayerCostMod:+0.00%;-0.00%;0.00%} (Acc Avg: {accCostMod:+0.00%;-0.00%;0.00%}), Tactical Modifier: {tacMod:+0.00%;-0.00%;0.00%}";
-            }
-        }
+        public string commandDesc => GetCommandDesc().Resolve();
     }
 
     public partial class StrategicGroupReference
@@ -591,12 +594,13 @@ namespace StrategicCombatCore
             [CreateProperty]
             public StyleBackground icon => landUnit?.GetLandUnitTemplate()?.typeIcon ?? null;
 
-            // [CreateProperty]
-            // public string desc => $"{landUnit.name.GetShortName()}";
             [CreateProperty]
-            public string desc => $"<link=\"nameLink\"><color=#40a0ff><u>{landUnit.name.GetShortName()}</u></color></link>";
+            public string desc => $"{landUnit.name.GetShortName()}";
+            // TODO: Disable hyperlink since it seem to related to strange UITK bugs
+            // [CreateProperty]
+            // public string desc => $"<link=\"nameLink\"><color=#40a0ff><u>{landUnit.name.GetShortName()}</u></color></link>";
 
-
+            // TODO: Replace S, L, K, ... with icon
             [CreateProperty]
             public string desc2 => $"S: {landUnit.strength}, L: {battleUnitState.accumulatedStrengthLoss} (+{battleUnitState.currentStrengthLoss}) K:{battleUnitState.accumulatedStrengthKill} (+{battleUnitState.currentStrengthKill}) CM:{chanceCostModifier:+0.00%;-0.00%;0.00%}, TM: {tacticalModifier:+0.00%;-0.00%;0.00%}";
 
@@ -620,6 +624,11 @@ namespace StrategicCombatCore
         public StyleBackground leaderPortrait => battleLeader.portraitReference?.pictureStyleBackground ?? null;
 
         [CreateProperty]
+        public string leaderName => battleLeader?.name?.GetShortName() ?? "";
+
+        static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
+        [CreateProperty]
         public string summary
         {
             get
@@ -630,8 +639,12 @@ namespace StrategicCombatCore
 
                 var costModifierStr = strengh == 0 ? "" : $"{leadingGroupBundle.accumulatedChanceCostModifier:+0.00%;-0.00%;0.00%}";
                 var tacticalModifierStr = strengh == 0 ? "" : $"{leadingGroupBundle.averageTacticalModifier:+0.00%;-0.00%;0.00%}";
-                
-                return $"Land Units: {landUnitBundles.Count}, Strength: {strengh}, Loss: {accLos} (+{currentLoss}), avg CM: {costModifierStr}, avg TM: {tacticalModifierStr}";
+
+                // return $"Land Units: {landUnitBundles.Count}, Strength: {strengh}, Loss: {accLos} (+{currentLoss}), avg CM: {costModifierStr}, avg TM: {tacticalModifierStr}";
+                return Localize(
+                    "Land Units: {0}, Strength: {1}, Loss: {2} (+{3}), avg CM: {4}, avg TM: {5}",
+                    landUnitBundles.Count, strengh, accLos, currentLoss, costModifierStr, tacticalModifierStr
+                );
             }
         }
 
@@ -642,13 +655,17 @@ namespace StrategicCombatCore
 
     public partial class LandBattle
     {
+        static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
         [CreateProperty]
         public string labelName
         {
             get
             {
+                
                 var beginDateTimeStr = CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(beginDateTime);
-                var endDateTimeStr = end ? CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(endDateTime) : "now";
+                // var endDateTimeStr = end ? CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(endDateTime) : "now";
+                var endDateTimeStr = end ? CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(endDateTime) : Localize("now");
                 var cellName = StrategicGameState.Instance.GetCellName(cellXY);
                 return $"{cellName} {beginDateTimeStr} ~ {endDateTimeStr}";
             }
@@ -660,12 +677,16 @@ namespace StrategicCombatCore
             get
             {
                 // return $"The battle of {landBattle.cellXY}";
-                return $"The battle of {StrategicGameState.Instance.GetCellName(cellXY)}";
+                // return $"The battle of {StrategicGameState.Instance.GetCellName(cellXY)}";
+                return Localize(
+                    "The battle of {0}",
+                    StrategicGameState.Instance.GetCellName(cellXY)
+                );
             }
         }
 
         [CreateProperty]
-        public string summary => attackerVictory ? "Attacker Victory" : "Defender Victory";
+        public string summary => Localize(attackerVictory ? "Attacker Victory" : "Defender Victory");
 
         [CreateProperty]
         public string dateTimeRange
@@ -685,31 +706,45 @@ namespace StrategicCombatCore
         public StyleBackground leaderPortrait => GetLeader()?.portraitReference?.pictureStyleBackground ?? null;
 
         [CreateProperty]
-        public StyleBackground countryFlag => UnityWebRequestImageReader.Instance.FetchTexture2D(Utils.GetCountryPath(currentCountry));
+        public string leaderName => GetLeader()?.name?.GetShortName() ?? "";
 
         [CreateProperty]
-        public string summary
-        {
-            get
-            {
-                var currentStrength = unitStates.Sum(u => u.endStrength);
-                var lossStrength = unitStates.Sum(u => u.accumulatedStrengthLoss);
-                var commitStrength = currentStrength + lossStrength;
-                return $"Commit: {commitStrength}, Loss: {lossStrength}, Remain: {currentStrength}";
-            }
-        }
+        public StyleBackground countryFlag => UnityWebRequestImageReader.Instance.FetchTexture2D(Utils.GetCountryPath(currentCountry));
+
+        // [CreateProperty]
+        // public string summary
+        // {
+        //     get
+        //     {
+        //         var currentStrength = unitStates.Sum(u => u.endStrength);
+        //         var lossStrength = unitStates.Sum(u => u.accumulatedStrengthLoss);
+        //         var commitStrength = currentStrength + lossStrength;
+        //         return $"Commit: {commitStrength}, Loss: {lossStrength}, Remain: {currentStrength}";
+        //     }
+        // }
+
+        [CreateProperty]
+        public string summary => GetSummary().Resolve();
     }
 
     public partial class LandBattleUnitState
     {
+        static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
         [CreateProperty]
         public StyleBackground icon => GetLandUnit()?.GetLandUnitTemplate()?.typeIcon ?? null;
 
         [CreateProperty]
         public string name => $"{GetLandUnit()?.name?.GetShortName()}";
 
+        // [CreateProperty]
+        // public string desc => $"Strength: {endStrength}, Lost: {accumulatedStrengthLoss}, Kill:{accumulatedStrengthKill})";
         [CreateProperty]
-        public string desc => $"Strength: {endStrength}, Lost: {accumulatedStrengthLoss}, Kill:{accumulatedStrengthKill})";
+        public string desc => Localize(
+            "Strength: {0}, Lost: {1}, Kill:{2}",
+            endStrength, accumulatedStrengthLoss, accumulatedStrengthKill
+        );
+
     }
 }
 

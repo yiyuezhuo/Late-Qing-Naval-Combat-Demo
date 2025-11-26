@@ -1,15 +1,24 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="StrategicCombatCore.LandBattleSideState, Assembly-CSharp" style="flex-grow: 1;">
         <ui:VisualElement style="flex-direction: row; flex-basis: 100px;">
-            <ui:VisualElement style="flex-basis: 100px; -unity-background-scale-mode: scale-to-fit;">
-                <Bindings>
-                    <ui:DataBinding property="style.backgroundImage" data-source-path="leaderPortrait" binding-mode="ToTarget" />
-                </Bindings>
-            </ui:VisualElement>
-            <ui:VisualElement style="flex-basis: 50px; -unity-background-scale-mode: scale-to-fit;">
-                <Bindings>
-                    <ui:DataBinding property="style.backgroundImage" data-source-path="countryFlag" binding-mode="ToTarget" />
-                </Bindings>
+            <ui:VisualElement style="flex-direction: column; flex-shrink: 0;">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-shrink: 0;">
+                    <ui:VisualElement style="flex-basis: 100px; -unity-background-scale-mode: scale-to-fit;">
+                        <Bindings>
+                            <ui:DataBinding property="style.backgroundImage" data-source-path="leaderPortrait" binding-mode="ToTarget" />
+                        </Bindings>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-basis: 50px; -unity-background-scale-mode: scale-to-fit;">
+                        <Bindings>
+                            <ui:DataBinding property="style.backgroundImage" data-source-path="countryFlag" binding-mode="ToTarget" />
+                        </Bindings>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Label text="Leader Name">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="leaderName" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1;">
                 <ui:Label text="Side Summary" style="white-space: normal;">

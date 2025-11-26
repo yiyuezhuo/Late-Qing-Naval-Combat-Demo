@@ -2176,6 +2176,42 @@ MonoBehaviour:
     m_Localized: Land Battle
     m_Metadata:
       m_Items: []
+  - m_Id: 31018587440975872
+    m_Localized: Weapons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31018692369879040
+    m_Localized: Base Strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31018754567213056
+    m_Localized: Marksmanship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31018805913882624
+    m_Localized: Is Support
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31018885450469376
+    m_Localized: Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31018950474764288
+    m_Localized: Weapon Strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31019012437217280
+    m_Localized: Weapon Guns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31019118972538880
+    m_Localized: Lethality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31020139601891328
+    m_Localized: Count
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

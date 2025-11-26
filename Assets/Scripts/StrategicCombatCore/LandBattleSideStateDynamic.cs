@@ -145,14 +145,37 @@ namespace StrategicCombatCore
                     landUnitBundle.battleUnitState.currentStrengthLoss += inflictLoss;
                 }
 
+                class EffectivessModifier
+                {
+                    public float suppression;
+                    public float morale;
+                    public float fatigue;
+                }
+
+                static Dictionary<LandUnitQuality, EffectivessModifier> landUnitQualityModifierMap = new()
+                {
+                    {LandUnitQuality.Abysmal, new(){suppression=1f, morale=0.7f, fatigue=0.4f}},
+                    {LandUnitQuality.Inferior, new(){suppression=0.5f, morale=0.5f, fatigue=0.3f}},
+                    {LandUnitQuality.BelowAverage, new(){suppression=0.25f, morale=0.3f, fatigue=0.2f}},
+                    {LandUnitQuality.Average, new(){suppression=0, morale=0, fatigue=0}},
+                    {LandUnitQuality.Superior, new(){suppression=-0.1f, morale=-0.2f, fatigue=-0.2f}},
+                    {LandUnitQuality.Elite, new(){suppression=-0.2f, morale=-0.5f, fatigue=-0.3f}},
+                };
+
                 public void InflictEffectivenessLoss(float inflictLossF)
                 {
                     if(landUnit.strength == 0)
                         return;
+
+                    var modifier = landUnitQualityModifierMap[landUnit.GetLandUnitTemplate()?.quality ?? LandUnitQuality.Average];
+
+                    var suppressionDelta = (inflictLossF * 50 / landUnit.strength) * (1 + modifier.suppression);
+                    var moraleDelta = - (inflictLossF * 10f / landUnit.strength) * (1 + modifier.morale);
+                    var fatigueDelta = (inflictLossF * 5f / landUnit.strength + 0.025f * GetCommitPercent()) * (1 + modifier.fatigue);
                     
-                    landUnit.suppression = Math.Min(1, landUnit.suppression + inflictLossF * 50 / landUnit.strength);
-                    landUnit.morale = Math.Max(0, landUnit.morale - inflictLossF * 10f / landUnit.strength);
-                    landUnit.fatigue = Math.Min(1, landUnit.fatigue + (inflictLossF * 5f / landUnit.strength + 0.025f * GetCommitPercent()) );
+                    landUnit.suppression = Math.Min(1, landUnit.suppression + suppressionDelta);
+                    landUnit.morale = Math.Max(0, landUnit.morale + moraleDelta);
+                    landUnit.fatigue = Math.Min(1, landUnit.fatigue + fatigueDelta);
                 }
 
                 public override string ToString()

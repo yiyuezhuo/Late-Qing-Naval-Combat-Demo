@@ -33,6 +33,16 @@ namespace StrategicCombatCore
         Port
     }
 
+    public enum LandUnitQuality // JTS
+    {
+        Abysmal, // F
+        Inferior, // E
+        BelowAverage, // D
+        Average, // C
+        Superior, // B
+        Elite, // A
+    }
+
     // public interface ITreeNode
     // {
     // }
@@ -76,6 +86,7 @@ namespace StrategicCombatCore
         // public float operationalSpeedKmPerDay; // Not-consistent speed but also move on non-road field
         // public float tacticalSpeedMPerMin; // Base advance speed in assault.
         public float marksmanship = 1;
+        public LandUnitQuality quality = LandUnitQuality.Average;
 
         public List<WeaponRecord> weaponRecordss = new();
 

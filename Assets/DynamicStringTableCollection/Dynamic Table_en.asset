@@ -2187,6 +2187,52 @@ MonoBehaviour:
       {7}'
     m_Metadata:
       m_Items: []
+  - m_Id: 16269036662460416
+    m_Localized: Attacker Victory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16269154270744576
+    m_Localized: Defender Victory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16269177050009600
+    m_Localized: 'Land battle end: {0} {1}, {2} ({3}) vs {4} ({5})'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16269363004477440
+    m_Localized: 'New land battle begin: {0} {1} vs {2}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16277449958133760
+    m_Localized: 'Command: {0}/{1}, Chance Cost: {2} (Acc Avg: {3}), Tactical Modifier:
+      {4}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16306475649110016
+    m_Localized: The battle of {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16306565293969408
+    m_Localized: 'Attacker Situation: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16310057467285504
+    m_Localized: 'Land Units: {0}, Strength: {1}, Loss: {2} (+{3}), avg CM: {4},
+      avg TM: {5}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16310317245698048
+    m_Localized: now
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16313371865026560
+    m_Localized: 'Strength: {0}, Lost: {1}, Kill:{2}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16313614379683840
+    m_Localized: 'Commit: {0}, Loss: {1}, Remain: {2}'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

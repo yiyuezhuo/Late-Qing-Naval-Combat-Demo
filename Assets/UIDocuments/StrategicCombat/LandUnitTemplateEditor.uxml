@@ -27,12 +27,14 @@
                                     <ui:EnumField label="Size" value="Center" type="StrategicCombatCore.StrategicUnitSize, Assembly-CSharp">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="size" binding-mode="TwoWay" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196209509306368)" />
                                         </Bindings>
                                     </ui:EnumField>
                                     <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
                                         <ui:EnumField label="Type" value="Center" type="StrategicCombatCore.LandUnitType, Assembly-CSharp" style="flex-grow: 1;">
                                             <Bindings>
                                                 <ui:DataBinding property="value" data-source-path="unitType" binding-mode="TwoWay" />
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)" />
                                             </Bindings>
                                         </ui:EnumField>
                                         <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; width: 40px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
@@ -46,41 +48,56 @@
                                     <ui:IntegerField label="Base Strength">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="strength" binding-mode="TwoWay" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(31018692369879040)" />
                                         </Bindings>
                                     </ui:IntegerField>
                                     <ui:FloatField label="Marksmanship">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="marksmanship" binding-mode="TwoWay" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(31018754567213056)" />
                                         </Bindings>
                                     </ui:FloatField>
                                     <ui:Toggle label="Is Support">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="isSupport" binding-mode="TwoWay" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(31018805913882624)" />
                                         </Bindings>
                                     </ui:Toggle>
+                                    <ui:EnumField label="Quality" value="Center" type="StrategicCombatCore.LandUnitQuality, Assembly-CSharp">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="quality" binding-mode="TwoWay" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(31018885450469376)" />
+                                        </Bindings>
+                                    </ui:EnumField>
                                     <ui:IntegerField label="Weapon Strength" enabled="false">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="weaponStrength" binding-mode="ToTarget" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(31018950474764288)" />
                                         </Bindings>
                                     </ui:IntegerField>
                                     <ui:IntegerField label="Weapon Guns" enabled="false">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="weaponGuns" binding-mode="ToTarget" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(31019012437217280)" />
                                         </Bindings>
                                     </ui:IntegerField>
-                                    <ui:FloatField label="lethality" enabled="false">
+                                    <ui:FloatField label="Lethality" enabled="false">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="lethality" binding-mode="ToTarget" />
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(31019118972538880)" />
                                         </Bindings>
                                     </ui:FloatField>
                                 </ui:VisualElement>
                             </ui:VisualElement>
                             <ui:MultiColumnListView binding-source-selection-mode="AutoAssign" data-source-path="weaponRecordss" name="WeaponRecordsMultiColumnListView" show-add-remove-footer="true" header-title="Weapons" show-foldout-header="true" style="flex-shrink: 0;">
                                 <ui:Columns>
-                                    <ui:Column title="Set" width="10%" cell-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordSetButton.uxml?fileID=9197481963319205126&amp;guid=3df99646c39699645a4701a7be214463&amp;type=3#LandUnitTemplateWeaponRecordSetButton" name="set" />
-                                    <ui:Column title="Count" width="10%" cell-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordCount.uxml?fileID=9197481963319205126&amp;guid=afed79ce87b7e534b9179442c01328c1&amp;type=3#LandUnitTemplateWeaponRecordCount" />
-                                    <ui:Column title="Weapon" cell-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordName.uxml?fileID=9197481963319205126&amp;guid=d09d7097024a78a42829e2c739f7e4ad&amp;type=3#LandUnitTemplateWeaponRecordName" width="80%" name="weapon" />
+                                    <ui:Column title="Set" width="10%" cell-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordSetButton.uxml?fileID=9197481963319205126&amp;guid=3df99646c39699645a4701a7be214463&amp;type=3#LandUnitTemplateWeaponRecordSetButton" name="set" header-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordSetButtonHeader.uxml?fileID=9197481963319205126&amp;guid=9840ae8e89cc2eb41ba59387e09e4bda&amp;type=3#LandUnitTemplateWeaponRecordSetButtonHeader" />
+                                    <ui:Column title="Count" width="10%" cell-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordCount.uxml?fileID=9197481963319205126&amp;guid=afed79ce87b7e534b9179442c01328c1&amp;type=3#LandUnitTemplateWeaponRecordCount" header-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordCountHeader.uxml?fileID=9197481963319205126&amp;guid=e5ada3e2307c8784ea84c744d13440e1&amp;type=3#LandUnitTemplateWeaponRecordCountHeader" />
+                                    <ui:Column title="Weapon" cell-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordName.uxml?fileID=9197481963319205126&amp;guid=d09d7097024a78a42829e2c739f7e4ad&amp;type=3#LandUnitTemplateWeaponRecordName" width="80%" name="weapon" header-template="project://database/Assets/UIDocuments/Templates/LandUnitTemplateWeaponRecord/LandUnitTemplateWeaponRecordNameHeader.uxml?fileID=9197481963319205126&amp;guid=c9cb7c4cbb6c8864f86f3728ca4aad7b&amp;type=3#LandUnitTemplateWeaponRecordNameHeader" />
                                 </ui:Columns>
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(31018587440975872)" />
+                                </Bindings>
                             </ui:MultiColumnListView>
                             <ui:Label text="Remark">
                                 <Bindings>

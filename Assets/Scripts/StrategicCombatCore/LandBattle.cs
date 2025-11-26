@@ -46,6 +46,21 @@ namespace StrategicCombatCore
         public Leader GetLeader() => EntityManager.Instance.Get<Leader>(currentLeaderId);
         public float GetTotalCurrentStrengthLoss() => unitStates.Sum(u => u.currentStrengthLoss);
         public float GetTotalAccumulatedStrengthLoss() => unitStates.Sum(u => u.accumulatedStrengthLoss);
+
+        // static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
+        public LazyLocalizedString GetSummary()
+        {
+            var currentStrength = unitStates.Sum(u => u.endStrength);
+            var lossStrength = unitStates.Sum(u => u.accumulatedStrengthLoss);
+            var commitStrength = currentStrength + lossStrength;
+            return LazyLocalizedString.MakeTemplate(
+                "Commit: {0}, Loss: {1}, Remain: {2}",
+                LazyLocalizedString.MakeRaw(commitStrength),
+                LazyLocalizedString.MakeRaw(lossStrength),
+                LazyLocalizedString.MakeRaw(currentStrength)
+            );
+        }
     }
 
 
@@ -165,5 +180,18 @@ namespace StrategicCombatCore
             //     unitState.end = true;
             // }
         }
+
+        // public LazyLocalizedString GetSummary()
+        // {
+        //     var vicDesc = attackerVictory ? "Attacker Victory" : "Defender Victory";
+        //     return LazyLocalizedString.MakeTemplate(
+        //                 "Land battle end: {0} {1} ({2}) vs {3} ({4})",
+        //                 StrategicGameState.Instance.GetCellNameLazyStr(cellXY),
+        //                 LazyLocalizedString.MakeGlobalStringShort(attacker.name),
+        //                 attacker.GetSummary(),
+        //                 LazyLocalizedString.MakeGlobalStringShort(name),
+        //                 defender.GetSummary()
+        //             );
+        // }
     }
 }

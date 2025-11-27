@@ -4,23 +4,23 @@ using System;
 
 namespace StrategicCombatCore
 {
-    public class DynamicCellGraph : IGraphEnumerable<Cell>
-    {
-        public IEnumerable<Cell> Neighbors(Cell pos) => pos.GetNeighbors();
+    // public class DynamicCellGraph : IGraphEnumerable<Cell>
+    // {
+    //     public IEnumerable<Cell> Neighbors(Cell pos) => pos.GetNeighbors();
 
-        public float EstimateCost(Cell src, Cell dst)
-        {
-            return Math.Abs(src.x - dst.x) + Math.Abs(src.y - dst.y);
-        }
+    //     public float EstimateCost(Cell src, Cell dst)
+    //     {
+    //         return Math.Abs(src.x - dst.x) + Math.Abs(src.y - dst.y);
+    //     }
 
-        public float MoveCost(Cell src, Cell dst) => 1;
+    //     public float MoveCost(Cell src, Cell dst) => 1;
 
-        public IEnumerable<Cell> Nodes()
-        {
-            foreach (var cell in StrategicGameState.Instance.cellMatrix)
-                yield return cell;
-        }
-    }
+    //     public IEnumerable<Cell> Nodes()
+    //     {
+    //         foreach (var cell in StrategicGameState.Instance.cellMatrix)
+    //             yield return cell;
+    //     }
+    // }
 
     public class DynamicCellGraphArmy : IGraphEnumerable<Cell>
     {
@@ -70,6 +70,49 @@ namespace StrategicCombatCore
             if (src.TryGetDirection(dst, out var edge) && src.GetEdgeSide(edge) == side)
                 return true;
             return false;
+        }
+
+        public float EstimateCost(Cell src, Cell dst)
+        {
+            // return Math.Abs(src.x - dst.x) + Math.Abs(src.y - dst.y);
+            return (Math.Abs(src.x - dst.x) + Math.Abs(src.y - dst.y)) / 2f;
+        }
+
+        // public float MoveCost(Cell src, Cell dst) => 1;
+        public float MoveCost(Cell src, Cell dst) => 1f / StrategicGroup.GetSpeedKmPerHour(src, dst);
+
+        public IEnumerable<Cell> Nodes()
+        {
+            foreach (var cell in StrategicGameState.Instance.cellMatrix)
+                yield return cell;
+        }
+    }
+
+    public class DynamicLandRetreatGraph : IGraphEnumerable<Cell> // Retreating pathfinding can pass neutral area (supply networking can't) but can't pass hositle controlled area 
+    {
+        public SideState side;
+
+        public IEnumerable<Cell> Neighbors(Cell pos)
+        {
+            foreach (var nei in pos.GetNeighbors())
+            {
+                if (nei.IsArmyPassable() && IsRetreatPassable(pos, nei))
+                    yield return nei;
+            }
+        }
+
+        bool IsRetreatPassable(Cell src, Cell dst)
+        {
+            var dstHexSide = dst.GetHexSide();
+            if (dstHexSide != null && dstHexSide != side)
+                return false;
+            if(src.TryGetDirection(dst, out var edge))
+            {
+                var edgeSide = src.GetEdgeSide(edge);
+                if(edgeSide != null && edgeSide != side)
+                    return false;
+            }
+            return true;
         }
 
         public float EstimateCost(Cell src, Cell dst)

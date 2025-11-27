@@ -168,7 +168,7 @@
                                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20017285961519104)" />
                                         </Bindings>
                                     </ui:Label>
-                                    <ui:EnumField value="Center" type="StrategicCombatCore.StrategicGroup+GroupPostureType, Assembly-CSharp" style="width: 100px;">
+                                    <ui:EnumField value="Center" type="StrategicCombatCore.StrategicGroup+GroupPostureType, Assembly-CSharp" style="width: 125px;">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="posture" binding-mode="TwoWay" />
                                         </Bindings>
@@ -189,7 +189,7 @@
                                         </Bindings>
                                     </ui:IntegerField>
                                     <Bindings>
-                                        <ui:DataBinding property="style.display" data-source-path="isInRestorableState" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
+                                        <ui:DataBinding property="style.display" data-source-path="isInRestorableState" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
                                     </Bindings>
                                 </ui:VisualElement>
                             </ui:VisualElement>

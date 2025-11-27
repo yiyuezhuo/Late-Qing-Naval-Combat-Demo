@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Collections;
-using System.Diagnostics;
 using System.Linq;
 using System.Xml.Serialization;
 
 using CoreUtils;
+using NavalCombatCore;
 
 
 namespace StrategicCombatCore
@@ -242,14 +242,41 @@ namespace StrategicCombatCore
             if (!IsArmyPassable())
                 return;
             
-            var sides = StrategicGroupReferences
-                .Select(r => r.Get())
-                .Where(g => g != null && g.IsArmy())
-                .Select(g => g.side)
-                .ToHashSet();
+            // var sides = StrategicGroupReferences
+            //     .Select(r => r.Get())
+            //     // .Where(g => g != null && g.IsArmy())
+            //     .Where(g => g != null && g.IsArmy() && g.posture != StrategicGroup.GroupPostureType.Disengaged)
+            //     .Select(g => g.side)
+            //     .ToHashSet();
 
-            // If hex is not in conflict, reset edge control state
-            if (sides.Count <= 1)
+            // // If hex is not in conflict, reset edge control state
+            // if (sides.Count <= 1)
+            // {
+            //     sideObjectIdTop = null;
+            //     sideObjectIdTopRight = null;
+            //     sideObjectIdBottomRight = null;
+            //     sideObjectIdBottom = null;
+            //     sideObjectIdBottomLeft = null;
+            //     sideObjectIdTopLeft = null;
+            // }
+            // // if hex is controlled by only 1 side, update its cell control state.
+            // if (sides.Count == 1)
+            // {
+            //     sideObjectIdHex = sides.First().objectId;
+            // }
+            // if(sides.Count >= 2 && sideObjectIdHex == null)
+            // {
+            //     sideObjectIdHex = RandomUtils.Sample(sides.ToList()).objectId;
+            // }
+
+            var groups = StrategicGroupReferences
+                .Select(r => r.Get())
+                // .Where(g => g != null && g.IsArmy())
+                .Where(g => g != null && g.IsArmy()).ToList();
+            var activeSides = groups.Where(g => g.posture != StrategicGroup.GroupPostureType.Disengaged).Select(g => g.side).ToHashSet();
+            var passiveSides =groups.Select(g => g.side).ToHashSet();
+
+            if(passiveSides.Count <= 1)
             {
                 sideObjectIdTop = null;
                 sideObjectIdTopRight = null;
@@ -258,10 +285,25 @@ namespace StrategicCombatCore
                 sideObjectIdBottomLeft = null;
                 sideObjectIdTopLeft = null;
             }
-            // if hex is controlled by only 1 side, update its cell control state.
-            if (sides.Count == 1)
+            if (passiveSides.Count == 1)
             {
-                sideObjectIdHex = sides.First().objectId;
+                sideObjectIdHex = passiveSides.First().objectId;
+            }
+            else if(activeSides.Count == 1)
+            {
+                sideObjectIdTop ??= sideObjectIdHex;
+                sideObjectIdTopRight ??= sideObjectIdHex;
+                sideObjectIdBottomRight ??= sideObjectIdHex;
+                sideObjectIdBottom ??= sideObjectIdHex;
+                sideObjectIdBottomLeft ??= sideObjectIdHex;
+                sideObjectIdTopLeft ??= sideObjectIdHex;
+
+                sideObjectIdHex = activeSides.First().objectId;
+            }
+            
+            if(activeSides.Count >= 2 && sideObjectIdHex == null)
+            {
+                sideObjectIdHex = RandomUtils.Sample(activeSides.ToList()).objectId;
             }
         }
 

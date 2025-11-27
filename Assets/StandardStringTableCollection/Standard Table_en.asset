@@ -2212,6 +2212,10 @@ MonoBehaviour:
     m_Localized: Count
     m_Metadata:
       m_Items: []
+  - m_Id: 31177734266458112
+    m_Localized: Confirm Dialog
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

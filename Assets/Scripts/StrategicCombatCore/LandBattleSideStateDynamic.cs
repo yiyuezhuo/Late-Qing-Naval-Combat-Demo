@@ -450,6 +450,26 @@ namespace StrategicCombatCore
             return subCombat;
         }
 
+        public void StopAttack() // used by attacker
+        {
+            foreach(var groupBundle in topGroupBundles)
+            {
+                var group = groupBundle.group;
+                group.StartStopLandAttack();
+            }
+        }
+
+        public void RetreatFromDefend() // used by defender
+        {
+            foreach(var groupBundle in topGroupBundles)
+            {
+                var group = groupBundle.group;
+                group.StartRetreatFromLandDefend();
+                // group.posture = StrategicGroup.GroupPostureType.Disengaged;
+                // group.restoredHours = 48; // TODO: It's questionable to "return" to Active state sometimes, looks like we should separated those types of states.
+            }
+        }
+
         public override string ToString()
         {
             return $"LandBattleSideStateDynamic({country}, {cell}, {chance})";

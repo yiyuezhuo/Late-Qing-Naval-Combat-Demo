@@ -1,6 +1,10 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement class="panel" style="flex-grow: 0;">
-        <ui:Label text="Confirm Dialog" name="TitleLabel" class="title" />
+        <ui:Label text="Confirm Dialog" name="TitleLabel" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(31177734266458112)" />
+            </Bindings>
+        </ui:Label>
         <ui:TextField name="ContentTextField" value="content" multiline="true" vertical-scroller-visibility="Auto" style="min-height: 150px; white-space: normal;" />
         <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
             <ui:Button text="Confirm" name="ConfirmButton" style="flex-basis: 50px; flex-grow: 1;">

@@ -193,12 +193,10 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         root.Q<Button>("ReturnToStrategicGameButton").clicked += () =>
         {
-            // StrategicGameManager.startupConfig.syncShipLogs = NavalGameState.Instance.shipLogs;
-            // StrategicGameManager.startupConfig.victoryStatus = VictoryStatus.Generate(NavalGameState.Instance);
-
-            // SceneManager.LoadScene("Strategic Game");
-
-            DialogRoot.Instance.PopupConfirmDialog("Confirm to conclude the battle and return to strategic game?", () =>
+            // DialogRoot.Instance.PopupConfirmDialog("Confirm to conclude the battle and return to strategic game?", () =>
+            DialogRoot.Instance.PopupConfirmDialog(Localize(
+                "Confirm to conclude the battle and return to strategic game?"
+            ), () =>
             {
                 StrategicGameManager.startupConfig.syncShipLogs = NavalGameState.Instance.shipLogs;
                 StrategicGameManager.startupConfig.victoryStatus = VictoryStatus.Generate(NavalGameState.Instance);

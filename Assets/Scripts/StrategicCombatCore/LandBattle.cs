@@ -129,10 +129,25 @@ namespace StrategicCombatCore
                 ServiceLocator.Get<ILoggerService>().Log($"{dynamics[0]} vs {dynamics[1]}: {subCombat}");
 
                 subCombat.Resolve();
-                foreach(var dynamic in dynamics)
-                {
-                    dynamic.chance -= subCombat.chanceUsage;
-                }
+                initiative.chance -= subCombat.chanceUsage;
+                // foreach(var dynamic in dynamics)
+                // {
+                //     dynamic.chance -= subCombat.chanceUsage;
+                // }
+            }
+
+            // Process initiative disengagement - (attacker is switched to passive, defender is switched to Disengaged)
+            if(attackerSituation >= 1f) // defender retreat
+            {
+                def.RetreatFromDefend();
+                // end = true;
+                // GoToEnd();
+            }
+            else if(attackerSituation <= -1)
+            {
+                atk.StopAttack();
+                // end = true;
+                // GoToEnd();
             }
 
             // Update log states

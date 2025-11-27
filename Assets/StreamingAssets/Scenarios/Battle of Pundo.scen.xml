@@ -268,7 +268,16 @@
     <logs />
     <timeLocLogs />
     <supplyTons>0</supplyTons>
-    <fixedHours>0</fixedHours>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -563,7 +572,16 @@
     <logs />
     <timeLocLogs />
     <supplyTons>0</supplyTons>
-    <fixedHours>0</fixedHours>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -831,7 +849,16 @@
     <logs />
     <timeLocLogs />
     <supplyTons>0</supplyTons>
-    <fixedHours>0</fixedHours>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>56c14282-c3d6-463c-b6bc-beb8c35cf266</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1038,7 +1065,16 @@
     <logs />
     <timeLocLogs />
     <supplyTons>0</supplyTons>
-    <fixedHours>0</fixedHours>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1234,7 +1270,16 @@
     <logs />
     <timeLocLogs />
     <supplyTons>0</supplyTons>
-    <fixedHours>0</fixedHours>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1333,7 +1378,16 @@
     <logs />
     <timeLocLogs />
     <supplyTons>0</supplyTons>
-    <fixedHours>0</fixedHours>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1432,7 +1486,16 @@
     <logs />
     <timeLocLogs />
     <supplyTons>0</supplyTons>
-    <fixedHours>0</fixedHours>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>96a18446-8d4a-4b89-a219-d514cade9751</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1628,7 +1691,7 @@
     <elapsedSeconds>0</elapsedSeconds>
    </weaponSimulationAssignmentClock>
    <doingStep>false</doingStep>
-   <firstLoaded>true</firstLoaded>
+   <firstLoaded>false</firstLoaded>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />

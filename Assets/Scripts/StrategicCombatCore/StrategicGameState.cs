@@ -176,6 +176,8 @@ namespace StrategicCombatCore
 
             logs = newInstance.logs;
 
+            landBattles = newInstance.landBattles;
+
             mapRebuilt?.Invoke(this, EventArgs.Empty);
             edgeFeatureUpdated?.Invoke(this, EventArgs.Empty);
 
@@ -427,6 +429,19 @@ namespace StrategicCombatCore
             RestoreLandUnitEffectivness(); // Restore here so player can check states after damage
 
             HandleLandBattleBeginEnd();
+
+            ForceDisengageStaticGroup();
+        }
+
+        public void ForceDisengageStaticGroup()
+        {
+            foreach(var group in GetIndependentStrategicGroups())
+            {
+                if(group.posture == StrategicGroup.GroupPostureType.Disengaged && group.plannedPath.Count == 0)
+                {
+                    group.DoLandDisengage();
+                }
+            }
         }
 
         void RestoreLandUnitEffectivness()
@@ -456,7 +471,21 @@ namespace StrategicCombatCore
                 }
                 if (group.restoredHours == 0 && group.posture != StrategicGroup.GroupPostureType.Active)
                 {
-                    group.posture = StrategicGroup.GroupPostureType.Active;
+                    if(group.posture == StrategicGroup.GroupPostureType.Reorganized)
+                    {
+                        group.posture = StrategicGroup.GroupPostureType.Active;
+                    }
+                    else if(group.posture == StrategicGroup.GroupPostureType.Disengaged)
+                    {
+                        var hostileGroup = group.cell.StrategicGroupReferences
+                            .Select(r => r.Get())
+                            .Where(g => g.side != group.side && g != null && g.IsArmy() && g.posture != StrategicGroup.GroupPostureType.Disengaged).
+                            FirstOrDefault();
+                        if(hostileGroup == null)
+                        {
+                            group.posture = StrategicGroup.GroupPostureType.Active;
+                        }
+                    }
                 }
             }
         }
@@ -468,6 +497,8 @@ namespace StrategicCombatCore
             foreach (var g in strategicGroups.Where(g => g.LandCombatable()).GroupBy(g => g.cell))
             {
                 var cell = g.Key;
+                cell.RefreshControlState(); // TODO: Code smell? Extract it to the top level?
+
                 var side2GroupsGp = g.GroupBy(g => g.side).ToList();
                 var hexSide = cell.GetHexSide();
                 if (hexSide != null && side2GroupsGp.Count >= 2)
@@ -489,6 +520,11 @@ namespace StrategicCombatCore
                                 attacker = g1.Key;
                                 defender = g0.Key;
                             }
+                            else
+                            {
+                                attacker = g0.Key;
+                                defender = g1.Key;
+                            }
                         }
                         else if (g0hasActive)
                         {
@@ -509,6 +545,20 @@ namespace StrategicCombatCore
         }
         
         void HandleLandBattleBeginEnd()
+        {
+            CreateNewLandBattles();
+            ConcludeLandBattles();
+
+            // Resolve undetermined battle
+            foreach(var landBattle in landBattles.Where(b => !b.end))
+            {
+                landBattle.Step();
+            }
+
+            ConcludeLandBattles();
+        }
+
+        void CreateNewLandBattles()
         {
             var happeningBattleKeys = CollectHappeningBattleKeys();
             var prevHappendBattlesMap = landBattles.Where(b => !b.end).ToDictionary(b => b.GetKey(), b => b);
@@ -543,8 +593,15 @@ namespace StrategicCombatCore
                     ));
                 }
             }
+        }
 
-            // Set concluded/invalid battle to ended.
+        void ConcludeLandBattles()
+        {
+            var happeningBattleKeys = CollectHappeningBattleKeys();
+            var prevHappendBattlesMap = landBattles.Where(b => !b.end).ToDictionary(b => b.GetKey(), b => b);
+            var prevHappendBattleKeys = prevHappendBattlesMap.Keys.ToHashSet();
+
+            // Set concluded/invalid battle to ended. ("Natural Disengagement")
             foreach(var prevHappendBattleKey in prevHappendBattleKeys)
             {
                 if(!happeningBattleKeys.Contains(prevHappendBattleKey))
@@ -556,9 +613,15 @@ namespace StrategicCombatCore
 
                     var (cell, attacker, defender) = prevHappendBattleKey;
                     var cellGroups = cell.StrategicGroupReferences.Select(gr => gr.Get());
+                    // battle.attackerVictory = cellGroups.Any(
+                    //     g => g.IsOnMap() &&
+                    //     g.posture != StrategicGroup.GroupPostureType.Disengaged &&
+                    //     g.side == attacker &&
+                    //     g.type != StrategicGroup.Type.Fleet
+                    // );
                     battle.attackerVictory = cellGroups.Any(
                         g => g.IsOnMap() &&
-                        g.posture != StrategicGroup.GroupPostureType.Disengaged &&
+                        g.posture == StrategicGroup.GroupPostureType.Active &&
                         g.side == attacker &&
                         g.type != StrategicGroup.Type.Fleet
                     );
@@ -577,12 +640,6 @@ namespace StrategicCombatCore
                         battle.defender.GetSummary()
                     ));
                 }
-            }
-
-            // Resolve undetermined battle
-            foreach(var landBattle in landBattles.Where(b => !b.end))
-            {
-                landBattle.Step();
             }
         }
 

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
-using UnityEngine.Localization;
 using YYZ.PathFinding;
 
 namespace StrategicCombatCore
@@ -319,7 +318,6 @@ namespace StrategicCombatCore
 
             if (moveThroughEdge && IsArmy())
             {
-
                 if (toCell.TryGetDirection(prevCell, out var edge))
                 {
                     toCell.SetEdgeSide(edge, side);
@@ -418,7 +416,12 @@ namespace StrategicCombatCore
             {
                 return 0;
             }
-            var disengagedMod = posture == GroupPostureType.Disengaged ? 1.1f : 1;
+            // var disengagedMod = posture == GroupPostureType.Disengaged ? 1.1f : 1;
+            var disengagedMod = 1f;
+            if(posture == GroupPostureType.Disengaged)
+            {
+                disengagedMod = IsNavy() ? 1.1f : 2f;
+            }
             
             if (IsArmy())
             {
@@ -619,7 +622,87 @@ namespace StrategicCombatCore
             else
             {
                 // TODO: Dismiss or retreat to a relative "safe" location determined dynamically?
+                StartMoveToARandomMovableNeighbor();
             }
+        }
+
+        public void StartStopLandAttack()
+        {
+            StartReorgnize(24);
+        }
+
+        public bool StartMoveToARandomMovableNeighbor()
+        {
+            plannedPath.Clear();
+            
+            IGraphEnumerable<Cell> graph = IsNavy() ? new DynamicCellGraphNavy() : new DynamicLandRetreatGraph(){side=side};
+            var possibleNeighbors = graph.Neighbors(cell).ToList();
+            if(possibleNeighbors.Count > 0)
+            {
+                var dstCell = RandomUtils.Sample(possibleNeighbors);
+                var pathCells = PathFinding<Cell>.AStar(graph, cell, dstCell);
+                plannedPath.AddRange(pathCells.Select(c => new XY() { x = c.x, y = c.y }));
+                moveProgressionKm = 0; // TODO: This may override movement progression which should be maintained.
+                return true;
+            }
+
+            return false; // if unit can't retreat, it should be eliminated generally
+        }
+
+        public void StartRetreatFromLandDefend()
+        {
+            posture = GroupPostureType.Disengaged;
+            restoredHours = 24; // TODO: It's questionable to "return" to Active state sometimes, looks like we should separated those types of states.
+
+            DoLandDisengage();
+        }
+
+        public void SetPlannedPath(List<XY> newPlannedPath)
+        {
+            plannedPath.Clear();
+
+            if(newPlannedPath.Count < 2)
+            {
+                moveProgressionKm = 0;
+                return;
+            }
+
+            var moveProgressionKmMaintained = plannedPath.Count >= 2 && plannedPath[1].x == newPlannedPath[1].x && plannedPath[1].y == newPlannedPath[1].y;
+            if(!moveProgressionKmMaintained)
+            {
+                moveProgressionKm = 0;
+            }
+            plannedPath.AddRange(newPlannedPath);
+        }
+
+        public void DoLandDisengage()
+        {
+            var dstCell = GetDepotGroup()?.cell;
+            if(dstCell != null)
+            {
+                var graph = new DynamicLandRetreatGraph(){side=side};
+                var pathCells = PathFinding<Cell>.AStar(graph, cell, dstCell);
+                if(pathCells.Count >= 2)
+                {
+                    // plannedPath.Clear();
+                    // plannedPath.AddRange(pathCells.Take(2).Select(c => new XY() { x = c.x, y = c.y }));
+                    // moveProgressionKm = 0; // TODO: This may override movement progression which should be maintained.
+                    var newPlannedPath = pathCells.Take(2).Select(c => new XY() { x = c.x, y = c.y }).ToList();
+                    SetPlannedPath(newPlannedPath);
+                    return;
+                }
+            }
+
+            if(!StartMoveToARandomMovableNeighbor())
+            {
+                EliminateByNoRetreatPath();
+            }
+        }
+
+        void EliminateByNoRetreatPath()
+        {
+            RemoveFromMap();
+            // TODO: Add log?
         }
         
         public void StartReorgnize(int reorgnizedHours)

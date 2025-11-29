@@ -60,9 +60,12 @@ namespace NavalCombatCore
     public partial class LaunchedTorpedo : IPortraitViewerObservable
     {
         static PictureReference sharedPortraitTopReference = new() { path = "Pictures/Ships/Schwartzkopff Torpedo_Top", isBuiltin = true };
+        static PictureReference sharedPortraitIconReference = new() { path = "Pictures/Ships/Schwartzkopff Torpedo_icon", isBuiltin = true };
+
 
         Country IPortraitViewerObservable.GetCountry() => GetShooter()?.shipClass?.country ?? Country.General;
         PictureReference IPortraitViewerObservable.GetPortraitTopReference() => sharedPortraitTopReference;
+        PictureReference IPortraitViewerObservable.GetPortraitIconReference() => sharedPortraitIconReference;
         bool IPortraitViewerObservable.IsShowArrow() => false;
         GlobalString IPortraitViewerObservable.GetName() => sourceName;
         float IPortraitViewerObservable.GetDesiredHeadingDeg() => headingDeg;
@@ -292,6 +295,7 @@ namespace NavalCombatCore
 
         // IPortraitViewerObservable
         PictureReference IPortraitViewerObservable.GetPortraitTopReference() => shipClass?.portraitTopReference;
+        PictureReference IPortraitViewerObservable.GetPortraitIconReference() => shipClass?.portraitIconReference;
         // string IPortraitViewerObservable.GetPortraitTopCode() => shipClass.portraitTopCode;
         Country IPortraitViewerObservable.GetCountry() => shipClass.country;
         GlobalString IPortraitViewerObservable.GetName() => namedShip?.name;

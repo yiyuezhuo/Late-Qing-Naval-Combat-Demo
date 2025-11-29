@@ -166,6 +166,8 @@ public static class RegisteredConverters
         RegisterEnumIntTwoWay<LeaderTrait>();
         RegisterEnumIntTwoWay<GamePreference.FiringLineDisplayMode>();
         RegisterEnumIntTwoWay<VictoryLevel>();
+
+        RegisterEnumIntTwoWay<PortraitViewer.Mode>();
     }
 
     // static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)

@@ -631,6 +631,7 @@ namespace NavalCombatCore
         // public string portraitTopCode;
         public PictureReference portraitReference = new();
         public PictureReference portraitTopReference = new();
+        public PictureReference portraitIconReference = new();
 
         public RamType ram;
 

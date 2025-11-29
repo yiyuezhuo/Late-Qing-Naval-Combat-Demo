@@ -2233,6 +2233,14 @@ MonoBehaviour:
     m_Localized: 'Commit: {0}, Loss: {1}, Remain: {2}'
     m_Metadata:
       m_Items: []
+  - m_Id: 17287013587390464
+    m_Localized: Icon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17287243082928128
+    m_Localized: Counter
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -16,6 +16,7 @@ public interface IPortraitViewerObservable : IObjectIdLabeled, ICollider // Abst
 
     // public string GetPortraitTopCode(); // main View
     public PictureReference GetPortraitTopReference();
+    public PictureReference GetPortraitIconReference();
     public Country GetCountry(); // flag
     public bool IsShowArrow();
     public GlobalString GetName();
@@ -28,16 +29,22 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public string modelObjectId;
     public IPortraitViewerObservable model { get => EntityManager.Instance.Get<IPortraitViewerObservable>(modelObjectId); }
 
-    public enum Type
+    // public enum Type
+    // {
+    //     ShipTopPortrait,
+    //     CaptainPortrait,
+    //     ShipShape,
+    //     Point, // If the unit is too small to be spotted
+    // }
+    // public Type type;
+    public enum Mode
     {
-        ShipTopPortrait,
-        CaptainPortrait,
-        ShipShape,
-        Point, // If the unit is too small to be spotted
+        Icon, // basically transparent top image
+        Counter // default top image
     }
-    public Type type;
+    public static Mode mode = Mode.Icon;
 
-    public float modelScale = 1f;
+    public static float modelScale = 1f;
     public MeshRenderer iconRenderer;
     public TMP_Text text;
     public Transform iconTransform;
@@ -117,7 +124,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             var s = modelScale;
             arrowBaseTransform.localScale = new Vector3(s, s, s);
         }
-    }
+    } 
 
     public void Update()
     {
@@ -160,7 +167,13 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
         MaintainFlagRotationSize();
 
-        portraitTex = UnityWebRequestImageReader.Instance.FetchTexture2D(model.GetPortraitTopReference().ResolvePath());
+        var portraitRef = mode switch
+        {
+            Mode.Icon => model.GetPortraitIconReference(),
+            Mode.Counter => model.GetPortraitTopReference(),
+            _ => model.GetPortraitTopReference()
+        };
+        portraitTex = UnityWebRequestImageReader.Instance.FetchTexture2D(portraitRef.ResolvePath());
         countryTex = UnityWebRequestImageReader.Instance.FetchTexture2D(Utils.GetCountryPath(model.GetCountry()));
 
         var newViewHashCode = GetViewHashCode();

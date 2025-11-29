@@ -27,6 +27,13 @@ public class GamePreference
     }
 
     public FiringLineDisplayMode firingLineDisplayMode = FiringLineDisplayMode.SelectedRootGroup;
+    
+    [CreateProperty]
+    public PortraitViewer.Mode shipPortraitViewMode
+    {
+        get => PortraitViewer.mode;
+        set => PortraitViewer.mode = value;
+    }
 
     public float pulseLengthSeconds = 1; // 2; // 1;
     public float simulationRateRaio = 120; // 1s real time => 120s simulation time (similar to RTW's default advance speed)
@@ -70,6 +77,13 @@ public class GamePreference
 
     public bool forcedNavalCombatResolution = true;
     public bool showAIDialog = true;
+
+    [CreateProperty]
+    public float shipPortraitModelScale
+    {
+        get => PortraitViewer.modelScale;
+        set => PortraitViewer.modelScale = value;
+    }
 
     public event EventHandler shortLabelLanguageTypeChanged;
 

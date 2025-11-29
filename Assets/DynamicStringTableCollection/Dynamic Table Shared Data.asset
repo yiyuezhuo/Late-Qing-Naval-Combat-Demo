@@ -2223,6 +2223,14 @@ MonoBehaviour:
     m_Key: 'Commit: {0}, Loss: {1}, Remain: {2}'
     m_Metadata:
       m_Items: []
+  - m_Id: 17287013587390464
+    m_Key: Mode.Icon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17287243082928128
+    m_Key: Mode.Counter
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

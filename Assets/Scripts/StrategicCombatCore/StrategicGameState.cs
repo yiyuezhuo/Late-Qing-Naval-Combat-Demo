@@ -173,10 +173,9 @@ namespace StrategicCombatCore
 
             missions = newInstance.missions;
             pendingNavalCombats = newInstance.pendingNavalCombats;
+            landBattles = newInstance.landBattles;
 
             logs = newInstance.logs;
-
-            landBattles = newInstance.landBattles;
 
             mapRebuilt?.Invoke(this, EventArgs.Empty);
             edgeFeatureUpdated?.Invoke(this, EventArgs.Empty);

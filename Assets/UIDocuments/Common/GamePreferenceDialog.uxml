@@ -75,6 +75,18 @@
                             <ui:DataBinding property="value" data-source-path="showAIDialog" binding-mode="TwoWay" />
                         </Bindings>
                     </ui:Toggle>
+                    <LocalizedEnumField label="Ship Icon" type-str="PortraitViewer+Mode" value="0">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(31882530648657920)" />
+                            <ui:DataBinding property="value" data-source-path="shipPortraitViewMode" source-to-ui-converters="Mode =&gt; int" ui-to-source-converters="int =&gt; Mode" binding-mode="TwoWay" />
+                        </Bindings>
+                    </LocalizedEnumField>
+                    <ui:FloatField label="Ship Portrait Scale">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="shipPortraitModelScale" binding-mode="TwoWay" />
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(31888170569863168)" />
+                        </Bindings>
+                    </ui:FloatField>
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181035691839488)" />

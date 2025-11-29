@@ -527,7 +527,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 86749654716416
-    m_Localized: Portrait
+    m_Localized: Portrait Source
     m_Metadata:
       m_Items: []
   - m_Id: 90678081785856
@@ -2214,6 +2214,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 31177734266458112
     m_Localized: Confirm Dialog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31882530648657920
+    m_Localized: Ship Icon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31888170569863168
+    m_Localized: Ship Portrait Scale
     m_Metadata:
       m_Items: []
   references:

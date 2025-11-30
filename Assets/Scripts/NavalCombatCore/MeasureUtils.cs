@@ -172,6 +172,12 @@ namespace NavalCombatCore
                 return distanceKm * 1000 * MeasureUtils.meterToYard;
             }
 
+            public static double HaversineDistanceYards(LatLon latLon1, LatLon latLon2)
+            {
+                var distanceKm = HaversineDistanceKm(latLon1.LatDeg, latLon1.LonDeg, latLon2.LatDeg, latLon2.LonDeg);
+                return distanceKm * 1000 * MeasureUtils.meterToYard;
+            }
+
             public static (double DistanceKm, double InitialBearingDeg) CalculateDistanceKmAndBearingDeg(double lat1, double lon1, double lat2, double lon2)
             {
                 const double R = 6371; // Earth's radius in km

@@ -117,6 +117,24 @@ namespace NavalCombatCore
         public GlobalString name = new();
         // public GlobalString captain = new();
 
+        public IEnumerable<T> Walk<T>()
+        {
+            foreach(var member in GetChildren())
+            {
+                if(member is T t)
+                {
+                    yield return t;
+                }
+                if(member is ShipGroup shipGroup)
+                {
+                    foreach(var ret in shipGroup.Walk<T>())
+                    {
+                        yield return ret;
+                    }
+                }
+            }
+        }
+
         // public string leaderObjectId;
         public LeaderReference leaderReference = new();
         public Leader leader

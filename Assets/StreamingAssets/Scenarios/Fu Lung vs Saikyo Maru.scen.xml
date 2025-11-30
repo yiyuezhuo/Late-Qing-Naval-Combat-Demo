@@ -85,9 +85,6 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <damageEffectRecords />
-    <damageEffects />
-    <shipboardFireStatus />
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -98,6 +95,18 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
+    <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>325f3d53-3214-456c-9731-e8f8e22fea04</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -215,9 +224,6 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <damageEffectRecords />
-    <damageEffects />
-    <shipboardFireStatus />
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -228,6 +234,18 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
+    <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -536,13 +554,25 @@
    <visibility>Clear</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
-   <description>Torpede Boat vs light-armed target, used to train usage of torpedo.</description>
+   <description>Torpede Boat vs light-armed target, used to test usage of torpedo.</description>
+   <globalDescription>
+    <english>Torpede Boat vs light-armed target, used to test usage of torpedo.</english>
+    <japanese>水雷艇対軽武装標的、魚雷の使用をテストするために使用されます。</japanese>
+    <chineseSimplified>鱼雷艇对轻武装目标，用于测试鱼雷的使用。</chineseSimplified>
+    <chineseTraditional>魚雷艇對輕武裝目標，用於測試魚雷的使用。</chineseTraditional>
+   </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
     <accumulateSecond>0</accumulateSecond>
     <elapsedSeconds>0</elapsedSeconds>
    </weaponSimulationAssignmentClock>
    <doingStep>false</doingStep>
+   <firstLoaded>false</firstLoaded>
+   <effectiveCompleted>false</effectiveCompleted>
+   <firstDisengaged>false</firstDisengaged>
+   <firstReachEndDateTime>false</firstReachEndDateTime>
+   <hasEndDateTime>false</hasEndDateTime>
+   <endDateTime>1895-04-17T00:00:00Z</endDateTime>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />
@@ -552,4 +582,7 @@
   <yRotation>236.415039</yRotation>
   <orthographicSize>4</orthographicSize>
  </viewState>
+ <eventState>
+  <eventItems />
+ </eventState>
 </FullState>

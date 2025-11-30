@@ -2138,6 +2138,22 @@ MonoBehaviour:
     m_Key: Ship Portrait Scale
     m_Metadata:
       m_Items: []
+  - m_Id: 31892971236003840
+    m_Key: Ship Text Scale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32239189245988864
+    m_Key: Icon Beam Scale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32254205164687360
+    m_Key: 'End Datetime (+0):'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32254508370923520
+    m_Key: End DateTime
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

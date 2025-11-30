@@ -2224,6 +2224,22 @@ MonoBehaviour:
     m_Localized: Ship Portrait Scale
     m_Metadata:
       m_Items: []
+  - m_Id: 31892971236003840
+    m_Localized: Ship Text Scale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32239189245988864
+    m_Localized: Icon Beam Scale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32254205164687360
+    m_Localized: 'End Datetime (+0):'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32254508370923520
+    m_Localized: End DateTime
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

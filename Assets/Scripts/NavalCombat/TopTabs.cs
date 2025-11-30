@@ -198,10 +198,12 @@ public class TopTabs : SingletonDocument<TopTabs>
                 "Confirm to conclude the battle and return to strategic game?"
             ), () =>
             {
-                StrategicGameManager.startupConfig.syncShipLogs = NavalGameState.Instance.shipLogs;
-                StrategicGameManager.startupConfig.victoryStatus = VictoryStatus.Generate(NavalGameState.Instance);
+                // StrategicGameManager.startupConfig.syncShipLogs = NavalGameState.Instance.shipLogs;
+                // StrategicGameManager.startupConfig.victoryStatus = VictoryStatus.Generate(NavalGameState.Instance);
 
-                SceneManager.LoadScene("Strategic Game");
+                // SceneManager.LoadScene("Strategic Game");
+
+                GameManager.Instance.ReturnToStrategicGame();
             });
         };
 

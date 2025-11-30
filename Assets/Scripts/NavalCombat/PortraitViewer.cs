@@ -45,6 +45,9 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public static Mode mode = Mode.Icon;
 
     public static float modelScale = 1f;
+    public static float textScaleFactor = 0.015f;
+    public static float iconBeamScale = 1.25f; // Increase icon's beam size to increase recognition
+
     public MeshRenderer iconRenderer;
     public TMP_Text text;
     public Transform iconTransform;
@@ -54,7 +57,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public Transform flagRotationBase;
     public Transform arrowBaseTransform;
     public Transform cubeColliderTransform;
-    float scaleFactor = 0.015f;
+    
     public MeshRenderer flagRenderer;
     public GameObject selectedIndicator;
     public MeshRenderer healthBarRenderer;
@@ -93,7 +96,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
                          cam.transform.rotation * Vector3.up);
 
         // text.transform.localScale = Vector3.one * cam.orthographicSize * scaleFactor;
-        t.localScale = Vector3.one * cam.orthographicSize * scaleFactor;
+        t.localScale = Vector3.one * cam.orthographicSize * textScaleFactor;
         // text.transform.localScale = Vector3.one * cam.orthographicSize * scaleFactor;
     }
 
@@ -152,8 +155,23 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
         var shipLengthFoot = model?.GetLengthFoot() ?? 300;
         var shipBeamFoot = model?.GetBeamFoot() ?? 60;
-        iconTransform.localScale = new Vector3(shipLengthFoot * Utils.footToWu * modelScale, shipBeamFoot * Utils.footToWu * modelScale, 1);
-        cubeColliderTransform.localScale = new Vector3(shipLengthFoot * Utils.footToWu * 1, shipBeamFoot * Utils.footToWu * 1, 200 * Utils.footToWu); // 100 foots above-waterline height for LOS calculation  
+
+        var beamWu = shipBeamFoot * Utils.footToWu * modelScale;
+        if(mode == Mode.Icon)
+        {
+            beamWu *= iconBeamScale;
+        }
+
+        iconTransform.localScale = new Vector3(
+            shipLengthFoot * Utils.footToWu * modelScale,
+            beamWu,
+            1
+        );
+        cubeColliderTransform.localScale = new Vector3(
+            shipLengthFoot * Utils.footToWu * 1,
+            shipBeamFoot * Utils.footToWu * 1,
+            200 * Utils.footToWu
+        ); // 100 foots above-waterline height for LOS calculation  
 
         var zEuler = Utils.TrueNorthCWDegToRightCCWDeg(model.GetHeadingDeg());
         headingTransform.localEulerAngles = new Vector3(0, 0, zEuler);

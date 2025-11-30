@@ -330,20 +330,20 @@
                                                 <ui:DataBinding property="style.backgroundImage" data-source-path="portraitTopReference.pictureStyleBackground" binding-mode="ToTarget" />
                                             </Bindings>
                                         </ui:VisualElement>
-                                        <ui:Instance template="PictureField" name="PortraitIconReferenceField" data-source-path="portraitIconReference">
-                                            <AttributeOverrides element-name="FieldLabel" text="Portrait Icon" />
-                                        </ui:Instance>
-                                        <ui:VisualElement style="flex-grow: 0; height: 150px; -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;">
-                                            <Bindings>
-                                                <ui:DataBinding property="style.backgroundImage" data-source-path="portraitIconReference.pictureStyleBackground" binding-mode="ToTarget" />
-                                            </Bindings>
-                                        </ui:VisualElement>
                                         <ui:Instance template="PictureField" data-source-path="portraitReference" name="PortraitReferenceField">
                                             <AttributeOverrides element-name="FieldLabel" text="Portrait" />
                                         </ui:Instance>
                                         <ui:VisualElement style="flex-grow: 0; height: 300px; -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;">
                                             <Bindings>
                                                 <ui:DataBinding property="style.backgroundImage" data-source-path="portraitReference.pictureStyleBackground" binding-mode="ToTarget" />
+                                            </Bindings>
+                                        </ui:VisualElement>
+                                        <ui:Instance template="PictureField" name="PortraitIconReferenceField" data-source-path="portraitIconReference">
+                                            <AttributeOverrides element-name="FieldLabel" text="Portrait Icon" />
+                                        </ui:Instance>
+                                        <ui:VisualElement style="flex-grow: 0; height: 150px; -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;">
+                                            <Bindings>
+                                                <ui:DataBinding property="style.backgroundImage" data-source-path="portraitIconReference.pictureStyleBackground" binding-mode="ToTarget" />
                                             </Bindings>
                                         </ui:VisualElement>
                                     </ui:VisualElement>

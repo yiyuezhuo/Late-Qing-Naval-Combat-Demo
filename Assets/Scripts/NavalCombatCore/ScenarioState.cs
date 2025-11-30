@@ -4,6 +4,7 @@ using System.Linq;
 using System;
 // using SunCalcNet;
 using SunCalcSharp;
+using CoreUtils;
 
 namespace NavalCombatCore
 {
@@ -54,29 +55,41 @@ namespace NavalCombatCore
         public int seaStateBeaufort;
         public bool hasMoonlight = true;
 
-        public string description;
+        // public string description;
+        public GlobalString globalDescription = new();
 
         public SimulationClock weaponSimulationAssignmentClock = new() { intervalSeconds = 120 };
         public bool doingStep;
         public bool firstLoaded; // if false, loading will trigger First Load Scenario Trigger and set to true. Save Edit will set it back to false in the file.
         // public int referenceTimeZoneOffset = +8; // +8 timezone
-
+        public bool effectiveCompleted; // TODO: Add it to UI?
         // public DateTimeOffset GetReferenceTimeZoneDateTimeOffset()
         // {
         //     var dateTimeOffset = new DateTimeOffset(dateTime);
         //     return dateTimeOffset.ToOffset(TimeSpan.FromHours(referenceTimeZoneOffset));
         // }
+        public bool firstDisengaged;
+        public bool firstReachEndDateTime;
 
-        public float GetTimeZoneOffset(float longtitude)
+        public bool hasEndDateTime;
+        public DateTime endDateTime = new DateTime(1895, 4, 17, 0, 0, 0, DateTimeKind.Utc);
+
+        public static float GetTimeZoneOffset(float longitude)
         {
             var intervals = 24f;
             var degreesPerInterval = 360f / intervals;
-            return (float)Math.Round(longtitude / degreesPerInterval);
+            return (float)Math.Round(longitude / degreesPerInterval);
         }
 
         public DateTime GetLocalDateTime(float longitude)
         {
             return dateTime.AddHours(GetTimeZoneOffset(longitude));
+        }
+
+        public static DateTimeOffset GetLocalDateTimeOffset(float longitude, DateTime time)
+        {
+            var dateTimeOffset = new DateTimeOffset(time);
+            return dateTimeOffset.ToOffset(TimeSpan.FromHours(GetTimeZoneOffset(longitude)));
         }
 
         public SunState GetSunPosition(LatLon latLon)

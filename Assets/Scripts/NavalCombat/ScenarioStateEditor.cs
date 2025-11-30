@@ -10,11 +10,22 @@ public interface IDateTimeHolder
     public void SetDateTime(DateTime dateTime);
 }
 
+public class DateTimeHolder : IDateTimeHolder
+{
+    // public DateTime dateTime;
+    public Func<DateTime> getter;
+    public Action<DateTime> setter;
+
+    public DateTime GetDateTime() => getter();
+    public void SetDateTime(DateTime dateTime) => setter(dateTime);
+
+}
+
 public class ScenarioStateDateTimeViewModel
 {
     public IDateTimeHolder dateTimeHolder;
 
-    bool isDayValid(int _year, int _month, int _day)
+    bool IsDayValid(int _year, int _month, int _day)
     {
         var daysInMonth = DateTime.DaysInMonth(_year, _month);
         return _day <= daysInMonth && _day >= 1;
@@ -32,7 +43,7 @@ public class ScenarioStateDateTimeViewModel
                 return;
             }
             var newYear = value;
-            if (!isDayValid(newYear, month, day))
+            if (!IsDayValid(newYear, month, day))
             {
                 Debug.LogWarning($"Invalid year value (blocked by day): {newYear}, {month}, {day}");
                 return;
@@ -55,7 +66,7 @@ public class ScenarioStateDateTimeViewModel
                 return;
             }
             var newMonth = value;
-            if (!isDayValid(year, newMonth, day))
+            if (!IsDayValid(year, newMonth, day))
             {
                 Debug.LogWarning($"Invalid month value (blocked by day): {year}, {newMonth}, {day}");
                 return;
@@ -73,7 +84,7 @@ public class ScenarioStateDateTimeViewModel
         set
         {
             var newDay = value;
-            if (!isDayValid(year, month, newDay))
+            if (!IsDayValid(year, month, newDay))
             {
                 Debug.LogWarning($"Invalid day value (blocked by day): {year}, {month}, {newDay}");
                 return;
@@ -144,11 +155,11 @@ namespace NavalCombatCore
         public DateTime GetDateTime() => dateTime;
         public void SetDateTime(DateTime dt) => dateTime = dt;
 
-        public DateTimeOffset GetReferenceTimeZoneDateTimeOffset()
-        {
-            var dateTimeOffset = new DateTimeOffset(dateTime);
-            return dateTimeOffset.ToOffset(TimeSpan.FromHours(CoreParameter.Instance.referenceTimeZoneOffset));
-        }
+        // public DateTimeOffset GetReferenceTimeZoneDateTimeOffset()
+        // {
+        //     var dateTimeOffset = new DateTimeOffset(dateTime);
+        //     return dateTimeOffset.ToOffset(TimeSpan.FromHours(CoreParameter.Instance.referenceTimeZoneOffset));
+        // }
 
         ScenarioStateDateTimeViewModel _dateTimeViewModel; // Note it's possible to initialize the view model attribute from empty constructor but this may break core's capabbility to leverage empty constructor
 
@@ -165,8 +176,37 @@ namespace NavalCombatCore
             }
         }
 
+        ScenarioStateDateTimeViewModel _endDateTimeViewModel;
+        
         [CreateProperty]
-        public DateTimeOffset referenceTimeZoneDateTimeOffset => GetReferenceTimeZoneDateTimeOffset();
+        public ScenarioStateDateTimeViewModel endDateTimeViewModel
+        {
+            get
+            {
+                if(_endDateTimeViewModel == null)
+                {
+                    _endDateTimeViewModel = new ScenarioStateDateTimeViewModel() {
+                        dateTimeHolder = new DateTimeHolder()
+                        {
+                            getter = () => endDateTime,
+                            setter = (dt) => endDateTime = dt
+                        }
+                    };
+                }
+                return _endDateTimeViewModel;
+            }
+        }
+
+        // GetReferenceTimeZoneDateTimeOffsetString
+
+        // [CreateProperty]
+        // public DateTimeOffset referenceTimeZoneDateTimeOffset => GetReferenceTimeZoneDateTimeOffset();
+        [CreateProperty]
+        public DateTimeOffset referenceTimeZoneDateTimeOffset => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffset(dateTime);
+
+        [CreateProperty]
+        public DateTimeOffset referenceTimeZoneEndDateTimeOffset => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffset(endDateTime);
+
     }
 }
 

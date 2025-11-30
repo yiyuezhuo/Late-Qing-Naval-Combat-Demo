@@ -2231,6 +2231,75 @@ MonoBehaviour:
     m_Key: Mode.Counter
     m_Metadata:
       m_Items: []
+  - m_Id: 17309621699645440
+    m_Key: The battle field has only a operational fleet now. You can return to the
+      strategic game now, or use the button on the top menu bar to return at any
+      time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17638340989456384
+    m_Key: Fleets appears to be disengaged. You can return to the strategic game
+      now, or use the button on the top menu bar to exit at any time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17669073736994816
+    m_Key: Scenario End time is reached. You can return to the strategic game now,
+      or use the button on the top menu bar to return at any time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17669950463971328
+    m_Key: Scenario End time is reached. Check the victory status now?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17670196518621184
+    m_Key: Fleets appears to be disengaged. Check the victory status now?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17671095458631680
+    m_Key: The battle field has only a operational fleet now. Check the victory status
+      now?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17727770479726592
+    m_Key: DayNightLevel.Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17727857436037120
+    m_Key: DayNightLevel.Night
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17727904718426112
+    m_Key: DayNightLevel.Twilight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17750618166431744
+    m_Key: 'Description:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17750720427757568
+    m_Key: 'Begin UTC Time: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17750787536621568
+    m_Key: 'Begin Local DateTime: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17750995754455040
+    m_Key: 'End UTC DateTime: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17751035289964544
+    m_Key: 'End Local DateTime: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17751090487005184
+    m_Key: 'Ship Count (On Map): {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17751226881576960
+    m_Key: 'Latitude: {0}, Longtitude: {1}'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -22,11 +22,11 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                <ui:Label text="Scenario Info" style="white-space: normal;">
+                <ui:TextField value="Scenario Info" multiline="true" vertical-scroller-visibility="Auto" readonly="true" style="flex-grow: 1;">
                     <Bindings>
-                        <ui:DataBinding property="text" data-source-path="currentDescription" binding-mode="ToTarget" />
+                        <ui:DataBinding property="value" data-source-path="currentDescription" binding-mode="ToTarget" />
                     </Bindings>
-                </ui:Label>
+                </ui:TextField>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

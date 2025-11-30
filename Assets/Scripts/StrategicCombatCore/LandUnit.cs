@@ -79,7 +79,7 @@ namespace StrategicCombatCore
 
         // public static float baseNormalSupplyCostTonPerMenDay = 0.001f;
         static float baseNormalSupplyCostTonPerMenDay = 0.003f; // 3kg/Day/Man 
-        static float baseCombatSupplyCostTonPerMenDay = 0.015f;
+        // static float baseCombatSupplyCostTonPerMenDay = 0.015f;
         static float carryDays = 7;
         static float depotReserveDays = 30;
 

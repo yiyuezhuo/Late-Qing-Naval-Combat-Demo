@@ -17,6 +17,7 @@ using CoreUtils;
 using NavalCombat;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using UnityEngine.SceneManagement;
 
 
 public interface IColliderRootProvider
@@ -272,6 +273,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public string hoveringLocationInfo;
     public bool currentLogOnly = true;
 
+    public void ReturnToStrategicGame()
+    {
+        StrategicGameManager.startupConfig.syncShipLogs = NavalGameState.Instance.shipLogs;
+        StrategicGameManager.startupConfig.victoryStatus = VictoryStatus.Generate(NavalGameState.Instance);
+
+        SceneManager.LoadScene("Strategic Game");
+    }
+
     // float viewAccTime;
     void UpdateLocationInfoLabel()
     {
@@ -284,7 +293,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
             var scenarioState = NavalGameState.Instance.scenarioState;
 
-            var timeZoneOffset = scenarioState.GetTimeZoneOffset(latLon.LonDeg);
+            var timeZoneOffset = ScenarioState.GetTimeZoneOffset(latLon.LonDeg);
             var timeZoneOffsetF = timeZoneOffset.ToString("+#;-#;0");
 
             var localDT = scenarioState.GetLocalDateTime(latLon.LonDeg);
@@ -302,12 +311,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             // hoveringLocationInfo = $"Lat: {latF} Lon: {lonF} UTC: {utcDT} Local: {localDT} ({dayNightLevel},{timeZoneOffsetF}) Sun Alt: {sunAltF} Azi: {sunAziF}";
             hoveringLocationInfo = Localize(
                 "Lat: {0} Lon: {1} UTC: {2} Local: {3} ({4},{5}) Sun Alt: {6} Azi: {7}",
-                latF, lonF, utcDT, localDT, dayNightLevel, timeZoneOffsetF, sunAltF, sunAziF
+                latF, lonF, utcDT, localDT, LocalizeEnum(dayNightLevel), timeZoneOffsetF, sunAltF, sunAziF
             );
         }
     }
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+    protected static string LocalizeEnum<T>(T obj) => ServiceLocator.Get<ILocalizeService>().GetEnum(obj);
 
     public float remainAdvanceSimulationSecondsRequestedByUserInput; // Requested by KeyCode 1-9 (1-9 min) and BackQuote (`) (1s)
     public float remainAdvanceSimulationSecondsRequestedByUpdate;
@@ -326,9 +336,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             remainAdvanceSimulationSecondsRequestedByUpdate += realSeconds * simulationRateRaio;
         }
-
+        
+        var advanceAny = false;
         while (remainAdvanceSimulationSecondsRequestedByUserInput >= pulseLengthSeconds && remainAdvanceSimulationSecondsRequestedByUpdate >= pulseLengthSeconds)
         {
+            advanceAny = true;
+
             var lastMin = NavalGameState.Instance.scenarioState.dateTime.Minute;
 
             NavalGameState.Instance.Step(pulseLengthSeconds);
@@ -339,6 +352,128 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             {
                 minuteChanged?.Invoke(this, EventArgs.Empty);
                 // Debug.LogWarning("minuteChanged published");
+            }
+        }
+
+        if(advanceAny) // When control is return to player (active advancing is completed)
+        {
+            // effectiveDisengaged
+            HandleAutoEnd();
+        }
+    }
+
+    public void HandleAutoEnd()
+    {
+        var scenarioState = navalGameState.scenarioState;
+
+        if(!scenarioState.effectiveCompleted)
+        {
+            var rootGroups = navalGameState.shipGroups.Where(g => g.parentObjectId == null).ToList();
+            var rootGroupShips = rootGroups.Select(g => g.Walk<ShipLog>().ToList()).ToList();
+            // var test = rootGroupShips.Select(shipLogs => shipLogs.Select(s => (s.mapState, s.operationalState, s.GetMaxSpeedKnots())).ToList()).ToList();
+            var operationalGroupCounts = rootGroupShips.Where(shipLogs => 
+                shipLogs.Any(shipLog => shipLog.mapState == MapState.Deployed && shipLog.operationalState == ShipOperationalState.Operational && shipLog.GetMaxSpeedKnots() > 0)
+            ).Count();
+
+            if(operationalGroupCounts <= 1) // Effective Completed (only one side has effective ships)
+            {
+                scenarioState.effectiveCompleted = true;
+
+                if(startupConfig.IsFromStrategic())
+                {
+                    DialogRoot.Instance.PopupConfirmDialog(Localize(
+                        "The battle field has only a operational fleet now. You can return to the strategic game now, or use the button on the top menu bar to return at any time."
+                    ), () =>
+                    {
+                        ReturnToStrategicGame();
+                    });
+                }
+                else
+                {
+                    DialogRoot.Instance.PopupConfirmDialog(Localize(
+                        "The battle field has only a operational fleet now. Check the victory status now?"
+                        ), () =>
+                        {
+                            DialogRoot.Instance.PopupVictoryStatusDialog(
+                                VictoryStatus.Generate(NavalGameState.Instance)
+                            );
+                        }
+                    );
+                }
+            }
+            else if(!navalGameState.scenarioState.firstDisengaged) // So operationalGroupCounts.Count >= 2
+            {
+                var latLonAverages = rootGroupShips.Select(shipLogs => new LatLon(
+                    shipLogs.Select(s => s.GetLatitudeDeg()).Average(), // FIXME: separated retreat?
+                    shipLogs.Select(s => s.GetLongitudeDeg()).Average()
+                )).ToList();
+
+                var disengagedAny = false;
+                for(int i=0; i<latLonAverages.Count; i++)
+                {
+                    for(int j=i+1; j<latLonAverages.Count; j++)
+                    {
+                        var distIJYards = MeasureStats.Approximation.HaversineDistanceYards(latLonAverages[i], latLonAverages[j]);
+                        if(distIJYards > 48000) // 48000 yards to determine disengaged
+                        {
+                            disengagedAny = true;
+                            break;
+                        }
+                    }
+                }
+                if(disengagedAny)
+                {
+                    scenarioState.firstDisengaged = true;
+
+                    if(startupConfig.IsFromStrategic())
+                    {
+                        DialogRoot.Instance.PopupConfirmDialog(Localize(
+                            "Fleets appears to be disengaged. You can return to the strategic game now, or use the button on the top menu bar to exit at any time."
+                        ), () =>
+                        {
+                            ReturnToStrategicGame();
+                        });
+                    }
+                    else
+                    {
+                        DialogRoot.Instance.PopupConfirmDialog(Localize(
+                            "Fleets appears to be disengaged. Check the victory status now?"
+                            ), () =>
+                            {
+                                DialogRoot.Instance.PopupVictoryStatusDialog(
+                                    VictoryStatus.Generate(NavalGameState.Instance)
+                                );
+                            }
+                        );
+                    }
+                }
+            }
+        }
+
+        if(scenarioState.hasEndDateTime && scenarioState.dateTime > scenarioState.endDateTime && !scenarioState.firstReachEndDateTime)
+        {
+            scenarioState.firstReachEndDateTime = true;
+
+            if(startupConfig.IsFromStrategic())
+            {
+                DialogRoot.Instance.PopupConfirmDialog(Localize(
+                    "Scenario End time is reached. You can return to the strategic game now, or use the button on the top menu bar to return at any time."
+                ), () =>
+                {
+                    ReturnToStrategicGame();
+                });
+            }
+            else
+            {
+                DialogRoot.Instance.PopupConfirmDialog(Localize(
+                    "Scenario End time is reached. Check the victory status now?"
+                    ), () =>
+                    {
+                        DialogRoot.Instance.PopupVictoryStatusDialog(
+                            VictoryStatus.Generate(NavalGameState.Instance)
+                        );
+                    }
+                );
             }
         }
     }

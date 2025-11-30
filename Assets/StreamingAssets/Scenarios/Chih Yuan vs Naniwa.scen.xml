@@ -212,10 +212,6 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <damageEffectRecords />
-    <damageEffects />
-    <shipboardFireStatus />
-    <leaderObjectId>bbdc13c1-a909-411c-b949-ad82485ab108</leaderObjectId>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -227,6 +223,18 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
+    <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -275,6 +283,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>9a91de81-a3c4-4dca-a0a2-9261c317bb96</objectId>
     </doctrine>
+    <strategicGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -439,10 +448,6 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <damageEffectRecords />
-    <damageEffects />
-    <shipboardFireStatus />
-    <leaderObjectId>ca6e9344-d40e-4a16-8ee1-82ae8d5dbdb4</leaderObjectId>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>RelativeToTarget</controlMode>
@@ -453,6 +458,18 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
+    <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -501,6 +518,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>56185056-05af-40b0-836b-9e932169a0e8</objectId>
     </doctrine>
+    <strategicGroupReference />
    </ShipLog>
   </shipLogs>
   <shipGroups>
@@ -514,7 +532,6 @@
      <japanese>北洋艦隊</japanese>
      <chineseSimplified>北洋舰队</chineseSimplified>
     </name>
-    <leaderObjectId>18963af7-1163-4323-9421-9f2421c9fee1</leaderObjectId>
     <leaderReference>
      <referenceObjectId>18963af7-1163-4323-9421-9f2421c9fee1</referenceObjectId>
     </leaderReference>
@@ -578,7 +595,6 @@
      <japanese>本隊</japanese>
      <chineseSimplified>主队</chineseSimplified>
     </name>
-    <leaderObjectId>18963af7-1163-4323-9421-9f2421c9fee1</leaderObjectId>
     <leaderReference>
      <referenceObjectId>18963af7-1163-4323-9421-9f2421c9fee1</referenceObjectId>
     </leaderReference>
@@ -641,7 +657,6 @@
      <japanese>別働隊</japanese>
      <chineseSimplified>增援</chineseSimplified>
     </name>
-    <leaderObjectId>a30c7e56-bf11-44b2-8f99-febd99701a42</leaderObjectId>
     <leaderReference>
      <referenceObjectId>a30c7e56-bf11-44b2-8f99-febd99701a42</referenceObjectId>
     </leaderReference>
@@ -708,7 +723,6 @@
      <japanese>連合艦隊</japanese>
      <chineseSimplified>联合舰队</chineseSimplified>
     </name>
-    <leaderObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</leaderObjectId>
     <leaderReference>
      <referenceObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</referenceObjectId>
     </leaderReference>
@@ -770,7 +784,6 @@
      <japanese>連合艦隊本隊</japanese>
      <chineseSimplified>联合舰队本队</chineseSimplified>
     </name>
-    <leaderObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</leaderObjectId>
     <leaderReference>
      <referenceObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</referenceObjectId>
     </leaderReference>
@@ -835,7 +848,6 @@
      <japanese>第一遊撃隊</japanese>
      <chineseSimplified>第一游击队</chineseSimplified>
     </name>
-    <leaderObjectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</leaderObjectId>
     <leaderReference>
      <referenceObjectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</referenceObjectId>
     </leaderReference>
@@ -956,18 +968,34 @@
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <description>Ramming Sample</description>
+   <globalDescription>
+    <english>Ramming Example</english>
+    <japanese>ラミング示例</japanese>
+    <chineseSimplified>撞击示例</chineseSimplified>
+    <chineseTraditional>撞擊示例</chineseTraditional>
+   </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
     <accumulateSecond>0</accumulateSecond>
     <elapsedSeconds>0</elapsedSeconds>
    </weaponSimulationAssignmentClock>
    <doingStep>false</doingStep>
+   <firstLoaded>false</firstLoaded>
+   <effectiveCompleted>false</effectiveCompleted>
+   <firstDisengaged>false</firstDisengaged>
+   <firstReachEndDateTime>false</firstReachEndDateTime>
+   <hasEndDateTime>false</hasEndDateTime>
+   <endDateTime>1895-04-17T00:00:00Z</endDateTime>
   </scenarioState>
   <launchedTorpedos />
+  <tempSubjectLogs />
  </navalGameState>
  <viewState>
   <xRotation>39.68681</xRotation>
   <yRotation>236.319183</yRotation>
   <orthographicSize>2</orthographicSize>
  </viewState>
+ <eventState>
+  <eventItems />
+ </eventState>
 </FullState>

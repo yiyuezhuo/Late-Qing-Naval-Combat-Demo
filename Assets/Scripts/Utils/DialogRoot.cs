@@ -21,6 +21,8 @@ public class ScenarioPickerDialog // ScenarioPicker's root data source
     public string currentDescription;
     public Action<string> callbackOnceScenarioNameGet;
 
+    static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
     public void Bind(TempDialog tempDialog)
     {
         tempDialog.onCreated += (sender, root) =>
@@ -52,17 +54,30 @@ public class ScenarioPickerDialog // ScenarioPicker's root data source
                             var centerLat = fullState.viewState.GetCenterLatitude();
                             var centerLon = fullState.viewState.GetCenterLongitude();
 
-                            var dateTimeLocal = fullState.navalGameState.scenarioState.GetLocalDateTime(centerLon);
+                            // var dateTimeLocal = fullState.navalGameState.scenarioState.GetLocalDateTime(centerLon);
                             var lines = new List<string>()
                             {
                                 scenarioName,
-                                $"UTC DateTime: {dateTimeUTC}",
-                                $"Local DateTime: {dateTimeLocal}",
-                                $"Ship Count (On Map): {shipCount}",
-                                $"Latitude: {centerLat}, Longtitude: {centerLon}",
-                                "Description:",
-                                fullState.navalGameState.scenarioState.description
+                                Localize("Begin UTC Time: {0}", dateTimeUTC),
+                                Localize("Begin Local DateTime: {0}", ScenarioState.GetLocalDateTimeOffset(centerLon, dateTimeUTC)),
                             };
+                            if(fullState.navalGameState.scenarioState.hasEndDateTime)
+                            {
+                                var endDateTimeUTC = fullState.navalGameState.scenarioState.endDateTime;
+                                lines.AddRange(new List<string>()
+                                {
+                                    Localize("End UTC DateTime: {0}", endDateTimeUTC),
+                                    Localize("End Local DateTime: {0}", ScenarioState.GetLocalDateTimeOffset(centerLon, endDateTimeUTC)),
+                                });
+                            }
+                            lines.AddRange(new List<string>()
+                            {
+                                Localize("Ship Count (On Map): {0}", shipCount),
+                                Localize("Latitude: {0}, Longtitude: {1}", centerLat, centerLon),
+                                Localize("Description:"),
+                                // fullState.navalGameState.scenarioState.description
+                                fullState.navalGameState.scenarioState.globalDescription.GetShortName()
+                            });
                             currentDescription = string.Join("\n", lines);
                         })
                     );

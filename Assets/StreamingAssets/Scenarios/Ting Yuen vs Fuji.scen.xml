@@ -167,9 +167,6 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <damageEffectRecords />
-    <damageEffects />
-    <shipboardFireStatus />
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -179,6 +176,18 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
+    <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>0a72dc07-7f11-4da8-9032-fbe481fc4cb3</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -389,9 +398,6 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <damageEffectRecords />
-    <damageEffects />
-    <shipboardFireStatus />
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -402,6 +408,18 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
+    <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>0a72dc07-7f11-4da8-9032-fbe481fc4cb3</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -708,9 +726,6 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <damageEffectRecords />
-    <damageEffects />
-    <shipboardFireStatus />
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -720,6 +735,18 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
+    <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>b4d3a47e-88b4-4860-b11e-2a0164a777ec</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1026,9 +1053,6 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <damageEffectRecords />
-    <damageEffects />
-    <shipboardFireStatus />
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -1039,6 +1063,18 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
+    <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>b4d3a47e-88b4-4860-b11e-2a0164a777ec</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1228,19 +1264,42 @@
    <description>(Hypothetical scenario)
 
 If the Sino-Japanese War had occurred three years later, what would have happened after the Fuji-class battleships arrived in Japan?</description>
+   <globalDescription>
+    <english>(Hypothetical scenario)
+
+If the Sino-Japanese War had occurred three years later, what would have happened after the Fuji-class battleships arrived in Japan?</english>
+    <japanese>（仮想シナリオ）
+
+もし日清戦争が3年後に発生していた場合、富士型戦艦が日本に到着した後、何が起こっていたでしょうか。</japanese>
+    <chineseSimplified>（假想剧本）
+
+如果甲午战争晚三年才爆发，那么在富士级战列舰抵达日本之后，会发生什么？</chineseSimplified>
+    <chineseTraditional>（假想劇本）
+
+如果甲午戰爭晚三年才爆發，那麼在富士級戰列艦抵達日本之後，會發生什麼？</chineseTraditional>
+   </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
     <accumulateSecond>0</accumulateSecond>
     <elapsedSeconds>0</elapsedSeconds>
    </weaponSimulationAssignmentClock>
    <doingStep>false</doingStep>
+   <firstLoaded>false</firstLoaded>
+   <effectiveCompleted>false</effectiveCompleted>
+   <firstDisengaged>false</firstDisengaged>
+   <firstReachEndDateTime>false</firstReachEndDateTime>
+   <hasEndDateTime>false</hasEndDateTime>
+   <endDateTime>1895-04-17T00:00:00Z</endDateTime>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>39.66525</xRotation>
+  <xRotation>39.6652565</xRotation>
   <yRotation>236.452484</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>
+ <eventState>
+  <eventItems />
+ </eventState>
 </FullState>

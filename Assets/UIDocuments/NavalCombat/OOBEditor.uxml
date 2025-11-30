@@ -103,13 +103,13 @@
                                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(173227382575104)" />
                                 </Bindings>
                             </ui:Button>
-                            <ui:EnumField label="Type" value="Center" type="NavalCombatCore.GroupType, Assembly-CSharp">
+                            <ui:EnumField label="Type" value="Center" type="NavalCombatCore.GroupType, Assembly-CSharp" style="display: none;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
                                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)" />
                                 </Bindings>
                             </ui:EnumField>
-                            <ui:EnumField label="Formation" value="Center" type="NavalCombatCore.FormationType, Assembly-CSharp">
+                            <ui:EnumField label="Formation" value="Center" type="NavalCombatCore.FormationType, Assembly-CSharp" style="display: none;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="formation" binding-mode="TwoWay" />
                                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(173393841917952)" />

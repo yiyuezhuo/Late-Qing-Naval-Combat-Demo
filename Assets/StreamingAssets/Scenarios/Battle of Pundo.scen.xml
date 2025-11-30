@@ -1685,6 +1685,9 @@
    <visibility>Clear</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
+   <globalDescription>
+    <english>https://en.wikipedia.org/wiki/Battle_of_Pungdo</english>
+   </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
     <accumulateSecond>0</accumulateSecond>
@@ -1692,6 +1695,11 @@
    </weaponSimulationAssignmentClock>
    <doingStep>false</doingStep>
    <firstLoaded>false</firstLoaded>
+   <effectiveCompleted>false</effectiveCompleted>
+   <firstDisengaged>false</firstDisengaged>
+   <firstReachEndDateTime>false</firstReachEndDateTime>
+   <hasEndDateTime>true</hasEndDateTime>
+   <endDateTime>1894-07-25T05:00:00Z</endDateTime>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />

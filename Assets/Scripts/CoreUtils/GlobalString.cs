@@ -16,7 +16,8 @@ namespace CoreUtils
     // [Serializable]
     public partial class GlobalString
     {
-        public string english = "unnamed";
+        // public string english = "unnamed";
+        public string english = "none";
         public string japanese;
         public string chineseSimplified;
         public string chineseTraditional;

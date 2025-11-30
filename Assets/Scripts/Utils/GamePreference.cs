@@ -85,6 +85,20 @@ public class GamePreference
         set => PortraitViewer.modelScale = value;
     }
 
+    [CreateProperty]
+    public float textScaleFactor
+    {
+        get => PortraitViewer.textScaleFactor;
+        set => PortraitViewer.textScaleFactor = value;
+    }
+
+    [CreateProperty]
+    public float iconBeamScale
+    {
+        get => PortraitViewer.iconBeamScale;
+        set => PortraitViewer.iconBeamScale = value;
+    }
+
     public event EventHandler shortLabelLanguageTypeChanged;
 
     [CreateProperty]

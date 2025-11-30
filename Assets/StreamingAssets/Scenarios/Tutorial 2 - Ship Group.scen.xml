@@ -177,6 +177,17 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>0a72dc07-7f11-4da8-9032-fbe481fc4cb3</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -397,6 +408,17 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <supplyTons>0</supplyTons>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <loadedGroups />
+    <repairPriority>0</repairPriority>
     <parentObjectId>0a72dc07-7f11-4da8-9032-fbe481fc4cb3</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -519,7 +541,7 @@
    <visibility>Clear</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
-   <description>Torpede Boat vs light-armed target, used to train usage of torpedo.</description>
+   <description />
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
     <accumulateSecond>0</accumulateSecond>
@@ -527,13 +549,18 @@
    </weaponSimulationAssignmentClock>
    <doingStep>false</doingStep>
    <firstLoaded>false</firstLoaded>
+   <effectiveCompleted>false</effectiveCompleted>
+   <firstDisengaged>false</firstDisengaged>
+   <firstReachEndDateTime>false</firstReachEndDateTime>
+   <hasEndDateTime>false</hasEndDateTime>
+   <endDateTime>1895-04-17T00:00:00Z</endDateTime>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
   <xRotation>39.669838</xRotation>
-  <yRotation>236.444519</yRotation>
+  <yRotation>236.444489</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>
  <eventState>

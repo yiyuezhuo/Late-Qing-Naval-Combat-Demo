@@ -1581,7 +1581,7 @@
    <visibility>Clear</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
-   <description>Torpede Boat vs light-armed target, used to train usage of torpedo.</description>
+   <description />
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
     <accumulateSecond>0</accumulateSecond>
@@ -1589,6 +1589,11 @@
    </weaponSimulationAssignmentClock>
    <doingStep>false</doingStep>
    <firstLoaded>false</firstLoaded>
+   <effectiveCompleted>false</effectiveCompleted>
+   <firstDisengaged>false</firstDisengaged>
+   <firstReachEndDateTime>false</firstReachEndDateTime>
+   <hasEndDateTime>false</hasEndDateTime>
+   <endDateTime>1895-04-17T00:00:00Z</endDateTime>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />

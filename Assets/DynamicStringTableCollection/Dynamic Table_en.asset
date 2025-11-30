@@ -2241,6 +2241,75 @@ MonoBehaviour:
     m_Localized: Counter
     m_Metadata:
       m_Items: []
+  - m_Id: 17309621699645440
+    m_Localized: The battle field has only a operational fleet now. You can return
+      to the strategic game now, or use the button on the top menu bar to return
+      at any time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17638340989456384
+    m_Localized: Fleets appears to be disengaged. You can return to the strategic
+      game now, or use the button on the top menu bar to exit at any time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17669073736994816
+    m_Localized: Scenario End time is reached. You can return to the strategic game
+      now, or use the button on the top menu bar to return at any time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17669950463971328
+    m_Localized: Scenario End time is reached. Check the victory status now?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17670196518621184
+    m_Localized: Fleets appears to be disengaged. Check the victory status now?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17671095458631680
+    m_Localized: The battle field has only a operational fleet now. Check the victory
+      status now?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17727770479726592
+    m_Localized: Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17727857436037120
+    m_Localized: Night
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17727904718426112
+    m_Localized: Twilight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17750618166431744
+    m_Localized: 'Description:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17750720427757568
+    m_Localized: 'Begin UTC Time: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17750787536621568
+    m_Localized: 'Begin Local DateTime: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17750995754455040
+    m_Localized: 'End UTC DateTime: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17751035289964544
+    m_Localized: 'End Local DateTime: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17751090487005184
+    m_Localized: 'Ship Count (On Map): {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17751226881576960
+    m_Localized: 'Latitude: {0}, Longtitude: {1}'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

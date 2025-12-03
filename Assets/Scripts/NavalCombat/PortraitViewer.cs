@@ -44,7 +44,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     }
     public static Mode mode = Mode.Icon;
 
-    public static float modelScale = 1f;
+    public static float modelScale = 1.5f;
     public static float textScaleFactor = 0.015f;
     public static float iconBeamScale = 1.25f; // Increase icon's beam size to increase recognition
 

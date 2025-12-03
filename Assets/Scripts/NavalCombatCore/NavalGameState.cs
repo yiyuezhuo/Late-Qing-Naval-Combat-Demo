@@ -338,7 +338,8 @@ namespace NavalCombatCore
             // tempSubjectLogs.Clear();
 
             // pre-advance resolution
-            if (scenarioState.weaponSimulationAssignmentClock.Step(deltaSeconds) > 0)
+            var weaponSimulationAssignmentClockTicked = scenarioState.weaponSimulationAssignmentClock.Step(deltaSeconds) > 0;
+            if (weaponSimulationAssignmentClockTicked)
             {
                 foreach ((var meShipLogs, var otherShipLogs) in GetOpposeSidePairs())
                 {
@@ -355,6 +356,25 @@ namespace NavalCombatCore
                         CoreParameter.Instance.extrapolateSeconds
                     ); // Extrapolate 360s
                 }
+
+                // var activceShipLogs = shipLogs.Where(s =>
+                //     s.mapState == MapState.Deployed &&
+                //     s.operationalState == ShipOperationalState.Operational &&
+                //     s.speedKnots > 0
+                // ).ToList();
+
+                // var leadShipLogs = activceShipLogs.Where(s =>
+                //     s.doctrine.GetFireAutomaticType() == AutomaticType.Automatic && 
+                //     s.GetEffectiveControlMode() == ControlMode.Independent
+                // ).ToList();
+
+                // // Obstacle Avoid
+                // // foreach(var shipLog in leadShipLogs)
+                // foreach(var shipLog in activceShipLogs)
+                // {
+                //     var checker = ObstacleAvoidChecker.Extract(shipLog);
+                //     shipLog.desiredHeadingDeg = checker.Check();
+                // }
             }
 
             // Reset Formation - zero speed is detached automatically, "children" reset their targets according to detached unit's previous command.
@@ -368,6 +388,21 @@ namespace NavalCombatCore
 
             foreach (var shipLog in shipLogsOnMap)
                 shipLog.StepProcessControl(); // set desired heading / desired speed
+
+            if(weaponSimulationAssignmentClockTicked)
+            {
+                var activceShipLogs = shipLogs.Where(s =>
+                    s.mapState == MapState.Deployed &&
+                    s.operationalState == ShipOperationalState.Operational &&
+                    s.speedKnots > 0
+                ).ToList();
+
+                foreach(var shipLog in activceShipLogs)
+                {
+                    var checker = ObstacleAvoidChecker.Extract(shipLog);
+                    shipLog.desiredHeadingDeg = checker.Check();
+                }
+            }
 
             foreach (var shipLog in shipLogsOnMap)
                 shipLog.StepProcessSpeed(deltaSeconds); // update speed

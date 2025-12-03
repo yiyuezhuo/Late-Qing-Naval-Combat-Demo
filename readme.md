@@ -2,9 +2,10 @@
 
 - Releases:
     - Steam (PC): https://store.steampowered.com/app/3996220/First_SinoJapanese_War/
-    - Itch (Webgl): https://yiyuezhuo.itch.io/battle-of-yalu-river-1894
     - GitHub Release (PC/Android): https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo/releases
+    - Itch (Webgl, version is much slower than the current version): https://yiyuezhuo.itch.io/battle-of-yalu-river-1894
 - Manuals:
+    - <a href="https://github.com/yiyuezhuo/First-Sino-Japanese-War-Manual">Game Manual</a>
     - <a href="Help.md">Help</a>
     - <a href="FAQ.md">FAQ</a>
 - Game Communities
@@ -32,7 +33,7 @@ On the other hand, gunnery introduce too much attrition compared to historical c
 
 ### Doc
 
-Deepwiki automatically generates doc (not very accurate but useful): https://deepwiki.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
+Deepwiki (LLM) automatically generates doc (not very accurate but useful): https://deepwiki.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
 
 ### Unity related bugs
 

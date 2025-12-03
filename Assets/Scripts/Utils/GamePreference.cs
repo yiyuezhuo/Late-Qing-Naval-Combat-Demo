@@ -225,5 +225,40 @@ namespace NavalCombatCore
             get => LowLevelCoursePlanner.expectedCombatRangeYardHigh;
             set => LowLevelCoursePlanner.expectedCombatRangeYardHigh = value;
         }
+
+        [CreateProperty]
+        public float obstacleAvoidCheckerStepDeg
+        {
+            get => ObstacleAvoidChecker.stepDeg;
+            set => ObstacleAvoidChecker.stepDeg = value;
+        }
+
+        [CreateProperty]
+        public float obstacleAvoidCheckerBoundDeg
+        {
+            get => ObstacleAvoidChecker.boundDeg;
+            set => ObstacleAvoidChecker.boundDeg = value;
+        }
+
+        [CreateProperty]
+        public float obstacleAvoidCheckerExtrapolateSecondsLow
+        {
+            get => ObstacleAvoidChecker.extrapolateSecondsLow;
+            set => ObstacleAvoidChecker.extrapolateSecondsLow = value;
+        }
+
+        [CreateProperty]
+        public float obstacleAvoidCheckerExtrapolateMinHigh
+        {
+            get => ObstacleAvoidChecker.extrapolateMinHigh;
+            set => ObstacleAvoidChecker.extrapolateMinHigh = value;
+        }
+
+        [CreateProperty]
+        public float obstacleAvoidCheckerExtrapolateMinStep
+        {
+            get => ObstacleAvoidChecker.extrapolateMinStep;
+            set => ObstacleAvoidChecker.extrapolateMinStep = value;
+        }
     }
 }

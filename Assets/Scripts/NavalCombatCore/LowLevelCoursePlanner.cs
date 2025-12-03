@@ -316,7 +316,8 @@ namespace NavalCombatCore
             var attackScore = EvaluateAttackScore(freidnly, enemy);
             var defenceScore = -EvaluateAttackScore(enemy, freidnly);
             // return attackScore * attackCoef + defenceScore * defenceCoef;
-            var distanceScore = EvaluateDistanceScore(freidnly, enemy);
+            var distanceScore = EvaluateDistanceScore(freidnly, enemy); // expected firefight position
+
             return attackScore * attackCoef + defenceScore * defenceCoef + distanceScore * distanceCoef;
         }
 
@@ -345,6 +346,7 @@ namespace NavalCombatCore
                     friendlyLeadRecord.headingDeg = angle;
                     DoExtrapolatePair(friendlyLeadRecord, friendlySubRecords, extrapolateSeconds);
                     var firefightScore = EvaluateFirefightScore(friendlySubRecords, enemyRecords);
+                    // TODO: Add obstruct score?
                     trials.Add(new()
                     {
                         headingDeg = angle,

@@ -280,6 +280,11 @@ namespace NavalCombatCore
             }
         }
 
+        public override string ToString()
+        {
+            return $"BatteryRecord({name.GetMergedNamePure()})";
+        }
+
         static XmlSerializer serializer = new XmlSerializer(typeof(BatteryRecord));
 
         public string ToXML()

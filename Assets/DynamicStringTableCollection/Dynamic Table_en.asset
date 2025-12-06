@@ -2310,6 +2310,10 @@ MonoBehaviour:
     m_Localized: 'Latitude: {0}, Longtitude: {1}'
     m_Metadata:
       m_Items: []
+  - m_Id: 18918606022283264
+    m_Localized: Confirm to open url {0} ?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

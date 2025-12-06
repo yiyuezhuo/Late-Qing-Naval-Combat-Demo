@@ -39,7 +39,7 @@ namespace NavalCombatCore
         // 3. Prevent Concenertation: 
         // 4. Firepower stickiness: Firing plaform tend to fire at the same target to prevent goal change debuf and visual appearance.
 
-        // Though global optimal solution seems too "rational" for a era that gunnery officier make decision indepently, the algorithm self is greedy and cannot be very closer to the global optimal solution.
+        // Though global optimal solution seems too "rational" for a era that gunnery officier make decision independently, the algorithm self is greedy and cannot be very closer to the global optimal solution.
 
         public float underfireCoef = 0.1f;
         public float overconcentrateCoef = 0.2f;
@@ -52,6 +52,11 @@ namespace NavalCombatCore
             public List<BatteryRecord> batteries = new();
             public Dictionary<TargetRecord, MeasureStats> measurements = new();
             // Solver States
+
+            public override string ToString()
+            {
+                return $"ShooterRecord({original})";
+            }
         }
 
         public class TargetRecord
@@ -64,6 +69,11 @@ namespace NavalCombatCore
             // Solver states
             public float underFirepower;
             public int overConcentrationScore;
+
+            public override string ToString()
+            {
+                return $"TargetRecord({original})";
+            }
         }
 
         public class BatteryRecord
@@ -77,6 +87,11 @@ namespace NavalCombatCore
             public int overConcentrationCoef = 1; // regular corrected fire: +1, barrage fire: +2, RF Batteries: +0 (DoB) or +2 (Literally)?
                                                   // TODO: Switch to float
             public bool isChangeTargetBlocked;
+
+            public override string ToString()
+            {
+                return $"BatteryRecord({original})";
+            }
         }
 
         public class DecisionRecord
@@ -86,6 +101,11 @@ namespace NavalCombatCore
             public TargetRecord target;
             public float gain;
             public float firepowerScore;
+
+            public override string ToString()
+            {
+                return $"DecisionRecord({shooter}, {battery} -> {target}, {gain}, {firepowerScore})";
+            }
         }
 
         public void Solve(IEnumerable<IWTAObject> shooterObjects, IEnumerable<IWTAObject> targetObjects)

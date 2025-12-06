@@ -90,6 +90,11 @@ namespace NavalCombatCore
         //     logs.Clear();
         // }
 
+        public override string ToString()
+        {
+            return $"RapidFiringStatus({GetRapidFireBatteryRecord()?.name?.GetMergedNamePure()})";
+        }
+
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
             yield break;
@@ -416,6 +421,11 @@ namespace NavalCombatCore
     {
         public RapidFiringStatus original;
         public RapidFiringBatteryLocation side;
+
+        public override string ToString()
+        {
+            return $"RapidFiringBatteryStatusOneSide({original}, {side})";
+        }
 
         public float EvaluateFirepowerScore(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots, float bearingRelativeToBowDeg)
         {

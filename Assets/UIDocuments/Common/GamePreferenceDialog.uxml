@@ -115,6 +115,12 @@
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181842193584128)" />
                                     </Bindings>
                                 </ui:Toggle>
+                                <ui:Toggle label="Relaxed Collision">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="relaxedLandCollision" binding-mode="TwoWay" />
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34440194373095424)" />
+                                    </Bindings>
+                                </ui:Toggle>
                                 <ui:Toggle label="Ship Collision">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="checkShipCollision" binding-mode="TwoWay" />
@@ -186,32 +192,6 @@
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="automaticTorpedoFiringRangeRelaxedCoef" binding-mode="TwoWay" />
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(192797694660608)" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:Label text="Obstacle Avoid Checker" />
-                                <ui:FloatField label="StepDeg">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="obstacleAvoidCheckerStepDeg" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="BoundDeg">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="obstacleAvoidCheckerBoundDeg" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="ExtrapolateSecondsLow">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="obstacleAvoidCheckerExtrapolateSecondsLow" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="ExtrapolateMinHigh">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="obstacleAvoidCheckerExtrapolateMinHigh" binding-mode="TwoWay" />
-                                    </Bindings>
-                                </ui:FloatField>
-                                <ui:FloatField label="ExtrapolateMinStep">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="obstacleAvoidCheckerExtrapolateMinStep" binding-mode="TwoWay" />
                                     </Bindings>
                                 </ui:FloatField>
                             </ui:VisualElement>

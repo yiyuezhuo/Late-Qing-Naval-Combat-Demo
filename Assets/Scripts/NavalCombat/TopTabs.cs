@@ -219,6 +219,11 @@ public class TopTabs : SingletonDocument<TopTabs>
         {
             DialogRoot.Instance.PopupAIDialog();
         };
+
+        root.Q<Button>("ManualButton").clicked += () => {
+            var readmePath = Application.streamingAssetsPath + "/" + "Manuals/readme.pdf"; // This file is under version control, should be manual placed.
+            DialogRoot.Instance.PopupConfirmOpenURLDialog(readmePath);
+        };
     }
 
     void OnSaveButtonClicked(bool editSave=false)

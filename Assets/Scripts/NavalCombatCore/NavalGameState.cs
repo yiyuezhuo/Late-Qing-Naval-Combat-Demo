@@ -34,6 +34,27 @@ namespace NavalCombatCore
         }
     }
 
+    public class CountDownClock
+    {
+        [XmlAttribute]
+        public float remainSeconds;
+
+        public bool Step(float deltaSeconds)
+        {
+            if(remainSeconds == 0)
+                return false;
+            remainSeconds = Math.Max(0, remainSeconds - deltaSeconds);
+            if(remainSeconds == 0)
+                return true;
+            return false;
+        }
+
+        public void Restart(float countDownSeconds)
+        {
+            remainSeconds = countDownSeconds;
+        }
+    }
+
     public partial class SubjectLog
     {
         public string subjectId;
@@ -339,7 +360,7 @@ namespace NavalCombatCore
 
             // pre-advance resolution
             var weaponSimulationAssignmentClockTicked = scenarioState.weaponSimulationAssignmentClock.Step(deltaSeconds) > 0;
-            if (weaponSimulationAssignmentClockTicked)
+            if (weaponSimulationAssignmentClockTicked) // The clock is not limited to Weapon allocation though
             {
                 foreach ((var meShipLogs, var otherShipLogs) in GetOpposeSidePairs())
                 {
@@ -357,16 +378,34 @@ namespace NavalCombatCore
                     ); // Extrapolate 360s
                 }
 
-                // var activceShipLogs = shipLogs.Where(s =>
-                //     s.mapState == MapState.Deployed &&
-                //     s.operationalState == ShipOperationalState.Operational &&
-                //     s.speedKnots > 0
-                // ).ToList();
+                var activceShipLogs = shipLogs.Where(s =>
+                    s.mapState == MapState.Deployed 
+                    && s.operationalState == ShipOperationalState.Operational
+                    // && s.speedKnots > 0
+                ).ToList();
 
-                // var leadShipLogs = activceShipLogs.Where(s =>
-                //     s.doctrine.GetFireAutomaticType() == AutomaticType.Automatic && 
-                //     s.GetEffectiveControlMode() == ControlMode.Independent
-                // ).ToList();
+                var leadShipLogs = activceShipLogs.Where(s =>
+                    s.GetEffectiveControlMode() == ControlMode.Independent &&
+                    s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic
+                ).ToList();
+
+                foreach(var g in shipLogsOnMap.GroupBy(s => s.GetControlRoot()))
+                {
+                    var leadShipLog = g.Key;
+                    if(leadShipLog.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic)
+                    {
+                        var leadMaxSpeed = leadShipLog.GetMaxSpeedKnots();
+                        var desiredSpeedKnots = g.Select(s => s.GetMaxSpeedKnots()).Where(s => s >= 4).DefaultIfEmpty(leadMaxSpeed).Min();
+                        leadShipLog.desiredSpeedKnots = Math.Max(0, desiredSpeedKnots - 2); // RTW stlye max speed - 2
+                    }
+                    // leadShipLog.desiredSpeedKnots = desiredSpeedKnots;// Group's max speed
+                }
+
+                // foreach(var shipLog in leadShipLogs)
+                // {
+                //     shipLog.desiredSpeedKnots = shipLog.GetMaxSpeedKnots();
+                //     // TODO: Limit the speed with controlled speed
+                // }
 
                 // // Obstacle Avoid
                 // // foreach(var shipLog in leadShipLogs)
@@ -375,6 +414,16 @@ namespace NavalCombatCore
                 //     var checker = ObstacleAvoidChecker.Extract(shipLog);
                 //     shipLog.desiredHeadingDeg = checker.Check();
                 // }
+
+                foreach(var shipLog in leadShipLogs)
+                {
+                    var checker = ObstacleAvoidChecker.Extract(shipLog);
+                    var newDesiredHeadingDeg = checker.Check();
+                    shipLog.preCollsionAvoiding = newDesiredHeadingDeg != shipLog.desiredHeadingDeg;
+                    shipLog.desiredHeadingDeg = newDesiredHeadingDeg;
+                }
+
+
             }
 
             // Reset Formation - zero speed is detached automatically, "children" reset their targets according to detached unit's previous command.
@@ -387,21 +436,41 @@ namespace NavalCombatCore
                 shipLog.StepProcessTurn(deltaSeconds); // update heading
 
             foreach (var shipLog in shipLogsOnMap)
-                shipLog.StepProcessControl(); // set desired heading / desired speed
+                shipLog.StepProcessControl(deltaSeconds); // set desired heading / desired speed
 
-            if(weaponSimulationAssignmentClockTicked)
+            // Obstacle Avoid
+            // if(weaponSimulationAssignmentClockTicked)
+            // {
+            // }
+
+            // if(scenarioState.obstacleAvoidCheckClock.Step(deltaSeconds) > 0)
+            // {
+            //     foreach(var shipLog in shipLogs.Where(s =>
+            //         s.mapState == MapState.Deployed
+            //         && s.operationalState == ShipOperationalState.Operational
+            //         // && s.speedKnots > 0
+            //         && s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic
+            //     ))
+            //     {
+            //         var checker = ObstacleAvoidChecker.Extract(shipLog);
+            //         var newDesiredHeadingDeg = checker.Check();
+            //         shipLog.preCollsionAvoiding = newDesiredHeadingDeg != shipLog.desiredHeadingDeg;
+            //         shipLog.desiredHeadingDeg = newDesiredHeadingDeg;
+            //     }
+            // }
+
+            // always mode
+            foreach(var shipLog in shipLogs.Where(s =>
+                s.mapState == MapState.Deployed
+                && s.operationalState == ShipOperationalState.Operational
+                // && s.speedKnots > 0
+                && s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic
+            ))
             {
-                var activceShipLogs = shipLogs.Where(s =>
-                    s.mapState == MapState.Deployed &&
-                    s.operationalState == ShipOperationalState.Operational &&
-                    s.speedKnots > 0
-                ).ToList();
-
-                foreach(var shipLog in activceShipLogs)
-                {
-                    var checker = ObstacleAvoidChecker.Extract(shipLog);
-                    shipLog.desiredHeadingDeg = checker.Check();
-                }
+                var checker = ObstacleAvoidChecker.Extract(shipLog, true);
+                var newDesiredHeadingDeg = checker.Check();
+                shipLog.preCollsionAvoiding = newDesiredHeadingDeg != shipLog.desiredHeadingDeg;
+                shipLog.desiredHeadingDeg = newDesiredHeadingDeg;
             }
 
             foreach (var shipLog in shipLogsOnMap)

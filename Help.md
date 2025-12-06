@@ -3,9 +3,9 @@
 ## Getting Started
 
 - Right-click and drag to move the camera, use the scroll wheel to adjust the zoom level.
-- Press 1 to advance by 1 minute
+- Press 1 to advance by 1 minute (mouse should be in the map instead ui area)
 - Control group leader (icon with a direction arrow) to control a group
-    - Change direction: Select a group lead and left click a point on globe to set a direction
+    - Change direction: Select a group lead, then hold Shift and left-click a point on the map to set the direction.
     - Change speed: Change value in the slider of right panel
     - Change or inspect a lot of details in editors.
 - Use F or R to set Follow and relative to relationship, more parameter can be specified in the ShipLog editor.
@@ -14,7 +14,7 @@
 
 - By default, firing is automated, following a somewhat optimal rule, and can be configured in the editor, ranging from doctrine to manual target specification.
 - If a unit follow or is relative to a target, it will adjust its speed and course to reach the desired position.
-- By default, an independent unit (usually the group leader) maintains its current speed and course. However, if automatic movement is enabled in the doctrine, the unit will adjust its course to maximize firepower while minimizing incoming damage. (Speed is not controlled at this point).
+- By default, an independent unit (usually the group leader) maintains its current speed and course. However, if automatic movement is enabled in the doctrine, the unit will adjust its course to maximize firepower while minimizing incoming damage.
 
 ## Shortcuts
 

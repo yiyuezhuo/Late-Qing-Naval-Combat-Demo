@@ -928,6 +928,17 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
+    static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
+    public void PopupConfirmOpenURLDialog(string url, string title = null)
+    {
+        PopupConfirmDialog(
+            Localize("Confirm to open url {0} ?", url),
+            () => Application.OpenURL(url),
+            title
+        );
+    }
+
     public void PopupLeaderSelectorDialogForCallback(Action<Leader> callback)
     {
         var tempDialog = new TempDialog()

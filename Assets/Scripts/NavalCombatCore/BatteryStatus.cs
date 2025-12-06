@@ -34,6 +34,11 @@ namespace NavalCombatCore
             }
         }
 
+        public override string ToString()
+        {
+            return $"BatteryStatus({GetBatteryRecord()?.name?.GetMergedNamePure()})";
+        }
+
         public BatteryRecord GetBatteryRecord()
         {
             var shipLog = EntityManager.Instance.GetParent<ShipLog>(this);

@@ -59,6 +59,9 @@ namespace NavalCombatCore
         public GlobalString globalDescription = new();
 
         public SimulationClock weaponSimulationAssignmentClock = new() { intervalSeconds = 120 }; // In default setting, ship replan its course per 2 min.
+        // public SimulationClock obstacleAvoidCheckClock = new() { intervalSeconds = 20 };
+        public SimulationClock obstacleAvoidCheckClock = new() { intervalSeconds = 1 };
+        
         public bool doingStep;
         public bool firstLoaded; // if false, loading will trigger First Load Scenario Trigger and set to true. Save Edit will set it back to false in the file.
         // public int referenceTimeZoneOffset = +8; // +8 timezone

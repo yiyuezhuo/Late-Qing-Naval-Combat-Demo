@@ -192,12 +192,14 @@ public class GamePreference
         var p = GamePreference.Instance;
         p.forcedNavalCombatResolution = PlayerPrefs.GetInt("forcedNavalCombatResolution", 1) == 1;
         p.showAIDialog = PlayerPrefs.GetInt("showAIDialog", 1) == 1;
+        p.simulationRateRaio = PlayerPrefs.GetFloat("simulationRateRaio", 120);
     }
 
     public void SaveToPlayerPrefs()
     {
         PlayerPrefs.SetInt("forcedNavalCombatResolution", forcedNavalCombatResolution ? 1 : 0);
         PlayerPrefs.SetInt("showAIDialog", showAIDialog ? 1 : 0);
+        PlayerPrefs.SetFloat("simulationRateRaio", simulationRateRaio);
 
         PlayerPrefs.Save();
     }
@@ -226,39 +228,39 @@ namespace NavalCombatCore
             set => LowLevelCoursePlanner.expectedCombatRangeYardHigh = value;
         }
 
-        [CreateProperty]
-        public float obstacleAvoidCheckerStepDeg
-        {
-            get => ObstacleAvoidChecker.stepDeg;
-            set => ObstacleAvoidChecker.stepDeg = value;
-        }
+        // [CreateProperty]
+        // public float obstacleAvoidCheckerStepDeg
+        // {
+        //     get => ObstacleAvoidChecker.stepDeg;
+        //     set => ObstacleAvoidChecker.stepDeg = value;
+        // }
 
-        [CreateProperty]
-        public float obstacleAvoidCheckerBoundDeg
-        {
-            get => ObstacleAvoidChecker.boundDeg;
-            set => ObstacleAvoidChecker.boundDeg = value;
-        }
+        // [CreateProperty]
+        // public float obstacleAvoidCheckerBoundDeg
+        // {
+        //     get => ObstacleAvoidChecker.boundDeg;
+        //     set => ObstacleAvoidChecker.boundDeg = value;
+        // }
 
-        [CreateProperty]
-        public float obstacleAvoidCheckerExtrapolateSecondsLow
-        {
-            get => ObstacleAvoidChecker.extrapolateSecondsLow;
-            set => ObstacleAvoidChecker.extrapolateSecondsLow = value;
-        }
+        // [CreateProperty]
+        // public float obstacleAvoidCheckerExtrapolateSecondsLow
+        // {
+        //     get => ObstacleAvoidChecker.extrapolateSecondsLow;
+        //     set => ObstacleAvoidChecker.extrapolateSecondsLow = value;
+        // }
 
-        [CreateProperty]
-        public float obstacleAvoidCheckerExtrapolateMinHigh
-        {
-            get => ObstacleAvoidChecker.extrapolateMinHigh;
-            set => ObstacleAvoidChecker.extrapolateMinHigh = value;
-        }
+        // [CreateProperty]
+        // public float obstacleAvoidCheckerExtrapolateMinHigh
+        // {
+        //     get => ObstacleAvoidChecker.extrapolateMinHigh;
+        //     set => ObstacleAvoidChecker.extrapolateMinHigh = value;
+        // }
 
-        [CreateProperty]
-        public float obstacleAvoidCheckerExtrapolateMinStep
-        {
-            get => ObstacleAvoidChecker.extrapolateMinStep;
-            set => ObstacleAvoidChecker.extrapolateMinStep = value;
-        }
+        // [CreateProperty]
+        // public float obstacleAvoidCheckerExtrapolateMinStep
+        // {
+        //     get => ObstacleAvoidChecker.extrapolateMinStep;
+        //     set => ObstacleAvoidChecker.extrapolateMinStep = value;
+        // }
     }
 }

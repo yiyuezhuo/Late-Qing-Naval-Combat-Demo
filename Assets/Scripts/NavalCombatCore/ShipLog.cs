@@ -120,6 +120,11 @@ namespace NavalCombatCore
     {
         public ShipLog original;
 
+        public override string ToString()
+        {
+            return $"TorpedoBattery({original?.namedShip.name?.GetMergedNamePure()})";
+        }
+
         public float EvaluateFirepowerScore(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots, float bearingRelativeToBowDeg)
         {
             var threat = original.EvaluateTorpedoThreatScore(distanceYards, bearingRelativeToBowDeg);
@@ -432,6 +437,27 @@ namespace NavalCombatCore
             return (ControlMode.Independent, null);
         }
 
+        public ShipLog GetControlPredecessorOnMap()
+        {
+            if (controlMode == ControlMode.FollowTarget)
+                return EntityManager.Instance.GetOnMapShipLog(followedTargetObjectId);
+            if (controlMode == ControlMode.RelativeToTarget)
+                return EntityManager.Instance.GetOnMapShipLog(relativeTargetObjectId);
+            return null;
+        }
+
+        public ShipLog GetControlRoot()
+        {
+            var pt = this;
+            while(true)
+            {
+                var predeccesor = pt.GetControlPredecessorOnMap();
+                if (predeccesor == null || predeccesor == pt)
+                    return pt;
+                pt = predeccesor;
+            };
+        }
+
         public float relativeToTargetDistanceYards = 250;
         public float relativeToTargetAzimuth = 135; // right-after position
 
@@ -469,6 +495,11 @@ namespace NavalCombatCore
 
         public List<ShipLogLog> logs = new(); // TODO: Switch to structure logging?
         public List<TimeLoc> timeLocLogs = new();
+
+        // Aux States for AI:
+        // TODO: How to represent this state in the UI?
+        public CountDownClock recentCollisionClock = new();
+        public bool preCollsionAvoiding; // obstacleAvoidCheckClock would set its value periodically, if true, normal direction alt would be disabled.
 
         protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
         protected static string LocalizeFor(object obj) => ServiceLocator.Get<ILocalizeService>().GetFor(obj);
@@ -644,8 +675,24 @@ namespace NavalCombatCore
             }
         }
 
-        public void StepProcessControl()
+        public void StepProcessControl(float deltaSeconds)
         {
+            recentCollisionClock.Step(deltaSeconds);
+            
+            if(doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic)
+            {
+                var isRecentCollided = recentCollisionClock.remainSeconds > 0;
+                if(isRecentCollided) // Recent collision => astern movement
+                {
+                    desiredSpeedKnots = GetMinSpeedKnots(); // try to start astern movement.
+                    return;
+                }
+                else if(preCollsionAvoiding)
+                {
+                    return; // Use direction given by collision avoidance
+                }
+            }
+
             var maxSpeedKnots = GetMaxSpeedKnots();
 
             var decelerationKnotsCapPer2Min = maxSpeedKnots * (assistedDeceleration ? 0.6f : 0.2f);
@@ -858,6 +905,8 @@ namespace NavalCombatCore
 
         public void StepTryMoveToNewPosition(float deltaSeconds)
         {
+            
+
             var distNm = speedKnots / 3600 * deltaSeconds;
             var distM = distNm * 1852;
             double arcLength = Geodesic.WGS84.Direct(position.LatDeg, position.LonDeg, headingDeg, distM, out double lat2, out double lon2);
@@ -868,6 +917,15 @@ namespace NavalCombatCore
             if (CoreParameter.Instance.checkLandCollision)
             {
                 newPositionBlocked = ElevationService.Instance.GetElevation(newPosition) > 0;
+                // Small turning-point is assumed to be skipped by "unseen" maneuver
+                if(newPositionBlocked && CoreParameter.Instance.relaxedLandCollision)
+                {
+                    // Geodesic.WGS84.Direct(position.LatDeg, position.LonDeg, headingDeg, distM * 1.5f, out double lat3, out double lon3);
+                    Geodesic.WGS84.Direct(position.LatDeg, position.LonDeg, headingDeg, distM * 10f, out double lat3, out double lon3);
+
+                    var newPosition3 = new LatLon((float)lat3, (float)lon3);
+                    newPositionBlocked = ElevationService.Instance.GetElevation(newPosition3) > 0;
+                }
             }
             if (!newPositionBlocked && CoreParameter.Instance.checkShipCollision && speedKnots > 0) // TODO: Check Reverse Movement
             {
@@ -964,7 +1022,13 @@ namespace NavalCombatCore
             }
             else
             {
+                var isForward = speedKnots > 0;
                 speedKnots = 0; // TODO: Use a smoother method
+                if(isForward)
+                {
+                    recentCollisionClock.Restart(300); // Start to go astern 3min
+                    // Temp hack
+                }
             }
         }
 
@@ -1213,15 +1277,25 @@ namespace NavalCombatCore
 
         public IEnumerable<IWTABattery> GetBatteries()
         {
-            foreach (var bs in batteryStatus)
+            // foreach (var bs in batteryStatus)
+            //     yield return bs;
+
+            foreach (var bs in batteryStatus.Where(bs => !bs.ammunition.IsEmpty()))
                 yield return bs;
 
-            foreach (var rf in rapidFiringStatus)
+            // foreach (var rf in rapidFiringStatus)
+            // {
+            //     foreach (var b in rf.GetSideBatteries())
+            //         yield return b;
+            // }
+
+            foreach (var rf in rapidFiringStatus.Where(rf => rf.ammunition > 0))
             {
                 foreach (var b in rf.GetSideBatteries())
                     yield return b;
             }
 
+            // TODO: Check ammo
             if (shipClass.torpedoSector.torpedoSettings.Count > 0)
             {
                 yield return new TorpedoBattery()
@@ -1230,6 +1304,7 @@ namespace NavalCombatCore
                 };
             }
         }
+
 
         public int GetDamageTier()
         {
@@ -1279,7 +1354,8 @@ namespace NavalCombatCore
 
         public override string ToString()
         {
-            return $"ShipLog({namedShip?.name}, {objectId})";
+            // return $"ShipLog({namedShip?.name}, {objectId})";
+            return $"ShipLog({namedShip?.name.GetMergedNamePure()})";
         }
 
     }

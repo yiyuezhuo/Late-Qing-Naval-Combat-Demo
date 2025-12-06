@@ -63,6 +63,11 @@ namespace NavalCombatCore
             public float headingDeg;
             public float speedKnots;
 
+            public override string ToString()
+            {
+                return $"ExtrapolatedRecord({original})";
+            }
+
             public float GetLatitudeDeg() => latitudeDeg;
             public float GetLongitudeDeg() => longitudeDeg;
             public float GetHeadingDeg() => headingDeg;
@@ -252,7 +257,8 @@ namespace NavalCombatCore
             var distanceScore = Math.Max(0, (36000 - distanceYards) / 36000); // 1 ~ 0 (0 yards ~ 36000 yards)
             var angleScore = shooter.EvaluateSmoothedFirepower(shooterToTargetBearingRelativeToBowDeg);
             var firepowerScore = distanceScore * angleScore;
-            var valueScore = target.firepowerScore / target.survivability;
+            // var valueScore = target.firepowerScore / target.survivability;
+            var valueScore = Math.Max(1, target.firepowerScore) / Math.Max(1, target.survivability);
             return firepowerScore * valueScore;
         }
 
@@ -325,6 +331,11 @@ namespace NavalCombatCore
         {
             public float headingDeg;
             public float firefightScore;
+
+            public override string ToString()
+            {
+                return $"TrialRecord({headingDeg}, {firefightScore})";
+            }
         }
 
         public void Plan(IEnumerable<IExtrapolable> friendlyObjects, IEnumerable<IExtrapolable> enemyObjects, float extrapolateSeconds)

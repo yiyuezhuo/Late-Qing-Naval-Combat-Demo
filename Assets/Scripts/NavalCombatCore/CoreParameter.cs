@@ -10,6 +10,7 @@ namespace NavalCombatCore
         public static CoreParameter Instance => instance;
 
         public bool checkLandCollision = true;
+        public bool relaxedLandCollision = true;
         public bool checkShipCollision = true;
         public bool checkFriendlyShipCollision = false;
 

@@ -17,6 +17,11 @@ namespace NavalCombatCore
         public int common;
         public int highExplosive;
 
+        public override string ToString()
+        {
+            return $"BatteryAmmunitionRecord({ArmorPiercing}/{semiArmorPiercing}/{common}/{highExplosive})";
+        }
+
         public static Dictionary<AmmunitionType, string> ammunitionTypeAcronymMap = new()
         {
             { AmmunitionType.ArmorPiercing, "AP" },
@@ -84,6 +89,8 @@ namespace NavalCombatCore
             common -= (int)Math.Ceiling(common * percent);
             highExplosive -= (int)Math.Ceiling(highExplosive * percent);
         }
+
+        public bool IsEmpty() => GetTotalValue() == 0;
     }
 
     public enum MountStatus

@@ -2300,6 +2300,10 @@ MonoBehaviour:
     m_Key: 'Latitude: {0}, Longtitude: {1}'
     m_Metadata:
       m_Items: []
+  - m_Id: 18918606022283264
+    m_Key: Confirm to open url {0} ?
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

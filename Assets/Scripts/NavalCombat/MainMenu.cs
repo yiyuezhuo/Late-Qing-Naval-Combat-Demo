@@ -29,10 +29,11 @@ public class MainMenu : SingletonDocument<MainMenu>
         // openSourceRepositoryButton.clicked += () => Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
         openSourceRepositoryButton.clicked += () =>
         {
-            DialogRoot.Instance.PopupConfirmDialog("Open online open resource repository link with browser?\nhttps://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo", () =>
-            {
-                Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
-            });
+            // DialogRoot.Instance.PopupConfirmDialog("Open online open resource repository link with browser?\nhttps://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo", () =>
+            // {
+            //     Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
+            // });
+            DialogRoot.Instance.PopupConfirmOpenURLDialog("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
         };
 
         exitButton.clicked += Application.Quit;
@@ -56,6 +57,11 @@ public class MainMenu : SingletonDocument<MainMenu>
         }
 
         root.Q<Button>("SettingButton").clicked += DialogRoot.Instance.PopupGamePreferenceDialog;
+
+        root.Q<Button>("ManualButton").clicked += () => {
+            var readmePath = Application.streamingAssetsPath + "/" + "Manuals/readme.pdf"; // This file is under version control, should be manual placed.
+            DialogRoot.Instance.PopupConfirmOpenURLDialog(readmePath);
+        };
     }
 
     [CreateProperty]

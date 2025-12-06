@@ -21,14 +21,19 @@
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Gallery" name="GalleryButton" enabled="true" class="verylarge" style="display: none;" />
+                    <ui:Button text="(DEBUG) Strategic Mode Test" name="StrategicModeTestButton" class="verylarge">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(363410065362944)" />
+                        </Bindings>
+                    </ui:Button>
                     <ui:Button text="Setting" name="SettingButton" class="verylarge">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(6979457814528)" />
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="(DEBUG) Strategic Mode Test" name="StrategicModeTestButton" class="verylarge">
+                    <ui:Button text="Manual" name="ManualButton" class="verylarge">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(363410065362944)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(33508883324112896)" />
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Help" name="HelpButton" class="verylarge">

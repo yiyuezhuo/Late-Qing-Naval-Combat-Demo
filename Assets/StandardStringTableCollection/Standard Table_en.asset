@@ -1471,7 +1471,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 363410065362944
-    m_Localized: (DEBUG) Strategic Mode Test
+    m_Localized: (WIP) Strategic Mode Test
     m_Metadata:
       m_Items: []
   - m_Id: 364176851243008
@@ -2238,6 +2238,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 32254508370923520
     m_Localized: End DateTime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33508883324112896
+    m_Localized: Manual
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34440194373095424
+    m_Localized: Relaxed Collision
     m_Metadata:
       m_Items: []
   references:

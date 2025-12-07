@@ -230,6 +230,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset oobTreeDialogDocument;
     public VisualTreeAsset landBattleDialogDocument;
     public VisualTreeAsset aiDialogDocument;
+    public VisualTreeAsset insertShipComplexDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -1035,6 +1036,23 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 selectedShipLog.namedShipObjectId = namedShip.objectId;
             }
         };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupInsertShipComplexDialog()
+    {
+        var insertShipComplexDialog = new InsertShipComplexDialog();
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = insertShipComplexDialogDocument,
+            templateDataSource = insertShipComplexDialog
+        };
+
+        tempDialog.onConfirmed += insertShipComplexDialog.OnConfirm;
+        tempDialog.onCreated += insertShipComplexDialog.OnCreated;
 
         tempDialog.Popup();
     }

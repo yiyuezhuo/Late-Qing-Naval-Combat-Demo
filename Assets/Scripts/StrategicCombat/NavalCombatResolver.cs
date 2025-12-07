@@ -103,7 +103,8 @@ public class NavalCombatResolver // Dialog
                 scenarioSetupGenerator = new()
                 {
                     anchor = new LatLon(cell.latitude, cell.longitude)
-                }
+                },
+                isFromStrategic=true,
             };
             StrategicGameState.Instance.scenarioState.pendingNavalCombatId = pendingNavalCombat.objectId;
 

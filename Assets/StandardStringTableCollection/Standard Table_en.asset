@@ -2248,6 +2248,14 @@ MonoBehaviour:
     m_Localized: Relaxed Collision
     m_Metadata:
       m_Items: []
+  - m_Id: 34615076230696960
+    m_Localized: Skirmish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34615625252507648
+    m_Localized: Start As Empty
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

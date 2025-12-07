@@ -69,7 +69,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public enum State
     {
         Idle,
-        SelectingInsertUnitPosition,
+        SelectingInsertUnitPosition, // Insert + Alt
+        SelectingInsertUnitPositionComplex, // Insert
         MovingUnit,
         SelectingFollowedTarget,
         SelectingRelativeToTarget,
@@ -113,8 +114,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         public enum Mode
         {
-            Empty,
-            LocalizedCameraOnly,
+            Empty, // Obstacle
+            LocalizedCameraOnly, // Obstacle
             BuiltinScenName,
             FullState
         }
@@ -129,8 +130,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         public LatLon cameraLocation;
         // public bool requireAutoDeployAll = false;
         public ScenarioDynamicSetupGenerator scenarioSetupGenerator;
+        public bool isFromStrategic;
 
-        public bool IsFromStrategic() => scenarioSetupGenerator != null;
+        // public bool IsFromStrategic() => scenarioSetupGenerator != null;
+        public bool IsFromStrategic() => isFromStrategic;
     }
 
     public static StartupConfig startupConfig = new();
@@ -594,14 +597,20 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
 
             var isPressingShift = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+            var isPressingAlt = Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt);
 
             if (state == State.Idle) // unit left click chosen
             {
                 // handle events
-                if (Input.GetKeyDown(KeyCode.Insert)) // Insert(Deploy) Unit
+                if (Input.GetKeyDown(KeyCode.Insert) && isPressingAlt) // Insert(Deploy) Unit
                 {
                     state = State.SelectingInsertUnitPosition;
                 }
+                if (Input.GetKeyDown(KeyCode.Insert) && !isPressingAlt) // Insert(Deploy) Unit
+                {
+                    state = State.SelectingInsertUnitPositionComplex;
+                }
+
 
                 if (Input.GetKeyDown(KeyCode.M) && selectedShipLog != null) // Move Unit
                 {
@@ -706,6 +715,25 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     // lastSelectedLatLon
 
                     DialogRoot.Instance.PopupShipLogSelectorDialogForRedeploy();
+                }
+            }
+            else if(state == State.SelectingInsertUnitPositionComplex)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    state = State.Idle;
+
+                    var ray = CameraController2.Instance.cam.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out RaycastHit hit))
+                    {
+                        var hitPoint = hit.point;
+
+                        lastSelectedLatLon = Utils.Vector3ToLatLon(hitPoint);
+                    }
+
+                    // lastSelectedLatLon
+
+                    DialogRoot.Instance.PopupInsertShipComplexDialog();
                 }
             }
             else if (state == State.MovingUnit)

@@ -36,7 +36,8 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
                     scenarioSetupGenerator = new()
                     {
                         anchor = new LatLon(cell.latitude, cell.longitude)
-                    }
+                    },
+                    isFromStrategic=true
                 };
 
                 StrategicGameManager.Instance.PrepareReturnFromNavalGame();

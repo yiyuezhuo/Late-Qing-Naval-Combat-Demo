@@ -614,5 +614,21 @@ namespace NavalCombatCore
                 }
             }
         }
+
+
+        public GlobalString GetNameForNewShipClass(ShipClass shipClass)
+        {
+            var englishNameSet = namedShips.Select(s => s.name.english).ToHashSet();
+
+            var i=1;
+            while(true)
+            {
+                var testName = shipClass.name.Add(i.ToString());
+                if(!englishNameSet.Contains(testName.english))
+                    return testName;
+                i++;
+            }
+        }
+
     }
 }

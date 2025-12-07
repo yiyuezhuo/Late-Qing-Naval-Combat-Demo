@@ -96,3 +96,4 @@ MonoBehaviour:
   oobTreeDialogDocument: {fileID: 9197481963319205126, guid: 26f52764249f2c04d80b6be882c8e36e, type: 3}
   landBattleDialogDocument: {fileID: 9197481963319205126, guid: 36202abd3c2bb5a46b5e6427fbab1096, type: 3}
   aiDialogDocument: {fileID: 9197481963319205126, guid: c84af8c589109ac4a9a1fd715be2ff4c, type: 3}
+  insertShipComplexDialogDocument: {fileID: 9197481963319205126, guid: c45cba3cca022ad4d9ba0189b5411ce7, type: 3}

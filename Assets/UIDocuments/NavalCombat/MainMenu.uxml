@@ -9,55 +9,68 @@
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3101437890560)" />
                     </Bindings>
                 </ui:Label>
-                <ui:VisualElement>
-                    <ui:Button text="Select Naval Tactical Scenario" name="SelectScenarioButton" class="verylarge">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(5242554585088)" />
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Load Game" name="LoadGameButton" class="verylarge">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(6575349207040)" />
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Gallery" name="GalleryButton" enabled="true" class="verylarge" style="display: none;" />
-                    <ui:Button text="(DEBUG) Strategic Mode Test" name="StrategicModeTestButton" class="verylarge">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(363410065362944)" />
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Setting" name="SettingButton" class="verylarge">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(6979457814528)" />
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Manual" name="ManualButton" class="verylarge">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(33508883324112896)" />
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Help" name="HelpButton" class="verylarge">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7671924822016)" />
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="FAQ" name="FAQButton" class="verylarge" />
-                    <ui:Button text="Open Source Code Repository" name="OpenSourceRepositoryButton" class="verylarge">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7050274443264)" />
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Exit" name="ExitButton" class="verylarge">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7141114679296)" />
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Label text="Version" name="VersionLabel" data-source-type="MainMenu, Assembly-CSharp" style="-unity-text-align: upper-center;">
-                        <Bindings>
-                            <ui:DataBinding property="text" data-source-path="versionStr" binding-mode="ToTarget" />
-                        </Bindings>
-                    </ui:Label>
+                <ui:VisualElement style="flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:Button text="Select Naval Tactical Scenario" name="SelectScenarioButton" class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(5242554585088)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Load Game" name="LoadGameButton" class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(6575349207040)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Skirmish" name="SkirmishButton" class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34615076230696960)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Start As Empty" name="StartAsEmptyButton" class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34615625252507648)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="(DEBUG) Strategic Mode Test" name="StrategicModeTestButton" class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(363410065362944)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Setting" name="SettingButton" class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(6979457814528)" />
+                            </Bindings>
+                        </ui:Button>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:Button text="Manual" name="ManualButton" class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(33508883324112896)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Help" name="HelpButton" class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7671924822016)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="FAQ" name="FAQButton" class="verylarge" />
+                        <ui:Button text="Open Source Code Repository" name="OpenSourceRepositoryButton" class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7050274443264)" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Exit" name="ExitButton" class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7141114679296)" />
+                            </Bindings>
+                        </ui:Button>
+                    </ui:VisualElement>
                 </ui:VisualElement>
+                <ui:Label text="Version" name="VersionLabel" data-source-type="MainMenu, Assembly-CSharp" style="-unity-text-align: upper-center;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="versionStr" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
             </ui:VisualElement>
         </ui:ScrollView>
     </ui:VisualElement>

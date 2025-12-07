@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using Unity.Properties;
 
+using NavalCombatCore;
+using CoreUtils;
+using System;
+
 public class MainMenu : SingletonDocument<MainMenu>
 {
     protected override void Awake()
@@ -13,7 +17,7 @@ public class MainMenu : SingletonDocument<MainMenu>
 
         var selectScenarioButton = root.Q<Button>("SelectScenarioButton");
         var loadGameButton = root.Q<Button>("LoadGameButton");
-        var galleryButton = root.Q<Button>("GalleryButton");
+        // var galleryButton = root.Q<Button>("GalleryButton");
         var openSourceRepositoryButton = root.Q<Button>("OpenSourceRepositoryButton");
         var exitButton = root.Q<Button>("ExitButton");
 
@@ -62,7 +66,61 @@ public class MainMenu : SingletonDocument<MainMenu>
             var readmePath = Application.streamingAssetsPath + "/" + "Manuals/readme.pdf"; // This file is under version control, should be manual placed.
             DialogRoot.Instance.PopupConfirmOpenURLDialog(readmePath);
         };
+
+        root.Q<Button>("StartAsEmptyButton").clicked += () =>
+        {
+            var latitude = 37.5f;
+            var longitude = 123.5f;
+
+            var gameState = new NavalGameState();
+
+            gameState.shipGroups.Add(new(){name=redStr, objectId=Guid.NewGuid().ToString()});
+            gameState.shipGroups.Add(new(){name=blueStr, objectId=Guid.NewGuid().ToString()});
+
+            GameManager.startupConfig = new()
+            {
+                fullState = new()
+                {
+                    streamingAssetReference = StreamingAssetReference.Instance, // Copy?
+                    navalGameState = gameState,
+                    viewState = new()
+                    {
+                        xRotation = latitude,
+                        yRotation = 360 - longitude,
+                        orthographicSize = 20
+                    }
+                },
+                mode = GameManager.StartupConfig.Mode.FullState,
+                scenarioSetupGenerator = new()
+                {
+                    anchor = new LatLon(latitude, longitude)
+                }
+            };
+
+            SceneManager.LoadScene("Naval Game");
+        };
+
+        root.Q<Button>("SkirmishButton").clicked += () =>
+        {
+            Debug.Log("SkirmishButton clicked");
+        };
     }
+
+    static GlobalString redStr = new()
+    {
+        english = "Red",
+        japanese = "赤",
+        chineseSimplified = "红",
+        chineseTraditional = "紅",
+    };
+
+    static GlobalString blueStr = new()
+    {
+        english = "Blue",
+        japanese = "青",
+        chineseSimplified = "蓝",
+        chineseTraditional = "藍",
+    };
 
     [CreateProperty]
     public string versionStr => $"Version: {Application.version}";

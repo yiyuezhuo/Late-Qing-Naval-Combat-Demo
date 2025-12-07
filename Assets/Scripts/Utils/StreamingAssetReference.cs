@@ -47,9 +47,6 @@ public class StreamingAssetReference
     // public string shipGroupsPath;
     // scenarioState, launchedTorpedos, weaponSimulationAssignmentClock has little reusability so it's directly tracked by NavalGameState and cannot be replaced by external file.
 
-    // [XmlIgnore]
-    // public List<UnityWebRequest> busyUnityWebRequests = new();
-
     public static void UpdateInstance(StreamingAssetReference newInstance)
     {
         instance = newInstance;
@@ -60,25 +57,6 @@ public class StreamingAssetReference
         var root = Application.streamingAssetsPath + "/Scenarios/";
         var path = root + name;
         return StreamingTextAssetManager.Instance.FetchText(path, callback);
-
-        // var root = Application.streamingAssetsPath + "/Scenarios/";
-        // var path = root + name;
-        // var request = UnityWebRequest.Get(path);
-
-        // busyUnityWebRequests.Add(request);
-
-        // yield return request.SendWebRequest();
-        // if (request.result == UnityWebRequest.Result.Success)
-        // {
-        //     Debug.Log($"Success: {path}");
-        //     callback(request.downloadHandler.text);
-
-        //     busyUnityWebRequests.Remove(request);
-        // }
-        // else
-        // {
-        //     Debug.LogError($"failed to fetch and setup: {name}");
-        // }
     }
 
     public IEnumerator FetchScenarioFileIfApplicable(object obj, string name, Action<string> callback)
@@ -105,26 +83,86 @@ public class StreamingAssetReference
 
     public IEnumerator TryToCompleteFromStreamingAssetReference(AbstractGameState s)
     {
-        yield return FetchScenarioFileIfApplicable(s.leaders, leadersPath, s.LeadersFromXML);
-        yield return FetchScenarioFileIfApplicable(s.shipClasses, shipClassesPath, s.ShipClassesFromXML);
-        yield return FetchScenarioFileIfApplicable(s.namedShips, namedShipsPath, s.NamedShipsFromXML);
-        // Debug.Log("TryToCompleteFromStreamingAssetReference End");
+        // if(s.leaders == null)
+        // {
+        //     yield return FetchScenarioFileIfApplicable(s.leaders, leadersPath, s.LeadersFromXML);
+        // }
+        
+        // if(s.shipClasses == null)
+        // {
+        //     yield return FetchScenarioFileIfApplicable(s.shipClasses, shipClassesPath, s.ShipClassesFromXML);
+        // }
+        
+        // if(s.namedShips == null)
+        // {
+        //     yield return FetchScenarioFileIfApplicable(s.namedShips, namedShipsPath, s.NamedShipsFromXML);
+        // }
+
+        // yield return FetchScenarioFileIfApplicable(s.leaders, leadersPath, s.LeadersFromXML);
+        // yield return FetchScenarioFileIfApplicable(s.shipClasses, shipClassesPath, s.ShipClassesFromXML);
+        // yield return FetchScenarioFileIfApplicable(s.namedShips, namedShipsPath, s.NamedShipsFromXML);
+
+        if(!s.leadersBuiltin)
+        {
+            yield return FetchScenarioFileIfApplicable(s.leaders, leadersPath, s.LeadersFromXML);
+        }
+        
+        if(!s.shipClassesBuiltin)
+        {
+            yield return FetchScenarioFileIfApplicable(s.shipClasses, shipClassesPath, s.ShipClassesFromXML);
+        }
+        
+        if(!s.namedShipsBuiltin)
+        {
+            yield return FetchScenarioFileIfApplicable(s.namedShips, namedShipsPath, s.NamedShipsFromXML);
+        }
     }
 
-    // public NavalGameState Detach(NavalGameState _s)
-    // {
-    //     // deep copy
-    //     var s = XmlUtils.FromXML<NavalGameState>(XmlUtils.ToXML(_s));
+    public class ConsistenceCheckResult
+    {
+        public bool leaders;
+        public bool shipClasses;
+        public bool nameShips;
 
-    //     if (leadersPath != null && leadersPath != "")
-    //         s.leaders = null;
+        public bool IsAllConsistent()
+        {
+            return leaders && shipClasses && nameShips;
+        }
 
-    //     if(shipClassesPath != null && shipClassesPath != "")
-    //         s.shipClasses = null;
+        public override string ToString()
+        {
+            return $"ConsistenceCheckResult(leaders={leaders}, shipClasses={shipClasses}, nameShips={nameShips})";
+        }
+    }
 
-    //     if (namedShipsPath != null && namedShipsPath != "")
-    //         s.namedShips = null;
+    public IEnumerator CheckConsistence(AbstractGameState s, Action<ConsistenceCheckResult> callback)
+    {
+        var res = new ConsistenceCheckResult();
+        
+        if(leadersPath != null && leadersPath != "")
+        {
+            yield return FetchScenarioFile(leadersPath, leadersXml =>
+            {
+                res.leaders = leadersXml == s.LeadersToXML();
+            });
+        }
 
-    //     return s;
-    // }
+        if(shipClassesPath != null && shipClassesPath != "")
+        {
+            yield return FetchScenarioFile(shipClassesPath, shipClassesXml =>
+            {
+                res.shipClasses = shipClassesXml == s.ShipClassesToXML();
+            });
+        }
+
+        if(namedShipsPath != null && namedShipsPath != "")
+        {
+            yield return FetchScenarioFile(namedShipsPath, namedShipsXml =>
+            {
+                res.nameShips = namedShipsXml == s.NamedShipsToXML();
+            });
+        }
+
+        callback(res);
+    }
 }

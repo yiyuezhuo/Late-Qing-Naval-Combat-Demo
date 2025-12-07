@@ -1168,6 +1168,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
+    public bool detachStreamingAssets = true;
+
     public string selectedLaunchedTorpedoObjectId;
 
     [CreateProperty]

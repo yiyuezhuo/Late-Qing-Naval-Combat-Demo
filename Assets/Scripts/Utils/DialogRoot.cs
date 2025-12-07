@@ -1053,6 +1053,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
         tempDialog.onConfirmed += insertShipComplexDialog.OnConfirm;
         tempDialog.onCreated += insertShipComplexDialog.OnCreated;
+        tempDialog.confirmCheck = insertShipComplexDialog.ConfirmCheck;
 
         tempDialog.Popup();
     }

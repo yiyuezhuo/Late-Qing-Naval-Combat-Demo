@@ -27,6 +27,10 @@ public class InsertShipComplexDialog
     ListView validNamedShipListView;
     ListView validShipClassListView;
 
+    DropdownField shipGroupDropdownField;
+
+    static string suggestedGroupId; // This ID would be used to set default option for the dropdown field, though it's not ensured to be valid.
+
     public void OnCreated(object sender, VisualElement root)
     {
         var gameState = NavalGameState.Instance;
@@ -38,9 +42,6 @@ public class InsertShipComplexDialog
         
         validNamedShips = gameState.namedShips.Where(s => !deployedNamedShipSet.Contains(s)).ToList();
         validShipClasses = gameState.shipClasses.ToList();
-
-        var shipGroupDropdownField = root.Q<DropdownField>("ShipGroupDropdownField");
-        shipGroupDropdownField.choices = gameState.shipGroups.Select(g => g.name.GetMergedName()).ToList();
 
         validShipLogListView = root.Q<ListView>("ValidShipLogListView");
         validShipLogListView.selectionChanged += (IEnumerable<object> objects) =>
@@ -59,6 +60,26 @@ public class InsertShipComplexDialog
         {
             mode = Mode.ShipClass;
         };
+
+        shipGroupDropdownField = root.Q<DropdownField>("ShipGroupDropdownField");
+        shipGroupDropdownField.choices = gameState.shipGroups.Select(g => g.name.GetMergedName()).ToList();
+        var groupIdx = gameState.shipGroups.FindIndex(g => g.objectId == suggestedGroupId);
+        if(groupIdx != -1)
+        {
+            shipGroupDropdownField.index = groupIdx;
+        }
+    }
+
+    public bool ConfirmCheck( VisualElement root)
+    {
+        var gameState = NavalGameState.Instance;
+        var isShipGroupValid = shipGroupDropdownField.index >= 0 && shipGroupDropdownField.index < gameState.shipGroups.Count;
+        if(!isShipGroupValid)
+        {
+            DialogRoot.Instance.PopupMessageDialog("Ship Group is not selected");
+            return false;
+        }
+        return true;
     }
 
     public void OnConfirm(object sender, VisualElement root)
@@ -66,7 +87,6 @@ public class InsertShipComplexDialog
         Debug.Log("InsertShipComplexDialog confirmed");
 
         var gameState = NavalGameState.Instance;
-
 
         var latLon = GameManager.Instance.lastSelectedLatLon;
         if(latLon == null)
@@ -145,12 +165,11 @@ public class InsertShipComplexDialog
             deployedShipLog.mapState = MapState.Deployed;
             deployedShipLog.position = latLon;
 
-            var shipGroupDropdownField = root.Q<DropdownField>("ShipGroupDropdownField");
-
             var isShipGroupValid = shipGroupDropdownField.index >= 0 && shipGroupDropdownField.index < gameState.shipGroups.Count;
             if(isShipGroupValid)
             {
                 var selectedShipGroup = gameState.shipGroups[shipGroupDropdownField.index];
+                suggestedGroupId = selectedShipGroup.objectId;
                 
                 selectedShipGroup.childrenObjectIds.Add(deployedShipLog.objectId);
                 deployedShipLog.parentObjectId = selectedShipGroup.objectId;

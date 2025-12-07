@@ -12,6 +12,8 @@ public class TempDialog
     public event EventHandler<VisualElement> onCancelled;
     public event EventHandler<VisualElement> onClosed;
 
+    public Func<VisualElement, bool> confirmCheck;
+
     public bool centering = true;
     public bool fullScreen = false;
     public bool draggable = false;
@@ -43,10 +45,13 @@ public class TempDialog
         {
             confirmButton.clicked += () =>
             {
-                // root.Remove(el);
-                Close();
+                if(confirmCheck == null || confirmCheck(el))
+                {
+                    // root.Remove(el);
+                    Close();
 
-                onConfirmed?.Invoke(this, el);
+                    onConfirmed?.Invoke(this, el);
+                }
             };
         }
 

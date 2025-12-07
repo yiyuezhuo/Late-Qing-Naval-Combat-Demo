@@ -27,6 +27,17 @@ namespace CoreUtils
         public List<Leader> leaders = new();
         public List<ShipClass> shipClasses = new();
         public List<NamedShip> namedShips = new();
+        // public List<Leader> leaders;
+        // public List<ShipClass> shipClasses;
+        // public List<NamedShip> namedShips;
+        // public bool ShouldSerializeleaders() => leaders != null;
+        // public bool ShouldSerializeshipClasses() => shipClasses != null;
+        // public bool ShouldSerializenamedShips() => namedShips != null;
+
+        public bool leadersBuiltin; // builtin in model state => ignore streaming asset loading
+        public bool shipClassesBuiltin;
+        public bool namedShipsBuiltin;
+
         public List<ShipLog> shipLogs = new();
 
         // public int referenceTimeZoneOffset = +8; // +8 timezone

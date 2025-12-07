@@ -228,10 +228,43 @@ public class TopTabs : SingletonDocument<TopTabs>
 
     void OnSaveButtonClicked(bool editSave=false)
     {
+        if(GameManager.Instance.detachStreamingAssets)
+        {
+            IOManager.Instance.StartCoroutine(StreamingAssetReference.Instance.CheckConsistence(NavalGameState.Instance, res =>
+            {
+                if(!res.IsAllConsistent())
+                {
+                    DialogRoot.Instance.PopupConfirmDialog(
+                        $"Consistency check failed: ({res}), missing export or forget to use non-detach save mode? Confirm to ignore the prompt and continue to save.",
+                        () => DoSave(editSave, true)
+                    );
+                    return;
+                }
+                DoSave(editSave, true);
+            }));
+        }
+        else
+        {
+            DoSave(editSave, false);
+        }
+    }
+
+    void DoSave(bool editSave, bool detachGameState)
+    {
+        // yield return StreamingAssetReference.Instance.CheckConsistence(NavalGameState.Instance);
+
+        var gameState = detachGameState ? 
+            DetachGameState(NavalGameState.Instance, StreamingAssetReference.Instance) : 
+            XmlUtils.FromXML<NavalGameState>(XmlUtils.ToXML(NavalGameState.Instance));
+
+        gameState.leadersBuiltin = gameState.leaders != null;
+        gameState.shipClassesBuiltin = gameState.shipClasses != null;
+        gameState.namedShipsBuiltin = gameState.namedShips != null;
+
         var fullState = new FullState()
         {
             streamingAssetReference = StreamingAssetReference.Instance,
-            navalGameState = DetachGameState(NavalGameState.Instance, StreamingAssetReference.Instance),
+            navalGameState = gameState,
             viewState = GameManager.Instance.CaptureViewState(),
             eventState = EventState.Instance
         };
@@ -250,13 +283,22 @@ public class TopTabs : SingletonDocument<TopTabs>
         var s = XmlUtils.FromXML<NavalGameState>(XmlUtils.ToXML(_s));
 
         if (sar.leadersPath != null && sar.leadersPath != "")
+        {
+            // s.leadersBuiltin = false;
             s.leaders = null;
+        }
 
         if (sar.shipClassesPath != null && sar.shipClassesPath != "")
+        {
+            // s.shipClassesBuiltin = false;
             s.shipClasses = null;
+        }
 
         if (sar.namedShipsPath != null && sar.namedShipsPath != "")
+        {
+            // s.namedShipsBuiltin = false;
             s.namedShips = null;
+        }
 
         return s;
     }

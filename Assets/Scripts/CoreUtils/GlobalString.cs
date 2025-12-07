@@ -98,5 +98,22 @@ namespace CoreUtils
         {
             return $"GlobalString({english}, {japanese}, {chineseSimplified}, {chineseTraditional})";
         }
+
+        public static GlobalString redStr = new()
+        {
+            english = "Red",
+            japanese = "赤",
+            chineseSimplified = "红",
+            chineseTraditional = "紅",
+        };
+
+        public static GlobalString blueStr = new()
+        {
+            english = "Blue",
+            japanese = "青",
+            chineseSimplified = "蓝",
+            chineseTraditional = "藍",
+        };
+
     }
 }

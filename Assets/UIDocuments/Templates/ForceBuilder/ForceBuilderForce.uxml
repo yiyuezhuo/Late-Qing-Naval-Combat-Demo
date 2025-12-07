@@ -1,0 +1,88 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:VisualElement data-source-type="ForceBuilder+Force, Assembly-CSharp" style="flex-grow: 1;">
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                <ui:EnumField label="Country" value="Center" type="CoreUtils.Country, Assembly-CSharp">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="country" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69304797794304)" />
+                    </Bindings>
+                </ui:EnumField>
+                <ui:Instance template="GlobalStringEditor" data-source-path="topGroupName">
+                    <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+                </ui:Instance>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                <ui:FloatField label="Points">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="points" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34995704591716352)" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:Label text="Weights" style="flex-grow: 1;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34995357441757184)" />
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Button text="Generate">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34995278257491968)" />
+                        </Bindings>
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:Slider label="Battleship (BB)" high-value="100" show-input-field="true">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="battleShipWeight" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34995423082614784)" />
+                    </Bindings>
+                </ui:Slider>
+                <ui:Slider label="Cruiser (CA/CL)" high-value="100" show-input-field="true">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="cruiserWeight" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34995501440602112)" />
+                    </Bindings>
+                </ui:Slider>
+                <ui:Slider label="Torpedo Boat (TB)" high-value="100" show-input-field="true">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="torpedoBoatWeight" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34995562199289856)" />
+                    </Bindings>
+                </ui:Slider>
+                <ui:Slider label="Transport (TR/AMC)" high-value="100" show-input-field="true">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="transportWeight" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34995624639893504)" />
+                    </Bindings>
+                </ui:Slider>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row; max-height: 350px;">
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:Label text="Committed">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34995919105200128)" />
+                    </Bindings>
+                </ui:Label>
+                <ui:ListView name="ForceItemListView" data-source-path="forceItems" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/ForceBuilder/ForceBuilderForceItem.uxml?fileID=9197481963319205126&amp;guid=0b30177f30140f247a56421f5474a8d1&amp;type=3#ForceBuilderForceItem" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:Label text="Named Ship">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62777823236096)" />
+                    </Bindings>
+                </ui:Label>
+                <ui:ListView name="ValidNamedShipListView" data-source-path="validNamedShips" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/ForceBuilder/ForceBuilderNamedShip.uxml?fileID=9197481963319205126&amp;guid=6655c40badf7c10469c96a77f82c1f80&amp;type=3#ForceBuilderNamedShip" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                <ui:Label text="Ship Class">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62707518312448)" />
+                    </Bindings>
+                </ui:Label>
+                <ui:ListView name="ValidShipClassListView" data-source-path="validShipClasses" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/ForceBuilder/ForceBuilderShipClass.uxml?fileID=9197481963319205126&amp;guid=f18aa9866ad449845be678cebd54fa5e&amp;type=3#ForceBuilderShipClass" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

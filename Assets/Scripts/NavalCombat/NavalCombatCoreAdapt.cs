@@ -55,6 +55,9 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public StyleBackground portraitStyleBackground => UnityWebRequestImageReader.Instance.FetchStyleBackground(portraitReference.ResolvePath());
+    
+        [CreateProperty]
+        public string forceBuilderText => $"< {name.GetShortName()} ({GetPoint()})";
     }
 
     public partial class LaunchedTorpedo : IPortraitViewerObservable
@@ -485,6 +488,9 @@ namespace NavalCombatCore
         {
             get => EntityManager.Instance.Get<ShipClass>(shipClassObjectId)?.name.mergedName ?? "[Not Specified]";
         }
+
+        [CreateProperty]
+        public string forceBuilderText => $"< {name.GetShortName()} ({shipClass.GetPoint()})";
     }
 
     public partial class RapidFiringTargettingStatus

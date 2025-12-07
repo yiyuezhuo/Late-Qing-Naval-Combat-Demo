@@ -72,6 +72,11 @@ namespace NavalCombatCore
         public bool notAvailableForFirstSinoJapaneseWar;
 
         public string remark;
+
+        public override string ToString()
+        {
+            return $"NamedShip({name.GetMergedNamePure()})";
+        }
     }
 
 }

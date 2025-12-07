@@ -69,58 +69,70 @@ public class MainMenu : SingletonDocument<MainMenu>
 
         root.Q<Button>("StartAsEmptyButton").clicked += () =>
         {
-            var latitude = 37.5f;
-            var longitude = 123.5f;
-
-            var gameState = new NavalGameState();
-
-            gameState.shipGroups.Add(new(){name=redStr, objectId=Guid.NewGuid().ToString()});
-            gameState.shipGroups.Add(new(){name=blueStr, objectId=Guid.NewGuid().ToString()});
-
-            GameManager.startupConfig = new()
-            {
-                fullState = new()
-                {
-                    streamingAssetReference = StreamingAssetReference.Instance, // Copy?
-                    navalGameState = gameState,
-                    viewState = new()
-                    {
-                        xRotation = latitude,
-                        yRotation = 360 - longitude,
-                        orthographicSize = 20
-                    }
-                },
-                mode = GameManager.StartupConfig.Mode.FullState,
-                scenarioSetupGenerator = new()
-                {
-                    anchor = new LatLon(latitude, longitude)
-                }
-            };
-
-            SceneManager.LoadScene("Naval Game");
+            GotoEmptyNavalGame(false);
         };
 
         root.Q<Button>("SkirmishButton").clicked += () =>
         {
             Debug.Log("SkirmishButton clicked");
+
+            GotoEmptyNavalGame(true);
         };
     }
 
-    static GlobalString redStr = new()
+    void GotoEmptyNavalGame(bool popupForceBuilder)
     {
-        english = "Red",
-        japanese = "赤",
-        chineseSimplified = "红",
-        chineseTraditional = "紅",
-    };
+        // popupForceBuilder
+        var latitude = 37.5f;
+        var longitude = 123.5f;
 
-    static GlobalString blueStr = new()
-    {
-        english = "Blue",
-        japanese = "青",
-        chineseSimplified = "蓝",
-        chineseTraditional = "藍",
-    };
+        var gameState = new NavalGameState();
+
+        if(!popupForceBuilder)
+        {
+            gameState.shipGroups.Add(new(){name=GlobalString.redStr.Clone(), objectId=Guid.NewGuid().ToString()}); // objectId is not strictly correct here but most likely would work.
+            gameState.shipGroups.Add(new(){name=GlobalString.blueStr.Clone(), objectId=Guid.NewGuid().ToString()});
+        }
+
+        GameManager.startupConfig = new()
+        {
+            fullState = new()
+            {
+                streamingAssetReference = StreamingAssetReference.Instance, // Copy?
+                navalGameState = gameState,
+                viewState = new()
+                {
+                    xRotation = latitude,
+                    yRotation = 360 - longitude,
+                    orthographicSize = 20
+                }
+            },
+            mode = GameManager.StartupConfig.Mode.FullState,
+            scenarioSetupGenerator = new()
+            {
+                anchor = new LatLon(latitude, longitude)
+            },
+            popupForceBuilder=popupForceBuilder
+        };
+
+        SceneManager.LoadScene("Naval Game");
+    }
+
+    // static GlobalString redStr = new()
+    // {
+    //     english = "Red",
+    //     japanese = "赤",
+    //     chineseSimplified = "红",
+    //     chineseTraditional = "紅",
+    // };
+
+    // static GlobalString blueStr = new()
+    // {
+    //     english = "Blue",
+    //     japanese = "青",
+    //     chineseSimplified = "蓝",
+    //     chineseTraditional = "藍",
+    // };
 
     [CreateProperty]
     public string versionStr => $"Version: {Application.version}";

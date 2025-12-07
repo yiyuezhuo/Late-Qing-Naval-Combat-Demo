@@ -131,6 +131,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         // public bool requireAutoDeployAll = false;
         public ScenarioDynamicSetupGenerator scenarioSetupGenerator;
         public bool isFromStrategic;
+        public bool popupForceBuilder;
 
         // public bool IsFromStrategic() => scenarioSetupGenerator != null;
         public bool IsFromStrategic() => isFromStrategic;
@@ -233,6 +234,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             {
                 DialogRoot.Instance.PopupAIDialog();
             }
+        }
+
+        if(startupConfig.popupForceBuilder)
+        {
+            DialogRoot.Instance.PopupForceBuilderDialog();
         }
 
         TempFix();

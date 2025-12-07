@@ -763,5 +763,7 @@ namespace NavalCombatCore
             return $"ShipClass({name.GetMergedName()})";
         }
 
+        public float GetPoint() => EvaluateGeneralScore(); // TODO: Modify it with type?
+
     }
 }

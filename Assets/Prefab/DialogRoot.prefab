@@ -97,3 +97,4 @@ MonoBehaviour:
   landBattleDialogDocument: {fileID: 9197481963319205126, guid: 36202abd3c2bb5a46b5e6427fbab1096, type: 3}
   aiDialogDocument: {fileID: 9197481963319205126, guid: c84af8c589109ac4a9a1fd715be2ff4c, type: 3}
   insertShipComplexDialogDocument: {fileID: 9197481963319205126, guid: c45cba3cca022ad4d9ba0189b5411ce7, type: 3}
+  forceBuilderDialogDocument: {fileID: 9197481963319205126, guid: fd737e89c76ecb0419995422d80dd808, type: 3}

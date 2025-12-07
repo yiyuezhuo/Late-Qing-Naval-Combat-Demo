@@ -2256,6 +2256,46 @@ MonoBehaviour:
     m_Localized: Start As Empty
     m_Metadata:
       m_Items: []
+  - m_Id: 34869339829735424
+    m_Localized: Save doesn't include Streaming Asset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34953068468146176
+    m_Localized: Force Builder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34995278257491968
+    m_Localized: Generate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34995357441757184
+    m_Localized: Weights
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34995423082614784
+    m_Localized: Battleship (BB)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34995501440602112
+    m_Localized: Cruiser (CA/CL)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34995562199289856
+    m_Localized: Torpedo Boat (TB)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34995624639893504
+    m_Localized: Transport (TR/AMC)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34995704591716352
+    m_Localized: Points
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34995919105200128
+    m_Localized: Committed
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

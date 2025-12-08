@@ -1,0 +1,15 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="ForceBuilder+ForceItem, Assembly-CSharp" style="-unity-background-scale-mode: scale-to-fit;">
+        <ui:VisualElement style="flex-grow: 1; position: absolute; height: 100%; -unity-background-scale-mode: scale-to-fit;">
+            <Bindings>
+                <ui:DataBinding property="style.width" data-source-path="portraitWidth" binding-mode="ToTarget" />
+                <ui:DataBinding property="style.backgroundImage" data-source-path="portraitIconStyleBackground" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:VisualElement>
+        <ui:Button text="Force Item&apos;s Name (x2, 100) &gt;" style="background-color: rgba(188, 188, 188, 0.59); -unity-text-align: middle-right; padding-left: 2px; padding-right: 2px; margin-left: 2px; margin-right: 2px;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="forceBuilderText" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

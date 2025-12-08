@@ -319,7 +319,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
             // hoveringLocationInfo = $"Lat: {latF} Lon: {lonF} UTC: {utcDT} Local: {localDT} ({dayNightLevel},{timeZoneOffsetF}) Sun Alt: {sunAltF} Azi: {sunAziF}";
             hoveringLocationInfo = Localize(
-                "Lat: {0} Lon: {1} UTC: {2} Local: {3} ({4},{5}) Sun Alt: {6} Azi: {7}",
+                "Lat: {0} Lon: {1} UTC: {2} Local: {3} ({4},{5}) Sun Alt: {6} Sun Azi: {7}",
                 latF, lonF, utcDT, localDT, LocalizeEnum(dayNightLevel), timeZoneOffsetF, sunAltF, sunAziF
             );
         }

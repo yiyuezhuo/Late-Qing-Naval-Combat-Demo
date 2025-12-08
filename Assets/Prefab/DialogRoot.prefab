@@ -98,3 +98,4 @@ MonoBehaviour:
   aiDialogDocument: {fileID: 9197481963319205126, guid: c84af8c589109ac4a9a1fd715be2ff4c, type: 3}
   insertShipComplexDialogDocument: {fileID: 9197481963319205126, guid: c45cba3cca022ad4d9ba0189b5411ce7, type: 3}
   forceBuilderDialogDocument: {fileID: 9197481963319205126, guid: fd737e89c76ecb0419995422d80dd808, type: 3}
+  autoDeploymentDialogDocument: {fileID: 9197481963319205126, guid: c66cde8d44211424c8bb7863f3e34683, type: 3}

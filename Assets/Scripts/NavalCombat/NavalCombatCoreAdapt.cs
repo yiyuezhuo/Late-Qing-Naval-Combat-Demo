@@ -54,10 +54,19 @@ namespace NavalCombatCore
         public StyleBackground portraitTopStyleBackground => UnityWebRequestImageReader.Instance.FetchStyleBackground(portraitTopReference.ResolvePath());
 
         [CreateProperty]
+        public StyleBackground portraitIconStyleBackground => UnityWebRequestImageReader.Instance.FetchStyleBackground(portraitIconReference.ResolvePath());
+
+        [CreateProperty]
         public StyleBackground portraitStyleBackground => UnityWebRequestImageReader.Instance.FetchStyleBackground(portraitReference.ResolvePath());
     
         [CreateProperty]
         public string forceBuilderText => $"< {name.GetShortName()} ({GetPoint()})";
+
+        [CreateProperty]
+        public Length portraitWidth => new Length(
+            lengthFoot / 1000 * 100, // 300 foot => 30 (30%)
+            LengthUnit.Percent
+        );
     }
 
     public partial class LaunchedTorpedo : IPortraitViewerObservable
@@ -436,29 +445,11 @@ namespace NavalCombatCore
         [CreateProperty]
         public Leader defaultLeaderProp => defaultLeader;
 
-        // [CreateProperty]
-        // public StyleBackground defaultLeaderStyleBackground
-        // {
-        //     get
-        //     {
-        //         var leader = EntityManager.Instance.Get<Leader>(defaultLeaderObjectId);
-        //         if (leader == null)
-        //             return null;
-        //         return ResourceManager.GetLeaderPortraitSB(leader.portraitCode);
-        //     }
-        // }
-
         [CreateProperty]
         public StyleBackground shipClassPortraitStyleBackground
         {
             get
             {
-                // var shipClass = EntityManager.Instance.Get<ShipClass>(shipClassObjectId);
-                // var portraitCode = shipClass?.portraitCode;
-                // if (portraitCode == null)
-                //     return null;
-                // return ResourceManager.GetShipPortraitSB(portraitCode);
-
                 return UnityWebRequestImageReader.Instance.FetchStyleBackground(shipClass?.portraitReference?.ResolvePath());
             }
         }
@@ -468,14 +459,13 @@ namespace NavalCombatCore
         {
             get
             {
-                // var portraitCode = EntityManager.Instance.Get<ShipClass>(shipClassObjectId)?.portraitTopCode;
-                // if (portraitCode == null)
-                //     return null;
-                // return ResourceManager.GetShipPortraitSB(portraitCode);
-
                 return UnityWebRequestImageReader.Instance.FetchStyleBackground(shipClass?.portraitTopReference?.ResolvePath());
             }
         }
+
+        [CreateProperty]
+        public StyleBackground shipClassIconPortraitStyleBackground => UnityWebRequestImageReader.Instance.FetchStyleBackground(shipClass.portraitIconReference.ResolvePath());
+
 
         [CreateProperty]
         public Country shipClassCountry
@@ -491,6 +481,12 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public string forceBuilderText => $"< {name.GetShortName()} ({shipClass.GetPoint()})";
+    
+        [CreateProperty]
+        public Length portraitWidth => new Length(
+            (shipClass?.lengthFoot ?? 300) / 1000 * 100, // 300 foot => 30 (30%)
+            LengthUnit.Percent
+        );
     }
 
     public partial class RapidFiringTargettingStatus

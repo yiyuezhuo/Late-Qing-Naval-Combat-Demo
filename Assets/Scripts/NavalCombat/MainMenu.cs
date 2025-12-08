@@ -80,7 +80,7 @@ public class MainMenu : SingletonDocument<MainMenu>
         };
     }
 
-    void GotoEmptyNavalGame(bool popupForceBuilder)
+    void GotoEmptyNavalGame(bool skirmish)
     {
         // popupForceBuilder
         var latitude = 37.5f;
@@ -88,7 +88,7 @@ public class MainMenu : SingletonDocument<MainMenu>
 
         var gameState = new NavalGameState();
 
-        if(!popupForceBuilder)
+        if(!skirmish)
         {
             gameState.shipGroups.Add(new(){name=GlobalString.redStr.Clone(), objectId=Guid.NewGuid().ToString()}); // objectId is not strictly correct here but most likely would work.
             gameState.shipGroups.Add(new(){name=GlobalString.blueStr.Clone(), objectId=Guid.NewGuid().ToString()});
@@ -112,7 +112,7 @@ public class MainMenu : SingletonDocument<MainMenu>
             {
                 anchor = new LatLon(latitude, longitude)
             },
-            popupForceBuilder=popupForceBuilder
+            popupForceBuilder=skirmish
         };
 
         SceneManager.LoadScene("Naval Game");

@@ -232,6 +232,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset aiDialogDocument;
     public VisualTreeAsset insertShipComplexDialogDocument;
     public VisualTreeAsset forceBuilderDialogDocument;
+    public VisualTreeAsset autoDeploymentDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -242,6 +243,23 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupAutoDeploymentDialog()
+    {
+        var autoDeploymentDialog = new AutoDeploymentDialog();
+
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=autoDeploymentDialogDocument,
+            templateDataSource=autoDeploymentDialog
+        };
+
+        tempDialog.onCreated += autoDeploymentDialog.OnCreated;
+        tempDialog.onConfirmed += autoDeploymentDialog.OnConfirm;
+
+        tempDialog.Popup();
     }
 
     public void PopupForceBuilderDialog()

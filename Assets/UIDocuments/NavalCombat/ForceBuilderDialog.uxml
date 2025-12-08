@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement data-source-type="ForceBuilder, Assembly-CSharp" class="panel-dialog" style="height: 550px; width: 700px;">
+    <ui:VisualElement data-source-type="ForceBuilder, Assembly-CSharp" class="panel-dialog" style="height: 525px; width: 750px;">
         <ui:Label text="Force Builder" class="title">
             <Bindings>
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34953068468146176)" />

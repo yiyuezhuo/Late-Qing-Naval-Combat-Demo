@@ -620,7 +620,7 @@ namespace NavalCombatCore
         {
             var englishNameSet = namedShips.Select(s => s.name.english).ToHashSet();
 
-            var i=1;
+            var i = 1;
             while(true)
             {
                 var testName = shipClass.name.Add(i.ToString());

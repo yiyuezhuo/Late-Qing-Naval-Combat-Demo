@@ -13,7 +13,7 @@
                     <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
                 </ui:Instance>
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 150px;">
                 <ui:FloatField label="Points">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="points" binding-mode="TwoWay" />
@@ -26,7 +26,7 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34995357441757184)" />
                         </Bindings>
                     </ui:Label>
-                    <ui:Button text="Generate">
+                    <ui:Button text="Generate" name="GenerateButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34995278257491968)" />
                         </Bindings>
@@ -58,29 +58,45 @@
                 </ui:Slider>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row; max-height: 350px;">
-            <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-                <ui:Label text="Committed">
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row; max-height: 300px;">
+            <ui:VisualElement style="flex-grow: 1; flex-basis: 120px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:ProgressBar title="0/100" style="margin-top: 0; margin-bottom: 4px;">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34995919105200128)" />
+                        <ui:DataBinding property="highValue" data-source-path="points" binding-mode="ToTarget" />
+                        <ui:DataBinding property="title" data-source-path="progressDesc" binding-mode="ToTarget" />
+                        <ui:DataBinding property="value" data-source-path="usedPoints" binding-mode="ToTarget" />
                     </Bindings>
-                </ui:Label>
-                <ui:ListView name="ForceItemListView" data-source-path="forceItems" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/ForceBuilder/ForceBuilderForceItem.uxml?fileID=9197481963319205126&amp;guid=0b30177f30140f247a56421f5474a8d1&amp;type=3#ForceBuilderForceItem" />
+                </ui:ProgressBar>
+                <ui:ListView name="ForceItemListView" data-source-path="forceItems" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/ForceBuilder/ForceBuilderForceItem2.uxml?fileID=9197481963319205126&amp;guid=2ba32efab4c7e22469a54ef9dd211677&amp;type=3#ForceBuilderForceItem2" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-                <ui:Label text="Named Ship">
-                    <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62777823236096)" />
-                    </Bindings>
-                </ui:Label>
-                <ui:ListView name="ValidNamedShipListView" data-source-path="validNamedShips" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/ForceBuilder/ForceBuilderNamedShip.uxml?fileID=9197481963319205126&amp;guid=6655c40badf7c10469c96a77f82c1f80&amp;type=3#ForceBuilderNamedShip" />
+                <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
+                    <ui:Label text="Named Ship" style="flex-grow: 1;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62777823236096)" />
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Toggle>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="enableNamedShip" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
+                </ui:VisualElement>
+                <ui:ListView name="ValidNamedShipListView" data-source-path="validNamedShips" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/ForceBuilder/ForceBuilderNamedShip2.uxml?fileID=9197481963319205126&amp;guid=9031019277c97344a9bd26bba9eb239d&amp;type=3#ForceBuilderNamedShip2" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                <ui:Label text="Ship Class">
-                    <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62707518312448)" />
-                    </Bindings>
-                </ui:Label>
+                <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
+                    <ui:Label text="Ship Class" style="flex-grow: 1;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62707518312448)" />
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Toggle>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="enableShipClass" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:Toggle>
+                </ui:VisualElement>
                 <ui:ListView name="ValidShipClassListView" data-source-path="validShipClasses" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/ForceBuilder/ForceBuilderShipClass.uxml?fileID=9197481963319205126&amp;guid=f18aa9866ad449845be678cebd54fa5e&amp;type=3#ForceBuilderShipClass" />
             </ui:VisualElement>
         </ui:VisualElement>

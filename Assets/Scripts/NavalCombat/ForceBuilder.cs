@@ -423,5 +423,7 @@ public class ForceBuilder
         shipGroup.childrenObjectIds.Add(shipLog.objectId);
         shipLog.parentObjectId = shipGroup.objectId;
 
+        shipLog.ResetDamageExpenditureState(new());
+
     }
 }

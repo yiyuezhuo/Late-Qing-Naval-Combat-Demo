@@ -24,7 +24,7 @@ public class NavalCombatResolver // Dialog
     // derived states
     public LocalNavalCombatBuilder builder;
     public FullState fullState;
-    public ScenarioDynamicSetupGenerator scenarioDynamicSetupGenerator;
+    // public ScenarioDynamicSetupGenerator scenarioDynamicSetupGenerator;
     public OneSideState leftSideState;
     public OneSideState rightSideState;
 
@@ -38,10 +38,10 @@ public class NavalCombatResolver // Dialog
         };
         // fullState = builder.BuildFullState(cell);
         fullState = builder.BuildFullState();
-        scenarioDynamicSetupGenerator = new()
-        {
-            anchor = new LatLon(cell.latitude, cell.longitude)
-        };
+        // scenarioDynamicSetupGenerator = new()
+        // {
+        //     anchor = new LatLon(cell.latitude, cell.longitude)
+        // };
 
         // Build Tree View
         leftSideState = new()
@@ -100,9 +100,13 @@ public class NavalCombatResolver // Dialog
             {
                 fullState = fullState,
                 mode = GameManager.StartupConfig.Mode.FullState,
-                scenarioSetupGenerator = new()
+                // scenarioSetupGenerator = new()
+                // {
+                //     anchor = new LatLon(cell.latitude, cell.longitude)
+                // },
+                autoDeployment = new()
                 {
-                    anchor = new LatLon(cell.latitude, cell.longitude)
+                    initialAnchor = new LatLon(cell.latitude, cell.longitude),
                 },
                 isFromStrategic=true,
             };

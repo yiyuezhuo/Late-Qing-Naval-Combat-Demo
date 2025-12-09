@@ -21,48 +21,6 @@
             <ui:Instance template="NavalCombatResolverSide" name="LeftSideContainer" data-source-path="leftSideState" style="flex-grow: 1; flex-basis: 50px; border-right-width: 1px; border-left-color: rgb(153, 153, 153); border-right-color: rgb(153, 153, 153); border-top-color: rgb(153, 153, 153); border-bottom-color: rgb(153, 153, 153);" />
             <ui:Instance template="NavalCombatResolverSide" name="RightSideContainer" data-source-path="rightSideState" style="flex-grow: 1; flex-basis: 50px;" />
         </ui:VisualElement>
-        <ui:VisualElement data-source-path="scenarioDynamicSetupGenerator" style="flex-grow: 1; flex-direction: row;">
-            <ui:Label text="Distance (Yards)">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022026288402432)" />
-                </Bindings>
-            </ui:Label>
-            <ui:FloatField>
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="distanceYards" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:FloatField>
-            <ui:Label text="Angle (Deg)">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022132588843008)" />
-                </Bindings>
-            </ui:Label>
-            <ui:FloatField>
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="angleDeg" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:FloatField>
-            <ui:Label text="Latitude">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103175836831744)" />
-                </Bindings>
-            </ui:Label>
-            <ui:FloatField>
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="anchor.LatDeg" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:FloatField>
-            <ui:Label text="Longitude">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103239598641152)" />
-                </Bindings>
-            </ui:Label>
-            <ui:FloatField>
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="anchor.LonDeg" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:FloatField>
-        </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:Button text="Resolve" name="ResolveButton" style="flex-basis: 50px; flex-grow: 1;">
                 <Bindings>

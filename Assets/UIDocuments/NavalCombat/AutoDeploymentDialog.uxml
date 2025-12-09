@@ -1,7 +1,39 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement class="panel-dialog">
+    <ui:VisualElement data-source-type="AutoDeploymentDialog, Assembly-CSharp" class="panel-dialog">
         <ui:Label text="Auto-Deployment" class="title" />
-        <ui:VisualElement style="flex-grow: 1;" />
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:VisualElement data-source-path="autoDeployment" style="flex-grow: 1;">
+                <ui:FloatField label="Latitude">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103175836831744)" />
+                        <ui:DataBinding property="value" data-source-path="initialAnchor.LatDeg" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="Longitude">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103239598641152)" />
+                        <ui:DataBinding property="value" data-source-path="initialAnchor.LonDeg" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="Distance (Yards)">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022026288402432)" />
+                        <ui:DataBinding property="value" data-source-path="distanceYards" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="Angle (Deg)">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022132588843008)" />
+                        <ui:DataBinding property="value" data-source-path="angleDeg" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:EnumField label="Group Layout" value="Center" type="NavalCombatCore.AutoDeployment+ControlGroupLayoutType, Assembly-CSharp">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="controlGroupLayoutType" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:EnumField>
+            </ui:VisualElement>
+        </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
             <ui:Button text="Confirm" name="ConfirmButton" style="flex-basis: 50px; flex-grow: 1;">
                 <Bindings>

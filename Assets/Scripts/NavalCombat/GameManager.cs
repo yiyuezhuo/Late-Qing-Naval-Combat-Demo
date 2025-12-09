@@ -129,7 +129,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         public string builtinScenName = "Ting Yuen vs Three View.scen.xml";
         public LatLon cameraLocation;
         // public bool requireAutoDeployAll = false;
-        public ScenarioDynamicSetupGenerator scenarioSetupGenerator;
+        public ScenarioDynamicSetupGenerator scenarioSetupGenerator; // TODO: switch to AutoDeployment
+        public AutoDeployment autoDeployment;
         public bool isFromStrategic;
         public bool popupForceBuilder;
 
@@ -216,6 +217,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         if (startupConfig.scenarioSetupGenerator != null)
         {
             startupConfig.scenarioSetupGenerator.Setup();
+        }
+
+        if(startupConfig.autoDeployment != null)
+        {
+            // TODO: Process AutoDeployment
+            DialogRoot.Instance.PopupAutoDeploymentDialog();
         }
 
         Debug.Log("OnFullStateXMLLoadedCoroutine");

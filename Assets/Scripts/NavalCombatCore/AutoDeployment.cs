@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using CoreUtils;
 using GeographicLib;
-using UnityEngine;
 
 namespace NavalCombatCore
 {
     public class AutoDeployment
     {
+        public enum ControlGroupLayoutType
+        {
+            Parallel,
+            Column
+        }
+
+        public ControlGroupLayoutType controlGroupLayoutType = ControlGroupLayoutType.Parallel;
+
         public float distanceYards = 12000;
-        public float angleDeg = 45;
-        public LatLon initialAnchor;
+        public float angleDeg = 22.5f;
+        public LatLon initialAnchor = new LatLon(){LatDeg=37.5f, LonDeg=123.5f};
 
         public class ControlShipLog
         {
@@ -58,7 +65,7 @@ namespace NavalCombatCore
 
             static List<HashSet<ShipType>> shipTypeSets = new()
             {
-                new(){ShipType.Battleship, ShipType.Cruiser, ShipType.ArmoredCruiser, ShipType.LightCruiser, ShipType.Cruiser},
+                new(){ShipType.Battleship, ShipType.Cruiser, ShipType.ArmoredCruiser, ShipType.LightCruiser, ShipType.Cruiser, ShipType.PatrolGunboat},
                 new(){ShipType.TorpedoBoat},
                 // Other is treated as an independent category (aux.)
             };
@@ -187,15 +194,32 @@ namespace NavalCombatCore
 
             static float innerDistM = MeasureUtils.yardToMeter * 500;
 
-            public void SetPositions(LatLon anchor, float leaderHeadingDeg)
+            public void SetPositions(LatLon anchor, float leaderHeadingDeg, ControlGroupLayoutType controlGroupLayoutType)
             {
                 controlGroups[0].SetPositions(anchor, leaderHeadingDeg);
-                for(int i=1; i<controlGroups.Count; i++)
+
+                if(controlGroupLayoutType == ControlGroupLayoutType.Parallel)
                 {
-                    var controlGroup = controlGroups[i];
-                    var h = MeasureUtils.NormalizeAngle(leaderHeadingDeg + 90);
-                    Geodesic.WGS84.Direct(anchor.LatDeg, anchor.LonDeg, h, innerDistM * i, out double lat2, out double lon2);
-                    controlGroup.SetPositions(new LatLon((float)lat2, (float)lon2), leaderHeadingDeg);
+                    for(int i=1; i<controlGroups.Count; i++)
+                    {
+                        var controlGroup = controlGroups[i];
+                        var h = MeasureUtils.NormalizeAngle(leaderHeadingDeg + 90);
+                        Geodesic.WGS84.Direct(anchor.LatDeg, anchor.LonDeg, h, innerDistM * i, out double lat2, out double lon2);
+                        controlGroup.SetPositions(new LatLon((float)lat2, (float)lon2), leaderHeadingDeg);
+                    }
+                }
+                else if(controlGroupLayoutType == ControlGroupLayoutType.Column)
+                {
+                    var cumCount = controlGroups[0].controlShipLogs.Count;
+                    for(int i=1; i<controlGroups.Count; i++)
+                    {
+                        var controlGroup = controlGroups[i];
+                        var h = MeasureUtils.NormalizeAngle(leaderHeadingDeg + 180);
+                        Geodesic.WGS84.Direct(anchor.LatDeg, anchor.LonDeg, h, innerDistM * cumCount, out double lat2, out double lon2);
+                        controlGroup.SetPositions(new LatLon((float)lat2, (float)lon2), leaderHeadingDeg);
+
+                        cumCount += controlGroup.controlShipLogs.Count;
+                    }
                 }
             }
 
@@ -211,6 +235,8 @@ namespace NavalCombatCore
             }
         }
 
+
+        
         public ControlSide controlSide0;
         public ControlSide controlSide1;
 
@@ -236,17 +262,17 @@ namespace NavalCombatCore
             
             if(controlSide1 == null)
             {
-                controlSide0.SetPositions(anchor, angleDeg);
+                controlSide0.SetPositions(anchor, angleDeg, controlGroupLayoutType);
                 return;
             }
 
             var distFromAnchorM = distanceYards * MeasureUtils.yardToMeter / 2;
             var supAngleDeg = MeasureUtils.NormalizeAngle(angleDeg + 180);
             Geodesic.WGS84.Direct(anchor.LatDeg, anchor.LonDeg, angleDeg, distFromAnchorM, out double lat2, out double lon2);
-            controlSide0.SetPositions(new LatLon((float)lat2, (float)lon2), supAngleDeg);
+            controlSide0.SetPositions(new LatLon((float)lat2, (float)lon2), supAngleDeg, controlGroupLayoutType);
 
             Geodesic.WGS84.Direct(anchor.LatDeg, anchor.LonDeg, supAngleDeg, distFromAnchorM, out double lat3, out double lon3);
-            controlSide1.SetPositions(new LatLon((float)lat3, (float)lon3), angleDeg);
+            controlSide1.SetPositions(new LatLon((float)lat3, (float)lon3), angleDeg, controlGroupLayoutType);
         }
 
         public bool IsLandCollisionTestPassed()
@@ -258,24 +284,25 @@ namespace NavalCombatCore
             return true;
         }
 
-        public bool SearchValidPositions()
+        public LatLon SearchValidPositions()
         {
             SetPositions(initialAnchor);
             if(IsLandCollisionTestPassed())
-                return true;
+                return initialAnchor;
             
             for(float distNm=50; distNm <= 500; distNm += 50)
             {
                 for(float angle=0; angle < 360; angle += 45)
                 {
                     Geodesic.WGS84.Direct(initialAnchor.LatDeg, initialAnchor.LonDeg, angle, distNm * MeasureUtils.navalMileToMeter, out double lat2, out double lon2);
-                    SetPositions(new LatLon((float)lat2, (float)lon2));
+                    var testAnchor = new LatLon((float)lat2, (float)lon2);
+                    SetPositions(testAnchor);
                     if(IsLandCollisionTestPassed())
-                        return true;
+                        return testAnchor;
                 }
             }
 
-            return false;
+            return null;
         }
 
         public void Apply()
@@ -286,15 +313,15 @@ namespace NavalCombatCore
             controlSide1?.Apply(angleDeg);
         }
 
-        public bool Execute()
+        public LatLon Execute()
         {
             Build();
-            var ok = SearchValidPositions();
-            if(ok)
+            var resultAnchor = SearchValidPositions();
+            if(resultAnchor != null)
             {
                 Apply();
             }
-            return ok;
+            return resultAnchor;
         }
     }
 }

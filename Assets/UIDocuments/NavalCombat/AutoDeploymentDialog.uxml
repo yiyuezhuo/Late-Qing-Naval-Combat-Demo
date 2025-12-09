@@ -1,6 +1,10 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="AutoDeploymentDialog, Assembly-CSharp" class="panel-dialog">
-        <ui:Label text="Auto-Deployment" class="title" />
+        <ui:Label text="Auto-Deployment" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(35617374251683840)" />
+            </Bindings>
+        </ui:Label>
         <ui:VisualElement style="flex-grow: 1;">
             <ui:VisualElement data-source-path="autoDeployment" style="flex-grow: 1;">
                 <ui:FloatField label="Latitude">
@@ -30,6 +34,7 @@
                 <ui:EnumField label="Group Layout" value="Center" type="NavalCombatCore.AutoDeployment+ControlGroupLayoutType, Assembly-CSharp">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="controlGroupLayoutType" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(35622829581570048)" />
                     </Bindings>
                 </ui:EnumField>
             </ui:VisualElement>

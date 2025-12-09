@@ -229,6 +229,11 @@ public class TopTabs : SingletonDocument<TopTabs>
         {
             DialogRoot.Instance.PopupForceBuilderDialog();
         };
+
+        root.Q<Button>("AutoDeploymentButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupAutoDeploymentDialog();  
+        };
     }
 
     void OnSaveButtonClicked(bool editSave=false)

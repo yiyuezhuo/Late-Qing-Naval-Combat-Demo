@@ -18,6 +18,8 @@ namespace NavalCombatCore
         float EvaluateSternFirepowerScore();
         float EvaluatePortFirepowerScore();
 
+        LowLevelCoursePlanner.ExtrapolatedRecord.Role GetRole();
+
         // Control related
         ControlMode GetControlMode();
         IExtrapolable GetFollowedTarget();
@@ -42,6 +44,13 @@ namespace NavalCombatCore
         {
             public IExtrapolable original;
 
+            public enum Role
+            {
+                Line, // normal scoring
+                Melee, // defense, distance score is disable for this unit. Mainly for torpedo boat in "charge" (RTW black flag) mode specified by doctrine.
+                Disengage // attack, distance score is disable for this unit. Mainly for damaged unit when doctrine enable this behaviour.
+            }
+
             // Frozen States
             public ControlMode controlMode;
             public ExtrapolatedRecord followedTarget;
@@ -49,6 +58,8 @@ namespace NavalCombatCore
             public ExtrapolatedRecord relativeToTarget;
             public float relativeToTargetDistanceYards;
             public float relativeToTargetAzimuth;
+
+            public Role role = Role.Line;
 
             public float survivability;
             public float firepowerScore;
@@ -155,6 +166,7 @@ namespace NavalCombatCore
                 followDistanceYards = f.GetFollowDistanceYards(), // Calculate the current distance or just use the setting distance?
                 relativeToTargetDistanceYards = f.GetRelativeToTargetDistanceYards(),
                 relativeToTargetAzimuth = f.GetRelativeToTargetAzimuth(),
+                role = f.GetRole(),
                 survivability = f.EvaluateSurvivability(),
                 firepowerScore = f.EvaluateFirepowerScore(),
                 bowFirepowerScore = f.EvaluateBowFirepowerScore(),
@@ -268,14 +280,27 @@ namespace NavalCombatCore
         //     Defender
         // }
 
-        public float EvaluateAttackScore(ExtrapolatedRecord shooter, List<ExtrapolatedRecord> targets)
+        public float EvaluateAttackScore(ExtrapolatedRecord shooter, List<ExtrapolatedRecord> targets, bool attackScore)
         {
-            return targets.Select(t => EvaluateAttackScore(shooter, t)).DefaultIfEmpty(0).Max();
+            if(attackScore && shooter.role == ExtrapolatedRecord.Role.Disengage)
+                return 0; // Disable attack score for disengage unit
+            
+            if(attackScore)
+            {
+                return targets.Select(t => EvaluateAttackScore(shooter, t)).DefaultIfEmpty(0).Max();
+            }
+            else
+            {
+                // For defence scoring, melee role unit is not valid target (so all melee group would get 0 score for defence score) 
+                return targets.Where(t => t.role != ExtrapolatedRecord.Role.Melee)
+                    .Select(t => EvaluateAttackScore(shooter, t)).DefaultIfEmpty(0).Max();
+            }
+            
         }
 
-        public float EvaluateAttackScore(List<ExtrapolatedRecord> shooters, List<ExtrapolatedRecord> targets)
+        public float EvaluateAttackScore(List<ExtrapolatedRecord> shooters, List<ExtrapolatedRecord> targets, bool attackScore)
         {
-            return shooters.Sum(s => EvaluateAttackScore(s, targets));
+            return shooters.Sum(s => EvaluateAttackScore(s, targets, attackScore));
         }
 
         public static float expectedCombatRangeYardLow = 3500;
@@ -285,6 +310,9 @@ namespace NavalCombatCore
         {
             if(targets.Count == 0)
                 return 0;
+
+            // if(shooter.role == ExtrapolatedRecord.ExtrapolatedRecordRole.Disengage) // Disable dist score for disengage unit
+            //     return 0;
 
             var minDistYard = targets.Min(target => (float)MeasureStats.Approximation.HaversineDistanceYards(shooter, target));
             // var minDistYard = targets.Select(target => (float)MeasureStats.Approximation.HaversineDistanceYards(shooter, target)).DefaultIfEmpty(0).Max();
@@ -314,13 +342,15 @@ namespace NavalCombatCore
 
         public float EvaluateDistanceScore(List<ExtrapolatedRecord> shooters, List<ExtrapolatedRecord> targets)
         {
-            return shooters.Sum(shooter => EvaluateDistanceScore(shooter, targets));
+            // return shooters.Sum(shooter => EvaluateDistanceScore(shooter, targets));
+            return shooters.Where(shooter => shooter.role == ExtrapolatedRecord.Role.Line)
+                .Sum(shooter => EvaluateDistanceScore(shooter, targets));
         }
 
         public float EvaluateFirefightScore(List<ExtrapolatedRecord> freidnly, List<ExtrapolatedRecord> enemy)
         {
-            var attackScore = EvaluateAttackScore(freidnly, enemy);
-            var defenceScore = -EvaluateAttackScore(enemy, freidnly);
+            var attackScore = EvaluateAttackScore(freidnly, enemy, true);
+            var defenceScore = -EvaluateAttackScore(enemy, freidnly, false);
             // return attackScore * attackCoef + defenceScore * defenceCoef;
             var distanceScore = EvaluateDistanceScore(freidnly, enemy); // expected firefight position
 

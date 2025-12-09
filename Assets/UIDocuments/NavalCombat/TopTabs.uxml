@@ -181,6 +181,11 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34953068468146176)" />
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="Auto-Deployment" name="AutoDeploymentButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(35617374251683840)" />
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61775904673792)" />

@@ -44,6 +44,11 @@ public class AutoDeploymentDialog
             var yRotation = 360 - resultAnchor.LonDeg;
 
             c.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+
+            if(GameManager.startupConfig.isFromSkirmish)
+            {
+                DialogRoot.Instance.PopupAIDialog();
+            }
         }
     }
 }

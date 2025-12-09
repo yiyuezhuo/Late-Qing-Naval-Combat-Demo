@@ -2296,6 +2296,36 @@ MonoBehaviour:
     m_Localized: Committed
     m_Metadata:
       m_Items: []
+  - m_Id: 35617374251683840
+    m_Localized: Auto-Deployment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35621613250187264
+    m_Localized: Insert a ship to map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35621839432224768
+    m_Localized: Attach to Group
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35621916338982912
+    m_Localized: Deploy a not deployed ship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35622131703910400
+    m_Localized: Create a ship log from a named ship not associated with a ship log
+      and deploy to map.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35622459849478144
+    m_Localized: Create a custom named ship from ship class and create ship log for
+      it and deploy it on map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35622829581570048
+    m_Localized: Group Layout
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

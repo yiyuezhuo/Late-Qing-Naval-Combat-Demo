@@ -112,7 +112,7 @@ public class MainMenu : SingletonDocument<MainMenu>
             {
                 anchor = new LatLon(latitude, longitude)
             },
-            popupForceBuilder=skirmish
+            isFromSkirmish=skirmish
         };
 
         SceneManager.LoadScene("Naval Game");

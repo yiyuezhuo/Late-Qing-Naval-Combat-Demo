@@ -132,7 +132,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         public ScenarioDynamicSetupGenerator scenarioSetupGenerator; // TODO: switch to AutoDeployment
         public AutoDeployment autoDeployment;
         public bool isFromStrategic;
-        public bool popupForceBuilder;
+        public bool isFromSkirmish;
 
         // public bool IsFromStrategic() => scenarioSetupGenerator != null;
         public bool IsFromStrategic() => isFromStrategic;
@@ -243,7 +243,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
         }
 
-        if(startupConfig.popupForceBuilder)
+        if(startupConfig.isFromSkirmish)
         {
             DialogRoot.Instance.PopupForceBuilderDialog();
         }

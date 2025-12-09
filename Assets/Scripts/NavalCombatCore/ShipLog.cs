@@ -1229,6 +1229,12 @@ namespace NavalCombatCore
             return rapidFiringStatus.Sum(rf => rf.EvaluateFirepowerScore());
         }
 
+        public float EvaluateRapidFiringFirepowerScore(float distanceYards, float bearingRelativeToBowDeg)
+        {
+            return rapidFiringStatus.Sum(rf => rf.EvaluateFirepowerScore(distanceYards, bearingRelativeToBowDeg));
+        }
+
+
         public float EvaluateFirepowerScore()
         {
             var batteryFirepower = EvaluateBatteryFirepowerScore();
@@ -1334,11 +1340,14 @@ namespace NavalCombatCore
             var currentAmmoWeightPounds = GetCurentAmmoWeightsPounds();
             return maxAmmoWeightPounds - currentAmmoWeightPounds;
         }
+        // return 1f * batteryFirepower + 20f * torpedoThreat + 1f * rapidFiringFirepower;
+        // TODO: Add Port/Starboard Rapid Firing
+        // TODO: Add Torpedo Threat (ignore angle?)
+        public float EvaluateBowFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 0) + EvaluateTorpedoThreatScore() * 20;
+        public float EvaluateStarboardFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 90) + EvaluateRapidFiringFirepowerScore(0, 90) + EvaluateTorpedoThreatScore() * 20;
+        public float EvaluateSternFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 180) + EvaluateTorpedoThreatScore() * 20;
+        public float EvaluatePortFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 270) + EvaluateRapidFiringFirepowerScore(0, 270) + EvaluateTorpedoThreatScore() * 20;
 
-        public float EvaluateBowFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 0);
-        public float EvaluateStarboardFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 90);
-        public float EvaluateSternFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 180);
-        public float EvaluatePortFirepowerScore() => EvaluateBatteryFirepowerScore(0, TargetAspect.Broad, 0, 270);
         public ControlMode GetControlMode() => controlMode;
         IExtrapolable IExtrapolable.GetFollowedTarget() => followedTarget;
         float IExtrapolable.GetFollowDistanceYards() => followDistanceYards;
@@ -1346,6 +1355,15 @@ namespace NavalCombatCore
         float IExtrapolable.GetRelativeToTargetDistanceYards() => relativeToTargetDistanceYards;
         float IExtrapolable.GetRelativeToTargetAzimuth() => relativeToTargetAzimuth;
         void IExtrapolable.SetDesiredHeadingDeg(float desiredHeadingDeg) => this.desiredHeadingDeg = desiredHeadingDeg;
+        LowLevelCoursePlanner.ExtrapolatedRecord.Role IExtrapolable.GetRole()
+        {
+            return shipClass.type switch
+            {
+                ShipType.TorpedoBoat => LowLevelCoursePlanner.ExtrapolatedRecord.Role.Melee,
+                ShipType.Transport => LowLevelCoursePlanner.ExtrapolatedRecord.Role.Disengage,
+                _ => LowLevelCoursePlanner.ExtrapolatedRecord.Role.Line
+            };
+        }
 
         public LatLon GetPosition() => position;
         // public float GetHeadingDeg() => headingDeg;

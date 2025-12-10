@@ -2314,6 +2314,54 @@ MonoBehaviour:
     m_Localized: Confirm to open url {0} ?
     m_Metadata:
       m_Items: []
+  - m_Id: 21433705165393920
+    m_Localized: nm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21435828544376832
+    m_Localized: yards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21435853466931200
+    m_Localized: deg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368036151988224
+    m_Localized: Tutorial 1 - Single Ship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368041239678976
+    m_Localized: Tutorial 2 - Ship Group
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368095237148672
+    m_Localized: Tutorial 3 - Combat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368128871272448
+    m_Localized: Battle of Pundo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368199792758784
+    m_Localized: Battle of Yalu River
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368206742720512
+    m_Localized: Chih Yuan vs Naniwa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368283557203968
+    m_Localized: Fu Lung vs Saikyo Maru
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368336296382464
+    m_Localized: Ting Yuen vs Fuji
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29772178943283200
+    m_Localized: Ting Yuen vs Three View
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

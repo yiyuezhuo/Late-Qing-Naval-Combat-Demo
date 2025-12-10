@@ -2257,7 +2257,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34869339829735424
-    m_Localized: Save doesn't include Streaming Asset
+    m_Localized: Save without Streaming Asset
     m_Metadata:
       m_Items: []
   - m_Id: 34953068468146176

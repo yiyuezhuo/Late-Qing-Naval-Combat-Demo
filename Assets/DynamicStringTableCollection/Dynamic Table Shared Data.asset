@@ -2305,6 +2305,54 @@ MonoBehaviour:
     m_Key: Confirm to open url {0} ?
     m_Metadata:
       m_Items: []
+  - m_Id: 21433705165393920
+    m_Key: nm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21435828544376832
+    m_Key: yards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21435853466931200
+    m_Key: deg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368036151988224
+    m_Key: Tutorial 1 - Single Ship.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368041239678976
+    m_Key: Tutorial 2 - Ship Group.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368095237148672
+    m_Key: Tutorial 3 - Combat.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368128871272448
+    m_Key: Battle of Pundo.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368199792758784
+    m_Key: Battle of Yalu River.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368206742720512
+    m_Key: Chih Yuan vs Naniwa.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368283557203968
+    m_Key: Fu Lung vs Saikyo Maru.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368336296382464
+    m_Key: Ting Yuen vs Fuji.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29772178943283200
+    m_Key: Ting Yuen vs Three View.scen.xml
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

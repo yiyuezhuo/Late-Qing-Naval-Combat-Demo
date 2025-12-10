@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
 using System;
+using CoreUtils;
+
 
 public class MeasureLine : SingletonMonoBehaviour<MeasureLine>
 {
@@ -49,6 +51,8 @@ public class MeasureLine : SingletonMonoBehaviour<MeasureLine>
         lineRenderer.enabled = false;
         text.enabled = false;
     }
+
+    static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
     // Update is called once per frame
     void Update()
@@ -95,7 +99,9 @@ public class MeasureLine : SingletonMonoBehaviour<MeasureLine>
                 var distNm = distM / 1852;
                 var distYards = distM * 1.09361;
                 var bearing = inverseLine.Azimuth;
-                text.text = $"{distNm:0.00}nm\n{distYards:0.00}yards\n{bearing:0.00}deg";
+                // text.text = $"{distNm:0.00}nm\n{distYards:0.00}yards\n{bearing:0.00}deg";
+                text.text = $"{distNm:0.00}{Localize("nm")}\n{distYards:0.00}{Localize("yards")}\n{bearing:0.00}{Localize("deg")}";
+
                 text.transform.position = currentPos;
 
                 if (Input.GetMouseButtonDown(0))

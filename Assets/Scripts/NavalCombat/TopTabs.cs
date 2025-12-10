@@ -245,7 +245,7 @@ public class TopTabs : SingletonDocument<TopTabs>
                 if(!res.IsAllConsistent())
                 {
                     DialogRoot.Instance.PopupConfirmDialog(
-                        $"Consistency check failed: ({res}), missing export or forget to use non-detach save mode? Confirm to ignore the prompt and continue to save.",
+                        $"Consistency check failed: ({res}), missing export or forget to use non-detached save mode? Confirm to ignore the prompt and continue to save.",
                         () => DoSave(editSave, true)
                     );
                     return;

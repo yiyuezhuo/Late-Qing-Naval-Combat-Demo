@@ -442,6 +442,8 @@ namespace NavalCombatCore
             // return $"{ctx.shipLog.namedShip?.name.GetMergedName()}";
         }
 
+        public static bool disableAmmunitionCost = false;
+
 
         public void Step(float deltaSeconds)
         {
@@ -520,7 +522,11 @@ namespace NavalCombatCore
                 )
                 {
                     processSeconds -= secondsPerShoot;
-                    ctx.batteryStatus.ammunition.CostOne(ammunitionType);
+
+                    if(!disableAmmunitionCost)
+                    {
+                        ctx.batteryStatus.ammunition.CostOne(ammunitionType);
+                    }
 
                     if (ammoFallbackable)
                     {

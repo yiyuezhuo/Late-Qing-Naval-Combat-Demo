@@ -236,6 +236,8 @@ namespace NavalCombatCore
             }
         }
 
+        public static bool disableAmmunitionCost = false;
+
         public void Step(float deltaSeconds)
         {
             var r = GetRapidFireBatteryRecord();
@@ -289,7 +291,11 @@ namespace NavalCombatCore
                     while (tgtRec.processingSeconds >= secondsPerShot && ammunition > 0)
                     {
                         tgtRec.processingSeconds -= secondsPerShot;
-                        ammunition -= 1;
+
+                        if(!disableAmmunitionCost)
+                        {
+                            ammunition -= 1;
+                        }
 
                         var fireControlScore = GetFireControlScore(stats.distanceYards);
 

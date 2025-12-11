@@ -594,20 +594,20 @@
     <objectId>0a72dc07-7f11-4da8-9032-fbe481fc4cb3</objectId>
     <doctrine>
      <maneuverAutomaticType>
-      <isInherited>true</isInherited>
+      <isInherited>false</isInherited>
       <value>Manual</value>
      </maneuverAutomaticType>
      <fireAutomaticType>
-      <isInherited>true</isInherited>
-      <value>Automatic</value>
+      <isInherited>false</isInherited>
+      <value>Manual</value>
      </fireAutomaticType>
      <ammunitionFallbackable>
-      <isInherited>true</isInherited>
-      <value>true</value>
+      <isInherited>false</isInherited>
+      <value>false</value>
      </ammunitionFallbackable>
      <ammunitionSwitchAutomaticType>
-      <isInherited>true</isInherited>
-      <value>Automatic</value>
+      <isInherited>false</isInherited>
+      <value>Manual</value>
      </ammunitionSwitchAutomaticType>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
@@ -657,20 +657,20 @@
     <objectId>612b925a-fdeb-4d93-8aa0-60ec07b20314</objectId>
     <doctrine>
      <maneuverAutomaticType>
-      <isInherited>true</isInherited>
+      <isInherited>false</isInherited>
       <value>Manual</value>
      </maneuverAutomaticType>
      <fireAutomaticType>
-      <isInherited>true</isInherited>
-      <value>Automatic</value>
+      <isInherited>false</isInherited>
+      <value>Manual</value>
      </fireAutomaticType>
      <ammunitionFallbackable>
-      <isInherited>true</isInherited>
-      <value>true</value>
+      <isInherited>false</isInherited>
+      <value>false</value>
      </ammunitionFallbackable>
      <ammunitionSwitchAutomaticType>
-      <isInherited>true</isInherited>
-      <value>Automatic</value>
+      <isInherited>false</isInherited>
+      <value>Manual</value>
      </ammunitionSwitchAutomaticType>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
@@ -710,7 +710,10 @@
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <globalDescription>
-    <english>none</english>
+    <english>Two single ships with all automation disabled.</english>
+    <japanese>すべての自動化が無効化された2隻の単独船。</japanese>
+    <chineseSimplified>两艘单独的船只，所有自动化功能均被禁用。</chineseSimplified>
+    <chineseTraditional>兩艘單獨的船隻，所有自動化功能均被禁用。</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
@@ -734,7 +737,7 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>39.6757</xRotation>
+  <xRotation>39.675705</xRotation>
   <yRotation>236.489166</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>

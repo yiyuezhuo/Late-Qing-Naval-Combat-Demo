@@ -334,6 +334,20 @@ namespace NavalCombatCore
         }
     }
 
+    public partial class BatteryRecord
+    {
+        [CreateProperty]
+        public string labelName
+        {
+            get
+            {
+                var shipClass = EntityManager.Instance.GetParent<ShipClass>(this);
+                var shipClassName = shipClass != null ? shipClass.name.GetShortName() : "_";
+                return $"{shipClassName} | {name.GetShortName()} ({shellSizeInch}″, {maxRateOfFireShootPerMin}r/min)";;
+            }
+        }
+    }
+
 
     public partial class AbstractMountStatusRecord
     {

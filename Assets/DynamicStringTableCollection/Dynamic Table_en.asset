@@ -2362,6 +2362,10 @@ MonoBehaviour:
     m_Localized: Ting Yuen vs Three View
     m_Metadata:
       m_Items: []
+  - m_Id: 21449193928953856
+    m_Localized: Manual Single Ship Duel
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

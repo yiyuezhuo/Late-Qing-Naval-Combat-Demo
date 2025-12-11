@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-16"?>
 <StrategicGameState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <leadersBuiltin>false</leadersBuiltin>
+ <shipClassesBuiltin>false</shipClassesBuiltin>
+ <namedShipsBuiltin>false</namedShipsBuiltin>
  <shipLogs>
   <ShipLog>
    <subStates />
@@ -261,6 +264,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>415</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -565,6 +570,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>310</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -842,6 +849,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>375</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -1059,6 +1068,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>230</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -1264,6 +1275,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>100</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -1496,6 +1509,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>740</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -1728,6 +1743,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>740</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -1950,6 +1967,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>145</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -2172,6 +2191,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>145</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -2407,6 +2428,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>230</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -2642,6 +2665,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>230</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -2858,6 +2883,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>285</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -3074,6 +3101,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>285</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -3290,6 +3319,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>220</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -3497,6 +3528,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>130</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -3750,6 +3783,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>380</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -4070,6 +4105,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>422</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -4392,6 +4429,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>422</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -4654,6 +4693,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>226</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -4985,6 +5026,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>422</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -5262,6 +5305,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>375</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -5527,6 +5572,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>240</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -5732,6 +5779,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>100</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -5912,6 +5961,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>61.200000762939453</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -6060,6 +6111,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>291.30001831054688</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -6196,6 +6249,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>12</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -6334,6 +6389,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>9</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -6596,6 +6653,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>226</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -6838,6 +6897,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>147.60000610351563</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -7082,6 +7143,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>147.60000610351563</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -7326,6 +7389,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>147.60000610351563</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -7531,6 +7596,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>152.5</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -7757,6 +7824,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>175</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -7895,6 +7964,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.3000001907348633</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -8031,6 +8102,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.3000001907348633</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -8167,6 +8240,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -8305,6 +8380,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -8443,6 +8520,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -8581,6 +8660,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -8719,6 +8800,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -8857,6 +8940,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -8995,6 +9080,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -9133,6 +9220,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -9269,6 +9358,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -9407,6 +9498,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -9543,6 +9636,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -9679,6 +9774,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -9815,6 +9912,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -9953,6 +10052,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>5.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -10100,6 +10201,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>8</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -10247,6 +10350,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>8.5</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -10394,6 +10499,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>8.5</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -10550,6 +10657,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>20.30000114440918</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -10688,6 +10797,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>7.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -10826,6 +10937,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>7.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -10964,6 +11077,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>7.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -11102,6 +11217,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>7.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -11240,6 +11357,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>7.4000000953674316</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -11349,6 +11468,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -11458,6 +11579,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -11567,6 +11690,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -11676,6 +11801,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -11785,6 +11912,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -11894,6 +12023,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -12003,6 +12134,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -12112,6 +12245,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -12221,6 +12356,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -12330,6 +12467,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -12439,6 +12578,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -12548,6 +12689,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -12657,6 +12800,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -12766,6 +12911,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -12875,6 +13022,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -12984,6 +13133,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -13093,6 +13244,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -13202,6 +13355,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -13311,6 +13466,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -13420,6 +13577,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -13529,6 +13688,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -13638,6 +13799,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -13747,6 +13910,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -13856,6 +14021,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -13965,6 +14132,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>1500</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -14074,6 +14243,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>219.80000305175781</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -14183,6 +14354,8 @@
    <pendingDamagePoint>0</pendingDamagePoint>
    <logs />
    <timeLocLogs />
+   <recentCollisionClock remainSeconds="0" />
+   <preCollsionAvoiding>false</preCollsionAvoiding>
    <supplyTons>219.80000305175781</supplyTons>
    <supplyTransferState>
     <requestRecord>
@@ -25658,7 +25831,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <Cell x="33" y="34" terrain="Mountain" longitude="127.863953" latitude="40.8262749" />
    <Cell x="33" y="35" terrain="Mountain" longitude="127.866089" latitude="41.36303" riversStr="5/0" />
    <Cell x="33" y="36" terrain="Mountain" longitude="127.869858" latitude="41.8987427" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="3/2" />
-   <Cell x="33" y="37" terrain="Mountain" longitude="127.876" latitude="42.4331856" />
+   <Cell x="33" y="37" terrain="Mountain" longitude="127.876" latitude="42.4331856" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
    <Cell x="33" y="38" terrain="ForestRough" longitude="127.885193" latitude="42.96615" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
    <Cell x="33" y="39" terrain="ForestRough" longitude="127.89785" latitude="43.4975052" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
    <Cell x="34" y="0" terrain="DeepWater" longitude="128.622025" latitude="22.031723" />
@@ -25705,7 +25878,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <Cell x="34" y="35" terrain="Mountain" longitude="128.421585" latitude="41.08347" />
    <Cell x="34" y="36" terrain="Mountain" longitude="128.427" latitude="41.62064" riversStr="5/0" />
    <Cell x="34" y="37" terrain="Mountain" longitude="128.434128" latitude="42.1566162" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="3/2" />
-   <Cell x="34" y="38" terrain="Mountain" longitude="128.443817" latitude="42.69108" />
+   <Cell x="34" y="38" terrain="Mountain" longitude="128.443817" latitude="42.69108" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
    <Cell x="34" y="39" terrain="ForestRough" longitude="128.4568" latitude="43.22377" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
    <Cell x="35" y="0" terrain="DeepWater" longitude="129.107681" latitude="22.3096352" />
    <Cell x="35" y="1" terrain="DeepWater" longitude="129.0601" latitude="22.8705" />
@@ -25802,8 +25975,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <Cell x="36" y="34" terrain="ShallowWater" longitude="129.532135" latitude="40.5148849" />
    <Cell x="36" y="35" terrain="ForestRough" longitude="129.542587" latitude="41.05476" IsCoast="true" />
    <Cell x="36" y="36" terrain="ForestRough" longitude="129.553055" latitude="41.5938377" IsCoast="true" riversStr="0" />
-   <Cell x="36" y="37" terrain="ForestRough" longitude="129.564453" latitude="42.1317253" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" roadsStr="4/0" riversStr="4/3" />
-   <Cell x="36" y="38" terrain="ForestRough" longitude="129.578018" latitude="42.6679039" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" roadsStr="1/3" />
+   <Cell x="36" y="37" terrain="ForestRough" longitude="129.564453" latitude="42.1317253" roadsStr="4/0" riversStr="4/3" />
+   <Cell x="36" y="38" terrain="ForestRough" longitude="129.578018" latitude="42.6679039" roadsStr="1/3" />
    <Cell x="36" y="39" terrain="ForestRough" longitude="129.594986" latitude="43.2018356" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
    <Cell x="37" y="0" terrain="DeepWater" longitude="130.138885" latitude="22.2991486" />
    <Cell x="37" y="1" terrain="DeepWater" longitude="130.093765" latitude="22.85816" />

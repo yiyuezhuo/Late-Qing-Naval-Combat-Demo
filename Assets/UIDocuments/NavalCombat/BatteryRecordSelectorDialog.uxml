@@ -1,0 +1,20 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="BatteryRecordSelectorDialog, Assembly-CSharp" class="panel-dialog" style="width: 500px;">
+        <ui:Label text="Battery Record Selector" class="title"/>
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:ListView item-template="project://database/Assets/UIDocuments/Templates/BatteryRecordLabel.uxml?fileID=9197481963319205126&amp;guid=94eaad9d8844a7341a75f6668efcfed1&amp;type=3#BatteryRecordLabel" binding-source-selection-mode="AutoAssign" name="BatteryRecordListView" data-source-path="currentBatteryRecords" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1; flex-basis: 50px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)"/>
+                </Bindings>
+            </ui:Button>
+            <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66269346435072)"/>
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

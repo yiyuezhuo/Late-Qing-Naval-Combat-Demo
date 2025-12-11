@@ -1461,38 +1461,6 @@ MonoBehaviour:
     m_Key: China High Command
     m_Metadata:
       m_Items: []
-  - m_Id: 368036151988224
-    m_Key: Tutorial 1 - Single Ship.scen.xml
-    m_Metadata:
-      m_Items: []
-  - m_Id: 368041239678976
-    m_Key: Tutorial 2 - Ship Group.scen.xml
-    m_Metadata:
-      m_Items: []
-  - m_Id: 368095237148672
-    m_Key: Tutorial 3 - Combat.scen.xml
-    m_Metadata:
-      m_Items: []
-  - m_Id: 368128871272448
-    m_Key: Battle of Pundo.scen.xml
-    m_Metadata:
-      m_Items: []
-  - m_Id: 368199792758784
-    m_Key: Battle of Yalu River.scen.xml
-    m_Metadata:
-      m_Items: []
-  - m_Id: 368206742720512
-    m_Key: Chih Yuan vs Naniwa.scen.xml
-    m_Metadata:
-      m_Items: []
-  - m_Id: 368283557203968
-    m_Key: Fu Lung vs Saikyo Maru.scen.xml
-    m_Metadata:
-      m_Items: []
-  - m_Id: 368336296382464
-    m_Key: Ting Yuen vs Fuji.scen.xml
-    m_Metadata:
-      m_Items: []
   - m_Id: 420875259777024
     m_Key: Distance Yards
     m_Metadata:
@@ -2058,10 +2026,6 @@ MonoBehaviour:
     m_Key: Distance Coef
     m_Metadata:
       m_Items: []
-  - m_Id: 29772178943283200
-    m_Key: Ting Yuen vs Three View.scen.xml
-    m_Metadata:
-      m_Items: []
   - m_Id: 29774939210551296
     m_Key: Extrapolate Seconds
     m_Metadata:
@@ -2238,6 +2202,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 35622829581570048
     m_Key: Group Layout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36062245823352832
+    m_Key: Disable Battery Ammunition Cost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36062382486360064
+    m_Key: Disable Rapid Firing Battery Ammunition Cost
     m_Metadata:
       m_Items: []
   m_Metadata:

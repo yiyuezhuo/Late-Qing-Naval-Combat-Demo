@@ -13,6 +13,15 @@ namespace CoreUtils
         // {
         //     yield break;
         // }
+
+        public void ResetObjectId() // Used to handle a copy, usually an external ResetAndRegisterAll call is required
+        {
+            objectId = null;
+            foreach(var subObj in GetSubObjects())
+            {
+                subObj.objectId = null;
+            }
+        }
     }
 
     public partial class EntityManager
@@ -30,14 +39,20 @@ namespace CoreUtils
 
         public void Register(IObjectIdLabeled obj, object parent)
         {
-            if (obj.objectId == null || idToEntity.ContainsKey(obj.objectId))
+            var createObjectIdForNull = obj.objectId == null;
+            var deduplicateObjectId = !createObjectIdForNull && idToEntity.ContainsKey(obj.objectId);
+            if (createObjectIdForNull || deduplicateObjectId)
             {
                 do
                 {
                     obj.objectId = System.Guid.NewGuid().ToString();
                 } while (idToEntity.ContainsKey(obj.objectId));
                 //  newGuidCreated?.Invoke(obj, obj.objectId);
-                ServiceLocator.Get<ILoggerService>().LogWarning($"New guid created: {obj.objectId} for {obj}");
+                // ServiceLocator.Get<ILoggerService>().LogWarning($"New guid created: {obj.objectId} for {obj}");
+
+                var createObjectIdForNullStr = createObjectIdForNull ? "(Create ObjectId For Null)" : "";
+                var deduplicateObjectIdStr = deduplicateObjectId ? "(Deduplicate ObjectId)" : "";
+                ServiceLocator.Get<ILoggerService>().LogWarning($"New guid created: {obj.objectId} for {obj} {createObjectIdForNullStr}{deduplicateObjectIdStr}");
             }
             idToEntity[obj.objectId] = obj;
             entityToParent[obj] = parent;

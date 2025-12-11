@@ -208,6 +208,11 @@ namespace NavalCombatCore
             yield break;
         }
 
+        public override string ToString()
+        {
+            return $"MountLocationRecord({mountLocation}, {barrels}, {mounts})";
+        }
+
         public bool IsInArc(float bearingRelativeToBowDeg)
         {
             return mountArcs.Any(arc => arc.IsInArc(bearingRelativeToBowDeg));
@@ -250,7 +255,7 @@ namespace NavalCombatCore
         public string mountLocationAcronym => mountLocationAcronymMap[mountLocation];
     }
 
-    public class BatteryRecord : IObjectIdLabeled
+    public partial class BatteryRecord : IObjectIdLabeled
     {
         public string objectId { get; set; }
         public GlobalString name = new();

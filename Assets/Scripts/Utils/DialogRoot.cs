@@ -233,6 +233,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset insertShipComplexDialogDocument;
     public VisualTreeAsset forceBuilderDialogDocument;
     public VisualTreeAsset autoDeploymentDialogDocument;
+    public VisualTreeAsset batteryRecordSelectorDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -242,6 +243,27 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    public void PopupBatteryRecordSelectorDialog(Action<BatteryRecord> callback)
+    {
+        var batteryRecordSelectorDialog = new BatteryRecordSelectorDialog()
+        {
+            callback=callback
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=batteryRecordSelectorDialogDocument,
+            templateDataSource=batteryRecordSelectorDialog
+        };
+
+        tempDialog.onCreated += batteryRecordSelectorDialog.OnCreated;
+        tempDialog.onConfirmed += batteryRecordSelectorDialog.OnConfirm;
+
+        tempDialog.Popup();
 
     }
 

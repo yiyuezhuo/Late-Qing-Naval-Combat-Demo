@@ -200,6 +200,32 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             }
         };
 
+        var setSelectedByBatterySelectorButton = root.Q<Button>("SetSelectedByBatterySelectorButton");
+        setSelectedByBatterySelectorButton.clicked += () =>
+        {
+            // Debug.Log("setSelectedByBatterySelectorButton clicked");
+
+            DialogRoot.Instance.PopupBatteryRecordSelectorDialog(_batteryRecord =>
+            {
+                var batteryRecord = XmlUtils.FromXML<BatteryRecord>(XmlUtils.ToXML(_batteryRecord));
+                ((IObjectIdLabeled)batteryRecord).ResetObjectId();
+
+                var idx = batteryRecordsListView.selectedIndex;
+                if (idx >= 0 && idx < batteryRecordsListView.itemsSource.Count) // TODO: Notify invalid 
+                {
+                    batteryRecordsListView.itemsSource[idx] = batteryRecord;
+                }
+                else
+                {
+                    batteryRecordsListView.itemsSource.Add(batteryRecord);
+                }
+
+                var gameState = SuperGameState.Instance.GetCurrentGameState();
+                gameState.ResetAndRegisterAll(); // Assign a new guid to new copied battery record
+
+            });
+        };
+
         PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("PortraitTopReferenceField"));
         PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("PortraitReferenceField"));
         PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("PortraitIconReferenceField"));
@@ -239,7 +265,7 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
         }
 
         var gameState = SuperGameState.Instance.GetCurrentGameState();
-        gameState.ResetAndRegisterAll(); // re-duplicate object id 
+        gameState.ResetAndRegisterAll(); // re-duplicate object id // FIXME: Correctness is questionable though
     }
 
     public void OnShipClassesXMLLoaded(string text)

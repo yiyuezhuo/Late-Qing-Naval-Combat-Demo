@@ -228,6 +228,20 @@ namespace NavalCombatCore
             set => LowLevelCoursePlanner.expectedCombatRangeYardHigh = value;
         }
 
+        [CreateProperty]
+        public bool disableBatteryAmmunitionCost
+        {
+            get => MountStatusRecord.disableAmmunitionCost;
+            set => MountStatusRecord.disableAmmunitionCost = value;
+        }
+
+        [CreateProperty]
+        public bool disableRapidFiringBatteryAmmunitionCost
+        {
+            get => RapidFiringStatus.disableAmmunitionCost;
+            set => RapidFiringStatus.disableAmmunitionCost = value;
+        }
+
         // [CreateProperty]
         // public float obstacleAvoidCheckerStepDeg
         // {

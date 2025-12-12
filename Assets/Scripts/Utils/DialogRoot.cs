@@ -238,6 +238,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset forceBuilderDialogDocument;
     public VisualTreeAsset autoDeploymentDialogDocument;
     public VisualTreeAsset batteryRecordSelectorDialogDocument;
+    public VisualTreeAsset rapidFireBatteryRecordSelectorDialogDocument;
+    public VisualTreeAsset torpedoSectorSelectorDialogDocument;
     public VisualTreeAsset scenarioStateEditorDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -249,6 +251,46 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupTorpedoSectorSelectorDialog(Action<ShipClass> callback)
+    {
+        var torpedoSectorSelectorDialog = new TorpedoSectorSelectorDialog()
+        {
+            callback=callback
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=torpedoSectorSelectorDialogDocument,
+            templateDataSource=torpedoSectorSelectorDialog
+        };
+
+        tempDialog.onCreated += torpedoSectorSelectorDialog.OnCreated;
+        tempDialog.onConfirmed += torpedoSectorSelectorDialog.OnConfirm;
+
+        tempDialog.Popup();
+    }
+
+    public void PopupRapidFireBatteryRecordSelectorDialog(Action<RapidFireBatteryRecord> callback)
+    {
+        var rapidFireBatteryRecordSelectorDialog = new RapidFireBatteryRecordSelectorDialog()
+        {
+            callback=callback
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=rapidFireBatteryRecordSelectorDialogDocument,
+            templateDataSource=rapidFireBatteryRecordSelectorDialog
+        };
+
+        tempDialog.onCreated += rapidFireBatteryRecordSelectorDialog.OnCreated;
+        tempDialog.onConfirmed += rapidFireBatteryRecordSelectorDialog.OnConfirm;
+
+        tempDialog.Popup();
     }
 
     public void PopupScenarioStateEditor()

@@ -8,6 +8,9 @@ using System.Linq;
 using System.Collections;
 
 using CoreUtils;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
+using UnityEngine.InputSystem;
+using System.Diagnostics;
 
 namespace NavalCombatCore
 {
@@ -82,14 +85,133 @@ namespace NavalCombatCore
         Full
     }
 
-    public class FireControlSystem
+    public enum FCSCode // SK5 Table A11 FIRE CONTROL SYSTEM DATA
     {
-        public GunSightType gunSight;
-        public FireControlInstrumentType fireControlInstrument;
-        public RangeFinderType rangeFinder;
-        public DirectorControlType directorControl;
-        public StabilizationType stabilization;
-        public PowerRemoteControlType powerRemoteControl;
+        Custom,
+        Z, // Basic gun-sight, no fire control instruments, no director control, manual stabilization
+        Y, // Basic gun-sight, basic fire control instruments, no optical range-finders, no director control, manual stabilization
+        X, // Basic gun-sight, basic fire control instruments, optical range-finders, no director control, manual stabilization
+        W, // Basic gun-sight, basic fire control instruments, no optical range-finders, early FTP control system, manual stabilization
+        V, // Basic gun-sight, basic fire control instruments, optical range-finders, early FTP control system, manual stabilization
+        U, // Telescopic gun-sights, no fire control instruments, no optical range-finders, no director control, manual stabilization,
+        T, // Telescopic gun-sights, basic fire control instruments, no optical range-finders, no director control, manual stabilization
+        S, // Telescopic gun-sights, basic fire control instruments, optical range-finders, no director control, manual stabilization
+        R, // Telescopic gun-sights, basic fire control instruments, no optical range-finders, early FTP control system, manual stabilization
+        Q, // Telescopic gun-sights, basic fire control instruments, optical range-finders, early FTP control system, manual stabilization
+        P, // Telescopic gun-sights, mechanical computer, optical range-finders, no director control, manual stabilization
+        N, // Telescopic gun-sights, mechanical computer, optical range-finders, early FTP control system, manual stabilization.
+        M, // Telescopic gun-sights, basic fire control instruments, optical range-finders, early FTP control system, gyro-assisted stabilization.
+        L, // Telescopic gun-sights, mechanical computer, optical range-finders, no director control, gyro-assisted stabilization.
+        K, // Telescopic gun-sights, mechanical computer, optical range-finders, early FTP control system, gyro-assisted stabilization
+        J, // Telescopic gun-sights, mechanical computer, optical range-finders, director control system, manual stabilization.
+        H, // Telescopic gun-sights, mechanical computer, optical range-finders, director control system, gyro-assisted stabilization, partial RPC
+        G, // Telescopic gun-sights, mechanical computer, optical range-finders, director control system, gyro-assisted stabilization.
+        F, // Telescopic gun-sights, advanced mechanical computer, optical range-finders, director control system, gyro-assisted stabilization.
+        E, // Telescopic gun-sights, advanced mechanical computer, optical range-finders, director control system, gyro-assisted stabilization, partial RPC
+        D, // Telescopic gun-sights, advanced mechanical computer, optical range-finders, director control system, gyro-assisted stabilization, full RPC
+        C, // Telescipic gun-sights, advanced mechanical computer, optical range-finders, director control system, stable element.
+        B, // Telescopic gun-sights, advanced mechanical computer, optical range-finders, director control ssytem, stable element, partial RPC.
+        A, // Telescipic gun-sights, advanced mechanical computer, optical range-finders, director control system, stable element, full RPC.
+    }
+
+    public partial class FireControlSystem
+    {
+        public FCSCode code;
+        public GunSightType gunSight; // Basic, Telescope
+        public FireControlInstrumentType fireControlInstrument; // None, Basic, MechanicalComputer, AdvancedMechanicalComputer
+        public RangeFinderType rangeFinder; // None, Optical
+        public DirectorControlType directorControl; // None, FollowThePointer (FTP), Director
+        public StabilizationType stabilization; // Manual, GyroAssisted, StableElement
+        public PowerRemoteControlType powerRemoteControl; // None, Partial, Full
+
+        // public FireControlSystem Clone()
+        // {
+        //     return new FireControlSystem()
+        //     {
+        //         gunSight = gunSight,
+        //         fireControlInstrument = fireControlInstrument,
+        //         rangeFinder = rangeFinder,
+        //         directorControl = directorControl,
+        //         stabilization = stabilization,
+        //         powerRemoteControl = powerRemoteControl
+        //     };
+        // }
+
+        public override string ToString()
+        {
+            return $"FireControlSystem({code}, {gunSight} {fireControlInstrument} {rangeFinder} {directorControl} {stabilization} {powerRemoteControl})";
+        }
+
+        static List<FireControlSystem> referenceFireControlSystems = new()
+        {
+            new(){code=FCSCode.Z, gunSight=GunSightType.Basic,     fireControlInstrument=FireControlInstrumentType.None,                       rangeFinder=RangeFinderType.None,    directorControl=DirectorControlType.None,             stabilization=StabilizationType.Manual,        powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.Y, gunSight=GunSightType.Basic,     fireControlInstrument=FireControlInstrumentType.Basic,                      rangeFinder=RangeFinderType.None,    directorControl=DirectorControlType.None,             stabilization=StabilizationType.Manual,        powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.X, gunSight=GunSightType.Basic,     fireControlInstrument=FireControlInstrumentType.Basic,                      rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.None,             stabilization=StabilizationType.Manual,        powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.W, gunSight=GunSightType.Basic,     fireControlInstrument=FireControlInstrumentType.Basic,                      rangeFinder=RangeFinderType.None,    directorControl=DirectorControlType.FollowThePointer, stabilization=StabilizationType.Manual,        powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.V, gunSight=GunSightType.Basic,     fireControlInstrument=FireControlInstrumentType.Basic,                      rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.FollowThePointer, stabilization=StabilizationType.Manual,        powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.U, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.None,                       rangeFinder=RangeFinderType.None,    directorControl=DirectorControlType.None,             stabilization=StabilizationType.Manual,        powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.T, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.Basic,                      rangeFinder=RangeFinderType.None,    directorControl=DirectorControlType.None,             stabilization=StabilizationType.Manual,        powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.S, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.Basic,                      rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.None,             stabilization=StabilizationType.Manual,        powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.R, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.Basic,                      rangeFinder=RangeFinderType.None,    directorControl=DirectorControlType.FollowThePointer, stabilization=StabilizationType.Manual,        powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.Q, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.Basic,                      rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.FollowThePointer, stabilization=StabilizationType.Manual,        powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.P, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.MechanicalComputer,         rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.None,             stabilization=StabilizationType.Manual,        powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.N, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.MechanicalComputer,         rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.FollowThePointer, stabilization=StabilizationType.Manual,        powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.M, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.Basic,                      rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.FollowThePointer, stabilization=StabilizationType.GyroAssisted,  powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.L, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.MechanicalComputer,         rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.None,             stabilization=StabilizationType.GyroAssisted,  powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.K, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.MechanicalComputer,         rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.FollowThePointer, stabilization=StabilizationType.GyroAssisted,  powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.J, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.MechanicalComputer,         rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.Director,         stabilization=StabilizationType.Manual,        powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.H, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.MechanicalComputer,         rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.Director,         stabilization=StabilizationType.GyroAssisted,  powerRemoteControl=PowerRemoteControlType.Partial },
+            new(){code=FCSCode.G, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.MechanicalComputer,         rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.Director,         stabilization=StabilizationType.GyroAssisted,  powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.F, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.AdvancedMechanicalComputer, rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.Director,         stabilization=StabilizationType.GyroAssisted,  powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.E, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.AdvancedMechanicalComputer, rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.Director,         stabilization=StabilizationType.GyroAssisted,  powerRemoteControl=PowerRemoteControlType.Partial },
+            new(){code=FCSCode.D, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.AdvancedMechanicalComputer, rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.Director,         stabilization=StabilizationType.GyroAssisted,  powerRemoteControl=PowerRemoteControlType.Full    },
+            new(){code=FCSCode.C, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.AdvancedMechanicalComputer, rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.Director,         stabilization=StabilizationType.StableElement, powerRemoteControl=PowerRemoteControlType.None    },
+            new(){code=FCSCode.B, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.AdvancedMechanicalComputer, rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.Director,         stabilization=StabilizationType.StableElement, powerRemoteControl=PowerRemoteControlType.Partial },
+            new(){code=FCSCode.A, gunSight=GunSightType.Telescope, fireControlInstrument=FireControlInstrumentType.AdvancedMechanicalComputer, rangeFinder=RangeFinderType.Optical, directorControl=DirectorControlType.Director,         stabilization=StabilizationType.StableElement, powerRemoteControl=PowerRemoteControlType.Full    },
+        };
+
+        (GunSightType, FireControlInstrumentType, RangeFinderType, DirectorControlType, StabilizationType, PowerRemoteControlType) GetStates() => (
+            gunSight,
+            fireControlInstrument,
+            rangeFinder,
+            directorControl,
+            stabilization,
+            powerRemoteControl
+        );
+
+        public void CopyStates(FireControlSystem x)
+        {
+            gunSight = x.gunSight;
+            fireControlInstrument = x.fireControlInstrument;
+            powerRemoteControl = x.powerRemoteControl;
+            rangeFinder = x.rangeFinder;
+            stabilization = x.stabilization;
+            directorControl = x.directorControl;
+        }
+
+        static Dictionary<FCSCode, FireControlSystem> code2fcs = referenceFireControlSystems.ToDictionary(x => x.code, x => x);
+        static Dictionary<(GunSightType, FireControlInstrumentType, RangeFinderType, DirectorControlType, StabilizationType, PowerRemoteControlType), FireControlSystem> states2fcs = referenceFireControlSystems.ToDictionary(x => x.GetStates(), x => x);
+
+        public void SyncCodeByStates()
+        {
+            if(states2fcs.TryGetValue(GetStates(), out var refFcs))
+            {
+                // CopyKey(refFcs);
+                code = refFcs.code;
+            }
+            else
+            {
+                code = FCSCode.Custom;
+            }
+        }
+
+        public void SyncStatesByCode()
+        {
+            if(code != FCSCode.Custom && code2fcs.TryGetValue(code, out var refFcs))
+            {
+                CopyStates(refFcs);
+            }
+        }
     }
 
     public enum RangeBand
@@ -129,12 +251,33 @@ namespace NavalCombatCore
         }
     }
 
-    public enum AmmunitionType
+    public enum AmmunitionType // SK5 Table A12
     {
-        ArmorPiercing, // AP
-        SemiArmorPiercing, // SAP
-        Common, // COM
-        HighExplosive, // HE
+        ArmorPiercing, // AP, APC (Armor-piercing Capped), APCBC
+        // Physical Description:
+        // Thick casing walls and a hardened nose. Nose of shell capped (in APC) with slightly softer metal in order to improve penetration. Relatively small bursting charge (c. 2% of projectile weight).
+        // Base fuse. Sometimes provided with a ballistic cap (or windscreen) to improve aerodynamic capabilities by reducing air resistance as in the APCBC type.
+        // Effect:
+        // Intended for use against heavily armored targets and expected to successfully penetrate armor of up to it's caliber in thickness (i.e. a 12'' shell would be expected to penetrate to up 12'' of armor and remain intact for bursting).
+        // Instantaneous detonation behind the armor, causing great fragmentation in all directions at very high velocities. All of the explosive is consumed and all parts of the projectile are broken into small pieces (500 to 1800 for an 8'' shell).
+        SemiArmorPiercing, // SAP, SAPC, SAPBC
+        // Physical Description:
+        // Similar to AP but with a non-hardened cap and thinner walls. Bursting charge of c. 4%. SAP is sometimes used to refer to COM, HE or HC shell with base or delayed fuses. USN Special Common shells were a version of SAP.
+        // Effect:
+        // Intended for use against lightly armored targets. Better penetration than COM but less fragmentation and explosive effect.
+        Common, // COM, CPC, CPCBC
+        // Physical Description:
+        // Thinner walls than AP shells and a higher bursting charge (c. 6-8% of projectile weight). The designation CPC and CPCBC indicate common shells with added caps to increase either penetration or ballistic performance.
+        // Effect:
+        // Indended for use against lightly armored targets, exposed personnel and earthworks. Expected to successfully penetrate armor of up to one-half it's caliber in thickness
+        // (i.e. an 8'' shell would be expected to penetrate up to 4'' of armor and remain intact for bursting). Produced greater fragmentation than API and spread destruction over a larger area.
+        HighExplosive, // HE, HC (High-Capacity)
+        // Physical Description:
+        // Thinner walls than AP and COM shells to accommodate a higher bursting charge (c. 10-12% or more of projectile weight).
+        // Projectile is made only suffciently strong enough to withstand the shock of firing (allowing shells for lower MV guns to contain more explosive). Many different types of explosives and fragmentation material used in HC shells.
+        // Effect:
+        // Indended for use against unarmored targets, unprotected shore installations and aircraft. Expected to successfully penetrate armor of approximately one-tenth the caliber in thickness
+        // (i.e. a 15'' shell would be expected to penetrate roughly 1.5'' of armor). Capable of producing devastating fragmentation effects over a large area and starting numerous fires.
     }
 
     public class PenetrationTableRecord
@@ -167,6 +310,13 @@ namespace NavalCombatCore
         [XmlAttribute]
         public bool isCrossDeckFire;
 
+        public MountArcRecord Clone() => new()
+        {
+            startDeg = startDeg,
+            CoverageDeg = CoverageDeg,
+            isCrossDeckFire = isCrossDeckFire
+        };
+
         public string Summary()
         {
             var s = isCrossDeckFire ? "C" : "";
@@ -189,7 +339,7 @@ namespace NavalCombatCore
         }
     }
 
-    public class MountLocationRecord : IObjectIdLabeled
+    public partial class MountLocationRecord : IObjectIdLabeled
     {
         public string objectId { get; set; }
         public MountLocation mountLocation;
@@ -210,7 +360,30 @@ namespace NavalCombatCore
 
         public override string ToString()
         {
-            return $"MountLocationRecord({mountLocation}, {barrels}, {mounts})";
+            return $"MountLocationRecord({mountLocation}, {barrels}x{mounts})";
+        }
+
+        static Dictionary<MountLocation, List<MountArcRecord>> mountLocation2defaultMountArcs = new()
+        {
+            {MountLocation.NotSpecified, new()},
+            {MountLocation.Forward, new(){new(){startDeg=240, CoverageDeg=240}}},
+            {MountLocation.StarboardForward, new(){new(){startDeg=0, CoverageDeg=120}}},
+            {MountLocation.StarboardMidship, new(){new(){startDeg=30, CoverageDeg=120}}},
+            {MountLocation.StarboardAfter, new(){new(){startDeg=60, CoverageDeg=120}}},
+            {MountLocation.After, new(){new(){startDeg=60, CoverageDeg=240}}},
+            {MountLocation.PortAfter, new(){new(){startDeg=180, CoverageDeg=120}}},
+            {MountLocation.PortMidship, new(){new(){startDeg=210, CoverageDeg=120}}},
+            {MountLocation.PortForward, new(){new(){startDeg=240, CoverageDeg=120}}},
+            {MountLocation.Midship, new(){new(){startDeg=30, CoverageDeg=120}, new(){startDeg=210, CoverageDeg=120}}},
+        };
+
+        public void SyncMountArcs()
+        {
+            if(mountLocation2defaultMountArcs.TryGetValue(mountLocation, out var defaultMountArcs))
+            {
+                mountArcs.Clear();
+                mountArcs.AddRange(defaultMountArcs.Select(arc => arc.Clone()));
+            }
         }
 
         public bool IsInArc(float bearingRelativeToBowDeg)

@@ -222,7 +222,6 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
 
                 var gameState = SuperGameState.Instance.GetCurrentGameState();
                 gameState.ResetAndRegisterAll(); // Assign a new guid to new copied battery record
-
             });
         };
 
@@ -237,6 +236,48 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             {
                 DialogRoot.Instance.PopupBatteryArcIndicatorDialog(shipClass);
             }
+        };
+
+        root.Q<Button>("SetSelectedByRapidFireBatterySelectorButton").clicked += () =>
+        {
+            Debug.Log("SetSelectedByRapidFireBatterySelectorButton clicked");
+
+            DialogRoot.Instance.PopupRapidFireBatteryRecordSelectorDialog(_rapidFireBatteryRecord =>
+            {
+                var rapidFireBatteryRecord = XmlUtils.FromXML<RapidFireBatteryRecord>(XmlUtils.ToXML(_rapidFireBatteryRecord));
+                // ((IObjectIdLabeled)rapidFireBatteryRecord).ResetObjectId();
+
+                var idx = rapidFireBatteryListView.selectedIndex;
+                if (idx >= 0 && idx < rapidFireBatteryListView.itemsSource.Count) // TODO: Notify invalid 
+                {
+                    rapidFireBatteryListView.itemsSource[idx] = rapidFireBatteryRecord;
+                }
+                else
+                {
+                    rapidFireBatteryListView.itemsSource.Add(rapidFireBatteryRecord);
+                }
+
+                // var gameState = SuperGameState.Instance.GetCurrentGameState();
+                // gameState.ResetAndRegisterAll(); // Assign a new guid to new copied battery record
+            });
+        };
+        
+        var setByTorpedoSelectorButton = root.Q<Button>("SetByTorpedoSelectorButton");
+        setByTorpedoSelectorButton.clicked += () =>
+        {
+            Debug.Log("SetByTorpedoSelectorButton clicked");
+
+            DialogRoot.Instance.PopupTorpedoSectorSelectorDialog(_shipClass =>
+            {
+                var _torpedoSector = _shipClass.torpedoSector;
+                var torpedoSector = XmlUtils.FromXML<TorpedoSector>(XmlUtils.ToXML(_torpedoSector));
+                // ((IObjectIdLabeled)rapidFireBatteryRecord).ResetObjectId();
+
+                if(Utils.TryResolveCurrentValueForBinding<ShipClass>(setByTorpedoSelectorButton, out var shipClass))
+                {
+                    shipClass.torpedoSector = torpedoSector;
+                }
+            });
         };
     }
 

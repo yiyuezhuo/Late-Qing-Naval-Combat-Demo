@@ -1,40 +1,46 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="NavalCombatCore.FireControlSystem, Assembly-CSharp" style="flex-grow: 1;">
+        <ui:EnumField label="Code" value="Center" type="NavalCombatCore.FCSCode, Assembly-CSharp">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36678942066380800)"/>
+                <ui:DataBinding property="value" data-source-path="codeProp" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:EnumField>
         <LocalizedEnumField label="Gun Sight" type-str="NavalCombatCore.GunSightType">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(76110559350784)" />
-                <ui:DataBinding property="value" data-source-path="gunSight" binding-mode="TwoWay" source-to-ui-converters="GunSightType =&gt; int" ui-to-source-converters="int =&gt; GunSightType" />
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(76110559350784)"/>
+                <ui:DataBinding property="value" data-source-path="gunSightProp" binding-mode="TwoWay" source-to-ui-converters="GunSightType =&gt; int" ui-to-source-converters="int =&gt; GunSightType"/>
             </Bindings>
         </LocalizedEnumField>
         <LocalizedEnumField label="Instrument" type-str="NavalCombatCore.FireControlInstrumentType">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(76055131623424)" />
-                <ui:DataBinding property="value" data-source-path="fireControlInstrument" source-to-ui-converters="FireControlInstrumentType =&gt; int" ui-to-source-converters="int =&gt; FireControlInstrumentType" binding-mode="TwoWay" />
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(76055131623424)"/>
+                <ui:DataBinding property="value" data-source-path="fireControlInstrumentProp" source-to-ui-converters="FireControlInstrumentType =&gt; int" ui-to-source-converters="int =&gt; FireControlInstrumentType" binding-mode="TwoWay"/>
             </Bindings>
         </LocalizedEnumField>
         <LocalizedEnumField label="Range-Finder" type-str="NavalCombatCore.RangeFinderType">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(75982746324992)" />
-                <ui:DataBinding property="value" data-source-path="rangeFinder" source-to-ui-converters="RangeFinderType =&gt; int" ui-to-source-converters="int =&gt; RangeFinderType" binding-mode="TwoWay" />
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(75982746324992)"/>
+                <ui:DataBinding property="value" data-source-path="rangeFinderProp" source-to-ui-converters="RangeFinderType =&gt; int" ui-to-source-converters="int =&gt; RangeFinderType" binding-mode="TwoWay"/>
             </Bindings>
         </LocalizedEnumField>
         <LocalizedEnumField label="Director" type-str="NavalCombatCore.DirectorControlType">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(75382616920064)" />
-                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(75382616920064)" />
-                <ui:DataBinding property="value" data-source-path="directorControl" source-to-ui-converters="DirectorControlType =&gt; int" ui-to-source-converters="int =&gt; DirectorControlType" binding-mode="TwoWay" />
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(75382616920064)"/>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(75382616920064)"/>
+                <ui:DataBinding property="value" data-source-path="directorControlProp" source-to-ui-converters="DirectorControlType =&gt; int" ui-to-source-converters="int =&gt; DirectorControlType" binding-mode="TwoWay"/>
             </Bindings>
         </LocalizedEnumField>
         <LocalizedEnumField label="Stabilization" type-str="NavalCombatCore.StabilizationType">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(75550552657920)" />
-                <ui:DataBinding property="value" data-source-path="stabilization" source-to-ui-converters="StabilizationType =&gt; int" ui-to-source-converters="int =&gt; StabilizationType" binding-mode="TwoWay" />
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(75550552657920)"/>
+                <ui:DataBinding property="value" data-source-path="stabilizationProp" source-to-ui-converters="StabilizationType =&gt; int" ui-to-source-converters="int =&gt; StabilizationType" binding-mode="TwoWay"/>
             </Bindings>
         </LocalizedEnumField>
         <LocalizedEnumField label="Power Remote Control" type-str="NavalCombatCore.PowerRemoteControlType">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(75929063428096)" />
-                <ui:DataBinding property="value" data-source-path="powerRemoteControl" source-to-ui-converters="PowerRemoteControlType =&gt; int" ui-to-source-converters="int =&gt; PowerRemoteControlType" binding-mode="TwoWay" />
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(75929063428096)"/>
+                <ui:DataBinding property="value" data-source-path="powerRemoteControlProp" source-to-ui-converters="PowerRemoteControlType =&gt; int" ui-to-source-converters="int =&gt; PowerRemoteControlType" binding-mode="TwoWay"/>
             </Bindings>
         </LocalizedEnumField>
     </ui:VisualElement>

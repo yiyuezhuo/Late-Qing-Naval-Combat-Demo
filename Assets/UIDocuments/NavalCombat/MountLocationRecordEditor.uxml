@@ -4,56 +4,56 @@
             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                 <LocalizedEnumField label="Location" type-str="NavalCombatCore.MountLocation">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77184133402624)" />
-                        <ui:DataBinding property="value" data-source-path="mountLocation" binding-mode="TwoWay" source-to-ui-converters="MountLocation =&gt; int" ui-to-source-converters="int =&gt; MountLocation" />
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77184133402624)"/>
+                        <ui:DataBinding property="value" data-source-path="mountLocationProp" binding-mode="TwoWay" source-to-ui-converters="MountLocation =&gt; int" ui-to-source-converters="int =&gt; MountLocation"/>
                     </Bindings>
                 </LocalizedEnumField>
                 <ui:IntegerField label="Mounts" password="false" value="1">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="mounts" binding-mode="TwoWay" />
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(74786790871040)" />
+                        <ui:DataBinding property="value" data-source-path="mounts" binding-mode="TwoWay"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(74786790871040)"/>
                     </Bindings>
                 </ui:IntegerField>
                 <ui:SliderInt label="Barrels" value="1" high-value="8" show-input-field="true">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="barrels" binding-mode="TwoWay" />
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77417353482240)" />
+                        <ui:DataBinding property="value" data-source-path="barrels" binding-mode="TwoWay"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77417353482240)"/>
                     </Bindings>
                 </ui:SliderInt>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                 <ui:IntegerField label="Reload Limit">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="reloadLimit" binding-mode="TwoWay" />
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77483069837312)" />
+                        <ui:DataBinding property="value" data-source-path="reloadLimit" binding-mode="TwoWay"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77483069837312)"/>
                     </Bindings>
                 </ui:IntegerField>
                 <ui:Toggle label="Trainable">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="trainable" binding-mode="TwoWay" />
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77676326588416)" />
+                        <ui:DataBinding property="value" data-source-path="trainable" binding-mode="TwoWay"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77676326588416)"/>
                     </Bindings>
                 </ui:Toggle>
                 <ui:Toggle label="Use Rest Angle" style="display: none;">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="useRestAngle" binding-mode="TwoWay" />
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77742776946688)" />
+                        <ui:DataBinding property="value" data-source-path="useRestAngle" binding-mode="TwoWay"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77742776946688)"/>
                     </Bindings>
                 </ui:Toggle>
                 <ui:Slider label="Rest Angle" high-value="360" show-input-field="true" style="display: flex;">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="restAngleDeg" binding-mode="TwoWay" />
-                        <ui:DataBinding property="style.display" data-source-path="useRestAngle" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(78205500952576)" />
+                        <ui:DataBinding property="value" data-source-path="restAngleDeg" binding-mode="TwoWay"/>
+                        <ui:DataBinding property="style.display" data-source-path="useRestAngle" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(78205500952576)"/>
                     </Bindings>
                 </ui:Slider>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:MultiColumnListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" header-title="Arcs" show-foldout-header="false" data-source-path="mountArcs" name="MountArcsMultiColumnListView">
             <ui:Columns>
-                <ui:Column name="begin" title="Begin (Deg)" width="35%" cell-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordStartCell.uxml?fileID=9197481963319205126&amp;guid=12785026fcf97104baac47198b704404&amp;type=3#MountArcRecordStartCell" header-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordStartHeader.uxml?fileID=9197481963319205126&amp;guid=633851e806cc9fb43addfc970e4a2fdf&amp;type=3#MountArcRecordStartHeader" />
-                <ui:Column title="Coverage (Deg)" name="coverage" cell-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordCoverageCell.uxml?fileID=9197481963319205126&amp;guid=3e2e4b723ac9fa445ba1a5bc768f172c&amp;type=3#MountArcRecordCoverageCell" width="35%" header-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordCoverageHeader.uxml?fileID=9197481963319205126&amp;guid=2d911052a1f8a6e4cb87cccc9909b235&amp;type=3#MountArcRecordCoverageHeader" />
-                <ui:Column width="30%" name="isCrossDeckFire" title="Cross Deck Fire" cell-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordIsCrossDeckFireCell.uxml?fileID=9197481963319205126&amp;guid=5fcda22c822c5424fa73fbd5ebc92910&amp;type=3#MountArcRecordIsCrossDeckFireCell" header-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordIsCrossDeckFireHeader.uxml?fileID=9197481963319205126&amp;guid=52d3e6e1ab7569942b7aeae1db28e203&amp;type=3#MountArcRecordIsCrossDeckFireHeader" />
+                <ui:Column name="begin" title="Begin (Deg)" width="35%" cell-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordStartCell.uxml?fileID=9197481963319205126&amp;guid=12785026fcf97104baac47198b704404&amp;type=3#MountArcRecordStartCell" header-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordStartHeader.uxml?fileID=9197481963319205126&amp;guid=633851e806cc9fb43addfc970e4a2fdf&amp;type=3#MountArcRecordStartHeader"/>
+                <ui:Column title="Coverage (Deg)" name="coverage" cell-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordCoverageCell.uxml?fileID=9197481963319205126&amp;guid=3e2e4b723ac9fa445ba1a5bc768f172c&amp;type=3#MountArcRecordCoverageCell" width="35%" header-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordCoverageHeader.uxml?fileID=9197481963319205126&amp;guid=2d911052a1f8a6e4cb87cccc9909b235&amp;type=3#MountArcRecordCoverageHeader"/>
+                <ui:Column width="30%" name="isCrossDeckFire" title="Cross Deck Fire" cell-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordIsCrossDeckFireCell.uxml?fileID=9197481963319205126&amp;guid=5fcda22c822c5424fa73fbd5ebc92910&amp;type=3#MountArcRecordIsCrossDeckFireCell" header-template="project://database/Assets/UIDocuments/Templates/MountArcRecord/MountArcRecordIsCrossDeckFireHeader.uxml?fileID=9197481963319205126&amp;guid=52d3e6e1ab7569942b7aeae1db28e203&amp;type=3#MountArcRecordIsCrossDeckFireHeader"/>
             </ui:Columns>
         </ui:MultiColumnListView>
     </ui:VisualElement>

@@ -2217,11 +2217,27 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 36603542086782976
-    m_Key: (WIP) First Sino-Japanese War (1894)
+    m_Key: (WIP) First Sino-Japanese War
     m_Metadata:
       m_Items: []
   - m_Id: 36604534312308736
     m_Key: Vladivostok Squadron Raid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36678942066380800
+    m_Key: SK5 Code
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36692937234092032
+    m_Key: Set Selected by Battery Selector
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36693742829867008
+    m_Key: Set Selected By Rapid Fire Battery Selector
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36693952150802432
+    m_Key: Set By Torpedo Selector
     m_Metadata:
       m_Items: []
   m_Metadata:

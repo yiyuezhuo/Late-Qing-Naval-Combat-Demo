@@ -169,7 +169,11 @@
                                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73428046090240)"/>
                                         </Bindings>
                                     </ui:Button>
-                                    <ui:Button text="Set Selected by Battery Selector" name="SetSelectedByBatterySelectorButton"/>
+                                    <ui:Button text="Set Selected by Battery Selector" name="SetSelectedByBatterySelectorButton">
+                                        <Bindings>
+                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36692937234092032)"/>
+                                        </Bindings>
+                                    </ui:Button>
                                 </ui:VisualElement>
                                 <ui:ScrollView style="height: 100%; flex-grow: 1;">
                                     <ui:ListView item-template="project://database/Assets/UIDocuments/NavalCombat/BatteryRecordEditor.uxml?fileID=9197481963319205126&amp;guid=e85d42eaff3911a4d850ecd233a8d27c&amp;type=3#BatteryRecordEditor" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" virtualization-method="DynamicHeight" name="BatteryRecordsListView" data-source-path="batteryRecords" style="flex-grow: 0;"/>
@@ -180,6 +184,13 @@
                             </ui:Tab>
                             <ui:Tab label="Rapid Fire Battery">
                                 <ui:VisualElement style="flex-grow: 1;">
+                                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                        <ui:Button text="Set Selected By Rapid Fire Battery Selector" name="SetSelectedByRapidFireBatterySelectorButton">
+                                            <Bindings>
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36693742829867008)"/>
+                                            </Bindings>
+                                        </ui:Button>
+                                    </ui:VisualElement>
                                     <ui:ScrollView>
                                         <ui:ListView data-source-path="rapidFireBatteryRecords" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/NavalCombat/RapidFireBatteryRecordEditor.uxml?fileID=9197481963319205126&amp;guid=c54c25b0a3728a647b6d6db069dbe92f&amp;type=3#RapidFireBatteryRecordEditor" virtualization-method="DynamicHeight" name="RapidFireBatteryListView" show-add-remove-footer="true"/>
                                     </ui:ScrollView>
@@ -190,6 +201,13 @@
                             </ui:Tab>
                             <ui:Tab label="Torpedo">
                                 <ui:ScrollView>
+                                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                        <ui:Button text="Set By Torpedo Selector" name="SetByTorpedoSelectorButton">
+                                            <Bindings>
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36693952150802432)"/>
+                                            </Bindings>
+                                        </ui:Button>
+                                    </ui:VisualElement>
                                     <ui:VisualElement data-source-path="torpedoSector" style="flex-grow: 1;">
                                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">

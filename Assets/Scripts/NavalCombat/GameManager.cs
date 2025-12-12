@@ -262,6 +262,20 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         // {
         //     shipGroup.leaderReference.referenceObjectId = shipGroup.leaderObjectId;
         // }
+
+        // foreach(var shipClass in NavalGameState.Instance.shipClasses)
+        // {
+        //     foreach(var btyRec in shipClass.batteryRecords)
+        //     {
+        //         var prevCode = btyRec.fireControlType.code;
+        //         btyRec.fireControlType.SyncCodeByStates();
+        //         var currentCode = btyRec.fireControlType.code;
+        //         if(currentCode == FCSCode.Custom)
+        //         {
+        //             Debug.LogWarning($"{btyRec.labelName} => {btyRec.fireControlType}");
+        //         }
+        //     }
+        // }
     }
 
     public ViewState CaptureViewState()

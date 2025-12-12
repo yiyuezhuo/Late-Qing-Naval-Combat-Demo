@@ -343,10 +343,24 @@ namespace NavalCombatCore
             {
                 var shipClass = EntityManager.Instance.GetParent<ShipClass>(this);
                 var shipClassName = shipClass != null ? shipClass.name.GetShortName() : "_";
-                return $"{shipClassName} | {name.GetShortName()} ({shellSizeInch}″, {maxRateOfFireShootPerMin}r/min)";;
+                return $"{shipClassName} | {name.GetShortName()} ({shellSizeInch}″, {maxRateOfFireShootPerMin}r/min, {damageRating})";;
             }
         }
     }
+
+    // public partial class RapidFireBatteryRecord
+    // {
+    //     [CreateProperty]
+    //     public string labelName
+    //     {
+    //         get
+    //         {
+    //             var shipClass = EntityManager.Instance.GetParent<ShipClass>(this);
+    //             var shipClassName = shipClass != null ? shipClass.name.GetShortName() : "_";
+    //             return $"{shipClassName} | {name.GetShortName()} ({shellSizeInch}″, {maxRateOfFireShootPerMin}r/min)";;
+    //         }
+    //     }
+    // }
 
 
     public partial class AbstractMountStatusRecord
@@ -553,6 +567,108 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public string victoryLevelStr => Localize($"{nameof(VictoryLevel)}.{victoryLevel}");
+    }
+
+    public partial class FireControlSystem
+    {
+        [XmlIgnore]
+        [CreateProperty]
+        public FCSCode codeProp
+        {
+            get => code;
+            set
+            {
+                code = value;
+                SyncStatesByCode();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public GunSightType gunSightProp
+        {
+            get => gunSight;
+            set
+            {
+                gunSight = value;
+                SyncCodeByStates();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        FireControlInstrumentType fireControlInstrumentProp
+        {
+            get => fireControlInstrument;
+            set
+            {
+                fireControlInstrument = value;
+                SyncCodeByStates();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        RangeFinderType rangeFinderProp
+        {
+            get => rangeFinder;
+            set
+            {
+                rangeFinder = value;
+                SyncCodeByStates();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        DirectorControlType directorControlProp
+        {
+            get => directorControl;
+            set
+            {
+                directorControl = value;
+                SyncCodeByStates();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        StabilizationType stabilizationProp
+        {
+            get => stabilization;
+            set
+            {
+                stabilization = value;
+                SyncCodeByStates();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        PowerRemoteControlType powerRemoteControlProp
+        {
+            get => powerRemoteControl;
+            set
+            {
+                powerRemoteControl = value;
+                SyncCodeByStates();
+            }
+        }
+    }
+
+    public partial class MountLocationRecord
+    {
+        [XmlIgnore]
+        [CreateProperty]
+        public MountLocation mountLocationProp
+        {
+            get => mountLocation;
+            set
+            {
+                mountLocation = value;
+                SyncMountArcs();
+            }
+        }
     }
 }
 

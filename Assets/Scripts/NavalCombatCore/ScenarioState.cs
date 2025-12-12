@@ -77,6 +77,8 @@ namespace NavalCombatCore
         public bool hasEndDateTime;
         public DateTime endDateTime = new DateTime(1895, 4, 17, 0, 0, 0, DateTimeKind.Utc);
 
+        public PictureReference backgroundPictureReference = new();
+
         public static float GetTimeZoneOffset(float longitude)
         {
             var intervals = 24f;

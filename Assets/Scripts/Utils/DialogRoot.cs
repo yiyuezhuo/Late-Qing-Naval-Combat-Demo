@@ -20,6 +20,7 @@ public class ScenarioPickerDialog // ScenarioPicker's root data source
 
     public string currentDescription;
     public Action<string> callbackOnceScenarioNameGet;
+    public NavalGameState currentGameState;
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
@@ -79,6 +80,9 @@ public class ScenarioPickerDialog // ScenarioPicker's root data source
                                 fullState.navalGameState.scenarioState.globalDescription.GetShortName()
                             });
                             currentDescription = string.Join("\n", lines);
+
+                            // currentBackground = fullState.navalGameState.scenarioState.backgroundPictureReference.pictureStyleBackground;
+                            currentGameState = fullState.navalGameState;
                         })
                     );
                 }
@@ -234,6 +238,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset forceBuilderDialogDocument;
     public VisualTreeAsset autoDeploymentDialogDocument;
     public VisualTreeAsset batteryRecordSelectorDialogDocument;
+    public VisualTreeAsset scenarioStateEditorDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -244,6 +249,22 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupScenarioStateEditor()
+    {
+        var scenarioStateEditor = new ScenarioStateEditor();
+
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=scenarioStateEditorDialogDocument,
+            templateDataSource=scenarioStateEditor
+        };
+
+        tempDialog.onCreated += scenarioStateEditor.OnCreated;
+
+        tempDialog.Popup();
     }
 
     public void PopupBatteryRecordSelectorDialog(Action<BatteryRecord> callback)

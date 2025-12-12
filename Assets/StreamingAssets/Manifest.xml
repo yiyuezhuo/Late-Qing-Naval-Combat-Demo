@@ -8,15 +8,16 @@
   <string>/BuiltinScripts/Sample.js</string>
  </builtinScripts>
  <scenarioFiles>
-  <string>/Scenarios/Tutorial 1 - Single Ship.scen.xml</string>
-  <string>/Scenarios/Tutorial 2 - Ship Group.scen.xml</string>
-  <string>/Scenarios/Tutorial 3 - Combat.scen.xml</string>
-  <string>/Scenarios/Battle of Pundo.scen.xml</string>
-  <string>/Scenarios/Battle of Yalu River.scen.xml</string>
-  <string>/Scenarios/Chih Yuan vs Naniwa.scen.xml</string>
-  <string>/Scenarios/Fu Lung vs Saikyo Maru.scen.xml</string>
-  <string>/Scenarios/Manual Single Ship Duel.scen.xml</string>
-  <string>/Scenarios/Ting Yuen vs Fuji.scen.xml</string>
-  <string>/Scenarios/Ting Yuen vs Three View.scen.xml</string>
+  <string>/Scenarios/TT - Tutorial 1 - Single Ship.scen.xml</string>
+  <string>/Scenarios/TT - Tutorial 2 - Ship Group.scen.xml</string>
+  <string>/Scenarios/TT - Tutorial 3 - Combat.scen.xml</string>
+  <string>/Scenarios/SJH - Battle of Pundo.scen.xml</string>
+  <string>/Scenarios/SJH - Battle of Yalu River.scen.xml</string>
+  <string>/Scenarios/RJH - Battle of Ulsan.scen.xml</string>
+  <string>/Scenarios/SJS - Chih Yuan vs Naniwa.scen.xml</string>
+  <string>/Scenarios/SJS - Fu Lung vs Saikyo Maru.scen.xml</string>
+  <string>/Scenarios/SJS - Manual Single Ship Duel.scen.xml</string>
+  <string>/Scenarios/SJS - Ting Yuen vs Fuji.scen.xml</string>
+  <string>/Scenarios/SJS - Ting Yuen vs Three View.scen.xml</string>
  </scenarioFiles>
 </ManifestModel>

@@ -35,6 +35,8 @@ On the other hand, gunnery introduce too much attrition compared to historical c
 
 Deepwiki (LLM) automatically generates doc (not very accurate but useful): https://deepwiki.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
 
+Manual is not version controlled, dev should place lastest version of manual as `Assets/StreamingAssets/Manuals/readme.pdf`. The current manual is generated from: https://github.com/yiyuezhuo/First-Sino-Japanese-War-Manual using Obsidian's "Export to PDF" feature.
+
 ### Unity related bugs
 
 - UITK sometimes lost cellTemplate reference (need to reattaching templates)

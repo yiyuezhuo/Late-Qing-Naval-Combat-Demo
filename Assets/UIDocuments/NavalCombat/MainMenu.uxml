@@ -1,74 +1,84 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
-    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Textures/NavalCombat/Map_of_Battle_of_the_Yalu_River_(1894).jpg?fileID=2800000&amp;guid=edfed1be4dcc485499ee5126922bcbe2&amp;type=3#Map_of_Battle_of_the_Yalu_River_(1894)&quot;); -unity-background-scale-mode: scale-and-crop;" />
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
+    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Textures/NavalCombat/Map_of_Battle_of_the_Yalu_River_(1894).jpg?fileID=2800000&amp;guid=edfed1be4dcc485499ee5126922bcbe2&amp;type=3#Map_of_Battle_of_the_Yalu_River_(1894)&quot;); -unity-background-scale-mode: scale-and-crop;"/>
     <ui:VisualElement style="position: absolute; align-self: center; bottom: 0; top: 0; justify-content: center;">
         <ui:ScrollView>
             <ui:VisualElement style="flex-grow: 1; padding-top: 5px; padding-bottom: 5px; max-height: 100%; padding-right: 5px; padding-left: 5px; background-color: rgba(255, 255, 255, 0.78);">
-                <ui:Label text="First Sino-Japanese War" style="font-size: 38px; -unity-text-align: upper-center;">
+                <ui:Label text="First Sino-Japanese War &amp; Russo-Japanese War" style="font-size: 38px; -unity-text-align: upper-center;">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3101437890560)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36603228071825408)"/>
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-direction: row;">
                     <ui:VisualElement style="flex-grow: 1;">
+                        <ui:Label text="Tactical Naval Combat"/>
                         <ui:Button text="Select Naval Tactical Scenario" name="SelectScenarioButton" class="verylarge">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(5242554585088)" />
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(5242554585088)"/>
                             </Bindings>
                         </ui:Button>
                         <ui:Button text="Load Game" name="LoadGameButton" class="verylarge">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(6575349207040)" />
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(6575349207040)"/>
                             </Bindings>
                         </ui:Button>
                         <ui:Button text="Skirmish" name="SkirmishButton" class="verylarge">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34615076230696960)" />
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34615076230696960)"/>
                             </Bindings>
                         </ui:Button>
                         <ui:Button text="Start As Empty" name="StartAsEmptyButton" class="verylarge">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34615625252507648)" />
-                            </Bindings>
-                        </ui:Button>
-                        <ui:Button text="(DEBUG) Strategic Mode Test" name="StrategicModeTestButton" class="verylarge">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(363410065362944)" />
-                            </Bindings>
-                        </ui:Button>
-                        <ui:Button text="Setting" name="SettingButton" class="verylarge">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(6979457814528)" />
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34615625252507648)"/>
                             </Bindings>
                         </ui:Button>
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1;">
+                        <ui:Label text="Standard Strategic"/>
+                        <ui:Button text="(WIP) First Sino-Japanese War" name="StrategicModeTestButton" class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36603542086782976)"/>
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Label text="Mini Campaign"/>
+                        <ui:Button text="Vladivostok Squadron Raid (1904) " class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36604534312308736)"/>
+                            </Bindings>
+                        </ui:Button>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:Button text="Setting" name="SettingButton" class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(6979457814528)"/>
+                            </Bindings>
+                        </ui:Button>
                         <ui:Button text="Manual" name="ManualButton" class="verylarge">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(33508883324112896)" />
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(33508883324112896)"/>
                             </Bindings>
                         </ui:Button>
                         <ui:Button text="Help" name="HelpButton" class="verylarge">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7671924822016)" />
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7671924822016)"/>
                             </Bindings>
                         </ui:Button>
-                        <ui:Button text="FAQ" name="FAQButton" class="verylarge" />
+                        <ui:Button text="FAQ" name="FAQButton" class="verylarge"/>
                         <ui:Button text="Open Source Code Repository" name="OpenSourceRepositoryButton" class="verylarge">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7050274443264)" />
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7050274443264)"/>
                             </Bindings>
                         </ui:Button>
                         <ui:Button text="Exit" name="ExitButton" class="verylarge">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7141114679296)" />
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7141114679296)"/>
                             </Bindings>
                         </ui:Button>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:Label text="Version" name="VersionLabel" data-source-type="MainMenu, Assembly-CSharp" style="-unity-text-align: upper-center;">
                     <Bindings>
-                        <ui:DataBinding property="text" data-source-path="versionStr" binding-mode="ToTarget" />
+                        <ui:DataBinding property="text" data-source-path="versionStr" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Label>
             </ui:VisualElement>

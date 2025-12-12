@@ -6,6 +6,9 @@
   <namedShipsPath>NamedShips.xml</namedShipsPath>
  </streamingAssetReference>
  <navalGameState>
+  <leadersBuiltin>false</leadersBuiltin>
+  <shipClassesBuiltin>false</shipClassesBuiltin>
+  <namedShipsBuiltin>false</namedShipsBuiltin>
   <shipLogs>
    <ShipLog>
     <subStates />
@@ -267,6 +270,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -571,6 +576,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -848,6 +855,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1064,6 +1073,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1269,6 +1280,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1377,6 +1390,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1485,6 +1500,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1693,6 +1710,11 @@
     <accumulateSecond>0</accumulateSecond>
     <elapsedSeconds>0</elapsedSeconds>
    </weaponSimulationAssignmentClock>
+   <obstacleAvoidCheckClock>
+    <intervalSeconds>1</intervalSeconds>
+    <accumulateSecond>0</accumulateSecond>
+    <elapsedSeconds>0</elapsedSeconds>
+   </obstacleAvoidCheckClock>
    <doingStep>false</doingStep>
    <firstLoaded>false</firstLoaded>
    <effectiveCompleted>false</effectiveCompleted>
@@ -1700,6 +1722,10 @@
    <firstReachEndDateTime>false</firstReachEndDateTime>
    <hasEndDateTime>true</hasEndDateTime>
    <endDateTime>1894-07-25T05:00:00Z</endDateTime>
+   <backgroundPictureReference>
+    <path>Pictures\Backgrounds\Battle_of_Phungdo.jpg</path>
+    <isBuiltin>true</isBuiltin>
+   </backgroundPictureReference>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />
@@ -1707,7 +1733,7 @@
  <viewState>
   <xRotation>37.1679878</xRotation>
   <yRotation>233.6855</yRotation>
-  <orthographicSize>40</orthographicSize>
+  <orthographicSize>20</orthographicSize>
  </viewState>
  <eventState>
   <eventItems />

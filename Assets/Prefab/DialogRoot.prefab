@@ -100,3 +100,4 @@ MonoBehaviour:
   forceBuilderDialogDocument: {fileID: 9197481963319205126, guid: fd737e89c76ecb0419995422d80dd808, type: 3}
   autoDeploymentDialogDocument: {fileID: 9197481963319205126, guid: c66cde8d44211424c8bb7863f3e34683, type: 3}
   batteryRecordSelectorDialogDocument: {fileID: 9197481963319205126, guid: 6dd880859ca130a4280536833db99551, type: 3}
+  scenarioStateEditorDialogDocument: {fileID: 9197481963319205126, guid: c53a0e617faa1ee4e9c818383e818a19, type: 3}

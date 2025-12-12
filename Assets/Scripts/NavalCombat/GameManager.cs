@@ -126,7 +126,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         // public string builtinScenName = "Tutorial 1 - Single Ship.scen.xml";
         // public string builtinScenName = "Tutorial 2 - Ship Group.scen.xml";
         // public string builtinScenName = "Tutorial 3 - Combat.scen.xml";
-        public string builtinScenName = "Ting Yuen vs Three View.scen.xml";
+        public string builtinScenName = "SJS - Ting Yuen vs Three View.scen.xml";
         public LatLon cameraLocation;
         // public bool requireAutoDeployAll = false;
         public ScenarioDynamicSetupGenerator scenarioSetupGenerator; // TODO: switch to AutoDeployment

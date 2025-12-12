@@ -11,6 +11,7 @@ using UnityEngine.UIElements;
 
 using CoreUtils;
 using NavalCombatCore;
+using System.Runtime.InteropServices;
 
 
 public class BuildProcessor : IPreprocessBuildWithReport
@@ -57,6 +58,21 @@ public class BuildProcessor : IPreprocessBuildWithReport
         }
     }
 
+    static List<string> tagOrderList = new()
+    {
+        "TT", // Tutorial
+        "SJH", // Historical scenarios of Sino-Japanese War
+        "RJH", // Historical scenario of Russo-Japanese War
+        "SJS", // Sino-Japanese small/skirmish scenario (for test, quick battle or local scenario)
+        "RJS", // Russo-Japanese War small/skirmish scenario
+    };
+
+    static int GetTagIndex(string path)
+    {
+        var tagName = Path.GetFileName(path).Split(" - ")[0];
+        return tagOrderList.IndexOf(tagName);
+    }
+
     [MenuItem("Custom/Build Manifest for platform without File System")]
     public static void BuildManifest()
     {
@@ -71,14 +87,24 @@ public class BuildProcessor : IPreprocessBuildWithReport
 
         scenarioFiles.Sort((left, right) =>
         {
-            var leftTutorial = left.Contains("Tutorial"); // TODO: Introduce extra info?
-            var rightTutorial = right.Contains("Tutorial");
-            if (leftTutorial && !rightTutorial)
-                return -1;
-            if (!leftTutorial && rightTutorial)
-                return 1;
+            var leftTagIdx = GetTagIndex(left);
+            var rightTagIdx = GetTagIndex(right);
+            if(leftTagIdx != rightTagIdx)
+                return leftTagIdx.CompareTo(rightTagIdx);
             return left.CompareTo(right);
         });
+        // scenarioFiles.Reverse();
+
+        // scenarioFiles.Sort((left, right) =>
+        // {
+        //     var leftTutorial = left.Contains("Tutorial"); // TODO: Introduce extra info?
+        //     var rightTutorial = right.Contains("Tutorial");
+        //     if (leftTutorial && !rightTutorial)
+        //         return -1;
+        //     if (!leftTutorial && rightTutorial)
+        //         return 1;
+        //     return left.CompareTo(right);
+        // });
 
         var manifestModel = new ManifestModel()
         {

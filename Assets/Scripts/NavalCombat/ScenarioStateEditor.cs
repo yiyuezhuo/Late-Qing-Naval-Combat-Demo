@@ -207,21 +207,27 @@ namespace NavalCombatCore
         [CreateProperty]
         public DateTimeOffset referenceTimeZoneEndDateTimeOffset => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffset(endDateTime);
 
+        // [CreateProperty]
+        // public StyleBackground background => backgroundPictureReference.pictureStyleBackground;
     }
 }
 
 
-public class ScenarioStateEditor : HideableDocument<ScenarioStateEditor>
+public class ScenarioStateEditor
 {
     // protected override void Awake()
-    void OnEnable()
+    // void OnEnable()
+
+    [CreateProperty]
+    public ScenarioState scenarioState => NavalGameState.Instance.scenarioState;
+
+    public void OnCreated(object sender, VisualElement root)
     {
         // base.Awake();
 
-        root.dataSource = GameManager.Instance;
+        // root.dataSource = GameManager.Instance;
 
-        var confirmButton = root.Q<Button>("ConfirmButton");
-        confirmButton.clicked += Hide;
+        PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("BackgroundPictureField"));
 
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>

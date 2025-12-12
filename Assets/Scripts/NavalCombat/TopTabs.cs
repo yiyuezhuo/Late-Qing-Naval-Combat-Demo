@@ -40,7 +40,8 @@ public class TopTabs : SingletonDocument<TopTabs>
         oobEditorButton.clicked += () => OOBEditor.Instance.Show();
 
         var scenarioStateEditorButton = root.Q<Button>("ScenarioStateEditorButton");
-        scenarioStateEditorButton.clicked += ScenarioStateEditor.Instance.Show;
+        // scenarioStateEditorButton.clicked += ScenarioStateEditor.Instance.Show;
+        scenarioStateEditorButton.clicked += DialogRoot.Instance.PopupScenarioStateEditor;
 
         var launchedTorpedoEditorButton = root.Q<Button>("LaunchedTorpedoEditorButton");
         launchedTorpedoEditorButton.clicked += LaunchedTorpedoEditor.Instance.Show;
@@ -284,7 +285,10 @@ public class TopTabs : SingletonDocument<TopTabs>
             fullState.navalGameState.scenarioState.firstLoaded = false;
         }
 
-        IOManager.Instance.SaveTextFile(fullState.ToXML(), "FullState", "xml");
+        var name = GameManager.startupConfig.mode == GameManager.StartupConfig.Mode.BuiltinScenName ? GameManager.startupConfig.builtinScenName.Replace(".scen.xml", "") : "FullState";
+
+        // IOManager.Instance.SaveTextFile(fullState.ToXML(), "FullState", "xml");
+        IOManager.Instance.SaveTextFile(fullState.ToXML(), name, "scen.xml");
     }
 
     NavalGameState DetachGameState(NavalGameState _s, StreamingAssetReference sar)

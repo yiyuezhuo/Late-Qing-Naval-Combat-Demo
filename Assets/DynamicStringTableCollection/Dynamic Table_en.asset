@@ -2327,43 +2327,47 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 368036151988224
-    m_Localized: Tutorial 1 - Single Ship
+    m_Localized: TT - Tutorial 1 - Single Ship
     m_Metadata:
       m_Items: []
   - m_Id: 368041239678976
-    m_Localized: Tutorial 2 - Ship Group
+    m_Localized: TT - Tutorial 2 - Ship Group
     m_Metadata:
       m_Items: []
   - m_Id: 368095237148672
-    m_Localized: Tutorial 3 - Combat
+    m_Localized: TT - Tutorial 3 - Combat
     m_Metadata:
       m_Items: []
   - m_Id: 368128871272448
-    m_Localized: Battle of Pundo
+    m_Localized: SJH - Battle of Pundo
     m_Metadata:
       m_Items: []
   - m_Id: 368199792758784
-    m_Localized: Battle of Yalu River
+    m_Localized: SJH - Battle of Yalu River
     m_Metadata:
       m_Items: []
   - m_Id: 368206742720512
-    m_Localized: Chih Yuan vs Naniwa
+    m_Localized: SJS - Chih Yuan vs Naniwa
     m_Metadata:
       m_Items: []
   - m_Id: 368283557203968
-    m_Localized: Fu Lung vs Saikyo Maru
+    m_Localized: SJS - Fu Lung vs Saikyo Maru
     m_Metadata:
       m_Items: []
   - m_Id: 368336296382464
-    m_Localized: Ting Yuen vs Fuji
+    m_Localized: SJS - Ting Yuen vs Fuji
     m_Metadata:
       m_Items: []
   - m_Id: 29772178943283200
-    m_Localized: Ting Yuen vs Three View
+    m_Localized: SJS - Ting Yuen vs Three View
     m_Metadata:
       m_Items: []
   - m_Id: 21449193928953856
-    m_Localized: Manual Single Ship Duel
+    m_Localized: SJS - Manual Single Ship Duel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22001122761412608
+    m_Localized: RJH - Battle of Ulsan
     m_Metadata:
       m_Items: []
   references:

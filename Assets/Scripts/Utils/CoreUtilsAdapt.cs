@@ -45,6 +45,16 @@ namespace CoreUtils
             }
         }
 
+        [CreateProperty]
+        public Texture2D texture2d
+        {
+            get
+            {
+                var path = ResolvePath();
+                return UnityWebRequestImageReader.Instance.FetchTexture2D(path);
+            }
+        }
+
         public void RequestIfNotRequestedYetOtherwiseExecuteDirectly(Action<StyleBackground> callback)
         {
             var path = ResolvePath();

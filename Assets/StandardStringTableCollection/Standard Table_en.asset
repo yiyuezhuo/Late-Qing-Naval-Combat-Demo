@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5242554585088
-    m_Localized: Select Tactical Naval Combat Scenario
+    m_Localized: Select  Scenario
     m_Metadata:
       m_Items: []
   - m_Id: 6575349207040
@@ -2296,6 +2296,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 36062382486360064
     m_Localized: Disable Rapid Firing Battery Ammunition Cost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36603228071825408
+    m_Localized: First Sino-Japanese War & Russo-Japanese War
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36603542086782976
+    m_Localized: (WIP) First Sino-Japanese War (1894)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36604534312308736
+    m_Localized: 'Vladivostok Squadron Raid '
     m_Metadata:
       m_Items: []
   references:

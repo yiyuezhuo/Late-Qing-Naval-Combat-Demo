@@ -6,6 +6,9 @@
   <namedShipsPath>NamedShips.xml</namedShipsPath>
  </streamingAssetReference>
  <navalGameState>
+  <leadersBuiltin>false</leadersBuiltin>
+  <shipClassesBuiltin>false</shipClassesBuiltin>
+  <namedShipsBuiltin>false</namedShipsBuiltin>
   <shipLogs>
    <ShipLog>
     <subStates />
@@ -268,6 +271,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -573,6 +578,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -851,6 +858,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1068,6 +1077,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1300,6 +1311,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1532,6 +1545,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1754,6 +1769,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1976,6 +1993,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -2211,6 +2230,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -2446,6 +2467,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -2662,6 +2685,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -2878,6 +2903,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -3094,6 +3121,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -3301,6 +3330,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -3555,6 +3586,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -3878,6 +3911,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -4201,6 +4236,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -4464,6 +4501,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -4795,6 +4834,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -5073,6 +5114,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -5339,6 +5382,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -5545,6 +5590,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -5726,6 +5773,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -5876,6 +5925,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -6015,6 +6066,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -6154,6 +6207,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -6689,7 +6744,6 @@
    <visibility>Clear</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
-   <description>https://en.wikipedia.org/wiki/Battle_of_the_Yalu_River_(1894)</description>
    <globalDescription>
     <english>https://en.wikipedia.org/wiki/Battle_of_the_Yalu_River_(1894)</english>
    </globalDescription>
@@ -6698,6 +6752,11 @@
     <accumulateSecond>0</accumulateSecond>
     <elapsedSeconds>0</elapsedSeconds>
    </weaponSimulationAssignmentClock>
+   <obstacleAvoidCheckClock>
+    <intervalSeconds>1</intervalSeconds>
+    <accumulateSecond>0</accumulateSecond>
+    <elapsedSeconds>0</elapsedSeconds>
+   </obstacleAvoidCheckClock>
    <doingStep>false</doingStep>
    <firstLoaded>false</firstLoaded>
    <effectiveCompleted>false</effectiveCompleted>
@@ -6705,6 +6764,10 @@
    <firstReachEndDateTime>false</firstReachEndDateTime>
    <hasEndDateTime>true</hasEndDateTime>
    <endDateTime>1894-09-17T10:00:00Z</endDateTime>
+   <backgroundPictureReference>
+    <path>Pictures\Backgrounds\Battle_of_the_Yellow_Sea_by_Korechika.jpg</path>
+    <isBuiltin>true</isBuiltin>
+   </backgroundPictureReference>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />

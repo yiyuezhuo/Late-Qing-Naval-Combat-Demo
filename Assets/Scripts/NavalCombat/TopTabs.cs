@@ -346,8 +346,8 @@ public class TopTabs : SingletonDocument<TopTabs>
                     Geodesic.WGS84.Direct(target.position.LatDeg, target.position.LonDeg,
                         MeasureUtils.NormalizeAngle(target.headingDeg + 180), distM, out var lat2, out var lon2);
                     picked.position = new LatLon((float)lat2, (float)lon2);
-                    picked.headingDeg = target.headingDeg;
-                    picked.speedKnots = target.speedKnots;
+                    picked.headingDeg = picked.desiredHeadingDeg = target.headingDeg;
+                    picked.speedKnots = picked.desiredSpeedKnots = target.speedKnots;
 
                     break;
                 case ControlMode.RelativeToTarget:
@@ -357,8 +357,8 @@ public class TopTabs : SingletonDocument<TopTabs>
                     Geodesic.WGS84.Direct(target.position.LatDeg, target.position.LonDeg,
                         angle, distM, out lat2, out lon2);
                     picked.position = new LatLon((float)lat2, (float)lon2);
-                    picked.headingDeg = target.headingDeg;
-                    picked.speedKnots = target.speedKnots;
+                    picked.headingDeg = picked.desiredHeadingDeg = target.headingDeg;
+                    picked.speedKnots = picked.desiredSpeedKnots = target.speedKnots;
 
                     break;
             }

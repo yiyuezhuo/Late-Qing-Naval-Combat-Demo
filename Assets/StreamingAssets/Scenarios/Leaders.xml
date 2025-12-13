@@ -3,8 +3,8 @@
  <Leader>
   <name>
    <english>Kawara Yōichi</english>
-   <japanese>河原要一大佐</japanese>
-   <chineseSimplified>河原要一大佐</chineseSimplified>
+   <japanese>河原要一</japanese>
+   <chineseSimplified>河原要一</chineseSimplified>
    <chineseTraditional />
   </name>
   <portraitReference>
@@ -24,8 +24,8 @@
  <Leader>
   <name>
    <english>Kamimura Hikonojō</english>
-   <japanese>上村彦之丞少佐</japanese>
-   <chineseSimplified>上村彦之丞少佐</chineseSimplified>
+   <japanese>上村彦之丞</japanese>
+   <chineseSimplified>上村彦之丞</chineseSimplified>
   </name>
   <portraitReference>
    <path>Pictures/Leaders/Kamimura_Hikonojo.jpg</path>
@@ -44,8 +44,8 @@
  <Leader>
   <name>
    <english>Togo Heihachiro</english>
-   <japanese>東郷平八郎大佐</japanese>
-   <chineseSimplified>东乡平八郎大佐</chineseSimplified>
+   <japanese>東郷平八郎</japanese>
+   <chineseSimplified>东乡平八郎</chineseSimplified>
   </name>
   <portraitReference>
    <path>Pictures/Leaders/Tōgō_Heihachirō.jpg</path>
@@ -310,7 +310,7 @@
  <Leader>
   <name>
    <english>Arai Yukan</english>
-   <japanese>新井有貫大佐</japanese>
+   <japanese>新井有貫</japanese>
    <chineseSimplified>新井有贯</chineseSimplified>
   </name>
   <portraitReference>
@@ -330,7 +330,7 @@
  <Leader>
   <name>
    <english>Hidaka Sōnojō</english>
-   <japanese>日高壮之丞大佐</japanese>
+   <japanese>日高壮之丞</japanese>
    <chineseSimplified>日高壮之丞</chineseSimplified>
   </name>
   <portraitReference>
@@ -350,7 +350,7 @@
  <Leader>
   <name>
    <english>Arima Shin'ichi</english>
-   <japanese>横尾道昱大佐</japanese>
+   <japanese>横尾道昱</japanese>
    <chineseSimplified>横尾道昱</chineseSimplified>
   </name>
   <portraitReference>
@@ -2126,5 +2126,180 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <traits />
   <remark>https://en.wikipedia.org/wiki/Arichi_Shinanoj%C5%8D</remark>
   <objectId>7cdf6552-9b13-431b-ba02-8bfa99c1faf8</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Karl Jessen</english>
+   <japanese>カールル・イェッセン</japanese>
+   <chineseSimplified>卡尔·耶森</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Karl_Jessen.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>AboveAverage</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Karl_Jessen
+
+Карл Петрович Иессен
+</remark>
+  <objectId>a572b659-f9f6-4417-a9ab-fa7bbb7f6b81</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Andrei Andreev</english>
+   <japanese>アンドレイ・アンドレーエフ</japanese>
+   <chineseSimplified>安德烈·安德烈耶夫</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Andrei Parfenovich Andreev.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B5%D0%B2,_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%9F%D0%B0%D1%80%D1%84%D1%91%D0%BD%D0%BE%D0%B2%D0%B8%D1%87
+
+Андреев, Андрей Парфёнович</remark>
+  <objectId>b7052a6e-0748-4214-b5d3-0900a565383d</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nikolai Dabich</english>
+   <japanese>ニコライ・ダビチ</japanese>
+   <chineseSimplified>尼古拉·达比奇</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Nikolai Dabich.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ru.wikipedia.org/wiki/%D0%94%D0%B0%D0%B1%D0%B8%D1%87,_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B5%D0%B2%D0%B8%D1%87
+
+Дабич, Николай Дмитриевич</remark>
+  <objectId>8dec1ad5-af82-41ec-a921-966bcc69414f</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Yevgeny Trusov</english>
+   <japanese>エフゲニー・トルーソフ</japanese>
+   <chineseSimplified>叶夫根尼·特鲁索夫</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Yevgeny Trusov.JPG</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D1%83%D1%81%D0%BE%D0%B2,_%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D0%B8%D0%B9_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D0%B8%D1%87
+
+Трусов, Евгений Александрович
+</remark>
+  <objectId>b12294da-6e16-4c01-b459-3d4eba05f426</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ijichi Suekata</english>
+   <japanese>伊地知季珍</japanese>
+   <chineseSimplified>伊地知季珍</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Ijichi Suekata.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E4%BC%8A%E5%9C%B0%E7%9F%A5%E5%AD%A3%E7%8F%8D
+https://www.edohakuarchives.jp/detail-110167.html
+</remark>
+  <objectId>941570a4-4562-46aa-944e-efa88ae96e11</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Fujii Koichi</english>
+   <japanese>藤井較一</japanese>
+   <chineseSimplified>藤井较一</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Fujii_Kouihi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E8%97%A4%E4%BA%95%E8%BC%83%E4%B8%80
+
+</remark>
+  <objectId>b4bc96fa-2c28-40ed-8a22-917afd59f512</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Shigetarō Yoshimatsu</english>
+   <japanese>吉松茂太郎</japanese>
+   <chineseSimplified>吉松茂太郎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Shigetarō_Yoshimatsu.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Shigetar%C5%8D_Yoshimatsu
+</remark>
+  <objectId>86877788-7a24-4b0e-8ea3-2002dfb016c0</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Taketomi Kunikane</english>
+   <japanese>武富邦鼎</japanese>
+   <chineseSimplified>武富邦鼎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Taketomi_Kunikane.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Taketomi_Kunikane</remark>
+  <objectId>94a92131-7824-4073-b21e-ceb00447704c</objectId>
  </Leader>
 </ArrayOfLeader>

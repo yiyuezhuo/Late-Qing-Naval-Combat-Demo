@@ -438,10 +438,10 @@
      <LatDeg>35.03874</LatDeg>
      <LonDeg>130.120987</LonDeg>
     </position>
-    <speedKnots>0</speedKnots>
+    <speedKnots>10</speedKnots>
     <headingDeg>90</headingDeg>
-    <desiredSpeedKnots>0</desiredSpeedKnots>
-    <desiredHeadingDeg>0</desiredHeadingDeg>
+    <desiredSpeedKnots>10</desiredSpeedKnots>
+    <desiredHeadingDeg>90</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
@@ -849,10 +849,10 @@
      <LatDeg>35.03874</LatDeg>
      <LonDeg>130.115982</LonDeg>
     </position>
-    <speedKnots>0</speedKnots>
+    <speedKnots>10</speedKnots>
     <headingDeg>90</headingDeg>
-    <desiredSpeedKnots>0</desiredSpeedKnots>
-    <desiredHeadingDeg>0</desiredHeadingDeg>
+    <desiredSpeedKnots>10</desiredSpeedKnots>
+    <desiredHeadingDeg>90</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
@@ -1724,10 +1724,10 @@
      <LatDeg>35.1061</LatDeg>
      <LonDeg>130.153778</LonDeg>
     </position>
-    <speedKnots>0</speedKnots>
+    <speedKnots>10</speedKnots>
     <headingDeg>125</headingDeg>
-    <desiredSpeedKnots>0</desiredSpeedKnots>
-    <desiredHeadingDeg>0</desiredHeadingDeg>
+    <desiredSpeedKnots>10</desiredSpeedKnots>
+    <desiredHeadingDeg>125</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
@@ -2081,10 +2081,10 @@
      <LatDeg>35.1084633</LatDeg>
      <LonDeg>130.149673</LonDeg>
     </position>
-    <speedKnots>0</speedKnots>
+    <speedKnots>10</speedKnots>
     <headingDeg>125</headingDeg>
-    <desiredSpeedKnots>0</desiredSpeedKnots>
-    <desiredHeadingDeg>0</desiredHeadingDeg>
+    <desiredSpeedKnots>10</desiredSpeedKnots>
+    <desiredHeadingDeg>125</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
@@ -2456,10 +2456,10 @@
      <LatDeg>35.11083</LatDeg>
      <LonDeg>130.145569</LonDeg>
     </position>
-    <speedKnots>0</speedKnots>
+    <speedKnots>10</speedKnots>
     <headingDeg>125</headingDeg>
-    <desiredSpeedKnots>0</desiredSpeedKnots>
-    <desiredHeadingDeg>0</desiredHeadingDeg>
+    <desiredSpeedKnots>10</desiredSpeedKnots>
+    <desiredHeadingDeg>125</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
@@ -2836,7 +2836,9 @@
      <chineseSimplified>海参崴分队</chineseSimplified>
      <chineseTraditional />
     </name>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>a572b659-f9f6-4417-a9ab-fa7bbb7f6b81</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>77ec22f9-74e3-4e59-8cee-f3c199b593a4</objectId>
@@ -2901,7 +2903,9 @@
      <chineseSimplified>第二舰队</chineseSimplified>
      <chineseTraditional />
     </name>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>43bfbde8-70e0-4d42-8122-3dc082557429</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>72da0d14-625b-4388-8b5a-fc7aabaf2717</objectId>
@@ -2988,8 +2992,8 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>35.07554</xRotation>
-  <yRotation>229.842834</yRotation>
+  <xRotation>35.0783043</xRotation>
+  <yRotation>229.842148</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>
  <eventState>

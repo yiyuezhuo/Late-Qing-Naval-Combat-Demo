@@ -2302,4 +2302,146 @@ https://www.edohakuarchives.jp/detail-110167.html
   <remark>https://en.wikipedia.org/wiki/Taketomi_Kunikane</remark>
   <objectId>94a92131-7824-4073-b21e-ceb00447704c</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Kensuke Wada</english>
+   <japanese>和田賢助</japanese>
+   <chineseSimplified>和田贤助</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E5%92%8C%E7%94%B0%E8%B3%A2%E5%8A%A9</remark>
+  <objectId>3883625e-c4c6-42da-b5e6-b4db7b42cb17</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Mouri Ichibei</english>
+   <japanese>毛利一兵衛</japanese>
+   <chineseSimplified>毛利一兵卫</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://hush.web.fc2.com/name/Biography/651mo.html</remark>
+  <objectId>d2d9a793-77d8-4aa9-b143-564e4e614f1b</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Uryū Sotokichi</english>
+   <japanese>瓜生外吉</japanese>
+   <chineseSimplified>瓜生外吉</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Sotokichi_Uryu.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>AboveAverage</navalStrategic>
+  <navalOperational>AboveAverage</navalOperational>
+  <navalTactical>AboveAverage</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Ury%C5%AB_Sotokichi</remark>
+  <objectId>c6361d17-bfe6-4b7e-b981-47474396e2bd</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Sentō Takenaka</english>
+   <japanese>仙頭武央</japanese>
+   <chineseSimplified>仙头武央</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Sento_Takenaka.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Sent%C5%8D_Takenaka</remark>
+  <objectId>6390d9a5-eace-4109-b30a-87fe5e2da2e2</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Evgeny Krinitsky</english>
+   <japanese>エフゲニー・クリニツキー</japanese>
+   <chineseSimplified>叶夫根尼・克里尼茨基</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Krinitskiy_EI.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ru.wikipedia.org/wiki/%D0%9A%D1%80%D0%B8%D0%BD%D0%B8%D1%86%D0%BA%D0%B8%D0%B9,_%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D0%B8%D0%B9_%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%87</remark>
+  <objectId>275a1073-d726-4ec3-964c-10576e906071</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Pyotr Bezobrazov</english>
+   <japanese>ピョートル・ベズオブラゾフ</japanese>
+   <chineseSimplified>彼得·贝佐布拉佐夫</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Bezobrazov_Petr.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>AboveAverage</navalStrategic>
+  <navalOperational>AboveAverage</navalOperational>
+  <navalTactical>AboveAverage</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Pyotr_Bezobrazov
+
+Безобразов, Пётр Алексеевич</remark>
+  <objectId>1bab70da-a152-43b6-8d59-245a00d72638</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Shouji Yoshimoto</english>
+   <japanese>荘司義基</japanese>
+   <chineseSimplified>庄司义基</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://hush.web.fc2.com/name/Biography/2271shiya.html#anchor211620</remark>
+  <objectId>984dc3a7-e611-4b37-9a08-8d4256c8bbb3</objectId>
+ </Leader>
 </ArrayOfLeader>

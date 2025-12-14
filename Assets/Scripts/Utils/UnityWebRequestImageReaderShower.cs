@@ -1,9 +1,14 @@
 using System.Linq;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 public class UnityWebRequestImageReaderShower : SingletonDocument<UnityWebRequestImageReaderShower>
 {
     Label statusLabel;
+
+    float busyAccSeconds = 0;
+
+    public static float displaybusyAccSecondsThreshold = 0.2f;
 
     protected override void Awake()
     {
@@ -25,9 +30,14 @@ public class UnityWebRequestImageReaderShower : SingletonDocument<UnityWebReques
         if (paths.Count == 0)
         {
             root.style.display = DisplayStyle.None;
+            busyAccSeconds = 0;
             return;
         }
-        root.style.display = DisplayStyle.Flex;
-        statusLabel.text = $"Fetching {paths.Count} files\n" + string.Join("\n", paths);
+        busyAccSeconds += Time.deltaTime;
+        if(busyAccSeconds > displaybusyAccSecondsThreshold)
+        {
+            root.style.display = DisplayStyle.Flex;
+            statusLabel.text = $"Fetching {paths.Count} files\n" + string.Join("\n", paths);
+        }
     }
 }

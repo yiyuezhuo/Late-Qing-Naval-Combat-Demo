@@ -282,7 +282,8 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         if (editSave)
         {
-            fullState.navalGameState.scenarioState.firstLoaded = false;
+            // fullState.navalGameState.scenarioState.firstLoaded = false;
+            fullState.navalGameState.scenarioState.ResetEditSaveRelatedStates();
         }
 
         var name = GameManager.startupConfig.mode == GameManager.StartupConfig.Mode.BuiltinScenName ? GameManager.startupConfig.builtinScenName.Replace(".scen.xml", "") : "FullState";
@@ -320,6 +321,13 @@ public class TopTabs : SingletonDocument<TopTabs>
     void SetToFormationPosition()
     {
         var resolvedSet = NavalGameState.Instance.shipLogsOnMap.Where(s => s.GetEffectiveControlMode() == ControlMode.Independent).ToHashSet();
+        
+        foreach(var initialResolved in resolvedSet)
+        {
+            initialResolved.speedKnots = initialResolved.desiredSpeedKnots;
+            initialResolved.headingDeg = initialResolved.desiredHeadingDeg;
+        }
+        
         var waitingSet = NavalGameState.Instance.shipLogsOnMap.Where(s => s.GetEffectiveControlMode() != ControlMode.Independent).ToHashSet();
         while (waitingSet.Count > 0)
         {

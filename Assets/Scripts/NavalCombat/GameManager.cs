@@ -396,7 +396,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         var scenarioState = navalGameState.scenarioState;
 
-        if(!scenarioState.effectiveCompleted)
+        if(!scenarioState.firstRemainOneOperationalFleet)
         {
             var rootGroups = navalGameState.shipGroups.Where(g => g.parentObjectId == null).ToList();
             var rootGroupShips = rootGroups.Select(g => g.Walk<ShipLog>().ToList()).ToList();
@@ -407,7 +407,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
             if(operationalGroupCounts <= 1) // Effective Completed (only one side has effective ships)
             {
-                scenarioState.effectiveCompleted = true;
+                scenarioState.firstRemainOneOperationalFleet = true;
 
                 if(startupConfig.IsFromStrategic())
                 {

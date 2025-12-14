@@ -7,6 +7,11 @@
                         <ui:DataBinding property="text" data-source-path="namedShipDescLink" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Label>
+                <ui:Image name="ClassImage" style="max-height: 50px;">
+                    <Bindings>
+                        <ui:DataBinding property="source" data-source-path="shipClassProperty.portraitIconReference.texture2d" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Image>
                 <ui:Label text="ClassLabel" name="ClassLabel">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="shipClassDescLink" binding-mode="ToTarget"/>
@@ -17,11 +22,20 @@
                         <ui:DataBinding property="text" data-source-path="oobParentDesc" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Label>
-                <ui:Label text="Ship&#39;s captain" name="CaptainLabel" style="white-space: normal;">
-                    <Bindings>
-                        <ui:DataBinding property="text" data-source-path="captainDescLink" binding-mode="ToTarget"/>
-                    </Bindings>
-                </ui:Label>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:Label text="Ship&#39;s captain ....................................................." name="CaptainLabel" style="white-space: normal;">
+                            <Bindings>
+                                <ui:DataBinding property="text" data-source-path="captainDescLink" binding-mode="ToTarget"/>
+                            </Bindings>
+                        </ui:Label>
+                    </ui:VisualElement>
+                    <ui:Image name="LeaderImage" style="flex-shrink: 0; flex-basis: 40px; max-height: 50px;">
+                        <Bindings>
+                            <ui:DataBinding property="source" data-source-path="leaderProp.portraitReference.texture2d" binding-mode="ToTarget"/>
+                        </Bindings>
+                    </ui:Image>
+                </ui:VisualElement>
                 <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
                     <ui:Label text="Speed (kts):">
                         <Bindings>
@@ -78,16 +92,6 @@
                 <Bindings>
                     <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipLog to DisplayStyle"/>
                 </Bindings>
-                <ui:Image style="max-height: 50px;">
-                    <Bindings>
-                        <ui:DataBinding property="source" data-source-path="leaderProp.portraitReference.texture2d" binding-mode="ToTarget"/>
-                    </Bindings>
-                </ui:Image>
-                <ui:Image style="max-height: 50px;">
-                    <Bindings>
-                        <ui:DataBinding property="source" data-source-path="shipClassProperty.portraitIconReference.texture2d" binding-mode="ToTarget"/>
-                    </Bindings>
-                </ui:Image>
             </ui:VisualElement>
         </ui:ScrollView>
     </ui:VisualElement>

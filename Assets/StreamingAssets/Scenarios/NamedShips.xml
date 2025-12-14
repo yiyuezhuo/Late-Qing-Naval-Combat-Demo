@@ -2318,4 +2318,124 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Iwate</remark>
   <objectId>beeb025a-e601-46f0-a22f-7bf4f6e08b24</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>196725f3-ae1d-405b-a997-69a3a055d9f6</shipClassObjectId>
+  <name>
+   <english>Naniwa (1903)</english>
+   <japanese>浪速 (1903)</japanese>
+   <chineseSimplified>浪速 (1903)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>3883625e-c4c6-42da-b5e6-b4db7b42cb17</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ja.wikipedia.org/wiki/%E6%B5%AA%E9%80%9F_(%E9%98%B2%E8%AD%B7%E5%B7%A1%E6%B4%8B%E8%89%A6)</remark>
+  <objectId>052f32f3-4c03-4d43-9df5-bb313ae2386b</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>196725f3-ae1d-405b-a997-69a3a055d9f6</shipClassObjectId>
+  <name>
+   <english>Takachiho (1900)</english>
+   <japanese>高千穂 (1900)</japanese>
+   <chineseSimplified>高千穗 (1900)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>d2d9a793-77d8-4aa9-b143-564e4e614f1b</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>195a60c3-385f-488b-aee5-9c5ba11e500d</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8d189654-e874-43ef-96f7-c308ecda9ca8</shipClassObjectId>
+  <name>
+   <english>Tsushima</english>
+   <japanese>対馬</japanese>
+   <chineseSimplified>对马</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>6390d9a5-eace-4109-b30a-87fe5e2da2e2</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>a3333b99-6104-46c2-873c-811cbe2dfd45</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>163a91ed-89c1-457d-af1d-730f52eed190</shipClassObjectId>
+  <name>
+   <english>Bogatry</english>
+   <japanese>ボガツイリ</japanese>
+   <chineseSimplified>博加特里</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>275a1073-d726-4ec3-964c-10576e906071</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Bogatyr</remark>
+  <objectId>87163a59-48ce-49d7-b37b-6bafa41e10c6</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8d189654-e874-43ef-96f7-c308ecda9ca8</shipClassObjectId>
+  <name>
+   <english>Niitaka</english>
+   <japanese>新高</japanese>
+   <chineseSimplified>新高</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>984dc3a7-e611-4b37-9a08-8d4256c8bbb3</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Niitaka
+
+</remark>
+  <objectId>c06764c2-f4b7-4dc8-b9c8-db1c9439e86c</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

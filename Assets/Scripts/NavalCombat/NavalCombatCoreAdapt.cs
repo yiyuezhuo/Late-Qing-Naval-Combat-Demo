@@ -172,7 +172,8 @@ namespace NavalCombatCore
                 var name = leader?.name.mergedName;
                 if (name == null)
                     return "[Not Specified]";
-                return $"Captain: <link=\"captain\"><color=#40a0ff><u>{name}</u></color></link>";
+                // return $"Captain: <link=\"captain\"><color=#40a0ff><u>{name}</u></color></link>";
+                return $"<link=\"captain\"><color=#40a0ff><u>{name}</u></color></link>";
             }
         }
 

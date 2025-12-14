@@ -123,6 +123,13 @@ public class GamePreference
     }
 
     [CreateProperty]
+    public float fetchInfoDisplayAccSecondsThreshold
+    {
+        get => UnityWebRequestImageReaderShower.displaybusyAccSecondsThreshold;
+        set => UnityWebRequestImageReaderShower.displaybusyAccSecondsThreshold = value;
+    }
+
+    [CreateProperty]
     public CoreParameter navalCombatCoreParameter => CoreParameter.Instance;
 
     public void SetShortLabelLanguageTypeByLocale(Locale locale)

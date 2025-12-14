@@ -7,202 +7,247 @@
             </Bindings>
         </ui:Label>
         <ui:ScrollView>
-            <ui:VisualElement style="flex-grow: 1;">
-                <ui:VisualElement data-source-path="dateTimeViewModel" style="flex-grow: 0; flex-direction: row;">
-                    <ui:Label text="UTC Datetime (+0):">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176145213067264)"/>
-                        </Bindings>
-                    </ui:Label>
-                    <ui:Label text="Year" style="margin-right: 0;">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176249026285568)"/>
-                        </Bindings>
-                    </ui:Label>
-                    <ui:IntegerField style="width: 75px;">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="year" binding-mode="TwoWay"/>
-                        </Bindings>
-                    </ui:IntegerField>
-                    <ui:Label text="Month" style="margin-right: 0; margin-left: 4px;">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176295079743488)"/>
-                        </Bindings>
-                    </ui:Label>
-                    <ui:IntegerField style="width: 50px;">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="month" binding-mode="TwoWay"/>
-                        </Bindings>
-                    </ui:IntegerField>
-                    <ui:Label text="Day" style="margin-right: 0; margin-left: 4px;">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176345788878848)"/>
-                        </Bindings>
-                    </ui:Label>
-                    <ui:IntegerField style="width: 50px;">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="day" binding-mode="TwoWay"/>
-                        </Bindings>
-                    </ui:IntegerField>
-                    <ui:Label text="Hour" style="margin-right: 0; margin-left: 4px;">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176389145399296)"/>
-                        </Bindings>
-                    </ui:Label>
-                    <ui:IntegerField style="width: 50px;">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="hour" binding-mode="TwoWay"/>
-                        </Bindings>
-                    </ui:IntegerField>
-                    <ui:Label text="Minute" style="margin-right: 0; margin-left: 4px;">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176449056837632)"/>
-                        </Bindings>
-                    </ui:Label>
-                    <ui:IntegerField style="width: 50px;">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="minute" binding-mode="TwoWay"/>
-                        </Bindings>
-                    </ui:IntegerField>
-                    <ui:Label text="Second" style="margin-right: 0; margin-left: 4px;">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176506451693568)"/>
-                        </Bindings>
-                    </ui:Label>
-                    <ui:IntegerField style="width: 50px;">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="second" binding-mode="TwoWay"/>
-                        </Bindings>
-                    </ui:IntegerField>
-                </ui:VisualElement>
-                <ui:Label text="UTC Time">
-                    <Bindings>
-                        <ui:DataBinding property="text" data-source-path="dateTime" binding-mode="ToTarget"/>
-                    </Bindings>
-                </ui:Label>
-                <ui:Label text="Offset Time">
-                    <Bindings>
-                        <ui:DataBinding property="text" data-source-path="referenceTimeZoneDateTimeOffset" binding-mode="ToTarget"/>
-                    </Bindings>
-                </ui:Label>
-                <ui:Toggle label="Has End DateTime">
-                    <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(32254508370923520)"/>
-                        <ui:DataBinding property="value" data-source-path="hasEndDateTime" binding-mode="TwoWay"/>
-                    </Bindings>
-                </ui:Toggle>
-                <ui:VisualElement style="flex-grow: 1;">
-                    <ui:VisualElement data-source-path="endDateTimeViewModel" style="flex-grow: 0; flex-direction: row;">
-                        <ui:Label text="UTC Datetime (+0):">
+            <ui:TabView>
+                <ui:Tab label="Common">
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:VisualElement data-source-path="dateTimeViewModel" style="flex-grow: 0; flex-direction: row;">
+                            <ui:Label text="UTC Datetime (+0):">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176145213067264)"/>
+                                </Bindings>
+                            </ui:Label>
+                            <ui:Label text="Year" style="margin-right: 0;">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176249026285568)"/>
+                                </Bindings>
+                            </ui:Label>
+                            <ui:IntegerField style="width: 75px;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="year" binding-mode="TwoWay"/>
+                                </Bindings>
+                            </ui:IntegerField>
+                            <ui:Label text="Month" style="margin-right: 0; margin-left: 4px;">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176295079743488)"/>
+                                </Bindings>
+                            </ui:Label>
+                            <ui:IntegerField style="width: 50px;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="month" binding-mode="TwoWay"/>
+                                </Bindings>
+                            </ui:IntegerField>
+                            <ui:Label text="Day" style="margin-right: 0; margin-left: 4px;">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176345788878848)"/>
+                                </Bindings>
+                            </ui:Label>
+                            <ui:IntegerField style="width: 50px;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="day" binding-mode="TwoWay"/>
+                                </Bindings>
+                            </ui:IntegerField>
+                            <ui:Label text="Hour" style="margin-right: 0; margin-left: 4px;">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176389145399296)"/>
+                                </Bindings>
+                            </ui:Label>
+                            <ui:IntegerField style="width: 50px;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="hour" binding-mode="TwoWay"/>
+                                </Bindings>
+                            </ui:IntegerField>
+                            <ui:Label text="Minute" style="margin-right: 0; margin-left: 4px;">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176449056837632)"/>
+                                </Bindings>
+                            </ui:Label>
+                            <ui:IntegerField style="width: 50px;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="minute" binding-mode="TwoWay"/>
+                                </Bindings>
+                            </ui:IntegerField>
+                            <ui:Label text="Second" style="margin-right: 0; margin-left: 4px;">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176506451693568)"/>
+                                </Bindings>
+                            </ui:Label>
+                            <ui:IntegerField style="width: 50px;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="second" binding-mode="TwoWay"/>
+                                </Bindings>
+                            </ui:IntegerField>
+                        </ui:VisualElement>
+                        <ui:Label text="UTC Time">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(32254205164687360)"/>
+                                <ui:DataBinding property="text" data-source-path="dateTime" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:Label>
-                        <ui:Label text="Year" style="margin-right: 0;">
+                        <ui:Label text="Offset Time">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176249026285568)"/>
+                                <ui:DataBinding property="text" data-source-path="referenceTimeZoneDateTimeOffset" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:Label>
-                        <ui:IntegerField style="width: 75px;">
+                        <ui:Toggle label="Has End DateTime">
                             <Bindings>
-                                <ui:DataBinding property="value" data-source-path="year" binding-mode="TwoWay"/>
-                            </Bindings>
-                        </ui:IntegerField>
-                        <ui:Label text="Month" style="margin-right: 0; margin-left: 4px;">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176295079743488)"/>
-                            </Bindings>
-                        </ui:Label>
-                        <ui:IntegerField style="width: 50px;">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="month" binding-mode="TwoWay"/>
-                            </Bindings>
-                        </ui:IntegerField>
-                        <ui:Label text="Day" style="margin-right: 0; margin-left: 4px;">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176345788878848)"/>
-                            </Bindings>
-                        </ui:Label>
-                        <ui:IntegerField style="width: 50px;">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="day" binding-mode="TwoWay"/>
-                            </Bindings>
-                        </ui:IntegerField>
-                        <ui:Label text="Hour" style="margin-right: 0; margin-left: 4px;">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176389145399296)"/>
-                            </Bindings>
-                        </ui:Label>
-                        <ui:IntegerField style="width: 50px;">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="hour" binding-mode="TwoWay"/>
-                            </Bindings>
-                        </ui:IntegerField>
-                        <ui:Label text="Minute" style="margin-right: 0; margin-left: 4px;">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176449056837632)"/>
-                            </Bindings>
-                        </ui:Label>
-                        <ui:IntegerField style="width: 50px;">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="minute" binding-mode="TwoWay"/>
-                            </Bindings>
-                        </ui:IntegerField>
-                        <ui:Label text="Second" style="margin-right: 0; margin-left: 4px;">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176506451693568)"/>
-                            </Bindings>
-                        </ui:Label>
-                        <ui:IntegerField style="width: 50px;">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="second" binding-mode="TwoWay"/>
-                            </Bindings>
-                        </ui:IntegerField>
-                    </ui:VisualElement>
-                    <ui:Label text="End UTC Time">
-                        <Bindings>
-                            <ui:DataBinding property="text" data-source-path="endDateTime" binding-mode="ToTarget"/>
-                        </Bindings>
-                    </ui:Label>
-                    <ui:Label text="end datetime offset">
-                        <Bindings>
-                            <ui:DataBinding property="text" data-source-path="referenceTimeZoneEndDateTimeOffset" binding-mode="ToTarget"/>
-                        </Bindings>
-                    </ui:Label>
-                    <Bindings>
-                        <ui:DataBinding property="style.display" data-source-path="hasEndDateTime" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
-                    </Bindings>
-                </ui:VisualElement>
-                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                    <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
-                        <LocalizedEnumField type-str="NavalCombatCore.VisibilityDescription" label="Visibility">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176578996375552)"/>
-                                <ui:DataBinding property="value" data-source-path="visibility" source-to-ui-converters="VisibilityDescription =&gt; int" ui-to-source-converters="int =&gt; VisibilityDescription" binding-mode="TwoWay"/>
-                            </Bindings>
-                        </LocalizedEnumField>
-                        <ui:Toggle label="Moon Light">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="hasMoonlight" binding-mode="TwoWay"/>
-                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176640765890560)"/>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(32254508370923520)"/>
+                                <ui:DataBinding property="value" data-source-path="hasEndDateTime" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:Toggle>
-                        <ui:IntegerField label="Sea State (Beaufort)">
+                        <ui:VisualElement style="flex-grow: 1;">
+                            <ui:VisualElement data-source-path="endDateTimeViewModel" style="flex-grow: 0; flex-direction: row;">
+                                <ui:Label text="UTC Datetime (+0):">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(32254205164687360)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:Label text="Year" style="margin-right: 0;">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176249026285568)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:IntegerField style="width: 75px;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="year" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:IntegerField>
+                                <ui:Label text="Month" style="margin-right: 0; margin-left: 4px;">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176295079743488)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:IntegerField style="width: 50px;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="month" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:IntegerField>
+                                <ui:Label text="Day" style="margin-right: 0; margin-left: 4px;">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176345788878848)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:IntegerField style="width: 50px;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="day" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:IntegerField>
+                                <ui:Label text="Hour" style="margin-right: 0; margin-left: 4px;">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176389145399296)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:IntegerField style="width: 50px;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="hour" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:IntegerField>
+                                <ui:Label text="Minute" style="margin-right: 0; margin-left: 4px;">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176449056837632)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:IntegerField style="width: 50px;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="minute" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:IntegerField>
+                                <ui:Label text="Second" style="margin-right: 0; margin-left: 4px;">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176506451693568)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:IntegerField style="width: 50px;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="second" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:IntegerField>
+                            </ui:VisualElement>
+                            <ui:Label text="End UTC Time">
+                                <Bindings>
+                                    <ui:DataBinding property="text" data-source-path="endDateTime" binding-mode="ToTarget"/>
+                                </Bindings>
+                            </ui:Label>
+                            <ui:Label text="end datetime offset">
+                                <Bindings>
+                                    <ui:DataBinding property="text" data-source-path="referenceTimeZoneEndDateTimeOffset" binding-mode="ToTarget"/>
+                                </Bindings>
+                            </ui:Label>
                             <Bindings>
-                                <ui:DataBinding property="value" data-source-path="seaStateBeaufort" binding-mode="TwoWay"/>
-                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(177281374523392)"/>
+                                <ui:DataBinding property="style.display" data-source-path="hasEndDateTime" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                             </Bindings>
-                        </ui:IntegerField>
-                        <ui:Instance template="PictureField" data-source-path="backgroundPictureReference" name="BackgroundPictureField">
-                            <AttributeOverrides element-name="FieldLabel" text="BG"/>
-                        </ui:Instance>
-                        <ui:Image source="project://database/Assets/Textures/Yoshino_Top.jpg?fileID=2800000&amp;guid=0c70fb7fbba505e45ab1805eed3853c0&amp;type=3#Yoshino_Top" scale-mode="ScaleToFit" style="height: 75px;">
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                            <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
+                                <LocalizedEnumField type-str="NavalCombatCore.VisibilityDescription" label="Visibility">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176578996375552)"/>
+                                        <ui:DataBinding property="value" data-source-path="visibility" source-to-ui-converters="VisibilityDescription =&gt; int" ui-to-source-converters="int =&gt; VisibilityDescription" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </LocalizedEnumField>
+                                <ui:Toggle label="Moon Light">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="hasMoonlight" binding-mode="TwoWay"/>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176640765890560)"/>
+                                    </Bindings>
+                                </ui:Toggle>
+                                <ui:IntegerField label="Sea State (Beaufort)">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="seaStateBeaufort" binding-mode="TwoWay"/>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(177281374523392)"/>
+                                    </Bindings>
+                                </ui:IntegerField>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
+                                <ui:Instance template="PictureField" data-source-path="backgroundPictureReference" name="BackgroundPictureField">
+                                    <AttributeOverrides element-name="FieldLabel" text="BG"/>
+                                </ui:Instance>
+                                <ui:Image source="project://database/Assets/Textures/Yoshino_Top.jpg?fileID=2800000&amp;guid=0c70fb7fbba505e45ab1805eed3853c0&amp;type=3#Yoshino_Top" scale-mode="ScaleToFit" name="Image" style="height: 75px;">
+                                    <Bindings>
+                                        <ui:DataBinding property="source" data-source-path="backgroundPictureReference.texture2d" binding-mode="ToTarget"/>
+                                    </Bindings>
+                                </ui:Image>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:Label text="Description">
                             <Bindings>
-                                <ui:DataBinding property="source" data-source-path="backgroundPictureReference.texture2d" binding-mode="ToTarget"/>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(178159569506304)"/>
                             </Bindings>
-                        </ui:Image>
+                        </ui:Label>
+                        <ui:VisualElement data-source-path="globalDescription">
+                            <ui:TabView>
+                                <ui:Tab label="English">
+                                    <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="english" binding-mode="TwoWay"/>
+                                        </Bindings>
+                                    </ui:TextField>
+                                </ui:Tab>
+                                <ui:Tab label="Japanese">
+                                    <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="japanese" binding-mode="TwoWay"/>
+                                        </Bindings>
+                                    </ui:TextField>
+                                </ui:Tab>
+                                <ui:Tab label="Chinese (Sim)">
+                                    <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="chineseSimplified" binding-mode="TwoWay"/>
+                                        </Bindings>
+                                    </ui:TextField>
+                                </ui:Tab>
+                                <ui:Tab label="Chinese (Trad)">
+                                    <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="chineseTraditional" binding-mode="TwoWay"/>
+                                        </Bindings>
+                                    </ui:TextField>
+                                </ui:Tab>
+                            </ui:TabView>
+                        </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
+                </ui:Tab>
+                <ui:Tab label="Debug">
+                    <ui:VisualElement style="flex-grow: 1;">
                         <ui:VisualElement data-source-path="weaponSimulationAssignmentClock" style="border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                             <ui:Label text="Weapon Target Assignment Clock">
                                 <Bindings>
@@ -240,46 +285,24 @@
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(178062957907968)"/>
                             </Bindings>
                         </ui:Toggle>
+                        <ui:Toggle label="First Remain One Operational Fleet">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="firstRemainOneOperationalFleet" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:Toggle>
+                        <ui:Toggle label="First Disengaged">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="firstDisengaged" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:Toggle>
+                        <ui:Toggle label="First Reach End Date Time">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="firstReachEndDateTime" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:Toggle>
                     </ui:VisualElement>
-                </ui:VisualElement>
-                <ui:Label text="Description">
-                    <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(178159569506304)"/>
-                    </Bindings>
-                </ui:Label>
-                <ui:VisualElement data-source-path="globalDescription">
-                    <ui:TabView>
-                        <ui:Tab label="English">
-                            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="english" binding-mode="TwoWay"/>
-                                </Bindings>
-                            </ui:TextField>
-                        </ui:Tab>
-                        <ui:Tab label="Japanese">
-                            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="japanese" binding-mode="TwoWay"/>
-                                </Bindings>
-                            </ui:TextField>
-                        </ui:Tab>
-                        <ui:Tab label="Chinese (Sim)">
-                            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="chineseSimplified" binding-mode="TwoWay"/>
-                                </Bindings>
-                            </ui:TextField>
-                        </ui:Tab>
-                        <ui:Tab label="Chinese (Trad)">
-                            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="chineseTraditional" binding-mode="TwoWay"/>
-                                </Bindings>
-                            </ui:TextField>
-                        </ui:Tab>
-                    </ui:TabView>
-                </ui:VisualElement>
-            </ui:VisualElement>
+                </ui:Tab>
+            </ui:TabView>
         </ui:ScrollView>
         <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
             <ui:Button text="Import" name="ImportButton" style="flex-basis: 100px; flex-grow: 1;">

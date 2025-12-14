@@ -65,7 +65,7 @@ namespace NavalCombatCore
         public bool doingStep;
         public bool firstLoaded; // if false, loading will trigger First Load Scenario Trigger and set to true. Save Edit will set it back to false in the file.
         // public int referenceTimeZoneOffset = +8; // +8 timezone
-        public bool effectiveCompleted; // TODO: Add it to UI?
+        public bool firstRemainOneOperationalFleet; // TODO: Add it to UI?
         // public DateTimeOffset GetReferenceTimeZoneDateTimeOffset()
         // {
         //     var dateTimeOffset = new DateTimeOffset(dateTime);
@@ -78,6 +78,14 @@ namespace NavalCombatCore
         public DateTime endDateTime = new DateTime(1895, 4, 17, 0, 0, 0, DateTimeKind.Utc);
 
         public PictureReference backgroundPictureReference = new();
+
+        public void ResetEditSaveRelatedStates()
+        {
+            firstLoaded = false;
+            firstRemainOneOperationalFleet = false;
+            firstDisengaged = false;
+            firstReachEndDateTime = false;
+        }
 
         public static float GetTimeZoneOffset(float longitude)
         {

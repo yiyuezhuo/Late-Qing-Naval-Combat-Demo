@@ -12,7 +12,7 @@
                         <ui:DataBinding property="source" data-source-path="shipClassProperty.portraitIconReference.texture2d" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Image>
-                <ui:Label text="ClassLabel" name="ClassLabel">
+                <ui:Label text="ClassLabel" name="ClassLabel" style="white-space: normal;">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="shipClassDescLink" binding-mode="ToTarget"/>
                     </Bindings>

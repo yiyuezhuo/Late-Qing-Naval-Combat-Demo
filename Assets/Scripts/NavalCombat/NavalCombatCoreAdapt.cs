@@ -344,7 +344,7 @@ namespace NavalCombatCore
             {
                 var shipClass = EntityManager.Instance.GetParent<ShipClass>(this);
                 var shipClassName = shipClass != null ? shipClass.name.GetShortName() : "_";
-                return $"{shipClassName} | {name.GetShortName()} ({shellSizeInch}″, {maxRateOfFireShootPerMin}r/min, {damageRating})";;
+                return $"{shipClassName} | {name.GetShortName()} ({shellSizeInch}″, {maxRateOfFireShootPerMin}r/min, {damageRating}, {fireControlType.code})";;
             }
         }
     }

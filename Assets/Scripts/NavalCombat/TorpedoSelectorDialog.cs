@@ -13,7 +13,9 @@ public class TorpedoSectorSelectorDialog
 
     public void OnCreated(object sender, VisualElement root)
     {
-        items = SuperGameState.Instance.currentGameState.shipClasses.Select(
+        items = SuperGameState.Instance.currentGameState.shipClasses
+        .Where(s => s.torpedoSector.ammunitionCapacity > 0)
+        .Select(
             s => new Item(){shipClass=s}
         ).ToList();
     }

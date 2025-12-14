@@ -2444,4 +2444,129 @@ https://www.edohakuarchives.jp/detail-110167.html
   <remark>https://hush.web.fc2.com/name/Biography/2271shiya.html#anchor211620</remark>
   <objectId>984dc3a7-e611-4b37-9a08-8d4256c8bbb3</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Yashiro Rokurō</english>
+   <japanese>八代六郎</japanese>
+   <chineseSimplified>八代六郎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Rokuro_Yashiro.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Yashiro_Rokur%C5%8D</remark>
+  <objectId>27b34805-4813-4193-8160-304ad10d00b3</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Arinobu Matsumoto</english>
+   <japanese>松本有信</japanese>
+   <chineseSimplified>松本有信</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://jahis.law.nagoya-u.ac.jp/who/docs/who4-9222</remark>
+  <objectId>ba5c909c-3b68-4e83-a449-b86953e5f621</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Miyadzi Sadatoki</english>
+   <japanese>宮地貞辰</japanese>
+   <chineseSimplified>宫地贞辰</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://hush.web.fc2.com/name/Biography/627132miyashi.html</remark>
+  <objectId>6ae397b5-8625-41a1-85b6-4d70f6af42c1</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Murakami Kakuichi</english>
+   <japanese>村上格一</japanese>
+   <chineseSimplified>村上格一</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Murakami_Kakuichi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Murakami_Kakuichi
+</remark>
+  <objectId>0174bff2-ae6c-426b-af8b-c33b295b9981</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Vsevolod Rudnev</english>
+   <japanese>ルドネフ・フョードロヴィチ</japanese>
+   <chineseSimplified>弗谢沃洛德·鲁德涅夫  </chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Vsevolod_Fyodorovich_Rudnev.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D0%B4%D0%BD%D0%B5%D0%B2,_%D0%92%D1%81%D0%B5%D0%B2%D0%BE%D0%BB%D0%BE%D0%B4_%D0%A4%D1%91%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87
+
+Руднев, Всеволод Фёдорович</remark>
+  <objectId>9777b95c-0ac6-4fa5-b080-f990f902855f</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Grigory Belyaev</english>
+   <japanese>グリゴリー・ベリャーエフ</japanese>
+   <chineseSimplified>格里戈里·别利亚耶夫</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\G._P._Belyaev.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D0%BB%D1%8F%D0%B5%D0%B2,_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9_%D0%9F%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%D0%B8%D1%87
+
+Беляев, Григорий Павлович</remark>
+  <objectId>2f47c986-2f57-4b72-9935-3d3f8d086263</objectId>
+ </Leader>
 </ArrayOfLeader>

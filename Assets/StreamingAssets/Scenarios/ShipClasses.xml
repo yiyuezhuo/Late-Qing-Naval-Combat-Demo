@@ -2637,7 +2637,7 @@ Of course, these two classifications make no practical difference aside from the
   <rapidFireBatteryRecords>
    <RapidFireBatteryRecord>
     <name>
-     <english>2.2‘’ 6pdf 8ctw QF</english>
+     <english>2.2‘’ 6pdf 8cwt QF</english>
      <chineseSimplified>2门口径57毫米单管哈乞开司式机关炮，2门口径47毫米单管哈开司式机关炮</chineseSimplified>
      <chineseTraditional>2 門 57 毫米速射炮,2 門 47 毫米速射炮</chineseTraditional>
     </name>
@@ -16303,5 +16303,491 @@ Sometime called Niitaka class.
   </portraitIconReference>
   <ram>Ram</ram>
   <objectId>163a91ed-89c1-457d-af1d-730f52eed190</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Hayabusa</english>
+   <japanese>隼型水雷艇</japanese>
+   <chineseSimplified>隼型鱼雷艇</chineseSimplified>
+  </name>
+  <type>TorpedoBoat</type>
+  <country>Japan</country>
+  <displacementTons>152</displacementTons>
+  <complementMen>26</complementMen>
+  <lengthFoot>148</lengthFoot>
+  <beamFoot>16</beamFoot>
+  <draftFoot>4.8</draftFoot>
+  <engineDesc>
+   <english>VTE</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>2 Normand</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>14'' Mk X</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>53f98ca9-79cb-4b47-9895-cc627223d442</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>Midship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>715e2f39-7473-4faa-9959-dd37a5aecdb9</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>After</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="60" CoverageDeg="240" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>b72158b4-ef35-46ba-af88-29f8505f8481</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="1000" speedKnots="30" />
+    <TorpedoSetting rangeYards="3000" speedKnots="20" />
+   </torpedoSettings>
+   <ammunitionCapacity>3</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>2.2‘’ 6pdf 8cwt QF</english>
+     <chineseSimplified />
+     <chineseTraditional />
+    </name>
+    <maxRangeYards>7500</maxRangeYards>
+    <effectiveRangeYards>3375</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <damageFactor>11</damageFactor>
+    <barrelsLevelPort>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>224</damagePoint>
+  <speedKnots>28</speedKnots>
+  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>28</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>28</float>
+   <float>14</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>28</float>
+   <float>17</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="7" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="7" increaseSpeedKnots="5" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="12" increaseSpeedKnots="3" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="15" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="18" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+  </armorRating>
+  <remark>https://en.wikipedia.org/wiki/Hayabusa-class_torpedo_boat
+
+- Hayabusa 隼
+- Kasasagi 鵲
+- Manazuru 真鶴
+- Chidori 千鳥
+- Kari 雁
+- Aotaka 蒼鷹
+- Hato 鴿
+- Tsubame 燕
+- Hibari 雲雀
+- Kiji 雉
+- Sagi 鷺
+- Uzura 鶉
+- Kamome 鴎
+- Hashitaka 鷂
+- Ootori 鴻</remark>
+  <portraitReference>
+   <path>Pictures\Ships\Hayabusa.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\Hayabusa_Top.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\Hayabusa_Icon.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <ram>None</ram>
+  <objectId>b0405588-457f-4015-b3e2-7d1950c4569b</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>TB39</english>
+   <japanese>第三十九号型水雷艇</japanese>
+   <chineseSimplified>第39号型鱼雷艇</chineseSimplified>
+  </name>
+  <type>TorpedoBoat</type>
+  <country>Japan</country>
+  <displacementTons>102</displacementTons>
+  <complementMen>20</complementMen>
+  <lengthFoot>152</lengthFoot>
+  <beamFoot>15</beamFoot>
+  <draftFoot>5.2</draftFoot>
+  <engineDesc>
+   <english>VTE</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>2 Yarrow</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>14'' Mk X</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>42484d0d-d56c-4b8b-bb0b-ff57f6a8afe1</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>Midship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>ad78bdbe-61fb-4097-9061-bd8b6121b36a</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>After</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="60" CoverageDeg="240" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>e9a29702-d6f8-4b9d-9d92-18f2fc6fa82a</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="800" speedKnots="30" />
+   </torpedoSettings>
+   <ammunitionCapacity>3</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>3pdr 5cwt Mk I, II</english>
+     <chineseSimplified />
+     <chineseTraditional />
+    </name>
+    <maxRangeYards>7000</maxRangeYards>
+    <effectiveRangeYards>3150</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <damageFactor>11</damageFactor>
+    <barrelsLevelPort>
+     <int>1</int>
+     <int>1</int>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>1</int>
+     <int>1</int>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>183</damagePoint>
+  <speedKnots>26</speedKnots>
+  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>26</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>26</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>26</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="6" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="6" increaseSpeedKnots="5" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="11" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="13" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="16" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+  </armorRating>
+  <remark>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B9%9D%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
+
+- TB 39
+- TB 40
+- TB 41
+- TB 42
+- TB 43
+- TB 62
+- TB 63
+- TB 64
+- TB 65
+- TB 66 </remark>
+  <portraitReference>
+   <path>Pictures\Ships\TB 42.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\Hayabusa_Top.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\Hayabusa_Icon.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <ram>None</ram>
+  <objectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>TB67</english>
+   <japanese>第六十七号型水雷艇</japanese>
+   <chineseSimplified>第67型鱼雷艇</chineseSimplified>
+  </name>
+  <type>TorpedoBoat</type>
+  <country>Japan</country>
+  <displacementTons>87</displacementTons>
+  <complementMen>24</complementMen>
+  <lengthFoot>132</lengthFoot>
+  <beamFoot>16</beamFoot>
+  <draftFoot>3.5</draftFoot>
+  <engineDesc>
+   <english>VTE</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>2 Yarrow</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>14'' Mk X</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>0c2bfcda-8945-435e-b92b-b39e8efd33c4</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>Midship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>148ca2ef-49d1-4b2e-83e8-1fbf5897f1b4</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>After</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="60" CoverageDeg="240" isCrossDeckFire="false" />
+     </mountArcs>
+     <useRestAngle>false</useRestAngle>
+     <restAngleDeg>0</restAngleDeg>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <objectId>1982b59e-47c8-46d8-86a9-127c19d9cd17</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="1000" speedKnots="30" />
+    <TorpedoSetting rangeYards="3000" speedKnots="20" />
+   </torpedoSettings>
+   <ammunitionCapacity>3</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>3pdr 5cwt Mk I, II</english>
+     <chineseSimplified />
+     <chineseTraditional />
+    </name>
+    <maxRangeYards>7000</maxRangeYards>
+    <effectiveRangeYards>3150</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <damageFactor>11</damageFactor>
+    <barrelsLevelPort>
+     <int>1</int>
+     <int>1</int>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>1</int>
+     <int>1</int>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>0</damagePoint>
+  <speedKnots>23</speedKnots>
+  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>23</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>23</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>23</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="5" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="4" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="9" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="13" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+  </armorRating>
+  <remark>https://ja.wikipedia.org/wiki/%E7%AC%AC%E5%85%AD%E5%8D%81%E4%B8%83%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
+
+- TB 67
+- TB 68
+- TB 69
+- TB 70
+- TB 71
+- TB 72
+- TB 73
+- TB 74
+- TB 75</remark>
+  <portraitReference>
+   <path>Pictures\Ships\TB 68.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\Hayabusa_Top.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\Hayabusa_Icon.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <ram>None</ram>
+  <objectId>040f6fba-25c1-4cbd-bb0e-0b8f41246a0b</objectId>
  </ShipClass>
 </ArrayOfShipClass>

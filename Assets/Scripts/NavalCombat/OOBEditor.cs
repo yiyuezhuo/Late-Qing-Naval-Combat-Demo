@@ -37,6 +37,9 @@ public class OOBEditor : HideableDocument<OOBEditor>
     }
     public State state = State.Idle;
 
+    Dictionary<int, string> treeViewIdxToObjectId = new();
+    Dictionary<string, int> objectidToTreeViewIdx = new();
+
     // protected override void Awake()
     void OnEnable()
     {
@@ -265,6 +268,8 @@ public class OOBEditor : HideableDocument<OOBEditor>
 
     List<TreeViewItemData<string>> CreateTreeViewRootItems() // Use List<string> (objectId based denoting?) However Tree Items is a volatile and temp so objectId and other lowered structure doesn't make a lot of senses. 
     {
+        treeViewIdxToObjectId.Clear();
+
         // Collect Established groups
         var items = new List<TreeViewItemData<string>>();
         var idx = 0;
@@ -274,10 +279,15 @@ public class OOBEditor : HideableDocument<OOBEditor>
         foreach (var group in state.shipGroups.Where(g => g.parentObjectId == null))
         {
             var subItems = CreateTreeViewItemsForGroup(group, ref idx);
+
             var d = new TreeViewItemData<string>(idx, group.objectId, subItems);
-            idx++;
             items.Add(d);
+            treeViewIdxToObjectId[idx] = group.objectId;
+
+            idx++;
         }
+
+        objectidToTreeViewIdx = treeViewIdxToObjectId.ToDictionary(p => p.Value, p => p.Key);
 
         return items;
     }
@@ -293,15 +303,28 @@ public class OOBEditor : HideableDocument<OOBEditor>
             {
                 var childGroupItems = CreateTreeViewItemsForGroup(childGroup, ref idx);
                 ret.Add(new TreeViewItemData<string>(idx, childGroup.objectId, childGroupItems));
+                treeViewIdxToObjectId[idx] = childGroup.objectId;
+
                 idx++;
             }
             else // ShipLog or null
             {
                 ret.Add(new TreeViewItemData<string>(idx, childrenObjectId));
+                treeViewIdxToObjectId[idx] = childrenObjectId;
+
                 idx++;
             }
         }
         return ret;
+    }
+
+    public void TrySetSelection(string objectId)
+    {
+        if(objectidToTreeViewIdx.TryGetValue(objectId, out int treeViewIdx))
+        {
+            oobTreeView.SetSelectionById(treeViewIdx);
+            oobTreeView.ScrollToItemById(treeViewIdx);
+        }
     }
 
     void Update()

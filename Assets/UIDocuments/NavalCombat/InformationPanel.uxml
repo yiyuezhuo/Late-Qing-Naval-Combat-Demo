@@ -32,7 +32,7 @@
                     </ui:VisualElement>
                     <ui:Image name="LeaderImage" style="flex-shrink: 0; flex-basis: 40px; max-height: 50px;">
                         <Bindings>
-                            <ui:DataBinding property="source" data-source-path="leaderProp.portraitReference.texture2d" binding-mode="ToTarget"/>
+                            <ui:DataBinding property="source" data-source-path="captainPortraitTexture" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Image>
                 </ui:VisualElement>

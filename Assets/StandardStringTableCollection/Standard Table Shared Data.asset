@@ -2221,7 +2221,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 36604534312308736
-    m_Key: Vladivostok Squadron Raid
+    m_Key: Vladivostok Squadron Raiding
     m_Metadata:
       m_Items: []
   - m_Id: 36678942066380800
@@ -2238,6 +2238,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 36693952150802432
     m_Key: Set By Torpedo Selector
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38036319399219200
+    m_Key: Class Remark
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38132922621530112
+    m_Key: Rounds Per Gun
     m_Metadata:
       m_Items: []
   m_Metadata:

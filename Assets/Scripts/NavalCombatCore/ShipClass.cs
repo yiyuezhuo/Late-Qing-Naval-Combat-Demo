@@ -448,8 +448,6 @@ namespace NavalCombatCore
         public List<PenetrationTableRecord> penetrationTableRecords = new();
         public List<MountLocationRecord> mountLocationRecords = new();
 
-
-
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
             foreach (var m in mountLocationRecords)
@@ -461,6 +459,11 @@ namespace NavalCombatCore
         public override string ToString()
         {
             return $"BatteryRecord({name.GetMergedNamePure()})";
+        }
+
+        public float GetRoundsPerGun()
+        {
+            return (float)ammunitionCapacity / mountLocationRecords.Sum(mnt => mnt.mounts * mnt.barrels);
         }
 
         static XmlSerializer serializer = new XmlSerializer(typeof(BatteryRecord));

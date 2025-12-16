@@ -3428,16 +3428,152 @@ Questionable leadership records:
   </fateDesc>
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
+  <defaultLeaderReference>
+   <referenceObjectId>62b88df1-0c4e-4132-ae05-f2deb6223700</referenceObjectId>
+  </defaultLeaderReference>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Peresvet
+
+Пересвет
+
+Peresviet or Peresvet</remark>
   <objectId>afd264d6-6650-4a3a-b4e6-f1e1116a3b78</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>2ef28891-97ec-4bfd-8226-9267e895c2b6</shipClassObjectId>
   <name>
    <english>Pobyeda</english>
+   <japanese>ポベーダ</japanese>
+   <chineseSimplified>胜利</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>122c0be7-5f1e-49a9-8886-5ef42ba9c8c5</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Pobeda
+
+Победа</remark>
+  <objectId>89155ba3-eb23-4ced-91f4-caf2b39eeba3</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>bbecbb24-578d-4f73-8ce1-9f1345f98c79</shipClassObjectId>
+  <name>
+   <english>Retvizan</english>
+   <japanese>レトヴィザン</japanese>
+   <chineseSimplified>列特维赞</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>3a759f08-6df5-4d0f-9621-394e64411eac</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Retvizan
+
+Ретвизан</remark>
+  <objectId>1d4ca256-c8eb-4473-8e06-944a65fa450e</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ee43a17c-8616-475d-95ad-1ce668dde6c3</shipClassObjectId>
+  <name>
+   <english>Bayan</english>
+   <japanese>バヤーン</japanese>
+   <chineseSimplified>巴扬</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>8cf52fc9-e4fc-4aa2-81f7-a6d7e6953093</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Bayan_(1900)
+
+Баян</remark>
+  <objectId>f89516c3-3d99-40fb-9561-b2891498aa6f</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ee43a17c-8616-475d-95ad-1ce668dde6c3</shipClassObjectId>
+  <name>
+   <english>Bayan (15.08.1904)</english>
+   <japanese>バヤーン (15.08.1904)</japanese>
+   <chineseSimplified>巴扬 (15.08.1904)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>fe435604-b241-4b8d-a9de-85248c390247</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>72220116-b46e-4a5b-ba68-b6c5d07af6c2</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>75b68e4e-f965-4280-b0f5-a77902cf326e</shipClassObjectId>
+  <name>
+   <english>Askold</english>
+   <japanese>アスコリド</japanese>
+   <chineseSimplified>阿斯科尔德</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>de5c3853-f922-47fa-81d3-31564419f71c</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Askold
+
+Аскольд</remark>
+  <objectId>9173c1e2-c2b7-4243-ad26-384d7d8aa12d</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>025afc73-b558-4402-bd99-183e76905cf8</shipClassObjectId>
+  <name>
+   <english>Diana</english>
+   <japanese>ヂアーナ</japanese>
+   <chineseSimplified>戴安娜</chineseSimplified>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3451,6 +3587,33 @@ Questionable leadership records:
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <objectId>89155ba3-eb23-4ced-91f4-caf2b39eeba3</objectId>
+  <remark>Диана
+
+https://en.wikipedia.org/wiki/Russian_cruiser_Diana</remark>
+  <objectId>d4bf9697-57a5-4400-8e00-735253603cf9</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>025afc73-b558-4402-bd99-183e76905cf8</shipClassObjectId>
+  <name>
+   <english>Pallada</english>
+   <japanese>パルラーダ</japanese>
+   <chineseSimplified>帕拉达</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Pallada_(1899)
+
+Паллада</remark>
+  <objectId>ff4970a5-746d-47dd-ad33-d2bc5d593b5d</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

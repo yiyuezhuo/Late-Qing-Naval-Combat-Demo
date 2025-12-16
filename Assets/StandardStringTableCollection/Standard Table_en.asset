@@ -2307,7 +2307,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 36604534312308736
-    m_Localized: 'Vladivostok Squadron Raid '
+    m_Localized: 'Vladivostok Squadron Raiding '
     m_Metadata:
       m_Items: []
   - m_Id: 36678942066380800
@@ -2324,6 +2324,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 36693952150802432
     m_Localized: Set By Torpedo Selector
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38036319399219200
+    m_Localized: Class Remark
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38132922621530112
+    m_Localized: Rounds Per Gun
     m_Metadata:
       m_Items: []
   references:

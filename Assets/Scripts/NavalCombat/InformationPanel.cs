@@ -1,6 +1,8 @@
 using NavalCombatCore;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
+using System.Collections;
 
 public class InformationPanel : SingletonDocument<InformationPanel>
 {
@@ -51,6 +53,27 @@ public class InformationPanel : SingletonDocument<InformationPanel>
             } }
         });
 
+        var oobParentLabel = root.Q<Label>("OOBParentLabel");
+        Utils.RegisterLinkTag(oobParentLabel, new()
+        {
+            {"group", () =>{
+                var member = GameManager.Instance.selectedShipLog as IShipGroupMember;
+                var parentGroup = member.GetParentGroup();
+                if(parentGroup != null)
+                {
+                    OOBEditor.Instance.Show();
+                    BehaviourUtils.Instance.StartCoroutine(SetSelectionForOOBEditorTreeViewNextFrame(parentGroup.objectId));
+                }
+            }}
+        });
+
+    }
+
+    static IEnumerator SetSelectionForOOBEditorTreeViewNextFrame(string objectId)
+    {
+        // yield return new WaitForNextFrameUnit();
+        yield return null;
+        OOBEditor.Instance.TrySetSelection(objectId);
     }
 
     // Update is called once per frame

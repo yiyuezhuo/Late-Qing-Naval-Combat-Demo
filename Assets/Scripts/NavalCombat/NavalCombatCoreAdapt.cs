@@ -178,13 +178,18 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
+        public Texture2D captainPortraitTexture => leader?.portraitReference?.texture2d ?? null; 
+
+        [CreateProperty]
         public string oobParentDesc
         {
             get
             {
                 var member = (IShipGroupMember)this;
                 var parentGroup = member.GetParentGroup();
-                return parentGroup?.name.mergedName ?? "[Not Specified]";
+                // return parentGroup?.name.mergedName ?? "[Not Specified]";
+                var name = parentGroup?.name.mergedName ?? "[Not Specified]";
+                return $"<link=\"group\"><color=#40a0ff><u>{name}</u></color></link>";
             }
         }
 
@@ -344,9 +349,12 @@ namespace NavalCombatCore
             {
                 var shipClass = EntityManager.Instance.GetParent<ShipClass>(this);
                 var shipClassName = shipClass != null ? shipClass.name.GetShortName() : "_";
-                return $"{shipClassName} | {name.GetShortName()} ({shellSizeInch}″, {maxRateOfFireShootPerMin}r/min, {damageRating}, {fireControlType.code})";;
+                return $"{shipClassName} | {name.GetShortName()} ({shellSizeInch}″, {maxRateOfFireShootPerMin}r/min, {damageRating}, {fireControlType.code}, {roundsPerGun} rpg)";
             }
         }
+
+        [CreateProperty]
+        public float roundsPerGun => GetRoundsPerGun();
     }
 
     // public partial class RapidFireBatteryRecord

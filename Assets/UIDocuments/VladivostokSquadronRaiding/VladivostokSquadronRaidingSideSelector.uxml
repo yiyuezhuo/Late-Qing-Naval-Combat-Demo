@@ -1,0 +1,56 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="VladivostokSquadronRaidingSideSelector, Assembly-CSharp" class="panel-dialog" style="width: 736px; height: 484px;">
+        <ui:Label text="Select a side" class="title"/>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement data-source-path="japanese" style="flex-grow: 1; flex-basis: 50px;">
+                <ui:Label text="Country Name">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="country" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="Group Name">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="groupNameLabelName" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="Leader Name">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="leaderLabelName" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Image style="flex-grow: 1;">
+                    <Bindings>
+                        <ui:DataBinding property="source" data-source-path="leaderPortrait" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Image>
+                <ui:Button text="Select"/>
+            </ui:VisualElement>
+            <ui:VisualElement data-source-path="russia" style="flex-grow: 1; flex-basis: 50px;">
+                <ui:Label text="Country Name">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="country" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="Group Name">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="groupNameLabelName" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="Leader Name">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="leaderLabelName" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Image style="flex-grow: 1;">
+                    <Bindings>
+                        <ui:DataBinding property="source" data-source-path="leaderPortrait" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Image>
+                <ui:Button text="Select"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement>
+            <ui:Button text="Cancel" name="CancelButton"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

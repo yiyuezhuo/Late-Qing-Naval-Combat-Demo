@@ -6759,13 +6759,13 @@
    </obstacleAvoidCheckClock>
    <doingStep>false</doingStep>
    <firstLoaded>false</firstLoaded>
-   <effectiveCompleted>false</effectiveCompleted>
+   <firstRemainOneOperationalFleet>false</firstRemainOneOperationalFleet>
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
    <hasEndDateTime>true</hasEndDateTime>
    <endDateTime>1894-09-17T10:00:00Z</endDateTime>
    <backgroundPictureReference>
-    <path>Pictures\Backgrounds\Battle_of_the_Yellow_Sea_by_Korechika.jpg</path>
+    <path>Pictures\Backgrounds\MainMenu.jpg</path>
     <isBuiltin>true</isBuiltin>
    </backgroundPictureReference>
   </scenarioState>

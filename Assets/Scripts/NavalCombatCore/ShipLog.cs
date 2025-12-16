@@ -1359,7 +1359,7 @@ namespace NavalCombatCore
         {
             return shipClass.type switch
             {
-                ShipType.TorpedoBoat => LowLevelCoursePlanner.ExtrapolatedRecord.Role.Melee,
+                ShipType.TorpedoBoat or ShipType.Destroyer => LowLevelCoursePlanner.ExtrapolatedRecord.Role.Melee,
                 ShipType.Transport => LowLevelCoursePlanner.ExtrapolatedRecord.Role.Disengage,
                 _ => LowLevelCoursePlanner.ExtrapolatedRecord.Role.Line
             };

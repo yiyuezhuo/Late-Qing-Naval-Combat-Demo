@@ -2569,4 +2569,119 @@ https://www.edohakuarchives.jp/detail-110167.html
 Беляев, Григорий Павлович</remark>
   <objectId>2f47c986-2f57-4b72-9935-3d3f8d086263</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Ivan Uspensky</english>
+   <japanese>イワン・ウスペンスキー</japanese>
+   <chineseSimplified>伊万·乌斯宾斯基</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Ivan Uspensky.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://tverigrad.ru/publication/165-let-so-dnja-rozhdenija-komandujushhego-tihookeanskim-flotom-ivana-uspenskogo/
+
+https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D0%BF%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9,_%D0%98%D0%B2%D0%B0%D0%BD_%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%D0%B8%D1%87
+
+Успенский, Иван Петрович</remark>
+  <objectId>d4bb62bf-3786-4fa7-9180-83684f04a983</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nikolai Chernyshev</english>
+   <japanese>ニコライ・チェルヌィシェフ</japanese>
+   <chineseSimplified>尼古拉·切尔内舍夫</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Russia_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>BarelyCompetent</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ru.wikipedia.org/wiki/%D0%A7%D0%B5%D1%80%D0%BD%D1%8B%D1%88%D1%91%D0%B2,_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%9A%D1%83%D0%B7%D1%8C%D0%BC%D0%B8%D1%87
+
+Чернышёв, Николай Кузьмич
+</remark>
+  <objectId>7b10e5e4-d031-4278-9a72-fc408571288e</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nikolai Essen</english>
+   <japanese>ニコライ・エッセン</japanese>
+   <chineseSimplified>尼古拉·埃森</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Nikolai_Essen.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ru.wikipedia.org/wiki/%D0%AD%D1%81%D1%81%D0%B5%D0%BD,_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%9E%D1%82%D1%82%D0%BE%D0%B2%D0%B8%D1%87_%D1%84%D0%BE%D0%BD
+
+Эссен, Николай Оттович фон
+</remark>
+  <objectId>15b8d867-2985-4087-bb9c-990ee2d68dfd</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nikolai Yakovlev</english>
+   <japanese>ニコライ・ヤコヴレフ</japanese>
+   <chineseSimplified>尼古拉·雅科夫列夫</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Yakovlev_NM.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ru.wikipedia.org/wiki/%D0%AF%D0%BA%D0%BE%D0%B2%D0%BB%D0%B5%D0%B2,_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%9C%D0%B0%D1%82%D0%B2%D0%B5%D0%B5%D0%B2%D0%B8%D1%87
+
+Яковлев, Николай Матвеевич
+</remark>
+  <objectId>4b5df0a8-8edd-468c-84b0-967587b52776</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ivan Grigorovich</english>
+   <japanese>イワン・グリゴロヴィチ</japanese>
+   <chineseSimplified>伊万·格里戈罗维奇</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Ivan Grigorovich.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87,_%D0%98%D0%B2%D0%B0%D0%BD_%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD%D0%BE%D0%B2%D0%B8%D1%87
+
+Ива́н Константи́нович Григоро́вич </remark>
+  <objectId>30ed3237-938c-48b9-993e-cc0bdae25342</objectId>
+ </Leader>
 </ArrayOfLeader>

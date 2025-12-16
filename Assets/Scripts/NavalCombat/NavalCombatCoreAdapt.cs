@@ -516,6 +516,9 @@ namespace NavalCombatCore
             (shipClass?.lengthFoot ?? 300) / 1000 * 100, // 300 foot => 30 (30%)
             LengthUnit.Percent
         );
+
+        [CreateProperty]
+        public string shipClassRemark => shipClass?.remark ?? "";
     }
 
     public partial class RapidFiringTargettingStatus

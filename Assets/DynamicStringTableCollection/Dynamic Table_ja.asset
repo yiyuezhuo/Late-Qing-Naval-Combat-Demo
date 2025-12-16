@@ -2385,6 +2385,10 @@ MonoBehaviour:
     m_Localized: "RJH - \u851A\u5C71\u6C96\u6D77\u6226"
     m_Metadata:
       m_Items: []
+  - m_Id: 22811019098886144
+    m_Localized: "RJH - \u30D9\u30BA\u30AA\u30D6\u30E9\u30BE\u30D5\u63D0\u7763\u306E\u653B\u6483"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

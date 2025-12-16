@@ -1,31 +1,31 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
-    <ui:Template name="NamedShipVisualizer" src="project://database/Assets/UIDocuments/NavalCombat/NamedShipVisualizer.uxml?fileID=9197481963319205126&amp;guid=31d24939061571546a16f9a8bd6443ed&amp;type=3#NamedShipVisualizer" />
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor"/>
+    <ui:Template name="NamedShipVisualizer" src="project://database/Assets/UIDocuments/NavalCombat/NamedShipVisualizer.uxml?fileID=9197481963319205126&amp;guid=31d24939061571546a16f9a8bd6443ed&amp;type=3#NamedShipVisualizer"/>
     <ui:VisualElement data-source-type="NamedShipEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Named Ship" class="title">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62777823236096)" />
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62777823236096)"/>
             </Bindings>
         </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="flex-grow: 0; flex-basis: 25%; flex-shrink: 0; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-                <ui:ListView name="NamedShipListView" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/NamedShipLabel.uxml?fileID=9197481963319205126&amp;guid=be84ada722b028f4b8b3547e1e58ed36&amp;type=3#NamedShipLabel" show-add-remove-footer="true" reorderable="true" data-source-path="currentGameState.namedShips" style="flex-grow: 1;" />
+                <ui:ListView name="NamedShipListView" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/NamedShipLabel.uxml?fileID=9197481963319205126&amp;guid=be84ada722b028f4b8b3547e1e58ed36&amp;type=3#NamedShipLabel" show-add-remove-footer="true" reorderable="true" data-source-path="currentGameState.namedShips" style="flex-grow: 1;"/>
                 <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;">
                     <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
                         <ui:Button text="Import" name="ImportButton" style="flex-basis: 50px; flex-grow: 1;">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(81564987461632)" />
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(81564987461632)"/>
                             </Bindings>
                         </ui:Button>
                         <ui:Button text="Export" name="ExportButton" style="flex-basis: 50px; flex-grow: 1;">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(81630221471744)" />
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(81630221471744)"/>
                             </Bindings>
                         </ui:Button>
                     </ui:VisualElement>
                     <ui:Button text="Confirm" name="ConfirmButton">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)"/>
                         </Bindings>
                     </ui:Button>
                 </ui:VisualElement>
@@ -34,25 +34,25 @@
                 <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; flex-direction: row;">
                     <ui:TextField label="Ship Class" readonly="true" style="flex-grow: 1;">
                         <Bindings>
-                            <ui:DataBinding property="value" data-source-path="shipClassDesc" binding-mode="ToTarget" />
-                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62707518312448)" />
+                            <ui:DataBinding property="value" data-source-path="shipClassDesc" binding-mode="ToTarget"/>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62707518312448)"/>
                         </Bindings>
                     </ui:TextField>
                     <ui:Button text="Select A Class" name="SelectShipClassButton" style="flex-grow: 1;">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100213576077312)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100213576077312)"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Go to Ship Class" name="GotoShipClassButton">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100318664364032)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100318664364032)"/>
                         </Bindings>
                     </ui:Button>
                 </ui:VisualElement>
                 <ui:Label text="Not Selected or binding is not valid">
                     <Bindings>
-                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="NamedShip to DisplayStyle (Not)" />
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66691591213056)" />
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="NamedShip to DisplayStyle (Not)"/>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66691591213056)"/>
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: column;">
@@ -61,89 +61,99 @@
                             <ui:VisualElement style="flex-grow: 1.5; flex-basis: 100px;">
                                 <ui:ScrollView>
                                     <ui:Instance template="GlobalStringEditor" data-source-path="name">
-                                        <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+                                        <AttributeOverrides element-name="GlobalStringLabel" text="Name"/>
                                     </ui:Instance>
                                     <ui:TextField label="Default Leader" readonly="true">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="defaultLeaderReference.name" binding-mode="ToTarget" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100436700467200)" />
+                                            <ui:DataBinding property="value" data-source-path="defaultLeaderReference.name" binding-mode="ToTarget"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100436700467200)"/>
                                         </Bindings>
                                     </ui:TextField>
                                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                         <ui:Button text="Select Default Leader" name="SelectDefaultLeaderButton" style="flex-grow: 1;">
                                             <Bindings>
-                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100642477215744)" />
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100642477215744)"/>
                                             </Bindings>
                                         </ui:Button>
                                         <ui:Button text="Go to Leader" name="GotoLeaderButton">
                                             <Bindings>
-                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100719363002368)" />
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100719363002368)"/>
                                             </Bindings>
                                         </ui:Button>
                                     </ui:VisualElement>
                                     <ui:SliderInt label="Crew Rating" high-value="10" low-value="-2" show-input-field="true">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="crewRating" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100779911974912)" />
+                                            <ui:DataBinding property="value" data-source-path="crewRating" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100779911974912)"/>
                                         </Bindings>
                                     </ui:SliderInt>
                                     <ui:Slider label="Speed Modofier" high-value="1" low-value="-1" show-input-field="true">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="speedModifier" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100841559855104)" />
+                                            <ui:DataBinding property="value" data-source-path="speedModifier" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100841559855104)"/>
                                         </Bindings>
                                     </ui:Slider>
                                     <ui:SliderInt label="Applicable Year Begin" high-value="1945" low-value="1870" show-input-field="true">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="applicableYearBegin" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(101004500176896)" />
+                                            <ui:DataBinding property="value" data-source-path="applicableYearBegin" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(101004500176896)"/>
                                         </Bindings>
                                     </ui:SliderInt>
                                     <ui:SliderInt label="Applicable Year End" high-value="1945" low-value="1870" show-input-field="true">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="applicableYearEnd" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(101116425179136)" />
+                                            <ui:DataBinding property="value" data-source-path="applicableYearEnd" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(101116425179136)"/>
                                         </Bindings>
                                     </ui:SliderInt>
                                     <ui:Instance template="GlobalStringEditor" data-source-path="builderDesc">
-                                        <AttributeOverrides element-name="GlobalStringLabel" text="Builder" />
+                                        <AttributeOverrides element-name="GlobalStringLabel" text="Builder"/>
                                     </ui:Instance>
                                     <ui:TextField label="Launch">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="launchedDate" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(101219756052480)" />
+                                            <ui:DataBinding property="value" data-source-path="launchedDate" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(101219756052480)"/>
                                         </Bindings>
                                     </ui:TextField>
                                     <ui:TextField label="Complete">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="completedDate" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(101318590631936)" />
+                                            <ui:DataBinding property="value" data-source-path="completedDate" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(101318590631936)"/>
                                         </Bindings>
                                     </ui:TextField>
                                     <ui:Instance template="GlobalStringEditor" data-source-path="fateDesc">
-                                        <AttributeOverrides element-name="GlobalStringLabel" text="Fate" />
+                                        <AttributeOverrides element-name="GlobalStringLabel" text="Fate"/>
                                     </ui:Instance>
                                     <ui:Toggle label="Not Available at Beginning">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="notAvailableForFirstSinoJapaneseWar" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(101401436524544)" />
+                                            <ui:DataBinding property="value" data-source-path="notAvailableForFirstSinoJapaneseWar" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(101401436524544)"/>
                                         </Bindings>
                                     </ui:Toggle>
                                 </ui:ScrollView>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                                <ui:Instance template="NamedShipVisualizer" name="NamedShipVisualizer" />
-                                <ui:Label text="Remark" />
+                                <ui:Instance template="NamedShipVisualizer" name="NamedShipVisualizer"/>
+                                <ui:Label text="Remark"/>
                                 <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="min-height: 100px; white-space: normal;">
                                     <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
+                                        <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:TextField>
+                                <ui:Label text="Class Remark">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(38036319399219200)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:TextField multiline="true" enabled="false" style="min-height: 100px;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="shipClassRemark" binding-mode="ToTarget"/>
                                     </Bindings>
                                 </ui:TextField>
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:ScrollView>
                     <Bindings>
-                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="NamedShip to DisplayStyle" />
+                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="NamedShip to DisplayStyle"/>
                     </Bindings>
                 </ui:VisualElement>
             </ui:VisualElement>

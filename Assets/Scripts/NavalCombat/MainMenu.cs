@@ -78,6 +78,13 @@ public class MainMenu : SingletonDocument<MainMenu>
 
             GotoEmptyNavalGame(true);
         };
+
+        root.Q<Button>("VladivostokSquadronRaidingButton").clicked += () =>
+        {
+            Debug.Log("VladivostokSquadronRaidingButton clicked");
+
+            DialogRoot.Instance.PopupVladivostokSquadronRaidingSideSelectorDialog();
+        };
     }
 
     void GotoEmptyNavalGame(bool skirmish)
@@ -136,6 +143,17 @@ public class MainMenu : SingletonDocument<MainMenu>
 
     [CreateProperty]
     public string versionStr => $"Version: {Application.version}";
+
+    static string mainMenuBackgroundPath = $"{Application.streamingAssetsPath}/Pictures/Backgrounds/MainMenu.jpg";
+
+    [CreateProperty]
+    public StyleBackground mainMenuBackground
+    {
+        get
+        {
+            return UnityWebRequestImageReader.Instance.FetchStyleBackground(mainMenuBackgroundPath);
+        }
+    }
 
     void OnFullStateXMLLoaded(string text)
     {

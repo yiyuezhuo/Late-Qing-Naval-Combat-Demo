@@ -241,6 +241,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset rapidFireBatteryRecordSelectorDialogDocument;
     public VisualTreeAsset torpedoSectorSelectorDialogDocument;
     public VisualTreeAsset scenarioStateEditorDialogDocument;
+    public VisualTreeAsset vladivostokSquadronRaidingSideSelectorDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -252,6 +253,24 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     {
 
     }
+
+    public void PopupVladivostokSquadronRaidingSideSelectorDialog()
+    {
+        var vladivostokSquadronRaidingSideSelector = new VladivostokSquadronRaidingSideSelector();
+
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=vladivostokSquadronRaidingSideSelectorDialogDocument,
+            templateDataSource=vladivostokSquadronRaidingSideSelector
+        };
+
+        // tempDialog.onCreated += torpedoSectorSelectorDialog.OnCreated;
+        // tempDialog.onConfirmed += torpedoSectorSelectorDialog.OnConfirm;
+
+        tempDialog.Popup();
+    }
+
 
     public void PopupTorpedoSectorSelectorDialog(Action<ShipClass> callback)
     {

@@ -2365,6 +2365,14 @@ MonoBehaviour:
     m_Key: RJH - Admiral Bezobrazov Strikes.scen.xml
     m_Metadata:
       m_Items: []
+  - m_Id: 23878405260480512
+    m_Key: LeaderTrait.Lucky
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23878409618362368
+    m_Key: LeaderTrait.Unlucky
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

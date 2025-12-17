@@ -3616,4 +3616,168 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Diana</remark>
 Паллада</remark>
   <objectId>ff4970a5-746d-47dd-ad33-d2bc5d593b5d</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>b3b1a455-f46e-47aa-8aa8-2c240399348d</shipClassObjectId>
+  <name>
+   <english>Boyarin</english>
+   <japanese>ボヤーリン</japanese>
+   <chineseSimplified>博雅林</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Boyarin
+https://naval-encyclopedia.com/ww1/russia/boyarin.php
+
+Боярин</remark>
+  <objectId>27252cd4-03d7-47b3-a503-76cde30923e3</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>025afc73-b558-4402-bd99-183e76905cf8</shipClassObjectId>
+  <name>
+   <english>Aurora</english>
+   <japanese>アヴローラ</japanese>
+   <chineseSimplified>阿芙乐尔</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Aurora
+
+Авро́ра</remark>
+  <objectId>5a0541e2-71c7-4f78-aa0a-90f371ad95bd</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ef43861e-c0f7-4f2c-bd99-dd117a3e94f1</shipClassObjectId>
+  <name>
+   <english>Novik</english>
+   <japanese>ヴィーク</japanese>
+   <chineseSimplified>诺维克</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>15b8d867-2985-4087-bb9c-990ee2d68dfd</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>43361019-635c-4668-8394-ae70f37310d0</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ef43861e-c0f7-4f2c-bd99-dd117a3e94f1</shipClassObjectId>
+  <name>
+   <english>Novik (16.03.1904)</english>
+   <japanese>ヴィーク(16.03.1904)</japanese>
+   <chineseSimplified>诺维克 (16.03.1904)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>9fc2f0d9-876e-486e-86ea-9f1ecae6cd05</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Novik
+
+Новик</remark>
+  <objectId>00384385-c2d8-4a81-bf93-6b1eb26e3993</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>a37c48c4-507b-454a-9568-58901c8a7e67</shipClassObjectId>
+  <name>
+   <english>Rastoropni</english>
+   <japanese>ブイヌイ</japanese>
+   <chineseSimplified>布伊内</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>a27451bb-ac79-4e90-99a9-780fb5b45aa3</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>3c94c9c5-b30d-4448-9985-47387141748f</shipClassObjectId>
+  <name>
+   <english>Beztrashni</english>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>3fafb59f-c1fc-4915-866a-559125d3efaf</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>495a5148-7253-403d-a09f-d54b5374c4cc</shipClassObjectId>
+  <name>
+   <english>Mikasa</english>
+   <japanese>三笠</japanese>
+   <chineseSimplified>三笠</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>0aa2881a-c363-4367-b8b2-508f7880e5c7</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa
+
+</remark>
+  <objectId>63b7b57c-04c4-434a-a1d1-7fb4736177a6</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

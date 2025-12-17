@@ -21,6 +21,14 @@ namespace NavalCombatCore
             {
                 mountStatusRecord.Step(deltaSeconds);
             }
+
+            if(GetAmmunitionMagazinePlusLoaded() <= 0)
+            {
+                foreach(var mountStatusRecord in mountStatus)
+                {
+                    mountStatusRecord.ResetTargetting();
+                }
+            }
         }
 
         public int GetAmmunitionMagazinePlusLoaded()

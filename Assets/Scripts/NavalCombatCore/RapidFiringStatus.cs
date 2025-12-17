@@ -420,6 +420,11 @@ namespace NavalCombatCore
             }
 
             targettingRecords.RemoveAll(r => r.allocated == 0);
+
+            if(ammunition <= 0)
+            {
+                targettingRecords.Clear();
+            }
         }
     }
 

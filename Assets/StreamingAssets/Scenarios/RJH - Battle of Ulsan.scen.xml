@@ -3750,7 +3750,7 @@
      <chineseSimplified>第2战队</chineseSimplified>
     </name>
     <leaderReference>
-     <referenceObjectId>43bfbde8-70e0-4d42-8122-3dc082557429</referenceObjectId>
+     <referenceObjectId>74729e4e-1b29-410d-8e4a-c4e384e48fba</referenceObjectId>
     </leaderReference>
     <type>General</type>
     <formation>General</formation>
@@ -3842,7 +3842,7 @@
  </navalGameState>
  <viewState>
   <xRotation>35.0770226</xRotation>
-  <yRotation>229.852112</yRotation>
+  <yRotation>229.852127</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>
  <eventState>

@@ -19,7 +19,7 @@
                 </ui:Label>
                 <ui:Label text="Ship&#39;sOobParent" name="OOBParentLabel" style="white-space: normal;">
                     <Bindings>
-                        <ui:DataBinding property="text" data-source-path="oobParentDesc" binding-mode="ToTarget"/>
+                        <ui:DataBinding property="text" data-source-path="oobParentDescLink" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">

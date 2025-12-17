@@ -57,7 +57,9 @@
   <landStrategic>Unknown</landStrategic>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
-  <traits />
+  <traits>
+   <LeaderTrait>Lucky</LeaderTrait>
+  </traits>
   <remark>https://en.wikipedia.org/wiki/T%C5%8Dg%C5%8D_Heihachir%C5%8D</remark>
   <objectId>bbdc13c1-a909-411c-b949-ad82485ab108</objectId>
  </Leader>
@@ -2628,7 +2630,7 @@ https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D0%BF%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
   <navalOperational>Unknown</navalOperational>
-  <navalTactical>Average</navalTactical>
+  <navalTactical>AboveAverage</navalTactical>
   <landStrategic>Unknown</landStrategic>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
@@ -2815,5 +2817,134 @@ https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D0%BF%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D
 
 Николай Карлович Рейценштейн</remark>
   <objectId>de5c3853-f922-47fa-81d3-31564419f71c</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Maximilian Schulz</english>
+   <japanese>マクシミリアン・シュルツ</japanese>
+   <chineseSimplified>马克西米利安·舒尔茨</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Maximilian Schulz.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ru.wikipedia.org/wiki/%D0%A8%D1%83%D0%BB%D1%8C%D1%86,_%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%B8%D0%BB%D0%B8%D0%B0%D0%BD_%D0%A4%D1%91%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87
+
+Максимилиа́н (Михаи́л) Фёдорович фон Шульц </remark>
+  <objectId>9fc2f0d9-876e-486e-86ea-9f1ecae6cd05</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Misu Sōtarō</english>
+   <japanese>三須宗太郎</japanese>
+   <chineseSimplified>三须宗太郎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Misu_Sotaro.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Misu_S%C5%8Dtar%C5%8D</remark>
+  <objectId>74729e4e-1b29-410d-8e4a-c4e384e48fba</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Asai Masajirō  </english>
+   <japanese>浅井正次郎</japanese>
+   <chineseSimplified>浅井正次郎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Asai Masajirō.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>http://bujinkensyokai.web.fc2.com/aichigk.html
+
+ 翌７月呉水雷団長、３６年１１月第一駆逐隊司令となり日露戦争出征となる。
+戦役中に「熊野丸」艦長に転じ戦役末期に佐世保水雷団長に就任した。</remark>
+  <objectId>9120649a-1ee1-414d-bb7b-bbc0434ba974</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Oskar Starck</english>
+   <japanese>オスカル・スタルク</japanese>
+   <chineseSimplified>奥斯卡·斯塔克</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Oskar_Victorovich_Stark.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Average</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Oskar_Starck
+
+Старк, Оскар Викторович</remark>
+  <objectId>b06c5673-e679-4671-aa13-9e6bfb97bb5d</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Stepan Makarov</english>
+   <japanese>ステパン・マカロフ</japanese>
+   <chineseSimplified>斯捷潘·马卡罗夫</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Stepan_Osipovitsj_Makarov.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>AboveAverage</navalStrategic>
+  <navalOperational>AboveAverage</navalOperational>
+  <navalTactical>AboveAverage</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Stepan_Makarov
+
+Степан Осипович Макаров</remark>
+  <objectId>ee2d16d0-6f60-4303-9a7d-70b76d51ee17</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Hikojirō Ijichi</english>
+   <japanese>伊地知彦次郎</japanese>
+   <chineseSimplified>伊地知彦次郎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Hikojirō Ijichi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Hikojir%C5%8D_Ijichi</remark>
+  <objectId>0aa2881a-c363-4367-b8b2-508f7880e5c7</objectId>
  </Leader>
 </ArrayOfLeader>

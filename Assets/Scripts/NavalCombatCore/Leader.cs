@@ -22,6 +22,8 @@ namespace CoreUtils
         ExperiencedStrategist, // Leader may get the trait if it generate a combat in a theater (average probability) and barely hold planning position in a intense theater (low-probability, Fleet in being, Fabian).
         ExperiencedNavalBureaucrat, // Leader may get the trait when it has role in the high command, general staff or work on budget decision and competition.
         NotFromNavalBackground, // Assigned to Ding Ruchang
+        Lucky, // Tōshō Heihachirō
+        Unlucky // Marklov
     }
 
     public class Leader : IObjectIdLabeled

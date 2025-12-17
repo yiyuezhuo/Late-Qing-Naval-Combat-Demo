@@ -347,10 +347,11 @@ namespace NavalCombatCore
         public int mounts;
         // public List<MountArcRecord> mountArcs = new() { new() };
         public List<MountArcRecord> mountArcs = new();
-        public bool useRestAngle; // If rest angle is not overriden, it's derived from arc.
-        public float restAngleDeg; // Graphic purpose only
+        // public bool useRestAngle; // If rest angle is not overriden, it's derived from arc.
+        // public float restAngleDeg; // Graphic purpose only
         public bool trainable; // for torpedo
         public int reloadLimit; // Mainly for torpedo, 0 denotes no limit, > 0 will restrict max ammunition reloaded to the mount generated from this record. It represents separated ammunition room or single-shot torpedo tube.
+        public bool defaultNarrow;
         public string SummaryArcs() => string.Join(",", mountArcs.Select(arc => arc.Summary()));
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
@@ -377,11 +378,70 @@ namespace NavalCombatCore
             {MountLocation.Midship, new(){new(){startDeg=30, CoverageDeg=120}, new(){startDeg=210, CoverageDeg=120}}},
         };
 
-        public void SyncMountArcs()
+        public class DefaultMountArcsConfig
         {
-            if(mountLocation2defaultMountArcs.TryGetValue(mountLocation, out var defaultMountArcs))
+            public List<MountArcRecord> normal = new();
+            public List<MountArcRecord> narrow = new();
+        }
+
+        static Dictionary<MountLocation, DefaultMountArcsConfig> mountLocation2defaultMountArcsConfig = new()
+        {
+            {MountLocation.NotSpecified, new()},
+            {MountLocation.Forward, new(){
+                normal=new(){new(){startDeg=240, CoverageDeg=240}},
+                narrow=new(){new(){startDeg=345, CoverageDeg=30}}
+            }},
+            {MountLocation.StarboardForward, new(){
+                normal=new(){new(){startDeg=0, CoverageDeg=120}},
+                narrow=new(){new(){startDeg=75, CoverageDeg=30}}
+            }},
+            {MountLocation.StarboardMidship, new(){
+                normal=new(){new(){startDeg=30, CoverageDeg=120}},
+                narrow=new(){new(){startDeg=75, CoverageDeg=30}}
+            }},
+            {MountLocation.StarboardAfter, new(){
+                normal=new(){new(){startDeg=60, CoverageDeg=120}},
+                narrow=new(){new(){startDeg=75, CoverageDeg=30}}
+            }},
+            {MountLocation.After, new(){
+                normal=new(){new(){startDeg=60, CoverageDeg=240}},
+                narrow=new(){new(){startDeg=165, CoverageDeg=30}}
+            }},
+            {MountLocation.PortAfter, new(){
+                normal=new(){new(){startDeg=180, CoverageDeg=120}},
+                narrow=new(){new(){startDeg=255, CoverageDeg=30}}
+            }},
+            {MountLocation.PortMidship, new(){
+                normal=new(){new(){startDeg=210, CoverageDeg=120}},
+                narrow=new(){new(){startDeg=255, CoverageDeg=30}}
+            }},
+            {MountLocation.PortForward, new(){
+                normal=new(){new(){startDeg=240, CoverageDeg=120}},
+                narrow=new(){new(){startDeg=255, CoverageDeg=30}}
+            }},
+            {MountLocation.Midship, new(){
+                normal=new(){
+                    new(){startDeg=30, CoverageDeg=120},
+                    new(){startDeg=210, CoverageDeg=120}
+                },
+                narrow=new(){
+                    new(){startDeg=75, CoverageDeg=30},
+                    new(){startDeg=255, CoverageDeg=30}
+                }
+            }},
+        };
+
+        public void SyncDefaultMountArcs()
+        {
+            // if(mountLocation2defaultMountArcs.TryGetValue(mountLocation, out var defaultMountArcs))
+            // {
+            //     mountArcs.Clear();
+            //     mountArcs.AddRange(defaultMountArcs.Select(arc => arc.Clone()));
+            // }
+            if(mountLocation2defaultMountArcsConfig.TryGetValue(mountLocation, out var defaultMountArcsConfig))
             {
                 mountArcs.Clear();
+                var defaultMountArcs = defaultNarrow ? defaultMountArcsConfig.narrow : defaultMountArcsConfig.normal;
                 mountArcs.AddRange(defaultMountArcs.Select(arc => arc.Clone()));
             }
         }

@@ -2374,6 +2374,14 @@ MonoBehaviour:
     m_Localized: RJH - Admiral Bezobrazov Strikes
     m_Metadata:
       m_Items: []
+  - m_Id: 23878405260480512
+    m_Localized: Lucky
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23878409618362368
+    m_Localized: Unlucky
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

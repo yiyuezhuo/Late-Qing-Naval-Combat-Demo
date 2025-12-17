@@ -181,7 +181,7 @@ namespace NavalCombatCore
         public Texture2D captainPortraitTexture => leader?.portraitReference?.texture2d ?? null; 
 
         [CreateProperty]
-        public string oobParentDesc
+        public string oobParentDescLink
         {
             get
             {
@@ -190,6 +190,17 @@ namespace NavalCombatCore
                 // return parentGroup?.name.mergedName ?? "[Not Specified]";
                 var name = parentGroup?.name.mergedName ?? "[Not Specified]";
                 return $"<link=\"group\"><color=#40a0ff><u>{name}</u></color></link>";
+            }
+        }
+
+        [CreateProperty]
+        public string oobParentDesc
+        {
+            get
+            {
+                var member = (IShipGroupMember)this;
+                var parentGroup = member.GetParentGroup();
+                return parentGroup?.name.mergedName ?? "[Not Specified]";
             }
         }
 
@@ -678,9 +689,22 @@ namespace NavalCombatCore
             set
             {
                 mountLocation = value;
-                SyncMountArcs();
+                SyncDefaultMountArcs();
             }
         }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public bool defaultNarrowProp
+        {
+            get => defaultNarrow;
+            set
+            {
+                defaultNarrow = value;
+                SyncDefaultMountArcs();
+            }
+        }
+
     }
 }
 

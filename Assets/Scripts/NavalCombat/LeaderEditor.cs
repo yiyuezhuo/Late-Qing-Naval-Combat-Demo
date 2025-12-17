@@ -52,8 +52,8 @@ public class LeaderEditor : HideableDocument<LeaderEditor>
             IOManager.Instance.LoadTextFile(OnLeadersXMLLoaded, "xml");
         };
 
-        var portaitField = root.Q<VisualElement>("PortaitField");
-        PathReferenceBinder.BindPictureReference(portaitField);
+        var portraitField = root.Q<VisualElement>("PortraitField");
+        PathReferenceBinder.BindPictureReference(portraitField);
     }
 
     void OnLeadersXMLLoaded(string text)

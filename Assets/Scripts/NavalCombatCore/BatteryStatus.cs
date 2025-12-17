@@ -239,6 +239,14 @@ namespace NavalCombatCore
                 fcs.Step(deltaSeconds);
             foreach (var mnt in mountStatus)
                 mnt.Step(deltaSeconds);
+
+            if(ammunition.GetTotalValue() <= 0)
+            {
+                foreach(var fcs in fireControlSystemStatusRecords)
+                    fcs.ResetTargetting();
+                foreach(var mnt in mountStatus)
+                    mnt.ResetTargetting();
+            }
         }
 
         public string DescribeDetail()

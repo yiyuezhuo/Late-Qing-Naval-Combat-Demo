@@ -5,6 +5,7 @@ using NavalCombatCore;
 using System.Linq;
 using UnityEngine;
 using CoreUtils;
+using Unity.Properties;
 
 public class InsertShipComplexDialog
 {
@@ -29,9 +30,56 @@ public class InsertShipComplexDialog
 
     DropdownField shipGroupDropdownField;
 
+    string _filterMatchString = "";
+
+    [CreateProperty]
+    public string filterMatchString
+    {
+        get => _filterMatchString;
+        set
+        {
+            _filterMatchString = value;
+            RefreshColumns();
+        }
+    }
+
     static string suggestedGroupId; // This ID would be used to set default option for the dropdown field, though it's not ensured to be valid.
 
     public void OnCreated(object sender, VisualElement root)
+    {
+        validShipLogListView = root.Q<ListView>("ValidShipLogListView");
+        validNamedShipListView = root.Q<ListView>("ValidNamedShipListView");
+        validShipClassListView = root.Q<ListView>("ValidShipClassListView");
+
+        validShipLogListView.selectionChanged += (IEnumerable<object> objects) =>
+        {
+            mode = Mode.ShipLog;
+        };
+        
+        validNamedShipListView.selectionChanged += (IEnumerable<object> objects) =>
+        {
+            mode = Mode.NamedShip;
+        };
+        
+        validShipClassListView.selectionChanged += (IEnumerable<object> objects) =>
+        {
+            mode = Mode.ShipClass;
+        };
+
+        var gameState = NavalGameState.Instance;
+
+        shipGroupDropdownField = root.Q<DropdownField>("ShipGroupDropdownField");
+        shipGroupDropdownField.choices = gameState.shipGroups.Select(g => g.name.GetMergedName()).ToList();
+        var groupIdx = gameState.shipGroups.FindIndex(g => g.objectId == suggestedGroupId);
+        if(groupIdx != -1)
+        {
+            shipGroupDropdownField.index = groupIdx;
+        }
+
+        RefreshColumns();
+    }
+
+    public void RefreshColumns()
     {
         var gameState = NavalGameState.Instance;
 
@@ -43,30 +91,11 @@ public class InsertShipComplexDialog
         validNamedShips = gameState.namedShips.Where(s => !deployedNamedShipSet.Contains(s)).ToList();
         validShipClasses = gameState.shipClasses.ToList();
 
-        validShipLogListView = root.Q<ListView>("ValidShipLogListView");
-        validShipLogListView.selectionChanged += (IEnumerable<object> objects) =>
+        if(filterMatchString.Length > 0)
         {
-            mode = Mode.ShipLog;
-        };
-
-        validNamedShipListView = root.Q<ListView>("ValidNamedShipListView");
-        validNamedShipListView.selectionChanged += (IEnumerable<object> objects) =>
-        {
-            mode = Mode.NamedShip;
-        };
-
-        validShipClassListView = root.Q<ListView>("ValidShipClassListView");
-        validShipClassListView.selectionChanged += (IEnumerable<object> objects) =>
-        {
-            mode = Mode.ShipClass;
-        };
-
-        shipGroupDropdownField = root.Q<DropdownField>("ShipGroupDropdownField");
-        shipGroupDropdownField.choices = gameState.shipGroups.Select(g => g.name.GetMergedName()).ToList();
-        var groupIdx = gameState.shipGroups.FindIndex(g => g.objectId == suggestedGroupId);
-        if(groupIdx != -1)
-        {
-            shipGroupDropdownField.index = groupIdx;
+            validShipLogs = validShipLogs.Where(s => s.namedShip.name.MatchAny(filterMatchString)).ToList();
+            validNamedShips = validNamedShips.Where(s => s.name.MatchAny(filterMatchString)).ToList();
+            validShipClasses = validShipClasses.Where(s => s.name.MatchAny(filterMatchString)).ToList();
         }
     }
 

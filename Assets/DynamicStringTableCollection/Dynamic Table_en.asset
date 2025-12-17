@@ -2299,7 +2299,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17751035289964544
-    m_Localized: 'End Local DateTime: {0}'
+    m_Localized: No Armor
     m_Metadata:
       m_Items: []
   - m_Id: 17751090487005184
@@ -2380,6 +2380,138 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 23878409618362368
     m_Localized: Unlucky
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23983299845853184
+    m_Localized: Not Specified
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23983479676637184
+    m_Localized: No Armor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23983630390562816
+    m_Localized: Wrought Iron (1855)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986062629703680
+    m_Localized: Mild Steel (1876)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986180124741632
+    m_Localized: Compound Hard Steel Faced Wriought Iron (1878)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986226161422336
+    m_Localized: Nickel-Steel (1890)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986281392017408
+    m_Localized: Harvey Mild Steel (1891)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986335225909248
+    m_Localized: Harvey Nickel-Steel (1891)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986407799951360
+    m_Localized: Krupp Chrome Nickel Steel (Krupp Soft, 1894)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986477429592064
+    m_Localized: Krupp Cemented (KCa, 1894)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986539937304576
+    m_Localized: High Tensile Steel (1895)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986620438581248
+    m_Localized: Class A Armor (1900)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986653959458816
+    m_Localized: Krupp Nickel Steel (1900)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986713879285760
+    m_Localized: Krupp Non-Cemented (KNC, 1900)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986788944744448
+    m_Localized: Krupp Cemented (WW1 Era, 1905)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986838773075968
+    m_Localized: Witkowitzer KC (1905)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986900395790336
+    m_Localized: Class A Armor Midvale Non-Cemented (1907)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986935468560384
+    m_Localized: Class B Armor (1910)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986985594687488
+    m_Localized: Special Treatment Steel (STS, 1910)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23987026745004032
+    m_Localized: Class A Armor (1911)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23987106042515456
+    m_Localized: Krupp Cemented WW1 Era (1911)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989109569261568
+    m_Localized: Krupp Wolan Hard Nickel Steel (1925)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989197922275328
+    m_Localized: D Silicon-Manganese HT Steel (1925)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989321163509760
+    m_Localized: New Vickers Non-Cemented (NVNC, 1926)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989415162056704
+    m_Localized: Non Cemented Armor (NCA, 1926)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989496959373312
+    m_Localized: Krupp Cemented (KCa, 1928)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989580124033024
+    m_Localized: PO Homogenous Plate (1929)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989656221290496
+    m_Localized: Italian WW2 Era Krupp Cemented (1929)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989732658286592
+    m_Localized: British Cemented Armor (CA, 1933)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989818821873664
+    m_Localized: Class B Armor (1933)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989877873479680
+    m_Localized: Class A Armor (1933)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989912887529472
+    m_Localized: Vickers Non-Cemented (VH, 1937)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989987235762176
+    m_Localized: Molybdenum Non-Cemented (MNC, 1941)
     m_Metadata:
       m_Items: []
   references:

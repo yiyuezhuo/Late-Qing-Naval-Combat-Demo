@@ -2373,6 +2373,138 @@ MonoBehaviour:
     m_Key: LeaderTrait.Unlucky
     m_Metadata:
       m_Items: []
+  - m_Id: 23983299845853184
+    m_Key: ArmorType.NotSpecified
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23983479676637184
+    m_Key: ArmorType.NoArmor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23983630390562816
+    m_Key: ArmorType.WroughtIron
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986062629703680
+    m_Key: ArmorType.MildSteel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986180124741632
+    m_Key: ArmorType.CompoundHardSteelFacedWroughtIron
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986226161422336
+    m_Key: ArmorType.NickelSteel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986281392017408
+    m_Key: ArmorType.HarveyMildSteel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986335225909248
+    m_Key: ArmorType.HarveyNickelSteel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986407799951360
+    m_Key: ArmorType.KruppChromeNickelSteel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986477429592064
+    m_Key: ArmorType.KruppCemented1894
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986539937304576
+    m_Key: ArmorType.HighTensileSteel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986620438581248
+    m_Key: ArmorType.ClassAArmor1900
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986653959458816
+    m_Key: ArmorType.KruppNickelSteel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986713879285760
+    m_Key: ArmorType.KruppNonCemented
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986788944744448
+    m_Key: ArmorType.KruppCementedWW1Era1905
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986838773075968
+    m_Key: ArmorType.WitkowitzerKC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986900395790336
+    m_Key: ArmorType.ClassAArmorMidvaleNonCemented
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986935468560384
+    m_Key: ArmorType.ClassBArmor1910
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23986985594687488
+    m_Key: ArmorType.SpecialTreatmentSteel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23987026745004032
+    m_Key: ArmorType.ClassAArmor1911
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23987106042515456
+    m_Key: ArmorType.KruppCementedWW1Era1911
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989109569261568
+    m_Key: ArmorType.KruppWolanHardNickelSteel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989197922275328
+    m_Key: ArmorType.DSiliconManganeseHTSteel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989321163509760
+    m_Key: ArmorType.NewVickersNonCemented
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989415162056704
+    m_Key: ArmorType.NonCementedArmor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989496959373312
+    m_Key: ArmorType.KruppCemented1928
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989580124033024
+    m_Key: ArmorType.POHomogenousPlate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989656221290496
+    m_Key: ArmorType.ItalianWW2EraKruppCemented
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989732658286592
+    m_Key: ArmorType.BritishCementedArmor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989818821873664
+    m_Key: ArmorType.ClassBArmor1933
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989877873479680
+    m_Key: ArmorType.ClassAArmor1933
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989912887529472
+    m_Key: ArmorType.VickersNonCemented
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23989987235762176
+    m_Key: ArmorType.MolybdenumNonCemented
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

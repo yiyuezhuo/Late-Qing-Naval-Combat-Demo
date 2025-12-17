@@ -2248,6 +2248,10 @@ MonoBehaviour:
     m_Key: Rounds Per Gun
     m_Metadata:
       m_Items: []
+  - m_Id: 38619517602664448
+    m_Key: Filter
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

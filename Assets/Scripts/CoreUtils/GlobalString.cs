@@ -94,6 +94,14 @@ namespace CoreUtils
             return english == str || japanese == str || chineseSimplified == str || chineseTraditional == str;
         }
 
+        public bool MatchAny(string str)
+        {
+            return (english != null && english.Contains(str)) 
+                || (japanese != null && japanese.Contains(str))
+                || (chineseSimplified != null && chineseSimplified.Contains(str))
+                || (chineseTraditional != null && chineseTraditional.Contains(str));
+        }
+
         public override string ToString()
         {
             return $"GlobalString({english}, {japanese}, {chineseSimplified}, {chineseTraditional})";

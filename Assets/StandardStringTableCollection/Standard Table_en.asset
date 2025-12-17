@@ -2334,6 +2334,10 @@ MonoBehaviour:
     m_Localized: Rounds Per Gun
     m_Metadata:
       m_Items: []
+  - m_Id: 38619517602664448
+    m_Localized: Filter
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

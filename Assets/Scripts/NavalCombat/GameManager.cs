@@ -276,6 +276,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         //         }
         //     }
         // }
+
+        // foreach(var shipClass in NavalGameState.Instance.shipClasses)
+        // {
+        //     shipClass.armorRating.TryInferArmorType();
+        // }
     }
 
     public ViewState CaptureViewState()

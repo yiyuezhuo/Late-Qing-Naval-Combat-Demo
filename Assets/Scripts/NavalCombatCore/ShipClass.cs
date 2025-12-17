@@ -730,7 +730,45 @@ namespace NavalCombatCore
         Narrow
     }
 
-    public class ArmorRating // Carrier is ignored at this point
+    public enum ArmorType // SK5 Table A14 (ID is not encoded in the enum to simplify LocalizedEnum's binding)
+    {
+        NotSpecified, // Not Specified
+        NoArmor, // No Armor
+        WroughtIron, // 1, Wrought Iron, 1855-1890 (All) All naval armor, 0.6
+        MildSteel, // 2, Mild Steel, 1876-1945 (All) Some armor. 0.75
+        CompoundHardSteelFacedWroughtIron, // 3, Compound Hard Steel Faced Wriought Iron, 1878-1890 (All except France) Heavy vertical armor, 0.68
+        NickelSteel, // 9, Nickel-Steel, 1890-1925 All armor, 0.9
+        HarveyMildSteel, // 5, Harvey Mild Steel, 1891-1899 (All) Vertical armor 6'' and up, 0.74
+        HarveyNickelSteel, // 21, Harvey Nickel-Steel, 1891-1899 (All) Vertical armor 6'' and up, 0.78
+        KruppChromeNickelSteel, // 10, Krupp Chrome Nickel Steel (Krupp Soft), 1894-1918 (Germany) turret and CT roots and vertical light armor (to 3.2''), 0.95
+        KruppCemented1894, // 6, Krupp Cemented (KCa), 1894-1918 (Germany) Vertical armor 3.2'' and up, 0.83
+        HighTensileSteel, // 7, High Tensile Steel, 1895-1945 light armor and protective decks, 0.82
+        // KruppCemented, // 22, Krupp Cemented (KCa), 1898-1918 (All), 0.83
+        ClassAArmor1900, // 30, Class A Armor, 1900-1910 (USA) Vertical armor 4'' and up, 0.83
+        KruppNickelSteel, // 4, Krupp Nickel Steel, 1900-1918 (Germany) protective decks, 0.83
+        KruppNonCemented, // 12, Krupp Non-Cemented (KNC), 1900-1925 (Great Britain) turret and CT roof armor. Also Vertical armor (to 4''), 0.95
+        KruppCementedWW1Era1905, // 25, Krupp Cemented (WW1 Era), 1905-1910 (Britain/Italy/Japan) Vertical armor over 4'', 0.83
+        WitkowitzerKC, // 24, Witkowitzer KC, 1905-1918 (AustriaHungary) Vertical armor 3.2'' and up, 0.95
+        ClassAArmorMidvaleNonCemented, // 32, Class A Armor Midvale Non-Cemented, 1907-1912 (USA) Vertical armor 4'' and up, 0.88
+        ClassBArmor1910, // 16, Class B Armor, 1910-1932 (USA) Turret and CT root, gun mount, director and CT armor less than 4'', 0.95
+        SpecialTreatmentSteel, // 15, Special Treatment Steel (STS), 1910-1960 (USA) vertical hull armor under 5''. amounred decks, lower belts 2'' to 12'', 1.0
+        ClassAArmor1911, // 31, Class A Armor, 1911-1923 (USA) Vertical armor 4'' and up, 0.89
+        KruppCementedWW1Era1911, // 26, Krupp Cemented WW1 Era, 1911-1936 (Britain/Italy/Japan) Vertical armor over 4'', 0.85
+        KruppWolanHardNickelSteel, // 11, Krupp Wolan Hard Nickel Steel, 1925-1945 (Germany) horizontal and vertical armor (to 4.72''), 1.0
+        DSiliconManganeseHTSteel, // 8, D Silicon-Manganese HT Steel, 1925-1945 light armor (to 2'') and bulkheads, 0.90
+        NewVickersNonCemented, // 18, New Vickers Non-Cemented (NVNC), 1926-1945 (Japan), 0.95
+        NonCementedArmor, // 13, Non Cemented Armor (NCA), 1926-1945 (Great Britain) turret and CT roofs, armored decks and vertical armor less than 4'', 1.0
+        KruppCemented1928, // 23, Krupp Cemented (KCa), 1928-1945 (Germany) Vertical armor 3.94'' and up, 1.0
+        POHomogenousPlate, // 14, PO Homogenous Plate, 1929-1943 (Italy) turret and CT roofs, armored decks and vertical armor less than 4'', 1.0
+        ItalianWW2EraKruppCemented, // 28, Italian WW2 Era Krupp Cemented, 1929-1943 (Italy) Vertical armor over 4'', 1.0
+        BritishCementedArmor, // 27, British Cemented Armor (CA), 1933-1946 (Britain) Vertical battleship armor over 4'', 1.0
+        ClassBArmor1933, // 17, Class B Armor, 1933-1955 (USA) Turret roof, gun mount, director armor under 4''. Turret face 16'' and up. CT. 1.0
+        ClassAArmor1933, // 33, Class A Armor, 1933-1955 (USA) Vertical armor 5'' and up to 16'', 1.0
+        VickersNonCemented, // 29, Vickers Non-Cemented (VH), 1937-1945 (Japan) Vertical armor over 11'' and Yamato Class only. 0.84
+        MolybdenumNonCemented // 19, Molybdenum Non-Cemented (MNC), 1941-1945 (Japan) Deck armor for Yamato Class only. 0.97
+    }
+
+    public partial class ArmorRating // Carrier is ignored at this point
     {
         public float armorTypeFactor;
         public ArmorRatingReocrd deck = new(); // 1H
@@ -742,6 +780,87 @@ namespace NavalCombatCore
         public ArmorRatingReocrd barbette = new(); // 7V
         public ArmorRatingReocrd turretVertical = new(); // 8V
         public ArmorRatingReocrd superStructureVertical = new(); // 9V
+
+        public ArmorType armorType;
+
+        static Dictionary<ArmorType, float> armorTypeToFactor = new()
+        {
+            // { ArmorType.NotSpecified, 1 },
+            { ArmorType.NoArmor, 0},
+            { ArmorType.WroughtIron, 0.6f },
+            { ArmorType.MildSteel, 0.75f },
+            { ArmorType.CompoundHardSteelFacedWroughtIron, 0.68f },
+            { ArmorType.NickelSteel, 0.9f },
+            { ArmorType.HarveyMildSteel, 0.74f},
+            { ArmorType.HarveyNickelSteel, 0.78f },
+            { ArmorType.KruppChromeNickelSteel, 0.95f },
+            { ArmorType.KruppCemented1894, 0.83f },
+            { ArmorType.HighTensileSteel, 0.82f },
+            { ArmorType.ClassAArmor1900, 0.83f },
+            { ArmorType.KruppNickelSteel, 0.83f },
+            { ArmorType.KruppNonCemented, 0.95f },
+            { ArmorType.KruppCementedWW1Era1905, 0.83f },
+            { ArmorType.WitkowitzerKC, 0.95f },
+            { ArmorType.ClassAArmorMidvaleNonCemented, 0.88f },
+            { ArmorType.ClassBArmor1910, 0.95f },
+            { ArmorType.SpecialTreatmentSteel, 1f },
+            { ArmorType.ClassAArmor1911, 0.89f },
+            { ArmorType.KruppCementedWW1Era1911, 0.85f },
+            { ArmorType.KruppWolanHardNickelSteel, 1f },
+            { ArmorType.DSiliconManganeseHTSteel, 0.9f },
+            { ArmorType.NewVickersNonCemented, 0.95f },
+            { ArmorType.NonCementedArmor, 1f },
+            { ArmorType.KruppCemented1928, 1f },
+            { ArmorType.POHomogenousPlate, 1f },
+            { ArmorType.ItalianWW2EraKruppCemented, 1f },
+            { ArmorType.BritishCementedArmor, 1f },
+            { ArmorType.ClassBArmor1933, 1f },
+            { ArmorType.ClassAArmor1933, 1f },
+            { ArmorType.VickersNonCemented, 0.84f },
+            { ArmorType.MolybdenumNonCemented, 0.97f }
+        };
+
+        public void TryInferArmorType()
+        {
+            var pairs = armorTypeToFactor.Where(kv => kv.Value == armorTypeFactor).ToList();
+            if(pairs.Count == 1)
+            {
+                armorType = armorType = pairs[0].Key;
+                
+                return;
+            }
+            armorType = ArmorType.NotSpecified;
+        }
+
+        IEnumerable<ArmorRatingReocrd> IterateArmorRatingRecords()
+        {
+            yield return deck;
+            yield return turretHorizontal;
+            yield return superStructureHorizontal;
+            yield return conningTower;
+            yield return mainBelt;
+            yield return beltEnd;
+            yield return barbette;
+            yield return turretVertical;
+            yield return superStructureVertical;
+        }
+
+        void SetEffectInchByArmorTypeFactor()
+        {
+            foreach(var armorRatingRecord in IterateArmorRatingRecords())
+            {
+                armorRatingRecord.effectInch = MathF.Round(armorRatingRecord.actualInch * armorTypeFactor, 1);
+            }
+        }
+
+        public void TrySetFactorAndEffectInch()
+        {
+            if(armorTypeToFactor.TryGetValue(armorType, out var factor))
+            {
+                armorTypeFactor = factor;
+                SetEffectInchByArmorTypeFactor();
+            }
+        }
 
         public ArmorRatingReocrd GetRecord(ArmorLocation loc)
         {

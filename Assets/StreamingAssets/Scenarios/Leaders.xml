@@ -2947,4 +2947,146 @@ https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D0%BF%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D
   <remark>https://en.wikipedia.org/wiki/Hikojir%C5%8D_Ijichi</remark>
   <objectId>0aa2881a-c363-4367-b8b2-508f7880e5c7</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Hikohachi Yamada</english>
+   <japanese>山田彦八</japanese>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Yamada_Hikohachi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Hikohachi_Yamada
+
+</remark>
+  <objectId>00bdf5bb-818b-47df-90ff-72522a3f7bb0</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nohimoto Tsunaaki</english>
+   <japanese>野元綱明</japanese>
+   <chineseSimplified>野元纲明</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://jahis.law.nagoya-u.ac.jp/who/docs/who4-7692</remark>
+  <objectId>bffb1804-47e3-4144-8658-7f70e88edf10</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Matsumoto Kazu</english>
+   <japanese>松本和</japanese>
+   <chineseSimplified>松本和</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Kazu_Matsumoto.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>5534078f-afe4-41d3-b1fa-3d039839fed2</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Sakamoto Hajime</english>
+   <japanese>坂本一</japanese>
+   <chineseSimplified>坂本一</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Sakamoto_Hajime.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E5%9D%82%E6%9C%AC%E4%B8%80_(%E6%B5%B7%E8%BB%8D%E8%BB%8D%E4%BA%BA)</remark>
+  <objectId>9624a025-ac34-4a9c-aa51-3f0c976ea7b0</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Teragaki Izō</english>
+   <japanese>寺垣猪三</japanese>
+   <chineseSimplified>寺垣猪三</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Teragaki_Izō.jpeg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Teragaki_Iz%C5%8D</remark>
+  <objectId>b2602ee1-cfea-4686-8f8c-d7e25583e9cb</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nakao Yu</english>
+   <japanese>中尾雄</japanese>
+   <chineseSimplified>中尾熊</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\nakaoyu.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B0%BE%E9%9B%84
+
+http://bujinkensyokai.web.fc2.com/hirosimagk.html</remark>
+  <objectId>b36b98ac-a3e5-49af-8934-898e130cab15</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Pavel Ukhtomsky </english>
+   <japanese>パヴェル・ウフトムスキー</japanese>
+   <chineseSimplified>帕维尔·乌赫托姆斯基</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Prince_Pavel_P._Ukhtomsky.jpeg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>BarelyCompetent</navalStrategic>
+  <navalOperational>BarelyCompetent</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Pavel_Petrovich_Ukhtomsky</remark>
+  <objectId>d03cc3f1-4ede-4b12-80d0-9443331b9645</objectId>
+ </Leader>
 </ArrayOfLeader>

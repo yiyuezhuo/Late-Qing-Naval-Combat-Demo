@@ -704,7 +704,37 @@ namespace NavalCombatCore
                 SyncDefaultMountArcs();
             }
         }
+    }
 
+    public partial class ArmorRating
+    {
+        [XmlIgnore]
+        [CreateProperty]
+        public ArmorType armorTypeProp
+        {
+            get => armorType;
+            set
+            {
+                armorType = value;
+                if(armorType != ArmorType.NotSpecified)
+                {
+                    TrySetFactorAndEffectInch();
+                }
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public float armorTypeFactorProp
+        {
+            get => armorTypeFactor;
+            set
+            {
+                armorTypeFactor = value;
+                TryInferArmorType();
+                SetEffectInchByArmorTypeFactor();
+            }
+        }
     }
 }
 

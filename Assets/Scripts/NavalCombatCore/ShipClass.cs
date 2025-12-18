@@ -8,14 +8,12 @@ using System.Linq;
 using System.Collections;
 
 using CoreUtils;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
-using UnityEngine.InputSystem;
 using System.Diagnostics;
 
 namespace NavalCombatCore
 {
 
-    public enum ShipType
+    public enum ShipType // SK5 type
     {
         NotSpecified,
         Battleship, // BB, ironclad, pre-dreadnought, dreadnought, post-dreadnought
@@ -28,6 +26,18 @@ namespace NavalCombatCore
         ArmedMerchantCruiser, // AMC
         Transport, // TR, Transport or merchant ship
         Repair, // AR, Auxiliary Repair
+    }
+
+    public enum ExtraShipType
+    {
+        NotSpecified,
+        Ironclad,
+        Predreatought,
+        Dreadnought,
+        UnprotectedCruiser, // Ram Cruiser
+        ProtectedCruiser,
+        ArmoredCruiser,
+        TorpedoCruiser
     }
 
     public enum MountLocation // SEEKRIEG like 3x3 location
@@ -957,6 +967,7 @@ namespace NavalCombatCore
         public string objectId { set; get; }
         public GlobalString name = new();
         public ShipType type;
+        public ExtraShipType extraShipType;
         public Country country;
         // public int applicableYearBegin = 1900;
         // public int applicableYearEnd = 1900;

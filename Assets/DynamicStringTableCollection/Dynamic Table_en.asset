@@ -2514,6 +2514,38 @@ MonoBehaviour:
     m_Localized: Molybdenum Non-Cemented (MNC, 1941)
     m_Metadata:
       m_Items: []
+  - m_Id: 24282096161427456
+    m_Localized: Not Specified
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24282163349983232
+    m_Localized: Ironclad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24282184166313984
+    m_Localized: Predreatought
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24282212444311552
+    m_Localized: Dreadnought
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24282225215967232
+    m_Localized: Unprotected Cruiser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24282236108574720
+    m_Localized: Protected Cruiser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24282247823265792
+    m_Localized: Armored Cruiser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24285571637219328
+    m_Localized: Torpedo Cruiser
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

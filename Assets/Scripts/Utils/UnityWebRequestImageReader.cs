@@ -72,6 +72,12 @@ public class UnityWebRequestImageReader
     Dictionary<string, ImageFetchTask> taskMap = new();
     public List<ImageFetchTask> activingTasks = new();
 
+    public void Reset()
+    {
+        taskMap.Clear();
+        activingTasks.Clear();
+    }
+
     public StyleBackground FetchStyleBackground(string path)
     {
         if (path == null)

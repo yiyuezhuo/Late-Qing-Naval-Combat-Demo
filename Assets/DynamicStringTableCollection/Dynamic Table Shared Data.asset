@@ -2505,6 +2505,38 @@ MonoBehaviour:
     m_Key: ArmorType.MolybdenumNonCemented
     m_Metadata:
       m_Items: []
+  - m_Id: 24282096161427456
+    m_Key: NotSpecified
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24282163349983232
+    m_Key: Ironclad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24282184166313984
+    m_Key: Predreatought
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24282212444311552
+    m_Key: Dreadnought
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24282225215967232
+    m_Key: UnprotectedCruiser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24282236108574720
+    m_Key: ProtectedCruiser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24282247823265792
+    m_Key: ArmoredCruiser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24285571637219328
+    m_Key: TorpedoCruiser
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

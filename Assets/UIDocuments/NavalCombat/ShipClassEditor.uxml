@@ -49,10 +49,16 @@
                                         <ui:Instance template="GlobalStringEditor" data-source-path="name">
                                             <AttributeOverrides element-name="GlobalStringLabel" text="Class Name"/>
                                         </ui:Instance>
-                                        <LocalizedEnumField label="Type" type-str="NavalCombatCore.ShipType">
+                                        <LocalizedEnumField label="SK5 Type" type-str="NavalCombatCore.ShipType">
                                             <Bindings>
-                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)"/>
                                                 <ui:DataBinding property="value" data-source-path="type" source-to-ui-converters="ShipType =&gt; int" ui-to-source-converters="int =&gt; ShipType" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(38923957534625792)"/>
+                                            </Bindings>
+                                        </LocalizedEnumField>
+                                        <LocalizedEnumField type-str="NavalCombatCore.ExtraShipType" label="Extra Type">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="extraShipType" source-to-ui-converters="ExtraShipType =&gt; int" ui-to-source-converters="int =&gt; ExtraShipType" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(38923844569436160)"/>
                                             </Bindings>
                                         </LocalizedEnumField>
                                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">

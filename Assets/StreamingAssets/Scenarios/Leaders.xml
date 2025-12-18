@@ -3089,4 +3089,84 @@ http://bujinkensyokai.web.fc2.com/hirosimagk.html</remark>
   <remark>https://en.wikipedia.org/wiki/Pavel_Petrovich_Ukhtomsky</remark>
   <objectId>d03cc3f1-4ede-4b12-80d0-9443331b9645</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Ide Rinnoku</english>
+   <japanese>井手麟六</japanese>
+   <chineseSimplified>井手麟六</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Rinroku_Ide.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E4%BA%95%E6%89%8B%E9%BA%9F%E5%85%AD#%E8%84%9A%E6%B3%A8
+</remark>
+  <objectId>9a599726-3505-4620-953f-16a58684a5c3</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Takagi Sukekazu</english>
+   <japanese>高木助一</japanese>
+   <chineseSimplified>高木助一</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E9%AB%98%E6%9C%A8%E5%8A%A9%E4%B8%80</remark>
+  <objectId>38409f9f-5eed-4246-be1c-c8d76df1a172</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ishibashi Hajime</english>
+   <japanese>石橋甫</japanese>
+   <chineseSimplified>石桥甫</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Hazime_Ishibashi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Ishibashi_Hajime</remark>
+  <objectId>1b7c8302-1e00-44ab-9e8d-2cec5fed163e</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Gin Saeki</english>
+   <japanese>佐伯誾</japanese>
+   <chineseSimplified>佐伯誾</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Gin_Saeki.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>78a67c88-0618-46d6-aba6-68426f65a0b3</objectId>
+ </Leader>
 </ArrayOfLeader>

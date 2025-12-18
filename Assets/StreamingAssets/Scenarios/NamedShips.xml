@@ -3926,4 +3926,106 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Hatsuse</remark>
   <objectId>0536435f-698d-4bf9-8701-7b63f26b7350</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>a93b6888-fb63-4f58-85a3-30289f2dbb9f</shipClassObjectId>
+  <name>
+   <english>Kasagi</english>
+   <japanese>笠置</japanese>
+   <chineseSimplified>笠置</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>9a599726-3505-4620-953f-16a58684a5c3</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Kasagi
+
+</remark>
+  <objectId>8b58447a-d155-4c4c-9370-aa31b979018e</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>a93b6888-fb63-4f58-85a3-30289f2dbb9f</shipClassObjectId>
+  <name>
+   <english>Chitose</english>
+   <japanese>千歳</japanese>
+   <chineseSimplified>千岁</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>38409f9f-5eed-4246-be1c-c8d76df1a172</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Chitose
+
+</remark>
+  <objectId>c681ebaf-0058-44d6-835c-7ffdb1b92bc7</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7af59c07-6563-46cd-b8bc-74f85295846c</shipClassObjectId>
+  <name>
+   <english>Takasago</english>
+   <japanese>高砂</japanese>
+   <chineseSimplified>高砂</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>1b7c8302-1e00-44ab-9e8d-2cec5fed163e</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Takasago</remark>
+  <objectId>ab70e233-f9e5-4b29-8f91-cd06cec2e40f</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>800af878-ba7e-4476-9fd0-88172ae60f24</shipClassObjectId>
+  <name>
+   <english>Yoshino (1903)</english>
+   <japanese>吉野 (1903)</japanese>
+   <chineseSimplified>吉野 (1903)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>78a67c88-0618-46d6-aba6-68426f65a0b3</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino
+
+</remark>
+  <objectId>3255b2ff-6ce3-4902-8582-8fc3ef9683e9</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

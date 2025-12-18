@@ -235,6 +235,11 @@ public class TopTabs : SingletonDocument<TopTabs>
         {
             DialogRoot.Instance.PopupAutoDeploymentDialog();  
         };
+
+        root.Q<Button>("ResetImageCacheButton").clicked += () =>
+        {
+            UnityWebRequestImageReader.Instance.Reset();
+        };
     }
 
     void OnSaveButtonClicked(bool editSave=false)

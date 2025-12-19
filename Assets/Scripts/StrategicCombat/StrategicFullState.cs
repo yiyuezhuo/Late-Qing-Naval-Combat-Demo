@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Xml.Serialization;
 using StrategicCombatCore;
 
 public class StrategicViewState
@@ -7,6 +9,17 @@ public class StrategicViewState
     public float yPosition;
 
     public float orthographicSize;
+
+    public class HitAreaMapRecord
+    {
+        [XmlAttribute]
+        public string hitAreaObjectId;
+
+        [XmlAttribute]
+        public string areaCellObjectId;
+    }
+
+    public List<HitAreaMapRecord> hitAreaMapRecords = new();
 }
 
 public class StrategicFullState

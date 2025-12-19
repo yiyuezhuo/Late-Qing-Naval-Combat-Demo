@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 
 using CoreUtils;
 using NavalCombatCore;
+using UnityEditor.Build.Content;
 
 
 namespace StrategicCombatCore
@@ -68,8 +69,16 @@ namespace StrategicCombatCore
     }
 
 
-    public partial class Cell
+    public partial class Cell : IObjectIdLabeled
     {
+        [XmlAttribute]
+        public string objectId{get;set;} // used only by Area Cell, Grid Cell (cell in the Grid System) is referenced by XY
+
+        public IEnumerable<IObjectIdLabeled> GetSubObjects()
+        {
+            yield break;
+        }
+
         [XmlAttribute]
         public int x;
 
@@ -192,6 +201,9 @@ namespace StrategicCombatCore
         {
             return EntityManager.Instance.Get<LandBattle>(landBattleId);
         }
+
+        public bool IsAreaCell() => objectId != null && objectId != "";
+        public bool IsGridCell() => !IsAreaCell();
 
         public bool IsArmyPassable() => IsCoast || (terrain != TerrainType.ShallowWater && terrain != TerrainType.DeepWater);
         public bool IsNavyPassable() => IsCoast || terrain == TerrainType.ShallowWater || terrain == TerrainType.DeepWater;

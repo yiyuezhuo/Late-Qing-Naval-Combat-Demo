@@ -19,6 +19,7 @@ using CoreUtils;
 using StrategicCombatCore;
 using NavalCombatCore;
 using YYZ.PathFinding;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 
 public enum StrategicMapEditMode
@@ -50,6 +51,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public Transform gridSystemTransform;
     public Transform areaSystemTransform;
+    public Transform hitAreasRootTransform;
 
     public class StartupConfig
     {
@@ -164,6 +166,61 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
     }
 
+    protected void Awake()
+    {
+        var gameState = StrategicGameState.Instance;
+
+        gameState.mapRebuilt += OnMapRebuilt;
+        gameState.mapCellUpdated += OnMapCellUpdated;
+
+        GamePreference.Instance.shortLabelLanguageTypeChanged += OnShortLabelLanguageTypeChanged;
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+
+        var gameState = StrategicGameState.Instance;
+        gameState.mapRebuilt -= OnMapRebuilt;
+        gameState.mapCellUpdated -= OnMapCellUpdated;
+        GamePreference.Instance.shortLabelLanguageTypeChanged -= OnShortLabelLanguageTypeChanged;
+    }
+
+    void OnShortLabelLanguageTypeChanged(object sender, EventArgs e)
+    {
+        if(StrategicGameState.Instance.scenarioState.enableAreaSystem)
+        {
+            RefreshAllAreaCellLabel();
+        }
+    }
+
+    void OnMapRebuilt(object sender, EventArgs args)
+    {
+        if(StrategicGameState.Instance.scenarioState.enableAreaSystem)
+        {
+            RefreshAllAreaCellLabel();
+        }
+    }
+
+    void OnMapCellUpdated(object sender, Cell cell)
+    {
+        if(cell.IsAreaCell()) // Grid Cell is handled by other handler
+        {
+            if(areaCellObjectIdToHitArea.TryGetValue(cell.objectId, out var hitArea))
+            {
+                hitArea.SyncLabel();
+            }
+        }
+    }
+
+    void RefreshAllAreaCellLabel()
+    {
+        foreach(var areaCell in areaCellObjectIdToHitArea.Values)
+        {
+            areaCell.SyncLabel();
+        }
+    }
+
     public void PrepareReturnFromNavalGame()
     {
         var pos = PlaneCameraController.Instance.transform.position;
@@ -200,19 +257,46 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         HexMapShower.Instance.RefreshSideFlags();
         // HexMapShower.Instance.showSideFlag = false;
 
-        // Update Camera according to the view state
-        // var cam = Camera.main;
-        var cam = PlaneCameraController.Instance.cam;
-        cam.transform.position = new Vector3(
-            fullState.viewState.xPosition,
-            fullState.viewState.yPosition,
-            cam.transform.position.z
-        );
-        cam.orthographicSize = fullState.viewState.orthographicSize;
+        UpdateViewState(fullState.viewState);
 
         RefreshGridSystemAreaSystemVisibility();
 
+        if(StrategicGameState.Instance.scenarioState.enableAreaSystem)
+        {
+            StrategicGameState.Instance.InvokeMapRebuilt();
+        }
+
         TempFix();
+    }
+
+    Dictionary<string, HitArea> areaCellObjectIdToHitArea = new();
+
+    void UpdateViewState(StrategicViewState viewState)
+    {
+        // Update Camera according to the view state
+        // var cam = Camera.main;
+
+        var cam = PlaneCameraController.Instance.cam;
+        cam.transform.position = new Vector3(
+            viewState.xPosition,
+            viewState.yPosition,
+            cam.transform.position.z
+        );
+        cam.orthographicSize = viewState.orthographicSize;
+
+        var hitAreaMap = hitAreasRootTransform.GetComponentsInChildren<HitArea>(true).ToDictionary(h => h.hitAreaObjectId, h => h);
+        foreach(var hitAreaMapRecord in viewState.hitAreaMapRecords)
+        {
+            if(hitAreaMap.TryGetValue(hitAreaMapRecord.hitAreaObjectId, out var hitArea))
+            {
+                hitArea.areaCellObjectId = hitAreaMapRecord.areaCellObjectId;
+                areaCellObjectIdToHitArea[hitAreaMapRecord.areaCellObjectId] = hitArea;
+            }
+            else
+            {
+                Debug.LogWarning($"Misasligned map: {hitAreaMapRecord.hitAreaObjectId} -> {hitAreaMapRecord.areaCellObjectId}");
+            }
+        }
     }
 
     public static void TempFix()
@@ -412,10 +496,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                     var hit = Physics2D.Raycast(worldPoint, Vector2.zero);
                     if (hit.collider != null)
                     {
-                        if (hit.collider.CompareTag("Map")) // Grid Map
+
+                        if (hit.collider.CompareTag("Map")) // Grid System: Map
                         {
                             // Map Click
-                            Debug.Log($"Hit: {hit.collider} {hit.point}");
+                            Debug.Log($"Map Hit: {hit.collider} {hit.point}");
 
                             var localPoint = hit.collider.transform.InverseTransformPoint(hit.point);
                             var uv = new Vector2(localPoint.x + 0.5f, localPoint.y + 0.5f);
@@ -425,7 +510,32 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
                             if (cellXY.x >= 0 && cellXY.x < StrategicGameState.Instance.GetMapWidth() && cellXY.y >= 0 && cellXY.y < StrategicGameState.Instance.GetMapHeight())
                             {
-                                HandleMapClick(cellXY);
+                                var activeCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+                                HandleCellClick(activeCell);
+                            }
+                        }
+                        else if(hit.collider.CompareTag("Hit Area")) // Area System: Hit Area
+                        {
+                            // Map Click
+                            Debug.Log($"Hit Area Hit: {hit.collider} {hit.point}");
+
+                            var hitArea = hit.collider.GetComponent<HitArea>();
+                            if(hitArea != null && hitArea.hitAreaObjectId != null && hitArea.hitAreaObjectId != "")
+                            {
+                                if(hitArea.areaCellObjectId == null || hitArea.areaCellObjectId == "") // Shit unity serializer hassle
+                                {
+                                    Debug.Log($"(Placeholder) Create a dynamic Area Cell and bind to it: {hitArea.hitAreaObjectId}");
+                                    DialogRoot.Instance.PopupUnbindHitAreaDialog(hitArea);
+                                }
+                                else // Normal map click
+                                {
+                                    Debug.Log($"(Placeholder) to handle a map click: {hitArea.hitAreaObjectId}");
+                                    var areaCell = EntityManager.Instance.Get<Cell>(hitArea.areaCellObjectId);
+                                    if(areaCell != null)
+                                    {
+                                        HandleCellClick(areaCell);
+                                    }
+                                }
                             }
                         }
                     }
@@ -549,16 +659,17 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         oneshotCellClickCallback = callback;
     }
 
-    void HandleMapClick(Vector2Int cellXY)
+    // void HandleMapClick(Vector2Int cellXY)
+    void HandleCellClick(Cell activeCell)
     {
         if (mapEditMode == StrategicMapEditMode.Select)
         {
-            lastSelectedCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+            lastSelectedCell = activeCell;
             lastSelectedStrategicGroup = null;
         }
         else if (mapEditMode == StrategicMapEditMode.WaitOneshotCellClickCallback)
         {
-            oneshotCellClickCallback(StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y]);
+            oneshotCellClickCallback(activeCell);
             mapEditMode = StrategicMapEditMode.Select;
         }
         else if (mapEditMode == StrategicMapEditMode.WaypointPlotting)
@@ -568,13 +679,13 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             {
                 if (selectedMission.waypoints.Count == 0)
                 {
-                    selectedMission.waypoints.Add(new XY() { x = cellXY.x, y = cellXY.y }); // set start
+                    selectedMission.waypoints.Add(new XY() { x = activeCell.x, y = activeCell.y }); // set start
                 }
                 else
                 {
                     var lastWaypoint = selectedMission.waypoints[^1];
                     var srcCell = StrategicGameState.Instance.cellMatrix[lastWaypoint.x, lastWaypoint.y];
-                    var dstCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+                    var dstCell = activeCell;
 
                     IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy(); // TODO: Generalize to army?
 
@@ -596,41 +707,45 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
         else
         {
-            HandleMapEditClick(cellXY);
+            HandleCellEditClick(activeCell);
         }
     }
 
-    void HandleMapEditClick(Vector2Int cellXY)
+    // void HandleMapEditClick(Vector2Int cellXY)
+    void HandleCellEditClick(Cell activeCell)
     {
         if (mapEditMode == StrategicMapEditMode.PaintTerrain)
         {
-            StrategicGameState.Instance.SetMapCellTerrain(cellXY.x, cellXY.y, currentTerrainType);
+            // StrategicGameState.Instance.SetMapCellTerrain(activeCell.x, activeCell.y, currentTerrainType);
+            StrategicGameState.Instance.SetMapCellTerrain(activeCell, currentTerrainType);
 
-            Debug.Log($"SetMapCellTerrain({cellXY.x}, {cellXY.y}, {currentTerrainType})");
+            Debug.Log($"SetMapCellTerrain({activeCell.x}, {activeCell.y}, {currentTerrainType})");
         }
         if (mapEditMode == StrategicMapEditMode.PaintHexControlSide)
         {
-            StrategicGameState.Instance.SetMapControlSide(cellXY.x, cellXY.y, currentSideStateObjectId);
+            // StrategicGameState.Instance.SetMapControlSide(activeCell.x, activeCell.y, currentSideStateObjectId);
+            StrategicGameState.Instance.SetMapControlSide(activeCell, currentSideStateObjectId);
 
-            Debug.Log($"PaintHexControlSide({cellXY.x}, {cellXY.y}, {currentTerrainType})");
+            Debug.Log($"PaintHexControlSide({activeCell.x}, {activeCell.y}, {currentTerrainType})");
         }
         if (mapEditMode == StrategicMapEditMode.ToggleCoast)
         {
-            StrategicGameState.Instance.ToggleCoast(cellXY.x, cellXY.y);
+            // StrategicGameState.Instance.ToggleCoast(activeCell.x, activeCell.y);
+            StrategicGameState.Instance.ToggleCoast(activeCell);
 
-            Debug.Log($"ToggleCoast({cellXY.x}, {cellXY.y})");
+            Debug.Log($"ToggleCoast({activeCell.x}, {activeCell.y})");
         }
 
         if (mapEditMode == StrategicMapEditMode.PaintHexPairFeatureBegin)
         {
-            lastSelectedCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+            lastSelectedCell = activeCell;
             mapEditMode = StrategicMapEditMode.PaintHexPairFeatureEnd;
         }
         else if (mapEditMode == StrategicMapEditMode.PaintHexPairFeatureEnd)
         {
             if (lastSelectedCell != null)
             {
-                var cell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+                var cell = activeCell;
                 StrategicGameState.Instance.AddEdgeFeature(lastSelectedCell, cell, currentEdgeFeatureType);
                 mapEditMode = StrategicMapEditMode.PaintHexPairFeatureBegin;
             }
@@ -638,14 +753,14 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         if (mapEditMode == StrategicMapEditMode.DeleteHexPairFeatureBegin)
         {
-            lastSelectedCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+            lastSelectedCell = activeCell;
             mapEditMode = StrategicMapEditMode.DeleteHexPairFeatureEnd;
         }
         else if (mapEditMode == StrategicMapEditMode.DeleteHexPairFeatureEnd)
         {
             if (lastSelectedCell != null)
             {
-                var cell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+                var cell = activeCell;
                 StrategicGameState.Instance.DeleteEdgeFeature(lastSelectedCell, cell, currentEdgeFeatureType);
                 mapEditMode = StrategicMapEditMode.DeleteHexPairFeatureBegin;
             }
@@ -673,11 +788,20 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     {
         // var cam = Camera.main;
         var cam = PlaneCameraController.Instance.cam;
+
+        var hitAreaMapRecords = hitAreasRootTransform.GetComponentsInChildren<HitArea>(true).Select(
+            s => new StrategicViewState.HitAreaMapRecord(){
+                hitAreaObjectId = s.hitAreaObjectId,
+                areaCellObjectId = s.areaCellObjectId
+            }
+        ).ToList();
+
         return new()
         {
             xPosition = cam.transform.position.x,
             yPosition = cam.transform.position.y,
-            orthographicSize = cam.orthographicSize
+            orthographicSize = cam.orthographicSize,
+            hitAreaMapRecords = hitAreaMapRecords
         };
     }
 

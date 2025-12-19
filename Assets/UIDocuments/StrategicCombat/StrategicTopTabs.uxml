@@ -175,7 +175,7 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362247664340992)"/>
                         </Bindings>
                     </ui:Label>
-                    <ui:EnumField value="Center" type="StrategicMapEditMode, Assembly-CSharp" style="min-width: 150px;">
+                    <ui:EnumField value="Center" type="StrategicMapEditMode, Assembly-CSharp" style="min-width: 200px;">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="mapEditMode" binding-mode="TwoWay"/>
                         </Bindings>
@@ -185,7 +185,7 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(348352971182080)"/>
                         </Bindings>
                     </ui:Label>
-                    <ui:EnumField value="Center" type="StrategicCombatCore.TerrainType, Assembly-CSharp" style="min-width: 100px;">
+                    <ui:EnumField value="Center" type="StrategicCombatCore.TerrainType, Assembly-CSharp" style="min-width: 150px;">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="currentTerrainType" binding-mode="TwoWay"/>
                         </Bindings>

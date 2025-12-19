@@ -2921,7 +2921,9 @@ https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D0%BF%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D
   <landStrategic>Unknown</landStrategic>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
-  <traits />
+  <traits>
+   <LeaderTrait>Unlucky</LeaderTrait>
+  </traits>
   <remark>https://en.wikipedia.org/wiki/Stepan_Makarov
 
 Степан Осипович Макаров</remark>
@@ -3167,6 +3169,7 @@ http://bujinkensyokai.web.fc2.com/hirosimagk.html</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E4%BD%90%E4%BC%AF%E8%AA%BE</remark>
   <objectId>78a67c88-0618-46d6-aba6-68426f65a0b3</objectId>
  </Leader>
 </ArrayOfLeader>

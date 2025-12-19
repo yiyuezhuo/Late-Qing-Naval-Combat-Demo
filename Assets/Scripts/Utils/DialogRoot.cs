@@ -243,6 +243,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset scenarioStateEditorDialogDocument;
     public VisualTreeAsset vladivostokSquadronRaidingSideSelectorDialogDocument;
     public VisualTreeAsset strategicScenarioStateEditorDialogDocument;
+    public VisualTreeAsset unbindHitAreaDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -253,6 +254,26 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupUnbindHitAreaDialog(HitArea hitArea)
+    {
+        var unbindHitAreaDialog = new UnbindHitAreaDialog()
+        {
+            currentHitArea=hitArea
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=unbindHitAreaDialogDocument,
+            templateDataSource=unbindHitAreaDialog
+        };
+
+        tempDialog.onCreated += unbindHitAreaDialog.OnCreated;
+        tempDialog.onConfirmed += unbindHitAreaDialog.OnConfirm;
+
+        tempDialog.Popup();
     }
 
     public void PopupStrategicScenarioStateEditorDialog()
@@ -593,7 +614,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             el.Q<Button>("SideObjectIdTopLeftButton").clicked += () => PopupSideStatePickerDialog(sideState => cell.sideObjectIdTopLeft = sideState.objectId);
         };
 
-        tempDialog.onConfirmed += (sender, args) => StrategicGameState.Instance.InvokeMapCellUpdated(cell.x, cell.y);
+        // tempDialog.onConfirmed += (sender, args) => StrategicGameState.Instance.InvokeMapCellUpdated(cell.x, cell.y);
+        tempDialog.onConfirmed += (sender, args) => StrategicGameState.Instance.InvokeMapCellUpdated(cell);
 
         tempDialog.Popup();
     }
@@ -1175,25 +1197,33 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupNamedShipSelctorDialogForShipLog()
     {
+        var namedShipSelector = new NamedShipSelector()
+        {
+            fullNamedShips = SuperGameState.Instance.GetCurrentGameState().namedShips
+        };
+        namedShipSelector.Refresh();
+
         var tempDialog = new TempDialog()
         {
             root = root,
             template = namedShipSelectorDocument,
-            templateDataSource = SuperGameState.Instance // GameManager.Instance
+            templateDataSource = namedShipSelector // GameManager.Instance
         };
 
-        tempDialog.onConfirmed += (sender, el) =>
-        {
-            // var selectedShipLog = GameManager.Instance.selectedShipLog;
-            var selectedShipLog = ShipLogEditor.Instance.selectedShipLog;
+        tempDialog.onConfirmed += namedShipSelector.OnConfirm;
 
-            var namedShipListView = el.Q<ListView>("NamedShipListView");
-            var namedShip = namedShipListView.selectedItem as NamedShip;
-            if (selectedShipLog != null && namedShip != null)
-            {
-                selectedShipLog.namedShipObjectId = namedShip.objectId;
-            }
-        };
+        // tempDialog.onConfirmed += (sender, el) =>
+        // {
+        //     // var selectedShipLog = GameManager.Instance.selectedShipLog;
+        //     var selectedShipLog = ShipLogEditor.Instance.selectedShipLog;
+
+        //     var namedShipListView = el.Q<ListView>("NamedShipListView");
+        //     var namedShip = namedShipListView.selectedItem as NamedShip;
+        //     if (selectedShipLog != null && namedShip != null)
+        //     {
+        //         selectedShipLog.namedShipObjectId = namedShip.objectId;
+        //     }
+        // };
 
         tempDialog.Popup();
     }

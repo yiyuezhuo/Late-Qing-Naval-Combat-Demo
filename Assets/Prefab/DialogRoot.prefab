@@ -105,3 +105,4 @@ MonoBehaviour:
   scenarioStateEditorDialogDocument: {fileID: 9197481963319205126, guid: c53a0e617faa1ee4e9c818383e818a19, type: 3}
   vladivostokSquadronRaidingSideSelectorDialogDocument: {fileID: 9197481963319205126, guid: 45585b82f85a8214cb7bdea298f0a9c1, type: 3}
   strategicScenarioStateEditorDialogDocument: {fileID: 9197481963319205126, guid: 9cde9165be99dc24e9efc1ead78c430b, type: 3}
+  unbindHitAreaDialogDocument: {fileID: 9197481963319205126, guid: db6d8eb8f2bdc7b449ae082e0d62e066, type: 3}

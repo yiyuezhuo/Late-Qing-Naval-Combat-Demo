@@ -54,6 +54,8 @@ namespace StrategicCombatCore
             }
         }
 
+        public List<Cell> areaCells = new();
+
         // public List<StrategicLocationLabel> labels = new();
 
         public HighCommand highCommand = new();
@@ -82,10 +84,12 @@ namespace StrategicCombatCore
         public Dictionary<Country, SideState> countryToSideStateMap = new();
 
         public event EventHandler mapRebuilt;
-        public event EventHandler<(int, int)> mapCellUpdated;
+        // public event EventHandler<(int, int)> mapCellUpdated;
+        public event EventHandler<Cell> mapCellUpdated;
         public event EventHandler edgeFeatureUpdated;
 
-        public void InvokeMapCellUpdated(int x, int y) => mapCellUpdated?.Invoke(this, (x, y));
+        // public void InvokeMapCellUpdated(int x, int y) => mapCellUpdated?.Invoke(this, (x, y));
+        public void InvokeMapCellUpdated(Cell cell) => mapCellUpdated?.Invoke(this, cell);
         public void InvokeMapRebuilt()  => mapRebuilt?.Invoke(this, EventArgs.Empty);
 
         public void RebuildCacheForSideStates()
@@ -131,33 +135,63 @@ namespace StrategicCombatCore
         public int GetMapHeight() => cellMatrix.GetLength(1);
 
 
-        public void SetMapCellTerrain(int x, int y, TerrainType terrainType)
+        // public void SetMapCellTerrain(int x, int y, TerrainType terrainType)
+        // {
+        //     // terrainMatrix[x, y] = terrainType;
+        //     cellMatrix[x, y].terrain = terrainType;
+
+        //     mapCellUpdated?.Invoke(this, (x, y));
+        // }
+
+        public void SetMapCellTerrain(Cell activeCell, TerrainType terrainType)
         {
             // terrainMatrix[x, y] = terrainType;
-            cellMatrix[x, y].terrain = terrainType;
+            activeCell.terrain = terrainType;
 
-            mapCellUpdated?.Invoke(this, (x, y));
+            // mapCellUpdated?.Invoke(this, (activeCell.x, activeCell.y));
+            mapCellUpdated?.Invoke(this, activeCell);
         }
 
-        public void SetMapControlSide(int x, int y, string sideStateObjectId)
+
+        // public void SetMapControlSide(int x, int y, string sideStateObjectId)
+        // {
+        //     cellMatrix[x, y].sideObjectIdHex = sideStateObjectId;
+
+        //     mapCellUpdated?.Invoke(this, (x, y));
+        // }
+        public void SetMapControlSide(Cell activeCell, string sideStateObjectId)
         {
-            cellMatrix[x, y].sideObjectIdHex = sideStateObjectId;
+            activeCell.sideObjectIdHex = sideStateObjectId;
 
-            mapCellUpdated?.Invoke(this, (x, y));
+            // mapCellUpdated?.Invoke(this, (activeCell.x, activeCell.y));
+            mapCellUpdated?.Invoke(this, activeCell);
         }
 
-        public void ToggleCoast(int x, int y)
+
+        // public void ToggleCoast(int x, int y)
+        // {
+        //     var cell = cellMatrix[x, y];
+        //     cell.IsCoast = !cell.IsCoast;
+
+        //     mapCellUpdated?.Invoke(this, (x, y));
+        // }
+
+        public void ToggleCoast(Cell activeCell)
         {
-            var cell = cellMatrix[x, y];
-            cell.IsCoast = !cell.IsCoast;
+            // var cell = cellMatrix[x, y];
+            activeCell.IsCoast = !activeCell.IsCoast;
 
-            mapCellUpdated?.Invoke(this, (x, y));
+            // mapCellUpdated?.Invoke(this, (activeCell.x, activeCell.y));
+            mapCellUpdated?.Invoke(this, activeCell);
         }
+
 
         public void UpdateTo(StrategicGameState newInstance)
         {
             // terrainMatrix = newInstance.terrainMatrix;
             cellMatrix = newInstance.cellMatrix;
+            areaCells = newInstance.areaCells;
+
             // labels = newInstance.labels;
             highCommand = newInstance.highCommand;
             landUnitTemplates = newInstance.landUnitTemplates;
@@ -1188,6 +1222,9 @@ namespace StrategicCombatCore
 
             foreach (var landBattle in landBattles)
                 EntityManager.Instance.Register(landBattle, null);
+
+            foreach(var areaCell in areaCells)
+                EntityManager.Instance.Register(areaCell, null);
         }
 
         static StrategicGameState _instance;

@@ -547,7 +547,8 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         public TMP_Text text;
     }
 
-    Dictionary<(int, int), CellViewer> cellViewerMap = new();
+    Dictionary<(int, int), CellViewer> gridCellViewerMap = new();
+    // Dictionary<string, CellViewer> areaCellViewerMap = new();
 
     public void RefreshMap()
     {
@@ -562,7 +563,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         {
             for (var y = 0; y < height; y++)
             {
-                cellViewerMap[(x, y)] = new();
+                gridCellViewerMap[(x, y)] = new();
             }
         }
 
@@ -574,7 +575,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         Utils.SyncTransformViewerLength(cellLabelContainerTransform, length, cellLabelPrefab);
         var cellLabels = cellLabelContainerTransform.GetComponentsInChildren<TMP_Text>();
 
-        foreach (var ((x, y), cellViewer) in cellViewerMap)
+        foreach (var ((x, y), cellViewer) in gridCellViewerMap)
         {
             var idx = x + y * width;
             cellViewer.flagRenderer = sideFlagRenderers[idx];
@@ -596,12 +597,15 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
 
     public void OnMapRebuilt(object sender, EventArgs args)
     {
-        RefreshMap();
+        if(StrategicGameState.Instance.scenarioState.enableGridSystem)
+        {
+            RefreshMap();
+        }
     }
 
     public void RefreshCellLabelDisplayMode(int x, int y)
     {
-        var cellViewer = cellViewerMap[(x, y)];
+        var cellViewer = gridCellViewerMap[(x, y)];
 
         // CellLabelDisplayMode
         if (cellLabelDisplayMode == CellLabelDisplayMode.None)
@@ -624,7 +628,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
 
     public void RefreshCellLabelDisplayMode()
     {
-        foreach (var (x, y) in cellViewerMap.Keys)
+        foreach (var (x, y) in gridCellViewerMap.Keys)
         {
             RefreshCellLabelDisplayMode(x, y);
         }
@@ -632,7 +636,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
 
     public void RefreshSideFlags()
     {
-        foreach (var xy in cellViewerMap.Keys)
+        foreach (var xy in gridCellViewerMap.Keys)
         {
             SyncSideFlag(xy);
         }
@@ -641,7 +645,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     void SyncSideFlag((int, int) xy)
     {
         var (x, y) = xy;
-        var cellViewer = cellViewerMap[xy];
+        var cellViewer = gridCellViewerMap[xy];
 
         var hexSideStateObjectId = StrategicGameState.Instance.cellMatrix[x, y].sideObjectIdHex;
         // var hexSideStateObjectId = "dd43c3f3-1a02-46ca-b287-4ac069c23218";
@@ -669,16 +673,20 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         });
     }
 
-    public void OnMapCellUpdated(object sender, (int, int) args)
+    // public void OnMapCellUpdated(object sender, (int, int) args)
+    public void OnMapCellUpdated(object sender, Cell cell)
     {
-        var (x, y) = args;
+        // var (x, y) = args;
         // Color32 color = new Color32((byte)StrategicGameState.Instance.terrainMatrix[x, y], 0, 0, 255);
-        Color32 color = new Color32((byte)StrategicGameState.Instance.cellMatrix[x, y].terrain, 0, 0, 255);
-        terrainTypeTexture.SetPixel(x, y, color);
-        terrainTypeTexture.Apply();
+        if(cell.IsGridCell())
+        {
+            Color32 color = new Color32((byte)cell.terrain, 0, 0, 255);
+            terrainTypeTexture.SetPixel(cell.x, cell.y, color);
+            terrainTypeTexture.Apply();
 
-        SyncSideFlag((x, y));
-        RefreshCellLabelDisplayMode(x, y);
+            SyncSideFlag((cell.x, cell.y));
+            RefreshCellLabelDisplayMode(cell.x, cell.y);
+        }
     }
 
     public void GenerateTextureAndRefreshMaterial()

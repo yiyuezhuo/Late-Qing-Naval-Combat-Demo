@@ -324,12 +324,14 @@ namespace StrategicCombatCore
                 }
 
                 prevCell.RefreshControlState();
-                StrategicGameState.Instance.InvokeMapCellUpdated(prevCell.x, prevCell.y);
+                // StrategicGameState.Instance.InvokeMapCellUpdated(prevCell.x, prevCell.y);
+                StrategicGameState.Instance.InvokeMapCellUpdated(prevCell);
             }
 
 
             toCell.RefreshControlState();
-            StrategicGameState.Instance.InvokeMapCellUpdated(toCell.x, toCell.y);
+            // StrategicGameState.Instance.InvokeMapCellUpdated(toCell.x, toCell.y);
+            StrategicGameState.Instance.InvokeMapCellUpdated(toCell);
         }
         
         public void UnloadFromContainer()

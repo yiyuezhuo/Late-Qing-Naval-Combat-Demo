@@ -25,7 +25,7 @@ namespace StrategicCombatCore
     public partial class Cell
     {
         [CreateProperty]
-        public string brief => $"({x}, {y}), {terrain}";
+        public string brief => $"({x}, {y}), {terrain} {Label?.GetShortName()}";
 
         // [CreateProperty]
         // public int cellInfoGroupCount => StrategicGameState.Instance.hexInfoMap.GetValueOrDefault((x, y))?.strategicGroupReferences?.Count ?? 0;
@@ -139,6 +139,20 @@ namespace StrategicCombatCore
                 if (rawName == null)
                     rawName = "_";
                 return $"<link=\"nameLink\"><color=#40a0ff><u>{rawName}</u></color></link>";
+            }
+        }
+
+        [CreateProperty]
+        public string leaderNameLink
+        {
+            get
+            {
+                var leaderName = leaderReference.Get()?.name?.GetMergedName();
+                if(leaderName == null)
+                {
+                    return "[Not Specified]";
+                }
+                return $"<link=\"nameLink\"><color=#40a0ff><u>{leaderName}</u></color></link>";
             }
         }
 

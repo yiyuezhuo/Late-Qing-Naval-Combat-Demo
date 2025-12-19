@@ -1,0 +1,20 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="UnbindHitAreaDialog, Assembly-CSharp" class="panel-dialog" style="height: auto; width: 500px;">
+        <ui:Label text="Unbind Hit Area" class="title"/>
+        <ui:Label text="Hit Area is not bind to a Area Cell, create a new Area Cell and bind to it?"/>
+        <ui:TextField label="Hit Area Object Id" enabled="false">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="currentHitArea.hitAreaObjectId" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:TextField>
+        <ui:TextField label="Area Cell Object Id">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="testGuid" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:TextField>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1;"/>
+            <ui:Button text="Cancel" name="CancelButton" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

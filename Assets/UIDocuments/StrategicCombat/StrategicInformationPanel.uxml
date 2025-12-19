@@ -1,109 +1,121 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="StrategicUnitIcon" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicUnitIcon.uxml?fileID=9197481963319205126&amp;guid=aa3ccbfdf5107f4488fcd49416ef81e1&amp;type=3#StrategicUnitIcon" />
-    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:Template name="StrategicUnitIcon" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicUnitIcon.uxml?fileID=9197481963319205126&amp;guid=aa3ccbfdf5107f4488fcd49416ef81e1&amp;type=3#StrategicUnitIcon"/>
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
     <ui:VisualElement data-source-type="StrategicGameManager, Assembly-CSharp" style="flex-grow: 1; width: 200px; background-color: rgb(240, 240, 240);">
         <ui:Label text="Date Time">
             <Bindings>
-                <ui:DataBinding property="text" data-source-path="referenceTimeZoneDateTimeOffsetString" binding-mode="ToTarget" />
+                <ui:DataBinding property="text" data-source-path="referenceTimeZoneDateTimeOffsetString" binding-mode="ToTarget"/>
             </Bindings>
         </ui:Label>
         <ui:VisualElement>
             <ui:VisualElement data-source-path="lastSelectedCell" style="flex-shrink: 0; border-bottom-width: 1px; border-top-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                 <ui:Label text="Hex Coordinate &amp; Terrain" style="white-space: normal;">
                     <Bindings>
-                        <ui:DataBinding property="text" data-source-path="brief" binding-mode="ToTarget" />
+                        <ui:DataBinding property="text" data-source-path="brief" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                     <ui:Label text="Latitude">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103175836831744)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103175836831744)"/>
                         </Bindings>
                     </ui:Label>
                     <ui:FloatField style="flex-grow: 1;">
                         <Bindings>
-                            <ui:DataBinding property="value" data-source-path="latitude" binding-mode="TwoWay" />
+                            <ui:DataBinding property="value" data-source-path="latitude" binding-mode="TwoWay"/>
                         </Bindings>
                     </ui:FloatField>
                 </ui:VisualElement>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                     <ui:Label text="Longitude">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103239598641152)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103239598641152)"/>
                         </Bindings>
                     </ui:Label>
                     <ui:FloatField style="flex-grow: 1;">
                         <Bindings>
-                            <ui:DataBinding property="value" data-source-path="longitude" binding-mode="TwoWay" />
+                            <ui:DataBinding property="value" data-source-path="longitude" binding-mode="TwoWay"/>
                         </Bindings>
                     </ui:FloatField>
                 </ui:VisualElement>
                 <ui:Toggle label="Ground Control Point">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="GroundControlPoint" binding-mode="TwoWay" />
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(358609889955840)" />
+                        <ui:DataBinding property="value" data-source-path="GroundControlPoint" binding-mode="TwoWay"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(358609889955840)"/>
                     </Bindings>
                 </ui:Toggle>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                     <ui:Label text="Group Count:">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(358716039401472)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(358716039401472)"/>
                         </Bindings>
                     </ui:Label>
                     <ui:Label text="n">
                         <Bindings>
-                            <ui:DataBinding property="text" data-source-path="cellInfoGroupCount" binding-mode="ToTarget" />
+                            <ui:DataBinding property="text" data-source-path="cellInfoGroupCount" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Label>
                 </ui:VisualElement>
                 <ui:Button text="Edit" name="CellEditButton">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11325371015925760)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11325371015925760)"/>
                     </Bindings>
                 </ui:Button>
                 <ui:Button text="Go to  Location (Tactical) " name="GoToLocationAtTacticalModeButton" style="flex-wrap: nowrap;">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(358782179381248)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(358782179381248)"/>
                     </Bindings>
                 </ui:Button>
                 <ui:Button text="Land Battle" name="LandBattleButton">
                     <Bindings>
-                        <ui:DataBinding property="enabledSelf" data-source-path="hasActiveLandBattle" binding-mode="ToTarget" />
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30245956232056832)" />
+                        <ui:DataBinding property="enabledSelf" data-source-path="hasActiveLandBattle" binding-mode="ToTarget"/>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30245956232056832)"/>
                     </Bindings>
                 </ui:Button>
-                <ui:Button text="Resolve Land Combat" name="ResolveLandCombatButton" style="display: none;" />
+                <ui:Button text="Resolve Land Combat" name="ResolveLandCombatButton" style="display: none;"/>
             </ui:VisualElement>
             <Bindings>
-                <ui:DataBinding property="style.display" data-source-path="selectedCellValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                <ui:DataBinding property="style.display" data-source-path="selectedCellValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
             </Bindings>
         </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1;">
             <ui:VisualElement data-source-path="lastSelectedStrategicGroup" style="flex-shrink: 0; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                 <ui:Label text="Group Name___________________________________________" name="StrategicGroupNameLabel" style="white-space: normal;">
                     <Bindings>
-                        <ui:DataBinding property="text" data-source-path="nameLink" binding-mode="ToTarget" />
+                        <ui:DataBinding property="text" data-source-path="nameLink" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Label>
-                <ui:Instance template="StrategicUnitIcon" />
+                <ui:Label text="Leader Name" name="LeaderNameLabel" style="white-space: normal;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="leaderNameLink" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:Instance template="StrategicUnitIcon"/>
+                    <ui:Image style="flex-grow: 1; max-height: 100px;">
+                        <Bindings>
+                            <ui:DataBinding property="source" data-source-path="leaderReference.portraitTexture2D" binding-mode="ToTarget"/>
+                        </Bindings>
+                    </ui:Image>
+                </ui:VisualElement>
                 <ui:Button text="Move (New, M)" name="MoveButton">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16832839338856448)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16832839338856448)"/>
                     </Bindings>
                 </ui:Button>
                 <ui:Button text="Move (Append, A)" name="MoveAppendButton">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16832983358672896)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16832983358672896)"/>
                     </Bindings>
                 </ui:Button>
                 <ui:Button text="Move (Edit, M)" name="EditMoveButton">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(360963381039104)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(360963381039104)"/>
                     </Bindings>
                 </ui:Button>
             </ui:VisualElement>
             <Bindings>
-                <ui:DataBinding property="style.display" data-source-path="selectedStrategicGroupValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                <ui:DataBinding property="style.display" data-source-path="selectedStrategicGroupValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
             </Bindings>
         </ui:VisualElement>
     </ui:VisualElement>

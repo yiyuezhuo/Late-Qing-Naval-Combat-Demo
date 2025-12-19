@@ -1,7 +1,12 @@
 using UnityEngine;
+using TMPro;
+using CoreUtils;
+using StrategicCombatCore;
 
 public class HitArea : MonoBehaviour
 {
+    public TMP_Text locationLabelText;
+
     public string hitAreaObjectId;
     public string areaCellObjectId;
 
@@ -15,5 +20,14 @@ public class HitArea : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SyncLabel()
+    {
+        if(areaCellObjectId != null)
+        {
+            var areaCell = EntityManager.Instance.Get<Cell>(areaCellObjectId);
+            locationLabelText.text = areaCell.Label?.GetShortName();
+        }
     }
 }

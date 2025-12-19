@@ -65,6 +65,26 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
             }}
         });
 
+        var leaderNameLabel = root.Q<Label>("LeaderNameLabel");
+        Utils.RegisterLinkTag(leaderNameLabel, new()
+        {
+            {"nameLink", () =>
+                {
+                    var group = StrategicGameManager.Instance.lastSelectedStrategicGroup;
+                    var leader = group.leaderReference.Get();
+                    if(leader != null)
+                    {
+                        var idx = StrategicGameState.Instance.leaders.IndexOf(leader);
+                        if(group != null && idx != -1)
+                        {
+                            LeaderEditor.Instance.Show();
+                            BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.leadersListView, idx);
+                        }
+                    }
+                }
+            }
+        });
+
         var cellEditButton = root.Q<Button>("CellEditButton");
         cellEditButton.clicked += () =>
         {

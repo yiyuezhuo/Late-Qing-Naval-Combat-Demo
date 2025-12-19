@@ -2731,6 +2731,7 @@ MonoBehaviour:
   currentEdgeFeatureType: 0
   gridSystemTransform: {fileID: 893239364}
   areaSystemTransform: {fileID: 1662179545}
+  hitAreasRootTransform: {fileID: 1788551328}
   currentSideStateObjectId: 
   currentLogOnly: 1
 --- !u!4 &1689453573

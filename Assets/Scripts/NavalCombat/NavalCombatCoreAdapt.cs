@@ -485,6 +485,12 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
+        public Texture2D portraitTexture2D
+        {
+            get => Get()?.portraitReference?.texture2d ?? null;
+        }
+
+        [CreateProperty]
         public string name => Get()?.name?.mergedName ?? "[Not Specified or Invalid]";
     }
 

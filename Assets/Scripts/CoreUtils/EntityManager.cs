@@ -37,18 +37,29 @@ namespace CoreUtils
             entityToParent.Clear();
         }
 
+        public string GetDistinctGuid()
+        {
+            string testObjectId;
+            do
+            {
+                testObjectId = System.Guid.NewGuid().ToString();
+            } while (idToEntity.ContainsKey(testObjectId));
+            return testObjectId;
+        }
+
         public void Register(IObjectIdLabeled obj, object parent)
         {
             var createObjectIdForNull = obj.objectId == null;
             var deduplicateObjectId = !createObjectIdForNull && idToEntity.ContainsKey(obj.objectId);
             if (createObjectIdForNull || deduplicateObjectId)
             {
-                do
-                {
-                    obj.objectId = System.Guid.NewGuid().ToString();
-                } while (idToEntity.ContainsKey(obj.objectId));
+                // do
+                // {
+                //     obj.objectId = System.Guid.NewGuid().ToString();
+                // } while (idToEntity.ContainsKey(obj.objectId));
                 //  newGuidCreated?.Invoke(obj, obj.objectId);
                 // ServiceLocator.Get<ILoggerService>().LogWarning($"New guid created: {obj.objectId} for {obj}");
+                obj.objectId = GetDistinctGuid();
 
                 var createObjectIdForNullStr = createObjectIdForNull ? "(Create ObjectId For Null)" : "";
                 var deduplicateObjectIdStr = deduplicateObjectId ? "(Deduplicate ObjectId)" : "";

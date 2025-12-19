@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Icon
   - Map
+  - Hit Area
   layers:
   - Default
   - TransparentFX

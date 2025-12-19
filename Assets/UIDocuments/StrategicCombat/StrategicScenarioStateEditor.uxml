@@ -1,0 +1,41 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="DateTimeField" src="project://database/Assets/UIDocuments/Common/DateTimeField.uxml?fileID=9197481963319205126&amp;guid=f2bdecc78fba4e446b80fb07b946d287&amp;type=3#DateTimeField"/>
+    <ui:VisualElement data-source-type="StrategicScenarioStateEditor, Assembly-CSharp" class="panel-dialog" style="height: 441px; width: 700px;">
+        <ui:Label text="Strategic Scenario State Editor" class="title"/>
+        <ui:VisualElement data-source-path="scenarioState" style="flex-grow: 1;">
+            <ui:Instance template="DateTimeField" data-source-path="dateTimeViewModel"/>
+            <ui:VisualElement style="flex-direction: row;">
+                <ui:Toggle label="Enable Grid System">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="enableGridSystem" binding-mode="TwoWay"/>
+                    </Bindings>
+                </ui:Toggle>
+                <ui:Toggle label="Enable Area System">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="enableAreaSystem" binding-mode="TwoWay"/>
+                    </Bindings>
+                </ui:Toggle>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-direction: row;">
+                <ui:Label text="Area System"/>
+                <ui:Button text="Import" name="ImportAreaSystemButton"/>
+                <ui:Button text="Export" name="ExportAreaSystemButton"/>
+                <ui:Label text="Area System Summary">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="areaSystemSummary" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+            </ui:VisualElement>
+            <ui:Toggle label="Enable First Sino-Japanese War High Command">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="enableSinoJapaneseHighCommand" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:Toggle>
+        </ui:VisualElement>
+        <ui:Button text="Confirm" name="ConfirmButton">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)"/>
+            </Bindings>
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,47 @@
+using System;
+using UnityEngine.UIElements;
+using UnityEngine;
+using Unity.Properties;
+using StrategicCombatCore;
+using CoreUtils;
+
+public class StrategicScenarioStateEditor
+{
+    public void OnCreated(object sender, VisualElement root)
+    {
+        root.Q<Button>("ImportAreaSystemButton").clicked += () =>
+        {
+            Debug.Log("ImportAreaSystemButton clicked");
+
+            IOManager.Instance.LoadTextFile(ImportAreaSystem, "xml");
+        };
+
+        root.Q<Button>("ExportAreaSystemButton").clicked += () =>
+        {
+            Debug.Log("ExportAreaSystemButton clicked");
+
+            ExportAreaSystem();
+        };
+
+    }
+
+    void ImportAreaSystem(string text)
+    {
+        var areaSystem = XmlUtils.FromXML<AreaSystem>(text);
+        StrategicGameState.Instance.scenarioState.areaSystem = areaSystem;
+    }
+
+    void ExportAreaSystem()
+    {
+        var text = XmlUtils.ToXML(StrategicGameState.Instance.scenarioState.areaSystem);
+        IOManager.Instance.SaveTextFile(text, "Area System", "xml");
+    }
+
+    public void OnConfirm(object sender, VisualElement root)
+    {
+        
+    }
+
+    [CreateProperty]
+    public StrategicScenarioState scenarioState => StrategicGameState.Instance.scenarioState;
+}

@@ -191,6 +191,11 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         {
             LandBattleEditor.Instance.Show();
         };
+
+        root.Q<Button>("StrategicScenarioStateButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupStrategicScenarioStateEditorDialog();
+        };
     }
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);

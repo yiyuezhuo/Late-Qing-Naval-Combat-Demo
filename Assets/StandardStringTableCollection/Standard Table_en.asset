@@ -279,7 +279,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 70084606988288
-    m_Localized: Armor Typ Factor
+    m_Localized: Armor Type Factor
     m_Metadata:
       m_Items: []
   - m_Id: 70194946543616
@@ -2336,6 +2336,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 38619517602664448
     m_Localized: Filter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38923844569436160
+    m_Localized: Extra Type
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38923957534625792
+    m_Localized: SK5 Type
     m_Metadata:
       m_Items: []
   references:

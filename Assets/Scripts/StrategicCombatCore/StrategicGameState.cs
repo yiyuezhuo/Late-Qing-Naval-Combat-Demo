@@ -190,7 +190,7 @@ namespace StrategicCombatCore
 
             for (int x = 0; x < cellMatrix.GetLength(0); x++)
                 for (int y = 0; y < cellMatrix.GetLength(1); y++)
-                    cellMatrix[x, y] = new();
+                    cellMatrix[x, y] = new(){x=x, y=y};
 
             mapRebuilt?.Invoke(this, EventArgs.Empty);
         }

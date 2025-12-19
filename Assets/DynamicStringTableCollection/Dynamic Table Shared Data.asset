@@ -2506,35 +2506,35 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 24282096161427456
-    m_Key: NotSpecified
+    m_Key: ExtraShipType.NotSpecified
     m_Metadata:
       m_Items: []
   - m_Id: 24282163349983232
-    m_Key: Ironclad
+    m_Key: ExtraShipType.Ironclad
     m_Metadata:
       m_Items: []
   - m_Id: 24282184166313984
-    m_Key: Predreatought
+    m_Key: ExtraShipType.Predreatought
     m_Metadata:
       m_Items: []
   - m_Id: 24282212444311552
-    m_Key: Dreadnought
+    m_Key: ExtraShipType.Dreadnought
     m_Metadata:
       m_Items: []
   - m_Id: 24282225215967232
-    m_Key: UnprotectedCruiser
+    m_Key: ExtraShipType.UnprotectedCruiser
     m_Metadata:
       m_Items: []
   - m_Id: 24282236108574720
-    m_Key: ProtectedCruiser
+    m_Key: ExtraShipType.ProtectedCruiser
     m_Metadata:
       m_Items: []
   - m_Id: 24282247823265792
-    m_Key: ArmoredCruiser
+    m_Key: ExtraShipType.ArmoredCruiser
     m_Metadata:
       m_Items: []
   - m_Id: 24285571637219328
-    m_Key: TorpedoCruiser
+    m_Key: ExtraShipType.TorpedoCruiser
     m_Metadata:
       m_Items: []
   m_Metadata:

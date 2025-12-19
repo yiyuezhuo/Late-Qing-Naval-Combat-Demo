@@ -58,9 +58,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
 
         public Mode mode = Mode.ScenPath;
+        // public Mode mode = Mode.Empty;
         public Vector2 cameraPosXY;
         public float cameraZoom;
-        public string scenSubPath = "Scenarios/StrategicGameState.xml";
+        // public string scenSubPath = "Scenarios/StrategicGameState.xml";
+        public string scenSubPath = "Scenarios/Vladivostok Squadron Raiding.xml";
         public List<ShipLog> syncShipLogs;
         public VictoryStatus victoryStatus;
     }
@@ -142,26 +144,6 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
             RestoreFromReturnFromNavalGame();
             HexMapShower.Instance.Refresh();
-
-            // var scenarioState = StrategicGameState.Instance.scenarioState;
-            // var pendingNavalCombat = EntityManager.Instance.Get<PendingNavalCombat>(scenarioState.pendingNavalCombatId);
-            // var victoryStatus = startupConfig.victoryStatus;
-
-            // if (victoryStatus != null)
-            // {
-            //     DialogRoot.Instance.PopupVictoryStatusDialog(victoryStatus);
-            // }
-            // if (pendingNavalCombat != null)
-            // {
-            //     StrategicGameState.Instance.pendingNavalCombats.RemoveAll(c => c.objectId == pendingNavalCombat.objectId);
-            // }
-            // if (victoryStatus != null && victoryStatus.sideVictoryStatuses.Count >= 2 && pendingNavalCombat != null)
-            // {
-            //     HandleVictoryStatus(pendingNavalCombat.sideState0, victoryStatus.sideVictoryStatuses[0]);
-            //     HandleVictoryStatus(pendingNavalCombat.sideState1, victoryStatus.sideVictoryStatuses[1]);
-            // }
-
-            // scenarioState.pendingNavalCombatId = null;
         }
         else if (startupConfig.mode == StartupConfig.Mode.ScenPath)
         {

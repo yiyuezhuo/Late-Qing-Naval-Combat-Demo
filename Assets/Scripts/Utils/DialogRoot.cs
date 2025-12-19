@@ -242,6 +242,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset torpedoSectorSelectorDialogDocument;
     public VisualTreeAsset scenarioStateEditorDialogDocument;
     public VisualTreeAsset vladivostokSquadronRaidingSideSelectorDialogDocument;
+    public VisualTreeAsset strategicScenarioStateEditorDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -252,6 +253,23 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupStrategicScenarioStateEditorDialog()
+    {
+        var strategicScenarioStateEditor = new StrategicScenarioStateEditor();
+
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=strategicScenarioStateEditorDialogDocument,
+            templateDataSource=strategicScenarioStateEditor
+        };
+
+        tempDialog.onCreated += strategicScenarioStateEditor.OnCreated;
+        tempDialog.onConfirmed += strategicScenarioStateEditor.OnConfirm;
+
+        tempDialog.Popup();
     }
 
     public void PopupVladivostokSquadronRaidingSideSelectorDialog()

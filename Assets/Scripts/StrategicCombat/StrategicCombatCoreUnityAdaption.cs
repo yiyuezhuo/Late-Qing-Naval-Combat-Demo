@@ -744,6 +744,30 @@ namespace StrategicCombatCore
             "Strength: {0}, Lost: {1}, Kill:{2}",
             endStrength, accumulatedStrengthLoss, accumulatedStrengthKill
         );
+    }
+
+    public partial class StrategicScenarioState : IDateTimeHolder
+    {
+        public DateTime GetDateTime() => dateTime;
+        public void SetDateTime(DateTime dt) => dateTime = dt;
+
+        ScenarioStateDateTimeViewModel _dateTimeViewModel; // Note it's possible to initialize the view model attribute from empty constructor but this may break core's capabbility to leverage empty constructor
+
+        [CreateProperty]
+        public ScenarioStateDateTimeViewModel dateTimeViewModel
+        {
+            get
+            {
+                if (_dateTimeViewModel == null)
+                {
+                    _dateTimeViewModel = new ScenarioStateDateTimeViewModel() { dateTimeHolder = this };
+                }
+                return _dateTimeViewModel;
+            }
+        }
+
+        [CreateProperty]
+        public string areaSystemSummary => $"({areaSystem.areaStates.Count}) {areaSystem.backgroundReference.isBuiltin}, {areaSystem.backgroundReference.path}";
 
     }
 }

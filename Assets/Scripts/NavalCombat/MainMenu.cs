@@ -51,7 +51,12 @@ public class MainMenu : SingletonDocument<MainMenu>
         {
             strategicModeTestButton.clicked += () =>
             {
-                StrategicGameManager.startupConfig = new();
+                // StrategicGameManager.startupConfig = new();
+                StrategicGameManager.startupConfig = new()
+                {
+                    mode = StrategicGameManager.StartupConfig.Mode.ScenPath,
+                    scenSubPath = "Scenarios/StrategicGameState.xml"
+                };
                 SceneManager.LoadScene("Strategic Game");
             };
         }

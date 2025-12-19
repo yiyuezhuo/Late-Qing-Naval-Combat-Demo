@@ -7,12 +7,12 @@
             <ui:VisualElement style="flex-direction: row;">
                 <ui:Toggle label="Enable Grid System">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="enableGridSystem" binding-mode="TwoWay"/>
+                        <ui:DataBinding property="value" data-source-path="enableGridSystemProp" binding-mode="TwoWay"/>
                     </Bindings>
                 </ui:Toggle>
                 <ui:Toggle label="Enable Area System">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="enableAreaSystem" binding-mode="TwoWay"/>
+                        <ui:DataBinding property="value" data-source-path="enableAreaSystemProp" binding-mode="TwoWay"/>
                     </Bindings>
                 </ui:Toggle>
             </ui:VisualElement>

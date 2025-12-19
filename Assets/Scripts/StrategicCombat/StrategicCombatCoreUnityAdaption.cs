@@ -769,6 +769,27 @@ namespace StrategicCombatCore
         [CreateProperty]
         public string areaSystemSummary => $"({areaSystem.areaStates.Count}) {areaSystem.backgroundReference.isBuiltin}, {areaSystem.backgroundReference.path}";
 
+        [CreateProperty]
+        public bool enableGridSystemProp
+        {
+            get => enableGridSystem;
+            set
+            {
+                enableGridSystem = value;
+                StrategicGameManager.Instance.RefreshGridSystemAreaSystemVisibility();
+            }
+        }
+
+        [CreateProperty]
+        public bool enableAreaSystemProp
+        {
+            get => enableAreaSystem;
+            set
+            {
+                enableAreaSystem = value;
+                StrategicGameManager.Instance.RefreshGridSystemAreaSystemVisibility();
+            }
+        }
     }
 }
 

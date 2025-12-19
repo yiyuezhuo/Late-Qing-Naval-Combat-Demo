@@ -111,7 +111,7 @@ namespace StrategicCombatCore
 
         [XmlAttribute("IsCoast")]
         public bool IsCoast;
-        public bool ShouldSerializeIsCoast() => IsCoast;
+        public bool ShouldSerializeIsCoast() => IsCoast; // Used by XmlSerializer
 
         // Move XmlElement to XmlAttribute hack
         // [XmlElement("IsCoast")]
@@ -122,7 +122,7 @@ namespace StrategicCombatCore
         // }
         // public bool ShouldSerializeIsCoast2() => false;
 
-        public bool ShouldSerializeGroundControlPoint() => GroundControlPoint;
+        public bool ShouldSerializeGroundControlPoint() => GroundControlPoint; // Used by XmlSerializer
 
         string EncodeBoolArray(List<EdgeDirection> arr)
         {
@@ -242,33 +242,6 @@ namespace StrategicCombatCore
             if (!IsArmyPassable())
                 return;
             
-            // var sides = StrategicGroupReferences
-            //     .Select(r => r.Get())
-            //     // .Where(g => g != null && g.IsArmy())
-            //     .Where(g => g != null && g.IsArmy() && g.posture != StrategicGroup.GroupPostureType.Disengaged)
-            //     .Select(g => g.side)
-            //     .ToHashSet();
-
-            // // If hex is not in conflict, reset edge control state
-            // if (sides.Count <= 1)
-            // {
-            //     sideObjectIdTop = null;
-            //     sideObjectIdTopRight = null;
-            //     sideObjectIdBottomRight = null;
-            //     sideObjectIdBottom = null;
-            //     sideObjectIdBottomLeft = null;
-            //     sideObjectIdTopLeft = null;
-            // }
-            // // if hex is controlled by only 1 side, update its cell control state.
-            // if (sides.Count == 1)
-            // {
-            //     sideObjectIdHex = sides.First().objectId;
-            // }
-            // if(sides.Count >= 2 && sideObjectIdHex == null)
-            // {
-            //     sideObjectIdHex = RandomUtils.Sample(sides.ToList()).objectId;
-            // }
-
             var groups = StrategicGroupReferences
                 .Select(r => r.Get())
                 // .Where(g => g != null && g.IsArmy())

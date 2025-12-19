@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 using StrategicCombatCore;
 using CoreUtils;
 using NavalCombatCore;
+using System.IO;
 
 public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 {
@@ -25,11 +26,23 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             Debug.Log("SaveButton clicked");
 
             var gameState = DetachGameState(StrategicGameState.Instance, StreamingAssetReference.Instance);
+            var fullState = new StrategicFullState()
+            {
+                gameState = gameState,
+                viewState = StrategicGameManager.Instance.CaptureViewState()
+            };
+
+            var name = StrategicGameManager.startupConfig.mode == StrategicGameManager.StartupConfig.Mode.ScenPath ? Path.GetFileNameWithoutExtension(StrategicGameManager.startupConfig.scenSubPath) : "StrategicGameState";
 
             IOManager.Instance.SaveTextFile(
-                XmlUtils.ToXML(gameState),
-                "StrategicGameState", "xml"
+                XmlUtils.ToXML(fullState),
+                name, "xml"
             );
+
+            // IOManager.Instance.SaveTextFile(
+            //     XmlUtils.ToXML(gameState),
+            //     "StrategicGameState", "xml"
+            // );
         };
 
         root.Q<Button>("LoadButton").clicked += () =>

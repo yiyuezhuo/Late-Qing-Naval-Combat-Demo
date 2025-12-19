@@ -55,7 +55,8 @@ public class MainMenu : SingletonDocument<MainMenu>
                 StrategicGameManager.startupConfig = new()
                 {
                     mode = StrategicGameManager.StartupConfig.Mode.ScenPath,
-                    scenSubPath = "Scenarios/StrategicGameState.xml"
+                    scenSubPath = "Scenarios/First Sino-Japanese War.xml"
+                    // scenSubPath = "Scenarios/StrategicGameState.xml"
                 };
                 SceneManager.LoadScene("Strategic Game");
             };

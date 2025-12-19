@@ -48,6 +48,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public int tempMapHeight = 40;
     public EdgeFeatureType currentEdgeFeatureType;
 
+    public Transform gridSystemTransform;
+    public Transform areaSystemTransform;
+
     public class StartupConfig
     {
         public enum Mode
@@ -63,6 +66,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         public float cameraZoom;
         // public string scenSubPath = "Scenarios/StrategicGameState.xml";
         public string scenSubPath = "Scenarios/Vladivostok Squadron Raiding.xml";
+        // public string scenSubPath = "Scenarios/First Sino-Japanese War.xml";
         public List<ShipLog> syncShipLogs;
         public VictoryStatus victoryStatus;
     }
@@ -160,37 +164,6 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
     }
 
-    // TODO: Move to core
-    // void HandleVictoryStatus(PendingNavalCombat.PendingNavalCombatSideState sideState, SideVictoryStatus sideVictoryStatus)
-    // {
-    //     var side = sideState.side;
-    //     var groups = sideState.GetGroups();
-
-    //     if (sideVictoryStatus.victoryLevel < VictoryLevel.Draw)
-    //     {
-    //         side.victoryPoints -= 1;
-    //     }
-    //     if (sideVictoryStatus.victoryLevel > VictoryLevel.Draw)
-    //     {
-    //         side.victoryPoints += 1;
-    //     }
-    //     if (sideVictoryStatus.victoryLevel <= VictoryLevel.Draw)
-    //     {
-    //         foreach (var group in groups)
-    //         {
-    //             group.StartReturnToBase(24);
-    //         }
-    //     }
-    //     else
-    //     {
-    //         foreach (var group in groups)
-    //         {
-    //             group.StartReorgnize(12);
-    //         }
-    //         // reorgnize for a given time interval. (Combat time + 12h)
-    //     }
-    // }
-
     public void PrepareReturnFromNavalGame()
     {
         var pos = PlaneCameraController.Instance.transform.position;
@@ -201,9 +174,6 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             cameraPosXY = new Vector2(pos.x, pos.y),
             cameraZoom = PlaneCameraController.Instance.cam.orthographicSize
         };
-        // startupConfig.mode = StartupConfig.Mode.ReturnFromNavalGame;
-        // startupConfig.cameraPosXY = new Vector2(pos.x, pos.y);
-        // startupConfig.cameraZoom = PlaneCameraController.Instance.cam.orthographicSize;
     }
 
     public void RestoreFromReturnFromNavalGame()
@@ -213,24 +183,13 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         PlaneCameraController.Instance.cam.orthographicSize = startupConfig.cameraZoom;
 
         StrategicGameState.Instance.UpdateFromTacticalResult(startupConfig.syncShipLogs, startupConfig.victoryStatus);
-
-        // if (startupConfig.syncShipLogs != null)
-        // {
-        //     StrategicGameState.Instance.UpdatePartialShipLogs(startupConfig.syncShipLogs);
-        // }
-
-        // StrategicGameState.Instance.ResetAndRegisterAll();
-
-        // // Other update
-        // // TODO: Move to Core
-
-        // StrategicGameState.Instance.CleanupIndependentStrategicGroups();
-        // StrategicGameState.Instance.HandlePendingNavalCombat(startupConfig.victoryStatus);
     }
 
     public IEnumerator OnScenTextLoaded(string initialScenText)
     {
-        var strategicGameState = XmlUtils.FromXML<StrategicGameState>(initialScenText);
+        var fullState = XmlUtils.FromXML<StrategicFullState>(initialScenText);
+        var strategicGameState = fullState.gameState;
+        // var strategicGameState = XmlUtils.FromXML<StrategicGameState>(initialScenText);
         StrategicGameState.Instance.UpdateTo(strategicGameState);
 
         // TODO: Save StreamingAssetReference state in the StrategicGameState?
@@ -240,6 +199,18 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         HexMapShower.Instance.RefreshSideFlags();
         // HexMapShower.Instance.showSideFlag = false;
+
+        // Update Camera according to the view state
+        // var cam = Camera.main;
+        var cam = PlaneCameraController.Instance.cam;
+        cam.transform.position = new Vector3(
+            fullState.viewState.xPosition,
+            fullState.viewState.yPosition,
+            cam.transform.position.z
+        );
+        cam.orthographicSize = fullState.viewState.orthographicSize;
+
+        RefreshGridSystemAreaSystemVisibility();
 
         TempFix();
     }
@@ -441,7 +412,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                     var hit = Physics2D.Raycast(worldPoint, Vector2.zero);
                     if (hit.collider != null)
                     {
-                        if (hit.collider.CompareTag("Map"))
+                        if (hit.collider.CompareTag("Map")) // Grid Map
                         {
                             // Map Click
                             Debug.Log($"Hit: {hit.collider} {hit.point}");
@@ -697,4 +668,23 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     // {
     //     StrategicGameState.Instance.Advance1Hour(1);
     // }
+
+    public StrategicViewState CaptureViewState()
+    {
+        // var cam = Camera.main;
+        var cam = PlaneCameraController.Instance.cam;
+        return new()
+        {
+            xPosition = cam.transform.position.x,
+            yPosition = cam.transform.position.y,
+            orthographicSize = cam.orthographicSize
+        };
+    }
+
+    public void RefreshGridSystemAreaSystemVisibility()
+    {
+        var scenarioState = gameState.scenarioState;
+        gridSystemTransform.gameObject.SetActive(scenarioState.enableGridSystem);
+        areaSystemTransform.gameObject.SetActive(scenarioState.enableAreaSystem);
+    }
 }

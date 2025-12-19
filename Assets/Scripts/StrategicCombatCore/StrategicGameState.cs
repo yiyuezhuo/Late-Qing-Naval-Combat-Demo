@@ -1156,6 +1156,7 @@ namespace StrategicCombatCore
             return LazyLocalizedString.MakeGlobalStringShort(cell.Label);
         }
 
+
         public override void ResetAndRegisterAll()
         {
             base.ResetAndRegisterAll();

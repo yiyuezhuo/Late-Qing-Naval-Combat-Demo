@@ -827,6 +827,41 @@ namespace StrategicCombatCore
         [CreateProperty]
         public string areaCellName => areaCellObjectId != null ? EntityManager.Instance.Get<Cell>(areaCellObjectId)?.Label?.GetShortName() : areaCellObjectId;
     }
+
+    public partial class CellConnection
+    {
+        [XmlIgnore]
+        [CreateProperty]
+        public float costProp
+        {
+            get => cost;
+            set
+            {
+                cost = value;
+                var otherConn = GetOtherConnectionToSelf();
+                if(otherConn != null)
+                {
+                    otherConn.cost = value;
+                }
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public float costCoefProp
+        {
+            get => costCoef;
+            set
+            {
+                costCoef = value;
+                var otherConn = GetOtherConnectionToSelf();
+                if(otherConn != null)
+                {
+                    otherConn.costCoef = value;
+                }
+            }
+        }
+    }
 }
 
 namespace NavalCombatCore

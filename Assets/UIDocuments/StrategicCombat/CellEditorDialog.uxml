@@ -168,6 +168,22 @@
                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22685229057216512)"/>
                     </Bindings>
                 </ui:Tab>
+                <ui:Tab label="Connection">
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:Button text="Recalculate Cost" name="RecalculateCostButton"/>
+                    </ui:VisualElement>
+                    <ui:MultiColumnListView columns="" sort-column-descriptions="" binding-source-selection-mode="AutoAssign" show-add-remove-footer="false" data-source-path="CellConnections" name="CellConnectionsMultiColumnListView">
+                        <ui:Columns reorderable="false">
+                            <ui:Column name="Cell" title="Cell" width="60%" cell-template="project://database/Assets/UIDocuments/Templates/CellConnection/CellConnectionXY.uxml?fileID=9197481963319205126&amp;guid=db50dd19383cab64d895d9047c6274c8&amp;type=3#CellConnectionXY"/>
+                            <ui:Column name="Cost" title="Cost" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/CellConnection/CellConnectionCost.uxml?fileID=9197481963319205126&amp;guid=23f929707a675174884e49a6f7fe785d&amp;type=3#CellConnectionCost"/>
+                            <ui:Column name="CostCoef" title="CostCoef" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/CellConnection/CellConnectionCostCoef.uxml?fileID=9197481963319205126&amp;guid=b87191690973ed449ac5acd129f6ec9b&amp;type=3#CellConnectionCostCoef"/>
+                        </ui:Columns>
+                    </ui:MultiColumnListView>
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row-reverse;">
+                        <ui:Button text="Delete Connection" name="DeleteConnectionButton"/>
+                        <ui:Button text="Add Connection" name="AddConnectionButton"/>
+                    </ui:VisualElement>
+                </ui:Tab>
             </ui:TabView>
         </ui:VisualElement>
         <ui:Button text="Confirm" name="ConfirmButton">

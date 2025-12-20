@@ -13,6 +13,8 @@ using StrategicCombatCore;
 using CoreUtils;
 using NavalCombat;
 using UnityEngine.Localization;
+using GeographicLib;
+
 
 public class ScenarioPickerDialog // ScenarioPicker's root data source
 {
@@ -612,6 +614,94 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             el.Q<Button>("SideObjectIdBottomButton").clicked += () => PopupSideStatePickerDialog(sideState => cell.sideObjectIdBottom = sideState.objectId);
             el.Q<Button>("SideObjectIdBottomLeftButton").clicked += () => PopupSideStatePickerDialog(sideState => cell.sideObjectIdBottomLeft = sideState.objectId);
             el.Q<Button>("SideObjectIdTopLeftButton").clicked += () => PopupSideStatePickerDialog(sideState => cell.sideObjectIdTopLeft = sideState.objectId);
+
+            var cellConnectionsMultiColumnListView = el.Q<MultiColumnListView>("CellConnectionsMultiColumnListView");
+            
+            // Utils.BindItemsAddedRemoved<CellConnection>(cellConnectionsMultiColumnListView, () => null);
+            
+            // var cellCol = cellConnectionsMultiColumnListView.columns["Cell"];
+            // cellCol.makeCell = () =>
+            // {
+            //     var c = cellCol.cellTemplate.CloneTree();
+            //     var setButton = c.Q<Button>("SetButton");
+            //     setButton.clicked += () =>
+            //     {
+            //         Debug.Log("cellConnectionsMultiColumnListView SetButton clicked");
+
+            //         if (Utils.TryResolveCurrentValueForBinding(setButton, out CellConnection cellConnection))
+            //         {
+            //             StrategicGameManager.Instance.ScheduleOneshotCellClickCallback(otherCell =>
+            //             {
+            //                 cellConnection.other = otherCell.ToXY();
+            //                 StrategicGameManager.Instance.mapEditMode = StrategicMapEditMode.Select;
+
+            //                 otherCell.CellConnections.FirstOrDefault(c => c.GetOther() == cell);
+            //             });
+            //         }
+            //     };
+            //     return c;
+            // };
+
+            // It's easier to write following compared to "Data Binding Gymnastics" and hack Add Removed callback
+            var addConnectionButton = el.Q<Button>("AddConnectionButton");
+            var deleteConnectionButton = el.Q<Button>("DeleteConnectionButton");
+
+            addConnectionButton.clicked += () =>
+            {
+                StrategicGameManager.Instance.ScheduleOneshotCellClickCallback(otherCell =>
+                {
+                    StrategicGameManager.Instance.mapEditMode = StrategicMapEditMode.Select;
+
+                    // otherCell.CellConnections.FirstOrDefault(c => c.GetOther() == cell);
+                    var selfMatched = cell.CellConnections.FirstOrDefault(c => c.GetOther() == otherCell);
+                    if(selfMatched == null)
+                    {
+                        cell.CellConnections.Add(new()
+                        {
+                            self=cell.ToXY(),
+                            other=otherCell.ToXY(),
+                        });
+                        otherCell.CellConnections.Add(new()
+                        {
+                            self=otherCell.ToXY(),
+                            other=cell.ToXY(),
+                        });
+                    }
+                });
+            };
+
+            deleteConnectionButton.clicked += () =>
+            {
+                if(cellConnectionsMultiColumnListView.selectedItem is CellConnection cellConnection && cellConnection != null)
+                {
+                    cell.CellConnections.Remove(cellConnection);
+                    var otherCell = cellConnection.GetOther();
+                    var otherConnection = otherCell.CellConnections.FirstOrDefault(conn => conn.GetOther() == cell);
+                    // var otherConnection = cellConnection.GetOtherConnectionToSelf();
+                    if(otherConnection != null)
+                    {
+                        otherCell.CellConnections.Remove(otherConnection);
+                    }
+                }
+            };
+
+            el.Q<Button>("RecalculateCostButton").clicked += () =>
+            {
+                // TODO: Add grid system's calculation
+                foreach(var areaCell in StrategicGameState.Instance.areaCells)
+                {
+                    foreach(var conn in areaCell.CellConnections)
+                    {
+                        // conn.costCoef = 1;
+                        var otherCell = conn.GetOther();
+
+                        Geodesic.WGS84.Inverse(areaCell.latitude, areaCell.longitude, otherCell.latitude, otherCell.longitude, out double distanceM);
+                        var distanceKm = (float)distanceM / 1000; // Consistent with 50km/hex scale.
+                        //  * MeasureUtils.kilometerToNavalMile;
+                        conn.cost = distanceKm * conn.costCoef;
+                    }
+                }
+            };
         };
 
         // tempDialog.onConfirmed += (sender, args) => StrategicGameState.Instance.InvokeMapCellUpdated(cell.x, cell.y);

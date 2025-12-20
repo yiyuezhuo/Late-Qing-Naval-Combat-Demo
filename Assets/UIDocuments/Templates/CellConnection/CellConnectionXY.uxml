@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="StrategicCombatCore.CellConnection, Assembly-CSharp" style="flex-direction: row;">
+        <ui:TextField style="flex-grow: 1;">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="other.areaCellName" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:TextField>
+    </ui:VisualElement>
+</ui:UXML>

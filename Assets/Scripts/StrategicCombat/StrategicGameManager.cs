@@ -19,7 +19,6 @@ using CoreUtils;
 using StrategicCombatCore;
 using NavalCombatCore;
 using YYZ.PathFinding;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 
 public enum StrategicMapEditMode
@@ -121,6 +120,10 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public string currentSideStateObjectId;
 
     public bool currentLogOnly = true;
+
+    public Transform pathLineContainerTransform;
+    public GameObject pathLinePrefab;
+
 
     [CreateProperty]
     public string currentSideStateName => EntityManager.Instance.Get<SideState>(currentSideStateObjectId)?.name?.mergedName ?? "";
@@ -297,7 +300,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         // fullInitialized = true;
     }
 
-    Dictionary<string, HitArea> areaCellObjectIdToHitArea = new();
+    public Dictionary<string, HitArea> areaCellObjectIdToHitArea = new();
 
     public void FinishInitialization() // I wonder if is it better to use a dedicated method for this.
     {
@@ -474,8 +477,35 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         {
             UpdateViewState();
             HandleInput();
+            UpdatePathLines();
         }
     }
+
+    void UpdatePathLines()
+    {
+        // Update Path Lines
+        var pathLineActiveStrategicGroups = new List<StrategicGroup>();
+
+        var selectedGroup = lastSelectedStrategicGroup; // Consider only the selected strategic group now.
+        if (selectedGroup != null)
+        {
+            pathLineActiveStrategicGroups.Add(selectedGroup);
+        }
+
+        Utils.SyncTransformViewerLength(pathLineContainerTransform, pathLineActiveStrategicGroups.Count, pathLinePrefab);
+        var pathLineControllers = pathLineContainerTransform.GetComponentsInChildren<PathLineController>();
+
+        for (int i = 0; i < pathLineActiveStrategicGroups.Count; i++)
+        {
+            var group = pathLineActiveStrategicGroups[i];
+            var controller = pathLineControllers[i];
+            // var progressPercent = group.moveProgressionKm / 50;
+            var valid = group.TryGetDistanceToNextLocationInPlannedPathWithoutProgression(out var cellDistKm);
+            var progressPercent = valid ? group.moveProgressionKm / cellDistKm : 0;
+            controller.Sync(group.plannedPath, progressPercent);
+        }
+    }
+
 
     void UpdateViewState()
     {

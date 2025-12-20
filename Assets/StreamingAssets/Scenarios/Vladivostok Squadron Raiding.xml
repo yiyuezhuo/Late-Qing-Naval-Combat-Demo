@@ -3826,14 +3826,66 @@
      <japanese>宗谷海峡</japanese>
      <chineseSimplified>宗谷海峡</chineseSimplified>
     </Label>
+    <CellConnections>
+     <CellConnection cost="407.8352" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="a8f121fa-c137-43ee-8aa5-7875092125ab" />
+      <other x="-1" y="-1" areaCellObjectId="76734099-06b6-4d82-98e4-a9b4f59c9330" />
+     </CellConnection>
+     <CellConnection cost="432.663177" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="a8f121fa-c137-43ee-8aa5-7875092125ab" />
+      <other x="-1" y="-1" areaCellObjectId="aa096457-286b-4d12-a4ec-fd29f0003bc2" />
+     </CellConnection>
+     <CellConnection cost="608.1771" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="a8f121fa-c137-43ee-8aa5-7875092125ab" />
+      <other x="-1" y="-1" areaCellObjectId="080e6a86-5afc-4911-94a5-7be102b9c316" />
+     </CellConnection>
+    </CellConnections>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="146.33" latitude="43.2" objectId="76734099-06b6-4d82-98e4-a9b4f59c9330" />
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="146.33" latitude="43.2" objectId="76734099-06b6-4d82-98e4-a9b4f59c9330">
+    <Label>
+     <english>Hokkaidō (E)</english>
+     <japanese>北海道 (东)</japanese>
+     <chineseSimplified>北海道 (东)</chineseSimplified>
+    </Label>
+    <CellConnections>
+     <CellConnection cost="407.8352" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="76734099-06b6-4d82-98e4-a9b4f59c9330" />
+      <other x="-1" y="-1" areaCellObjectId="a8f121fa-c137-43ee-8aa5-7875092125ab" />
+     </CellConnection>
+     <CellConnection cost="395.131226" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="76734099-06b6-4d82-98e4-a9b4f59c9330" />
+      <other x="-1" y="-1" areaCellObjectId="aa096457-286b-4d12-a4ec-fd29f0003bc2" />
+     </CellConnection>
+    </CellConnections>
+   </Cell>
    <Cell x="-1" y="-1" terrain="ShallowWater" longitude="141.88" latitude="41.85" objectId="aa096457-286b-4d12-a4ec-fd29f0003bc2">
     <Label>
      <english>Tsugaru Strait</english>
      <japanese>津軽海峡</japanese>
      <chineseSimplified>津轻海峡</chineseSimplified>
     </Label>
+    <CellConnections>
+     <CellConnection cost="432.663177" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="aa096457-286b-4d12-a4ec-fd29f0003bc2" />
+      <other x="-1" y="-1" areaCellObjectId="a8f121fa-c137-43ee-8aa5-7875092125ab" />
+     </CellConnection>
+     <CellConnection cost="420.541077" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="aa096457-286b-4d12-a4ec-fd29f0003bc2" />
+      <other x="-1" y="-1" areaCellObjectId="080e6a86-5afc-4911-94a5-7be102b9c316" />
+     </CellConnection>
+     <CellConnection cost="395.131226" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="aa096457-286b-4d12-a4ec-fd29f0003bc2" />
+      <other x="-1" y="-1" areaCellObjectId="76734099-06b6-4d82-98e4-a9b4f59c9330" />
+     </CellConnection>
+     <CellConnection cost="413.6482" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="aa096457-286b-4d12-a4ec-fd29f0003bc2" />
+      <other x="-1" y="-1" areaCellObjectId="6d6ef369-0a3c-4e92-ada4-3b2b4c09b2fa" />
+     </CellConnection>
+     <CellConnection cost="606.7192" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="aa096457-286b-4d12-a4ec-fd29f0003bc2" />
+      <other x="-1" y="-1" areaCellObjectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a" />
+     </CellConnection>
+    </CellConnections>
    </Cell>
    <Cell x="-1" y="-1" terrain="ShallowWater" longitude="136.82" latitude="42.16" objectId="080e6a86-5afc-4911-94a5-7be102b9c316">
     <Label>
@@ -3841,6 +3893,28 @@
      <japanese>日本海 (北)</japanese>
      <chineseSimplified>日本海 (北)</chineseSimplified>
     </Label>
+    <CellConnections>
+     <CellConnection cost="406.435242" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="080e6a86-5afc-4911-94a5-7be102b9c316" />
+      <other x="-1" y="-1" areaCellObjectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16" />
+     </CellConnection>
+     <CellConnection cost="608.1771" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="080e6a86-5afc-4911-94a5-7be102b9c316" />
+      <other x="-1" y="-1" areaCellObjectId="a8f121fa-c137-43ee-8aa5-7875092125ab" />
+     </CellConnection>
+     <CellConnection cost="443.01767" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="080e6a86-5afc-4911-94a5-7be102b9c316" />
+      <other x="-1" y="-1" areaCellObjectId="d404f7a4-ada4-48cc-bc29-6a424f413e64" />
+     </CellConnection>
+     <CellConnection cost="461.913971" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="080e6a86-5afc-4911-94a5-7be102b9c316" />
+      <other x="-1" y="-1" areaCellObjectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a" />
+     </CellConnection>
+     <CellConnection cost="420.541077" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="080e6a86-5afc-4911-94a5-7be102b9c316" />
+      <other x="-1" y="-1" areaCellObjectId="aa096457-286b-4d12-a4ec-fd29f0003bc2" />
+     </CellConnection>
+    </CellConnections>
    </Cell>
    <Cell x="-1" y="-1" terrain="LightUrban" longitude="131.92" latitude="42.6" IsCoast="true" sideObjectIdHex="f781e78a-aaf5-411f-8f49-d1561e7949a2" objectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16">
     <Label>
@@ -3856,6 +3930,20 @@
       <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
      </StrategicGroupReference>
     </StrategicGroupReferences>
+    <CellConnections>
+     <CellConnection cost="417.219971" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16" />
+      <other x="-1" y="-1" areaCellObjectId="d404f7a4-ada4-48cc-bc29-6a424f413e64" />
+     </CellConnection>
+     <CellConnection cost="510.310425" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16" />
+      <other x="-1" y="-1" areaCellObjectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc" />
+     </CellConnection>
+     <CellConnection cost="406.435242" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16" />
+      <other x="-1" y="-1" areaCellObjectId="080e6a86-5afc-4911-94a5-7be102b9c316" />
+     </CellConnection>
+    </CellConnections>
    </Cell>
    <Cell x="-1" y="-1" terrain="LightUrban" longitude="127.7" latitude="39.3" IsCoast="true" objectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc">
     <Label>
@@ -3863,6 +3951,20 @@
      <japanese>元山</japanese>
      <chineseSimplified>元山</chineseSimplified>
     </Label>
+    <CellConnections>
+     <CellConnection cost="510.310425" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc" />
+      <other x="-1" y="-1" areaCellObjectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16" />
+     </CellConnection>
+     <CellConnection cost="505.3237" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc" />
+      <other x="-1" y="-1" areaCellObjectId="d404f7a4-ada4-48cc-bc29-6a424f413e64" />
+     </CellConnection>
+     <CellConnection cost="601.2755" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc" />
+      <other x="-1" y="-1" areaCellObjectId="065a6098-b765-4a8b-bc41-b430c8efc50d" />
+     </CellConnection>
+    </CellConnections>
    </Cell>
    <Cell x="-1" y="-1" terrain="ShallowWater" longitude="133.54" latitude="39.05" objectId="d404f7a4-ada4-48cc-bc29-6a424f413e64">
     <Label>
@@ -3870,6 +3972,32 @@
      <japanese>日本海(南)</japanese>
      <chineseSimplified>日本海(南)</chineseSimplified>
     </Label>
+    <CellConnections>
+     <CellConnection cost="417.219971" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="d404f7a4-ada4-48cc-bc29-6a424f413e64" />
+      <other x="-1" y="-1" areaCellObjectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16" />
+     </CellConnection>
+     <CellConnection cost="443.01767" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="d404f7a4-ada4-48cc-bc29-6a424f413e64" />
+      <other x="-1" y="-1" areaCellObjectId="080e6a86-5afc-4911-94a5-7be102b9c316" />
+     </CellConnection>
+     <CellConnection cost="505.3237" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="d404f7a4-ada4-48cc-bc29-6a424f413e64" />
+      <other x="-1" y="-1" areaCellObjectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc" />
+     </CellConnection>
+     <CellConnection cost="368.6236" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="d404f7a4-ada4-48cc-bc29-6a424f413e64" />
+      <other x="-1" y="-1" areaCellObjectId="76352c1d-69a9-4ca3-a974-3ac4073e3901" />
+     </CellConnection>
+     <CellConnection cost="310.452545" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="d404f7a4-ada4-48cc-bc29-6a424f413e64" />
+      <other x="-1" y="-1" areaCellObjectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a" />
+     </CellConnection>
+     <CellConnection cost="622.8885" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="d404f7a4-ada4-48cc-bc29-6a424f413e64" />
+      <other x="-1" y="-1" areaCellObjectId="065a6098-b765-4a8b-bc41-b430c8efc50d" />
+     </CellConnection>
+    </CellConnections>
    </Cell>
    <Cell x="-1" y="-1" terrain="ShallowWater" longitude="136.84" latitude="38" objectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a">
     <Label>
@@ -3877,6 +4005,24 @@
      <japanese>石川</japanese>
      <chineseSimplified>石川</chineseSimplified>
     </Label>
+    <CellConnections>
+     <CellConnection cost="461.913971" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a" />
+      <other x="-1" y="-1" areaCellObjectId="080e6a86-5afc-4911-94a5-7be102b9c316" />
+     </CellConnection>
+     <CellConnection cost="310.452545" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a" />
+      <other x="-1" y="-1" areaCellObjectId="d404f7a4-ada4-48cc-bc29-6a424f413e64" />
+     </CellConnection>
+     <CellConnection cost="606.7192" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a" />
+      <other x="-1" y="-1" areaCellObjectId="aa096457-286b-4d12-a4ec-fd29f0003bc2" />
+     </CellConnection>
+     <CellConnection cost="457.17395" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a" />
+      <other x="-1" y="-1" areaCellObjectId="76352c1d-69a9-4ca3-a974-3ac4073e3901" />
+     </CellConnection>
+    </CellConnections>
    </Cell>
    <Cell x="-1" y="-1" terrain="ShallowWater" longitude="141.596" latitude="38.131" objectId="6d6ef369-0a3c-4e92-ada4-3b2b4c09b2fa">
     <Label>
@@ -3884,6 +4030,16 @@
      <japanese>宮城</japanese>
      <chineseSimplified>宫城</chineseSimplified>
     </Label>
+    <CellConnections>
+     <CellConnection cost="413.6482" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="6d6ef369-0a3c-4e92-ada4-3b2b4c09b2fa" />
+      <other x="-1" y="-1" areaCellObjectId="aa096457-286b-4d12-a4ec-fd29f0003bc2" />
+     </CellConnection>
+     <CellConnection cost="395.851257" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="6d6ef369-0a3c-4e92-ada4-3b2b4c09b2fa" />
+      <other x="-1" y="-1" areaCellObjectId="a3f12676-afe1-4bee-92e1-7ca717938bd8" />
+     </CellConnection>
+    </CellConnections>
    </Cell>
    <Cell x="-1" y="-1" terrain="ShallowWater" longitude="139.563" latitude="34.963" objectId="a3f12676-afe1-4bee-92e1-7ca717938bd8">
     <Label>
@@ -3896,6 +4052,16 @@
       <referenceId>c5d93306-4781-4f10-a629-da83e996308e</referenceId>
      </StrategicGroupReference>
     </StrategicGroupReferences>
+    <CellConnections>
+     <CellConnection cost="395.851257" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="a3f12676-afe1-4bee-92e1-7ca717938bd8" />
+      <other x="-1" y="-1" areaCellObjectId="6d6ef369-0a3c-4e92-ada4-3b2b4c09b2fa" />
+     </CellConnection>
+     <CellConnection cost="469.447479" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="a3f12676-afe1-4bee-92e1-7ca717938bd8" />
+      <other x="-1" y="-1" areaCellObjectId="832147e0-ad8a-469b-8a01-59558646f97d" />
+     </CellConnection>
+    </CellConnections>
    </Cell>
    <Cell x="-1" y="-1" terrain="ShallowWater" longitude="132.47" latitude="35.84" objectId="76352c1d-69a9-4ca3-a974-3ac4073e3901">
     <Label>
@@ -3903,6 +4069,20 @@
      <japanese>島根</japanese>
      <chineseSimplified>岛根</chineseSimplified>
     </Label>
+    <CellConnections>
+     <CellConnection cost="368.6236" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="76352c1d-69a9-4ca3-a974-3ac4073e3901" />
+      <other x="-1" y="-1" areaCellObjectId="d404f7a4-ada4-48cc-bc29-6a424f413e64" />
+     </CellConnection>
+     <CellConnection cost="457.17395" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="76352c1d-69a9-4ca3-a974-3ac4073e3901" />
+      <other x="-1" y="-1" areaCellObjectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a" />
+     </CellConnection>
+     <CellConnection cost="288.2547" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="76352c1d-69a9-4ca3-a974-3ac4073e3901" />
+      <other x="-1" y="-1" areaCellObjectId="065a6098-b765-4a8b-bc41-b430c8efc50d" />
+     </CellConnection>
+    </CellConnections>
    </Cell>
    <Cell x="-1" y="-1" terrain="ShallowWater" longitude="125.82" latitude="36.1" objectId="c9b7a619-1f95-4664-8cd1-c6e79994fd38">
     <Label>
@@ -3910,6 +4090,12 @@
      <japanese>黄海</japanese>
      <chineseSimplified>黄海</chineseSimplified>
     </Label>
+    <CellConnections>
+     <CellConnection cost="435.504456" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="c9b7a619-1f95-4664-8cd1-c6e79994fd38" />
+      <other x="-1" y="-1" areaCellObjectId="065a6098-b765-4a8b-bc41-b430c8efc50d" />
+     </CellConnection>
+    </CellConnections>
    </Cell>
    <Cell x="-1" y="-1" terrain="ShallowWater" longitude="130.01" latitude="34.21" objectId="065a6098-b765-4a8b-bc41-b430c8efc50d">
     <Label>
@@ -3925,6 +4111,32 @@
       <referenceId>44d799ed-77dc-4946-b150-21af4c1fcfc9</referenceId>
      </StrategicGroupReference>
     </StrategicGroupReferences>
+    <CellConnections>
+     <CellConnection cost="601.2755" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="065a6098-b765-4a8b-bc41-b430c8efc50d" />
+      <other x="-1" y="-1" areaCellObjectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc" />
+     </CellConnection>
+     <CellConnection cost="288.2547" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="065a6098-b765-4a8b-bc41-b430c8efc50d" />
+      <other x="-1" y="-1" areaCellObjectId="76352c1d-69a9-4ca3-a974-3ac4073e3901" />
+     </CellConnection>
+     <CellConnection cost="435.504456" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="065a6098-b765-4a8b-bc41-b430c8efc50d" />
+      <other x="-1" y="-1" areaCellObjectId="c9b7a619-1f95-4664-8cd1-c6e79994fd38" />
+     </CellConnection>
+     <CellConnection cost="622.8885" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="065a6098-b765-4a8b-bc41-b430c8efc50d" />
+      <other x="-1" y="-1" areaCellObjectId="d404f7a4-ada4-48cc-bc29-6a424f413e64" />
+     </CellConnection>
+     <CellConnection cost="356.0813" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="065a6098-b765-4a8b-bc41-b430c8efc50d" />
+      <other x="-1" y="-1" areaCellObjectId="6793c7a7-7e29-4018-a0f4-de7ef31055d3" />
+     </CellConnection>
+     <CellConnection cost="452.440826" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="065a6098-b765-4a8b-bc41-b430c8efc50d" />
+      <other x="-1" y="-1" areaCellObjectId="832147e0-ad8a-469b-8a01-59558646f97d" />
+     </CellConnection>
+    </CellConnections>
    </Cell>
    <Cell x="-1" y="-1" terrain="ShallowWater" longitude="134.81" latitude="33.44" objectId="832147e0-ad8a-469b-8a01-59558646f97d">
     <Label>
@@ -3937,6 +4149,20 @@
       <referenceId>faa1b04e-87b1-4610-b3da-82c02635f857</referenceId>
      </StrategicGroupReference>
     </StrategicGroupReferences>
+    <CellConnections>
+     <CellConnection cost="469.447479" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="832147e0-ad8a-469b-8a01-59558646f97d" />
+      <other x="-1" y="-1" areaCellObjectId="a3f12676-afe1-4bee-92e1-7ca717938bd8" />
+     </CellConnection>
+     <CellConnection cost="452.440826" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="832147e0-ad8a-469b-8a01-59558646f97d" />
+      <other x="-1" y="-1" areaCellObjectId="065a6098-b765-4a8b-bc41-b430c8efc50d" />
+     </CellConnection>
+     <CellConnection cost="519.851257" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="832147e0-ad8a-469b-8a01-59558646f97d" />
+      <other x="-1" y="-1" areaCellObjectId="6793c7a7-7e29-4018-a0f4-de7ef31055d3" />
+     </CellConnection>
+    </CellConnections>
    </Cell>
    <Cell x="-1" y="-1" terrain="ShallowWater" longitude="130.1" latitude="31" objectId="6793c7a7-7e29-4018-a0f4-de7ef31055d3">
     <Label>
@@ -3944,6 +4170,16 @@
      <japanese>大隅海峡</japanese>
      <chineseSimplified>大隅海峡</chineseSimplified>
     </Label>
+    <CellConnections>
+     <CellConnection cost="356.0813" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="6793c7a7-7e29-4018-a0f4-de7ef31055d3" />
+      <other x="-1" y="-1" areaCellObjectId="065a6098-b765-4a8b-bc41-b430c8efc50d" />
+     </CellConnection>
+     <CellConnection cost="519.851257" costCoef="1">
+      <self x="-1" y="-1" areaCellObjectId="6793c7a7-7e29-4018-a0f4-de7ef31055d3" />
+      <other x="-1" y="-1" areaCellObjectId="832147e0-ad8a-469b-8a01-59558646f97d" />
+     </CellConnection>
+    </CellConnections>
    </Cell>
   </areaCells>
   <highCommand>
@@ -6739,9 +6975,9 @@
   </serializedCells>
  </gameState>
  <viewState>
-  <xPosition>-0.931445837</xPosition>
-  <yPosition>-1.82468927</yPosition>
-  <orthographicSize>5</orthographicSize>
+  <xPosition>-2.27004862</xPosition>
+  <yPosition>-0.7838259</yPosition>
+  <orthographicSize>6</orthographicSize>
   <hitAreaMapRecords>
    <HitAreaMapRecord hitAreaObjectId="0b2cbd39-ad25-4233-b5a1-5744048e7491" areaCellObjectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16" />
    <HitAreaMapRecord hitAreaObjectId="54b9824b-f430-407e-9d7e-867728dccccb" areaCellObjectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc" />

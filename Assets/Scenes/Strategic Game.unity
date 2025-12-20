@@ -1560,7 +1560,6 @@ Transform:
   - {fileID: 1215834149}
   - {fileID: 1015478983}
   - {fileID: 540693175}
-  - {fileID: 1819725383}
   - {fileID: 588873092}
   m_Father: {fileID: 893239364}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2766,8 +2765,11 @@ MonoBehaviour:
   hitAreasRootTransform: {fileID: 1788551328}
   areaSystemCounterContainerTransform: {fileID: 1264437118}
   strategicGroupIconPrefab: {fileID: 3524373397051295401, guid: eeb18b7201b1c32459b68dbd2dd3ea19, type: 3}
+  fullInitialized: 0
   currentSideStateObjectId: 
   currentLogOnly: 1
+  pathLineContainerTransform: {fileID: 1819725383}
+  pathLinePrefab: {fileID: 5562614255133263553, guid: 9764680f81772704684c1ec0d87acf5d, type: 3}
 --- !u!4 &1689453573
 Transform:
   m_ObjectHideFlags: 0
@@ -3061,12 +3063,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819725382}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 937397445}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1866888164
 PrefabInstance:
@@ -3605,3 +3607,4 @@ SceneRoots:
   - {fileID: 1763246560}
   - {fileID: 893239364}
   - {fileID: 1662179545}
+  - {fileID: 1819725383}

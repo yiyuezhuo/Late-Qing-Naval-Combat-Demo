@@ -188,6 +188,23 @@ public static class Utils
         };
     }
 
+    // public static void BindCellConnectionAddedRemoved<T>(BaseListView listView, Func<object> parentProvider, Cell self) where T : new()
+    // {
+    //     BindItemsAddedRemoved<T>(listView, parentProvider);
+
+    //     listView.itemsAdded += (IEnumerable<int> index) =>
+    //     {
+    //         foreach (var i in index)
+    //         {
+    //             var v = listView.itemsSource[i];
+    //             if (v is CellConnection cellConnection)
+    //             {
+    //                 cellConnection.self = self.ToXY();
+    //             }
+    //         }
+    //     };
+    // }
+
     public static void BindItemsSourceRecursive(VisualElement root)
     {
         foreach (var listView in root.Query<BaseListView>().ToList())

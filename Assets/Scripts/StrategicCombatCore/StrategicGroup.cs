@@ -972,6 +972,18 @@ namespace StrategicCombatCore
             );
         }
 
+        public bool TryGetDistanceToNextLocationInPlannedPathWithoutProgression(out float distanceKm)
+        {
+            if(plannedPath.Count < 2)
+            {
+                distanceKm = -1;
+                return false;
+            }
+            var currentCell = cell;
+            var nextCell = plannedPath[1].GetCell();
+            return currentCell.TryGetDistance(nextCell, out distanceKm);
+        }
+
         public bool IsOnAreaCell() => cell?.IsAreaCell() ?? false; // independent or combined on area => true, Not Deployed => false
         public bool IsOnGridCell() => cell?.IsGridCell() ?? false;
     }

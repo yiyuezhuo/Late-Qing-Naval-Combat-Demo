@@ -24,10 +24,19 @@ public class PathLineController : MonoBehaviour
     {
         var positions = pathCells.Select(xy =>
         {
-            var (xf, yf) = HexMapShower.CellXYToLocalXY(xy.x, xy.y);
-            var pos = HexMapShower.Instance.controlledRenderer.transform.TransformPoint(xf, yf, 0);
             var posZ = -0.1f;
-            return new Vector3(pos.x, pos.y, posZ);
+            var cell = xy.GetCell();
+            if(cell.IsGridCell())
+            {
+                var (xf, yf) = HexMapShower.CellXYToLocalXY(xy.x, xy.y);
+                var pos = HexMapShower.Instance.controlledRenderer.transform.TransformPoint(xf, yf, 0);
+                return new Vector3(pos.x, pos.y, posZ);
+            }
+            else
+            {
+                var hitArea = StrategicGameManager.Instance.areaCellObjectIdToHitArea[cell.objectId];
+                return new Vector3(hitArea.transform.position.x, hitArea.transform.position.y, posZ);
+            }
         }).ToArray();
 
         var show = positions.Length >= 2;

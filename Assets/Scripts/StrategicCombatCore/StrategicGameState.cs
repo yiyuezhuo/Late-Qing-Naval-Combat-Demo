@@ -820,7 +820,13 @@ namespace StrategicCombatCore
                     var moveKmCap = speedKmPerHour * 1;
                     while (moveKmCap > 0 && strategicGroup.plannedPath.Count >= 2)
                     {
-                        var nextDistKm = 50 - strategicGroup.moveProgressionKm;
+                        var valid = strategicGroup.TryGetDistanceToNextLocationInPlannedPathWithoutProgression(out var cellDistKm);
+                        if(!valid)
+                        {
+                            break;
+                        }
+
+                        var nextDistKm = cellDistKm - strategicGroup.moveProgressionKm; // 50km/hex
                         if (moveKmCap < nextDistKm)
                         {
                             strategicGroup.moveProgressionKm += moveKmCap;

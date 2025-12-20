@@ -1,6 +1,7 @@
 using YYZ.PathFinding;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace StrategicCombatCore
 {
@@ -144,15 +145,44 @@ namespace StrategicCombatCore
 
         public float EstimateCost(Cell src, Cell dst)
         {
-            return Math.Abs(src.x - dst.x) + Math.Abs(src.y - dst.y);
+            // return Math.Abs(src.x - dst.x) + Math.Abs(src.y - dst.y);
+            if(src.IsGridCell() && dst.IsGridCell())
+            {
+                return Math.Abs(src.x - dst.x) + Math.Abs(src.y - dst.y);
+            }
+            else
+            {
+                return Math.Abs(src.latitude - dst.latitude) + Math.Abs(src.longitude - dst.longitude);
+            }
         }
 
-        public float MoveCost(Cell src, Cell dst) => 1;
+        // public float MoveCost(Cell src, Cell dst) => 1;
+        public float MoveCost(Cell src, Cell dst)
+        {
+            if(src.IsAreaCell() && dst.IsAreaCell())
+            {
+                var conn = src.CellConnections.FirstOrDefault(c => c.GetOther() == dst);
+                return conn.cost;
+            }
+            else
+            {
+                return 1;
+            }
+        }
 
         public IEnumerable<Cell> Nodes()
         {
-            foreach (var cell in StrategicGameState.Instance.cellMatrix)
-                yield return cell;
+            var gameState = StrategicGameState.Instance;
+            if(gameState.scenarioState.enableGridSystem)
+            {
+                foreach (var cell in gameState.cellMatrix)
+                    yield return cell;
+            }
+            if(gameState.scenarioState.enableAreaSystem)
+            {
+                foreach (var cell in gameState.areaCells)
+                    yield return cell;
+            }
         }
     }
 }

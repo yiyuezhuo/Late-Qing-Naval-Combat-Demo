@@ -6,7 +6,6 @@ using System.Xml.Serialization;
 
 using CoreUtils;
 using NavalCombatCore;
-using UnityEditor.Build.Content;
 
 
 namespace StrategicCombatCore
@@ -66,6 +65,32 @@ namespace StrategicCombatCore
         Road,
         Railroad,
         River
+    }
+
+    public partial class CellConnection
+    {
+        public XY self = new(); // Though it waste some serialization storage, it can simplify UI binding and structure.
+        public XY other = new();
+
+        [XmlAttribute]
+        public float cost; // distance km now
+
+        [XmlAttribute]
+        public float costCoef = 1; // Currently it is used to indicate the "curvature" modifier applied to the shortest path distance auto-calculated with two lat lon value.  
+    
+        public Cell GetOther() => other.GetCell();
+        public Cell GetSelf() => self.GetCell();
+
+        public CellConnection GetOtherConnectionToSelf()
+        {
+            var selfCell = self.GetCell();
+            var otherCell = other.GetCell();
+            if(otherCell != null)
+            {
+                return otherCell.CellConnections.FirstOrDefault(conn => conn.GetOther() == selfCell);
+            }
+            return null;
+        }
     }
 
 
@@ -321,6 +346,10 @@ namespace StrategicCombatCore
         public bool ShouldSerializeStrategicGroupReferences() => StrategicGroupReferences != null && StrategicGroupReferences.Count > 0;
         public List<StrategicGroupReference> StrategicGroupReferences = new();
 
+
+        public bool ShouldSerializeCellConnections() => CellConnections != null && CellConnections.Count > 0;
+        public List<CellConnection> CellConnections = new();
+
         public static Dictionary<EdgeDirection, (int, int)> directionToOffsetEven = new()
         {
             { EdgeDirection.Top, (0, 1) },
@@ -403,11 +432,22 @@ namespace StrategicCombatCore
 
         public IEnumerable<Cell> GetNeighbors()
         {
-            foreach (var edge in defaultDirectionsOrder)
+            if(IsAreaCell())
             {
-                var hex = GetNeighbor(edge);
-                if (hex != null)
-                    yield return hex;
+                foreach(var conn in CellConnections)
+                {
+                    yield return conn.GetOther();
+                }
+            }
+            else
+            {
+                // TODO: Handle cross Grid/Area System Collection.
+                foreach (var edge in defaultDirectionsOrder)
+                {
+                    var hex = GetNeighbor(edge);
+                    if (hex != null)
+                        yield return hex;
+                }
             }
         }
 
@@ -473,6 +513,26 @@ namespace StrategicCombatCore
                 y = y,
                 areaCellObjectId = objectId,  
             };
+        }
+
+        public bool TryGetDistance(Cell other, out float distanceKm)
+        {
+            if(IsAreaCell())
+            {
+                var conn = CellConnections.FirstOrDefault(c => c.GetOther() == other);
+                if(conn != null)
+                {
+                    distanceKm = conn.cost;
+                    return true;
+                }
+            }
+            else if(GetNeighbors().Any(nei => nei == other))
+            {
+                distanceKm = 50;
+                return true;
+            }
+            distanceKm = -1;
+            return false;
         }
 
         // [XmlIgnore]

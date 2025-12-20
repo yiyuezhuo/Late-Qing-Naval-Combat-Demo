@@ -29,7 +29,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     public Transform strategicGroupIconTransform;
     public Transform sideFlagContainerTransform;
     public Transform cellLabelContainerTransform;
-    public Transform pathLineContainerTransform;
+    // public Transform pathLineContainerTransform;
     public Transform missionWaypointLineContainerTransform;
 
     public GameObject locationLabelPrefab;
@@ -39,7 +39,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     public GameObject strategicGroupIconPrefab;
     public GameObject sideFlagPrefab;
     public GameObject cellLabelPrefab;
-    public GameObject pathLinePrefab;
+    // public GameObject pathLinePrefab;
     public GameObject missionWaypointLinePrefab;
 
     public SpriteRenderer mapRenderer;
@@ -224,28 +224,6 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
             lineRenderer.SetPositions(new Vector3[2] { p0, p1 });
         }
     }
-
-    // void BindSideFlags(Transform containerTransform, GameObject prefab, Cell[,] cellMatrix)
-    // {
-    //     var width = cellMatrix.GetLength(0);
-    //     var height = cellMatrix.GetLength(1);
-    //     var length = width * height;
-
-    //     Utils.SyncTransformViewerLength(containerTransform, length, prefab);
-    //     var viewers = containerTransform.GetComponentsInChildren<SpriteRenderer>();
-
-    //     foreach (var cell in cellMatrix)
-    //     {
-    //         var id = cell.x + cell.y * width;
-    //         var viewer = viewers[id];
-
-    //         var (xf, yf) = CellXYToLocalXY(cell.x, cell.y);
-    //         var vec = controlledRenderer.transform.TransformPoint(xf, yf, 0);
-
-    //         viewer.transform.position = new Vector3(vec.x, vec.y, 0);
-    //         viewer.sprite = UnityWebRequestImageReader.Instance.FetchSprite(Application.streamingAssetsPath + $"/Pictures/Flags/China.png");
-    //     }
-    // }
 
     void BindStrategicGroupIcons(Transform containerTransform, GameObject prefab, List<StrategicGroup> strategicGroups)
     {
@@ -435,7 +413,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         if(StrategicGameManager.Instance.fullInitialized)
         {
             UpdateStrategicGroupIcons();
-            UpdatePathLines();
+            // UpdatePathLines();
             UpdateMissionWaypointLines();
         }
     }
@@ -448,28 +426,28 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         BindStrategicGroupIcons(strategicGroupIconTransform, strategicGroupIconPrefab, observableStrategicGroups);
     }
 
-    void UpdatePathLines()
-    {
-        // Update Path Lines
-        var pathLineActiveStrategicGroups = new List<StrategicGroup>();
+    // void UpdatePathLines()
+    // {
+    //     // Update Path Lines
+    //     var pathLineActiveStrategicGroups = new List<StrategicGroup>();
 
-        var selectedGroup = StrategicGameManager.Instance.lastSelectedStrategicGroup;
-        if (selectedGroup != null)
-        {
-            pathLineActiveStrategicGroups.Add(selectedGroup);
-        }
+    //     var selectedGroup = StrategicGameManager.Instance.lastSelectedStrategicGroup; // Consider only the selected strategic group now.
+    //     if (selectedGroup != null)
+    //     {
+    //         pathLineActiveStrategicGroups.Add(selectedGroup);
+    //     }
 
-        Utils.SyncTransformViewerLength(pathLineContainerTransform, pathLineActiveStrategicGroups.Count, pathLinePrefab);
-        var pathLineControllers = pathLineContainerTransform.GetComponentsInChildren<PathLineController>();
+    //     Utils.SyncTransformViewerLength(pathLineContainerTransform, pathLineActiveStrategicGroups.Count, pathLinePrefab);
+    //     var pathLineControllers = pathLineContainerTransform.GetComponentsInChildren<PathLineController>();
 
-        for (int i = 0; i < pathLineActiveStrategicGroups.Count; i++)
-        {
-            var group = pathLineActiveStrategicGroups[i];
-            var controller = pathLineControllers[i];
-            var progressPercent = group.moveProgressionKm / 50;
-            controller.Sync(group.plannedPath, progressPercent);
-        }
-    }
+    //     for (int i = 0; i < pathLineActiveStrategicGroups.Count; i++)
+    //     {
+    //         var group = pathLineActiveStrategicGroups[i];
+    //         var controller = pathLineControllers[i];
+    //         var progressPercent = group.moveProgressionKm / 50;
+    //         controller.Sync(group.plannedPath, progressPercent);
+    //     }
+    // }
 
     void UpdateMissionWaypointLines()
     {

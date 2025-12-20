@@ -18,7 +18,7 @@
     <headingDeg>0</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
     <desiredHeadingDeg>0</desiredHeadingDeg>
-    <mapState>NotDeployed</mapState>
+    <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
@@ -438,7 +438,7 @@
     <headingDeg>0</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
     <desiredHeadingDeg>0</desiredHeadingDeg>
-    <mapState>NotDeployed</mapState>
+    <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
@@ -849,7 +849,7 @@
     <headingDeg>0</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
     <desiredHeadingDeg>0</desiredHeadingDeg>
-    <mapState>NotDeployed</mapState>
+    <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
@@ -1350,7 +1350,7 @@
     <headingDeg>0</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
     <desiredHeadingDeg>0</desiredHeadingDeg>
-    <mapState>NotDeployed</mapState>
+    <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
@@ -1626,7 +1626,7 @@
     <headingDeg>0</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
     <desiredHeadingDeg>0</desiredHeadingDeg>
-    <mapState>NotDeployed</mapState>
+    <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
@@ -2001,7 +2001,7 @@
     <headingDeg>0</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
     <desiredHeadingDeg>0</desiredHeadingDeg>
-    <mapState>NotDeployed</mapState>
+    <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
@@ -2358,7 +2358,7 @@
     <headingDeg>0</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
     <desiredHeadingDeg>0</desiredHeadingDeg>
-    <mapState>NotDeployed</mapState>
+    <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
@@ -2733,7 +2733,7 @@
     <headingDeg>0</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
     <desiredHeadingDeg>0</desiredHeadingDeg>
-    <mapState>NotDeployed</mapState>
+    <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
@@ -3108,7 +3108,7 @@
     <headingDeg>0</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
     <desiredHeadingDeg>0</desiredHeadingDeg>
-    <mapState>NotDeployed</mapState>
+    <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
@@ -3483,7 +3483,7 @@
     <headingDeg>0</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
     <desiredHeadingDeg>0</desiredHeadingDeg>
-    <mapState>NotDeployed</mapState>
+    <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
@@ -3839,15 +3839,23 @@
     <Label>
      <english>Japan Sea (N)</english>
      <japanese>日本海 (北)</japanese>
-     <chineseSimplified>日本海 (南)</chineseSimplified>
+     <chineseSimplified>日本海 (北)</chineseSimplified>
     </Label>
    </Cell>
-   <Cell x="-1" y="-1" terrain="LightUrban" longitude="0" latitude="0" IsCoast="true" objectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16">
+   <Cell x="-1" y="-1" terrain="LightUrban" longitude="0" latitude="0" IsCoast="true" sideObjectIdHex="f781e78a-aaf5-411f-8f49-d1561e7949a2" objectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16">
     <Label>
      <english>Vladivostok</english>
      <japanese>ウラジオストク</japanese>
      <chineseSimplified>海参崴</chineseSimplified>
     </Label>
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>00552ba8-0962-43c1-9da7-31a07da39aaa</referenceId>
+     </StrategicGroupReference>
+     <StrategicGroupReference>
+      <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
    </Cell>
    <Cell x="-1" y="-1" terrain="LightUrban" longitude="0" latitude="0" IsCoast="true" objectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc">
     <Label>
@@ -3863,16 +3871,39 @@
      <chineseSimplified>日本海(南)</chineseSimplified>
     </Label>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a" />
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="6d6ef369-0a3c-4e92-ada4-3b2b4c09b2fa" />
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a">
+    <Label>
+     <english>Ishikawa</english>
+     <japanese>石川</japanese>
+     <chineseSimplified>石川</chineseSimplified>
+    </Label>
+   </Cell>
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="6d6ef369-0a3c-4e92-ada4-3b2b4c09b2fa">
+    <Label>
+     <english>Miyagi</english>
+     <japanese>宮城</japanese>
+     <chineseSimplified>宫城</chineseSimplified>
+    </Label>
+   </Cell>
    <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="a3f12676-afe1-4bee-92e1-7ca717938bd8">
     <Label>
      <english>Tokyo Bay</english>
      <japanese>東京湾</japanese>
      <chineseSimplified>东京湾</chineseSimplified>
     </Label>
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>c5d93306-4781-4f10-a629-da83e996308e</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="76352c1d-69a9-4ca3-a974-3ac4073e3901" />
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="76352c1d-69a9-4ca3-a974-3ac4073e3901">
+    <Label>
+     <english>Shimane</english>
+     <japanese>島根</japanese>
+     <chineseSimplified>岛根</chineseSimplified>
+    </Label>
+   </Cell>
    <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="c9b7a619-1f95-4664-8cd1-c6e79994fd38">
     <Label>
      <english>Yellow Sea</english>
@@ -3886,8 +3917,27 @@
      <japanese>対馬</japanese>
      <chineseSimplified>对马</chineseSimplified>
     </Label>
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>44d799ed-77dc-4946-b150-21af4c1fcfc9</referenceId>
+     </StrategicGroupReference>
+     <StrategicGroupReference>
+      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="832147e0-ad8a-469b-8a01-59558646f97d" />
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="832147e0-ad8a-469b-8a01-59558646f97d">
+    <Label>
+     <english>Kōchi</english>
+     <japanese>高知</japanese>
+     <chineseSimplified>高知</chineseSimplified>
+    </Label>
+    <StrategicGroupReferences>
+     <StrategicGroupReference>
+      <referenceId>faa1b04e-87b1-4610-b3da-82c02635f857</referenceId>
+     </StrategicGroupReference>
+    </StrategicGroupReferences>
+   </Cell>
    <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="6793c7a7-7e29-4018-a0f4-de7ef31055d3">
     <Label>
      <english>Ōsumi Strait</english>
@@ -3948,11 +3998,12 @@
     <type>HeadQuarter</type>
     <size>Division</size>
     <country>Russia</country>
-    <deployState>NotDeployed</deployState>
+    <deployState>Independent</deployState>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
+    <independentAreaCellObjectId>8f47e057-3f82-4c2e-a5c4-e18e614b3b16</independentAreaCellObjectId>
     <leaderReference>
      <referenceObjectId>de5c3853-f922-47fa-81d3-31564419f71c</referenceObjectId>
     </leaderReference>
@@ -3979,11 +4030,12 @@
     <type>Fleet</type>
     <size>Bridge</size>
     <country>Russia</country>
-    <deployState>NotDeployed</deployState>
+    <deployState>Independent</deployState>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
+    <independentAreaCellObjectId>8f47e057-3f82-4c2e-a5c4-e18e614b3b16</independentAreaCellObjectId>
     <leaderReference>
      <referenceObjectId>de5c3853-f922-47fa-81d3-31564419f71c</referenceObjectId>
     </leaderReference>
@@ -4021,11 +4073,12 @@
     <type>Fleet</type>
     <size>Division</size>
     <country>Japan</country>
-    <deployState>NotDeployed</deployState>
+    <deployState>Independent</deployState>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
+    <independentAreaCellObjectId>065a6098-b765-4a8b-bc41-b430c8efc50d</independentAreaCellObjectId>
     <leaderReference>
      <referenceObjectId>43bfbde8-70e0-4d42-8122-3dc082557429</referenceObjectId>
     </leaderReference>
@@ -4041,7 +4094,9 @@
     <xProp>-1</xProp>
     <yProp>-1</yProp>
     <objectId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</objectId>
-    <strategicGroupReference />
+    <strategicGroupReference>
+     <referenceId>44d799ed-77dc-4946-b150-21af4c1fcfc9</referenceId>
+    </strategicGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -4052,7 +4107,7 @@
     <type>Fleet</type>
     <size>Bridge</size>
     <country>Japan</country>
-    <deployState>NotDeployed</deployState>
+    <deployState>Combined</deployState>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
     <independentX>-1</independentX>
@@ -4091,6 +4146,88 @@
      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
     </strategicGroupReference>
    </StrategicGroup>
+   <StrategicGroup>
+    <name>
+     <english>Sasebo Naval District</english>
+     <japanese>佐世保鎮守府</japanese>
+     <chineseSimplified>佐世保镇守府</chineseSimplified>
+    </name>
+    <type>HeadQuarter</type>
+    <size>Division</size>
+    <country>Japan</country>
+    <deployState>Independent</deployState>
+    <autoCombinable>false</autoCombinable>
+    <dissolvable>false</dissolvable>
+    <independentX>-1</independentX>
+    <independentY>-1</independentY>
+    <independentAreaCellObjectId>065a6098-b765-4a8b-bc41-b430c8efc50d</independentAreaCellObjectId>
+    <leaderReference />
+    <subordinatesCombined>
+     <StrategicGroupMemberReference>
+      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
+     </StrategicGroupMemberReference>
+    </subordinatesCombined>
+    <moveProgressionKm>0</moveProgressionKm>
+    <plannedPath />
+    <posture>Active</posture>
+    <restoredHours>0</restoredHours>
+    <xProp>-1</xProp>
+    <yProp>-1</yProp>
+    <objectId>44d799ed-77dc-4946-b150-21af4c1fcfc9</objectId>
+    <strategicGroupReference />
+   </StrategicGroup>
+   <StrategicGroup>
+    <name>
+     <english>Kure Naval District</english>
+     <japanese>呉鎮守府</japanese>
+     <chineseSimplified>吴镇守府</chineseSimplified>
+    </name>
+    <type>HeadQuarter</type>
+    <size>Division</size>
+    <country>Japan</country>
+    <deployState>Independent</deployState>
+    <autoCombinable>false</autoCombinable>
+    <dissolvable>false</dissolvable>
+    <independentX>-1</independentX>
+    <independentY>-1</independentY>
+    <independentAreaCellObjectId>832147e0-ad8a-469b-8a01-59558646f97d</independentAreaCellObjectId>
+    <leaderReference />
+    <subordinatesCombined />
+    <moveProgressionKm>0</moveProgressionKm>
+    <plannedPath />
+    <posture>Active</posture>
+    <restoredHours>0</restoredHours>
+    <xProp>-1</xProp>
+    <yProp>-1</yProp>
+    <objectId>faa1b04e-87b1-4610-b3da-82c02635f857</objectId>
+    <strategicGroupReference />
+   </StrategicGroup>
+   <StrategicGroup>
+    <name>
+     <english>Yokosuka Naval District</english>
+     <japanese>横須賀鎮守府</japanese>
+     <chineseSimplified>横须贺镇守府</chineseSimplified>
+    </name>
+    <type>HeadQuarter</type>
+    <size>Division</size>
+    <country>Japan</country>
+    <deployState>Independent</deployState>
+    <autoCombinable>false</autoCombinable>
+    <dissolvable>false</dissolvable>
+    <independentX>-1</independentX>
+    <independentY>-1</independentY>
+    <independentAreaCellObjectId>a3f12676-afe1-4bee-92e1-7ca717938bd8</independentAreaCellObjectId>
+    <leaderReference />
+    <subordinatesCombined />
+    <moveProgressionKm>0</moveProgressionKm>
+    <plannedPath />
+    <posture>Active</posture>
+    <restoredHours>0</restoredHours>
+    <xProp>-1</xProp>
+    <yProp>-1</yProp>
+    <objectId>c5d93306-4781-4f10-a629-da83e996308e</objectId>
+    <strategicGroupReference />
+   </StrategicGroup>
   </strategicGroups>
   <scenarioState>
    <dateTime>1904-02-09T00:00:00Z</dateTime>
@@ -4124,7 +4261,63 @@
    <enableGridSystemProp>false</enableGridSystemProp>
    <enableAreaSystemProp>true</enableAreaSystemProp>
   </scenarioState>
-  <sideStates />
+  <sideStates>
+   <SideState>
+    <name>
+     <english>Japan</english>
+     <japanese>日本</japanese>
+     <chineseSimplified>日本</chineseSimplified>
+    </name>
+    <countries>
+     <Country>Japan</Country>
+    </countries>
+    <diplomacyRelations>
+     <DiplomacyRelation>
+      <relationValue>0</relationValue>
+      <state>War</state>
+     </DiplomacyRelation>
+    </diplomacyRelations>
+    <victoryPoints>0</victoryPoints>
+    <defaultAmmunitionLoadoutWeightRecord>
+     <shellSizeInchLow>0</shellSizeInchLow>
+     <shellSizeInchHigh>999</shellSizeInchHigh>
+     <armorPiercing>50</armorPiercing>
+     <semiArmorPiercing>0</semiArmorPiercing>
+     <common>50</common>
+     <highExplosive>0</highExplosive>
+    </defaultAmmunitionLoadoutWeightRecord>
+    <extraAmmunitionLoadoutWeightRecords />
+    <objectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</objectId>
+   </SideState>
+   <SideState>
+    <name>
+     <english>Russia</english>
+     <japanese>ロシア</japanese>
+     <chineseSimplified>俄罗斯</chineseSimplified>
+    </name>
+    <countries>
+     <Country>Russia</Country>
+    </countries>
+    <diplomacyRelations>
+     <DiplomacyRelation>
+      <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
+      <relationValue>0</relationValue>
+      <state>War</state>
+     </DiplomacyRelation>
+    </diplomacyRelations>
+    <victoryPoints>0</victoryPoints>
+    <defaultAmmunitionLoadoutWeightRecord>
+     <shellSizeInchLow>0</shellSizeInchLow>
+     <shellSizeInchHigh>999</shellSizeInchHigh>
+     <armorPiercing>50</armorPiercing>
+     <semiArmorPiercing>0</semiArmorPiercing>
+     <common>50</common>
+     <highExplosive>0</highExplosive>
+    </defaultAmmunitionLoadoutWeightRecord>
+    <extraAmmunitionLoadoutWeightRecords />
+    <objectId>f781e78a-aaf5-411f-8f49-d1561e7949a2</objectId>
+   </SideState>
+  </sideStates>
   <missions />
   <pendingNavalCombats />
   <landBattles />
@@ -6537,9 +6730,9 @@
   </serializedCells>
  </gameState>
  <viewState>
-  <xPosition>-2.09700727</xPosition>
-  <yPosition>1.1833806</yPosition>
-  <orthographicSize>5</orthographicSize>
+  <xPosition>-1.94431067</xPosition>
+  <yPosition>1.36916089</yPosition>
+  <orthographicSize>3</orthographicSize>
   <hitAreaMapRecords>
    <HitAreaMapRecord hitAreaObjectId="0b2cbd39-ad25-4233-b5a1-5744048e7491" areaCellObjectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16" />
    <HitAreaMapRecord hitAreaObjectId="54b9824b-f430-407e-9d7e-867728dccccb" areaCellObjectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc" />

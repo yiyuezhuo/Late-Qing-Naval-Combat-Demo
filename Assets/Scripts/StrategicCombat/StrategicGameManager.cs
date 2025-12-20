@@ -49,9 +49,15 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public int tempMapHeight = 40;
     public EdgeFeatureType currentEdgeFeatureType;
 
+    
     public Transform gridSystemTransform;
     public Transform areaSystemTransform;
+    // TODO: Extract and move those Area System related stuff to another class? 
     public Transform hitAreasRootTransform;
+    public Transform areaSystemCounterContainerTransform;
+    public GameObject strategicGroupIconPrefab;
+
+    public bool fullInitialized = false;
 
     public class StartupConfig
     {
@@ -248,6 +254,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         var strategicGameState = fullState.gameState;
         // var strategicGameState = XmlUtils.FromXML<StrategicGameState>(initialScenText);
         StrategicGameState.Instance.UpdateTo(strategicGameState);
+        StrategicGameState.Instance.ResetAndRegisterAll(); // workaround for view update bug happend when wait following yield return 
 
         // TODO: Save StreamingAssetReference state in the StrategicGameState?
         yield return StreamingAssetReference.Instance.TryToCompleteFromStreamingAssetReference(StrategicGameState.Instance);
@@ -267,6 +274,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
 
         TempFix();
+
+        fullInitialized = true;
     }
 
     Dictionary<string, HitArea> areaCellObjectIdToHitArea = new();
@@ -428,6 +437,26 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public void Update()
     {
+        if(fullInitialized)
+        {
+            UpdateViewState();
+            HandleInput();
+        }
+    }
+
+    void UpdateViewState()
+    {
+        var gameState = StrategicGameState.Instance;
+        if(gameState.scenarioState.enableAreaSystem)
+        {
+            var observableStrategicGroups = StrategicGameState.Instance.GetOrderedObservableStrategicGroups().Where(g => g.IsOnAreaCell()).ToList();
+
+            BindAreaSystemStrategicGroupIcons(areaSystemCounterContainerTransform, strategicGroupIconPrefab, observableStrategicGroups);
+        }
+    }
+
+    void HandleInput()
+    {
         var controlPressing = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
         var altPressing = Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt);
 
@@ -548,7 +577,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 {
                     DialogRoot.Instance.PopupStrategicGroupPickerDialog(group =>
                     {
-                        group.MoveToXY(cell.x, cell.y, false);
+                        // group.MoveToXY(cell.x, cell.y, false);
+                        group.MoveToCell(cell, false);
                     });
                     // Debug.Log("ScheduleOneshotCellClickCallback"); // Popup Dialog to select a group.
                     mapEditMode = StrategicMapEditMode.Select;
@@ -640,7 +670,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         {
             if (lastSelectedStrategicGroup != null)
             {
-                lastSelectedStrategicGroup.MoveToXY(cell.x, cell.y, false);
+                // lastSelectedStrategicGroup.MoveToXY(cell.x, cell.y, false);
+                lastSelectedStrategicGroup.MoveToCell(cell, false);
                 // lastSelectedStrategicGroup.plannedPath.Clear();
                 lastSelectedStrategicGroup.ClearPlannedPath();
             }
@@ -810,5 +841,39 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         var scenarioState = gameState.scenarioState;
         gridSystemTransform.gameObject.SetActive(scenarioState.enableGridSystem);
         areaSystemTransform.gameObject.SetActive(scenarioState.enableAreaSystem);
+    }
+
+    public void BindAreaSystemStrategicGroupIcons(Transform containerTransform, GameObject prefab, List<StrategicGroup> strategicGroups)
+    {
+        var gameState = StrategicGameState.Instance;
+
+        Utils.SyncTransformViewerLength(containerTransform, strategicGroups.Count, prefab);
+
+        var worldSpaceGroupIcons = containerTransform.GetComponentsInChildren<WorldSpaceGroupIcon>();
+        var groupToView = new Dictionary<StrategicGroup, WorldSpaceGroupIcon>();
+        for (int i = 0; i < strategicGroups.Count; i++)
+        {
+            var strategicGroup = strategicGroups[i];
+            var worldSpaceGroupIcon = worldSpaceGroupIcons[i];
+            worldSpaceGroupIcon.SetDataSource(strategicGroup);
+
+            groupToView[strategicGroup] = worldSpaceGroupIcon;
+        }
+
+        foreach(var g in strategicGroups.GroupBy(group => group.areaCellObjectId))
+        {
+            if(areaCellObjectIdToHitArea.TryGetValue(g.Key, out var hitArea))
+            {
+                var xf = hitArea.transform.position.x;
+                var yf = hitArea.transform.position.y;
+
+                Utils.LayoutStackTransform(
+                    g.Select(gp => groupToView[gp].transform).ToList(),
+                    new Vector3(xf, yf, 0),
+                    0.05f
+                );
+            }
+        }
+
     }
 }

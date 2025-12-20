@@ -61,7 +61,7 @@ namespace StrategicCombatCore
         public bool isReferenceAny() => referenceId != null && referenceId != "";
     }
     
-    public class XY
+    public partial class XY
     {
         [XmlAttribute]
         public int x;
@@ -69,9 +69,19 @@ namespace StrategicCombatCore
         [XmlAttribute]
         public int y;
 
+        [XmlAttribute]
+        public string areaCellObjectId;
+
+        public Cell GetCell()
+        {
+            if(areaCellObjectId != null)
+                return EntityManager.Instance.Get<Cell>(areaCellObjectId);
+            return StrategicGameState.Instance.cellMatrix[x, y];
+        }
+
         public override string ToString()
         {
-            return $"XY({x}, {y})";
+            return $"XY({x}, {y}, {areaCellObjectId})";
         }
     }
 
@@ -160,6 +170,23 @@ namespace StrategicCombatCore
             }
         }
 
+        public string independentAreaCellObjectId;
+        public string areaCellObjectId // If it's not null, then the group is in an area and ignore x, y (they should be -1, -1 if areaObjectId is not null)
+        {
+            get
+            {
+                if(deployState == DeployState.NotDeployed)
+                {
+                    return null;
+                }
+                else if(deployState == DeployState.Combined)
+                {
+                    return strategicGroupReference.Get()?.areaCellObjectId;
+                }
+                return independentAreaCellObjectId;
+            }
+        }
+
         public LeaderReference leaderReference = new();
 
         public List<StrategicGroupMemberReference> subordinatesCombined = new();
@@ -203,7 +230,22 @@ namespace StrategicCombatCore
         }
 
         [XmlIgnore]
-        public Cell cell => x != -1 && y != -1 ? StrategicGameState.Instance.cellMatrix[x, y] : null;
+        public Cell cell
+        {
+            get
+            {
+                if(areaCellObjectId != null)
+                {
+                    return EntityManager.Instance.Get<Cell>(areaCellObjectId);
+                }
+                else if(x != -1 && y != -1)
+                {
+                    return StrategicGameState.Instance.cellMatrix[x, y];
+                }
+                return null;
+            }
+        }
+        // public Cell cell => x != -1 && y != -1 ? StrategicGameState.Instance.cellMatrix[x, y] : null;
 
         public void SetStrategicGroupReference(StrategicGroup group) => IStrategicGroupMemberReferenceable.SetStrategicGroupReference(this, group);
 
@@ -300,9 +342,10 @@ namespace StrategicCombatCore
         }
 
         // From Vacuum or to vacuum, or move to other cell through vacuum.
-        public void MoveToXY(int toX, int toY, bool moveThroughEdge)
+        // public void MoveToXY(int toX, int toY, bool moveThroughEdge)
+        public void MoveToCell(Cell toCell, bool moveThroughEdge)
         {
-            var toCell = StrategicGameState.Instance.cellMatrix[toX, toY];
+            // var toCell = StrategicGameState.Instance.cellMatrix[toX, toY];
             var prevCell = cell;
 
             if (deployState == DeployState.Independent && prevCell != null)
@@ -311,8 +354,21 @@ namespace StrategicCombatCore
             }
 
             deployState = DeployState.Independent;
-            x = toX;
-            y = toY;
+            // x = toX;
+            // y = toY;
+            if(toCell.IsAreaCell())
+            {
+                x = -1;
+                y = -1;
+                independentAreaCellObjectId = toCell.objectId;
+            }
+            else // Grid Cell
+            {
+                x = toCell.x;
+                y = toCell.y;
+                independentAreaCellObjectId = null;
+            }
+
 
             toCell.StrategicGroupReferences.Add(new() { referenceId = objectId });
 
@@ -344,7 +400,8 @@ namespace StrategicCombatCore
                     var containerGroup = container.strategicGroupReference.Get();
                     if(containerGroup != null)
                     {
-                        MoveToXY(containerGroup.x, containerGroup.y, false);
+                        // MoveToCell(containerGroup.x, containerGroup.y, false);
+                        MoveToCell(containerGroup.cell, false);
                         container.loadedGroups.RemoveAll(r => r.referenceId == objectId);
                     }
                 }
@@ -370,6 +427,7 @@ namespace StrategicCombatCore
 
             independentX = -1;
             independentY = -1;
+            independentAreaCellObjectId = null;
 
             // deployState = DeployState.NotDeployed;
 
@@ -383,11 +441,22 @@ namespace StrategicCombatCore
                 var parentGroup = strategicGroupReference.Get();
                 if (parentGroup != null)
                 {
-                    MoveToXY(parentGroup.x, parentGroup.y, false);
+                    // MoveToXY(parentGroup.x, parentGroup.y, false);
+                    MoveToCell(parentGroup.cell, false);
                 }
-                else
+                else // TODO: Is it better to just block the update rather than move it to a obscure placeholder location?
                 {
-                    MoveToXY(0, 0, false);
+                    // MoveToXY(0, 0, false);
+                    // MoveToCell(Strategic, false);
+                    var gameState = StrategicGameState.Instance;
+                    if(gameState.scenarioState.enableGridSystem)
+                    {
+                        MoveToCell(gameState.cellMatrix[0, 0], false);
+                    }
+                    else if(gameState.scenarioState.enableAreaSystem)
+                    {
+                        MoveToCell(gameState.areaCells[0], false);
+                    }
                 }
             }
             else if (newState == DeployState.NotDeployed || newState == DeployState.Combined)
@@ -568,7 +637,8 @@ namespace StrategicCombatCore
 
             if (deployState == DeployState.Independent)
             {
-                newGroup.MoveToXY(independentX, independentY, false);
+                // newGroup.MoveToXY(independentX, independentY, false);
+                newGroup.MoveToCell(cell, false);
             }
 
             var transferElements = Enumerable.Range(0, subordinatesCombined.Count)
@@ -896,6 +966,9 @@ namespace StrategicCombatCore
                 LazyLocalizedString.MakeRaw($"{tacMod:+0.00%;-0.00%;0.00%}")
             );
         }
+
+        public bool IsOnAreaCell() => cell?.IsAreaCell() ?? false; // independent or combined on area => true, Not Deployed => false
+        public bool IsOnGridCell() => cell?.IsGridCell() ?? false;
     }
 }
 

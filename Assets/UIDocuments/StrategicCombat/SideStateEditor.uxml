@@ -1,96 +1,96 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
-    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor"/>
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
     <ui:VisualElement data-source-type="SideStateEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
-        <ui:Label text="Side State" class="title" />
+        <ui:Label text="Side State" class="title"/>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px;">
-                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" data-source-path="currentGameState.sideStates" item-template="project://database/Assets/UIDocuments/Templates/SideStateLabel.uxml?fileID=9197481963319205126&amp;guid=56e87efa05095aa4d96dea7ac2c70118&amp;type=3#SideStateLabel" style="flex-grow: 1;" />
+                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" data-source-path="currentGameState.sideStates" item-template="project://database/Assets/UIDocuments/Templates/SideStateLabel.uxml?fileID=9197481963319205126&amp;guid=56e87efa05095aa4d96dea7ac2c70118&amp;type=3#SideStateLabel" style="flex-grow: 1;"/>
                 <ui:VisualElement name="ControlButtons">
-                    <ui:Button text="Copy Last" name="CopyLastButton" />
-                    <ui:Button text="Confirm" name="ConfirmButton" />
+                    <ui:Button text="Copy Last" name="CopyLastButton"/>
+                    <ui:Button text="Confirm" name="ConfirmButton"/>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1;">
                 <ui:Label text="Not Selected or Invalid">
                     <Bindings>
-                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1;">
                     <ui:VisualElement name="ContentContainer" data-source-path="selectedObject">
                         <ui:Instance template="GlobalStringEditor" data-source-path="name">
-                            <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+                            <AttributeOverrides element-name="GlobalStringLabel" text="Name"/>
                         </ui:Instance>
                         <ui:FloatField label="Victory Points" style="align-items: auto;">
                             <Bindings>
-                                <ui:DataBinding property="value" data-source-path="victoryPoints" binding-mode="TwoWay" />
+                                <ui:DataBinding property="value" data-source-path="victoryPoints" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:FloatField>
-                        <ui:Label text="Ammo Loadout Percentage" />
+                        <ui:Label text="Countries"/>
+                        <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="countries" show-add-remove-footer="true" item-template="project://database/Assets/UIDocuments/Templates/CountryEnumField.uxml?fileID=9197481963319205126&amp;guid=f760d6fe0c512a842b3944c72b90e696&amp;type=3#CountryEnumField"/>
+                        <ui:Label text="Diplomacy"/>
+                        <ui:MultiColumnListView data-source-path="diplomacyRelations" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" name="DiplomacyRelationMultiColumnListView">
+                            <ui:Columns>
+                                <ui:Column title="Side" width="60%" cell-template="project://database/Assets/UIDocuments/Templates/DiplomacyRelation/DiplomacyRelationSideObjectId.uxml?fileID=9197481963319205126&amp;guid=b067ef04f8e5e114484ba54288bedfb9&amp;type=3#DiplomacyRelationSideObjectId" name="side"/>
+                                <ui:Column title="Relation" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/DiplomacyRelation/DiplomacyRelationRelationValue.uxml?fileID=9197481963319205126&amp;guid=8a657807ac5102c43954c376c4348023&amp;type=3#DiplomacyRelationRelationValue"/>
+                                <ui:Column title="State" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/DiplomacyRelation/DiplomacyRelationState.uxml?fileID=9197481963319205126&amp;guid=32f719b1d96df5147a61d07cd63f4d58&amp;type=3#DiplomacyRelationState"/>
+                            </ui:Columns>
+                        </ui:MultiColumnListView>
+                        <ui:Label text="Ammo Loadout Percentage"/>
                         <ui:VisualElement data-source-path="defaultAmmunitionLoadoutWeightRecord" style="flex-grow: 1; flex-direction: row;">
                             <ui:VisualElement style="flex-direction: row; flex-grow: 1; flex-basis: 50px;">
-                                <ui:Label text="AP" />
+                                <ui:Label text="AP"/>
                                 <ui:FloatField style="flex-grow: 1;">
                                     <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="armorPiercing" binding-mode="TwoWay" />
+                                        <ui:DataBinding property="value" data-source-path="armorPiercing" binding-mode="TwoWay"/>
                                     </Bindings>
                                 </ui:FloatField>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-basis: 50px;">
-                                <ui:Label text="SAP" />
+                                <ui:Label text="SAP"/>
                                 <ui:FloatField style="flex-grow: 1;">
                                     <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="semiArmorPiercing" binding-mode="TwoWay" />
+                                        <ui:DataBinding property="value" data-source-path="semiArmorPiercing" binding-mode="TwoWay"/>
                                     </Bindings>
                                 </ui:FloatField>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-basis: 50px;">
-                                <ui:Label text="COM" />
+                                <ui:Label text="COM"/>
                                 <ui:FloatField style="flex-grow: 1;">
                                     <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="common" binding-mode="TwoWay" />
+                                        <ui:DataBinding property="value" data-source-path="common" binding-mode="TwoWay"/>
                                     </Bindings>
                                 </ui:FloatField>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-basis: 50px;">
-                                <ui:Label text="HE" />
+                                <ui:Label text="HE"/>
                                 <ui:FloatField style="flex-grow: 1;">
                                     <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="highExplosive" binding-mode="TwoWay" />
+                                        <ui:DataBinding property="value" data-source-path="highExplosive" binding-mode="TwoWay"/>
                                     </Bindings>
                                 </ui:FloatField>
                             </ui:VisualElement>
                         </ui:VisualElement>
                         <ui:MultiColumnListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" data-source-path="extraAmmunitionLoadoutWeightRecords" name="ExtraAmmunitionLoadoutWeightRecordsMultiColumnListView">
                             <ui:Columns>
-                                <ui:Column title="Low Cali. (inch)" cell-template="project://database/Assets/UIDocuments/Templates/AmmunitionLoadoutWeightRecord/AmmunitionLoadoutWeightRecordShellSizeInchLow.uxml?fileID=9197481963319205126&amp;guid=0d45bb5ec88cc9640a198b1af4b39240&amp;type=3#AmmunitionLoadoutWeightRecordShellSizeInchLow" width="20%" />
-                                <ui:Column cell-template="project://database/Assets/UIDocuments/Templates/AmmunitionLoadoutWeightRecord/AmmunitionLoadoutWeightRecordShellSizeInchHigh.uxml?fileID=9197481963319205126&amp;guid=6efc84c4aa7202e4cbff8a06fa46facf&amp;type=3#AmmunitionLoadoutWeightRecordShellSizeInchHigh" title="High Cali. (inch)" width="20%" />
-                                <ui:Column cell-template="project://database/Assets/UIDocuments/Templates/AmmunitionLoadoutWeightRecord/AmmunitionLoadoutWeightRecordArmorPiercing.uxml?fileID=9197481963319205126&amp;guid=400fb8b5700f8654699abaeb8dcc44d8&amp;type=3#AmmunitionLoadoutWeightRecordArmorPiercing" title="AP" width="15%" />
-                                <ui:Column cell-template="project://database/Assets/UIDocuments/Templates/AmmunitionLoadoutWeightRecord/AmmunitionLoadoutWeightRecordSemiArmorPiercing.uxml?fileID=9197481963319205126&amp;guid=fed1ae7402ac5a44fb6cdaa04d4a58f1&amp;type=3#AmmunitionLoadoutWeightRecordSemiArmorPiercing" title="SAP" width="15%" />
-                                <ui:Column cell-template="project://database/Assets/UIDocuments/Templates/AmmunitionLoadoutWeightRecord/AmmunitionLoadoutWeightRecordCommon.uxml?fileID=9197481963319205126&amp;guid=79807de4b4b628547b1988c8bc532281&amp;type=3#AmmunitionLoadoutWeightRecordCommon" title="COM" width="15%" />
-                                <ui:Column cell-template="project://database/Assets/UIDocuments/Templates/AmmunitionLoadoutWeightRecord/AmmunitionLoadoutWeightRecordHighExplosive.uxml?fileID=9197481963319205126&amp;guid=c004ed4ae43232a408c52d10432aa8a9&amp;type=3#AmmunitionLoadoutWeightRecordHighExplosive" title="HE" width="15%" />
+                                <ui:Column title="Low Cali. (inch)" cell-template="project://database/Assets/UIDocuments/Templates/AmmunitionLoadoutWeightRecord/AmmunitionLoadoutWeightRecordShellSizeInchLow.uxml?fileID=9197481963319205126&amp;guid=0d45bb5ec88cc9640a198b1af4b39240&amp;type=3#AmmunitionLoadoutWeightRecordShellSizeInchLow" width="20%"/>
+                                <ui:Column cell-template="project://database/Assets/UIDocuments/Templates/AmmunitionLoadoutWeightRecord/AmmunitionLoadoutWeightRecordShellSizeInchHigh.uxml?fileID=9197481963319205126&amp;guid=6efc84c4aa7202e4cbff8a06fa46facf&amp;type=3#AmmunitionLoadoutWeightRecordShellSizeInchHigh" title="High Cali. (inch)" width="20%"/>
+                                <ui:Column cell-template="project://database/Assets/UIDocuments/Templates/AmmunitionLoadoutWeightRecord/AmmunitionLoadoutWeightRecordArmorPiercing.uxml?fileID=9197481963319205126&amp;guid=400fb8b5700f8654699abaeb8dcc44d8&amp;type=3#AmmunitionLoadoutWeightRecordArmorPiercing" title="AP" width="15%"/>
+                                <ui:Column cell-template="project://database/Assets/UIDocuments/Templates/AmmunitionLoadoutWeightRecord/AmmunitionLoadoutWeightRecordSemiArmorPiercing.uxml?fileID=9197481963319205126&amp;guid=fed1ae7402ac5a44fb6cdaa04d4a58f1&amp;type=3#AmmunitionLoadoutWeightRecordSemiArmorPiercing" title="SAP" width="15%"/>
+                                <ui:Column cell-template="project://database/Assets/UIDocuments/Templates/AmmunitionLoadoutWeightRecord/AmmunitionLoadoutWeightRecordCommon.uxml?fileID=9197481963319205126&amp;guid=79807de4b4b628547b1988c8bc532281&amp;type=3#AmmunitionLoadoutWeightRecordCommon" title="COM" width="15%"/>
+                                <ui:Column cell-template="project://database/Assets/UIDocuments/Templates/AmmunitionLoadoutWeightRecord/AmmunitionLoadoutWeightRecordHighExplosive.uxml?fileID=9197481963319205126&amp;guid=c004ed4ae43232a408c52d10432aa8a9&amp;type=3#AmmunitionLoadoutWeightRecordHighExplosive" title="HE" width="15%"/>
                             </ui:Columns>
                         </ui:MultiColumnListView>
-                        <ui:Label text="Countries" />
-                        <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="countries" show-add-remove-footer="true" item-template="project://database/Assets/UIDocuments/Templates/CountryEnumField.uxml?fileID=9197481963319205126&amp;guid=f760d6fe0c512a842b3944c72b90e696&amp;type=3#CountryEnumField" />
-                        <ui:Label text="Diplomacy" />
-                        <ui:MultiColumnListView data-source-path="diplomacyRelations" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" name="DiplomacyRelationMultiColumnListView">
-                            <ui:Columns>
-                                <ui:Column title="Side" width="60%" cell-template="project://database/Assets/UIDocuments/Templates/DiplomacyRelation/DiplomacyRelationSideObjectId.uxml?fileID=9197481963319205126&amp;guid=b067ef04f8e5e114484ba54288bedfb9&amp;type=3#DiplomacyRelationSideObjectId" name="side" />
-                                <ui:Column title="Relation" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/DiplomacyRelation/DiplomacyRelationRelationValue.uxml?fileID=9197481963319205126&amp;guid=8a657807ac5102c43954c376c4348023&amp;type=3#DiplomacyRelationRelationValue" />
-                                <ui:Column title="State" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/DiplomacyRelation/DiplomacyRelationState.uxml?fileID=9197481963319205126&amp;guid=32f719b1d96df5147a61d07cd63f4d58&amp;type=3#DiplomacyRelationState" />
-                            </ui:Columns>
-                        </ui:MultiColumnListView>
-                        <ui:Label text="Remark" />
+                        <ui:Label text="Remark"/>
                         <ui:TextField style="min-height: 100px;">
                             <Bindings>
-                                <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
+                                <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:TextField>
                     </ui:VisualElement>
                     <Bindings>
-                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                     </Bindings>
                 </ui:VisualElement>
             </ui:VisualElement>

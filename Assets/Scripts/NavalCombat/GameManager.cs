@@ -140,9 +140,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public static StartupConfig startupConfig = new();
 
-    public static FullState oneShotStartupFullState = null; // one-shot config
+    // public static FullState oneShotStartupFullState = null; // one-shot config
     // public static string scenarioSuffix = "_Yalu_Torpedo.xml";
     // public static string initialScenName = "Battle of Yalu River.scen.xml";
+
+    public bool fullInitialized = false;
 
     public void Start()
     {
@@ -249,6 +251,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
 
         TempFix();
+
+        fullInitialized = true;
     }
 
     public EventHandler firstLoaded;

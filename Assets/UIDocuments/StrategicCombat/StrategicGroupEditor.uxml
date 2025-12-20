@@ -1,30 +1,30 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
-    <ui:Template name="StrategicUnitIcon" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicUnitIcon.uxml?fileID=9197481963319205126&amp;guid=aa3ccbfdf5107f4488fcd49416ef81e1&amp;type=3#StrategicUnitIcon" />
-    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor"/>
+    <ui:Template name="StrategicUnitIcon" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicUnitIcon.uxml?fileID=9197481963319205126&amp;guid=aa3ccbfdf5107f4488fcd49416ef81e1&amp;type=3#StrategicUnitIcon"/>
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
     <ui:VisualElement data-source-type="StrategicGroupEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Strategic Group Editor" class="title">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195358933815296)" />
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195358933815296)"/>
             </Bindings>
         </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px;">
-                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupLabel.uxml?fileID=9197481963319205126&amp;guid=34ee77fc95e8a904caa681718cd94b24&amp;type=3#StrategicGroupLabel" data-source-path="currentGameState.strategicGroups" style="flex-grow: 1;" />
+                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupLabel.uxml?fileID=9197481963319205126&amp;guid=34ee77fc95e8a904caa681718cd94b24&amp;type=3#StrategicGroupLabel" data-source-path="currentGameState.strategicGroups" style="flex-grow: 1;"/>
                 <ui:VisualElement name="ControlButtons" style="flex-shrink: 0;">
                     <ui:Button text="Copy Last" name="CopyLastButton">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195698978623488)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195698978623488)"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Sort" name="SortButton">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11055325324677120)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11055325324677120)"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Confirm" name="ConfirmButton">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)"/>
                         </Bindings>
                     </ui:Button>
                 </ui:VisualElement>
@@ -32,8 +32,8 @@
             <ui:VisualElement style="flex-grow: 1;">
                 <ui:Label text="Not Selected or Invalid">
                     <Bindings>
-                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66691591213056)" />
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66691591213056)"/>
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1;">
@@ -41,31 +41,31 @@
                         <ui:VisualElement name="ContentContainer" data-source-path="selectedObject" style="flex-grow: 1;">
                             <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
                                 <ui:Instance template="GlobalStringEditor" data-source-path="name" style="flex-grow: 1;">
-                                    <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+                                    <AttributeOverrides element-name="GlobalStringLabel" text="Name"/>
                                 </ui:Instance>
                                 <ui:VisualElement style="flex-shrink: 0; width: 110px;">
-                                    <ui:Instance template="StrategicUnitIcon" style="align-items: center;" />
+                                    <ui:Instance template="StrategicUnitIcon" style="align-items: center;"/>
                                 </ui:VisualElement>
                                 <ui:VisualElement style="width: 100px; -unity-background-scale-mode: scale-to-fit;">
                                     <Bindings>
-                                        <ui:DataBinding property="style.backgroundImage" data-source-path="leaderReference.portrait" binding-mode="ToTarget" />
+                                        <ui:DataBinding property="style.backgroundImage" data-source-path="leaderReference.portrait" binding-mode="ToTarget"/>
                                     </Bindings>
                                 </ui:VisualElement>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                 <ui:Label text="Leader">
                                     <Bindings>
-                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172656676212736)" />
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172656676212736)"/>
                                     </Bindings>
                                 </ui:Label>
                                 <ui:Button text="Leader Name" name="GotoLeaderButton" style="flex-grow: 1;">
                                     <Bindings>
-                                        <ui:DataBinding property="text" data-source-path="leaderReference.name" binding-mode="ToTarget" />
+                                        <ui:DataBinding property="text" data-source-path="leaderReference.name" binding-mode="ToTarget"/>
                                     </Bindings>
                                 </ui:Button>
                                 <ui:Button text="Set" name="SetLeaderButton">
                                     <Bindings>
-                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)"/>
                                     </Bindings>
                                 </ui:Button>
                             </ui:VisualElement>
@@ -73,123 +73,132 @@
                                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-basis: 50px;">
                                     <ui:Label text="Type">
                                         <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)" />
+                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)"/>
                                         </Bindings>
                                     </ui:Label>
                                     <ui:EnumField value="Center" type="StrategicCombatCore.StrategicGroup+Type, Assembly-CSharp" style="flex-grow: 1;">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay" />
+                                            <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay"/>
                                         </Bindings>
                                     </ui:EnumField>
                                 </ui:VisualElement>
                                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-basis: 50px;">
                                     <ui:Label text="Size">
                                         <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196209509306368)" />
+                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196209509306368)"/>
                                         </Bindings>
                                     </ui:Label>
                                     <ui:EnumField value="Center" type="StrategicCombatCore.StrategicUnitSize, Assembly-CSharp" style="flex-grow: 1;">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="size" binding-mode="TwoWay" />
+                                            <ui:DataBinding property="value" data-source-path="size" binding-mode="TwoWay"/>
                                         </Bindings>
                                     </ui:EnumField>
                                 </ui:VisualElement>
                                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-basis: 50px;">
                                     <ui:Label text="Country">
                                         <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69304797794304)" />
+                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69304797794304)"/>
                                         </Bindings>
                                     </ui:Label>
                                     <ui:EnumField value="Center" type="CoreUtils.Country, Assembly-CSharp" style="flex-grow: 1;">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="country" binding-mode="TwoWay" />
+                                            <ui:DataBinding property="value" data-source-path="country" binding-mode="TwoWay"/>
                                         </Bindings>
                                     </ui:EnumField>
                                 </ui:VisualElement>
                                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-basis: 50px;">
                                     <ui:Label text="Deploy State">
                                         <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196313234444288)" />
+                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196313234444288)"/>
                                         </Bindings>
                                     </ui:Label>
                                     <ui:EnumField value="Center" type="StrategicCombatCore.StrategicGroup+DeployState, Assembly-CSharp" style="flex-grow: 1;">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="deployStateProp" binding-mode="TwoWay" />
+                                            <ui:DataBinding property="value" data-source-path="deployStateProp" binding-mode="TwoWay"/>
                                         </Bindings>
                                     </ui:EnumField>
                                 </ui:VisualElement>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                 <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-                                    <ui:Label text="X" />
+                                    <ui:Label text="X"/>
                                     <ui:IntegerField style="width: 50px;">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="xProp" binding-mode="TwoWay" />
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isXYEditable" binding-mode="ToTarget" />
+                                            <ui:DataBinding property="value" data-source-path="xProp" binding-mode="TwoWay"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isXYEditable" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:IntegerField>
                                 </ui:VisualElement>
                                 <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-                                    <ui:Label text="Y" />
+                                    <ui:Label text="Y"/>
                                     <ui:IntegerField style="width: 50px;">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="yProp" binding-mode="TwoWay" />
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isXYEditable" binding-mode="ToTarget" />
+                                            <ui:DataBinding property="value" data-source-path="yProp" binding-mode="TwoWay"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isXYEditable" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:IntegerField>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-direction: row;">
+                                    <ui:Label text="Area"/>
+                                    <ui:TextField readonly="true" style="width: 50px;">
+                                        <Bindings>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isXYEditable" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="value" data-source-path="areaCellObjectIdProp" binding-mode="ToTarget"/>
+                                        </Bindings>
+                                    </ui:TextField>
                                 </ui:VisualElement>
                                 <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
                                     <ui:Label text="Autocombinable">
                                         <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20016919312240640)" />
+                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20016919312240640)"/>
                                         </Bindings>
                                     </ui:Label>
                                     <ui:Toggle>
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="autoCombinable" binding-mode="TwoWay" />
+                                            <ui:DataBinding property="value" data-source-path="autoCombinable" binding-mode="TwoWay"/>
                                         </Bindings>
                                     </ui:Toggle>
                                 </ui:VisualElement>
                                 <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
                                     <ui:Label text="Dissolvable">
                                         <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20017044138921984)" />
+                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20017044138921984)"/>
                                         </Bindings>
                                     </ui:Label>
                                     <ui:Toggle style="margin-right: 10px;">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="dissolvable" binding-mode="TwoWay" />
+                                            <ui:DataBinding property="value" data-source-path="dissolvable" binding-mode="TwoWay"/>
                                         </Bindings>
                                     </ui:Toggle>
                                 </ui:VisualElement>
                                 <ui:VisualElement style="flex-direction: row;">
                                     <ui:Label text="Posture">
                                         <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20017285961519104)" />
+                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20017285961519104)"/>
                                         </Bindings>
                                     </ui:Label>
                                     <ui:EnumField value="Center" type="StrategicCombatCore.StrategicGroup+GroupPostureType, Assembly-CSharp" style="width: 125px;">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="posture" binding-mode="TwoWay" />
+                                            <ui:DataBinding property="value" data-source-path="posture" binding-mode="TwoWay"/>
                                         </Bindings>
                                     </ui:EnumField>
                                     <Bindings>
-                                        <ui:DataBinding property="style.display" data-source-path="isIndependent" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                                        <ui:DataBinding property="style.display" data-source-path="isIndependent" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                                     </Bindings>
                                 </ui:VisualElement>
                                 <ui:VisualElement style="flex-direction: row;">
                                     <ui:Label text="Restored Hours">
                                         <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20017347689091072)" />
+                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20017347689091072)"/>
                                         </Bindings>
                                     </ui:Label>
                                     <ui:IntegerField>
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="restoredHours" binding-mode="TwoWay" />
+                                            <ui:DataBinding property="value" data-source-path="restoredHours" binding-mode="TwoWay"/>
                                         </Bindings>
                                     </ui:IntegerField>
                                     <Bindings>
-                                        <ui:DataBinding property="style.display" data-source-path="isInRestorableState" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                                        <ui:DataBinding property="style.display" data-source-path="isInRestorableState" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                                     </Bindings>
                                 </ui:VisualElement>
                             </ui:VisualElement>
@@ -198,24 +207,24 @@
                                     <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
                                         <ui:Label text="Parent">
                                             <Bindings>
-                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054955223486464)" />
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054955223486464)"/>
                                             </Bindings>
                                         </ui:Label>
                                         <ui:Button text="Parent Name" name="GotoParentButton" style="flex-grow: 1; text-overflow: ellipsis; flex-shrink: 1;">
                                             <Bindings>
-                                                <ui:DataBinding property="text" data-source-path="parentName" binding-mode="ToTarget" />
+                                                <ui:DataBinding property="text" data-source-path="parentName" binding-mode="ToTarget"/>
                                             </Bindings>
                                         </ui:Button>
                                     </ui:VisualElement>
                                     <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
                                         <ui:Label text="Source Depot">
                                             <Bindings>
-                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054514137894912)" />
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054514137894912)"/>
                                             </Bindings>
                                         </ui:Label>
                                         <ui:Button text="Current Source Depot Name" name="CurrentSourceDepotButton" style="flex-grow: 1; flex-shrink: 1;">
                                             <Bindings>
-                                                <ui:DataBinding property="text" data-source-path="currentSourceDepotName" binding-mode="ToTarget" />
+                                                <ui:DataBinding property="text" data-source-path="currentSourceDepotName" binding-mode="ToTarget"/>
                                             </Bindings>
                                         </ui:Button>
                                     </ui:VisualElement>
@@ -224,24 +233,24 @@
                                     <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
                                         <ui:Label text="Mission">
                                             <Bindings>
-                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11055115978575872)" />
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11055115978575872)"/>
                                             </Bindings>
                                         </ui:Label>
                                         <ui:Button text="Mission Name" name="GotoAssignedMissionButton" style="flex-grow: 1; flex-shrink: 1;">
                                             <Bindings>
-                                                <ui:DataBinding property="text" data-source-path="assignedMissionName" binding-mode="ToTarget" />
+                                                <ui:DataBinding property="text" data-source-path="assignedMissionName" binding-mode="ToTarget"/>
                                             </Bindings>
                                         </ui:Button>
                                     </ui:VisualElement>
                                     <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
                                         <ui:Label text="Container">
                                             <Bindings>
-                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20025699336884224)" />
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20025699336884224)"/>
                                             </Bindings>
                                         </ui:Label>
                                         <ui:Button text="Container Name" name="GotoContainerButton" style="flex-grow: 1; flex-shrink: 1;">
                                             <Bindings>
-                                                <ui:DataBinding property="text" data-source-path="containerName" binding-mode="ToTarget" />
+                                                <ui:DataBinding property="text" data-source-path="containerName" binding-mode="ToTarget"/>
                                             </Bindings>
                                         </ui:Button>
                                     </ui:VisualElement>
@@ -250,54 +259,55 @@
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                 <ui:Label text="Subordinate summary" style="flex-grow: 1;">
                                     <Bindings>
-                                        <ui:DataBinding property="text" data-source-path="subordinateSummary" binding-mode="ToTarget" />
+                                        <ui:DataBinding property="text" data-source-path="subordinateSummary" binding-mode="ToTarget"/>
                                     </Bindings>
                                 </ui:Label>
                                 <ui:Button text="Split" name="SplitButton">
                                     <Bindings>
-                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(18007625104527360)" />
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(18007625104527360)"/>
                                     </Bindings>
                                 </ui:Button>
                             </ui:VisualElement>
                             <ui:Label text="Command Desc">
                                 <Bindings>
-                                    <ui:DataBinding property="text" data-source-path="commandDesc" binding-mode="ToTarget" />
+                                    <ui:DataBinding property="text" data-source-path="commandDesc" binding-mode="ToTarget"/>
                                 </Bindings>
                             </ui:Label>
                             <ui:ListView name="SubordinatesCombinedListView" header-title="Subordinates" show-add-remove-footer="true" show-foldout-header="true" binding-source-selection-mode="AutoAssign" data-source-path="subordinatesCombined" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" fixed-item-height="60" reorderable="true">
                                 <Bindings>
-                                    <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196633377280000)" />
+                                    <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196633377280000)"/>
                                 </Bindings>
                             </ui:ListView>
                             <ui:FloatField label="Move Progression">
                                 <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="moveProgressionKm" binding-mode="TwoWay" />
-                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11055268416360448)" />
+                                    <ui:DataBinding property="value" data-source-path="moveProgressionKm" binding-mode="TwoWay"/>
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11055268416360448)"/>
                                 </Bindings>
                             </ui:FloatField>
-                            <ui:MultiColumnListView data-source-path="plannedPath" binding-source-selection-mode="AutoAssign" header-title="Planned Path" show-foldout-header="true">
-                                <ui:Columns>
-                                    <ui:Column title="X" cell-template="project://database/Assets/UIDocuments/Templates/XY/XYX.uxml?fileID=9197481963319205126&amp;guid=e6f56269358ebb74080f0357091b0a52&amp;type=3#XYX" width="50%" />
-                                    <ui:Column title="Y" cell-template="project://database/Assets/UIDocuments/Templates/XY/XYY.uxml?fileID=9197481963319205126&amp;guid=4120b764c7821e34facd779fd946c21b&amp;type=3#XYY" width="50%" />
-                                </ui:Columns>
-                                <Bindings>
-                                    <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11055191308275712)" />
-                                </Bindings>
-                            </ui:MultiColumnListView>
                             <ui:Label text="Remark">
                                 <Bindings>
-                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)" />
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)"/>
                                 </Bindings>
                             </ui:Label>
                             <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 100px;">
                                 <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
+                                    <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay"/>
                                 </Bindings>
                             </ui:TextField>
+                            <ui:MultiColumnListView data-source-path="plannedPath" binding-source-selection-mode="AutoAssign" header-title="Planned Path" show-foldout-header="true">
+                                <ui:Columns>
+                                    <ui:Column title="X" cell-template="project://database/Assets/UIDocuments/Templates/XY/XYX.uxml?fileID=9197481963319205126&amp;guid=e6f56269358ebb74080f0357091b0a52&amp;type=3#XYX" width="30%"/>
+                                    <ui:Column title="Y" cell-template="project://database/Assets/UIDocuments/Templates/XY/XYY.uxml?fileID=9197481963319205126&amp;guid=4120b764c7821e34facd779fd946c21b&amp;type=3#XYY" width="30%"/>
+                                    <ui:Column title="Area" width="40%" cell-template="project://database/Assets/UIDocuments/Templates/XY/XYArea.uxml?fileID=9197481963319205126&amp;guid=8a72a3687299d474ca79d33314454caa&amp;type=3#XYArea"/>
+                                </ui:Columns>
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11055191308275712)"/>
+                                </Bindings>
+                            </ui:MultiColumnListView>
                         </ui:VisualElement>
                     </ui:ScrollView>
                     <Bindings>
-                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                     </Bindings>
                 </ui:VisualElement>
             </ui:VisualElement>

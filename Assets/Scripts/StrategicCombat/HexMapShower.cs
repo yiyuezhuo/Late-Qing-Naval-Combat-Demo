@@ -277,7 +277,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
 
             if (gl.Count == 1)
             {
-                LayoutStackTransform(
+                Utils.LayoutStackTransform(
                     gl[0].Select(gp => groupToView[gp].transform).ToList(),
                     new Vector3(vec.x, vec.y, 0),
                     0.05f
@@ -308,14 +308,14 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
                     }
                 }
 
-                LayoutStackTransform(
+                Utils.LayoutStackTransform(
                     gTop.Select(gp => groupToView[gp].transform).ToList(),
                     new Vector3(vec.x, vec.y + 0.25f, 0),
                     0.05f
                 );
 
                 // Assume 2 sides can be in the same hex at most.
-                LayoutStackTransform(
+                Utils.LayoutStackTransform(
                     gBottom.Select(gp => groupToView[gp].transform).ToList(),
                     new Vector3(vec.x, vec.y - 0.25f, 0),
                     0.05f
@@ -324,21 +324,21 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         }
     }
 
-    void LayoutStackTransform(List<Transform> transforms, Vector3 basePos, float stackSpace)
-    {
-        var count = transforms.Count;
-        if (count == 1)
-        {
-            transforms[0].position = basePos;
-            return;
-        }
-        var step = stackSpace / (count - 1);
-        for (int i = 0; i < count; i++)
-        {
-            var delta = -stackSpace / 2 + i * step;
-            transforms[i].position = basePos + new Vector3(delta, delta, 0);
-        }
-    }
+    // void LayoutStackTransform(List<Transform> transforms, Vector3 basePos, float stackSpace)
+    // {
+    //     var count = transforms.Count;
+    //     if (count == 1)
+    //     {
+    //         transforms[0].position = basePos;
+    //         return;
+    //     }
+    //     var step = stackSpace / (count - 1);
+    //     for (int i = 0; i < count; i++)
+    //     {
+    //         var delta = -stackSpace / 2 + i * step;
+    //         transforms[i].position = basePos + new Vector3(delta, delta, 0);
+    //     }
+    // }
 
     static string terrainStr = "Clear,Rough,Mountain,Forest,Jungle,Desert,Swamp,Rough_Forest,Rough_Jungle,Rough_Desert,Tropical Mountain,Sand Desert,Heavy Urban,Light Urban,Field,Shallow Water,Deep Water";
 
@@ -432,9 +432,12 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     // Update is called once per frame
     void Update()
     {
-        UpdateStrategicGroupIcons();
-        UpdatePathLines();
-        UpdateMissionWaypointLines();
+        if(StrategicGameManager.Instance.fullInitialized)
+        {
+            UpdateStrategicGroupIcons();
+            UpdatePathLines();
+            UpdateMissionWaypointLines();
+        }
     }
 
     void UpdateStrategicGroupIcons()

@@ -25,7 +25,16 @@ namespace StrategicCombatCore
     public partial class Cell
     {
         [CreateProperty]
-        public string brief => $"({x}, {y}), {terrain} {Label?.GetShortName()}";
+        public string brief
+        {
+            get
+            {
+                if(IsAreaCell())
+                    return $"{terrain}, {Label?.GetShortName()}";
+                return $"({x}, {y}), {terrain}, {Label?.GetShortName()}";
+            }
+        }
+        // public string brief => $"({x}, {y}), {terrain} {Label?.GetShortName()}";
 
         // [CreateProperty]
         // public int cellInfoGroupCount => StrategicGameState.Instance.hexInfoMap.GetValueOrDefault((x, y))?.strategicGroupReferences?.Count ?? 0;
@@ -84,7 +93,7 @@ namespace StrategicCombatCore
             {Country.Japan, Color.white},
             {Country.Britain, Color.red},
             {Country.France, Color.purple},
-            {Country.Russia, Color.green},
+            {Country.Russia, Color.darkGreen},
             {Country.UnitedState, Color.blue},
             {Country.Spain, Color.darkOrange},
             {Country.Germany, Color.black},
@@ -122,6 +131,13 @@ namespace StrategicCombatCore
         {
             get => y;
             set => y = value;
+        }
+
+        [CreateProperty]
+        public string areaCellObjectIdProp
+        {
+            get => areaCellObjectId;
+            // Setter
         }
 
         [CreateProperty]
@@ -804,6 +820,12 @@ namespace StrategicCombatCore
                 StrategicGameManager.Instance.RefreshGridSystemAreaSystemVisibility();
             }
         }
+    }
+
+    public partial class XY
+    {
+        [CreateProperty]
+        public string areaCellName => areaCellObjectId != null ? EntityManager.Instance.Get<Cell>(areaCellObjectId)?.Label?.GetShortName() : areaCellObjectId;
     }
 }
 

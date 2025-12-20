@@ -829,7 +829,9 @@ namespace StrategicCombatCore
                         {
                             moveKmCap -= nextDistKm;
                             strategicGroup.plannedPath.RemoveAt(0);
-                            strategicGroup.MoveToXY(strategicGroup.plannedPath[0].x, strategicGroup.plannedPath[0].y, true);
+                            // strategicGroup.MoveToXY(strategicGroup.plannedPath[0].x, strategicGroup.plannedPath[0].y, true);
+                            strategicGroup.MoveToCell(strategicGroup.plannedPath[0].GetCell(), true); // TODO: Generalize to Area System
+                            
                             strategicGroup.moveProgressionKm = 0;
                             if (strategicGroup.plannedPath.Count < 2)
                             {
@@ -1195,6 +1197,9 @@ namespace StrategicCombatCore
         {
             base.ResetAndRegisterAll();
 
+            foreach(var areaCell in areaCells)
+                EntityManager.Instance.Register(areaCell, null);
+
             foreach (var landUnit in landUnits)
             {
                 EntityManager.Instance.Register(landUnit, null);
@@ -1223,8 +1228,6 @@ namespace StrategicCombatCore
             foreach (var landBattle in landBattles)
                 EntityManager.Instance.Register(landBattle, null);
 
-            foreach(var areaCell in areaCells)
-                EntityManager.Instance.Register(areaCell, null);
         }
 
         static StrategicGameState _instance;

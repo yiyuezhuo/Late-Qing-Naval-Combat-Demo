@@ -34,16 +34,9 @@ public class NamedShipSelector
         filteredNamedShips = fullNamedShips.Where(s => s.name.MatchAny(_filterString)).ToList();
     }
 
-    // public void OnCreated(object sender, VisualElement el)
-    // {
-    //     namedShipListView = el.Q<ListView>("NamedShipListView");
-
-
-    // }
-
     public void OnConfirm(object sender, VisualElement el)
     {
-        var selectedShipLog = ShipLogEditor.Instance.selectedShipLog;
+        var selectedShipLog = ShipLogEditor.Instance.selectedShipLog; // TODO: Generalize to support select NameShip in case other than selecting NamedShip for ShipLog
 
         var namedShipListView = el.Q<ListView>("NamedShipListView");
         var namedShip = namedShipListView.selectedItem as NamedShip;

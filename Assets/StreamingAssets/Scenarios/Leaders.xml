@@ -3172,4 +3172,24 @@ http://bujinkensyokai.web.fc2.com/hirosimagk.html</remark>
   <remark>https://ja.wikipedia.org/wiki/%E4%BD%90%E4%BC%AF%E8%AA%BE</remark>
   <objectId>78a67c88-0618-46d6-aba6-68426f65a0b3</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Samejima Kazunori</english>
+   <japanese>鮫島員規</japanese>
+   <chineseSimplified>鲛岛员规</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Kazunori_Samejima.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Samejima_Kazunori</remark>
+  <objectId>416402fe-d252-48fd-8f54-d546128ced8f</objectId>
+ </Leader>
 </ArrayOfLeader>

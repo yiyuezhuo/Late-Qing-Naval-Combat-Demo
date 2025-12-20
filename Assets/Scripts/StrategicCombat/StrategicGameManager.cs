@@ -70,14 +70,17 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         public Mode mode = Mode.ScenPath;
         // public Mode mode = Mode.Empty;
-        public Vector2 cameraPosXY;
-        public float cameraZoom;
+        // public Vector2 cameraPosXY;
+        // public float cameraZoom;
+        public StrategicViewState viewState; // reserved for ReturnFromNavalGame only now
         // public string scenSubPath = "Scenarios/StrategicGameState.xml";
         public string scenSubPath = "Scenarios/Vladivostok Squadron Raiding.xml";
         // public string scenSubPath = "Scenarios/First Sino-Japanese War.xml";
         public List<ShipLog> syncShipLogs;
         public VictoryStatus victoryStatus;
     }
+
+    public static string lastOpenedScenarioPath; // Used to suggest save file name
 
     public static StartupConfig startupConfig = new StartupConfig();
 
@@ -149,6 +152,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             Debug.Log("Empty mode startup");
 
             HexMapShower.Instance.Refresh();
+
+            FinishInitialization();
         }
         else if (startupConfig.mode == StartupConfig.Mode.ReturnFromNavalGame)
         {
@@ -156,19 +161,33 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
             RestoreFromReturnFromNavalGame();
             HexMapShower.Instance.Refresh();
+
+            FinishInitialization();
         }
         else if (startupConfig.mode == StartupConfig.Mode.ScenPath)
         {
             Debug.Log($"ScenPath mode startup: {startupConfig.scenSubPath}");
 
+            lastOpenedScenarioPath = startupConfig.scenSubPath;
+
             // Try to fetch default scenario file and update the state
             var scenFullPath = Application.streamingAssetsPath + "/" + startupConfig.scenSubPath;
             StartCoroutine(StreamingTextAssetManager.Instance.FetchText(scenFullPath, initialScenText =>
             {
-                StartCoroutine(
-                    OnScenTextLoaded(initialScenText)
-                );
+                // StartCoroutine(
+                //     OnScenTextLoaded(initialScenText)
+                // );
+                IEnumerator Cor()
+                {
+                    yield return OnScenTextLoaded(initialScenText);
+
+                    FinishInitialization();
+                }
+
+                StartCoroutine(Cor());
             }));
+
+            // fullInitialized = true; // Moved to OnScenTextLoaded (Fuck Unity' async model)
         }
     }
 
@@ -234,16 +253,18 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         startupConfig = new()
         {
             mode = StartupConfig.Mode.ReturnFromNavalGame,
-            cameraPosXY = new Vector2(pos.x, pos.y),
-            cameraZoom = PlaneCameraController.Instance.cam.orthographicSize
+            // cameraPosXY = new Vector2(pos.x, pos.y),
+            // cameraZoom = PlaneCameraController.Instance.cam.orthographicSize
+            viewState = CaptureViewState()
         };
     }
 
     public void RestoreFromReturnFromNavalGame()
     {
-        var trans = PlaneCameraController.Instance.transform;
-        trans.position = new Vector3(startupConfig.cameraPosXY.x, startupConfig.cameraPosXY.y, trans.position.z);
-        PlaneCameraController.Instance.cam.orthographicSize = startupConfig.cameraZoom;
+        // var trans = PlaneCameraController.Instance.transform;
+        // trans.position = new Vector3(startupConfig.cameraPosXY.x, startupConfig.cameraPosXY.y, trans.position.z);
+        // PlaneCameraController.Instance.cam.orthographicSize = startupConfig.cameraZoom;
+        ApplyViewState(startupConfig.viewState);
 
         StrategicGameState.Instance.UpdateFromTacticalResult(startupConfig.syncShipLogs, startupConfig.victoryStatus);
     }
@@ -254,7 +275,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         var strategicGameState = fullState.gameState;
         // var strategicGameState = XmlUtils.FromXML<StrategicGameState>(initialScenText);
         StrategicGameState.Instance.UpdateTo(strategicGameState);
-        StrategicGameState.Instance.ResetAndRegisterAll(); // workaround for view update bug happend when wait following yield return 
+        // StrategicGameState.Instance.ResetAndRegisterAll(); // workaround for view update bug happend when wait following yield return 
 
         // TODO: Save StreamingAssetReference state in the StrategicGameState?
         yield return StreamingAssetReference.Instance.TryToCompleteFromStreamingAssetReference(StrategicGameState.Instance);
@@ -264,23 +285,30 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         HexMapShower.Instance.RefreshSideFlags();
         // HexMapShower.Instance.showSideFlag = false;
 
-        UpdateViewState(fullState.viewState);
+        ApplyViewState(fullState.viewState);
 
-        RefreshGridSystemAreaSystemVisibility();
-
-        if(StrategicGameState.Instance.scenarioState.enableAreaSystem)
-        {
-            StrategicGameState.Instance.InvokeMapRebuilt();
-        }
+        // if(StrategicGameState.Instance.scenarioState.enableAreaSystem)
+        // {
+        //     StrategicGameState.Instance.InvokeMapRebuilt();
+        // }
 
         TempFix();
 
-        fullInitialized = true;
+        // fullInitialized = true;
     }
 
     Dictionary<string, HitArea> areaCellObjectIdToHitArea = new();
 
-    void UpdateViewState(StrategicViewState viewState)
+    public void FinishInitialization() // I wonder if is it better to use a dedicated method for this.
+    {
+        StrategicGameState.Instance.InvokeMapRebuilt();
+
+        RefreshGridSystemAreaSystemVisibility();
+        
+        fullInitialized = true; // enable all independent observer (eg Update based view state controller)
+    }
+
+    void ApplyViewState(StrategicViewState viewState)
     {
         // Update Camera according to the view state
         // var cam = Camera.main;
@@ -306,6 +334,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 Debug.LogWarning($"Misasligned map: {hitAreaMapRecord.hitAreaObjectId} -> {hitAreaMapRecord.areaCellObjectId}");
             }
         }
+    }
+
+    void BuildHitAreaMap()
+    {
+        
     }
 
     public static void TempFix()
@@ -622,12 +655,14 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
             if (appending)
             {
-                strategicGroup.plannedPath.AddRange(pathCells.Skip(1).Select(c => new XY() { x = c.x, y = c.y }));
+                // strategicGroup.plannedPath.AddRange(pathCells.Skip(1).Select(c => new XY() { x = c.x, y = c.y }));
+                strategicGroup.plannedPath.AddRange(pathCells.Skip(1).Select(c => c.ToXY()));
             }
             else
             {
                 strategicGroup.plannedPath.Clear();
-                strategicGroup.plannedPath.AddRange(pathCells.Select(c => new XY() { x = c.x, y = c.y }));
+                // strategicGroup.plannedPath.AddRange(pathCells.Select(c => new XY() { x = c.x, y = c.y }));
+                strategicGroup.plannedPath.AddRange(pathCells.Select(c => c.ToXY()));
                 strategicGroup.moveProgressionKm = 0;
             }
 
@@ -655,7 +690,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 // strategicGroup.plannedPath.Clear();
                 // strategicGroup.moveProgressionKm = 0;
                 strategicGroup.ClearPlannedPath();
-                strategicGroup.plannedPath.AddRange(pathCells.Select(c => new XY() { x = c.x, y = c.y }));
+                // strategicGroup.plannedPath.AddRange(pathCells.Select(c => new XY() { x = c.x, y = c.y }));
+                strategicGroup.plannedPath.AddRange(pathCells.Select(c => c.ToXY()));
 
 
                 Debug.Log("Set path");
@@ -710,7 +746,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             {
                 if (selectedMission.waypoints.Count == 0)
                 {
-                    selectedMission.waypoints.Add(new XY() { x = activeCell.x, y = activeCell.y }); // set start
+                    // selectedMission.waypoints.Add(new XY() { x = activeCell.x, y = activeCell.y }); // set start
+                    selectedMission.waypoints.Add(activeCell.ToXY()); // set start
                 }
                 else
                 {
@@ -727,7 +764,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                     }
                     else
                     {
-                        selectedMission.waypoints.AddRange(pathCells.Skip(1).Select(cell => new XY() { x = cell.x, y = cell.y }));
+                        // selectedMission.waypoints.AddRange(pathCells.Skip(1).Select(cell => new XY() { x = cell.x, y = cell.y }));
+                        selectedMission.waypoints.AddRange(pathCells.Skip(1).Select(cell => cell.ToXY()));
                     }
                 }
             }

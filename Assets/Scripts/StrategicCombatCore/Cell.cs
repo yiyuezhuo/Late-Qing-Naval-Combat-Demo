@@ -455,7 +455,24 @@ namespace StrategicCombatCore
 
         public override string ToString()
         {
-            return $"Cell({x}, {y}, {terrain})";
+            return $"Cell({x}, {y}, {objectId}, {terrain})";
+        }
+
+        public string GetLocationSummary()
+        {
+            if(objectId != null)
+                return Label?.GetShortName() ?? objectId;
+            return $"{x}, {y}, {Label?.GetShortName()}";
+        }
+
+        public XY ToXY()
+        {
+            return new XY()
+            {
+                x = x,
+                y = y,
+                areaCellObjectId = objectId,  
+            };
         }
 
         // [XmlIgnore]

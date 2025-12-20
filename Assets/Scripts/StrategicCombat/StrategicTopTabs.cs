@@ -32,7 +32,9 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
                 viewState = StrategicGameManager.Instance.CaptureViewState()
             };
 
-            var name = StrategicGameManager.startupConfig.mode == StrategicGameManager.StartupConfig.Mode.ScenPath ? Path.GetFileNameWithoutExtension(StrategicGameManager.startupConfig.scenSubPath) : "StrategicGameState";
+            // lastOpenedScenarioPath
+
+            var name = StrategicGameManager.lastOpenedScenarioPath != null ? Path.GetFileNameWithoutExtension(StrategicGameManager.lastOpenedScenarioPath) : "StrategicGameState";
 
             IOManager.Instance.SaveTextFile(
                 XmlUtils.ToXML(fullState),

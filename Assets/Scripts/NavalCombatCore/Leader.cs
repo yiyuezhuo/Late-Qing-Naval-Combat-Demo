@@ -26,7 +26,13 @@ namespace CoreUtils
         Unlucky // Marklov
     }
 
-    public class Leader : IObjectIdLabeled
+    public interface INamed
+    {
+        GlobalString GetName();
+    }
+
+
+    public class Leader : IObjectIdLabeled, INamed
     {
         public string objectId { get; set; }
         public GlobalString name = new();
@@ -47,5 +53,7 @@ namespace CoreUtils
         {
             yield break;
         }
+
+        public GlobalString GetName() => name;
     }
 }

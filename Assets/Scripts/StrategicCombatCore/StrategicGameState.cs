@@ -689,7 +689,8 @@ namespace StrategicCombatCore
                 {
                     var pendingCombat = new PendingNavalCombat()
                     {
-                        xy = new XY() { x = cell.x, y = cell.y },
+                        // xy = new XY() { x = cell.x, y = cell.y },
+                        xy = cell.ToXY(),
                         sideState0 = new()
                         {
                             sideObjectId = side2GroupsGp[0].Key.objectId,
@@ -1086,7 +1087,8 @@ namespace StrategicCombatCore
                 var pathCells = PathFinding<Cell>.AStar(graph, groupCell, waypointStartCell);
                 if (pathCells.Count >= 2)
                 {
-                    strategicGroup.plannedPath.AddRange(pathCells.Select(cell => new XY() { x = cell.x, y = cell.y }));
+                    // strategicGroup.plannedPath.AddRange(pathCells.Select(cell => new XY() { x = cell.x, y = cell.y }));
+                    strategicGroup.plannedPath.AddRange(pathCells.Select(cell => cell.ToXY()));
                 }
             }
         }

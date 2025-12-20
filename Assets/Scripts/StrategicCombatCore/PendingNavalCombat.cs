@@ -24,7 +24,8 @@ namespace StrategicCombatCore
 
         public XY xy = new();
 
-        public Cell cell => StrategicGameState.Instance.cellMatrix[xy.x, xy.y];
+        // public Cell cell => StrategicGameState.Instance.cellMatrix[xy.x, xy.y];
+        public Cell cell => xy.GetCell();
 
         public PendingNavalCombatSideState sideState0 = new();
         public PendingNavalCombatSideState sideState1 = new();

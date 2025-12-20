@@ -61,7 +61,7 @@ namespace StrategicCombatCore
         public bool isReferenceAny() => referenceId != null && referenceId != "";
     }
     
-    public partial class XY
+    public partial class XY // General Cell (Grid or Area) reference, may be better to change the name.
     {
         [XmlAttribute]
         public int x;
@@ -76,7 +76,9 @@ namespace StrategicCombatCore
         {
             if(areaCellObjectId != null)
                 return EntityManager.Instance.Get<Cell>(areaCellObjectId);
-            return StrategicGameState.Instance.cellMatrix[x, y];
+            if(x >= 0 && y >= 0)
+                return StrategicGameState.Instance.cellMatrix[x, y];
+            return null;
         }
 
         public override string ToString()
@@ -688,7 +690,8 @@ namespace StrategicCombatCore
                 var pathCells = PathFinding<Cell>.AStar(graph, cell, waypointStartCell);
                 if (pathCells.Count >= 2)
                 {
-                    plannedPath.AddRange(pathCells.Select(cell => new XY() { x = cell.x, y = cell.y }));
+                    // plannedPath.AddRange(pathCells.Select(cell => new XY() { x = cell.x, y = cell.y }));
+                    plannedPath.AddRange(pathCells.Select(cell => cell.ToXY()));
                 }
             }
             else
@@ -713,7 +716,8 @@ namespace StrategicCombatCore
             {
                 var dstCell = RandomUtils.Sample(possibleNeighbors);
                 var pathCells = PathFinding<Cell>.AStar(graph, cell, dstCell);
-                plannedPath.AddRange(pathCells.Select(c => new XY() { x = c.x, y = c.y }));
+                // plannedPath.AddRange(pathCells.Select(c => new XY() { x = c.x, y = c.y }));
+                plannedPath.AddRange(pathCells.Select(c => c.ToXY()));
                 moveProgressionKm = 0; // TODO: This may override movement progression which should be maintained.
                 return true;
             }
@@ -759,7 +763,8 @@ namespace StrategicCombatCore
                     // plannedPath.Clear();
                     // plannedPath.AddRange(pathCells.Take(2).Select(c => new XY() { x = c.x, y = c.y }));
                     // moveProgressionKm = 0; // TODO: This may override movement progression which should be maintained.
-                    var newPlannedPath = pathCells.Take(2).Select(c => new XY() { x = c.x, y = c.y }).ToList();
+                    // var newPlannedPath = pathCells.Take(2).Select(c => new XY() { x = c.x, y = c.y }).ToList();
+                    var newPlannedPath = pathCells.Take(2).Select(c => c.ToXY()).ToList();
                     SetPlannedPath(newPlannedPath);
                     return;
                 }

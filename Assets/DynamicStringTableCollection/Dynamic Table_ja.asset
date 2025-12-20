@@ -2083,7 +2083,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7935299495301120
-    m_Localized: "\u30D8\u30C3\u30AF\u30B9\u3067\u306E\u6226\u95D8\uFF08{0} {1}\uFF09\r\n"
+    m_Localized: "\u30D8\u30C3\u30AF\u30B9\u3067\u306E\u6226\u95D8\uFF08{0}\uFF09"
     m_Metadata:
       m_Items: []
   - m_Id: 7954009010376704

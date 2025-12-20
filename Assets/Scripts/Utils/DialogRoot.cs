@@ -1122,22 +1122,32 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupLeaderSelectorDialogForCallback(Action<Leader> callback)
     {
+        var leaderSelector = new NamedSelector<Leader>()
+        {
+            fullObjects = SuperGameState.Instance.GetCurrentGameState().leaders,
+            callback = callback
+        };
+
+        leaderSelector.Refresh();
+
         var tempDialog = new TempDialog()
         {
             root = root,
             template = leaderSelectorDocument,
-            templateDataSource = SuperGameState.Instance // GameManager.Instance
+            templateDataSource = leaderSelector
         };
 
-        tempDialog.onConfirmed += (sender, el) =>
-        {
-            Debug.Log("tempDialog.onConfirmed");
+        // tempDialog.onConfirmed += (sender, el) =>
+        // {
+        //     Debug.Log("tempDialog.onConfirmed");
 
-            var leadersListView = el.Q<ListView>("LeadersListView");
-            var leader = leadersListView.selectedItem as Leader;
+        //     var leadersListView = el.Q<ListView>("LeadersListView");
+        //     var leader = leadersListView.selectedItem as Leader;
 
-            callback(leader);
-        };
+        //     callback(leader);
+        // };
+
+        tempDialog.onConfirmed += leaderSelector.OnConfirm;
 
         tempDialog.Popup();
     }

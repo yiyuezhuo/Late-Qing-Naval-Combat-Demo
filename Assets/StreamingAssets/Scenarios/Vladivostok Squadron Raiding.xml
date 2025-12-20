@@ -3820,29 +3820,29 @@
    </ShipLog>
   </shipLogs>
   <areaCells>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="a8f121fa-c137-43ee-8aa5-7875092125ab">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="142.59" latitude="45.71" objectId="a8f121fa-c137-43ee-8aa5-7875092125ab">
     <Label>
      <english>Sōya Strait</english>
      <japanese>宗谷海峡</japanese>
      <chineseSimplified>宗谷海峡</chineseSimplified>
     </Label>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="76734099-06b6-4d82-98e4-a9b4f59c9330" />
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="aa096457-286b-4d12-a4ec-fd29f0003bc2">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="146.33" latitude="43.2" objectId="76734099-06b6-4d82-98e4-a9b4f59c9330" />
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="141.88" latitude="41.85" objectId="aa096457-286b-4d12-a4ec-fd29f0003bc2">
     <Label>
      <english>Tsugaru Strait</english>
      <japanese>津軽海峡</japanese>
      <chineseSimplified>津轻海峡</chineseSimplified>
     </Label>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="080e6a86-5afc-4911-94a5-7be102b9c316">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="136.82" latitude="42.16" objectId="080e6a86-5afc-4911-94a5-7be102b9c316">
     <Label>
      <english>Japan Sea (N)</english>
      <japanese>日本海 (北)</japanese>
      <chineseSimplified>日本海 (北)</chineseSimplified>
     </Label>
    </Cell>
-   <Cell x="-1" y="-1" terrain="LightUrban" longitude="0" latitude="0" IsCoast="true" sideObjectIdHex="f781e78a-aaf5-411f-8f49-d1561e7949a2" objectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16">
+   <Cell x="-1" y="-1" terrain="LightUrban" longitude="131.92" latitude="42.6" IsCoast="true" sideObjectIdHex="f781e78a-aaf5-411f-8f49-d1561e7949a2" objectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16">
     <Label>
      <english>Vladivostok</english>
      <japanese>ウラジオストク</japanese>
@@ -3857,35 +3857,35 @@
      </StrategicGroupReference>
     </StrategicGroupReferences>
    </Cell>
-   <Cell x="-1" y="-1" terrain="LightUrban" longitude="0" latitude="0" IsCoast="true" objectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc">
+   <Cell x="-1" y="-1" terrain="LightUrban" longitude="127.7" latitude="39.3" IsCoast="true" objectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc">
     <Label>
      <english>Wonsan</english>
      <japanese>元山</japanese>
      <chineseSimplified>元山</chineseSimplified>
     </Label>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="d404f7a4-ada4-48cc-bc29-6a424f413e64">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="133.54" latitude="39.05" objectId="d404f7a4-ada4-48cc-bc29-6a424f413e64">
     <Label>
      <english>Japan Sea (S)</english>
      <japanese>日本海(南)</japanese>
      <chineseSimplified>日本海(南)</chineseSimplified>
     </Label>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="136.84" latitude="38" objectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a">
     <Label>
      <english>Ishikawa</english>
      <japanese>石川</japanese>
      <chineseSimplified>石川</chineseSimplified>
     </Label>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="6d6ef369-0a3c-4e92-ada4-3b2b4c09b2fa">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="141.596" latitude="38.131" objectId="6d6ef369-0a3c-4e92-ada4-3b2b4c09b2fa">
     <Label>
      <english>Miyagi</english>
      <japanese>宮城</japanese>
      <chineseSimplified>宫城</chineseSimplified>
     </Label>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="a3f12676-afe1-4bee-92e1-7ca717938bd8">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="139.563" latitude="34.963" objectId="a3f12676-afe1-4bee-92e1-7ca717938bd8">
     <Label>
      <english>Tokyo Bay</english>
      <japanese>東京湾</japanese>
@@ -3897,21 +3897,21 @@
      </StrategicGroupReference>
     </StrategicGroupReferences>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="76352c1d-69a9-4ca3-a974-3ac4073e3901">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="132.47" latitude="35.84" objectId="76352c1d-69a9-4ca3-a974-3ac4073e3901">
     <Label>
      <english>Shimane</english>
      <japanese>島根</japanese>
      <chineseSimplified>岛根</chineseSimplified>
     </Label>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="c9b7a619-1f95-4664-8cd1-c6e79994fd38">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="125.82" latitude="36.1" objectId="c9b7a619-1f95-4664-8cd1-c6e79994fd38">
     <Label>
      <english>Yellow Sea</english>
      <japanese>黄海</japanese>
      <chineseSimplified>黄海</chineseSimplified>
     </Label>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="065a6098-b765-4a8b-bc41-b430c8efc50d">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="130.01" latitude="34.21" objectId="065a6098-b765-4a8b-bc41-b430c8efc50d">
     <Label>
      <english>Tsushima</english>
      <japanese>対馬</japanese>
@@ -3919,14 +3919,14 @@
     </Label>
     <StrategicGroupReferences>
      <StrategicGroupReference>
-      <referenceId>44d799ed-77dc-4946-b150-21af4c1fcfc9</referenceId>
+      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
      </StrategicGroupReference>
      <StrategicGroupReference>
-      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
+      <referenceId>44d799ed-77dc-4946-b150-21af4c1fcfc9</referenceId>
      </StrategicGroupReference>
     </StrategicGroupReferences>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="832147e0-ad8a-469b-8a01-59558646f97d">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="134.81" latitude="33.44" objectId="832147e0-ad8a-469b-8a01-59558646f97d">
     <Label>
      <english>Kōchi</english>
      <japanese>高知</japanese>
@@ -3938,7 +3938,7 @@
      </StrategicGroupReference>
     </StrategicGroupReferences>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="0" latitude="0" objectId="6793c7a7-7e29-4018-a0f4-de7ef31055d3">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="130.1" latitude="31" objectId="6793c7a7-7e29-4018-a0f4-de7ef31055d3">
     <Label>
      <english>Ōsumi Strait</english>
      <japanese>大隅海峡</japanese>
@@ -4161,12 +4161,15 @@
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <independentAreaCellObjectId>065a6098-b765-4a8b-bc41-b430c8efc50d</independentAreaCellObjectId>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>416402fe-d252-48fd-8f54-d546128ced8f</referenceObjectId>
+    </leaderReference>
     <subordinatesCombined>
      <StrategicGroupMemberReference>
       <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
      </StrategicGroupMemberReference>
     </subordinatesCombined>
+    <remark>https://en.wikipedia.org/wiki/Sasebo_Naval_District</remark>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -4191,8 +4194,11 @@
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <independentAreaCellObjectId>832147e0-ad8a-469b-8a01-59558646f97d</independentAreaCellObjectId>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>55bcaa87-3db0-4dba-8138-9d4b345d0cb9</referenceObjectId>
+    </leaderReference>
     <subordinatesCombined />
+    <remark>https://en.wikipedia.org/wiki/Kure_Naval_District</remark>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -4217,8 +4223,11 @@
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <independentAreaCellObjectId>a3f12676-afe1-4bee-92e1-7ca717938bd8</independentAreaCellObjectId>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>cf6cab8d-b542-4930-aaeb-bc24eccace43</referenceObjectId>
+    </leaderReference>
     <subordinatesCombined />
+    <remark>https://en.wikipedia.org/wiki/Yokosuka_Naval_District</remark>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -6730,9 +6739,9 @@
   </serializedCells>
  </gameState>
  <viewState>
-  <xPosition>-1.94431067</xPosition>
-  <yPosition>1.36916089</yPosition>
-  <orthographicSize>3</orthographicSize>
+  <xPosition>-0.931445837</xPosition>
+  <yPosition>-1.82468927</yPosition>
+  <orthographicSize>5</orthographicSize>
   <hitAreaMapRecords>
    <HitAreaMapRecord hitAreaObjectId="0b2cbd39-ad25-4233-b5a1-5744048e7491" areaCellObjectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16" />
    <HitAreaMapRecord hitAreaObjectId="54b9824b-f430-407e-9d7e-867728dccccb" areaCellObjectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc" />

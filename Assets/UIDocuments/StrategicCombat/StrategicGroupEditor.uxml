@@ -278,12 +278,6 @@
                                     <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196633377280000)"/>
                                 </Bindings>
                             </ui:ListView>
-                            <ui:FloatField label="Move Progression">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="moveProgressionKm" binding-mode="TwoWay"/>
-                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11055268416360448)"/>
-                                </Bindings>
-                            </ui:FloatField>
                             <ui:Label text="Remark">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)"/>
@@ -294,6 +288,12 @@
                                     <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay"/>
                                 </Bindings>
                             </ui:TextField>
+                            <ui:FloatField label="Move Progression">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="moveProgressionKm" binding-mode="TwoWay"/>
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11055268416360448)"/>
+                                </Bindings>
+                            </ui:FloatField>
                             <ui:MultiColumnListView data-source-path="plannedPath" binding-source-selection-mode="AutoAssign" header-title="Planned Path" show-foldout-header="true">
                                 <ui:Columns>
                                     <ui:Column title="X" cell-template="project://database/Assets/UIDocuments/Templates/XY/XYX.uxml?fileID=9197481963319205126&amp;guid=e6f56269358ebb74080f0357091b0a52&amp;type=3#XYX" width="30%"/>

@@ -34,6 +34,7 @@ namespace StrategicCombatCore
                 return $"({x}, {y}), {terrain}, {Label?.GetShortName()}";
             }
         }
+
         // public string brief => $"({x}, {y}), {terrain} {Label?.GetShortName()}";
 
         // [CreateProperty]
@@ -610,9 +611,8 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public string name => Localize(
-            "Combat in Hex ({0} {1})",
-            xy.x,
-            xy.y
+            "Combat in Hex ({0})",
+            xy.GetCell()?.GetLocationSummary()
         );
         // public string name => $"Combat in Hex ({xy.x} {xy.y})";
     }

@@ -72,7 +72,7 @@ namespace StrategicCombatCore
 
         void StartScan(SideState side, List<StrategicGroup> strategicGroups)
         {
-            var shipGroup = new ShipGroup()
+            var shipGroup = new ShipGroup() // Top Ship Group
             {
                 // objectId // resolved by EntityManager
                 parentObjectId = null,
@@ -85,6 +85,14 @@ namespace StrategicCombatCore
             foreach (var strategicGroup in strategicGroups)
             {
                 Scan(shipGroup, strategicGroup);
+            }
+
+            if(strategicGroups.Count > 0)
+            {
+                var combatShipTons = strategicGroups.Select(g => g.GetCombatShipTons()).ToList();
+                var maxIdx = combatShipTons.IndexOf(combatShipTons.Max());
+                var mostPowerfulgroup = strategicGroups[maxIdx];
+                shipGroup.leaderReference.referenceObjectId = mostPowerfulgroup.leaderReference.referenceObjectId;
             }
         }
 

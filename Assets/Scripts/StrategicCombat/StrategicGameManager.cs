@@ -53,7 +53,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public Transform areaSystemTransform;
     // TODO: Extract and move those Area System related stuff to another class? 
     public Transform hitAreasRootTransform;
-    public Transform areaSystemCounterContainerTransform;
+    public Transform counterContainerTransform;
     public GameObject strategicGroupIconPrefab;
 
     public bool fullInitialized = false;
@@ -475,9 +475,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     {
         if(fullInitialized)
         {
-            UpdateViewState();
+            UpdateView();
             HandleInput();
-            UpdatePathLines();
         }
     }
 
@@ -507,16 +506,150 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     }
 
 
-    void UpdateViewState()
+    void UpdateView()
     {
-        var gameState = StrategicGameState.Instance;
-        if(gameState.scenarioState.enableAreaSystem)
-        {
-            var observableStrategicGroups = StrategicGameState.Instance.GetOrderedObservableStrategicGroups().Where(g => g.IsOnAreaCell()).ToList();
+        // var gameState = StrategicGameState.Instance;
+        // if(gameState.scenarioState.enableAreaSystem)
+        // {
+        //     var observableStrategicGroups = StrategicGameState.Instance.GetOrderedObservableStrategicGroups().Where(g => g.IsOnAreaCell()).ToList();
 
-            BindAreaSystemStrategicGroupIcons(areaSystemCounterContainerTransform, strategicGroupIconPrefab, observableStrategicGroups);
+        //     BindAreaSystemStrategicGroupIcons(areaSystemCounterContainerTransform, strategicGroupIconPrefab, observableStrategicGroups);
+        // }
+
+        var observableStrategicGroups = StrategicGameState.Instance.GetOrderedObservableStrategicGroups().ToList();
+        BindStrategicGroupIcons(counterContainerTransform, strategicGroupIconPrefab, observableStrategicGroups);
+
+        UpdatePathLines();
+    }
+
+    void BindStrategicGroupIcons(Transform containerTransform, GameObject prefab, List<StrategicGroup> strategicGroups)
+    {
+        // Sync Views & create mapping
+        Utils.SyncTransformViewerLength(containerTransform, strategicGroups.Count, prefab);
+
+        var worldSpaceGroupIcons = containerTransform.GetComponentsInChildren<WorldSpaceGroupIcon>();
+        var groupToView = new Dictionary<StrategicGroup, WorldSpaceGroupIcon>();
+        for (int i = 0; i < strategicGroups.Count; i++)
+        {
+            var strategicGroup = strategicGroups[i];
+            var worldSpaceGroupIcon = worldSpaceGroupIcons[i];
+            worldSpaceGroupIcon.SetDataSource(strategicGroup);
+
+            groupToView[strategicGroup] = worldSpaceGroupIcon;
+        }
+
+        // Area System Binding
+        var strategicGroupsOnArea = strategicGroups.Where(g => g.IsOnAreaCell());
+
+        foreach(var g in strategicGroupsOnArea.GroupBy(group => group.areaCellObjectId))
+        {
+            if(areaCellObjectIdToHitArea.TryGetValue(g.Key, out var hitArea))
+            {
+                var xf = hitArea.transform.position.x;
+                var yf = hitArea.transform.position.y;
+
+                Utils.LayoutStackTransform(
+                    g.Select(gp => groupToView[gp].transform).ToList(),
+                    new Vector3(xf, yf, 0),
+                    0.05f
+                );
+            }
+        }
+
+        // Grid System Binding
+        var strategicGroupsOnGrid = strategicGroups.Where(g => g.IsOnGridCell());
+        var hexMapShower = HexMapShower.Instance;
+        foreach (var g in strategicGroupsOnGrid.GroupBy(group => (group.x, group.y)))
+        {
+            (var x, var y) = g.Key;
+            var (xf, yf) = HexMapShower.CellXYToLocalXY(x, y);
+            var vec = hexMapShower.controlledRenderer.transform.TransformPoint(xf, yf, 0);
+
+            // var gl = g.GroupBy(_g => _g.country).ToList();
+            // var gl = g.GroupBy(_g => StrategicGameState.Instance.countryToSideStateMap[_g.country]).ToList();
+            var gl = g.GroupBy(_g => _g.side).ToList();
+
+            if (gl.Count == 1)
+            {
+                Utils.LayoutStackTransform(
+                    gl[0].Select(gp => groupToView[gp].transform).ToList(),
+                    new Vector3(vec.x, vec.y, 0),
+                    0.05f
+                );
+            }
+            else
+            {
+                // gl.Sort((gp1, gp2) => gp1.Key.name.english[0].CompareTo(gp2.Key.name.english[0])); // FIXME: Fragile to empty string
+                var cell = gl.First().First().cell;
+
+                var side0yScore = cell.GetMassCenterY(gl[0].Key);
+                var side1yScore = cell.GetMassCenterY(gl[1].Key);
+
+                var gTop = gl[0];
+                var gBottom = gl[1];
+
+                if (side0yScore < side1yScore)
+                {
+                    gTop = gl[1];
+                    gBottom = gl[0];
+                }
+                else if(side0yScore == side1yScore)
+                {
+                    if(gl[0].Key.name.english[0] > gl[1].Key.name.english[1])
+                    {
+                        gTop = gl[1];
+                        gBottom = gl[0];
+                    }
+                }
+
+                Utils.LayoutStackTransform(
+                    gTop.Select(gp => groupToView[gp].transform).ToList(),
+                    new Vector3(vec.x, vec.y + 0.25f, 0),
+                    0.05f
+                );
+
+                // Assume 2 sides can be in the same hex at most.
+                Utils.LayoutStackTransform(
+                    gBottom.Select(gp => groupToView[gp].transform).ToList(),
+                    new Vector3(vec.x, vec.y - 0.25f, 0),
+                    0.05f
+                );
+            }
         }
     }
+
+    // public void BindAreaSystemStrategicGroupIcons(Transform containerTransform, GameObject prefab, List<StrategicGroup> strategicGroups)
+    // {
+    //     var gameState = StrategicGameState.Instance;
+
+    //     Utils.SyncTransformViewerLength(containerTransform, strategicGroups.Count, prefab);
+
+    //     var worldSpaceGroupIcons = containerTransform.GetComponentsInChildren<WorldSpaceGroupIcon>();
+    //     var groupToView = new Dictionary<StrategicGroup, WorldSpaceGroupIcon>();
+    //     for (int i = 0; i < strategicGroups.Count; i++)
+    //     {
+    //         var strategicGroup = strategicGroups[i];
+    //         var worldSpaceGroupIcon = worldSpaceGroupIcons[i];
+    //         worldSpaceGroupIcon.SetDataSource(strategicGroup);
+
+    //         groupToView[strategicGroup] = worldSpaceGroupIcon;
+    //     }
+
+    //     foreach(var g in strategicGroups.GroupBy(group => group.areaCellObjectId))
+    //     {
+    //         if(areaCellObjectIdToHitArea.TryGetValue(g.Key, out var hitArea))
+    //         {
+    //             var xf = hitArea.transform.position.x;
+    //             var yf = hitArea.transform.position.y;
+
+    //             Utils.LayoutStackTransform(
+    //                 g.Select(gp => groupToView[gp].transform).ToList(),
+    //                 new Vector3(xf, yf, 0),
+    //                 0.05f
+    //             );
+    //         }
+    //     }
+    // }
 
     void HandleInput()
     {
@@ -911,37 +1044,4 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         areaSystemTransform.gameObject.SetActive(scenarioState.enableAreaSystem);
     }
 
-    public void BindAreaSystemStrategicGroupIcons(Transform containerTransform, GameObject prefab, List<StrategicGroup> strategicGroups)
-    {
-        var gameState = StrategicGameState.Instance;
-
-        Utils.SyncTransformViewerLength(containerTransform, strategicGroups.Count, prefab);
-
-        var worldSpaceGroupIcons = containerTransform.GetComponentsInChildren<WorldSpaceGroupIcon>();
-        var groupToView = new Dictionary<StrategicGroup, WorldSpaceGroupIcon>();
-        for (int i = 0; i < strategicGroups.Count; i++)
-        {
-            var strategicGroup = strategicGroups[i];
-            var worldSpaceGroupIcon = worldSpaceGroupIcons[i];
-            worldSpaceGroupIcon.SetDataSource(strategicGroup);
-
-            groupToView[strategicGroup] = worldSpaceGroupIcon;
-        }
-
-        foreach(var g in strategicGroups.GroupBy(group => group.areaCellObjectId))
-        {
-            if(areaCellObjectIdToHitArea.TryGetValue(g.Key, out var hitArea))
-            {
-                var xf = hitArea.transform.position.x;
-                var yf = hitArea.transform.position.y;
-
-                Utils.LayoutStackTransform(
-                    g.Select(gp => groupToView[gp].transform).ToList(),
-                    new Vector3(xf, yf, 0),
-                    0.05f
-                );
-            }
-        }
-
-    }
 }

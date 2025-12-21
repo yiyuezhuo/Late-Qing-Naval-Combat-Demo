@@ -1582,7 +1582,6 @@ MonoBehaviour:
   strategicGroupIconTransform: {fileID: 1215834149}
   sideFlagContainerTransform: {fileID: 1015478983}
   cellLabelContainerTransform: {fileID: 540693175}
-  pathLineContainerTransform: {fileID: 1819725383}
   missionWaypointLineContainerTransform: {fileID: 588873092}
   locationLabelPrefab: {fileID: 5792163290863953499, guid: be80ce39c2c2aa94e971853d00d1ec27, type: 3}
   roadPrefab: {fileID: 9006842191024245126, guid: 6285d43d972e56e46a42bc17fa4787be, type: 3}
@@ -1591,7 +1590,6 @@ MonoBehaviour:
   strategicGroupIconPrefab: {fileID: 3524373397051295401, guid: eeb18b7201b1c32459b68dbd2dd3ea19, type: 3}
   sideFlagPrefab: {fileID: 1746349559027256155, guid: d57d9a28a3ff0754ba88fe1543293865, type: 3}
   cellLabelPrefab: {fileID: 5792163290863953499, guid: be80ce39c2c2aa94e971853d00d1ec27, type: 3}
-  pathLinePrefab: {fileID: 5562614255133263553, guid: 9764680f81772704684c1ec0d87acf5d, type: 3}
   missionWaypointLinePrefab: {fileID: 7422386927956527519, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
   mapRenderer: {fileID: 2074895119}
 --- !u!1001 &995054351
@@ -2318,12 +2316,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264437117}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.26777, y: 0.92248, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1662179545}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1336665334
 GameObject:
@@ -2723,7 +2721,6 @@ Transform:
   m_Children:
   - {fileID: 1788551328}
   - {fileID: 1253848132}
-  - {fileID: 1264437118}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1689453571
@@ -2763,7 +2760,7 @@ MonoBehaviour:
   gridSystemTransform: {fileID: 893239364}
   areaSystemTransform: {fileID: 1662179545}
   hitAreasRootTransform: {fileID: 1788551328}
-  areaSystemCounterContainerTransform: {fileID: 1264437118}
+  counterContainerTransform: {fileID: 1264437118}
   strategicGroupIconPrefab: {fileID: 3524373397051295401, guid: eeb18b7201b1c32459b68dbd2dd3ea19, type: 3}
   fullInitialized: 0
   currentSideStateObjectId: 
@@ -3608,3 +3605,4 @@ SceneRoots:
   - {fileID: 893239364}
   - {fileID: 1662179545}
   - {fileID: 1819725383}
+  - {fileID: 1264437118}

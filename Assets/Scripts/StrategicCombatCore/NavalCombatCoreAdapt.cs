@@ -20,7 +20,14 @@ namespace NavalCombatCore
         public SupplyTransferState supplyTransferState = new();
 
         public int GetStrengthMen() => shipClass?.complementMen ?? 0;
-        public float GetShipTons() => shipClass?.displacementTons ?? 0;
+        public float GetShipTons() => shipClass?.displacementTons ?? 0; // Contain only deployed ship?
+        // public float GetCombatShipTons()
+        // {
+        //     var _shipClass = shipClass;
+        //     if(mapState == MapState.Deployed && _shipClass.IsCombatShip())
+        //         return _shipClass.displacementTons;
+        //     return 0;
+        // }
         public int GetSubUnitSize() => 1;
         public float GetCombinedPowerPoint(bool isTop)
         {

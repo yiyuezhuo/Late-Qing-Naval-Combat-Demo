@@ -225,82 +225,6 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         }
     }
 
-    void BindStrategicGroupIcons(Transform containerTransform, GameObject prefab, List<StrategicGroup> strategicGroups)
-    {
-        Utils.SyncTransformViewerLength(containerTransform, strategicGroups.Count, prefab);
-
-        var worldSpaceGroupIcons = containerTransform.GetComponentsInChildren<WorldSpaceGroupIcon>();
-        var groupToView = new Dictionary<StrategicGroup, WorldSpaceGroupIcon>();
-        for (int i = 0; i < strategicGroups.Count; i++)
-        {
-            var strategicGroup = strategicGroups[i];
-            var worldSpaceGroupIcon = worldSpaceGroupIcons[i];
-            worldSpaceGroupIcon.SetDataSource(strategicGroup);
-
-            // var (xf, yf) = CellXYToLocalXY(strategicGroup.x, strategicGroup.y);
-            // worldSpaceGroupIcon.transform.position = controlledRenderer.transform.TransformPoint(xf, yf, 0);
-
-            groupToView[strategicGroup] = worldSpaceGroupIcon;
-        }
-
-        foreach (var g in strategicGroups.GroupBy(group => (group.x, group.y)))
-        {
-            (var x, var y) = g.Key;
-            var (xf, yf) = CellXYToLocalXY(x, y);
-            var vec = controlledRenderer.transform.TransformPoint(xf, yf, 0);
-
-            // var gl = g.GroupBy(_g => _g.country).ToList();
-            // var gl = g.GroupBy(_g => StrategicGameState.Instance.countryToSideStateMap[_g.country]).ToList();
-            var gl = g.GroupBy(_g => _g.side).ToList();
-
-            if (gl.Count == 1)
-            {
-                Utils.LayoutStackTransform(
-                    gl[0].Select(gp => groupToView[gp].transform).ToList(),
-                    new Vector3(vec.x, vec.y, 0),
-                    0.05f
-                );
-            }
-            else
-            {
-                // gl.Sort((gp1, gp2) => gp1.Key.name.english[0].CompareTo(gp2.Key.name.english[0])); // FIXME: Fragile to empty string
-                var cell = gl.First().First().cell;
-
-                var side0yScore = cell.GetMassCenterY(gl[0].Key);
-                var side1yScore = cell.GetMassCenterY(gl[1].Key);
-
-                var gTop = gl[0];
-                var gBottom = gl[1];
-
-                if (side0yScore < side1yScore)
-                {
-                    gTop = gl[1];
-                    gBottom = gl[0];
-                }
-                else if(side0yScore == side1yScore)
-                {
-                    if(gl[0].Key.name.english[0] > gl[1].Key.name.english[1])
-                    {
-                        gTop = gl[1];
-                        gBottom = gl[0];
-                    }
-                }
-
-                Utils.LayoutStackTransform(
-                    gTop.Select(gp => groupToView[gp].transform).ToList(),
-                    new Vector3(vec.x, vec.y + 0.25f, 0),
-                    0.05f
-                );
-
-                // Assume 2 sides can be in the same hex at most.
-                Utils.LayoutStackTransform(
-                    gBottom.Select(gp => groupToView[gp].transform).ToList(),
-                    new Vector3(vec.x, vec.y - 0.25f, 0),
-                    0.05f
-                );
-            }
-        }
-    }
 
     // void LayoutStackTransform(List<Transform> transforms, Vector3 basePos, float stackSpace)
     // {
@@ -412,19 +336,97 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     {
         if(StrategicGameManager.Instance.fullInitialized)
         {
-            UpdateStrategicGroupIcons();
+            // UpdateStrategicGroupIcons();
             // UpdatePathLines();
             UpdateMissionWaypointLines();
         }
     }
 
-    void UpdateStrategicGroupIcons()
-    {
-        // var observableStrategicGroups = StrategicGameState.Instance.GetObservabledStrategicGroups().ToList();
-        var observableStrategicGroups = StrategicGameState.Instance.GetOrderedObservableStrategicGroups().ToList();
-        // GetOrderedObservableStrategicGroups
-        BindStrategicGroupIcons(strategicGroupIconTransform, strategicGroupIconPrefab, observableStrategicGroups);
-    }
+    // void UpdateStrategicGroupIcons()
+    // {
+    //     // var observableStrategicGroups = StrategicGameState.Instance.GetObservabledStrategicGroups().ToList();
+    //     var observableStrategicGroups = StrategicGameState.Instance.GetOrderedObservableStrategicGroups().ToList();
+    //     // GetOrderedObservableStrategicGroups
+    //     BindStrategicGroupIcons(strategicGroupIconTransform, strategicGroupIconPrefab, observableStrategicGroups);
+    // }
+
+    // void BindStrategicGroupIcons(Transform containerTransform, GameObject prefab, List<StrategicGroup> strategicGroups)
+    // {
+    //     Utils.SyncTransformViewerLength(containerTransform, strategicGroups.Count, prefab);
+
+    //     var worldSpaceGroupIcons = containerTransform.GetComponentsInChildren<WorldSpaceGroupIcon>();
+    //     var groupToView = new Dictionary<StrategicGroup, WorldSpaceGroupIcon>();
+    //     for (int i = 0; i < strategicGroups.Count; i++)
+    //     {
+    //         var strategicGroup = strategicGroups[i];
+    //         var worldSpaceGroupIcon = worldSpaceGroupIcons[i];
+    //         worldSpaceGroupIcon.SetDataSource(strategicGroup);
+
+    //         // var (xf, yf) = CellXYToLocalXY(strategicGroup.x, strategicGroup.y);
+    //         // worldSpaceGroupIcon.transform.position = controlledRenderer.transform.TransformPoint(xf, yf, 0);
+
+    //         groupToView[strategicGroup] = worldSpaceGroupIcon;
+    //     }
+
+    //     foreach (var g in strategicGroups.GroupBy(group => (group.x, group.y)))
+    //     {
+    //         (var x, var y) = g.Key;
+    //         var (xf, yf) = CellXYToLocalXY(x, y);
+    //         var vec = controlledRenderer.transform.TransformPoint(xf, yf, 0);
+
+    //         // var gl = g.GroupBy(_g => _g.country).ToList();
+    //         // var gl = g.GroupBy(_g => StrategicGameState.Instance.countryToSideStateMap[_g.country]).ToList();
+    //         var gl = g.GroupBy(_g => _g.side).ToList();
+
+    //         if (gl.Count == 1)
+    //         {
+    //             Utils.LayoutStackTransform(
+    //                 gl[0].Select(gp => groupToView[gp].transform).ToList(),
+    //                 new Vector3(vec.x, vec.y, 0),
+    //                 0.05f
+    //             );
+    //         }
+    //         else
+    //         {
+    //             // gl.Sort((gp1, gp2) => gp1.Key.name.english[0].CompareTo(gp2.Key.name.english[0])); // FIXME: Fragile to empty string
+    //             var cell = gl.First().First().cell;
+
+    //             var side0yScore = cell.GetMassCenterY(gl[0].Key);
+    //             var side1yScore = cell.GetMassCenterY(gl[1].Key);
+
+    //             var gTop = gl[0];
+    //             var gBottom = gl[1];
+
+    //             if (side0yScore < side1yScore)
+    //             {
+    //                 gTop = gl[1];
+    //                 gBottom = gl[0];
+    //             }
+    //             else if(side0yScore == side1yScore)
+    //             {
+    //                 if(gl[0].Key.name.english[0] > gl[1].Key.name.english[1])
+    //                 {
+    //                     gTop = gl[1];
+    //                     gBottom = gl[0];
+    //                 }
+    //             }
+
+    //             Utils.LayoutStackTransform(
+    //                 gTop.Select(gp => groupToView[gp].transform).ToList(),
+    //                 new Vector3(vec.x, vec.y + 0.25f, 0),
+    //                 0.05f
+    //             );
+
+    //             // Assume 2 sides can be in the same hex at most.
+    //             Utils.LayoutStackTransform(
+    //                 gBottom.Select(gp => groupToView[gp].transform).ToList(),
+    //                 new Vector3(vec.x, vec.y - 0.25f, 0),
+    //                 0.05f
+    //             );
+    //         }
+    //     }
+    // }
+
 
     // void UpdatePathLines()
     // {

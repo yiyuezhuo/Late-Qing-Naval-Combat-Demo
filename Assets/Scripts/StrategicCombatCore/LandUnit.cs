@@ -65,6 +65,7 @@ namespace StrategicCombatCore
 
         public int GetStrengthMen() => strength;
         public float GetShipTons() => 0f;
+        // public float GetCombatShipTons() => 0f;
         public int GetSubUnitSize() => 1;
         public float GetCombinedPowerPoint(bool isTop)
         {

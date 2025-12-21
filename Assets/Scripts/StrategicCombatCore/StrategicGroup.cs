@@ -32,6 +32,7 @@ namespace StrategicCombatCore
         public int GetSubUnitSize() => Get()?.GetSubUnitSize() ?? 0;
         public int GetStrengthMen() => Get()?.GetStrengthMen() ?? 0;
         public float GetShipTons() => Get()?.GetShipTons() ?? 0f;
+        // public float GetCombinedCombatShipTons() => Get()?.GetCombatShipTons() ?? 0f;
         public float GetCombinedPowerPoint(bool isTop) => Get()?.GetCombinedPowerPoint(isTop) ?? 0f;
     }
 
@@ -312,6 +313,8 @@ namespace StrategicCombatCore
         public int GetSubUnitSize() => subordinatesCombined.Sum(r => r.GetSubUnitSize());
         public int GetStrengthMen() => subordinatesCombined.Sum(r => r.GetStrengthMen());
         public float GetShipTons() => subordinatesCombined.Sum(r => r.GetShipTons());
+        public float GetCombatShipTons() => WalkGroupMembersDeployedShips().Select(shipLog => shipLog.shipClass).Where(shipClass => shipClass.IsCombatShip()).Sum(shipClass => shipClass.displacementTons);
+        // WalkGroupMembersDeployedShips
         public float GetCombinedPowerPoint(bool isTop)
         {
             if (!isTop && deployState != DeployState.Combined)

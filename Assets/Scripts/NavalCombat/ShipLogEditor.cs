@@ -325,8 +325,6 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             }
         };
 
-        static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
-
         var plotTrajectoryOnMapButton = root.Q<Button>("PlotTrajectoryOnMapButton");
         plotTrajectoryOnMapButton.clicked += () =>
         {
@@ -352,6 +350,8 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         };
 
     }
+
+    static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
     void OnShipLogsXmlLoaded(string text)
     {

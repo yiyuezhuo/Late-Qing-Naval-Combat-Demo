@@ -67,6 +67,9 @@ namespace NavalCombatCore
             lengthFoot / 1000 * 100, // 300 foot => 30 (30%)
             LengthUnit.Percent
         );
+
+        [CreateProperty]
+        public Texture2D countryFlagTexture => UnityWebRequestImageReader.Instance.FetchTexture2D(Utils.GetCountryPath(country));
     }
 
     public partial class LaunchedTorpedo : IPortraitViewerObservable

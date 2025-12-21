@@ -127,6 +127,14 @@ public static class RegisteredConverters
             return UnityWebRequestImageReader.Instance.FetchStyleBackground(Utils.GetCountryPath(country));
         });
 
+        // Register("Country => Texture2D", (ref Country country) =>
+        // {
+        //     // return ResourceManager.GetFlagSB(country.ToString());
+        //     // var path = Application.streamingAssetsPath + "/Pictures/Flags/" + country.ToString() + ".png";
+        //     return UnityWebRequestImageReader.Instance.FetchTexture2D(Utils.GetCountryPath(country));
+        // });
+
+
         Register("ShipLog => ShipLog's captain's name", (ref ShipLog shipLog) =>
         {
             return shipLog?.leader?.name.mergedName ?? "[Not Specified]";

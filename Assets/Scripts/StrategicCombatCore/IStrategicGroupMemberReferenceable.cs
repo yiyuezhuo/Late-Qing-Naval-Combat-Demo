@@ -7,6 +7,7 @@ namespace StrategicCombatCore
     {
         StrategicGroupReference strategicGroupReference { get; set; }
         public float GetShipTons();
+        // public float GetCombatShipTons();
         public int GetStrengthMen();
         public int GetSubUnitSize();
         public float GetCombinedPowerPoint(bool isTop);

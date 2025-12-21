@@ -1136,5 +1136,13 @@ namespace NavalCombatCore
 
         public float GetPoint() => EvaluateGeneralScore(); // TODO: Modify it with type?
 
+        public static HashSet<ShipType> nonCombatShipTypes = new()
+        {
+            ShipType.Transport,
+            ShipType.Repair
+        };
+
+        public bool IsCombatShip() => !nonCombatShipTypes.Contains(type);
+
     }
 }

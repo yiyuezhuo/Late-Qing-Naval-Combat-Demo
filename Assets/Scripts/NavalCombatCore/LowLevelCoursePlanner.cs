@@ -126,7 +126,7 @@ namespace NavalCombatCore
             {
                 if (controlMode == ControlMode.RelativeToTarget)
                 {
-                    return relativeToTarget;
+                    return relativeToTarget.GetControlLead();
                 }
                 else if (controlMode == ControlMode.FollowTarget)
                 {
@@ -209,21 +209,6 @@ namespace NavalCombatCore
                 }
             }
 
-            // foreach (var record in records)
-            // {
-            //     var followedTarget = record.original.GetFollowedTarget();
-            //     var relativeToTarget = record.original.GetRelativeToTarget();
-            //     // if (followedTarget != null)
-            //     //     record.followedTarget = originalToRecords.GetValueOrDefault(followedTarget);
-            //     // if (relativeToTarget != null)
-            //     //     record.relativeToTarget = originalToRecords.GetValueOrDefault(relativeToTarget);
-            //     if (followedTarget != null)
-            //         record.followedTarget = originalToRecords[followedTarget];
-            //     if (relativeToTarget != null)
-            //         record.relativeToTarget = originalToRecords[relativeToTarget];
-            // }
-
-            // var leadToSubInducedRecords = records.GroupBy(g => g.GetControlLead()).ToDictionary(g => g.Key, g => g.ToList());
             var _leadToSubInducedRecords = records.GroupBy(g =>
             {
                 var ret = g.GetControlLead();

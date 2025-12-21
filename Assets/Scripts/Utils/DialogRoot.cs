@@ -420,6 +420,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
         tempDialog.onCreated += forceBuilder.OnCreated;
         tempDialog.onConfirmed += forceBuilder.OnConfirm;
+        tempDialog.confirmCheck = forceBuilder.ConfirmCheck;
         
         tempDialog.Popup();
     }

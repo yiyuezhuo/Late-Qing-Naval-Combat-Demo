@@ -154,7 +154,7 @@ namespace NavalCombatCore
             var (portClass, portCurrent) = GetClassCurrentBarrels(r.barrelsLevelPort, portMountHits);
             var (starboardClass, starboardCurrent) = GetClassCurrentBarrels(r.barrelsLevelStarboard, starboardMountHits);
 
-            return $"{portClass}({portCurrent})/{starboardClass}({starboardCurrent}) {r.name.mergedName}";
+            return $"{portClass}({portCurrent})/{starboardClass}({starboardCurrent}) {r.name.mergedName} ({ammunition})";
         }
 
         (int, int) GetClassCurrentBarrels(List<int> barrelsLevel, int hit)

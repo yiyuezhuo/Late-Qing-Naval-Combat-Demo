@@ -6,6 +6,7 @@ using GeographicLib;
 using System.Xml.Serialization;
 
 using CoreUtils;
+using NUnit.Framework.Internal;
 
 
 namespace NavalCombatCore
@@ -451,6 +452,59 @@ namespace NavalCombatCore
                 return EntityManager.Instance.GetOnMapShipLog(followedTargetObjectId);
             if (controlMode == ControlMode.RelativeToTarget)
                 return EntityManager.Instance.GetOnMapShipLog(relativeTargetObjectId);
+            return null;
+        }
+
+        public List<ShipLog> GetControlPredecessorsOnMap()
+        {
+            var ret = new List<ShipLog>();
+            var pt = this;
+
+            while(pt != null)
+            {
+                pt = pt.GetControlPredecessorOnMap();
+                if (pt == this)
+                {
+                    ServiceLocator.Get<ILoggerService>().LogError($"Looping Detected: {pt}");
+                    return ret;
+                }
+                else if (pt != null)
+                {
+                    ret.Add(pt);
+                }
+            }
+            return ret;
+        }
+
+        public enum CheckGiveControlToResult
+        {
+            Ok,
+            LoopingDetected,
+            DifferentGroupRootParent,
+        }
+
+        public CheckGiveControlToResult CheckGiveControlTo(ShipLog other) // used by view
+        {
+            // Prevent control looping
+            if(this == other)
+                return CheckGiveControlToResult.LoopingDetected;
+            
+            if(other.GetControlPredecessorsOnMap().Contains(this))
+                return CheckGiveControlToResult.LoopingDetected;
+            
+            var thisMember = (IShipGroupMember)this;
+            var otherMember = (IShipGroupMember)other;
+            if(thisMember.GetRootParent() != otherMember.GetRootParent())
+                return CheckGiveControlToResult.DifferentGroupRootParent;
+            return CheckGiveControlToResult.Ok;
+        }
+
+        public ShipLog GetControlPredecessor()
+        {
+            if (controlMode == ControlMode.FollowTarget)
+                return EntityManager.Instance.Get<ShipLog>(followedTargetObjectId);
+            if (controlMode == ControlMode.RelativeToTarget)
+                return EntityManager.Instance.Get<ShipLog>(relativeTargetObjectId);
             return null;
         }
 
@@ -1318,6 +1372,7 @@ namespace NavalCombatCore
                 };
             }
         }
+
 
 
         public int GetDamageTier()

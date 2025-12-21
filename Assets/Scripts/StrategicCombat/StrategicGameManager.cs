@@ -309,6 +309,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         RefreshGridSystemAreaSystemVisibility();
         
         fullInitialized = true; // enable all independent observer (eg Update based view state controller)
+
+        throw new Exception("Test Exception");
     }
 
     void ApplyViewState(StrategicViewState viewState)
@@ -337,11 +339,6 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 Debug.LogWarning($"Misasligned map: {hitAreaMapRecord.hitAreaObjectId} -> {hitAreaMapRecord.areaCellObjectId}");
             }
         }
-    }
-
-    void BuildHitAreaMap()
-    {
-        
     }
 
     public static void TempFix()
@@ -422,6 +419,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         // {
         //     cell.longitude = cell.longtitude;
         // }
+
+        
     }
 
     public Vector2 ToCenter(Vector2 xy)

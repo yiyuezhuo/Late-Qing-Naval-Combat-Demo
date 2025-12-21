@@ -791,16 +791,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     state = State.Idle;
                     if (selectedShipLog != null)
                     {
-                        var shipLog = TryToRaycastShipLog();
-                        if (shipLog != null)
+                        var targetShipLog = TryToRaycastShipLog();
+                        if (targetShipLog != null && CheckGiveControlTo(selectedShipLog, targetShipLog))
                         {
-                            var targetShipLog = shipLog;
-                            if (selectedShipLog != targetShipLog)
-                            {
-                                selectedShipLog.followedTargetObjectId = targetShipLog.objectId;
-                                selectedShipLog.controlMode = ControlMode.FollowTarget;
-                                Debug.Log($"Set Followed Object ID: {selectedShipLog.objectId} -> {targetShipLog.objectId}");
-                            }
+                            selectedShipLog.followedTargetObjectId = targetShipLog.objectId;
+                            selectedShipLog.controlMode = ControlMode.FollowTarget;
+                            Debug.Log($"Set Followed Object ID: {selectedShipLog.objectId} -> {targetShipLog.objectId}");
                         }
                     }
                 }
@@ -813,7 +809,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     if (selectedShipLog != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
-                        if (targetShipLog != null && selectedShipLog != targetShipLog)
+                        if (targetShipLog != null && CheckGiveControlTo(selectedShipLog, targetShipLog))
                         {
                             selectedShipLog.relativeTargetObjectId = targetShipLog.objectId;
                             selectedShipLog.controlMode = ControlMode.RelativeToTarget;
@@ -834,11 +830,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                         var targetShipLog = TryToRaycastShipLog();
                         selectedMountStatusRecord.firingTargetObjectId = targetShipLog?.objectId;
                         Debug.Log($"Set Firing Target: {selectedMountStatusRecord.objectId} -> {targetShipLog?.objectId}");
-                        // if (targetShipLog != null)
-                        // {
-                        //     selectedMountStatusRecord.firingTargetObjectId = targetShipLog.objectId;
-                        //     Debug.Log($"Set Firing Target: {selectedMountStatusRecord.objectId} -> {targetShipLog.objectId}");
-                        // }
                     }
                 }
             }
@@ -854,12 +845,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                         var targetShipLog = TryToRaycastShipLog();
                         selectedFireControlSystemStatusRecord.targetObjectId = targetShipLog?.objectId;
                         Debug.Log($"Set Fire Control System Target: {selectedFireControlSystemStatusRecord.objectId} -> {targetShipLog?.objectId}");
-
-                        // if (targetShipLog != null)
-                        // {
-                        //     selectedFireControlSystemStatusRecord.targetObjectId = targetShipLog.objectId;
-                        //     Debug.Log($"Set Fire Control System Target: {selectedFireControlSystemStatusRecord.objectId} -> {targetShipLog.objectId}");
-                        // }
                     }
                 }
             }
@@ -874,12 +859,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                         var targetShipLog = TryToRaycastShipLog();
                         selectedRapidFiringTargettingStatus.targetObjectId = targetShipLog?.objectId;
                         Debug.Log($"Set Rapid Firing Battery Target: {selectedRapidFiringTargettingStatus} -> {targetShipLog?.objectId}");
-
-                        // if (targetShipLog != null)
-                        // {
-                        //     selectedRapidFiringTargettingStatus.targetObjectId = targetShipLog.objectId;
-                        //     Debug.Log($"Set Rapid Firing Battery Target: {selectedRapidFiringTargettingStatus} -> {targetShipLog.objectId}");
-                        // }
                     }
                 }
             }
@@ -894,12 +873,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                         var targetShipLog = TryToRaycastShipLog();
                         selectedTorpedoMountStatusRecord.firingTargetObjectId = targetShipLog?.objectId;
                         Debug.Log($"Set Torpedo Tube Target: {selectedTorpedoMountStatusRecord} -> {targetShipLog?.objectId}");
-
-                        // if (targetShipLog != null)
-                        // {
-                        //     selectedTorpedoMountStatusRecord.firingTargetObjectId = targetShipLog.objectId;
-                        //     Debug.Log($"Set Torpedo Tube Target: {selectedTorpedoMountStatusRecord} -> {targetShipLog.objectId}");
-                        // }
                     }
                 }
             }
@@ -912,6 +885,24 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 }
             }
         }
+    }
+
+    public bool CheckGiveControlTo(ShipLog newControlledShipLog, ShipLog newControlShipLog)
+    {
+        var result = newControlledShipLog.CheckGiveControlTo(newControlShipLog);
+        if (result == ShipLog.CheckGiveControlToResult.Ok)
+        {
+            return true;
+        }
+        else if(result == ShipLog.CheckGiveControlToResult.LoopingDetected)
+        {
+            DialogRoot.Instance.PopupMessageDialog("Invalid: Looping Detected");
+        }
+        else if(result == ShipLog.CheckGiveControlToResult.DifferentGroupRootParent)
+        {
+            DialogRoot.Instance.PopupMessageDialog("Invalid: Different Group Root Parent");
+        }
+        return false;
     }
 
     public PortraitViewer TryToRaycastViewer()

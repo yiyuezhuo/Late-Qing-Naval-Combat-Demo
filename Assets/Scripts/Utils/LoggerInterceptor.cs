@@ -15,10 +15,13 @@ public class MyLoggerHandler : ILogHandler
     {
         string message = string.Format(format, args);
 
-        if (logType == LogType.Error && message.Contains("Layout update is struggling to process current layout (consider simplifying to avoid recursive layout)"))
+        if (logType == LogType.Error)
         {
-            m_DefaultLogger.LogFormat(LogType.Warning, context, format, args);
-            return;
+            if(message.Contains("Layout update is struggling to process current layout (consider simplifying to avoid recursive layout)"))
+            {
+                m_DefaultLogger.LogFormat(LogType.Warning, context, format, args);
+                return;
+            }
         }
 
         m_DefaultLogger.LogFormat(logType, context, format, args);

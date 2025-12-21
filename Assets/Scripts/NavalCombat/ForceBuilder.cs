@@ -424,6 +424,20 @@ public class ForceBuilder
         shipLog.parentObjectId = shipGroup.objectId;
 
         shipLog.ResetDamageExpenditureState(new());
+    }
 
+    public bool ConfirmCheck(VisualElement root)
+    {
+        foreach(var force in forces)
+        {
+            if(force.forceItems.Count == 0)
+            {
+                // TODO: Localize
+                DialogRoot.Instance.PopupMessageDialog($"No force item is specified for the group: {force.topGroupName.GetMergedName()}. Click the generate button to auto generate or manually specify them.");
+                return false;
+            }
+        }
+
+        return true;
     }
 }

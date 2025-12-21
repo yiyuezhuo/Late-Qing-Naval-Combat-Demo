@@ -5,6 +5,7 @@ using System.Xml;
 using System.IO;
 using System.Linq;
 using CoreUtils;
+using System.Windows.Forms;
 
 namespace NavalCombatCore
 {
@@ -233,45 +234,71 @@ namespace NavalCombatCore
             return p;
         }
 
+        static Dictionary<ControlMode, int> controModeToScore = new()
+        {
+            {ControlMode.RelativeToTarget, -1},
+            {ControlMode.FollowTarget, -2} // priority
+        };
+
+
         public void ProcessZeroSpeedFormationAdjustment()
         {
-            // var immobilizedShipLogs = shipLogs.Where(shipLog => shipLog.mapState != MapState.Deployed || shipLog.GetMaxSpeedKnots() <= 4).ToHashSet(); // `<= 4` => cannot to turn => impossible to main formation
+            var immobilizedShipLogSet = shipLogs.Where(shipLog => shipLog.mapState != MapState.Deployed || shipLog.GetMaxSpeedKnots() <= 4).ToHashSet();
 
-            // var immoblizedShipLogToChildrens = immobilizedShipLogs.ToDictionary(x => x, x => new List<ShipLog>());
-            // foreach (var shipLog in shipLogsOnMap)
-            // {
-            //     var (controlMode, controlTarget) = shipLog.GetControlModeAndTargetInlucdeNonMap();
-            //     if (controlTarget != null && immobilizedShipLogs.Contains(controlTarget))
-            //     {
-            //         immoblizedShipLogToChildrens[controlTarget].Add(shipLog);
-            //     }
-            // }
+            foreach(var grouping in shipLogsOnMap.GroupBy(shipLog => shipLog.GetControlPredecessor()))
+            {
+                var predShipLog = grouping.Key;
+                
+                if(predShipLog != null && // Handle subs which is not effective independent 
+                    immobilizedShipLogSet.Contains(predShipLog)) // but predecessor is sunk, missing or lost of speed
+                {
+                    var subShipLogs = grouping.ToList();
+                    subShipLogs.Sort((s1, s2) => controModeToScore.GetValueOrDefault(s1.controlMode).CompareTo(controModeToScore.GetValueOrDefault(s2.controlMode)));
+                    
+                    // Handle inherit
+                    var inheritShipLog = subShipLogs[0];
+                    var predShipLogControlMode = predShipLog.GetEffectiveControlMode();
+                    if(predShipLogControlMode == ControlMode.Independent)
+                    {
+                        inheritShipLog.controlMode = ControlMode.Independent;
+                    }
+                    else if(predShipLogControlMode == ControlMode.FollowTarget)
+                    {
+                        inheritShipLog.controlMode = ControlMode.FollowTarget;
+                        inheritShipLog.followedTargetObjectId = predShipLog.followedTargetObjectId;
+                    }
+                    else if(predShipLogControlMode == ControlMode.RelativeToTarget) // Those shit should be refactored
+                    {
+                        inheritShipLog.controlMode = ControlMode.RelativeToTarget;
+                        inheritShipLog.relativeTargetObjectId = predShipLog.relativeTargetObjectId;
+                        inheritShipLog.relativeToTargetAzimuth = predShipLog.relativeToTargetAzimuth;
+                        inheritShipLog.relativeToTargetDistanceYards = predShipLog.relativeToTargetDistanceYards;
+                    }
 
-            // foreach (var immobilizedShipLog in immobilizedShipLogs)
-            // {
-            //     var children = immoblizedShipLogToChildrens[immobilizedShipLog];
-            //     if (children.Count > 0)
-            //     {
-            //         var newAnchor = children[0];
+                    // Handle retarget
+                    foreach(var subShipLog in subShipLogs.Skip(1))
+                    {
+                        if(subShipLog.controlMode == ControlMode.FollowTarget)
+                        {
+                            subShipLog.followedTargetObjectId = inheritShipLog.objectId;
+                        }
+                        else if(subShipLog.controlMode == ControlMode.RelativeToTarget)
+                        {
+                            subShipLog.relativeTargetObjectId = inheritShipLog.objectId;
+                        }
+                    }
+                }
+            }
 
-            //         newAnchor.controlMode = immobilizedShipLog.controlMode;
-            //         newAnchor.followDistanceYards = immobilizedShipLog.followDistanceYards;
-            //         newAnchor.followedTargetObjectId = immobilizedShipLog.followedTargetObjectId;
-            //         newAnchor.relativeToTargetDistanceYards = immobilizedShipLog.relativeToTargetDistanceYards;
-            //         newAnchor.relativeTargetObjectId = immobilizedShipLog.relativeTargetObjectId;
-            //         newAnchor.relativeToTargetAzimuth = immobilizedShipLog.relativeToTargetAzimuth;
+            // Auto-detach
+            foreach(var immobilizedShipLog in immobilizedShipLogSet)
+            {
+                immobilizedShipLog.controlMode = ControlMode.Independent;
+            }
+        }
 
-            //         foreach (var otherChild in children.Skip(1))
-            //         {
-            //             otherChild.followedTargetObjectId = newAnchor.objectId;
-            //             otherChild.relativeTargetObjectId = newAnchor.objectId;
-            //         }
-            //     }
-
-            //     if (immobilizedShipLog.mapState == MapState.Deployed)
-            //         immobilizedShipLog.controlMode = ControlMode.Independent; // Auto Detach
-            // }
-
+        public void _ProcessZeroSpeedFormationAdjustment()
+        {
             var immobilizedShipLogIds = shipLogs.Where(shipLog => shipLog.mapState != MapState.Deployed || shipLog.GetMaxSpeedKnots() <= 4).Select(shipLog => shipLog.objectId).ToHashSet(); // `<= 4` => cannot to turn => impossible to main formation
 
             var fixedAny = false;
@@ -297,6 +324,18 @@ namespace NavalCombatCore
                 }
             } while (fixedAny);
         }
+
+        // public void FixInvalidControlledShipLog(ShipLog shipLog, ShipLog prevControlShipLog)
+        // {
+        //     if(prevControlShipLog.controlMode == ControlMode.Independent)
+        //     {
+        //         shipLog.controlMode = ControlMode.Independent;
+        //     }
+        //     else if(shipLog.controlMode == ControlMode.FollowTarget && prevControlShipLog.GetEffectiveControlMode() == ControlMode.FollowTarget)
+        //     {
+        //         shipLog.followedTargetObjectId = prevControlShipLog.followedTargetObjectId;
+        //     }
+        // }
 
         void FixRelativeTree(ShipLog displacedShipLog, float azimuth, float distance, bool first)
         {
@@ -372,7 +411,8 @@ namespace NavalCombatCore
 
                     var planner = new LowLevelCoursePlanner();
                     planner.Plan(
-                        meShipLogs.Where(s => s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic),
+                        // meShipLogs.Where(s => s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic),
+                        meShipLogs.Where(s => s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic && s.GetControlRoot().doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic),
                         otherShipLogs,
                         CoreParameter.Instance.extrapolateSeconds
                     ); // Extrapolate 360s
@@ -427,7 +467,7 @@ namespace NavalCombatCore
             }
 
             // Reset Formation - zero speed is detached automatically, "children" reset their targets according to detached unit's previous command.
-            ProcessZeroSpeedFormationAdjustment();
+            ProcessZeroSpeedFormationAdjustment(); // TODO: Is it too frequenct to do it every step?
 
             // Advance
             scenarioState.Step(deltaSeconds);

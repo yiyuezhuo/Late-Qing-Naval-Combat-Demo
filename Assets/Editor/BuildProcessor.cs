@@ -85,12 +85,27 @@ public class BuildProcessor : IPreprocessBuildWithReport
         var scenarioFiles = Directory.GetFiles(streamingAssetsPath + "/Scenarios", "*.scen.xml")
             .Select(GetRelativeToAndNormalizePath).ToList();
 
+        var subPathToFullState = scenarioFiles.Select(p => 
+        {
+            var path = Application.streamingAssetsPath + "/" + p;
+            var xml = File.ReadAllText(path);
+            var fullState = XmlUtils.FromXML<FullState>(xml);
+            return (p, fullState);
+        }).ToDictionary(p => p.p, p => p.fullState);
+
         scenarioFiles.Sort((left, right) =>
         {
             var leftTagIdx = GetTagIndex(left);
             var rightTagIdx = GetTagIndex(right);
             if(leftTagIdx != rightTagIdx)
                 return leftTagIdx.CompareTo(rightTagIdx);
+            
+            var leftDateTime = subPathToFullState[left].navalGameState.scenarioState.dateTime;
+            var rightDateTime = subPathToFullState[right].navalGameState.scenarioState.dateTime;
+            var dateTimeCmp =  leftDateTime.CompareTo(rightDateTime);
+            if(dateTimeCmp != 0)
+                return dateTimeCmp;
+
             return left.CompareTo(right);
         });
         // scenarioFiles.Reverse();

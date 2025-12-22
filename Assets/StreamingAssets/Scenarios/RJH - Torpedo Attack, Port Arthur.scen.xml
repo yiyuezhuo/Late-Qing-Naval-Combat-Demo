@@ -6179,8 +6179,8 @@
       <value>Manual</value>
      </maneuverAutomaticType>
      <fireAutomaticType>
-      <isInherited>true</isInherited>
-      <value>Automatic</value>
+      <isInherited>false</isInherited>
+      <value>Manual</value>
      </fireAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
@@ -6244,7 +6244,7 @@
      </maneuverAutomaticType>
      <fireAutomaticType>
       <isInherited>true</isInherited>
-      <value>Automatic</value>
+      <value>Manual</value>
      </fireAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
@@ -6255,31 +6255,31 @@
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
      <maximumFiringDistanceYardsFor200mmPlus>
-      <isInherited>true</isInherited>
+      <isInherited>false</isInherited>
       <value>
-       <isSpecified>false</isSpecified>
+       <isSpecified>true</isSpecified>
        <value>0</value>
       </value>
      </maximumFiringDistanceYardsFor200mmPlus>
      <maximumFiringDistanceYardsFor100mmTo200mm>
-      <isInherited>true</isInherited>
+      <isInherited>false</isInherited>
       <value>
-       <isSpecified>false</isSpecified>
+       <isSpecified>true</isSpecified>
        <value>0</value>
       </value>
      </maximumFiringDistanceYardsFor100mmTo200mm>
      <maximumFiringDistanceYardsFor100mmLess>
-      <isInherited>true</isInherited>
+      <isInherited>false</isInherited>
       <value>
-       <isSpecified>false</isSpecified>
+       <isSpecified>true</isSpecified>
        <value>0</value>
       </value>
      </maximumFiringDistanceYardsFor100mmLess>
      <maximumFiringDistanceYardsForTorpedo>
-      <isInherited>true</isInherited>
+      <isInherited>false</isInherited>
       <value>
-       <isSpecified>false</isSpecified>
-       <value>0</value>
+       <isSpecified>true</isSpecified>
+       <value>2000</value>
       </value>
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>719f986d-e400-41ea-8d3e-627b18cd29ec</objectId>
@@ -6913,7 +6913,9 @@
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <globalDescription>
-    <english>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur</english>
+    <english>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
+
+At start, Automatic Fire of Russian, Non-Torpedo weapon firing for IJN are disabled and IJN's torpedo max firing range is set to 2000 yards. It's recommended to keep Russian to Manual (No Auto-movement) to keep them static when player control IJN.</english>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
@@ -6941,8 +6943,8 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>38.685276</xRotation>
-  <yRotation>238.6844</yRotation>
+  <xRotation>38.69612</xRotation>
+  <yRotation>238.687714</yRotation>
   <orthographicSize>4</orthographicSize>
  </viewState>
  <eventState>

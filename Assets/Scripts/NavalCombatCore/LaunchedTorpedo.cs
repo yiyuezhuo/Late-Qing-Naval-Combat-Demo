@@ -49,10 +49,10 @@ namespace NavalCombatCore
         public float maxRangeYards;
         public float movedDistanceYards;
         public TorpedoDamageClass damageClass;
-        public GlobalString sourceName;
+        public GlobalString sourceName = new();
 
         // endgame
-        public LaunchedTorpedoEndgameType endgameType;
+        public LaunchedTorpedoEndgameType endgameType = LaunchedTorpedoEndgameType.Undetermined;
         public string hitTargetObjectId;
         public ShipLog GetHitObject() => EntityManager.Instance.Get<ShipLog>(hitTargetObjectId);
         public float inflictDamagePoint;
@@ -60,6 +60,20 @@ namespace NavalCombatCore
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
             yield break;
+        }
+
+        public enum FriendlyCollisionProcessMode
+        {
+            Hit, 
+            Passthrough,
+            Dub
+        }
+
+        public static FriendlyCollisionProcessMode friendlyCollisionProcessMode = FriendlyCollisionProcessMode.Passthrough;
+
+        public bool IsHostileTo(ShipLog shipLog)
+        {
+            return (GetShooter() as IShipGroupMember).GetRootParent() != (shipLog as IShipGroupMember).GetRootParent();
         }
 
         public void StepMoveToNewPosition(float deltaSeconds)
@@ -74,80 +88,100 @@ namespace NavalCombatCore
             if (CoreParameter.Instance.checkLandCollision)
             {
                 newPositionBlocked = ElevationService.Instance.GetElevation(newPosition) > 0;
-                endgameType = LaunchedTorpedoEndgameType.SelfDestruction;
+                if(newPositionBlocked)
+                {
+                    endgameType = LaunchedTorpedoEndgameType.SelfDestruction;
+                }
             }
 
             if (!newPositionBlocked)
             {
-                var collidedShipLog = NavalGameState.Instance.shipLogsOnMap.FirstOrDefault(other => other.objectId != shooterId && CollideUtils.IsCollided(newPosition, this, other));
-                if (collidedShipLog != null)
+                var maskCheckService = ServiceLocator.Get<IMaskCheckService>();
+                var collideCheckResult = maskCheckService.CollideCheck(this, distNm * MeasureUtils.navalMileToYard + GetLengthFoot() / 2 * MeasureUtils.footToYard);
+                var collidedShipLog = collideCheckResult?.collided;
+
+                // var collidedShipLog = NavalGameState.Instance.shipLogsOnMap.FirstOrDefault(other => other.objectId != shooterId && CollideUtils.IsCollided(newPosition, this, other));
+                // if (collidedShipLog != null)
+                var shooter = GetShooter();
+
+                if(collidedShipLog != null && shooter != collidedShipLog) // Torpedo is setup in the same place of the platform, suppress the collision with the platform.
                 {
-                    // TODO: Process torpedo attack
-                    var shooter = GetShooter();
-                    var classSector = shooter.shipClass.torpedoSector;
-                    var damageClass = classSector.damageClass;
-                    var pistolType = classSector.pistolType;
-                    var dudProb = classSector.dudProbability;
-
-                    newPositionBlocked = true;
-
-                    if (RandomUtils.rand.NextDouble() <= dudProb)
+                    if(friendlyCollisionProcessMode == FriendlyCollisionProcessMode.Hit || IsHostileTo(collidedShipLog))
                     {
-                        endgameType = LaunchedTorpedoEndgameType.Dud;
+                        var classSector = shooter.shipClass.torpedoSector;
+                        var damageClass = classSector.damageClass;
+                        var pistolType = classSector.pistolType;
+                        var dudProb = classSector.dudProbability;
 
-                        var logger = ServiceLocator.Get<ILoggerService>();
-                        logger.LogWarning($"Torpedo {objectId} collides ship {collidedShipLog.namedShip.name.GetMergedName()} Dud (Prob={dudProb})");
+                        newPositionBlocked = true;
+
+                        if (RandomUtils.rand.NextDouble() <= dudProb)
+                        {
+                            endgameType = LaunchedTorpedoEndgameType.Dud;
+
+                            var logger = ServiceLocator.Get<ILoggerService>();
+                            logger.LogWarning($"Torpedo {objectId} collides ship {collidedShipLog.namedShip.name.GetMergedName()} Dud (Prob={dudProb})");
+                        }
+                        else
+                        {
+                            endgameType = LaunchedTorpedoEndgameType.Hit;
+
+                            var torpedoDamage = RuleChart.RollTorpedoDamage(damageClass, pistolType);
+
+                            var armorEffInch = 0f;
+                            var p = RandomUtils.rand.NextDouble();
+                            if (p <= 0.45)
+                            {
+                                armorEffInch = collidedShipLog.shipClass.armorRating.GetArmorEffectiveInch(ArmorLocation.MainBelt);
+                            }
+                            else if (p <= 0.75)
+                            {
+                                armorEffInch = collidedShipLog.shipClass.armorRating.GetArmorEffectiveInch(ArmorLocation.BeltEnd);
+                            }
+
+                            if (armorEffInch > 0)
+                            {
+                                var adjustment = RuleChart.GetArmorAdjustment(armorEffInch);
+                                torpedoDamage = Math.Max(0, torpedoDamage - armorEffInch);
+                            }
+
+                            // collidedShipLog.damagePoint += torpedoDamage;
+                            collidedShipLog.AddDamagePoint(torpedoDamage);
+
+                            inflictDamagePoint = torpedoDamage;
+                            hitTargetObjectId = collidedShipLog.objectId;
+
+                            // Handle Damage Effect
+
+                            var ctx = new DamageEffectContext()
+                            {
+                                subject = collidedShipLog,
+                                baseDamagePoint = torpedoDamage,
+                                cause = DamageEffectCause.Torpedo,
+                            };
+                            var damageEffectId = DamageEffectChart.AddNewDamageEffect(ctx);
+
+                            var tgtLog = new ShipLogTorpedoHitLog()
+                            {
+                                torpedoObjectId = objectId,
+                                time = NavalGameState.Instance.scenarioState.dateTime,
+                                damagePoint = torpedoDamage,
+                                damageEffectId = damageEffectId
+                            };
+                            collidedShipLog.AddLog(tgtLog);
+
+                            var logger = ServiceLocator.Get<ILoggerService>();
+                            logger.LogWarning($"Torpedo {objectId} collides ship {collidedShipLog.namedShip.name.GetMergedName()} armorEffInch={armorEffInch} torpedoDamage={torpedoDamage}");
+                        }
                     }
-                    else
+                    else if(friendlyCollisionProcessMode == FriendlyCollisionProcessMode.Passthrough)
                     {
-                        endgameType = LaunchedTorpedoEndgameType.Hit;
-
-                        var torpedoDamage = RuleChart.RollTorpedoDamage(damageClass, pistolType);
-
-                        var armorEffInch = 0f;
-                        var p = RandomUtils.rand.NextDouble();
-                        if (p <= 0.45)
-                        {
-                            armorEffInch = collidedShipLog.shipClass.armorRating.GetArmorEffectiveInch(ArmorLocation.MainBelt);
-                        }
-                        else if (p <= 0.75)
-                        {
-                            armorEffInch = collidedShipLog.shipClass.armorRating.GetArmorEffectiveInch(ArmorLocation.BeltEnd);
-                        }
-
-                        if (armorEffInch > 0)
-                        {
-                            var adjustment = RuleChart.GetArmorAdjustment(armorEffInch);
-                            torpedoDamage = Math.Max(0, torpedoDamage - armorEffInch);
-                        }
-
-                        // collidedShipLog.damagePoint += torpedoDamage;
-                        collidedShipLog.AddDamagePoint(torpedoDamage);
-
-                        inflictDamagePoint = torpedoDamage;
-                        hitTargetObjectId = collidedShipLog.objectId;
-
-                        // Handle Damage Effect
-
-                        var ctx = new DamageEffectContext()
-                        {
-                            subject = collidedShipLog,
-                            baseDamagePoint = torpedoDamage,
-                            cause = DamageEffectCause.Torpedo,
-                        };
-                        var damageEffectId = DamageEffectChart.AddNewDamageEffect(ctx);
-
-                        var tgtLog = new ShipLogTorpedoHitLog()
-                        {
-                            torpedoObjectId = objectId,
-                            time = NavalGameState.Instance.scenarioState.dateTime,
-                            damagePoint = torpedoDamage,
-                            damageEffectId = damageEffectId
-                        };
-                        collidedShipLog.AddLog(tgtLog);
-
-                        var logger = ServiceLocator.Get<ILoggerService>();
-                        logger.LogWarning($"Torpedo {objectId} collides ship {collidedShipLog.namedShip.name.GetMergedName()} armorEffInch={armorEffInch} torpedoDamage={torpedoDamage}");
+                        // ignore    
+                    }
+                    else if(friendlyCollisionProcessMode == FriendlyCollisionProcessMode.Dub)
+                    {
+                        newPositionBlocked = true;
+                        endgameType = LaunchedTorpedoEndgameType.Dud;
                     }
                 }
             }

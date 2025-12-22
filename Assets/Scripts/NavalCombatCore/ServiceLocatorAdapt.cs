@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CoreUtils;
 
 namespace NavalCombatCore
 {
@@ -23,7 +24,8 @@ namespace NavalCombatCore
     {
         MaskCheckResult Check(LatLon src, LatLon dst);
         MaskCheckResult Check(ShipLog observer, ShipLog target);
-        CollideCheckResult CollideCheck(ShipLog observer, float testDistanceYards);
+        CollideCheckResult CollideCheck(IObjectIdLabeled observer, float testDistanceYards);
+        bool IsSafeToFireTorpedoAt(ShipLog shooter, ShipLog target);
     }
 
 
@@ -31,7 +33,8 @@ namespace NavalCombatCore
     {
         public MaskCheckResult Check(LatLon src, LatLon dst) => new();
         public MaskCheckResult Check(ShipLog observer, ShipLog target) => new();
-        public CollideCheckResult CollideCheck(ShipLog observer, float testDistanceYards) => null;
+        public CollideCheckResult CollideCheck(IObjectIdLabeled observer, float testDistanceYards) => null;
+        public bool IsSafeToFireTorpedoAt(ShipLog shooter, ShipLog target) => true;
     }
 
 }

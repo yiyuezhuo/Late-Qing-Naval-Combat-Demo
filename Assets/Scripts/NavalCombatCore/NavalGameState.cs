@@ -524,21 +524,22 @@ namespace NavalCombatCore
             {
                 foreach (var shipLog in shipLogsOnMap)
                     shipLog.StepBatteryStatus(deltaSeconds); // gunnery resolution
+
+                // Use GunneryFireContext's LOS result
+                using (TorpedoAttackContext.Begin())
+                {
+                    foreach (var shipLog in shipLogsOnMap)
+                    {
+                        shipLog.StepTorpedoSector(deltaSeconds);
+                    }
+                }
             }
 
             foreach (var shipLog in shipLogsOnMap)
                 shipLog.StepDamageResolution(deltaSeconds);
 
             foreach (var launchedTorpedo in launchedTorpedosOnMap)
-                launchedTorpedo.StepMoveToNewPosition(deltaSeconds);
-
-            using (TorpedoAttackContext.Begin())
-            {
-                foreach (var shipLog in shipLogsOnMap)
-                {
-                    shipLog.StepTorpedoSector(deltaSeconds);
-                }
-            }
+                launchedTorpedo.StepMoveToNewPosition(deltaSeconds); // TODO: Move before damage resolution?
 
             foreach (var shipLog in shipLogsOnMap)
                 shipLog.StepLogging();

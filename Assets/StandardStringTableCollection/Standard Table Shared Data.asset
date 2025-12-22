@@ -2268,6 +2268,22 @@ MonoBehaviour:
     m_Key: Timestamp Interval (Min)
     m_Metadata:
       m_Items: []
+  - m_Id: 40228114237394944
+    m_Key: Torpedo Friendly Collision Process Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40292440277159936
+    m_Key: Torpedo Firing Angle Error (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40292542655926272
+    m_Key: Editor Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40292619055173632
+    m_Key: Fetch Info Display Acc Threshold (Seconds)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

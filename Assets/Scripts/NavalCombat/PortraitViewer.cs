@@ -58,6 +58,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public Transform flagRotationBase;
     public Transform arrowBaseTransform;
     public Transform cubeColliderTransform;
+    public Transform torpedoThreatCubeColliderTransform;
     
     public MeshRenderer flagRenderer;
     public GameObject selectedIndicator;
@@ -172,7 +173,12 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             shipLengthFoot * Utils.footToWu * 1,
             shipBeamFoot * Utils.footToWu * 1,
             200 * Utils.footToWu
-        ); // 100 foots above-waterline height for LOS calculation  
+        ); // 100 foots above-waterline height for LOS calculation
+        torpedoThreatCubeColliderTransform.localScale = new Vector3(
+            400 * Utils.yardsToWu * 1,
+            shipBeamFoot * Utils.yardsToWu * 1,
+            200 * Utils.footToWu
+        );
 
         var zEuler = Utils.TrueNorthCWDegToRightCCWDeg(model.GetHeadingDeg());
         headingTransform.localEulerAngles = new Vector3(0, 0, zEuler);

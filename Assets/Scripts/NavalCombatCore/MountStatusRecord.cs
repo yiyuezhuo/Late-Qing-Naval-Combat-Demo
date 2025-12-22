@@ -303,6 +303,10 @@ namespace NavalCombatCore
             firingTargetObjectId = target?.objectId;
         }
 
+        public static float torpedoFiringAngleErrorDeg = 0f; // solver currently has internal error so don't introduce more error
+        // public static float torpedoFiringAngleErrorDeg = 0.1f;
+        // public static float torpedoFiringRangeCoef = 0.95f; 
+
         public void Step(float deltaSeconds)
         {
             // reload
@@ -317,7 +321,6 @@ namespace NavalCombatCore
             if (transferred > 0)
             {
                 reloadingSeconds += deltaSeconds;
-
 
                 while (reloadingSeconds >= 360 && transferred > 0) // 6min torpedo reload time (SK5 & DoB)
                 {
@@ -339,7 +342,7 @@ namespace NavalCombatCore
 
             // fire on target
             var tgt = GetFiringTarget();
-            var torpedoAttackCtx = TorpedoAttackContext.GetCurrentOrCreateTemp();
+
             var classSector = platform.shipClass.torpedoSector;
 
             if (tgt != null && currentLoad > 0 && classSector.torpedoSettings.Count > 0)
@@ -349,7 +352,18 @@ namespace NavalCombatCore
                 var doctrineRespected = platform.doctrine.GetMaximumFiringDistanceYardsForTorpedo().IsGreaterThanIfSpecified(distYards);
                 if (doctrineRespected)
                 {
-                    var settingPairs = classSector.torpedoSettings.Select(setting => (setting,
+                    // TODO: Replace gunnery LOS with another LOS using bigger threat volume
+                    
+                    // var gunneryFireCtx = GunneryFireContext.GetCurrentOrCreateTemp();
+                    // var losMaskResult = gunneryFireCtx.GetOrCalcualteShipLogPairSupplementary(platform, tgt).GetOrCalcualteMaskCheckResult(); // Also used by prevent friendly collsion beforehand
+                    
+                    // if(!losMaskResult.isMasked)
+                    // {
+
+                    var torpedoAttackCtx = TorpedoAttackContext.GetCurrentOrCreateTemp();
+
+                    var settingPairs = classSector.torpedoSettings.Select(setting => (
+                        setting,
                         torpedoAttackCtx.GetOrCalculateFireComplexSupplementary(platform, tgt, setting.speedKnots).interceptionPointSolverResult
                     )).Where(sp => sp.Item2.success && sp.Item2.distanceYards < sp.setting.rangeYards).ToList();
                     if (settingPairs.Count > 0)
@@ -360,6 +374,7 @@ namespace NavalCombatCore
                         var interceptionRes = bestSettingPair.Item2;
 
                         var bearingRelativeToBowDeg = MeasureUtils.NormalizeAngle(interceptionRes.azimuth - platform.headingDeg);
+                        var firingAngle = MeasureUtils.NormalizeAngle(interceptionRes.azimuth + RandomUtils.NextFloat(-torpedoFiringAngleErrorDeg, torpedoFiringAngleErrorDeg));
                         if (recordInfo.record.IsInArc(bearingRelativeToBowDeg))
                         {
                             // Launch Torpedo!
@@ -367,7 +382,7 @@ namespace NavalCombatCore
                             {
                                 sourceName = classSector.name.Clone(),
                                 damageClass = classSector.damageClass,
-                                headingDeg = interceptionRes.azimuth,
+                                headingDeg = firingAngle,
                                 position = platform.position.Clone(),
                                 shooterId = platform.objectId,
                                 desiredTargetObjectId = tgt.objectId,
@@ -382,10 +397,11 @@ namespace NavalCombatCore
                             currentLoad -= 1;
                         }
                     }
+
+                    // }
                 }
             }
         }
-
     }
 
     public partial class MountStatusRecord : AbstractMountStatusRecord

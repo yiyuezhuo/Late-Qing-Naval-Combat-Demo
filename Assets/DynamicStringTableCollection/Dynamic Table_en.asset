@@ -2546,6 +2546,30 @@ MonoBehaviour:
     m_Localized: Torpedo Cruiser
     m_Metadata:
       m_Items: []
+  - m_Id: 25632298763980800
+    m_Localized: Hit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25632364790714368
+    m_Localized: Passthrough
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25632473993613312
+    m_Localized: Dub
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25689223081922560
+    m_Localized: RJH - Torpedo Attack, Port Arthur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25689297300131840
+    m_Localized: RJH - Battle of Port Arthur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25689344771264512
+    m_Localized: RJH - Chemulpo.scen.xml
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

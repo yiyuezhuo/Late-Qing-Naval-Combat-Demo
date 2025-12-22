@@ -253,6 +253,20 @@ namespace NavalCombatCore
             set => RapidFiringStatus.disableAmmunitionCost = value;
         }
 
+        [CreateProperty]
+        public LaunchedTorpedo.FriendlyCollisionProcessMode torpedoFriendlyCollisionProcessMode
+        {
+            get => LaunchedTorpedo.friendlyCollisionProcessMode;
+            set => LaunchedTorpedo.friendlyCollisionProcessMode = value;
+        }
+
+        [CreateProperty]
+        public float torpedoFiringAngleErrorDeg
+        {
+            get => TorpedoMountStatusRecord.torpedoFiringAngleErrorDeg;
+            set => TorpedoMountStatusRecord.torpedoFiringAngleErrorDeg = value;
+        }
+
         // [CreateProperty]
         // public float obstacleAvoidCheckerStepDeg
         // {

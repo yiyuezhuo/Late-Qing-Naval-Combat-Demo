@@ -178,6 +178,7 @@ public static class RegisteredConverters
         RegisterEnumIntTwoWay<PortraitViewer.Mode>();
         RegisterEnumIntTwoWay<ArmorType>();
         RegisterEnumIntTwoWay<ExtraShipType>();
+        RegisterEnumIntTwoWay<LaunchedTorpedo.FriendlyCollisionProcessMode>();
     }
 
     // static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)

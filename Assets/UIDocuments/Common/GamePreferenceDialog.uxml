@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
-    <ui:VisualElement data-source-type="GamePreference, Assembly-CSharp" class="panel-dialog" style="height: auto;">
+    <ui:VisualElement data-source-type="GamePreference, Assembly-CSharp" class="panel-dialog" style="height: auto; width: 450px;">
         <ui:Label text="Game Preference" class="title">
             <Bindings>
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62530900365312)"/>
@@ -102,11 +102,13 @@
                     <ui:FloatField label="Fetch Info Display Acc Threshold (Seconds)">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="fetchInfoDisplayAccSecondsThreshold" binding-mode="TwoWay"/>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40292619055173632)"/>
                         </Bindings>
                     </ui:FloatField>
                     <ui:Toggle label="Editor Mode">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="isInEditorMode" binding-mode="TwoWay"/>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40292542655926272)"/>
                         </Bindings>
                     </ui:Toggle>
                 </ui:VisualElement>
@@ -161,6 +163,18 @@
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(182042853281792)"/>
                                     </Bindings>
                                 </ui:Slider>
+                                <LocalizedEnumField type-str="NavalCombatCore.LaunchedTorpedo+FriendlyCollisionProcessMode" label="Torpedo Friendly Collision Process Mode">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40228114237394944)"/>
+                                        <ui:DataBinding property="value" data-source-path="torpedoFriendlyCollisionProcessMode" source-to-ui-converters="FriendlyCollisionProcessMode =&gt; int" ui-to-source-converters="int =&gt; FriendlyCollisionProcessMode" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </LocalizedEnumField>
+                                <ui:FloatField label="Torpedo Firing Angle Error (deg)">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40292440277159936)"/>
+                                        <ui:DataBinding property="value" data-source-path="torpedoFiringAngleErrorDeg" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:FloatField>
                             </ui:VisualElement>
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(192325730603008)"/>

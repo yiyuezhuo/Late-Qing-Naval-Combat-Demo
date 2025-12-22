@@ -10,6 +10,7 @@ using System;
 
 using NavalCombatCore;
 using CoreUtils;
+using System.Linq;
 
 public class LOSLine : SingletonMonoBehaviour<LOSLine>, IMaskCheckService
 {
@@ -28,6 +29,7 @@ public class LOSLine : SingletonMonoBehaviour<LOSLine>, IMaskCheckService
     public LineRenderer lineRenderer;
     public TMP_Text text;
     LayerMask losLayerMask;
+    LayerMask torpedoThreatLayerMask;
 
     void Awake()
     {
@@ -39,6 +41,7 @@ public class LOSLine : SingletonMonoBehaviour<LOSLine>, IMaskCheckService
     void Start()
     {
         losLayerMask = LayerMask.GetMask("LOSAndCollide");
+        torpedoThreatLayerMask = LayerMask.GetMask("torpedoThreatLayerMask");
 
         ServiceLocator.Register<IMaskCheckService>(this);
     }
@@ -134,7 +137,30 @@ public class LOSLine : SingletonMonoBehaviour<LOSLine>, IMaskCheckService
         return result;
     }
 
-    public CollideCheckResult CollideCheck(ShipLog observer, float testDistanceYards) // In General, detectionDistanceYards = moved distance and length / 2
+    public bool IsSafeToFireTorpedoAt(ShipLog shooter, ShipLog target)
+    {
+        var src = shooter.position;
+        var dst = target.position;
+
+        var raycastStart = Utils.LatLonHeightFootToVector3(src, 100);
+        var raycastEnd = Utils.LatLonHeightFootToVector3(dst, 100);
+        var raycastDistance = Vector3.Distance(raycastStart, raycastEnd);
+        var direction = (raycastEnd - raycastStart).normalized;
+
+        var raycastHits = Physics.RaycastAll(raycastStart, direction, raycastDistance, torpedoThreatLayerMask);
+        
+        var shooterTopGroup = (shooter as IShipGroupMember).GetRootParent();
+        var targetTopGroup = (target as IShipGroupMember).GetRootParent();
+
+        var potentialHitAnyFriendly = raycastHits.Any(hit => {
+            var shipLog = hit.collider.GetComponent<IColliderRootProvider>()?.GetRoot()?.GetComponent<PortraitViewer>()?.model as ShipLog;
+            return shipLog != null && shipLog != shooter && (shipLog as IShipGroupMember).GetRootParent() == shooterTopGroup;
+        });
+
+        return !potentialHitAnyFriendly;
+    }
+
+    public CollideCheckResult CollideCheck(IObjectIdLabeled observer, float testDistanceYards) // In General, detectionDistanceYards = moved distance and length / 2
     {
         if (GameManager.Instance.objectId2Viewer.TryGetValue(observer.objectId, out var portraitViewer))
         {

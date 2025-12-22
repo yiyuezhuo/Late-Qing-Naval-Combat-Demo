@@ -373,7 +373,6 @@ namespace NavalCombatCore
 
         public static Result Calcualte(IDF4Model shooter, IDF4Model target, float speedKnots)
         {
-
             var shooterLat = shooter.GetLatitudeDeg();
             var shooterLon = shooter.GetLongitudeDeg();
             var targetLat = target.GetLatitudeDeg();
@@ -383,7 +382,6 @@ namespace NavalCombatCore
 
             for (int i = 0; i < 20; i++) // solved using iteration method, success if approximated fixed point is found
             {
-
                 var (distanceKm, azi1) = MeasureStats.Approximation.CalculateDistanceKmAndBearingDeg(shooterLat, shooterLon, targetLat, targetLon);
                 var distanceNm = distanceKm * MeasureUtils.kilometerToNavalMile;
                 var arrivalTimeSeconds = distanceNm / speedKnots * 3600;

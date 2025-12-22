@@ -175,10 +175,26 @@ namespace NavalCombatCore
                 {
                     shooter = shooter,
                     target = target,
-                    interceptionPointSolverResult = InterceptionPointSolver.Calcualte(shooter, target, speedKnots)
+                    interceptionPointSolverResult = CalcualteInterceptionPoint(shooter, target, speedKnots)
                 };
             }
             return supplementary;
+        }
+
+        public static InterceptionPointSolver.Result CalcualteInterceptionPoint(ShipLog shooter, ShipLog target, float speedKnots)
+        {
+            // var maskCheckService = ServiceLocator.Get<IMaskCheckService>();
+            // var maskCheckResult = maskCheckService.Check(shooter, target); // TODO: Using bigger threat volume compared to true collision volume.
+
+            var maskCheckService = ServiceLocator.Get<IMaskCheckService>();
+            var isSafe = maskCheckService.IsSafeToFireTorpedoAt(shooter, target); // TODO: Using bigger threat volume compared to true collision volume.
+            if(!isSafe)
+            {
+                return new(){success=false};
+            }
+
+            var ret = InterceptionPointSolver.Calcualte(shooter, target, speedKnots);
+            return ret;
         }
     }
 }

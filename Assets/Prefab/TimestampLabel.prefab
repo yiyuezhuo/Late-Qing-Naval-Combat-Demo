@@ -194,4 +194,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916c041d08170af43baa5f0515d04b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FixedDirectionalSizeIcon
-  scaleFactor: 0.012
+  scaleFactor: 0.01

@@ -2561,6 +2561,13 @@ MonoBehaviour:
     m_Key: RJH - Chemulpo.scen.xml
     m_Metadata:
       m_Items: []
+  - m_Id: 25834342988812288
+    m_Key: 'Note: The Strategic Mode is still far from complete. Compared to that,
+      the Tactical Naval Combat (the left column in the main menu) is relatively
+      more polished and playable in the current version. However, you can still explore
+      some work-in-progress sub system here.'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

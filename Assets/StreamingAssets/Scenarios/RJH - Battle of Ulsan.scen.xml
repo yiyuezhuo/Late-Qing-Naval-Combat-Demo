@@ -3813,7 +3813,20 @@
    <globalDescription>
     <english>https://en.wikipedia.org/wiki/Battle_off_Ulsan
 
-4th Unit's deployment is based on Dawn of the Rising Sun Scenarios's Variations rule.</english>
+4th Unit's deployment is based on the Variations rule of the scenario in the Dawn of the Rising Sun, a scenario book of Dawn of the Battleship.</english>
+    <japanese>https://en.wikipedia.org/wiki/Battle_off_Ulsan
+
+第4戦隊の配置は、『Dawn of the Battleship』のシナリオ集『Dawn of the Rising Sun』に収録されたシナリオのバリエーションルールに基づいています。</japanese>
+    <chineseSimplified>https://en.wikipedia.org/wiki/Battle_off_Ulsan
+
+第4战队的部署基于《Dawn of the Battleship》的剧本集《Dawn of the Rising Sun》中所收录剧本的变体规则。
+
+</chineseSimplified>
+    <chineseTraditional>https://en.wikipedia.org/wiki/Battle_off_Ulsan
+
+第4戰隊的部署基於《Dawn of the Battleship》的劇本集《Dawn of the Rising Sun》中所收錄劇本的變體規則。
+
+</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>

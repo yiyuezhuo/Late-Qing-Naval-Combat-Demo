@@ -16,8 +16,8 @@
     <namedShipObjectId>89d34a37-6713-46dc-a5e8-e56e641e3260</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.3654022</LatDeg>
-     <LonDeg>126.4372</LonDeg>
+     <LatDeg>37.3495445</LatDeg>
+     <LonDeg>126.4553</LonDeg>
     </position>
     <speedKnots>0</speedKnots>
     <headingDeg>135</headingDeg>
@@ -313,7 +313,7 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
-    <controlMode>FollowTarget</controlMode>
+    <controlMode>Independent</controlMode>
     <followedTargetObjectId>3fa274a9-6693-4c45-bfce-3fafaed92c92</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
@@ -391,8 +391,8 @@
     <namedShipObjectId>81fc0fc2-b4c8-4efc-9a4e-adde31586429</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.3654022</LatDeg>
-     <LonDeg>126.4372</LonDeg>
+     <LatDeg>37.3641167</LatDeg>
+     <LonDeg>126.437065</LonDeg>
     </position>
     <speedKnots>0</speedKnots>
     <headingDeg>135</headingDeg>
@@ -658,8 +658,8 @@
     <namedShipObjectId>052f32f3-4c03-4d43-9df5-bb313ae2386b</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.3537445</LatDeg>
-     <LonDeg>126.45179</LonDeg>
+     <LatDeg>37.35246</LatDeg>
+     <LonDeg>126.451653</LonDeg>
     </position>
     <speedKnots>0</speedKnots>
     <headingDeg>135</headingDeg>
@@ -838,7 +838,8 @@
     <damageControlRatingHits>0</damageControlRatingHits>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
-    <controlMode>Independent</controlMode>
+    <controlMode>FollowTarget</controlMode>
+    <followedTargetObjectId>e158c9b8-b1a6-46cb-ba44-533a6a0c9409</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
@@ -915,8 +916,8 @@
     <namedShipObjectId>c06764c2-f4b7-4dc8-b9c8-db1c9439e86c</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.35666</LatDeg>
-     <LonDeg>126.448143</LonDeg>
+     <LatDeg>37.3553734</LatDeg>
+     <LonDeg>126.448006</LonDeg>
     </position>
     <speedKnots>0</speedKnots>
     <headingDeg>135</headingDeg>
@@ -1118,8 +1119,8 @@
     <namedShipObjectId>195a60c3-385f-488b-aee5-9c5ba11e500d</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.3595734</LatDeg>
-     <LonDeg>126.444496</LonDeg>
+     <LatDeg>37.3582878</LatDeg>
+     <LonDeg>126.444359</LonDeg>
     </position>
     <speedKnots>0</speedKnots>
     <headingDeg>135</headingDeg>
@@ -1376,8 +1377,8 @@
     <namedShipObjectId>2e203508-d589-4fa9-9fd2-7223a2a40190</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.3624878</LatDeg>
-     <LonDeg>126.440849</LonDeg>
+     <LatDeg>37.3612022</LatDeg>
+     <LonDeg>126.440712</LonDeg>
     </position>
     <speedKnots>0</speedKnots>
     <headingDeg>135</headingDeg>
@@ -2994,9 +2995,9 @@ https://en.topwar.ru/148332-krejser-varjag-boj-u-chemulpo-27-janvarja-1904-goda-
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>37.3743248</xRotation>
-  <yRotation>233.494064</yRotation>
-  <orthographicSize>10</orthographicSize>
+  <xRotation>37.3561172</xRotation>
+  <yRotation>233.549713</yRotation>
+  <orthographicSize>4</orthographicSize>
  </viewState>
  <eventState>
   <eventItems />

@@ -2221,7 +2221,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 36604534312308736
-    m_Key: Vladivostok Squadron Raiding
+    m_Key: (WIP) Vladivostok Squadron Raiding
     m_Metadata:
       m_Items: []
   - m_Id: 36678942066380800
@@ -2282,6 +2282,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 40292619055173632
     m_Key: Fetch Info Display Acc Threshold (Seconds)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40329044639256576
+    m_Key: Tactical Naval Combat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40329917863989248
+    m_Key: Misc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40330178409959424
+    m_Key: Load Strategic Game
     m_Metadata:
       m_Items: []
   m_Metadata:

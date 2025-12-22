@@ -10174,7 +10174,18 @@
    <globalDescription>
     <english>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
 
-</english>
+Land Batteries is not model yet.</english>
+    <japanese>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
+
+陸上砲台は未実装です</japanese>
+    <chineseSimplified>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
+
+陆上炮台尚未建模。
+
+</chineseSimplified>
+    <chineseTraditional>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
+
+陸地砲台尚未建模。</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>

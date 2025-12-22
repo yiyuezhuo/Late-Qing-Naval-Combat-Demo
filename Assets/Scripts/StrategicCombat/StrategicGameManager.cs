@@ -310,8 +310,19 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         
         fullInitialized = true; // enable all independent observer (eg Update based view state controller)
 
-        throw new Exception("Test Exception");
+        // throw new Exception("Test Exception");
+        if(!strategicWarnDisplayed)
+        {
+            strategicWarnDisplayed = true;
+            DialogRoot.Instance.PopupMessageDialog(Localize(
+                "Note: The Strategic Mode is still far from complete. Compared to that, the Tactical Naval Combat (the left column in the main menu) is relatively more polished and playable in the current version. However, you can still explore some work-in-progress sub system here."
+            ));
+        }
     }
+
+    static bool strategicWarnDisplayed = false;
+
+    static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
     void ApplyViewState(StrategicViewState viewState)
     {

@@ -137,7 +137,7 @@
 .unity-button.verylarge {
     padding-top: 6px;
     padding-bottom: 6px;
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 4px;
     margin-top: 4px;
 }

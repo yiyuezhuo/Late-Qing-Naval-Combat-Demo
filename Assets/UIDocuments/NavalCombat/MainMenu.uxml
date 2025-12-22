@@ -15,7 +15,11 @@
                 </ui:Label>
                 <ui:VisualElement style="flex-direction: row;">
                     <ui:VisualElement style="flex-grow: 1;">
-                        <ui:Label text="Tactical Naval Combat"/>
+                        <ui:Label text="Tactical Naval Combat">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40329044639256576)"/>
+                            </Bindings>
+                        </ui:Label>
                         <ui:Button text="Select Naval Tactical Scenario" name="SelectScenarioButton" class="verylarge">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(5242554585088)"/>
@@ -38,20 +42,33 @@
                         </ui:Button>
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1;">
-                        <ui:Label text="Standard Strategic"/>
+                        <ui:Label text="Strategic">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(13052626003988480)"/>
+                            </Bindings>
+                        </ui:Label>
                         <ui:Button text="(WIP) First Sino-Japanese War" name="StrategicModeTestButton" class="verylarge">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36603542086782976)"/>
                             </Bindings>
                         </ui:Button>
-                        <ui:Label text="Mini Campaign"/>
-                        <ui:Button text="Vladivostok Squadron Raid (1904) " name="VladivostokSquadronRaidingButton" class="verylarge">
+                        <ui:Button text="Vladivostok Squadron Raid (1904) " name="VladivostokSquadronRaidingButton" class="verylarge" style="display: none;">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36604534312308736)"/>
                             </Bindings>
                         </ui:Button>
+                        <ui:Button text="Load Strategic Game" name="LoadStrategicGame" class="verylarge" style="display: none;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40330178409959424)"/>
+                            </Bindings>
+                        </ui:Button>
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1;">
+                        <ui:Label text="Misc">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40329917863989248)"/>
+                            </Bindings>
+                        </ui:Label>
                         <ui:Button text="Setting" name="SettingButton" class="verylarge">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(6979457814528)"/>

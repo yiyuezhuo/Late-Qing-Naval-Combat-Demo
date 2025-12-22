@@ -1032,7 +1032,7 @@
    <japanese>浪速</japanese>
    <chineseSimplified>浪速</chineseSimplified>
   </name>
-  <type>ArmoredCruiser</type>
+  <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
   <displacementTons>3750</displacementTons>
@@ -1494,7 +1494,7 @@ Of course, these two classifications make no practical difference aside from the
    <japanese>済遠</japanese>
    <chineseSimplified>济远</chineseSimplified>
   </name>
-  <type>ArmoredCruiser</type>
+  <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>China</country>
   <displacementTons>2300</displacementTons>
@@ -2694,7 +2694,7 @@ Ting Yuen or Dingyuan</remark>
    <chineseSimplified>超勇</chineseSimplified>
    <chineseTraditional>超勇</chineseTraditional>
   </name>
-  <type>ArmoredCruiser</type>
+  <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
   <country>China</country>
   <displacementTons>1450</displacementTons>
@@ -3107,7 +3107,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
    <japanese>致遠</japanese>
    <chineseSimplified>致远</chineseSimplified>
   </name>
-  <type>ArmoredCruiser</type>
+  <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>China</country>
   <displacementTons>2300</displacementTons>
@@ -5384,7 +5384,7 @@ Fu Lung or Fulong
    <japanese>厳島</japanese>
    <chineseSimplified>严岛</chineseSimplified>
   </name>
-  <type>ArmoredCruiser</type>
+  <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
   <displacementTons>4220</displacementTons>
@@ -6348,7 +6348,7 @@ Hiei (比叡, 1878)</remark>
    <chineseSimplified>松岛</chineseSimplified>
    <chineseTraditional />
   </name>
-  <type>ArmoredCruiser</type>
+  <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
   <displacementTons>4220</displacementTons>
@@ -10078,7 +10078,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
    <chineseSimplified>富士</chineseSimplified>
   </name>
   <type>Battleship</type>
-  <extraShipType>NotSpecified</extraShipType>
+  <extraShipType>Predreatought</extraShipType>
   <country>Japan</country>
   <displacementTons>12530</displacementTons>
   <complementMen>637</complementMen>
@@ -10784,8 +10784,8 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <japanese>ブランコ・エンカラーダ</japanese>
    <chineseSimplified>白朗古·恩卡拉达</chineseSimplified>
   </name>
-  <type>ArmoredCruiser</type>
-  <extraShipType>NotSpecified</extraShipType>
+  <type>LightCruiser</type>
+  <extraShipType>ProtectedCruiser</extraShipType>
   <country>China</country>
   <displacementTons>4568</displacementTons>
   <complementMen>427</complementMen>
@@ -15043,7 +15043,7 @@ Azuma or Adzuma (SK5 name)</remark>
    <japanese>浪速 (1903)</japanese>
    <chineseSimplified>浪速 (1903)</chineseSimplified>
   </name>
-  <type>ArmoredCruiser</type>
+  <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
   <displacementTons>3750</displacementTons>
@@ -18702,7 +18702,7 @@ Correction: SK5 length 37 -&gt; 307</remark>
    <chineseSimplified>波尔塔瓦</chineseSimplified>
   </name>
   <type>Battleship</type>
-  <extraShipType>NotSpecified</extraShipType>
+  <extraShipType>Predreatought</extraShipType>
   <country>Russia</country>
   <displacementTons>11842</displacementTons>
   <complementMen>632</complementMen>
@@ -24476,7 +24476,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <chineseSimplified>三笠</chineseSimplified>
   </name>
   <type>Battleship</type>
-  <extraShipType>NotSpecified</extraShipType>
+  <extraShipType>Predreatought</extraShipType>
   <country>Japan</country>
   <displacementTons>15140</displacementTons>
   <complementMen>830</complementMen>
@@ -25031,7 +25031,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <chineseSimplified>朝日</chineseSimplified>
   </name>
   <type>Battleship</type>
-  <extraShipType>NotSpecified</extraShipType>
+  <extraShipType>Predreatought</extraShipType>
   <country>Japan</country>
   <displacementTons>15200</displacementTons>
   <complementMen>836</complementMen>
@@ -25584,7 +25584,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <chineseSimplified>富士 (1902)</chineseSimplified>
   </name>
   <type>Battleship</type>
-  <extraShipType>NotSpecified</extraShipType>
+  <extraShipType>Predreatought</extraShipType>
   <country>Japan</country>
   <displacementTons>12530</displacementTons>
   <complementMen>652</complementMen>
@@ -26141,7 +26141,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <chineseSimplified>敷岛</chineseSimplified>
   </name>
   <type>Battleship</type>
-  <extraShipType>NotSpecified</extraShipType>
+  <extraShipType>Predreatought</extraShipType>
   <country>Japan</country>
   <displacementTons>14850</displacementTons>
   <complementMen>836</complementMen>
@@ -26703,8 +26703,8 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <japanese>笠置</japanese>
    <chineseSimplified>笠置</chineseSimplified>
   </name>
-  <type>ArmoredCruiser</type>
-  <extraShipType>NotSpecified</extraShipType>
+  <type>LightCruiser</type>
+  <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
   <displacementTons>4900</displacementTons>
   <complementMen>405</complementMen>
@@ -27244,8 +27244,8 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <japanese>高砂</japanese>
    <chineseSimplified>高砂</chineseSimplified>
   </name>
-  <type>ArmoredCruiser</type>
-  <extraShipType>NotSpecified</extraShipType>
+  <type>LightCruiser</type>
+  <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
   <displacementTons>4160</displacementTons>
   <complementMen>425</complementMen>
@@ -27788,7 +27788,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <chineseSimplified>吉野 (1901)</chineseSimplified>
   </name>
   <type>LightCruiser</type>
-  <extraShipType>NotSpecified</extraShipType>
+  <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
   <displacementTons>4150</displacementTons>
   <complementMen>360</complementMen>

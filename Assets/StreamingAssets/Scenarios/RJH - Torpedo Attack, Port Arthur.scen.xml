@@ -6916,6 +6916,15 @@
     <english>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
 
 At start, Automatic Fire of Russian, Non-Torpedo weapon firing for IJN are disabled and IJN's torpedo max firing range is set to 2000 yards. It's recommended to keep Russian to Manual (No Auto-movement) to keep them static when player control IJN.</english>
+    <japanese>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
+
+開始時、ロシア側の自動射撃と、日本海軍の魚雷以外の武器の射撃が無効化されています。また、日本海軍の魚雷の最大射程は2000ヤードに設定されています。プレイヤーが日本海軍を操作する際は、ロシア側を手動（自動移動なし）に設定し、静止させておくことを推奨します。</japanese>
+    <chineseSimplified>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
+
+开局时，俄方自动射击与日方非鱼雷武器射击已被禁用。且日方鱼雷的最大射程设定为2000码。建议在玩家操控日军时，将俄方设为手动（无自动移动），以使其保持静止。</chineseSimplified>
+    <chineseTraditional>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
+
+開局時，俄方自動射擊與日方非魚雷武器射擊已被禁用。且日方魚雷的最大射程設定為2000碼。建議在玩家操控日軍時，將俄方設為手動（無自動移動），以使其保持靜止。</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
@@ -6943,9 +6952,9 @@ At start, Automatic Fire of Russian, Non-Torpedo weapon firing for IJN are disab
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>38.69612</xRotation>
+  <xRotation>38.696125</xRotation>
   <yRotation>238.687714</yRotation>
-  <orthographicSize>4</orthographicSize>
+  <orthographicSize>10</orthographicSize>
  </viewState>
  <eventState>
   <eventItems />

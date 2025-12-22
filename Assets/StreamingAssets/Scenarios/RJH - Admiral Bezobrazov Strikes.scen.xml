@@ -7068,7 +7068,24 @@
    <globalDescription>
     <english>https://en.wikipedia.org/wiki/Hitachi_Maru_Incident
 
-Adaption of scenario of The Russo-Japanese War: Dawn of the Rising Sun</english>
+This is a direct adaptation of scenario from Dawn of the Rising Sun. However, AI and terrain don't work well at this scenario currently.
+</english>
+    <japanese>https://en.wikipedia.org/wiki/Hitachi_Maru_Incident
+
+これは『Dawn of the Rising Sun』のシナリオを直接に適応したものです。ただし、本シナリオでは、現在AIと地形に一部問題が残っています。
+
+
+
+</japanese>
+    <chineseSimplified>https://en.wikipedia.org/wiki/Hitachi_Maru_Incident
+
+这是对《Dawn of the Rising Sun》中一个剧本的直接改编版本。不过，该剧本中的AI与地形目前尚有一些问题。
+
+</chineseSimplified>
+    <chineseTraditional>https://en.wikipedia.org/wiki/Hitachi_Maru_Incident
+
+這是對《Dawn of the Rising Sun》中一個劇本的直接改編版本。不過，該劇本中的AI與地形目前尚有一些問題。
+</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>

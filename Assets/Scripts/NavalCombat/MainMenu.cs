@@ -89,7 +89,15 @@ public class MainMenu : SingletonDocument<MainMenu>
         {
             Debug.Log("VladivostokSquadronRaidingButton clicked");
 
-            DialogRoot.Instance.PopupVladivostokSquadronRaidingSideSelectorDialog();
+            // DialogRoot.Instance.PopupVladivostokSquadronRaidingSideSelectorDialog();
+                // StrategicGameManager.startupConfig = new();
+            StrategicGameManager.startupConfig = new()
+            {
+                mode = StrategicGameManager.StartupConfig.Mode.ScenPath,
+                scenSubPath = "Scenarios/Vladivostok Squadron Raiding.xml"
+                // scenSubPath = "Scenarios/StrategicGameState.xml"
+            };
+            SceneManager.LoadScene("Strategic Game");
         };
     }
 

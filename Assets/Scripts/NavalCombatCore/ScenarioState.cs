@@ -94,6 +94,13 @@ namespace NavalCombatCore
             return (float)Math.Round(longitude / degreesPerInterval);
         }
 
+        public static DateTimeOffset GetDateTimeOffset(DateTime time, float longitude)
+        {
+            var offset = GetTimeZoneOffset(longitude);
+            var dateTimeOffset = new DateTimeOffset(time);
+            return dateTimeOffset.ToOffset(TimeSpan.FromHours(offset));
+        }
+
         public DateTime GetLocalDateTime(float longitude)
         {
             return dateTime.AddHours(GetTimeZoneOffset(longitude));

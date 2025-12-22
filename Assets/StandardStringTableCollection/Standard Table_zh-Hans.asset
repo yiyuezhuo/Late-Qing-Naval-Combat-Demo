@@ -2298,6 +2298,14 @@ MonoBehaviour:
     m_Localized: "SK5 \u7C7B\u578B"
     m_Metadata:
       m_Items: []
+  - m_Id: 40195181443190784
+    m_Localized: "\u7ED8\u5236\u65F6\u95F4\u6233"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40195974577688576
+    m_Localized: "\u65F6\u95F4\u6233\u95F4\u9694 (\u5206\u949F)"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -44,6 +44,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public GameObject shipLogTrajectoryPrefab;
     public Transform shipLogTrajectoriesTransform;
+    public Transform shipLogTrajectoryLabelsTransform;
+    public GameObject shipLogTrajectoryLabelPrefab;
 
     [Serializable]
     public class StateText2DConfig
@@ -320,6 +322,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         SceneManager.LoadScene("Strategic Game");
     }
 
+    LatLon latestHoveringLatLon = new();
+
     // float viewAccTime;
     void UpdateLocationInfoLabel()
     {
@@ -329,6 +333,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             var hitPoint = hit.point;
 
             var latLon = Utils.Vector3ToLatLon(hitPoint);
+
+            latestHoveringLatLon = latLon;
 
             var scenarioState = NavalGameState.Instance.scenarioState;
 
@@ -353,6 +359,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 latF, lonF, utcDT, localDT, LocalizeEnum(dayNightLevel), timeZoneOffsetF, sunAltF, sunAziF
             );
         }
+    }
+
+    public DateTimeOffset GetDateTimeOffsetByLatestHoveringLatLon(DateTime time)
+    {
+        return ScenarioState.GetDateTimeOffset(time, latestHoveringLatLon.LonDeg);
     }
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
@@ -1115,7 +1126,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
-    public void AddShipLogTrajectory(ShipLog shipLog, Color color)
+    public void PlotShipLogTrajectory(ShipLog shipLog, Color color, bool plotTimestamp, int timestampIntervalMinutes)
     {
         if (shipLog == null)
             return;
@@ -1127,15 +1138,40 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         lineRenderer.positionCount = shipLog.timeLocLogs.Count;
         lineRenderer.SetPositions(shipLog.timeLocLogs.Select(r => Utils.LatitudeLongitudeDegHeightFootToVector3(r.latDeg, r.lonDeg, 30)).ToArray());
         // shipLog.timeLocLogs
+
+        if(plotTimestamp)
+        {
+            foreach(var log in shipLog.timeLocLogs)
+            {
+                if(log.time.Minute % timestampIntervalMinutes == 0) // So only 60，30，20，15，12，10，6，5，4，3，2，1 generate uniform interval
+                {
+                    var label = Instantiate(shipLogTrajectoryLabelPrefab, shipLogTrajectoryLabelsTransform);
+                    // var pos = Utils.LatitudeLongitudeDegHeightFootToVector3(log.latDeg, log.lonDeg, 100);
+                    var pos = Utils.LatitudeLongitudeDegHeightFootToVector3(log.latDeg, log.lonDeg, 10000);
+                    label.transform.position = pos;
+
+                    var dateTimeOffset = GetDateTimeOffsetByLatestHoveringLatLon(log.time);
+                    label.GetComponent<TMP_Text>().text = dateTimeOffset.ToString("HH:mm");
+                }
+            }
+        }
     }
 
     public void ClearShipLogTrajectories()
     {
-        var parent = shipLogTrajectoriesTransform;
-        for (int i = parent.childCount - 1; i >= 0; i--)
-        {
-            Destroy(parent.GetChild(i).gameObject);
-        }
+        Utils.DestroyChildrensFor(shipLogTrajectoriesTransform);
+        // var parent = shipLogTrajectoriesTransform;
+        // for (int i = parent.childCount - 1; i >= 0; i--)
+        // {
+        //     Destroy(parent.GetChild(i).gameObject);
+        // }
+
+        Utils.DestroyChildrensFor(shipLogTrajectoryLabelsTransform);
+        // parent = shipLogTrajectoryLabelsTransform;
+        // for (int i = parent.childCount - 1; i >= 0; i--)
+        // {
+        //     Destroy(parent.GetChild(i).gameObject);
+        // }
     }
 
     public IEnumerable<ShipLog> GetShipsRequiringFiringLineRendering()

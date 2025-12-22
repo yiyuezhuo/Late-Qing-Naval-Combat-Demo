@@ -2260,6 +2260,14 @@ MonoBehaviour:
     m_Key: SK5 Type
     m_Metadata:
       m_Items: []
+  - m_Id: 40195181443190784
+    m_Key: Plot Timestamp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40195974577688576
+    m_Key: Timestamp Interval (Min)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -585,4 +585,11 @@ public static class Utils
         }
     }
 
+    public static void DestroyChildrensFor(Transform parent)
+    {
+        for (int i = parent.childCount - 1; i >= 0; i--)
+        {
+            UnityEngine.Object.Destroy(parent.GetChild(i).gameObject);
+        }
+    }
 }

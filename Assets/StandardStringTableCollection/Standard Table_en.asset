@@ -2346,6 +2346,14 @@ MonoBehaviour:
     m_Localized: SK5 Type
     m_Metadata:
       m_Items: []
+  - m_Id: 40195181443190784
+    m_Localized: Plot Timestamp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40195974577688576
+    m_Localized: Timestamp Interval (Min)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -529,7 +529,6 @@ namespace NavalCombatCore
             foreach (var shipLog in shipLogsOnMap)
                 shipLog.StepDamageResolution(deltaSeconds);
 
-
             foreach (var launchedTorpedo in launchedTorpedosOnMap)
                 launchedTorpedo.StepMoveToNewPosition(deltaSeconds);
 

@@ -203,6 +203,9 @@ public class PlotTrajectoryViewModel
         get => color.b;
         set => color = new Color32(color.r, color.g, (byte)value, 255);
     }
+
+    public bool plotTimestamp = true;
+    public int timestampIntervalMinutes = 15;
 }
 
 
@@ -840,7 +843,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         var model = new PlotTrajectoryViewModel()
         {
             shipLogObjectId = shipLog.objectId,
-            color = shipLog.shipClass.country == Country.China ? Color.red : Color.blue,
+            // color = shipLog.shipClass.country == Country.China ? Color.red : Color.blue,
+            color = shipLog.shipClass.country == Country.Japan ? Color.blue : Color.red, // support Russo-Japanese War scenario
         };
 
         var tempDialog = new TempDialog()
@@ -854,7 +858,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             Debug.Log("PopupPlotTrajectoryDialog Confirm");
 
-            GameManager.Instance.AddShipLogTrajectory(EntityManager.Instance.Get<ShipLog>(model.shipLogObjectId), model.color);
+            GameManager.Instance.PlotShipLogTrajectory(EntityManager.Instance.Get<ShipLog>(model.shipLogObjectId), model.color, model.plotTimestamp, model.timestampIntervalMinutes);
         };
 
         tempDialog.Popup();
@@ -900,68 +904,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
         tempDialog.Popup();
     }
-
-    // IEnumerator SetupLocale(DropdownField localeDropdownField)
-    // {
-    //     yield return LocalizationSettings.InitializationOperation;
-
-    //     localeDropdownField.choices = LocalizationSettings.AvailableLocales.Locales.Select(LocaleToNativeName).ToList();
-
-    //     // LocalizationSettings.SelectedLocale.Identifier.CultureInfo.NativeName
-    //     // en
-    //     // ja
-    //     // zh-Hans
-    //     // zh-Hant
-
-    //     var locales = LocalizationSettings.AvailableLocales.Locales;
-    //     for (var i = 0; i < locales.Count; i++)
-    //         if (LocaleToNativeName(locales[i]) == LocaleToNativeName(LocalizationSettings.SelectedLocale))
-    //             localeDropdownField.index = i;
-
-    //     localeDropdownField.RegisterValueChangedCallback(evt => GamePreference.Instance.SwitchToLocaleByName(evt.newValue));
-    // }
-
-    // static string LocaleToNativeName(UnityEngine.Localization.Locale locale) => locale.Identifier.CultureInfo.NativeName;
-    // static string LocaleToNativeName(UnityEngine.Localization.Locale locale)
-    // {
-    //     var name = locale.Identifier.CultureInfo.Name;
-    //     switch (name)
-    //     {
-    //         case "en":
-    //             return "English";
-    //         case "ja":
-    //             return "日本語";
-    //         case "zh-Hans":
-    //             return "简体中文";
-    //         case "zh-Hant":
-    //             return "繁體中文";
-    //         default:
-    //             return name;
-    //     }
-    // }
-
-    // static void SwitchToLocaleByName(string s)
-    // {
-    //     var selectedLocale = LocalizationSettings.AvailableLocales.Locales.FirstOrDefault(locale => LocaleToNativeName(locale) == s);
-
-    //     if (selectedLocale != null)
-    //     {
-    //         LocalizationSettings.SelectedLocale = selectedLocale;
-    //         GamePreference.Instance.SetShortLabelLanguageTypeByLocale(selectedLocale);
-    //     }
-    // }
-
-    // static void SetShortLabelLanguageTypeByLocale(Locale locale)
-    // {
-    //     GamePreference.Instance.shortLabelLanguageType = locale.Identifier.CultureInfo.Name switch
-    //     {
-    //         "en" => LanguageType.English,
-    //         "ja" => LanguageType.Japanese,
-    //         "zh-Hans" => LanguageType.ChineseSimplified,
-    //         "zh-Hant" => LanguageType.ChineseTraditional,
-    //         _ =>LanguageType.English
-    //     };
-    // }
 
     public void PopupLandUnitTemplatePickerDialog(Action<LandUnitTemplate> callback)
     {

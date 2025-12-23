@@ -683,10 +683,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     // if (shipLog != null)
                     if (shipLog != null && selectedShipLogObjectId == shipLog.objectId)
                     {
-                        // selectedShipLogObjectId = shipLog.objectId;
+                        // ShipLogEditor.Instance.selectedShipLogObjectId = selectedShipLogObjectId;
+                        // ShipLogEditor.Instance.Show();
 
-                        ShipLogEditor.Instance.selectedShipLogObjectId = selectedShipLogObjectId;
-                        ShipLogEditor.Instance.Show();
+                        SwitchCenter.Instance.SwitchToShipLogView(shipLog);
                     }
                 }
 
@@ -738,7 +738,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
                 if (Input.GetKeyDown(KeyCode.L) && selectedShipLog != null) // open ship Log editor
                 {
-                    ShipLogEditor.Instance.PopupWithSelection(selectedShipLog);
+                    // ShipLogEditor.Instance.PopupWithSelection(selectedShipLog);
+                    SwitchCenter.Instance.SwitchToShipLogView(selectedShipLog);
                 }
                 if (Input.GetKeyDown(KeyCode.Delete) && selectedShipLog != null) // toggle ship on map back up undeployed
                 {
@@ -834,8 +835,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 if (Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
-                    ShipLogEditor.Instance.Show();
-                    // ShipLogEditor.Instance.SoftShow();
+                    // ShipLogEditor.Instance.Show();
+                    // TODO: Fix broken soft-close or devise a new way to select target.
+                    SwitchCenter.Instance.SwitchToShipLogView(selectedShipLog);
                     if (selectedMountStatusRecord != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
@@ -849,8 +851,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 if (Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
-                    ShipLogEditor.Instance.Show();
-                    // ShipLogEditor.Instance.SoftShow();
+                    // TODO: Fix broken soft-close or devise a new way to select target.
+                    // ShipLogEditor.Instance.Show();
+                    SwitchCenter.Instance.SwitchToShipLogView(selectedShipLog);
                     if (selectedFireControlSystemStatusRecord != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
@@ -864,7 +867,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 if (Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
-                    ShipLogEditor.Instance.Show();
+                    // TODO: Fix broken soft-close or devise a new way to select target.
+                    // ShipLogEditor.Instance.Show();
+                    SwitchCenter.Instance.SwitchToShipLogView(selectedShipLog);
                     if (selectedRapidFiringTargettingStatus != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
@@ -878,7 +883,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 if (Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
-                    ShipLogEditor.Instance.Show();
+                    // TODO: Fix broken soft-close or devise a new way to select target.
+                    // ShipLogEditor.Instance.Show();
+                    SwitchCenter.Instance.SwitchToShipLogView(selectedShipLog);
                     if (selectedTorpedoMountStatusRecord != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();

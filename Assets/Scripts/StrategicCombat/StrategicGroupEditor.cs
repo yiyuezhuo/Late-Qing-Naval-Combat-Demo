@@ -6,17 +6,18 @@ using System.Collections.Generic;
 using System.Linq;
 using NavalCombatCore;
 
-public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<StrategicGroupEditor, StrategicGroup>
+
+public class StrategicGroupView // 
 {
+    public VisualElement root;
+
     ListView subordinatesCombinedListView;
 
-    protected override void OnEnable()
+    public void Bind()
     {
-        base.OnEnable();
-
-        var contentContainer = root.Q<VisualElement>("ContentContainer");
+        var contentContainer = root.Q<VisualElement>("StrategicGroupView");
         subordinatesCombinedListView = root.Q<ListView>("SubordinatesCombinedListView");
-        Utils.BindStrategicGroupMemberReferenceListView(subordinatesCombinedListView, contentContainer, this);
+        Utils.BindStrategicGroupMemberReferenceListView(subordinatesCombinedListView, contentContainer);
 
         var setLeaderButton = root.Q<Button>("SetLeaderButton");
         setLeaderButton.clicked += () =>
@@ -36,21 +37,21 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
             if (Utils.TryResolveCurrentValueForBinding<StrategicGroup>(gotoLeaderButton, out var group))
             {
                 var leader = group.leaderReference.Get();
-                if (leader != null)
-                {
-                    var idx = StrategicGameState.Instance.leaders.IndexOf(leader);
-                    if (idx != -1)
-                    {
-                        Hide();
-                        LeaderEditor.Instance.Show();
-                        BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.leadersListView, idx);
-                    }
-                }
+                // if (leader != null)
+                // {
+                //     var idx = StrategicGameState.Instance.leaders.IndexOf(leader);
+                //     if (idx != -1)
+                //     {
+                //         Hide();
+                //         LeaderEditor.Instance.Show();
+                //         BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.leadersListView, idx);
+                //     }
+                // }
+                SwitchCenter.Instance.SwitchToLeaderView(leader);
             }
         };
-
-        // BindIStrategicGroupMemberReferenceable(root, this);
-        Utils.BindIStrategicGroupMemberReferenceable(root, this);
+        
+        Utils.BindIStrategicGroupMemberReferenceable(root);
 
         var gotoAssignedMissionButton = root.Q<Button>("GotoAssignedMissionButton");
         gotoAssignedMissionButton.clicked += () =>
@@ -58,18 +59,66 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
             if (Utils.TryResolveCurrentValueForBinding<StrategicGroup>(gotoAssignedMissionButton, out var group))
             {
                 var mission = EntityManager.Instance.Get<StrategicMission>(group.assignedMissionObjectId);
-                if (mission != null)
-                {
-                    var idx = StrategicGameState.Instance.missions.IndexOf(mission);
-                    if (idx != -1)
-                    {
-                        Hide();
-                        StrategicMissionEditor.Instance.Show();
-                        BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicMissionEditor.Instance.objectListView, idx);
-                    }
-                }
+                // if (mission != null)
+                // {
+                //     var idx = StrategicGameState.Instance.missions.IndexOf(mission);
+                //     if (idx != -1)
+                //     {
+                //         Hide();
+                //         StrategicMissionEditor.Instance.Show();
+                //         BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicMissionEditor.Instance.objectListView, idx);
+                //     }
+                // }
+                SwitchCenter.Instance.SwitchToMissionView(mission);
             }
         };
+
+
+        var splitButton = root.Q<Button>("SplitButton");
+        splitButton.clicked += () =>
+        {
+            if (Utils.TryResolveCurrentValueForBinding(splitButton, out StrategicGroup group))
+            {
+                group.Split();
+            }
+        };
+
+        var gotoContainerButton = root.Q<Button>("GotoContainerButton");
+        gotoContainerButton.clicked += () =>
+        {
+            if(Utils.TryResolveCurrentValueForBinding(gotoContainerButton, out StrategicGroup group))
+            {
+                var container = EntityManager.Instance.Get<ShipLog>(group.containerObjectId);
+                // if(container != null)
+                // {
+                //     var idx = StrategicGameState.Instance.shipLogs.IndexOf(container);
+                //     if (idx != -1)
+                //     {
+                //         Hide();
+                //         ShipLogEditor.Instance.Show();
+                //         BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipLogEditor.Instance.shipLogListView, idx);
+                //     }
+                // }
+
+                SwitchCenter.Instance.SwitchToShipLogView(container);
+            }
+        };
+    }
+}
+
+public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<StrategicGroupEditor, StrategicGroup>
+{
+    ListView subordinatesCombinedListView;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        var view = new StrategicGroupView()
+        {
+            root = root.Q<VisualElement>("ContentContainer")  
+        };
+        view.Bind();
 
         root.Q<Button>("SortButton").clicked += () =>
         {
@@ -94,37 +143,9 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
                 return group0.name.GetMergedName().CompareTo(group1.name.GetMergedName());
             });
         };
-
-        var splitButton = root.Q<Button>("SplitButton");
-        splitButton.clicked += () =>
-        {
-            if (Utils.TryResolveCurrentValueForBinding(splitButton, out StrategicGroup group))
-            {
-                group.Split();
-            }
-        };
-
-        var gotoContainerButton = root.Q<Button>("GotoContainerButton");
-        gotoContainerButton.clicked += () =>
-        {
-            if(Utils.TryResolveCurrentValueForBinding(gotoContainerButton, out StrategicGroup group))
-            {
-                var container = EntityManager.Instance.Get<ShipLog>(group.containerObjectId);
-                if(container != null)
-                {
-                    var idx = StrategicGameState.Instance.shipLogs.IndexOf(container);
-                    if (idx != -1)
-                    {
-                        Hide();
-                        ShipLogEditor.Instance.Show();
-                        BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipLogEditor.Instance.shipLogListView, idx);
-                    }
-                }
-            }
-        };
     }
 
-    protected override void ProcessCopliedLastOne(StrategicGroup group)
+    protected override void ProcessCopiedLastOne(StrategicGroup group)
     {
         group.strategicGroupReference.referenceId = null;
         group.assignedMissionObjectId = null;

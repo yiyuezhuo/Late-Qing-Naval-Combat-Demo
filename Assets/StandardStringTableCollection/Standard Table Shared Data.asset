@@ -2296,6 +2296,10 @@ MonoBehaviour:
     m_Key: Load Strategic Game
     m_Metadata:
       m_Items: []
+  - m_Id: 40682718548889600
+    m_Key: Strategic Group
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

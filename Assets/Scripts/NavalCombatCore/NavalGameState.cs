@@ -5,7 +5,6 @@ using System.Xml;
 using System.IO;
 using System.Linq;
 using CoreUtils;
-using System.Windows.Forms;
 
 namespace NavalCombatCore
 {

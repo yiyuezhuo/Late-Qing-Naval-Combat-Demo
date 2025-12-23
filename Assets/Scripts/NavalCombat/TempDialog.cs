@@ -2,7 +2,7 @@
 using System;
 using UnityEngine.UIElements;
 
-public class TempDialog
+public class TempDialog: ISwitchable
 {
     public VisualElement root;
     public VisualTreeAsset template;
@@ -25,6 +25,12 @@ public class TempDialog
         onClosed?.Invoke(this, el);
         root.Remove(el);
     }
+
+    void ISwitchable.SwitchClose()
+    {
+        Close();
+    }
+
 
     public void Popup()
     {

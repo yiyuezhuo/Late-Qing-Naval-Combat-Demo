@@ -360,7 +360,8 @@ public static class Utils
         lineRenderer.SetPositions(points);
     }
 
-    public static void BindIStrategicGroupMemberReferenceable<T>(VisualElement root, SingletonDocument<T> meDoc) where T : MonoBehaviour
+    // public static void BindIStrategicGroupMemberReferenceable<T>(VisualElement root, SingletonDocument<T> meDoc) where T : MonoBehaviour
+    public static void BindIStrategicGroupMemberReferenceable(VisualElement root)
     {
         var gotoParentButton = root.Q<Button>("GotoParentButton");
         gotoParentButton.clicked += () =>
@@ -368,18 +369,17 @@ public static class Utils
             if (TryResolveCurrentValueForBinding(gotoParentButton, out IStrategicGroupMemberReferenceable group))
             {
                 var parentGroup = group.strategicGroupReference.Get();
-                var idx = StrategicGameState.Instance.strategicGroups.IndexOf(parentGroup);
-                if (parentGroup != null && idx != -1)
-                {
-                    // gameObject
-                    if (!StrategicGroupEditor.Instance.gameObject.activeSelf)
-                    {
-                        meDoc.Hide();
-                        StrategicGroupEditor.Instance.Show();
-                    }
-                    // Utils.SetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
-                    BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
-                }
+                // var idx = StrategicGameState.Instance.strategicGroups.IndexOf(parentGroup);
+                // if (parentGroup != null && idx != -1)
+                // {
+                //     if (!StrategicGroupEditor.Instance.gameObject.activeSelf)
+                //     {
+                //         meDoc.Hide();
+                //         StrategicGroupEditor.Instance.Show();
+                //     }
+                //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
+                // }
+                SwitchCenter.Instance.SwitchToStrategicGroupView(parentGroup);
             }
         };
 
@@ -389,70 +389,78 @@ public static class Utils
             if (TryResolveCurrentValueForBinding(currentSourceDepotButton, out IStrategicGroupMemberReferenceable group))
             {
                 var currentSourceDepot = group.GetCurrentSourceDepot();
-                if (currentSourceDepot != null)
-                {
-                    var idx = StrategicGameState.Instance.landUnits.IndexOf(currentSourceDepot);
-                    if (idx != -1)
-                    {
-                        // Hide();
-                        if (!LandUnitEditor.Instance.gameObject.activeSelf)
-                        {
-                            meDoc.Hide();
-                            LandUnitEditor.Instance.Show();
-                        }
-                        BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
-                    }
-                }
+                // if (currentSourceDepot != null)
+                // {
+                //     var idx = StrategicGameState.Instance.landUnits.IndexOf(currentSourceDepot);
+                //     if (idx != -1)
+                //     {
+                //         // Hide();
+                //         if (!LandUnitEditor.Instance.gameObject.activeSelf)
+                //         {
+                //             meDoc.Hide();
+                //             LandUnitEditor.Instance.Show();
+                //         }
+                //         BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
+                //     }
+                // }
+                SwitchCenter.Instance.SwitchToLandUnitView(currentSourceDepot);
             }
         };
     }
 
-    static void GotoReferenceable(IStrategicGroupMemberReferenceable gotoObj, IHidable meDoc)
+    // static void GotoReferenceable(IStrategicGroupMemberReferenceable gotoObj, IHidable meDoc)
+    static void GotoReferenceable(IStrategicGroupMemberReferenceable gotoObj)
     {
         if (gotoObj is StrategicGroup group)
         {
-            var idx = StrategicGameState.Instance.strategicGroups.IndexOf(group);
-            if (group != null && idx != -1)
-            {
-                // BehaviourUtils.Instance.ScheduleToSetSelectionForListView(objectListView, idx);
-                // SetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
-                if ((object)meDoc != StrategicGroupEditor.Instance)
-                {
-                    meDoc?.Hide();
-                    StrategicGroupEditor.Instance.Show();
-                }
-                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
-            }
+            // var idx = StrategicGameState.Instance.strategicGroups.IndexOf(group);
+            // if (group != null && idx != -1)
+            // {
+            //     if ((object)meDoc != StrategicGroupEditor.Instance)
+            //     {
+            //         meDoc?.Hide();
+            //         StrategicGroupEditor.Instance.Show();
+            //     }
+            //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
+            // }
+
+            SwitchCenter.Instance.SwitchToStrategicGroupView(group);
         }
         else if (gotoObj is ShipLog shipLog)
         {
-            var idx = StrategicGameState.Instance.shipLogs.IndexOf(shipLog);
-            if (shipLog != null && idx != -1)
-            {
-                if ((object)meDoc != ShipLogEditor.Instance)
-                {
-                    meDoc?.Hide();
-                    ShipLogEditor.Instance.Show();
-                }
-                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipLogEditor.Instance.shipLogListView, idx);
-            }
+            // var idx = StrategicGameState.Instance.shipLogs.IndexOf(shipLog);
+            // if (shipLog != null && idx != -1)
+            // {
+            //     if ((object)meDoc != ShipLogEditor.Instance)
+            //     {
+            //         meDoc?.Hide();
+            //         ShipLogEditor.Instance.Show();
+            //     }
+            //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipLogEditor.Instance.shipLogListView, idx);
+            // }
+
+            SwitchCenter.Instance.SwitchToShipLogView(shipLog);
+
         }
         else if (gotoObj is LandUnit landUnit)
         {
-            var idx = StrategicGameState.Instance.landUnits.IndexOf(landUnit);
-            if (landUnit != null && idx != -1)
-            {
-                if ((object)meDoc != LandUnitEditor.Instance)
-                {
-                    meDoc?.Hide();
-                    LandUnitEditor.Instance.Show();
-                }
-                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
-            }
+            // var idx = StrategicGameState.Instance.landUnits.IndexOf(landUnit);
+            // if (landUnit != null && idx != -1)
+            // {
+            //     if ((object)meDoc != LandUnitEditor.Instance)
+            //     {
+            //         meDoc?.Hide();
+            //         LandUnitEditor.Instance.Show();
+            //     }
+            //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
+            // }
+
+            SwitchCenter.Instance.SwitchToLandUnitView(landUnit);
         }
     }
 
-    public static void BindGotoButton(VisualElement item, IHidable meDoc)
+    // public static void BindGotoButton(VisualElement item, IHidable meDoc)
+    public static void BindGotoButton(VisualElement item)
     {
         var gotoButton = item.Q<Button>("GotoButton");
         gotoButton.clicked += () =>
@@ -462,12 +470,15 @@ public static class Utils
                 Debug.Log("reference GotoButton clicked");
 
                 var gotoObj = fieldReference.Get();
-                GotoReferenceable(gotoObj, meDoc);
+                
+                // GotoReferenceable(gotoObj, meDoc);
+                GotoReferenceable(gotoObj);
             }
         };
     }
 
-    public static void BindStrategicGroupMemberReferenceListView(ListView subordinatesCombinedListView, VisualElement contentContainer, IHidable meDoc)
+    // public static void BindStrategicGroupMemberReferenceListView(ListView subordinatesCombinedListView, VisualElement contentContainer, IHidable meDoc)
+    public static void BindStrategicGroupMemberReferenceListView(ListView subordinatesCombinedListView, VisualElement contentContainer)
     {
         // BindItemsAddedRemoved<StrategicGroupMemberReference>(subordinatesCombinedListView, () => null);
         BindParentGroupChildrenAddedRemoved<StrategicGroupMemberReference>(subordinatesCombinedListView, () => null);
@@ -511,7 +522,8 @@ public static class Utils
                 }
             };
 
-            BindGotoButton(item, meDoc);
+            // BindGotoButton(item, meDoc);
+            BindGotoButton(item);
 
             return item;
         };
@@ -563,7 +575,8 @@ public static class Utils
                 }
             };
 
-            BindGotoButton(item, meDoc);
+            // BindGotoButton(item, meDoc);
+            BindGotoButton(item);
 
             return item;
         };

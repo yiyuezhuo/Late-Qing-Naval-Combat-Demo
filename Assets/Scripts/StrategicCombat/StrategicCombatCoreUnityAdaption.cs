@@ -799,6 +799,7 @@ namespace StrategicCombatCore
         [CreateProperty]
         public string areaSystemSummary => $"({areaSystem.areaStates.Count}) {areaSystem.backgroundReference.isBuiltin}, {areaSystem.backgroundReference.path}";
 
+        [XmlIgnore]
         [CreateProperty]
         public bool enableGridSystemProp
         {
@@ -810,6 +811,7 @@ namespace StrategicCombatCore
             }
         }
 
+        [XmlIgnore]
         [CreateProperty]
         public bool enableAreaSystemProp
         {

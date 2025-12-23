@@ -97,18 +97,19 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
         gotoLeaderButton.clicked += () =>
         {
             var leader = selectedNamedShip?.defaultLeader;
-            if (leader == null)
-                return;
+            // if (leader == null)
+            //     return;
 
-            var gameState = SuperGameState.Instance.GetCurrentGameState();
-            var idx = gameState.leaders.IndexOf(leader);
-            if (idx != -1)
-            {
-                Hide();
-                LeaderEditor.Instance.Show();
-                // LeaderEditor.Instance.leadersListView.SetSelection(idx);
-                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.leadersListView, idx);
-            }
+            // var gameState = SuperGameState.Instance.GetCurrentGameState();
+            // var idx = gameState.leaders.IndexOf(leader);
+            // if (idx != -1)
+            // {
+            //     Hide();
+            //     LeaderEditor.Instance.Show();
+            //     // LeaderEditor.Instance.leadersListView.SetSelection(idx);
+            //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.leadersListView, idx);
+            // }
+            SwitchCenter.Instance.SwitchToLeaderView(leader);
         };
     }
 

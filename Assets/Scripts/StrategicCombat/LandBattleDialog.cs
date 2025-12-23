@@ -128,12 +128,14 @@ public class LandBattleDialog
                 {
                     if(Utils.TryResolveCurrentValueForBinding<LandBattleSideStateDynamic.LandUnitBundle>(nameButton, out var landUnitBundle))
                     {
-                        var idx = StrategicGameState.Instance.landUnits.IndexOf(landUnitBundle.landUnit);
-                        if(idx != -1)
-                        {
-                            LandUnitEditor.Instance.Show();
-                            BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
-                        }
+                        // var idx = StrategicGameState.Instance.landUnits.IndexOf(landUnitBundle.landUnit);
+                        // if(idx != -1)
+                        // {
+                        //     LandUnitEditor.Instance.Show();
+                        //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
+                        // }
+
+                        SwitchCenter.Instance.SwitchToLandUnitView(landUnitBundle.landUnit);
                     }
                 };
                 return el;

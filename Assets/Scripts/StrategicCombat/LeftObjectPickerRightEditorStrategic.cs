@@ -48,7 +48,7 @@ public abstract class LeftObjectPickerRightEditorStrategic<ST, ET> : HideableDoc
                     newObj.objectId = null;
                     objList.Add(newObj);
 
-                    ProcessCopliedLastOne(newObj);
+                    ProcessCopiedLastOne(newObj);
 
                     currentGameState.ResetAndRegisterAll(); // Assign a new guid
                 }
@@ -56,7 +56,7 @@ public abstract class LeftObjectPickerRightEditorStrategic<ST, ET> : HideableDoc
         };
     }
 
-    protected virtual void ProcessCopliedLastOne(ET obj)
+    protected virtual void ProcessCopiedLastOne(ET obj)
     {
     }
 

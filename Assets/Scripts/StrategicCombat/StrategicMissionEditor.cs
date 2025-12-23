@@ -49,16 +49,18 @@ public class StrategicMissionEditor : LeftObjectPickerRightEditorStrategic<Strat
             if (Utils.TryResolveCurrentValueForBinding(gotoButton, out LandUnitReference landUnitRef))
             {
                 var sourceDepot = landUnitRef.Get();
-                if (sourceDepot == null)
-                    return;
 
-                var idx = StrategicGameState.Instance.landUnits.IndexOf(sourceDepot);
-                if (idx != -1)
-                {
-                    Hide();
-                    LandUnitEditor.Instance.Show();
-                    BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
-                }
+                SwitchCenter.Instance.SwitchToLandUnitView(sourceDepot);
+                // if (sourceDepot == null)
+                //     return;
+
+                // var idx = StrategicGameState.Instance.landUnits.IndexOf(sourceDepot);
+                // if (idx != -1)
+                // {
+                //     Hide();
+                //     LandUnitEditor.Instance.Show();
+                //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
+                // }
             }
         };
 

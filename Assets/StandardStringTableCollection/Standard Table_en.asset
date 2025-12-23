@@ -2382,6 +2382,10 @@ MonoBehaviour:
     m_Localized: Load Strategic Game
     m_Metadata:
       m_Items: []
+  - m_Id: 40682718548889600
+    m_Localized: Strategic Group
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

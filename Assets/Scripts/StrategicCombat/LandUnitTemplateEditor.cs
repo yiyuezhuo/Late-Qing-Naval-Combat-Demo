@@ -51,14 +51,16 @@ public class LandUnitTemplateEditor : LeftObjectPickerRightEditorStrategic<LandU
                 if (Utils.TryResolveCurrentValueForBinding(gotoButton, out WeaponRecord weaponRecord))
                 {
                     var weapon = weaponRecord.Get();
-                    var gameState = StrategicGameState.Instance;
-                    var idx = gameState.weapons.IndexOf(weapon);
-                    if (idx != -1)
-                    {
-                        // Hide();
-                        WeaponEditor.Instance.Show();
-                        BehaviourUtils.Instance.ScheduleToSetSelectionForListView(WeaponEditor.Instance.objectListView, idx);
-                    }
+                    // var gameState = StrategicGameState.Instance;
+                    // var idx = gameState.weapons.IndexOf(weapon);
+                    // if (idx != -1)
+                    // {
+                    //     // Hide();
+                    //     WeaponEditor.Instance.Show();
+                    //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(WeaponEditor.Instance.objectListView, idx);
+                    // }
+
+                    SwitchCenter.Instance.SwitchToWeaponView(weapon);
                 }
             };
 

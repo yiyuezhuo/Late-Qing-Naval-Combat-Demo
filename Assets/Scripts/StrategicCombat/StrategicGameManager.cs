@@ -64,10 +64,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         {
             Empty,
             ReturnFromNavalGame,
-            ScenPath
+            ScenPath,
+            FullState
         }
 
         public Mode mode = Mode.ScenPath;
+        public StrategicFullState fullState = null;
         // public Mode mode = Mode.Empty;
         // public Vector2 cameraPosXY;
         // public float cameraZoom;
@@ -192,6 +194,17 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
             // fullInitialized = true; // Moved to OnScenTextLoaded (Fuck Unity' async model)
         }
+        else if(startupConfig.mode == StartupConfig.Mode.FullState)
+        {
+            IEnumerator Cor() // Bullshit Unity boilerplate
+            {
+                yield return ProcessFullState(startupConfig.fullState);
+
+                FinishInitialization();
+            }
+
+            StartCoroutine(Cor());
+        }
     }
 
     protected void Awake()
@@ -275,6 +288,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public IEnumerator OnScenTextLoaded(string initialScenText)
     {
         var fullState = XmlUtils.FromXML<StrategicFullState>(initialScenText);
+        // return ProcessFullState(fullState);
+        yield return ProcessFullState(fullState);
+    }
+
+    public IEnumerator ProcessFullState(StrategicFullState fullState)
+    {
         var strategicGameState = fullState.gameState;
         // var strategicGameState = XmlUtils.FromXML<StrategicGameState>(initialScenText);
         StrategicGameState.Instance.UpdateTo(strategicGameState);
@@ -320,7 +339,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
     }
 
-    static bool strategicWarnDisplayed = false;
+    // static bool strategicWarnDisplayed = false;
+    static bool strategicWarnDisplayed = true; // Temp disable in the dev phase
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
@@ -694,13 +714,14 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
                     if (rightClicking && lastSelectedStrategicGroup == topStackGroup)
                     {
-                        // lastSelectedStrategicGroup = topStackGroup;
-                        var idx = StrategicGameState.Instance.strategicGroups.IndexOf(topStackGroup);
-                        if (group != null && idx != -1)
-                        {
-                            StrategicGroupEditor.Instance.Show();
-                            BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
-                        }
+                        // var idx = StrategicGameState.Instance.strategicGroups.IndexOf(topStackGroup);
+                        // if (group != null && idx != -1)
+                        // {
+                        //     StrategicGroupEditor.Instance.Show();
+                        //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
+                        // }
+
+                        SwitchCenter.Instance.SwitchToStrategicGroupView(topStackGroup);
                     }
 
                     if (leftClicking)

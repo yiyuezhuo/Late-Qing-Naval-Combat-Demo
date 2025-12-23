@@ -33,21 +33,24 @@ public class LandUnitEditor : LeftObjectPickerRightEditorStrategic<LandUnitEdito
         {
             if (Utils.TryResolveCurrentValueForBinding<LandUnit>(gotoLandUnitTemplateButton, out var landUnit))
             {
-                var idx = currentGameState.landUnitTemplates.IndexOf(EntityManager.Instance.Get<LandUnitTemplate>(landUnit.landUnitTemplateId));
-                if (idx != -1)
-                {
-                    LandUnitTemplateEditor.Instance.Show();
-                    BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitTemplateEditor.Instance.objectListView, idx);
-                    // BehaviourUtils.Instance.ScheduleToSetSelectionForListView(objectListView, idx);
-                }
+                var landUnitTemplate = EntityManager.Instance.Get<LandUnitTemplate>(landUnit.landUnitTemplateId);
+                // var idx = currentGameState.landUnitTemplates.IndexOf(landUnitTemplate);
+                // if (idx != -1)
+                // {
+                //     LandUnitTemplateEditor.Instance.Show();
+                //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitTemplateEditor.Instance.objectListView, idx);
+                //     // BehaviourUtils.Instance.ScheduleToSetSelectionForListView(objectListView, idx);
+                // }
+
+                SwitchCenter.Instance.SwitchToLandUnitTemplateView(landUnitTemplate);
             }
         };
 
-        // StrategicGroupEditor.BindIStrategicGroupMemberReferenceable(root, this);
-        Utils.BindIStrategicGroupMemberReferenceable(root, this);
+        // Utils.BindIStrategicGroupMemberReferenceable(root, this);
+        Utils.BindIStrategicGroupMemberReferenceable(root);
     }
 
-    protected override void ProcessCopliedLastOne(LandUnit landUnit)
+    protected override void ProcessCopiedLastOne(LandUnit landUnit)
     {
         landUnit.strategicGroupReference.referenceId = null;
     }

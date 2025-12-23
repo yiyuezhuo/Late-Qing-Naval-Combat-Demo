@@ -89,7 +89,7 @@ public class SingletonDocument<T> : SingletonMonoBehaviour<T>, IHidable where T 
     // }
 }
 
-public class HideableDocument<T> : SingletonDocument<T> where T : MonoBehaviour
+public class HideableDocument<T> : SingletonDocument<T>, ISwitchable where T : MonoBehaviour
 {
     protected override void Awake()
     {
@@ -103,6 +103,11 @@ public class HideableDocument<T> : SingletonDocument<T> where T : MonoBehaviour
     // }
 
     void Start()
+    {
+        Hide();
+    }
+
+    void ISwitchable.SwitchClose()
     {
         Hide();
     }

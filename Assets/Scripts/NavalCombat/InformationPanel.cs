@@ -17,15 +17,17 @@ public class InformationPanel : SingletonDocument<InformationPanel>
                 Debug.Log("Captain link clicked");
 
                 var leader = GameManager.Instance.selectedShipLog?.leader;
-                if(leader == null)
-                    return;
+                // if(leader == null)
+                //     return;
 
-                var idx = NavalGameState.Instance.leaders.IndexOf(leader);
-                if(leader != null && idx != -1)
-                {
-                    LeaderEditor.Instance.Show();
-                    BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.leadersListView, idx);
-                }
+                // var idx = NavalGameState.Instance.leaders.IndexOf(leader);
+                // if(leader != null && idx != -1)
+                // {
+                //     LeaderEditor.Instance.Show();
+                //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.leadersListView, idx);
+                // }
+
+                SwitchCenter.Instance.SwitchToLeaderView(leader);
             }}
         });
 
@@ -34,7 +36,8 @@ public class InformationPanel : SingletonDocument<InformationPanel>
         {
             {"namedShip", () => {
                 var shipLog = GameManager.Instance.selectedShipLog;
-                ShipLogEditor.Instance.PopupWithSelection(shipLog);
+                // ShipLogEditor.Instance.PopupWithSelection(shipLog);
+                SwitchCenter.Instance.SwitchToShipLogView(shipLog);
             } }
         });
 
@@ -43,13 +46,15 @@ public class InformationPanel : SingletonDocument<InformationPanel>
         {
             {"shipClass", () => {
                 var shipClass = GameManager.Instance.selectedShipLog?.shipClass;
-                var idx = NavalGameState.Instance.shipClasses.IndexOf(shipClass);
-                if(shipClass != null && idx != -1)
-                {
-                    ShipClassEditor.Instance.Show();
-                    // ShipClassEditor.Instance.shipClassListView.SetSelection(idx);
-                    BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipClassEditor.Instance.shipClassListView, idx);
-                }
+                // var idx = NavalGameState.Instance.shipClasses.IndexOf(shipClass);
+                // if(shipClass != null && idx != -1)
+                // {
+                //     ShipClassEditor.Instance.Show();
+                //     // ShipClassEditor.Instance.shipClassListView.SetSelection(idx);
+                //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipClassEditor.Instance.shipClassListView, idx);
+                // }
+
+                SwitchCenter.Instance.SwitchToShipClassView(shipClass);
             } }
         });
 

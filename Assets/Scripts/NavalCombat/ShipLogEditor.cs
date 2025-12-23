@@ -287,20 +287,22 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         gotoNamedShipButton.clicked += () =>
         {
             var namedShip = selectedShipLog?.namedShip;
-            if (namedShip == null)
-                return;
+            // if (namedShip == null)
+            //     return;
 
-            var gameState = SuperGameState.Instance.GetCurrentGameState();
-            var idx = gameState.namedShips.IndexOf(namedShip);
-            if (idx != -1)
-            {
-                Hide();
-                NamedShipEditor.Instance.Show();
-                // NamedShipEditor.Instance.namedShipListView.Rebuild();
-                // Data binding will be effective in the next frame, so we need to call the selection in the next frame.
-                // StartCoroutine(SetSelectionForNamedShipListView(idx));
-                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(NamedShipEditor.Instance.namedShipListView, idx);
-            }
+            // var gameState = SuperGameState.Instance.GetCurrentGameState();
+            // var idx = gameState.namedShips.IndexOf(namedShip);
+            // if (idx != -1)
+            // {
+            //     Hide();
+            //     NamedShipEditor.Instance.Show();
+            //     // NamedShipEditor.Instance.namedShipListView.Rebuild();
+            //     // Data binding will be effective in the next frame, so we need to call the selection in the next frame.
+            //     // StartCoroutine(SetSelectionForNamedShipListView(idx));
+            //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(NamedShipEditor.Instance.namedShipListView, idx);
+            // }
+
+            SwitchCenter.Instance.SwitchToNamedShipView(namedShip);
         };
 
         var resetAllStatesButton = root.Q<Button>("ResetAllStatesButton");
@@ -339,13 +341,15 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             }
         };
 
-        Utils.BindIStrategicGroupMemberReferenceable(root, this);
+        // Utils.BindIStrategicGroupMemberReferenceable(root, this);
+        Utils.BindIStrategicGroupMemberReferenceable(root);
 
         var loadedGroupListView = root.Q<ListView>("LoadedGroupListView");
         loadedGroupListView.makeItem = () =>
         {
             var el = loadedGroupListView.itemTemplate.CloneTree();
-            Utils.BindGotoButton(el, this);
+            // Utils.BindGotoButton(el, this);
+            Utils.BindGotoButton(el);
             return el;
         };
 
@@ -362,17 +366,17 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         gameState.ResetAndRegisterAll();
     }
 
-    public void PopupWithSelection(ShipLog shipLog)
-    {
-        var gameState = SuperGameState.Instance.GetCurrentGameState();
-        var idx = gameState.shipLogs.IndexOf(shipLog);
-        if (shipLog != null && idx != -1)
-        {
-            Show();
-            // shipLogListView.SetSelection(idx);
-            BehaviourUtils.Instance.ScheduleToSetSelectionForListView(shipLogListView, idx);
-        }
-    }
+    // public void PopupWithSelection(ShipLog shipLog)
+    // {
+    //     var gameState = SuperGameState.Instance.GetCurrentGameState();
+    //     var idx = gameState.shipLogs.IndexOf(shipLog);
+    //     if (shipLog != null && idx != -1)
+    //     {
+    //         Show();
+    //         // shipLogListView.SetSelection(idx);
+    //         BehaviourUtils.Instance.ScheduleToSetSelectionForListView(shipLogListView, idx);
+    //     }
+    // }
 
     [CreateProperty]
     public AbstractGameState currentGameState => SuperGameState.Instance.GetCurrentGameState();

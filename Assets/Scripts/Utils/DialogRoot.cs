@@ -249,6 +249,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset vladivostokSquadronRaidingSideSelectorDialogDocument;
     public VisualTreeAsset strategicScenarioStateEditorDialogDocument;
     public VisualTreeAsset unbindHitAreaDialogDocument;
+    public VisualTreeAsset strategicGroupDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -259,6 +260,24 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupStrategicGroupDialog(StrategicGroup strategicGroup)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=strategicGroupDialogDocument,
+            templateDataSource=strategicGroup
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var binder = new StrategicGroupView(){root=el};
+            binder.Bind();
+        };
+
+        tempDialog.Popup();
     }
 
     public void PopupUnbindHitAreaDialog(HitArea hitArea)
@@ -751,8 +770,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                         }
                     };
 
-                    // StrategicGroupEditor.Instance.BindGotoButton(item);
-                    Utils.BindGotoButton(item, null); // TODO: Remove strange reference of StrategicGroupEditor
+                    // Utils.BindGotoButton(item, null); // TODO: Remove strange reference of StrategicGroupEditor
+                    Utils.BindGotoButton(item);
 
                     return item;
                 };

@@ -6,6 +6,7 @@ using Unity.Properties;
 using NavalCombatCore;
 using CoreUtils;
 using System;
+using System.Collections;
 
 public class MainMenu : SingletonDocument<MainMenu>
 {
@@ -98,6 +99,20 @@ public class MainMenu : SingletonDocument<MainMenu>
                 // scenSubPath = "Scenarios/StrategicGameState.xml"
             };
             SceneManager.LoadScene("Strategic Game");
+        };
+
+        root.Q<Button>("LoadStrategicGame").clicked += () =>
+        {
+            IOManager.Instance.LoadTextFile(xml =>
+            {
+                var fullState = XmlUtils.FromXML<StrategicFullState>(xml);
+                StrategicGameManager.startupConfig = new()
+                {
+                    fullState = fullState,
+                    mode = StrategicGameManager.StartupConfig.Mode.FullState
+                };
+                SceneManager.LoadScene("Strategic Game");
+            }, "xml");
         };
     }
 

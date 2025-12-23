@@ -52,12 +52,12 @@
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36603542086782976)"/>
                             </Bindings>
                         </ui:Button>
-                        <ui:Button text="Vladivostok Squadron Raid (1904) " name="VladivostokSquadronRaidingButton" class="verylarge" style="display: none;">
+                        <ui:Button text="Vladivostok Squadron Raid (1904) " name="VladivostokSquadronRaidingButton" class="verylarge" style="display: flex;">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36604534312308736)"/>
                             </Bindings>
                         </ui:Button>
-                        <ui:Button text="Load Strategic Game" name="LoadStrategicGame" class="verylarge" style="display: none;">
+                        <ui:Button text="Load Strategic Game" name="LoadStrategicGame" class="verylarge" style="display: flex;">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40330178409959424)"/>
                             </Bindings>

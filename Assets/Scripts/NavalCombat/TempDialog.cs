@@ -20,10 +20,17 @@ public class TempDialog: ISwitchable
 
     VisualElement el;
 
+    bool closed;
+
     public void Close()
     {
-        onClosed?.Invoke(this, el);
-        root.Remove(el);
+        if(!closed)
+        {
+            closed = true;
+            
+            onClosed?.Invoke(this, el);
+            root.Remove(el);
+        }
     }
 
     void ISwitchable.SwitchClose()

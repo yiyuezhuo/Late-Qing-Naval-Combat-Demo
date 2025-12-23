@@ -415,6 +415,8 @@ namespace StrategicCombatCore
         [CreateProperty]
         public string name => Get()?.name?.mergedName ?? "[Undefined or Invalid]";
 
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
     }
 
     public partial class LandUnitTemplate
@@ -430,6 +432,9 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public float lethality => GetLethality();
+
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
     }
 
     public partial class LandUnit
@@ -460,6 +465,9 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public bool isPort => GetLandUnitTemplate()?.unitType == LandUnitType.Port;
+
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
     }
 
     public partial class SubStrategicCombat
@@ -483,6 +491,8 @@ namespace StrategicCombatCore
 
     public partial class Weapon
     {
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
     }
 
     public partial class DiplomacyRelation

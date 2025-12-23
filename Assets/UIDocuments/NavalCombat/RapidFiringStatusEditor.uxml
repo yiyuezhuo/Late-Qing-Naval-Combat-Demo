@@ -2,44 +2,48 @@
     <ui:VisualElement data-source-type="NavalCombatCore.RapidFiringStatus, Assembly-CSharp" style="flex-grow: 1;">
         <ui:Label name="Label" text="RF Bty Info">
             <Bindings>
-                <ui:DataBinding property="text" data-source-path="info" binding-mode="ToTarget" />
+                <ui:DataBinding property="text" data-source-path="info" binding-mode="ToTarget"/>
             </Bindings>
         </ui:Label>
         <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
             <ui:IntegerField label="Port Mount Hits" style="flex-grow: 1;">
                 <Bindings>
-                    <ui:DataBinding property="value" data-source-path="portMountHits" binding-mode="TwoWay" />
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(169997592334336)" />
+                    <ui:DataBinding property="value" data-source-path="portMountHits" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(169997592334336)"/>
                 </Bindings>
             </ui:IntegerField>
             <ui:IntegerField label="Startboard Mount Hits" style="flex-grow: 1;">
                 <Bindings>
-                    <ui:DataBinding property="value" data-source-path="starboardMountHits" binding-mode="TwoWay" />
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(170232922148864)" />
+                    <ui:DataBinding property="value" data-source-path="starboardMountHits" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(170232922148864)"/>
                 </Bindings>
             </ui:IntegerField>
             <ui:IntegerField label="Fire Control Hits" style="flex-grow: 1;">
                 <Bindings>
-                    <ui:DataBinding property="value" data-source-path="fireControlHits" binding-mode="TwoWay" />
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(541644539203584)" />
+                    <ui:DataBinding property="value" data-source-path="fireControlHits" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(541644539203584)"/>
                 </Bindings>
             </ui:IntegerField>
+            <Bindings>
+                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+            </Bindings>
         </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
             <ui:IntegerField label="Ammunition" style="flex-grow: 1;">
                 <Bindings>
-                    <ui:DataBinding property="value" data-source-path="ammunition" binding-mode="TwoWay" />
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(170314136457216)" />
+                    <ui:DataBinding property="value" data-source-path="ammunition" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(170314136457216)"/>
+                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                 </Bindings>
             </ui:IntegerField>
-            <ui:Button text="Detail" name="DetailButton" />
+            <ui:Button text="Detail" name="DetailButton"/>
         </ui:VisualElement>
         <ui:MultiColumnListView name="RapidFiringTargettingStatusMultiColumnListView" data-source-path="targettingRecords" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true">
             <ui:Columns>
-                <ui:Column title="Location" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusLocation.uxml?fileID=9197481963319205126&amp;guid=a321e8305df909049bf049cb9a8ee7a5&amp;type=3#RapidFiringTargettingStatusLocation" header-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusLocationHeader.uxml?fileID=9197481963319205126&amp;guid=fcebbe75090338549b7483f4f7cfe961&amp;type=3#RapidFiringTargettingStatusLocationHeader" />
-                <ui:Column width="10%" title="Processing (Seconds)" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusProcessingSeconds.uxml?fileID=9197481963319205126&amp;guid=73a710b5e6ad9ba46bd38d770d9659bf&amp;type=3#RapidFiringTargettingStatusProcessingSeconds" header-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusProcessingSecondsHeader.uxml?fileID=9197481963319205126&amp;guid=50e299c7c16d1e24d86a96d1d406a1c0&amp;type=3#RapidFiringTargettingStatusProcessingSecondsHeader" />
-                <ui:Column width="10%" title="Allocated" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusAllocated.uxml?fileID=9197481963319205126&amp;guid=1c280a1d44d6e1148a028340107dba8b&amp;type=3#RapidFiringTargettingStatusAllocated" header-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusAllocatedHeader.uxml?fileID=9197481963319205126&amp;guid=3f9eb26d1a34032478a37306f1c89446&amp;type=3#RapidFiringTargettingStatusAllocatedHeader" />
-                <ui:Column width="60%" title="Target" name="target" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusTarget.uxml?fileID=9197481963319205126&amp;guid=2f4d987a604b4d94290df55239e0be7b&amp;type=3#RapidFiringTargettingStatusTarget" header-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusTargetHeader.uxml?fileID=9197481963319205126&amp;guid=eb655da7ff254fc448dbb49a13319eee&amp;type=3#RapidFiringTargettingStatusTargetHeader" />
+                <ui:Column title="Location" width="20%" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusLocation.uxml?fileID=9197481963319205126&amp;guid=a321e8305df909049bf049cb9a8ee7a5&amp;type=3#RapidFiringTargettingStatusLocation" header-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusLocationHeader.uxml?fileID=9197481963319205126&amp;guid=fcebbe75090338549b7483f4f7cfe961&amp;type=3#RapidFiringTargettingStatusLocationHeader"/>
+                <ui:Column width="10%" title="Processing (Seconds)" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusProcessingSeconds.uxml?fileID=9197481963319205126&amp;guid=73a710b5e6ad9ba46bd38d770d9659bf&amp;type=3#RapidFiringTargettingStatusProcessingSeconds" header-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusProcessingSecondsHeader.uxml?fileID=9197481963319205126&amp;guid=50e299c7c16d1e24d86a96d1d406a1c0&amp;type=3#RapidFiringTargettingStatusProcessingSecondsHeader"/>
+                <ui:Column width="10%" title="Allocated" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusAllocated.uxml?fileID=9197481963319205126&amp;guid=1c280a1d44d6e1148a028340107dba8b&amp;type=3#RapidFiringTargettingStatusAllocated" header-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusAllocatedHeader.uxml?fileID=9197481963319205126&amp;guid=3f9eb26d1a34032478a37306f1c89446&amp;type=3#RapidFiringTargettingStatusAllocatedHeader"/>
+                <ui:Column width="60%" title="Target" name="target" cell-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusTarget.uxml?fileID=9197481963319205126&amp;guid=2f4d987a604b4d94290df55239e0be7b&amp;type=3#RapidFiringTargettingStatusTarget" header-template="project://database/Assets/UIDocuments/Templates/RapidFiringTargettingStatus/RapidFiringTargettingStatusTargetHeader.uxml?fileID=9197481963319205126&amp;guid=eb655da7ff254fc448dbb49a13319eee&amp;type=3#RapidFiringTargettingStatusTargetHeader"/>
             </ui:Columns>
         </ui:MultiColumnListView>
     </ui:VisualElement>

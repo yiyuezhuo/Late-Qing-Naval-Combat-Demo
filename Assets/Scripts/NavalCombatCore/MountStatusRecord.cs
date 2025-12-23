@@ -10,7 +10,7 @@ using CoreUtils;
 
 namespace NavalCombatCore
 {
-    public class BatteryAmmunitionRecord
+    public partial class BatteryAmmunitionRecord
     {
         public int ArmorPiercing;
         public int semiArmorPiercing;
@@ -175,7 +175,8 @@ namespace NavalCombatCore
         public override string ToString() => Summary();
     }
 
-    public abstract partial class AbstractMountStatusRecord : UnitModule
+    // public abstract partial class AbstractMountStatusRecord : UnitModule
+    public partial class AbstractMountStatusRecord : UnitModule
     {
         // public string objectId { get; set; }
         public MountStatus status;

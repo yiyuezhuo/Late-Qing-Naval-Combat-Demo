@@ -70,6 +70,9 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public Texture2D countryFlagTexture => UnityWebRequestImageReader.Instance.FetchTexture2D(Utils.GetCountryPath(country));
+    
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
     }
 
     public partial class LaunchedTorpedo : IPortraitViewerObservable
@@ -325,6 +328,9 @@ namespace NavalCombatCore
             }
         }
 
+        [CreateProperty]
+        public bool isInEditorMode => GamePreference.Instance.isInEditorMode;
+
         // IPortraitViewerObservable
         PictureReference IPortraitViewerObservable.GetPortraitTopReference() => shipClass?.portraitTopReference;
         PictureReference IPortraitViewerObservable.GetPortraitIconReference() => shipClass?.portraitIconReference;
@@ -343,6 +349,9 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public string targetDesc => GetTarget()?.namedShip?.name.mergedName ?? "[Not Specified]";
+    
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
     }
 
     public partial class BatteryStatus
@@ -352,6 +361,9 @@ namespace NavalCombatCore
         {
             get => GetBatteryRecord();
         }
+
+        [CreateProperty]
+        public bool isInEditorMode => GamePreference.Instance.isInEditorMode;
     }
 
     public partial class BatteryRecord
@@ -371,21 +383,6 @@ namespace NavalCombatCore
         public float roundsPerGun => GetRoundsPerGun();
     }
 
-    // public partial class RapidFireBatteryRecord
-    // {
-    //     [CreateProperty]
-    //     public string labelName
-    //     {
-    //         get
-    //         {
-    //             var shipClass = EntityManager.Instance.GetParent<ShipClass>(this);
-    //             var shipClassName = shipClass != null ? shipClass.name.GetShortName() : "_";
-    //             return $"{shipClassName} | {name.GetShortName()} ({shellSizeInch}″, {maxRateOfFireShootPerMin}r/min)";;
-    //         }
-    //     }
-    // }
-
-
     public partial class AbstractMountStatusRecord
     {
         [CreateProperty]
@@ -393,6 +390,9 @@ namespace NavalCombatCore
         {
             get => GetFiringTarget()?.namedShip?.name?.GetMergedName() ?? "[Not Specified]";
         }
+
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
     }
 
     public partial class MountStatusRecord
@@ -421,6 +421,10 @@ namespace NavalCombatCore
                 return GetMountLocationRecordInfo()?.Summary() ?? "Invalid";
             }
         }
+
+        // [CreateProperty]
+        // public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+
     }
 
     public partial class TorpedoMountStatusRecord
@@ -468,6 +472,10 @@ namespace NavalCombatCore
                 return GetInfo();
             }
         }
+
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+
     }
 
     public partial class ShipGroup
@@ -477,6 +485,9 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public Doctrine doctrineProp => doctrine;
+
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
     }
 
     public partial class LeaderReference
@@ -547,6 +558,9 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public string shipClassRemark => shipClass?.remark ?? "";
+
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
     }
 
     public partial class RapidFiringTargettingStatus
@@ -556,6 +570,10 @@ namespace NavalCombatCore
         {
             get => GetTarget()?.namedShip?.name?.GetMergedName() ?? "[Not Specified or Invalid]";
         }
+
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+
     }
 
     public partial class SubState
@@ -745,6 +763,18 @@ namespace NavalCombatCore
             }
         }
     }
+
+    public partial class BatteryAmmunitionRecord
+    {
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+    }
+
+    public partial class TorpedoSector
+    {
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+    }
 }
 
 namespace CoreUtils
@@ -756,5 +786,11 @@ namespace CoreUtils
         {
             get => GetMergedName();
         }
+    }
+
+    public partial class AbstractGameState
+    {
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
     }
 }

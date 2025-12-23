@@ -7,6 +7,7 @@ using System;
 
 using CoreUtils;
 using NavalCombatCore;
+using UnityEngine.Localization.SmartFormat.PersistentVariables;
 
 
 public class OOBEditor : HideableDocument<OOBEditor>
@@ -40,6 +41,8 @@ public class OOBEditor : HideableDocument<OOBEditor>
     Dictionary<int, string> treeViewIdxToObjectId = new();
     Dictionary<string, int> objectidToTreeViewIdx = new();
 
+    bool linkRegistered = false;
+
     // protected override void Awake()
     void OnEnable()
     {
@@ -52,18 +55,23 @@ public class OOBEditor : HideableDocument<OOBEditor>
 
         oobTreeView = root.Q<TreeView>("OOBTreeView");
 
-        // oobTreeView.makeItem = () => new Label();
-        // oobTreeView.bindItem = (e, i) =>
-        // {
-        //     var item = oobTreeView.GetItemDataForIndex<IShipGroupMember>(i);
-        //     var id = oobTreeView.GetIdForIndex(i);
-        //     ((Label)e).text = item switch
-        //     {
-        //         ShipLog sl => sl.name.GetMergedName(),
-        //         ShipGroup sg => sg.name.GetMergedName(),
-        //         _ => "[not defined]"
-        //     };
-        // };
+        // RegisterLinkTag
+        // ShipLogNameLinkLabel
+        if(!linkRegistered)
+        {
+            linkRegistered = true;
+        }
+
+        var namedShipLabel = root.Q<Label>("ShipLogNameLinkLabel"); // Open ShipLog or NamedShip??
+        Utils.RegisterLinkTag(namedShipLabel, new()
+        {
+            {"namedShip", () => {
+                if(Utils.TryResolveCurrentValueForBinding<ShipLog>(namedShipLabel, out var shipLog))
+                {
+                    SwitchCenter.Instance.SwitchToShipLogView(shipLog);
+                }
+            } }
+        });
 
         oobTreeView.makeItem = () =>
         {
@@ -326,6 +334,9 @@ public class OOBEditor : HideableDocument<OOBEditor>
             oobTreeView.ScrollToItemById(treeViewIdx);
         }
     }
+
+    [CreateProperty]
+    public bool isInEditMode => GamePreference.Instance.isInEditorMode;
 
     void Update()
     {

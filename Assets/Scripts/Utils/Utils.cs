@@ -251,13 +251,38 @@ public static class Utils
         });
     }
 
-    public static bool TryResolveCurrentValueForBinding<T>(VisualElement el, out T ret)
+    // public static bool TryResolveCurrentValueForBinding<T>(VisualElement el, out T ret)
+    // {
+    //     var ctx = el.GetHierarchicalDataSourceContext();
+    //     return PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out ret);
+    // }
+
+
+    public static bool TryResolveCurrentValueForBinding<T>(VisualElement el, out T ret) where T: class
     {
         var ctx = el.GetHierarchicalDataSourceContext();
+        
+        if(ctx.dataSourcePath.Length == 0)
+        {
+            ret = ctx.dataSource as T;
+            return ret != null;
+        }
+
         return PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out ret);
     }
 
-    public static Func<T> MakeDynamicResolveProvider<T>(VisualElement el)
+    // public static bool TryResolveCurrentValueForBinding2<T>(VisualElement el, out T ret) where T: class
+    // {
+    //     var ctx = el.GetHierarchicalDataSourceContext();
+    //     if(ctx.dataSourcePath.Length == 0)
+    //     {
+    //         ret = ctx.dataSource as T;
+    //         return ret != null;
+    //     }
+    //     return PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out ret);
+    // }
+
+    public static Func<T> MakeDynamicResolveProvider<T>(VisualElement el) where T: class
     {
         return () =>
         {

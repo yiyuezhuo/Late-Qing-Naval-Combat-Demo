@@ -1,7 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <LocalizedEnumField data-source-type="NavalCombatCore.AbstractMountStatusRecord, Assembly-CSharp" type-str="NavalCombatCore.MountStatus">
         <Bindings>
-            <ui:DataBinding property="value" data-source-path="status" source-to-ui-converters="MountStatus =&gt; int" ui-to-source-converters="int =&gt; MountStatus" binding-mode="TwoWay" />
+            <ui:DataBinding property="value" data-source-path="status" source-to-ui-converters="MountStatus =&gt; int" ui-to-source-converters="int =&gt; MountStatus" binding-mode="TwoWay"/>
+            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
         </Bindings>
     </LocalizedEnumField>
 </ui:UXML>

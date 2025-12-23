@@ -250,6 +250,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset strategicScenarioStateEditorDialogDocument;
     public VisualTreeAsset unbindHitAreaDialogDocument;
     public VisualTreeAsset strategicGroupDialogDocument;
+    public VisualTreeAsset shipLogDialogDocument;
+    public VisualTreeAsset landUnitDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -262,7 +264,47 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     }
 
-    public void PopupStrategicGroupDialog(StrategicGroup strategicGroup)
+    public TempDialog PopupLandUnitDialog(LandUnit landUnit)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=landUnitDialogDocument,
+            templateDataSource=landUnit
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var binder = new LandUnitView(){root=el};
+            binder.Bind();
+        };
+
+        tempDialog.Popup();
+
+        return tempDialog;
+    }
+
+    public TempDialog PopupShipLogDialog(ShipLog shipLog)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=shipLogDialogDocument,
+            templateDataSource=shipLog
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var binder = new ShipLogView(){root=el};
+            binder.Bind();
+        };
+
+        tempDialog.Popup();
+
+        return tempDialog;
+    }
+
+    public TempDialog PopupStrategicGroupDialog(StrategicGroup strategicGroup)
     {
         var tempDialog = new TempDialog()
         {
@@ -278,6 +320,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         };
 
         tempDialog.Popup();
+
+        return tempDialog;
     }
 
     public void PopupUnbindHitAreaDialog(HitArea hitArea)

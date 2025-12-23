@@ -67,6 +67,9 @@ namespace CoreUtils
                 }
             });
         }
+
+        [CreateProperty]
+        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
     }
 
     // works like a UnityWebRequest wrapper. Fetch value after request sent

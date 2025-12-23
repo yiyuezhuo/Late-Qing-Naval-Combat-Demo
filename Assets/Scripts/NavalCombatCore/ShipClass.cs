@@ -626,7 +626,7 @@ namespace NavalCombatCore
         Magnetic
     }
 
-    public class TorpedoSector
+    public partial class TorpedoSector
     {
         public GlobalString name = new();
         public List<MountLocationRecord> mountLocationRecords = new();

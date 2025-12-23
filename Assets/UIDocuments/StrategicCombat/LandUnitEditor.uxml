@@ -1,25 +1,24 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
-    <ui:Template name="IStrategicGroupMemberReferenceableParentDepotUI" src="project://database/Assets/UIDocuments/Templates/IStrategicGroupMemberReferenceableParentDepotUI.uxml?fileID=9197481963319205126&amp;guid=a4efcf1499aee3c4e856250902f80d71&amp;type=3#IStrategicGroupMemberReferenceableParentDepotUI" />
-    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:Template name="LandUnitView" src="project://database/Assets/UIDocuments/StrategicCombat/LandUnitView.uxml?fileID=9197481963319205126&amp;guid=6cf2036d91acfff46b139533af95bcbf&amp;type=3#LandUnitView"/>
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
     <ui:VisualElement data-source-type="LandUnitEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Land Unit Editor" class="title">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(352354123288576)" />
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(352354123288576)"/>
             </Bindings>
         </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement data-source-path="currentGameState" style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px;">
-                <ui:ListView name="ObjectListView" data-source-path="landUnits" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/LandUnitLabel.uxml?fileID=9197481963319205126&amp;guid=c06f535a8a0702e448f9525328086019&amp;type=3#LandUnitLabel" show-add-remove-footer="true" reorderable="true" style="flex-grow: 1;" />
+                <ui:ListView name="ObjectListView" data-source-path="landUnits" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/LandUnitLabel.uxml?fileID=9197481963319205126&amp;guid=c06f535a8a0702e448f9525328086019&amp;type=3#LandUnitLabel" show-add-remove-footer="true" reorderable="true" style="flex-grow: 1;"/>
                 <ui:VisualElement style="flex-shrink: 0; flex-direction: column; flex-wrap: nowrap;">
                     <ui:Button text="Copy Last" name="CopyLastButton">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195698978623488)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195698978623488)"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Confirm" name="ConfirmButton">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)"/>
                         </Bindings>
                     </ui:Button>
                 </ui:VisualElement>
@@ -27,187 +26,18 @@
             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                 <ui:Label text="Not selected or invalid">
                     <Bindings>
-                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66691591213056)" />
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66691591213056)"/>
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1;">
                     <ui:VisualElement data-source-path="selectedObject" style="flex-grow: 1;">
                         <ui:ScrollView>
-                            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-                                <ui:TextField label="Land Unit Template" enabled="false" style="flex-grow: 1;">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="landUnitTemplateName" binding-mode="ToTarget" />
-                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3468143747567616)" />
-                                    </Bindings>
-                                </ui:TextField>
-                                <ui:Button text="Set" name="SetLandUnitTemplateButton">
-                                    <Bindings>
-                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)" />
-                                    </Bindings>
-                                </ui:Button>
-                                <ui:Button text="Goto" name="GotoLandUnitTemplateButton">
-                                    <Bindings>
-                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196569347035136)" />
-                                    </Bindings>
-                                </ui:Button>
-                            </ui:VisualElement>
-                            <ui:Instance template="GlobalStringEditor" data-source-path="name">
-                                <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
-                            </ui:Instance>
-                            <ui:Instance template="IStrategicGroupMemberReferenceableParentDepotUI" />
-                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                <ui:IntegerField label="Port" style="flex-grow: 1; flex-basis: 50px;">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="portLevel" binding-mode="TwoWay" />
-                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22822775456174080)" />
-                                    </Bindings>
-                                </ui:IntegerField>
-                                <ui:IntegerField label="Repair Shipyard" style="flex-grow: 1; flex-basis: 50px;">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="repairShipyardLevel" binding-mode="TwoWay" />
-                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22822235791855616)" />
-                                    </Bindings>
-                                </ui:IntegerField>
-                                <Bindings>
-                                    <ui:DataBinding property="style.display" data-source-path="isPort" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
-                                </Bindings>
-                            </ui:VisualElement>
-                            <ui:VisualElement style="flex-direction: row;">
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
-                                    <ui:IntegerField label="Strength">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="strength" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(352622210617344)" />
-                                        </Bindings>
-                                    </ui:IntegerField>
-                                    <ui:Slider label="Suppression" high-value="1" show-input-field="true" fill="true">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="suppression" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30180907463380992)" />
-                                        </Bindings>
-                                    </ui:Slider>
-                                    <ui:Slider label="Fatigue" high-value="1" show-input-field="true" fill="true">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="fatigue" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30180994474217472)" />
-                                        </Bindings>
-                                    </ui:Slider>
-                                </ui:VisualElement>
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
-                                    <ui:Toggle label="Manual Override">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="strengthManualOverride" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22822124227563520)" />
-                                        </Bindings>
-                                    </ui:Toggle>
-                                    <ui:Slider label="Morale" high-value="1" show-input-field="true" fill="true">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="morale" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30181108206964736)" />
-                                        </Bindings>
-                                    </ui:Slider>
-                                    <ui:DoubleField label="Transfer Weight (tons)" enabled="false">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="transferWeightTons" binding-mode="ToTarget" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(22822577254338560)" />
-                                        </Bindings>
-                                    </ui:DoubleField>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
-                                    <ui:DoubleField label="Supply (tons)">
-                                        <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11056970263597056)" />
-                                            <ui:DataBinding property="value" data-source-path="supplyTons" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:DoubleField>
-                                    <ui:FloatField label="Supply Cost (Ton/Day)" enabled="false">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="supplyCostTonsPerDay" binding-mode="ToTarget" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(12863234526318592)" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Supply Cost (Ton/Day/man)" enabled="false">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="supplyCostTonsPerMenDay" binding-mode="ToTarget" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(12863097431298048)" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                </ui:VisualElement>
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
-                                    <ui:FloatField label="Supply Cap (tons)" enabled="false">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="supplyCapTons" binding-mode="ToTarget" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(12863374507020288)" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:DoubleField label="Supply Generation (tons)">
-                                        <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11057038760775680)" />
-                                            <ui:DataBinding property="value" data-source-path="supplyGeneratedTons" binding-mode="TwoWay" />
-                                        </Bindings>
-                                    </ui:DoubleField>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                            <ui:VisualElement data-source-path="supplyTransferState">
-                                <ui:VisualElement data-source-path="requestRecord" style="flex-direction: row;">
-                                    <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
-                                        <ui:TextField label="Supply Request Source" readonly="true" enabled="false">
-                                            <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="otherObjectName" binding-mode="ToTarget" />
-                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(12861103689863168)" />
-                                            </Bindings>
-                                        </ui:TextField>
-                                        <ui:FloatField label="Supply Path Cost" readonly="true" enabled="false">
-                                            <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="cost" binding-mode="ToTarget" />
-                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(12861369730371584)" />
-                                            </Bindings>
-                                        </ui:FloatField>
-                                    </ui:VisualElement>
-                                    <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
-                                        <ui:FloatField label="Request (tons)" readonly="true" enabled="false">
-                                            <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="targetSupplyTons" binding-mode="ToTarget" />
-                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(12861462399324160)" />
-                                            </Bindings>
-                                        </ui:FloatField>
-                                        <ui:FloatField label="Received (tons)" readonly="true" enabled="false">
-                                            <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="flowSupplyTons" binding-mode="ToTarget" />
-                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(12861537225707520)" />
-                                            </Bindings>
-                                        </ui:FloatField>
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                                <ui:MultiColumnListView data-source-path="requestedRecords" binding-source-selection-mode="AutoAssign" header-title="Supply Requested Records" show-foldout-header="true">
-                                    <ui:Columns>
-                                        <ui:Column width="70%" title="Name" cell-template="project://database/Assets/UIDocuments/Templates/SupplyFlowRecord/SupplyFlowRecordOtherObjectName.uxml?fileID=9197481963319205126&amp;guid=460f42da88bbbd849ae1fcdeacf19e0a&amp;type=3#SupplyFlowRecordOtherObjectName" header-template="project://database/Assets/UIDocuments/Templates/SupplyFlowRecord/SupplyFlowRecordOtherObjectNameLabel.uxml?fileID=9197481963319205126&amp;guid=897122f9e00203748bf650128170b232&amp;type=3#SupplyFlowRecordOtherObjectNameLabel" />
-                                        <ui:Column width="10%" cell-template="project://database/Assets/UIDocuments/Templates/SupplyFlowRecord/SupplyFlowRecordTargetSupplyTons.uxml?fileID=9197481963319205126&amp;guid=d1d0b595ecff2644eb71bf9346f0f6b9&amp;type=3#SupplyFlowRecordTargetSupplyTons" title="Requested" header-template="project://database/Assets/UIDocuments/Templates/SupplyFlowRecord/SupplyFlowRecordTargetSupplyTonsLabel.uxml?fileID=9197481963319205126&amp;guid=ff7049043bb46b5419bb0fef12ad2ab9&amp;type=3#SupplyFlowRecordTargetSupplyTonsLabel" />
-                                        <ui:Column width="10%" cell-template="project://database/Assets/UIDocuments/Templates/SupplyFlowRecord/SupplyFlowRecordFlowSupplyTons.uxml?fileID=9197481963319205126&amp;guid=f64b0eb40c9a56b43a6cfc933657d2da&amp;type=3#SupplyFlowRecordFlowSupplyTons" title="Delivered" header-template="project://database/Assets/UIDocuments/Templates/SupplyFlowRecord/SupplyFlowRecordFlowSupplyTonsLabel.uxml?fileID=9197481963319205126&amp;guid=5360976c0041f734bbefe15266083b58&amp;type=3#SupplyFlowRecordFlowSupplyTonsLabel" />
-                                        <ui:Column width="10%" cell-template="project://database/Assets/UIDocuments/Templates/SupplyFlowRecord/SupplyFlowRecordCost.uxml?fileID=9197481963319205126&amp;guid=2ce8f9e06c6d3d843a67f477fa303b93&amp;type=3#SupplyFlowRecordCost" title="Cost" header-template="project://database/Assets/UIDocuments/Templates/SupplyFlowRecord/SupplyFlowRecordCostLabel.uxml?fileID=9197481963319205126&amp;guid=77a137eaca76e6c42b005cb840f37016&amp;type=3#SupplyFlowRecordCostLabel" />
-                                    </ui:Columns>
-                                    <Bindings>
-                                        <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(12862045579546624)" />
-                                    </Bindings>
-                                </ui:MultiColumnListView>
-                            </ui:VisualElement>
-                            <ui:Label text="Remark">
-                                <Bindings>
-                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)" />
-                                </Bindings>
-                            </ui:Label>
-                            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="height: 100px; max-height: 100px; min-height: 100px; white-space: normal;">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:TextField>
+                            <ui:Instance template="LandUnitView" name="LandUnitView"/>
                         </ui:ScrollView>
                     </ui:VisualElement>
                     <Bindings>
-                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                     </Bindings>
                 </ui:VisualElement>
             </ui:VisualElement>

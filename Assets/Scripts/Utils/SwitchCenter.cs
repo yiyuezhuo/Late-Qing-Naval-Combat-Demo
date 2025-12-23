@@ -2,7 +2,6 @@
 using NavalCombatCore;
 using CoreUtils;
 using StrategicCombatCore;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 public interface ISwitchable
 {
@@ -20,6 +19,14 @@ public class SwitchCenter
         {
             currentActiveViewContainer?.SwitchClose();
             currentActiveViewContainer = newContainer;
+        }
+    }
+
+    public void TryToSoftHideCurrent() // Temp Hack
+    {
+        if(currentActiveViewContainer != null && currentActiveViewContainer is ShipLogEditor shipLogEditor)
+        {
+            shipLogEditor.SoftHide();
         }
     }
     
@@ -69,17 +76,19 @@ public class SwitchCenter
             {
                 // currentActiveViewContainer?.SwitchClose();
                 // currentActiveViewContainer = StrategicGroupEditor.Instance;
-                UpdateCurrentActiveViewContainer(StrategicGroupEditor.Instance);
+                
 
                 // TODO: Branching according to global IsEditor flag
                 if(GamePreference.Instance.isInEditorMode)
                 {
+                    UpdateCurrentActiveViewContainer(StrategicGroupEditor.Instance);
                     StrategicGroupEditor.Instance.Show();
                     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
                 }
                 else
                 {
-                    DialogRoot.Instance.PopupStrategicGroupDialog(group);
+                    var tempDialog = DialogRoot.Instance.PopupStrategicGroupDialog(group);
+                    UpdateCurrentActiveViewContainer(tempDialog);
                 }
             }
         }
@@ -94,14 +103,21 @@ public class SwitchCenter
             {
                 // currentActiveViewContainer?.SwitchClose();
                 // currentActiveViewContainer = StrategicGroupEditor.Instance;
-                UpdateCurrentActiveViewContainer(LandUnitEditor.Instance);
-
-                // TODO: Branching according to global IsEditor flag
-                LandUnitEditor.Instance.Show();
-                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
+                if(GamePreference.Instance.isInEditorMode)
+                {
+                    UpdateCurrentActiveViewContainer(LandUnitEditor.Instance);
+                    LandUnitEditor.Instance.Show();
+                    BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
+                }
+                else
+                {
+                    var tempDialog = DialogRoot.Instance.PopupLandUnitDialog(landUnit);
+                    UpdateCurrentActiveViewContainer(tempDialog);
+                }
             }
         }
     }
+
     public void SwitchToShipLogView(ShipLog shipLog)
     {
         if(shipLog != null)
@@ -112,11 +128,19 @@ public class SwitchCenter
             {
                 // currentActiveViewContainer?.SwitchClose();
                 // currentActiveViewContainer = ShipLogEditor.Instance;
-                UpdateCurrentActiveViewContainer(ShipLogEditor.Instance);
+                
 
-                // TODO: Branching according to global IsEditor flag
-                ShipLogEditor.Instance.Show();
-                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipLogEditor.Instance.shipLogListView, idx);
+                if(GamePreference.Instance.isInEditorMode)
+                {
+                    UpdateCurrentActiveViewContainer(ShipLogEditor.Instance);
+                    ShipLogEditor.Instance.Show();
+                    BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipLogEditor.Instance.shipLogListView, idx);
+                }
+                else
+                {
+                    var tempDialog = DialogRoot.Instance.PopupShipLogDialog(shipLog);
+                    UpdateCurrentActiveViewContainer(tempDialog);
+                }
             }
         }
     }

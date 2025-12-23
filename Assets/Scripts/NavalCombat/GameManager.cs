@@ -150,6 +150,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public void Start()
     {
+        SwitchCenter.Instance.Reset();
+
         GamePreference.Instance.SetShortLabelLanguageTypeByLocale(LocalizationSettings.SelectedLocale);
 
         iconLayerMask = LayerMask.GetMask("Icon");

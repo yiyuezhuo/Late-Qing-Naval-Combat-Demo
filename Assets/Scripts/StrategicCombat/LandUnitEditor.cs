@@ -8,12 +8,12 @@ using Unity.Properties;
 using CoreUtils;
 using StrategicCombatCore;
 
-public class LandUnitEditor : LeftObjectPickerRightEditorStrategic<LandUnitEditor, LandUnit>
+public class LandUnitView
 {
-    protected override void OnEnable()
-    {
-        base.OnEnable();
+    public VisualElement root;
 
+    public void Bind()
+    {
         var setLandUnitTemplateButton = root.Q<Button>("SetLandUnitTemplateButton");
         setLandUnitTemplateButton.clicked += () =>
         {
@@ -48,6 +48,20 @@ public class LandUnitEditor : LeftObjectPickerRightEditorStrategic<LandUnitEdito
 
         // Utils.BindIStrategicGroupMemberReferenceable(root, this);
         Utils.BindIStrategicGroupMemberReferenceable(root);
+    }
+}
+
+public class LandUnitEditor : LeftObjectPickerRightEditorStrategic<LandUnitEditor, LandUnit>
+{
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        var binder = new LandUnitView()
+        {
+            root = root.Q<VisualElement>("LandUnitView")
+        };
+        binder.Bind();
     }
 
     protected override void ProcessCopiedLastOne(LandUnit landUnit)

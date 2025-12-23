@@ -139,6 +139,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     void Start()
     {
+        SwitchCenter.Instance.Reset();
+
         GamePreference.Instance.SetShortLabelLanguageTypeByLocale(LocalizationSettings.SelectedLocale);
 
         var width = tempMapWidth;
@@ -1075,4 +1077,6 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         areaSystemTransform.gameObject.SetActive(scenarioState.enableAreaSystem);
     }
 
+    [CreateProperty]
+    public bool isInEditMode => GamePreference.Instance.isInEditorMode;
 }

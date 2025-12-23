@@ -139,6 +139,7 @@
                     <ui:Button text="Ship Log" name="ShipLogEditorButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62878209708032)"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Order of Battle" name="OOBEditorButton">
@@ -159,34 +160,44 @@
                     <ui:Button text="JS Script Console" name="JSScriptConsoleButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63193810112512)"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text=" Set to Formation Position" name="SetToFormationPositionButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63271861915648)"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Streaming Asset Reference" name="StreamingAssetReferenceDialogButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63363125776384)"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Event Editor" name="EventEditorDialogButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63469409439744)"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Force Builder" name="ForceBuilderButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34953068468146176)"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Auto-Deployment" name="AutoDeploymentButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(35617374251683840)"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Reset Image Cache" name="ResetImageCacheButton"/>
+                    <ui:Button text="Reset Image Cache" name="ResetImageCacheButton">
+                        <Bindings>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61775904673792)"/>

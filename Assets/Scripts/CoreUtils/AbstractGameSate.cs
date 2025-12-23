@@ -17,7 +17,7 @@ namespace CoreUtils
     //     public List<ShipLog> shipLogs { get; set; }
     // }
 
-    public class AbstractGameState// : IAbstractGameState
+    public partial class AbstractGameState// : IAbstractGameState
     {
         // public List<Leader> leaders { get; set; } = new();
         // public List<ShipClass> shipClasses { get; set; } = new();

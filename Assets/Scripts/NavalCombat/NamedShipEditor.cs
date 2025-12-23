@@ -79,18 +79,20 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
         gotoShipClassButton.clicked += () =>
         {
             var shipClass = selectedNamedShip?.shipClass;
-            if (shipClass == null)
-                return;
+            // if (shipClass == null)
+            //     return;
 
-            var gameState = SuperGameState.Instance.GetCurrentGameState();
-            var idx = gameState.shipClasses.IndexOf(shipClass);
-            if (idx != -1)
-            {
-                Hide();
-                ShipClassEditor.Instance.Show();
-                // ShipClassEditor.Instance.shipClassListView.SetSelection(idx);
-                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipClassEditor.Instance.shipClassListView, idx);
-            }
+            // var gameState = SuperGameState.Instance.GetCurrentGameState();
+            // var idx = gameState.shipClasses.IndexOf(shipClass);
+            // if (idx != -1)
+            // {
+            //     Hide();
+            //     ShipClassEditor.Instance.Show();
+            //     // ShipClassEditor.Instance.shipClassListView.SetSelection(idx);
+            //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipClassEditor.Instance.shipClassListView, idx);
+            // }
+
+            SwitchCenter.Instance.SwitchToShipClassView(shipClass);
         };
 
         var gotoLeaderButton = root.Q<Button>("GotoLeaderButton");

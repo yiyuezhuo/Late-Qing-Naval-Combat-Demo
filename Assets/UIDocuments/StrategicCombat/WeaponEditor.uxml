@@ -1,24 +1,24 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
-    <ui:Template name="PictureField" src="project://database/Assets/UIDocuments/Common/PictureField.uxml?fileID=9197481963319205126&amp;guid=7e20c3d60b5a8a34a80d1015e6851169&amp;type=3#PictureField" />
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor"/>
+    <ui:Template name="PictureField" src="project://database/Assets/UIDocuments/Common/PictureField.uxml?fileID=9197481963319205126&amp;guid=7e20c3d60b5a8a34a80d1015e6851169&amp;type=3#PictureField"/>
     <ui:VisualElement data-source-type="WeaponEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Weapon Editor" class="title">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(199598750208000)" />
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(199598750208000)"/>
             </Bindings>
         </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px;">
-                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" data-source-path="currentGameState.weapons" item-template="project://database/Assets/UIDocuments/Templates/WeaponLabel.uxml?fileID=9197481963319205126&amp;guid=64322fe9ac2f31b469011ea7d0e190e0&amp;type=3#WeaponLabel" style="flex-grow: 1;" />
+                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" data-source-path="currentGameState.weapons" item-template="project://database/Assets/UIDocuments/Templates/WeaponLabel.uxml?fileID=9197481963319205126&amp;guid=64322fe9ac2f31b469011ea7d0e190e0&amp;type=3#WeaponLabel" style="flex-grow: 1;"/>
                 <ui:VisualElement name="ControlButtons" style="flex-shrink: 0;">
                     <ui:Button text="Copy Last" name="CopyLastButton">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195698978623488)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(195698978623488)"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Confirm" name="ConfirmButton">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)"/>
                         </Bindings>
                     </ui:Button>
                 </ui:VisualElement>
@@ -26,143 +26,148 @@
             <ui:VisualElement style="flex-grow: 1;">
                 <ui:Label text="Not Selected or Invalid">
                     <Bindings>
-                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66691591213056)" />
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66691591213056)"/>
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1;">
                     <ui:ScrollView>
                         <ui:VisualElement name="ContentContainer" data-source-path="selectedObject" style="flex-grow: 1;">
-                            <ui:VisualElement style="flex-direction: row;">
-                                <ui:Instance template="GlobalStringEditor" data-source-path="name" style="flex-grow: 1;">
-                                    <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
-                                </ui:Instance>
-                                <ui:VisualElement style="width: 200px; -unity-background-scale-mode: scale-to-fit;">
-                                    <Bindings>
-                                        <ui:DataBinding property="style.backgroundImage" data-source-path="pictureReference.pictureStyleBackground" binding-mode="ToTarget" />
-                                    </Bindings>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                            <ui:Instance template="PictureField" data-source-path="pictureReference" name="PictureField">
-                                <AttributeOverrides element-name="FieldLabel" text="Picture" />
-                            </ui:Instance>
-                            <ui:VisualElement style="flex-direction: row;">
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                                    <ui:VisualElement data-source-path="rateOfFireRoundPerMinute" style="border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-left: 1px; margin-bottom: 1px; margin-right: 1px; margin-top: 1px;">
-                                        <ui:Label text="Rate of Fire (round/min)">
-                                            <Bindings>
-                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(201659243991040)" />
-                                            </Bindings>
-                                        </ui:Label>
-                                        <ui:FloatField label="Slow">
-                                            <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="slow" binding-mode="TwoWay" />
-                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(201774524436480)" />
-                                            </Bindings>
-                                        </ui:FloatField>
-                                        <ui:FloatField label="Normal">
-                                            <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="normal" binding-mode="TwoWay" />
-                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(201834121302016)" />
-                                            </Bindings>
-                                        </ui:FloatField>
-                                        <ui:FloatField label="Rapid">
-                                            <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="rapid" binding-mode="TwoWay" />
-                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(201910847705088)" />
-                                            </Bindings>
-                                        </ui:FloatField>
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <ui:VisualElement style="flex-direction: row;">
+                                    <ui:Instance template="GlobalStringEditor" data-source-path="name" style="flex-grow: 1;">
+                                        <AttributeOverrides element-name="GlobalStringLabel" text="Name"/>
+                                    </ui:Instance>
+                                    <ui:VisualElement style="width: 200px; -unity-background-scale-mode: scale-to-fit;">
+                                        <Bindings>
+                                            <ui:DataBinding property="style.backgroundImage" data-source-path="pictureReference.pictureStyleBackground" binding-mode="ToTarget"/>
+                                        </Bindings>
                                     </ui:VisualElement>
-                                    <ui:IntegerField label="Load">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="load" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(201982494806016)" />
-                                        </Bindings>
-                                    </ui:IntegerField>
-                                    <ui:FloatField label="Shell Weight (kg)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="shellWeightKg" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(202068557729792)" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Carrying Weight (kg)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="weightKg" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(202474302115840)" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:Toggle label="Is Gun">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="isGun" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3468951746678784)" />
-                                        </Bindings>
-                                    </ui:Toggle>
                                 </ui:VisualElement>
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                                    <ui:FloatField label="Effective Range (meter)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="effectiveRangeMeter" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(202595253260288)" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Max Range (Meter)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="maxRangeMeter" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(202867606196224)" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Burst Radius (m)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="burstRadiusMeter" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(202953144832000)" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:Slider label="Reliability" high-value="1" show-input-field="true">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="reliability" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203040533155840)" />
-                                        </Bindings>
-                                    </ui:Slider>
-                                    <ui:FloatField label="Muzzle Velocity (m/s)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="muzzleVelocityMeterPerSecond" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203087232536576)" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Calibre (mm)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="calibreMM" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203230497378304)" />
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:EnumField label="Melee Ability" value="Center" type="StrategicCombatCore.Weapon+MeleeAbility, Assembly-CSharp">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="meleeAbility" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203293432909824)" />
-                                        </Bindings>
-                                    </ui:EnumField>
-                                    <ui:IntegerField label="Crew">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="crew" binding-mode="TwoWay" />
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203352530653184)" />
-                                        </Bindings>
-                                    </ui:IntegerField>
+                                <ui:Instance template="PictureField" data-source-path="pictureReference" name="PictureField">
+                                    <AttributeOverrides element-name="FieldLabel" text="Picture"/>
+                                </ui:Instance>
+                                <ui:VisualElement style="flex-direction: row;">
+                                    <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                        <ui:VisualElement data-source-path="rateOfFireRoundPerMinute" style="border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-left: 1px; margin-bottom: 1px; margin-right: 1px; margin-top: 1px;">
+                                            <ui:Label text="Rate of Fire (round/min)">
+                                                <Bindings>
+                                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(201659243991040)"/>
+                                                </Bindings>
+                                            </ui:Label>
+                                            <ui:FloatField label="Slow">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="slow" binding-mode="TwoWay"/>
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(201774524436480)"/>
+                                                </Bindings>
+                                            </ui:FloatField>
+                                            <ui:FloatField label="Normal">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="normal" binding-mode="TwoWay"/>
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(201834121302016)"/>
+                                                </Bindings>
+                                            </ui:FloatField>
+                                            <ui:FloatField label="Rapid">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="rapid" binding-mode="TwoWay"/>
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(201910847705088)"/>
+                                                </Bindings>
+                                            </ui:FloatField>
+                                        </ui:VisualElement>
+                                        <ui:IntegerField label="Load">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="load" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(201982494806016)"/>
+                                            </Bindings>
+                                        </ui:IntegerField>
+                                        <ui:FloatField label="Shell Weight (kg)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="shellWeightKg" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(202068557729792)"/>
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:FloatField label="Carrying Weight (kg)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="weightKg" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(202474302115840)"/>
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:Toggle label="Is Gun">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="isGun" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3468951746678784)"/>
+                                            </Bindings>
+                                        </ui:Toggle>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                                        <ui:FloatField label="Effective Range (meter)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="effectiveRangeMeter" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(202595253260288)"/>
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:FloatField label="Max Range (Meter)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="maxRangeMeter" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(202867606196224)"/>
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:FloatField label="Burst Radius (m)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="burstRadiusMeter" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(202953144832000)"/>
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:Slider label="Reliability" high-value="1" show-input-field="true">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="reliability" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203040533155840)"/>
+                                            </Bindings>
+                                        </ui:Slider>
+                                        <ui:FloatField label="Muzzle Velocity (m/s)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="muzzleVelocityMeterPerSecond" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203087232536576)"/>
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:FloatField label="Calibre (mm)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="calibreMM" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203230497378304)"/>
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:EnumField label="Melee Ability" value="Center" type="StrategicCombatCore.Weapon+MeleeAbility, Assembly-CSharp">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="meleeAbility" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203293432909824)"/>
+                                            </Bindings>
+                                        </ui:EnumField>
+                                        <ui:IntegerField label="Crew">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="crew" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203352530653184)"/>
+                                            </Bindings>
+                                        </ui:IntegerField>
+                                    </ui:VisualElement>
                                 </ui:VisualElement>
+                                <ui:Label text="Remark">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 50px;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:TextField>
+                                <Bindings>
+                                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                                </Bindings>
                             </ui:VisualElement>
-                            <ui:Label text="Remark">
-                                <Bindings>
-                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)" />
-                                </Bindings>
-                            </ui:Label>
-                            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal;">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay" />
-                                </Bindings>
-                            </ui:TextField>
                         </ui:VisualElement>
                     </ui:ScrollView>
                     <Bindings>
-                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                     </Bindings>
                 </ui:VisualElement>
             </ui:VisualElement>

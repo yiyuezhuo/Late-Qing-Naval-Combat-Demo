@@ -112,11 +112,13 @@
                     <ui:Button text="Land Unit" name="LandUnitEditorButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203857801678848)"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Group" name="StrategicGroupEditorButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203935249502208)"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Side State" name="SideStateButton">

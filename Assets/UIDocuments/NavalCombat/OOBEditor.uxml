@@ -24,16 +24,19 @@
                         <ui:Button text="Create Group" name="CreateGroupButton" style="flex-basis: 50px; flex-grow: 1;">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(173479221170176)"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:Button>
                         <ui:Button text="Delete Group" name="DeleteGroupButton" style="flex-basis: 50px; flex-grow: 1;">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(173542366416896)"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:Button>
                         <ui:Button text="Attach" name="AttachButton" style="flex-basis: 50px; flex-grow: 1;">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(174143452123136)"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:Button>
                     </ui:VisualElement>
@@ -41,16 +44,19 @@
                         <ui:Button text="Add Ship" name="AddShipButton" style="flex-basis: 50px; flex-grow: 1;">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(174208438669312)"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:Button>
                         <ui:Button text="Remove Ship" name="RemoveShipButton" style="flex-basis: 50px; flex-grow: 1;">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(174272255004672)"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:Button>
                         <ui:Button text="Repair" name="RepairButton">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(174328152494080)"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:Button>
                     </ui:VisualElement>
@@ -58,6 +64,7 @@
                         <ui:Button text="Import" name="ImportButton" style="flex-basis: 50px; flex-grow: 1;">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(81564987461632)"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:Button>
                         <ui:Button text="Export" name="ExportButton" style="flex-basis: 50px; flex-grow: 1;">
@@ -100,6 +107,7 @@
                             <ui:Button text="Set Leader" name="SetLeaderButton">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(173227382575104)"/>
+                                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                 </Bindings>
                             </ui:Button>
                             <ui:EnumField label="Type" value="Center" type="NavalCombatCore.GroupType, Assembly-CSharp" style="display: none;">
@@ -128,12 +136,12 @@
                 <ui:VisualElement data-source-path="currentSelectedShipLog" style="flex-grow: 0;">
                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                         <ui:VisualElement style="flex-grow: 1;">
-                            <ui:Label text="Selected ShipLog&#39;s nama">
+                            <ui:Label text="Selected ShipLog&apos;s name" name="ShipLogNameLinkLabel">
                                 <Bindings>
-                                    <ui:DataBinding property="text" binding-mode="ToTarget" source-to-ui-converters="ShipLog =&gt; ShipLog&#39;s merge name"/>
+                                    <ui:DataBinding property="text" binding-mode="ToTarget" source-to-ui-converters="ShipLog =&gt; ShipLog&apos;s merge name" data-source-path="namedShipDescLink"/>
                                 </Bindings>
                             </ui:Label>
-                            <ui:Label text="Selected ShipLog&#39;s captain&#39;s name">
+                            <ui:Label text="Selected ShipLog&apos;s captain&apos;s name">
                                 <Bindings>
                                     <ui:DataBinding property="text" binding-mode="ToTarget" data-source-path="captainDesc"/>
                                 </Bindings>

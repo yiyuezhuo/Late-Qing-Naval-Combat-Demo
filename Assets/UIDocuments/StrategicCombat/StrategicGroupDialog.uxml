@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="StrategicGroupView" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicGroupView.uxml?fileID=9197481963319205126&amp;guid=738d87a32f1e0f44883dca49a7df3097&amp;type=3#StrategicGroupView"/>
     <ui:VisualElement class="panel-major-dialog">
-        <ui:VisualElement class="title" style="flex-direction: row;">
+        <ui:VisualElement class="title" style="flex-direction: row; flex-shrink: 0;">
             <ui:Label text="Strategic Group" style="flex-grow: 1;">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40682718548889600)"/>

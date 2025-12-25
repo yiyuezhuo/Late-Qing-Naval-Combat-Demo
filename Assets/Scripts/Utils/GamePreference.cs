@@ -132,7 +132,7 @@ public class GamePreference
     [CreateProperty]
     public CoreParameter navalCombatCoreParameter => CoreParameter.Instance;
 
-    public bool isInEditorMode;
+    public bool isInEditMode;
 
     public void SetShortLabelLanguageTypeByLocale(Locale locale)
     {
@@ -202,7 +202,7 @@ public class GamePreference
         p.forcedNavalCombatResolution = PlayerPrefs.GetInt("forcedNavalCombatResolution", 1) == 1;
         p.showAIDialog = PlayerPrefs.GetInt("showAIDialog", 1) == 1;
         p.simulationRateRaio = PlayerPrefs.GetFloat("simulationRateRaio", 120);
-        p.isInEditorMode = PlayerPrefs.GetInt("isInEditorMode", 0) == 1;
+        p.isInEditMode = PlayerPrefs.GetInt("isInEditMode", 0) == 1;
     }
 
     public void SaveToPlayerPrefs()
@@ -210,7 +210,7 @@ public class GamePreference
         PlayerPrefs.SetInt("forcedNavalCombatResolution", forcedNavalCombatResolution ? 1 : 0);
         PlayerPrefs.SetInt("showAIDialog", showAIDialog ? 1 : 0);
         PlayerPrefs.SetFloat("simulationRateRaio", simulationRateRaio);
-        PlayerPrefs.SetInt("isInEditorMode", isInEditorMode ? 1 : 0);
+        PlayerPrefs.SetInt("isInEditMode", isInEditMode ? 1 : 0);
 
         PlayerPrefs.Save();
     }

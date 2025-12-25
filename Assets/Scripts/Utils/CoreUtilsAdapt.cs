@@ -69,7 +69,7 @@ namespace CoreUtils
         }
 
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 
     // works like a UnityWebRequest wrapper. Fetch value after request sent

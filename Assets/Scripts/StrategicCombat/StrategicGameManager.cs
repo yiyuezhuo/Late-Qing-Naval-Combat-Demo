@@ -372,6 +372,15 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 Debug.LogWarning($"Misasligned map: {hitAreaMapRecord.hitAreaObjectId} -> {hitAreaMapRecord.areaCellObjectId}");
             }
         }
+
+        viewerSideId = viewState.viewerSideId;
+    }
+
+    [CreateProperty]
+    public bool isInEditMode
+    {
+        get => GamePreference.Instance.isInEditMode;
+        set => GamePreference.Instance.isInEditMode = value;
     }
 
     public static void TempFix()
@@ -537,18 +546,24 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
     }
 
+    public string viewerSideId;
+    public SideState GetViewerSide() => EntityManager.Instance.Get<SideState>(viewerSideId);
+
+    public IEnumerable<StrategicGroup> GetObserveableStrategicGroups()
+    {
+        var independentStrategicGroupsOrderedByCell = StrategicGameState.Instance.IterIndependentStrategicGroupsOrderedByCell();
+        
+        if(isInEditMode)
+        {
+            return independentStrategicGroupsOrderedByCell;
+        }
+        var viewerSide = GetViewerSide();
+        return independentStrategicGroupsOrderedByCell.Where(g => g.side == viewerSide);
+    }
 
     void UpdateView()
     {
-        // var gameState = StrategicGameState.Instance;
-        // if(gameState.scenarioState.enableAreaSystem)
-        // {
-        //     var observableStrategicGroups = StrategicGameState.Instance.GetOrderedObservableStrategicGroups().Where(g => g.IsOnAreaCell()).ToList();
-
-        //     BindAreaSystemStrategicGroupIcons(areaSystemCounterContainerTransform, strategicGroupIconPrefab, observableStrategicGroups);
-        // }
-
-        var observableStrategicGroups = StrategicGameState.Instance.GetOrderedObservableStrategicGroups().ToList();
+        var observableStrategicGroups = GetObserveableStrategicGroups().ToList();
         BindStrategicGroupIcons(counterContainerTransform, strategicGroupIconPrefab, observableStrategicGroups);
 
         UpdatePathLines();
@@ -1032,15 +1047,16 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
     }
 
-    [CreateProperty]
-    public bool enableFogOfWar
-    {
-        get => StrategicGameState.Instance.scenarioState.enableFogOfWar;
-        set => StrategicGameState.Instance.scenarioState.enableFogOfWar = value;
-    }
+    // Switch to isInEditor
+    // [CreateProperty]
+    // public bool enableFogOfWar
+    // {
+    //     get => StrategicGameState.Instance.scenarioState.enableFogOfWar;
+    //     set => StrategicGameState.Instance.scenarioState.enableFogOfWar = value;
+    // }
 
     [CreateProperty]
-    public string fogOfWarViewerSideStateName => EntityManager.Instance.Get<SideState>(StrategicGameState.Instance.scenarioState.fogOfWarViewerSideObjectId)?.name?.GetMergedName() ?? "";
+    public string fogOfWarViewerSideStateName => EntityManager.Instance.Get<SideState>(viewerSideId)?.name?.GetMergedName() ?? "[Not Specified or Invalid]";
 
     [CreateProperty]
     public string referenceTimeZoneDateTimeOffsetString => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(gameState.scenarioState.dateTime);
@@ -1066,7 +1082,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             xPosition = cam.transform.position.x,
             yPosition = cam.transform.position.y,
             orthographicSize = cam.orthographicSize,
-            hitAreaMapRecords = hitAreaMapRecords
+            hitAreaMapRecords = hitAreaMapRecords,
+            viewerSideId = viewerSideId
         };
     }
 
@@ -1077,6 +1094,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         areaSystemTransform.gameObject.SetActive(scenarioState.enableAreaSystem);
     }
 
+    // [CreateProperty]
+    // public bool isInEditMode => GamePreference.Instance.isInEditMode;
     [CreateProperty]
-    public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+    public bool isInUnityEditor => Application.isEditor;
+
 }

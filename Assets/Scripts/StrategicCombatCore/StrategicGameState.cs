@@ -4,6 +4,8 @@ using System.Linq;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
+using StrategicCombat;
+using Unity.VisualScripting.Dependencies.NCalc;
 using YYZ.PathFinding;
 
 namespace StrategicCombatCore
@@ -79,6 +81,8 @@ namespace StrategicCombatCore
         // {
         //     LazyLocalizedString.MakeRaw("Game Started")
         // };
+
+        public List<NavalContactReport> navalContactReports = new();
 
         [XmlIgnore]
         public Dictionary<Country, SideState> countryToSideStateMap = new();
@@ -210,6 +214,7 @@ namespace StrategicCombatCore
             landBattles = newInstance.landBattles;
 
             logs = newInstance.logs;
+            navalContactReports = newInstance.navalContactReports;
 
             mapRebuilt?.Invoke(this, EventArgs.Empty);
             edgeFeatureUpdated?.Invoke(this, EventArgs.Empty);
@@ -247,62 +252,49 @@ namespace StrategicCombatCore
         }
 
         // public IEnumerable<StrategicGroup> GetIndependentStrategicGroups() => strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent);
-        public IEnumerable<StrategicGroup> GetIndependentStrategicGroups()
-        {
-            foreach (var group in strategicGroups)
-            {
-                if (group.deployState == StrategicGroup.DeployState.Independent)
-                    yield return group;
-            }
-        }
 
-        public IEnumerable<StrategicGroup> GetObservabledStrategicGroups()
-        {
-            foreach (var group in strategicGroups)
-            {
-                if (group.deployState == StrategicGroup.DeployState.Independent)
-                {
-                    if (IsGroupObservable(group))
-                        yield return group;
-                }
-            }
-        }
+        // public IEnumerable<StrategicGroup> GetObservabledStrategicGroups()
+        // {
+        //     foreach (var group in strategicGroups)
+        //     {
+        //         if (group.deployState == StrategicGroup.DeployState.Independent)
+        //         {
+        //             if (IsGroupObservable(group))
+        //                 yield return group;
+        //         }
+        //     }
+        // }
 
-        public IEnumerable<StrategicGroup> GetOrderedObservableStrategicGroups()
-        {
-            // var relatedCells = strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent).Select(group => group.cell).ToHashSet();
-            var independentGroups = strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent).ToList();
-            var independentCells = independentGroups.Select(group => group.cell).ToList();
-            var relatedCells = independentCells.ToHashSet();
-            foreach (var cell in relatedCells)
-            {
-                foreach (var group in cell.StrategicGroupReferences.Select(rp => rp.Get()).Where(group => group != null && IsGroupObservable(group)))
-                {
-                    yield return group;
-                }
-            }
-        }
+        // public IEnumerable<StrategicGroup> GetOrderedObservableStrategicGroups(SideState side)
+        // {
+        //     // var relatedCells = strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent).Select(group => group.cell).ToHashSet();
+        //     var independentGroups = strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent).ToList();
+        //     var independentCells = independentGroups.Select(group => group.cell).ToList();
+        //     var relatedCells = independentCells.ToHashSet();
+        //     foreach (var cell in relatedCells)
+        //     {
+        //         foreach (var group in cell.StrategicGroupReferences.Select(rp => rp.Get()).Where(group => group != null && IsGroupObservable(side, group)))
+        //         {
+        //             yield return group;
+        //         }
+        //     }
+        // }
 
-        public bool IsGroupObservable(StrategicGroup group)
-        {
-            if (!scenarioState.enableFogOfWar)
-            {
-                return true;
-            }
-            var viewerSideId = scenarioState.fogOfWarViewerSideObjectId;
-            var groupSide = group?.side;
-            if (groupSide.objectId == viewerSideId)
-                return true;
+        // public bool IsGroupObservable(SideState viewerSide, StrategicGroup group)
+        // {
+        //     var groupSide = group?.side;
+        //     if (groupSide == viewerSide)
+        //         return true;
 
-            return group.cell.GetNeighbors().Prepend(group.cell).Any(cell =>
-            {
-                if (cell.sideObjectIdHex == viewerSideId)
-                    return true;
-                if (cell.StrategicGroupReferences.Any(g => g.Get()?.side?.objectId == viewerSideId))
-                    return true;
-                return false;
-            });
-        }
+        //     return group.cell.GetNeighbors().Prepend(group.cell).Any(cell =>
+        //     {
+        //         if (cell.GetHexSide() == viewerSide)
+        //             return true;
+        //         if (cell.StrategicGroupReferences.Any(g => g.Get()?.side == viewerSide))
+        //             return true;
+        //         return false;
+        //     });
+        // }
 
         static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
@@ -464,11 +456,102 @@ namespace StrategicCombatCore
             HandleLandBattleBeginEnd();
 
             ForceDisengageStaticGroup();
+
+            Advance1HourForContactReport();
+        }
+
+        static TimeSpan oneWeekTimeSpan = TimeSpan.FromDays(7);
+
+        public void Advance1HourForContactReport()
+        {
+            var observerObservedCellToContactReport = navalContactReports.ToDictionary(
+                c => (c.GetObserverSide(), c.GetObservedSide(), c.GetCell()),
+                c => c
+            );
+
+            // Create or update Contact Report
+            foreach(var cellFleetGroupsGrouping in IterIndependentStrategicGroups()
+                    .Where(g => g.type == StrategicGroup.Type.Fleet)
+                    .GroupBy(g => g.cell))
+            {
+                var cell = cellFleetGroupsGrouping.Key;
+                var sideFleetGroupsGroupings = cellFleetGroupsGrouping.GroupBy(g => g.side).ToList();
+                // var cellSideToCellGroups = cell.StrategicGroupReferences
+                //     .Select(r => r.Get())
+                //     .Where(g => g.type == StrategicGroup.Type.Fleet)
+                //     .GroupBy(g => g.side)
+                //     .ToDictionary(gp => gp.Key, gp => gp.ToList());
+
+                foreach(var observedSideFleetGroupsGrouping in sideFleetGroupsGroupings)
+                {
+                    var observedSide = observedSideFleetGroupsGrouping.Key;
+                    var observedSideFleetGroups = observedSideFleetGroupsGrouping.ToList();
+                    // ObservedSide may be observed by static observe point (coast watcher, friendly merchant, or not explicily modeled aux ships) or other side's ship
+                    var observedSideDeployedShipLogs = observedSideFleetGroups.SelectMany(g => g.WalkGroupMembersDeployedShips()).ToList();
+                    var footprint = observedSideDeployedShipLogs.Count * 1f;
+
+                    // Collect internal hide value for observed side
+                    var observedSideInternalHideValue = cell.CellSideInfos.FirstOrDefault(info => info.GetSide() == observedSide)?.interalHideValue ?? 0;
+                    var totalFootprint = footprint - observedSideInternalHideValue;
+
+                    // Collect Interval search value for observer side
+                    var observerSideToSearchValue = cell.CellSideInfos.ToDictionary(info => info.GetSide(), info => info.internalSearchValue + info.merchantShipTraffic);
+                    foreach(var observerSideFleetGroupsGrouping in sideFleetGroupsGroupings)
+                    {
+                        var observerSide = observerSideFleetGroupsGrouping.Key;
+                        var observerDeployShipCount = observerSideFleetGroupsGrouping.Sum(g => g.WalkGroupMembersDeployedShips().Count());
+                        if(!observerSideToSearchValue.ContainsKey(observerSide))
+                        {
+                            observerSideToSearchValue[observerSide] = 0;
+                        }
+                        observerSideToSearchValue[observerSide] += observerDeployShipCount;
+                    }
+
+                    foreach(var (observerSide, observerSideSearchValue) in observerSideToSearchValue)
+                    {
+                        if(observerSide != observedSide)
+                        {
+                            var combinedSearchValue = observerSideSearchValue + totalFootprint;
+                            var searchAreaCoef = Math.Max(cell.SearchAreaSqKm, 1) / 2500; // TODO: Redesign is expected, now handle it as a const 1
+                            if(RandomUtils.NextFloat() <= combinedSearchValue / (100 * searchAreaCoef))
+                            {
+                                var key = (observerSide, observedSide, cell);
+                                if(!observerObservedCellToContactReport.TryGetValue(key, out var matchedContactReport))
+                                {
+                                    matchedContactReport = new()
+                                    {
+                                        observerSideId = observerSide.objectId,
+                                        observedSideId = observedSide.objectId,
+                                        position = cell.ToXY(),
+                                    };
+                                    EntityManager.Instance.Register(matchedContactReport, this);
+                                    navalContactReports.Add(matchedContactReport);
+                                }
+
+                                matchedContactReport.UpdateTo(scenarioState.dateTime, shipLogs);
+                                
+                                var msg = $"Contact Report: {matchedContactReport}";
+                                ServiceLocator.Get<ILoggerService>().Log(msg);
+                                AddLog(msg);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Delete outdated Contact Report
+            var outdatedContactReports = navalContactReports.Where(c => scenarioState.dateTime - c.dateTime > oneWeekTimeSpan).ToList();
+            foreach(var outdatedContactReport in outdatedContactReports)
+            {
+                navalContactReports.Remove(outdatedContactReport);
+
+                // erviceLocator.Get<ILoggerService>().Log($"Lost Contact: {outdatedContactReport}");
+            }
         }
 
         public void ForceDisengageStaticGroup()
         {
-            foreach(var group in GetIndependentStrategicGroups())
+            foreach(var group in IterIndependentStrategicGroups())
             {
                 if(group.posture == StrategicGroup.GroupPostureType.Disengaged && group.plannedPath.Count == 0)
                 {
@@ -496,7 +579,7 @@ namespace StrategicCombatCore
 
         public void Advance1HourForGroupPosture()
         {
-            foreach (var group in GetIndependentStrategicGroups())
+            foreach (var group in IterIndependentStrategicGroups())
             {
                 if (group.restoredHours > 0)
                 {
@@ -738,7 +821,7 @@ namespace StrategicCombatCore
 
         public void Advance1HourForSupply()
         {
-            foreach (var group in GetIndependentStrategicGroups())
+            foreach (var group in IterIndependentStrategicGroups())
             {
                 foreach (var landUnit in group.WalkGroupMembers<LandUnit>())
                 {
@@ -746,7 +829,7 @@ namespace StrategicCombatCore
                 }
             }
 
-            foreach (var group in GetIndependentStrategicGroups())
+            foreach (var group in IterIndependentStrategicGroups())
             {
                 if (group.plannedPath.Count > 0) // Only moving (has plannedPath) ship cost supply.
                 {
@@ -780,7 +863,7 @@ namespace StrategicCombatCore
         
         public void DoShipAmmunitionReplenishment()
         {
-            foreach (var group in GetIndependentStrategicGroups())
+            foreach (var group in IterIndependentStrategicGroups())
             {
                 if (group.plannedPath.Count == 0 && group.IsInDepotLocation())
                 {
@@ -1127,6 +1210,22 @@ namespace StrategicCombatCore
             return strategicGroups.Where(group => group.deployState == StrategicGroup.DeployState.Independent);
         }
 
+        public HashSet<Cell> GetCellsHasStrategicGroup()
+        {
+            return IterIndependentStrategicGroups().Select(g => g.cell).ToHashSet();
+        }
+
+        public IEnumerable<StrategicGroup> IterIndependentStrategicGroupsOrderedByCell()
+        {
+            foreach(var cell in GetCellsHasStrategicGroup())
+            {
+                foreach (var group in cell.StrategicGroupReferences.Select(rp => rp.Get()))
+                {
+                    yield return group;
+                }
+            }
+        }
+
         public IEnumerable<LandUnit> IterOnMapLandUnits()
         {
             foreach(var group in IterIndependentStrategicGroups())
@@ -1236,6 +1335,8 @@ namespace StrategicCombatCore
             foreach (var landBattle in landBattles)
                 EntityManager.Instance.Register(landBattle, null);
 
+            foreach(var navalContactReport in navalContactReports)
+                EntityManager.Instance.Register(navalContactReport, null);
         }
 
         static StrategicGameState _instance;

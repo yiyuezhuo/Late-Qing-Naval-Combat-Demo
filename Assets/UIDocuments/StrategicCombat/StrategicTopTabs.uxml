@@ -29,14 +29,14 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3474825257062400)"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Label text="Fog-of-War">
+                    <ui:Label text="Edit Mode">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11053369889820672)"/>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40292542655926272)"/>
                         </Bindings>
                     </ui:Label>
                     <ui:Toggle>
                         <Bindings>
-                            <ui:DataBinding property="value" data-source-path="enableFogOfWar" binding-mode="TwoWay"/>
+                            <ui:DataBinding property="value" data-source-path="isInEditMode" binding-mode="TwoWay"/>
                         </Bindings>
                     </ui:Toggle>
                     <ui:VisualElement style="flex-direction: row;">
@@ -55,10 +55,12 @@
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)"/>
                             </Bindings>
                         </ui:Button>
-                        <Bindings>
-                            <ui:DataBinding property="style.display" data-source-path="enableFogOfWar" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
-                        </Bindings>
                     </ui:VisualElement>
+                    <ui:Button text="Run Debug Script" name="RunDebugScriptButton">
+                        <Bindings>
+                            <ui:DataBinding property="style.display" data-source-path="isInUnityEditor" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61563505119232)"/>

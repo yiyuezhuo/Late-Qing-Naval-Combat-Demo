@@ -559,7 +559,7 @@ namespace StrategicCombatCore
             // TODO: Collect Repair Ship's repair capacity
 
             // Collect Repairable ships
-            foreach (var group in StrategicGameState.Instance.GetIndependentStrategicGroups())
+            foreach (var group in StrategicGameState.Instance.IterIndependentStrategicGroups())
             {
                 // If group is in a cell containing friendly port or shipyard.
                 var key = (group.side, group.cell);

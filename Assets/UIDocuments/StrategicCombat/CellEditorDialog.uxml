@@ -37,6 +37,11 @@
                                 <ui:DataBinding property="value" data-source-path="terrain" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:EnumField>
+                        <ui:FloatField label="Search Area (km^2)">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="SearchAreaSqKm" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:FloatField>
                     </ui:VisualElement>
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66810558451712)"/>
@@ -183,6 +188,9 @@
                         <ui:Button text="Delete Connection" name="DeleteConnectionButton"/>
                         <ui:Button text="Add Connection" name="AddConnectionButton"/>
                     </ui:VisualElement>
+                </ui:Tab>
+                <ui:Tab label="Side">
+                    <ui:ListView data-source-path="CellSideInfos" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/StrategicCombat/CellSideInfoEditor.uxml?fileID=9197481963319205126&amp;guid=597cf92d67a644e45b493a3fab9c54a9&amp;type=3#CellSideInfoEditor" virtualization-method="DynamicHeight" show-add-remove-footer="true" name="CellSideInforsListView"/>
                 </ui:Tab>
             </ui:TabView>
         </ui:VisualElement>

@@ -684,31 +684,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
             var cellConnectionsMultiColumnListView = el.Q<MultiColumnListView>("CellConnectionsMultiColumnListView");
             
-            // Utils.BindItemsAddedRemoved<CellConnection>(cellConnectionsMultiColumnListView, () => null);
-            
-            // var cellCol = cellConnectionsMultiColumnListView.columns["Cell"];
-            // cellCol.makeCell = () =>
-            // {
-            //     var c = cellCol.cellTemplate.CloneTree();
-            //     var setButton = c.Q<Button>("SetButton");
-            //     setButton.clicked += () =>
-            //     {
-            //         Debug.Log("cellConnectionsMultiColumnListView SetButton clicked");
-
-            //         if (Utils.TryResolveCurrentValueForBinding(setButton, out CellConnection cellConnection))
-            //         {
-            //             StrategicGameManager.Instance.ScheduleOneshotCellClickCallback(otherCell =>
-            //             {
-            //                 cellConnection.other = otherCell.ToXY();
-            //                 StrategicGameManager.Instance.mapEditMode = StrategicMapEditMode.Select;
-
-            //                 otherCell.CellConnections.FirstOrDefault(c => c.GetOther() == cell);
-            //             });
-            //         }
-            //     };
-            //     return c;
-            // };
-
             // It's easier to write following compared to "Data Binding Gymnastics" and hack Add Removed callback
             var addConnectionButton = el.Q<Button>("AddConnectionButton");
             var deleteConnectionButton = el.Q<Button>("DeleteConnectionButton");
@@ -769,6 +744,26 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                     }
                 }
             };
+
+            var cellSideInforsListView = el.Q<ListView>("CellSideInforsListView");
+            Utils.BindItemsAddedRemoved<CellSideInfo>(cellSideInforsListView, () => null);
+            cellSideInforsListView.makeItem = () =>
+            {
+                var item = cellSideInforsListView.itemTemplate.CloneTree();
+                var setButton = item.Q<Button>("SetButton");
+                setButton.clicked += () =>
+                {
+                    if(Utils.TryResolveCurrentValueForBinding<CellSideInfo>(setButton, out var cellSideInfo))
+                    {
+                        PopupSideStatePickerDialog(side =>
+                        {
+                            cellSideInfo.sideObjectId = side.objectId; 
+                        });
+                    }
+                };
+                return item;
+            };
+            // PopupSideStatePickerDialog
         };
 
         // tempDialog.onConfirmed += (sender, args) => StrategicGameState.Instance.InvokeMapCellUpdated(cell.x, cell.y);

@@ -3864,6 +3864,14 @@
      <japanese>津軽海峡</japanese>
      <chineseSimplified>津轻海峡</chineseSimplified>
     </Label>
+    <CellSideInfos>
+     <CellSideInfo>
+      <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
+      <internalSearchValue>3</internalSearchValue>
+      <interalHideValue>3</interalHideValue>
+      <merchantShipTraffic>10</merchantShipTraffic>
+     </CellSideInfo>
+    </CellSideInfos>
     <CellConnections>
      <CellConnection cost="432.663177" costCoef="1">
       <self x="-1" y="-1" areaCellObjectId="aa096457-286b-4d12-a4ec-fd29f0003bc2" />
@@ -3922,6 +3930,14 @@
      <japanese>ウラジオストク</japanese>
      <chineseSimplified>海参崴</chineseSimplified>
     </Label>
+    <CellSideInfos>
+     <CellSideInfo>
+      <sideObjectId>f781e78a-aaf5-411f-8f49-d1561e7949a2</sideObjectId>
+      <internalSearchValue>5</internalSearchValue>
+      <interalHideValue>10</interalHideValue>
+      <merchantShipTraffic>0</merchantShipTraffic>
+     </CellSideInfo>
+    </CellSideInfos>
     <StrategicGroupReferences>
      <StrategicGroupReference>
       <referenceId>00552ba8-0962-43c1-9da7-31a07da39aaa</referenceId>
@@ -4503,8 +4519,6 @@
     </areaStates>
    </areaSystem>
    <enableSinoJapaneseHighCommand>false</enableSinoJapaneseHighCommand>
-   <enableGridSystemProp>false</enableGridSystemProp>
-   <enableAreaSystemProp>true</enableAreaSystemProp>
   </scenarioState>
   <sideStates>
    <SideState>
@@ -4567,6 +4581,7 @@
   <pendingNavalCombats />
   <landBattles />
   <logs />
+  <navalContactReports />
   <serializedCells>
    <width>60</width>
    <height>40</height>
@@ -6975,8 +6990,8 @@
   </serializedCells>
  </gameState>
  <viewState>
-  <xPosition>-2.27004862</xPosition>
-  <yPosition>-0.7838259</yPosition>
+  <xPosition>-2.35872936</xPosition>
+  <yPosition>0.4399817</yPosition>
   <orthographicSize>6</orthographicSize>
   <hitAreaMapRecords>
    <HitAreaMapRecord hitAreaObjectId="0b2cbd39-ad25-4233-b5a1-5744048e7491" areaCellObjectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16" />

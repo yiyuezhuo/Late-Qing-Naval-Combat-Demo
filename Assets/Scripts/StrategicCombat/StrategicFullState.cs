@@ -20,6 +20,8 @@ public class StrategicViewState
     }
 
     public List<HitAreaMapRecord> hitAreaMapRecords = new();
+
+    public string viewerSideId;
 }
 
 public class StrategicFullState

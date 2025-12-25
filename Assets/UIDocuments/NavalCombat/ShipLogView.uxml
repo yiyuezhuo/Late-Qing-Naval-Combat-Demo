@@ -13,7 +13,7 @@
             <ui:Button text="Set Named Ship" name="SetNamedShipButton">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(101851304988672)"/>
-                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                 </Bindings>
             </ui:Button>
             <ui:Button text="Go to Named Ship" name="GotoNamedShipButton">
@@ -33,7 +33,7 @@
                                         <ui:Button text="Reset Damage/Expenditure State" name="ResetDamageExpenditureStateButton">
                                             <Bindings>
                                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(102561132220416)"/>
-                                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                             </Bindings>
                                         </ui:Button>
                                         <ui:Button text="Detail" name="ShipLogDetailButton">
@@ -46,35 +46,35 @@
                                         <Bindings>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(102766418235392)"/>
                                             <ui:DataBinding property="value" data-source-path="mapState" binding-mode="TwoWay" source-to-ui-converters="MapState =&gt; int" ui-to-source-converters="int =&gt; MapState"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </LocalizedEnumField>
                                     <LocalizedEnumField label="Operational State" type-str="NavalCombatCore.ShipOperationalState">
                                         <Bindings>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103091476795392)"/>
                                             <ui:DataBinding property="value" data-source-path="operationalState" source-to-ui-converters="ShipOperationalState =&gt; int" ui-to-source-converters="int =&gt; ShipOperationalState" binding-mode="TwoWay"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </LocalizedEnumField>
                                     <ui:FloatField label="Latitude">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="position.LatDeg" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103175836831744)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:FloatField>
                                     <ui:FloatField label="Longitude">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="position.LonDeg" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103239598641152)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:FloatField>
                                     <ui:FloatField label="Speed (knot)">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="speedKnots" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103301821140992)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:FloatField>
                                     <ui:FloatField label="Desired Speed">
@@ -93,7 +93,7 @@
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="headingDeg" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(103576539664384)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:FloatField>
                                     <ui:FloatField label="Desired Heading">
@@ -118,7 +118,7 @@
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="desiredSpeedKnotsForBoilerRoom" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(108278006321152)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:FloatField>
                                     <ui:Toggle label="Evasive Maneuver">
@@ -210,7 +210,7 @@
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69481491238912)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:FloatField>
                                     <ui:ProgressBar>
@@ -224,21 +224,21 @@
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="pendingDamagePoint" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(167166449717248)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:FloatField>
                                     <ui:FloatField label="Max Speed Offset">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="dynamicStatus.maxSpeedKnotsOffset" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(167332305080320)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:FloatField>
                                     <ui:FloatField label="Acceleration Offset">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="dynamicStatus.accelerationOffset" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(167467596550144)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:FloatField>
                                     <ui:SliderInt label="Engine Room Hits" high-value="100" show-input-field="true">
@@ -246,7 +246,7 @@
                                             <ui:DataBinding property="value" data-source-path="dynamicStatus.engineRoomHits" binding-mode="TwoWay"/>
                                             <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsEngineRoomsLevels" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(167528338460672)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:SliderInt>
                                     <ui:SliderInt label="Propulsion/Shaft Hits" high-value="100" show-input-field="true">
@@ -254,7 +254,7 @@
                                             <ui:DataBinding property="value" data-source-path="dynamicStatus.propulsionShaftHits" binding-mode="TwoWay"/>
                                             <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsPropulsionShaftLevels" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(167707988889600)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:SliderInt>
                                     <ui:SliderInt label="Boiler Room Hits" high-value="100" show-input-field="true">
@@ -262,28 +262,28 @@
                                             <ui:DataBinding property="value" data-source-path="dynamicStatus.boilerRoomHits" binding-mode="TwoWay"/>
                                             <ui:DataBinding property="highValue" data-source-path="shipClassProperty.speedKnotsBoilerRooms" binding-mode="ToTarget" source-to-ui-converters="List&lt;float&gt; =&gt; Count"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(167773285814272)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:SliderInt>
                                     <ui:IntegerField label="Engine Room Flooding">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="dynamicStatus.engineRoomFloodingHits" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(167850461007872)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:IntegerField>
                                     <ui:IntegerField label="Boiler Room Flooding">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="dynamicStatus.boilerRoomFloodingHits" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(168014307299328)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:IntegerField>
                                     <ui:IntegerField label="Dmg Ctrl Rating Hit">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="damageControlRatingHits" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(168102635147264)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:IntegerField>
                                     <ui:IntegerField label="Eff. Dmg Ctrl Rating" enabled="false">
@@ -296,21 +296,21 @@
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="searchLightHits.portHit" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(168576851546112)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:IntegerField>
                                     <ui:IntegerField label="Starboard Searchlight Hits">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="searchLightHits.starboardHit" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(168654257426432)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:IntegerField>
                                     <ui:Toggle label="Smoke Generator Disabled">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="smokeGeneratorDisabled" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(168731373899776)"/>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:Toggle>
                                 </ui:VisualElement>
@@ -348,7 +348,7 @@
                                 <ui:DataBinding property="highValue" data-source-path="shipClassProperty.torpedoSector.ammunitionCapacity" binding-mode="ToTarget"/>
                                 <ui:DataBinding property="value" data-source-path="torpedoSectorStatus.ammunition" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(169759578165248)"/>
-                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:SliderInt>
                         <ui:MultiColumnListView name="TorpedoMountStatusMultiColumnListView" binding-source-selection-mode="AutoAssign" data-source-path="torpedoSectorStatus.mountStatus" show-add-remove-footer="true" header-title="Torpedo Status" show-foldout-header="true">
@@ -490,7 +490,7 @@
                                     <Bindings>
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11056970263597056)"/>
                                         <ui:DataBinding property="value" data-source-path="supplyTons" binding-mode="TwoWay"/>
-                                        <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                        <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                     </Bindings>
                                 </ui:DoubleField>
                             </ui:VisualElement>
@@ -547,7 +547,7 @@
                         <ui:FloatField label="Repair Priority">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="repairPriority" binding-mode="TwoWay"/>
-                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:FloatField>
                     </ui:VisualElement>

@@ -1257,7 +1257,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     // }
 
     [CreateProperty]
-    public bool isInEditorMode => GamePreference.Instance.isInEditorMode;
+    public bool isInEditMode => GamePreference.Instance.isInEditMode;
+
+    [CreateProperty]
+    public bool isInUnityEditor => Application.isEditor;
+
 
     [CreateProperty]
     public bool isFromStrategic => startupConfig.IsFromStrategic();

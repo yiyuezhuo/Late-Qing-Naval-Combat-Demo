@@ -79,7 +79,7 @@ public class SwitchCenter
                 
 
                 // TODO: Branching according to global IsEditor flag
-                if(GamePreference.Instance.isInEditorMode)
+                if(GamePreference.Instance.isInEditMode)
                 {
                     UpdateCurrentActiveViewContainer(StrategicGroupEditor.Instance);
                     StrategicGroupEditor.Instance.Show();
@@ -103,7 +103,7 @@ public class SwitchCenter
             {
                 // currentActiveViewContainer?.SwitchClose();
                 // currentActiveViewContainer = StrategicGroupEditor.Instance;
-                if(GamePreference.Instance.isInEditorMode)
+                if(GamePreference.Instance.isInEditMode)
                 {
                     UpdateCurrentActiveViewContainer(LandUnitEditor.Instance);
                     LandUnitEditor.Instance.Show();
@@ -130,7 +130,7 @@ public class SwitchCenter
                 // currentActiveViewContainer = ShipLogEditor.Instance;
                 
 
-                if(GamePreference.Instance.isInEditorMode)
+                if(GamePreference.Instance.isInEditMode)
                 {
                     UpdateCurrentActiveViewContainer(ShipLogEditor.Instance);
                     ShipLogEditor.Instance.Show();

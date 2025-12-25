@@ -336,7 +336,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
     }
 
     [CreateProperty]
-    public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+    public bool isInEditMode => GamePreference.Instance.isInEditMode;
 
     void Update()
     {

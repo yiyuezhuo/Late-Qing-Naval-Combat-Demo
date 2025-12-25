@@ -86,6 +86,9 @@ namespace StrategicCombatCore
         {
             return $"XY({x}, {y}, {areaCellObjectId})";
         }
+
+        public string GetAreaCellName() => areaCellObjectId != null ? EntityManager.Instance.Get<Cell>(areaCellObjectId)?.Label?.GetShortName() : areaCellObjectId;
+
     }
 
     public partial class StrategicGroup : IObjectIdLabeled, IStrategicGroupMemberReferenceable

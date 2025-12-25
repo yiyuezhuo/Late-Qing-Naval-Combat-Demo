@@ -10,6 +10,7 @@ using StrategicCombatCore;
 using CoreUtils;
 using NavalCombatCore;
 using System.IO;
+using StrategicCombat;
 
 public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 {
@@ -142,7 +143,7 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         {
             DialogRoot.Instance.PopupSideStatePickerDialog(sideState =>
             {
-                StrategicGameState.Instance.scenarioState.fogOfWarViewerSideObjectId = sideState?.objectId;
+                StrategicGameManager.Instance.viewerSideId = sideState?.objectId;
             });
         };
 
@@ -210,6 +211,12 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         root.Q<Button>("StrategicScenarioStateButton").clicked += () =>
         {
             DialogRoot.Instance.PopupStrategicScenarioStateEditorDialog();
+        };
+
+        root.Q<Button>("RunDebugScriptButton").clicked += () =>
+        {
+            var navalContactReports = StrategicGameState.Instance.navalContactReports;
+            Debug.Log($"navalContactReports.Count = {navalContactReports.Count}"); 
         };
     }
 

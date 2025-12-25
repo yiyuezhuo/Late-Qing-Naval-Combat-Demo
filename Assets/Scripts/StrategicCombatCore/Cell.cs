@@ -93,6 +93,16 @@ namespace StrategicCombatCore
         }
     }
 
+    public partial class CellSideInfo
+    {
+        public string sideObjectId;
+        public float internalSearchValue;
+        public float interalHideValue;
+        public float merchantShipTraffic;
+
+        public SideState GetSide() => EntityManager.Instance.Get<SideState>(sideObjectId);
+    }
+
 
     public partial class Cell : IObjectIdLabeled
     {
@@ -221,6 +231,12 @@ namespace StrategicCombatCore
 
         [XmlAttribute]
         public string landBattleId;
+
+        public List<CellSideInfo> CellSideInfos = new();
+        public bool ShouldSerializeCellSideInfos() => CellSideInfos != null && CellSideInfos.Count > 0;
+
+        public float SearchAreaSqKm = 2500;
+        public bool ShouldSerializeSearchAreaSqKm() => SearchAreaSqKm != 2500;
 
         public LandBattle GetLandBattle()
         {

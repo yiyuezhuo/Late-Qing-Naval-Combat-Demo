@@ -72,7 +72,7 @@ namespace NavalCombatCore
         public Texture2D countryFlagTexture => UnityWebRequestImageReader.Instance.FetchTexture2D(Utils.GetCountryPath(country));
     
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 
     public partial class LaunchedTorpedo : IPortraitViewerObservable
@@ -329,7 +329,7 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
-        public bool isInEditorMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
 
         // IPortraitViewerObservable
         PictureReference IPortraitViewerObservable.GetPortraitTopReference() => shipClass?.portraitTopReference;
@@ -351,7 +351,7 @@ namespace NavalCombatCore
         public string targetDesc => GetTarget()?.namedShip?.name.mergedName ?? "[Not Specified]";
     
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 
     public partial class BatteryStatus
@@ -363,7 +363,7 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
-        public bool isInEditorMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 
     public partial class BatteryRecord
@@ -392,7 +392,7 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 
     public partial class MountStatusRecord
@@ -423,7 +423,7 @@ namespace NavalCombatCore
         }
 
         // [CreateProperty]
-        // public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        // public bool isInEditMode => GamePreference.Instance.isInEditMode;
 
     }
 
@@ -474,7 +474,7 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
 
     }
 
@@ -487,7 +487,7 @@ namespace NavalCombatCore
         public Doctrine doctrineProp => doctrine;
 
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 
     public partial class LeaderReference
@@ -560,7 +560,7 @@ namespace NavalCombatCore
         public string shipClassRemark => shipClass?.remark ?? "";
 
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 
     public partial class RapidFiringTargettingStatus
@@ -572,7 +572,7 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
 
     }
 
@@ -767,13 +767,13 @@ namespace NavalCombatCore
     public partial class BatteryAmmunitionRecord
     {
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 
     public partial class TorpedoSector
     {
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 }
 
@@ -791,6 +791,6 @@ namespace CoreUtils
     public partial class AbstractGameState
     {
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 }

@@ -23,7 +23,7 @@
                 <ui:Toggle>
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="fireControlRadarDisabled" binding-mode="TwoWay"/>
-                        <ui:DataBinding property="enabledSelf" data-source-path="isInEditorMode" binding-mode="ToTarget"/>
+                        <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Toggle>
                 <ui:Label text="Capacity:">

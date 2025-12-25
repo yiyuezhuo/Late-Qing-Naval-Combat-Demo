@@ -1,0 +1,32 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="StrategicCombatCore.CellSideInfo, Assembly-CSharp" style="flex-grow: 1;">
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:TextField label="Side" style="flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11053585590292480)"/>
+                    <ui:DataBinding property="value" data-source-path="sideName" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:TextField>
+            <ui:Button text="Set" name="SetButton">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)"/>
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+        <ui:FloatField label="Internal Search Value">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="internalSearchValue" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:FloatField>
+        <ui:FloatField label="Internal Hide Value">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="interalHideValue" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:FloatField>
+        <ui:FloatField label="Merchant Ship Traffic">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="merchantShipTraffic" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:FloatField>
+    </ui:VisualElement>
+</ui:UXML>

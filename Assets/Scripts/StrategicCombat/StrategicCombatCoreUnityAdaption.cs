@@ -416,7 +416,7 @@ namespace StrategicCombatCore
         public string name => Get()?.name?.mergedName ?? "[Undefined or Invalid]";
 
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 
     public partial class LandUnitTemplate
@@ -434,7 +434,7 @@ namespace StrategicCombatCore
         public float lethality => GetLethality();
 
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 
     public partial class LandUnit
@@ -467,7 +467,7 @@ namespace StrategicCombatCore
         public bool isPort => GetLandUnitTemplate()?.unitType == LandUnitType.Port;
 
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 
     public partial class SubStrategicCombat
@@ -492,7 +492,7 @@ namespace StrategicCombatCore
     public partial class Weapon
     {
         [CreateProperty]
-        public bool isInEditMode => GamePreference.Instance.isInEditorMode;
+        public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 
     public partial class DiplomacyRelation
@@ -751,18 +751,6 @@ namespace StrategicCombatCore
         [CreateProperty]
         public StyleBackground countryFlag => UnityWebRequestImageReader.Instance.FetchTexture2D(Utils.GetCountryPath(currentCountry));
 
-        // [CreateProperty]
-        // public string summary
-        // {
-        //     get
-        //     {
-        //         var currentStrength = unitStates.Sum(u => u.endStrength);
-        //         var lossStrength = unitStates.Sum(u => u.accumulatedStrengthLoss);
-        //         var commitStrength = currentStrength + lossStrength;
-        //         return $"Commit: {commitStrength}, Loss: {lossStrength}, Remain: {currentStrength}";
-        //     }
-        // }
-
         [CreateProperty]
         public string summary => GetSummary().Resolve();
     }
@@ -837,7 +825,7 @@ namespace StrategicCombatCore
     public partial class XY
     {
         [CreateProperty]
-        public string areaCellName => areaCellObjectId != null ? EntityManager.Instance.Get<Cell>(areaCellObjectId)?.Label?.GetShortName() : areaCellObjectId;
+        public string areaCellName => GetAreaCellName();
     }
 
     public partial class CellConnection
@@ -873,6 +861,12 @@ namespace StrategicCombatCore
                 }
             }
         }
+    }
+
+    public partial class CellSideInfo
+    {
+        [CreateProperty]
+        public string sideName => EntityManager.Instance.Get<SideState>(sideObjectId)?.name?.GetMergedName() ?? "[Not Specified or Invalid]";
     }
 }
 

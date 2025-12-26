@@ -4,8 +4,6 @@ using System.Linq;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
-using StrategicCombat;
-using Unity.VisualScripting.Dependencies.NCalc;
 using YYZ.PathFinding;
 
 namespace StrategicCombatCore
@@ -495,7 +493,8 @@ namespace StrategicCombatCore
                     var totalFootprint = footprint - observedSideInternalHideValue;
 
                     // Collect Interval search value for observer side
-                    var observerSideToSearchValue = cell.CellSideInfos.ToDictionary(info => info.GetSide(), info => info.internalSearchValue + info.merchantShipTraffic);
+                    // var observerSideToSearchValue = cell.CellSideInfos.ToDictionary(info => info.GetSide(), info => info.internalSearchValue + info.merchantShipTraffic);
+                    var observerSideToSearchValue = cell.CellSideInfos.ToDictionary(info => info.GetSide(), info => info.internalSearchValue);
                     foreach(var observerSideFleetGroupsGrouping in sideFleetGroupsGroupings)
                     {
                         var observerSide = observerSideFleetGroupsGrouping.Key;

@@ -78,7 +78,7 @@
                 <ui:DataBinding property="style.display" data-source-path="selectedCellValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
             </Bindings>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement>
             <ui:VisualElement data-source-path="lastSelectedStrategicGroup" style="flex-shrink: 0; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                 <ui:Label text="Group Name___________________________________________" name="StrategicGroupNameLabel" style="white-space: normal;">
                     <Bindings>
@@ -116,6 +116,34 @@
             </ui:VisualElement>
             <Bindings>
                 <ui:DataBinding property="style.display" data-source-path="selectedStrategicGroupValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+            </Bindings>
+        </ui:VisualElement>
+        <ui:VisualElement>
+            <ui:VisualElement data-source-path="lastSelectedNavalContactReport" style="flex-grow: 1;">
+                <ui:Label text="Contact Report">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(41413516801511424)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Instance template="StrategicUnitIcon"/>
+                <ui:Label text="DateTime">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="dateTimeStr" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="Contact Report&apos;s observed Side name" style="white-space: normal;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="sideName" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="COntact Report&apos;s observed Content" style="white-space: normal;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="estimateStr" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+            </ui:VisualElement>
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="selectedNavalContactReportValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
             </Bindings>
         </ui:VisualElement>
     </ui:VisualElement>

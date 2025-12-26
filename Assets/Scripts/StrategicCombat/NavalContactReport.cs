@@ -8,7 +8,7 @@ using NavalCombatCore;
 using System.Linq;
 
 
-namespace StrategicCombat
+namespace StrategicCombatCore
 {
 
     public class NavalForceEstimation
@@ -33,6 +33,7 @@ namespace StrategicCombat
             // Use to simplify sample
             public List<EsimationCategory> confusionCategories = new();
             public List<float> confusionWeights = new();
+            public float powerPoint;
         }
 
         public static Dictionary<EsimationCategory, EsimationCategoryConfig> esimateConfigMap = new()
@@ -45,7 +46,8 @@ namespace StrategicCombat
                     [EsimationCategory.CA] = 0.4f,
                     [EsimationCategory.CL] = 0.1f,
                 },
-                shipTypes = new(){ShipType.Battleship}
+                shipTypes = new(){ShipType.Battleship},
+                powerPoint = 15 // Assume 15000 tons
             },
             [EsimationCategory.CA] = new()
             {
@@ -55,7 +57,8 @@ namespace StrategicCombat
                     [EsimationCategory.CA] = 0.5f,
                     [EsimationCategory.CL] = 0.2f,
                 },
-                shipTypes = new(){ShipType.ArmoredCruiser, ShipType.Cruiser}
+                shipTypes = new(){ShipType.ArmoredCruiser, ShipType.Cruiser},
+                powerPoint = 10, // Assume 10000 tons
             },
             [EsimationCategory.CL] = new()
             {
@@ -67,7 +70,8 @@ namespace StrategicCombat
                     [EsimationCategory.TB] = 0.1f,
                     [EsimationCategory.DD] = 0.1f,
                 },
-                shipTypes = new(){ShipType.LightCruiser}
+                shipTypes = new(){ShipType.LightCruiser},
+                powerPoint = 5, // Assume 5000 tons
             },
             [EsimationCategory.TB] = new()
             {
@@ -78,7 +82,8 @@ namespace StrategicCombat
                     [EsimationCategory.DD] = 0.35f,
                     [EsimationCategory.Other] = 0.15f
                 },
-                shipTypes = new(){ShipType.TorpedoBoat}
+                shipTypes = new(){ShipType.TorpedoBoat},
+                powerPoint = 1, // Assume <1000 tons
             },
             [EsimationCategory.DD] = new()
             {
@@ -89,7 +94,8 @@ namespace StrategicCombat
                     [EsimationCategory.DD] = 0.5f,
                     [EsimationCategory.Other] = 0.15f
                 },
-                shipTypes = new(){ShipType.Destroyer}
+                shipTypes = new(){ShipType.Destroyer},
+                powerPoint = 1, // Assume <1000 tons
             },
             [EsimationCategory.Other] = new()
             {
@@ -101,6 +107,7 @@ namespace StrategicCombat
                     [EsimationCategory.Other] = 0.15f
                 },
                 // shipTypes = new(){ShipType.Destroyer}
+                powerPoint = 2, // Assume 2000 tons (Though they're generally not considered to be "power")
             },
         };
 
@@ -133,13 +140,21 @@ namespace StrategicCombat
             public int count;
         }
 
-        public List<EsimationRecord> records = new();
+        public List<EsimationRecord> records = new()
+        {
+            new(){estimateCategory = EsimationCategory.BB}, // Enforce order
+            new(){estimateCategory = EsimationCategory.CA},
+            new(){estimateCategory = EsimationCategory.CL},
+            new(){estimateCategory = EsimationCategory.DD},
+            new(){estimateCategory = EsimationCategory.TB},
+            new(){estimateCategory = EsimationCategory.Other},
+        };
 
-        public string GetEsimatateSummary() => string.Join(",", records.Select(r => $"{r.estimateCategory}: {r.count}"));
+        public string GetEstimatateSummary() => string.Join(",", records.Where(r => r.count > 0).Select(r => $"{r.estimateCategory}: {r.count}"));
 
         public override string ToString()
         {
-            return $"NavalForceEstimation({GetEsimatateSummary()})";
+            return $"NavalForceEstimation({GetEstimatateSummary()})";
         }
 
 
@@ -182,7 +197,8 @@ namespace StrategicCombat
                     var r = RandomUtils.NextFloat();
                     if(r < 0.33)
                     {
-                        record.count--;
+                        // recort.count--;
+                        record.count = Math.Max(0, record.count - 1);
                     }
                     else if(r > 0.66)
                     {
@@ -209,14 +225,28 @@ namespace StrategicCombat
 
         public void UpdateTo(IEnumerable<ShipLog> shipLogs)
         {
-            records.Clear();
+            // records.Clear();
+            foreach(var r in records)
+                r.count = 0;
+            
             AddByShipLogs(shipLogs);
             ApplyQuantityNoise();
             ApplyConfusionMatrixNoise();
         }
+
+        public float GetPowerPoint()
+        {
+            var totalPowerPoint = 0f;
+            foreach(var record in records)
+            {
+                var config = esimateConfigMap[record.estimateCategory];
+                totalPowerPoint += record.count * config.powerPoint;
+            }
+            return totalPowerPoint;
+        }
     }
 
-    public class NavalContactReport : IObjectIdLabeled
+    public partial class NavalContactReport : IObjectIdLabeled
     {
         public string objectId{get;set;}
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
@@ -244,5 +274,18 @@ namespace StrategicCombat
         {
             return $"NavalContactReport({dateTime}, {position.GetAreaCellName()}, {GetObserverSide().name} => {GetObservedSide().name}, {estimation})";
         }
+
+        public TimeSpan GetTimeSpanToCurrent()
+        {
+            var timeSpan = StrategicGameState.Instance.scenarioState.dateTime - dateTime;
+            return timeSpan;
+        }
+
+        // public void Summary()
+        // {
+        //     var ds = CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(dateTime);
+        //     var es = estimation.GetEsimatateSummary();
+        //     var ss = GetObservedSide().name.GetMergedName();
+        // }
     }
 }

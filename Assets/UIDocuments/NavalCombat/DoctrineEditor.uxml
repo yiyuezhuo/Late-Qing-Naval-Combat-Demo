@@ -1,267 +1,363 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
     <ui:VisualElement data-source-type="NavalCombatCore.Doctrine, Assembly-CSharp" style="flex-grow: 0; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); padding-left: 1px; padding-right: 1px; margin-left: 1px; margin-right: 1px;">
         <ui:Label text="Doctrine">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171090770563072)" />
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171090770563072)"/>
             </Bindings>
         </ui:Label>
-        <ui:VisualElement data-source-path="maneuverAutomaticType" style="flex-grow: 0; flex-direction: row;">
-            <ui:Label text="Automatic Maneuver:">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171150631669760)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Label text="Inherit">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Toggle>
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:Toggle>
-            <LocalizedEnumField type-str="NavalCombatCore.AutomaticType" class="long-dropdown">
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="value" source-to-ui-converters="AutomaticType =&gt; int" ui-to-source-converters="int =&gt; AutomaticType" binding-mode="TwoWay" />
-                    <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
-                </Bindings>
-            </LocalizedEnumField>
-        </ui:VisualElement>
-        <ui:VisualElement data-source-path="fireAutomaticType" style="flex-grow: 0; flex-direction: row;">
-            <ui:Label text="Automatic Fire:">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171216725512192)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Label text="Inherit">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Toggle>
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:Toggle>
-            <LocalizedEnumField type-str="NavalCombatCore.AutomaticType" class="long-dropdown">
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="value" source-to-ui-converters="AutomaticType =&gt; int" ui-to-source-converters="int =&gt; AutomaticType" binding-mode="TwoWay" />
-                    <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
-                </Bindings>
-            </LocalizedEnumField>
-        </ui:VisualElement>
-        <ui:VisualElement data-source-path="ammunitionSwitchAutomaticType" style="flex-grow: 1; flex-direction: row;">
-            <ui:Label text="Ammunition Switch:">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171280755757056)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Label text="Inherit">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Toggle>
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:Toggle>
-            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                <LocalizedEnumField type-str="NavalCombatCore.AutomaticType" class="long-dropdown">
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement data-source-path="maneuverAutomaticType" style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Automatic Maneuver:">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="value" source-to-ui-converters="AutomaticType =&gt; int" ui-to-source-converters="int =&gt; AutomaticType" binding-mode="TwoWay" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171150631669760)"/>
                     </Bindings>
-                </LocalizedEnumField>
-                <Bindings>
-                    <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
-                </Bindings>
-            </ui:VisualElement>
-        </ui:VisualElement>
-        <ui:VisualElement data-source-path="ammunitionFallbackable" style="flex-grow: 1; flex-direction: row;">
-            <ui:Label text="Ammunition Fallback:">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171344655978496)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Label text="Inherit">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Toggle>
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:Toggle>
-            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                <ui:Label text="Enabled">
+                </ui:Label>
+                <ui:Label text="Inherit">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16458511166377984)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)"/>
                     </Bindings>
                 </ui:Label>
                 <ui:Toggle>
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay" />
+                        <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay"/>
                     </Bindings>
                 </ui:Toggle>
-                <Bindings>
-                    <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
-                </Bindings>
-            </ui:VisualElement>
-        </ui:VisualElement>
-        <ui:VisualElement data-source-path="maximumFiringDistanceYardsFor200mmPlus" style="flex-grow: 0; flex-direction: row;">
-            <ui:Label text="Max Fire Dist 200mm+ (yards):">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171474327080960)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Label text="Inherit">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Toggle>
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:Toggle>
-            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-                <ui:Label text="Specified">
+                <LocalizedEnumField type-str="NavalCombatCore.AutomaticType" class="long-dropdown">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172169117732864)" />
+                        <ui:DataBinding property="value" data-source-path="value" source-to-ui-converters="AutomaticType =&gt; int" ui-to-source-converters="int =&gt; AutomaticType" binding-mode="TwoWay"/>
+                        <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
+                    </Bindings>
+                </LocalizedEnumField>
+            </ui:VisualElement>
+            <ui:Label text="Current:">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(41460150319091712)"/>
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Label">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="resolvedManeuverAutomaticTypeStr" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement data-source-path="fireAutomaticType" style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Automatic Fire:">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171216725512192)"/>
                     </Bindings>
                 </ui:Label>
-                <ui:Toggle data-source-path="value">
+                <ui:Label text="Inherit">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="isSpecified" binding-mode="TwoWay" />
-                    </Bindings>
-                </ui:Toggle>
-                <ui:FloatField data-source-path="value" style="min-width: 100px;">
-                    <Bindings>
-                        <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay" />
-                        <ui:DataBinding property="style.display" data-source-path="isSpecified" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
-                    </Bindings>
-                </ui:FloatField>
-                <Bindings>
-                    <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
-                </Bindings>
-            </ui:VisualElement>
-        </ui:VisualElement>
-        <ui:VisualElement data-source-path="maximumFiringDistanceYardsFor100mmTo200mm" style="flex-grow: 0; flex-direction: row;">
-            <ui:Label text="Max Fire Dist 100-200mm (yards):">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171582267494400)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Label text="Inherit">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Toggle>
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:Toggle>
-            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-                <ui:Label text="Specified">
-                    <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172169117732864)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)"/>
                     </Bindings>
                 </ui:Label>
-                <ui:Toggle data-source-path="value">
+                <ui:Toggle>
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="isSpecified" binding-mode="TwoWay" />
+                        <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay"/>
                     </Bindings>
                 </ui:Toggle>
-                <ui:FloatField data-source-path="value" style="min-width: 100px;">
+                <LocalizedEnumField type-str="NavalCombatCore.AutomaticType" class="long-dropdown">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay" />
-                        <ui:DataBinding property="style.display" data-source-path="isSpecified" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                        <ui:DataBinding property="value" data-source-path="value" source-to-ui-converters="AutomaticType =&gt; int" ui-to-source-converters="int =&gt; AutomaticType" binding-mode="TwoWay"/>
+                        <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
                     </Bindings>
-                </ui:FloatField>
-                <Bindings>
-                    <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
-                </Bindings>
+                </LocalizedEnumField>
             </ui:VisualElement>
+            <ui:Label text="Current:">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(41460150319091712)"/>
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Label">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="resolvedFireAutomaticTypeStr" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
         </ui:VisualElement>
-        <ui:VisualElement data-source-path="maximumFiringDistanceYardsFor100mmLess" style="flex-grow: 0; flex-direction: row;">
-            <ui:Label text="Max Fire Dist 100- (yards):">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171927823618048)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Label text="Inherit">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Toggle>
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:Toggle>
-            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-                <ui:Label text="Specified">
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:VisualElement data-source-path="ammunitionFallbackable" style="flex-direction: row;">
+                <ui:Label text="Ammunition Fallback:">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172169117732864)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171344655978496)"/>
                     </Bindings>
                 </ui:Label>
-                <ui:Toggle data-source-path="value">
+                <ui:Label text="Inherit">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="isSpecified" binding-mode="TwoWay" />
-                    </Bindings>
-                </ui:Toggle>
-                <ui:FloatField data-source-path="value" style="min-width: 100px;">
-                    <Bindings>
-                        <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay" />
-                        <ui:DataBinding property="style.display" data-source-path="isSpecified" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
-                    </Bindings>
-                </ui:FloatField>
-                <Bindings>
-                    <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
-                </Bindings>
-            </ui:VisualElement>
-        </ui:VisualElement>
-        <ui:VisualElement data-source-path="maximumFiringDistanceYardsForTorpedo" style="flex-grow: 0; flex-direction: row;">
-            <ui:Label text="Max Fire Dist Torpedo (yards):">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172027870351360)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Label text="Inherit">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)" />
-                </Bindings>
-            </ui:Label>
-            <ui:Toggle>
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay" />
-                </Bindings>
-            </ui:Toggle>
-            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-                <ui:Label text="Specified">
-                    <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172169117732864)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)"/>
                     </Bindings>
                 </ui:Label>
-                <ui:Toggle data-source-path="value">
+                <ui:Toggle>
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="isSpecified" binding-mode="TwoWay" />
+                        <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay"/>
                     </Bindings>
                 </ui:Toggle>
-                <ui:FloatField data-source-path="value" style="min-width: 100px;">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:Label text="Enabled">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16458511166377984)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Toggle>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:Toggle>
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay" />
-                        <ui:DataBinding property="style.display" data-source-path="isSpecified" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                        <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
                     </Bindings>
-                </ui:FloatField>
-                <Bindings>
-                    <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
-                </Bindings>
+                </ui:VisualElement>
             </ui:VisualElement>
+            <ui:Label text="Current:">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(41460150319091712)"/>
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Label">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="resolvedAmmunitionFallbackableStr" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement data-source-path="ammunitionSwitchAutomaticType" style="flex-direction: row;">
+                <ui:Label text="Ammunition Switch:">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171280755757056)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="Inherit">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Toggle>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay"/>
+                    </Bindings>
+                </ui:Toggle>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <LocalizedEnumField type-str="NavalCombatCore.AutomaticType" class="long-dropdown">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="value" source-to-ui-converters="AutomaticType =&gt; int" ui-to-source-converters="int =&gt; AutomaticType" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </LocalizedEnumField>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label text="Current:">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(41460150319091712)"/>
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Label">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="resolvedAmmunitionSwitchAutomationTypeStr" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement data-source-path="maximumFiringDistanceYardsFor200mmPlus" style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Max Fire Dist 200mm+ (yards):">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171474327080960)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="Inherit">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Toggle>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay"/>
+                    </Bindings>
+                </ui:Toggle>
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                    <ui:Label text="Specified">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172169117732864)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Toggle data-source-path="value">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="isSpecified" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:Toggle>
+                    <ui:FloatField data-source-path="value" style="min-width: 100px;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay"/>
+                            <ui:DataBinding property="style.display" data-source-path="isSpecified" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label text="Current:">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(41460150319091712)"/>
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Label">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="resolvedMaximumFiringDistanceYardsFor200mmPlusDesc" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement data-source-path="maximumFiringDistanceYardsFor100mmTo200mm" style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Max Fire Dist 100-200mm (yards):">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171582267494400)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="Inherit">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Toggle>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay"/>
+                    </Bindings>
+                </ui:Toggle>
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                    <ui:Label text="Specified">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172169117732864)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Toggle data-source-path="value">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="isSpecified" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:Toggle>
+                    <ui:FloatField data-source-path="value" style="min-width: 100px;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay"/>
+                            <ui:DataBinding property="style.display" data-source-path="isSpecified" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label text="Current:">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(41460150319091712)"/>
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Label">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="resolvedMaximumFiringDistanceYardsFor100mmTo200mm" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement data-source-path="maximumFiringDistanceYardsFor100mmLess" style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Max Fire Dist 100- (yards):">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171927823618048)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="Inherit">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Toggle>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay"/>
+                    </Bindings>
+                </ui:Toggle>
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                    <ui:Label text="Specified">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172169117732864)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Toggle data-source-path="value">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="isSpecified" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:Toggle>
+                    <ui:FloatField data-source-path="value" style="min-width: 100px;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay"/>
+                            <ui:DataBinding property="style.display" data-source-path="isSpecified" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label text="Current:">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(41460150319091712)"/>
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Label">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="resolvedMaximumFiringDistanceYardsFor100mmLess" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement data-source-path="maximumFiringDistanceYardsForTorpedo" style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Max Fire Dist Torpedo (yards):">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172027870351360)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="Inherit">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Toggle>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay"/>
+                    </Bindings>
+                </ui:Toggle>
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                    <ui:Label text="Specified">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172169117732864)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Toggle data-source-path="value">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="isSpecified" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:Toggle>
+                    <ui:FloatField data-source-path="value" style="min-width: 100px;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay"/>
+                            <ui:DataBinding property="style.display" data-source-path="isSpecified" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label text="Current:">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(41460150319091712)"/>
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Label">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="resolvedMaximumFiringDistanceYardsForTorpedo" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

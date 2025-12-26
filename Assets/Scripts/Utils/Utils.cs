@@ -630,4 +630,24 @@ public static class Utils
             UnityEngine.Object.Destroy(parent.GetChild(i).gameObject);
         }
     }
+
+    public static Vector3[] XYListToVector3Array(List<XY> pathCells)
+    {
+        return pathCells.Select(xy =>
+        {
+            var posZ = -0.1f;
+            var cell = xy.GetCell();
+            if(cell.IsGridCell())
+            {
+                var (xf, yf) = HexMapShower.CellXYToLocalXY(xy.x, xy.y);
+                var pos = HexMapShower.Instance.controlledRenderer.transform.TransformPoint(xf, yf, 0);
+                return new Vector3(pos.x, pos.y, posZ);
+            }
+            else
+            {
+                var hitArea = StrategicGameManager.Instance.areaCellObjectIdToHitArea[cell.objectId];
+                return new Vector3(hitArea.transform.position.x, hitArea.transform.position.y, posZ);
+            }
+        }).ToArray();
+    }
 }

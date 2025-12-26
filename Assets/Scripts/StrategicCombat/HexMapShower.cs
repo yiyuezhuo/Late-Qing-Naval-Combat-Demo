@@ -30,7 +30,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     public Transform sideFlagContainerTransform;
     public Transform cellLabelContainerTransform;
     // public Transform pathLineContainerTransform;
-    public Transform missionWaypointLineContainerTransform;
+    // public Transform missionWaypointLineContainerTransform;
 
     public GameObject locationLabelPrefab;
     public GameObject roadPrefab;
@@ -39,8 +39,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     public GameObject strategicGroupIconPrefab;
     public GameObject sideFlagPrefab;
     public GameObject cellLabelPrefab;
-    // public GameObject pathLinePrefab;
-    public GameObject missionWaypointLinePrefab;
+    // public GameObject missionWaypointLinePrefab;
 
     public SpriteRenderer mapRenderer;
 
@@ -334,12 +333,6 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     // Update is called once per frame
     void Update()
     {
-        if(StrategicGameManager.Instance.fullInitialized)
-        {
-            // UpdateStrategicGroupIcons();
-            // UpdatePathLines();
-            UpdateMissionWaypointLines();
-        }
     }
 
     // void UpdateStrategicGroupIcons()
@@ -451,27 +444,6 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     //     }
     // }
 
-    void UpdateMissionWaypointLines()
-    {
-        var missionWaypointLines = new List<List<XY>>();
-
-        if (StrategicGameManager.Instance.mapEditMode == StrategicMapEditMode.WaypointPlotting)
-        {
-            var waypoints = StrategicMissionEditor.Instance.selectedObject.waypoints;
-            if (waypoints != null)
-                missionWaypointLines.Add(waypoints);
-        }
-
-        Utils.SyncTransformViewerLength(missionWaypointLineContainerTransform, missionWaypointLines.Count, missionWaypointLinePrefab);
-        var missionWaypointLineControllers = missionWaypointLineContainerTransform.GetComponentsInChildren<WaypointController>();
-
-        for (int i = 0; i < missionWaypointLines.Count; i++)
-        {
-            var missionWaypointLine = missionWaypointLines[i];
-            var controller = missionWaypointLineControllers[i];
-            controller.Sync(missionWaypointLine);
-        }
-    }
 
     public static (float, float) CellXYToLocalXY(int x, int y)
     {

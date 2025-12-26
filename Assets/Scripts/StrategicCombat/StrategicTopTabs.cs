@@ -10,7 +10,6 @@ using StrategicCombatCore;
 using CoreUtils;
 using NavalCombatCore;
 using System.IO;
-using StrategicCombat;
 
 public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 {

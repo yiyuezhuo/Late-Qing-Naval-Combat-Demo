@@ -50,7 +50,7 @@ namespace NavalCombatCore
     { }
 
 
-    public class Doctrine : IObjectIdLabeled
+    public partial class Doctrine : IObjectIdLabeled
     {
         public string objectId { get; set; }
         public Inheriable<AutomaticType> maneuverAutomaticType = new() { value = AutomaticType.Manual };

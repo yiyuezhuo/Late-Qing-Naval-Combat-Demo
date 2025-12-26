@@ -775,6 +775,45 @@ namespace NavalCombatCore
         [CreateProperty]
         public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
+
+    public partial class Doctrine
+    {
+        protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+        protected static string LocalizeEnum<T>(T obj) => ServiceLocator.Get<ILocalizeService>().GetEnum(obj);
+
+        [CreateProperty]
+        public string resolvedManeuverAutomaticTypeStr => LocalizeEnum(GetManeuverAutomaticType());
+
+        [CreateProperty]
+        public string resolvedFireAutomaticTypeStr => LocalizeEnum(GetFireAutomaticType());
+
+        [CreateProperty]
+        public string resolvedAmmunitionFallbackableStr => Localize(GetAmmunitionFallbackable().ToString());
+
+        [CreateProperty]
+        public string resolvedAmmunitionSwitchAutomationTypeStr => LocalizeEnum(GetAmmunitionSwitchAutomaticType());
+
+        public string Describe(UnspecifiableFloat num)
+        {
+            if(!num.isSpecified)
+            {
+                return Localize("Unspecified");
+            }
+            return num.value.ToString();
+        }
+
+        [CreateProperty]
+        public string resolvedMaximumFiringDistanceYardsFor200mmPlusDesc => Describe(GetMaximumFiringDistanceYardsFor200mmPlus());
+
+        [CreateProperty]
+        public string resolvedMaximumFiringDistanceYardsFor100mmTo200mm => Describe(GetMaximumFiringDistanceYardsFor100mmTo200mm());
+
+        [CreateProperty]
+        public string resolvedMaximumFiringDistanceYardsFor100mmLess => Describe(GetMaximumFiringDistanceYardsFor100mmLess());
+
+        [CreateProperty]
+        public string resolvedMaximumFiringDistanceYardsForTorpedo => Describe(GetMaximumFiringDistanceYardsForTorpedo());
+    }
 }
 
 namespace CoreUtils

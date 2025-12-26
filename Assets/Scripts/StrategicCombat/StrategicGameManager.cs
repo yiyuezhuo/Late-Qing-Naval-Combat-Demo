@@ -56,6 +56,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public Transform counterContainerTransform;
     public GameObject strategicGroupIconPrefab;
 
+    public Transform missionWaypointLineContainerTransform;
+    public GameObject missionWaypointLinePrefab;
+
     public bool fullInitialized = false;
 
     public class StartupConfig
@@ -110,6 +113,23 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public Cell lastSelectedCell;
     public StrategicGroup lastSelectedStrategicGroup;
+    public NavalContactReport lastSelectedNavalContactReport;
+    IObjectIdLabeled _lastSelectedObject;
+    public IObjectIdLabeled lastSelectedObject
+    {
+        get => _lastSelectedObject;
+        set
+        {
+            if(_lastSelectedObject != value)
+            {
+                _lastSelectedObject = value;
+
+                lastSelectedStrategicGroup = _lastSelectedObject as StrategicGroup;
+                lastSelectedNavalContactReport = _lastSelectedObject as NavalContactReport;
+            }
+        }
+    }
+
     Action<Cell> oneshotCellClickCallback;
 
     [CreateProperty]
@@ -563,19 +583,65 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     void UpdateView()
     {
-        var observableStrategicGroups = GetObserveableStrategicGroups().ToList();
-        BindStrategicGroupIcons(counterContainerTransform, strategicGroupIconPrefab, observableStrategicGroups);
+        var observableStrategicGroups = GetObserveableStrategicGroups();
+
+        var observedStrategicUnits = new List<ILayableWorldSpaceGroupIconDataSource>();
+        observedStrategicUnits.AddRange(observableStrategicGroups);
+
+        // TODO: Add Contact Report
+        if(!isInEditMode) // TODO: Add a toggle to show contact report in the edit mode?
+        {
+            var viewerSide = GetViewerSide();
+            observedStrategicUnits.AddRange(
+                StrategicGameState.Instance.navalContactReports.Where(r => r.GetObserverSide() == viewerSide)
+            );
+        }
+
+        BindStrategicUnitIcons(counterContainerTransform, strategicGroupIconPrefab, observedStrategicUnits);
 
         UpdatePathLines();
+        UpdateMissionWaypointLines();
     }
 
-    void BindStrategicGroupIcons(Transform containerTransform, GameObject prefab, List<StrategicGroup> strategicGroups)
+    void UpdateMissionWaypointLines()
+    {
+        var missionWaypointLines = new List<List<XY>>();
+
+        if (mapEditMode == StrategicMapEditMode.WaypointPlotting)
+        {
+            var waypoints = StrategicMissionEditor.Instance.selectedObject.waypoints;
+            if (waypoints != null)
+                missionWaypointLines.Add(waypoints);
+        }
+
+        Utils.SyncTransformViewerLength(missionWaypointLineContainerTransform, missionWaypointLines.Count, missionWaypointLinePrefab);
+        var missionWaypointLineControllers = missionWaypointLineContainerTransform.GetComponentsInChildren<WaypointController>();
+
+        for (int i = 0; i < missionWaypointLines.Count; i++)
+        {
+            var missionWaypointLine = missionWaypointLines[i];
+            var controller = missionWaypointLineControllers[i];
+            controller.Sync(missionWaypointLine);
+        }
+    }
+
+
+    // public IEnumerable<NavalContactReport> GetObservableContactReports()
+    // {
+    //     if(!isInEditMode) // TODO: Add a toggle to show contact report in the edit mode?
+    //     {
+    //         var viewerSide = GetViewerSide();
+    //         return StrategicGameState.Instance.navalContactReports.Where(r => r.side == viewerSide);
+    //     }
+    // }
+
+    void BindStrategicUnitIcons(Transform containerTransform, GameObject prefab, List<ILayableWorldSpaceGroupIconDataSource> strategicGroups)
     {
         // Sync Views & create mapping
         Utils.SyncTransformViewerLength(containerTransform, strategicGroups.Count, prefab);
 
         var worldSpaceGroupIcons = containerTransform.GetComponentsInChildren<WorldSpaceGroupIcon>();
-        var groupToView = new Dictionary<StrategicGroup, WorldSpaceGroupIcon>();
+        var groupToView = new Dictionary<IWorldSpaceGroupIconDataSource, WorldSpaceGroupIcon>();
         for (int i = 0; i < strategicGroups.Count; i++)
         {
             var strategicGroup = strategicGroups[i];
@@ -585,118 +651,164 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             groupToView[strategicGroup] = worldSpaceGroupIcon;
         }
 
-        // Area System Binding
-        var strategicGroupsOnArea = strategicGroups.Where(g => g.IsOnAreaCell());
-
-        foreach(var g in strategicGroupsOnArea.GroupBy(group => group.areaCellObjectId))
-        {
-            if(areaCellObjectIdToHitArea.TryGetValue(g.Key, out var hitArea))
-            {
-                var xf = hitArea.transform.position.x;
-                var yf = hitArea.transform.position.y;
-
-                Utils.LayoutStackTransform(
-                    g.Select(gp => groupToView[gp].transform).ToList(),
-                    new Vector3(xf, yf, 0),
-                    0.05f
-                );
-            }
-        }
-
-        // Grid System Binding
-        var strategicGroupsOnGrid = strategicGroups.Where(g => g.IsOnGridCell());
         var hexMapShower = HexMapShower.Instance;
-        foreach (var g in strategicGroupsOnGrid.GroupBy(group => (group.x, group.y)))
+
+        foreach(var g in strategicGroups.GroupBy(group => group.cell))
         {
-            (var x, var y) = g.Key;
-            var (xf, yf) = HexMapShower.CellXYToLocalXY(x, y);
-            var vec = hexMapShower.controlledRenderer.transform.TransformPoint(xf, yf, 0);
+            var cell = g.Key;
 
-            // var gl = g.GroupBy(_g => _g.country).ToList();
-            // var gl = g.GroupBy(_g => StrategicGameState.Instance.countryToSideStateMap[_g.country]).ToList();
-            var gl = g.GroupBy(_g => _g.side).ToList();
-
-            if (gl.Count == 1)
+            if(cell.IsGridCell()) // Bind to Grid
             {
-                Utils.LayoutStackTransform(
-                    gl[0].Select(gp => groupToView[gp].transform).ToList(),
-                    new Vector3(vec.x, vec.y, 0),
-                    0.05f
-                );
-            }
-            else
-            {
-                // gl.Sort((gp1, gp2) => gp1.Key.name.english[0].CompareTo(gp2.Key.name.english[0])); // FIXME: Fragile to empty string
-                var cell = gl.First().First().cell;
+                // (var x, var y) = g.Key;
+                var x = cell.x;
+                var y = cell.y;
 
-                var side0yScore = cell.GetMassCenterY(gl[0].Key);
-                var side1yScore = cell.GetMassCenterY(gl[1].Key);
+                var (xf, yf) = HexMapShower.CellXYToLocalXY(x, y);
+                var vec = hexMapShower.controlledRenderer.transform.TransformPoint(xf, yf, 0);
 
-                var gTop = gl[0];
-                var gBottom = gl[1];
+                // var gl = g.GroupBy(_g => _g.country).ToList();
+                // var gl = g.GroupBy(_g => StrategicGameState.Instance.countryToSideStateMap[_g.country]).ToList();
+                var gl = g.GroupBy(_g => _g.side).ToList();
 
-                if (side0yScore < side1yScore)
+                if (gl.Count == 1)
                 {
-                    gTop = gl[1];
-                    gBottom = gl[0];
+                    Utils.LayoutStackTransform(
+                        gl[0].Select(gp => groupToView[gp].transform).ToList(),
+                        new Vector3(vec.x, vec.y, 0),
+                        0.05f
+                    );
                 }
-                else if(side0yScore == side1yScore)
+                else
                 {
-                    if(gl[0].Key.name.english[0] > gl[1].Key.name.english[1])
+                    // gl.Sort((gp1, gp2) => gp1.Key.name.english[0].CompareTo(gp2.Key.name.english[0])); // FIXME: Fragile to empty string
+                    // var cell = gl.First().First().cell;
+
+                    var side0yScore = cell.GetMassCenterY(gl[0].Key);
+                    var side1yScore = cell.GetMassCenterY(gl[1].Key);
+
+                    var gTop = gl[0];
+                    var gBottom = gl[1];
+
+                    if (side0yScore < side1yScore)
                     {
                         gTop = gl[1];
                         gBottom = gl[0];
                     }
+                    else if(side0yScore == side1yScore)
+                    {
+                        if(gl[0].Key.name.english[0] > gl[1].Key.name.english[1])
+                        {
+                            gTop = gl[1];
+                            gBottom = gl[0];
+                        }
+                    }
+
+                    Utils.LayoutStackTransform(
+                        gTop.Select(gp => groupToView[gp].transform).ToList(),
+                        new Vector3(vec.x, vec.y + 0.25f, 0),
+                        0.05f
+                    );
+
+                    // Assume 2 sides can be in the same hex at most.
+                    Utils.LayoutStackTransform(
+                        gBottom.Select(gp => groupToView[gp].transform).ToList(),
+                        new Vector3(vec.x, vec.y - 0.25f, 0),
+                        0.05f
+                    );
                 }
+            }
+            else if(cell.IsAreaCell()) // Bind to Area
+            {
+                if(areaCellObjectIdToHitArea.TryGetValue(cell.objectId, out var hitArea))
+                {
+                    var xf = hitArea.transform.position.x;
+                    var yf = hitArea.transform.position.y;
 
-                Utils.LayoutStackTransform(
-                    gTop.Select(gp => groupToView[gp].transform).ToList(),
-                    new Vector3(vec.x, vec.y + 0.25f, 0),
-                    0.05f
-                );
-
-                // Assume 2 sides can be in the same hex at most.
-                Utils.LayoutStackTransform(
-                    gBottom.Select(gp => groupToView[gp].transform).ToList(),
-                    new Vector3(vec.x, vec.y - 0.25f, 0),
-                    0.05f
-                );
+                    Utils.LayoutStackTransform(
+                        g.Select(gp => groupToView[gp].transform).ToList(),
+                        new Vector3(xf, yf, 0),
+                        0.05f
+                    );
+                }
             }
         }
+
+        // foreach(var g in strategicGroupsOnArea.GroupBy(group => group.areaCellObjectId))
+        // {
+        //     if(areaCellObjectIdToHitArea.TryGetValue(g.Key, out var hitArea))
+        //     {
+        //         var xf = hitArea.transform.position.x;
+        //         var yf = hitArea.transform.position.y;
+
+        //         Utils.LayoutStackTransform(
+        //             g.Select(gp => groupToView[gp].transform).ToList(),
+        //             new Vector3(xf, yf, 0),
+        //             0.05f
+        //         );
+        //     }
+        // }
+
+        // // Grid System Binding
+        // // var strategicGroupsOnGrid = strategicGroups.Where(g => g.IsOnGridCell());
+        // var hexMapShower = HexMapShower.Instance;
+        // foreach (var g in strategicGroupsOnGrid.GroupBy(group => (group.x, group.y)))
+        // {
+        //     (var x, var y) = g.Key;
+        //     var (xf, yf) = HexMapShower.CellXYToLocalXY(x, y);
+        //     var vec = hexMapShower.controlledRenderer.transform.TransformPoint(xf, yf, 0);
+
+        //     // var gl = g.GroupBy(_g => _g.country).ToList();
+        //     // var gl = g.GroupBy(_g => StrategicGameState.Instance.countryToSideStateMap[_g.country]).ToList();
+        //     var gl = g.GroupBy(_g => _g.side).ToList();
+
+        //     if (gl.Count == 1)
+        //     {
+        //         Utils.LayoutStackTransform(
+        //             gl[0].Select(gp => groupToView[gp].transform).ToList(),
+        //             new Vector3(vec.x, vec.y, 0),
+        //             0.05f
+        //         );
+        //     }
+        //     else
+        //     {
+        //         // gl.Sort((gp1, gp2) => gp1.Key.name.english[0].CompareTo(gp2.Key.name.english[0])); // FIXME: Fragile to empty string
+        //         var cell = gl.First().First().cell;
+
+        //         var side0yScore = cell.GetMassCenterY(gl[0].Key);
+        //         var side1yScore = cell.GetMassCenterY(gl[1].Key);
+
+        //         var gTop = gl[0];
+        //         var gBottom = gl[1];
+
+        //         if (side0yScore < side1yScore)
+        //         {
+        //             gTop = gl[1];
+        //             gBottom = gl[0];
+        //         }
+        //         else if(side0yScore == side1yScore)
+        //         {
+        //             if(gl[0].Key.name.english[0] > gl[1].Key.name.english[1])
+        //             {
+        //                 gTop = gl[1];
+        //                 gBottom = gl[0];
+        //             }
+        //         }
+
+        //         Utils.LayoutStackTransform(
+        //             gTop.Select(gp => groupToView[gp].transform).ToList(),
+        //             new Vector3(vec.x, vec.y + 0.25f, 0),
+        //             0.05f
+        //         );
+
+        //         // Assume 2 sides can be in the same hex at most.
+        //         Utils.LayoutStackTransform(
+        //             gBottom.Select(gp => groupToView[gp].transform).ToList(),
+        //             new Vector3(vec.x, vec.y - 0.25f, 0),
+        //             0.05f
+        //         );
+        //     }
+        // }
     }
-
-    // public void BindAreaSystemStrategicGroupIcons(Transform containerTransform, GameObject prefab, List<StrategicGroup> strategicGroups)
-    // {
-    //     var gameState = StrategicGameState.Instance;
-
-    //     Utils.SyncTransformViewerLength(containerTransform, strategicGroups.Count, prefab);
-
-    //     var worldSpaceGroupIcons = containerTransform.GetComponentsInChildren<WorldSpaceGroupIcon>();
-    //     var groupToView = new Dictionary<StrategicGroup, WorldSpaceGroupIcon>();
-    //     for (int i = 0; i < strategicGroups.Count; i++)
-    //     {
-    //         var strategicGroup = strategicGroups[i];
-    //         var worldSpaceGroupIcon = worldSpaceGroupIcons[i];
-    //         worldSpaceGroupIcon.SetDataSource(strategicGroup);
-
-    //         groupToView[strategicGroup] = worldSpaceGroupIcon;
-    //     }
-
-    //     foreach(var g in strategicGroups.GroupBy(group => group.areaCellObjectId))
-    //     {
-    //         if(areaCellObjectIdToHitArea.TryGetValue(g.Key, out var hitArea))
-    //         {
-    //             var xf = hitArea.transform.position.x;
-    //             var yf = hitArea.transform.position.y;
-
-    //             Utils.LayoutStackTransform(
-    //                 g.Select(gp => groupToView[gp].transform).ToList(),
-    //                 new Vector3(xf, yf, 0),
-    //                 0.05f
-    //             );
-    //         }
-    //     }
-    // }
 
     void HandleInput()
     {
@@ -720,47 +832,49 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
                     Debug.Log($"hitInfo.collider={hitInfo.collider}");
 
-                    var group = hitInfo.collider.GetComponent<WorldSpaceGroupIcon>()?.currentDataSource;
-                    var groupSide = group.side;
-                    // var hexInfo = group.hexInfo;
-                    var strategicGroupReferences = group.cell.StrategicGroupReferences;
-                    var currentStack = group.currentStack;
-                    var topStackGroup = currentStack[^1];
-
-                    Debug.Log($"group={group}, groupSide={groupSide}, currentStack={currentStack}, topStackGroup={topStackGroup}");
-
-                    if (rightClicking && lastSelectedStrategicGroup == topStackGroup)
+                    // var group = hitInfo.collider.GetComponent<WorldSpaceGroupIcon>()?.currentDataSource;
+                    var iconDataSource = hitInfo.collider.GetComponent<WorldSpaceGroupIcon>()?.currentDataSource;
+                    if(iconDataSource is StrategicGroup group)
                     {
-                        // var idx = StrategicGameState.Instance.strategicGroups.IndexOf(topStackGroup);
-                        // if (group != null && idx != -1)
-                        // {
-                        //     StrategicGroupEditor.Instance.Show();
-                        //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
-                        // }
+                        var groupSide = group.side;
+                        // var hexInfo = group.hexInfo;
+                        var strategicGroupReferences = group.cell.StrategicGroupReferences;
+                        var currentStack = group.currentStack;
+                        var topStackGroup = currentStack[^1];
 
-                        SwitchCenter.Instance.SwitchToStrategicGroupView(topStackGroup);
+                        Debug.Log($"group={group}, groupSide={groupSide}, currentStack={currentStack}, topStackGroup={topStackGroup}");
+
+                        if (rightClicking && lastSelectedStrategicGroup == topStackGroup)
+                        {
+                            SwitchCenter.Instance.SwitchToStrategicGroupView(topStackGroup);
+                        }
+
+                        if (leftClicking)
+                        {
+                            if (lastSelectedStrategicGroup != topStackGroup) // New Click => Select
+                            {
+                                // lastSelectedStrategicGroup = topStackGroup;
+                                lastSelectedObject = topStackGroup;
+                            }
+                            else // Repeat Left Click => Toggle Stack
+                            {
+                                strategicGroupReferences.RemoveAll(r => r.referenceId == topStackGroup.objectId);
+                                strategicGroupReferences.Insert(0, new() { referenceId = topStackGroup.objectId });
+                                currentStack = group.currentStack;
+                                topStackGroup = currentStack[^1];
+
+                                // lastSelectedStrategicGroup = topStackGroup;
+                                lastSelectedObject = topStackGroup;
+                            }
+                        }
+
+                        lastSelectedCell = group.cell;
                     }
-
-                    if (leftClicking)
+                    else if(iconDataSource is NavalContactReport contactReport)
                     {
-                        if (lastSelectedStrategicGroup != topStackGroup) // New Click => Select
-                        {
-                            lastSelectedStrategicGroup = topStackGroup;
-                        }
-                        else // Repeat Left Click => Toggle Stack
-                        {
-                            strategicGroupReferences.RemoveAll(r => r.referenceId == topStackGroup.objectId);
-                            strategicGroupReferences.Insert(0, new() { referenceId = topStackGroup.objectId });
-                            currentStack = group.currentStack;
-                            topStackGroup = currentStack[^1];
-
-                            lastSelectedStrategicGroup = topStackGroup;
-                        }
+                        lastSelectedObject = contactReport;
+                        // TODO: Implement Toggle?
                     }
-
-                    lastSelectedCell = group.cell;
-
-                    // hexInfo.strategicGroupReferences.Select(r => r.Get()).Where(g => g.country)
                 }
                 else if (leftClicking) // click on map (cell)
                 {
@@ -931,6 +1045,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     [CreateProperty]
     public bool selectedStrategicGroupValid => lastSelectedStrategicGroup != null;
 
+    [CreateProperty]
+    public bool selectedNavalContactReportValid => lastSelectedNavalContactReport != null;
+
     public void ScheduleOneshotCellClickCallback(Action<Cell> callback)
     {
         mapEditMode = StrategicMapEditMode.WaitOneshotCellClickCallback;
@@ -943,7 +1060,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         if (mapEditMode == StrategicMapEditMode.Select)
         {
             lastSelectedCell = activeCell;
-            lastSelectedStrategicGroup = null;
+            // lastSelectedStrategicGroup = null;
+            lastSelectedObject = null;
         }
         else if (mapEditMode == StrategicMapEditMode.WaitOneshotCellClickCallback)
         {
@@ -962,8 +1080,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 }
                 else
                 {
-                    var lastWaypoint = selectedMission.waypoints[^1];
-                    var srcCell = StrategicGameState.Instance.cellMatrix[lastWaypoint.x, lastWaypoint.y];
+                    // var lastWaypoint = selectedMission.waypoints[^1];
+                    // var srcCell = StrategicGameState.Instance.cellMatrix[lastWaypoint.x, lastWaypoint.y];
+                    var srcCell = selectedMission.waypoints[^1].GetCell();
                     var dstCell = activeCell;
 
                     IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy(); // TODO: Generalize to army?

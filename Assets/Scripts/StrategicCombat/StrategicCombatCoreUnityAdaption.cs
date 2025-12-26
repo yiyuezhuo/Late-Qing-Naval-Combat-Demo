@@ -103,7 +103,44 @@ namespace StrategicCombatCore
         };
     }
 
-    public partial class StrategicGroup
+    public partial class NavalContactReport : ILayableWorldSpaceGroupIconDataSource
+    {
+        [CreateProperty]
+        public string sizeStr => "";
+
+        [CreateProperty]
+        public string bottomLabelText => $"{estimation.GetPowerPoint()}?"; // Show 1/1/1/1/1/1 Style report?
+
+        [CreateProperty]
+        public Color countryColor => StyleConstants.countryColorMap.GetValueOrDefault(GetObservedSide().countries.FirstOrDefault(), Color.gray);
+
+        [CreateProperty]
+        public StyleBackground typeIcon
+        {
+            get => UnityWebRequestImageReader.Instance.FetchStyleBackground($"{Application.streamingAssetsPath}/Pictures/GroupTypeIcons/Fleet.png");
+        }
+
+        // public bool IsOnGridCell() => GetCell().IsGridCell();
+        // public bool IsOnAreaCell() => GetCell().IsAreaCell();
+
+        // public int x{get => GetCell().x;}
+        // public int y{get => GetCell().y;}
+        // public string areaCellObjectId{get => GetCell().objectId;}
+
+        public SideState side{get => GetObservedSide();}
+        public Cell cell{get => GetCell();}
+
+        [CreateProperty]
+        public string dateTimeStr => $"{CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(dateTime)} ({GetTimeSpanToCurrent()} before)";
+
+        [CreateProperty]
+        public string sideName => GetObservedSide().name.GetMergedName();
+
+        [CreateProperty]
+        public string estimateStr => estimation.GetEstimatateSummary();
+    }
+
+    public partial class StrategicGroup : ILayableWorldSpaceGroupIconDataSource
     {
         [CreateProperty]
         public string sizeStr => GetSizeStr();
@@ -111,8 +148,11 @@ namespace StrategicCombatCore
         [CreateProperty]
         public int combinedSubUnitSize => GetCombinedSubUnitSize();
 
+        // [CreateProperty]
+        // public int combinedPowerPointRounded => Mathf.RoundToInt(GetCombinedPowerPoint(true));
         [CreateProperty]
-        public int combinedPowerPointRounded => Mathf.RoundToInt(GetCombinedPowerPoint(true));
+        public string bottomLabelText => Mathf.RoundToInt(GetCombinedPowerPoint(true)).ToString();
+
 
         [CreateProperty]
         public Color countryColor => StyleConstants.countryColorMap.GetValueOrDefault(country, Color.gray);

@@ -2577,6 +2577,18 @@ MonoBehaviour:
       some work-in-progress sub system here.'
     m_Metadata:
       m_Items: []
+  - m_Id: 26863890635329536
+    m_Localized: false
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26863907462877184
+    m_Localized: true
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26863956800475136
+    m_Localized: Unspecified
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

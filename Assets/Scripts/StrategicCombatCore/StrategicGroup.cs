@@ -992,6 +992,17 @@ namespace StrategicCombatCore
 
         public bool IsOnAreaCell() => cell?.IsAreaCell() ?? false; // independent or combined on area => true, Not Deployed => false
         public bool IsOnGridCell() => cell?.IsGridCell() ?? false;
+
+        // public void ChangeAssignedMissionTo(StrategicMission mission)
+        // {
+        //     var currentMission = EntityManager.Instance.Get<StrategicMission>(assignedMissionObjectId);
+        //     if(currentMission != null)
+        //     {
+        //         currentMission.groups.RemoveAll(r => r.Get() == this);
+        //     }
+        //     mission.groups.Add(new StrategicGroupMemberReference { referenceId = objectId });
+        //     assignedMissionObjectId = mission.objectId;
+        // }
     }
 }
 

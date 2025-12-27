@@ -9856,7 +9856,6 @@
      <string>a344dab7-a654-4ee4-8867-e2b470ea9d31</string>
      <string>d4dc8ef8-0b7c-4f23-a791-7c703bbe6ec2</string>
      <string>e063b527-a3b1-440d-96b0-c89589dbef78</string>
-     <string>6375f9f0-680b-4454-8109-bf0a835c8a7a</string>
     </childrenObjectIds>
     <name>
      <english>1st Sub-Division</english>
@@ -10174,18 +10173,17 @@
    <globalDescription>
     <english>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
 
-Land Batteries is not model yet.</english>
+Land-based batteries and the initial damage to Russian ships are not yet modeled.</english>
     <japanese>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
 
-陸上砲台は未実装です</japanese>
+地上の砲台とロシア艦船への初期損傷はまだモデル化されていません。</japanese>
     <chineseSimplified>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
 
-陆上炮台尚未建模。
-
+陆基炮台和对俄罗斯舰船的初始损害尚未建模。
 </chineseSimplified>
     <chineseTraditional>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
 
-陸地砲台尚未建模。</chineseTraditional>
+陸基砲台和對俄羅斯艦船的初始損害尚未建模。</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>

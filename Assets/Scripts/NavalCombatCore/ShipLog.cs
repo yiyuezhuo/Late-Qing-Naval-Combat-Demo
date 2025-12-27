@@ -305,6 +305,9 @@ namespace NavalCombatCore
         public float GetTotalWeight() => armorPiercing + semiArmorPiercing + common + highExplosive;
     }
 
+    /// <summary>
+    /// Used to enforce ammunition loadout percentage 
+    /// </summary>
     public class ResetDamageExpenditureStateContext
     {
         public List<AmmunitionLoadoutWeightRecord> ammunitionLoadoutWeightRecords = new() {};
@@ -601,11 +604,15 @@ namespace NavalCombatCore
         // The method sync list, reset damage and expenditures and misc dynamic states (like processing seconds).
         public void ResetDamageExpenditureState(ResetDamageExpenditureStateContext ctx)
         {
-            desiredHeadingDeg = headingDeg;
-            desiredSpeedKnots = speedKnots;
-            desiredSpeedKnotsForBoilerRoom = speedKnots;
+            // Control is given to Set to Formation (check correctness of Skirmish)
+            // desiredHeadingDeg = headingDeg;
+            // desiredSpeedKnots = speedKnots;
+            // desiredSpeedKnotsForBoilerRoom = speedKnots;
 
             damagePoint = 0;
+            subStates.Clear();
+            ClearLogs();
+            timeLocLogs.Clear();
 
             var _shipClass = shipClass;
             Utils.SyncListPairLength(_shipClass.batteryRecords, batteryStatus, this);
@@ -629,6 +636,7 @@ namespace NavalCombatCore
             searchLightHits.ResetDamageExpenditureState();
 
             damageControlRatingHits = 0;
+            
             // damageEffectRecords.Clear();
             // shipboardFireStatus.Clear();
         }

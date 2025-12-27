@@ -252,6 +252,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset strategicGroupDialogDocument;
     public VisualTreeAsset shipLogDialogDocument;
     public VisualTreeAsset landUnitDialogDocument;
+    public VisualTreeAsset strategicMissionSelectorDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -263,6 +264,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     {
 
     }
+
 
     public TempDialog PopupLandUnitDialog(LandUnit landUnit)
     {
@@ -374,6 +376,28 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
         // tempDialog.onCreated += torpedoSectorSelectorDialog.OnCreated;
         // tempDialog.onConfirmed += torpedoSectorSelectorDialog.OnConfirm;
+
+        tempDialog.Popup();
+    }
+
+    public void PopupStrategicMissionSelectorDialogDocument(Action<StrategicMission> callback, StrategicMission parentMission)
+    {
+        var selectorDialog = new NamedSelector<StrategicMission>()
+        {
+            fullObjects = StrategicGameState.Instance.missions.Where(m => m.parentMissionRef.Get() == null && parentMission != m).ToList(),
+            callback = callback
+        };
+        selectorDialog.Refresh();
+
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=strategicMissionSelectorDialogDocument,
+            templateDataSource=selectorDialog
+        };
+
+        // tempDialog.onCreated += selectorDialog.OnCreated;
+        tempDialog.onConfirmed += selectorDialog.OnConfirm;
 
         tempDialog.Popup();
     }

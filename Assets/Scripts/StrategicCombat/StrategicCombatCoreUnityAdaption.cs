@@ -627,6 +627,11 @@ namespace StrategicCombatCore
 
     public partial class StrategicMission
     {
+        // public bool activeOnlyForAI;
+
+        [CreateProperty]
+        public string sideName => EntityManager.Instance.Get<SideState>(sideObjectId)?.name?.GetMergedName() ?? "[Unspecified or Invalid]";
+
         [CreateProperty]
         public bool isPatrol => type == MissionType.Patrol;
 
@@ -635,6 +640,9 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public bool isNavalTransfer => type == MissionType.NavalTransfer;
+
+        [CreateProperty]
+        public bool isOneShotRaiding => type == MissionType.OneShotRaiding;
 
         // [CreateProperty]
         // public string sourceDepotName => EntityManager.Instance.Get<LandUnit>(sourceDepotObjectId)?.name?.mergedName ?? "[Not defined or Invalid]";
@@ -907,6 +915,21 @@ namespace StrategicCombatCore
     {
         [CreateProperty]
         public string sideName => EntityManager.Instance.Get<SideState>(sideObjectId)?.name?.GetMergedName() ?? "[Not Specified or Invalid]";
+    }
+
+    public partial class StrategicMissionReference
+    {
+        [CreateProperty]
+        public string missionDesc
+        {
+            get
+            {
+                var mission = EntityManager.Instance.Get<StrategicMission>(objectId);
+                if(mission == null)
+                    return "[Not Specified or Invalid]";
+                return $"{mission?.name?.GetMergedName()}"; // TODO: Add some state indicator
+            }
+        }
     }
 }
 

@@ -7,7 +7,6 @@ using Unity.Properties;
 // using NavalCombatCore;
 using CoreUtils;
 using StrategicCombatCore;
-using System.Diagnostics.Tracing;
 
 
 public class LandUnitTemplateEditor : LeftObjectPickerRightEditorStrategic<LandUnitTemplateEditor, LandUnitTemplate>

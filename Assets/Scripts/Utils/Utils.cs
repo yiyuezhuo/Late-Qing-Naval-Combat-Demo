@@ -100,10 +100,10 @@ public static class Utils
         return (latDeg, lonDeg);
     }
 
-    public static NavalCombatCore.LatLon Vector3ToLatLon(Vector3 point)
+    public static LatLon Vector3ToLatLon(Vector3 point)
     {
         var (latDeg, lonDeg) = Vector3ToLatitudeLongitudeDeg(point);
-        return new NavalCombatCore.LatLon(latDeg, lonDeg);
+        return new LatLon(latDeg, lonDeg);
     }
 
     public static Action<IEnumerable<int>> MakeCallbackForItemsAdded<T>(BaseListView listView, Func<object> parentProvider) where T : new()

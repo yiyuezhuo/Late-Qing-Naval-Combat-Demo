@@ -371,6 +371,7 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
             foreach (var shipLog in gameState.shipLogs)
             {
                 shipLog.ResetDamageExpenditureState(new());
+                shipLog.logs.Clear();
             }
         };
     }

@@ -35,7 +35,7 @@ On the other hand, gunnery introduce too much attrition compared to historical c
 
 Deepwiki (LLM) automatically generates doc (not very accurate but useful): https://deepwiki.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo
 
-Manual is not version controlled, dev should place lastest version of manual as `Assets/StreamingAssets/Manuals/readme.pdf`. The current manual is generated from: https://github.com/yiyuezhuo/First-Sino-Japanese-War-Manual using Obsidian's "Export to PDF" feature.
+Manual is not version controlled, dev should place latest version of manual as `Assets/StreamingAssets/Manuals/readme.pdf`. The current manual is generated from: https://github.com/yiyuezhuo/First-Sino-Japanese-War-Manual using Obsidian's "Export to PDF" feature.
 
 ### Unity related bugs
 
@@ -46,6 +46,16 @@ Manual is not version controlled, dev should place lastest version of manual as 
 - UITK occasionally ignores cellTemplate reference (workaround: touch files in Unity or external editor to trigger a refresh)
 - Deleting a template instance in UITK's designer may corrupt the Template tag, causing other instance of the same template will become visually hidden (they still exist actually).
     So it's recommended to delete instance by manually modifiying uxml file entries instead of designer.
+
+### UITK Templates
+
+- Left ListView right content editor (2-columns UI) (Example: `LandUnitEditor`):
+    - Template: `LeftObjectPickerRightEditor.uxml`
+    - Binder: `LeftObjectPickerRightEditorStrategic`
+- Selector Dialog (Example: `LeaderSelector`):
+    - Template: `INamedSelectorDialog.uxml`
+    - Binder: `NamedSelector<T>`
+    - Placeholder datasource: `PlaceholderNamedObject` (implement `INamed`)
 
 ### Platforms
 

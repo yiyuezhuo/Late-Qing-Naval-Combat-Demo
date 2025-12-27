@@ -3967,6 +3967,14 @@
      <japanese>元山</japanese>
      <chineseSimplified>元山</chineseSimplified>
     </Label>
+    <CellSideInfos>
+     <CellSideInfo>
+      <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
+      <internalSearchValue>3</internalSearchValue>
+      <interalHideValue>3</interalHideValue>
+      <merchantShipTraffic>10</merchantShipTraffic>
+     </CellSideInfo>
+    </CellSideInfos>
     <CellConnections>
      <CellConnection cost="510.310425" costCoef="1">
       <self x="-1" y="-1" areaCellObjectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc" />
@@ -4021,6 +4029,14 @@
      <japanese>石川</japanese>
      <chineseSimplified>石川</chineseSimplified>
     </Label>
+    <CellSideInfos>
+     <CellSideInfo>
+      <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
+      <internalSearchValue>3</internalSearchValue>
+      <interalHideValue>3</interalHideValue>
+      <merchantShipTraffic>10</merchantShipTraffic>
+     </CellSideInfo>
+    </CellSideInfos>
     <CellConnections>
      <CellConnection cost="461.913971" costCoef="1">
       <self x="-1" y="-1" areaCellObjectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a" />
@@ -4046,6 +4062,14 @@
      <japanese>宮城</japanese>
      <chineseSimplified>宫城</chineseSimplified>
     </Label>
+    <CellSideInfos>
+     <CellSideInfo>
+      <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
+      <internalSearchValue>3</internalSearchValue>
+      <interalHideValue>3</interalHideValue>
+      <merchantShipTraffic>10</merchantShipTraffic>
+     </CellSideInfo>
+    </CellSideInfos>
     <CellConnections>
      <CellConnection cost="413.6482" costCoef="1">
       <self x="-1" y="-1" areaCellObjectId="6d6ef369-0a3c-4e92-ada4-3b2b4c09b2fa" />
@@ -4063,6 +4087,14 @@
      <japanese>東京湾</japanese>
      <chineseSimplified>东京湾</chineseSimplified>
     </Label>
+    <CellSideInfos>
+     <CellSideInfo>
+      <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
+      <internalSearchValue>3</internalSearchValue>
+      <interalHideValue>3</interalHideValue>
+      <merchantShipTraffic>20</merchantShipTraffic>
+     </CellSideInfo>
+    </CellSideInfos>
     <StrategicGroupReferences>
      <StrategicGroupReference>
       <referenceId>c5d93306-4781-4f10-a629-da83e996308e</referenceId>
@@ -4085,6 +4117,14 @@
      <japanese>島根</japanese>
      <chineseSimplified>岛根</chineseSimplified>
     </Label>
+    <CellSideInfos>
+     <CellSideInfo>
+      <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
+      <internalSearchValue>3</internalSearchValue>
+      <interalHideValue>3</interalHideValue>
+      <merchantShipTraffic>10</merchantShipTraffic>
+     </CellSideInfo>
+    </CellSideInfos>
     <CellConnections>
      <CellConnection cost="368.6236" costCoef="1">
       <self x="-1" y="-1" areaCellObjectId="76352c1d-69a9-4ca3-a974-3ac4073e3901" />
@@ -4106,6 +4146,14 @@
      <japanese>黄海</japanese>
      <chineseSimplified>黄海</chineseSimplified>
     </Label>
+    <CellSideInfos>
+     <CellSideInfo>
+      <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
+      <internalSearchValue>5</internalSearchValue>
+      <interalHideValue>3</interalHideValue>
+      <merchantShipTraffic>15</merchantShipTraffic>
+     </CellSideInfo>
+    </CellSideInfos>
     <CellConnections>
      <CellConnection cost="435.504456" costCoef="1">
       <self x="-1" y="-1" areaCellObjectId="c9b7a619-1f95-4664-8cd1-c6e79994fd38" />
@@ -4119,12 +4167,20 @@
      <japanese>対馬</japanese>
      <chineseSimplified>对马</chineseSimplified>
     </Label>
+    <CellSideInfos>
+     <CellSideInfo>
+      <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
+      <internalSearchValue>5</internalSearchValue>
+      <interalHideValue>3</interalHideValue>
+      <merchantShipTraffic>15</merchantShipTraffic>
+     </CellSideInfo>
+    </CellSideInfos>
     <StrategicGroupReferences>
      <StrategicGroupReference>
-      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
+      <referenceId>44d799ed-77dc-4946-b150-21af4c1fcfc9</referenceId>
      </StrategicGroupReference>
      <StrategicGroupReference>
-      <referenceId>44d799ed-77dc-4946-b150-21af4c1fcfc9</referenceId>
+      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
      </StrategicGroupReference>
     </StrategicGroupReferences>
     <CellConnections>
@@ -4160,6 +4216,14 @@
      <japanese>高知</japanese>
      <chineseSimplified>高知</chineseSimplified>
     </Label>
+    <CellSideInfos>
+     <CellSideInfo>
+      <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
+      <internalSearchValue>3</internalSearchValue>
+      <interalHideValue>3</interalHideValue>
+      <merchantShipTraffic>10</merchantShipTraffic>
+     </CellSideInfo>
+    </CellSideInfos>
     <StrategicGroupReferences>
      <StrategicGroupReference>
       <referenceId>faa1b04e-87b1-4610-b3da-82c02635f857</referenceId>
@@ -4186,6 +4250,14 @@
      <japanese>大隅海峡</japanese>
      <chineseSimplified>大隅海峡</chineseSimplified>
     </Label>
+    <CellSideInfos>
+     <CellSideInfo>
+      <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
+      <internalSearchValue>3</internalSearchValue>
+      <interalHideValue>3</interalHideValue>
+      <merchantShipTraffic>10</merchantShipTraffic>
+     </CellSideInfo>
+    </CellSideInfos>
     <CellConnections>
      <CellConnection cost="356.0813" costCoef="1">
       <self x="-1" y="-1" areaCellObjectId="6793c7a7-7e29-4018-a0f4-de7ef31055d3" />
@@ -4237,8 +4309,270 @@
     </navalMinistry>
    </chineseHighCommand>
   </highCommand>
-  <landUnitTemplates />
-  <landUnits />
+  <landUnitTemplates>
+   <LandUnitTemplate>
+    <name>
+     <english>Depot</english>
+    </name>
+    <size>Unspecified</size>
+    <unitType>Supply</unitType>
+    <strength>0</strength>
+    <guns>0</guns>
+    <isSupport>false</isSupport>
+    <marksmanship>1</marksmanship>
+    <quality>Average</quality>
+    <weaponRecordss />
+    <objectId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</objectId>
+   </LandUnitTemplate>
+   <LandUnitTemplate>
+    <name>
+     <english>Port</english>
+    </name>
+    <size>Unspecified</size>
+    <unitType>Port</unitType>
+    <strength>0</strength>
+    <guns>0</guns>
+    <isSupport>false</isSupport>
+    <marksmanship>1</marksmanship>
+    <quality>Average</quality>
+    <weaponRecordss />
+    <objectId>9ac1399d-49f8-48ad-8bda-58ce3876fe86</objectId>
+   </LandUnitTemplate>
+  </landUnitTemplates>
+  <landUnits>
+   <LandUnit>
+    <name>
+     <english>Yokosuka Depot</english>
+     <japanese>横須賀倉庫</japanese>
+     <chineseSimplified>横须贺仓库</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>0</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>0</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>193c7013-04a2-43aa-ada1-b0ce525c0f22</objectId>
+    <strategicGroupReference>
+     <referenceId>c5d93306-4781-4f10-a629-da83e996308e</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Kure Depot</english>
+     <japanese>呉倉庫</japanese>
+     <chineseSimplified>吴仓库</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>0</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>0</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>0341200d-9758-4163-91cf-41a6d1116bd3</objectId>
+    <strategicGroupReference>
+     <referenceId>faa1b04e-87b1-4610-b3da-82c02635f857</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Sasebo Depot</english>
+     <japanese>佐世保倉庫</japanese>
+     <chineseSimplified>佐世保仓库</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>0</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>0</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>03762cd1-571c-4b1a-bf0b-cdc6f9b7b856</objectId>
+    <strategicGroupReference>
+     <referenceId>44d799ed-77dc-4946-b150-21af4c1fcfc9</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Vladivostok Depot</english>
+     <japanese>ウラジオストク倉庫</japanese>
+     <chineseSimplified>海参崴仓库</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>0</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>0</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>85c6b847-efe0-4227-bde9-a2b82454188e</objectId>
+    <strategicGroupReference>
+     <referenceId>00552ba8-0962-43c1-9da7-31a07da39aaa</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Yokosuka Port</english>
+     <japanese>横須賀ポート</japanese>
+     <chineseSimplified>横须贺港口</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>0</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>9ac1399d-49f8-48ad-8bda-58ce3876fe86</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>10</portLevel>
+    <repairShipyardLevel>20</repairShipyardLevel>
+    <objectId>fedc9e74-2c1f-4ecc-9085-bdf1f5e97101</objectId>
+    <strategicGroupReference>
+     <referenceId>c5d93306-4781-4f10-a629-da83e996308e</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Kure Port</english>
+     <japanese>呉ポート</japanese>
+     <chineseSimplified>吴港口</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>0</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>9ac1399d-49f8-48ad-8bda-58ce3876fe86</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>10</portLevel>
+    <repairShipyardLevel>20</repairShipyardLevel>
+    <objectId>1b80c744-b892-41e1-96be-bd6e81aaf829</objectId>
+    <strategicGroupReference>
+     <referenceId>faa1b04e-87b1-4610-b3da-82c02635f857</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Sasebo Port</english>
+     <japanese>佐世保ポート</japanese>
+     <chineseSimplified>佐世保港口</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>0</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>9ac1399d-49f8-48ad-8bda-58ce3876fe86</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>10</portLevel>
+    <repairShipyardLevel>20</repairShipyardLevel>
+    <objectId>f779b4c8-82c5-43ca-8024-4cf6c8adf778</objectId>
+    <strategicGroupReference>
+     <referenceId>44d799ed-77dc-4946-b150-21af4c1fcfc9</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Vladivostok Port</english>
+     <japanese>ウラジオストクポート</japanese>
+     <chineseSimplified>海参崴港口</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>0</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>9ac1399d-49f8-48ad-8bda-58ce3876fe86</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>5</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>6d0989bf-ffa1-4103-9e0a-2d70e286734f</objectId>
+    <strategicGroupReference>
+     <referenceId>00552ba8-0962-43c1-9da7-31a07da39aaa</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+  </landUnits>
   <weapons />
   <strategicGroups>
    <StrategicGroup>
@@ -4260,6 +4594,12 @@
      <referenceObjectId>de5c3853-f922-47fa-81d3-31564419f71c</referenceObjectId>
     </leaderReference>
     <subordinatesCombined>
+     <StrategicGroupMemberReference>
+      <referenceId>85c6b847-efe0-4227-bde9-a2b82454188e</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>6d0989bf-ffa1-4103-9e0a-2d70e286734f</referenceId>
+     </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
       <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
      </StrategicGroupMemberReference>
@@ -4305,6 +4645,7 @@
       <referenceId>c22a1d1e-92c6-494a-a6c9-7a455672454e</referenceId>
      </StrategicGroupMemberReference>
     </subordinatesCombined>
+    <assignedMissionObjectId>2d18a1b2-f2a8-4a2d-9319-ecd2b92bce28</assignedMissionObjectId>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -4418,6 +4759,12 @@
     </leaderReference>
     <subordinatesCombined>
      <StrategicGroupMemberReference>
+      <referenceId>03762cd1-571c-4b1a-bf0b-cdc6f9b7b856</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>f779b4c8-82c5-43ca-8024-4cf6c8adf778</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
       <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
      </StrategicGroupMemberReference>
     </subordinatesCombined>
@@ -4449,7 +4796,14 @@
     <leaderReference>
      <referenceObjectId>55bcaa87-3db0-4dba-8138-9d4b345d0cb9</referenceObjectId>
     </leaderReference>
-    <subordinatesCombined />
+    <subordinatesCombined>
+     <StrategicGroupMemberReference>
+      <referenceId>0341200d-9758-4163-91cf-41a6d1116bd3</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>1b80c744-b892-41e1-96be-bd6e81aaf829</referenceId>
+     </StrategicGroupMemberReference>
+    </subordinatesCombined>
     <remark>https://en.wikipedia.org/wiki/Kure_Naval_District</remark>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
@@ -4478,7 +4832,14 @@
     <leaderReference>
      <referenceObjectId>cf6cab8d-b542-4930-aaeb-bc24eccace43</referenceObjectId>
     </leaderReference>
-    <subordinatesCombined />
+    <subordinatesCombined>
+     <StrategicGroupMemberReference>
+      <referenceId>193c7013-04a2-43aa-ada1-b0ce525c0f22</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>fedc9e74-2c1f-4ecc-9085-bdf1f5e97101</referenceId>
+     </StrategicGroupMemberReference>
+    </subordinatesCombined>
     <remark>https://en.wikipedia.org/wiki/Yokosuka_Naval_District</remark>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
@@ -4492,7 +4853,6 @@
   </strategicGroups>
   <scenarioState>
    <dateTime>1904-02-09T00:00:00Z</dateTime>
-   <enableFogOfWar>false</enableFogOfWar>
    <enableGridSystem>false</enableGridSystem>
    <enableAreaSystem>true</enableAreaSystem>
    <areaSystem>
@@ -4577,7 +4937,32 @@
     <objectId>f781e78a-aaf5-411f-8f49-d1561e7949a2</objectId>
    </SideState>
   </sideStates>
-  <missions />
+  <missions>
+   <StrategicMission>
+    <name>
+     <english>Russian Global Raiding</english>
+    </name>
+    <groups>
+     <StrategicGroupMemberReference>
+      <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
+     </StrategicGroupMemberReference>
+    </groups>
+    <waypoints />
+    <type>GlobalRaiding</type>
+    <parentMissionRef />
+    <childrenMissionRefs />
+    <sideObjectId>f781e78a-aaf5-411f-8f49-d1561e7949a2</sideObjectId>
+    <patrolState>Assembling</patrolState>
+    <supplyState>AssemblingAndLoading</supplyState>
+    <sourceDepotReference />
+    <targetDepotReference />
+    <completed>false</completed>
+    <active>true</active>
+    <navalTransferState>Assembling</navalTransferState>
+    <oneShotRaidingState>Assembling</oneShotRaidingState>
+    <objectId>2d18a1b2-f2a8-4a2d-9319-ecd2b92bce28</objectId>
+   </StrategicMission>
+  </missions>
   <pendingNavalCombats />
   <landBattles />
   <logs />
@@ -6990,8 +7375,8 @@
   </serializedCells>
  </gameState>
  <viewState>
-  <xPosition>-2.35872936</xPosition>
-  <yPosition>0.4399817</yPosition>
+  <xPosition>-2.0523665</xPosition>
+  <yPosition>-0.844619155</yPosition>
   <orthographicSize>6</orthographicSize>
   <hitAreaMapRecords>
    <HitAreaMapRecord hitAreaObjectId="0b2cbd39-ad25-4233-b5a1-5744048e7491" areaCellObjectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16" />

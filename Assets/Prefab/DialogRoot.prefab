@@ -109,3 +109,4 @@ MonoBehaviour:
   strategicGroupDialogDocument: {fileID: 9197481963319205126, guid: 4c34913fadbc6eb47b251a649a573999, type: 3}
   shipLogDialogDocument: {fileID: 9197481963319205126, guid: fbb7bc68864a13542896d5648dd9db76, type: 3}
   landUnitDialogDocument: {fileID: 9197481963319205126, guid: 27ccc255880ea2448b0325bec554f20c, type: 3}
+  strategicMissionSelectorDialogDocument: {fileID: 9197481963319205126, guid: f97af49b76153054898291e9e2f0c8b2, type: 3}

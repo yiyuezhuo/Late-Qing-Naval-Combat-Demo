@@ -521,6 +521,16 @@ namespace StrategicCombatCore
             return $"{x}, {y}, {Label?.GetShortName()}";
         }
 
+        public GlobalString GetLocationSummaryGlobalString()
+        {
+            if(objectId != null)
+                return Label ?? new GlobalString(){english=objectId};
+            if(Label == null)
+                return new GlobalString(){english=$"{x}, {y}"};
+            var xy = $"{x}, {y} ";
+            return new GlobalString(){english=xy, japanese=xy, chineseSimplified=xy, chineseTraditional=xy}.Add(Label);
+        }
+
         public XY ToXY()
         {
             return new XY()

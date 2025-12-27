@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using YYZ.PathFinding;
 
 namespace StrategicCombatCore
@@ -935,274 +936,40 @@ namespace StrategicCombatCore
         public void Advance1HourForMission()
         {
             // Mission state transition
-            foreach (var mission in missions)
+            foreach (var mission in missions.ToList()) // Advance Mission may generate new mission
             {
-                if (mission.type == StrategicMission.MissionType.Patrol && mission.waypoints.Count >= 2)
-                {
-                    var cells = mission.groups.Select(groupRef => (groupRef.Get() as StrategicGroup)?.cell).ToHashSet(); // is assigned groups assembled to the same hex?
-                    if (cells.Count == 1)
-                    {
-                        var groupingCell = cells.First();
-                        if (mission.patrolState == StrategicMission.PatrolState.Assembling && groupingCell == mission.GetWaypointStartCell())
-                        {
-                            mission.patrolState = StrategicMission.PatrolState.StartToDestination;
-                        }
-                        else if (mission.patrolState == StrategicMission.PatrolState.StartToDestination && groupingCell == mission.GetWaypointDestinationCell())
-                        {
-                            mission.patrolState = StrategicMission.PatrolState.DestinationToStart;
-                        }
-                        else if (mission.patrolState == StrategicMission.PatrolState.DestinationToStart && groupingCell == mission.GetWaypointStartCell())
-                        {
-                            // mission.patrolState = StrategicMission.PatrolState.Assembling;
-                            mission.patrolState = StrategicMission.PatrolState.StartToDestination;
-                        }
-                    }
-                }
-                else if (mission.type == StrategicMission.MissionType.Supply && mission.waypoints.Count >= 2)
-                {
-                    var groups = mission.groups.Select(groupRef => groupRef.Get() as StrategicGroup).Where(g => g != null).ToList();
-                    var cells = groups.Select(g => g.cell).Where(cell => cell != null).ToHashSet(); // is assigned groups assembled to the same hex?
-                    var ships = mission.WalkGroupMembersDeployedShips().ToList();
-                    if (cells.Count == 1)
-                    {
-                        var groupingCell = cells.First();
-                        if (mission.supplyState == StrategicMission.SupplyState.AssemblingAndLoading && groupingCell == mission.GetWaypointStartCell())
-                        {
-                            if (ships.All(ship => ship.GetSupplyPercent() >= 0.95))
-                            {
-                                mission.supplyState = StrategicMission.SupplyState.StartToDestinationAndUnloading;
-                            }
-                        }
-                        else if (mission.supplyState == StrategicMission.SupplyState.StartToDestinationAndUnloading && groupingCell == mission.GetWaypointDestinationCell())
-                        {
-                            if (ships.All(ship => ship.GetSupplyPercent() <= 0.5))
-                            {
-                                mission.supplyState = StrategicMission.SupplyState.DestinationToStartAndLoading;
-                            }
-                        }
-                        else if (mission.supplyState == StrategicMission.SupplyState.DestinationToStartAndLoading && groupingCell == mission.GetWaypointStartCell())
-                        {
-                            if (ships.All(ship => ship.GetSupplyPercent() >= 0.95))
-                            {
-                                mission.supplyState = StrategicMission.SupplyState.StartToDestinationAndUnloading;
-                            }
-                        }
-                    }
-                }
-                else if(mission.type == StrategicMission.MissionType.NavalTransfer && mission.waypoints.Count >= 2)
-                {
-                    var groups = mission.groups.Select(groupRef => groupRef.Get() as StrategicGroup).Where(g => g != null).ToList();
-                    var cells = groups.Select(g => g.cell).Where(cell => cell != null).ToHashSet();
-                    if (mission.navalTransferState == StrategicMission.NavalTransferState.Assembling)
-                    {
-                        if (cells.Count == 1)
-                        {
-                            var groupingCell = cells.First();
-                            if (groupingCell == mission.GetWaypointStartCell())
-                            {
-                                // Do Split & Load
-                                var transportShips = mission.WalkGroupMembersDeployedShips().Where(shipLog => shipLog?.shipClass?.type == ShipType.Transport).ToList();
-                                var cargoGroups = groups.Where(g => g.type != StrategicGroup.Type.Fleet).ToList();
-                                TransferSplitter.SequenceSplit(transportShips, cargoGroups);
-
-                                mission.navalTransferState = StrategicMission.NavalTransferState.StartToDestination;
-                            }
-                        }
-                    }
-                    else if (mission.navalTransferState == StrategicMission.NavalTransferState.StartToDestination)
-                    {
-                        var fleetGroups = groups.Where(g => g.type == StrategicGroup.Type.Fleet).ToList();
-                        var fleetCells = fleetGroups.Select(g => g.cell).Where(cell => cell != null).ToHashSet();
-                        if (fleetCells.Count == 1)
-                        {
-                            var groupingCell = fleetCells.First();
-                            if (groupingCell == mission.GetWaypointDestinationCell())
-                            {
-                                // Do Unload & pre-recombine
-                                foreach(var fleetGroup in fleetGroups)
-                                {
-                                    foreach(var shipLog in fleetGroup.WalkGroupMembersDeployedShips())
-                                    {
-                                        if(shipLog?.shipClass?.type == ShipType.Transport)
-                                        {
-                                            foreach(var loadedGroupRef in shipLog.loadedGroups.ToList())
-                                            {
-                                                var loadedGroup = loadedGroupRef.Get() as StrategicGroup;
-                                                if(loadedGroup != null)
-                                                {
-                                                    // loadedGroup.MoveToXY(groupingCell.x, groupingCell.y, false);
-                                                    loadedGroup.UnloadFromContainer();
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-                                mission.navalTransferState = StrategicMission.NavalTransferState.DestinationToStart;
-                            }
-                        }
-                    }
-                    else if(mission.navalTransferState == StrategicMission.NavalTransferState.DestinationToStart)
-                    {
-                        var cargoGroupsInStartCell = groups.Where(g =>
-                            g.cell == mission.GetWaypointStartCell() &&
-                            g.type != StrategicGroup.Type.Fleet &&
-                            g.deployState == StrategicGroup.DeployState.Independent // Though they're independent when assigned, they may become NotDeployed in trasport process.
-                        ).ToList();
-
-                        if (cargoGroupsInStartCell.Count == 0)
-                        {
-                            mission.navalTransferState = StrategicMission.NavalTransferState.Completed;
-                        }
-                        else
-                        {
-                            var fleetGroups = groups.Where(g => g.type == StrategicGroup.Type.Fleet).ToList();
-                            var fleetCells = fleetGroups.Select(g => g.cell).Where(cell => cell != null).ToHashSet();
-
-                            if (fleetCells.Count == 1)
-                            {
-                                var groupingCell = cells.First();
-                                if (groupingCell == mission.GetWaypointStartCell())
-                                {
-                                    // Do Split & Load
-                                    var transportShips = mission.WalkGroupMembersDeployedShips().Where(shipLog => shipLog?.shipClass?.type == ShipType.Transport).ToList();
-                                    TransferSplitter.SequenceSplit(transportShips, cargoGroupsInStartCell);
-
-                                    mission.navalTransferState = StrategicMission.NavalTransferState.StartToDestination;
-                                }
-                            }
-                        }
-                        
-                    }
-                }
+                mission.TransitionMission();
             }
 
             // Update Strategic Groups
             foreach (var strategicGroup in IterIndependentStrategicGroups())
             {
                 var mission = EntityManager.Instance.Get<StrategicMission>(strategicGroup.assignedMissionObjectId);
-                if (mission != null && mission.waypoints.Count >= 2)
+                if (mission != null && mission.waypoints.Count >= 2) // TODO: Relax waypoint constraint
                 {
-                    if (mission.type == StrategicMission.MissionType.Patrol)
-                    {
-                        if (strategicGroup.plannedPath.Count == 0) // Create new path if path is empty (manual waypoints has higher priority)
-                        {
-                            if (mission.patrolState == StrategicMission.PatrolState.Assembling) // Assembling => Move groups to the waypoint of start
-                            {
-                                HandleMissionAssembly(strategicGroup, mission);
-                            }
-                            else if (mission.patrolState == StrategicMission.PatrolState.StartToDestination) // StartToDestination => Move groups from start to destination
-                            {
-                                HandleMissionStartToDestination(strategicGroup, mission);
-                            }
-                            else if (mission.patrolState == StrategicMission.PatrolState.DestinationToStart) // DestinationToStart => Move groups from destination to start
-                            {
-                                HandleMissionDestinationToStart(strategicGroup, mission);
-                            }
-                        }
-                    }
-                    else if (mission.type == StrategicMission.MissionType.Supply)
-                    {
-                        if (strategicGroup.plannedPath.Count == 0)
-                        {
-                            if (mission.supplyState == StrategicMission.SupplyState.AssemblingAndLoading) // Assembling => Move groups to the waypoint of start
-                            {
-                                HandleMissionAssembly(strategicGroup, mission);
-                            }
-                            else if (mission.supplyState == StrategicMission.SupplyState.StartToDestinationAndUnloading) // StartToDestination => Move groups from start to destination
-                            {
-                                HandleMissionStartToDestination(strategicGroup, mission);
-                            }
-                            else if (mission.supplyState == StrategicMission.SupplyState.DestinationToStartAndLoading) // DestinationToStart => Move groups from destination to start
-                            {
-                                HandleMissionDestinationToStart(strategicGroup, mission);
-                            }
-                        }
-
-                        // Transfer supply from ship to destination here or in the supply step
-                        if (mission.supplyState == StrategicMission.SupplyState.StartToDestinationAndUnloading)
-                        {
-                            var targetDepot = mission.targetDepotReference.Get();
-                            if (targetDepot != null && strategicGroup.cell == targetDepot.cell)
-                            {
-                                foreach (var ship in mission.WalkGroupMembersDeployedShips())
-                                {
-                                    if (ship?.shipClass.type == ShipType.Transport)
-                                    {
-                                        var returnToBaseThresholdTons = ship.GetSupplyCapTons() * 0.1;
-                                        var transferableTons = Math.Max(0, ship.supplyTons - returnToBaseThresholdTons);
-                                        if (transferableTons > 0)
-                                        {
-                                            ship.supplyTons -= transferableTons;
-                                            targetDepot.supplyTons += transferableTons;
-
-                                            ServiceLocator.Get<ILoggerService>().Log($"Supply Transfer: {ship.namedShip.name.GetMergedName()} -> {targetDepot.name.GetMergedName()} ({transferableTons})");
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else if(mission.type == StrategicMission.MissionType.NavalTransfer)
-                    {
-                        if (strategicGroup.plannedPath.Count == 0)
-                        {
-                            if (mission.navalTransferState == StrategicMission.NavalTransferState.Assembling)
-                            {
-                                HandleMissionAssembly(strategicGroup, mission);
-                            }
-                            else if (mission.navalTransferState == StrategicMission.NavalTransferState.StartToDestination && strategicGroup.type == StrategicGroup.Type.Fleet)
-                            {
-                                HandleMissionStartToDestination(strategicGroup, mission);
-                            }
-                            else if(mission.navalTransferState == StrategicMission.NavalTransferState.DestinationToStart && strategicGroup.type == StrategicGroup.Type.Fleet)
-                            {
-                                HandleMissionDestinationToStart(strategicGroup, mission);
-                            }
-                        }
-                    }
+                    mission.UpdateStrategicGroup(strategicGroup);
                 }
             }
         }
 
-        void HandleMissionAssembly(StrategicGroup strategicGroup, StrategicMission mission)
+        public IEnumerable<Cell> IterCells()
         {
-            var groupCell = strategicGroup.cell;
-            var waypointStartCell = mission.GetWaypointStartCell();
-            if (groupCell != waypointStartCell)
+            foreach(var areaCell in areaCells)
             {
-                IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy();
-                var pathCells = PathFinding<Cell>.AStar(graph, groupCell, waypointStartCell);
-                if (pathCells.Count >= 2)
+                yield return areaCell;
+            }
+
+            var width = GetMapWidth();
+            var height = GetMapHeight();
+            for(var x=0; x<width; x++)
+            {
+                for(var y=0;y<height;y++)
                 {
-                    // strategicGroup.plannedPath.AddRange(pathCells.Select(cell => new XY() { x = cell.x, y = cell.y }));
-                    strategicGroup.plannedPath.AddRange(pathCells.Select(cell => cell.ToXY()));
+                    yield return cellMatrix[x, y];
                 }
             }
         }
 
-        void HandleMissionStartToDestination(StrategicGroup strategicGroup, StrategicMission mission)
-        {
-            var groupCell = strategicGroup.cell;
-            var waypointStartCell = mission.GetWaypointStartCell();
-            if (groupCell == waypointStartCell)
-            {
-                strategicGroup.plannedPath.Clear();
-                strategicGroup.plannedPath.AddRange(mission.waypoints);
-            }
-        }
-        
-        void HandleMissionDestinationToStart(StrategicGroup strategicGroup, StrategicMission mission)
-        {
-            var groupCell = strategicGroup.cell;
-            var waypointDestinationCell = mission.GetWaypointDestinationCell();
-            if (groupCell != null && waypointDestinationCell != null && groupCell == waypointDestinationCell)
-            {
-                strategicGroup.plannedPath.Clear();
-                strategicGroup.plannedPath.AddRange(mission.waypoints);
-                strategicGroup.plannedPath.Reverse();
-            }
-        }
 
         public IEnumerable<StrategicGroup> IterIndependentStrategicGroups()
         {

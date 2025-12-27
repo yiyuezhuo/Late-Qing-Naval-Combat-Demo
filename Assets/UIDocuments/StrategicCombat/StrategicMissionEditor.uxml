@@ -41,11 +41,40 @@
                                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)"/>
                                 </Bindings>
                             </ui:EnumField>
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:Toggle label="Active">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="active" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:Toggle>
+                                <ui:Toggle label="Completed">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="completed" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:Toggle>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:TextField label="Side" style="flex-grow: 1;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="sideName" binding-mode="ToTarget"/>
+                                    </Bindings>
+                                </ui:TextField>
+                                <ui:Button text="Set" name="SetSideButton"/>
+                            </ui:VisualElement>
                             <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="groups" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" show-add-remove-footer="true" header-title="Assigned Groups" show-foldout-header="true" name="GroupsListView" fixed-item-height="60">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054227549491200)"/>
                                 </Bindings>
                             </ui:ListView>
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:Label text="Parent Mission"/>
+                                <ui:Button text="Parent Mission&apos;s name" name="ParentMissionButton" data-source-path="parentMissionRef">
+                                    <Bindings>
+                                        <ui:DataBinding property="text" data-source-path="missionDesc" binding-mode="ToTarget"/>
+                                    </Bindings>
+                                </ui:Button>
+                            </ui:VisualElement>
+                            <ui:ListView header-title="Sub Missions" show-add-remove-footer="true" show-foldout-header="true" name="ChildrenMissionsListView" data-source-path="childrenMissionRefs" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/StrategicMissionRefItem.uxml?fileID=9197481963319205126&amp;guid=1c982627f2203144681397daae23b597&amp;type=3#StrategicMissionRefItem" fixed-item-height="30"/>
                             <ui:VisualElement style="flex-grow: 0;">
                                 <ui:EnumField label="Patrol State" value="Center" type="StrategicCombatCore.StrategicMission+PatrolState, Assembly-CSharp">
                                     <Bindings>
@@ -111,6 +140,16 @@
                                 </ui:EnumField>
                                 <Bindings>
                                     <ui:DataBinding property="style.display" data-source-path="isNavalTransfer" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                                </Bindings>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <ui:EnumField label="One-shot Rading State" value="Center" type="StrategicCombatCore.StrategicMission+OneShotRaidingState, Assembly-CSharp">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="oneShotRaidingState" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:EnumField>
+                                <Bindings>
+                                    <ui:DataBinding property="style.display" data-source-path="isOneShotRaiding" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                                 </Bindings>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-direction: row;">

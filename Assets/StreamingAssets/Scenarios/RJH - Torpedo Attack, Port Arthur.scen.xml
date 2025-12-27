@@ -303,20 +303,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.7634163" lonDeg="121.274818" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.7634163" lonDeg="121.274818" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.7634163" lonDeg="121.274818" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.7634163" lonDeg="121.274818" />
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.7634163" lonDeg="121.274818" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.7634163" lonDeg="121.274818" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.7634163" lonDeg="121.274818" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.7634163" lonDeg="121.274818" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.7634163" lonDeg="121.274818" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.7634163" lonDeg="121.274818" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.7634163" lonDeg="121.274818" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.7634163" lonDeg="121.274818" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -673,20 +660,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.7641335" lonDeg="121.285294" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.7641335" lonDeg="121.285294" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.7641335" lonDeg="121.285294" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.7641335" lonDeg="121.285294" />
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.7641335" lonDeg="121.285294" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.7641335" lonDeg="121.285294" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.7641335" lonDeg="121.285294" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.7641335" lonDeg="121.285294" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.7641335" lonDeg="121.285294" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.7641335" lonDeg="121.285294" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.7641335" lonDeg="121.285294" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.7641335" lonDeg="121.285294" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -1042,20 +1016,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.7641335" lonDeg="121.293175" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.7641335" lonDeg="121.293175" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.7641335" lonDeg="121.293175" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.7641335" lonDeg="121.293175" />
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.7641335" lonDeg="121.293175" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.7641335" lonDeg="121.293175" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.7641335" lonDeg="121.293175" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.7641335" lonDeg="121.293175" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.7641335" lonDeg="121.293175" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.7641335" lonDeg="121.293175" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.7641335" lonDeg="121.293175" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.7641335" lonDeg="121.293175" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -1202,23 +1163,8 @@
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
-    <logs>
-     <ShipLogLog xsi:type="ShipLogRapidFiringGunHitLog" time="1904-02-08T16:26:35Z" shooterId="17bc25c1-ed73-4cc7-ae55-43db2647ad97" damagePoint="26" />
-    </logs>
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.6946373" lonDeg="121.305252" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.6946373" lonDeg="121.305252" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.6946373" lonDeg="121.305252" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.6946373" lonDeg="121.305252" />
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.6946373" lonDeg="121.305252" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.6946373" lonDeg="121.305252" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.6946373" lonDeg="121.305252" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.6946373" lonDeg="121.305252" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.6946373" lonDeg="121.305252" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.6946373" lonDeg="121.305252" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.6946373" lonDeg="121.305252" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.6946373" lonDeg="121.305252" />
-    </timeLocLogs>
+    <logs />
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -1367,20 +1313,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.6927147" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.6927147" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.6927147" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.6927147" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.6927147" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.6927147" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.6927147" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.6927147" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.6927147" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.6927147" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.6927147" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.6927147" lonDeg="121.305389" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -1529,20 +1462,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.69066" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.69066" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.69066" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.69066" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.69066" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.69066" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.69066" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.69066" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.69066" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.69066" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.69066" lonDeg="121.305389" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.69066" lonDeg="121.305389" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -1691,20 +1611,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.6885948" lonDeg="121.305542" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.6885948" lonDeg="121.305542" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.6885948" lonDeg="121.305542" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.6885948" lonDeg="121.305542" />
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.6885948" lonDeg="121.305542" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.6885948" lonDeg="121.305542" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.6885948" lonDeg="121.305542" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.6885948" lonDeg="121.305542" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.6885948" lonDeg="121.305542" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.6885948" lonDeg="121.305542" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.6885948" lonDeg="121.305542" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.6885948" lonDeg="121.305542" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -1852,20 +1759,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.68508" lonDeg="121.305626" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.68508" lonDeg="121.305626" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.68508" lonDeg="121.305626" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.68508" lonDeg="121.305626" />
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.68508" lonDeg="121.305626" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.68508" lonDeg="121.305626" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.68508" lonDeg="121.305626" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.68508" lonDeg="121.305626" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.68508" lonDeg="121.305626" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.68508" lonDeg="121.305626" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.68508" lonDeg="121.305626" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.68508" lonDeg="121.305626" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -2014,20 +1908,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.68091" lonDeg="121.297539" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.68091" lonDeg="121.297539" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.68091" lonDeg="121.297539" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.68091" lonDeg="121.297539" />
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.68091" lonDeg="121.297539" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.68091" lonDeg="121.297539" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.68091" lonDeg="121.297539" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.68091" lonDeg="121.297539" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.68091" lonDeg="121.297539" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.68091" lonDeg="121.297539" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.68091" lonDeg="121.297539" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.68091" lonDeg="121.297539" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -2176,20 +2057,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.6832733" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.6832733" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.6832733" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.6832733" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.6832733" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.6832733" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.6832733" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.6832733" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.6832733" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.6832733" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.6832733" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.6832733" lonDeg="121.305756" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -2338,20 +2206,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.6873245" lonDeg="121.297935" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.6873245" lonDeg="121.297935" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.6873245" lonDeg="121.297935" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.6873245" lonDeg="121.297935" />
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.6873245" lonDeg="121.297935" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.6873245" lonDeg="121.297935" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.6873245" lonDeg="121.297935" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.6873245" lonDeg="121.297935" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.6873245" lonDeg="121.297935" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.6873245" lonDeg="121.297935" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.6873245" lonDeg="121.297935" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.6873245" lonDeg="121.297935" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -2500,20 +2355,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.6853867" lonDeg="121.297874" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.6853867" lonDeg="121.297874" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.6853867" lonDeg="121.297874" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.6853867" lonDeg="121.297874" />
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.6853867" lonDeg="121.297874" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.6853867" lonDeg="121.297874" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.6853867" lonDeg="121.297874" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.6853867" lonDeg="121.297874" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.6853867" lonDeg="121.297874" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.6853867" lonDeg="121.297874" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.6853867" lonDeg="121.297874" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.6853867" lonDeg="121.297874" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -2662,20 +2504,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.6818848" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.6818848" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.6818848" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.6818848" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.6818848" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.6818848" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.6818848" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.6818848" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.6818848" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.6818848" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.6818848" lonDeg="121.305756" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.6818848" lonDeg="121.305756" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -2978,16 +2807,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.7634125" lonDeg="121.267975" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.7634125" lonDeg="121.267975" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.7634125" lonDeg="121.267975" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.7634125" lonDeg="121.267975" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.7634125" lonDeg="121.267975" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.7634125" lonDeg="121.267975" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.7634125" lonDeg="121.267975" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.7634125" lonDeg="121.267975" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -3344,16 +3164,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.7588" lonDeg="121.261024" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.7588" lonDeg="121.261024" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.7588" lonDeg="121.261024" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.7588" lonDeg="121.261024" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.7588" lonDeg="121.261024" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.7588" lonDeg="121.261024" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.7588" lonDeg="121.261024" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.7588" lonDeg="121.261024" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -3710,16 +3521,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.75865" lonDeg="121.267509" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.75865" lonDeg="121.267509" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.75865" lonDeg="121.267509" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.75865" lonDeg="121.267509" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.75865" lonDeg="121.267509" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.75865" lonDeg="121.267509" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.75865" lonDeg="121.267509" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.75865" lonDeg="121.267509" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -4120,16 +3922,7 @@
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
-    <timeLocLogs>
-     <TimeLoc time="1904-02-08T16:20:01Z" latDeg="38.7586632" lonDeg="121.274857" />
-     <TimeLoc time="1904-02-08T16:21:00Z" latDeg="38.7586632" lonDeg="121.274857" />
-     <TimeLoc time="1904-02-08T16:22:00Z" latDeg="38.7586632" lonDeg="121.274857" />
-     <TimeLoc time="1904-02-08T16:23:00Z" latDeg="38.7586632" lonDeg="121.274857" />
-     <TimeLoc time="1904-02-08T16:24:00Z" latDeg="38.7586632" lonDeg="121.274857" />
-     <TimeLoc time="1904-02-08T16:25:00Z" latDeg="38.7586632" lonDeg="121.274857" />
-     <TimeLoc time="1904-02-08T16:26:00Z" latDeg="38.7586632" lonDeg="121.274857" />
-     <TimeLoc time="1904-02-08T16:27:00Z" latDeg="38.7586632" lonDeg="121.274857" />
-    </timeLocLogs>
+    <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -6952,8 +6745,8 @@ At start, Automatic Fire of Russian, Non-Torpedo weapon firing for IJN are disab
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>38.696125</xRotation>
-  <yRotation>238.687714</yRotation>
+  <xRotation>38.7284431</xRotation>
+  <yRotation>238.698059</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>
  <eventState>

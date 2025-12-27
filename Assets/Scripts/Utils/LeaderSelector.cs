@@ -8,7 +8,7 @@ using System;
 
 public class NamedSelector<T> where T : class, INamed
 {
-    // Arguments
+    // Required Arguments
     public List<T> fullObjects;
     public Action<T> callback;
 

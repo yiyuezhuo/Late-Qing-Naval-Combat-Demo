@@ -25,11 +25,11 @@ public class NamedSelector<T> where T : class, INamed
         set
         {
             _filterString = value;
-            Refresh();
+            RefreshFilter();
         }
     }
 
-    public void Refresh()
+    public void RefreshFilter()
     {
         if(_filterString == null || _filterString == "")
         {

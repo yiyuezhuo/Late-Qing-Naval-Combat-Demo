@@ -9,7 +9,19 @@
         </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px;">
-                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupLabel.uxml?fileID=9197481963319205126&amp;guid=34ee77fc95e8a904caa681718cd94b24&amp;type=3#StrategicGroupLabel" data-source-path="currentGameState.strategicGroups" style="flex-grow: 1;"/>
+                <ui:VisualElement name="FilterField" style="flex-direction: row; flex-shrink: 0;">
+                    <ui:Label text="Filter">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(38619517602664448)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:TextField style="flex-grow: 1;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="filterString" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:TextField>
+                </ui:VisualElement>
+                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupLabel.uxml?fileID=9197481963319205126&amp;guid=34ee77fc95e8a904caa681718cd94b24&amp;type=3#StrategicGroupLabel" data-source-path="filteredObjects" style="flex-grow: 1;"/>
                 <ui:VisualElement name="ControlButtons" style="flex-shrink: 0;">
                     <ui:Button text="Copy Last" name="CopyLastButton">
                         <Bindings>

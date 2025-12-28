@@ -62,7 +62,7 @@ namespace StrategicCombatCore
     }
 
 
-    public partial class LandUnitTemplate : IObjectIdLabeled
+    public partial class LandUnitTemplate : IObjectIdLabeled, INamed
     {
         public string objectId { get; set; }
         public GlobalString name = new();
@@ -109,5 +109,7 @@ namespace StrategicCombatCore
         {
             return weaponRecordss.Sum(wr => wr.GetLethality()) * marksmanship;
         }
+
+        public GlobalString GetName() => name;
     }
 }

@@ -44,7 +44,7 @@ public class SwitchCenter
                 // TODO: Branch according to global IsEditor flag
 
                 LeaderEditor.Instance.Show();
-                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.leadersListView, idx);
+                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.objectListView, idx);
             }
         }
     }
@@ -186,7 +186,7 @@ public class SwitchCenter
                 UpdateCurrentActiveViewContainer(NamedShipEditor.Instance);
 
                 NamedShipEditor.Instance.Show();
-                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(NamedShipEditor.Instance.namedShipListView, idx);
+                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(NamedShipEditor.Instance.objectListView, idx);
             }
         }
     }

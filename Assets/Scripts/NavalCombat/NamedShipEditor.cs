@@ -13,46 +13,53 @@ using NavalCombatCore;
 using CoreUtils;
 
 
-public class NamedShipEditor : HideableDocument<NamedShipEditor>
+public class NamedShipEditor : LeftObjectPickerRightEditor<NamedShipEditor, NamedShip> // HideableDocument<NamedShipEditor>
+// public class NamedShipEditor : HideableDocument<NamedShipEditor>
 {
-    public ListView namedShipListView;
+    // public ListView objectListView;
 
-    public string selectedNamedShipObjectId;
+    // public string selectedId;
 
-    [CreateProperty]
-    public NamedShip selectedNamedShip
+    // [CreateProperty]
+    // public NamedShip selectedObject
+    // {
+    //     get
+    //     {
+    //         return EntityManager.Instance.Get<NamedShip>(selectedId);
+    //     }
+    // }
+    protected override void GetFullObjects()
     {
-        get
-        {
-            return EntityManager.Instance.Get<NamedShip>(selectedNamedShipObjectId);
-        }
+        fullObjects = SuperGameState.Instance.GetCurrentGameState().namedShips;
     }
 
     // protected override void Awake()
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+
         // base.Awake();
 
         // var sortingOrder = doc.sortingOrder;
         // Debug.Log($"NamedShipEditor sortingOrder={sortingOrder}");
 
-        root.dataSource = this;
+        // root.dataSource = this;
 
-        Utils.BindItemsSourceRecursive(root);
+        // Utils.BindItemsSourceRecursive(root);
 
-        namedShipListView = root.Q<ListView>("NamedShipListView");
-        Utils.BindItemsAddedRemoved<NamedShip>(namedShipListView, () => null);
+        // objectListView = root.Q<ListView>("NamedShipListView");
+        // Utils.BindItemsAddedRemoved<NamedShip>(objectListView, () => null);
 
-        namedShipListView.selectionChanged += (IEnumerable<object> objects) =>
-        {
-            Debug.Log("namedShipListView.selectionChanged");
+        // objectListView.selectionChanged += (IEnumerable<object> objects) =>
+        // {
+        //     Debug.Log("namedShipListView.selectionChanged");
 
-            var namedShip = objects.FirstOrDefault() as NamedShip;
-            selectedNamedShipObjectId = namedShip?.objectId;
-        };
+        //     var namedShip = objects.FirstOrDefault() as NamedShip;
+        //     selectedId = namedShip?.objectId;
+        // };
 
-        var confirmButton = root.Q<Button>("ConfirmButton");
-        confirmButton.clicked += Hide;
+        // var confirmButton = root.Q<Button>("ConfirmButton");
+        // confirmButton.clicked += Hide;
 
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>
@@ -78,19 +85,7 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
         var gotoShipClassButton = root.Q<Button>("GotoShipClassButton");
         gotoShipClassButton.clicked += () =>
         {
-            var shipClass = selectedNamedShip?.shipClass;
-            // if (shipClass == null)
-            //     return;
-
-            // var gameState = SuperGameState.Instance.GetCurrentGameState();
-            // var idx = gameState.shipClasses.IndexOf(shipClass);
-            // if (idx != -1)
-            // {
-            //     Hide();
-            //     ShipClassEditor.Instance.Show();
-            //     // ShipClassEditor.Instance.shipClassListView.SetSelection(idx);
-            //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipClassEditor.Instance.shipClassListView, idx);
-            // }
+            var shipClass = selectedObject?.shipClass;
 
             SwitchCenter.Instance.SwitchToShipClassView(shipClass);
         };
@@ -98,19 +93,7 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
         var gotoLeaderButton = root.Q<Button>("GotoLeaderButton");
         gotoLeaderButton.clicked += () =>
         {
-            var leader = selectedNamedShip?.defaultLeader;
-            // if (leader == null)
-            //     return;
-
-            // var gameState = SuperGameState.Instance.GetCurrentGameState();
-            // var idx = gameState.leaders.IndexOf(leader);
-            // if (idx != -1)
-            // {
-            //     Hide();
-            //     LeaderEditor.Instance.Show();
-            //     // LeaderEditor.Instance.leadersListView.SetSelection(idx);
-            //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.leadersListView, idx);
-            // }
+            var leader = selectedObject?.defaultLeader;
             SwitchCenter.Instance.SwitchToLeaderView(leader);
         };
     }
@@ -133,5 +116,8 @@ public class NamedShipEditor : HideableDocument<NamedShipEditor>
 
     [CreateProperty]
     public AbstractGameState currentGameState => SuperGameState.Instance.GetCurrentGameState();
+
+    [CreateProperty]
+    public bool isInEditMode => GamePreference.Instance.isInEditMode;
 
 }

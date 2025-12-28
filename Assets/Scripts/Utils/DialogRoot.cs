@@ -387,7 +387,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             fullObjects = StrategicGameState.Instance.missions.Where(m => m.parentMissionRef.Get() == null && parentMission != m).ToList(),
             callback = callback
         };
-        selectorDialog.Refresh();
+        selectorDialog.RefreshFilter();
 
         var tempDialog = new TempDialog()
         {
@@ -1253,7 +1253,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             callback = callback
         };
 
-        leaderSelector.Refresh();
+        leaderSelector.RefreshFilter();
 
         var tempDialog = new TempDialog()
         {
@@ -1295,7 +1295,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     {
         PopupLeaderSelectorDialogForCallback(leader =>
         {
-            var selectedNamedShip = NamedShipEditor.Instance.selectedNamedShip;
+            var selectedNamedShip = NamedShipEditor.Instance.selectedObject;
 
             if (leader != null && selectedNamedShip != null)
             {
@@ -1317,7 +1317,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.onConfirmed += (sender, el) =>
         {
             // var selectedNamedShip = GameManager.Instance.selectedNamedShip;
-            var selectedNamedShip = NamedShipEditor.Instance.selectedNamedShip;
+            var selectedNamedShip = NamedShipEditor.Instance.selectedObject;
 
             var shipClassListView = el.Q<ListView>("ShipClassListView");
             var selectedShipClass = shipClassListView.selectedItem as ShipClass;

@@ -336,6 +336,14 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         //     StrategicGameState.Instance.InvokeMapRebuilt();
         // }
 
+        if(!isInEditMode && GetViewerSide() == null)
+        {
+            DialogRoot.Instance.PopupSideStatePickerDialog(sideState =>
+            {
+                viewerSideId = sideState?.objectId;
+            });
+        }
+
         TempFix();
 
         // fullInitialized = true;
@@ -578,7 +586,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             return independentStrategicGroupsOrderedByCell;
         }
         var viewerSide = GetViewerSide();
-        return independentStrategicGroupsOrderedByCell.Where(g => g.side == viewerSide);
+        // return independentStrategicGroupsOrderedByCell.Where(g => g.side == viewerSide);
+        return independentStrategicGroupsOrderedByCell.Where(g => g.IsArmy() || g.side == viewerSide); // TODO: Add dedicated Naval Contact Report like to handle army unit.
     }
 
     void UpdateView()
@@ -1078,6 +1087,26 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     [CreateProperty]
     public bool selectedStrategicGroupValid => lastSelectedStrategicGroup != null;
+
+    [CreateProperty]
+    public bool selectedStrategicGroupObservable
+    {
+        get
+        {
+            if(isInEditMode)
+                return true;
+            
+            var viewerSide = GetViewerSide();
+            if(viewerSide != null)
+            {
+                var groupCountry = lastSelectedStrategicGroup?.country ?? Country.General;
+                return viewerSide.countries.Contains(groupCountry);
+            }
+            return false;
+        }
+        
+    }
+
 
     [CreateProperty]
     public bool selectedNavalContactReportValid => lastSelectedNavalContactReport != null;

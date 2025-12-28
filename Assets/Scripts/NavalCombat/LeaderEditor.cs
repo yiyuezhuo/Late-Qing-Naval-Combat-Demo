@@ -7,34 +7,39 @@ using Unity.Properties;
 // using NavalCombatCore;
 using CoreUtils;
 
-public class LeaderEditor : HideableDocument<LeaderEditor>
+public class LeaderEditor : LeftObjectPickerRightEditor<LeaderEditor, Leader>
 {
-    public ListView leadersListView;
+    // public ListView objectListView;
+
+    protected override void GetFullObjects()
+    {
+        var gameState = SuperGameState.Instance.GetCurrentGameState();
+        fullObjects = gameState.leaders;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    // protected override void Awake()\
-    void OnEnable()
+    // protected override void Awake()
+    protected override void  OnEnable()
     {
-        // base.Awake();
+        // root.dataSource = this;
 
-        // root.dataSource = GameManager.Instance;
-        root.dataSource = this;
+        // Utils.BindItemsSourceRecursive(root);
 
-        Utils.BindItemsSourceRecursive(root);
+        // objectListView = root.Q<ListView>("ObjectListView");
+        // Utils.BindItemsAddedRemoved<Leader>(objectListView, () => null);
 
-        leadersListView = root.Q<ListView>("LeadersListView");
-        Utils.BindItemsAddedRemoved<Leader>(leadersListView, () => null);
+        // objectListView.selectionChanged += (IEnumerable<object> objects) =>
+        // {
+        //     var leader = objects.FirstOrDefault() as Leader;
+        //     selectedId = leader?.objectId;
 
-        leadersListView.selectionChanged += (IEnumerable<object> objects) =>
-        {
-            var leader = objects.FirstOrDefault() as Leader;
-            selectedLeaderObjectId = leader?.objectId;
+        //     Debug.Log($"leadersListView.selectionChanged: {selectedId}");
+        // };
 
-            Debug.Log($"leadersListView.selectionChanged: {selectedLeaderObjectId}");
-        };
+        // var confirmButton = root.Q<Button>("ConfirmButton");
+        // confirmButton.clicked += Hide;
 
-        var confirmButton = root.Q<Button>("ConfirmButton");
-        confirmButton.clicked += Hide;
+        base.OnEnable();
 
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>
@@ -66,20 +71,22 @@ public class LeaderEditor : HideableDocument<LeaderEditor>
         var gameState = SuperGameState.Instance.GetCurrentGameState();
         gameState.LeadersFromXML(text);
         gameState.ResetAndRegisterAll();
-
     }
 
     [CreateProperty]
     public AbstractGameState currentGameState => SuperGameState.Instance.GetCurrentGameState();
 
-    public string selectedLeaderObjectId;
+    // public string selectedId;
+
+    // [CreateProperty]
+    // public Leader selectedObject
+    // {
+    //     get
+    //     {
+    //         return EntityManager.Instance.Get<Leader>(selectedId);
+    //     }
+    // }
 
     [CreateProperty]
-    public Leader selectedLeader
-    {
-        get
-        {
-            return EntityManager.Instance.Get<Leader>(selectedLeaderObjectId);
-        }
-    }
+    public bool isInEditMode => GamePreference.Instance.isInEditMode;
 }

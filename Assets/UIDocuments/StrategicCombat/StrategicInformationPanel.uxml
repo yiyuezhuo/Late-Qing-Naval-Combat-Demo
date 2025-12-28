@@ -110,6 +110,7 @@
             </ui:VisualElement>
             <Bindings>
                 <ui:DataBinding property="style.display" data-source-path="selectedStrategicGroupValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                <ui:DataBinding property="enabledSelf" data-source-path="selectedStrategicGroupObservable" binding-mode="ToTarget"/>
             </Bindings>
         </ui:VisualElement>
         <ui:VisualElement>

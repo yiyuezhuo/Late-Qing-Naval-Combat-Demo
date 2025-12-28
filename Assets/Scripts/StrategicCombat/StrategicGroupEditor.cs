@@ -108,7 +108,12 @@ public class StrategicGroupView //
 
 public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<StrategicGroupEditor, StrategicGroup>
 {
-    ListView subordinatesCombinedListView;
+    // ListView subordinatesCombinedListView;
+
+    protected override void GetFullObjects()
+    {
+        fullObjects = StrategicGameState.Instance.strategicGroups;
+    }
 
     protected override void OnEnable()
     {

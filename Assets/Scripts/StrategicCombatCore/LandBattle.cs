@@ -131,24 +131,16 @@ namespace StrategicCombatCore
 
                 subCombat.Resolve();
                 initiative.chance -= subCombat.chanceUsage;
-                // foreach(var dynamic in dynamics)
-                // {
-                //     dynamic.chance -= subCombat.chanceUsage;
-                // }
             }
 
             // Process initiative disengagement - (attacker is switched to passive, defender is switched to Disengaged)
             if(attackerSituation >= 1f) // defender retreat
             {
                 def.RetreatFromDefend();
-                // end = true;
-                // GoToEnd();
             }
             else if(attackerSituation <= -1)
             {
                 atk.StopAttack();
-                // end = true;
-                // GoToEnd();
             }
 
             // Update log states
@@ -172,42 +164,6 @@ namespace StrategicCombatCore
         public void GoToEnd()
         {
             end = true;
-            // endDateTime = StrategicGameState.Instance.scenarioState.dateTime;
-
-            // var attackerDynamic = GetAttackerDynamic();
-            // var defenderDynamic = GetDefenderDynamic();
-
-            // attacker.currentLeaderId = attackerDynamic.battleLeader.objectId;
-            // defender.currentLeaderId = defenderDynamic.battleLeader.objectId;
-            
-            // attacker.currentCountry = attackerDynamic.country;
-            // defender.currentCountry = defenderDynamic.country;
-
-            // attacker.end = true;
-            // defender.end = true;
-
-            // foreach(var landUnitBundle in attackerDynamic.landUnitBundles.Concat(defenderDynamic.landUnitBundles))
-            // {
-            //     landUnitBundle.battleUnitState.endStrength = landUnitBundle.landUnit.strength;
-            //     landUnitBundle.battleUnitState.end = true;
-            // }
-            // foreach(var unitState in attacker.unitStates.Concat(defender.unitStates))
-            // {
-            //     unitState.end = true;
-            // }
         }
-
-        // public LazyLocalizedString GetSummary()
-        // {
-        //     var vicDesc = attackerVictory ? "Attacker Victory" : "Defender Victory";
-        //     return LazyLocalizedString.MakeTemplate(
-        //                 "Land battle end: {0} {1} ({2}) vs {3} ({4})",
-        //                 StrategicGameState.Instance.GetCellNameLazyStr(cellXY),
-        //                 LazyLocalizedString.MakeGlobalStringShort(attacker.name),
-        //                 attacker.GetSummary(),
-        //                 LazyLocalizedString.MakeGlobalStringShort(name),
-        //                 defender.GetSummary()
-        //             );
-        // }
     }
 }

@@ -3,9 +3,33 @@ using UnityEngine.UIElements;
 using UnityEngine;
 using CoreUtils;
 using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 
 public class StrategicMissionEditor : LeftObjectPickerRightEditorStrategic<StrategicMissionEditor, StrategicMission>
 {
+    protected override void GetFullObjects()
+    {
+        fullObjects = StrategicGameState.Instance.missions;
+    }
+
+    protected override IEnumerable<StrategicMission> ExtraFilter(IEnumerable<StrategicMission> missions)
+    {
+        if(GamePreference.Instance.isInEditMode)
+            return missions;
+        
+        var viewerSide = StrategicGameManager.Instance.GetViewerSide();
+        var viewerSideObjectId = viewerSide?.objectId;
+        return missions.Where(missions => missions.sideObjectId ==  null || missions.sideObjectId == "" || missions.sideObjectId == viewerSideObjectId);
+    }
+
+    protected override void ProcessAddedOne(StrategicMission newMission)
+    {
+        var viewerSide = StrategicGameManager.Instance.GetViewerSide();
+        var viewerSideObjectId = viewerSide?.objectId;
+        newMission.sideObjectId = viewerSideObjectId;
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();

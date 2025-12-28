@@ -1,5 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor"/>
+    <ui:Template name="ManualAddRemoveFooter" src="project://database/Assets/UIDocuments/Templates/ManualAddRemoveFooter.uxml?fileID=9197481963319205126&amp;guid=3c339b211ba24df4b98f430371a18857&amp;type=3#ManualAddRemoveFooter"/>
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
     <ui:VisualElement data-source-type="StrategicMissionEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Strategic Mission Editor" class="title">
@@ -9,7 +10,20 @@
         </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px; flex-shrink: 0;">
-                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" data-source-path="currentGameState.missions" item-template="project://database/Assets/UIDocuments/Templates/StrategicMissionLabel.uxml?fileID=9197481963319205126&amp;guid=243e3c2e0774069448e3ae1435722b77&amp;type=3#StrategicMissionLabel" style="flex-grow: 1;"/>
+                <ui:VisualElement name="FilterField" style="flex-direction: row;">
+                    <ui:Label text="Filter">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(38619517602664448)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:TextField style="flex-grow: 1;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="filterString" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:TextField>
+                </ui:VisualElement>
+                <ui:ListView binding-source-selection-mode="AutoAssign" reorderable="true" name="ObjectListView" data-source-path="filteredObjects" item-template="project://database/Assets/UIDocuments/Templates/StrategicMissionLabel.uxml?fileID=9197481963319205126&amp;guid=243e3c2e0774069448e3ae1435722b77&amp;type=3#StrategicMissionLabel" style="flex-grow: 1;"/>
+                <ui:Instance template="ManualAddRemoveFooter"/>
                 <ui:VisualElement name="ControlButtons">
                     <ui:Button text="Copy Last" name="CopyLastButton">
                         <Bindings>

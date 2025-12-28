@@ -581,7 +581,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
-    public void PopupOOBTreeDialog()
+    public void PopupOOBTreeDialog(List<StrategicGroup> viewableGroups)
     {
         var tempDialog = new TempDialog()
         {
@@ -595,14 +595,24 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             var oobTreeView = el.Q<TreeView>("OOBTreeView");
 
-            var tree = new FullGroupTree();
-            // var treeViewRootItems = 
-            var treeViewerBuilder = new UITKTreeViewBuilder<IStrategicGroupMemberReferenceable, string>()
+            // var tree = new FullGroupTree();
+            // var treeViewerBuilder = new UITKTreeViewBuilder<IStrategicGroupMemberReferenceable, string>()
+            // {
+            //     tree=tree
+            // };
+
+            // var viewableGroups = StrategicGameState.Instance.strategicGroups;
+
+            var tree = new FullGroupTreeNameLink();
+            var treeViewerBuilder = new UITKTreeViewBuilder<IStrategicGroupMemberReferenceable, IStrategicGroupMemberReferenceable>()
             {
                 tree=tree
             };
-            var rootItems = treeViewerBuilder.CreateTreeViewRootItems(StrategicGameState.Instance.strategicGroups);
+            var rootItems = treeViewerBuilder.CreateTreeViewRootItems(viewableGroups);
             oobTreeView.SetRootItems(rootItems);
+
+            tree.BindMakeItemBindItem(oobTreeView);
+
             oobTreeView.Rebuild();
             // oobTreeView.ExpandAll();
         };

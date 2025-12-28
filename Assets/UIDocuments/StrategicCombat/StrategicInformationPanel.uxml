@@ -38,12 +38,6 @@
                         </Bindings>
                     </ui:FloatField>
                 </ui:VisualElement>
-                <ui:Toggle label="Ground Control Point">
-                    <Bindings>
-                        <ui:DataBinding property="value" data-source-path="GroundControlPoint" binding-mode="TwoWay"/>
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(358609889955840)"/>
-                    </Bindings>
-                </ui:Toggle>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                     <ui:Label text="Group Count:">
                         <Bindings>
@@ -126,7 +120,7 @@
                     </Bindings>
                 </ui:Label>
                 <ui:Instance template="StrategicUnitIcon"/>
-                <ui:Label text="DateTime">
+                <ui:Label text="DateTime" style="white-space: normal;">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="dateTimeStr" binding-mode="ToTarget"/>
                     </Bindings>
@@ -136,7 +130,7 @@
                         <ui:DataBinding property="text" data-source-path="sideName" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Label>
-                <ui:Label text="COntact Report&apos;s observed Content" style="white-space: normal;">
+                <ui:Label text="Contact Report&apos;s observed Content" style="white-space: normal;">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="estimateStr" binding-mode="ToTarget"/>
                     </Bindings>

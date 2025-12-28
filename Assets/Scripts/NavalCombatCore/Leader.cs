@@ -31,6 +31,12 @@ namespace CoreUtils
         GlobalString GetName();
     }
 
+    // public class NamedPlaceholder: INamed
+    // {
+    //     public GlobalString name;
+    //     public GlobalString GetName() => name;
+    // }
+
 
     public class Leader : IObjectIdLabeled, INamed
     {

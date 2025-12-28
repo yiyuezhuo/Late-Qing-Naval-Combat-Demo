@@ -3,6 +3,7 @@ using StrategicCombatCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace NavalCombatCore
 {
@@ -38,6 +39,10 @@ namespace NavalCombatCore
             }
             return 0;
         }
+
+        public static float supplyDisplacementPercentTranport = 0.5f;
+        public static float supplyDisplacementPercentNormal = 0.1f;
+
         public float GetSupplyCapTons()
         {
             var meShipClass = shipClass;
@@ -50,7 +55,7 @@ namespace NavalCombatCore
 
             // 50% of displacement for supply (coal + load) for transport ship
             // 10% of displacement for supply (coal only) for combat ship
-            var fuelAndCargoSupplyTonsCoef = meShipClass.type == ShipType.Transport ? 0.5f : 0.1f;
+            var fuelAndCargoSupplyTonsCoef = meShipClass.type == ShipType.Transport ? supplyDisplacementPercentTranport : supplyDisplacementPercentNormal;
             var fuelAndCargoSupplyTons = shipClass.displacementTons * fuelAndCargoSupplyTonsCoef;
             
             var ammoGapPounds = GetGapAmmoWeightsPounds();
@@ -59,9 +64,11 @@ namespace NavalCombatCore
             return fuelAndCargoSupplyTons + ammoGapTons;
         }
 
+        public static float shipEnduranceDays = 14;
+
         public float GetSupplyCostTonsPerDay()
         {
-            return (shipClass?.displacementTons ?? 0) / 10 / 7; // ~1.5% of displacement of supply is consumed per day
+            return (shipClass?.displacementTons ?? 0) * supplyDisplacementPercentNormal / shipEnduranceDays; // ~0.75% of displacement of supply is consumed per day
         }
 
         public double GetSupplyPercent() => supplyTons / GetSupplyCapTons();

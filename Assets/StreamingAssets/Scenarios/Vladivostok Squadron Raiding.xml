@@ -4097,7 +4097,7 @@
     </CellSideInfos>
     <StrategicGroupReferences>
      <StrategicGroupReference>
-      <referenceId>c5d93306-4781-4f10-a629-da83e996308e</referenceId>
+      <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
      </StrategicGroupReference>
     </StrategicGroupReferences>
     <CellConnections>
@@ -4381,7 +4381,7 @@
     <morale>1</morale>
     <fatigue>0</fatigue>
     <supplyTons>0</supplyTons>
-    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
@@ -4410,7 +4410,7 @@
     <morale>1</morale>
     <fatigue>0</fatigue>
     <supplyTons>0</supplyTons>
-    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
@@ -4555,7 +4555,7 @@
     <morale>1</morale>
     <fatigue>0</fatigue>
     <supplyTons>0</supplyTons>
-    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>9ac1399d-49f8-48ad-8bda-58ce3876fe86</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
@@ -4570,6 +4570,33 @@
     <objectId>6d0989bf-ffa1-4103-9e0a-2d70e286734f</objectId>
     <strategicGroupReference>
      <referenceId>00552ba8-0962-43c1-9da7-31a07da39aaa</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>IJN Super Depot</english>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>0</supplyTons>
+    <supplyGeneratedTons>5000</supplyGeneratedTons>
+    <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>0</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>f1378a47-5c3b-4db1-b663-13efa30cc241</objectId>
+    <strategicGroupReference>
+     <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
     </strategicGroupReference>
    </LandUnit>
   </landUnits>
@@ -4776,7 +4803,9 @@
     <xProp>-1</xProp>
     <yProp>-1</yProp>
     <objectId>44d799ed-77dc-4946-b150-21af4c1fcfc9</objectId>
-    <strategicGroupReference />
+    <strategicGroupReference>
+     <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
+    </strategicGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -4812,7 +4841,9 @@
     <xProp>-1</xProp>
     <yProp>-1</yProp>
     <objectId>faa1b04e-87b1-4610-b3da-82c02635f857</objectId>
-    <strategicGroupReference />
+    <strategicGroupReference>
+     <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
+    </strategicGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -4823,12 +4854,11 @@
     <type>HeadQuarter</type>
     <size>Division</size>
     <country>Japan</country>
-    <deployState>Independent</deployState>
+    <deployState>Combined</deployState>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
-    <independentAreaCellObjectId>a3f12676-afe1-4bee-92e1-7ca717938bd8</independentAreaCellObjectId>
     <leaderReference>
      <referenceObjectId>cf6cab8d-b542-4930-aaeb-bc24eccace43</referenceObjectId>
     </leaderReference>
@@ -4848,6 +4878,49 @@
     <xProp>-1</xProp>
     <yProp>-1</yProp>
     <objectId>c5d93306-4781-4f10-a629-da83e996308e</objectId>
+    <strategicGroupReference>
+     <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
+    </strategicGroupReference>
+   </StrategicGroup>
+   <StrategicGroup>
+    <name>
+     <english>Imperial Japanese Navy General Staff</english>
+     <japanese>軍令部</japanese>
+     <chineseSimplified>军令部</chineseSimplified>
+    </name>
+    <type>HeadQuarter</type>
+    <size>Corp</size>
+    <country>Japan</country>
+    <deployState>Independent</deployState>
+    <autoCombinable>false</autoCombinable>
+    <dissolvable>false</dissolvable>
+    <independentX>-1</independentX>
+    <independentY>-1</independentY>
+    <independentAreaCellObjectId>a3f12676-afe1-4bee-92e1-7ca717938bd8</independentAreaCellObjectId>
+    <leaderReference>
+     <referenceObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</referenceObjectId>
+    </leaderReference>
+    <subordinatesCombined>
+     <StrategicGroupMemberReference>
+      <referenceId>f1378a47-5c3b-4db1-b663-13efa30cc241</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>c5d93306-4781-4f10-a629-da83e996308e</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>faa1b04e-87b1-4610-b3da-82c02635f857</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>44d799ed-77dc-4946-b150-21af4c1fcfc9</referenceId>
+     </StrategicGroupMemberReference>
+    </subordinatesCombined>
+    <moveProgressionKm>0</moveProgressionKm>
+    <plannedPath />
+    <posture>Active</posture>
+    <restoredHours>0</restoredHours>
+    <xProp>-1</xProp>
+    <yProp>-1</yProp>
+    <objectId>7b01e810-a85c-4833-a283-de9529d45258</objectId>
     <strategicGroupReference />
    </StrategicGroup>
   </strategicGroups>
@@ -4879,6 +4952,8 @@
     </areaStates>
    </areaSystem>
    <enableSinoJapaneseHighCommand>false</enableSinoJapaneseHighCommand>
+   <enableContactReportBasedNavalCombat>true</enableContactReportBasedNavalCombat>
+   <estimationRuleMode>RussoJapaneseWar</estimationRuleMode>
   </scenarioState>
   <sideStates>
    <SideState>
@@ -7375,9 +7450,9 @@
   </serializedCells>
  </gameState>
  <viewState>
-  <xPosition>-2.0523665</xPosition>
-  <yPosition>-0.844619155</yPosition>
-  <orthographicSize>6</orthographicSize>
+  <xPosition>-2.128624</xPosition>
+  <yPosition>-0.7823994</yPosition>
+  <orthographicSize>5</orthographicSize>
   <hitAreaMapRecords>
    <HitAreaMapRecord hitAreaObjectId="0b2cbd39-ad25-4233-b5a1-5744048e7491" areaCellObjectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16" />
    <HitAreaMapRecord hitAreaObjectId="54b9824b-f430-407e-9d7e-867728dccccb" areaCellObjectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc" />

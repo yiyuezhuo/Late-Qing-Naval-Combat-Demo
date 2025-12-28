@@ -434,55 +434,55 @@ public static class Utils
     }
 
     // static void GotoReferenceable(IStrategicGroupMemberReferenceable gotoObj, IHidable meDoc)
-    static void GotoReferenceable(IStrategicGroupMemberReferenceable gotoObj)
-    {
-        if (gotoObj is StrategicGroup group)
-        {
-            // var idx = StrategicGameState.Instance.strategicGroups.IndexOf(group);
-            // if (group != null && idx != -1)
-            // {
-            //     if ((object)meDoc != StrategicGroupEditor.Instance)
-            //     {
-            //         meDoc?.Hide();
-            //         StrategicGroupEditor.Instance.Show();
-            //     }
-            //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
-            // }
+    // static void GotoReferenceable(IStrategicGroupMemberReferenceable gotoObj)
+    // {
+    //     if (gotoObj is StrategicGroup group)
+    //     {
+    //         // var idx = StrategicGameState.Instance.strategicGroups.IndexOf(group);
+    //         // if (group != null && idx != -1)
+    //         // {
+    //         //     if ((object)meDoc != StrategicGroupEditor.Instance)
+    //         //     {
+    //         //         meDoc?.Hide();
+    //         //         StrategicGroupEditor.Instance.Show();
+    //         //     }
+    //         //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
+    //         // }
 
-            SwitchCenter.Instance.SwitchToStrategicGroupView(group);
-        }
-        else if (gotoObj is ShipLog shipLog)
-        {
-            // var idx = StrategicGameState.Instance.shipLogs.IndexOf(shipLog);
-            // if (shipLog != null && idx != -1)
-            // {
-            //     if ((object)meDoc != ShipLogEditor.Instance)
-            //     {
-            //         meDoc?.Hide();
-            //         ShipLogEditor.Instance.Show();
-            //     }
-            //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipLogEditor.Instance.shipLogListView, idx);
-            // }
+    //         SwitchCenter.Instance.SwitchToStrategicGroupView(group);
+    //     }
+    //     else if (gotoObj is ShipLog shipLog)
+    //     {
+    //         // var idx = StrategicGameState.Instance.shipLogs.IndexOf(shipLog);
+    //         // if (shipLog != null && idx != -1)
+    //         // {
+    //         //     if ((object)meDoc != ShipLogEditor.Instance)
+    //         //     {
+    //         //         meDoc?.Hide();
+    //         //         ShipLogEditor.Instance.Show();
+    //         //     }
+    //         //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipLogEditor.Instance.shipLogListView, idx);
+    //         // }
 
-            SwitchCenter.Instance.SwitchToShipLogView(shipLog);
+    //         SwitchCenter.Instance.SwitchToShipLogView(shipLog);
 
-        }
-        else if (gotoObj is LandUnit landUnit)
-        {
-            // var idx = StrategicGameState.Instance.landUnits.IndexOf(landUnit);
-            // if (landUnit != null && idx != -1)
-            // {
-            //     if ((object)meDoc != LandUnitEditor.Instance)
-            //     {
-            //         meDoc?.Hide();
-            //         LandUnitEditor.Instance.Show();
-            //     }
-            //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
-            // }
+    //     }
+    //     else if (gotoObj is LandUnit landUnit)
+    //     {
+    //         // var idx = StrategicGameState.Instance.landUnits.IndexOf(landUnit);
+    //         // if (landUnit != null && idx != -1)
+    //         // {
+    //         //     if ((object)meDoc != LandUnitEditor.Instance)
+    //         //     {
+    //         //         meDoc?.Hide();
+    //         //         LandUnitEditor.Instance.Show();
+    //         //     }
+    //         //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
+    //         // }
 
-            SwitchCenter.Instance.SwitchToLandUnitView(landUnit);
-        }
-    }
+    //         SwitchCenter.Instance.SwitchToLandUnitView(landUnit);
+    //     }
+    // }
 
     // public static void BindGotoButton(VisualElement item, IHidable meDoc)
     public static void BindGotoButton(VisualElement item)
@@ -496,8 +496,8 @@ public static class Utils
 
                 var gotoObj = fieldReference.Get();
                 
-                // GotoReferenceable(gotoObj, meDoc);
-                GotoReferenceable(gotoObj);
+                // GotoReferenceable(gotoObj);
+                SwitchCenter.Instance.SwitchByIStrategicGroupMemberReferenceable(gotoObj);
             }
         };
     }

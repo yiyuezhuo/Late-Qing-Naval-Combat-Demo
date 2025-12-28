@@ -31,6 +31,11 @@
                     <ui:DataBinding property="value" data-source-path="enableSinoJapaneseHighCommand" binding-mode="TwoWay"/>
                 </Bindings>
             </ui:Toggle>
+            <ui:EnumField label="Contact Report Estimation Mode" value="Center" type="StrategicCombatCore.NavalForceEstimation+Rule+Mode, Assembly-CSharp">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="estimationRuleMode" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:EnumField>
         </ui:VisualElement>
         <ui:Button text="Confirm" name="ConfirmButton">
             <Bindings>

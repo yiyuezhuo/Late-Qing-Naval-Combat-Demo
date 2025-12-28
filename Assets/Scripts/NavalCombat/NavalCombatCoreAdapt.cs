@@ -15,6 +15,12 @@ using CoreUtils;
 
 namespace NavalCombatCore
 {
+    public class NameLinkPlaceholder // ShipLog, LandUnit, StrategicGroup "implement" this now
+    {
+        [CreateProperty]
+        public string nameLink;
+    }
+
     public partial class ShipClass
     {
         [CreateProperty]
@@ -148,7 +154,7 @@ namespace NavalCombatCore
                 var name = namedShip?.name.mergedName;
                 if (name == null)
                     return "[Not Specified]";
-                return $"<link=\"namedShip\"><color=#40a0ff><u>{name}</u></color></link>";
+                return $"<link=\"namedShip\"><color=#40a0ff>{name}</color></link>";
             }
         }
 
@@ -160,7 +166,7 @@ namespace NavalCombatCore
                 var name = shipClass?.name.mergedName;
                 if (name == null)
                     return "[Not Specified]";
-                return $"Class: <link=\"shipClass\"><color=#40a0ff><u>{name}</u></color></link>";
+                return $"Class: <link=\"shipClass\"><color=#40a0ff>{name}</color></link>";
             }
         }
 
@@ -179,7 +185,7 @@ namespace NavalCombatCore
                 if (name == null)
                     return "[Not Specified]";
                 // return $"Captain: <link=\"captain\"><color=#40a0ff><u>{name}</u></color></link>";
-                return $"<link=\"captain\"><color=#40a0ff><u>{name}</u></color></link>";
+                return $"<link=\"captain\"><color=#40a0ff>{name}</color></link>";
             }
         }
 
@@ -195,7 +201,7 @@ namespace NavalCombatCore
                 var parentGroup = member.GetParentGroup();
                 // return parentGroup?.name.mergedName ?? "[Not Specified]";
                 var name = parentGroup?.name.mergedName ?? "[Not Specified]";
-                return $"<link=\"group\"><color=#40a0ff><u>{name}</u></color></link>";
+                return $"<link=\"group\"><color=#40a0ff>{name}</color></link>";
             }
         }
 
@@ -327,6 +333,9 @@ namespace NavalCombatCore
                 return $"Dmg Ctrl: {severityStatesCount}/{dcr} T:{totalSubStates.Count}";
             }
         }
+
+        [CreateProperty]
+        public string nameLink => $"<link=\"nameLink\"><color=#40a0ff>{GetName().GetMergedName()}</color></link>";
 
         [CreateProperty]
         public bool isInEditMode => GamePreference.Instance.isInEditMode;

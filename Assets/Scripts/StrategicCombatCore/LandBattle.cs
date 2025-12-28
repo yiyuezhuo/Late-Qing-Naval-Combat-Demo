@@ -84,7 +84,8 @@ namespace StrategicCombatCore
 
         public SideState GetAttacker() => EntityManager.Instance.Get<SideState>(attacker.sideId);
         public SideState GetDefender() => EntityManager.Instance.Get<SideState>(defender.sideId);
-        public Cell GetCell() => StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+        // public Cell GetCell() => StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+        public Cell GetCell() => cellXY.GetCell();
         public (Cell, SideState, SideState) GetKey() => (GetCell(), GetAttacker(), GetDefender());
 
         public LandBattleSideStateDynamic GetAttackerDynamic()

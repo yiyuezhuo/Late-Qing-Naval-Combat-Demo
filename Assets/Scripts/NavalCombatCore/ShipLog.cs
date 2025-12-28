@@ -340,7 +340,7 @@ namespace NavalCombatCore
         }
     }
 
-    public partial class ShipLog : UnitModule, IDF4Model, IShipGroupMember, IWTAObject, IExtrapolable, ICollider
+    public partial class ShipLog : UnitModule, IDF4Model, IShipGroupMember, IWTAObject, IExtrapolable, ICollider, INamed
     {
         // public string objectId { get; set; }
         // public ShipClass shipClass;
@@ -1440,6 +1440,8 @@ namespace NavalCombatCore
         // public float GetHeadingDeg() => headingDeg;
         public float GetLengthFoot() => shipClass.lengthFoot;
         public float GetBeamFoot() => shipClass.beamFoot;
+
+        public GlobalString GetName() => namedShip?.name;
 
         public override string ToString()
         {

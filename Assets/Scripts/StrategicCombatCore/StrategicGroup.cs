@@ -91,7 +91,7 @@ namespace StrategicCombatCore
 
     }
 
-    public partial class StrategicGroup : IObjectIdLabeled, IStrategicGroupMemberReferenceable
+    public partial class StrategicGroup : IObjectIdLabeled, IStrategicGroupMemberReferenceable, INamed
     {
         public string objectId { get; set; }
         public GlobalString name = new();
@@ -685,15 +685,15 @@ namespace StrategicCombatCore
 
             var depot = ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
             var depotGroup = depot?.strategicGroupReference.Get();
-            if (depotGroup != null && depotGroup.x != -1 && depotGroup.y != -1)
-            {
 
+            var depotCell = depotGroup.cell;
+            if (depotGroup != null && depotCell != null)
+            {
                 ClearPlannedPath();
 
-                var waypointStartCell = StrategicGameState.Instance.cellMatrix[depotGroup.x, depotGroup.y];
-
                 var graph = new DynamicCellGraphNavy();
-                var pathCells = PathFinding<Cell>.AStar(graph, cell, waypointStartCell);
+                // var pathCells = PathFinding<Cell>.AStar(graph, cell, waypointStartCell);
+                var pathCells = PathFinding<Cell>.AStar(graph, cell, depotCell);
                 if (pathCells.Count >= 2)
                 {
                     // plannedPath.AddRange(pathCells.Select(cell => new XY() { x = cell.x, y = cell.y }));
@@ -1003,6 +1003,8 @@ namespace StrategicCombatCore
         //     mission.groups.Add(new StrategicGroupMemberReference { referenceId = objectId });
         //     assignedMissionObjectId = mission.objectId;
         // }
+
+        public GlobalString GetName() => name;
     }
 }
 

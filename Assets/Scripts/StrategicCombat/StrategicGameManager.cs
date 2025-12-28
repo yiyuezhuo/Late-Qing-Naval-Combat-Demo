@@ -657,158 +657,191 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         {
             var cell = g.Key;
 
-            if(cell.IsGridCell()) // Bind to Grid
+            var vec = GetCellWorldCenter(cell);
+
+            var gl = g.GroupBy(_g => _g.side).ToList();
+
+            if (gl.Count == 1)
             {
-                // (var x, var y) = g.Key;
-                var x = cell.x;
-                var y = cell.y;
-
-                var (xf, yf) = HexMapShower.CellXYToLocalXY(x, y);
-                var vec = hexMapShower.controlledRenderer.transform.TransformPoint(xf, yf, 0);
-
-                // var gl = g.GroupBy(_g => _g.country).ToList();
-                // var gl = g.GroupBy(_g => StrategicGameState.Instance.countryToSideStateMap[_g.country]).ToList();
-                var gl = g.GroupBy(_g => _g.side).ToList();
-
-                if (gl.Count == 1)
-                {
-                    Utils.LayoutStackTransform(
-                        gl[0].Select(gp => groupToView[gp].transform).ToList(),
-                        new Vector3(vec.x, vec.y, 0),
-                        0.05f
-                    );
-                }
-                else
-                {
-                    // gl.Sort((gp1, gp2) => gp1.Key.name.english[0].CompareTo(gp2.Key.name.english[0])); // FIXME: Fragile to empty string
-                    // var cell = gl.First().First().cell;
-
-                    var side0yScore = cell.GetMassCenterY(gl[0].Key);
-                    var side1yScore = cell.GetMassCenterY(gl[1].Key);
-
-                    var gTop = gl[0];
-                    var gBottom = gl[1];
-
-                    if (side0yScore < side1yScore)
-                    {
-                        gTop = gl[1];
-                        gBottom = gl[0];
-                    }
-                    else if(side0yScore == side1yScore)
-                    {
-                        if(gl[0].Key.name.english[0] > gl[1].Key.name.english[1])
-                        {
-                            gTop = gl[1];
-                            gBottom = gl[0];
-                        }
-                    }
-
-                    Utils.LayoutStackTransform(
-                        gTop.Select(gp => groupToView[gp].transform).ToList(),
-                        new Vector3(vec.x, vec.y + 0.25f, 0),
-                        0.05f
-                    );
-
-                    // Assume 2 sides can be in the same hex at most.
-                    Utils.LayoutStackTransform(
-                        gBottom.Select(gp => groupToView[gp].transform).ToList(),
-                        new Vector3(vec.x, vec.y - 0.25f, 0),
-                        0.05f
-                    );
-                }
+                Utils.LayoutStackTransform(
+                    gl[0].Select(gp => groupToView[gp].transform).ToList(),
+                    new Vector3(vec.x, vec.y, 0),
+                    0.05f
+                );
             }
-            else if(cell.IsAreaCell()) // Bind to Area
+            else
             {
-                if(areaCellObjectIdToHitArea.TryGetValue(cell.objectId, out var hitArea))
-                {
-                    var xf = hitArea.transform.position.x;
-                    var yf = hitArea.transform.position.y;
+                // var side0yScore = cell.GetMassCenterY(gl[0].Key);
+                // var side1yScore = cell.GetMassCenterY(gl[1].Key);
 
-                    Utils.LayoutStackTransform(
-                        g.Select(gp => groupToView[gp].transform).ToList(),
-                        new Vector3(xf, yf, 0),
-                        0.05f
-                    );
-                }
+                // var gTop = gl[0];
+                // var gBottom = gl[1];
+
+                // if (side0yScore < side1yScore)
+                // {
+                //     gTop = gl[1];
+                //     gBottom = gl[0];
+                // }
+                // else if(side0yScore == side1yScore)
+                // {
+                //     if(gl[0].Key.name.english[0] > gl[1].Key.name.english[1])
+                //     {
+                //         gTop = gl[1];
+                //         gBottom = gl[0];
+                //     }
+                // }
+
+                var (gTop, gBottom) = GetTopBottom(cell, gl);
+
+                Utils.LayoutStackTransform(
+                    gTop.Select(gp => groupToView[gp].transform).ToList(),
+                    new Vector3(vec.x, vec.y + 0.25f, 0),
+                    0.05f
+                );
+
+                // Assume 2 sides can be in the same hex at most.
+                Utils.LayoutStackTransform(
+                    gBottom.Select(gp => groupToView[gp].transform).ToList(),
+                    new Vector3(vec.x, vec.y - 0.25f, 0),
+                    0.05f
+                );
+            }
+
+            // if(cell.IsGridCell()) // Bind to Grid
+            // {
+            //     // (var x, var y) = g.Key;
+            //     var x = cell.x;
+            //     var y = cell.y;
+
+            //     var (xf, yf) = HexMapShower.CellXYToLocalXY(x, y);
+            //     var vec = hexMapShower.controlledRenderer.transform.TransformPoint(xf, yf, 0);
+
+            //     var gl = g.GroupBy(_g => _g.side).ToList();
+
+            //     if (gl.Count == 1)
+            //     {
+            //         Utils.LayoutStackTransform(
+            //             gl[0].Select(gp => groupToView[gp].transform).ToList(),
+            //             new Vector3(vec.x, vec.y, 0),
+            //             0.05f
+            //         );
+            //     }
+            //     else
+            //     {
+            //         var side0yScore = cell.GetMassCenterY(gl[0].Key);
+            //         var side1yScore = cell.GetMassCenterY(gl[1].Key);
+
+            //         var gTop = gl[0];
+            //         var gBottom = gl[1];
+
+            //         if (side0yScore < side1yScore)
+            //         {
+            //             gTop = gl[1];
+            //             gBottom = gl[0];
+            //         }
+            //         else if(side0yScore == side1yScore)
+            //         {
+            //             if(gl[0].Key.name.english[0] > gl[1].Key.name.english[1])
+            //             {
+            //                 gTop = gl[1];
+            //                 gBottom = gl[0];
+            //             }
+            //         }
+
+            //         Utils.LayoutStackTransform(
+            //             gTop.Select(gp => groupToView[gp].transform).ToList(),
+            //             new Vector3(vec.x, vec.y + 0.25f, 0),
+            //             0.05f
+            //         );
+
+            //         // Assume 2 sides can be in the same hex at most.
+            //         Utils.LayoutStackTransform(
+            //             gBottom.Select(gp => groupToView[gp].transform).ToList(),
+            //             new Vector3(vec.x, vec.y - 0.25f, 0),
+            //             0.05f
+            //         );
+            //     }
+            // }
+            // else if(cell.IsAreaCell()) // Bind to Area
+            // {
+            //     if(areaCellObjectIdToHitArea.TryGetValue(cell.objectId, out var hitArea))
+            //     {
+            //         var xf = hitArea.transform.position.x;
+            //         var yf = hitArea.transform.position.y;
+
+            //         Utils.LayoutStackTransform(
+            //             g.Select(gp => groupToView[gp].transform).ToList(),
+            //             new Vector3(xf, yf, 0),
+            //             0.05f
+            //         );
+            //     }
+            // }
+        }
+    }
+
+    Vector3 GetCellWorldCenter(Cell cell)
+    {
+        if(cell.IsGridCell())
+        {
+            var x = cell.x;
+            var y = cell.y;
+
+            var (xf, yf) = HexMapShower.CellXYToLocalXY(cell.x, cell.y);
+            var vec = HexMapShower.Instance.controlledRenderer.transform.TransformPoint(xf, yf, 0);
+            return vec;
+        }
+        else// area
+        {
+            if(areaCellObjectIdToHitArea.TryGetValue(cell.objectId, out var hitArea))
+            {
+                return hitArea.transform.position;
+            }
+        }
+        return Vector3.zero;
+    }
+
+    static Dictionary<Country, int> countryNorthScore = new()
+    {
+        [Country.Japan] = 0,
+        [Country.China] = 1,
+        [Country.Russia] = 2
+    };
+
+    (IGrouping<SideState, ILayableWorldSpaceGroupIconDataSource>, IGrouping<SideState, ILayableWorldSpaceGroupIconDataSource>) GetTopBottom(Cell cell, List<IGrouping<SideState, ILayableWorldSpaceGroupIconDataSource>> gl)
+    {
+        float side0yScore, side1yScore;
+
+        if(cell.IsGridCell())
+        {
+            side0yScore = cell.GetMassCenterY(gl[0].Key);
+            side1yScore = cell.GetMassCenterY(gl[1].Key);
+        }
+        else // area
+        {
+            side0yScore = countryNorthScore.GetValueOrDefault(gl[0].Key.countries.FirstOrDefault());
+            side1yScore = countryNorthScore.GetValueOrDefault(gl[1].Key.countries.FirstOrDefault());
+        }
+
+        var gTop = gl[0];
+        var gBottom = gl[1];
+
+        if (side0yScore < side1yScore)
+        {
+            gTop = gl[1];
+            gBottom = gl[0];
+        }
+        else if(side0yScore == side1yScore)
+        {
+            if(gl[0].Key.name.english[0] > gl[1].Key.name.english[1])
+            {
+                gTop = gl[1];
+                gBottom = gl[0];
             }
         }
 
-        // foreach(var g in strategicGroupsOnArea.GroupBy(group => group.areaCellObjectId))
-        // {
-        //     if(areaCellObjectIdToHitArea.TryGetValue(g.Key, out var hitArea))
-        //     {
-        //         var xf = hitArea.transform.position.x;
-        //         var yf = hitArea.transform.position.y;
-
-        //         Utils.LayoutStackTransform(
-        //             g.Select(gp => groupToView[gp].transform).ToList(),
-        //             new Vector3(xf, yf, 0),
-        //             0.05f
-        //         );
-        //     }
-        // }
-
-        // // Grid System Binding
-        // // var strategicGroupsOnGrid = strategicGroups.Where(g => g.IsOnGridCell());
-        // var hexMapShower = HexMapShower.Instance;
-        // foreach (var g in strategicGroupsOnGrid.GroupBy(group => (group.x, group.y)))
-        // {
-        //     (var x, var y) = g.Key;
-        //     var (xf, yf) = HexMapShower.CellXYToLocalXY(x, y);
-        //     var vec = hexMapShower.controlledRenderer.transform.TransformPoint(xf, yf, 0);
-
-        //     // var gl = g.GroupBy(_g => _g.country).ToList();
-        //     // var gl = g.GroupBy(_g => StrategicGameState.Instance.countryToSideStateMap[_g.country]).ToList();
-        //     var gl = g.GroupBy(_g => _g.side).ToList();
-
-        //     if (gl.Count == 1)
-        //     {
-        //         Utils.LayoutStackTransform(
-        //             gl[0].Select(gp => groupToView[gp].transform).ToList(),
-        //             new Vector3(vec.x, vec.y, 0),
-        //             0.05f
-        //         );
-        //     }
-        //     else
-        //     {
-        //         // gl.Sort((gp1, gp2) => gp1.Key.name.english[0].CompareTo(gp2.Key.name.english[0])); // FIXME: Fragile to empty string
-        //         var cell = gl.First().First().cell;
-
-        //         var side0yScore = cell.GetMassCenterY(gl[0].Key);
-        //         var side1yScore = cell.GetMassCenterY(gl[1].Key);
-
-        //         var gTop = gl[0];
-        //         var gBottom = gl[1];
-
-        //         if (side0yScore < side1yScore)
-        //         {
-        //             gTop = gl[1];
-        //             gBottom = gl[0];
-        //         }
-        //         else if(side0yScore == side1yScore)
-        //         {
-        //             if(gl[0].Key.name.english[0] > gl[1].Key.name.english[1])
-        //             {
-        //                 gTop = gl[1];
-        //                 gBottom = gl[0];
-        //             }
-        //         }
-
-        //         Utils.LayoutStackTransform(
-        //             gTop.Select(gp => groupToView[gp].transform).ToList(),
-        //             new Vector3(vec.x, vec.y + 0.25f, 0),
-        //             0.05f
-        //         );
-
-        //         // Assume 2 sides can be in the same hex at most.
-        //         Utils.LayoutStackTransform(
-        //             gBottom.Select(gp => groupToView[gp].transform).ToList(),
-        //             new Vector3(vec.x, vec.y - 0.25f, 0),
-        //             0.05f
-        //         );
-        //     }
-        // }
+        return (gTop, gBottom);
     }
+    
 
     void HandleInput()
     {
@@ -972,7 +1005,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
             var p = strategicGroup.plannedPath;
             var appending = p.Count >= 2;
-            var srcCell = appending ? StrategicGameState.Instance.cellMatrix[p[^1].x, p[^1].y] : strategicGroup.cell;
+            // var srcCell = appending ? StrategicGameState.Instance.cellMatrix[p[^1].x, p[^1].y] : strategicGroup.cell;
+            var srcCell = appending ? p[^1].GetCell() : strategicGroup.cell;
             var dstCell = cell;
 
             IGraphEnumerable<Cell> graph = strategicGroup.IsArmy() ? new DynamicCellGraphArmy() : new DynamicCellGraphNavy();

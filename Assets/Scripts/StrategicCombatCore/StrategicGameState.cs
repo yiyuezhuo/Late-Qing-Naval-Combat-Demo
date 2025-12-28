@@ -528,7 +528,8 @@ namespace StrategicCombatCore
                                     navalContactReports.Add(matchedContactReport);
                                 }
 
-                                matchedContactReport.UpdateTo(scenarioState.dateTime, shipLogs);
+                                // matchedContactReport.UpdateTo(scenarioState.dateTime, shipLogs);
+                                matchedContactReport.UpdateTo(scenarioState.dateTime, observedSideDeployedShipLogs);
                                 
                                 var msg = $"Contact Report: {matchedContactReport}";
                                 ServiceLocator.Get<ILoggerService>().Log(msg);
@@ -759,10 +760,11 @@ namespace StrategicCombatCore
             }
         }
 
-
         public void RefreshPendingNavalCombats()
         {
             pendingNavalCombats.Clear();
+
+            var recentContactReportPairSets = navalContactReports.Where(c => c.GetTimeSpanToCurrent().TotalHours <= 2).Select(c => (c.GetObserverSide(), c.GetObservedSide())).ToHashSet();
 
             foreach (var g in strategicGroups.Where(g => g.NavalCombatable()).GroupBy(g => g.cell))
             {
@@ -770,22 +772,41 @@ namespace StrategicCombatCore
                 var side2GroupsGp = g.GroupBy(g => g.side).ToList();
                 if (side2GroupsGp.Count >= 2)
                 {
-                    var pendingCombat = new PendingNavalCombat()
+                    var g0 = side2GroupsGp[0];
+                    var g1 = side2GroupsGp[1];
+
+                    var g0hasActive = g0.Any(g => g.posture == StrategicGroup.GroupPostureType.Active);
+                    var g1hasActive = g1.Any(g => g.posture == StrategicGroup.GroupPostureType.Active);
+
+                    var g0attackable = g0hasActive;
+                    var g1attackable = g1hasActive;
+
+                    if(scenarioState.enableContactReportBasedNavalCombat)
                     {
-                        // xy = new XY() { x = cell.x, y = cell.y },
-                        xy = cell.ToXY(),
-                        sideState0 = new()
+                        g0attackable = g0attackable && recentContactReportPairSets.Contains((g0.Key, g1.Key)); // g0 is active and detect enemy
+                        g1attackable = g1attackable && recentContactReportPairSets.Contains((g1.Key, g0.Key));
+                    }
+
+                    var pendingCombatGenerated = g0attackable || g1attackable;
+
+                    if(pendingCombatGenerated)
+                    {
+                        var pendingCombat = new PendingNavalCombat()
                         {
-                            sideObjectId = side2GroupsGp[0].Key.objectId,
-                            groupObjectIds = side2GroupsGp[0].Select(g => g.objectId).ToList()
-                        },
-                        sideState1=new(){
-                            sideObjectId = side2GroupsGp[1].Key.objectId,
-                            groupObjectIds = side2GroupsGp[1].Select(g => g.objectId).ToList()
-                        }
-                    };
-                    EntityManager.Instance.Register(pendingCombat, null);
-                    pendingNavalCombats.Add(pendingCombat);
+                            xy = cell.ToXY(),
+                            sideState0 = new()
+                            {
+                                sideObjectId = side2GroupsGp[0].Key.objectId,
+                                groupObjectIds = side2GroupsGp[0].Select(g => g.objectId).ToList()
+                            },
+                            sideState1=new(){
+                                sideObjectId = side2GroupsGp[1].Key.objectId,
+                                groupObjectIds = side2GroupsGp[1].Select(g => g.objectId).ToList()
+                            }
+                        };
+                        EntityManager.Instance.Register(pendingCombat, null);
+                        pendingNavalCombats.Add(pendingCombat);
+                    }
                 }
             }
         }
@@ -1003,7 +1024,7 @@ namespace StrategicCombatCore
             }
         }
 
-        public void CreateDefaultAndResetShipLogStates()
+        public void CreateDefaultShipLog()
         {
             var createdObjectIds = shipLogs.Select(shipLog => shipLog.namedShip.objectId).Where(id => id != null && id != "").ToHashSet();
 
@@ -1022,7 +1043,10 @@ namespace StrategicCombatCore
             );
 
             ResetAndRegisterAll();
+        }
 
+        public void ResetShipLogStates()
+        {
             foreach (var shipLog in shipLogs)
             {
                 var ctx = shipLog.side?.GetResetDamageExpenditureStateContext() ?? new();

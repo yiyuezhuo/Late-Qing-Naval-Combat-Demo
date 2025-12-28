@@ -7,7 +7,7 @@ namespace StrategicCombatCore
 {
 
 
-    public partial class LandUnit : IObjectIdLabeled, IStrategicGroupMemberReferenceable, ISupplyNetworkNode
+    public partial class LandUnit : IObjectIdLabeled, IStrategicGroupMemberReferenceable, ISupplyNetworkNode, INamed
     {
         public string objectId { get; set; }
         public GlobalString name = new();
@@ -193,6 +193,8 @@ namespace StrategicCombatCore
             }
             return 0;
         }
+
+        public GlobalString GetName() => name;
     }
 }
 

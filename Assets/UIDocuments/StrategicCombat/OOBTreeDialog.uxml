@@ -1,10 +1,10 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
     <ui:VisualElement class="panel-dialog" style="height: auto; width: 600px;">
-        <ui:Label text="Full OOB Tree" class="title" />
-        <ui:TreeView name="OOBTreeView" style="height: 350px;" />
+        <ui:Label text="Full OOB Tree" class="title"/>
+        <ui:TreeView name="OOBTreeView" item-template="project://database/Assets/UIDocuments/Templates/NameLinkLabel.uxml?fileID=9197481963319205126&amp;guid=694b2750c06ba5440a551f274d7bbec2&amp;type=3#NameLinkLabel" style="height: 350px;"/>
         <ui:VisualElement>
-            <ui:Button text="Confirm" name="ConfirmButton" />
+            <ui:Button text="Confirm" name="ConfirmButton"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

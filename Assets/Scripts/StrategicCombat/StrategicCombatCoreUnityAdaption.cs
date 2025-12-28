@@ -195,7 +195,7 @@ namespace StrategicCombatCore
                 var rawName = name.GetMergedName();
                 if (rawName == null)
                     rawName = "_";
-                return $"<link=\"nameLink\"><color=#40a0ff><u>{rawName}</u></color></link>";
+                return $"<link=\"nameLink\"><color=#40a0ff>{rawName}</color></link>";
             }
         }
 
@@ -209,7 +209,7 @@ namespace StrategicCombatCore
                 {
                     return "[Not Specified]";
                 }
-                return $"<link=\"nameLink\"><color=#40a0ff><u>{leaderName}</u></color></link>";
+                return $"<link=\"nameLink\"><color=#40a0ff>{leaderName}</color></link>";
             }
         }
 
@@ -508,6 +508,9 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public bool isInEditMode => GamePreference.Instance.isInEditMode;
+
+        [CreateProperty]
+        public string nameLink => $"<link=\"nameLink\"><color=#40a0ff>{GetName().GetMergedName()}</color></link>";
     }
 
     public partial class SubStrategicCombat

@@ -156,8 +156,8 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             var gameState = StrategicGameState.Instance;
 
             // Create default and reset shiplog states
-
-            gameState.CreateDefaultAndResetShipLogStates();
+            // gameState.CreateDefaultShipLog(); // Since Russo-Japanese War's data is added, it's hard to auto-generate without extra tag.
+            gameState.ResetShipLogStates();
 
             // Reset Strength
 
@@ -199,7 +199,23 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
         root.Q<Button>("OOBTreeButton").clicked += () =>
         {
-            DialogRoot.Instance.PopupOOBTreeDialog();
+            var viewableGroups = StrategicGameState.Instance.strategicGroups;
+
+            if(!GamePreference.Instance.isInEditMode)
+            {
+                var viewerSider = StrategicGameManager.Instance.GetViewerSide();
+                if(viewerSider != null)
+                {
+                    var viewerCountries = viewerSider.countries.ToHashSet();
+                    viewableGroups = viewableGroups.Where(g => viewerCountries.Contains(g.country)).ToList();
+                }
+                else
+                {
+                    viewableGroups = new();
+                }
+            }
+
+            DialogRoot.Instance.PopupOOBTreeDialog(viewableGroups);
         };
 
         root.Q<Button>("LandBattleEditorButton").clicked += () =>

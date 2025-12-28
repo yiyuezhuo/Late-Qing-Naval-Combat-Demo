@@ -206,6 +206,22 @@ public class SwitchCenter
         }
     }
 
+    public void SwitchByIStrategicGroupMemberReferenceable(IStrategicGroupMemberReferenceable gotoObj)
+    {
+        if (gotoObj is StrategicGroup group)
+        {
+            SwitchToStrategicGroupView(group);
+        }
+        else if (gotoObj is ShipLog shipLog)
+        {
+            SwitchToShipLogView(shipLog);
+        }
+        else if (gotoObj is LandUnit landUnit)
+        {
+            SwitchToLandUnitView(landUnit);
+        }
+    }
+
     public void Reset()
     {
         currentActiveViewContainer = null;

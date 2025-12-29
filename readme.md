@@ -59,7 +59,7 @@ Manual is not version controlled, dev should place latest version of manual as `
 
 ### Platforms
 
-Desktop is the major platform, WebGL will work but the huge file size will not deliver a decent experience, Mobile and basic touch screen support is implemented. 
+Desktop is the major platform, WebGL will work but the huge file size will not deliver a decent experience, Mobile and basic touch screen support is implemented.
 
 ## Credits
 

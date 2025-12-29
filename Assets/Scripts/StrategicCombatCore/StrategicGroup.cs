@@ -204,7 +204,7 @@ namespace StrategicCombatCore
 
         public void SetAssignedMission(StrategicMission mission)
         {
-            var oldMission = EntityManager.Instance.Get<StrategicMission>(assignedMissionObjectId);
+            var oldMission = GetAssignedMission();
             if (oldMission != null)
             {
                 oldMission.groups.RemoveAll(r => r.referenceId == objectId);
@@ -220,6 +220,8 @@ namespace StrategicCombatCore
                 mission.groups.Add(new() { referenceId = objectId });
             }
         }
+
+        public StrategicMission GetAssignedMission() => EntityManager.Instance.Get<StrategicMission>(assignedMissionObjectId);
 
         public SideState side => StrategicGameState.Instance.countryToSideStateMap.GetValueOrDefault(country);
         // public HexInfo hexInfo => StrategicGameState.Instance.hexInfoMap.GetValueOrDefault((x, y));
@@ -672,7 +674,11 @@ namespace StrategicCombatCore
         public bool NavalCombatable() => deployState == DeployState.Independent && posture != GroupPostureType.Disengaged && type == Type.Fleet;
         public bool LandCombatable() => deployState == DeployState.Independent && posture != GroupPostureType.Disengaged && type != Type.Fleet;
 
-        public void StartReturnToBase(int disengagedHours) // Return to group's depot's location and go to disengaged state, mainly used by fleet group
+        /// <summary>
+        /// Drive the group to its base, if disengagedHours == 0, it's a normal return, otherwise it's a retreat return.
+        /// </summary>
+        /// <param name="disengagedHours"></param>
+        public void StartReturnToBase(int disengagedHours)
         {
             if (deployState != DeployState.Independent)
                 return;
@@ -689,16 +695,16 @@ namespace StrategicCombatCore
             var depotCell = depotGroup.cell;
             if (depotGroup != null && depotCell != null)
             {
-                ClearPlannedPath();
+                TryPlanPathTo(depotCell);
+                // ClearPlannedPath();
 
-                var graph = new DynamicCellGraphNavy();
-                // var pathCells = PathFinding<Cell>.AStar(graph, cell, waypointStartCell);
-                var pathCells = PathFinding<Cell>.AStar(graph, cell, depotCell);
-                if (pathCells.Count >= 2)
-                {
-                    // plannedPath.AddRange(pathCells.Select(cell => new XY() { x = cell.x, y = cell.y }));
-                    plannedPath.AddRange(pathCells.Select(cell => cell.ToXY()));
-                }
+                // var graph = new DynamicCellGraphNavy();
+                // var pathCells = PathFinding<Cell>.AStar(graph, cell, depotCell);
+                // if (pathCells.Count >= 2)
+                // {
+                //     // plannedPath.AddRange(pathCells.Select(cell => new XY() { x = cell.x, y = cell.y }));
+                //     plannedPath.AddRange(pathCells.Select(cell => cell.ToXY()));
+                // }
             }
             else
             {
@@ -749,12 +755,74 @@ namespace StrategicCombatCore
                 return;
             }
 
-            var moveProgressionKmMaintained = plannedPath.Count >= 2 && plannedPath[1].x == newPlannedPath[1].x && plannedPath[1].y == newPlannedPath[1].y;
+            var moveProgressionKmMaintained = plannedPath.Count >= 2 && plannedPath[1].GetCell() == newPlannedPath[1].GetCell();
             if(!moveProgressionKmMaintained)
             {
                 moveProgressionKm = 0;
             }
             plannedPath.AddRange(newPlannedPath);
+        }
+
+        public void TryPlanPathTo(Cell dstCell)
+        {
+            plannedPath.Clear();
+            
+            IGraphEnumerable<Cell> graph = IsNavy() ? new DynamicCellGraphNavy() : new DynamicCellGraphArmy();
+            var pathCells = PathFinding<Cell>.AStar(graph, cell, dstCell);
+            var pathXY = pathCells.Select(c => c.ToXY()).ToList();
+
+            SetPlannedPath(pathXY);
+        }
+
+        public bool IsFleetOnSeaOrSuppliedInHomePort()
+        {
+            var groupCell = cell;
+            if(type == Type.Fleet)
+            {
+                var depotCell = GetDepotGroup().cell;
+                if(depotCell != null && groupCell == depotCell)
+                {
+                    var ships = WalkGroupMembersDeployedShips().ToList();
+                    if(ships.Any(ship => ship.GetSupplyPercent() < 0.95))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        public bool IsFleetHasSufficientFuelToReturnHome()
+        {
+            if(type == Type.Fleet)
+            {
+                var groupCell = cell;
+                var depotCell = GetDepotGroup().cell;
+                if(depotCell != null && groupCell != depotCell)
+                {
+                    var graph = new DynamicCellGraphNavy();
+                    var pathCells = PathFinding<Cell>.AStar(graph, groupCell, depotCell);
+                    if (pathCells.Count >= 2)
+                    {
+                        var distKm = 0f;
+                        for(int i=0; i<pathCells.Count-1; i++)
+                        {
+                            distKm += pathCells[i].GetDistanceUnsafe(pathCells[i+1]);
+                        }
+                        var rtbHours = distKm / GetSpeedKmPerHour();
+                        // var rtbDays = rtbHours / 24f;
+                        // var supplyThresholdPercent = rtbDays / ShipLog.shipEnduranceDays;
+                        var hasOutOfFuelRisk = WalkGroupMembersDeployedShips().Any(ship => ship.GetEnduranceHours() <= rtbHours);
+                        if(hasOutOfFuelRisk)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
         }
 
         public void DoLandDisengage()
@@ -988,6 +1056,70 @@ namespace StrategicCombatCore
             var currentCell = cell;
             var nextCell = plannedPath[1].GetCell();
             return currentCell.TryGetDistance(nextCell, out distanceKm);
+        }
+
+        public void CheckOutOfFuelFleetGroupAndForceReturnToBase()
+        {
+            if(type == Type.Fleet)
+            {
+                // var groupCell = cell;
+                var depotCell = GetDepotGroup().cell;
+                if(depotCell != null && plannedPath.Count >= 1 && plannedPath[^1].GetCell() != depotCell)
+                {
+                    if(!IsFleetHasSufficientFuelToReturnHome())
+                    {
+                        StartReturnToBase(0);
+
+                        var mission = GetAssignedMission();
+                        if(mission != null && !mission.interrupted)
+                        {
+                            mission.interrupted = true;
+                            // TODO: Notify other group assigned to this mission to return?
+                        }
+                    }
+                }
+            }
+        }
+
+        public void Advance1HourForMovement()
+        {
+            if (plannedPath.Count == 0)
+            {
+                moveProgressionKm = 0;
+            }
+            else
+            {
+                var speedKmPerHour = GetSpeedKmPerHour();
+                var moveKmCap = speedKmPerHour * 1;
+                while (moveKmCap > 0 && plannedPath.Count >= 2)
+                {
+                    var valid = TryGetDistanceToNextLocationInPlannedPathWithoutProgression(out var cellDistKm);
+                    if(!valid)
+                    {
+                        break;
+                    }
+
+                    var nextDistKm = cellDistKm - moveProgressionKm; // 50km/hex
+                    if (moveKmCap < nextDistKm)
+                    {
+                        moveProgressionKm += moveKmCap;
+                        moveKmCap = 0;
+                    }
+                    else
+                    {
+                        moveKmCap -= nextDistKm;
+                        plannedPath.RemoveAt(0);
+                        // strategicGroup.MoveToXY(strategicGroup.plannedPath[0].x, strategicGroup.plannedPath[0].y, true);
+                        MoveToCell(plannedPath[0].GetCell(), true); // TODO: Generalize to Area System
+                        
+                        moveProgressionKm = 0;
+                        if (plannedPath.Count < 2)
+                        {
+                            plannedPath.Clear();
+                        }
+                    }
+                }
+            }
         }
 
         public bool IsOnAreaCell() => cell?.IsAreaCell() ?? false; // independent or combined on area => true, Not Deployed => false

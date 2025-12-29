@@ -572,11 +572,13 @@ public static class Utils
                 {
                     Debug.Log("reference SetButton clicked");
 
-                    var pickerMode = selectedMission.type switch
-                    {
-                        StrategicMission.MissionType.NavalTransfer => SubordinatePickerDialog.Mode.MissionUnassignedGroup,
-                        _ => SubordinatePickerDialog.Mode.MissionUnassignedFleetGroup
-                    };
+                    // var pickerMode = selectedMission.type switch
+                    // {
+                    //     StrategicMission.MissionType.NavalTransfer => SubordinatePickerDialog.Mode.MissionUnassignedGroup,
+                    //     _ => SubordinatePickerDialog.Mode.MissionUnassignedFleetGroup
+                    // };
+
+                    var pickerMode = selectedMission.isNavalTransfer ? SubordinatePickerDialog.Mode.MissionUnassignedGroup : SubordinatePickerDialog.Mode.MissionUnassignedFleetGroup;
 
                     DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables =>
                     {

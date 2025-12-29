@@ -23,6 +23,29 @@ public class StrategicMissionEditor : LeftObjectPickerRightEditorStrategic<Strat
         return missions.Where(missions => missions.sideObjectId ==  null || missions.sideObjectId == "" || missions.sideObjectId == viewerSideObjectId);
     }
 
+    protected override void ProcessRemovedOne(StrategicMission removedMission)
+    {
+        removedMission.RemoveCleanup();
+    }
+
+    protected override void OnAddObjectButtonClicked()
+    {
+        // var newObj = new ET();
+        // EntityManager.Instance.Register(newObj, null);
+        // fullObjects.Add(newObj);
+
+        // ProcessAddedOne(newObj);
+
+        // RefreshFilter();
+
+        DialogRoot.Instance.PopupCreateMissionDialog(newObj =>
+        {
+            ProcessAddedOne(newObj);
+
+            RefreshFilter();
+        });
+    }
+
     protected override void ProcessAddedOne(StrategicMission newMission)
     {
         var viewerSide = StrategicGameManager.Instance.GetViewerSide();

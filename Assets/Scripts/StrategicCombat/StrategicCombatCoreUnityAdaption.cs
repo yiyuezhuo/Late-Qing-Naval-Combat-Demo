@@ -636,16 +636,38 @@ namespace StrategicCombatCore
         public string sideName => EntityManager.Instance.Get<SideState>(sideObjectId)?.name?.GetMergedName() ?? "[Unspecified or Invalid]";
 
         [CreateProperty]
-        public bool isPatrol => type == MissionType.Patrol;
+        public PatrolMission asPatrol => this as PatrolMission;
 
         [CreateProperty]
-        public bool isSupply => type == MissionType.Supply;
+        public bool isPatrol => asPatrol != null;
 
         [CreateProperty]
-        public bool isNavalTransfer => type == MissionType.NavalTransfer;
+        public SupplyMission asSupply => this as SupplyMission;
 
         [CreateProperty]
-        public bool isOneShotRaiding => type == MissionType.OneShotRaiding;
+        public bool isSupply => asSupply != null;
+
+        [CreateProperty]
+        public NavalTransferMission asNavalTransfer => this as NavalTransferMission;
+
+        [CreateProperty]
+        public bool isNavalTransfer => asNavalTransfer != null;
+
+        // [CreateProperty]
+        // public OneShotRaidingMission asOneShotRaiding => this as OneShotRaidingMission;
+
+        // [CreateProperty]
+        // public bool isOneShotRaiding => asOneShotRaiding != null;
+
+        [CreateProperty]
+        public OneShotSortieMission asOneShotSortie => this as OneShotSortieMission;
+
+        [CreateProperty]
+        public bool isOneShotSortie => asOneShotSortie != null;
+
+
+        [CreateProperty]
+        public string missionTypeName => GetType().Name;
 
         // [CreateProperty]
         // public string sourceDepotName => EntityManager.Instance.Get<LandUnit>(sourceDepotObjectId)?.name?.mergedName ?? "[Not defined or Invalid]";

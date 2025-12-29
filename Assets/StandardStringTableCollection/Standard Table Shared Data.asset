@@ -2308,6 +2308,10 @@ MonoBehaviour:
     m_Key: 'Current:'
     m_Metadata:
       m_Items: []
+  - m_Id: 42507046366121984
+    m_Key: Select a side to be controlled by the current player.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

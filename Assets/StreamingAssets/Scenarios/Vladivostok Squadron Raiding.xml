@@ -363,7 +363,7 @@
     <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>0</supplyTons>
+    <supplyTons>1367.5</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -774,7 +774,7 @@
     <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>0</supplyTons>
+    <supplyTons>1322</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -1275,7 +1275,7 @@
     <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>0</supplyTons>
+    <supplyTons>1169</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -1551,7 +1551,7 @@
     <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>0</supplyTons>
+    <supplyTons>664.5</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -1926,7 +1926,7 @@
     <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>0</supplyTons>
+    <supplyTons>975</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -2283,7 +2283,7 @@
     <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>0</supplyTons>
+    <supplyTons>930.70001220703125</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -2658,7 +2658,7 @@
     <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>0</supplyTons>
+    <supplyTons>970</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -3033,7 +3033,7 @@
     <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>0</supplyTons>
+    <supplyTons>975</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -3408,7 +3408,7 @@
     <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>0</supplyTons>
+    <supplyTons>970</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -3756,7 +3756,7 @@
     <timeLocLogs />
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>0</supplyTons>
+    <supplyTons>973.5</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -4409,7 +4409,7 @@
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>0</supplyTons>
+    <supplyTons>12416.1416015625</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4438,8 +4438,8 @@
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>0</supplyTons>
-    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <supplyTons>9692.1435546875</supplyTons>
+    <supplyGeneratedTons>3000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
@@ -4555,7 +4555,7 @@
     <morale>1</morale>
     <fatigue>0</fatigue>
     <supplyTons>0</supplyTons>
-    <supplyGeneratedTons>5000</supplyGeneratedTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>9ac1399d-49f8-48ad-8bda-58ce3876fe86</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
@@ -4581,7 +4581,7 @@
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>0</supplyTons>
+    <supplyTons>12416.1416015625</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4672,7 +4672,7 @@
       <referenceId>c22a1d1e-92c6-494a-a6c9-7a455672454e</referenceId>
      </StrategicGroupMemberReference>
     </subordinatesCombined>
-    <assignedMissionObjectId>2d18a1b2-f2a8-4a2d-9319-ecd2b92bce28</assignedMissionObjectId>
+    <assignedMissionObjectId>0bc88782-6a5d-4149-8832-0e1af6508362</assignedMissionObjectId>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -4707,6 +4707,7 @@
       <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
      </StrategicGroupMemberReference>
     </subordinatesCombined>
+    <assignedMissionObjectId>9f191409-dd10-4e71-9c98-91198981f276</assignedMissionObjectId>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -5013,9 +5014,9 @@
    </SideState>
   </sideStates>
   <missions>
-   <StrategicMission>
+   <StrategicMission xsi:type="GlobalRaidingMission">
     <name>
-     <english>Russian Global Raiding</english>
+     <english>Global Russian Raiding</english>
     </name>
     <groups>
      <StrategicGroupMemberReference>
@@ -5023,19 +5024,31 @@
      </StrategicGroupMemberReference>
     </groups>
     <waypoints />
-    <type>GlobalRaiding</type>
     <parentMissionRef />
     <childrenMissionRefs />
     <sideObjectId>f781e78a-aaf5-411f-8f49-d1561e7949a2</sideObjectId>
-    <patrolState>Assembling</patrolState>
-    <supplyState>AssemblingAndLoading</supplyState>
-    <sourceDepotReference />
-    <targetDepotReference />
     <completed>false</completed>
     <active>true</active>
-    <navalTransferState>Assembling</navalTransferState>
-    <oneShotRaidingState>Assembling</oneShotRaidingState>
-    <objectId>2d18a1b2-f2a8-4a2d-9319-ecd2b92bce28</objectId>
+    <interrupted>false</interrupted>
+    <objectId>0bc88782-6a5d-4149-8832-0e1af6508362</objectId>
+   </StrategicMission>
+   <StrategicMission xsi:type="GlobalTradeProtectionMission">
+    <name>
+     <english>Global Japanese Trade Protection</english>
+    </name>
+    <groups>
+     <StrategicGroupMemberReference>
+      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
+     </StrategicGroupMemberReference>
+    </groups>
+    <waypoints />
+    <parentMissionRef />
+    <childrenMissionRefs />
+    <sideObjectId>f781e78a-aaf5-411f-8f49-d1561e7949a2</sideObjectId>
+    <completed>false</completed>
+    <active>true</active>
+    <interrupted>false</interrupted>
+    <objectId>9f191409-dd10-4e71-9c98-91198981f276</objectId>
    </StrategicMission>
   </missions>
   <pendingNavalCombats />
@@ -7450,8 +7463,8 @@
   </serializedCells>
  </gameState>
  <viewState>
-  <xPosition>-2.128624</xPosition>
-  <yPosition>-0.7823994</yPosition>
+  <xPosition>-1.5799675</xPosition>
+  <yPosition>-0.591007233</yPosition>
   <orthographicSize>5</orthographicSize>
   <hitAreaMapRecords>
    <HitAreaMapRecord hitAreaObjectId="0b2cbd39-ad25-4233-b5a1-5744048e7491" areaCellObjectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16" />
@@ -7470,5 +7483,6 @@
    <HitAreaMapRecord hitAreaObjectId="562410d9-b8a9-4943-97e5-57220d18d4d4" areaCellObjectId="76734099-06b6-4d82-98e4-a9b4f59c9330" />
    <HitAreaMapRecord hitAreaObjectId="bcbddf20-eff0-4f0a-a8d9-1e2d67a52bb8" areaCellObjectId="a8f121fa-c137-43ee-8aa5-7875092125ab" />
   </hitAreaMapRecords>
+  <viewerSideId>f781e78a-aaf5-411f-8f49-d1561e7949a2</viewerSideId>
  </viewState>
 </StrategicFullState>

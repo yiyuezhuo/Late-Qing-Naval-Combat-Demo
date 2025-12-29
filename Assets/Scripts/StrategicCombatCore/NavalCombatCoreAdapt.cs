@@ -64,6 +64,8 @@ namespace NavalCombatCore
             return fuelAndCargoSupplyTons + ammoGapTons;
         }
 
+        // public float GetSupplyPercent() => (float)supplyTons / GetSupplyCapTons();
+
         public static float shipEnduranceDays = 14;
 
         public float GetSupplyCostTonsPerDay()
@@ -71,6 +73,8 @@ namespace NavalCombatCore
             return (shipClass?.displacementTons ?? 0) * supplyDisplacementPercentNormal / shipEnduranceDays; // ~0.75% of displacement of supply is consumed per day
         }
 
+        public float GetSupplyCostTonsPerHour() => GetSupplyCostTonsPerDay() / 24;
+        public float GetEnduranceHours() => (float)supplyTons / GetSupplyCostTonsPerHour();
         public double GetSupplyPercent() => supplyTons / GetSupplyCapTons();
 
         GlobalString ISupplyNetworkNode.GetName() => namedShip?.name;
@@ -141,7 +145,7 @@ namespace NavalCombatCore
             }
         }
 
-        public void ClearLogs()
+        public void ClearLogs() // TODO: Move to NavalCombatCore
         {
             logs.Clear();
 
@@ -161,7 +165,7 @@ namespace NavalCombatCore
             }
         }
 
-        public void InsertLogs(ShipLog other)
+        public void InsertLogs(ShipLog other) // TODO: Move to NavalCombatCore
         {
             // logs.AddRange(other.logs);
             logs.InsertRange(0, other.logs);

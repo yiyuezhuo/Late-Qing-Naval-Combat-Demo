@@ -4,6 +4,7 @@ using NavalCombatCore;
 using System.Linq;
 using System;
 using YYZ.PathFinding;
+using System.Xml.Serialization;
 
 
 namespace StrategicCombatCore
@@ -37,6 +38,13 @@ namespace StrategicCombatCore
         }
     }
 
+    [XmlInclude(typeof(PatrolMission))]
+    [XmlInclude(typeof(SupplyMission))]
+    [XmlInclude(typeof(NavalTransferMission))]
+    [XmlInclude(typeof(GlobalRaidingMission))]
+    [XmlInclude(typeof(OneShotPassiveSortieMission))]
+    [XmlInclude(typeof(GlobalTradeProtectionMission))]
+    [XmlInclude(typeof(OneShotActiveSortieMission))]
     public partial class StrategicMission : IObjectIdLabeled, INamed
     {
         public string objectId { get; set; }
@@ -57,10 +65,30 @@ namespace StrategicCombatCore
             Supply, // Transports load supplies from host and transfer to detination.
             NavalTransfer, // Load is handled by player before task launched. Used for unland army unit or amphibious assault.
             GlobalRaiding, // GlobalRaiding will plan OneShotRaiding mission and assign its reserves to the mission.
-            OneShotRaiding, 
+            OneShotPassiveSortie, // Send ships to random position having hostile trade traffic.
+            GlobalTradeProtection, // Plan OneShotTradeProectectionPatrol, OneShotSweepToContact, OneShotSweepToBase for idle strategic groups.
+            OneShotActiveSortie, // Move to a random position having trade traffic 
+            OneShotSweepToContact, // Send ships to lastest contact report location
+            OneShotSweepToBase, // Send ships to random hostile base.
         }
 
-        public MissionType type = MissionType.Patrol;
+        public static StrategicMission Create(MissionType type)
+        {
+            return type switch
+            {
+                MissionType.Patrol => new PatrolMission(),
+                MissionType.Supply => new SupplyMission(),
+                MissionType.NavalTransfer => new NavalTransferMission(),
+                MissionType.GlobalRaiding => new GlobalRaidingMission(),
+                MissionType.OneShotPassiveSortie => new OneShotPassiveSortieMission(),
+                MissionType.GlobalTradeProtection => new GlobalTradeProtectionMission(),
+                MissionType.OneShotActiveSortie => new OneShotActiveSortieMission(),
+                // MissionType.GlobalTradeProctection => new GlobalTradePro
+                _ => null
+            };
+        }
+
+        // public MissionType type = MissionType.Patrol;
 
         public StrategicMissionReference parentMissionRef = new();
 
@@ -69,53 +97,9 @@ namespace StrategicCombatCore
         public string sideObjectId;
         public SideState GetSide() => EntityManager.Instance.Get<SideState>(sideObjectId);
 
-        public enum PatrolState
-        {
-            Assembling,
-            StartToDestination,
-            DestinationToStart
-        }
-
-        public PatrolState patrolState;
-
-        public enum SupplyState
-        {
-            AssemblingAndLoading,
-            StartToDestinationAndUnloading,
-            DestinationToStartAndLoading
-        }
-
-        public SupplyState supplyState;
-
-        // public StrategicGroupMemberReference startHq;
-        // public StrategicGroupMemberReference destinationHq;
-        // public string sourceDepotObjectId;
-        // public string targetDepotObjectId;
-        public LandUnitReference sourceDepotReference = new();
-        public LandUnitReference targetDepotReference = new();
-
-        public bool completed;
-        public bool active = true;
-
-        public enum NavalTransferState
-        {
-            Assembling,
-            StartToDestination,
-            DestinationToStart,
-            Completed
-        }
-
-        public NavalTransferState navalTransferState;
-
-        public enum OneShotRaidingState
-        {
-            Assembling,
-            StartToDestination,
-            DestinationToStart,
-            // Completed is represented using new added flag instead
-        }
-
-        public OneShotRaidingState oneShotRaidingState;
+        public bool completed = false;
+        public bool active = true; // Active is expected to be set by Player in the current semantic
+        public bool interrupted = false;
 
         // public List<StrategicGroupMemberReference> loadTargetGroups = new();
         // Non-Fleet groups in assigned groups are transported groups.
@@ -201,31 +185,11 @@ namespace StrategicCombatCore
         {
             if(!active)
                 return;
-            
-            if (IsValidPatrolMission())
-            {
-                TransitionPatrolMission();
-            }
-            else if (IsValidSupplyMission())
-            {
-                TransitionSupplyMission();
-            }
-            else if(IsValidNavalTransferMission())
-            {
-                TransitionNavalTransferMission();
-            }
-            else if(IsValidGlobalRaidingMission())
-            {
-                TransitionGlobalRaidingMission();
-            }
-            else if(IsValidOneShotRaidingMission())
-            {
-                TransitionOneWayRaidingMission();
-            }
 
+            DoTransition();
 
             // Move assigned group to parent mission if it has parent mission and is completed
-            if(completed)
+            if(IsCompletedOrInterrupted())
             {
                 var parentMission = parentMissionRef.Get();
                 if(parentMission != null)
@@ -234,96 +198,206 @@ namespace StrategicCombatCore
                     {
                         g.SetAssignedMission(parentMission);
                     }
+
+                    StrategicGameState.Instance.missions.Remove(this);
+                    RemoveCleanup();
+                    // If no parent mission, mission would not be auto-deleted.
                 }
-                RemoveFromParent();
-                StrategicGameState.Instance.missions.Remove(this);
+
+                // RemoveFromParent();
+                // StrategicGameState.Instance.missions.Remove(this);
                 // Ignoring manual de-registering since full-scan based re-registering happens very frequently now
             }
+        }
+
+        protected virtual void DoTransition()
+        {
+            
         }
 
         public IEnumerable<StrategicGroup> IterAssignedStrategicGroups() => groups.Select(r => r.Get() as StrategicGroup).Where(g => g is StrategicGroup).Where(g => g != null);
         public IEnumerable<StrategicGroup> IterAssignedFleetGroups() => IterAssignedStrategicGroups().Where(g => g.type == StrategicGroup.Type.Fleet);
 
-        static GlobalString oneShotRaidingPrefix = new()
+        public void UpdateStrategicGroups()
         {
-            english = "Raiding to ",
-            japanese = "通商破壊 ",
-            chineseSimplified = "破交 ",
-            chineseTraditional = "破交 "
-        };
+            if(!active)
+            {
+                return;
+            }
 
-        public void TransitionGlobalRaidingMission()
+            if(IsCompletedOrInterrupted())
+            {
+                PlanReturnToBasePathForNonBasedFleet();
+                return;
+            }
+
+            // var assignedFleetGroups = IterAssignedFleetGroups();
+            // if(!assignedFleetGroups.All(g => g.IsFleetHasSufficientFuelToReturnHome()))
+            // {
+            //     interrupted = true; // TODO: Give some more log to indicate it's caused by out of fuel?
+            //     PlanReturnToBasePathForNonBasedFleet(true);
+            //     return;
+            // }
+
+            // Check supply condition
+
+            foreach (var g in IterAssignedStrategicGroups())
+            {
+                UpdateStrategicGroup(g);
+            }
+        }
+
+        public void UpdateStrategicGroup(StrategicGroup strategicGroup)
         {
-            // Assign strategic groups with enough "integrity" to one-shot raiding missions
+            DoUpdateStrategicGroup(strategicGroup);
+        }
+
+        protected virtual void DoUpdateStrategicGroup(StrategicGroup strategicGroup)
+        {
             
-            // Ignore integrity criteria in the current version.
-            var assignedFleetGroups = IterAssignedFleetGroups().ToList();
-            if(assignedFleetGroups.Count > 0)
-            {
-                var leadGroup = assignedFleetGroups.First();
-                var leadGroupSide = leadGroup.side;
-
-                var srcCell = leadGroup.cell;
-
-                var hostileMerchantShipTrafficCells = StrategicGameState.Instance.IterCells().Where(
-                    cell => cell.CellSideInfos.Count > 0 
-                        && (cell.CellSideInfos.FirstOrDefault(si => si.sideObjectId != leadGroupSide.objectId)?.merchantShipTraffic ?? 0) > 0
-                ).ToList();
-                var weights = hostileMerchantShipTrafficCells.Select(cell => cell.CellSideInfos.First(si => si.sideObjectId != leadGroupSide.objectId).merchantShipTraffic).ToList();
-                var sampledCell = RandomUtils.Sample(hostileMerchantShipTrafficCells, weights);
-                var dstCell = sampledCell;
-
-                IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy(); // TODO: Generalize to army?
-                var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
-
-                var newOneShotRaidingMission = new StrategicMission()
-                {
-                    name = oneShotRaidingPrefix.Add(dstCell.GetLocationSummaryGlobalString()),
-                    sideObjectId = leadGroupSide.objectId,
-                    type = MissionType.OneShotRaiding
-                };
-                StrategicGameState.Instance.missions.Add(newOneShotRaidingMission);
-                EntityManager.Instance.Register(newOneShotRaidingMission, null);
-                newOneShotRaidingMission.TransferTo(this);
-
-                foreach(var g in assignedFleetGroups)
-                {
-                    g.SetAssignedMission(newOneShotRaidingMission);
-                }
-
-                newOneShotRaidingMission.waypoints = pathCells.Select(c => c.ToXY()).ToList();
-            }
         }
 
-        public bool IsValidGlobalRaidingMission() => type == MissionType.GlobalRaiding;
-
-        public bool IsValidOneShotRaidingMission() => type == MissionType.OneShotRaiding && waypoints.Count >= 2;
-
-        public void TransitionOneWayRaidingMission()
+        // Helpers
+        protected void HandleMissionAssembly(StrategicGroup strategicGroup)
         {
-            var cells = groups.Select(groupRef => (groupRef.Get() as StrategicGroup)?.cell).ToHashSet(); // is assigned groups assembled to the same hex?
-            if (cells.Count == 1)
+            var groupCell = strategicGroup.cell;
+            var waypointStartCell = GetWaypointStartCell();
+            if (groupCell != waypointStartCell)
             {
-                var groupingCell = cells.First();
-                if (oneShotRaidingState == OneShotRaidingState.Assembling && groupingCell == GetWaypointStartCell())
+                TryPlanPathWithCheck(strategicGroup, waypointStartCell);
+                // IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy();
+                // var pathCells = PathFinding<Cell>.AStar(graph, groupCell, waypointStartCell);
+                // if (pathCells.Count >= 2)
+                // {
+                //     // strategicGroup.plannedPath.AddRange(pathCells.Select(cell => new XY() { x = cell.x, y = cell.y }));
+                //     strategicGroup.plannedPath.AddRange(pathCells.Select(cell => cell.ToXY()));
+                // }
+            }
+        }
+
+
+        public void TryPlanPathWithCheck(StrategicGroup strategicGroup, Cell dst)
+        {
+            // Check supply condition if fleet group is in its home port (depot base cell)
+            if(!strategicGroup.IsFleetOnSeaOrSuppliedInHomePort())
+            {
+                return;
+            }
+
+            strategicGroup.TryPlanPathTo(dst);
+        }
+
+        public void TrySetPlannedPathWithCheck(StrategicGroup strategicGroup, List<XY> _waypoints)
+        {
+            if(!strategicGroup.IsFleetOnSeaOrSuppliedInHomePort())
+            {
+                return;
+            }
+
+            strategicGroup.SetPlannedPath(_waypoints);
+        }
+
+        protected void HandleMissionStartToDestination(StrategicGroup strategicGroup)
+        {
+            var groupCell = strategicGroup.cell;
+            var waypointStartCell = GetWaypointStartCell();
+            if (groupCell == waypointStartCell)
+            {
+                // strategicGroup.plannedPath.Clear();
+                // strategicGroup.plannedPath.AddRange(waypoints);
+                TrySetPlannedPathWithCheck(strategicGroup, waypoints);
+            }
+        }
+        
+        protected void HandleMissionDestinationToStart(StrategicGroup strategicGroup)
+        {
+            var groupCell = strategicGroup.cell;
+            var waypointDestinationCell = GetWaypointDestinationCell();
+            if (groupCell != null && waypointDestinationCell != null && groupCell == waypointDestinationCell)
+            {
+                // strategicGroup.plannedPath.Clear();
+                // strategicGroup.plannedPath.AddRange(waypoints);
+                // strategicGroup.plannedPath.Reverse();
+                var reversedWaypoints = waypoints.ToList();
+                reversedWaypoints.Reverse();
+                TrySetPlannedPathWithCheck(strategicGroup, reversedWaypoints);
+            }
+        }
+
+        public void RemoveCleanup()
+        {
+            // Maintain mission tree
+            RemoveFromParent();
+
+            foreach(var missionRef in childrenMissionRefs.ToList())
+            {
+                missionRef.Get()?.RemoveFromParent();
+            }
+
+            // Maintain assigned membership
+            foreach(var group in IterAssignedStrategicGroups().ToList())
+            {
+                group.SetAssignedMission(null);
+            }
+        }
+
+        protected Cell RollFriendlyTrafficCell(SideState side)
+        {
+            var friendlyMerchantShipTrafficCells = StrategicGameState.Instance.IterCells().Where(
+                cell => cell.CellSideInfos.Count > 0 
+                    && (cell.CellSideInfos.FirstOrDefault(si => si.sideObjectId == side.objectId)?.merchantShipTraffic ?? 0) > 0
+            ).ToList();
+            var weights = friendlyMerchantShipTrafficCells.Select(cell => cell.CellSideInfos.First(si => si.sideObjectId == side.objectId).merchantShipTraffic).ToList();
+            var sampledCell = RandomUtils.Sample(friendlyMerchantShipTrafficCells, weights);
+            return sampledCell;
+        }
+
+        protected Cell RollHostileTrafficCell(SideState side)
+        {
+            var friendlyMerchantShipTrafficCells = StrategicGameState.Instance.IterCells().Where(
+                cell => cell.CellSideInfos.Count > 0 
+                    && (cell.CellSideInfos.FirstOrDefault(si => si.sideObjectId != side.objectId)?.merchantShipTraffic ?? 0) > 0
+            ).ToList();
+            var weights = friendlyMerchantShipTrafficCells.Select(cell => cell.CellSideInfos.First(si => si.sideObjectId != side.objectId).merchantShipTraffic).ToList();
+            var sampledCell = RandomUtils.Sample(friendlyMerchantShipTrafficCells, weights);
+            return sampledCell;
+        }
+
+        protected void PlanReturnToBasePathForNonBasedFleet(bool force=false)
+        {
+            foreach(var group in IterAssignedFleetGroups())
+            {
+                if(force || group.plannedPath.Count == 0)
                 {
-                    oneShotRaidingState = OneShotRaidingState.StartToDestination;
-                }
-                else if (oneShotRaidingState == OneShotRaidingState.StartToDestination && groupingCell == GetWaypointDestinationCell())
-                {
-                    oneShotRaidingState = OneShotRaidingState.DestinationToStart;
-                }
-                else if (oneShotRaidingState == OneShotRaidingState.DestinationToStart && groupingCell == GetWaypointStartCell())
-                {
-                    // oneShotRaidingState = OneShotRaidingState.StartToDestination;
-                    completed = true;
+                    group.StartReturnToBase(0);
+                    // var depotCell = group.GetDepotGroup()?.cell;
+                    // if(depotCell != null && group.cell != depotCell)
+                    // {
+                    //     group.TryPlanPathTo(depotCell);
+                    // }
                 }
             }
         }
 
-        public bool IsValidPatrolMission() => type == MissionType.Patrol && waypoints.Count >= 2;
+        protected bool IsOperational() => active && !interrupted && !completed;
+        protected bool IsCompletedOrInterrupted() => interrupted || completed;
+    }
 
-        public void TransitionPatrolMission()
+    public class PatrolMission : StrategicMission
+    {
+        public enum PatrolState
+        {
+            Assembling,
+            StartToDestination,
+            DestinationToStart
+        }
+
+        public PatrolState patrolState;
+
+        // public bool IsValidPatrolMission() => type == MissionType.Patrol && waypoints.Count >= 2;
+        public bool IsValid() => waypoints.Count >= 2;
+
+        protected override void DoTransition()
         {
             var cells = groups.Select(groupRef => (groupRef.Get() as StrategicGroup)?.cell).ToHashSet(); // is assigned groups assembled to the same hex?
             if (cells.Count == 1)
@@ -344,9 +418,49 @@ namespace StrategicCombatCore
             }
         }
 
-        public bool IsValidSupplyMission() => type == MissionType.Supply && waypoints.Count >= 2;
+        protected override void DoUpdateStrategicGroup(StrategicGroup strategicGroup)
+        {
+            if (strategicGroup.plannedPath.Count == 0) // Create new path if path is empty (manual waypoints has higher priority)
+            {
+                if (patrolState == PatrolState.Assembling) // Assembling => Move groups to the waypoint of start
+                {
+                    HandleMissionAssembly(strategicGroup);
+                }
+                else if (patrolState == PatrolState.StartToDestination) // StartToDestination => Move groups from start to destination
+                {
+                    HandleMissionStartToDestination(strategicGroup);
+                }
+                else if (patrolState == PatrolState.DestinationToStart) // DestinationToStart => Move groups from destination to start
+                {
+                    HandleMissionDestinationToStart(strategicGroup);
+                }
+            }
+        }
+    }
 
-        public void TransitionSupplyMission()
+    public class SupplyMission : StrategicMission
+    {
+        public enum SupplyState
+        {
+            AssemblingAndLoading,
+            StartToDestinationAndUnloading,
+            DestinationToStartAndLoading
+        }
+
+        public SupplyState supplyState;
+
+        // public StrategicGroupMemberReference startHq;
+        // public StrategicGroupMemberReference destinationHq;
+        // public string sourceDepotObjectId;
+        // public string targetDepotObjectId;
+        public LandUnitReference sourceDepotReference = new();
+        public LandUnitReference targetDepotReference = new();
+
+
+        // public bool IsValidSupplyMission() => type == MissionType.Supply && waypoints.Count >= 2;
+        public bool IsValidSupplyMission() => waypoints.Count >= 2;
+
+        protected override void DoTransition()
         {
             var _groups = groups.Select(groupRef => groupRef.Get() as StrategicGroup).Where(g => g != null).ToList();
             var cells = _groups.Select(g => g.cell).Where(cell => cell != null).ToHashSet(); // is assigned groups assembled to the same hex?
@@ -378,9 +492,68 @@ namespace StrategicCombatCore
             }
         }
 
-        public bool IsValidNavalTransferMission() => type == MissionType.NavalTransfer && waypoints.Count >= 2;
 
-        public void TransitionNavalTransferMission()
+        protected override void DoUpdateStrategicGroup(StrategicGroup strategicGroup)
+        {
+            if (strategicGroup.plannedPath.Count == 0)
+            {
+                if (supplyState == SupplyState.AssemblingAndLoading) // Assembling => Move groups to the waypoint of start
+                {
+                    HandleMissionAssembly(strategicGroup);
+                }
+                else if (supplyState == SupplyState.StartToDestinationAndUnloading) // StartToDestination => Move groups from start to destination
+                {
+                    HandleMissionStartToDestination(strategicGroup);
+                }
+                else if (supplyState == SupplyState.DestinationToStartAndLoading) // DestinationToStart => Move groups from destination to start
+                {
+                    HandleMissionDestinationToStart(strategicGroup);
+                }
+            }
+
+            // Transfer supply from ship to destination here or in the supply step
+            if (supplyState == SupplyState.StartToDestinationAndUnloading)
+            {
+                var targetDepot = targetDepotReference.Get();
+                if (targetDepot != null && strategicGroup.cell == targetDepot.cell)
+                {
+                    foreach (var ship in WalkGroupMembersDeployedShips())
+                    {
+                        if (ship?.shipClass.type == ShipType.Transport)
+                        {
+                            var returnToBaseThresholdTons = ship.GetSupplyCapTons() * 0.1;
+                            var transferableTons = Math.Max(0, ship.supplyTons - returnToBaseThresholdTons);
+                            if (transferableTons > 0)
+                            {
+                                ship.supplyTons -= transferableTons;
+                                targetDepot.supplyTons += transferableTons;
+
+                                ServiceLocator.Get<ILoggerService>().Log($"Supply Transfer: {ship.namedShip.name.GetMergedName()} -> {targetDepot.name.GetMergedName()} ({transferableTons})");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public class NavalTransferMission : StrategicMission
+    {
+        public enum NavalTransferState
+        {
+            Assembling,
+            StartToDestination,
+            DestinationToStart,
+            Completed
+        }
+
+        public NavalTransferState navalTransferState;
+
+
+        // public bool IsValidNavalTransferMission() => type == MissionType.NavalTransfer && waypoints.Count >= 2;
+        public bool IsValidNavalTransferMission() => waypoints.Count >= 2;
+
+        protected override void DoTransition()
         {
             var _groups = groups.Select(groupRef => groupRef.Get() as StrategicGroup).Where(g => g != null).ToList();
             var cells = _groups.Select(g => g.cell).Where(cell => cell != null).ToHashSet();
@@ -467,115 +640,7 @@ namespace StrategicCombatCore
             }
         }
 
-
-        public void UpdateStrategicGroup(StrategicGroup strategicGroup)
-        {
-            if(!active)
-            {
-                return;
-            }
-
-            if (type == MissionType.Patrol)
-            {
-                UpdateStrategicGroupPatrol(strategicGroup);
-            }
-            else if (type == MissionType.Supply)
-            {
-                UpdateStrategicGroupSupply(strategicGroup);
-            }
-            else if(type == MissionType.NavalTransfer)
-            {
-                UpdateStrategicGroupNavalTransfer(strategicGroup);
-            }
-            else if(type == MissionType.OneShotRaiding)
-            {
-                UpdateStrategicGroupOneShotRaiding(strategicGroup);
-            }
-            // TODO: GlobalOneShotRaiding move ships to its base?
-        }
-
-        void UpdateStrategicGroupOneShotRaiding(StrategicGroup strategicGroup)
-        {
-            if (strategicGroup.plannedPath.Count == 0) // Create new path if path is empty (manual waypoints has higher priority)
-            {
-                if (oneShotRaidingState == OneShotRaidingState.Assembling) // Assembling => Move groups to the waypoint of start
-                {
-                    HandleMissionAssembly(strategicGroup);
-                }
-                else if (oneShotRaidingState == OneShotRaidingState.StartToDestination) // StartToDestination => Move groups from start to destination
-                {
-                    HandleMissionStartToDestination(strategicGroup);
-                }
-                else if (oneShotRaidingState == OneShotRaidingState.DestinationToStart) // DestinationToStart => Move groups from destination to start
-                {
-                    HandleMissionDestinationToStart(strategicGroup);
-                }
-            }
-        }
-
-        void UpdateStrategicGroupPatrol(StrategicGroup strategicGroup)
-        {
-            if (strategicGroup.plannedPath.Count == 0) // Create new path if path is empty (manual waypoints has higher priority)
-            {
-                if (patrolState == PatrolState.Assembling) // Assembling => Move groups to the waypoint of start
-                {
-                    HandleMissionAssembly(strategicGroup);
-                }
-                else if (patrolState == PatrolState.StartToDestination) // StartToDestination => Move groups from start to destination
-                {
-                    HandleMissionStartToDestination(strategicGroup);
-                }
-                else if (patrolState == PatrolState.DestinationToStart) // DestinationToStart => Move groups from destination to start
-                {
-                    HandleMissionDestinationToStart(strategicGroup);
-                }
-            }
-        }
-
-        void UpdateStrategicGroupSupply(StrategicGroup strategicGroup)
-        {
-            if (strategicGroup.plannedPath.Count == 0)
-            {
-                if (supplyState == SupplyState.AssemblingAndLoading) // Assembling => Move groups to the waypoint of start
-                {
-                    HandleMissionAssembly(strategicGroup);
-                }
-                else if (supplyState == SupplyState.StartToDestinationAndUnloading) // StartToDestination => Move groups from start to destination
-                {
-                    HandleMissionStartToDestination(strategicGroup);
-                }
-                else if (supplyState == SupplyState.DestinationToStartAndLoading) // DestinationToStart => Move groups from destination to start
-                {
-                    HandleMissionDestinationToStart(strategicGroup);
-                }
-            }
-
-            // Transfer supply from ship to destination here or in the supply step
-            if (supplyState == SupplyState.StartToDestinationAndUnloading)
-            {
-                var targetDepot = targetDepotReference.Get();
-                if (targetDepot != null && strategicGroup.cell == targetDepot.cell)
-                {
-                    foreach (var ship in WalkGroupMembersDeployedShips())
-                    {
-                        if (ship?.shipClass.type == ShipType.Transport)
-                        {
-                            var returnToBaseThresholdTons = ship.GetSupplyCapTons() * 0.1;
-                            var transferableTons = Math.Max(0, ship.supplyTons - returnToBaseThresholdTons);
-                            if (transferableTons > 0)
-                            {
-                                ship.supplyTons -= transferableTons;
-                                targetDepot.supplyTons += transferableTons;
-
-                                ServiceLocator.Get<ILoggerService>().Log($"Supply Transfer: {ship.namedShip.name.GetMergedName()} -> {targetDepot.name.GetMergedName()} ({transferableTons})");
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        void UpdateStrategicGroupNavalTransfer(StrategicGroup strategicGroup)
+        protected override void DoUpdateStrategicGroup(StrategicGroup strategicGroup)
         {
             if (strategicGroup.plannedPath.Count == 0)
             {
@@ -593,44 +658,217 @@ namespace StrategicCombatCore
                 }
             }
         }
+    }
 
-        void HandleMissionAssembly(StrategicGroup strategicGroup)
+    public class GlobalRaidingMission : StrategicMission
+    {
+        static GlobalString oneShotRaidingPrefix = new()
         {
-            var groupCell = strategicGroup.cell;
-            var waypointStartCell = GetWaypointStartCell();
-            if (groupCell != waypointStartCell)
+            english = "Raiding to ",
+            japanese = "通商破壊 ",
+            chineseSimplified = "破交 ",
+            chineseTraditional = "破交 "
+        };
+
+        // public bool IsValidOneShotRaidingMission() => type == MissionType.OneShotRaiding && waypoints.Count >= 2;
+        
+
+        protected override void DoTransition()
+        {
+            // Assign strategic groups with enough "integrity" to one-shot raiding missions
+            
+            // Ignore integrity criteria in the current version.
+            var assignedFleetGroups = IterAssignedFleetGroups().ToList();
+            if(assignedFleetGroups.Count > 0)
             {
-                IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy();
-                var pathCells = PathFinding<Cell>.AStar(graph, groupCell, waypointStartCell);
-                if (pathCells.Count >= 2)
+                var leadGroup = assignedFleetGroups.First();
+                var leadGroupSide = leadGroup.side;
+
+                var srcCell = leadGroup.cell;
+
+                // var hostileMerchantShipTrafficCells = StrategicGameState.Instance.IterCells().Where(
+                //     cell => cell.CellSideInfos.Count > 0 
+                //         && (cell.CellSideInfos.FirstOrDefault(si => si.sideObjectId != leadGroupSide.objectId)?.merchantShipTraffic ?? 0) > 0
+                // ).ToList();
+                // var weights = hostileMerchantShipTrafficCells.Select(cell => cell.CellSideInfos.First(si => si.sideObjectId != leadGroupSide.objectId).merchantShipTraffic).ToList();
+                // var sampledCell = RandomUtils.Sample(hostileMerchantShipTrafficCells, weights);
+                // var dstCell = sampledCell;
+
+                var dstCell = RollHostileTrafficCell(leadGroupSide);
+
+                IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy(); // TODO: Generalize to army?
+                var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
+
+                // var newOneShotRaidingMission = new StrategicMission()
+                var newOneShotRaidingMission = new OneShotPassiveSortieMission()
                 {
-                    // strategicGroup.plannedPath.AddRange(pathCells.Select(cell => new XY() { x = cell.x, y = cell.y }));
-                    strategicGroup.plannedPath.AddRange(pathCells.Select(cell => cell.ToXY()));
+                    name = oneShotRaidingPrefix.Add(dstCell.GetLocationSummaryGlobalString()),
+                    sideObjectId = leadGroupSide.objectId,
+                    // type = MissionType.OneShotRaiding
+                };
+                StrategicGameState.Instance.missions.Add(newOneShotRaidingMission);
+                EntityManager.Instance.Register(newOneShotRaidingMission, null);
+                newOneShotRaidingMission.TransferTo(this);
+
+                foreach(var g in assignedFleetGroups)
+                {
+                    g.SetAssignedMission(newOneShotRaidingMission);
+                }
+
+                newOneShotRaidingMission.waypoints = pathCells.Select(c => c.ToXY()).ToList();
+            }
+        }
+
+        // public bool IsValidGlobalRaidingMission() => type == MissionType.GlobalRaiding;
+        public bool IsValid() => true;
+
+        protected override void DoUpdateStrategicGroup(StrategicGroup strategicGroup)
+        {
+            // TODO: Move groups back to its base
+            PlanReturnToBasePathForNonBasedFleet();
+        }
+
+    }
+
+    public class OneShotSortieMission : StrategicMission
+    {
+        public enum OneShotSortieState
+        {
+            Assembling,
+            StartToDestination,
+            DestinationToStart,
+            // Completed is represented using new added flag instead
+        }
+
+        public OneShotSortieState oneShotSortieState;
+
+        public bool IsValidOneShotRaidingMission() => waypoints.Count >= 2;
+
+
+        protected override void DoTransition()
+        {
+            var cells = groups.Select(groupRef => (groupRef.Get() as StrategicGroup)?.cell).ToHashSet(); // is assigned groups assembled to the same hex?
+            if (cells.Count == 1)
+            {
+                var groupingCell = cells.First();
+                if (oneShotSortieState == OneShotSortieState.Assembling && groupingCell == GetWaypointStartCell())
+                {
+                    oneShotSortieState = OneShotSortieState.StartToDestination;
+                }
+                else if (oneShotSortieState == OneShotSortieState.StartToDestination && groupingCell == GetWaypointDestinationCell())
+                {
+                    oneShotSortieState = OneShotSortieState.DestinationToStart;
+                }
+                else if (oneShotSortieState == OneShotSortieState.DestinationToStart && groupingCell == GetWaypointStartCell())
+                {
+                    // oneShotRaidingState = OneShotRaidingState.StartToDestination;
+                    completed = true;
                 }
             }
         }
 
-        void HandleMissionStartToDestination(StrategicGroup strategicGroup)
+        protected override void DoUpdateStrategicGroup(StrategicGroup strategicGroup)
         {
-            var groupCell = strategicGroup.cell;
-            var waypointStartCell = GetWaypointStartCell();
-            if (groupCell == waypointStartCell)
+            if (strategicGroup.plannedPath.Count == 0) // Create new path if path is empty (manual waypoints has higher priority)
             {
-                strategicGroup.plannedPath.Clear();
-                strategicGroup.plannedPath.AddRange(waypoints);
+                if (oneShotSortieState == OneShotSortieState.Assembling) // Assembling => Move groups to the waypoint of start
+                {
+                    HandleMissionAssembly(strategicGroup);
+                }
+                else if (oneShotSortieState == OneShotSortieState.StartToDestination) // StartToDestination => Move groups from start to destination
+                {
+                    HandleMissionStartToDestination(strategicGroup);
+                }
+                else if (oneShotSortieState == OneShotSortieState.DestinationToStart) // DestinationToStart => Move groups from destination to start
+                {
+                    HandleMissionDestinationToStart(strategicGroup);
+                }
             }
+
+            UpdatePosture(strategicGroup);
         }
-        
-        void HandleMissionDestinationToStart(StrategicGroup strategicGroup)
+
+        protected virtual void UpdatePosture(StrategicGroup strategicGroup)
         {
-            var groupCell = strategicGroup.cell;
-            var waypointDestinationCell = GetWaypointDestinationCell();
-            if (groupCell != null && waypointDestinationCell != null && groupCell == waypointDestinationCell)
+        }
+    }
+
+    public class OneShotPassiveSortieMission : OneShotSortieMission
+    {
+        protected override void UpdatePosture(StrategicGroup strategicGroup)
+        {
+            if(strategicGroup.posture == StrategicGroup.GroupPostureType.Active)
             {
-                strategicGroup.plannedPath.Clear();
-                strategicGroup.plannedPath.AddRange(waypoints);
-                strategicGroup.plannedPath.Reverse();
+                strategicGroup.posture = StrategicGroup.GroupPostureType.Passive;
             }
         }
     }
+
+    public class OneShotActiveSortieMission : OneShotSortieMission
+    {
+        protected override void UpdatePosture(StrategicGroup strategicGroup)
+        {
+            if(strategicGroup.posture == StrategicGroup.GroupPostureType.Passive)
+            {
+                strategicGroup.posture = StrategicGroup.GroupPostureType.Active;
+            }
+        }
+    }
+
+    public class GlobalTradeProtectionMission : StrategicMission
+    {
+        static GlobalString oneShotTradeProtectionPatrolPrefix = new()
+        {
+            english = "Trade Protection Patrol to ",
+            japanese = "貿易保護パトロールへ ",
+            chineseSimplified = "贸易保护巡逻至 ",
+            chineseTraditional = "貿易保護巡邏至 "
+        };
+
+
+        protected override void DoTransition()
+        {
+            // Assign strategic groups with enough "integrity" to one-shot raiding missions
+            
+            // Ignore integrity criteria in the current version.
+            // If no contact, create random patrol
+            // TODO: Ships should have a tendency to be reservation instead of run random sortie
+            CreateOneShotTradeProtectionPatrolMissionToFriendlyTrafficCell();
+        }
+
+        void CreateOneShotTradeProtectionPatrolMissionToFriendlyTrafficCell()
+        {
+            var assignedFleetGroups = IterAssignedFleetGroups().ToList();
+            if(assignedFleetGroups.Count > 0)
+            {
+                var leadGroup = assignedFleetGroups.First();
+                var leadGroupSide = leadGroup.side;
+
+                var srcCell = leadGroup.cell;
+                var dstCell = RollFriendlyTrafficCell(leadGroupSide);
+
+                IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy(); // TODO: Generalize to army?
+                var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
+
+                // var newOneShotRaidingMission = new StrategicMission()
+                var newMission = new OneShotActiveSortieMission()
+                {
+                    name = oneShotTradeProtectionPatrolPrefix.Add(dstCell.GetLocationSummaryGlobalString()),
+                    sideObjectId = leadGroupSide.objectId,
+                    // type = MissionType.OneShotRaiding
+                };
+                StrategicGameState.Instance.missions.Add(newMission);
+                EntityManager.Instance.Register(newMission, null);
+                newMission.TransferTo(this);
+
+                foreach(var g in assignedFleetGroups)
+                {
+                    g.SetAssignedMission(newMission);
+                }
+
+                newMission.waypoints = pathCells.Select(c => c.ToXY()).ToList();
+            }
+        }
+    }
+
 }

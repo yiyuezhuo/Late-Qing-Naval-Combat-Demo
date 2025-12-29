@@ -253,6 +253,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset shipLogDialogDocument;
     public VisualTreeAsset landUnitDialogDocument;
     public VisualTreeAsset strategicMissionSelectorDialogDocument;
+    public VisualTreeAsset createMissionDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -263,6 +264,28 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupCreateMissionDialog(Action<StrategicMission> callback)
+    {
+        var createMissionDialog = new CreateMissionDialog()
+        {
+            callback=callback
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=createMissionDialogDocument,
+            templateDataSource=createMissionDialog
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            createMissionDialog.OnConfirm();
+        };
+
+        tempDialog.Popup();
     }
 
 

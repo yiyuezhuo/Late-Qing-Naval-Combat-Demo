@@ -49,12 +49,6 @@
                             <ui:Instance template="GlobalStringEditor" data-source-path="name">
                                 <AttributeOverrides element-name="GlobalStringLabel" text="Name"/>
                             </ui:Instance>
-                            <ui:EnumField label="Type" value="Center" type="StrategicCombatCore.StrategicMission+MissionType, Assembly-CSharp">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay"/>
-                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)"/>
-                                </Bindings>
-                            </ui:EnumField>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                 <ui:Toggle label="Active">
                                     <Bindings>
@@ -66,6 +60,16 @@
                                         <ui:DataBinding property="value" data-source-path="completed" binding-mode="TwoWay"/>
                                     </Bindings>
                                 </ui:Toggle>
+                                <ui:Toggle label="Interrupted">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="interrupted" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:Toggle>
+                                <ui:Label text="Mission Type Name" style="flex-grow: 1; -unity-text-align: upper-right;">
+                                    <Bindings>
+                                        <ui:DataBinding property="text" data-source-path="missionTypeName" binding-mode="ToTarget"/>
+                                    </Bindings>
+                                </ui:Label>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                 <ui:TextField label="Side" style="flex-grow: 1;">
@@ -90,80 +94,88 @@
                             </ui:VisualElement>
                             <ui:ListView header-title="Sub Missions" show-add-remove-footer="true" show-foldout-header="true" name="ChildrenMissionsListView" data-source-path="childrenMissionRefs" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/StrategicMissionRefItem.uxml?fileID=9197481963319205126&amp;guid=1c982627f2203144681397daae23b597&amp;type=3#StrategicMissionRefItem" fixed-item-height="30"/>
                             <ui:VisualElement style="flex-grow: 0;">
-                                <ui:EnumField label="Patrol State" value="Center" type="StrategicCombatCore.StrategicMission+PatrolState, Assembly-CSharp">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="patrolState" binding-mode="TwoWay"/>
-                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054307501314048)"/>
-                                    </Bindings>
-                                </ui:EnumField>
+                                <ui:VisualElement data-source-path="asPatrol" style="flex-grow: 1;">
+                                    <ui:EnumField label="Patrol State" value="Center" type="StrategicCombatCore.PatrolMission+PatrolState, Assembly-CSharp">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="patrolState" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054307501314048)"/>
+                                        </Bindings>
+                                    </ui:EnumField>
+                                </ui:VisualElement>
                                 <Bindings>
                                     <ui:DataBinding property="style.display" data-source-path="isPatrol" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                                 </Bindings>
                             </ui:VisualElement>
                             <ui:VisualElement>
-                                <ui:EnumField label="Supply State" value="Center" type="StrategicCombatCore.StrategicMission+SupplyState, Assembly-CSharp">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="supplyState" binding-mode="TwoWay"/>
-                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054384923971584)"/>
-                                    </Bindings>
-                                </ui:EnumField>
-                                <ui:VisualElement data-source-path="sourceDepotReference" style="flex-grow: 1; flex-direction: row;">
-                                    <ui:Label text="Source Depot" style="width: 120px;">
+                                <ui:VisualElement data-source-path="asSupply" style="flex-grow: 1;">
+                                    <ui:EnumField label="Supply State" value="Center" type="StrategicCombatCore.SupplyMission+SupplyState, Assembly-CSharp">
                                         <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054514137894912)"/>
+                                            <ui:DataBinding property="value" data-source-path="supplyState" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054384923971584)"/>
                                         </Bindings>
-                                    </ui:Label>
-                                    <ui:Button text="Set" name="SetSourceDepotButton">
-                                        <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)"/>
-                                        </Bindings>
-                                    </ui:Button>
-                                    <ui:Button text="Source Depot Name" name="GotoSourceDepotButton" style="flex-grow: 1;">
-                                        <Bindings>
-                                            <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget"/>
-                                        </Bindings>
-                                    </ui:Button>
-                                </ui:VisualElement>
-                                <ui:VisualElement data-source-path="targetDepotReference" style="flex-grow: 1; flex-direction: row;">
-                                    <ui:Label text="Target Depot" style="width: 120px;">
-                                        <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054619624640512)"/>
-                                        </Bindings>
-                                    </ui:Label>
-                                    <ui:Button text="Set" name="SetTargetDepotButton">
-                                        <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)"/>
-                                        </Bindings>
-                                    </ui:Button>
-                                    <ui:Button text="Target Depot Name" name="GotoTargetDepotButton" style="flex-grow: 1;">
-                                        <Bindings>
-                                            <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget"/>
-                                        </Bindings>
-                                    </ui:Button>
+                                    </ui:EnumField>
+                                    <ui:VisualElement data-source-path="sourceDepotReference" style="flex-grow: 1; flex-direction: row;">
+                                        <ui:Label text="Source Depot" style="width: 120px;">
+                                            <Bindings>
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054514137894912)"/>
+                                            </Bindings>
+                                        </ui:Label>
+                                        <ui:Button text="Set" name="SetSourceDepotButton">
+                                            <Bindings>
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)"/>
+                                            </Bindings>
+                                        </ui:Button>
+                                        <ui:Button text="Source Depot Name" name="GotoSourceDepotButton" style="flex-grow: 1;">
+                                            <Bindings>
+                                                <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget"/>
+                                            </Bindings>
+                                        </ui:Button>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement data-source-path="targetDepotReference" style="flex-grow: 1; flex-direction: row;">
+                                        <ui:Label text="Target Depot" style="width: 120px;">
+                                            <Bindings>
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054619624640512)"/>
+                                            </Bindings>
+                                        </ui:Label>
+                                        <ui:Button text="Set" name="SetTargetDepotButton">
+                                            <Bindings>
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)"/>
+                                            </Bindings>
+                                        </ui:Button>
+                                        <ui:Button text="Target Depot Name" name="GotoTargetDepotButton" style="flex-grow: 1;">
+                                            <Bindings>
+                                                <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget"/>
+                                            </Bindings>
+                                        </ui:Button>
+                                    </ui:VisualElement>
                                 </ui:VisualElement>
                                 <Bindings>
                                     <ui:DataBinding property="style.display" data-source-path="isSupply" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                                 </Bindings>
                             </ui:VisualElement>
                             <ui:VisualElement>
-                                <ui:EnumField label="One Way Unload State" type="StrategicCombatCore.StrategicMission+NavalTransferState, Assembly-CSharp">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="navalTransferState" binding-mode="TwoWay"/>
-                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(17966874605817856)"/>
-                                    </Bindings>
-                                </ui:EnumField>
+                                <ui:VisualElement data-source-path="asNavalTransfer" style="flex-grow: 1;">
+                                    <ui:EnumField label="One Way Unload State" type="StrategicCombatCore.NavalTransferMission+NavalTransferState, Assembly-CSharp">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="navalTransferState" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(17966874605817856)"/>
+                                        </Bindings>
+                                    </ui:EnumField>
+                                </ui:VisualElement>
                                 <Bindings>
                                     <ui:DataBinding property="style.display" data-source-path="isNavalTransfer" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                                 </Bindings>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1;">
-                                <ui:EnumField label="One-shot Rading State" value="Center" type="StrategicCombatCore.StrategicMission+OneShotRaidingState, Assembly-CSharp">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="oneShotRaidingState" binding-mode="TwoWay"/>
-                                    </Bindings>
-                                </ui:EnumField>
+                                <ui:VisualElement data-source-path="asOneShotSortie" style="flex-grow: 1;">
+                                    <ui:EnumField label="One-shot Sortie State" value="Center" type="StrategicCombatCore.OneShotRaidingMission+OneShotRaidingState, Assembly-CSharp">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="oneShotSortieState" binding-mode="TwoWay"/>
+                                        </Bindings>
+                                    </ui:EnumField>
+                                </ui:VisualElement>
                                 <Bindings>
-                                    <ui:DataBinding property="style.display" data-source-path="isOneShotRaiding" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                                    <ui:DataBinding property="style.display" data-source-path="isOneShotSortie" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                                 </Bindings>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-direction: row;">

@@ -561,6 +561,19 @@ namespace StrategicCombatCore
             return false;
         }
 
+        public float GetDistanceUnsafe(Cell other)
+        {
+            if(IsAreaCell())
+            {
+                var conn = CellConnections.FirstOrDefault(c => c.GetOther() == other);
+                if(conn != null)
+                {
+                    return conn.cost;
+                }
+            }
+            return 50;
+        }
+
         // [XmlIgnore]
         // public List<CellEdge> edges = new();
     }

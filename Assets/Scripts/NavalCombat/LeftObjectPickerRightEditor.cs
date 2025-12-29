@@ -66,6 +66,11 @@ public abstract class LeftObjectPickerRightEditor<ST, ET> : HideableDocument<ST>
     {
     }
 
+    protected virtual void ProcessRemovedOne(ET removeObj)
+    {
+        
+    }
+
     protected virtual void OnEnable()
     {
         GetFullObjects();
@@ -120,33 +125,59 @@ public abstract class LeftObjectPickerRightEditor<ST, ET> : HideableDocument<ST>
         var addObjectButton = root.Q<Button>("AddObjectButton");
         if(addObjectButton != null)
         {
-            addObjectButton.clicked += () =>
-            {
-                var newObj = new ET();
-                EntityManager.Instance.Register(newObj, null);
-                fullObjects.Add(newObj);
+            // addObjectButton.clicked += () =>
+            // {
+            //     var newObj = new ET();
+            //     EntityManager.Instance.Register(newObj, null);
+            //     fullObjects.Add(newObj);
 
-                ProcessAddedOne(newObj);
+            //     ProcessAddedOne(newObj);
 
-                RefreshFilter();
-            };
+            //     RefreshFilter();
+            // };
+
+            addObjectButton.clicked += OnAddObjectButtonClicked;
         }
 
         var deleteObjectButton = root.Q<Button>("RemoveObjectButton");
         if(deleteObjectButton != null)
         {
-            deleteObjectButton.clicked += () =>
-            {
-                if(selectedObject != null)
-                {
-                    fullObjects.Remove(selectedObject);
+            // deleteObjectButton.clicked += () =>
+            // {
+            //     if(selectedObject != null)
+            //     {
+            //         fullObjects.Remove(selectedObject);
+            //         ProcessRemovedOne(selectedObject);
 
-                    RefreshFilter();
-                }
-            };
+            //         RefreshFilter();
+            //     }
+            // };
+
+            deleteObjectButton.clicked += OnDeleteObjectButtonClicked;
         }
     }
 
+    protected virtual void OnAddObjectButtonClicked()
+    {
+        var newObj = new ET();
+        EntityManager.Instance.Register(newObj, null);
+        fullObjects.Add(newObj);
+
+        ProcessAddedOne(newObj);
+
+        RefreshFilter();
+    }
+
+    protected virtual void OnDeleteObjectButtonClicked()
+    {
+        if(selectedObject != null)
+        {
+            fullObjects.Remove(selectedObject);
+            ProcessRemovedOne(selectedObject);
+
+            RefreshFilter();
+        }
+    }
 
     protected virtual void ProcessCopiedLastOne(ET obj)
     {

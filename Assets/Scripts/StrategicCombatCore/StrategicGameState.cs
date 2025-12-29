@@ -416,6 +416,11 @@ namespace StrategicCombatCore
                 foreach (var group in groups)
                 {
                     group.StartReturnToBase(24);
+                    var assignedMission = group.GetAssignedMission();
+                    if(assignedMission != null)
+                    {
+                        assignedMission.interrupted = true;
+                    }
                 }
             }
             else
@@ -442,6 +447,7 @@ namespace StrategicCombatCore
 
             Advance1HourForSupply();
             Advance1HourForMission();
+            Advance1HourForOutOfFuelFleetCheck();
             Advance1HourForMovement();
             Advance1HourForGroupPosture();
             Advance1HourForRepair();
@@ -856,7 +862,7 @@ namespace StrategicCombatCore
                 {
                     foreach (var shipLog in group.WalkGroupMembersDeployedShips())
                     {
-                        shipLog.supplyTons = Math.Max(0, shipLog.supplyTons - shipLog.GetSupplyCostTonsPerDay() / 24);
+                        shipLog.supplyTons = Math.Max(0, shipLog.supplyTons - shipLog.GetSupplyCostTonsPerHour());
                     }
                 }
                 // else
@@ -910,47 +916,57 @@ namespace StrategicCombatCore
             resolver.Resolve();
         }
 
+        public void Advance1HourForOutOfFuelFleetCheck()
+        {
+            foreach (var strategicGroup in IterIndependentStrategicGroups())
+            {
+                strategicGroup.CheckOutOfFuelFleetGroupAndForceReturnToBase();
+            }
+        }
+
         public void Advance1HourForMovement()
         {
             foreach (var strategicGroup in IterIndependentStrategicGroups())
             {
-                if (strategicGroup.plannedPath.Count == 0)
-                {
-                    strategicGroup.moveProgressionKm = 0;
-                }
-                else
-                {
-                    var speedKmPerHour = strategicGroup.GetSpeedKmPerHour();
-                    var moveKmCap = speedKmPerHour * 1;
-                    while (moveKmCap > 0 && strategicGroup.plannedPath.Count >= 2)
-                    {
-                        var valid = strategicGroup.TryGetDistanceToNextLocationInPlannedPathWithoutProgression(out var cellDistKm);
-                        if(!valid)
-                        {
-                            break;
-                        }
+                strategicGroup.Advance1HourForMovement();
 
-                        var nextDistKm = cellDistKm - strategicGroup.moveProgressionKm; // 50km/hex
-                        if (moveKmCap < nextDistKm)
-                        {
-                            strategicGroup.moveProgressionKm += moveKmCap;
-                            moveKmCap = 0;
-                        }
-                        else
-                        {
-                            moveKmCap -= nextDistKm;
-                            strategicGroup.plannedPath.RemoveAt(0);
-                            // strategicGroup.MoveToXY(strategicGroup.plannedPath[0].x, strategicGroup.plannedPath[0].y, true);
-                            strategicGroup.MoveToCell(strategicGroup.plannedPath[0].GetCell(), true); // TODO: Generalize to Area System
+                // if (strategicGroup.plannedPath.Count == 0)
+                // {
+                //     strategicGroup.moveProgressionKm = 0;
+                // }
+                // else
+                // {
+                //     var speedKmPerHour = strategicGroup.GetSpeedKmPerHour();
+                //     var moveKmCap = speedKmPerHour * 1;
+                //     while (moveKmCap > 0 && strategicGroup.plannedPath.Count >= 2)
+                //     {
+                //         var valid = strategicGroup.TryGetDistanceToNextLocationInPlannedPathWithoutProgression(out var cellDistKm);
+                //         if(!valid)
+                //         {
+                //             break;
+                //         }
+
+                //         var nextDistKm = cellDistKm - strategicGroup.moveProgressionKm; // 50km/hex
+                //         if (moveKmCap < nextDistKm)
+                //         {
+                //             strategicGroup.moveProgressionKm += moveKmCap;
+                //             moveKmCap = 0;
+                //         }
+                //         else
+                //         {
+                //             moveKmCap -= nextDistKm;
+                //             strategicGroup.plannedPath.RemoveAt(0);
+                //             // strategicGroup.MoveToXY(strategicGroup.plannedPath[0].x, strategicGroup.plannedPath[0].y, true);
+                //             strategicGroup.MoveToCell(strategicGroup.plannedPath[0].GetCell(), true); // TODO: Generalize to Area System
                             
-                            strategicGroup.moveProgressionKm = 0;
-                            if (strategicGroup.plannedPath.Count < 2)
-                            {
-                                strategicGroup.plannedPath.Clear();
-                            }
-                        }
-                    }
-                }
+                //             strategicGroup.moveProgressionKm = 0;
+                //             if (strategicGroup.plannedPath.Count < 2)
+                //             {
+                //                 strategicGroup.plannedPath.Clear();
+                //             }
+                //         }
+                //     }
+                // }
             }
         }
 
@@ -962,15 +978,21 @@ namespace StrategicCombatCore
                 mission.TransitionMission();
             }
 
-            // Update Strategic Groups
-            foreach (var strategicGroup in IterIndependentStrategicGroups())
+            // UpdateStrategicGroups
+            foreach(var mission in missions)
             {
-                var mission = EntityManager.Instance.Get<StrategicMission>(strategicGroup.assignedMissionObjectId);
-                if (mission != null && mission.waypoints.Count >= 2) // TODO: Relax waypoint constraint
-                {
-                    mission.UpdateStrategicGroup(strategicGroup);
-                }
+                mission.UpdateStrategicGroups();
             }
+
+            // Update Strategic Groups
+            // foreach (var strategicGroup in IterIndependentStrategicGroups())
+            // {
+            //     var mission = EntityManager.Instance.Get<StrategicMission>(strategicGroup.assignedMissionObjectId);
+            //     if (mission != null && mission.waypoints.Count >= 2) // TODO: Relax waypoint constraint
+            //     {
+            //         mission.UpdateStrategicGroup(strategicGroup);
+            //     }
+            // }
         }
 
         public IEnumerable<Cell> IterCells()

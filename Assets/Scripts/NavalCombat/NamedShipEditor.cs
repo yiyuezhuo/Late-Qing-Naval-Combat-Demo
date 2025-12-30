@@ -38,29 +38,6 @@ public class NamedShipEditor : LeftObjectPickerRightEditor<NamedShipEditor, Name
     {
         base.OnEnable();
 
-        // base.Awake();
-
-        // var sortingOrder = doc.sortingOrder;
-        // Debug.Log($"NamedShipEditor sortingOrder={sortingOrder}");
-
-        // root.dataSource = this;
-
-        // Utils.BindItemsSourceRecursive(root);
-
-        // objectListView = root.Q<ListView>("NamedShipListView");
-        // Utils.BindItemsAddedRemoved<NamedShip>(objectListView, () => null);
-
-        // objectListView.selectionChanged += (IEnumerable<object> objects) =>
-        // {
-        //     Debug.Log("namedShipListView.selectionChanged");
-
-        //     var namedShip = objects.FirstOrDefault() as NamedShip;
-        //     selectedId = namedShip?.objectId;
-        // };
-
-        // var confirmButton = root.Q<Button>("ConfirmButton");
-        // confirmButton.clicked += Hide;
-
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>
         {

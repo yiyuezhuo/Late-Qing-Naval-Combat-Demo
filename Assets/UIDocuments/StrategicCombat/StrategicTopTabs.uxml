@@ -78,6 +78,11 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63823110901760)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="Save (Edit)" name="SaveEditButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63872989564928)"/>
+                        </Bindings>
+                    </ui:Button>
                     <ui:Button text="Return To Main Menu" name="ReturnToMainMenuButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(64033224560640)"/>

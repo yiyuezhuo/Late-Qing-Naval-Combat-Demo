@@ -747,10 +747,9 @@ namespace StrategicCombatCore
 
         public void SetPlannedPath(List<XY> newPlannedPath)
         {
-            plannedPath.Clear();
-
             if(newPlannedPath.Count < 2)
             {
+                plannedPath.Clear();
                 moveProgressionKm = 0;
                 return;
             }
@@ -760,6 +759,7 @@ namespace StrategicCombatCore
             {
                 moveProgressionKm = 0;
             }
+            plannedPath.Clear();
             plannedPath.AddRange(newPlannedPath);
         }
 

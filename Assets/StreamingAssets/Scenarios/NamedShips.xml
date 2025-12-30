@@ -3557,9 +3557,7 @@ Peresviet or Peresvet</remark>
   </fateDesc>
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference>
-   <referenceObjectId>de5c3853-f922-47fa-81d3-31564419f71c</referenceObjectId>
-  </defaultLeaderReference>
+  <defaultLeaderReference />
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>

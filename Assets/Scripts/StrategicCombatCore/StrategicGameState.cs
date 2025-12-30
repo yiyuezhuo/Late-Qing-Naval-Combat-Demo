@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
+using UnityEngine;
 using YYZ.PathFinding;
 
 namespace StrategicCombatCore
@@ -16,6 +16,14 @@ namespace StrategicCombatCore
         public int width;
         public int height;
         public List<Cell> records;
+    }
+
+    public class SidedLazyLocalizedString
+    {
+        public LazyLocalizedString log;
+
+        [XmlAttribute]
+        public string sideObjectId;
     }
 
     public class StrategicGameState : AbstractGameState
@@ -75,11 +83,15 @@ namespace StrategicCombatCore
         public List<PendingNavalCombat> pendingNavalCombats = new();
         public List<LandBattle> landBattles = new();
 
-        public List<LazyLocalizedString> logs = new();
+        public List<SidedLazyLocalizedString> logs = new();
+        // public List<LazyLocalizedString> logs = new();
         // public List<LazyLocalizedString> logs = new()
         // {
         //     LazyLocalizedString.MakeRaw("Game Started")
         // };
+
+        public event EventHandler<SidedLazyLocalizedString> logAdded;
+        public event EventHandler logsRefreshed;
 
         public List<NavalContactReport> navalContactReports = new();
 
@@ -87,7 +99,6 @@ namespace StrategicCombatCore
         public Dictionary<Country, SideState> countryToSideStateMap = new();
 
         public event EventHandler mapRebuilt;
-        // public event EventHandler<(int, int)> mapCellUpdated;
         public event EventHandler<Cell> mapCellUpdated;
         public event EventHandler edgeFeatureUpdated;
 
@@ -442,7 +453,7 @@ namespace StrategicCombatCore
                 AddLog(LazyLocalizedString.MakeTemplate(
                     "Tick: {0}",
                     LazyLocalizedString.MakeRaw(CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(scenarioState.dateTime))
-                ));
+                ), null);
             }
 
             Advance1HourForSupply();
@@ -539,7 +550,7 @@ namespace StrategicCombatCore
                                 
                                 var msg = $"Contact Report: {matchedContactReport}";
                                 ServiceLocator.Get<ILoggerService>().Log(msg);
-                                AddLog(msg);
+                                AddLog(msg, observerSide);
                             }
                         }
                     }
@@ -547,7 +558,8 @@ namespace StrategicCombatCore
             }
 
             // Delete outdated Contact Report
-            var outdatedContactReports = navalContactReports.Where(c => scenarioState.dateTime - c.dateTime > oneWeekTimeSpan).ToList();
+            // var outdatedContactReports = navalContactReports.Where(c => scenarioState.dateTime - c.dateTime > oneWeekTimeSpan).ToList();
+            var outdatedContactReports = navalContactReports.Where(c => c.GetHoursToCurrent() > NavalContactReport.threatMaintainedHours).ToList();
             foreach(var outdatedContactReport in outdatedContactReports)
             {
                 navalContactReports.Remove(outdatedContactReport);
@@ -713,7 +725,7 @@ namespace StrategicCombatCore
                         GetCellNameLazyStr(battle.cellXY),
                         LazyLocalizedString.MakeGlobalStringShort(attacker.name),
                         LazyLocalizedString.MakeGlobalStringShort(defender.name)
-                    ));
+                    ), null);
                 }
             }
         }
@@ -761,7 +773,7 @@ namespace StrategicCombatCore
                         battle.attacker.GetSummary(),
                         LazyLocalizedString.MakeGlobalStringShort(defender.name),
                         battle.defender.GetSummary()
-                    ));
+                    ), null);
                 }
             }
         }
@@ -983,16 +995,6 @@ namespace StrategicCombatCore
             {
                 mission.UpdateStrategicGroups();
             }
-
-            // Update Strategic Groups
-            // foreach (var strategicGroup in IterIndependentStrategicGroups())
-            // {
-            //     var mission = EntityManager.Instance.Get<StrategicMission>(strategicGroup.assignedMissionObjectId);
-            //     if (mission != null && mission.waypoints.Count >= 2) // TODO: Relax waypoint constraint
-            //     {
-            //         mission.UpdateStrategicGroup(strategicGroup);
-            //     }
-            // }
         }
 
         public IEnumerable<Cell> IterCells()
@@ -1082,17 +1084,30 @@ namespace StrategicCombatCore
             ResetAndRegisterAll();
         }
 
-        public void AddLog(LazyLocalizedString log)
+        public void AddLog(LazyLocalizedString log, SideState side)
         {
-            logs.Insert(0, log);
+            var s = new SidedLazyLocalizedString()
+            {
+                log=log,
+                sideObjectId=side?.objectId
+            };
+            logs.Insert(0, s);
+
+            logAdded(this, s);
         }
 
-        public void AddLog(string rawLog) // mainly for debug purpose
+        public void AddLog(string rawLog, SideState side) // mainly for debug purpose
         {
-            logs.Insert(0, LazyLocalizedString.MakeRaw(rawLog));
+            // logs.Insert(0, LazyLocalizedString.MakeRaw(rawLog), side);
+            AddLog(LazyLocalizedString.MakeRaw(rawLog), side);
         }
 
-        public void ClearLogs() => logs.Clear();
+        public void ClearLogs()
+        {
+            logs.Clear();
+
+            logsRefreshed?.Invoke(this, EventArgs.Empty);
+        }
 
         public string GetCellName(XY cellXY)
         {
@@ -1109,6 +1124,22 @@ namespace StrategicCombatCore
                 return LazyLocalizedString.MakeRaw($"({cellXY.x}, {cellXY.y})"); // TODO: Add WITP-like "near XXX" desc
             }
             return LazyLocalizedString.MakeGlobalStringShort(cell.Label);
+        }
+
+        public NavalContactReport PickNavalContactReportByThreat(SideState sideMe)
+        {
+            var contacts = navalContactReports.Where(c => c.observerSideId == sideMe.objectId).ToList();
+            
+            if(contacts.Count == 0)
+            {
+                return null;
+            }
+
+            var weights = contacts.Select(c => c.GetThreatScore()).ToList();
+            var maxWeight = weights.Max();
+            var maxIdx = weights.IndexOf(maxWeight);
+            return contacts[maxIdx];
+            // return RandomUtils.Sample(samplingContacts, weights);
         }
 
 

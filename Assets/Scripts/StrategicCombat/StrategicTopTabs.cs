@@ -15,6 +15,30 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 {
     Button advance1DayButton;
 
+    void DoSave(bool editSave)
+    {
+        var gameState = DetachGameState(StrategicGameState.Instance, StreamingAssetReference.Instance);
+        var fullState = new StrategicFullState()
+        {
+            gameState = gameState,
+            viewState = StrategicGameManager.Instance.CaptureViewState()
+        };
+
+        if(editSave)
+        {
+            fullState.viewState.viewerSideId = null; // Reset the current Viewer setting
+        }
+
+        // lastOpenedScenarioPath
+
+        var name = StrategicGameManager.lastOpenedScenarioPath != null ? Path.GetFileNameWithoutExtension(StrategicGameManager.lastOpenedScenarioPath) : "StrategicGameState";
+
+        IOManager.Instance.SaveTextFile(
+            XmlUtils.ToXML(fullState),
+            name, "xml"
+        );
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -24,27 +48,17 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         root.Q<Button>("SaveButton").clicked += () =>
         {
             Debug.Log("SaveButton clicked");
-
-            var gameState = DetachGameState(StrategicGameState.Instance, StreamingAssetReference.Instance);
-            var fullState = new StrategicFullState()
-            {
-                gameState = gameState,
-                viewState = StrategicGameManager.Instance.CaptureViewState()
-            };
-
-            // lastOpenedScenarioPath
-
-            var name = StrategicGameManager.lastOpenedScenarioPath != null ? Path.GetFileNameWithoutExtension(StrategicGameManager.lastOpenedScenarioPath) : "StrategicGameState";
-
-            IOManager.Instance.SaveTextFile(
-                XmlUtils.ToXML(fullState),
-                name, "xml"
-            );
+            DoSave(false);
 
             // IOManager.Instance.SaveTextFile(
             //     XmlUtils.ToXML(gameState),
             //     "StrategicGameState", "xml"
             // );
+        };
+
+        root.Q<Button>("SaveEditButton").clicked += () =>
+        {
+            DoSave(true);
         };
 
         root.Q<Button>("LoadButton").clicked += () =>

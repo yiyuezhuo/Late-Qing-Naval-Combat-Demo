@@ -84,7 +84,7 @@ namespace CoreUtils
 
         string ValidAdd(string a, string b)
         {
-            if (a == null || a == "")
+            if (a == null || a == "" || b == null || b == "")
                 return null;
             return a + b;
         }

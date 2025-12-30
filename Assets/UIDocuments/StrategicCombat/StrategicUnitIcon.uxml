@@ -21,6 +21,7 @@
         </ui:Label>
         <Bindings>
             <ui:DataBinding property="style.backgroundColor" data-source-path="countryColor" binding-mode="ToTarget"/>
+            <ui:DataBinding property="style.opacity" data-source-path="timelinessOpacity" binding-mode="ToTarget"/>
         </Bindings>
     </ui:VisualElement>
 </ui:UXML>

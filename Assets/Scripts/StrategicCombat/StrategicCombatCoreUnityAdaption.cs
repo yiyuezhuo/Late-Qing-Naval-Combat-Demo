@@ -105,6 +105,8 @@ namespace StrategicCombatCore
 
     public partial class NavalContactReport : ILayableWorldSpaceGroupIconDataSource
     {
+        public float stackPriority{get; set;}
+
         [CreateProperty]
         public string sizeStr => "";
 
@@ -131,17 +133,22 @@ namespace StrategicCombatCore
         public Cell cell{get => GetCell();}
 
         [CreateProperty]
-        public string dateTimeStr => $"{CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(dateTime)} ({GetTimeSpanToCurrent()} before)";
+        public string dateTimeStr => $"{CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(dateTime)} (before {GetHoursToCurrent()} hours)";
 
         [CreateProperty]
         public string sideName => GetObservedSide().name.GetMergedName();
 
         [CreateProperty]
         public string estimateStr => estimation.GetEstimatateSummary();
+
+        [CreateProperty]
+        public StyleFloat timelinessOpacity => GetTimelinessCoef();
     }
 
     public partial class StrategicGroup : ILayableWorldSpaceGroupIconDataSource
     {
+        public float stackPriority{get; set;} // 0 ~ 1, reassigned when toggle
+
         [CreateProperty]
         public string sizeStr => GetSizeStr();
 
@@ -160,6 +167,7 @@ namespace StrategicCombatCore
         [CreateProperty]
         public StyleBackground typeIcon => UnityWebRequestImageReader.Instance.FetchStyleBackground($"{Application.streamingAssetsPath}/Pictures/GroupTypeIcons/{type}.png");
 
+        [XmlIgnore]
         [CreateProperty]
         public int xProp
         {
@@ -167,6 +175,7 @@ namespace StrategicCombatCore
             set => x = value;
         }
 
+        [XmlIgnore]
         [CreateProperty]
         public int yProp
         {
@@ -272,6 +281,9 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public string commandDesc => GetCommandDesc().Resolve();
+
+        [CreateProperty]
+        public StyleFloat timelinessOpacity => 1;
     }
 
     public partial class StrategicGroupReference

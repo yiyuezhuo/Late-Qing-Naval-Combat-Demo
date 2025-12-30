@@ -194,13 +194,16 @@ namespace StrategicCombatCore
                 var parentMission = parentMissionRef.Get();
                 if(parentMission != null)
                 {
-                    foreach(var g in IterAssignedStrategicGroups().ToList())
-                    {
-                        g.SetAssignedMission(parentMission);
-                    }
+                    RemoveAndTransferAssignedTo(parentMission);
 
-                    StrategicGameState.Instance.missions.Remove(this);
-                    RemoveCleanup();
+                    // foreach(var g in IterAssignedStrategicGroups().ToList())
+                    // {
+                    //     g.SetAssignedMission(parentMission);
+                    // }
+
+                    // StrategicGameState.Instance.missions.Remove(this);
+                    // RemoveCleanup();
+                    
                     // If no parent mission, mission would not be auto-deleted.
                 }
 
@@ -208,6 +211,17 @@ namespace StrategicCombatCore
                 // StrategicGameState.Instance.missions.Remove(this);
                 // Ignoring manual de-registering since full-scan based re-registering happens very frequently now
             }
+        }
+
+        public void RemoveAndTransferAssignedTo(StrategicMission other)
+        {
+            foreach(var g in IterAssignedStrategicGroups().ToList())
+            {
+                g.SetAssignedMission(other);
+            }
+
+            StrategicGameState.Instance.missions.Remove(this);
+            RemoveCleanup();
         }
 
         protected virtual void DoTransition()
@@ -264,7 +278,7 @@ namespace StrategicCombatCore
             var waypointStartCell = GetWaypointStartCell();
             if (groupCell != waypointStartCell)
             {
-                TryPlanPathWithCheck(strategicGroup, waypointStartCell);
+                TryPlanPathWithSupplyCheck(strategicGroup, waypointStartCell);
                 // IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy();
                 // var pathCells = PathFinding<Cell>.AStar(graph, groupCell, waypointStartCell);
                 // if (pathCells.Count >= 2)
@@ -276,7 +290,7 @@ namespace StrategicCombatCore
         }
 
 
-        public void TryPlanPathWithCheck(StrategicGroup strategicGroup, Cell dst)
+        public void TryPlanPathWithSupplyCheck(StrategicGroup strategicGroup, Cell dst)
         {
             // Check supply condition if fleet group is in its home port (depot base cell)
             if(!strategicGroup.IsFleetOnSeaOrSuppliedInHomePort())
@@ -287,7 +301,7 @@ namespace StrategicCombatCore
             strategicGroup.TryPlanPathTo(dst);
         }
 
-        public void TrySetPlannedPathWithCheck(StrategicGroup strategicGroup, List<XY> _waypoints)
+        public void TrySetPathWithSupplyCheck(StrategicGroup strategicGroup, List<XY> _waypoints)
         {
             if(!strategicGroup.IsFleetOnSeaOrSuppliedInHomePort())
             {
@@ -305,7 +319,7 @@ namespace StrategicCombatCore
             {
                 // strategicGroup.plannedPath.Clear();
                 // strategicGroup.plannedPath.AddRange(waypoints);
-                TrySetPlannedPathWithCheck(strategicGroup, waypoints);
+                TrySetPathWithSupplyCheck(strategicGroup, waypoints);
             }
         }
         
@@ -320,7 +334,7 @@ namespace StrategicCombatCore
                 // strategicGroup.plannedPath.Reverse();
                 var reversedWaypoints = waypoints.ToList();
                 reversedWaypoints.Reverse();
-                TrySetPlannedPathWithCheck(strategicGroup, reversedWaypoints);
+                TrySetPathWithSupplyCheck(strategicGroup, reversedWaypoints);
             }
         }
 
@@ -341,26 +355,51 @@ namespace StrategicCombatCore
             }
         }
 
-        protected Cell RollFriendlyTrafficCell(SideState side)
+        protected Cell RollFriendlyTrafficCell(SideState sideMe)
         {
             var friendlyMerchantShipTrafficCells = StrategicGameState.Instance.IterCells().Where(
                 cell => cell.CellSideInfos.Count > 0 
-                    && (cell.CellSideInfos.FirstOrDefault(si => si.sideObjectId == side.objectId)?.merchantShipTraffic ?? 0) > 0
+                    && (cell.CellSideInfos.FirstOrDefault(si => si.sideObjectId == sideMe.objectId)?.merchantShipTraffic ?? 0) > 0
             ).ToList();
-            var weights = friendlyMerchantShipTrafficCells.Select(cell => cell.CellSideInfos.First(si => si.sideObjectId == side.objectId).merchantShipTraffic).ToList();
+            var weights = friendlyMerchantShipTrafficCells.Select(cell => cell.CellSideInfos.First(si => si.sideObjectId == sideMe.objectId).merchantShipTraffic).ToList();
             var sampledCell = RandomUtils.Sample(friendlyMerchantShipTrafficCells, weights);
             return sampledCell;
         }
 
-        protected Cell RollHostileTrafficCell(SideState side)
+        protected Cell RollHostileTrafficCell(SideState sideMe)
         {
             var friendlyMerchantShipTrafficCells = StrategicGameState.Instance.IterCells().Where(
                 cell => cell.CellSideInfos.Count > 0 
-                    && (cell.CellSideInfos.FirstOrDefault(si => si.sideObjectId != side.objectId)?.merchantShipTraffic ?? 0) > 0
+                    && (cell.CellSideInfos.FirstOrDefault(si => si.sideObjectId != sideMe.objectId)?.merchantShipTraffic ?? 0) > 0
             ).ToList();
-            var weights = friendlyMerchantShipTrafficCells.Select(cell => cell.CellSideInfos.First(si => si.sideObjectId != side.objectId).merchantShipTraffic).ToList();
+            var weights = friendlyMerchantShipTrafficCells.Select(cell => cell.CellSideInfos.First(si => si.sideObjectId != sideMe.objectId).merchantShipTraffic).ToList();
             var sampledCell = RandomUtils.Sample(friendlyMerchantShipTrafficCells, weights);
             return sampledCell;
+        }
+
+        protected Cell RollHostilePortCell(SideState sideMe)
+        {
+            var hostilePortCells = StrategicGameState.Instance.landUnits.Where(landUnit =>
+            {
+                var template = landUnit.GetLandUnitTemplate();
+                if(template == null)
+                    return false;
+                
+                var isSupply = template.unitType == LandUnitType.Supply;
+                if(!isSupply)
+                    return false;
+                
+                if(landUnit.side == sideMe)
+                    return false;
+                
+                var cell = landUnit.cell;
+                return cell.IsNavyPassable();
+            }).Select(port => port.cell).ToList();
+
+            if(hostilePortCells.Count == 0)
+                return null;
+
+            return RandomUtils.Sample(hostilePortCells);
         }
 
         protected void PlanReturnToBasePathForNonBasedFleet(bool force=false)
@@ -660,7 +699,53 @@ namespace StrategicCombatCore
         }
     }
 
-    public class GlobalRaidingMission : StrategicMission
+    public class GlobalSortiePlannarMission : StrategicMission
+    {
+        public StrategicMission MakeOneChildMissionAndAssignGroups(List<StrategicGroup> assignedFleetGroups, bool active)
+        {
+            if(assignedFleetGroups.Count == 0)
+                return null;
+
+            var leadGroupSide = assignedFleetGroups.First().side;
+
+            OneShotSortieMission newMission = active ? new OneShotActiveSortieMission() : new OneShotPassiveSortieMission();
+            // newMission.name = missionName;
+            newMission.sideObjectId = leadGroupSide.objectId;
+
+            StrategicGameState.Instance.missions.Add(newMission);
+            EntityManager.Instance.Register(newMission, null);
+            newMission.TransferTo(this);
+
+            foreach(var g in assignedFleetGroups)
+            {
+                g.SetAssignedMission(newMission);
+            }
+
+            return newMission;
+        }
+
+        public StrategicMission MakeOneChildMissionAndAssignGroupsToCell(List<StrategicGroup> assignedFleetGroups, bool active, Cell dstCell, GlobalString prefix)
+        {
+            if(dstCell == null)
+                return null;
+
+            var leadGroup = assignedFleetGroups.First();
+            var leadGroupSide = leadGroup.side;
+            var srcCell = leadGroup.cell;
+
+            IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy(); // TODO: Generalize to army?
+            var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
+
+            var missionName = prefix.Add(dstCell.GetLocationSummaryGlobalString());
+            var newMission = MakeOneChildMissionAndAssignGroups(assignedFleetGroups, active);
+            newMission.name = missionName;
+            newMission.waypoints = pathCells.Select(c => c.ToXY()).ToList();
+            
+            return newMission;
+        }
+    }
+
+    public class GlobalRaidingMission : GlobalSortiePlannarMission
     {
         static GlobalString oneShotRaidingPrefix = new()
         {
@@ -681,41 +766,9 @@ namespace StrategicCombatCore
             var assignedFleetGroups = IterAssignedFleetGroups().ToList();
             if(assignedFleetGroups.Count > 0)
             {
-                var leadGroup = assignedFleetGroups.First();
-                var leadGroupSide = leadGroup.side;
-
-                var srcCell = leadGroup.cell;
-
-                // var hostileMerchantShipTrafficCells = StrategicGameState.Instance.IterCells().Where(
-                //     cell => cell.CellSideInfos.Count > 0 
-                //         && (cell.CellSideInfos.FirstOrDefault(si => si.sideObjectId != leadGroupSide.objectId)?.merchantShipTraffic ?? 0) > 0
-                // ).ToList();
-                // var weights = hostileMerchantShipTrafficCells.Select(cell => cell.CellSideInfos.First(si => si.sideObjectId != leadGroupSide.objectId).merchantShipTraffic).ToList();
-                // var sampledCell = RandomUtils.Sample(hostileMerchantShipTrafficCells, weights);
-                // var dstCell = sampledCell;
-
+                var leadGroupSide = assignedFleetGroups.First().side;
                 var dstCell = RollHostileTrafficCell(leadGroupSide);
-
-                IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy(); // TODO: Generalize to army?
-                var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
-
-                // var newOneShotRaidingMission = new StrategicMission()
-                var newOneShotRaidingMission = new OneShotPassiveSortieMission()
-                {
-                    name = oneShotRaidingPrefix.Add(dstCell.GetLocationSummaryGlobalString()),
-                    sideObjectId = leadGroupSide.objectId,
-                    // type = MissionType.OneShotRaiding
-                };
-                StrategicGameState.Instance.missions.Add(newOneShotRaidingMission);
-                EntityManager.Instance.Register(newOneShotRaidingMission, null);
-                newOneShotRaidingMission.TransferTo(this);
-
-                foreach(var g in assignedFleetGroups)
-                {
-                    g.SetAssignedMission(newOneShotRaidingMission);
-                }
-
-                newOneShotRaidingMission.waypoints = pathCells.Select(c => c.ToXY()).ToList();
+                MakeOneChildMissionAndAssignGroupsToCell(assignedFleetGroups, false, dstCell, oneShotRaidingPrefix);
             }
         }
 
@@ -727,7 +780,105 @@ namespace StrategicCombatCore
             // TODO: Move groups back to its base
             PlanReturnToBasePathForNonBasedFleet();
         }
+    }
 
+    public class GlobalTradeProtectionMission : GlobalSortiePlannarMission
+    {
+        static GlobalString tradeProtectionPatrolPrefix = new()
+        {
+            english = "Trade Protection Patrol to ",
+            japanese = "貿易保護パトロールへ ",
+            chineseSimplified = "贸易保护巡逻至 ",
+            chineseTraditional = "貿易保護巡邏至 "
+        };
+
+        static GlobalString sweepPrefix = new()
+        {
+            english = "Sweep to ",
+            japanese = "掃討へ ",
+            chineseSimplified = "扫荡至 ",
+            chineseTraditional = "掃蕩至 "
+        };
+
+        static GlobalString interceptionPrefix = new()
+        {
+            english = "Intercept to ",
+            japanese = "対抗へ ",
+            chineseSimplified = "拦截至 ",
+            chineseTraditional = "拦截至 "
+        };
+
+        protected override void DoTransition()
+        {
+            // Assign strategic groups with enough "integrity" to one-shot raiding missions
+            
+            // Ignore integrity criteria in the current version.
+            // If no contact, create random patrol
+            // TODO: Ships should have a tendency to be reservation instead of run random sortie
+
+            var runningDirectInterception = false;
+            var missionSide = GetSide();
+
+            if(missionSide != null)
+            {
+                var gameState = StrategicGameState.Instance;
+                var threatContact = gameState.PickNavalContactReportByThreat(missionSide);
+                if(threatContact != null)
+                {
+                    runningDirectInterception = true;
+
+                    // Cancel random search sortie missions and send ships to threat contact location
+                    foreach(var childMissionRef in childrenMissionRefs.ToList())
+                    {
+                        var childMission = childMissionRef.Get();
+                        if(childMission != null)
+                        {
+                            childMission.RemoveAndTransferAssignedTo(this);
+                        }
+                    }
+
+                    var threatContactCell = threatContact.cell;
+                    // Don't create a mission, send direct controlled group directly
+                    // But for a more complex scenario, we may need to assembly somewhere and then sortie to the target.
+                    var assignedFleetGroups = IterAssignedFleetGroups().ToList();
+                    foreach(var assignedFleetGroup in assignedFleetGroups)
+                    {
+                        if(assignedFleetGroup.plannedPath.Count == 0 || assignedFleetGroup.plannedPath[^1].GetCell() != threatContactCell)
+                        {
+                            TryPlanPathWithSupplyCheck(assignedFleetGroup, threatContactCell);
+                        }
+                    }
+                }
+            }
+            
+            if(!runningDirectInterception)
+            {
+                // Assign idle group to do random sortie
+                var assignedFleetGroups = IterAssignedFleetGroups().ToList();
+                if(assignedFleetGroups.Count > 0)
+                {
+                    var leadGroupSide = assignedFleetGroups.First().side;
+
+                    Cell dstCell;
+                    GlobalString prefix;
+
+                    // TODO: Add Idle probability
+                    if(RandomUtils.D100F() < 75)
+                    {
+                        dstCell = RollFriendlyTrafficCell(leadGroupSide);
+                        prefix = tradeProtectionPatrolPrefix;
+                    }
+                    else
+                    {
+                        dstCell = RollHostilePortCell(leadGroupSide);
+                        prefix = sweepPrefix;
+                    }
+
+                    MakeOneChildMissionAndAssignGroupsToCell(assignedFleetGroups, true, dstCell, prefix);
+                }
+            }
+
+        }
     }
 
     public class OneShotSortieMission : StrategicMission
@@ -815,60 +966,6 @@ namespace StrategicCombatCore
         }
     }
 
-    public class GlobalTradeProtectionMission : StrategicMission
-    {
-        static GlobalString oneShotTradeProtectionPatrolPrefix = new()
-        {
-            english = "Trade Protection Patrol to ",
-            japanese = "貿易保護パトロールへ ",
-            chineseSimplified = "贸易保护巡逻至 ",
-            chineseTraditional = "貿易保護巡邏至 "
-        };
 
-
-        protected override void DoTransition()
-        {
-            // Assign strategic groups with enough "integrity" to one-shot raiding missions
-            
-            // Ignore integrity criteria in the current version.
-            // If no contact, create random patrol
-            // TODO: Ships should have a tendency to be reservation instead of run random sortie
-            CreateOneShotTradeProtectionPatrolMissionToFriendlyTrafficCell();
-        }
-
-        void CreateOneShotTradeProtectionPatrolMissionToFriendlyTrafficCell()
-        {
-            var assignedFleetGroups = IterAssignedFleetGroups().ToList();
-            if(assignedFleetGroups.Count > 0)
-            {
-                var leadGroup = assignedFleetGroups.First();
-                var leadGroupSide = leadGroup.side;
-
-                var srcCell = leadGroup.cell;
-                var dstCell = RollFriendlyTrafficCell(leadGroupSide);
-
-                IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy(); // TODO: Generalize to army?
-                var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
-
-                // var newOneShotRaidingMission = new StrategicMission()
-                var newMission = new OneShotActiveSortieMission()
-                {
-                    name = oneShotTradeProtectionPatrolPrefix.Add(dstCell.GetLocationSummaryGlobalString()),
-                    sideObjectId = leadGroupSide.objectId,
-                    // type = MissionType.OneShotRaiding
-                };
-                StrategicGameState.Instance.missions.Add(newMission);
-                EntityManager.Instance.Register(newMission, null);
-                newMission.TransferTo(this);
-
-                foreach(var g in assignedFleetGroups)
-                {
-                    g.SetAssignedMission(newMission);
-                }
-
-                newMission.waypoints = pathCells.Select(c => c.ToXY()).ToList();
-            }
-        }
-    }
 
 }

@@ -22,6 +22,7 @@ public interface ILayableWorldSpaceGroupIconDataSource : IWorldSpaceGroupIconDat
 
     SideState side{get;}
     Cell cell{get;}
+    float stackPriority{get;set;}
 
 }
 
@@ -40,6 +41,9 @@ public class WorldSpaceGroupIconDatasourcePlaceholder : IWorldSpaceGroupIconData
     [CreateProperty]
     public string bottomLabelText{get;}
 
+    [CreateProperty]
+    public StyleFloat timelinessOpacity => 1;
+
     // [CreateProperty]
     // public DisplayStyle opacity{get;}
 }
@@ -48,7 +52,8 @@ public class WorldSpaceGroupIcon : MonoBehaviour
 {
     UIDocument doc;
     VisualElement root; // => doc.rootVisualElement;
-    public IWorldSpaceGroupIconDataSource currentDataSource;
+    // public IWorldSpaceGroupIconDataSource currentDataSource;
+    public ILayableWorldSpaceGroupIconDataSource currentDataSource;
 
     void Awake()
     {
@@ -56,7 +61,7 @@ public class WorldSpaceGroupIcon : MonoBehaviour
         root = doc.rootVisualElement;
     }
 
-    public void SetDataSource(IWorldSpaceGroupIconDataSource group)
+    public void SetDataSource(ILayableWorldSpaceGroupIconDataSource group)
     {
         currentDataSource = group;
         root.dataSource = group;

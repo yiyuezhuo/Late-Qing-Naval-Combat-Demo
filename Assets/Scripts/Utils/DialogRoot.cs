@@ -1320,10 +1320,13 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             var selectedNamedShip = NamedShipEditor.Instance.selectedObject;
 
-            if (leader != null && selectedNamedShip != null)
+            // if (leader != null && selectedNamedShip != null)
+            // {
+            //     selectedNamedShip.defaultLeaderReference.referenceObjectId = leader.objectId;
+            // }
+            if (selectedNamedShip != null)
             {
-                // selectedNamedShip.defaultLeaderObjectId = leader.objectId;
-                selectedNamedShip.defaultLeaderReference.referenceObjectId = leader.objectId;
+                selectedNamedShip.defaultLeaderReference.referenceObjectId = leader?.objectId;
             }
         });
     }

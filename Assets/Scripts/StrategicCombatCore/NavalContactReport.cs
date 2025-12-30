@@ -233,160 +233,6 @@ namespace StrategicCombatCore
             [ShipType.TorpedoBoat] = EstimationCategory.TB,
         };
 
-        // Russo-Japanese War
-        // public static Dictionary<EstimationCategory, EstimationCategoryConfig> esimateConfigMap = new()
-        // {
-        //     [EstimationCategory.BB] = new()
-        //     {
-        //         confusionMap = new()
-        //         {
-        //             [EstimationCategory.BB] = 0.5f,
-        //             [EstimationCategory.CA] = 0.4f,
-        //             [EstimationCategory.CL] = 0.1f,
-        //         },
-        //         shipTypes = new(){ShipType.Battleship},
-        //         powerPoint = 15 // Assume 15000 tons
-        //     },
-        //     [EstimationCategory.CA] = new()
-        //     {
-        //         confusionMap = new()
-        //         {
-        //             [EstimationCategory.BB] = 0.3f,
-        //             [EstimationCategory.CA] = 0.5f,
-        //             [EstimationCategory.CL] = 0.2f,
-        //         },
-        //         shipTypes = new(){ShipType.ArmoredCruiser, ShipType.Cruiser},
-        //         powerPoint = 10, // Assume 10000 tons
-        //     },
-        //     [EstimationCategory.CL] = new()
-        //     {
-        //         confusionMap = new()
-        //         {
-        //             [EstimationCategory.BB] = 0.1f,
-        //             [EstimationCategory.CA] = 0.3f,
-        //             [EstimationCategory.CL] = 0.5f,
-        //             [EstimationCategory.TB] = 0.1f,
-        //             [EstimationCategory.DD] = 0.1f,
-        //         },
-        //         shipTypes = new(){ShipType.LightCruiser},
-        //         powerPoint = 5, // Assume 5000 tons
-        //     },
-        //     [EstimationCategory.TB] = new()
-        //     {
-        //         confusionMap = new()
-        //         {
-        //             [EstimationCategory.CL] = 0.05f,
-        //             [EstimationCategory.TB] = 0.5f,
-        //             [EstimationCategory.DD] = 0.35f,
-        //             [EstimationCategory.Other] = 0.15f
-        //         },
-        //         shipTypes = new(){ShipType.TorpedoBoat},
-        //         powerPoint = 1, // Assume <1000 tons
-        //     },
-        //     [EstimationCategory.DD] = new()
-        //     {
-        //         confusionMap = new()
-        //         {
-        //             [EstimationCategory.CL] = 0.05f,
-        //             [EstimationCategory.TB] = 0.35f,
-        //             [EstimationCategory.DD] = 0.5f,
-        //             [EstimationCategory.Other] = 0.15f
-        //         },
-        //         shipTypes = new(){ShipType.Destroyer},
-        //         powerPoint = 1, // Assume <1000 tons
-        //     },
-        //     [EstimationCategory.Other] = new()
-        //     {
-        //         confusionMap = new()
-        //         {
-        //             [EstimationCategory.CL] = 0.05f,
-        //             [EstimationCategory.TB] = 0.35f,
-        //             [EstimationCategory.DD] = 0.5f,
-        //             [EstimationCategory.Other] = 0.15f
-        //         },
-        //         // shipTypes = new(){ShipType.Destroyer}
-        //         powerPoint = 2, // Assume 2000 tons (Though they're generally not considered to be "power")
-        //     },
-        // };
-
-        // // Sino-Japanese War
-        // public static Dictionary<EstimationCategory, EstimationCategoryConfig> esimateConfigMapSinoJapaneseWar = new()
-        // {
-        //     [EstimationCategory.BB] = new()
-        //     {
-        //         confusionMap = new()
-        //         {
-        //             [EstimationCategory.BB] = 0.5f,
-        //             [EstimationCategory.CA] = 0.4f,
-        //             [EstimationCategory.CL] = 0.1f,
-        //         },
-        //         shipTypes = new(){ShipType.Battleship},
-        //         powerPoint = 8 // Assume 8000 tons
-        //     },
-        //     [EstimationCategory.CA] = new()
-        //     {
-        //         confusionMap = new()
-        //         {
-        //             [EstimationCategory.BB] = 0.3f,
-        //             [EstimationCategory.CA] = 0.5f,
-        //             [EstimationCategory.CL] = 0.2f,
-        //         },
-        //         shipTypes = new(){ShipType.ArmoredCruiser, ShipType.Cruiser},
-        //         powerPoint = 4, // Assume 4000 tons
-        //     },
-        //     [EstimationCategory.CL] = new()
-        //     {
-        //         confusionMap = new()
-        //         {
-        //             [EstimationCategory.BB] = 0.1f,
-        //             [EstimationCategory.CA] = 0.3f,
-        //             [EstimationCategory.CL] = 0.5f,
-        //             [EstimationCategory.TB] = 0.1f,
-        //         },
-        //         shipTypes = new(){ShipType.LightCruiser},
-        //         powerPoint = 3, // Assume 3000 tons
-        //     },
-        //     [EstimationCategory.TB] = new()
-        //     {
-        //         confusionMap = new()
-        //         {
-        //             [EstimationCategory.CL] = 0.05f,
-        //             [EstimationCategory.TB] = 0.5f,
-        //             [EstimationCategory.Other] = 0.15f
-        //         },
-        //         shipTypes = new(){ShipType.TorpedoBoat},
-        //         powerPoint = 1, // Assume <1000 tons
-        //     },
-        //     [EstimationCategory.Other] = new()
-        //     {
-        //         confusionMap = new()
-        //         {
-        //             [EstimationCategory.CL] = 0.05f,
-        //             [EstimationCategory.TB] = 0.35f,
-        //             [EstimationCategory.Other] = 0.15f
-        //         },
-        //         // shipTypes = new(){ShipType.Destroyer}
-        //         powerPoint = 2, // Assume 2000 tons (Though they're generally not considered to be "power")
-        //     },
-        // };
-
-        // static Dictionary<ShipType, EstimationCategory> shipTypeToEsimationCategory = new();
-
-        // static NavalForceEstimation()
-        // {
-        //     foreach(var (estimateCategory, config) in esimateConfigMap)
-        //     {
-        //         foreach(var shipType in config.shipTypes)
-        //         {
-        //             shipTypeToEsimationCategory[shipType] = estimateCategory;
-        //         }
-        //         foreach(var (confusionCategory, confusionWeight) in config.confusionMap)
-        //         {
-        //             config.confusionCategories.Add(confusionCategory);
-        //             config.confusionWeights.Add(confusionWeight);
-        //         }
-        //     }
-        // }
 
         public static EstimationCategory GetEstimateCategory(ShipType shipType)
         {
@@ -547,6 +393,26 @@ namespace StrategicCombatCore
         {
             var timeSpan = StrategicGameState.Instance.scenarioState.dateTime - dateTime;
             return timeSpan;
+        }
+
+        public float GetHoursToCurrent()
+        {
+            var timeSpan = GetTimeSpanToCurrent();
+            return (float)timeSpan.TotalHours;
+        }
+
+        public static float threatMaintainedDays = 4;
+        public static float threatMaintainedHours = threatMaintainedDays * 24;
+        
+        public float GetTimelinessCoef()
+        {
+            var decayCoef = Math.Min(1, GetHoursToCurrent() / threatMaintainedHours);
+            return 1 - decayCoef;
+        }
+        public float GetThreatScore()
+        {
+            var basePowerpoint = estimation.GetPowerPoint();
+            return Math.Max(1, basePowerpoint * GetTimelinessCoef());
         }
 
         // public void Summary()

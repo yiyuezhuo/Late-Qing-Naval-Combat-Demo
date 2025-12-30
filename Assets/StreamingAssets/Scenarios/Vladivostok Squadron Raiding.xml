@@ -4151,7 +4151,7 @@
       <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
       <internalSearchValue>5</internalSearchValue>
       <interalHideValue>3</interalHideValue>
-      <merchantShipTraffic>15</merchantShipTraffic>
+      <merchantShipTraffic>5</merchantShipTraffic>
      </CellSideInfo>
     </CellSideInfos>
     <CellConnections>
@@ -4172,7 +4172,7 @@
       <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
       <internalSearchValue>5</internalSearchValue>
       <interalHideValue>3</interalHideValue>
-      <merchantShipTraffic>15</merchantShipTraffic>
+      <merchantShipTraffic>10</merchantShipTraffic>
      </CellSideInfo>
     </CellSideInfos>
     <StrategicGroupReferences>
@@ -4255,7 +4255,7 @@
       <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
       <internalSearchValue>3</internalSearchValue>
       <interalHideValue>3</interalHideValue>
-      <merchantShipTraffic>10</merchantShipTraffic>
+      <merchantShipTraffic>5</merchantShipTraffic>
      </CellSideInfo>
     </CellSideInfos>
     <CellConnections>
@@ -4635,8 +4635,7 @@
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
-    <xProp>-1</xProp>
-    <yProp>-1</yProp>
+    <stackPriority>0</stackPriority>
     <objectId>00552ba8-0962-43c1-9da7-31a07da39aaa</objectId>
     <strategicGroupReference />
    </StrategicGroup>
@@ -4677,8 +4676,7 @@
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
-    <xProp>-1</xProp>
-    <yProp>-1</yProp>
+    <stackPriority>0</stackPriority>
     <objectId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</objectId>
     <strategicGroupReference>
      <referenceId>00552ba8-0962-43c1-9da7-31a07da39aaa</referenceId>
@@ -4712,8 +4710,7 @@
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
-    <xProp>-1</xProp>
-    <yProp>-1</yProp>
+    <stackPriority>0.5</stackPriority>
     <objectId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</objectId>
     <strategicGroupReference>
      <referenceId>44d799ed-77dc-4946-b150-21af4c1fcfc9</referenceId>
@@ -4760,8 +4757,7 @@
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
-    <xProp>-1</xProp>
-    <yProp>-1</yProp>
+    <stackPriority>0</stackPriority>
     <objectId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</objectId>
     <strategicGroupReference>
      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
@@ -4801,8 +4797,7 @@
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
-    <xProp>-1</xProp>
-    <yProp>-1</yProp>
+    <stackPriority>0</stackPriority>
     <objectId>44d799ed-77dc-4946-b150-21af4c1fcfc9</objectId>
     <strategicGroupReference>
      <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
@@ -4839,8 +4834,7 @@
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
-    <xProp>-1</xProp>
-    <yProp>-1</yProp>
+    <stackPriority>0</stackPriority>
     <objectId>faa1b04e-87b1-4610-b3da-82c02635f857</objectId>
     <strategicGroupReference>
      <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
@@ -4876,8 +4870,7 @@
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
-    <xProp>-1</xProp>
-    <yProp>-1</yProp>
+    <stackPriority>0</stackPriority>
     <objectId>c5d93306-4781-4f10-a629-da83e996308e</objectId>
     <strategicGroupReference>
      <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
@@ -4919,8 +4912,7 @@
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
-    <xProp>-1</xProp>
-    <yProp>-1</yProp>
+    <stackPriority>0</stackPriority>
     <objectId>7b01e810-a85c-4833-a283-de9529d45258</objectId>
     <strategicGroupReference />
    </StrategicGroup>
@@ -5044,7 +5036,7 @@
     <waypoints />
     <parentMissionRef />
     <childrenMissionRefs />
-    <sideObjectId>f781e78a-aaf5-411f-8f49-d1561e7949a2</sideObjectId>
+    <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
     <completed>false</completed>
     <active>true</active>
     <interrupted>false</interrupted>
@@ -7463,9 +7455,9 @@
   </serializedCells>
  </gameState>
  <viewState>
-  <xPosition>-1.5799675</xPosition>
-  <yPosition>-0.591007233</yPosition>
-  <orthographicSize>5</orthographicSize>
+  <xPosition>-1.01089466</xPosition>
+  <yPosition>-0.17759943</yPosition>
+  <orthographicSize>6</orthographicSize>
   <hitAreaMapRecords>
    <HitAreaMapRecord hitAreaObjectId="0b2cbd39-ad25-4233-b5a1-5744048e7491" areaCellObjectId="8f47e057-3f82-4c2e-a5c4-e18e614b3b16" />
    <HitAreaMapRecord hitAreaObjectId="54b9824b-f430-407e-9d7e-867728dccccb" areaCellObjectId="af65c9c6-e388-4a41-8be8-06a0f99b57bc" />
@@ -7483,6 +7475,5 @@
    <HitAreaMapRecord hitAreaObjectId="562410d9-b8a9-4943-97e5-57220d18d4d4" areaCellObjectId="76734099-06b6-4d82-98e4-a9b4f59c9330" />
    <HitAreaMapRecord hitAreaObjectId="bcbddf20-eff0-4f0a-a8d9-1e2d67a52bb8" areaCellObjectId="a8f121fa-c137-43ee-8aa5-7875092125ab" />
   </hitAreaMapRecords>
-  <viewerSideId>f781e78a-aaf5-411f-8f49-d1561e7949a2</viewerSideId>
  </viewState>
 </StrategicFullState>

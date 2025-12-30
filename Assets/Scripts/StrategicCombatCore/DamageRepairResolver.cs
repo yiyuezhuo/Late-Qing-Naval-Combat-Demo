@@ -485,7 +485,7 @@ namespace StrategicCombatCore
                             "Repair (Succ, Prob={0}): {1}",
                             LazyLocalizedString.MakeRaw(1 - failProb),
                             r.GetLazyLocalizedDesc()
-                        ));
+                        ), sideState);
 
                         return true;
                     }
@@ -497,7 +497,7 @@ namespace StrategicCombatCore
                             "Repair (Failed, Prob={0}): {1}",
                             LazyLocalizedString.MakeRaw(1 - failProb),
                             r.GetLazyLocalizedDesc()
-                        ));
+                        ), sideState);
                     }
                 }
                 return false;
@@ -585,7 +585,7 @@ namespace StrategicCombatCore
                 {
                     ServiceLocator.Get<ILoggerService>().Log($"DamageRepairResolver.Bundle: {bundle}");
 
-                    StrategicGameState.Instance.AddLog(bundle.GetLazyLocalizedDesc());
+                    StrategicGameState.Instance.AddLog(bundle.GetLazyLocalizedDesc(), bundle.sideState);
 
                     bundle.Resolve();
                 }

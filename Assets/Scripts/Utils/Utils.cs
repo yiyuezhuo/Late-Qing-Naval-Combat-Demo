@@ -621,7 +621,9 @@ public static class Utils
         for (int i = 0; i < count; i++)
         {
             var delta = -stackSpace / 2 + i * step;
-            transforms[i].position = basePos + new Vector3(delta, delta, 0);
+            // transforms[i].position = basePos + new Vector3(delta, delta, 0);
+            var z = -(i * step); // negative z is closer to camera
+            transforms[i].position = basePos + new Vector3(delta, delta, z);
         }
     }
 

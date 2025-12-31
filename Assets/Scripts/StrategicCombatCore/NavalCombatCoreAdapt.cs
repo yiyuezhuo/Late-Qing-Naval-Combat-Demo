@@ -53,8 +53,8 @@ namespace NavalCombatCore
             //     return shipClass.displacementTons / 2; // 50% of displacement for supply (coal + load) for transport ship
             // return shipClass.displacementTons / 10; // 10% of displacement for supply (coal only) for combat ship
 
-            // 50% of displacement for supply (coal + load) for transport ship
-            // 10% of displacement for supply (coal only) for combat ship
+            // 50% of displacement for supply (fuel + load) for transport ship
+            // 10% of displacement for supply (fuel only) for combat ship
             var fuelAndCargoSupplyTonsCoef = meShipClass.type == ShipType.Transport ? supplyDisplacementPercentTranport : supplyDisplacementPercentNormal;
             var fuelAndCargoSupplyTons = shipClass.displacementTons * fuelAndCargoSupplyTonsCoef;
             

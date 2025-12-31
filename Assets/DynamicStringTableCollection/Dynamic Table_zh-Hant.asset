@@ -2073,7 +2073,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7935301802168320
-    m_Localized: "\u683C({0}, {1})\u6230\u9B25"
+    m_Localized: "\u683C({0})\u6230\u9B25"
     m_Metadata:
       m_Items: []
   - m_Id: 7935299495301120
@@ -2592,6 +2592,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 25834342988812288
     m_Localized: "\u6CE8\uFF1A\u6230\u7565\u6A21\u5F0F\u4ECD\u9060\u672A\u5B8C\u6210\u3002\u76F8\u6BD4\u4E4B\u4E0B\uFF0C\u5728\u76EE\u524D\u7248\u672C\u4E2D\uFF0C\u6230\u8853\u6D77\u6230\uFF08\u4E3B\u9078\u55AE\u5DE6\u5217\uFF09\u76F8\u5C0D\u66F4\u5B8C\u5584\u4E14\u53EF\u73A9\u6027\u8F03\u9AD8\u3002\u4E0D\u904E\uFF0C\u60A8\u4ECD\u53EF\u5728\u6B64\u63A2\u7D22\u4E00\u4E9B\u958B\u767C\u4E2D\u7684\u5B50\u7CFB\u7D71\u3002\r\n\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28964209406152704
+    m_Localized: '[{0}]: {1}'
     m_Metadata:
       m_Items: []
   references:

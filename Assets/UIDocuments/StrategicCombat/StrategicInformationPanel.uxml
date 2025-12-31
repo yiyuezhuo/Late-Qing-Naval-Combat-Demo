@@ -107,6 +107,11 @@
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(360963381039104)"/>
                     </Bindings>
                 </ui:Button>
+                <ui:Label text="Summary" style="white-space: normal;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="subordinateSummary" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
             </ui:VisualElement>
             <Bindings>
                 <ui:DataBinding property="style.display" data-source-path="selectedStrategicGroupValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>

@@ -840,8 +840,8 @@ namespace StrategicCombatCore
                     var threatContactCell = threatContact.cell;
                     // Don't create a mission, send direct controlled group directly
                     // But for a more complex scenario, we may need to assembly somewhere and then sortie to the target.
-                    var assignedFleetGroups = IterAssignedFleetGroups().ToList();
-                    foreach(var assignedFleetGroup in assignedFleetGroups)
+                    var availableFleetGroups = IterAssignedFleetGroups().Where(g => !g.forcedReturningToBase).ToList();
+                    foreach(var assignedFleetGroup in availableFleetGroups)
                     {
                         if(assignedFleetGroup.plannedPath.Count == 0 || assignedFleetGroup.plannedPath[^1].GetCell() != threatContactCell)
                         {

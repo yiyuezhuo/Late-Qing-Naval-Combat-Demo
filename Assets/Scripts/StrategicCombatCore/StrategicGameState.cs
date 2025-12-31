@@ -4,7 +4,6 @@ using System.Linq;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
-using UnityEngine;
 using YYZ.PathFinding;
 
 namespace StrategicCombatCore
@@ -18,12 +17,19 @@ namespace StrategicCombatCore
         public List<Cell> records;
     }
 
-    public class SidedLazyLocalizedString
+    public partial class SidedLazyLocalizedString
     {
         public LazyLocalizedString log;
 
         [XmlAttribute]
         public string sideObjectId;
+
+        public SideState GetSide() => EntityManager.Instance.Get<SideState>(sideObjectId);
+
+        public LazyLocalizedString GetSidedLog()
+        {
+            return LazyLocalizedString.MakeTemplate("[{0}]: {1}", LazyLocalizedString.MakeGlobalStringShort(GetSide()?.name), log);
+        }
     }
 
     public class StrategicGameState : AbstractGameState
@@ -225,6 +231,7 @@ namespace StrategicCombatCore
 
             logs = newInstance.logs;
             navalContactReports = newInstance.navalContactReports;
+            customBoolMap = newInstance.customBoolMap;
 
             mapRebuilt?.Invoke(this, EventArgs.Empty);
             edgeFeatureUpdated?.Invoke(this, EventArgs.Empty);
@@ -474,6 +481,16 @@ namespace StrategicCombatCore
             ForceDisengageStaticGroup();
 
             Advance1HourForContactReport();
+
+            Advance1HourForScripts();
+        }
+
+        void Advance1HourForScripts()
+        {
+            if(scenarioState.enableVladivostokSquadronScript)
+            {
+                BuiltinScenarioScripts.RunVladivostokSquadronScript(this);
+            }
         }
 
         static TimeSpan oneWeekTimeSpan = TimeSpan.FromDays(7);
@@ -836,7 +853,8 @@ namespace StrategicCombatCore
                 var parentGroup = group.strategicGroupReference.Get();
                 if (group.autoCombinable && group.deployState == StrategicGroup.DeployState.Independent)
                 {
-                    if (parentGroup.x == group.x && parentGroup.y == group.y)
+                    // if (parentGroup.x == group.x && parentGroup.y == group.y)
+                    if (parentGroup.cell == group.cell)
                     {
                         group.RemoveFromMap();
                         group.deployState = StrategicGroup.DeployState.Combined;
@@ -1093,7 +1111,7 @@ namespace StrategicCombatCore
             };
             logs.Insert(0, s);
 
-            logAdded(this, s);
+            logAdded.Invoke(this, s);
         }
 
         public void AddLog(string rawLog, SideState side) // mainly for debug purpose

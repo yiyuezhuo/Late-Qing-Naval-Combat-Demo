@@ -240,16 +240,23 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         gameState.logsRefreshed += OnLogsRefreshed;
 
         GamePreference.Instance.shortLabelLanguageTypeChanged += OnShortLabelLanguageTypeChanged;
+        GamePreference.Instance.isInEditModeChanged += OnIsInEditModeChanged;
     }
 
-    public List<LazyLocalizedString> displayedLogs = new();
+    // public List<LazyLocalizedString> displayedLogs = new();
+    public List<SidedLazyLocalizedString> displayedLogs = new();
 
     void OnLogAdded(object sender, SidedLazyLocalizedString log)
     {
-        if(log.sideObjectId == null || log.sideObjectId == viewerSideId)
+        if(isInEditMode || log.sideObjectId == null || log.sideObjectId == viewerSideId)
         {
-            displayedLogs.Insert(0, log.log);
+            displayedLogs.Insert(0, log);
         }
+    }
+
+    void OnIsInEditModeChanged(object sender, bool isInEditMode)
+    {
+        RefreshDisplayedLogs();
     }
 
     void OnLogsRefreshed(object sender, EventArgs args)
@@ -259,7 +266,14 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     void RefreshDisplayedLogs()
     {
-        displayedLogs = StrategicGameState.Instance.logs.Where(log => log.sideObjectId == null || log.sideObjectId == viewerSideId).Select(log => log.log).ToList();
+        if(isInEditMode)
+        {
+            displayedLogs = StrategicGameState.Instance.logs.ToList();
+        }
+        else
+        {
+            displayedLogs = StrategicGameState.Instance.logs.Where(log => log.sideObjectId == null || log.sideObjectId == viewerSideId).ToList();
+        }
     }
 
     public override void OnDestroy()
@@ -275,6 +289,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         gameState.logsRefreshed -= OnLogsRefreshed;
 
         GamePreference.Instance.shortLabelLanguageTypeChanged -= OnShortLabelLanguageTypeChanged;
+        GamePreference.Instance.isInEditModeChanged -= OnIsInEditModeChanged;
     }
 
     void OnShortLabelLanguageTypeChanged(object sender, EventArgs e)
@@ -371,6 +386,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 viewerSideId = sideState?.objectId;
             });
         }
+
+        RefreshDisplayedLogs();
 
         TempFix();
 

@@ -1,5 +1,9 @@
 using NavalCombatCore;
 using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Serialization;
+using Unity.VisualScripting;
+
 
 namespace CoreUtils
 {
@@ -16,6 +20,12 @@ namespace CoreUtils
 
     //     public List<ShipLog> shipLogs { get; set; }
     // }
+
+    public class BoolKV
+    {
+        public string key;
+        public bool value;
+    }
 
     public partial class AbstractGameState// : IAbstractGameState
     {
@@ -41,6 +51,26 @@ namespace CoreUtils
         public List<ShipLog> shipLogs = new();
 
         // public int referenceTimeZoneOffset = +8; // +8 timezone
+
+        public List<BoolKV> serializedCustomBoolMap
+        {
+            get
+            {
+                var ret = customBoolMap.Select(kv => new BoolKV(){key=kv.Key, value=kv.Value}).ToList();
+                ret.Sort((x, y) => x.key.CompareTo(y.key));
+                return ret;
+            }
+            set
+            {
+                foreach(var kv in value)
+                {
+                    customBoolMap[kv.key] = kv.value;
+                }
+            }
+        }
+
+        [XmlIgnore]
+        public Dictionary<string, bool> customBoolMap = new();
 
         public string LeadersToXML()
         {

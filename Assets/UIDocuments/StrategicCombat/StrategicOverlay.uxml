@@ -27,6 +27,6 @@
                 </Bindings>
             </ui:Button>
         </ui:VisualElement>
-        <ui:ListView name="LastLogListView" data-source-path="displayedLogs" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/LazyLocalizedStringLabel.uxml?fileID=9197481963319205126&amp;guid=6a6fea6fc6c129443ab403d9a03952de&amp;type=3#LazyLocalizedStringLabel" virtualization-method="DynamicHeight" fixed-item-height="10" style="flex-grow: 1;"/>
+        <ui:ListView name="LastLogListView" data-source-path="displayedLogs" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/SidedLazyLocalizedStringLabel.uxml?fileID=9197481963319205126&amp;guid=a99106e670f344e499e6054a8b94489b&amp;type=3#SidedLazyLocalizedStringLabel" virtualization-method="DynamicHeight" fixed-item-height="10" style="flex-grow: 1;"/>
     </ui:VisualElement>
 </ui:UXML>

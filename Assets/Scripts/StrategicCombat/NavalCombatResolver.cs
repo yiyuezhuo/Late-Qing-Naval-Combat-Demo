@@ -67,9 +67,8 @@ public class NavalCombatResolver // Dialog
 
     [CreateProperty]
     public string battleName => Localize(
-        "The battle of Cell ({0}, {1})",
-        cell.x,
-        cell.y
+        "The battle of Cell ({0})",
+        cell.GetLocationSummary()
     );
     // public string battleName => $"The battle of Cell ({cell.x}, {cell.y})";
 

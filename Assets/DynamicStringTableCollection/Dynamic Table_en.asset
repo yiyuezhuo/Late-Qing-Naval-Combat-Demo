@@ -2065,7 +2065,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7935301802168320
-    m_Localized: The battle of Cell ({0}, {1})
+    m_Localized: The battle of Cell ({0})
     m_Metadata:
       m_Items: []
   - m_Id: 7954009010376704
@@ -2587,6 +2587,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 26863956800475136
     m_Localized: Unspecified
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28953267725307904
+    m_Localized: Replace commander {0} => {1} ({2})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28964209406152704
+    m_Localized: '[{0}]: {1}'
     m_Metadata:
       m_Items: []
   references:

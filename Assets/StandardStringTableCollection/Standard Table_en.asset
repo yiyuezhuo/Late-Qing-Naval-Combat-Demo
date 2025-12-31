@@ -2398,6 +2398,10 @@ MonoBehaviour:
     m_Localized: Select a side to be controlled by the current player.
     m_Metadata:
       m_Items: []
+  - m_Id: 43551206120525824
+    m_Localized: 'Enable Vladivostok Squadron Script '
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

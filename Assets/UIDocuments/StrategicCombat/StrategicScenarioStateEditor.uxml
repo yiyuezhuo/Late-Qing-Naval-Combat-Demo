@@ -26,16 +26,22 @@
                     </Bindings>
                 </ui:Label>
             </ui:VisualElement>
-            <ui:Toggle label="Enable First Sino-Japanese War High Command">
-                <Bindings>
-                    <ui:DataBinding property="value" data-source-path="enableSinoJapaneseHighCommand" binding-mode="TwoWay"/>
-                </Bindings>
-            </ui:Toggle>
             <ui:EnumField label="Contact Report Estimation Mode" value="Center" type="StrategicCombatCore.NavalForceEstimation+Rule+Mode, Assembly-CSharp">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="estimationRuleMode" binding-mode="TwoWay"/>
                 </Bindings>
             </ui:EnumField>
+            <ui:Toggle label="Enable First Sino-Japanese War High Command">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="enableSinoJapaneseHighCommand" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:Toggle>
+            <ui:Toggle label="Enable Vladivostok Squadron Script ">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(43551206120525824)"/>
+                    <ui:DataBinding property="value" data-source-path="enableVladivostokSquadronScript" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:Toggle>
         </ui:VisualElement>
         <ui:Button text="Confirm" name="ConfirmButton">
             <Bindings>

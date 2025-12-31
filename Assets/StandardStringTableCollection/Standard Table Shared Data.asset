@@ -2312,6 +2312,10 @@ MonoBehaviour:
     m_Key: Select a side to be controlled by the current player.
     m_Metadata:
       m_Items: []
+  - m_Id: 43551206120525824
+    m_Key: 'Enable Vladivostok Squadron Script '
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

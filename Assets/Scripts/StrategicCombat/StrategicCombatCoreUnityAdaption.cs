@@ -243,7 +243,7 @@ namespace StrategicCombatCore
         public string assignedMissionName => EntityManager.Instance.Get<StrategicMission>(assignedMissionObjectId)?.name?.mergedName ?? "[Undefined or Invalid]";
 
         [CreateProperty]
-        public string subordinateSummary => $"{combinedSubUnitSize} sub units, {GetStrengthMen()} men, {GetShipTons()} tons ships, {GetSupplyCostTonsPerDay()} tons supply cost/day";
+        public string subordinateSummary => $"{combinedSubUnitSize} sub units, {GetStrengthMen()} men, {GetShipTons()} tons ships, {GetSupplyCostTonsPerDay()} tons supply cost/day, {supplyStatsProp}";
 
         [CreateProperty]
         public string containerName => EntityManager.Instance.Get<ShipLog>(containerObjectId)?.namedShip?.name?.mergedName ?? "[Undefined or Invalid]";
@@ -257,33 +257,30 @@ namespace StrategicCombatCore
         [CreateProperty]
         public bool isInRestorableState => posture == GroupPostureType.Disengaged || posture == GroupPostureType.Reorganized;
 
-        // [CreateProperty]
-        // public float commandCapacity => GetCommandCapacity();
-
-        // [CreateProperty]
-        // public float combinedCommandUsage => GetCombinedCommandUsage();
-
-        // [CreateProperty]
-        // public string commandDesc => $"Command: {GetCombinedCommandUsage()}/{GetCommandCapacity()}, Chance Cost: {GetChanceCostModifier():+0.00%;-0.00%;0.00%}, Tactical Modifier: {GetTacticalModifier():+0.00%;-0.00%;0.00%}";
-    
-        // [CreateProperty]
-        // public string commandDesc
-        // {
-        //     get
-        //     {
-        //         var (usageDirect, usage, accCostMod, currentLayerCostMod) = GetAverageAccumulatedChanceCostModifier();
-        //         // var costMod = GetChanceCostModifier();
-        //         var commandCap = GetCommandCapacity();
-        //         var tacMod = GetTacticalModifier();
-        //         return $"Command: {usage}/{commandCap}, Chance Cost: {currentLayerCostMod:+0.00%;-0.00%;0.00%} (Acc Avg: {accCostMod:+0.00%;-0.00%;0.00%}), Tactical Modifier: {tacMod:+0.00%;-0.00%;0.00%}";
-        //     }
-        // }
-
         [CreateProperty]
         public string commandDesc => GetCommandDesc().Resolve();
 
         [CreateProperty]
         public StyleFloat timelinessOpacity => 1;
+
+        // [CreateProperty]
+        // public double supplyTonsProp => GetSupplyTons();
+
+        // [CreateProperty]
+        // public double supplyCapTonsProp => GetSupplyCapTons();
+
+        [CreateProperty]
+        public string supplyStatsProp
+        {
+            get
+            {
+                var supplyTons = GetSupplyTons();
+                var supplyCapTons = GetSupplyCapTons();
+                var supplyPercent = supplyTons / supplyCapTons;
+                var percentStr = supplyPercent.ToString("P");
+                return $"{supplyTons:0.0}/{supplyCapTons:0.0} tons ({percentStr})";
+            }
+        }
     }
 
     public partial class StrategicGroupReference
@@ -968,6 +965,12 @@ namespace StrategicCombatCore
             }
         }
     }
+
+    public partial class SidedLazyLocalizedString
+    {
+        [CreateProperty]
+        public string resolvedString => GamePreference.Instance.isInEditMode ? GetSidedLog().Resolve() : log.Resolve();
+    }
 }
 
 namespace NavalCombatCore
@@ -996,4 +999,5 @@ namespace CoreUtils
         [CreateProperty]
         public string resolvedString => Resolve();
     }
+
 }

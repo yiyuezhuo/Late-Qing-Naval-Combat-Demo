@@ -132,7 +132,21 @@ public class GamePreference
     [CreateProperty]
     public CoreParameter navalCombatCoreParameter => CoreParameter.Instance;
 
-    public bool isInEditMode;
+    bool _isInEditMode;
+    public bool isInEditMode
+    {
+        get => _isInEditMode;
+        set
+        {
+            if (_isInEditMode != value)
+            {
+                _isInEditMode = value;
+                isInEditModeChanged?.Invoke(this, value);
+            }
+        }
+    }
+
+    public event EventHandler<bool> isInEditModeChanged;
 
     public void SetShortLabelLanguageTypeByLocale(Locale locale)
     {

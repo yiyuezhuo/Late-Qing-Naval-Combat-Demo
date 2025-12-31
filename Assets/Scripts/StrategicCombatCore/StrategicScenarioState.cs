@@ -42,6 +42,7 @@ namespace StrategicCombatCore
         public AreaSystem areaSystem = new();
         public bool enableSinoJapaneseHighCommand = true;
         public bool enableContactReportBasedNavalCombat = true;
+        public bool enableVladivostokSquadronScript = false;
 
         public NavalForceEstimation.Rule.Mode estimationRuleMode = NavalForceEstimation.Rule.Mode.SinoJapaneseWar;
         public NavalForceEstimation.EstimationCategoryConfig GetEstimationCategoryConfig(NavalForceEstimation.EstimationCategory estimationCategory) => 

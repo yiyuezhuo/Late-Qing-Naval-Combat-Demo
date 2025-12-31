@@ -42,7 +42,8 @@ namespace StrategicCombatCore
             {
                 var subordinate = subordinateRef.Get();
                 var shipLog = subordinate as ShipLog;
-                if (shipLog != null)
+                // if (shipLog != null)
+                if (shipLog != null && shipLog.mapState == MapState.Deployed)
                 {
                     var shipLogCloned = XmlUtils.FromXML<ShipLog>(XmlUtils.ToXML(shipLog));
                     shipLogCloned.ClearLogs(); // Detach old logs for sandboxing

@@ -274,6 +274,8 @@ namespace StrategicCombatCore
         public GroupPostureType posture;
         public int restoredHours;
 
+        public bool forcedReturningToBase; // RTB due to Out of Fuel
+
         public static Dictionary<StrategicUnitSize, string> sizeStrMap = new()
         {
             { StrategicUnitSize.Unspecified, "O" },
@@ -350,6 +352,22 @@ namespace StrategicCombatCore
             }
             return supplySum;
         }
+
+        public double GetSupplyTons()
+        {
+            var landUnitSupplyTons = WalkGroupMembers<LandUnit>().Sum(landUnit => landUnit.supplyTons);
+            var shipSupplyTons = WalkGroupMembers<ShipLog>().Sum(ship => ship.supplyTons);
+            return landUnitSupplyTons + shipSupplyTons;
+        }
+
+        public double GetSupplyCapTons()
+        {
+            var landUnitSupplyTonsCap = WalkGroupMembers<LandUnit>().Sum(landUnit => landUnit.GetSupplyCapTons());
+            var shipSupplyTonsCap = WalkGroupMembers<ShipLog>().Sum(ship => ship.GetSupplyCapTons());
+            return landUnitSupplyTonsCap + shipSupplyTonsCap;
+        }
+
+        // public double GetSupplyPercent() => GetSupplyTons() / GetSupplyCapTons();
 
         // From Vacuum or to vacuum, or move to other cell through vacuum.
         // public void MoveToXY(int toX, int toY, bool moveThroughEdge)
@@ -885,7 +903,8 @@ namespace StrategicCombatCore
             var depotGroup = GetDepotGroup();
             if (depotGroup == null)
                 return false;
-            return depotGroup.x == x && depotGroup.y == y;
+            return cell == depotGroup.cell;
+            // return depotGroup.x == x && depotGroup.y == y;
         }
 
         public IEnumerable<ShipLog> WalkGroupMembersDeployedShips()
@@ -1064,17 +1083,29 @@ namespace StrategicCombatCore
             {
                 // var groupCell = cell;
                 var depotCell = GetDepotGroup().cell;
-                if(depotCell != null && plannedPath.Count >= 1 && plannedPath[^1].GetCell() != depotCell)
+                if(depotCell != null)
                 {
-                    if(!IsFleetHasSufficientFuelToReturnHome())
+                    if(cell == depotCell)
                     {
-                        StartReturnToBase(0);
-
-                        var mission = GetAssignedMission();
-                        if(mission != null && !mission.interrupted)
+                        forcedReturningToBase = false;
+                    }
+                    else
+                    {
+                        if(forcedReturningToBase || !IsFleetHasSufficientFuelToReturnHome())
                         {
-                            mission.interrupted = true;
-                            // TODO: Notify other group assigned to this mission to return?
+                            forcedReturningToBase = true;
+
+                            var mission = GetAssignedMission();
+                            if(mission != null && !mission.interrupted)
+                            {
+                                mission.interrupted = true;
+                                // TODO: Notify other group assigned to this mission to return?
+                            }
+
+                            if(plannedPath.Count == 0 || (plannedPath.Count >= 1 && plannedPath[^1].GetCell() != depotCell))
+                            {
+                                StartReturnToBase(0);
+                            }
                         }
                     }
                 }

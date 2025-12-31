@@ -514,6 +514,10 @@ namespace StrategicCombatCore
             return $"Cell({x}, {y}, {objectId}, {terrain})";
         }
 
+        /// <summary>
+        /// Used to short (x, y, label) prompt
+        /// </summary>
+        /// <returns></returns>
         public string GetLocationSummary()
         {
             if(objectId != null)

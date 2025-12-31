@@ -11,8 +11,11 @@ public class StrategicOverlay : SingletonDocument<StrategicOverlay>
         root.dataSource = StrategicGameManager.Instance;
         Utils.BindItemsSourceRecursive(root);
 
-        root.Q<Button>("ClearLogButton").clicked += () => StrategicGameState.Instance.logs.Clear();
-
+        root.Q<Button>("ClearLogButton").clicked += () => 
+        {
+            StrategicGameState.Instance.ClearLogs();
+            // StrategicGameState.Instance.Refresh
+        };
     }
 
 

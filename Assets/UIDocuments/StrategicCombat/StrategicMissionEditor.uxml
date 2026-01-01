@@ -50,17 +50,20 @@
                                 <AttributeOverrides element-name="GlobalStringLabel" text="Name"/>
                             </ui:Instance>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                <ui:Toggle label="Active">
+                                <ui:Label text="Active"/>
+                                <ui:Toggle>
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="active" binding-mode="TwoWay"/>
                                     </Bindings>
                                 </ui:Toggle>
-                                <ui:Toggle label="Completed">
+                                <ui:Label text="Completed"/>
+                                <ui:Toggle>
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="completed" binding-mode="TwoWay"/>
                                     </Bindings>
                                 </ui:Toggle>
-                                <ui:Toggle label="Interrupted">
+                                <ui:Label text="Interrupted"/>
+                                <ui:Toggle>
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="interrupted" binding-mode="TwoWay"/>
                                     </Bindings>
@@ -168,7 +171,7 @@
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1;">
                                 <ui:VisualElement data-source-path="asOneShotSortie" style="flex-grow: 1;">
-                                    <ui:EnumField label="One-shot Sortie State" value="Center" type="StrategicCombatCore.OneShotRaidingMission+OneShotRaidingState, Assembly-CSharp">
+                                    <ui:EnumField label="One-shot Sortie State" value="Center" type="StrategicCombatCore.OneShotSortieMission+OneShotSortieState, Assembly-CSharp">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="oneShotSortieState" binding-mode="TwoWay"/>
                                         </Bindings>

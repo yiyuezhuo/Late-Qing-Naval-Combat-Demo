@@ -165,6 +165,14 @@ public class NavalCombatResolver // Dialog
                 foreach (var group in effectedGroups)
                 {
                     group.StartReturnToBase(24);
+
+                    // TODO: Consolidate Code
+                
+                    var mission = group.GetAssignedMission();
+                    if(mission != null)
+                    {
+                        mission.interrupted = true;
+                    }
                 }
 
                 StrategicGameState.Instance.RefreshPendingNavalCombats(); // Or just remove the current combat? Refresh would re-assign new id to combats, which may not ideal to me.

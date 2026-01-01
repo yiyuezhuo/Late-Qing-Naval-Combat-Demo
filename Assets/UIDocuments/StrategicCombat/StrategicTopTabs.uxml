@@ -3,7 +3,7 @@
     <ui:VisualElement style="flex-grow: 0; background-color: rgba(255, 255, 255, 0.49);">
         <ui:TabView data-source-type="StrategicGameManager, Assembly-CSharp">
             <ui:Tab label="Command">
-                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Resolve Turn" name="NextTurnButton" style="display: none;">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3470675827920896)"/>
@@ -27,6 +27,16 @@
                     <ui:Button text="Sub Combat Resolver" name="SubStrategicCombatResolverButton" style="display: none;">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3474825257062400)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Missions" name="StrategicMissionEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11053886028288000)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="OOB Tree" name="OOBTreeButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022935840002048)"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Label text="Edit Mode">
@@ -133,17 +143,7 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(357022840819712)"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Missions" name="StrategicMissionEditorButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11053886028288000)"/>
-                        </Bindings>
-                    </ui:Button>
                     <ui:Button text="Reset Strength &amp; Supply" name="ResetStrengthSupplyButton"/>
-                    <ui:Button text="OOB Tree" name="OOBTreeButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022935840002048)"/>
-                        </Bindings>
-                    </ui:Button>
                     <ui:Button text="Land Battle" name="LandBattleEditorButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30245956232056832)"/>

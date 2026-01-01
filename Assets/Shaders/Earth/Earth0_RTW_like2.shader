@@ -14,8 +14,12 @@ Shader "Unlit/Earth0_RTW_like2"
         _LandColorDark ("Land Color (Dark)", Color) = (0.0588, 0.1568, 0.1843)
         _SeaColorDark ("Sea Color (Dark)", Color) = (0.0235, 0.0274, 0.0431, 1)
 
+        _SeaTex ("Sea Texture", 2D) = "white" {}
+        _SeaTexScale ("Sea Texture Scale", Float) = 1
+
         [Toggle] _UseROI ("Use ROI", Float) = 1
         [Toggle] _UseDark ("Use Dark", Float) = 0
+        [Toggle] _UseSeaTex ("Use Sea Texture", Float) = 1
     }
     SubShader
     {
@@ -68,8 +72,13 @@ Shader "Unlit/Earth0_RTW_like2"
             float4 _LandColorDark;
             float4 _SeaColorDark;
 
+            sampler2D _SeaTex;
+            float _SeaTexScale;
+
             float _UseROI;
             float _UseDark;
+            float _UseSeaTex;
+
 
 
             float4 getColorLight(float h) // JTS-like
@@ -82,9 +91,25 @@ Shader "Unlit/Earth0_RTW_like2"
                 return h > 0 ? (1-sqrt(h)*3.5) * _LandColorDark : _SeaColorDark;
             }
 
-            float4 getColor(float h)
+            float4 getLandColor(float h)
             {
-                return _UseDark ? getColorDark(h) : getColorLight(h);
+                return (_UseDark ? _LandColorDark : _LandColor) * (1-sqrt(h)*3.5);
+            }
+
+            float4 getSeaColor(float h, float2 longLatDeg)
+            {
+                if(_UseSeaTex)
+                {
+                    // return tex2D(_SeaTex, longLatDeg * _SeaTexScale);
+                    return tex2D(_SeaTex, longLatDeg * _SeaTexScale) * 2; // x2 is the temp hack to enhance shallow water to be more visible
+                }
+                return _UseDark ? _SeaColorDark : _SeaColor;
+            }
+
+            float4 getColor(float h, float2 longLatDeg)
+            {
+                // return _UseDark ? getColorDark(h) : getColorLight(h);
+                return h > 0 ? getLandColor(h) : getSeaColor(h, longLatDeg);
             }
 
             v2f vert (appdata v)
@@ -119,19 +144,16 @@ Shader "Unlit/Earth0_RTW_like2"
                     
                     float u = (longitudeDeg - _ROILonDeg0) / (_ROILonDeg1 - _ROILonDeg0);
                     float v = (latitudeDeg - _ROILatDeg0) / (_ROILatDeg1 - _ROILatDeg0);
+                    
                     float2 texCoord = float2(u, v);
                     float h = tex2D(_HeightTexROI, texCoord);
-                    // col = h > 0 ? _LandColor : _SeaColor;
-                    col = getColor(h);
+                    col = getColor(h, longLatDeg);
                 }
                 else
                 {
                     float2 texCoord = longitudeLatitudeToUV(longLatRad);
                     float h = tex2D(_HeightTex, texCoord);
-                    // col = h > 0 ? _LandColor : _SeaColor;
-                    // col = h > 0 ? h * _LandColor * 10 : _SeaColor;
-                    // col = h > 0 ? (1-h * 20) * _LandColor : _SeaColor;
-                    col = getColor(h);
+                    col = getColor(h, longLatDeg);
                 }
 
                 // float h = tex2D(_HeightTex, texCoord);

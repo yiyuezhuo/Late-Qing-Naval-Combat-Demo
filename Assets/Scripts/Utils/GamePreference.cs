@@ -45,35 +45,49 @@ public class GamePreference
 
     public float dayAdvanceHourIntervalSeconds = 0.05f;
 
-    bool _earthDarkThemeSetup = false;
-    bool _earthDarkTheme;
+    // bool _earthDarkThemeSetup = false;
+    // bool _earthDarkTheme;
 
     [CreateProperty]
     public bool earthDarkTheme
     {
-        get
-        {
-            if (_earthDarkThemeSetup || !SuperGameState.Instance.IsInNavalGame())
-            {
-                return _earthDarkTheme;
-            }
+        get => SphereController.earthDarkTheme;
+        set => SphereController.earthDarkTheme = value;
+        // get
+        // {
+        //     if (_earthDarkThemeSetup || !SuperGameState.Instance.IsInNavalGame())
+        //     {
+        //         return _earthDarkTheme;
+        //     }
 
-            _earthDarkThemeSetup = true;
-            _earthDarkTheme = SphereController.Instance?.earthDarkTheme ?? false;
-            return _earthDarkTheme;
-        }
-        set
-        {
-            if (!SuperGameState.Instance.IsInNavalGame())
-                return;
+        //     _earthDarkThemeSetup = true;
+        //     _earthDarkTheme = SphereController.Instance?.shaderEarthDarkTheme ?? false;
+        //     return _earthDarkTheme;
+        // }
+        // set
+        // {
+        //     // if (!SuperGameState.Instance.IsInNavalGame())
+        //     //     return;
 
-            _earthDarkTheme = value;
-            SphereController.Instance.earthDarkTheme = _earthDarkTheme;
-        }
+        //     _earthDarkTheme = value;
+
+        //     var sphereController = SphereController.Instance;
+        //     if(sphereController != null)
+        //     {
+        //         sphereController.shaderEarthDarkTheme = _earthDarkTheme;
+        //     }
+        // }
     }
 
     [CreateProperty]
-    public bool earthDarkThemeEnabled => SuperGameState.Instance.IsInNavalGame();
+    public bool earthUseSeaTexture
+    {
+        get => SphereController.useSeaTexture;
+        set => SphereController.useSeaTexture = value;
+    }
+
+    // [CreateProperty]
+    // public bool earthDarkThemeEnabled => SuperGameState.Instance.IsInNavalGame();
 
     public bool forcedNavalCombatResolution = true;
     public bool showAIDialog = true;

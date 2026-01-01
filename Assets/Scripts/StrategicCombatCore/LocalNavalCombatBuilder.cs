@@ -71,7 +71,7 @@ namespace StrategicCombatCore
             chineseTraditional = "艦隊"
         };
 
-        void StartScan(SideState side, List<StrategicGroup> strategicGroups)
+        ShipGroup StartScan(SideState side, List<StrategicGroup> strategicGroups)
         {
             var shipGroup = new ShipGroup() // Top Ship Group
             {
@@ -95,6 +95,18 @@ namespace StrategicCombatCore
                 var mostPowerfulgroup = strategicGroups[maxIdx];
                 shipGroup.leaderReference.referenceObjectId = mostPowerfulgroup.leaderReference.referenceObjectId;
             }
+
+            var viewerSide = StrategicGameManager.Instance.GetViewerSide();
+            if(viewerSide != null)
+            {
+                if(side != viewerSide)
+                {
+                    shipGroup.doctrine.maneuverAutomaticType.isInherited = false;
+                    shipGroup.doctrine.maneuverAutomaticType.value = AutomaticType.Automatic; 
+                }
+            }
+
+            return shipGroup;
         }
 
         // void ScanStrategicGroups(List<StrategicGroup> strategicGroups)
@@ -117,8 +129,8 @@ namespace StrategicCombatCore
             // strategicGroups = strategicGroups ?? new List<StrategicGroup>();
 
             // ScanStrategicGroups(strategicGroups);
-            StartScan(pendingNavalCombat.sideState0.side, pendingNavalCombat.sideState0.GetGroups());
-            StartScan(pendingNavalCombat.sideState1.side, pendingNavalCombat.sideState1.GetGroups());
+            var side0rootGroup = StartScan(pendingNavalCombat.sideState0.side, pendingNavalCombat.sideState0.GetGroups());
+            var side1rootGroup = StartScan(pendingNavalCombat.sideState1.side, pendingNavalCombat.sideState1.GetGroups());
 
             return new FullState()
             {

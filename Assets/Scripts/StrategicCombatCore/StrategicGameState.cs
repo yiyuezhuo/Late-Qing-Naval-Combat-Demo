@@ -472,6 +472,9 @@ namespace StrategicCombatCore
 
             CombinedAutoCombinableAndDissolvable();
 
+            Advance1HourForContactReport();
+            Advance1HourForRaiding();
+
             RefreshPendingNavalCombats();
 
             RestoreLandUnitEffectivness(); // Restore here so player can check states after damage
@@ -480,7 +483,6 @@ namespace StrategicCombatCore
 
             ForceDisengageStaticGroup();
 
-            Advance1HourForContactReport();
 
             Advance1HourForScripts();
         }
@@ -509,11 +511,6 @@ namespace StrategicCombatCore
             {
                 var cell = cellFleetGroupsGrouping.Key;
                 var sideFleetGroupsGroupings = cellFleetGroupsGrouping.GroupBy(g => g.side).ToList();
-                // var cellSideToCellGroups = cell.StrategicGroupReferences
-                //     .Select(r => r.Get())
-                //     .Where(g => g.type == StrategicGroup.Type.Fleet)
-                //     .GroupBy(g => g.side)
-                //     .ToDictionary(gp => gp.Key, gp => gp.ToList());
 
                 foreach(var observedSideFleetGroupsGrouping in sideFleetGroupsGroupings)
                 {
@@ -538,7 +535,7 @@ namespace StrategicCombatCore
                         {
                             observerSideToSearchValue[observerSide] = 0;
                         }
-                        observerSideToSearchValue[observerSide] += observerDeployShipCount;
+                        observerSideToSearchValue[observerSide] += observerDeployShipCount; // Use a coef?
                     }
 
                     foreach(var (observerSide, observerSideSearchValue) in observerSideToSearchValue)
@@ -546,28 +543,34 @@ namespace StrategicCombatCore
                         if(observerSide != observedSide)
                         {
                             var combinedSearchValue = observerSideSearchValue + totalFootprint;
-                            var searchAreaCoef = Math.Max(cell.SearchAreaSqKm, 1) / 2500; // TODO: Redesign is expected, now handle it as a const 1
+                            // Cancel cell.SearchAreaSqKm to favor of hard-coded parameter to find a good "feel" now, poor "analytic" model should be abandoned at this point.
+                            // var searchAreaCoef = Math.Max(cell.SearchAreaSqKm, 1) / 2500; // TODO: Redesign is expected, now handle it as a const 1
+                            var searchAreaCoef = cell.IsAreaCell() ? 3 : 0.5f;
                             if(RandomUtils.NextFloat() <= combinedSearchValue / (100 * searchAreaCoef))
                             {
                                 var key = (observerSide, observedSide, cell);
-                                if(!observerObservedCellToContactReport.TryGetValue(key, out var matchedContactReport))
-                                {
-                                    matchedContactReport = new()
-                                    {
-                                        observerSideId = observerSide.objectId,
-                                        observedSideId = observedSide.objectId,
-                                        position = cell.ToXY(),
-                                    };
-                                    EntityManager.Instance.Register(matchedContactReport, this);
-                                    navalContactReports.Add(matchedContactReport);
-                                }
+                                var matchedContactReport = observerObservedCellToContactReport.GetValueOrDefault(key);
+                                UpdateContactReport(observerSide, observedSide, cell, observedSideDeployedShipLogs, matchedContactReport);
 
-                                // matchedContactReport.UpdateTo(scenarioState.dateTime, shipLogs);
-                                matchedContactReport.UpdateTo(scenarioState.dateTime, observedSideDeployedShipLogs);
+                                // var key = (observerSide, observedSide, cell);
+                                // if(!observerObservedCellToContactReport.TryGetValue(key, out var matchedContactReport))
+                                // {
+                                //     matchedContactReport = new()
+                                //     {
+                                //         observerSideId = observerSide.objectId,
+                                //         observedSideId = observedSide.objectId,
+                                //         position = cell.ToXY(),
+                                //     };
+                                //     EntityManager.Instance.Register(matchedContactReport, this);
+                                //     navalContactReports.Add(matchedContactReport);
+                                // }
+
+                                // // matchedContactReport.UpdateTo(scenarioState.dateTime, shipLogs);
+                                // matchedContactReport.UpdateTo(scenarioState.dateTime, observedSideDeployedShipLogs);
                                 
-                                var msg = $"Contact Report: {matchedContactReport}";
-                                ServiceLocator.Get<ILoggerService>().Log(msg);
-                                AddLog(msg, observerSide);
+                                // var msg = $"Contact Report: {matchedContactReport}";
+                                // ServiceLocator.Get<ILoggerService>().Log(msg);
+                                // AddLog(msg, observerSide);
                             }
                         }
                     }
@@ -582,6 +585,71 @@ namespace StrategicCombatCore
                 navalContactReports.Remove(outdatedContactReport);
 
                 // erviceLocator.Get<ILoggerService>().Log($"Lost Contact: {outdatedContactReport}");
+            }
+        }
+
+        public void UpdateContactReport(SideState observerSide, SideState observedSide, Cell cell, List<ShipLog> observedSideDeployedShipLogs, NavalContactReport matchedContactReport)
+        {
+            if(matchedContactReport == null)
+            {
+                matchedContactReport = new()
+                {
+                    observerSideId = observerSide.objectId,
+                    observedSideId = observedSide.objectId,
+                    position = cell.ToXY(),
+                };
+                EntityManager.Instance.Register(matchedContactReport, this);
+                navalContactReports.Add(matchedContactReport);
+            }
+
+            // matchedContactReport.UpdateTo(scenarioState.dateTime, shipLogs);
+            matchedContactReport.UpdateTo(scenarioState.dateTime, observedSideDeployedShipLogs);
+            
+            var msg = $"Contact Report: {matchedContactReport}";
+            ServiceLocator.Get<ILoggerService>().Log(msg);
+            AddLog(msg, observerSide);
+        }
+
+        public void Advance1HourForRaiding()
+        {
+            foreach(var cellFleetGroupsGrouping in IterIndependentStrategicGroups()
+                    .Where(g => g.type == StrategicGroup.Type.Fleet)
+                    .GroupBy(g => g.cell))
+            {
+                var cell = cellFleetGroupsGrouping.Key;
+                var sideFleetGroupsGroupings = cellFleetGroupsGrouping.GroupBy(g => g.side).ToList();
+                var searchAreaCoef = cell.IsAreaCell() ? 3 : 0.5f;
+
+                foreach(var sideFleetGroupsGrouping in sideFleetGroupsGroupings)
+                {
+                    var raidingSide = sideFleetGroupsGrouping.Key;
+                    var raidingFleetGroups = sideFleetGroupsGrouping.ToList();
+                    var raidingSideSearchShips = raidingFleetGroups.Sum(g => g.WalkGroupMembersDeployedShips().Count());
+                    var raidingSideSearchValue = raidingSideSearchShips * 1f;
+
+                    foreach(var raidedSideInfo in cell.CellSideInfos.Where(info => info.sideObjectId != raidingSide.objectId && info.merchantShipTraffic > 0))
+                    {
+                        var merchantShipProb = raidedSideInfo.merchantShipTraffic / 100;
+                        if(RandomUtils.NextFloat() <= merchantShipProb) // A potential target appear
+                        {
+                            if(RandomUtils.NextFloat() <= raidingSideSearchValue / (100 * searchAreaCoef))
+                            {
+                                // Locate and destroy a cargo (assume no ammu is used at the current setting)
+                                raidingSide.victoryPoints += 1;
+                                AddLog($"Raiders of {raidingSide.name.GetShortName()} sink a merchant ship in the {cell.GetLocationSummary()}", null);
+
+                                var raidedSide = raidedSideInfo.GetSide();
+                                UpdateContactReport(
+                                    raidedSide,
+                                    raidingSide,
+                                    cell,
+                                    raidingFleetGroups.SelectMany(g => g.WalkGroupMembersDeployedShips()).ToList(),
+                                    navalContactReports.FirstOrDefault(c => c.observerSideId == raidedSide.objectId && c.observedSideId == raidingSide.objectId && c.GetCell() == cell)
+                                );
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -795,11 +863,20 @@ namespace StrategicCombatCore
             }
         }
 
+        public static Leader FindStrategicLeaderFromGroups(List<StrategicGroup> groups)
+        {
+            var groupTons = groups.Select(g => g.GetShipTons()).ToList();
+            var maxGroupTons = groupTons.Max();
+            var maxIdx = groupTons.IndexOf(maxGroupTons);
+            return groups[maxIdx].leaderReference.Get(); // TODO: Infer leader from subordinate
+        }
+
         public void RefreshPendingNavalCombats()
         {
             pendingNavalCombats.Clear();
 
-            var recentContactReportPairSets = navalContactReports.Where(c => c.GetTimeSpanToCurrent().TotalHours <= 2).Select(c => (c.GetObserverSide(), c.GetObservedSide())).ToHashSet();
+            // var recentContactReportPairSets = navalContactReports.Where(c => c.GetTimeSpanToCurrent().TotalHours <= 2).Select(c => (c.GetObserverSide(), c.GetObservedSide())).ToHashSet();
+            var recentContactReportPairSets = navalContactReports.Where(c => c.GetTimeSpanToCurrent().TotalHours <= 0).Select(c => (c.GetObserverSide(), c.GetObservedSide())).ToHashSet();
 
             foreach (var g in strategicGroups.Where(g => g.NavalCombatable()).GroupBy(g => g.cell))
             {
@@ -823,6 +900,54 @@ namespace StrategicCombatCore
                     }
 
                     var pendingCombatGenerated = g0attackable || g1attackable;
+
+                    // Strategic Maneuver Disengagement Roll
+                    if(scenarioState.enableStrategicDisengagementRoll && pendingCombatGenerated && !(g0hasActive && g1hasActive))
+                    {
+                        var g0leader = FindStrategicLeaderFromGroups(g0.ToList());
+                        var g1leader = FindStrategicLeaderFromGroups(g1.ToList());
+                        var g0maneuverValue = StrategicGroup.GetManeuverValue(g0leader);
+                        var g1maneuverValue = StrategicGroup.GetManeuverValue(g1leader);
+                        var g0roll = RandomUtils.D6();
+                        var g1roll = RandomUtils.D6();
+                        var g0finalValue = g0maneuverValue + g0roll;
+                        var g1finalValue = g1maneuverValue + g1roll;
+
+                        var side0Name = g0.Key.name.GetShortName();
+                        var side1Name = g1.Key.name.GetShortName();
+
+                        var generalDesc = $"Maneuver Roll: {side0Name} {g0leader?.name?.GetShortName()} ({g0maneuverValue} + {g0roll} = {g0finalValue}) vs {side1Name} {g1leader?.name?.GetShortName()} ({g1maneuverValue} + {g1roll} = {g1finalValue})";
+                        var resultDesc = "";
+
+                        if(g0hasActive && !g1hasActive) // g1 try to disengage from g0
+                        {
+                            if(g0finalValue >= g1finalValue)
+                            {
+                                pendingCombatGenerated = true;
+                                resultDesc = $"{side1Name} failed to disengage";
+                            }
+                            else
+                            {
+                                pendingCombatGenerated = false;
+                                resultDesc = $"{side1Name} succuess to disengage";
+                            }
+                        }
+                        else if(!g0hasActive && g1hasActive)
+                        {
+                            if(g0finalValue <= g1finalValue)
+                            {
+                                pendingCombatGenerated = true;
+                                resultDesc = $"{side0Name} failed to disengage";
+                            }
+                            else
+                            {
+                                pendingCombatGenerated = false;
+                                resultDesc = $"{side0Name} succuess to disengage";
+                            }
+                        }
+
+                        AddLog($"{generalDesc} {resultDesc}", null);
+                    }
 
                     if(pendingCombatGenerated)
                     {

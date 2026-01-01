@@ -231,6 +231,7 @@ namespace StrategicCombatCore
 
         public IEnumerable<StrategicGroup> IterAssignedStrategicGroups() => groups.Select(r => r.Get() as StrategicGroup).Where(g => g is StrategicGroup).Where(g => g != null);
         public IEnumerable<StrategicGroup> IterAssignedFleetGroups() => IterAssignedStrategicGroups().Where(g => g.type == StrategicGroup.Type.Fleet);
+        public IEnumerable<StrategicGroup> IterAssignedStationedAtBaseGroups() => IterAssignedFleetGroups().Where(g => g.cell == g.GetDepotGroup()?.cell && g.plannedPath.Count == 0);
 
         public void UpdateStrategicGroups()
         {
@@ -763,7 +764,9 @@ namespace StrategicCombatCore
             // Assign strategic groups with enough "integrity" to one-shot raiding missions
             
             // Ignore integrity criteria in the current version.
-            var assignedFleetGroups = IterAssignedFleetGroups().ToList();
+            // var assignedFleetGroups = IterAssignedFleetGroups().ToList();
+            var assignedFleetGroups = IterAssignedStationedAtBaseGroups().ToList();
+
             if(assignedFleetGroups.Count > 0)
             {
                 var leadGroupSide = assignedFleetGroups.First().side;
@@ -854,7 +857,9 @@ namespace StrategicCombatCore
             if(!runningDirectInterception)
             {
                 // Assign idle group to do random sortie
-                var assignedFleetGroups = IterAssignedFleetGroups().ToList();
+                // var assignedFleetGroups = IterAssignedFleetGroups().ToList();
+                var assignedFleetGroups = IterAssignedStationedAtBaseGroups().ToList();
+
                 if(assignedFleetGroups.Count > 0)
                 {
                     var leadGroupSide = assignedFleetGroups.First().side;
@@ -877,7 +882,12 @@ namespace StrategicCombatCore
                     MakeOneChildMissionAndAssignGroupsToCell(assignedFleetGroups, true, dstCell, prefix);
                 }
             }
+        }
 
+        protected override void DoUpdateStrategicGroup(StrategicGroup strategicGroup)
+        {
+            // TODO: Move groups back to its base
+            PlanReturnToBasePathForNonBasedFleet();
         }
     }
 

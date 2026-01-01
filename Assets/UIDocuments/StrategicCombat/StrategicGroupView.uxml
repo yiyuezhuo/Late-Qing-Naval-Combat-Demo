@@ -15,7 +15,7 @@
                 </Bindings>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement style="flex-direction: row;">
             <ui:Label text="Leader">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172656676212736)"/>
@@ -32,7 +32,7 @@
                 </Bindings>
             </ui:Button>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement style="flex-direction: row;">
             <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-basis: 50px;">
                 <ui:Label text="Type">
                     <Bindings>
@@ -82,7 +82,7 @@
                 </ui:EnumField>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement style="flex-direction: row; flex-wrap: wrap;">
             <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
                 <ui:Label text="X"/>
                 <ui:IntegerField style="width: 50px;">
@@ -164,8 +164,14 @@
                     <ui:DataBinding property="style.display" data-source-path="isInRestorableState" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                 </Bindings>
             </ui:VisualElement>
+            <ui:Label text="RTB"/>
+            <ui:Toggle>
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="forcedReturningToBase" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:Toggle>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement style="flex-direction: row;">
             <ui:VisualElement style="flex-grow: 1; flex-basis: 50px; flex-shrink: 0;">
                 <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
                     <ui:Label text="Parent">
@@ -219,7 +225,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement style="flex-direction: row;">
             <ui:Label text="Subordinate summary" style="flex-grow: 1;">
                 <Bindings>
                     <ui:DataBinding property="text" data-source-path="subordinateSummary" binding-mode="ToTarget"/>

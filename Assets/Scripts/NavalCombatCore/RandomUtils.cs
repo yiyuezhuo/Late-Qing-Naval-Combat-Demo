@@ -7,6 +7,7 @@ namespace NavalCombatCore
     {
         public static Random rand = new();
         public static float D100F() => (float)(rand.NextDouble() * 100);
+        public static int D6() => rand.Next(6) + 1;
         public static float NextFloat() => (float)rand.NextDouble();
         public static float NextFloat(float low, float high) => (float)rand.NextDouble() * (high - low) + low;
         public static T Sample<T>(List<T> list) => list[rand.Next(list.Count)];

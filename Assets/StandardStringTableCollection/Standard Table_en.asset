@@ -2402,6 +2402,10 @@ MonoBehaviour:
     m_Localized: 'Enable Vladivostok Squadron Script '
     m_Metadata:
       m_Items: []
+  - m_Id: 43640988616003584
+    m_Localized: 'Enable Strategic Disengagement Roll '
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

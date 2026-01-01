@@ -37,11 +37,6 @@
                                 <ui:DataBinding property="value" data-source-path="terrain" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:EnumField>
-                        <ui:FloatField label="Search Area (km^2)">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="SearchAreaSqKm" binding-mode="TwoWay"/>
-                            </Bindings>
-                        </ui:FloatField>
                         <ui:Toggle label="Ground Control Point">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(358609889955840)"/>

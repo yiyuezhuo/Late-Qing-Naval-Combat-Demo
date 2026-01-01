@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
+using Unity.VisualScripting;
 using YYZ.PathFinding;
 
 namespace StrategicCombatCore
@@ -714,15 +715,6 @@ namespace StrategicCombatCore
             if (depotGroup != null && depotCell != null)
             {
                 TryPlanPathTo(depotCell);
-                // ClearPlannedPath();
-
-                // var graph = new DynamicCellGraphNavy();
-                // var pathCells = PathFinding<Cell>.AStar(graph, cell, depotCell);
-                // if (pathCells.Count >= 2)
-                // {
-                //     // plannedPath.AddRange(pathCells.Select(cell => new XY() { x = cell.x, y = cell.y }));
-                //     plannedPath.AddRange(pathCells.Select(cell => cell.ToXY()));
-                // }
             }
             else
             {
@@ -966,17 +958,20 @@ namespace StrategicCombatCore
         {
             public float chanceCostModifier;
             public float tacticalModifier;
+            public float maneuverValue;
         }
 
         public static Dictionary<LeaderSkillLevel, LeaderSkillLevelInfo> leaderSkillLevelInfo = new()
         {
-            { LeaderSkillLevel.Unknown, new() { chanceCostModifier = 0.3f, tacticalModifier = 0 } },
-            { LeaderSkillLevel.BarelyCompetent, new() { chanceCostModifier = 0.4f, tacticalModifier = -0.1f } },
-            { LeaderSkillLevel.Average, new() { chanceCostModifier = 0.3f, tacticalModifier = 0}},
-            { LeaderSkillLevel.AboveAverage, new() { chanceCostModifier = 0.2f, tacticalModifier = 0.1f}},
-            { LeaderSkillLevel.Outstanding, new() { chanceCostModifier = 0.1f, tacticalModifier = 0.2f}},
-            { LeaderSkillLevel.Gifted, new() { chanceCostModifier = 0.0f, tacticalModifier = 0.3f}},
+            { LeaderSkillLevel.Unknown, new() { chanceCostModifier = 0.3f, tacticalModifier = 0, maneuverValue=2} },
+            { LeaderSkillLevel.BarelyCompetent, new() { chanceCostModifier = 0.4f, tacticalModifier = -0.1f, maneuverValue=1} },
+            { LeaderSkillLevel.Average, new() { chanceCostModifier = 0.3f, tacticalModifier = 0, maneuverValue=2}},
+            { LeaderSkillLevel.AboveAverage, new() { chanceCostModifier = 0.2f, tacticalModifier = 0.1f, maneuverValue=3}},
+            { LeaderSkillLevel.Outstanding, new() { chanceCostModifier = 0.1f, tacticalModifier = 0.2f, maneuverValue=4}},
+            { LeaderSkillLevel.Gifted, new() { chanceCostModifier = 0.0f, tacticalModifier = 0.3f, maneuverValue=5}},
         };
+
+        public static float GetManeuverValue(Leader leader) => leaderSkillLevelInfo[leader?.navalStrategic ?? LeaderSkillLevel.Unknown].maneuverValue;
 
         public static float GetChanceCostModifier(float usage, float cap, LeaderSkillLevel leaderSkillLevel)
         {

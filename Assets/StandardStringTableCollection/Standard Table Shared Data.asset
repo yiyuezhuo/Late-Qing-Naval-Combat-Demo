@@ -2316,6 +2316,14 @@ MonoBehaviour:
     m_Key: 'Enable Vladivostok Squadron Script '
     m_Metadata:
       m_Items: []
+  - m_Id: 43640944441593856
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43640988616003584
+    m_Key: 'Enable Strategic Disengagement Roll '
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

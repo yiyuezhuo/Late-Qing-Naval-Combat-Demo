@@ -4676,10 +4676,10 @@
     <assignedMissionObjectId>0bc88782-6a5d-4149-8832-0e1af6508362</assignedMissionObjectId>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
-    <posture>Active</posture>
+    <posture>Passive</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0</stackPriority>
+    <stackPriority>0.5</stackPriority>
     <objectId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</objectId>
     <strategicGroupReference>
      <referenceId>00552ba8-0962-43c1-9da7-31a07da39aaa</referenceId>
@@ -4956,6 +4956,7 @@
    <enableSinoJapaneseHighCommand>false</enableSinoJapaneseHighCommand>
    <enableContactReportBasedNavalCombat>true</enableContactReportBasedNavalCombat>
    <enableVladivostokSquadronScript>true</enableVladivostokSquadronScript>
+   <enableStrategicDisengagementRoll>true</enableStrategicDisengagementRoll>
    <estimationRuleMode>RussoJapaneseWar</estimationRuleMode>
   </scenarioState>
   <sideStates>

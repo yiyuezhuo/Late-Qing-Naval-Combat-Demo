@@ -30,31 +30,33 @@ else if(phase === Phase.WaitForSpeedChanged)
     if(shipLog.speedKnots >= 15)
     {
         let msg = getLocalized(`
-Speed is increased to 15.
+Speed is increased to 15 knots.
 
-Now drag heading slider to change desired heading, and holding shift and left click to the map to set desired heading as well.
-Point to 75-120 True North Clockwise and then advance time until the ship reaches the desired heading.
+Hold down Shift and left-click on the map to select the desired heading (the desired heading will be set from the selected ship toward the clicked location).
+This can also be adjusted by dragging the heading slider on the right panel, but the former method is recommended.
+
+Now, set the course to 90 degrees clockwise from north (east) and advance the time until reaching the desired heading.
 `,
 `
-速度が15に増加しました。
+速度が 15 ノットに増加しました。
 
-次に、ヘディングスライダーをドラッグして目標針路を変更するか、Shiftキーを押しながら地図を左クリックして目標針路を設定します。
+Shift キーを押しながらマップ上を左クリックして、目標方位を選択してください（選択した艦船からクリックした地点への方向が目標方位として設定されます）。 右パネルの方位スライダーをドラッグして調整することも可能ですが、前者の方法を推奨します。
 
-真北時計回り75-120度の方向を指定し、艦艇が目標針路に到達するまで時間を進めてください。
+それでは、針路を北から時計回りに 90 度（東）に設定し、目標の方位に到達するまで時間を進めてください。
 `,
 `
-速度已增加至15。
+速度已提高至 15 节。
 
-现在拖动航向滑块更改目标航向，或按住Shift键并左键单击地图来设置目标航向。
+按住 Shift 键并在地图上点击鼠标左键以选择目标航向（目标航向将从所选舰船指向点击的位置）。 您也可以通过拖动右侧面板上的航向滑块进行调整，但推荐使用前一种方法。
 
-指向真北顺时针75-120度方向，然后推进时间直至舰艇到达目标航向。
+现在，请将航向设置为正北顺时针 90 度（正东），并推进时间直到达到目标航向。
 `,
 `
-速度已增加至15。
+速度已提高至 15 節。
 
-現在拖動航向滑塊更改目標航向，或按住Shift鍵並左鍵單擊地圖來設置目標航向。
+按住 Shift 鍵並在地圖上點擊滑鼠左鍵以選擇目標航向（目標航向將從所選艦船指向點擊的位置）。 您也可以透過拖動右側面板上的航向滑塊進行調整，但推薦使用前一種方法。
 
-指向真北順時針75-120度方向，然後推進時間直至艦艇到達目標航向。
+現在，請將航向設置為正北順時針 90 度（正東），並推進時間直到達到目標航向。
 `);
 
         msgBoxDelay(msg, 0.3);
@@ -69,22 +71,30 @@ else if(phase === Phase.WaitForCourseChanged)
         let msg = getLocalized(`
 Course is changed.
 
-Now right-click the unit or left-click on unit's name hyper link in the information panel to open the ship log editor (the game use the same UI for game and 'editor', just like CMO)
+Now right-click the unit on the map or left-click on unit's name hyper link in the information panel to open the Ship State View.
+
+Note: The Ship State View will open as either a list editor or a single-ship view, depending on whether game is in edit mode.
 `,
 `
-針路が変更されました。
+コースが変更されました。
 
-ユニットを右クリックするか、情報パネル内のユニット名ハイパーリンクを左クリックすると、艦艇動態状態エディターが開きます（本ゲームはCMOと同様、ゲームと「エディター」で同一のUIを使用しています）。
+マップ上のユニットを右クリックするか、情報パネル内のユニット名ハイパーリンクを左クリックして「艦船状態ビュー」を開いてください。
+
+注意： ゲームがエディットモードであるかどうかに応じて、「艦船状態ビュー」はリストエディターまたは個別艦船ビューのいずれかで開きます。
 `,
 `
-航向已更改。
+航向已改变。
 
-现在右键单击单位，或左键单击信息面板中的单位名称超链接，即可打开舰艇动态状态编辑器（本游戏类似CMO，游戏和“编辑器”使用相同的界面）。
+现在，请右键点击地图上的单位，或左键点击信息面板中的单位名称超链接，以打开“舰船状态视图”。
+
+注意： 根据游戏是否处于编辑模式，“舰船状态视图”将以列表编辑器或单舰视图的形式打开。
 `,
 `
-航向已更改。
+航向已改變。
 
-現在右鍵單擊單位，或左鍵單擊信息面板中的單位名稱超鏈接，即可打開艦艇動態狀態編輯器（本遊戲與CMO一樣，遊戲和「編輯器」使用相同的UI）。
+現在，請右鍵點擊地圖上的單位，或左鍵點擊資訊面板中的單位名稱超連結，以開啟「艦船狀態檢視」。
+
+注意： 根據遊戲是否處於編輯模式，「艦船狀態檢視」將以清單編輯器或單艦檢視的形式開啟。
 `);
 
         msgBoxDelay(msg, 0.3);

@@ -2597,6 +2597,47 @@ MonoBehaviour:
     m_Localized: '[{0}]: {1}'
     m_Metadata:
       m_Items: []
+  - m_Id: 29451252745801728
+    m_Localized: True
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29451282105929728
+    m_Localized: False
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29610307804106752
+    m_Localized: 'Maneuver Roll: {0} [{1} ({2}) + {3} (D6) = {4}] vs {5} [{6} ({7})
+      + {8} (D6) = {9}]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29610370169212928
+    m_Localized: '{0} failed to disengage'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29610401001541632
+    m_Localized: '{0} success to disengage'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29614226328424448
+    m_Localized: 'Contact Report: {0}, {1}, {2} -> {3}: {4}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29615324988608512
+    m_Localized: Raiders of {0} sank a merchant ship in the {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29622785363578880
+    m_Localized: '{0} {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29714345929379840
+    m_Localized: ships
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29714376631685120
+    m_Localized: tons
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

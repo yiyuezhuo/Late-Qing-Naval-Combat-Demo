@@ -119,7 +119,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 62878209708032
-    m_Localized: Ship Log
+    m_Localized: Ship State
     m_Metadata:
       m_Items: []
   - m_Id: 63004600864768
@@ -631,7 +631,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 101562673958912
-    m_Localized: Ship Log Editor
+    m_Localized: Ship State Editor
     m_Metadata:
       m_Items: []
   - m_Id: 101851304988672
@@ -1415,7 +1415,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 358301486977024
-    m_Localized: Create Default Ship Log
+    m_Localized: Create Default Ship State
     m_Metadata:
       m_Items: []
   - m_Id: 358609889955840
@@ -2277,13 +2277,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 35622131703910400
-    m_Localized: Create a ship log from a named ship not associated with a ship log
-      and deploy to map.
+    m_Localized: Create a ship state from a named ship not associated with a ship
+      state and deploy to map.
     m_Metadata:
       m_Items: []
   - m_Id: 35622459849478144
-    m_Localized: Create a custom named ship from ship class and create ship log for
-      it and deploy it on map
+    m_Localized: Create a custom named ship from ship class and create ship state
+      for it and deploy it on map
     m_Metadata:
       m_Items: []
   - m_Id: 35622829581570048
@@ -2404,6 +2404,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 43640988616003584
     m_Localized: 'Enable Strategic Disengagement Roll '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44040432205336576
+    m_Localized: Use Sea Texture
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44042352655503360
+    m_Localized: Repair Priority
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44380493585223680
+    m_Localized: And Other Pre-Dreadnought Battles
     m_Metadata:
       m_Items: []
   references:

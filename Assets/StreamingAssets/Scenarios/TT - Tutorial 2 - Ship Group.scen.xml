@@ -6,6 +6,9 @@
   <namedShipsPath>NamedShips.xml</namedShipsPath>
  </streamingAssetReference>
  <navalGameState>
+  <leadersBuiltin>false</leadersBuiltin>
+  <shipClassesBuiltin>false</shipClassesBuiltin>
+  <namedShipsBuiltin>false</namedShipsBuiltin>
   <shipLogs>
    <ShipLog>
     <subStates />
@@ -177,6 +180,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -408,6 +413,8 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -470,6 +477,7 @@
     <strategicGroupReference />
    </ShipLog>
   </shipLogs>
+  <serializedCustomBoolMap />
   <shipGroups>
    <ShipGroup>
     <childrenObjectIds>
@@ -541,25 +549,36 @@
    <visibility>Clear</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
-   <description />
+   <globalDescription>
+    <english>none</english>
+   </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
     <accumulateSecond>0</accumulateSecond>
     <elapsedSeconds>0</elapsedSeconds>
    </weaponSimulationAssignmentClock>
+   <obstacleAvoidCheckClock>
+    <intervalSeconds>1</intervalSeconds>
+    <accumulateSecond>0</accumulateSecond>
+    <elapsedSeconds>0</elapsedSeconds>
+   </obstacleAvoidCheckClock>
    <doingStep>false</doingStep>
    <firstLoaded>false</firstLoaded>
-   <effectiveCompleted>false</effectiveCompleted>
+   <firstRemainOneOperationalFleet>false</firstRemainOneOperationalFleet>
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
    <hasEndDateTime>false</hasEndDateTime>
    <endDateTime>1895-04-17T00:00:00Z</endDateTime>
+   <backgroundPictureReference>
+    <isBuiltin>false</isBuiltin>
+   </backgroundPictureReference>
+   <disableFirstRemainOneOperationalFleetPrompt>true</disableFirstRemainOneOperationalFleetPrompt>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>39.669838</xRotation>
+  <xRotation>39.6698341</xRotation>
   <yRotation>236.444489</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>

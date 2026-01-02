@@ -146,7 +146,11 @@ public class GamePreference
     [CreateProperty]
     public CoreParameter navalCombatCoreParameter => CoreParameter.Instance;
 
-    bool _isInEditMode;
+    // bool _isInEditMode;
+    // bool _isInEditMode = true; // TODO: Enable edit mode in the default setting to reduce potension confusion.
+    bool _isInEditMode = false;
+
+    [CreateProperty]
     public bool isInEditMode
     {
         get => _isInEditMode;
@@ -230,7 +234,8 @@ public class GamePreference
         p.forcedNavalCombatResolution = PlayerPrefs.GetInt("forcedNavalCombatResolution", 1) == 1;
         p.showAIDialog = PlayerPrefs.GetInt("showAIDialog", 1) == 1;
         p.simulationRateRaio = PlayerPrefs.GetFloat("simulationRateRaio", 120);
-        p.isInEditMode = PlayerPrefs.GetInt("isInEditMode", 0) == 1;
+        // p.isInEditMode = PlayerPrefs.GetInt("isInEditMode", 0) == 1;
+        p.isInEditMode = PlayerPrefs.GetInt("isInEditMode", 1) == 1;
     }
 
     public void SaveToPlayerPrefs()

@@ -62,7 +62,17 @@ public class SwitchCenter
 
                 // TODO: Branching according to global IsEditor flag
                 StrategicMissionEditor.Instance.Show();
-                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicMissionEditor.Instance.objectListView, idx);
+                
+                // BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicMissionEditor.Instance.objectListView, idx);
+                // TODO: Move it to LeftObjectPickerRightEditor ?
+                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(
+                    StrategicMissionEditor.Instance.objectListView, 
+                    () =>
+                    {
+                        StrategicMissionEditor.Instance.RefreshFilter();
+                        return StrategicMissionEditor.Instance.filteredObjects.IndexOf(mission);
+                    }
+                );
             }
         }
     }

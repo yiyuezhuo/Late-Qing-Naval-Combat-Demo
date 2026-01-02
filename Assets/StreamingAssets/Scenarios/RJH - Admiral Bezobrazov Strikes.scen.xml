@@ -6454,6 +6454,7 @@
     <strategicGroupReference />
    </ShipLog>
   </shipLogs>
+  <serializedCustomBoolMap />
   <shipGroups>
    <ShipGroup>
     <childrenObjectIds>
@@ -7067,7 +7068,7 @@ This is a direct adaptation of scenario from Dawn of the Rising Sun. However, AI
 </japanese>
     <chineseSimplified>https://en.wikipedia.org/wiki/Hitachi_Maru_Incident
 
-这是对《Dawn of the Rising Sun》中一个剧本的直接改编版本。不过，该剧本中的AI与地形目前尚有一些问题。
+这是对《Dawn of the Rising Sun》中一个剧本的直接改编版本。当前该剧本中的AI与地形目前尚有一些问题。
 
 </chineseSimplified>
     <chineseTraditional>https://en.wikipedia.org/wiki/Hitachi_Maru_Incident
@@ -7096,6 +7097,7 @@ This is a direct adaptation of scenario from Dawn of the Rising Sun. However, AI
     <path>Pictures\Backgrounds\500px-HitachiMaru1898.JPG</path>
     <isBuiltin>true</isBuiltin>
    </backgroundPictureReference>
+   <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />

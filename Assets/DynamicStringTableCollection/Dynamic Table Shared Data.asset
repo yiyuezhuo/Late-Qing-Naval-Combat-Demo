@@ -2588,6 +2588,47 @@ MonoBehaviour:
     m_Key: '[{0}]: {1}'
     m_Metadata:
       m_Items: []
+  - m_Id: 29451252745801728
+    m_Key: True
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29451282105929728
+    m_Key: False
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29610307804106752
+    m_Key: 'Maneuver Roll: {0} [{1} ({2}) + {3} (D6) = {4}] vs {5} [{6} ({7}) + {8}
+      (D6) = {9}]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29610370169212928
+    m_Key: '{0} failed to disengage'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29610401001541632
+    m_Key: '{0} success to disengage'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29614226328424448
+    m_Key: 'Contact Report: {0}, {1}, {2} -> {3}: {4}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29615324988608512
+    m_Key: Raiders of {0} sank a merchant ship in the {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29622785363578880
+    m_Key: '{0} {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29714345929379840
+    m_Key: ships
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29714376631685120
+    m_Key: tons
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

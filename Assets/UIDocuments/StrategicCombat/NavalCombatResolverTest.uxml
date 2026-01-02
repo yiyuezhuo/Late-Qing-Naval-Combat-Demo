@@ -1,0 +1,68 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
+    <ui:VisualElement data-source-type="NavalCombatResolver, Assembly-CSharp" class="panel-dialog" style="width: 800px; height: auto;">
+        <ui:Label text="Naval Combat Resolver" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20021307036569600)"/>
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="Naval Combat in Hex (114, 514)" style="align-self: center;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="battleName" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="1894/7/25" style="align-self: center;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="datetimeStr" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:Label>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement name="LeftSideContainer" data-source-path="leftSideState" template="NavalCombatResolverSide" style="flex-grow: 1; flex-basis: 50px; border-right-width: 1px; border-left-color: rgb(153, 153, 153); border-right-color: rgb(153, 153, 153); border-top-color: rgb(153, 153, 153); border-bottom-color: rgb(153, 153, 153);">
+                <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
+                <ui:VisualElement data-source-type="NavalCombatResolver+OneSideState, Assembly-CSharp" style="flex-grow: 0; flex-shrink: 0;">
+                    <ui:VisualElement style="flex-grow: 0; flex-direction: row; height: 75px; flex-shrink: 0;">
+                        <ui:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6527069497977903076&amp;guid=cbad865a621d3244bbf09ebb76bba9f8&amp;type=3#console.warnicon@2x&quot;); -unity-background-scale-mode: scale-to-fit; width: 100px;">
+                            <Bindings>
+                                <ui:DataBinding property="style.backgroundImage" data-source-path="leaderPortrait" binding-mode="ToTarget"/>
+                            </Bindings>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; flex-basis: 50px; flex-shrink: 0; background-image: url(&quot;project://database/Assets/Textures/Japan.png?fileID=2800000&amp;guid=8f03853e0d076c64aa8a65a99f19b13f&amp;type=3#Japan&quot;); -unity-background-scale-mode: scale-to-fit;">
+                            <Bindings>
+                                <ui:DataBinding property="style.backgroundImage" data-source-path="countryFlag" binding-mode="ToTarget"/>
+                            </Bindings>
+                        </ui:VisualElement>
+                        <ui:Label text="Description&#10;__________________________________________________________________________________________________&#10;111" name="DescriptionLabel" style="white-space: nowrap; text-overflow: ellipsis; flex-grow: 1; flex-shrink: 1;">
+                            <Bindings>
+                                <ui:DataBinding property="text" data-source-path="description" binding-mode="ToTarget"/>
+                            </Bindings>
+                        </ui:Label>
+                        <ui:VisualElement style="flex-grow: 1;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; max-height: 360px; min-height: 350px;">
+                        <ui:ScrollView style="flex-grow: 1;">
+                            <ui:TreeView name="OOBTreeView"/>
+                        </ui:ScrollView>
+                        <ui:Button text="Withdraw" name="WithdrawButton">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022328123101184)"/>
+                            </Bindings>
+                        </ui:Button>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1;"/>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:Button text="Resolve" name="ResolveButton" style="flex-basis: 50px; flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20021405099397120)"/>
+                </Bindings>
+            </ui:Button>
+            <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66269346435072)"/>
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

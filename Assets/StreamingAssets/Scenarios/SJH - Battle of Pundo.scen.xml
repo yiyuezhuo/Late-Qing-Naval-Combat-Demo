@@ -1564,6 +1564,7 @@
     <strategicGroupReference />
    </ShipLog>
   </shipLogs>
+  <serializedCustomBoolMap />
   <shipGroups>
    <ShipGroup>
     <childrenObjectIds>
@@ -1717,7 +1718,7 @@
    </obstacleAvoidCheckClock>
    <doingStep>false</doingStep>
    <firstLoaded>false</firstLoaded>
-   <effectiveCompleted>false</effectiveCompleted>
+   <firstRemainOneOperationalFleet>false</firstRemainOneOperationalFleet>
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
    <hasEndDateTime>true</hasEndDateTime>
@@ -1726,13 +1727,14 @@
     <path>Pictures\Backgrounds\Battle_of_Phungdo.jpg</path>
     <isBuiltin>true</isBuiltin>
    </backgroundPictureReference>
+   <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>37.1679878</xRotation>
-  <yRotation>233.6855</yRotation>
+  <xRotation>37.0936623</xRotation>
+  <yRotation>233.575226</yRotation>
   <orthographicSize>20</orthographicSize>
  </viewState>
  <eventState>

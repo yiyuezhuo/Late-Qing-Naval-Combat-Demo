@@ -423,41 +423,44 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             var rootGroups = navalGameState.shipGroups.Where(g => g.parentObjectId == null).ToList();
             var rootGroupShips = rootGroups.Select(g => g.Walk<ShipLog>().ToList()).ToList();
             // var test = rootGroupShips.Select(shipLogs => shipLogs.Select(s => (s.mapState, s.operationalState, s.GetMaxSpeedKnots())).ToList()).ToList();
-            var operationalGroupCounts = rootGroupShips.Where(shipLogs => 
+            var operationalGroupCounts = rootGroupShips.Count(shipLogs => 
                 shipLogs.Any(shipLog => shipLog.mapState == MapState.Deployed && shipLog.operationalState == ShipOperationalState.Operational && shipLog.GetMaxSpeedKnots() > 0)
-            ).Count();
+            );
 
             if(operationalGroupCounts <= 1) // Effective Completed (only one side has effective ships)
             {
                 scenarioState.firstRemainOneOperationalFleet = true;
 
-                if(startupConfig.IsFromStrategic())
+                if(!scenarioState.disableFirstRemainOneOperationalFleetPrompt)
                 {
-                    DialogRoot.Instance.PopupConfirmDialog(Localize(
-                        "The battle field has only a operational fleet now. You can return to the strategic game now, or use the button on the top menu bar to return at any time."
-                    ), () =>
+                    if(startupConfig.IsFromStrategic())
                     {
-                        ReturnToStrategicGame();
-                    });
-                }
-                else
-                {
-                    DialogRoot.Instance.PopupConfirmDialog(Localize(
-                        "The battle field has only a operational fleet now. Check the victory status now?"
+                        DialogRoot.Instance.PopupConfirmDialog(Localize(
+                            "The battle field has only a operational fleet now. You can return to the strategic game now, or use the button on the top menu bar to return at any time."
                         ), () =>
                         {
-                            DialogRoot.Instance.PopupVictoryStatusDialog(
-                                VictoryStatus.Generate(NavalGameState.Instance)
-                            );
-                        }
-                    );
+                            ReturnToStrategicGame();
+                        });
+                    }
+                    else
+                    {
+                        DialogRoot.Instance.PopupConfirmDialog(Localize(
+                            "The battle field has only a operational fleet now. Check the victory status now?"
+                            ), () =>
+                            {
+                                DialogRoot.Instance.PopupVictoryStatusDialog(
+                                    VictoryStatus.Generate(NavalGameState.Instance)
+                                );
+                            }
+                        );
+                    }
                 }
             }
             else if(!navalGameState.scenarioState.firstDisengaged) // So operationalGroupCounts.Count >= 2
             {
                 var latLonAverages = rootGroupShips.Select(shipLogs => new LatLon(
-                    shipLogs.Select(s => s.GetLatitudeDeg()).Average(), // FIXME: separated retreat?
-                    shipLogs.Select(s => s.GetLongitudeDeg()).Average()
+                    shipLogs.Average(s => s.GetLatitudeDeg()), // FIXME: separated retreat?
+                    shipLogs.Average(s => s.GetLongitudeDeg())
                 )).ToList();
 
                 var disengagedAny = false;
@@ -1257,7 +1260,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     // }
 
     [CreateProperty]
-    public bool isInEditMode => GamePreference.Instance.isInEditMode;
+    public bool isInEditMode
+    {
+        get => GamePreference.Instance.isInEditMode;
+        set => GamePreference.Instance.isInEditMode = value;
+    }
 
     [CreateProperty]
     public bool isInUnityEditor => Application.isEditor;

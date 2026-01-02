@@ -1,9 +1,9 @@
 if(phase === Phase.WaitForDistanceMeasuring)
 {
     let msg = getLocalized(`
-Distance Measure Line is Created, it should show a value close to 5000 yards.
+The distance measurement line has been created and should display a value close to 5,000 yards.
 
-You can press escape to hide the line and label. Now change two ship's course to make they are close to each other and reduce their distance to 2500 yards.
+You can press the Escape key to hide both the line and its label. Now adjust the course of the two ships so that they move closer to each other, reducing their distance to 2,500 yards.
 `,
 `
 距離測定線が作成されました。約5000ヤードの値が表示されるはずです。

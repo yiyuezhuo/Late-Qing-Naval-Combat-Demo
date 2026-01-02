@@ -57,22 +57,22 @@ else if(phase === Phase.WaitForFollowingEquilibrium)
         let msg = getLocalized(`
 Follow formation is formed properly (a control equilibrium is reached).
 
-Now open ship log editor for the non-indepedent ship (the ship following another ship) to set extra control parameter.
+Now open Ship State View for the non-indepedent ship (the ship following another ship) to set extra control parameter.
 `,
 `
 追従陣形が適切に形成されました（制御均衡が達成されています）。
 
-独立モードではない艦艇（他艦を追従中の艦艇）の艦艇動態状態エディターを開き、追加制御パラメータを設定してください。
+独立モードではない艦艇（他艦を追従中の艦艇）の艦船状態ビューを開き、追加制御パラメータを設定してください。
 `,
 `
 跟随队形已正确形成（达到控制平衡状态）。
 
-现在请打开非独立单位（跟随其他舰艇的舰艇）的舰艇动态状态编辑器，设置额外控制参数。
+现在请打开非独立单位（跟随其他舰艇的舰艇）的舰艇动态状态视图，设置额外控制参数。
 `,
 `
 跟隨隊形已正確形成（達到控制平衡狀態）。
 
-現在請打開非獨立單位（跟隨其他艦艇的艦艇）的艦艇動態狀態編輯器，設置額外控制參數。
+現在請打開非獨立單位（跟隨其他艦艇的艦艇）的艦艇動態狀態檢視，設置額外控制參數。
 `)
 
         msgBoxDelay(msg, 0.3);

@@ -89,7 +89,7 @@ namespace StrategicCombatCore
         }
 
         public string GetAreaCellName() => areaCellObjectId != null ? EntityManager.Instance.Get<Cell>(areaCellObjectId)?.Label?.GetShortName() : areaCellObjectId;
-
+        public GlobalString GetAreaCellNameGlobalString() => areaCellObjectId != null ? EntityManager.Instance.Get<Cell>(areaCellObjectId)?.Label : new(){english=areaCellObjectId};
     }
 
     public partial class StrategicGroup : IObjectIdLabeled, IStrategicGroupMemberReferenceable, INamed

@@ -463,7 +463,7 @@
                 </ui:Tab>
                 <ui:Tab label="Time Loc">
                     <ui:VisualElement style="flex-grow: 1;">
-                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-shrink: 0;">
                             <ui:Button text="Plot Trajectory on Map" name="PlotTrajectoryOnMapButton">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172442062065664)"/>
@@ -548,6 +548,7 @@
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="repairPriority" binding-mode="TwoWay"/>
                                 <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(44042352655503360)"/>
                             </Bindings>
                         </ui:FloatField>
                     </ui:VisualElement>

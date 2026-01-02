@@ -2,32 +2,40 @@ let NavalCombatCore = importNamespace('NavalCombatCore');
 let CoreUtils = importNamespace("CoreUtils");
 
 let msg = getLocalized(`
-Welcome to the third tutorial scenario of the First Sino-Japanese War. In this tutorial, you will learn how to engage in combat.
+ Welcome to the third tutorial scenario of the First Sino-Japanese War. In this tutorial, you will learn how to engage in combat.
 
-Unlike traditional games, First Sino-Japanese War primarily offers a TTS/Vassal-like sandbox experience. Players can view and edit everything in real-time — from moving and creating units, to editing weapon parameters and modifying damage situations. What elevates the experience beyond a pure sandbox — making it more like a traditional game — is called "automation." These automated features can create a game-like experience. For example, you can play against an AI (though it currently performs poorly, unfortunately), or choose any level of gameplay between pure sandbox and a fully automated (constrained) traditional game.
+In the First Sino-Japanese War scenario, different automation levels can be set in the OOB Tree. In a "standard" game, the player uses the default automation level for their own side, while the top group of the opposing side is fully automated.
 
-There are two groups of ships on the map. Click the "Order of Battle" button in the "Editor" tab on the top bar to view the order of battle.
+Additionally, the player can control ships on every side to play a hotseat sandbox game, with dynamically adjusted parameters and the ability to create or delete units. The player can also take direct control of a single ship by setting it to zero-automation, which allows manual control of every device on that vessel.
+
+All of this can be configured by setting the doctrine for Ship States and Ship Groups. Click the "Order of Battle" button in the "Status" tab on the top bar to begin. 
 `,
 `
-日清戦争第三チュートリアル剧本へようこそ。このチュートリアルでは、戦闘行動の基本を学びます。
+日清戦争のチュートリアル・シナリオ第3弾へようこそ。このチュートリアルでは、戦闘への関与方法について学びます。
 
-従来のゲームとは異なり、本作は主にTTS/Vassal様のサンドボックス体験を提供します。プレイヤーはあらゆる要素をリアルタイムで閲覧・編集可能です——ユニットの移動/作成、兵装パラメータの編集、損傷状況の変更まで。純粋なサンドボックスを超えて伝統的なゲームに近づける要素が「自動化機能」です。例えばAIとの対戦（現状は残念ながら性能不足です）や、純サンドボックスから完全自動化（制約付き）の伝統的ゲームまで、任意のプレイスタイルを選択できます。
+本シナリオでは、戦闘序列ツリーを通じて、さまざまなオートメーション（自動化）レベルを設定できます。「標準」設定のゲームでは、プレイヤーは自陣営にデフォルトのオートメーションレベルを使用し、敵対陣営のトップグループは完全に自動化されます。
 
-マップ上に2つの艦隊グループが存在します。画面上部の「編集」タブ内「戦力編成」ボタンをクリックして編成状況を確認してください。
+さらに、プレイヤーは全陣営の艦船を操作して、パラメータを動的に調整したり、ユニットを作成・削除したりできるホットシート・サンドボックス・モードをプレイすることも可能です。また、特定の艦船を手動設定にすることで、その艦船のすべての装置を直接手動で操作できるようになります。
+
+これらの設定はすべて、艦船状態や艦船グループの「ドクトリン」を設定することで構成可能です。まずはトップバーの「状態」タブにある「戦闘序列」ボタンをクリックして開始しましょう。
 `,
 `
-欢迎来到甲午战争第三教程剧本。在本教程中，您将学习如何实施战斗行动。
+欢迎来到《甲午战争》的第三个教程剧本。在本教程中，您将学习如何进行战斗。
 
-与传统游戏不同，本作主要提供类似TTS/Vassal的沙盒体验。玩家可以实时查看和编辑所有元素——从移动/创建单位、编辑武器参数到修改损伤状态。超越纯沙盒体验（使其更接近传统游戏）的核心要素称为"自动化功能"。这些功能可创造类游戏体验，例如与AI对战（尽管目前性能较差），或在纯沙盒与全自动（受约束）传统游戏之间任意选择玩法风格。
+在《甲午战争》剧本中，可以通过战斗序列树设置不同的自动化级别。在“标准”游戏模式下，玩家对己方阵营使用默认的自动化级别，而敌方阵营的最高层级组则完全由系统自动控制。
 
-地图上存在两个舰船编组。请点击顶部"编辑"标签页中的"战斗序列"按钮查看编制状况。
+此外，玩家还可以控制所有阵营的舰船进行热座式沙盒游戏，实时调整参数并创建或删除单位。玩家还可以通过将单艘舰船自动化全关掉来进行完全控制，从而手动控制该舰船上的每一个设备。
+
+以上所有内容均可通过设置“舰船状态”和“舰船编组”的条令来进行配置。请点击顶栏“状态”选项卡中的“战斗序列”按钮开始。
 `,
 `
-歡迎來到甲午戰爭第三教程劇本。在本教程中，您將學習如何實施戰鬥行動。
+歡迎來到《甲午戰爭》的第三個教學劇本。在本教學中，您將學習如何進行戰鬥。
 
-與傳統遊戲不同，本作主要提供類似TTS/Vassal的沙盒體驗。玩家可以實時查看和編輯所有元素——從移動/創建單位、編輯武器參數到修改損傷狀態。超越純沙盒體驗（使其更接近傳統遊戲）的核心要素稱為「自動化功能」。這些功能可創造類遊戲體驗，例如與AI對戰（儘管目前性能較差），或在純沙盒與全自動（受約束）傳統遊戲之間任意選擇玩法風格。
+在《甲午戰爭》劇本中，可以透過戰鬥序列樹設定不同的自動化層級。在「標準」遊戲模式下，玩家對己方陣營使用預設的自動化層級，而敵方陣營的最高層級組則完全由系統自動控制。
 
-地圖上存在兩個艦船編組。請點擊頂部「編輯」標籤頁中的「戰鬥序列」按鈕查看編制狀況。
+此外，玩家還可以控制所有陣營的艦船進行 Hotseat 沙盒遊戲，即時調整參數並建立或刪除單位。玩家還可以透過將單艘艦船設定為「零自動化」來直接接管該艦，從而手動控制該艦船上的每一個設備。
+
+以上所有內容均可透過設定「艦船狀態」和「艦船組」的條令進行配置。請點擊頂欄「狀態」分頁中的「戰鬥序列」按鈕開始。
 `)
 
 msgBox(msg);

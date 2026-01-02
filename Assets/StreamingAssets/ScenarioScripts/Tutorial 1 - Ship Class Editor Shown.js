@@ -1,24 +1,24 @@
 if(phase === Phase.WaitForShipClassEditorOpened)
 {
     let msg = getLocalized(`
-Ship Class Editor is displayed. You can switch different tabs to see different information. Ship Class save static information of a ship class like speed, DP, weapon and etc.
+The Ship Class View is displayed. You can switch between different tabs to see various details. This section saves the static information for a ship class, such as speed, DP, weaponry, etc.
 
-When you get a idea about the Ship Log Editor, click on 'Confirm' in the left bottom corner to go to main map.
+Once you have an idea about the ship class, click "Confirm" in the bottom-left corner to return to the main map.
 `,
 `
-艦艇型号エディターが表示されました。各種タブを切り替えて様々な情報を確認できます。艦艇型号エディターは速度、DP、兵装など艦艇型号の静的情報を保存します。
+艦級ビューが表示されます。タブを切り替えることで、さまざまな詳細情報を確認できます。このセクションには、速力、DP、兵装など、その艦級の固定情報（スタティック情報）が保存されています。
 
-艦艇ログエディターの操作を確認したら、左下隅の「確認」をクリックしてメインマップに戻ってください。
+艦級についての確認が終わったら、左下にある「確定」をクリックしてメインマップに戻ってください。
 `,
 `
-舰艇型号编辑器已显示。您可以切换不同标签页查看各类信息。舰艇型号编辑器保存舰艇型号的静态信息，如速度、耐久值、武器等。
+舰船型号视图已显示。您可以切换不同的标签页以查看各项细节。此板块保存了该舰船型号的静态信息，例如航速、DP、武器配置等。
 
-当您了解舰艇日志编辑器的功能后，请点击左下角的“确认”返回主地图。
+对舰船型号有初步了解后，请点击左下角的“确认”以返回主地图。
 `,
 `
-艦艇型號編輯器已顯示。您可以切換不同標籤頁查看各類資訊。艦艇型號編輯器保存艦艇型號的靜態資訊，如速度、耐久值、武器等。
+艦船型號檢視已顯示。您可以切換不同的分頁以查看各項細節。此區塊保存了該艦船型號的靜態資訊，例如航速、DP、武器配置等。
 
-當您了解艦艇日誌編輯器的功能後，請點擊左下角的「確認」返回主地圖。
+對艦船型號有初步了解後，請點擊左下角的「確認」以返回主地圖。
 `)
 
     msgBoxDelay(msg, 0.3);

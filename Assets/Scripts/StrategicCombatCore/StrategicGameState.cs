@@ -543,6 +543,8 @@ namespace StrategicCombatCore
                         if(observerSide != observedSide)
                         {
                             var combinedSearchValue = observerSideSearchValue + totalFootprint;
+                            combinedSearchValue *= GetSearchValueDayNightCoef(cell);
+
                             // Cancel cell.SearchAreaSqKm to favor of hard-coded parameter to find a good "feel" now, poor "analytic" model should be abandoned at this point.
                             // var searchAreaCoef = Math.Max(cell.SearchAreaSqKm, 1) / 2500; // TODO: Redesign is expected, now handle it as a const 1
                             var searchAreaCoef = cell.IsAreaCell() ? 3 : 0.5f;
@@ -607,7 +609,9 @@ namespace StrategicCombatCore
             
             var msg = $"Contact Report: {matchedContactReport}";
             ServiceLocator.Get<ILoggerService>().Log(msg);
-            AddLog(msg, observerSide);
+            
+            // AddLog(msg, observerSide);
+            AddLog(matchedContactReport.ToLazyLocalizedString(), observerSide);
         }
 
         public void Advance1HourForRaiding()
@@ -625,7 +629,9 @@ namespace StrategicCombatCore
                     var raidingSide = sideFleetGroupsGrouping.Key;
                     var raidingFleetGroups = sideFleetGroupsGrouping.ToList();
                     var raidingSideSearchShips = raidingFleetGroups.Sum(g => g.WalkGroupMembersDeployedShips().Count());
-                    var raidingSideSearchValue = raidingSideSearchShips * 1f;
+                    // var raidingSideSearchValue = raidingSideSearchShips * 1f;
+                    var raidingSideSearchValue = raidingSideSearchShips * 2f; // Increase the base raiding probability
+                    raidingSideSearchValue *= GetSearchValueDayNightCoef(cell);
 
                     foreach(var raidedSideInfo in cell.CellSideInfos.Where(info => info.sideObjectId != raidingSide.objectId && info.merchantShipTraffic > 0))
                     {
@@ -636,7 +642,14 @@ namespace StrategicCombatCore
                             {
                                 // Locate and destroy a cargo (assume no ammu is used at the current setting)
                                 raidingSide.victoryPoints += 1;
-                                AddLog($"Raiders of {raidingSide.name.GetShortName()} sink a merchant ship in the {cell.GetLocationSummary()}", null);
+                                // AddLog($"Raiders of {raidingSide.name.GetShortName()} sink a merchant ship in the {cell.GetLocationSummary()}", null);
+                                
+                                var log = LazyLocalizedString.MakeTemplate(
+                                    "Raiders of {0} sank a merchant ship in the {1}",
+                                    LazyLocalizedString.MakeGlobalStringShort(raidingSide.name),
+                                    LazyLocalizedString.MakeGlobalStringShort(cell.GetLocationSummaryGlobalString())
+                                );
+                                AddLog(log, null);
 
                                 var raidedSide = raidedSideInfo.GetSide();
                                 UpdateContactReport(
@@ -699,8 +712,7 @@ namespace StrategicCombatCore
                     {
                         var hostileGroup = group.cell.StrategicGroupReferences
                             .Select(r => r.Get())
-                            .Where(g => g.side != group.side && g != null && g.IsArmy() && g.posture != StrategicGroup.GroupPostureType.Disengaged).
-                            FirstOrDefault();
+                            .FirstOrDefault(g => g.side != group.side && g != null && g.IsArmy() && g.posture != StrategicGroup.GroupPostureType.Disengaged);
                         if(hostileGroup == null)
                         {
                             group.posture = StrategicGroup.GroupPostureType.Active;
@@ -865,6 +877,10 @@ namespace StrategicCombatCore
 
         public static Leader FindStrategicLeaderFromGroups(List<StrategicGroup> groups)
         {
+            groups = groups.Where(g => g.leaderReference.Get() != null).ToList();
+            if(groups.Count == 0)
+                return null;
+
             var groupTons = groups.Select(g => g.GetShipTons()).ToList();
             var maxGroupTons = groupTons.Max();
             var maxIdx = groupTons.IndexOf(maxGroupTons);
@@ -916,20 +932,46 @@ namespace StrategicCombatCore
                         var side0Name = g0.Key.name.GetShortName();
                         var side1Name = g1.Key.name.GetShortName();
 
-                        var generalDesc = $"Maneuver Roll: {side0Name} {g0leader?.name?.GetShortName()} ({g0maneuverValue} + {g0roll} = {g0finalValue}) vs {side1Name} {g1leader?.name?.GetShortName()} ({g1maneuverValue} + {g1roll} = {g1finalValue})";
-                        var resultDesc = "";
+                        // var generalDesc = $"Maneuver Roll: {side0Name} {g0leader?.name?.GetShortName()} ({g0maneuverValue} + {g0roll} = {g0finalValue}) vs {side1Name} {g1leader?.name?.GetShortName()} ({g1maneuverValue} + {g1roll} = {g1finalValue})";
+                        var generalDesc = LazyLocalizedString.MakeTemplate(
+                            "Maneuver Roll: {0} [{1} ({2}) + {3} (D6) = {4}] vs {5} [{6} ({7}) + {8} (D6) = {9}]",
+
+                            LazyLocalizedString.MakeGlobalStringShort(g0.Key.name),
+                            LazyLocalizedString.MakeRaw(g0maneuverValue),
+                            LazyLocalizedString.MakeGlobalStringShort(g0leader?.name),
+                            LazyLocalizedString.MakeRaw(g0roll),
+                            LazyLocalizedString.MakeRaw(g0finalValue),
+
+                            LazyLocalizedString.MakeGlobalStringShort(g1.Key.name),
+                            LazyLocalizedString.MakeRaw(g1maneuverValue),
+                            LazyLocalizedString.MakeGlobalStringShort(g1leader?.name),
+                            LazyLocalizedString.MakeRaw(g1roll),
+                            LazyLocalizedString.MakeRaw(g1finalValue)
+                        );
+                        // var resultDesc = "";
+                        LazyLocalizedString resultDesc = null;
 
                         if(g0hasActive && !g1hasActive) // g1 try to disengage from g0
                         {
                             if(g0finalValue >= g1finalValue)
                             {
                                 pendingCombatGenerated = true;
-                                resultDesc = $"{side1Name} failed to disengage";
+
+                                // resultDesc = $"{side1Name} failed to disengage";
+                                resultDesc = LazyLocalizedString.MakeTemplate(
+                                    "{0} failed to disengage",
+                                    LazyLocalizedString.MakeGlobalStringShort(g1.Key.name)
+                                );
                             }
                             else
                             {
                                 pendingCombatGenerated = false;
-                                resultDesc = $"{side1Name} succuess to disengage";
+
+                                // resultDesc = $"{side1Name} success to disengage";
+                                resultDesc = LazyLocalizedString.MakeTemplate(
+                                    "{0} success to disengage",
+                                    LazyLocalizedString.MakeGlobalStringShort(g1.Key.name)
+                                );
                             }
                         }
                         else if(!g0hasActive && g1hasActive)
@@ -937,16 +979,29 @@ namespace StrategicCombatCore
                             if(g0finalValue <= g1finalValue)
                             {
                                 pendingCombatGenerated = true;
-                                resultDesc = $"{side0Name} failed to disengage";
+
+                                // resultDesc = $"{side0Name} failed to disengage";
+                                resultDesc = LazyLocalizedString.MakeTemplate(
+                                    "{0} failed to disengage",
+                                    LazyLocalizedString.MakeGlobalStringShort(g0.Key.name)
+                                );
                             }
                             else
                             {
                                 pendingCombatGenerated = false;
-                                resultDesc = $"{side0Name} succuess to disengage";
+
+                                // resultDesc = $"{side0Name} success to disengage";
+                                resultDesc = LazyLocalizedString.MakeTemplate(
+                                    "{0} success to disengage",
+                                    LazyLocalizedString.MakeGlobalStringShort(g0.Key.name)
+                                );
                             }
                         }
 
-                        AddLog($"{generalDesc} {resultDesc}", null);
+                        var log = LazyLocalizedString.MakeTemplate("{0} {1}", generalDesc, resultDesc);
+
+                        // AddLog($"{generalDesc} {resultDesc}", null);
+                        AddLog(log, null);
                     }
 
                     if(pendingCombatGenerated)
@@ -1283,6 +1338,18 @@ namespace StrategicCombatCore
             var maxIdx = weights.IndexOf(maxWeight);
             return contacts[maxIdx];
             // return RandomUtils.Sample(samplingContacts, weights);
+        }
+
+        public float GetSearchValueDayNightCoef(Cell cell)
+        {
+            var sunPos = NavalUtils.GetSunPosition(scenarioState.dateTime, new LatLon(cell.latitude, cell.longitude));
+            return sunPos.GetDayNightLevel() switch
+            {
+                DayNightLevel.Day => 1,
+                DayNightLevel.Twilight => 0.25f,
+                DayNightLevel.Night => 0.01f,
+                _ => 1
+            };
         }
 
 

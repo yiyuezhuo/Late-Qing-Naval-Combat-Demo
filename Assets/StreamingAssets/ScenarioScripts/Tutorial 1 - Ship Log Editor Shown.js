@@ -1,32 +1,32 @@
 if(phase === Phase.WaitForShipLogEditorOpened)
 {
     let msg = getLocalized(`
-Ship Log Editor is displayed. You can switch different tabs to see different information. Ship Log record unit's 'dynamic' information like damage and weapon states (ammunition, firing target, availability), doctrine and etc.
+Ship State View displays a unit's dynamic information such as damage, weapon states (ammunition, firing target, availability), doctrine, and more. You can switch between tabs to view different categories.
 
-Some advance command can only be formed in the Ship Log Editor.
+Certain advanced commands can only be issued from the Ship State View.
 
-When you get a idea about the Ship Log Editor, click on 'Go to Named Ship' in the right top corner to go to Named Ship Editor.
+Once you are familiar with the Ship State View, click “Go to Named Ship” in the top right corner to proceed to the Named Ship View.
 `,
 `
-艦艇動態状態エディターが表示されました。各種タブを切り替えて、損傷状況や兵装状態（弾薬、射撃目標、使用可否）、作戦ドクトリンなど、ユニットの「動的」情報を確認できます。
+艦船状態ビューには、ダメージ状況、武器の状態（弾薬、攻撃対象、使用可否）、ドクトリンなど、ユニットの動的な情報が表示されます。タブを切り替えることで、さまざまなカテゴリの情報を確認できます。
 
-一部の高度なコマンドは、艦艇動態状態エディターでのみ設定可能です。
+一部の高度なコマンドは、この艦船状態ビューからのみ実行可能です。
 
-艦艇動態状態エディターの操作を確認したら、右上隅の「艦名登録エディターへ移動」をクリックして艦名登録エディターに進んでください。
+操作に慣れたら、右上にある「名前付き艦船へ移動」をクリックして、名前付き艦船ビューへ進んでください。
 `,
 `
-舰艇动态状态编辑器已显示。您可以切换不同标签页查看舰艇的"动态"信息，如损伤情况、武器状态（弹药、射击目标、可用性）、作战条令等。
+舰船状态视图显示单位的动态信息，例如损毁情况、武器状态（弹药、攻击目标、可用性）、条令等。您可以切换标签页以查看不同类别的信息。
 
-部分高级指令只能在舰艇动态状态编辑器中设置。
+某些高级指令只能从舰船状态视图中发布。
 
-当您了解舰艇动态状态编辑器的功能后，请点击右上角的"转到具名舰艇编辑器"进入具名舰艇编辑器。
+熟悉舰船状态视图后，请点击右上角的“前往具名舰船”以进入具名舰船视图。
 `,
 `
-艦艇動態狀態編輯器已顯示。您可以切換不同標籤頁查看艦艇的「動態」資訊，如損傷情況、武器狀態（彈藥、射擊目標、可用性）、作戰條令等。
+艦船狀態檢視顯示單位的動態資訊，例如損毀情況、武器狀態（彈藥、攻擊目標、可用性）、條令等。您可以切換分頁以查看不同類別的資訊。
 
-部分高級指令只能在艦艇動態狀態編輯器中設置。
+某些高級指令只能從艦船狀態檢視中發佈。
 
-當您了解艦艇動態狀態編輯器的功能後，請點擊右上角的「轉到具名艦艇編輯器」進入具名艦艇編輯器。
+熟悉艦船狀態檢視後，請點擊右上角的「前往具名艦船」以進入具名艦船檢視。
 `)
 
     msgBoxDelay(msg, 0.3);

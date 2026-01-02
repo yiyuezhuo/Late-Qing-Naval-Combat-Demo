@@ -9463,6 +9463,7 @@
     <strategicGroupReference />
    </ShipLog>
   </shipLogs>
+  <serializedCustomBoolMap />
   <shipGroups>
    <ShipGroup>
     <childrenObjectIds>
@@ -10179,7 +10180,7 @@ Land-based batteries and the initial damage to Russian ships are not yet modeled
 地上の砲台とロシア艦船への初期損傷はまだモデル化されていません。</japanese>
     <chineseSimplified>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
 
-陆基炮台和对俄罗斯舰船的初始损害尚未建模。
+陆基炮台和俄罗斯舰船的初始伤害尚未建模。
 </chineseSimplified>
     <chineseTraditional>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
 
@@ -10206,6 +10207,7 @@ Land-based batteries and the initial damage to Russian ships are not yet modeled
     <path>Pictures\Backgrounds\Battle of Port Arthur.png</path>
     <isBuiltin>true</isBuiltin>
    </backgroundPictureReference>
+   <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />

@@ -183,6 +183,11 @@
                                 <ui:DataBinding property="value" data-source-path="firstReachEndDateTime" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:Toggle>
+                        <ui:Toggle label="Disable First Remain One Operational Fleet Prompt">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="disableFirstRemainOneOperationalFleetPrompt" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:Toggle>
                     </ui:VisualElement>
                 </ui:Tab>
             </ui:TabView>

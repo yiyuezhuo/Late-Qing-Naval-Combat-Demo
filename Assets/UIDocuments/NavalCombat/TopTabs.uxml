@@ -54,6 +54,16 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61279122919424)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Label text="Edit Mode">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40292542655926272)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Toggle>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="isInEditMode" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:Toggle>
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61563505119232)"/>
@@ -97,6 +107,29 @@
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61646443286528)"/>
                 </Bindings>
             </ui:Tab>
+            <ui:Tab label="Status">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(440353376866304)"/>
+                </Bindings>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                    <ui:Button text="Ship Log" name="ShipLogEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62878209708032)"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Order of Battle" name="OOBEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63004600864768)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Launched Torpedo" name="LaunchedTorpedoEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63113422082048)"/>
+                        </Bindings>
+                    </ui:Button>
+                </ui:VisualElement>
+            </ui:Tab>
             <ui:Tab label="Tools">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Distance Measure (D)" name="DistanceMeasureButton">
@@ -136,25 +169,9 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62777823236096)"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Ship Log" name="ShipLogEditorButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62878209708032)"/>
-                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Order of Battle" name="OOBEditorButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63004600864768)"/>
-                        </Bindings>
-                    </ui:Button>
                     <ui:Button text="Scenario State" name="ScenarioStateEditorButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63058589945856)"/>
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Launched Torpedo" name="LaunchedTorpedoEditorButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63113422082048)"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="JS Script Console" name="JSScriptConsoleButton">

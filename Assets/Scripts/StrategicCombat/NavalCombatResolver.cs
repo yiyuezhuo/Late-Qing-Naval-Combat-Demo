@@ -138,9 +138,19 @@ public class NavalCombatResolver // Dialog
                 var shipLogs = sideBuilder.WalkRootGroup<ShipLog>().ToList();
                 var shipCounts = shipLogs.Count;
                 var shipTons = shipLogs.Sum(s => s?.shipClass.displacementTons);
-                return $"{sideBuilder.GetCountry()}\n{sideBuilder.GetLeader()?.name.GetMergedName()}\n{shipCounts} ships\n{shipTons} tons";
+
+                var country = LocalizeEnum(sideBuilder.GetCountry());
+                // var leaderName = sideBuilder.GetLeader()?.name.GetMergedName();
+                var leaderName = sideBuilder.GetLeader()?.name.GetShortName();
+
+                var shipsStr = Localize("ships");
+                var tonsStr = Localize("tons");
+                return $"{country}\n{leaderName}\n{shipCounts} {shipsStr}\n{shipTons} {tonsStr}";
             }
         }
+
+        protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+        protected static string LocalizeEnum<T>(T obj) => ServiceLocator.Get<ILocalizeService>().GetEnum(obj);
 
         public void Bind()
         {

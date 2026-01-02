@@ -576,6 +576,7 @@
     <strategicGroupReference />
    </ShipLog>
   </shipLogs>
+  <serializedCustomBoolMap />
   <shipGroups>
    <ShipGroup>
     <childrenObjectIds>
@@ -712,7 +713,7 @@
    <globalDescription>
     <english>Two single ships with all automation disabled.</english>
     <japanese>すべての自動化が無効化された2隻の単独船。</japanese>
-    <chineseSimplified>两艘单独的船只，所有自动化功能均被禁用。</chineseSimplified>
+    <chineseSimplified>两艘单独的船只，所有自动化在一开始已被禁用。</chineseSimplified>
     <chineseTraditional>兩艘單獨的船隻，所有自動化功能均被禁用。</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
@@ -727,17 +728,21 @@
    </obstacleAvoidCheckClock>
    <doingStep>false</doingStep>
    <firstLoaded>false</firstLoaded>
-   <effectiveCompleted>false</effectiveCompleted>
+   <firstRemainOneOperationalFleet>false</firstRemainOneOperationalFleet>
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
    <hasEndDateTime>false</hasEndDateTime>
    <endDateTime>1895-04-17T00:00:00Z</endDateTime>
+   <backgroundPictureReference>
+    <isBuiltin>false</isBuiltin>
+   </backgroundPictureReference>
+   <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>39.675705</xRotation>
+  <xRotation>39.67571</xRotation>
   <yRotation>236.489166</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>

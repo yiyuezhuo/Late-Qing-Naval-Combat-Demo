@@ -66,7 +66,8 @@ namespace NavalCombatCore
 
         // public float GetSupplyPercent() => (float)supplyTons / GetSupplyCapTons();
 
-        public static float shipEnduranceDays = 14;
+        // public static float shipEnduranceDays = 14;
+        public static float shipEnduranceDays = 15;
 
         public float GetSupplyCostTonsPerDay()
         {

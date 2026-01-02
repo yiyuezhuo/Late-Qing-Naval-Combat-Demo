@@ -389,6 +389,20 @@ namespace StrategicCombatCore
             return $"NavalContactReport({dateTime}, {position.GetAreaCellName()}, {GetObserverSide().name} => {GetObservedSide().name}, {estimation})";
         }
 
+        public LazyLocalizedString ToLazyLocalizedString()
+        {
+            var dateTimeOffsetString = CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(dateTime);
+
+            return LazyLocalizedString.MakeTemplate(
+                "Contact Report: {0}, {1}, {2} -> {3}: {4}",
+                LazyLocalizedString.MakeRaw(dateTimeOffsetString),
+                LazyLocalizedString.MakeGlobalStringShort(position.GetAreaCellNameGlobalString()),
+                LazyLocalizedString.MakeGlobalStringShort(GetObserverSide().name),
+                LazyLocalizedString.MakeGlobalStringShort(GetObservedSide().name),
+                LazyLocalizedString.MakeRaw(estimation.GetEstimatateSummary())
+            );
+        }
+
         public TimeSpan GetTimeSpanToCurrent()
         {
             var timeSpan = StrategicGameState.Instance.scenarioState.dateTime - dateTime;

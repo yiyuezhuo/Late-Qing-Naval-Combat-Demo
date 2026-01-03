@@ -102,4 +102,12 @@ public class TempDialog: ISwitchable
         //     root.AddManipulator(new MyDragger());
         // }
     }
+
+    public void SoftHide()
+    {
+        // Hide();
+        el.style.display = DisplayStyle.None;
+
+        // OnHidden();
+    }
 }

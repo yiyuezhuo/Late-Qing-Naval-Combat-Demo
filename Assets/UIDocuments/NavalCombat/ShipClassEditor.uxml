@@ -50,10 +50,10 @@
                                         <ui:Instance template="GlobalStringEditor" data-source-path="name">
                                             <AttributeOverrides element-name="GlobalStringLabel" text="Class Name"/>
                                         </ui:Instance>
-                                        <LocalizedEnumField label="SK5 Type" type-str="NavalCombatCore.ShipType">
+                                        <LocalizedEnumField type-str="NavalCombatCore.ShipType" label="Type">
                                             <Bindings>
                                                 <ui:DataBinding property="value" data-source-path="type" source-to-ui-converters="ShipType =&gt; int" ui-to-source-converters="int =&gt; ShipType" binding-mode="TwoWay"/>
-                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(38923957534625792)"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)"/>
                                             </Bindings>
                                         </LocalizedEnumField>
                                         <LocalizedEnumField type-str="NavalCombatCore.ExtraShipType" label="Extra Type">
@@ -136,8 +136,8 @@
                                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                         <ui:MultiColumnListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" header-title="Speed-Increase" show-foldout-header="true" data-source-path="speedIncreaseRecord" name="SpeedIncreaseMultiColumnListView" style="flex-grow: 1; flex-basis: 100px;">
                                             <ui:Columns>
-                                                <ui:Column name="speed" title="Speed" cell-template="project://database/Assets/UIDocuments/Templates/SpeedIncreaseRecord/SpeedIncreaseRecordSpeedCell.uxml?fileID=9197481963319205126&amp;guid=429f86857d98fd24e8e16c6cf0b9e4ed&amp;type=3#SpeedIncreaseRecordSpeedCell" width="50%"/>
-                                                <ui:Column name="increase" title="Increase" cell-template="project://database/Assets/UIDocuments/Templates/SpeedIncreaseRecord/SpeedIncreaseRecordIncreaseCell.uxml?fileID=9197481963319205126&amp;guid=86de648d34e3f7f4db8a315a6f91832f&amp;type=3#SpeedIncreaseRecordIncreaseCell" width="50%"/>
+                                                <ui:Column name="speed" title="Speed" cell-template="project://database/Assets/UIDocuments/Templates/SpeedIncreaseRecord/SpeedIncreaseRecordSpeedCell.uxml?fileID=9197481963319205126&amp;guid=429f86857d98fd24e8e16c6cf0b9e4ed&amp;type=3#SpeedIncreaseRecordSpeedCell" width="50%" header-template="project://database/Assets/UIDocuments/Templates/SpeedIncreaseRecord/SpeedIncreaseRecordSpeedHeader.uxml?fileID=9197481963319205126&amp;guid=40cb62fc3ae5a8941a581c1e50c2217d&amp;type=3#SpeedIncreaseRecordSpeedHeader"/>
+                                                <ui:Column name="increase" title="Increase" cell-template="project://database/Assets/UIDocuments/Templates/SpeedIncreaseRecord/SpeedIncreaseRecordIncreaseCell.uxml?fileID=9197481963319205126&amp;guid=86de648d34e3f7f4db8a315a6f91832f&amp;type=3#SpeedIncreaseRecordIncreaseCell" width="50%" header-template="project://database/Assets/UIDocuments/Templates/SpeedIncreaseRecord/SpeedIncreaseRecordIncreaseHeader.uxml?fileID=9197481963319205126&amp;guid=e7283a268f9189c47814ecaf88c425c7&amp;type=3#SpeedIncreaseRecordIncreaseHeader"/>
                                             </ui:Columns>
                                             <Bindings>
                                                 <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(72368984330240)"/>

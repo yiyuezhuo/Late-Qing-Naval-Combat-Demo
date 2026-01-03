@@ -2332,6 +2332,22 @@ MonoBehaviour:
     m_Key: And Other Pre-Dreadnought Battles
     m_Metadata:
       m_Items: []
+  - m_Id: 44746725643685888
+    m_Key: Narrow Angle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44749922277953536
+    m_Key: Cell State
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44762070345486336
+    m_Key: Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44762251669442560
+    m_Key: Increase (Speed)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

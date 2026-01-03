@@ -630,12 +630,14 @@ namespace StrategicCombatCore
                     var raidingFleetGroups = sideFleetGroupsGrouping.ToList();
                     var raidingSideSearchShips = raidingFleetGroups.Sum(g => g.WalkGroupMembersDeployedShips().Count());
                     // var raidingSideSearchValue = raidingSideSearchShips * 1f;
-                    var raidingSideSearchValue = raidingSideSearchShips * 2f; // Increase the base raiding probability
+                    // var raidingSideSearchValue = raidingSideSearchShips * 2f; // Increase the base raiding probability
+                    var raidingSideSearchValue = raidingSideSearchShips * 8f; // Increase the base raiding probability
                     raidingSideSearchValue *= GetSearchValueDayNightCoef(cell);
 
                     foreach(var raidedSideInfo in cell.CellSideInfos.Where(info => info.sideObjectId != raidingSide.objectId && info.merchantShipTraffic > 0))
                     {
-                        var merchantShipProb = raidedSideInfo.merchantShipTraffic / 100;
+                        // var merchantShipProb = raidedSideInfo.merchantShipTraffic / 100;
+                        var merchantShipProb = 2 * raidedSideInfo.merchantShipTraffic / 100;
                         if(RandomUtils.NextFloat() <= merchantShipProb) // A potential target appear
                         {
                             if(RandomUtils.NextFloat() <= raidingSideSearchValue / (100 * searchAreaCoef))

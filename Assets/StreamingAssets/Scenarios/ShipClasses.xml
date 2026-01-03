@@ -854,7 +854,7 @@
      <MountLocationRecord>
       <mountLocation>Forward</mountLocation>
       <barrels>1</barrels>
-      <mounts>2</mounts>
+      <mounts>1</mounts>
       <mountArcs>
        <MountArcRecord startDeg="270" CoverageDeg="180" isCrossDeckFire="false" />
       </mountArcs>
@@ -6530,7 +6530,7 @@ Hiei (比叡, 1878)</remark>
     </fireControlRadarName>
     <shellSizeInch>4.7</shellSizeInch>
     <shellWeightPounds>45</shellWeightPounds>
-    <ammunitionCapacity>2200</ammunitionCapacity>
+    <ammunitionCapacity>2400</ammunitionCapacity>
     <fireControlTableRecords>
      <FireControlTableRecord>
       <speedThresholdKnot>9</speedThresholdKnot>
@@ -7891,7 +7891,7 @@ For reason, it's classified as CA in SK5.
     </fireControlRadarName>
     <shellSizeInch>6.7</shellSizeInch>
     <shellWeightPounds>118</shellWeightPounds>
-    <ammunitionCapacity>60</ammunitionCapacity>
+    <ammunitionCapacity>120</ammunitionCapacity>
     <fireControlTableRecords>
      <FireControlTableRecord>
       <speedThresholdKnot>9</speedThresholdKnot>
@@ -8033,7 +8033,7 @@ For reason, it's classified as CA in SK5.
     </fireControlRadarName>
     <shellSizeInch>4.7</shellSizeInch>
     <shellWeightPounds>44.1</shellWeightPounds>
-    <ammunitionCapacity>80</ammunitionCapacity>
+    <ammunitionCapacity>400</ammunitionCapacity>
     <fireControlTableRecords>
      <FireControlTableRecord>
       <speedThresholdKnot>9</speedThresholdKnot>
@@ -8456,7 +8456,7 @@ Cancel Armor Type Factor</remark>
     </fireControlRadarName>
     <shellSizeInch>4.7</shellSizeInch>
     <shellWeightPounds>44.1</shellWeightPounds>
-    <ammunitionCapacity>80</ammunitionCapacity>
+    <ammunitionCapacity>320</ammunitionCapacity>
     <fireControlTableRecords>
      <FireControlTableRecord>
       <speedThresholdKnot>9</speedThresholdKnot>
@@ -8707,7 +8707,7 @@ Cancel Armor Type Factor</remark>
     </fireControlRadarName>
     <shellSizeInch>5.9</shellSizeInch>
     <shellWeightPounds>86</shellWeightPounds>
-    <ammunitionCapacity>60</ammunitionCapacity>
+    <ammunitionCapacity>240</ammunitionCapacity>
     <fireControlTableRecords>
      <FireControlTableRecord>
       <speedThresholdKnot>9</speedThresholdKnot>
@@ -17684,7 +17684,7 @@ Correction: SK5 length 37 -&gt; 307</remark>
     </fireControlRadarName>
     <shellSizeInch>6</shellSizeInch>
     <shellWeightPounds>91.5</shellWeightPounds>
-    <ammunitionCapacity>1440</ammunitionCapacity>
+    <ammunitionCapacity>1680</ammunitionCapacity>
     <fireControlTableRecords>
      <FireControlTableRecord>
       <speedThresholdKnot>9</speedThresholdKnot>
@@ -18105,7 +18105,9 @@ Correction: SK5 length 37 -&gt; 307</remark>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Russian_cruiser_Varyag_(1899)_left_elevation_plan.jpg</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Varyag_(1899)
 
-Варя́г</remark>
+Варя́г
+
+SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 1440 -&gt; 1680</remark>
   <portraitReference>
    <path>Pictures\Ships\Varyag.jpg</path>
    <isBuiltin>true</isBuiltin>

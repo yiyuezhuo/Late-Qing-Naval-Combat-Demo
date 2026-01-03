@@ -472,15 +472,6 @@
         <ammunitionType>ArmorPiercing</ammunitionType>
         <logs />
        </MountStatusRecord>
-       <MountStatusRecord>
-        <subStates />
-        <objectId>f193f280-f25e-44fe-a5a8-a37d4be12aaf</objectId>
-        <status>Operational</status>
-        <barrels>1</barrels>
-        <processSeconds>0</processSeconds>
-        <ammunitionType>ArmorPiercing</ammunitionType>
-        <logs />
-       </MountStatusRecord>
       </mountStatus>
       <fireControlSystemStatusRecords>
        <FireControlSystemStatusRecord>

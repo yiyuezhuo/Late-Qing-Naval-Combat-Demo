@@ -83,6 +83,7 @@ namespace NavalCombat
             var shipClassEditor = ShipClassEditor.Instance;
             var distanceMeasureLine = MeasureLine.Instance;
             var orderOfBattleEditor = OOBEditor.Instance;
+            var switchCenter = SwitchCenter.Instance;
 
             foreach (var grouping in eventItems.GroupBy(x => x.eventType))
             {
@@ -107,9 +108,10 @@ namespace NavalCombat
                 {
                     ResetAndBind(ref manager.shipLogClicked, grouping);
                 }
-                else if (eventType == EventType.ShipLogEditorOpened)
+                else if (eventType == EventType.ShipLogEditorOpened) // Use name shipLogViewShown? But it's referred by Scripting Layer Though.
                 {
-                    ResetAndBind(ref shipLogEditor.shown, grouping);
+                    // ResetAndBind(ref shipLogEditor.shown, grouping);
+                    ResetAndBind(ref switchCenter.shipLogViewShown, grouping);
                 }
                 else if (eventType == EventType.NamedShipEditorOpened)
                 {

@@ -2399,7 +2399,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23986180124741632
-    m_Localized: Compound Hard Steel Faced Wriought Iron (1878)
+    m_Localized: Compound Hard Steel Faced Wrought Iron (1878)
     m_Metadata:
       m_Items: []
   - m_Id: 23986226161422336
@@ -2636,6 +2636,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 29714376631685120
     m_Localized: tons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30151149539201024
+    m_Localized: 'Torpedo:'
     m_Metadata:
       m_Items: []
   references:

@@ -468,15 +468,6 @@
         <ammunitionType>ArmorPiercing</ammunitionType>
         <logs />
        </MountStatusRecord>
-       <MountStatusRecord>
-        <subStates />
-        <objectId>709f795f-8676-4ca1-b7ea-4486f7179b50</objectId>
-        <status>Operational</status>
-        <barrels>1</barrels>
-        <processSeconds>0</processSeconds>
-        <ammunitionType>ArmorPiercing</ammunitionType>
-        <logs />
-       </MountStatusRecord>
       </mountStatus>
       <fireControlSystemStatusRecords>
        <FireControlSystemStatusRecord>
@@ -4810,9 +4801,9 @@
       <subStates />
       <objectId>cfc857fb-5fc9-49b9-8228-ee902dea40d8</objectId>
       <ammunition>
-       <ArmorPiercing>1100</ArmorPiercing>
+       <ArmorPiercing>1200</ArmorPiercing>
        <semiArmorPiercing>0</semiArmorPiercing>
-       <common>1100</common>
+       <common>1200</common>
        <highExplosive>0</highExplosive>
       </ammunition>
       <mountStatus>
@@ -6738,9 +6729,9 @@
       <subStates />
       <objectId>d561f7c1-7cd4-4234-992e-b81e5759d2bc</objectId>
       <ammunition>
-       <ArmorPiercing>30</ArmorPiercing>
+       <ArmorPiercing>60</ArmorPiercing>
        <semiArmorPiercing>0</semiArmorPiercing>
-       <common>30</common>
+       <common>60</common>
        <highExplosive>0</highExplosive>
       </ammunition>
       <mountStatus>
@@ -6777,9 +6768,9 @@
       <subStates />
       <objectId>100f72ca-2e25-4c35-a1be-5d3fc261f893</objectId>
       <ammunition>
-       <ArmorPiercing>40</ArmorPiercing>
+       <ArmorPiercing>200</ArmorPiercing>
        <semiArmorPiercing>0</semiArmorPiercing>
-       <common>40</common>
+       <common>200</common>
        <highExplosive>0</highExplosive>
       </ammunition>
       <mountStatus>
@@ -6984,9 +6975,9 @@
       <subStates />
       <objectId>66e5cc20-7d13-4eb2-8e38-e7b01fa9ecca</objectId>
       <ammunition>
-       <ArmorPiercing>30</ArmorPiercing>
+       <ArmorPiercing>60</ArmorPiercing>
        <semiArmorPiercing>0</semiArmorPiercing>
-       <common>30</common>
+       <common>60</common>
        <highExplosive>0</highExplosive>
       </ammunition>
       <mountStatus>
@@ -7023,9 +7014,9 @@
       <subStates />
       <objectId>7b17ba6c-0247-4cef-a51d-9366935b284d</objectId>
       <ammunition>
-       <ArmorPiercing>40</ArmorPiercing>
+       <ArmorPiercing>200</ArmorPiercing>
        <semiArmorPiercing>0</semiArmorPiercing>
-       <common>40</common>
+       <common>200</common>
        <highExplosive>0</highExplosive>
       </ammunition>
       <mountStatus>
@@ -7230,9 +7221,9 @@
       <subStates />
       <objectId>31e43684-a4da-4287-b6ac-81ee5182ebd2</objectId>
       <ammunition>
-       <ArmorPiercing>30</ArmorPiercing>
+       <ArmorPiercing>60</ArmorPiercing>
        <semiArmorPiercing>0</semiArmorPiercing>
-       <common>30</common>
+       <common>60</common>
        <highExplosive>0</highExplosive>
       </ammunition>
       <mountStatus>
@@ -7269,9 +7260,9 @@
       <subStates />
       <objectId>47022729-85fb-4b52-84e9-c9e2ed8f4885</objectId>
       <ammunition>
-       <ArmorPiercing>40</ArmorPiercing>
+       <ArmorPiercing>200</ArmorPiercing>
        <semiArmorPiercing>0</semiArmorPiercing>
-       <common>40</common>
+       <common>200</common>
        <highExplosive>0</highExplosive>
       </ammunition>
       <mountStatus>
@@ -7504,9 +7495,9 @@
       <subStates />
       <objectId>e2f5ad20-dab7-40cf-9084-0b06898f70ec</objectId>
       <ammunition>
-       <ArmorPiercing>40</ArmorPiercing>
+       <ArmorPiercing>160</ArmorPiercing>
        <semiArmorPiercing>0</semiArmorPiercing>
-       <common>40</common>
+       <common>160</common>
        <highExplosive>0</highExplosive>
       </ammunition>
       <mountStatus>
@@ -7683,9 +7674,9 @@
       <subStates />
       <objectId>69f06d47-2e36-48bc-836e-f52e0b82854b</objectId>
       <ammunition>
-       <ArmorPiercing>30</ArmorPiercing>
+       <ArmorPiercing>120</ArmorPiercing>
        <semiArmorPiercing>0</semiArmorPiercing>
-       <common>30</common>
+       <common>120</common>
        <highExplosive>0</highExplosive>
       </ammunition>
       <mountStatus>

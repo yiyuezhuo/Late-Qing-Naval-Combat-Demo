@@ -2,6 +2,7 @@
 using NavalCombatCore;
 using CoreUtils;
 using StrategicCombatCore;
+using System;
 
 public interface ISwitchable
 {
@@ -128,6 +129,8 @@ public class SwitchCenter
         }
     }
 
+    public EventHandler shipLogViewShown;
+
     public void SwitchToShipLogView(ShipLog shipLog)
     {
         if(shipLog != null)
@@ -138,7 +141,6 @@ public class SwitchCenter
             {
                 // currentActiveViewContainer?.SwitchClose();
                 // currentActiveViewContainer = ShipLogEditor.Instance;
-                
 
                 if(GamePreference.Instance.isInEditMode)
                 {
@@ -151,6 +153,8 @@ public class SwitchCenter
                     var tempDialog = DialogRoot.Instance.PopupShipLogDialog(shipLog);
                     UpdateCurrentActiveViewContainer(tempDialog);
                 }
+
+                shipLogViewShown?.Invoke(this, EventArgs.Empty);
             }
         }
     }

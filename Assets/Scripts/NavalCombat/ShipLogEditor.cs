@@ -86,10 +86,9 @@ public class ShipLogView
                 detailButton.clicked += () =>
                 {
                     var ctx = detailButton.GetHierarchicalDataSourceContext();
+                    // TODO: Transfer to Utils.TryResolveCurrentValueForBinding
                     if (PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out MountStatusRecord mountStatus))
                     {
-                        // Debug.Log($"Detail Invoke: {mountStatus.objectId}");
-
                         DialogRoot.Instance.PopupMessageDialog(mountStatus.DescribeDetail(), "Mount Detail");
                     }
                 };
@@ -237,10 +236,12 @@ public class ShipLogView
         shipLogDetailButton.clicked += () =>
         {
             var ctx = shipLogDetailButton.GetHierarchicalDataSourceContext();
-            if (PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out ShipLog shipLog))
+            // if (PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out ShipLog shipLog))
+            // {
+            //     DialogRoot.Instance.PopupMessageDialog(shipLog.DescribeDetail(), Localize("ShipLog Detail"));
+            // }
+            if(Utils.TryResolveCurrentValueForBinding(shipLogDetailButton, out ShipLog shipLog))
             {
-                // Debug.Log($"Detail Invoke: {mountStatus.objectId}");
-
                 DialogRoot.Instance.PopupMessageDialog(shipLog.DescribeDetail(), Localize("ShipLog Detail"));
             }
         };

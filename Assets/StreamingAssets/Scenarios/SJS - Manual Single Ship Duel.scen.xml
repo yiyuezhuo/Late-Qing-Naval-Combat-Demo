@@ -295,9 +295,9 @@
       <subStates />
       <objectId>818d2f5d-4b52-49dc-b9eb-c5172f6260fb</objectId>
       <ammunition>
-       <ArmorPiercing>1100</ArmorPiercing>
+       <ArmorPiercing>1200</ArmorPiercing>
        <semiArmorPiercing>0</semiArmorPiercing>
-       <common>1100</common>
+       <common>1200</common>
        <highExplosive>0</highExplosive>
       </ammunition>
       <mountStatus>

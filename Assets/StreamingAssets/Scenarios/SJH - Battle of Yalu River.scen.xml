@@ -473,15 +473,6 @@
         <ammunitionType>ArmorPiercing</ammunitionType>
         <logs />
        </MountStatusRecord>
-       <MountStatusRecord>
-        <subStates />
-        <objectId>91327050-1f62-4c44-acac-08bff57645ab</objectId>
-        <status>Operational</status>
-        <barrels>1</barrels>
-        <processSeconds>0</processSeconds>
-        <ammunitionType>ArmorPiercing</ammunitionType>
-        <logs />
-       </MountStatusRecord>
       </mountStatus>
       <fireControlSystemStatusRecords>
        <FireControlSystemStatusRecord>
@@ -4616,9 +4607,9 @@
       <subStates />
       <objectId>a290b33c-60b1-4d4d-8ede-6f20f0b92137</objectId>
       <ammunition>
-       <ArmorPiercing>1100</ArmorPiercing>
+       <ArmorPiercing>1200</ArmorPiercing>
        <semiArmorPiercing>0</semiArmorPiercing>
-       <common>1100</common>
+       <common>1200</common>
        <highExplosive>0</highExplosive>
       </ammunition>
       <mountStatus>
@@ -6271,6 +6262,7 @@
     <strategicGroupReference />
    </ShipLog>
   </shipLogs>
+  <serializedCustomBoolMap />
   <shipGroups>
    <ShipGroup>
     <childrenObjectIds>
@@ -6768,6 +6760,7 @@
     <path>Pictures\Backgrounds\MainMenu.jpg</path>
     <isBuiltin>true</isBuiltin>
    </backgroundPictureReference>
+   <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />

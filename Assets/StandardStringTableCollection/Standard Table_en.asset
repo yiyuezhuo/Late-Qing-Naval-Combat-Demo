@@ -2434,6 +2434,26 @@ MonoBehaviour:
     m_Localized: Increase
     m_Metadata:
       m_Items: []
+  - m_Id: 45030312033030144
+    m_Localized: Cargo Area 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45030437149118464
+    m_Localized: Cargo Area 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45030500470525952
+    m_Localized: Cargo Area 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45030568430833664
+    m_Localized: Cargo Area 4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45034289424404480
+    m_Localized: Has Fire Control Radar
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

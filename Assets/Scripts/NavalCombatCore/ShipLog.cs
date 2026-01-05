@@ -228,7 +228,17 @@ namespace NavalCombatCore
         public string shooterId;
 
         [XmlAttribute]
-        public ArmorLocation armorLocation;
+        public DamageSchema damageSchema;
+
+        [XmlAttribute]
+        public ArmorLocation ArmorLocation;
+
+        public bool ShouldSerializeArmorLocation() => damageSchema == DamageSchema.Warship;
+
+        [XmlAttribute]
+        public HitLocationMerchantVessel HitLocationMerchantVessel;
+
+        public bool ShouldSerializeHitLocationMerchantVessel() => damageSchema == DamageSchema.MerchantVessal;
 
         [XmlAttribute]
         public HitPenDetType hitPenDetType;
@@ -240,10 +250,20 @@ namespace NavalCombatCore
         public string damageEffectId;
 
         // public override string Summary() => $"{time}: Bty Hit: {armorLocation} {hitPenDetType} DP:{damagePoint} DE:{damageEffectId}";
-        public override string SummaryContent() => Localize(
-            "Bty Hit: {0} {1} DP:{2} DE:{3} (by {4})",
-            LocalizeEnum(armorLocation), LocalizeEnum(hitPenDetType), damagePoint, damageEffectId, EntityManager.Instance.Get<ShipLog>(shooterId)?.namedShip?.name?.GetShortName()
-        );
+        public override string SummaryContent()
+        {
+            var locStr = damageSchema switch
+            {
+                DamageSchema.Warship => LocalizeEnum(ArmorLocation),
+                DamageSchema.MerchantVessal => LocalizeEnum(HitLocationMerchantVessel),
+                _ => throw new NotImplementedException()
+            };
+            
+            return Localize(
+                "Bty Hit: {0} {1} DP:{2} DE:{3} (by {4})",
+                locStr, LocalizeEnum(hitPenDetType), damagePoint, damageEffectId, EntityManager.Instance.Get<ShipLog>(shooterId)?.namedShip?.name?.GetShortName()
+            );
+        }
     }
 
     public class ShipLogRapidFiringGunHitLog : ShipLogLog
@@ -338,6 +358,44 @@ namespace NavalCombatCore
                     record.highExplosive += unresolved;
             }
         }
+    }
+
+    public enum CargoType
+    {
+        GeneralCargo,
+        WarMateriel, // Weapons
+        Troops,
+        Munitions, // AM
+        FlammableStores, // FS
+        FuelOil, // FO
+        FuelAviation // FA
+    }
+
+    public class CargoAreas
+    {
+        public CargoType area1;
+        public CargoType area2;
+        public CargoType area3;
+        public CargoType area4;
+
+        public static HashSet<CargoType> explodePotentialCargoTypes = new()
+        {
+            CargoType.Munitions, // AM
+            CargoType.FlammableStores, // FS
+            CargoType.FuelOil, // FO
+            CargoType.FuelAviation // FA
+        };
+
+        public IEnumerable<CargoType> IterAreas()
+        {
+            yield return area1;
+            yield return area2;
+            yield return area3;
+            yield return area4;
+        }
+
+
+        public bool ContainsExplodePotentialCargo() => IterAreas().Any(type =>explodePotentialCargoTypes.Contains(type));
     }
 
     public partial class ShipLog : UnitModule, IDF4Model, IShipGroupMember, IWTAObject, IExtrapolable, ICollider, INamed
@@ -560,6 +618,8 @@ namespace NavalCombatCore
 
         public List<ShipLogLog> logs = new(); // TODO: Switch to structure logging?
         public List<TimeLoc> timeLocLogs = new();
+
+        public CargoAreas cargoAreas = new();
 
         // Aux States for AI:
         // TODO: How to represent this state in the UI?

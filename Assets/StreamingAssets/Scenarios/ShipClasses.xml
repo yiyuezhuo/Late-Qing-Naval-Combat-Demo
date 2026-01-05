@@ -42,6 +42,7 @@
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12282</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -229,6 +230,7 @@
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>9899</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -561,6 +563,7 @@
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12282</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -748,6 +751,7 @@
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>9899</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -1068,6 +1072,7 @@
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>8968</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -1215,6 +1220,7 @@
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>7869</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -1529,6 +1535,7 @@ Of course, these two classifications make no practical difference aside from the
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>6124</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -1657,6 +1664,7 @@ Of course, these two classifications make no practical difference aside from the
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>7818</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -1956,6 +1964,7 @@ Chi Yuan or Jiyuan</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>11833</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -2284,6 +2293,7 @@ Chi Yuan or Jiyuan</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>7904</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -2429,6 +2439,7 @@ Chi Yuan or Jiyuan</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>7818</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -2728,6 +2739,7 @@ Ting Yuen or Dingyuan</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>7999</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -2870,6 +2882,7 @@ Ting Yuen or Dingyuan</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>5198</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -3145,6 +3158,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>8228</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -3295,6 +3309,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>7818</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -3604,6 +3619,7 @@ For some reason, SK5 classify it to CA</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>6124</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -3735,6 +3751,7 @@ For some reason, SK5 classify it to CA</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>7818</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -4015,6 +4032,7 @@ King Yuan or Jingyuan</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>9590</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -4153,6 +4171,7 @@ King Yuan or Jingyuan</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>7818</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -4435,6 +4454,7 @@ Ping Yuen or Pingyuan
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>7818</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -4563,6 +4583,7 @@ Ping Yuen or Pingyuan
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>8797</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -4957,6 +4978,7 @@ Fu Lung or Fulong
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>8475</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -5104,6 +5126,7 @@ Fu Lung or Fulong
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>8828</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -5418,6 +5441,7 @@ Fu Lung or Fulong
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>11390</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -5560,6 +5584,7 @@ Fu Lung or Fulong
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>8412</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -5948,6 +5973,7 @@ Itsukushima (厳島, 1891)
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>6294</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -6100,6 +6126,7 @@ Itsukushima (厳島, 1891)
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>6110</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -6382,6 +6409,7 @@ Hiei (比叡, 1878)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>11390</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -6524,6 +6552,7 @@ Hiei (比叡, 1878)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>8412</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -6901,6 +6930,7 @@ For reason, it's classified as CA in SK5.
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>9899</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -7275,6 +7305,7 @@ For reason, it's classified as CA in SK5.
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>6124</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -7403,6 +7434,7 @@ For reason, it's classified as CA in SK5.
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>5711</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -7636,6 +7668,7 @@ For reason, it's classified as CA in SK5.
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>8412</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -7885,6 +7918,7 @@ For reason, it's classified as CA in SK5.
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>6294</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -8027,6 +8061,7 @@ For reason, it's classified as CA in SK5.
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>5711</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -8320,6 +8355,7 @@ Cancel Armor Type Factor</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>6110</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -8450,6 +8486,7 @@ Cancel Armor Type Factor</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>5711</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -8701,6 +8738,7 @@ Cancel Armor Type Factor</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>6110</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -8867,6 +8905,7 @@ Cancel Armor Type Factor</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>5711</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -10115,6 +10154,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>16371</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -10285,6 +10325,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>10241</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -10817,6 +10858,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12107</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -10979,6 +11021,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>10995</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -11454,6 +11497,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>14199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -11641,6 +11685,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -12092,6 +12137,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>14199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -12279,6 +12325,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -12712,6 +12759,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>9209</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -12885,6 +12933,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -13096,6 +13145,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>10800</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -13445,6 +13495,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>14505</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -13608,6 +13659,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>11082</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -13973,6 +14025,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>14505</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -14136,6 +14189,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>11082</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -14550,6 +14604,7 @@ Azuma or Adzuma (SK5 name)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>14505</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -14713,6 +14768,7 @@ Azuma or Adzuma (SK5 name)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>11082</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -15077,6 +15133,7 @@ Azuma or Adzuma (SK5 name)</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>11082</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -15430,6 +15487,7 @@ Of course, these two classifications make no practical difference aside from the
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>11082</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -15756,6 +15814,7 @@ Sometime called Niitaka class.
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -16674,6 +16733,7 @@ Sometime called Niitaka class.
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>14505</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -16837,6 +16897,7 @@ Sometime called Niitaka class.
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>11082</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -17222,6 +17283,7 @@ Sometime called Niitaka class.
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>11082</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -17378,6 +17440,7 @@ Sometime called Niitaka class.
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>9899</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -17678,6 +17741,7 @@ Correction: SK5 length 37 -&gt; 307</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -18162,6 +18226,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>9209</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -18311,6 +18376,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>8170</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -18446,6 +18512,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>5079</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -18737,6 +18804,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>14845</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -18900,6 +18968,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -19063,6 +19132,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -20097,6 +20167,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>14845</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -20260,6 +20331,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -20695,6 +20767,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>18983</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -20872,6 +20945,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -21264,6 +21338,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>14845</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -21427,6 +21502,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -21590,6 +21666,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -21974,6 +22051,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>14199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -22137,6 +22215,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>13453</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -22549,6 +22628,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -23013,6 +23093,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12199</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -23414,6 +23495,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>10800</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -23805,6 +23887,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>10800</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -24511,6 +24594,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>16371</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -24681,6 +24765,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12282</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -25066,6 +25151,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>16371</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -25236,6 +25322,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12282</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -25619,6 +25706,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>16371</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -25789,6 +25877,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>10241</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -26176,6 +26265,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>16371</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -26346,6 +26436,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12282</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -26738,6 +26829,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>14505</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -26901,6 +26993,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>9899</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -27279,6 +27372,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>14505</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -27442,6 +27536,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>9899</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -27823,6 +27918,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>12282</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
@@ -28010,6 +28106,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
     <rangeYards>9899</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>

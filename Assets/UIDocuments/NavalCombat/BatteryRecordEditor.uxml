@@ -7,15 +7,26 @@
                 <ui:Instance template="GlobalStringEditor" data-source-path="name">
                     <AttributeOverrides element-name="GlobalStringLabel" text="Name"/>
                 </ui:Instance>
-                <ui:FloatField label="FC Radar Modifier">
+                <ui:Toggle label="Has Fire Control Radar">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="fireControlRadarModifier" binding-mode="TwoWay"/>
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73607310643200)"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(45034289424404480)"/>
+                        <ui:DataBinding property="value" data-source-path="hasFireControlRadar" binding-mode="TwoWay"/>
                     </Bindings>
-                </ui:FloatField>
-                <ui:Instance template="GlobalStringEditor" data-source-path="fireControlRadarName">
-                    <AttributeOverrides element-name="GlobalStringLabel" text="Fire Control Radar Name"/>
-                </ui:Instance>
+                </ui:Toggle>
+                <ui:VisualElement>
+                    <ui:FloatField label="FC Radar Modifier">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="fireControlRadarModifier" binding-mode="TwoWay"/>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73607310643200)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:Instance template="GlobalStringEditor" data-source-path="fireControlRadarName">
+                        <AttributeOverrides element-name="GlobalStringLabel" text="Fire Control Radar Name"/>
+                    </ui:Instance>
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="hasFireControlRadar" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                    </Bindings>
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                 <ui:FloatField label="Range (Yards)">

@@ -153,12 +153,25 @@ namespace NavalCombatCore
 
                             // Handle Damage Effect
 
+                            var damageSchema = collidedShipLog.shipClass.GetDamageSchema();
+
                             var ctx = new DamageEffectContext()
                             {
                                 subject = collidedShipLog,
                                 baseDamagePoint = torpedoDamage,
-                                cause = DamageEffectCause.Torpedo,
+                                damageSchema = damageSchema
+                                // cause = DamageEffectCause.Torpedo,
                             };
+                            if(damageSchema == DamageSchema.Warship)
+                            {
+                                ctx.cause = DamageEffectCause.Torpedo;
+                            }
+                            else if(damageSchema == DamageSchema.MerchantVessal)
+                            {
+                                var hitLocation = RuleChart.SampleHitLocationMerchantVesselTorpedo();
+                                ctx.causeMerchantVessel = RuleChart.GetDamageEffectCauseMerchantVessel(hitLocation, collidedShipLog.cargoAreas);
+                            }
+
                             var damageEffectId = DamageEffectChart.AddNewDamageEffect(ctx);
 
                             var tgtLog = new ShipLogTorpedoHitLog()
@@ -176,7 +189,7 @@ namespace NavalCombatCore
                     }
                     else if(friendlyCollisionProcessMode == FriendlyCollisionProcessMode.Passthrough)
                     {
-                        // ignore    
+                        // ignore
                     }
                     else if(friendlyCollisionProcessMode == FriendlyCollisionProcessMode.Dub)
                     {

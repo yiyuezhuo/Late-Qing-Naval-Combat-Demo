@@ -2633,6 +2633,34 @@ MonoBehaviour:
     m_Key: 'Torpedo:'
     m_Metadata:
       m_Items: []
+  - m_Id: 30434808120905728
+    m_Key: CargoType.GeneralCargo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30434845563457536
+    m_Key: CargoType.WarMateriel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30434882745962496
+    m_Key: CargoType.Troops
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30434896398422016
+    m_Key: CargoType.Munitions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30434938790252544
+    m_Key: CargoType.FlammableStores
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30434953122189312
+    m_Key: CargoType.FuelOil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30434970536939520
+    m_Key: CargoType.FuelAviation
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

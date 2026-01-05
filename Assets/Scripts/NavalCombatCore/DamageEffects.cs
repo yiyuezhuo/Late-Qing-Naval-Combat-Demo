@@ -9,11 +9,18 @@ using CoreUtils;
 
 namespace NavalCombatCore
 {
-    public enum DamageEffectCause
+    public enum DamageSchema
+    {
+        Warship, // or warship 1880-1904?
+        MerchantVessal
+        // TODO: Add Land Battery here?
+    }
+
+    public enum DamageEffectCause // Warship
     {
         Deck, // 1
         Turret, // 2/8
-        Superstrucure, // 3/9
+        Superstructure, // 3/9
         ConningTower, // 4
         MainBelt, // 5
         BeltEnd, // 6
@@ -23,17 +30,38 @@ namespace NavalCombatCore
         Torpedo // T
     }
 
-    public class DamageEffectContext // Which is not serialized and just to be used in-demand so we can reference object relative freely.
+
+    public enum DamageEffectCauseMerchantVessel
+    {
+        Superstructure, // SS
+        Propulsion, // PP
+        GeneralCargo, // GC
+        WarMateriel, // WM
+        Troops, // TR
+        Munitions, // AM
+        FlammableStores, // FS
+        FuelOil, // FO
+        FuelAviation, // FA
+    }
+
+    public class DamageEffectContext // Which is not serialized and just to be used in-demand so we can reference object relatively freely.
     {
         public ShipLog subject;
-        public float baseDamagePoint; // DE can be a DP multiplier
-        public DamageEffectCause cause;
+        public float baseDamagePoint; // DE could be a DP multiplier
         public HitPenDetType hitPenDetType;
         public AmmunitionType ammunitionType;
         public float shellDiameterInch; // M2: Unspecified Damage severity = D100 + shell diameter (in inches)
         // public int chainNumber; // Additional damage effect would be blocked if chainNumber > 0
         public float addtionalDamageEffectProbility; // 0.0~1.0, Addtional DE will use the same probility to cause this DE. If an additional DE is not possible, prob should be set to 0.
         public object source;
+
+        public DamageSchema damageSchema;
+
+        // For DamageSchema.WarShip
+        public DamageEffectCause cause;
+
+        // For DamageSchema.MerchantVessel
+        public DamageEffectCauseMerchantVessel causeMerchantVessel;
 
         public DamageEffectContext Clone()
         {
@@ -42,11 +70,12 @@ namespace NavalCombatCore
             {
                 subject = subject,
                 baseDamagePoint = baseDamagePoint,
-                cause = cause,
                 hitPenDetType = hitPenDetType,
                 ammunitionType = ammunitionType,
                 shellDiameterInch = shellDiameterInch,
                 addtionalDamageEffectProbility = addtionalDamageEffectProbility,
+                cause = cause,
+                causeMerchantVessel = causeMerchantVessel,
                 source = source
             };
         }
@@ -71,7 +100,13 @@ namespace NavalCombatCore
     {
         public static string AddNewDamageEffect(DamageEffectContext ctx)
         {
-            var damageEffectId = RuleChart.ResolveDamageEffectId(ctx.cause);
+            var damageEffectId = ctx.damageSchema switch
+            {
+                DamageSchema.Warship => RuleChart.ResolveDamageEffectId(ctx.cause),
+                DamageSchema.MerchantVessal => RuleChart.ResolveDamageEffectIdMerchantVessel(ctx.causeMerchantVessel),
+                _ => throw new ArgumentException("Invalid damage schema")
+            };
+
             AddNewDamageEffect(ctx, damageEffectId);
             return damageEffectId;
         }
@@ -4522,7 +4557,308 @@ namespace NavalCombatCore
                     status=MountStatus.Disabled,
                 };
                 DE3.BeginAt(ctx.subject);
-            }}
+            }},
+
+            // DE 900: Catastrophic explosion. Ship destroyed. Ship will remain an obstruction for all following turns until  a roll of 01-20
+            {"900",
+                ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "DE 900: Catastrophic explosion"
+                    ));
+
+                    ctx.subject.operationalState = MaxEnum(ctx.subject.operationalState, ShipOperationalState.FloodingObstruction);
+                    var damageEffect = new SinkingState()
+                    {
+                        lifeCycle = StateLifeCycle.DieRollPassed,
+                        dieRollThreshold = 20,
+                        // cause = "DE100 (A/B): Magazine explosion."
+                        cause = Localize(
+                            "DE 900: Catastrophic explosion"
+                        )
+                    };
+                    damageEffect.BeginAt(ctx.subject);
+                }
+            },
+
+            // DE 901: Severe fire in hold.
+            {"901",
+                ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "DE 901: Severe fire in hold"
+                    ));
+
+                    // Triple DP caused by this hit
+                    ctx.subject.AddDamagePoint(ctx.baseDamagePoint * 2);
+
+                    var shipClass = ctx.subject.shipClass;
+                    if(shipClass != null && shipClass.type == ShipType.Transport && ctx.subject.cargoAreas.ContainsExplodePotentialCargo())
+                    {
+                        var DE = new FireInExplodePotentialCargoHold()
+                        {
+                            lifeCycle=StateLifeCycle.ShipboardFire,
+                            severity=60,
+                            cause=Localize(
+                                "DE 901: Severe fire in hold"
+                            ),
+                        };
+                        DE.BeginAt(ctx.subject);
+                    }
+                }
+            },
+
+            // DE 902: Damage to main propulsion systems. Until a roll of 01-30, reduce original maximum speed by 1 knot each turn.
+            {"902",
+                ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "DE 902: Damage to main propulsion systems"
+                    ));
+
+                    var DE = new FireInExplodePotentialCargoHold()
+                    {
+                        lifeCycle=StateLifeCycle.DieRollPassed,
+                        dieRollThreshold=30,
+                        cause=Localize(
+                            "DE 902: Damage to main propulsion system"
+                        ),
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+            },
+
+            // DE 903: Damage to machinery spaces. Reduce maximum speed according to additional roll:
+            {"903",
+                ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "DE 903: Damage to machinery spaces"
+                    ));
+
+                    var d100 = RandomUtils.D100F();
+                    if(d100 <= 20)
+                    {
+                        ctx.subject.dynamicStatus.maxSpeedKnotsOffset += 1;
+                    }
+                    else if(d100 <= 50)
+                    {
+                        ctx.subject.dynamicStatus.maxSpeedKnotsOffset += 2;
+                    }
+                    else
+                    {
+                        ctx.subject.dynamicStatus.maxSpeedKnotsOffset += 3;
+                    }
+                }
+            },
+
+            // DE 904: Steering jammed. No changes to current course are possible until a roll of 01-20.
+            {"904",
+                ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "DE 904: Steering jammed"
+                    ));
+
+                    var DE = new DynamicModifier()
+                    {
+                        lifeCycle = StateLifeCycle.DieRollPassed,
+                        dieRollThreshold = 20,
+                        isCourseChangeBlocked = true,
+                        cause = Localize(
+                            "DE 904: Steering jammed"
+                        )
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+            },
+
+            // DE 905: Structural damage. Double DP caused by this hit.
+            {"905",
+                ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "DE 905: Structural damage"
+                    ));
+
+                    // Double DP caused by this hit
+                    ctx.subject.AddDamagePoint(ctx.baseDamagePoint * 1);
+                }
+            },
+
+            // DE 906: Shipboard fire severity 50.
+            {"906",
+                ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "DE 906: Shipboard fire severity 50"
+                    ));
+
+                    AddShipboardFire(ctx, Localize(
+                            "DE 906: Shipboard fire severity 50"
+                        ),
+                        50
+                    );
+                }
+            },
+
+            // DE 907: Severe fire in flammables storeage area. Shipboard fire severity 60.
+            {"907",
+                ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "DE 907: Severe fire in flammables storage area"
+                    ));
+
+                    AddShipboardFire(ctx, Localize(
+                            "DE 907: Severe fire in flammables storage area"
+                        ),
+                        60
+                    );
+                }
+            },
+
+            // DE 908: Broken back. Ship breaks in two amidships. Ship will remain an obstruction for all following turns until a roll of 01-25.
+            {"908",
+                ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "DE 908: Broken back. Ship breaks in two amidships"
+                    ));
+
+                    ctx.subject.operationalState = MaxEnum(ctx.subject.operationalState, ShipOperationalState.FloodingObstruction);
+                    var damageEffect = new SinkingState()
+                    {
+                        lifeCycle = StateLifeCycle.DieRollPassed,
+                        dieRollThreshold = 25,
+                        cause = Localize(
+                            "DE 908: Broken back. Ship breaks in two amidships"
+                        )
+                    };
+                    damageEffect.BeginAt(ctx.subject);
+                }
+            },
+
+            // DE 909: Excessive flooding. Ships over 50% damaged capsize. Ships with 50% damage or under must reduce speed by 6 knots. If affected by this damage again during the game, ship capsizes regasrdless of current damage.
+            {"909",
+                ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "DE 909: Excessive flooding"
+                    ));
+
+                    var prevExcessiveFloodingCount = ctx.subject.GetSubStates<ExcessiveFlooding>().Count();
+
+                    if(prevExcessiveFloodingCount > 0)
+                    {
+                        ctx.subject.mapState = MapState.Destroyed; // capsize
+                        AddDescription(ctx, Localize(
+                            "Sunk due to capsize by excessive flooding (DE 909)"
+                        ));
+                        return;
+                    }
+
+                    var damagePercent = ctx.subject.damagePoint / Math.Max(1, ctx.subject?.shipClass?.damagePoint ?? 1);
+
+                    if(damagePercent > 0.5f)
+                    {
+                        ctx.subject.mapState = MapState.Destroyed; // capsize
+                        AddDescription(ctx, Localize(
+                            "Sunk due to capsize by excessive flooding (DE 909)"
+                        ));
+                        return;
+                    }
+
+                    var DE = new ExcessiveFlooding()
+                    {
+                        lifeCycle = StateLifeCycle.Permanent,
+                        cause = Localize(
+                            "DE 909: Excessive flooding"
+                        )
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+            },
+
+            // DE 910: Uncontrolled flooding. Roll against the following table for the next 5 game turns.
+            {"910",
+                ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "DE 910: Uncontrolled flooding"
+                    ));
+
+                    var DE = new UncontrolledFlooding()
+                    {
+                        lifeCycle = StateLifeCycle.GivenTime,
+                        givenTimeSeconds = 5 * 120,
+                        cause = Localize(
+                            "DE 909: Excessive flooding"
+                        )
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+            },
+
+            // DE 911: Cargo in hold is destroyed.
+            {"911",
+                ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "DE 911: Cargo in hold is destroyed"
+                    ));
+
+                    // TODO: How to model this DE concretely beyond just adding a narrative description?
+                }
+            },
+
+            // DE 912: Damage to propulsion. A roll of 01-25 at the beginning of any MOVEMENT PHASE causes the ship to lose all propulsion. Momentum rules apply.
+            {
+                "912",
+                ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "DE 912: Damage to propulsion"
+                    ));
+
+                    var DE = new PropulsionDamaged()
+                    {
+                        lifeCycle = StateLifeCycle.Permanent,
+                        cause = Localize(
+                            "DE 912: Damage to propulsion"
+                        )
+                    };
+                    DE.BeginAt(ctx.subject);
+                }
+            },
+
+            // DE 913: Fire in cargo area. Shipboard fire severity as determined by the table below. Cargo in hold is considered destroyed if doubles are rolled.
+            {"913",
+                ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "DE 913: Fire in cargo area"
+                    ));
+
+                    var d100 = RandomUtils.D100F();
+                    var severity = 0;
+                    if(d100 <= 30)
+                        severity = 40;
+                    else if(d100 <= 70)
+                        severity = 60;
+                    else
+                        severity = 70;
+                    
+                    AddShipboardFire(ctx, Localize(
+                        "DE 913: Fire in cargo area"
+                    ), severity);
+
+                    // Cargo in hold is considered destroyed if doubles are rolled.
+                    // Does it imply that x2 DE 913 => Cargo is destroyed?
+                    // TODO: Handle questionable cargo destruction
+                }
+            }
         };
+
     }
 }

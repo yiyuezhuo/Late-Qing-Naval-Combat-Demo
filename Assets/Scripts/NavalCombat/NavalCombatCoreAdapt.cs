@@ -79,6 +79,9 @@ namespace NavalCombatCore
     
         [CreateProperty]
         public bool isInEditMode => GamePreference.Instance.isInEditMode;
+
+        [CreateProperty]
+        public bool isTransport => type == ShipType.Transport;
     }
 
     public partial class LaunchedTorpedo : IPortraitViewerObservable
@@ -339,6 +342,9 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public bool isInEditMode => GamePreference.Instance.isInEditMode;
+
+        [CreateProperty]
+        public bool isTransport => shipClass?.isTransport ?? false;
 
         // IPortraitViewerObservable
         PictureReference IPortraitViewerObservable.GetPortraitTopReference() => shipClass?.portraitTopReference;

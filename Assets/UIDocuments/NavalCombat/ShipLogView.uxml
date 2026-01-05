@@ -313,6 +313,37 @@
                                             <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:Toggle>
+                                    <ui:VisualElement>
+                                        <ui:VisualElement data-source-path="cargoAreas">
+                                            <LocalizedEnumField type-str="NavalCombatCore.CargoType" label="Cargo Area 1">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="area1" source-to-ui-converters="CargoType =&gt; int" ui-to-source-converters="int =&gt; CargoType" binding-mode="TwoWay"/>
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(45030312033030144)"/>
+                                                </Bindings>
+                                            </LocalizedEnumField>
+                                            <LocalizedEnumField type-str="NavalCombatCore.CargoType" label="Cargo Area 2">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="area2" source-to-ui-converters="CargoType =&gt; int" ui-to-source-converters="int =&gt; CargoType" binding-mode="TwoWay"/>
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(45030437149118464)"/>
+                                                </Bindings>
+                                            </LocalizedEnumField>
+                                            <LocalizedEnumField type-str="NavalCombatCore.CargoType" label="Cargo Area 3">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="area3" source-to-ui-converters="CargoType =&gt; int" ui-to-source-converters="int =&gt; CargoType" binding-mode="TwoWay"/>
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(45030500470525952)"/>
+                                                </Bindings>
+                                            </LocalizedEnumField>
+                                            <LocalizedEnumField type-str="NavalCombatCore.CargoType" label="Cargo Area 4">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="area4" source-to-ui-converters="CargoType =&gt; int" ui-to-source-converters="int =&gt; CargoType" binding-mode="TwoWay"/>
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(45030568430833664)"/>
+                                                </Bindings>
+                                            </LocalizedEnumField>
+                                        </ui:VisualElement>
+                                        <Bindings>
+                                            <ui:DataBinding property="style.display" data-source-path="isTransport" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                                        </Bindings>
+                                    </ui:VisualElement>
                                 </ui:VisualElement>
                             </ui:VisualElement>
                         </ui:VisualElement>

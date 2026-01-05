@@ -21,9 +21,13 @@ namespace NavalCombatCore
         public float altitudeDeg;
         public DayNightLevel GetDayNightLevel()
         {
-            if (altitudeDeg > 5)
+            // if (altitudeDeg > 5)
+            //     return DayNightLevel.Day;
+            // else if (altitudeDeg > 0)
+            //     return DayNightLevel.Twilight;
+            if (altitudeDeg > 0)
                 return DayNightLevel.Day;
-            else if (altitudeDeg > 0)
+            else if (altitudeDeg > -6)
                 return DayNightLevel.Twilight;
             return DayNightLevel.Night;
         }

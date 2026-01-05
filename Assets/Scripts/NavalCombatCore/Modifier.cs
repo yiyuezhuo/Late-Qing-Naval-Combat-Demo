@@ -74,6 +74,11 @@ namespace NavalCombatCore
     [XmlInclude(typeof(DE806DynamicModifier))]
     [XmlInclude(typeof(BatteryDamaged))]
     [XmlInclude(typeof(PlaceholderState))]
+    [XmlInclude(typeof(FireInExplodePotentialCargoHold))]
+    [XmlInclude(typeof(PropulsionSystemDamaged))]
+    [XmlInclude(typeof(ExcessiveFlooding))]
+    [XmlInclude(typeof(UncontrolledFlooding))]
+    [XmlInclude(typeof(PropulsionDamaged))]
     public partial class SubState : IObjectIdLabeled
     {
         public string objectId { get; set; }
@@ -231,7 +236,7 @@ namespace NavalCombatCore
                 var d100Offset = 0f;
                 if (subject is ShipLog shipLog)
                 {
-                    d100Offset = shipLog.GetSubStates<IDamageControlModifier>().Select(m => m.GetDamageControlDieRollOffset()).Sum();
+                    d100Offset = shipLog.GetSubStates<IDamageControlModifier>().Sum(m => m.GetDamageControlDieRollOffset());
                 }
 
                 if (d100 + d100Offset > damageContrlThreshold)
@@ -1688,5 +1693,125 @@ namespace NavalCombatCore
             "PlaceholderState({0})",
             DescribeLiftCycle()
         );
+    }
+
+    public class FireInExplodePotentialCargoHold : SubState // DE 901 for ship with a cargo in any hold of AM, FS, FO or FA.
+    {
+        public override string Describe() => Localize(
+            "FireInExplodePotentialCargoHold({0})",
+            DescribeLiftCycle()
+        );
+
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            if(RandomUtils.D100F() <= 80) // 60 or 80? The rulebook don't give a clear description
+            {
+                // Successful. No additional damage
+            }
+            else
+            {
+                // Ship destroyed by explosion and will remain an obstruction for all following turns until a roll of 01-40
+                if(subject is ShipLog subjectShip)
+                {
+                    subjectShip.operationalState = DamageEffectChart.MaxEnum(subjectShip.operationalState, ShipOperationalState.FloodingObstruction);
+                    var damageEffect = new SinkingState()
+                    {
+                        lifeCycle = StateLifeCycle.DieRollPassed,
+                        dieRollThreshold = 40,
+                        cause = Localize(
+                            "DE 901: Severe fire in hold containing munitions, flammable stores or fuel."
+                        )
+                    };
+                    damageEffect.BeginAt(subject);
+                }
+            }
+        }
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Clear;
+    }
+
+    public class PropulsionSystemDamaged : SubState, IDynamicModifier // DE 902
+    {
+        public float currentMaxSpeedOffset = 0;
+
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            var currentTurn = turnClock.accumulateSecond / 120;
+            currentMaxSpeedOffset = -currentTurn;
+        }
+
+        public float GetMaxSpeedKnotOffset() => currentMaxSpeedOffset;
+
+        public override string Describe() => Localize(
+            "PropulsionSystemDamaged(speedOffset={0}) ({1})",
+            currentMaxSpeedOffset, DescribeLiftCycle()
+        );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
+    }
+
+    public class ExcessiveFlooding : SubState, IDynamicModifier // DE 909
+    {
+        public float GetMaxSpeedKnotOffset() => -6;
+
+        public override string Describe() => Localize(
+            "ExcessiveFlooding({0})",
+            DescribeLiftCycle()
+        );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Maintained;
+    }
+
+    public class UncontrolledFlooding : SubState // DE 910
+    {
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            var d100 = RandomUtils.D100F();
+            if(d100 <= 40)
+            {
+                // Flooding under control
+            }
+            else
+            {
+                // Ship sinks
+                var shipLog = subject as ShipLog; // This state can only be attached to a ShipLog
+                if (shipLog != null)
+                {
+                    shipLog.mapState = MapState.Destroyed; // Sunk
+                    shipLog.AddStringLog(Localize(
+                        "Sunk due to sinking process finished (Uncontrolled Flooding)"
+                    ));
+                }
+            }
+        }
+
+        public override string Describe() => Localize(
+            "UncontrolledFlooding({0})",
+            DescribeLiftCycle()
+        );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Clear;
+    }
+
+    public class PropulsionDamaged : SubState, IDynamicModifier // DE 912, Similar to FeedwaterPumpDamaged, but it need a distinct description though. And description of DE 912 is ambiguous though. 
+    {
+        public float lostAllPropulsionPercentage = 25;
+        public bool hasLoseAllPropulsion = false;
+        public override void DoOnClockTick(ISubject subject, float deltaSeconds)
+        {
+            if (!hasLoseAllPropulsion && RandomUtils.D100F() <= lostAllPropulsionPercentage)
+            {
+                hasLoseAllPropulsion = true;
+            }
+        }
+
+        public float GetMaxSpeedKnotCoef() => hasLoseAllPropulsion ? 0 : 1;
+
+        public override string Describe() => Localize(
+            "PropulsionDamaged(lostAllPropulsionPercentage={0}, hasLoseAllPropulsion={1}) ({2})",
+            lostAllPropulsionPercentage, hasLoseAllPropulsion, DescribeLiftCycle()
+        );
+
+        public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Maintained;
     }
 }

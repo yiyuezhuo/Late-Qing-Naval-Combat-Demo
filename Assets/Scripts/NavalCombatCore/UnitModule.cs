@@ -52,7 +52,7 @@ namespace NavalCombatCore
             }
         }
 
-        public IEnumerable<T> GetSubStates<T>() // Upward, E.X a status modifer defined in ShipLog will effect all battery' mount, while a status modieifer defined on mount just effect a mount.
+        public IEnumerable<T> GetSubStates<T>() // Upward, E.X a status modifier defined in ShipLog will effect all battery' mount, while a status modieifer defined on mount just effect a mount.
         {
             foreach (var subState in subStates)
             {

@@ -123,16 +123,37 @@ namespace NavalCombatCore
         [XmlAttribute]
         public bool hit;
 
-        [XmlAttribute]
-        public ArmorLocation armorLocation;
+        // Follows are valid only if hit == true
 
         [XmlAttribute]
-        public HitPenDetType hitPenDetType;
+        public DamageSchema DamageSchema;
 
-        public RuleChart.ShellDamageResult shellDamageResult;
+        public bool ShouldSerializeDamageSchema => hit;
 
         [XmlAttribute]
-        public string damageEffectId;
+        public ArmorLocation ArmorLocation; // Valid only for DamageSchema.Warship
+
+        public bool ShouldSerializeArmorLocation => hit && DamageSchema == DamageSchema.Warship;
+
+        [XmlAttribute]
+        public HitLocationMerchantVessel HitLocationMerchantVessel; // Valid only for DamageSchema.MerchantVessel
+
+        public bool ShouldSerializeHitLocationMerchantVessel => hit && DamageSchema == DamageSchema.MerchantVessal;
+
+        [XmlAttribute]
+        public HitPenDetType HitPenDetType;
+
+        public bool ShouldSerializeHitPenDetType => hit;
+
+        public RuleChart.ShellDamageResult ShellDamageResult;
+
+        public bool ShouldSerializeShellDamageResult => hit;
+
+        [XmlAttribute]
+        public string DamageEffectId;
+
+        public bool ShouldSerializeDamageEffectId => hit;
+
 
         protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
         protected static string LocalizeEnum<T>(T obj) => ServiceLocator.Get<ILocalizeService>().GetEnum(obj);
@@ -150,12 +171,19 @@ namespace NavalCombatCore
 
             var ammoType = BatteryAmmunitionRecord.ammunitionTypeAcronymMap[ammunitionType];
             // var hitDesc = hit ? $"hit {armorLocation} -> {hitPenDetType} -> {shellDamageResult}" : "miss";
+            var locStr = DamageSchema switch
+            {
+                DamageSchema.Warship => LocalizeEnum(ArmorLocation),
+                DamageSchema.MerchantVessal => LocalizeEnum(HitLocationMerchantVessel),
+                _ => throw new NotImplementedException()
+            };
+            
             var hitDesc = hit ? Localize(
                 "hit {0} -> {1} -> (DP={2}, Prob of DE={3})",
-                LocalizeEnum(armorLocation),
-                LocalizeEnum(hitPenDetType),
-                shellDamageResult.damagePoint,
-                shellDamageResult.damageEffectProb
+                locStr,
+                LocalizeEnum(HitPenDetType),
+                ShellDamageResult.damagePoint,
+                ShellDamageResult.damageEffectProb
             ) : Localize("miss");
 
             var firingTimeStr = CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(firingTime);
@@ -168,7 +196,7 @@ namespace NavalCombatCore
                 distanceYards,
                 hitProb * 100,
                 hitDesc,
-                damageEffectId
+                DamageEffectId
             );
         }
 
@@ -715,7 +743,7 @@ namespace NavalCombatCore
 
                     // Fire Control Radar Modifier
 
-                    if (!GetSubStates<IElectronicSystemModifier>().Any(m => m.IsFireControlRadarDisabled()))
+                    if (ctx.batteryRecord.hasFireControlRadar && !GetSubStates<IElectronicSystemModifier>().Any(m => m.IsFireControlRadarDisabled()))
                     {
                         var fireControlRadarModifier = ctx.batteryRecord.fireControlRadarModifier;
                         fireControlScore += fireControlRadarModifier;
@@ -733,100 +761,149 @@ namespace NavalCombatCore
                         firingTime = NavalGameState.Instance.scenarioState.dateTime,
                         distanceYards = stats.distanceYards,
                         hitProb = hitProb,
-                        hit = hit, // TODO: enable it
+                        hit = hit,
                         // hitPenDetType = hitPenDetType,
                         // armorLocation = armorLocation,
                         // shellDamageResult = shellDamageResult
                     };
-                    logs.Add(logRecord); // logRecord could be modified in the following code
+                    logs.Add(logRecord); // logRecord could be further modified in the following code
 
                     if (hit)
                     {
-                        var armorLocation = RuleChart.RollArmorLocation(stats.targetPresentAspectFromObserver, penRecord.rangeBand);
-                        if (armorLocation != ArmorLocation.Ineffective)
+                        var damageSchema = tgt.shipClass.GetDamageSchema();
+                        logRecord.DamageSchema = damageSchema;
+
+                        if(damageSchema == DamageSchema.Warship) // Warship
                         {
-                            var armorLocationAngleType = RuleChart.armorLocationToAngleType.GetValueOrDefault(armorLocation);
-                            var refPenInch = penRecord.GetValue(armorLocationAngleType);
-                            var penInch = RuleChart.GetAdjustedPenetrationByType(ctx.batteryRecord.penetrationTableBaseType, refPenInch, ctx.batteryRecord.shellSizeInch, ammunitionType);
-
-                            var armorEffInch = tgt.shipClass.armorRating.GetArmorEffectiveInch(armorLocation);
-
-                            if (armorLocation == ArmorLocation.MainBelt)
+                            var armorLocation = RuleChart.RollArmorLocation(stats.targetPresentAspectFromObserver, penRecord.rangeBand);
+                            if (armorLocation != ArmorLocation.Ineffective)
                             {
-                                var armorCoef = tgt.GetSubStates<IArmorModifier>().Select(m => m.GetMainBeltArmorCoef()).DefaultIfEmpty(1).Min();
-                                armorEffInch *= armorCoef;
+                                var armorLocationAngleType = RuleChart.armorLocationToAngleType.GetValueOrDefault(armorLocation);
+                                var refPenInch = penRecord.GetValue(armorLocationAngleType);
+                                var penInch = RuleChart.GetAdjustedPenetrationByType(ctx.batteryRecord.penetrationTableBaseType, refPenInch, ctx.batteryRecord.shellSizeInch, ammunitionType);
+
+                                var armorEffInch = tgt.shipClass.armorRating.GetArmorEffectiveInch(armorLocation);
+
+                                if (armorLocation == ArmorLocation.MainBelt)
+                                {
+                                    var armorCoef = tgt.GetSubStates<IArmorModifier>().Select(m => m.GetMainBeltArmorCoef()).DefaultIfEmpty(1).Min();
+                                    armorEffInch *= armorCoef;
+                                }
+
+                                var hitPenDetType = RuleChart.ResolveHitPenDetType(penInch, armorEffInch, ammunitionType);
+
+                                var shellDamageResult = RuleChart.ResolveShellDamageResult(ctx.batteryRecord.damageRating, hitPenDetType, ammunitionType);
+
+                                var tgtLog = new ShipLogBatteryHitLog()
+                                {
+                                    shooterId = shooter.objectId,
+                                    time = NavalGameState.Instance.scenarioState.dateTime,
+                                    damageSchema = DamageSchema.Warship
+                                };
+
+                                tgtLog.hitPenDetType = logRecord.HitPenDetType = hitPenDetType;
+                                tgtLog.ArmorLocation = logRecord.ArmorLocation = armorLocation;
+                                logRecord.ShellDamageResult = shellDamageResult;
+                                tgtLog.damagePoint = shellDamageResult.damagePoint;
+
+                                tgt.AddLog(tgtLog);
+
+                                tgt.AddDamagePoint(shellDamageResult.damagePoint);
+
+                                string damageEffectId = null;
+                                // Process Damage Effect
+                                if (RandomUtils.NextFloat() <= shellDamageResult.damageEffectProb)
+                                {
+                                    // TODO: Move to RuleChart?
+                                    var damageEffectCause = armorLocation switch
+                                    {
+                                        ArmorLocation.Deck => DamageEffectCause.Deck,
+                                        ArmorLocation.TurretHorizontal => DamageEffectCause.Turret,
+                                        ArmorLocation.SuperStructureHorizontal => DamageEffectCause.Superstructure,
+                                        ArmorLocation.ConningTower => DamageEffectCause.ConningTower,
+                                        ArmorLocation.MainBelt => DamageEffectCause.MainBelt,
+                                        ArmorLocation.BeltEnd => DamageEffectCause.BeltEnd,
+                                        ArmorLocation.Barbette => DamageEffectCause.Barbette,
+                                        ArmorLocation.TurretVertical => DamageEffectCause.Turret,
+                                        ArmorLocation.SuperStructureVertical => DamageEffectCause.Superstructure,
+                                        _ => DamageEffectCause.MainBelt
+                                    };
+                                    var damageEffectContext = new DamageEffectContext()
+                                    {
+                                        subject = tgt,
+                                        baseDamagePoint = shellDamageResult.damagePoint,
+                                        ammunitionType = ammunitionType,
+                                        shellDiameterInch = ctx.batteryRecord.shellSizeInch,
+                                        hitPenDetType = hitPenDetType,
+
+                                        damageSchema = damageSchema,
+                                        cause = damageEffectCause,
+                                        addtionalDamageEffectProbility = shellDamageResult.damageEffectProb
+                                    };
+
+                                    damageEffectId = DamageEffectChart.AddNewDamageEffect(damageEffectContext);
+
+                                    tgtLog.damageEffectId = logRecord.DamageEffectId = damageEffectId;
+                                }
+
+                                var logger = ServiceLocator.Get<ILoggerService>();
+                                logger.Log($"{ctx.shipLog.namedShip.name.GetMergedName()} {ctx.batteryRecord.name.GetMergedName()} -> {tgt.namedShip.name.GetMergedName()} ({logRecord.Summary()}) (DE: {damageEffectId})");
                             }
+                        }
+                        else if(damageSchema == DamageSchema.MerchantVessal)
+                        {
+                            var hitLocationMerchantVessel = RuleChart.SampleHitLocationMerchantVessel();
 
-                            var hitPenDetType = RuleChart.ResolveHitPenDetType(penInch, armorEffInch, ammunitionType);
-
+                            var hitPenDetType = RuleChart.ResolveHitPenDetType(1, 0, ammunitionType);
                             var shellDamageResult = RuleChart.ResolveShellDamageResult(ctx.batteryRecord.damageRating, hitPenDetType, ammunitionType);
 
-                            // var logRecord = new MountFiringRecord()
-                            // {
-                            //     firingTargetObjectId = tgt.objectId,
-                            //     ammunitionType = ammunitionType,
-                            //     firingTime = NavalGameState.Instance.scenarioState.dateTime,
-                            //     distanceYards = stats.distanceYards,
-                            //     hitProb = hitProb,
-                            //     hit = hit, // TODO: enable it
-                            //     hitPenDetType = hitPenDetType,
-                            //     armorLocation = armorLocation,
-                            //     shellDamageResult = shellDamageResult
-                            // };
-                            // logs.Add(logRecord);
                             var tgtLog = new ShipLogBatteryHitLog()
                             {
                                 shooterId = shooter.objectId,
-                                time = NavalGameState.Instance.scenarioState.dateTime
+                                time = NavalGameState.Instance.scenarioState.dateTime,
+                                damageSchema = DamageSchema.MerchantVessal
                             };
 
-                            tgtLog.hitPenDetType = logRecord.hitPenDetType = hitPenDetType;
-                            tgtLog.armorLocation = logRecord.armorLocation = armorLocation;
-                            logRecord.shellDamageResult = shellDamageResult;
+                            tgtLog.hitPenDetType = logRecord.HitPenDetType = hitPenDetType;
+                            tgtLog.HitLocationMerchantVessel = logRecord.HitLocationMerchantVessel = hitLocationMerchantVessel;
+                            logRecord.ShellDamageResult = shellDamageResult;
                             tgtLog.damagePoint = shellDamageResult.damagePoint;
-                            // tgt.logs.Add(tgtLog);
+
                             tgt.AddLog(tgtLog);
 
-                            // TODO: Handle damage effect and general (DP caused) damage effect.
-                            // tgt.damagePoint += shellDamageResult.damagePoint;
                             tgt.AddDamagePoint(shellDamageResult.damagePoint);
 
                             string damageEffectId = null;
                             // Process Damage Effect
                             if (RandomUtils.NextFloat() <= shellDamageResult.damageEffectProb)
                             {
-                                var damageEffectCause = armorLocation switch
-                                {
-                                    ArmorLocation.Deck => DamageEffectCause.Deck,
-                                    ArmorLocation.TurretHorizontal => DamageEffectCause.Turret,
-                                    ArmorLocation.SuperStructureHorizontal => DamageEffectCause.Superstrucure,
-                                    ArmorLocation.ConningTower => DamageEffectCause.ConningTower,
-                                    ArmorLocation.MainBelt => DamageEffectCause.MainBelt,
-                                    ArmorLocation.BeltEnd => DamageEffectCause.BeltEnd,
-                                    ArmorLocation.Barbette => DamageEffectCause.Barbette,
-                                    ArmorLocation.TurretVertical => DamageEffectCause.Turret,
-                                    ArmorLocation.SuperStructureVertical => DamageEffectCause.Superstrucure,
-                                    _ => DamageEffectCause.MainBelt
-                                };
+                                var causeMerchantVessel = RuleChart.GetDamageEffectCauseMerchantVessel(hitLocationMerchantVessel, ctx.shipLog.cargoAreas);
                                 var damageEffectContext = new DamageEffectContext()
                                 {
                                     subject = tgt,
                                     baseDamagePoint = shellDamageResult.damagePoint,
-                                    cause = damageEffectCause,
-                                    hitPenDetType = hitPenDetType,
                                     ammunitionType = ammunitionType,
                                     shellDiameterInch = ctx.batteryRecord.shellSizeInch,
-                                    addtionalDamageEffectProbility = shellDamageResult.damageEffectProb
+                                    hitPenDetType = hitPenDetType,
+
+                                    damageSchema = damageSchema,
+                                    causeMerchantVessel = causeMerchantVessel,
                                 };
 
                                 damageEffectId = DamageEffectChart.AddNewDamageEffect(damageEffectContext);
 
-                                tgtLog.damageEffectId = logRecord.damageEffectId = damageEffectId;
+                                tgtLog.damageEffectId = logRecord.DamageEffectId = damageEffectId;
                             }
 
                             var logger = ServiceLocator.Get<ILoggerService>();
                             logger.Log($"{ctx.shipLog.namedShip.name.GetMergedName()} {ctx.batteryRecord.name.GetMergedName()} -> {tgt.namedShip.name.GetMergedName()} ({logRecord.Summary()}) (DE: {damageEffectId})");
+
                         }
+
+
+                        // TODO: Merchant
+
+                        // TODO: Land Battery
                     }
                 }
             }

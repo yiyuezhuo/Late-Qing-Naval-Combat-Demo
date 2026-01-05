@@ -2642,6 +2642,34 @@ MonoBehaviour:
     m_Localized: 'Torpedo:'
     m_Metadata:
       m_Items: []
+  - m_Id: 30434808120905728
+    m_Localized: General Cargo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30434845563457536
+    m_Localized: War Materiel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30434882745962496
+    m_Localized: Troops
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30434896398422016
+    m_Localized: Munitions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30434938790252544
+    m_Localized: Flammable Stores
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30434953122189312
+    m_Localized: Fuel Oil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30434970536939520
+    m_Localized: Fuel Aviation
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

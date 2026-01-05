@@ -507,8 +507,11 @@ namespace NavalCombatCore
         public int fireControlPositions;
         public FireControlSystem fireControlType = new();
         public float rangeYards;
+
+        public bool hasFireControlRadar = false;
         public float fireControlRadarModifier;
         public GlobalString fireControlRadarName = new();
+
         public float shellSizeInch;
         public float shellWeightPounds; // lb
         public int ammunitionCapacity;
@@ -1144,5 +1147,11 @@ namespace NavalCombatCore
 
         public bool IsCombatShip() => !nonCombatShipTypes.Contains(type);
 
+        public DamageSchema GetDamageSchema() => type switch
+        {
+            ShipType.Transport => DamageSchema.MerchantVessal,
+            ShipType.Repair => DamageSchema.MerchantVessal,
+            _ => DamageSchema.Warship  
+        };
     }
 }

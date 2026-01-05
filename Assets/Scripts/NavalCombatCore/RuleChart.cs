@@ -21,11 +21,49 @@ namespace NavalCombatCore
         TrueRamShip // 
     }
 
+    public enum HitLocationMerchantVessel
+    {
+        Superstructure,
+        Propulsion,
+        CargoArea1,
+        CargoArea2,
+        CargoArea3,
+        CargoArea4
+    }
+
     /// <summary>
     /// SK5 Table lookup and helpers
     /// </summary>
     public static class RuleChart
     {
+        public static Dictionary<CargoType, DamageEffectCauseMerchantVessel> cargoTypeToDamageEffectCauseMerchantVessel = new Dictionary<CargoType, DamageEffectCauseMerchantVessel>
+        {
+            { CargoType.GeneralCargo, DamageEffectCauseMerchantVessel.GeneralCargo },
+            { CargoType.WarMateriel, DamageEffectCauseMerchantVessel.WarMateriel },
+            { CargoType.Troops, DamageEffectCauseMerchantVessel.Troops },
+            { CargoType.Munitions, DamageEffectCauseMerchantVessel.Munitions },
+            { CargoType.FlammableStores, DamageEffectCauseMerchantVessel.FlammableStores },
+            { CargoType.FuelOil, DamageEffectCauseMerchantVessel.FuelOil },
+            { CargoType.FuelAviation, DamageEffectCauseMerchantVessel.FuelAviation },
+        };
+
+        public static DamageEffectCauseMerchantVessel GetDamageEffectCauseMerchantVessel(HitLocationMerchantVessel hitLocationMerchantVessel, CargoAreas cargoAreas)
+        {
+            if(hitLocationMerchantVessel == HitLocationMerchantVessel.Superstructure)
+                return DamageEffectCauseMerchantVessel.Superstructure;
+            else if(hitLocationMerchantVessel == HitLocationMerchantVessel.Propulsion)
+                return DamageEffectCauseMerchantVessel.Propulsion;
+            var cargoType = hitLocationMerchantVessel switch
+            {
+                HitLocationMerchantVessel.CargoArea1 => cargoAreas.area1,
+                HitLocationMerchantVessel.CargoArea2 => cargoAreas.area2,
+                HitLocationMerchantVessel.CargoArea3 => cargoAreas.area3,
+                HitLocationMerchantVessel.CargoArea4 => cargoAreas.area4,
+                _ => cargoAreas.area1
+            };
+            return cargoTypeToDamageEffectCauseMerchantVessel.GetValueOrDefault(cargoType);
+        }
+
         // Chart J1 - Hit Location - Warships
         public static float[,] broadAspectLocationWeightTable = new float[,]
         {// Short   Medium  Long/Extreme
@@ -205,8 +243,6 @@ namespace NavalCombatCore
             }
             return basePenetationInch;
         }
-
-
 
         public static Dictionary<ArmorLocation, ArmorLocationAngleType> armorLocationToAngleType = new()
         {
@@ -535,7 +571,7 @@ namespace NavalCombatCore
 2,117,110,132,144,125,154,110,608,509,134
 2,118,110,140,144,125,154,111,608,509,134
 2,118,110,140,144,126,154,111,608,509,135
-2,118,110,141,145,126,155,112,*609,510,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+2,118,110,141,145,126,155,112,*609,510,135
 2,120,111,141,145,126,155,112,*609,510,147
 2,120,111,143,145,126,157,114,*609,510,152
 2,120,111,143,146,146,167,114,*609,511,152
@@ -577,11 +613,61 @@ namespace NavalCombatCore
         //     public float damagePointProb;
         // }
 
+        static double[] hitLocationMerchantVesselWeights = new double[]{8, 12, 20, 20, 20, 20};
+
+        // L6 - Damage Determination - Merchant Vessels 1880-1945 
+
+        public static HitLocationMerchantVessel SampleHitLocationMerchantVessel()
+        {
+            return (HitLocationMerchantVessel)Categorical.Sample(hitLocationMerchantVesselWeights);
+        }
+
+        // The rulebook don't tell how to handle torpedo attack merchant vessel so I made this variant. (at least it's reasonable than torpedo column in warship table?)    
+        static double[] hitLocationMerchantVesselWeightsTorpedo = new double[]{12, 20, 20, 20, 20}; // Remove superstructure
+        public static HitLocationMerchantVessel SampleHitLocationMerchantVesselTorpedo()
+        {
+            return (HitLocationMerchantVessel)(Categorical.Sample(hitLocationMerchantVesselWeightsTorpedo) + 1);
+        }
+
+
+        public static string damageDeterminationTableMerchantVesselCsvText = @"Roll,Super Str (SS),Propulsion (PP),General Cargo (GC),War Materiel (WM),Troops (TR),Munitions (AM),Flammable Stores (FS),Fuel Oil (FO),Fuel Aviation (FA)
+5,905,902,900,900,900,900,900,900,900
+5,905,902,901,900,901,900,900,900,900
+5,905,902,905,901,901,900,900,901,900
+5,905,902,906,901,905,900,901,901,900
+5,906,903,907,902,905,900,901,901,901
+5,906,903,909,903,906,901,901,901,901
+5,906,903,910,903,909,901,901,901,901
+5,906,903,911,905,910,901,905,901,901
+5,907,903,911,909,910,901,905,905,901
+5,907,903,911,909,910,909,909,909,909
+5,907,903,911,910,911,910,910,910,910
+5,907,904,913,910,911,910,910,910,910
+5,904,904,913,910,911,910,910,910,910
+5,904,912,,911,912,911,911,911,911
+5,,912,,911,913,911,911,911,911
+5,,912,,911,913,911,911,911,911
+5,,912,,912,913,912,912,912,912
+5,,,,913,,913,913,913,913
+5,,,,913,,913,913,913,913
+5,,,,913,,913,913,913,913";
+
+        public static SimpleTable<double, string, string> damageDeterminationTableMerchantVessel = SimpleTable<double, string, string>.FromCSV(damageDeterminationTableMerchantVesselCsvText,
+            double.Parse, x => x, x => x
+        );
+
+        public static string ResolveDamageEffectIdMerchantVessel(DamageEffectCauseMerchantVessel cause)
+        {
+            var colIdx = Math.Min((int)cause, damageDeterminationTableMerchantVessel.cols.Length - 1);
+            var rowIdx = Categorical.Sample(damageDeterminationTableMerchantVessel.rows);
+            return damageDeterminationTableMerchantVessel.cells[rowIdx, colIdx];
+        }
+
         public static float[,] damageTierPercentProbRecords = new float[,]
         {
             {0, 0.0f, 0f},
             {1, 0.1f, 70}, // Tier 1, cross to tier 1 (10%) from tier 0 will have 70% chance to get a general DE
-            {2, 0.2f, 80}, // // Tier 2, cross to tier 2 (20%) from tier 1 will have 80% chance to get a general DE
+            {2, 0.2f, 80}, // Tier 2, cross to tier 2 (20%) from tier 1 will have 80% chance to get a general DE
             {3, 0.3f, 75},
             {4, 0.4f, 85},
             {5, 0.5f, 80},

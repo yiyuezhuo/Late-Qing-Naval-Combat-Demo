@@ -2348,6 +2348,26 @@ MonoBehaviour:
     m_Key: Increase (Speed)
     m_Metadata:
       m_Items: []
+  - m_Id: 45030312033030144
+    m_Key: Cargo Area 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45030437149118464
+    m_Key: Cargo Area 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45030500470525952
+    m_Key: Cargo Area 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45030568430833664
+    m_Key: Cargo Area 4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45034289424404480
+    m_Key: Has Fire Control Radar
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

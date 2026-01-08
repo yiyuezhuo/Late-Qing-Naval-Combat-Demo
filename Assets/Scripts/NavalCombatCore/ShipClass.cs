@@ -26,6 +26,7 @@ namespace NavalCombatCore
         ArmedMerchantCruiser, // AMC
         Transport, // TR, Transport or merchant ship
         Repair, // AR, Auxiliary Repair
+        LandBattery
     }
 
     public enum ExtraShipType
@@ -963,6 +964,28 @@ namespace NavalCombatCore
         //     var idx = Categorical.Sample(GetLocationWeights(targetAspect, rangeBand));
         //     return (ArmorLocation)idx;
         // }
+    }
+
+    public enum LandBatteryType
+    {
+        Fixed,
+        Temporary
+    }
+
+    public enum CamouflageType
+    {
+        None,
+        Prepared,
+    }
+
+    public class LandBatteryRecord
+    {
+        public LandBatteryType type;
+        public CamouflageType camouflage;
+        public float commandPostArmorEffInch;
+        public float munitionBunkerArmorEffInch;
+        public float obsTowerEffInch;
+        // TODO: Add obs tower's height
     }
 
     public partial class ShipClass : IObjectIdLabeled

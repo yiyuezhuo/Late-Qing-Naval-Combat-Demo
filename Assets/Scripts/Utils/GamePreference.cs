@@ -36,7 +36,8 @@ public class GamePreference
     }
 
     public float pulseLengthSeconds = 1; // 2; // 1;
-    public float simulationRateRaio = 120; // 1s real time => 120s simulation time (similar to RTW's default advance speed)
+    public float simulationRateRatio = 120; // 1s real time => 120s simulation time (similar to RTW's default advance speed)
+    public float simulationRateRatioAuto = 30; // 1s real time => 10s simulation time (x10 is similar to JTS's max speed, but feels too slow though)
 
     // public LanguageType shortLabelLanguageType = LanguageType.English;
     // public LanguageType longLabelLanguageType = LanguageType.All;
@@ -233,7 +234,7 @@ public class GamePreference
         var p = GamePreference.Instance;
         p.forcedNavalCombatResolution = PlayerPrefs.GetInt("forcedNavalCombatResolution", 1) == 1;
         p.showAIDialog = PlayerPrefs.GetInt("showAIDialog", 1) == 1;
-        p.simulationRateRaio = PlayerPrefs.GetFloat("simulationRateRaio", 120);
+        p.simulationRateRatio = PlayerPrefs.GetFloat("simulationRateRaio", 120);
         // p.isInEditMode = PlayerPrefs.GetInt("isInEditMode", 0) == 1;
         p.isInEditMode = PlayerPrefs.GetInt("isInEditMode", 1) == 1;
     }
@@ -242,7 +243,7 @@ public class GamePreference
     {
         PlayerPrefs.SetInt("forcedNavalCombatResolution", forcedNavalCombatResolution ? 1 : 0);
         PlayerPrefs.SetInt("showAIDialog", showAIDialog ? 1 : 0);
-        PlayerPrefs.SetFloat("simulationRateRaio", simulationRateRaio);
+        PlayerPrefs.SetFloat("simulationRateRaio", simulationRateRatio);
         PlayerPrefs.SetInt("isInEditMode", isInEditMode ? 1 : 0);
 
         PlayerPrefs.Save();

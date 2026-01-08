@@ -2670,6 +2670,120 @@ MonoBehaviour:
     m_Localized: Fuel Aviation
     m_Metadata:
       m_Items: []
+  - m_Id: 30557173483999232
+    m_Localized: 'DE 900: Catastrophic explosion'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30557259274293248
+    m_Localized: 'DE 901: Severe fire in hold'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30557469912240128
+    m_Localized: 'DE 902: Damage to main propulsion systems'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30557560463069184
+    m_Localized: 'DE 903: Damage to machinery spaces'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30559321248665600
+    m_Localized: 'DE 904: Steering jammed'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30559436059348992
+    m_Localized: 'DE 905: Structural damage'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30559552505810944
+    m_Localized: 'DE 906: Shipboard fire severity 50'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30559793871228928
+    m_Localized: 'DE 907: Severe fire in flammables storage area'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30560439773073408
+    m_Localized: 'DE 908: Broken back. Ship breaks in two amidships'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30560730237014016
+    m_Localized: 'DE 909: Excessive flooding'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30560809161232384
+    m_Localized: Sunk due to capsize by excessive flooding (DE 909)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30560920251568128
+    m_Localized: 'DE 910: Uncontrolled flooding'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30560986085363712
+    m_Localized: 'DE 911: Cargo in hold is destroyed'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561044126142464
+    m_Localized: 'DE 912: Damage to propulsion'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561115735494656
+    m_Localized: 'DE 913: Fire in cargo area'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561181221163008
+    m_Localized: Fire In Explode Potential Cargo Hold({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561400188997632
+    m_Localized: 'DE 901: Severe fire in hold containing munitions, flammable stores
+      or fuel.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561614840893440
+    m_Localized: Propulsion System Damaged(speedOffset={0}) ({1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561733275455488
+    m_Localized: Excessive Flooding({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561788849983488
+    m_Localized: Sunk due to sinking process finished (Uncontrolled Flooding)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561906567319552
+    m_Localized: Uncontrolled Flooding({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561980923940864
+    m_Localized: Propulsion Damaged(Lost All Propulsion Percentage={0}, Has Lose
+      All Propulsion={1}) ({2})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30941056390041600
+    m_Localized: Superstructure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30941184161124352
+    m_Localized: Propulsion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30941309893775360
+    m_Localized: Cargo Area 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30941357721423872
+    m_Localized: Cargo Area 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30941415690899456
+    m_Localized: Cargo Area 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30941436091994112
+    m_Localized: Cargo Area 4
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -258,7 +258,7 @@ namespace NavalCombatCore
                 DamageSchema.MerchantVessal => LocalizeEnum(HitLocationMerchantVessel),
                 _ => throw new NotImplementedException()
             };
-            
+
             return Localize(
                 "Bty Hit: {0} {1} DP:{2} DE:{3} (by {4})",
                 locStr, LocalizeEnum(hitPenDetType), damagePoint, damageEffectId, EntityManager.Instance.Get<ShipLog>(shooterId)?.namedShip?.name?.GetShortName()
@@ -1256,11 +1256,27 @@ namespace NavalCombatCore
 
             for (int i = 0; i < damageEffectCount; i++)
             {
+                // var ctx = new DamageEffectContext()
+                // {
+                //     subject = this,
+                //     cause = DamageEffectCause.General,
+                // };
+                var damageSchema = shipClass.GetDamageSchema();
                 var ctx = new DamageEffectContext()
                 {
                     subject = this,
-                    cause = DamageEffectCause.General,
+                    damageSchema = damageSchema,
                 };
+                if (damageSchema == DamageSchema.Warship)
+                {
+                    ctx.cause = DamageEffectCause.General;
+                }
+                else if(damageSchema == DamageSchema.MerchantVessal)
+                {
+                    var hitLocation = RuleChart.SampleHitLocationMerchantVessel();
+                    ctx.causeMerchantVessel = RuleChart.GetDamageEffectCauseMerchantVessel(hitLocation, cargoAreas);
+                }
+
                 DamageEffectChart.AddNewDamageEffect(ctx);
             }
 

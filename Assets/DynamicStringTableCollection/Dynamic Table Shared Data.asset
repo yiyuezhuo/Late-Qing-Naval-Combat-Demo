@@ -2661,6 +2661,120 @@ MonoBehaviour:
     m_Key: CargoType.FuelAviation
     m_Metadata:
       m_Items: []
+  - m_Id: 30557173483999232
+    m_Key: 'DE 900: Catastrophic explosion'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30557259274293248
+    m_Key: 'DE 901: Severe fire in hold'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30557469912240128
+    m_Key: 'DE 902: Damage to main propulsion systems'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30557560463069184
+    m_Key: 'DE 903: Damage to machinery spaces'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30559321248665600
+    m_Key: 'DE 904: Steering jammed'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30559436059348992
+    m_Key: 'DE 905: Structural damage'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30559552505810944
+    m_Key: 'DE 906: Shipboard fire severity 50'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30559793871228928
+    m_Key: 'DE 907: Severe fire in flammables storeage area'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30560439773073408
+    m_Key: 'DE 908: Broken back. Ship breaks in two amidships'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30560730237014016
+    m_Key: 'DE 909: Excessive flooding'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30560809161232384
+    m_Key: Sunk due to capsize by excessive flooding (DE 909)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30560920251568128
+    m_Key: 'DE 910: Uncontrolled flooding'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30560986085363712
+    m_Key: 'DE 911: Cargo in hold is destroyed'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561044126142464
+    m_Key: 'DE 912: Damage to propulsion'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561115735494656
+    m_Key: 'DE 913: Fire in cargo area'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561181221163008
+    m_Key: FireInExplodePotentialCargoHold({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561400188997632
+    m_Key: 'DE 901: Severe fire in hold containing munitions, flammable stores or
+      fuel.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561614840893440
+    m_Key: PropulsionSystemDamaged(speedOffset={0}) ({1})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561733275455488
+    m_Key: ExcessiveFlooding({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561788849983488
+    m_Key: Sunk due to sinking process finished (Uncontrolled Flooding)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561906567319552
+    m_Key: UncontrolledFlooding({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30561980923940864
+    m_Key: PropulsionDamaged(lostAllPropulsionPercentage={0}, hasLoseAllPropulsion={1})
+      ({2})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30941056390041600
+    m_Key: HitLocationMerchantVessel.Superstructure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30941184161124352
+    m_Key: HitLocationMerchantVessel.Propulsion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30941309893775360
+    m_Key: HitLocationMerchantVessel.CargoArea1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30941357721423872
+    m_Key: HitLocationMerchantVessel.CargoArea2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30941415690899456
+    m_Key: HitLocationMerchantVessel.CargoArea3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30941436091994112
+    m_Key: HitLocationMerchantVessel.CargoArea4
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

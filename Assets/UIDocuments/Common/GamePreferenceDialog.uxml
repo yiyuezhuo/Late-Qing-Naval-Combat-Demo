@@ -33,16 +33,21 @@
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181359496302592)"/>
                             </Bindings>
                         </LocalizedEnumField>
-                        <ui:FloatField label="Simulation Rate Ratio">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="simulationRateRaio" binding-mode="TwoWay"/>
-                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(183231472898048)"/>
-                            </Bindings>
-                        </ui:FloatField>
                         <ui:FloatField label="Pulse Length (Sec)">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="pulseLengthSeconds" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181492749340672)"/>
+                            </Bindings>
+                        </ui:FloatField>
+                        <ui:FloatField label="Simulation Rate Ratio">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="simulationRateRatio" binding-mode="TwoWay"/>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(183231472898048)"/>
+                            </Bindings>
+                        </ui:FloatField>
+                        <ui:FloatField label="Simulation Rate Ratio (Auto)">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="simulationRateRatioAuto" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:FloatField>
                         <LocalizedEnumField label="Ship Icon" type-str="PortraitViewer+Mode" value="0">

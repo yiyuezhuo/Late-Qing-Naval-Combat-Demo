@@ -14,6 +14,12 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(60672865636352)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Label text="Play (Space)" style="margin-right: 0;"/>
+                    <ui:Toggle style="margin-right: 6px;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="isAutoPlaying" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:Toggle>
                     <ui:Button text="AI" name="AIButton"/>
                     <ui:Button text="Set Course (Shift + Left Click)" name="SetCourseButton">
                         <Bindings>

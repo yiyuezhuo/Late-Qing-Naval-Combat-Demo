@@ -373,6 +373,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public float remainAdvanceSimulationSecondsRequestedByUserInput; // Requested by KeyCode 1-9 (1-9 min) and BackQuote (`) (1s)
     public float remainAdvanceSimulationSecondsRequestedByUpdate;
+    public bool isAutoPlaying = false;
 
     // public float simulationRateRaio = 30;
     // float simulationRateRaio = 120;
@@ -381,35 +382,66 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void UpdateSimulation()
     {
         var pulseLengthSeconds = GamePreference.Instance.pulseLengthSeconds;
-        var simulationRateRaio = GamePreference.Instance.simulationRateRaio;
+        var simulationRateRatio = GamePreference.Instance.simulationRateRatio;
+        var simulationRateRatioAuto = GamePreference.Instance.simulationRateRatioAuto;
 
         var realSeconds = Time.deltaTime;
-        if (remainAdvanceSimulationSecondsRequestedByUserInput >= pulseLengthSeconds)
+
+        if(isAutoPlaying) // auto adavance mode
         {
-            remainAdvanceSimulationSecondsRequestedByUpdate += realSeconds * simulationRateRaio;
+            remainAdvanceSimulationSecondsRequestedByUpdate += realSeconds * simulationRateRatioAuto;
+        }
+        else // manual advance mode
+        {
+            if (remainAdvanceSimulationSecondsRequestedByUserInput >= pulseLengthSeconds)
+            {
+                remainAdvanceSimulationSecondsRequestedByUpdate += realSeconds * simulationRateRatio;
+            }
         }
         
-        var advanceAny = false;
-        while (remainAdvanceSimulationSecondsRequestedByUserInput >= pulseLengthSeconds && remainAdvanceSimulationSecondsRequestedByUpdate >= pulseLengthSeconds)
+        // var advanceAny = false;
+        var minuteAdvanced = false;
+
+        if(isAutoPlaying) // auto adavance mode
         {
-            advanceAny = true;
-
-            var lastMin = NavalGameState.Instance.scenarioState.dateTime.Minute;
-
-            NavalGameState.Instance.Step(pulseLengthSeconds);
-            remainAdvanceSimulationSecondsRequestedByUserInput -= pulseLengthSeconds;
-            remainAdvanceSimulationSecondsRequestedByUpdate -= pulseLengthSeconds;
-
-            if (NavalGameState.Instance.scenarioState.dateTime.Minute != lastMin)
+            while (remainAdvanceSimulationSecondsRequestedByUpdate >= pulseLengthSeconds)
             {
-                minuteChanged?.Invoke(this, EventArgs.Empty);
-                // Debug.LogWarning("minuteChanged published");
+                var lastMin = NavalGameState.Instance.scenarioState.dateTime.Minute;
+
+                NavalGameState.Instance.Step(pulseLengthSeconds);
+                remainAdvanceSimulationSecondsRequestedByUpdate -= pulseLengthSeconds;
+
+                if (NavalGameState.Instance.scenarioState.dateTime.Minute != lastMin)
+                {
+                    minuteChanged?.Invoke(this, EventArgs.Empty);
+                    
+                    minuteAdvanced = true;
+                }
+            }
+        }
+        else // manual advance mode
+        {
+            while (remainAdvanceSimulationSecondsRequestedByUserInput >= pulseLengthSeconds && remainAdvanceSimulationSecondsRequestedByUpdate >= pulseLengthSeconds)
+            {
+                // advanceAny = true;
+
+                var lastMin = NavalGameState.Instance.scenarioState.dateTime.Minute;
+
+                NavalGameState.Instance.Step(pulseLengthSeconds);
+                remainAdvanceSimulationSecondsRequestedByUserInput -= pulseLengthSeconds;
+                remainAdvanceSimulationSecondsRequestedByUpdate -= pulseLengthSeconds;
+
+                if (NavalGameState.Instance.scenarioState.dateTime.Minute != lastMin)
+                {
+                    minuteChanged?.Invoke(this, EventArgs.Empty);
+                    
+                    minuteAdvanced = true;
+                }
             }
         }
 
-        if(advanceAny) // When control is return to player (active advancing is completed)
+        if(minuteAdvanced) // When control is return to player (active advancing is completed)
         {
-            // effectiveDisengaged
             HandleAutoEnd();
         }
     }
@@ -535,7 +567,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     static Dictionary<KeyCode, float> simulationSecondsAdvanceMap = new()
     {
-        // {KeyCode.Tilde, 1}, // 1s, Note Tilde, BackQuote may be blocked by input method. So it's recommended to disable input method.
+        // {KeyCode.Tilde, 1}, // 1s, Note Tilde, BackQuote may be blocked by input method. So it's recommended to disable input method when playing.
         // {KeyCode.BackQuote, 1},
         {KeyCode.Alpha1, 60 * 1}, // 1 min
         {KeyCode.Alpha2, 60 * 2}, // 2 min
@@ -724,6 +756,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     // remainAdvanceSimulationSecondsRequestedByUserInput = GamePreference.Instance.pulseLengthSeconds;
                     SetRemainAdvanceSimulationSecondsRequestedByUserInput(GamePreference.Instance.pulseLengthSeconds);
+                }
+
+                if(Input.GetKeyDown(KeyCode.Space))
+                {
+                    isAutoPlaying = !isAutoPlaying;
+                    if(isAutoPlaying) // Clear logs if current only and clear potential "leaked" seconds requested by input.
+                    {
+                        SetRemainAdvanceSimulationSecondsRequestedByUserInput(0);
+                    }
                 }
 
                 if (Input.GetKeyDown(KeyCode.I) && selectedShipLog != null)

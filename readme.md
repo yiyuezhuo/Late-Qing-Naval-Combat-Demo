@@ -75,6 +75,7 @@ Desktop is the major platform, WebGL will work but the huge file size will not d
 ### Assets
 
 - Stategic Mode Terrain Textures: https://opengameart.org/content/hitw-terrain-textures
+- Gunfire sound: https://pixabay.com/sound-effects/artillery-gunfire-14607/
 
 ### Related Wargame material
 

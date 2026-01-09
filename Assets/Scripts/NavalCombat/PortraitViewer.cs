@@ -64,6 +64,9 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public GameObject selectedIndicator;
     public MeshRenderer healthBarRenderer;
 
+    public AudioClip gunfireSound;
+    public AudioSource audioSource;
+
     //
     Texture2D portraitTex;
     Texture2D countryTex;
@@ -83,6 +86,8 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     {
         leafTransform.localPosition = new Vector3(0, 0, -Utils.r);
         flagRenderer.material = flagRenderer.material; // copy material
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void MaintainTextDirectionSize()
@@ -138,7 +143,8 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             return;
 
         // TODO: Temp Hack
-        if (model is ShipLog shipLog && GamePreference.Instance.showDamagePointBar)
+        var shipLog = model as ShipLog;
+        if (shipLog != null && GamePreference.Instance.showDamagePointBar)
         {
             healthBarRenderer.gameObject.SetActive(true);
 
@@ -148,6 +154,14 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         else
         {
             healthBarRenderer.gameObject.SetActive(false);
+        }
+
+        if(shipLog != null)
+        {
+            if(shipLog.firingRounds > 0)
+            {
+                audioSource.PlayOneShot(gunfireSound);
+            }
         }
 
         selectedIndicator.SetActive(model.objectId == GameManager.Instance.selectedShipLogObjectId);

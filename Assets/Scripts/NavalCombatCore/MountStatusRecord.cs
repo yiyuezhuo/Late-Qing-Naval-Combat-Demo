@@ -568,15 +568,18 @@ namespace NavalCombatCore
                 {
                     processSeconds -= secondsPerShoot;
 
+                    if (ammoFallbackable)
+                    {
+                        ammunitionType = ctx.batteryStatus.ChooseAmmunitionByPreferredType(ammunitionType); // TODO: Use doctrine suggested value
+                    }
+
                     if(!disableAmmunitionCost)
                     {
                         ctx.batteryStatus.ammunition.CostOne(ammunitionType);
                     }
 
-                    if (ammoFallbackable)
-                    {
-                        ammunitionType = ctx.batteryStatus.ChooseAmmunitionByPreferredType(ammunitionType); // TODO: Use doctrine suggested value
-                    }
+                    ctx.shipLog.firingRounds += 1;
+
 
                     // Fire Control Value Resolution
 

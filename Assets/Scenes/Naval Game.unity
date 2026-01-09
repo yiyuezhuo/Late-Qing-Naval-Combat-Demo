@@ -1340,6 +1340,7 @@ MonoBehaviour:
   currentLogOnly: 1
   remainAdvanceSimulationSecondsRequestedByUserInput: 0
   remainAdvanceSimulationSecondsRequestedByUpdate: 0
+  isAutoPlaying: 0
   selectedShipLogObjectId: 
   selectedMountStatusRecordObjectId: 
   selectedFireControlSystemStatusRecordObjectId: 
@@ -1390,7 +1391,6 @@ GameObject:
   m_Component:
   - component: {fileID: 774573996}
   - component: {fileID: 774573994}
-  - component: {fileID: 774573995}
   m_Layer: 0
   m_Name: IconCamera
   m_TagString: Untagged
@@ -1449,14 +1449,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &774573995
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 774573993}
-  m_Enabled: 0
 --- !u!4 &774573996
 Transform:
   m_ObjectHideFlags: 0

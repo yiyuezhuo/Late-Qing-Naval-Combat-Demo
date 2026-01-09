@@ -626,6 +626,9 @@ namespace NavalCombatCore
         public CountDownClock recentCollisionClock = new();
         public bool preCollsionAvoiding; // obstacleAvoidCheckClock would set its value periodically, if true, normal direction alt would be disabled.
 
+        [XmlIgnore]
+        public int firingRounds;
+
         protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
         protected static string LocalizeFor(object obj) => ServiceLocator.Get<ILocalizeService>().GetFor(obj);
 
@@ -1169,6 +1172,8 @@ namespace NavalCombatCore
 
         public void StepBatteryStatus(float deltaSeconds)
         {
+            firingRounds = 0;
+
             foreach (var bs in batteryStatus)
             {
                 bs.Step(deltaSeconds);

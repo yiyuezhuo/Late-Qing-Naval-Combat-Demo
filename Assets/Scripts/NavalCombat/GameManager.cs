@@ -148,8 +148,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public bool fullInitialized = false;
 
+    public AudioClip oceanWaveSound;
+    public AudioClip shipBellSound;
+    AudioSource audioSource;
+
     public void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         SwitchCenter.Instance.Reset();
 
         GamePreference.Instance.SetShortLabelLanguageTypeByLocale(LocalizationSettings.SelectedLocale);
@@ -257,6 +263,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         TempFix();
 
         fullInitialized = true;
+
+        audioSource.clip = oceanWaveSound;
+        audioSource.loop = true;
+        audioSource.volume = 0.5f;
+        audioSource.Play();
+
+        audioSource.PlayOneShot(shipBellSound);
     }
 
     public EventHandler firstLoaded;

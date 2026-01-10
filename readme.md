@@ -74,8 +74,14 @@ Desktop is the major platform, WebGL will work but the huge file size will not d
 
 ### Assets
 
-- Stategic Mode Terrain Textures: https://opengameart.org/content/hitw-terrain-textures
-- Gunfire sound: https://pixabay.com/sound-effects/artillery-gunfire-14607/
+- Textures:
+    - Stategic Mode Terrain Textures and water textre in the Naval Tactical (piper_flatline, CC): https://opengameart.org/content/hitw-terrain-textures
+- Sounds:
+    - Gunfire (qubodup (Freesound), Pixabay Content License): https://pixabay.com/sound-effects/artillery-gunfire-14607/
+    - Ocean Waves (Mike Koenig, Attribution 3.0): https://soundbible.com/1936-Crisp-Ocean-Waves.html
+    - Ship Bell (Mike Koenig, Attribution 3.0): https://soundbible.com/1746-Ship-Bell.html
+    - Splash Rock In Lake (Ploor, Public Domain): https://soundbible.com/2100-Splash-Rock-In-Lake.html
+    - Explosion (SoundReality, Pixabay Content License): https://pixabay.com/sound-effects/explosion-fx-343683/
 
 ### Related Wargame material
 

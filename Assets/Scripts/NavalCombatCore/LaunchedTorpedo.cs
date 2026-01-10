@@ -183,6 +183,8 @@ namespace NavalCombatCore
                             };
                             collidedShipLog.AddLog(tgtLog);
 
+                            collidedShipLog.startingExplosions += 1;
+
                             var logger = ServiceLocator.Get<ILoggerService>();
                             logger.LogWarning($"Torpedo {objectId} collides ship {collidedShipLog.namedShip.name.GetMergedName()} armorEffInch={armorEffInch} torpedoDamage={torpedoDamage}");
                         }

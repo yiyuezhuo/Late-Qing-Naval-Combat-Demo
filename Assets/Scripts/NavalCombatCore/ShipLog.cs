@@ -6,7 +6,6 @@ using GeographicLib;
 using System.Xml.Serialization;
 
 using CoreUtils;
-using NUnit.Framework.Internal;
 
 
 namespace NavalCombatCore
@@ -629,6 +628,12 @@ namespace NavalCombatCore
         [XmlIgnore]
         public int firingRounds;
 
+        [XmlIgnore]
+        public int firingTorpedos;
+
+        [XmlIgnore]
+        public int startingExplosions; // record explosion caused by torpedo only now
+
         protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
         protected static string LocalizeFor(object obj) => ServiceLocator.Get<ILocalizeService>().GetFor(obj);
 
@@ -1167,6 +1172,8 @@ namespace NavalCombatCore
 
         public void StepTorpedoSector(float deltaSeconds)
         {
+            firingTorpedos = 0;
+
             torpedoSectorStatus.Step(deltaSeconds);
         }
 

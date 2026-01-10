@@ -65,7 +65,9 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public MeshRenderer healthBarRenderer;
 
     public AudioClip gunfireSound;
-    public AudioSource audioSource;
+    public AudioClip torpedoFireSound;
+    public AudioClip explosionSound;
+    AudioSource audioSource;
 
     //
     Texture2D portraitTex;
@@ -160,7 +162,23 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         {
             if(shipLog.firingRounds > 0)
             {
+                shipLog.firingRounds = 0; // TODO: Code Smell?
+
                 audioSource.PlayOneShot(gunfireSound);
+                // Debug.Log("gunfireSound");
+            }
+            if(shipLog.firingTorpedos > 0)
+            {
+                shipLog.firingTorpedos = 0;
+
+                audioSource.PlayOneShot(torpedoFireSound);
+                // Debug.Log("torpedoFireSound");
+            }
+            if(shipLog.startingExplosions > 0)
+            {
+                shipLog.startingExplosions = 0;
+
+                audioSource.PlayOneShot(explosionSound);
             }
         }
 

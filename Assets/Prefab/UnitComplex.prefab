@@ -490,7 +490,8 @@ MonoBehaviour:
   selectedIndicator: {fileID: 400805370061268050}
   healthBarRenderer: {fileID: 8357931564626810797}
   gunfireSound: {fileID: 8300000, guid: f84e2dc3a4cace14795ad6cf02fb9523, type: 3}
-  audioSource: {fileID: 0}
+  torpedoFireSound: {fileID: 8300000, guid: 98c85fb5297c9f441abb7f148a0f0137, type: 3}
+  explosionSound: {fileID: 8300000, guid: ac4299cc06b2a904cb0e90da92a7ef40, type: 3}
 --- !u!82 &3663345588795297998
 AudioSource:
   m_ObjectHideFlags: 0

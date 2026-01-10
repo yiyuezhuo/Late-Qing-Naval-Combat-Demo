@@ -424,6 +424,8 @@ namespace NavalCombatCore
                             EntityManager.Instance.Register(newTorpedo, null);
 
                             currentLoad -= 1;
+
+                            platform.firingTorpedos += 1;
                         }
                     }
 

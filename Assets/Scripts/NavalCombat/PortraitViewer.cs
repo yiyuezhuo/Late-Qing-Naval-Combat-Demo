@@ -5,6 +5,7 @@ using System;
 
 using CoreUtils;
 using NavalCombatCore;
+using System.Collections.Generic;
 
 
 public interface IPortraitViewerObservable : IObjectIdLabeled, ICollider // Abstraction from ShipLog to support view of torpedo, land battery / target and possbily projectile.
@@ -63,6 +64,10 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public MeshRenderer flagRenderer;
     public GameObject selectedIndicator;
     public MeshRenderer healthBarRenderer;
+    // public MeshRenderer sunkCrossRenderer;
+
+    public List<GameObject> deployedGameObjects;
+    public List<GameObject> destroyedGameObjects;
 
     public AudioClip gunfireSound;
     public AudioClip torpedoFireSound;
@@ -80,7 +85,8 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             // type,
             portraitTex,
             // shipLog?.leader?.portraitCode,
-            countryTex
+            countryTex,
+            GetTransparent()
         );
     }
 
@@ -136,7 +142,16 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             var s = modelScale;
             arrowBaseTransform.localScale = new Vector3(s, s, s);
         }
-    } 
+    }
+
+    public bool GetTransparent()
+    {
+        if(model == null)
+            return false;
+        if(model is ShipLog shipLog && shipLog.mapState == MapState.Destroyed)
+            return true;
+        return false;
+    }
 
     public void Update()
     {
@@ -146,7 +161,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
         // TODO: Temp Hack
         var shipLog = model as ShipLog;
-        if (shipLog != null && GamePreference.Instance.showDamagePointBar)
+        if (shipLog != null && shipLog.mapState == MapState.Deployed && GamePreference.Instance.showDamagePointBar)
         {
             healthBarRenderer.gameObject.SetActive(true);
 
@@ -160,6 +175,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
         if(shipLog != null)
         {
+            // Maintain Sounds (TODO: Move to some Manager Singleton as we don't use 3DSFX here?)
             if(shipLog.firingRounds > 0)
             {
                 shipLog.firingRounds = 0; // TODO: Code Smell?
@@ -179,6 +195,16 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
                 shipLog.startingExplosions = 0;
 
                 audioSource.PlayOneShot(explosionSound);
+            }
+
+            // Maintain deployed & destroyed state
+            foreach(var obj in deployedGameObjects)
+            {
+                obj.SetActive(shipLog.mapState == MapState.Deployed);
+            }
+            foreach(var obj in destroyedGameObjects)
+            {
+                obj.SetActive(shipLog.mapState == MapState.Destroyed);
             }
         }
 
@@ -239,7 +265,18 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
         oldViewHashCode = newViewHashCode;
 
-        iconRenderer.material.SetTexture("_MainTex", portraitTex);        
+        var isTransparent = GetTransparent();
+
         flagRenderer.material.SetTexture("_MainTex", countryTex);
+        flagRenderer.material.color = isTransparent ? transparentColor : Color.white;
+
+        iconRenderer.material.SetTexture("_MainTex", portraitTex);
+        var mainColor = isTransparent ? transparentColor : Color.white;
+        iconRenderer.material.SetColor("_MainColor", mainColor);
+
+        text.color = isTransparent ? transparentColor : Color.white;
     }
+
+    // static Color transparentColor = new Color(1, 1, 1, 0.5f);
+    static Color transparentColor = new Color(1, 1, 1, 0.25f);
 }

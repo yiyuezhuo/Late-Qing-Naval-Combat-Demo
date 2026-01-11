@@ -618,6 +618,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         remainAdvanceSimulationSecondsRequestedByUserInput = value;
     }
 
+    public static bool showSunkShips = true;
+
     public void Update()
     {
         UpdateSimulation();
@@ -631,7 +633,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         // sync Ship's Viewer and ShipLog mapping
         List<IPortraitViewerObservable> viewerObservables = new();
-        viewerObservables.AddRange(NavalGameState.Instance.shipLogsOnMap);
+
+        var displayedShipLogs = showSunkShips ? NavalGameState.Instance.shipLogsOnMapOrDestroyed : NavalGameState.Instance.shipLogsOnMap;
+        // viewerObservables.AddRange(NavalGameState.Instance.shipLogsOnMap);
+        // viewerObservables.AddRange(NavalGameState.Instance.shipLogsOnMapOrDestroyed);
+        viewerObservables.AddRange(displayedShipLogs);
         viewerObservables.AddRange(NavalGameState.Instance.launchedTorpedosOnMap);
 
         foreach (var observable in viewerObservables)

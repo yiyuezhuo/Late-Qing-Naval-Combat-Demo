@@ -2368,6 +2368,10 @@ MonoBehaviour:
     m_Key: Has Fire Control Radar
     m_Metadata:
       m_Items: []
+  - m_Id: 47548416369790976
+    m_Key: Show Sunk Ships
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -548,6 +548,7 @@ namespace NavalCombatCore
 
         public IEnumerable<ShipLog> shipLogsOnMap => shipLogs.Where(x => x.mapState == MapState.Deployed);
         public IEnumerable<LaunchedTorpedo> launchedTorpedosOnMap => launchedTorpedos.Where(x => x.mapState == MapState.Deployed);
+        public IEnumerable<ShipLog> shipLogsOnMapOrDestroyed => shipLogs.Where(x => x.mapState == MapState.Deployed || x.mapState == MapState.Destroyed);
 
         public Dictionary<IShipGroupMember, List<ShipLog>> GroupByShipLogByRootGroup()
         {

@@ -352,7 +352,7 @@ namespace NavalCombatCore
         // string IPortraitViewerObservable.GetPortraitTopCode() => shipClass.portraitTopCode;
         Country IPortraitViewerObservable.GetCountry() => shipClass.country;
         GlobalString IPortraitViewerObservable.GetName() => namedShip?.name;
-        bool IPortraitViewerObservable.IsShowArrow() => GetEffectiveControlMode() == ControlMode.Independent;
+        bool IPortraitViewerObservable.IsShowArrow() => mapState == MapState.Deployed && GetEffectiveControlMode() == ControlMode.Independent;
         string IPortraitViewerObservable.GetAcronym() => shipClass.GetAcronym();
         float IPortraitViewerObservable.GetDesiredHeadingDeg() => desiredHeadingDeg;
     }

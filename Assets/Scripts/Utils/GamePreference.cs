@@ -165,6 +165,15 @@ public class GamePreference
         }
     }
 
+    [CreateProperty]
+    public bool showSunkShips
+    {
+        get => GameManager.showSunkShips;
+        set => GameManager.showSunkShips = value;
+    }
+
+    // Helpers
+
     public event EventHandler<bool> isInEditModeChanged;
 
     public void SetShortLabelLanguageTypeByLocale(Locale locale)

@@ -2454,6 +2454,10 @@ MonoBehaviour:
     m_Localized: Has Fire Control Radar
     m_Metadata:
       m_Items: []
+  - m_Id: 47548416369790976
+    m_Localized: Show Sunk Ships
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

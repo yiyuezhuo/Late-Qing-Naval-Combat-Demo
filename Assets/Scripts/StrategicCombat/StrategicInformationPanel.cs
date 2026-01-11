@@ -56,12 +56,6 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
         {
             {"nameLink", () =>{
                 var group = StrategicGameManager.Instance.lastSelectedStrategicGroup;
-                // var idx = StrategicGameState.Instance.strategicGroups.IndexOf(group);
-                // if(group != null && idx != -1)
-                // {
-                //     StrategicGroupEditor.Instance.Show();
-                //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
-                // }
 
                 SwitchCenter.Instance.SwitchToStrategicGroupView(group);
             }}
@@ -75,16 +69,19 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
                     var group = StrategicGameManager.Instance.lastSelectedStrategicGroup;
                     var leader = group.leaderReference.Get();
 
-                    // if(leader != null)
-                    // {
-                    //     var idx = StrategicGameState.Instance.leaders.IndexOf(leader);
-                    //     if(group != null && idx != -1)
-                    //     {
-                    //         LeaderEditor.Instance.Show();
-                    //         BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LeaderEditor.Instance.leadersListView, idx);
-                    //     }
-                    // }
                     SwitchCenter.Instance.SwitchToLeaderView(leader);
+                }
+            }
+        });
+
+        var missionNameLabel = root.Q<Label>("MissionNameLabel");
+        Utils.RegisterLinkTag(missionNameLabel, new()
+        {
+            {"nameLink", () =>
+                {
+                    var group = StrategicGameManager.Instance.lastSelectedStrategicGroup;
+                    var mission = group.GetAssignedMission();
+                    SwitchCenter.Instance.SwitchToMissionView(mission);
                 }
             }
         });

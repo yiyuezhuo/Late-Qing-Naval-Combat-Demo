@@ -2372,6 +2372,10 @@ MonoBehaviour:
     m_Key: Show Sunk Ships
     m_Metadata:
       m_Items: []
+  - m_Id: 47647284608536576
+    m_Key: Set Attack Target (A)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

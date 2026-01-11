@@ -346,6 +346,18 @@ namespace NavalCombatCore
         [CreateProperty]
         public bool isTransport => shipClass?.isTransport ?? false;
 
+        [CreateProperty]
+        public string shipLevelFiringTargetDesc
+        {
+            get
+            {
+                var shipLevelFiringTarget = GetShipLevelFiringTarget();
+                if(shipLevelFiringTarget == null)
+                    return "";
+                return $"Attack: {shipLevelFiringTarget?.namedShip.name.GetMergedName()}";
+            }
+        }
+
         // IPortraitViewerObservable
         PictureReference IPortraitViewerObservable.GetPortraitTopReference() => shipClass?.portraitTopReference;
         PictureReference IPortraitViewerObservable.GetPortraitIconReference() => shipClass?.portraitIconReference;
@@ -735,14 +747,26 @@ namespace NavalCombatCore
             }
         }
 
+        // [XmlIgnore]
+        // [CreateProperty]
+        // public bool defaultNarrowProp
+        // {
+        //     get => defaultNarrow;
+        //     set
+        //     {
+        //         defaultNarrow = value;
+        //         SyncDefaultMountArcs();
+        //     }
+        // }
+
         [XmlIgnore]
         [CreateProperty]
-        public bool defaultNarrowProp
+        public MountArcsPattern mountArcsPatternProp
         {
-            get => defaultNarrow;
+            get => mountArcsPattern;
             set
             {
-                defaultNarrow = value;
+                mountArcsPattern = value;
                 SyncDefaultMountArcs();
             }
         }

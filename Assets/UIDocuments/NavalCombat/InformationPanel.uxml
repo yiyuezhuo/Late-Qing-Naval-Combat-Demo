@@ -2,7 +2,7 @@
     <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" data-source-path="selectedShipLog" class="panel" style="flex-grow: 1; width: 200px;">
         <ui:ScrollView>
             <ui:VisualElement>
-                <ui:Label text="Ship&#39;s name " name="NamedShipLabel" style="white-space: normal; flex-wrap: wrap;">
+                <ui:Label text="Ship&apos;s name " name="NamedShipLabel" style="white-space: normal; flex-wrap: wrap;">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="namedShipDescLink" binding-mode="ToTarget"/>
                     </Bindings>
@@ -17,14 +17,14 @@
                         <ui:DataBinding property="text" data-source-path="shipClassDescLink" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Label>
-                <ui:Label text="Ship&#39;sOobParent" name="OOBParentLabel" style="white-space: normal;">
+                <ui:Label text="Ship&apos;sOobParent" name="OOBParentLabel" style="white-space: normal;">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="oobParentDescLink" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                     <ui:VisualElement style="flex-grow: 1;">
-                        <ui:Label text="Ship&#39;s captain ....................................................." name="CaptainLabel" style="white-space: normal;">
+                        <ui:Label text="Ship&apos;s captain ....................................................." name="CaptainLabel" style="white-space: normal;">
                             <Bindings>
                                 <ui:DataBinding property="text" data-source-path="captainDescLink" binding-mode="ToTarget"/>
                             </Bindings>
@@ -82,6 +82,16 @@
                 <ui:Label text="_ DEs">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="damageEffectDesc" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Button text="Set Attack Target (A)" name="SetAttackTargetButton">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(47647284608536576)"/>
+                    </Bindings>
+                </ui:Button>
+                <ui:Label text="Manual Attack Target Desc" style="white-space: normal;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="shipLevelFiringTargetDesc" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Label>
                 <ui:Label text="summary" name="SummaryLabel" style="white-space: normal;">

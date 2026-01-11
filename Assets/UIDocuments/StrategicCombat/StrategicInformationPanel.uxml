@@ -92,6 +92,12 @@
                         </Bindings>
                     </ui:Image>
                 </ui:VisualElement>
+                <ui:Label text="Mission Name" name="MissionNameLabel" style="white-space: normal;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="assignedMissionNameLink" binding-mode="ToTarget"/>
+                        <ui:DataBinding property="style.display" data-source-path="hasAssignedMission" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                    </Bindings>
+                </ui:Label>
                 <ui:Button text="Move (New, M)" name="MoveButton">
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16832839338856448)"/>

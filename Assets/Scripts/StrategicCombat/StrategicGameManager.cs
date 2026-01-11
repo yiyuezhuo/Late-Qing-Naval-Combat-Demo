@@ -866,6 +866,21 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
                 // UITK World Spcace enforce a 3D collider, so we can only use 3D Raycast
                 var ray = cam.ScreenPointToRay(Input.mousePosition);
+
+                // Raycasting result debug
+                // if(mapEditMode == StrategicMapEditMode.Select)
+                // {
+                //     var res = Physics.Raycast(ray, out var _hitInfo);
+                //     if(res)
+                //     {
+                //         var res2 = _hitInfo.collider.CompareTag("Icon");
+                //         if(res2)
+                //         {
+                //             Debug.Log("Passed");
+                //         }
+                //     }
+                // }
+
                 if (mapEditMode == StrategicMapEditMode.Select && Physics.Raycast(ray, out var hitInfo) && hitInfo.collider.CompareTag("Icon")) // click on group
                 {
                     Debug.Log($"hitInfo.collider={hitInfo.collider}");
@@ -887,7 +902,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                         {
                             lastSelectedObject = topStackIcon as IObjectIdLabeled;
                         }
-                        else // toggle
+                        else // stack toggle
                         {
                             observableStack.RemoveAt(observableStack.Count - 1);
                             observableStack.Insert(0, topStackIcon);
@@ -903,52 +918,6 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                             SwitchCenter.Instance.SwitchToStrategicGroupView(lastSelectedStrategicGroup);
                         }
                     }
-                    
-                    // if(iconDataSource is StrategicGroup group)
-                    // {
-                    //     var groupSide = group.side;
-                    //     // var hexInfo = group.hexInfo;
-                    //     var strategicGroupReferences = group.cell.StrategicGroupReferences;
-                    //     var currentStack = group.currentStack;
-                    //     var topStackGroup = currentStack[^1];
-
-                    //     // Debug.Log($"group={group}, groupSide={groupSide}, currentStack={currentStack}, topStackGroup={topStackGroup}");
-
-                    //     if (rightClicking && lastSelectedStrategicGroup == topStackGroup)
-                    //     {
-                    //         SwitchCenter.Instance.SwitchToStrategicGroupView(topStackGroup);
-                    //     }
-
-                    //     if (leftClicking)
-                    //     {
-                    //         if (lastSelectedStrategicGroup != topStackGroup) // New Click => Select
-                    //         {
-                    //             // lastSelectedStrategicGroup = topStackGroup;
-                    //             lastSelectedObject = topStackGroup;
-                    //         }
-                    //         else // Repeat Left Click => Toggle Stack
-                    //         {
-                    //             strategicGroupReferences.RemoveAll(r => r.referenceId == topStackGroup.objectId);
-                    //             strategicGroupReferences.Insert(0, new() { referenceId = topStackGroup.objectId });
-                    //             currentStack = group.currentStack;
-                    //             topStackGroup = currentStack[^1];
-
-                    //             // lastSelectedStrategicGroup = topStackGroup;
-                    //             lastSelectedObject = topStackGroup;
-                    //         }
-                    //     }
-
-                    //     lastSelectedCell = group.cell;
-                    // }
-                    // else if(iconDataSource is NavalContactReport contactReport)
-                    // {
-                    //     if (leftClicking)
-                    //     {
-                    //         lastSelectedObject = contactReport;
-                    //         // TODO: Implement Toggle?
-
-                    //     }
-                    // }
                 }
                 else if (leftClicking) // click on map (cell)
                 {

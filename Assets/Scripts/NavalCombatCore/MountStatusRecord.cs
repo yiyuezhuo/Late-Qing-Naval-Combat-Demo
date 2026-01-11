@@ -435,7 +435,7 @@ namespace NavalCombatCore
         }
     }
 
-    public partial class MountStatusRecord : AbstractMountStatusRecord
+    public partial class MountStatusRecord : AbstractMountStatusRecord // Battery
     {
         public float processSeconds;
         public AmmunitionType ammunitionType;
@@ -500,8 +500,6 @@ namespace NavalCombatCore
             var tgt = GetFiringTarget();
             if (tgt != null)
             {
-                processSeconds += deltaSeconds;
-
                 var fireCtx = GunneryFireContext.GetCurrentOrCreateTemp();
 
                 // var shooter = GetPlatform();
@@ -559,6 +557,8 @@ namespace NavalCombatCore
                 {
                     secondsPerShoot *= 2; // ROF / 2 if masked
                 }
+
+                processSeconds += deltaSeconds;
 
                 // skip to log ammo consumption and firing "result"
                 while (processSeconds >= secondsPerShoot &&

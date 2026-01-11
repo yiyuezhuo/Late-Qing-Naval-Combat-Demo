@@ -72,6 +72,12 @@ public class InformationPanel : SingletonDocument<InformationPanel>
             }}
         });
 
+        var setAttackTargetButton = root.Q<Button>("SetAttackTargetButton");
+        setAttackTargetButton.clicked += () =>
+        {
+            GameManager.Instance.state = GameManager.State.SelectingShipLevelFiringTarget;
+        };
+
     }
 
     static IEnumerator SetSelectionForOOBEditorTreeViewNextFrame(string objectId)

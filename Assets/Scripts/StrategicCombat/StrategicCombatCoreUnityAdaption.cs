@@ -281,6 +281,12 @@ namespace StrategicCombatCore
                 return $"{supplyTons:0.0}/{supplyCapTons:0.0} tons ({percentStr})";
             }
         }
+
+        [CreateProperty]
+        public bool hasAssignedMission => GetAssignedMission() != null;
+
+        [CreateProperty]
+        public string assignedMissionNameLink => GetAssignedMission()?.nameLink;
     }
 
     public partial class StrategicGroupReference
@@ -683,6 +689,16 @@ namespace StrategicCombatCore
 
         // [CreateProperty]
         // public string targetDepotName => EntityManager.Instance.Get<LandUnit>(targetDepotObjectId)?.name?.mergedName ?? "[Not defined or Invalid]";
+
+        [CreateProperty]
+        public string nameLink
+        {
+            get
+            {
+                var rawName = name.GetMergedName();
+                return $"<link=\"nameLink\"><color=#40a0ff>{rawName}</color></link>";
+            }
+        }
     }
 
     public partial class LandUnitReference

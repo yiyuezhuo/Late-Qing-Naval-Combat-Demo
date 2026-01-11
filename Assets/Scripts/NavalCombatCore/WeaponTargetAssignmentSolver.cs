@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
-using System.Security;
-using System.Diagnostics;
 
 namespace NavalCombatCore
 {
@@ -17,6 +15,7 @@ namespace NavalCombatCore
         // float EvaluateRapidFiringFirepowerScore();
         float EvaluateFirepowerScore();
         // float EvaluateGeneralScore();
+        IWTAObject GetManualFireTarget();
 
         IEnumerable<IWTABattery> GetBatteries();
     }
@@ -51,6 +50,7 @@ namespace NavalCombatCore
             // Frozen Values
             public List<BatteryRecord> batteries = new();
             public Dictionary<TargetRecord, MeasureStats> measurements = new();
+            public TargetRecord manualFireTarget;
             // Solver States
 
             public override string ToString()
@@ -133,6 +133,12 @@ namespace NavalCombatCore
             // pre-calculation
             foreach (var shooter in shooters)
             {
+                var manualFireTarget = shooter.original.GetManualFireTarget();
+                if(manualFireTarget != null)
+                {
+                    shooter.manualFireTarget = oriToTarget.GetValueOrDefault(manualFireTarget);
+                }
+
                 foreach (var target in targets)
                 {
                     var stats = shooter.measurements[target] = MeasureStats.Measure(shooter.original, target.original);
@@ -161,7 +167,7 @@ namespace NavalCombatCore
 
                     if (battery.currentTarget != null && battery.isChangeTargetBlocked)
                     {
-                        battery.assignedTarget = battery.currentTarget; // TODO: Too harsh to battery which is capable to shoot multiply targets?
+                        battery.assignedTarget = battery.currentTarget; // TODO: Is it too harsh to a battery which is capable to shoot multiply targets?
                         battery.currentTarget.selfFirepowerScore += battery.firepowerScoreMap[battery.currentTarget];
                         battery.currentTarget.overConcentrationScore += battery.overConcentrationCoef;
                     }
@@ -174,6 +180,7 @@ namespace NavalCombatCore
                 var decisionRecords = new List<DecisionRecord>();
                 foreach (var shooter in shooters)
                 {
+                    // shooter.manualFireTarget
                     foreach (var battery in shooter.batteries)
                     {
                         if (battery.assignedTarget != null)
@@ -181,6 +188,9 @@ namespace NavalCombatCore
 
                         foreach (var target in targets)
                         {
+                            if(shooter.manualFireTarget != null && shooter.manualFireTarget != target)
+                                continue;
+
                             // var stats = shooter.measurements[target];
                             // var firepowerScore = battery.original.EvaluateFirepowerScore(stats.distanceYards, stats.targetPresentAspectFromObserver, target.speedKnots, stats.observerToTargetViewBearingRelativeToBowDeg);
                             var tryAddedFirepowerScore = battery.firepowerScoreMap[target];

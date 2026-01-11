@@ -625,6 +625,9 @@ namespace NavalCombatCore
         public CountDownClock recentCollisionClock = new();
         public bool preCollsionAvoiding; // obstacleAvoidCheckClock would set its value periodically, if true, normal direction alt would be disabled.
 
+        public string shipLevelFiringTargetObjectId;
+        public ShipLog GetShipLevelFiringTarget() => EntityManager.Instance.GetOnMapShipLog(shipLevelFiringTargetObjectId);
+
         [XmlIgnore]
         public int firingRounds;
 
@@ -1530,6 +1533,8 @@ namespace NavalCombatCore
         public float GetBeamFoot() => shipClass.beamFoot;
 
         public GlobalString GetName() => namedShip?.name;
+
+        public IWTAObject GetManualFireTarget() => GetShipLevelFiringTarget();
 
         public override string ToString()
         {

@@ -350,6 +350,13 @@ namespace NavalCombatCore
         }
     }
 
+    public enum MountArcsPattern // G1 Table
+    {
+        Normal,
+        Narrow, // mainly for torpedo 
+        Casemate // mainly for battery
+    }
+
     public partial class MountLocationRecord : IObjectIdLabeled
     {
         public string objectId { get; set; }
@@ -363,6 +370,8 @@ namespace NavalCombatCore
         public bool trainable; // for torpedo
         public int reloadLimit; // Mainly for torpedo, 0 denotes no limit, > 0 will restrict max ammunition reloaded to the mount generated from this record. It represents separated ammunition room or single-shot torpedo tube.
         public bool defaultNarrow;
+        public MountArcsPattern mountArcsPattern;
+        
         public string SummaryArcs() => string.Join(",", mountArcs.Select(arc => arc.Summary()));
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
@@ -392,10 +401,11 @@ namespace NavalCombatCore
         public class DefaultMountArcsConfig
         {
             public List<MountArcRecord> normal = new();
-            public List<MountArcRecord> narrow = new();
+            public List<MountArcRecord> narrow = new(); // or "fixed", reserved for torpedo
+            public List<MountArcRecord> casemate = new();
         }
 
-        static Dictionary<MountLocation, DefaultMountArcsConfig> mountLocation2defaultMountArcsConfig = new()
+        static Dictionary<MountLocation, DefaultMountArcsConfig> mountLocation2defaultMountArcsConfig = new() // G1 Arc of Fire Examples
         {
             {MountLocation.NotSpecified, new()},
             {MountLocation.Forward, new(){
@@ -404,15 +414,18 @@ namespace NavalCombatCore
             }},
             {MountLocation.StarboardForward, new(){
                 normal=new(){new(){startDeg=0, CoverageDeg=120}},
-                narrow=new(){new(){startDeg=75, CoverageDeg=30}}
+                narrow=new(){new(){startDeg=75, CoverageDeg=30}},
+                casemate=new(){new(){startDeg=10, CoverageDeg=100}}
             }},
             {MountLocation.StarboardMidship, new(){
                 normal=new(){new(){startDeg=30, CoverageDeg=120}},
-                narrow=new(){new(){startDeg=75, CoverageDeg=30}}
+                narrow=new(){new(){startDeg=75, CoverageDeg=30}},
+                casemate=new(){new(){startDeg=20, CoverageDeg=140}}
             }},
             {MountLocation.StarboardAfter, new(){
                 normal=new(){new(){startDeg=60, CoverageDeg=120}},
-                narrow=new(){new(){startDeg=75, CoverageDeg=30}}
+                narrow=new(){new(){startDeg=75, CoverageDeg=30}},
+                casemate=new(){new(){startDeg=80, CoverageDeg=100}}
             }},
             {MountLocation.After, new(){
                 normal=new(){new(){startDeg=60, CoverageDeg=240}},
@@ -420,15 +433,18 @@ namespace NavalCombatCore
             }},
             {MountLocation.PortAfter, new(){
                 normal=new(){new(){startDeg=180, CoverageDeg=120}},
-                narrow=new(){new(){startDeg=255, CoverageDeg=30}}
+                narrow=new(){new(){startDeg=255, CoverageDeg=30}},
+                casemate=new(){new(){startDeg=180, CoverageDeg=100}}
             }},
             {MountLocation.PortMidship, new(){
                 normal=new(){new(){startDeg=210, CoverageDeg=120}},
-                narrow=new(){new(){startDeg=255, CoverageDeg=30}}
+                narrow=new(){new(){startDeg=255, CoverageDeg=30}},
+                casemate=new(){new(){startDeg=200, CoverageDeg=140}}
             }},
             {MountLocation.PortForward, new(){
                 normal=new(){new(){startDeg=240, CoverageDeg=120}},
-                narrow=new(){new(){startDeg=255, CoverageDeg=30}}
+                narrow=new(){new(){startDeg=255, CoverageDeg=30}},
+                casemate=new(){new(){startDeg=260, CoverageDeg=100}}
             }},
             {MountLocation.Midship, new(){
                 normal=new(){
@@ -452,7 +468,14 @@ namespace NavalCombatCore
             if(mountLocation2defaultMountArcsConfig.TryGetValue(mountLocation, out var defaultMountArcsConfig))
             {
                 mountArcs.Clear();
-                var defaultMountArcs = defaultNarrow ? defaultMountArcsConfig.narrow : defaultMountArcsConfig.normal;
+                // var defaultMountArcs = defaultNarrow ? defaultMountArcsConfig.narrow : defaultMountArcsConfig.normal;
+                var defaultMountArcs = mountArcsPattern switch
+                {
+                    MountArcsPattern.Normal => defaultMountArcsConfig.normal,
+                    MountArcsPattern.Narrow => defaultMountArcsConfig.narrow,
+                    MountArcsPattern.Casemate => defaultMountArcsConfig.casemate,
+                    _ => defaultMountArcsConfig.normal
+                };
                 mountArcs.AddRange(defaultMountArcs.Select(arc => arc.Clone()));
             }
         }

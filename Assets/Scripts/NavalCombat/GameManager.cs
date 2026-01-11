@@ -81,7 +81,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         SelectingRapidFiringTarget,
         SelectingTorpedoFiringTarget,
         SelectingTargetMisc,
-        SelectingCourseTarget
+        SelectingCourseTarget,
+        SelectingShipLevelFiringTarget
     }
 
     State _state = State.Idle;
@@ -128,7 +129,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         // public string builtinScenName = "Tutorial 1 - Single Ship.scen.xml";
         // public string builtinScenName = "Tutorial 2 - Ship Group.scen.xml";
         // public string builtinScenName = "Tutorial 3 - Combat.scen.xml";
-        public string builtinScenName = "SJS - Ting Yuen vs Three View.scen.xml";
+        // public string builtinScenName = "SJS - Ting Yuen vs Three View.scen.xml";
+        public string builtinScenName = "RJH - Battle of Ulsan.scen.xml";
         public LatLon cameraLocation;
         // public bool requireAutoDeployAll = false;
         public ScenarioDynamicSetupGenerator scenarioSetupGenerator; // TODO: switch to AutoDeployment
@@ -302,6 +304,29 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         // {
         //     shipClass.armorRating.TryInferArmorType();
         // }
+
+        foreach(var shipClass in NavalGameState.Instance.shipClasses)
+        {
+            foreach(var btyRec in shipClass.batteryRecords)
+            {
+                foreach(var mntRec in btyRec.mountLocationRecords)
+                {
+                    if(mntRec.defaultNarrow)
+                    {
+                        mntRec.mountArcsPattern = MountArcsPattern.Casemate;
+                        mntRec.SyncDefaultMountArcs();
+                    }
+                }
+            }
+
+            foreach(var mntLoc in shipClass.torpedoSector.mountLocationRecords)
+            {
+                if(mntLoc.defaultNarrow)
+                {
+                    mntLoc.mountArcsPattern = MountArcsPattern.Narrow;
+                }
+            }
+        }
     }
 
     public ViewState CaptureViewState()
@@ -810,6 +835,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     selectedShipLog.mapState = MapState.NotDeployed;
                 }
+                if(Input.GetKeyDown(KeyCode.A) && selectedShipLog != null) // Set Ship-level attack target
+                {
+                    state = State.SelectingShipLevelFiringTarget;
+                }
             }
             else if (state == State.SelectingInsertUnitPosition)
             {
@@ -965,6 +994,18 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     state = State.Idle;
                     SetSelectedShipCourseTowardPointer();
+                }
+            }
+            else if(state == State.SelectingShipLevelFiringTarget)
+            {
+                if(Input.GetMouseButtonDown(0))
+                {
+                    state = State.Idle;
+                    // set Ship-level target
+                    var targetShipLog = TryToRaycastShipLog();
+                    selectedShipLog.shipLevelFiringTargetObjectId = targetShipLog?.objectId;
+                    
+                    Debug.Log($"Set Ship-Level Target: {selectedShipLog} -> {targetShipLog}");
                 }
             }
         }

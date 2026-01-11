@@ -199,6 +199,10 @@ namespace NavalCombatCore
                     // TODO: Check Range? Though effect of range shoul have been handled in the evaluation. 
                     mnt.SetFiringTarget(target);
                 }
+                else
+                {
+                    mnt.SetFiringTarget(null);
+                }
             }
         }
 

@@ -91,6 +91,20 @@ public class ForceBuilder
         }
 
         [CreateProperty]
+        public Country countryProp
+        {
+            get => country;
+            set
+            {
+                if(country != value)
+                {
+                    country = value;
+                    Refresh();
+                }
+            }
+        }
+
+        [CreateProperty]
         public float usedPoints => GetTotalUsedPoints();
 
         [CreateProperty]

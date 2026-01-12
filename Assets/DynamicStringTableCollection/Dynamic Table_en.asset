@@ -2784,6 +2784,18 @@ MonoBehaviour:
     m_Localized: Cargo Area 4
     m_Metadata:
       m_Items: []
+  - m_Id: 33081585458384896
+    m_Localized: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33081618031349760
+    m_Localized: Narrow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33081650944053248
+    m_Localized: Casemate
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

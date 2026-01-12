@@ -1695,47 +1695,43 @@ MonoBehaviour:
       from the first hit.\r\n\r\nDP primarily drives the generation of General Damage
       Effects, which can severely impair a ship\u2019s combat capability. The 100%
       DP mark indicates a high probability that the ship becomes mission-killed (combat
-      ineffective).\r\n\r\nMechanically, 100% DP is the threshold at which General
-      Damage Effect checks stop. Beyond this point, no further General DE rolls occur
-      \u2014 making the ship relatively less likely to sink per additional damage
-      taken (imagine critical explosion chances are \"used up\", so more hole in
-      the shell above water has no more effect to sink the ship). That said, specific
-      damage effects from normal hits can still cause the ship to sink.\r\n\r\n##
-      How to Enable Movement AI\r\n\r\nSelect a group in the OOB Editor, turn off
-      \"Inherited\" in the automatic movement field, and set it to \"Automatic.\"
-      The group will then change its course according to certain principles. This
-      setting is usually applied to a top-level group, such as \"Japan Fleet\" or
-      \"China Fleet,\" but it can also be set at a subordinate level for partial
-      automation.\r\n\r\nThe AI is still in a prototype state (for example, it plans
-      its course but does not modify speed), so it is not enabled by default. The
-      game currently recommends sandbox-style gameplay, where the player controls
-      both sides simultaneously and observes the outcome\u2014similar to how solitary
-      wargamer does play their miniatures, but with help of auto-resolution powered
-      by computer.\r\n\r\n## Editing is Not Intuitive\r\n\r\nI haven\u2019t written
-      related material since major rework is expected. If you really want to edit
-      something and find it frustrating, contact me (via GitHub issue or Discord
-      server) to let me know someone is really interested, I would write a temp document
-      to explain how to do it in the current stage.\r\n\r\n## Why are so many standard
-      UI elements named \"Editor\"? I don't want to \"edit\" anything\u2014I just
-      want to play.\r\n\r\nI aim to recreate a sandbox experience similar to Vassal
-      and Tabletop Simulator (TTS), where editing allows players to introduce custom
-      rules and house rules without coding. On the ohter hand, in games like Command:
-      Modern Operations (CMO), players often use edit mode to streamline experimentation\u2014a
-      feature I want to incorporate into game.\r\n\r\n## Why is so much image loading
-      done at runtime?\r\n\r\nI want to emulate Tabletop Simulator's approach of
-      loading images dynamically during gameplay.\r\n\r\n## Why Is the Game So Large?
-      Shouldn't It Be a Mini Game liek RTW Given the \"Minimalist\" Graphics?\r\n\r\nSimilar
-      to games like CMO, the majority of the installation size comes from GIS elevation
-      data. While titles such as Rule the Wave avoid this overhead by using vector
-      data, this project uses raster data \u2014 even though ocean depth data has
-      been clamped.\r\n\r\nThe reason for retaining elevation data is to support
-      a planned tactical land combat generator, which will utilize terrain elevation
-      in future updates. Also elevation data will render location more recognizable
-      and pretty.\r\n\r\n## Is the Strategic Game Playable Now?\r\n\r\nNo, only the
-      naval tactical game is currently playable (to some extent). The exposed strategic
-      game mode only gives a *feel* for what the full strategic experience will eventually
-      be like. \r\n\r\nThis area may also be of interest to open-source contributors,
-      as the strategic game is now the main focus of development.\r\n"
+      ineffective).\r\n\r\nMechanically, 100% DP marks the point at which General
+      Damage Effect checks cease. Beyond this threshold, no further General DE rolls
+      are made, meaning that additional damage is relatively less likely to cause
+      the ship to sink via general damage (you can think of this as the chance of
+      catastrophic explosions, such as magazine detonations, having already been
+      exhausted, so further shell holes above the waterline no longer increase the
+      likelihood of sinking).\r\nThat said, specific damage effects resulting from
+      normal hits can still sink the ship.\r\n\r\n## How to Enable Movement AI\r\n\r\nSelect
+      a group in the OOB Editor, turn off \"Inherited\" in the automatic movement
+      field, and set it to \"Automatic.\" The group will then change its course according
+      to certain principles. This setting is usually applied to a top-level group,
+      such as \"Japan Fleet\" or \"China Fleet,\" but it can also be set at a subordinate
+      level for partial automation.\r\n\r\n## Editing is Not Intuitive\r\n\r\nI haven\u2019t
+      written related material since major rework is expected. If you really want
+      to edit something and find it frustrating, contact me (via GitHub issue or
+      Discord server) to let me know someone is really interested, I would write
+      a temp document to explain how to do it in the current stage.\r\n\r\n## Why
+      are so many standard UI elements named \"Editor\"? I don't want to \"edit\"
+      anything\u2014I just want to play.\r\n\r\nI aim to recreate a sandbox experience
+      similar to Vassal and Tabletop Simulator (TTS), where editing allows players
+      to introduce custom rules and house rules without coding. On the ohter hand,
+      in games like Command: Modern Operations (CMO), players often use edit mode
+      to streamline experimentation\u2014a feature I want to incorporate into game.\r\n\r\n##
+      Why is so much image loading done at runtime?\r\n\r\nI want to emulate Tabletop
+      Simulator's approach of loading images dynamically during gameplay.\r\n\r\n##
+      Why Is the Game So Large? Shouldn't It Be a Mini Game liek RTW Given the \"Minimalist\"
+      Graphics?\r\n\r\nSimilar to games like CMO, the majority of the installation
+      size comes from GIS elevation data. While titles such as Rule the Wave avoid
+      this overhead by using vector data, this project uses raster data \u2014 even
+      though ocean depth data has been clamped.\r\n\r\nThe reason for retaining elevation
+      data is to support a planned tactical land combat generator, which will utilize
+      terrain elevation in future updates. Also elevation data will render location
+      more recognizable and pretty.\r\n\r\n## Is the Strategic Game Playable Now?\r\n\r\nNo,
+      only the naval tactical game is currently playable (to some extent). The exposed
+      strategic game mode only gives a *feel* for what the full strategic experience
+      will eventually be like. \r\n\r\nThis area may also be of interest to open-source
+      contributors, as the strategic game is now the main focus of development.\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 11053239853813760
@@ -2459,7 +2455,35 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 47647284608536576
-    m_Localized: Set Attack Target (A)
+    m_Localized: Set Manual Attack tgt (A)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47697023236476928
+    m_Localized: Play (Space)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47837495099559936
+    m_Localized: Enable Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47837845449773056
+    m_Localized: Audio Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47927107532787712
+    m_Localized: Reset Image Cache
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47928062181543936
+    m_Localized: Move (Edit, M)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47928146843570176
+    m_Localized: Insert (Ins)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47928212660588544
+    m_Localized: Delete (Del)
     m_Metadata:
       m_Items: []
   references:

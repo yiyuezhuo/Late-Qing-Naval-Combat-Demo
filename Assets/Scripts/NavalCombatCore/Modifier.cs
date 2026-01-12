@@ -263,16 +263,19 @@ namespace NavalCombatCore
                     var newDamageEffectCausedByFire = RuleChart.ResolveShipboardFireDamageEffect(severity);
                     if (newDamageEffectCausedByFire)
                     {
+                        var damageSchema = shipLog?.shipClass?.GetDamageSchema() ?? DamageSchema.Warship;
+
                         // Add DE caused by shipbpard fire
                         DamageEffectChart.AddNewDamageEffect(new DamageEffectContext
                         {
                             subject = shipLog,
+                            damageSchema = damageSchema,
                             cause = DamageEffectCause.Fires,
                             source = this,
                         });
                     }
 
-                    var d100Offset = shipLog.GetSubStates<IDamageControlModifier>().Select(m => m.GetFightingFireDieRollOffset()).Sum();
+                    var d100Offset = shipLog.GetSubStates<IDamageControlModifier>().Sum(m => m.GetFightingFireDieRollOffset());
 
                     severity = RuleChart.ResolveFightingShipBoardFiresDelta(severity, damageControlApplied, d100Offset);
                     if (severity == 0)

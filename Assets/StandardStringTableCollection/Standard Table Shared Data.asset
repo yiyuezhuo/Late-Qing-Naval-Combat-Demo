@@ -2373,7 +2373,35 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 47647284608536576
-    m_Key: Set Attack Target (A)
+    m_Key: Set Manual Attack Target (A)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47697023236476928
+    m_Key: Play (Space)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47837495099559936
+    m_Key: Enable Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47837845449773056
+    m_Key: Audio Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47927107532787712
+    m_Key: Reset Image Cache
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47928062181543936
+    m_Key: Move (Edit, M)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47928146843570176
+    m_Key: Insert (Ins)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47928212660588544
+    m_Key: Delete (Del)
     m_Metadata:
       m_Items: []
   m_Metadata:

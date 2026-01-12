@@ -240,6 +240,28 @@ public class TopTabs : SingletonDocument<TopTabs>
         {
             UnityWebRequestImageReader.Instance.Reset();
         };
+
+        root.Q<Button>("EditMoveButton").clicked += () =>
+        {
+            if(GameManager.Instance.selectedShipLog != null)
+            {
+                GameManager.Instance.state = GameManager.State.MovingUnit;
+            }
+        };
+
+        root.Q<Button>("InsertButton").clicked += () =>
+        {
+            GameManager.Instance.state = GameManager.State.SelectingInsertUnitPositionComplex;
+        };
+
+        root.Q<Button>("DeleteButton").clicked += () =>
+        {
+            if(GameManager.Instance.selectedShipLog != null)
+            {
+                GameManager.Instance.state = GameManager.State.Idle;
+                GameManager.Instance.selectedShipLog.mapState = MapState.NotDeployed;
+            }
+        };
     }
 
     void OnSaveButtonClicked(bool editSave=false)

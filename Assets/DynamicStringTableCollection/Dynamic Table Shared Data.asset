@@ -2690,7 +2690,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 30559793871228928
-    m_Key: 'DE 907: Severe fire in flammables storeage area'
+    m_Key: 'DE 907: Severe fire in flammables storage area'
     m_Metadata:
       m_Items: []
   - m_Id: 30560439773073408
@@ -2773,6 +2773,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 30941436091994112
     m_Key: HitLocationMerchantVessel.CargoArea4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33081585458384896
+    m_Key: MountArcsPattern.Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33081618031349760
+    m_Key: MountArcsPattern.Narrow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33081650944053248
+    m_Key: MountArcsPattern.Casemate
     m_Metadata:
       m_Items: []
   m_Metadata:

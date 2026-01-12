@@ -37,7 +37,8 @@ public class GamePreference
 
     public float pulseLengthSeconds = 1; // 2; // 1;
     public float simulationRateRatio = 120; // 1s real time => 120s simulation time (similar to RTW's default advance speed)
-    public float simulationRateRatioAuto = 30; // 1s real time => 10s simulation time (x10 is similar to JTS's max speed, but feels too slow though)
+    // public float simulationRateRatioAuto = 30; // 1s real time => 10s simulation time (x10 is similar to JTS's max speed, but feels too slow though)
+    public float simulationRateRatioAuto = 10; // 1s real time => 10s simulation time (x10 is similar to JTS's max speed, but feels too slow though)
 
     // public LanguageType shortLabelLanguageType = LanguageType.English;
     // public LanguageType longLabelLanguageType = LanguageType.All;
@@ -170,6 +171,37 @@ public class GamePreference
     {
         get => GameManager.showSunkShips;
         set => GameManager.showSunkShips = value;
+    }
+
+    bool _enableAudio = true;
+    float _audioVolume = 1;
+
+    [CreateProperty]
+    public bool enableAudio
+    {
+        get => _enableAudio;
+        set
+        {
+            if (_enableAudio != value)
+            {
+                _enableAudio = value;
+                AudioListener.pause = !_enableAudio;
+            }
+        }
+    }
+
+    [CreateProperty]
+    public float audioVolume
+    {
+        get => _audioVolume;
+        set
+        {
+            if (_audioVolume != value)
+            {
+                _audioVolume = value;
+                AudioListener.volume = _audioVolume;
+            }
+        }
     }
 
     // Helpers

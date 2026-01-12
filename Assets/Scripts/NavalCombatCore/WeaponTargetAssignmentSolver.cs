@@ -32,11 +32,11 @@ namespace NavalCombatCore
 
     public class WeaponTargetAssignmentSolver // WTA Problem Solver
     {
-        // The primary goal is to reduce hositile potential firepower effectiveness. Thus:
+        // The primary goal is to reduce hostile potential firepower effectiveness. Thus:
         // 1. Fire Suppression: Deliver minimal firepower to enemy to create "under-fire" debuff to decrease their current fire projection.
-        // 2. Mission Kill: Prior to attack low-survibility platform with high firepower.
-        // 3. Prevent Concenertation: 
-        // 4. Firepower stickiness: Firing plaform tend to fire at the same target to prevent goal change debuf and visual appearance.
+        // 2. Mission Kill: Prior to attack low-survivability platform with high firepower.
+        // 3. Prevent Over-concentration: it is possible that some available batteries are not used.
+        // 4. Firepower stickiness: Firing platforms tend to remain engaged with the same target to avoid target-switching debuffs and to preserve visual coherence.
 
         // Though global optimal solution seems too "rational" for a era that gunnery officier make decision independently, the algorithm self is greedy and cannot be very closer to the global optimal solution.
 

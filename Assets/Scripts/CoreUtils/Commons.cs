@@ -5,9 +5,9 @@ namespace CoreUtils
         General,
         China, // Qing
         Japan,
+        Russia,
         Britain,
         France,
-        Russia,
         UnitedState,
         Spain,
         Germany,

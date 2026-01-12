@@ -130,6 +130,18 @@
                                 <ui:DataBinding property="value" data-source-path="showSunkShips" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:Toggle>
+                        <ui:Toggle label="Enable Audio">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="enableAudio" binding-mode="TwoWay"/>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(47837495099559936)"/>
+                            </Bindings>
+                        </ui:Toggle>
+                        <ui:Slider label="Audio Volume" high-value="1" fill="true" show-input-field="true">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="audioVolume" binding-mode="TwoWay"/>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(47837845449773056)"/>
+                            </Bindings>
+                        </ui:Slider>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <Bindings>

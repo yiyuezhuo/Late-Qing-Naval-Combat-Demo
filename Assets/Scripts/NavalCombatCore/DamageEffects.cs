@@ -4216,6 +4216,8 @@ namespace NavalCombatCore
 
                     var DE = new SinkingState()
                     {
+                        lifeCycle = StateLifeCycle.DieRollPassed,
+                        dieRollThreshold = 25,
                         cause=Localize(
                             "DE 616: Severe structural damage for ships"
                         )
@@ -4621,7 +4623,7 @@ namespace NavalCombatCore
                         lifeCycle=StateLifeCycle.DieRollPassed,
                         dieRollThreshold=30,
                         cause=Localize(
-                            "DE 902: Damage to main propulsion system"
+                            "DE 902: Damage to main propulsion systems"
                         ),
                     };
                     DE.BeginAt(ctx.subject);
@@ -4702,7 +4704,7 @@ namespace NavalCombatCore
                 }
             },
 
-            // DE 907: Severe fire in flammables storeage area. Shipboard fire severity 60.
+            // DE 907: Severe fire in flammables storage area. Shipboard fire severity 60.
             {"907",
                 ctx =>
                 {

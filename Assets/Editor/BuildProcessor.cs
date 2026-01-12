@@ -179,28 +179,6 @@ public class BuildProcessor : IPreprocessBuildWithReport
                     }
                 }
             }
-
-            // var field = typeof(VisualTreeAsset).GetField("m_VisualElementAssets", BindingFlags.NonPublic | BindingFlags.Instance);
-            // if (field != null)
-            // {
-            //     var m_VisualElementAssets = field.GetValue(vta); // List<VisualElementAsset>
-            //     Debug.Log(m_VisualElementAssets);
-
-            //     var count = m_VisualElementAssets.GetType().GetProperty("Count").GetValue(m_VisualElementAssets);
-            //     Debug.Log(count);
-
-            //     foreach (var vea in (IList)m_VisualElementAssets)
-            //     {
-            //         // Debug.Log(vea);
-            //         // m_SerializedData
-            //         var _m_SerializedData = vea.GetType().GetField("m_SerializedData");
-            //         if (_m_SerializedData != null)
-            //         {
-            //             var serializedData = _m_SerializedData.GetValue(vea);
-            //             Debug.Log($"serializedData={serializedData}");
-            //         }
-            //     }
-            // }
         }
     }
 

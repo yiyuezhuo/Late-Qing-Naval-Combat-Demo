@@ -305,28 +305,28 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         //     shipClass.armorRating.TryInferArmorType();
         // }
 
-        foreach(var shipClass in NavalGameState.Instance.shipClasses)
-        {
-            foreach(var btyRec in shipClass.batteryRecords)
-            {
-                foreach(var mntRec in btyRec.mountLocationRecords)
-                {
-                    if(mntRec.defaultNarrow)
-                    {
-                        mntRec.mountArcsPattern = MountArcsPattern.Casemate;
-                        mntRec.SyncDefaultMountArcs();
-                    }
-                }
-            }
+        // foreach(var shipClass in NavalGameState.Instance.shipClasses)
+        // {
+        //     foreach(var btyRec in shipClass.batteryRecords)
+        //     {
+        //         foreach(var mntRec in btyRec.mountLocationRecords)
+        //         {
+        //             if(mntRec.defaultNarrow)
+        //             {
+        //                 mntRec.mountArcsPattern = MountArcsPattern.Casemate;
+        //                 mntRec.SyncDefaultMountArcs();
+        //             }
+        //         }
+        //     }
 
-            foreach(var mntLoc in shipClass.torpedoSector.mountLocationRecords)
-            {
-                if(mntLoc.defaultNarrow)
-                {
-                    mntLoc.mountArcsPattern = MountArcsPattern.Narrow;
-                }
-            }
-        }
+        //     foreach(var mntLoc in shipClass.torpedoSector.mountLocationRecords)
+        //     {
+        //         if(mntLoc.defaultNarrow)
+        //         {
+        //             mntLoc.mountArcsPattern = MountArcsPattern.Narrow;
+        //         }
+        //     }
+        // }
     }
 
     public ViewState CaptureViewState()
@@ -730,7 +730,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             if (state == State.Idle) // unit left click chosen
             {
                 // handle events
-                if (Input.GetKeyDown(KeyCode.Insert) && isPressingAlt) // Insert(Deploy) Unit
+                if (Input.GetKeyDown(KeyCode.Insert) && isPressingAlt) // Insert(Deploy) Unit (traditional) TODO: Remove it?
                 {
                     state = State.SelectingInsertUnitPosition;
                 }

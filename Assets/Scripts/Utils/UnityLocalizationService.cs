@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Localization;
 
 using CoreUtils;
+using YYZ;
 
 public class UnityLocalizationService: ILocalizeService
 {

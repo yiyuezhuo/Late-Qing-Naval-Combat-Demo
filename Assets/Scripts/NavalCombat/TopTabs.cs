@@ -8,9 +8,10 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 using CoreUtils;
+using YYZ;
 using NavalCombatCore;
 using NavalCombat;
-
+using System.Net;
 
 public class TopTabs : SingletonDocument<TopTabs>
 {
@@ -261,6 +262,23 @@ public class TopTabs : SingletonDocument<TopTabs>
                 GameManager.Instance.state = GameManager.State.Idle;
                 GameManager.Instance.selectedShipLog.mapState = MapState.NotDeployed;
             }
+        };
+
+        // StartAsHostButton, ConnectButton, DisconnectButton, NetworkingDetailButton
+        root.Q<Button>("StartAsHostButton").clicked += () =>
+        {
+            var gmr = GameManager.Instance;
+            var networkingHostManager = new NetworkingHostManager(){myName=gmr.networkingName};
+            gmr.networkingManager = networkingHostManager;
+            networkingHostManager.StartHostServer(gmr.connectToIp, gmr.networkingPort);
+        };
+
+        root.Q<Button>("ConnectButton").clicked += () =>
+        {
+            var gmr = GameManager.Instance;
+            var networkingClientManager = new NetworkingClientManager(){myName=gmr.networkingName};
+            gmr.networkingManager = networkingClientManager;
+            networkingClientManager.ConnectTo($"{gmr.connectToIp}:{gmr.networkingPort}");
         };
     }
 

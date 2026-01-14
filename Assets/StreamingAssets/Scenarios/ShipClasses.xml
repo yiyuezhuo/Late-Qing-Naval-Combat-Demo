@@ -400,7 +400,7 @@
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>2c7904ed-268a-4a86-b525-ffb4fae73f62</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -412,7 +412,7 @@
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>af191256-dfdb-402f-b4b0-47de16130c36</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -424,7 +424,7 @@
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>dd65b8d4-2b30-4a4d-ac81-f47e1b563832</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -921,7 +921,7 @@
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>a09df97a-fe71-4318-b1e7-abf4d38f7697</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -933,7 +933,7 @@
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>1b982269-a067-4ecb-aeef-96760e66cbf7</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -1359,7 +1359,7 @@
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>0400c6df-241c-4989-961d-7c5f0251acf5</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -1371,7 +1371,7 @@
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>ede615d1-7d9f-414a-bc7c-940e9e6f7d56</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -1383,7 +1383,7 @@
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>830e0ef0-ef5f-4cab-bb25-98be7285963b</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -1395,7 +1395,7 @@
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>ba23bf0e-da74-40ac-ac60-9ea766d9e5ae</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -1791,7 +1791,7 @@ Of course, these two classifications make no practical difference aside from the
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>e1a61004-1a99-46e5-aa31-a8f17a020fd0</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -1803,7 +1803,7 @@ Of course, these two classifications make no practical difference aside from the
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>70cc5e44-bf76-403f-8bc5-f66740f17d3d</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -1815,7 +1815,7 @@ Of course, these two classifications make no practical difference aside from the
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>22c7264d-85f1-4cb2-a76e-3f4bfaa5a3b1</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -1827,7 +1827,7 @@ Of course, these two classifications make no practical difference aside from the
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>603e206b-4dea-48d2-8bac-9111f47d7ef6</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -2129,7 +2129,7 @@ Chi Yuan or Jiyuan</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>46fcbc3f-34e4-4174-b9a3-6a948e0e46e5</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -2141,7 +2141,7 @@ Chi Yuan or Jiyuan</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>adef9cf7-b91e-471a-ba1d-a3d8ae4e8330</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -2153,7 +2153,7 @@ Chi Yuan or Jiyuan</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>903ea210-006c-44f3-b00b-40d47f369bd8</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -2578,7 +2578,7 @@ Chi Yuan or Jiyuan</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>ca17b93c-fc27-4b3d-a660-0fe18f31ac9f</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -2590,7 +2590,7 @@ Chi Yuan or Jiyuan</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>3fb3d553-c260-4bad-818a-c0a906c1bcdf</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -2602,7 +2602,7 @@ Chi Yuan or Jiyuan</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>76638d85-42dd-4222-b70e-5a16ea41b0f4</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -3448,7 +3448,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>c9c5a3a1-ed5f-441d-8856-5fc1fff41b13</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -3460,7 +3460,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>8daef61b-7e99-4c11-b041-8200d293a5b4</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -3472,7 +3472,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>6163b680-79bf-456f-9383-9808d0b6c73c</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -3484,7 +3484,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>53216fa8-3ee4-4514-ba14-050492db5c84</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -3890,7 +3890,7 @@ For some reason, SK5 classify it to CA</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>af69a535-7e9a-4f95-9b68-45c3493fc93d</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -3902,7 +3902,7 @@ For some reason, SK5 classify it to CA</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>7b4347cf-79f6-456a-9147-976e77e52c1d</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -3914,7 +3914,7 @@ For some reason, SK5 classify it to CA</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>f389392f-a666-4a67-9b25-c267e5d5458b</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -3926,7 +3926,7 @@ For some reason, SK5 classify it to CA</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>c121a569-aa38-47cd-8412-9ea2e52621da</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -4310,7 +4310,7 @@ King Yuan or Jingyuan</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>a3a366f7-6051-4e78-91ea-1f823e592fbf</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -4322,7 +4322,7 @@ King Yuan or Jingyuan</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>1e0156e1-3fd7-4c7b-a801-3c1c38a5c798</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -4334,7 +4334,7 @@ King Yuan or Jingyuan</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>da76fbb6-3377-47bc-b430-dc942e01120e</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -4346,7 +4346,7 @@ King Yuan or Jingyuan</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>be630bb6-3fd9-4dfd-a0bc-dfa1fa9bebf0</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -4839,7 +4839,7 @@ Ping Yuen or Pingyuan
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>bbd82db3-8ea0-48f1-bda5-114f91b074b8</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -5296,7 +5296,7 @@ Fu Lung or Fulong
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>666ad036-fd1d-41a3-93b3-453e11997bff</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -5308,7 +5308,7 @@ Fu Lung or Fulong
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>15f1fc65-c1f8-4aae-829f-6ff20c613559</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -5766,7 +5766,7 @@ Fu Lung or Fulong
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>d4d29201-294f-4526-9652-4ccde0ff53bd</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -5778,7 +5778,7 @@ Fu Lung or Fulong
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>ec879f5c-acfa-40d3-b224-86a5daf655ea</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -5790,7 +5790,7 @@ Fu Lung or Fulong
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>0dc5034a-0280-4916-ae83-78665f693401</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -5802,7 +5802,7 @@ Fu Lung or Fulong
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>b6399c5f-e9a9-4e75-8f76-732a49d2ab26</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -6265,7 +6265,7 @@ Itsukushima (厳島, 1891)
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>81a2f31c-c106-4e97-8423-6bc62658401a</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -6277,7 +6277,7 @@ Itsukushima (厳島, 1891)
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>aeead6ab-fa5f-4b97-b525-2615030f47c8</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -6722,7 +6722,7 @@ Hiei (比叡, 1878)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>9d4cf589-b6b6-4a13-a6ea-1c124e93dca1</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -6734,7 +6734,7 @@ Hiei (比叡, 1878)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>9df29664-78dd-4f57-b157-89398d982273</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -6746,7 +6746,7 @@ Hiei (比叡, 1878)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>bcb8b4ea-3f1b-4bb5-a5d4-ab8b69dfd8a3</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -6758,7 +6758,7 @@ Hiei (比叡, 1878)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>1164f537-c3f9-4d97-ab96-508f9ddfe56b</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -7148,7 +7148,7 @@ For reason, it's classified as CA in SK5.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>3fc3895a-6fef-4195-9448-c3226ee7f932</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -7160,7 +7160,7 @@ For reason, it's classified as CA in SK5.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>81fdfc23-0b30-419d-b5c9-d69443a5a3a6</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -7172,7 +7172,7 @@ For reason, it's classified as CA in SK5.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>87ec94bc-6bbf-410e-8508-48454a5ad00e</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -8205,7 +8205,7 @@ For reason, it's classified as CA in SK5.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>c510a55d-3842-4232-8abd-4aec004ffb00</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -8217,7 +8217,7 @@ For reason, it's classified as CA in SK5.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>47ee0dab-632d-4cf7-acf5-7e95ce791d49</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -9025,7 +9025,7 @@ Cancel Armor Type Factor</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>7bfc9260-cb31-487d-b17d-53f8b6f3bad2</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -9037,7 +9037,7 @@ Cancel Armor Type Factor</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>94d212bb-7c71-4bef-adc6-bca1497aaf78</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -9170,7 +9170,7 @@ Cancel Armor Type Factor</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>280302ba-a04b-4341-ba88-5f9d8e138788</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -9310,7 +9310,7 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>7ced5cb3-4e15-4ce9-84ed-43817ef29a75</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -9454,7 +9454,7 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>1</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>95a7af5a-430c-41ef-b05a-a33b6c4b6088</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -9595,7 +9595,7 @@ TB 21, TB 24</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>57e1a2c4-4055-4645-a628-3945a50fcb99</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -9739,7 +9739,7 @@ TB 22, 23, 25, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 48, 49, 60, 61
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>b76a9271-9bfc-4079-88fe-dad61eae14ce</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -9877,7 +9877,7 @@ Complement is inferred</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>99348385-66ce-485d-ad49-05417bb04431</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -10011,7 +10011,7 @@ Complement is inferred</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>7344e370-45d9-4a61-a399-7bb1f5bc6729</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -10526,7 +10526,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>309c44fa-8c7c-4c9e-8538-f3e4fcda4bab</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -10538,7 +10538,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>c8ddb5df-2ae7-4073-8560-85c62e7e54e8</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -10550,7 +10550,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>1ca2d185-d1aa-4c54-ad1b-8e4583065059</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -11222,7 +11222,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>0c522881-e6ad-42e4-a6e5-1f0496e93b2b</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -11234,7 +11234,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>4ae8afc4-52b4-480f-9b5c-c6e9e4d754fa</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -11246,7 +11246,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>a124d4c5-a5c9-4c4e-b8a5-171735ce00c1</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -11917,7 +11917,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>f8f42235-699b-4264-8eb1-074022d2a145</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -11929,7 +11929,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>c8b3a0bc-0cc5-404c-9f1b-856cf9f56bbc</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -11941,7 +11941,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>9c538033-a50f-48a3-8dc5-950cd101f116</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -12557,7 +12557,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>813a0069-d6b1-4261-a418-7b86c59cad2f</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -12569,7 +12569,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>e7917f4e-e8cd-4583-9a36-7789d6eec517</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -13298,7 +13298,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>b432268d-bbbb-46c4-8bf9-22f9b13b2932</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -13310,7 +13310,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>5d8ac025-6921-4731-820c-39a42a0a8356</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -13322,7 +13322,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>b2d67028-84b7-4603-ac68-ac0a735d8f3e</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -13334,7 +13334,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>8e0c7753-038e-42c4-a8b4-33cb121cdf33</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -13836,7 +13836,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>8716b0ce-1ff1-4368-b21c-a07466b600a2</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -13848,7 +13848,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>74865e71-5949-4b05-9599-27ca6e62735a</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -13860,7 +13860,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>8857e082-ff32-4b0a-a531-be530fc63848</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -14414,7 +14414,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>7781468e-9339-4a33-bc24-256d2f1fc7fe</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -14426,7 +14426,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>7f17115d-d29d-4ec2-abbd-4157323694fd</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -14438,7 +14438,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>743d736b-9dcf-4f64-b0c6-18f9c51c6a02</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -14945,7 +14945,7 @@ Azuma or Adzuma (SK5 name)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>10269d05-6597-4228-b84b-eb613880b335</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -14957,7 +14957,7 @@ Azuma or Adzuma (SK5 name)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>b64f0dd6-502e-4e77-90fa-a30f5f2f5403</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -14969,7 +14969,7 @@ Azuma or Adzuma (SK5 name)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>5b91a344-1237-47f6-9ba9-1386c8bae8dc</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -15310,7 +15310,7 @@ Azuma or Adzuma (SK5 name)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>be78eacc-2791-4233-918f-49b0ca096d10</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -15322,7 +15322,7 @@ Azuma or Adzuma (SK5 name)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>3ce4ce6d-ac34-45bb-a0d5-7e59bc19e891</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -15334,7 +15334,7 @@ Azuma or Adzuma (SK5 name)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>53eb84cf-eb21-4c3a-b6b7-725736fef646</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -15346,7 +15346,7 @@ Azuma or Adzuma (SK5 name)</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>9dad6d87-4b0d-40ff-9658-af8fca0ed3d1</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -16046,7 +16046,7 @@ Sometime called Niitaka class.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>f34d2c96-c356-4cdd-ac26-b0791b5f34d1</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -16058,7 +16058,7 @@ Sometime called Niitaka class.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>a43ff992-2ffb-4627-80f5-5fa2ce52c21b</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -16246,7 +16246,7 @@ Sometime called Niitaka class.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>53f98ca9-79cb-4b47-9895-cc627223d442</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -16410,7 +16410,7 @@ Sometime called Niitaka class.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>42484d0d-d56c-4b8b-bb0b-ff57f6a8afe1</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -16570,7 +16570,7 @@ Sometime called Niitaka class.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>0c2bfcda-8945-435e-b92b-b39e8efd33c4</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -17122,7 +17122,7 @@ Sometime called Niitaka class.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>3a151ab3-118f-4e0c-9807-b3e1d09d5d66</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -17134,7 +17134,7 @@ Sometime called Niitaka class.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>a96d5752-00da-44ad-8338-21a8c9401d70</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -17146,7 +17146,7 @@ Sometime called Niitaka class.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>944ba9f5-e72f-463c-a016-d48541417ef1</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -17586,7 +17586,7 @@ Sometime called Niitaka class.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>e25cbf6f-7a70-4e99-a1e0-855ab67e5a3b</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -17598,7 +17598,7 @@ Sometime called Niitaka class.
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>ca5184b2-16b8-4fd4-b162-c5b05f0ac98b</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -17997,7 +17997,7 @@ Correction: SK5 length 37 -&gt; 307</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>5c96246e-ff15-43fd-98a8-30b071c498c9</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -18009,7 +18009,7 @@ Correction: SK5 length 37 -&gt; 307</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>7a105295-06ba-4c63-8b3c-512a3ee53a3d</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -18021,7 +18021,7 @@ Correction: SK5 length 37 -&gt; 307</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>10aa62a4-105d-451d-b4ad-330be1c0b0f0</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -18033,7 +18033,7 @@ Correction: SK5 length 37 -&gt; 307</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>36be5c19-51c6-4abc-b638-92f65c4b224d</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -18644,7 +18644,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>37e2181f-1729-4fc6-b37b-c69f34414b50</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -19292,7 +19292,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>ccd24915-9b8e-4805-810f-91a0048b4675</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -19304,7 +19304,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>caac5c5a-72a4-4f94-878f-0e207c7a171c</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -20539,7 +20539,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>c238fc76-1d61-46ca-a939-3c2b9d9c0551</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -20551,7 +20551,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>58f82f01-843e-400e-8689-559ff6578635</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -20563,7 +20563,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>ebcf7512-ef23-4cc7-98b4-8b00a8c62b7a</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -20575,7 +20575,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>3ae80c6d-04f9-4fcb-8e3f-b53be68f8d0d</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -21117,7 +21117,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>c8d9f2d6-df56-4b9c-9be7-45aa65b87cd5</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -21129,7 +21129,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>7706cb51-6866-4cc8-ae09-0380c2759dd4</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -21141,7 +21141,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>0d799ac9-c770-42ae-9826-d6436ee0bd4f</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -21826,7 +21826,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>ca566aec-b74e-4c49-a959-79cd15f51b88</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -21838,7 +21838,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>36646b5f-9b36-416b-afa6-074807d5170f</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -21850,7 +21850,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>e89b4955-c58b-479c-954d-d0381f683cd9</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -21862,7 +21862,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>ce363842-2816-48ea-9193-c034ee7c9dbf</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -22423,7 +22423,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>9679dffc-1d2c-4f09-8a0b-4d3f3e09b69d</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -22435,7 +22435,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>81538edc-42b5-44e8-aaf2-7f59cc88681b</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -22860,7 +22860,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>91103cbd-a1ce-4f10-9b22-c3563f21ab26</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -22872,7 +22872,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>c90eb8eb-48e2-4d56-ba03-2288a91d10f2</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -22884,7 +22884,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>a2ec939d-c8e8-4f45-8110-a79b2336d05d</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -22896,7 +22896,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>5c5334b9-3a89-428d-8485-5b8afd38d79c</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -23301,7 +23301,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>c6ab41b3-2fd9-497a-9dd3-fc4827fa8406</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -23313,7 +23313,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>f99a438f-22cb-46cf-a60f-837e90ce46b0</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -23325,7 +23325,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>eb263721-75f9-467a-a3d4-2e9add71d50e</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -23696,7 +23696,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>df0b4784-7057-4291-b71a-483c31a35cd7</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -23708,7 +23708,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>d5b13002-0410-4065-8a15-4218f3069068</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -23720,7 +23720,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>34fe271a-3fcf-49a5-9ce8-5fae5e6a3dcf</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
@@ -24088,7 +24088,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>6855b3a7-4545-47e9-af9f-00b136f80972</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -24100,7 +24100,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>8b05011f-104d-41d0-b0ba-4b804c27a88f</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
@@ -24112,7 +24112,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
      </mountArcs>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
-     <mountArcsPattern>Normal</mountArcsPattern>
+     <mountArcsPattern>Narrow</mountArcsPattern>
      <objectId>1700a31c-9ce7-4adc-b430-66eafde84a89</objectId>
     </MountLocationRecord>
    </mountLocationRecords>

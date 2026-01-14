@@ -7,6 +7,7 @@ using NavalCombatCore;
 using CoreUtils;
 using System;
 using System.Collections;
+using YYZ;
 
 public class MainMenu : SingletonDocument<MainMenu>
 {

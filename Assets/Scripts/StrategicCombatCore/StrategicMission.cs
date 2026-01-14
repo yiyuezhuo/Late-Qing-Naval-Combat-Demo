@@ -5,6 +5,7 @@ using System.Linq;
 using System;
 using YYZ.PathFinding;
 using System.Xml.Serialization;
+using YYZ;
 
 
 namespace StrategicCombatCore

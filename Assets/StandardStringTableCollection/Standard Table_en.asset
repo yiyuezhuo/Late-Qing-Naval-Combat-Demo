@@ -2486,6 +2486,30 @@ MonoBehaviour:
     m_Localized: Delete (Del)
     m_Metadata:
       m_Items: []
+  - m_Id: 48302599918227456
+    m_Localized: Disable Torpedo Reload
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48303075669741568
+    m_Localized: Arc Pattern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48392505466195968
+    m_Localized: Networking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48394340402892800
+    m_Localized: Connect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48394403967569920
+    m_Localized: Connect To IP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48394535903596544
+    m_Localized: Port
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

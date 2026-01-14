@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System;
 
 
-namespace CoreUtils
+namespace YYZ
 {
     public interface ILoggerService
     {
@@ -73,5 +73,12 @@ namespace CoreUtils
             }
             services[type] = service;
         }
+    }
+
+    public static class YDebug
+    {
+        public static void Log(string log) => ServiceLocator.Get<ILoggerService>().Log(log);
+        public static void LogWarning(string log) => ServiceLocator.Get<ILoggerService>().LogWarning(log);
+        public static void LogError(string log) => ServiceLocator.Get<ILoggerService>().LogError(log);
     }
 }

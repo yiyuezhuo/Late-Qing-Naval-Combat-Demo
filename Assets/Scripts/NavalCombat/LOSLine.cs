@@ -11,6 +11,7 @@ using System;
 using NavalCombatCore;
 using CoreUtils;
 using System.Linq;
+using YYZ;
 
 public class LOSLine : SingletonMonoBehaviour<LOSLine>, IMaskCheckService
 {

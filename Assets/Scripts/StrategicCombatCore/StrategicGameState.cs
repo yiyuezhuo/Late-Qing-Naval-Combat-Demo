@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
 using YYZ.PathFinding;
+using YYZ;
 
 namespace StrategicCombatCore
 {

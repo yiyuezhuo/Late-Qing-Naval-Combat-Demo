@@ -7,6 +7,7 @@ using System.Xml;
 using CoreUtils;
 using NavalCombatCore;
 using NavalCombat;
+using YYZ;
 
 public class FullState
 {

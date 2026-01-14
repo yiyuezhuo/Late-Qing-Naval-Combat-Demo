@@ -19,6 +19,7 @@ using CoreUtils;
 using StrategicCombatCore;
 using NavalCombatCore;
 using YYZ.PathFinding;
+using YYZ;
 
 
 public enum StrategicMapEditMode

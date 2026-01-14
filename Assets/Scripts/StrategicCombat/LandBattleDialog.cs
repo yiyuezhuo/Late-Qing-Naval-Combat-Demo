@@ -5,6 +5,7 @@ using Unity.Properties;
 using UnityEngine.UIElements;
 using UnityEngine;
 using System;
+using YYZ;
 
 public class LandBattleDialogLazy : IDataSourceViewHashProvider
 {

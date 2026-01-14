@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 using StrategicCombatCore;
 using System;
 using System.Linq;
+using YYZ;
 
 namespace StrategicCombatCore
 {

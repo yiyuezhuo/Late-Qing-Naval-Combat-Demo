@@ -5,7 +5,8 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Xml;
 
-namespace CoreUtils
+
+namespace YYZ
 {
     public static class XmlUtils
     {

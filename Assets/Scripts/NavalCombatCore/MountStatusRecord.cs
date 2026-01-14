@@ -6,7 +6,7 @@ using GeographicLib;
 using System.Xml.Serialization;
 
 using CoreUtils;
-
+using YYZ;
 
 namespace NavalCombatCore
 {
@@ -334,7 +334,10 @@ namespace NavalCombatCore
 
         public static float torpedoFiringAngleErrorDeg = 0f; // solver currently has internal error so don't introduce more error
         // public static float torpedoFiringAngleErrorDeg = 0.1f;
-        // public static float torpedoFiringRangeCoef = 0.95f; 
+        // public static float torpedoFiringRangeCoef = 0.95f;
+
+        public static bool disableTorpedoReload = false; // TODO: Add manual torpedo firing like JTS 
+        // Explicitly assign aw, submerged, deck torpedo. Of course this can be done by reloading limit as well.
 
         public void Step(float deltaSeconds)
         {
@@ -344,7 +347,18 @@ namespace NavalCombatCore
 
             var requested = barrels - currentLoad;
             var ammunitionCap = platform.torpedoSectorStatus.ammunition;
-            var reloadLimitCap = recordInfo.record.reloadLimit == 0 ? int.MaxValue : recordInfo.record.reloadLimit - reloadedLoad;
+
+            // var reloadLimitCap = recordInfo.record.reloadLimit == 0 ? int.MaxValue : recordInfo.record.reloadLimit - reloadedLoad;
+            int reloadLimitCap;
+            if(disableTorpedoReload)
+            {
+                reloadLimitCap = 0;
+            }
+            else
+            {
+                reloadLimitCap = recordInfo.record.reloadLimit == 0 ? int.MaxValue : recordInfo.record.reloadLimit - reloadedLoad;
+            }
+
             var transferred = Math.Min(reloadLimitCap, Math.Min(requested, ammunitionCap));
 
             if (transferred > 0)

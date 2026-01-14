@@ -18,7 +18,7 @@ using NavalCombat;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
-
+using YYZ;
 
 public interface IColliderRootProvider
 {
@@ -324,6 +324,21 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         //         if(mntLoc.defaultNarrow)
         //         {
         //             mntLoc.mountArcsPattern = MountArcsPattern.Narrow;
+        //         }
+        //     }
+        // }
+
+        // foreach(var shipClass in NavalGameState.Instance.shipClasses)
+        // {
+        //     foreach(var mntLoc in shipClass.torpedoSector.mountLocationRecords)
+        //     {
+        //         if(mntLoc.mountArcs.Count == 1)
+        //         {
+        //             var arc = mntLoc.mountArcs.First();
+        //             if(arc.CoverageDeg == 30)
+        //             {
+        //                 mntLoc.mountArcsPattern = MountArcsPattern.Narrow;
+        //             }
         //         }
         //     }
         // }
@@ -647,6 +662,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public void Update()
     {
+        // Networking
+        networkingManager?.Update();
+
         UpdateSimulation();
         // viewAccTime += Time.deltaTime;
 
@@ -1373,4 +1391,50 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     [CreateProperty]
     public bool isFromStrategic => startupConfig.IsFromStrategic();
+
+    public NetworkingManager networkingManager;
+
+    [CreateProperty]
+    public bool isNetworkingHost => networkingManager is NetworkingHostManager;
+
+    [CreateProperty]
+    public bool isNetworkingClient => networkingManager is NetworkingClientManager;
+
+    [CreateProperty]
+    public bool isHostOrClient => networkingManager != null;
+
+    [CreateProperty]
+    public bool isNotHostAndClient => networkingManager == null;
+
+    public string networkingName = "Name";
+
+    public int networkingPort = 18947;
+    public string connectToIp = "127.0.0.1";
+
+    [CreateProperty]
+    public string networkingDescription
+    {
+        get
+        {
+            if(networkingManager == null)
+                return "No Networking";
+            if(networkingManager is NetworkingHostManager hostManager)
+            {
+                var namesStr = string.Join(", ", hostManager.connections.Select(c => $"{c.name} ({c.client?.Client.LocalEndPoint})"));
+                return $"Connected by {hostManager.connections.Count} clients: {namesStr}";
+            }
+            if(networkingManager is NetworkingClientManager clientManager)
+            {
+                var connections = clientManager.connections;
+                if(connections.Count != 1)
+                {
+                    return $"Connected to {clientManager.connections.Count} Host???";
+                }
+                var connection = connections[0];
+                return $"Connected to {connection.name} ({connection.client?.Client.LocalEndPoint})";
+            }
+            return "Invalid";
+        }
+    }
+
 }

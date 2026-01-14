@@ -43,14 +43,9 @@
                 <LocalizedEnumField label="Arc Pattern" type-str="NavalCombatCore.MountArcsPattern">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="mountArcsPatternProp" source-to-ui-converters="MountArcsPattern =&gt; int" ui-to-source-converters="int =&gt; MountArcsPattern" binding-mode="TwoWay"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(48303075669741568)"/>
                     </Bindings>
                 </LocalizedEnumField>
-                <ui:Toggle label="Narrow">
-                    <Bindings>
-                        <ui:DataBinding property="value" data-source-path="defaultNarrowProp" binding-mode="TwoWay"/>
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(44746725643685888)"/>
-                    </Bindings>
-                </ui:Toggle>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:MultiColumnListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" header-title="Arcs" show-foldout-header="false" data-source-path="mountArcs" name="MountArcsMultiColumnListView">

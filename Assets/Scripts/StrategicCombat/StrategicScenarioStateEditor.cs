@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.Properties;
 using StrategicCombatCore;
 using CoreUtils;
+using YYZ;
 
 public class StrategicScenarioStateEditor
 {

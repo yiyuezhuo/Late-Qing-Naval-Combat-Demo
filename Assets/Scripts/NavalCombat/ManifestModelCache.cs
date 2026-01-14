@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using System.Collections;
 using NavalCombatCore;
 using CoreUtils;
+using YYZ;
 
 public class ManifestModel
 {

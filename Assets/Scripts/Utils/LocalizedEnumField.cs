@@ -5,6 +5,7 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
 using CoreUtils;
+using YYZ;
 
 [UxmlElement]
 public partial class LocalizedEnumField : BaseField<int>

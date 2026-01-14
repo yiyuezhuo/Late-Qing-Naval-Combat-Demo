@@ -204,6 +204,7 @@ public class GamePreference
         }
     }
 
+
     // Helpers
 
     public event EventHandler<bool> isInEditModeChanged;
@@ -340,6 +341,13 @@ namespace NavalCombatCore
         {
             get => TorpedoMountStatusRecord.torpedoFiringAngleErrorDeg;
             set => TorpedoMountStatusRecord.torpedoFiringAngleErrorDeg = value;
+        }
+
+        [CreateProperty]
+        public bool disableTorpedoReload
+        {
+            get => TorpedoMountStatusRecord.disableTorpedoReload;
+            set => TorpedoMountStatusRecord.disableTorpedoReload = value;
         }
 
         // [CreateProperty]

@@ -10,6 +10,7 @@ using Unity.Properties;
 using NavalCombatCore;
 using CoreUtils;
 using System;
+using YYZ;
 
 
 public class ShipClassEditor : HideableDocument<ShipClassEditor>

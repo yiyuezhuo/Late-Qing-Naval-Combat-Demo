@@ -6,6 +6,7 @@ using Unity.Properties;
 
 // using NavalCombatCore;
 using CoreUtils;
+using YYZ;
 
 // TODO: Enforce INamed constraint for ET
 public abstract class LeftObjectPickerRightEditor<ST, ET> : HideableDocument<ST> where ET : class, IObjectIdLabeled, new() where ST : MonoBehaviour

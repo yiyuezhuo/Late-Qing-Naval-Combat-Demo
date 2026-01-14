@@ -11,6 +11,7 @@ using System;
 
 using NavalCombatCore;
 using CoreUtils;
+using YYZ;
 
 public class ShipLogView
 {

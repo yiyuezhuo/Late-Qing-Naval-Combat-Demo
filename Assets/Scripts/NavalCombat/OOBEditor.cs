@@ -7,7 +7,6 @@ using System;
 
 using CoreUtils;
 using NavalCombatCore;
-using UnityEngine.Localization.SmartFormat.PersistentVariables;
 
 
 public class OOBEditor : HideableDocument<OOBEditor>
@@ -30,6 +29,27 @@ public class OOBEditor : HideableDocument<OOBEditor>
         // get => currentSelectedGroupMember as ShipLog;
         get => EntityManager.Instance.Get<ShipLog>(currentSelectedObjectId);
     }
+
+    [CreateProperty]
+    public bool currentSelectedObjectTakeCommand
+    {
+        get => GameManager.Instance.takeCommandIdSet.Contains(currentSelectedObjectId);
+        set
+        {
+            if (value)
+            {
+                GameManager.Instance.takeCommandIdSet.Add(currentSelectedObjectId);
+            }
+            else
+            {
+                if(GameManager.Instance.takeCommandIdSet.Contains(currentSelectedObjectId))
+                    GameManager.Instance.takeCommandIdSet.Remove(currentSelectedObjectId);
+            }
+        }
+    }
+
+    [CreateProperty]
+    public bool currentSelectedAny => currentSelectedObjectId != null;
 
     public enum State
     {

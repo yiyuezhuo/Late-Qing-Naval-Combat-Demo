@@ -287,13 +287,14 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(48394340402892800)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="Submit Take Command" name="SubmitTakeCommandButton"/>
+                    <ui:Button text="Disconnect" name="DisconnectButton"/>
+                    <ui:Button text="Detail" name="NetworkingDetailButton"/>
                     <ui:Label text="Networking Description">
                         <Bindings>
                             <ui:DataBinding property="text" data-source-path="networkingDescription" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Label>
-                    <ui:Button text="Disconnect" name="DisconnectButton"/>
-                    <ui:Button text="Detail" name="NetworkingDetailButton"/>
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Settings">

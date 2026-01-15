@@ -123,12 +123,14 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         advance1MinButton.clicked += () =>
         {
-            GameManager.Instance.remainAdvanceSimulationSecondsRequestedByUserInput = 60;
+            GameManager.Instance.SetRemainAdvanceSimulationSecondsRequestedByUserInput(60);
+            // GameManager.Instance.remainAdvanceSimulationSecondsRequestedByUserInput = 60;
         };
 
         advance1PulseButton.clicked += () =>
         {
-            GameManager.Instance.remainAdvanceSimulationSecondsRequestedByUserInput = GamePreference.Instance.pulseLengthSeconds;
+            GameManager.Instance.SetRemainAdvanceSimulationSecondsRequestedByUserInput(GamePreference.Instance.pulseLengthSeconds);
+            // GameManager.Instance.remainAdvanceSimulationSecondsRequestedByUserInput = GamePreference.Instance.pulseLengthSeconds;
         };
 
         root.Q<Button>("DetachButton").clicked += () =>
@@ -278,7 +280,34 @@ public class TopTabs : SingletonDocument<TopTabs>
             var gmr = GameManager.Instance;
             var networkingClientManager = new NetworkingClientManager(){myName=gmr.networkingName};
             gmr.networkingManager = networkingClientManager;
-            networkingClientManager.ConnectTo($"{gmr.connectToIp}:{gmr.networkingPort}");
+            var client = networkingClientManager.ConnectTo($"{gmr.connectToIp}:{gmr.networkingPort}");
+        
+            // TODO: Send to a full sync request command
+            networkingClientManager.SendCommand(client, new NavalNetworkingCommands.RequestFullStateSync());
+        };
+
+        root.Q<Button>("DisconnectButton").clicked += () =>
+        {
+            var gmr = GameManager.Instance;
+            if(gmr.networkingManager != null)
+            {
+                gmr.networkingManager.CloseAllConnections();
+                gmr.networkingManager = null;
+            }
+        };
+
+        root.Q<Button>("SubmitTakeCommandButton").clicked += () =>
+        {
+            var gmr = GameManager.Instance;
+            var clientManager = gmr.networkingManager as NetworkingClientManager;
+            if(clientManager != null && clientManager.connections.Count > 0)
+            {
+                var hostConnection = clientManager.connections.First();
+                clientManager.SendCommand(hostConnection, new NavalNetworkingCommands.UpdateTakeCommand()
+                {
+                    takeCommandIds=gmr.takeCommandIdSet.ToList()
+                });
+            }
         };
     }
 
@@ -305,10 +334,8 @@ public class TopTabs : SingletonDocument<TopTabs>
         }
     }
 
-    void DoSave(bool editSave, bool detachGameState)
+    public static FullState CaptureFullState(bool detachGameState)
     {
-        // yield return StreamingAssetReference.Instance.CheckConsistence(NavalGameState.Instance);
-
         var gameState = detachGameState ? 
             DetachGameState(NavalGameState.Instance, StreamingAssetReference.Instance) : 
             XmlUtils.FromXML<NavalGameState>(XmlUtils.ToXML(NavalGameState.Instance));
@@ -325,6 +352,13 @@ public class TopTabs : SingletonDocument<TopTabs>
             eventState = EventState.Instance
         };
 
+        return fullState;
+    }
+
+    void DoSave(bool editSave, bool detachGameState)
+    {
+        var fullState = CaptureFullState(detachGameState);
+
         if (editSave)
         {
             // fullState.navalGameState.scenarioState.firstLoaded = false;
@@ -337,7 +371,7 @@ public class TopTabs : SingletonDocument<TopTabs>
         IOManager.Instance.SaveTextFile(fullState.ToXML(), name, "scen.xml");
     }
 
-    NavalGameState DetachGameState(NavalGameState _s, StreamingAssetReference sar)
+    static NavalGameState DetachGameState(NavalGameState _s, StreamingAssetReference sar)
     {
         // deep copy
         var s = XmlUtils.FromXML<NavalGameState>(XmlUtils.ToXML(_s));

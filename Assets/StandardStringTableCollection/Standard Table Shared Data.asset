@@ -2428,6 +2428,10 @@ MonoBehaviour:
     m_Key: Port (Networking)
     m_Metadata:
       m_Items: []
+  - m_Id: 48774426079694848
+    m_Key: Take Command (Multiplayer - Client)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

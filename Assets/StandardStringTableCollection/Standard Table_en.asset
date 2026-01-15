@@ -2510,6 +2510,10 @@ MonoBehaviour:
     m_Localized: Port
     m_Metadata:
       m_Items: []
+  - m_Id: 48774426079694848
+    m_Localized: Take Command (Multiplayer - Client)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

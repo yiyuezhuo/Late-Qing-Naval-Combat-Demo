@@ -12,6 +12,18 @@ namespace NavalCombatCore
         public static float NextFloat(float low, float high) => (float)rand.NextDouble() * (high - low) + low;
         public static T Sample<T>(List<T> list) => list[rand.Next(list.Count)];
         
+        public static void SetSeed(int seed)
+        {
+            rand = new Random(seed);
+        }
+
+        // public static int ResampleSeed() // Used to sync multiplayer.
+        // {
+        //     var seed = rand.Next();
+        //     SetSeed(seed);
+        //     return seed;
+        // }
+
         // LLM Generated
         public static T Sample<T>(List<T> list, List<float> weights, Random random = null)
         {

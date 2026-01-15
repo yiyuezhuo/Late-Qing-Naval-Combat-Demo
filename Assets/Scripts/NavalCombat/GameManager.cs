@@ -19,6 +19,7 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using YYZ;
+using UnityEngine.InputSystem.LowLevel;
 
 public interface IColliderRootProvider
 {
@@ -474,9 +475,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
         else // manual advance mode
         {
+            var manualAdvanceAny = false;
             while (remainAdvanceSimulationSecondsRequestedByUserInput >= pulseLengthSeconds && remainAdvanceSimulationSecondsRequestedByUpdate >= pulseLengthSeconds)
             {
-                // advanceAny = true;
+                manualAdvanceAny = true;
 
                 var lastMin = NavalGameState.Instance.scenarioState.dateTime.Minute;
 
@@ -489,6 +491,22 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     minuteChanged?.Invoke(this, EventArgs.Empty);
                     
                     minuteAdvanced = true;
+                }
+            }
+
+            if(manualAdvanceAny && remainAdvanceSimulationSecondsRequestedByUserInput < pulseLengthSeconds)
+            {
+                // Send GameState sync command to all clients in the host mode
+                if(networkingManager is NetworkingHostManager hostManager)
+                {
+                    var command = new NavalNetworkingCommands.GameStateSync()
+                    {
+                        gameState = NavalGameState.Instance // TODO: Detach?
+                    };
+                    foreach(var connection in hostManager.connections)
+                    {
+                        hostManager.SendCommand(connection, command);
+                    }
                 }
             }
         }
@@ -650,18 +668,69 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
-    void SetRemainAdvanceSimulationSecondsRequestedByUserInput(float value)
+    public void SetRemainAdvanceSimulationSecondsRequestedByUserInput(float value)
     {
-        if (currentLogOnly)
-            NavalGameState.Instance.tempSubjectLogs.Clear();
+        if(networkingManager is NetworkingHostManager hostManager && hostManager != null)
+        {
+            readyToAdvanceAsHost = true;
+            remainAdvanceSimulationSecondsRequestedByUserInputPending = value;
+        }
+        else if(networkingManager is NetworkingClientManager clientManager && clientManager != null)
+        {
+            // TODO: Extract Take Command related states and Send MergeRequest to the host.
+            var host = GetHostConnectionOrNull();
+            if(host != null)
+            {
+                clientManager.SendCommand(host, CreateMergeRequestByExtraction());
+            }
+            else
+            {
+                DialogRoot.Instance.PopupMessageDialog("Invalid Host");
+            }
+        }
+        else // single player advance
+        {
+            if (currentLogOnly)
+                NavalGameState.Instance.tempSubjectLogs.Clear();
 
-        remainAdvanceSimulationSecondsRequestedByUserInput = value;
+            remainAdvanceSimulationSecondsRequestedByUserInput = value;
+        }
     }
+
+    // bool GetValidToAdvanceByHand()
+    // {
+    //     if(networkingManager == null)
+    //         return true;
+    //     if(networkingManager is NetworkingHostManager hostManager)
+    //     {
+    //         return readyToAdvanceAsHost && connectionInfoMap.Values.All(info => info.takeCommandIds.Count == 0 || info.mergeRequest != null);
+    //     }
+    //     return false;
+    // }
 
     public static bool showSunkShips = true;
 
     public void Update()
     {
+        if(networkingManager is NetworkingHostManager hostManager && hostManager != null)
+        {
+            if(readyToAdvanceAsHost && connectionInfoMap.Values.All(info => info.takeCommandIds.Count == 0 || info.mergeRequest != null))
+            {
+                foreach(var (conn, connInfo) in connectionInfoMap)
+                {
+                    if(connInfo.mergeRequest != null)
+                    {
+                        connInfo.mergeRequest.DoMerge();
+                    }
+                }
+                // Send Advance Command
+                // var advanceCommand = new NavalNetworkingCommands.AdvanceSimulation();
+                remainAdvanceSimulationSecondsRequestedByUserInput = remainAdvanceSimulationSecondsRequestedByUserInputPending;
+                remainAdvanceSimulationSecondsRequestedByUserInputPending = 0;
+                readyToAdvanceAsHost = false;
+            }
+        }
+
         // Networking
         networkingManager?.Update();
 
@@ -716,22 +785,22 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         // Handle Events
 
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            // Works on UI as well, debugging purpose.
-            if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.LeftShift))
-            {
-                // Alt + Shift + 1/2/3/...
-                foreach ((var keyCode, var advanceSimulationSeconds) in simulationSecondsAdvanceMap)
-                {
-                    if (Input.GetKeyDown(keyCode))
-                    {
-                        // remainAdvanceSimulationSecondsRequestedByUserInput = advanceSimulationSeconds;
-                        SetRemainAdvanceSimulationSecondsRequestedByUserInput(advanceSimulationSeconds);
-                    }
-                }
-            }
-        }
+        // if (EventSystem.current.IsPointerOverGameObject())
+        // {
+        //     // Works on UI as well, debugging purpose.
+        //     if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.LeftShift))
+        //     {
+        //         // Alt + Shift + 1/2/3/...
+        //         foreach ((var keyCode, var advanceSimulationSeconds) in simulationSecondsAdvanceMap)
+        //         {
+        //             if (Input.GetKeyDown(keyCode))
+        //             {
+        //                 // remainAdvanceSimulationSecondsRequestedByUserInput = advanceSimulationSeconds;
+        //                 SetRemainAdvanceSimulationSecondsRequestedByUserInput(advanceSimulationSeconds);
+        //             }
+        //         }
+        //     }
+        // }
 
         if (!EventSystem.current.IsPointerOverGameObject())
         {
@@ -1420,7 +1489,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 return "No Networking";
             if(networkingManager is NetworkingHostManager hostManager)
             {
-                var namesStr = string.Join(", ", hostManager.connections.Select(c => $"{c.name} ({c.client?.Client.LocalEndPoint})"));
+                var namesStr = string.Join(", ", hostManager.connections.Select(c => $"{c.name} ({c.client?.Client.RemoteEndPoint})"));
                 return $"Connected by {hostManager.connections.Count} clients: {namesStr}";
             }
             if(networkingManager is NetworkingClientManager clientManager)
@@ -1428,13 +1497,62 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 var connections = clientManager.connections;
                 if(connections.Count != 1)
                 {
-                    return $"Connected to {clientManager.connections.Count} Host???";
+                    return $"Connected to {clientManager.connections.Count} Hosts???";
                 }
                 var connection = connections[0];
-                return $"Connected to {connection.name} ({connection.client?.Client.LocalEndPoint})";
+                return $"Connected to {connection.name} ({connection.client?.Client.RemoteEndPoint})";
             }
             return "Invalid";
         }
     }
 
+    public HashSet<string> takeCommandIdSet = new(); // Client
+    public Dictionary<NetworkingManager.Connection, ConnectionInfo> connectionInfoMap = new(); // Host
+    public ConnectionInfo GetConnectionInfo(NetworkingManager.Connection connection)
+    {
+        if(!connectionInfoMap.TryGetValue(connection, out var info))
+            info = connectionInfoMap[connection] = new();
+        return info;
+    }
+    public bool readyToAdvanceAsHost; // Host
+    public float remainAdvanceSimulationSecondsRequestedByUserInputPending;
+
+    public NavalNetworkingCommands.MergeRequest CreateMergeRequestByExtraction()
+    {
+        var syncShipLogSet = new HashSet<ShipLog>();
+        var syncShipGroupSet = new HashSet<ShipGroup>();
+        foreach(var takeCommandId in takeCommandIdSet)
+        {
+            var obj = EntityManager.Instance.Get<IObjectIdLabeled>(takeCommandId);
+            if(obj is ShipLog shipLog)
+            {
+                syncShipLogSet.Add(shipLog);
+            }
+            else if(obj is ShipGroup shipGroup)
+            {
+                syncShipGroupSet.Add(shipGroup);
+                // recursive 
+                foreach(var _shipLog in shipGroup.Walk<ShipLog>())
+                    syncShipLogSet.Add(_shipLog);
+                foreach(var _shipGroup in shipGroup.Walk<ShipGroup>())
+                    syncShipGroupSet.Add(_shipGroup);
+            }
+        }
+
+        var command = new NavalNetworkingCommands.MergeRequest()
+        {
+            syncShipGroups = syncShipGroupSet.ToList(),
+            syncShipLogs = syncShipLogSet.ToList(),
+        };
+        return command;
+    }
+
+    public NetworkingManager.Connection GetHostConnectionOrNull()
+    {
+        if(networkingManager is NetworkingClientManager clientManager && clientManager != null && clientManager.connections.Count > 0)
+        {
+            return clientManager.connections[0];
+        }
+        return null;
+    }
 }

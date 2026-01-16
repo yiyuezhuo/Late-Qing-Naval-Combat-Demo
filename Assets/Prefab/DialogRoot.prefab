@@ -111,3 +111,5 @@ MonoBehaviour:
   landUnitDialogDocument: {fileID: 9197481963319205126, guid: 27ccc255880ea2448b0325bec554f20c, type: 3}
   strategicMissionSelectorDialogDocument: {fileID: 9197481963319205126, guid: f97af49b76153054898291e9e2f0c8b2, type: 3}
   createMissionDialogDocument: {fileID: 9197481963319205126, guid: 19e6338d61437874faf799a403639a06, type: 3}
+  hostDialogDocument: {fileID: 9197481963319205126, guid: 7f0077550a95f204eabc034473a9fae7, type: 3}
+  clientDialogDocument: {fileID: 9197481963319205126, guid: d4a1eb801309a0641ad97e1a8b5fb918, type: 3}

@@ -2514,6 +2514,30 @@ MonoBehaviour:
     m_Localized: Take Command (Multiplayer - Client)
     m_Metadata:
       m_Items: []
+  - m_Id: 49100426785230848
+    m_Localized: Sync
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49105075479154688
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49105136850210816
+    m_Localized: Stop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49105850586533888
+    m_Localized: Host
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49110708999852032
+    m_Localized: Disconnect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49111522057293824
+    m_Localized: Client
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

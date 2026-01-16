@@ -1,0 +1,17 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="ConnectionViewState, Assembly-CSharp" style="flex-grow: 1;">
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Toggle>
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="passed" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Toggle>
+            <ui:Label text="Player Name">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+        <ui:ListView data-source-path="takeCommandIds" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/TakeCommandIdTemplate.uxml?fileID=9197481963319205126&amp;guid=467a7798dec1d384785e56d2176fa94c&amp;type=3#TakeCommandIdTemplate" header-title="Take Command:" show-foldout-header="true"/>
+    </ui:VisualElement>
+</ui:UXML>

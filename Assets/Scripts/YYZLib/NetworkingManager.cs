@@ -16,11 +16,6 @@ namespace YYZ
         [XmlIgnore]
         public NetworkingManager.Connection sourceConnection; // Optional
 
-        // public virtual void ExecuteWithConnection(NetworkingManager.Connection connection)
-        // {
-        //     Execute();
-        // }
-
         public virtual void Execute()
         {
             
@@ -34,14 +29,12 @@ namespace YYZ
     // Client send ConnectCommand to the server and the server execute it.
     public class ConnectCommand: NetworkingCommand
     {
-        // public string clientName;
-        // public string clientHost;
-        // public bool first;
-
         public override void Execute()
         {
             // Executed by the first connected server
             YDebug.Log($"Server FirstConnectCommand");
+
+            sourceConnection.manager.NotifyConnectionsChanged(); // Update Name
         }
 
         public override string ToString()
@@ -49,15 +42,6 @@ namespace YYZ
             return $"FirstConnectCommand()";
         }
     }
-
-
-    // public static class Command
-    // {
-    //     public abstract class StateCommand: NetworkingCommand
-    //     {
-    //         public override bool isUndoAble{get=>true;}
-    //     }
-    // }
 
 
     /// <summary>
@@ -89,14 +73,10 @@ namespace YYZ
 
         public class Connection
         {
+            public NetworkingManager manager;
             public TcpClient client;
-            // public Thread thread;
-            // public string host;
             public string name;
         }
-
-        
-        // public List<Connection> connectionsActive = new();
 
         public void Update() // It's expected called from MonoBehaviour's Update
         {
@@ -110,14 +90,22 @@ namespace YYZ
             }
         }
 
+        public void NotifyConnectionsChanged()
+        {
+            executionQueue.Enqueue(() => connectionsChanged?.Invoke(this, EventArgs.Empty));
+        }
+
 
         protected void ConnectionWorker(TcpClient client, bool sendConnectToCommand)
         {
-            var connection = new Connection(){client=client,
-                // host="Unknown host", // host is the "server" address of a client (peer), not the "direct" host address.
+            var connection = new Connection(){
+                manager=this,
+                client=client,
                 name="Connecting..."
             }; // host, name should be resolved by the first/second connect command, which may be updated by other command as well
             connections.Add(connection);
+
+            NotifyConnectionsChanged();
 
             if(sendConnectToCommand)
             {
@@ -163,7 +151,8 @@ namespace YYZ
             
             connections.RemoveAll(conn => conn == connection);
 
-            connectionsChanged?.Invoke(this, EventArgs.Empty);
+            // connectionsChanged?.Invoke(this, EventArgs.Empty);
+            NotifyConnectionsChanged();
 
             client.Close();
         }
@@ -268,6 +257,14 @@ namespace YYZ
             }
             connections.Clear();
         }
+
+        public void SendCommandToAll(NetworkingCommand command)
+        {
+            foreach(var conn in connections)
+            {
+                SendCommand(conn, command);
+            }
+        }
     }
 
     public class NetworkingHostManager : NetworkingManager
@@ -290,9 +287,6 @@ namespace YYZ
 
             listeningThread = new Thread(ListenThreadWorker);
             listeningThread.Start();
-
-            // TODO: Notify List changed
-            // connectionsChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public void StartHostServer(string localaddr, int port) => StartHostServer(IPAddress.Parse(localaddr), port);
@@ -305,12 +299,6 @@ namespace YYZ
                     var client = tcpListener.AcceptTcpClient();
                     var thread = new Thread(() => ConnectionWorker(client, true));
                     thread.Start();
-
-                    // var connection = new Connection(){client=client, thread=thread,
-                    //     // host="Unknown host", // host is the "server" address of a client (peer), not the "direct" host address.
-                    //     name="Connecting..."
-                    // }; // host, name should be resolved by the first/second connect command, which may be updated by other command as well
-                    // connections.Add(connection);
                     
                     YDebug.Log($"Accepted a connection from {client.Client.RemoteEndPoint}");
                 }
@@ -326,10 +314,6 @@ namespace YYZ
             
             tcpListener = null;
             listeningThread = null;
-
-            // executionQueue.Enqueue(() => SyncListView());
-
-            // tcpListener.Stop();
         }
     }
 
@@ -337,26 +321,14 @@ namespace YYZ
     {
         public TcpClient ConnectTo(string host)
         {
-            // if(host2connection.ContainsKey(host))
-            // {
-            //     return;
-            // }
-            // if(connectionsActive.Any(c => c.host == host))
-            //     return;
-
             var ipAndPort = host.Split(":");
             var ip = ipAndPort[0];
             var port = ushort.Parse(ipAndPort[1]);
-
-            // var endpoint = NetworkEndpoint.Parse(ip, port);
-
-            // TODO: Block repeated connection here.
 
             TcpClient client;
             try{
                 client = new TcpClient(ip, port);
                 // SendCommand(client.GetStream(), new ConnectCommand(){clientName=myName});
-                // FIXME: Sometimes it should send SecondConnectCommand instead
             }catch(Exception ex){
                 YDebug.LogError($"Connection establishment failed: {ex}");
                 return null;
@@ -364,23 +336,8 @@ namespace YYZ
 
             var thread = new Thread(() => ConnectionWorker(client, true));
             thread.Start();
-            // var connection = new Connection(){client=client, name=myName};
-            // connections.Add(connection);
-            // executionQueue.Enqueue(() =>
-            // {
-            //     var connection = new Connection(){client=client, thread=thread, host=host, name=myName};
-            //     connectionsActive.Add(connection);
-            //     // SyncListView();
-            // });
             
             YDebug.Log($"Connect to {client.Client.RemoteEndPoint}");
-
-            // host2connection[host] = connection;
-            // connectToRecords.Add(new PlayerRecord(){host=host, name="Connecting..."});
-            // connection.host = host;
-            
-            // TODO: Notify Connection changed
-            // SyncListView();
 
             return client;
         }

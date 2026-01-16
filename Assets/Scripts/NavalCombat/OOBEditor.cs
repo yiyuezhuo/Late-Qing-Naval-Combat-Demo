@@ -36,14 +36,23 @@ public class OOBEditor : HideableDocument<OOBEditor>
         get => GameManager.Instance.takeCommandIdSet.Contains(currentSelectedObjectId);
         set
         {
-            if (value)
+            if(currentSelectedObjectTakeCommand != value)
             {
-                GameManager.Instance.takeCommandIdSet.Add(currentSelectedObjectId);
-            }
-            else
-            {
-                if(GameManager.Instance.takeCommandIdSet.Contains(currentSelectedObjectId))
-                    GameManager.Instance.takeCommandIdSet.Remove(currentSelectedObjectId);
+                var gmr = GameManager.Instance;
+                if (value)
+                {
+                    gmr.takeCommandIdSet.Add(currentSelectedObjectId);
+                }
+                else
+                {
+                    if(gmr.takeCommandIdSet.Contains(currentSelectedObjectId))
+                    {
+                        gmr.takeCommandIdSet.Remove(currentSelectedObjectId);
+                    }
+                }
+
+                // Send Command
+                gmr.DoSubmitTakeCommand();
             }
         }
     }

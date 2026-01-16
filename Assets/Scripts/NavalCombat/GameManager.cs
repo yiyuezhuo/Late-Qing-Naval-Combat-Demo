@@ -19,7 +19,6 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using YYZ;
-using UnityEngine.InputSystem.LowLevel;
 
 public interface IColliderRootProvider
 {
@@ -494,7 +493,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 }
             }
 
-            if(manualAdvanceAny && remainAdvanceSimulationSecondsRequestedByUserInput < pulseLengthSeconds)
+            var advanceEnded = remainAdvanceSimulationSecondsRequestedByUserInput < pulseLengthSeconds;
+
+            if(manualAdvanceAny && 
+                (
+                    (hostSyncMode == HostSyncMode.EveryUnityUpdate) || 
+                    (hostSyncMode == HostSyncMode.AdvanceEnd && advanceEnded)
+                )
+            )
             {
                 // Send GameState sync command to all clients in the host mode
                 if(networkingManager is NetworkingHostManager hostManager)
@@ -716,6 +722,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             if(readyToAdvanceAsHost && connectionInfoMap.Values.All(info => info.takeCommandIds.Count == 0 || info.mergeRequest != null))
             {
+                if (currentLogOnly)
+                    NavalGameState.Instance.tempSubjectLogs.Clear();
+
                 foreach(var (conn, connInfo) in connectionInfoMap)
                 {
                     if(connInfo.mergeRequest != null)
@@ -1475,36 +1484,37 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [CreateProperty]
     public bool isNotHostAndClient => networkingManager == null;
 
-    public string networkingName = "Name";
+    public static string defaultNetworkingName = "Name";
+    public string networkingName = defaultNetworkingName;
 
     public int networkingPort = 18947;
     public string connectToIp = "127.0.0.1";
 
-    [CreateProperty]
-    public string networkingDescription
-    {
-        get
-        {
-            if(networkingManager == null)
-                return "No Networking";
-            if(networkingManager is NetworkingHostManager hostManager)
-            {
-                var namesStr = string.Join(", ", hostManager.connections.Select(c => $"{c.name} ({c.client?.Client.RemoteEndPoint})"));
-                return $"Connected by {hostManager.connections.Count} clients: {namesStr}";
-            }
-            if(networkingManager is NetworkingClientManager clientManager)
-            {
-                var connections = clientManager.connections;
-                if(connections.Count != 1)
-                {
-                    return $"Connected to {clientManager.connections.Count} Hosts???";
-                }
-                var connection = connections[0];
-                return $"Connected to {connection.name} ({connection.client?.Client.RemoteEndPoint})";
-            }
-            return "Invalid";
-        }
-    }
+    // [CreateProperty]
+    // public string networkingDescription
+    // {
+    //     get
+    //     {
+    //         if(networkingManager == null)
+    //             return "No Networking";
+    //         if(networkingManager is NetworkingHostManager hostManager)
+    //         {
+    //             var namesStr = string.Join(", ", hostManager.connections.Select(c => $"{c.name} ({c.client?.Client.RemoteEndPoint})"));
+    //             return $"Connected by {hostManager.connections.Count} clients: {namesStr}";
+    //         }
+    //         if(networkingManager is NetworkingClientManager clientManager)
+    //         {
+    //             var connections = clientManager.connections;
+    //             if(connections.Count != 1)
+    //             {
+    //                 return $"Connected to {clientManager.connections.Count} Hosts???";
+    //             }
+    //             var connection = connections[0];
+    //             return $"Connected to {connection.name} ({connection.client?.Client.RemoteEndPoint})";
+    //         }
+    //         return "Invalid";
+    //     }
+    // }
 
     public HashSet<string> takeCommandIdSet = new(); // Client
     public Dictionary<NetworkingManager.Connection, ConnectionInfo> connectionInfoMap = new(); // Host
@@ -1514,7 +1524,19 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             info = connectionInfoMap[connection] = new();
         return info;
     }
-    public bool readyToAdvanceAsHost; // Host
+    bool _readyToAdvanceAsHost; // Host
+    public bool readyToAdvanceAsHost
+    {
+        get => _readyToAdvanceAsHost;
+        set
+        {
+            if(value != _readyToAdvanceAsHost)
+            {
+                _readyToAdvanceAsHost = value;
+                RefreshConnectionViewStatesAsHost();
+            }
+        }
+    }
     public float remainAdvanceSimulationSecondsRequestedByUserInputPending;
 
     public NavalNetworkingCommands.MergeRequest CreateMergeRequestByExtraction()
@@ -1554,5 +1576,109 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             return clientManager.connections[0];
         }
         return null;
+    }
+
+    public void RefreshConnectionViewStatesAsHost() // by Host
+    {
+        if(networkingManager is NetworkingHostManager hostManager)
+        {
+            var ret = new List<ConnectionViewState>();
+            var hostViewState = new ConnectionViewState()
+            {
+                name = hostManager.myName,
+                passed = readyToAdvanceAsHost,
+                takeCommandIds = new(), // Host is "Otherwise" in the take command meaning
+                // takeCommandIds = takeCommandIdSet.ToList(),
+            };
+            ret.Add(hostViewState);
+            ret.AddRange(hostManager.connections.Select(conn =>
+            {
+                var connInfo = GetConnectionInfo(conn);
+                return new ConnectionViewState()
+                {
+                    name = conn.name,
+                    passed = connInfo.takeCommandIds.Count == 0 || connInfo.mergeRequest != null,
+                    takeCommandIds = connInfo.takeCommandIds,
+                };
+            }));
+
+            // return ret;
+            connectionViewStates = ret;
+
+            // Send ConnectionViewStates sync command to all clients
+            var command = new NavalNetworkingCommands.ConnectionViewStatesSync()
+            {
+                connectionViewStates = connectionViewStates,
+            };
+            hostManager.SendCommandToAll(command);
+
+            return;
+        }
+
+        connectionViewStates = new();
+    }
+
+    public List<ConnectionViewState> connectionViewStates = new();
+
+    public enum HostSyncMode
+    {
+        AdvanceEnd,
+        EveryUnityUpdate
+    }
+
+    // public HostSyncMode hostSyncMode;
+    public HostSyncMode hostSyncMode = HostSyncMode.EveryUnityUpdate;
+
+    public void DoStartHost()
+    {
+        var networkingHostManager = new NetworkingHostManager(){myName=networkingName};
+        networkingHostManager.connectionsChanged += (sender, args) => RefreshConnectionViewStatesAsHost();
+        
+        networkingManager = networkingHostManager;
+        networkingHostManager.StartHostServer(connectToIp, networkingPort);
+
+        RefreshConnectionViewStatesAsHost();
+    }
+
+    public void DoConnect()
+    {
+        var networkingClientManager = new NetworkingClientManager(){myName=networkingName};
+        networkingClientManager.connectionsChanged += (sender, args) =>
+        {
+            if(networkingClientManager.connections.Count == 0)  // When disconnected from host (if it was connected)
+            {
+                networkingManager = null;
+            }
+        };
+        
+        networkingManager = networkingClientManager;
+        var client = networkingClientManager.ConnectTo($"{connectToIp}:{networkingPort}");
+    
+        // TODO: Send to a full sync request command
+        networkingClientManager.SendCommand(client, new NavalNetworkingCommands.RequestFullStateSync());
+    }
+
+    public void DoDisconnect()
+    {
+        if(networkingManager != null)
+        {
+            networkingManager.CloseAllConnections();
+            networkingManager = null;
+        }
+
+        connectionViewStates = new();
+    }
+
+    public void DoSubmitTakeCommand()
+    {
+        var clientManager = networkingManager as NetworkingClientManager;
+        if(clientManager != null && clientManager.connections.Count > 0)
+        {
+            var hostConnection = clientManager.connections.First();
+            clientManager.SendCommand(hostConnection, new NavalNetworkingCommands.UpdateTakeCommand()
+            {
+                takeCommandIds=takeCommandIdSet.ToList()
+            });
+        }
     }
 }

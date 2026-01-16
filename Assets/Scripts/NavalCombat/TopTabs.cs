@@ -267,48 +267,13 @@ public class TopTabs : SingletonDocument<TopTabs>
         };
 
         // StartAsHostButton, ConnectButton, DisconnectButton, NetworkingDetailButton
-        root.Q<Button>("StartAsHostButton").clicked += () =>
-        {
-            var gmr = GameManager.Instance;
-            var networkingHostManager = new NetworkingHostManager(){myName=gmr.networkingName};
-            gmr.networkingManager = networkingHostManager;
-            networkingHostManager.StartHostServer(gmr.connectToIp, gmr.networkingPort);
-        };
+        // root.Q<Button>("StartAsHostButton").clicked += GameManager.Instance.DoStartHost;
+        // root.Q<Button>("ConnectButton").clicked += GameManager.Instance.DoConnect;
+        // root.Q<Button>("DisconnectButton").clicked += GameManager.Instance.DoDisconnect;
+        // root.Q<Button>("SubmitTakeCommandButton").clicked += GameManager.Instance.DoSubmitTakeCommand;
 
-        root.Q<Button>("ConnectButton").clicked += () =>
-        {
-            var gmr = GameManager.Instance;
-            var networkingClientManager = new NetworkingClientManager(){myName=gmr.networkingName};
-            gmr.networkingManager = networkingClientManager;
-            var client = networkingClientManager.ConnectTo($"{gmr.connectToIp}:{gmr.networkingPort}");
-        
-            // TODO: Send to a full sync request command
-            networkingClientManager.SendCommand(client, new NavalNetworkingCommands.RequestFullStateSync());
-        };
-
-        root.Q<Button>("DisconnectButton").clicked += () =>
-        {
-            var gmr = GameManager.Instance;
-            if(gmr.networkingManager != null)
-            {
-                gmr.networkingManager.CloseAllConnections();
-                gmr.networkingManager = null;
-            }
-        };
-
-        root.Q<Button>("SubmitTakeCommandButton").clicked += () =>
-        {
-            var gmr = GameManager.Instance;
-            var clientManager = gmr.networkingManager as NetworkingClientManager;
-            if(clientManager != null && clientManager.connections.Count > 0)
-            {
-                var hostConnection = clientManager.connections.First();
-                clientManager.SendCommand(hostConnection, new NavalNetworkingCommands.UpdateTakeCommand()
-                {
-                    takeCommandIds=gmr.takeCommandIdSet.ToList()
-                });
-            }
-        };
+        root.Q<Button>("HostButton").clicked += DialogRoot.Instance.PopupHostDialog;
+        root.Q<Button>("ClientButton").clicked += DialogRoot.Instance.PopupClientDialog;
     }
 
     void OnSaveButtonClicked(bool editSave=false)

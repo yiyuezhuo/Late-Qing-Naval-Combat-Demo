@@ -2787,6 +2787,14 @@ MonoBehaviour:
     m_Key: MountArcsPattern.Casemate
     m_Metadata:
       m_Items: []
+  - m_Id: 34510476626530304
+    m_Key: HostSyncMode.AdvanceEnd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34510534226907136
+    m_Key: HostSyncMode.EveryUnityUpdate
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

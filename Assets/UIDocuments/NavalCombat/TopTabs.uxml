@@ -251,50 +251,12 @@
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(48392505466195968)"/>
                 </Bindings>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
-                    <ui:Label text="Name">
+                    <ui:Button text="Host" name="HostButton"/>
+                    <ui:Button text="Client" name="ClientButton">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16180703542284288)"/>
-                        </Bindings>
-                    </ui:Label>
-                    <ui:TextField style="min-width: 100px;">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="networkingName" binding-mode="TwoWay"/>
-                        </Bindings>
-                    </ui:TextField>
-                    <ui:Label text="Port">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(48394535903596544)"/>
-                        </Bindings>
-                    </ui:Label>
-                    <ui:IntegerField value="18947">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="networkingPort" binding-mode="TwoWay"/>
-                        </Bindings>
-                    </ui:IntegerField>
-                    <ui:Button text="Start As Host" name="StartAsHostButton"/>
-                    <ui:Label text="Connect To IP">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(48394403967569920)"/>
-                        </Bindings>
-                    </ui:Label>
-                    <ui:TextField value="127.0.0.1" style="min-width: 100px;">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="connectToIp" binding-mode="TwoWay"/>
-                        </Bindings>
-                    </ui:TextField>
-                    <ui:Button text="Connect" name="ConnectButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(48394340402892800)"/>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(49111522057293824)"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Submit Take Command" name="SubmitTakeCommandButton"/>
-                    <ui:Button text="Disconnect" name="DisconnectButton"/>
-                    <ui:Button text="Detail" name="NetworkingDetailButton"/>
-                    <ui:Label text="Networking Description">
-                        <Bindings>
-                            <ui:DataBinding property="text" data-source-path="networkingDescription" binding-mode="ToTarget"/>
-                        </Bindings>
-                    </ui:Label>
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Settings">

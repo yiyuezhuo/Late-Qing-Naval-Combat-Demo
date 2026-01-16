@@ -14,9 +14,18 @@ public class TempDialog: ISwitchable
 
     public Func<VisualElement, bool> confirmCheck;
 
-    public bool centering = true;
+    public enum PositionMode
+    {
+        None,
+        Centering,
+        Left
+    }
+
+    // public bool centering = true;
+    public PositionMode positionMode = PositionMode.Centering;
     public bool fullScreen = false;
-    public bool draggable = false;
+    // public bool draggable = false;
+    public bool draggable = true;
 
     VisualElement el;
 
@@ -79,7 +88,7 @@ public class TempDialog: ISwitchable
             };
         }
 
-        if (centering)
+        if (positionMode == PositionMode.Centering)
         {
             el.style.position = Position.Absolute;
             el.style.left = new Length(50, LengthUnit.Percent);
@@ -91,16 +100,34 @@ public class TempDialog: ISwitchable
                 )
             );
         }
+        else if(positionMode == PositionMode.Left)
+        {
+            el.style.position = Position.Absolute;
+            el.style.left = new Length(0, LengthUnit.Percent);
+            el.style.top = new Length(50, LengthUnit.Percent);
+            el.style.translate = new StyleTranslate(
+                new Translate(
+                    new Length(0, LengthUnit.Percent),
+                    new Length(-50, LengthUnit.Percent)
+                )
+            );
+        }
 
         if (fullScreen)
         {
             el.style.flexGrow = 1;
         }
 
-        // if (draggable)
-        // {
-        //     root.AddManipulator(new MyDragger());
-        // }
+        if (draggable)
+        {
+            // root.AddManipulator(new MyDragger());
+            var titles = el.Query(className: "title").ToList();
+            if(titles.Count > 0)
+            {
+                var title = titles[0];
+                title.AddManipulator(new DragManipulator(el));
+            }
+        }
     }
 
     public void SoftHide()

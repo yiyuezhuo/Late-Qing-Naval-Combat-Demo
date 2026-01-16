@@ -254,6 +254,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset landUnitDialogDocument;
     public VisualTreeAsset strategicMissionSelectorDialogDocument;
     public VisualTreeAsset createMissionDialogDocument;
+    public VisualTreeAsset hostDialogDocument;
+    public VisualTreeAsset clientDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -264,6 +266,64 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupClientDialog()
+    {
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=clientDialogDocument,
+            templateDataSource=GameManager.Instance,
+            positionMode=TempDialog.PositionMode.Left
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            GameManager.Instance.networkingName = GameManager.Instance.networkingName == GameManager.defaultNetworkingName ? "Client" : GameManager.Instance.networkingName;
+        
+            el.Q<Button>("ConnectButton").clicked += GameManager.Instance.DoConnect;
+            el.Q<Button>("DisconnectButton").clicked += GameManager.Instance.DoDisconnect;
+
+            var listView = el.Q<ListView>();
+            listView.makeItem = () =>
+            {
+                var ret = listView.itemTemplate.CloneTree();
+                Utils.BindItemsSourceRecursive(ret);
+                return ret;
+            };
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupHostDialog()
+    {
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=hostDialogDocument,
+            templateDataSource=GameManager.Instance,
+            positionMode=TempDialog.PositionMode.Left
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            GameManager.Instance.networkingName = GameManager.Instance.networkingName == GameManager.defaultNetworkingName ? "Host" : GameManager.Instance.networkingName;
+
+            el.Q<Button>("StartHostButton").clicked += GameManager.Instance.DoStartHost;
+            el.Q<Button>("StopHostButton").clicked += GameManager.Instance.DoDisconnect;
+
+            var listView = el.Q<ListView>();
+            listView.makeItem = () =>
+            {
+                var ret = listView.itemTemplate.CloneTree();
+                Utils.BindItemsSourceRecursive(ret);
+                return ret;
+            };
+        };
+
+        tempDialog.Popup();
     }
 
     public void PopupCreateMissionDialog(Action<StrategicMission> callback)
@@ -611,7 +671,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             root = root,
             template = oobTreeDialogDocument,
             templateDataSource = null,
-            draggable = false
+            // draggable = false
         };
 
         tempDialog.onCreated += (sender, el) =>
@@ -658,7 +718,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             root = root,
             template = navalCombatResolverDialogDocument,
             templateDataSource = resolver,
-            draggable = false
+            // draggable = false
         };
 
         resolver.closed += (sender, args) => tempDialog.Close();
@@ -681,7 +741,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             root = root,
             template = pendingNavalCombatDialogDocument,
             templateDataSource = StrategicGameState.Instance,
-            draggable = false
+            // draggable = false
         };
 
         tempDialog.onCreated += (sender, el) =>
@@ -726,7 +786,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             root = root,
             template = cellEditorDialogDocument,
             templateDataSource = cell,
-            draggable = false
+            // draggable = false
         };
 
         tempDialog.onCreated += (sender, el) =>
@@ -836,7 +896,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             root = root,
             template = subStrategicCombatDialogDocument,
             templateDataSource = combat,
-            draggable = false
+            // draggable = false
         };
 
         tempDialog.onCreated += (sender, el) =>
@@ -899,7 +959,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             root = root,
             template = eventStateEditorDialogDocument,
             templateDataSource = dataSource,
-            draggable = false
+            // draggable = false
         };
 
         tempDialog.onCreated += (sender, el) =>
@@ -1183,7 +1243,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 root = root,
                 template = scenarioPickerDialogDocument,
                 templateDataSource = scenarioPickerDialog,
-                centering = false,
+                positionMode = TempDialog.PositionMode.None,
                 fullScreen = true
             };
             scenarioPickerDialog.Bind(tempDialog);
@@ -1212,7 +1272,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             root = root,
             template = messageDialogDocument,
             templateDataSource = null,
-            draggable = true
+            // draggable = true
         };
 
         tempDialog.onCreated += (sender, el) =>
@@ -1237,7 +1297,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             root = root,
             template = confirmDialogDocument,
             templateDataSource = null,
-            draggable = true
+            // draggable = true
         };
 
         tempDialog.onCreated += (sender, el) =>
@@ -1505,7 +1565,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             root = root,
             template = helpDialogDocument,
             templateDataSource = null,
-            centering = false
+            positionMode = TempDialog.PositionMode.None,
         };
 
         tempDialog.Popup();
@@ -1518,7 +1578,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             root = root,
             template = faqDialogDocument,
             templateDataSource = null,
-            centering = false
+            positionMode = TempDialog.PositionMode.None,
         };
 
         tempDialog.Popup();

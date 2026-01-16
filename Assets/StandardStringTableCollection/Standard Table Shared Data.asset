@@ -2432,6 +2432,30 @@ MonoBehaviour:
     m_Key: Take Command (Multiplayer - Client)
     m_Metadata:
       m_Items: []
+  - m_Id: 49100426785230848
+    m_Key: Sync
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49105075479154688
+    m_Key: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49105136850210816
+    m_Key: Stop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49105850586533888
+    m_Key: Host
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49110708999852032
+    m_Key: Disconnect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49111522057293824
+    m_Key: Client
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

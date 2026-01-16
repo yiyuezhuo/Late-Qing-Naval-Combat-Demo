@@ -11,6 +11,14 @@ public class ConnectionInfo
     public NavalNetworkingCommands.MergeRequest mergeRequest;
 }
 
+public class ConnectionViewState
+{
+    public string name;
+    // public string ip;
+    public bool passed;
+    public List<string> takeCommandIds = new();
+}
+
 public static class NavalNetworkingCommands
 {
     static Type[] serializableCommands = new Type[]
@@ -20,7 +28,8 @@ public static class NavalNetworkingCommands
         typeof(FullStateSync),
         typeof(UpdateTakeCommand),
         typeof(MergeRequest),
-        typeof(GameStateSync)
+        typeof(GameStateSync),
+        typeof(ConnectionViewStatesSync)
         // typeof(AdvanceSimulation)
     };
 
@@ -82,6 +91,8 @@ public static class NavalNetworkingCommands
             if(!gmr.connectionInfoMap.TryGetValue(sourceConnection, out var connectionInfo))
                 connectionInfo = gmr.connectionInfoMap[sourceConnection] = new();
             connectionInfo.takeCommandIds = takeCommandIds;
+
+            gmr.RefreshConnectionViewStatesAsHost();
         }
     }
 
@@ -94,6 +105,8 @@ public static class NavalNetworkingCommands
         {
             var connInfo = GameManager.Instance.GetConnectionInfo(sourceConnection);
             connInfo.mergeRequest = this;
+
+            GameManager.Instance.RefreshConnectionViewStatesAsHost();
         }
 
         public void DoMerge()
@@ -125,22 +138,6 @@ public static class NavalNetworkingCommands
         }
     }
 
-    // public class AdvanceSimulation : NetworkingCommand
-    // {
-    //     public int advanceSimulationSeconds;
-    //     public int seed;
-    //     public 
-
-    //     public override void Execute()
-    //     {
-    //         var gm = GameManager.Instance;
-    //         RandomUtils.SetSeed(seed);
-
-    //         // TODO: Advance Simulation
-    //         gm.remainAdvanceSimulationSecondsRequestedByUserInput = advanceSimulationSeconds;
-    //     }
-    // }
-
     public class GameStateSync : NetworkingCommand
     {
         public NavalGameState gameState;
@@ -148,6 +145,17 @@ public static class NavalNetworkingCommands
         public override void Execute()
         {
             NavalGameState.UpdateInstance(gameState);
+        }
+    }
+
+    public class ConnectionViewStatesSync : NetworkingCommand
+    {
+        public List<ConnectionViewState> connectionViewStates;
+
+        public override void Execute()
+        {
+            // base.Execute();
+            GameManager.Instance.connectionViewStates = connectionViewStates;
         }
     }
 }

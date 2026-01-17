@@ -642,4 +642,36 @@ public static class Utils
             }
         }).ToArray();
     }
+
+    // public static class UIInputGuard
+    // {
+    //     public static bool IsTyping()
+    //     {
+    // #if UNITY_UI_TOOLKIT
+    //         var panel = UnityEngine.UIElements.PanelSettings.current;
+    //         var focused = panel?.focusController?.focusedElement;
+    //         return focused is UnityEngine.UIElements.ITextInputField;
+    // #else
+    //         var go = UnityEngine.EventSystems.EventSystem.current?.currentSelectedGameObject;
+    //         return go != null &&
+    //             (go.GetComponent<TMPro.TMP_InputField>() != null ||
+    //                 go.GetComponent<UnityEngine.UI.InputField>() != null);
+    // #endif
+    //     }
+
+    //     public static bool UITKCheck()
+    //     {
+    //         var panel = UnityEngine.UIElements.PanelSettings.current;
+    //         var focused = panel?.focusController?.focusedElement;
+    //         return focused is UnityEngine.UIElements.ITextInputField;
+    //     }
+
+    //     public static bool UGUICheck()
+    //     {
+    //         var go = UnityEngine.EventSystems.EventSystem.current?.currentSelectedGameObject;
+    //         return go != null &&
+    //             (go.GetComponent<TMPro.TMP_InputField>() != null ||
+    //                 go.GetComponent<UnityEngine.UI.InputField>() != null);
+    //     }
+    // }
 }

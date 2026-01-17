@@ -56,7 +56,7 @@
                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62707518312448)"/>
                         </Bindings>
                     </ui:TextField>
-                    <ui:Button text="Select A Class" name="SelectShipClassButton" style="flex-grow: 1;">
+                    <ui:Button text="Select A Class" name="SelectShipClassButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100213576077312)"/>
                             <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>

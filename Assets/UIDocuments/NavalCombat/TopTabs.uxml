@@ -22,6 +22,7 @@
                     <ui:Toggle style="margin-right: 6px;">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="isAutoPlaying" binding-mode="TwoWay"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isNotHostAndClient" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Toggle>
                     <ui:Button text="AI" name="AIButton"/>

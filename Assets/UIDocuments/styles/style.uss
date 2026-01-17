@@ -257,3 +257,9 @@
     font-size: 10px;
     white-space: normal;
 }
+
+.unity-foldout__toggle {
+    height: 24px;
+    max-height: 24px;
+    min-height: 24px;
+}

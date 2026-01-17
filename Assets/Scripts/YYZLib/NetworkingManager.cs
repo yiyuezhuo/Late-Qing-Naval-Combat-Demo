@@ -7,6 +7,8 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Xml.Serialization;
+using System.IO;
+using System.IO.Compression;
 
 namespace YYZ
 {
@@ -77,6 +79,14 @@ namespace YYZ
             public TcpClient client;
             public string name;
         }
+
+        public enum CompressMode
+        {
+            None,
+            GZip,
+        }
+
+        public static CompressMode compressMode = CompressMode.GZip;
 
         public void Update() // It's expected called from MonoBehaviour's Update
         {
@@ -159,7 +169,8 @@ namespace YYZ
 
         protected virtual void ProcessReceivedBytes(Connection connection, byte[] messageBytes)
         {
-            var text = Encoding.UTF8.GetString(messageBytes);
+            // var text = Encoding.UTF8.GetString(messageBytes);
+            var text = BytesToString(messageBytes);
             var package = DeserializeNetworkCommandPackage(text);
             
             connection.name = package.senderName;
@@ -223,10 +234,44 @@ namespace YYZ
             // return XmlUtils.ToXML(package);
         }
 
+        public byte[] StringToBytes(string serialized)
+        {
+            var utf8Bytes = Encoding.UTF8.GetBytes(serialized);
+
+            if(compressMode == CompressMode.GZip)
+            {
+                using var output = new MemoryStream();
+                using (var gzip = new GZipStream(output, CompressionLevel.Fastest, leaveOpen: true))
+                {
+                    gzip.Write(utf8Bytes, 0, utf8Bytes.Length);
+                }
+                utf8Bytes = output.ToArray();
+            }
+
+            return utf8Bytes;
+        }
+
+        public string BytesToString(byte[] messageBytes)
+        {
+            if(compressMode == CompressMode.GZip)
+            {
+                using var input = new MemoryStream(messageBytes);
+                using var gzip = new GZipStream(input, CompressionMode.Decompress);
+                using var output = new MemoryStream();
+
+                gzip.CopyTo(output);
+
+                messageBytes = output.ToArray();
+            }
+
+            return Encoding.UTF8.GetString(messageBytes);
+        }
+
         public void SendPackage(NetworkStream stream, NetworkCommandPackage package)
         {
             var serialized = SerializeNetworkCommandPackage(package);
-            var messageBytes = Encoding.UTF8.GetBytes(serialized);
+            // var messageBytes = Encoding.UTF8.GetBytes(serialized);
+            var messageBytes = StringToBytes(serialized);
             var messageLengthBytes = BitConverter.GetBytes(messageBytes.Length);
 
             lock(sendLock)
@@ -251,9 +296,9 @@ namespace YYZ
 
         public void CloseAllConnections()
         {
-            foreach(var connection in connections)
+            foreach(var connection in connections.ToList())
             {
-                connection.client.Close();
+                connection.client.Close(); // The close may invoke thread to remove item in the connections
             }
             connections.Clear();
         }
@@ -265,12 +310,23 @@ namespace YYZ
                 SendCommand(conn, command);
             }
         }
+
+        public virtual void Close()
+        {
+            CloseAllConnections();
+        }
     }
 
     public class NetworkingHostManager : NetworkingManager
     {
         TcpListener tcpListener;
         Thread listeningThread;
+
+        public override void Close()
+        {
+            CloseAllConnections();
+            tcpListener.Stop();
+        }
 
         public void StartHostServer(IPAddress localaddr, int port)
         {
@@ -340,6 +396,14 @@ namespace YYZ
             YDebug.Log($"Connect to {client.Client.RemoteEndPoint}");
 
             return client;
+        }
+
+        public void SendCommandToHost(NetworkingCommand command)
+        {
+            if(connections.Count >= 1)
+            {
+                SendCommand(connections[0], command);
+            }
         }
     }
 

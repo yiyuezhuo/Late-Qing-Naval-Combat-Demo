@@ -4,6 +4,7 @@ using System.Xml.Serialization;
 using UnityEngine;
 using NavalCombatCore;
 using System.Collections.Generic;
+using System.Linq;
 
 public class ConnectionInfo
 {
@@ -29,7 +30,8 @@ public static class NavalNetworkingCommands
         typeof(UpdateTakeCommand),
         typeof(MergeRequest),
         typeof(GameStateSync),
-        typeof(ConnectionViewStatesSync)
+        typeof(ConnectionViewStatesSync),
+        typeof(ConnectionViewStatesSyncRequest)
         // typeof(AdvanceSimulation)
     };
 
@@ -77,6 +79,11 @@ public static class NavalNetworkingCommands
             };
 
             gmr.StartCoroutine(gmr.CompleteFullStateAndUpdateCoroutine(fullState));
+
+            sourceConnection.manager.SendCommand(sourceConnection, new UpdateTakeCommand()
+            {
+                takeCommandIds = gmr.takeCommandIdSet.ToList()
+            });
         }
     }
 
@@ -156,6 +163,17 @@ public static class NavalNetworkingCommands
         {
             // base.Execute();
             GameManager.Instance.connectionViewStates = connectionViewStates;
+        }
+    }
+
+    public class ConnectionViewStatesSyncRequest : NetworkingCommand // Executed on host
+    {
+        public override void Execute()
+        {
+            if(GameManager.Instance.networkingManager is NetworkingHostManager hostManager)
+            {
+                GameManager.Instance.RefreshConnectionViewStatesAsHost(); // Refresh and send command to all the clients.
+            }
         }
     }
 }

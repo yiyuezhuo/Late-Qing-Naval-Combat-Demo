@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 // using System.Windows.Forms;
 
@@ -121,6 +122,29 @@ namespace NavalCombatCore
         {
             foreach(var member in GetChildren())
             {
+                if(member is T t)
+                {
+                    yield return t;
+                }
+                if(member is ShipGroup shipGroup)
+                {
+                    foreach(var ret in shipGroup.Walk<T>())
+                    {
+                        yield return ret;
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<T> Walk<T>(Predicate<IShipGroupMember> predicate)
+        {
+            foreach(var member in GetChildren())
+            {
+                if(!predicate(member))
+                {
+                    continue;
+                }
+
                 if(member is T t)
                 {
                     yield return t;

@@ -583,7 +583,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 100213576077312
-    m_Localized: Select A Class
+    m_Localized: Select A Ship Class
     m_Metadata:
       m_Items: []
   - m_Id: 100318664364032
@@ -2536,6 +2536,16 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 49111522057293824
     m_Localized: Client
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49344819375017984
+    m_Localized: "Only units with \u201CTake Command\u201D enabled in the OOB Editor
+      will have their commands sent to the host and take effect. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49348576548655104
+    m_Localized: "For the host, only units without \u201CTake Command\u201D enabled
+      by any client will have their commands take effect."
     m_Metadata:
       m_Items: []
   references:

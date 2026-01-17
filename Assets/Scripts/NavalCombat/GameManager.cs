@@ -154,8 +154,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public AudioClip shipBellSound;
     AudioSource audioSource;
 
+    UIDocument[] allUIDocuments;
+
     public void Start()
     {
+        allUIDocuments = FindObjectsByType<UIDocument>(FindObjectsSortMode.None);
         audioSource = GetComponent<AudioSource>();
 
         SwitchCenter.Instance.Reset();
@@ -716,16 +719,41 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public static bool showSunkShips = true;
 
+    public bool IsHotKeyEnabled()
+    {
+        // if(EventSystem.current.IsPointerOverGameObject())
+        //     return false;
+
+        if(allUIDocuments != null)
+        {
+            foreach (var doc in allUIDocuments)
+            {
+                var root = doc.rootVisualElement;
+                if (root == null) continue;
+
+                var focused = root.focusController?.focusedElement;
+                if (focused == null) continue;
+
+                return false; // UITK focus => block hot keys
+                // if (IsTextInputElement(focused))
+                //     return true;
+            }
+        }
+
+        return true;
+    }
+
     public void Update()
     {
         if(networkingManager is NetworkingHostManager hostManager && hostManager != null)
         {
-            if(readyToAdvanceAsHost && connectionInfoMap.Values.All(info => info.takeCommandIds.Count == 0 || info.mergeRequest != null))
+            // if(readyToAdvanceAsHost && connectionInfoMap.Values.All(info => info.takeCommandIds.Count == 0 || info.mergeRequest != null))
+            if(readyToAdvanceAsHost && hostManager.connections.Select(conn => GetConnectionInfo(conn)).All(info => info.takeCommandIds.Count == 0 || info.mergeRequest != null))
             {
                 if (currentLogOnly)
                     NavalGameState.Instance.tempSubjectLogs.Clear();
 
-                foreach(var (conn, connInfo) in connectionInfoMap)
+                foreach(var connInfo in hostManager.connections.Select(conn => GetConnectionInfo(conn)))
                 {
                     if(connInfo.mergeRequest != null)
                     {
@@ -794,24 +822,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         // Handle Events
 
-        // if (EventSystem.current.IsPointerOverGameObject())
-        // {
-        //     // Works on UI as well, debugging purpose.
-        //     if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.LeftShift))
-        //     {
-        //         // Alt + Shift + 1/2/3/...
-        //         foreach ((var keyCode, var advanceSimulationSeconds) in simulationSecondsAdvanceMap)
-        //         {
-        //             if (Input.GetKeyDown(keyCode))
-        //             {
-        //                 // remainAdvanceSimulationSecondsRequestedByUserInput = advanceSimulationSeconds;
-        //                 SetRemainAdvanceSimulationSecondsRequestedByUserInput(advanceSimulationSeconds);
-        //             }
-        //         }
-        //     }
-        // }
-
-        if (!EventSystem.current.IsPointerOverGameObject())
+        if (IsHotKeyEnabled())
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -872,16 +883,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     SetSelectedShipCourseTowardPointer();
                 }
 
-                // simulationSecondsAdvanceMap
-                // Debug.Log($"Input.inputString={Input.inputString}");
-                // foreach(KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
-                // {
-                //     if (Input.GetKeyDown(keyCode))
-                //     {
-                //         Debug.Log("Pressed: " + keyCode);
-                //     }
-                // }
-
                 foreach ((var keyCode, var advanceSimulationSeconds) in simulationSecondsAdvanceMap)
                 {
                     if (Input.GetKeyDown(keyCode))
@@ -900,10 +901,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
                 if(Input.GetKeyDown(KeyCode.Space))
                 {
-                    isAutoPlaying = !isAutoPlaying;
-                    if(isAutoPlaying) // Clear logs if current only and clear potential "leaked" seconds requested by input.
+                    if(networkingManager == null)
                     {
-                        SetRemainAdvanceSimulationSecondsRequestedByUserInput(0);
+                        isAutoPlaying = !isAutoPlaying;
+                        if(isAutoPlaying) // Clear logs if current only and clear potential "leaked" seconds requested by input.
+                        {
+                            SetRemainAdvanceSimulationSecondsRequestedByUserInput(0);
+                        }
+                    }
+                    else
+                    {
+                        DialogRoot.Instance.PopupMessageDialog("Auto play can't be used in the multiplayer mode");
                     }
                 }
 
@@ -1485,7 +1493,31 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public bool isNotHostAndClient => networkingManager == null;
 
     public static string defaultNetworkingName = "Name";
-    public string networkingName = defaultNetworkingName;
+    string _networkingName = defaultNetworkingName;
+
+    [CreateProperty]
+    public string networkingName
+    {
+        get => _networkingName;
+        set
+        {
+            if(value != _networkingName)
+            {
+                _networkingName = value;
+                if(networkingManager is NetworkingHostManager hostManager)
+                {
+                    hostManager.myName = value;
+                    RefreshConnectionViewStatesAsHost(); // Refresh and send command to all the clients.
+                }
+                if(networkingManager is NetworkingClientManager clientManager)
+                {
+                    clientManager.myName = value;
+                    clientManager.SendCommandToHost(new NavalNetworkingCommands.ConnectionViewStatesSyncRequest());
+                    // The name would be sync into connection and refresh into connection view states, and dispatch to all client
+                }
+            }
+        }
+    }
 
     public int networkingPort = 18947;
     public string connectToIp = "127.0.0.1";
@@ -1517,7 +1549,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     // }
 
     public HashSet<string> takeCommandIdSet = new(); // Client
-    public Dictionary<NetworkingManager.Connection, ConnectionInfo> connectionInfoMap = new(); // Host
+    public Dictionary<NetworkingManager.Connection, ConnectionInfo> connectionInfoMap = new(); // Host, currently this dictionary may list some outdated object so it should not be iterated directly, instead "join" it withb NetworkingManager.connections
     public ConnectionInfo GetConnectionInfo(NetworkingManager.Connection connection)
     {
         if(!connectionInfoMap.TryGetValue(connection, out var info))
@@ -1543,6 +1575,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         var syncShipLogSet = new HashSet<ShipLog>();
         var syncShipGroupSet = new HashSet<ShipGroup>();
+
+        var otherTakeCommandIdSet = new HashSet<string>();
+        foreach(var connViewState in connectionViewStates)
+        {
+            foreach(var takeCommandId in connViewState.takeCommandIds)
+                otherTakeCommandIdSet.Add(takeCommandId);
+        }
+        otherTakeCommandIdSet.ExceptWith(takeCommandIdSet);
+
         foreach(var takeCommandId in takeCommandIdSet)
         {
             var obj = EntityManager.Instance.Get<IObjectIdLabeled>(takeCommandId);
@@ -1553,10 +1594,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             else if(obj is ShipGroup shipGroup)
             {
                 syncShipGroupSet.Add(shipGroup);
-                // recursive 
-                foreach(var _shipLog in shipGroup.Walk<ShipLog>())
+                // Recursive 
+                // Exclude elements which is explicitly assigned to other client
+                // foreach(var _shipLog in shipGroup.Walk<ShipLog>())
+                foreach(var _shipLog in shipGroup.Walk<ShipLog>(e => !otherTakeCommandIdSet.Contains(e.objectId)))
                     syncShipLogSet.Add(_shipLog);
-                foreach(var _shipGroup in shipGroup.Walk<ShipGroup>())
+                
+                // foreach(var _shipGroup in shipGroup.Walk<ShipGroup>())
+                foreach(var _shipGroup in shipGroup.Walk<ShipGroup>(e => !otherTakeCommandIdSet.Contains(e.objectId)))
                     syncShipGroupSet.Add(_shipGroup);
             }
         }
@@ -1648,6 +1693,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             if(networkingClientManager.connections.Count == 0)  // When disconnected from host (if it was connected)
             {
                 networkingManager = null;
+                connectionViewStates = new();
             }
         };
         
@@ -1655,14 +1701,21 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         var client = networkingClientManager.ConnectTo($"{connectToIp}:{networkingPort}");
     
         // TODO: Send to a full sync request command
-        networkingClientManager.SendCommand(client, new NavalNetworkingCommands.RequestFullStateSync());
+        if(client != null)
+        {
+            networkingClientManager.SendCommand(client, new NavalNetworkingCommands.RequestFullStateSync());
+        }
+        else
+        {
+            DialogRoot.Instance.PopupMessageDialog("Can't connect to the host.");
+        }
     }
 
     public void DoDisconnect()
     {
         if(networkingManager != null)
         {
-            networkingManager.CloseAllConnections();
+            networkingManager.Close();
             networkingManager = null;
         }
 

@@ -1,6 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" class="panel-dialog" style="height: auto; max-height: 400px; width: 235px;">
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
+    <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" class="panel-dialog" style="height: auto; max-height: 450px; width: 235px;">
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
             <ui:Label text="Host" class="title" style="flex-grow: 1;">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(49105850586533888)"/>
@@ -8,7 +9,7 @@
             </ui:Label>
             <ui:Button text="X" name="ConfirmButton" style="margin-left: 1px; margin-right: 1px; padding-left: 6px; padding-right: 6px;"/>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-direction: row;">
+        <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
             <ui:Label text="Port">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(48394535903596544)"/>
@@ -30,7 +31,7 @@
                 </Bindings>
             </ui:Button>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
             <ui:Label text="Name">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16180703542284288)"/>
@@ -42,7 +43,7 @@
                 </Bindings>
             </ui:TextField>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
             <ui:Label text="Sync" style="margin-right: 0;">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(49100426785230848)"/>
@@ -55,5 +56,10 @@
             </LocalizedEnumField>
         </ui:VisualElement>
         <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="connectionViewStates" item-template="project://database/Assets/UIDocuments/Templates/ConnectionViewStateTemplate.uxml?fileID=9197481963319205126&amp;guid=a728e44dcc1efe04197d8814bb6805d8&amp;type=3#ConnectionViewStateTemplate" virtualization-method="DynamicHeight" style="flex-grow: 1;"/>
+        <ui:Label text="For the host, only units without “Take Command” enabled by any client will have their commands take effect." style="font-size: 10px; white-space: normal;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(49348576548655104)"/>
+            </Bindings>
+        </ui:Label>
     </ui:VisualElement>
 </ui:UXML>

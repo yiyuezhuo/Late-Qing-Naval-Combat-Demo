@@ -1521,6 +1521,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public int networkingPort = 18947;
     public string connectToIp = "127.0.0.1";
+    public string hostIp = "0.0.0.0";
 
     // [CreateProperty]
     // public string networkingDescription
@@ -1680,7 +1681,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         networkingHostManager.connectionsChanged += (sender, args) => RefreshConnectionViewStatesAsHost();
         
         networkingManager = networkingHostManager;
-        networkingHostManager.StartHostServer(connectToIp, networkingPort);
+        networkingHostManager.StartHostServer(hostIp, networkingPort);
 
         RefreshConnectionViewStatesAsHost();
     }

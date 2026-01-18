@@ -29,7 +29,7 @@ public class TempDialog: ISwitchable
 
     VisualElement el;
 
-    bool closed;
+    public bool closed;
 
     public void Close()
     {
@@ -133,8 +133,21 @@ public class TempDialog: ISwitchable
     public void SoftHide()
     {
         // Hide();
+
+        var f1 = root.focusController?.focusedElement;
+        if(f1 != null)
+            f1.Blur();
+
         el.style.display = DisplayStyle.None;
 
         // OnHidden();
+    }
+
+    public void Reshow()
+    {
+        // Show();
+        el.style.display = DisplayStyle.Flex;
+
+        // OnShown();
     }
 }

@@ -2466,6 +2466,14 @@ MonoBehaviour:
       any client will have their commands take effect."
     m_Metadata:
       m_Items: []
+  - m_Id: 49836012710039552
+    m_Key: 'Take Command:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50116636209483776
+    m_Key: Simulation Rate Ratio (Auto)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

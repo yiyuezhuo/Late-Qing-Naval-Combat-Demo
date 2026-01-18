@@ -389,6 +389,24 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         return tempDialog;
     }
 
+    // public TempDialog BuildShipLogDialog(ShipLog shipLog)
+    // {
+    //     var tempDialog = new TempDialog()
+    //     {
+    //         root=root,
+    //         template=shipLogDialogDocument,
+    //         templateDataSource=shipLog
+    //     };
+
+    //     tempDialog.onCreated += (sender, el) =>
+    //     {
+    //         var binder = new ShipLogView(){root=el};
+    //         binder.Bind();
+    //     };
+
+    //     return tempDialog;
+    // }
+
     public TempDialog PopupStrategicGroupDialog(StrategicGroup strategicGroup)
     {
         var tempDialog = new TempDialog()

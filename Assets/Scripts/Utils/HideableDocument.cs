@@ -73,6 +73,14 @@ public class SingletonDocument<T> : SingletonMonoBehaviour<T>, IHidable where T 
     public void SoftHide()
     {
         // Hide();
+        var f1 = root.focusController?.focusedElement;
+
+        // root.Focus(); // Clear Focus
+        if(f1 != null)
+            f1.Blur();
+
+        // var f2 = root.focusController?.focusedElement; // focusedElement would be deferred, so this check doesn't works as expected.
+
         root.style.display = DisplayStyle.None;
 
         OnHidden();

@@ -252,7 +252,11 @@
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(48392505466195968)"/>
                 </Bindings>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
-                    <ui:Button text="Host" name="HostButton"/>
+                    <ui:Button text="Host" name="HostButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(49105850586533888)"/>
+                        </Bindings>
+                    </ui:Button>
                     <ui:Button text="Client" name="ClientButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(49111522057293824)"/>

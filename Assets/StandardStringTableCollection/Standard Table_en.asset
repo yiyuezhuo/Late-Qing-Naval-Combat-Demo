@@ -2548,6 +2548,14 @@ MonoBehaviour:
       by any client will have their commands take effect."
     m_Metadata:
       m_Items: []
+  - m_Id: 49836012710039552
+    m_Localized: 'Take Command:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50116636209483776
+    m_Localized: Simulation Rate Ratio (Auto)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

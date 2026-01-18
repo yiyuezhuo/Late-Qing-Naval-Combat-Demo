@@ -12,6 +12,10 @@
                 </Bindings>
             </ui:Label>
         </ui:VisualElement>
-        <ui:ListView data-source-path="takeCommandIds" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/TakeCommandIdTemplate.uxml?fileID=9197481963319205126&amp;guid=467a7798dec1d384785e56d2176fa94c&amp;type=3#TakeCommandIdTemplate" header-title="Take Command:" show-foldout-header="true"/>
+        <ui:ListView data-source-path="takeCommandIds" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/TakeCommandIdTemplate.uxml?fileID=9197481963319205126&amp;guid=467a7798dec1d384785e56d2176fa94c&amp;type=3#TakeCommandIdTemplate" header-title="Take Command:" show-foldout-header="true">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(49836012710039552)"/>
+            </Bindings>
+        </ui:ListView>
     </ui:VisualElement>
 </ui:UXML>

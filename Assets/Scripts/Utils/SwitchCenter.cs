@@ -29,6 +29,10 @@ public class SwitchCenter
         {
             shipLogEditor.SoftHide();
         }
+        else if(currentActiveViewContainer != null && currentActiveViewContainer is TempDialog tempDialog)
+        {
+            tempDialog.SoftHide();
+        }
     }
     
     public void SwitchToLeaderView(Leader leader) // close previous view (2 columns editor) or dialog and open new view (2 columns editor) or dialog.
@@ -147,6 +151,11 @@ public class SwitchCenter
                     UpdateCurrentActiveViewContainer(ShipLogEditor.Instance);
                     ShipLogEditor.Instance.Show();
                     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipLogEditor.Instance.shipLogListView, idx);
+                }
+                else if(currentActiveViewContainer is TempDialog currentTempDialog && currentTempDialog.templateDataSource is ShipLog _shipLog && !currentTempDialog.closed) // ShipLog is the workaround to check if it's a ship log dialog
+                {
+                    // Soft Hide workaround for dialog mode
+                    currentTempDialog.Reshow();
                 }
                 else
                 {

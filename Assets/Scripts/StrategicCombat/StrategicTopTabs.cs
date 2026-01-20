@@ -27,6 +27,7 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
         if(editSave)
         {
+            gameState.scenarioState.firstLoaded = false;
             fullState.viewState.viewerSideId = null; // Reset the current Viewer setting
         }
 

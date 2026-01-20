@@ -45,6 +45,9 @@ namespace StrategicCombatCore
         public bool enableVladivostokSquadronScript = false;
         public bool enableStrategicDisengagementRoll = true;
 
+        public GlobalString globalDescription = new();
+        public bool firstLoaded;
+
         public NavalForceEstimation.Rule.Mode estimationRuleMode = NavalForceEstimation.Rule.Mode.SinoJapaneseWar;
         public NavalForceEstimation.EstimationCategoryConfig GetEstimationCategoryConfig(NavalForceEstimation.EstimationCategory estimationCategory) => 
         

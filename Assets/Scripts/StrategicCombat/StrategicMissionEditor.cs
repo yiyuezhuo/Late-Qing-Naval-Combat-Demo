@@ -30,14 +30,6 @@ public class StrategicMissionEditor : LeftObjectPickerRightEditorStrategic<Strat
 
     protected override void OnAddObjectButtonClicked()
     {
-        // var newObj = new ET();
-        // EntityManager.Instance.Register(newObj, null);
-        // fullObjects.Add(newObj);
-
-        // ProcessAddedOne(newObj);
-
-        // RefreshFilter();
-
         DialogRoot.Instance.PopupCreateMissionDialog(newObj =>
         {
             ProcessAddedOne(newObj);
@@ -60,8 +52,13 @@ public class StrategicMissionEditor : LeftObjectPickerRightEditorStrategic<Strat
         var editWaypointsButton = root.Q<Button>("EditWaypointsButton");
         editWaypointsButton.clicked += () =>
         {
-            Hide();
-            StrategicGameManager.Instance.mapEditMode = StrategicMapEditMode.WaypointPlotting;
+            if(Utils.TryResolveCurrentValueForBinding<StrategicMission>(editWaypointsButton, out var strategicMission))
+            {
+                SoftHide();
+                StrategicGameManager.Instance.StartPointListEditor(strategicMission.waypoints, Show);
+            }
+            // Hide();
+            // StrategicGameManager.Instance.mapEditMode = StrategicMapEditMode.WaypointPlotting;
         };
 
         var contentContainer = root.Q<VisualElement>("ContentContainer");
@@ -134,6 +131,16 @@ public class StrategicMissionEditor : LeftObjectPickerRightEditorStrategic<Strat
                     mission.sideObjectId = side.objectId;
                 });
             }
+        };
+
+        var editRectangleButton = root.Q<Button>("EditRectangleButton");
+        editRectangleButton.clicked += () =>
+        {
+            if(Utils.TryResolveCurrentValueForBinding(editRectangleButton, out RectAreaPatrolMission mission))
+            {
+                SoftHide();
+                StrategicGameManager.Instance.StartRectangleEditor(mission.rectangle, Show);
+            }  
         };
     }
 

@@ -113,3 +113,5 @@ MonoBehaviour:
   createMissionDialogDocument: {fileID: 9197481963319205126, guid: 19e6338d61437874faf799a403639a06, type: 3}
   hostDialogDocument: {fileID: 9197481963319205126, guid: 7f0077550a95f204eabc034473a9fae7, type: 3}
   clientDialogDocument: {fileID: 9197481963319205126, guid: d4a1eb801309a0641ad97e1a8b5fb918, type: 3}
+  pointListEditorDialogDocument: {fileID: 9197481963319205126, guid: 5b6c9876447cfcb41befa26445a94aa2, type: 3}
+  rectangleEditorDialogDocument: {fileID: 9197481963319205126, guid: 91b7b8a93cea49f419c3cfe136600932, type: 3}

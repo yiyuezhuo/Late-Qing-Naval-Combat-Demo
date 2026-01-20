@@ -681,6 +681,12 @@ namespace StrategicCombatCore
         [CreateProperty]
         public bool isOneShotSortie => asOneShotSortie != null;
 
+        [CreateProperty]
+        public RectAreaPatrolMission asRectAreaPatrol => this as RectAreaPatrolMission;
+
+        [CreateProperty]
+        public bool isRectAreaPatrol => asRectAreaPatrol != null;
+
 
         [CreateProperty]
         public string missionTypeName => GetType().Name;

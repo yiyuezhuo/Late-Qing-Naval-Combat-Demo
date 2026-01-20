@@ -1364,6 +1364,74 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!1001 &845179758
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2603938079272155279, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603938079272155279, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603938079272155279, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603938079272155279, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603938079272155279, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603938079272155279, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603938079272155279, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603938079272155279, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603938079272155279, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603938079272155279, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7422386927956527519, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
+      propertyPath: m_Name
+      value: RectAreaLine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
+--- !u!114 &845179759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7873259658421983126, guid: 1a7350af8cb163246a46ad83c90bce37, type: 3}
+  m_PrefabInstance: {fileID: 845179758}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ca8122bc6751b4dbca9004701d7dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaypointController
 --- !u!1 &863707608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2772,7 +2840,10 @@ MonoBehaviour:
   currentLogOnly: 1
   pathLineContainerTransform: {fileID: 1819725383}
   pathLinePrefab: {fileID: 5562614255133263553, guid: 9764680f81772704684c1ec0d87acf5d, type: 3}
-  viewerSideId: 
+  rectAreaLineController: {fileID: 845179759}
+  pointListEditorMode: 0
+  pointListEditorPassabilityMode: 0
+  rectangleEditineLineDirty: 0
 --- !u!4 &1689453573
 Transform:
   m_ObjectHideFlags: 0
@@ -3670,3 +3741,4 @@ SceneRoots:
   - {fileID: 1819725383}
   - {fileID: 1264437118}
   - {fileID: 588873092}
+  - {fileID: 845179758}

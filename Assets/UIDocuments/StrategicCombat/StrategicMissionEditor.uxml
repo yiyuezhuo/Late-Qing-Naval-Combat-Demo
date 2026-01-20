@@ -181,6 +181,20 @@
                                     <ui:DataBinding property="style.display" data-source-path="isOneShotSortie" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                                 </Bindings>
                             </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <Bindings>
+                                    <ui:DataBinding property="style.display" data-source-path="isRectAreaPatrol" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                                </Bindings>
+                                <ui:VisualElement data-source-path="asRectAreaPatrol" style="flex-grow: 1; flex-direction: row;">
+                                    <ui:Label text="Rectangle: "/>
+                                    <ui:Label text="Rectangle Description">
+                                        <Bindings>
+                                            <ui:DataBinding property="text" data-source-path="rectangle" binding-mode="ToTarget"/>
+                                        </Bindings>
+                                    </ui:Label>
+                                    <ui:Button text="Edit" name="EditRectangleButton"/>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
                             <ui:VisualElement style="flex-direction: row;">
                                 <ui:Button text="Edit Waypoints" name="EditWaypointsButton">
                                     <Bindings>

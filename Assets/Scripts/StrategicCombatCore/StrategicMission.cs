@@ -6,6 +6,7 @@ using System;
 using YYZ.PathFinding;
 using System.Xml.Serialization;
 using YYZ;
+using UnityEngine;
 
 
 namespace StrategicCombatCore
@@ -39,6 +40,17 @@ namespace StrategicCombatCore
         }
     }
 
+    public class Rectangle
+    {
+        public XY xy1;
+        public XY xy2;
+
+        public override string ToString()
+        {
+            return $"Rectangle({xy1}, {xy2})";
+        }
+    }
+
     [XmlInclude(typeof(PatrolMission))]
     [XmlInclude(typeof(SupplyMission))]
     [XmlInclude(typeof(NavalTransferMission))]
@@ -46,6 +58,7 @@ namespace StrategicCombatCore
     [XmlInclude(typeof(OneShotPassiveSortieMission))]
     [XmlInclude(typeof(GlobalTradeProtectionMission))]
     [XmlInclude(typeof(OneShotActiveSortieMission))]
+    [XmlInclude(typeof(RectAreaPatrolMission))]
     public partial class StrategicMission : IObjectIdLabeled, INamed
     {
         public string objectId { get; set; }
@@ -69,8 +82,9 @@ namespace StrategicCombatCore
             OneShotPassiveSortie, // Send ships to random position having hostile trade traffic.
             GlobalTradeProtection, // Plan OneShotTradeProectectionPatrol, OneShotSweepToContact, OneShotSweepToBase for idle strategic groups.
             OneShotActiveSortie, // Move to a random position having trade traffic 
-            OneShotSweepToContact, // Send ships to lastest contact report location
-            OneShotSweepToBase, // Send ships to random hostile base.
+            // OneShotSweepToContact, // Send ships to lastest contact report location
+            // OneShotSweepToBase, // Send ships to random hostile base.
+            RectPatrolArea
         }
 
         public static StrategicMission Create(MissionType type)
@@ -84,6 +98,7 @@ namespace StrategicCombatCore
                 MissionType.OneShotPassiveSortie => new OneShotPassiveSortieMission(),
                 MissionType.GlobalTradeProtection => new GlobalTradeProtectionMission(),
                 MissionType.OneShotActiveSortie => new OneShotActiveSortieMission(),
+                MissionType.RectPatrolArea => new RectAreaPatrolMission(),
                 // MissionType.GlobalTradeProctection => new GlobalTradePro
                 _ => null
             };
@@ -974,6 +989,16 @@ namespace StrategicCombatCore
             {
                 strategicGroup.posture = StrategicGroup.GroupPostureType.Active;
             }
+        }
+    }
+
+    public partial class RectAreaPatrolMission : StrategicMission
+    {
+        public Rectangle rectangle = new();
+
+        protected override void DoUpdateStrategicGroup(StrategicGroup strategicGroup)
+        {
+            
         }
     }
 

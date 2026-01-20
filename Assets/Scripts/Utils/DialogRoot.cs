@@ -256,6 +256,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset createMissionDialogDocument;
     public VisualTreeAsset hostDialogDocument;
     public VisualTreeAsset clientDialogDocument;
+    public VisualTreeAsset pointListEditorDialogDocument;
+    public VisualTreeAsset rectangleEditorDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -266,6 +268,64 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupRectangleEditorDialog(Action callback)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=rectangleEditorDialogDocument,
+            templateDataSource=StrategicGameManager.Instance,
+            positionMode=TempDialog.PositionMode.Left
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            el.Q<Button>("ResetButton").clicked += () =>
+            {
+                // StrategicGameManager.Instance.currentEditingPointList?.Clear();
+                var rect = StrategicGameManager.Instance.currentEditingRect;
+                if(rect != null)
+                {
+                    rect.xy1 = null;
+                    rect.xy2 = null;
+                }
+            };
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            callback();
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupPointListEditorDialog(Action callback)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=pointListEditorDialogDocument,
+            templateDataSource=StrategicGameManager.Instance,
+            positionMode=TempDialog.PositionMode.Left
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            el.Q<Button>("ResetButton").clicked += () =>
+            {
+                StrategicGameManager.Instance.currentEditingPointList?.Clear();
+            };
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            callback();
+        };
+
+        tempDialog.Popup();
     }
 
     public void PopupClientDialog()

@@ -35,8 +35,10 @@ public enum StrategicMapEditMode
     DeleteHexPairFeatureEnd,
     ToggleCoast,
     WaitOneshotCellClickCallback,
-    WaypointPlotting
+    WaypointPlotting,
+    RectanglePlotting
 }
+
 
 public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 {
@@ -146,6 +148,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public Transform pathLineContainerTransform;
     public GameObject pathLinePrefab;
+    public WaypointController rectAreaLineController;
 
 
     [CreateProperty]
@@ -406,16 +409,23 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         fullInitialized = true; // enable all independent observer (eg Update based view state controller)
 
         // throw new Exception("Test Exception");
-        if(!strategicWIPWarningDisplayed)
+        // if(!strategicWIPWarningDisplayed)
+        // {
+        //     strategicWIPWarningDisplayed = true;
+        //     DialogRoot.Instance.PopupMessageDialog(Localize(
+        //         "Note: The Strategic Mode is still far from complete. Compared to that, the Tactical Naval Combat (the left column in the main menu) is relatively more polished and playable in the current version. However, you can still explore some work-in-progress sub system here."
+        //     ));
+        // }
+
+        if(!gameState.scenarioState.firstLoaded)
         {
-            strategicWIPWarningDisplayed = true;
-            DialogRoot.Instance.PopupMessageDialog(Localize(
-                "Note: The Strategic Mode is still far from complete. Compared to that, the Tactical Naval Combat (the left column in the main menu) is relatively more polished and playable in the current version. However, you can still explore some work-in-progress sub system here."
-            ));
+            gameState.scenarioState.firstLoaded = true;
+
+            DialogRoot.Instance.PopupMessageDialog(gameState.scenarioState.globalDescription.GetShortName(), "Scenario Description");
         }
     }
 
-    static bool strategicWIPWarningDisplayed = false;
+    // static bool strategicWIPWarningDisplayed = false;
     // static bool strategicWIPWarningDisplayed = true; // Temp disable in the dev phase
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
@@ -670,17 +680,23 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         UpdatePathLines();
         UpdateMissionWaypointLines();
+        UpdateRectangleEditingLine();
     }
 
     void UpdateMissionWaypointLines()
     {
         var missionWaypointLines = new List<List<XY>>();
 
-        if (mapEditMode == StrategicMapEditMode.WaypointPlotting)
+        // if (mapEditMode == StrategicMapEditMode.WaypointPlotting)
+        // {
+        //     var waypoints = StrategicMissionEditor.Instance.selectedObject.waypoints;
+        //     if (waypoints != null)
+        //         missionWaypointLines.Add(waypoints);
+        // }
+
+        if (mapEditMode == StrategicMapEditMode.WaypointPlotting && currentEditingPointList != null)
         {
-            var waypoints = StrategicMissionEditor.Instance.selectedObject.waypoints;
-            if (waypoints != null)
-                missionWaypointLines.Add(waypoints);
+            missionWaypointLines.Add(currentEditingPointList);
         }
 
         Utils.SyncTransformViewerLength(missionWaypointLineContainerTransform, missionWaypointLines.Count, missionWaypointLinePrefab);
@@ -1138,6 +1154,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             var selectedMission = StrategicMissionEditor.Instance.selectedObject;
             if (selectedMission != null)
             {
+                // TODO: use currentEditingPointList
                 if (selectedMission.waypoints.Count == 0)
                 {
                     // selectedMission.waypoints.Add(new XY() { x = activeCell.x, y = activeCell.y }); // set start
@@ -1167,6 +1184,23 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             else
             {
                 mapEditMode = StrategicMapEditMode.Select;
+            }
+        }
+        else if(mapEditMode == StrategicMapEditMode.RectanglePlotting)
+        {
+            var rect = currentEditingRect;
+            if(rect != null)
+            {
+                if(rect.xy1 == null)
+                {
+                    rect.xy1 = activeCell.ToXY();
+                }
+                else
+                {
+                    rect.xy2 = activeCell.ToXY();
+                }
+
+                rectangleEditineLineDirty = true;
             }
         }
         else
@@ -1283,4 +1317,85 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     [CreateProperty]
     public bool isInUnityEditor => Application.isEditor;
 
+    // Support PointListEditor
+    public enum PointListEditorMode
+    {
+        Continues,
+        Discrete
+    }
+
+    public enum PassabilityMode // Move to Core?
+    {
+        Land,
+        Sea
+    }
+
+    public PointListEditorMode pointListEditorMode;
+    public PassabilityMode pointListEditorPassabilityMode;
+    public List<XY> currentEditingPointList;
+
+    public void StartPointListEditor(List<XY> pointList, Action callback)
+    {
+        // Popup
+        currentEditingPointList = pointList;
+        var oldMapEditMode = mapEditMode;
+        mapEditMode = StrategicMapEditMode.WaypointPlotting;
+
+        DialogRoot.Instance.PopupPointListEditorDialog(() =>
+        {
+            callback();
+            mapEditMode = oldMapEditMode;
+        });
+    }
+
+    public Rectangle currentEditingRect;
+
+    public void StartRectangleEditor(Rectangle rect, Action callback)
+    {
+        currentEditingRect = rect;
+        var oldMapEditMode = mapEditMode;
+        mapEditMode = StrategicMapEditMode.RectanglePlotting;
+
+        DialogRoot.Instance.PopupRectangleEditorDialog(() =>
+        {
+            callback();
+            mapEditMode = oldMapEditMode;
+
+            rectangleEditineLineDirty = true;
+        });
+
+        rectangleEditineLineDirty = true;
+    }
+
+    public bool rectangleEditineLineDirty;
+
+    public void UpdateRectangleEditingLine()
+    {
+        if(rectangleEditineLineDirty)
+        {
+            rectangleEditineLineDirty = false;
+
+            // Refresh Rect Line Renderer
+            var rect = currentEditingRect;
+            var rectShown = rect != null && rect.xy1 != null && rect.xy2 != null;
+            rectAreaLineController.gameObject.SetActive(rectShown);
+            if(rectShown)
+            {
+                var x1 = Math.Min(rect.xy1.x, rect.xy2.x);
+                var x2 = Math.Max(rect.xy1.x, rect.xy2.x);
+                var y1 = Math.Min(rect.xy1.y, rect.xy2.y);
+                var y2 = Math.Max(rect.xy1.y, rect.xy2.y);
+                rectAreaLineController.Sync(new List<XY>()
+                {
+                    new XY(){x=x1, y=y1},
+                    new XY(){x=x2, y=y1},
+                    new XY(){x=x2, y=y2},
+                    new XY(){x=x1, y=y2},
+                    new XY(){x=x1, y=y1}
+                });
+            }
+            
+            // rectAreaLineController.Sync()
+        }
+    }
 }

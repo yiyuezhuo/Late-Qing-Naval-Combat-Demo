@@ -345,6 +345,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         //         }
         //     }
         // }
+
+        foreach(var shipClass in NavalGameState.Instance.shipClasses)
+        {
+            if(shipClass.batteryRecords.Count >=3 && shipClass.rapidFireBatteryRecords.Count >= 2)
+            {
+                Debug.Log(shipClass.name);
+            }
+        }
     }
 
     public ViewState CaptureViewState()

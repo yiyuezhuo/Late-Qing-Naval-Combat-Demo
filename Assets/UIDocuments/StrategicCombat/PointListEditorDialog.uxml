@@ -1,0 +1,18 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
+    <ui:VisualElement data-source-type="StrategicGameManager, Assembly-CSharp" class="panel-dialog" style="width: 240px; height: auto;">
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Label text="Point List Editor" class="title" style="flex-grow: 1;"/>
+            <ui:Button text="X" name="ConfirmButton" class="x-button"/>
+        </ui:VisualElement>
+        <ui:Button text="Reset" name="ResetButton"/>
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Label text="Mode"/>
+            <ui:EnumField value="Center" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Label text="Passability"/>
+            <ui:EnumField value="Center" type="StrategicGameManager+PassabilityMode, Assembly-CSharp" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

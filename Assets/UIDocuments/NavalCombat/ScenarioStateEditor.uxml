@@ -1,5 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="DateTimeField" src="project://database/Assets/UIDocuments/Common/DateTimeField.uxml?fileID=9197481963319205126&amp;guid=f2bdecc78fba4e446b80fb07b946d287&amp;type=3#DateTimeField"/>
+    <ui:Template name="MultilineGlobalStringEditor" src="project://database/Assets/UIDocuments/Common/MultilineGlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=3a7e28cd26dd1c748abce26c37380ec8&amp;type=3#MultilineGlobalStringEditor"/>
     <ui:Template name="PictureField" src="project://database/Assets/UIDocuments/Common/PictureField.uxml?fileID=9197481963319205126&amp;guid=7e20c3d60b5a8a34a80d1015e6851169&amp;type=3#PictureField"/>
     <ui:VisualElement data-source-type="ScenarioStateEditor, Assembly-CSharp" data-source-path="scenarioState" class="panel-dialog" style="flex-grow: 0; width: 800px; height: auto;">
         <ui:Label text="Scenario State Editor" class="title">
@@ -96,36 +97,7 @@
                             </Bindings>
                         </ui:Label>
                         <ui:VisualElement data-source-path="globalDescription">
-                            <ui:TabView>
-                                <ui:Tab label="English">
-                                    <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="english" binding-mode="TwoWay"/>
-                                        </Bindings>
-                                    </ui:TextField>
-                                </ui:Tab>
-                                <ui:Tab label="Japanese">
-                                    <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="japanese" binding-mode="TwoWay"/>
-                                        </Bindings>
-                                    </ui:TextField>
-                                </ui:Tab>
-                                <ui:Tab label="Chinese (Sim)">
-                                    <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="chineseSimplified" binding-mode="TwoWay"/>
-                                        </Bindings>
-                                    </ui:TextField>
-                                </ui:Tab>
-                                <ui:Tab label="Chinese (Trad)">
-                                    <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="chineseTraditional" binding-mode="TwoWay"/>
-                                        </Bindings>
-                                    </ui:TextField>
-                                </ui:Tab>
-                            </ui:TabView>
+                            <ui:Instance template="MultilineGlobalStringEditor" name="MultilineGlobalStringEditor"/>
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:Tab>

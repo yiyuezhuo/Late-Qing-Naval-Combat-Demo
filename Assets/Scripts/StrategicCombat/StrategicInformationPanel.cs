@@ -5,9 +5,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using System;
+using System.Collections.Generic;
+using CoreUtils;
 
 public class StrategicInformationPanel : SingletonDocument<StrategicInformationPanel>
 {
+    public VisualTreeAsset smallIconAsset;
+
+    VisualElement stackContainer;
+
     protected override void Awake()
     {
         base.Awake();
@@ -115,5 +121,31 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
                 }
             }
         };
+
+        stackContainer = root.Q<VisualElement>("StackContainer");
+    }
+
+    public void BindStack<T>(List<T> stack) where T: IWorldSpaceGroupIconDataSource
+    {
+        stackContainer.Clear();
+
+        foreach (var icon in stack)
+        {
+            // var iconInstance = smallIconAsset.Instantiate();
+            var iconInstance = smallIconAsset.CloneTree();
+            iconInstance.dataSource = icon;
+            stackContainer.Add(iconInstance);
+
+            iconInstance.RegisterCallback<ClickEvent>(evt =>
+            {
+                var ve = (VisualElement)evt.currentTarget;
+                Debug.Log($"ve.dataSource={ve.dataSource}");
+
+                if(ve.dataSource is IObjectIdLabeled obj)
+                {
+                    StrategicGameManager.Instance.lastSelectedObject = obj;
+                }
+            });
+        }
     }
 }

@@ -884,20 +884,6 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 // UITK World Spcace enforce a 3D collider, so we can only use 3D Raycast
                 var ray = cam.ScreenPointToRay(Input.mousePosition);
 
-                // Raycasting result debug
-                // if(mapEditMode == StrategicMapEditMode.Select)
-                // {
-                //     var res = Physics.Raycast(ray, out var _hitInfo);
-                //     if(res)
-                //     {
-                //         var res2 = _hitInfo.collider.CompareTag("Icon");
-                //         if(res2)
-                //         {
-                //             Debug.Log("Passed");
-                //         }
-                //     }
-                // }
-
                 if (mapEditMode == StrategicMapEditMode.Select && Physics.Raycast(ray, out var hitInfo) && hitInfo.collider.CompareTag("Icon")) // click on group
                 {
                     Debug.Log($"hitInfo.collider={hitInfo.collider}");
@@ -908,7 +894,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                     var iconSide = iconDataSource.side;
                     var iconCell = iconDataSource.cell;
                     var viewerSide = GetViewerSide();
+                    
                     var observableStack = CollectObservableStack(viewerSide, iconSide, iconCell);
+                    // TODO: Bind the stack view in the information panel.
+                    StrategicInformationPanel.Instance.BindStack(observableStack);
+
                     var topStackIcon = observableStack[^1];
 
                     lastSelectedCell = iconCell;
@@ -919,7 +909,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                         {
                             lastSelectedObject = topStackIcon as IObjectIdLabeled;
                         }
-                        else // stack toggle
+                        else // toggle stack
                         {
                             observableStack.RemoveAt(observableStack.Count - 1);
                             observableStack.Insert(0, topStackIcon);

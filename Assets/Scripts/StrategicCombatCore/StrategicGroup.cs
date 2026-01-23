@@ -105,7 +105,8 @@ namespace StrategicCombatCore
             Artillery,
             Engineer,
             Fleet,
-            CoastArtillery
+            CoastArtillery,
+            Facility
         }
         public Type type;
         public StrategicUnitSize size;

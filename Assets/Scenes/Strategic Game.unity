@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c0a44b860480b14cbf7d97b8f659f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smallIconAsset: {fileID: 9197481963319205126, guid: 068578b5a6f1ec546824bb1535000bb1, type: 3}
 --- !u!4 &220172704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1245225702119965330, guid: cb5c709ed3879e24a943fdf83a5e93f3, type: 3}

@@ -72,6 +72,7 @@
                 <ui:DataBinding property="style.display" data-source-path="selectedCellValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
             </Bindings>
         </ui:VisualElement>
+        <ui:VisualElement name="StackContainer" style="flex-shrink: 0; flex-direction: row;"/>
         <ui:VisualElement>
             <ui:VisualElement data-source-path="lastSelectedStrategicGroup" style="flex-shrink: 0; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                 <ui:Label text="Group Name___________________________________________" name="StrategicGroupNameLabel" style="white-space: normal;">

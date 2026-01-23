@@ -464,6 +464,8 @@ namespace StrategicCombatCore
                 ), null);
             }
 
+            Advance1HourForReinforcement();
+
             Advance1HourForSupply();
             Advance1HourForMission();
             Advance1HourForOutOfFuelFleetCheck();
@@ -486,6 +488,23 @@ namespace StrategicCombatCore
 
 
             Advance1HourForScripts();
+        }
+
+        void Advance1HourForReinforcement()
+        {
+            foreach(var group in strategicGroups)
+            {
+                var arriveState = group.arriveState;
+                if(arriveState != null && !arriveState.arrived && arriveState.arriveTime <= scenarioState.dateTime && !group.IsOnMap())
+                {
+                    var toCell = arriveState.arriveTo.GetCell();
+                    group.MoveToCell(toCell, false);
+
+                    // TODO: Use "Mobilisation"?
+                    AddLog($"{group.name.GetShortName()} arrived at {toCell.GetLocationSummary()}", group.side);
+                }
+                // if(group.arragroup.IsOnMap())
+            }
         }
 
         void Advance1HourForScripts()

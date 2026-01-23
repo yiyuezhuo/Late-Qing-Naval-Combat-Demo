@@ -135,6 +135,8 @@ namespace StrategicCombatCore
 
             return new FullState()
             {
+                // endDateTime
+                // 
                 streamingAssetReference = StreamingAssetReference.Instance, // Copy?
                 navalGameState = new()
                 {
@@ -142,7 +144,9 @@ namespace StrategicCombatCore
                     shipLogs = shipLogs,
                     scenarioState = new()
                     {
-                        dateTime = gameState.scenarioState.dateTime // TODO: Add noise?
+                        dateTime = gameState.scenarioState.dateTime, // TODO: Add noise?
+                        hasEndDateTime = true,
+                        endDateTime = gameState.scenarioState.dateTime.AddHours(3)
                     }
                 },
                 viewState = new()

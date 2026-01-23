@@ -118,7 +118,8 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             DoTPSGeoreferencing();
         };
 
-        root.Q<Button>("StrategicGroupEditorButton").clicked += StrategicGroupEditor.Instance.Show;
+        // root.Q<Button>("StrategicGroupEditorButton").clicked += StrategicGroupEditor.Instance.Show;
+        root.Q<Button>("StrategicGroupEditorButton").clicked += () => SwitchCenter.Instance.SwitchToStrategicGroupView(null);
 
         root.Q<Button>("SideStateButton").clicked += SideStateEditor.Instance.Show;
 

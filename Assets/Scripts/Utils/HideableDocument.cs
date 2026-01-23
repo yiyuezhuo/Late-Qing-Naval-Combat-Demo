@@ -119,4 +119,9 @@ public class HideableDocument<T> : SingletonDocument<T>, ISwitchable where T : M
     {
         Hide();
     }
+
+    public void Reshow()
+    {
+        Show();
+    }
 }

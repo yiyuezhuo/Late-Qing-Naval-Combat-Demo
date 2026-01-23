@@ -103,6 +103,23 @@ public class StrategicGroupView //
                 SwitchCenter.Instance.SwitchToShipLogView(container);
             }
         };
+
+        var setArriveToButton = root.Q<Button>("SetArriveToButton");
+        setArriveToButton.clicked += () =>
+        {
+            SwitchCenter.Instance.TryToSoftHideCurrent();
+
+            if(Utils.TryResolveCurrentValueForBinding(setArriveToButton, out StrategicGroup.ArriveState arriveState))
+            {
+                StrategicGameManager.Instance.ScheduleOneshotCellClickCallback(cell =>
+                {
+                    arriveState.arriveTo = cell.ToXY();
+
+                    // SwitchCenter.Instance.SwitchToStrategicGroupView(group);
+                    SwitchCenter.Instance.RetoreCurrentSoftHide();
+                });
+            }
+        };
     }
 }
 

@@ -566,7 +566,7 @@ public static class Utils
                     //     _ => SubordinatePickerDialog.Mode.MissionUnassignedFleetGroup
                     // };
 
-                    var pickerMode = selectedMission.isNavalTransfer ? SubordinatePickerDialog.Mode.MissionUnassignedGroup : SubordinatePickerDialog.Mode.MissionUnassignedFleetGroup;
+                    var pickerMode = selectedMission.IsNavyOnly() ?  SubordinatePickerDialog.Mode.MissionUnassignedFleetGroup : SubordinatePickerDialog.Mode.MissionUnassignedGroup;
 
                     DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables =>
                     {

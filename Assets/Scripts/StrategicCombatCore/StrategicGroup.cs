@@ -277,6 +277,26 @@ namespace StrategicCombatCore
 
         public bool forcedReturningToBase; // RTB due to Out of Fuel
 
+        // Arrive related attributes
+        // public bool enableArriveTime;
+        // public DateTime arriveTime = new DateTime(1894, 9, 17, 4, 30, 0, DateTimeKind.Utc);
+        // public bool arrived;
+        // public XY arriveTo = new();
+
+        public partial class ArriveState
+        {
+            public static DateTime defaultArriveTime = new DateTime(1894, 9, 17, 4, 30, 0, DateTimeKind.Utc);
+
+            public DateTime arriveTime = defaultArriveTime;
+            public bool arrived;
+            public XY arriveTo = new();
+        }
+
+        public ArriveState arriveState;
+
+        // public bool ShouldSerializearriveTime() => enableArriveTime;
+        // public bool ShouldSerializearrived() => enableArriveTime;
+
         public static Dictionary<StrategicUnitSize, string> sizeStrMap = new()
         {
             { StrategicUnitSize.Unspecified, "O" },

@@ -1042,8 +1042,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     state = State.Idle;
                     // ShipLogEditor.Instance.Show();
+                    
                     // TODO: Fix broken soft-close or devise a new way to select target.
-                    SwitchCenter.Instance.SwitchToShipLogView(selectedShipLog);
+                    // SwitchCenter.Instance.SwitchToShipLogView(selectedShipLog);
+                    SwitchCenter.Instance.RetoreCurrentSoftHide();
+                    
                     if (selectedMountStatusRecord != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
@@ -1059,7 +1062,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     state = State.Idle;
                     // TODO: Fix broken soft-close or devise a new way to select target.
                     // ShipLogEditor.Instance.Show();
-                    SwitchCenter.Instance.SwitchToShipLogView(selectedShipLog);
+                    
+                    // SwitchCenter.Instance.SwitchToShipLogView(selectedShipLog);
+                    SwitchCenter.Instance.RetoreCurrentSoftHide();
+
                     if (selectedFireControlSystemStatusRecord != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
@@ -1075,7 +1081,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     state = State.Idle;
                     // TODO: Fix broken soft-close or devise a new way to select target.
                     // ShipLogEditor.Instance.Show();
-                    SwitchCenter.Instance.SwitchToShipLogView(selectedShipLog);
+                    
+                    // SwitchCenter.Instance.SwitchToShipLogView(selectedShipLog);
+                    SwitchCenter.Instance.RetoreCurrentSoftHide();
+                    
                     if (selectedRapidFiringTargettingStatus != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
@@ -1091,7 +1100,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     state = State.Idle;
                     // TODO: Fix broken soft-close or devise a new way to select target.
                     // ShipLogEditor.Instance.Show();
-                    SwitchCenter.Instance.SwitchToShipLogView(selectedShipLog);
+
+                    // SwitchCenter.Instance.SwitchToShipLogView(selectedShipLog);
+                    SwitchCenter.Instance.RetoreCurrentSoftHide();
+
                     if (selectedTorpedoMountStatusRecord != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();

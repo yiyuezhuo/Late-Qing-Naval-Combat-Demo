@@ -1151,40 +1151,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
         else if (mapEditMode == StrategicMapEditMode.WaypointPlotting)
         {
-            var selectedMission = StrategicMissionEditor.Instance.selectedObject;
-            if (selectedMission != null)
-            {
-                // TODO: use currentEditingPointList
-                if (selectedMission.waypoints.Count == 0)
-                {
-                    // selectedMission.waypoints.Add(new XY() { x = activeCell.x, y = activeCell.y }); // set start
-                    selectedMission.waypoints.Add(activeCell.ToXY()); // set start
-                }
-                else
-                {
-                    // var lastWaypoint = selectedMission.waypoints[^1];
-                    // var srcCell = StrategicGameState.Instance.cellMatrix[lastWaypoint.x, lastWaypoint.y];
-                    var srcCell = selectedMission.waypoints[^1].GetCell();
-                    var dstCell = activeCell;
-
-                    IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy(); // TODO: Generalize to army?
-
-                    var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
-                    if (pathCells.Count < 2)
-                    {
-                        selectedMission.waypoints.Clear();
-                    }
-                    else
-                    {
-                        // selectedMission.waypoints.AddRange(pathCells.Skip(1).Select(cell => new XY() { x = cell.x, y = cell.y }));
-                        selectedMission.waypoints.AddRange(pathCells.Skip(1).Select(cell => cell.ToXY()));
-                    }
-                }
-            }
-            else
-            {
-                mapEditMode = StrategicMapEditMode.Select;
-            }
+            HandleCellClickWaypointPlotting(activeCell);
         }
         else if(mapEditMode == StrategicMapEditMode.RectanglePlotting)
         {
@@ -1206,6 +1173,53 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         else
         {
             HandleCellEditClick(activeCell);
+        }
+    }
+
+    void HandleCellClickWaypointPlotting(Cell activeCell)
+    {
+        var selectedMission = StrategicMissionEditor.Instance.selectedObject;
+        if (selectedMission != null)
+        {
+            // TODO: use currentEditingPointList
+            if (selectedMission.waypoints.Count == 0 || pointListEditorMode == PointListEditorMode.Discrete)
+            {
+                // selectedMission.waypoints.Add(new XY() { x = activeCell.x, y = activeCell.y }); // set start
+                selectedMission.waypoints.Add(activeCell.ToXY()); // set start
+            }
+            else if(pointListEditorMode == PointListEditorMode.Continues)
+            {
+                // var lastWaypoint = selectedMission.waypoints[^1];
+                // var srcCell = StrategicGameState.Instance.cellMatrix[lastWaypoint.x, lastWaypoint.y];
+                var srcCell = selectedMission.waypoints[^1].GetCell();
+                var dstCell = activeCell;
+
+                IGraphEnumerable<Cell> graph = pointListEditorPassabilityMode switch
+                {
+                    PassabilityMode.Land => new DynamicCellGraphArmy(),
+                    PassabilityMode.Sea => new DynamicCellGraphNavy(),
+                    _ => new DynamicCellGraphNavy(),
+                };
+
+                var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
+                if (pathCells.Count < 2)
+                {
+                    selectedMission.waypoints.Clear();
+                }
+                else
+                {
+                    // selectedMission.waypoints.AddRange(pathCells.Skip(1).Select(cell => new XY() { x = cell.x, y = cell.y }));
+                    selectedMission.waypoints.AddRange(pathCells.Skip(1).Select(cell => cell.ToXY()));
+                }
+            }
+            else
+            {
+                mapEditMode = StrategicMapEditMode.Select;
+            }
+        }
+        else
+        {
+            mapEditMode = StrategicMapEditMode.Select;
         }
     }
 
@@ -1377,14 +1391,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
             // Refresh Rect Line Renderer
             var rect = currentEditingRect;
-            var rectShown = rect != null && rect.xy1 != null && rect.xy2 != null;
+            var rectShown = rect != null && rect.IsValid();
             rectAreaLineController.gameObject.SetActive(rectShown);
             if(rectShown)
             {
-                var x1 = Math.Min(rect.xy1.x, rect.xy2.x);
-                var x2 = Math.Max(rect.xy1.x, rect.xy2.x);
-                var y1 = Math.Min(rect.xy1.y, rect.xy2.y);
-                var y2 = Math.Max(rect.xy1.y, rect.xy2.y);
+                rect.GetBoundary(out int x1, out int x2, out int y1, out int y2);
+
                 rectAreaLineController.Sync(new List<XY>()
                 {
                     new XY(){x=x1, y=y1},

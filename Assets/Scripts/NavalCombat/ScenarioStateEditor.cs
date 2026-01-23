@@ -18,12 +18,23 @@ public class DateTimeHolder : IDateTimeHolder
 
     public DateTime GetDateTime() => getter();
     public void SetDateTime(DateTime dateTime) => setter(dateTime);
-
 }
 
 public class ScenarioStateDateTimeViewModel
 {
     public IDateTimeHolder dateTimeHolder;
+
+    public static ScenarioStateDateTimeViewModel GetDateTimeHolder(Func<DateTime> getter, Action<DateTime> setter)
+    {
+        return new()
+        {
+            dateTimeHolder = new DateTimeHolder()
+            {
+                getter = getter,
+                setter = setter,
+            }  
+        };
+    }
 
     bool IsDayValid(int _year, int _month, int _day)
     {
@@ -37,7 +48,7 @@ public class ScenarioStateDateTimeViewModel
         get => dateTimeHolder.GetDateTime().Year;
         set
         {
-            if (value < 0 || value > 2025)
+            if (value < 1 || value > 9999) // DateTime's support range: 0001-01-01 ~ 9999-12-31
             {
                 Debug.LogWarning($"Invalid year value: {value}");
                 return;
@@ -155,12 +166,6 @@ namespace NavalCombatCore
         public DateTime GetDateTime() => dateTime;
         public void SetDateTime(DateTime dt) => dateTime = dt;
 
-        // public DateTimeOffset GetReferenceTimeZoneDateTimeOffset()
-        // {
-        //     var dateTimeOffset = new DateTimeOffset(dateTime);
-        //     return dateTimeOffset.ToOffset(TimeSpan.FromHours(CoreParameter.Instance.referenceTimeZoneOffset));
-        // }
-
         ScenarioStateDateTimeViewModel _dateTimeViewModel; // Note it's possible to initialize the view model attribute from empty constructor but this may break core's capabbility to leverage empty constructor
 
         [CreateProperty]
@@ -181,20 +186,35 @@ namespace NavalCombatCore
         [CreateProperty]
         public ScenarioStateDateTimeViewModel endDateTimeViewModel
         {
-            get
-            {
-                if(_endDateTimeViewModel == null)
-                {
-                    _endDateTimeViewModel = new ScenarioStateDateTimeViewModel() {
-                        dateTimeHolder = new DateTimeHolder()
-                        {
-                            getter = () => endDateTime,
-                            setter = (dt) => endDateTime = dt
-                        }
-                    };
-                }
-                return _endDateTimeViewModel;
-            }
+            // get
+            // {
+            //     if(_endDateTimeViewModel == null)
+            //     {
+            //         _endDateTimeViewModel = new ScenarioStateDateTimeViewModel() {
+            //             dateTimeHolder = new DateTimeHolder()
+            //             {
+            //                 getter = () => endDateTime,
+            //                 setter = (dt) => endDateTime = dt
+            //             }
+            //         };
+            //     }
+            //     return _endDateTimeViewModel;
+            // }
+
+            // get => _endDateTimeViewModel ??= new ScenarioStateDateTimeViewModel()
+            // {
+            //     dateTimeHolder = new DateTimeHolder()
+            //     {
+            //         getter = () => endDateTime,
+            //         setter = (dt) => endDateTime = dt
+            //     }
+            // };
+
+            get => _endDateTimeViewModel ??= ScenarioStateDateTimeViewModel.GetDateTimeHolder
+            (
+                () => endDateTime,
+                (dt) => endDateTime = dt
+            );
         }
 
         // GetReferenceTimeZoneDateTimeOffsetString

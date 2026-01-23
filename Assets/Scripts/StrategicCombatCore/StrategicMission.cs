@@ -6,7 +6,6 @@ using System;
 using YYZ.PathFinding;
 using System.Xml.Serialization;
 using YYZ;
-using UnityEngine;
 
 
 namespace StrategicCombatCore
@@ -49,6 +48,32 @@ namespace StrategicCombatCore
         {
             return $"Rectangle({xy1}, {xy2})";
         }
+
+        public bool IsValid() => xy1 != null && xy2 != null;
+        public void GetBoundary(out int x1, out int x2, out int y1, out int y2)
+        {
+            x1 = Math.Min(xy1.x, xy2.x);
+            x2 = Math.Max(xy1.x, xy2.x);
+            y1 = Math.Min(xy1.y, xy2.y);
+            y2 = Math.Max(xy1.y, xy2.y);
+        }
+
+        public IEnumerable<Cell> IterateNavyPssableCells()
+        {
+            var mat = StrategicGameState.Instance.cellMatrix;
+            GetBoundary(out var x1, out var x2, out var y1, out var y2);
+            for(var x = x1; x <= x2; x++)
+            {
+                for(var y = y1; y <= y2; y++)
+                {
+                    var cell = mat[x, y];
+                    if(cell.IsNavyPassable())
+                    {
+                        yield return cell;
+                    }
+                }
+            }
+        }
     }
 
     [XmlInclude(typeof(PatrolMission))]
@@ -59,6 +84,7 @@ namespace StrategicCombatCore
     [XmlInclude(typeof(GlobalTradeProtectionMission))]
     [XmlInclude(typeof(OneShotActiveSortieMission))]
     [XmlInclude(typeof(RectAreaPatrolMission))]
+    [XmlInclude(typeof(LandOperationMission))]
     public partial class StrategicMission : IObjectIdLabeled, INamed
     {
         public string objectId { get; set; }
@@ -84,7 +110,8 @@ namespace StrategicCombatCore
             OneShotActiveSortie, // Move to a random position having trade traffic 
             // OneShotSweepToContact, // Send ships to lastest contact report location
             // OneShotSweepToBase, // Send ships to random hostile base.
-            RectPatrolArea
+            RectPatrolArea,
+            LandOperation
         }
 
         public static StrategicMission Create(MissionType type)
@@ -99,6 +126,7 @@ namespace StrategicCombatCore
                 MissionType.GlobalTradeProtection => new GlobalTradeProtectionMission(),
                 MissionType.OneShotActiveSortie => new OneShotActiveSortieMission(),
                 MissionType.RectPatrolArea => new RectAreaPatrolMission(),
+                MissionType.LandOperation => new LandOperationMission(),
                 // MissionType.GlobalTradeProctection => new GlobalTradePro
                 _ => null
             };
@@ -437,9 +465,16 @@ namespace StrategicCombatCore
 
         protected bool IsOperational() => active && !interrupted && !completed;
         protected bool IsCompletedOrInterrupted() => interrupted || completed;
+
+        public virtual bool IsNavyOnly() => false;
     }
 
-    public class PatrolMission : StrategicMission
+    public class NavyMission : StrategicMission
+    {
+        public override bool IsNavyOnly() => true;
+    }
+
+    public class PatrolMission : NavyMission
     {
         public enum PatrolState
         {
@@ -494,7 +529,7 @@ namespace StrategicCombatCore
         }
     }
 
-    public class SupplyMission : StrategicMission
+    public class SupplyMission : NavyMission
     {
         public enum SupplyState
         {
@@ -716,7 +751,7 @@ namespace StrategicCombatCore
         }
     }
 
-    public class GlobalSortiePlannarMission : StrategicMission
+    public class GlobalSortiePlannarMission : NavyMission
     {
         public StrategicMission MakeOneChildMissionAndAssignGroups(List<StrategicGroup> assignedFleetGroups, bool active)
         {
@@ -907,7 +942,7 @@ namespace StrategicCombatCore
         }
     }
 
-    public class OneShotSortieMission : StrategicMission
+    public class OneShotSortieMission : NavyMission
     {
         public enum OneShotSortieState
         {
@@ -992,16 +1027,45 @@ namespace StrategicCombatCore
         }
     }
 
-    public partial class RectAreaPatrolMission : StrategicMission
+    public partial class RectAreaPatrolMission : NavyMission
     {
         public Rectangle rectangle = new();
 
+        protected override void DoTransition()
+        {
+            var availableFleetGroups = IterAssignedStationedAtBaseGroups().ToList();
+            foreach(var assignedFleetGroup in availableFleetGroups)
+            {
+                if(assignedFleetGroup.plannedPath.Count == 0)
+                {
+                    var dstCell = RollRectangleCell();
+                    if(dstCell != null)
+                    {
+                        TryPlanPathWithSupplyCheck(assignedFleetGroup, dstCell);
+                    }
+                }
+            }
+        }
+
+        protected Cell RollRectangleCell()
+        {
+            var cells = rectangle.IterateNavyPssableCells().ToList();
+            if(cells.Count > 0)
+            {
+                var sampledCell = RandomUtils.Sample(cells);
+                return sampledCell;
+            }
+            return null;
+        }
+
         protected override void DoUpdateStrategicGroup(StrategicGroup strategicGroup)
         {
-            
+            PlanReturnToBasePathForNonBasedFleet();
         }
     }
 
-
-
+    public class LandOperationMission : StrategicMission
+    {
+        
+    }
 }

@@ -8,11 +8,19 @@
         <ui:Button text="Reset" name="ResetButton"/>
         <ui:VisualElement style="flex-direction: row;">
             <ui:Label text="Mode"/>
-            <ui:EnumField value="Center" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" style="flex-grow: 1;"/>
+            <ui:EnumField value="Center" type="StrategicGameManager+PointListEditorMode, Assembly-CSharp" style="flex-grow: 1;">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="pointListEditorMode" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:EnumField>
         </ui:VisualElement>
         <ui:VisualElement style="flex-direction: row;">
             <ui:Label text="Passability"/>
-            <ui:EnumField value="Center" type="StrategicGameManager+PassabilityMode, Assembly-CSharp" style="flex-grow: 1;"/>
+            <ui:EnumField value="Center" type="StrategicGameManager+PassabilityMode, Assembly-CSharp" style="flex-grow: 1;">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="pointListEditorPassabilityMode" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:EnumField>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

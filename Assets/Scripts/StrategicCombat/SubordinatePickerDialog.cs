@@ -78,7 +78,8 @@ public class SubordinatePickerDialog
             filteredLandUnits = new();
             filteredGroups = filteredGroups.Where(
                 group => group.assignedMissionObjectId == null &&
-                group.deployState == StrategicGroup.DeployState.Independent &&
+                // group.deployState == StrategicGroup.DeployState.Independent &&
+                group.deployState != StrategicGroup.DeployState.Combined &&
                 group.type == StrategicGroup.Type.Fleet
             ).ToList();
         }
@@ -89,7 +90,8 @@ public class SubordinatePickerDialog
             filteredLandUnits = new();
             filteredGroups = filteredGroups.Where(
                 group => group.assignedMissionObjectId == null &&
-                group.deployState == StrategicGroup.DeployState.Independent
+                // group.deployState == StrategicGroup.DeployState.Independent
+                group.deployState != StrategicGroup.DeployState.Combined
             ).ToList();
         }
     }

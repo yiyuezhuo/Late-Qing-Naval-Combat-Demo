@@ -7,6 +7,8 @@ using System;
 public interface ISwitchable
 {
     public void SwitchClose(); // Close 
+    public void SoftHide();
+    public void Reshow();
     // public void SwitchOpen(); // Open. Add it if we want to implement "Go to Previous" feature
 }
 
@@ -25,14 +27,30 @@ public class SwitchCenter
 
     public void TryToSoftHideCurrent() // Temp Hack
     {
-        if(currentActiveViewContainer != null && currentActiveViewContainer is ShipLogEditor shipLogEditor)
-        {
-            shipLogEditor.SoftHide();
-        }
-        else if(currentActiveViewContainer != null && currentActiveViewContainer is TempDialog tempDialog)
-        {
-            tempDialog.SoftHide();
-        }
+        // if(currentActiveViewContainer != null && currentActiveViewContainer is ShipLogEditor shipLogEditor)
+        // {
+        //     shipLogEditor.SoftHide();
+        // }
+        // else if(currentActiveViewContainer != null && currentActiveViewContainer is StrategicGroupEditor strategicGroupEditor)
+        // {
+        //     strategicGroupEditor.SoftHide();
+        // }
+
+        // if(currentActiveViewContainer != null && currentActiveViewContainer is HideableDocument<T> hideableDocument)
+        // {
+        //     currentActiveViewContainer.SoftHide();
+        // }
+        // else if(currentActiveViewContainer != null && currentActiveViewContainer is TempDialog tempDialog)
+        // {
+        //     tempDialog.SoftHide();
+        // }
+
+        currentActiveViewContainer?.SoftHide();
+    }
+
+    public void RetoreCurrentSoftHide()
+    {
+        currentActiveViewContainer?.Reshow();
     }
     
     public void SwitchToLeaderView(Leader leader) // close previous view (2 columns editor) or dialog and open new view (2 columns editor) or dialog.
@@ -84,28 +102,29 @@ public class SwitchCenter
 
     public void SwitchToStrategicGroupView(StrategicGroup group)
     {
-        if(group != null)
+        if(GamePreference.Instance.isInEditMode)
         {
-            var idx = StrategicGameState.Instance.strategicGroups.IndexOf(group);
-            if (group != null && idx != -1)
-            {
-                // currentActiveViewContainer?.SwitchClose();
-                // currentActiveViewContainer = StrategicGroupEditor.Instance;
-                
+            UpdateCurrentActiveViewContainer(StrategicGroupEditor.Instance);
+            StrategicGroupEditor.Instance.Show();
 
-                // TODO: Branching according to global IsEditor flag
-                if(GamePreference.Instance.isInEditMode)
+            if(group != null)
+            {
+                var idx = StrategicGameState.Instance.strategicGroups.IndexOf(group);
+                if(idx != -1)
                 {
-                    UpdateCurrentActiveViewContainer(StrategicGroupEditor.Instance);
-                    StrategicGroupEditor.Instance.Show();
                     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
                 }
-                else
-                {
-                    var tempDialog = DialogRoot.Instance.PopupStrategicGroupDialog(group);
-                    UpdateCurrentActiveViewContainer(tempDialog);
-                }
             }
+        }
+        else if(currentActiveViewContainer is TempDialog currentTempDialog && currentTempDialog.templateDataSource is StrategicGroup _group && group == _group && !currentTempDialog.closed) // ShipLog is the workaround to check if it's a ship log dialog
+        {
+            // Soft Hide workaround for dialog mode
+            currentTempDialog.Reshow();
+        }
+        else
+        {
+            var tempDialog = DialogRoot.Instance.PopupStrategicGroupDialog(group);
+            UpdateCurrentActiveViewContainer(tempDialog);
         }
     }
 
@@ -152,7 +171,7 @@ public class SwitchCenter
                     ShipLogEditor.Instance.Show();
                     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipLogEditor.Instance.shipLogListView, idx);
                 }
-                else if(currentActiveViewContainer is TempDialog currentTempDialog && currentTempDialog.templateDataSource is ShipLog _shipLog && !currentTempDialog.closed) // ShipLog is the workaround to check if it's a ship log dialog
+                else if(currentActiveViewContainer is TempDialog currentTempDialog && currentTempDialog.templateDataSource is ShipLog _shipLog && shipLog == _shipLog && !currentTempDialog.closed) // ShipLog is the workaround to check if it's a ship log dialog
                 {
                     // Soft Hide workaround for dialog mode
                     currentTempDialog.Reshow();

@@ -288,6 +288,41 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public string assignedMissionNameLink => GetAssignedMission()?.nameLink;
+
+        public partial class ArriveState
+        {
+            ScenarioStateDateTimeViewModel _arriveTimeViewModel;
+
+            [CreateProperty]
+            public ScenarioStateDateTimeViewModel arriveTimeViewModel
+            {
+                get => _arriveTimeViewModel ??= ScenarioStateDateTimeViewModel.GetDateTimeHolder
+                (
+                    () => arriveTime,
+                    dt =>arriveTime = dt
+                );
+            }
+        }
+
+        [CreateProperty]
+        public bool enableArriveState
+        {
+            get => arriveState != null;
+            set
+            {
+                if(value != enableArriveState)
+                {
+                    if(value)
+                    {
+                        arriveState = new ArriveState();
+                    }
+                    else
+                    {
+                        arriveState = null;
+                    }
+                }
+            }
+        }
     }
 
     public partial class StrategicGroupReference

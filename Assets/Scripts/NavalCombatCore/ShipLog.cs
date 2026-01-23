@@ -620,6 +620,8 @@ namespace NavalCombatCore
 
         public CargoAreas cargoAreas = new();
 
+        // public bool ShouldSerializecargoAreas() => shipClass != null && shipClass.type == ShipType.Transport;
+
         // Aux States for AI:
         // TODO: How to represent this state in the UI?
         public CountDownClock recentCollisionClock = new();

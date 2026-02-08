@@ -1,0 +1,121 @@
+
+## Internal
+
+Some UI Element's internal structure (can be derived from UI Toolkit Debugger), can be used to guide to override style, both for human and AI:
+
+### `EnumField`
+
+```
+EnumField .unity-base-field .unity-base-field--no-label .unity-enum-field .topbar-field
+    VisualElement .unity-base-field__input .unity-enum-field__input
+        TextElement .unity-text-element .unity-enum-field__text
+        VisualElement .unity-enum-field__arrow
+```
+
+If EnumField is stylized, then its Dyanmic created Dropdown should be stylized as well:
+
+#### Dyanmic created Dropdown
+
+It is created when EnumField or DropdownField is clicked, and removed when an option is selected or "outer" area is clicked. The internal looks like:
+
+```
+VisualElement .unity-base-dropdown
+    VisualElement .unity-base-dropdown__container-outer
+        ScrollView .unity-scroll-view .unity-base-dropdown__container-inner .unity-scroll-view--scroll .unity-scroll-view--vertical-horizontal
+```
+
+Dynamic created Dropdown would has some elements in `#unity-content-container` of ScrollView:
+
+```
+VisualElement .unity-base-dropdown__item
+    VisualElement .unity-base-dropdown__item-content
+        VisualElement .unity-base-dropdown__checkmark
+        Label .unity-text-element .unity-label .unity-base-dropdown__label
+```
+
+If Dynamic created Dropdown is stylized, then those items should be stylized as well.
+
+##### Apply Styles (Actionable)
+When restyling this UI, always apply dropdown styling to:
+- `.unity-base-dropdown__container-inner` (for background, it's default color is white)
+- If Dynamic created Dropdown is stylized, then its ScrollView must be stylized.
+Do NOT style top node `.unity-base-dropdown` (it's an element covering full screen to capture "outer" click, so it should stick to its default transparent style). 
+
+### `ScrollView`
+
+```
+ScrollView .unity-scroll-view .unity-base-dropdown__container-inner .unity-scroll-view--scroll .unity-scroll-view--vertical-horizontal
+    VisualElement #unity-content-and-vertical-scroll-container .unity-scroll-view__content-and-vertical-scroll-container
+        VisualElement #unity-content-viewport .unity-scroll-view__content-viewport .unity-scroll-view__content-viewport--vertical-horizontal
+            VisualElement #unity-content-container .unity-scroll-view__content-container .unity-scroll-view__content-container--vertical-horizontal
+        Scroller .unity-scroller .unity-scroller--vertical .unity-scroll-view__vertical-scroller .unity-disabled
+    Scroller .unity-scroller .unity-scroller--horizontal .unity-scroll-view__horizontal-scroller
+```
+If `ScrollView` is stylized, then its two `Scroller` must be stylized.
+
+### `Scroller`
+
+```
+Scroller .unity-scroller .unity-scroller--vertical .unity-scroll-view__vertical-scroller .unity-disabled
+    RepeatButton #unity-low-button .unity-text-element .unity-repeat-button .unity-scroller__low-button
+    RepeatButton #unity-high-button .unity-text-element .unity-repeat-button .unity-scroller__high-button
+    ScrollerSlider #unity-slider .unity-base-field .unity-base-field--no-label .unity-base-slider .unity-base-slider--vertical .unity-slider .unity-scroller__slider
+        VisualElement .unity-base-field__input .unity-base-slider__input .unity-slider__input
+            VisualElement #unity-drag-container .unity-base-slider__drag-container
+                VisualElement #unity-tracker .unity-base-slider__tracker
+                VisualElement #unity-dragger-border .unity-base-slider__dragger-border
+                VisualElement #unity-dragger .unity-base-slider__dragger
+```
+
+Notes for styling of `Scroller`
+- The button color of `RepeatButton` is controlled by `background-color` (default is RGB(240, 240, 240) from Unity default stylesheet)
+- The arrow in the `RepeatButton` is controlled by `-unity-background-image-tint-color` (default is inline RGB(50, 50, 50))
+- `RepeatButton` should be selected by `.unity-scroller > .unity-scroller__low-button, .unity-scroller > .unity-scroller__high-button`.
+- The color of move area of the slider box is selected by `.unity-base-slider__drag-container > unity-base-slider__tracker`, (default is RGB(188, 188, 188) from Unity default stylesheet).
+- The color of slider box is controlled by `.unity-base-slider__drag-container > unity-base-slider__dragger` (default is RGB(231, 231, 231) from Unity default stylesheet).
+
+
+### `Toggle`
+
+```
+Toggle .unity-base-field .unity-base-field--no-label .unity-toggle
+    VisualElement .unity-base-field__input .unity-toggle__input
+        VisualElement #unity-checkmark .unity-toggle__checkmark
+```
+
+If `Toggle` is stylized, then its Check Mark must be stylized as well.
+
+Check Mark (×) in the Toggle or selected item in the dropdown field can be controlled by `VisualElement.unity-toggle__checkmark`. The background color is the `background-color` (default is RGB(72,76,72)), the cross shape is controlled by `-unity-background-image-tint-color` (default is RGB(50,50,50)).
+
+### `ProgressBar`
+
+```
+ProgressBar .unity-progress-bar .stat-bar
+    VisualElement #unity-progress-bar .unity-progress-bar__container
+        VisualElement .unity-progress-bar__background
+            VisualElement .unity-progress-bar__progress
+        VisualElement .unity-progress-bar__title-container
+            Label .unity-text-element .unity-label .unity-progress-bar__title
+```
+
+### `TextField`
+
+```
+TextField .unity-base-field .unity-base-text-field .unity-text-field
+    Label .unity-text-element .unity-label .unity-base-field__label .unity-base-text-field__label .unity-text-field__label
+    TextInput #unity-text-input .unity-base-text-field__input .unity-base-text-field__input--single-line .unity-base-field__input .unity-text-field__input
+        TextElement .unity-text-element .unity-text-element--selectable .unity-text-element--inner-input-field-component
+```
+
+## `IntegerField`
+
+```
+IntegerField .unity-base-field .unity-base-text-field .unity-integer-field
+    Label .unity-text-element .unity-label .unity-base-field__label .unity-base-text-field__label .unity-integer-field__label .unity-base-field__label--with-dragger
+    IntegerInput #unity-text-input .unity-base-text-field__input .unity-base-text-field__input--single-line .unity-base-field__input .unity-integer-field__input
+```
+
+## Default style
+
+- Text color in the default style is black. So if a dark color background override is applied, a lighter color should applied to text.
+

@@ -16559,211 +16559,6 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    </LandUnit>
    <LandUnit>
     <name>
-     <english>China Super Depot</english>
-     <japanese>中国総倉庫</japanese>
-     <chineseSimplified>中国总仓库</chineseSimplified>
-    </name>
-    <strength>0</strength>
-    <strengthManualOverride>false</strengthManualOverride>
-    <suppression>0</suppression>
-    <morale>1</morale>
-    <fatigue>0</fatigue>
-    <supplyTons>27768.609375</supplyTons>
-    <supplyGeneratedTons>10000</supplyGeneratedTons>
-    <remark>Generic Super Depot Supply Source.</remark>
-    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
-    <supplyTransferState>
-     <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
-      <flowSupplyTons>0</flowSupplyTons>
-      <cost>0</cost>
-     </requestRecord>
-     <requestedRecords />
-    </supplyTransferState>
-    <portLevel>0</portLevel>
-    <repairShipyardLevel>0</repairShipyardLevel>
-    <objectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</objectId>
-    <strategicGroupReference>
-     <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
-    </strategicGroupReference>
-   </LandUnit>
-   <LandUnit>
-    <name>
-     <english>Japan Super Depot</english>
-     <japanese>日本総倉庫</japanese>
-     <chineseSimplified>日本总仓库</chineseSimplified>
-    </name>
-    <strength>0</strength>
-    <strengthManualOverride>false</strengthManualOverride>
-    <suppression>0</suppression>
-    <morale>1</morale>
-    <fatigue>0</fatigue>
-    <supplyTons>48586.265625</supplyTons>
-    <supplyGeneratedTons>10000</supplyGeneratedTons>
-    <remark>Generic Super Depot Supply Source.</remark>
-    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
-    <supplyTransferState>
-     <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
-      <flowSupplyTons>0</flowSupplyTons>
-      <cost>0</cost>
-     </requestRecord>
-     <requestedRecords />
-    </supplyTransferState>
-    <portLevel>0</portLevel>
-    <repairShipyardLevel>0</repairShipyardLevel>
-    <objectId>4bed7260-ce35-4876-bc7f-ae025cec21b4</objectId>
-    <strategicGroupReference>
-     <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
-    </strategicGroupReference>
-   </LandUnit>
-   <LandUnit>
-    <name>
-     <english>Beiyang Depot</english>
-     <japanese>北洋倉庫</japanese>
-     <chineseSimplified>北洋仓库</chineseSimplified>
-    </name>
-    <strength>0</strength>
-    <strengthManualOverride>false</strengthManualOverride>
-    <suppression>0</suppression>
-    <morale>1</morale>
-    <fatigue>0</fatigue>
-    <supplyTons>26460.818359375</supplyTons>
-    <supplyGeneratedTons>0</supplyGeneratedTons>
-    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
-    <supplyTransferState>
-     <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
-      <flowSupplyTons>0</flowSupplyTons>
-      <cost>0</cost>
-     </requestRecord>
-     <requestedRecords />
-    </supplyTransferState>
-    <portLevel>0</portLevel>
-    <repairShipyardLevel>0</repairShipyardLevel>
-    <objectId>f4d6ffd3-4566-46bb-a178-5811cf748be5</objectId>
-    <strategicGroupReference>
-     <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
-    </strategicGroupReference>
-   </LandUnit>
-   <LandUnit>
-    <name>
-     <english>Korea IJA Depot</english>
-     <japanese>日本軍朝鮮倉庫</japanese>
-     <chineseSimplified>日军朝鲜仓库</chineseSimplified>
-    </name>
-    <strength>0</strength>
-    <strengthManualOverride>false</strengthManualOverride>
-    <suppression>0</suppression>
-    <morale>1</morale>
-    <fatigue>0</fatigue>
-    <supplyTons>412.64996337890625</supplyTons>
-    <supplyGeneratedTons>0</supplyGeneratedTons>
-    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
-    <supplyTransferState>
-     <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
-      <flowSupplyTons>0</flowSupplyTons>
-      <cost>0</cost>
-     </requestRecord>
-     <requestedRecords />
-    </supplyTransferState>
-    <portLevel>0</portLevel>
-    <repairShipyardLevel>0</repairShipyardLevel>
-    <objectId>69fa8dac-d422-4297-9726-e145ece4ab13</objectId>
-    <strategicGroupReference>
-     <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
-    </strategicGroupReference>
-   </LandUnit>
-   <LandUnit>
-    <name>
-     <english>Seonghwan Depot</english>
-     <japanese>成歓倉庫</japanese>
-     <chineseSimplified>成欢仓库</chineseSimplified>
-    </name>
-    <strength>0</strength>
-    <strengthManualOverride>false</strengthManualOverride>
-    <suppression>0</suppression>
-    <morale>1</morale>
-    <fatigue>0</fatigue>
-    <supplyTons>550.800048828125</supplyTons>
-    <supplyGeneratedTons>0</supplyGeneratedTons>
-    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
-    <supplyTransferState>
-     <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
-      <flowSupplyTons>0</flowSupplyTons>
-      <cost>0</cost>
-     </requestRecord>
-     <requestedRecords />
-    </supplyTransferState>
-    <portLevel>0</portLevel>
-    <repairShipyardLevel>0</repairShipyardLevel>
-    <objectId>0c66f06a-2031-478c-8899-bce39dc614ba</objectId>
-    <strategicGroupReference>
-     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
-    </strategicGroupReference>
-   </LandUnit>
-   <LandUnit>
-    <name>
-     <english>Weihaiwei Depot</english>
-     <japanese>威海衛倉庫</japanese>
-     <chineseSimplified>威海卫仓库</chineseSimplified>
-    </name>
-    <strength>0</strength>
-    <strengthManualOverride>false</strengthManualOverride>
-    <suppression>0</suppression>
-    <morale>1</morale>
-    <fatigue>0</fatigue>
-    <supplyTons>24591.4296875</supplyTons>
-    <supplyGeneratedTons>0</supplyGeneratedTons>
-    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
-    <supplyTransferState>
-     <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
-      <flowSupplyTons>0</flowSupplyTons>
-      <cost>0</cost>
-     </requestRecord>
-     <requestedRecords />
-    </supplyTransferState>
-    <portLevel>0</portLevel>
-    <repairShipyardLevel>0</repairShipyardLevel>
-    <objectId>08cbd225-e688-4354-aaa2-9509a71af1e2</objectId>
-    <strategicGroupReference>
-     <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
-    </strategicGroupReference>
-   </LandUnit>
-   <LandUnit>
-    <name>
-     <english>Port of Arthur Depot</english>
-     <japanese>旅順倉庫</japanese>
-     <chineseSimplified>旅顺仓库</chineseSimplified>
-    </name>
-    <strength>0</strength>
-    <strengthManualOverride>false</strengthManualOverride>
-    <suppression>0</suppression>
-    <morale>1</morale>
-    <fatigue>0</fatigue>
-    <supplyTons>0</supplyTons>
-    <supplyGeneratedTons>0</supplyGeneratedTons>
-    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
-    <supplyTransferState>
-     <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
-      <flowSupplyTons>0</flowSupplyTons>
-      <cost>0</cost>
-     </requestRecord>
-     <requestedRecords />
-    </supplyTransferState>
-    <portLevel>0</portLevel>
-    <repairShipyardLevel>0</repairShipyardLevel>
-    <objectId>49888c20-7d72-4eae-ab87-02be51361b92</objectId>
-    <strategicGroupReference>
-     <referenceId>580cfa37-58f2-41f6-af34-9ba1906a5eee</referenceId>
-    </strategicGroupReference>
-   </LandUnit>
-   <LandUnit>
-    <name>
      <english>3rd Eng Btn</english>
      <japanese>第三工兵大隊</japanese>
      <chineseSimplified>第三工兵大队</chineseSimplified>
@@ -18448,64 +18243,6 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    </LandUnit>
    <LandUnit>
     <name>
-     <english>Shanghai Depot</english>
-     <japanese>上海倉庫</japanese>
-     <chineseSimplified>上海仓库</chineseSimplified>
-    </name>
-    <strength>0</strength>
-    <strengthManualOverride>false</strengthManualOverride>
-    <suppression>0</suppression>
-    <morale>1</morale>
-    <fatigue>0</fatigue>
-    <supplyTons>0</supplyTons>
-    <supplyGeneratedTons>0</supplyGeneratedTons>
-    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
-    <supplyTransferState>
-     <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
-      <flowSupplyTons>0</flowSupplyTons>
-      <cost>0</cost>
-     </requestRecord>
-     <requestedRecords />
-    </supplyTransferState>
-    <portLevel>0</portLevel>
-    <repairShipyardLevel>0</repairShipyardLevel>
-    <objectId>7a652a81-3d4e-4caf-86a1-9ebfe5130b60</objectId>
-    <strategicGroupReference>
-     <referenceId>ff0665fc-3324-4015-b532-f94b1f7c6d97</referenceId>
-    </strategicGroupReference>
-   </LandUnit>
-   <LandUnit>
-    <name>
-     <english>Fuzhou Depot</english>
-     <japanese>福州倉庫</japanese>
-     <chineseSimplified>福州仓库</chineseSimplified>
-    </name>
-    <strength>0</strength>
-    <strengthManualOverride>false</strengthManualOverride>
-    <suppression>0</suppression>
-    <morale>1</morale>
-    <fatigue>0</fatigue>
-    <supplyTons>0</supplyTons>
-    <supplyGeneratedTons>0</supplyGeneratedTons>
-    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
-    <supplyTransferState>
-     <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
-      <flowSupplyTons>0</flowSupplyTons>
-      <cost>0</cost>
-     </requestRecord>
-     <requestedRecords />
-    </supplyTransferState>
-    <portLevel>0</portLevel>
-    <repairShipyardLevel>0</repairShipyardLevel>
-    <objectId>e44d9f9b-f6d1-4e29-9c58-c2c5e2cf3eb7</objectId>
-    <strategicGroupReference>
-     <referenceId>741e2594-9434-4915-89e2-d17985701961</referenceId>
-    </strategicGroupReference>
-   </LandUnit>
-   <LandUnit>
-    <name>
      <english>1st Bn, 1st Art Regt</english>
      <japanese>第一炮兵連隊第一大隊</japanese>
      <chineseSimplified>第一炮兵联队第一大队</chineseSimplified>
@@ -19677,6 +19414,269 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <objectId>bb9bf2b3-67bf-4b76-8321-a65a29b937ad</objectId>
     <strategicGroupReference>
      <referenceId>c57852e7-58fc-4373-87f0-016a1043d705</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>China Super Depot</english>
+     <japanese>中国総倉庫</japanese>
+     <chineseSimplified>中国总仓库</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>27768.609375</supplyTons>
+    <supplyGeneratedTons>10000</supplyGeneratedTons>
+    <remark>Generic Super Depot Supply Source.</remark>
+    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>0</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</objectId>
+    <strategicGroupReference>
+     <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Japan Super Depot</english>
+     <japanese>日本総倉庫</japanese>
+     <chineseSimplified>日本总仓库</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>48586.265625</supplyTons>
+    <supplyGeneratedTons>10000</supplyGeneratedTons>
+    <remark>Generic Super Depot Supply Source.</remark>
+    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>0</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>4bed7260-ce35-4876-bc7f-ae025cec21b4</objectId>
+    <strategicGroupReference>
+     <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Beiyang Depot</english>
+     <japanese>北洋倉庫</japanese>
+     <chineseSimplified>北洋仓库</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>26460.818359375</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>0</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>f4d6ffd3-4566-46bb-a178-5811cf748be5</objectId>
+    <strategicGroupReference>
+     <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Korea IJA Depot</english>
+     <japanese>日本軍朝鮮倉庫</japanese>
+     <chineseSimplified>日军朝鲜仓库</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>412.64996337890625</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>0</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>69fa8dac-d422-4297-9726-e145ece4ab13</objectId>
+    <strategicGroupReference>
+     <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Seonghwan Depot</english>
+     <japanese>成歓倉庫</japanese>
+     <chineseSimplified>成欢仓库</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>550.800048828125</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>0</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>0c66f06a-2031-478c-8899-bce39dc614ba</objectId>
+    <strategicGroupReference>
+     <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Weihaiwei Depot</english>
+     <japanese>威海衛倉庫</japanese>
+     <chineseSimplified>威海卫仓库</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>24591.4296875</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>0</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>08cbd225-e688-4354-aaa2-9509a71af1e2</objectId>
+    <strategicGroupReference>
+     <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Port of Arthur Depot</english>
+     <japanese>旅順倉庫</japanese>
+     <chineseSimplified>旅顺仓库</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>0</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>0</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>49888c20-7d72-4eae-ab87-02be51361b92</objectId>
+    <strategicGroupReference>
+     <referenceId>580cfa37-58f2-41f6-af34-9ba1906a5eee</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Shanghai Depot</english>
+     <japanese>上海倉庫</japanese>
+     <chineseSimplified>上海仓库</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>0</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>0</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>7a652a81-3d4e-4caf-86a1-9ebfe5130b60</objectId>
+    <strategicGroupReference>
+     <referenceId>ff0665fc-3324-4015-b532-f94b1f7c6d97</referenceId>
+    </strategicGroupReference>
+   </LandUnit>
+   <LandUnit>
+    <name>
+     <english>Fuzhou Depot</english>
+     <japanese>福州倉庫</japanese>
+     <chineseSimplified>福州仓库</chineseSimplified>
+    </name>
+    <strength>0</strength>
+    <strengthManualOverride>false</strengthManualOverride>
+    <suppression>0</suppression>
+    <morale>1</morale>
+    <fatigue>0</fatigue>
+    <supplyTons>0</supplyTons>
+    <supplyGeneratedTons>0</supplyGeneratedTons>
+    <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
+    <supplyTransferState>
+     <requestRecord>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+     </requestRecord>
+     <requestedRecords />
+    </supplyTransferState>
+    <portLevel>0</portLevel>
+    <repairShipyardLevel>0</repairShipyardLevel>
+    <objectId>e44d9f9b-f6d1-4e29-9c58-c2c5e2cf3eb7</objectId>
+    <strategicGroupReference>
+     <referenceId>741e2594-9434-4915-89e2-d17985701961</referenceId>
     </strategicGroupReference>
    </LandUnit>
    <LandUnit>

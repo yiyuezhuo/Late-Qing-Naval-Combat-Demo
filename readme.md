@@ -6,8 +6,6 @@
     - Itch (Webgl, version is much slower than the current version): https://yiyuezhuo.itch.io/battle-of-yalu-river-1894
 - Manuals:
     - <a href="https://github.com/yiyuezhuo/First-Sino-Japanese-War-Manual">Game Manual</a>
-    - <a href="Help.md">Help</a>
-    - <a href="FAQ.md">FAQ</a>
 - Game Communities
     - Discord: https://discord.gg/2yqbyGwsdQ
 

@@ -119,3 +119,32 @@ IntegerField .unity-base-field .unity-base-text-field .unity-integer-field
 
 - Text color in the default style is black. So if a dark color background override is applied, a lighter color should applied to text.
 
+## Unity UI Toolkit Style Rules (USS)
+
+### Use variable
+
+Never hardcode colors (rgb(...), rgba(...), #...) in USS except inside :root (the token file).
+
+In USS, colors must be written as var(--cw-...).
+
+If you need a new color, add a new token to :root and use var(...) everywhere else.
+
+Treat hardcoded colors as a “lint error”.
+
+
+### 🚫 Forbidden CSS properties
+
+This project uses **Unity UI Toolkit (USS)** — NOT web CSS.
+
+The syntax looks similar to CSS but many CSS properties are NOT supported.
+
+The AI MUST follow the rules below when generating any `.uss` file.
+
+----
+
+The following web CSS properties DO NOT exist in USS and MUST NEVER be generated:
+
+- box-shadow
+
+If shadow or glow is needed, use **background images or gradients instead**.
+

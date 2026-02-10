@@ -53,6 +53,7 @@
     --ui-text-label: rgb(210, 202, 186);
     --ui-surface-input: rgb(26, 29, 33);
     --ui-surface-scroller-button: rgb(46, 50, 55);
+    --ui-main-menu-background-tint: rgba(50, 50, 50, 1);
 }
 .unity-base-field__input {
     padding-top: 1px;
@@ -518,6 +519,10 @@
 
 .unity-scroll-view {
     background-color: var(--ui-surface-scroll-overlay);
+}
+
+.main-menu-background {
+    -unity-background-image-tint-color: var(--ui-main-menu-background-tint);
 }
 
 .unity-scroll-view__content-viewport {

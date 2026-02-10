@@ -705,7 +705,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227654950}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 289301614986012343, guid: a0326a7dcdde5574ca4e03762200dd9e, type: 3}
 --- !u!4 &227654954
 Transform:
   m_ObjectHideFlags: 0
@@ -1339,7 +1339,6 @@ MonoBehaviour:
   fullInitialized: 0
   oceanWaveSound: {fileID: 8300000, guid: 3f91cc586e2783a468813bb912ecea13, type: 3}
   shipBellSound: {fileID: 8300000, guid: 3d03b5bdc26c7684da9f37abf9d7ce99, type: 3}
-  audioSource: {fileID: 0}
   hoveringLocationInfo: 
   currentLogOnly: 1
   remainAdvanceSimulationSecondsRequestedByUserInput: 0
@@ -1352,6 +1351,11 @@ MonoBehaviour:
   dynamicLineContainer: {fileID: 113491592}
   detachStreamingAssets: 1
   selectedLaunchedTorpedoObjectId: 
+  networkingPort: 18947
+  connectToIp: 127.0.0.1
+  hostIp: 0.0.0.0
+  remainAdvanceSimulationSecondsRequestedByUserInputPending: 0
+  hostSyncMode: 1
 --- !u!4 &708640260
 Transform:
   m_ObjectHideFlags: 0

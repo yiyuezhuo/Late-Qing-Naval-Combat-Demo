@@ -7,20 +7,20 @@
     </ui:VisualElement>
     <ui:VisualElement style="position: absolute; align-self: center; bottom: 0; top: 0; justify-content: center;">
         <ui:ScrollView>
-            <ui:VisualElement style="flex-grow: 1; padding-top: 5px; padding-bottom: 5px; max-height: 100%; padding-right: 5px; padding-left: 5px; background-color: rgba(255, 255, 255, 0.78);">
-                <ui:Label text="First Sino-Japanese War" style="font-size: 38px; -unity-text-align: upper-center;">
+            <ui:VisualElement class="main-menu-panel" style="flex-grow: 1; padding-top: 5px; padding-bottom: 5px; max-height: 100%; padding-right: 5px; padding-left: 5px;">
+                <ui:Label text="First Sino-Japanese War" class="main-menu-title">
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3101437890560)"/>
                     </Bindings>
                 </ui:Label>
-                <ui:Label text="And Other Pre-Dreadnought Battles" style="font-size: 28px; -unity-text-align: upper-center;">
+                <ui:Label text="And Other Pre-Dreadnought Battles" class="main-menu-subtitle">
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(44380493585223680)"/>
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-direction: row;">
                     <ui:VisualElement style="flex-grow: 1;">
-                        <ui:Label text="Tactical Naval Combat">
+                        <ui:Label text="Tactical Naval Combat" class="main-menu-column-title">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40329044639256576)"/>
                             </Bindings>
@@ -47,7 +47,7 @@
                         </ui:Button>
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1;">
-                        <ui:Label text="Strategic">
+                        <ui:Label text="Strategic" class="main-menu-column-title">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(13052626003988480)"/>
                             </Bindings>
@@ -69,7 +69,7 @@
                         </ui:Button>
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1;">
-                        <ui:Label text="Misc">
+                        <ui:Label text="Misc" class="main-menu-column-title">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40329917863989248)"/>
                             </Bindings>

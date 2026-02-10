@@ -147,6 +147,8 @@ VisualElement #unity-tab__header .unity-tab__header
 
 Header's color is defined in `background-color` of `.unity-tab__header`. The default color is white.
 
+Selected tab header can be selected by `.unity-tab__header:checked`
+
 ### `TabViewer` content container
 
 ```
@@ -155,6 +157,8 @@ Tab .unity-tab
 ```
 
 Content is the children of the container.
+
+If border-less effect is wanted, `.unity-tab` should have `border-top-width` to be 0px.
 
 ## `RadioButton`
 
@@ -173,6 +177,10 @@ ListView #ShipLogListView .unity-collection-view .unity-list-view .unity-list-vi
     Button #unity-list-view__add-button .unity-text-element .unity-button
     Button #unity-list-view__remove-button .unity-text-element .unity-button
 ```
+
+The `.unity-button` selector alone is not sufficient to override the styles defined in the default stylesheet. Consider using `#unity-list-view__add-button` and `#unity-list-view__remove-button` to specifically target these elements.
+
+It's recommended that `ListView` itself doesn't have background color (transparent), but set the same color for `.unity-scroll-view` and `.unity-list-view__footer` and set 0px border between them, so they looks connected to each other.
 
 ## `MultiColumnListView`
 
@@ -222,6 +230,8 @@ In USS, colors must be written as var(--cw-...).
 If you need a new color, add a new token to :root and use var(...) everywhere else.
 
 Treat hardcoded colors as a “lint error”.
+
+Use semantic variable name instead of "palette"-style variable name.
 
 
 ### 🚫 Forbidden CSS properties

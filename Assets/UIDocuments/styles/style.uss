@@ -542,9 +542,53 @@
     border-bottom-color: var(--ui-border-divider);
 }
 
+.unity-multi-column-view__header-container {
+    background-color: var(--ui-surface-button);
+    border-bottom-width: 1px;
+    border-bottom-color: var(--ui-border-divider);
+}
+
 .unity-multi-column-header__column {
+    background-color: var(--ui-surface-button);
+    color: var(--ui-text-primary);
     border-right-width: 1px;
     border-right-color: var(--ui-border-input-side);
+}
+
+.unity-list-view__footer {
+    background-color: var(--ui-surface-panel);
+    border-top-width: 1px;
+    border-top-color: var(--ui-border-divider);
+}
+
+#unity-list-view__add-button,
+#unity-list-view__remove-button {
+    background-color: var(--ui-surface-button);
+    color: var(--ui-text-primary);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: var(--ui-border-button-side);
+    border-right-color: var(--ui-border-button-side);
+    border-top-color: var(--ui-border-button-top);
+    border-bottom-color: var(--ui-border-button-bottom);
+}
+
+#unity-list-view__add-button:hover,
+#unity-list-view__remove-button:hover {
+    background-color: var(--ui-surface-button-hover);
+}
+
+#unity-list-view__add-button:active,
+#unity-list-view__remove-button:active {
+    background-color: var(--ui-surface-button-active);
+}
+
+#unity-list-view__add-button:disabled,
+#unity-list-view__remove-button:disabled {
+    background-color: var(--ui-surface-disabled);
+    color: var(--ui-text-disabled);
 }
 
 .unity-tab-view {
@@ -583,14 +627,15 @@
     background-color: var(--ui-surface-button-hover);
 }
 
-.unity-tab__header.unity-tab__header--selected {
-    background-color: var(--ui-surface-tab-selected);
+.unity-tab__header:checked {
+    background-color: var(--ui-surface-tabview);
     color: var(--ui-text-selected);
 }
 
 .unity-tab {
-    background-color: var(--ui-surface-disabled);
-    border-top-width: 1px;
+    /* background-color: var(--ui-surface-disabled); */
+    background-color: var(--ui-surface-tabview);
+    border-top-width: 0px;
     border-right-width: 1px;
     border-left-width: 1px;
     border-top-color: var(--ui-border-tab-top);
@@ -602,7 +647,7 @@
 }
 
 .unity-tab--selected {
-    background-color: var(--ui-surface-tab-selected);
+    background-color: var(--ui-surface-tabview);
     color: var(--ui-text-selected);
 }
 

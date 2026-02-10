@@ -171,7 +171,7 @@ RadioButton .unity-base-field .unity-radio-button
 ## `ListView`
 
 ```
-ListView #ShipLogListView .unity-collection-view .unity-list-view .unity-list-view--with-footer
+ListView .unity-collection-view .unity-list-view .unity-list-view--with-footer
   ScrollView .unity-scroll-view .unity-scroll-view--scroll .unity-scroll-view--vertical .unity-collection-view__scroll-view .unity-list-view__scroll-view--with-footer
   VisualElement #unity-list-view__footer .unity-list-view__footer
     Button #unity-list-view__add-button .unity-text-element .unity-button
@@ -180,7 +180,7 @@ ListView #ShipLogListView .unity-collection-view .unity-list-view .unity-list-vi
 
 The `.unity-button` selector alone is not sufficient to override the styles defined in the default stylesheet. Consider using `#unity-list-view__add-button` and `#unity-list-view__remove-button` to specifically target these elements.
 
-It's recommended that `ListView` itself doesn't have background color (transparent), but set the same color for `.unity-scroll-view` and `.unity-list-view__footer` and set 0px border between them, so they looks connected to each other.
+It's recommended that the `.unity-collection-view` itself have no background color (i.e., remain transparent). Instead, apply the same non-transparent background color to both `.unity-scroll-view` and `.unity-list-view__footer`, and ensure there is no border (0px) between them, so they appear visually connected.
 
 ## `MultiColumnListView`
 

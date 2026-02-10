@@ -525,7 +525,7 @@
 }
 
 .unity-collection-view {
-    background-color: var(--ui-surface-list);
+    background-color: var(--ui-border-transparent);
     border-top-width: 1px;
     border-right-width: 1px;
     border-bottom-width: 1px;
@@ -556,9 +556,11 @@
 }
 
 .unity-list-view__footer {
-    background-color: var(--ui-surface-panel);
-    border-top-width: 1px;
-    border-top-color: var(--ui-border-divider);
+    background-color: var(--ui-surface-scroll-overlay);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
 }
 
 #unity-list-view__add-button,

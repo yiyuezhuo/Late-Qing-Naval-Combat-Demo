@@ -6890,7 +6890,7 @@
   <scenarioState>
    <dateTime>1894-09-17T04:30:00Z</dateTime>
    <visibility>ExceptionallyClear</visibility>
-   <seaStateBeaufort>0</seaStateBeaufort>
+   <seaStateBeaufort>2</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <globalDescription>
     <english>https://en.wikipedia.org/wiki/Battle_of_the_Yalu_River_(1894)</english>
@@ -6922,7 +6922,7 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>39.6921577</xRotation>
+  <xRotation>39.69216</xRotation>
   <yRotation>236.283051</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>

@@ -312,6 +312,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -678,6 +684,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -1017,6 +1029,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -1356,6 +1374,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -1731,6 +1755,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -2106,6 +2136,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -2480,6 +2516,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -2837,6 +2879,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -3212,6 +3260,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -3587,6 +3641,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -3935,6 +3995,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -4291,6 +4357,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -4648,6 +4720,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -5005,6 +5083,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -5308,6 +5392,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -5664,6 +5754,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -6021,6 +6117,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -6423,6 +6525,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -6725,6 +6833,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -7055,6 +7169,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -7313,6 +7433,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -7571,6 +7697,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -7828,6 +7960,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -8077,6 +8215,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -8410,6 +8554,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -8742,6 +8892,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -9075,6 +9231,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -9399,6 +9561,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -10169,7 +10337,7 @@
   <scenarioState>
    <dateTime>1904-02-09T03:10:00Z</dateTime>
    <visibility>VeryClear2</visibility>
-   <seaStateBeaufort>0</seaStateBeaufort>
+   <seaStateBeaufort>2</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <globalDescription>
     <english>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
@@ -10201,8 +10369,8 @@ Land-based batteries and the initial damage to Russian ships are not yet modeled
    <firstRemainOneOperationalFleet>false</firstRemainOneOperationalFleet>
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
-   <hasEndDateTime>false</hasEndDateTime>
-   <endDateTime>1895-04-17T00:00:00Z</endDateTime>
+   <hasEndDateTime>true</hasEndDateTime>
+   <endDateTime>1904-02-09T06:10:00Z</endDateTime>
    <backgroundPictureReference>
     <path>Pictures\Backgrounds\Battle of Port Arthur.png</path>
     <isBuiltin>true</isBuiltin>

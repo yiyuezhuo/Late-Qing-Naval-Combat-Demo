@@ -1734,7 +1734,7 @@
   <scenarioState>
    <dateTime>1894-07-24T23:45:00Z</dateTime>
    <visibility>VeryClear2</visibility>
-   <seaStateBeaufort>0</seaStateBeaufort>
+   <seaStateBeaufort>1</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <globalDescription>
     <english>https://en.wikipedia.org/wiki/Battle_of_Pungdo</english>
@@ -1766,7 +1766,7 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>37.09721</xRotation>
+  <xRotation>37.0972137</xRotation>
   <yRotation>233.606659</yRotation>
   <orthographicSize>20</orthographicSize>
  </viewState>

@@ -227,6 +227,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -464,6 +470,12 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
@@ -972,7 +984,7 @@
   </shipGroups>
   <scenarioState>
    <dateTime>1894-09-17T07:00:00Z</dateTime>
-   <visibility>Clear</visibility>
+   <visibility>ExceptionallyClear</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <globalDescription>
@@ -996,8 +1008,8 @@
    <firstRemainOneOperationalFleet>false</firstRemainOneOperationalFleet>
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
-   <hasEndDateTime>false</hasEndDateTime>
-   <endDateTime>1895-04-17T00:00:00Z</endDateTime>
+   <hasEndDateTime>true</hasEndDateTime>
+   <endDateTime>1894-09-17T09:00:00Z</endDateTime>
    <backgroundPictureReference>
     <isBuiltin>false</isBuiltin>
    </backgroundPictureReference>

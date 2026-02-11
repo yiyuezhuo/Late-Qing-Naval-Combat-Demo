@@ -25,6 +25,7 @@ public class ScenarioPickerDialog // ScenarioPicker's root data source
     public NavalGameState currentGameState;
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+    static string LocalizeEnum<T>(T obj) => ServiceLocator.Get<ILocalizeService>().GetEnum(obj);
 
     public void Bind(TempDialog tempDialog)
     {
@@ -77,6 +78,8 @@ public class ScenarioPickerDialog // ScenarioPicker's root data source
                             {
                                 Localize("Ship Count (On Map): {0}", shipCount),
                                 Localize("Latitude: {0}, Longtitude: {1}", centerLat, centerLon),
+                                Localize("Visibility: {0}", LocalizeEnum(fullState.navalGameState.scenarioState.visibility)),
+                                Localize("Sea State (Beaufort): {0}", fullState.navalGameState.scenarioState.seaStateBeaufort),
                                 Localize("Description:"),
                                 // fullState.navalGameState.scenarioState.description
                                 fullState.navalGameState.scenarioState.globalDescription.GetShortName()

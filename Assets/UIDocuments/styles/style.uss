@@ -53,8 +53,10 @@
     --ui-text-label: rgb(210, 202, 186);
     --ui-surface-input: rgb(26, 29, 33);
     --ui-surface-scroller-button: rgb(46, 50, 55);
-    --ui-main-menu-background-tint: rgba(50, 50, 50, 1);
+    --ui-main-menu-background-tint: rgb(50, 50, 50);
+    --strategic-unit-icon-text-color: rgb(0, 0, 0);
 }
+
 .unity-base-field__input {
     padding-top: 1px;
     padding-bottom: 1px;
@@ -640,9 +642,8 @@
 }
 
 .unity-tab {
-    /* background-color: var(--ui-surface-disabled); */
     background-color: var(--ui-surface-tabview);
-    border-top-width: 0px;
+    border-top-width: 0;
     border-right-width: 1px;
     border-left-width: 1px;
     border-top-color: var(--ui-border-tab-top);
@@ -727,4 +728,10 @@
 
 .unity-base-slider__drag-container > #unity-dragger {
     background-color: var(--ui-surface-slider-handle);
+}
+
+
+
+.strategic-unit-icon-box > .unity-label {
+    color: var(--strategic-unit-icon-text-color);
 }

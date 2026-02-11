@@ -2795,6 +2795,14 @@ MonoBehaviour:
     m_Key: HostSyncMode.EveryUnityUpdate
     m_Metadata:
       m_Items: []
+  - m_Id: 44175798178582528
+    m_Key: 'Visibility: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44175846429855744
+    m_Key: 'Sea State (Beaufort): {0}'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

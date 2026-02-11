@@ -2822,6 +2822,14 @@ MonoBehaviour:
     m_Localized: "\u6BCF\u4E2A Unity \u66F4\u65B0"
     m_Metadata:
       m_Items: []
+  - m_Id: 44175798178582528
+    m_Localized: "\u80FD\u89C1\u5EA6: {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44175846429855744
+    m_Localized: "\u6D77\u51B5 (\u84B2\u798F\u98CE\u7EA7): {0}"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

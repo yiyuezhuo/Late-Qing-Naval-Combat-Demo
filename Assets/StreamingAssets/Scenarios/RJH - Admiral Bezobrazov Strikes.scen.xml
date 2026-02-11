@@ -7271,8 +7271,8 @@ This is a direct adaptation of scenario from Dawn of the Rising Sun. However, AI
    <firstRemainOneOperationalFleet>false</firstRemainOneOperationalFleet>
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
-   <hasEndDateTime>false</hasEndDateTime>
-   <endDateTime>1895-04-17T00:00:00Z</endDateTime>
+   <hasEndDateTime>true</hasEndDateTime>
+   <endDateTime>1904-06-15T02:15:00Z</endDateTime>
    <backgroundPictureReference>
     <path>Pictures\Backgrounds\500px-HitachiMaru1898.JPG</path>
     <isBuiltin>true</isBuiltin>
@@ -7283,7 +7283,7 @@ This is a direct adaptation of scenario from Dawn of the Rising Sun. However, AI
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>34.0753059</xRotation>
+  <xRotation>34.0753021</xRotation>
   <yRotation>229.904221</yRotation>
   <orthographicSize>100</orthographicSize>
  </viewState>

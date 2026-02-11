@@ -6,6 +6,9 @@
   <namedShipsPath>NamedShips.xml</namedShipsPath>
  </streamingAssetReference>
  <navalGameState>
+  <leadersBuiltin>false</leadersBuiltin>
+  <shipClassesBuiltin>false</shipClassesBuiltin>
+  <namedShipsBuiltin>false</namedShipsBuiltin>
   <shipLogs>
    <ShipLog>
     <subStates />
@@ -177,6 +180,14 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -409,6 +420,14 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -736,6 +755,14 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1064,6 +1091,14 @@
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
     <timeLocLogs />
+    <cargoAreas>
+     <area1>GeneralCargo</area1>
+     <area2>GeneralCargo</area2>
+     <area3>GeneralCargo</area3>
+     <area4>GeneralCargo</area4>
+    </cargoAreas>
+    <recentCollisionClock remainSeconds="0" />
+    <preCollsionAvoiding>false</preCollsionAvoiding>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1126,6 +1161,7 @@
     <strategicGroupReference />
    </ShipLog>
   </shipLogs>
+  <serializedCustomBoolMap />
   <shipGroups>
    <ShipGroup>
     <childrenObjectIds>
@@ -1258,12 +1294,9 @@
   </shipGroups>
   <scenarioState>
    <dateTime>1897-12-01T00:00:00Z</dateTime>
-   <visibility>Clear</visibility>
+   <visibility>ExceptionallyClear</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
-   <description>(Hypothetical scenario)
-
-If the Sino-Japanese War had occurred three years later, what would have happened after the Fuji-class battleships arrived in Japan?</description>
    <globalDescription>
     <english>(Hypothetical scenario)
 
@@ -1283,20 +1316,29 @@ If the Sino-Japanese War had occurred three years later, what would have happene
     <accumulateSecond>0</accumulateSecond>
     <elapsedSeconds>0</elapsedSeconds>
    </weaponSimulationAssignmentClock>
+   <obstacleAvoidCheckClock>
+    <intervalSeconds>1</intervalSeconds>
+    <accumulateSecond>0</accumulateSecond>
+    <elapsedSeconds>0</elapsedSeconds>
+   </obstacleAvoidCheckClock>
    <doingStep>false</doingStep>
    <firstLoaded>false</firstLoaded>
-   <effectiveCompleted>false</effectiveCompleted>
+   <firstRemainOneOperationalFleet>false</firstRemainOneOperationalFleet>
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
-   <hasEndDateTime>false</hasEndDateTime>
-   <endDateTime>1895-04-17T00:00:00Z</endDateTime>
+   <hasEndDateTime>true</hasEndDateTime>
+   <endDateTime>1897-12-01T02:00:00Z</endDateTime>
+   <backgroundPictureReference>
+    <isBuiltin>false</isBuiltin>
+   </backgroundPictureReference>
+   <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>39.6652565</xRotation>
-  <yRotation>236.452484</yRotation>
+  <xRotation>39.64413</xRotation>
+  <yRotation>236.459335</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>
  <eventState>

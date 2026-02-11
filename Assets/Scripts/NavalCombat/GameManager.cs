@@ -19,6 +19,7 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using YYZ;
+using UnityEngine.InputSystem.LowLevel;
 
 public interface IColliderRootProvider
 {
@@ -1356,10 +1357,24 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         visibilityRangeLine.gameObject.SetActive(hasVisibilityCap);
         if (hasVisibilityCap)
         {
-            Utils.DrawCircleForLineRenderer(visibilityRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg,
-                32900 * MeasureUtils.yardToMeter); // 32900 yards: D1 Surface Visibility, 4 and up -> 4 in Exceptionally Clear (smoke is not considered)
+            // Utils.DrawCircleForLineRenderer(visibilityRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg,
+            //     32900 * MeasureUtils.yardToMeter); // 32900 yards: D1 Surface Visibility, 4 and up -> 4 in Exceptionally Clear (smoke is not considered)
             // TODO: Handle observer's target size, and visibility condition.
             // Night change can be used to detect day/night error.
+
+            var scenarioState = NavalGameState.Instance.scenarioState;
+            var dayNightLevel = scenarioState.GetSunPosition(shipLog.position).GetDayNightLevel();
+            var refObsTargetSize = 1;
+            // var refObsTargetSize = shipClass.targetSizeModifier;
+            var visibilityRangeYards = RuleChart.GetVisibilityRangeYards(
+                shipClass.targetSizeModifier, refObsTargetSize, scenarioState.visibility, dayNightLevel,
+                noMoonlight: !scenarioState.hasMoonlight, searchVesselSpeedKnots: shipLog.speedKnots, searchVesselIsNotAWarship: !shipClass.IsCombatShip()
+            );
+
+            Utils.DrawCircleForLineRenderer(
+                visibilityRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg,
+                visibilityRangeYards * MeasureUtils.yardToMeter
+            );
         }
     }
 

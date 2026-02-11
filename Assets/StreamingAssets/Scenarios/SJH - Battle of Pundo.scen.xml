@@ -1733,7 +1733,7 @@
   </shipGroups>
   <scenarioState>
    <dateTime>1894-07-24T23:45:00Z</dateTime>
-   <visibility>Clear</visibility>
+   <visibility>VeryClear2</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <globalDescription>
@@ -1766,7 +1766,7 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>37.0972061</xRotation>
+  <xRotation>37.09721</xRotation>
   <yRotation>233.606659</yRotation>
   <orthographicSize>20</orthographicSize>
  </viewState>

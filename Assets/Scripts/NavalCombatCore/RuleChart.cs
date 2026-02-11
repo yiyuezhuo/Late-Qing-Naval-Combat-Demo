@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using CoreUtils;
 using YYZ;
+using UnityEngine.UIElements;
 
 namespace NavalCombatCore
 {
@@ -923,7 +924,7 @@ namespace NavalCombatCore
                 var x3Value2 = x3.cells[x3Row2, x3Col];
                 if (x3Value2 == -1)
                 {
-                    x3Row2 = Enumerable.Range(0, x3.rows.Length).Where(r => x3.cells[r, x3Col] != -1).Last();
+                    x3Row2 = Enumerable.Range(0, x3.rows.Length).Last(r => x3.cells[r, x3Col] != -1);
                     x3Value2 = x3.cells[x3Row2, x3Col];
                 }
                 var inflictToRammerDamagePoint = inflictToTargetDamagePoint * x3Value2;
@@ -970,6 +971,181 @@ namespace NavalCombatCore
             var offset = seaStateGunneryReductionTable.cells[row, col];
             blocked = offset == -100;
             return offset;
+        }
+
+        // Chart D1
+        public static SimpleTable<int, int, float> visibilityDaylightExceptionallyClear = SimpleTable<int, int, float>.FromCSV(@"Obs Size,-1,0,1,2,3,4
+-1,11400,13000,14500,16400,17900,18500
+0,14500,16100,17700,19500,21000,21700
+1,17600,19200,20800,22600,24100,24800
+2,21300,22900,24500,26300,27800,28500
+3,24300,25900,27500,29300,30800,31500
+4,25700,27300,28800,30700,32200,32900",
+            int.Parse, int.Parse, float.Parse
+        );
+
+        public static SimpleTable<int, int, float> visibilityDaylightVeryClear2 = SimpleTable<int, int, float>.FromCSV(@"Obs Size,-1,0,1,2,3,4
+-1,9500,10800,12100,13600,14900,15500
+0,12100,13400,14700,16200,17500,18100
+1,14700,16000,17300,18800,20100,20700
+2,17800,19100,20400,21900,23200,23700
+3,20300,21600,22900,24400,25700,26300
+4,21400,22700,24000,25600,26800,27400",
+            int.Parse, int.Parse, float.Parse
+        );
+
+        public static SimpleTable<int, int, float> visibilityDaylightVeryClear1 = SimpleTable<int, int, float>.FromCSV(@"Obs Size,-1,0,1,2,3,4
+-1,6700,7600,8500,9500,10300,10700
+0,8700,9500,10400,11400,12300,12600
+1,10600,11400,12300,13300,14200,14600
+2,12800,13700,14600,15600,16400,16800
+3,14700,15500,16400,17400,18300,18600
+4,15500,16400,17200,18300,19100,19500",
+            int.Parse, int.Parse, float.Parse
+        );
+
+        public static SimpleTable<int, int, float> visibilityDaylightClear = SimpleTable<int, int, float>.FromCSV(@"Obs Size,-1,0,1,2,3,4
+-1,4200,4700,5300,5900,6400,6600
+0,5400,6000,6500,7100,7600,7800
+1,6700,7200,7700,8300,8800,9000
+2,8100,8600,9100,9700,10200,10500
+3,9300,9800,10300,10900,11400,11600
+4,9800,10300,10800,11400,11900,12200",
+            int.Parse, int.Parse, float.Parse
+        );
+
+        public static SimpleTable<int, int, float> visibilityDaylightLightHaze = SimpleTable<int, int, float>.FromCSV(@"Obs Size,-1,0,1,2,3,4
+-1,3500,3700,4000,4200,4400,4500
+0,4700,4900,5200,5400,5700,5800
+1,5900,6200,6400,6700,6900,7000
+2,7400,7600,7800,8100,8300,8400
+3,8500,8800,9000,9300,9500,9600
+4,9100,9300,9500,9800,10000,10100",
+            int.Parse, int.Parse, float.Parse
+        );
+
+        public static SimpleTable<int, int, float> visibilityNightMoonlightExceptionallyClear = SimpleTable<int, int, float>.FromCSV(@"Obs Size,-1,0,1,2,3,4
+-1,3500,3700,4000,4200,4400,4500
+0,4700,4900,5200,5400,5700,5800
+1,5900,6200,6400,6700,6900,7000
+2,7400,7600,7800,8100,8300,8400
+3,8500,8800,9000,9300,9500,9600
+4,9100,9300,9500,9800,10000,10100",
+            int.Parse, int.Parse, float.Parse
+        );
+
+        public static SimpleTable<int, int, float> visibilityNightMoonlightVeryClear = SimpleTable<int, int, float>.FromCSV(@"Obs Size,-1,0,1,2,3,4
+-1,3500,3700,4000,4200,4400,4500
+0,4700,4900,5200,5400,5700,5800
+1,5900,6200,6400,6700,6900,7000
+2,7400,7600,7800,8100,8300,8400
+3,8500,8800,9000,9300,9500,9600
+4,9100,9300,9500,9800,10000,10100",
+            int.Parse, int.Parse, float.Parse
+        );
+
+        public static float GetVisibilityRangeYards(int obsSize, int tgtSize, VisibilityDescription visibility, DayNightLevel dayNightLevel, 
+            bool noMoonlight = false, 
+            bool targetSilhouettedByHorizonLightOrBurningShip = false, bool targetAgainstLandMassBackground = false, bool funnelSmokeAndTallMastsVisible = false, bool searchVesselIsNotAWarship = false,
+            float searchVesselSpeedKnots = 18, float targetSpeedKnots = 18)
+        {
+            SimpleTable<int, int, float> tb = null;
+            var isDayLight = dayNightLevel == DayNightLevel.Day || dayNightLevel == DayNightLevel.Twilight;
+            if(isDayLight)
+            {
+                tb = visibility switch
+                {
+                    VisibilityDescription.ExceptionallyClear => visibilityDaylightExceptionallyClear,
+                    VisibilityDescription.VeryClear2 => visibilityDaylightVeryClear2,
+                    VisibilityDescription.VeryClear1 => visibilityDaylightVeryClear1,
+                    VisibilityDescription.Clear => visibilityDaylightClear,
+                    VisibilityDescription.LightHaze => visibilityDaylightLightHaze,
+                    _ => visibilityDaylightLightHaze
+                };
+            }
+            else // night
+            {
+                tb = visibility switch
+                {
+                    VisibilityDescription.ExceptionallyClear => visibilityNightMoonlightExceptionallyClear,
+                    _ => visibilityNightMoonlightVeryClear
+                };
+            }
+            
+            var row = Enumerable.Range(0, tb.rows.Length).DefaultIfEmpty(tb.rows.Length - 1).FirstOrDefault(r => obsSize == tb.rows[r]);
+            var col = Enumerable.Range(0, tb.cols.Length).DefaultIfEmpty(tb.cols.Length - 1).LastOrDefault(c => tgtSize == tb.cols[c]);
+            var rangeYards = tb.cells[row, col];
+            // var rangeYards = selectedTable.cells[obsSize, tgtSize];
+
+            if(searchVesselIsNotAWarship)
+            {
+                rangeYards *= 0.85f;
+            }
+
+            if(isDayLight)
+            {
+                if(targetSilhouettedByHorizonLightOrBurningShip)
+                {
+                    rangeYards *= 1.2f;
+                }
+                if(targetAgainstLandMassBackground)
+                {
+                    rangeYards *= 0.8f;
+                }
+                if(funnelSmokeAndTallMastsVisible)
+                {
+                    rangeYards *= 1.2f;
+                }
+                if(searchVesselIsNotAWarship)
+                {
+                    rangeYards *= 0.85f;
+                }
+            }
+            else
+            {
+                if(targetSilhouettedByHorizonLightOrBurningShip)
+                {
+                    rangeYards *= 2.5f;
+                }
+                if(targetAgainstLandMassBackground)
+                {
+                    rangeYards *= 0.6f;
+                }
+                if(searchVesselSpeedKnots == 0)
+                {
+                    rangeYards *= 1.4f;
+                }
+                else if(searchVesselSpeedKnots <= 15)
+                {
+                    rangeYards *= 1.1f;
+                }
+                if(targetSpeedKnots <= 10)
+                {
+                    rangeYards *= 0.8f;
+                }
+                else if(targetSpeedKnots < 29)
+                {
+                    
+                }
+                else
+                {
+                    rangeYards *= 1.2f;
+                }
+                if(noMoonlight)
+                {
+                    rangeYards *= 0.6f;
+                }
+                if(visibility == VisibilityDescription.Clear)
+                {
+                    rangeYards *= 0.9f;
+                }
+                else if(visibility <= VisibilityDescription.LightHaze)
+                {
+                    rangeYards *= 0.65f;
+                }
+            }
+
+            return rangeYards;
         }
     }
 }

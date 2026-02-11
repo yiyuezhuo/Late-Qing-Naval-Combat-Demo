@@ -20,6 +20,10 @@ Shader "Unlit/Earth0_RTW_like2"
         [Toggle] _UseROI ("Use ROI", Float) = 1
         [Toggle] _UseDark ("Use Dark", Float) = 0
         [Toggle] _UseSeaTex ("Use Sea Texture", Float) = 1
+        [Toggle] _UseSunLight ("Use Sun Light", Float) = 1
+        _SunDirObj ("Sun Direction (Object Space)", Vector) = (0, 1, 0, 0)
+        _NightBrightness ("Night Brightness", Range(0,1)) = 0.35
+        _TerminatorSoftness ("Terminator Softness", Range(0,1)) = 0.08
     }
     SubShader
     {
@@ -78,6 +82,10 @@ Shader "Unlit/Earth0_RTW_like2"
             float _UseROI;
             float _UseDark;
             float _UseSeaTex;
+            float _UseSunLight;
+            float4 _SunDirObj;
+            float _NightBrightness;
+            float _TerminatorSoftness;
 
 
 
@@ -154,6 +162,15 @@ Shader "Unlit/Earth0_RTW_like2"
                     float2 texCoord = longitudeLatitudeToUV(longLatRad);
                     float h = tex2D(_HeightTex, texCoord);
                     col = getColor(h, longLatDeg);
+                }
+
+                if(_UseSunLight)
+                {
+                    float3 sunDirObj = normalize(_SunDirObj.xyz);
+                    float ndotl = dot(spherePos, sunDirObj);
+                    float dayFactor = smoothstep(-_TerminatorSoftness, _TerminatorSoftness, ndotl);
+                    float lightFactor = lerp(_NightBrightness, 1.0, dayFactor);
+                    col.rgb *= lightFactor;
                 }
 
                 // float h = tex2D(_HeightTex, texCoord);

@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
-    <ui:VisualElement style="flex-grow: 0; background-color: rgba(255, 255, 255, 0.49);">
-        <ui:TabView data-source-type="StrategicGameManager, Assembly-CSharp">
+    <ui:VisualElement class="hud-topbar" style="flex-grow: 0;">
+        <ui:TabView data-source-type="StrategicGameManager, Assembly-CSharp" class="hud-tabview">
             <ui:Tab label="Command">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Resolve Turn" name="NextTurnButton" style="display: none;">

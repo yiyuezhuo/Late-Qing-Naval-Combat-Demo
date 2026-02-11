@@ -5,14 +5,14 @@
     --ui-border-panel-top: rgb(185, 167, 120);
     --ui-text-primary: rgb(236, 229, 214);
     --ui-border-input-top: rgb(136, 122, 92);
-    --ui-text-selected: rgb(244, 236, 220);
+    --ui-text-selected: rgb(236, 229, 214);
     --ui-border-input-bottom: rgb(60, 52, 39);
     --ui-surface-scroll-overlay: rgba(28, 31, 36, 0.7);
     --ui-border-tab-top: rgb(120, 106, 78);
     --ui-surface-button: rgb(58, 62, 68);
     --ui-border-transparent: rgba(0, 0, 0, 0);
     --ui-border-divider: rgb(110, 97, 72);
-    --ui-surface-selection: rgba(90, 80, 60, 0.9);
+    --ui-surface-selection: rgba(70, 62, 47, 0.95);
     --ui-surface-disabled: rgb(52, 56, 62);
     --ui-icon-accent: rgb(214, 196, 150);
     --ui-border-button-side: rgb(80, 71, 54);
@@ -21,7 +21,7 @@
     --ui-surface-panel: rgb(43, 47, 52);
     --ui-surface-tab-selected: rgb(74, 79, 86);
     --ui-surface-log-header: rgba(55, 59, 65, 0.9);
-    --ui-surface-selection-hover: rgba(110, 97, 72, 0.9);
+    --ui-surface-selection-hover: rgba(88, 78, 58, 0.95);
     --ui-surface-list-hover: rgb(64, 69, 76);
     --ui-text-tab: rgb(226, 219, 204);
     --ui-surface-progress-track: rgb(23, 25, 28);
@@ -183,6 +183,11 @@
 .unity-collection-view__item--selected:hover:enabled {
     color: var(--ui-text-selected);
     background-color: var(--ui-surface-selection-hover);
+}
+
+.unity-collection-view__item--selected:enabled {
+    color: var(--ui-text-selected);
+    background-color: var(--ui-surface-selection);
 }
 
 .unity-collection-view:focus:enabled .unity-collection-view__item--selected {
@@ -474,6 +479,17 @@
     color: var(--ui-text-disabled);
 }
 
+.unity-base-field:disabled .unity-base-field__input,
+.unity-base-field__input:disabled {
+    background-color: var(--ui-surface-disabled);
+    color: var(--ui-text-disabled);
+}
+
+.unity-base-field:disabled .unity-label,
+.unity-base-field__label:disabled {
+    color: var(--ui-text-disabled);
+}
+
 .unity-base-field__input {
     background-color: var(--ui-surface-input);
     border-top-width: 1px;
@@ -517,6 +533,15 @@
 
 .unity-base-dropdown__item:hover {
     background-color: var(--ui-surface-list-hover);
+}
+
+.unity-base-dropdown__item:checked {
+    background-color: var(--ui-surface-selection);
+    color: var(--ui-text-selected);
+}
+
+.unity-base-dropdown__item:checked:hover {
+    background-color: var(--ui-surface-selection-hover);
 }
 
 .unity-scroll-view {

@@ -190,6 +190,11 @@
     background-color: var(--ui-surface-selection);
 }
 
+.unity-collection-view__item:hover:enabled {
+    background-color: var(--ui-surface-button-hover);
+}
+
+
 .unity-collection-view:focus:enabled .unity-collection-view__item--selected {
     background-color: var(--ui-surface-selection);
     color: var(--ui-text-selected);
@@ -466,9 +471,29 @@
     border-bottom-left-radius: 4px;
 }
 
-.unity-button:hover {
+/*
+.unity-button:hover:enabled {
     background-color: var(--ui-surface-button-hover);
 }
+*/
+
+.unity-button:hover:enabled {
+    background-color: var(--ui-surface-button-hover);
+    color: var(--ui-text-primary);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: var(--ui-border-button-side);
+    border-right-color: var(--ui-border-button-side);
+    border-top-color: var(--ui-border-button-top);
+    border-bottom-color: var(--ui-border-button-bottom);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
 
 .unity-button:active {
     background-color: var(--ui-surface-button-active);
@@ -515,6 +540,10 @@
     background-color: var(--ui-surface-popup);
 }
 
+.unity-base-popup-field:hover:enabled > .unity-base-popup-field__input {
+    background-color: var(--ui-surface-selection-hover);
+}
+
 .unity-base-dropdown__container-inner {
     background-color: var(--ui-surface-dropdown);
     border-top-width: 1px;
@@ -531,7 +560,7 @@
     color: var(--ui-text-primary);
 }
 
-.unity-base-dropdown__item:hover {
+.unity-base-dropdown__item:hover:enabled {
     background-color: var(--ui-surface-list-hover);
 }
 
@@ -540,7 +569,11 @@
     color: var(--ui-text-selected);
 }
 
-.unity-base-dropdown__item:checked:hover {
+.unity-base-dropdown__item:checked:hover:enabled {
+    background-color: var(--ui-surface-selection-hover);
+}
+
+.unity-base-dropdown__item:hover:enabled {
     background-color: var(--ui-surface-selection-hover);
 }
 

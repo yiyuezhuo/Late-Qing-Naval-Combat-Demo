@@ -1,4 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="StrategicStartup" src="project://database/Assets/UIDocuments/Common/StrategicStartup.uxml?fileID=9197481963319205126&amp;guid=bfad67099216fb148958e4382e3c1de6&amp;type=3#StrategicStartup"/>
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
     <ui:VisualElement data-source-type="MainMenu, Assembly-CSharp" class="main-menu-background" style="flex-grow: 1; -unity-background-scale-mode: scale-and-crop;">
         <Bindings>
@@ -18,9 +19,9 @@
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(44380493585223680)"/>
                     </Bindings>
                 </ui:Label>
-                <ui:VisualElement style="flex-direction: row;">
-                    <ui:VisualElement style="flex-grow: 1;">
-                        <ui:Label text="Tactical Naval Combat" class="main-menu-column-title">
+                <ui:VisualElement style="flex-direction: row; width: 700px;">
+                    <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                        <ui:Label text="Tactical Naval Combat" class="main-menu-column-title" style="display: none;">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40329044639256576)"/>
                             </Bindings>
@@ -45,31 +46,22 @@
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34615625252507648)"/>
                             </Bindings>
                         </ui:Button>
+                        <ui:Button text="Campaign" name="CampaignButton" class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(58877035788537856)"/>
+                            </Bindings>
+                        </ui:Button>
                     </ui:VisualElement>
-                    <ui:VisualElement style="flex-grow: 1;">
+                    <ui:VisualElement style="flex-grow: 1; display: none; flex-basis: 100px;">
                         <ui:Label text="Strategic" class="main-menu-column-title">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(13052626003988480)"/>
                             </Bindings>
                         </ui:Label>
-                        <ui:Button text="(WIP) First Sino-Japanese War" name="StrategicModeTestButton" class="verylarge">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36603542086782976)"/>
-                            </Bindings>
-                        </ui:Button>
-                        <ui:Button text="(WIP) Vladivostok Squadron Raiding" name="VladivostokSquadronRaidingButton" class="verylarge" style="display: flex;">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36604534312308736)"/>
-                            </Bindings>
-                        </ui:Button>
-                        <ui:Button text="Load Strategic Game" name="LoadStrategicGame" class="verylarge" style="display: flex;">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40330178409959424)"/>
-                            </Bindings>
-                        </ui:Button>
+                        <ui:Instance template="StrategicStartup" name="StrategicStartup"/>
                     </ui:VisualElement>
-                    <ui:VisualElement style="flex-grow: 1;">
-                        <ui:Label text="Misc" class="main-menu-column-title">
+                    <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
+                        <ui:Label text="Misc" class="main-menu-column-title" style="display: none;">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40329917863989248)"/>
                             </Bindings>

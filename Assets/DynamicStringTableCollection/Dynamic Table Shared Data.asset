@@ -2803,6 +2803,10 @@ MonoBehaviour:
     m_Key: 'Sea State (Beaufort): {0}'
     m_Metadata:
       m_Items: []
+  - m_Id: 44278795713810432
+    m_Key: FiringLineDisplayMode.None
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

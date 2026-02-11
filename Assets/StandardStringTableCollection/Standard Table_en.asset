@@ -2556,6 +2556,17 @@ MonoBehaviour:
     m_Localized: Simulation Rate Ratio (Auto)
     m_Metadata:
       m_Items: []
+  - m_Id: 58877035788537856
+    m_Localized: Campaign
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58882281352892416
+    m_Localized: The campaign and strategic modes are still works in progress and
+      not yet complete. However, you can preview some of the subsystems here. If
+      you'd like to play a relatively polished part of the game, the naval tactical
+      combat scenarios and skirmish modes would be more suitable.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

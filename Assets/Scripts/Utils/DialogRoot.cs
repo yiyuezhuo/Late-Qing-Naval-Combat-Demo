@@ -261,6 +261,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset clientDialogDocument;
     public VisualTreeAsset pointListEditorDialogDocument;
     public VisualTreeAsset rectangleEditorDialogDocument;
+    public VisualTreeAsset strategicStartupDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -271,6 +272,22 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     void Update()
     {
 
+    }
+
+    public void PopupStrategicStartupDialog()
+    {
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=strategicStartupDialogDocument,
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            MainMenu.RegisterStrategicStartup(el);
+        };
+
+        tempDialog.Popup();
     }
 
     public void PopupRectangleEditorDialog(Action callback)

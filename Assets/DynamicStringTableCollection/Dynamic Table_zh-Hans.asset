@@ -2830,6 +2830,10 @@ MonoBehaviour:
     m_Localized: "\u6D77\u51B5 (\u84B2\u798F\u98CE\u7EA7): {0}"
     m_Metadata:
       m_Items: []
+  - m_Id: 44278795713810432
+    m_Localized: "\u65E0"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -47,26 +47,25 @@ public class MainMenu : SingletonDocument<MainMenu>
         root.Q<Button>("HelpButton").clicked += () => DialogRoot.Instance.PopupHelpDialogDocument();
         root.Q<Button>("FAQButton").clicked += () => DialogRoot.Instance.PopupFAQDialogDocument();
 
-        var strategicModeTestButton = root.Q<Button>("StrategicModeTestButton");
 
-        if (Utils.SceneInBuildSettings("Strategic Game"))
-        {
-            strategicModeTestButton.clicked += () =>
-            {
-                // StrategicGameManager.startupConfig = new();
-                StrategicGameManager.startupConfig = new()
-                {
-                    mode = StrategicGameManager.StartupConfig.Mode.ScenPath,
-                    scenSubPath = "Scenarios/First Sino-Japanese War.xml"
-                    // scenSubPath = "Scenarios/StrategicGameState.xml"
-                };
-                SceneManager.LoadScene("Strategic Game");
-            };
-        }
-        else
-        {
-            strategicModeTestButton.style.display = DisplayStyle.None;
-        }
+        // if (Utils.SceneInBuildSettings("Strategic Game"))
+        // {
+        //     strategicModeTestButton.clicked += () =>
+        //     {
+        //         // StrategicGameManager.startupConfig = new();
+        //         StrategicGameManager.startupConfig = new()
+        //         {
+        //             mode = StrategicGameManager.StartupConfig.Mode.ScenPath,
+        //             scenSubPath = "Scenarios/First Sino-Japanese War.xml"
+        //             // scenSubPath = "Scenarios/StrategicGameState.xml"
+        //         };
+        //         SceneManager.LoadScene("Strategic Game");
+        //     };
+        // }
+        // else
+        // {
+        //     strategicModeTestButton.style.display = DisplayStyle.None;
+        // }
 
         root.Q<Button>("SettingButton").clicked += DialogRoot.Instance.PopupGamePreferenceDialog;
 
@@ -85,6 +84,29 @@ public class MainMenu : SingletonDocument<MainMenu>
             Debug.Log("SkirmishButton clicked");
 
             GotoEmptyNavalGame(true);
+        };
+
+        // RegisterStrategicStartup(root);
+
+        root.Q<Button>("CampaignButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupStrategicStartupDialog();
+        };
+    }
+
+    public static void RegisterStrategicStartup(VisualElement root)
+    {
+        var strategicModeTestButton = root.Q<Button>("StrategicModeTestButton");
+        strategicModeTestButton.clicked += () =>
+        {
+            // StrategicGameManager.startupConfig = new();
+            StrategicGameManager.startupConfig = new()
+            {
+                mode = StrategicGameManager.StartupConfig.Mode.ScenPath,
+                scenSubPath = "Scenarios/First Sino-Japanese War.xml"
+                // scenSubPath = "Scenarios/StrategicGameState.xml"
+            };
+            SceneManager.LoadScene("Strategic Game");
         };
 
         root.Q<Button>("VladivostokSquadronRaidingButton").clicked += () =>

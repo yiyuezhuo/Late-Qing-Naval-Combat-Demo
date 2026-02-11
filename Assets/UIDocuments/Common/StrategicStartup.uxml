@@ -1,0 +1,19 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-shrink: 0;">
+        <ui:Button text="(WIP) First Sino-Japanese War" name="StrategicModeTestButton" class="verylarge">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36603542086782976)"/>
+            </Bindings>
+        </ui:Button>
+        <ui:Button text="(WIP) Vladivostok Squadron Raiding" name="VladivostokSquadronRaidingButton" class="verylarge" style="display: flex;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36604534312308736)"/>
+            </Bindings>
+        </ui:Button>
+        <ui:Button text="Load Strategic Game" name="LoadStrategicGame" class="verylarge" style="display: flex;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40330178409959424)"/>
+            </Bindings>
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

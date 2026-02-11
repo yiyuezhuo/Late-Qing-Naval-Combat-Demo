@@ -1,0 +1,21 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="StrategicStartup" src="project://database/Assets/UIDocuments/Common/StrategicStartup.uxml?fileID=9197481963319205126&amp;guid=bfad67099216fb148958e4382e3c1de6&amp;type=3#StrategicStartup"/>
+    <ui:VisualElement class="panel-dialog" style="height: auto; width: 500px;">
+        <ui:Label text="Campaign" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(58877035788537856)"/>
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="The campaign and strategic modes are still works in progress and not yet complete. However, you can preview some of the subsystems here. If you&apos;d like to play a relatively polished part of the game, the naval tactical combat scenarios and skirmish modes would be more suitable." style="white-space: normal;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(58882281352892416)"/>
+            </Bindings>
+        </ui:Label>
+        <ui:Instance template="StrategicStartup"/>
+        <ui:Button text="Cancel" name="CancelButton" class="verylarge">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66269346435072)"/>
+            </Bindings>
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

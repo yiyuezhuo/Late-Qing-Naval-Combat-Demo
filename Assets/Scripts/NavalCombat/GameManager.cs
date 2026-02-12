@@ -1314,72 +1314,67 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         var shipClass = shipLog?.shipClass;
 
         var hasPrimaryBattery = shipClass != null && shipClass.batteryRecords.Count >= 1;
-        primaryBatteryRangeLine.gameObject.SetActive(hasPrimaryBattery);
         if (hasPrimaryBattery)
         {
             var primaryBatteryRecord = shipClass.batteryRecords[0];
             var rangeM = MeasureUtils.yardToMeter * primaryBatteryRecord.rangeYards;
-            var arcSegments = GetMergedArcSegmentsForBattery(primaryBatteryRecord, shipLog.headingDeg);
-            SyncArcRangeLines(primaryBatteryRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg, rangeM, arcSegments);
+            var arcSegmentsRaw = GetRawArcSegmentsForBattery(primaryBatteryRecord, shipLog.headingDeg);
+            SyncRangeLineByMode(primaryBatteryRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg, rangeM, arcSegmentsRaw);
         }
         else
         {
-            SyncArcRangeLines(primaryBatteryRangeLine, 0, 0, 0, new List<Utils.ArcSegmentDeg>());
+            SetRangeLineInactive(primaryBatteryRangeLine);
         }
 
         var hasSecondBattery = shipClass != null && shipClass.batteryRecords.Count >= 2;
-        secondaryBatteryRangeLine.gameObject.SetActive(hasSecondBattery);
         if (hasSecondBattery)
         {
             var secondaryBatteryRecord = shipClass.batteryRecords[1];
             var rangeM = secondaryBatteryRecord.rangeYards * MeasureUtils.yardToMeter;
-            var arcSegments = GetMergedArcSegmentsForBattery(secondaryBatteryRecord, shipLog.headingDeg);
-            SyncArcRangeLines(secondaryBatteryRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg, rangeM, arcSegments);
+            var arcSegmentsRaw = GetRawArcSegmentsForBattery(secondaryBatteryRecord, shipLog.headingDeg);
+            SyncRangeLineByMode(secondaryBatteryRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg, rangeM, arcSegmentsRaw);
         }
         else
         {
-            SyncArcRangeLines(secondaryBatteryRangeLine, 0, 0, 0, new List<Utils.ArcSegmentDeg>());
+            SetRangeLineInactive(secondaryBatteryRangeLine);
         }
 
         var hasTertiaryBattery = shipClass != null && shipClass.batteryRecords.Count >= 3;
-        tertiaryBatteryRangeLine.gameObject.SetActive(hasTertiaryBattery);
         if (hasTertiaryBattery)
         {
             var tertiaryBatteryRecord = shipClass.batteryRecords[2];
             var rangeM = tertiaryBatteryRecord.rangeYards * MeasureUtils.yardToMeter;
-            var arcSegments = GetMergedArcSegmentsForBattery(tertiaryBatteryRecord, shipLog.headingDeg);
-            SyncArcRangeLines(tertiaryBatteryRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg, rangeM, arcSegments);
+            var arcSegmentsRaw = GetRawArcSegmentsForBattery(tertiaryBatteryRecord, shipLog.headingDeg);
+            SyncRangeLineByMode(tertiaryBatteryRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg, rangeM, arcSegmentsRaw);
         }
         else
         {
-            SyncArcRangeLines(tertiaryBatteryRangeLine, 0, 0, 0, new List<Utils.ArcSegmentDeg>());
+            SetRangeLineInactive(tertiaryBatteryRangeLine);
         }
 
         var hasOneRapidFiringBattery = shipClass != null && shipClass.rapidFireBatteryRecords.Count >= 1;
-        rapidFireBatteryRangeLine.gameObject.SetActive(hasOneRapidFiringBattery);
         if (hasOneRapidFiringBattery)
         {
             var rapidFireBatteryRecord = shipClass.rapidFireBatteryRecords[0];
             var rangeM = rapidFireBatteryRecord.maxRangeYards * MeasureUtils.yardToMeter;
-            var arcSegments = GetMergedArcSegmentsForRapidFire(rapidFireBatteryRecord, shipLog.headingDeg);
-            SyncArcRangeLines(rapidFireBatteryRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg, rangeM, arcSegments);
+            var arcSegmentsRaw = GetRawArcSegmentsForRapidFire(rapidFireBatteryRecord, shipLog.headingDeg);
+            SyncRangeLineByMode(rapidFireBatteryRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg, rangeM, arcSegmentsRaw);
         }
         else
         {
-            SyncArcRangeLines(rapidFireBatteryRangeLine, 0, 0, 0, new List<Utils.ArcSegmentDeg>());
+            SetRangeLineInactive(rapidFireBatteryRangeLine);
         }
 
         var hasTorpedo = shipClass != null && shipClass.torpedoSector.torpedoSettings.Count >= 1;
-        torpedoRangeLine.gameObject.SetActive(hasTorpedo);
         if (hasTorpedo)
         {
             var rangeM = shipClass.torpedoSector.torpedoSettings[0].rangeYards * MeasureUtils.yardToMeter;
-            var arcSegments = GetMergedArcSegmentsForTorpedo(shipClass.torpedoSector, shipLog.headingDeg);
-            SyncArcRangeLines(torpedoRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg, rangeM, arcSegments);
+            var arcSegmentsRaw = GetRawArcSegmentsForTorpedo(shipClass.torpedoSector, shipLog.headingDeg);
+            SyncRangeLineByMode(torpedoRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg, rangeM, arcSegmentsRaw);
         }
         else
         {
-            SyncArcRangeLines(torpedoRangeLine, 0, 0, 0, new List<Utils.ArcSegmentDeg>());
+            SetRangeLineInactive(torpedoRangeLine);
         }
 
         var hasVisibilityCap = shipClass != null;
@@ -1407,7 +1402,43 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
-    List<Utils.ArcSegmentDeg> GetMergedArcSegmentsForBattery(BatteryRecord batteryRecord, float shipHeadingDeg)
+    void SyncRangeLineByMode(LineRenderer baseLineRenderer, float latDeg, float lonDeg, float rangeM, List<Utils.ArcSegmentDeg> rawArcSegments)
+    {
+        var mode = GamePreference.Instance.rangeRingDisplayMode;
+        if (mode == GamePreference.RangeRingDisplayMode.Circle)
+        {
+            baseLineRenderer.gameObject.SetActive(true);
+            Utils.DrawCircleForLineRenderer(baseLineRenderer, latDeg, lonDeg, rangeM);
+            HideVariantRangeLines(baseLineRenderer);
+            return;
+        }
+
+        var arcSegments = mode switch
+        {
+            GamePreference.RangeRingDisplayMode.MergedArcs => Utils.MergeArcSegments(rawArcSegments),
+            GamePreference.RangeRingDisplayMode.DistinctArcs => Utils.DistinctArcSegments(rawArcSegments),
+            _ => Utils.MergeArcSegments(rawArcSegments)
+        };
+        SyncArcRangeLines(baseLineRenderer, latDeg, lonDeg, rangeM, arcSegments);
+    }
+
+    void SetRangeLineInactive(LineRenderer baseLineRenderer)
+    {
+        baseLineRenderer.gameObject.SetActive(false);
+        HideVariantRangeLines(baseLineRenderer);
+    }
+
+    void HideVariantRangeLines(LineRenderer baseLineRenderer)
+    {
+        if (!rangeArcLinePool.TryGetValue(baseLineRenderer, out var variantLineRenderers))
+            return;
+        foreach (var lineRenderer in variantLineRenderers)
+        {
+            lineRenderer.gameObject.SetActive(false);
+        }
+    }
+
+    List<Utils.ArcSegmentDeg> GetRawArcSegmentsForBattery(BatteryRecord batteryRecord, float shipHeadingDeg)
     {
         var arcSegments = batteryRecord.mountLocationRecords
             .SelectMany(mountLocationRecord => mountLocationRecord.mountArcs)
@@ -1421,10 +1452,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             arcSegments.Add(new Utils.ArcSegmentDeg { startDeg = 0, sweepDeg = 360 });
         }
-        return Utils.MergeArcSegments(arcSegments);
+        return arcSegments;
     }
 
-    List<Utils.ArcSegmentDeg> GetMergedArcSegmentsForTorpedo(TorpedoSector torpedoSector, float shipHeadingDeg)
+    List<Utils.ArcSegmentDeg> GetRawArcSegmentsForTorpedo(TorpedoSector torpedoSector, float shipHeadingDeg)
     {
         var arcSegments = torpedoSector.mountLocationRecords
             .SelectMany(mountLocationRecord => mountLocationRecord.mountArcs)
@@ -1438,17 +1469,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             arcSegments.Add(new Utils.ArcSegmentDeg { startDeg = 0, sweepDeg = 360 });
         }
-        return Utils.MergeArcSegments(arcSegments);
+        return arcSegments;
     }
 
-    List<Utils.ArcSegmentDeg> GetMergedArcSegmentsForRapidFire(RapidFireBatteryRecord rapidFireBatteryRecord, float shipHeadingDeg)
+    List<Utils.ArcSegmentDeg> GetRawArcSegmentsForRapidFire(RapidFireBatteryRecord rapidFireBatteryRecord, float shipHeadingDeg)
     {
         var arcSegments = new List<Utils.ArcSegmentDeg>();
         if (rapidFireBatteryRecord.barrelsLevelStarboard.FirstOrDefault() > 0)
         {
             arcSegments.Add(new Utils.ArcSegmentDeg
             {
-                startDeg = MeasureUtils.NormalizeAngle(shipHeadingDeg + 315),
+                startDeg = MeasureUtils.NormalizeAngle(shipHeadingDeg + 0),
                 sweepDeg = 180
             });
         }
@@ -1456,7 +1487,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             arcSegments.Add(new Utils.ArcSegmentDeg
             {
-                startDeg = MeasureUtils.NormalizeAngle(shipHeadingDeg + 135),
+                startDeg = MeasureUtils.NormalizeAngle(shipHeadingDeg + 180),
                 sweepDeg = 180
             });
         }
@@ -1464,7 +1495,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             arcSegments.Add(new Utils.ArcSegmentDeg { startDeg = 0, sweepDeg = 360 });
         }
-        return Utils.MergeArcSegments(arcSegments);
+        return arcSegments;
     }
 
     void SyncArcRangeLines(LineRenderer baseLineRenderer, float latDeg, float lonDeg, float rangeM, List<Utils.ArcSegmentDeg> arcSegments)

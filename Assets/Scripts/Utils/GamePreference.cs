@@ -27,6 +27,15 @@ public class GamePreference
     }
 
     public FiringLineDisplayMode firingLineDisplayMode = FiringLineDisplayMode.SelectedRootGroup;
+
+    public enum RangeRingDisplayMode
+    {
+        Circle,
+        MergedArcs,
+        DistinctArcs
+    }
+
+    public RangeRingDisplayMode rangeRingDisplayMode = RangeRingDisplayMode.MergedArcs;
     
     [CreateProperty]
     public PortraitViewer.Mode shipPortraitViewMode
@@ -279,6 +288,7 @@ public class GamePreference
         p.simulationRateRatio = PlayerPrefs.GetFloat("simulationRateRaio", 120);
         // p.isInEditMode = PlayerPrefs.GetInt("isInEditMode", 0) == 1;
         p.isInEditMode = PlayerPrefs.GetInt("isInEditMode", 1) == 1;
+        p.rangeRingDisplayMode = (RangeRingDisplayMode)PlayerPrefs.GetInt("rangeRingDisplayMode", (int)RangeRingDisplayMode.MergedArcs);
     }
 
     public void SaveToPlayerPrefs()
@@ -287,6 +297,7 @@ public class GamePreference
         PlayerPrefs.SetInt("showAIDialog", showAIDialog ? 1 : 0);
         PlayerPrefs.SetFloat("simulationRateRaio", simulationRateRatio);
         PlayerPrefs.SetInt("isInEditMode", isInEditMode ? 1 : 0);
+        PlayerPrefs.SetInt("rangeRingDisplayMode", (int)rangeRingDisplayMode);
 
         PlayerPrefs.Save();
     }

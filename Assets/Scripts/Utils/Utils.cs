@@ -485,6 +485,52 @@ public static class Utils
             .ToList();
     }
 
+    public static List<ArcSegmentDeg> DistinctArcSegments(IEnumerable<ArcSegmentDeg> arcSegments, float minSweepDeg = 0.1f, float quantizeDeg = 0.01f)
+    {
+        const float fullCircleDeg = 360f;
+        const float eps = 0.001f;
+
+        var normalizedArcSegments = new List<ArcSegmentDeg>();
+        foreach (var arcSegment in arcSegments)
+        {
+            var startDeg = MeasureUtils.NormalizeAngle(arcSegment.startDeg);
+            var sweepDeg = arcSegment.sweepDeg;
+            if (Mathf.Abs(sweepDeg) < minSweepDeg)
+                continue;
+
+            if (Mathf.Abs(sweepDeg) >= fullCircleDeg - eps)
+            {
+                return new List<ArcSegmentDeg> { new() { startDeg = 0f, sweepDeg = fullCircleDeg } };
+            }
+
+            if (sweepDeg < 0)
+            {
+                startDeg = MeasureUtils.NormalizeAngle(startDeg + sweepDeg);
+                sweepDeg = -sweepDeg;
+            }
+
+            normalizedArcSegments.Add(new ArcSegmentDeg
+            {
+                startDeg = startDeg,
+                sweepDeg = sweepDeg
+            });
+        }
+
+        var dedupedArcSegments = new List<ArcSegmentDeg>();
+        var seenKeys = new HashSet<string>();
+        foreach (var arcSegment in normalizedArcSegments)
+        {
+            var keyStart = Mathf.RoundToInt(arcSegment.startDeg / quantizeDeg);
+            var keySweep = Mathf.RoundToInt(arcSegment.sweepDeg / quantizeDeg);
+            var key = $"{keyStart}:{keySweep}";
+            if (seenKeys.Add(key))
+            {
+                dedupedArcSegments.Add(arcSegment);
+            }
+        }
+        return dedupedArcSegments;
+    }
+
     // public static void BindIStrategicGroupMemberReferenceable<T>(VisualElement root, SingletonDocument<T> meDoc) where T : MonoBehaviour
     public static void BindIStrategicGroupMemberReferenceable(VisualElement root)
     {

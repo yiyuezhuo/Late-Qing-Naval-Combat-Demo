@@ -173,6 +173,7 @@ public static class RegisteredConverters
         RegisterEnumIntTwoWay<LeaderSkillLevel>();
         RegisterEnumIntTwoWay<LeaderTrait>();
         RegisterEnumIntTwoWay<GamePreference.FiringLineDisplayMode>();
+        RegisterEnumIntTwoWay<GamePreference.RangeRingDisplayMode>();
         RegisterEnumIntTwoWay<VictoryLevel>();
 
         RegisterEnumIntTwoWay<PortraitViewer.Mode>();

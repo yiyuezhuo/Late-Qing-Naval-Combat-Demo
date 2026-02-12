@@ -43,3 +43,7 @@ Check UI_Toolkit_AI_Guide.md for making style-related modifications in UI Toolki
 
 ## Unity Localization related thing
 Check Localization_AI_Guide.md for making localization modifications in UI Toolkit.
+
+## Local command guardrails
+- Never run `dotnet build "Operation Brevity.slnx"` or any command targeting the Operation Brevity project.
+- Only build this repo’s solution: `Late-Qing-Naval-Combat-Demo.slnx`.

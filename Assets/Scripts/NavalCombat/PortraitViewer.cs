@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UIElements;
 using System;
+using System.Linq;
 
 using CoreUtils;
 using NavalCombatCore;
@@ -68,11 +69,18 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
     public List<GameObject> deployedGameObjects;
     public List<GameObject> destroyedGameObjects;
+    public List<GameObject> wakeGameObjects;
+    public bool autoCreateWakeTrails = true;
+    public float wakeSpeedThresholdKnots = 1f;
 
     public AudioClip gunfireSound;
     public AudioClip torpedoFireSound;
     public AudioClip explosionSound;
     AudioSource audioSource;
+    readonly List<TrailRenderer> autoWakeTrails = new();
+    Transform wakePortAnchor;
+    Transform wakeStarboardAnchor;
+    Material wakeTrailMaterial;
 
     //
     Texture2D portraitTex;
@@ -96,6 +104,125 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         flagRenderer.material = flagRenderer.material; // copy material
 
         audioSource = GetComponent<AudioSource>();
+        TryBindWakeGameObjectsByName();
+    }
+
+    void TryBindWakeGameObjectsByName()
+    {
+        if (wakeGameObjects != null && wakeGameObjects.Count > 0)
+            return;
+
+        wakeGameObjects = GetComponentsInChildren<Transform>(true)
+            .Where(t => t != null && t != transform)
+            .Where(t =>
+            {
+                var n = t.name.ToLowerInvariant();
+                return n.Contains("wake") || n.Contains("foam");
+            })
+            .Select(t => t.gameObject)
+            .ToList();
+    }
+
+    void EnsureAutoWakeTrails()
+    {
+        if (!autoCreateWakeTrails || autoWakeTrails.Count > 0)
+            return;
+
+        wakePortAnchor = new GameObject("WakePortAnchor").transform;
+        wakePortAnchor.SetParent(headingTransform, false);
+        wakeStarboardAnchor = new GameObject("WakeStarboardAnchor").transform;
+        wakeStarboardAnchor.SetParent(headingTransform, false);
+
+        autoWakeTrails.Add(CreateWakeTrail("WakePortTrail", wakePortAnchor));
+        autoWakeTrails.Add(CreateWakeTrail("WakeStarboardTrail", wakeStarboardAnchor));
+    }
+
+    TrailRenderer CreateWakeTrail(string name, Transform parent)
+    {
+        var go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+
+        var trail = go.AddComponent<TrailRenderer>();
+        trail.time = 1.8f;
+        trail.minVertexDistance = 0.002f;
+        trail.numCornerVertices = 2;
+        trail.numCapVertices = 2;
+        trail.alignment = LineAlignment.TransformZ;
+        trail.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        trail.receiveShadows = false;
+        trail.motionVectorGenerationMode = UnityEngine.MotionVectorGenerationMode.ForceNoMotion;
+        trail.autodestruct = false;
+        trail.emitting = false;
+
+        var gradient = new Gradient();
+        gradient.SetKeys(
+            new[] { new GradientColorKey(Color.white, 0), new GradientColorKey(Color.white, 1) },
+            new[] { new GradientAlphaKey(0.3f, 0), new GradientAlphaKey(0.02f, 1) }
+        );
+        trail.colorGradient = gradient;
+
+        trail.widthCurve = new AnimationCurve(
+            new Keyframe(0, 1),
+            new Keyframe(1, 0.1f)
+        );
+
+        if (wakeTrailMaterial == null)
+        {
+            var shader = Shader.Find("Sprites/Default");
+            wakeTrailMaterial = shader != null ? new Material(shader) : null;
+        }
+        if (wakeTrailMaterial != null)
+            trail.material = wakeTrailMaterial;
+
+        return trail;
+    }
+
+    void UpdateWakeEffects(ShipLog shipLog, float shipLengthWu, float shipBeamWu)
+    {
+        var isMoving = shipLog != null && shipLog.mapState == MapState.Deployed && Math.Abs(shipLog.speedKnots) >= wakeSpeedThresholdKnots;
+
+        if (wakeGameObjects != null)
+        {
+            foreach (var go in wakeGameObjects)
+            {
+                if (go != null)
+                    go.SetActive(isMoving);
+            }
+        }
+
+        if (shipLog == null)
+        {
+            foreach (var trail in autoWakeTrails)
+            {
+                if (trail == null)
+                    continue;
+                trail.emitting = false;
+                trail.Clear();
+            }
+            return;
+        }
+
+        EnsureAutoWakeTrails();
+        if (autoWakeTrails.Count == 0 || wakePortAnchor == null || wakeStarboardAnchor == null)
+            return;
+
+        wakePortAnchor.localPosition = new Vector3(-shipLengthWu * 0.45f, shipBeamWu * 0.22f, 0.0005f);
+        wakeStarboardAnchor.localPosition = new Vector3(-shipLengthWu * 0.45f, -shipBeamWu * 0.22f, 0.0005f);
+
+        var wakeWidth = Mathf.Clamp(shipBeamWu * 0.7f, 0.003f, 0.05f);
+        foreach (var trail in autoWakeTrails)
+        {
+            if (trail == null)
+                continue;
+
+            trail.widthMultiplier = wakeWidth;
+            if (trail.emitting != isMoving)
+            {
+                trail.emitting = isMoving;
+                if (!isMoving)
+                    trail.Clear();
+            }
+        }
     }
 
     void MaintainTextDirectionSize()
@@ -221,9 +348,10 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         {
             beamWu *= iconBeamScale;
         }
+        var lengthWu = shipLengthFoot * Utils.footToWu * modelScale;
 
         iconTransform.localScale = new Vector3(
-            shipLengthFoot * Utils.footToWu * modelScale,
+            lengthWu,
             beamWu,
             1
         );
@@ -249,6 +377,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         text.text = $"{model.GetAcronym()} {model.GetName().GetNameFromType(GamePreference.Instance.shortLabelLanguageType)}";
 
         MaintainFlagRotationSize();
+        UpdateWakeEffects(shipLog, lengthWu, beamWu);
 
         var portraitRef = mode switch
         {

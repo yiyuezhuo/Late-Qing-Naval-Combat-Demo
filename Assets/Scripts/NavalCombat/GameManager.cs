@@ -48,6 +48,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public Transform shipLogTrajectoriesTransform;
     public Transform shipLogTrajectoryLabelsTransform;
     public GameObject shipLogTrajectoryLabelPrefab;
+    [Header("Gunnery Shell Visual")]
+    public bool enableGunneryShellVisual = true;
+    [Min(1f)]
+    public float gunneryShellSpeedMps = 760f;
+    [Min(0f)]
+    public float gunneryShellAltitudeFoot = 300f;
+    [Min(1f)]
+    public float gunneryShellDiameterFoot = 120f;
+    [Min(0f)]
+    public float gunneryShellArcHeightFoot = 300f;
+    public Transform gunneryShellVisualContainer;
 
     [Serializable]
     public class StateText2DConfig
@@ -168,6 +179,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         GamePreference.Instance.SetShortLabelLanguageTypeByLocale(LocalizationSettings.SelectedLocale);
 
         iconLayerMask = LayerMask.GetMask("Icon");
+        if (gunneryShellVisualContainer == null)
+        {
+            var root = new GameObject("GunneryShellVisualContainer");
+            root.transform.SetParent(null, false);
+            gunneryShellVisualContainer = root.transform;
+        }
         // Debug.Log($"Persistent Path:{Application.persistentDataPath}");
 
         SuperGameState.Instance.currentGameMode = GameMode.Naval;
@@ -380,6 +397,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
 
     public Dictionary<string, PortraitViewer> objectId2Viewer = new();
+    readonly Dictionary<string, int> processedMountFiringLogCount = new();
+    readonly Dictionary<string, int> processedRapidFiringLogCount = new();
 
     public string hoveringLocationInfo;
     public bool currentLogOnly = true;
@@ -453,6 +472,18 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         var pulseLengthSeconds = GamePreference.Instance.pulseLengthSeconds;
         return isAutoPlaying || remainAdvanceSimulationSecondsRequestedByUserInput >= pulseLengthSeconds;
+    }
+
+    public float GetCurrentSimulationAdvanceRatio()
+    {
+        if (isAutoPlaying)
+            return GamePreference.Instance.simulationRateRatioAuto;
+
+        var pulseLengthSeconds = GamePreference.Instance.pulseLengthSeconds;
+        if (remainAdvanceSimulationSecondsRequestedByUserInput >= pulseLengthSeconds)
+            return GamePreference.Instance.simulationRateRatio;
+
+        return 0f;
     }
 
     void PauseUnityClock()
@@ -974,6 +1005,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         networkingManager?.Update();
 
         UpdateSimulation();
+        SyncGunneryShellVisualsFromLogs();
         // viewAccTime += Time.deltaTime;
 
         // if (viewAccTime > 2)
@@ -1509,6 +1541,114 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             // dynamicLine.SetColor(Color.black);
             dynamicLine.SetColor(Color.red);
         }
+    }
+
+    void SyncGunneryShellVisualsFromLogs()
+    {
+        var navalState = NavalGameState.Instance;
+        if (navalState == null)
+            return;
+
+        var activeMountIds = new HashSet<string>();
+        var activeRapidIds = new HashSet<string>();
+
+        foreach (var shooter in navalState.shipLogsOnMap)
+        {
+            foreach (var batteryStatus in shooter.batteryStatus)
+            {
+                foreach (var mount in batteryStatus.mountStatus)
+                {
+                    var mountId = mount.objectId;
+                    if (string.IsNullOrEmpty(mountId))
+                        continue;
+
+                    activeMountIds.Add(mountId);
+
+                    var logCount = mount.logs.Count;
+                    var beginIdx = processedMountFiringLogCount.GetValueOrDefault(mountId, 0);
+                    if (beginIdx > logCount)
+                        beginIdx = logCount;
+
+                    for (var i = beginIdx; i < logCount; i++)
+                    {
+                        TrySpawnGunneryShellVisual(shooter, mount.logs[i].firingTargetObjectId);
+                    }
+
+                    processedMountFiringLogCount[mountId] = logCount;
+                }
+            }
+
+            foreach (var rapidFiringStatus in shooter.rapidFiringStatus)
+            {
+                var rapidId = rapidFiringStatus.objectId;
+                if (string.IsNullOrEmpty(rapidId))
+                    continue;
+
+                activeRapidIds.Add(rapidId);
+
+                var logCount = rapidFiringStatus.logs.Count;
+                var beginIdx = processedRapidFiringLogCount.GetValueOrDefault(rapidId, 0);
+                if (beginIdx > logCount)
+                    beginIdx = logCount;
+
+                for (var i = beginIdx; i < logCount; i++)
+                {
+                    TrySpawnGunneryShellVisual(shooter, rapidFiringStatus.logs[i].firingTargetObjectId);
+                }
+
+                processedRapidFiringLogCount[rapidId] = logCount;
+            }
+        }
+
+        foreach (var staleId in processedMountFiringLogCount.Keys.Where(k => !activeMountIds.Contains(k)).ToList())
+        {
+            processedMountFiringLogCount.Remove(staleId);
+        }
+
+        foreach (var staleId in processedRapidFiringLogCount.Keys.Where(k => !activeRapidIds.Contains(k)).ToList())
+        {
+            processedRapidFiringLogCount.Remove(staleId);
+        }
+    }
+
+    void TrySpawnGunneryShellVisual(ShipLog shooter, string targetObjectId)
+    {
+        if (!enableGunneryShellVisual || shooter == null || string.IsNullOrEmpty(targetObjectId))
+            return;
+
+        var target = EntityManager.Instance.Get<ShipLog>(targetObjectId);
+        if (target == null)
+            return;
+
+        var startPos = Utils.LatitudeLongitudeDegHeightFootToVector3(
+            shooter.position.LatDeg,
+            shooter.position.LonDeg,
+            gunneryShellAltitudeFoot
+        );
+        var endPos = Utils.LatitudeLongitudeDegHeightFootToVector3(
+            target.position.LatDeg,
+            target.position.LonDeg,
+            gunneryShellAltitudeFoot
+        );
+
+        var shell = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        shell.name = "GunneryShellVisual";
+        shell.transform.SetParent(gunneryShellVisualContainer, true);
+        shell.transform.position = startPos;
+        shell.transform.localScale = Vector3.one * (gunneryShellDiameterFoot * Utils.footToWu);
+
+        var collider = shell.GetComponent<Collider>();
+        if (collider != null)
+            Destroy(collider);
+
+        var controller = shell.AddComponent<BallController>();
+        controller.Setup(
+            startPos,
+            endPos,
+            gunneryShellSpeedMps * MeasureUtils.meterToFoot * Utils.footToWu,
+            targetObjectId,
+            gunneryShellAltitudeFoot
+        );
     }
 
     void SyncRangeLine()

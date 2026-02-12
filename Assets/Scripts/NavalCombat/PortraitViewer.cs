@@ -28,6 +28,22 @@ public interface IPortraitViewerObservable : IObjectIdLabeled, ICollider // Abst
 
 public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 {
+    enum SfxType
+    {
+        Gun,
+        Torpedo,
+        Explosion
+    }
+
+    struct SfxLimiterConfig
+    {
+        public int maxPerFrame;
+        public int maxConcurrent;
+        public float cooldownSec;
+        public float minVolume;
+        public float maxVolume;
+    }
+
     public string modelObjectId;
     public IPortraitViewerObservable model { get => EntityManager.Instance.Get<IPortraitViewerObservable>(modelObjectId); }
 
@@ -78,6 +94,42 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public AudioClip torpedoFireSound;
     public AudioClip explosionSound;
     AudioSource audioSource;
+    static int sfxLimiterFrame = -1;
+    static readonly Dictionary<SfxType, int> sfxCountPerFrame = new();
+    static readonly Dictionary<SfxType, float> sfxLastPlayTime = new();
+    static readonly Dictionary<SfxType, List<float>> sfxActiveEndTimes = new()
+    {
+        [SfxType.Gun] = new(),
+        [SfxType.Torpedo] = new(),
+        [SfxType.Explosion] = new()
+    };
+    static readonly Dictionary<SfxType, SfxLimiterConfig> sfxLimiterConfigs = new()
+    {
+        [SfxType.Gun] = new SfxLimiterConfig
+        {
+            maxPerFrame = 6,
+            maxConcurrent = 10,
+            cooldownSec = 0.03f,
+            minVolume = 0.85f,
+            maxVolume = 1f
+        },
+        [SfxType.Torpedo] = new SfxLimiterConfig
+        {
+            maxPerFrame = 2,
+            maxConcurrent = 3,
+            cooldownSec = 0.10f,
+            minVolume = 0.90f,
+            maxVolume = 1f
+        },
+        [SfxType.Explosion] = new SfxLimiterConfig
+        {
+            maxPerFrame = 4,
+            maxConcurrent = 6,
+            cooldownSec = 0.06f,
+            minVolume = 0.90f,
+            maxVolume = 1f
+        }
+    };
     readonly List<LineRenderer> autoWakeLines = new();
     readonly List<WakeSample> wakeSamples = new();
     Transform wakePortAnchor;
@@ -197,6 +249,59 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         if (scenarioState != null)
             return scenarioState.dateTime.Ticks;
         return DateTime.UtcNow.Ticks;
+    }
+
+    static void CleanupExpiredActiveVoices(SfxType type)
+    {
+        var now = Time.unscaledTime;
+        var activeEndTimes = sfxActiveEndTimes[type];
+        for (int i = activeEndTimes.Count - 1; i >= 0; i--)
+        {
+            if (activeEndTimes[i] <= now)
+                activeEndTimes.RemoveAt(i);
+        }
+    }
+
+    static bool TryAcquireSfxToken(SfxType type)
+    {
+        if (Time.frameCount != sfxLimiterFrame)
+        {
+            sfxLimiterFrame = Time.frameCount;
+            sfxCountPerFrame.Clear();
+        }
+
+        var config = sfxLimiterConfigs[type];
+        CleanupExpiredActiveVoices(type);
+        if (sfxActiveEndTimes[type].Count >= config.maxConcurrent)
+            return false;
+
+        sfxCountPerFrame.TryGetValue(type, out var count);
+        if (count >= config.maxPerFrame)
+            return false;
+
+        if (sfxLastPlayTime.TryGetValue(type, out var lastTime))
+        {
+            if (Time.unscaledTime - lastTime < config.cooldownSec)
+                return false;
+        }
+
+        sfxCountPerFrame[type] = count + 1;
+        sfxLastPlayTime[type] = Time.unscaledTime;
+        return true;
+    }
+
+    void TryPlaySfx(SfxType type, AudioClip clip)
+    {
+        if (clip == null || audioSource == null)
+            return;
+
+        if (!TryAcquireSfxToken(type))
+            return;
+
+        var config = sfxLimiterConfigs[type];
+        var volumeScale = UnityEngine.Random.Range(config.minVolume, config.maxVolume);
+        audioSource.PlayOneShot(clip, volumeScale);
+        sfxActiveEndTimes[type].Add(Time.unscaledTime + clip.length);
     }
 
     void ClearAutoWakeLines()
@@ -411,21 +516,21 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             {
                 shipLog.firingRounds = 0; // TODO: Code Smell?
 
-                audioSource.PlayOneShot(gunfireSound);
+                TryPlaySfx(SfxType.Gun, gunfireSound);
                 // Debug.Log("gunfireSound");
             }
             if(shipLog.firingTorpedos > 0)
             {
                 shipLog.firingTorpedos = 0;
 
-                audioSource.PlayOneShot(torpedoFireSound);
+                TryPlaySfx(SfxType.Torpedo, torpedoFireSound);
                 // Debug.Log("torpedoFireSound");
             }
             if(shipLog.startingExplosions > 0)
             {
                 shipLog.startingExplosions = 0;
 
-                audioSource.PlayOneShot(explosionSound);
+                TryPlaySfx(SfxType.Explosion, explosionSound);
             }
 
             // Maintain deployed & destroyed state

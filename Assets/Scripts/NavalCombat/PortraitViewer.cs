@@ -77,10 +77,20 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public AudioClip torpedoFireSound;
     public AudioClip explosionSound;
     AudioSource audioSource;
-    readonly List<TrailRenderer> autoWakeTrails = new();
+    readonly List<LineRenderer> autoWakeLines = new();
+    readonly List<WakeSample> wakeSamples = new();
     Transform wakePortAnchor;
     Transform wakeStarboardAnchor;
     Material wakeTrailMaterial;
+    public float wakeSimulationHistorySeconds = 180f;
+    public float wakeSampleMinDistanceWu = 0.003f;
+
+    struct WakeSample
+    {
+        public long ticks;
+        public Vector3 portPos;
+        public Vector3 starboardPos;
+    }
 
     //
     Texture2D portraitTex;
@@ -123,9 +133,9 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             .ToList();
     }
 
-    void EnsureAutoWakeTrails()
+    void EnsureAutoWakeLines()
     {
-        if (!autoCreateWakeTrails || autoWakeTrails.Count > 0)
+        if (!autoCreateWakeTrails || autoWakeLines.Count > 0)
             return;
 
         wakePortAnchor = new GameObject("WakePortAnchor").transform;
@@ -133,37 +143,35 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         wakeStarboardAnchor = new GameObject("WakeStarboardAnchor").transform;
         wakeStarboardAnchor.SetParent(headingTransform, false);
 
-        autoWakeTrails.Add(CreateWakeTrail("WakePortTrail", wakePortAnchor));
-        autoWakeTrails.Add(CreateWakeTrail("WakeStarboardTrail", wakeStarboardAnchor));
+        autoWakeLines.Add(CreateWakeLine("WakePortLine"));
+        autoWakeLines.Add(CreateWakeLine("WakeStarboardLine"));
     }
 
-    TrailRenderer CreateWakeTrail(string name, Transform parent)
+    LineRenderer CreateWakeLine(string name)
     {
         var go = new GameObject(name);
-        go.transform.SetParent(parent, false);
+        go.transform.SetParent(transform, false);
 
-        var trail = go.AddComponent<TrailRenderer>();
-        trail.time = 1.8f;
-        trail.minVertexDistance = 0.002f;
-        trail.numCornerVertices = 2;
-        trail.numCapVertices = 2;
-        trail.alignment = LineAlignment.TransformZ;
-        trail.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-        trail.receiveShadows = false;
-        trail.motionVectorGenerationMode = UnityEngine.MotionVectorGenerationMode.ForceNoMotion;
-        trail.autodestruct = false;
-        trail.emitting = false;
+        var line = go.AddComponent<LineRenderer>();
+        line.useWorldSpace = true;
+        line.positionCount = 0;
+        line.numCornerVertices = 2;
+        line.numCapVertices = 2;
+        line.alignment = LineAlignment.TransformZ;
+        line.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        line.receiveShadows = false;
+        line.motionVectorGenerationMode = UnityEngine.MotionVectorGenerationMode.ForceNoMotion;
 
         var gradient = new Gradient();
         gradient.SetKeys(
             new[] { new GradientColorKey(Color.white, 0), new GradientColorKey(Color.white, 1) },
-            new[] { new GradientAlphaKey(0.3f, 0), new GradientAlphaKey(0.02f, 1) }
+            new[] { new GradientAlphaKey(0.02f, 0), new GradientAlphaKey(0.3f, 1) }
         );
-        trail.colorGradient = gradient;
+        line.colorGradient = gradient;
 
-        trail.widthCurve = new AnimationCurve(
-            new Keyframe(0, 1),
-            new Keyframe(1, 0.1f)
+        line.widthCurve = new AnimationCurve(
+            new Keyframe(0, 0.1f),
+            new Keyframe(1, 1f)
         );
 
         if (wakeTrailMaterial == null)
@@ -172,9 +180,104 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             wakeTrailMaterial = shader != null ? new Material(shader) : null;
         }
         if (wakeTrailMaterial != null)
-            trail.material = wakeTrailMaterial;
+            line.material = wakeTrailMaterial;
 
-        return trail;
+        return line;
+    }
+
+    static long GetSimulationTicks()
+    {
+        var scenarioState = NavalGameState.Instance?.scenarioState;
+        if (scenarioState != null)
+            return scenarioState.dateTime.Ticks;
+        return DateTime.UtcNow.Ticks;
+    }
+
+    void ClearAutoWakeLines()
+    {
+        wakeSamples.Clear();
+        foreach (var line in autoWakeLines)
+        {
+            if (line == null)
+                continue;
+            line.enabled = false;
+            line.positionCount = 0;
+        }
+    }
+
+    void PushWakeSample(long nowTicks, Vector3 portWorldPos, Vector3 starboardWorldPos)
+    {
+        if (wakeSamples.Count > 0)
+        {
+            var last = wakeSamples[wakeSamples.Count - 1];
+            if (nowTicks < last.ticks)
+            {
+                ClearAutoWakeLines();
+            }
+            else
+            {
+                var distPort = Vector3.Distance(last.portPos, portWorldPos);
+                var distStarboard = Vector3.Distance(last.starboardPos, starboardWorldPos);
+                var movedEnough = distPort >= wakeSampleMinDistanceWu || distStarboard >= wakeSampleMinDistanceWu;
+                if (!movedEnough)
+                    return;
+            }
+        }
+
+        wakeSamples.Add(new WakeSample
+        {
+            ticks = nowTicks,
+            portPos = portWorldPos,
+            starboardPos = starboardWorldPos
+        });
+    }
+
+    void TrimWakeSamples(long nowTicks)
+    {
+        if (wakeSimulationHistorySeconds <= 0)
+        {
+            ClearAutoWakeLines();
+            return;
+        }
+
+        var keepTicks = (long)(wakeSimulationHistorySeconds * TimeSpan.TicksPerSecond);
+        var cutoffTicks = nowTicks - keepTicks;
+
+        while (wakeSamples.Count > 0 && wakeSamples[0].ticks < cutoffTicks)
+        {
+            wakeSamples.RemoveAt(0);
+        }
+    }
+
+    void SyncWakeLineRenderers()
+    {
+        if (autoWakeLines.Count < 2)
+            return;
+
+        var pointCount = wakeSamples.Count;
+        var hasEnoughPoints = pointCount >= 2;
+
+        for (int i = 0; i < autoWakeLines.Count; i++)
+        {
+            var line = autoWakeLines[i];
+            if (line == null)
+                continue;
+            line.enabled = hasEnoughPoints;
+            line.positionCount = pointCount;
+        }
+
+        if (!hasEnoughPoints)
+            return;
+
+        var portPoints = new Vector3[pointCount];
+        var starboardPoints = new Vector3[pointCount];
+        for (int i = 0; i < pointCount; i++)
+        {
+            portPoints[i] = wakeSamples[i].portPos;
+            starboardPoints[i] = wakeSamples[i].starboardPos;
+        }
+        autoWakeLines[0].SetPositions(portPoints);
+        autoWakeLines[1].SetPositions(starboardPoints);
     }
 
     void UpdateWakeEffects(ShipLog shipLog, float shipLengthWu, float shipBeamWu)
@@ -192,37 +295,32 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
         if (shipLog == null)
         {
-            foreach (var trail in autoWakeTrails)
-            {
-                if (trail == null)
-                    continue;
-                trail.emitting = false;
-                trail.Clear();
-            }
+            ClearAutoWakeLines();
             return;
         }
 
-        EnsureAutoWakeTrails();
-        if (autoWakeTrails.Count == 0 || wakePortAnchor == null || wakeStarboardAnchor == null)
+        EnsureAutoWakeLines();
+        if (autoWakeLines.Count == 0 || wakePortAnchor == null || wakeStarboardAnchor == null)
             return;
 
         wakePortAnchor.localPosition = new Vector3(-shipLengthWu * 0.45f, shipBeamWu * 0.22f, 0.0005f);
         wakeStarboardAnchor.localPosition = new Vector3(-shipLengthWu * 0.45f, -shipBeamWu * 0.22f, 0.0005f);
 
         var wakeWidth = Mathf.Clamp(shipBeamWu * 0.7f, 0.003f, 0.05f);
-        foreach (var trail in autoWakeTrails)
+        foreach (var line in autoWakeLines)
         {
-            if (trail == null)
+            if (line == null)
                 continue;
-
-            trail.widthMultiplier = wakeWidth;
-            if (trail.emitting != isMoving)
-            {
-                trail.emitting = isMoving;
-                if (!isMoving)
-                    trail.Clear();
-            }
+            line.widthMultiplier = wakeWidth;
         }
+
+        var nowTicks = GetSimulationTicks();
+        if (isMoving)
+        {
+            PushWakeSample(nowTicks, wakePortAnchor.position, wakeStarboardAnchor.position);
+        }
+        TrimWakeSamples(nowTicks);
+        SyncWakeLineRenderers();
     }
 
     void MaintainTextDirectionSize()

@@ -221,6 +221,16 @@ Column header's box color is controlled by `background-color` of `.unity-multi-c
 
 ## Unity UI Toolkit Style Rules (USS)
 
+### Hover selector
+
+To select hover, usually enabled should be added as well, for example:
+
+```css
+.unity-button:hover:enabled {
+    background-color: green;
+}
+```
+
 ### Use variable
 
 Never hardcode colors (rgb(...), rgba(...), #...) in USS except inside :root (the token file).

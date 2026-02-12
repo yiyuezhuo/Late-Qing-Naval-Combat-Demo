@@ -358,6 +358,18 @@ public static class Utils
         return false;
     }
 
+    public struct ArcSegmentDeg
+    {
+        public float startDeg;
+        public float sweepDeg;
+    }
+
+    struct ArcIntervalDeg
+    {
+        public float startDeg;
+        public float endDeg;
+    }
+
     static int circlePoints = 72;
 
     public static void DrawCircleForLineRenderer(LineRenderer lineRenderer, float latDeg, float lonDeg, float rangeM)
@@ -371,6 +383,106 @@ public static class Utils
         }
         lineRenderer.positionCount = circlePoints + 1;
         lineRenderer.SetPositions(points);
+    }
+
+    public static void DrawArcForLineRenderer(LineRenderer lineRenderer, float latDeg, float lonDeg, float rangeM, float startDeg, float sweepDeg)
+    {
+        var absSweepDeg = Mathf.Abs(sweepDeg);
+        if (absSweepDeg >= 359.999f)
+        {
+            DrawCircleForLineRenderer(lineRenderer, latDeg, lonDeg, rangeM);
+            return;
+        }
+
+        var pointsCount = Mathf.Max(2, Mathf.CeilToInt(circlePoints * absSweepDeg / 360f) + 1);
+        var center = LatitudeLongitudeDegHeightFootToVector3(latDeg, lonDeg, 100);
+        var points = new Vector3[pointsCount + 2];
+        points[0] = center;
+        for (int i = 0; i < pointsCount; i++)
+        {
+            var t = pointsCount <= 1 ? 0f : (float)i / (pointsCount - 1);
+            var bearingDeg = MeasureUtils.NormalizeAngle(startDeg + sweepDeg * t);
+            var (lat2Deg, lon2Deg) = MeasureStats.Approximation.CalculateNewPosition(latDeg, lonDeg, bearingDeg, rangeM);
+            points[i + 1] = LatitudeLongitudeDegHeightFootToVector3((float)lat2Deg, (float)lon2Deg, 100);
+        }
+        points[points.Length - 1] = center;
+
+        lineRenderer.positionCount = points.Length;
+        lineRenderer.SetPositions(points);
+    }
+
+    public static List<ArcSegmentDeg> MergeArcSegments(IEnumerable<ArcSegmentDeg> arcSegments, float minSweepDeg = 0.1f)
+    {
+        const float fullCircleDeg = 360f;
+        const float eps = 0.001f;
+
+        var intervals = new List<ArcIntervalDeg>();
+        foreach (var arcSegment in arcSegments)
+        {
+            var startDeg = MeasureUtils.NormalizeAngle(arcSegment.startDeg);
+            var sweepDeg = arcSegment.sweepDeg;
+            if (Mathf.Abs(sweepDeg) < minSweepDeg)
+                continue;
+
+            if (Mathf.Abs(sweepDeg) >= fullCircleDeg - eps)
+            {
+                return new List<ArcSegmentDeg> { new() { startDeg = 0f, sweepDeg = fullCircleDeg } };
+            }
+
+            if (sweepDeg < 0)
+            {
+                startDeg = MeasureUtils.NormalizeAngle(startDeg + sweepDeg);
+                sweepDeg = -sweepDeg;
+            }
+
+            var endDeg = startDeg + sweepDeg;
+            if (endDeg <= fullCircleDeg + eps)
+            {
+                intervals.Add(new ArcIntervalDeg { startDeg = startDeg, endDeg = Mathf.Min(endDeg, fullCircleDeg) });
+            }
+            else
+            {
+                intervals.Add(new ArcIntervalDeg { startDeg = startDeg, endDeg = fullCircleDeg });
+                intervals.Add(new ArcIntervalDeg { startDeg = 0f, endDeg = endDeg - fullCircleDeg });
+            }
+        }
+
+        if (intervals.Count == 0)
+            return new List<ArcSegmentDeg>();
+
+        intervals.Sort((a, b) => a.startDeg.CompareTo(b.startDeg));
+        var mergedIntervals = new List<ArcIntervalDeg> { intervals[0] };
+        for (var i = 1; i < intervals.Count; i++)
+        {
+            var current = intervals[i];
+            var last = mergedIntervals[mergedIntervals.Count - 1];
+            if (current.startDeg <= last.endDeg + eps)
+            {
+                last.endDeg = Mathf.Max(last.endDeg, current.endDeg);
+                mergedIntervals[mergedIntervals.Count - 1] = last;
+            }
+            else
+            {
+                mergedIntervals.Add(current);
+            }
+        }
+
+        if (mergedIntervals.Count > 1 && mergedIntervals[0].startDeg <= eps && mergedIntervals[mergedIntervals.Count - 1].endDeg >= fullCircleDeg - eps)
+        {
+            var first = mergedIntervals[0];
+            var last = mergedIntervals[mergedIntervals.Count - 1];
+            mergedIntervals[0] = new ArcIntervalDeg { startDeg = last.startDeg, endDeg = first.endDeg + fullCircleDeg };
+            mergedIntervals.RemoveAt(mergedIntervals.Count - 1);
+        }
+
+        return mergedIntervals
+            .Select(interval => new ArcSegmentDeg
+            {
+                startDeg = interval.startDeg,
+                sweepDeg = interval.endDeg - interval.startDeg
+            })
+            .Where(arcSegment => arcSegment.sweepDeg >= minSweepDeg)
+            .ToList();
     }
 
     // public static void BindIStrategicGroupMemberReferenceable<T>(VisualElement root, SingletonDocument<T> meDoc) where T : MonoBehaviour

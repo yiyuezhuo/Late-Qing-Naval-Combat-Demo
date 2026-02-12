@@ -198,6 +198,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             StartCoroutine(CompleteFullStateAndUpdateCoroutine(startupConfig.fullState));
             // oneShotStartupFullState = null; // one-shot
         }
+
+        RefreshClockState();
     }
 
     public void StartLoadScenarioCoroutine(string scenName)
@@ -440,13 +442,49 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public float remainAdvanceSimulationSecondsRequestedByUserInput; // Requested by KeyCode 1-9 (1-9 min) and BackQuote (`) (1s)
     public float remainAdvanceSimulationSecondsRequestedByUpdate;
     public bool isAutoPlaying = false;
+    float _savedTimeScaleBeforePause = 1f;
+    bool _timeScalePausedByGameManager = false;
 
     // public float simulationRateRaio = 30;
     // float simulationRateRaio = 120;
     // float pulseLengthSeconds = 1;
 
+    bool IsSimulationAdvancing()
+    {
+        var pulseLengthSeconds = GamePreference.Instance.pulseLengthSeconds;
+        return isAutoPlaying || remainAdvanceSimulationSecondsRequestedByUserInput >= pulseLengthSeconds;
+    }
+
+    void PauseUnityClock()
+    {
+        if (_timeScalePausedByGameManager)
+            return;
+        _savedTimeScaleBeforePause = Time.timeScale;
+        Time.timeScale = 0f;
+        _timeScalePausedByGameManager = true;
+    }
+
+    void ResumeUnityClock()
+    {
+        if (!_timeScalePausedByGameManager)
+            return;
+        var recover = _savedTimeScaleBeforePause > 0 ? _savedTimeScaleBeforePause : 1f;
+        Time.timeScale = recover;
+        _timeScalePausedByGameManager = false;
+    }
+
+    public void RefreshClockState()
+    {
+        if (IsSimulationAdvancing())
+            ResumeUnityClock();
+        else
+            PauseUnityClock();
+    }
+
     public void UpdateSimulation()
     {
+        RefreshClockState();
+
         var pulseLengthSeconds = GamePreference.Instance.pulseLengthSeconds;
         var simulationRateRatio = GamePreference.Instance.simulationRateRatio;
         var simulationRateRatioAuto = GamePreference.Instance.simulationRateRatioAuto;
@@ -534,6 +572,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             HandleAutoEnd();
         }
+
+        RefreshClockState();
     }
 
     public void HandleAutoEnd()
@@ -693,6 +733,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             readyToAdvanceAsHost = true;
             remainAdvanceSimulationSecondsRequestedByUserInputPending = value;
+            RefreshClockState();
         }
         else if(networkingManager is NetworkingClientManager clientManager && clientManager != null)
         {
@@ -706,6 +747,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             {
                 DialogRoot.Instance.PopupMessageDialog("Invalid Host");
             }
+            RefreshClockState();
         }
         else // single player advance
         {
@@ -713,6 +755,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 NavalGameState.Instance.tempSubjectLogs.Clear();
 
             remainAdvanceSimulationSecondsRequestedByUserInput = value;
+            RefreshClockState();
         }
     }
 
@@ -775,6 +818,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 remainAdvanceSimulationSecondsRequestedByUserInput = remainAdvanceSimulationSecondsRequestedByUserInputPending;
                 remainAdvanceSimulationSecondsRequestedByUserInputPending = 0;
                 readyToAdvanceAsHost = false;
+                RefreshClockState();
             }
         }
 
@@ -918,6 +962,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                         {
                             SetRemainAdvanceSimulationSecondsRequestedByUserInput(0);
                         }
+                        RefreshClockState();
                     }
                     else
                     {
@@ -1860,6 +1905,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
 
         connectionViewStates = new();
+    }
+
+    public void OnDisable()
+    {
+        ResumeUnityClock();
     }
 
     public List<ConnectionViewState> connectionViewStates = new();

@@ -183,6 +183,38 @@ public class GamePreference
         set => GameManager.showSunkShips = value;
     }
 
+    bool _enableGunneryShellVisual = true;
+    float _gunneryShellRadiusScaleCoef = 100f;
+
+    [CreateProperty]
+    public bool enableGunneryShellVisual
+    {
+        get => GameManager.Instance != null ? GameManager.Instance.enableGunneryShellVisual : _enableGunneryShellVisual;
+        set
+        {
+            _enableGunneryShellVisual = value;
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.enableGunneryShellVisual = value;
+            }
+        }
+    }
+
+    [CreateProperty]
+    public float gunneryShellRadiusScaleCoef
+    {
+        get => GameManager.Instance != null ? GameManager.Instance.gunneryShellRadiusScaleCoef : _gunneryShellRadiusScaleCoef;
+        set
+        {
+            var clamped = Math.Max(1f, value);
+            _gunneryShellRadiusScaleCoef = clamped;
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.gunneryShellRadiusScaleCoef = clamped;
+            }
+        }
+    }
+
     bool _enableAudio = true;
     float _audioVolume = 1;
 
@@ -290,6 +322,8 @@ public class GamePreference
         // p.isInEditMode = PlayerPrefs.GetInt("isInEditMode", 0) == 1;
         p.isInEditMode = PlayerPrefs.GetInt("isInEditMode", 1) == 1;
         p.rangeRingDisplayMode = (RangeRingDisplayMode)PlayerPrefs.GetInt("rangeRingDisplayMode", (int)RangeRingDisplayMode.MergedArcs);
+        p.enableGunneryShellVisual = PlayerPrefs.GetInt("enableGunneryShellVisual", 1) == 1;
+        p.gunneryShellRadiusScaleCoef = PlayerPrefs.GetFloat("gunneryShellRadiusScaleCoef", 12f);
     }
 
     public void SaveToPlayerPrefs()
@@ -299,6 +333,8 @@ public class GamePreference
         PlayerPrefs.SetFloat("simulationRateRaio", simulationRateRatio);
         PlayerPrefs.SetInt("isInEditMode", isInEditMode ? 1 : 0);
         PlayerPrefs.SetInt("rangeRingDisplayMode", (int)rangeRingDisplayMode);
+        PlayerPrefs.SetInt("enableGunneryShellVisual", enableGunneryShellVisual ? 1 : 0);
+        PlayerPrefs.SetFloat("gunneryShellRadiusScaleCoef", gunneryShellRadiusScaleCoef);
 
         PlayerPrefs.Save();
     }

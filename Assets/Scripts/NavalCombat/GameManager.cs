@@ -55,7 +55,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [Min(0f)]
     public float gunneryShellAltitudeFoot = 300f;
     [Min(1f)]
-    public float gunneryShellRadiusScaleCoef = 12f;
+    public float gunneryShellRadiusScaleCoef = 100f;
     public Transform gunneryShellVisualContainer;
 
     [Serializable]
@@ -175,6 +175,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         SwitchCenter.Instance.Reset();
 
         GamePreference.Instance.SetShortLabelLanguageTypeByLocale(LocalizationSettings.SelectedLocale);
+        enableGunneryShellVisual = GamePreference.Instance.enableGunneryShellVisual;
+        gunneryShellRadiusScaleCoef = GamePreference.Instance.gunneryShellRadiusScaleCoef;
 
         iconLayerMask = LayerMask.GetMask("Icon");
         if (gunneryShellVisualContainer == null)

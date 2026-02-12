@@ -137,6 +137,16 @@
                                 <ui:DataBinding property="value" data-source-path="showSunkShips" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:Toggle>
+                        <ui:Toggle label="Enable Gunnery Shell Visual">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="enableGunneryShellVisual" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:Toggle>
+                        <ui:FloatField label="Gunnery Shell Radius Scale Coef">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="gunneryShellRadiusScaleCoef" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:FloatField>
                         <ui:Toggle label="Enable Audio">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="enableAudio" binding-mode="TwoWay"/>

@@ -1324,6 +1324,11 @@ MonoBehaviour:
   shipLogTrajectoriesTransform: {fileID: 488919999}
   shipLogTrajectoryLabelsTransform: {fileID: 1976661418}
   shipLogTrajectoryLabelPrefab: {fileID: 3525113768808836174, guid: 53a42240b91dbb64bbeea1541aa76b2c, type: 3}
+  enableGunneryShellVisual: 1
+  gunneryShellSpeedMps: 760
+  gunneryShellAltitudeFoot: 300
+  gunneryShellRadiusScaleCoef: 120
+  gunneryShellVisualContainer: {fileID: 0}
   stateIconMap:
   - state: 1
     texture: {fileID: 2800000, guid: eacdd482a82239842b4ce0baa8da6cf9, type: 3}
@@ -1344,6 +1349,9 @@ MonoBehaviour:
   remainAdvanceSimulationSecondsRequestedByUserInput: 0
   remainAdvanceSimulationSecondsRequestedByUpdate: 0
   isAutoPlaying: 0
+  middleMouseRotateSpeed: 0.2
+  middleMousePitchMin: -75
+  middleMousePitchMax: 75
   selectedShipLogObjectId: 
   selectedMountStatusRecordObjectId: 
   selectedFireControlSystemStatusRecordObjectId: 

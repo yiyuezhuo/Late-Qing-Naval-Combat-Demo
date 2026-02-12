@@ -702,6 +702,7 @@ namespace NavalCombatCore
         public float effectiveRangeYards;
         // public List<RapidFireBatteryFireControlLevelRecord> fireControlRecords = new() { new() };
         public List<RapidFireBatteryFireControlLevelRecord> fireControlRecords = new();
+        public float shellSizeInch = 1.85f; // 47mm Hotchkiss default
         public float damageFactor; // RF
         // public List<int> barrelsLevelPort = new() { 0 };
         // public List<int> barrelsLevelStarboard = new() { 0 };

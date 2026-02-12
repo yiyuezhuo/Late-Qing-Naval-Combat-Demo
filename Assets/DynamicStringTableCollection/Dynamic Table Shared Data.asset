@@ -2819,6 +2819,10 @@ MonoBehaviour:
     m_Key: RangeRingDisplayMode.DistinctArcs
     m_Metadata:
       m_Items: []
+  - m_Id: 44713050101157888
+    m_Key: FiringLineDisplayMode.SelectedControlRoot
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

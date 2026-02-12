@@ -52,6 +52,12 @@ public class BallController : MonoBehaviour
         if (ratio <= 0f)
             return;
 
+        var direction = _targetPosWu - transform.position;
+        if (direction.sqrMagnitude > 1e-9f)
+        {
+            transform.rotation = Quaternion.LookRotation(direction.normalized, transform.position.normalized);
+        }
+
         var maxStep = _speedWuPerSecond * dt * ratio;
         transform.position = Vector3.MoveTowards(transform.position, _targetPosWu, maxStep);
 

@@ -55,9 +55,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [Min(0f)]
     public float gunneryShellAltitudeFoot = 300f;
     [Min(1f)]
-    public float gunneryShellDiameterFoot = 120f;
-    [Min(0f)]
-    public float gunneryShellArcHeightFoot = 300f;
+    public float gunneryShellRadiusScaleCoef = 12f;
     public Transform gunneryShellVisualContainer;
 
     [Serializable]
@@ -399,6 +397,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public Dictionary<string, PortraitViewer> objectId2Viewer = new();
     readonly Dictionary<string, int> processedMountFiringLogCount = new();
     readonly Dictionary<string, int> processedRapidFiringLogCount = new();
+    static Mesh gunneryShellConeMesh;
 
     public string hoveringLocationInfo;
     public bool currentLogOnly = true;
@@ -1571,7 +1570,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
                     for (var i = beginIdx; i < logCount; i++)
                     {
-                        TrySpawnGunneryShellVisual(shooter, mount.logs[i].firingTargetObjectId);
+                        var shellDiameterInch = mount.GetFullContext()?.batteryRecord?.shellSizeInch ?? 0f;
+                        TrySpawnGunneryShellVisual(shooter, mount.logs[i].firingTargetObjectId, shellDiameterInch);
                     }
 
                     processedMountFiringLogCount[mountId] = logCount;
@@ -1593,7 +1593,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
                 for (var i = beginIdx; i < logCount; i++)
                 {
-                    TrySpawnGunneryShellVisual(shooter, rapidFiringStatus.logs[i].firingTargetObjectId);
+                    var shellDiameterInch = rapidFiringStatus.GetRapidFireBatteryRecord()?.shellSizeInch ?? 0f;
+                    TrySpawnGunneryShellVisual(shooter, rapidFiringStatus.logs[i].firingTargetObjectId, shellDiameterInch);
                 }
 
                 processedRapidFiringLogCount[rapidId] = logCount;
@@ -1611,7 +1612,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
-    void TrySpawnGunneryShellVisual(ShipLog shooter, string targetObjectId)
+    void TrySpawnGunneryShellVisual(ShipLog shooter, string targetObjectId, float shellDiameterInch)
     {
         if (!enableGunneryShellVisual || shooter == null || string.IsNullOrEmpty(targetObjectId))
             return;
@@ -1619,6 +1620,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         var target = EntityManager.Instance.Get<ShipLog>(targetObjectId);
         if (target == null)
             return;
+
+        var shellRadiusFoot = Mathf.Max(0.05f, shellDiameterInch * (1f / 24f));
+        var shellRadiusWu = shellRadiusFoot * gunneryShellRadiusScaleCoef * Utils.footToWu;
 
         var startPos = Utils.LatitudeLongitudeDegHeightFootToVector3(
             shooter.position.LatDeg,
@@ -1631,15 +1635,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             gunneryShellAltitudeFoot
         );
 
-        var shell = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        shell.name = "GunneryShellVisual";
+        var shell = CreateGunneryShellVisualObject(shellRadiusWu);
         shell.transform.SetParent(gunneryShellVisualContainer, true);
         shell.transform.position = startPos;
-        shell.transform.localScale = Vector3.one * (gunneryShellDiameterFoot * Utils.footToWu);
-
-        var collider = shell.GetComponent<Collider>();
-        if (collider != null)
-            Destroy(collider);
 
         var controller = shell.AddComponent<BallController>();
         controller.Setup(
@@ -1649,6 +1647,88 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             targetObjectId,
             gunneryShellAltitudeFoot
         );
+    }
+
+    GameObject CreateGunneryShellVisualObject(float shellRadiusWu)
+    {
+        var root = new GameObject("GunneryShellVisual");
+        var bodyLengthWu = shellRadiusWu * 6f;
+        var headLengthWu = shellRadiusWu * 2f;
+
+        var body = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+        body.name = "Body";
+        body.transform.SetParent(root.transform, false);
+        body.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+        body.transform.localScale = new Vector3(shellRadiusWu * 2f, bodyLengthWu * 0.5f, shellRadiusWu * 2f);
+        body.transform.localPosition = new Vector3(0f, 0f, bodyLengthWu * 0.5f);
+
+        var bodyCollider = body.GetComponent<Collider>();
+        if (bodyCollider != null)
+            Destroy(bodyCollider);
+
+        var bodyRenderer = body.GetComponent<Renderer>();
+
+        var head = new GameObject("Head");
+        head.transform.SetParent(root.transform, false);
+        head.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+        head.transform.localScale = new Vector3(shellRadiusWu * 2f, headLengthWu, shellRadiusWu * 2f);
+        head.transform.localPosition = new Vector3(0f, 0f, bodyLengthWu + headLengthWu * 0.5f);
+
+        var headFilter = head.AddComponent<MeshFilter>();
+        headFilter.sharedMesh = GetOrCreateGunneryConeMesh();
+
+        var headRenderer = head.AddComponent<MeshRenderer>();
+        headRenderer.sharedMaterial = bodyRenderer != null ? bodyRenderer.sharedMaterial : null;
+
+        return root;
+    }
+
+    static Mesh GetOrCreateGunneryConeMesh()
+    {
+        if (gunneryShellConeMesh != null)
+            return gunneryShellConeMesh;
+
+        const int segments = 16;
+        var vertices = new List<Vector3>();
+        var triangles = new List<int>();
+
+        var apexIndex = vertices.Count;
+        vertices.Add(new Vector3(0f, 0.5f, 0f));
+
+        var baseCenterIndex = vertices.Count;
+        vertices.Add(new Vector3(0f, -0.5f, 0f));
+
+        var ringStart = vertices.Count;
+        for (var i = 0; i < segments; i++)
+        {
+            var t = (float)i / segments;
+            var angle = t * Mathf.PI * 2f;
+            vertices.Add(new Vector3(Mathf.Cos(angle) * 0.5f, -0.5f, Mathf.Sin(angle) * 0.5f));
+        }
+
+        for (var i = 0; i < segments; i++)
+        {
+            var curr = ringStart + i;
+            var next = ringStart + (i + 1) % segments;
+
+            triangles.Add(apexIndex);
+            triangles.Add(next);
+            triangles.Add(curr);
+
+            triangles.Add(baseCenterIndex);
+            triangles.Add(curr);
+            triangles.Add(next);
+        }
+
+        gunneryShellConeMesh = new Mesh
+        {
+            name = "GunneryShellConeMesh"
+        };
+        gunneryShellConeMesh.SetVertices(vertices);
+        gunneryShellConeMesh.SetTriangles(triangles, 0);
+        gunneryShellConeMesh.RecalculateNormals();
+        gunneryShellConeMesh.RecalculateBounds();
+        return gunneryShellConeMesh;
     }
 
     void SyncRangeLine()

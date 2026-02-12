@@ -22,6 +22,7 @@ public class GamePreference
         None,
         SelectedShip,
         SelectedGroup,
+        SelectedControlRoot,
         SelectedRootGroup,
         All
     }

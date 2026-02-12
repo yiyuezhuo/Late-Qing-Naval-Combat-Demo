@@ -1819,6 +1819,18 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 }
                 break;
 
+            case GamePreference.FiringLineDisplayMode.SelectedControlRoot:
+                if (selectedShipLog == null)
+                    break;
+
+                var selectedControlRoot = selectedShipLog.GetControlRoot();
+                foreach (var shipLog in NavalGameState.Instance.shipLogsOnMap)
+                {
+                    if (shipLog.GetControlRoot() == selectedControlRoot)
+                        yield return shipLog;
+                }
+                break;
+
             case GamePreference.FiringLineDisplayMode.SelectedRootGroup:
                 if (selectedShipLog == null)
                     break;

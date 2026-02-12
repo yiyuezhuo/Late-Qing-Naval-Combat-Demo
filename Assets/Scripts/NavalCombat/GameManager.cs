@@ -1205,6 +1205,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         var cam = CameraController2.Instance.cam;
         var ray = cam.ScreenPointToRay(Input.mousePosition);
 
+        // In paused timeScale mode with Auto Sync Transforms off, ensure colliders match latest transforms
+        // before any immediate raycast-based picking.
+        Physics.SyncTransforms();
         var hits = Physics.RaycastAll(ray, Mathf.Infinity, iconLayerMask);
         if (hits.Length == 0)
             return null;

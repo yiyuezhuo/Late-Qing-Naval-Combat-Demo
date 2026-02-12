@@ -579,6 +579,7 @@ MonoBehaviour:
   flagRenderer: {fileID: 5679438803837259729}
   selectedIndicator: {fileID: 400805370061268050}
   healthBarRenderer: {fileID: 8357931564626810797}
+  funnelSmokeParticleSystem: {fileID: 3117105425754188655}
   deployedGameObjects:
   - {fileID: 5064359948142660203}
   - {fileID: 5088782605767951496}

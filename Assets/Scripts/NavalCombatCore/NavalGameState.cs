@@ -462,8 +462,6 @@ namespace NavalCombatCore
                     shipLog.preCollsionAvoiding = newDesiredHeadingDeg != shipLog.desiredHeadingDeg;
                     shipLog.desiredHeadingDeg = newDesiredHeadingDeg;
                 }
-
-
             }
 
             // Reset Formation - zero speed is detached automatically, "children" reset their targets according to detached unit's previous command.
@@ -471,6 +469,9 @@ namespace NavalCombatCore
 
             // Advance
             scenarioState.Step(deltaSeconds);
+
+            foreach (var shipLog in shipLogsOnMap)
+                shipLog.dirtySeconds = deltaSeconds; // update heading
 
             foreach (var shipLog in shipLogsOnMap)
                 shipLog.StepProcessTurn(deltaSeconds); // update heading

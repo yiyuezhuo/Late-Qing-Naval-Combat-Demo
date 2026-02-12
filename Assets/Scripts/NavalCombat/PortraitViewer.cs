@@ -65,6 +65,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     public MeshRenderer flagRenderer;
     public GameObject selectedIndicator;
     public MeshRenderer healthBarRenderer;
+    public ParticleSystem funnelSmokeParticleSystem;
     // public MeshRenderer sunkCrossRenderer;
 
     public List<GameObject> deployedGameObjects;
@@ -97,6 +98,8 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     Texture2D countryTex;
     long oldViewHashCode;
 
+    // float initialEmissionRateOverTimeConstant;
+
     public long GetViewHashCode()
     {
         return HashCode.Combine(
@@ -115,6 +118,9 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
         audioSource = GetComponent<AudioSource>();
         TryBindWakeGameObjectsByName();
+
+        // initialEmissionRateOverTimeConstant = funnelSmokeParticleSystem.emission.rateOverTime.constant; // x120 reference
+        funnelSmokeParticleSystem.Pause();
     }
 
     void TryBindWakeGameObjectsByName()
@@ -476,6 +482,14 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
         MaintainFlagRotationSize();
         UpdateWakeEffects(shipLog, lengthWu, beamWu);
+
+        if(shipLog.dirtySeconds > 0)
+        {
+            var pendingSeconds = shipLog.dirtySeconds;
+            shipLog.dirtySeconds = 0;
+            
+            funnelSmokeParticleSystem.Simulate(pendingSeconds / 120, withChildren:true, restart: false, fixedTimeStep: true);
+        }
 
         var portraitRef = mode switch
         {

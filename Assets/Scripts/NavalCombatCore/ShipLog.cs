@@ -639,6 +639,9 @@ namespace NavalCombatCore
         [XmlIgnore]
         public int startingExplosions; // record explosion caused by torpedo only now
 
+        [XmlIgnore]
+        public float dirtySeconds;
+
         protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
         protected static string LocalizeFor(object obj) => ServiceLocator.Get<ILocalizeService>().GetFor(obj);
 

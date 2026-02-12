@@ -796,6 +796,154 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         return true;
     }
 
+    [Header("Camera Rotation (Middle Mouse)")]
+    public float middleMouseRotateSpeed = 0.2f;
+    public float middleMousePitchMin = -75f;
+    public float middleMousePitchMax = 75f;
+    bool middleMouseRotating;
+    Vector2 lastMiddleMousePosition;
+    LatLon middleMouseRotationAnchorLatLon;
+    bool hasMiddleMouseRotationAnchor;
+
+    static float NormalizeAngle180(float angle)
+    {
+        angle %= 360f;
+        if (angle > 180f) angle -= 360f;
+        if (angle < -180f) angle += 360f;
+        return angle;
+    }
+
+    bool HandleMiddleMouseCameraRotation()
+    {
+        var cameraController = CameraController2.Instance;
+        if (cameraController == null || cameraController.leafTransform == null)
+            return false;
+
+        if (Input.GetMouseButtonDown(2))
+        {
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return false;
+
+            middleMouseRotating = true;
+            lastMiddleMousePosition = Input.mousePosition;
+            hasMiddleMouseRotationAnchor = TryGetScreenCenterLatLon(out middleMouseRotationAnchorLatLon);
+            return true;
+        }
+
+        if (!middleMouseRotating)
+            return false;
+
+        if (Input.GetMouseButton(2))
+        {
+            var currentMousePosition = (Vector2)Input.mousePosition;
+            var mouseDelta = currentMousePosition - lastMiddleMousePosition;
+            lastMiddleMousePosition = currentMousePosition;
+
+            var pitchDelta = -mouseDelta.y * middleMouseRotateSpeed;
+            if (Mathf.Abs(pitchDelta) > 0.0001f)
+            {
+                var euler = cameraController.leafTransform.localEulerAngles;
+                var safePitchMin = Mathf.Min(middleMousePitchMin, middleMousePitchMax);
+                var safePitchMax = Mathf.Max(middleMousePitchMin, middleMousePitchMax);
+
+                var pitch = NormalizeAngle180(euler.x) + pitchDelta;
+                var yaw = NormalizeAngle180(euler.y); // keep yaw fixed: disable middle-mouse left/right dragging behavior
+                pitch = Mathf.Clamp(pitch, safePitchMin, safePitchMax);
+
+                cameraController.leafTransform.localRotation = Quaternion.Euler(pitch, yaw, 0f);
+                KeepMiddleMouseRotationAnchorAtScreenCenter();
+            }
+
+            return true;
+        }
+
+        middleMouseRotating = false;
+        hasMiddleMouseRotationAnchor = false;
+        return false;
+    }
+
+    bool TryGetScreenCenterLatLon(out LatLon latLon)
+    {
+        var cameraController = CameraController2.Instance;
+        latLon = null;
+        if (cameraController == null || cameraController.cam == null)
+            return false;
+
+        var centerScreen = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f);
+        var ray = cameraController.cam.ScreenPointToRay(centerScreen);
+        if (!Physics.Raycast(ray, out var hit))
+            return false;
+
+        latLon = Utils.Vector3ToLatLon(hit.point);
+        return true;
+    }
+
+    void KeepMiddleMouseRotationAnchorAtScreenCenter()
+    {
+        if (!hasMiddleMouseRotationAnchor)
+            return;
+
+        var cameraController = CameraController2.Instance;
+        if (cameraController == null)
+            return;
+
+        if (!TryGetScreenCenterLatLon(out var currentLatLon))
+            return;
+
+        var delta = new Vector3(
+            -(currentLatLon.LatDeg - middleMouseRotationAnchorLatLon.LatDeg),
+            currentLatLon.LonDeg - middleMouseRotationAnchorLatLon.LonDeg,
+            0f
+        );
+
+        if (Mathf.Max(Mathf.Abs(delta.x), Mathf.Abs(delta.y)) <= 0.0001f)
+            return;
+
+        cameraController.transform.localEulerAngles += delta;
+    }
+
+    void KeepLatLonAtScreenCenter(LatLon targetLatLon)
+    {
+        if (targetLatLon == null)
+            return;
+
+        var cameraController = CameraController2.Instance;
+        if (cameraController == null)
+            return;
+
+        // Two passes reduce residual drift after a large tilt reset.
+        for (var i = 0; i < 2; i++)
+        {
+            if (!TryGetScreenCenterLatLon(out var currentLatLon))
+                return;
+
+            var delta = new Vector3(
+                -(currentLatLon.LatDeg - targetLatLon.LatDeg),
+                currentLatLon.LonDeg - targetLatLon.LonDeg,
+                0f
+            );
+
+            if (Mathf.Max(Mathf.Abs(delta.x), Mathf.Abs(delta.y)) <= 0.0001f)
+                return;
+
+            cameraController.transform.localEulerAngles += delta;
+        }
+    }
+
+    void ResetMiddleMouseCameraView()
+    {
+        var cameraController = CameraController2.Instance;
+        if (cameraController == null || cameraController.leafTransform == null)
+            return;
+
+        TryGetScreenCenterLatLon(out var centerBeforeReset);
+        cameraController.leafTransform.localRotation = Quaternion.identity;
+        KeepLatLonAtScreenCenter(centerBeforeReset);
+
+        middleMouseRotating = false;
+        hasMiddleMouseRotationAnchor = false;
+    }
+
     public void Update()
     {
         if(networkingManager is NetworkingHostManager hostManager && hostManager != null)
@@ -875,9 +1023,18 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         UpdateLocationInfoLabel();
 
         // Handle Events
+        if (HandleMiddleMouseCameraRotation())
+        {
+            return;
+        }
 
         if (IsHotKeyEnabled())
         {
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                ResetMiddleMouseCameraView();
+            }
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 state = State.Idle;

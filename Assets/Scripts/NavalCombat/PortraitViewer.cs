@@ -483,7 +483,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         MaintainFlagRotationSize();
         UpdateWakeEffects(shipLog, lengthWu, beamWu);
 
-        if(shipLog.dirtySeconds > 0)
+        if((shipLog?.dirtySeconds ?? 0) > 0)
         {
             var pendingSeconds = shipLog.dirtySeconds;
             shipLog.dirtySeconds = 0;

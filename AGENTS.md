@@ -40,3 +40,6 @@ This is a Unity 6 project (`6000.3.2f1`) for tactical/strategic naval warfare sc
 
 ## Unity UI-Toolkit styling related thing
 Check UI_Toolkit_AI_Guide.md for making style-related modifications in UI Toolkit.
+
+## Unity Localization related thing
+Check Localization_AI_Guide.md for making localization modifications in UI Toolkit.

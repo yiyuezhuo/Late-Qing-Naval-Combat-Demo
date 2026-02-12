@@ -2807,6 +2807,18 @@ MonoBehaviour:
     m_Key: FiringLineDisplayMode.None
     m_Metadata:
       m_Items: []
+  - m_Id: 44290010000000000
+    m_Key: RangeRingDisplayMode.Circle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44290020000000000
+    m_Key: RangeRingDisplayMode.MergedArcs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44290030000000000
+    m_Key: RangeRingDisplayMode.DistinctArcs
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

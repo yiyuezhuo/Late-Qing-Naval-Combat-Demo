@@ -2567,6 +2567,10 @@ MonoBehaviour:
       combat scenarios and skirmish modes would be more suitable.
     m_Metadata:
       m_Items: []
+  - m_Id: 58890010000000000
+    m_Localized: Range Ring Display
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

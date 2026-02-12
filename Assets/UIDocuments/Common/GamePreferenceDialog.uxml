@@ -36,6 +36,7 @@
                         <LocalizedEnumField type-str="GamePreference+RangeRingDisplayMode" label="Range Ring Display">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="rangeRingDisplayMode" source-to-ui-converters="RangeRingDisplayMode =&gt; int" ui-to-source-converters="int =&gt; RangeRingDisplayMode" binding-mode="TwoWay"/>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(58890010000000000)"/>
                             </Bindings>
                         </LocalizedEnumField>
                         <ui:FloatField label="Pulse Length (Sec)">

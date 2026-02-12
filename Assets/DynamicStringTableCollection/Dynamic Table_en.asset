@@ -2816,6 +2816,18 @@ MonoBehaviour:
     m_Localized: None
     m_Metadata:
       m_Items: []
+  - m_Id: 44290010000000000
+    m_Localized: Circle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44290020000000000
+    m_Localized: Merged Arcs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44290030000000000
+    m_Localized: Distinct Arcs
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

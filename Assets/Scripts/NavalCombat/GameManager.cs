@@ -221,6 +221,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public void StartLoadScenarioCoroutine(string scenName)
     {
+        fullInitialized = false;
         StartCoroutine(LoadScenario(scenName));
     }
 
@@ -240,6 +241,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public IEnumerator CompleteFullStateAndUpdateCoroutine(FullState fullState)
     {
+        fullInitialized = false;
+        ClearAllGunneryShellVisuals();
+
         // Loading
         yield return fullState.streamingAssetReference.TryToCompleteFromStreamingAssetReference(fullState.navalGameState);
         StreamingAssetReference.UpdateInstance(fullState.streamingAssetReference);
@@ -251,6 +255,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         NavalGameState.UpdateInstance(fullState.navalGameState);
 
         NavalGameState.Instance.ResetAndRegisterAll();
+        InitializeGunneryLogProcessingBaseline();
 
         if (startupConfig.scenarioSetupGenerator != null)
         {
@@ -1027,7 +1032,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         networkingManager?.Update();
 
         UpdateSimulation();
-        SyncGunneryShellVisualsFromLogs();
+        if (fullInitialized)
+            SyncGunneryShellVisualsFromLogs();
         // viewAccTime += Time.deltaTime;
 
         // if (viewAccTime > 2)
@@ -1634,6 +1640,57 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         foreach (var staleId in processedRapidFiringLogCount.Keys.Where(k => !activeRapidIds.Contains(k)).ToList())
         {
             processedRapidFiringLogCount.Remove(staleId);
+        }
+    }
+
+    void ClearAllGunneryShellVisuals()
+    {
+        if (gunneryShellVisualContainer != null)
+        {
+            for (var i = gunneryShellVisualContainer.childCount - 1; i >= 0; i--)
+            {
+                var child = gunneryShellVisualContainer.GetChild(i);
+                if (child != null)
+                    Destroy(child.gameObject);
+            }
+        }
+
+        gunneryShellPool.Clear();
+        processedMountFiringLogCount.Clear();
+        processedRapidFiringLogCount.Clear();
+    }
+
+    void InitializeGunneryLogProcessingBaseline()
+    {
+        processedMountFiringLogCount.Clear();
+        processedRapidFiringLogCount.Clear();
+
+        var navalState = NavalGameState.Instance;
+        if (navalState == null)
+            return;
+
+        foreach (var shooter in navalState.shipLogsOnMap)
+        {
+            foreach (var batteryStatus in shooter.batteryStatus)
+            {
+                foreach (var mount in batteryStatus.mountStatus)
+                {
+                    var mountId = mount.objectId;
+                    if (string.IsNullOrEmpty(mountId))
+                        continue;
+
+                    processedMountFiringLogCount[mountId] = mount.logs.Count;
+                }
+            }
+
+            foreach (var rapidFiringStatus in shooter.rapidFiringStatus)
+            {
+                var rapidId = rapidFiringStatus.objectId;
+                if (string.IsNullOrEmpty(rapidId))
+                    continue;
+
+                processedRapidFiringLogCount[rapidId] = rapidFiringStatus.logs.Count;
+            }
         }
     }
 
@@ -2408,6 +2465,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void OnDisable()
     {
         ResumeUnityClock();
+        ClearAllGunneryShellVisuals();
+    }
+
+    public override void OnDestroy()
+    {
+        ClearAllGunneryShellVisuals();
+        base.OnDestroy();
     }
 
     public List<ConnectionViewState> connectionViewStates = new();

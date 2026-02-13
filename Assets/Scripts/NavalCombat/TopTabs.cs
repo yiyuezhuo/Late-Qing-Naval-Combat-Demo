@@ -215,6 +215,7 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         root.Q<Button>("ClearTrajectoriesButton").clicked += GameManager.Instance.ClearShipLogTrajectories;
         root.Q<Button>("ReturnTo2DViewButton").clicked += GameManager.Instance.ReturnTo2DView;
+        root.Q<Button>("GoTo3DViewButton").clicked += GameManager.Instance.GoTo3DView;
 
         root.Q<Button>("EventEditorDialogButton").clicked += DialogRoot.Instance.PopupEventStateEditorDialog;
 

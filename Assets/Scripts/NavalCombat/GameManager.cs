@@ -999,6 +999,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public float middleMouseRotateSpeed = 0.2f;
     public float middleMousePitchMin = -75f;
     public float middleMousePitchMax = 75f;
+    public float quick3DViewPitchDeg = 45f;
     bool middleMouseRotating;
     Vector2 lastMiddleMousePosition;
     LatLon middleMouseRotationAnchorLatLon;
@@ -1162,6 +1163,27 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void ReturnTo2DView()
     {
         ResetMiddleMouseCameraView();
+    }
+
+    public void GoTo3DView()
+    {
+        var cameraController = CameraController2.Instance;
+        if (cameraController == null || cameraController.leafTransform == null)
+            return;
+
+        TryGetScreenCenterLatLon(out var centerBeforeAdjust);
+
+        var euler = cameraController.leafTransform.localEulerAngles;
+        var yaw = NormalizeAngle180(euler.y);
+        var safePitchMin = Mathf.Min(middleMousePitchMin, middleMousePitchMax);
+        var safePitchMax = Mathf.Max(middleMousePitchMin, middleMousePitchMax);
+        var pitch = Mathf.Clamp(quick3DViewPitchDeg, safePitchMin, safePitchMax);
+
+        cameraController.leafTransform.localRotation = Quaternion.Euler(pitch, yaw, 0f);
+        KeepLatLonAtScreenCenter(centerBeforeAdjust);
+
+        middleMouseRotating = false;
+        hasMiddleMouseRotationAnchor = false;
     }
 
     public void Update()

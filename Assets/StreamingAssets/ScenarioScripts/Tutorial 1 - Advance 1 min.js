@@ -32,29 +32,29 @@ else if(phase === Phase.WaitForSpeedChanged)
         let msg = getLocalized(`
 Speed is increased to 15 knots.
 
-Hold down Shift and left-click on the map to select the desired heading (the desired heading will be set from the selected ship toward the clicked location).
-This can also be adjusted by dragging the heading slider on the right panel, but the former method is recommended.
+Right-click on the map to select the desired heading (the desired heading will be set from the selected ship toward the clicked location).
+This can also be adjusted by dragging the heading slider on the right panel, but the right-click method is recommended.
 
 Now, set the course to 90 degrees clockwise from north (east) and advance the time until reaching the desired heading.
 `,
 `
 速度が 15 ノットに増加しました。
 
-Shift キーを押しながらマップ上を左クリックして、目標方位を選択してください（選択した艦船からクリックした地点への方向が目標方位として設定されます）。 右パネルの方位スライダーをドラッグして調整することも可能ですが、前者の方法を推奨します。
+マップ上を右クリックして、目標方位を選択してください（選択した艦船からクリックした地点への方向が目標方位として設定されます）。 右パネルの方位スライダーをドラッグして調整することも可能ですが、右クリックの方法を推奨します。
 
 それでは、針路を北から時計回りに 90 度（東）に設定し、目標の方位に到達するまで時間を進めてください。
 `,
 `
 速度已提高至 15 节。
 
-按住 Shift 键并在地图上点击鼠标左键以选择目标航向（目标航向将从所选舰船指向点击的位置）。 您也可以通过拖动右侧面板上的航向滑块进行调整，但推荐使用前一种方法。
+在地图上右键点击以选择目标航向（目标航向将从所选舰船指向点击的位置）。 您也可以通过拖动右侧面板上的航向滑块进行调整，但推荐使用右键点击的方法。
 
 现在，请将航向设置为正北顺时针 90 度（正东），并推进时间直到达到目标航向。
 `,
 `
 速度已提高至 15 節。
 
-按住 Shift 鍵並在地圖上點擊滑鼠左鍵以選擇目標航向（目標航向將從所選艦船指向點擊的位置）。 您也可以透過拖動右側面板上的航向滑塊進行調整，但推薦使用前一種方法。
+在地圖上右鍵點擊以選擇目標航向（目標航向將從所選艦船指向點擊的位置）。 您也可以透過拖動右側面板上的航向滑塊進行調整，但推薦使用右鍵點擊的方法。
 
 現在，請將航向設置為正北順時針 90 度（正東），並推進時間直到達到目標航向。
 `);

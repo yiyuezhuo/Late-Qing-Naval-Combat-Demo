@@ -79,7 +79,7 @@
                         <ui:DataBinding property="title" data-source-path="damagePointProgrssDescShort" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:ProgressBar>
-                <ui:Label text="_ DEs">
+                <ui:Label text="_ DEs" style="white-space: normal;">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="damageEffectDesc" binding-mode="ToTarget"/>
                     </Bindings>

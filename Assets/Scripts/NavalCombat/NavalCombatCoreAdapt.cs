@@ -332,9 +332,24 @@ namespace NavalCombatCore
             get
             {
                 var totalSubStates = GetSubStatesDownward().ToList();
-                var severityStatesCount = totalSubStates.Where(de => de.lifeCycle == StateLifeCycle.SeverityBased || de.lifeCycle == StateLifeCycle.ShipboardFire).Count();
+                var severityStatesCount = totalSubStates.Count(de => de.lifeCycle == StateLifeCycle.SeverityBased || de.lifeCycle == StateLifeCycle.ShipboardFire);
                 var dcr = shipClass?.damageControlRatingUnmodified - damageControlRatingHits;
-                return $"Dmg Ctrl: {severityStatesCount}/{dcr} T:{totalSubStates.Count}";
+                // var maxShipboardFireSeverity = totalSubStates
+                //     .Where(ss => ss.lifeCycle == StateLifeCycle.ShipboardFire)
+                //     .Select(ss => ss.severity)
+                //     .DefaultIfEmpty(0)
+                //     .Max();
+                var maxShipboardFireSeverity = totalSubStates
+                    .Where(ss => ss.lifeCycle == StateLifeCycle.ShipboardFire)
+                    .Sum(ss => ss.severity);
+
+                var machinerySpaces = (shipClass?.speedKnotsEngineRoomsLevels?.Count ?? 0) + (shipClass?.speedKnotsBoilerRooms?.Count ?? 0);
+                var floodedMachineryHits = (dynamicStatus?.engineRoomFloodingHits ?? 0) + (dynamicStatus?.boilerRoomFloodingHits ?? 0);
+                var floodedThresholdHits = (int)Math.Ceiling(machinerySpaces * 0.8f);
+
+                return $"Dmg Ctrl: {severityStatesCount}/{dcr} T:{totalSubStates.Count} " +
+                    $"<color=#ff4040>Fire:{maxShipboardFireSeverity:F0}</color> " +
+                    $"<color=#4090ff>Flood:{floodedMachineryHits}/{floodedThresholdHits}</color>";
             }
         }
 

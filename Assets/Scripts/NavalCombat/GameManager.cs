@@ -455,24 +455,63 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             var scenarioState = NavalGameState.Instance.scenarioState;
 
             var timeZoneOffset = ScenarioState.GetTimeZoneOffset(latLon.LonDeg);
-            var timeZoneOffsetF = timeZoneOffset.ToString("+#;-#;0");
+            // var timeZoneOffsetF = timeZoneOffset.ToString("+#;-#;0");
 
-            var localDT = scenarioState.GetLocalDateTime(latLon.LonDeg);
             var sunState = scenarioState.GetSunPosition(latLon);
 
             var latF = latLon.LatDeg.ToString("0.000");
             var lonF = latLon.LonDeg.ToString("0.000");
-            var utcDT = scenarioState.dateTime;
+            var localCurrentDateTimeOffset = ScenarioState.GetLocalDateTimeOffset(latLon.LonDeg, scenarioState.dateTime);
 
             var sunAziF = sunState.azimuthDeg.ToString("0.0");
             var sunAltF = sunState.altitudeDeg.ToString("0.0");
 
             var dayNightLevel = sunState.GetDayNightLevel();
 
-            // hoveringLocationInfo = $"Lat: {latF} Lon: {lonF} UTC: {utcDT} Local: {localDT} ({dayNightLevel},{timeZoneOffsetF}) Sun Alt: {sunAltF} Azi: {sunAziF}";
+            // hoveringLocationInfo = string.Format(
+            //     "Lat: {0} Lon: {1} Local: {2} ({3},{4}) Sun Alt: {5} Sun Azi: {6}",
+            //     latF, lonF, localCurrentDateTimeOffset, LocalizeEnum(dayNightLevel), timeZoneOffsetF, sunAltF, sunAziF
+            // );
+
+            // if (scenarioState.hasEndDateTime)
+            // {
+            //     var localEndDateTimeOffset = ScenarioState.GetLocalDateTimeOffset(latLon.LonDeg, scenarioState.endDateTime);
+            //     var scenarioStart = scenarioState.beginDateTime;
+            //     var totalSeconds = (scenarioState.endDateTime - scenarioStart).TotalSeconds;
+            //     var elapsedSeconds = (scenarioState.dateTime - scenarioStart).TotalSeconds;
+            //     var elapsedRatio = totalSeconds > 0 ? Math.Clamp(elapsedSeconds / totalSeconds, 0d, 1d) : 1d;
+
+            //     hoveringLocationInfo += string.Format(
+            //         " | End Local: {0} | Elapsed: {1:0.0}%",
+            //         localEndDateTimeOffset,
+            //         elapsedRatio * 100d
+            //     );
+            // }
+
+            // var hoveringLocationInfoTime = scenarioState.hasEndDateTime ?
+            //     $"{localCurrentDateTimeOffset} -> {ScenarioState.GetLocalDateTimeOffset(latLon.LonDeg, scenarioState.endDateTime)} {:P0}"
+            string hoveringLocationInfoTime;
+            if(!scenarioState.hasEndDateTime)
+            {
+                hoveringLocationInfoTime = $"{localCurrentDateTimeOffset}";
+            }
+            else
+            {
+                var localEndDateTimeOffset = ScenarioState.GetLocalDateTimeOffset(latLon.LonDeg, scenarioState.endDateTime);
+                var scenarioStart = scenarioState.beginDateTime;
+                var totalSeconds = (scenarioState.endDateTime - scenarioStart).TotalSeconds;
+                var elapsedSeconds = (scenarioState.dateTime - scenarioStart).TotalSeconds;
+                var elapsedRatio = totalSeconds > 0 ? Math.Clamp(elapsedSeconds / totalSeconds, 0d, 1d) : 1d;
+
+                var totalMinutes = (int)Math.Floor(totalSeconds / 60);
+                var elapsedMinutes = (int)Math.Floor(elapsedSeconds / 60);
+
+                hoveringLocationInfoTime = $"{localCurrentDateTimeOffset} -> {localEndDateTimeOffset} ({elapsedMinutes}/{totalMinutes}, {elapsedRatio:P0})";
+            }
+
             hoveringLocationInfo = Localize(
-                "Lat: {0} Lon: {1} UTC: {2} Local: {3} ({4},{5}) Sun Alt: {6} Sun Azi: {7}",
-                latF, lonF, utcDT, localDT, LocalizeEnum(dayNightLevel), timeZoneOffsetF, sunAltF, sunAziF
+                "Lat: {0} Lon: {1} {2}, {3} (Sun Alt: {4}, Azi: {5})",
+                latF, lonF, hoveringLocationInfoTime, LocalizeEnum(dayNightLevel), sunAltF, sunAziF
             );
         }
     }
@@ -2146,7 +2185,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             foreach(var log in shipLog.timeLocLogs)
             {
-                if(log.time.Minute % timestampIntervalMinutes == 0) // So only 60，30，20，15，12，10，6，5，4，3，2，1 generate uniform interval
+                if(log.time.Minute % timestampIntervalMinutes == 0) // So only 60,30,20,15,12,10,6,5,4,3,2,1 generate uniform interval
                 {
                     var label = Instantiate(shipLogTrajectoryLabelPrefab, shipLogTrajectoryLabelsTransform);
                     // var pos = Utils.LatitudeLongitudeDegHeightFootToVector3(log.latDeg, log.lonDeg, 100);
@@ -2546,3 +2585,4 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 }
+

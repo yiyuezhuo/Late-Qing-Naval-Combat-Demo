@@ -27,7 +27,8 @@ public class GamePreference
         All
     }
 
-    public FiringLineDisplayMode firingLineDisplayMode = FiringLineDisplayMode.SelectedRootGroup;
+    // public FiringLineDisplayMode firingLineDisplayMode = FiringLineDisplayMode.SelectedRootGroup;
+    public FiringLineDisplayMode firingLineDisplayMode = FiringLineDisplayMode.SelectedControlRoot;
 
     public enum RangeRingDisplayMode
     {

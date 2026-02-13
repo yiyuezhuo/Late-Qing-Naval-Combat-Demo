@@ -49,6 +49,7 @@ namespace NavalCombatCore
     public partial class ScenarioState
     {
         public DateTime dateTime = new DateTime(1894, 9, 17, 4, 30, 0, DateTimeKind.Utc); // 4:30 +8 (TZ) => 12:30, thus begin time of the Battle of Yalu river
+        public DateTime beginDateTime;
         // public DateTime dateTime = DateTime.Now;
         // public DateTime dateTime = DateTime.UtcNow;
         // public DateTime dateTime = new DateTime(2013, 3, 5, 0, 0, 0, DateTimeKind.Utc);
@@ -84,6 +85,12 @@ namespace NavalCombatCore
         public PictureReference backgroundPictureReference = new();
 
         public bool disableFirstRemainOneOperationalFleetPrompt;
+
+        public void FillBeginDateTimeIfMissing()
+        {
+            if (beginDateTime == default)
+                beginDateTime = dateTime;
+        }
 
         public void ResetEditSaveRelatedStates()
         {

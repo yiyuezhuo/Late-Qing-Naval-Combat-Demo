@@ -86,6 +86,7 @@ namespace NavalCombatCore
         public static void UpdateInstance(NavalGameState newInstance)
         {
             _instance = newInstance;
+            Instance.scenarioState?.FillBeginDateTimeIfMissing();
 
             Instance.ResetAndRegisterAll();
             Instance.SyncShipLogParentWithGroupHierarchy();
@@ -129,6 +130,7 @@ namespace NavalCombatCore
         public void ScenarioStateFromXML(string xml)
         {
             scenarioState = XmlUtils.FromXML<ScenarioState>(xml);
+            scenarioState?.FillBeginDateTimeIfMissing();
         }
 
         public string ScenarioStateToXML()

@@ -2,7 +2,7 @@
     <ui:Template name="DateTimeField" src="project://database/Assets/UIDocuments/Common/DateTimeField.uxml?fileID=9197481963319205126&amp;guid=f2bdecc78fba4e446b80fb07b946d287&amp;type=3#DateTimeField"/>
     <ui:Template name="MultilineGlobalStringEditor" src="project://database/Assets/UIDocuments/Common/MultilineGlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=3a7e28cd26dd1c748abce26c37380ec8&amp;type=3#MultilineGlobalStringEditor"/>
     <ui:Template name="PictureField" src="project://database/Assets/UIDocuments/Common/PictureField.uxml?fileID=9197481963319205126&amp;guid=7e20c3d60b5a8a34a80d1015e6851169&amp;type=3#PictureField"/>
-    <ui:VisualElement data-source-type="ScenarioStateEditor, Assembly-CSharp" data-source-path="scenarioState" class="panel-dialog" style="flex-grow: 0; width: 800px; height: auto;">
+    <ui:VisualElement data-source-type="ScenarioStateEditor, Assembly-CSharp" class="panel-dialog" style="flex-grow: 0; width: 850px; height: auto;">
         <ui:Label text="Scenario State Editor" class="title">
             <Bindings>
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176067203207168)"/>
@@ -18,31 +18,30 @@
                                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176145213067264)"/>
                                 </Bindings>
                             </ui:Label>
-                            <ui:Instance template="DateTimeField" name="DateTimeField" data-source-path="dateTimeViewModel"/>
+                            <ui:Instance template="DateTimeField" name="DateTimeField" data-source-path="currentDateTimeViewModel"/>
                         </ui:VisualElement>
-                        <ui:Label text="UTC Time">
+                        <ui:Label text="Current DateTime Desc">
                             <Bindings>
-                                <ui:DataBinding property="text" data-source-path="dateTime" binding-mode="ToTarget"/>
-                            </Bindings>
-                        </ui:Label>
-                        <ui:Label text="Offset Time">
-                            <Bindings>
-                                <ui:DataBinding property="text" data-source-path="referenceTimeZoneDateTimeOffset" binding-mode="ToTarget"/>
+                                <ui:DataBinding property="text" data-source-path="currentDateTimeDesc" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:Label>
                         <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-                            <ui:Label text="Begin UTC Datetime (+0):"/>
+                            <ui:Label text="Begin Datetime (+0):">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(59587689390444544)"/>
+                                </Bindings>
+                            </ui:Label>
                             <ui:Instance template="DateTimeField" data-source-path="beginDateTimeViewModel"/>
                         </ui:VisualElement>
-                        <ui:Label text="Begin UTC Time">
+                        <ui:Label text="Begin DateTime Desc">
                             <Bindings>
-                                <ui:DataBinding property="text" data-source-path="beginDateTime" binding-mode="ToTarget"/>
+                                <ui:DataBinding property="text" data-source-path="beginDateTimeDesc" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:Label>
                         <ui:Toggle label="Has End DateTime">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(32254508370923520)"/>
-                                <ui:DataBinding property="value" data-source-path="hasEndDateTime" binding-mode="TwoWay"/>
+                                <ui:DataBinding property="value" data-source-path="scenarioState.hasEndDateTime" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:Toggle>
                         <ui:VisualElement style="flex-grow: 1;">
@@ -54,14 +53,9 @@
                                 </ui:Label>
                                 <ui:Instance template="DateTimeField" data-source-path="endDateTimeViewModel"/>
                             </ui:VisualElement>
-                            <ui:Label text="End UTC Time">
+                            <ui:Label text="End DateTime Desc">
                                 <Bindings>
-                                    <ui:DataBinding property="text" data-source-path="endDateTime" binding-mode="ToTarget"/>
-                                </Bindings>
-                            </ui:Label>
-                            <ui:Label text="end datetime offset">
-                                <Bindings>
-                                    <ui:DataBinding property="text" data-source-path="referenceTimeZoneEndDateTimeOffset" binding-mode="ToTarget"/>
+                                    <ui:DataBinding property="text" data-source-path="endDateTimeDesc" binding-mode="ToTarget"/>
                                 </Bindings>
                             </ui:Label>
                             <Bindings>
@@ -73,29 +67,29 @@
                                 <LocalizedEnumField type-str="NavalCombatCore.VisibilityDescription" label="Visibility">
                                     <Bindings>
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176578996375552)"/>
-                                        <ui:DataBinding property="value" data-source-path="visibility" source-to-ui-converters="VisibilityDescription =&gt; int" ui-to-source-converters="int =&gt; VisibilityDescription" binding-mode="TwoWay"/>
+                                        <ui:DataBinding property="value" data-source-path="scenarioState.visibility" source-to-ui-converters="VisibilityDescription =&gt; int" ui-to-source-converters="int =&gt; VisibilityDescription" binding-mode="TwoWay"/>
                                     </Bindings>
                                 </LocalizedEnumField>
                                 <ui:Toggle label="Moon Light">
                                     <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="hasMoonlight" binding-mode="TwoWay"/>
+                                        <ui:DataBinding property="value" data-source-path="scenarioState.hasMoonlight" binding-mode="TwoWay"/>
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176640765890560)"/>
                                     </Bindings>
                                 </ui:Toggle>
                                 <ui:IntegerField label="Sea State (Beaufort)">
                                     <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="seaStateBeaufort" binding-mode="TwoWay"/>
+                                        <ui:DataBinding property="value" data-source-path="scenarioState.seaStateBeaufort" binding-mode="TwoWay"/>
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(177281374523392)"/>
                                     </Bindings>
                                 </ui:IntegerField>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
-                                <ui:Instance template="PictureField" data-source-path="backgroundPictureReference" name="BackgroundPictureField">
+                                <ui:Instance template="PictureField" data-source-path="scenarioState.backgroundPictureReference" name="BackgroundPictureField">
                                     <AttributeOverrides element-name="FieldLabel" text="BG"/>
                                 </ui:Instance>
                                 <ui:Image source="project://database/Assets/Textures/Yoshino_Top.jpg?fileID=2800000&amp;guid=0c70fb7fbba505e45ab1805eed3853c0&amp;type=3#Yoshino_Top" scale-mode="ScaleToFit" name="Image" style="height: 75px;">
                                     <Bindings>
-                                        <ui:DataBinding property="source" data-source-path="backgroundPictureReference.texture2d" binding-mode="ToTarget"/>
+                                        <ui:DataBinding property="source" data-source-path="scenarioState.backgroundPictureReference.texture2d" binding-mode="ToTarget"/>
                                     </Bindings>
                                 </ui:Image>
                             </ui:VisualElement>
@@ -105,13 +99,13 @@
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(178159569506304)"/>
                             </Bindings>
                         </ui:Label>
-                        <ui:VisualElement data-source-path="globalDescription">
+                        <ui:VisualElement data-source-path="scenarioState.globalDescription">
                             <ui:Instance template="MultilineGlobalStringEditor" name="MultilineGlobalStringEditor"/>
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:Tab>
                 <ui:Tab label="Debug">
-                    <ui:VisualElement style="flex-grow: 1;">
+                    <ui:VisualElement data-source-path="scenarioState" style="flex-grow: 1;">
                         <ui:VisualElement data-source-path="weaponSimulationAssignmentClock" style="border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                             <ui:Label text="Weapon Target Assignment Clock">
                                 <Bindings>

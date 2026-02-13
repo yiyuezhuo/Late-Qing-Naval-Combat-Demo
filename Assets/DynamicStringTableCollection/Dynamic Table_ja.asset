@@ -2202,8 +2202,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 14952757292863488
-    m_Localized: "\u7DEF\u5EA6: {0} \u7D4C\u5EA6: {1} UTC: {2} \u73FE\u5730: {3}
-      ({4},{5}) \u592A\u967D\u9AD8\u5EA6: {6} \u592A\u967D\u65B9\u4F4D\u89D2: {7}"
+    m_Localized: "\u7DEF\u5EA6: {0} \u7D4C\u5EA6: {1} {2}, {3}\uFF08\u592A\u967D\u9AD8\u5EA6\u89D2:
+      {4}\u3001\u65B9\u4F4D\u89D2: {5}\uFF09"
     m_Metadata:
       m_Items: []
   - m_Id: 16269036662460416

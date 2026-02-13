@@ -521,6 +521,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         return ScenarioState.GetDateTimeOffset(time, latestHoveringLatLon.LonDeg);
     }
 
+    public float GetTimeZoneOffsetByLatestHoveringLocation() => ScenarioState.GetTimeZoneOffset(latestHoveringLatLon.LonDeg);
+
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
     protected static string LocalizeEnum<T>(T obj) => ServiceLocator.Get<ILocalizeService>().GetEnum(obj);
 

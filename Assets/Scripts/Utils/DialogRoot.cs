@@ -626,7 +626,10 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupScenarioStateEditor()
     {
-        var scenarioStateEditor = new ScenarioStateEditor();
+        var scenarioStateEditor = new ScenarioStateEditor()
+        {
+            timeZoneOffset = GameManager.Instance.GetTimeZoneOffsetByLatestHoveringLocation()
+        };
 
         var tempDialog = new TempDialog()
         {

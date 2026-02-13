@@ -941,7 +941,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 176145213067264
-    m_Localized: 'UTC Datetime (+0):'
+    m_Localized: 'Current Datetime (+0):'
     m_Metadata:
       m_Items: []
   - m_Id: 176249026285568
@@ -2569,6 +2569,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 58890010000000000
     m_Localized: Range Ring Display
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59587689390444544
+    m_Localized: 'Begin Datetime (+0):'
     m_Metadata:
       m_Items: []
   references:

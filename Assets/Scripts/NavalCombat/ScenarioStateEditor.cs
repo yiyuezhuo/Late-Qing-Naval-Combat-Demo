@@ -159,94 +159,94 @@ public class ScenarioStateDateTimeViewModel
     }
 }
 
-namespace NavalCombatCore
-{
-    public partial class ScenarioState : IDateTimeHolder
-    {
-        public DateTime GetDateTime() => dateTime;
-        public void SetDateTime(DateTime dt) => dateTime = dt;
+// namespace NavalCombatCore
+// {
+//     public partial class ScenarioState : IDateTimeHolder
+//     {
+//         public DateTime GetDateTime() => dateTime;
+//         public void SetDateTime(DateTime dt) => dateTime = dt;
 
-        ScenarioStateDateTimeViewModel _dateTimeViewModel; // Note it's possible to initialize the view model attribute from empty constructor but this may break core's capabbility to leverage empty constructor
+//         ScenarioStateDateTimeViewModel _dateTimeViewModel; // Note it's possible to initialize the view model attribute from empty constructor but this may break core's capabbility to leverage empty constructor
 
-        [CreateProperty]
-        public ScenarioStateDateTimeViewModel dateTimeViewModel
-        {
-            get
-            {
-                if (_dateTimeViewModel == null)
-                {
-                    _dateTimeViewModel = new ScenarioStateDateTimeViewModel() { dateTimeHolder = this };
-                }
-                return _dateTimeViewModel;
-            }
-        }
+//         [CreateProperty]
+//         public ScenarioStateDateTimeViewModel dateTimeViewModel
+//         {
+//             get
+//             {
+//                 if (_dateTimeViewModel == null)
+//                 {
+//                     _dateTimeViewModel = new ScenarioStateDateTimeViewModel() { dateTimeHolder = this };
+//                 }
+//                 return _dateTimeViewModel;
+//             }
+//         }
 
-        ScenarioStateDateTimeViewModel _endDateTimeViewModel;
+//         ScenarioStateDateTimeViewModel _endDateTimeViewModel;
 
-        ScenarioStateDateTimeViewModel _beginDateTimeViewModel;
+//         ScenarioStateDateTimeViewModel _beginDateTimeViewModel;
         
-        [CreateProperty]
-        public ScenarioStateDateTimeViewModel endDateTimeViewModel
-        {
-            // get
-            // {
-            //     if(_endDateTimeViewModel == null)
-            //     {
-            //         _endDateTimeViewModel = new ScenarioStateDateTimeViewModel() {
-            //             dateTimeHolder = new DateTimeHolder()
-            //             {
-            //                 getter = () => endDateTime,
-            //                 setter = (dt) => endDateTime = dt
-            //             }
-            //         };
-            //     }
-            //     return _endDateTimeViewModel;
-            // }
+//         [CreateProperty]
+//         public ScenarioStateDateTimeViewModel endDateTimeViewModel
+//         {
+//             // get
+//             // {
+//             //     if(_endDateTimeViewModel == null)
+//             //     {
+//             //         _endDateTimeViewModel = new ScenarioStateDateTimeViewModel() {
+//             //             dateTimeHolder = new DateTimeHolder()
+//             //             {
+//             //                 getter = () => endDateTime,
+//             //                 setter = (dt) => endDateTime = dt
+//             //             }
+//             //         };
+//             //     }
+//             //     return _endDateTimeViewModel;
+//             // }
 
-            // get => _endDateTimeViewModel ??= new ScenarioStateDateTimeViewModel()
-            // {
-            //     dateTimeHolder = new DateTimeHolder()
-            //     {
-            //         getter = () => endDateTime,
-            //         setter = (dt) => endDateTime = dt
-            //     }
-            // };
+//             // get => _endDateTimeViewModel ??= new ScenarioStateDateTimeViewModel()
+//             // {
+//             //     dateTimeHolder = new DateTimeHolder()
+//             //     {
+//             //         getter = () => endDateTime,
+//             //         setter = (dt) => endDateTime = dt
+//             //     }
+//             // };
 
-            get => _endDateTimeViewModel ??= ScenarioStateDateTimeViewModel.GetDateTimeHolder
-            (
-                () => endDateTime,
-                (dt) => endDateTime = dt
-            );
-        }
+//             get => _endDateTimeViewModel ??= ScenarioStateDateTimeViewModel.GetDateTimeHolder
+//             (
+//                 () => endDateTime,
+//                 (dt) => endDateTime = dt
+//             );
+//         }
 
-        [CreateProperty]
-        public ScenarioStateDateTimeViewModel beginDateTimeViewModel
-        {
-            get
-            {
-                FillBeginDateTimeIfMissing();
-                return _beginDateTimeViewModel ??= ScenarioStateDateTimeViewModel.GetDateTimeHolder
-                (
-                    () => beginDateTime,
-                    (dt) => beginDateTime = dt
-                );
-            }
-        }
+//         [CreateProperty]
+//         public ScenarioStateDateTimeViewModel beginDateTimeViewModel
+//         {
+//             get
+//             {
+//                 FillBeginDateTimeIfMissing();
+//                 return _beginDateTimeViewModel ??= ScenarioStateDateTimeViewModel.GetDateTimeHolder
+//                 (
+//                     () => beginDateTime,
+//                     (dt) => beginDateTime = dt
+//                 );
+//             }
+//         }
 
-        // GetReferenceTimeZoneDateTimeOffsetString
+//         // GetReferenceTimeZoneDateTimeOffsetString
 
-        // [CreateProperty]
-        // public DateTimeOffset referenceTimeZoneDateTimeOffset => GetReferenceTimeZoneDateTimeOffset();
-        [CreateProperty]
-        public DateTimeOffset referenceTimeZoneDateTimeOffset => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffset(dateTime);
+//         // [CreateProperty]
+//         // public DateTimeOffset referenceTimeZoneDateTimeOffset => GetReferenceTimeZoneDateTimeOffset();
+//         [CreateProperty]
+//         public DateTimeOffset referenceTimeZoneDateTimeOffset => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffset(dateTime);
 
-        [CreateProperty]
-        public DateTimeOffset referenceTimeZoneEndDateTimeOffset => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffset(endDateTime);
+//         [CreateProperty]
+//         public DateTimeOffset referenceTimeZoneEndDateTimeOffset => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffset(endDateTime);
 
-        // [CreateProperty]
-        // public StyleBackground background => backgroundPictureReference.pictureStyleBackground;
-    }
-}
+//         // [CreateProperty]
+//         // public StyleBackground background => backgroundPictureReference.pictureStyleBackground;
+//     }
+// }
 
 
 public class ScenarioStateEditor
@@ -257,11 +257,48 @@ public class ScenarioStateEditor
     [CreateProperty]
     public ScenarioState scenarioState => NavalGameState.Instance.scenarioState;
 
+    public float timeZoneOffset; // Specified by the caller
+
+    public ScenarioStateDateTimeViewModel currentDateTimeViewModel;
+    public ScenarioStateDateTimeViewModel beginDateTimeViewModel;
+    public ScenarioStateDateTimeViewModel endDateTimeViewModel;
+
+    public string FormatDateTime(DateTime dateTime) => $"UTC: {dateTime}, Local ({timeZoneOffset:+#;-#}): {dateTime.AddHours(timeZoneOffset)}";
+
+    [CreateProperty]
+    public string currentDateTimeDesc => FormatDateTime(scenarioState.dateTime);
+
+    [CreateProperty]
+    public string beginDateTimeDesc => FormatDateTime(scenarioState.beginDateTime);
+
+    [CreateProperty]
+    public string endDateTimeDesc => FormatDateTime(scenarioState.endDateTime);
+
+
     public void OnCreated(object sender, VisualElement root)
     {
         // base.Awake();
 
         // root.dataSource = GameManager.Instance;
+
+        // Use lazy initialization to prevent UITK data binding query value before initialization?
+        currentDateTimeViewModel = ScenarioStateDateTimeViewModel.GetDateTimeHolder
+        (
+            () => scenarioState.dateTime,
+            dt => scenarioState.dateTime = dt
+        );
+
+        beginDateTimeViewModel = ScenarioStateDateTimeViewModel.GetDateTimeHolder
+        (
+            () => scenarioState.beginDateTime,
+            dt => scenarioState.beginDateTime = dt
+        );
+
+        endDateTimeViewModel = ScenarioStateDateTimeViewModel.GetDateTimeHolder
+        (
+            () => scenarioState.endDateTime,
+            dt => scenarioState.endDateTime = dt
+        );
 
         PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("BackgroundPictureField"));
 

@@ -182,6 +182,8 @@ namespace NavalCombatCore
         }
 
         ScenarioStateDateTimeViewModel _endDateTimeViewModel;
+
+        ScenarioStateDateTimeViewModel _beginDateTimeViewModel;
         
         [CreateProperty]
         public ScenarioStateDateTimeViewModel endDateTimeViewModel
@@ -215,6 +217,20 @@ namespace NavalCombatCore
                 () => endDateTime,
                 (dt) => endDateTime = dt
             );
+        }
+
+        [CreateProperty]
+        public ScenarioStateDateTimeViewModel beginDateTimeViewModel
+        {
+            get
+            {
+                FillBeginDateTimeIfMissing();
+                return _beginDateTimeViewModel ??= ScenarioStateDateTimeViewModel.GetDateTimeHolder
+                (
+                    () => beginDateTime,
+                    (dt) => beginDateTime = dt
+                );
+            }
         }
 
         // GetReferenceTimeZoneDateTimeOffsetString

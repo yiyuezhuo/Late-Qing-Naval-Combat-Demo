@@ -139,6 +139,11 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63113422082048)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="Scenario State" name="ScenarioStateEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63058589945856)"/>
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Tools">
@@ -178,11 +183,6 @@
                     <ui:Button text="Named Ship" name="NamedShipEditorButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62777823236096)"/>
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Scenario State" name="ScenarioStateEditorButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63058589945856)"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Move (Edit, M)" name="EditMoveButton">

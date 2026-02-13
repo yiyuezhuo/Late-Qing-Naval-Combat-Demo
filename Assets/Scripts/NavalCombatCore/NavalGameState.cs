@@ -394,6 +394,11 @@ namespace NavalCombatCore
         public void Step(float deltaSeconds)
         {
             scenarioState.doingStep = true;
+            var shipLogsOnMapList = shipLogs.Where(x => x.mapState == MapState.Deployed).ToList();
+            var autoOperationalShipLogs = shipLogsOnMapList.Where(s =>
+                s.operationalState == ShipOperationalState.Operational
+                && s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic
+            ).ToList();
 
             // tempSubjectLogs.Clear();
 
@@ -418,18 +423,13 @@ namespace NavalCombatCore
                     ); // Extrapolate 360s
                 }
 
-                var activceShipLogs = shipLogs.Where(s =>
+                var activceShipLogs = shipLogsOnMapList.Where(s =>
                     s.mapState == MapState.Deployed 
                     && s.operationalState == ShipOperationalState.Operational
                     // && s.speedKnots > 0
                 ).ToList();
 
-                var leadShipLogs = activceShipLogs.Where(s =>
-                    s.GetEffectiveControlMode() == ControlMode.Independent &&
-                    s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic
-                ).ToList();
-
-                foreach(var g in shipLogsOnMap.GroupBy(s => s.GetControlRoot()))
+                foreach(var g in shipLogsOnMapList.GroupBy(s => s.GetControlRoot()))
                 {
                     var leadShipLog = g.Key;
                     if(leadShipLog.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic)
@@ -455,13 +455,6 @@ namespace NavalCombatCore
                 //     shipLog.desiredHeadingDeg = checker.Check();
                 // }
 
-                foreach(var shipLog in leadShipLogs)
-                {
-                    var checker = ObstacleAvoidChecker.Extract(shipLog);
-                    var newDesiredHeadingDeg = checker.Check();
-                    shipLog.preCollsionAvoiding = newDesiredHeadingDeg != shipLog.desiredHeadingDeg;
-                    shipLog.desiredHeadingDeg = newDesiredHeadingDeg;
-                }
             }
 
             // Reset Formation - zero speed is detached automatically, "children" reset their targets according to detached unit's previous command.
@@ -470,13 +463,13 @@ namespace NavalCombatCore
             // Advance
             scenarioState.Step(deltaSeconds);
 
-            foreach (var shipLog in shipLogsOnMap)
+            foreach (var shipLog in shipLogsOnMapList)
                 shipLog.dirtySeconds = deltaSeconds; // update heading
 
-            foreach (var shipLog in shipLogsOnMap)
+            foreach (var shipLog in shipLogsOnMapList)
                 shipLog.StepProcessTurn(deltaSeconds); // update heading
 
-            foreach (var shipLog in shipLogsOnMap)
+            foreach (var shipLog in shipLogsOnMapList)
                 shipLog.StepProcessControl(deltaSeconds); // set desired heading / desired speed
 
             // Obstacle Avoid
@@ -501,12 +494,7 @@ namespace NavalCombatCore
             // }
 
             // always mode
-            foreach(var shipLog in shipLogs.Where(s =>
-                s.mapState == MapState.Deployed
-                && s.operationalState == ShipOperationalState.Operational
-                // && s.speedKnots > 0
-                && s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic
-            ))
+            foreach (var shipLog in autoOperationalShipLogs)
             {
                 var checker = ObstacleAvoidChecker.Extract(shipLog, true);
                 var newDesiredHeadingDeg = checker.Check();
@@ -514,35 +502,35 @@ namespace NavalCombatCore
                 shipLog.desiredHeadingDeg = newDesiredHeadingDeg;
             }
 
-            foreach (var shipLog in shipLogsOnMap)
+            foreach (var shipLog in shipLogsOnMapList)
                 shipLog.StepProcessSpeed(deltaSeconds); // update speed
 
-            foreach (var shipLog in shipLogsOnMap)
+            foreach (var shipLog in shipLogsOnMapList)
                 shipLog.StepTryMoveToNewPosition(deltaSeconds); // update position
 
             // PrecalculationContext.Instance.gunneryFireContext.Calculate();
             using (GunneryFireContext.Begin())
             {
-                foreach (var shipLog in shipLogsOnMap)
+                foreach (var shipLog in shipLogsOnMapList)
                     shipLog.StepBatteryStatus(deltaSeconds); // gunnery resolution
 
                 // Use GunneryFireContext's LOS result
                 using (TorpedoAttackContext.Begin())
                 {
-                    foreach (var shipLog in shipLogsOnMap)
+                    foreach (var shipLog in shipLogsOnMapList)
                     {
                         shipLog.StepTorpedoSector(deltaSeconds);
                     }
                 }
             }
 
-            foreach (var shipLog in shipLogsOnMap)
+            foreach (var shipLog in shipLogsOnMapList)
                 shipLog.StepDamageResolution(deltaSeconds);
 
             foreach (var launchedTorpedo in launchedTorpedosOnMap)
                 launchedTorpedo.StepMoveToNewPosition(deltaSeconds); // TODO: Move before damage resolution?
 
-            foreach (var shipLog in shipLogsOnMap)
+            foreach (var shipLog in shipLogsOnMapList)
                 shipLog.StepLogging();
 
             scenarioState.doingStep = false;

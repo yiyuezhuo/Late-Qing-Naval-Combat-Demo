@@ -399,6 +399,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public Dictionary<string, PortraitViewer> objectId2Viewer = new();
     readonly Dictionary<string, int> processedMountFiringLogCount = new();
     readonly Dictionary<string, int> processedRapidFiringLogCount = new();
+    readonly List<IPortraitViewerObservable> viewerObservablesBuffer = new();
+    readonly HashSet<string> viewerObjectIdSet = new();
+    readonly List<string> viewerRemovalBuffer = new();
+    readonly List<DynamicLine> dynamicLinePool = new();
+    readonly Queue<BallController> gunneryShellPool = new();
+    float nextLocationInfoRefreshUnscaledTime;
+    static readonly float locationInfoRefreshIntervalSeconds = 0.1f;
+    RangeLineRenderSignature lastRangeLineRenderSignature;
     static Mesh gunneryShellConeMesh;
 
     public string hoveringLocationInfo;
@@ -414,9 +422,22 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     LatLon latestHoveringLatLon = new();
 
+    struct RangeLineRenderSignature
+    {
+        public string shipObjectId;
+        public float latDeg;
+        public float lonDeg;
+        public float headingDeg;
+        public GamePreference.RangeRingDisplayMode rangeMode;
+    }
+
     // float viewAccTime;
     void UpdateLocationInfoLabel()
     {
+        if (Time.unscaledTime < nextLocationInfoRefreshUnscaledTime)
+            return;
+        nextLocationInfoRefreshUnscaledTime = Time.unscaledTime + locationInfoRefreshIntervalSeconds;
+
         var ray = CameraController2.Instance.cam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
@@ -1016,16 +1037,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         // }
 
         // sync Ship's Viewer and ShipLog mapping
-        List<IPortraitViewerObservable> viewerObservables = new();
+        viewerObservablesBuffer.Clear();
+        viewerObjectIdSet.Clear();
+        viewerRemovalBuffer.Clear();
 
         var displayedShipLogs = showSunkShips ? NavalGameState.Instance.shipLogsOnMapOrDestroyed : NavalGameState.Instance.shipLogsOnMap;
-        // viewerObservables.AddRange(NavalGameState.Instance.shipLogsOnMap);
-        // viewerObservables.AddRange(NavalGameState.Instance.shipLogsOnMapOrDestroyed);
-        viewerObservables.AddRange(displayedShipLogs);
-        viewerObservables.AddRange(NavalGameState.Instance.launchedTorpedosOnMap);
+        viewerObservablesBuffer.AddRange(displayedShipLogs);
+        viewerObservablesBuffer.AddRange(NavalGameState.Instance.launchedTorpedosOnMap);
 
-        foreach (var observable in viewerObservables)
+        foreach (var observable in viewerObservablesBuffer)
         {
+            viewerObjectIdSet.Add(observable.objectId);
             if (!objectId2Viewer.ContainsKey(observable.objectId))
             {
                 var obj = Instantiate(shipUnitPrefab, earthTransform);
@@ -1036,12 +1058,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
         }
 
-        var objectIdSet = viewerObservables.Select(obs => obs.objectId).ToHashSet();
-
-        var shouldRemoved = objectId2Viewer.Where(kv => !objectIdSet.Contains(kv.Key)).ToList();
-
-        foreach ((var objectId, var viewer) in shouldRemoved)
+        foreach (var objectId in objectId2Viewer.Keys)
         {
+            if (!viewerObjectIdSet.Contains(objectId))
+            {
+                viewerRemovalBuffer.Add(objectId);
+            }
+        }
+
+        foreach (var objectId in viewerRemovalBuffer)
+        {
+            var viewer = objectId2Viewer[objectId];
             Destroy(viewer.gameObject); // Or Set Inactive only?
             objectId2Viewer.Remove(objectId);
         }
@@ -1511,23 +1538,19 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void SyncDynamicLines()
     {
         var firingLinePairs = GetFiringLinePairs().ToList();
-        // TODO: Maintain
-        // dynamicLineContainer.GetChild
-        var dynamicLines = dynamicLineContainer.GetComponentsInChildren<DynamicLine>().ToList();
-        if (dynamicLines.Count < firingLinePairs.Count)
+        if (dynamicLinePool.Count < firingLinePairs.Count)
         {
-            for (int i = dynamicLines.Count; i < firingLinePairs.Count; i++)
+            for (int i = dynamicLinePool.Count; i < firingLinePairs.Count; i++)
             {
                 var dynamicLine = Instantiate(dynamicLinePrefab, dynamicLineContainer).GetComponent<DynamicLine>();
-                // dynamicLine.gameObject.SetActive(true);
+                dynamicLinePool.Add(dynamicLine);
             }
-            dynamicLines = dynamicLineContainer.GetComponentsInChildren<DynamicLine>().ToList();
         }
-        else if (dynamicLines.Count > firingLinePairs.Count)
+        else if (dynamicLinePool.Count > firingLinePairs.Count)
         {
-            for (int i = firingLinePairs.Count; i < dynamicLines.Count; i++)
+            for (int i = firingLinePairs.Count; i < dynamicLinePool.Count; i++)
             {
-                var dynamicLine = dynamicLines[i];
+                var dynamicLine = dynamicLinePool[i];
                 dynamicLine.gameObject.SetActive(false);
             }
         }
@@ -1535,7 +1558,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         for (var i = 0; i < firingLinePairs.Count; i++)
         {
             (var firingShip, var target) = firingLinePairs[i];
-            var dynamicLine = dynamicLines[i];
+            var dynamicLine = dynamicLinePool[i];
             dynamicLine.gameObject.SetActive(true);
 
             dynamicLine.SetBeginEndByLatLon(firingShip.position, target.position);
@@ -1637,18 +1660,71 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             gunneryShellAltitudeFoot
         );
 
-        var shell = CreateGunneryShellVisualObject(shellRadiusWu);
+        var controller = AcquireGunneryShell(shellRadiusWu);
+        var shell = controller.gameObject;
         shell.transform.SetParent(gunneryShellVisualContainer, true);
         shell.transform.position = startPos;
 
-        var controller = shell.AddComponent<BallController>();
         controller.Setup(
             startPos,
             endPos,
             gunneryShellSpeedMps * MeasureUtils.meterToFoot * Utils.footToWu,
             targetObjectId,
-            gunneryShellAltitudeFoot
+            gunneryShellAltitudeFoot,
+            ReleaseGunneryShell
         );
+    }
+
+    BallController AcquireGunneryShell(float shellRadiusWu)
+    {
+        BallController controller = null;
+        while (gunneryShellPool.Count > 0 && controller == null)
+        {
+            controller = gunneryShellPool.Dequeue();
+        }
+
+        if (controller == null)
+        {
+            var shell = CreateGunneryShellVisualObject(shellRadiusWu);
+            controller = shell.AddComponent<BallController>();
+        }
+        else
+        {
+            var shell = controller.gameObject;
+            shell.transform.localScale = Vector3.one;
+            shell.SetActive(true);
+            ResizeGunneryShellVisual(shell, shellRadiusWu);
+        }
+
+        return controller;
+    }
+
+    void ReleaseGunneryShell(BallController controller)
+    {
+        if (controller == null)
+            return;
+
+        controller.gameObject.SetActive(false);
+        gunneryShellPool.Enqueue(controller);
+    }
+
+    static void ResizeGunneryShellVisual(GameObject root, float shellRadiusWu)
+    {
+        var body = root.transform.Find("Body");
+        var head = root.transform.Find("Head");
+        if (body == null || head == null)
+            return;
+
+        var bodyLengthWu = shellRadiusWu * 6f;
+        var headLengthWu = shellRadiusWu * 2f;
+
+        body.localRotation = Quaternion.Euler(90f, 0f, 0f);
+        body.localScale = new Vector3(shellRadiusWu * 2f, bodyLengthWu * 0.5f, shellRadiusWu * 2f);
+        body.localPosition = new Vector3(0f, 0f, bodyLengthWu * 0.5f);
+
+        head.localRotation = Quaternion.Euler(90f, 0f, 0f);
+        head.localScale = new Vector3(shellRadiusWu * 2f, headLengthWu, shellRadiusWu * 2f);
+        head.localPosition = new Vector3(0f, 0f, bodyLengthWu + headLengthWu * 0.5f);
     }
 
     GameObject CreateGunneryShellVisualObject(float shellRadiusWu)
@@ -1738,6 +1814,19 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         var shipLog = selectedShipLog;
         if (shipLog != null && shipLog.mapState == MapState.Destroyed)
             shipLog = null;
+
+        var currentSignature = new RangeLineRenderSignature
+        {
+            shipObjectId = shipLog?.objectId,
+            latDeg = shipLog?.position?.LatDeg ?? 0f,
+            lonDeg = shipLog?.position?.LonDeg ?? 0f,
+            headingDeg = shipLog?.headingDeg ?? 0f,
+            rangeMode = GamePreference.Instance.rangeRingDisplayMode
+        };
+        if (IsSameRangeLineRenderSignature(lastRangeLineRenderSignature, currentSignature))
+            return;
+        lastRangeLineRenderSignature = currentSignature;
+
         var shipClass = shipLog?.shipClass;
 
         var hasPrimaryBattery = shipClass != null && shipClass.batteryRecords.Count >= 1;
@@ -1827,6 +1916,21 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 visibilityRangeYards * MeasureUtils.yardToMeter
             );
         }
+    }
+
+    static bool IsSameRangeLineRenderSignature(RangeLineRenderSignature a, RangeLineRenderSignature b)
+    {
+        if (a.shipObjectId != b.shipObjectId)
+            return false;
+        if (a.rangeMode != b.rangeMode)
+            return false;
+        if (Mathf.Abs(a.latDeg - b.latDeg) > 0.0001f)
+            return false;
+        if (Mathf.Abs(a.lonDeg - b.lonDeg) > 0.0001f)
+            return false;
+        if (Mathf.Abs(a.headingDeg - b.headingDeg) > 0.001f)
+            return false;
+        return true;
     }
 
     void SyncRangeLineByMode(LineRenderer baseLineRenderer, float latDeg, float lonDeg, float rangeM, List<Utils.ArcSegmentDeg> rawArcSegments)

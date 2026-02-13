@@ -811,9 +811,22 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public void SetSelectedShipCourseTowardPointer()
     {
+        SetSelectedShipCourseTowardScreenPoint((Vector2)Input.mousePosition);
+    }
+
+    public void SetSelectedShipCourseTowardScreenPoint(Vector2 screenPoint)
+    {
         if (selectedShipLog != null)
         {
-            var hitPoint = CameraController2.Instance.GetHitPoint();
+            var cameraController = CameraController2.Instance;
+            if (cameraController == null || cameraController.cam == null)
+                return;
+
+            var ray = cameraController.cam.ScreenPointToRay(screenPoint);
+            if (!Physics.Raycast(ray, out var hit))
+                return;
+
+            var hitPoint = hit.point;
             var dstPos = Utils.Vector3ToLatLon(hitPoint);
 
             var currentPos = selectedShipLog.position;
@@ -824,6 +837,93 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
             selectedShipLog.desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)inverseLine.Azimuth);
         }
+    }
+
+    void ClearPendingRightClickAction()
+    {
+        rightClickPendingExecution = false;
+        rightClickPendingAction = RightClickPendingAction.None;
+    }
+
+    void HandleRightClickCandidateInIdle()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            rightClickCandidateActive = true;
+            rightClickDownPosition = (Vector2)Input.mousePosition;
+            ClearPendingRightClickAction();
+        }
+
+        if (rightClickCandidateActive && Input.GetMouseButtonUp(1))
+        {
+            rightClickCandidateActive = false;
+            var releasePosition = (Vector2)Input.mousePosition;
+            var clickDistance = Vector2.Distance(rightClickDownPosition, releasePosition);
+            if (clickDistance > rightClickMaxClickDistancePixels)
+            {
+                ClearPendingRightClickAction();
+                return;
+            }
+
+            var shipLog = TryToRaycastShipLog();
+            if (shipLog != null && selectedShipLogObjectId == shipLog.objectId)
+                rightClickPendingAction = RightClickPendingAction.OpenSelectedShipView;
+            else if (selectedShipLog != null)
+                rightClickPendingAction = RightClickPendingAction.SetSelectedShipCourse;
+            else
+                rightClickPendingAction = RightClickPendingAction.None;
+
+            if (rightClickPendingAction == RightClickPendingAction.None)
+            {
+                ClearPendingRightClickAction();
+                return;
+            }
+
+            rightClickPendingExecution = true;
+            rightClickReleasePosition = releasePosition;
+            rightClickReleaseTime = Time.unscaledTime;
+        }
+    }
+
+    void TryExecutePendingRightClickActionInIdle()
+    {
+        if (!rightClickPendingExecution)
+            return;
+
+        if (state != State.Idle)
+        {
+            ClearPendingRightClickAction();
+            return;
+        }
+
+        if (Input.GetMouseButton(1))
+        {
+            ClearPendingRightClickAction();
+            return;
+        }
+
+        var stayDistance = Vector2.Distance((Vector2)Input.mousePosition, rightClickReleasePosition);
+        if (stayDistance > rightClickMaxClickDistancePixels)
+        {
+            ClearPendingRightClickAction();
+            return;
+        }
+
+        if (Time.unscaledTime - rightClickReleaseTime < rightClickPostReleaseHoldSeconds)
+            return;
+
+        if (rightClickPendingAction == RightClickPendingAction.OpenSelectedShipView)
+        {
+            var shipLog = TryToRaycastShipLog();
+            if (shipLog != null && selectedShipLogObjectId == shipLog.objectId)
+                SwitchCenter.Instance.SwitchToShipLogView(shipLog);
+        }
+        else if (rightClickPendingAction == RightClickPendingAction.SetSelectedShipCourse)
+        {
+            SetSelectedShipCourseTowardScreenPoint(rightClickReleasePosition);
+        }
+
+        ClearPendingRightClickAction();
     }
 
     public void SetRemainAdvanceSimulationSecondsRequestedByUserInput(float value)
@@ -903,6 +1003,22 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     Vector2 lastMiddleMousePosition;
     LatLon middleMouseRotationAnchorLatLon;
     bool hasMiddleMouseRotationAnchor;
+
+    [Header("Right Click Course Setting")]
+    public float rightClickMaxClickDistancePixels = 8f;
+    public float rightClickPostReleaseHoldSeconds = 0.1f;
+    bool rightClickCandidateActive;
+    Vector2 rightClickDownPosition;
+    bool rightClickPendingExecution;
+    Vector2 rightClickReleasePosition;
+    float rightClickReleaseTime;
+    enum RightClickPendingAction
+    {
+        None,
+        OpenSelectedShipView,
+        SetSelectedShipCourse
+    }
+    RightClickPendingAction rightClickPendingAction = RightClickPendingAction.None;
 
     static float NormalizeAngle180(float angle)
     {
@@ -1135,6 +1251,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             return;
         }
 
+        if (!IsHotKeyEnabled())
+        {
+            rightClickCandidateActive = false;
+            ClearPendingRightClickAction();
+        }
+
         if (IsHotKeyEnabled())
         {
             if (Input.GetKeyDown(KeyCode.H))
@@ -1146,14 +1268,25 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             {
                 state = State.Idle;
                 selectedShipLogObjectId = null;
+                rightClickCandidateActive = false;
+                ClearPendingRightClickAction();
                 return;
             }
 
             var isPressingShift = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
             var isPressingAlt = Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt);
 
+            if (state != State.Idle && (rightClickCandidateActive || rightClickPendingExecution))
+            {
+                rightClickCandidateActive = false;
+                ClearPendingRightClickAction();
+            }
+
             if (state == State.Idle) // unit left click chosen
             {
+                HandleRightClickCandidateInIdle();
+                TryExecutePendingRightClickActionInIdle();
+
                 // handle events
                 if (Input.GetKeyDown(KeyCode.Insert) && isPressingAlt) // Insert(Deploy) Unit (traditional) TODO: Remove it?
                 {
@@ -1180,19 +1313,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                         ShipLogEditor.Instance.selectedShipLogObjectId = selectedShipLogObjectId;
 
                         shipLogClicked?.Invoke(this, EventArgs.Empty);
-                    }
-                }
-
-                if (Input.GetMouseButtonDown(1)) // try select unit and open ShipLog Editor for it
-                {
-                    var shipLog = TryToRaycastShipLog(); // TODO: Handle other click?
-                    // if (shipLog != null)
-                    if (shipLog != null && selectedShipLogObjectId == shipLog.objectId)
-                    {
-                        // ShipLogEditor.Instance.selectedShipLogObjectId = selectedShipLogObjectId;
-                        // ShipLogEditor.Instance.Show();
-
-                        SwitchCenter.Instance.SwitchToShipLogView(shipLog);
                     }
                 }
 

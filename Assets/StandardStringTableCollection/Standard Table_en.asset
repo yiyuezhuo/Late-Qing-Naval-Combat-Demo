@@ -55,7 +55,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 60764813168640
-    m_Localized: Set Course (Shift + Left Click)
+    m_Localized: Set Course (Right Click)
     m_Metadata:
       m_Items: []
   - m_Id: 60962738180096

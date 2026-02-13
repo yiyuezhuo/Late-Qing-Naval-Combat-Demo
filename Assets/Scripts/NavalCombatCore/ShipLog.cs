@@ -735,34 +735,47 @@ namespace NavalCombatCore
             torpedoSectorStatus.ammunition = shipClass.torpedoSector.ammunitionCapacity - torpedoSectorStatus.mountStatus.Sum(m => m.reloadedLoad);
         }
 
-        public string Summary()
+        public string GetBatterySummary()
+        {
+            if (shipClass == null)
+                return "[Class Invalid or not binded]";
+            return string.Join("\n", batteryStatus.Select(bs => bs.Summary()));
+        }
+
+        public string GetTorpedoSummary()
         {
             var _shipClass = shipClass;
             if (_shipClass == null)
                 return "[Class Invalid or not binded]";
 
-            var lines = new List<string>();
-
-            lines.Add(Localize(
-                "Battery:"
-            ));
-            lines.AddRange(batteryStatus.Select(bs => bs.Summary()));
-
-            lines.Add(Localize(
-                "Torpedo:"
-            ));
             var torpedoBarrels = _shipClass.torpedoSector.mountLocationRecords.Sum(r => r.barrels * r.mounts);
-            // var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.torpedoMountLocationRecord.mounts - m.mountsDestroyed) * m.torpedoMountLocationRecord.barrels);
             var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.IsOperational()).Sum(m => m.barrels);
             var torpedoAmmu = torpedoSectorStatus.ammunition;
-            lines.Add($"x{torpedoBarrelsAvailable}/{torpedoBarrels} {_shipClass.torpedoSector.name.mergedName} ({torpedoAmmu})");
+            return $"x{torpedoBarrelsAvailable}/{torpedoBarrels} {_shipClass.torpedoSector.name.mergedName} ({torpedoAmmu})";
+        }
 
-            lines.Add(Localize(
-                "Rapid Firing Battery:"
-            ));
-            lines.AddRange(rapidFiringStatus.Select(s => s.GetInfo()));
+        public string GetRapidFiringSummary()
+        {
+            if (shipClass == null)
+                return "[Class Invalid or not binded]";
+            return string.Join("\n", rapidFiringStatus.Select(s => s.GetInfo()));
+        }
 
-            // lines.Add("DP")
+        public string Summary()
+        {
+            if (shipClass == null)
+                return "[Class Invalid or not binded]";
+
+            var lines = new List<string>
+            {
+                Localize("Battery:"),
+                GetBatterySummary(),
+                Localize("Torpedo:"),
+                GetTorpedoSummary(),
+                Localize("Rapid Firing Battery:"),
+                GetRapidFiringSummary()
+            };
+
             return string.Join("\n", lines);
         }
 

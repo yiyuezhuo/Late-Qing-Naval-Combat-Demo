@@ -227,6 +227,24 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
+        public string batterySummary
+        {
+            get => GetBatterySummary();
+        }
+
+        [CreateProperty]
+        public string torpedoSummary
+        {
+            get => GetTorpedoSummary();
+        }
+
+        [CreateProperty]
+        public string rapidFiringSummary
+        {
+            get => GetRapidFiringSummary();
+        }
+
+        [CreateProperty]
         public string followedTargetDesc
         {
             get => followedTarget?.namedShip?.name.mergedName ?? "[Not Specified or Invalid]";

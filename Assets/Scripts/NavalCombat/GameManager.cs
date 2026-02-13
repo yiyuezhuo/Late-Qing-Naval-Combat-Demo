@@ -1159,6 +1159,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         hasMiddleMouseRotationAnchor = false;
     }
 
+    public void ReturnTo2DView()
+    {
+        ResetMiddleMouseCameraView();
+    }
+
     public void Update()
     {
         if(networkingManager is NetworkingHostManager hostManager && hostManager != null)
@@ -1261,7 +1266,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             if (Input.GetKeyDown(KeyCode.H))
             {
-                ResetMiddleMouseCameraView();
+                ReturnTo2DView();
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))

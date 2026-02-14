@@ -1030,7 +1030,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     [Header("Right Click Course Setting")]
     public float rightClickMaxClickDistancePixels = 8f;
-    public float rightClickPostReleaseHoldSeconds = 0.1f;
+    public float rightClickPostReleaseHoldSeconds = 0.05f;
     bool rightClickCandidateActive;
     Vector2 rightClickDownPosition;
     bool rightClickPendingExecution;

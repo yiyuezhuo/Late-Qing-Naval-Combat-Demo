@@ -24912,7 +24912,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="80" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="70" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -24924,7 +24924,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="180" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="190" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -24948,7 +24948,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="260" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="250" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -25469,7 +25469,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="80" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="70" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -25481,7 +25481,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="180" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="190" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -25505,7 +25505,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="260" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="250" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -26583,7 +26583,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="80" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="70" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -26595,7 +26595,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="180" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="190" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -26619,7 +26619,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="260" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="250" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -27126,7 +27126,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="80" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="70" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -27138,7 +27138,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="180" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="190" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -27162,7 +27162,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="260" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="250" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -27669,7 +27669,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="80" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="70" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -27681,7 +27681,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="180" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="190" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -27705,7 +27705,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <barrels>1</barrels>
       <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="260" CoverageDeg="100" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="250" CoverageDeg="100" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>

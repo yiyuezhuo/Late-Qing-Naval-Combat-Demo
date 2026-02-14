@@ -373,13 +373,27 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         //     }
         // }
 
-        foreach(var shipClass in NavalGameState.Instance.shipClasses)
-        {
-            if(shipClass.batteryRecords.Count >=3 && shipClass.rapidFireBatteryRecords.Count >= 2)
-            {
-                Debug.Log(shipClass.name);
-            }
-        }
+        // foreach(var shipClass in NavalGameState.Instance.shipClasses)
+        // {
+        //     if(shipClass.batteryRecords.Count >=3 && shipClass.rapidFireBatteryRecords.Count >= 2)
+        //     {
+        //         Debug.Log(shipClass.name);
+        //     }
+        // }
+
+        // foreach(var shipClass in NavalGameState.Instance.shipClasses)
+        // {
+        //     foreach(var btyRec in shipClass.batteryRecords)
+        //     {
+        //         foreach(var mntRec in btyRec.mountLocationRecords)
+        //         {
+        //             if(mntRec.mountArcsPattern == MountArcsPattern.Casemate)
+        //             {
+        //                 mntRec.SyncDefaultMountArcs();
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     public ViewState CaptureViewState()
@@ -1834,7 +1848,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
                 for (var i = beginIdx; i < logCount; i++)
                 {
-                    var shellDiameterInch = rapidFiringStatus.GetRapidFireBatteryRecord()?.shellSizeInch ?? 0f;
+                    // var shellDiameterInch = rapidFiringStatus.GetRapidFireBatteryRecord()?.shellSizeInch ?? 0f;
+                    var shellDiameterInch = RapidFireBatteryRecord.shellSizeInch;
                     TrySpawnGunneryShellVisual(shooter, rapidFiringStatus.logs[i].firingTargetObjectId, shellDiameterInch);
                 }
 

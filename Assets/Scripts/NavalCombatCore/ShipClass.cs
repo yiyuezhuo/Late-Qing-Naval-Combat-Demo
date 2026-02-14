@@ -425,7 +425,7 @@ namespace NavalCombatCore
             {MountLocation.StarboardAfter, new(){
                 normal=new(){new(){startDeg=60, CoverageDeg=120}},
                 narrow=new(){new(){startDeg=75, CoverageDeg=30}},
-                casemate=new(){new(){startDeg=80, CoverageDeg=100}}
+                casemate=new(){new(){startDeg=70, CoverageDeg=100}}
             }},
             {MountLocation.After, new(){
                 normal=new(){new(){startDeg=60, CoverageDeg=240}},
@@ -434,7 +434,7 @@ namespace NavalCombatCore
             {MountLocation.PortAfter, new(){
                 normal=new(){new(){startDeg=180, CoverageDeg=120}},
                 narrow=new(){new(){startDeg=255, CoverageDeg=30}},
-                casemate=new(){new(){startDeg=180, CoverageDeg=100}}
+                casemate=new(){new(){startDeg=190, CoverageDeg=100}}
             }},
             {MountLocation.PortMidship, new(){
                 normal=new(){new(){startDeg=210, CoverageDeg=120}},
@@ -444,7 +444,7 @@ namespace NavalCombatCore
             {MountLocation.PortForward, new(){
                 normal=new(){new(){startDeg=240, CoverageDeg=120}},
                 narrow=new(){new(){startDeg=255, CoverageDeg=30}},
-                casemate=new(){new(){startDeg=260, CoverageDeg=100}}
+                casemate=new(){new(){startDeg=250, CoverageDeg=100}}
             }},
             {MountLocation.Midship, new(){
                 normal=new(){
@@ -702,7 +702,7 @@ namespace NavalCombatCore
         public float effectiveRangeYards;
         // public List<RapidFireBatteryFireControlLevelRecord> fireControlRecords = new() { new() };
         public List<RapidFireBatteryFireControlLevelRecord> fireControlRecords = new();
-        public float shellSizeInch = 1.85f; // 47mm Hotchkiss default
+        public static float shellSizeInch = 1.85f; // 47mm Hotchkiss default
         public float damageFactor; // RF
         // public List<int> barrelsLevelPort = new() { 0 };
         // public List<int> barrelsLevelStarboard = new() { 0 };

@@ -410,6 +410,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     readonly List<string> viewerRemovalBuffer = new();
     readonly List<DynamicLine> dynamicLinePool = new();
     readonly Queue<BallController> gunneryShellPool = new();
+    readonly List<BallController> activeGunneryShells = new();
     bool wasInMultiplayerLastFrame;
     float nextLocationInfoRefreshUnscaledTime;
     static readonly float locationInfoRefreshIntervalSeconds = 0.1f;
@@ -530,6 +531,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public float remainAdvanceSimulationSecondsRequestedByUserInput; // Requested by KeyCode 1-9 (1-9 min) and BackQuote (`) (1s)
     public float remainAdvanceSimulationSecondsRequestedByUpdate;
+    float projectileVisualAdvanceSecondsThisFrame;
     public bool isAutoPlaying = false;
     float _savedTimeScaleBeforePause = 1f;
     bool _timeScalePausedByGameManager = false;
@@ -584,6 +586,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public void UpdateSimulation()
     {
+        projectileVisualAdvanceSecondsThisFrame = 0f;
         RefreshClockState();
 
         var pulseLengthSeconds = GamePreference.Instance.pulseLengthSeconds;
@@ -594,13 +597,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         if(isAutoPlaying) // auto adavance mode
         {
-            remainAdvanceSimulationSecondsRequestedByUpdate += realSeconds * simulationRateRatioAuto;
+            var visualAdvance = realSeconds * simulationRateRatioAuto;
+            remainAdvanceSimulationSecondsRequestedByUpdate += visualAdvance;
+            projectileVisualAdvanceSecondsThisFrame += visualAdvance;
         }
         else // manual advance mode
         {
             if (remainAdvanceSimulationSecondsRequestedByUserInput >= pulseLengthSeconds)
             {
-                remainAdvanceSimulationSecondsRequestedByUpdate += realSeconds * simulationRateRatio;
+                var visualAdvance = realSeconds * simulationRateRatio;
+                remainAdvanceSimulationSecondsRequestedByUpdate += visualAdvance;
+                projectileVisualAdvanceSecondsThisFrame += visualAdvance;
             }
         }
         
@@ -1226,7 +1233,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         UpdateSimulation();
         if (fullInitialized)
+        {
             SyncGunneryShellVisualsFromLogs();
+            ForceAdvanceGunneryShellVisualsThisFrame();
+        }
         // viewAccTime += Time.deltaTime;
 
         // if (viewAccTime > 2)
@@ -1865,6 +1875,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
 
         gunneryShellPool.Clear();
+        activeGunneryShells.Clear();
         processedMountFiringLogCount.Clear();
         processedRapidFiringLogCount.Clear();
     }
@@ -1939,6 +1950,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             gunneryShellAltitudeFoot,
             ReleaseGunneryShell
         );
+
+        if (!activeGunneryShells.Contains(controller))
+            activeGunneryShells.Add(controller);
     }
 
     BallController AcquireGunneryShell(float shellRadiusWu)
@@ -1970,8 +1984,30 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         if (controller == null)
             return;
 
+        activeGunneryShells.Remove(controller);
         controller.gameObject.SetActive(false);
         gunneryShellPool.Enqueue(controller);
+    }
+
+    void ForceAdvanceGunneryShellVisualsThisFrame()
+    {
+        if (projectileVisualAdvanceSecondsThisFrame <= 0f || activeGunneryShells.Count == 0)
+            return;
+
+        for (var i = activeGunneryShells.Count - 1; i >= 0; i--)
+        {
+            var controller = activeGunneryShells[i];
+            if (controller == null)
+            {
+                activeGunneryShells.RemoveAt(i);
+                continue;
+            }
+
+            var advanceSeconds = controller.IsSpawnedThisFrame
+                ? projectileVisualAdvanceSecondsThisFrame * 0.1f
+                : projectileVisualAdvanceSecondsThisFrame;
+            controller.AdvanceBySimulationSeconds(advanceSeconds);
+        }
     }
 
     static void ResizeGunneryShellVisual(GameObject root, float shellRadiusWu)

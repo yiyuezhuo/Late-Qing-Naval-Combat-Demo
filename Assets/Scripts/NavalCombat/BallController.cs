@@ -11,6 +11,10 @@ public class BallController : MonoBehaviour
     float _targetHeightFoot;
     bool _initialized;
     Action<BallController> _onArrived;
+    int _lastAdvancedFrame = -1;
+    int _spawnedFrame = -1;
+
+    public bool IsSpawnedThisFrame => _spawnedFrame == Time.frameCount;
 
     public void Setup(
         Vector3 startPos,
@@ -28,6 +32,8 @@ public class BallController : MonoBehaviour
         _targetHeightFoot = targetHeightFoot;
         _onArrived = onArrived;
         _initialized = true;
+        _lastAdvancedFrame = -1;
+        _spawnedFrame = Time.frameCount;
         gameObject.SetActive(true);
     }
 
@@ -36,9 +42,11 @@ public class BallController : MonoBehaviour
         _initialized = false;
         _targetObjectId = null;
         _onArrived = null;
+        _lastAdvancedFrame = -1;
+        _spawnedFrame = -1;
     }
 
-    void Update()
+    void SyncTargetPosition()
     {
         if (!_initialized)
             return;
@@ -55,14 +63,17 @@ public class BallController : MonoBehaviour
                 );
             }
         }
+    }
 
-        var dt = Time.deltaTime;
-        if (dt <= 0f)
+    public void AdvanceBySimulationSeconds(float simulationSeconds)
+    {
+        if (!_initialized || simulationSeconds <= 0f)
             return;
+        if (_lastAdvancedFrame == Time.frameCount)
+            return;
+        _lastAdvancedFrame = Time.frameCount;
 
-        var ratio = GameManager.Instance != null ? GameManager.Instance.GetCurrentSimulationAdvanceRatio() : 1f;
-        if (ratio <= 0f)
-            return;
+        SyncTargetPosition();
 
         var direction = _targetPosWu - transform.position;
         if (direction.sqrMagnitude > 1e-9f)
@@ -70,7 +81,7 @@ public class BallController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(direction.normalized, transform.position.normalized);
         }
 
-        var maxStep = _speedWuPerSecond * dt * ratio;
+        var maxStep = _speedWuPerSecond * simulationSeconds;
         transform.position = Vector3.MoveTowards(transform.position, _targetPosWu, maxStep);
 
         if ((transform.position - _targetPosWu).sqrMagnitude <= 1e-6f)
@@ -79,5 +90,19 @@ public class BallController : MonoBehaviour
             ResetState();
             onArrived?.Invoke(this);
         }
+    }
+
+    void Update()
+    {
+        if (!_initialized || _lastAdvancedFrame == Time.frameCount)
+            return;
+
+        if (GameManager.Instance != null)
+            return;
+
+        var dt = Time.unscaledDeltaTime;
+        if (dt <= 0f)
+            return;
+        AdvanceBySimulationSeconds(dt);
     }
 }

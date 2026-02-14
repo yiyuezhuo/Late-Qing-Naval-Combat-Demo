@@ -123,7 +123,8 @@ public class ScriptEngine
 
     static IEnumerator DoMsgDelay(string msg, float seconds)
     {
-        yield return new WaitForSeconds(seconds);
+        // Tutorial prompts should still appear when naval simulation is paused (timeScale = 0).
+        yield return new WaitForSecondsRealtime(seconds);
         DialogRoot.Instance.PopupMessageDialog(msg);
         // NavalGameState.Instance.tempSubjectLogs.A
     }

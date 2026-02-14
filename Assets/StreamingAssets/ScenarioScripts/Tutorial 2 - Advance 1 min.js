@@ -137,40 +137,38 @@ else if(phase === Phase.WaitForShipRelativeToEquilibrium)
         let msg = getLocalized(`
 Relative-To equilibrium is reached.
 
-This tutorial scenario is concluded. You can play around extra parameter for relative-to control mode, control group lead and see how does controlled ship respond. Then return to main menu and check other tutorial scenarios.
+This tutorial scenario is concluded. 
+
+You can play around extra parameter for relative-to control mode or detach and see how does controlled ship respond. 
+
+Then return to main menu and check other tutorial scenarios.
 `,
 `
 相対位置維持モードの制御均衡が達成されました。
 
-本チュートリアルシナリオは終了です。以下の操作を自由にお試しください：
+このチュートリアルシナリオは終了しました。
 
-- 相対位置維持モードの追加パラメータ調整
-- グループリーダーの制御設定変更
-- 被制御艦艇の応答動作確認
+「相対位置」制御モードの追加パラメータを調整したり、「分離」（制御中の艦船を選択して「I」キー、または上部バーの対応ボタンを押す）を試して、制御中の艦船がどのように反応するか確認できます。
 
-その後、メインメニューに戻り他のチュートリアルシナリオをご確認ください。
+その後、メインメニューに戻り、他のチュートリアルシナリオをご覧ください。
 `,
 `
-相对位置控制平衡已达成。
+相对位置控制均衡已达成。
 
-本教程场景已结束。您可以自由尝试以下操作：
+本教程剧本已经结束。
 
-- 调整相对位置控制模式的额外参数
-- 更改编队领舰的控制设置
-- 观察受控舰艇的响应行为
+你可以尝试调整”相对位置“的其他参数以及”分离“(选择受控舰船然后点击按钮I，或者点击顶部栏上的对应按钮)然后看受控舰艇如何反映。
 
-随后可返回主菜单查看其他教程场景。
+然后回到主菜单然后查看其他教程剧本。
 `,
 `
-相對位置控制平衡已達成。
+相對位置控制均衡已達成。
 
-本教程場景已結束。您可以自由嘗試以下操作：
+本教學劇本已經結束。
 
-- 調整相對位置控制模式的額外參數
-- 更改編隊領艦的控制設置
-- 觀察受控艦艇的響應行為
+您可以嘗試調整「相對位置」控制模式的額外參數，以及執行「分離」操作（選擇受控艦船後按下 I 鍵，或點擊頂部欄上的對應按鈕），觀察受控艦艇如何反應。
 
-隨後可返回主菜單查看其他教程場景。
+接著返回主選單，查看其他教學劇本。
 `)
 
         msgBoxDelay(msg, 0.3);

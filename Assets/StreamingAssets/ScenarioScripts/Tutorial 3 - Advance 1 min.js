@@ -11,13 +11,17 @@ Open the ship state view and go to the Battery tab. There you can find informati
 
 Batteries carry different types of ammunition, and the AI will use the optimal ammo when firing.
 
-Processing Seconds increase as time advances until the threshold determined by the Rate of Fire is reached. At that point, a shot is resolved and Processing Seconds are reset to zero. No flying shells are modeled (although launched torpedoes are modeled).
+Processing Seconds increase as time advances until the threshold determined by the Rate of Fire is reached. At that point, a shot is resolved and Processing Seconds are reset to zero.
+
+The ammunition's time of flight is already accounted for in the rate of fire (as you can notice from the penetration-ROF table, the Rate of Fire is sometimes limited by range—due to corrected fire requiring observation of previous shot results before firing again—and sometimes limited by the gun's inherent cycling speed). The actual flight of the projectile is not modeled; however, when the round reaches its target (whether hitting or missing), an animation is played from the shooter toward the target, showing the projectile scaled up 100 times. Note that this is purely a visual effect and should not be interpreted as representing the actual in-flight projectile.
 
 Different mounts have different firing arcs defined in their ship class correspondence record. Generally, a ship's broadside firepower is stronger than its forward or aft firepower. However, presenting the broadside angle also makes the ship easier to hit.
 
 Turn off "Current Only" (which clears logs as time advances, so only the "current" log is shown) in the global log panel (bottom-left corner).
 
 Advance time until a hit is scored.
+
+Note: To better observe the projectile animation, you may want to use the Space key for automatic time advance (its ×10 rate is much slower than the manual ×120 advance). Automatic time advance can be toggled on or off using the Space key or the corresponding toggle in the top UI. Manual advance is only available when automatic time advance is turned off.
 `,
 `
 艦艇の射撃が開始されました！
@@ -28,13 +32,17 @@ Advance time until a hit is scored.
 
 各砲台は異なる種類の弾薬を搭載しており、AIは射撃時に最適な弲種を自動選択します。
 
-処理秒数は時間経過とともに増加し、射撃速度で決定された閾値に達すると、射撃が解決され処理秒数がゼロにリセットされます。飛翔中の砲弾はモデル化されません（ただし、発射された魚雷はモデル化されます）。
+処理秒数は時間経過とともに増加し、射撃速度で決定された閾値に達すると、射撃が解決され処理秒数がゼロにリセットされます。
+
+弾薬の飛翔時間はすでに射速に含まれています（貫通力－射速表を見ると、修正射撃では前回の着弾結果を観測してから次弾を発射する必要があるため、射速が距離によって制限される場合と、砲自体のサイクル速度によって制限される場合があることが分かります）。弾丸の飛翔はモデル化されていませんが、弾が目標に到達した際（命中・未命中を問わず）、射撃側から目標に向けて、100倍に拡大された弾丸の飛行アニメーションが再生されます。これはあくまで視覚効果であり、実際の飛翔中の弾丸を表すものではありません。
 
 各種砲架は、対応する艦艇型号レコードで定義された固有の射界を持ちます。一般的に艦艇の舷側火力は前後方向の火力よりも強力ですが、舷側を露出させることは被弾しやすい姿勢でもあります。
 
 グローバルログパネル（画面左下）で「現在のみ表示」（時間経過とともにログを消去し「現在」のログのみ表示する機能）を無効にしてください。
 
 命中が記録されるまで時間を進めてください。
+
+注意：弾丸のアニメーションをよく見るには、スペースキーで自動的に時間を進める機能（×10）を使うとよいでしょう（手動での×120時間進行よりもはるかに遅いです）。この自動時間進行は、スペースキーまたは画面上部のUIにあるトグルでオン／オフを切り替えられます。手動で時間を進める機能は、自動時間がオフのときのみ利用可能です。
 `,
 `
 舰艇开始射击！
@@ -45,13 +53,17 @@ Advance time until a hit is scored.
 
 各炮组携带不同弹种，AI会在射击时自动选择最优弹药。
 
-处理秒数随时间推进增加，直至达到射速决定的阈值时触发射击结算，随后归零。未模拟飞行中的炮弹（但已发射的鱼雷会持续模拟）。
+处理秒数随时间推进增加，直至达到射速决定的阈值时触发射击结算，随后归零。
+
+弹药的飞行时间已经包含在射速中（如果你查看穿深-射速表可以注意到射速有时被距离瓶颈（修正射击观察之前射击结果再发射），有时则被炮本身的射速瓶颈）。弹药的飞行过程本身没有被建模，但是会在弹药抵达目标（命中或未命中）时从射击者向被射击者播放一个放大了100倍的弹体的飞行动画。注意这只是一个动画，不应理解为飞行中的弹药。
 
 不同炮座在对应舰艇型号记录中定义了特定射界。通常舰艇舷侧火力优于首尾方向火力，但暴露舷侧同时也更易被命中。
 
 在全局日志面板（左下角）关闭"仅显示当前"（该功能会在时间推进时清除日志，只显示"当前"日志）。
 
 推进时间直至出现命中记录。
+
+注意：为了看清楚弹药动画过程，可以考虑用空格键进行自动时间推进（其 x10 比例比手动推进的 x120 慢得多）。空格键或者顶部UI中的对应开关可以打开/关闭自动时间推进。手动推进仅在关闭自动时间推进时可用。
 `,
 `
 艦艇開始射擊！
@@ -62,13 +74,17 @@ Advance time until a hit is scored.
 
 各炮組攜帶不同彈種，AI會在射擊時自動選擇最優彈藥。
 
-處理秒數隨時間推進增加，直至達到射速決定的閾值時觸發射擊判定，隨後歸零。未模擬飛行中的炮彈（但已發射的魚雷會持續模擬）。
+處理秒數隨時間推進增加，直至達到射速決定的閾值時觸發射擊判定，隨後歸零。
+
+彈藥的飛行時間已經包含在射速之中（從穿深－射速表可看出，由於修正射擊需先觀察前一發的射擊結果再發射下一發，射速有時受距離限制，有時則受火炮自身循環速度限制）。彈藥的實際飛行過程並未進行模擬；然而，當彈藥抵達目標時（無論是否命中），系統會從射擊者向目標播放一段飛行動畫（彈體被放大了100倍）。注意這僅為視覺效果，不應視為真實飛行中的彈藥。
 
 不同炮座在對應艦艇型號記錄中定義了特定射界。通常艦艇舷側火力優於首尾方向火力，但暴露舷側同時也更易被命中。
 
 在全局日志面板（左下角）關閉「僅顯示當前」（該功能會在時間推進時清除日志，只顯示「當前」日志）。
 
 推進時間直至出現命中記錄。
+
+注意：若要更清楚地觀察彈藥動畫過程，可考慮使用空白鍵啟用自動時間推進（其 ×10 速率遠慢於手動 ×120 推進）。自動時間推進可透過空白鍵或頂部 UI 中的對應勾選框開啟或關閉。僅當自動時間推進關閉時，才可使用手動推進。
 `);
 
         msgBoxDelay(msg, 0.3);
@@ -86,6 +102,8 @@ A hit is scored!
 A log entry will appear in the global log panel. You can also check the log at the individual ship level by opening the ship state view for the damaged ship and clicking the "Detail" button in the Basic tab.
 
 The linear part of this tutorial is now complete. Notifications for concept like Damage Effect, Sunk, and Victory will be provided when they occur for the first time. Feel free to control the two groups and continue combat until only one remains on the battlefield.
+
+(The manual contains further details if you're interested.)
 `,
 `
 命中が記録されました！
@@ -93,6 +111,8 @@ The linear part of this tutorial is now complete. Notifications for concept like
 グローバルログパネルにログエントリが表示されます。また、被弾艦の艦艇状態ビューを開き「基本」タブの「詳細」ボタンをクリックすると、個別艦艇レベルでの詳細ログを確認できます。
 
 これでチュートリアルの線形部分は完了です。損傷効果・撃沈・勝利条件などの概念は、実際に初めて発生した際に通知されます。両グループを自由に操作し、戦場に一隻だけが残るまで戦闘を続けてください。
+
+(興味があれば、マニュアルにより詳しい情報が載っています。)
 `,
 `
 命中已达成！
@@ -100,6 +120,8 @@ The linear part of this tutorial is now complete. Notifications for concept like
 全局日志面板将出现日志条目。您也可通过打开受损舰艇的舰艇状态视图，点击"基本"标签页中的"详情"按钮，查看单舰层面的详细日志。
 
 本教程的线性部分至此结束。损伤效果、击沉与胜利条件等概念将在首次发生时提供通知。请自由控制双方编组，继续战斗直至只剩一方存于战场。
+
+(感兴趣的话，手册里有更详细的说明。)
 `,
 `
 命中已達成！
@@ -107,6 +129,8 @@ The linear part of this tutorial is now complete. Notifications for concept like
 全局日志面板將出現日志條目。您也可通過打開受損艦艇的艦艇狀態檢視，點擊「基本」標籤頁中的「詳情」按鈕，查看單艦層面的詳細日志。
 
 本教程的線性部分至此結束。損傷效果、擊沉與勝利條件等概念將在首次發生時提供通知。請自由控制雙方編組，繼續戰鬥直至只剩一方存於戰場。
+
+(若有興趣，可參考手冊中的詳細內容。)
 `)
 
         msgBox(msg);

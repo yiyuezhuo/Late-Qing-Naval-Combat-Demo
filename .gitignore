@@ -78,3 +78,6 @@ crashlytics-build.properties
 .vsconfig
 
 Assets/StreamingAssets/Manuals
+
+Assets/AddressableAssetsData/link.xml
+Assets/AddressableAssetsData/link.xml.meta

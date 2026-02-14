@@ -188,6 +188,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         // Debug.Log($"Persistent Path:{Application.persistentDataPath}");
 
         SuperGameState.Instance.currentGameMode = GameMode.Naval;
+        wasInMultiplayerLastFrame = isHostOrClient;
 
         // EntityManager.Instance.newGuidCreated += (obj, s) => Debug.LogWarning($"New guid created: {s} for {obj}");
 
@@ -409,6 +410,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     readonly List<string> viewerRemovalBuffer = new();
     readonly List<DynamicLine> dynamicLinePool = new();
     readonly Queue<BallController> gunneryShellPool = new();
+    bool wasInMultiplayerLastFrame;
     float nextLocationInfoRefreshUnscaledTime;
     static readonly float locationInfoRefreshIntervalSeconds = 0.1f;
     RangeLineRenderSignature lastRangeLineRenderSignature;
@@ -1215,6 +1217,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         // Networking
         networkingManager?.Update();
 
+        var isInMultiplayerNow = isHostOrClient;
+        if (isInMultiplayerNow != wasInMultiplayerLastFrame)
+        {
+            HandleMultiplayerVisualModeTransition(isInMultiplayerNow);
+            wasInMultiplayerLastFrame = isInMultiplayerNow;
+        }
+
         UpdateSimulation();
         if (fullInitialized)
             SyncGunneryShellVisualsFromLogs();
@@ -1763,6 +1772,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     void SyncGunneryShellVisualsFromLogs()
     {
+        if (isHostOrClient)
+            return;
+
         var navalState = NavalGameState.Instance;
         if (navalState == null)
             return;
@@ -1828,6 +1840,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         foreach (var staleId in processedRapidFiringLogCount.Keys.Where(k => !activeRapidIds.Contains(k)).ToList())
         {
             processedRapidFiringLogCount.Remove(staleId);
+        }
+    }
+
+    void HandleMultiplayerVisualModeTransition(bool isInMultiplayerNow)
+    {
+        ClearAllGunneryShellVisuals();
+        if (!isInMultiplayerNow)
+        {
+            InitializeGunneryLogProcessingBaseline();
         }
     }
 

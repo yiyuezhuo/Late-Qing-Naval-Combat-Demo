@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GeographicLib;
 using NavalCombatCore;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -50,6 +49,8 @@ public class CameraController2 : MonoBehaviour
     float lastTrackedLon;
     // public Transform leafTransform;
 
+    LayerMask sphereLayerMask;
+
     public enum ScrollMode
     {
         Orthographic,
@@ -83,6 +84,8 @@ public class CameraController2 : MonoBehaviour
     {
         cameras = GetComponentsInChildren<Camera>().ToList();
         cam = cameras[0];
+
+        sphereLayerMask = LayerMask.GetMask("Sphere");
     }
 
     // Start is called before the first frame update
@@ -94,9 +97,6 @@ public class CameraController2 : MonoBehaviour
         EnhancedTouchSupport.Enable();
 
         initialPosition = transform.position;
-
-        // cameras = GetComponentsInChildren<Camera>().ToList();
-        // cam = cameras[0];
 
         var delta = Math.Min(Utils.r, 1000);
         leafTransform.localPosition = new Vector3(0, 0, -(Utils.r + delta));
@@ -112,7 +112,7 @@ public class CameraController2 : MonoBehaviour
     {
         var ray = cam.ScreenPointToRay(Input.mousePosition);
         // var plane = new Plane(Vector3.forward, Vector3.zero);
-        if(Physics.Raycast(ray, out var hit))
+        if(Physics.Raycast(ray, out var hit, Mathf.Infinity, sphereLayerMask))
         {
             return hit.point;
         }
@@ -229,7 +229,7 @@ public class CameraController2 : MonoBehaviour
 
         var centerScreen = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f);
         var ray = cam.ScreenPointToRay(centerScreen);
-        if (!Physics.Raycast(ray, out var hit))
+        if (!Physics.Raycast(ray, out var hit, Mathf.Infinity, sphereLayerMask))
             return false;
 
         latLon = Utils.Vector3ToLatLon(hit.point);
@@ -379,15 +379,7 @@ public class CameraController2 : MonoBehaviour
             return;
         }
 
-        // Zoom
-        // if (Input.mouseScrollDelta.y != 0)
-        // {
-        //     foreach (var camera in cameras)
-        //     {
-        //         UpdateZoom(camera);
-        //     }
-        // }
-        
+        // Zoom        
         foreach (var camera in cameras)
         {
             UpdateZoom(camera);
@@ -403,6 +395,7 @@ public class CameraController2 : MonoBehaviour
             {
                 dragging = true;
                 UpdateHitPoint();
+                Debug.Log($"Start dragging at lat={lastTrackedLat}, lon={lastTrackedLon}, cam.orthographicSize={cam.orthographicSize}");
             }
             else
             {

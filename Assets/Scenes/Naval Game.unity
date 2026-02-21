@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 227654951}
   - component: {fileID: 227654955}
   - component: {fileID: 227654956}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1349,9 +1349,8 @@ MonoBehaviour:
   remainAdvanceSimulationSecondsRequestedByUserInput: 0
   remainAdvanceSimulationSecondsRequestedByUpdate: 0
   isAutoPlaying: 0
-  middleMouseRotateSpeed: 0.2
-  middleMousePitchMin: -75
-  middleMousePitchMax: 75
+  rightClickMaxClickDistancePixels: 8
+  rightClickPostReleaseHoldSeconds: 0.05
   selectedShipLogObjectId: 
   selectedMountStatusRecordObjectId: 
   selectedFireControlSystemStatusRecordObjectId: 
@@ -1653,6 +1652,10 @@ MonoBehaviour:
   cameras: []
   leafTransform: {fileID: 871059392}
   mode: 0
+  middleMouseRotateSpeed: 0.2
+  middleMousePitchMin: -75
+  middleMousePitchMax: 75
+  quick3DViewPitchDeg: 45
 --- !u!4 &813226749
 Transform:
   m_ObjectHideFlags: 0
@@ -1874,7 +1877,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 567
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

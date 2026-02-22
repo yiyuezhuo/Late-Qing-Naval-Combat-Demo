@@ -140,11 +140,13 @@
                         <ui:Toggle label="Enable Gunnery Shell Visual">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="enableGunneryShellVisual" binding-mode="TwoWay"/>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62874781658812416)"/>
                             </Bindings>
                         </ui:Toggle>
                         <ui:FloatField label="Gunnery Shell Radius Scale Coef">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="gunneryShellRadiusScaleCoef" binding-mode="TwoWay"/>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62875520019894272)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:Toggle label="Enable Audio">

@@ -578,6 +578,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         _savedTimeScaleBeforePause = Time.timeScale;
         Time.timeScale = 0f;
         _timeScalePausedByGameManager = true;
+
+        Physics.SyncTransforms();
     }
 
     void ResumeUnityClock()

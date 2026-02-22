@@ -51,6 +51,7 @@ public class SphereController : SingletonMonoBehaviour<SphereController>
     {
         var diameter = Utils.r * 2f;
         transform.localScale = new Vector3(diameter, diameter, diameter);
+        Physics.SyncTransforms(); // Well, waste sooooo many time to shoot down this. Related to a obscure starting dragging bug.
 
         meshRenderer = GetComponent<MeshRenderer>();
 

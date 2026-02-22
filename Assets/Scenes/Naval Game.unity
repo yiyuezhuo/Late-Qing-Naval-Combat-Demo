@@ -1327,7 +1327,7 @@ MonoBehaviour:
   enableGunneryShellVisual: 1
   gunneryShellSpeedMps: 760
   gunneryShellAltitudeFoot: 300
-  gunneryShellRadiusScaleCoef: 120
+  gunneryShellRadiusScaleCoef: 100
   gunneryShellVisualContainer: {fileID: 0}
   stateIconMap:
   - state: 1

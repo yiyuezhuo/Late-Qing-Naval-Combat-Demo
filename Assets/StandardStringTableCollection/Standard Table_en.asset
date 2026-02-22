@@ -2583,6 +2583,14 @@ MonoBehaviour:
     m_Localized: Go to 3D View (Scroll wheel dragging)
     m_Metadata:
       m_Items: []
+  - m_Id: 62874781658812416
+    m_Localized: Enable Gunnery Shell Visual
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62875520019894272
+    m_Localized: Gunnery Shell Radius Scale Coef
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

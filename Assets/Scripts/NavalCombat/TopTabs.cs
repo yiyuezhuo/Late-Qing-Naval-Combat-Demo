@@ -370,6 +370,12 @@ public class TopTabs : SingletonDocument<TopTabs>
         
         foreach(var initialResolved in resolvedSet)
         {
+            if (initialResolved.IsLandBattery())
+            {
+                initialResolved.EnforceLandBatteryFixedKinematics();
+                continue;
+            }
+
             initialResolved.speedKnots = initialResolved.desiredSpeedKnots;
             initialResolved.headingDeg = initialResolved.desiredHeadingDeg;
         }
@@ -395,6 +401,12 @@ public class TopTabs : SingletonDocument<TopTabs>
             switch (picked.GetEffectiveControlMode())
             {
                 case ControlMode.FollowTarget:
+                    if (picked.IsLandBattery())
+                    {
+                        picked.EnforceLandBatteryFixedKinematics();
+                        break;
+                    }
+
                     var target = picked.followedTarget;
                     var distM = picked.followDistanceYards * MeasureUtils.yardToMeter;
                     Geodesic.WGS84.Direct(target.position.LatDeg, target.position.LonDeg,
@@ -405,6 +417,12 @@ public class TopTabs : SingletonDocument<TopTabs>
 
                     break;
                 case ControlMode.RelativeToTarget:
+                    if (picked.IsLandBattery())
+                    {
+                        picked.EnforceLandBatteryFixedKinematics();
+                        break;
+                    }
+
                     target = picked.relativeToTarget;
                     distM = picked.relativeToTargetDistanceYards * MeasureUtils.yardToMeter;
                     var angle = MeasureUtils.NormalizeAngle(target.headingDeg + picked.relativeToTargetAzimuth);

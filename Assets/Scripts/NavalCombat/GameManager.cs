@@ -842,6 +842,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         if (selectedShipLog != null)
         {
+            if (selectedShipLog.IsLandBattery())
+                return;
+
             var cameraController = CameraController2.Instance;
             if (cameraController == null || cameraController.cam == null)
                 return;

@@ -454,6 +454,19 @@ namespace NavalCombatCore
         public float GetLongitudeDeg() => position.LonDeg;
         public float GetHeadingDeg() => headingDeg;
         public float GetSpeedKnots() => speedKnots;
+        public bool IsLandBattery() => shipClass?.type == ShipType.LandBattery;
+
+        public void EnforceLandBatteryFixedKinematics()
+        {
+            if (!IsLandBattery())
+                return;
+
+            headingDeg = 0f;
+            desiredHeadingDeg = 0f;
+            speedKnots = 0f;
+            desiredSpeedKnots = 0f;
+            desiredSpeedKnotsForBoilerRoom = 0f;
+        }
 
         public List<BatteryStatus> batteryStatus = new();
         public TorpedoSectorStatus torpedoSectorStatus = new();
@@ -804,6 +817,12 @@ namespace NavalCombatCore
 
         public void StepProcessTurn(float deltaSeconds) // Turn and induced speed change
         {
+            if (IsLandBattery())
+            {
+                EnforceLandBatteryFixedKinematics();
+                return;
+            }
+
             var mods = GetSubStates<IDynamicModifier>().ToList();
             if (mods.Any(m => m.IsCourseChangeBlocked()))
                 return;
@@ -837,6 +856,12 @@ namespace NavalCombatCore
         public void StepProcessControl(float deltaSeconds)
         {
             recentCollisionClock.Step(deltaSeconds);
+
+            if (IsLandBattery())
+            {
+                EnforceLandBatteryFixedKinematics();
+                return;
+            }
             
             if(doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic)
             {
@@ -981,6 +1006,8 @@ namespace NavalCombatCore
         {
             if (shipClass == null || operationalState != ShipOperationalState.Operational)
                 return 0;
+            if (IsLandBattery())
+                return 0;
 
             var maxSpeedKnots = shipClass.speedKnots + dynamicStatus.maxSpeedKnotsOffset;
 
@@ -1011,6 +1038,12 @@ namespace NavalCombatCore
 
         public void StepProcessSpeed(float deltaSeconds)
         {
+            if (IsLandBattery())
+            {
+                EnforceLandBatteryFixedKinematics();
+                return;
+            }
+
             var maxSpeedKnots = GetMaxSpeedKnots();
             var minSpeedKnots = -maxSpeedKnots / 3;
 
@@ -1064,7 +1097,11 @@ namespace NavalCombatCore
 
         public void StepTryMoveToNewPosition(float deltaSeconds)
         {
-            
+            if (IsLandBattery())
+            {
+                EnforceLandBatteryFixedKinematics();
+                return;
+            }
 
             var distNm = speedKnots / 3600 * deltaSeconds;
             var distM = distNm * 1852;
@@ -1534,7 +1571,15 @@ namespace NavalCombatCore
         IExtrapolable IExtrapolable.GetRelativeToTarget() => relativeToTarget;
         float IExtrapolable.GetRelativeToTargetDistanceYards() => relativeToTargetDistanceYards;
         float IExtrapolable.GetRelativeToTargetAzimuth() => relativeToTargetAzimuth;
-        void IExtrapolable.SetDesiredHeadingDeg(float desiredHeadingDeg) => this.desiredHeadingDeg = desiredHeadingDeg;
+        void IExtrapolable.SetDesiredHeadingDeg(float desiredHeadingDeg)
+        {
+            if (IsLandBattery())
+            {
+                EnforceLandBatteryFixedKinematics();
+                return;
+            }
+            this.desiredHeadingDeg = desiredHeadingDeg;
+        }
         LowLevelCoursePlanner.ExtrapolatedRecord.Role IExtrapolable.GetRole()
         {
             return shipClass.type switch

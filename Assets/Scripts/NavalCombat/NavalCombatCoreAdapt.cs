@@ -398,9 +398,9 @@ namespace NavalCombatCore
         // string IPortraitViewerObservable.GetPortraitTopCode() => shipClass.portraitTopCode;
         Country IPortraitViewerObservable.GetCountry() => shipClass.country;
         GlobalString IPortraitViewerObservable.GetName() => namedShip?.name;
-        bool IPortraitViewerObservable.IsShowArrow() => mapState == MapState.Deployed && GetEffectiveControlMode() == ControlMode.Independent;
+        bool IPortraitViewerObservable.IsShowArrow() => !IsLandBattery() && mapState == MapState.Deployed && GetEffectiveControlMode() == ControlMode.Independent;
         string IPortraitViewerObservable.GetAcronym() => shipClass.GetAcronym();
-        float IPortraitViewerObservable.GetDesiredHeadingDeg() => desiredHeadingDeg;
+        float IPortraitViewerObservable.GetDesiredHeadingDeg() => IsLandBattery() ? 0f : desiredHeadingDeg;
     }
 
     public partial class FireControlSystemStatusRecord

@@ -26,7 +26,7 @@ namespace NavalCombatCore
         ArmedMerchantCruiser, // AMC
         Transport, // TR, Transport or merchant ship
         Repair, // AR, Auxiliary Repair
-        LandBattery
+        LandBattery // LB, Land Battery (CB, Coast Battery)
     }
 
     public enum ExtraShipType
@@ -1084,7 +1084,8 @@ namespace NavalCombatCore
             {ShipType.TorpedoBoat, "TB"},
             {ShipType.ArmedMerchantCruiser, "AMC"},
             {ShipType.Transport, "TR"},
-            {ShipType.Repair, "AR"}
+            {ShipType.Repair, "AR"},
+            {ShipType.LandBattery, "CB"} // Coast Battery
         };
 
         public static string GetAcronymFor(ShipType shipType)

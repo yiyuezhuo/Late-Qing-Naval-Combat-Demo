@@ -3192,4 +3192,63 @@ http://bujinkensyokai.web.fc2.com/hirosimagk.html</remark>
   <remark>https://en.wikipedia.org/wiki/Samejima_Kazunori</remark>
   <objectId>416402fe-d252-48fd-8f54-d546128ced8f</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Miyoshi Katsumi</english>
+   <japanese>三善克己</japanese>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Miyoshi_Katsumi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://commons.wikimedia.org/wiki/File:Miyoshi_Katsumi.jpg</remark>
+  <objectId>30a13cd1-d2a6-48c9-9fda-28ee7bd5a1a0</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Togo Masamichi</english>
+   <japanese>東郷正路</japanese>
+   <chineseSimplified>东乡正路</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Togo_Masamichi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/T%C5%8Dg%C5%8D_Masamichi</remark>
+  <objectId>ecbffe12-5f10-47d8-8001-7474333d70a5</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Geki Yasumasa</english>
+   <japanese>外記康昌</japanese>
+   <chineseSimplified>外记康昌</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Geki Yasumasa.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://shozokan.nich.go.jp/collection/object/SZK001477-204</remark>
+  <objectId>13c85d68-6d4b-46bd-8b2d-2386a451b965</objectId>
+ </Leader>
 </ArrayOfLeader>

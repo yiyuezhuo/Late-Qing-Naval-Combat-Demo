@@ -99,6 +99,11 @@ namespace NavalCombatCore
         {
             base.ResetAndRegisterAll();
 
+            foreach (var shipLog in shipLogs)
+            {
+                shipLog.EnforceLandBatteryFixedKinematics();
+            }
+
             foreach (var shipGroup in shipGroups)
             {
                 EntityManager.Instance.Register(shipGroup, null);
@@ -399,6 +404,7 @@ namespace NavalCombatCore
             var shipLogsOnMapList = shipLogs.Where(x => x.mapState == MapState.Deployed).ToList();
             var autoOperationalShipLogs = shipLogsOnMapList.Where(s =>
                 s.operationalState == ShipOperationalState.Operational
+                && !s.IsLandBattery()
                 && s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic
             ).ToList();
 

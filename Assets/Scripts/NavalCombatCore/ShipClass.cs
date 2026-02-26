@@ -1199,6 +1199,7 @@ namespace NavalCombatCore
         {
             ShipType.Transport => DamageSchema.MerchantVessal,
             ShipType.Repair => DamageSchema.MerchantVessal,
+            ShipType.LandBattery => DamageSchema.LandBattery,
             _ => DamageSchema.Warship  
         };
     }

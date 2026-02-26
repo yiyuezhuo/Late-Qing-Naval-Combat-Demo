@@ -365,9 +365,12 @@ namespace NavalCombatCore
                 var floodedMachineryHits = (dynamicStatus?.engineRoomFloodingHits ?? 0) + (dynamicStatus?.boilerRoomFloodingHits ?? 0);
                 var floodedThresholdHits = (int)Math.Ceiling(machinerySpaces * 0.8f);
 
-                return $"Dmg Ctrl: {severityStatesCount}/{dcr} T:{totalSubStates.Count} " +
-                    $"<color=#ff4040>Fire:{maxShipboardFireSeverity:F0}</color> " +
-                    $"<color=#4090ff>Flood:{floodedMachineryHits}/{floodedThresholdHits}</color>";
+                var baseDesc = $"Dmg Ctrl: {severityStatesCount}/{dcr} T:{totalSubStates.Count} " +
+                    $"<color=#ff4040>Fire:{maxShipboardFireSeverity:F0}</color>";
+                if (IsLandBattery())
+                    return baseDesc;
+
+                return baseDesc + $" <color=#4090ff>Flood:{floodedMachineryHits}/{floodedThresholdHits}</color>";
             }
         }
 

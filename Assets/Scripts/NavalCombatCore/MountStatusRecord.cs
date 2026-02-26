@@ -133,7 +133,7 @@ namespace NavalCombatCore
         [XmlAttribute]
         public ArmorLocation ArmorLocation; // Valid only for DamageSchema.Warship
 
-        public bool ShouldSerializeArmorLocation => hit && DamageSchema == DamageSchema.Warship;
+        public bool ShouldSerializeArmorLocation => hit && (DamageSchema == DamageSchema.Warship || DamageSchema == DamageSchema.LandBattery);
 
         [XmlAttribute]
         public HitLocationMerchantVessel HitLocationMerchantVessel; // Valid only for DamageSchema.MerchantVessel
@@ -174,6 +174,7 @@ namespace NavalCombatCore
             var locStr = DamageSchema switch
             {
                 DamageSchema.Warship => LocalizeEnum(ArmorLocation),
+                DamageSchema.LandBattery => LocalizeEnum(ArmorLocation),
                 DamageSchema.MerchantVessal => LocalizeEnum(HitLocationMerchantVessel),
                 _ => throw new NotImplementedException()
             };
@@ -918,11 +919,66 @@ namespace NavalCombatCore
                             logger.Log($"{ctx.shipLog.namedShip.name.GetMergedName()} {ctx.batteryRecord.name.GetMergedName()} -> {tgt.namedShip.name.GetMergedName()} ({logRecord.Summary()}) (DE: {damageEffectId})");
 
                         }
+                        else if (damageSchema == DamageSchema.LandBattery)
+                        {
+                            var armorLocation = RuleChart.RollArmorLocationLandBattery(stats.targetPresentAspectFromObserver, penRecord.rangeBand);
+                            if (armorLocation != ArmorLocation.Ineffective)
+                            {
+                                var armorLocationAngleType = RuleChart.armorLocationToAngleType.GetValueOrDefault(armorLocation);
+                                var refPenInch = penRecord.GetValue(armorLocationAngleType);
+                                var penInch = RuleChart.GetAdjustedPenetrationByType(ctx.batteryRecord.penetrationTableBaseType, refPenInch, ctx.batteryRecord.shellSizeInch, ammunitionType);
+
+                                var armorEffInch = tgt.shipClass.armorRating.GetArmorEffectiveInch(armorLocation);
+                                if (armorLocation == ArmorLocation.MainBelt)
+                                {
+                                    var armorCoef = tgt.GetSubStates<IArmorModifier>().Select(m => m.GetMainBeltArmorCoef()).DefaultIfEmpty(1).Min();
+                                    armorEffInch *= armorCoef;
+                                }
+
+                                var hitPenDetType = RuleChart.ResolveHitPenDetType(penInch, armorEffInch, ammunitionType);
+                                var shellDamageResult = RuleChart.ResolveShellDamageResult(ctx.batteryRecord.damageRating, hitPenDetType, ammunitionType);
+
+                                var tgtLog = new ShipLogBatteryHitLog()
+                                {
+                                    shooterId = shooter.objectId,
+                                    time = NavalGameState.Instance.scenarioState.dateTime,
+                                    damageSchema = DamageSchema.LandBattery
+                                };
+
+                                tgtLog.hitPenDetType = logRecord.HitPenDetType = hitPenDetType;
+                                tgtLog.ArmorLocation = logRecord.ArmorLocation = armorLocation;
+                                logRecord.ShellDamageResult = shellDamageResult;
+                                tgtLog.damagePoint = shellDamageResult.damagePoint;
+
+                                tgt.AddLog(tgtLog);
+                                tgt.AddDamagePoint(shellDamageResult.damagePoint);
+
+                                string damageEffectId = null;
+                                if (RandomUtils.NextFloat() <= shellDamageResult.damageEffectProb)
+                                {
+                                    var damageEffectContext = new DamageEffectContext()
+                                    {
+                                        subject = tgt,
+                                        baseDamagePoint = shellDamageResult.damagePoint,
+                                        ammunitionType = ammunitionType,
+                                        shellDiameterInch = ctx.batteryRecord.shellSizeInch,
+                                        hitPenDetType = hitPenDetType,
+                                        damageSchema = damageSchema,
+                                        causeLandBattery = armorLocation == ArmorLocation.Deck ? DamageEffectCauseLandBattery.Horizontal : DamageEffectCauseLandBattery.Vertical,
+                                        addtionalDamageEffectProbility = shellDamageResult.damageEffectProb
+                                    };
+
+                                    damageEffectId = DamageEffectChart.AddNewDamageEffect(damageEffectContext);
+                                    tgtLog.damageEffectId = logRecord.DamageEffectId = damageEffectId;
+                                }
+
+                                var logger = ServiceLocator.Get<ILoggerService>();
+                                logger.Log($"{ctx.shipLog.namedShip.name.GetMergedName()} {ctx.batteryRecord.name.GetMergedName()} -> {tgt.namedShip.name.GetMergedName()} ({logRecord.Summary()}) (DE: {damageEffectId})");
+                            }
+                        }
 
 
                         // TODO: Merchant
-
-                        // TODO: Land Battery
                     }
                 }
             }

@@ -13,8 +13,8 @@ namespace NavalCombatCore
     public enum DamageSchema
     {
         Warship, // or warship 1880-1904?
-        MerchantVessal
-        // TODO: Add Land Battery here?
+        MerchantVessal,
+        LandBattery
     }
 
     public enum DamageEffectCause // Warship
@@ -45,6 +45,15 @@ namespace NavalCombatCore
         FuelAviation, // FA
     }
 
+    public enum DamageEffectCauseLandBattery
+    {
+        Horizontal,
+        Vertical,
+        General,
+        Fires,
+        Torpedo
+    }
+
     public class DamageEffectContext // Which is not serialized and just to be used in-demand so we can reference object relatively freely.
     {
         public ShipLog subject;
@@ -64,6 +73,9 @@ namespace NavalCombatCore
         // For DamageSchema.MerchantVessel
         public DamageEffectCauseMerchantVessel causeMerchantVessel;
 
+        // For DamageSchema.LandBattery
+        public DamageEffectCauseLandBattery causeLandBattery;
+
         public DamageEffectContext Clone()
         {
             // return XmlUtils.FromXML<DamageEffectContext>(XmlUtils.ToXML(this)); // Will deep copy subject which will cause unexpected behaviour
@@ -75,8 +87,10 @@ namespace NavalCombatCore
                 ammunitionType = ammunitionType,
                 shellDiameterInch = shellDiameterInch,
                 addtionalDamageEffectProbility = addtionalDamageEffectProbility,
+                damageSchema = damageSchema,
                 cause = cause,
                 causeMerchantVessel = causeMerchantVessel,
+                causeLandBattery = causeLandBattery,
                 source = source
             };
         }
@@ -105,6 +119,7 @@ namespace NavalCombatCore
             {
                 DamageSchema.Warship => RuleChart.ResolveDamageEffectId(ctx.cause),
                 DamageSchema.MerchantVessal => RuleChart.ResolveDamageEffectIdMerchantVessel(ctx.causeMerchantVessel),
+                DamageSchema.LandBattery => RuleChart.ResolveDamageEffectIdLandBattery(ctx.causeLandBattery),
                 _ => throw new ArgumentException("Invalid damage schema")
             };
 
@@ -405,6 +420,89 @@ namespace NavalCombatCore
         public static void AddDescription(DamageEffectContext ctx, string log)
         {
             AddLogToSubject(ctx, log);
+        }
+
+        public static bool TryToSampleALandBatteryBattery(DamageEffectContext ctx, out BatteryStatus battery)
+        {
+            battery = null;
+            var batteries = ctx.subject?.batteryStatus ?? new List<BatteryStatus>();
+            if (batteries.Count == 0)
+                return false;
+
+            var preferred = batteries.Where(b =>
+                    (b.mountStatus?.Count ?? 0) > 0 || (b.fireControlSystemStatusRecords?.Count ?? 0) > 0)
+                .ToList();
+            battery = RandomUtils.Sample(preferred.Count > 0 ? preferred : batteries);
+            return battery != null;
+        }
+
+        public static bool TryToSampleALandBatteryMount(DamageEffectContext ctx, out MountStatusRecord mount)
+        {
+            mount = null;
+            var mounts = (ctx.subject?.batteryStatus ?? new List<BatteryStatus>())
+                .SelectMany(b => b.mountStatus ?? new List<MountStatusRecord>())
+                .Where(m => m != null)
+                .ToList();
+            if (mounts.Count == 0)
+                return false;
+
+            var preferred = mounts.Where(m => m.barrels > 0).ToList();
+            mount = RandomUtils.Sample(preferred.Count > 0 ? preferred : mounts);
+            return mount != null;
+        }
+
+        public static void DisableLandBatteryBatteryPermanently(BatteryStatus battery)
+        {
+            if (battery == null)
+                return;
+
+            foreach (var mount in battery.mountStatus)
+            {
+                if (mount != null)
+                    SetOOA(mount);
+            }
+
+            foreach (var fcs in battery.fireControlSystemStatusRecords)
+            {
+                if (fcs != null)
+                    SetOOA(fcs);
+            }
+        }
+
+        public static void SuppressLandBatteryBattery(BatteryStatus battery, string cause, float givenTimeSeconds)
+        {
+            if (battery == null)
+                return;
+
+            var mountSuppress = new BatteryMountStatusModifier()
+            {
+                cause = cause,
+                lifeCycle = StateLifeCycle.GivenTime,
+                givenTimeSeconds = givenTimeSeconds
+            };
+            mountSuppress.BeginAt(battery);
+
+            var fcsSuppress = new BatteryFireControlStatusDisabledModifier()
+            {
+                cause = cause,
+                lifeCycle = StateLifeCycle.GivenTime,
+                givenTimeSeconds = givenTimeSeconds
+            };
+            fcsSuppress.BeginAt(battery);
+        }
+
+        public static void SuppressLandBatteryMount(MountStatusRecord mount, string cause, float givenTimeSeconds)
+        {
+            if (mount == null)
+                return;
+
+            var mountSuppress = new BatteryMountStatusModifier()
+            {
+                cause = cause,
+                lifeCycle = StateLifeCycle.GivenTime,
+                givenTimeSeconds = givenTimeSeconds
+            };
+            mountSuppress.BeginAt(mount);
         }
 
         static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
@@ -4859,6 +4957,182 @@ namespace NavalCombatCore
                     // Cargo in hold is considered destroyed if doubles are rolled.
                     // Does it imply that x2 DE 913 => Cargo is destroyed?
                     // TODO: Handle questionable cargo destruction
+                }
+            },
+
+            // L101: Land Battery - Magazine explosion
+            {"L101", ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "L101: Land battery magazine explosion"
+                    ));
+
+                    ctx.subject.AddDamagePoint(ctx.baseDamagePoint * 2);
+                    ctx.subject.mapState = MapState.Destroyed;
+                }
+            },
+
+            // L102: One battery permanently disabled
+            {"L102", ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "L102: One land battery permanently disabled"
+                    ));
+
+                    if (TryToSampleALandBatteryBattery(ctx, out var battery))
+                    {
+                        DisableLandBatteryBatteryPermanently(battery);
+                    }
+                }
+            },
+
+            // L103: One mount permanently disabled
+            {"L103", ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "L103: One land battery mount permanently disabled"
+                    ));
+
+                    if (TryToSampleALandBatteryMount(ctx, out var mount))
+                    {
+                        SetOOA(mount);
+                    }
+                }
+            },
+
+            // L104: One gun barrel damaged
+            {"L104", ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "L104: One gun barrel damaged"
+                    ));
+
+                    if (TryToSampleALandBatteryMount(ctx, out var mount))
+                    {
+                        mount.barrels = Math.Max(0, mount.barrels - 1);
+                        if (mount.barrels <= 0)
+                        {
+                            SetOOA(mount);
+                        }
+                    }
+                }
+            },
+
+            // L105: One battery suppression
+            {"L105", ctx =>
+                {
+                    var cause = Localize("L105: Land battery suppression");
+                    AddDescription(ctx, cause);
+
+                    if (TryToSampleALandBatteryBattery(ctx, out var battery))
+                    {
+                        SuppressLandBatteryBattery(battery, cause, 480);
+                    }
+                }
+            },
+
+            // L106: One mount suppression
+            {"L106", ctx =>
+                {
+                    var cause = Localize("L106: Land battery mount suppression");
+                    AddDescription(ctx, cause);
+
+                    if (TryToSampleALandBatteryMount(ctx, out var mount))
+                    {
+                        SuppressLandBatteryMount(mount, cause, 240);
+                    }
+                }
+            },
+
+            // L107: Observation/fire control damage (halve fire control value)
+            {"L107", ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "L107: Observation/fire control system damaged"
+                    ));
+
+                    foreach (var battery in ctx.subject.batteryStatus)
+                    {
+                        var de = new FireControlValueModifier()
+                        {
+                            lifeCycle = StateLifeCycle.Permanent,
+                            cause = Localize("L107: Observation/fire control system damaged"),
+                            fireControlValueCoef = 0.5f,
+                            fireControlValueOffset = 0f,
+                        };
+                        de.BeginAt(battery);
+                    }
+                }
+            },
+
+            // L108: Mass casualties (rate of fire reduced)
+            {"L108", ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "L108: Mass casualties reduce rate of fire"
+                    ));
+
+                    var de = new RateOfFireModifier()
+                    {
+                        lifeCycle = StateLifeCycle.Permanent,
+                        cause = Localize("L108: Mass casualties reduce rate of fire"),
+                        rateOfFireCoef = 0.5f,
+                    };
+                    de.BeginAt(ctx.subject);
+                }
+            },
+
+            // L109: Mass casualties (damage control reduced)
+            {"L109", ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "L109: Mass casualties reduce damage control rating"
+                    ));
+
+                    var de = new DamageControlModifier()
+                    {
+                        lifeCycle = StateLifeCycle.Permanent,
+                        cause = Localize("L109: Mass casualties reduce damage control rating"),
+                        damageControlRatingOffset = -1,
+                    };
+                    de.BeginAt(ctx.subject);
+                }
+            },
+
+            // L110: Fire
+            {"L110", ctx =>
+                {
+                    AddDescription(ctx, Localize(
+                        "L110: Fire in land battery position"
+                    ));
+
+                    AddShipboardFire(ctx, Localize(
+                        "L110: Fire in land battery position"
+                    ), 50);
+                }
+            },
+
+            // L111: Whole battery position suppression
+            {"L111", ctx =>
+                {
+                    var cause = Localize("L111: Entire land battery position suppressed");
+                    AddDescription(ctx, cause);
+
+                    var mountSuppress = new BatteryMountStatusModifier()
+                    {
+                        lifeCycle = StateLifeCycle.GivenTime,
+                        givenTimeSeconds = 240,
+                        cause = cause
+                    };
+                    mountSuppress.BeginAt(ctx.subject);
+
+                    var fcsSuppress = new BatteryFireControlStatusDisabledModifier()
+                    {
+                        lifeCycle = StateLifeCycle.GivenTime,
+                        givenTimeSeconds = 240,
+                        cause = cause
+                    };
+                    fcsSuppress.BeginAt(ctx.subject);
                 }
             }
         };

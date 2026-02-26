@@ -171,6 +171,10 @@ namespace NavalCombatCore
                                 var hitLocation = RuleChart.SampleHitLocationMerchantVesselTorpedo();
                                 ctx.causeMerchantVessel = RuleChart.GetDamageEffectCauseMerchantVessel(hitLocation, collidedShipLog.cargoAreas);
                             }
+                            else if (damageSchema == DamageSchema.LandBattery)
+                            {
+                                ctx.causeLandBattery = DamageEffectCauseLandBattery.Torpedo;
+                            }
 
                             var damageEffectId = DamageEffectChart.AddNewDamageEffect(ctx);
 

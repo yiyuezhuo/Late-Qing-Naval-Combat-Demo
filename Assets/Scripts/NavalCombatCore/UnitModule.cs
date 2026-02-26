@@ -52,7 +52,17 @@ namespace NavalCombatCore
             }
         }
 
-        public IEnumerable<T> GetSubStates<T>() // Upward, E.X a status modifier defined in ShipLog will effect all battery' mount, while a status modieifer defined on mount just effect a mount.
+        /// <summary>
+        /// Retrieves all sub-states of type <typeparamref name="T"/>, including those inherited from parent modules.
+        /// </summary>
+        /// <typeparam name="T">The type of the sub-state to retrieve.</typeparam>
+        /// <returns>An enumerable collection of sub-states of type <typeparamref name="T"/>.</returns>
+        /// <remarks>
+        /// This method supports upward propagation of status modifiers. 
+        /// For example, a status modifier defined in the ShipLog will affect all battery mounts, 
+        /// whereas a status modifier defined on a specific mount will affect only that mount.
+        /// </remarks>
+        public IEnumerable<T> GetSubStates<T>()
         {
             foreach (var subState in subStates)
             {

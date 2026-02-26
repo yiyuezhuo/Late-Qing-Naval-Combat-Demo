@@ -232,7 +232,7 @@ namespace NavalCombatCore
         [XmlAttribute]
         public ArmorLocation ArmorLocation;
 
-        public bool ShouldSerializeArmorLocation() => damageSchema == DamageSchema.Warship;
+        public bool ShouldSerializeArmorLocation() => damageSchema == DamageSchema.Warship || damageSchema == DamageSchema.LandBattery;
 
         [XmlAttribute]
         public HitLocationMerchantVessel HitLocationMerchantVessel;
@@ -254,6 +254,7 @@ namespace NavalCombatCore
             var locStr = damageSchema switch
             {
                 DamageSchema.Warship => LocalizeEnum(ArmorLocation),
+                DamageSchema.LandBattery => LocalizeEnum(ArmorLocation),
                 DamageSchema.MerchantVessal => LocalizeEnum(HitLocationMerchantVessel),
                 _ => throw new NotImplementedException()
             };
@@ -1345,6 +1346,10 @@ namespace NavalCombatCore
                 {
                     var hitLocation = RuleChart.SampleHitLocationMerchantVessel();
                     ctx.causeMerchantVessel = RuleChart.GetDamageEffectCauseMerchantVessel(hitLocation, cargoAreas);
+                }
+                else if (damageSchema == DamageSchema.LandBattery)
+                {
+                    ctx.causeLandBattery = DamageEffectCauseLandBattery.General;
                 }
 
                 DamageEffectChart.AddNewDamageEffect(ctx);

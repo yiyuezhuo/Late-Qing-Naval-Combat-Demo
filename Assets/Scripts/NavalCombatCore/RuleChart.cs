@@ -117,6 +117,41 @@ namespace NavalCombatCore
             return (ArmorLocation)idx;
         }
 
+        public static ArmorLocation RollArmorLocationLandBattery(TargetAspect targetAspect, RangeBand rangeBand)
+        {
+            var weights = GetLocationWeights(targetAspect, rangeBand);
+            double horizontal = 0;
+            double vertical = 0;
+            double ineffective = 0;
+
+            for (var i = 0; i < weights.Length; i++)
+            {
+                var loc = (ArmorLocation)i;
+                var w = weights[i];
+                if (loc == ArmorLocation.Ineffective)
+                {
+                    ineffective += w;
+                    continue;
+                }
+
+                if (armorLocationToAngleType.TryGetValue(loc, out var angleType))
+                {
+                    if (angleType == ArmorLocationAngleType.Horizontal)
+                        horizontal += w;
+                    else
+                        vertical += w;
+                }
+            }
+
+            var idx = Categorical.Sample(new[] { horizontal, vertical, ineffective });
+            return idx switch
+            {
+                0 => ArmorLocation.Deck,
+                1 => ArmorLocation.MainBelt,
+                _ => ArmorLocation.Ineffective
+            };
+        }
+
 
         // Chart J6 - Close Range Fire Control
         public static float[,] closeRangeFireControlTable = new float[,]
@@ -607,6 +642,44 @@ namespace NavalCombatCore
             var colIdx = Math.Min((int)cause, damageDeterminationTableWarships1880to1905.cols.Length - 1);
             var rowIdx = Categorical.Sample(damageDeterminationTableWarships1880to1905.rows);
             return damageDeterminationTableWarships1880to1905.cells[rowIdx, colIdx];
+        }
+
+        public static string damageDeterminationTableLandBatteryCsvText = @"Roll,Horizontal,Vertical
+2,L101,L101
+8,L102,L102
+16,L103,L103
+14,L104,L104
+12,L105,L105
+12,L106,L106
+10,L107,L107
+10,L108,L108
+8,L109,L109
+6,L110,L110
+8,L111,L111";
+
+        public static SimpleTable<double, string, string> damageDeterminationTableLandBattery = SimpleTable<double, string, string>.FromCSV(
+            damageDeterminationTableLandBatteryCsvText,
+            double.Parse, x => x, x => x
+        );
+
+        public static string ResolveDamageEffectIdLandBattery(DamageEffectCauseLandBattery cause)
+        {
+            var colName = cause switch
+            {
+                DamageEffectCauseLandBattery.Horizontal => "Horizontal",
+                DamageEffectCauseLandBattery.Vertical => "Vertical",
+                DamageEffectCauseLandBattery.General => "Vertical",
+                DamageEffectCauseLandBattery.Fires => "Vertical",
+                DamageEffectCauseLandBattery.Torpedo => "Vertical",
+                _ => "Vertical"
+            };
+
+            var colIdx = Array.IndexOf(damageDeterminationTableLandBattery.cols, colName);
+            if (colIdx < 0)
+                colIdx = 0;
+
+            var rowIdx = Categorical.Sample(damageDeterminationTableLandBattery.rows);
+            return damageDeterminationTableLandBattery.cells[rowIdx, colIdx];
         }
 
         // public class DamageTierPercentProbRecord

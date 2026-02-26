@@ -59,7 +59,7 @@
                                 </Bindings>
                             </ui:Label>
                             <Bindings>
-                                <ui:DataBinding property="style.display" data-source-path="hasEndDateTime" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                                <ui:DataBinding property="style.display" data-source-path="scenarioState.hasEndDateTime" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                             </Bindings>
                         </ui:VisualElement>
                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">

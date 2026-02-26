@@ -759,7 +759,7 @@ namespace NavalCombatCore
                         out bool blocked
                     );
                     fireControlScore += seaStateOffset; // Use -100 to soft block
-                    fireControlScore += ctx.shipLog.namedShip.crewRating;
+                    fireControlScore += ctx.shipLog.GetEffectiveCrewQualityForFloatUsage();
 
                     // Fire Control Radar Modifier
 

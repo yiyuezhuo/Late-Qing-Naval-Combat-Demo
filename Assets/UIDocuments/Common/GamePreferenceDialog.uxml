@@ -232,6 +232,12 @@
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(48302599918227456)"/>
                                     </Bindings>
                                 </ui:Toggle>
+                                <ui:Toggle label="Enable Leader Rule Variant">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="enableLeaderRuleVariant" binding-mode="TwoWay"/>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62876000019894273)"/>
+                                    </Bindings>
+                                </ui:Toggle>
                             </ui:VisualElement>
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(192325730603008)"/>

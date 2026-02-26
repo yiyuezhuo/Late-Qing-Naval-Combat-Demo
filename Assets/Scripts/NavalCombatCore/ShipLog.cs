@@ -660,6 +660,56 @@ namespace NavalCombatCore
         protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
         protected static string LocalizeFor(object obj) => ServiceLocator.Get<ILocalizeService>().GetFor(obj);
 
+        static LeaderSkillLevel NormalizeLeaderSkillLevelForVariant(LeaderSkillLevel level)
+        {
+            return level == LeaderSkillLevel.Unknown ? LeaderSkillLevel.Average : level;
+        }
+
+        static float GetOperationalResponseSlowdownRatio(Leader leader)
+        {
+            return NormalizeLeaderSkillLevelForVariant(leader?.navalOperational ?? LeaderSkillLevel.Unknown) switch
+            {
+                LeaderSkillLevel.Gifted => 0f,
+                LeaderSkillLevel.Outstanding => 0.05f,
+                LeaderSkillLevel.AboveAverage => 0.1f,
+                LeaderSkillLevel.Average => 0.15f,
+                LeaderSkillLevel.BarelyCompetent => 0.2f,
+                _ => 0.15f,
+            };
+        }
+
+        static float GetCrewQualityFloatVariantOffset(Leader leader)
+        {
+            return NormalizeLeaderSkillLevelForVariant(leader?.navalTactical ?? LeaderSkillLevel.Unknown) switch
+            {
+                LeaderSkillLevel.Gifted => 0.3f,
+                LeaderSkillLevel.Outstanding => 0.2f,
+                LeaderSkillLevel.AboveAverage => 0.1f,
+                LeaderSkillLevel.Average => 0f,
+                LeaderSkillLevel.BarelyCompetent => -0.1f,
+                _ => 0f,
+            };
+        }
+
+        float GetIndependentResponseCoef()
+        {
+            if (!CoreParameter.Instance.enableLeaderRuleVariant)
+                return 1f;
+            if (GetEffectiveControlMode() != ControlMode.Independent)
+                return 1f;
+
+            return Math.Clamp(1f - GetOperationalResponseSlowdownRatio(leader), 0f, 1f);
+        }
+
+        public float GetEffectiveCrewQualityForFloatUsage()
+        {
+            var crewQuality = namedShip?.crewRating ?? 0;
+            if (!CoreParameter.Instance.enableLeaderRuleVariant)
+                return crewQuality;
+
+            return crewQuality + GetCrewQualityFloatVariantOffset(leader);
+        }
+
         public string DescribeDetail()
         {
             var lines = new List<string>()
@@ -839,8 +889,9 @@ namespace NavalCombatCore
             {
                 var useEmergencyRudder = emergencyRudder && speedKnots >= 12;
                 var turnCapPer2Min = GetTurnCap(useEmergencyRudder);
+                var responseCoef = GetIndependentResponseCoef();
 
-                var turnCapThisPulse = turnCapPer2Min / 120 * deltaSeconds;
+                var turnCapThisPulse = turnCapPer2Min / 120 * deltaSeconds * responseCoef;
                 var absDeltaDeg = Math.Min(MeasureUtils.GetPositiveAngleDifference(headingDeg, desiredHeadingDeg), turnCapThisPulse);
                 var usePercent = absDeltaDeg / turnCapThisPulse;
 
@@ -1048,6 +1099,7 @@ namespace NavalCombatCore
 
             var maxSpeedKnots = GetMaxSpeedKnots();
             var minSpeedKnots = -maxSpeedKnots / 3;
+            var responseCoef = GetIndependentResponseCoef();
 
             desiredSpeedKnots = Math.Clamp(desiredSpeedKnots, minSpeedKnots, maxSpeedKnots);
             desiredSpeedKnotsForBoilerRoom = Math.Clamp(desiredSpeedKnotsForBoilerRoom, minSpeedKnots, maxSpeedKnots); // not ideal
@@ -1082,7 +1134,7 @@ namespace NavalCombatCore
 
                 var accelerationKnotsCapPerSec = accelerationKnotsCapPer2Min / 120;
 
-                var accelerationKnotsCapThisPulse = accelerationKnotsCapPerSec * deltaSeconds;
+                var accelerationKnotsCapThisPulse = accelerationKnotsCapPerSec * deltaSeconds * responseCoef;
                 speedKnots += signDesiredSpeedKnotsForBoilerRoom * Math.Min(absSpeedDiff, accelerationKnotsCapThisPulse);
             }
             else
@@ -1090,7 +1142,7 @@ namespace NavalCombatCore
                 var decelerationKnotsCapPer2Min = shipClass.speedKnots * (assistedDeceleration ? 0.6f : 0.2f);
                 var decelerationKnotsCapPerSec = decelerationKnotsCapPer2Min / 120f;
 
-                var decelerationKnotsCapThisPulse = decelerationKnotsCapPerSec * deltaSeconds;
+                var decelerationKnotsCapThisPulse = decelerationKnotsCapPerSec * deltaSeconds * responseCoef;
                 speedKnots -= signSpeedKnots * Math.Min(sameDirection ? -absSpeedDiff : absSpeedKnots, decelerationKnotsCapThisPulse);
             }
 

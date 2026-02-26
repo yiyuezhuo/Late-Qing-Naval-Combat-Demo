@@ -384,7 +384,7 @@ namespace NavalCombatCore
                             out bool blocked
                         );
                         fireControlScore += seaStateOffset; // Use -100 to soft block
-                        fireControlScore += shooter.namedShip.crewRating;
+                        fireControlScore += shooter.GetEffectiveCrewQualityForFloatUsage();
 
                         var hitProb = RuleChart.GetHitProbP100(fireControlScore) * 0.01f;
                         var hit = (float)RandomUtils.rand.NextDouble() < hitProb;

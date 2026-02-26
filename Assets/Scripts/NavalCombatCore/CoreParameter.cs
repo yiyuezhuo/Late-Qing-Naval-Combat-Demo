@@ -13,6 +13,7 @@ namespace NavalCombatCore
         public bool relaxedLandCollision = true;
         public bool checkShipCollision = true;
         public bool checkFriendlyShipCollision = false;
+        public bool enableLeaderRuleVariant = true;
 
         public float angleStepDeg = 18; // 360 / 18 = 20 test angles => (0, 18, 36, 54, ...)
         public float attackCoef = 1f;

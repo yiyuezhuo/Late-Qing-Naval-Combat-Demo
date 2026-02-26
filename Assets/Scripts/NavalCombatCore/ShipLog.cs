@@ -448,6 +448,7 @@ namespace NavalCombatCore
         // DCR Modifier or DCR modifier type?
 
         public ShipOperationalState operationalState = ShipOperationalState.Operational;
+        public bool isLandTarget;
         public float desiredSpeedKnotsForBoilerRoom; // DE 124, process command delay. Desired Speed Knot known by boiler room operator is the "effective" desired speed. 
         public bool smokeGeneratorDisabled;
 

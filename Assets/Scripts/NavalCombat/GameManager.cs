@@ -709,7 +709,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             var rootGroupShips = rootGroups.Select(g => g.Walk<ShipLog>().ToList()).ToList();
             // var test = rootGroupShips.Select(shipLogs => shipLogs.Select(s => (s.mapState, s.operationalState, s.GetMaxSpeedKnots())).ToList()).ToList();
             var operationalGroupCounts = rootGroupShips.Count(shipLogs => 
-                shipLogs.Any(shipLog => shipLog.mapState == MapState.Deployed && shipLog.operationalState == ShipOperationalState.Operational && shipLog.GetMaxSpeedKnots() > 0)
+                shipLogs.Any(shipLog =>
+                    shipLog.mapState == MapState.Deployed
+                    && shipLog.operationalState == ShipOperationalState.Operational
+                    && (
+                        shipLog.GetMaxSpeedKnots() > 0
+                        || (shipLog.IsLandBattery() && shipLog.isLandTarget)
+                    )
+                )
             );
 
             if(operationalGroupCounts <= 1) // Effective Completed (only one side has effective ships)

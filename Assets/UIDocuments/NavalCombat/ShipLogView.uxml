@@ -313,6 +313,13 @@
                                             <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:Toggle>
+                                    <ui:Toggle label="Land Target" name="IsLandTargetToggle">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="isLandTarget" binding-mode="TwoWay"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="style.display" data-source-path="isLandBattery" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                                        </Bindings>
+                                    </ui:Toggle>
                                     <ui:VisualElement>
                                         <ui:VisualElement data-source-path="cargoAreas">
                                             <LocalizedEnumField type-str="NavalCombatCore.CargoType" label="Cargo Area 1">

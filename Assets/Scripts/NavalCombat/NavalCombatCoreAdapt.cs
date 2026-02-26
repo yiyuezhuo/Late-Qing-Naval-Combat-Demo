@@ -381,6 +381,9 @@ namespace NavalCombatCore
         public bool isInEditMode => GamePreference.Instance.isInEditMode;
 
         [CreateProperty]
+        public bool isLandBattery => IsLandBattery();
+
+        [CreateProperty]
         public bool isTransport => shipClass?.isTransport ?? false;
 
         [CreateProperty]

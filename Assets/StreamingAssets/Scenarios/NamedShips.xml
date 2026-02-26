@@ -4098,4 +4098,67 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <remark>https://en.wikipedia.org/wiki/Japanese_gunboat_%C5%8Cshima</remark>
   <objectId>e2ce3c33-af6c-4024-9e13-31a36b57c1ab</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>edb81586-1cb9-4356-ac8f-f64c119ae676</shipClassObjectId>
+  <name>
+   <english>Old Donkey Mouth Battery</english>
+   <japanese>崂嵂嘴砲台</japanese>
+   <chineseSimplified>崂嵂嘴 (老驴嘴) 炮台</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>-2</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>d4fbb298-20b9-40a4-86b9-f2198f7594b6</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7fe11602-8646-4fed-b7b7-77b9c738fa5f</shipClassObjectId>
+  <name>
+   <english>Golden Hill Battery</english>
+   <japanese>黄金山砲台</japanese>
+   <chineseSimplified>黄金山炮台</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>-2</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>4a176e07-a9a5-49b3-88fb-e036f41b9f02</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>1e585c1c-ac79-4a2b-983f-0e576b687e67</shipClassObjectId>
+  <name>
+   <english>Mozhu Reef Battery</english>
+   <japanese>摸珠礁砲台</japanese>
+   <chineseSimplified>摸珠礁炮台</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>-2</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>1ee44cf0-caff-4fc3-b11b-f76b9e2b970c</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

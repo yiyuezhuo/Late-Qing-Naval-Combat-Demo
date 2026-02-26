@@ -668,6 +668,30 @@
   <objectId>cf53fae4-c151-47da-9ee0-1d540c655968</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>57fcc452-53f4-4f1d-b3dd-8633a6ce391b</shipClassObjectId>
+  <name>
+   <english>Akagi (1894/9/21)</english>
+   <japanese>赤城 (1894/9/21)</japanese>
+   <chineseSimplified>赤城 (1894/9/21)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>5c8acccf-b3aa-4c5f-abcb-486edf576095</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_gunboat_Akagi</remark>
+  <objectId>573e3bd9-5649-4c5b-ab3d-4fd264cfd0d9</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>54101703-8d0d-4bf5-8993-e01db78b5eb5</shipClassObjectId>
   <name>
    <english>Saikyo Maru</english>
@@ -4114,7 +4138,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
   <defaultLeaderReference />
-  <crewRating>-2</crewRating>
+  <crewRating>-3</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <objectId>d4fbb298-20b9-40a4-86b9-f2198f7594b6</objectId>
@@ -4135,7 +4159,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
   <defaultLeaderReference />
-  <crewRating>-2</crewRating>
+  <crewRating>-3</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <objectId>4a176e07-a9a5-49b3-88fb-e036f41b9f02</objectId>
@@ -4156,7 +4180,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
   <defaultLeaderReference />
-  <crewRating>-2</crewRating>
+  <crewRating>-3</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <objectId>1ee44cf0-caff-4fc3-b11b-f76b9e2b970c</objectId>

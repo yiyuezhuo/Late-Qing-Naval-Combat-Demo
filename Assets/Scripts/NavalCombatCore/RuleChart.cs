@@ -628,17 +628,17 @@ namespace NavalCombatCore
         }
 
         public static string damageDeterminationTableLandBatteryCsvText = @"Roll,Horizontal,Vertical
-2,L101,L101
-8,L102,L102
-16,L103,L103
-14,L104,L104
-12,L105,L105
-12,L106,L106
-10,L107,L107
+1,L101,L101
+2,L102,L102
+10,L103,L103
+10,L104,L104
+30,L105,L105
+30,L106,L106
+5,L107,L107
 10,L108,L108
-8,L109,L109
-6,L110,L110
-8,L111,L111";
+10,L109,L109
+10,L110,L110
+20,L111,L111";
 
         public static SimpleTable<double, string, string> damageDeterminationTableLandBattery = SimpleTable<double, string, string>.FromCSV(
             damageDeterminationTableLandBatteryCsvText,

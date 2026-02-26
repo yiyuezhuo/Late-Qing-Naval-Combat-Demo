@@ -107,7 +107,7 @@
                                         </ui:Button>
                                     </ui:VisualElement>
                                     <ui:VisualElement style="flex-grow: 1;">
-                                        <ui:SliderInt label="Crew Rating" high-value="10" low-value="-2" show-input-field="true">
+                                        <ui:SliderInt label="Crew Rating" high-value="10" low-value="-5" show-input-field="true">
                                             <Bindings>
                                                 <ui:DataBinding property="value" data-source-path="crewRating" binding-mode="TwoWay"/>
                                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100779911974912)"/>

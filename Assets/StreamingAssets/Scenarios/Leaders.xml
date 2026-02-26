@@ -3251,4 +3251,25 @@ http://bujinkensyokai.web.fc2.com/hirosimagk.html</remark>
   <remark>https://shozokan.nich.go.jp/collection/object/SZK001477-204</remark>
   <objectId>13c85d68-6d4b-46bd-8b2d-2386a451b965</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Hayasaki Gengo</english>
+   <japanese>早崎源吾</japanese>
+   <chineseSimplified>早崎源吾</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Hayasaki Gengo.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://hush.web.fc2.com/name/Biography/517121hayasa.html
+https://shozokan.nich.go.jp/collection/?at=imageList&amp;id=12283</remark>
+  <objectId>5c8acccf-b3aa-4c5f-abcb-486edf576095</objectId>
+ </Leader>
 </ArrayOfLeader>

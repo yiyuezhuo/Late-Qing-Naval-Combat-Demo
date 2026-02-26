@@ -37,6 +37,7 @@ public abstract class LeftObjectPickerRightEditor<ST, ET> : HideableDocument<ST>
         IEnumerable<ET> _filteredObjects = fullObjects;
 
         var filterStringInvalid = _filterString == null || _filterString == "";
+        
 
         if(!filterStringInvalid)
         {
@@ -45,7 +46,9 @@ public abstract class LeftObjectPickerRightEditor<ST, ET> : HideableDocument<ST>
 
         _filteredObjects = ExtraFilter(_filteredObjects);
 
-        filteredObjects = _filteredObjects.ToList();
+        // filteredObjects = _filteredObjects.ToList();
+        // Use originalList if possible so we prevent unnesseary allocation & enable resort provided by ListView natively.
+        filteredObjects = _filteredObjects is List<ET> originalList ? originalList : _filteredObjects.ToList();
     }
 
 

@@ -172,7 +172,8 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         TryBindWakeGameObjectsByName();
 
         // initialEmissionRateOverTimeConstant = funnelSmokeParticleSystem.emission.rateOverTime.constant; // x120 reference
-        funnelSmokeParticleSystem.Pause();
+        if (funnelSmokeParticleSystem != null)
+            funnelSmokeParticleSystem.Pause();
     }
 
     void TryBindWakeGameObjectsByName()
@@ -509,6 +510,8 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             healthBarRenderer.gameObject.SetActive(false);
         }
 
+        var isLandBattery = shipLog != null && shipLog.IsLandBattery();
+
         if(shipLog != null)
         {
             // Maintain Sounds (TODO: Move to some Manager Singleton as we don't use 3DSFX here?)
@@ -588,7 +591,16 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         MaintainFlagRotationSize();
         UpdateWakeEffects(shipLog, lengthWu, beamWu);
 
-        if((shipLog?.dirtySeconds ?? 0) > 0)
+        if (isLandBattery)
+        {
+            if (funnelSmokeParticleSystem != null)
+            {
+                funnelSmokeParticleSystem.Stop(withChildren: true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                funnelSmokeParticleSystem.Pause(withChildren: true);
+            }
+            shipLog.dirtySeconds = 0;
+        }
+        else if ((shipLog?.dirtySeconds ?? 0) > 0 && funnelSmokeParticleSystem != null)
         {
             var pendingSeconds = shipLog.dirtySeconds;
             shipLog.dirtySeconds = 0;

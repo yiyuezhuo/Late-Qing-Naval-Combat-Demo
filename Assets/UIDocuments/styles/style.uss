@@ -672,6 +672,11 @@
     border-right-color: var(--ui-border-input-side);
 }
 
+.unity-multi-column-header__column:hover:enabled {
+    background-color: var(--ui-surface-button-hover);
+    color: var(--ui-text-selected);
+}
+
 .unity-list-view__footer {
     background-color: var(--ui-surface-scroll-overlay);
     border-top-width: 0;

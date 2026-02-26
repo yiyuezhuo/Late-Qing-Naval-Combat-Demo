@@ -67,7 +67,7 @@ namespace NavalCombatCore
         }
 
         // Chart J1 - Hit Location - Warships
-        public static float[,] broadAspectLocationWeightTable = new float[,]
+        public static float[,] broadAspectLocationWeightTable = new float[,] // Immutable
         {// Short   Medium  Long/Extreme
             {2,     12,     25}, // 1H DECK
             {1,     3,      6},  // 2H TURRET
@@ -81,7 +81,7 @@ namespace NavalCombatCore
             {1,     1,      1}   // INEFFECTIVE
         };
 
-        public static float[,] narrowAspectLocationWeightTable = new float[,]
+        public static float[,] narrowAspectLocationWeightTable = new float[,] // Immutable
         {// Short   Medium  Long/Extreme
             {4,     20,     34}, // 1H DECK
             {2,     3,      7},  // 2H TURRET
@@ -117,33 +117,16 @@ namespace NavalCombatCore
             return (ArmorLocation)idx;
         }
 
-        public static ArmorLocation RollArmorLocationLandBattery(TargetAspect targetAspect, RangeBand rangeBand)
+        public static ArmorLocation RollArmorLocationLandBattery(RangeBand rangeBand)
         {
-            var weights = GetLocationWeights(targetAspect, rangeBand);
-            double horizontal = 0;
-            double vertical = 0;
-            double ineffective = 0;
-
-            for (var i = 0; i < weights.Length; i++)
+            var weights = rangeBand switch
             {
-                var loc = (ArmorLocation)i;
-                var w = weights[i];
-                if (loc == ArmorLocation.Ineffective)
-                {
-                    ineffective += w;
-                    continue;
-                }
+                RangeBand.Short => new[] { 5.0, 94.0, 1.0 },
+                RangeBand.Medium => new[] { 10.0, 89.0, 1.0 },
+                _ => new[] { 20.0, 79.0, 1.0 } // Long / Extreme
+            };
 
-                if (armorLocationToAngleType.TryGetValue(loc, out var angleType))
-                {
-                    if (angleType == ArmorLocationAngleType.Horizontal)
-                        horizontal += w;
-                    else
-                        vertical += w;
-                }
-            }
-
-            var idx = Categorical.Sample(new[] { horizontal, vertical, ineffective });
+            var idx = Categorical.Sample(weights);
             return idx switch
             {
                 0 => ArmorLocation.Deck,

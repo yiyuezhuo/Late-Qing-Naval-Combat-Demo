@@ -921,7 +921,7 @@ namespace NavalCombatCore
                         }
                         else if (damageSchema == DamageSchema.LandBattery)
                         {
-                            var armorLocation = RuleChart.RollArmorLocationLandBattery(stats.targetPresentAspectFromObserver, penRecord.rangeBand);
+                            var armorLocation = RuleChart.RollArmorLocationLandBattery(penRecord.rangeBand);
                             if (armorLocation != ArmorLocation.Ineffective)
                             {
                                 var armorLocationAngleType = RuleChart.armorLocationToAngleType.GetValueOrDefault(armorLocation);

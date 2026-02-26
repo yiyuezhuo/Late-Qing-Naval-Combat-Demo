@@ -567,6 +567,8 @@
 
 .unity-base-field__input {
     background-color: var(--ui-surface-input);
+    --unity-cursor-color: var(--ui-text-primary);
+    --unity-selection-color: rgba(180, 150, 95, 0.45);
     border-top-width: 1px;
     border-right-width: 1px;
     border-bottom-width: 1px;

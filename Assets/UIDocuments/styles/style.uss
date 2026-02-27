@@ -774,6 +774,19 @@
     color: var(--ui-text-selected);
 }
 
+.unity-tab-view > .unity-tab-view__content-viewport > .unity-repeat-button {
+    background-color: var(--ui-surface-button);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: var(--ui-border-tab-top);
+    border-right-color: var(--ui-border-tab-right);
+    border-top-color: var(--ui-border-tab-top);
+    border-bottom-color: var(--ui-border-panel-bottom);
+    -unity-background-image-tint-color: var(--ui-icon-accent);
+}
+
 .unity-progress-bar__background {
     background-color: var(--ui-surface-progress-track);
     border-top-width: 1px;

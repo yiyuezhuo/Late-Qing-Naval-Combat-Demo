@@ -476,6 +476,7 @@ namespace NavalCombatCore
         public DynamicStatus dynamicStatus = new();
         public SearchLightStatus searchLightHits = new();
         public int damageControlRatingHits;
+        public bool disableDamageInReset;
         // public List<DamageEffectRecord> damageEffectRecords = new(); // TODO: Remove
         // public List<SubState> damageEffects = new();
         // public List<ShipboardFireStatus> shipboardFireStatus = new();
@@ -743,8 +744,14 @@ namespace NavalCombatCore
         public bool IsOnMap() => mapState == MapState.Deployed;
 
         // The method sync list, reset damage and expenditures and misc dynamic states (like processing seconds).
-        public void ResetDamageExpenditureState(ResetDamageExpenditureStateContext ctx)
+        public void ResetDamageExpenditureState(ResetDamageExpenditureStateContext ctx, bool ignoreDisableDamageInReset = false)
         {
+            if (!ignoreDisableDamageInReset && disableDamageInReset)
+            {
+                ResetExpenditureState(ctx);
+                return;
+            }
+
             // Control is given to Set to Formation (check correctness of Skirmish)
             // desiredHeadingDeg = headingDeg;
             // desiredSpeedKnots = speedKnots;
@@ -780,6 +787,263 @@ namespace NavalCombatCore
             
             // damageEffectRecords.Clear();
             // shipboardFireStatus.Clear();
+        }
+
+        static readonly List<RangeBand> preScenarioDamageRangeBands = new()
+        {
+            RangeBand.Short,
+            RangeBand.Medium,
+            RangeBand.Long
+        };
+
+        static readonly List<TargetAspect> preScenarioDamageTargetAspects = new()
+        {
+            TargetAspect.Narrow,
+            TargetAspect.Broad
+        };
+
+        static DamageEffectCause GetDamageEffectCauseForArmorLocation(ArmorLocation armorLocation)
+        {
+            return armorLocation switch
+            {
+                ArmorLocation.Deck => DamageEffectCause.Deck,
+                ArmorLocation.TurretHorizontal => DamageEffectCause.Turret,
+                ArmorLocation.SuperStructureHorizontal => DamageEffectCause.Superstructure,
+                ArmorLocation.ConningTower => DamageEffectCause.ConningTower,
+                ArmorLocation.MainBelt => DamageEffectCause.MainBelt,
+                ArmorLocation.BeltEnd => DamageEffectCause.BeltEnd,
+                ArmorLocation.Barbette => DamageEffectCause.Barbette,
+                ArmorLocation.TurretVertical => DamageEffectCause.Turret,
+                ArmorLocation.SuperStructureVertical => DamageEffectCause.Superstructure,
+                _ => DamageEffectCause.MainBelt
+            };
+        }
+
+        static float GetPreScenarioApproxPenetrationInch(float shellSizeInch, RangeBand rangeBand)
+        {
+            var rangeCoef = rangeBand switch
+            {
+                RangeBand.Short => 1.2f,
+                RangeBand.Medium => 0.9f,
+                RangeBand.Long => 0.7f,
+                _ => 0.6f
+            };
+            return shellSizeInch * rangeCoef;
+        }
+
+        void ApplyRandomPreScenarioAPShellHit()
+        {
+            if (shipClass == null)
+                return;
+
+            var shellSizeInch = RandomUtils.rand.Next(6, 13);
+            var rangeBand = RandomUtils.Sample(preScenarioDamageRangeBands);
+            var targetAspect = RandomUtils.Sample(preScenarioDamageTargetAspects);
+            var damageSchema = shipClass.GetDamageSchema();
+            var ammunitionType = AmmunitionType.ArmorPiercing;
+            var damageFactor = shellSizeInch;
+
+            if (damageSchema == DamageSchema.Warship)
+            {
+                var armorLocation = RuleChart.RollArmorLocation(targetAspect, rangeBand);
+                if (armorLocation == ArmorLocation.Ineffective)
+                    return;
+
+                var armorEffInch = shipClass.armorRating.GetArmorEffectiveInch(armorLocation);
+                if (armorLocation == ArmorLocation.MainBelt)
+                {
+                    var armorCoef = GetSubStates<IArmorModifier>().Select(m => m.GetMainBeltArmorCoef()).DefaultIfEmpty(1).Min();
+                    armorEffInch *= armorCoef;
+                }
+
+                var penInch = GetPreScenarioApproxPenetrationInch(shellSizeInch, rangeBand);
+                var hitPenDetType = RuleChart.ResolveHitPenDetType(penInch, armorEffInch, ammunitionType);
+                var shellDamageResult = RuleChart.ResolveShellDamageResult(damageFactor, hitPenDetType, ammunitionType);
+
+                damagePoint += shellDamageResult.damagePoint;
+
+                if (RandomUtils.NextFloat() <= shellDamageResult.damageEffectProb)
+                {
+                    var damageEffectContext = new DamageEffectContext()
+                    {
+                        subject = this,
+                        baseDamagePoint = shellDamageResult.damagePoint,
+                        ammunitionType = ammunitionType,
+                        shellDiameterInch = shellSizeInch,
+                        hitPenDetType = hitPenDetType,
+                        damageSchema = damageSchema,
+                        cause = GetDamageEffectCauseForArmorLocation(armorLocation),
+                        addtionalDamageEffectProbility = shellDamageResult.damageEffectProb
+                    };
+                    DamageEffectChart.AddNewDamageEffect(damageEffectContext);
+                }
+                return;
+            }
+
+            if (damageSchema == DamageSchema.MerchantVessal)
+            {
+                var hitLocationMerchantVessel = RuleChart.SampleHitLocationMerchantVessel();
+                var hitPenDetType = RuleChart.ResolveHitPenDetType(1, 0, ammunitionType);
+                var shellDamageResult = RuleChart.ResolveShellDamageResult(damageFactor, hitPenDetType, ammunitionType);
+
+                damagePoint += shellDamageResult.damagePoint;
+
+                if (RandomUtils.NextFloat() <= shellDamageResult.damageEffectProb)
+                {
+                    var damageEffectContext = new DamageEffectContext()
+                    {
+                        subject = this,
+                        baseDamagePoint = shellDamageResult.damagePoint,
+                        ammunitionType = ammunitionType,
+                        shellDiameterInch = shellSizeInch,
+                        hitPenDetType = hitPenDetType,
+                        damageSchema = damageSchema,
+                        causeMerchantVessel = RuleChart.GetDamageEffectCauseMerchantVessel(hitLocationMerchantVessel, cargoAreas),
+                    };
+                    DamageEffectChart.AddNewDamageEffect(damageEffectContext);
+                }
+                return;
+            }
+
+            if (damageSchema == DamageSchema.LandBattery)
+            {
+                var armorLocation = RuleChart.RollArmorLocationLandBattery(rangeBand);
+                if (armorLocation == ArmorLocation.Ineffective)
+                    return;
+
+                var armorEffInch = shipClass.armorRating.GetArmorEffectiveInch(armorLocation);
+                if (armorLocation == ArmorLocation.MainBelt)
+                {
+                    var armorCoef = GetSubStates<IArmorModifier>().Select(m => m.GetMainBeltArmorCoef()).DefaultIfEmpty(1).Min();
+                    armorEffInch *= armorCoef;
+                }
+
+                var penInch = GetPreScenarioApproxPenetrationInch(shellSizeInch, rangeBand);
+                var hitPenDetType = RuleChart.ResolveHitPenDetType(penInch, armorEffInch, ammunitionType);
+                var shellDamageResult = RuleChart.ResolveShellDamageResult(damageFactor, hitPenDetType, ammunitionType);
+
+                damagePoint += shellDamageResult.damagePoint;
+
+                if (RandomUtils.NextFloat() <= shellDamageResult.damageEffectProb)
+                {
+                    var damageEffectContext = new DamageEffectContext()
+                    {
+                        subject = this,
+                        baseDamagePoint = shellDamageResult.damagePoint,
+                        ammunitionType = ammunitionType,
+                        shellDiameterInch = shellSizeInch,
+                        hitPenDetType = hitPenDetType,
+                        damageSchema = damageSchema,
+                        causeLandBattery = armorLocation == ArmorLocation.Deck ? DamageEffectCauseLandBattery.Horizontal : DamageEffectCauseLandBattery.Vertical,
+                        addtionalDamageEffectProbility = shellDamageResult.damageEffectProb
+                    };
+                    DamageEffectChart.AddNewDamageEffect(damageEffectContext);
+                }
+            }
+        }
+
+        void CleanupPreScenarioDamageGenerationLogs()
+        {
+            ClearLogs();
+            NavalGameState.Instance.tempSubjectLogs.RemoveAll(subjectLog => subjectLog.subjectId == objectId);
+        }
+
+        string BuildPreScenarioDamageCleanupLogPreview()
+        {
+            const int maxPreviewLines = 240;
+            var lines = new List<string>();
+            var remained = maxPreviewLines;
+
+            lines.Add("Pre-scenario damage generation logs to be cleared");
+            lines.Add($"Ship: {namedShip?.name?.GetMergedName() ?? objectId}");
+            lines.Add("If result is not as expected, roll again.");
+            lines.Add("");
+
+            void AppendSection(string title, IEnumerable<string> sectionLines)
+            {
+                var section = sectionLines?.ToList() ?? new();
+                lines.Add($"{title}: {section.Count}");
+                if (section.Count == 0)
+                {
+                    lines.Add("");
+                    return;
+                }
+
+                foreach (var line in section)
+                {
+                    if (remained <= 0)
+                        break;
+                    lines.Add(line);
+                    remained--;
+                }
+
+                if (remained <= 0)
+                {
+                    lines.Add("... truncated ...");
+                }
+                lines.Add("");
+            }
+
+            AppendSection("Ship Logs", logs.Select(log => log.Summary()));
+            AppendSection(
+                "Battery Mount Logs",
+                batteryStatus
+                    .SelectMany(bty => bty.mountStatus)
+                    .SelectMany(mnt => mnt.logs.Select(log => $"[{mnt.objectId}] {log.Summary()}"))
+            );
+            AppendSection(
+                "Rapid Firing Logs",
+                rapidFiringStatus
+                    .SelectMany(rf => rf.logs.Select(log => $"[{rf.objectId}] {log.Summary()}"))
+            );
+            AppendSection(
+                "Temp Subject Logs",
+                NavalGameState.Instance.tempSubjectLogs
+                    .Where(subjectLog => subjectLog.subjectId == objectId && subjectLog.log != null)
+                    .Select(subjectLog => subjectLog.log.Summary())
+            );
+
+            return string.Join("\n", lines);
+        }
+
+        public string GeneratePreScenarioDamageByRatio(float targetDamageRatioPercent)
+        {
+            ResetDamageExpenditureState(new(), true);
+            targetDamageRatioPercent = Math.Clamp(targetDamageRatioPercent, 0, 100);
+
+            if (shipClass == null)
+            {
+                var emptyPreview = BuildPreScenarioDamageCleanupLogPreview();
+                CleanupPreScenarioDamageGenerationLogs();
+                return emptyPreview;
+            }
+
+            var targetDamagePoint = Math.Max(0, shipClass.damagePoint * targetDamageRatioPercent * 0.01f);
+            if (targetDamagePoint > 0)
+            {
+                var guard = 0;
+                while (damagePoint <= targetDamagePoint && guard < 4096)
+                {
+                    ApplyRandomPreScenarioAPShellHit();
+                    if (pendingDamagePoint > 0)
+                    {
+                        damagePoint += pendingDamagePoint;
+                        pendingDamagePoint = 0;
+                    }
+                    guard++;
+                }
+
+                if (damagePoint <= targetDamagePoint)
+                {
+                    damagePoint = targetDamagePoint + 1;
+                }
+            }
+
+            pendingDamagePoint = 0;
+            TacticalToStrategicPostHousekeeping();
+            var cleanupLogPreview = BuildPreScenarioDamageCleanupLogPreview();
+            CleanupPreScenarioDamageGenerationLogs();
+            return cleanupLogPreview;
         }
 
         public void ResetExpenditureState(ResetDamageExpenditureStateContext ctx)

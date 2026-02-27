@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement class="panel-dialog" style="height: auto; width: 560px;">
+        <ui:Label text="Generate Pre-scenario Damage" name="TitleLabel" class="title"/>
+        <ui:Label name="DescriptionLabel" text="Confirm will first fully reset all damage state (ignoring Disable Damage In Reset), then simulate random 6-12 inch AP hits with random range bands (Short/Medium/Long) and target aspects (Narrow/Broad) until total DP exceeds the selected DP ratio. After sampling, damage effects are cleaned up using campaign persistence rules (for example Clear removed, Maintained kept)." style="white-space: normal; min-height: 72px;"/>
+        <ui:SliderInt label="Target DP Ratio (%)" name="TargetDamageRatioPercentSlider" low-value="0" high-value="100" show-input-field="true" fill="true"/>
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-basis: 50px; flex-grow: 1;"/>
+            <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

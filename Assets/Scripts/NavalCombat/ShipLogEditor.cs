@@ -222,6 +222,42 @@ public class ShipLogView
             selectedShipLog.ResetDamageExpenditureState(new());
         };
 
+        var generatePreScenarioDamageButton = root.Q<Button>("GeneratePreScenarioDamageButton");
+        if (generatePreScenarioDamageButton != null)
+        {
+            generatePreScenarioDamageButton.clicked += () =>
+            {
+                var selectedShipLog = GetSelectedShipLog();
+                if (selectedShipLog == null)
+                    return;
+
+                var maxDamagePoint = Math.Max(0, selectedShipLog.shipClass?.damagePoint ?? 0);
+                var initialRatioPercent = maxDamagePoint > 0
+                    ? Math.Clamp(100f * selectedShipLog.damagePoint / maxDamagePoint, 0, 100)
+                    : 0;
+                DialogRoot.Instance.PopupPreScenarioDamageDialog(
+                    initialRatioPercent,
+                    targetRatioPercent =>
+                    {
+                        var clearedLogsPreview = selectedShipLog.GeneratePreScenarioDamageByRatio(targetRatioPercent);
+                        DialogRoot.Instance.PopupMessageDialog(clearedLogsPreview, "Pre-scenario Damage Roll");
+                    }
+                );
+            };
+        }
+
+        var resetPreScenarioDamageButton = root.Q<Button>("ResetPreScenarioDamageButton");
+        if (resetPreScenarioDamageButton != null)
+        {
+            resetPreScenarioDamageButton.clicked += () =>
+            {
+                var selectedShipLog = GetSelectedShipLog();
+                if (selectedShipLog == null)
+                    return;
+                selectedShipLog.ResetDamageExpenditureState(new(), true);
+            };
+        }
+
         var setNamedShipButton = root.Q<Button>("SetNamedShipButton");
         setNamedShipButton.clicked += DialogRoot.Instance.PopupNamedShipSelctorDialogForShipLog;
 

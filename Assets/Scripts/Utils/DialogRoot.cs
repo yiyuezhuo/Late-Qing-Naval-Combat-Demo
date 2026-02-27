@@ -220,6 +220,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset namedShipSelectorDocument;
     public VisualTreeAsset messageDialogDocument;
     public VisualTreeAsset confirmDialogDocument;
+    public VisualTreeAsset preScenarioDamageDialogDocument;
     public VisualTreeAsset streamingAssetReferenceDialogDocument;
     public VisualTreeAsset scenarioPickerDialogDocument;
     public VisualTreeAsset victoryStatusDocument;
@@ -1414,6 +1415,37 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         };
 
         tempDialog.onConfirmed += (sender, el) => confirmCallback();
+
+        tempDialog.Popup();
+    }
+
+    public void PopupPreScenarioDamageDialog(float initialDamageRatioPercent, Action<float> confirmCallback)
+    {
+        if (preScenarioDamageDialogDocument == null)
+        {
+            PopupMessageDialog("PreScenarioDamageDialog is not configured.");
+            return;
+        }
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = preScenarioDamageDialogDocument,
+            templateDataSource = null,
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var ratioSlider = el.Q<SliderInt>("TargetDamageRatioPercentSlider");
+            ratioSlider?.SetValueWithoutNotify((int)Math.Round(Math.Clamp(initialDamageRatioPercent, 0, 100)));
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            var ratioSlider = el.Q<SliderInt>("TargetDamageRatioPercentSlider");
+            var targetRatioPercent = Math.Clamp(ratioSlider?.value ?? 0, 0, 100);
+            confirmCallback?.Invoke(targetRatioPercent);
+        };
 
         tempDialog.Popup();
     }

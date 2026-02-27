@@ -85,6 +85,7 @@ namespace NavalCombatCore
         public PictureReference backgroundPictureReference = new();
 
         public bool disableFirstRemainOneOperationalFleetPrompt;
+        public VictoryStatusBaseline initialVictoryStatusBaseline;
 
         public void FillBeginDateTimeIfMissing()
         {
@@ -98,6 +99,7 @@ namespace NavalCombatCore
             firstRemainOneOperationalFleet = false;
             firstDisengaged = false;
             firstReachEndDateTime = false;
+            initialVictoryStatusBaseline = null;
         }
 
         public static float GetTimeZoneOffset(float longitude)

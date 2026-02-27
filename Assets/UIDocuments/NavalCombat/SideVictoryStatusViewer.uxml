@@ -9,7 +9,7 @@
             <ui:VisualElement style="flex-grow: 1; flex-direction: column; flex-basis: 50px;">
                 <ui:FloatField label="Commit VP">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="commitVictoryPoint" binding-mode="ToTarget" />
+                        <ui:DataBinding property="value" data-source-path="initialCommitVictoryPoint" binding-mode="ToTarget" />
                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(361652219973632)" />
                     </Bindings>
                 </ui:FloatField>

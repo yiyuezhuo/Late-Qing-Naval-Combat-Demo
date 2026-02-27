@@ -291,6 +291,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             DialogRoot.Instance.PopupForceBuilderDialog();
         }
 
+        VictoryStatus.CaptureInitialBaselineIfMissing(NavalGameState.Instance);
         TempFix();
 
         fullInitialized = true;

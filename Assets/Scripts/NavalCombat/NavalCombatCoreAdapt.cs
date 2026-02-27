@@ -661,8 +661,25 @@ namespace NavalCombatCore
 
     public partial class ShipTypeLossItem
     {
+        static string ToFlowText(int initial, int current) => $"{initial} -> {current}";
+
         [CreateProperty]
         public string shipTypeDesc => ShipClass.GetAcronymFor(shipType);
+
+        [CreateProperty]
+        public string undamagedFlowStr => ToFlowText(initialUndamaged, undamaged);
+
+        [CreateProperty]
+        public string lightFlowStr => ToFlowText(initialLight, light);
+
+        [CreateProperty]
+        public string mediumFlowStr => ToFlowText(initialMedium, medium);
+
+        [CreateProperty]
+        public string heavyFlowStr => ToFlowText(initialHeavy, heavy);
+
+        [CreateProperty]
+        public string sunkFlowStr => ToFlowText(initialSunk, sunk);
     }
 
     public partial class SubjectLog

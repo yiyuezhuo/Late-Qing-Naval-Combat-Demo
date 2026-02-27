@@ -668,12 +668,17 @@ namespace NavalCombatCore
 
         static float GetOperationalResponseSlowdownRatio(Leader leader)
         {
-            return NormalizeLeaderSkillLevelForVariant(leader?.navalOperational ?? LeaderSkillLevel.Unknown) switch
+            return GetOperationalResponseSlowdownRatio(leader?.navalOperational ?? LeaderSkillLevel.Unknown);
+        }
+
+        static float GetOperationalResponseSlowdownRatio(LeaderSkillLevel level)
+        {
+            return NormalizeLeaderSkillLevelForVariant(level) switch
             {
                 LeaderSkillLevel.Gifted => 0f,
-                LeaderSkillLevel.Outstanding => 0.05f,
-                LeaderSkillLevel.AboveAverage => 0.1f,
-                LeaderSkillLevel.Average => 0.15f,
+                LeaderSkillLevel.Outstanding => 0.025f,
+                LeaderSkillLevel.AboveAverage => 0.05f,
+                LeaderSkillLevel.Average => 0.1f,
                 LeaderSkillLevel.BarelyCompetent => 0.2f,
                 _ => 0.15f,
             };
@@ -692,6 +697,70 @@ namespace NavalCombatCore
             };
         }
 
+        static LeaderSkillLevel DowngradeOperationalSkillForDetached(LeaderSkillLevel level)
+        {
+            return NormalizeLeaderSkillLevelForVariant(level) switch
+            {
+                LeaderSkillLevel.Gifted => LeaderSkillLevel.Outstanding,
+                LeaderSkillLevel.Outstanding => LeaderSkillLevel.AboveAverage,
+                LeaderSkillLevel.AboveAverage => LeaderSkillLevel.Average,
+                LeaderSkillLevel.Average => LeaderSkillLevel.BarelyCompetent,
+                LeaderSkillLevel.BarelyCompetent => LeaderSkillLevel.BarelyCompetent,
+                _ => LeaderSkillLevel.BarelyCompetent,
+            };
+        }
+
+        bool IsFirstDirectShipInParentGroup()
+        {
+            var parentGroup = (this as IShipGroupMember).GetParentGroup();
+            if (parentGroup == null)
+                return false;
+
+            foreach (var childObjectId in parentGroup.childrenObjectIds)
+            {
+                var childShip = EntityManager.Instance.Get<ShipLog>(childObjectId);
+                if (childShip != null)
+                    return childShip == this;
+            }
+
+            return false;
+        }
+
+        IEnumerable<LeaderSkillLevel> EnumerateIndependentResponseDelaySources()
+        {
+            var parentGroup = (this as IShipGroupMember).GetParentGroup();
+            if (parentGroup == null)
+            {
+                // A ship without a parent group is treated as detached and must rely on ad-hoc local command.
+                yield return DowngradeOperationalSkillForDetached(leader?.navalOperational ?? LeaderSkillLevel.Unknown);
+                yield break;
+            }
+
+            if (IsFirstDirectShipInParentGroup())
+            {
+                // Original flagship: delay is driven by superior-echelon leaders in the planned OOB chain.
+                var group = parentGroup;
+                while (group != null)
+                {
+                    yield return group.leader?.navalOperational ?? LeaderSkillLevel.Unknown;
+                    group = (group as IShipGroupMember).GetParentGroup();
+                }
+            }
+            else
+            {
+                // Detached ship: captain becomes the first ad-hoc superior (skill downgraded by one level),
+                // and the original formation chain moves to the second layer as a detached command friction penalty.
+                yield return DowngradeOperationalSkillForDetached(leader?.navalOperational ?? LeaderSkillLevel.Unknown);
+
+                var group = parentGroup;
+                while (group != null)
+                {
+                    yield return group.leader?.navalOperational ?? LeaderSkillLevel.Unknown;
+                    group = (group as IShipGroupMember).GetParentGroup();
+                }
+            }
+        }
+
         float GetIndependentResponseCoef()
         {
             if (!CoreParameter.Instance.enableLeaderRuleVariant)
@@ -699,7 +768,15 @@ namespace NavalCombatCore
             if (GetEffectiveControlMode() != ControlMode.Independent)
                 return 1f;
 
-            return Math.Clamp(1f - GetOperationalResponseSlowdownRatio(leader), 0f, 1f);
+            var totalDelay = 0f;
+            var weight = 1f;
+            foreach (var skill in EnumerateIndependentResponseDelaySources())
+            {
+                totalDelay += weight * GetOperationalResponseSlowdownRatio(skill);
+                weight *= 0.5f;
+            }
+
+            return Math.Clamp(1f - totalDelay, 0f, 1f);
         }
 
         public float GetEffectiveCrewQualityForFloatUsage()
@@ -1142,7 +1219,7 @@ namespace NavalCombatCore
                 var absDeltaDeg = Math.Min(MeasureUtils.GetPositiveAngleDifference(headingDeg, desiredHeadingDeg), turnCapThisPulse);
                 var usePercent = absDeltaDeg / turnCapThisPulse;
 
-                var _desiredHeadingDeg = desiredHeadingDeg + mods.Select(m => m.GetDesiredHeadingOffset()).Sum();
+                var _desiredHeadingDeg = desiredHeadingDeg + mods.Sum(m => m.GetDesiredHeadingOffset());
                 // GetDesiredHeadingOffset
 
                 headingDeg = MeasureUtils.MoveAngleTowards(headingDeg, _desiredHeadingDeg, turnCapThisPulse);

@@ -802,23 +802,6 @@ namespace NavalCombatCore
             TargetAspect.Broad
         };
 
-        static DamageEffectCause GetDamageEffectCauseForArmorLocation(ArmorLocation armorLocation)
-        {
-            return armorLocation switch
-            {
-                ArmorLocation.Deck => DamageEffectCause.Deck,
-                ArmorLocation.TurretHorizontal => DamageEffectCause.Turret,
-                ArmorLocation.SuperStructureHorizontal => DamageEffectCause.Superstructure,
-                ArmorLocation.ConningTower => DamageEffectCause.ConningTower,
-                ArmorLocation.MainBelt => DamageEffectCause.MainBelt,
-                ArmorLocation.BeltEnd => DamageEffectCause.BeltEnd,
-                ArmorLocation.Barbette => DamageEffectCause.Barbette,
-                ArmorLocation.TurretVertical => DamageEffectCause.Turret,
-                ArmorLocation.SuperStructureVertical => DamageEffectCause.Superstructure,
-                _ => DamageEffectCause.MainBelt
-            };
-        }
-
         static float GetPreScenarioApproxPenetrationInch(float shellSizeInch, RangeBand rangeBand)
         {
             var rangeCoef = rangeBand switch
@@ -872,7 +855,7 @@ namespace NavalCombatCore
                         shellDiameterInch = shellSizeInch,
                         hitPenDetType = hitPenDetType,
                         damageSchema = damageSchema,
-                        cause = GetDamageEffectCauseForArmorLocation(armorLocation),
+                        cause = RuleChart.GetDamageEffectCauseWarship(armorLocation),
                         addtionalDamageEffectProbility = shellDamageResult.damageEffectProb
                     };
                     DamageEffectChart.AddNewDamageEffect(damageEffectContext);
@@ -934,7 +917,7 @@ namespace NavalCombatCore
                         shellDiameterInch = shellSizeInch,
                         hitPenDetType = hitPenDetType,
                         damageSchema = damageSchema,
-                        causeLandBattery = armorLocation == ArmorLocation.Deck ? DamageEffectCauseLandBattery.Horizontal : DamageEffectCauseLandBattery.Vertical,
+                        causeLandBattery = RuleChart.GetDamageEffectCauseLandBattery(armorLocation),
                         addtionalDamageEffectProbility = shellDamageResult.damageEffectProb
                     };
                     DamageEffectChart.AddNewDamageEffect(damageEffectContext);

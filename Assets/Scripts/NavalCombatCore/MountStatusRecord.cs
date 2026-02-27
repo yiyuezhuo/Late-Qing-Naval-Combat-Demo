@@ -846,20 +846,7 @@ namespace NavalCombatCore
                     // Process Damage Effect
                     if (RandomUtils.NextFloat() <= shellDamageResult.damageEffectProb)
                     {
-                        // TODO: Move to RuleChart?
-                        var damageEffectCause = armorLocation switch
-                        {
-                            ArmorLocation.Deck => DamageEffectCause.Deck,
-                            ArmorLocation.TurretHorizontal => DamageEffectCause.Turret,
-                            ArmorLocation.SuperStructureHorizontal => DamageEffectCause.Superstructure,
-                            ArmorLocation.ConningTower => DamageEffectCause.ConningTower,
-                            ArmorLocation.MainBelt => DamageEffectCause.MainBelt,
-                            ArmorLocation.BeltEnd => DamageEffectCause.BeltEnd,
-                            ArmorLocation.Barbette => DamageEffectCause.Barbette,
-                            ArmorLocation.TurretVertical => DamageEffectCause.Turret,
-                            ArmorLocation.SuperStructureVertical => DamageEffectCause.Superstructure,
-                            _ => DamageEffectCause.MainBelt
-                        };
+                        var damageEffectCause = RuleChart.GetDamageEffectCauseWarship(armorLocation);
                         var damageEffectContext = new DamageEffectContext()
                         {
                             subject = tgt,
@@ -909,7 +896,7 @@ namespace NavalCombatCore
                 // Process Damage Effect
                 if (RandomUtils.NextFloat() <= shellDamageResult.damageEffectProb)
                 {
-                    var causeMerchantVessel = RuleChart.GetDamageEffectCauseMerchantVessel(hitLocationMerchantVessel, ctx.shipLog.cargoAreas);
+                    var causeMerchantVessel = RuleChart.GetDamageEffectCauseMerchantVessel(hitLocationMerchantVessel, tgt.cargoAreas);
                     var damageEffectContext = new DamageEffectContext()
                     {
                         subject = tgt,
@@ -976,7 +963,7 @@ namespace NavalCombatCore
                             shellDiameterInch = ctx.batteryRecord.shellSizeInch,
                             hitPenDetType = hitPenDetType,
                             damageSchema = damageSchema,
-                            causeLandBattery = armorLocation == ArmorLocation.Deck ? DamageEffectCauseLandBattery.Horizontal : DamageEffectCauseLandBattery.Vertical,
+                            causeLandBattery = RuleChart.GetDamageEffectCauseLandBattery(armorLocation),
                             addtionalDamageEffectProbility = shellDamageResult.damageEffectProb
                         };
 

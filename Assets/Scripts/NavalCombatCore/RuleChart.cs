@@ -66,6 +66,32 @@ namespace NavalCombatCore
             return cargoTypeToDamageEffectCauseMerchantVessel.GetValueOrDefault(cargoType);
         }
 
+        public static DamageEffectCause GetDamageEffectCauseWarship(ArmorLocation armorLocation)
+        {
+            return armorLocation switch
+            {
+                ArmorLocation.Deck => DamageEffectCause.Deck,
+                ArmorLocation.TurretHorizontal => DamageEffectCause.Turret,
+                ArmorLocation.SuperStructureHorizontal => DamageEffectCause.Superstructure,
+                ArmorLocation.ConningTower => DamageEffectCause.ConningTower,
+                ArmorLocation.MainBelt => DamageEffectCause.MainBelt,
+                ArmorLocation.BeltEnd => DamageEffectCause.BeltEnd,
+                ArmorLocation.Barbette => DamageEffectCause.Barbette,
+                ArmorLocation.TurretVertical => DamageEffectCause.Turret,
+                ArmorLocation.SuperStructureVertical => DamageEffectCause.Superstructure,
+                _ => DamageEffectCause.MainBelt
+            };
+        }
+
+        public static DamageEffectCauseLandBattery GetDamageEffectCauseLandBattery(ArmorLocation armorLocation)
+        {
+            return armorLocation switch
+            {
+                ArmorLocation.Deck => DamageEffectCauseLandBattery.Horizontal,
+                _ => DamageEffectCauseLandBattery.Vertical
+            };
+        }
+
         // Chart J1 - Hit Location - Warships
         public static float[,] broadAspectLocationWeightTable = new float[,] // Immutable
         {// Short   Medium  Long/Extreme

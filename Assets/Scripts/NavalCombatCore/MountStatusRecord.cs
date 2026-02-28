@@ -128,31 +128,31 @@ namespace NavalCombatCore
         [XmlAttribute]
         public DamageSchema DamageSchema;
 
-        public bool ShouldSerializeDamageSchema => hit;
+        public bool ShouldSerializeDamageSchema() => hit;
 
         [XmlAttribute]
         public ArmorLocation ArmorLocation; // Valid only for DamageSchema.Warship
 
-        public bool ShouldSerializeArmorLocation => hit && (DamageSchema == DamageSchema.Warship || DamageSchema == DamageSchema.LandBattery);
+        public bool ShouldSerializeArmorLocation() => hit && (DamageSchema == DamageSchema.Warship || DamageSchema == DamageSchema.LandBattery);
 
         [XmlAttribute]
         public HitLocationMerchantVessel HitLocationMerchantVessel; // Valid only for DamageSchema.MerchantVessel
 
-        public bool ShouldSerializeHitLocationMerchantVessel => hit && DamageSchema == DamageSchema.MerchantVessal;
+        public bool ShouldSerializeHitLocationMerchantVessel() => hit && DamageSchema == DamageSchema.MerchantVessal;
 
         [XmlAttribute]
         public HitPenDetType HitPenDetType;
 
-        public bool ShouldSerializeHitPenDetType => hit;
+        public bool ShouldSerializeHitPenDetType() => hit;
 
         public RuleChart.ShellDamageResult ShellDamageResult;
 
-        public bool ShouldSerializeShellDamageResult => hit;
+        public bool ShouldSerializeShellDamageResult() => hit;
 
         [XmlAttribute]
         public string DamageEffectId;
 
-        public bool ShouldSerializeDamageEffectId => hit;
+        public bool ShouldSerializeDamageEffectId() => hit;
 
 
         protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
@@ -509,7 +509,7 @@ namespace NavalCombatCore
 
         public void Step(float deltaSeconds)
         {
-            if (status != MountStatus.Operational)
+            if (!IsOperational())
                 return;
 
             var tgt = GetFiringTarget();
@@ -539,10 +539,13 @@ namespace NavalCombatCore
                 }
 
                 var ammoFallbackable = ctx.shipLog.doctrine.GetAmmunitionFallbackable();
-                if (!(
-                        ctx.batteryStatus.ammunition.GetValue(ammunitionType) >= 0 ||
-                        (ammoFallbackable && ctx.batteryStatus.ammunition.GetTotalValue() <= 0)
-                    )) // Re-check will be required in the following code
+                bool IsAmmoFireable()
+                {
+                    var hasPreferredAmmo = ctx.batteryStatus.ammunition.GetValue(ammunitionType) > 0;
+                    var hasAnyAmmo = ctx.batteryStatus.ammunition.GetTotalValue() > 0;
+                    return hasPreferredAmmo || (ammoFallbackable && hasAnyAmmo);
+                }
+                if (!IsAmmoFireable()) // Re-check will be required in the following code
                     return;
 
                 var shooter = ctx.shipLog;
@@ -577,10 +580,7 @@ namespace NavalCombatCore
 
                 // skip to log ammo consumption and firing "result"
                 while (processSeconds >= secondsPerShoot &&
-                        (
-                            ctx.batteryStatus.ammunition.GetValue(ammunitionType) >= 0 ||
-                            (ammoFallbackable && ctx.batteryStatus.ammunition.GetTotalValue() <= 0)
-                        )
+                        IsAmmoFireable()
                 )
                 {
                     processSeconds -= secondsPerShoot;
@@ -588,6 +588,10 @@ namespace NavalCombatCore
                     if (ammoFallbackable)
                     {
                         ammunitionType = ctx.batteryStatus.ChooseAmmunitionByPreferredType(ammunitionType); // TODO: Use doctrine suggested value
+                    }
+                    if (ctx.batteryStatus.ammunition.GetValue(ammunitionType) <= 0)
+                    {
+                        break;
                     }
 
                     if(!disableAmmunitionCost)

@@ -525,6 +525,7 @@ namespace NavalCombatCore
             public bool hasMeasurement;
             public float distanceYards;
             public float bearingDeg;
+            public float? targetSpeedKnots;
             public RangeBand? rangeBand;
             public TargetAspect? targetAspect;
 
@@ -634,8 +635,12 @@ namespace NavalCombatCore
 
             if (breakdown != null && breakdown.hasMeasurement)
             {
+                var targetSpeedLabel = breakdown.targetSpeedKnots.HasValue
+                    ? $"{FormatNumber(breakdown.targetSpeedKnots.Value)} knots"
+                    : "N/A";
                 lines.Add($"{FormatNumber(breakdown.distanceYards)} yards => {(breakdown.rangeBand?.ToString() ?? "N/A")} Range Band");
                 lines.Add($"{FormatNumber(breakdown.bearingDeg)} deg => {(breakdown.targetAspect?.ToString() ?? "N/A")} Angle");
+                lines.Add($"Target Speed: {targetSpeedLabel}");
             }
 
             if (breakdown == null || !breakdown.canFire)
@@ -647,7 +652,10 @@ namespace NavalCombatCore
             }
 
             lines.Add("");
-            lines.Add($"Base Fire Control Value ({breakdown.rangeBand}/{breakdown.targetAspect}) => {FormatNumber(breakdown.baseFireControlValue)}");
+            var baseFireControlTargetSpeedLabel = breakdown.targetSpeedKnots.HasValue
+                ? $"{FormatNumber(breakdown.targetSpeedKnots.Value)} knots"
+                : "N/A";
+            lines.Add($"Base Fire Control Value ({breakdown.rangeBand}/{breakdown.targetAspect}/{baseFireControlTargetSpeedLabel}) => {FormatNumber(breakdown.baseFireControlValue)}");
             lines.Add($"Close Range Override: {FormatSigned(breakdown.closeRangeOverrideDelta)}");
             lines.Add($"Mount/Substate FC Offset: {FormatSigned(breakdown.mountSubstateOffset)}");
             lines.Add($"Mount/Substate FC Coef: x{FormatNumber(breakdown.mountSubstateCoef)}");
@@ -717,6 +725,7 @@ namespace NavalCombatCore
                 hasMeasurement = true,
                 distanceYards = stats.distanceYards,
                 bearingDeg = stats.observerToTargetBearingRelativeToBowDeg,
+                targetSpeedKnots = target.speedKnots,
                 rangeBand = penRecord.rangeBand,
                 targetAspect = stats.targetPresentAspectFromObserver,
                 globalHitCoef = CoreParameter.Instance.globalHitCoef,
@@ -926,6 +935,7 @@ namespace NavalCombatCore
                 blockedReason = BreakdownBlockedReason.NoTarget,
                 targetObjectId = target?.objectId,
                 targetName = target?.namedShip?.name?.GetMergedName(),
+                targetSpeedKnots = target?.speedKnots,
                 globalHitCoef = CoreParameter.Instance.globalHitCoef,
             };
 

@@ -661,7 +661,7 @@ namespace NavalCombatCore
 
     public partial class ShipTypeLossItem
     {
-        static string ToFlowText(int initial, int current) => $"{initial} -> {current}";
+        static string ToFlowText(int initial, int current) => initial == 0 ? $"{current}" : $"{initial} -> {current}";
 
         [CreateProperty]
         public string shipTypeDesc => ShipClass.GetAcronymFor(shipType);

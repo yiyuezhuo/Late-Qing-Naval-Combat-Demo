@@ -38,7 +38,7 @@ namespace NavalCombatCore
         // 3. Prevent Over-concentration: it is possible that some available batteries are not used.
         // 4. Firepower stickiness: Firing platforms tend to remain engaged with the same target to avoid target-switching debuffs and to preserve visual coherence.
 
-        // Though global optimal solution seems too "rational" for a era that gunnery officier make decision independently, the algorithm self is greedy and cannot be very closer to the global optimal solution.
+        // Though global optimal solution seems too "rational" for a era that gunnery officer make decision independently, the algorithm self is greedy and cannot be very closer to the global optimal solution.
 
         public float underfireCoef = 0.1f;
         public float overconcentrateCoef = 0.2f;
@@ -139,6 +139,16 @@ namespace NavalCombatCore
                     shooter.manualFireTarget = oriToTarget.GetValueOrDefault(manualFireTarget);
                 }
 
+                foreach (var battery in shooter.batteries)
+                {
+                    var currentTargetObject = battery.original.GetCurrentFiringTarget();
+                    if (currentTargetObject != null)
+                    {
+                        battery.currentTarget = oriToTarget.GetValueOrDefault(currentTargetObject);
+                        battery.isChangeTargetBlocked = battery.original.IsChangeTargetBlocked();
+                    }
+                }
+
                 foreach (var target in targets)
                 {
                     var stats = shooter.measurements[target] = MeasureStats.Measure(shooter.original, target.original);
@@ -146,13 +156,6 @@ namespace NavalCombatCore
                     {
                         var firepowerScore = battery.original.EvaluateFirepowerScore(stats.distanceYards, stats.targetPresentAspectFromObserver, target.speedKnots, stats.observerToTargetBearingRelativeToBowDeg);
                         battery.firepowerScoreMap[target] = firepowerScore;
-
-                        var currentTargetObject = battery.original.GetCurrentFiringTarget();
-                        if (currentTargetObject != null)
-                        {
-                            battery.currentTarget = oriToTarget.GetValueOrDefault(currentTargetObject);
-                            battery.isChangeTargetBlocked = battery.original.IsChangeTargetBlocked();
-                        }
                     }
                 }
             }
@@ -177,7 +180,13 @@ namespace NavalCombatCore
             // Pick a local optimal in every step until decision space become a empty set. 
             while (true)
             {
-                var decisionRecords = new List<DecisionRecord>();
+                // DecisionRecord is good for debugging but degrade too much performance, so switch to local variables
+                bool hasDecision = false;
+                BatteryRecord bestBattery = null;
+                TargetRecord bestTarget = null;
+                float bestGain = 0;
+                float bestFirepowerScore = 0;
+
                 foreach (var shooter in shooters)
                 {
                     // shooter.manualFireTarget
@@ -202,25 +211,22 @@ namespace NavalCombatCore
                                 gain *= 1 + changeTargetCoef;
                             }
 
-                            var decisionRecord = new DecisionRecord()
+                            if (!hasDecision || gain > bestGain)
                             {
-                                shooter = shooter,
-                                battery = battery,
-                                target = target,
-                                gain = gain,
-                                firepowerScore = tryAddedFirepowerScore
-                            };
-                            decisionRecords.Add(decisionRecord);
+                                hasDecision = true;
+                                bestBattery = battery;
+                                bestTarget = target;
+                                bestGain = gain;
+                                bestFirepowerScore = tryAddedFirepowerScore;
+                            }
                         }
                     }
                 }
-                if (decisionRecords.Count == 0)
-                    break;
-                var maxGain = decisionRecords.Max(r => r.gain);
-                if (maxGain <= 0)
-                    break;
 
-                var bestDecisionRecord = decisionRecords.First(r => r.gain == maxGain);
+                if (!hasDecision)
+                    break;
+                if (bestGain <= 0)
+                    break;
 
                 // DEBUG
                 // if (bestDecisionRecord.battery.currentTarget != bestDecisionRecord.target)
@@ -229,9 +235,9 @@ namespace NavalCombatCore
                 //     UnityEngine.Debug.LogWarning($"Retarget: ({r.shooter}, {r.battery}) {r.battery} -> {r.target}");
                 // }
 
-                bestDecisionRecord.battery.assignedTarget = bestDecisionRecord.target; // TODO: Too harsh to battery which is capable to shoot multiply targets?
-                bestDecisionRecord.target.selfFirepowerScore += bestDecisionRecord.firepowerScore;
-                bestDecisionRecord.target.overConcentrationScore += bestDecisionRecord.battery.overConcentrationCoef;
+                bestBattery.assignedTarget = bestTarget; // TODO: Too harsh to battery which is capable to shoot multiply targets?
+                bestTarget.selfFirepowerScore += bestFirepowerScore;
+                bestTarget.overConcentrationScore += bestBattery.overConcentrationCoef;
             }
 
             // Apply result

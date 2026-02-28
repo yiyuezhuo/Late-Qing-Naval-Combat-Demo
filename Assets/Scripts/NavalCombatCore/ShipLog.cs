@@ -781,11 +781,24 @@ namespace NavalCombatCore
 
         public float GetEffectiveCrewQualityForFloatUsage()
         {
-            var crewQuality = namedShip?.crewRating ?? 0;
-            if (!CoreParameter.Instance.enableLeaderRuleVariant)
-                return crewQuality;
+            return GetCrewQualityBaseForFloatUsageDisplay() + GetLeaderNavalTacticalOffsetForCrewQualityDisplay();
+        }
 
-            return crewQuality + GetCrewQualityFloatVariantOffset(leader);
+        public float GetCrewQualityBaseForFloatUsageDisplay()
+        {
+            return namedShip?.crewRating ?? 0;
+        }
+
+        public float GetLeaderNavalTacticalOffsetForCrewQualityDisplay()
+        {
+            if (!CoreParameter.Instance.enableLeaderRuleVariant)
+                return 0f;
+            return GetCrewQualityFloatVariantOffset(leader);
+        }
+
+        public LeaderSkillLevel GetLeaderNavalTacticalLevelForDisplay()
+        {
+            return NormalizeLeaderSkillLevelForVariant(leader?.navalTactical ?? LeaderSkillLevel.Unknown);
         }
 
         public string DescribeDetail()

@@ -259,6 +259,38 @@ namespace NavalCombatCore
 
             lines.Add($"Battery Detail: {objectId}");
 
+            List<IGrouping<(string targetObjectId, string signature), (int idx, MountStatusRecord.HitProbabilityBreakdown breakdown, string mountLabel)>> groupedBreakdowns;
+            using (var fireCtx = GunneryFireContext.Begin())
+            {
+                var entries = mountStatus.Select((mount, idx) => new
+                {
+                    idx,
+                    breakdown = mount.GetCurrentHitProbabilityBreakdown(fireCtx),
+                    mountLabel = mount.GetMountLocationRecordInfo()?.Summary() ?? mount.objectId
+                }).Select(e => (e.idx, e.breakdown, e.mountLabel)).ToList();
+
+                groupedBreakdowns = entries
+                    .GroupBy(e => (
+                        targetObjectId: e.breakdown?.targetObjectId ?? "[NoTarget]",
+                        signature: e.breakdown?.GetBreakdownSignature() ?? "NoBreakdown"
+                    ))
+                    .OrderBy(g => g.Min(e => e.idx))
+                    .ToList();
+            }
+
+            foreach (var group in groupedBreakdowns)
+            {
+                lines.Add("");
+                var first = group.First();
+                lines.AddRange(MountStatusRecord.BuildHitProbabilityBreakdownLines(
+                    first.breakdown,
+                    group.Select(x => x.mountLabel)
+                ));
+            }
+
+            if (groupedBreakdowns.Count > 0)
+                lines.Add("");
+
             var logsFlatten = mountStatus.SelectMany(mount => mount.logs).ToList();
             logsFlatten.Sort((log1, log2) => log1.firingTime.CompareTo(log2.firingTime));
             lines.AddRange(logsFlatten.Select(log => log.Summary()));

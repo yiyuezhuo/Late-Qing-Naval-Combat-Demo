@@ -1013,8 +1013,24 @@ namespace NavalCombatCore
             var breakdown = GetCurrentHitProbabilityBreakdown();
             lines.AddRange(BuildHitProbabilityBreakdownLines(breakdown));
 
+            var subStateDescriptions = subStates
+                .Select(s => s?.Describe())
+                .Where(s => !string.IsNullOrWhiteSpace(s))
+                .ToList();
+
+            if (subStateDescriptions.Count > 0)
+            {
+                if (lines.Count > 0 && lines[^1] != "")
+                    lines.Add("");
+                lines.Add("SubStates:");
+                lines.AddRange(subStateDescriptions.Select(desc => $"- {desc}"));
+            }
+
             if (logs.Count > 0)
-                lines.Add("");
+            {
+                if (lines.Count > 0 && lines[^1] != "")
+                    lines.Add("");
+            }
             lines.AddRange(logs.Select(r => r.Summary()));
 
             return string.Join("\n", lines);

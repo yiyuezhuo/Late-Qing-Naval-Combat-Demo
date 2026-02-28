@@ -288,11 +288,25 @@ namespace NavalCombatCore
                 ));
             }
 
-            if (groupedBreakdowns.Count > 0)
-                lines.Add("");
+            var subStateDescriptions = subStates
+                .Select(s => s?.Describe())
+                .Where(s => !string.IsNullOrWhiteSpace(s))
+                .ToList();
+            if (subStateDescriptions.Count > 0)
+            {
+                if (lines.Count > 0 && lines[^1] != "")
+                    lines.Add("");
+                lines.Add("SubStates:");
+                lines.AddRange(subStateDescriptions.Select(desc => $"- {desc}"));
+            }
 
             var logsFlatten = mountStatus.SelectMany(mount => mount.logs).ToList();
             logsFlatten.Sort((log1, log2) => log1.firingTime.CompareTo(log2.firingTime));
+            if (logsFlatten.Count > 0)
+            {
+                if (lines.Count > 0 && lines[^1] != "")
+                    lines.Add("");
+            }
             lines.AddRange(logsFlatten.Select(log => log.Summary()));
 
             return string.Join("\n", lines);

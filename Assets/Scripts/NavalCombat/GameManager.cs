@@ -1397,7 +1397,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     if (selectedFireControlSystemStatusRecord != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
-                        selectedFireControlSystemStatusRecord.targetObjectId = targetShipLog?.objectId;
+                        selectedFireControlSystemStatusRecord.SetTrackingTarget(targetShipLog);
                         Debug.Log($"Set Fire Control System Target: {selectedFireControlSystemStatusRecord.objectId} -> {targetShipLog?.objectId}");
                     }
                 }

@@ -17,11 +17,14 @@ namespace NavalCombatCore
 
     public partial class FireControlSystemStatusRecord : UnitModule
     {
+        public const float HittingDurationSeconds = 120f;
+
         // public string objectId { set; get; }
         public string targetObjectId { get; set; }
         public ShipLog GetTarget() => EntityManager.Instance.GetOnMapShipLog(targetObjectId);
         public TrackingSystemState trackingState;
         public float trackingSeconds;
+        public float hittingRemainSeconds;
 
         // public override IEnumerable<IObjectIdLabeled> GetSubObjects()
         // {
@@ -45,11 +48,19 @@ namespace NavalCombatCore
             if (target != null)
             {
                 trackingSeconds += deltaSeconds;
-                if (trackingSeconds >= 120)
+                if (trackingState == TrackingSystemState.BeginTracking &&
+                    trackingSeconds >= HittingDurationSeconds)
                 {
-                    if (trackingState == TrackingSystemState.BeginTracking)
+                    trackingState = TrackingSystemState.Tracking;
+                }
+
+                if (trackingState == TrackingSystemState.Hitting)
+                {
+                    hittingRemainSeconds -= deltaSeconds;
+                    if (hittingRemainSeconds <= 0)
                     {
                         trackingState = TrackingSystemState.Tracking;
+                        hittingRemainSeconds = 0;
                     }
                 }
             }
@@ -58,6 +69,7 @@ namespace NavalCombatCore
         public void ResetTargetting()
         {
             trackingSeconds = 0;
+            hittingRemainSeconds = 0;
             if(trackingState != TrackingSystemState.Destroyed)
             {
                 trackingState = TrackingSystemState.Idle;
@@ -69,6 +81,7 @@ namespace NavalCombatCore
             targetObjectId = null;
             trackingState = TrackingSystemState.Idle;
             trackingSeconds = 0;
+            hittingRemainSeconds = 0;
         }
 
         public void SetTrackingTarget(ShipLog target)
@@ -78,6 +91,7 @@ namespace NavalCombatCore
                 targetObjectId = null;
                 trackingState = TrackingSystemState.Idle;
                 trackingSeconds = 0;
+                hittingRemainSeconds = 0;
             }
             var currentTarget = GetTarget();
             if (currentTarget == target)
@@ -86,6 +100,19 @@ namespace NavalCombatCore
             targetObjectId = target?.objectId;
             trackingState = TrackingSystemState.BeginTracking;
             trackingSeconds = 0;
+            hittingRemainSeconds = 0;
+        }
+
+        public void NotifyTrackedTargetHit(ShipLog target)
+        {
+            if (trackingState == TrackingSystemState.Destroyed || target == null)
+                return;
+
+            if (target.objectId != targetObjectId)
+                return;
+
+            trackingState = TrackingSystemState.Hitting;
+            hittingRemainSeconds = HittingDurationSeconds;
         }
 
         public int GetSubIndex()

@@ -1173,6 +1173,7 @@ namespace NavalCombatCore
         {
             var damageSchema = tgt.shipClass.GetDamageSchema();
             logRecord.DamageSchema = damageSchema;
+            ctx.batteryStatus?.NotifyHitOnTarget(tgt);
 
             if (damageSchema == DamageSchema.Warship) // Warship
             {

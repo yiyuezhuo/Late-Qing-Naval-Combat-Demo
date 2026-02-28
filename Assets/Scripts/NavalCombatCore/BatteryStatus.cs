@@ -222,6 +222,17 @@ namespace NavalCombatCore
             }
         }
 
+        public void NotifyHitOnTarget(ShipLog target)
+        {
+            if (target == null)
+                return;
+
+            foreach (var fcs in fireControlSystemStatusRecords)
+            {
+                fcs.NotifyTrackedTargetHit(target);
+            }
+        }
+
         IWTAObject IWTABattery.GetCurrentFiringTarget()
         {
             var targetMounts = mountStatus.Where(m => m.GetFiringTarget() != null)

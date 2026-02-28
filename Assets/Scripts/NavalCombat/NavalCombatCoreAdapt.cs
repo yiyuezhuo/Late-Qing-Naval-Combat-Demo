@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using Unity.Properties;
 using System;
+using System.Globalization;
 using YYZ;
 
 using CoreUtils;
@@ -218,6 +219,18 @@ namespace NavalCombatCore
                 var parentGroup = member.GetParentGroup();
                 return parentGroup?.name.mergedName ?? "[Not Specified]";
             }
+        }
+
+        [CreateProperty]
+        public string executionDelayDesc
+        {
+            get => Math.Clamp(1f - GetIndependentResponseCoef(), 0f, 1f).ToString("F3", CultureInfo.InvariantCulture);
+        }
+
+        [CreateProperty]
+        public StyleEnum<DisplayStyle> displayStyleOfExecutionDelay
+        {
+            get => GetEffectiveControlMode() == ControlMode.Independent ? DisplayStyle.Flex : DisplayStyle.None;
         }
 
         [CreateProperty]

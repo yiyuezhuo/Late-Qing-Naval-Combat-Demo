@@ -86,12 +86,22 @@ namespace NavalCombatCore
 
         public void SetTrackingTarget(ShipLog target)
         {
+            // Tactical targeting is not allowed to revive a destroyed FCS.
+            if (trackingState == TrackingSystemState.Destroyed)
+            {
+                targetObjectId = null;
+                trackingSeconds = 0;
+                hittingRemainSeconds = 0;
+                return;
+            }
+
             if (target == null)
             {
                 targetObjectId = null;
                 trackingState = TrackingSystemState.Idle;
                 trackingSeconds = 0;
                 hittingRemainSeconds = 0;
+                return;
             }
             var currentTarget = GetTarget();
             if (currentTarget == target)

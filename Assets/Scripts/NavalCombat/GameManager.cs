@@ -1397,8 +1397,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     if (selectedFireControlSystemStatusRecord != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
+                        var wasDestroyed = selectedFireControlSystemStatusRecord.trackingState == TrackingSystemState.Destroyed;
                         selectedFireControlSystemStatusRecord.SetTrackingTarget(targetShipLog);
-                        Debug.Log($"Set Fire Control System Target: {selectedFireControlSystemStatusRecord.objectId} -> {targetShipLog?.objectId}");
+                        if (wasDestroyed)
+                        {
+                            Debug.LogWarning($"Skip Set Fire Control System Target for destroyed FCS: {selectedFireControlSystemStatusRecord.objectId}");
+                        }
+                        else
+                        {
+                            Debug.Log($"Set Fire Control System Target: {selectedFireControlSystemStatusRecord.objectId} -> {targetShipLog?.objectId}");
+                        }
                     }
                 }
             }

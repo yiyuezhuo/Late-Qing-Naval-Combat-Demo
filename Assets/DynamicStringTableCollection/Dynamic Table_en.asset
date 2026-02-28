@@ -2831,6 +2831,10 @@ MonoBehaviour:
     m_Localized: Same Lead Ship
     m_Metadata:
       m_Items: []
+  - m_Id: 50439203805892608
+    m_Localized: SJH - Diversionary Bombardment of Port Arthur
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

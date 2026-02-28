@@ -2860,6 +2860,10 @@ MonoBehaviour:
     m_Localized: "\u540C\u4E00\u65D7\u8266"
     m_Metadata:
       m_Items: []
+  - m_Id: 50439203805892608
+    m_Localized: "SJH - \u65C5\u9806\u3092\u967D\u52D5\u7832\u6483"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

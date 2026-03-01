@@ -3272,4 +3272,46 @@ http://bujinkensyokai.web.fc2.com/hirosimagk.html</remark>
 https://shozokan.nich.go.jp/collection/?at=imageList&amp;id=12283</remark>
   <objectId>5c8acccf-b3aa-4c5f-abcb-486edf576095</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Yang Yonglin</english>
+   <japanese>楊用霖</japanese>
+   <chineseSimplified>杨用霖</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Yang_Yonglin.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://zh.wikipedia.org/zh-hans/%E6%9D%A8%E7%94%A8%E9%9C%96
+http://www.hnyhw.org.cn/newscontent_nor.aspx?channel_id=12&amp;id=7729&amp;m=a0</remark>
+  <objectId>691cb326-2c35-4e14-a93d-ec10a65e190a</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Lin Yingqi</english>
+   <japanese>林穎啟</japanese>
+   <chineseSimplified>林颖启</chineseSimplified>
+   <chineseTraditional>林穎啟</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Lin Yingqi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://baike.baidu.com/item/%E6%9E%97%E9%A2%96%E5%90%AF/8717232</remark>
+  <objectId>14c034d1-7b72-4691-85ad-0d8def5e5182</objectId>
+ </Leader>
 </ArrayOfLeader>

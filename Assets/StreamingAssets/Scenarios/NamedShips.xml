@@ -107,6 +107,33 @@
   <objectId>14fd6eb4-8fa6-4f4b-b98d-00ec411b5e16</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>84de785d-a41c-4993-973a-d167876f343b</shipClassObjectId>
+  <name>
+   <english>Chi Yuan (1894/9/24)</english>
+   <japanese>済遠 (1894/9/24)</japanese>
+   <chineseSimplified>济远 (1894/9/24)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>f3e417c3-89d7-4a71-a8b8-84c408d0cb05</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Jiyuan
+
+After Fang was executed, Lin took command of the ship.
+</remark>
+  <objectId>3cadbc79-3102-4015-8c30-7618c8e3662b</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</shipClassObjectId>
   <name>
    <english>Kuang Yi</english>
@@ -131,6 +158,35 @@
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <remark>https://zh.wikipedia.org/wiki/%E5%B9%BF%E4%B9%99%E5%8F%B7%E9%98%B2%E6%8A%A4%E5%B7%A1%E6%B4%8B%E8%88%B0</remark>
   <objectId>c58b4a18-5e00-4eca-ad5b-6ee74a2b9709</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</shipClassObjectId>
+  <name>
+   <english>Ting Yuen</english>
+   <japanese>定遠</japanese>
+   <chineseSimplified>定远</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>Vulcan, Stettin</english>
+   <japanese>ドイツ帝国シュテッティン、フルカン造船所</japanese>
+   <chineseSimplified>德国伏尔铿造船厂</chineseSimplified>
+   <chineseTraditional>德國伏爾鏗造船廠</chineseTraditional>
+  </builderDesc>
+  <launchedDate>12/28/1881</launchedDate>
+  <completedDate>00/00/1885</completedDate>
+  <fateDesc>
+   <english>Sunk 02/06/1895</english>
+  </fateDesc>
+  <applicableYearBegin>1885</applicableYearBegin>
+  <applicableYearEnd>1895</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>67623f92-366e-4f7f-a31e-a988494d9bdf</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Chinese_ironclad_Dingyuan</remark>
+  <objectId>c12c377d-3a26-4d14-897a-db3beb221060</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</shipClassObjectId>
@@ -164,31 +220,28 @@
  <NamedShip>
   <shipClassObjectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</shipClassObjectId>
   <name>
-   <english>Ting Yuen</english>
-   <japanese>定遠</japanese>
-   <chineseSimplified>定远</chineseSimplified>
+   <english>Chen Yuan (1894/10/9)</english>
+   <japanese>鎮遠 (1894/10/9)</japanese>
+   <chineseSimplified>镇远 (1894/10/9)</chineseSimplified>
   </name>
   <builderDesc>
-   <english>Vulcan, Stettin</english>
-   <japanese>ドイツ帝国シュテッティン、フルカン造船所</japanese>
-   <chineseSimplified>德国伏尔铿造船厂</chineseSimplified>
-   <chineseTraditional>德國伏爾鏗造船廠</chineseTraditional>
+   <english>none</english>
   </builderDesc>
-  <launchedDate>12/28/1881</launchedDate>
-  <completedDate>00/00/1885</completedDate>
   <fateDesc>
-   <english>Sunk 02/06/1895</english>
+   <english>none</english>
   </fateDesc>
-  <applicableYearBegin>1885</applicableYearBegin>
-  <applicableYearEnd>1895</applicableYearEnd>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
   <defaultLeaderReference>
-   <referenceObjectId>67623f92-366e-4f7f-a31e-a988494d9bdf</referenceObjectId>
+   <referenceObjectId>691cb326-2c35-4e14-a93d-ec10a65e190a</referenceObjectId>
   </defaultLeaderReference>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_ironclad_Dingyuan</remark>
-  <objectId>c12c377d-3a26-4d14-897a-db3beb221060</objectId>
+  <remark>https://en.wikipedia.org/wiki/Chinese_ironclad_Zhenyuan
+
+After Lin commited suicide, Lin took command of the ship.</remark>
+  <objectId>aec1143a-8588-4c84-83ca-80c1f4439bb5</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</shipClassObjectId>
@@ -401,6 +454,29 @@
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <remark>https://en.wikipedia.org/wiki/Chinese_corvette_Kwan_Chia</remark>
   <objectId>6b3bdffa-e1c1-4926-9a3b-4c04c7ccc2f7</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>b89ab4c6-4951-4782-9544-e8e1394f3d3d</shipClassObjectId>
+  <name>
+   <english>Wei Yuen</english>
+   <japanese>威遠</japanese>
+   <chineseSimplified>威远</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>14c034d1-7b72-4691-85ad-0d8def5e5182</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>0fd216a8-0ea1-46d6-92b5-24543a753369</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</shipClassObjectId>

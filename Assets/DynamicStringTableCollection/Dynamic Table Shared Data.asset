@@ -2826,6 +2826,10 @@ MonoBehaviour:
     m_Key: SJH - Diversionary Bombardment of Port Arthur.scen.xml
     m_Metadata:
       m_Items: []
+  - m_Id: 50636891679789056
+    m_Key: ShipType.LandBattery
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

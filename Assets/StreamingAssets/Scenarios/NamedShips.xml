@@ -4185,4 +4185,67 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <objectId>1ee44cf0-caff-4fc3-b11b-f76b9e2b970c</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>e770b2d5-373d-48a8-ad13-6db316e450a9</shipClassObjectId>
+  <name>
+   <english>Battery Number 9</english>
+   <japanese>9号砲台</japanese>
+   <chineseSimplified>9号炮台</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>78abeb54-66f6-47ad-9764-f4ec48e76d8b</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ceb31553-4e1c-4f6e-81de-48ef6b1e77e5</shipClassObjectId>
+  <name>
+   <english>Battery Number 15 (Electric Cliff)</english>
+   <japanese>15号砲台（電岩）</japanese>
+   <chineseSimplified>15号炮台 (电岩)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>926e91b1-51a5-420b-8d4e-6c94b108bb79</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>60ae95ea-8f01-4224-99c4-852355179895</shipClassObjectId>
+  <name>
+   <english>Battery Number 17</english>
+   <japanese>17号砲台</japanese>
+   <chineseSimplified>17号炮台</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>048d3ba4-1965-4cd5-a706-2d52695b2337</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

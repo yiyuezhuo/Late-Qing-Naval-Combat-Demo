@@ -2835,6 +2835,10 @@ MonoBehaviour:
     m_Localized: SJH - Diversionary Bombardment of Port Arthur
     m_Metadata:
       m_Items: []
+  - m_Id: 50636891679789056
+    m_Localized: Coast Battery
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

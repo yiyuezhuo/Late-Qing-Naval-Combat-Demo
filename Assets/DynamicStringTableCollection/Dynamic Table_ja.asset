@@ -2864,6 +2864,10 @@ MonoBehaviour:
     m_Localized: "SJH - \u65C5\u9806\u3092\u967D\u52D5\u7832\u6483"
     m_Metadata:
       m_Items: []
+  - m_Id: 50636891679789056
+    m_Localized: "\u6D77\u5CB8\u7832\u53F0"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

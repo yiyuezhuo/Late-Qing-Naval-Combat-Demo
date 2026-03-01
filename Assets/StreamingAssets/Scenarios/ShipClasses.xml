@@ -28398,16 +28398,235 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
  </ShipClass>
  <ShipClass>
   <name>
-   <english>Battery Number 15 (Electric Cliff)</english>
-   <chineseSimplified>“15号”炮台 (电岩)</chineseSimplified>
+   <english>Battery Number 9</english>
+   <japanese>9号砲台</japanese>
+   <chineseSimplified>9号炮台</chineseSimplified>
   </name>
-  <type>NotSpecified</type>
+  <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
   <displacementTons>0</displacementTons>
   <complementMen>0</complementMen>
-  <lengthFoot>0</lengthFoot>
-  <beamFoot>0</beamFoot>
+  <lengthFoot>200</lengthFoot>
+  <beamFoot>200</beamFoot>
+  <draftFoot>0</draftFoot>
+  <engineDesc>
+   <english>none</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>none</english>
+  </boilersDesc>
+  <batteryRecords>
+   <BatteryRecord>
+    <name>
+     <english>152mm/45 Pattern 1892</english>
+     <japanese />
+     <chineseSimplified />
+    </name>
+    <damageRating>16</damageRating>
+    <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
+    <fireControlPositions>2</fireControlPositions>
+    <fireControlType>
+     <code>Y</code>
+     <gunSight>Basic</gunSight>
+     <fireControlInstrument>Basic</fireControlInstrument>
+     <rangeFinder>None</rangeFinder>
+     <directorControl>None</directorControl>
+     <stabilization>Manual</stabilization>
+     <powerRemoteControl>None</powerRemoteControl>
+    </fireControlType>
+    <rangeYards>11082</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
+    <fireControlRadarModifier>0</fireControlRadarModifier>
+    <fireControlRadarName>
+     <english>None</english>
+    </fireControlRadarName>
+    <shellSizeInch>6</shellSizeInch>
+    <shellWeightPounds>100</shellWeightPounds>
+    <ammunitionCapacity>2100</ammunitionCapacity>
+    <fireControlTableRecords>
+     <FireControlTableRecord>
+      <speedThresholdKnot>9</speedThresholdKnot>
+      <shortBroad>7</shortBroad>
+      <shortNarrow>4</shortNarrow>
+      <mediumBroad>4</mediumBroad>
+      <mediumNarrow>3</mediumNarrow>
+      <longBroad>3</longBroad>
+      <longNarrow>2</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>18</speedThresholdKnot>
+      <shortBroad>5</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>27</speedThresholdKnot>
+      <shortBroad>4</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>36</speedThresholdKnot>
+      <shortBroad>3</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>45</speedThresholdKnot>
+      <shortBroad>3</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+    </fireControlTableRecords>
+    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableRecords>
+     <PenetrationTableRecord>
+      <distanceYards>2000</distanceYards>
+      <rateOfFire>7.6</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>6.5</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>4000</distanceYards>
+      <rateOfFire>6.2</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.2</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>4.6</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>6000</distanceYards>
+      <rateOfFire>5</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.4</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>3.3</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>8000</distanceYards>
+      <rateOfFire>4</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.6</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.6</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>10000</distanceYards>
+      <rateOfFire>3.3</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>0.9</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.2</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>12000</distanceYards>
+      <rateOfFire>3</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.1</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+    </penetrationTableRecords>
+    <mountLocationRecords>
+     <MountLocationRecord>
+      <mountLocation>Midship</mountLocation>
+      <barrels>1</barrels>
+      <mounts>5</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="80" CoverageDeg="110" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>9c0bd006-f1f9-4208-88e3-798b52ae4524</objectId>
+     </MountLocationRecord>
+    </mountLocationRecords>
+    <objectId>e57dd039-fd23-4e6a-87c8-aab810dfbd82</objectId>
+   </BatteryRecord>
+  </batteryRecords>
+  <torpedoSector>
+   <name>
+    <english>none</english>
+   </name>
+   <mountLocationRecords />
+   <torpedoSettings />
+   <ammunitionCapacity>0</ammunitionCapacity>
+   <damageClass>A</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords />
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>2000</damagePoint>
+  <speedKnots>0</speedKnots>
+  <damageControlRatingUnmodified>2</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels />
+  <speedKnotsPropulsionShaftLevels />
+  <speedKnotsBoilerRooms />
+  <speedIncreaseRecord />
+  <standardTurnDegPer2Min>0</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>0</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+   <armorType>NotSpecified</armorType>
+  </armorRating>
+  <remark>Dawn of the Battle scenario book Dawn of the Rising Sun</remark>
+  <portraitReference>
+   <path>Pictures\Ships\fort.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\fort.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\fort.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <ram>None</ram>
+  <objectId>e770b2d5-373d-48a8-ad13-6db316e450a9</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Battery Number 15 (Electric Cliff)</english>
+   <japanese>15号砲台（電岩）</japanese>
+   <chineseSimplified>15号炮台 (电岩)</chineseSimplified>
+  </name>
+  <type>LandBattery</type>
+  <extraShipType>NotSpecified</extraShipType>
+  <country>Russia</country>
+  <displacementTons>0</displacementTons>
+  <complementMen>0</complementMen>
+  <lengthFoot>200</lengthFoot>
+  <beamFoot>200</beamFoot>
   <draftFoot>0</draftFoot>
   <engineDesc>
    <english>none</english>
@@ -28442,7 +28661,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     </fireControlRadarName>
     <shellSizeInch>10</shellSizeInch>
     <shellWeightPounds>496.5</shellWeightPounds>
-    <ammunitionCapacity>300</ammunitionCapacity>
+    <ammunitionCapacity>3000</ammunitionCapacity>
     <fireControlTableRecords>
      <FireControlTableRecord>
       <speedThresholdKnot>9</speedThresholdKnot>
@@ -28595,10 +28814,10 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <pistolType>Contact</pistolType>
   </torpedoSector>
   <rapidFireBatteryRecords />
-  <targetSizeModifier>0</targetSizeModifier>
-  <damagePoint>0</damagePoint>
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>2000</damagePoint>
   <speedKnots>0</speedKnots>
-  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <damageControlRatingUnmodified>2</damageControlRatingUnmodified>
   <speedKnotsEngineRoomsLevels />
   <speedKnotsPropulsionShaftLevels />
   <speedKnotsBoilerRooms />
@@ -28619,6 +28838,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://besour.livejournal.com/181387.html?es=1</portraitUrl>
+  <remark>Dawn of the Battle scenario book Dawn of the Rising Sun</remark>
   <portraitReference>
    <path>Pictures\Ships\Port_Arthur_no_15_battery_444px.png</path>
    <isBuiltin>true</isBuiltin>
@@ -28628,11 +28848,220 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <isBuiltin>true</isBuiltin>
   </portraitTopReference>
   <portraitIconReference>
-   <path>Pictures\Ships\Port_Arthur_no_15_battery_444px_Top.png</path>
+   <path>Pictures\Ships\fort.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
   <ram>None</ram>
   <objectId>ceb31553-4e1c-4f6e-81de-48ef6b1e77e5</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Battery Number 17</english>
+   <japanese>17号砲台</japanese>
+   <chineseSimplified>17号炮台</chineseSimplified>
+  </name>
+  <type>LandBattery</type>
+  <extraShipType>NotSpecified</extraShipType>
+  <country>Russia</country>
+  <displacementTons>0</displacementTons>
+  <complementMen>0</complementMen>
+  <lengthFoot>200</lengthFoot>
+  <beamFoot>200</beamFoot>
+  <draftFoot>0</draftFoot>
+  <engineDesc>
+   <english>none</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>none</english>
+  </boilersDesc>
+  <batteryRecords>
+   <BatteryRecord>
+    <name>
+     <english>229mm/9 Mortar Pattern 1877</english>
+    </name>
+    <damageRating>27</damageRating>
+    <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
+    <fireControlPositions>1</fireControlPositions>
+    <fireControlType>
+     <code>Y</code>
+     <gunSight>Basic</gunSight>
+     <fireControlInstrument>Basic</fireControlInstrument>
+     <rangeFinder>None</rangeFinder>
+     <directorControl>None</directorControl>
+     <stabilization>Manual</stabilization>
+     <powerRemoteControl>None</powerRemoteControl>
+    </fireControlType>
+    <rangeYards>8475</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
+    <fireControlRadarModifier>0</fireControlRadarModifier>
+    <fireControlRadarName>
+     <english>None</english>
+    </fireControlRadarName>
+    <shellSizeInch>9</shellSizeInch>
+    <shellWeightPounds>306.4</shellWeightPounds>
+    <ammunitionCapacity>3200</ammunitionCapacity>
+    <fireControlTableRecords>
+     <FireControlTableRecord>
+      <speedThresholdKnot>9</speedThresholdKnot>
+      <shortBroad>9</shortBroad>
+      <shortNarrow>5</shortNarrow>
+      <mediumBroad>5</mediumBroad>
+      <mediumNarrow>3</mediumNarrow>
+      <longBroad>4</longBroad>
+      <longNarrow>2</longNarrow>
+      <extremeBroad>3</extremeBroad>
+      <extremeNarrow>2</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>18</speedThresholdKnot>
+      <shortBroad>6</shortBroad>
+      <shortNarrow>4</shortNarrow>
+      <mediumBroad>4</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>3</longBroad>
+      <longNarrow>2</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>27</speedThresholdKnot>
+      <shortBroad>5</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>36</speedThresholdKnot>
+      <shortBroad>4</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>45</speedThresholdKnot>
+      <shortBroad>3</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+    </fireControlTableRecords>
+    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableRecords>
+     <PenetrationTableRecord>
+      <distanceYards>2000</distanceYards>
+      <rateOfFire>1.6</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>5.5</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>4000</distanceYards>
+      <rateOfFire>1.6</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.3</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>4.4</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>6000</distanceYards>
+      <rateOfFire>1.6</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.6</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>3.7</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>8000</distanceYards>
+      <rateOfFire>1.6</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>3.3</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>10000</distanceYards>
+      <rateOfFire>1.6</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>1.1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>3.2</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+    </penetrationTableRecords>
+    <mountLocationRecords>
+     <MountLocationRecord>
+      <mountLocation>Midship</mountLocation>
+      <barrels>1</barrels>
+      <mounts>8</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="100" CoverageDeg="120" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>fe9ad3f5-91fe-481b-89bc-2d7687fa0e7e</objectId>
+     </MountLocationRecord>
+    </mountLocationRecords>
+    <objectId>007e75b8-7038-4a9e-ae29-d2aab40d0424</objectId>
+   </BatteryRecord>
+  </batteryRecords>
+  <torpedoSector>
+   <name>
+    <english>none</english>
+   </name>
+   <mountLocationRecords />
+   <torpedoSettings />
+   <ammunitionCapacity>0</ammunitionCapacity>
+   <damageClass>A</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords />
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>2000</damagePoint>
+  <speedKnots>0</speedKnots>
+  <damageControlRatingUnmodified>2</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels />
+  <speedKnotsPropulsionShaftLevels />
+  <speedKnotsBoilerRooms />
+  <speedIncreaseRecord />
+  <standardTurnDegPer2Min>0</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>0</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+   <armorType>NotSpecified</armorType>
+  </armorRating>
+  <remark>Dawn of the Battle scenario book Dawn of the Rising Sun</remark>
+  <portraitReference>
+   <path>Pictures\Ships\fort.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\fort.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\fort.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <ram>None</ram>
+  <objectId>60ae95ea-8f01-4224-99c4-852355179895</objectId>
  </ShipClass>
  <ShipClass>
   <name>
@@ -29659,7 +30088,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
   <targetSizeModifier>-1</targetSizeModifier>
   <damagePoint>2000</damagePoint>
   <speedKnots>0</speedKnots>
-  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <damageControlRatingUnmodified>2</damageControlRatingUnmodified>
   <speedKnotsEngineRoomsLevels />
   <speedKnotsPropulsionShaftLevels />
   <speedKnotsBoilerRooms />
@@ -30158,7 +30587,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
   <targetSizeModifier>-1</targetSizeModifier>
   <damagePoint>2000</damagePoint>
   <speedKnots>0</speedKnots>
-  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <damageControlRatingUnmodified>2</damageControlRatingUnmodified>
   <speedKnotsEngineRoomsLevels />
   <speedKnotsPropulsionShaftLevels />
   <speedKnotsBoilerRooms />
@@ -30512,7 +30941,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
   <targetSizeModifier>-1</targetSizeModifier>
   <damagePoint>2000</damagePoint>
   <speedKnots>0</speedKnots>
-  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <damageControlRatingUnmodified>2</damageControlRatingUnmodified>
   <speedKnotsEngineRoomsLevels />
   <speedKnotsPropulsionShaftLevels />
   <speedKnotsBoilerRooms />

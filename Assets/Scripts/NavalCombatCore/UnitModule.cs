@@ -125,7 +125,7 @@ namespace NavalCombatCore
                 }
                 else if (campaignPersistence == CampaignPersistence.Volatile)
                 {
-                    if (subState.damageControllable)
+                    if (subState.damageControllable || subState.lifeCycle == StateLifeCycle.GivenTime)
                     {
                         subStates.Remove(subState); // TODO: Or use EndAt? But we may don't want sid-effect of it.
                     }

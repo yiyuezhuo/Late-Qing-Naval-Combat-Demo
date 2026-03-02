@@ -16,8 +16,8 @@
     <namedShipObjectId>a93bd015-9148-44ef-be6e-317600a7bbf5</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.46391</LatDeg>
-     <LonDeg>122.20591</LonDeg>
+     <LatDeg>37.4564819</LatDeg>
+     <LonDeg>122.206459</LonDeg>
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
@@ -173,8 +173,8 @@
     <namedShipObjectId>2fa2706a-f6ff-470c-9d93-9b63e6a8bd29</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.46391</LatDeg>
-     <LonDeg>122.207977</LonDeg>
+     <LatDeg>37.4564819</LatDeg>
+     <LonDeg>122.208527</LonDeg>
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
@@ -321,8 +321,8 @@
     <namedShipObjectId>51a37a4c-28cf-41ad-b4b3-f79281db5774</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.46391</LatDeg>
-     <LonDeg>122.212112</LonDeg>
+     <LatDeg>37.4564819</LatDeg>
+     <LonDeg>122.212662</LonDeg>
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
@@ -469,8 +469,8 @@
     <namedShipObjectId>87fd153a-0272-4999-b38d-ce0f6fb9e4aa</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.46391</LatDeg>
-     <LonDeg>122.21418</LonDeg>
+     <LatDeg>37.4564819</LatDeg>
+     <LonDeg>122.214729</LonDeg>
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
@@ -617,8 +617,8 @@
     <namedShipObjectId>5bb89093-e7df-4e9c-9b6f-e7e55f5743bd</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.46391</LatDeg>
-     <LonDeg>122.216248</LonDeg>
+     <LatDeg>37.4564819</LatDeg>
+     <LonDeg>122.2168</LonDeg>
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
@@ -765,8 +765,8 @@
     <namedShipObjectId>dbeb6222-9869-440f-b244-a69b04c66b6b</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.464</LatDeg>
-     <LonDeg>122.196518</LonDeg>
+     <LatDeg>37.45593</LatDeg>
+     <LonDeg>122.196</LonDeg>
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
@@ -922,8 +922,8 @@
     <namedShipObjectId>7d4a4511-36c5-4bf6-b287-fcc28fec0961</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.464</LatDeg>
-     <LonDeg>122.19445</LonDeg>
+     <LatDeg>37.45593</LatDeg>
+     <LonDeg>122.193932</LonDeg>
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
@@ -1069,8 +1069,8 @@
     <namedShipObjectId>71d3e467-b519-44d7-b0f9-53913ca072d0</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.464</LatDeg>
-     <LonDeg>122.198586</LonDeg>
+     <LatDeg>37.45593</LatDeg>
+     <LonDeg>122.198067</LonDeg>
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
@@ -1217,8 +1217,8 @@
     <namedShipObjectId>70f899c2-67a2-4775-8926-31e0d32df905</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.464</LatDeg>
-     <LonDeg>122.200653</LonDeg>
+     <LatDeg>37.45593</LatDeg>
+     <LonDeg>122.200134</LonDeg>
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
@@ -1365,8 +1365,8 @@
     <namedShipObjectId>33ca5080-7502-4d1d-a804-16c24c2596ae</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.46391</LatDeg>
-     <LonDeg>122.210045</LonDeg>
+     <LatDeg>37.4564819</LatDeg>
+     <LonDeg>122.210594</LonDeg>
     </position>
     <speedKnots>10</speedKnots>
     <headingDeg>270</headingDeg>
@@ -1508,18 +1508,35 @@
     <strategicGroupReference />
    </ShipLog>
    <ShipLog>
-    <subStates />
+    <subStates>
+     <SubState xsi:type="MainPowerplantOOA">
+      <lifeCycle>SeverityBased</lifeCycle>
+      <givenTimeSeconds>120</givenTimeSeconds>
+      <severity>104.816277</severity>
+      <dieRollThreshold>0</dieRollThreshold>
+      <cause>DE 152, Main powerplant OOA</cause>
+      <damageControlApplied>false</damageControlApplied>
+      <turnClock>
+       <intervalSeconds>120</intervalSeconds>
+       <accumulateSecond>0</accumulateSecond>
+       <elapsedSeconds>0</elapsedSeconds>
+      </turnClock>
+      <objectId>208042ee-7a1d-4cc7-8401-24beb18252f5</objectId>
+      <rateOfFireCoef>0.5</rateOfFireCoef>
+      <isDamageControlBlocked>true</isDamageControlBlocked>
+     </SubState>
+    </subStates>
     <objectId>18bda109-5b7e-490c-a2d5-fad76be0ea2f</objectId>
     <namedShipObjectId>c12c377d-3a26-4d14-897a-db3beb221060</namedShipObjectId>
-    <damagePoint>0</damagePoint>
+    <damagePoint>265</damagePoint>
     <position>
-     <LatDeg>37.4887733</LatDeg>
-     <LonDeg>122.168549</LonDeg>
+     <LatDeg>37.48911</LatDeg>
+     <LonDeg>122.171707</LonDeg>
     </position>
     <speedKnots>0</speedKnots>
-    <headingDeg>0</headingDeg>
+    <headingDeg>118.537254</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
-    <desiredHeadingDeg>0</desiredHeadingDeg>
+    <desiredHeadingDeg>118.537254</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -1588,7 +1605,7 @@
        <MountStatusRecord>
         <subStates />
         <objectId>5cc24bf0-7204-4521-a89a-2cab98e4c694</objectId>
-        <status>Operational</status>
+        <status>Disabled</status>
         <barrels>1</barrels>
         <processSeconds>0</processSeconds>
         <ammunitionType>ArmorPiercing</ammunitionType>
@@ -1648,8 +1665,8 @@
     </torpedoSectorStatus>
     <rapidFiringStatus>
      <RapidFiringStatus>
-      <portMountHits>0</portMountHits>
-      <starboardMountHits>0</starboardMountHits>
+      <portMountHits>2</portMountHits>
+      <starboardMountHits>1</starboardMountHits>
       <fireControlHits>0</fireControlHits>
       <targettingRecords />
       <ammunition>60</ammunition>
@@ -1658,7 +1675,7 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <maxSpeedKnotsOffset>-1</maxSpeedKnotsOffset>
      <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
@@ -1670,8 +1687,8 @@
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
     </searchLightHits>
-    <damageControlRatingHits>0</damageControlRatingHits>
-    <disableDamageInReset>false</disableDamageInReset>
+    <damageControlRatingHits>1</damageControlRatingHits>
+    <disableDamageInReset>true</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -1757,13 +1774,13 @@
     <namedShipObjectId>3cadbc79-3102-4015-8c30-7618c8e3662b</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.4865646</LatDeg>
-     <LonDeg>122.165405</LonDeg>
+     <LatDeg>37.4910774</LatDeg>
+     <LonDeg>122.167168</LonDeg>
     </position>
     <speedKnots>0</speedKnots>
-    <headingDeg>0</headingDeg>
+    <headingDeg>118.537254</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
-    <desiredHeadingDeg>0</desiredHeadingDeg>
+    <desiredHeadingDeg>118.537254</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -1902,7 +1919,8 @@
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
-    <controlMode>Independent</controlMode>
+    <controlMode>FollowTarget</controlMode>
+    <followedTargetObjectId>18bda109-5b7e-490c-a2d5-fad76be0ea2f</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
@@ -1980,23 +1998,54 @@
     <strategicGroupReference />
    </ShipLog>
    <ShipLog>
-    <subStates />
+    <subStates>
+     <SubState xsi:type="EngineRoomCommunicationDamaged">
+      <lifeCycle>Permanent</lifeCycle>
+      <givenTimeSeconds>120</givenTimeSeconds>
+      <severity>0</severity>
+      <dieRollThreshold>0</dieRollThreshold>
+      <cause>DE 124, Loss of communication to engine room</cause>
+      <damageControlApplied>false</damageControlApplied>
+      <turnClock>
+       <intervalSeconds>120</intervalSeconds>
+       <accumulateSecond>0</accumulateSecond>
+       <elapsedSeconds>0</elapsedSeconds>
+      </turnClock>
+      <objectId>7fdf35fd-28c3-42df-a56e-a7c7981779a7</objectId>
+      <blocked>false</blocked>
+     </SubState>
+     <SubState xsi:type="ArmorModifier">
+      <lifeCycle>Permanent</lifeCycle>
+      <givenTimeSeconds>120</givenTimeSeconds>
+      <severity>0</severity>
+      <dieRollThreshold>0</dieRollThreshold>
+      <cause>DE 170 (A/B): Main waterline belt is submerged due to flooding and list.</cause>
+      <damageControlApplied>false</damageControlApplied>
+      <turnClock>
+       <intervalSeconds>120</intervalSeconds>
+       <accumulateSecond>0</accumulateSecond>
+       <elapsedSeconds>0</elapsedSeconds>
+      </turnClock>
+      <objectId>c627bfe8-331c-42bc-b3ca-a0e12629c2cf</objectId>
+      <mainBeltArmorCoef>0.5</mainBeltArmorCoef>
+     </SubState>
+    </subStates>
     <objectId>8e00b3e5-ade7-4068-893d-4b87ec15cafb</objectId>
     <namedShipObjectId>aec1143a-8588-4c84-83ca-80c1f4439bb5</namedShipObjectId>
-    <damagePoint>0</damagePoint>
+    <damagePoint>315</damagePoint>
     <position>
-     <LatDeg>37.482975</LatDeg>
-     <LonDeg>122.173233</LonDeg>
+     <LatDeg>37.49338</LatDeg>
+     <LonDeg>122.182182</LonDeg>
     </position>
     <speedKnots>0</speedKnots>
-    <headingDeg>0</headingDeg>
+    <headingDeg>24.60119</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
-    <desiredHeadingDeg>0</desiredHeadingDeg>
+    <desiredHeadingDeg>24.60119</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
     <desiredSpeedKnotsForBoilerRoom>0</desiredSpeedKnotsForBoilerRoom>
-    <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
+    <smokeGeneratorDisabled>true</smokeGeneratorDisabled>
     <batteryStatus>
      <BatteryStatus>
       <subStates />
@@ -2092,7 +2141,7 @@
       <TorpedoMountStatusRecord>
        <subStates />
        <objectId>9109a389-8f2e-4714-908a-7d8cf9efdeba</objectId>
-       <status>Operational</status>
+       <status>Disabled</status>
        <barrels>1</barrels>
        <currentLoad>1</currentLoad>
        <reloadingSeconds>0</reloadingSeconds>
@@ -2130,7 +2179,7 @@
      </RapidFiringStatus>
     </rapidFiringStatus>
     <dynamicStatus>
-     <maxSpeedKnotsOffset>0</maxSpeedKnotsOffset>
+     <maxSpeedKnotsOffset>-15</maxSpeedKnotsOffset>
      <accelerationOffset>0</accelerationOffset>
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
@@ -2143,7 +2192,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <disableDamageInReset>false</disableDamageInReset>
+    <disableDamageInReset>true</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -2227,15 +2276,15 @@
     <subStates />
     <objectId>73155b84-1d3d-4421-9ceb-288c24cacb3e</objectId>
     <namedShipObjectId>b1447997-60c7-4a81-a2c2-76c4f21e8695</namedShipObjectId>
-    <damagePoint>0</damagePoint>
+    <damagePoint>195</damagePoint>
     <position>
-     <LatDeg>37.4840775</LatDeg>
-     <LonDeg>122.16124</LonDeg>
+     <LatDeg>37.4930458</LatDeg>
+     <LonDeg>122.162628</LonDeg>
     </position>
     <speedKnots>0</speedKnots>
-    <headingDeg>0</headingDeg>
+    <headingDeg>118.537254</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
-    <desiredHeadingDeg>0</desiredHeadingDeg>
+    <desiredHeadingDeg>118.537254</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -2286,7 +2335,7 @@
        <MountStatusRecord>
         <subStates />
         <objectId>8cd047ae-74db-4b8a-89c1-b185c984398c</objectId>
-        <status>Operational</status>
+        <status>Disabled</status>
         <barrels>1</barrels>
         <processSeconds>0</processSeconds>
         <ammunitionType>ArmorPiercing</ammunitionType>
@@ -2370,10 +2419,11 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <disableDamageInReset>false</disableDamageInReset>
+    <disableDamageInReset>true</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
-    <controlMode>Independent</controlMode>
+    <controlMode>FollowTarget</controlMode>
+    <followedTargetObjectId>3c2bc42c-62d7-4bc3-ba17-3135584f3627</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
@@ -2454,15 +2504,15 @@
     <subStates />
     <objectId>c39933c5-2b10-4977-aa39-850eeca69e24</objectId>
     <namedShipObjectId>eab7b62b-359b-4a48-8539-02b75902e2a2</namedShipObjectId>
-    <damagePoint>0</damagePoint>
+    <damagePoint>180</damagePoint>
     <position>
-     <LatDeg>37.4798</LatDeg>
-     <LonDeg>122.164543</LonDeg>
+     <LatDeg>37.4934654</LatDeg>
+     <LonDeg>122.171989</LonDeg>
     </position>
     <speedKnots>0</speedKnots>
-    <headingDeg>0</headingDeg>
+    <headingDeg>121.38221</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
-    <desiredHeadingDeg>0</desiredHeadingDeg>
+    <desiredHeadingDeg>121.38221</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -2480,7 +2530,24 @@
       </ammunition>
       <mountStatus>
        <MountStatusRecord>
-        <subStates />
+        <subStates>
+         <SubState xsi:type="BatteryMountStatusModifier">
+          <lifeCycle>Dependent</lifeCycle>
+          <givenTimeSeconds>120</givenTimeSeconds>
+          <severity>0</severity>
+          <dieRollThreshold>0</dieRollThreshold>
+          <dependentObjectId>58001ca6-2df1-474e-9edd-c51177bb11d8</dependentObjectId>
+          <cause>DE 153, damage to power distribution system (sub)</cause>
+          <damageControlApplied>false</damageControlApplied>
+          <turnClock>
+           <intervalSeconds>120</intervalSeconds>
+           <accumulateSecond>0</accumulateSecond>
+           <elapsedSeconds>0</elapsedSeconds>
+          </turnClock>
+          <objectId>008abb4d-e949-4626-8a27-2440546cd05c</objectId>
+          <mountStatus>Disabled</mountStatus>
+         </SubState>
+        </subStates>
         <objectId>eb1ca076-abb7-4ee1-bff6-30da38c0fd0f</objectId>
         <status>Operational</status>
         <barrels>2</barrels>
@@ -2510,7 +2577,23 @@
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
      </BatteryStatus>
      <BatteryStatus>
-      <subStates />
+      <subStates>
+       <SubState xsi:type="RateOfFireModifier">
+        <lifeCycle>Permanent</lifeCycle>
+        <givenTimeSeconds>120</givenTimeSeconds>
+        <severity>0</severity>
+        <dieRollThreshold>0</dieRollThreshold>
+        <cause>DE 106: Ammo Hoist or handling/handling room OOA permanently</cause>
+        <damageControlApplied>false</damageControlApplied>
+        <turnClock>
+         <intervalSeconds>120</intervalSeconds>
+         <accumulateSecond>0</accumulateSecond>
+         <elapsedSeconds>0</elapsedSeconds>
+        </turnClock>
+        <objectId>0766e9e9-51cc-4407-bd97-1647dee25baf</objectId>
+        <rateOfFireCoef>0.5</rateOfFireCoef>
+       </SubState>
+      </subStates>
       <objectId>8be57a38-9f3d-43c5-888a-2da03126a37d</objectId>
       <ammunition>
        <ArmorPiercing>70</ArmorPiercing>
@@ -2615,8 +2698,8 @@
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
     </searchLightHits>
-    <damageControlRatingHits>0</damageControlRatingHits>
-    <disableDamageInReset>false</disableDamageInReset>
+    <damageControlRatingHits>1</damageControlRatingHits>
+    <disableDamageInReset>true</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -2697,18 +2780,34 @@
     <strategicGroupReference />
    </ShipLog>
    <ShipLog>
-    <subStates />
+    <subStates>
+     <SubState xsi:type="ArmorModifier">
+      <lifeCycle>Permanent</lifeCycle>
+      <givenTimeSeconds>120</givenTimeSeconds>
+      <severity>0</severity>
+      <dieRollThreshold>0</dieRollThreshold>
+      <cause>DE 170 (A/B): Main waterline belt is submerged due to flooding and list.</cause>
+      <damageControlApplied>false</damageControlApplied>
+      <turnClock>
+       <intervalSeconds>120</intervalSeconds>
+       <accumulateSecond>0</accumulateSecond>
+       <elapsedSeconds>0</elapsedSeconds>
+      </turnClock>
+      <objectId>16fab345-a203-4048-bdca-7093e3ab2b6f</objectId>
+      <mainBeltArmorCoef>0.5</mainBeltArmorCoef>
+     </SubState>
+    </subStates>
     <objectId>8c1d52c6-3da9-4b4d-b342-a2b569a8f2c0</objectId>
     <namedShipObjectId>93af5f5d-0afa-481b-8135-da07ff3dfe0d</namedShipObjectId>
-    <damagePoint>0</damagePoint>
+    <damagePoint>45</damagePoint>
     <position>
-     <LatDeg>37.4821434</LatDeg>
-     <LonDeg>122.155846</LonDeg>
+     <LatDeg>37.4950142</LatDeg>
+     <LonDeg>122.158089</LonDeg>
     </position>
     <speedKnots>0</speedKnots>
-    <headingDeg>0</headingDeg>
+    <headingDeg>118.537254</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
-    <desiredHeadingDeg>0</desiredHeadingDeg>
+    <desiredHeadingDeg>118.537254</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -2835,7 +2934,7 @@
      <engineRoomHits>0</engineRoomHits>
      <propulsionShaftHits>0</propulsionShaftHits>
      <boilerRoomHits>0</boilerRoomHits>
-     <engineRoomFloodingHits>0</engineRoomFloodingHits>
+     <engineRoomFloodingHits>1</engineRoomFloodingHits>
      <boilerRoomFloodingHits>0</boilerRoomFloodingHits>
     </dynamicStatus>
     <searchLightHits>
@@ -2843,10 +2942,11 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
-    <disableDamageInReset>false</disableDamageInReset>
+    <disableDamageInReset>true</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
-    <controlMode>Independent</controlMode>
+    <controlMode>FollowTarget</controlMode>
+    <followedTargetObjectId>73155b84-1d3d-4421-9ceb-288c24cacb3e</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
@@ -2929,13 +3029,13 @@
     <namedShipObjectId>ece5d4b3-84e9-477d-85a1-a989b9acf0b6</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.47676</LatDeg>
-     <LonDeg>122.159668</LonDeg>
+     <LatDeg>37.49561</LatDeg>
+     <LonDeg>122.167572</LonDeg>
     </position>
     <speedKnots>0</speedKnots>
-    <headingDeg>0</headingDeg>
+    <headingDeg>121.38221</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
-    <desiredHeadingDeg>0</desiredHeadingDeg>
+    <desiredHeadingDeg>121.38221</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -3061,7 +3161,8 @@
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
-    <controlMode>Independent</controlMode>
+    <controlMode>FollowTarget</controlMode>
+    <followedTargetObjectId>c39933c5-2b10-4977-aa39-850eeca69e24</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
@@ -3144,13 +3245,13 @@
     <namedShipObjectId>0fd216a8-0ea1-46d6-92b5-24543a753369</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>37.4782</LatDeg>
-     <LonDeg>122.151787</LonDeg>
+     <LatDeg>37.4977531</LatDeg>
+     <LonDeg>122.163155</LonDeg>
     </position>
     <speedKnots>0</speedKnots>
-    <headingDeg>0</headingDeg>
+    <headingDeg>121.38221</headingDeg>
     <desiredSpeedKnots>0</desiredSpeedKnots>
-    <desiredHeadingDeg>0</desiredHeadingDeg>
+    <desiredHeadingDeg>121.38221</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -3287,7 +3388,8 @@
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
-    <controlMode>Independent</controlMode>
+    <controlMode>FollowTarget</controlMode>
+    <followedTargetObjectId>5f34260c-86ad-4a2a-92e5-0237203ef3fb</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
@@ -3668,8 +3770,8 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>37.47506</xRotation>
-  <yRotation>237.81546</yRotation>
+  <xRotation>37.4761772</xRotation>
+  <yRotation>237.808533</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>
  <eventState>

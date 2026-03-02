@@ -3314,4 +3314,24 @@ http://www.hnyhw.org.cn/newscontent_nor.aspx?channel_id=12&amp;id=7729&amp;m=a0<
   <remark>https://baike.baidu.com/item/%E6%9E%97%E9%A2%96%E5%90%AF/8717232</remark>
   <objectId>14c034d1-7b72-4691-85ad-0d8def5e5182</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Kantaro Suzuki</english>
+   <japanese>鈴木貫太郎</japanese>
+   <chineseSimplified>铃木贯太郎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Kantaro Suzuki.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>AboveAverage</navalStrategic>
+  <navalOperational>Outstanding</navalOperational>
+  <navalTactical>AboveAverage</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Kantar%C5%8D_Suzuki</remark>
+  <objectId>c453116e-8d06-4c96-866f-13f1f7595e6c</objectId>
+ </Leader>
 </ArrayOfLeader>

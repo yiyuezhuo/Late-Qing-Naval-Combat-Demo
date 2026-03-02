@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:TextField data-source-type="NavalCombatCore.SubState, Assembly-CSharp" readonly="true" multiline="true" style="white-space: normal;">
+    <ui:TextField data-source-type="NavalCombatCore.SubState, Assembly-CSharp" readonly="true" multiline="true" value="" vertical-scroller-visibility="Auto" style="white-space: normal; max-height: 75px;">
         <Bindings>
-            <ui:DataBinding property="value" data-source-path="description" binding-mode="ToTarget" />
+            <ui:DataBinding property="value" data-source-path="description" binding-mode="ToTarget"/>
         </Bindings>
     </ui:TextField>
 </ui:UXML>

@@ -3380,7 +3380,7 @@
     </childrenObjectIds>
     <name>
      <english>Beiyang Fleet</english>
-     <japanese />
+     <japanese>北洋艦隊</japanese>
      <chineseSimplified>北洋水师</chineseSimplified>
      <chineseTraditional />
     </name>
@@ -3443,7 +3443,7 @@
     </childrenObjectIds>
     <name>
      <english>Torpedo Boats</english>
-     <japanese />
+     <japanese>水雷艇隊</japanese>
      <chineseSimplified>鱼雷艇队</chineseSimplified>
      <chineseTraditional />
     </name>
@@ -3510,6 +3510,7 @@
     </childrenObjectIds>
     <name>
      <english>2nd Torpedo Boat Squadron</english>
+     <japanese>第2水雷艇隊</japanese>
      <chineseSimplified>第2鱼雷艇队</chineseSimplified>
     </name>
     <leaderReference />
@@ -3574,6 +3575,7 @@
     </childrenObjectIds>
     <name>
      <english>3rd Torpedo Boat Squadron</english>
+     <japanese>第3水雷艇隊</japanese>
      <chineseSimplified>第3鱼雷艇队</chineseSimplified>
     </name>
     <leaderReference />
@@ -3666,8 +3668,8 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>37.4746857</xRotation>
-  <yRotation>237.788055</yRotation>
+  <xRotation>37.47506</xRotation>
+  <yRotation>237.81546</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>
  <eventState>

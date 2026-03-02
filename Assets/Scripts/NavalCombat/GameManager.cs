@@ -2046,7 +2046,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         var hasTorpedo = shipClass != null && shipClass.torpedoSector.torpedoSettings.Count >= 1;
         if (hasTorpedo)
         {
-            var rangeM = shipClass.torpedoSector.torpedoSettings[0].rangeYards * MeasureUtils.yardToMeter;
+            var rangeM = shipClass.torpedoSector.torpedoSettings.Last().rangeYards * MeasureUtils.yardToMeter;
             var arcSegmentsRaw = GetRawArcSegmentsForTorpedo(shipClass.torpedoSector, shipLog.headingDeg);
             SyncRangeLineByMode(torpedoRangeLine, shipLog.position.LatDeg, shipLog.position.LonDeg, rangeM, arcSegmentsRaw);
         }

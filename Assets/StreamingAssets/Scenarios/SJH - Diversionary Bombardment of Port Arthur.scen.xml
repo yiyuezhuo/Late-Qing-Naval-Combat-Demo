@@ -64,6 +64,7 @@
         <objectId>378aab5d-02f7-466f-b975-0e367475e476</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -121,6 +122,7 @@
         <objectId>cf0545a5-b2ab-4920-a2a5-e4e32d6f5063</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -174,6 +176,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -325,6 +328,7 @@
         <objectId>7b239e1a-0d12-4510-a4a3-eda15875b861</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -359,6 +363,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -484,6 +489,7 @@
         <objectId>6d38a8d8-f84f-4614-8944-9d117ee45c5a</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -514,6 +520,7 @@
         <objectId>e0a04fcd-7dc0-4214-bf74-451e65ca8f25</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -548,6 +555,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -691,6 +699,7 @@
         <objectId>8f53398a-5437-4538-aa2e-277d4fd6ed6f</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -766,6 +775,7 @@
         <objectId>14c68bb7-6144-4a2b-a51d-532a4f24222f</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -859,12 +869,14 @@
         <objectId>8b2230c3-68ec-4975-9c99-f086b1f228ff</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
        <FireControlSystemStatusRecord>
         <subStates />
         <objectId>e119fab6-1abe-47e3-8f33-fba12fbe8acb</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -889,6 +901,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -1022,6 +1035,7 @@
         <objectId>b3c80e0c-a809-4bec-bd9a-cc77bca9591e</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -1097,6 +1111,7 @@
         <objectId>b3dcfb79-a755-4f4a-a200-0fca7c824f46</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -1121,6 +1136,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -1272,6 +1288,7 @@
         <objectId>5c25d47c-9a59-4546-922c-b4f81f1d82cd</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -1311,12 +1328,14 @@
         <objectId>cc382595-175e-4f47-b952-a50eb0ae016e</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
        <FireControlSystemStatusRecord>
         <subStates />
         <objectId>713e0c95-146e-4364-9af6-72d4384f16fd</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -1341,6 +1360,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -1465,6 +1485,7 @@
         <objectId>f4118a86-50bb-4c55-a639-8679d85ecc52</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -1495,6 +1516,7 @@
         <objectId>dcf8baad-a851-4707-ae3d-c78dffcffa1a</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -1529,6 +1551,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -1750,7 +1773,18 @@
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <globalDescription>
-    <english>https://en.wikipedia.org/wiki/Battle_of_L%C3%BCshunkou</english>
+    <english>https://en.wikipedia.org/wiki/Battle_of_L%C3%BCshunkou
+
+When the Japanese Army launched the assault on Port Arthur, the 4th Flying Squadron coordinated with the land forces from the sea to create a diversion but suddenly came under concentrated fire from the eastern coast batteries. The squadron first retreated southeast, then turned north to engage an isolated battery. Seeing little effect from their efforts, they subsequently disengaged from the battle.</english>
+    <japanese>https://en.wikipedia.org/wiki/Battle_of_L%C3%BCshunkou
+
+旅順攻撃の際、第四遊撃隊は旅順東部の砲台から集中砲火を受けた。第四遊撃隊はまず南東へ退避し、その後北上して孤立した砲台と交戦した。しかし戦果がほとんど見られなかったため、その後戦闘を離脱した。</japanese>
+    <chineseSimplified>https://en.wikipedia.org/wiki/Battle_of_L%C3%BCshunkou
+
+日陆军进攻旅顺时，第四游击队从海上配合陆军进行牵制，突然被旅顺东部炮台集火。第四游击队先向东南撤退然后被北上与单独的炮台交战，由于没看到什么见效，随后脱离战斗。</chineseSimplified>
+    <chineseTraditional>https://en.wikipedia.org/wiki/Battle_of_L%C3%BCshunkou
+
+當日軍陸隊攻擊（突擊）旅順時，第四遊擊隊從海上配合陸軍進行牽制，卻突然遭到旅順東部砲台的集中火力襲擊。第四遊擊隊先向東南撤退，隨後北上與單獨的砲台交戰，因未見顯著成效，隨即脫離戰鬥。</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
@@ -1779,7 +1813,7 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>38.7768135</xRotation>
+  <xRotation>38.77681</xRotation>
   <yRotation>238.698227</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>

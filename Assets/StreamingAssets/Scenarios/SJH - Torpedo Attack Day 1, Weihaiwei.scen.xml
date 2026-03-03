@@ -3486,7 +3486,9 @@
      <chineseSimplified>北洋水师</chineseSimplified>
      <chineseTraditional />
     </name>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>18963af7-1163-4323-9421-9f2421c9fee1</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>7affe258-94a3-4f07-9795-fa6a802de5ec</objectId>
@@ -3496,8 +3498,8 @@
       <value>Manual</value>
      </maneuverAutomaticType>
      <fireAutomaticType>
-      <isInherited>true</isInherited>
-      <value>Automatic</value>
+      <isInherited>false</isInherited>
+      <value>Manual</value>
      </fireAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
@@ -3741,7 +3743,26 @@
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <globalDescription>
-    <english>https://en.wikipedia.org/wiki/Battle_of_Weihaiwei</english>
+    <english>https://en.wikipedia.org/wiki/Battle_of_Weihaiwei
+
+Boom is not modeled yet.
+
+The placement of the Beiyang Fleet in the scenario is somewhat arbitrary due to limited historical evidence.</english>
+    <japanese>https://en.wikipedia.org/wiki/Battle_of_Weihaiwei
+
+防材はまだ再現されていません。
+
+史料が不足しているため、本シナリオにおける北洋水師の配置は比較的任意に設定されています。</japanese>
+    <chineseSimplified>https://en.wikipedia.org/wiki/Battle_of_Weihaiwei
+
+防材尚未建模。
+
+由于史料不足，剧本中北洋水师的摆放是相对随意的。</chineseSimplified>
+    <chineseTraditional>https://en.wikipedia.org/wiki/Battle_of_Weihaiwei
+
+防材尚未建模。
+
+由於史料不足，劇本中北洋水師的擺放帶有一定的隨意性。</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
@@ -3770,8 +3791,8 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>37.4761772</xRotation>
-  <yRotation>237.808533</yRotation>
+  <xRotation>37.48101</xRotation>
+  <yRotation>237.815979</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>
  <eventState>

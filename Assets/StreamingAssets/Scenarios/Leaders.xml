@@ -3334,4 +3334,25 @@ http://www.hnyhw.org.cn/newscontent_nor.aspx?channel_id=12&amp;id=7729&amp;m=a0<
   <remark>https://en.wikipedia.org/wiki/Kantar%C5%8D_Suzuki</remark>
   <objectId>c453116e-8d06-4c96-866f-13f1f7595e6c</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Mochihara Heiji</english>
+   <japanese>餅原平二</japanese>
+   <chineseSimplified>饼原平二</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Mochihara Heiji.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E9%A4%85%E5%8E%9F%E5%B9%B3%E4%BA%8C
+https://shozokan.nich.go.jp/collection/object/SZK001477-211</remark>
+  <objectId>f0026480-8947-4b4c-ad58-b6842a32c2e4</objectId>
+ </Leader>
 </ArrayOfLeader>

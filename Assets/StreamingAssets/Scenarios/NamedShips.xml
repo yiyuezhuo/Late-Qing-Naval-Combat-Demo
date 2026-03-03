@@ -1361,7 +1361,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   </fateDesc>
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
+  <defaultLeaderReference>
+   <referenceObjectId>f0026480-8947-4b4c-ad58-b6842a32c2e4</referenceObjectId>
+  </defaultLeaderReference>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
@@ -1461,7 +1463,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <shipClassObjectId>8f11a05a-2bca-433e-8ce2-a326b3bb4795</shipClassObjectId>
   <name>
    <english>You II</english>
-   <japanese />
+   <japanese>右二</japanese>
    <chineseSimplified>右二</chineseSimplified>
   </name>
   <builderDesc>
@@ -1482,7 +1484,8 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <shipClassObjectId>8f11a05a-2bca-433e-8ce2-a326b3bb4795</shipClassObjectId>
   <name>
    <english>You III</english>
-   <chineseSimplified>右二</chineseSimplified>
+   <japanese>右三</japanese>
+   <chineseSimplified>右三</chineseSimplified>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1502,6 +1505,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <shipClassObjectId>8f11a05a-2bca-433e-8ce2-a326b3bb4795</shipClassObjectId>
   <name>
    <english>Tso II</english>
+   <japanese>左二</japanese>
    <chineseSimplified>左二</chineseSimplified>
   </name>
   <builderDesc>
@@ -1522,6 +1526,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <shipClassObjectId>8f11a05a-2bca-433e-8ce2-a326b3bb4795</shipClassObjectId>
   <name>
    <english>Tso III</english>
+   <japanese>左三</japanese>
    <chineseSimplified>左三</chineseSimplified>
   </name>
   <builderDesc>
@@ -4325,5 +4330,89 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <objectId>048d3ba4-1965-4cd5-a706-2d52695b2337</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>c6b70b1a-d003-4768-8d18-3db8ecdb4fc5</shipClassObjectId>
+  <name>
+   <english>Ting I</english>
+   <japanese>定一</japanese>
+   <chineseSimplified>定一</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>b654ba24-2c09-4f7f-9bd5-1d94f0b94408</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>c6b70b1a-d003-4768-8d18-3db8ecdb4fc5</shipClassObjectId>
+  <name>
+   <english>Ting II</english>
+   <japanese>定二</japanese>
+   <chineseSimplified>定二</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>63f4e64f-cc45-476e-8227-0e728abf12c7</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>c6b70b1a-d003-4768-8d18-3db8ecdb4fc5</shipClassObjectId>
+  <name>
+   <english>Chen I</english>
+   <japanese>鎮一</japanese>
+   <chineseSimplified>镇一</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>92539a99-0a45-4c5c-9e9f-2f67950cdfb5</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>c6b70b1a-d003-4768-8d18-3db8ecdb4fc5</shipClassObjectId>
+  <name>
+   <english>Chen II</english>
+   <japanese>鎮二</japanese>
+   <chineseSimplified>镇二</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>dc566431-09b5-4c21-b1e2-60e8ea35ae4d</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

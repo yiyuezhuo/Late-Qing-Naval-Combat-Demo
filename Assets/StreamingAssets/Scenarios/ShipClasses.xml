@@ -10354,6 +10354,7 @@ Complement is inferred</remark>
    <armorType>NoArmor</armorType>
   </armorRating>
   <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
+  <remark>https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E9%98%9F%E4%B8%80%E5%8F%B7%E2%80%9D%E9%B1%BC%E9%9B%B7%E8%89%87/8273053</remark>
   <portraitReference>
    <path>Pictures/Ships/Tso I.png</path>
    <isBuiltin>true</isBuiltin>
@@ -10503,6 +10504,108 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
   </portraitIconReference>
   <ram>None</ram>
   <objectId>8f11a05a-2bca-433e-8ce2-a326b3bb4795</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Ting I</english>
+   <japanese>定一</japanese>
+   <chineseSimplified>定一</chineseSimplified>
+  </name>
+  <type>TorpedoBoat</type>
+  <extraShipType>NotSpecified</extraShipType>
+  <country>China</country>
+  <displacementTons>15.7</displacementTons>
+  <complementMen>6</complementMen>
+  <lengthFoot>64.7</lengthFoot>
+  <beamFoot>8.5</beamFoot>
+  <draftFoot>3.5</draftFoot>
+  <engineDesc>
+   <english>none</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>none</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>Schwartzkopff 14in C/84</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>1</barrels>
+     <mounts>2</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Narrow</mountArcsPattern>
+     <objectId>99348385-66ce-485d-ad49-05417bb04431</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="440" speedKnots="29" />
+   </torpedoSettings>
+   <ammunitionCapacity>4</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords />
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>157</damagePoint>
+  <speedKnots>15</speedKnots>
+  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>15</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>15</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>15</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="3" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="3" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="9" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+   <armorType>NoArmor</armorType>
+  </armorRating>
+  <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦） </portraitUrl>
+  <remark>https://www.bilibili.com/read/cv1361156
+
+2 torpedo boats carried by Ting Yuen class. 
+
+Complement is inferred</remark>
+  <portraitReference>
+   <path>Pictures\Ships\Ting I.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\Ting I_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\Ting I_Icon.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <ram>None</ram>
+  <objectId>c6b70b1a-d003-4768-8d18-3db8ecdb4fc5</objectId>
  </ShipClass>
  <ShipClass>
   <name>

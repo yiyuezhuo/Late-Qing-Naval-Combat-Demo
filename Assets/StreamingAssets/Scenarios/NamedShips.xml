@@ -28,6 +28,32 @@
   <objectId>4722ebb2-c755-4ef3-a292-7b429aad7676</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>800af878-ba7e-4476-9fd0-88172ae60f24</shipClassObjectId>
+  <name>
+   <english>Yoshino (1903)</english>
+   <japanese>吉野 (1903)</japanese>
+   <chineseSimplified>吉野 (1903)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>78a67c88-0618-46d6-aba6-68426f65a0b3</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino
+
+</remark>
+  <objectId>3255b2ff-6ce3-4902-8582-8fc3ef9683e9</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>6197af50-741d-4f54-881a-f0eeec00996f</shipClassObjectId>
   <name>
    <english>Akitsushima</english>
@@ -78,6 +104,30 @@
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Naniwa</remark>
   <objectId>7855b692-e843-41bb-a7b6-15662ab6de20</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>196725f3-ae1d-405b-a997-69a3a055d9f6</shipClassObjectId>
+  <name>
+   <english>Naniwa (1903)</english>
+   <japanese>浪速 (1903)</japanese>
+   <chineseSimplified>浪速 (1903)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>3883625e-c4c6-42da-b5e6-b4db7b42cb17</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ja.wikipedia.org/wiki/%E6%B5%AA%E9%80%9F_(%E9%98%B2%E8%AD%B7%E5%B7%A1%E6%B4%8B%E8%89%A6)</remark>
+  <objectId>052f32f3-4c03-4d43-9df5-bb313ae2386b</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>84de785d-a41c-4993-973a-d167876f343b</shipClassObjectId>
@@ -692,6 +742,29 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <objectId>e27761a0-d00a-4a7b-bcac-58aab2b8118d</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>196725f3-ae1d-405b-a997-69a3a055d9f6</shipClassObjectId>
+  <name>
+   <english>Takachiho (1900)</english>
+   <japanese>高千穂 (1900)</japanese>
+   <chineseSimplified>高千穗 (1900)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>d2d9a793-77d8-4aa9-b143-564e4e614f1b</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>195a60c3-385f-488b-aee5-9c5ba11e500d</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>93917b3f-9a77-4307-8ed2-945de9b551c9</shipClassObjectId>
   <name>
    <english>Chiyoda</english>
@@ -718,6 +791,32 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Chiyoda</remark>
   <objectId>d1a1333b-c9cd-44f7-acfa-e70190039282</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>93917b3f-9a77-4307-8ed2-945de9b551c9</shipClassObjectId>
+  <name>
+   <english>Chiyoda (1904)</english>
+   <japanese>千代田 (1904)</japanese>
+   <chineseSimplified>千代田 (1904)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>0174bff2-ae6c-426b-af8b-c33b295b9981</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Chiyoda
+
+No class update from 1894 to 1904</remark>
+  <objectId>81fc0fc2-b4c8-4efc-9a4e-adde31586429</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>57fcc452-53f4-4f1d-b3dd-8633a6ce391b</shipClassObjectId>
@@ -1568,6 +1667,30 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <objectId>451ec14a-541b-4c41-b981-2ed95d9f0661</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>269fcf18-0b7a-43ac-b0c9-8c3a3d7ae043</shipClassObjectId>
+  <name>
+   <english>Fuji (26.9.1903)</english>
+   <japanese>富士 (26.9.1903)</japanese>
+   <chineseSimplified>富士 (26.9.1903)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>5534078f-afe4-41d3-b1fa-3d039839fed2</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Fuji</remark>
+  <objectId>3d1826af-bc7a-4d6e-b1db-3ee554ae6396</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>033caeff-4831-4ecf-9416-cde0f648bb59</shipClassObjectId>
   <name>
    <english>Yashima</english>
@@ -1590,6 +1713,30 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <notAvailableForFirstSinoJapaneseWar>true</notAvailableForFirstSinoJapaneseWar>
   <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Yashima</remark>
   <objectId>13db4215-f2e6-4876-a9bc-a788d29a57ff</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>269fcf18-0b7a-43ac-b0c9-8c3a3d7ae043</shipClassObjectId>
+  <name>
+   <english>Yashima (27.10.1903)</english>
+   <japanese>八島 (27.10.1903)</japanese>
+   <chineseSimplified>八岛 (27.10.1903)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>9624a025-ac34-4a9c-aa51-3f0c976ea7b0</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Yashima</remark>
+  <objectId>7fa03659-fba1-4574-a01c-6dc7ae7298d8</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</shipClassObjectId>
@@ -2426,53 +2573,6 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <objectId>beeb025a-e601-46f0-a22f-7bf4f6e08b24</objectId>
  </NamedShip>
  <NamedShip>
-  <shipClassObjectId>196725f3-ae1d-405b-a997-69a3a055d9f6</shipClassObjectId>
-  <name>
-   <english>Naniwa (1903)</english>
-   <japanese>浪速 (1903)</japanese>
-   <chineseSimplified>浪速 (1903)</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>none</english>
-  </builderDesc>
-  <fateDesc>
-   <english>none</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference>
-   <referenceObjectId>3883625e-c4c6-42da-b5e6-b4db7b42cb17</referenceObjectId>
-  </defaultLeaderReference>
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E6%B5%AA%E9%80%9F_(%E9%98%B2%E8%AD%B7%E5%B7%A1%E6%B4%8B%E8%89%A6)</remark>
-  <objectId>052f32f3-4c03-4d43-9df5-bb313ae2386b</objectId>
- </NamedShip>
- <NamedShip>
-  <shipClassObjectId>196725f3-ae1d-405b-a997-69a3a055d9f6</shipClassObjectId>
-  <name>
-   <english>Takachiho (1900)</english>
-   <japanese>高千穂 (1900)</japanese>
-   <chineseSimplified>高千穗 (1900)</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>none</english>
-  </builderDesc>
-  <fateDesc>
-   <english>none</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference>
-   <referenceObjectId>d2d9a793-77d8-4aa9-b143-564e4e614f1b</referenceObjectId>
-  </defaultLeaderReference>
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <objectId>195a60c3-385f-488b-aee5-9c5ba11e500d</objectId>
- </NamedShip>
- <NamedShip>
   <shipClassObjectId>8d189654-e874-43ef-96f7-c308ecda9ca8</shipClassObjectId>
   <name>
    <english>Tsushima</english>
@@ -3026,32 +3126,6 @@ Generic Placeholder class</remark>
   <objectId>2e203508-d589-4fa9-9fd2-7223a2a40190</objectId>
  </NamedShip>
  <NamedShip>
-  <shipClassObjectId>93917b3f-9a77-4307-8ed2-945de9b551c9</shipClassObjectId>
-  <name>
-   <english>Chiyoda (1904)</english>
-   <japanese>千代田 (1904)</japanese>
-   <chineseSimplified>千代田 (1904)</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>none</english>
-  </builderDesc>
-  <fateDesc>
-   <english>none</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference>
-   <referenceObjectId>0174bff2-ae6c-426b-af8b-c33b295b9981</referenceObjectId>
-  </defaultLeaderReference>
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Chiyoda
-
-No class update from 1894 to 1904</remark>
-  <objectId>81fc0fc2-b4c8-4efc-9a4e-adde31586429</objectId>
- </NamedShip>
- <NamedShip>
   <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
   <name>
    <english>Chidori</english>
@@ -3575,32 +3649,6 @@ Peresviet or Peresvet</remark>
   <objectId>89155ba3-eb23-4ced-91f4-caf2b39eeba3</objectId>
  </NamedShip>
  <NamedShip>
-  <shipClassObjectId>bbecbb24-578d-4f73-8ce1-9f1345f98c79</shipClassObjectId>
-  <name>
-   <english>Retvizan</english>
-   <japanese>レトヴィザン</japanese>
-   <chineseSimplified>列特维赞</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>none</english>
-  </builderDesc>
-  <fateDesc>
-   <english>none</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference>
-   <referenceObjectId>3a759f08-6df5-4d0f-9621-394e64411eac</referenceObjectId>
-  </defaultLeaderReference>
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Retvizan
-
-Ретвизан</remark>
-  <objectId>1d4ca256-c8eb-4473-8e06-944a65fa450e</objectId>
- </NamedShip>
- <NamedShip>
   <shipClassObjectId>ee43a17c-8616-475d-95ad-1ce668dde6c3</shipClassObjectId>
   <name>
    <english>Bayan</english>
@@ -3860,6 +3908,32 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <objectId>3fafb59f-c1fc-4915-866a-559125d3efaf</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>bbecbb24-578d-4f73-8ce1-9f1345f98c79</shipClassObjectId>
+  <name>
+   <english>Retvizan</english>
+   <japanese>レトヴィザン</japanese>
+   <chineseSimplified>列特维赞</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>3a759f08-6df5-4d0f-9621-394e64411eac</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Retvizan
+
+Ретвизан</remark>
+  <objectId>1d4ca256-c8eb-4473-8e06-944a65fa450e</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>495a5148-7253-403d-a09f-d54b5374c4cc</shipClassObjectId>
   <name>
    <english>Mikasa</english>
@@ -3934,54 +4008,6 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Asahi
 </remark>
   <objectId>21e58347-3a97-41bb-9e62-3c4b62d2ac4d</objectId>
- </NamedShip>
- <NamedShip>
-  <shipClassObjectId>269fcf18-0b7a-43ac-b0c9-8c3a3d7ae043</shipClassObjectId>
-  <name>
-   <english>Fuji (26.9.1903)</english>
-   <japanese>富士 (26.9.1903)</japanese>
-   <chineseSimplified>富士 (26.9.1903)</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>none</english>
-  </builderDesc>
-  <fateDesc>
-   <english>none</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference>
-   <referenceObjectId>5534078f-afe4-41d3-b1fa-3d039839fed2</referenceObjectId>
-  </defaultLeaderReference>
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Fuji</remark>
-  <objectId>3d1826af-bc7a-4d6e-b1db-3ee554ae6396</objectId>
- </NamedShip>
- <NamedShip>
-  <shipClassObjectId>269fcf18-0b7a-43ac-b0c9-8c3a3d7ae043</shipClassObjectId>
-  <name>
-   <english>Yashima (27.10.1903)</english>
-   <japanese>八島 (27.10.1903)</japanese>
-   <chineseSimplified>八岛 (27.10.1903)</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>none</english>
-  </builderDesc>
-  <fateDesc>
-   <english>none</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference>
-   <referenceObjectId>9624a025-ac34-4a9c-aa51-3f0c976ea7b0</referenceObjectId>
-  </defaultLeaderReference>
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Yashima</remark>
-  <objectId>7fa03659-fba1-4574-a01c-6dc7ae7298d8</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>fb0df4ed-1cf6-49e3-be04-43b6d0438de8</shipClassObjectId>
@@ -4106,32 +4132,6 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Takasago</remark>
   <objectId>ab70e233-f9e5-4b29-8f91-cd06cec2e40f</objectId>
- </NamedShip>
- <NamedShip>
-  <shipClassObjectId>800af878-ba7e-4476-9fd0-88172ae60f24</shipClassObjectId>
-  <name>
-   <english>Yoshino (1903)</english>
-   <japanese>吉野 (1903)</japanese>
-   <chineseSimplified>吉野 (1903)</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>none</english>
-  </builderDesc>
-  <fateDesc>
-   <english>none</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference>
-   <referenceObjectId>78a67c88-0618-46d6-aba6-68426f65a0b3</referenceObjectId>
-  </defaultLeaderReference>
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino
-
-</remark>
-  <objectId>3255b2ff-6ce3-4902-8582-8fc3ef9683e9</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>c59da1a8-31c1-4072-9e87-0a6f78f5bb32</shipClassObjectId>
@@ -4414,5 +4414,89 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <objectId>dc566431-09b5-4c21-b1e2-60e8ea35ae4d</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>f499fddd-e799-4b6b-a71a-e46201c985a2</shipClassObjectId>
+  <name>
+   <english>Flying Thunder</english>
+   <japanese>飞霆</japanese>
+   <chineseSimplified>飞霆</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>0d180ae9-d86d-449f-b6ac-8746a1b9209b</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>f499fddd-e799-4b6b-a71a-e46201c985a2</shipClassObjectId>
+  <name>
+   <english>Li Shun</english>
+   <japanese>利順</japanese>
+   <chineseSimplified>利顺</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>a40a85c0-9482-4c89-b888-1076c5798641</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>09e65350-3cea-4316-8de7-63dcd277ece1</shipClassObjectId>
+  <name>
+   <english>Chong Chia</english>
+   <japanese>中甲</japanese>
+   <chineseSimplified>中甲</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>62b0bc9f-5395-4908-a90c-0de67279e685</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>09e65350-3cea-4316-8de7-63dcd277ece1</shipClassObjectId>
+  <name>
+   <english>Chong Yi</english>
+   <japanese>中乙</japanese>
+   <chineseSimplified>中乙</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>ffbb1438-a230-4fca-bc8b-39cdbfeaae48</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

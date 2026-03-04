@@ -2326,15 +2326,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 368036151988224
-    m_Localized: TT - Tutorial 1 - Single Ship
+    m_Localized: "TT - Tutorial 1 - Single Ship \u2605"
     m_Metadata:
       m_Items: []
   - m_Id: 368041239678976
-    m_Localized: TT - Tutorial 2 - Ship Group
+    m_Localized: "TT - Tutorial 2 - Ship Group \u2605"
     m_Metadata:
       m_Items: []
   - m_Id: 368095237148672
-    m_Localized: TT - Tutorial 3 - Combat
+    m_Localized: "TT - Tutorial 3 - Combat \u2605"
     m_Metadata:
       m_Items: []
   - m_Id: 368128871272448
@@ -2342,7 +2342,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 368199792758784
-    m_Localized: SJH - Battle of Yalu River
+    m_Localized: "SJH - Battle of Yalu River \u2605"
     m_Metadata:
       m_Items: []
   - m_Id: 368206742720512
@@ -2366,7 +2366,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 22001122761412608
-    m_Localized: RJH - Battle of Ulsan
+    m_Localized: "RJH - Battle of Ulsan \u2605"
     m_Metadata:
       m_Items: []
   - m_Id: 22811019098886144
@@ -2845,6 +2845,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 51372251963625472
     m_Localized: SJH - Torpedo Attack Day 2, Weihaiwei
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51831417308090368
+    m_Localized: SJH - Escaping Torpedo Boats
     m_Metadata:
       m_Items: []
   references:

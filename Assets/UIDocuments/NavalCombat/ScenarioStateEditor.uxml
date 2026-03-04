@@ -100,7 +100,7 @@
                             </Bindings>
                         </ui:Label>
                         <ui:VisualElement data-source-path="scenarioState.globalDescription">
-                            <ui:Instance template="MultilineGlobalStringEditor" name="MultilineGlobalStringEditor"/>
+                            <ui:Instance template="MultilineGlobalStringEditor" name="MultilineGlobalStringEditor" style="max-height: 200px;"/>
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:Tab>

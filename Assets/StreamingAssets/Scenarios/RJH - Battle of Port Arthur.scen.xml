@@ -11165,19 +11165,26 @@
    <seaStateBeaufort>2</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <globalDescription>
-    <english>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
+    <english>On the day following the night raid on Port Arthur, Japanese forces launched a probing attack against the Russian fleet and fortifications there. However, upon realizing that the Russian forces had not collapsed immediately and still possessed significant combat capability, the Japanese disengaged from the battle.
 
-Land-based batteries and the initial damage to Russian ships are not yet modeled.</english>
-    <japanese>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
+https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
 
-地上の砲台とロシア艦船への初期損傷はまだモデル化されていません。</japanese>
-    <chineseSimplified>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
+The initially damaged Russian vessels have not yet been modeled.</english>
+    <japanese>旅順夜襲の翌日、日本軍は旅順のロシア艦隊および要塞に対して试探的な攻撃を加えました。しかし、ロシア軍が直ちに崩壊せず、依然として強い戦闘力を有していることを確認した後、戦闘から離脱しました。
 
-陆基炮台和俄罗斯舰船的初始伤害尚未建模。
-</chineseSimplified>
-    <chineseTraditional>https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
+https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
 
-陸基砲台和對俄羅斯艦船的初始損害尚未建模。</chineseTraditional>
+初期に損傷したロシア艦船はまだモデリングされていません。</japanese>
+    <chineseSimplified>日军在旅顺夜袭第二天对旅顺的俄舰队和要塞进行的试探性攻击，但在发现俄军并没有立即崩溃，仍有较强战斗力后就脱离了战斗。
+
+https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
+
+初始受损的俄罗斯舰船尚未建模。</chineseSimplified>
+    <chineseTraditional>日軍在旅順夜襲的次日，對旅順的俄國艦隊及要塞發動了試探性攻擊。但在發現俄軍並未立即崩潰，仍保有較強戰鬥力後，便脫離了戰鬥。
+
+https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
+
+受損的俄羅斯艦船尚未建模。</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
@@ -11206,7 +11213,7 @@ Land-based batteries and the initial damage to Russian ships are not yet modeled
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>38.744503</xRotation>
+  <xRotation>38.74451</xRotation>
   <yRotation>238.603516</yRotation>
   <orthographicSize>20</orthographicSize>
  </viewState>

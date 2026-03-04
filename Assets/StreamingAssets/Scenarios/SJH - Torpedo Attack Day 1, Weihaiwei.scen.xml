@@ -3743,22 +3743,30 @@
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <globalDescription>
-    <english>https://en.wikipedia.org/wiki/Battle_of_Weihaiwei
+    <english>The 2nd and 3rd Torpedo Boat Flotillas penetrated the gap in the defensive boom to launch a night raid on Liugong Island, disabling the Dingyuan. This marked the first large-scale torpedo attack in history.
+
+https://en.wikipedia.org/wiki/Battle_of_Weihaiwei
 
 Boom is not modeled yet.
 
 The placement of the Beiyang Fleet in the scenario is somewhat arbitrary due to limited historical evidence.</english>
-    <japanese>https://en.wikipedia.org/wiki/Battle_of_Weihaiwei
+    <japanese>第2および第3水雷艇隊は防材の隙間を通過して劉公島へ夜襲をかけ、「定遠」を無力化しました。これは歴史上最初の大規模な魚雷攻撃でした。
+
+https://en.wikipedia.org/wiki/Battle_of_Weihaiwei
 
 防材はまだ再現されていません。
 
 史料が不足しているため、本シナリオにおける北洋水師の配置は比較的任意に設定されています。</japanese>
-    <chineseSimplified>https://en.wikipedia.org/wiki/Battle_of_Weihaiwei
+    <chineseSimplified>第2鱼雷艇队与第3鱼雷艇队通过防材缺口夜袭刘公岛，瘫痪了定远号。这是历史上第一次大规模雷击行动。
+
+https://en.wikipedia.org/wiki/Battle_of_Weihaiwei
 
 防材尚未建模。
 
 由于史料不足，剧本中北洋水师的摆放是相对随意的。</chineseSimplified>
-    <chineseTraditional>https://en.wikipedia.org/wiki/Battle_of_Weihaiwei
+    <chineseTraditional>第2魚雷艇隊與第3魚雷艇隊穿過防材缺口，夜襲劉公島，癱瘓了定遠號。這是歷史上第一次大規模的魚雷攻擊行動。
+
+https://en.wikipedia.org/wiki/Battle_of_Weihaiwei
 
 防材尚未建模。
 
@@ -3782,7 +3790,7 @@ The placement of the Beiyang Fleet in the scenario is somewhat arbitrary due to 
    <hasEndDateTime>true</hasEndDateTime>
    <endDateTime>1895-02-04T20:00:00Z</endDateTime>
    <backgroundPictureReference>
-    <path>Pictures\Backgrounds\Weihaiwei_1895_ENG.png</path>
+    <path>Pictures\Backgrounds\Our Torpedo Sinks the Enemy Warship 'Dingyuan' at the Battle of Weihaiwei.jpg</path>
     <isBuiltin>true</isBuiltin>
    </backgroundPictureReference>
    <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>

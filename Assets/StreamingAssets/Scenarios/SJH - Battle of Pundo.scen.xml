@@ -25,6 +25,7 @@
     <desiredHeadingDeg>45</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <isLandTarget>false</isLandTarget>
     <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
@@ -81,6 +82,7 @@
         <objectId>dd942d91-f9e6-4a1e-8dd3-6b107ce32051</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -174,12 +176,14 @@
         <objectId>2c818592-7c4d-4db1-93e5-c2bb75bdc12c</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
        <FireControlSystemStatusRecord>
         <subStates />
         <objectId>a1b4e9a9-7188-4c99-9c63-e2b5529dd5a0</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -260,6 +264,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -354,6 +359,7 @@
     <desiredHeadingDeg>45</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <isLandTarget>false</isLandTarget>
     <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
@@ -410,6 +416,7 @@
         <objectId>57a3569f-2112-4246-9198-290a0ef7d563</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -485,12 +492,14 @@
         <objectId>7d51d36c-d3ac-4ca5-b32d-b3e1e756095c</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
        <FireControlSystemStatusRecord>
         <subStates />
         <objectId>3f0e69d3-9e16-4ba6-af66-173c55c8ba2d</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -562,6 +571,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -657,6 +667,7 @@
     <desiredHeadingDeg>45</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <isLandTarget>false</isLandTarget>
     <desiredSpeedKnotsForBoilerRoom>12</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
@@ -695,6 +706,7 @@
         <objectId>b7c6aeee-ec05-4668-9549-82e6e9db4ec3</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -770,12 +782,14 @@
         <objectId>f97f2d87-c735-4ec5-acde-d7dd8c210024</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
        <FireControlSystemStatusRecord>
         <subStates />
         <objectId>ec14cb08-fec7-46cc-8a07-a84394deb073</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -847,6 +861,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -942,6 +957,7 @@
     <desiredHeadingDeg>290</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <isLandTarget>false</isLandTarget>
     <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
@@ -971,6 +987,7 @@
         <objectId>8e12cbe6-9700-43be-af2d-14dd27f54189</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -1001,6 +1018,7 @@
         <objectId>b0cc8c29-1a80-476e-b497-70ec5ab76389</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -1072,6 +1090,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -1166,6 +1185,7 @@
     <desiredHeadingDeg>290</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <isLandTarget>false</isLandTarget>
     <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
@@ -1213,6 +1233,7 @@
         <objectId>cfe2f950-fcca-4726-8c99-51af964cf2bf</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -1284,6 +1305,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -1379,6 +1401,7 @@
     <desiredHeadingDeg>120</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <isLandTarget>false</isLandTarget>
     <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus />
@@ -1401,6 +1424,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -1495,6 +1519,7 @@
     <desiredHeadingDeg>120</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <isLandTarget>false</isLandTarget>
     <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus />
@@ -1517,6 +1542,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
@@ -1733,11 +1759,23 @@
   </shipGroups>
   <scenarioState>
    <dateTime>1894-07-24T23:45:00Z</dateTime>
+   <beginDateTime>1894-07-24T23:45:00Z</beginDateTime>
    <visibility>VeryClear2</visibility>
    <seaStateBeaufort>1</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <globalDescription>
-    <english>https://en.wikipedia.org/wiki/Battle_of_Pungdo</english>
+    <english>The First Sino-Japanese War began with the surprise attack by the Japanese Flying Squadron on the escorting group, Chi Yuan and Kuang Yi, as well as nearby transport ships. Ultimately, except for the Chi Yuan, which successfully disengaged from the battle, all other Chinese vessels were annihilated.
+
+https://en.wikipedia.org/wiki/Battle_of_Pungdo</english>
+    <japanese>日清戦争は、日本軍第一遊撃隊による「済遠」と「広乙」を護衛する船団および付近の輸送船への奇襲攻撃をもって始まりました。最終的に「済遠」が戦闘から離脱することに成功したほかは、他の清国艦船はすべて殲滅されました。
+
+https://en.wikipedia.org/wiki/Battle_of_Pungdo</japanese>
+    <chineseSimplified>甲午战争以第一游击队突袭护航队（济远，广乙）与附近的运输船为开始。最终除济远成功脱离战斗，其他清军船只均被歼灭。
+
+https://en.wikipedia.org/wiki/Battle_of_Pungdo</chineseSimplified>
+    <chineseTraditional>甲午戰爭以第一遊擊隊突襲護送「濟遠」、「廣乙」的船隊及附近運輸船為開端。最終除「濟遠」成功脫離戰鬥外，其餘清軍船隻均被殲滅。
+
+https://en.wikipedia.org/wiki/Battle_of_Pungdo</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
@@ -1766,7 +1804,7 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>37.0972137</xRotation>
+  <xRotation>37.0972176</xRotation>
   <yRotation>233.606659</yRotation>
   <orthographicSize>20</orthographicSize>
  </viewState>

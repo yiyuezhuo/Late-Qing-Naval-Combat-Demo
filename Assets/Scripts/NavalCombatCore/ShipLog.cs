@@ -710,20 +710,42 @@ namespace NavalCombatCore
             };
         }
 
-        bool IsFirstDirectShipInParentGroup()
+        public static bool IsFormationLeadCandidate(ShipLog shipLog)
         {
-            var parentGroup = (this as IShipGroupMember).GetParentGroup();
+            return shipLog != null &&
+                   shipLog.GetEffectiveControlMode() == ControlMode.Independent &&
+                   shipLog.mapState == MapState.Deployed &&
+                   shipLog.GetMaxSpeedKnots() > 4f;
+        }
+
+        public static ShipLog FindFormationLeadShip(ShipGroup parentGroup)
+        {
             if (parentGroup == null)
-                return false;
+                return null;
 
             foreach (var childObjectId in parentGroup.childrenObjectIds)
             {
                 var childShip = EntityManager.Instance.Get<ShipLog>(childObjectId);
-                if (childShip != null)
-                    return childShip == this;
+                if (IsFormationLeadCandidate(childShip))
+                    return childShip;
             }
 
-            return false;
+            return null;
+        }
+
+        public bool IsFormationLeadShipInParentGroup()
+        {
+            var parentGroup = (this as IShipGroupMember).GetParentGroup();
+            return FindFormationLeadShip(parentGroup) == this;
+        }
+
+        public bool IsDetachedForCommandStructure()
+        {
+            var parentGroup = (this as IShipGroupMember).GetParentGroup();
+            if (parentGroup == null)
+                return true;
+
+            return !IsFormationLeadShipInParentGroup();
         }
 
         IEnumerable<LeaderSkillLevel> EnumerateIndependentResponseDelaySources()
@@ -736,7 +758,7 @@ namespace NavalCombatCore
                 yield break;
             }
 
-            if (IsFirstDirectShipInParentGroup())
+            if (!IsDetachedForCommandStructure())
             {
                 // Original flagship: delay is driven by superior-echelon leaders in the planned OOB chain.
                 var group = parentGroup;

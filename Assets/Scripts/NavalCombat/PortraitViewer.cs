@@ -481,27 +481,6 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         }
     }
 
-    static bool IsFormationLeadCandidate(ShipLog shipLog)
-    {
-        return shipLog != null &&
-               shipLog.mapState == MapState.Deployed &&
-               shipLog.GetMaxSpeedKnots() > 4f;
-    }
-
-    static ShipLog FindFormationLeadShip(ShipGroup parentGroup)
-    {
-        if (parentGroup == null)
-            return null;
-
-        foreach (var childObjectId in parentGroup.childrenObjectIds)
-        {
-            var childShip = EntityManager.Instance.Get<ShipLog>(childObjectId);
-            if (IsFormationLeadCandidate(childShip))
-                return childShip;
-        }
-        return null;
-    }
-
     static string ResolveLocalizedName(GlobalString name)
     {
         return name?.GetNameFromType(GamePreference.Instance.shortLabelLanguageType) ?? string.Empty;
@@ -528,10 +507,9 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         if (shipLog.GetEffectiveControlMode() != ControlMode.Independent)
             return false;
 
-        var parentGroup = ((IShipGroupMember)shipLog).GetParentGroup();
-        var formationLeadShip = FindFormationLeadShip(parentGroup);
-        if (formationLeadShip == shipLog)
+        if (shipLog.IsFormationLeadShipInParentGroup())
         {
+            var parentGroup = ((IShipGroupMember)shipLog).GetParentGroup();
             var groupName = ResolveLocalizedName(parentGroup?.name);
             if (!string.IsNullOrEmpty(groupName))
             {

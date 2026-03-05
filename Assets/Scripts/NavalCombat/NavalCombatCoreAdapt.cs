@@ -224,7 +224,12 @@ namespace NavalCombatCore
         [CreateProperty]
         public string executionDelayDesc
         {
-            get => Math.Clamp(1f - GetIndependentResponseCoef(), 0f, 1f).ToString("F3", CultureInfo.InvariantCulture);
+            get
+            {
+                var delayValue = Math.Clamp(1f - GetIndependentResponseCoef(), 0f, 1f);
+                var delayText = delayValue.ToString("0.###", CultureInfo.InvariantCulture);
+                return IsDetachedForCommandStructure() ? $"{delayText} (Detached)" : delayText;
+            }
         }
 
         [CreateProperty]

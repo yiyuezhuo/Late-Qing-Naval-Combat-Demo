@@ -481,6 +481,70 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         }
     }
 
+    static bool IsFormationLeadCandidate(ShipLog shipLog)
+    {
+        return shipLog != null &&
+               shipLog.mapState == MapState.Deployed &&
+               shipLog.GetMaxSpeedKnots() > 4f;
+    }
+
+    static ShipLog FindFormationLeadShip(ShipGroup parentGroup)
+    {
+        if (parentGroup == null)
+            return null;
+
+        foreach (var childObjectId in parentGroup.childrenObjectIds)
+        {
+            var childShip = EntityManager.Instance.Get<ShipLog>(childObjectId);
+            if (IsFormationLeadCandidate(childShip))
+                return childShip;
+        }
+        return null;
+    }
+
+    static string ResolveLocalizedName(GlobalString name)
+    {
+        return name?.GetNameFromType(GamePreference.Instance.shortLabelLanguageType) ?? string.Empty;
+    }
+
+    bool TryResolveLabelText(out string labelText)
+    {
+        labelText = string.Empty;
+
+        var displayMode = GamePreference.Instance.unitLabelDisplayMode;
+        if (displayMode == GamePreference.UnitLabelDisplayMode.None)
+            return false;
+
+        if (displayMode == GamePreference.UnitLabelDisplayMode.Unit)
+        {
+            var unitName = ResolveLocalizedName(model.GetName());
+            labelText = $"{model.GetAcronym()} {unitName}".Trim();
+            return true;
+        }
+
+        var shipLog = model as ShipLog;
+        if (shipLog == null)
+            return false;
+        if (shipLog.GetEffectiveControlMode() != ControlMode.Independent)
+            return false;
+
+        var parentGroup = ((IShipGroupMember)shipLog).GetParentGroup();
+        var formationLeadShip = FindFormationLeadShip(parentGroup);
+        if (formationLeadShip == shipLog)
+        {
+            var groupName = ResolveLocalizedName(parentGroup?.name);
+            if (!string.IsNullOrEmpty(groupName))
+            {
+                labelText = groupName;
+                return true;
+            }
+        }
+
+        var shipName = ResolveLocalizedName(shipLog.namedShip?.name);
+        labelText = string.IsNullOrEmpty(shipName) ? "*" : $"* {shipName}";
+        return true;
+    }
+
     public bool GetTransparent()
     {
         if(model == null)
@@ -584,9 +648,15 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         MaintainTextDirectionSize();
         MaintainArrowRotation();
 
-        // text.text = $"{model.GetAcronym()} {model.GetName().GetNameFromType(GameManager.Instance.iconLanuageType)}";
-        text.enabled = GamePreference.Instance.showUnitLabel;
-        text.text = $"{model.GetAcronym()} {model.GetName().GetNameFromType(GamePreference.Instance.shortLabelLanguageType)}";
+        if (TryResolveLabelText(out var resolvedLabelText))
+        {
+            text.enabled = true;
+            text.text = resolvedLabelText;
+        }
+        else
+        {
+            text.enabled = false;
+        }
 
         MaintainFlagRotationSize();
         UpdateWakeEffects(shipLog, lengthWu, beamWu);

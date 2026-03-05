@@ -107,12 +107,12 @@
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(44040432205336576)"/>
                             </Bindings>
                         </ui:Toggle>
-                        <ui:Toggle label="Unit Label">
+                        <LocalizedEnumField label="Unit Label" type-str="GamePreference+UnitLabelDisplayMode">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(719572929515520)"/>
-                                <ui:DataBinding property="value" data-source-path="showUnitLabel" binding-mode="TwoWay"/>
+                                <ui:DataBinding property="value" data-source-path="unitLabelDisplayMode" source-to-ui-converters="UnitLabelDisplayMode =&gt; int" ui-to-source-converters="int =&gt; UnitLabelDisplayMode" binding-mode="TwoWay"/>
                             </Bindings>
-                        </ui:Toggle>
+                        </LocalizedEnumField>
                         <ui:Toggle label="Show Damage Point Bar On Map">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(719817927200768)"/>

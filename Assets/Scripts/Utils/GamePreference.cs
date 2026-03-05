@@ -38,6 +38,22 @@ public class GamePreference
     }
 
     public RangeRingDisplayMode rangeRingDisplayMode = RangeRingDisplayMode.MergedArcs;
+
+    public enum UnitLabelDisplayMode
+    {
+        None,
+        Unit,
+        Formation
+    }
+
+    UnitLabelDisplayMode _unitLabelDisplayMode = UnitLabelDisplayMode.Unit;
+
+    [CreateProperty]
+    public UnitLabelDisplayMode unitLabelDisplayMode
+    {
+        get => _unitLabelDisplayMode;
+        set => _unitLabelDisplayMode = Enum.IsDefined(typeof(UnitLabelDisplayMode), value) ? value : UnitLabelDisplayMode.Unit;
+    }
     
     [CreateProperty]
     public PortraitViewer.Mode shipPortraitViewMode
@@ -53,7 +69,13 @@ public class GamePreference
 
     // public LanguageType shortLabelLanguageType = LanguageType.English;
     // public LanguageType longLabelLanguageType = LanguageType.All;
-    public bool showUnitLabel = true;
+    [CreateProperty]
+    public bool showUnitLabel
+    {
+        get => unitLabelDisplayMode != UnitLabelDisplayMode.None;
+        set => unitLabelDisplayMode = value ? UnitLabelDisplayMode.Unit : UnitLabelDisplayMode.None;
+    }
+
     public bool showDamagePointBar = true;
 
     public float dayAdvanceHourIntervalSeconds = 0.05f;
@@ -323,6 +345,10 @@ public class GamePreference
         // p.isInEditMode = PlayerPrefs.GetInt("isInEditMode", 0) == 1;
         p.isInEditMode = PlayerPrefs.GetInt("isInEditMode", 1) == 1;
         p.rangeRingDisplayMode = (RangeRingDisplayMode)PlayerPrefs.GetInt("rangeRingDisplayMode", (int)RangeRingDisplayMode.MergedArcs);
+        var unitLabelDisplayModeRaw = PlayerPrefs.GetInt("unitLabelDisplayMode", (int)UnitLabelDisplayMode.Unit);
+        p.unitLabelDisplayMode = Enum.IsDefined(typeof(UnitLabelDisplayMode), unitLabelDisplayModeRaw)
+            ? (UnitLabelDisplayMode)unitLabelDisplayModeRaw
+            : UnitLabelDisplayMode.Unit;
         p.enableGunneryShellVisual = PlayerPrefs.GetInt("enableGunneryShellVisual", 1) == 1;
         p.gunneryShellRadiusScaleCoef = PlayerPrefs.GetFloat("gunneryShellRadiusScaleCoef", 12f);
     }
@@ -334,6 +360,7 @@ public class GamePreference
         PlayerPrefs.SetFloat("simulationRateRaio", simulationRateRatio);
         PlayerPrefs.SetInt("isInEditMode", isInEditMode ? 1 : 0);
         PlayerPrefs.SetInt("rangeRingDisplayMode", (int)rangeRingDisplayMode);
+        PlayerPrefs.SetInt("unitLabelDisplayMode", (int)unitLabelDisplayMode);
         PlayerPrefs.SetInt("enableGunneryShellVisual", enableGunneryShellVisual ? 1 : 0);
         PlayerPrefs.SetFloat("gunneryShellRadiusScaleCoef", gunneryShellRadiusScaleCoef);
 

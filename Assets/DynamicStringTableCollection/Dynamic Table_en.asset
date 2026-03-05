@@ -2827,6 +2827,18 @@ MonoBehaviour:
     m_Localized: Distinct Arcs
     m_Metadata:
       m_Items: []
+  - m_Id: 58890040000000000
+    m_Localized: None
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58890040000000001
+    m_Localized: Unit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58890040000000002
+    m_Localized: Formation
+    m_Metadata:
+      m_Items: []
   - m_Id: 44713050101157888
     m_Localized: Same Lead Ship
     m_Metadata:

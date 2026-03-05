@@ -2818,6 +2818,18 @@ MonoBehaviour:
     m_Key: RangeRingDisplayMode.DistinctArcs
     m_Metadata:
       m_Items: []
+  - m_Id: 58890040000000000
+    m_Key: UnitLabelDisplayMode.None
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58890040000000001
+    m_Key: UnitLabelDisplayMode.Unit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58890040000000002
+    m_Key: UnitLabelDisplayMode.Formation
+    m_Metadata:
+      m_Items: []
   - m_Id: 44713050101157888
     m_Key: FiringLineDisplayMode.SelectedControlRoot
     m_Metadata:

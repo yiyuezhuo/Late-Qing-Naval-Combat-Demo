@@ -6,7 +6,7 @@
                 <ui:DataBinding property="style.backgroundImage" data-source-path="portraitIconReference.pictureStyleBackground" binding-mode="ToTarget" />
             </Bindings>
         </ui:VisualElement>
-        <ui:Button text="&lt; Ship Class&apos;s Name (100)" style="background-color: rgba(188, 188, 188, 0.59); -unity-text-align: middle-left; padding-left: 2px; padding-right: 2px; margin-left: 2px; margin-right: 2px;">
+        <ui:Button text="&lt; Ship Class&apos;s Name (100)" style="-unity-text-align: middle-left; padding-left: 2px; padding-right: 2px; margin-left: 2px; margin-right: 2px;">
             <Bindings>
                 <ui:DataBinding property="text" data-source-path="forceBuilderText" binding-mode="ToTarget" />
             </Bindings>

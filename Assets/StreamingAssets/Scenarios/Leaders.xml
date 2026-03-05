@@ -2,7 +2,7 @@
 <ArrayOfLeader xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <Leader>
   <name>
-   <english>Kawara Yōichi</english>
+   <english>Kawahara Yōichi</english>
    <japanese>河原要一</japanese>
    <chineseSimplified>河原要一</chineseSimplified>
    <chineseTraditional />
@@ -351,12 +351,12 @@
  </Leader>
  <Leader>
   <name>
-   <english>Arima Shin'ichi</english>
+   <english>Yokoo Michiaki</english>
    <japanese>横尾道昱</japanese>
    <chineseSimplified>横尾道昱</chineseSimplified>
   </name>
   <portraitReference>
-   <path>Pictures/Leaders/Arima Shin'ichi.jpg</path>
+   <path>Pictures/Leaders/Yokoo_Michiaki.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Unknown</navalStrategic>
@@ -371,7 +371,7 @@
  </Leader>
  <Leader>
   <name>
-   <english>Sakurai Kikunojō</english>
+   <english>Sakurai Kikunosuke</english>
    <japanese>桜井規矩之左右</japanese>
    <chineseSimplified>樱井规矩之左右</chineseSimplified>
   </name>
@@ -899,7 +899,7 @@ https://shozokan.nich.go.jp/collection/object/SZK001477-059</remark>
  </Leader>
  <Leader>
   <name>
-   <english>Hiroshi Oda</english>
+   <english>Oda Hiroshi</english>
    <japanese>小田亨</japanese>
    <chineseSimplified>小田亨</chineseSimplified>
   </name>
@@ -919,7 +919,7 @@ https://shozokan.nich.go.jp/collection/object/SZK001477-059</remark>
  </Leader>
  <Leader>
   <name>
-   <english>Tasuku Serata</english>
+   <english>Serata Tasuku</english>
    <japanese>世良田亮</japanese>
    <chineseSimplified>世良田亮</chineseSimplified>
   </name>
@@ -2265,7 +2265,7 @@ https://www.edohakuarchives.jp/detail-110167.html
  </Leader>
  <Leader>
   <name>
-   <english>Shigetarō Yoshimatsu</english>
+   <english>Yoshimatsu Shigetarō</english>
    <japanese>吉松茂太郎</japanese>
    <chineseSimplified>吉松茂太郎</chineseSimplified>
   </name>
@@ -2306,7 +2306,7 @@ https://www.edohakuarchives.jp/detail-110167.html
  </Leader>
  <Leader>
   <name>
-   <english>Kensuke Wada</english>
+   <english>Wada Kensuke</english>
    <japanese>和田賢助</japanese>
    <chineseSimplified>和田贤助</chineseSimplified>
   </name>
@@ -2366,7 +2366,7 @@ https://www.edohakuarchives.jp/detail-110167.html
  </Leader>
  <Leader>
   <name>
-   <english>Sentō Takenaka</english>
+   <english>Takenaka Sentō</english>
    <japanese>仙頭武央</japanese>
    <chineseSimplified>仙头武央</chineseSimplified>
   </name>
@@ -2468,7 +2468,7 @@ https://www.edohakuarchives.jp/detail-110167.html
  </Leader>
  <Leader>
   <name>
-   <english>Arinobu Matsumoto</english>
+   <english>Matsumoto Arinobu</english>
    <japanese>松本有信</japanese>
    <chineseSimplified>松本有信</chineseSimplified>
   </name>
@@ -2488,7 +2488,7 @@ https://www.edohakuarchives.jp/detail-110167.html
  </Leader>
  <Leader>
   <name>
-   <english>Miyadzi Sadatoki</english>
+   <english>Miyaji Sadatoki</english>
    <japanese>宮地貞辰</japanese>
    <chineseSimplified>宫地贞辰</chineseSimplified>
   </name>
@@ -2931,7 +2931,7 @@ https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D0%BF%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D
  </Leader>
  <Leader>
   <name>
-   <english>Hikojirō Ijichi</english>
+   <english>Ijichi Hikojirō</english>
    <japanese>伊地知彦次郎</japanese>
    <chineseSimplified>伊地知彦次郎</chineseSimplified>
   </name>
@@ -2951,7 +2951,7 @@ https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D0%BF%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D
  </Leader>
  <Leader>
   <name>
-   <english>Hikohachi Yamada</english>
+   <english>Yamada Hikohachi</english>
    <japanese>山田彦八</japanese>
   </name>
   <portraitReference>
@@ -2972,7 +2972,7 @@ https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D0%BF%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D
  </Leader>
  <Leader>
   <name>
-   <english>Nohimoto Tsunaaki</english>
+   <english>Nomoto Tsunaaki</english>
    <japanese>野元綱明</japanese>
    <chineseSimplified>野元纲明</chineseSimplified>
   </name>
@@ -3093,7 +3093,7 @@ http://bujinkensyokai.web.fc2.com/hirosimagk.html</remark>
  </Leader>
  <Leader>
   <name>
-   <english>Ide Rinnoku</english>
+   <english>Ide Rinroku</english>
    <japanese>井手麟六</japanese>
    <chineseSimplified>井手麟六</chineseSimplified>
   </name>
@@ -3154,7 +3154,7 @@ http://bujinkensyokai.web.fc2.com/hirosimagk.html</remark>
  </Leader>
  <Leader>
   <name>
-   <english>Gin Saeki</english>
+   <english>Saeki Gin</english>
    <japanese>佐伯誾</japanese>
    <chineseSimplified>佐伯誾</chineseSimplified>
   </name>
@@ -3316,7 +3316,7 @@ http://www.hnyhw.org.cn/newscontent_nor.aspx?channel_id=12&amp;id=7729&amp;m=a0<
  </Leader>
  <Leader>
   <name>
-   <english>Kantaro Suzuki</english>
+   <english>Suzuki Kantaro</english>
    <japanese>鈴木貫太郎</japanese>
    <chineseSimplified>铃木贯太郎</chineseSimplified>
   </name>
@@ -3357,7 +3357,7 @@ https://shozokan.nich.go.jp/collection/object/SZK001477-211</remark>
  </Leader>
  <Leader>
   <name>
-   <english>Mitsukane Tsuchiya</english>
+   <english>Tsuchiya Mitsukane</english>
    <japanese>土屋光金</japanese>
    <chineseSimplified>土屋光金</chineseSimplified>
   </name>

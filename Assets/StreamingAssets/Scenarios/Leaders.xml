@@ -3355,4 +3355,44 @@ http://www.hnyhw.org.cn/newscontent_nor.aspx?channel_id=12&amp;id=7729&amp;m=a0<
 https://shozokan.nich.go.jp/collection/object/SZK001477-211</remark>
   <objectId>f0026480-8947-4b4c-ad58-b6842a32c2e4</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Mitsukane Tsuchiya</english>
+   <japanese>土屋光金</japanese>
+   <chineseSimplified>土屋光金</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Mitsukane_Tsuchiya.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%B1%8B%E5%85%89%E9%87%91</remark>
+  <objectId>2cacc5b2-1c2d-44c4-b9e5-84eacb65b117</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ishida Ichiro</english>
+   <japanese>石田一郎</japanese>
+   <chineseSimplified>石田一郎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://kotobank.jp/word/%E7%9F%B3%E7%94%B0%E4%B8%80%E9%83%8E-1053392</remark>
+  <objectId>fcf4725b-4de5-4040-a7a5-1d7ef84a1b45</objectId>
+ </Leader>
 </ArrayOfLeader>

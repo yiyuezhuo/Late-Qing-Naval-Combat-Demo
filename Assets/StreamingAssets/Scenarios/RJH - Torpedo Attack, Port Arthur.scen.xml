@@ -6272,12 +6272,14 @@
      <string>27b1593b-bdeb-47df-ae3e-9f09081e81ca</string>
     </childrenObjectIds>
     <name>
-     <english>Japanse Force</english>
-     <japanese />
-     <chineseSimplified />
+     <english>Destroyers</english>
+     <japanese>駆逐隊</japanese>
+     <chineseSimplified>驱逐队</chineseSimplified>
      <chineseTraditional />
     </name>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>2cacc5b2-1c2d-44c4-b9e5-84eacb65b117</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>42e3d88c-a33a-413b-856e-c0148625f0d6</objectId>
@@ -6770,6 +6772,8 @@
     </childrenObjectIds>
     <name>
      <english>1st Destroyer Division</english>
+     <japanese>第1駆逐隊</japanese>
+     <chineseSimplified>第1驱逐队</chineseSimplified>
     </name>
     <leaderReference>
      <referenceObjectId>9120649a-1ee1-414d-bb7b-bbc0434ba974</referenceObjectId>
@@ -6834,8 +6838,12 @@
     </childrenObjectIds>
     <name>
      <english>2nd Destroyer Division</english>
+     <japanese>第2駆逐隊</japanese>
+     <chineseSimplified>第2驱逐队</chineseSimplified>
     </name>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>fcf4725b-4de5-4040-a7a5-1d7ef84a1b45</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>fe265635-798c-445d-af51-0e38ced73c9b</objectId>
@@ -6890,14 +6898,18 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
+     <string>a40c3e4f-ac56-4556-9069-68d4a1e0f8b5</string>
      <string>70ef7cf4-c4af-426e-a6f4-2986a3a47606</string>
      <string>83b1b4c1-c4ea-4795-86dc-f0e601d9ead0</string>
-     <string>a40c3e4f-ac56-4556-9069-68d4a1e0f8b5</string>
     </childrenObjectIds>
     <name>
      <english>3rd Destroyer Division</english>
+     <japanese>第3駆逐隊</japanese>
+     <chineseSimplified>第3驱逐队</chineseSimplified>
     </name>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>2cacc5b2-1c2d-44c4-b9e5-84eacb65b117</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>27b1593b-bdeb-47df-ae3e-9f09081e81ca</objectId>

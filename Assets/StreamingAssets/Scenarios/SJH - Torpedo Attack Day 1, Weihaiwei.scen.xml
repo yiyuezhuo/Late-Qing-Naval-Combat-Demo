@@ -3672,8 +3672,8 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
-     <string>2e8da993-07a3-411b-b4f6-febbf9c11aac</string>
      <string>a8de94fe-46ae-4aed-b1ec-5909cbfda806</string>
+     <string>2e8da993-07a3-411b-b4f6-febbf9c11aac</string>
      <string>e023aa22-9a0f-4d56-8b4b-8bc02e89202d</string>
      <string>b2b501b2-11ce-4392-8149-55da629fda31</string>
     </childrenObjectIds>

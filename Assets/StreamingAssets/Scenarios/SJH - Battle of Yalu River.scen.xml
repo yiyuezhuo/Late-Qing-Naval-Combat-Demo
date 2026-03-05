@@ -6595,12 +6595,12 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
-     <string>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</string>
-     <string>61f04aed-26e0-4495-bd04-344f5d223de1</string>
-     <string>a55bdec2-a47a-4d2b-af3c-9588a875e58c</string>
-     <string>3ecfd394-30a5-45af-95be-f83b75d246b2</string>
      <string>c8a76edb-7330-4ef4-a115-2f468df23494</string>
      <string>b5dfd87e-cb47-4a4b-abba-affa96e356c4</string>
+     <string>a55bdec2-a47a-4d2b-af3c-9588a875e58c</string>
+     <string>3ecfd394-30a5-45af-95be-f83b75d246b2</string>
+     <string>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</string>
+     <string>61f04aed-26e0-4495-bd04-344f5d223de1</string>
      <string>00fb2b34-3d37-444b-9041-e8540c9304d1</string>
      <string>370f72b3-2243-44ff-ab42-e08d3c6d273c</string>
      <string>6a20093b-9f39-47fd-972f-49eaaefaf1d5</string>
@@ -6668,10 +6668,10 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
-     <string>0cfda6a2-50de-48bf-8aa6-5338375327ef</string>
      <string>9ad21ac1-2365-4f33-bfa9-fee5f27b965a</string>
-     <string>42d0aed7-6e98-4146-b55f-0d5f8940328b</string>
+     <string>0cfda6a2-50de-48bf-8aa6-5338375327ef</string>
      <string>f134adc9-f5b7-4d86-88a9-27ecd13b70c8</string>
+     <string>42d0aed7-6e98-4146-b55f-0d5f8940328b</string>
     </childrenObjectIds>
     <name>
      <english>Inshore Squadron</english>
@@ -6936,11 +6936,13 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
-     <string>e55e1b9a-2cc6-44ab-a656-9b1204d34971</string>
      <string>c4bd2221-a6e2-4646-a59e-60c9e392a80b</string>
+     <string>e55e1b9a-2cc6-44ab-a656-9b1204d34971</string>
     </childrenObjectIds>
     <name>
      <english>Observers</english>
+     <japanese>観察隊</japanese>
+     <chineseSimplified>观察队</chineseSimplified>
     </name>
     <leaderReference />
     <type>General</type>

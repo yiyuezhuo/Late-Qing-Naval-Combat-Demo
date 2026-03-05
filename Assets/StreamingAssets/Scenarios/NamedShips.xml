@@ -1101,7 +1101,9 @@ No class update from 1894 to 1904</remark>
   </fateDesc>
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
+  <defaultLeaderReference>
+   <referenceObjectId>fcf4725b-4de5-4040-a7a5-1d7ef84a1b45</referenceObjectId>
+  </defaultLeaderReference>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>

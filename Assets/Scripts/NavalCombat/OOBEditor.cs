@@ -11,6 +11,8 @@ using NavalCombatCore;
 
 public class OOBEditor : HideableDocument<OOBEditor>
 {
+    const string TreeDragObjectIdsDataKey = "OOBEditor.TreeDragObjectIds";
+
     public TreeView oobTreeView;
 
     // IShipGroupMember currentSelectedGroupMember;
@@ -83,6 +85,8 @@ public class OOBEditor : HideableDocument<OOBEditor>
         root.dataSource = this;
 
         oobTreeView = root.Q<TreeView>("OOBTreeView");
+        oobTreeView.selectionType = SelectionType.Single;
+        oobTreeView.reorderable = true;
 
         // RegisterLinkTag
         // ShipLogNameLinkLabel
@@ -114,6 +118,14 @@ public class OOBEditor : HideableDocument<OOBEditor>
             var label = e.Q<Label>();
             label.dataSource = item;
         };
+        oobTreeView.canStartDrag -= OnTreeCanStartDrag;
+        oobTreeView.setupDragAndDrop -= OnTreeSetupDragAndDrop;
+        oobTreeView.dragAndDropUpdate -= OnTreeDragAndDropUpdate;
+        oobTreeView.handleDrop -= OnTreeHandleDrop;
+        oobTreeView.canStartDrag += OnTreeCanStartDrag;
+        oobTreeView.setupDragAndDrop += OnTreeSetupDragAndDrop;
+        oobTreeView.dragAndDropUpdate += OnTreeDragAndDropUpdate;
+        oobTreeView.handleDrop += OnTreeHandleDrop;
 
         oobTreeView.selectionChanged += (selectedItems) =>
         {
@@ -373,5 +385,217 @@ public class OOBEditor : HideableDocument<OOBEditor>
         {
             state = State.Idle;
         }
+    }
+
+    bool OnTreeCanStartDrag(CanStartDragArgs args)
+    {
+        if (!isInEditMode)
+            return false;
+
+        var selectedIds = args.selectedIds?.ToList();
+        if (selectedIds == null || selectedIds.Count != 1)
+            return false;
+
+        return TryGetObjectIdByTreeItemId(selectedIds[0], out _);
+    }
+
+    StartDragArgs OnTreeSetupDragAndDrop(SetupDragAndDropArgs args)
+    {
+        var draggedObjectIds = args.selectedIds
+            .Where(treeItemId => TryGetObjectIdByTreeItemId(treeItemId, out _))
+            .Select(treeItemId => treeViewIdxToObjectId[treeItemId])
+            .Distinct()
+            .ToList();
+
+        var dragTitle = draggedObjectIds.Count == 1
+            ? draggedObjectIds[0]
+            : $"Move {draggedObjectIds.Count} nodes";
+        var startDragArgs = new StartDragArgs(dragTitle, DragVisualMode.Move);
+        startDragArgs.SetGenericData(TreeDragObjectIdsDataKey, draggedObjectIds);
+        return startDragArgs;
+    }
+
+    DragVisualMode OnTreeDragAndDropUpdate(HandleDragAndDropArgs args)
+    {
+        return TryBuildDropRequest(args, out _) ? DragVisualMode.Move : DragVisualMode.Rejected;
+    }
+
+    DragVisualMode OnTreeHandleDrop(HandleDragAndDropArgs args)
+    {
+        if (!TryBuildDropRequest(args, out var request))
+            return DragVisualMode.Rejected;
+
+        if (!ApplyDropRequest(request))
+            return DragVisualMode.Rejected;
+
+        Sync();
+        TrySetSelection(request.draggedObjectId);
+        return DragVisualMode.Move;
+    }
+
+    bool TryBuildDropRequest(HandleDragAndDropArgs args, out DropRequest request)
+    {
+        request = default;
+        if (!isInEditMode)
+            return false;
+
+        var draggedObjectIds = GetDraggedObjectIds(args.dragAndDropData).ToList();
+        if (draggedObjectIds.Count != 1)
+            return false;
+
+        var draggedObjectId = draggedObjectIds[0];
+        var draggedMember = EntityManager.Instance.Get<IShipGroupMember>(draggedObjectId);
+        if (draggedMember == null)
+            return false;
+
+        if (!TryResolveDropParent(args.parentId, out var dropParent))
+            return false;
+
+        if (dropParent == null && draggedMember is ShipLog)
+            return false;
+
+        if (!draggedMember.IsAttachToAble(dropParent))
+            return false;
+
+        request = new DropRequest
+        {
+            draggedObjectId = draggedObjectId,
+            draggedMember = draggedMember,
+            dropParent = dropParent,
+            dropChildIndex = args.childIndex
+        };
+
+        return true;
+    }
+
+    bool ApplyDropRequest(DropRequest request)
+    {
+        var member = request.draggedMember;
+        var oldParent = member.GetParentGroup();
+        var newParent = request.dropParent;
+
+        if (oldParent != newParent)
+        {
+            member.AttachTo(newParent);
+        }
+
+        if (newParent != null)
+        {
+            MoveObjectIdInList(newParent.childrenObjectIds, request.draggedObjectId, request.dropChildIndex, oldParent == newParent);
+            return true;
+        }
+
+        if (member is not ShipGroup group)
+            return false;
+
+        MoveRootGroupToIndex(group, request.dropChildIndex, oldParent == null);
+        return true;
+    }
+
+    void MoveRootGroupToIndex(ShipGroup group, int targetRootIndex, bool fromRoot)
+    {
+        var allGroups = NavalGameState.Instance.shipGroups;
+        if (!allGroups.Contains(group))
+            return;
+
+        if (targetRootIndex < 0)
+        {
+            targetRootIndex = int.MaxValue;
+        }
+
+        if (fromRoot)
+        {
+            var rootsBeforeMove = allGroups.Where(g => g.parentObjectId == null).ToList();
+            var oldRootIndex = rootsBeforeMove.IndexOf(group);
+            if (oldRootIndex >= 0 && targetRootIndex > oldRootIndex)
+            {
+                targetRootIndex--;
+            }
+        }
+
+        allGroups.Remove(group);
+
+        var rootsAfterRemove = allGroups.Where(g => g.parentObjectId == null).ToList();
+        var insertRootIndex = Mathf.Clamp(targetRootIndex, 0, rootsAfterRemove.Count);
+        if (insertRootIndex >= rootsAfterRemove.Count)
+        {
+            allGroups.Add(group);
+        }
+        else
+        {
+            var insertionIndex = allGroups.IndexOf(rootsAfterRemove[insertRootIndex]);
+            if (insertionIndex < 0)
+            {
+                allGroups.Add(group);
+            }
+            else
+            {
+                allGroups.Insert(insertionIndex, group);
+            }
+        }
+    }
+
+    static void MoveObjectIdInList(List<string> objectIds, string objectId, int targetIndex, bool sameContainer)
+    {
+        var oldIndex = objectIds.IndexOf(objectId);
+        if (oldIndex < 0)
+            return;
+
+        if (targetIndex < 0)
+        {
+            targetIndex = int.MaxValue;
+        }
+
+        if (sameContainer && targetIndex > oldIndex)
+        {
+            targetIndex--;
+        }
+
+        objectIds.RemoveAt(oldIndex);
+        targetIndex = Mathf.Clamp(targetIndex, 0, objectIds.Count);
+        objectIds.Insert(targetIndex, objectId);
+    }
+
+    IEnumerable<string> GetDraggedObjectIds(DragAndDropData dragAndDropData)
+    {
+        if (dragAndDropData != null)
+        {
+            var genericData = dragAndDropData.GetGenericData(TreeDragObjectIdsDataKey);
+            if (genericData is IEnumerable<string> draggedObjectIds)
+            {
+                return draggedObjectIds.Where(id => !string.IsNullOrEmpty(id));
+            }
+        }
+
+        return oobTreeView.selectedIds
+            .Where(treeItemId => TryGetObjectIdByTreeItemId(treeItemId, out _))
+            .Select(treeItemId => treeViewIdxToObjectId[treeItemId]);
+    }
+
+    bool TryResolveDropParent(int parentTreeItemId, out ShipGroup parentGroup)
+    {
+        parentGroup = null;
+
+        if (parentTreeItemId < 0)
+            return true;
+
+        if (!TryGetObjectIdByTreeItemId(parentTreeItemId, out var parentObjectId))
+            return false;
+
+        parentGroup = EntityManager.Instance.Get<ShipGroup>(parentObjectId);
+        return parentGroup != null;
+    }
+
+    bool TryGetObjectIdByTreeItemId(int treeItemId, out string objectId)
+    {
+        return treeViewIdxToObjectId.TryGetValue(treeItemId, out objectId);
+    }
+
+    struct DropRequest
+    {
+        public string draggedObjectId;
+        public IShipGroupMember draggedMember;
+        public ShipGroup dropParent;
+        public int dropChildIndex;
     }
 }

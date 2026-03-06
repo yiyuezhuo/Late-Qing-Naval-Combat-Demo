@@ -227,6 +227,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset helpDialogDocument;
     public VisualTreeAsset faqDialogDocument;
     public VisualTreeAsset locationLabelDialogDocument;
+    public VisualTreeAsset navalLocationLabelEditorDialogDocument;
+    public VisualTreeAsset locationLabelsEditorDialogDocument;
     public VisualTreeAsset subordinatePickerDialogDocument;
     public VisualTreeAsset strategicGroupPickerDialogDocument;
     public VisualTreeAsset gamePreferenceDialogDocument;
@@ -1295,6 +1297,55 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             templateDataSource = label
         };
 
+        tempDialog.Popup();
+    }
+
+    public void PopupNavalLocationLabelEditorDialogForCreate(LatLon latLon)
+    {
+        var model = LocationLabelEditDialogModel.ForCreate(latLon, label =>
+        {
+            NavalGameState.Instance.scenarioState.locationLabels ??= new();
+            NavalGameState.Instance.scenarioState.locationLabels.Add(label);
+        });
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = navalLocationLabelEditorDialogDocument,
+            templateDataSource = model
+        };
+
+        tempDialog.onConfirmed += model.OnConfirm;
+        tempDialog.Popup();
+    }
+
+    public void PopupNavalLocationLabelEditorDialog(LocationLabel label, Action afterConfirm = null)
+    {
+        var model = LocationLabelEditDialogModel.ForEdit(label, afterConfirm);
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = navalLocationLabelEditorDialogDocument,
+            templateDataSource = model
+        };
+
+        tempDialog.onConfirmed += model.OnConfirm;
+        tempDialog.Popup();
+    }
+
+    public void PopupLocationLabelsEditorDialog()
+    {
+        var dialog = new LocationLabelsEditorDialog();
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = locationLabelsEditorDialogDocument,
+            templateDataSource = dialog
+        };
+
+        tempDialog.onCreated += dialog.OnCreated;
         tempDialog.Popup();
     }
 

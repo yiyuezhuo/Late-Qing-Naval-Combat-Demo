@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="LocationLabelsEditorDialog, Assembly-CSharp" class="panel-dialog" style="flex-grow: 0; width: 560px; height: 420px;">
+        <ui:Label text="Location Labels Editor Dialog" class="title" />
+        <ui:ListView name="LocationLabelsListView" data-source-path="scenarioState.locationLabels" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" fixed-item-height="52" style="flex-grow: 1;" />
+        <ui:VisualElement style="flex-direction: row; flex-grow: 0;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1;" />
+            <ui:Button text="Cancel" name="CancelButton" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

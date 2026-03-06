@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-16"?>
+<FullState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <streamingAssetReference>
+  <leadersPath>Leaders.xml</leadersPath>
+  <shipClassesPath>ShipClasses.xml</shipClassesPath>
+  <namedShipsPath>NamedShips.xml</namedShipsPath>
+ </streamingAssetReference>
+ <navalGameState>
+  <leadersBuiltin>false</leadersBuiltin>
+  <shipClassesBuiltin>false</shipClassesBuiltin>
+  <namedShipsBuiltin>false</namedShipsBuiltin>
+  <shipLogs />
+  <serializedCustomBoolMap />
+  <shipGroups>
+   <ShipGroup>
+    <childrenObjectIds />
+    <name>
+     <english>Red</english>
+     <japanese>赤</japanese>
+     <chineseSimplified>红</chineseSimplified>
+     <chineseTraditional>紅</chineseTraditional>
+    </name>
+    <leaderReference />
+    <type>General</type>
+    <formation>General</formation>
+    <objectId>b6692693-d791-4ae0-9fea-5624a32daaae</objectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>010948d3-f9ad-4ea6-a263-ad102d31e0c9</objectId>
+    </doctrine>
+   </ShipGroup>
+   <ShipGroup>
+    <childrenObjectIds />
+    <name>
+     <english>Blue</english>
+     <japanese>青</japanese>
+     <chineseSimplified>蓝</chineseSimplified>
+     <chineseTraditional>藍</chineseTraditional>
+    </name>
+    <leaderReference />
+    <type>General</type>
+    <formation>General</formation>
+    <objectId>62e57b45-e783-4caf-9a2f-442f55c0b4cd</objectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>4f54562f-4592-406d-aef7-3895346ccbb2</objectId>
+    </doctrine>
+   </ShipGroup>
+  </shipGroups>
+  <scenarioState>
+   <dateTime>1904-08-10T04:30:00Z</dateTime>
+   <beginDateTime>1904-08-10T04:30:00Z</beginDateTime>
+   <visibility>ExceptionallyClear</visibility>
+   <seaStateBeaufort>0</seaStateBeaufort>
+   <hasMoonlight>true</hasMoonlight>
+   <globalDescription>
+    <english>The Russian Port Arthur fleet attempted to break out and transfer to Vladivostok, but was intercepted, routed back to Port Arthur, and suffered heavy losses.
+
+https://en.wikipedia.org/wiki/Battle_of_the_Yellow_Sea
+
+Detailed Report of the Battle on August 10th - Warships Part
+
+https://www.jacar.archives.go.jp/das/image/C09050270200
+</english>
+    <japanese>ロシアの旅順艦隊はウラジオストク港へ脱出・移動を試みたが、阻止され旅順港へ敗走し、同時に甚大な損害を被った。
+
+https://en.wikipedia.org/wiki/Battle_of_the_Yellow_Sea
+
+８月１０日戦闘詳報　軍艦の部
+
+https://www.jacar.archives.go.jp/das/image/C09050270200
+</japanese>
+    <chineseSimplified>俄国旅顺舰队试图突围转移到海参崴港，然后被拦截并溃败回了旅顺港，同时遭到惨重损失。
+
+https://en.wikipedia.org/wiki/Battle_of_the_Yellow_Sea
+
+8月10日战斗详报 军舰部分
+
+https://www.jacar.archives.go.jp/das/image/C09050270200</chineseSimplified>
+    <chineseTraditional>俄國旅順艦隊試圖突圍轉移至海參崴港，隨後遭攔截並潰敗退回旅順港，同時遭受慘重損失。
+
+https://en.wikipedia.org/wiki/Battle_of_the_Yellow_Sea
+
+8月10日戰鬥詳報 軍艦部分
+
+https://www.jacar.archives.go.jp/das/image/C09050270200</chineseTraditional>
+   </globalDescription>
+   <weaponSimulationAssignmentClock>
+    <intervalSeconds>120</intervalSeconds>
+    <accumulateSecond>0</accumulateSecond>
+    <elapsedSeconds>0</elapsedSeconds>
+   </weaponSimulationAssignmentClock>
+   <obstacleAvoidCheckClock>
+    <intervalSeconds>1</intervalSeconds>
+    <accumulateSecond>0</accumulateSecond>
+    <elapsedSeconds>0</elapsedSeconds>
+   </obstacleAvoidCheckClock>
+   <doingStep>false</doingStep>
+   <firstLoaded>false</firstLoaded>
+   <firstRemainOneOperationalFleet>false</firstRemainOneOperationalFleet>
+   <firstDisengaged>false</firstDisengaged>
+   <firstReachEndDateTime>false</firstReachEndDateTime>
+   <hasEndDateTime>true</hasEndDateTime>
+   <endDateTime>1904-08-10T11:00:00Z</endDateTime>
+   <backgroundPictureReference>
+    <path>Pictures\Backgrounds\Battle of Yellow Sea.jpg</path>
+    <isBuiltin>true</isBuiltin>
+   </backgroundPictureReference>
+   <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>
+   <locationLabels>
+    <LocationLabel latitude="38.5608063" longitude="121.663071">
+     <name>
+      <english>Encounter Rock</english>
+      <chineseSimplified>过岩</chineseSimplified>
+     </name>
+    </LocationLabel>
+   </locationLabels>
+  </scenarioState>
+  <launchedTorpedos />
+  <tempSubjectLogs />
+ </navalGameState>
+ <viewState>
+  <xRotation>38.27719</xRotation>
+  <yRotation>237.8414</yRotation>
+  <orthographicSize>200</orthographicSize>
+ </viewState>
+ <eventState>
+  <eventItems />
+ </eventState>
+</FullState>

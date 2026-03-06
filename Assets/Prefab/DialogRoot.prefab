@@ -81,6 +81,8 @@ MonoBehaviour:
   helpDialogDocument: {fileID: 9197481963319205126, guid: d099853a82a32fd43899dcdaad9b3ec9, type: 3}
   faqDialogDocument: {fileID: 9197481963319205126, guid: ec3d6affeb06f9e40a75316e527105ca, type: 3}
   locationLabelDialogDocument: {fileID: 9197481963319205126, guid: d41e54b604e35b445bdad39d061b541b, type: 3}
+  navalLocationLabelEditorDialogDocument: {fileID: 9197481963319205126, guid: e8c5e4aab73d4b28bb4f8a137c5a4f11, type: 3}
+  locationLabelsEditorDialogDocument: {fileID: 9197481963319205126, guid: 2fd2600c8db241db936cd6838dd8db5e, type: 3}
   subordinatePickerDialogDocument: {fileID: 9197481963319205126, guid: e420e095d56a2e8459a8ffea946107a6, type: 3}
   strategicGroupPickerDialogDocument: {fileID: 9197481963319205126, guid: d8ca426e4e204724686473d7a2501aa9, type: 3}
   gamePreferenceDialogDocument: {fileID: 9197481963319205126, guid: d36e21b721ef0904fa96150894be669f, type: 3}

@@ -44,6 +44,9 @@ public class TopTabs : SingletonDocument<TopTabs>
         // scenarioStateEditorButton.clicked += ScenarioStateEditor.Instance.Show;
         scenarioStateEditorButton.clicked += DialogRoot.Instance.PopupScenarioStateEditor;
 
+        var locationLabelsEditorButton = root.Q<Button>("LocationLabelsEditorButton");
+        locationLabelsEditorButton.clicked += DialogRoot.Instance.PopupLocationLabelsEditorDialog;
+
         var launchedTorpedoEditorButton = root.Q<Button>("LaunchedTorpedoEditorButton");
         launchedTorpedoEditorButton.clicked += LaunchedTorpedoEditor.Instance.Show;
 

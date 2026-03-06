@@ -81,7 +81,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public enum State
     {
         Idle,
-        SelectingInsertUnitPosition, // Insert + Alt
+        SelectingInsertLocationLabelPosition,
+        SelectingInsertUnitPosition, // Legacy quick deploy
         SelectingInsertUnitPositionComplex, // Insert
         MovingUnit,
         SelectingFollowedTarget,
@@ -183,6 +184,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             var root = new GameObject("GunneryShellVisualContainer");
             root.transform.SetParent(null, false);
             gunneryShellVisualContainer = root.transform;
+        }
+
+        if (GetComponent<NavalLocationLabelOverlay>() == null)
+        {
+            gameObject.AddComponent<NavalLocationLabelOverlay>();
         }
         // Debug.Log($"Persistent Path:{Application.persistentDataPath}");
 
@@ -1185,9 +1191,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 TryExecutePendingRightClickActionInIdle();
 
                 // handle events
-                if (Input.GetKeyDown(KeyCode.Insert) && isPressingAlt) // Insert(Deploy) Unit (traditional) TODO: Remove it?
+                if (Input.GetKeyDown(KeyCode.Insert) && isPressingAlt) // Insert Location Label
                 {
-                    state = State.SelectingInsertUnitPosition;
+                    state = State.SelectingInsertLocationLabelPosition;
                 }
                 if (Input.GetKeyDown(KeyCode.Insert) && !isPressingAlt) // Insert(Deploy) Unit
                 {
@@ -1278,6 +1284,20 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 if(Input.GetKeyDown(KeyCode.A) && selectedShipLog != null) // Set Ship-level attack target
                 {
                     state = State.SelectingShipLevelFiringTarget;
+                }
+            }
+            else if (state == State.SelectingInsertLocationLabelPosition)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    state = State.Idle;
+
+                    var ray = CameraController2.Instance.cam.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out RaycastHit hit))
+                    {
+                        lastSelectedLatLon = Utils.Vector3ToLatLon(hit.point);
+                        DialogRoot.Instance.PopupNavalLocationLabelEditorDialogForCreate(lastSelectedLatLon);
+                    }
                 }
             }
             else if (state == State.SelectingInsertUnitPosition)

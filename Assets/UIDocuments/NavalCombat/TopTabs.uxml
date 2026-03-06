@@ -205,6 +205,11 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(47928146843570176)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="Location" name="LocationLabelsEditorButton">
+                        <Bindings>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                        </Bindings>
+                    </ui:Button>
                     <ui:Button text="Delete (Del)" name="DeleteButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(47928212660588544)"/>

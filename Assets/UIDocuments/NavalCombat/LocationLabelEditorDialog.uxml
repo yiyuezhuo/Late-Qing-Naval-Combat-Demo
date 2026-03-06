@@ -1,0 +1,23 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <ui:VisualElement data-source-type="LocationLabelEditDialogModel, Assembly-CSharp" class="panel-dialog" style="flex-grow: 0; width: 520px; height: auto;">
+        <ui:Label text="Location Label Editor" class="title" />
+        <ui:Instance template="GlobalStringEditor" data-source-path="name">
+            <AttributeOverrides element-name="GlobalStringLabel" text="Location Name" />
+        </ui:Instance>
+        <ui:FloatField label="Latitude">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="latitude" binding-mode="TwoWay" />
+            </Bindings>
+        </ui:FloatField>
+        <ui:FloatField label="Longitude">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="longitude" binding-mode="TwoWay" />
+            </Bindings>
+        </ui:FloatField>
+        <ui:VisualElement style="flex-direction: row; flex-grow: 0;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1;" />
+            <ui:Button text="Cancel" name="CancelButton" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

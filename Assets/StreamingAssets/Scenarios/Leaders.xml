@@ -3395,4 +3395,64 @@ https://shozokan.nich.go.jp/collection/object/SZK001477-211</remark>
   <remark>https://kotobank.jp/word/%E7%9F%B3%E7%94%B0%E4%B8%80%E9%83%8E-1053392</remark>
   <objectId>fcf4725b-4de5-4040-a7a5-1d7ef84a1b45</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Yamaya Tanin</english>
+   <japanese>山屋他人</japanese>
+   <chineseSimplified>山屋他人</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Yamaya_Tanin.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Yamaya_Tanin</remark>
+  <objectId>768f16af-9c1e-433e-8914-3d5b4624ad94</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Takenouchi Heitaro</english>
+   <japanese>竹内平太郎</japanese>
+   <chineseSimplified>竹内平太郎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Takenouchi Heitaro.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Heitar%C5%8D_Takenouchi</remark>
+  <objectId>f521bc56-cc06-434d-b358-6227df06f2d7</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Oinoue Hisamaro</english>
+   <japanese>大井上久麿</japanese>
+   <chineseSimplified>大井上久麿</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://hush.web.fc2.com/name/Biography/015o.html</remark>
+  <objectId>fff85747-d553-4959-a0ef-4153c5c923cb</objectId>
+ </Leader>
 </ArrayOfLeader>

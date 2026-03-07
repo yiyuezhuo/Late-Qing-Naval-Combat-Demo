@@ -80,6 +80,30 @@
   <objectId>5f1f4c9c-0819-468f-87fd-af3938dea6df</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>6c09c904-d9f3-416f-9c64-27690a9352c9</shipClassObjectId>
+  <name>
+   <english>Akitsushima (1903/10/2)</english>
+   <japanese>秋津洲 (1903/10/2)</japanese>
+   <chineseSimplified>秋津洲 (1903/10/2)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>768f16af-9c1e-433e-8914-3d5b4624ad94</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima</remark>
+  <objectId>f1c20165-d89f-4b65-b32e-0ce478dc4ddd</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId>
   <name>
    <english>Naniwa</english>
@@ -3128,6 +3152,30 @@ Generic Placeholder class</remark>
   <objectId>2e203508-d589-4fa9-9fd2-7223a2a40190</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>37bce09e-d947-41ff-acfb-f32541659e54</shipClassObjectId>
+  <name>
+   <english>Suma</english>
+   <japanese>須磨</japanese>
+   <chineseSimplified>须磨</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Suma
+
+</remark>
+  <objectId>3e2a1597-9996-4113-a4e2-c194a7a50244</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
   <name>
    <english>Chidori</english>
@@ -3454,29 +3502,6 @@ Generic Placeholder class</remark>
  <NamedShip>
   <shipClassObjectId>47022fdc-bab2-422c-b4c0-b6bd6ffb8a72</shipClassObjectId>
   <name>
-   <english>Oboro</english>
-   <japanese>朧</japanese>
-   <chineseSimplified>胧</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>none</english>
-  </builderDesc>
-  <fateDesc>
-   <english>none</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E6%9C%A7_(%E9%9B%B7%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)
-</remark>
-  <objectId>f980d585-cd48-4f53-b210-d73aefb3585c</objectId>
- </NamedShip>
- <NamedShip>
-  <shipClassObjectId>47022fdc-bab2-422c-b4c0-b6bd6ffb8a72</shipClassObjectId>
-  <name>
    <english>Inazuma</english>
    <japanese>電</japanese>
    <chineseSimplified>电</chineseSimplified>
@@ -3500,6 +3525,28 @@ Generic Placeholder class</remark>
  <NamedShip>
   <shipClassObjectId>47022fdc-bab2-422c-b4c0-b6bd6ffb8a72</shipClassObjectId>
   <name>
+   <english>Akebono</english>
+   <japanese>曙</japanese>
+   <chineseSimplified>曙</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ja.wikipedia.org/wiki/%E6%9B%99_(%E9%9B%B7%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)</remark>
+  <objectId>296e955f-499d-4a60-96c1-f573f564f40e</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>47022fdc-bab2-422c-b4c0-b6bd6ffb8a72</shipClassObjectId>
+  <name>
    <english>Sazanami</english>
    <japanese>漣</japanese>
    <chineseSimplified>涟</chineseSimplified>
@@ -3519,6 +3566,29 @@ Generic Placeholder class</remark>
   <remark>https://en.wikipedia.org/wiki/Japanese_destroyer_Sazanami_(1899)
 </remark>
   <objectId>eb8b7083-a5a2-4efe-a36f-886397b6e183</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>47022fdc-bab2-422c-b4c0-b6bd6ffb8a72</shipClassObjectId>
+  <name>
+   <english>Oboro</english>
+   <japanese>朧</japanese>
+   <chineseSimplified>胧</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ja.wikipedia.org/wiki/%E6%9C%A7_(%E9%9B%B7%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)
+</remark>
+  <objectId>f980d585-cd48-4f53-b210-d73aefb3585c</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>83db8d34-8b21-45ce-b3b9-e463c6698d73</shipClassObjectId>
@@ -4500,5 +4570,162 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <objectId>ffbb1438-a230-4fca-bc8b-39cdbfeaae48</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8e928947-032c-48de-83c8-459228d5ebfb</shipClassObjectId>
+  <name>
+   <english>Hayatori</english>
+   <japanese>速鳥</japanese>
+   <chineseSimplified>速鸟</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ja.wikipedia.org/wiki/%E9%80%9F%E9%B3%A5_(%E9%A7%86%E9%80%90%E8%89%A6)</remark>
+  <objectId>a0b5de48-35e1-45b6-8dc4-d1d11b6fe3c7</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8e928947-032c-48de-83c8-459228d5ebfb</shipClassObjectId>
+  <name>
+   <english>Harusame</english>
+   <japanese>春雨</japanese>
+   <chineseSimplified>春雨</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ja.wikipedia.org/wiki/%E6%98%A5%E9%9B%A8_(%E6%98%A5%E9%9B%A8%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)</remark>
+  <objectId>32c9077c-0dc0-482f-9c63-4dc350d304d7</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8e928947-032c-48de-83c8-459228d5ebfb</shipClassObjectId>
+  <name>
+   <english>Asagiri</english>
+   <japanese>朝霧</japanese>
+   <chineseSimplified>朝雾</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ja.wikipedia.org/wiki/%E6%9C%9D%E9%9C%A7_(%E6%98%A5%E9%9B%A8%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)</remark>
+  <objectId>073ca71e-f4fe-42b7-8204-bdca0d719fd6</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8e928947-032c-48de-83c8-459228d5ebfb</shipClassObjectId>
+  <name>
+   <english>Murasame</english>
+   <japanese>村雨</japanese>
+   <chineseSimplified>村雨</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ja.wikipedia.org/wiki/%E6%9D%91%E9%9B%A8_(%E6%98%A5%E9%9B%A8%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)</remark>
+  <objectId>4346ea81-cc98-42ef-ba31-287926b6426c</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>70a0611e-34d3-41a9-9215-bd4a1a3b65b7</shipClassObjectId>
+  <name>
+   <english>Kasuga</english>
+   <japanese>春日</japanese>
+   <chineseSimplified>春日</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>fff85747-d553-4959-a0ef-4153c5c923cb</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ja.wikipedia.org/wiki/%E6%98%A5%E6%97%A5_(%E8%A3%85%E7%94%B2%E5%B7%A1%E6%B4%8B%E8%89%A6)</remark>
+  <objectId>68a5becf-73ad-4263-ad2d-7be24831ebb9</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>a920ccf3-30ab-4b93-a1d9-f203e824d1f0</shipClassObjectId>
+  <name>
+   <english>Nisshin</english>
+   <japanese>日進</japanese>
+   <chineseSimplified>日进</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>f521bc56-cc06-434d-b358-6227df06f2d7</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>362b20c0-c7d3-4635-b936-833659468d3b</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>e8c18a88-3af3-448c-9fdc-44c771a5f408</shipClassObjectId>
+  <name>
+   <english>Yaeyama</english>
+   <japanese>八重山</japanese>
+   <chineseSimplified>八重山</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yaeyama</remark>
+  <objectId>f8609106-2fb7-4789-956b-bd930efb8950</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

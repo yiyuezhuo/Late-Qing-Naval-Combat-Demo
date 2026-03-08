@@ -2862,7 +2862,7 @@ https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D0%BF%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D
  </Leader>
  <Leader>
   <name>
-   <english>Asai Masajirō  </english>
+   <english>Asai Masajiro</english>
    <japanese>浅井正次郎</japanese>
    <chineseSimplified>浅井正次郎</chineseSimplified>
   </name>
@@ -3514,5 +3514,90 @@ https://shozokan.nich.go.jp/collection/object/SZK001477-211</remark>
   <traits />
   <remark>https://kotobank.jp/word/%E4%BB%8A%E4%BA%95%E5%85%BC%E6%98%8C-1056199</remark>
   <objectId>4a3112c3-3cb9-407f-81f5-c54fc418f038</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Wilgelm Vitgeft</english>
+   <japanese>ヴィリゲリム・ヴィトゲフト</japanese>
+   <chineseSimplified>威廉·维特格夫特</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Wilgelm_Vitgeft.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Average</navalStrategic>
+  <navalOperational>AboveAverage</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits>
+   <LeaderTrait>Unlucky</LeaderTrait>
+  </traits>
+  <remark>Витгефт, Вильгельм Карлович
+
+https://en.wikipedia.org/wiki/Wilgelm_Vitgeft</remark>
+  <objectId>3d11e780-0830-40f4-b6c5-1fec1ebdccda</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nashiba Tokioki</english>
+   <japanese>梨羽時起</japanese>
+   <chineseSimplified>梨羽时起</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Nashiha_Tokioki.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Nashiba_Tokioki</remark>
+  <objectId>3e4ba392-54f1-4199-b23a-c8e6cc67ac92</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Dewa Shigeto</english>
+   <japanese>出羽重遠</japanese>
+   <chineseSimplified>出羽重远</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Dewa_Shigeto.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Dewa_Shiget%C5%8D</remark>
+  <objectId>d7303b6c-feef-4a49-8613-dc89cc9b029e</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Kataoka Shichiro</english>
+   <japanese>片岡七郎</japanese>
+   <chineseSimplified>片冈七郎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Kataoka_Shichiro.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Kataoka_Shichir%C5%8D
+</remark>
+  <objectId>96e917d5-4465-4c27-b0db-2fde75bd1073</objectId>
  </Leader>
 </ArrayOfLeader>

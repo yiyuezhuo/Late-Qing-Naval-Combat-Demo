@@ -4852,25 +4852,6 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <objectId>a27451bb-ac79-4e90-99a9-780fb5b45aa3</objectId>
  </NamedShip>
  <NamedShip>
-  <shipClassObjectId>3c94c9c5-b30d-4448-9985-47387141748f</shipClassObjectId>
-  <name>
-   <english>Beztrashni</english>
-  </name>
-  <builderDesc>
-   <english>none</english>
-  </builderDesc>
-  <fateDesc>
-   <english>none</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <objectId>3fafb59f-c1fc-4915-866a-559125d3efaf</objectId>
- </NamedShip>
- <NamedShip>
   <shipClassObjectId>bbecbb24-578d-4f73-8ce1-9f1345f98c79</shipClassObjectId>
   <name>
    <english>Retvizan</english>
@@ -5640,5 +5621,197 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <remark>https://en.wikipedia.org/wiki/Chilean_cruiser_Esmeralda_(1883)</remark>
   <objectId>60217514-9922-42dd-9be9-e94b0a048996</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>da10240c-9e79-48b3-bf88-9e62ca88c818</shipClassObjectId>
+  <name>
+   <english>Boiki</english>
+   <japanese>ボイキー</japanese>
+   <chineseSimplified>博伊基</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Бойкий
+
+https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B9%D0%BA%D0%B8%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+  <objectId>d8369ab7-d510-4cea-8dc7-03273ae66f28</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>da10240c-9e79-48b3-bf88-9e62ca88c818</shipClassObjectId>
+  <name>
+   <english>Burni</english>
+   <japanese>ブールヌイ</japanese>
+   <chineseSimplified>布尔尼</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Буйный
+
+https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+  <objectId>d50b3c43-52f9-4215-abcf-274bf66b5f4c</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>0d31a3f3-3e32-46a9-96d9-e4dd8457273b</shipClassObjectId>
+  <name>
+   <english>Vinoslivi</english>
+   <japanese>ウイノスリーウィ</japanese>
+   <chineseSimplified>维诺斯拉维</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Выносливый
+
+https://ru.wikipedia.org/wiki/%D0%92%D1%8B%D0%BD%D0%BE%D1%81%D0%BB%D0%B8%D0%B2%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+  <objectId>4c28316c-fc76-4c5f-a47b-511db96f03d3</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>0d31a3f3-3e32-46a9-96d9-e4dd8457273b</shipClassObjectId>
+  <name>
+   <english>Vlastni</english>
+   <japanese>ウラースツヌイ</japanese>
+   <chineseSimplified>弗拉斯特尼</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Властный
+
+https://ru.wikipedia.org/wiki/%D0%92%D0%BB%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+  <objectId>13b5f823-87b2-403d-a5bd-fdce957b5061</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>0d31a3f3-3e32-46a9-96d9-e4dd8457273b</shipClassObjectId>
+  <name>
+   <english>Grozovoi</english>
+   <japanese>グロゾウォイ</japanese>
+   <chineseSimplified>格罗佐沃伊</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Грозовой
+
+https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%BE%D0%B7%D0%BE%D0%B2%D0%BE%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+  <objectId>2056ee3d-eecf-4286-b9a8-0193791a30ec</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>3c94c9c5-b30d-4448-9985-47387141748f</shipClassObjectId>
+  <name>
+   <english>Bezstrashni</english>
+   <japanese>ベズストラーシヌイ</japanese>
+   <chineseSimplified>别斯特拉什尼</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Бесстрашный
+
+https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D1%81%D1%82%D1%80%D0%B0%D1%88%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+  <objectId>3fafb59f-c1fc-4915-866a-559125d3efaf</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>3c94c9c5-b30d-4448-9985-47387141748f</shipClassObjectId>
+  <name>
+   <english>Bezshumni</english>
+   <japanese>ベズシームヌイ</japanese>
+   <chineseSimplified>别什舒姆尼</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Бесшумный
+
+https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D1%88%D1%83%D0%BC%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+  <objectId>195a8b86-11f4-44a4-8a76-1ebd19a85cc9</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>3c94c9c5-b30d-4448-9985-47387141748f</shipClassObjectId>
+  <name>
+   <english>Bezposhtchadni</english>
+   <japanese>ベスポシチャーズヌイ</japanese>
+   <chineseSimplified>别兹波什恰德尼</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Беспощадный
+
+https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+  <objectId>2a67e708-40ff-46c2-a218-b1993ed7bdc4</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

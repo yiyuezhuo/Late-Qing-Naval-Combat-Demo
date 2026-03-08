@@ -13397,7 +13397,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
   <displacementTons>15.7</displacementTons>
-  <complementMen>6</complementMen>
+  <complementMen>10</complementMen>
   <lengthFoot>64.7</lengthFoot>
   <beamFoot>8.5</beamFoot>
   <draftFoot>3.5</draftFoot>
@@ -13473,7 +13473,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
 
 2 torpedo boats carried by Ting Yuen class. 
 
-Complement is inferred</remark>
+Complement is placeholder</remark>
   <portraitReference>
    <path>Pictures\Ships\Ting I.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -13499,7 +13499,7 @@ Complement is inferred</remark>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
   <displacementTons>15.7</displacementTons>
-  <complementMen>6</complementMen>
+  <complementMen>10</complementMen>
   <lengthFoot>52.2</lengthFoot>
   <beamFoot>6.6</beamFoot>
   <draftFoot>3.5</draftFoot>
@@ -13594,7 +13594,7 @@ Complement is inferred</remark>
 
 Torpedo boats carried by Chi Yuan
 
-Draft &amp; Complement is inferred.
+Draft &amp; Complement is placeholder.
 
 </remark>
   <portraitReference>
@@ -28417,6 +28417,8 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
  <ShipClass>
   <name>
    <english>Bezstrashni</english>
+   <japanese>ベズストラーシヌイ</japanese>
+   <chineseSimplified>别斯特拉什尼</chineseSimplified>
   </name>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -35721,7 +35723,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
      <mountArcsPattern>Narrow</mountArcsPattern>
-     <objectId>2c7904ed-268a-4a86-b525-ffb4fae73f62</objectId>
+     <objectId>6d6e528e-e71b-46c0-85f4-15d031afc7ce</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
      <mountLocation>StarboardMidship</mountLocation>
@@ -35733,7 +35735,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
      <mountArcsPattern>Narrow</mountArcsPattern>
-     <objectId>af191256-dfdb-402f-b4b0-47de16130c36</objectId>
+     <objectId>2e8bb551-76e2-4b29-baf3-31d600d39017</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
      <mountLocation>PortMidship</mountLocation>
@@ -35745,7 +35747,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
      <mountArcsPattern>Narrow</mountArcsPattern>
-     <objectId>dd65b8d4-2b30-4a4d-ac81-f47e1b563832</objectId>
+     <objectId>da3acfb6-1760-4c8f-b7eb-60ce13433022</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
    <torpedoSettings>
@@ -35836,5 +35838,338 @@ Esmeralda or Idzumi (Izumi)</remark>
   </portraitIconReference>
   <ram>None</ram>
   <objectId>340b332a-554f-4d10-a067-e22e9741b1eb</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Boiki</english>
+   <japanese>ボイキー</japanese>
+   <chineseSimplified>博伊基</chineseSimplified>
+  </name>
+  <type>Destroyer</type>
+  <extraShipType>NotSpecified</extraShipType>
+  <country>Russia</country>
+  <displacementTons>350</displacementTons>
+  <complementMen>62</complementMen>
+  <lengthFoot>210</lengthFoot>
+  <beamFoot>22</beamFoot>
+  <draftFoot>8.5</draftFoot>
+  <engineDesc>
+   <english>VTE</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>4 Yarrow</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>M. 1898 L</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Narrow</mountArcsPattern>
+     <objectId>813a0069-d6b1-4261-a418-7b86c59cad2f</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>Midship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="75" CoverageDeg="30" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="255" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Narrow</mountArcsPattern>
+     <objectId>e7917f4e-e8cd-4583-9a36-7789d6eec517</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>After</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="60" CoverageDeg="240" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Normal</mountArcsPattern>
+     <objectId>2cbdd1ef-52e4-4679-8d83-3aadf1a57fd4</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="650" speedKnots="30" />
+    <TorpedoSetting rangeYards="980" speedKnots="25" />
+   </torpedoSettings>
+   <ammunitionCapacity>6</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>75mm/50 M1891</english>
+     <japanese />
+    </name>
+    <maxRangeYards>8500</maxRangeYards>
+    <effectiveRangeYards>3825</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <damageFactor>12</damageFactor>
+    <barrelsLevelPort>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>47mm/43</english>
+     <japanese />
+     <chineseSimplified />
+    </name>
+    <maxRangeYards>6500</maxRangeYards>
+    <effectiveRangeYards>2925</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <damageFactor>8</damageFactor>
+    <barrelsLevelPort>
+     <int>3</int>
+     <int>2</int>
+     <int>1</int>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>3</int>
+     <int>2</int>
+     <int>1</int>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>340</damagePoint>
+  <speedKnots>26</speedKnots>
+  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>26</float>
+   <float>15</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>26</float>
+   <float>13</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>26</float>
+   <float>16</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="6" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="6" increaseSpeedKnots="5" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="11" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="13" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="16" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+   <armorType>NotSpecified</armorType>
+  </armorRating>
+  <portraitUrl>https://commons.wikimedia.org/wiki/File:%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%86%D0%B8%D0%B8_%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%D0%B0_%D1%8D%D1%81%D0%BA%D0%B0%D0%B4%D1%80%D0%B5%D0%BD%D0%BD%D1%8B%D1%85_%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D0%B5%D0%B2_%D1%82%D0%B8%D0%BF%D0%B0_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB.jpg</portraitUrl>
+  <remark>Бойкий (миноносец)
+
+https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D1%8B_%D1%82%D0%B8%D0%BF%D0%B0_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB
+
+</remark>
+  <portraitReference>
+   <path>Pictures\Ships\Boiki.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\Boiki_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\Boiki_Icon.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <ram>None</ram>
+  <objectId>da10240c-9e79-48b3-bf88-9e62ca88c818</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Vnimatelni</english>
+   <japanese>ウラースツヌイ</japanese>
+   <chineseSimplified>弗尼马捷利尼</chineseSimplified>
+  </name>
+  <type>Destroyer</type>
+  <extraShipType>NotSpecified</extraShipType>
+  <country>Russia</country>
+  <displacementTons>312</displacementTons>
+  <complementMen>59</complementMen>
+  <lengthFoot>186</lengthFoot>
+  <beamFoot>19</beamFoot>
+  <draftFoot>9.9</draftFoot>
+  <engineDesc>
+   <english>VTE</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>4 Normand</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>M. 1898 L</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Midship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>2</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="75" CoverageDeg="30" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="255" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Narrow</mountArcsPattern>
+     <objectId>e7917f4e-e8cd-4583-9a36-7789d6eec517</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="650" speedKnots="30" />
+    <TorpedoSetting rangeYards="980" speedKnots="25" />
+   </torpedoSettings>
+   <ammunitionCapacity>4</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>75mm/50 M1891</english>
+     <japanese />
+    </name>
+    <maxRangeYards>8500</maxRangeYards>
+    <effectiveRangeYards>3825</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <damageFactor>12</damageFactor>
+    <barrelsLevelPort>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>47mm/43</english>
+     <japanese />
+     <chineseSimplified />
+    </name>
+    <maxRangeYards>6500</maxRangeYards>
+    <effectiveRangeYards>2925</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <damageFactor>8</damageFactor>
+    <barrelsLevelPort>
+     <int>3</int>
+     <int>2</int>
+     <int>1</int>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>3</int>
+     <int>2</int>
+     <int>1</int>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>321</damagePoint>
+  <speedKnots>26</speedKnots>
+  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>26</float>
+   <float>15</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>26</float>
+   <float>13</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>26</float>
+   <float>16</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="6" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="6" increaseSpeedKnots="5" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="11" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="13" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="16" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+   <armorType>NotSpecified</armorType>
+  </armorRating>
+  <remark>Vnimatelny or Vnimatelni or Forel (before 1902)
+
+Форель (с 9 марта 1902 г. — «Внимательный».)
+
+https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D1%8B_%D1%82%D0%B8%D0%BF%D0%B0_%C2%AB%D0%A4%D0%BE%D1%80%D0%B5%D0%BB%D1%8C%C2%BB</remark>
+  <portraitReference>
+   <path>Pictures\Ships\Vnimatelni_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\Vnimatelni_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\Vnimatelni_Icon.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <ram>None</ram>
+  <objectId>0d31a3f3-3e32-46a9-96d9-e4dd8457273b</objectId>
  </ShipClass>
 </ArrayOfShipClass>

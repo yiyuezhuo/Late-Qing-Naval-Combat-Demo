@@ -15011,7 +15011,7 @@
      <string>0acb235d-9b30-4456-b355-2ba497c1ad10</string>
     </childrenObjectIds>
     <name>
-     <english>5th Destroyed Division</english>
+     <english>5th Destroyer Division</english>
      <japanese>第5駆逐隊</japanese>
      <chineseSimplified>第5驱逐队</chineseSimplified>
     </name>
@@ -15641,8 +15641,8 @@ https://www.jacar.archives.go.jp/das/image/C09050270200</chineseTraditional>
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>38.41711</xRotation>
-  <yRotation>238.342346</yRotation>
+  <xRotation>38.45768</xRotation>
+  <yRotation>238.314575</yRotation>
   <orthographicSize>40</orthographicSize>
  </viewState>
  <eventState>

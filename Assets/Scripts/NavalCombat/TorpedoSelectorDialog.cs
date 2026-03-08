@@ -8,16 +8,41 @@ using Unity.Properties;
 
 public class TorpedoSectorSelectorDialog
 {
+    List<Item> fullItems = new();
     public List<Item> items = new();
     public Action<ShipClass> callback;
+    string _filterString;
+
+    [CreateProperty]
+    public string filterString
+    {
+        get => _filterString;
+        set
+        {
+            _filterString = value;
+            RefreshFilter();
+        }
+    }
 
     public void OnCreated(object sender, VisualElement root)
     {
-        items = SuperGameState.Instance.currentGameState.shipClasses
+        fullItems = SuperGameState.Instance.currentGameState.shipClasses
         .Where(s => s.torpedoSector.ammunitionCapacity > 0)
         .Select(
             s => new Item(){shipClass=s}
         ).ToList();
+        RefreshFilter();
+    }
+
+    public void RefreshFilter()
+    {
+        if (string.IsNullOrEmpty(_filterString))
+        {
+            items = fullItems;
+            return;
+        }
+
+        items = fullItems.Where(item => item.labelName != null && item.labelName.Contains(_filterString)).ToList();
     }
 
     public void OnConfirm(object sender, VisualElement root)

@@ -35393,16 +35393,16 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
-  <displacementTons>0</displacementTons>
-  <complementMen>0</complementMen>
-  <lengthFoot>0</lengthFoot>
-  <beamFoot>0</beamFoot>
-  <draftFoot>0</draftFoot>
+  <displacementTons>2920</displacementTons>
+  <complementMen>296</complementMen>
+  <lengthFoot>270</lengthFoot>
+  <beamFoot>42</beamFoot>
+  <draftFoot>18.3</draftFoot>
   <engineDesc>
-   <english>none</english>
+   <english>HC</english>
   </engineDesc>
   <boilersDesc>
-   <english>none</english>
+   <english>4 Cylindrical</english>
   </boilersDesc>
   <batteryRecords>
    <BatteryRecord>
@@ -35708,16 +35708,80 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
   </batteryRecords>
   <torpedoSector>
    <name>
-    <english>none</english>
+    <english>14'' Mk X</english>
    </name>
-   <mountLocationRecords />
-   <torpedoSettings />
-   <ammunitionCapacity>0</ammunitionCapacity>
-   <damageClass>A</damageClass>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>After</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="165" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Narrow</mountArcsPattern>
+     <objectId>2c7904ed-268a-4a86-b525-ffb4fae73f62</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>StarboardMidship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="75" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Narrow</mountArcsPattern>
+     <objectId>af191256-dfdb-402f-b4b0-47de16130c36</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>PortMidship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="255" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Narrow</mountArcsPattern>
+     <objectId>dd65b8d4-2b30-4a4d-ac81-f47e1b563832</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="800" speedKnots="30" />
+   </torpedoSettings>
+   <ammunitionCapacity>6</ammunitionCapacity>
+   <damageClass>I</damageClass>
    <dudProbability>0.5</dudProbability>
    <pistolType>Contact</pistolType>
   </torpedoSector>
-  <rapidFireBatteryRecords />
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>6pdr/42 57mm</english>
+     <japanese />
+     <chineseSimplified />
+    </name>
+    <maxRangeYards>7500</maxRangeYards>
+    <effectiveRangeYards>3375</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="6" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <damageFactor>12</damageFactor>
+    <barrelsLevelPort>
+     <int>1</int>
+     <int>1</int>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>1</int>
+     <int>1</int>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
   <targetSizeModifier>0</targetSizeModifier>
   <damagePoint>982</damagePoint>
   <speedKnots>18</speedKnots>
@@ -35754,14 +35818,21 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <superStructureVertical effectInch="0.2" actualInch="0.3" />
    <armorType>MildSteel</armorType>
   </armorRating>
+  <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Esmeralda_(ship,_1884)_-_Brassey%27s_Naval_Annual_1887.png</portraitUrl>
+  <remark>https://en.wikipedia.org/wiki/Chilean_cruiser_Esmeralda_(1883)
+
+Esmeralda or Idzumi (Izumi)</remark>
   <portraitReference>
-   <isBuiltin>false</isBuiltin>
+   <path>Pictures\Ships\Esmeralda.png</path>
+   <isBuiltin>true</isBuiltin>
   </portraitReference>
   <portraitTopReference>
-   <isBuiltin>false</isBuiltin>
+   <path>Pictures\Ships\Esmeralda_Top.png</path>
+   <isBuiltin>true</isBuiltin>
   </portraitTopReference>
   <portraitIconReference>
-   <isBuiltin>false</isBuiltin>
+   <path>Pictures\Ships\Esmeralda_Icon.png</path>
+   <isBuiltin>true</isBuiltin>
   </portraitIconReference>
   <ram>None</ram>
   <objectId>340b332a-554f-4d10-a067-e22e9741b1eb</objectId>

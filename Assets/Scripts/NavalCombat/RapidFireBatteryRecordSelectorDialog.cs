@@ -8,14 +8,39 @@ using Unity.Properties;
 
 public class RapidFireBatteryRecordSelectorDialog
 {
+    List<Item> fullItems = new();
     public List<Item> items = new();
     public Action<RapidFireBatteryRecord> callback;
+    string _filterString;
+
+    [CreateProperty]
+    public string filterString
+    {
+        get => _filterString;
+        set
+        {
+            _filterString = value;
+            RefreshFilter();
+        }
+    }
 
     public void OnCreated(object sender, VisualElement root)
     {
-        items = SuperGameState.Instance.currentGameState.shipClasses.SelectMany(
+        fullItems = SuperGameState.Instance.currentGameState.shipClasses.SelectMany(
             s => s.rapidFireBatteryRecords.Select(b => new Item(){shipClass=s, rapidBatteryRecord=b})
         ).ToList();
+        RefreshFilter();
+    }
+
+    public void RefreshFilter()
+    {
+        if (string.IsNullOrEmpty(_filterString))
+        {
+            items = fullItems;
+            return;
+        }
+
+        items = fullItems.Where(item => item.labelName != null && item.labelName.Contains(_filterString)).ToList();
     }
 
     public void OnConfirm(object sender, VisualElement root)

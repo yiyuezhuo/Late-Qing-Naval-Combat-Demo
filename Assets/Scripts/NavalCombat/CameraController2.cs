@@ -395,7 +395,7 @@ public class CameraController2 : MonoBehaviour
             {
                 dragging = true;
                 UpdateHitPoint();
-                Debug.Log($"Start dragging at lat={lastTrackedLat}, lon={lastTrackedLon}, cam.orthographicSize={cam.orthographicSize}");
+                // Debug.Log($"Start dragging at lat={lastTrackedLat}, lon={lastTrackedLon}, cam.orthographicSize={cam.orthographicSize}");
             }
             else
             {

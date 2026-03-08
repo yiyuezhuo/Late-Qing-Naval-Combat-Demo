@@ -5619,4 +5619,26 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yaeyama</remark>
   <objectId>f8609106-2fb7-4789-956b-bd930efb8950</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>340b332a-554f-4d10-a067-e22e9741b1eb</shipClassObjectId>
+  <name>
+   <english>Idzumi</english>
+   <japanese>和泉</japanese>
+   <chineseSimplified>和泉</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Chilean_cruiser_Esmeralda_(1883)</remark>
+  <objectId>60217514-9922-42dd-9be9-e94b0a048996</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

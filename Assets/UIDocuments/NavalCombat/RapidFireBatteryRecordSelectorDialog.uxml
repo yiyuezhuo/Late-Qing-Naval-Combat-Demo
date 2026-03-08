@@ -1,6 +1,12 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement data-source-type="BatteryRecordSelectorDialog, Assembly-CSharp" class="panel-dialog" style="width: 500px;">
+    <ui:VisualElement data-source-type="RapidFireBatteryRecordSelectorDialog, Assembly-CSharp" class="panel-dialog" style="width: 500px;">
         <ui:Label text="Rapid Fire Battery Record Selector" class="title"/>
+        <ui:TextField label="Filter">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(38619517602664448)"/>
+                <ui:DataBinding property="value" data-source-path="filterString" binding-mode="TwoWay"/>
+            </Bindings>
+        </ui:TextField>
         <ui:VisualElement style="flex-grow: 1;">
             <ui:ListView item-template="project://database/Assets/UIDocuments/Templates/RapidFireBatteryRecordSelectorDialogItemLabel.uxml?fileID=9197481963319205126&amp;guid=eec942617c4dae74d8d75972e7ecc596&amp;type=3#RapidFireBatteryRecordSelectorDialogItemLabel" binding-source-selection-mode="AutoAssign" name="RapidFireBatteryRecordListView" data-source-path="items" data-source-type="RapidFireBatteryRecordSelectorDialog, Assembly-CSharp" style="flex-grow: 1;"/>
         </ui:VisualElement>

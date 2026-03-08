@@ -318,6 +318,30 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <objectId>aec1143a-8588-4c84-83ca-80c1f4439bb5</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>c01d7942-f5df-4358-b6a5-d934277b6550</shipClassObjectId>
+  <name>
+   <english>Chen Yuan (1903/8/1)</english>
+   <japanese>鎮遠 (1903/8/1)</japanese>
+   <chineseSimplified>镇远 (1903/8/1)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>4a3112c3-3cb9-407f-81f5-c54fc418f038</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Chinese_ironclad_Zhenyuan</remark>
+  <objectId>5dfb7c37-32da-47f7-be68-06832bcf8b59</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</shipClassObjectId>
   <name>
    <english>Yang Wei</english>
@@ -659,6 +683,30 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <objectId>a30faffb-e4b9-4e55-aec2-db88671265ca</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>4804a957-f872-4939-9e41-b7c0f78262ce</shipClassObjectId>
+  <name>
+   <english>Hashidate (1903/10/12)</english>
+   <japanese>厳島 (1903/10/12)</japanese>
+   <chineseSimplified>严岛 (1903/10/12)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>e1247c52-775e-4e40-953e-46d7b9cf76be</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Hashidate</remark>
+  <objectId>c579addb-d566-4c32-a05e-69b8363f6dfa</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</shipClassObjectId>
   <name>
    <english>Itsukushima</english>
@@ -736,6 +784,30 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Matsushima</remark>
   <objectId>52fe3068-7c3f-4b37-bcbc-88895e925217</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>487c248d-c78b-47c0-841a-2bd768b47662</shipClassObjectId>
+  <name>
+   <english>Matsushima (1903/9/26)</english>
+   <japanese>松島 (1903/9/26)</japanese>
+   <chineseSimplified>松岛 (1903/9/26)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>8d53b035-147c-4930-b1a6-6b5bee738708</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Matsushima</remark>
+  <objectId>c6f4a70c-e182-4eda-834f-6015d90eb2d9</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId>
@@ -2672,11 +2744,11 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <objectId>c06764c2-f4b7-4dc8-b9c8-db1c9439e86c</objectId>
  </NamedShip>
  <NamedShip>
-  <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
   <name>
-   <english>Aotaka</english>
-   <japanese>蒼鷹</japanese>
-   <chineseSimplified>苍鹰</chineseSimplified>
+   <english>TB 31</english>
+   <japanese>第31号</japanese>
+   <chineseSimplified>第31号</chineseSimplified>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2690,15 +2762,14 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E8%92%BC%E9%B7%B9_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
-  <objectId>6be4339c-a5de-4d7a-9e7c-bd26c6f464ec</objectId>
+  <objectId>ff0f67fa-1f14-4272-9d9b-e549c3bb96e9</objectId>
  </NamedShip>
  <NamedShip>
-  <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
   <name>
-   <english>Hato</english>
-   <japanese>鴿</japanese>
-   <chineseSimplified>鸽</chineseSimplified>
+   <english>TB 32</english>
+   <japanese>第32号</japanese>
+   <chineseSimplified>第32号</chineseSimplified>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2712,15 +2783,14 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E9%B4%BF_(%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
-  <objectId>0a34d18a-a174-45a1-8e03-9fdce8cd9095</objectId>
+  <objectId>7f119e8d-f7ac-48e9-bcae-152557aa28ce</objectId>
  </NamedShip>
  <NamedShip>
-  <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
   <name>
-   <english>Kari</english>
-   <japanese>雁</japanese>
-   <chineseSimplified>雁</chineseSimplified>
+   <english>TB 33</english>
+   <japanese>第33号</japanese>
+   <chineseSimplified>第33号</chineseSimplified>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2734,15 +2804,14 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E9%9B%81_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
-  <objectId>8de4908b-950c-4134-a08e-6a373e7c3314</objectId>
+  <objectId>ecd69988-0b56-426a-8bc5-9f44ff201f87</objectId>
  </NamedShip>
  <NamedShip>
-  <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
   <name>
-   <english>Tsubame</english>
-   <japanese>燕</japanese>
-   <chineseSimplified>燕</chineseSimplified>
+   <english>TB 34</english>
+   <japanese>第34号</japanese>
+   <chineseSimplified>第34号</chineseSimplified>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2756,8 +2825,574 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E7%87%95_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
-  <objectId>37460130-ade2-4d67-8e6a-ba02666e2a8b</objectId>
+  <objectId>0b01b5bc-73fc-4142-9716-75457ad6fa73</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
+  <name>
+   <english>TB 35</english>
+   <japanese>第35号</japanese>
+   <chineseSimplified>第35号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>fa32ad3e-aad6-4dec-b1f8-af2510eb5991</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
+  <name>
+   <english>TB 36</english>
+   <japanese>第36号</japanese>
+   <chineseSimplified>第36号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>2d843e46-d996-4db3-8f12-64cee9523a6d</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
+  <name>
+   <english>TB 37</english>
+   <japanese>第37号</japanese>
+   <chineseSimplified>第37号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>66546bd8-0ea1-485f-8ce4-b94d40c23dc2</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
+  <name>
+   <english>TB 38</english>
+   <japanese>第38号</japanese>
+   <chineseSimplified>第38号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>3c0e3bcd-353b-4b13-b04f-962b05b86f28</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
+  <name>
+   <english>TB 44</english>
+   <japanese>第44号</japanese>
+   <chineseSimplified>第44号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>85bfd3f1-93ce-412b-a76c-2e134a5681de</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
+  <name>
+   <english>TB 45</english>
+   <japanese>第45号</japanese>
+   <chineseSimplified>第45号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>8363e653-915e-467d-9ead-89c704b774ba</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
+  <name>
+   <english>TB 46</english>
+   <japanese>第46号</japanese>
+   <chineseSimplified>第46号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>172f351f-2369-4b60-b1a3-ab1b460ce703</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
+  <name>
+   <english>TB 47</english>
+   <japanese>第47号</japanese>
+   <chineseSimplified>第47号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>2d05ed44-fa71-4008-bf45-f7364b4e9569</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
+  <name>
+   <english>TB 48</english>
+   <japanese>第48号</japanese>
+   <chineseSimplified>第48号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>8d93e3c6-2dff-4260-a07c-b93c183ac63b</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
+  <name>
+   <english>TB 49</english>
+   <japanese>第49号</japanese>
+   <chineseSimplified>第49号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>262eaed6-0da6-42f8-a92b-d4d3ae86f3fe</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
+  <name>
+   <english>TB 60</english>
+   <japanese>第60号</japanese>
+   <chineseSimplified>第60号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>43e01f87-4b47-4e4f-a6f4-7a2bae74f1b5</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</shipClassObjectId>
+  <name>
+   <english>TB 61</english>
+   <japanese>第61号</japanese>
+   <chineseSimplified>第61号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>4fbb0246-4635-434d-a865-78f5db48dc8d</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 39</english>
+   <japanese>第39号</japanese>
+   <chineseSimplified>第39号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>e7e86b20-f6f4-4441-b22c-26efad3f7b52</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 40</english>
+   <japanese>第40号</japanese>
+   <chineseSimplified>第40号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>b21a962b-d0e8-44be-8930-0e2491838dcb</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 41</english>
+   <japanese>第41号</japanese>
+   <chineseSimplified>第41号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>ed43ba79-940f-4972-81f8-02ddc37d2125</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 42</english>
+   <japanese>第42号</japanese>
+   <chineseSimplified>第42号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>414409f3-9f4b-487b-a833-0ad145bb91ce</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 43</english>
+   <japanese>第43号</japanese>
+   <chineseSimplified>第43号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>d986a711-5701-4457-bccc-246b517d1e90</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 50</english>
+   <japanese>第50号</japanese>
+   <chineseSimplified>第50号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>9df782ca-2e62-4597-bb2b-a6087316097b</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 51</english>
+   <japanese>第51号</japanese>
+   <chineseSimplified>第51号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>3f2cac5a-c9c6-4ede-ad40-08f4660fc733</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 52</english>
+   <japanese>第52号</japanese>
+   <chineseSimplified>第52号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>75cd9771-f87e-4e35-9895-b79ee7302e00</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 53</english>
+   <japanese>第53号</japanese>
+   <chineseSimplified>第53号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>ccfb86cc-17db-4278-bb37-fafbf80e772b</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 54</english>
+   <japanese>第54号</japanese>
+   <chineseSimplified>第54号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>1185d875-b4fb-4567-ada4-e39ec286ba4f</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 55</english>
+   <japanese>第55号</japanese>
+   <chineseSimplified>第55号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>26131b77-438f-4f1c-b2f6-274c107701ae</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 56</english>
+   <japanese>第56号</japanese>
+   <chineseSimplified>第56号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>0e43dd6c-2b2f-4a15-8fb0-e2fa2f3efd12</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 57</english>
+   <japanese>第57号</japanese>
+   <chineseSimplified>第57号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>0b802318-4ffd-40cf-912e-aa32f2d7c8a7</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 58</english>
+   <japanese>第58号</japanese>
+   <chineseSimplified>第58号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>1303965c-6cfc-40b1-8c3b-8cbdb4188c8d</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
+  <name>
+   <english>TB 59</english>
+   <japanese>第59号</japanese>
+   <chineseSimplified>第59号</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>369306a2-f010-4e6e-9950-c1f70ebf56c3</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
@@ -2842,90 +3477,6 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <objectId>b2f31863-6fd3-4086-b696-853e1dc6505f</objectId>
- </NamedShip>
- <NamedShip>
-  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
-  <name>
-   <english>TB 43</english>
-   <japanese>第43号</japanese>
-   <chineseSimplified>第43号</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>none</english>
-  </builderDesc>
-  <fateDesc>
-   <english>none</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <objectId>d986a711-5701-4457-bccc-246b517d1e90</objectId>
- </NamedShip>
- <NamedShip>
-  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
-  <name>
-   <english>TB 42</english>
-   <japanese>第42号</japanese>
-   <chineseSimplified>第42号</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>none</english>
-  </builderDesc>
-  <fateDesc>
-   <english>none</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <objectId>414409f3-9f4b-487b-a833-0ad145bb91ce</objectId>
- </NamedShip>
- <NamedShip>
-  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
-  <name>
-   <english>TB 40</english>
-   <japanese>第40号</japanese>
-   <chineseSimplified>第40号</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>none</english>
-  </builderDesc>
-  <fateDesc>
-   <english>none</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <objectId>b21a962b-d0e8-44be-8930-0e2491838dcb</objectId>
- </NamedShip>
- <NamedShip>
-  <shipClassObjectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</shipClassObjectId>
-  <name>
-   <english>TB 41</english>
-   <japanese>第41号</japanese>
-   <chineseSimplified>第41号</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>none</english>
-  </builderDesc>
-  <fateDesc>
-   <english>none</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <objectId>ed43ba79-940f-4972-81f8-02ddc37d2125</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>040f6fba-25c1-4cbd-bb0e-0b8f41246a0b</shipClassObjectId>
@@ -3178,28 +3729,6 @@ Generic Placeholder class</remark>
  <NamedShip>
   <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
   <name>
-   <english>Chidori</english>
-   <japanese>千鳥</japanese>
-   <chineseSimplified>千鸟</chineseSimplified>
-  </name>
-  <builderDesc>
-   <english>none</english>
-  </builderDesc>
-  <fateDesc>
-   <english>none</english>
-  </fateDesc>
-  <applicableYearBegin>1900</applicableYearBegin>
-  <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
-  <crewRating>0</crewRating>
-  <speedModifier>0</speedModifier>
-  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E5%8D%83%E9%B3%A5_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
-  <objectId>bf9d177b-d9cb-48e6-9ea4-3a5e9a00c78e</objectId>
- </NamedShip>
- <NamedShip>
-  <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
-  <name>
    <english>Hayabusa</english>
    <japanese>隼</japanese>
    <chineseSimplified>隼</chineseSimplified>
@@ -3240,6 +3769,137 @@ Generic Placeholder class</remark>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <remark>https://ja.wikipedia.org/wiki/%E9%B5%B2_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
   <objectId>c7b73fa3-d986-4807-b484-da292acd5264</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
+  <name>
+   <english>Manazuru</english>
+   <japanese>真鶴</japanese>
+   <chineseSimplified>真鹤</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>01970759-cc94-448b-910c-119210a5abac</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
+  <name>
+   <english>Chidori</english>
+   <japanese>千鳥</japanese>
+   <chineseSimplified>千鸟</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ja.wikipedia.org/wiki/%E5%8D%83%E9%B3%A5_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
+  <objectId>bf9d177b-d9cb-48e6-9ea4-3a5e9a00c78e</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
+  <name>
+   <english>Kari</english>
+   <japanese>雁</japanese>
+   <chineseSimplified>雁</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ja.wikipedia.org/wiki/%E9%9B%81_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
+  <objectId>8de4908b-950c-4134-a08e-6a373e7c3314</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
+  <name>
+   <english>Aotaka</english>
+   <japanese>蒼鷹</japanese>
+   <chineseSimplified>苍鹰</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ja.wikipedia.org/wiki/%E8%92%BC%E9%B7%B9_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
+  <objectId>6be4339c-a5de-4d7a-9e7c-bd26c6f464ec</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
+  <name>
+   <english>Hato</english>
+   <japanese>鴿</japanese>
+   <chineseSimplified>鸽</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ja.wikipedia.org/wiki/%E9%B4%BF_(%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
+  <objectId>0a34d18a-a174-45a1-8e03-9fdce8cd9095</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
+  <name>
+   <english>Tsubame</english>
+   <japanese>燕</japanese>
+   <chineseSimplified>燕</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ja.wikipedia.org/wiki/%E7%87%95_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
+  <objectId>37460130-ade2-4d67-8e6a-ba02666e2a8b</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>d67fb008-2eb7-42c9-b484-0bfb89a061da</shipClassObjectId>
@@ -3593,9 +4253,9 @@ Generic Placeholder class</remark>
  <NamedShip>
   <shipClassObjectId>83db8d34-8b21-45ce-b3b9-e463c6698d73</shipClassObjectId>
   <name>
-   <english>Usugumo</english>
-   <japanese>薄雲</japanese>
-   <chineseSimplified>薄云</chineseSimplified>
+   <english>Murakumo</english>
+   <japanese>叢雲</japanese>
+   <chineseSimplified>从云</chineseSimplified>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3609,8 +4269,7 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_destroyer_Usugumo_(1900)</remark>
-  <objectId>1ae7c266-27f3-4a63-9565-d04f1893669c</objectId>
+  <objectId>3a1b4d71-f155-488c-9222-4f372e57d54f</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>83db8d34-8b21-45ce-b3b9-e463c6698d73</shipClassObjectId>
@@ -3633,6 +4292,91 @@ Generic Placeholder class</remark>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <remark>https://en.wikipedia.org/wiki/Japanese_destroyer_Shinonome_(1898)</remark>
   <objectId>9e7584bf-b83e-4dbb-876e-a6d38a611e47</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>83db8d34-8b21-45ce-b3b9-e463c6698d73</shipClassObjectId>
+  <name>
+   <english>Yugiri</english>
+   <japanese>夕霧</japanese>
+   <chineseSimplified>夕雾</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>0d69f72e-f82c-4583-8ee7-aa33c39c1d16</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>83db8d34-8b21-45ce-b3b9-e463c6698d73</shipClassObjectId>
+  <name>
+   <english>Shiranui</english>
+   <japanese>不知火</japanese>
+   <chineseSimplified>不知火</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>ca38bd8d-abed-4559-a5f1-e550ed272e0d</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>83db8d34-8b21-45ce-b3b9-e463c6698d73</shipClassObjectId>
+  <name>
+   <english>Kagero</english>
+   <japanese>陽炎</japanese>
+   <chineseSimplified>阳炎</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>81048796-a7d1-458c-8be0-189f246b8bbe</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>83db8d34-8b21-45ce-b3b9-e463c6698d73</shipClassObjectId>
+  <name>
+   <english>Usugumo</english>
+   <japanese>薄雲</japanese>
+   <chineseSimplified>薄云</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_destroyer_Usugumo_(1900)</remark>
+  <objectId>1ae7c266-27f3-4a63-9565-d04f1893669c</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>fe73a25a-1806-43ca-829d-d80d16341f92</shipClassObjectId>

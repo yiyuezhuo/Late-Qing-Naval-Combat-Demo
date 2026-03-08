@@ -3455,4 +3455,64 @@ https://shozokan.nich.go.jp/collection/object/SZK001477-211</remark>
   <remark>https://hush.web.fc2.com/name/Biography/015o.html</remark>
   <objectId>fff85747-d553-4959-a0ef-4153c5c923cb</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Kato Sadakichi</english>
+   <japanese>加藤定吉</japanese>
+   <chineseSimplified>加藤定吉</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Katou_Teikichi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Kat%C5%8D_Sadakichi</remark>
+  <objectId>e1247c52-775e-4e40-953e-46d7b9cf76be</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Kawashima Reijiro</english>
+   <japanese>川島令次郎</japanese>
+   <chineseSimplified>川岛令次郎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Kawashima Reijiro.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ja.wikipedia.org/wiki/%E5%B7%9D%E5%B3%B6%E4%BB%A4%E6%AC%A1%E9%83%8E</remark>
+  <objectId>8d53b035-147c-4930-b1a6-6b5bee738708</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Imai Kaneaki</english>
+   <japanese>今井兼昌</japanese>
+   <chineseSimplified>今井兼昌</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Imai Kaneaki.jpeg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://kotobank.jp/word/%E4%BB%8A%E4%BA%95%E5%85%BC%E6%98%8C-1056199</remark>
+  <objectId>4a3112c3-3cb9-407f-81f5-c54fc418f038</objectId>
+ </Leader>
 </ArrayOfLeader>

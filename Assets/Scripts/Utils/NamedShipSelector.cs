@@ -46,3 +46,43 @@ public class NamedShipSelector
         }
     }
 }
+
+public class ShipClassSelector
+{
+    public string _filterString;
+    public List<ShipClass> fullShipClasses;
+    public List<ShipClass> filteredShipClasses;
+
+    [CreateProperty]
+    public string filterString
+    {
+        get => _filterString;
+        set
+        {
+            _filterString = value;
+            Refresh();
+        }
+    }
+
+    public void Refresh()
+    {
+        if (_filterString == null || _filterString == "")
+        {
+            filteredShipClasses = fullShipClasses;
+            return;
+        }
+
+        filteredShipClasses = fullShipClasses.Where(s => s.name.MatchAny(_filterString)).ToList();
+    }
+
+    public void OnConfirm(object sender, VisualElement el)
+    {
+        var selectedNamedShip = NamedShipEditor.Instance.selectedObject;
+        var shipClassListView = el.Q<ListView>("ShipClassListView");
+        var selectedShipClass = shipClassListView.selectedItem as ShipClass;
+        if (selectedNamedShip != null && selectedShipClass != null)
+        {
+            selectedNamedShip.shipClassObjectId = selectedShipClass.objectId;
+        }
+    }
+}

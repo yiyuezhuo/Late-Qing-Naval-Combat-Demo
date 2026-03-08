@@ -1577,25 +1577,20 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupShipClassSelectorDialogForNamedShip()
     {
+        var shipClassSelector = new ShipClassSelector()
+        {
+            fullShipClasses = SuperGameState.Instance.GetCurrentGameState().shipClasses
+        };
+        shipClassSelector.Refresh();
+
         var tempDialog = new TempDialog()
         {
             root = root,
             template = shipClassSelectorDocument,
-            templateDataSource = SuperGameState.Instance // GameManager.Instance
+            templateDataSource = shipClassSelector
         };
 
-        tempDialog.onConfirmed += (sender, el) =>
-        {
-            // var selectedNamedShip = GameManager.Instance.selectedNamedShip;
-            var selectedNamedShip = NamedShipEditor.Instance.selectedObject;
-
-            var shipClassListView = el.Q<ListView>("ShipClassListView");
-            var selectedShipClass = shipClassListView.selectedItem as ShipClass;
-            if (selectedNamedShip != null && selectedShipClass != null)
-            {
-                selectedNamedShip.shipClassObjectId = selectedShipClass.objectId;
-            }
-        };
+        tempDialog.onConfirmed += shipClassSelector.OnConfirm;
 
         tempDialog.Popup();
     }

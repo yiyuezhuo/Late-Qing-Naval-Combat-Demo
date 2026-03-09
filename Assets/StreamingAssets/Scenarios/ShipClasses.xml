@@ -3610,7 +3610,7 @@ Chi Yuan or Jiyuan</remark>
    <superStructureVertical effectInch="0.1" actualInch="0.2" />
    <armorType>MildSteel</armorType>
   </armorRating>
-  <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
+  <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
   <remark>https://zh.wikipedia.org/wiki/%E5%B9%BF%E4%B9%99%E5%8F%B7%E9%98%B2%E6%8A%A4%E5%B7%A1%E6%B4%8B%E8%88%B0</remark>
   <portraitReference>
    <path>Pictures/Ships/Kuang Yi.png</path>
@@ -6248,7 +6248,7 @@ King Yuan or Jingyuan</remark>
    <superStructureVertical effectInch="2.5" actualInch="3.4" />
    <armorType>MildSteel</armorType>
   </armorRating>
-  <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
+  <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Chinese_ironclad_Pingyuan
 
 Ping Yuen or Pingyuan
@@ -6640,7 +6640,7 @@ Ping Yuen or Pingyuan
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
-  <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
+  <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Chinese_corvette_Kwan_Chia
 
 </remark>
@@ -10888,7 +10888,7 @@ Hiei (比叡, 1878)</remark>
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>WroughtIron</armorType>
   </armorRating>
-  <portraitUrl>https://combrig-models.com/index.php/1700/65-japanese-navy-1860-1918/829-maya-1888</portraitUrl>
+  <portraitUrl>https://en.wikipedia.org/wiki/File:Japanese_Gunboat_Maya.jpg</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Japanese_gunboat_Maya
 </remark>
   <portraitReference>
@@ -10896,7 +10896,7 @@ Hiei (比叡, 1878)</remark>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <portraitTopReference>
-   <path>Pictures/Ships/Maya_Top.png</path>
+   <path>Pictures/Ships/Maya_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitTopReference>
   <portraitIconReference>
@@ -13100,6 +13100,7 @@ TB 22, 23, 25, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 48, 49, 60, 61
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
+  <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Kotaka_-_Brassey%27s_Naval_Annual_1887.png</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Japanese_torpedo_boat_Kotaka
 
 Complement is inferred</remark>
@@ -13235,7 +13236,7 @@ Complement is inferred</remark>
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
-  <portraitUrl>http://www.360doc.com/content/24/1031/19/47115229_1138146476.shtml</portraitUrl>
+  <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
   <remark>https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E9%98%9F%E4%B8%80%E5%8F%B7%E2%80%9D%E9%B1%BC%E9%9B%B7%E8%89%87/8273053</remark>
   <portraitReference>
    <path>Pictures/Ships/Tso I.png</path>
@@ -35875,7 +35876,7 @@ Esmeralda or Idzumi (Izumi)</remark>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
      <mountArcsPattern>Narrow</mountArcsPattern>
-     <objectId>813a0069-d6b1-4261-a418-7b86c59cad2f</objectId>
+     <objectId>fd25a1e4-28bd-4bbc-a1a4-98ff9e4af183</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
      <mountLocation>Midship</mountLocation>
@@ -35888,7 +35889,7 @@ Esmeralda or Idzumi (Izumi)</remark>
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
      <mountArcsPattern>Narrow</mountArcsPattern>
-     <objectId>e7917f4e-e8cd-4583-9a36-7789d6eec517</objectId>
+     <objectId>9b488971-76e6-4844-a46a-e336450602b6</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
      <mountLocation>After</mountLocation>
@@ -36055,7 +36056,7 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
      <trainable>false</trainable>
      <reloadLimit>0</reloadLimit>
      <mountArcsPattern>Narrow</mountArcsPattern>
-     <objectId>e7917f4e-e8cd-4583-9a36-7789d6eec517</objectId>
+     <objectId>3346e2e4-b28c-42a2-ac46-993eb886755c</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
    <torpedoSettings>

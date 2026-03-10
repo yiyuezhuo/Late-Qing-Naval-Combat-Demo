@@ -17,6 +17,17 @@ using System;
 public class TopTabs : SingletonDocument<TopTabs>
 {
     DropdownField playerDropdownField;
+
+    struct ControlChainEdge
+    {
+        public ShipLog controlledShip;
+        public ShipLog targetShip;
+        public ControlMode controlMode;
+        public float distanceYards;
+        public float azimuthDeg;
+        public bool relativeToAbsolute;
+    }
+
     static readonly Dictionary<ControlMode, int> formationControlModePriority = new()
     {
         { ControlMode.FollowTarget, -2 },
@@ -160,6 +171,8 @@ public class TopTabs : SingletonDocument<TopTabs>
             if (GameManager.Instance.selectedShipLog != null)
                 GameManager.Instance.state = GameManager.State.SelectingRelativeToTarget;
         };
+
+        root.Q<Button>("ReverseControlChainButton").clicked += ReverseControlChain;
 
         root.Q<Button>("GoToRelativeFormationButton").clicked += GoToRelativeFormation;
         root.Q<Button>("GoToFollowFormationButton").clicked += GoToFollowFormation;
@@ -454,6 +467,148 @@ public class TopTabs : SingletonDocument<TopTabs>
                     break;
             }
         }
+    }
+
+    void ReverseControlChain()
+    {
+        if (!TryBuildReversibleControlChain(out var chain, out var message))
+        {
+            DialogRoot.Instance.PopupMessageDialog(message);
+            return;
+        }
+
+        var reversedEdges = new List<ControlChainEdge>();
+        for (var i = 0; i < chain.Count - 1; i++)
+        {
+            var parent = chain[i];
+            var child = chain[i + 1];
+            reversedEdges.Add(CreateReversedEdge(parent, child));
+        }
+
+        foreach (var edge in reversedEdges)
+        {
+            ApplyControlChainEdge(edge);
+        }
+
+        SetIndependentControl(chain[^1]);
+    }
+
+    bool TryBuildReversibleControlChain(out List<ShipLog> chain, out string message)
+    {
+        chain = null;
+
+        var rootShip = GameManager.Instance.selectedShipLog;
+        if (rootShip == null)
+        {
+            message = "No ship is selected.";
+            return false;
+        }
+
+        if (rootShip.GetEffectiveControlMode() != ControlMode.Independent)
+        {
+            message = "Reverse Control Chain requires the selected ship to be an independent unit.";
+            return false;
+        }
+
+        var childrenMap = NavalGameState.Instance.shipLogsOnMap
+            .Where(ship => ship.GetEffectiveControlMode() != ControlMode.Independent)
+            .GroupBy(ship => ship.GetControlPredecessorOnMap())
+            .Where(group => group.Key != null)
+            .ToDictionary(group => group.Key, group => group.ToList());
+
+        if (!childrenMap.TryGetValue(rootShip, out var rootChildren) || rootChildren.Count == 0)
+        {
+            message = "The selected ship does not control any units, so there is no control chain to reverse.";
+            return false;
+        }
+
+        chain = new List<ShipLog>() { rootShip };
+        var visited = new HashSet<string>() { rootShip.objectId };
+        var current = rootShip;
+
+        while (true)
+        {
+            if (!childrenMap.TryGetValue(current, out var children) || children.Count == 0)
+            {
+                message = null;
+                return true;
+            }
+
+            if (children.Count > 1)
+            {
+                message = $"Control chain cannot be reversed because {current.GetMemberName()} controls multiple units.";
+                chain = null;
+                return false;
+            }
+
+            var next = children[0];
+            if (!visited.Add(next.objectId))
+            {
+                message = "Control chain cannot be reversed because a control loop was detected.";
+                chain = null;
+                return false;
+            }
+
+            chain.Add(next);
+            current = next;
+        }
+    }
+
+    ControlChainEdge CreateReversedEdge(ShipLog parent, ShipLog child)
+    {
+        switch (child.GetEffectiveControlMode())
+        {
+            case ControlMode.FollowTarget:
+                return new ControlChainEdge()
+                {
+                    controlledShip = parent,
+                    targetShip = child,
+                    controlMode = ControlMode.FollowTarget,
+                    distanceYards = child.followDistanceYards,
+                };
+            case ControlMode.RelativeToTarget:
+                return new ControlChainEdge()
+                {
+                    controlledShip = parent,
+                    targetShip = child,
+                    controlMode = ControlMode.RelativeToTarget,
+                    distanceYards = child.relativeToTargetDistanceYards,
+                    azimuthDeg = child.relativeToAbsolute
+                        ? MeasureUtils.NormalizeAngle(child.relativeToTargetAzimuth + 180f)
+                        : MeasureUtils.NormalizeAngle(parent.headingDeg + child.relativeToTargetAzimuth + 180f - child.headingDeg),
+                    relativeToAbsolute = child.relativeToAbsolute,
+                };
+            default:
+                throw new InvalidOperationException($"Unsupported control mode in chain reversal: {child.GetEffectiveControlMode()}");
+        }
+    }
+
+    void ApplyControlChainEdge(ControlChainEdge edge)
+    {
+        switch (edge.controlMode)
+        {
+            case ControlMode.FollowTarget:
+                edge.controlledShip.controlMode = ControlMode.FollowTarget;
+                edge.controlledShip.followedTargetObjectId = edge.targetShip.objectId;
+                edge.controlledShip.followDistanceYards = edge.distanceYards;
+                edge.controlledShip.relativeTargetObjectId = null;
+                break;
+            case ControlMode.RelativeToTarget:
+                edge.controlledShip.controlMode = ControlMode.RelativeToTarget;
+                edge.controlledShip.relativeTargetObjectId = edge.targetShip.objectId;
+                edge.controlledShip.relativeToTargetDistanceYards = edge.distanceYards;
+                edge.controlledShip.relativeToTargetAzimuth = MeasureUtils.NormalizeAngle(edge.azimuthDeg);
+                edge.controlledShip.relativeToAbsolute = edge.relativeToAbsolute;
+                edge.controlledShip.followedTargetObjectId = null;
+                break;
+        }
+    }
+
+    void SetIndependentControl(ShipLog ship)
+    {
+        ship.controlMode = ControlMode.Independent;
+        ship.followedTargetObjectId = null;
+        ship.relativeTargetObjectId = null;
     }
 
     void GoToRelativeFormation()

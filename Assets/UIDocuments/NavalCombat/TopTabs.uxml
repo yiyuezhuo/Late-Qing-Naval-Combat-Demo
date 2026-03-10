@@ -46,6 +46,11 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61093424304128)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="Reverse Control Chain" name="ReverseControlChainButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000001)"/>
+                        </Bindings>
+                    </ui:Button>
                     <ui:Button text="Go to Relative (Formation)" name="GoToRelativeFormationButton"/>
                     <ui:Button text="Go to Follow (Formation)" name="GoToFollowFormationButton"/>
                     <ui:Label text="Player" style="margin-left: 10px; display: none;"/>

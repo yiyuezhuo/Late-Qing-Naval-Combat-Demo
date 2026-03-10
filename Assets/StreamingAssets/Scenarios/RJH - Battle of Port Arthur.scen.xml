@@ -10406,6 +10406,9 @@
      <chineseSimplified />
      <chineseTraditional />
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference>
      <referenceObjectId>b06c5673-e679-4671-aa13-9e6bfb97bb5d</referenceObjectId>
     </leaderReference>
@@ -10467,11 +10470,14 @@
      <string>5911131c-e3e8-4ef2-95e7-4ad42fa31b45</string>
     </childrenObjectIds>
     <name>
-     <english>Japanese Force</english>
-     <japanese />
-     <chineseSimplified />
+     <english>Combined Fleet</english>
+     <japanese>連合艦隊</japanese>
+     <chineseSimplified>联合舰队</chineseSimplified>
      <chineseTraditional />
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference>
      <referenceObjectId>bbdc13c1-a909-411c-b949-ad82485ab108</referenceObjectId>
     </leaderReference>
@@ -10537,8 +10543,15 @@
     </childrenObjectIds>
     <name>
      <english>First Division</english>
+     <japanese>第1戦隊</japanese>
+     <chineseSimplified>第1战队</chineseSimplified>
     </name>
-    <leaderReference />
+    <remark>
+     <english>none</english>
+    </remark>
+    <leaderReference>
+     <referenceObjectId>3e4ba392-54f1-4199-b23a-c8e6cc67ac92</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>1fe92e3d-740f-48a4-94f2-8506acffa72d</objectId>
@@ -10601,8 +10614,15 @@
     </childrenObjectIds>
     <name>
      <english>Second Division</english>
+     <japanese>第2戦隊</japanese>
+     <chineseSimplified>第2战队</chineseSimplified>
     </name>
-    <leaderReference />
+    <remark>
+     <english>none</english>
+    </remark>
+    <leaderReference>
+     <referenceObjectId>74729e4e-1b29-410d-8e4a-c4e384e48fba</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>454e6954-a34c-4c93-a803-f2942d2af313</objectId>
@@ -10664,8 +10684,15 @@
     </childrenObjectIds>
     <name>
      <english>Third Division</english>
+     <japanese>第3戦隊</japanese>
+     <chineseSimplified>第3战队</chineseSimplified>
     </name>
-    <leaderReference />
+    <remark>
+     <english>none</english>
+    </remark>
+    <leaderReference>
+     <referenceObjectId>d7303b6c-feef-4a49-8613-dc89cc9b029e</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>5911131c-e3e8-4ef2-95e7-4ad42fa31b45</objectId>
@@ -10726,6 +10753,9 @@
     <name>
      <english>Battle Squadron</english>
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference>
      <referenceObjectId>b06c5673-e679-4671-aa13-9e6bfb97bb5d</referenceObjectId>
     </leaderReference>
@@ -10791,6 +10821,9 @@
     <name>
      <english>1st Sub-Division</english>
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference>
      <referenceObjectId>b06c5673-e679-4671-aa13-9e6bfb97bb5d</referenceObjectId>
     </leaderReference>
@@ -10855,6 +10888,9 @@
     <name>
      <english>2nd Sub-Division</english>
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference>
      <referenceObjectId>d03cc3f1-4ede-4b12-80d0-9443331b9645</referenceObjectId>
     </leaderReference>
@@ -10918,6 +10954,9 @@
     <name>
      <english>Cruiser Division</english>
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference />
     <type>General</type>
     <formation>General</formation>
@@ -10981,6 +11020,9 @@
     <name>
      <english>Division of Long-distance Scounts</english>
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference />
     <type>General</type>
     <formation>General</formation>
@@ -11042,6 +11084,9 @@
     <name>
      <english>Division of Short-distance Scouts</english>
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference />
     <type>General</type>
     <formation>General</formation>
@@ -11104,6 +11149,9 @@
     <name>
      <english>Coast Batteries</english>
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference />
     <type>General</type>
     <formation>General</formation>
@@ -11208,6 +11256,7 @@ https://en.wikipedia.org/wiki/Battle_of_Port_Arthur
     <isBuiltin>true</isBuiltin>
    </backgroundPictureReference>
    <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>
+   <locationLabels />
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />

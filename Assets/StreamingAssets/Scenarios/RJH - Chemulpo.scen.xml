@@ -2821,6 +2821,9 @@
      <chineseSimplified />
      <chineseTraditional />
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference>
      <referenceObjectId>9777b95c-0ac6-4fa5-b080-f990f902855f</referenceObjectId>
     </leaderReference>
@@ -2886,10 +2889,13 @@
     </childrenObjectIds>
     <name>
      <english>Fourth Division</english>
-     <japanese />
-     <chineseSimplified />
+     <japanese>第四戦隊</japanese>
+     <chineseSimplified>第4战队</chineseSimplified>
      <chineseTraditional />
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference>
      <referenceObjectId>c6361d17-bfe6-4b7e-b981-47474396e2bd</referenceObjectId>
     </leaderReference>
@@ -2953,7 +2959,12 @@
     </childrenObjectIds>
     <name>
      <english>14th Topedo Boat Division</english>
+     <japanese>第十四艇隊</japanese>
+     <chineseSimplified>第14艇队</chineseSimplified>
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference />
     <type>General</type>
     <formation>General</formation>
@@ -3013,8 +3024,13 @@
      <string>63b9542d-54e2-4b33-a684-1b09709703b2</string>
     </childrenObjectIds>
     <name>
-     <english>Japan Force</english>
+     <english>Uryu Fleet</english>
+     <japanese>瓜生艦隊</japanese>
+     <chineseSimplified>瓜生舰队</chineseSimplified>
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference>
      <referenceObjectId>c6361d17-bfe6-4b7e-b981-47474396e2bd</referenceObjectId>
     </leaderReference>
@@ -3116,6 +3132,7 @@ https://en.topwar.ru/148332-krejser-varjag-boj-u-chemulpo-27-janvarja-1904-goda-
     <isBuiltin>true</isBuiltin>
    </backgroundPictureReference>
    <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>
+   <locationLabels />
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />

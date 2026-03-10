@@ -2356,7 +2356,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 368128871272448
-    m_Localized: "SJH - \u8C4A\u5CF6\u6C96\u6D77\u6226"
+    m_Localized: "SJH - \u8C4A\u5CF6\u6C96\u6D77\u6226 \u2605"
     m_Metadata:
       m_Items: []
   - m_Id: 368199792758784
@@ -2896,7 +2896,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 52518222156173312
-    m_Localized: "RJH - \u9EC4\u6D77\u6D77\u6226"
+    m_Localized: "RJH - \u9EC4\u6D77\u6D77\u6226 \u2605"
     m_Metadata:
       m_Items: []
   references:

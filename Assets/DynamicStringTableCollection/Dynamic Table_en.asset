@@ -2338,7 +2338,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 368128871272448
-    m_Localized: SJH - Battle of Pundo
+    m_Localized: "SJH - Battle of Pundo \u2605"
     m_Metadata:
       m_Items: []
   - m_Id: 368199792758784
@@ -2864,7 +2864,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 52518222156173312
-    m_Localized: RJH - Battle of the Yellow Sea
+    m_Localized: "RJH - Battle of the Yellow Sea \u2605"
     m_Metadata:
       m_Items: []
   references:

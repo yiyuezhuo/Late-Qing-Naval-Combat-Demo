@@ -25,8 +25,34 @@ public interface IColliderRootProvider
     GameObject GetRoot();
 }
 
+public class GunneryImpactFxHandle : MonoBehaviour
+{
+    public Transform primaryTransform;
+    public Transform secondaryTransform;
+    public Renderer primaryRenderer;
+    public Renderer secondaryRenderer;
+}
+
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
+    enum GunneryImpactFxKind
+    {
+        Splash,
+        HitFlash
+    }
+
+    struct GunneryImpactFxState
+    {
+        public GunneryImpactFxHandle handle;
+        public GunneryImpactFxKind kind;
+        public float elapsedSeconds;
+        public float durationSeconds;
+        public float scaleWu;
+        public Vector3 fallbackPositionWu;
+        public string followTargetObjectId;
+        public float followHeightOffsetWu;
+    }
+
     [CreateProperty]
     public NavalGameState navalGameState => NavalGameState.Instance;
 
@@ -56,6 +82,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [Min(1f)]
     public float gunneryShellRadiusScaleCoef = 100f;
     public Transform gunneryShellVisualContainer;
+    public AudioClip gunneryMissSplashSound;
 
     [Serializable]
     public class StateText2DConfig
@@ -431,11 +458,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     readonly List<DynamicLine> dynamicLinePool = new();
     readonly Queue<BallController> gunneryShellPool = new();
     readonly List<BallController> activeGunneryShells = new();
+    readonly Queue<GunneryImpactFxHandle> gunnerySplashFxPool = new();
+    readonly Queue<GunneryImpactFxHandle> gunneryHitFxPool = new();
+    readonly List<GunneryImpactFxState> activeGunneryImpactFxs = new();
     bool wasInMultiplayerLastFrame;
     float nextLocationInfoRefreshUnscaledTime;
     static readonly float locationInfoRefreshIntervalSeconds = 0.1f;
     RangeLineRenderSignature lastRangeLineRenderSignature;
     static Mesh gunneryShellConeMesh;
+    static Material gunnerySplashFxMaterialTemplate;
+    static Material gunneryHitFxMaterialTemplate;
 
     public string hoveringLocationInfo;
     public bool currentLogOnly = true;
@@ -1094,6 +1126,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             SyncGunneryShellVisualsFromLogs();
             ForceAdvanceGunneryShellVisualsThisFrame();
         }
+        UpdateGunneryImpactFxVisuals();
         // viewAccTime += Time.deltaTime;
 
         // if (viewAccTime > 2)
@@ -1691,7 +1724,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     for (var i = beginIdx; i < logCount; i++)
                     {
                         var shellDiameterInch = mount.GetFullContext()?.batteryRecord?.shellSizeInch ?? 0f;
-                        TrySpawnGunneryShellVisual(shooter, mount.logs[i].firingTargetObjectId, shellDiameterInch);
+                        var log = mount.logs[i];
+                        TrySpawnGunneryShellVisual(shooter, log.firingTargetObjectId, shellDiameterInch, log.hit);
                     }
 
                     processedMountFiringLogCount[mountId] = logCount;
@@ -1715,7 +1749,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     // var shellDiameterInch = rapidFiringStatus.GetRapidFireBatteryRecord()?.shellSizeInch ?? 0f;
                     var shellDiameterInch = RapidFireBatteryRecord.shellSizeInch;
-                    TrySpawnGunneryShellVisual(shooter, rapidFiringStatus.logs[i].firingTargetObjectId, shellDiameterInch);
+                    var log = rapidFiringStatus.logs[i];
+                    TrySpawnGunneryShellVisual(shooter, log.firingTargetObjectId, shellDiameterInch, log.hit);
                 }
 
                 processedRapidFiringLogCount[rapidId] = logCount;
@@ -1756,6 +1791,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         gunneryShellPool.Clear();
         activeGunneryShells.Clear();
+        gunnerySplashFxPool.Clear();
+        gunneryHitFxPool.Clear();
+        activeGunneryImpactFxs.Clear();
         processedMountFiringLogCount.Clear();
         processedRapidFiringLogCount.Clear();
     }
@@ -1794,7 +1832,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
-    void TrySpawnGunneryShellVisual(ShipLog shooter, string targetObjectId, float shellDiameterInch)
+    void TrySpawnGunneryShellVisual(ShipLog shooter, string targetObjectId, float shellDiameterInch, bool hit)
     {
         if (!enableGunneryShellVisual || shooter == null || string.IsNullOrEmpty(targetObjectId))
             return;
@@ -1816,6 +1854,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             target.position.LonDeg,
             gunneryShellAltitudeFoot
         );
+        var missOffsetWu = hit ? Vector3.zero : GenerateRandomMissOffsetWu(target, endPos);
+        endPos += missOffsetWu;
 
         var controller = AcquireGunneryShell(shellRadiusWu);
         var shell = controller.gameObject;
@@ -1828,11 +1868,34 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             gunneryShellSpeedMps * MeasureUtils.meterToFoot * Utils.footToWu,
             targetObjectId,
             gunneryShellAltitudeFoot,
-            ReleaseGunneryShell
+            missOffsetWu,
+            hit,
+            target.IsLandBattery(),
+            shellDiameterInch,
+            HandleGunneryShellArrived
         );
 
         if (!activeGunneryShells.Contains(controller))
             activeGunneryShells.Add(controller);
+    }
+
+    static Vector3 GenerateRandomMissOffsetWu(ShipLog target, Vector3 targetPosWu)
+    {
+        if (target == null)
+            return Vector3.zero;
+
+        var up = targetPosWu.sqrMagnitude > 1e-9f ? targetPosWu.normalized : Vector3.up;
+        var reference = Mathf.Abs(Vector3.Dot(up, Vector3.up)) > 0.98f ? Vector3.right : Vector3.up;
+        var tangentA = Vector3.Cross(up, reference).normalized;
+        var tangentB = Vector3.Cross(up, tangentA).normalized;
+
+        var targetLengthWu = Mathf.Max(target.GetLengthFoot() * Utils.footToWu, 0.0008f);
+        var targetBeamWu = Mathf.Max(target.GetBeamFoot() * Utils.footToWu, 0.0004f);
+        var baseRadiusWu = Mathf.Max(targetLengthWu * 0.6f, targetBeamWu * 1.5f);
+        var radiusWu = UnityEngine.Random.Range(baseRadiusWu, baseRadiusWu * 1.8f);
+        var angle = UnityEngine.Random.Range(0f, Mathf.PI * 2f);
+
+        return tangentA * (Mathf.Cos(angle) * radiusWu) + tangentB * (Mathf.Sin(angle) * radiusWu);
     }
 
     BallController AcquireGunneryShell(float shellRadiusWu)
@@ -1865,8 +1928,27 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             return;
 
         activeGunneryShells.Remove(controller);
+        controller.ResetState();
         controller.gameObject.SetActive(false);
         gunneryShellPool.Enqueue(controller);
+    }
+
+    void HandleGunneryShellArrived(BallController controller)
+    {
+        if (controller == null)
+            return;
+
+        var impactPositionWu = controller.transform.position;
+        var shellRadiusFoot = Mathf.Max(0.05f, controller.ShellDiameterInch * (1f / 24f));
+        var shellRadiusWu = shellRadiusFoot * gunneryShellRadiusScaleCoef * Utils.footToWu;
+        var fxScaleWu = Mathf.Clamp(shellRadiusWu * 8f, 0.0012f, 0.015f);
+
+        if (controller.Hit)
+            SpawnHitFlashEffect(impactPositionWu, controller.TargetObjectId, fxScaleWu);
+        else if (!controller.TargetIsLandBattery)
+            SpawnMissSplashEffect(impactPositionWu, fxScaleWu);
+
+        ReleaseGunneryShell(controller);
     }
 
     void ForceAdvanceGunneryShellVisualsThisFrame()
@@ -1989,6 +2071,277 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         gunneryShellConeMesh.RecalculateNormals();
         gunneryShellConeMesh.RecalculateBounds();
         return gunneryShellConeMesh;
+    }
+
+    void SpawnMissSplashEffect(Vector3 impactPositionWu, float scaleWu)
+    {
+        var handle = AcquireGunneryImpactFx(gunnerySplashFxPool, GunneryImpactFxKind.Splash);
+        handle.gameObject.name = "GunnerySplashFx";
+        handle.gameObject.SetActive(true);
+
+        activeGunneryImpactFxs.Add(new GunneryImpactFxState
+        {
+            handle = handle,
+            kind = GunneryImpactFxKind.Splash,
+            elapsedSeconds = 0f,
+            durationSeconds = 0.65f,
+            scaleWu = scaleWu,
+            fallbackPositionWu = impactPositionWu,
+            followTargetObjectId = null,
+            followHeightOffsetWu = 0f
+        });
+
+        if (gunneryMissSplashSound != null && CameraController2.Instance?.cam != null)
+            AudioSource.PlayClipAtPoint(gunneryMissSplashSound, CameraController2.Instance.cam.transform.position, 0.18f);
+    }
+
+    void SpawnHitFlashEffect(Vector3 impactPositionWu, string targetObjectId, float scaleWu)
+    {
+        var handle = AcquireGunneryImpactFx(gunneryHitFxPool, GunneryImpactFxKind.HitFlash);
+        handle.gameObject.name = "GunneryHitFx";
+        handle.gameObject.SetActive(true);
+
+        activeGunneryImpactFxs.Add(new GunneryImpactFxState
+        {
+            handle = handle,
+            kind = GunneryImpactFxKind.HitFlash,
+            elapsedSeconds = 0f,
+            durationSeconds = 0.28f,
+            scaleWu = scaleWu,
+            fallbackPositionWu = impactPositionWu,
+            followTargetObjectId = targetObjectId,
+            followHeightOffsetWu = Mathf.Clamp(scaleWu * 0.8f, 0.0003f, 0.0035f)
+        });
+    }
+
+    void UpdateGunneryImpactFxVisuals()
+    {
+        if (activeGunneryImpactFxs.Count == 0)
+            return;
+
+        var deltaTime = Time.unscaledDeltaTime;
+        if (deltaTime <= 0f)
+            return;
+
+        for (var i = activeGunneryImpactFxs.Count - 1; i >= 0; i--)
+        {
+            var state = activeGunneryImpactFxs[i];
+            if (state.handle == null)
+            {
+                activeGunneryImpactFxs.RemoveAt(i);
+                continue;
+            }
+
+            state.elapsedSeconds += deltaTime;
+            var progress = Mathf.Clamp01(state.elapsedSeconds / Mathf.Max(0.0001f, state.durationSeconds));
+            var effectPositionWu = ResolveGunneryImpactFxPosition(state);
+            SyncGunneryImpactFxTransform(state.handle.transform, effectPositionWu);
+
+            if (state.kind == GunneryImpactFxKind.Splash)
+                AnimateSplashFx(state.handle, state.scaleWu, progress);
+            else
+                AnimateHitFx(state.handle, state.scaleWu, progress);
+
+            if (progress >= 1f)
+            {
+                ReleaseGunneryImpactFx(state.handle, state.kind);
+                activeGunneryImpactFxs.RemoveAt(i);
+                continue;
+            }
+
+            activeGunneryImpactFxs[i] = state;
+        }
+    }
+
+    Vector3 ResolveGunneryImpactFxPosition(GunneryImpactFxState state)
+    {
+        if (!string.IsNullOrEmpty(state.followTargetObjectId)
+            && objectId2Viewer.TryGetValue(state.followTargetObjectId, out var viewer)
+            && viewer != null)
+        {
+            return viewer.transform.position + viewer.transform.up * state.followHeightOffsetWu;
+        }
+
+        return state.fallbackPositionWu;
+    }
+
+    static void SyncGunneryImpactFxTransform(Transform fxTransform, Vector3 positionWu)
+    {
+        fxTransform.position = positionWu;
+        if (positionWu.sqrMagnitude > 1e-9f)
+            fxTransform.rotation = Quaternion.FromToRotation(Vector3.up, positionWu.normalized);
+    }
+
+    void AnimateSplashFx(GunneryImpactFxHandle handle, float scaleWu, float progress)
+    {
+        if (handle == null)
+            return;
+
+        var rise = 1f - Mathf.Pow(1f - progress, 2f);
+        var fade = 1f - progress;
+
+        if (handle.primaryTransform != null)
+        {
+            var height = scaleWu * Mathf.Lerp(0.6f, 4.2f, rise);
+            var width = scaleWu * Mathf.Lerp(0.4f, 1.1f, progress);
+            handle.primaryTransform.localScale = new Vector3(width, height * 0.5f, width);
+            handle.primaryTransform.localPosition = new Vector3(0f, height * 0.5f, 0f);
+        }
+
+        if (handle.secondaryTransform != null)
+        {
+            var radius = scaleWu * Mathf.Lerp(0.8f, 5f, progress);
+            var thickness = scaleWu * Mathf.Lerp(0.12f, 0.04f, progress);
+            handle.secondaryTransform.localScale = new Vector3(radius, thickness, radius);
+            handle.secondaryTransform.localPosition = new Vector3(0f, thickness * 0.5f, 0f);
+        }
+
+        ApplyFxColor(handle.primaryRenderer, new Color(0.88f, 0.96f, 1f, fade * 0.75f));
+        ApplyFxColor(handle.secondaryRenderer, new Color(0.7f, 0.9f, 1f, fade * 0.45f));
+    }
+
+    void AnimateHitFx(GunneryImpactFxHandle handle, float scaleWu, float progress)
+    {
+        if (handle == null)
+            return;
+
+        var flashFade = 1f - progress;
+        var ringFade = Mathf.Clamp01(1f - progress * 1.15f);
+
+        if (handle.primaryTransform != null)
+        {
+            var radius = scaleWu * Mathf.Lerp(0.8f, 2.8f, progress);
+            handle.primaryTransform.localScale = Vector3.one * radius;
+            handle.primaryTransform.localPosition = new Vector3(0f, scaleWu * 0.25f, 0f);
+        }
+
+        if (handle.secondaryTransform != null)
+        {
+            var radius = scaleWu * Mathf.Lerp(0.5f, 4.4f, progress);
+            var thickness = scaleWu * Mathf.Lerp(0.18f, 0.05f, progress);
+            handle.secondaryTransform.localScale = new Vector3(radius, thickness, radius);
+            handle.secondaryTransform.localPosition = new Vector3(0f, thickness * 0.5f, 0f);
+        }
+
+        ApplyFxColor(handle.primaryRenderer, new Color(1f, 0.97f, 0.72f, flashFade * flashFade * 0.95f));
+        ApplyFxColor(handle.secondaryRenderer, new Color(1f, 0.72f, 0.35f, ringFade * 0.65f));
+    }
+
+    static void ApplyFxColor(Renderer renderer, Color color)
+    {
+        if (renderer == null || renderer.sharedMaterial == null)
+            return;
+
+        renderer.sharedMaterial.color = color;
+    }
+
+    GunneryImpactFxHandle AcquireGunneryImpactFx(Queue<GunneryImpactFxHandle> pool, GunneryImpactFxKind kind)
+    {
+        GunneryImpactFxHandle handle = null;
+        while (pool.Count > 0 && handle == null)
+        {
+            handle = pool.Dequeue();
+        }
+
+        if (handle != null)
+            return handle;
+
+        return CreateGunneryImpactFxVisualObject(kind);
+    }
+
+    void ReleaseGunneryImpactFx(GunneryImpactFxHandle handle, GunneryImpactFxKind kind)
+    {
+        if (handle == null)
+            return;
+
+        handle.transform.localPosition = Vector3.zero;
+        handle.transform.localRotation = Quaternion.identity;
+        handle.gameObject.SetActive(false);
+
+        if (kind == GunneryImpactFxKind.Splash)
+            gunnerySplashFxPool.Enqueue(handle);
+        else
+            gunneryHitFxPool.Enqueue(handle);
+    }
+
+    GunneryImpactFxHandle CreateGunneryImpactFxVisualObject(GunneryImpactFxKind kind)
+    {
+        var root = new GameObject(kind == GunneryImpactFxKind.Splash ? "GunnerySplashFx" : "GunneryHitFx");
+        root.transform.SetParent(gunneryShellVisualContainer, false);
+
+        var handle = root.AddComponent<GunneryImpactFxHandle>();
+        var primaryTemplate = kind == GunneryImpactFxKind.Splash ? GetOrCreateGunnerySplashFxMaterialTemplate() : GetOrCreateGunneryHitFxMaterialTemplate();
+        var secondaryTemplate = kind == GunneryImpactFxKind.Splash ? GetOrCreateGunnerySplashFxMaterialTemplate() : GetOrCreateGunneryHitFxMaterialTemplate();
+
+        if (kind == GunneryImpactFxKind.Splash)
+        {
+            var column = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            column.name = "Column";
+            column.transform.SetParent(root.transform, false);
+            Destroy(column.GetComponent<Collider>());
+            handle.primaryTransform = column.transform;
+            handle.primaryRenderer = column.GetComponent<Renderer>();
+            handle.primaryRenderer.sharedMaterial = new Material(primaryTemplate);
+
+            var ring = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            ring.name = "Ring";
+            ring.transform.SetParent(root.transform, false);
+            Destroy(ring.GetComponent<Collider>());
+            handle.secondaryTransform = ring.transform;
+            handle.secondaryRenderer = ring.GetComponent<Renderer>();
+            handle.secondaryRenderer.sharedMaterial = new Material(secondaryTemplate);
+        }
+        else
+        {
+            var flash = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            flash.name = "Flash";
+            flash.transform.SetParent(root.transform, false);
+            Destroy(flash.GetComponent<Collider>());
+            handle.primaryTransform = flash.transform;
+            handle.primaryRenderer = flash.GetComponent<Renderer>();
+            handle.primaryRenderer.sharedMaterial = new Material(primaryTemplate);
+
+            var ring = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            ring.name = "Ring";
+            ring.transform.SetParent(root.transform, false);
+            Destroy(ring.GetComponent<Collider>());
+            handle.secondaryTransform = ring.transform;
+            handle.secondaryRenderer = ring.GetComponent<Renderer>();
+            handle.secondaryRenderer.sharedMaterial = new Material(secondaryTemplate);
+        }
+
+        root.SetActive(false);
+        return handle;
+    }
+
+    static Material GetOrCreateGunnerySplashFxMaterialTemplate()
+    {
+        if (gunnerySplashFxMaterialTemplate == null)
+            gunnerySplashFxMaterialTemplate = CreateFxMaterial("GunnerySplashFxMaterial", new Color(0.85f, 0.96f, 1f, 0.75f));
+        return gunnerySplashFxMaterialTemplate;
+    }
+
+    static Material GetOrCreateGunneryHitFxMaterialTemplate()
+    {
+        if (gunneryHitFxMaterialTemplate == null)
+            gunneryHitFxMaterialTemplate = CreateFxMaterial("GunneryHitFxMaterial", new Color(1f, 0.92f, 0.65f, 0.9f));
+        return gunneryHitFxMaterialTemplate;
+    }
+
+    static Material CreateFxMaterial(string materialName, Color color)
+    {
+        var shader = Shader.Find("Sprites/Default");
+        if (shader == null)
+            shader = Shader.Find("Universal Render Pipeline/Unlit");
+        if (shader == null)
+            shader = Shader.Find("Standard");
+
+        var material = new Material(shader)
+        {
+            name = materialName,
+            color = color
+        };
+        return material;
     }
 
     void SyncRangeLine()

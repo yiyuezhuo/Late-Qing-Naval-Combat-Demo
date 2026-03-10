@@ -464,24 +464,19 @@ public class TopTabs : SingletonDocument<TopTabs>
         if (controlTree.edges.Count == 0)
             return;
 
-        foreach (var edge in controlTree.edges)
+        DialogRoot.Instance.PopupRelativeFormationDialog(model =>
         {
-            Geodesic.WGS84.Inverse(
-                edge.parent.position.LatDeg,
-                edge.parent.position.LonDeg,
-                edge.child.position.LatDeg,
-                edge.child.position.LonDeg,
-                out var distanceM,
-                out var azimuthDeg,
-                out _
-            );
-
-            edge.child.relativeTargetObjectId = edge.parent.objectId;
-            edge.child.relativeToTargetDistanceYards = (float)distanceM * MeasureUtils.meterToYard;
-            edge.child.relativeToTargetAzimuth = MeasureUtils.NormalizeAngle((float)azimuthDeg - edge.parent.headingDeg);
-            edge.child.followedTargetObjectId = null;
-            edge.child.controlMode = ControlMode.RelativeToTarget;
-        }
+            switch (model.mode)
+            {
+                case RelativeFormationMode.KeepCurrentPosition:
+                    ApplyKeepCurrentRelativeFormation(controlTree.edges);
+                    break;
+                case RelativeFormationMode.LineAbreast:
+                case RelativeFormationMode.LineOfBearing:
+                    ApplyPatternRelativeFormation(anchorShip, controlTree.childrenMap, controlTree.oobOrderIndex, model);
+                    break;
+            }
+        });
     }
 
     void GoToFollowFormation()
@@ -596,6 +591,78 @@ public class TopTabs : SingletonDocument<TopTabs>
             .OrderBy(ship => formationControlModePriority.GetValueOrDefault(ship.controlMode, 0))
             .ThenBy(ship => oobOrderIndex.GetValueOrDefault(ship.objectId, int.MaxValue))
             .ToList();
+    }
+
+    void ApplyKeepCurrentRelativeFormation(List<(ShipLog parent, ShipLog child)> edges)
+    {
+        foreach (var edge in edges)
+        {
+            Geodesic.WGS84.Inverse(
+                edge.parent.position.LatDeg,
+                edge.parent.position.LonDeg,
+                edge.child.position.LatDeg,
+                edge.child.position.LonDeg,
+                out var distanceM,
+                out var azimuthDeg,
+                out _
+            );
+
+            edge.child.relativeTargetObjectId = edge.parent.objectId;
+            edge.child.relativeToTargetDistanceYards = (float)distanceM * MeasureUtils.meterToYard;
+            edge.child.relativeToTargetAzimuth = MeasureUtils.NormalizeAngle((float)azimuthDeg - edge.parent.headingDeg);
+            edge.child.followedTargetObjectId = null;
+            edge.child.controlMode = ControlMode.RelativeToTarget;
+        }
+    }
+
+    void ApplyPatternRelativeFormation(
+        ShipLog anchorShip,
+        Dictionary<ShipLog, List<ShipLog>> childrenMap,
+        Dictionary<string, int> oobOrderIndex,
+        RelativeFormationDialogModel model)
+    {
+        var chain = FlattenFormationTreeForFollow(anchorShip, childrenMap, oobOrderIndex);
+        if (chain.Count == 0)
+            return;
+
+        if (!model.isSymmetric)
+        {
+            ShipLog previousShip = anchorShip;
+            foreach (var ship in chain)
+            {
+                SetRelativeFormationLink(ship, previousShip, model.distanceYards, model.angleDeg);
+                previousShip = ship;
+            }
+            return;
+        }
+
+        ShipLog rightPreviousShip = anchorShip;
+        ShipLog leftPreviousShip = anchorShip;
+        var mirroredAngle = MeasureUtils.NormalizeAngle(360f - model.angleDeg);
+
+        for (var i = 0; i < chain.Count; i++)
+        {
+            var ship = chain[i];
+            if (i % 2 == 0)
+            {
+                SetRelativeFormationLink(ship, rightPreviousShip, model.distanceYards, model.angleDeg);
+                rightPreviousShip = ship;
+            }
+            else
+            {
+                SetRelativeFormationLink(ship, leftPreviousShip, model.distanceYards, mirroredAngle);
+                leftPreviousShip = ship;
+            }
+        }
+    }
+
+    void SetRelativeFormationLink(ShipLog ship, ShipLog targetShip, float distanceYards, float azimuthDeg)
+    {
+        ship.controlMode = ControlMode.RelativeToTarget;
+        ship.relativeTargetObjectId = targetShip.objectId;
+        ship.relativeToTargetDistanceYards = distanceYards;
+        ship.relativeToTargetAzimuth = MeasureUtils.NormalizeAngle(azimuthDeg);
+        ship.followedTargetObjectId = null;
     }
 
     void OnFullStateXMLLoaded(string text)

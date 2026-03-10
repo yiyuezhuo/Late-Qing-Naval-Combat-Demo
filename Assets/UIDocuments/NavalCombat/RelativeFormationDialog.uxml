@@ -1,0 +1,39 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="RelativeFormationDialogModel, Assembly-CSharp" class="panel-dialog" style="width: 420px; height: auto;">
+        <ui:Label text="Relative Formation" name="TitleLabel" class="title"/>
+        <ui:VisualElement style="flex-grow: 1;">
+            <LocalizedEnumField label="Mode" name="ModeField" type-str="RelativeFormationMode" style="margin-bottom: 4px;">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="modeValue" binding-mode="TwoWay"/>
+                </Bindings>
+            </LocalizedEnumField>
+            <ui:FloatField label="Angle (deg)" name="AngleField">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="angleDeg" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField label="Distance (yards)" name="DistanceField">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="distanceYards" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:FloatField>
+            <ui:Toggle text="Symmetric" name="SymmetricToggle">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="isSymmetric" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:Toggle>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-basis: 50px; flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)"/>
+                </Bindings>
+            </ui:Button>
+            <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66269346435072)"/>
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

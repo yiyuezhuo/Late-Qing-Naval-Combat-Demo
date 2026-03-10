@@ -217,6 +217,30 @@ public class FollowFormationDialogModel
     public float followDistanceYards { get; set; } = 500f;
 }
 
+public enum RelativeFormationMode
+{
+    KeepCurrentPosition,
+    LineAbreast,
+    LineOfBearing,
+}
+
+public class RelativeFormationDialogModel
+{
+    [CreateProperty]
+    public int modeValue { get; set; } = (int)RelativeFormationMode.KeepCurrentPosition;
+
+    [CreateProperty]
+    public float angleDeg { get; set; } = 90f;
+
+    [CreateProperty]
+    public float distanceYards { get; set; } = 250f;
+
+    [CreateProperty]
+    public bool isSymmetric { get; set; }
+
+    public RelativeFormationMode mode => (RelativeFormationMode)modeValue;
+}
+
 
 public class DialogRoot : SingletonDocument<DialogRoot>
 {
@@ -227,6 +251,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset messageDialogDocument;
     public VisualTreeAsset confirmDialogDocument;
     public VisualTreeAsset followFormationDialogDocument;
+    public VisualTreeAsset relativeFormationDialogDocument;
     public VisualTreeAsset preScenarioDamageDialogDocument;
     public VisualTreeAsset streamingAssetReferenceDialogDocument;
     public VisualTreeAsset scenarioPickerDialogDocument;
@@ -1531,6 +1556,68 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.onConfirmed += (sender, el) =>
         {
             confirmCallback?.Invoke(model.followDistanceYards);
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupRelativeFormationDialog(Action<RelativeFormationDialogModel> confirmCallback)
+    {
+        if (relativeFormationDialogDocument == null)
+        {
+            PopupMessageDialog("RelativeFormationDialog is not configured.");
+            return;
+        }
+
+        var model = new RelativeFormationDialogModel();
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = relativeFormationDialogDocument,
+            templateDataSource = model,
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var modeField = el.Q<LocalizedEnumField>("ModeField");
+            var angleField = el.Q<FloatField>("AngleField");
+            modeField?.RegisterValueChangedCallback(evt =>
+            {
+                var mode = (RelativeFormationMode)evt.newValue;
+                if (mode == RelativeFormationMode.LineAbreast)
+                {
+                    model.angleDeg = 90f;
+                    angleField?.SetValueWithoutNotify(model.angleDeg);
+                }
+                else if (mode == RelativeFormationMode.LineOfBearing)
+                {
+                    model.angleDeg = 135f;
+                    angleField?.SetValueWithoutNotify(model.angleDeg);
+                }
+            });
+        };
+
+        tempDialog.confirmCheck = _ =>
+        {
+            if (float.IsNaN(model.distanceYards) || float.IsInfinity(model.distanceYards) || model.distanceYards <= 0f)
+            {
+                PopupMessageDialog("Relative formation distance must be greater than 0 yards.");
+                return false;
+            }
+
+            if (float.IsNaN(model.angleDeg) || float.IsInfinity(model.angleDeg))
+            {
+                PopupMessageDialog("Relative formation angle must be a valid number.");
+                return false;
+            }
+            return true;
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            model.angleDeg = MeasureUtils.NormalizeAngle(model.angleDeg);
+            confirmCallback?.Invoke(model);
         };
 
         tempDialog.Popup();

@@ -1,0 +1,16 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="MultilineGlobalStringEditor" src="project://database/Assets/UIDocuments/Common/MultilineGlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=3a7e28cd26dd1c748abce26c37380ec8&amp;type=3#MultilineGlobalStringEditor"/>
+    <ui:VisualElement data-source-type="CoreUtils.GlobalString, Assembly-CSharp" class="panel-dialog" style="flex-grow: 0; width: 720px; height: auto;">
+        <ui:Label text="Remark" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)"/>
+            </Bindings>
+        </ui:Label>
+        <ui:Instance template="MultilineGlobalStringEditor"/>
+        <ui:Button text="Confirm" name="ConfirmButton">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)"/>
+            </Bindings>
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

@@ -116,6 +116,7 @@ namespace NavalCombatCore
             }
         }
         public GlobalString name = new();
+        public GlobalString remark = new();
         // public GlobalString captain = new();
 
         public IEnumerable<T> Walk<T>()

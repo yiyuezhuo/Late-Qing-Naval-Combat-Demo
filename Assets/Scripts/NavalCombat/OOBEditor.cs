@@ -12,6 +12,7 @@ using NavalCombatCore;
 public class OOBEditor : HideableDocument<OOBEditor>
 {
     const string TreeDragObjectIdsDataKey = "OOBEditor.TreeDragObjectIds";
+    const string ShipGroupRemarkTextFieldName = "ShipGroupRemarkTextField";
 
     public TreeView oobTreeView;
 
@@ -81,6 +82,8 @@ public class OOBEditor : HideableDocument<OOBEditor>
 
         NavalGameState.Instance.shipGroupsChanged -= OnShipGroupsChanged;
         NavalGameState.Instance.shipGroupsChanged += OnShipGroupsChanged;
+        GamePreference.Instance.shortLabelLanguageTypeChanged -= OnShortLabelLanguageTypeChanged;
+        GamePreference.Instance.shortLabelLanguageTypeChanged += OnShortLabelLanguageTypeChanged;
 
         root.dataSource = this;
 
@@ -156,6 +159,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
             }
 
             currentSelectedObjectId = newSelectedObjectId;
+            RefreshSelectedGroupRemarkPreview();
         };
 
         var createGroupButton = root.Q<Button>("CreateGroupButton");
@@ -169,6 +173,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
         var addShipButton = root.Q<Button>("AddShipButton");
         var removeShipButton = root.Q<Button>("RemoveShipButton");
         var repairButton = root.Q<Button>("RepairButton");
+        var editRemarkButton = root.Q<Button>("EditRemarkButton");
 
         expandButton.clicked += () => oobTreeView.ExpandAll();
         collapseButton.clicked += () => oobTreeView.CollapseAll();
@@ -260,6 +265,14 @@ public class OOBEditor : HideableDocument<OOBEditor>
             // }
         };
 
+        editRemarkButton.clicked += () =>
+        {
+            if (currentSelectedShipGroup != null)
+            {
+                DialogRoot.Instance.PopupShipGroupRemarkDialog(currentSelectedShipGroup, RefreshSelectedGroupRemarkPreview);
+            }
+        };
+
         var setLeaderButton = root.Q<Button>("SetLeaderButton");
         setLeaderButton.clicked += DialogRoot.Instance.PopupLeaderSelectorDialogForSpecifyForGroup;
 
@@ -279,6 +292,33 @@ public class OOBEditor : HideableDocument<OOBEditor>
 
             Sync();
         };
+
+        RefreshSelectedGroupRemarkPreview();
+    }
+
+    void OnDisable()
+    {
+        if (NavalGameState.Instance != null)
+        {
+            NavalGameState.Instance.shipGroupsChanged -= OnShipGroupsChanged;
+        }
+
+        GamePreference.Instance.shortLabelLanguageTypeChanged -= OnShortLabelLanguageTypeChanged;
+    }
+
+    void OnShortLabelLanguageTypeChanged(object sender, EventArgs args)
+    {
+        RefreshSelectedGroupRemarkPreview();
+    }
+
+    void RefreshSelectedGroupRemarkPreview()
+    {
+        var remarkTextField = root?.Q<TextField>(ShipGroupRemarkTextFieldName);
+        if (remarkTextField == null)
+            return;
+
+        var value = currentSelectedShipGroup?.remark?.shortName ?? string.Empty;
+        remarkTextField.SetValueWithoutNotify(value);
     }
 
     public void OnRootShipGroupsXmlLoaded(string text)
@@ -304,6 +344,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
         oobTreeView.Rebuild();
 
         oobTreeView.ExpandAll(); // Set Default behaviour?
+        RefreshSelectedGroupRemarkPreview();
     }
 
     public EventHandler shown;

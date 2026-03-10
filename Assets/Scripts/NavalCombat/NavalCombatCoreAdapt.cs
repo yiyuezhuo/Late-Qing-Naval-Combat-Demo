@@ -939,6 +939,9 @@ namespace CoreUtils
         {
             get => GetMergedName();
         }
+
+        [CreateProperty]
+        public string shortName => GetShortName();
     }
 
     public partial class AbstractGameState

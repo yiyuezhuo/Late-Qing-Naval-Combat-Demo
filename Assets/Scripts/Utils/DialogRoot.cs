@@ -228,6 +228,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset faqDialogDocument;
     public VisualTreeAsset locationLabelDialogDocument;
     public VisualTreeAsset navalLocationLabelEditorDialogDocument;
+    public VisualTreeAsset shipGroupRemarkDialogDocument;
     public VisualTreeAsset locationLabelsEditorDialogDocument;
     public VisualTreeAsset subordinatePickerDialogDocument;
     public VisualTreeAsset strategicGroupPickerDialogDocument;
@@ -1331,6 +1332,26 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         };
 
         tempDialog.onConfirmed += model.OnConfirm;
+        tempDialog.Popup();
+    }
+
+    public void PopupShipGroupRemarkDialog(ShipGroup shipGroup, Action onClosed = null)
+    {
+        if (shipGroup == null)
+            return;
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = shipGroupRemarkDialogDocument,
+            templateDataSource = shipGroup.remark
+        };
+
+        if (onClosed != null)
+        {
+            tempDialog.onClosed += (sender, root) => onClosed();
+        }
+
         tempDialog.Popup();
     }
 

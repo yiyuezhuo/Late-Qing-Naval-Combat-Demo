@@ -262,6 +262,11 @@ public class TopTabs : SingletonDocument<TopTabs>
             GameManager.Instance.state = GameManager.State.SelectingInsertUnitPositionComplex;
         };
 
+        root.Q<Button>("InsertLocationLabelButton").clicked += () =>
+        {
+            GameManager.Instance.state = GameManager.State.SelectingInsertLocationLabelPosition;
+        };
+
         root.Q<Button>("DeleteButton").clicked += () =>
         {
             if(GameManager.Instance.selectedShipLog != null)

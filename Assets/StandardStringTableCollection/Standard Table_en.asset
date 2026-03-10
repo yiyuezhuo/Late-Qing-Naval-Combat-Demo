@@ -2482,6 +2482,10 @@ MonoBehaviour:
     m_Localized: Insert (Ins)
     m_Metadata:
       m_Items: []
+  - m_Id: 59631011024191488
+    m_Localized: Insert Location Label (Alt + Insert)
+    m_Metadata:
+      m_Items: []
   - m_Id: 47928212660588544
     m_Localized: Delete (Del)
     m_Metadata:

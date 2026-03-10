@@ -205,6 +205,11 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(47928146843570176)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="Insert Location Label (Alt + Insert)" name="InsertLocationLabelButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(59631011024191488)"/>
+                        </Bindings>
+                    </ui:Button>
                     <ui:Button text="Location" name="LocationLabelsEditorButton">
                         <Bindings>
                             <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>

@@ -97,12 +97,11 @@
                     </ui:Instance>
                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                         <ui:VisualElement style="flex-grow: 1;">
-                            <ui:TextField label="Leader">
+                            <ui:Label text="Leader Name" name="LeaderNameLabel" style="white-space: normal;">
                                 <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="leaderReference.name" binding-mode="ToTarget"/>
-                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172656676212736)"/>
+                                    <ui:DataBinding property="text" data-source-path="leaderReference.nameLink" binding-mode="ToTarget"/>
                                 </Bindings>
-                            </ui:TextField>
+                            </ui:Label>
                             <ui:Button text="Set Leader" name="SetLeaderButton">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(173227382575104)"/>
@@ -161,9 +160,9 @@
                                     <ui:DataBinding property="text" binding-mode="ToTarget" source-to-ui-converters="ShipLog =&gt; ShipLog&apos;s merge name" data-source-path="namedShipDescLink"/>
                                 </Bindings>
                             </ui:Label>
-                            <ui:Label text="Selected ShipLog&apos;s captain&apos;s name">
+                            <ui:Label text="Selected ShipLog&apos;s captain&apos;s name" name="CaptainLabel" style="white-space: normal;">
                                 <Bindings>
-                                    <ui:DataBinding property="text" binding-mode="ToTarget" data-source-path="captainDesc"/>
+                                    <ui:DataBinding property="text" binding-mode="ToTarget" data-source-path="captainDescLink"/>
                                 </Bindings>
                             </ui:Label>
                         </ui:VisualElement>

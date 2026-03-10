@@ -109,6 +109,24 @@ public class OOBEditor : HideableDocument<OOBEditor>
             } }
         });
 
+        var leaderNameLabel = root.Q<Label>("LeaderNameLabel");
+        Utils.RegisterLinkTag(leaderNameLabel, new()
+        {
+            {"nameLink", () => {
+                var leader = currentSelectedShipGroup?.leader;
+                SwitchCenter.Instance.SwitchToLeaderView(leader);
+            } }
+        });
+
+        var captainLabel = root.Q<Label>("CaptainLabel");
+        Utils.RegisterLinkTag(captainLabel, new()
+        {
+            {"captain", () => {
+                var leader = currentSelectedShipLog?.leader;
+                SwitchCenter.Instance.SwitchToLeaderView(leader);
+            } }
+        });
+
         oobTreeView.makeItem = () =>
         {
             var el = oobTreeView.itemTemplate.CloneTree();

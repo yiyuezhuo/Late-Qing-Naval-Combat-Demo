@@ -591,6 +591,18 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public string name => Get()?.name?.mergedName ?? "[Not Specified or Invalid]";
+
+        [CreateProperty]
+        public string nameLink
+        {
+            get
+            {
+                var name = Get()?.name?.mergedName;
+                if (name == null)
+                    return "[Not Specified or Invalid]";
+                return $"<link=\"nameLink\"><color=#40a0ff>{name}</color></link>";
+            }
+        }
     }
 
     public partial class NamedShip

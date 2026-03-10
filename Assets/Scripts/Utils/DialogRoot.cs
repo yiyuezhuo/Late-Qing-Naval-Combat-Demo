@@ -238,6 +238,9 @@ public class RelativeFormationDialogModel
     [CreateProperty]
     public bool isSymmetric { get; set; }
 
+    [CreateProperty]
+    public bool absolute { get; set; }
+
     public RelativeFormationMode mode => (RelativeFormationMode)modeValue;
 }
 

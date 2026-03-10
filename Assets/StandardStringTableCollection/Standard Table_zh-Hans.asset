@@ -742,6 +742,10 @@ MonoBehaviour:
     m_Localized: "\u5728\u5730\u56FE\u89C6\u56FE\uFF0C\u9009\u62E9\u4E00\u4E2A\u8230\u8239\uFF0C\u6309R\u5E76\u4E14\u9009\u62E9\u53E6\u4E00\u4E2A\u8239\u4EE5\u8BBE\u5B9A\u76F8\u5BF9\u76EE\u6807\u3002"
     m_Metadata:
       m_Items: []
+  - m_Id: 553001000000001
+    m_Localized: Absolute
+    m_Metadata:
+      m_Items: []
   - m_Id: 167166449717248
     m_Localized: "\u635F\u4F24\u70B9\uFF08\u5F85\u7ED3\u7B97\uFF09"
     m_Metadata:

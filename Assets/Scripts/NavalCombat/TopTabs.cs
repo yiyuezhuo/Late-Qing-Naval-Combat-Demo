@@ -442,7 +442,9 @@ public class TopTabs : SingletonDocument<TopTabs>
 
                     target = picked.relativeToTarget;
                     distM = picked.relativeToTargetDistanceYards * MeasureUtils.yardToMeter;
-                    var angle = MeasureUtils.NormalizeAngle(target.headingDeg + picked.relativeToTargetAzimuth);
+                    var angle = picked.relativeToAbsolute
+                        ? MeasureUtils.NormalizeAngle(picked.relativeToTargetAzimuth)
+                        : MeasureUtils.NormalizeAngle(target.headingDeg + picked.relativeToTargetAzimuth);
                     Geodesic.WGS84.Direct(target.position.LatDeg, target.position.LonDeg,
                         angle, distM, out lat2, out lon2);
                     picked.position = new LatLon((float)lat2, (float)lon2);
@@ -469,7 +471,7 @@ public class TopTabs : SingletonDocument<TopTabs>
             switch (model.mode)
             {
                 case RelativeFormationMode.KeepCurrentPosition:
-                    ApplyKeepCurrentRelativeFormation(controlTree.edges);
+                    ApplyKeepCurrentRelativeFormation(controlTree.edges, model.absolute);
                     break;
                 case RelativeFormationMode.LineAbreast:
                 case RelativeFormationMode.LineOfBearing:
@@ -593,7 +595,7 @@ public class TopTabs : SingletonDocument<TopTabs>
             .ToList();
     }
 
-    void ApplyKeepCurrentRelativeFormation(List<(ShipLog parent, ShipLog child)> edges)
+    void ApplyKeepCurrentRelativeFormation(List<(ShipLog parent, ShipLog child)> edges, bool absolute)
     {
         foreach (var edge in edges)
         {
@@ -609,7 +611,10 @@ public class TopTabs : SingletonDocument<TopTabs>
 
             edge.child.relativeTargetObjectId = edge.parent.objectId;
             edge.child.relativeToTargetDistanceYards = (float)distanceM * MeasureUtils.meterToYard;
-            edge.child.relativeToTargetAzimuth = MeasureUtils.NormalizeAngle((float)azimuthDeg - edge.parent.headingDeg);
+            edge.child.relativeToTargetAzimuth = absolute
+                ? MeasureUtils.NormalizeAngle((float)azimuthDeg)
+                : MeasureUtils.NormalizeAngle((float)azimuthDeg - edge.parent.headingDeg);
+            edge.child.relativeToAbsolute = absolute;
             edge.child.followedTargetObjectId = null;
             edge.child.controlMode = ControlMode.RelativeToTarget;
         }
@@ -630,7 +635,7 @@ public class TopTabs : SingletonDocument<TopTabs>
             ShipLog previousShip = anchorShip;
             foreach (var ship in chain)
             {
-                SetRelativeFormationLink(ship, previousShip, model.distanceYards, model.angleDeg);
+                SetRelativeFormationLink(ship, previousShip, model.distanceYards, model.angleDeg, model.absolute);
                 previousShip = ship;
             }
             return;
@@ -645,23 +650,24 @@ public class TopTabs : SingletonDocument<TopTabs>
             var ship = chain[i];
             if (i % 2 == 0)
             {
-                SetRelativeFormationLink(ship, rightPreviousShip, model.distanceYards, model.angleDeg);
+                SetRelativeFormationLink(ship, rightPreviousShip, model.distanceYards, model.angleDeg, model.absolute);
                 rightPreviousShip = ship;
             }
             else
             {
-                SetRelativeFormationLink(ship, leftPreviousShip, model.distanceYards, mirroredAngle);
+                SetRelativeFormationLink(ship, leftPreviousShip, model.distanceYards, mirroredAngle, model.absolute);
                 leftPreviousShip = ship;
             }
         }
     }
 
-    void SetRelativeFormationLink(ShipLog ship, ShipLog targetShip, float distanceYards, float azimuthDeg)
+    void SetRelativeFormationLink(ShipLog ship, ShipLog targetShip, float distanceYards, float azimuthDeg, bool absolute)
     {
         ship.controlMode = ControlMode.RelativeToTarget;
         ship.relativeTargetObjectId = targetShip.objectId;
         ship.relativeToTargetDistanceYards = distanceYards;
         ship.relativeToTargetAzimuth = MeasureUtils.NormalizeAngle(azimuthDeg);
+        ship.relativeToAbsolute = absolute;
         ship.followedTargetObjectId = null;
     }
 

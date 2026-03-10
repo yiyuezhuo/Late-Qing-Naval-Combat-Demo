@@ -27,6 +27,7 @@ namespace NavalCombatCore
         IExtrapolable GetRelativeToTarget();
         float GetRelativeToTargetDistanceYards();
         float GetRelativeToTargetAzimuth();
+        bool GetRelativeToTargetAbsolute();
 
         // Effect related
         void SetDesiredHeadingDeg(float desiredHeadingDeg);
@@ -58,6 +59,7 @@ namespace NavalCombatCore
             public ExtrapolatedRecord relativeToTarget;
             public float relativeToTargetDistanceYards;
             public float relativeToTargetAzimuth;
+            public bool relativeToTargetAbsolute;
 
             public Role role = Role.Line;
 
@@ -106,7 +108,9 @@ namespace NavalCombatCore
                 }
                 else if (controlMode == ControlMode.RelativeToTarget && relativeToTarget != null)
                 {
-                    var azi = MeasureUtils.NormalizeAngle(relativeToTargetAzimuth + relativeToTarget.headingDeg);
+                    var azi = relativeToTargetAbsolute
+                        ? MeasureUtils.NormalizeAngle(relativeToTargetAzimuth)
+                        : MeasureUtils.NormalizeAngle(relativeToTargetAzimuth + relativeToTarget.headingDeg);
                     var distMeter = relativeToTargetDistanceYards * MeasureUtils.yardToMeter;
                     Geodesic.WGS84.Direct(relativeToTarget.latitudeDeg, relativeToTarget.longitudeDeg, azi, distMeter, out var lat2, out var lon2);
                     latitudeDeg = (float)lat2;
@@ -166,6 +170,7 @@ namespace NavalCombatCore
                 followDistanceYards = f.GetFollowDistanceYards(), // Calculate the current distance or just use the setting distance?
                 relativeToTargetDistanceYards = f.GetRelativeToTargetDistanceYards(),
                 relativeToTargetAzimuth = f.GetRelativeToTargetAzimuth(),
+                relativeToTargetAbsolute = f.GetRelativeToTargetAbsolute(),
                 role = f.GetRole(),
                 survivability = f.EvaluateSurvivability(),
                 firepowerScore = f.EvaluateFirepowerScore(),

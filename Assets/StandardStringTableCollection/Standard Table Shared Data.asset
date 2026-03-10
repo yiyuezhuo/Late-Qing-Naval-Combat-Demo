@@ -741,6 +741,10 @@ MonoBehaviour:
       set the relative to target.
     m_Metadata:
       m_Items: []
+  - m_Id: 553001000000001
+    m_Key: Absolute
+    m_Metadata:
+      m_Items: []
   - m_Id: 167166449717248
     m_Key: Damage Point (Pending)
     m_Metadata:

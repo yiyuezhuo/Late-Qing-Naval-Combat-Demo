@@ -280,6 +280,7 @@ namespace NavalCombatCore
                         inheritShipLog.relativeTargetObjectId = predShipLog.relativeTargetObjectId;
                         inheritShipLog.relativeToTargetAzimuth = predShipLog.relativeToTargetAzimuth;
                         inheritShipLog.relativeToTargetDistanceYards = predShipLog.relativeToTargetDistanceYards;
+                        inheritShipLog.relativeToAbsolute = predShipLog.relativeToAbsolute;
                     }
 
                     // Handle retarget
@@ -344,7 +345,7 @@ namespace NavalCombatCore
         //     }
         // }
 
-        void FixRelativeTree(ShipLog displacedShipLog, float azimuth, float distance, bool first)
+        void FixRelativeTree(ShipLog displacedShipLog, float azimuth, float distance, bool absolute, bool first)
         {
             // var displacedShipLog = EntityManager.Instance.Get<ShipLog>(displacedId);
 
@@ -355,6 +356,7 @@ namespace NavalCombatCore
 
             var azimuth2 = newAnchor.relativeToTargetAzimuth;
             var distance2 = newAnchor.relativeToTargetDistanceYards;
+            var absolute2 = newAnchor.relativeToAbsolute;
 
             if (first)
             {
@@ -363,13 +365,14 @@ namespace NavalCombatCore
 
             newAnchor.relativeToTargetAzimuth = azimuth;
             newAnchor.relativeToTargetDistanceYards = distance;
+            newAnchor.relativeToAbsolute = absolute;
 
             foreach (var sub in subs.Skip(1))
             {
                 sub.relativeTargetObjectId = newAnchor.objectId;
             }
 
-            FixRelativeTree(newAnchor, azimuth2, distance2, false);
+            FixRelativeTree(newAnchor, azimuth2, distance2, absolute2, false);
         }
 
         void FixRelativeTree2(ShipLog displacedShipLog, bool first)
@@ -395,6 +398,7 @@ namespace NavalCombatCore
                 var relativeToTarget = EntityManager.Instance.Get<ShipLog>(displacedShipLog.relativeTargetObjectId);
                 displacedShipLog.relativeToTargetAzimuth = relativeToTarget.relativeToTargetAzimuth;
                 displacedShipLog.relativeToTargetDistanceYards = relativeToTarget.relativeToTargetDistanceYards;
+                displacedShipLog.relativeToAbsolute = relativeToTarget.relativeToAbsolute;
             }
         }
 

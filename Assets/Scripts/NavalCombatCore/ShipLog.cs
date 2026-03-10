@@ -598,6 +598,7 @@ namespace NavalCombatCore
 
         public float relativeToTargetDistanceYards = 250;
         public float relativeToTargetAzimuth = 135; // right-after position
+        public bool relativeToAbsolute;
 
         public string GetMemberName() => namedShip.name.mergedName ?? "[Not Speicified]";// name.mergedName;
 
@@ -1362,7 +1363,9 @@ namespace NavalCombatCore
                 if (relativeToTarget != null)
                 {
                     var rtp = relativeToTarget.position;
-                    var azi = MeasureUtils.NormalizeAngle(relativeToTarget.headingDeg + relativeToTargetAzimuth);
+                    var azi = relativeToAbsolute
+                        ? MeasureUtils.NormalizeAngle(relativeToTargetAzimuth)
+                        : MeasureUtils.NormalizeAngle(relativeToTarget.headingDeg + relativeToTargetAzimuth);
                     var s12 = relativeToTargetDistanceYards * 0.9144;
                     Geodesic.WGS84.Direct(rtp.LatDeg, rtp.LonDeg, azi, s12, out var targetLat, out var targetLon);
 
@@ -1988,6 +1991,7 @@ namespace NavalCombatCore
         IExtrapolable IExtrapolable.GetRelativeToTarget() => relativeToTarget;
         float IExtrapolable.GetRelativeToTargetDistanceYards() => relativeToTargetDistanceYards;
         float IExtrapolable.GetRelativeToTargetAzimuth() => relativeToTargetAzimuth;
+        bool IExtrapolable.GetRelativeToTargetAbsolute() => relativeToAbsolute;
         void IExtrapolable.SetDesiredHeadingDeg(float desiredHeadingDeg)
         {
             if (IsLandBattery())

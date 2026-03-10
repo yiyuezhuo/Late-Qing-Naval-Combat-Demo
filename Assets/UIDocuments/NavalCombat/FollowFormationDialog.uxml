@@ -1,0 +1,24 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="FollowFormationDialogModel, Assembly-CSharp" class="panel-dialog" style="width: 420px; height: auto;">
+        <ui:Label text="Follow Formation" name="TitleLabel" class="title"/>
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:FloatField label="Follow Distance (yards)" name="FollowDistanceField">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="followDistanceYards" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:FloatField>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-basis: 50px; flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)"/>
+                </Bindings>
+            </ui:Button>
+            <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66269346435072)"/>
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

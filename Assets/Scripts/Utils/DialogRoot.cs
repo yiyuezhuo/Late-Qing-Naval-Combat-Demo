@@ -211,6 +211,12 @@ public class PlotTrajectoryViewModel
     public int timestampIntervalMinutes = 15;
 }
 
+public class FollowFormationDialogModel
+{
+    [CreateProperty]
+    public float followDistanceYards { get; set; } = 500f;
+}
+
 
 public class DialogRoot : SingletonDocument<DialogRoot>
 {
@@ -220,6 +226,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset namedShipSelectorDocument;
     public VisualTreeAsset messageDialogDocument;
     public VisualTreeAsset confirmDialogDocument;
+    public VisualTreeAsset followFormationDialogDocument;
     public VisualTreeAsset preScenarioDamageDialogDocument;
     public VisualTreeAsset streamingAssetReferenceDialogDocument;
     public VisualTreeAsset scenarioPickerDialogDocument;
@@ -1487,6 +1494,44 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         };
 
         tempDialog.onConfirmed += (sender, el) => confirmCallback();
+
+        tempDialog.Popup();
+    }
+
+    public void PopupFollowFormationDialog(Action<float> confirmCallback, float initialFollowDistanceYards = 500f)
+    {
+        if (followFormationDialogDocument == null)
+        {
+            PopupMessageDialog("FollowFormationDialog is not configured.");
+            return;
+        }
+
+        var model = new FollowFormationDialogModel()
+        {
+            followDistanceYards = initialFollowDistanceYards
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = followFormationDialogDocument,
+            templateDataSource = model,
+        };
+
+        tempDialog.confirmCheck = _ =>
+        {
+            if (float.IsNaN(model.followDistanceYards) || float.IsInfinity(model.followDistanceYards) || model.followDistanceYards <= 0f)
+            {
+                PopupMessageDialog("Follow distance must be greater than 0 yards.");
+                return false;
+            }
+            return true;
+        };
+
+        tempDialog.onConfirmed += (sender, el) =>
+        {
+            confirmCallback?.Invoke(model.followDistanceYards);
+        };
 
         tempDialog.Popup();
     }

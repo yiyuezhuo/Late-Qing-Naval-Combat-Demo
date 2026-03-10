@@ -12,10 +12,16 @@ using YYZ;
 using NavalCombatCore;
 using NavalCombat;
 using System.Net;
+using System;
 
 public class TopTabs : SingletonDocument<TopTabs>
 {
     DropdownField playerDropdownField;
+    static readonly Dictionary<ControlMode, int> formationControlModePriority = new()
+    {
+        { ControlMode.FollowTarget, -2 },
+        { ControlMode.RelativeToTarget, -1 },
+    };
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
@@ -154,6 +160,9 @@ public class TopTabs : SingletonDocument<TopTabs>
             if (GameManager.Instance.selectedShipLog != null)
                 GameManager.Instance.state = GameManager.State.SelectingRelativeToTarget;
         };
+
+        root.Q<Button>("GoToRelativeFormationButton").clicked += GoToRelativeFormation;
+        root.Q<Button>("GoToFollowFormationButton").clicked += GoToFollowFormation;
 
         root.Q<Button>("DistanceMeasureButton").clicked += () =>
         {
@@ -443,6 +452,150 @@ public class TopTabs : SingletonDocument<TopTabs>
                     break;
             }
         }
+    }
+
+    void GoToRelativeFormation()
+    {
+        var anchorShip = GameManager.Instance.selectedShipLog;
+        if (anchorShip == null)
+            return;
+
+        var controlTree = BuildFormationControlTree(anchorShip);
+        if (controlTree.edges.Count == 0)
+            return;
+
+        foreach (var edge in controlTree.edges)
+        {
+            Geodesic.WGS84.Inverse(
+                edge.parent.position.LatDeg,
+                edge.parent.position.LonDeg,
+                edge.child.position.LatDeg,
+                edge.child.position.LonDeg,
+                out var distanceM,
+                out var azimuthDeg,
+                out _
+            );
+
+            edge.child.relativeTargetObjectId = edge.parent.objectId;
+            edge.child.relativeToTargetDistanceYards = (float)distanceM * MeasureUtils.meterToYard;
+            edge.child.relativeToTargetAzimuth = MeasureUtils.NormalizeAngle((float)azimuthDeg - edge.parent.headingDeg);
+            edge.child.followedTargetObjectId = null;
+            edge.child.controlMode = ControlMode.RelativeToTarget;
+        }
+    }
+
+    void GoToFollowFormation()
+    {
+        var anchorShip = GameManager.Instance.selectedShipLog;
+        if (anchorShip == null)
+            return;
+
+        var controlTree = BuildFormationControlTree(anchorShip);
+        if (controlTree.edges.Count == 0)
+            return;
+
+        DialogRoot.Instance.PopupFollowFormationDialog(followDistanceYards =>
+        {
+            var chain = FlattenFormationTreeForFollow(anchorShip, controlTree.childrenMap, controlTree.oobOrderIndex);
+            var previousShip = anchorShip;
+            foreach (var ship in chain)
+            {
+                ship.controlMode = ControlMode.FollowTarget;
+                ship.followedTargetObjectId = previousShip.objectId;
+                ship.followDistanceYards = followDistanceYards;
+                ship.relativeTargetObjectId = null;
+                previousShip = ship;
+            }
+        });
+    }
+
+    (List<(ShipLog parent, ShipLog child)> edges, Dictionary<ShipLog, List<ShipLog>> childrenMap, Dictionary<string, int> oobOrderIndex) BuildFormationControlTree(ShipLog anchorShip)
+    {
+        var allShips = NavalGameState.Instance.shipLogsOnMap.ToList();
+        var predecessorToChildren = allShips
+            .Where(ship => ship != anchorShip)
+            .GroupBy(ship => ship.GetControlPredecessor())
+            .Where(group => group.Key != null)
+            .ToDictionary(group => group.Key, group => group.ToList());
+
+        var edges = new List<(ShipLog parent, ShipLog child)>();
+        var childrenMap = new Dictionary<ShipLog, List<ShipLog>>();
+        var visited = new HashSet<string>() { anchorShip.objectId };
+        var queue = new Queue<ShipLog>();
+        queue.Enqueue(anchorShip);
+
+        while (queue.Count > 0)
+        {
+            var parent = queue.Dequeue();
+            if (!predecessorToChildren.TryGetValue(parent, out var directChildren))
+                continue;
+
+            childrenMap[parent] = directChildren;
+            foreach (var child in directChildren)
+            {
+                if (!visited.Add(child.objectId))
+                    continue;
+
+                edges.Add((parent, child));
+                queue.Enqueue(child);
+            }
+        }
+
+        return (edges, childrenMap, BuildOobOrderIndex(anchorShip));
+    }
+
+    Dictionary<string, int> BuildOobOrderIndex(ShipLog anchorShip)
+    {
+        var oobOrderIndex = new Dictionary<string, int>();
+        var rootParent = ((IShipGroupMember)anchorShip).GetRootParent();
+        var nextIndex = 0;
+
+        void Visit(IShipGroupMember member)
+        {
+            if (member == null)
+                return;
+
+            oobOrderIndex[member.objectId] = nextIndex++;
+            if (member is ShipGroup shipGroup)
+            {
+                foreach (var child in shipGroup.GetChildren())
+                {
+                    Visit(child);
+                }
+            }
+        }
+
+        Visit(rootParent);
+        return oobOrderIndex;
+    }
+
+    List<ShipLog> FlattenFormationTreeForFollow(
+        ShipLog parent,
+        Dictionary<ShipLog, List<ShipLog>> childrenMap,
+        Dictionary<string, int> oobOrderIndex)
+    {
+        var orderedChildren = GetOrderedFormationChildren(parent, childrenMap, oobOrderIndex);
+        var result = new List<ShipLog>();
+        foreach (var child in orderedChildren)
+        {
+            result.Add(child);
+            result.AddRange(FlattenFormationTreeForFollow(child, childrenMap, oobOrderIndex));
+        }
+        return result;
+    }
+
+    List<ShipLog> GetOrderedFormationChildren(
+        ShipLog parent,
+        Dictionary<ShipLog, List<ShipLog>> childrenMap,
+        Dictionary<string, int> oobOrderIndex)
+    {
+        if (!childrenMap.TryGetValue(parent, out var children))
+            return new List<ShipLog>();
+
+        return children
+            .OrderBy(ship => formationControlModePriority.GetValueOrDefault(ship.controlMode, 0))
+            .ThenBy(ship => oobOrderIndex.GetValueOrDefault(ship.objectId, int.MaxValue))
+            .ToList();
     }
 
     void OnFullStateXMLLoaded(string text)

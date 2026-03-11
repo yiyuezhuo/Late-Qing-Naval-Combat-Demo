@@ -17,6 +17,8 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
 {
     public ListView shipClassListView;
     ListView batteryRecordsListView;
+    VisualElement portraitTopPreview;
+    VisualElement portraitIconPreview;
 
     public int selectedShipClassIndex = 0;
 
@@ -229,6 +231,8 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
         PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("PortraitTopReferenceField"));
         PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("PortraitReferenceField"));
         PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("PortraitIconReferenceField"));
+        portraitTopPreview = root.Q<VisualElement>("PortraitTopPreview");
+        portraitIconPreview = root.Q<VisualElement>("PortraitIconPreview");
 
         root.Q<Button>("GeneratePlaceholderImageButton").clicked += () =>
         {
@@ -236,6 +240,33 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             {
                 DialogRoot.Instance.PopupShipClassPlaceholderGeneratorDialog(selectedShipClass);
             }
+        };
+
+        root.Q<Button>("GeneratePlaceholderImageForAllPlaceholderButton").clicked += () =>
+        {
+            var placeholders = SuperGameState.Instance.GetCurrentGameState().shipClasses.Where(x => x.isGraphicPlaceholder).ToList();
+            var count = placeholders.Count;
+            if (count == 0)
+            {
+                DialogRoot.Instance.PopupMessageDialog("No ship class is marked as graphic placeholder.");
+                return;
+            }
+
+            DialogRoot.Instance.PopupConfirmDialog(
+                $"Generate placeholder images for {count} ship class? If confirm, {count} x 2 images would be generated in the game folder and binding would be reset to those image",
+                () =>
+                {
+                    var result = ShipClassPlaceholderImageGenerator.GenerateAndBindAllMarked(placeholders);
+                    UnityWebRequestImageReader.Instance.Reset();
+                    RefreshGraphicBindings();
+
+                    var message = $"Generated placeholder images for {result.generatedShipClasses.Count} ship class.";
+                    if (result.skippedMessages.Count > 0)
+                    {
+                        message += "\nSkipped:\n" + string.Join("\n", result.skippedMessages);
+                    }
+                    DialogRoot.Instance.PopupMessageDialog(message);
+                });
         };
 
         var batteryArcIndicatorDialogButton = root.Q<Button>("BatteryArcIndicatorDialogButton");
@@ -329,4 +360,34 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
 
     [CreateProperty]
     public AbstractGameState currentGameState => SuperGameState.Instance.GetCurrentGameState();
+
+    void RefreshGraphicBindings()
+    {
+        shipClassListView?.RefreshItems();
+        if (selectedShipClass == null)
+            return;
+
+        RefreshPictureField(root.Q<VisualElement>("PortraitTopReferenceField"), selectedShipClass.portraitTopReference);
+        RefreshPictureField(root.Q<VisualElement>("PortraitIconReferenceField"), selectedShipClass.portraitIconReference);
+
+        if (portraitTopPreview != null)
+            portraitTopPreview.style.backgroundImage = selectedShipClass.portraitTopReference.pictureStyleBackground;
+
+        if (portraitIconPreview != null)
+            portraitIconPreview.style.backgroundImage = selectedShipClass.portraitIconReference.pictureStyleBackground;
+    }
+
+    static void RefreshPictureField(VisualElement fieldRoot, PictureReference pictureReference)
+    {
+        if (fieldRoot == null || pictureReference == null)
+            return;
+
+        var textField = fieldRoot.Q<TextField>();
+        if (textField != null)
+            textField.SetValueWithoutNotify(pictureReference.path);
+
+        var toggle = fieldRoot.Q<Toggle>();
+        if (toggle != null)
+            toggle.SetValueWithoutNotify(pictureReference.isBuiltin);
+    }
 }

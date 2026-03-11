@@ -58,35 +58,18 @@ public class ShipClassPlaceholderGeneratorDialogModel : IDisposable
 
     public bool TryGenerate()
     {
-        if (shipClass == null)
+        if (!ShipClassPlaceholderImageGenerator.TryRenderFromModel(this, out var renderResult))
         {
-            statusText = "No ship class is selected.";
-            DisposeTextures();
-            return false;
-        }
-
-        if (shipClass.type == ShipType.LandBattery)
-        {
-            statusText = "Land Battery does not support placeholder ship images.";
-            DisposeTextures();
-            return false;
-        }
-
-        if (shipClass.lengthFoot <= 0 || shipClass.beamFoot <= 0)
-        {
-            statusText = "Ship Class lengthFoot and beamFoot must both be greater than 0.";
+            statusText = renderResult.message;
             DisposeTextures();
             return false;
         }
 
         DisposeTextures();
-
-        var settings = BuildSettings();
-        previewTexture = ShipClassPlaceholderImageRenderer.Render(shipClass, settings, ShipClassPlaceholderImageRenderer.RenderVariant.Preview);
-        topTexture = ShipClassPlaceholderImageRenderer.Render(shipClass, settings, ShipClassPlaceholderImageRenderer.RenderVariant.TopJpg);
-        iconTexture = ShipClassPlaceholderImageRenderer.Render(shipClass, settings, ShipClassPlaceholderImageRenderer.RenderVariant.IconPng);
-
-        statusText = $"Generated placeholder silhouette for {shipClass.name.GetMergedName()} ({settings.canvasWidth}x{settings.canvasHeight}).";
+        previewTexture = renderResult.previewTexture;
+        topTexture = renderResult.topTexture;
+        iconTexture = renderResult.iconTexture;
+        statusText = renderResult.message;
         return true;
     }
 
@@ -136,16 +119,7 @@ public class ShipClassPlaceholderGeneratorDialogModel : IDisposable
 
     string GetDefaultFileName(string suffix)
     {
-        var baseName = shipClass?.name?.GetMergedNamePure();
-        if (string.IsNullOrWhiteSpace(baseName))
-            baseName = "ShipClass";
-
-        foreach (var c in Path.GetInvalidFileNameChars())
-        {
-            baseName = baseName.Replace(c, '_');
-        }
-
-        return baseName + suffix;
+        return ShipClassPlaceholderImageGenerator.GetDefaultFileName(shipClass, suffix);
     }
 
     void DisposeTextures()
@@ -169,6 +143,164 @@ public class ShipClassPlaceholderGeneratorDialogModel : IDisposable
     public void Dispose()
     {
         DisposeTextures();
+    }
+}
+
+public static class ShipClassPlaceholderImageGenerator
+{
+    public readonly struct RenderResult
+    {
+        public readonly bool success;
+        public readonly string message;
+        public readonly Texture2D previewTexture;
+        public readonly Texture2D topTexture;
+        public readonly Texture2D iconTexture;
+
+        public RenderResult(bool success, string message, Texture2D previewTexture = null, Texture2D topTexture = null, Texture2D iconTexture = null)
+        {
+            this.success = success;
+            this.message = message;
+            this.previewTexture = previewTexture;
+            this.topTexture = topTexture;
+            this.iconTexture = iconTexture;
+        }
+    }
+
+    public readonly struct BatchGenerateResult
+    {
+        public readonly List<ShipClass> generatedShipClasses;
+        public readonly List<string> skippedMessages;
+
+        public BatchGenerateResult(List<ShipClass> generatedShipClasses, List<string> skippedMessages)
+        {
+            this.generatedShipClasses = generatedShipClasses;
+            this.skippedMessages = skippedMessages;
+        }
+    }
+
+    public static bool TryRenderFromModel(ShipClassPlaceholderGeneratorDialogModel model, out RenderResult result)
+    {
+        if (model.shipClass == null)
+        {
+            result = new(false, "No ship class is selected.");
+            return false;
+        }
+
+        if (model.shipClass.type == ShipType.LandBattery)
+        {
+            result = new(false, "Land Battery does not support placeholder ship images.");
+            return false;
+        }
+
+        if (model.shipClass.lengthFoot <= 0 || model.shipClass.beamFoot <= 0)
+        {
+            result = new(false, "Ship Class lengthFoot and beamFoot must both be greater than 0.");
+            return false;
+        }
+
+        var settings = BuildSettings(model);
+        result = new(
+            true,
+            $"Generated placeholder silhouette for {model.shipClass.name.GetMergedName()} ({settings.canvasWidth}x{settings.canvasHeight}).",
+            ShipClassPlaceholderImageRenderer.Render(model.shipClass, settings, ShipClassPlaceholderImageRenderer.RenderVariant.Preview),
+            ShipClassPlaceholderImageRenderer.Render(model.shipClass, settings, ShipClassPlaceholderImageRenderer.RenderVariant.TopJpg),
+            ShipClassPlaceholderImageRenderer.Render(model.shipClass, settings, ShipClassPlaceholderImageRenderer.RenderVariant.IconPng));
+        return true;
+    }
+
+    public static BatchGenerateResult GenerateAndBindAllMarked(IEnumerable<ShipClass> shipClasses)
+    {
+        var generatedShipClasses = new List<ShipClass>();
+        var skippedMessages = new List<string>();
+        var shipsDirectoryPath = GetShipsDirectoryPath();
+        Directory.CreateDirectory(shipsDirectoryPath);
+
+        foreach (var shipClass in shipClasses)
+        {
+            var model = new ShipClassPlaceholderGeneratorDialogModel
+            {
+                shipClass = shipClass
+            };
+            model.ApplyRecommendedCanvasSize();
+
+            if (!TryRenderFromModel(model, out var renderResult))
+            {
+                skippedMessages.Add($"{shipClass?.name?.english ?? "ShipClass"}: {renderResult.message}");
+                model.Dispose();
+                continue;
+            }
+
+            try
+            {
+                try
+                {
+                    var topFileName = GetDefaultFileName(shipClass, "_Top");
+                    var iconFileName = GetDefaultFileName(shipClass, "_Icon");
+
+                    File.WriteAllBytes(Path.Combine(shipsDirectoryPath, $"{topFileName}.jpg"), renderResult.topTexture.EncodeToJPG(90));
+                    File.WriteAllBytes(Path.Combine(shipsDirectoryPath, $"{iconFileName}.png"), renderResult.iconTexture.EncodeToPNG());
+
+                    shipClass.portraitTopReference.path = $"Pictures/Ships/{topFileName}.jpg";
+                    shipClass.portraitTopReference.isBuiltin = true;
+                    shipClass.portraitIconReference.path = $"Pictures/Ships/{iconFileName}.png";
+                    shipClass.portraitIconReference.isBuiltin = true;
+                    generatedShipClasses.Add(shipClass);
+                }
+                catch (Exception ex)
+                {
+                    skippedMessages.Add($"{shipClass?.name?.english ?? "ShipClass"}: {ex.Message}");
+                }
+            }
+            finally
+            {
+                if (renderResult.previewTexture != null)
+                    UnityEngine.Object.Destroy(renderResult.previewTexture);
+                if (renderResult.topTexture != null)
+                    UnityEngine.Object.Destroy(renderResult.topTexture);
+                if (renderResult.iconTexture != null)
+                    UnityEngine.Object.Destroy(renderResult.iconTexture);
+                model.Dispose();
+            }
+        }
+
+        return new(generatedShipClasses, skippedMessages);
+    }
+
+    public static string GetDefaultFileName(ShipClass shipClass, string suffix)
+    {
+        var baseName = shipClass?.name?.english;
+        if (string.IsNullOrWhiteSpace(baseName))
+            baseName = "ShipClass";
+
+        foreach (var c in Path.GetInvalidFileNameChars())
+        {
+            baseName = baseName.Replace(c, '_');
+        }
+
+        return baseName.Trim() + suffix;
+    }
+
+    public static string GetShipsDirectoryPath()
+    {
+        return Path.Combine(Application.streamingAssetsPath, "Pictures", "Ships");
+    }
+
+    static ShipClassPlaceholderImageRenderSettings BuildSettings(ShipClassPlaceholderGeneratorDialogModel model)
+    {
+        return new ShipClassPlaceholderImageRenderSettings
+        {
+            canvasWidth = Mathf.Clamp(model.canvasWidth, 320, 4096),
+            canvasHeight = Mathf.Clamp(model.canvasHeight, 96, 2048),
+            hullPadding = Mathf.Clamp(model.hullPadding, 4, 256),
+            lineWidth = Mathf.Clamp(model.lineWidth, 1, 24),
+            deckInsetAmount = Mathf.Clamp(model.deckInsetAmount, 2, 80),
+            superstructureHeightScale = Mathf.Clamp(model.superstructureHeightScale, 0.4f, 2.5f),
+            funnelCountMode = (PlaceholderFunnelCountMode)Mathf.Clamp(model.funnelCountModeValue, 0, (int)PlaceholderFunnelCountMode.Three),
+            funnelSpacingBias = Mathf.Clamp(model.funnelSpacingBias, -0.35f, 0.35f),
+            bowSharpness = Mathf.Clamp(model.bowSharpness, 0.45f, 2.5f),
+            sternFullness = Mathf.Clamp(model.sternFullness, 0.45f, 2.5f),
+            weaponScale = Mathf.Clamp(model.weaponScale, 0.4f, 3f),
+        };
     }
 }
 

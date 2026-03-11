@@ -367,11 +367,25 @@
                             <ui:Tab label="Graphic">
                                 <ui:ScrollView>
                                     <ui:VisualElement style="flex-grow: 1;">
-                                        <ui:Button text="Generate Placeholder Image" name="GeneratePlaceholderImageButton" style="margin-bottom: 6px;">
-                                            <Bindings>
-                                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                            </Bindings>
-                                        </ui:Button>
+                                        <ui:VisualElement style="flex-direction: row; margin-bottom: 6px; align-items: center;">
+                                            <ui:Button text="Generate Placeholder Image" name="GeneratePlaceholderImageButton" style="margin-right: 6px;">
+                                                <Bindings>
+                                                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                                                </Bindings>
+                                            </ui:Button>
+                                            <ui:Toggle label="Graphic Placeholder" style="margin-right: 6px;">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="isGraphicPlaceholder" binding-mode="TwoWay"/>
+                                                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(65032134881611777)"/>
+                                                </Bindings>
+                                            </ui:Toggle>
+                                            <ui:Button text="Generate Placeholder Image For All Placeholder" name="GeneratePlaceholderImageForAllPlaceholderButton" style="flex-grow: 1;">
+                                                <Bindings>
+                                                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                                                </Bindings>
+                                            </ui:Button>
+                                        </ui:VisualElement>
                                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                             <ui:VisualElement style="flex-grow: 1; flex-direction: column; flex-basis: 100px;">
                                                 <ui:TextField label="Portrait" style="min-width: 90%; flex-shrink: 1;">
@@ -386,7 +400,7 @@
                                         <ui:Instance template="PictureField" data-source-path="portraitTopReference" name="PortraitTopReferenceField">
                                             <AttributeOverrides element-name="FieldLabel" text="Portrait Top"/>
                                         </ui:Instance>
-                                        <ui:VisualElement style="flex-grow: 0; height: 150px; -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;">
+                                        <ui:VisualElement name="PortraitTopPreview" style="flex-grow: 0; height: 150px; -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;">
                                             <Bindings>
                                                 <ui:DataBinding property="style.backgroundImage" data-source-path="portraitTopReference.pictureStyleBackground" binding-mode="ToTarget"/>
                                             </Bindings>
@@ -402,7 +416,7 @@
                                         <ui:Instance template="PictureField" name="PortraitIconReferenceField" data-source-path="portraitIconReference">
                                             <AttributeOverrides element-name="FieldLabel" text="Portrait Icon"/>
                                         </ui:Instance>
-                                        <ui:VisualElement style="flex-grow: 0; height: 150px; -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;">
+                                        <ui:VisualElement name="PortraitIconPreview" style="flex-grow: 0; height: 150px; -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;">
                                             <Bindings>
                                                 <ui:DataBinding property="style.backgroundImage" data-source-path="portraitIconReference.pictureStyleBackground" binding-mode="ToTarget"/>
                                             </Bindings>

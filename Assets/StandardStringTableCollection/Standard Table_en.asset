@@ -2611,6 +2611,10 @@ MonoBehaviour:
     m_Localized: Command Structure Execution Delay
     m_Metadata:
       m_Items: []
+  - m_Id: 65032134881611777
+    m_Localized: Graphic Placeholder
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -2529,6 +2529,10 @@ MonoBehaviour:
     m_Key: Command Structure Execution Delay
     m_Metadata:
       m_Items: []
+  - m_Id: 65032134881611777
+    m_Key: Graphic Placeholder
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

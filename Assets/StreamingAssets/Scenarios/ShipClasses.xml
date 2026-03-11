@@ -518,6 +518,7 @@
    <path>Pictures\Ships\Yoshino_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>fcf5997b-fe22-49ad-9e5b-70080d2221a9</objectId>
  </ShipClass>
@@ -1036,6 +1037,7 @@
    <path>Pictures\Ships\Yoshino_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>800af878-ba7e-4476-9fd0-88172ae60f24</objectId>
  </ShipClass>
@@ -1545,6 +1547,7 @@
    <path>Pictures\Ships\Akitsushima_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>6197af50-741d-4f54-881a-f0eeec00996f</objectId>
  </ShipClass>
@@ -2054,6 +2057,7 @@ SK5 data book seems to forget to update Akitsushima's fire control table to refl
    <path>Pictures\Ships\Akitsushima_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>6c09c904-d9f3-416f-9c64-27690a9352c9</objectId>
  </ShipClass>
@@ -2518,6 +2522,7 @@ Of course, these two classifications make no practical difference aside from the
    <path>Pictures\Ships\Naniwa_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</objectId>
  </ShipClass>
@@ -2872,6 +2877,7 @@ Of course, these two classifications make no practical difference aside from the
    <path>Pictures\Ships\Naniwa_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>196725f3-ae1d-405b-a997-69a3a055d9f6</objectId>
  </ShipClass>
@@ -3299,6 +3305,7 @@ Chi Yuan or Jiyuan</remark>
    <path>Pictures\Ships\Chi Yuan_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>84de785d-a41c-4993-973a-d167876f343b</objectId>
  </ShipClass>
@@ -3624,6 +3631,7 @@ Chi Yuan or Jiyuan</remark>
    <path>Pictures\Ships\Kuang Yi_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>4733c742-3d0b-4326-8ea9-71703ad6abc1</objectId>
  </ShipClass>
@@ -4076,6 +4084,7 @@ Ting Yuen or Dingyuan</remark>
    <path>Pictures\Ships\Ting Yuen_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>e673b0a6-6c50-4ce0-9808-b731cdd76317</objectId>
  </ShipClass>
@@ -4550,6 +4559,7 @@ Acquisition &amp; modified by Japan in 1895</remark>
    <path>Pictures\Ships\Ting Yuen_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>c01d7942-f5df-4358-b6a5-d934277b6550</objectId>
  </ShipClass>
@@ -4966,6 +4976,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
    <path>Pictures\Ships\Chao Yong_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>10cb7eac-6ff3-4ff0-bbac-2d95882e2c7b</objectId>
  </ShipClass>
@@ -5433,6 +5444,7 @@ For some reason, SK5 classify it to CA</remark>
    <path>Pictures\Ships\Chih Yuan_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>0208979d-6075-4877-98ef-fa0adc0df9ed</objectId>
  </ShipClass>
@@ -5846,6 +5858,7 @@ King Yuan or Jingyuan</remark>
    <path>Pictures\Ships\King Yuan_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>7cfe4fb1-5a4a-486f-acd8-27301ef8af77</objectId>
  </ShipClass>
@@ -6265,6 +6278,7 @@ Ping Yuen or Pingyuan
    <path>Pictures\Ships\Ping Yuen_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>c9332796-cb5f-4d0c-a0e9-b05bc5c05c56</objectId>
  </ShipClass>
@@ -6656,6 +6670,7 @@ Ping Yuen or Pingyuan
    <path>Pictures\Ships\Kuang Chia_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>8cb2764f-61b3-4a5d-b992-1f795e2887c6</objectId>
  </ShipClass>
@@ -7050,6 +7065,7 @@ https://baike.baidu.com/item/%E5%A8%81%E8%BF%9C%E5%8F%B7%E7%BB%83%E4%B9%A0%E8%88
    <path>Pictures\Ships\Wei Yuan_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>b89ab4c6-4951-4782-9544-e8e1394f3d3d</objectId>
  </ShipClass>
@@ -7186,6 +7202,7 @@ Fu Lung or Fulong
    <path>Pictures\Ships\Fu Lung_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>6335ebcc-8d76-46d6-80e6-560390bb5279</objectId>
  </ShipClass>
@@ -7647,6 +7664,7 @@ Fu Lung or Fulong
    <path>Pictures\Ships\Fuso_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>0d9558bb-88c1-4021-8a3a-209d98a54419</objectId>
  </ShipClass>
@@ -8177,6 +8195,7 @@ Itsukushima (厳島, 1891)
    <path>Pictures\Ships\Itsukushima_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</objectId>
  </ShipClass>
@@ -8698,6 +8717,7 @@ Itsukushima (厳島, 1891)
    <path>Pictures\Ships\Itsukushima_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>4804a957-f872-4939-9e41-b7c0f78262ce</objectId>
  </ShipClass>
@@ -9217,6 +9237,7 @@ For reason, it's classified as CA in SK5.
    <path>Pictures\Ships\Matsushima_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>5d05cc6f-6559-4d69-b29d-2eeab1139643</objectId>
  </ShipClass>
@@ -9723,6 +9744,7 @@ For reason, it's classified as CA in SK5.
    <path>Pictures\Ships\Matsushima_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>487c248d-c78b-47c0-841a-2bd768b47662</objectId>
  </ShipClass>
@@ -10160,6 +10182,7 @@ Hiei (比叡, 1878)</remark>
    <path>Pictures\Ships\Kongo_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>a333035a-806e-4246-b57f-157148f73332</objectId>
  </ShipClass>
@@ -10540,6 +10563,7 @@ Hiei (比叡, 1878)</remark>
    <path>Pictures\Ships\Chiyoda_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>93917b3f-9a77-4307-8ed2-945de9b551c9</objectId>
  </ShipClass>
@@ -10903,6 +10927,7 @@ Hiei (比叡, 1878)</remark>
    <path>Pictures\Ships\Maya_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>57fcc452-53f4-4f1d-b3dd-8633a6ce391b</objectId>
  </ShipClass>
@@ -11147,6 +11172,7 @@ Hiei (比叡, 1878)</remark>
    <path>Pictures\Ships\Saikyo_Maru_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>54101703-8d0d-4bf5-8993-e01db78b5eb5</objectId>
  </ShipClass>
@@ -11584,6 +11610,7 @@ Cancel Armor Type Factor</remark>
    <path>Pictures\Ships\Katsuragi_Top.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>0ca5daed-e54e-4320-9335-520a62823de4</objectId>
  </ShipClass>
@@ -11967,6 +11994,7 @@ Cancel Armor Type Factor</remark>
    <path>Pictures\Ships\Tenryu_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>1fc5b415-1375-40a9-90d0-d116219f5e86</objectId>
  </ShipClass>
@@ -12406,6 +12434,7 @@ Cancel Armor Type Factor</remark>
    <path>Pictures\Ships\Takao_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>bc352008-8dea-4116-a254-16815040ab45</objectId>
  </ShipClass>
@@ -12548,6 +12577,7 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
    <path>Pictures\Ships\TB15_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>da0b0c38-0f49-433d-82b3-eb9171b21fcf</objectId>
  </ShipClass>
@@ -12688,6 +12718,7 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
    <path>Pictures\Ships\TB15_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>b533df9b-7e87-48dc-89a2-d470f34e4993</objectId>
  </ShipClass>
@@ -12833,6 +12864,7 @@ TB 21, TB 24</remark>
    <path>Pictures\Ships\TB21_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>529d8f0b-7f08-4326-891c-80647dfb43b7</objectId>
  </ShipClass>
@@ -12973,6 +13005,7 @@ TB 22, 23, 25, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 48, 49, 60, 61
    <path>Pictures\Ships\TB21_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>de44bc06-9c4e-4cd0-ad7e-801e68ce9c40</objectId>
  </ShipClass>
@@ -13116,6 +13149,7 @@ Complement is inferred</remark>
    <path>Pictures\Ships\Kotaka_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>b25727cc-97fe-418d-a76e-6ddcb8650229</objectId>
  </ShipClass>
@@ -13250,6 +13284,7 @@ Complement is inferred</remark>
    <path>Pictures\Ships\Tso I_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>16c25805-fc1e-44c7-8e09-59040e760d4c</objectId>
  </ShipClass>
@@ -13385,6 +13420,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
    <path>Pictures\Ships\Right I_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>8f11a05a-2bca-433e-8ce2-a326b3bb4795</objectId>
  </ShipClass>
@@ -13487,6 +13523,7 @@ Complement is placeholder</remark>
    <path>Pictures\Ships\Ting I_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>c6b70b1a-d003-4768-8d18-3db8ecdb4fc5</objectId>
  </ShipClass>
@@ -13610,6 +13647,7 @@ Draft &amp; Complement is placeholder.
    <path>Pictures\Ships\Chong Chia_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>09e65350-3cea-4316-8de7-63dcd277ece1</objectId>
  </ShipClass>
@@ -14147,6 +14185,7 @@ Draft &amp; Complement is placeholder.
    <path>Pictures\Ships\Yashima_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>033caeff-4831-4ecf-9416-cde0f648bb59</objectId>
  </ShipClass>
@@ -14706,6 +14745,7 @@ Draft &amp; Complement is placeholder.
    <path>Pictures\Ships\Yashima_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>269fcf18-0b7a-43ac-b0c9-8c3a3d7ae043</objectId>
  </ShipClass>
@@ -14792,6 +14832,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <path>Pictures\Ships\Saikyo_Maru_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>ff0ca4c0-ccae-4e3d-ba90-c2a8137e5752</objectId>
  </ShipClass>
@@ -14878,6 +14919,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <path>Pictures\Ships\Saikyo_Maru_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>f499fddd-e799-4b6b-a71a-e46201c985a2</objectId>
  </ShipClass>
@@ -15428,6 +15470,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <path>Pictures\Ships\Blanco_Encalada_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>2a8a05c0-666b-48ca-9168-70719e6f6d42</objectId>
  </ShipClass>
@@ -15517,6 +15560,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <path>Pictures\Ships\Saikyo_Maru_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>9f03bf64-9016-4a6a-91b9-16f5c99985c4</objectId>
  </ShipClass>
@@ -16157,6 +16201,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <path>Pictures\Ships\Rossiya_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>367ee244-2115-4cc0-ace1-9d619f74bf1a</objectId>
  </ShipClass>
@@ -16779,6 +16824,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <path>Pictures\Ships\Gromoboy_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>3059ea49-8f43-40dd-a8f6-ddc44547d4ae</objectId>
  </ShipClass>
@@ -17515,6 +17561,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <path>Pictures\Ships\Rurik_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>a48de38d-e764-4578-812b-a716763b4e30</objectId>
  </ShipClass>
@@ -18045,6 +18092,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <path>Pictures\Ships\Izumo_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>854e32f6-6edc-44f8-8547-0cde24a982ac</objectId>
  </ShipClass>
@@ -18624,6 +18672,7 @@ Azuma or Adzuma (SK5 name)</remark>
    <path>Pictures\Ships\Azuma_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>83b9ed00-234a-4513-8ef9-7e85fdca00c9</objectId>
  </ShipClass>
@@ -19152,6 +19201,7 @@ Azuma or Adzuma (SK5 name)</remark>
    <path>Pictures\Ships\Asama_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>85e92153-9eb5-4d4c-9cf7-533b3a392683</objectId>
  </ShipClass>
@@ -19479,6 +19529,7 @@ Sometime called Niitaka class.
    <path>Pictures\Ships\Tsushima_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>8d189654-e874-43ef-96f7-c308ecda9ca8</objectId>
  </ShipClass>
@@ -19916,6 +19967,7 @@ Sometime called Niitaka class.
    <path>Pictures\Ships\Bogatyr_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>163a91ed-89c1-457d-af1d-730f52eed190</objectId>
  </ShipClass>
@@ -20080,6 +20132,7 @@ Sometime called Niitaka class.
    <path>Pictures\Ships\Hayabusa_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>b0405588-457f-4015-b3e2-7d1950c4569b</objectId>
  </ShipClass>
@@ -20229,6 +20282,7 @@ Sometime called Niitaka class.
    <path>Pictures\Ships\TB21_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>d5909ea9-7ff5-4a7f-9820-1a3a49b69b2f</objectId>
  </ShipClass>
@@ -20389,6 +20443,7 @@ Sometime called Niitaka class.
    <path>Pictures\Ships\Hayabusa_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>7f3a5967-7c3d-40b0-b17a-c8e9592c3f17</objectId>
  </ShipClass>
@@ -20548,6 +20603,7 @@ Sometime called Niitaka class.
    <path>Pictures\Ships\Hayabusa_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>040f6fba-25c1-4cbd-bb0e-0b8f41246a0b</objectId>
  </ShipClass>
@@ -21097,6 +21153,7 @@ Sometime called Niitaka class.
    <path>Pictures\Ships\Yakumo_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>2bd44313-f49c-4b20-ba16-5a4c97aa764e</objectId>
  </ShipClass>
@@ -21555,6 +21612,7 @@ Correction: SK5 length 37 -&gt; 307</remark>
    <path>Pictures\Ships\Suma_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>37bce09e-d947-41ff-acfb-f32541659e54</objectId>
  </ShipClass>
@@ -22041,6 +22099,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <path>Pictures\Ships\Varyag_icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>d67fb008-2eb7-42c9-b484-0bfb89a061da</objectId>
  </ShipClass>
@@ -22618,6 +22677,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <path>Pictures\Ships\Korietz_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>655676cb-88bd-4f22-b93b-8624c1200343</objectId>
  </ShipClass>
@@ -23290,6 +23350,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <path>Pictures\Ships\Poltava_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>a393ba20-f090-4bc7-9c13-ea60f9c97827</objectId>
  </ShipClass>
@@ -23462,6 +23523,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <path>Pictures\Ships\Shirakumo_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>d7165630-33d1-407f-9742-3c76d96f8057</objectId>
  </ShipClass>
@@ -23633,6 +23695,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <path>Pictures\Ships\Shirakumo_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>ce1b692f-f08e-422f-b35a-04859941c76f</objectId>
  </ShipClass>
@@ -23808,6 +23871,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <path>Pictures\Ships\Shirakumo_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>47022fdc-bab2-422c-b4c0-b6bd6ffb8a72</objectId>
  </ShipClass>
@@ -23981,6 +24045,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <path>Pictures\Ships\Shinonome_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>83db8d34-8b21-45ce-b3b9-e463c6698d73</objectId>
  </ShipClass>
@@ -24157,6 +24222,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <path>Pictures\Ships\Harusame_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>8e928947-032c-48de-83c8-459228d5ebfb</objectId>
  </ShipClass>
@@ -24757,6 +24823,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
    <path>Pictures\Ships\tsesarevich_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>fe73a25a-1806-43ca-829d-d80d16341f92</objectId>
  </ShipClass>
@@ -25328,6 +25395,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
    <path>Pictures\Ships\Peresvet_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>2ef28891-97ec-4bfd-8226-9267e895c2b6</objectId>
  </ShipClass>
@@ -26042,6 +26110,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
    <path>Pictures\Ships\Retvizan_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>bbecbb24-578d-4f73-8ce1-9f1345f98c79</objectId>
  </ShipClass>
@@ -26618,6 +26687,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
    <path>Pictures\Ships\Bayan_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>ee43a17c-8616-475d-95ad-1ce668dde6c3</objectId>
  </ShipClass>
@@ -27083,6 +27153,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
    <path>Pictures\Ships\Askold_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>75b68e4e-f965-4280-b0f5-a77902cf326e</objectId>
  </ShipClass>
@@ -27485,6 +27556,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
    <path>Pictures\Ships\Pallada_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>025afc73-b558-4402-bd99-183e76905cf8</objectId>
  </ShipClass>
@@ -27877,6 +27949,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <path>Pictures\Ships\Boyarin_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>b3b1a455-f46e-47aa-8aa8-2c240399348d</objectId>
  </ShipClass>
@@ -28244,6 +28317,7 @@ https://naval-encyclopedia.com/ww1/russia/cruiser-novik-1898.php
    <path>Pictures\Ships\Novik_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>ef43861e-c0f7-4f2c-bd99-dd117a3e94f1</objectId>
  </ShipClass>
@@ -28412,6 +28486,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <path>Pictures\Ships\Puilki_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>a37c48c4-507b-454a-9568-58901c8a7e67</objectId>
  </ShipClass>
@@ -28586,6 +28661,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <path>Pictures\Ships\Bezstrashni_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>3c94c9c5-b30d-4448-9985-47387141748f</objectId>
  </ShipClass>
@@ -29143,6 +29219,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <path>Pictures\Ships\Mikasa_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>495a5148-7253-403d-a09f-d54b5374c4cc</objectId>
  </ShipClass>
@@ -29698,6 +29775,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <path>Pictures\Ships\Asahi_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>56e33591-20bb-48b2-bb57-8535f8e8d139</objectId>
  </ShipClass>
@@ -30263,6 +30341,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <path>Pictures\Ships\Shikishimas_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>fb0df4ed-1cf6-49e3-be04-43b6d0438de8</objectId>
  </ShipClass>
@@ -30806,6 +30885,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <path>Pictures\Ships\Kasagi_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>a93b6888-fb63-4f58-85a3-30289f2dbb9f</objectId>
  </ShipClass>
@@ -31351,6 +31431,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <path>Pictures\Ships\Takasago_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>7af59c07-6563-46cd-b8bc-74f85295846c</objectId>
  </ShipClass>
@@ -31569,6 +31650,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <path>Pictures\Ships\fort.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>e770b2d5-373d-48a8-ad13-6db316e450a9</objectId>
  </ShipClass>
@@ -31809,6 +31891,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <path>Pictures\Ships\fort.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>ceb31553-4e1c-4f6e-81de-48ef6b1e77e5</objectId>
  </ShipClass>
@@ -32018,6 +32101,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <path>Pictures\Ships\fort.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>60ae95ea-8f01-4224-99c4-852355179895</objectId>
  </ShipClass>
@@ -32445,6 +32529,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <path>Pictures\Ships\Yang Wei_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>c59da1a8-31c1-4072-9e87-0a6f78f5bb32</objectId>
  </ShipClass>
@@ -32731,6 +32816,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <path>Pictures\Ships\Oshima_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>282c6968-f96e-40b7-8d3c-f5bf3c3cd7d9</objectId>
  </ShipClass>
@@ -33078,6 +33164,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <path>Pictures\Ships\fort.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>edb81586-1cb9-4356-ac8f-f64c119ae676</objectId>
  </ShipClass>
@@ -33577,6 +33664,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <path>Pictures\Ships\fort.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>7fe11602-8646-4fed-b7b7-77b9c738fa5f</objectId>
  </ShipClass>
@@ -33931,6 +34019,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <path>Pictures\Ships\fort.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>1e585c1c-ac79-4a2b-983f-0e576b687e67</objectId>
  </ShipClass>
@@ -34564,6 +34653,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <path>Pictures\Ships\Kasuga_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>70a0611e-34d3-41a9-9215-bd4a1a3b65b7</objectId>
  </ShipClass>
@@ -35104,6 +35194,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <path>Pictures\Ships\Nisshin_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>a920ccf3-30ab-4b93-a1d9-f203e824d1f0</objectId>
  </ShipClass>
@@ -35384,6 +35475,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <path>Pictures\Ships\Yaeyama_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>e8c18a88-3af3-448c-9fdc-44c771a5f408</objectId>
  </ShipClass>
@@ -35837,6 +35929,7 @@ Esmeralda or Idzumi (Izumi)</remark>
    <path>Pictures\Ships\Esmeralda_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>340b332a-554f-4d10-a067-e22e9741b1eb</objectId>
  </ShipClass>
@@ -36016,6 +36109,7 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
    <path>Pictures\Ships\Boiki_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>da10240c-9e79-48b3-bf88-9e62ca88c818</objectId>
  </ShipClass>
@@ -36170,6 +36264,7 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
    <path>Pictures\Ships\Vnimatelni_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>0d31a3f3-3e32-46a9-96d9-e4dd8457273b</objectId>
  </ShipClass>

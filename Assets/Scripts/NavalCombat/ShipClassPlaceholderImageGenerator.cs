@@ -502,13 +502,14 @@ public static class ShipClassPlaceholderImageRenderer
 
     static void DrawBatteryMounts(PixelCanvas canvas, ShipClass shipClass, Rect shipRect, float centerY, ShipClassPlaceholderImageRenderSettings settings, RenderPalette palette, float[] topEdge, float[] bottomEdge)
     {
+        var batteryVisualScale = EvaluateBatteryGlyphVisualScale(shipRect);
         var groupedRecords = (shipClass.batteryRecords ?? new List<BatteryRecord>())
             .SelectMany(battery => (battery.mountLocationRecords ?? new List<MountLocationRecord>())
                 .Select(record => new
                 {
                     battery,
                     record,
-                    glyphSize = EvaluateBatteryGlyphSize(battery.shellSizeInch) * settings.weaponScale * 2f,
+                    glyphSize = EvaluateBatteryGlyphSize(battery.shellSizeInch) * settings.weaponScale * 2.2f * batteryVisualScale,
                 }))
             .GroupBy(entry => entry.record.mountLocation);
 
@@ -540,16 +541,19 @@ public static class ShipClassPlaceholderImageRenderer
 
     static void DrawTorpedoMounts(PixelCanvas canvas, ShipClass shipClass, Rect shipRect, float centerY, ShipClassPlaceholderImageRenderSettings settings, RenderPalette palette, float[] topEdge, float[] bottomEdge)
     {
+        var torpedoVisualScale = EvaluateTorpedoGlyphVisualScale(shipRect);
+        var deckObstacles = BuildSuperstructureObstacles(shipClass, shipRect, centerY, settings, topEdge, bottomEdge);
         foreach (var record in shipClass.torpedoSector?.mountLocationRecords ?? new List<MountLocationRecord>())
         {
-            var size = Mathf.Clamp(5f + record.barrels * 0.7f, 5f, 11f) * settings.weaponScale * 2f;
             var submerged = IsSubmergedTorpedoRecord(record);
+            var baseSize = Mathf.Clamp(5f + record.barrels * 0.7f, 5f, 11f) * settings.weaponScale * 2f * torpedoVisualScale;
+            var size = submerged ? baseSize : baseSize * 2f;
             var direction = submerged
                 ? GetSubmergedMountOutwardDirection(record.mountLocation, ResolveMountDirection(record))
                 : ResolveMountDirection(record);
             var positions = submerged
                 ? ResolveSubmergedTorpedoPositions(record, size, shipRect, centerY, topEdge, bottomEdge, direction)
-                : ResolveMountPositions(record.mountLocation, record.mounts, size, shipRect, centerY, topEdge, bottomEdge);
+                : ResolveDeckTorpedoPositions(record.mountLocation, record.mounts, size, shipRect, centerY, topEdge, bottomEdge, deckObstacles);
             foreach (var pos in positions)
             {
                 DrawTorpedoMount(canvas, pos, direction, record.barrels, size, submerged ? false : record.trainable, palette.mountFill, palette.hullOutline, palette.detailFill);
@@ -648,6 +652,21 @@ public static class ShipClassPlaceholderImageRenderer
         return positions;
     }
 
+    static List<Vector2> ResolveDeckTorpedoPositions(MountLocation location, int mountCount, float symbolSize, Rect shipRect, float centerY, float[] topEdge, float[] bottomEdge, List<Rect> obstacles)
+    {
+        var positions = ResolveMountPositions(location, mountCount, symbolSize * 2.8f, shipRect, centerY, topEdge, bottomEdge);
+        if (obstacles == null || obstacles.Count == 0)
+            return positions;
+
+        var adjusted = new List<Vector2>(positions.Count);
+        foreach (var pos in positions)
+        {
+            adjusted.Add(ResolveDeckMountAvoidance(pos, symbolSize, shipRect, obstacles));
+        }
+
+        return adjusted;
+    }
+
     static bool IsSubmergedTorpedoRecord(MountLocationRecord record)
     {
         if (record.mountArcs == null || record.mountArcs.Count == 0)
@@ -693,6 +712,82 @@ public static class ShipClassPlaceholderImageRenderer
         return positions;
     }
 
+    static Vector2 ResolveDeckMountAvoidance(Vector2 originalPos, float symbolSize, Rect shipRect, List<Rect> obstacles)
+    {
+        var candidate = originalPos;
+        if (!IntersectsObstacle(candidate, symbolSize, obstacles))
+            return candidate;
+
+        var halfWidth = GetDeckMountBounds(symbolSize).width * 0.5f;
+        var margin = Mathf.Max(4f, symbolSize * 0.35f);
+        for (var attempt = 0; attempt < 8; attempt++)
+        {
+            var bounds = GetDeckMountBounds(candidate, symbolSize);
+            var overlapping = obstacles.Where(obstacle => bounds.Overlaps(obstacle)).ToList();
+            if (overlapping.Count == 0)
+                return candidate;
+
+            var bestCandidate = candidate;
+            var bestDistance = float.MaxValue;
+            foreach (var obstacle in overlapping)
+            {
+                var aftX = Mathf.Max(shipRect.xMin + halfWidth, obstacle.xMin - halfWidth - margin);
+                var aftCandidate = new Vector2(aftX, originalPos.y);
+                if (!IntersectsObstacle(aftCandidate, symbolSize, obstacles))
+                {
+                    var aftDistance = Mathf.Abs(aftCandidate.x - originalPos.x);
+                    if (aftDistance < bestDistance)
+                    {
+                        bestDistance = aftDistance;
+                        bestCandidate = aftCandidate;
+                    }
+                }
+
+                var foreX = Mathf.Min(shipRect.xMax - halfWidth, obstacle.xMax + halfWidth + margin);
+                var foreCandidate = new Vector2(foreX, originalPos.y);
+                if (!IntersectsObstacle(foreCandidate, symbolSize, obstacles))
+                {
+                    var foreDistance = Mathf.Abs(foreCandidate.x - originalPos.x);
+                    if (foreDistance < bestDistance)
+                    {
+                        bestDistance = foreDistance;
+                        bestCandidate = foreCandidate;
+                    }
+                }
+            }
+
+            if (bestDistance < float.MaxValue)
+                return bestCandidate;
+
+            candidate = new Vector2(Mathf.Clamp(candidate.x - margin, shipRect.xMin + halfWidth, shipRect.xMax - halfWidth), candidate.y);
+        }
+
+        return candidate;
+    }
+
+    static bool IntersectsObstacle(Vector2 pos, float symbolSize, List<Rect> obstacles)
+    {
+        var bounds = GetDeckMountBounds(pos, symbolSize);
+        foreach (var obstacle in obstacles)
+        {
+            if (bounds.Overlaps(obstacle))
+                return true;
+        }
+
+        return false;
+    }
+
+    static Rect GetDeckMountBounds(float symbolSize)
+    {
+        return new Rect(0f, 0f, symbolSize * 2.6f, symbolSize * 1.9f);
+    }
+
+    static Rect GetDeckMountBounds(Vector2 pos, float symbolSize)
+    {
+        var size = GetDeckMountBounds(symbolSize).size;
+        return new Rect(pos.x - size.x / 2f, pos.y - size.y / 2f, size.x, size.y);
+    }
+
     static float EvaluateBatteryGlyphSize(float shellSizeInch)
     {
         if (shellSizeInch <= 0)
@@ -703,6 +798,20 @@ public static class ShipClassPlaceholderImageRenderer
 
         var largeGunBoost = Mathf.Pow(shellSizeInch - 4.7f, 0.98f) * 1.55f;
         return Mathf.Clamp(5.8f + largeGunBoost, 5.8f, 23f);
+    }
+
+    static float EvaluateBatteryGlyphVisualScale(Rect shipRect)
+    {
+        var visualBeam = Mathf.Max(1f, shipRect.height);
+        var scale = Mathf.Pow(72f / visualBeam, 0.55f);
+        return Mathf.Clamp(scale, 0.82f, 1.45f);
+    }
+
+    static float EvaluateTorpedoGlyphVisualScale(Rect shipRect)
+    {
+        var visualBeam = Mathf.Max(1f, shipRect.height);
+        var scale = Mathf.Pow(82f / visualBeam, 0.72f);
+        return Mathf.Clamp(scale, 0.95f, 1.85f);
     }
 
     static Vector2 GetAnchor(MountLocation location)
@@ -720,6 +829,42 @@ public static class ShipClassPlaceholderImageRenderer
             MountLocation.StarboardAfter => new Vector2(NormalizeForeAftX(0.77f), 0.52f),
             _ => new Vector2(0.50f, 0f)
         };
+    }
+
+    static List<Rect> BuildSuperstructureObstacles(ShipClass shipClass, Rect shipRect, float centerY, ShipClassPlaceholderImageRenderSettings settings, float[] topEdge, float[] bottomEdge)
+    {
+        var obstacles = new List<Rect>();
+        var profile = GetHullProfile(shipClass.type);
+        var mainLength = shipRect.width * profile.superstructureLength * settings.superstructureHeightScale;
+        var mainWidth = shipRect.height * 0.20f * settings.superstructureHeightScale;
+        obstacles.Add(ExpandRect(BuildCenteredRect(shipRect, NormalizeForeAftX(profile.bridgeCenter), mainLength, mainWidth, centerY), 3f));
+        obstacles.Add(ExpandRect(BuildCenteredRect(shipRect, NormalizeForeAftX(profile.deckhouseCenter), mainLength * 0.55f, mainWidth * 0.7f, centerY), 3f));
+
+        var funnelCount = ResolveFunnelCount(shipClass, settings);
+        if (funnelCount <= 0)
+            return obstacles;
+
+        var baseXMin = shipRect.xMin + shipRect.width * NormalizeForeAftX(0.62f + settings.funnelSpacingBias * 0.2f);
+        var baseXMax = shipRect.xMin + shipRect.width * NormalizeForeAftX(0.40f + settings.funnelSpacingBias * 0.2f);
+        if (funnelCount == 1)
+            baseXMin = baseXMax = shipRect.xMin + shipRect.width * NormalizeForeAftX(0.48f + settings.funnelSpacingBias * 0.2f);
+
+        for (var i = 0; i < funnelCount; i++)
+        {
+            var t = funnelCount == 1 ? 0.5f : i / (float)(funnelCount - 1);
+            var x = Mathf.Lerp(baseXMin, baseXMax, t);
+            var halfBreadth = SampleHullHalfBreadth(topEdge, bottomEdge, Mathf.RoundToInt(x));
+            var funnelHeight = Mathf.Max(5f, halfBreadth * 0.9f * settings.superstructureHeightScale);
+            var funnelWidth = Mathf.Max(4f, shipRect.width * 0.015f);
+            obstacles.Add(ExpandRect(new Rect(x - funnelWidth / 2f, centerY - funnelHeight / 2f, funnelWidth, funnelHeight), 4f));
+        }
+
+        return obstacles;
+    }
+
+    static Rect ExpandRect(Rect rect, float amount)
+    {
+        return new Rect(rect.xMin - amount, rect.yMin - amount, rect.width + amount * 2f, rect.height + amount * 2f);
     }
 
     static Vector2 GetSubmergedMountOutwardDirection(MountLocation location, Vector2 fallbackDirection)

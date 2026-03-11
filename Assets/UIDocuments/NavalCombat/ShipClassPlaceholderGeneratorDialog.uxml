@@ -62,6 +62,11 @@
                             <ui:DataBinding property="value" data-source-path="sternFullness" binding-mode="TwoWay"/>
                         </Bindings>
                     </ui:FloatField>
+                    <ui:FloatField label="Weapon Scale">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="weaponScale" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:FloatField>
                     <ui:Button text="Generate" name="GenerateButton" class="large" style="margin-top: 8px;"/>
                 </ui:VisualElement>
             </ui:VisualElement>

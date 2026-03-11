@@ -1577,6 +1577,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             shipClass = shipClass
         };
+        model.ApplyRecommendedCanvasSize();
 
         var tempDialog = new TempDialog()
         {
@@ -1619,6 +1620,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 }
             }
 
+            model.TryGenerate();
             RefreshUi();
 
             if (generateButton != null)

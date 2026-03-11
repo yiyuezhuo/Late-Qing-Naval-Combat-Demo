@@ -2867,6 +2867,18 @@ MonoBehaviour:
     m_Localized: "RJH - Battle of the Yellow Sea \u2605"
     m_Metadata:
       m_Items: []
+  - m_Id: 58890040000000003
+    m_Localized: Keep Current Position
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58890040000000004
+    m_Localized: Line Abreast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58890040000000005
+    m_Localized: Line of Bearing
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -746,7 +746,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 553001000000001
-    m_Key: Absolute
+    m_Key: Absolute Angle
     m_Metadata:
       m_Items: []
   - m_Id: 167166449717248
@@ -2531,6 +2531,34 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 65032134881611777
     m_Key: Graphic Placeholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000002
+    m_Key: Arrange formation in relative bearing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000003
+    m_Key: Arrange formation in follow chain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000004
+    m_Key: Relative Formation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000005
+    m_Key: Follow Chain Formation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000006
+    m_Key: Angle (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000007
+    m_Key: Distance (yards)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000008
+    m_Key: Symmetric
     m_Metadata:
       m_Items: []
   m_Metadata:

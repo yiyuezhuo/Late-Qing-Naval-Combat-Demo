@@ -51,8 +51,16 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000001)"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Go to Relative (Formation)" name="GoToRelativeFormationButton"/>
-                    <ui:Button text="Go to Follow (Formation)" name="GoToFollowFormationButton"/>
+                    <ui:Button text="Set Formation to Relative" name="GoToRelativeFormationButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000002)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Set Formation to Follow Chain" name="GoToFollowFormationButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000003)"/>
+                        </Bindings>
+                    </ui:Button>
                     <ui:Label text="Player" style="margin-left: 10px; display: none;"/>
                     <ui:DropdownField name="PlayerDropdownField" style="width: 300px; display: none;"/>
                     <ui:Button text="Victory Status" name="VictoryStatusButton">

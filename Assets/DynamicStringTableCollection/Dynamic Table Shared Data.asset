@@ -2858,6 +2858,18 @@ MonoBehaviour:
     m_Key: RJH - Battle of the Yellow Sea.scen.xml
     m_Metadata:
       m_Items: []
+  - m_Id: 58890040000000003
+    m_Key: RelativeFormationMode.KeepCurrentPosition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58890040000000004
+    m_Key: RelativeFormationMode.LineAbreast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58890040000000005
+    m_Key: RelativeFormationMode.LineOfBearing
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

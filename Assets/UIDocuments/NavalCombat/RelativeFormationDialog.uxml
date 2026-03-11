@@ -1,25 +1,33 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="RelativeFormationDialogModel, Assembly-CSharp" class="panel-dialog" style="width: 420px; height: auto;">
-        <ui:Label text="Relative Formation" name="TitleLabel" class="title"/>
+        <ui:Label text="Relative Formation" name="TitleLabel" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000004)"/>
+            </Bindings>
+        </ui:Label>
         <ui:VisualElement style="flex-grow: 1;">
             <LocalizedEnumField label="Mode" name="ModeField" type-str="RelativeFormationMode" style="margin-bottom: 4px;">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="modeValue" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362247664340992)"/>
                 </Bindings>
             </LocalizedEnumField>
             <ui:FloatField label="Angle (deg)" name="AngleField">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="angleDeg" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000006)"/>
                 </Bindings>
             </ui:FloatField>
             <ui:FloatField label="Distance (yards)" name="DistanceField">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="distanceYards" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000007)"/>
                 </Bindings>
             </ui:FloatField>
-            <ui:Toggle text="Symmetric" name="SymmetricToggle">
+            <ui:Toggle name="SymmetricToggle" label="Symmetric">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="isSymmetric" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000008)"/>
                 </Bindings>
             </ui:Toggle>
             <ui:Toggle label="Absolute" name="AbsoluteToggle">

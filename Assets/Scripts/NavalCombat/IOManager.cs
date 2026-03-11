@@ -97,6 +97,30 @@ public class IOManager : SingletonMonoBehaviour<IOManager>
 #endif
     }
 
+    public bool SaveBinaryFile(byte[] data, string name = "sample", string ext = "bin")
+    {
+        Debug.Log("SaveBinaryFile");
+
+#if (UNITY_ANDROID || UNITY_IOS)
+        var filePath = Path.Combine(Application.temporaryCachePath, $"{name}.{ext}");
+        File.WriteAllBytes(filePath, data);
+        NativeFilePicker.ExportFile(filePath, success => Debug.Log("File exported: " + success));
+        return true;
+#elif UNITY_WEBGL && !UNITY_EDITOR
+        DownloadFile(gameObject.name, "OnFileDownload", $"{name}.{ext}", data, data.Length);
+        return true;
+#else
+        var path = StandaloneFileBrowser.SaveFilePanel("Title", "", name, ext);
+        if (string.IsNullOrEmpty(path))
+        {
+            return false;
+        }
+
+        File.WriteAllBytes(path, data);
+        return true;
+#endif
+    }
+
     public void LoadTextFile(Action<string> callback, string ext = "txt")
     {
         currentCallback = callback;

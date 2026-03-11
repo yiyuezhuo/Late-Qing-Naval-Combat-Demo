@@ -254,6 +254,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset messageDialogDocument;
     public VisualTreeAsset confirmDialogDocument;
     public VisualTreeAsset followFormationDialogDocument;
+    public VisualTreeAsset shipClassPlaceholderGeneratorDialogDocument;
     public VisualTreeAsset relativeFormationDialogDocument;
     public VisualTreeAsset preScenarioDamageDialogDocument;
     public VisualTreeAsset streamingAssetReferenceDialogDocument;
@@ -1561,6 +1562,94 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             confirmCallback?.Invoke(model.followDistanceYards);
         };
 
+        tempDialog.Popup();
+    }
+
+    public void PopupShipClassPlaceholderGeneratorDialog(ShipClass shipClass)
+    {
+        if (shipClassPlaceholderGeneratorDialogDocument == null)
+        {
+            PopupMessageDialog("ShipClassPlaceholderGeneratorDialog is not configured.");
+            return;
+        }
+
+        var model = new ShipClassPlaceholderGeneratorDialogModel()
+        {
+            shipClass = shipClass
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = shipClassPlaceholderGeneratorDialogDocument,
+            templateDataSource = model,
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var titleLabel = el.Q<Label>("TitleLabel");
+            var previewImage = el.Q<Image>("PreviewImage");
+            var statusLabel = el.Q<Label>("StatusLabel");
+            var generateButton = el.Q<Button>("GenerateButton");
+            var saveTopButton = el.Q<Button>("SaveTopButton");
+            var saveIconButton = el.Q<Button>("SaveIconButton");
+
+            if (titleLabel != null && shipClass != null)
+            {
+                titleLabel.text = $"Generate Placeholder Image - {shipClass.name.GetMergedName()}";
+            }
+
+            void RefreshUi()
+            {
+                if (previewImage != null)
+                {
+                    previewImage.image = model.previewTexture;
+                }
+                if (statusLabel != null)
+                {
+                    statusLabel.text = model.statusText;
+                }
+                if (saveTopButton != null)
+                {
+                    saveTopButton.SetEnabled(model.hasGenerated);
+                }
+                if (saveIconButton != null)
+                {
+                    saveIconButton.SetEnabled(model.hasGenerated);
+                }
+            }
+
+            RefreshUi();
+
+            if (generateButton != null)
+            {
+                generateButton.clicked += () =>
+                {
+                    model.TryGenerate();
+                    RefreshUi();
+                };
+            }
+
+            if (saveTopButton != null)
+            {
+                saveTopButton.clicked += () =>
+                {
+                    model.SaveTopImage();
+                    RefreshUi();
+                };
+            }
+
+            if (saveIconButton != null)
+            {
+                saveIconButton.clicked += () =>
+                {
+                    model.SaveIconImage();
+                    RefreshUi();
+                };
+            }
+        };
+
+        tempDialog.onClosed += (_, _) => model.Dispose();
         tempDialog.Popup();
     }
 

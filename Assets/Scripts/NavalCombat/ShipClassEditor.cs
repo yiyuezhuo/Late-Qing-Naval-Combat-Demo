@@ -230,6 +230,14 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
         PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("PortraitReferenceField"));
         PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("PortraitIconReferenceField"));
 
+        root.Q<Button>("GeneratePlaceholderImageButton").clicked += () =>
+        {
+            if (selectedShipClass != null)
+            {
+                DialogRoot.Instance.PopupShipClassPlaceholderGeneratorDialog(selectedShipClass);
+            }
+        };
+
         var batteryArcIndicatorDialogButton = root.Q<Button>("BatteryArcIndicatorDialogButton");
         batteryArcIndicatorDialogButton.clicked += () =>
         {

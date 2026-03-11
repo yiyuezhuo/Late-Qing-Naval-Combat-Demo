@@ -1,0 +1,81 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
+    <ui:VisualElement data-source-type="ShipClassPlaceholderGeneratorDialogModel, Assembly-CSharp" class="panel-dialog" style="width: 980px; height: auto; max-height: 90%;">
+        <ui:Label text="Generate Placeholder Image" name="TitleLabel" class="title"/>
+        <ui:ScrollView mode="Vertical" style="max-height: 700px;">
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 1; flex-basis: 300px; padding-right: 8px;">
+                    <ui:IntegerField label="Canvas Width">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="canvasWidth" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:IntegerField>
+                    <ui:IntegerField label="Canvas Height">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="canvasHeight" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:IntegerField>
+                    <ui:IntegerField label="Hull Padding">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="hullPadding" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:IntegerField>
+                    <ui:IntegerField label="Line Width">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="lineWidth" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:IntegerField>
+                    <ui:IntegerField label="Preview Fill Alpha">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="fillAlpha" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:IntegerField>
+                    <ui:IntegerField label="Deck Inset">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="deckInsetAmount" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:IntegerField>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; flex-basis: 300px; padding-left: 8px;">
+                    <ui:FloatField label="Superstructure Scale">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="superstructureHeightScale" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <LocalizedEnumField type-str="PlaceholderFunnelCountMode" label="Funnels">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="funnelCountModeValue" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </LocalizedEnumField>
+                    <ui:FloatField label="Funnel Spacing Bias">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="funnelSpacingBias" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField label="Bow Sharpness">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="bowSharpness" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField label="Stern Fullness">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="sternFullness" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:Button text="Generate" name="GenerateButton" class="large" style="margin-top: 8px;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label text="Adjust parameters and click Generate." name="StatusLabel" style="white-space: normal; margin-top: 8px; margin-bottom: 8px;"/>
+            <ui:VisualElement class="placeholder-preview-frame">
+                <ui:Image name="PreviewImage" scale-mode="ScaleToFit" class="placeholder-preview-image"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="placeholder-export-row">
+                <ui:Button text="Save Top JPG" name="SaveTopButton" style="flex-grow: 1; margin-right: 8px;"/>
+                <ui:Button text="Save Icon PNG" name="SaveIconButton" style="flex-grow: 1;"/>
+            </ui:VisualElement>
+        </ui:ScrollView>
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
+            <ui:Button text="Close" name="CancelButton" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

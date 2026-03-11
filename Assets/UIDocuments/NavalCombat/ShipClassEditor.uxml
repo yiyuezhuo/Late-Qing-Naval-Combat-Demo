@@ -367,6 +367,11 @@
                             <ui:Tab label="Graphic">
                                 <ui:ScrollView>
                                     <ui:VisualElement style="flex-grow: 1;">
+                                        <ui:Button text="Generate Placeholder Image" name="GeneratePlaceholderImageButton" style="margin-bottom: 6px;">
+                                            <Bindings>
+                                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                                            </Bindings>
+                                        </ui:Button>
                                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                             <ui:VisualElement style="flex-grow: 1; flex-direction: column; flex-basis: 100px;">
                                                 <ui:TextField label="Portrait" style="min-width: 90%; flex-shrink: 1;">

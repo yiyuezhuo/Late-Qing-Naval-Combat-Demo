@@ -25,7 +25,6 @@ public class ShipClassPlaceholderGeneratorDialogModel : IDisposable
     [CreateProperty] public int canvasHeight { get; set; } = DefaultCanvasHeight;
     [CreateProperty] public int hullPadding { get; set; } = 18;
     [CreateProperty] public int lineWidth { get; set; } = 3;
-    [CreateProperty] public int fillAlpha { get; set; } = 150;
     [CreateProperty] public int deckInsetAmount { get; set; } = 10;
     [CreateProperty] public float superstructureHeightScale { get; set; } = 1f;
     [CreateProperty] public int funnelCountModeValue { get; set; } = (int)PlaceholderFunnelCountMode.Auto;
@@ -125,7 +124,6 @@ public class ShipClassPlaceholderGeneratorDialogModel : IDisposable
             canvasHeight = Mathf.Clamp(canvasHeight, 96, 2048),
             hullPadding = Mathf.Clamp(hullPadding, 4, 256),
             lineWidth = Mathf.Clamp(lineWidth, 1, 24),
-            fillAlpha = Mathf.Clamp(fillAlpha, 30, 255),
             deckInsetAmount = Mathf.Clamp(deckInsetAmount, 2, 80),
             superstructureHeightScale = Mathf.Clamp(superstructureHeightScale, 0.4f, 2.5f),
             funnelCountMode = (PlaceholderFunnelCountMode)Mathf.Clamp(funnelCountModeValue, 0, (int)PlaceholderFunnelCountMode.Three),
@@ -180,7 +178,6 @@ public struct ShipClassPlaceholderImageRenderSettings
     public int canvasHeight;
     public int hullPadding;
     public int lineWidth;
-    public int fillAlpha;
     public int deckInsetAmount;
     public float superstructureHeightScale;
     public PlaceholderFunnelCountMode funnelCountMode;
@@ -505,17 +502,38 @@ public static class ShipClassPlaceholderImageRenderer
 
     static void DrawBatteryMounts(PixelCanvas canvas, ShipClass shipClass, Rect shipRect, float centerY, ShipClassPlaceholderImageRenderSettings settings, RenderPalette palette, float[] topEdge, float[] bottomEdge)
     {
-        foreach (var battery in shipClass.batteryRecords ?? new List<BatteryRecord>())
+        var groupedRecords = (shipClass.batteryRecords ?? new List<BatteryRecord>())
+            .SelectMany(battery => (battery.mountLocationRecords ?? new List<MountLocationRecord>())
+                .Select(record => new
+                {
+                    battery,
+                    record,
+                    glyphSize = EvaluateBatteryGlyphSize(battery.shellSizeInch) * settings.weaponScale * 2f,
+                }))
+            .GroupBy(entry => entry.record.mountLocation);
+
+        foreach (var group in groupedRecords)
         {
-            foreach (var record in battery.mountLocationRecords ?? new List<MountLocationRecord>())
+            var totalMounts = group.Sum(entry => Mathf.Max(1, entry.record.mounts));
+            var layoutGlyphSize = group.Max(entry => entry.glyphSize);
+            var allPositions = ResolveMountPositions(group.Key, totalMounts, layoutGlyphSize, shipRect, centerY, topEdge, bottomEdge);
+            var positionIndex = 0;
+            var orderedEntries = group
+                .OrderBy(entry => ResolveMountDirection(entry.record).x)
+                .ThenBy(entry => ResolveMountDirection(entry.record).y)
+                .ToList();
+
+            foreach (var entry in orderedEntries)
             {
-                var glyphSize = EvaluateBatteryGlyphSize(battery.shellSizeInch) * settings.weaponScale;
-                var positions = ResolveMountPositions(record.mountLocation, record.mounts, glyphSize, shipRect, centerY, topEdge, bottomEdge);
-                var direction = ResolveMountDirection(record);
+                var mountCount = Mathf.Max(1, entry.record.mounts);
+                var positions = allPositions.Skip(positionIndex).Take(mountCount);
+                var direction = ResolveMountDirection(entry.record);
                 foreach (var pos in positions)
                 {
-                    DrawGunMount(canvas, pos, direction, record.barrels, glyphSize, settings.lineWidth, palette.mountFill, palette.hullOutline, palette.detailFill);
+                    DrawGunMount(canvas, pos, direction, entry.record.barrels, entry.glyphSize, settings.lineWidth, palette.mountFill, palette.hullOutline, palette.detailFill);
                 }
+
+                positionIndex += mountCount;
             }
         }
     }
@@ -524,12 +542,17 @@ public static class ShipClassPlaceholderImageRenderer
     {
         foreach (var record in shipClass.torpedoSector?.mountLocationRecords ?? new List<MountLocationRecord>())
         {
-            var size = Mathf.Clamp(5f + record.barrels * 0.7f, 5f, 11f) * settings.weaponScale;
-            var positions = ResolveMountPositions(record.mountLocation, record.mounts, size, shipRect, centerY, topEdge, bottomEdge);
-            var direction = ResolveMountDirection(record);
+            var size = Mathf.Clamp(5f + record.barrels * 0.7f, 5f, 11f) * settings.weaponScale * 2f;
+            var submerged = IsSubmergedTorpedoRecord(record);
+            var direction = submerged
+                ? GetSubmergedMountOutwardDirection(record.mountLocation, ResolveMountDirection(record))
+                : ResolveMountDirection(record);
+            var positions = submerged
+                ? ResolveSubmergedTorpedoPositions(record, size, shipRect, centerY, topEdge, bottomEdge, direction)
+                : ResolveMountPositions(record.mountLocation, record.mounts, size, shipRect, centerY, topEdge, bottomEdge);
             foreach (var pos in positions)
             {
-                DrawTorpedoMount(canvas, pos, direction, record.barrels, size, record.trainable, palette.mountFill, palette.hullOutline, palette.detailFill);
+                DrawTorpedoMount(canvas, pos, direction, record.barrels, size, submerged ? false : record.trainable, palette.mountFill, palette.hullOutline, palette.detailFill);
             }
         }
     }
@@ -625,6 +648,51 @@ public static class ShipClassPlaceholderImageRenderer
         return positions;
     }
 
+    static bool IsSubmergedTorpedoRecord(MountLocationRecord record)
+    {
+        if (record.mountArcs == null || record.mountArcs.Count == 0)
+            return false;
+
+        return record.mountArcs.All(arc => arc.CoverageDeg <= 30f);
+    }
+
+    static List<Vector2> ResolveSubmergedTorpedoPositions(MountLocationRecord record, float symbolSize, Rect shipRect, float centerY, float[] topEdge, float[] bottomEdge, Vector2 direction)
+    {
+        var outward = GetSubmergedMountOutwardDirection(record.mountLocation, direction);
+        var positions = new List<Vector2>();
+        var count = Mathf.Max(1, record.mounts);
+        var alongHull = new Vector2(-outward.y, outward.x);
+        var spacing = symbolSize * 0.9f;
+        var exposure = symbolSize * 0.58f;
+        var anchor = GetAnchor(record.mountLocation);
+
+        for (var i = 0; i < count; i++)
+        {
+            var offset = count <= 1 ? 0f : (i - (count - 1) / 2f) * spacing;
+            float x;
+            float y;
+
+            if (Mathf.Abs(outward.x) > 0.5f)
+            {
+                x = outward.x > 0 ? shipRect.xMax + exposure : shipRect.xMin - exposure;
+                y = centerY;
+            }
+            else
+            {
+                x = shipRect.xMin + shipRect.width * anchor.x;
+                var hullY = outward.y < 0
+                    ? topEdge[Mathf.Clamp(Mathf.RoundToInt(x), 0, topEdge.Length - 1)]
+                    : bottomEdge[Mathf.Clamp(Mathf.RoundToInt(x), 0, bottomEdge.Length - 1)];
+                y = hullY + outward.y * exposure;
+            }
+
+            var pos = new Vector2(x, y) + alongHull * offset;
+            positions.Add(pos);
+        }
+
+        return positions;
+    }
+
     static float EvaluateBatteryGlyphSize(float shellSizeInch)
     {
         if (shellSizeInch <= 0)
@@ -654,10 +722,30 @@ public static class ShipClassPlaceholderImageRenderer
         };
     }
 
+    static Vector2 GetSubmergedMountOutwardDirection(MountLocation location, Vector2 fallbackDirection)
+    {
+        return location switch
+        {
+            MountLocation.Forward => Vector2.right,
+            MountLocation.After => Vector2.left,
+            MountLocation.PortForward => Vector2.up,
+            MountLocation.PortMidship => Vector2.up,
+            MountLocation.PortAfter => Vector2.up,
+            MountLocation.StarboardForward => Vector2.down,
+            MountLocation.StarboardMidship => Vector2.down,
+            MountLocation.StarboardAfter => Vector2.down,
+            _ => Mathf.Abs(fallbackDirection.x) >= Mathf.Abs(fallbackDirection.y)
+                ? new Vector2(Mathf.Sign(fallbackDirection.x), 0f)
+                : new Vector2(0f, Mathf.Sign(fallbackDirection.y))
+        };
+    }
+
     static void DrawGunMount(PixelCanvas canvas, Vector2 pos, Vector2 direction, int barrels, float size, int lineWidth, Color32 fill, Color32 outline, Color32 detailFill)
     {
-        var bodyLength = size * 1.25f;
-        var bodyWidth = Mathf.Max(4f, size * 0.85f);
+        var lines = Mathf.Clamp(barrels, 1, 4);
+        var footprintSize = size * (1f + 0.3f * (lines - 1));
+        var bodyLength = footprintSize * 1.25f;
+        var bodyWidth = Mathf.Max(4f, footprintSize * 0.85f);
         var perpendicular = new Vector2(-direction.y, direction.x);
         var front = pos + direction * (bodyLength * 0.42f);
         var rear = pos - direction * (bodyLength * 0.36f);
@@ -667,13 +755,14 @@ public static class ShipClassPlaceholderImageRenderer
         canvas.FillEllipse(front, bodyWidth * 0.48f, bodyWidth * 0.48f, fill);
         canvas.FillEllipse(rear, bodyWidth * 0.38f, bodyWidth * 0.32f, detailFill);
 
-        var lines = Mathf.Clamp(barrels, 1, 4);
+        var barrelSpacing = Mathf.Min(bodyWidth * 0.28f, footprintSize * 0.24f + 0.45f);
+        var barrelThickness = Mathf.Max(Mathf.Max(2, lineWidth + 1), Mathf.RoundToInt(size * 0.18f));
         for (var i = 0; i < lines; i++)
         {
-            var spread = lines == 1 ? 0f : Mathf.Lerp(-bodyWidth * 0.58f, bodyWidth * 0.58f, i / (float)(lines - 1));
+            var spread = lines == 1 ? 0f : (i - (lines - 1) / 2f) * barrelSpacing;
             var from = front + perpendicular * spread;
             var to = from + direction * (size + 6f);
-            canvas.DrawLine(from, to, Mathf.Max(1, lineWidth - 1), outline);
+            canvas.DrawLine(from, to, barrelThickness, outline);
         }
 
         canvas.DrawLine(rear, front, 1, outline);
@@ -681,19 +770,24 @@ public static class ShipClassPlaceholderImageRenderer
 
     static void DrawTorpedoMount(PixelCanvas canvas, Vector2 pos, Vector2 direction, int barrels, float size, bool trainable, Color32 fill, Color32 outline, Color32 detailFill)
     {
-        var along = direction;
+        var along = direction.sqrMagnitude < 0.0001f ? Vector2.right : direction.normalized;
         var perp = new Vector2(-along.y, along.x);
         var halfLength = size;
         var halfWidth = Mathf.Max(2f, size * (trainable ? 0.34f : 0.25f));
-        var baseRect = trainable
-            ? new Rect(pos.x - halfLength * 0.45f, pos.y - halfLength * 0.45f, halfLength * 0.9f, halfLength * 0.9f)
-            : new Rect(pos.x - halfLength * 0.55f, pos.y - halfWidth * 1.6f, halfLength * 1.1f, halfWidth * 3.2f);
-        canvas.FillRect(new RectInt(Mathf.RoundToInt(baseRect.x), Mathf.RoundToInt(baseRect.y), Mathf.RoundToInt(baseRect.width), Mathf.RoundToInt(baseRect.height)), detailFill);
-        canvas.DrawRectOutline(baseRect, 1, outline);
+        var bodyStart = pos - along * halfLength;
+        var bodyEnd = pos + along * halfLength;
+        var outlineThickness = Mathf.Max(2, Mathf.RoundToInt(halfWidth * 2f + 2f));
+        var fillThickness = Mathf.Max(1, Mathf.RoundToInt(halfWidth * 2f - 1f));
 
-        var rect = new Rect(pos.x - halfLength, pos.y - halfWidth, halfLength * 2f, halfWidth * 2f);
-        canvas.FillRect(new RectInt(Mathf.RoundToInt(rect.x), Mathf.RoundToInt(rect.y), Mathf.RoundToInt(rect.width), Mathf.RoundToInt(rect.height)), fill);
-        canvas.DrawRectOutline(rect, 1, outline);
+        if (trainable)
+        {
+            canvas.FillEllipse(pos, halfLength * 0.55f, halfLength * 0.55f, detailFill);
+            canvas.DrawLine(pos, pos, Mathf.Max(1, Mathf.RoundToInt(halfLength * 1.1f)), outline);
+            canvas.FillEllipse(pos, halfLength * 0.36f, halfLength * 0.36f, detailFill);
+        }
+
+        canvas.DrawLine(bodyStart, bodyEnd, outlineThickness, outline);
+        canvas.DrawLine(bodyStart, bodyEnd, fillThickness, fill);
 
         var tubes = Mathf.Clamp(barrels, 1, 4);
         for (var i = 0; i < tubes; i++)
@@ -806,24 +900,9 @@ public static class ShipClassPlaceholderImageRenderer
     static float EvaluateHalfBreadth(float t, HullProfile profile, ShipClassPlaceholderImageRenderSettings settings)
     {
         t = Mathf.Clamp01(t);
-        var bowLength = Mathf.Clamp01(profile.bowSection * 1.55f);
-        var sternLength = Mathf.Clamp01((1f - profile.sternSection) * 0.60f);
-
-        // Right/starboard is the bow in this renderer. Use a smoothed bow taper so the forebody
-        // stays narrow for longer but still reads as a convex fair curve instead of a straight run.
-        var bowT = Mathf.Clamp01(t / Mathf.Max(0.001f, bowLength));
-        var bowCurve = SmootherStep01(bowT);
-        var bowFactor = Mathf.Pow(bowCurve, settings.bowSharpness * 1.2f);
-
-        // Use a shorter, fuller stern taper with the same smooth easing so the aft body rounds off
-        // without looking faceted or composed from separate straight sections.
-        var sternT = Mathf.Clamp01((1f - t) / Mathf.Max(0.001f, sternLength));
-        var sternCurve = SmootherStep01(sternT);
-        var sternBlend = Mathf.Pow(sternCurve, 1f / Mathf.Max(0.001f, settings.sternFullness * 1.35f));
-        var sternFactor = Mathf.Lerp(profile.sternTipScale, 1f, sternBlend);
-
-        var fairness = 0.965f + 0.035f * Mathf.Sin(t * Mathf.PI);
-        return profile.maxBeamScale * bowFactor * sternFactor * fairness;
+        // Keep the placeholder hull easy to reason about: symmetric fore/aft with a simple
+        // sinusoidal half-breadth curve. This gives zero width at both ends and max beam amidships.
+        return profile.maxBeamScale * Mathf.Sin(t * Mathf.PI);
     }
 
     static float SmootherStep01(float t)
@@ -872,33 +951,33 @@ public static class ShipClassPlaceholderImageRenderer
         {
             RenderVariant.TopJpg => new RenderPalette
             {
-                background = new Color32(244, 241, 233, 255),
-                hullFill = new Color32(145, 145, 145, 255),
+                background = new Color32(255, 255, 255, 255),
+                hullFill = new Color32(255, 255, 255, 255),
                 hullOutline = new Color32(28, 28, 28, 255),
-                interiorLine = new Color32(72, 72, 72, 255),
-                detailFill = new Color32(110, 110, 110, 255),
+                interiorLine = new Color32(0, 0, 0, 255),
+                detailFill = new Color32(255, 255, 255, 255),
                 mountFill = new Color32(36, 36, 36, 255),
-                rapidFire = new Color32(55, 55, 55, 255),
+                rapidFire = new Color32(0, 0, 0, 255),
             },
             RenderVariant.IconPng => new RenderPalette
             {
                 background = new Color32(0, 0, 0, 0),
-                hullFill = new Color32(48, 48, 48, 255),
+                hullFill = new Color32(255, 255, 255, 255),
                 hullOutline = new Color32(0, 0, 0, 255),
-                interiorLine = new Color32(80, 80, 80, 255),
-                detailFill = new Color32(32, 32, 32, 255),
+                interiorLine = new Color32(0, 0, 0, 255),
+                detailFill = new Color32(255, 255, 255, 255),
                 mountFill = new Color32(0, 0, 0, 255),
-                rapidFire = new Color32(24, 24, 24, 255),
+                rapidFire = new Color32(0, 0, 0, 255),
             },
             _ => new RenderPalette
             {
                 background = new Color32(0, 0, 0, 0),
-                hullFill = new Color32(35, 35, 35, (byte)settings.fillAlpha),
+                hullFill = new Color32(255, 255, 255, 255),
                 hullOutline = new Color32(0, 0, 0, 255),
-                interiorLine = new Color32(90, 90, 90, 230),
-                detailFill = new Color32(55, 55, 55, 220),
+                interiorLine = new Color32(0, 0, 0, 230),
+                detailFill = new Color32(255, 255, 255, 220),
                 mountFill = new Color32(0, 0, 0, 255),
-                rapidFire = new Color32(40, 40, 40, 220),
+                rapidFire = new Color32(0, 0, 0, 220),
             }
         };
     }

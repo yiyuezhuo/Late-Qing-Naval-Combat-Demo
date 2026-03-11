@@ -25,11 +25,6 @@
                             <ui:DataBinding property="value" data-source-path="lineWidth" binding-mode="TwoWay"/>
                         </Bindings>
                     </ui:IntegerField>
-                    <ui:IntegerField label="Preview Fill Alpha">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="fillAlpha" binding-mode="TwoWay"/>
-                        </Bindings>
-                    </ui:IntegerField>
                     <ui:IntegerField label="Deck Inset">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="deckInsetAmount" binding-mode="TwoWay"/>

@@ -16,8 +16,8 @@
     <namedShipObjectId>63b7b57c-04c4-434a-a1d1-7fb4736177a6</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>38.52451</LatDeg>
-     <LonDeg>121.680466</LonDeg>
+     <LatDeg>38.5159645</LatDeg>
+     <LonDeg>121.650848</LonDeg>
     </position>
     <speedKnots>15</speedKnots>
     <headingDeg>250</headingDeg>
@@ -394,8 +394,8 @@
     <namedShipObjectId>21e58347-3a97-41bb-9e62-3c4b62d2ac4d</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>38.5259171</LatDeg>
-     <LonDeg>121.685394</LonDeg>
+     <LatDeg>38.5173721</LatDeg>
+     <LonDeg>121.655777</LonDeg>
     </position>
     <speedKnots>15</speedKnots>
     <headingDeg>250</headingDeg>
@@ -773,8 +773,8 @@
     <namedShipObjectId>3d1826af-bc7a-4d6e-b1db-3ee554ae6396</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>38.5273247</LatDeg>
-     <LonDeg>121.690323</LonDeg>
+     <LatDeg>38.51878</LatDeg>
+     <LonDeg>121.660706</LonDeg>
     </position>
     <speedKnots>15</speedKnots>
     <headingDeg>250</headingDeg>
@@ -1125,8 +1125,8 @@
     <namedShipObjectId>d1e103ca-ba50-4d30-af58-fc9f226a7c34</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>38.5287323</LatDeg>
-     <LonDeg>121.695251</LonDeg>
+     <LatDeg>38.5201874</LatDeg>
+     <LonDeg>121.665634</LonDeg>
     </position>
     <speedKnots>15</speedKnots>
     <headingDeg>250</headingDeg>
@@ -1513,8 +1513,8 @@
     <namedShipObjectId>68a5becf-73ad-4263-ad2d-7be24831ebb9</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>38.53014</LatDeg>
-     <LonDeg>121.70018</LonDeg>
+     <LatDeg>38.521595</LatDeg>
+     <LonDeg>121.670563</LonDeg>
     </position>
     <speedKnots>15</speedKnots>
     <headingDeg>250</headingDeg>
@@ -1907,8 +1907,8 @@
     <namedShipObjectId>362b20c0-c7d3-4635-b936-833659468d3b</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>38.5315475</LatDeg>
-     <LonDeg>121.705109</LonDeg>
+     <LatDeg>38.5230026</LatDeg>
+     <LonDeg>121.675491</LonDeg>
     </position>
     <speedKnots>15</speedKnots>
     <headingDeg>250</headingDeg>
@@ -2417,8 +2417,8 @@
    </ShipGroup>
   </shipGroups>
   <scenarioState>
-   <dateTime>1904-08-10T04:45:00Z</dateTime>
-   <beginDateTime>1904-08-10T04:45:00Z</beginDateTime>
+   <dateTime>1904-08-10T04:53:00Z</dateTime>
+   <beginDateTime>1904-08-10T04:53:00Z</beginDateTime>
    <visibility>ExceptionallyClear</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
@@ -2440,7 +2440,7 @@
    <firstRemainOneOperationalFleet>false</firstRemainOneOperationalFleet>
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
-   <hasEndDateTime>true</hasEndDateTime>
+   <hasEndDateTime>false</hasEndDateTime>
    <endDateTime>1904-08-10T06:45:00Z</endDateTime>
    <backgroundPictureReference>
     <isBuiltin>false</isBuiltin>
@@ -2460,8 +2460,8 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>38.5257568</xRotation>
-  <yRotation>238.310638</yRotation>
+  <xRotation>38.5198479</xRotation>
+  <yRotation>238.329651</yRotation>
   <orthographicSize>10</orthographicSize>
  </viewState>
  <eventState>

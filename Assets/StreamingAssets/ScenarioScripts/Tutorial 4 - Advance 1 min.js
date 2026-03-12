@@ -16,7 +16,7 @@ else if (tutorial4Phase === Tutorial4Phase.WaitingForAiReverseChain) {
         let tutorial4NewRoot = tutorial4AiFlagship.GetControlRoot();
         NavalGameState.Instance.ApplyFollowFormation(tutorial4NewRoot, tutorial4FollowDistanceYards);
         let tutorial4NewLeader = NavalGameState.Instance.shipLogs[NavalGameState.Instance.shipLogs.Count - 1];
-        tutorial4NewLeader.desiredHeadingDeg = 90;
+        tutorial4NewLeader.desiredHeadingDeg = 60;
         tutorial4AiReverseMinute = tutorial4ElapsedMinutes;
         tutorial4Phase = Tutorial4Phase.WaitingForAiExplanation;
     }

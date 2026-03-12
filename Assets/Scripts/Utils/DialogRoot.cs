@@ -1159,8 +1159,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         var model = new PlotTrajectoryViewModel()
         {
             shipLogObjectId = shipLog.objectId,
-            // color = shipLog.shipClass.country == Country.China ? Color.red : Color.blue,
-            color = shipLog.shipClass.country == Country.Japan ? Color.blue : Color.red, // support Russo-Japanese War scenario
+            color = GetDefaultTrajectoryColor(shipLog),
         };
 
         var tempDialog = new TempDialog()
@@ -1178,6 +1177,13 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         };
 
         tempDialog.Popup();
+    }
+
+    public static Color GetDefaultTrajectoryColor(ShipLog shipLog)
+    {
+        if (shipLog?.shipClass?.country == Country.Japan)
+            return Color.blue;
+        return Color.red;
     }
 
     public void PopupBatteryArcIndicatorDialog(ShipClass shipClass)

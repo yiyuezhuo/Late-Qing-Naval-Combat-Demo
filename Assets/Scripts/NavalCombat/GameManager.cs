@@ -2655,6 +2655,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         // }
     }
 
+    public void PlotAllShipTrajectories(bool plotTimestamp, int timestampIntervalMinutes = 15)
+    {
+        ClearShipLogTrajectories();
+        foreach (var shipLog in NavalGameState.Instance.shipLogsOnMapOrDestroyed.Where(s => s.timeLocLogs != null && s.timeLocLogs.Count > 1))
+        {
+            PlotShipLogTrajectory(shipLog, DialogRoot.GetDefaultTrajectoryColor(shipLog), plotTimestamp, timestampIntervalMinutes);
+        }
+    }
+
     public IEnumerable<ShipLog> GetShipsRequiringFiringLineRendering()
     {
         if (selectedShipLog == null || selectedShipLog.mapState != MapState.Deployed)

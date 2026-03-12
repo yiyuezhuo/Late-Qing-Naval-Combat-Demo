@@ -22,6 +22,7 @@ public class ScriptEngine
 
         engine.SetValue("log", new Action<object>(msg => OnLog(msg)));
         engine.SetValue("NavalGameState", TypeReference.CreateTypeReference<NavalGameState>(engine));
+        engine.SetValue("GameManager", TypeReference.CreateTypeReference<GameManager>(engine));
         engine.SetValue("msgBox", new Action<object>(Msg));
         engine.SetValue("msgBoxDelay", new Action<object, object>(MsgDelay));
         engine.SetValue("getShipLogByName", new Func<object, object>(GetShipLogByName));
@@ -167,7 +168,11 @@ public class ScriptEngine
     public void OnJSError(JavaScriptException ex)
     {
         onJSError?.Invoke(this, ex);
-        // Debug.LogWarning(ex);
+        if (onJSError == null) // if no handler (for example, JS Console will fetch and output it) then rethrow to avoid silent failure
+        {
+            throw ex;
+        }
+        // Debug.LogError(ex);
         // outputTextField.SetValueWithoutNotify(outputTextField.value + "[Error]: " + ex + "\n");
     }
 

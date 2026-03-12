@@ -1820,7 +1820,7 @@
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
-    <emergencyRudder>false</emergencyRudder>
+    <emergencyRudder>true</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
     <followedTargetObjectId>98e1e224-b41c-46f7-bfc2-175d9529e554</followedTargetObjectId>
@@ -2192,7 +2192,7 @@
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
-    <emergencyRudder>false</emergencyRudder>
+    <emergencyRudder>true</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
     <followedTargetObjectId>bc460f10-9d7b-47af-8c0d-932d2a94da1d</followedTargetObjectId>
@@ -2445,7 +2445,7 @@
    <backgroundPictureReference>
     <isBuiltin>false</isBuiltin>
    </backgroundPictureReference>
-   <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>
+   <disableFirstRemainOneOperationalFleetPrompt>true</disableFirstRemainOneOperationalFleetPrompt>
    <locationLabels>
     <LocationLabel latitude="38.566452" longitude="121.665955">
      <name>

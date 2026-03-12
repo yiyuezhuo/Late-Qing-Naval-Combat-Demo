@@ -18,22 +18,6 @@ public class TopTabs : SingletonDocument<TopTabs>
 {
     DropdownField playerDropdownField;
 
-    struct ControlChainEdge
-    {
-        public ShipLog controlledShip;
-        public ShipLog targetShip;
-        public ControlMode controlMode;
-        public float distanceYards;
-        public float azimuthDeg;
-        public bool relativeToAbsolute;
-    }
-
-    static readonly Dictionary<ControlMode, int> formationControlModePriority = new()
-    {
-        { ControlMode.FollowTarget, -2 },
-        { ControlMode.RelativeToTarget, -1 },
-    };
-
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
     protected override void Awake()
@@ -471,144 +455,10 @@ public class TopTabs : SingletonDocument<TopTabs>
 
     void ReverseControlChain()
     {
-        if (!TryBuildReversibleControlChain(out var chain, out var message))
+        if (!NavalGameState.Instance.TryReverseControlChain(GameManager.Instance.selectedShipLog, out var message))
         {
             DialogRoot.Instance.PopupMessageDialog(message);
-            return;
         }
-
-        var reversedEdges = new List<ControlChainEdge>();
-        for (var i = 0; i < chain.Count - 1; i++)
-        {
-            var parent = chain[i];
-            var child = chain[i + 1];
-            reversedEdges.Add(CreateReversedEdge(parent, child));
-        }
-
-        foreach (var edge in reversedEdges)
-        {
-            ApplyControlChainEdge(edge);
-        }
-
-        SetIndependentControl(chain[^1]);
-    }
-
-    bool TryBuildReversibleControlChain(out List<ShipLog> chain, out string message)
-    {
-        chain = null;
-
-        var rootShip = GameManager.Instance.selectedShipLog;
-        if (rootShip == null)
-        {
-            message = "No ship is selected.";
-            return false;
-        }
-
-        if (rootShip.GetEffectiveControlMode() != ControlMode.Independent)
-        {
-            message = "Reverse Control Chain requires the selected ship to be an independent unit.";
-            return false;
-        }
-
-        var childrenMap = NavalGameState.Instance.shipLogsOnMap
-            .Where(ship => ship.GetEffectiveControlMode() != ControlMode.Independent)
-            .GroupBy(ship => ship.GetControlPredecessorOnMap())
-            .Where(group => group.Key != null)
-            .ToDictionary(group => group.Key, group => group.ToList());
-
-        if (!childrenMap.TryGetValue(rootShip, out var rootChildren) || rootChildren.Count == 0)
-        {
-            message = "The selected ship does not control any units, so there is no control chain to reverse.";
-            return false;
-        }
-
-        chain = new List<ShipLog>() { rootShip };
-        var visited = new HashSet<string>() { rootShip.objectId };
-        var current = rootShip;
-
-        while (true)
-        {
-            if (!childrenMap.TryGetValue(current, out var children) || children.Count == 0)
-            {
-                message = null;
-                return true;
-            }
-
-            if (children.Count > 1)
-            {
-                message = $"Control chain cannot be reversed because {current.GetMemberName()} controls multiple units.";
-                chain = null;
-                return false;
-            }
-
-            var next = children[0];
-            if (!visited.Add(next.objectId))
-            {
-                message = "Control chain cannot be reversed because a control loop was detected.";
-                chain = null;
-                return false;
-            }
-
-            chain.Add(next);
-            current = next;
-        }
-    }
-
-    ControlChainEdge CreateReversedEdge(ShipLog parent, ShipLog child)
-    {
-        switch (child.GetEffectiveControlMode())
-        {
-            case ControlMode.FollowTarget:
-                return new ControlChainEdge()
-                {
-                    controlledShip = parent,
-                    targetShip = child,
-                    controlMode = ControlMode.FollowTarget,
-                    distanceYards = child.followDistanceYards,
-                };
-            case ControlMode.RelativeToTarget:
-                return new ControlChainEdge()
-                {
-                    controlledShip = parent,
-                    targetShip = child,
-                    controlMode = ControlMode.RelativeToTarget,
-                    distanceYards = child.relativeToTargetDistanceYards,
-                    azimuthDeg = child.relativeToAbsolute
-                        ? MeasureUtils.NormalizeAngle(child.relativeToTargetAzimuth + 180f)
-                        : MeasureUtils.NormalizeAngle(parent.headingDeg + child.relativeToTargetAzimuth + 180f - child.headingDeg),
-                    relativeToAbsolute = child.relativeToAbsolute,
-                };
-            default:
-                throw new InvalidOperationException($"Unsupported control mode in chain reversal: {child.GetEffectiveControlMode()}");
-        }
-    }
-
-    void ApplyControlChainEdge(ControlChainEdge edge)
-    {
-        switch (edge.controlMode)
-        {
-            case ControlMode.FollowTarget:
-                edge.controlledShip.controlMode = ControlMode.FollowTarget;
-                edge.controlledShip.followedTargetObjectId = edge.targetShip.objectId;
-                edge.controlledShip.followDistanceYards = edge.distanceYards;
-                edge.controlledShip.relativeTargetObjectId = null;
-                break;
-            case ControlMode.RelativeToTarget:
-                edge.controlledShip.controlMode = ControlMode.RelativeToTarget;
-                edge.controlledShip.relativeTargetObjectId = edge.targetShip.objectId;
-                edge.controlledShip.relativeToTargetDistanceYards = edge.distanceYards;
-                edge.controlledShip.relativeToTargetAzimuth = MeasureUtils.NormalizeAngle(edge.azimuthDeg);
-                edge.controlledShip.relativeToAbsolute = edge.relativeToAbsolute;
-                edge.controlledShip.followedTargetObjectId = null;
-                break;
-        }
-    }
-
-    void SetIndependentControl(ShipLog ship)
-    {
-        ship.controlMode = ControlMode.Independent;
-        ship.followedTargetObjectId = null;
-        ship.relativeTargetObjectId = null;
     }
 
     void GoToRelativeFormation()
@@ -617,22 +467,9 @@ public class TopTabs : SingletonDocument<TopTabs>
         if (anchorShip == null)
             return;
 
-        var controlTree = BuildFormationControlTree(anchorShip);
-        if (controlTree.edges.Count == 0)
-            return;
-
         DialogRoot.Instance.PopupRelativeFormationDialog(model =>
         {
-            switch (model.mode)
-            {
-                case RelativeFormationMode.KeepCurrentPosition:
-                    ApplyKeepCurrentRelativeFormation(controlTree.edges, model.absolute);
-                    break;
-                case RelativeFormationMode.LineAbreast:
-                case RelativeFormationMode.LineOfBearing:
-                    ApplyPatternRelativeFormation(anchorShip, controlTree.childrenMap, controlTree.oobOrderIndex, model);
-                    break;
-            }
+            NavalGameState.Instance.ApplyRelativeFormation(anchorShip, model);
         });
     }
 
@@ -642,188 +479,10 @@ public class TopTabs : SingletonDocument<TopTabs>
         if (anchorShip == null)
             return;
 
-        var controlTree = BuildFormationControlTree(anchorShip);
-        if (controlTree.edges.Count == 0)
-            return;
-
         DialogRoot.Instance.PopupFollowFormationDialog(followDistanceYards =>
         {
-            var chain = FlattenFormationTreeForFollow(anchorShip, controlTree.childrenMap, controlTree.oobOrderIndex);
-            var previousShip = anchorShip;
-            foreach (var ship in chain)
-            {
-                ship.controlMode = ControlMode.FollowTarget;
-                ship.followedTargetObjectId = previousShip.objectId;
-                ship.followDistanceYards = followDistanceYards;
-                ship.relativeTargetObjectId = null;
-                previousShip = ship;
-            }
+            NavalGameState.Instance.ApplyFollowFormation(anchorShip, followDistanceYards);
         });
-    }
-
-    (List<(ShipLog parent, ShipLog child)> edges, Dictionary<ShipLog, List<ShipLog>> childrenMap, Dictionary<string, int> oobOrderIndex) BuildFormationControlTree(ShipLog anchorShip)
-    {
-        var allShips = NavalGameState.Instance.shipLogsOnMap.ToList();
-        var predecessorToChildren = allShips
-            .Where(ship => ship != anchorShip)
-            .GroupBy(ship => ship.GetControlPredecessor())
-            .Where(group => group.Key != null)
-            .ToDictionary(group => group.Key, group => group.ToList());
-
-        var edges = new List<(ShipLog parent, ShipLog child)>();
-        var childrenMap = new Dictionary<ShipLog, List<ShipLog>>();
-        var visited = new HashSet<string>() { anchorShip.objectId };
-        var queue = new Queue<ShipLog>();
-        queue.Enqueue(anchorShip);
-
-        while (queue.Count > 0)
-        {
-            var parent = queue.Dequeue();
-            if (!predecessorToChildren.TryGetValue(parent, out var directChildren))
-                continue;
-
-            childrenMap[parent] = directChildren;
-            foreach (var child in directChildren)
-            {
-                if (!visited.Add(child.objectId))
-                    continue;
-
-                edges.Add((parent, child));
-                queue.Enqueue(child);
-            }
-        }
-
-        return (edges, childrenMap, BuildOobOrderIndex(anchorShip));
-    }
-
-    Dictionary<string, int> BuildOobOrderIndex(ShipLog anchorShip)
-    {
-        var oobOrderIndex = new Dictionary<string, int>();
-        var rootParent = ((IShipGroupMember)anchorShip).GetRootParent();
-        var nextIndex = 0;
-
-        void Visit(IShipGroupMember member)
-        {
-            if (member == null)
-                return;
-
-            oobOrderIndex[member.objectId] = nextIndex++;
-            if (member is ShipGroup shipGroup)
-            {
-                foreach (var child in shipGroup.GetChildren())
-                {
-                    Visit(child);
-                }
-            }
-        }
-
-        Visit(rootParent);
-        return oobOrderIndex;
-    }
-
-    List<ShipLog> FlattenFormationTreeForFollow(
-        ShipLog parent,
-        Dictionary<ShipLog, List<ShipLog>> childrenMap,
-        Dictionary<string, int> oobOrderIndex)
-    {
-        var orderedChildren = GetOrderedFormationChildren(parent, childrenMap, oobOrderIndex);
-        var result = new List<ShipLog>();
-        foreach (var child in orderedChildren)
-        {
-            result.Add(child);
-            result.AddRange(FlattenFormationTreeForFollow(child, childrenMap, oobOrderIndex));
-        }
-        return result;
-    }
-
-    List<ShipLog> GetOrderedFormationChildren(
-        ShipLog parent,
-        Dictionary<ShipLog, List<ShipLog>> childrenMap,
-        Dictionary<string, int> oobOrderIndex)
-    {
-        if (!childrenMap.TryGetValue(parent, out var children))
-            return new List<ShipLog>();
-
-        return children
-            .OrderBy(ship => formationControlModePriority.GetValueOrDefault(ship.controlMode, 0))
-            .ThenBy(ship => oobOrderIndex.GetValueOrDefault(ship.objectId, int.MaxValue))
-            .ToList();
-    }
-
-    void ApplyKeepCurrentRelativeFormation(List<(ShipLog parent, ShipLog child)> edges, bool absolute)
-    {
-        foreach (var edge in edges)
-        {
-            Geodesic.WGS84.Inverse(
-                edge.parent.position.LatDeg,
-                edge.parent.position.LonDeg,
-                edge.child.position.LatDeg,
-                edge.child.position.LonDeg,
-                out var distanceM,
-                out var azimuthDeg,
-                out _
-            );
-
-            edge.child.relativeTargetObjectId = edge.parent.objectId;
-            edge.child.relativeToTargetDistanceYards = (float)distanceM * MeasureUtils.meterToYard;
-            edge.child.relativeToTargetAzimuth = absolute
-                ? MeasureUtils.NormalizeAngle((float)azimuthDeg)
-                : MeasureUtils.NormalizeAngle((float)azimuthDeg - edge.parent.headingDeg);
-            edge.child.relativeToAbsolute = absolute;
-            edge.child.followedTargetObjectId = null;
-            edge.child.controlMode = ControlMode.RelativeToTarget;
-        }
-    }
-
-    void ApplyPatternRelativeFormation(
-        ShipLog anchorShip,
-        Dictionary<ShipLog, List<ShipLog>> childrenMap,
-        Dictionary<string, int> oobOrderIndex,
-        RelativeFormationDialogModel model)
-    {
-        var chain = FlattenFormationTreeForFollow(anchorShip, childrenMap, oobOrderIndex);
-        if (chain.Count == 0)
-            return;
-
-        if (!model.isSymmetric)
-        {
-            ShipLog previousShip = anchorShip;
-            foreach (var ship in chain)
-            {
-                SetRelativeFormationLink(ship, previousShip, model.distanceYards, model.angleDeg, model.absolute);
-                previousShip = ship;
-            }
-            return;
-        }
-
-        ShipLog rightPreviousShip = anchorShip;
-        ShipLog leftPreviousShip = anchorShip;
-        var mirroredAngle = MeasureUtils.NormalizeAngle(360f - model.angleDeg);
-
-        for (var i = 0; i < chain.Count; i++)
-        {
-            var ship = chain[i];
-            if (i % 2 == 0)
-            {
-                SetRelativeFormationLink(ship, rightPreviousShip, model.distanceYards, model.angleDeg, model.absolute);
-                rightPreviousShip = ship;
-            }
-            else
-            {
-                SetRelativeFormationLink(ship, leftPreviousShip, model.distanceYards, mirroredAngle, model.absolute);
-                leftPreviousShip = ship;
-            }
-        }
-    }
-
-    void SetRelativeFormationLink(ShipLog ship, ShipLog targetShip, float distanceYards, float azimuthDeg, bool absolute)
-    {
-        ship.controlMode = ControlMode.RelativeToTarget;
-        ship.relativeTargetObjectId = targetShip.objectId;
-        ship.relativeToTargetDistanceYards = distanceYards;
-        ship.relativeToTargetAzimuth = MeasureUtils.NormalizeAngle(azimuthDeg);
-        ship.relativeToAbsolute = absolute;
-        ship.followedTargetObjectId = null;
     }
 
     void OnFullStateXMLLoaded(string text)

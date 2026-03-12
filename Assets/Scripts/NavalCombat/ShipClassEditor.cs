@@ -253,7 +253,7 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
             }
 
             DialogRoot.Instance.PopupConfirmDialog(
-                $"Generate placeholder images for {count} ship class? If confirm, {count} x 2 images would be generated in the game folder and binding would be reset to those image",
+                $"Generate placeholder images for {count} ship class? If confirm, {count} x 2 images would be generated in the game folder and binding would be reset to those image.\n\n Warning: This will modify files in the disk.",
                 () =>
                 {
                     var result = ShipClassPlaceholderImageGenerator.GenerateAndBindAllMarked(placeholders);

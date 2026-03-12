@@ -100,6 +100,9 @@ public class BuildProcessor : IPreprocessBuildWithReport
             var rightTagIdx = GetTagIndex(right);
             if(leftTagIdx != rightTagIdx)
                 return leftTagIdx.CompareTo(rightTagIdx);
+
+            if (leftTagIdx == tagOrderList.IndexOf("TT"))
+                return left.CompareTo(right);
             
             var leftDateTime = subPathToFullState[left].navalGameState.scenarioState.dateTime;
             var rightDateTime = subPathToFullState[right].navalGameState.scenarioState.dateTime;

@@ -2561,6 +2561,18 @@ MonoBehaviour:
     m_Key: Symmetric
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000009
+    m_Key: Disable Damage In Reset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000010
+    m_Key: Generate Pre-scenario Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000011
+    m_Key: Reset Pre-scenario Damage
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -2643,6 +2643,18 @@ MonoBehaviour:
     m_Localized: Symmetric
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000009
+    m_Localized: Disable Damage In Reset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000010
+    m_Localized: Generate Pre-scenario Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000011
+    m_Localized: Reset Pre-scenario Damage
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

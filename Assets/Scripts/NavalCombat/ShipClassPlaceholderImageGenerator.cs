@@ -595,16 +595,16 @@ public static class ShipClassPlaceholderImageRenderer
     static readonly Dictionary<ShipType, HullProfile> HullProfiles = new()
     {
         { ShipType.Battleship, new HullProfile { bowSection = 0.22f, sternSection = 0.70f, maxBeamScale = 1f, sternTipScale = 0.18f, bridgeCenter = 0.31f, superstructureLength = 0.19f, deckhouseCenter = 0.73f } },
-        { ShipType.ArmoredCruiser, new HullProfile { bowSection = 0.23f, sternSection = 0.70f, maxBeamScale = 0.95f, sternTipScale = 0.16f, bridgeCenter = 0.32f, superstructureLength = 0.17f, deckhouseCenter = 0.72f } },
-        { ShipType.Cruiser, new HullProfile { bowSection = 0.26f, sternSection = 0.68f, maxBeamScale = 0.88f, sternTipScale = 0.12f, bridgeCenter = 0.33f, superstructureLength = 0.15f, deckhouseCenter = 0.70f } },
-        { ShipType.LightCruiser, new HullProfile { bowSection = 0.27f, sternSection = 0.67f, maxBeamScale = 0.84f, sternTipScale = 0.10f, bridgeCenter = 0.34f, superstructureLength = 0.14f, deckhouseCenter = 0.70f } },
-        { ShipType.Destroyer, new HullProfile { bowSection = 0.30f, sternSection = 0.63f, maxBeamScale = 0.70f, sternTipScale = 0.08f, bridgeCenter = 0.36f, superstructureLength = 0.10f, deckhouseCenter = 0.67f } },
-        { ShipType.TorpedoBoat, new HullProfile { bowSection = 0.31f, sternSection = 0.62f, maxBeamScale = 0.62f, sternTipScale = 0.07f, bridgeCenter = 0.38f, superstructureLength = 0.08f, deckhouseCenter = 0.64f } },
-        { ShipType.PatrolGunboat, new HullProfile { bowSection = 0.24f, sternSection = 0.74f, maxBeamScale = 0.92f, sternTipScale = 0.18f, bridgeCenter = 0.34f, superstructureLength = 0.13f, deckhouseCenter = 0.72f } },
-        { ShipType.Transport, new HullProfile { bowSection = 0.22f, sternSection = 0.76f, maxBeamScale = 1.08f, sternTipScale = 0.24f, bridgeCenter = 0.30f, superstructureLength = 0.16f, deckhouseCenter = 0.74f } },
-        { ShipType.Repair, new HullProfile { bowSection = 0.22f, sternSection = 0.76f, maxBeamScale = 1.05f, sternTipScale = 0.24f, bridgeCenter = 0.32f, superstructureLength = 0.16f, deckhouseCenter = 0.74f } },
-        { ShipType.ArmedMerchantCruiser, new HullProfile { bowSection = 0.24f, sternSection = 0.76f, maxBeamScale = 1.02f, sternTipScale = 0.22f, bridgeCenter = 0.31f, superstructureLength = 0.15f, deckhouseCenter = 0.73f } },
-        { ShipType.NotSpecified, new HullProfile { bowSection = 0.25f, sternSection = 0.72f, maxBeamScale = 0.90f, sternTipScale = 0.14f, bridgeCenter = 0.33f, superstructureLength = 0.14f, deckhouseCenter = 0.71f } },
+        { ShipType.ArmoredCruiser, new HullProfile { bowSection = 0.23f, sternSection = 0.70f, maxBeamScale = 1f, sternTipScale = 0.16f, bridgeCenter = 0.32f, superstructureLength = 0.17f, deckhouseCenter = 0.72f } },
+        { ShipType.Cruiser, new HullProfile { bowSection = 0.26f, sternSection = 0.68f, maxBeamScale = 1f, sternTipScale = 0.12f, bridgeCenter = 0.33f, superstructureLength = 0.15f, deckhouseCenter = 0.70f } },
+        { ShipType.LightCruiser, new HullProfile { bowSection = 0.27f, sternSection = 0.67f, maxBeamScale = 1f, sternTipScale = 0.10f, bridgeCenter = 0.34f, superstructureLength = 0.14f, deckhouseCenter = 0.70f } },
+        { ShipType.Destroyer, new HullProfile { bowSection = 0.30f, sternSection = 0.63f, maxBeamScale = 1f, sternTipScale = 0.08f, bridgeCenter = 0.36f, superstructureLength = 0.10f, deckhouseCenter = 0.67f } },
+        { ShipType.TorpedoBoat, new HullProfile { bowSection = 0.31f, sternSection = 0.62f, maxBeamScale = 1f, sternTipScale = 0.07f, bridgeCenter = 0.38f, superstructureLength = 0.08f, deckhouseCenter = 0.64f } },
+        { ShipType.PatrolGunboat, new HullProfile { bowSection = 0.24f, sternSection = 0.74f, maxBeamScale = 1f, sternTipScale = 0.18f, bridgeCenter = 0.34f, superstructureLength = 0.13f, deckhouseCenter = 0.72f } },
+        { ShipType.Transport, new HullProfile { bowSection = 0.22f, sternSection = 0.76f, maxBeamScale = 1f, sternTipScale = 0.24f, bridgeCenter = 0.30f, superstructureLength = 0.16f, deckhouseCenter = 0.74f } },
+        { ShipType.Repair, new HullProfile { bowSection = 0.22f, sternSection = 0.76f, maxBeamScale = 1f, sternTipScale = 0.24f, bridgeCenter = 0.32f, superstructureLength = 0.16f, deckhouseCenter = 0.74f } },
+        { ShipType.ArmedMerchantCruiser, new HullProfile { bowSection = 0.24f, sternSection = 0.76f, maxBeamScale = 1f, sternTipScale = 0.22f, bridgeCenter = 0.31f, superstructureLength = 0.15f, deckhouseCenter = 0.73f } },
+        { ShipType.NotSpecified, new HullProfile { bowSection = 0.25f, sternSection = 0.72f, maxBeamScale = 1f, sternTipScale = 0.14f, bridgeCenter = 0.33f, superstructureLength = 0.14f, deckhouseCenter = 0.71f } },
     };
 
     public static Texture2D Render(ShipClass shipClass, ShipClassPlaceholderImageRenderSettings settings, RenderVariant variant)

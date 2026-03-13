@@ -512,25 +512,23 @@
                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(171090770563072)"/>
                     </Bindings>
                 </ui:Tab>
-                <ui:Tab label="Time Loc">
+                <ui:Tab label="History">
                     <ui:VisualElement style="flex-grow: 1;">
-                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-shrink: 0;">
+                        <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
                             <ui:Button text="Plot Trajectory on Map" name="PlotTrajectoryOnMapButton">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172442062065664)"/>
                                 </Bindings>
                             </ui:Button>
+                            <ui:Button text="Show Time Loc Table" name="ShowTimeLocTableButton">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000014)"/>
+                                </Bindings>
+                            </ui:Button>
                         </ui:VisualElement>
-                        <ui:MultiColumnListView data-source-path="timeLocLogs" binding-source-selection-mode="AutoAssign">
-                            <ui:Columns>
-                                <ui:Column title="Time" name="time" width="33%" cell-template="project://database/Assets/UIDocuments/Templates/TimeLoc/TimeLocCellTime.uxml?fileID=9197481963319205126&amp;guid=f272e386b8ddfbf4c9178e49b02084db&amp;type=3#TimeLocCellTime" header-template="project://database/Assets/UIDocuments/Templates/TimeLoc/TimeLocCellTimeHeader.uxml?fileID=9197481963319205126&amp;guid=5c4c363441ad2b54c93db05968c917db&amp;type=3#TimeLocCellTimeHeader"/>
-                                <ui:Column name="lat" cell-template="project://database/Assets/UIDocuments/Templates/TimeLoc/TimeLocLatDeg.uxml?fileID=9197481963319205126&amp;guid=117edb5e87e300148893b7cbc050b5ec&amp;type=3#TimeLocLatDeg" width="33%" title="Lat" header-template="project://database/Assets/UIDocuments/Templates/TimeLoc/TimeLocLatDegHeader.uxml?fileID=9197481963319205126&amp;guid=d040544ba6388e74588a371900081e35&amp;type=3#TimeLocLatDegHeader"/>
-                                <ui:Column name="lon" title="Lon" width="33%" cell-template="project://database/Assets/UIDocuments/Templates/TimeLoc/TimeLocLonDeg.uxml?fileID=9197481963319205126&amp;guid=84ffd55a81957b44bb57520ef661a118&amp;type=3#TimeLocLonDeg" header-template="project://database/Assets/UIDocuments/Templates/TimeLoc/TimeLocLonDegHeader.uxml?fileID=9197481963319205126&amp;guid=edfa5dd9fd9b0fc4db27a61ff398d911&amp;type=3#TimeLocLonDegHeader"/>
-                            </ui:Columns>
-                        </ui:MultiColumnListView>
                     </ui:VisualElement>
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(364519395856384)"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000013)"/>
                     </Bindings>
                 </ui:Tab>
                 <ui:Tab label="Strategic">

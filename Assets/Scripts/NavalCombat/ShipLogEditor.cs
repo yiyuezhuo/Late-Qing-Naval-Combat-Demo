@@ -297,6 +297,18 @@ public class ShipLogView
             }
         };
 
+        var showTimeLocTableButton = root.Q<Button>("ShowTimeLocTableButton");
+        if (showTimeLocTableButton != null)
+        {
+            showTimeLocTableButton.clicked += () =>
+            {
+                if (Utils.TryResolveCurrentValueForBinding(showTimeLocTableButton, out ShipLog shipLog))
+                {
+                    DialogRoot.Instance.PopupShipTimeLocDialog(shipLog);
+                }
+            };
+        }
+
         // Utils.BindIStrategicGroupMemberReferenceable(root, this);
         Utils.BindIStrategicGroupMemberReferenceable(root);
 

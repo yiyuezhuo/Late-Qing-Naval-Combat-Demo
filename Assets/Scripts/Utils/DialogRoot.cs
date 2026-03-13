@@ -271,6 +271,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset gamePreferenceDialogDocument;
     public VisualTreeAsset batteryArcIndicatorDialogDocument;
     public VisualTreeAsset plotTrajectoryDialogDocument;
+    public VisualTreeAsset shipTimeLocDialogDocument;
     public VisualTreeAsset eventStateEditorDialogDocument;
     public VisualTreeAsset weaponPickerDialogDocument;
     public VisualTreeAsset sideStatePickerDialogDocument;
@@ -1174,6 +1175,24 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             Debug.Log("PopupPlotTrajectoryDialog Confirm");
 
             GameManager.Instance.PlotShipLogTrajectory(EntityManager.Instance.Get<ShipLog>(model.shipLogObjectId), model.color, model.plotTimestamp, model.timestampIntervalMinutes);
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupShipTimeLocDialog(ShipLog shipLog)
+    {
+        if (shipTimeLocDialogDocument == null)
+        {
+            PopupMessageDialog("ShipTimeLocDialog is not configured.");
+            return;
+        }
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = shipTimeLocDialogDocument,
+            templateDataSource = shipLog
         };
 
         tempDialog.Popup();

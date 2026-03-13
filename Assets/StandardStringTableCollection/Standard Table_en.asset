@@ -2663,6 +2663,14 @@ MonoBehaviour:
     m_Localized: TT - Tutorial, SJH - First Sino-Japanese War historical scenarios, RJH - Russo-Japanese War historical scenarios, SJS - First Sino-Japanese War hypothetical, test, or small scenarios. ★ - Recommended
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000013
+    m_Localized: History
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000014
+    m_Localized: Show Time Loc Table
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

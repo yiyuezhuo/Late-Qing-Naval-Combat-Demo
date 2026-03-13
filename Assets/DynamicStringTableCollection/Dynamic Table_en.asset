@@ -2883,6 +2883,58 @@ MonoBehaviour:
     m_Localized: "TT - Tutorial 4 - Formation Control  \u2605"
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000100001
+    m_Localized: No current DP loss.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100002
+    m_Localized: No incoming DP records.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100003
+    m_Localized: No outgoing DP.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100004
+    m_Localized: No outgoing weapon DP records.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100005
+    m_Localized: Other DP Loss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100006
+    m_Localized: Battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100007
+    m_Localized: Rapid Battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100008
+    m_Localized: Torpedo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100009
+    m_Localized: Battery {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100010
+    m_Localized: Rapid Battery {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100011
+    m_Localized: Unknown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100012
+    m_Localized: "{0}: {1} DP ({2}), {3} hits, avg {4} DP"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100013
+    m_Localized: "{0}: {1} DP ({2}), {3} hits, avg {4} DP, std dev {5} DP"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

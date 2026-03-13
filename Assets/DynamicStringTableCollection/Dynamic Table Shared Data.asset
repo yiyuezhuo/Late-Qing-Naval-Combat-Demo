@@ -2874,6 +2874,58 @@ MonoBehaviour:
     m_Key: TT - Tutorial 4 - Formation Control.scen.xml
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000100001
+    m_Key: No current DP loss.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100002
+    m_Key: No incoming DP records.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100003
+    m_Key: No outgoing DP.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100004
+    m_Key: No outgoing weapon DP records.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100005
+    m_Key: Other DP Loss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100006
+    m_Key: Battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100007
+    m_Key: Rapid Battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100008
+    m_Key: Torpedo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100009
+    m_Key: Battery {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100010
+    m_Key: Rapid Battery {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100011
+    m_Key: Unknown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100012
+    m_Key: '{0}: {1} DP ({2}), {3} hits, avg {4} DP'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100013
+    m_Key: '{0}: {1} DP ({2}), {3} hits, avg {4} DP, std dev {5} DP'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

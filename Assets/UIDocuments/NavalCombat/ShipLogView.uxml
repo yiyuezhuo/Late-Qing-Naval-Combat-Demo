@@ -513,20 +513,66 @@
                     </Bindings>
                 </ui:Tab>
                 <ui:Tab label="History">
-                    <ui:VisualElement style="flex-grow: 1;">
-                        <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
-                            <ui:Button text="Plot Trajectory on Map" name="PlotTrajectoryOnMapButton">
-                                <Bindings>
-                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172442062065664)"/>
-                                </Bindings>
-                            </ui:Button>
-                            <ui:Button text="Show Time Loc Table" name="ShowTimeLocTableButton">
-                                <Bindings>
-                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000014)"/>
-                                </Bindings>
-                            </ui:Button>
+                    <ui:ScrollView style="flex-grow: 1;">
+                        <ui:VisualElement name="HistoryTabContent" style="flex-grow: 1; padding-right: 4px; padding-bottom: 4px;">
+                            <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
+                                <ui:Button text="Plot Trajectory on Map" name="PlotTrajectoryOnMapButton">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(172442062065664)"/>
+                                    </Bindings>
+                                </ui:Button>
+                                <ui:Button text="Show Time Loc Table" name="ShowTimeLocTableButton">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000014)"/>
+                                    </Bindings>
+                                </ui:Button>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; margin-top: 6px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px;">
+                                <ui:Label name="CurrentDpLossSourcesLabel" text="Current DP Loss Sources" style="-unity-font-style: bold; margin-bottom: 4px;">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000015)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                                    <ui:VisualElement name="CurrentDpLossChartHost" style="width: 220px; min-width: 220px; height: 220px; min-height: 220px; margin-right: 8px;"/>
+                                    <ui:VisualElement name="CurrentDpLossLegend" style="flex-grow: 1; min-width: 220px;"/>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; margin-top: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px;">
+                                <ui:Label name="IncomingDpByWeaponSourceLabel" text="Incoming DP By Weapon Source" style="-unity-font-style: bold; margin-bottom: 4px;">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000016)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                                    <ui:VisualElement name="AllHitsChartHost" style="width: 220px; min-width: 220px; height: 220px; min-height: 220px; margin-right: 8px;"/>
+                                    <ui:VisualElement name="AllHitsLegend" style="flex-grow: 1; min-width: 220px;"/>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; margin-top: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px;">
+                                <ui:Label name="OutgoingDpByTargetLabel" text="Outgoing DP By Target" style="-unity-font-style: bold; margin-bottom: 4px;">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000017)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                                    <ui:VisualElement name="OutgoingDpByTargetChartHost" style="width: 220px; min-width: 220px; height: 220px; min-height: 220px; margin-right: 8px;"/>
+                                    <ui:VisualElement name="OutgoingDpByTargetLegend" style="flex-grow: 1; min-width: 220px;"/>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1; margin-top: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px;">
+                                <ui:Label name="OutgoingDpByWeaponTargetLabel" text="Outgoing DP By Weapon And Target" style="-unity-font-style: bold; margin-bottom: 4px;">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000018)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                                    <ui:VisualElement name="OutgoingWeaponTargetChartHost" style="width: 220px; min-width: 220px; height: 220px; min-height: 220px; margin-right: 8px;"/>
+                                    <ui:VisualElement name="OutgoingWeaponTargetLegend" style="flex-grow: 1; min-width: 220px;"/>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
                         </ui:VisualElement>
-                    </ui:VisualElement>
+                    </ui:ScrollView>
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000013)"/>
                     </Bindings>

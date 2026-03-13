@@ -2589,6 +2589,22 @@ MonoBehaviour:
     m_Key: Show Time Loc Table
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000015
+    m_Key: Current DP Loss Sources
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000016
+    m_Key: Incoming DP By Weapon Source
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000017
+    m_Key: Outgoing DP By Target
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000018
+    m_Key: Outgoing DP By Weapon And Target
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

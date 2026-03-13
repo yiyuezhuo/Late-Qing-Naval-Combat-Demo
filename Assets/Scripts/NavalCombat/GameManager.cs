@@ -1943,6 +1943,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             return;
 
         var impactPositionWu = controller.transform.position;
+        var splashPositionWu = ProjectPositionToSeaLevel(impactPositionWu);
         var shellRadiusFoot = Mathf.Max(0.05f, controller.ShellDiameterInch * (1f / 24f));
         var shellRadiusWu = shellRadiusFoot * gunneryShellRadiusScaleCoef * Utils.footToWu;
         var fxScaleWu = Mathf.Clamp(shellRadiusWu * 8f, 0.0012f, 0.015f);
@@ -1950,9 +1951,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         if (controller.Hit)
             SpawnHitFlashEffect(impactPositionWu, controller.TargetObjectId, fxScaleWu);
         else if (!controller.TargetIsLandBattery)
-            SpawnMissSplashEffect(impactPositionWu, fxScaleWu);
+            SpawnMissSplashEffect(splashPositionWu, fxScaleWu);
 
         ReleaseGunneryShell(controller);
+    }
+
+    static Vector3 ProjectPositionToSeaLevel(Vector3 positionWu)
+    {
+        if (positionWu.sqrMagnitude <= 1e-9f)
+            return positionWu;
+
+        return positionWu.normalized * Utils.r;
     }
 
     void ForceAdvanceGunneryShellVisualsThisFrame()
@@ -2092,7 +2101,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             scaleWu = scaleWu,
             fallbackPositionWu = impactPositionWu,
             followTargetObjectId = null,
-            followHeightOffsetWu = 0f
+            followHeightOffsetWu = -1000f
         });
 
         if (gunneryMissSplashSound != null && CameraController2.Instance?.cam != null)

@@ -8,7 +8,7 @@ public class UnityWebRequestImageReaderShower : SingletonDocument<UnityWebReques
 
     float busyAccSeconds = 0;
 
-    public static float displaybusyAccSecondsThreshold = 0.2f;
+    public static float displaybusyAccSecondsThreshold = 0.5f;
 
     protected override void Awake()
     {

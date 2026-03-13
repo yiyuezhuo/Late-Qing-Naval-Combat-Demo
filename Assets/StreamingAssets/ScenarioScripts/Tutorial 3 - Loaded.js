@@ -2,7 +2,7 @@ let NavalCombatCore = importNamespace('NavalCombatCore');
 let CoreUtils = importNamespace("CoreUtils");
 
 let msg = getLocalized(`
- Welcome to the third tutorial scenario of the First Sino-Japanese War. In this tutorial, you will learn how to engage in combat.
+Welcome to the third tutorial scenario of the First Sino-Japanese War. In this tutorial, you will learn how to engage in combat.
 
 In the First Sino-Japanese War scenario, different automation levels can be set in the OOB Tree. In a "standard" game, the player uses the default automation level for their own side, while the top group of the opposing side is fully automated.
 

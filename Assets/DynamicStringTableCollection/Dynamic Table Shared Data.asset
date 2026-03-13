@@ -2926,6 +2926,10 @@ MonoBehaviour:
     m_Key: '{0}: {1} DP ({2}), {3} hits, avg {4} DP, std dev {5} DP'
     m_Metadata:
       m_Items: []
+  - m_Id: 55192794299011072
+    m_Key: TT - Tutorial 5 - Manual Firing.scen.xml
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -2883,7 +2883,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 52518222156173312
-    m_Localized: "RJH - \u65E5\u4FC4\u9EC4\u6D77\u6D77\u6218 \u2605"
+    m_Localized: "RJH - \u65E5\u4FC4\u9EC4\u6D77\u6D77\u6218"
     m_Metadata:
       m_Items: []
   - m_Id: 58890040000000003
@@ -2953,6 +2953,10 @@ MonoBehaviour:
   - m_Id: 69800000100013
     m_Localized: "{0}: {1} DP ({2}), {3} \u6B21\u547D\u4E2D, \u5E73\u5747 {4} DP,
       \u6807\u51C6\u5DEE {5} DP"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55192794299011072
+    m_Localized: "TT - \u6559\u7A0B5 - \u624B\u52A8\u5C04\u51FB \u2605"
     m_Metadata:
       m_Items: []
   references:

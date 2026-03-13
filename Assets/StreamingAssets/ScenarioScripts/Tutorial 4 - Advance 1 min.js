@@ -71,22 +71,30 @@ else if (tutorial4Phase === Tutorial4Phase.WaitingForPracticeExplanation) {
         let msg = getLocalized(`
 The "Arrange formation in follow chain" command is used to set up a Line Ahead formation, whereas "Arrange the formation in relative bearing" can be used to establish Line Abreast or Line of Bearing formations.
 
-Please test the other options within the "Arrange the formation in relative bearing" dialog and observe the effects of toggling the "Symmetric" toggle. Once you have completed these tests, you may exit this tutorial and proceed to the next scenario.
+Please test the other options within the "Arrange the formation in relative bearing" dialog and observe the effects of toggling the "Symmetric" toggle.
+
+Once you have completed these tests, you may exit this tutorial and proceed to the next scenario.
 `,
 `
 「追従列で隊形を組む」コマンドは縦隊を設定するために使われます。一方で、「相対方位で隊形を組む」は横隊や方位線の隊形を作るために使えます。
 
-「相対方位で隊形を組む」ダイアログ内の他のオプションも試し、「左右対称」トグルのオン・オフでどのような違いが出るか観察してください。これらの確認が終わったら、このチュートリアルを終了して次の劇本に進んで構いません。
+「相対方位で隊形を組む」ダイアログ内の他のオプションも試し、「左右対称」トグルのオン・オフでどのような違いが出るか観察してください。
+
+これらの確認が終わったら、このチュートリアルを終了して次の劇本に進んで構いません。
 `,
 `
 “按跟随链排列队形”命令用于建立纵队；而“按相对方位排列队形”则可用于建立横队或方位线队形。
 
-请测试“按相对方位排列队形”对话框中的其他选项，并观察切换“对称”开关后的效果。完成这些测试后，你可以退出本教程并继续下一个剧本。
+请测试“按相对方位排列队形”对话框中的其他选项，并观察切换“对称”开关后的效果。
+
+完成这些测试后，你可以退出本教程并继续下一个剧本。
 `,
 `
 「按跟隨鏈排列隊形」命令用於建立縱隊；而「按相對方位排列隊形」則可用於建立橫隊或方位線隊形。
 
-請測試「按相對方位排列隊形」對話框中的其他選項，並觀察切換「對稱」開關後的效果。完成這些測試後，你可以退出本教學並繼續下一個劇本。
+請測試「按相對方位排列隊形」對話框中的其他選項，並觀察切換「對稱」開關後的效果。
+
+完成這些測試後，你可以退出本教學並繼續下一個劇本。
 `);
 
         msgBox(msg);

@@ -84,6 +84,9 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public bool isTransport => type == ShipType.Transport;
+
+        [CreateProperty]
+        public bool isDebug => GamePreference.Instance.isDebug;
     }
 
     public partial class LaunchedTorpedo : IPortraitViewerObservable

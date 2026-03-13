@@ -184,6 +184,7 @@ public class GamePreference
     // bool _isInEditMode;
     // bool _isInEditMode = true; // TODO: Enable edit mode in the default setting to reduce potension confusion.
     bool _isInEditMode = false;
+    bool _isDebug = false;
 
     [CreateProperty]
     public bool isInEditMode
@@ -195,6 +196,19 @@ public class GamePreference
             {
                 _isInEditMode = value;
                 isInEditModeChanged?.Invoke(this, value);
+            }
+        }
+    }
+
+    [CreateProperty]
+    public bool isDebug
+    {
+        get => _isDebug;
+        set
+        {
+            if (_isDebug != value)
+            {
+                _isDebug = value;
             }
         }
     }

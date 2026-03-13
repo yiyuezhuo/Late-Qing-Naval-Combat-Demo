@@ -2864,7 +2864,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 52518222156173312
-    m_Localized: "RJH - Battle of the Yellow Sea \u2605"
+    m_Localized: RJH - Battle of the Yellow Sea
     m_Metadata:
       m_Items: []
   - m_Id: 58890040000000003
@@ -2928,11 +2928,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 69800000100012
-    m_Localized: "{0}: {1} DP ({2}), {3} hits, avg {4} DP"
+    m_Localized: '{0}: {1} DP ({2}), {3} hits, avg {4} DP'
     m_Metadata:
       m_Items: []
   - m_Id: 69800000100013
-    m_Localized: "{0}: {1} DP ({2}), {3} hits, avg {4} DP, std dev {5} DP"
+    m_Localized: '{0}: {1} DP ({2}), {3} hits, avg {4} DP, std dev {5} DP'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55192794299011072
+    m_Localized: "TT - Tutorial 5 - Manual Firing \u2605"
     m_Metadata:
       m_Items: []
   references:

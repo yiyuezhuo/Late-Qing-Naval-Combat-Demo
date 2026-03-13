@@ -88,7 +88,9 @@ public class MainMenu : SingletonDocument<MainMenu>
 
         // RegisterStrategicStartup(root);
 
-        root.Q<Button>("CampaignButton").clicked += () =>
+        var campaignButton = root.Q<Button>("CampaignButton");
+        campaignButton.dataSource = GamePreference.Instance;
+        campaignButton.clicked += () =>
         {
             DialogRoot.Instance.PopupStrategicStartupDialog();
         };
@@ -233,4 +235,7 @@ public class MainMenu : SingletonDocument<MainMenu>
     {
         
     }
+
+    [CreateProperty]
+    public bool isDebug => GamePreference.Instance.isDebug;
 }

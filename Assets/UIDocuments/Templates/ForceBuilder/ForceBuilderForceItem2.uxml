@@ -6,7 +6,7 @@
                 <ui:DataBinding property="style.backgroundImage" data-source-path="portraitIconStyleBackground" binding-mode="ToTarget" />
             </Bindings>
         </ui:VisualElement>
-        <ui:Button text="Force Item&apos;s Name (x2, 100) &gt;" style="-unity-text-align: middle-right; padding-left: 2px; padding-right: 2px; margin-left: 2px; margin-right: 2px;">
+        <ui:Button text="Force Item&apos;s Name (x2, 100) &gt;" class="force-builder-overlay-button" style="-unity-text-align: middle-right; padding-left: 2px; padding-right: 2px; margin-left: 2px; margin-right: 2px;">
             <Bindings>
                 <ui:DataBinding property="text" data-source-path="forceBuilderText" binding-mode="ToTarget" />
             </Bindings>

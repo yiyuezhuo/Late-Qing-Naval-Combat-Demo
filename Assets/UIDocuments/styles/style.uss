@@ -61,6 +61,9 @@
     --ui-border-weapon-card-top: rgb(150, 136, 102);
     --ui-border-weapon-card-bottom: rgb(66, 58, 43);
     --ui-text-weapon-title: rgb(237, 227, 207);
+    --ui-surface-button-overlay: rgba(58, 62, 68, 0.6);
+    --ui-surface-button-overlay-hover: rgba(72, 77, 84, 0.72);
+    --ui-surface-button-overlay-active: rgba(44, 48, 53, 0.82);
 }
 
 .unity-base-field__input {
@@ -581,6 +584,18 @@
 .unity-button:disabled {
     background-color: var(--ui-surface-disabled);
     color: var(--ui-text-disabled);
+}
+
+.force-builder-overlay-button {
+    background-color: var(--ui-surface-button-overlay);
+}
+
+.force-builder-overlay-button:hover:enabled {
+    background-color: var(--ui-surface-button-overlay-hover);
+}
+
+.force-builder-overlay-button:active {
+    background-color: var(--ui-surface-button-overlay-active);
 }
 
 .unity-base-field:disabled .unity-base-field__input,

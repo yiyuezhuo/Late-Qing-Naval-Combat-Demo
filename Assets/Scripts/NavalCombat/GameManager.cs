@@ -584,6 +584,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public float remainAdvanceSimulationSecondsRequestedByUserInput; // Requested by KeyCode 1-9 (1-9 min) and BackQuote (`) (1s)
     public float remainAdvanceSimulationSecondsRequestedByUpdate;
     float projectileVisualAdvanceSecondsThisFrame;
+    float impactFxVisualAdvanceSecondsThisFrame;
     public bool isAutoPlaying = false;
     float _savedTimeScaleBeforePause = 1f;
     bool _timeScalePausedByGameManager = false;
@@ -641,6 +642,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void UpdateSimulation()
     {
         projectileVisualAdvanceSecondsThisFrame = 0f;
+        impactFxVisualAdvanceSecondsThisFrame = 0f;
         RefreshClockState();
 
         var pulseLengthSeconds = GamePreference.Instance.pulseLengthSeconds;
@@ -654,6 +656,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             var visualAdvance = realSeconds * simulationRateRatioAuto;
             remainAdvanceSimulationSecondsRequestedByUpdate += visualAdvance;
             projectileVisualAdvanceSecondsThisFrame += visualAdvance;
+            impactFxVisualAdvanceSecondsThisFrame += realSeconds;
         }
         else // manual advance mode
         {
@@ -662,6 +665,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 var visualAdvance = realSeconds * simulationRateRatio;
                 remainAdvanceSimulationSecondsRequestedByUpdate += visualAdvance;
                 projectileVisualAdvanceSecondsThisFrame += visualAdvance;
+                impactFxVisualAdvanceSecondsThisFrame += realSeconds;
             }
         }
         
@@ -2119,7 +2123,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         if (activeGunneryImpactFxs.Count == 0)
             return;
 
-        var deltaTime = Time.unscaledDeltaTime;
+        var deltaTime = impactFxVisualAdvanceSecondsThisFrame;
         if (deltaTime <= 0f)
             return;
 

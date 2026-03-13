@@ -81,6 +81,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public float gunneryShellAltitudeFoot = 300f;
     [Min(1f)]
     public float gunneryShellRadiusScaleCoef = 100f;
+    public bool enableGunneryShellTrail = true;
+    [Min(0.01f)]
+    public float gunneryShellTrailTime = 0.16f;
+    [Min(0.01f)]
+    public float gunneryShellTrailWidthScale = 4.5f;
+    [Min(0.0001f)]
+    public float gunneryShellTrailMinWidth = 0.00018f;
+    [Min(0.0001f)]
+    public float gunneryShellTrailMaxWidth = 0.0012f;
     public Transform gunneryShellVisualContainer;
     public AudioClip gunneryMissSplashSound;
 
@@ -466,6 +475,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     static readonly float locationInfoRefreshIntervalSeconds = 0.1f;
     RangeLineRenderSignature lastRangeLineRenderSignature;
     static Mesh gunneryShellConeMesh;
+    static Material gunneryShellTrailMaterialTemplate;
     static Material gunnerySplashFxMaterialTemplate;
     static Material gunneryHitFxMaterialTemplate;
 
@@ -1879,6 +1889,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             HandleGunneryShellArrived
         );
 
+        PrepareGunneryShellTrail(shell, shellRadiusWu);
+
         if (!activeGunneryShells.Contains(controller))
             activeGunneryShells.Add(controller);
     }
@@ -1933,6 +1945,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         activeGunneryShells.Remove(controller);
         controller.ResetState();
+        ResetGunneryShellTrail(controller.gameObject);
         controller.gameObject.SetActive(false);
         gunneryShellPool.Enqueue(controller);
     }
@@ -2004,6 +2017,87 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         head.localPosition = new Vector3(0f, 0f, bodyLengthWu + headLengthWu * 0.5f);
     }
 
+    void PrepareGunneryShellTrail(GameObject root, float shellRadiusWu)
+    {
+        var trail = GetOrCreateGunneryShellTrailRenderer(root);
+        if (trail == null)
+            return;
+
+        var width = Mathf.Clamp(
+            shellRadiusWu * gunneryShellTrailWidthScale,
+            gunneryShellTrailMinWidth,
+            gunneryShellTrailMaxWidth
+        );
+
+        trail.time = gunneryShellTrailTime;
+        trail.startWidth = width;
+        trail.endWidth = width * 0.08f;
+        trail.minVertexDistance = Mathf.Max(width * 0.2f, 0.00002f);
+        trail.emitting = enableGunneryShellTrail;
+        trail.enabled = enableGunneryShellTrail;
+        trail.Clear();
+    }
+
+    void ResetGunneryShellTrail(GameObject root)
+    {
+        var trail = FindGunneryShellTrailRenderer(root);
+        if (trail == null)
+            return;
+
+        trail.emitting = false;
+        trail.Clear();
+        trail.enabled = false;
+    }
+
+    TrailRenderer FindGunneryShellTrailRenderer(GameObject root)
+    {
+        var trailTransform = root != null ? root.transform.Find("Trail") : null;
+        return trailTransform != null ? trailTransform.GetComponent<TrailRenderer>() : null;
+    }
+
+    TrailRenderer GetOrCreateGunneryShellTrailRenderer(GameObject root)
+    {
+        var trail = FindGunneryShellTrailRenderer(root);
+        if (trail != null)
+            return trail;
+        if (root == null)
+            return null;
+
+        var trailObject = new GameObject("Trail");
+        trailObject.transform.SetParent(root.transform, false);
+        trailObject.transform.localPosition = Vector3.zero;
+        trailObject.transform.localRotation = Quaternion.identity;
+
+        trail = trailObject.AddComponent<TrailRenderer>();
+        trail.sharedMaterial = GetOrCreateGunneryShellTrailMaterialTemplate();
+        trail.alignment = LineAlignment.View;
+        trail.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        trail.receiveShadows = false;
+        trail.textureMode = LineTextureMode.Stretch;
+        trail.numCornerVertices = 2;
+        trail.numCapVertices = 2;
+        trail.generateLightingData = false;
+        trail.autodestruct = false;
+
+        var gradient = new Gradient();
+        gradient.SetKeys(
+            new[]
+            {
+                new GradientColorKey(new Color(1f, 0.96f, 0.72f), 0f),
+                new GradientColorKey(new Color(1f, 0.66f, 0.24f), 0.4f),
+                new GradientColorKey(new Color(1f, 0.34f, 0.08f), 1f)
+            },
+            new[]
+            {
+                new GradientAlphaKey(0.95f, 0f),
+                new GradientAlphaKey(0.45f, 0.45f),
+                new GradientAlphaKey(0f, 1f)
+            }
+        );
+        trail.colorGradient = gradient;
+        return trail;
+    }
+
     GameObject CreateGunneryShellVisualObject(float shellRadiusWu)
     {
         var root = new GameObject("GunneryShellVisual");
@@ -2035,6 +2129,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         var headRenderer = head.AddComponent<MeshRenderer>();
         headRenderer.sharedMaterial = bodyRenderer != null ? bodyRenderer.sharedMaterial : null;
 
+        PrepareGunneryShellTrail(root, shellRadiusWu);
         return root;
     }
 
@@ -2345,6 +2440,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         if (gunneryHitFxMaterialTemplate == null)
             gunneryHitFxMaterialTemplate = CreateFxMaterial("GunneryHitFxMaterial", new Color(1f, 0.92f, 0.65f, 0.9f));
         return gunneryHitFxMaterialTemplate;
+    }
+
+    static Material GetOrCreateGunneryShellTrailMaterialTemplate()
+    {
+        if (gunneryShellTrailMaterialTemplate == null)
+            gunneryShellTrailMaterialTemplate = CreateFxMaterial("GunneryShellTrailMaterial", new Color(1f, 0.8f, 0.3f, 0.9f));
+        return gunneryShellTrailMaterialTemplate;
     }
 
     static Material CreateFxMaterial(string materialName, Color color)

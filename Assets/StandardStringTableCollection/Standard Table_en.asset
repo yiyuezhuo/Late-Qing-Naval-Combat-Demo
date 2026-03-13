@@ -2659,6 +2659,10 @@ MonoBehaviour:
     m_Localized: Reset Pre-scenario Damage
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000012
+    m_Localized: TT - Tutorial, SJH - First Sino-Japanese War historical scenarios, RJH - Russo-Japanese War historical scenarios, SJS - First Sino-Japanese War hypothetical, test, or small scenarios. ★ - Recommended
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

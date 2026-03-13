@@ -2577,6 +2577,10 @@ MonoBehaviour:
     m_Key: Reset Pre-scenario Damage
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000012
+    m_Key: Scenario Picker Type Notes
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

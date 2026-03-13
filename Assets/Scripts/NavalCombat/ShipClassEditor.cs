@@ -19,6 +19,11 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
     ListView batteryRecordsListView;
     VisualElement portraitTopPreview;
     VisualElement portraitIconPreview;
+    VisualElement graphicTabContent;
+    Image defaultPlaceholderPreviewImage;
+    Texture2D defaultPlaceholderPreviewTexture;
+    string lastDefaultPlaceholderSignature;
+    string lastDefaultPlaceholderShipObjectId;
 
     public int selectedShipClassIndex = 0;
 
@@ -86,6 +91,8 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
                 sectorArcIndicatorBinder.BindBatteryData(currentShipClass);
                 torpedoSectorArcIndicatorBinder.BindTorpedoData(currentShipClass);
             }
+
+            RequestDefaultPlaceholderPreviewRefresh(currentShipClass, true);
         };
 
         var speedIncreaseMultiColumnListView = root.Q<MultiColumnListView>("SpeedIncreaseMultiColumnListView");
@@ -233,6 +240,10 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
         PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("PortraitIconReferenceField"));
         portraitTopPreview = root.Q<VisualElement>("PortraitTopPreview");
         portraitIconPreview = root.Q<VisualElement>("PortraitIconPreview");
+        graphicTabContent = root.Q<VisualElement>("GraphicTabContent");
+        defaultPlaceholderPreviewImage = root.Q<Image>("DefaultPlaceholderPreviewImage");
+
+        graphicTabContent?.RegisterCallback<GeometryChangedEvent>(_ => RequestDefaultPlaceholderPreviewRefresh());
 
         root.Q<Button>("GeneratePlaceholderImageButton").clicked += () =>
         {
@@ -321,16 +332,23 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
         };
     }
 
+    void OnDisable()
+    {
+        DisposeDefaultPlaceholderPreviewTexture();
+    }
+
     public EventHandler shown;
     public EventHandler hidden;
 
     protected override void OnShow()
     {
+        RequestDefaultPlaceholderPreviewRefresh();
         shown?.Invoke(this, EventArgs.Empty);
     }
 
     protected override void OnHidden()
     {
+        ClearDefaultPlaceholderPreviewState();
         hidden?.Invoke(this, EventArgs.Empty);
     }
 
@@ -375,6 +393,81 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
 
         if (portraitIconPreview != null)
             portraitIconPreview.style.backgroundImage = selectedShipClass.portraitIconReference.pictureStyleBackground;
+
+        RequestDefaultPlaceholderPreviewRefresh();
+    }
+
+    void RequestDefaultPlaceholderPreviewRefresh(bool force = false)
+    {
+        RequestDefaultPlaceholderPreviewRefresh(selectedShipClass, force);
+    }
+
+    void RequestDefaultPlaceholderPreviewRefresh(ShipClass shipClass, bool force = false)
+    {
+        if (graphicTabContent == null || defaultPlaceholderPreviewImage == null || !IsElementActuallyVisible(graphicTabContent))
+            return;
+
+        if (shipClass == null)
+        {
+            ClearDefaultPlaceholderPreviewState();
+            return;
+        }
+
+        if (lastDefaultPlaceholderShipObjectId != shipClass.objectId)
+        {
+            ClearDefaultPlaceholderPreviewState();
+            lastDefaultPlaceholderShipObjectId = shipClass.objectId;
+        }
+
+        var signature = ShipClassPlaceholderImageGenerator.BuildDefaultPreviewSignature(shipClass);
+        if (!force && signature == lastDefaultPlaceholderSignature && defaultPlaceholderPreviewTexture != null)
+            return;
+
+        if (!ShipClassPlaceholderImageGenerator.TryRenderDefaultPreview(shipClass, out var renderResult))
+        {
+            ClearDefaultPlaceholderPreviewState();
+            lastDefaultPlaceholderShipObjectId = shipClass.objectId;
+            lastDefaultPlaceholderSignature = signature;
+            return;
+        }
+
+        DisposeDefaultPlaceholderPreviewTexture();
+        defaultPlaceholderPreviewTexture = renderResult.previewTexture;
+        defaultPlaceholderPreviewImage.image = defaultPlaceholderPreviewTexture;
+        lastDefaultPlaceholderShipObjectId = shipClass.objectId;
+        lastDefaultPlaceholderSignature = signature;
+
+        if (renderResult.topTexture != null)
+            Destroy(renderResult.topTexture);
+        if (renderResult.iconTexture != null)
+            Destroy(renderResult.iconTexture);
+    }
+
+    void ClearDefaultPlaceholderPreviewState()
+    {
+        DisposeDefaultPlaceholderPreviewTexture();
+        lastDefaultPlaceholderSignature = null;
+        lastDefaultPlaceholderShipObjectId = null;
+    }
+
+    void DisposeDefaultPlaceholderPreviewTexture()
+    {
+        if (defaultPlaceholderPreviewImage != null)
+            defaultPlaceholderPreviewImage.image = null;
+
+        if (defaultPlaceholderPreviewTexture != null)
+        {
+            Destroy(defaultPlaceholderPreviewTexture);
+            defaultPlaceholderPreviewTexture = null;
+        }
+    }
+
+    static bool IsElementActuallyVisible(VisualElement element)
+    {
+        return element != null
+            && element.resolvedStyle.display != DisplayStyle.None
+            && element.worldBound.width > 1f
+            && element.worldBound.height > 1f;
     }
 
     static void RefreshPictureField(VisualElement fieldRoot, PictureReference pictureReference)

@@ -2687,6 +2687,10 @@ MonoBehaviour:
     m_Localized: Outgoing DP By Weapon And Target
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000019
+    m_Localized: Historical Image Override
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

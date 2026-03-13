@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Unity.Properties;
 using UnityEngine;
 using NavalCombatCore;
@@ -148,6 +149,8 @@ public class ShipClassPlaceholderGeneratorDialogModel : IDisposable
 
 public static class ShipClassPlaceholderImageGenerator
 {
+    const int DefaultPreviewCanvasWidthFallback = 1200;
+
     public readonly struct RenderResult
     {
         public readonly bool success;
@@ -176,6 +179,98 @@ public static class ShipClassPlaceholderImageGenerator
             this.generatedShipClasses = generatedShipClasses;
             this.skippedMessages = skippedMessages;
         }
+    }
+
+    public static ShipClassPlaceholderGeneratorDialogModel CreateDefaultDialogModel(ShipClass shipClass)
+    {
+        var model = new ShipClassPlaceholderGeneratorDialogModel
+        {
+            shipClass = shipClass
+        };
+        model.ApplyRecommendedCanvasSize();
+        return model;
+    }
+
+    public static bool TryRenderDefaultPreview(ShipClass shipClass, out RenderResult result)
+    {
+        if (shipClass == null)
+        {
+            result = new(false, "No ship class is selected.");
+            return false;
+        }
+
+        if (shipClass.type == ShipType.LandBattery)
+        {
+            result = new(false, "Land Battery does not support placeholder ship images.");
+            return false;
+        }
+
+        if (shipClass.lengthFoot <= 0 || shipClass.beamFoot <= 0)
+        {
+            result = new(false, "Ship Class lengthFoot and beamFoot must both be greater than 0.");
+            return false;
+        }
+
+        var settings = BuildDefaultSettings(shipClass);
+        result = new(
+            true,
+            $"Generated placeholder silhouette for {shipClass.name.GetMergedName()} ({settings.canvasWidth}x{settings.canvasHeight}).",
+            ShipClassPlaceholderImageRenderer.Render(shipClass, settings, ShipClassPlaceholderImageRenderer.RenderVariant.Preview),
+            ShipClassPlaceholderImageRenderer.Render(shipClass, settings, ShipClassPlaceholderImageRenderer.RenderVariant.TopJpg),
+            ShipClassPlaceholderImageRenderer.Render(shipClass, settings, ShipClassPlaceholderImageRenderer.RenderVariant.IconPng));
+        return true;
+    }
+
+    public static string BuildDefaultPreviewSignature(ShipClass shipClass)
+    {
+        if (shipClass == null)
+            return "null";
+
+        var settings = BuildDefaultSettings(shipClass);
+        var sb = new StringBuilder(512);
+        sb.Append(shipClass.objectId).Append('|');
+        sb.Append(shipClass.type).Append('|');
+        sb.Append(shipClass.lengthFoot).Append('|');
+        sb.Append(shipClass.beamFoot).Append('|');
+        sb.Append(shipClass.displacementTons).Append('|');
+        sb.Append(shipClass.speedKnots).Append('|');
+        sb.Append(settings.canvasWidth).Append('|');
+        sb.Append(settings.canvasHeight).Append('|');
+        sb.Append(settings.hullPadding).Append('|');
+        sb.Append(settings.lineWidth).Append('|');
+        sb.Append(settings.deckInsetAmount).Append('|');
+        sb.Append(settings.superstructureHeightScale).Append('|');
+        sb.Append((int)settings.funnelCountMode).Append('|');
+        sb.Append(settings.funnelSpacingBias).Append('|');
+        sb.Append(settings.bowSharpness).Append('|');
+        sb.Append(settings.sternFullness).Append('|');
+        sb.Append(settings.weaponScale).Append('|');
+
+        foreach (var battery in shipClass.batteryRecords ?? new List<BatteryRecord>())
+        {
+            sb.Append("B:").Append(battery.shellSizeInch).Append(';');
+            foreach (var record in battery.mountLocationRecords ?? new List<MountLocationRecord>())
+            {
+                AppendMountRecordSignature(sb, record);
+            }
+        }
+
+        foreach (var record in shipClass.torpedoSector?.mountLocationRecords ?? new List<MountLocationRecord>())
+        {
+            sb.Append("T:").Append(record.trainable).Append(';');
+            AppendMountRecordSignature(sb, record);
+        }
+
+        foreach (var record in shipClass.rapidFireBatteryRecords ?? new List<RapidFireBatteryRecord>())
+        {
+            sb.Append("R:");
+            AppendIntSequence(sb, record.barrelsLevelPort);
+            sb.Append('/');
+            AppendIntSequence(sb, record.barrelsLevelStarboard);
+            sb.Append(';');
+        }
+
+        return sb.ToString();
     }
 
     public static bool TryRenderFromModel(ShipClassPlaceholderGeneratorDialogModel model, out RenderResult result)
@@ -217,11 +312,7 @@ public static class ShipClassPlaceholderImageGenerator
 
         foreach (var shipClass in shipClasses)
         {
-            var model = new ShipClassPlaceholderGeneratorDialogModel
-            {
-                shipClass = shipClass
-            };
-            model.ApplyRecommendedCanvasSize();
+            var model = CreateDefaultDialogModel(shipClass);
 
             if (!TryRenderFromModel(model, out var renderResult))
             {
@@ -264,6 +355,43 @@ public static class ShipClassPlaceholderImageGenerator
         }
 
         return new(generatedShipClasses, skippedMessages);
+    }
+
+    static void AppendMountRecordSignature(StringBuilder sb, MountLocationRecord record)
+    {
+        if (record == null)
+        {
+            sb.Append("null;");
+            return;
+        }
+
+        sb.Append(record.mountLocation).Append(',');
+        sb.Append(record.mounts).Append(',');
+        sb.Append(record.barrels).Append(',');
+        foreach (var arc in record.mountArcs ?? new List<MountArcRecord>())
+        {
+            sb.Append(arc.startDeg).Append(':').Append(arc.CoverageDeg).Append(',');
+        }
+        sb.Append(';');
+    }
+
+    static void AppendIntSequence(StringBuilder sb, IEnumerable<int> values)
+    {
+        foreach (var value in values ?? Enumerable.Empty<int>())
+        {
+            sb.Append(value).Append(',');
+        }
+    }
+
+    static ShipClassPlaceholderImageRenderSettings BuildDefaultSettings(ShipClass shipClass)
+    {
+        var model = new ShipClassPlaceholderGeneratorDialogModel
+        {
+            shipClass = shipClass,
+            canvasWidth = DefaultPreviewCanvasWidthFallback,
+        };
+        model.ApplyRecommendedCanvasSize();
+        return BuildSettings(model);
     }
 
     public static string GetDefaultFileName(ShipClass shipClass, string suffix)
@@ -1177,9 +1305,22 @@ public static class ShipClassPlaceholderImageRenderer
     static float EvaluateHalfBreadth(float t, HullProfile profile, ShipClassPlaceholderImageRenderSettings settings)
     {
         t = Mathf.Clamp01(t);
-        // Keep the placeholder hull easy to reason about: symmetric fore/aft with a simple
-        // sinusoidal half-breadth curve. This gives zero width at both ends and max beam amidships.
-        return profile.maxBeamScale * Mathf.Sin(t * Mathf.PI);
+        // Use a simple 30/40/30 placeholder hull: sinusoidal bow entry, parallel midbody,
+        // sinusoidal stern run. This keeps zero width at both ends and a flat max beam amidships.
+        const float endSection = 0.3f;
+        const float middleEnd = 0.7f;
+
+        if (t < endSection)
+        {
+            var localT = t / endSection;
+            return profile.maxBeamScale * Mathf.Sin(localT * Mathf.PI * 0.5f);
+        }
+
+        if (t <= middleEnd)
+            return profile.maxBeamScale;
+
+        var sternLocalT = (1f - t) / endSection;
+        return profile.maxBeamScale * Mathf.Sin(sternLocalT * Mathf.PI * 0.5f);
     }
 
     static float SmootherStep01(float t)

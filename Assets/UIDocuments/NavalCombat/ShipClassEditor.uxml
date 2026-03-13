@@ -43,7 +43,7 @@
                 </ui:Label>
                 <ui:VisualElement>
                     <ui:ScrollView mode="VerticalAndHorizontal">
-                        <ui:TabView style="min-width: 600px;">
+                        <ui:TabView name="ShipClassEditorTabView" style="min-width: 600px;">
                             <ui:Tab label="Basic">
                                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                     <ui:VisualElement style="flex-grow: 1; flex-basis: 50%;">
@@ -364,9 +364,9 @@
                                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)"/>
                                 </Bindings>
                             </ui:Tab>
-                            <ui:Tab label="Graphic">
+                            <ui:Tab label="Graphic" name="GraphicTab">
                                 <ui:ScrollView>
-                                    <ui:VisualElement style="flex-grow: 1;">
+                                    <ui:VisualElement name="GraphicTabContent" style="flex-grow: 1;">
                                         <ui:VisualElement style="flex-direction: row; margin-bottom: 6px; align-items: center;">
                                             <ui:Button text="Generate Placeholder Image" name="GeneratePlaceholderImageButton" style="margin-right: 6px;">
                                                 <Bindings>
@@ -386,6 +386,16 @@
                                                 </Bindings>
                                             </ui:Button>
                                         </ui:VisualElement>
+                                        <ui:VisualElement name="DefaultPlaceholderPreviewSection" style="margin-bottom: 8px; min-width: 0; flex-shrink: 1;">
+                                            <ui:VisualElement class="placeholder-preview-frame" style="min-height: 150px; height: 150px; min-width: 0; flex-shrink: 1;">
+                                                <ui:Image name="DefaultPlaceholderPreviewImage" scale-mode="ScaleToFit" class="placeholder-preview-image" style="max-width: 100%;"/>
+                                            </ui:VisualElement>
+                                        </ui:VisualElement>
+                                        <ui:Label text="Historical Image Override" style="margin-top: 4px; margin-bottom: 6px;">
+                                            <Bindings>
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000019)"/>
+                                            </Bindings>
+                                        </ui:Label>
                                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                             <ui:VisualElement style="flex-grow: 1; flex-direction: column; flex-basis: 100px;">
                                                 <ui:TextField label="Portrait" style="min-width: 90%; flex-shrink: 1;">

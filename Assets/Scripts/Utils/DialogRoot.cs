@@ -1598,11 +1598,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             return;
         }
 
-        var model = new ShipClassPlaceholderGeneratorDialogModel()
-        {
-            shipClass = shipClass
-        };
-        model.ApplyRecommendedCanvasSize();
+        var model = ShipClassPlaceholderImageGenerator.CreateDefaultDialogModel(shipClass);
 
         var tempDialog = new TempDialog()
         {

@@ -2097,11 +2097,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             handle = handle,
             kind = GunneryImpactFxKind.Splash,
             elapsedSeconds = 0f,
-            durationSeconds = 0.65f,
+            // durationSeconds = 0.65f,
+            // durationSeconds = 2f, // real value is close to 2s but it looks better to slow down the animation for a longer-lasting effect
+            durationSeconds = 10f,
             scaleWu = scaleWu,
             fallbackPositionWu = impactPositionWu,
             followTargetObjectId = null,
-            followHeightOffsetWu = -1000f
+            followHeightOffsetWu = 0
         });
 
         if (gunneryMissSplashSound != null && CameraController2.Instance?.cam != null)
@@ -2119,7 +2121,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             handle = handle,
             kind = GunneryImpactFxKind.HitFlash,
             elapsedSeconds = 0f,
-            durationSeconds = 0.28f,
+            durationSeconds = 0.5f,
             scaleWu = scaleWu,
             fallbackPositionWu = impactPositionWu,
             followTargetObjectId = targetObjectId,
@@ -2145,7 +2147,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 continue;
             }
 
-            state.elapsedSeconds += deltaTime;
+            var elapsedDelta = deltaTime;
+            if (state.kind == GunneryImpactFxKind.Splash)
+                elapsedDelta *= Mathf.Max(1f, GetCurrentSimulationAdvanceRatio());
+
+            state.elapsedSeconds += elapsedDelta;
             var progress = Mathf.Clamp01(state.elapsedSeconds / Mathf.Max(0.0001f, state.durationSeconds));
             var effectPositionWu = ResolveGunneryImpactFxPosition(state);
             SyncGunneryImpactFxTransform(state.handle.transform, effectPositionWu);

@@ -1,5 +1,4 @@
 
-using System.Data;
 using System;
 
 namespace NavalCombatCore
@@ -22,6 +21,7 @@ namespace NavalCombatCore
         public float distanceCoef = 1;
         public float extrapolateSeconds=360;
         public float globalHitCoef = 1f;
+        public float noPenetrationDamageCoef = 0.1f;
 
         public float automaticTorpedoFiringRangeRelaxedCoef = 2.5f;
 

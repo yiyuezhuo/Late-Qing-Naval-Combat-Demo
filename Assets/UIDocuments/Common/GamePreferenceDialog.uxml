@@ -214,6 +214,12 @@
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(182042853281792)"/>
                                     </Bindings>
                                 </ui:Slider>
+                                <ui:Slider label="No Penetration Damage Coef" high-value="1" show-input-field="true">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="noPenetrationDamageCoef" binding-mode="TwoWay"/>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62976000019894274)"/>
+                                    </Bindings>
+                                </ui:Slider>
                                 <LocalizedEnumField type-str="NavalCombatCore.LaunchedTorpedo+FriendlyCollisionProcessMode" label="Torpedo Friendly Collision Process Mode">
                                     <Bindings>
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40228114237394944)"/>

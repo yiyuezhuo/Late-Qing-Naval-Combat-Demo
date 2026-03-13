@@ -1116,6 +1116,10 @@ MonoBehaviour:
     m_Localized: Global Hit Coef
     m_Metadata:
       m_Items: []
+  - m_Id: 62976000019894274
+    m_Localized: No Penetration Damage Coef
+    m_Metadata:
+      m_Items: []
   - m_Id: 183231472898048
     m_Localized: Simulation Rate Ratio
     m_Metadata:

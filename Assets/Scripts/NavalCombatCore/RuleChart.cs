@@ -447,8 +447,9 @@ namespace NavalCombatCore
                     // causeDamageEffect = RandomUtils.rand.NextDouble() < damageEffectProb;
                     break;
                 case HitPenDetType.NoPenetration:
-                    damagePoint = shellDamageFactorsTable.cells[row.index, 14 + (int)ammoType];
-                    damageEffectProb = shellDamageFactorsTable.cells[row.index, 18] * 0.01;
+                    var noPenetrationDamageCoef = CoreParameter.Instance.noPenetrationDamageCoef;
+                    damagePoint = shellDamageFactorsTable.cells[row.index, 14 + (int)ammoType] * noPenetrationDamageCoef;
+                    damageEffectProb = shellDamageFactorsTable.cells[row.index, 18] * 0.01 * noPenetrationDamageCoef;
                     // causeDamageEffect = RandomUtils.rand.NextDouble() < damageEffectProb;
                     break;
             }

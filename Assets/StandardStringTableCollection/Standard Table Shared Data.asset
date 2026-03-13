@@ -1113,6 +1113,10 @@ MonoBehaviour:
     m_Key: Global Hit Coef
     m_Metadata:
       m_Items: []
+  - m_Id: 62976000019894274
+    m_Key: No Penetration Damage Coef
+    m_Metadata:
+      m_Items: []
   - m_Id: 183231472898048
     m_Key: Simulation Rate Ratio
     m_Metadata:

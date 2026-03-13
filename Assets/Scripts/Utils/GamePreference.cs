@@ -351,6 +351,7 @@ public class GamePreference
             : UnitLabelDisplayMode.Unit;
         p.enableGunneryShellVisual = PlayerPrefs.GetInt("enableGunneryShellVisual", 1) == 1;
         p.gunneryShellRadiusScaleCoef = PlayerPrefs.GetFloat("gunneryShellRadiusScaleCoef", 12f);
+        // CoreParameter.Instance.noPenetrationDamageCoef = Mathf.Clamp01(PlayerPrefs.GetFloat("noPenetrationDamageCoef", 0.25f));
     }
 
     public void SaveToPlayerPrefs()
@@ -363,6 +364,7 @@ public class GamePreference
         PlayerPrefs.SetInt("unitLabelDisplayMode", (int)unitLabelDisplayMode);
         PlayerPrefs.SetInt("enableGunneryShellVisual", enableGunneryShellVisual ? 1 : 0);
         PlayerPrefs.SetFloat("gunneryShellRadiusScaleCoef", gunneryShellRadiusScaleCoef);
+        // PlayerPrefs.SetFloat("noPenetrationDamageCoef", Mathf.Clamp01(CoreParameter.Instance.noPenetrationDamageCoef));
 
         PlayerPrefs.Save();
     }

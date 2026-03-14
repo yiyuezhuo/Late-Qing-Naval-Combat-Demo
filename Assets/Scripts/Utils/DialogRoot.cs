@@ -1315,6 +1315,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                     {
                         mapType = model.mapType,
                         falloffAlgorithm = model.falloffAlgorithm,
+                        fillEnabled = model.fillEnabled,
                         group1ObjectId = model.group1ObjectId,
                         group2ObjectId = model.group2ObjectId,
                         linearRangeYards = model.linearRangeYards,

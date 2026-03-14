@@ -12,6 +12,22 @@
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000022)"/>
                 </Bindings>
             </LocalizedEnumField>
+            <ui:DropdownField name="Group1DropdownField" label="Group Selector 1">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000023)"/>
+                </Bindings>
+            </ui:DropdownField>
+            <ui:DropdownField name="Group2DropdownField" label="Group Selector 2">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000024)"/>
+                </Bindings>
+            </ui:DropdownField>
+            <ui:Toggle name="FillToggle" label="Fill">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="fillEnabled" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000036)"/>
+                </Bindings>
+            </ui:Toggle>
             <LocalizedEnumField name="FalloffAlgorithmField" type-str="InfluenceMapFalloffAlgorithm" label="Falloff Algorithm">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="falloffAlgorithmValue" binding-mode="TwoWay"/>
@@ -74,16 +90,6 @@
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000035)"/>
                 </Bindings>
             </ui:FloatField>
-            <ui:DropdownField name="Group1DropdownField" label="Group Selector 1">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000023)"/>
-                </Bindings>
-            </ui:DropdownField>
-            <ui:DropdownField name="Group2DropdownField" label="Group Selector 2">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000024)"/>
-                </Bindings>
-            </ui:DropdownField>
         </ui:VisualElement>
         <ui:VisualElement style="flex-direction: row; flex-grow: 0; flex-shrink: 0;">
             <ui:Button text="Plot" name="PlotButton" style="flex-grow: 1;">

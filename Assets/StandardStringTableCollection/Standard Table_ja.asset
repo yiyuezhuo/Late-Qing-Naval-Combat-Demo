@@ -2706,6 +2706,10 @@ MonoBehaviour:
     m_Localized: "\u6700\u5C0F\u5883\u754C\u30D1\u30C7\u30A3\u30F3\u30B0 (deg)"
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000036
+    m_Localized: "\u5857\u308A\u3064\u3076\u3057"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

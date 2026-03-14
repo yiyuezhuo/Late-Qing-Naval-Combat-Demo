@@ -121,4 +121,15 @@ public class InfluenceMapTests
 
         Assert.That(groups, Is.EqualTo(new List<ShipGroup> { rootA, rootB }));
     }
+
+    [Test]
+    public void GetFillBandIndex_MapsValuesIntoContourBands()
+    {
+        var levels = new List<float> { -10f, -5f, 0f, 5f, 10f };
+
+        Assert.That(InfluenceMapUtility.GetFillBandIndex(levels, -20f), Is.EqualTo(0));
+        Assert.That(InfluenceMapUtility.GetFillBandIndex(levels, -2f), Is.EqualTo(1));
+        Assert.That(InfluenceMapUtility.GetFillBandIndex(levels, 3f), Is.EqualTo(2));
+        Assert.That(InfluenceMapUtility.GetFillBandIndex(levels, 50f), Is.EqualTo(3));
+    }
 }

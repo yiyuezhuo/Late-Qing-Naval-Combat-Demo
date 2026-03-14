@@ -18,6 +18,7 @@ using NavalCombat;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
 using YYZ;
 
 public interface IColliderRootProvider
@@ -73,6 +74,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public Transform shipLogTrajectoriesTransform;
     public Transform shipLogTrajectoryLabelsTransform;
     public GameObject shipLogTrajectoryLabelPrefab;
+    Transform influenceMapFillTransform;
     Transform influenceMapContoursTransform;
     Transform influenceMapContourLabelsTransform;
     [Header("Gunnery Shell Visual")]
@@ -2849,7 +2851,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         EnsureInfluenceMapRoots();
         ClearInfluenceMap();
 
-        foreach (var level in InfluenceMapUtility.BuildContourLevels(field.maxAbs))
+        var contourLevels = InfluenceMapUtility.BuildContourLevels(field.maxAbs);
+        if (request.fillEnabled)
+            PlotInfluenceMapFill(field, contourLevels);
+
+        foreach (var level in contourLevels)
         {
             var color = InfluenceMapUtility.GetContourColor(level, field.maxAbs);
             foreach (var polyline in InfluenceMapUtility.BuildContourPolylines(field, level))
@@ -2884,6 +2890,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public void ClearInfluenceMap()
     {
+        if (influenceMapFillTransform != null)
+        {
+            DestroyInfluenceMapFillChildren();
+        }
+
         if (influenceMapContoursTransform != null)
         {
             Utils.DestroyChildrensFor(influenceMapContoursTransform);
@@ -2900,6 +2911,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         if (earthTransform == null)
             return;
 
+        if (influenceMapFillTransform == null)
+        {
+            influenceMapFillTransform = new GameObject("InfluenceMapFill").transform;
+            influenceMapFillTransform.SetParent(earthTransform, false);
+        }
+
         if (influenceMapContoursTransform == null)
         {
             influenceMapContoursTransform = new GameObject("InfluenceMapContours").transform;
@@ -2911,6 +2928,116 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             influenceMapContourLabelsTransform = new GameObject("InfluenceMapContourLabels").transform;
             influenceMapContourLabelsTransform.SetParent(earthTransform, false);
             influenceMapContourLabelsTransform.gameObject.layer = LayerMask.NameToLayer("Icon");
+        }
+    }
+
+    void PlotInfluenceMapFill(InfluenceMapFieldData field, IReadOnlyList<float> contourLevels)
+    {
+        if (influenceMapFillTransform == null || contourLevels == null || contourLevels.Count < 2)
+            return;
+
+        var submeshCount = contourLevels.Count - 1;
+        var vertices = new Vector3[field.width * field.height];
+        var trianglesByBand = new List<int>[submeshCount];
+        for (var i = 0; i < submeshCount; i++)
+            trianglesByBand[i] = new List<int>();
+
+        for (var y = 0; y < field.height; y++)
+        {
+            var y01 = field.height <= 1 ? 0f : y / (float)(field.height - 1);
+            for (var x = 0; x < field.width; x++)
+            {
+                var x01 = field.width <= 1 ? 0f : x / (float)(field.width - 1);
+                var point = field.bounds.Lerp(x01, y01);
+                vertices[y * field.width + x] = Utils.LatitudeLongitudeDegHeightFootToVector3(point.LatDeg, point.LonDeg, 30f);
+            }
+        }
+
+        for (var y = 0; y < field.height - 1; y++)
+        {
+            for (var x = 0; x < field.width - 1; x++)
+            {
+                var avgValue = (
+                    field.values[x, y]
+                    + field.values[x + 1, y]
+                    + field.values[x, y + 1]
+                    + field.values[x + 1, y + 1]
+                ) * 0.25f;
+                var bandIndex = InfluenceMapUtility.GetFillBandIndex(contourLevels, avgValue);
+                if (bandIndex < 0 || bandIndex >= trianglesByBand.Length)
+                    continue;
+
+                var v00 = y * field.width + x;
+                var v10 = y * field.width + x + 1;
+                var v01 = (y + 1) * field.width + x;
+                var v11 = (y + 1) * field.width + x + 1;
+                var triangles = trianglesByBand[bandIndex];
+                triangles.Add(v00);
+                triangles.Add(v01);
+                triangles.Add(v10);
+                triangles.Add(v10);
+                triangles.Add(v01);
+                triangles.Add(v11);
+            }
+        }
+
+        var mesh = new Mesh
+        {
+            name = "InfluenceMapFillMesh",
+            indexFormat = vertices.Length > 65535 ? IndexFormat.UInt32 : IndexFormat.UInt16,
+            vertices = vertices,
+            subMeshCount = submeshCount
+        };
+
+        for (var i = 0; i < submeshCount; i++)
+            mesh.SetTriangles(trianglesByBand[i], i, true);
+        mesh.RecalculateBounds();
+
+        var obj = new GameObject("InfluenceMapFillMesh");
+        obj.transform.SetParent(influenceMapFillTransform, false);
+        var meshFilter = obj.AddComponent<MeshFilter>();
+        var meshRenderer = obj.AddComponent<MeshRenderer>();
+        meshFilter.sharedMesh = mesh;
+        meshRenderer.shadowCastingMode = ShadowCastingMode.Off;
+        meshRenderer.receiveShadows = false;
+        meshRenderer.motionVectorGenerationMode = MotionVectorGenerationMode.ForceNoMotion;
+        meshRenderer.sharedMaterials = BuildInfluenceMapFillMaterials(contourLevels, field.maxAbs);
+    }
+
+    Material[] BuildInfluenceMapFillMaterials(IReadOnlyList<float> contourLevels, float maxAbs)
+    {
+        var materials = new Material[contourLevels.Count - 1];
+        for (var i = 0; i < materials.Length; i++)
+        {
+            var midpointLevel = (contourLevels[i] + contourLevels[i + 1]) * 0.5f;
+            var color = InfluenceMapUtility.GetContourColor(midpointLevel, maxAbs);
+            color.a = 0.22f;
+            materials[i] = CreateFxMaterial($"InfluenceMapFillMaterial_{i}", color);
+        }
+
+        return materials;
+    }
+
+    void DestroyInfluenceMapFillChildren()
+    {
+        for (var i = influenceMapFillTransform.childCount - 1; i >= 0; i--)
+        {
+            var child = influenceMapFillTransform.GetChild(i);
+            var meshFilter = child.GetComponent<MeshFilter>();
+            if (meshFilter != null && meshFilter.sharedMesh != null)
+                Destroy(meshFilter.sharedMesh);
+
+            var meshRenderer = child.GetComponent<MeshRenderer>();
+            if (meshRenderer != null)
+            {
+                foreach (var material in meshRenderer.sharedMaterials)
+                {
+                    if (material != null)
+                        Destroy(material);
+                }
+            }
+
+            Destroy(child.gameObject);
         }
     }
 

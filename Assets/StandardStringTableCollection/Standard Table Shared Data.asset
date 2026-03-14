@@ -2673,6 +2673,10 @@ MonoBehaviour:
     m_Key: Min Bounds Padding (deg)
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000036
+    m_Key: Fill
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -36,6 +36,7 @@ public class InfluenceMapRequest
 {
     public InfluenceMapType mapType;
     public InfluenceMapFalloffAlgorithm falloffAlgorithm = InfluenceMapFalloffAlgorithm.Linear;
+    public bool fillEnabled = true;
     public string group1ObjectId;
     public string group2ObjectId;
     public float linearRangeYards = InfluenceMapDefaults.LinearRangeYards;
@@ -55,6 +56,9 @@ public class InfluenceMapDialogModel
 
     [CreateProperty]
     public int falloffAlgorithmValue { get; set; } = (int)InfluenceMapFalloffAlgorithm.Linear;
+
+    [CreateProperty]
+    public bool fillEnabled { get; set; } = true;
 
     [CreateProperty]
     public float linearRangeYards { get; set; } = InfluenceMapDefaults.LinearRangeYards;
@@ -536,6 +540,23 @@ public static class InfluenceMapUtility
             0.75f * maxAbs,
             1f * maxAbs,
         };
+    }
+
+    public static int GetFillBandIndex(IReadOnlyList<float> levels, float value)
+    {
+        if (levels == null || levels.Count < 2)
+            return -1;
+
+        if (value <= levels[0])
+            return 0;
+
+        for (var i = 0; i < levels.Count - 1; i++)
+        {
+            if (value < levels[i + 1])
+                return i;
+        }
+
+        return levels.Count - 2;
     }
 
     public static List<InfluenceMapContourPolyline> BuildContourPolylines(InfluenceMapFieldData field, float level)

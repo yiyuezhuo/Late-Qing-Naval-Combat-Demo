@@ -2755,6 +2755,10 @@ MonoBehaviour:
     m_Localized: Min Bounds Padding (deg)
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000036
+    m_Localized: Fill
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

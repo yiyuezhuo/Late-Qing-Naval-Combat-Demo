@@ -57,9 +57,13 @@ else if (tutorial5Phase === Tutorial5Phase.WaitingForManualBatteryDialog) {
         let msg = getLocalized(`
 Now Matsushima should change its attacking behavior. Click A (or the button) and then click on an empty space on the map to cancel the attack constraint.
 
-Then open the Ship State View of Matsushima and switch to the Battery Group tab. Scroll to the Secondary Battery section. There are 12 mounts, but only the 6 starboard mounts are firing.
+Then open the Ship State View of Matsushima and switch to the Battery tab. Scroll to the Secondary Battery section. There are 12 mounts, but only the 6 starboard mounts are firing.
 
-Click 3 battery mounts and 1 FCS mount, press Set button, and then click on another ship as the target. Unlike attack constraint, this method will switch the target immediately.
+Use three of the gun mount and one FCS position to attack another ship—do this by clicking the set button then clicking another ship for each gun or FCS position.
+
+Go through the 3 gun mounts and the 1 FCS position one by one: for each, click the Set button, then click another ship to set it as the target.
+
+Unlike attack constraint, this method will switch the target immediately.
 
 Then switch to the Doctrine tab, disable Inherit of Automatic Fire, and set it to Manual so the algorithm will not reset the target anymore.
 
@@ -70,7 +74,9 @@ Advance time until the dialog pops up again.
 
 次に松島の艦艇状態ビューを開き、砲組タブに切り替えます。副砲の項目までスクロールしてください。砲架は12基ありますが、発砲しているのは右舷側の6基だけです。
 
-砲架を3基とFCSを1基選択し、設定ボタンを押してから、別の艦を目標としてクリックしてください。攻撃制約とは異なり、この方法では目標が即座に切り替わります。
+3つの砲座と1つのFCS位置を使って別の艦船を攻撃します。次の方法で行ってください：各砲座またはFCS位置について、設定ボタンをクリックし、その後別の艦船をクリックします。
+
+攻撃制約とは異なり、この方法では目標が即座に切り替わります。
 
 その後 条令 タブに切り替え、自動射撃 の 継承 を無効にして、設定を 手動 にしてください。これでアルゴリズムが目標を再設定しなくなります。
 
@@ -81,7 +87,9 @@ Advance time until the dialog pops up again.
 
 然后打开松岛的舰船状态视图并切换到炮组标签。滚动到副炮区域。这里共有 12 个炮位，但只有右舷的 6 个炮位正在开火。
 
-点击 3 个炮位和 1 个火控位，按下“设置”按钮，然后点击另一艘舰船作为目标。与攻击约束不同，这种方法会立即切换目标。
+用其中三个炮位与一个火控位攻击另一个舰船——通过以下方式做到：对于每个炮位或FCS位，点击设置按钮，然后点击另一个舰船。
+
+与攻击约束不同，这种方法会立即切换目标。
 
 接着切换到条令标签，关闭自动射击的继承，并将其设为手动，这样算法就不会再重置目标了。
 
@@ -92,7 +100,9 @@ Advance time until the dialog pops up again.
 
 然後打開松島的艦船狀態檢視並切換到炮組分頁。捲動到副炮區域。這裡共有 12 個炮位，但只有右舷的 6 個炮位正在開火。
 
-點擊 3 個炮位和 1 個 FCS 位，按下“設定”按鈕，然後點擊另一艘艦船作為目標。與攻擊約束不同，這種方法會立即切換目標。
+使用其中三個炮位與一個FCS位攻擊另一艘艦船——方法如下：對於每個炮位或FCS位，點擊設定按鈕，然後點擊另一艘艦船。
+
+與攻擊約束不同，這種方法會立即切換目標。
 
 接著切換到條令分頁，關閉自動射擊的繼承，並將其設為手動，這樣演算法就不會再重設目標了。
 

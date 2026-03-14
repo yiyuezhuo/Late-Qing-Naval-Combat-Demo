@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using NavalCombatCore;
+using UnityEngine;
 
 public class InfluenceMapTests
 {
@@ -75,5 +76,38 @@ public class InfluenceMapTests
         var value = InfluenceMapUtility.ComposeValue(InfluenceMapType.Control, 80f, 55f, 30f);
 
         Assert.That(value, Is.EqualTo(50f).Within(0.001f));
+    }
+
+    [Test]
+    public void EvaluateDistanceAttenuation_SupportsAllConfiguredAlgorithms()
+    {
+        Assert.That(
+            InfluenceMapUtility.EvaluateDistanceAttenuation(6000f, InfluenceMapFalloffAlgorithm.Linear, 12000f),
+            Is.EqualTo(0.5f).Within(0.001f)
+        );
+        Assert.That(
+            InfluenceMapUtility.EvaluateDistanceAttenuation(12000f, InfluenceMapFalloffAlgorithm.Exponential, 12000f),
+            Is.EqualTo(Mathf.Exp(-1f)).Within(0.001f)
+        );
+        Assert.That(
+            InfluenceMapUtility.EvaluateDistanceAttenuation(12000f, InfluenceMapFalloffAlgorithm.Inverse, 12000f),
+            Is.EqualTo(0.5f).Within(0.001f)
+        );
+        Assert.That(
+            InfluenceMapUtility.EvaluateDistanceAttenuation(12000f, InfluenceMapFalloffAlgorithm.Gaussian, 12000f),
+            Is.EqualTo(Mathf.Exp(-0.5f)).Within(0.001f)
+        );
+    }
+
+    [Test]
+    public void GetTopLevelShipGroupsInOobOrder_ReturnsOnlyRoots()
+    {
+        var rootA = new ShipGroup { objectId = "rootA" };
+        var child = new ShipGroup { objectId = "child", parentObjectId = "rootA" };
+        var rootB = new ShipGroup { objectId = "rootB" };
+
+        var groups = InfluenceMapUtility.GetTopLevelShipGroupsInOobOrder(new List<ShipGroup> { rootA, child, rootB });
+
+        Assert.That(groups, Is.EqualTo(new List<ShipGroup> { rootA, rootB }));
     }
 }

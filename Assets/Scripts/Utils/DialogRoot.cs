@@ -1200,6 +1200,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.onCreated += (_, el) =>
         {
             var orderedGroups = InfluenceMapUtility.GetShipGroupsInOobOrder(NavalGameState.Instance);
+            var topGroups = InfluenceMapUtility.GetTopLevelShipGroupsInOobOrder(NavalGameState.Instance);
             var groupNames = orderedGroups.Select(group => group.name.GetMergedName()).ToList();
 
             var group1DropdownField = el.Q<DropdownField>("Group1DropdownField");
@@ -1207,6 +1208,34 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             var plotButton = el.Q<Button>("PlotButton");
             var clearButton = el.Q<Button>("ClearButton");
             var mapTypeField = el.Q<LocalizedEnumField>("MapTypeField");
+            var falloffAlgorithmField = el.Q<LocalizedEnumField>("FalloffAlgorithmField");
+            var linearParameterRow = el.Q<VisualElement>("LinearParameterRow");
+            var exponentialParameterRow = el.Q<VisualElement>("ExponentialParameterRow");
+            var inverseParameterRow = el.Q<VisualElement>("InverseParameterRow");
+            var gaussianParameterRow = el.Q<VisualElement>("GaussianParameterRow");
+
+            void SetGroupSelection(DropdownField dropdownField, Action<string> setObjectId, string objectId, int fallbackIndex = 0)
+            {
+                if (dropdownField == null)
+                    return;
+
+                var groups = dropdownField.userData as List<ShipGroup>;
+                if (groups == null || groups.Count == 0)
+                {
+                    dropdownField.index = -1;
+                    setObjectId(null);
+                    return;
+                }
+
+                var selectedIndex = !string.IsNullOrEmpty(objectId)
+                    ? groups.FindIndex(group => group.objectId == objectId)
+                    : -1;
+                if (selectedIndex < 0)
+                    selectedIndex = Mathf.Clamp(fallbackIndex, 0, groups.Count - 1);
+
+                dropdownField.index = selectedIndex;
+                setObjectId(groups[selectedIndex].objectId);
+            }
 
             void SyncGroupSelection(DropdownField dropdownField, Action<string> setObjectId, int defaultIndex)
             {
@@ -1222,9 +1251,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                     return;
                 }
 
-                var clampedIndex = Mathf.Clamp(defaultIndex, 0, orderedGroups.Count - 1);
-                dropdownField.index = clampedIndex;
-                setObjectId(orderedGroups[clampedIndex].objectId);
+                SetGroupSelection(dropdownField, setObjectId, null, defaultIndex);
                 dropdownField.RegisterValueChangedCallback(_ =>
                 {
                     var groups = dropdownField.userData as List<ShipGroup>;
@@ -1238,6 +1265,28 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 });
             }
 
+            void SyncFalloffParameterState(InfluenceMapFalloffAlgorithm algorithm)
+            {
+                if (linearParameterRow != null)
+                    linearParameterRow.style.display = algorithm == InfluenceMapFalloffAlgorithm.Linear ? DisplayStyle.Flex : DisplayStyle.None;
+                if (exponentialParameterRow != null)
+                    exponentialParameterRow.style.display = algorithm == InfluenceMapFalloffAlgorithm.Exponential ? DisplayStyle.Flex : DisplayStyle.None;
+                if (inverseParameterRow != null)
+                    inverseParameterRow.style.display = algorithm == InfluenceMapFalloffAlgorithm.Inverse ? DisplayStyle.Flex : DisplayStyle.None;
+                if (gaussianParameterRow != null)
+                    gaussianParameterRow.style.display = algorithm == InfluenceMapFalloffAlgorithm.Gaussian ? DisplayStyle.Flex : DisplayStyle.None;
+            }
+
+            void ApplyDefaultControlGroups()
+            {
+                if (topGroups.Count == 0)
+                    return;
+
+                SetGroupSelection(group1DropdownField, objectId => model.group1ObjectId = objectId, topGroups[0].objectId, 0);
+                var secondGroup = topGroups.Count > 1 ? topGroups[1] : topGroups[0];
+                SetGroupSelection(group2DropdownField, objectId => model.group2ObjectId = objectId, secondGroup.objectId, 0);
+            }
+
             void SyncGroup2State(InfluenceMapType mapType)
             {
                 var group2Enabled = mapType == InfluenceMapType.Control;
@@ -1247,8 +1296,16 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             SyncGroupSelection(group1DropdownField, objectId => model.group1ObjectId = objectId, 0);
             SyncGroupSelection(group2DropdownField, objectId => model.group2ObjectId = objectId, orderedGroups.Count > 1 ? 1 : 0);
 
-            mapTypeField?.RegisterValueChangedCallback(evt => SyncGroup2State((InfluenceMapType)evt.newValue));
+            mapTypeField?.RegisterValueChangedCallback(evt =>
+            {
+                var mapType = (InfluenceMapType)evt.newValue;
+                SyncGroup2State(mapType);
+                if (mapType == InfluenceMapType.Control)
+                    ApplyDefaultControlGroups();
+            });
             SyncGroup2State(mapTypeField != null ? (InfluenceMapType)mapTypeField.value : model.mapType);
+            falloffAlgorithmField?.RegisterValueChangedCallback(evt => SyncFalloffParameterState((InfluenceMapFalloffAlgorithm)evt.newValue));
+            SyncFalloffParameterState(falloffAlgorithmField != null ? (InfluenceMapFalloffAlgorithm)falloffAlgorithmField.value : model.falloffAlgorithm);
 
             if (plotButton != null)
             {
@@ -1257,8 +1314,13 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                     GameManager.Instance.PlotInfluenceMap(new InfluenceMapRequest
                     {
                         mapType = model.mapType,
+                        falloffAlgorithm = model.falloffAlgorithm,
                         group1ObjectId = model.group1ObjectId,
                         group2ObjectId = model.group2ObjectId,
+                        linearRangeYards = model.linearRangeYards,
+                        exponentialDecayLengthYards = model.exponentialDecayLengthYards,
+                        inverseHalfEffectDistanceYards = model.inverseHalfEffectDistanceYards,
+                        gaussianSigmaYards = model.gaussianSigmaYards,
                     });
                 };
             }

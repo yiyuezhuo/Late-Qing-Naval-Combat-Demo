@@ -2970,6 +2970,22 @@ MonoBehaviour:
     m_Localized: "\u63A7\u5236"
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000100017
+    m_Localized: "\u7DDA\u6027"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100018
+    m_Localized: "\u6307\u6578"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100019
+    m_Localized: "\u53CD\u6BD4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100020
+    m_Localized: "\u9AD8\u65AF"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

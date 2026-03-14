@@ -2942,6 +2942,22 @@ MonoBehaviour:
     m_Key: InfluenceMapType.Control
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000100017
+    m_Key: InfluenceMapFalloffAlgorithm.Linear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100018
+    m_Key: InfluenceMapFalloffAlgorithm.Exponential
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100019
+    m_Key: InfluenceMapFalloffAlgorithm.Inverse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100020
+    m_Key: InfluenceMapFalloffAlgorithm.Gaussian
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

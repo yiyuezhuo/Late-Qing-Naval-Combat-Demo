@@ -12,11 +12,32 @@ public enum InfluenceMapType
     Control,
 }
 
+public enum InfluenceMapFalloffAlgorithm
+{
+    Linear,
+    Exponential,
+    Inverse,
+    Gaussian,
+}
+
+public static class InfluenceMapDefaults
+{
+    public const float LinearRangeYards = 36000f;
+    public const float ExponentialDecayLengthYards = 12000f;
+    public const float InverseHalfEffectDistanceYards = 12000f;
+    public const float GaussianSigmaYards = 12000f;
+}
+
 public class InfluenceMapRequest
 {
     public InfluenceMapType mapType;
+    public InfluenceMapFalloffAlgorithm falloffAlgorithm = InfluenceMapFalloffAlgorithm.Linear;
     public string group1ObjectId;
     public string group2ObjectId;
+    public float linearRangeYards = InfluenceMapDefaults.LinearRangeYards;
+    public float exponentialDecayLengthYards = InfluenceMapDefaults.ExponentialDecayLengthYards;
+    public float inverseHalfEffectDistanceYards = InfluenceMapDefaults.InverseHalfEffectDistanceYards;
+    public float gaussianSigmaYards = InfluenceMapDefaults.GaussianSigmaYards;
 }
 
 public class InfluenceMapDialogModel
@@ -24,10 +45,26 @@ public class InfluenceMapDialogModel
     [CreateProperty]
     public int mapTypeValue { get; set; } = (int)InfluenceMapType.Power;
 
+    [CreateProperty]
+    public int falloffAlgorithmValue { get; set; } = (int)InfluenceMapFalloffAlgorithm.Linear;
+
+    [CreateProperty]
+    public float linearRangeYards { get; set; } = InfluenceMapDefaults.LinearRangeYards;
+
+    [CreateProperty]
+    public float exponentialDecayLengthYards { get; set; } = InfluenceMapDefaults.ExponentialDecayLengthYards;
+
+    [CreateProperty]
+    public float inverseHalfEffectDistanceYards { get; set; } = InfluenceMapDefaults.InverseHalfEffectDistanceYards;
+
+    [CreateProperty]
+    public float gaussianSigmaYards { get; set; } = InfluenceMapDefaults.GaussianSigmaYards;
+
     public string group1ObjectId;
     public string group2ObjectId;
 
     public InfluenceMapType mapType => (InfluenceMapType)mapTypeValue;
+    public InfluenceMapFalloffAlgorithm falloffAlgorithm => (InfluenceMapFalloffAlgorithm)falloffAlgorithmValue;
 }
 
 public readonly struct InfluenceMapBounds
@@ -76,11 +113,10 @@ public static class InfluenceMapUtility
 {
     public const int SampleWidth = 96;
     public const int SampleHeight = 96;
-    public const float RangeYards = 36000f;
+    public const float RangeYards = InfluenceMapDefaults.LinearRangeYards;
     public const float BoundsPaddingRatio = 0.1f;
     public const float MinBoundsPaddingDeg = 0.05f;
     const float YardsPerDegree = 6076.11549f * 60f / 3f;
-    const float RangeSquaredYards = RangeYards * RangeYards;
 
     readonly struct ContourSegment
     {
@@ -145,6 +181,19 @@ public static class InfluenceMapUtility
     public static List<ShipGroup> GetShipGroupsInOobOrder(NavalGameState state)
     {
         return GetShipGroupsInOobOrder(state?.shipGroups, objectId => CoreUtils.EntityManager.Instance.Get<IShipGroupMember>(objectId));
+    }
+
+    public static List<ShipGroup> GetTopLevelShipGroupsInOobOrder(NavalGameState state)
+    {
+        return GetTopLevelShipGroupsInOobOrder(state?.shipGroups);
+    }
+
+    public static List<ShipGroup> GetTopLevelShipGroupsInOobOrder(IReadOnlyList<ShipGroup> shipGroups)
+    {
+        if (shipGroups == null)
+            return new List<ShipGroup>();
+
+        return shipGroups.Where(group => group != null && string.IsNullOrEmpty(group.parentObjectId)).ToList();
     }
 
     public static List<ShipGroup> GetShipGroupsInOobOrder(IReadOnlyList<ShipGroup> shipGroups, Func<string, IShipGroupMember> resolver)
@@ -270,7 +319,27 @@ public static class InfluenceMapUtility
 
     public static float EvaluateDistanceAttenuation(float distanceYards)
     {
-        return Mathf.Max(0f, (RangeYards - distanceYards) / RangeYards);
+        return EvaluateDistanceAttenuation(distanceYards, InfluenceMapFalloffAlgorithm.Linear, InfluenceMapDefaults.LinearRangeYards);
+    }
+
+    public static float EvaluateDistanceAttenuation(float distanceYards, InfluenceMapRequest request)
+    {
+        return request == null
+            ? EvaluateDistanceAttenuation(distanceYards)
+            : EvaluateDistanceAttenuation(distanceYards, request.falloffAlgorithm, GetPrimaryDistanceParameterYards(request));
+    }
+
+    public static float EvaluateDistanceAttenuation(float distanceYards, InfluenceMapFalloffAlgorithm algorithm, float parameterYards)
+    {
+        var safeParameterYards = Mathf.Max(1f, parameterYards);
+        return algorithm switch
+        {
+            InfluenceMapFalloffAlgorithm.Linear => Mathf.Max(0f, (safeParameterYards - distanceYards) / safeParameterYards),
+            InfluenceMapFalloffAlgorithm.Exponential => Mathf.Exp(-distanceYards / safeParameterYards),
+            InfluenceMapFalloffAlgorithm.Inverse => safeParameterYards / (safeParameterYards + Mathf.Max(0f, distanceYards)),
+            InfluenceMapFalloffAlgorithm.Gaussian => Mathf.Exp(-0.5f * Square(distanceYards / safeParameterYards)),
+            _ => 0f,
+        };
     }
 
     public static float EvaluatePowerContribution(ShipLog shipLog, LatLon point)
@@ -285,6 +354,11 @@ public static class InfluenceMapUtility
     public static float EvaluatePowerContribution(float score, float distanceYards)
     {
         return score * EvaluateDistanceAttenuation(distanceYards);
+    }
+
+    public static float EvaluatePowerContribution(float score, float distanceYards, InfluenceMapRequest request)
+    {
+        return score * EvaluateDistanceAttenuation(distanceYards, request);
     }
 
     public static float EvaluateFirepowerContribution(ShipLog shipLog, LatLon point)
@@ -315,6 +389,11 @@ public static class InfluenceMapUtility
     public static float EvaluateFirepowerContribution(float smoothedFirepower, float distanceYards)
     {
         return smoothedFirepower * EvaluateDistanceAttenuation(distanceYards);
+    }
+
+    public static float EvaluateFirepowerContribution(float smoothedFirepower, float distanceYards, InfluenceMapRequest request)
+    {
+        return smoothedFirepower * EvaluateDistanceAttenuation(distanceYards, request);
     }
 
     public static float ComposeValue(InfluenceMapType mapType, float group1Power, float group1Firepower, float group2Power)
@@ -367,6 +446,8 @@ public static class InfluenceMapUtility
         var group2Samples = request.mapType == InfluenceMapType.Control
             ? BuildShipFieldSamples(group2Ships, projection)
             : null;
+        var cutoffDistanceYards = GetEffectiveCutoffDistanceYards(request, bounds);
+        var cutoffDistanceSquaredYards = cutoffDistanceYards <= 0f ? 0f : Square(cutoffDistanceYards);
         var maxAbs = 0f;
         for (var y = 0; y < height; y++)
         {
@@ -376,9 +457,10 @@ public static class InfluenceMapUtility
                 var pointX = xCoords[x];
                 var value = request.mapType switch
                 {
-                    InfluenceMapType.Power => EvaluatePowerAtPoint(group1Samples, pointX, pointY),
-                    InfluenceMapType.Firepower => EvaluateFirepowerAtPoint(group1Samples, pointX, pointY),
-                    InfluenceMapType.Control => EvaluatePowerAtPoint(group1Samples, pointX, pointY) - EvaluatePowerAtPoint(group2Samples, pointX, pointY),
+                    InfluenceMapType.Power => EvaluatePowerAtPoint(group1Samples, pointX, pointY, request, cutoffDistanceSquaredYards),
+                    InfluenceMapType.Firepower => EvaluateFirepowerAtPoint(group1Samples, pointX, pointY, request, cutoffDistanceSquaredYards),
+                    InfluenceMapType.Control => EvaluatePowerAtPoint(group1Samples, pointX, pointY, request, cutoffDistanceSquaredYards)
+                        - EvaluatePowerAtPoint(group2Samples, pointX, pointY, request, cutoffDistanceSquaredYards),
                     _ => 0f,
                 };
 
@@ -542,7 +624,40 @@ public static class InfluenceMapUtility
         return samples;
     }
 
-    static float EvaluatePowerAtPoint(IReadOnlyList<ShipFieldSample> ships, float pointX, float pointY)
+    public static float GetPrimaryDistanceParameterYards(InfluenceMapRequest request)
+    {
+        if (request == null)
+            return InfluenceMapDefaults.LinearRangeYards;
+
+        return request.falloffAlgorithm switch
+        {
+            InfluenceMapFalloffAlgorithm.Linear => request.linearRangeYards,
+            InfluenceMapFalloffAlgorithm.Exponential => request.exponentialDecayLengthYards,
+            InfluenceMapFalloffAlgorithm.Inverse => request.inverseHalfEffectDistanceYards,
+            InfluenceMapFalloffAlgorithm.Gaussian => request.gaussianSigmaYards,
+            _ => InfluenceMapDefaults.LinearRangeYards,
+        };
+    }
+
+    public static float GetEffectiveCutoffDistanceYards(InfluenceMapRequest request, InfluenceMapBounds bounds)
+    {
+        var diagonalDistanceYards = ApproximateDistanceYards(
+            new LatLon(bounds.minLat, bounds.minLon),
+            new LatLon(bounds.maxLat, bounds.maxLon)
+        );
+        var parameterYards = Mathf.Max(1f, GetPrimaryDistanceParameterYards(request));
+        var algorithmCutoffYards = (request?.falloffAlgorithm ?? InfluenceMapFalloffAlgorithm.Linear) switch
+        {
+            InfluenceMapFalloffAlgorithm.Linear => parameterYards,
+            InfluenceMapFalloffAlgorithm.Exponential => parameterYards * 6f,
+            InfluenceMapFalloffAlgorithm.Inverse => parameterYards * 64f,
+            InfluenceMapFalloffAlgorithm.Gaussian => parameterYards * 4f,
+            _ => diagonalDistanceYards,
+        };
+        return Mathf.Min(diagonalDistanceYards, algorithmCutoffYards);
+    }
+
+    static float EvaluatePowerAtPoint(IReadOnlyList<ShipFieldSample> ships, float pointX, float pointY, InfluenceMapRequest request, float cutoffDistanceSquaredYards)
     {
         if (ships == null)
             return 0f;
@@ -552,17 +667,17 @@ public static class InfluenceMapUtility
         {
             var sample = ships[i];
             var distanceSquaredYards = Square(pointX - sample.xYards) + Square(pointY - sample.yYards);
-            if (distanceSquaredYards >= RangeSquaredYards)
+            if (distanceSquaredYards >= cutoffDistanceSquaredYards)
                 continue;
 
             var distanceYards = Mathf.Sqrt(distanceSquaredYards);
-            value += EvaluatePowerContribution(sample.generalScore, distanceYards);
+            value += EvaluatePowerContribution(sample.generalScore, distanceYards, request);
         }
 
         return value;
     }
 
-    static float EvaluateFirepowerAtPoint(IReadOnlyList<ShipFieldSample> ships, float pointX, float pointY)
+    static float EvaluateFirepowerAtPoint(IReadOnlyList<ShipFieldSample> ships, float pointX, float pointY, InfluenceMapRequest request, float cutoffDistanceSquaredYards)
     {
         if (ships == null)
             return 0f;
@@ -574,11 +689,11 @@ public static class InfluenceMapUtility
             var dx = pointX - sample.xYards;
             var dy = pointY - sample.yYards;
             var distanceSquaredYards = Square(dx) + Square(dy);
-            if (distanceSquaredYards >= RangeSquaredYards)
+            if (distanceSquaredYards >= cutoffDistanceSquaredYards)
                 continue;
 
             var distanceYards = Mathf.Sqrt(distanceSquaredYards);
-            var attenuation = EvaluateDistanceAttenuation(distanceYards);
+            var attenuation = EvaluateDistanceAttenuation(distanceYards, request);
             if (attenuation <= 0f)
                 continue;
 

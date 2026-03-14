@@ -2719,6 +2719,26 @@ MonoBehaviour:
     m_Localized: Clear
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000027
+    m_Localized: Falloff Algorithm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000028
+    m_Localized: Linear Range (yd)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000029
+    m_Localized: Exponential Decay Length (yd)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000030
+    m_Localized: Inverse Half-Effect Distance (yd)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000031
+    m_Localized: Gaussian Sigma (yd)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

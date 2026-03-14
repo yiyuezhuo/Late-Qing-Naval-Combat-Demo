@@ -2637,6 +2637,26 @@ MonoBehaviour:
     m_Key: Clear
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000027
+    m_Key: Falloff Algorithm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000028
+    m_Key: Linear Range (yd)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000029
+    m_Key: Exponential Decay Length (yd)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000030
+    m_Key: Inverse Half-Effect Distance (yd)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000031
+    m_Key: Gaussian Sigma (yd)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

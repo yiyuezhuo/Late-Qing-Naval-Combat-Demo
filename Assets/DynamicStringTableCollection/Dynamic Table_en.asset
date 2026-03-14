@@ -2951,6 +2951,22 @@ MonoBehaviour:
     m_Localized: Control
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000100017
+    m_Localized: Linear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100018
+    m_Localized: Exponential
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100019
+    m_Localized: Inverse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100020
+    m_Localized: Gaussian
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

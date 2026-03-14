@@ -11,6 +11,8 @@ internal static class PortraitHullRuntimeBuilder
     const int SmoothPasses = 3;
     const float InsetRatio = 0.08f;
     const float MinHalfWidth = 0.0035f;
+    const int SplineSubdivision = 4;
+    const int MinSplineSamples = 48;
 
     public static Mesh GetOrBuildNormalizedHullMesh(Texture2D portraitTex, float alphaThreshold = 0.1f)
     {
@@ -105,28 +107,43 @@ internal static class PortraitHullRuntimeBuilder
             halfWidths[i] = Mathf.Max(halfWidths[i] * (1f - InsetRatio) - insetNormalized, MinHalfWidth);
         }
 
-        var vertices = new List<Vector3>(rangeLength * 4);
-        var uvs = new List<Vector2>(rangeLength * 4);
-        var triangles = new List<int>((rangeLength - 1) * 18 + 12);
+        var splineSampleCount = Mathf.Max(MinSplineSamples, (rangeLength - 1) * SplineSubdivision + 1);
+        var splineXs = new float[splineSampleCount];
+        var splineCenters = ResampleCatmullRom(centers, splineSampleCount);
+        var splineHalfWidths = ResampleCatmullRom(halfWidths, splineSampleCount);
 
-        var deckStarboard = new int[rangeLength];
-        var deckPort = new int[rangeLength];
-        var keelStarboard = new int[rangeLength];
-        var keelPort = new int[rangeLength];
-
-        for (int i = 0; i < rangeLength; i++)
+        var minX = xs[0];
+        var maxX = xs[xs.Length - 1];
+        for (int i = 0; i < splineSampleCount; i++)
         {
-            var x = xs[i];
-            var center = centers[i];
-            var halfWidth = halfWidths[i];
-
-            deckStarboard[i] = AddVertex(vertices, uvs, new Vector3(x, center - halfWidth, 0f), new Vector2(i / Mathf.Max(1f, rangeLength - 1), 1f));
-            deckPort[i] = AddVertex(vertices, uvs, new Vector3(x, center + halfWidth, 0f), new Vector2(i / Mathf.Max(1f, rangeLength - 1), 1f));
-            keelStarboard[i] = AddVertex(vertices, uvs, new Vector3(x, center - halfWidth, 1f), new Vector2(i / Mathf.Max(1f, rangeLength - 1), 0f));
-            keelPort[i] = AddVertex(vertices, uvs, new Vector3(x, center + halfWidth, 1f), new Vector2(i / Mathf.Max(1f, rangeLength - 1), 0f));
+            var t = splineSampleCount <= 1 ? 0f : (float)i / (splineSampleCount - 1);
+            splineXs[i] = Mathf.Lerp(minX, maxX, t);
+            splineHalfWidths[i] = Mathf.Max(splineHalfWidths[i], MinHalfWidth);
         }
 
-        for (int i = 0; i < rangeLength - 1; i++)
+        var vertices = new List<Vector3>(splineSampleCount * 4);
+        var uvs = new List<Vector2>(splineSampleCount * 4);
+        var triangles = new List<int>((splineSampleCount - 1) * 18 + 12);
+
+        var deckStarboard = new int[splineSampleCount];
+        var deckPort = new int[splineSampleCount];
+        var keelStarboard = new int[splineSampleCount];
+        var keelPort = new int[splineSampleCount];
+
+        for (int i = 0; i < splineSampleCount; i++)
+        {
+            var x = splineXs[i];
+            var center = splineCenters[i];
+            var halfWidth = splineHalfWidths[i];
+            var u = splineSampleCount <= 1 ? 0f : (float)i / (splineSampleCount - 1);
+
+            deckStarboard[i] = AddVertex(vertices, uvs, new Vector3(x, center - halfWidth, 0f), new Vector2(u, 1f));
+            deckPort[i] = AddVertex(vertices, uvs, new Vector3(x, center + halfWidth, 0f), new Vector2(u, 1f));
+            keelStarboard[i] = AddVertex(vertices, uvs, new Vector3(x, center - halfWidth, 1f), new Vector2(u, 0f));
+            keelPort[i] = AddVertex(vertices, uvs, new Vector3(x, center + halfWidth, 1f), new Vector2(u, 0f));
+        }
+
+        for (int i = 0; i < splineSampleCount - 1; i++)
         {
             AddQuad(triangles, deckPort[i], deckPort[i + 1], keelPort[i + 1], keelPort[i]);
             AddQuad(triangles, deckStarboard[i + 1], deckStarboard[i], keelStarboard[i], keelStarboard[i + 1]);
@@ -134,7 +151,7 @@ internal static class PortraitHullRuntimeBuilder
         }
 
         AddQuad(triangles, deckStarboard[0], deckPort[0], keelPort[0], keelStarboard[0]);
-        AddQuad(triangles, deckPort[rangeLength - 1], deckStarboard[rangeLength - 1], keelStarboard[rangeLength - 1], keelPort[rangeLength - 1]);
+        AddQuad(triangles, deckPort[splineSampleCount - 1], deckStarboard[splineSampleCount - 1], keelStarboard[splineSampleCount - 1], keelPort[splineSampleCount - 1]);
 
         var mesh = new Mesh
         {
@@ -268,6 +285,51 @@ internal static class PortraitHullRuntimeBuilder
                 values[i] = scratch[i];
             }
         }
+    }
+
+    static float[] ResampleCatmullRom(float[] source, int sampleCount)
+    {
+        var result = new float[sampleCount];
+        if (source.Length == 0)
+            return result;
+        if (source.Length == 1)
+        {
+            for (int i = 0; i < sampleCount; i++)
+            {
+                result[i] = source[0];
+            }
+            return result;
+        }
+
+        for (int i = 0; i < sampleCount; i++)
+        {
+            var tGlobal = sampleCount <= 1 ? 0f : (float)i / (sampleCount - 1) * (source.Length - 1);
+            var segment = Mathf.Clamp(Mathf.FloorToInt(tGlobal), 0, source.Length - 2);
+            var t = tGlobal - segment;
+
+            var p0 = source[Mathf.Max(segment - 1, 0)];
+            var p1 = source[segment];
+            var p2 = source[segment + 1];
+            var p3 = source[Mathf.Min(segment + 2, source.Length - 1)];
+
+            result[i] = CatmullRom(p0, p1, p2, p3, t);
+        }
+
+        result[0] = source[0];
+        result[sampleCount - 1] = source[source.Length - 1];
+        return result;
+    }
+
+    static float CatmullRom(float p0, float p1, float p2, float p3, float t)
+    {
+        var t2 = t * t;
+        var t3 = t2 * t;
+        return 0.5f * (
+            (2f * p1) +
+            (-p0 + p2) * t +
+            (2f * p0 - 5f * p1 + 4f * p2 - p3) * t2 +
+            (-p0 + 3f * p1 - 3f * p2 + p3) * t3
+        );
     }
 
     static int AddVertex(

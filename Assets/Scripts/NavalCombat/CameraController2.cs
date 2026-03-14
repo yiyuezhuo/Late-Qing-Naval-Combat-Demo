@@ -16,12 +16,12 @@ public class CameraController2 : MonoBehaviour
 
     List<float> zoomLevel = new List<float>
     {
-        0.004f,
-        0.01f,
-        0.02f,
-        0.04f,
-        0.1f,
-        0.2f,
+        // 0.004f,
+        // 0.01f,
+        // 0.02f,
+        // 0.04f,
+        // 0.1f,
+        // 0.2f,
         0.4f,
         1.0f,
         2.0f,
@@ -36,12 +36,12 @@ public class CameraController2 : MonoBehaviour
         2000.0f,
         4000.0f,
         10000.0f,
-        20000.0f,
-        40000.0f,
-        100000.0f,
-        200000.0f,
-        400000.0f,
-        1000000.0f,
+        // 20000.0f,
+        // 40000.0f,
+        // 100000.0f,
+        // 200000.0f,
+        // 400000.0f,
+        // 1000000.0f,
     };
 
     // Vector3 lastTrackedPos;

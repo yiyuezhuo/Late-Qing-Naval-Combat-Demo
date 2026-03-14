@@ -142,6 +142,12 @@
                                 <ui:DataBinding property="value" data-source-path="showSunkShips" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:Toggle>
+                        <ui:Toggle label="3D Base">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000020)"/>
+                                <ui:DataBinding property="value" data-source-path="enable3DBase" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:Toggle>
                         <ui:Toggle label="Enable Gunnery Shell Visual">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="enableGunneryShellVisual" binding-mode="TwoWay"/>

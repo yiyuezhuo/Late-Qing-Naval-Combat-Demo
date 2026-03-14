@@ -154,6 +154,8 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     MeshRenderer runtimeHullMeshRenderer;
     Material runtimeHullMaterial;
     Texture2D runtimeHullSourceTexture;
+    Color runtimeHullBaseTint = Color.white;
+    bool runtimeHullRefreshRequested;
     static readonly int mainTexPropertyId = Shader.PropertyToID("_MainTex");
     static readonly int mainColorPropertyId = Shader.PropertyToID("_MainColor");
     static readonly int colorPropertyId = Shader.PropertyToID("_Color");
@@ -185,12 +187,30 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         // initialEmissionRateOverTimeConstant = funnelSmokeParticleSystem.emission.rateOverTime.constant; // x120 reference
         if (funnelSmokeParticleSystem != null)
             funnelSmokeParticleSystem.Pause();
+
+        GamePreference.Instance.enable3DBaseChanged -= OnEnable3DBaseChanged;
+        GamePreference.Instance.enable3DBaseChanged += OnEnable3DBaseChanged;
     }
 
     void OnDestroy()
     {
+        GamePreference.Instance.enable3DBaseChanged -= OnEnable3DBaseChanged;
+        DestroyRuntimeHullObject();
         if (runtimeHullMaterial != null)
             Destroy(runtimeHullMaterial);
+    }
+
+    void OnEnable3DBaseChanged(object sender, bool enabled)
+    {
+        if (!enabled)
+        {
+            runtimeHullRefreshRequested = false;
+            DestroyRuntimeHullObject();
+            return;
+        }
+
+        runtimeHullSourceTexture = null;
+        runtimeHullRefreshRequested = true;
     }
 
     void TryBindWakeGameObjectsByName()
@@ -209,11 +229,16 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             .ToList();
     }
 
-    bool ShouldShowRuntimeHull(ShipLog shipLog)
+    void DestroyRuntimeHullObject()
     {
-        return shipLog != null
-            && shipLog.shipClass != null
-            && !shipLog.IsLandBattery();
+        if (runtimeHullObject != null)
+            Destroy(runtimeHullObject);
+
+        runtimeHullObject = null;
+        runtimeHullMeshFilter = null;
+        runtimeHullMeshRenderer = null;
+        runtimeHullSourceTexture = null;
+        runtimeHullBaseTint = Color.white;
     }
 
     void EnsureRuntimeHullObject()
@@ -275,11 +300,15 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
     void UpdateRuntimeHullPreview(ShipLog shipLog, float lengthWu, float beamWu, Color mainColor)
     {
-        if (!ShouldShowRuntimeHull(shipLog) || portraitTex == null)
+        if (!GamePreference.Instance.enable3DBase)
         {
-            if (runtimeHullObject != null)
-                runtimeHullObject.SetActive(false);
-            runtimeHullSourceTexture = null;
+            DestroyRuntimeHullObject();
+            return;
+        }
+
+        if ((shipLog == null || shipLog.shipClass == null || shipLog.IsLandBattery()) || portraitTex == null)
+        {
+            DestroyRuntimeHullObject();
             return;
         }
 
@@ -289,14 +318,21 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
         if (runtimeHullSourceTexture != portraitTex)
         {
+            if (!PortraitHullRuntimeBuilder.TryGetOrBuildNormalizedHull(portraitTex, out var hullResult, runtimeHullAlphaThreshold))
+            {
+                DestroyRuntimeHullObject();
+                return;
+            }
+
             runtimeHullSourceTexture = portraitTex;
-            runtimeHullMeshFilter.sharedMesh = PortraitHullRuntimeBuilder.GetOrBuildNormalizedHullMesh(portraitTex, runtimeHullAlphaThreshold);
+            runtimeHullMeshFilter.sharedMesh = hullResult.mesh;
+            runtimeHullBaseTint = hullResult.baseTint;
         }
 
         var hullMesh = runtimeHullMeshFilter.sharedMesh;
         if (hullMesh == null)
         {
-            runtimeHullObject.SetActive(false);
+            DestroyRuntimeHullObject();
             return;
         }
 
@@ -305,7 +341,12 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         runtimeHullObject.transform.localRotation = Quaternion.identity;
         runtimeHullObject.transform.localScale = new Vector3(lengthWu, beamWu, draftWu);
 
-        var hullColor = new Color(mainColor.r * 0.84f, mainColor.g * 0.84f, mainColor.b * 0.84f, mainColor.a);
+        var hullColor = new Color(
+            runtimeHullBaseTint.r * mainColor.r,
+            runtimeHullBaseTint.g * mainColor.g,
+            runtimeHullBaseTint.b * mainColor.b,
+            mainColor.a
+        );
         SetMaterialMainTexture(runtimeHullMaterial, Texture2D.whiteTexture);
         SetMaterialTint(runtimeHullMaterial, hullColor);
 
@@ -786,7 +827,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         countryTex = UnityWebRequestImageReader.Instance.FetchTexture2D(Utils.GetCountryPath(model.GetCountry()));
 
         var newViewHashCode = GetViewHashCode();
-        if (oldViewHashCode == newViewHashCode)
+        if (oldViewHashCode == newViewHashCode && !runtimeHullRefreshRequested)
             return;
 
         oldViewHashCode = newViewHashCode;
@@ -800,6 +841,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         var mainColor = isTransparent ? transparentColor : Color.white;
         iconRenderer.material.SetColor("_MainColor", mainColor);
         UpdateRuntimeHullPreview(shipLog, lengthWu, beamWu, mainColor);
+        runtimeHullRefreshRequested = false;
 
         text.color = isTransparent ? transparentColor : Color.white;
     }

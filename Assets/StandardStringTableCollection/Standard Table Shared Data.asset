@@ -2609,6 +2609,10 @@ MonoBehaviour:
     m_Key: Historical Image Override
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000020
+    m_Key: 3D Base
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -2642,6 +2642,10 @@ MonoBehaviour:
     m_Localized: "\u53F2\u5B9F\u753B\u50CF\u306E\u4E0A\u66F8\u304D"
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000020
+    m_Localized: "3D\u30D9\u30FC\u30B9"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

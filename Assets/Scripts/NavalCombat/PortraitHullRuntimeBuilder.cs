@@ -3,7 +3,19 @@ using UnityEngine;
 
 internal static class PortraitHullRuntimeBuilder
 {
-    static readonly Dictionary<Texture2D, Mesh> meshCache = new();
+    internal readonly struct Result
+    {
+        public readonly Mesh mesh;
+        public readonly Color baseTint;
+
+        public Result(Mesh mesh, Color baseTint)
+        {
+            this.mesh = mesh;
+            this.baseTint = baseTint;
+        }
+    }
+
+    static readonly Dictionary<Texture2D, Result> resultCache = new();
     static readonly HashSet<Texture2D> failedTextures = new();
     const int MinStations = 24;
     const int MaxStations = 120;
@@ -13,30 +25,35 @@ internal static class PortraitHullRuntimeBuilder
     const float MinHalfWidth = 0.0035f;
     const int SplineSubdivision = 4;
     const int MinSplineSamples = 48;
+    const float BaseTintSaturationScale = 0.72f;
+    const float BaseTintValueScale = 0.78f;
+    static readonly Color FallbackBaseTint = new(0.82f, 0.82f, 0.82f, 1f);
 
-    public static Mesh GetOrBuildNormalizedHullMesh(Texture2D portraitTex, float alphaThreshold = 0.1f)
+    public static bool TryGetOrBuildNormalizedHull(Texture2D portraitTex, out Result result, float alphaThreshold = 0.1f)
     {
+        result = default;
         if (portraitTex == null)
-            return null;
+            return false;
 
-        if (meshCache.TryGetValue(portraitTex, out var mesh))
-            return mesh;
+        if (resultCache.TryGetValue(portraitTex, out result))
+            return true;
 
         if (failedTextures.Contains(portraitTex))
-            return null;
+            return false;
 
-        mesh = BuildNormalizedHullMesh(portraitTex, alphaThreshold);
-        if (mesh != null)
+        result = BuildNormalizedHull(portraitTex, alphaThreshold);
+        if (result.mesh != null)
         {
-            meshCache[portraitTex] = mesh;
-            return mesh;
+            resultCache[portraitTex] = result;
+            return true;
         }
 
         failedTextures.Add(portraitTex);
-        return null;
+        result = default;
+        return false;
     }
 
-    static Mesh BuildNormalizedHullMesh(Texture2D portraitTex, float alphaThreshold)
+    static Result BuildNormalizedHull(Texture2D portraitTex, float alphaThreshold)
     {
         Color32[] pixels;
         try
@@ -46,13 +63,15 @@ internal static class PortraitHullRuntimeBuilder
         catch (UnityException ex)
         {
             Debug.LogWarning($"Runtime hull preview requires a readable texture for {portraitTex.name}: {ex.Message}");
-            return null;
+            return default;
         }
 
         var width = portraitTex.width;
         var height = portraitTex.height;
         if (pixels == null || pixels.Length != width * height)
-            return null;
+            return default;
+
+        var baseTint = ComputeBaseTint(pixels, alphaThreshold);
 
         var stationCount = Mathf.Clamp(width / 4, MinStations, MaxStations);
         var minRunPixels = Mathf.Max(2, Mathf.RoundToInt(height * 0.05f));
@@ -78,11 +97,11 @@ internal static class PortraitHullRuntimeBuilder
         }
 
         if (!TryFindLargestValidRange(valid, out var startIndex, out var endIndex))
-            return null;
+            return default;
 
         var rangeLength = endIndex - startIndex + 1;
         if (rangeLength < 4)
-            return null;
+            return default;
 
         var centers = new float[rangeLength];
         var halfWidths = new float[rangeLength];
@@ -166,7 +185,44 @@ internal static class PortraitHullRuntimeBuilder
         mesh.SetTriangles(triangles, 0, true);
         mesh.RecalculateNormals();
         mesh.RecalculateBounds();
-        return mesh;
+        return new Result(mesh, baseTint);
+    }
+
+    static Color ComputeBaseTint(Color32[] pixels, float alphaThreshold)
+    {
+        var thresholdByte = Mathf.Clamp(Mathf.RoundToInt(alphaThreshold * 255f), 0, 255);
+        double r = 0;
+        double g = 0;
+        double b = 0;
+        var count = 0;
+
+        for (int i = 0; i < pixels.Length; i++)
+        {
+            var pixel = pixels[i];
+            if (pixel.a < thresholdByte)
+                continue;
+
+            r += pixel.r;
+            g += pixel.g;
+            b += pixel.b;
+            count++;
+        }
+
+        if (count == 0)
+            return FallbackBaseTint;
+
+        var avg = new Color(
+            (float)(r / count / 255.0),
+            (float)(g / count / 255.0),
+            (float)(b / count / 255.0),
+            1f
+        );
+
+        Color.RGBToHSV(avg, out var h, out var s, out var v);
+        s *= BaseTintSaturationScale;
+        v *= BaseTintValueScale;
+        v = Mathf.Clamp(v, 0.12f, 0.9f);
+        return Color.HSVToRGB(h, s, v);
     }
 
     static bool TryExtractPrimaryVerticalRun(

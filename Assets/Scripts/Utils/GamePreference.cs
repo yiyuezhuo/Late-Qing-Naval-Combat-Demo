@@ -220,6 +220,24 @@ public class GamePreference
         set => GameManager.showSunkShips = value;
     }
 
+    bool _enable3DBase = true;
+
+    public event EventHandler<bool> enable3DBaseChanged;
+
+    [CreateProperty]
+    public bool enable3DBase
+    {
+        get => _enable3DBase;
+        set
+        {
+            if (_enable3DBase == value)
+                return;
+
+            _enable3DBase = value;
+            enable3DBaseChanged?.Invoke(this, value);
+        }
+    }
+
     bool _enableGunneryShellVisual = true;
     float _gunneryShellRadiusScaleCoef = 100f;
 
@@ -363,6 +381,7 @@ public class GamePreference
         p.unitLabelDisplayMode = Enum.IsDefined(typeof(UnitLabelDisplayMode), unitLabelDisplayModeRaw)
             ? (UnitLabelDisplayMode)unitLabelDisplayModeRaw
             : UnitLabelDisplayMode.Unit;
+        p.enable3DBase = PlayerPrefs.GetInt("enable3DBase", 1) == 1;
         p.enableGunneryShellVisual = PlayerPrefs.GetInt("enableGunneryShellVisual", 1) == 1;
         p.gunneryShellRadiusScaleCoef = PlayerPrefs.GetFloat("gunneryShellRadiusScaleCoef", 12f);
         // CoreParameter.Instance.noPenetrationDamageCoef = Mathf.Clamp01(PlayerPrefs.GetFloat("noPenetrationDamageCoef", 0.25f));
@@ -376,6 +395,7 @@ public class GamePreference
         PlayerPrefs.SetInt("isInEditMode", isInEditMode ? 1 : 0);
         PlayerPrefs.SetInt("rangeRingDisplayMode", (int)rangeRingDisplayMode);
         PlayerPrefs.SetInt("unitLabelDisplayMode", (int)unitLabelDisplayMode);
+        PlayerPrefs.SetInt("enable3DBase", enable3DBase ? 1 : 0);
         PlayerPrefs.SetInt("enableGunneryShellVisual", enableGunneryShellVisual ? 1 : 0);
         PlayerPrefs.SetFloat("gunneryShellRadiusScaleCoef", gunneryShellRadiusScaleCoef);
         // PlayerPrefs.SetFloat("noPenetrationDamageCoef", Mathf.Clamp01(CoreParameter.Instance.noPenetrationDamageCoef));

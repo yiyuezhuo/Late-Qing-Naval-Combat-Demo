@@ -79,6 +79,8 @@ public static class InfluenceMapUtility
     public const float RangeYards = 36000f;
     public const float BoundsPaddingRatio = 0.1f;
     public const float MinBoundsPaddingDeg = 0.05f;
+    const float YardsPerDegree = 6076.11549f * 60f / 3f;
+    const float RangeSquaredYards = RangeYards * RangeYards;
 
     readonly struct ContourSegment
     {
@@ -89,6 +91,54 @@ public static class InfluenceMapUtility
         {
             this.start = start;
             this.end = end;
+        }
+    }
+
+    readonly struct LocalProjection
+    {
+        public readonly float centerLatDeg;
+        public readonly float centerLonDeg;
+        public readonly float lonScaleYards;
+
+        public LocalProjection(InfluenceMapBounds bounds)
+        {
+            centerLatDeg = (bounds.minLat + bounds.maxLat) * 0.5f;
+            centerLonDeg = (bounds.minLon + bounds.maxLon) * 0.5f;
+            lonScaleYards = Mathf.Max(0.01f, Mathf.Abs(Mathf.Cos(centerLatDeg * Mathf.Deg2Rad))) * YardsPerDegree;
+        }
+
+        public float LatitudeToY(float latitudeDeg)
+        {
+            return (latitudeDeg - centerLatDeg) * YardsPerDegree;
+        }
+
+        public float LongitudeToX(float longitudeDeg)
+        {
+            return (longitudeDeg - centerLonDeg) * lonScaleYards;
+        }
+    }
+
+    readonly struct ShipFieldSample
+    {
+        public readonly float xYards;
+        public readonly float yYards;
+        public readonly float headingDeg;
+        public readonly float generalScore;
+        public readonly float bowFirepower;
+        public readonly float starboardFirepower;
+        public readonly float sternFirepower;
+        public readonly float portFirepower;
+
+        public ShipFieldSample(ShipLog shipLog, LocalProjection projection)
+        {
+            xYards = projection.LongitudeToX(shipLog.position.LonDeg);
+            yYards = projection.LatitudeToY(shipLog.position.LatDeg);
+            headingDeg = shipLog.headingDeg;
+            generalScore = shipLog.EvaluateGeneralScore();
+            bowFirepower = shipLog.EvaluateBowFirepowerScore();
+            starboardFirepower = shipLog.EvaluateStarboardFirepowerScore();
+            sternFirepower = shipLog.EvaluateSternFirepowerScore();
+            portFirepower = shipLog.EvaluatePortFirepowerScore();
         }
     }
 
@@ -280,14 +330,23 @@ public static class InfluenceMapUtility
 
     public static float EvaluateSmoothedFirepower(float bowFirepower, float starboardFirepower, float sternFirepower, float portFirepower, float relativeBearingDeg)
     {
-        var record = new LowLevelCoursePlanner.ExtrapolatedRecord
+        var angle = MeasureUtils.NormalizeAngle(relativeBearingDeg);
+        if (angle <= 90f)
         {
-            bowFirepowerScore = bowFirepower,
-            starboardFirepowerScore = starboardFirepower,
-            sternFirepowerScore = sternFirepower,
-            portFirepowerScore = portFirepower,
-        };
-        return record.EvaluateSmoothedFirepower(relativeBearingDeg);
+            return bowFirepower * (90f - angle) / 90f + starboardFirepower * angle / 90f;
+        }
+
+        if (angle < 180f)
+        {
+            return starboardFirepower * (180f - angle) / 90f + sternFirepower * (angle - 90f) / 90f;
+        }
+
+        if (angle < 270f)
+        {
+            return sternFirepower * (270f - angle) / 90f + portFirepower * (angle - 180f) / 90f;
+        }
+
+        return portFirepower * (360f - angle) / 90f + bowFirepower * (angle - 270f) / 90f;
     }
 
     public static InfluenceMapFieldData BuildField(InfluenceMapBounds bounds, InfluenceMapRequest request, IReadOnlyList<ShipLog> group1Ships, IReadOnlyList<ShipLog> group2Ships, int width = SampleWidth, int height = SampleHeight)
@@ -301,18 +360,27 @@ public static class InfluenceMapUtility
             height = height,
         };
 
+        var projection = new LocalProjection(bounds);
+        var xCoords = BuildSampleXCoordinates(bounds, projection, width);
+        var yCoords = BuildSampleYCoordinates(bounds, projection, height);
+        var group1Samples = BuildShipFieldSamples(group1Ships, projection);
+        var group2Samples = request.mapType == InfluenceMapType.Control
+            ? BuildShipFieldSamples(group2Ships, projection)
+            : null;
         var maxAbs = 0f;
         for (var y = 0; y < height; y++)
         {
-            var y01 = height <= 1 ? 0f : y / (float)(height - 1);
+            var pointY = yCoords[y];
             for (var x = 0; x < width; x++)
             {
-                var x01 = width <= 1 ? 0f : x / (float)(width - 1);
-                var point = bounds.Lerp(x01, y01);
-                var group1Power = EvaluatePowerAtPoint(group1Ships, point);
-                var group1Firepower = EvaluateFirepowerAtPoint(group1Ships, point);
-                var group2Power = request.mapType == InfluenceMapType.Control ? EvaluatePowerAtPoint(group2Ships, point) : 0f;
-                var value = ComposeValue(request.mapType, group1Power, group1Firepower, group2Power);
+                var pointX = xCoords[x];
+                var value = request.mapType switch
+                {
+                    InfluenceMapType.Power => EvaluatePowerAtPoint(group1Samples, pointX, pointY),
+                    InfluenceMapType.Firepower => EvaluateFirepowerAtPoint(group1Samples, pointX, pointY),
+                    InfluenceMapType.Control => EvaluatePowerAtPoint(group1Samples, pointX, pointY) - EvaluatePowerAtPoint(group2Samples, pointX, pointY),
+                    _ => 0f,
+                };
 
                 values[x, y] = value;
                 maxAbs = Mathf.Max(maxAbs, Mathf.Abs(value));
@@ -405,7 +473,7 @@ public static class InfluenceMapUtility
         var totalLength = 0f;
         for (var i = 1; i < polyline.points.Count; i++)
         {
-            var segmentLength = (float)MeasureStats.Approximation.HaversineDistanceYards(polyline.points[i - 1], polyline.points[i]);
+            var segmentLength = ApproximateDistanceYards(polyline.points[i - 1], polyline.points[i]);
             segmentLengths.Add(segmentLength);
             totalLength += segmentLength;
         }
@@ -431,6 +499,115 @@ public static class InfluenceMapUtility
         }
 
         return polyline.points[polyline.points.Count / 2];
+    }
+
+    static float[] BuildSampleXCoordinates(InfluenceMapBounds bounds, LocalProjection projection, int width)
+    {
+        var coords = new float[width];
+        for (var x = 0; x < width; x++)
+        {
+            var x01 = width <= 1 ? 0f : x / (float)(width - 1);
+            coords[x] = projection.LongitudeToX(Mathf.Lerp(bounds.minLon, bounds.maxLon, x01));
+        }
+
+        return coords;
+    }
+
+    static float[] BuildSampleYCoordinates(InfluenceMapBounds bounds, LocalProjection projection, int height)
+    {
+        var coords = new float[height];
+        for (var y = 0; y < height; y++)
+        {
+            var y01 = height <= 1 ? 0f : y / (float)(height - 1);
+            coords[y] = projection.LatitudeToY(Mathf.Lerp(bounds.minLat, bounds.maxLat, y01));
+        }
+
+        return coords;
+    }
+
+    static List<ShipFieldSample> BuildShipFieldSamples(IReadOnlyList<ShipLog> ships, LocalProjection projection)
+    {
+        var samples = new List<ShipFieldSample>(ships?.Count ?? 0);
+        if (ships == null)
+            return samples;
+
+        foreach (var ship in ships)
+        {
+            if (ship == null)
+                continue;
+
+            samples.Add(new ShipFieldSample(ship, projection));
+        }
+
+        return samples;
+    }
+
+    static float EvaluatePowerAtPoint(IReadOnlyList<ShipFieldSample> ships, float pointX, float pointY)
+    {
+        if (ships == null)
+            return 0f;
+
+        var value = 0f;
+        for (var i = 0; i < ships.Count; i++)
+        {
+            var sample = ships[i];
+            var distanceSquaredYards = Square(pointX - sample.xYards) + Square(pointY - sample.yYards);
+            if (distanceSquaredYards >= RangeSquaredYards)
+                continue;
+
+            var distanceYards = Mathf.Sqrt(distanceSquaredYards);
+            value += EvaluatePowerContribution(sample.generalScore, distanceYards);
+        }
+
+        return value;
+    }
+
+    static float EvaluateFirepowerAtPoint(IReadOnlyList<ShipFieldSample> ships, float pointX, float pointY)
+    {
+        if (ships == null)
+            return 0f;
+
+        var value = 0f;
+        for (var i = 0; i < ships.Count; i++)
+        {
+            var sample = ships[i];
+            var dx = pointX - sample.xYards;
+            var dy = pointY - sample.yYards;
+            var distanceSquaredYards = Square(dx) + Square(dy);
+            if (distanceSquaredYards >= RangeSquaredYards)
+                continue;
+
+            var distanceYards = Mathf.Sqrt(distanceSquaredYards);
+            var attenuation = EvaluateDistanceAttenuation(distanceYards);
+            if (attenuation <= 0f)
+                continue;
+
+            var initialBearingDeg = MeasureUtils.NormalizeAngle(Mathf.Atan2(dx, dy) * Mathf.Rad2Deg);
+            var relativeBearingDeg = MeasureUtils.NormalizeAngle(initialBearingDeg - sample.headingDeg);
+            var smoothedFirepower = EvaluateSmoothedFirepower(
+                sample.bowFirepower,
+                sample.starboardFirepower,
+                sample.sternFirepower,
+                sample.portFirepower,
+                relativeBearingDeg
+            );
+            value += smoothedFirepower * attenuation;
+        }
+
+        return value;
+    }
+
+    static float ApproximateDistanceYards(LatLon a, LatLon b)
+    {
+        var averageLatRad = (a.LatDeg + b.LatDeg) * 0.5f * Mathf.Deg2Rad;
+        var dx = (b.LonDeg - a.LonDeg) * Mathf.Cos(averageLatRad) * YardsPerDegree;
+        var dy = (b.LatDeg - a.LatDeg) * YardsPerDegree;
+        return Mathf.Sqrt(Square(dx) + Square(dy));
+    }
+
+    static float Square(float value)
+    {
+        return value * value;
     }
 
     static List<ContourSegment> BuildContourSegments(InfluenceMapFieldData field, float level)

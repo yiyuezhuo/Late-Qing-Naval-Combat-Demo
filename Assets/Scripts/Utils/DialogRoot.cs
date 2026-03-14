@@ -1238,17 +1238,17 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 });
             }
 
-            void SyncGroup2State()
+            void SyncGroup2State(InfluenceMapType mapType)
             {
-                var group2Enabled = model.mapType == InfluenceMapType.Control;
+                var group2Enabled = mapType == InfluenceMapType.Control;
                 group2DropdownField?.SetEnabled(group2Enabled);
             }
 
             SyncGroupSelection(group1DropdownField, objectId => model.group1ObjectId = objectId, 0);
             SyncGroupSelection(group2DropdownField, objectId => model.group2ObjectId = objectId, orderedGroups.Count > 1 ? 1 : 0);
 
-            mapTypeField?.RegisterValueChangedCallback(_ => SyncGroup2State());
-            SyncGroup2State();
+            mapTypeField?.RegisterValueChangedCallback(evt => SyncGroup2State((InfluenceMapType)evt.newValue));
+            SyncGroup2State(mapTypeField != null ? (InfluenceMapType)mapTypeField.value : model.mapType);
 
             if (plotButton != null)
             {

@@ -1321,6 +1321,10 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                         exponentialDecayLengthYards = model.exponentialDecayLengthYards,
                         inverseHalfEffectDistanceYards = model.inverseHalfEffectDistanceYards,
                         gaussianSigmaYards = model.gaussianSigmaYards,
+                        sampleWidth = model.sampleWidth,
+                        sampleHeight = model.sampleHeight,
+                        boundsPaddingRatio = model.boundsPaddingRatio,
+                        minBoundsPaddingDeg = model.minBoundsPaddingDeg,
                     });
                 };
             }

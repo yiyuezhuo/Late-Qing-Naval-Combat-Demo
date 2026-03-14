@@ -2825,13 +2825,20 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
         }
 
-        if (!InfluenceMapUtility.TryBuildBattleBounds(NavalGameState.Instance, out var bounds))
+        if (!InfluenceMapUtility.TryBuildBattleBounds(NavalGameState.Instance, request, out var bounds))
         {
             DialogRoot.Instance.PopupMessageDialog("Unable to derive battle bounds for the influence map.");
             return;
         }
 
-        var field = InfluenceMapUtility.BuildField(bounds, request, group1Ships, group2Ships, InfluenceMapUtility.SampleWidth, InfluenceMapUtility.SampleHeight);
+        var field = InfluenceMapUtility.BuildField(
+            bounds,
+            request,
+            group1Ships,
+            group2Ships,
+            InfluenceMapUtility.GetSampleWidth(request),
+            InfluenceMapUtility.GetSampleHeight(request)
+        );
         if (field.maxAbs <= 0.0001f)
         {
             ClearInfluenceMap();

@@ -2657,6 +2657,22 @@ MonoBehaviour:
     m_Key: Gaussian Sigma (yd)
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000032
+    m_Key: Sample Width
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000033
+    m_Key: Sample Height
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000034
+    m_Key: Bounds Padding Ratio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000035
+    m_Key: Min Bounds Padding (deg)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

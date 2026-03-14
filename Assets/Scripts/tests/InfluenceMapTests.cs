@@ -28,22 +28,33 @@ public class InfluenceMapTests
     }
 
     [Test]
-    public void TryBuildBattleBounds_AddsPaddingAndIncludesLabels()
+    public void TryBuildBattleBounds_UsesOnlyDeployedShipsAndAddsPadding()
     {
         var ship1 = new ShipLog { mapState = MapState.Deployed, position = new LatLon(20f, 120f) };
         var ship2 = new ShipLog { mapState = MapState.Deployed, position = new LatLon(21f, 122f) };
-        var labels = new List<LocationLabel>
-        {
-            new LocationLabel { latitude = 19.5f, longitude = 121f },
-        };
 
-        var ok = InfluenceMapUtility.TryBuildBattleBounds(new[] { ship1, ship2 }, labels, out var bounds);
+        var ok = InfluenceMapUtility.TryBuildBattleBounds(new[] { ship1, ship2 }, 0.1f, 0.05f, out var bounds);
 
         Assert.That(ok, Is.True);
-        Assert.That(bounds.minLat, Is.LessThanOrEqualTo(19.45f));
+        Assert.That(bounds.minLat, Is.EqualTo(19.9f).Within(0.001f));
         Assert.That(bounds.maxLat, Is.GreaterThanOrEqualTo(21.1f));
         Assert.That(bounds.minLon, Is.LessThanOrEqualTo(119.8f));
         Assert.That(bounds.maxLon, Is.GreaterThanOrEqualTo(122.2f));
+    }
+
+    [Test]
+    public void TryBuildBattleBounds_UsesConfigurablePadding()
+    {
+        var ship1 = new ShipLog { mapState = MapState.Deployed, position = new LatLon(20f, 120f) };
+        var ship2 = new ShipLog { mapState = MapState.Deployed, position = new LatLon(21f, 122f) };
+
+        var ok = InfluenceMapUtility.TryBuildBattleBounds(new[] { ship1, ship2 }, 0.2f, 0.5f, out var bounds);
+
+        Assert.That(ok, Is.True);
+        Assert.That(bounds.minLat, Is.EqualTo(19.5f).Within(0.001f));
+        Assert.That(bounds.maxLat, Is.EqualTo(21.5f).Within(0.001f));
+        Assert.That(bounds.minLon, Is.EqualTo(119.5f).Within(0.001f));
+        Assert.That(bounds.maxLon, Is.EqualTo(122.5f).Within(0.001f));
     }
 
     [Test]

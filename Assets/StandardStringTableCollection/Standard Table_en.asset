@@ -2739,6 +2739,22 @@ MonoBehaviour:
     m_Localized: Gaussian Sigma (yd)
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000032
+    m_Localized: Sample Width
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000033
+    m_Localized: Sample Height
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000034
+    m_Localized: Bounds Padding Ratio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000035
+    m_Localized: Min Bounds Padding (deg)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

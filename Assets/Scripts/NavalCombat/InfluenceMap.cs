@@ -22,6 +22,10 @@ public enum InfluenceMapFalloffAlgorithm
 
 public static class InfluenceMapDefaults
 {
+    public const int SampleWidth = 96;
+    public const int SampleHeight = 96;
+    public const float BoundsPaddingRatio = 0.1f;
+    public const float MinBoundsPaddingDeg = 0.05f;
     public const float LinearRangeYards = 36000f;
     public const float ExponentialDecayLengthYards = 12000f;
     public const float InverseHalfEffectDistanceYards = 12000f;
@@ -38,6 +42,10 @@ public class InfluenceMapRequest
     public float exponentialDecayLengthYards = InfluenceMapDefaults.ExponentialDecayLengthYards;
     public float inverseHalfEffectDistanceYards = InfluenceMapDefaults.InverseHalfEffectDistanceYards;
     public float gaussianSigmaYards = InfluenceMapDefaults.GaussianSigmaYards;
+    public int sampleWidth = InfluenceMapDefaults.SampleWidth;
+    public int sampleHeight = InfluenceMapDefaults.SampleHeight;
+    public float boundsPaddingRatio = InfluenceMapDefaults.BoundsPaddingRatio;
+    public float minBoundsPaddingDeg = InfluenceMapDefaults.MinBoundsPaddingDeg;
 }
 
 public class InfluenceMapDialogModel
@@ -59,6 +67,18 @@ public class InfluenceMapDialogModel
 
     [CreateProperty]
     public float gaussianSigmaYards { get; set; } = InfluenceMapDefaults.GaussianSigmaYards;
+
+    [CreateProperty]
+    public int sampleWidth { get; set; } = InfluenceMapDefaults.SampleWidth;
+
+    [CreateProperty]
+    public int sampleHeight { get; set; } = InfluenceMapDefaults.SampleHeight;
+
+    [CreateProperty]
+    public float boundsPaddingRatio { get; set; } = InfluenceMapDefaults.BoundsPaddingRatio;
+
+    [CreateProperty]
+    public float minBoundsPaddingDeg { get; set; } = InfluenceMapDefaults.MinBoundsPaddingDeg;
 
     public string group1ObjectId;
     public string group2ObjectId;
@@ -111,11 +131,11 @@ public sealed class InfluenceMapContourPolyline
 
 public static class InfluenceMapUtility
 {
-    public const int SampleWidth = 96;
-    public const int SampleHeight = 96;
+    public const int SampleWidth = InfluenceMapDefaults.SampleWidth;
+    public const int SampleHeight = InfluenceMapDefaults.SampleHeight;
     public const float RangeYards = InfluenceMapDefaults.LinearRangeYards;
-    public const float BoundsPaddingRatio = 0.1f;
-    public const float MinBoundsPaddingDeg = 0.05f;
+    public const float BoundsPaddingRatio = InfluenceMapDefaults.BoundsPaddingRatio;
+    public const float MinBoundsPaddingDeg = InfluenceMapDefaults.MinBoundsPaddingDeg;
     const float YardsPerDegree = 6076.11549f * 60f / 3f;
 
     readonly struct ContourSegment
@@ -258,14 +278,24 @@ public static class InfluenceMapUtility
 
     public static bool TryBuildBattleBounds(NavalGameState state, out InfluenceMapBounds bounds)
     {
+        return TryBuildBattleBounds(state, null, out bounds);
+    }
+
+    public static bool TryBuildBattleBounds(NavalGameState state, InfluenceMapRequest request, out InfluenceMapBounds bounds)
+    {
         bounds = default;
         if (state == null)
             return false;
 
-        return TryBuildBattleBounds(state.shipLogsOnMap, state.scenarioState?.locationLabels, out bounds);
+        return TryBuildBattleBounds(
+            state.shipLogsOnMap,
+            GetBoundsPaddingRatio(request),
+            GetMinBoundsPaddingDeg(request),
+            out bounds
+        );
     }
 
-    public static bool TryBuildBattleBounds(IEnumerable<ShipLog> deployedShips, IEnumerable<LocationLabel> locationLabels, out InfluenceMapBounds bounds)
+    public static bool TryBuildBattleBounds(IEnumerable<ShipLog> deployedShips, float boundsPaddingRatio, float minBoundsPaddingDeg, out InfluenceMapBounds bounds)
     {
         var latitudes = new List<float>();
         var longitudes = new List<float>();
@@ -282,18 +312,6 @@ public static class InfluenceMapUtility
             }
         }
 
-        if (locationLabels != null)
-        {
-            foreach (var label in locationLabels)
-            {
-                if (label == null)
-                    continue;
-
-                latitudes.Add(label.latitude);
-                longitudes.Add(label.longitude);
-            }
-        }
-
         if (latitudes.Count == 0 || longitudes.Count == 0)
         {
             bounds = default;
@@ -305,8 +323,10 @@ public static class InfluenceMapUtility
         var minLon = longitudes.Min();
         var maxLon = longitudes.Max();
 
-        var latPadding = Mathf.Max((maxLat - minLat) * BoundsPaddingRatio, MinBoundsPaddingDeg);
-        var lonPadding = Mathf.Max((maxLon - minLon) * BoundsPaddingRatio, MinBoundsPaddingDeg);
+        var safePaddingRatio = Mathf.Max(0f, boundsPaddingRatio);
+        var safeMinPaddingDeg = Mathf.Max(0f, minBoundsPaddingDeg);
+        var latPadding = Mathf.Max((maxLat - minLat) * safePaddingRatio, safeMinPaddingDeg);
+        var lonPadding = Mathf.Max((maxLon - minLon) * safePaddingRatio, safeMinPaddingDeg);
 
         bounds = new InfluenceMapBounds(
             minLat - latPadding,
@@ -637,6 +657,26 @@ public static class InfluenceMapUtility
             InfluenceMapFalloffAlgorithm.Gaussian => request.gaussianSigmaYards,
             _ => InfluenceMapDefaults.LinearRangeYards,
         };
+    }
+
+    public static int GetSampleWidth(InfluenceMapRequest request)
+    {
+        return Mathf.Clamp(request?.sampleWidth ?? InfluenceMapDefaults.SampleWidth, 8, 512);
+    }
+
+    public static int GetSampleHeight(InfluenceMapRequest request)
+    {
+        return Mathf.Clamp(request?.sampleHeight ?? InfluenceMapDefaults.SampleHeight, 8, 512);
+    }
+
+    public static float GetBoundsPaddingRatio(InfluenceMapRequest request)
+    {
+        return Mathf.Max(0f, request?.boundsPaddingRatio ?? InfluenceMapDefaults.BoundsPaddingRatio);
+    }
+
+    public static float GetMinBoundsPaddingDeg(InfluenceMapRequest request)
+    {
+        return Mathf.Max(0f, request?.minBoundsPaddingDeg ?? InfluenceMapDefaults.MinBoundsPaddingDeg);
     }
 
     public static float GetEffectiveCutoffDistanceYards(InfluenceMapRequest request, InfluenceMapBounds bounds)

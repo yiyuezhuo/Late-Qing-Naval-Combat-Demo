@@ -50,6 +50,30 @@
                     </Bindings>
                 </ui:FloatField>
             </ui:VisualElement>
+            <ui:IntegerField name="SampleWidthField" label="Sample Width">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="sampleWidth" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000032)"/>
+                </Bindings>
+            </ui:IntegerField>
+            <ui:IntegerField name="SampleHeightField" label="Sample Height">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="sampleHeight" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000033)"/>
+                </Bindings>
+            </ui:IntegerField>
+            <ui:FloatField name="BoundsPaddingRatioField" label="Bounds Padding Ratio">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="boundsPaddingRatio" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000034)"/>
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField name="MinBoundsPaddingDegField" label="Min Bounds Padding (deg)">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="minBoundsPaddingDeg" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000035)"/>
+                </Bindings>
+            </ui:FloatField>
             <ui:DropdownField name="Group1DropdownField" label="Group Selector 1">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000023)"/>

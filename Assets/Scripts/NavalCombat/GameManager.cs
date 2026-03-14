@@ -73,6 +73,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public Transform shipLogTrajectoriesTransform;
     public Transform shipLogTrajectoryLabelsTransform;
     public GameObject shipLogTrajectoryLabelPrefab;
+    Transform influenceMapContoursTransform;
+    Transform influenceMapContourLabelsTransform;
     [Header("Gunnery Shell Visual")]
     public bool enableGunneryShellVisual = true;
     [Min(1f)]
@@ -285,6 +287,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         fullInitialized = false;
         ClearAllGunneryShellVisuals();
+        ClearInfluenceMap();
 
         // Loading
         yield return fullState.streamingAssetReference.TryToCompleteFromStreamingAssetReference(fullState.navalGameState);
@@ -2782,6 +2785,125 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         foreach (var shipLog in NavalGameState.Instance.shipLogsOnMapOrDestroyed.Where(s => s.timeLocLogs != null && s.timeLocLogs.Count > 1))
         {
             PlotShipLogTrajectory(shipLog, DialogRoot.GetDefaultTrajectoryColor(shipLog), plotTimestamp, timestampIntervalMinutes);
+        }
+    }
+
+    public void PlotInfluenceMap(InfluenceMapRequest request)
+    {
+        if (request == null)
+            return;
+
+        var group1 = CoreUtils.EntityManager.Instance.Get<ShipGroup>(request.group1ObjectId);
+        if (group1 == null)
+        {
+            DialogRoot.Instance.PopupMessageDialog("Influence map requires Group Selector 1.");
+            return;
+        }
+
+        var group1Ships = InfluenceMapUtility.GetDeployedShipsForGroup(group1);
+        if (group1Ships.Count == 0)
+        {
+            DialogRoot.Instance.PopupMessageDialog("The selected Group Selector 1 group has no deployed ships.");
+            return;
+        }
+
+        List<ShipLog> group2Ships = null;
+        if (request.mapType == InfluenceMapType.Control)
+        {
+            var group2 = CoreUtils.EntityManager.Instance.Get<ShipGroup>(request.group2ObjectId);
+            if (group2 == null)
+            {
+                DialogRoot.Instance.PopupMessageDialog("Control map requires Group Selector 2.");
+                return;
+            }
+
+            group2Ships = InfluenceMapUtility.GetDeployedShipsForGroup(group2);
+            if (group2Ships.Count == 0)
+            {
+                DialogRoot.Instance.PopupMessageDialog("The selected Group Selector 2 group has no deployed ships.");
+                return;
+            }
+        }
+
+        if (!InfluenceMapUtility.TryBuildBattleBounds(NavalGameState.Instance, out var bounds))
+        {
+            DialogRoot.Instance.PopupMessageDialog("Unable to derive battle bounds for the influence map.");
+            return;
+        }
+
+        var field = InfluenceMapUtility.BuildField(bounds, request, group1Ships, group2Ships, InfluenceMapUtility.SampleWidth, InfluenceMapUtility.SampleHeight);
+        if (field.maxAbs <= 0.0001f)
+        {
+            ClearInfluenceMap();
+            DialogRoot.Instance.PopupMessageDialog("Influence map result is empty for the current selection.");
+            return;
+        }
+
+        EnsureInfluenceMapRoots();
+        ClearInfluenceMap();
+
+        foreach (var level in InfluenceMapUtility.BuildContourLevels(field.maxAbs))
+        {
+            var color = InfluenceMapUtility.GetContourColor(level, field.maxAbs);
+            foreach (var polyline in InfluenceMapUtility.BuildContourPolylines(field, level))
+            {
+                if (polyline.points == null || polyline.points.Count < 2)
+                    continue;
+
+                var obj = Instantiate(shipLogTrajectoryPrefab, influenceMapContoursTransform);
+                obj.name = $"InfluenceContour_{level:0.##}";
+                var lineRenderer = obj.GetComponent<LineRenderer>();
+                lineRenderer.startColor = color;
+                lineRenderer.endColor = color;
+                lineRenderer.widthMultiplier = 0.06f;
+                lineRenderer.positionCount = polyline.points.Count;
+                lineRenderer.SetPositions(polyline.points
+                    .Select(point => Utils.LatitudeLongitudeDegHeightFootToVector3(point.LatDeg, point.LonDeg, 60f))
+                    .ToArray());
+
+                var labelLatLon = InfluenceMapUtility.GetLabelPosition(polyline);
+                if (labelLatLon == null)
+                    continue;
+
+                var label = Instantiate(shipLogTrajectoryLabelPrefab, influenceMapContourLabelsTransform);
+                label.name = $"InfluenceLabel_{level:0.##}";
+                label.layer = LayerMask.NameToLayer("Icon");
+                label.transform.localPosition = Utils.LatitudeLongitudeDegHeightFootToVector3(labelLatLon.LatDeg, labelLatLon.LonDeg, 12000f);
+                label.GetComponent<TMP_Text>().text = InfluenceMapUtility.FormatContourLabel(level);
+                label.GetComponent<TMP_Text>().color = color;
+            }
+        }
+    }
+
+    public void ClearInfluenceMap()
+    {
+        if (influenceMapContoursTransform != null)
+        {
+            Utils.DestroyChildrensFor(influenceMapContoursTransform);
+        }
+
+        if (influenceMapContourLabelsTransform != null)
+        {
+            Utils.DestroyChildrensFor(influenceMapContourLabelsTransform);
+        }
+    }
+
+    void EnsureInfluenceMapRoots()
+    {
+        if (earthTransform == null)
+            return;
+
+        if (influenceMapContoursTransform == null)
+        {
+            influenceMapContoursTransform = new GameObject("InfluenceMapContours").transform;
+            influenceMapContoursTransform.SetParent(earthTransform, false);
+        }
+
+        if (influenceMapContourLabelsTransform == null)
+        {
+            influenceMapContourLabelsTransform = new GameObject("InfluenceMapContourLabels").transform;
+            influenceMapContourLabelsTransform.SetParent(earthTransform, false);
+            influenceMapContourLabelsTransform.gameObject.layer = LayerMask.NameToLayer("Icon");
         }
     }
 

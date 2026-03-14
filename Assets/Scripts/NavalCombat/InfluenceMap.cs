@@ -1,0 +1,628 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using NavalCombatCore;
+using Unity.Properties;
+using UnityEngine;
+
+public enum InfluenceMapType
+{
+    Power,
+    Firepower,
+    Control,
+}
+
+public class InfluenceMapRequest
+{
+    public InfluenceMapType mapType;
+    public string group1ObjectId;
+    public string group2ObjectId;
+}
+
+public class InfluenceMapDialogModel
+{
+    [CreateProperty]
+    public int mapTypeValue { get; set; } = (int)InfluenceMapType.Power;
+
+    public string group1ObjectId;
+    public string group2ObjectId;
+
+    public InfluenceMapType mapType => (InfluenceMapType)mapTypeValue;
+}
+
+public readonly struct InfluenceMapBounds
+{
+    public readonly float minLat;
+    public readonly float maxLat;
+    public readonly float minLon;
+    public readonly float maxLon;
+
+    public InfluenceMapBounds(float minLat, float maxLat, float minLon, float maxLon)
+    {
+        this.minLat = minLat;
+        this.maxLat = maxLat;
+        this.minLon = minLon;
+        this.maxLon = maxLon;
+    }
+
+    public float latSpan => maxLat - minLat;
+    public float lonSpan => maxLon - minLon;
+
+    public LatLon Lerp(float x01, float y01)
+    {
+        return new LatLon(
+            Mathf.Lerp(minLat, maxLat, Mathf.Clamp01(y01)),
+            Mathf.Lerp(minLon, maxLon, Mathf.Clamp01(x01))
+        );
+    }
+}
+
+public sealed class InfluenceMapFieldData
+{
+    public InfluenceMapBounds bounds;
+    public float[,] values;
+    public int width;
+    public int height;
+    public float maxAbs;
+}
+
+public sealed class InfluenceMapContourPolyline
+{
+    public float level;
+    public List<LatLon> points = new();
+}
+
+public static class InfluenceMapUtility
+{
+    public const int SampleWidth = 96;
+    public const int SampleHeight = 96;
+    public const float RangeYards = 36000f;
+    public const float BoundsPaddingRatio = 0.1f;
+    public const float MinBoundsPaddingDeg = 0.05f;
+
+    readonly struct ContourSegment
+    {
+        public readonly LatLon start;
+        public readonly LatLon end;
+
+        public ContourSegment(LatLon start, LatLon end)
+        {
+            this.start = start;
+            this.end = end;
+        }
+    }
+
+    public static List<ShipGroup> GetShipGroupsInOobOrder(NavalGameState state)
+    {
+        return GetShipGroupsInOobOrder(state?.shipGroups, objectId => CoreUtils.EntityManager.Instance.Get<IShipGroupMember>(objectId));
+    }
+
+    public static List<ShipGroup> GetShipGroupsInOobOrder(IReadOnlyList<ShipGroup> shipGroups, Func<string, IShipGroupMember> resolver)
+    {
+        var orderedGroups = new List<ShipGroup>();
+        if (shipGroups == null || resolver == null)
+            return orderedGroups;
+
+        void Visit(ShipGroup group)
+        {
+            if (group == null)
+                return;
+
+            orderedGroups.Add(group);
+            foreach (var childObjectId in group.childrenObjectIds ?? Enumerable.Empty<string>())
+            {
+                var childGroup = resolver(childObjectId) as ShipGroup;
+                if (childGroup != null)
+                    Visit(childGroup);
+            }
+        }
+
+        foreach (var rootGroup in shipGroups.Where(group => group != null && string.IsNullOrEmpty(group.parentObjectId)))
+        {
+            Visit(rootGroup);
+        }
+
+        return orderedGroups;
+    }
+
+    public static List<ShipLog> GetDeployedShipsForGroup(ShipGroup group)
+    {
+        return GetDeployedShipsRecursive(group, objectId => CoreUtils.EntityManager.Instance.Get<IShipGroupMember>(objectId));
+    }
+
+    public static List<ShipLog> GetDeployedShipsRecursive(ShipGroup group, Func<string, IShipGroupMember> resolver)
+    {
+        var ships = new List<ShipLog>();
+        if (group == null || resolver == null)
+            return ships;
+
+        void Visit(ShipGroup current)
+        {
+            foreach (var childObjectId in current.childrenObjectIds ?? Enumerable.Empty<string>())
+            {
+                var child = resolver(childObjectId);
+                if (child is ShipLog shipLog)
+                {
+                    if (shipLog.mapState == MapState.Deployed)
+                        ships.Add(shipLog);
+                }
+                else if (child is ShipGroup childGroup)
+                {
+                    Visit(childGroup);
+                }
+            }
+        }
+
+        Visit(group);
+        return ships;
+    }
+
+    public static bool TryBuildBattleBounds(NavalGameState state, out InfluenceMapBounds bounds)
+    {
+        bounds = default;
+        if (state == null)
+            return false;
+
+        return TryBuildBattleBounds(state.shipLogsOnMap, state.scenarioState?.locationLabels, out bounds);
+    }
+
+    public static bool TryBuildBattleBounds(IEnumerable<ShipLog> deployedShips, IEnumerable<LocationLabel> locationLabels, out InfluenceMapBounds bounds)
+    {
+        var latitudes = new List<float>();
+        var longitudes = new List<float>();
+
+        if (deployedShips != null)
+        {
+            foreach (var ship in deployedShips)
+            {
+                if (ship == null || ship.mapState != MapState.Deployed)
+                    continue;
+
+                latitudes.Add(ship.position.LatDeg);
+                longitudes.Add(ship.position.LonDeg);
+            }
+        }
+
+        if (locationLabels != null)
+        {
+            foreach (var label in locationLabels)
+            {
+                if (label == null)
+                    continue;
+
+                latitudes.Add(label.latitude);
+                longitudes.Add(label.longitude);
+            }
+        }
+
+        if (latitudes.Count == 0 || longitudes.Count == 0)
+        {
+            bounds = default;
+            return false;
+        }
+
+        var minLat = latitudes.Min();
+        var maxLat = latitudes.Max();
+        var minLon = longitudes.Min();
+        var maxLon = longitudes.Max();
+
+        var latPadding = Mathf.Max((maxLat - minLat) * BoundsPaddingRatio, MinBoundsPaddingDeg);
+        var lonPadding = Mathf.Max((maxLon - minLon) * BoundsPaddingRatio, MinBoundsPaddingDeg);
+
+        bounds = new InfluenceMapBounds(
+            minLat - latPadding,
+            maxLat + latPadding,
+            minLon - lonPadding,
+            maxLon + lonPadding
+        );
+        return true;
+    }
+
+    public static float EvaluateDistanceAttenuation(float distanceYards)
+    {
+        return Mathf.Max(0f, (RangeYards - distanceYards) / RangeYards);
+    }
+
+    public static float EvaluatePowerContribution(ShipLog shipLog, LatLon point)
+    {
+        if (shipLog == null || point == null)
+            return 0f;
+
+        var distanceYards = (float)MeasureStats.Approximation.HaversineDistanceYards(shipLog.position, point);
+        return EvaluatePowerContribution(shipLog.EvaluateGeneralScore(), distanceYards);
+    }
+
+    public static float EvaluatePowerContribution(float score, float distanceYards)
+    {
+        return score * EvaluateDistanceAttenuation(distanceYards);
+    }
+
+    public static float EvaluateFirepowerContribution(ShipLog shipLog, LatLon point)
+    {
+        if (shipLog == null || point == null)
+            return 0f;
+
+        var distanceYards = (float)MeasureStats.Approximation.HaversineDistanceYards(shipLog.position, point);
+        var attenuation = EvaluateDistanceAttenuation(distanceYards);
+        if (attenuation <= 0f)
+            return 0f;
+
+        var initialBearingDeg = (float)MeasureStats.Approximation.CalculateInitialBearing(
+            shipLog.position.LatDeg, shipLog.position.LonDeg, point.LatDeg, point.LonDeg
+        );
+        var relativeBearingDeg = MeasureUtils.GetPositiveAngleDifference(initialBearingDeg, shipLog.headingDeg);
+        var smoothedFirepower = EvaluateSmoothedFirepower(
+            shipLog.EvaluateBowFirepowerScore(),
+            shipLog.EvaluateStarboardFirepowerScore(),
+            shipLog.EvaluateSternFirepowerScore(),
+            shipLog.EvaluatePortFirepowerScore(),
+            relativeBearingDeg
+        );
+
+        return EvaluateFirepowerContribution(smoothedFirepower, distanceYards);
+    }
+
+    public static float EvaluateFirepowerContribution(float smoothedFirepower, float distanceYards)
+    {
+        return smoothedFirepower * EvaluateDistanceAttenuation(distanceYards);
+    }
+
+    public static float ComposeValue(InfluenceMapType mapType, float group1Power, float group1Firepower, float group2Power)
+    {
+        return mapType switch
+        {
+            InfluenceMapType.Power => group1Power,
+            InfluenceMapType.Firepower => group1Firepower,
+            InfluenceMapType.Control => group1Power - group2Power,
+            _ => 0f,
+        };
+    }
+
+    public static float EvaluateSmoothedFirepower(float bowFirepower, float starboardFirepower, float sternFirepower, float portFirepower, float relativeBearingDeg)
+    {
+        var record = new LowLevelCoursePlanner.ExtrapolatedRecord
+        {
+            bowFirepowerScore = bowFirepower,
+            starboardFirepowerScore = starboardFirepower,
+            sternFirepowerScore = sternFirepower,
+            portFirepowerScore = portFirepower,
+        };
+        return record.EvaluateSmoothedFirepower(relativeBearingDeg);
+    }
+
+    public static InfluenceMapFieldData BuildField(InfluenceMapBounds bounds, InfluenceMapRequest request, IReadOnlyList<ShipLog> group1Ships, IReadOnlyList<ShipLog> group2Ships, int width = SampleWidth, int height = SampleHeight)
+    {
+        var values = new float[width, height];
+        var field = new InfluenceMapFieldData
+        {
+            bounds = bounds,
+            values = values,
+            width = width,
+            height = height,
+        };
+
+        var maxAbs = 0f;
+        for (var y = 0; y < height; y++)
+        {
+            var y01 = height <= 1 ? 0f : y / (float)(height - 1);
+            for (var x = 0; x < width; x++)
+            {
+                var x01 = width <= 1 ? 0f : x / (float)(width - 1);
+                var point = bounds.Lerp(x01, y01);
+                var group1Power = EvaluatePowerAtPoint(group1Ships, point);
+                var group1Firepower = EvaluateFirepowerAtPoint(group1Ships, point);
+                var group2Power = request.mapType == InfluenceMapType.Control ? EvaluatePowerAtPoint(group2Ships, point) : 0f;
+                var value = ComposeValue(request.mapType, group1Power, group1Firepower, group2Power);
+
+                values[x, y] = value;
+                maxAbs = Mathf.Max(maxAbs, Mathf.Abs(value));
+            }
+        }
+
+        field.maxAbs = maxAbs;
+        return field;
+    }
+
+    public static float EvaluatePowerAtPoint(IEnumerable<ShipLog> ships, LatLon point)
+    {
+        if (ships == null)
+            return 0f;
+
+        var value = 0f;
+        foreach (var ship in ships)
+        {
+            value += EvaluatePowerContribution(ship, point);
+        }
+        return value;
+    }
+
+    public static float EvaluateFirepowerAtPoint(IEnumerable<ShipLog> ships, LatLon point)
+    {
+        if (ships == null)
+            return 0f;
+
+        var value = 0f;
+        foreach (var ship in ships)
+        {
+            value += EvaluateFirepowerContribution(ship, point);
+        }
+        return value;
+    }
+
+    public static List<float> BuildContourLevels(float maxAbs)
+    {
+        if (maxAbs <= 0f)
+            return new List<float>();
+
+        return new List<float>
+        {
+            -1f * maxAbs,
+            -0.75f * maxAbs,
+            -0.5f * maxAbs,
+            -0.25f * maxAbs,
+            0f,
+            0.25f * maxAbs,
+            0.5f * maxAbs,
+            0.75f * maxAbs,
+            1f * maxAbs,
+        };
+    }
+
+    public static List<InfluenceMapContourPolyline> BuildContourPolylines(InfluenceMapFieldData field, float level)
+    {
+        var segments = BuildContourSegments(field, level);
+        return StitchSegments(level, segments);
+    }
+
+    public static Color GetContourColor(float level, float maxAbs)
+    {
+        if (Mathf.Approximately(level, 0f) || maxAbs <= 0f)
+            return new Color(0.72f, 0.72f, 0.72f, 1f);
+
+        var t = Mathf.Clamp01(Mathf.Abs(level) / maxAbs);
+        if (level > 0f)
+            return Color.Lerp(new Color(0.48f, 0.76f, 1f, 1f), new Color(0.03f, 0.19f, 0.78f, 1f), t);
+
+        return Color.Lerp(new Color(1f, 0.58f, 0.58f, 1f), new Color(0.73f, 0.07f, 0.07f, 1f), t);
+    }
+
+    public static string FormatContourLabel(float level)
+    {
+        if (Mathf.Abs(level) < 0.005f)
+            return "0";
+        return level.ToString("0.##");
+    }
+
+    public static LatLon GetLabelPosition(InfluenceMapContourPolyline polyline)
+    {
+        if (polyline == null || polyline.points == null || polyline.points.Count == 0)
+            return null;
+
+        if (polyline.points.Count == 1)
+            return polyline.points[0];
+
+        var segmentLengths = new List<float>(polyline.points.Count - 1);
+        var totalLength = 0f;
+        for (var i = 1; i < polyline.points.Count; i++)
+        {
+            var segmentLength = (float)MeasureStats.Approximation.HaversineDistanceYards(polyline.points[i - 1], polyline.points[i]);
+            segmentLengths.Add(segmentLength);
+            totalLength += segmentLength;
+        }
+
+        if (totalLength <= 0f)
+            return polyline.points[polyline.points.Count / 2];
+
+        var targetLength = totalLength * 0.5f;
+        var accumulated = 0f;
+        for (var i = 1; i < polyline.points.Count; i++)
+        {
+            var segmentLength = segmentLengths[i - 1];
+            if (accumulated + segmentLength >= targetLength)
+            {
+                var t = segmentLength <= 0f ? 0f : (targetLength - accumulated) / segmentLength;
+                return new LatLon(
+                    Mathf.Lerp(polyline.points[i - 1].LatDeg, polyline.points[i].LatDeg, t),
+                    Mathf.Lerp(polyline.points[i - 1].LonDeg, polyline.points[i].LonDeg, t)
+                );
+            }
+
+            accumulated += segmentLength;
+        }
+
+        return polyline.points[polyline.points.Count / 2];
+    }
+
+    static List<ContourSegment> BuildContourSegments(InfluenceMapFieldData field, float level)
+    {
+        var segments = new List<ContourSegment>();
+        var values = field.values;
+        for (var y = 0; y < field.height - 1; y++)
+        {
+            var y01 = y / (float)(field.height - 1);
+            var yTop01 = (y + 1) / (float)(field.height - 1);
+            for (var x = 0; x < field.width - 1; x++)
+            {
+                var x01 = x / (float)(field.width - 1);
+                var xRight01 = (x + 1) / (float)(field.width - 1);
+
+                var p00 = field.bounds.Lerp(x01, y01);
+                var p10 = field.bounds.Lerp(xRight01, y01);
+                var p11 = field.bounds.Lerp(xRight01, yTop01);
+                var p01 = field.bounds.Lerp(x01, yTop01);
+
+                var v00 = values[x, y];
+                var v10 = values[x + 1, y];
+                var v11 = values[x + 1, y + 1];
+                var v01 = values[x, y + 1];
+
+                var index = 0;
+                if (v00 >= level) index |= 1;
+                if (v10 >= level) index |= 2;
+                if (v11 >= level) index |= 4;
+                if (v01 >= level) index |= 8;
+
+                if (index == 0 || index == 15)
+                    continue;
+
+                var edgePoints = new LatLon[4];
+                edgePoints[0] = InterpolatePoint(p00, p10, v00, v10, level);
+                edgePoints[1] = InterpolatePoint(p10, p11, v10, v11, level);
+                edgePoints[2] = InterpolatePoint(p01, p11, v01, v11, level);
+                edgePoints[3] = InterpolatePoint(p00, p01, v00, v01, level);
+
+                switch (index)
+                {
+                    case 1:
+                    case 14:
+                        AddSegment(segments, edgePoints[3], edgePoints[0]);
+                        break;
+                    case 2:
+                    case 13:
+                        AddSegment(segments, edgePoints[0], edgePoints[1]);
+                        break;
+                    case 3:
+                    case 12:
+                        AddSegment(segments, edgePoints[3], edgePoints[1]);
+                        break;
+                    case 4:
+                    case 11:
+                        AddSegment(segments, edgePoints[1], edgePoints[2]);
+                        break;
+                    case 5:
+                        if (((v00 + v10 + v11 + v01) * 0.25f) >= level)
+                        {
+                            AddSegment(segments, edgePoints[3], edgePoints[2]);
+                            AddSegment(segments, edgePoints[0], edgePoints[1]);
+                        }
+                        else
+                        {
+                            AddSegment(segments, edgePoints[3], edgePoints[0]);
+                            AddSegment(segments, edgePoints[1], edgePoints[2]);
+                        }
+                        break;
+                    case 6:
+                    case 9:
+                        AddSegment(segments, edgePoints[0], edgePoints[2]);
+                        break;
+                    case 7:
+                    case 8:
+                        AddSegment(segments, edgePoints[3], edgePoints[2]);
+                        break;
+                    case 10:
+                        if (((v00 + v10 + v11 + v01) * 0.25f) >= level)
+                        {
+                            AddSegment(segments, edgePoints[3], edgePoints[0]);
+                            AddSegment(segments, edgePoints[1], edgePoints[2]);
+                        }
+                        else
+                        {
+                            AddSegment(segments, edgePoints[3], edgePoints[2]);
+                            AddSegment(segments, edgePoints[0], edgePoints[1]);
+                        }
+                        break;
+                }
+            }
+        }
+
+        return segments;
+    }
+
+    static LatLon InterpolatePoint(LatLon from, LatLon to, float fromValue, float toValue, float level)
+    {
+        var denom = toValue - fromValue;
+        var t = Mathf.Approximately(denom, 0f) ? 0.5f : Mathf.Clamp01((level - fromValue) / denom);
+        return new LatLon(
+            Mathf.Lerp(from.LatDeg, to.LatDeg, t),
+            Mathf.Lerp(from.LonDeg, to.LonDeg, t)
+        );
+    }
+
+    static void AddSegment(List<ContourSegment> segments, LatLon start, LatLon end)
+    {
+        if (start == null || end == null)
+            return;
+
+        if (Mathf.Approximately(start.LatDeg, end.LatDeg) && Mathf.Approximately(start.LonDeg, end.LonDeg))
+            return;
+
+        segments.Add(new ContourSegment(start, end));
+    }
+
+    static List<InfluenceMapContourPolyline> StitchSegments(float level, List<ContourSegment> segments)
+    {
+        var polylines = new List<InfluenceMapContourPolyline>();
+        var remaining = new List<ContourSegment>(segments);
+
+        while (remaining.Count > 0)
+        {
+            var seed = remaining[remaining.Count - 1];
+            remaining.RemoveAt(remaining.Count - 1);
+
+            var points = new List<LatLon> { seed.start, seed.end };
+            var changed = true;
+            while (changed)
+            {
+                changed = false;
+                for (var i = remaining.Count - 1; i >= 0; i--)
+                {
+                    var segment = remaining[i];
+                    if (TryAppend(points, segment))
+                    {
+                        remaining.RemoveAt(i);
+                        changed = true;
+                    }
+                }
+            }
+
+            polylines.Add(new InfluenceMapContourPolyline
+            {
+                level = level,
+                points = points,
+            });
+        }
+
+        return polylines;
+    }
+
+    static bool TryAppend(List<LatLon> points, ContourSegment segment)
+    {
+        var head = points[0];
+        var tail = points[points.Count - 1];
+
+        if (ApproximatelySame(head, segment.start))
+        {
+            points.Insert(0, segment.end);
+            return true;
+        }
+
+        if (ApproximatelySame(head, segment.end))
+        {
+            points.Insert(0, segment.start);
+            return true;
+        }
+
+        if (ApproximatelySame(tail, segment.start))
+        {
+            points.Add(segment.end);
+            return true;
+        }
+
+        if (ApproximatelySame(tail, segment.end))
+        {
+            points.Add(segment.start);
+            return true;
+        }
+
+        return false;
+    }
+
+    static bool ApproximatelySame(LatLon left, LatLon right)
+    {
+        if (left == null || right == null)
+            return false;
+
+        return Mathf.Abs(left.LatDeg - right.LatDeg) <= 0.0001f &&
+            Mathf.Abs(left.LonDeg - right.LonDeg) <= 0.0001f;
+    }
+}

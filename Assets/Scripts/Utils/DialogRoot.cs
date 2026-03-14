@@ -271,6 +271,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset gamePreferenceDialogDocument;
     public VisualTreeAsset batteryArcIndicatorDialogDocument;
     public VisualTreeAsset plotTrajectoryDialogDocument;
+    public VisualTreeAsset influenceMapDialogDocument;
     public VisualTreeAsset shipTimeLocDialogDocument;
     public VisualTreeAsset eventStateEditorDialogDocument;
     public VisualTreeAsset weaponPickerDialogDocument;
@@ -1175,6 +1176,97 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             Debug.Log("PopupPlotTrajectoryDialog Confirm");
 
             GameManager.Instance.PlotShipLogTrajectory(EntityManager.Instance.Get<ShipLog>(model.shipLogObjectId), model.color, model.plotTimestamp, model.timestampIntervalMinutes);
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupInfluenceMapDialog()
+    {
+        if (influenceMapDialogDocument == null)
+        {
+            PopupMessageDialog("InfluenceMapDialog is not configured.");
+            return;
+        }
+
+        var model = new InfluenceMapDialogModel();
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = influenceMapDialogDocument,
+            templateDataSource = model,
+        };
+
+        tempDialog.onCreated += (_, el) =>
+        {
+            var orderedGroups = InfluenceMapUtility.GetShipGroupsInOobOrder(NavalGameState.Instance);
+            var groupNames = orderedGroups.Select(group => group.name.GetMergedName()).ToList();
+
+            var group1DropdownField = el.Q<DropdownField>("Group1DropdownField");
+            var group2DropdownField = el.Q<DropdownField>("Group2DropdownField");
+            var plotButton = el.Q<Button>("PlotButton");
+            var clearButton = el.Q<Button>("ClearButton");
+            var mapTypeField = el.Q<LocalizedEnumField>("MapTypeField");
+
+            void SyncGroupSelection(DropdownField dropdownField, Action<string> setObjectId, int defaultIndex)
+            {
+                if (dropdownField == null)
+                    return;
+
+                dropdownField.choices = groupNames;
+                dropdownField.userData = orderedGroups;
+                if (orderedGroups.Count == 0)
+                {
+                    dropdownField.index = -1;
+                    setObjectId(null);
+                    return;
+                }
+
+                var clampedIndex = Mathf.Clamp(defaultIndex, 0, orderedGroups.Count - 1);
+                dropdownField.index = clampedIndex;
+                setObjectId(orderedGroups[clampedIndex].objectId);
+                dropdownField.RegisterValueChangedCallback(_ =>
+                {
+                    var groups = dropdownField.userData as List<ShipGroup>;
+                    if (groups == null || dropdownField.index < 0 || dropdownField.index >= groups.Count)
+                    {
+                        setObjectId(null);
+                        return;
+                    }
+
+                    setObjectId(groups[dropdownField.index].objectId);
+                });
+            }
+
+            void SyncGroup2State()
+            {
+                var group2Enabled = model.mapType == InfluenceMapType.Control;
+                group2DropdownField?.SetEnabled(group2Enabled);
+            }
+
+            SyncGroupSelection(group1DropdownField, objectId => model.group1ObjectId = objectId, 0);
+            SyncGroupSelection(group2DropdownField, objectId => model.group2ObjectId = objectId, orderedGroups.Count > 1 ? 1 : 0);
+
+            mapTypeField?.RegisterValueChangedCallback(_ => SyncGroup2State());
+            SyncGroup2State();
+
+            if (plotButton != null)
+            {
+                plotButton.clicked += () =>
+                {
+                    GameManager.Instance.PlotInfluenceMap(new InfluenceMapRequest
+                    {
+                        mapType = model.mapType,
+                        group1ObjectId = model.group1ObjectId,
+                        group2ObjectId = model.group2ObjectId,
+                    });
+                };
+            }
+
+            if (clearButton != null)
+            {
+                clearButton.clicked += GameManager.Instance.ClearInfluenceMap;
+            }
         };
 
         tempDialog.Popup();

@@ -2930,6 +2930,18 @@ MonoBehaviour:
     m_Key: TT - Tutorial 5 - Manual Firing.scen.xml
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000100014
+    m_Key: InfluenceMapType.Power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100015
+    m_Key: InfluenceMapType.Firepower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100016
+    m_Key: InfluenceMapType.Control
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

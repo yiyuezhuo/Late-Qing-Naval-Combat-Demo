@@ -2974,6 +2974,18 @@ MonoBehaviour:
       \u2605"
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000100014
+    m_Localized: "\u6230\u529B"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100015
+    m_Localized: "\u706B\u529B"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100016
+    m_Localized: "\u5236\u5727"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

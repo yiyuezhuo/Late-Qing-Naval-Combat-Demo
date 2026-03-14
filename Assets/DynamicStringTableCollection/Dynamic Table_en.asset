@@ -2939,6 +2939,18 @@ MonoBehaviour:
     m_Localized: "TT - Tutorial 5 - Manual Firing \u2605"
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000100014
+    m_Localized: Power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100015
+    m_Localized: Firepower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100016
+    m_Localized: Control
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

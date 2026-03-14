@@ -171,6 +171,8 @@ public class TopTabs : SingletonDocument<TopTabs>
             LOSLine.Instance.state = LOSLine.State.ChooseStart;
         };
 
+        root.Q<Button>("InfluenceMapButton").clicked += DialogRoot.Instance.PopupInfluenceMapDialog;
+
         root.Q<Button>("HelpButton").clicked += () => DialogRoot.Instance.PopupHelpDialogDocument();
 
         root.Q<Button>("SetCourseButton").clicked += () =>

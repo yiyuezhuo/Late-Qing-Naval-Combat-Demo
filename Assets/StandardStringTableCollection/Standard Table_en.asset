@@ -2695,6 +2695,30 @@ MonoBehaviour:
     m_Localized: 3D Base
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000021
+    m_Localized: Influence Map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000022
+    m_Localized: Influence Map Type
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000023
+    m_Localized: Group Selector 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000024
+    m_Localized: Group Selector 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000025
+    m_Localized: Plot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000026
+    m_Localized: Clear
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

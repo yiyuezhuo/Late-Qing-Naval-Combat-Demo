@@ -1,0 +1,44 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="InfluenceMapDialogModel, Assembly-CSharp" class="panel-dialog" style="width: 420px; height: auto;">
+        <ui:Label text="Influence Map" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000021)"/>
+            </Bindings>
+        </ui:Label>
+        <ui:VisualElement style="flex-grow: 1;">
+            <LocalizedEnumField name="MapTypeField" type-str="InfluenceMapType" label="Influence Map Type">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="mapTypeValue" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000022)"/>
+                </Bindings>
+            </LocalizedEnumField>
+            <ui:DropdownField name="Group1DropdownField" label="Group Selector 1">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000023)"/>
+                </Bindings>
+            </ui:DropdownField>
+            <ui:DropdownField name="Group2DropdownField" label="Group Selector 2">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000024)"/>
+                </Bindings>
+            </ui:DropdownField>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row; flex-grow: 0; flex-shrink: 0;">
+            <ui:Button text="Plot" name="PlotButton" style="flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000025)"/>
+                </Bindings>
+            </ui:Button>
+            <ui:Button text="Clear" name="ClearButton" style="flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000026)"/>
+                </Bindings>
+            </ui:Button>
+            <ui:Button text="Cancel" name="CancelButton" style="flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66269346435072)"/>
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

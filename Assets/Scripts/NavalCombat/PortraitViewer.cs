@@ -149,6 +149,17 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     Texture2D portraitTex;
     Texture2D countryTex;
     long oldViewHashCode;
+    GameObject runtimeHullObject;
+    MeshFilter runtimeHullMeshFilter;
+    MeshRenderer runtimeHullMeshRenderer;
+    Material runtimeHullMaterial;
+    Texture2D runtimeHullSourceTexture;
+    static readonly int mainTexPropertyId = Shader.PropertyToID("_MainTex");
+    static readonly int mainColorPropertyId = Shader.PropertyToID("_MainColor");
+    static readonly int colorPropertyId = Shader.PropertyToID("_Color");
+    const float runtimeHullAlphaThreshold = 0.1f;
+    const float runtimeHullTopOffsetWu = 0.0005f;
+    const float runtimeHullMinDepthWu = 0.0001f;
 
     // float initialEmissionRateOverTimeConstant;
 
@@ -176,6 +187,12 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             funnelSmokeParticleSystem.Pause();
     }
 
+    void OnDestroy()
+    {
+        if (runtimeHullMaterial != null)
+            Destroy(runtimeHullMaterial);
+    }
+
     void TryBindWakeGameObjectsByName()
     {
         if (wakeGameObjects != null && wakeGameObjects.Count > 0)
@@ -190,6 +207,109 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             })
             .Select(t => t.gameObject)
             .ToList();
+    }
+
+    bool ShouldShowRuntimeHull(ShipLog shipLog)
+    {
+        return shipLog != null
+            && shipLog.shipClass != null
+            && !shipLog.IsLandBattery();
+    }
+
+    void EnsureRuntimeHullObject()
+    {
+        if (runtimeHullObject != null)
+            return;
+
+        runtimeHullObject = new GameObject("RuntimeHullPreview");
+        runtimeHullObject.transform.SetParent(headingTransform, false);
+        runtimeHullObject.transform.localPosition = new Vector3(0f, 0f, runtimeHullTopOffsetWu);
+        runtimeHullObject.transform.localRotation = Quaternion.identity;
+        runtimeHullObject.layer = iconRenderer != null ? iconRenderer.gameObject.layer : gameObject.layer;
+
+        runtimeHullMeshFilter = runtimeHullObject.AddComponent<MeshFilter>();
+        runtimeHullMeshRenderer = runtimeHullObject.AddComponent<MeshRenderer>();
+        runtimeHullMeshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        runtimeHullMeshRenderer.receiveShadows = false;
+        runtimeHullMeshRenderer.motionVectorGenerationMode = UnityEngine.MotionVectorGenerationMode.ForceNoMotion;
+
+        var baseMaterial = iconRenderer != null
+            ? (iconRenderer.sharedMaterial != null ? iconRenderer.sharedMaterial : iconRenderer.material)
+            : null;
+
+        runtimeHullMaterial = baseMaterial != null ? new Material(baseMaterial) : null;
+
+        if (runtimeHullMaterial == null)
+        {
+            var fallbackShader = Shader.Find("Unlit/Color");
+            if (fallbackShader != null)
+                runtimeHullMaterial = new Material(fallbackShader);
+        }
+
+        if (runtimeHullMaterial != null && runtimeHullMaterial.HasProperty(mainTexPropertyId))
+            runtimeHullMaterial.SetTexture(mainTexPropertyId, Texture2D.whiteTexture);
+        if (runtimeHullMaterial != null)
+            runtimeHullMeshRenderer.sharedMaterial = runtimeHullMaterial;
+
+        runtimeHullObject.SetActive(false);
+    }
+
+    static void SetMaterialTint(Material material, Color color)
+    {
+        if (material == null)
+            return;
+
+        if (material.HasProperty(mainColorPropertyId))
+            material.SetColor(mainColorPropertyId, color);
+        if (material.HasProperty(colorPropertyId))
+            material.SetColor(colorPropertyId, color);
+    }
+
+    static void SetMaterialMainTexture(Material material, Texture texture)
+    {
+        if (material == null || !material.HasProperty(mainTexPropertyId))
+            return;
+
+        material.SetTexture(mainTexPropertyId, texture);
+    }
+
+    void UpdateRuntimeHullPreview(ShipLog shipLog, float lengthWu, float beamWu, Color mainColor)
+    {
+        if (!ShouldShowRuntimeHull(shipLog) || portraitTex == null)
+        {
+            if (runtimeHullObject != null)
+                runtimeHullObject.SetActive(false);
+            runtimeHullSourceTexture = null;
+            return;
+        }
+
+        EnsureRuntimeHullObject();
+        if (runtimeHullObject == null || runtimeHullMeshFilter == null || runtimeHullMeshRenderer == null)
+            return;
+
+        if (runtimeHullSourceTexture != portraitTex)
+        {
+            runtimeHullSourceTexture = portraitTex;
+            runtimeHullMeshFilter.sharedMesh = PortraitHullRuntimeBuilder.GetOrBuildNormalizedHullMesh(portraitTex, runtimeHullAlphaThreshold);
+        }
+
+        var hullMesh = runtimeHullMeshFilter.sharedMesh;
+        if (hullMesh == null)
+        {
+            runtimeHullObject.SetActive(false);
+            return;
+        }
+
+        var draftWu = Mathf.Max(shipLog.shipClass.draftFoot * Utils.footToWu * modelScale, runtimeHullMinDepthWu);
+        runtimeHullObject.transform.localPosition = new Vector3(0f, 0f, runtimeHullTopOffsetWu);
+        runtimeHullObject.transform.localRotation = Quaternion.identity;
+        runtimeHullObject.transform.localScale = new Vector3(lengthWu, beamWu, draftWu);
+
+        var hullColor = new Color(mainColor.r * 0.84f, mainColor.g * 0.84f, mainColor.b * 0.84f, mainColor.a);
+        SetMaterialMainTexture(runtimeHullMaterial, Texture2D.whiteTexture);
+        SetMaterialTint(runtimeHullMaterial, hullColor);
+
+        runtimeHullObject.SetActive(true);
     }
 
     void EnsureAutoWakeLines()
@@ -679,6 +799,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
         iconRenderer.material.SetTexture("_MainTex", portraitTex);
         var mainColor = isTransparent ? transparentColor : Color.white;
         iconRenderer.material.SetColor("_MainColor", mainColor);
+        UpdateRuntimeHullPreview(shipLog, lengthWu, beamWu, mainColor);
 
         text.color = isTransparent ? transparentColor : Color.white;
     }

@@ -78,12 +78,13 @@ namespace NavalCombat
         {
             var manager = GameManager.Instance;
             var cameraController = CameraController2.Instance;
-            var shipLogEditor = ShipLogEditor.Instance;
             var namedShipEditor = NamedShipEditor.Instance;
             var shipClassEditor = ShipClassEditor.Instance;
             var distanceMeasureLine = MeasureLine.Instance;
             var orderOfBattleEditor = OOBEditor.Instance;
             var switchCenter = SwitchCenter.Instance;
+
+            ClearAllBindings(manager, cameraController, namedShipEditor, shipClassEditor, distanceMeasureLine, orderOfBattleEditor, switchCenter);
 
             foreach (var grouping in eventItems.GroupBy(x => x.eventType))
             {
@@ -136,9 +137,30 @@ namespace NavalCombat
             }
         }
 
+        static void ClearAllBindings(
+            GameManager manager,
+            CameraController2 cameraController,
+            NamedShipEditor namedShipEditor,
+            ShipClassEditor shipClassEditor,
+            MeasureLine distanceMeasureLine,
+            OOBEditor orderOfBattleEditor,
+            SwitchCenter switchCenter)
+        {
+            manager.firstLoaded = null;
+            manager.minuteChanged = null;
+            cameraController.cameraMoved = null;
+            cameraController.cameraZoomed = null;
+            manager.shipLogClicked = null;
+            switchCenter.shipLogViewShown = null;
+            namedShipEditor.shown = null;
+            shipClassEditor.shown = null;
+            shipClassEditor.hidden = null;
+            distanceMeasureLine.distanceMeasureLineFixed = null;
+            orderOfBattleEditor.shown = null;
+        }
+
         void ResetAndBind(ref System.EventHandler eventHandler, IGrouping<EventType, EventItem> grouping)
         {
-            eventHandler = null; // TODO: use -= ?
             eventHandler += (sender, args) =>
             {
                 foreach (var item in grouping)

@@ -2446,6 +2446,7 @@
     <isBuiltin>false</isBuiltin>
    </backgroundPictureReference>
    <disableFirstRemainOneOperationalFleetPrompt>true</disableFirstRemainOneOperationalFleetPrompt>
+   <disableStartupAIDialog>true</disableStartupAIDialog>
    <locationLabels>
     <LocationLabel latitude="38.566452" longitude="121.665955">
      <name>

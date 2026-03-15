@@ -327,7 +327,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             NavalGameState.Instance.scenarioState.firstLoaded = true;
             firstLoaded?.Invoke(this, EventArgs.Empty);
 
-            if(GamePreference.Instance.showAIDialog && navalGameState.shipGroups.Count > 0) // > 0 filter out "view only" mode implicitly
+            if(GamePreference.Instance.showAIDialog
+                && !NavalGameState.Instance.scenarioState.disableStartupAIDialog
+                && navalGameState.shipGroups.Count > 0) // > 0 filter out "view only" mode implicitly
             {
                 DialogRoot.Instance.PopupAIDialog();
             }

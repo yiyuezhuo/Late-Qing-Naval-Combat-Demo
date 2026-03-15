@@ -2685,6 +2685,7 @@
     <isBuiltin>false</isBuiltin>
    </backgroundPictureReference>
    <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>
+   <disableStartupAIDialog>true</disableStartupAIDialog>
    <locationLabels />
   </scenarioState>
   <launchedTorpedos />

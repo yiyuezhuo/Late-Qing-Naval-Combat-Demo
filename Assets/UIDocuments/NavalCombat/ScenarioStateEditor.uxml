@@ -163,6 +163,11 @@
                                 <ui:DataBinding property="value" data-source-path="disableFirstRemainOneOperationalFleetPrompt" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:Toggle>
+                        <ui:Toggle label="Disable A/I Dialog">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="disableStartupAIDialog" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:Toggle>
                     </ui:VisualElement>
                 </ui:Tab>
             </ui:TabView>

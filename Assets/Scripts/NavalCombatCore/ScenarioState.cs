@@ -85,6 +85,7 @@ namespace NavalCombatCore
         public PictureReference backgroundPictureReference = new();
 
         public bool disableFirstRemainOneOperationalFleetPrompt;
+        public bool disableStartupAIDialog;
         public VictoryStatusBaseline initialVictoryStatusBaseline;
 
         public void FillBeginDateTimeIfMissing()

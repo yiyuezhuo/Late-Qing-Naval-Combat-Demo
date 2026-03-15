@@ -345,6 +345,7 @@
     <isBuiltin>false</isBuiltin>
    </backgroundPictureReference>
    <disableFirstRemainOneOperationalFleetPrompt>true</disableFirstRemainOneOperationalFleetPrompt>
+   <disableStartupAIDialog>true</disableStartupAIDialog>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />

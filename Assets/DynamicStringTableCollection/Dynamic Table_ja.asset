@@ -3010,6 +3010,10 @@ MonoBehaviour:
     m_Localized: "SJS - \u5927\u6771\u6E9D\u6D77\u6226\uFF08\u5317\u6D0B\u6C34\u5E2B\u306B\u5916\u8CFC\u8266\u3092\u8FFD\u52A0\uFF09"
     m_Metadata:
       m_Items: []
+  - m_Id: 55862815828381696
+    m_Localized: "SJS - \u901F\u5C04\u7832\u5BFE\u88C5\u7532\u52B9\u679C\u306E\u8F03\u6B63"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

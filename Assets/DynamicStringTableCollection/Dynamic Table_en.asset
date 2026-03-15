@@ -2975,6 +2975,10 @@ MonoBehaviour:
     m_Localized: SJS - Battle of Yalu River (Beiyang with foreign ships)
     m_Metadata:
       m_Items: []
+  - m_Id: 55862815828381696
+    m_Localized: SJS - Quick Firing Gun vs Armor Effect Calibration
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

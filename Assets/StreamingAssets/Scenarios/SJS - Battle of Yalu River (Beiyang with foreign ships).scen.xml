@@ -9941,17 +9941,17 @@ Compared to historical positions, the battle formation is shifted slightly south
 
 チリ：
 
-防護巡洋艦 ブランコ・エンカラダ Blanco Encalada): 比較的先進的な艦であり、日清戦争に参加していれば最強の防護巡洋艦となっていたでしょう。
-鉄甲艦 カピタン・プラット Capitán Prat): 装甲は定遠と類似していますが、火力は定遠を遥かに凌駕しています。
-防護巡洋艦 エスメラルダ Esmeralda): 戦闘力は平均的であり、中日両国の巡洋艦の平均戦闘力の間に位置します。歴史的には後に日本によって購入されました。
-防護巡洋艦 プレジデンテ・エラズリス Presidente Errázuriz) / プレジデンテ・ピント Presidente Pinto): 戦闘力はエスメラルダと類似しています。
-水雷砲艦 アルミランテ・コンデル Almirante Condell) / アルミランテ・リンチ Almirante Lynch): 大型の水雷艇であり、歴史上初めて自走式魚雷で目標を撃沈した艦艇です。
+防護巡洋艦 ブランコ・エンカラダ (Blanco Encalada): 比較的先進的な艦であり、日清戦争に参加していれば最強の防護巡洋艦となっていたでしょう。
+鉄甲艦 カピタン・プラット (Capitán Prat): 装甲は定遠と類似していますが、火力は定遠を遥かに凌駕しています。
+防護巡洋艦 エスメラルダ (Esmeralda): 戦闘力は平均的であり、中日両国の巡洋艦の平均戦闘力の間に位置します。歴史的には後に日本によって購入されました。
+防護巡洋艦 プレジデンテ・エラズリス (Presidente Errázuriz) / プレジデンテ・ピント (Presidente Pinto): 戦闘力はエスメラルダと類似しています。
+水雷砲艦 アルミランテ・コンデル (Almirante Condell) / アルミランテ・リンチ (Almirante Lynch): 大型の水雷艇であり、歴史上初めて自走式魚雷で目標を撃沈した艦艇です。
 
 アルゼンチン：
 
-防護巡洋艦 ベインティシンコ・デ・マヨ Veinticinco de Mayo): 日本側の巡洋艦と同等の戦闘力。
-防護巡洋艦 ヌエベ・デ・フリオ Nueve de Julio): ベインティシンコ・デ・マヨと類似。
-装甲巡洋艦 アルミランテ・ブラウン Almirante Brown): 日本側の巡洋艦と同等の戦闘力。
+防護巡洋艦 ベインティシンコ・デ・マヨ (Veinticinco de Mayo): 日本側の巡洋艦と同等の戦闘力。
+防護巡洋艦 ヌエベ・デ・フリオ (Nueve de Julio): ベインティシンコ・デ・マヨと類似。
+装甲巡洋艦 アルミランテ・ブラウン (Almirante Brown): 日本側の巡洋艦と同等の戦闘力。
 
 シナリオの変更点：
 歴史的な配置と比較して、戦列をやや南方へ偏移させます。水雷艇は单独の隊として編成し、その他の外購艦艇も別の隊として編成します。
@@ -10024,7 +10024,7 @@ Compared to historical positions, the battle formation is shifted slightly south
  </navalGameState>
  <viewState>
   <xRotation>39.6035423</xRotation>
-  <yRotation>236.1825</yRotation>
+  <yRotation>236.18251</yRotation>
   <orthographicSize>20</orthographicSize>
  </viewState>
  <eventState>

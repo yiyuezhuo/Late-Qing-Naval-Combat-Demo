@@ -532,7 +532,8 @@
 }
 
 .unity-label,
-.unity-text-element {
+.unity-text-element, 
+.unity-label:focus:enabled {
     color: var(--ui-text-primary);
 }
 

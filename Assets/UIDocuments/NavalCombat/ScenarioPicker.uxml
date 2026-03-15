@@ -27,14 +27,16 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; -unity-background-scale-mode: scale-and-crop; background-image: url(&quot;project://database/Assets/Textures/StategicCombat/First_Sino_Japanese_War_Mapping.png?fileID=2800000&amp;guid=a0ce60751a1e12d48af52698e303601d&amp;type=3#First_Sino_Japanese_War_Mapping&quot;); -unity-background-image-tint-color: rgba(255, 255, 255, 0.24);">
-                <ui:Label text="Scenario Info" selectable="true" focusable="true" style="white-space: normal;">
-                    <Bindings>
-                        <ui:DataBinding property="text" data-source-path="currentDescription" binding-mode="ToTarget"/>
-                    </Bindings>
-                </ui:Label>
                 <Bindings>
                     <ui:DataBinding property="style.backgroundImage" data-source-path="currentGameState.scenarioState.backgroundPictureReference.pictureStyleBackground" binding-mode="ToTarget"/>
                 </Bindings>
+                <ui:ScrollView>
+                    <ui:Label text="Scenario Info" selectable="true" focusable="true" style="white-space: normal;">
+                        <Bindings>
+                            <ui:DataBinding property="text" data-source-path="currentDescription" binding-mode="ToTarget"/>
+                        </Bindings>
+                    </ui:Label>
+                </ui:ScrollView>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

@@ -2971,6 +2971,10 @@ MonoBehaviour:
     m_Localized: SJS - Hai Yung vs Three Views
     m_Metadata:
       m_Items: []
+  - m_Id: 55815083826778112
+    m_Localized: SJS - Battle of Yalu River (Beiyang with foreign ships)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

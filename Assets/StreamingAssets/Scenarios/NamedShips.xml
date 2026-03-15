@@ -5791,6 +5791,48 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   <objectId>2a67e708-40ff-46c2-a218-b1993ed7bdc4</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>18b02e1e-8f9f-46eb-9f87-b524c44917f3</shipClassObjectId>
+  <name>
+   <english>Hai Chi</english>
+   <japanese>海圻</japanese>
+   <chineseSimplified>海圻</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>1a88e426-09c2-40b3-9df1-00d583e1ef16</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>18b02e1e-8f9f-46eb-9f87-b524c44917f3</shipClassObjectId>
+  <name>
+   <english>Hai Tien</english>
+   <japanese>海天</japanese>
+   <chineseSimplified>海天</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>2f29c316-7ca5-4dea-9ba3-d76f056c4a90</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>032216c7-e0fc-47f5-a2d4-6be32a12c031</shipClassObjectId>
   <name>
    <english>Hai Yung</english>
@@ -5946,11 +5988,33 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   <objectId>45228a40-211f-4a79-a22d-fa88cf9de8aa</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>ce3ed149-d377-4adf-830c-7cf91fd61c78</shipClassObjectId>
+  <name>
+   <english>Presidente Pinto</english>
+   <japanese>ピント</japanese>
+   <chineseSimplified>平度</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://naval-encyclopedia.com/ww1/chile/presidente-pinto-class-cruisers.php</remark>
+  <objectId>d2fe661e-006b-430a-ac4e-b9ec599e4a17</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>3e164e3e-793a-4336-b321-675b48caed09</shipClassObjectId>
   <name>
    <english>Almirante Lynch</english>
    <japanese>リンチ</japanese>
-   <chineseSimplified>林奇</chineseSimplified>
+   <chineseSimplified>林则</chineseSimplified>
   </name>
   <builderDesc>
    <english>none</english>

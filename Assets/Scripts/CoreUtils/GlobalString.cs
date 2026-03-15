@@ -40,12 +40,13 @@ namespace CoreUtils
         {
             return type switch
             {
-                LanguageType.English => english,
-                LanguageType.Japanese => japanese ?? english,
-                LanguageType.ChineseSimplified => chineseSimplified ?? english,
-                LanguageType.ChineseTraditional => (chineseTraditional ?? chineseSimplified) ?? english,
+                // LanguageType.English => NullIfWhiteSpace(english),
+                LanguageType.English =>english,
+                LanguageType.Japanese => FirstNonWhiteSpace(japanese, english),
+                LanguageType.ChineseSimplified => FirstNonWhiteSpace(chineseSimplified, english),
+                LanguageType.ChineseTraditional => FirstNonWhiteSpace(chineseTraditional, chineseSimplified, english),
                 LanguageType.All => GetMergedNamePure(),
-                _ => english
+                _ => NullIfWhiteSpace(english)
             };
         }
 
@@ -87,6 +88,23 @@ namespace CoreUtils
             if (a == null || a == "" || b == null || b == "")
                 return null;
             return a + b;
+        }
+
+        static string NullIfWhiteSpace(string value)
+        {
+            return string.IsNullOrWhiteSpace(value) ? null : value;
+        }
+
+        static string FirstNonWhiteSpace(params string[] values)
+        {
+            foreach (var value in values)
+            {
+                var normalized = NullIfWhiteSpace(value);
+                if (normalized != null)
+                    return normalized;
+            }
+
+            return null;
         }
 
         public bool EqualsAny(string str)

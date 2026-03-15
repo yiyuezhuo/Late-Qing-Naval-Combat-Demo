@@ -2923,7 +2923,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 69800000100006
-    m_Localized: "\u4E3B\u70AE\u7EC4"
+    m_Localized: "\u70AE\u7EC4"
     m_Metadata:
       m_Items: []
   - m_Id: 69800000100007
@@ -2935,7 +2935,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 69800000100009
-    m_Localized: "\u4E3B\u70AE\u7EC4 {0}"
+    m_Localized: "\u70AE\u7EC4 {0}"
     m_Metadata:
       m_Items: []
   - m_Id: 69800000100010

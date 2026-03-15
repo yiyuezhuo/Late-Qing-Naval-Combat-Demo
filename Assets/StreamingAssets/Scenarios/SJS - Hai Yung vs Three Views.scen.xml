@@ -2095,13 +2095,26 @@
    </ShipGroup>
   </shipGroups>
   <scenarioState>
-   <dateTime>1894-09-17T04:30:00Z</dateTime>
-   <beginDateTime>1894-09-17T04:30:00Z</beginDateTime>
+   <dateTime>1899-09-17T04:00:00Z</dateTime>
+   <beginDateTime>1899-09-17T04:00:00Z</beginDateTime>
    <visibility>ExceptionallyClear</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <globalDescription>
-    <english>none</english>
+    <english>Hypothetic scenario, inspired by discussion of
+
+https://tieba.baidu.com/p/10538120464</english>
+    <japanese>仮想シナリオ（以下の議論に触発されました）
+
+https://tieba.baidu.com/p/10538120464</japanese>
+    <chineseSimplified>假想剧本，灵感源自以下讨论：
+
+https://tieba.baidu.com/p/10538120464
+</chineseSimplified>
+    <chineseTraditional>假設劇本，靈感源自以下討論：
+
+https://tieba.baidu.com/p/10538120464
+</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
@@ -2118,8 +2131,8 @@
    <firstRemainOneOperationalFleet>false</firstRemainOneOperationalFleet>
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
-   <hasEndDateTime>false</hasEndDateTime>
-   <endDateTime>1895-04-17T00:00:00Z</endDateTime>
+   <hasEndDateTime>true</hasEndDateTime>
+   <endDateTime>1899-09-17T06:00:00Z</endDateTime>
    <backgroundPictureReference>
     <isBuiltin>false</isBuiltin>
    </backgroundPictureReference>

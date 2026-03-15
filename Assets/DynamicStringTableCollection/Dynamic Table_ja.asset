@@ -3014,6 +3014,11 @@ MonoBehaviour:
     m_Localized: "SJS - \u901F\u5C04\u7832\u5BFE\u88C5\u7532\u52B9\u679C\u306E\u8F03\u6B63"
     m_Metadata:
       m_Items: []
+  - m_Id: 55896964316434432
+    m_Localized: "TT - \u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB 6 - \u968E\u5C64\u578B\u81EA\u52D5\u5316\u3068AI
+      \u2605"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

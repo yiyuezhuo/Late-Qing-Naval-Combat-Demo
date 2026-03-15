@@ -2979,6 +2979,10 @@ MonoBehaviour:
     m_Localized: SJS - Quick Firing Gun vs Armor Effect Calibration
     m_Metadata:
       m_Items: []
+  - m_Id: 55896964316434432
+    m_Localized: "TT - Tutorial 6 - Hierarchical Automation & AI \u2605"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -2970,6 +2970,10 @@ MonoBehaviour:
     m_Key: SJS - Quick Firing Gun vs Armor Calibration.scen.xml
     m_Metadata:
       m_Items: []
+  - m_Id: 55896964316434432
+    m_Key: TT - Tutorial 6 - Hierarchical Automation & AI.scen.xml
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

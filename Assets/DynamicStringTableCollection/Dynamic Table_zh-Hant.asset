@@ -2991,7 +2991,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 55815083826778112
-    m_Localized: "SJS - \u5927\u6771\u6E9D\u6D77\u6230\uFF08\u5317\u6D0B\u6C34\u5E2B\u589E\u88DC\u5916\u8CFC\u8ECD\u8266\uFF09"
+    m_Localized: "SJS - \u5927\u6771\u6E9D\u6D77\u6230\uFF08\u5317\u6D0B\u6C34\u5E2B\u589E\u88DC\u5916\u8CFC\u8ECD\u8266\uFF09
+      \u2605"
     m_Metadata:
       m_Items: []
   - m_Id: 55862815828381696

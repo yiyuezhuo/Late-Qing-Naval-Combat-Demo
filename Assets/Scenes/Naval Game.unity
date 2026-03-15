@@ -1328,7 +1328,13 @@ MonoBehaviour:
   gunneryShellSpeedMps: 760
   gunneryShellAltitudeFoot: 300
   gunneryShellRadiusScaleCoef: 100
+  enableGunneryShellTrail: 1
+  gunneryShellTrailTime: 0.16
+  gunneryShellTrailWidthScale: 4.5
+  gunneryShellTrailMinWidth: 0.00018
+  gunneryShellTrailMaxWidth: 0.0012
   gunneryShellVisualContainer: {fileID: 0}
+  gunneryMissSplashSound: {fileID: 0}
   stateIconMap:
   - state: 1
     texture: {fileID: 2800000, guid: eacdd482a82239842b4ce0baa8da6cf9, type: 3}
@@ -1656,9 +1662,9 @@ MonoBehaviour:
   leafTransform: {fileID: 871059392}
   mode: 0
   middleMouseRotateSpeed: 0.2
-  middleMousePitchMin: -75
-  middleMousePitchMax: 75
-  quick3DViewPitchDeg: 45
+  middleMousePitchMin: -60
+  middleMousePitchMax: 0
+  quick3DViewPitchDeg: -45
 --- !u!4 &813226749
 Transform:
   m_ObjectHideFlags: 0

@@ -106,7 +106,7 @@ namespace StrategicCombatCore
             Engineer,
             Fleet,
             CoastArtillery,
-            Facility
+            Base
         }
         public Type type;
         public StrategicUnitSize size;
@@ -201,7 +201,7 @@ namespace StrategicCombatCore
         // public List<StrategicGroupMemberReference> subordinatesInCommandOfChain = new();
 
         // public string strategicGroupId;
-        public StrategicGroupReference strategicGroupReference { get; set; } = new();
+        public StrategicGroupReference strategicGroupReference { get; set; } = new(); // parent strategic group
         public string assignedMissionObjectId;
 
         public void SetAssignedMission(StrategicMission mission)

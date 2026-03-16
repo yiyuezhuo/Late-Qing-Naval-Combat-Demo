@@ -118,10 +118,13 @@ namespace StrategicCombatCore
         public Color countryColor => StyleConstants.countryColorMap.GetValueOrDefault(GetObservedSide().countries.FirstOrDefault(), Color.gray);
 
         [CreateProperty]
-        public StyleBackground typeIcon
-        {
-            get => UnityWebRequestImageReader.Instance.FetchStyleBackground($"{Application.streamingAssetsPath}/Pictures/GroupTypeIcons/Fleet.png");
-        }
+        public Sprite typeIconSprite => UnityWebRequestImageReader.Instance.FetchSprite(typeIconPath);
+
+        [CreateProperty]
+        public string typeIconPath => $"{Application.streamingAssetsPath}/Pictures/GroupTypeIcons/Fleet.png";
+
+        [CreateProperty]
+        public StyleBackground typeIcon => UnityWebRequestImageReader.Instance.FetchStyleBackground(typeIconPath);
 
         // public bool IsOnGridCell() => GetCell().IsGridCell();
         // public bool IsOnAreaCell() => GetCell().IsAreaCell();
@@ -143,7 +146,7 @@ namespace StrategicCombatCore
         public string estimateStr => estimation.GetEstimatateSummary();
 
         [CreateProperty]
-        public StyleFloat timelinessOpacity => GetTimelinessCoef();
+        public float timelinessOpacity => GetTimelinessCoef();
     }
 
     public partial class StrategicGroup : ILayableWorldSpaceGroupIconDataSource
@@ -166,7 +169,13 @@ namespace StrategicCombatCore
         public Color countryColor => StyleConstants.countryColorMap.GetValueOrDefault(country, Color.gray);
 
         [CreateProperty]
-        public StyleBackground typeIcon => UnityWebRequestImageReader.Instance.FetchStyleBackground($"{Application.streamingAssetsPath}/Pictures/GroupTypeIcons/{type}.png");
+        public Sprite typeIconSprite => UnityWebRequestImageReader.Instance.FetchSprite(typeIconPath);
+
+        [CreateProperty]
+        public string typeIconPath => $"{Application.streamingAssetsPath}/Pictures/GroupTypeIcons/{type}.png";
+
+        [CreateProperty]
+        public StyleBackground typeIcon => UnityWebRequestImageReader.Instance.FetchStyleBackground(typeIconPath);
 
         [XmlIgnore]
         [CreateProperty]
@@ -262,7 +271,7 @@ namespace StrategicCombatCore
         public string commandDesc => GetCommandDesc().Resolve();
 
         [CreateProperty]
-        public StyleFloat timelinessOpacity => 1;
+        public float timelinessOpacity => 1f;
 
         // [CreateProperty]
         // public double supplyTonsProp => GetSupplyTons();
@@ -398,7 +407,7 @@ namespace StrategicCombatCore
                     return null;
                 if (obj is StrategicGroup group)
                 {
-                    return group.typeIcon;
+                    return UnityWebRequestImageReader.Instance.FetchStyleBackground(group.typeIconPath);
                 }
                 else if (obj is LandUnit landUnit)
                 {

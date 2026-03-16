@@ -2759,6 +2759,10 @@ MonoBehaviour:
     m_Localized: Fill
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000037
+    m_Localized: Home Base
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

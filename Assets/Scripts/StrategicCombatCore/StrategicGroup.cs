@@ -203,6 +203,7 @@ namespace StrategicCombatCore
         // public string strategicGroupId;
         public StrategicGroupReference strategicGroupReference { get; set; } = new(); // parent strategic group
         public string assignedMissionObjectId;
+        public string homeBaseObjectId;
 
         public void SetAssignedMission(StrategicMission mission)
         {
@@ -224,6 +225,71 @@ namespace StrategicCombatCore
         }
 
         public StrategicMission GetAssignedMission() => EntityManager.Instance.Get<StrategicMission>(assignedMissionObjectId);
+        public StrategicGroup GetHomeBaseGroup()
+        {
+            if (homeBaseObjectId == objectId)
+                return null;
+
+            var homeBase = EntityManager.Instance.Get<StrategicGroup>(homeBaseObjectId);
+            if (homeBase?.type != Type.Base)
+                return null;
+            return homeBase;
+        }
+
+        public LandUnit GetFirstDepot()
+        {
+            foreach (var subordinateRef in subordinatesCombined)
+            {
+                if (subordinateRef.Get() is LandUnit landUnit &&
+                    landUnit.GetLandUnitTemplate()?.unitType == LandUnitType.Supply)
+                {
+                    return landUnit;
+                }
+            }
+            return null;
+        }
+
+        public LandUnit GetHomeBaseDepot() => GetHomeBaseGroup()?.GetFirstDepot();
+
+        LandUnit GetNearestFriendlyBaseDepot()
+        {
+            var srcCell = cell;
+            var sideState = side;
+            if (srcCell == null || sideState == null)
+                return null;
+
+            var graph = new DynamicLandSupplyNetworkingGraph() { side = sideState };
+            LandUnit bestDepot = null;
+            var bestCost = float.PositiveInfinity;
+
+            foreach (var baseGroup in StrategicGameState.Instance.strategicGroups.Where(
+                group => group != null && group.type == Type.Base && group.side == sideState))
+            {
+                var depot = baseGroup.GetFirstDepot();
+                var dstCell = baseGroup.cell;
+                if (depot == null || dstCell == null)
+                    continue;
+
+                var result = PathFinding<Cell>.AStar3(graph, srcCell, dstCell);
+                if (result.Cost < bestCost)
+                {
+                    bestCost = result.Cost;
+                    bestDepot = depot;
+                }
+            }
+
+            return bestDepot;
+        }
+
+        public LandUnit GetCurrentSourceDepot()
+        {
+            if (type == Type.Fleet || type == Type.Base || !string.IsNullOrEmpty(homeBaseObjectId))
+            {
+                return GetHomeBaseDepot();
+            }
+
+            return GetNearestFriendlyBaseDepot();
+        }
 
         public SideState side => StrategicGameState.Instance.countryToSideStateMap.GetValueOrDefault(country);
         // public HexInfo hexInfo => StrategicGameState.Instance.hexInfoMap.GetValueOrDefault((x, y));
@@ -729,10 +795,9 @@ namespace StrategicCombatCore
                 restoredHours = disengagedHours;
             }
 
-            var depot = ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
-            var depotGroup = depot?.strategicGroupReference.Get();
+            var depotGroup = GetDepotGroup();
 
-            var depotCell = depotGroup.cell;
+            var depotCell = depotGroup?.cell;
             if (depotGroup != null && depotCell != null)
             {
                 TryPlanPathTo(depotCell);
@@ -810,7 +875,7 @@ namespace StrategicCombatCore
             var groupCell = cell;
             if(type == Type.Fleet)
             {
-                var depotCell = GetDepotGroup().cell;
+                var depotCell = GetDepotGroup()?.cell;
                 if(depotCell != null && groupCell == depotCell)
                 {
                     var ships = WalkGroupMembersDeployedShips().ToList();
@@ -829,7 +894,7 @@ namespace StrategicCombatCore
             if(type == Type.Fleet)
             {
                 var groupCell = cell;
-                var depotCell = GetDepotGroup().cell;
+                var depotCell = GetDepotGroup()?.cell;
                 if(depotCell != null && groupCell != depotCell)
                 {
                     var graph = new DynamicCellGraphNavy();
@@ -907,7 +972,7 @@ namespace StrategicCombatCore
 
         public StrategicGroup GetDepotGroup()
         {
-            var groupDepot = ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepot();
+            var groupDepot = GetCurrentSourceDepot();
             return groupDepot?.strategicGroupReference.Get();
         }
 
@@ -1098,7 +1163,7 @@ namespace StrategicCombatCore
             if(type == Type.Fleet)
             {
                 // var groupCell = cell;
-                var depotCell = GetDepotGroup().cell;
+                var depotCell = GetDepotGroup()?.cell;
                 if(depotCell != null)
                 {
                     if(cell == depotCell)

@@ -1412,6 +1412,41 @@ namespace StrategicCombatCore
 
             foreach(var navalContactReport in navalContactReports)
                 EntityManager.Instance.Register(navalContactReport, null);
+
+            RebuildCacheForSideStates();
+            RebuildCellStrategicGroupReferences();
+        }
+
+        void RebuildCellStrategicGroupReferences()
+        {
+            foreach (var cell in IterCells())
+            {
+                cell.StrategicGroupReferences.Clear();
+            }
+
+            foreach (var areaCell in areaCells)
+            {
+                areaCell.StrategicGroupReferences.Clear();
+            }
+
+            foreach (var strategicGroup in strategicGroups.Where(g => g.deployState == StrategicGroup.DeployState.Independent))
+            {
+                var cell = strategicGroup.cell;
+                if (cell == null)
+                    continue;
+
+                cell.StrategicGroupReferences.Add(new StrategicGroupReference() { referenceId = strategicGroup.objectId });
+            }
+
+            foreach (var cell in IterCells())
+            {
+                cell.RefreshControlState();
+            }
+
+            foreach (var areaCell in areaCells)
+            {
+                areaCell.RefreshControlState();
+            }
         }
 
         static StrategicGameState _instance;

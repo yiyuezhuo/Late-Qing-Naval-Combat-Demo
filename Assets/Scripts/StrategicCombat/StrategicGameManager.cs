@@ -755,7 +755,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 _gTop.Sort((d1, d2) => d1.stackPriority.CompareTo(d2.stackPriority));
 
                 Utils.LayoutStackTransform(
-                    gTop.Select(gp => groupToView[gp].transform).ToList(),
+                    _gTop.Select(gp => groupToView[gp].transform).ToList(),
                     new Vector3(vec.x, vec.y + 0.25f, 0),
                     0.05f
                 );

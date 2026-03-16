@@ -246,6 +246,9 @@ namespace StrategicCombatCore
         public string parentName => ((IStrategicGroupMemberReferenceable)this).GetParentName();
 
         [CreateProperty]
+        public string homeBaseName => GetHomeBaseGroup()?.name?.mergedName ?? "[Not Defined]";
+
+        [CreateProperty]
         public string currentSourceDepotName => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepotName();
         #endregion
 

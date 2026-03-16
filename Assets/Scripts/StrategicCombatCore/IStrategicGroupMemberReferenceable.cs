@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using CoreUtils;
-using YYZ;
 
 namespace StrategicCombatCore
 {
@@ -38,36 +36,12 @@ namespace StrategicCombatCore
             }
         }
 
-        // LandUnit GetCurrentSourceDepot();
-
         public LandUnit GetCurrentSourceDepot()
         {
-            var pt = strategicGroupReference.Get();
-            var accessed = new HashSet<StrategicGroup>() { pt };
-            while (pt != null)
-            {
-                foreach (var subordinateRef in pt.subordinatesCombined)
-                {
-                    var subordinate = subordinateRef.Get();
-                    if (subordinate is LandUnit landUnit && landUnit != this)
-                    {
-                        var landUnitTemplate = landUnit.GetLandUnitTemplate();
-                        if (landUnitTemplate != null && landUnitTemplate.unitType == LandUnitType.Supply)
-                        {
-                            return landUnit;
-                        }
-                    }
-                }
-                pt = pt.strategicGroupReference.Get();
+            if (this is StrategicGroup group)
+                return group.GetCurrentSourceDepot();
 
-                if (accessed.Contains(pt))
-                {
-                    ServiceLocator.Get<ILoggerService>().LogError("Looping OOB Detected!");
-                    return null;
-                }
-                accessed.Add(pt);
-            }
-            return null;
+            return strategicGroupReference.Get()?.GetCurrentSourceDepot();
         }
 
         public string GetParentName() => strategicGroupReference.Get()?.name?.mergedName ?? "[Undefined or Invalid]";

@@ -4427,7 +4427,7 @@
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>193c7013-04a2-43aa-ada1-b0ce525c0f22</objectId>
     <strategicGroupReference>
-     <referenceId>c5d93306-4781-4f10-a629-da83e996308e</referenceId>
+     <referenceId>bbe71c4e-6c06-42b1-a3fa-d3c4f1a0fe77</referenceId>
     </strategicGroupReference>
    </LandUnit>
    <LandUnit>
@@ -4456,7 +4456,7 @@
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>0341200d-9758-4163-91cf-41a6d1116bd3</objectId>
     <strategicGroupReference>
-     <referenceId>faa1b04e-87b1-4610-b3da-82c02635f857</referenceId>
+     <referenceId>7cc10e6e-260c-4492-8f4c-304596825029</referenceId>
     </strategicGroupReference>
    </LandUnit>
    <LandUnit>
@@ -4485,7 +4485,7 @@
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>03762cd1-571c-4b1a-bf0b-cdc6f9b7b856</objectId>
     <strategicGroupReference>
-     <referenceId>44d799ed-77dc-4946-b150-21af4c1fcfc9</referenceId>
+     <referenceId>d7239c1d-abdf-49fe-80bc-a2568d837526</referenceId>
     </strategicGroupReference>
    </LandUnit>
    <LandUnit>
@@ -4514,7 +4514,7 @@
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>85c6b847-efe0-4227-bde9-a2b82454188e</objectId>
     <strategicGroupReference>
-     <referenceId>00552ba8-0962-43c1-9da7-31a07da39aaa</referenceId>
+     <referenceId>6a301c4b-f894-4223-a719-0831dc11c156</referenceId>
     </strategicGroupReference>
    </LandUnit>
    <LandUnit>
@@ -4657,7 +4657,7 @@
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>f1378a47-5c3b-4db1-b663-13efa30cc241</objectId>
     <strategicGroupReference>
-     <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
+     <referenceId>867755df-7de6-44a3-a0c1-c733bc0cfe9c</referenceId>
     </strategicGroupReference>
    </LandUnit>
   </landUnits>
@@ -4683,9 +4683,6 @@
     </leaderReference>
     <subordinatesCombined>
      <StrategicGroupMemberReference>
-      <referenceId>85c6b847-efe0-4227-bde9-a2b82454188e</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
       <referenceId>6d0989bf-ffa1-4103-9e0a-2d70e286734f</referenceId>
      </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
@@ -4699,6 +4696,35 @@
     <forcedReturningToBase>false</forcedReturningToBase>
     <stackPriority>0</stackPriority>
     <objectId>00552ba8-0962-43c1-9da7-31a07da39aaa</objectId>
+    <strategicGroupReference />
+   </StrategicGroup>
+   <StrategicGroup>
+    <name>
+     <english>Vladivostok Base Base</english>
+     <japanese>ウラジオストク基地基地</japanese>
+     <chineseSimplified>海参崴基地基地</chineseSimplified>
+    </name>
+    <type>Base</type>
+    <size>Division</size>
+    <country>Russia</country>
+    <deployState>Independent</deployState>
+    <autoCombinable>false</autoCombinable>
+    <dissolvable>false</dissolvable>
+    <independentX>-1</independentX>
+    <independentY>-1</independentY>
+    <independentAreaCellObjectId>8f47e057-3f82-4c2e-a5c4-e18e614b3b16</independentAreaCellObjectId>
+    <subordinatesCombined>
+     <StrategicGroupMemberReference>
+      <referenceId>85c6b847-efe0-4227-bde9-a2b82454188e</referenceId>
+     </StrategicGroupMemberReference>
+    </subordinatesCombined>
+    <moveProgressionKm>0</moveProgressionKm>
+    <plannedPath />
+    <posture>Active</posture>
+    <restoredHours>0</restoredHours>
+    <forcedReturningToBase>false</forcedReturningToBase>
+    <stackPriority>0</stackPriority>
+    <objectId>6a301c4b-f894-4223-a719-0831dc11c156</objectId>
     <strategicGroupReference />
    </StrategicGroup>
    <StrategicGroup>
@@ -4848,9 +4874,6 @@
     </leaderReference>
     <subordinatesCombined>
      <StrategicGroupMemberReference>
-      <referenceId>03762cd1-571c-4b1a-bf0b-cdc6f9b7b856</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
       <referenceId>f779b4c8-82c5-43ca-8024-4cf6c8adf778</referenceId>
      </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
@@ -4865,6 +4888,37 @@
     <forcedReturningToBase>false</forcedReturningToBase>
     <stackPriority>0</stackPriority>
     <objectId>44d799ed-77dc-4946-b150-21af4c1fcfc9</objectId>
+    <strategicGroupReference>
+     <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
+    </strategicGroupReference>
+   </StrategicGroup>
+   <StrategicGroup>
+    <name>
+     <english>Sasebo Naval District Base</english>
+     <japanese>佐世保鎮守府基地</japanese>
+     <chineseSimplified>佐世保镇守府基地</chineseSimplified>
+    </name>
+    <type>Base</type>
+    <size>Division</size>
+    <country>Japan</country>
+    <deployState>Independent</deployState>
+    <autoCombinable>false</autoCombinable>
+    <dissolvable>false</dissolvable>
+    <independentX>-1</independentX>
+    <independentY>-1</independentY>
+    <independentAreaCellObjectId>065a6098-b765-4a8b-bc41-b430c8efc50d</independentAreaCellObjectId>
+    <subordinatesCombined>
+     <StrategicGroupMemberReference>
+      <referenceId>03762cd1-571c-4b1a-bf0b-cdc6f9b7b856</referenceId>
+     </StrategicGroupMemberReference>
+    </subordinatesCombined>
+    <moveProgressionKm>0</moveProgressionKm>
+    <plannedPath />
+    <posture>Active</posture>
+    <restoredHours>0</restoredHours>
+    <forcedReturningToBase>false</forcedReturningToBase>
+    <stackPriority>0</stackPriority>
+    <objectId>d7239c1d-abdf-49fe-80bc-a2568d837526</objectId>
     <strategicGroupReference>
      <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
     </strategicGroupReference>
@@ -4889,9 +4943,6 @@
     </leaderReference>
     <subordinatesCombined>
      <StrategicGroupMemberReference>
-      <referenceId>0341200d-9758-4163-91cf-41a6d1116bd3</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
       <referenceId>1b80c744-b892-41e1-96be-bd6e81aaf829</referenceId>
      </StrategicGroupMemberReference>
     </subordinatesCombined>
@@ -4903,6 +4954,37 @@
     <forcedReturningToBase>false</forcedReturningToBase>
     <stackPriority>0</stackPriority>
     <objectId>faa1b04e-87b1-4610-b3da-82c02635f857</objectId>
+    <strategicGroupReference>
+     <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
+    </strategicGroupReference>
+   </StrategicGroup>
+   <StrategicGroup>
+    <name>
+     <english>Kure Naval District Base</english>
+     <japanese>呉鎮守府基地</japanese>
+     <chineseSimplified>吴镇守府基地</chineseSimplified>
+    </name>
+    <type>Base</type>
+    <size>Division</size>
+    <country>Japan</country>
+    <deployState>Independent</deployState>
+    <autoCombinable>false</autoCombinable>
+    <dissolvable>false</dissolvable>
+    <independentX>-1</independentX>
+    <independentY>-1</independentY>
+    <independentAreaCellObjectId>832147e0-ad8a-469b-8a01-59558646f97d</independentAreaCellObjectId>
+    <subordinatesCombined>
+     <StrategicGroupMemberReference>
+      <referenceId>0341200d-9758-4163-91cf-41a6d1116bd3</referenceId>
+     </StrategicGroupMemberReference>
+    </subordinatesCombined>
+    <moveProgressionKm>0</moveProgressionKm>
+    <plannedPath />
+    <posture>Active</posture>
+    <restoredHours>0</restoredHours>
+    <forcedReturningToBase>false</forcedReturningToBase>
+    <stackPriority>0</stackPriority>
+    <objectId>7cc10e6e-260c-4492-8f4c-304596825029</objectId>
     <strategicGroupReference>
      <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
     </strategicGroupReference>
@@ -4926,9 +5008,6 @@
     </leaderReference>
     <subordinatesCombined>
      <StrategicGroupMemberReference>
-      <referenceId>193c7013-04a2-43aa-ada1-b0ce525c0f22</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
       <referenceId>fedc9e74-2c1f-4ecc-9085-bdf1f5e97101</referenceId>
      </StrategicGroupMemberReference>
     </subordinatesCombined>
@@ -4940,6 +5019,36 @@
     <forcedReturningToBase>false</forcedReturningToBase>
     <stackPriority>0</stackPriority>
     <objectId>c5d93306-4781-4f10-a629-da83e996308e</objectId>
+    <strategicGroupReference>
+     <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
+    </strategicGroupReference>
+   </StrategicGroup>
+   <StrategicGroup>
+    <name>
+     <english>Yokosuka Naval District Base</english>
+     <japanese>横須賀鎮守府基地</japanese>
+     <chineseSimplified>横须贺镇守府基地</chineseSimplified>
+    </name>
+    <type>Base</type>
+    <size>Division</size>
+    <country>Japan</country>
+    <deployState>Combined</deployState>
+    <autoCombinable>false</autoCombinable>
+    <dissolvable>false</dissolvable>
+    <independentX>-1</independentX>
+    <independentY>-1</independentY>
+    <subordinatesCombined>
+     <StrategicGroupMemberReference>
+      <referenceId>193c7013-04a2-43aa-ada1-b0ce525c0f22</referenceId>
+     </StrategicGroupMemberReference>
+    </subordinatesCombined>
+    <moveProgressionKm>0</moveProgressionKm>
+    <plannedPath />
+    <posture>Active</posture>
+    <restoredHours>0</restoredHours>
+    <forcedReturningToBase>false</forcedReturningToBase>
+    <stackPriority>0</stackPriority>
+    <objectId>bbe71c4e-6c06-42b1-a3fa-d3c4f1a0fe77</objectId>
     <strategicGroupReference>
      <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
     </strategicGroupReference>
@@ -4964,9 +5073,6 @@
     </leaderReference>
     <subordinatesCombined>
      <StrategicGroupMemberReference>
-      <referenceId>f1378a47-5c3b-4db1-b663-13efa30cc241</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
       <referenceId>c5d93306-4781-4f10-a629-da83e996308e</referenceId>
      </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
@@ -4983,6 +5089,35 @@
     <forcedReturningToBase>false</forcedReturningToBase>
     <stackPriority>0</stackPriority>
     <objectId>7b01e810-a85c-4833-a283-de9529d45258</objectId>
+    <strategicGroupReference />
+   </StrategicGroup>
+   <StrategicGroup>
+    <name>
+     <english>Imperial Japanese Navy General Staff Base</english>
+     <japanese>軍令部基地</japanese>
+     <chineseSimplified>军令部基地</chineseSimplified>
+    </name>
+    <type>Base</type>
+    <size>Corp</size>
+    <country>Japan</country>
+    <deployState>Independent</deployState>
+    <autoCombinable>false</autoCombinable>
+    <dissolvable>false</dissolvable>
+    <independentX>-1</independentX>
+    <independentY>-1</independentY>
+    <independentAreaCellObjectId>a3f12676-afe1-4bee-92e1-7ca717938bd8</independentAreaCellObjectId>
+    <subordinatesCombined>
+     <StrategicGroupMemberReference>
+      <referenceId>f1378a47-5c3b-4db1-b663-13efa30cc241</referenceId>
+     </StrategicGroupMemberReference>
+    </subordinatesCombined>
+    <moveProgressionKm>0</moveProgressionKm>
+    <plannedPath />
+    <posture>Active</posture>
+    <restoredHours>0</restoredHours>
+    <forcedReturningToBase>false</forcedReturningToBase>
+    <stackPriority>0</stackPriority>
+    <objectId>867755df-7de6-44a3-a0c1-c733bc0cfe9c</objectId>
     <strategicGroupReference />
    </StrategicGroup>
   </strategicGroups>

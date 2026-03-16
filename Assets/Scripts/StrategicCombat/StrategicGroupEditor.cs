@@ -53,6 +53,25 @@ public class StrategicGroupView //
         
         Utils.BindIStrategicGroupMemberReferenceable(root);
 
+        var setHomeBaseButton = root.Q<Button>("SetHomeBaseButton");
+        setHomeBaseButton.clicked += () =>
+        {
+            if (!Utils.TryResolveCurrentValueForBinding(setHomeBaseButton, out StrategicGroup group))
+                return;
+
+            DialogRoot.Instance.PopupStrategicGroupPickerDialog(selectedGroup =>
+            {
+                if (selectedGroup != null)
+                {
+                    group.homeBaseObjectId = selectedGroup.objectId;
+                }
+            }, candidate =>
+                candidate.type == StrategicGroup.Type.Base &&
+                candidate.side == group.side &&
+                candidate.objectId != group.objectId
+            );
+        };
+
         var gotoAssignedMissionButton = root.Q<Button>("GotoAssignedMissionButton");
         gotoAssignedMissionButton.clicked += () =>
         {

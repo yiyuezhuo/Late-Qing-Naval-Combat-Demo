@@ -81,8 +81,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         // public float cameraZoom;
         public StrategicViewState viewState; // reserved for ReturnFromNavalGame only now
         // public string scenSubPath = "Scenarios/StrategicGameState.xml";
-        // public string scenSubPath = "Scenarios/Vladivostok Squadron Raiding.xml";
-        public string scenSubPath = "Scenarios/First Sino-Japanese War.xml";
+        public string scenSubPath = "Scenarios/Vladivostok Squadron Raiding.xml";
+        // public string scenSubPath = "Scenarios/First Sino-Japanese War.xml";
         public List<ShipLog> syncShipLogs;
         public VictoryStatus victoryStatus;
     }

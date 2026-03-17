@@ -259,12 +259,15 @@ namespace StrategicCombatCore
 
         public LandUnit GetHomeBaseDepot() => GetHomeBaseGroup()?.GetFirstDepot();
 
-        LandUnit GetNearestFriendlyBaseDepot()
+        LandUnit GetNearestFriendlyBaseDepot(SupplyNetworkCache cache = null)
         {
             var srcCell = cell;
             var sideState = side;
             if (srcCell == null || sideState == null)
                 return null;
+
+            if (cache != null)
+                return cache.GetNearestFriendlyBaseDepot(this);
 
             var graph = new DynamicLandSupplyNetworkingGraph() { side = sideState };
             LandUnit bestDepot = null;
@@ -289,14 +292,14 @@ namespace StrategicCombatCore
             return bestDepot;
         }
 
-        public LandUnit GetCurrentSourceDepot()
+        public LandUnit GetCurrentSourceDepot(SupplyNetworkCache cache = null)
         {
             if (type == Type.Fleet || type == Type.Base || !string.IsNullOrEmpty(homeBaseObjectId))
             {
                 return GetHomeBaseDepot();
             }
 
-            return GetNearestFriendlyBaseDepot();
+            return GetNearestFriendlyBaseDepot(cache);
         }
 
         public SideState side => StrategicGameState.Instance.countryToSideStateMap.GetValueOrDefault(country);

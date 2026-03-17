@@ -70,7 +70,7 @@ namespace StrategicCombatCore
 
     public class LandSupplyNetworkResolver
     {
-        Dictionary<(SideState, Cell, Cell), AStarResult<Cell>> pathfindingCache = new ();
+        readonly SupplyNetworkCache cache = new();
 
         public class Bundle
         {
@@ -104,7 +104,7 @@ namespace StrategicCombatCore
                 if (template == null)
                     continue;
 
-                var depot = ((IStrategicGroupMemberReferenceable)landUnit).GetCurrentSourceDepot();
+                var depot = GetCurrentSourceDepot((IStrategicGroupMemberReferenceable)landUnit);
 
                 bundleMap[landUnit.objectId] = new()
                 {
@@ -118,7 +118,7 @@ namespace StrategicCombatCore
             {
                 if(Math.Abs(shipLog.supplyTons - shipLog.GetSupplyCapTons()) > 1e-4)
                 {
-                    var depot = ((IStrategicGroupMemberReferenceable)shipLog).GetCurrentSourceDepot();
+                    var depot = GetCurrentSourceDepot((IStrategicGroupMemberReferenceable)shipLog);
 
                     bundleMap[shipLog.objectId] = new()
                     {
@@ -240,16 +240,19 @@ namespace StrategicCombatCore
 
             if (srcCell != null && dstCell != null && sideState != null)
             {
-                var key = (sideState, srcCell, dstCell);
-                if (!pathfindingCache.TryGetValue(key, out var result))
-                {
-                    var graph = new DynamicLandSupplyNetworkingGraph() { side = sideState };
-                    pathfindingCache[key] = result = PathFinding<Cell>.AStar3(graph, srcCell, dstCell);
-                }
+                var result = cache.GetLandSupplyPath(sideState, srcCell, dstCell);
                 var cost = result.Cost;
                 return cost;
             }
             return float.PositiveInfinity;
+        }
+
+        LandUnit GetCurrentSourceDepot(IStrategicGroupMemberReferenceable member)
+        {
+            if (member is StrategicGroup group)
+                return group.GetCurrentSourceDepot(cache);
+
+            return member.strategicGroupReference.Get()?.GetCurrentSourceDepot(cache);
         }
 
         bool TryToAddSupplyRequestTarget(ISupplyNetworkNode requestUnit, ISupplyNetworkNode requestedUnit, double supplyTons)

@@ -4838,6 +4838,7 @@
       <referenceId>c22a1d1e-92c6-494a-a6c9-7a455672454e</referenceId>
      </StrategicGroupMemberReference>
     </subordinatesCombined>
+    <assignedMissionObjectId>7f99dd12-cdca-4a29-984c-ac1a1ee911c3</assignedMissionObjectId>
     <homeBaseObjectId>6a301c4b-f894-4223-a719-0831dc11c156</homeBaseObjectId>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
@@ -4874,6 +4875,7 @@
       <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
      </StrategicGroupMemberReference>
     </subordinatesCombined>
+    <assignedMissionObjectId>24f14b9b-d919-4df6-a4bb-66fb9165d2b1</assignedMissionObjectId>
     <homeBaseObjectId>d7239c1d-abdf-49fe-80bc-a2568d837526</homeBaseObjectId>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
@@ -5179,7 +5181,44 @@
     <objectId>f781e78a-aaf5-411f-8f49-d1561e7949a2</objectId>
    </SideState>
   </sideStates>
-  <missions />
+  <missions>
+   <StrategicMission xsi:type="GlobalRaidingMission">
+    <name>
+     <english>Global Raiding</english>
+    </name>
+    <groups>
+     <StrategicGroupMemberReference>
+      <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
+     </StrategicGroupMemberReference>
+    </groups>
+    <waypoints />
+    <parentMissionRef />
+    <childrenMissionRefs />
+    <sideObjectId>f781e78a-aaf5-411f-8f49-d1561e7949a2</sideObjectId>
+    <completed>false</completed>
+    <active>true</active>
+    <interrupted>false</interrupted>
+    <objectId>7f99dd12-cdca-4a29-984c-ac1a1ee911c3</objectId>
+   </StrategicMission>
+   <StrategicMission xsi:type="GlobalTradeProtectionMission">
+    <name>
+     <english>Trade Protection</english>
+    </name>
+    <groups>
+     <StrategicGroupMemberReference>
+      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
+     </StrategicGroupMemberReference>
+    </groups>
+    <waypoints />
+    <parentMissionRef />
+    <childrenMissionRefs />
+    <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
+    <completed>false</completed>
+    <active>true</active>
+    <interrupted>false</interrupted>
+    <objectId>24f14b9b-d919-4df6-a4bb-66fb9165d2b1</objectId>
+   </StrategicMission>
+  </missions>
   <pendingNavalCombats />
   <landBattles />
   <logs />
@@ -5191,6 +5230,54 @@
     <observedSideId>f781e78a-aaf5-411f-8f49-d1561e7949a2</observedSideId>
     <estimation>
      <records>
+      <EsimationRecord>
+       <estimateCategory>BB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CA</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CL</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>DD</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>TB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>Other</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>BB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CA</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CL</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>DD</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>TB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>Other</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
       <EsimationRecord>
        <estimateCategory>BB</estimateCategory>
        <count>0</count>

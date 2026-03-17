@@ -561,6 +561,11 @@ namespace StrategicCombatCore
             // Collect Repairable ships
             foreach (var group in StrategicGameState.Instance.IterIndependentStrategicGroups())
             {
+                if (group.IsMovingStrategically)
+                {
+                    continue;
+                }
+
                 // If group is in a cell containing friendly port or shipyard.
                 var key = (group.side, group.cell);
                 if (bundleMap.TryGetValue(key, out var bundle))

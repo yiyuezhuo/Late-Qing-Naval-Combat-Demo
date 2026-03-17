@@ -275,7 +275,7 @@ namespace StrategicCombatCore
 
         public IEnumerable<StrategicGroup> IterAssignedStrategicGroups() => groups.Select(r => r.Get() as StrategicGroup).Where(g => g is StrategicGroup).Where(g => g != null);
         public IEnumerable<StrategicGroup> IterAssignedFleetGroups() => IterAssignedStrategicGroups().Where(g => g.type == StrategicGroup.Type.Fleet);
-        public IEnumerable<StrategicGroup> IterAssignedStationedAtBaseGroups() => IterAssignedFleetGroups().Where(g => g.cell == g.GetDepotGroup()?.cell && g.plannedPath.Count == 0);
+        public IEnumerable<StrategicGroup> IterAssignedStationedAtBaseGroups() => IterAssignedFleetGroups().Where(g => g.cell == g.GetDepotGroup()?.cell && !g.IsMovingStrategically);
 
         public void UpdateStrategicGroups()
         {

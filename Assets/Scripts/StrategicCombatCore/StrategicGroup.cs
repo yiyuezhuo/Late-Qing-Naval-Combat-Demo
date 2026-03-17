@@ -996,6 +996,8 @@ namespace StrategicCombatCore
             // return depotGroup.x == x && depotGroup.y == y;
         }
 
+        public bool IsMovingStrategically => plannedPath.Count > 0;
+
         public IEnumerable<ShipLog> WalkGroupMembersDeployedShips()
         {
             foreach (var shipLog in WalkGroupMembers<ShipLog>())

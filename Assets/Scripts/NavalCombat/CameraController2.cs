@@ -69,9 +69,9 @@ public class CameraController2 : MonoBehaviour
 
     [Header("Camera Rotation (Middle Mouse)")]
     public float middleMouseRotateSpeed = 0.2f;
-    public float middleMousePitchMin = -75f;
-    public float middleMousePitchMax = 75f;
-    public float quick3DViewPitchDeg = 45f;
+    public float middleMousePitchMin = -60f;
+    public float middleMousePitchMax = 0;
+    public float quick3DViewPitchDeg = -45f;
     bool middleMouseRotating;
     Vector2 lastMiddleMousePosition;
     LatLon middleMouseRotationAnchorLatLon;

@@ -48,6 +48,7 @@ namespace StrategicCombatCore
                 {
                     var shipLogCloned = XmlUtils.FromXML<ShipLog>(XmlUtils.ToXML(shipLog));
                     shipLogCloned.ClearLogs(); // Detach old logs for sandboxing
+                    shipLogCloned.timeLocLogs.Clear(); // Start tactical combat without inherited trajectory history
                     
                     localEntityManager.Register(shipLogCloned, null);
                     shipLogs.Add(shipLogCloned);

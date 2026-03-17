@@ -290,6 +290,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         fullInitialized = false;
         ClearAllGunneryShellVisuals();
         ClearInfluenceMap();
+        ClearShipLogTrajectories();
 
         // Loading
         yield return fullState.streamingAssetReference.TryToCompleteFromStreamingAssetReference(fullState.navalGameState);

@@ -49,6 +49,29 @@ namespace StrategicCombatCore
                     var shipLogCloned = XmlUtils.FromXML<ShipLog>(XmlUtils.ToXML(shipLog));
                     shipLogCloned.ClearLogs(); // Detach old logs for sandboxing
                     shipLogCloned.timeLocLogs.Clear(); // Start tactical combat without inherited trajectory history
+                    shipLogCloned.shipLevelFiringTargetObjectId = null;
+                    foreach (var batteryStatus in shipLogCloned.batteryStatus)
+                    {
+                        foreach (var mount in batteryStatus.mountStatus)
+                        {
+                            mount.SetFiringTarget(null);
+                        }
+
+                        foreach (var fcs in batteryStatus.fireControlSystemStatusRecords)
+                        {
+                            fcs.SetTrackingTarget(null);
+                        }
+                    }
+
+                    foreach (var torpedoMount in shipLogCloned.torpedoSectorStatus.mountStatus)
+                    {
+                        torpedoMount.SetFiringTarget(null);
+                    }
+
+                    foreach (var rapidFiringStatus in shipLogCloned.rapidFiringStatus)
+                    {
+                        rapidFiringStatus.ResetTargetting();
+                    }
                     
                     localEntityManager.Register(shipLogCloned, null);
                     shipLogs.Add(shipLogCloned);

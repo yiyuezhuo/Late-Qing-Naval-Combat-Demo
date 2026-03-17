@@ -14,8 +14,8 @@ using YYZ;
 
 public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 {
-    Button advance1DayButton;
-    bool isAdvancing1Day;
+    Coroutine advanceCoroutine;
+    bool isRealtimeAdvanceCoroutineRunning;
 
     void DoSave(bool editSave)
     {
@@ -46,7 +46,8 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
     {
         base.Awake();
 
-        // root.dataSource = StrategicGameManager.Instance;
+        root.dataSource = StrategicGameManager.Instance;
+        Utils.BindItemsSourceRecursive(root);
 
         root.Q<Button>("SaveButton").clicked += () =>
         {
@@ -141,8 +142,7 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
         root.Q<Button>("Advance1HourButton").clicked += TryAdvance1Hour;
 
-        advance1DayButton = root.Q<Button>("Advance1DayButton");
-        advance1DayButton.clicked += TryAdvance1Day;
+        root.Q<Button>("Advance1DayButton").clicked += TryAdvance1Day;
 
         root.Q<Button>("SetFogOrWarViewerButton").clicked += () =>
         {
@@ -267,31 +267,79 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
     public void TryAdvance1Day()
     {
-        if (isAdvancing1Day)
+        if (advanceCoroutine != null)
             return;
 
-        StartCoroutine(Advance1DayCoroutine());
+        advanceCoroutine = StartCoroutine(AdvanceHoursCoroutine(24, false));
     }
 
-    IEnumerator Advance1DayCoroutine()
+    public bool TryStartRealtimeAdvance()
     {
-        isAdvancing1Day = true;
-        advance1DayButton.SetEnabled(false);
+        if (advanceCoroutine != null)
+            return isRealtimeAdvanceCoroutineRunning;
 
-        for (int i = 0; i < 24; i++)
+        if (CheckHasPendingNavalCombatAndPopupIfAny())
+            return false;
+
+        advanceCoroutine = StartCoroutine(AdvanceHoursCoroutine(null, true));
+        return true;
+    }
+
+    public void StopRealtimeAdvance()
+    {
+        if (!isRealtimeAdvanceCoroutineRunning)
+            return;
+
+        StopAdvanceCoroutine();
+    }
+
+    IEnumerator AdvanceHoursCoroutine(int? hourLimit, bool realtimeMode)
+    {
+        isRealtimeAdvanceCoroutineRunning = realtimeMode;
+
+        var advancedHours = 0;
+        while (!hourLimit.HasValue || advancedHours < hourLimit.Value)
         {
             if (CheckHasPendingNavalCombatAndPopupIfAny())
                 break;
-            
-            if(StrategicGameManager.Instance.currentLogOnly && i == 0)
+
+            if (StrategicGameManager.Instance.currentLogOnly && advancedHours == 0)
                 StrategicGameState.Instance.ClearLogs();
 
             StrategicGameState.Instance.Advance1Hour();
+            advancedHours++;
             yield return new WaitForSeconds(GamePreference.Instance.dayAdvanceHourIntervalSeconds);
         }
 
-        advance1DayButton.SetEnabled(true);
-        isAdvancing1Day = false;
+        if (realtimeMode && StrategicGameManager.Instance.isRealtimeAdvancing)
+        {
+            StrategicGameManager.Instance.isRealtimeAdvancing = false;
+            yield break;
+        }
+
+        StopAdvanceCoroutine();
+    }
+
+    void StopAdvanceCoroutine()
+    {
+        if (advanceCoroutine != null)
+        {
+            StopCoroutine(advanceCoroutine);
+            advanceCoroutine = null;
+        }
+
+        isRealtimeAdvanceCoroutineRunning = false;
+    }
+
+    public override void OnDestroy()
+    {
+        if (StrategicGameManager.Instance != null && StrategicGameManager.Instance.isRealtimeAdvancing)
+        {
+            StrategicGameManager.Instance.isRealtimeAdvancing = false;
+        }
+
+        StopAdvanceCoroutine();
+        base.OnDestroy();
     }
 
     void DoTPSGeoreferencing()

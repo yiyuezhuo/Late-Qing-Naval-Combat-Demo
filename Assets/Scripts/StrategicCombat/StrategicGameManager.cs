@@ -146,6 +146,41 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public bool currentLogOnly = true;
 
+    UIDocument[] allUIDocuments;
+
+    bool _isRealtimeAdvancing;
+
+    [CreateProperty]
+    public bool isRealtimeAdvancing
+    {
+        get => _isRealtimeAdvancing;
+        set
+        {
+            if (_isRealtimeAdvancing == value)
+                return;
+
+            if (value)
+            {
+                if (!StrategicTopTabs.Instance.TryStartRealtimeAdvance())
+                    return;
+
+                _isRealtimeAdvancing = true;
+            }
+            else
+            {
+                _isRealtimeAdvancing = false;
+
+                if (StrategicTopTabs.Instance != null)
+                {
+                    StrategicTopTabs.Instance.StopRealtimeAdvance();
+                }
+            }
+        }
+    }
+
+    [CreateProperty]
+    public bool isNotRealtimeAdvancing => !isRealtimeAdvancing;
+
     public Transform pathLineContainerTransform;
     public GameObject pathLinePrefab;
     public WaypointController rectAreaLineController;
@@ -165,6 +200,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     void Start()
     {
         SwitchCenter.Instance.Reset();
+
+        allUIDocuments = FindObjectsByType<UIDocument>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
         GamePreference.Instance.SetShortLabelLanguageTypeByLocale(LocalizationSettings.SelectedLocale);
 
@@ -873,6 +910,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         var controlPressing = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
         var altPressing = Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt);
         var shiftPressing = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        var hotKeyEnabled = IsHotKeyEnabled();
 
         if (!EventSystem.current.IsPointerOverGameObject())
         {
@@ -945,7 +983,10 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                     }
                 }
             }
+        }
 
+        if (hotKeyEnabled)
+        {
             if (Input.GetKeyDown(KeyCode.Insert))
             {
                 ScheduleOneshotCellClickCallback(cell =>
@@ -971,6 +1012,10 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             {
                 TryToStartAppendMove();
             }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isRealtimeAdvancing = !isRealtimeAdvancing;
+            }
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 StrategicTopTabs.Instance.TryAdvance1Day();
@@ -984,6 +1029,35 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 mapEditMode = StrategicMapEditMode.Select;
             }
         }
+    }
+
+    public bool IsHotKeyEnabled()
+    {
+        if (allUIDocuments == null || allUIDocuments.Length == 0)
+        {
+            allUIDocuments = FindObjectsByType<UIDocument>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        }
+
+        if (allUIDocuments != null)
+        {
+            foreach (var doc in allUIDocuments)
+            {
+                if (doc == null || !doc.isActiveAndEnabled)
+                    continue;
+
+                var root = doc.rootVisualElement;
+                if (root == null)
+                    continue;
+
+                var focused = root.focusController?.focusedElement;
+                if (focused == null)
+                    continue;
+
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void TryToStartAppendMove()

@@ -12,6 +12,7 @@
                     <ui:Button text="Advance 1 Day" name="Advance1DayButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11053239853813760)"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isNotRealtimeAdvancing" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Advance 1 Hour" name="Advance1HourButton">
@@ -19,6 +20,16 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11053309105967104)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Label text="Play (Space)" style="margin-right: 0;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(47697023236476928)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Toggle style="margin-right: 6px;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="isRealtimeAdvancing" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:Toggle>
                     <ui:Button text="Pending Naval Combats" name="PendingNavalCombatsButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022621116207104)"/>

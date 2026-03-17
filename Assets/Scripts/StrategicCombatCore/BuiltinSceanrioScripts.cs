@@ -53,6 +53,11 @@ namespace StrategicCombatCore
                             foreach(var group in state.strategicGroups)
                             {
                                 var currentLeader = group.leaderReference.Get();
+                                if(currentLeader == null)
+                                {
+                                    continue;
+                                }
+
                                 if(currentLeader.name.MatchAny(record.oldLeaderNameString))
                                 {
                                     group.leaderReference.referenceObjectId = toLeader.objectId;

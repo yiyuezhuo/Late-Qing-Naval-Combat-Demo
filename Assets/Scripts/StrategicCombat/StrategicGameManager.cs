@@ -39,6 +39,13 @@ public enum StrategicMapEditMode
     RectanglePlotting
 }
 
+public enum StrategicTimeAdvanceSpeed
+{
+    Slow,
+    Normal,
+    Fast
+}
+
 
 public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 {
@@ -180,6 +187,45 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     [CreateProperty]
     public bool isNotRealtimeAdvancing => !isRealtimeAdvancing;
+
+    [CreateProperty]
+    public StrategicTimeAdvanceSpeed strategicTimeAdvanceSpeed { get; set; } = StrategicTimeAdvanceSpeed.Normal;
+
+    [CreateProperty]
+    public string strategicCurrentTimeString => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(gameState.scenarioState.dateTime);
+
+    [CreateProperty]
+    public bool isStrategicTimePaused => !isRealtimeAdvancing;
+
+    [CreateProperty]
+    public string strategicTimeStatusKey => isRealtimeAdvancing ? "Playing" : "Paused";
+
+    [CreateProperty]
+    public string strategicTimeSpeedKey => strategicTimeAdvanceSpeed.ToString();
+
+    [CreateProperty]
+    public string strategicTimeStatusSummaryKey => $"{strategicTimeStatusKey} | {strategicTimeSpeedKey}";
+
+    public float GetStrategicAdvanceIntervalSeconds()
+    {
+        var baseInterval = GamePreference.Instance.dayAdvanceHourIntervalSeconds;
+        return strategicTimeAdvanceSpeed switch
+        {
+            StrategicTimeAdvanceSpeed.Slow => baseInterval * 2f,
+            StrategicTimeAdvanceSpeed.Fast => baseInterval * 0.5f,
+            _ => baseInterval
+        };
+    }
+
+    public void ToggleRealtimeAdvance()
+    {
+        isRealtimeAdvancing = !isRealtimeAdvancing;
+    }
+
+    public void SetStrategicTimeAdvanceSpeed(StrategicTimeAdvanceSpeed speed)
+    {
+        strategicTimeAdvanceSpeed = speed;
+    }
 
     public Transform pathLineContainerTransform;
     public GameObject pathLinePrefab;
@@ -1014,15 +1060,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                isRealtimeAdvancing = !isRealtimeAdvancing;
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                StrategicTopTabs.Instance.TryAdvance1Day();
-            }
-            if (Input.GetKeyDown(KeyCode.Tilde) || Input.GetKeyDown(KeyCode.BackQuote))
-            {
-                StrategicTopTabs.Instance.TryAdvance1Hour();
+                ToggleRealtimeAdvance();
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -1428,7 +1466,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public string fogOfWarViewerSideStateName => EntityManager.Instance.Get<SideState>(viewerSideId)?.name?.GetMergedName() ?? "[Not Specified or Invalid]";
 
     [CreateProperty]
-    public string referenceTimeZoneDateTimeOffsetString => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(gameState.scenarioState.dateTime);
+    public string referenceTimeZoneDateTimeOffsetString => strategicCurrentTimeString;
     // public void Advance1Hour()
     // {
     //     StrategicGameState.Instance.Advance1Hour(1);

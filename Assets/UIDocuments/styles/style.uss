@@ -64,6 +64,14 @@
     --ui-surface-button-overlay: rgba(58, 62, 68, 0.6);
     --ui-surface-button-overlay-hover: rgba(72, 77, 84, 0.72);
     --ui-surface-button-overlay-active: rgba(44, 48, 53, 0.82);
+    --ui-surface-time-panel: rgba(24, 27, 31, 0.94);
+    --ui-surface-time-panel-paused: rgba(41, 33, 24, 0.94);
+    --ui-surface-time-button-selected: rgba(112, 93, 59, 0.96);
+    --ui-surface-time-button-selected-hover: rgba(132, 109, 70, 0.98);
+    --ui-border-time-panel-top: rgb(169, 150, 111);
+    --ui-border-time-panel-bottom: rgb(72, 61, 43);
+    --ui-border-time-panel-side: rgb(102, 88, 63);
+    --ui-text-time-muted: rgb(194, 184, 163);
 }
 
 .unity-base-field__input {
@@ -423,6 +431,71 @@
     padding-right: 6px;
     padding-bottom: 6px;
     padding-left: 6px;
+}
+
+.strategic-time-panel {
+    min-width: 250px;
+    background-color: var(--ui-surface-time-panel);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-color: var(--ui-border-time-panel-top);
+    border-right-color: var(--ui-border-time-panel-side);
+    border-bottom-color: var(--ui-border-time-panel-bottom);
+    border-left-color: var(--ui-border-time-panel-side);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    padding-top: 5px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+}
+
+.strategic-time-panel-paused {
+    background-color: var(--ui-surface-time-panel-paused);
+}
+
+.strategic-time-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.strategic-time-value {
+    flex-grow: 1;
+    -unity-font-style: bold;
+}
+
+.strategic-time-play-button {
+    min-width: 44px;
+    margin-left: 6px;
+    unity-text-align: middle-center;
+}
+
+.strategic-time-status {
+    color: var(--ui-text-time-muted);
+    margin-top: 1px;
+    margin-bottom: 4px;
+}
+
+.strategic-time-speed-row {
+    flex-direction: row;
+}
+
+.strategic-time-speed-button {
+    flex-grow: 1;
+    min-width: 0;
+    margin-right: 4px;
+}
+
+.strategic-time-speed-button-selected {
+    background-color: var(--ui-surface-time-button-selected);
+}
+
+.strategic-time-speed-button-selected:hover:enabled {
+    background-color: var(--ui-surface-time-button-selected-hover);
 }
 
 .weapon-summary-group {

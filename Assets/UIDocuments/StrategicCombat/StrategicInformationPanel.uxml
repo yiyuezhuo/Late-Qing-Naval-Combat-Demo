@@ -2,11 +2,6 @@
     <ui:Template name="StrategicUnitIcon" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicUnitIcon.uxml?fileID=9197481963319205126&amp;guid=aa3ccbfdf5107f4488fcd49416ef81e1&amp;type=3#StrategicUnitIcon"/>
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
     <ui:VisualElement data-source-type="StrategicGameManager, Assembly-CSharp" class="panel hud-info-panel" style="flex-grow: 1; width: 200px;">
-        <ui:Label text="Date Time">
-            <Bindings>
-                <ui:DataBinding property="text" data-source-path="referenceTimeZoneDateTimeOffsetString" binding-mode="ToTarget"/>
-            </Bindings>
-        </ui:Label>
         <ui:VisualElement>
             <ui:VisualElement data-source-path="lastSelectedCell" style="flex-shrink: 0; border-bottom-width: 1px; border-top-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                 <ui:Label text="Hex Coordinate &amp; Terrain" style="white-space: normal;">

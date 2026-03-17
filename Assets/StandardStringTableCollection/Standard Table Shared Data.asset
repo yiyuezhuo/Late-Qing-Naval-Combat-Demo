@@ -2681,6 +2681,26 @@ MonoBehaviour:
     m_Key: Home Base
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000038
+    m_Key: Paused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000039
+    m_Key: Playing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000040
+    m_Key: Slow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000041
+    m_Key: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000042
+    m_Key: Fast
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

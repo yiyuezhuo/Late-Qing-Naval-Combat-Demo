@@ -2763,6 +2763,26 @@ MonoBehaviour:
     m_Localized: Home Base
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000038
+    m_Localized: Paused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000039
+    m_Localized: Playing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000040
+    m_Localized: Slow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000041
+    m_Localized: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000042
+    m_Localized: Fast
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

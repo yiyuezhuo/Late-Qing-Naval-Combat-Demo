@@ -140,10 +140,6 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             });
         };
 
-        root.Q<Button>("Advance1HourButton").clicked += TryAdvance1Hour;
-
-        root.Q<Button>("Advance1DayButton").clicked += TryAdvance1Day;
-
         root.Q<Button>("SetFogOrWarViewerButton").clicked += () =>
         {
             DialogRoot.Instance.PopupSideStatePickerDialog(sideState =>
@@ -254,25 +250,6 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         return false;
     }
 
-    public void TryAdvance1Hour()
-    {
-        if (CheckHasPendingNavalCombatAndPopupIfAny())
-            return;
-
-        if (StrategicGameManager.Instance.currentLogOnly)
-            StrategicGameState.Instance.ClearLogs();
-
-        StrategicGameState.Instance.Advance1Hour();
-    }
-
-    public void TryAdvance1Day()
-    {
-        if (advanceCoroutine != null)
-            return;
-
-        advanceCoroutine = StartCoroutine(AdvanceHoursCoroutine(24, false));
-    }
-
     public bool TryStartRealtimeAdvance()
     {
         if (advanceCoroutine != null)
@@ -308,7 +285,7 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
             StrategicGameState.Instance.Advance1Hour();
             advancedHours++;
-            yield return new WaitForSeconds(GamePreference.Instance.dayAdvanceHourIntervalSeconds);
+            yield return new WaitForSeconds(StrategicGameManager.Instance.GetStrategicAdvanceIntervalSeconds());
         }
 
         if (realtimeMode && StrategicGameManager.Instance.isRealtimeAdvancing)

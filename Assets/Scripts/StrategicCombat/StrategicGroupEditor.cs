@@ -12,6 +12,12 @@ public class StrategicGroupView //
     public VisualElement root;
 
     ListView subordinatesCombinedListView;
+    Button setHomeBaseButton;
+
+    void RefreshHomeBaseButtonState(StrategicGroup group = null)
+    {
+        setHomeBaseButton?.SetEnabled(group != null && group.deployState == StrategicGroup.DeployState.Independent);
+    }
 
     public void Bind()
     {
@@ -50,21 +56,22 @@ public class StrategicGroupView //
                 SwitchCenter.Instance.SwitchToLeaderView(leader);
             }
         };
-        
+
         Utils.BindIStrategicGroupMemberReferenceable(root);
 
-        var setHomeBaseButton = root.Q<Button>("SetHomeBaseButton");
+        setHomeBaseButton = root.Q<Button>("SetHomeBaseButton");
+        setHomeBaseButton.SetEnabled(false);
         setHomeBaseButton.clicked += () =>
         {
             if (!Utils.TryResolveCurrentValueForBinding(setHomeBaseButton, out StrategicGroup group))
                 return;
 
+            if (group.deployState != StrategicGroup.DeployState.Independent)
+                return;
+
             DialogRoot.Instance.PopupStrategicGroupPickerDialog(selectedGroup =>
             {
-                if (selectedGroup != null)
-                {
-                    group.homeBaseObjectId = selectedGroup.objectId;
-                }
+                group.homeBaseObjectId = selectedGroup?.objectId;
             }, candidate =>
                 candidate.type == StrategicGroup.Type.Base &&
                 candidate.side == group.side &&
@@ -140,11 +147,17 @@ public class StrategicGroupView //
             }
         };
     }
+
+    public void OnSelectedGroupChanged(StrategicGroup group)
+    {
+        RefreshHomeBaseButtonState(group);
+    }
 }
 
 public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<StrategicGroupEditor, StrategicGroup>
 {
     // ListView subordinatesCombinedListView;
+    StrategicGroupView view;
 
     protected override void GetFullObjects()
     {
@@ -155,11 +168,16 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
     {
         base.OnEnable();
 
-        var view = new StrategicGroupView()
+        view = new StrategicGroupView()
         {
             root = root.Q<VisualElement>("ContentContainer")  
         };
         view.Bind();
+
+        objectListView.selectionChanged += objects =>
+        {
+            view.OnSelectedGroupChanged(objects.FirstOrDefault() as StrategicGroup);
+        };
 
         root.Q<Button>("SortButton").clicked += () =>
         {

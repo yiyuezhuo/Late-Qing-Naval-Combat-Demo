@@ -1995,7 +1995,7 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>609.37501072883606</supplyTons>
+    <supplyTons>975</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -2365,7 +2365,7 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>581.68750977516174</supplyTons>
+    <supplyTons>930.70001220703125</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -2753,7 +2753,7 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>606.25000357627869</supplyTons>
+    <supplyTons>970</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -3141,7 +3141,7 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>609.37501072883606</supplyTons>
+    <supplyTons>975</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -3529,7 +3529,7 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>606.25000357627869</supplyTons>
+    <supplyTons>970</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -3890,7 +3890,7 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <supplyTons>608.43750214576721</supplyTons>
+    <supplyTons>973.5</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -4318,10 +4318,10 @@
     </CellSideInfos>
     <StrategicGroupReferences>
      <StrategicGroupReference>
-      <referenceId>d7239c1d-abdf-49fe-80bc-a2568d837526</referenceId>
+      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
      </StrategicGroupReference>
      <StrategicGroupReference>
-      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
+      <referenceId>d7239c1d-abdf-49fe-80bc-a2568d837526</referenceId>
      </StrategicGroupReference>
     </StrategicGroupReferences>
     <CellConnections>
@@ -4492,7 +4492,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>70000.0000000002</supplyTons>
+    <supplyTons>0</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4521,7 +4521,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>82416.1416015624</supplyTons>
+    <supplyTons>0</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4550,7 +4550,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>48551.171298027039</supplyTons>
+    <supplyTons>0</supplyTons>
     <supplyGeneratedTons>3000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4718,7 +4718,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>82416.1416015624</supplyTons>
+    <supplyTons>0</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4767,7 +4767,7 @@
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0</stackPriority>
+    <stackPriority>0.333333343</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>00552ba8-0962-43c1-9da7-31a07da39aaa</objectId>
     <strategicGroupReference />
@@ -4801,7 +4801,7 @@
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.333333343</stackPriority>
+    <stackPriority>0.6666667</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>6a301c4b-f894-4223-a719-0831dc11c156</objectId>
     <strategicGroupReference />
@@ -4844,7 +4844,7 @@
     <posture>Passive</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.6666667</stackPriority>
+    <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</objectId>
     <strategicGroupReference>
@@ -4962,7 +4962,6 @@
       <referenceId>f779b4c8-82c5-43ca-8024-4cf6c8adf778</referenceId>
      </StrategicGroupMemberReference>
     </subordinatesCombined>
-    <homeBaseObjectId>867755df-7de6-44a3-a0c1-c733bc0cfe9c</homeBaseObjectId>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -5001,7 +5000,6 @@
       <referenceId>1b80c744-b892-41e1-96be-bd6e81aaf829</referenceId>
      </StrategicGroupMemberReference>
     </subordinatesCombined>
-    <homeBaseObjectId>867755df-7de6-44a3-a0c1-c733bc0cfe9c</homeBaseObjectId>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -5085,7 +5083,7 @@
    </StrategicGroup>
   </strategicGroups>
   <scenarioState>
-   <dateTime>1904-02-23T00:00:00Z</dateTime>
+   <dateTime>1904-02-08T00:00:00Z</dateTime>
    <enableGridSystem>false</enableGridSystem>
    <enableAreaSystem>true</enableAreaSystem>
    <areaSystem>
@@ -5184,17 +5182,7 @@
   <missions />
   <pendingNavalCombats />
   <landBattles />
-  <logs>
-   <SidedLazyLocalizedString>
-    <log type="Template" content="Tick: {0}">
-     <args>
-      <LazyLocalizedString type="Raw" content="1904-02-23 08:00:00 +8">
-       <args />
-      </LazyLocalizedString>
-     </args>
-    </log>
-   </SidedLazyLocalizedString>
-  </logs>
+  <logs />
   <navalContactReports>
    <NavalContactReport>
     <dateTime>1904-02-20T08:00:00Z</dateTime>
@@ -5203,6 +5191,102 @@
     <observedSideId>f781e78a-aaf5-411f-8f49-d1561e7949a2</observedSideId>
     <estimation>
      <records>
+      <EsimationRecord>
+       <estimateCategory>BB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CA</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CL</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>DD</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>TB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>Other</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>BB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CA</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CL</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>DD</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>TB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>Other</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>BB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CA</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CL</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>DD</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>TB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>Other</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>BB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CA</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CL</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>DD</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>TB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>Other</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
       <EsimationRecord>
        <estimateCategory>BB</estimateCategory>
        <count>0</count>

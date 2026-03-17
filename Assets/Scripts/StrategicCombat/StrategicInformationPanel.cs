@@ -129,8 +129,9 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
     {
         stackContainer.Clear();
 
-        foreach (var icon in stack)
+        for (int i = stack.Count - 1; i >= 0; i--)
         {
+            var icon = stack[i];
             // var iconInstance = smallIconAsset.Instantiate();
             var iconInstance = smallIconAsset.CloneTree();
             iconInstance.dataSource = icon;
@@ -147,5 +148,10 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
                 }
             });
         }
+    }
+
+    public void ClearStack()
+    {
+        stackContainer.Clear();
     }
 }

@@ -15,6 +15,7 @@ using YYZ;
 public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 {
     Button advance1DayButton;
+    bool isAdvancing1Day;
 
     void DoSave(bool editSave)
     {
@@ -138,22 +139,10 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             });
         };
 
-        root.Q<Button>("Advance1HourButton").clicked += () =>
-        {
-            if (CheckHasPendingNavalCombatAndPopupIfAny())
-                return;
-
-            if (StrategicGameManager.Instance.currentLogOnly)
-                StrategicGameState.Instance.ClearLogs();
-
-            StrategicGameState.Instance.Advance1Hour();
-        };
+        root.Q<Button>("Advance1HourButton").clicked += TryAdvance1Hour;
 
         advance1DayButton = root.Q<Button>("Advance1DayButton");
-        advance1DayButton.clicked += () =>
-        {            
-            StartCoroutine(Advance1Day());
-        };
+        advance1DayButton.clicked += TryAdvance1Day;
 
         root.Q<Button>("SetFogOrWarViewerButton").clicked += () =>
         {
@@ -265,8 +254,28 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         return false;
     }
 
-    IEnumerator Advance1Day()
+    public void TryAdvance1Hour()
     {
+        if (CheckHasPendingNavalCombatAndPopupIfAny())
+            return;
+
+        if (StrategicGameManager.Instance.currentLogOnly)
+            StrategicGameState.Instance.ClearLogs();
+
+        StrategicGameState.Instance.Advance1Hour();
+    }
+
+    public void TryAdvance1Day()
+    {
+        if (isAdvancing1Day)
+            return;
+
+        StartCoroutine(Advance1DayCoroutine());
+    }
+
+    IEnumerator Advance1DayCoroutine()
+    {
+        isAdvancing1Day = true;
         advance1DayButton.SetEnabled(false);
 
         for (int i = 0; i < 24; i++)
@@ -282,6 +291,7 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         }
 
         advance1DayButton.SetEnabled(true);
+        isAdvancing1Day = false;
     }
 
     void DoTPSGeoreferencing()

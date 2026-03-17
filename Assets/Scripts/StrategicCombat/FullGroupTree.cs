@@ -41,7 +41,13 @@ public class FullGroupTreeNameLink : ITree<IStrategicGroupMemberReferenceable, I
 {
     public IStrategicGroupMemberReferenceable GetParent(IStrategicGroupMemberReferenceable node)
     {
-        return node.strategicGroupReference.Get();
+        var parent = node.strategicGroupReference.Get();
+        while (parent is StrategicGroup group && group.type == StrategicGroup.Type.Base)
+        {
+            parent = parent.strategicGroupReference.Get();
+        }
+
+        return parent;
     }
 
     public IEnumerable<IStrategicGroupMemberReferenceable> GetChildren(IStrategicGroupMemberReferenceable node)
@@ -51,8 +57,21 @@ public class FullGroupTreeNameLink : ITree<IStrategicGroupMemberReferenceable, I
             foreach (var sub in group.subordinatesCombined)
             {
                 var obj = sub.Get();
-                if (obj != null)
-                    yield return obj;
+                if (obj == null)
+                {
+                    continue;
+                }
+
+                if (obj is StrategicGroup subGroup && subGroup.type == StrategicGroup.Type.Base)
+                {
+                    foreach (var visibleChild in GetChildren(subGroup))
+                    {
+                        yield return visibleChild;
+                    }
+                    continue;
+                }
+
+                yield return obj;
             }
         }
     }

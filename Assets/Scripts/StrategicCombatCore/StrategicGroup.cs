@@ -227,6 +227,14 @@ namespace StrategicCombatCore
         public StrategicMission GetAssignedMission() => EntityManager.Instance.Get<StrategicMission>(assignedMissionObjectId);
         public StrategicGroup GetHomeBaseGroup()
         {
+            if (deployState != DeployState.Independent)
+            {
+                var parentGroup = strategicGroupReference.Get();
+                if (parentGroup == null || parentGroup == this)
+                    return null;
+                return parentGroup.GetHomeBaseGroup();
+            }
+
             if (homeBaseObjectId == objectId)
                 return null;
 

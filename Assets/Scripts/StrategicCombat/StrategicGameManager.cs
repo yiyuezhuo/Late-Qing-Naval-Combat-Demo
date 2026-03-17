@@ -149,6 +149,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public Transform pathLineContainerTransform;
     public GameObject pathLinePrefab;
     public WaypointController rectAreaLineController;
+    public float rightClickMaxClickDistancePixels = 12f;
 
 
     [CreateProperty]
@@ -875,30 +876,19 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             var leftClicking = Input.GetMouseButtonDown(0);
-            var rightClicking = Input.GetMouseButtonDown(1);
+            var rightClicking = HandleRightClickCandidateInSelectMode();
 
             if (leftClicking || rightClicking) // left click
             {
                 var cam = PlaneCameraController.Instance.cam;
 
-                // UITK World Spcace enforce a 3D collider, so we can only use 3D Raycast
-                var ray = cam.ScreenPointToRay(Input.mousePosition);
-
-                if (mapEditMode == StrategicMapEditMode.Select && Physics.Raycast(ray, out var hitInfo) && hitInfo.collider.CompareTag("Icon")) // click on group
+                if (mapEditMode == StrategicMapEditMode.Select && TryGetIconDataSourceAtPointer(cam, out var iconDataSource)) // click on group
                 {
-                    Debug.Log($"hitInfo.collider={hitInfo.collider}");
-
-                    // var group = hitInfo.collider.GetComponent<WorldSpaceGroupIcon>()?.currentDataSource;
-                    var iconDataSource = hitInfo.collider.GetComponent<WorldSpaceGroupIcon>()?.currentDataSource;
-                    
                     var iconSide = iconDataSource.side;
                     var iconCell = iconDataSource.cell;
                     var viewerSide = GetViewerSide();
                     
                     var observableStack = CollectObservableStack(viewerSide, iconSide, iconCell);
-                    // TODO: Bind the stack view in the information panel.
-                    StrategicInformationPanel.Instance.BindStack(observableStack);
-
                     var topStackIcon = observableStack[^1];
 
                     lastSelectedCell = iconCell;
@@ -925,55 +915,20 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                             SwitchCenter.Instance.SwitchToStrategicGroupView(lastSelectedStrategicGroup);
                         }
                     }
+
+                    StrategicInformationPanel.Instance.BindStack(observableStack);
                 }
-                else if (leftClicking) // click on map (cell)
+                else if (leftClicking || rightClicking) // click on map (cell)
                 {
-                    var worldPoint = cam.ScreenToWorldPoint(Input.mousePosition);
-
-                    var hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-                    if (hit.collider != null)
+                    if (TryGetCellAtPointer(cam, out var activeCell))
                     {
-
-                        if (hit.collider.CompareTag("Map")) // Grid System: Map
+                        if (leftClicking)
                         {
-                            // Map Click
-                            Debug.Log($"Map Hit: {hit.collider} {hit.point}");
-
-                            var localPoint = hit.collider.transform.InverseTransformPoint(hit.point);
-                            var uv = new Vector2(localPoint.x + 0.5f, localPoint.y + 0.5f);
-                            var cellXY = GetCellXY(uv);
-
-                            Debug.Log($"localPoint={localPoint}, cellXY={cellXY}");
-
-                            if (cellXY.x >= 0 && cellXY.x < StrategicGameState.Instance.GetMapWidth() && cellXY.y >= 0 && cellXY.y < StrategicGameState.Instance.GetMapHeight())
-                            {
-                                var activeCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
-                                HandleCellClick(activeCell);
-                            }
+                            HandleCellClick(activeCell);
                         }
-                        else if(hit.collider.CompareTag("Hit Area")) // Area System: Hit Area
+                        else if (rightClicking && mapEditMode == StrategicMapEditMode.Select)
                         {
-                            // Map Click
-                            Debug.Log($"Hit Area Hit: {hit.collider} {hit.point}");
-
-                            var hitArea = hit.collider.GetComponent<HitArea>();
-                            if(hitArea != null && hitArea.hitAreaObjectId != null && hitArea.hitAreaObjectId != "")
-                            {
-                                if(hitArea.areaCellObjectId == null || hitArea.areaCellObjectId == "") // Shit unity serializer hassle
-                                {
-                                    Debug.Log($"(Placeholder) Create a dynamic Area Cell and bind to it: {hitArea.hitAreaObjectId}");
-                                    DialogRoot.Instance.PopupUnbindHitAreaDialog(hitArea);
-                                }
-                                else // Normal map click
-                                {
-                                    Debug.Log($"(Placeholder) to handle a map click: {hitArea.hitAreaObjectId}");
-                                    var areaCell = EntityManager.Instance.Get<Cell>(hitArea.areaCellObjectId);
-                                    if(areaCell != null)
-                                    {
-                                        HandleCellClick(areaCell);
-                                    }
-                                }
-                            }
+                            TryToSetNewMove(lastSelectedStrategicGroup, activeCell);
                         }
                     }
                 }
@@ -1003,6 +958,14 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             if (Input.GetKeyDown(KeyCode.A))
             {
                 TryToStartAppendMove();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                StrategicTopTabs.Instance.TryAdvance1Day();
+            }
+            if (Input.GetKeyDown(KeyCode.Tilde) || Input.GetKeyDown(KeyCode.BackQuote))
+            {
+                StrategicTopTabs.Instance.TryAdvance1Hour();
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -1053,26 +1016,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         ScheduleOneshotCellClickCallback(cell =>
         {
-            var strategicGroup = lastSelectedStrategicGroup;
-            // TODO: Set PlannedPath
-            if (strategicGroup.deployState == StrategicGroup.DeployState.Independent)
-            {
-                var srcCell = strategicGroup.cell;
-                var dstCell = cell;
-
-                IGraphEnumerable<Cell> graph = strategicGroup.IsArmy() ? new DynamicCellGraphArmy() : new DynamicCellGraphNavy();
-
-                var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
-                
-                // strategicGroup.ClearPlannedPath();
-                // strategicGroup.plannedPath.AddRange(pathCells.Select(c => c.ToXY()));
-
-                strategicGroup.SetPlannedPath(pathCells.Select(c => c.ToXY()).ToList());
-
-
-                Debug.Log("Set path");
-            }
-
+            TryToSetNewMove(lastSelectedStrategicGroup, cell);
         });
     }
 
@@ -1088,6 +1032,112 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 lastSelectedStrategicGroup.ClearPlannedPath();
             }
         });
+    }
+
+    bool HandleRightClickCandidateInSelectMode()
+    {
+        if (mapEditMode != StrategicMapEditMode.Select)
+            return false;
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            rightClickCandidateActive = true;
+            rightClickDownPosition = Input.mousePosition;
+        }
+
+        if (!rightClickCandidateActive || !Input.GetMouseButtonUp(1))
+            return false;
+
+        rightClickCandidateActive = false;
+        return Vector2.Distance(rightClickDownPosition, (Vector2)Input.mousePosition) <= rightClickMaxClickDistancePixels;
+    }
+
+    bool TryGetIconDataSourceAtPointer(Camera cam, out ILayableWorldSpaceGroupIconDataSource iconDataSource)
+    {
+        var ray = cam.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out var hitInfo) && hitInfo.collider.CompareTag("Icon"))
+        {
+            Debug.Log($"hitInfo.collider={hitInfo.collider}");
+            iconDataSource = hitInfo.collider.GetComponent<WorldSpaceGroupIcon>()?.currentDataSource;
+            return iconDataSource != null;
+        }
+
+        iconDataSource = null;
+        return false;
+    }
+
+    bool TryGetCellAtPointer(Camera cam, out Cell activeCell)
+    {
+        var worldPoint = cam.ScreenToWorldPoint(Input.mousePosition);
+        var hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+        if (hit.collider != null)
+        {
+            if (hit.collider.CompareTag("Map"))
+            {
+                Debug.Log($"Map Hit: {hit.collider} {hit.point}");
+
+                var localPoint = hit.collider.transform.InverseTransformPoint(hit.point);
+                var uv = new Vector2(localPoint.x + 0.5f, localPoint.y + 0.5f);
+                var cellXY = GetCellXY(uv);
+
+                Debug.Log($"localPoint={localPoint}, cellXY={cellXY}");
+
+                if (cellXY.x >= 0 && cellXY.x < StrategicGameState.Instance.GetMapWidth() && cellXY.y >= 0 && cellXY.y < StrategicGameState.Instance.GetMapHeight())
+                {
+                    activeCell = StrategicGameState.Instance.cellMatrix[cellXY.x, cellXY.y];
+                    return true;
+                }
+            }
+            else if(hit.collider.CompareTag("Hit Area"))
+            {
+                Debug.Log($"Hit Area Hit: {hit.collider} {hit.point}");
+
+                var hitArea = hit.collider.GetComponent<HitArea>();
+                if(hitArea != null && hitArea.hitAreaObjectId != null && hitArea.hitAreaObjectId != "")
+                {
+                    if(hitArea.areaCellObjectId == null || hitArea.areaCellObjectId == "")
+                    {
+                        Debug.Log($"(Placeholder) Create a dynamic Area Cell and bind to it: {hitArea.hitAreaObjectId}");
+                        DialogRoot.Instance.PopupUnbindHitAreaDialog(hitArea);
+                    }
+                    else
+                    {
+                        Debug.Log($"(Placeholder) to handle a map click: {hitArea.hitAreaObjectId}");
+                        var areaCell = EntityManager.Instance.Get<Cell>(hitArea.areaCellObjectId);
+                        if(areaCell != null)
+                        {
+                            activeCell = areaCell;
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+
+        activeCell = null;
+        return false;
+    }
+
+    bool TryToSetNewMove(StrategicGroup strategicGroup, Cell dstCell)
+    {
+        if (strategicGroup == null)
+            return false;
+
+        var viewerSide = GetViewerSide();
+        if (!isInEditMode && viewerSide != strategicGroup.side)
+            return false;
+
+        if (strategicGroup.deployState != StrategicGroup.DeployState.Independent)
+            return false;
+
+        var srcCell = strategicGroup.cell;
+        IGraphEnumerable<Cell> graph = strategicGroup.IsArmy() ? new DynamicCellGraphArmy() : new DynamicCellGraphNavy();
+        var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
+
+        strategicGroup.SetPlannedPath(pathCells.Select(c => c.ToXY()).ToList());
+
+        Debug.Log("Set path");
+        return true;
     }
 
     [CreateProperty]
@@ -1133,6 +1183,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             lastSelectedCell = activeCell;
             // lastSelectedStrategicGroup = null;
             lastSelectedObject = null;
+            StrategicInformationPanel.Instance.ClearStack();
         }
         else if (mapEditMode == StrategicMapEditMode.WaitOneshotCellClickCallback)
         {
@@ -1337,6 +1388,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public PointListEditorMode pointListEditorMode;
     public PassabilityMode pointListEditorPassabilityMode;
     public List<XY> currentEditingPointList;
+    bool rightClickCandidateActive;
+    Vector2 rightClickDownPosition;
 
     public void StartPointListEditor(List<XY> pointList, Action callback)
     {

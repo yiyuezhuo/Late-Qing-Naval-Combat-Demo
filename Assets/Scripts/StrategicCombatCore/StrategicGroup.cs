@@ -960,6 +960,7 @@ namespace StrategicCombatCore
         void EliminateByNoRetreatPath()
         {
             RemoveFromMap();
+            deployState = DeployState.NotDeployed;
             // TODO: Add log?
         }
         

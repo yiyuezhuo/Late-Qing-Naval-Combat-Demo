@@ -872,6 +872,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     {
         var controlPressing = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
         var altPressing = Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt);
+        var shiftPressing = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
         if (!EventSystem.current.IsPointerOverGameObject())
         {
@@ -910,7 +911,15 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                     }
                     else if(rightClicking)
                     {
-                        if(lastSelectedStrategicGroup == iconDataSource && (isInEditMode || viewerSide == lastSelectedStrategicGroup.side))
+                        if (shiftPressing)
+                        {
+                            TryToAppendMove(lastSelectedStrategicGroup, iconCell);
+                        }
+                        else if (lastSelectedStrategicGroup != iconDataSource && TryToSetNewMove(lastSelectedStrategicGroup, iconCell))
+                        {
+                            // handled by setting a new move target to the clicked icon cell
+                        }
+                        else if(lastSelectedStrategicGroup == iconDataSource && (isInEditMode || viewerSide == lastSelectedStrategicGroup.side))
                         {
                             SwitchCenter.Instance.SwitchToStrategicGroupView(lastSelectedStrategicGroup);
                         }
@@ -928,7 +937,10 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                         }
                         else if (rightClicking && mapEditMode == StrategicMapEditMode.Select)
                         {
-                            TryToSetNewMove(lastSelectedStrategicGroup, activeCell);
+                            if (shiftPressing)
+                                TryToAppendMove(lastSelectedStrategicGroup, activeCell);
+                            else
+                                TryToSetNewMove(lastSelectedStrategicGroup, activeCell);
                         }
                     }
                 }
@@ -981,31 +993,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         ScheduleOneshotCellClickCallback(cell =>
         {
-            var strategicGroup = lastSelectedStrategicGroup;
-
-            var p = strategicGroup.plannedPath;
-            var appending = p.Count >= 2;
-            // var srcCell = appending ? StrategicGameState.Instance.cellMatrix[p[^1].x, p[^1].y] : strategicGroup.cell;
-            var srcCell = appending ? p[^1].GetCell() : strategicGroup.cell;
-            var dstCell = cell;
-
-            IGraphEnumerable<Cell> graph = strategicGroup.IsArmy() ? new DynamicCellGraphArmy() : new DynamicCellGraphNavy();
-
-            var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
-            if (appending)
-            {
-                // strategicGroup.plannedPath.AddRange(pathCells.Skip(1).Select(c => new XY() { x = c.x, y = c.y }));
-                strategicGroup.plannedPath.AddRange(pathCells.Skip(1).Select(c => c.ToXY()));
-            }
-            else
-            {
-                strategicGroup.plannedPath.Clear();
-                // strategicGroup.plannedPath.AddRange(pathCells.Select(c => new XY() { x = c.x, y = c.y }));
-                strategicGroup.plannedPath.AddRange(pathCells.Select(c => c.ToXY()));
-                strategicGroup.moveProgressionKm = 0;
-            }
-
-            Debug.Log("Append path");
+            TryToAppendMove(lastSelectedStrategicGroup, cell);
         });
     }
 
@@ -1137,6 +1125,40 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         strategicGroup.SetPlannedPath(pathCells.Select(c => c.ToXY()).ToList());
 
         Debug.Log("Set path");
+        return true;
+    }
+
+    bool TryToAppendMove(StrategicGroup strategicGroup, Cell dstCell)
+    {
+        if (strategicGroup == null)
+            return false;
+
+        var viewerSide = GetViewerSide();
+        if (!isInEditMode && viewerSide != strategicGroup.side)
+            return false;
+
+        if (strategicGroup.deployState != StrategicGroup.DeployState.Independent)
+            return false;
+
+        var p = strategicGroup.plannedPath;
+        var appending = p.Count >= 2;
+        var srcCell = appending ? p[^1].GetCell() : strategicGroup.cell;
+
+        IGraphEnumerable<Cell> graph = strategicGroup.IsArmy() ? new DynamicCellGraphArmy() : new DynamicCellGraphNavy();
+        var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
+
+        if (appending)
+        {
+            strategicGroup.plannedPath.AddRange(pathCells.Skip(1).Select(c => c.ToXY()));
+        }
+        else
+        {
+            strategicGroup.plannedPath.Clear();
+            strategicGroup.plannedPath.AddRange(pathCells.Select(c => c.ToXY()));
+            strategicGroup.moveProgressionKm = 0;
+        }
+
+        Debug.Log("Append path");
         return true;
     }
 

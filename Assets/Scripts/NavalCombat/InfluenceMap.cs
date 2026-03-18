@@ -180,25 +180,19 @@ public static class InfluenceMapUtility
 
     readonly struct ShipFieldSample
     {
+        public readonly ShipLog shipLog;
         public readonly float xYards;
         public readonly float yYards;
         public readonly float headingDeg;
         public readonly float generalScore;
-        public readonly float bowFirepower;
-        public readonly float starboardFirepower;
-        public readonly float sternFirepower;
-        public readonly float portFirepower;
 
         public ShipFieldSample(ShipLog shipLog, LocalProjection projection)
         {
+            this.shipLog = shipLog;
             xYards = projection.LongitudeToX(shipLog.position.LonDeg);
             yYards = projection.LatitudeToY(shipLog.position.LatDeg);
             headingDeg = shipLog.headingDeg;
             generalScore = shipLog.EvaluateGeneralScore();
-            bowFirepower = shipLog.EvaluateBowFirepowerScore();
-            starboardFirepower = shipLog.EvaluateStarboardFirepowerScore();
-            sternFirepower = shipLog.EvaluateSternFirepowerScore();
-            portFirepower = shipLog.EvaluatePortFirepowerScore();
         }
     }
 
@@ -391,23 +385,11 @@ public static class InfluenceMapUtility
             return 0f;
 
         var distanceYards = (float)MeasureStats.Approximation.HaversineDistanceYards(shipLog.position, point);
-        var attenuation = EvaluateDistanceAttenuation(distanceYards);
-        if (attenuation <= 0f)
-            return 0f;
-
         var initialBearingDeg = (float)MeasureStats.Approximation.CalculateInitialBearing(
             shipLog.position.LatDeg, shipLog.position.LonDeg, point.LatDeg, point.LonDeg
         );
         var relativeBearingDeg = MeasureUtils.GetPositiveAngleDifference(initialBearingDeg, shipLog.headingDeg);
-        var smoothedFirepower = EvaluateSmoothedFirepower(
-            shipLog.EvaluateBowFirepowerScore(),
-            shipLog.EvaluateStarboardFirepowerScore(),
-            shipLog.EvaluateSternFirepowerScore(),
-            shipLog.EvaluatePortFirepowerScore(),
-            relativeBearingDeg
-        );
-
-        return EvaluateFirepowerContribution(smoothedFirepower, distanceYards);
+        return EvaluateDisplayedFirepowerContribution(shipLog, distanceYards, relativeBearingDeg);
     }
 
     public static float EvaluateFirepowerContribution(float smoothedFirepower, float distanceYards)
@@ -418,6 +400,17 @@ public static class InfluenceMapUtility
     public static float EvaluateFirepowerContribution(float smoothedFirepower, float distanceYards, InfluenceMapRequest request)
     {
         return smoothedFirepower * EvaluateDistanceAttenuation(distanceYards, request);
+    }
+
+    public static float EvaluateDisplayedFirepowerContribution(ShipLog shipLog, float distanceYards, float relativeBearingDeg)
+    {
+        if (shipLog == null)
+            return 0f;
+
+        var batteryFirepower = shipLog.EvaluateBatteryFirepowerScore(distanceYards, TargetAspect.Broad, 0f, relativeBearingDeg);
+        var rapidFirepower = shipLog.EvaluateRapidFiringFirepowerScore(distanceYards, relativeBearingDeg);
+        var torpedoThreat = shipLog.EvaluateTorpedoThreatScore(distanceYards, relativeBearingDeg);
+        return batteryFirepower + rapidFirepower + torpedoThreat;
     }
 
     public static float ComposeValue(InfluenceMapType mapType, float group1Power, float group1Firepower, float group2Power)
@@ -470,7 +463,9 @@ public static class InfluenceMapUtility
         var group2Samples = request.mapType == InfluenceMapType.Control
             ? BuildShipFieldSamples(group2Ships, projection)
             : null;
-        var cutoffDistanceYards = GetEffectiveCutoffDistanceYards(request, bounds);
+        var cutoffDistanceYards = request.mapType == InfluenceMapType.Firepower
+            ? GetEffectiveFirepowerCutoffDistanceYards(bounds, group1Ships)
+            : GetEffectiveCutoffDistanceYards(request, bounds);
         var cutoffDistanceSquaredYards = cutoffDistanceYards <= 0f ? 0f : Square(cutoffDistanceYards);
         var maxAbs = 0f;
         for (var y = 0; y < height; y++)
@@ -718,6 +713,31 @@ public static class InfluenceMapUtility
         return Mathf.Min(diagonalDistanceYards, algorithmCutoffYards);
     }
 
+    static float GetEffectiveFirepowerCutoffDistanceYards(InfluenceMapBounds bounds, IReadOnlyList<ShipLog> ships)
+    {
+        var diagonalDistanceYards = ApproximateDistanceYards(
+            new LatLon(bounds.minLat, bounds.minLon),
+            new LatLon(bounds.maxLat, bounds.maxLon)
+        );
+        var maxWeaponRangeYards = ships?
+            .Where(ship => ship != null)
+            .Select(GetDisplayedFirepowerCutoffDistanceYards)
+            .DefaultIfEmpty(0f)
+            .Max() ?? 0f;
+        return Mathf.Min(diagonalDistanceYards, maxWeaponRangeYards <= 0f ? diagonalDistanceYards : maxWeaponRangeYards);
+    }
+
+    static float GetDisplayedFirepowerCutoffDistanceYards(ShipLog shipLog)
+    {
+        if (shipLog?.shipClass == null)
+            return 0f;
+
+        var batteryRange = shipLog.shipClass.batteryRecords.Select(record => record?.rangeYards ?? 0f).DefaultIfEmpty(0f).Max();
+        var rapidRange = shipLog.shipClass.rapidFireBatteryRecords.Select(record => record?.maxRangeYards ?? 0f).DefaultIfEmpty(0f).Max();
+        var torpedoRange = shipLog.shipClass.torpedoSector?.torpedoSettings.Select(setting => setting?.rangeYards ?? 0f).DefaultIfEmpty(0f).Max() ?? 0f;
+        return Mathf.Max(batteryRange, rapidRange, torpedoRange);
+    }
+
     static float EvaluatePowerAtPoint(IReadOnlyList<ShipFieldSample> ships, float pointX, float pointY, InfluenceMapRequest request, float cutoffDistanceSquaredYards)
     {
         if (ships == null)
@@ -754,20 +774,9 @@ public static class InfluenceMapUtility
                 continue;
 
             var distanceYards = Mathf.Sqrt(distanceSquaredYards);
-            var attenuation = EvaluateDistanceAttenuation(distanceYards, request);
-            if (attenuation <= 0f)
-                continue;
-
             var initialBearingDeg = MeasureUtils.NormalizeAngle(Mathf.Atan2(dx, dy) * Mathf.Rad2Deg);
             var relativeBearingDeg = MeasureUtils.NormalizeAngle(initialBearingDeg - sample.headingDeg);
-            var smoothedFirepower = EvaluateSmoothedFirepower(
-                sample.bowFirepower,
-                sample.starboardFirepower,
-                sample.sternFirepower,
-                sample.portFirepower,
-                relativeBearingDeg
-            );
-            value += smoothedFirepower * attenuation;
+            value += EvaluateDisplayedFirepowerContribution(sample.shipLog, distanceYards, relativeBearingDeg);
         }
 
         return value;

@@ -22,12 +22,6 @@ This is a Unity 6 project (`6000.3.2f1`) for tactical/strategic naval warfare sc
 - Keep scripts in the closest domain folder (for example, naval tactical code under `Assets/Scripts/NavalCombat/`).
 - Prefer small, composable MonoBehaviours; avoid hardcoding asset paths outside `StreamingAssets` conventions.
 
-## Testing Guidelines
-- Existing validation is a mix of Unity Test Framework support and in-project test scenes/scripts (`Assets/Scripts/tests`, `Assets/Scenes/test`).
-- Add new automated tests with clear names ending in `*Tests.cs`.
-- Prioritize coverage for scenario loading, serialization, and UI template integrity.
-- Before opening a PR, at minimum run relevant scene smoke tests and any EditMode/PlayMode tests you changed.
-
 ## Commit & Pull Request Guidelines
 - Follow current history style: short, imperative commit subjects (for example, `Fix mount target setting soft close bugs`).
 - Keep commits focused by feature/fix area; avoid mixing refactors with gameplay changes.
@@ -45,5 +39,4 @@ Check UI_Toolkit_AI_Guide.md for making style-related modifications in UI Toolki
 Check Localization_AI_Guide.md for making localization modifications in UI Toolkit.
 
 ## Local command guardrails
-- Never run `dotnet build "Operation Brevity.slnx"` or any command targeting the Operation Brevity project.
 - Only build this repo’s solution: `Late-Qing-Naval-Combat-Demo.slnx`.

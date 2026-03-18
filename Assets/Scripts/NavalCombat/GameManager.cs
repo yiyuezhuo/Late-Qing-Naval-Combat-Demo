@@ -3338,6 +3338,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public override void OnDestroy()
     {
         ClearAllGunneryShellVisuals();
+        NavalGameState.ClearInstance();
         base.OnDestroy();
     }
 

@@ -112,6 +112,11 @@ namespace NavalCombatCore
             Instance.shipGroupsChanged?.Invoke(Instance, Instance.shipGroups);
         }
 
+        public static void ClearInstance()
+        {
+            _instance = null;
+        }
+
         public override void ResetAndRegisterAll()
         {
             base.ResetAndRegisterAll();

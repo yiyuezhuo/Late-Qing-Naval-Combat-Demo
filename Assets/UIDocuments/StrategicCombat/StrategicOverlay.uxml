@@ -1,11 +1,11 @@
-    <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="StrategicInformationPanel" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicInformationPanel.uxml?fileID=9197481963319205126&amp;guid=9f9bc0290d3dcf348856ddad27571109&amp;type=3#StrategicInformationPanel"/>
     <ui:Template name="StrategicTopTabs" src="project://database/Assets/UIDocuments/StrategicCombat/StrategicTopTabs.uxml?fileID=9197481963319205126&amp;guid=8ea38bc395056514380ad7e8dfdb2b39&amp;type=3#StrategicTopTabs"/>
-    <ui:Instance template="StrategicTopTabs" style="right: 201px; left: 0; position: absolute;"/>
+    <ui:Instance template="StrategicTopTabs" style="right: 240px; left: 0; position: absolute;"/>
     <ui:VisualElement name="StrategicTimePanel" class="strategic-time-panel" style="position: absolute; right: 0; top: 0; width: 200px;">
         <ui:VisualElement class="strategic-time-row">
             <ui:Label text="0000-00-00 00:00:00 +0" name="StrategicTimeValueLabel" class="strategic-time-value"/>
-            <ui:Button text=">" name="StrategicTimePlayPauseButton" class="strategic-time-play-button"/>
+            <ui:Button text="&gt;" name="StrategicTimePlayPauseButton" class="strategic-time-play-button" style="min-width: 25px; height: 42px; position: absolute; right: 0; top: 0; width: 32px; padding-right: 12px; margin-right: 0; margin-top: 0; margin-left: 0; margin-bottom: 0;"/>
         </ui:VisualElement>
         <ui:Label text="Paused | Normal" name="StrategicTimeStatusLabel" class="strategic-time-status"/>
         <ui:VisualElement class="strategic-time-speed-row">

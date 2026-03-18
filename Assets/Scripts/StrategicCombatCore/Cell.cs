@@ -64,7 +64,8 @@ namespace StrategicCombatCore
     {
         Road,
         Railroad,
-        River
+        River,
+        BlockSeaMovement
     }
 
     public partial class CellConnection
@@ -135,6 +136,9 @@ namespace StrategicCombatCore
         [XmlIgnore]
         public List<EdgeDirection> rivers = new();
 
+        [XmlIgnore]
+        public List<EdgeDirection> blockSeaMovements = new();
+
         [XmlAttribute]
         public float longitude;
 
@@ -201,6 +205,13 @@ namespace StrategicCombatCore
         {
             get => EncodeBoolArray(rivers);
             set => rivers = DecodeBoolArray(value);
+        }
+
+        [XmlAttribute]
+        public string blockSeaMovementsStr
+        {
+            get => EncodeBoolArray(blockSeaMovements);
+            set => blockSeaMovements = DecodeBoolArray(value);
         }
 
         [XmlAttribute]
@@ -489,8 +500,20 @@ namespace StrategicCombatCore
                 EdgeFeatureType.Road => roads,
                 EdgeFeatureType.Railroad => railroads,
                 EdgeFeatureType.River => rivers,
+                EdgeFeatureType.BlockSeaMovement => blockSeaMovements,
                 _ => roads
             };
+        }
+
+        public bool HasEdgeFeatureTo(Cell other, EdgeFeatureType edgeFeatureType)
+        {
+            if (other == null || IsAreaCell() || other.IsAreaCell())
+                return false;
+
+            if (!TryGetDirection(other, out var edgeDirection))
+                return false;
+
+            return GetEdgeDirectionsFor(edgeFeatureType).Contains(edgeDirection);
         }
 
         public void AddEdgeFeature(EdgeDirection edgeDirection, EdgeFeatureType edgeFeatureType)

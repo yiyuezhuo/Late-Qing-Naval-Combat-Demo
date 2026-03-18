@@ -26,6 +26,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     public Transform roadContainerTransform;
     public Transform railroadContainerTransform;
     public Transform riverContainerTransform;
+    public Transform blockSeaMovementContainerTransform;
     public Transform strategicGroupIconTransform;
     public Transform sideFlagContainerTransform;
     public Transform cellLabelContainerTransform;
@@ -36,12 +37,15 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     public GameObject roadPrefab;
     public GameObject railroadPrefab;
     public GameObject riverPrefab;
+    public GameObject blockSeaMovementPrefab;
     public GameObject strategicGroupIconPrefab;
     public GameObject sideFlagPrefab;
     public GameObject cellLabelPrefab;
     // public GameObject missionWaypointLinePrefab;
 
     public SpriteRenderer mapRenderer;
+
+    static readonly Color blockSeaMovementColor = new(0.55f, 0.55f, 0.55f, 1f);
 
     // public LineRenderer pathLineRenderer;
 
@@ -157,6 +161,8 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
 
     void RefreshEdgeFeature()
     {
+        EnsureBlockSeaMovementRenderSetup();
+
         BindHexCrossLineRenderers(
             roadContainerTransform, roadPrefab,
             StrategicGameState.Instance.IterateCellPairsFor(EdgeFeatureType.Road).ToList()
@@ -172,6 +178,17 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
             riverContainerTransform, riverPrefab,
             StrategicGameState.Instance.IterateCellPairsFor(EdgeFeatureType.River).ToList()
         );
+
+        if (blockSeaMovementContainerTransform != null && blockSeaMovementPrefab != null)
+        {
+            BindHexEdgeLineRenderers(
+                blockSeaMovementContainerTransform, blockSeaMovementPrefab,
+                StrategicGameState.Instance.IterateCellPairsFor(EdgeFeatureType.BlockSeaMovement).ToList(),
+                lineColor: blockSeaMovementColor
+            );
+        }
+
+        RefreshBlockSeaMovementVisibility();
     }
 
     void BindHexCrossLineRenderers(Transform containerTransform, GameObject prefab, List<(Cell, Cell, EdgeDirection)> cellPairs, float z = 0, float xOffset = 0, float yOffset = 0)
@@ -200,7 +217,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         }
     }
 
-    void BindHexEdgeLineRenderers(Transform containerTransform, GameObject prefab, List<(Cell, Cell, EdgeDirection)> cellPairs, float z = 0, float xOffset = 0, float yOffset = 0)
+    void BindHexEdgeLineRenderers(Transform containerTransform, GameObject prefab, List<(Cell, Cell, EdgeDirection)> cellPairs, float z = 0, float xOffset = 0, float yOffset = 0, Color? lineColor = null)
     {
         Utils.SyncTransformViewerLength(containerTransform, cellPairs.Count, prefab);
 
@@ -221,6 +238,48 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
             var p0 = controlledRenderer.transform.TransformPoint(xf + dx1, yf + dy1, z);
             var p1 = controlledRenderer.transform.TransformPoint(xf + dx2, yf + dy2, z);
             lineRenderer.SetPositions(new Vector3[2] { p0, p1 });
+            if (lineColor.HasValue)
+            {
+                lineRenderer.startColor = lineColor.Value;
+                lineRenderer.endColor = lineColor.Value;
+            }
+        }
+    }
+
+    void EnsureBlockSeaMovementRenderSetup()
+    {
+        if (blockSeaMovementContainerTransform == null)
+        {
+            var container = new GameObject("BlockSeaMovementContainer");
+            var containerTransform = container.transform;
+            containerTransform.SetParent(transform, false);
+            containerTransform.SetSiblingIndex(riverContainerTransform != null ? riverContainerTransform.GetSiblingIndex() + 1 : transform.childCount);
+            blockSeaMovementContainerTransform = containerTransform;
+        }
+
+        if (blockSeaMovementPrefab == null)
+        {
+            blockSeaMovementPrefab = riverPrefab;
+        }
+    }
+
+    void RefreshBlockSeaMovementVisibility()
+    {
+        if (blockSeaMovementContainerTransform == null)
+            return;
+
+        var manager = StrategicGameManager.Instance;
+        var show = GamePreference.Instance.isInEditMode
+            && manager != null
+            && manager.currentEdgeFeatureType == EdgeFeatureType.BlockSeaMovement
+            && (
+                manager.mapEditMode == StrategicMapEditMode.ToggleHexPairFeatureBegin
+                || manager.mapEditMode == StrategicMapEditMode.ToggleHexPairFeatureEnd
+            );
+
+        if (blockSeaMovementContainerTransform.gameObject.activeSelf != show)
+        {
+            blockSeaMovementContainerTransform.gameObject.SetActive(show);
         }
     }
 
@@ -333,6 +392,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     // Update is called once per frame
     void Update()
     {
+        RefreshBlockSeaMovementVisibility();
     }
 
     // void UpdateStrategicGroupIcons()

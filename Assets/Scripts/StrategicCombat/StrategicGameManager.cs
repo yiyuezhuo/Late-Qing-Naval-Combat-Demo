@@ -24,19 +24,17 @@ using YYZ;
 
 public enum StrategicMapEditMode
 {
-    Select,
-    PaintTerrain,
-    PaintHexControlSide,
+    Select = 0,
+    PaintTerrain = 1,
+    PaintHexControlSide = 2,
     // CreateOrEditLabel,
     // DeleteLabel,
-    PaintHexPairFeatureBegin,
-    PaintHexPairFeatureEnd,
-    DeleteHexPairFeatureBegin,
-    DeleteHexPairFeatureEnd,
-    ToggleCoast,
-    WaitOneshotCellClickCallback,
-    WaypointPlotting,
-    RectanglePlotting
+    ToggleHexPairFeatureBegin = 3,
+    ToggleHexPairFeatureEnd = 4,
+    ToggleCoast = 7,
+    WaitOneshotCellClickCallback = 8,
+    WaypointPlotting = 9,
+    RectanglePlotting = 10
 }
 
 public enum StrategicTimeAdvanceSpeed
@@ -1423,33 +1421,18 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             Debug.Log($"ToggleCoast({activeCell.x}, {activeCell.y})");
         }
 
-        if (mapEditMode == StrategicMapEditMode.PaintHexPairFeatureBegin)
+        if (mapEditMode == StrategicMapEditMode.ToggleHexPairFeatureBegin)
         {
             lastSelectedCell = activeCell;
-            mapEditMode = StrategicMapEditMode.PaintHexPairFeatureEnd;
+            mapEditMode = StrategicMapEditMode.ToggleHexPairFeatureEnd;
         }
-        else if (mapEditMode == StrategicMapEditMode.PaintHexPairFeatureEnd)
+        else if (mapEditMode == StrategicMapEditMode.ToggleHexPairFeatureEnd)
         {
             if (lastSelectedCell != null)
             {
                 var cell = activeCell;
-                StrategicGameState.Instance.AddEdgeFeature(lastSelectedCell, cell, currentEdgeFeatureType);
-                mapEditMode = StrategicMapEditMode.PaintHexPairFeatureBegin;
-            }
-        }
-
-        if (mapEditMode == StrategicMapEditMode.DeleteHexPairFeatureBegin)
-        {
-            lastSelectedCell = activeCell;
-            mapEditMode = StrategicMapEditMode.DeleteHexPairFeatureEnd;
-        }
-        else if (mapEditMode == StrategicMapEditMode.DeleteHexPairFeatureEnd)
-        {
-            if (lastSelectedCell != null)
-            {
-                var cell = activeCell;
-                StrategicGameState.Instance.DeleteEdgeFeature(lastSelectedCell, cell, currentEdgeFeatureType);
-                mapEditMode = StrategicMapEditMode.DeleteHexPairFeatureBegin;
+                StrategicGameState.Instance.ToggleEdgeFeature(lastSelectedCell, cell, currentEdgeFeatureType);
+                mapEditMode = StrategicMapEditMode.ToggleHexPairFeatureBegin;
             }
         }
     }

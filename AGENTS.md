@@ -10,9 +10,6 @@ This is a Unity 6 project (`6000.3.2f1`) for tactical/strategic naval warfare sc
 
 ## Build, Test, and Development Commands
 - Open project in Unity Hub using editor `6000.3.2f1`.
-- Run automated tests (batch mode):
-  `Unity.exe -projectPath . -batchmode -quit -runTests -testPlatform EditMode -testResults Logs/EditMode.xml`
-- Run PlayMode tests similarly with `-testPlatform PlayMode`.
 - In Unity Editor, run `Custom/Build Manifest for platform without File System` before platform builds when streaming content changes.
 - Build from Unity Build Profiles (desktop is the primary target; WebGL/mobile are secondary).
 

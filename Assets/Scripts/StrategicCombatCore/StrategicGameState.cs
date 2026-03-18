@@ -127,14 +127,13 @@ namespace StrategicCombatCore
 
         public void AddEdgeFeature(Cell cell1, Cell cell2, EdgeFeatureType edgeFeatureType)
         {
-
             if (cell1.TryGetDirection(cell2, out var edgeDirection))
             {
-                cell1.GetEdgeDirectionsFor(edgeFeatureType).Add(edgeDirection);
+                cell1.AddEdgeFeature(edgeDirection, edgeFeatureType);
             }
             if (cell2.TryGetDirection(cell1, out edgeDirection))
             {
-                cell2.GetEdgeDirectionsFor(edgeFeatureType).Add(edgeDirection);
+                cell2.AddEdgeFeature(edgeDirection, edgeFeatureType);
             }
             edgeFeatureUpdated?.Invoke(this, EventArgs.Empty);
         }
@@ -143,13 +142,32 @@ namespace StrategicCombatCore
         {
             if (cell1.TryGetDirection(cell2, out var edgeDirection))
             {
-                cell1.GetEdgeDirectionsFor(edgeFeatureType).RemoveAll(d => d == edgeDirection);
+                cell1.RemoveEdgeFeature(edgeDirection, edgeFeatureType);
             }
             if (cell2.TryGetDirection(cell1, out edgeDirection))
             {
-                cell2.GetEdgeDirectionsFor(edgeFeatureType).RemoveAll(d => d == edgeDirection);
+                cell2.RemoveEdgeFeature(edgeDirection, edgeFeatureType);
             }
             edgeFeatureUpdated?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void ToggleEdgeFeature(Cell cell1, Cell cell2, EdgeFeatureType edgeFeatureType)
+        {
+            if (cell1 == null || cell2 == null)
+                return;
+
+            if (!cell1.TryGetDirection(cell2, out _) && !cell2.TryGetDirection(cell1, out _))
+                return;
+
+            var shouldDelete = cell1.HasEdgeFeatureTo(cell2, edgeFeatureType) || cell2.HasEdgeFeatureTo(cell1, edgeFeatureType);
+            if (shouldDelete)
+            {
+                DeleteEdgeFeature(cell1, cell2, edgeFeatureType);
+            }
+            else
+            {
+                AddEdgeFeature(cell1, cell2, edgeFeatureType);
+            }
         }
 
         public int GetMapWidth() => cellMatrix.GetLength(0);

@@ -6119,4 +6119,177 @@ https://dawlishchronicles.blogspot.com/2014/01/almirante-lynch-first-sinking-by.
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <objectId>99680764-5a72-4236-b520-d3c40da5b9a5</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>2f98f550-5e5a-4612-9461-8df15aeeb44c</shipClassObjectId>
+  <name>
+   <english>Zhenbei</english>
+   <japanese>鎮北</japanese>
+   <chineseSimplified>镇北</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Zhenbei or Chenpei
+
+https://baike.baidu.com/item/%E9%95%87%E5%8C%97%E5%8F%B7%E7%82%AE%E8%88%B0/9024371
+</remark>
+  <objectId>5196bfb4-3971-4868-8d2e-b752c4495811</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>2f98f550-5e5a-4612-9461-8df15aeeb44c</shipClassObjectId>
+  <name>
+   <english>Zhendong</english>
+   <japanese>鎮東</japanese>
+   <chineseSimplified>镇东</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Zhendong or Chen Tung
+
+https://baike.baidu.com/item/%E9%95%87%E4%B8%9C%E5%8F%B7%E7%82%AE%E8%88%B0/9024716</remark>
+  <objectId>7e406bad-d8f6-4e82-b48e-20013030a914</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>2f98f550-5e5a-4612-9461-8df15aeeb44c</shipClassObjectId>
+  <name>
+   <english>Zhennan</english>
+   <japanese>鎮南</japanese>
+   <chineseSimplified>镇南</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Zhennan or Chen Nan
+
+https://baike.baidu.com/item/%E9%95%87%E5%8D%97%E5%8F%B7%E7%82%AE%E8%88%B0/9024561
+</remark>
+  <objectId>bebd5b6f-54f0-45b0-ac03-876164520319</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>2f98f550-5e5a-4612-9461-8df15aeeb44c</shipClassObjectId>
+  <name>
+   <english>Zhenxi</english>
+   <japanese>鎮西</japanese>
+   <chineseSimplified>镇西</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Zhenxi or Chen His
+
+https://baijiahao.baidu.com/s?id=1811274115024645871
+</remark>
+  <objectId>8d790d2d-4e92-4d15-b7ae-2c2cbb800e47</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>2f98f550-5e5a-4612-9461-8df15aeeb44c</shipClassObjectId>
+  <name>
+   <english>Zhenbian</english>
+   <japanese>鎮辺</japanese>
+   <chineseSimplified>镇边</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Zhenbian or Chen Pien
+
+https://baike.baidu.com/item/%E9%95%87%E8%BE%B9%E5%8F%B7%E7%82%AE%E8%88%B0/9023284
+
+</remark>
+  <objectId>fefdc8ed-f522-4f8b-a829-00ad787e6edb</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>2f98f550-5e5a-4612-9461-8df15aeeb44c</shipClassObjectId>
+  <name>
+   <english>Zhenzhong</english>
+   <japanese>鎮中</japanese>
+   <chineseSimplified>镇中</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Zhenzhong or Chen Chung
+
+https://baike.baidu.com/item/%E9%95%87%E4%B8%AD%E5%8F%B7%E7%82%AE%E8%88%B0/9024231
+
+</remark>
+  <objectId>18e1f87e-aa5d-4fa9-99d1-40996fdb1a33</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>2f98f550-5e5a-4612-9461-8df15aeeb44c</shipClassObjectId>
+  <name>
+   <english>Hai Tng Ching</english>
+   <japanese>海境清</japanese>
+   <chineseSimplified>海境清</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>In SK5 data sheet, it's marked as Zhenhai (镇海) but it's actually another gunboat.</remark>
+  <objectId>4a39ce4c-9775-4732-bb26-cfc0e84fd020</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

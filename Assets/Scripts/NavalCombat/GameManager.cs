@@ -494,6 +494,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         StrategicGameManager.startupConfig.syncShipLogs = NavalGameState.Instance.shipLogs;
         StrategicGameManager.startupConfig.victoryStatus = VictoryStatus.Generate(NavalGameState.Instance);
+        StrategicGameManager.startupConfig.syncLaunchedTorpedos = NavalGameState.Instance.launchedTorpedos;
 
         SceneManager.LoadScene("Strategic Game");
     }

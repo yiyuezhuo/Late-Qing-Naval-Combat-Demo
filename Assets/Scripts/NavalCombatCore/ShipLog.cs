@@ -261,7 +261,11 @@ namespace NavalCombatCore
 
             return Localize(
                 "Bty Hit: {0} {1} DP:{2} DE:{3} (by {4})",
-                locStr, LocalizeEnum(hitPenDetType), damagePoint, damageEffectId, EntityManager.Instance.Get<ShipLog>(shooterId)?.namedShip?.name?.GetShortName()
+                locStr,
+                LocalizeEnum(hitPenDetType),
+                damagePoint,
+                damageEffectId,
+                EntityManager.Instance.Get<ShipLog>(shooterId)?.namedShip?.name?.GetShortName()
             );
         }
     }
@@ -277,7 +281,8 @@ namespace NavalCombatCore
         // public override string Summary() => $"{time}: RF Hit: DP: {damagePoint}";
         public override string SummaryContent() => Localize(
             "RF Hit: DP: {0} (by {1})",
-            damagePoint, EntityManager.Instance.Get<ShipLog>(shooterId)?.namedShip?.name?.GetShortName()
+            damagePoint,
+            EntityManager.Instance.Get<ShipLog>(shooterId)?.namedShip?.name?.GetShortName()
         );
     }
 

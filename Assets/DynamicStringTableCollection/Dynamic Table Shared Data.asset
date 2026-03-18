@@ -2978,6 +2978,66 @@ MonoBehaviour:
     m_Key: Hit
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000100021
+    m_Key: an unknown location on {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100022
+    m_Key: Naval combat summary at {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100023
+    m_Key: ship sunk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100024
+    m_Key: ship abandoned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100025
+    m_Key: 'Outcome: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100026
+    m_Key: 'Outcome: survived'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100027
+    m_Key: 'DP loss: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100028
+    m_Key: '- {0} by {1}: {2} hits, {3} DP'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100029
+    m_Key: Torpedo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100030
+    m_Key: 'Hits taken:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100031
+    m_Key: '- Total: {0} hits, {1} DP'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100032
+    m_Key: '- {0} -> {1}: {2} hits, {3} DP'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100033
+    m_Key: '- {0}: fired {1}, hit {2}, accuracy {3}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100034
+    m_Key: 'Hits inflicted:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000100035
+    m_Key: 'Weapon usage:'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

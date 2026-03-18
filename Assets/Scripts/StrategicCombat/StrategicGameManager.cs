@@ -90,6 +90,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         public string scenSubPath = "Scenarios/First Sino-Japanese War.xml";
         public List<ShipLog> syncShipLogs;
         public VictoryStatus victoryStatus;
+        public List<LaunchedTorpedo> syncLaunchedTorpedos;
     }
 
     public static string lastOpenedScenarioPath; // Used to suggest save file name
@@ -433,7 +434,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         // PlaneCameraController.Instance.cam.orthographicSize = startupConfig.cameraZoom;
         ApplyViewState(startupConfig.viewState);
 
-        StrategicGameState.Instance.UpdateFromTacticalResult(startupConfig.syncShipLogs, startupConfig.victoryStatus);
+        StrategicGameState.Instance.UpdateFromTacticalResult(
+            startupConfig.syncShipLogs,
+            startupConfig.victoryStatus,
+            startupConfig.syncLaunchedTorpedos
+        );
     }
 
     public IEnumerator OnScenTextLoaded(string initialScenText)

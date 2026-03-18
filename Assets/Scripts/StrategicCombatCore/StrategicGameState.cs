@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
@@ -334,21 +335,332 @@ namespace StrategicCombatCore
 
         static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
-        public void UpdatePartialShipLogs(List<ShipLog> otherShipLogs)
+        string FormatShipName(string objectId, IReadOnlyDictionary<string, ShipLog> shipMap)
         {
-            var pendingNavalCombat = EntityManager.Instance.Get<PendingNavalCombat>(scenarioState.pendingNavalCombatId);
+            if (string.IsNullOrWhiteSpace(objectId))
+                return "[Unknown]";
+            if (shipMap != null && shipMap.TryGetValue(objectId, out var ship) && ship?.namedShip?.name != null)
+                return ship.namedShip.name.GetShortName();
+            return EntityManager.Instance.Get<ShipLog>(objectId)?.namedShip?.name?.GetShortName() ?? objectId;
+        }
 
-            // Or add this log in the tactical game start?
-            var engagedLog = "Engaged in a combat";
-            if(pendingNavalCombat != null)
-            {
-                engagedLog = Localize(
-                    "Engaged in combat at ({0}, {1}) in {2}",
-                    pendingNavalCombat.xy.x,
-                    pendingNavalCombat.xy.y,
+        string FormatPercent(int hit, int total)
+        {
+            if (total <= 0)
+                return "0%";
+            return $"{((float)hit / total) * 100f:0.#}%";
+        }
+
+        string FormatDamage(float damagePoint)
+        {
+            return $"{damagePoint:0.##}";
+        }
+
+        string GetBattleLocationSummary(PendingNavalCombat pendingNavalCombat)
+        {
+            if (pendingNavalCombat == null)
+                return Localize(
+                    "an unknown location on {0}",
                     CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(scenarioState.dateTime)
                 );
+
+            var xy = pendingNavalCombat.xy;
+            var cell = cellMatrix != null &&
+                       xy.x >= 0 && xy.x < GetMapWidth() &&
+                       xy.y >= 0 && xy.y < GetMapHeight()
+                ? cellMatrix[xy.x, xy.y]
+                : null;
+            var cellSummary = cell?.GetLocationSummary();
+            if (!string.IsNullOrWhiteSpace(cellSummary))
+                return $"{cellSummary} ({xy.x}, {xy.y}) on {CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(scenarioState.dateTime)}";
+            return $"({xy.x}, {xy.y}) on {CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(scenarioState.dateTime)}";
+        }
+
+        string GetBatteryLabel(ShipLog shipLog, int idx)
+        {
+            if (shipLog?.shipClass?.batteryRecords != null &&
+                idx >= 0 &&
+                idx < shipLog.shipClass.batteryRecords.Count)
+            {
+                return shipLog.shipClass.batteryRecords[idx]?.name?.GetShortName() ?? $"Battery {idx + 1}";
             }
+            return $"Battery {idx + 1}";
+        }
+
+        string GetRapidFiringLabel(ShipLog shipLog, int idx)
+        {
+            if (shipLog?.shipClass?.rapidFireBatteryRecords != null &&
+                idx >= 0 &&
+                idx < shipLog.shipClass.rapidFireBatteryRecords.Count)
+            {
+                return shipLog.shipClass.rapidFireBatteryRecords[idx]?.name?.GetShortName() ?? $"Rapid Firing Battery {idx + 1}";
+            }
+            return $"Rapid Firing Battery {idx + 1}";
+        }
+
+        string BuildBattleSummary(
+            ShipLog oldShipLog,
+            ShipLog otherShipLog,
+            PendingNavalCombat pendingNavalCombat,
+            IReadOnlyDictionary<string, ShipLog> shipMap,
+            IReadOnlyDictionary<string, LaunchedTorpedo> torpedoMap,
+            IReadOnlyList<ShipLog> tacticalShipLogs)
+        {
+            var lines = new List<string>
+            {
+                Localize(
+                    "Naval combat summary at {0}",
+                    GetBattleLocationSummary(pendingNavalCombat)
+                )
+            };
+
+            var outcome = new List<string>();
+            if (otherShipLog.mapState == MapState.Destroyed)
+                outcome.Add(Localize("ship sunk"));
+            if (otherShipLog.operationalState == ShipOperationalState.AbandonShip)
+                outcome.Add(Localize("ship abandoned"));
+            lines.Add(outcome.Count > 0
+                ? Localize("Outcome: {0}", string.Join(", ", outcome))
+                : Localize("Outcome: survived"));
+
+            var battleDpLoss = Math.Max(0, otherShipLog.damagePoint - oldShipLog.damagePoint);
+            lines.Add(Localize("DP loss: {0}", FormatDamage(battleDpLoss)));
+
+            var incomingLines = new List<string>();
+            var totalIncomingHits = 0;
+            var totalIncomingDamage = 0f;
+
+            foreach (var grouping in (tacticalShipLogs ?? Array.Empty<ShipLog>())
+                         .Where(shipLog => shipLog != null && shipLog.objectId != otherShipLog.objectId)
+                         .SelectMany(shooterShip => shooterShip.batteryStatus.Select((batteryStatus, batteryIdx) => new { shooterShip, batteryStatus, batteryIdx }))
+                         .SelectMany(x => x.batteryStatus.mountStatus.SelectMany(mount => mount.logs)
+                             .Where(log => log.hit && log.firingTargetObjectId == otherShipLog.objectId)
+                             .Select(log => new
+                             {
+                                 x.shooterShip,
+                                 x.batteryIdx,
+                                 damagePoint = log.ShellDamageResult?.damagePoint ?? 0f
+                             }))
+                         .GroupBy(x => (x.shooterShip.objectId, x.batteryIdx))
+                         .OrderByDescending(g => g.Count()))
+            {
+                var hitCount = grouping.Count();
+                var damagePoint = grouping.Sum(x => x.damagePoint);
+                totalIncomingHits += hitCount;
+                totalIncomingDamage += damagePoint;
+                incomingLines.Add(
+                    Localize(
+                        "- {0} by {1}: {2} hits, {3} DP",
+                        FormatShipName(grouping.Key.objectId, shipMap),
+                        GetBatteryLabel(shipMap.GetValueOrDefault(grouping.Key.objectId), grouping.Key.batteryIdx),
+                        hitCount,
+                        FormatDamage(damagePoint)
+                    ));
+            }
+
+            foreach (var grouping in (tacticalShipLogs ?? Array.Empty<ShipLog>())
+                         .Where(shipLog => shipLog != null && shipLog.objectId != otherShipLog.objectId)
+                         .SelectMany(shooterShip => shooterShip.rapidFiringStatus.Select((rapidFiringStatus, rfIdx) => new { shooterShip, rapidFiringStatus, rfIdx }))
+                         .SelectMany(x => x.rapidFiringStatus.logs
+                             .Where(log => log.hit && log.firingTargetObjectId == otherShipLog.objectId)
+                             .Select(log => new
+                             {
+                                 x.shooterShip,
+                                 x.rfIdx,
+                                 damagePoint = log.damagePoint
+                             }))
+                         .GroupBy(x => (x.shooterShip.objectId, x.rfIdx))
+                         .OrderByDescending(g => g.Count()))
+            {
+                var hitCount = grouping.Count();
+                var damagePoint = grouping.Sum(x => x.damagePoint);
+                totalIncomingHits += hitCount;
+                totalIncomingDamage += damagePoint;
+                incomingLines.Add(
+                    Localize(
+                        "- {0} by {1}: {2} hits, {3} DP",
+                        FormatShipName(grouping.Key.objectId, shipMap),
+                        GetRapidFiringLabel(shipMap.GetValueOrDefault(grouping.Key.objectId), grouping.Key.rfIdx),
+                        hitCount,
+                        FormatDamage(damagePoint)
+                    ));
+            }
+
+            foreach (var grouping in otherShipLog.logs.OfType<ShipLogTorpedoHitLog>()
+                         .GroupBy(log =>
+                         {
+                             if (!string.IsNullOrWhiteSpace(log.torpedoObjectId) &&
+                                 torpedoMap != null &&
+                                 torpedoMap.TryGetValue(log.torpedoObjectId, out var torpedo))
+                             {
+                                 return torpedo.shooterId;
+                             }
+                             return null;
+                         })
+                         .OrderByDescending(g => g.Count()))
+            {
+                var hitCount = grouping.Count();
+                var damagePoint = grouping.Sum(log => log.damagePoint);
+                totalIncomingHits += hitCount;
+                totalIncomingDamage += damagePoint;
+                incomingLines.Add(
+                    Localize(
+                        "- {0} by {1}: {2} hits, {3} DP",
+                        FormatShipName(grouping.Key, shipMap),
+                        Localize("Torpedo"),
+                        hitCount,
+                        FormatDamage(damagePoint)
+                    ));
+            }
+
+            if (incomingLines.Count > 0)
+            {
+                lines.Add(Localize("Hits taken:"));
+                lines.Add(Localize("- Total: {0} hits, {1} DP", totalIncomingHits, FormatDamage(totalIncomingDamage)));
+                lines.AddRange(incomingLines);
+            }
+
+            var outgoingLines = new List<string>();
+            var usageLines = new List<string>();
+            var totalOutgoingHits = 0;
+            var totalOutgoingDamage = 0f;
+
+            for (var batteryIdx = 0; batteryIdx < otherShipLog.batteryStatus.Count; batteryIdx++)
+            {
+                var batteryStatus = otherShipLog.batteryStatus[batteryIdx];
+                var batteryLabel = GetBatteryLabel(otherShipLog, batteryIdx);
+                var batteryLogs = batteryStatus.mountStatus.SelectMany(mount => mount.logs).ToList();
+                var batteryHits = batteryLogs.Where(log => log.hit).ToList();
+
+                foreach (var targetGroup in batteryHits
+                             .GroupBy(log => log.firingTargetObjectId)
+                             .OrderByDescending(g => g.Count()))
+                {
+                    var hitCount = targetGroup.Count();
+                    var damagePoint = targetGroup.Sum(log => log.ShellDamageResult?.damagePoint ?? 0f);
+                    totalOutgoingHits += hitCount;
+                    totalOutgoingDamage += damagePoint;
+                    outgoingLines.Add(
+                        Localize(
+                            "- {0} -> {1}: {2} hits, {3} DP",
+                            batteryLabel,
+                            FormatShipName(targetGroup.Key, shipMap),
+                            hitCount,
+                            FormatDamage(damagePoint)
+                        ));
+                }
+
+                usageLines.Add(
+                    Localize(
+                        "- {0}: fired {1}, hit {2}, accuracy {3}",
+                        batteryLabel,
+                        batteryLogs.Count,
+                        batteryHits.Count,
+                        FormatPercent(batteryHits.Count, batteryLogs.Count)
+                    ));
+            }
+
+            for (var rfIdx = 0; rfIdx < otherShipLog.rapidFiringStatus.Count; rfIdx++)
+            {
+                var rapidFiringStatus = otherShipLog.rapidFiringStatus[rfIdx];
+                var rapidFiringLabel = GetRapidFiringLabel(otherShipLog, rfIdx);
+                var rapidFiringLogs = rapidFiringStatus.logs.ToList();
+                var rapidFiringHits = rapidFiringLogs.Where(log => log.hit).ToList();
+
+                foreach (var targetGroup in rapidFiringHits
+                             .GroupBy(log => log.firingTargetObjectId)
+                             .OrderByDescending(g => g.Count()))
+                {
+                    var hitCount = targetGroup.Count();
+                    var damagePoint = targetGroup.Sum(log => log.damagePoint);
+                    totalOutgoingHits += hitCount;
+                    totalOutgoingDamage += damagePoint;
+                    outgoingLines.Add(
+                        Localize(
+                            "- {0} -> {1}: {2} hits, {3} DP",
+                            rapidFiringLabel,
+                            FormatShipName(targetGroup.Key, shipMap),
+                            hitCount,
+                            FormatDamage(damagePoint)
+                        ));
+                }
+
+                usageLines.Add(
+                    Localize(
+                        "- {0}: fired {1}, hit {2}, accuracy {3}",
+                        rapidFiringLabel,
+                        rapidFiringLogs.Count,
+                        rapidFiringHits.Count,
+                        FormatPercent(rapidFiringHits.Count, rapidFiringLogs.Count)
+                    ));
+            }
+
+            var torpedosFired = torpedoMap?.Values
+                .Where(torpedo => torpedo != null && torpedo.shooterId == otherShipLog.objectId)
+                .ToList() ?? new List<LaunchedTorpedo>();
+            var torpedoHits = torpedosFired
+                .Where(torpedo => torpedo.endgameType == LaunchedTorpedoEndgameType.Hit && !string.IsNullOrWhiteSpace(torpedo.hitTargetObjectId))
+                .ToList();
+
+            foreach (var targetGroup in torpedoHits
+                         .GroupBy(torpedo => torpedo.hitTargetObjectId)
+                         .OrderByDescending(g => g.Count()))
+            {
+                var hitCount = targetGroup.Count();
+                var damagePoint = targetGroup.Sum(torpedo => torpedo.inflictDamagePoint);
+                totalOutgoingHits += hitCount;
+                totalOutgoingDamage += damagePoint;
+                outgoingLines.Add(
+                    Localize(
+                        "- {0} -> {1}: {2} hits, {3} DP",
+                        Localize("Torpedo"),
+                        FormatShipName(targetGroup.Key, shipMap),
+                        hitCount,
+                        FormatDamage(damagePoint)
+                    ));
+            }
+
+            usageLines.Add(
+                Localize(
+                    "- {0}: fired {1}, hit {2}, accuracy {3}",
+                    Localize("Torpedo"),
+                    torpedosFired.Count,
+                    torpedoHits.Count,
+                    FormatPercent(torpedoHits.Count, torpedosFired.Count)
+                ));
+
+            if (outgoingLines.Count > 0)
+            {
+                lines.Add(Localize("Hits inflicted:"));
+                lines.Add(Localize("- Total: {0} hits, {1} DP", totalOutgoingHits, FormatDamage(totalOutgoingDamage)));
+                lines.AddRange(outgoingLines);
+            }
+
+            lines.Add(Localize("Weapon usage:"));
+            lines.AddRange(usageLines);
+
+            var sb = new StringBuilder();
+            for (var i = 0; i < lines.Count; i++)
+            {
+                if (i > 0)
+                    sb.Append('\n');
+                sb.Append(lines[i]);
+            }
+            return sb.ToString();
+        }
+
+        public void UpdatePartialShipLogs(List<ShipLog> otherShipLogs, List<LaunchedTorpedo> launchedTorpedos = null)
+        {
+            var pendingNavalCombat = EntityManager.Instance.Get<PendingNavalCombat>(scenarioState.pendingNavalCombatId);
+            var shipMap = shipLogs
+                .Concat(otherShipLogs ?? new List<ShipLog>())
+                .Where(shipLog => shipLog != null && !string.IsNullOrWhiteSpace(shipLog.objectId))
+                .GroupBy(shipLog => shipLog.objectId)
+                .ToDictionary(grouping => grouping.Key, grouping => grouping.Last());
+            var torpedoMap = (launchedTorpedos ?? new List<LaunchedTorpedo>())
+                .Where(torpedo => torpedo != null && !string.IsNullOrWhiteSpace(torpedo.objectId))
+                .GroupBy(torpedo => torpedo.objectId)
+                .ToDictionary(grouping => grouping.Key, grouping => grouping.Last());
 
             foreach (var otherShipLog in otherShipLogs)
             {
@@ -356,15 +668,17 @@ namespace StrategicCombatCore
                 if (idx != -1)
                 {
                     var oldShipLog = shipLogs[idx];
+                    var battleSummary = BuildBattleSummary(oldShipLog, otherShipLog, pendingNavalCombat, shipMap, torpedoMap, otherShipLogs);
 
                     // Post-Housekeeping
                     otherShipLog.TacticalToStrategicPostHousekeeping();
-                    // Re-attach olg log trimmed in generated game.
-                    otherShipLog.logs.Insert(0, new ShipLogStringLog(){
+                    var preservedLogs = oldShipLog.logs?.ToList() ?? new List<ShipLogLog>();
+                    preservedLogs.Add(new ShipLogStringLog()
+                    {
                         time = scenarioState.dateTime,
-                        description = engagedLog
+                        description = battleSummary
                     });
-                    otherShipLog.InsertLogs(oldShipLog);
+                    otherShipLog.logs = preservedLogs;
 
                     shipLogs[idx] = otherShipLog;
                 }
@@ -396,13 +710,13 @@ namespace StrategicCombatCore
             }
         }
 
-        public void UpdateFromTacticalResult(List<ShipLog> syncShipLogs, VictoryStatus victoryStatus)
+        public void UpdateFromTacticalResult(List<ShipLog> syncShipLogs, VictoryStatus victoryStatus, List<LaunchedTorpedo> launchedTorpedos = null)
         {
             ResetAndRegisterAll(); // to resolve pendingNavalCombat
 
             if (syncShipLogs != null)
             {
-                UpdatePartialShipLogs(syncShipLogs);
+                UpdatePartialShipLogs(syncShipLogs, launchedTorpedos);
             }
 
             ResetAndRegisterAll(); // to update ShipLog to new one

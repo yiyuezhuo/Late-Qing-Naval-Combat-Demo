@@ -27048,7 +27048,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="29" y="19" terrain="ShallowWater" longitude="125.8734" latitude="32.76768" />
     <Cell x="29" y="20" terrain="ShallowWater" longitude="125.868828" latitude="33.3092766" />
     <Cell x="29" y="21" terrain="ShallowWater" longitude="125.856377" latitude="33.8497772" />
-    <Cell x="29" y="22" terrain="ShallowWater" longitude="125.838478" latitude="34.3895836" />
+    <Cell x="29" y="22" terrain="ShallowWater" longitude="125.838478" latitude="34.3895836" blockSeaMovementsStr="1" />
     <Cell x="29" y="23" terrain="ShallowWater" longitude="125.818428" latitude="34.92921" />
     <Cell x="29" y="24" terrain="ShallowWater" longitude="125.7983" latitude="35.4689636" />
     <Cell x="29" y="25" terrain="ShallowWater" longitude="125.779274" latitude="36.0089722" />
@@ -27112,8 +27112,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      </Label>
     </Cell>
     <Cell x="30" y="21" terrain="Clear" longitude="126.381577" latitude="33.57613" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
-    <Cell x="30" y="22" terrain="ShallowWater" longitude="126.366577" latitude="34.115696" />
-    <Cell x="30" y="23" terrain="Field" longitude="126.348412" latitude="34.65491" IsCoast="true" blockSeaMovementsStr="2" />
+    <Cell x="30" y="22" terrain="ShallowWater" longitude="126.366577" latitude="34.115696" blockSeaMovementsStr="0" />
+    <Cell x="30" y="23" terrain="Field" longitude="126.348412" latitude="34.65491" IsCoast="true" blockSeaMovementsStr="2/3/4" />
     <Cell x="30" y="24" terrain="ShallowWater" longitude="126.329819" latitude="35.19419" />
     <Cell x="30" y="25" terrain="ShallowWater" longitude="126.312218" latitude="35.7337341">
      <StrategicGroupReferences>
@@ -28450,9 +28450,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
   </serializedCells>
  </gameState>
  <viewState>
-  <xPosition>1.38582826</xPosition>
-  <yPosition>6.8168726</yPosition>
-  <orthographicSize>10</orthographicSize>
+  <xPosition>1.20139956</xPosition>
+  <yPosition>7.67316</yPosition>
+  <orthographicSize>11</orthographicSize>
   <hitAreaMapRecords>
    <HitAreaMapRecord hitAreaObjectId="0b2cbd39-ad25-4233-b5a1-5744048e7491" areaCellObjectId="" />
    <HitAreaMapRecord hitAreaObjectId="54b9824b-f430-407e-9d7e-867728dccccb" areaCellObjectId="" />

@@ -2983,6 +2983,10 @@ MonoBehaviour:
     m_Localized: "TT - Tutorial 6 - Hierarchical Automation & AI \u2605"
     m_Metadata:
       m_Items: []
+  - m_Id: 56796182740635648
+    m_Localized: Hit
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

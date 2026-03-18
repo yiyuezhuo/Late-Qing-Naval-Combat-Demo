@@ -2636,6 +2636,22 @@ MonoBehaviour:
     m_Localized: "\u8A72\u8266\u5404\u6B66\u5668\u5C0D\u5404\u76EE\u6A19\u9020\u6210\u7684 DP"
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000043
+    m_Localized: "Battery \u547D\u4E2D\u88DD\u7532\u90E8\u4F4D\u7D50\u679C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000044
+    m_Localized: "\u5DF1\u65B9\u6B66\u5668\u767C\u5C04\u7D50\u679C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000045
+    m_Localized: "\u6C92\u6709\u53D7\u5230 Battery \u547D\u4E2D\u7684\u8A18\u9304\u3002"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000046
+    m_Localized: "\u6C92\u6709\u5DF1\u65B9\u6B66\u5668\u767C\u5C04\u8A18\u9304\u3002"
+    m_Metadata:
+      m_Items: []
   - m_Id: 69800000000019
     m_Localized: "\u6B77\u53F2\u5716\u7247\u8986\u5BEB"
     m_Metadata:

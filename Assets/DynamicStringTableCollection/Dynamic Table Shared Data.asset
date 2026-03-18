@@ -2974,6 +2974,10 @@ MonoBehaviour:
     m_Key: TT - Tutorial 6 - Hierarchical Automation & AI.scen.xml
     m_Metadata:
       m_Items: []
+  - m_Id: 56796182740635648
+    m_Key: Hit
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

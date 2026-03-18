@@ -560,19 +560,41 @@
                                     <ui:VisualElement name="OutgoingDpByTargetLegend" style="flex-grow: 1; min-width: 220px;"/>
                                 </ui:VisualElement>
                             </ui:VisualElement>
-                            <ui:VisualElement style="flex-grow: 1; margin-top: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px;">
-                                <ui:Label name="OutgoingDpByWeaponTargetLabel" text="Outgoing DP By Weapon And Target" style="-unity-font-style: bold; margin-bottom: 4px;">
-                                    <Bindings>
-                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000018)"/>
-                                    </Bindings>
-                                </ui:Label>
-                                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
-                                    <ui:VisualElement name="OutgoingWeaponTargetChartHost" style="width: 220px; min-width: 220px; height: 220px; min-height: 220px; margin-right: 8px;"/>
-                                    <ui:VisualElement name="OutgoingWeaponTargetLegend" style="flex-grow: 1; min-width: 220px;"/>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                    </ui:ScrollView>
+                             <ui:VisualElement style="flex-grow: 1; margin-top: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px;">
+                                 <ui:Label name="OutgoingDpByWeaponTargetLabel" text="Outgoing DP By Weapon And Target" style="-unity-font-style: bold; margin-bottom: 4px;">
+                                     <Bindings>
+                                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000018)"/>
+                                     </Bindings>
+                                 </ui:Label>
+                                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                                     <ui:VisualElement name="OutgoingWeaponTargetChartHost" style="width: 220px; min-width: 220px; height: 220px; min-height: 220px; margin-right: 8px;"/>
+                                     <ui:VisualElement name="OutgoingWeaponTargetLegend" style="flex-grow: 1; min-width: 220px;"/>
+                                 </ui:VisualElement>
+                             </ui:VisualElement>
+                             <ui:VisualElement style="flex-grow: 1; margin-top: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px;">
+                                 <ui:Label name="BatteryArmorLocationResultsLabel" text="Battery Armor Location Results" style="-unity-font-style: bold; margin-bottom: 4px;">
+                                     <Bindings>
+                                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000043)"/>
+                                     </Bindings>
+                                 </ui:Label>
+                                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                                     <ui:VisualElement name="BatteryArmorLocationChartHost" style="flex-grow: 1; flex-basis: 560px; min-width: 420px; height: 260px; min-height: 260px; margin-right: 8px;"/>
+                                     <ui:VisualElement name="BatteryArmorLocationLegend" style="flex-grow: 0; flex-shrink: 1; flex-basis: 180px; min-width: 120px; max-width: 180px;"/>
+                                 </ui:VisualElement>
+                             </ui:VisualElement>
+                             <ui:VisualElement style="flex-grow: 1; margin-top: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px;">
+                                 <ui:Label name="OutgoingWeaponFireResultsLabel" text="Outgoing Weapon Fire Results" style="-unity-font-style: bold; margin-bottom: 4px;">
+                                     <Bindings>
+                                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000044)"/>
+                                     </Bindings>
+                                 </ui:Label>
+                                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                                     <ui:VisualElement name="OutgoingWeaponFireChartHost" style="flex-grow: 1; flex-basis: 560px; min-width: 420px; height: 260px; min-height: 260px; margin-right: 8px;"/>
+                                     <ui:VisualElement name="OutgoingWeaponFireLegend" style="flex-grow: 0; flex-shrink: 1; flex-basis: 180px; min-width: 120px; max-width: 180px;"/>
+                                 </ui:VisualElement>
+                             </ui:VisualElement>
+                         </ui:VisualElement>
+                     </ui:ScrollView>
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000013)"/>
                     </Bindings>

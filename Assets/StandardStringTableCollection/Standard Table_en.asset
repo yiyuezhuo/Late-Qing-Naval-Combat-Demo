@@ -2687,6 +2687,22 @@ MonoBehaviour:
     m_Localized: Outgoing DP By Weapon And Target
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000043
+    m_Localized: Battery Armor Location Results
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000044
+    m_Localized: Outgoing Weapon Fire Results
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000045
+    m_Localized: No incoming battery hits.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000046
+    m_Localized: No outgoing weapon fire records.
+    m_Metadata:
+      m_Items: []
   - m_Id: 69800000000019
     m_Localized: Historical Image Override
     m_Metadata:

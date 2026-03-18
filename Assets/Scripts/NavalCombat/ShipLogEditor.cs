@@ -22,6 +22,27 @@ public class HistoryPieSlice
     public List<float> hitValues = new();
 }
 
+class HistoryBarSegment
+{
+    public string label;
+    public int count;
+    public Color color;
+}
+
+class HistoryBarItem
+{
+    public string label;
+    public List<HistoryBarSegment> segments = new();
+    public int TotalCount => segments.Sum(segment => Mathf.Max(0, segment.count));
+}
+
+class HistoryLegendItem
+{
+    public string label;
+    public int count;
+    public Color color;
+}
+
 [UxmlElement]
 public partial class HistoryPieChart : VisualElement
 {
@@ -103,6 +124,215 @@ public partial class HistoryPieChart : VisualElement
     }
 }
 
+[UxmlElement]
+public partial class HistoryStackedBarChart : VisualElement
+{
+    const float TopPadding = 8f;
+    const float SidePadding = 8f;
+    const float BottomPadding = 66f;
+    const float BarGap = 18f;
+    const float SegmentLabelPreferredHeight = 16f;
+
+    readonly VisualElement labelLayer = new();
+    List<HistoryBarItem> bars = new();
+
+    public HistoryStackedBarChart()
+    {
+        style.flexGrow = 1;
+        labelLayer.style.position = Position.Absolute;
+        labelLayer.style.left = 0;
+        labelLayer.style.top = 0;
+        labelLayer.style.right = 0;
+        labelLayer.style.bottom = 0;
+        labelLayer.pickingMode = PickingMode.Ignore;
+        Add(labelLayer);
+        generateVisualContent += OnGenerateVisualContent;
+        RegisterCallback<GeometryChangedEvent>(_ => RebuildLabels());
+    }
+
+    internal void SetBars(IEnumerable<HistoryBarItem> newBars)
+    {
+        bars = newBars?.Where(bar => bar != null && bar.TotalCount > 0).ToList() ?? new();
+        RebuildLabels();
+        MarkDirtyRepaint();
+    }
+
+    void OnGenerateVisualContent(MeshGenerationContext context)
+    {
+        var painter = context.painter2D;
+        var chartRect = GetChartRect();
+        if (chartRect.width <= 0 || chartRect.height <= 0 || bars.Count == 0)
+            return;
+
+        painter.lineWidth = 1f;
+        painter.lineCap = LineCap.Butt;
+        painter.strokeColor = Color.black;
+
+        var maxTotal = Mathf.Max(1, bars.Max(bar => bar.TotalCount));
+        var barRects = GetBarRects(chartRect);
+        var baselineY = chartRect.yMax;
+        painter.BeginPath();
+        painter.MoveTo(new Vector2(chartRect.xMin, baselineY));
+        painter.LineTo(new Vector2(chartRect.xMax, baselineY));
+        painter.Stroke();
+
+        for (int barIdx = 0; barIdx < bars.Count; barIdx++)
+        {
+            var bar = bars[barIdx];
+            var barRect = barRects[barIdx];
+            var currentTop = chartRect.yMax;
+
+            foreach (var segment in bar.segments.Where(segment => segment.count > 0))
+            {
+                var segmentHeight = chartRect.height * segment.count / maxTotal;
+                currentTop -= segmentHeight;
+                var segmentRect = new Rect(barRect.x, currentTop, barRect.width, segmentHeight);
+                DrawRect(painter, segmentRect, segment.color);
+            }
+        }
+    }
+
+    void RebuildLabels()
+    {
+        labelLayer.Clear();
+        var chartRect = GetChartRect();
+        if (chartRect.width <= 0 || chartRect.height <= 0 || bars.Count == 0)
+            return;
+
+        var maxTotal = Mathf.Max(1, bars.Max(bar => bar.TotalCount));
+        var barRects = GetBarRects(chartRect);
+
+        for (int barIdx = 0; barIdx < bars.Count; barIdx++)
+        {
+            var bar = bars[barIdx];
+            var barRect = barRects[barIdx];
+            var currentTop = chartRect.yMax;
+
+            foreach (var segment in bar.segments.Where(segment => segment.count > 0))
+            {
+                var segmentHeight = chartRect.height * segment.count / maxTotal;
+                currentTop -= segmentHeight;
+                var labelHeight = Mathf.Max(segmentHeight, SegmentLabelPreferredHeight);
+                var labelTop = currentTop + segmentHeight * 0.5f - labelHeight * 0.5f;
+
+                var label = BuildOverlayLabel(
+                    BuildSegmentText(segment.count, bar.TotalCount, barRect.width),
+                    barRect.x,
+                    labelTop,
+                    barRect.width,
+                    labelHeight);
+                label.style.unityFontStyleAndWeight = FontStyle.Bold;
+                label.style.fontSize = 11;
+                label.style.whiteSpace = WhiteSpace.Normal;
+                label.style.color = ResolveSegmentLabelTextColor(segment.color);
+                labelLayer.Add(label);
+            }
+
+            var xLabelWidth = Mathf.Max(barRect.width + 18f, 68f);
+            var xLabel = BuildOverlayLabel(
+                bar.label,
+                barRect.x + barRect.width * 0.5f - xLabelWidth * 0.5f,
+                chartRect.yMax + 6f,
+                xLabelWidth,
+                BottomPadding - 8f);
+            xLabel.style.whiteSpace = WhiteSpace.Normal;
+            xLabel.style.fontSize = 11;
+            xLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+            xLabel.style.unityTextAlign = TextAnchor.UpperCenter;
+            labelLayer.Add(xLabel);
+        }
+    }
+
+    Rect GetChartRect()
+    {
+        var width = Mathf.Max(0, contentRect.width - SidePadding * 2f);
+        var height = Mathf.Max(0, contentRect.height - TopPadding - BottomPadding);
+        return new Rect(SidePadding, TopPadding, width, height);
+    }
+
+    List<Rect> GetBarRects(Rect chartRect)
+    {
+        if (bars.Count == 0)
+            return new();
+
+        var totalGap = BarGap * Mathf.Max(0, bars.Count - 1);
+        var rawBarWidth = (chartRect.width - totalGap) / Mathf.Max(1, bars.Count);
+        var barWidth = Mathf.Max(14f, rawBarWidth);
+        if (barWidth * bars.Count + totalGap > chartRect.width)
+        {
+            barWidth = Mathf.Max(10f, (chartRect.width - totalGap) / Mathf.Max(1, bars.Count));
+        }
+
+        var totalBarsWidth = barWidth * bars.Count + totalGap;
+        var startX = chartRect.xMin + Mathf.Max(0, (chartRect.width - totalBarsWidth) * 0.5f);
+        var rects = new List<Rect>(bars.Count);
+        for (int idx = 0; idx < bars.Count; idx++)
+        {
+            rects.Add(new Rect(startX + idx * (barWidth + BarGap), chartRect.yMin, barWidth, chartRect.height));
+        }
+        return rects;
+    }
+
+    static Label BuildOverlayLabel(string text, float x, float y, float width, float height, Color? color = null)
+    {
+        var label = new Label(text);
+        label.pickingMode = PickingMode.Ignore;
+        label.style.position = Position.Absolute;
+        label.style.left = x;
+        label.style.top = y;
+        label.style.width = width;
+        label.style.height = height;
+        if (color.HasValue)
+        {
+            label.style.color = color.Value;
+        }
+        label.style.unityTextAlign = TextAnchor.MiddleCenter;
+        label.style.whiteSpace = WhiteSpace.NoWrap;
+        label.style.fontSize = 11;
+        label.style.overflow = Overflow.Visible;
+        return label;
+    }
+
+    static void DrawRect(Painter2D painter, Rect rect, Color fillColor)
+    {
+        if (rect.width <= 0 || rect.height <= 0)
+            return;
+
+        painter.fillColor = fillColor;
+        painter.BeginPath();
+        painter.MoveTo(new Vector2(rect.xMin, rect.yMin));
+        painter.LineTo(new Vector2(rect.xMax, rect.yMin));
+        painter.LineTo(new Vector2(rect.xMax, rect.yMax));
+        painter.LineTo(new Vector2(rect.xMin, rect.yMax));
+        painter.ClosePath();
+        painter.Fill();
+        painter.Stroke();
+    }
+
+    static string BuildSegmentText(int count, int totalCount, float availableWidth)
+    {
+        var ratio = totalCount <= 0 ? 0f : (float)count / totalCount;
+        var ratioText = $"({Mathf.RoundToInt(ratio * 100f)}%)";
+        var singleLineText = $"{count} {ratioText}";
+        return availableWidth >= EstimateSingleLineWidth(singleLineText)
+            ? singleLineText
+            : $"{count}\n{ratioText}";
+    }
+
+    static float EstimateSingleLineWidth(string text)
+    {
+        if (string.IsNullOrEmpty(text))
+            return 0f;
+
+        return text.Length * 6.6f + 10f;
+    }
+
+    static Color ResolveSegmentLabelTextColor(Color background)
+    {
+        return new Color(0.95f, 0.91f, 0.82f, 1f);
+    }
+}
+
 public class ShipLogView
 {
     public VisualElement root;
@@ -113,10 +343,14 @@ public class ShipLogView
     VisualElement allHitsLegend;
     VisualElement outgoingDpByTargetLegend;
     VisualElement outgoingWeaponTargetLegend;
+    VisualElement batteryArmorLocationLegend;
+    VisualElement outgoingWeaponFireLegend;
     HistoryPieChart currentDpLossChart;
     HistoryPieChart allHitsChart;
     HistoryPieChart outgoingDpByTargetChart;
     HistoryPieChart outgoingWeaponTargetChart;
+    HistoryStackedBarChart batteryArmorLocationChart;
+    HistoryStackedBarChart outgoingWeaponFireChart;
     string lastHistorySignature;
 
     readonly Color32[] historyChartPalette =
@@ -130,6 +364,12 @@ public class ShipLogView
         new(97, 97, 97, 255),
         new(255, 179, 0, 255),
     };
+
+    readonly Color32 penetrateDetonateColor = new(154, 68, 30, 255);
+    readonly Color32 passThroughColor = new(142, 112, 28, 255);
+    readonly Color32 noPenetrationColor = new(63, 88, 118, 255);
+    readonly Color32 hitColor = new(50, 118, 64, 255);
+    readonly Color32 missColor = new(112, 112, 112, 255);
 
     ShipLog GetSelectedShipLog()
     {
@@ -446,19 +686,27 @@ public class ShipLogView
         var allHitsChartHost = root.Q<VisualElement>("AllHitsChartHost");
         var outgoingDpByTargetChartHost = root.Q<VisualElement>("OutgoingDpByTargetChartHost");
         var outgoingWeaponTargetChartHost = root.Q<VisualElement>("OutgoingWeaponTargetChartHost");
+        var batteryArmorLocationChartHost = root.Q<VisualElement>("BatteryArmorLocationChartHost");
+        var outgoingWeaponFireChartHost = root.Q<VisualElement>("OutgoingWeaponFireChartHost");
         currentDpLossLegend = root.Q<VisualElement>("CurrentDpLossLegend");
         allHitsLegend = root.Q<VisualElement>("AllHitsLegend");
         outgoingDpByTargetLegend = root.Q<VisualElement>("OutgoingDpByTargetLegend");
         outgoingWeaponTargetLegend = root.Q<VisualElement>("OutgoingWeaponTargetLegend");
+        batteryArmorLocationLegend = root.Q<VisualElement>("BatteryArmorLocationLegend");
+        outgoingWeaponFireLegend = root.Q<VisualElement>("OutgoingWeaponFireLegend");
 
         currentDpLossChart = new HistoryPieChart();
         allHitsChart = new HistoryPieChart();
         outgoingDpByTargetChart = new HistoryPieChart();
         outgoingWeaponTargetChart = new HistoryPieChart();
+        batteryArmorLocationChart = new HistoryStackedBarChart();
+        outgoingWeaponFireChart = new HistoryStackedBarChart();
         currentDpLossChartHost?.Add(currentDpLossChart);
         allHitsChartHost?.Add(allHitsChart);
         outgoingDpByTargetChartHost?.Add(outgoingDpByTargetChart);
         outgoingWeaponTargetChartHost?.Add(outgoingWeaponTargetChart);
+        batteryArmorLocationChartHost?.Add(batteryArmorLocationChart);
+        outgoingWeaponFireChartHost?.Add(outgoingWeaponFireChart);
 
         historyTabContent.RegisterCallback<GeometryChangedEvent>(_ => RequestHistoryRefresh());
         historyTabContent.schedule.Execute(() => RequestHistoryRefresh()).Every(500);
@@ -484,15 +732,21 @@ public class ShipLogView
         var incomingWeaponSlices = BuildIncomingWeaponDamageSlices(shipLog);
         var outgoingTargetSlices = BuildOutgoingDamageByTargetSlices(shipLog);
         var outgoingWeaponTargetSlices = BuildOutgoingWeaponTargetDamageSlices(shipLog);
+        var incomingBatteryArmorBars = BuildIncomingBatteryArmorLocationBars(shipLog);
+        var outgoingWeaponFireBars = BuildOutgoingWeaponFireBars(shipLog);
 
         currentDpLossChart?.SetSlices(currentDamageSlices);
         allHitsChart?.SetSlices(incomingWeaponSlices);
         outgoingDpByTargetChart?.SetSlices(outgoingTargetSlices);
         outgoingWeaponTargetChart?.SetSlices(outgoingWeaponTargetSlices);
+        batteryArmorLocationChart?.SetBars(incomingBatteryArmorBars);
+        outgoingWeaponFireChart?.SetBars(outgoingWeaponFireBars);
         RebuildLegend(currentDpLossLegend, currentDamageSlices, Localize("No current DP loss."));
         RebuildDetailedLegend(allHitsLegend, incomingWeaponSlices, Localize("No incoming DP records."));
         RebuildLegend(outgoingDpByTargetLegend, outgoingTargetSlices, Localize("No outgoing DP."));
         RebuildDetailedLegend(outgoingWeaponTargetLegend, outgoingWeaponTargetSlices, Localize("No outgoing weapon DP records."));
+        RebuildCountLegend(batteryArmorLocationLegend, BuildIncomingBatteryResultLegend(shipLog), Localize("No incoming battery hits."));
+        RebuildCountLegend(outgoingWeaponFireLegend, BuildOutgoingWeaponFireLegend(outgoingWeaponFireBars), Localize("No outgoing weapon fire records."));
 
         lastHistorySignature = signature;
     }
@@ -518,8 +772,22 @@ public class ShipLogView
             batteryLogCount.ToString(),
             rapidHitCount.ToString(),
             torpedoHitCount.ToString(),
-            BuildOutgoingSignature(shipLog)
+            BuildIncomingBatteryArmorSignature(shipLog),
+            BuildOutgoingSignature(shipLog),
+            BuildOutgoingWeaponFireSignature(shipLog)
         });
+    }
+
+    string BuildIncomingBatteryArmorSignature(ShipLog shipLog)
+    {
+        return string.Join(";",
+            shipLog.logs
+                .OfType<ShipLogBatteryHitLog>()
+                .Where(log => log.damageSchema == DamageSchema.Warship || log.damageSchema == DamageSchema.LandBattery)
+                .GroupBy(log => ((int)log.ArmorLocation, (int)log.hitPenDetType))
+                .OrderBy(group => group.Key.Item1)
+                .ThenBy(group => group.Key.Item2)
+                .Select(group => $"{group.Key.Item1}:{group.Key.Item2}:{group.Count()}"));
     }
 
     string BuildOutgoingSignature(ShipLog shipLog)
@@ -556,6 +824,37 @@ public class ShipLogView
             outgoingTorpedoHits.ToString(),
             outgoingTorpedoDamage.ToString("0.###"),
         });
+    }
+
+    string BuildOutgoingWeaponFireSignature(ShipLog shipLog)
+    {
+        var parts = new List<string>();
+
+        for (int batteryIdx = 0; batteryIdx < shipLog.batteryStatus.Count; batteryIdx++)
+        {
+            var logs = shipLog.batteryStatus[batteryIdx].mountStatus.SelectMany(mount => mount.logs).ToList();
+            parts.Add($"B{batteryIdx}:{logs.Count}:{logs.Count(log => log.hit)}");
+        }
+
+        for (int rapidIdx = 0; rapidIdx < shipLog.rapidFiringStatus.Count; rapidIdx++)
+        {
+            var logs = shipLog.rapidFiringStatus[rapidIdx].logs;
+            parts.Add($"R{rapidIdx}:{logs.Count}:{logs.Count(log => log.hit)}");
+        }
+
+        if (SuperGameState.Instance.IsInNavalGame())
+        {
+            var torpedoGroups = NavalGameState.Instance.launchedTorpedos
+                .Where(torpedo => torpedo.shooterId == shipLog.objectId)
+                .GroupBy(torpedo => FallbackName(torpedo.sourceName?.GetShortName(), Localize("Torpedo")))
+                .OrderBy(group => group.Key);
+            foreach (var group in torpedoGroups)
+            {
+                parts.Add($"T{group.Key}:{group.Count()}:{group.Count(torpedo => torpedo.endgameType == LaunchedTorpedoEndgameType.Hit)}");
+            }
+        }
+
+        return string.Join(";", parts);
     }
 
     List<HistoryPieSlice> BuildCurrentDamageSlices(ShipLog shipLog)
@@ -714,6 +1013,193 @@ public class ShipLogView
         }
 
         return BuildSlicesFromDetailedMap(damageByWeaponTarget);
+    }
+
+    List<HistoryBarItem> BuildIncomingBatteryArmorLocationBars(ShipLog shipLog)
+    {
+        var logs = shipLog.logs
+            .OfType<ShipLogBatteryHitLog>()
+            .Where(log => log.damageSchema == DamageSchema.Warship || log.damageSchema == DamageSchema.LandBattery)
+            .ToList();
+
+        var bars = new List<HistoryBarItem>();
+        foreach (ArmorLocation armorLocation in Enum.GetValues(typeof(ArmorLocation)))
+        {
+            var locationLogs = logs.Where(log => log.ArmorLocation == armorLocation).ToList();
+            if (locationLogs.Count == 0)
+                continue;
+
+            bars.Add(new HistoryBarItem
+            {
+                label = LocalizeEnum(armorLocation),
+                segments = BuildPenetrationSegments(locationLogs)
+            });
+        }
+
+        return bars;
+    }
+
+    List<HistoryLegendItem> BuildIncomingBatteryResultLegend(ShipLog shipLog)
+    {
+        var logs = shipLog.logs
+            .OfType<ShipLogBatteryHitLog>()
+            .Where(log => log.damageSchema == DamageSchema.Warship || log.damageSchema == DamageSchema.LandBattery)
+            .ToList();
+
+        return new List<HistoryLegendItem>
+        {
+            new()
+            {
+                label = LocalizeEnum(HitPenDetType.PenetrateWithDetonate),
+                count = logs.Count(log => log.hitPenDetType == HitPenDetType.PenetrateWithDetonate),
+                color = penetrateDetonateColor
+            },
+            new()
+            {
+                label = LocalizeEnum(HitPenDetType.PassThrough),
+                count = logs.Count(log => log.hitPenDetType == HitPenDetType.PassThrough),
+                color = passThroughColor
+            },
+            new()
+            {
+                label = LocalizeEnum(HitPenDetType.NoPenetration),
+                count = logs.Count(log => log.hitPenDetType == HitPenDetType.NoPenetration),
+                color = noPenetrationColor
+            }
+        };
+    }
+
+    List<HistoryBarItem> BuildOutgoingWeaponFireBars(ShipLog shipLog)
+    {
+        var bars = new List<HistoryBarItem>();
+
+        for (int batteryIdx = 0; batteryIdx < shipLog.batteryStatus.Count; batteryIdx++)
+        {
+            var logs = shipLog.batteryStatus[batteryIdx].mountStatus.SelectMany(mount => mount.logs).ToList();
+            if (logs.Count == 0)
+                continue;
+
+            var batteryName = shipLog.shipClass?.batteryRecords.ElementAtOrDefault(batteryIdx)?.name?.GetShortName();
+            bars.Add(new HistoryBarItem
+            {
+                label = FallbackName(batteryName, Localize("Battery {0}", batteryIdx + 1)),
+                segments = BuildHitMissSegments(logs.Count(log => log.hit), logs.Count(log => !log.hit))
+            });
+        }
+
+        for (int rapidIdx = 0; rapidIdx < shipLog.rapidFiringStatus.Count; rapidIdx++)
+        {
+            var logs = shipLog.rapidFiringStatus[rapidIdx].logs;
+            if (logs.Count == 0)
+                continue;
+
+            var rapidName = shipLog.shipClass?.rapidFireBatteryRecords.ElementAtOrDefault(rapidIdx)?.name?.GetShortName();
+            bars.Add(new HistoryBarItem
+            {
+                label = FallbackName(rapidName, Localize("Rapid Battery {0}", rapidIdx + 1)),
+                segments = BuildHitMissSegments(logs.Count(log => log.hit), logs.Count(log => !log.hit))
+            });
+        }
+
+        if (SuperGameState.Instance.IsInNavalGame())
+        {
+            var torpedoBars = new List<HistoryBarItem>();
+            var torpedoIndexMap = new Dictionary<string, int>();
+            foreach (var torpedo in NavalGameState.Instance.launchedTorpedos.Where(torpedo => torpedo.shooterId == shipLog.objectId))
+            {
+                var label = FallbackName(torpedo.sourceName?.GetShortName(), Localize("Torpedo"));
+                if (!torpedoIndexMap.TryGetValue(label, out var barIdx))
+                {
+                    barIdx = torpedoBars.Count;
+                    torpedoIndexMap[label] = barIdx;
+                    torpedoBars.Add(new HistoryBarItem
+                    {
+                        label = label,
+                        segments = BuildHitMissSegments(0, 0)
+                    });
+                }
+
+                var hitSegment = torpedoBars[barIdx].segments[0];
+                var missSegment = torpedoBars[barIdx].segments[1];
+                if (torpedo.endgameType == LaunchedTorpedoEndgameType.Hit)
+                {
+                    hitSegment.count += 1;
+                }
+                else
+                {
+                    missSegment.count += 1;
+                }
+            }
+
+            bars.AddRange(torpedoBars.Where(bar => bar.TotalCount > 0));
+        }
+
+        return bars;
+    }
+
+    List<HistoryLegendItem> BuildOutgoingWeaponFireLegend(List<HistoryBarItem> bars)
+    {
+        var totalHit = bars.Sum(bar => bar.segments.ElementAtOrDefault(0)?.count ?? 0);
+        var totalMiss = bars.Sum(bar => bar.segments.ElementAtOrDefault(1)?.count ?? 0);
+        return new List<HistoryLegendItem>
+        {
+            new()
+            {
+                label = Localize("Hit"),
+                count = totalHit,
+                color = hitColor
+            },
+            new()
+            {
+                label = Localize("miss"),
+                count = totalMiss,
+                color = missColor
+            }
+        };
+    }
+
+    List<HistoryBarSegment> BuildPenetrationSegments(List<ShipLogBatteryHitLog> logs)
+    {
+        return new List<HistoryBarSegment>
+        {
+            new()
+            {
+                label = LocalizeEnum(HitPenDetType.PenetrateWithDetonate),
+                count = logs.Count(log => log.hitPenDetType == HitPenDetType.PenetrateWithDetonate),
+                color = penetrateDetonateColor
+            },
+            new()
+            {
+                label = LocalizeEnum(HitPenDetType.PassThrough),
+                count = logs.Count(log => log.hitPenDetType == HitPenDetType.PassThrough),
+                color = passThroughColor
+            },
+            new()
+            {
+                label = LocalizeEnum(HitPenDetType.NoPenetration),
+                count = logs.Count(log => log.hitPenDetType == HitPenDetType.NoPenetration),
+                color = noPenetrationColor
+            }
+        };
+    }
+
+    List<HistoryBarSegment> BuildHitMissSegments(int hitCount, int missCount)
+    {
+        return new List<HistoryBarSegment>
+        {
+            new()
+            {
+                label = Localize("Hit"),
+                count = hitCount,
+                color = hitColor
+            },
+            new()
+            {
+                label = Localize("miss"),
+                count = missCount,
+                color = missColor
+            }
+        };
     }
 
     List<HistoryHitCandidate> BuildBatteryHitCandidates(ShipLog targetShipLog)
@@ -941,6 +1427,58 @@ public class ShipLogView
         }
     }
 
+    void RebuildCountLegend(VisualElement host, List<HistoryLegendItem> items, string emptyText)
+    {
+        if (host == null)
+            return;
+
+        host.Clear();
+        var total = items.Sum(item => Mathf.Max(0, item.count));
+        if (total <= 0)
+        {
+            host.Add(new Label(emptyText)
+            {
+                style =
+                {
+                    whiteSpace = WhiteSpace.Normal
+                }
+            });
+            return;
+        }
+
+        foreach (var item in items)
+        {
+            var row = new VisualElement();
+            row.style.flexDirection = FlexDirection.Row;
+            row.style.alignItems = Align.FlexStart;
+            row.style.marginBottom = 3;
+
+            var colorBox = new VisualElement();
+            colorBox.style.width = 12;
+            colorBox.style.height = 12;
+            colorBox.style.marginRight = 6;
+            colorBox.style.marginTop = 2;
+            colorBox.style.backgroundColor = new StyleColor(item.color);
+            colorBox.style.borderTopWidth = 1;
+            colorBox.style.borderRightWidth = 1;
+            colorBox.style.borderBottomWidth = 1;
+            colorBox.style.borderLeftWidth = 1;
+            colorBox.style.borderTopColor = Color.black;
+            colorBox.style.borderRightColor = Color.black;
+            colorBox.style.borderBottomColor = Color.black;
+            colorBox.style.borderLeftColor = Color.black;
+
+            var ratio = total <= 0 ? 0f : (float)item.count / total;
+            var label = new Label($"{item.label}: {item.count} ({ratio:P1})");
+            label.style.whiteSpace = WhiteSpace.Normal;
+            label.style.flexShrink = 1;
+
+            row.Add(colorBox);
+            row.Add(label);
+            host.Add(row);
+        }
+    }
+
     void AddToFloatMap(Dictionary<string, float> map, string label, float value)
     {
         if (value <= 0)
@@ -1021,6 +1559,7 @@ public class ShipLogView
     }
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+    static string LocalizeEnum<T>(T value) => ServiceLocator.Get<ILocalizeService>().GetEnum(value);
 }
 
 class HistoryHitCandidate

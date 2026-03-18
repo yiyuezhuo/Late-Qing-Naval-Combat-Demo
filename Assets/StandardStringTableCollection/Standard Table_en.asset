@@ -2799,6 +2799,18 @@ MonoBehaviour:
     m_Localized: Fast
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000049
+    m_Localized: Generate Placeholder Image
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000050
+    m_Localized: Generate Placeholder Image For All Placeholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000051
+    m_Localized: Generate Placeholder Image - {0}
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

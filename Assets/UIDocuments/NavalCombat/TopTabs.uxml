@@ -25,6 +25,7 @@
                             <ui:DataBinding property="enabledSelf" data-source-path="isNotHostAndClient" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Toggle>
+                    <ui:DropdownField name="AutoPlaySpeedDropdownField" choices="x1,x10,x30,x120,Custom" index="1" style="min-width: 90px; margin-right: 6px;"/>
                     <ui:Button text="AI" name="AIButton"/>
                     <ui:Button text="Set Course (Shift + Left Click)" name="SetCourseButton">
                         <Bindings>

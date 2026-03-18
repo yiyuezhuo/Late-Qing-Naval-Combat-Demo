@@ -2717,6 +2717,18 @@ MonoBehaviour:
     m_Key: Fast
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000049
+    m_Key: Generate Placeholder Image
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000050
+    m_Key: Generate Placeholder Image For All Placeholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000051
+    m_Key: Generate Placeholder Image - {0}
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

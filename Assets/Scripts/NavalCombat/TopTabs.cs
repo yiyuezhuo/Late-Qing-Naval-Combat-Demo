@@ -16,7 +16,18 @@ using System;
 
 public class TopTabs : SingletonDocument<TopTabs>
 {
+    static readonly (string Label, float Value)[] AutoPlaySpeedPresets =
+    {
+        ("x1", 1f),
+        ("x10", 10f),
+        ("x30", 30f),
+        ("x120", 120f)
+    };
+    const string AutoPlayCustomLabel = "Custom";
+
     DropdownField playerDropdownField;
+    DropdownField autoPlaySpeedDropdownField;
+    float lastSyncedAutoPlaySpeed = float.NaN;
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
@@ -61,6 +72,7 @@ public class TopTabs : SingletonDocument<TopTabs>
         streamingAssetReferenceDialogButton.clicked += DialogRoot.Instance.PopupStreamingAssetReferenceDialog;
 
         playerDropdownField = root.Q<DropdownField>("PlayerDropdownField");
+        autoPlaySpeedDropdownField = root.Q<DropdownField>("AutoPlaySpeedDropdownField");
 
         NavalGameState.Instance.shipGroupsChanged -= OnRootShipGroupsChanged;
         NavalGameState.Instance.shipGroupsChanged += OnRootShipGroupsChanged;
@@ -69,6 +81,10 @@ public class TopTabs : SingletonDocument<TopTabs>
         {
             SyncPlayerViewpoint();
         });
+
+        autoPlaySpeedDropdownField.RegisterValueChangedCallback(OnAutoPlaySpeedDropdownChanged);
+        RefreshAutoPlaySpeedDropdown();
+        autoPlaySpeedDropdownField.schedule.Execute(RefreshAutoPlaySpeedDropdown).Every(250);
 
         var saveButton = root.Q<Button>("SaveButton");
         var loadButton = root.Q<Button>("LoadButton");
@@ -524,5 +540,55 @@ public class TopTabs : SingletonDocument<TopTabs>
             // var natoViewer = viewer.GetComponent<NATOIconViewer>();
             // natoViewer.SyncPostureType(postureType);
         }
+    }
+
+    void OnAutoPlaySpeedDropdownChanged(ChangeEvent<string> evt)
+    {
+        if (evt.newValue != null && TryGetAutoPlaySpeedValue(evt.newValue, out var value))
+        {
+            GamePreference.Instance.simulationRateRatioAuto = value;
+            GamePreference.Instance.SaveToPlayerPrefs();
+        }
+
+        RefreshAutoPlaySpeedDropdown();
+    }
+
+    void RefreshAutoPlaySpeedDropdown()
+    {
+        if (autoPlaySpeedDropdownField == null)
+            return;
+
+        var currentValue = GamePreference.Instance.simulationRateRatioAuto;
+        if (Mathf.Approximately(currentValue, lastSyncedAutoPlaySpeed))
+            return;
+
+        autoPlaySpeedDropdownField.SetValueWithoutNotify(GetAutoPlaySpeedLabel(currentValue));
+        lastSyncedAutoPlaySpeed = currentValue;
+    }
+
+    static bool TryGetAutoPlaySpeedValue(string label, out float value)
+    {
+        foreach (var preset in AutoPlaySpeedPresets)
+        {
+            if (preset.Label == label)
+            {
+                value = preset.Value;
+                return true;
+            }
+        }
+
+        value = 0f;
+        return false;
+    }
+
+    static string GetAutoPlaySpeedLabel(float value)
+    {
+        foreach (var preset in AutoPlaySpeedPresets)
+        {
+            if (Mathf.Approximately(preset.Value, value))
+                return preset.Label;
+        }
+
+        return AutoPlayCustomLabel;
     }
 }

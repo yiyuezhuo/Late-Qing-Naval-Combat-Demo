@@ -369,6 +369,7 @@
                                     <ui:VisualElement style="flex-direction: row; margin-bottom: 6px; align-items: center;">
                                         <ui:Button text="Generate Placeholder Image" name="GeneratePlaceholderImageButton" style="margin-right: 6px;">
                                             <Bindings>
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000049)"/>
                                                 <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                             </Bindings>
                                         </ui:Button>
@@ -381,6 +382,7 @@
                                         </ui:Toggle>
                                         <ui:Button text="Generate Placeholder Image For All Placeholder" name="GeneratePlaceholderImageForAllPlaceholderButton" style="flex-grow: 1;">
                                             <Bindings>
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000050)"/>
                                                 <ui:DataBinding property="enabledSelf" data-source-path="isDebug" binding-mode="ToTarget"/>
                                             </Bindings>
                                         </ui:Button>

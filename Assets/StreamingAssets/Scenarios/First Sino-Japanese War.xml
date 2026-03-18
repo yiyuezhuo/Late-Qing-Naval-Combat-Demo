@@ -10025,7 +10025,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>5c1aa8e7-54b7-4c76-8a89-2c8470479604</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <strategicGroupReference>
+     <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
+    </strategicGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -10773,9 +10775,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>98b9934a-d5ef-48a3-92dd-f2574736d2f3</objectId>
     </doctrine>
-    <strategicGroupReference>
-     <referenceId>6374bb0b-b59f-454f-a223-eb4e414b78b7</referenceId>
-    </strategicGroupReference>
+    <strategicGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -23794,6 +23794,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
      <StrategicGroupMemberReference>
       <referenceId>8546e7a0-5d78-4188-9238-fcb709e443c5</referenceId>
      </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>d1adfcd7-357e-4e62-adc0-fa13def9acde</referenceId>
+     </StrategicGroupMemberReference>
     </subordinatesCombined>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
@@ -23824,19 +23827,16 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <leaderReference />
     <subordinatesCombined>
      <StrategicGroupMemberReference>
-      <referenceId>f0ec24db-f070-4512-82d5-024394b360f3</referenceId>
+      <referenceId>0d0f865c-cb0a-4925-96f9-2291c6ad8cce</referenceId>
      </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
-      <referenceId>0d0f865c-cb0a-4925-96f9-2291c6ad8cce</referenceId>
+      <referenceId>f0ec24db-f070-4512-82d5-024394b360f3</referenceId>
      </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
       <referenceId>057bdd79-5f63-44a5-8d52-f247c1b55e30</referenceId>
      </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
       <referenceId>0f08fd08-b996-4d86-8b18-4013ec5740ed</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>f23a08cc-7532-40ad-8593-0d977ecda4aa</referenceId>
      </StrategicGroupMemberReference>
     </subordinatesCombined>
     <moveProgressionKm>0</moveProgressionKm>
@@ -25418,7 +25418,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="33" y="23" />
      <XY x="32" y="23" />
      <XY x="31" y="22" />
-     <XY x="30" y="23" />
+     <XY x="30" y="22" />
+     <XY x="29" y="22" />
+     <XY x="29" y="23" />
      <XY x="30" y="24" />
      <XY x="30" y="25" />
      <XY x="30" y="26" />
@@ -28450,9 +28452,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
   </serializedCells>
  </gameState>
  <viewState>
-  <xPosition>1.20139956</xPosition>
-  <yPosition>7.67316</yPosition>
-  <orthographicSize>11</orthographicSize>
+  <xPosition>4.099596</xPosition>
+  <yPosition>6.19771671</yPosition>
+  <orthographicSize>8</orthographicSize>
   <hitAreaMapRecords>
    <HitAreaMapRecord hitAreaObjectId="0b2cbd39-ad25-4233-b5a1-5744048e7491" areaCellObjectId="" />
    <HitAreaMapRecord hitAreaObjectId="54b9824b-f430-407e-9d7e-867728dccccb" areaCellObjectId="" />

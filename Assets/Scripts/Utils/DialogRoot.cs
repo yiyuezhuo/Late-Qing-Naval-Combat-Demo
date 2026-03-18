@@ -1778,7 +1778,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
             if (titleLabel != null && shipClass != null)
             {
-                titleLabel.text = $"Generate Placeholder Image - {shipClass.name.GetMergedName()}";
+                titleLabel.text = MyLocale.Get("Generate Placeholder Image - {0}", shipClass.name.GetMergedName());
             }
 
             void RefreshUi()

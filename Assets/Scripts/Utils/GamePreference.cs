@@ -374,6 +374,7 @@ public class GamePreference
         p.forcedNavalCombatResolution = PlayerPrefs.GetInt("forcedNavalCombatResolution", 1) == 1;
         p.showAIDialog = PlayerPrefs.GetInt("showAIDialog", 1) == 1;
         p.simulationRateRatio = PlayerPrefs.GetFloat("simulationRateRaio", 120);
+        p.simulationRateRatioAuto = PlayerPrefs.GetFloat("simulationRateRatioAuto", 10);
         // p.isInEditMode = PlayerPrefs.GetInt("isInEditMode", 0) == 1;
         p.isInEditMode = PlayerPrefs.GetInt("isInEditMode", 1) == 1;
         p.rangeRingDisplayMode = (RangeRingDisplayMode)PlayerPrefs.GetInt("rangeRingDisplayMode", (int)RangeRingDisplayMode.MergedArcs);
@@ -392,6 +393,7 @@ public class GamePreference
         PlayerPrefs.SetInt("forcedNavalCombatResolution", forcedNavalCombatResolution ? 1 : 0);
         PlayerPrefs.SetInt("showAIDialog", showAIDialog ? 1 : 0);
         PlayerPrefs.SetFloat("simulationRateRaio", simulationRateRatio);
+        PlayerPrefs.SetFloat("simulationRateRatioAuto", simulationRateRatioAuto);
         PlayerPrefs.SetInt("isInEditMode", isInEditMode ? 1 : 0);
         PlayerPrefs.SetInt("rangeRingDisplayMode", (int)rangeRingDisplayMode);
         PlayerPrefs.SetInt("unitLabelDisplayMode", (int)unitLabelDisplayMode);

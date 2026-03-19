@@ -159,6 +159,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     static readonly int mainTexPropertyId = Shader.PropertyToID("_MainTex");
     static readonly int mainColorPropertyId = Shader.PropertyToID("_MainColor");
     static readonly int colorPropertyId = Shader.PropertyToID("_Color");
+    static readonly int zWritePropertyId = Shader.PropertyToID("_ZWrite");
     const float runtimeHullAlphaThreshold = 0.1f;
     const float runtimeHullTopOffsetWu = 0.0005f;
     const float runtimeHullMinDepthWu = 0.0001f;
@@ -271,10 +272,20 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
                 runtimeHullMaterial = new Material(fallbackShader);
         }
 
-        if (runtimeHullMaterial != null && runtimeHullMaterial.HasProperty(mainTexPropertyId))
-            runtimeHullMaterial.SetTexture(mainTexPropertyId, Texture2D.whiteTexture);
         if (runtimeHullMaterial != null)
+        {
+            if (runtimeHullMaterial.HasProperty(mainTexPropertyId))
+                runtimeHullMaterial.SetTexture(mainTexPropertyId, Texture2D.whiteTexture);
+
+            // Render the 3D base before the portrait icon and write depth so the icon stays on top.
+            if (runtimeHullMaterial.HasProperty(zWritePropertyId))
+                runtimeHullMaterial.SetFloat(zWritePropertyId, 1f);
+
+            var baseRenderQueue = baseMaterial != null ? baseMaterial.renderQueue : runtimeHullMaterial.renderQueue;
+            runtimeHullMaterial.renderQueue = Mathf.Max(0, baseRenderQueue - 1);
+
             runtimeHullMeshRenderer.sharedMaterial = runtimeHullMaterial;
+        }
 
         runtimeHullObject.SetActive(false);
     }

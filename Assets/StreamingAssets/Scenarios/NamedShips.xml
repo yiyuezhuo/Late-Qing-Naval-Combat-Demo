@@ -6274,8 +6274,8 @@ https://baike.baidu.com/item/%E9%95%87%E4%B8%AD%E5%8F%B7%E7%82%AE%E8%88%B0/90242
   <shipClassObjectId>2f98f550-5e5a-4612-9461-8df15aeeb44c</shipClassObjectId>
   <name>
    <english>Hai Tng Ching</english>
-   <japanese>海境清</japanese>
-   <chineseSimplified>海境清</chineseSimplified>
+   <japanese>海镜清</japanese>
+   <chineseSimplified>海镜清</chineseSimplified>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6289,7 +6289,10 @@ https://baike.baidu.com/item/%E9%95%87%E4%B8%AD%E5%8F%B7%E7%82%AE%E8%88%B0/90242
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>In SK5 data sheet, it's marked as Zhenhai (镇海) but it's actually another gunboat.</remark>
+  <remark>In SK5 data sheet, it's marked as Zhenhai (镇海) but it's actually another gunboat.
+
+https://baike.baidu.com/item/%E6%B5%B7%E9%95%9C%E6%B8%85%E5%8F%B7%E7%82%AE%E8%89%87/9021756
+</remark>
   <objectId>4a39ce4c-9775-4732-bb26-cfc0e84fd020</objectId>
  </NamedShip>
  <NamedShip>

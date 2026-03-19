@@ -3949,4 +3949,24 @@ https://en.wikipedia.org/wiki/Kataoka_Shichir%C5%8D
 </remark>
   <objectId>96e917d5-4465-4c27-b0db-2fde75bd1073</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Dai Zongqian</english>
+   <japanese>戴宗騫</japanese>
+   <chineseSimplified>戴宗骞</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Dai Zongqian.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://zh.wikipedia.org/zh-hans/%E6%88%B4%E5%AE%97%E9%AA%9E</remark>
+  <objectId>c6b97426-2404-4087-bf48-0a5d906ee410</objectId>
+ </Leader>
 </ArrayOfLeader>

@@ -493,7 +493,7 @@ namespace NavalCombatCore
         public Leader leader
         {
             // get => EntityManager.Instance.Get<Leader>(leaderObjectId);
-            get => namedShip.defaultLeaderReference.Get();
+            get => namedShip?.defaultLeaderReference?.Get();
         }
 
         public bool emergencyRudder;
@@ -605,7 +605,7 @@ namespace NavalCombatCore
         public float relativeToTargetAzimuth = 135; // right-after position
         public bool relativeToAbsolute;
 
-        public string GetMemberName() => namedShip.name.mergedName ?? "[Not Speicified]";// name.mergedName;
+        public string GetMemberName() => namedShip?.name?.mergedName ?? "[Not Specified]";// name.mergedName;
 
         public override IEnumerable<IObjectIdLabeled> GetSubObjects()
         {

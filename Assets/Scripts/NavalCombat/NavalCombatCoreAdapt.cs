@@ -398,7 +398,16 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
-        public string nameLink => $"<link=\"nameLink\"><color=#40a0ff>{GetName().GetMergedName()}</color></link>";
+        public string nameLink
+        {
+            get
+            {
+                var name = GetName()?.GetMergedName();
+                if (name == null)
+                    return "[Not Specified]";
+                return $"<link=\"nameLink\"><color=#40a0ff>{name}</color></link>";
+            }
+        }
 
         [CreateProperty]
         public bool isInEditMode => GamePreference.Instance.isInEditMode;

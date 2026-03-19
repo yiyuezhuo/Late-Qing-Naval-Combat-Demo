@@ -172,7 +172,7 @@ public class ForceBuilder
         };
 
         static HashSet<ShipType> cruiserTypes = new(){
-            ShipType.Cruiser,
+            // ShipType.Cruiser,
             ShipType.ArmoredCruiser,
             ShipType.LightCruiser,
             ShipType.PatrolGunboat // TODO: Well, is it a proper location, anyway the current PG is classified to cruiser in some reference though.

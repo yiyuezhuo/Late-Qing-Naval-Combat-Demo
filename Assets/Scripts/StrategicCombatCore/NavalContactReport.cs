@@ -226,7 +226,7 @@ namespace StrategicCombatCore
         public static Dictionary<ShipType, EstimationCategory> shipTypeToEsimationCategory = new()
         {
             [ShipType.Battleship] = EstimationCategory.BB,
-            [ShipType.Cruiser] = EstimationCategory.CA,
+            // [ShipType.Cruiser] = EstimationCategory.CA,
             [ShipType.ArmoredCruiser] = EstimationCategory.CA,
             [ShipType.LightCruiser] = EstimationCategory.CL,
             [ShipType.Destroyer] = EstimationCategory.DD,

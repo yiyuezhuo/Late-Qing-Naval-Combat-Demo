@@ -596,7 +596,7 @@ public static class ShipClassPlaceholderImageRenderer
     {
         { ShipType.Battleship, new HullProfile { bowSection = 0.22f, sternSection = 0.70f, maxBeamScale = 1f, sternTipScale = 0.18f, bridgeCenter = 0.31f, superstructureLength = 0.19f, deckhouseCenter = 0.73f } },
         { ShipType.ArmoredCruiser, new HullProfile { bowSection = 0.23f, sternSection = 0.70f, maxBeamScale = 1f, sternTipScale = 0.16f, bridgeCenter = 0.32f, superstructureLength = 0.17f, deckhouseCenter = 0.72f } },
-        { ShipType.Cruiser, new HullProfile { bowSection = 0.26f, sternSection = 0.68f, maxBeamScale = 1f, sternTipScale = 0.12f, bridgeCenter = 0.33f, superstructureLength = 0.15f, deckhouseCenter = 0.70f } },
+        // { ShipType.Cruiser, new HullProfile { bowSection = 0.26f, sternSection = 0.68f, maxBeamScale = 1f, sternTipScale = 0.12f, bridgeCenter = 0.33f, superstructureLength = 0.15f, deckhouseCenter = 0.70f } },
         { ShipType.LightCruiser, new HullProfile { bowSection = 0.27f, sternSection = 0.67f, maxBeamScale = 1f, sternTipScale = 0.10f, bridgeCenter = 0.34f, superstructureLength = 0.14f, deckhouseCenter = 0.70f } },
         { ShipType.Destroyer, new HullProfile { bowSection = 0.30f, sternSection = 0.63f, maxBeamScale = 1f, sternTipScale = 0.08f, bridgeCenter = 0.36f, superstructureLength = 0.10f, deckhouseCenter = 0.67f } },
         { ShipType.TorpedoBoat, new HullProfile { bowSection = 0.31f, sternSection = 0.62f, maxBeamScale = 1f, sternTipScale = 0.07f, bridgeCenter = 0.38f, superstructureLength = 0.08f, deckhouseCenter = 0.64f } },
@@ -1358,7 +1358,8 @@ public static class ShipClassPlaceholderImageRenderer
             return shipClass.speedKnots >= 27 ? 3 : 2;
         if (shipClass.type == ShipType.Battleship || shipClass.type == ShipType.ArmoredCruiser)
             return shipClass.displacementTons >= 9000 ? 2 : 1;
-        if (shipClass.type == ShipType.Cruiser || shipClass.type == ShipType.LightCruiser || shipClass.type == ShipType.ArmedMerchantCruiser)
+        // if (shipClass.type == ShipType.Cruiser || shipClass.type == ShipType.LightCruiser || shipClass.type == ShipType.ArmedMerchantCruiser)
+        if (shipClass.type == ShipType.LightCruiser || shipClass.type == ShipType.ArmedMerchantCruiser)
             return shipClass.speedKnots >= 21 ? 2 : 1;
         return shipClass.displacementTons >= 6000 ? 2 : 1;
     }

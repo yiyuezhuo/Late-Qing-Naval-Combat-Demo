@@ -18,7 +18,7 @@ namespace NavalCombatCore
         NotSpecified,
         Battleship, // BB, ironclad, pre-dreadnought, dreadnought, post-dreadnought
         LightCruiser, // CL
-        Cruiser, // CR, CC
+        // Cruiser, // CR, CC
         ArmoredCruiser, // CA
         Destroyer, // DD
         PatrolGunboat, // PG
@@ -1078,7 +1078,7 @@ namespace NavalCombatCore
         {
             {ShipType.Battleship, "BB"},
             {ShipType.LightCruiser, "CL"},
-            {ShipType.Cruiser, "CC"},
+            // {ShipType.Cruiser, "CC"},
             {ShipType.ArmoredCruiser, "CA"},
             {ShipType.Destroyer, "DD"},
             {ShipType.PatrolGunboat, "PG"},

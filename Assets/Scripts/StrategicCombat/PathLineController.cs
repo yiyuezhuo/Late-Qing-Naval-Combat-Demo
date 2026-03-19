@@ -46,16 +46,34 @@ public class PathLineController : MonoBehaviour
 
         if (show)
         {
-            var p = firstSegmentProgress;
+            var p = Mathf.Clamp01(firstSegmentProgress);
             var progressBreak = (1 - p) * positions[0] + p * positions[1];
+            StrategicLineRenderUtils.ConfigureLineRenderer(firstSegmentLineRenderer);
+            StrategicLineRenderUtils.ConfigureLineRenderer(otherSegmentLineRenderer);
 
-            firstSegmentLineRenderer.positionCount = 2;
-            firstSegmentLineRenderer.SetPositions(new[] { positions[0], progressBreak });
+            var firstSegmentPositions = new[] { positions[0], progressBreak };
+            firstSegmentLineRenderer.positionCount = firstSegmentPositions.Length;
+            firstSegmentLineRenderer.SetPositions(firstSegmentPositions);
 
-            positions[0] = progressBreak;
+            Vector3[] otherSegmentPositions;
+            if (positions.Length == 2)
+            {
+                otherSegmentPositions = new[] { progressBreak, positions[1] };
+            }
+            else
+            {
+                var remainingAnchors = positions.Skip(1).ToArray();
+                var smoothedRemaining = StrategicLineRenderUtils.BuildSmoothPolyline(remainingAnchors);
+                otherSegmentPositions = new Vector3[smoothedRemaining.Length + 1];
+                otherSegmentPositions[0] = progressBreak;
+                for (int i = 0; i < smoothedRemaining.Length; i++)
+                {
+                    otherSegmentPositions[i + 1] = smoothedRemaining[i];
+                }
+            }
 
-            otherSegmentLineRenderer.positionCount = pathCells.Count;
-            otherSegmentLineRenderer.SetPositions(positions);
+            otherSegmentLineRenderer.positionCount = otherSegmentPositions.Length;
+            otherSegmentLineRenderer.SetPositions(otherSegmentPositions);
         }
     }
 }

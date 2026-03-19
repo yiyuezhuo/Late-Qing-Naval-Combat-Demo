@@ -165,13 +165,15 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
 
         BindHexCrossLineRenderers(
             roadContainerTransform, roadPrefab,
-            StrategicGameState.Instance.IterateCellPairsFor(EdgeFeatureType.Road).ToList()
+            StrategicGameState.Instance.IterateCellPairsFor(EdgeFeatureType.Road).ToList(),
+            smoothConnectedLines: true
         );
 
         BindHexCrossLineRenderers(
             railroadContainerTransform, railroadPrefab,
             StrategicGameState.Instance.IterateCellPairsFor(EdgeFeatureType.Railroad).ToList(),
-            0, 0.05f, 0.05f
+            0, 0.05f, 0.05f,
+            smoothConnectedLines: true
         );
 
         BindHexEdgeLineRenderers(
@@ -191,14 +193,36 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         RefreshBlockSeaMovementVisibility();
     }
 
-    void BindHexCrossLineRenderers(Transform containerTransform, GameObject prefab, List<(Cell, Cell, EdgeDirection)> cellPairs, float z = 0, float xOffset = 0, float yOffset = 0)
+    void BindHexCrossLineRenderers(Transform containerTransform, GameObject prefab, List<(Cell, Cell, EdgeDirection)> cellPairs, float z = 0, float xOffset = 0, float yOffset = 0, bool smoothConnectedLines = false)
     {
-        Utils.SyncTransformViewerLength(containerTransform, cellPairs.Count, prefab);
-
         var height = StrategicGameState.Instance.GetMapHeight();
         var width = StrategicGameState.Instance.GetMapWidth();
+        var polylines = smoothConnectedLines
+            ? StrategicLineRenderUtils.BuildEdgeFeaturePolylines(
+                cellPairs,
+                cell =>
+                {
+                    var (xf, yf) = CellXYToLocalXY(cell.x, cell.y);
+                    return controlledRenderer.transform.TransformPoint(xf + xOffset / width, yf + yOffset / height, z);
+                })
+            : null;
+
+        var lineCount = smoothConnectedLines ? polylines.Count : cellPairs.Count;
+        Utils.SyncTransformViewerLength(containerTransform, lineCount, prefab);
 
         var lineRenderers = containerTransform.GetComponentsInChildren<LineRenderer>();
+        if (smoothConnectedLines)
+        {
+            for (int i = 0; i < polylines.Count; i++)
+            {
+                var lineRenderer = lineRenderers[i];
+                StrategicLineRenderUtils.ConfigureLineRenderer(lineRenderer, polylines[i].loop);
+                lineRenderer.positionCount = polylines[i].positions.Length;
+                lineRenderer.SetPositions(polylines[i].positions);
+            }
+            return;
+        }
+
         for (int i = 0; i < cellPairs.Count; i++)
         {
             var (cellSrc, cellDst, edgeDirection) = cellPairs[i];
@@ -206,14 +230,11 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
             var (xf2, yf2) = CellXYToLocalXY(cellDst.x, cellDst.y);
 
             var lineRenderer = lineRenderers[i];
+            StrategicLineRenderUtils.ConfigureLineRenderer(lineRenderer);
             lineRenderer.positionCount = 2;
             var p0 = controlledRenderer.transform.TransformPoint(xf1 + xOffset / width, yf1 + yOffset / height, z);
             var p1 = controlledRenderer.transform.TransformPoint(xf2 + xOffset / width, yf2 + yOffset / height, z);
             lineRenderer.SetPositions(new Vector3[2] { p0, p1 });
-            // lineRenderer.SetPositions(new Vector3[2]{
-            //     new Vector3(xf1 + xOffset / width, yf1 + yOffset / height, z),
-            //     new Vector3(xf2 + xOffset / width, yf2 + yOffset / height, z)
-            // });
         }
     }
 
@@ -234,6 +255,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
             var (xf, yf) = CellXYToLocalXY(cellSrc.x, cellSrc.y);
 
             var lineRenderer = lineRenderers[i];
+            StrategicLineRenderUtils.ConfigureLineRenderer(lineRenderer);
             lineRenderer.positionCount = 2;
             var p0 = controlledRenderer.transform.TransformPoint(xf + dx1, yf + dy1, z);
             var p1 = controlledRenderer.transform.TransformPoint(xf + dx2, yf + dy2, z);
@@ -740,5 +762,301 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         // Update scale
         // transform.localScale = new Vector3(width, height, 0);
         controlledRenderer.transform.localScale = new Vector3(width * 0.867f, height, 0);
+    }
+}
+
+static class StrategicLineRenderUtils
+{
+    const int SmoothSubdivision = 4;
+    const int MaxSmoothSamples = 256;
+    const int CornerVertices = 4;
+    const int CapVertices = 4;
+
+    public readonly struct RenderPolyline
+    {
+        public readonly Vector3[] positions;
+        public readonly bool loop;
+
+        public RenderPolyline(Vector3[] positions, bool loop)
+        {
+            this.positions = positions;
+            this.loop = loop;
+        }
+    }
+
+    readonly struct CellNodeKey
+    {
+        public readonly int x;
+        public readonly int y;
+
+        public CellNodeKey(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    readonly struct CellEdgeKey
+    {
+        public readonly CellNodeKey a;
+        public readonly CellNodeKey b;
+
+        public CellEdgeKey(CellNodeKey lhs, CellNodeKey rhs)
+        {
+            if (Compare(lhs, rhs) <= 0)
+            {
+                a = lhs;
+                b = rhs;
+            }
+            else
+            {
+                a = rhs;
+                b = lhs;
+            }
+        }
+
+        static int Compare(CellNodeKey lhs, CellNodeKey rhs)
+        {
+            var xCompare = lhs.x.CompareTo(rhs.x);
+            return xCompare != 0 ? xCompare : lhs.y.CompareTo(rhs.y);
+        }
+    }
+
+    sealed class CellNodeKeyEqualityComparer : IEqualityComparer<CellNodeKey>
+    {
+        public bool Equals(CellNodeKey lhs, CellNodeKey rhs) => lhs.x == rhs.x && lhs.y == rhs.y;
+
+        public int GetHashCode(CellNodeKey obj) => System.HashCode.Combine(obj.x, obj.y);
+    }
+
+    sealed class CellEdgeKeyEqualityComparer : IEqualityComparer<CellEdgeKey>
+    {
+        public bool Equals(CellEdgeKey lhs, CellEdgeKey rhs) => lhs.a.x == rhs.a.x
+            && lhs.a.y == rhs.a.y
+            && lhs.b.x == rhs.b.x
+            && lhs.b.y == rhs.b.y;
+
+        public int GetHashCode(CellEdgeKey obj) => System.HashCode.Combine(obj.a.x, obj.a.y, obj.b.x, obj.b.y);
+    }
+
+    static readonly CellNodeKeyEqualityComparer cellNodeKeyComparer = new();
+    static readonly CellEdgeKeyEqualityComparer cellEdgeKeyComparer = new();
+
+    public static void ConfigureLineRenderer(LineRenderer lineRenderer, bool loop = false)
+    {
+        if (lineRenderer == null)
+            return;
+
+        lineRenderer.numCornerVertices = CornerVertices;
+        lineRenderer.numCapVertices = CapVertices;
+        lineRenderer.loop = loop;
+    }
+
+    public static Vector3[] BuildSmoothPolyline(IReadOnlyList<Vector3> anchors, bool loop = false)
+    {
+        if (anchors == null || anchors.Count == 0)
+            return System.Array.Empty<Vector3>();
+
+        if (anchors.Count <= 2)
+            return anchors.ToArray();
+
+        if (loop)
+        {
+            var sampleCount = Mathf.Min(MaxSmoothSamples, Mathf.Max(anchors.Count * SmoothSubdivision, anchors.Count));
+            var result = new Vector3[sampleCount];
+            for (int i = 0; i < sampleCount; i++)
+            {
+                var tGlobal = (float)i / sampleCount * anchors.Count;
+                var segment = Mathf.FloorToInt(tGlobal);
+                var t = tGlobal - segment;
+
+                var p0 = anchors[Mod(segment - 1, anchors.Count)];
+                var p1 = anchors[Mod(segment, anchors.Count)];
+                var p2 = anchors[Mod(segment + 1, anchors.Count)];
+                var p3 = anchors[Mod(segment + 2, anchors.Count)];
+                result[i] = CatmullRom(p0, p1, p2, p3, t);
+            }
+            return result;
+        }
+
+        var openSampleCount = Mathf.Min(MaxSmoothSamples, Mathf.Max((anchors.Count - 1) * SmoothSubdivision + 1, anchors.Count));
+        var openResult = new Vector3[openSampleCount];
+        for (int i = 0; i < openSampleCount; i++)
+        {
+            var tGlobal = openSampleCount <= 1 ? 0f : (float)i / (openSampleCount - 1) * (anchors.Count - 1);
+            var segment = Mathf.Clamp(Mathf.FloorToInt(tGlobal), 0, anchors.Count - 2);
+            var t = tGlobal - segment;
+
+            var p0 = anchors[Mathf.Max(segment - 1, 0)];
+            var p1 = anchors[segment];
+            var p2 = anchors[segment + 1];
+            var p3 = anchors[Mathf.Min(segment + 2, anchors.Count - 1)];
+            openResult[i] = CatmullRom(p0, p1, p2, p3, t);
+        }
+
+        openResult[0] = anchors[0];
+        openResult[openSampleCount - 1] = anchors[anchors.Count - 1];
+        return openResult;
+    }
+
+    public static List<RenderPolyline> BuildEdgeFeaturePolylines(
+        IReadOnlyList<(Cell, Cell, EdgeDirection)> cellPairs,
+        System.Func<Cell, Vector3> cellToPoint)
+    {
+        var polylines = new List<RenderPolyline>();
+        if (cellPairs == null || cellPairs.Count == 0 || cellToPoint == null)
+            return polylines;
+
+        var nodeCells = new Dictionary<CellNodeKey, Cell>(cellNodeKeyComparer);
+        var adjacency = new Dictionary<CellNodeKey, HashSet<CellNodeKey>>(cellNodeKeyComparer);
+        var edges = new HashSet<CellEdgeKey>(cellEdgeKeyComparer);
+
+        foreach (var (cellSrc, cellDst, _) in cellPairs)
+        {
+            if (cellSrc == null || cellDst == null || cellSrc.IsAreaCell() || cellDst.IsAreaCell())
+                continue;
+
+            var srcKey = new CellNodeKey(cellSrc.x, cellSrc.y);
+            var dstKey = new CellNodeKey(cellDst.x, cellDst.y);
+            var edgeKey = new CellEdgeKey(srcKey, dstKey);
+            if (!edges.Add(edgeKey))
+                continue;
+
+            nodeCells[srcKey] = cellSrc;
+            nodeCells[dstKey] = cellDst;
+            AddNeighbor(adjacency, srcKey, dstKey);
+            AddNeighbor(adjacency, dstKey, srcKey);
+        }
+
+        var visitedEdges = new HashSet<CellEdgeKey>(cellEdgeKeyComparer);
+        foreach (var node in adjacency.Keys.OrderBy(key => key.x).ThenBy(key => key.y))
+        {
+            if (adjacency[node].Count == 2)
+                continue;
+
+            foreach (var neighbor in adjacency[node].OrderBy(key => key.x).ThenBy(key => key.y))
+            {
+                var edge = new CellEdgeKey(node, neighbor);
+                if (visitedEdges.Contains(edge))
+                    continue;
+
+                var chainNodes = TraceOpenChain(node, neighbor, adjacency, visitedEdges);
+                AppendPolyline(polylines, chainNodes, nodeCells, cellToPoint, false);
+            }
+        }
+
+        foreach (var edge in edges.OrderBy(edgeKey => edgeKey.a.x).ThenBy(edgeKey => edgeKey.a.y).ThenBy(edgeKey => edgeKey.b.x).ThenBy(edgeKey => edgeKey.b.y))
+        {
+            if (visitedEdges.Contains(edge))
+                continue;
+
+            var loopNodes = TraceClosedLoop(edge, adjacency, visitedEdges);
+            AppendPolyline(polylines, loopNodes, nodeCells, cellToPoint, true);
+        }
+
+        return polylines;
+    }
+
+    static void AppendPolyline(
+        List<RenderPolyline> polylines,
+        List<CellNodeKey> nodeKeys,
+        Dictionary<CellNodeKey, Cell> nodeCells,
+        System.Func<Cell, Vector3> cellToPoint,
+        bool loop)
+    {
+        if (nodeKeys == null || nodeKeys.Count < 2)
+            return;
+
+        var anchorPoints = nodeKeys.Select(key => cellToPoint(nodeCells[key])).ToArray();
+        polylines.Add(new RenderPolyline(BuildSmoothPolyline(anchorPoints, loop), loop));
+    }
+
+    static List<CellNodeKey> TraceOpenChain(
+        CellNodeKey start,
+        CellNodeKey next,
+        Dictionary<CellNodeKey, HashSet<CellNodeKey>> adjacency,
+        HashSet<CellEdgeKey> visitedEdges)
+    {
+        var chain = new List<CellNodeKey> { start };
+        var prev = start;
+        var current = next;
+        visitedEdges.Add(new CellEdgeKey(prev, current));
+        chain.Add(current);
+
+        while (adjacency[current].Count == 2)
+        {
+            var neighbors = adjacency[current].ToList();
+            var candidate = cellNodeKeyComparer.Equals(neighbors[0], prev) ? neighbors[1] : neighbors[0];
+            var edge = new CellEdgeKey(current, candidate);
+            if (visitedEdges.Contains(edge))
+                break;
+
+            visitedEdges.Add(edge);
+            prev = current;
+            current = candidate;
+            chain.Add(current);
+        }
+
+        return chain;
+    }
+
+    static List<CellNodeKey> TraceClosedLoop(
+        CellEdgeKey startEdge,
+        Dictionary<CellNodeKey, HashSet<CellNodeKey>> adjacency,
+        HashSet<CellEdgeKey> visitedEdges)
+    {
+        var chain = new List<CellNodeKey> { startEdge.a, startEdge.b };
+        var start = startEdge.a;
+        var prev = startEdge.a;
+        var current = startEdge.b;
+        visitedEdges.Add(startEdge);
+
+        while (true)
+        {
+            var neighbors = adjacency[current].ToList();
+            var candidate = cellNodeKeyComparer.Equals(neighbors[0], prev) ? neighbors[1] : neighbors[0];
+            var edge = new CellEdgeKey(current, candidate);
+            if (visitedEdges.Contains(edge))
+                break;
+
+            visitedEdges.Add(edge);
+            prev = current;
+            current = candidate;
+            if (cellNodeKeyComparer.Equals(current, start))
+                break;
+
+            chain.Add(current);
+        }
+
+        return chain;
+    }
+
+    static Vector3 CatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
+    {
+        var t2 = t * t;
+        var t3 = t2 * t;
+        return 0.5f * (
+            (2f * p1) +
+            (-p0 + p2) * t +
+            (2f * p0 - 5f * p1 + 4f * p2 - p3) * t2 +
+            (-p0 + 3f * p1 - 3f * p2 + p3) * t3
+        );
+    }
+
+    static int Mod(int value, int divisor)
+    {
+        var result = value % divisor;
+        return result < 0 ? result + divisor : result;
+    }
+
+    static void AddNeighbor(Dictionary<CellNodeKey, HashSet<CellNodeKey>> adjacency, CellNodeKey node, CellNodeKey neighbor)
+    {
+        if (!adjacency.TryGetValue(node, out var neighbors))
+        {
+            neighbors = new HashSet<CellNodeKey>(cellNodeKeyComparer);
+            adjacency[node] = neighbors;
+        }
+
+        neighbors.Add(neighbor);
     }
 }

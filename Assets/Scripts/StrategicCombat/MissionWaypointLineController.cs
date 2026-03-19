@@ -17,8 +17,10 @@ public class WaypointController : MonoBehaviour
         //     return new Vector3(pos.x, pos.y, posZ);
         // }).ToArray();
         var positions = Utils.XYListToVector3Array(waypoints);
+        StrategicLineRenderUtils.ConfigureLineRenderer(lineRenderer);
+        var smoothedPositions = StrategicLineRenderUtils.BuildSmoothPolyline(positions);
 
-        lineRenderer.positionCount = waypoints.Count;
-        lineRenderer.SetPositions(positions);
+        lineRenderer.positionCount = smoothedPositions.Length;
+        lineRenderer.SetPositions(smoothedPositions);
     }
 }

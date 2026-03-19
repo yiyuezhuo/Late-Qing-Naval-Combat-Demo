@@ -3969,4 +3969,124 @@ https://en.wikipedia.org/wiki/Kataoka_Shichir%C5%8D
   <remark>https://zh.wikipedia.org/zh-hans/%E6%88%B4%E5%AE%97%E9%AA%9E</remark>
   <objectId>c6b97426-2404-4087-bf48-0a5d906ee410</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Xu Chuanlong</english>
+   <japanese>徐伝隆</japanese>
+   <chineseSimplified>徐传隆</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\China_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://baike.baidu.com/item/%E5%BE%90%E4%BC%A0%E9%9A%86/8526040
+</remark>
+  <objectId>ff67c098-cd68-42c8-bd1b-44a57c6b3fbb</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>He Xinchuan</english>
+   <japanese>何心川</japanese>
+   <chineseSimplified>何心川</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\China_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://baike.baidu.com/item/%E4%BD%95%E5%BF%83%E5%B7%9D/62429964
+</remark>
+  <objectId>0f19f26c-1142-47a5-8223-c5b580cffc3b</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Wu Ankang</english>
+   <japanese>呉安康</japanese>
+   <chineseSimplified>吴安康</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Wu Ankang.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Average</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://baike.baidu.com/item/%E5%90%B4%E5%AE%89%E5%BA%B7/62725335
+</remark>
+  <objectId>fc7b6efa-b7f9-4098-8f82-6c7b3a0ea1e7</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Xu Changshun</english>
+   <japanese>徐長順</japanese>
+   <chineseSimplified>徐长顺</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\China_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>a9965f5e-1024-45dd-bb08-46a01d3c583b</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ye Boluan</english>
+   <japanese>葉伯鑾</japanese>
+   <chineseSimplified>叶伯銮</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\China_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>3b05ade9-1468-4c59-91b8-657bfe152de0</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ding Huarong</english>
+   <japanese>丁華容</japanese>
+   <chineseSimplified>丁华容</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\China_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <objectId>294ddea6-7a56-481c-a619-135b07e89c1a</objectId>
+ </Leader>
 </ArrayOfLeader>

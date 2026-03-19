@@ -23,7 +23,7 @@ namespace NavalCombatCore
         public string nameLink;
     }
 
-    public partial class ShipClass
+    public partial class ShipClass : INamed
     {
         [CreateProperty]
         public float armorScoreProp => EvaluateArmorScore();
@@ -87,6 +87,8 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public bool isDebug => GamePreference.Instance.isDebug;
+
+        public GlobalString GetName() => name;
     }
 
     public partial class LaunchedTorpedo : IPortraitViewerObservable

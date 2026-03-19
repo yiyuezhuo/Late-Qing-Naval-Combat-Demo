@@ -13,9 +13,8 @@ using System;
 using YYZ;
 
 
-public class ShipClassEditor : HideableDocument<ShipClassEditor>
+public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, ShipClass>
 {
-    public ListView shipClassListView;
     ListView batteryRecordsListView;
     VisualElement portraitTopPreview;
     VisualElement portraitIconPreview;
@@ -25,56 +24,25 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
     string lastDefaultPlaceholderSignature;
     string lastDefaultPlaceholderShipObjectId;
 
-    public int selectedShipClassIndex = 0;
-
     SectorArcIndicatorBinder sectorArcIndicatorBinder = new();
     SectorArcIndicatorBinder torpedoSectorArcIndicatorBinder = new();
 
+    protected override string ObjectListViewElementName => "ShipClassListView";
+
+    public ListView shipClassListView => objectListView;
+
     [CreateProperty]
-    public ShipClass selectedShipClass
-    {
-        get
-        {
-            var gameState = SuperGameState.Instance.GetCurrentGameState();
-            if (selectedShipClassIndex >= gameState.shipClasses.Count || selectedShipClassIndex < 0)
-                return null;
-            return gameState.shipClasses[selectedShipClassIndex];
-        }
-    }
+    public ShipClass selectedShipClass => selectedObject;
 
     public ShipClass SelectedShipClassProvider()
     {
-        return selectedShipClass;
+        return selectedObject;
     }
 
     // protected override void Awake()
-    void OnEnable()
+    protected override void OnEnable()
     {
-        // base.Awake();
-
-        // Always not work as expected for some reason
-        // var sortingOrder = doc.sortingOrder;
-        // Debug.Log($"ShipClassEditor sortingOrder={sortingOrder}");
-
-        root.dataSource = this;
-
-        foreach (var listView in root.Query<BaseListView>().ToList())
-        {
-            listView.SetBinding("itemsSource", new DataBinding());
-        }
-
-        shipClassListView = root.Q<ListView>("ShipClassListView");
-        // shipClassListView.itemsAdded += Utils.MakeCallbackForItemsAdded<ShipClass>(shipClassListView);
-        Utils.BindItemsAddedRemoved<ShipClass>(shipClassListView, SelectedShipClassProvider);
-
-        shipClassListView.selectedIndicesChanged += (IEnumerable<int> ints) =>
-        {
-            var idx = ints.FirstOrDefault();
-
-            // Debug.Log($"selectedIndicesChanged: {idx}");
-
-            selectedShipClassIndex = idx;
-        };
+        base.OnEnable();
 
         // TODO: Switch to Data Binding from callback (though how to bind list is very poorly documented)
         sectorArcIndicatorBinder.BindUI(root.Q<VisualElement>("SectorArcIndicator"));
@@ -168,9 +136,6 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
 
             return el;
         };
-
-        var confirmButton = root.Q<Button>("ConfirmButton");
-        confirmButton.clicked += Hide;
 
         var exportButton = root.Q<Button>("ExportButton");
         exportButton.clicked += () =>
@@ -374,10 +339,38 @@ public class ShipClassEditor : HideableDocument<ShipClassEditor>
         var gameState = SuperGameState.Instance.GetCurrentGameState();
         gameState.ShipClassesFromXML(text);
         gameState.ResetAndRegisterAll();
+        GetFullObjects();
+        RefreshFilter();
+        RequestDefaultPlaceholderPreviewRefresh(selectedShipClass, true);
     }
 
     [CreateProperty]
     public AbstractGameState currentGameState => SuperGameState.Instance.GetCurrentGameState();
+
+    [CreateProperty]
+    public bool isInEditMode => GamePreference.Instance.isInEditMode;
+
+    protected override void GetFullObjects()
+    {
+        fullObjects = currentGameState.shipClasses;
+    }
+
+    protected override void ProcessRemovedOne(ShipClass removeObj)
+    {
+        EntityManager.Instance.Unregister(removeObj);
+    }
+
+    protected override void OnAddObjectButtonClicked()
+    {
+        var newObj = new ShipClass();
+        EntityManager.Instance.Register(newObj, null);
+        fullObjects.Add(newObj);
+
+        ProcessAddedOne(newObj);
+
+        RefreshFilter();
+        SelectObject(newObj);
+    }
 
     void RefreshGraphicBindings()
     {

@@ -6292,4 +6292,119 @@ https://baike.baidu.com/item/%E9%95%87%E4%B8%AD%E5%8F%B7%E7%82%AE%E8%88%B0/90242
   <remark>In SK5 data sheet, it's marked as Zhenhai (镇海) but it's actually another gunboat.</remark>
   <objectId>4a39ce4c-9775-4732-bb26-cfc0e84fd020</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d6e07bc9-0edb-4d58-be0e-ebee8a5c6504</shipClassObjectId>
+  <name>
+   <english>Kai Che</english>
+   <japanese>開濟</japanese>
+   <chineseSimplified>开济</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://baike.baidu.com/item/%E5%BC%80%E6%B5%8E%E7%BA%A7%E5%B7%A1%E6%B4%8B%E8%88%B0/5946696
+</remark>
+  <objectId>2cdfcd72-a575-4db7-a76c-e69aaaa1734e</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>203c51ea-ea30-420b-9a22-1e3422d8a449</shipClassObjectId>
+  <name>
+   <english>Ching Ching</english>
+   <japanese>鏡清</japanese>
+   <chineseSimplified>镜清</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>King Ch'ing or Ching Ching
+
+https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
+</remark>
+  <objectId>34a353cb-a85f-44ed-9fe8-ca1d1f67c2d9</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>203c51ea-ea30-420b-9a22-1e3422d8a449</shipClassObjectId>
+  <name>
+   <english>Huan Tai</english>
+   <japanese>寰泰</japanese>
+   <chineseSimplified>寰泰</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://baike.baidu.com/item/%E5%8D%97%E6%B4%8B%E6%B0%B4%E5%B8%88%E2%80%9C%E5%AF%B0%E6%B3%B0%E2%80%9D%E5%8F%B7%E5%B7%A1%E6%B4%8B%E8%88%B0/7565174</remark>
+  <objectId>00d4be00-170d-4a58-9f70-149a8aeed435</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>c4cb1ded-9fa2-4a81-b053-8b81d29c140a</shipClassObjectId>
+  <name>
+   <english>Nan Thin</english>
+   <japanese>南琛</japanese>
+   <chineseSimplified>南琛</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Nan_Chen
+</remark>
+  <objectId>df464fc1-d125-4880-bf7b-f88bfb52e939</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>c4cb1ded-9fa2-4a81-b053-8b81d29c140a</shipClassObjectId>
+  <name>
+   <english>Nan Shui</english>
+   <japanese>南瑞</japanese>
+   <chineseSimplified>南瑞</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Nan_Shui</remark>
+  <objectId>22f31a46-4189-435a-a1c0-fcee6715b712</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

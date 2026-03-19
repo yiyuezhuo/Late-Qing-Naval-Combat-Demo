@@ -237,13 +237,12 @@ public class SwitchCenter
     {
         if (shipClass != null)
         {
-            var idx = SuperGameState.Instance.GetCurrentGameState().shipClasses.IndexOf(shipClass);
-            if (idx != -1)
+            if (SuperGameState.Instance.GetCurrentGameState().shipClasses.IndexOf(shipClass) != -1)
             {
                 UpdateCurrentActiveViewContainer(ShipClassEditor.Instance);
 
                 ShipClassEditor.Instance.Show();
-                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(ShipClassEditor.Instance.shipClassListView, idx);
+                ShipClassEditor.Instance.SelectObject(shipClass, clearFilterIfHidden: true);
             }
         }
     }

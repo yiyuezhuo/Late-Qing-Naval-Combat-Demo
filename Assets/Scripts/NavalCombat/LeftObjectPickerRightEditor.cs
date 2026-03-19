@@ -17,6 +17,10 @@ public abstract class LeftObjectPickerRightEditor<ST, ET> : HideableDocument<ST>
     public List<ET> fullObjects; // Modification (add/remove) to this should be synced to its original datasource.
     string _filterString;
     public List<ET> filteredObjects;
+    bool objectListViewReorderable;
+    bool objectListViewReorderableInitialized;
+
+    protected virtual string ObjectListViewElementName => "ObjectListView";
 
     [CreateProperty]
     public string filterString
@@ -49,6 +53,19 @@ public abstract class LeftObjectPickerRightEditor<ST, ET> : HideableDocument<ST>
         // filteredObjects = _filteredObjects.ToList();
         // Use originalList if possible so we prevent unnesseary allocation & enable resort provided by ListView natively.
         filteredObjects = _filteredObjects is List<ET> originalList ? originalList : _filteredObjects.ToList();
+
+        if (objectListView != null)
+        {
+            if (!objectListViewReorderableInitialized)
+            {
+                objectListViewReorderable = objectListView.reorderable;
+                objectListViewReorderableInitialized = true;
+            }
+
+            objectListView.reorderable = string.IsNullOrEmpty(_filterString) && objectListViewReorderable;
+        }
+
+        RestoreSelectionAfterFilterChanged();
     }
 
 
@@ -85,19 +102,29 @@ public abstract class LeftObjectPickerRightEditor<ST, ET> : HideableDocument<ST>
 
         Utils.BindItemsSourceRecursive(root);
 
-        objectListView = root.Q<ListView>("ObjectListView");
-        if(objectListView.showAddRemoveFooter)
+        objectListView = root.Q<ListView>(ObjectListViewElementName);
+        if (objectListView != null)
+        {
+            objectListViewReorderable = objectListView.reorderable;
+            objectListViewReorderableInitialized = true;
+        }
+        RefreshFilter();
+
+        if(objectListView != null && objectListView.showAddRemoveFooter)
         {
             Utils.BindItemsAddedRemoved<ET>(objectListView, () => null);
         }
 
-        objectListView.selectionChanged += (IEnumerable<object> objects) =>
+        if (objectListView != null)
         {
-            Debug.Log("LeftObjectPickerRightEditorStrategic.selectionChanged");
+            objectListView.selectionChanged += (IEnumerable<object> objects) =>
+            {
+                Debug.Log("LeftObjectPickerRightEditorStrategic.selectionChanged");
 
-            var obj = objects.FirstOrDefault() as ET;
-            selectedId = obj?.objectId;
-        };
+                var obj = objects.FirstOrDefault() as ET;
+                selectedId = obj?.objectId;
+            };
+        }
 
         var confirmButton = root.Q<Button>("ConfirmButton");
         confirmButton.clicked += OnConfirmButtonClicked;
@@ -201,4 +228,53 @@ public abstract class LeftObjectPickerRightEditor<ST, ET> : HideableDocument<ST>
 
     [CreateProperty]
     public bool selectedValid => selectedObject != null;
+
+    public void SelectObject(ET obj, bool clearFilterIfHidden = false)
+    {
+        if (obj == null)
+        {
+            selectedId = null;
+            objectListView?.ClearSelection();
+            return;
+        }
+
+        var idx = filteredObjects?.IndexOf(obj) ?? -1;
+        if (idx == -1 && clearFilterIfHidden && !string.IsNullOrEmpty(filterString))
+        {
+            filterString = "";
+            idx = filteredObjects?.IndexOf(obj) ?? -1;
+        }
+
+        if (idx == -1)
+            return;
+
+        selectedId = obj.objectId;
+        if (objectListView != null)
+        {
+            BehaviourUtils.Instance.ScheduleToSetSelectionForListView(objectListView, idx);
+        }
+    }
+
+    void RestoreSelectionAfterFilterChanged()
+    {
+        if (objectListView == null)
+            return;
+
+        var selected = selectedObject;
+        if (selected == null)
+        {
+            objectListView.ClearSelection();
+            return;
+        }
+
+        var idx = filteredObjects?.IndexOf(selected) ?? -1;
+        if (idx == -1)
+        {
+            selectedId = null;
+            objectListView.ClearSelection();
+            return;
+        }
+
+        BehaviourUtils.Instance.ScheduleToSetSelectionForListView(objectListView, idx);
+    }
 }

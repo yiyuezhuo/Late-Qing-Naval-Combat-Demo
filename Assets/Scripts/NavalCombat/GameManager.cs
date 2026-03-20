@@ -1091,6 +1091,30 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         return true;
     }
 
+    bool IsPointerOverBlockingUi()
+    {
+        if (allUIDocuments == null)
+            return false;
+
+        foreach (var doc in allUIDocuments)
+        {
+            if (doc == null || !doc.isActiveAndEnabled)
+                continue;
+
+            var root = doc.rootVisualElement;
+            var panel = root?.panel;
+            if (root == null || panel == null)
+                continue;
+
+            var panelPosition = RuntimePanelUtils.ScreenToPanel(panel, Input.mousePosition);
+            var picked = panel.Pick(panelPosition);
+            if (picked != null && picked != root)
+                return true;
+        }
+
+        return false;
+    }
+
     [Header("Right Click Course Setting")]
     public float rightClickMaxClickDistancePixels = 8f;
     public float rightClickPostReleaseHoldSeconds = 0.05f;
@@ -1210,13 +1234,21 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             return;
         }
 
-        if (!IsHotKeyEnabled())
+        var hotKeyEnabled = IsHotKeyEnabled();
+        if (!hotKeyEnabled)
         {
             rightClickCandidateActive = false;
             ClearPendingRightClickAction();
         }
 
-        if (IsHotKeyEnabled())
+        var pointerOverBlockingUi = IsPointerOverBlockingUi();
+        if (pointerOverBlockingUi)
+        {
+            rightClickCandidateActive = false;
+            ClearPendingRightClickAction();
+        }
+
+        if (hotKeyEnabled)
         {
             if (Input.GetKeyDown(KeyCode.H))
             {
@@ -1243,8 +1275,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
             if (state == State.Idle) // unit left click chosen
             {
-                HandleRightClickCandidateInIdle();
-                TryExecutePendingRightClickActionInIdle();
+                if (!pointerOverBlockingUi)
+                {
+                    HandleRightClickCandidateInIdle();
+                    TryExecutePendingRightClickActionInIdle();
+                }
 
                 // handle events
                 if (Input.GetKeyDown(KeyCode.Insert) && isPressingAlt) // Insert Location Label
@@ -1262,7 +1297,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     state = State.MovingUnit;
                 }
 
-                if (Input.GetMouseButtonDown(0) && !isPressingShift) // try select a unit
+                if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0) && !isPressingShift) // try select a unit
                 {
                     var shipLog = TryToRaycastShipLog(); // TODO: Handle other click? (like land target?)
                     if (shipLog != null)
@@ -1275,7 +1310,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     }
                 }
 
-                if (Input.GetMouseButtonDown(0) && isPressingShift) // RTW-like course setting
+                if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0) && isPressingShift) // RTW-like course setting
                 {
                     SetSelectedShipCourseTowardPointer();
                 }
@@ -1344,7 +1379,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if (state == State.SelectingInsertLocationLabelPosition)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
 
@@ -1358,7 +1393,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if (state == State.SelectingInsertUnitPosition)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
 
@@ -1377,7 +1412,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if(state == State.SelectingInsertUnitPositionComplex)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
 
@@ -1396,7 +1431,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if (state == State.MovingUnit)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
                     if (selectedShipLog != null)
@@ -1408,7 +1443,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if (state == State.SelectingFollowedTarget)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
                     if (selectedShipLog != null)
@@ -1425,7 +1460,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if (state == State.SelectingRelativeToTarget)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
                     if (selectedShipLog != null)
@@ -1442,7 +1477,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if (state == State.SelectingFiringTarget)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
                     // ShipLogEditor.Instance.Show();
@@ -1461,7 +1496,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if (state == State.SelectingFireControlSystemTarget)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
                     // TODO: Fix broken soft-close or devise a new way to select target.
@@ -1488,7 +1523,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if (state == State.SelectingRapidFiringTarget)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
                     // TODO: Fix broken soft-close or devise a new way to select target.
@@ -1507,7 +1542,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if (state == State.SelectingTorpedoFiringTarget)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
                     // TODO: Fix broken soft-close or devise a new way to select target.
@@ -1526,7 +1561,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if (state == State.SelectingCourseTarget)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
                     SetSelectedShipCourseTowardPointer();
@@ -1534,7 +1569,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if(state == State.SelectingShipLevelFiringTarget)
             {
-                if(Input.GetMouseButtonDown(0))
+                if(!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
                     // set Ship-level target

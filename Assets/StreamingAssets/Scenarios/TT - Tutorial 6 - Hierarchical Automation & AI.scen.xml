@@ -2532,7 +2532,7 @@
      <english>none</english>
     </remark>
     <leaderReference>
-     <referenceObjectId>18963af7-1163-4323-9421-9f2421c9fee1</referenceObjectId>
+     <referenceObjectId>ca6e9344-d40e-4a16-8ee1-82ae8d5dbdb4</referenceObjectId>
     </leaderReference>
     <type>General</type>
     <formation>General</formation>
@@ -2679,8 +2679,8 @@
    <firstRemainOneOperationalFleet>false</firstRemainOneOperationalFleet>
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
-   <hasEndDateTime>false</hasEndDateTime>
-   <endDateTime>1895-04-17T00:00:00Z</endDateTime>
+   <hasEndDateTime>true</hasEndDateTime>
+   <endDateTime>1894-09-17T06:30:00Z</endDateTime>
    <backgroundPictureReference>
     <isBuiltin>false</isBuiltin>
    </backgroundPictureReference>

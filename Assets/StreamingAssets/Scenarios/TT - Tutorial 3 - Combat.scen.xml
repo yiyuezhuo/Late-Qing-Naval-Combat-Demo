@@ -1681,7 +1681,7 @@
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
    <hasEndDateTime>true</hasEndDateTime>
-   <endDateTime>1894-09-17T08:30:00Z</endDateTime>
+   <endDateTime>1894-09-17T08:00:00Z</endDateTime>
    <backgroundPictureReference>
     <isBuiltin>false</isBuiltin>
    </backgroundPictureReference>

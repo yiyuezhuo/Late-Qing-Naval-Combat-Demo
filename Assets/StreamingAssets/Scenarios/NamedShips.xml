@@ -6467,4 +6467,118 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
 </remark>
   <objectId>e6b6b47c-bd9c-4db7-ad62-d114586b40bb</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>0f39bb36-d52a-4a97-adb1-4ce4b97377d2</shipClassObjectId>
+  <name>
+   <english>Imperator Nicolai I</english>
+   <japanese>インペラートル・ニコライ1世</japanese>
+   <chineseSimplified>尼古拉一世</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</remark>
+  <objectId>9bd9d71e-cab1-4a51-b106-8381954a0fbc</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>51264139-cca5-436f-965a-bdb07e1c8bdb</shipClassObjectId>
+  <name>
+   <english>Admiral Nakhimov</english>
+   <japanese>アドミラル・ナヒーモフ</japanese>
+   <chineseSimplified>纳希莫夫</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>1a7afad8-12e6-4b15-a521-b468634fc8c3</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
+  <objectId>5aee1ca4-89bc-4916-83d3-95d31359a32d</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>906652af-c8fc-4e40-a881-e29c0baa2825</shipClassObjectId>
+  <name>
+   <english>Pamiat Azova</english>
+   <japanese>パーミャチ・アゾーヴァ</japanese>
+   <chineseSimplified>帕米亚特·阿佐瓦</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>ff003e02-f7e0-4567-a311-aa37c1edaef0</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova</remark>
+  <objectId>4e88cce5-4ba1-4789-959b-9015a13ea798</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>06c1f920-a113-4bc9-801d-bb7d31a1e05c</shipClassObjectId>
+  <name>
+   <english>Vladimir Monomakh</english>
+   <japanese>ヴラジーミル・モノマフ</japanese>
+   <chineseSimplified>弗拉基米尔·莫诺马赫</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Vladimir_Monomakh</remark>
+  <objectId>1a9d9c90-fec5-4f57-bcbc-27c188a58cbb</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8ee06f5a-1261-423f-87d2-f278a2c84a2b</shipClassObjectId>
+  <name>
+   <english>Admiral Kornilov</english>
+   <japanese>コルニロフ</japanese>
+   <chineseSimplified>科尔尼洛夫</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
+  <objectId>80060b20-58c0-4c8f-a6c8-2adc96cf3c45</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

@@ -3047,6 +3047,18 @@ MonoBehaviour:
     m_Localized: 'Weapon usage:'
     m_Metadata:
       m_Items: []
+  - m_Id: 57610355548524544
+    m_Localized: SJS - Nanyang Fleet vs 2nd Flying Squadron
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57610356978782208
+    m_Localized: SJS - Nanyang Fleet vs 3rd Flying Squadron
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57610357754728448
+    m_Localized: SJS - Pacific Fleet in the First Sino-Japanese War
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

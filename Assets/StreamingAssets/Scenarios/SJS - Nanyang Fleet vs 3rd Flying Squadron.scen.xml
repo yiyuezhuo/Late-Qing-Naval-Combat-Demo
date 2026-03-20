@@ -2994,13 +2994,32 @@
    </ShipGroup>
   </shipGroups>
   <scenarioState>
-   <dateTime>1895-01-01T00:00:00Z</dateTime>
-   <beginDateTime>1895-01-01T00:00:00Z</beginDateTime>
+   <dateTime>1895-02-01T00:00:00Z</dateTime>
+   <beginDateTime>1895-02-01T00:00:00Z</beginDateTime>
    <visibility>ExceptionallyClear</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <globalDescription>
-    <english>none</english>
+    <english>Hypothetical Scenario
+
+The Nanyang Fleet, the second most powerful naval force of China during the First Sino-Japanese War, remained inactive throughout the conflict due to internal political struggles. However, toward the end of the war, there were plans to deploy the Nanyang Fleet to launch a raid against the Japanese home islands as a means of diversion.
+
+In this scenario, we assume that the Nanyang Fleet sorties as planned, and the Japanese Combined Fleet detaches the Third Flying Squadron from the Weihaiwei campaign to intercept it.</english>
+    <japanese>仮想シナリオ
+
+南洋艦隊は日清戦争において中国第二の戦力を持つ艦隊であったが、政治的対立の影響により戦争を通じて戦闘に参加せず待機していた。しかし戦争末期には、日本本土への襲撃によって牽制を図るため、南洋艦隊を出撃させる計画が存在した。
+
+本シナリオでは、南洋艦隊が出撃したと仮定し、日本連合艦隊が威海衛の戦いから第三遊撃隊を抽出して迎撃に向かうものとする。</japanese>
+    <chineseSimplified>假想剧本
+
+南洋水师，甲午战争中中国第二强大的舰队，整场战争中由于政治斗争原因一直待机没有参加战斗。不过在战争的末尾，曾经计划过用南洋水师对日本本土发起袭击起到牵制作用。
+
+此剧本中假设南洋水师出击，然后联合舰队从威海卫战役中调出第三游击队进行拦截。</chineseSimplified>
+    <chineseTraditional>假想劇本
+
+南洋水師是甲午戰爭中中國第二強大的艦隊，但由於內部政治鬥爭，在整場戰爭中始終按兵不動。然而在戰爭末期，曾經計劃由南洋水師出擊，對日本本土發動襲擊以達到牽制作用。
+
+本劇本中假設南洋水師依計劃出擊，而日本聯合艦隊則自威海衛戰役中抽調第三遊擊隊前往攔截。</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
@@ -3018,7 +3037,7 @@
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
    <hasEndDateTime>true</hasEndDateTime>
-   <endDateTime>1895-01-01T03:00:00Z</endDateTime>
+   <endDateTime>1895-02-01T03:00:00Z</endDateTime>
    <backgroundPictureReference>
     <isBuiltin>false</isBuiltin>
    </backgroundPictureReference>
@@ -3030,9 +3049,9 @@
   <tempSubjectLogs />
  </navalGameState>
  <viewState>
-  <xRotation>33.16402</xRotation>
-  <yRotation>234.925568</yRotation>
-  <orthographicSize>20</orthographicSize>
+  <xRotation>33.16702</xRotation>
+  <yRotation>234.9631</yRotation>
+  <orthographicSize>10</orthographicSize>
  </viewState>
  <eventState>
   <eventItems />

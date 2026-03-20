@@ -3,16 +3,48 @@ tutorial6ElapsedMinutes += 1;
 if (tutorial6Phase === Tutorial6Phase.WaitingForNoFireConfirmationDialog) {
     if (tutorial6ElapsedMinutes >= 4) {
         let msg = getLocalized(`
-You can see that none of the units on either side have fired. Now open the OOB Editor and turn off Inherit for the Automatic Fire doctrine of Chin Yuan Squadron. Once you do that, the default value becomes Automatic. Advance time until the next prompt appears.
+You can see that none of the units on either side have fired. 
+
+Now click on Chin Yuan, then click the Chin Yuan Squadron hyperlink in the information panel on the right to open the OOB editor.
+
+Then disable the inherit of the squadron's auto-fire doctrine.
+
+This will change the Chin Yuan Squadron's auto-fire doctrine from the inherited "Manual" to the default "Automatic".
+
+Advance time until the next prompt appears.
 `,
 `
-ご覧の通り、双方の全ユニットはまったく発砲していません。次に OOB エディターで致遠隊の自動射撃ドクトリンの「継承」を解除してください。この場合の既定値は自動です。新しいヒントが表示されるまで時間を進めます。
+ご覧の通り、双方の全ユニットはまったく発砲していません。
+
+次に致遠をクリックし、右側の情報パネルにある致遠隊のリンクをクリックして戦闘シリーズエディターを開きます。
+
+その後、致遠隊の自動射撃ドクトリンの継承をオフにしてください。
+
+これにより、致遠隊の自動射撃ドクトリンは継承された「手動」からデフォルトの「自動」に変更されます。
+
+新しいヒントが表示されるまで時間を進めます。
 `,
 `
-可以看到，双方所有单位的确没有开火。现在在 OOB 编辑器中将致远队的自动开火条令的继承关闭，此时默认值就是自动。推进时间到新提示弹出。
+可以看到，双方所有单位的确没有开火。
+
+现在点击致远然后在右信息栏中点击致远队的超链接打开战斗系列编辑器。
+
+然后将致远队的自动开火条令的继承关闭。
+
+这将把从致远队的自动开火条令从继承的"手动"改为默认的”自动“。
+
+推进时间到新提示弹出。
 `,
 `
-可以看到，雙方所有單位的確沒有開火。現在在 OOB 編輯器中將致遠隊的自動開火條令的繼承關閉，此時預設值就是自動。推進時間到新提示彈出。
+可以看到，雙方所有單位的確沒有開火。
+
+現在點擊致遠，然後在右側資訊面板中點擊致遠隊的超連結以打開戰鬥序列編輯器。
+
+接著將致遠隊的自動開火條令的繼承關閉。
+
+這會把致遠隊的自動開火條令從繼承的「手動」改為預設的「自動」。
+
+推進時間到新提示彈出。
 `);
 
         msgBox(msg);
@@ -23,16 +55,56 @@ You can see that none of the units on either side have fired. Now open the OOB E
 else if (tutorial6Phase === Tutorial6Phase.WaitingForChinYuanFireDialog) {
     if (tutorial6ElapsedMinutes - tutorial6LastPromptMinute >= 5) {
         let msg = getLocalized(`
-You can now see that Chin Yuan Squadron has started firing automatically because its Automatic Fire changed from Manual to Automatic, while Ting Yuen Squadron is still not firing because it remains Manual. Now change Automatic Fire to Automatic at the Beiyang Fleet level. Advance time until the next prompt appears.
+You can now see that Chin Yuan Squadron has started firing automatically because its Automatic Fire changed from Manual to Automatic, while Ting Yuen Squadron is still not firing because it remains Manual.
+
+Click the Order of Battle button (under the Status tab in the Top Tab) to open the Order of Battle editor.
+
+Then click the Beiyang Fleet entry.
+
+Next, change "Auto-Fire" from "Manual" to "Automatic."
+
+This will set the doctrine at the Beiyang Fleet level.
+
+Advance time until the next prompt appears.
 `,
 `
-ここで、致遠隊は自動射撃が手動から自動に変わったため自動で発砲を始め、一方で定遠隊はまだ手動のままなので発砲していないことが分かります。次に、北洋艦隊レベルで自動射撃を自動に変更してください。新しいヒントが表示されるまで時間を進めます。
+ここで、致遠隊は自動射撃が手動から自動に変わったため自動で発砲を始め、一方で定遠隊はまだ手動のままなので発砲していないことが分かります。
+
+トップタブの「状態」タブ内にある「戦闘序列」ボタンをクリックして、戦闘序列エディターを開きます。
+
+次に、北洋艦隊の項目をクリックします。
+
+その後、「自動射撃」を「手動」から「自動」に変更します。
+
+これにより、この条令が北洋艦隊レベルで設定されます。
+
+新しいヒントが表示されるまで時間を進めます。
 `,
 `
-可以看到由于致远队的自动开火从手动变为自动开始自动开火，同时定远队由于仍然是手动而未开火。现在在北洋水师级别将自动开火变为自动。推进时间到新提示弹出。
+可以看到由于致远队的自动开火从手动变为自动开始自动开火，同时定远队由于仍然是手动而未开火。
+
+点击战斗序列按钮（在顶部标签栏的"状态"标签下）打开战斗序列编辑器。
+
+然后点击北洋水师条目。
+
+再把“自动射击”从“手动”改为自动。
+
+这会在北洋水师的级别设置该条令。
+
+推进时间到新提示弹出。
 `,
 `
-可以看到由於致遠隊的自動開火從手動變為自動開始自動開火，同時定遠隊由於仍然是手動而未開火。現在在北洋水師級別將自動開火變為自動。推進時間到新提示彈出。
+可以看到由於致遠隊的自動開火從手動變為自動開始自動開火，同時定遠隊由於仍然是手動而未開火。
+
+點擊戰鬥序列按鈕（位於頂部標籤欄的「狀態」標籤下）以打開戰鬥序列編輯器。
+
+然後點擊北洋水師條目。
+
+接著將「自動射擊」從「手動」改為「自動」。
+
+這會在北洋水師的層級設定該條令。
+
+推進時間到新提示彈出。
 `);
 
         msgBox(msg);

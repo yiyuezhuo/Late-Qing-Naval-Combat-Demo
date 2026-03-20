@@ -2,56 +2,57 @@ let NavalCombatCore = importNamespace('NavalCombatCore');
 let CoreUtils = importNamespace("CoreUtils");
 
 let msg = getLocalized(`
-Welcome to the third tutorial scenario of the First Sino-Japanese War. In this tutorial, you will learn how to engage in combat.
+Welcome to Tutorial 3 - Combat. In this tutorial, you will learn some concepts of combat.
 
-In the First Sino-Japanese War scenario, different automation levels can be set in the OOB Tree. In a "standard" game, the player uses the default automation level for their own side, while the top group of the opposing side is fully automated.
+The Japanese side has been set to be automatically controlled as the opponent.
 
-Additionally, the player can control ships on every side to play a hotseat sandbox game, with dynamically adjusted parameters and the ability to create or delete units. The player can also take direct control of a single ship by setting it to zero-automation, which allows manual control of every device on that vessel.
+Control the two Beiyang Fleet ships you have seen before and approach the three Japanese ships to engage in combat until one side is eliminated or the time limit is reached (you will be prompted to check the "Victory Status").
 
-All of this can be configured by setting the doctrine for Ship States and Ship Groups. Click the "Order of Battle" button in the "Status" tab on the top bar to begin. 
+At that point, you can exit this tutorial and proceed to the next one.
+
+Other tutorial tips will be displayed during the process.
 `,
 `
-日清戦争のチュートリアル・シナリオ第3弾へようこそ。このチュートリアルでは、戦闘への関与方法について学びます。
+チュートリアル3へようこそ - 戦闘。このチュートリアルでは、戦闘のいくつかの概念を学びます。
 
-本シナリオでは、戦闘序列ツリーを通じて、さまざまなオートメーション（自動化）レベルを設定できます。「標準」設定のゲームでは、プレイヤーは自陣営にデフォルトのオートメーションレベルを使用し、敵対陣営のトップグループは完全に自動化されます。
+日本側は対戦相手として自動操作に設定されています。
 
-さらに、プレイヤーは全陣営の艦船を操作して、パラメータを動的に調整したり、ユニットを作成・削除したりできるホットシート・サンドボックス・モードをプレイすることも可能です。また、特定の艦船を手動設定にすることで、その艦船のすべての装置を直接手動で操作できるようになります。
+これまでに見た北洋艦隊の2隻を操作し、日本の3隻の艦船に接近して戦闘を行い、いずれかの側が全滅するか、制限時間に達するまで続けます（「勝利状況」を確認するように促されます）。
 
-これらの設定はすべて、艦船状態や艦船グループの「ドクトリン」を設定することで構成可能です。まずはトップバーの「状態」タブにある「戦闘序列」ボタンをクリックして開始しましょう。
+その時点で、このチュートリアルを終了し、次のチュートリアルに進むことができます。
+
+その他のチュートリアルのヒントは進行中に表示されます。
 `,
 `
-欢迎来到《甲午战争》的第三个教程剧本。在本教程中，您将学习如何进行战斗。
+欢迎来到教程3 - 战斗。在这个教程中你会学习战斗的一些概念。
 
-在《甲午战争》剧本中，可以通过战斗序列树设置不同的自动化级别。在“标准”游戏模式下，玩家对己方阵营使用默认的自动化级别，而敌方阵营的最高层级组则完全由系统自动控制。
+日本方已经被设为被自动控制作为对方。
 
-此外，玩家还可以控制所有阵营的舰船进行热座式沙盒游戏，实时调整参数并创建或删除单位。玩家还可以通过将单艘舰船自动化全关掉来进行完全控制，从而手动控制该舰船上的每一个设备。
+控制你之前见过的两艘北洋水师的船接近日本的三艘船进行战斗，直到一方被消灭或者时间限制抵达（你会被提示查看"胜利状况"）。
 
-以上所有内容均可通过设置“舰船状态”和“舰船编组”的条令来进行配置。请点击顶栏“状态”选项卡中的“战斗序列”按钮开始。
+到那时可以退出本教程查看下一个教程。
+
+其他教学提示会在战斗过程中显示出来。
 `,
 `
-歡迎來到《甲午戰爭》的第三個教學劇本。在本教學中，您將學習如何進行戰鬥。
+歡迎來到教學3 - 戰鬥。在這個教學中你會學習戰鬥的一些概念。
 
-在《甲午戰爭》劇本中，可以透過戰鬥序列樹設定不同的自動化層級。在「標準」遊戲模式下，玩家對己方陣營使用預設的自動化層級，而敵方陣營的最高層級組則完全由系統自動控制。
+日本方已被設定為自動控制作為對手。
 
-此外，玩家還可以控制所有陣營的艦船進行 Hotseat 沙盒遊戲，即時調整參數並建立或刪除單位。玩家還可以透過將單艘艦船設定為「零自動化」來直接接管該艦，從而手動控制該艦船上的每一個設備。
+控制你之前見過的兩艘北洋水師的船，接近日本的三艘船進行戰鬥，直到一方被消滅或時間限制到達（系統會提示你查看「勝利狀況」）。
 
-以上所有內容均可透過設定「艦船狀態」和「艦船組」的條令進行配置。請點擊頂欄「狀態」分頁中的「戰鬥序列」按鈕開始。
+此時你可以退出本教學並查看下一個教學。
+
+其他教學提示將會在過程中顯示出來。
 `)
 
 msgBox(msg);
 
-var Phase = {
-    WaitForOrderOfBattleShown : 1,
-    WaitForFiringExchangeStarted : 2,
-    WaitForAHitScored : 3,
-    End : 4
-}
-
-var phase = Phase.WaitForOrderOfBattleShown;
-
+var fireExchangedPrompted = false;
+var hitScoredPrompted = false;
 var damageEffectPrompted = false;
 var sunkPrompted = false;
-var groupDestroyedPrompted = false;
+// var groupDestroyedPrompted = false;
 
 function hasFireExchanged(){
     let fireAny = false;

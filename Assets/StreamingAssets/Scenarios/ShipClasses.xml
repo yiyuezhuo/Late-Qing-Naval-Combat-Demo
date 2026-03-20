@@ -42779,7 +42779,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
       <barrels>1</barrels>
       <mounts>2</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="75" CoverageDeg="30" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -42791,7 +42791,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
       <barrels>1</barrels>
       <mounts>2</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="255" CoverageDeg="30" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>

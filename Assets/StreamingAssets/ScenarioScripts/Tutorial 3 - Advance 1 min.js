@@ -1,8 +1,8 @@
-if(phase === Phase.WaitForFiringExchangeStarted)
+if(!fireExchangedPrompted && hasFireExchanged())
 {
-    if(hasFireExchanged())
-    {
-        let msg = getLocalized(`
+    fireExchangedPrompted = true;
+
+    let msg = getLocalized(`
 A ship starts to fire!
 
 Select a ship from the firing group (typically, Japanese ships fire first in this scenario). Red lines will appear, showing the ship firing at its target with its primary, secondary, tertiary, or RF batteries.
@@ -87,55 +87,35 @@ Note: To better observe the projectile animation, you may want to use the Space 
 注意：若要更清楚地觀察彈藥動畫過程，可考慮使用空白鍵啟用自動時間推進（其 ×10 速率遠慢於手動 ×120 推進）。自動時間推進可透過空白鍵或頂部 UI 中的對應勾選框開啟或關閉。僅當自動時間推進關閉時，才可使用手動推進。
 `);
 
-        msgBoxDelay(msg, 0.3);
-
-        phase = Phase.WaitForAHitScored;
-    }
+    msgBoxDelay(msg, 0.3);
 }
-else if(phase === Phase.WaitForAHitScored)
+
+if(!hitScoredPrompted && isHitScored())
 {
-    if(isHitScored())
-    {
-        let msg = getLocalized(`
+    hitScoredPrompted = true;
+    
+    let msg = getLocalized(`
 A hit is scored!
 
 A log entry will appear in the global log panel. You can also check the log at the individual ship level by opening the ship state view for the damaged ship and clicking the "Detail" button in the Basic tab.
-
-The linear part of this tutorial is now complete. Notifications for concept like Damage Effect, Sunk, and Victory will be provided when they occur for the first time. Feel free to control the two groups and continue combat until only one remains on the battlefield.
-
-(The manual contains further details if you're interested.)
 `,
 `
 命中が記録されました！
 
 グローバルログパネルにログエントリが表示されます。また、被弾艦の艦艇状態ビューを開き「基本」タブの「詳細」ボタンをクリックすると、個別艦艇レベルでの詳細ログを確認できます。
-
-これでチュートリアルの線形部分は完了です。損傷効果・撃沈・勝利条件などの概念は、実際に初めて発生した際に通知されます。両グループを自由に操作し、戦場に一隻だけが残るまで戦闘を続けてください。
-
-(興味があれば、マニュアルにより詳しい情報が載っています。)
 `,
 `
 命中已达成！
 
 全局日志面板将出现日志条目。您也可通过打开受损舰艇的舰艇状态视图，点击"基本"标签页中的"详情"按钮，查看单舰层面的详细日志。
-
-本教程的线性部分至此结束。损伤效果、击沉与胜利条件等概念将在首次发生时提供通知。请自由控制双方编组，继续战斗直至只剩一方存于战场。
-
-(感兴趣的话，手册里有更详细的说明。)
 `,
 `
 命中已達成！
 
 全局日志面板將出現日志條目。您也可通過打開受損艦艇的艦艇狀態檢視，點擊「基本」標籤頁中的「詳情」按鈕，查看單艦層面的詳細日志。
-
-本教程的線性部分至此結束。損傷效果、擊沉與勝利條件等概念將在首次發生時提供通知。請自由控制雙方編組，繼續戰鬥直至只剩一方存於戰場。
-
-(若有興趣，可參考手冊中的詳細內容。)
 `)
 
-        msgBox(msg);
-        phase = Phase.End;
-    }
+    msgBox(msg);
 }
 
 if(!damageEffectPrompted && hasAnyDamageEffect())
@@ -219,31 +199,31 @@ Mechanically, damage points can trigger critical "General" Damage Effects when c
     msgBox(msg);
 }
 
-if(!groupDestroyedPrompted && hasGroupDestroyed())
-{
-    groupDestroyedPrompted = true;
+// if(!groupDestroyedPrompted && hasGroupDestroyed())
+// {
+//     groupDestroyedPrompted = true;
     
-    let msg = getLocalized(`
-A group has been destroyed!
+//     let msg = getLocalized(`
+// A group has been destroyed!
 
-You can open the "Victory Status" dialog from the "Command" tab in the top bar. It will report the top group's losses and damage situation. Victory points are calculated based on a ship's damage state, firepower, DP, and armor. These values can be found in the Ship Class View (static values) and the Ship State View (dynamic values). These values are also used by the AI. Sinking a ship applies a ×2 modifier.
-`,
-`
-部隊が壊滅しました！
+// You can open the "Victory Status" dialog from the "Command" tab in the top bar. It will report the top group's losses and damage situation. Victory points are calculated based on a ship's damage state, firepower, DP, and armor. These values can be found in the Ship Class View (static values) and the Ship State View (dynamic values). These values are also used by the AI. Sinking a ship applies a ×2 modifier.
+// `,
+// `
+// 部隊が壊滅しました！
 
-トップバーの「コマンド」タブから「勝利状況」ダイアログを開くことができます。ここでは、最上位グループの損失や損害状況が報告されます。勝利ポイントは、艦船のダメージ状態、火力、DP、装甲に基づいて算出されます。これらの数値は、艦級ビュー（固定値）および艦船状態ビュー（動的数値）で確認でき、AIもこれらの数値を判断基準として使用します。なお、艦船を撃沈した場合は、ポイントに2倍の倍率が適用されます。
-`,
-`
-编队已被摧毁！
+// トップバーの「コマンド」タブから「勝利状況」ダイアログを開くことができます。ここでは、最上位グループの損失や損害状況が報告されます。勝利ポイントは、艦船のダメージ状態、火力、DP、装甲に基づいて算出されます。これらの数値は、艦級ビュー（固定値）および艦船状態ビュー（動的数値）で確認でき、AIもこれらの数値を判断基準として使用します。なお、艦船を撃沈した場合は、ポイントに2倍の倍率が適用されます。
+// `,
+// `
+// 编队已被摧毁！
 
-您可以从顶栏的“命令”选项卡中打开“胜利状态”对话框。它将报告最高层级组的损失和受损情况。胜利点数是根据舰船的受损状态、火力、DP和装甲计算得出的。这些数值可以在舰船型号视图（静态值）和舰船状态视图（动态值）中查看。AI 同样会参考这些数值。击沉舰船将应用 2 倍的加成系数。
-`,
-`
-編隊已被摧毀！
+// 您可以从顶栏的“命令”选项卡中打开“胜利状况”对话框。它将报告最高层级组的损失和受损情况。胜利点数是根据舰船的受损状态、火力、DP和装甲计算得出的。这些数值可以在舰船型号视图（静态值）和舰船状态视图（动态值）中查看。AI 同样会参考这些数值。击沉舰船将应用 2 倍的加成系数。
+// `,
+// `
+// 編隊已被摧毀！
 
-您可以從頂欄的「命令」分頁中開啟「勝利狀態」對話框。它將報告最高層級組的損失和受損情況。勝利點數是根據艦船的受損狀態、火力、DP和裝甲計算得出的。這些數值可以在艦船型號檢視（靜態值）和艦船狀態檢視（動態值）中查看。AI 同樣會參考這些數值。擊沉艦船將應用 2 倍的加成係數。
-`)
+// 您可以從頂欄的「命令」分頁中開啟「勝利狀態」對話框。它將報告最高層級組的損失和受損情況。勝利點數是根據艦船的受損狀態、火力、DP和裝甲計算得出的。這些數值可以在艦船型號檢視（靜態值）和艦船狀態檢視（動態值）中查看。AI 同樣會參考這些數值。擊沉艦船將應用 2 倍的加成係數。
+// `)
 
-    msgBox(msg);
+//     msgBox(msg);
 
-}
+// }

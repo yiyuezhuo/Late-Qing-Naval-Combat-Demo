@@ -25,6 +25,7 @@
     <desiredHeadingDeg>135</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <isLandTarget>false</isLandTarget>
     <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
@@ -63,6 +64,7 @@
         <objectId>2595d9c3-91e9-4359-b3db-d2298f6d0fc9</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -102,12 +104,14 @@
         <objectId>7a863dcf-b0df-4b84-b701-295abbe668d3</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
        <FireControlSystemStatusRecord>
         <subStates />
         <objectId>2dc95e9c-013c-4b28-a0e9-6c4c989de960</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -170,12 +174,14 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+    <relativeToAbsolute>false</relativeToAbsolute>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -264,6 +270,7 @@
     <desiredHeadingDeg>135</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <isLandTarget>false</isLandTarget>
     <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
@@ -302,6 +309,7 @@
         <objectId>a7f978e5-2308-4476-9861-af2d7b85252d</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -341,12 +349,14 @@
         <objectId>c11a6a98-019e-4046-840a-46526e8d93ab</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
        <FireControlSystemStatusRecord>
         <subStates />
         <objectId>f8e6dd0c-c40d-4135-8637-ecd73a307002</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -409,6 +419,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -416,6 +427,7 @@
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+    <relativeToAbsolute>false</relativeToAbsolute>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -504,6 +516,7 @@
     <desiredHeadingDeg>315</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <isLandTarget>false</isLandTarget>
     <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
@@ -533,6 +546,7 @@
         <objectId>99f91a63-eefc-4f68-814a-f89d66b662a8</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -662,12 +676,14 @@
         <objectId>a6235703-b6db-4dbb-9ef3-b5d4283d6bfe</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
        <FireControlSystemStatusRecord>
         <subStates />
         <objectId>a4f273dc-b33a-42e2-be68-c3841ba0f504</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -748,12 +764,14 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+    <relativeToAbsolute>false</relativeToAbsolute>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -842,6 +860,7 @@
     <desiredHeadingDeg>90</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <isLandTarget>false</isLandTarget>
     <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
@@ -871,6 +890,7 @@
         <objectId>c908a422-1bab-4041-8386-c912c6e6f3e6</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -991,12 +1011,14 @@
         <objectId>afdfbb76-5e0c-436c-aadd-5722f0951d87</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
        <FireControlSystemStatusRecord>
         <subStates />
         <objectId>b5aaaf74-5ec1-4fc4-a5d8-2cb880b8928c</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -1077,6 +1099,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -1084,6 +1107,7 @@
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+    <relativeToAbsolute>false</relativeToAbsolute>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -1172,6 +1196,7 @@
     <desiredHeadingDeg>90</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
+    <isLandTarget>false</isLandTarget>
     <desiredSpeedKnotsForBoilerRoom>10</desiredSpeedKnotsForBoilerRoom>
     <smokeGeneratorDisabled>false</smokeGeneratorDisabled>
     <batteryStatus>
@@ -1201,6 +1226,7 @@
         <objectId>6282e237-1e0f-4626-9684-b7425c73569d</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -1321,12 +1347,14 @@
         <objectId>cc4e51e0-b780-4be5-b02e-0c878d7c4ddc</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
        <FireControlSystemStatusRecord>
         <subStates />
         <objectId>264f8378-d019-4067-9e45-2355f427b586</objectId>
         <trackingState>Idle</trackingState>
         <trackingSeconds>0</trackingSeconds>
+        <hittingRemainSeconds>0</hittingRemainSeconds>
        </FireControlSystemStatusRecord>
       </fireControlSystemStatusRecords>
       <fireControlRadarDisabled>false</fireControlRadarDisabled>
@@ -1407,6 +1435,7 @@
      <starboardHit>0</starboardHit>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
+    <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
@@ -1414,6 +1443,7 @@
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
+    <relativeToAbsolute>false</relativeToAbsolute>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -1500,6 +1530,9 @@
      <japanese>北洋艦隊</japanese>
      <chineseSimplified>北洋舰队</chineseSimplified>
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference>
      <referenceObjectId>18963af7-1163-4323-9421-9f2421c9fee1</referenceObjectId>
     </leaderReference>
@@ -1565,6 +1598,9 @@
      <japanese>連合艦隊</japanese>
      <chineseSimplified>联合舰队</chineseSimplified>
     </name>
+    <remark>
+     <english>none</english>
+    </remark>
     <leaderReference>
      <referenceObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</referenceObjectId>
     </leaderReference>
@@ -1573,8 +1609,8 @@
     <objectId>612b925a-fdeb-4d93-8aa0-60ec07b20314</objectId>
     <doctrine>
      <maneuverAutomaticType>
-      <isInherited>true</isInherited>
-      <value>Manual</value>
+      <isInherited>false</isInherited>
+      <value>Automatic</value>
      </maneuverAutomaticType>
      <fireAutomaticType>
       <isInherited>true</isInherited>
@@ -1622,6 +1658,7 @@
   </shipGroups>
   <scenarioState>
    <dateTime>1894-09-17T06:30:00Z</dateTime>
+   <beginDateTime>1894-09-17T06:30:00Z</beginDateTime>
    <visibility>ExceptionallyClear</visibility>
    <seaStateBeaufort>0</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
@@ -1643,13 +1680,14 @@
    <firstRemainOneOperationalFleet>false</firstRemainOneOperationalFleet>
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
-   <hasEndDateTime>false</hasEndDateTime>
-   <endDateTime>1895-04-17T00:00:00Z</endDateTime>
+   <hasEndDateTime>true</hasEndDateTime>
+   <endDateTime>1894-09-17T08:30:00Z</endDateTime>
    <backgroundPictureReference>
     <isBuiltin>false</isBuiltin>
    </backgroundPictureReference>
    <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>
    <disableStartupAIDialog>true</disableStartupAIDialog>
+   <locationLabels />
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />
@@ -1666,13 +1704,6 @@
     <eventType>FirstLoaded</eventType>
     <pathReference>
      <path>ScenarioScripts\Tutorial 3 - Loaded.js</path>
-     <isBuiltin>true</isBuiltin>
-    </pathReference>
-   </EventItem>
-   <EventItem>
-    <eventType>OrderOfBattleEditorShown</eventType>
-    <pathReference>
-     <path>ScenarioScripts\Tutorial 3 - OOB Editor Shown.js</path>
      <isBuiltin>true</isBuiltin>
     </pathReference>
    </EventItem>

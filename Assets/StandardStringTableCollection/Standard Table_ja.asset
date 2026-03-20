@@ -2527,7 +2527,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 58877035788537856
-    m_Localized: "\u30AD\u30E3\u30F3\u30DA\u30FC\u30F3"
+    m_Localized: "\u30AD\u30E3\u30F3\u30DA\u30FC\u30F3\uFF08\u518D\u69CB\u7BC9\u4E2D\uFF09"
     m_Metadata:
       m_Items: []
   - m_Id: 58882281352892416
@@ -2611,7 +2611,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 69800000000012
-    m_Localized: "TT - \u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB\u3001SJH - \u65E5\u6E05\u6226\u4E89\u306E\u53F2\u5B9F\u30B7\u30CA\u30EA\u30AA\u3001RJH - \u65E5\u9732\u6226\u4E89\u306E\u53F2\u5B9F\u30B7\u30CA\u30EA\u30AA\u3001SJS - \u65E5\u6E05\u6226\u4E89\u306E\u4EEE\u60F3\u30FB\u30C6\u30B9\u30C8\u30FB\u5C0F\u898F\u6A21\u30B7\u30CA\u30EA\u30AA\u3002\u2605 - \u304A\u3059\u3059\u3081"
+    m_Localized: "TT - \u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB\u3001SJH - \u65E5\u6E05\u6226\u4E89\u306E\u53F2\u5B9F\u30B7\u30CA\u30EA\u30AA\u3001RJH
+      - \u65E5\u9732\u6226\u4E89\u306E\u53F2\u5B9F\u30B7\u30CA\u30EA\u30AA\u3001SJS
+      - \u65E5\u6E05\u6226\u4E89\u306E\u4EEE\u60F3\u30FB\u30C6\u30B9\u30C8\u30FB\u5C0F\u898F\u6A21\u30B7\u30CA\u30EA\u30AA\u3002\u2605
+      - \u304A\u3059\u3059\u3081"
     m_Metadata:
       m_Items: []
   - m_Id: 69800000000013
@@ -2631,11 +2634,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 69800000000017
-    m_Localized: "\u3053\u306E\u8266\u304C\u5404\u76EE\u6A19\u306B\u4E0E\u3048\u305F DP"
+    m_Localized: "\u3053\u306E\u8266\u304C\u5404\u76EE\u6A19\u306B\u4E0E\u3048\u305F
+      DP"
     m_Metadata:
       m_Items: []
   - m_Id: 69800000000018
-    m_Localized: "\u3053\u306E\u8266\u306E\u5404\u5175\u88C5\u304C\u5404\u76EE\u6A19\u306B\u4E0E\u3048\u305F DP"
+    m_Localized: "\u3053\u306E\u8266\u306E\u5404\u5175\u88C5\u304C\u5404\u76EE\u6A19\u306B\u4E0E\u3048\u305F
+      DP"
     m_Metadata:
       m_Items: []
   - m_Id: 69800000000043
@@ -2759,7 +2764,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 69800000000051
-    m_Localized: "\u30D7\u30EC\u30FC\u30B9\u30DB\u30EB\u30C0\u30FC\u753B\u50CF\u3092\u751F\u6210 - {0}"
+    m_Localized: "\u30D7\u30EC\u30FC\u30B9\u30DB\u30EB\u30C0\u30FC\u753B\u50CF\u3092\u751F\u6210
+      - {0}"
     m_Metadata:
       m_Items: []
   references:

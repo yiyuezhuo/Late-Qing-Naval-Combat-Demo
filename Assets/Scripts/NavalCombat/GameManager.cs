@@ -1095,6 +1095,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         if (allUIDocuments == null)
             return false;
+        
+        // https://docs.unity3d.com/6000.3/Documentation/ScriptReference/UIElements.RuntimePanelUtils.ScreenToPanel.html
+        // 1. Get the mouse position in screen pixel coordinates (origin is bottom-left).
+        Vector2 screenPosition = Input.mousePosition;
+
+        // 2. Invert the Y-axis to match UI Toolkit's top-left origin.
+        screenPosition.y = Screen.height - screenPosition.y;
 
         foreach (var doc in allUIDocuments)
         {
@@ -1106,7 +1113,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             if (root == null || panel == null)
                 continue;
 
-            var panelPosition = RuntimePanelUtils.ScreenToPanel(panel, Input.mousePosition);
+            var panelPosition = RuntimePanelUtils.ScreenToPanel(panel, screenPosition);
             var picked = panel.Pick(panelPosition);
             if (picked != null && picked != root)
                 return true;

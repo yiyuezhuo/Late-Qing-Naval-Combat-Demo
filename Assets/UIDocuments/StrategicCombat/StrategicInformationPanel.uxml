@@ -115,6 +115,12 @@
                             <ui:DataBinding property="text" data-source-path="subordinateSummary" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Label>
+                    <ui:Label text="Strategic speed" style="white-space: normal;">
+                        <Bindings>
+                            <ui:DataBinding property="text" data-source-path="strategicSpeedSummary" binding-mode="ToTarget"/>
+                            <ui:DataBinding property="style.display" data-source-path="hasStrategicSpeedSummary" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                        </Bindings>
+                    </ui:Label>
                 </ui:VisualElement>
                 <Bindings>
                     <ui:DataBinding property="style.display" data-source-path="selectedStrategicGroupValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>

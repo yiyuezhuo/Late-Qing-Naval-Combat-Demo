@@ -254,6 +254,12 @@
                             </Bindings>
                         </ui:Button>
                     </ui:VisualElement>
+                    <ui:Label text="Strategic speed" style="white-space: normal;">
+                        <Bindings>
+                            <ui:DataBinding property="text" data-source-path="strategicSpeedSummary" binding-mode="ToTarget"/>
+                            <ui:DataBinding property="style.display" data-source-path="hasStrategicSpeedSummary" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                        </Bindings>
+                    </ui:Label>
                     <ui:Label text="Command Desc">
                         <Bindings>
                             <ui:DataBinding property="text" data-source-path="commandDesc" binding-mode="ToTarget"/>

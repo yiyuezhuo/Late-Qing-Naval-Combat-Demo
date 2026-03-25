@@ -259,6 +259,20 @@ namespace StrategicCombatCore
         public string subordinateSummary => $"{combinedSubUnitSize} sub units, {GetStrengthMen()} men, {GetShipTons()} tons ships, {GetSupplyCostTonsPerDay()} tons supply cost/day, {supplyStatsProp}";
 
         [CreateProperty]
+        public string strategicSpeedSummary
+        {
+            get
+            {
+                var speedKmPerHour = GetSpeedKmPerHour();
+                var speedNmPerHour = speedKmPerHour * MeasureUtils.kilometerToNavalMile;
+                return $"Strategic speed: {speedKmPerHour:0.0} km/h ({speedNmPerHour:0.0} nm/h)";
+            }
+        }
+
+        [CreateProperty]
+        public bool hasStrategicSpeedSummary => GetSpeedKmPerHour() > 0;
+
+        [CreateProperty]
         public string containerName => EntityManager.Instance.Get<ShipLog>(containerObjectId)?.namedShip?.name?.mergedName ?? "[Undefined or Invalid]";
 
         [CreateProperty]

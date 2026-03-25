@@ -182,7 +182,7 @@ namespace StrategicCombatCore
         public int xProp
         {
             get => x;
-            set => x = value;
+            set => TryRelocateIndependentGroupToGrid(value, y);
         }
 
         [XmlIgnore]
@@ -190,7 +190,7 @@ namespace StrategicCombatCore
         public int yProp
         {
             get => y;
-            set => y = value;
+            set => TryRelocateIndependentGroupToGrid(x, value);
         }
 
         [CreateProperty]

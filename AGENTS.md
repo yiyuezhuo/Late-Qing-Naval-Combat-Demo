@@ -12,6 +12,7 @@ This is a Unity 6 project (`6000.3.2f1`) for tactical/strategic naval warfare sc
 - Open project in Unity Hub using editor `6000.3.2f1`.
 - In Unity Editor, run `Custom/Build Manifest for platform without File System` before platform builds when streaming content changes.
 - Build from Unity Build Profiles (desktop is the primary target; WebGL/mobile are secondary).
+- Don't write test.
 
 ## Coding Style & Naming Conventions
 - C# uses 4-space indentation and standard Unity/.NET style.

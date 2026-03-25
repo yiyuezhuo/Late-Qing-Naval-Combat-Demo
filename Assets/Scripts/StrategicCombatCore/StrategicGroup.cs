@@ -468,10 +468,104 @@ namespace StrategicCombatCore
 
         // public double GetSupplyPercent() => GetSupplyTons() / GetSupplyCapTons();
 
+        internal void EnsureDirectMemberReference(string memberObjectId)
+        {
+            if (string.IsNullOrWhiteSpace(memberObjectId) || memberObjectId == objectId)
+                return;
+
+            if (subordinatesCombined.All(reference => reference.referenceId != memberObjectId))
+            {
+                subordinatesCombined.Add(new StrategicGroupMemberReference() { referenceId = memberObjectId });
+            }
+        }
+
+        internal void RemoveDirectMemberReference(string memberObjectId)
+        {
+            if (string.IsNullOrWhiteSpace(memberObjectId))
+                return;
+
+            subordinatesCombined.RemoveAll(reference => reference.referenceId == memberObjectId);
+        }
+
+        public static void ReassignMember(IStrategicGroupMemberReferenceable member, StrategicGroup newParentGroup)
+        {
+            if (member == null)
+                return;
+
+            var oldParentGroup = member.strategicGroupReference.Get();
+            oldParentGroup?.RemoveDirectMemberReference(member.objectId);
+            newParentGroup?.EnsureDirectMemberReference(member.objectId);
+            member.strategicGroupReference.referenceId = newParentGroup?.objectId;
+        }
+
+        public void AttachMember(IStrategicGroupMemberReferenceable member) => ReassignMember(member, this);
+        public void DetachMember(IStrategicGroupMemberReferenceable member) => ReassignMember(member, null);
+        public void MoveMemberToGroup(IStrategicGroupMemberReferenceable member, StrategicGroup otherGroup) => ReassignMember(member, otherGroup);
+
+        public bool ReplaceDirectMemberReference(StrategicGroupMemberReference slot, IStrategicGroupMemberReferenceable newMember)
+        {
+            if (slot == null || !subordinatesCombined.Contains(slot))
+                return false;
+
+            if (newMember is StrategicGroup newGroup && newGroup.objectId == objectId)
+                return false;
+
+            var oldMember = slot.Get();
+            if (oldMember != null)
+            {
+                oldMember.strategicGroupReference.referenceId = null;
+            }
+
+            slot.referenceId = null;
+            if (newMember == null)
+                return true;
+
+            var oldParentGroup = newMember.strategicGroupReference.Get();
+            oldParentGroup?.RemoveDirectMemberReference(newMember.objectId);
+
+            slot.referenceId = newMember.objectId;
+            newMember.strategicGroupReference.referenceId = objectId;
+            subordinatesCombined.RemoveAll(reference => !ReferenceEquals(reference, slot) && reference.referenceId == newMember.objectId);
+            return true;
+        }
+
+        public bool TryRelocateIndependentGroup(Cell toCell, bool moveThroughEdge = false)
+        {
+            if (deployState != DeployState.Independent || toCell == null)
+                return false;
+
+            MoveToCell(toCell, moveThroughEdge);
+            return true;
+        }
+
+        public bool TryRelocateIndependentGroupToGrid(int targetX, int targetY)
+        {
+            if (deployState != DeployState.Independent)
+                return false;
+
+            var gameState = StrategicGameState.Instance;
+            if (gameState == null || !gameState.scenarioState.enableGridSystem || gameState.cellMatrix == null)
+                return false;
+
+            if (targetX < 0 || targetY < 0 ||
+                targetX >= gameState.cellMatrix.GetLength(0) ||
+                targetY >= gameState.cellMatrix.GetLength(1))
+                return false;
+
+            var targetCell = gameState.cellMatrix[targetX, targetY];
+            if (targetCell == null)
+                return false;
+
+            return TryRelocateIndependentGroup(targetCell, false);
+        }
+
         // From Vacuum or to vacuum, or move to other cell through vacuum.
         // public void MoveToXY(int toX, int toY, bool moveThroughEdge)
         public void MoveToCell(Cell toCell, bool moveThroughEdge)
         {
+            if (toCell == null)
+                return;
+
             // var toCell = StrategicGameState.Instance.cellMatrix[toX, toY];
             var prevCell = cell;
 
@@ -530,6 +624,8 @@ namespace StrategicCombatCore
                         // MoveToCell(containerGroup.x, containerGroup.y, false);
                         MoveToCell(containerGroup.cell, false);
                         container.loadedGroups.RemoveAll(r => r.referenceId == objectId);
+                        containerObjectId = null;
+                        ClearPlannedPath();
                     }
                 }
             }
@@ -563,27 +659,21 @@ namespace StrategicCombatCore
 
         public void SetDeployState(DeployState newState)
         {
+            if (newState == deployState)
+                return;
+
             if (newState == DeployState.Independent)
             {
                 var parentGroup = strategicGroupReference.Get();
-                if (parentGroup != null)
+                var parentCell = parentGroup?.cell;
+                if (parentCell != null)
                 {
                     // MoveToXY(parentGroup.x, parentGroup.y, false);
-                    MoveToCell(parentGroup.cell, false);
+                    MoveToCell(parentCell, false);
                 }
-                else // TODO: Is it better to just block the update rather than move it to a obscure placeholder location?
+                else
                 {
-                    // MoveToXY(0, 0, false);
-                    // MoveToCell(Strategic, false);
-                    var gameState = StrategicGameState.Instance;
-                    if(gameState.scenarioState.enableGridSystem)
-                    {
-                        MoveToCell(gameState.cellMatrix[0, 0], false);
-                    }
-                    else if(gameState.scenarioState.enableAreaSystem)
-                    {
-                        MoveToCell(gameState.areaCells[0], false);
-                    }
+                    UnityEngine.Debug.LogWarning($"Refusing to set {this} to Independent without a valid parent location.");
                 }
             }
             else if (newState == DeployState.NotDeployed || newState == DeployState.Combined)
@@ -682,8 +772,7 @@ namespace StrategicCombatCore
         {
             if (plannedPath.Count >= 2)
             {
-                var nextXY = plannedPath[1];
-                return StrategicGameState.Instance.cellMatrix[nextXY.x, nextXY.y];
+                return plannedPath[1].GetCell();
             }
             return null;
         }
@@ -767,22 +856,12 @@ namespace StrategicCombatCore
 
         public void AttachTo(StrategicGroup newParentGroup)
         {
-            var oldParentGroup = strategicGroupReference.Get();
-            if (oldParentGroup != null)
-            {
-                oldParentGroup.subordinatesCombined.RemoveAll(f => f.referenceId == objectId);
-            }
-            if (newParentGroup != null)
-            {
-                newParentGroup.subordinatesCombined.Add(new() { referenceId = objectId });
-            }
-            strategicGroupReference.referenceId = newParentGroup?.objectId;
+            ReassignMember(this, newParentGroup);
         }
 
         public void TransferLandUnit(LandUnit subLandUnit, StrategicGroup toGroup)
         {
-            subordinatesCombined.RemoveAll(f => f.referenceId == subLandUnit.objectId);
-            toGroup.subordinatesCombined.Add(new() { referenceId = subLandUnit.objectId });
+            MoveMemberToGroup(subLandUnit, toGroup);
         }
 
         public void Split()
@@ -825,9 +904,7 @@ namespace StrategicCombatCore
 
         public void MoveElementTo(IStrategicGroupMemberReferenceable element, StrategicGroup otherGroup)
         {
-            subordinatesCombined.RemoveAll(r => r.referenceId == element.objectId);
-            otherGroup.subordinatesCombined.Add(new() { referenceId = element.objectId });
-            element.strategicGroupReference.referenceId = otherGroup.objectId;
+            MoveMemberToGroup(element, otherGroup);
         }
 
         public bool Combatable() => deployState == DeployState.Independent && posture != GroupPostureType.Disengaged;

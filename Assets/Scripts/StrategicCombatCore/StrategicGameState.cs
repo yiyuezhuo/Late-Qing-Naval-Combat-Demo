@@ -1745,8 +1745,87 @@ namespace StrategicCombatCore
             foreach(var navalContactReport in navalContactReports)
                 EntityManager.Instance.Register(navalContactReport, null);
 
+            NormalizeStrategicGroupMembership();
             RebuildCacheForSideStates();
             RebuildCellStrategicGroupReferences();
+        }
+
+        IEnumerable<IStrategicGroupMemberReferenceable> IterAllStrategicGroupMembers()
+        {
+            foreach (var strategicGroup in strategicGroups.Where(group => group != null))
+                yield return strategicGroup;
+
+            foreach (var landUnit in landUnits.Where(unit => unit != null))
+                yield return landUnit;
+
+            foreach (var shipLog in shipLogs.Where(log => log != null))
+                yield return shipLog;
+        }
+
+        bool HasAcyclicParentChain(StrategicGroup group, Dictionary<string, StrategicGroup> groupMap)
+        {
+            if (group == null || string.IsNullOrWhiteSpace(group.objectId))
+                return true;
+
+            var visitedGroupIds = new HashSet<string>() { group.objectId };
+            var parentId = group.strategicGroupReference.referenceId;
+            while (!string.IsNullOrWhiteSpace(parentId))
+            {
+                if (!groupMap.TryGetValue(parentId, out var parentGroup))
+                    return false;
+
+                if (!visitedGroupIds.Add(parentId))
+                    return false;
+
+                parentId = parentGroup.strategicGroupReference.referenceId;
+            }
+
+            return true;
+        }
+
+        void NormalizeStrategicGroupMembership()
+        {
+            var groupMap = strategicGroups
+                .Where(group => group != null && !string.IsNullOrWhiteSpace(group.objectId))
+                .ToDictionary(group => group.objectId, group => group);
+
+            foreach (var group in strategicGroups.Where(group => group != null))
+            {
+                if (string.IsNullOrWhiteSpace(group.strategicGroupReference.referenceId))
+                    continue;
+
+                if (!HasAcyclicParentChain(group, groupMap))
+                {
+                    group.strategicGroupReference.referenceId = null;
+                }
+            }
+
+            foreach (var member in IterAllStrategicGroupMembers())
+            {
+                var parentId = member.strategicGroupReference.referenceId;
+                if (string.IsNullOrWhiteSpace(parentId) || !groupMap.ContainsKey(parentId))
+                {
+                    member.strategicGroupReference.referenceId = null;
+                    continue;
+                }
+
+                if (member is StrategicGroup memberGroup && memberGroup.objectId == parentId)
+                {
+                    memberGroup.strategicGroupReference.referenceId = null;
+                }
+            }
+
+            foreach (var group in strategicGroups.Where(group => group != null))
+            {
+                group.subordinatesCombined ??= new List<StrategicGroupMemberReference>();
+                group.subordinatesCombined.Clear();
+            }
+
+            foreach (var member in IterAllStrategicGroupMembers())
+            {
+                var parentGroup = member.strategicGroupReference.Get();
+                parentGroup?.EnsureDirectMemberReference(member.objectId);
+            }
         }
 
         void RebuildCellStrategicGroupReferences()

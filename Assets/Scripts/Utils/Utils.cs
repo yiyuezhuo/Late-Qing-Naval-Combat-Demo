@@ -163,7 +163,7 @@ public static class Utils
                 {
                     var obj = strategicGroupMemberReference.Get();
                     if (obj != null)
-                        obj.strategicGroupReference.referenceId = null;
+                        obj.SetStrategicGroupReference(null);
                 }
             }
         };
@@ -669,26 +669,8 @@ public static class Utils
 
                     DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables =>
                     {
-                        var oldObj = fieldReference.Get();
                         var selectedReferenceable = selectedReferenceables.FirstOrDefault();
-
-                        if(selectedStrategicGroup.objectId == selectedReferenceable.objectId) // Prevent Looping, currently this will compromise UITK update?
-                        {
-                            return;
-                        }
-
-                        if (oldObj != null)
-                        {
-                            // oldObj.SetStrategicGroupReference(null);
-                            oldObj.strategicGroupReference.referenceId = null;
-                        }
-
-                        if (selectedReferenceable != null && selectedStrategicGroup != null)
-                        {
-                            selectedReferenceable.SetStrategicGroupReference(null);
-                            fieldReference.referenceId = selectedReferenceable.objectId;
-                            selectedReferenceable.strategicGroupReference.referenceId = selectedStrategicGroup.objectId;
-                        }
+                        selectedStrategicGroup.ReplaceDirectMemberReference(fieldReference, selectedReferenceable);
                     }, SubordinatePickerDialog.Mode.ParentUnassignedMember);
                 }
             };

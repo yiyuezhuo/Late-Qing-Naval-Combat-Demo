@@ -19,21 +19,7 @@ namespace StrategicCombatCore
         // group == null => Unset
         static void SetStrategicGroupReference(IStrategicGroupMemberReferenceable self, StrategicGroup group)
         {
-            var oldGroup = self.strategicGroupReference.Get();
-            if (oldGroup != null)
-            {
-                oldGroup.subordinatesCombined.RemoveAll(r => r.referenceId == self.objectId);
-            }
-
-            if (group == null)
-            {
-                self.strategicGroupReference.referenceId = null;
-            }
-            else
-            {
-                self.strategicGroupReference.referenceId = group.objectId;
-                group.subordinatesCombined.Add(new StrategicGroupMemberReference() { referenceId = group.objectId });
-            }
+            StrategicGroup.ReassignMember(self, group);
         }
 
         public LandUnit GetCurrentSourceDepot()

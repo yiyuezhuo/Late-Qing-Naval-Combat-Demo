@@ -32,6 +32,7 @@ namespace StrategicCombatCore
         public double targetSupplyTons; // requested 
         public double flowSupplyTons;
         public float cost;
+        public List<XY> pathCells = new();
         public ISupplyNetworkNode GetOther()
         {
             return EntityManager.Instance.Get<ISupplyNetworkNode>(otherObjectId);
@@ -42,6 +43,7 @@ namespace StrategicCombatCore
             targetSupplyTons = 0;
             flowSupplyTons = 0;
             cost = 0;
+            pathCells.Clear();
         }
     }
 
@@ -232,7 +234,7 @@ namespace StrategicCombatCore
             }
         }
 
-        float DoPathFinding(ISupplyNetworkNode requestUnit, ISupplyNetworkNode requestedUnit)
+        AStarResult<Cell> DoPathFinding(ISupplyNetworkNode requestUnit, ISupplyNetworkNode requestedUnit)
         {
             var srcCell = requestUnit.cell;
             var dstCell = requestedUnit.cell;
@@ -240,11 +242,13 @@ namespace StrategicCombatCore
 
             if (srcCell != null && dstCell != null && sideState != null)
             {
-                var result = cache.GetLandSupplyPath(sideState, srcCell, dstCell);
-                var cost = result.Cost;
-                return cost;
+                return cache.GetLandSupplyPath(sideState, srcCell, dstCell);
             }
-            return float.PositiveInfinity;
+            return new AStarResult<Cell>()
+            {
+                Cost = float.PositiveInfinity,
+                Path = new()
+            };
         }
 
         LandUnit GetCurrentSourceDepot(IStrategicGroupMemberReferenceable member)
@@ -259,12 +263,17 @@ namespace StrategicCombatCore
         {
             var sourceDepotRecord = requestUnit.GetSupplyTransferState().requestRecord;
 
-            var cost = DoPathFinding(requestUnit, requestedUnit);
+            var pathFindingResult = DoPathFinding(requestUnit, requestedUnit);
+            var cost = pathFindingResult.Cost;
             if (cost == float.PositiveInfinity ||
                 (requestUnit.IsDepotSameCellOnlySupply() && cost > 0))
             {
                 return false;        
             }
+
+            var pathCells = TryBuildDisplayPath(pathFindingResult, out var displayPath)
+                ? displayPath
+                : null;
 
             if (sourceDepotRecord.otherObjectId != requestedUnit.objectId)
             {
@@ -276,10 +285,13 @@ namespace StrategicCombatCore
                 sourceDepotRecord.targetSupplyTons = supplyTons;
                 sourceDepotRecord.flowSupplyTons = 0;
                 sourceDepotRecord.cost = cost;
+                sourceDepotRecord.pathCells = pathCells ?? new();
             }
             else
             {
                 sourceDepotRecord.targetSupplyTons += supplyTons;
+                sourceDepotRecord.cost = cost;
+                sourceDepotRecord.pathCells = pathCells ?? new();
             }
 
             var matchedRecord = requestedUnit.GetSupplyTransferState().requestedRecords.FirstOrDefault(r => r.otherObjectId == requestUnit.objectId);
@@ -294,15 +306,33 @@ namespace StrategicCombatCore
                     otherObjectId = requestUnit.objectId,
                     targetSupplyTons = supplyTons,
                     flowSupplyTons = 0,
-                    cost = cost
+                    cost = cost,
+                    pathCells = pathCells ?? new()
                 };
                 requestedUnit.GetSupplyTransferState().requestedRecords.Add(requestedRecord);
             }
             else
             {
                 matchedRecord.targetSupplyTons += supplyTons;
+                matchedRecord.cost = cost;
+                matchedRecord.pathCells = pathCells ?? new();
             }
 
+            return true;
+        }
+
+        static bool TryBuildDisplayPath(AStarResult<Cell> pathFindingResult, out List<XY> pathCells)
+        {
+            pathCells = null;
+            if (pathFindingResult.Path == null || pathFindingResult.Path.Count < 2)
+                return false;
+
+            var firstCell = pathFindingResult.Path[0];
+            var lastCell = pathFindingResult.Path[^1];
+            if (firstCell == null || lastCell == null || firstCell == lastCell)
+                return false;
+
+            pathCells = pathFindingResult.Path.Select(cell => cell.ToXY()).ToList();
             return true;
         }
     }

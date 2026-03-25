@@ -1120,6 +1120,60 @@ namespace StrategicCombatCore
 
         public bool IsMovingStrategically => plannedPath.Count > 0;
 
+        public bool TryGetRecordedSupplyPath(out List<XY> pathCells)
+        {
+            foreach (var landUnit in WalkGroupMembers<LandUnit>())
+            {
+                if (TryGetDisplayableSupplyPath(landUnit?.GetSupplyTransferState()?.requestRecord?.pathCells, out pathCells))
+                    return true;
+            }
+
+            foreach (var shipLog in WalkGroupMembersDeployedShips())
+            {
+                if (TryGetDisplayableSupplyPath(shipLog?.GetSupplyTransferState()?.requestRecord?.pathCells, out pathCells))
+                    return true;
+            }
+
+            pathCells = null;
+            return false;
+        }
+
+        public IEnumerable<List<XY>> GetRecordedOutgoingSupplyPaths()
+        {
+            foreach (var landUnit in WalkGroupMembers<LandUnit>())
+            {
+                if (landUnit?.GetLandUnitTemplate()?.unitType != LandUnitType.Supply)
+                    continue;
+
+                foreach (var record in landUnit.GetSupplyTransferState().requestedRecords)
+                {
+                    if (record.flowSupplyTons <= 1e-3)
+                        continue;
+
+                    if (!TryGetDisplayableSupplyPath(record.pathCells, out var pathCells))
+                        continue;
+
+                    pathCells.Reverse();
+                    yield return pathCells;
+                }
+            }
+        }
+
+        static bool TryGetDisplayableSupplyPath(List<XY> candidatePath, out List<XY> pathCells)
+        {
+            pathCells = null;
+            if (candidatePath == null || candidatePath.Count < 2)
+                return false;
+
+            var firstCell = candidatePath[0]?.GetCell();
+            var lastCell = candidatePath[^1]?.GetCell();
+            if (firstCell == null || lastCell == null || firstCell == lastCell)
+                return false;
+
+            pathCells = new(candidatePath);
+            return true;
+        }
+
         public IEnumerable<ShipLog> WalkGroupMembersDeployedShips()
         {
             foreach (var shipLog in WalkGroupMembers<ShipLog>())

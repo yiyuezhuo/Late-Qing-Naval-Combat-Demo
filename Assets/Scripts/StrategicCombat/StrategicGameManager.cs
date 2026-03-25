@@ -230,6 +230,27 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public GameObject pathLinePrefab;
     public WaypointController rectAreaLineController;
     public float rightClickMaxClickDistancePixels = 12f;
+    Transform selectedRelationLineContainerTransform;
+
+    static readonly Color selectedSupplyPathColor = Color.blue;
+    static readonly Color selectedOutgoingSupplyPathColor = Color.red;
+    static readonly Color selectedSuperiorLineColor = new(1f, 0.55f, 0f, 1f);
+    static readonly Color selectedSubordinateLineColor = new(0f, 0.85f, 0.75f, 1f);
+    const float selectedRelationLineWidth = 0.05f;
+    const float selectedSupplyPathOffset = -0.08f;
+    const float selectedOutgoingSupplyPathOffset = -0.14f;
+    const float selectedSuperiorLineOffset = 0.04f;
+    const float selectedSubordinateLineOffset = 0.1f;
+
+    class SelectedRelationLineSpec
+    {
+        public List<XY> points;
+        public Color color;
+        public bool smooth;
+        public float widthMultiplier;
+        public float planarOffset;
+        public bool preserveEndpoints;
+    }
 
 
     [CreateProperty]
@@ -766,6 +787,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         BindStrategicUnitIcons(counterContainerTransform, strategicGroupIconPrefab, observedStrategicUnits);
 
         UpdatePathLines();
+        UpdateSelectedRelationLines();
         UpdateMissionWaypointLines();
         UpdateRectangleEditingLine();
     }
@@ -795,6 +817,162 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             var controller = missionWaypointLineControllers[i];
             controller.Sync(missionWaypointLine);
         }
+    }
+
+    void UpdateSelectedRelationLines()
+    {
+        if (missionWaypointLinePrefab == null)
+            return;
+
+        var lineSpecs = BuildSelectedRelationLineSpecs();
+        var container = EnsureSelectedRelationLineContainerTransform();
+
+        Utils.SyncTransformViewerLength(container, lineSpecs.Count, missionWaypointLinePrefab);
+        var lineControllers = container.GetComponentsInChildren<WaypointController>();
+
+        for (int i = 0; i < lineSpecs.Count; i++)
+        {
+            var lineSpec = lineSpecs[i];
+            lineControllers[i].Sync(lineSpec.points, lineSpec.color, lineSpec.smooth, lineSpec.widthMultiplier, lineSpec.planarOffset, lineSpec.preserveEndpoints);
+        }
+    }
+
+    Transform EnsureSelectedRelationLineContainerTransform()
+    {
+        if (selectedRelationLineContainerTransform != null)
+            return selectedRelationLineContainerTransform;
+
+        var existingContainer = transform.Find("SelectedRelationLineContainer");
+        if (existingContainer != null)
+        {
+            selectedRelationLineContainerTransform = existingContainer;
+            return selectedRelationLineContainerTransform;
+        }
+
+        var containerObject = new GameObject("SelectedRelationLineContainer");
+        containerObject.transform.SetParent(transform, false);
+        selectedRelationLineContainerTransform = containerObject.transform;
+        return selectedRelationLineContainerTransform;
+    }
+
+    List<SelectedRelationLineSpec> BuildSelectedRelationLineSpecs()
+    {
+        var lineSpecs = new List<SelectedRelationLineSpec>();
+        var selectedGroup = lastSelectedStrategicGroup;
+        if (selectedGroup == null)
+            return lineSpecs;
+
+        if (selectedGroup.TryGetRecordedSupplyPath(out var supplyPath))
+        {
+            lineSpecs.Add(new()
+            {
+                points = supplyPath,
+                color = selectedSupplyPathColor,
+                smooth = true,
+                widthMultiplier = selectedRelationLineWidth,
+                planarOffset = selectedSupplyPathOffset,
+                preserveEndpoints = true
+            });
+        }
+
+        foreach (var outgoingPath in selectedGroup.GetRecordedOutgoingSupplyPaths())
+        {
+            lineSpecs.Add(new()
+            {
+                points = outgoingPath,
+                color = selectedOutgoingSupplyPathColor,
+                smooth = true,
+                widthMultiplier = selectedRelationLineWidth,
+                planarOffset = selectedOutgoingSupplyPathOffset,
+                preserveEndpoints = true
+            });
+        }
+
+        if (TryBuildDirectLine(selectedGroup.cell, ResolveSuperiorDisplayCell(selectedGroup), out var superiorLine))
+        {
+            lineSpecs.Add(new()
+            {
+                points = superiorLine,
+                color = selectedSuperiorLineColor,
+                smooth = false,
+                widthMultiplier = selectedRelationLineWidth,
+                planarOffset = selectedSuperiorLineOffset,
+                preserveEndpoints = false
+            });
+        }
+
+        foreach (var subordinateGroup in EnumerateDisplayedIndependentSubordinates(selectedGroup))
+        {
+            if (!TryBuildDirectLine(selectedGroup.cell, subordinateGroup.cell, out var subordinateLine))
+                continue;
+
+            lineSpecs.Add(new()
+            {
+                points = subordinateLine,
+                color = selectedSubordinateLineColor,
+                smooth = false,
+                widthMultiplier = selectedRelationLineWidth,
+                planarOffset = selectedSubordinateLineOffset,
+                preserveEndpoints = false
+            });
+        }
+
+        return lineSpecs;
+    }
+
+    static IEnumerable<StrategicGroup> EnumerateDisplayedIndependentSubordinates(StrategicGroup rootGroup)
+    {
+        if (rootGroup == null)
+            yield break;
+
+        foreach (var subordinateReference in rootGroup.subordinatesCombined)
+        {
+            if (subordinateReference.Get() is not StrategicGroup subordinateGroup)
+                continue;
+
+            if (subordinateGroup.deployState == StrategicGroup.DeployState.Independent)
+            {
+                yield return subordinateGroup;
+                continue;
+            }
+
+            if (subordinateGroup.deployState != StrategicGroup.DeployState.Combined)
+                continue;
+
+            foreach (var nestedSubordinate in EnumerateDisplayedIndependentSubordinates(subordinateGroup))
+            {
+                yield return nestedSubordinate;
+            }
+        }
+    }
+
+    static Cell ResolveSuperiorDisplayCell(StrategicGroup selectedGroup)
+    {
+        var parentGroup = selectedGroup?.strategicGroupReference.Get();
+        while (parentGroup != null)
+        {
+            var cell = parentGroup.cell;
+            if (cell != null)
+                return cell;
+
+            parentGroup = parentGroup.strategicGroupReference.Get();
+        }
+
+        return null;
+    }
+
+    static bool TryBuildDirectLine(Cell srcCell, Cell dstCell, out List<XY> points)
+    {
+        points = null;
+        if (srcCell == null || dstCell == null || srcCell == dstCell)
+            return false;
+
+        points = new()
+        {
+            srcCell.ToXY(),
+            dstCell.ToXY()
+        };
+        return true;
     }
 
     void BindStrategicUnitIcons(Transform containerTransform, GameObject prefab, List<ILayableWorldSpaceGroupIconDataSource> strategicGroups)

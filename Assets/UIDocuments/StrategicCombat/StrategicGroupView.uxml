@@ -138,6 +138,18 @@
                                 </Bindings>
                             </ui:Toggle>
                         </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                            <ui:Label text="Detached Repair">
+                                <Bindings>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-90000000000001)"/>
+                                </Bindings>
+                            </ui:Label>
+                            <ui:Toggle style="margin-right: 10px;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="detachedRepair" binding-mode="TwoWay"/>
+                                </Bindings>
+                            </ui:Toggle>
+                        </ui:VisualElement>
                         <ui:VisualElement style="flex-direction: row;">
                             <ui:Label text="Posture">
                                 <Bindings>
@@ -248,16 +260,6 @@
                                 <ui:DataBinding property="text" data-source-path="subordinateSummary" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:Label>
-                        <ui:Button text="Split" name="SplitButton">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(18007625104527360)"/>
-                            </Bindings>
-                        </ui:Button>
-                        <ui:Button text="Transfer" name="TransferButton">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000052)"/>
-                            </Bindings>
-                        </ui:Button>
                     </ui:VisualElement>
                     <ui:Label text="Strategic speed" style="white-space: normal;">
                         <Bindings>
@@ -270,6 +272,23 @@
                             <ui:DataBinding property="text" data-source-path="commandDesc" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Label>
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:Button text="Split" name="SplitButton">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(18007625104527360)"/>
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Transfer" name="TransferButton">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000052)"/>
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Detach Damaged" name="DetachDamagedButton">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-90000000000002)"/>
+                            </Bindings>
+                        </ui:Button>
+                    </ui:VisualElement>
                     <ui:ListView name="SubordinatesCombinedListView" header-title="Subordinates" show-add-remove-footer="true" show-foldout-header="true" binding-source-selection-mode="AutoAssign" data-source-path="subordinatesCombined" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupMemberReferenceItem.uxml?fileID=9197481963319205126&amp;guid=4c7f94da99899be42bf910fd9f92d469&amp;type=3#StrategicGroupMemberReferenceItem" fixed-item-height="60" reorderable="true">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="headerTitle" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196633377280000)"/>

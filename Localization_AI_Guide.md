@@ -88,3 +88,6 @@ A Key is a 64-bit long data type. It has the following structure:
 | 10 Bits (12-21) | Machine Id                                           | The ID of the machine.  <br>By default, in the Editor, this value is generated from the machine's network interface physical address.  <br>However, you can also set it to a custom value. There is enough space for 1024 machines.                                                                                                        |
 | 41 Bits (22-63) | Timestamp                                            | A timestamp using a custom epoch (or start time), which is the time the class was created.  <br>The maximum timestamp that can be represented is 69 years from the custom epoch.  <br>At this point, the Key generator will have exhausted all possible unique Ids.                                                                        |
 | 1 Bit (64)      | [Signed Bit](https://en.wikipedia.org/wiki/Sign_bit) | The ID generator does not use the signed bit.  <br>If you want to add custom Id values, use the signed bit and add Key IDs with negative values to avoid conflicts.                                                                                                                                                                        |
+## 9. Notes
+
+"/n" should not be used in the `Localize`.

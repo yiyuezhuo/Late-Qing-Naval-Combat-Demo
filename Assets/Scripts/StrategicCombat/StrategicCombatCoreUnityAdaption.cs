@@ -545,7 +545,8 @@ namespace StrategicCombatCore
                     var deployStateStr = group.deployState == StrategicGroup.DeployState.Combined ? $"{group.deployState}" : $"<b>{group.deployState}</b>";
                     var autoCombinedableStr = group.autoCombinable ? " <b>Auto-Combinedable</b>" : "";
                     var dissolvableStr = group.dissolvable ? " <b><color=\"red\">Dissolvable</color></b>" : "";
-                    return $"{deployStateStr}{autoCombinedableStr}{dissolvableStr}";
+                    var detachedRepairStr = group.detachedRepair ? " <b><color=\"red\">Detached Repair</color></b>" : "";
+                    return $"{deployStateStr}{autoCombinedableStr}{dissolvableStr}{detachedRepairStr}";
                 }
 
                 return "";

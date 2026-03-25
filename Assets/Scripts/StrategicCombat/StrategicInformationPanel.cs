@@ -109,6 +109,10 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
         {
             DialogRoot.Instance.PopupStrategicGroupTransferDialog(StrategicGameManager.Instance.lastSelectedStrategicGroup);
         };
+        root.Q<Button>("DetachDamagedButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupStrategicGroupDetachDamagedDialog(StrategicGameManager.Instance.lastSelectedStrategicGroup);
+        };
 
         var landBattleButton = root.Q<Button>("LandBattleButton");
         landBattleButton.clicked += () =>

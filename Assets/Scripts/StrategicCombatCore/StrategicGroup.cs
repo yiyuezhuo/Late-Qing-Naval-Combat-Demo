@@ -124,6 +124,7 @@ namespace StrategicCombatCore
         // Independent sub states:
         public bool autoCombinable; // if true, it will convert from independent to combining when applicable 
         public bool dissolvable; // if true, it would "dissolve" automatically if combine is applicable.
+        public bool detachedRepair; // if true, this group automatically returns recovered ships to its parent when they reunite.
         
         public string containerObjectId; // Generally shipLog's objectId.
         

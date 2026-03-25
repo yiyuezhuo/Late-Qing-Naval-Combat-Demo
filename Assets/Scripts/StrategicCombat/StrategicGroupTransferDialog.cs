@@ -97,17 +97,8 @@ public class StrategicGroupTransferDialogItem
     }
 }
 
-public class StrategicGroupTransferDialog
+public static class StrategicGroupSubGroupUtility
 {
-    class TargetOption
-    {
-        public string label;
-        public StrategicGroup group;
-        public bool isCreateNew;
-    }
-
-    const string CreateNewTargetValue = "__CREATE_NEW_SUB_GROUP__";
-
     static readonly Dictionary<string, LocalizedString> localizedStringMap = new();
 
     static string Localize(string key, params object[] args)
@@ -210,7 +201,7 @@ public class StrategicGroupTransferDialog
         return LocalizeEnumGlobalString(sourceGroup.type);
     }
 
-    static GlobalString BuildGeneratedSubGroupName(StrategicGroup sourceGroup)
+    public static GlobalString BuildGeneratedSubGroupName(StrategicGroup sourceGroup)
     {
         var baseName = CombineNameParts(
             LocalizeEnumGlobalString(sourceGroup.country),
@@ -229,6 +220,108 @@ public class StrategicGroupTransferDialog
         }
 
         return AppendGeneratedNameIndex(baseName, nextIndex);
+    }
+
+    public static StrategicGroup CreateNewSubGroup(StrategicGroup sourceGroup, bool createIndependent, Action<StrategicGroup> configureNewGroup = null)
+    {
+        if (sourceGroup == null)
+            return null;
+
+        var newGroup = new StrategicGroup()
+        {
+            name = BuildGeneratedSubGroupName(sourceGroup),
+            type = sourceGroup.type,
+            size = sourceGroup.size,
+            country = sourceGroup.country,
+            deployState = createIndependent ? StrategicGroup.DeployState.Independent : StrategicGroup.DeployState.Combined,
+        };
+
+        configureNewGroup?.Invoke(newGroup);
+
+        var gameState = StrategicGameState.Instance;
+        var sourceIndex = gameState.strategicGroups.IndexOf(sourceGroup);
+        if (sourceIndex >= 0)
+        {
+            gameState.strategicGroups.Insert(sourceIndex + 1, newGroup);
+        }
+        else
+        {
+            gameState.strategicGroups.Add(newGroup);
+        }
+
+        EntityManager.Instance.Register(newGroup, null);
+        newGroup.AttachTo(sourceGroup);
+        if (createIndependent)
+        {
+            newGroup.MoveToCell(sourceGroup.cell, false);
+        }
+        else
+        {
+            newGroup.deployState = StrategicGroup.DeployState.Combined;
+        }
+        return newGroup;
+    }
+
+    public static bool NeedsDetachForRepair(ShipLog shipLog)
+    {
+        if (shipLog == null)
+            return false;
+
+        var maxDamagePoint = Math.Max(1f, shipLog.shipClass?.damagePoint ?? 0f);
+        return shipLog.damagePoint / maxDamagePoint > 0.1f || shipLog.GetMaxSpeedKnots() <= 4f;
+    }
+
+    public static List<ShipLog> CollectDirectSubordinateShipsNeedingDetach(StrategicGroup group)
+    {
+        if (group == null)
+            return new();
+
+        return group.subordinatesCombined
+            .Select(reference => reference.Get())
+            .OfType<ShipLog>()
+            .Where(shipLog => shipLog.mapState == MapState.Deployed)
+            .Where(NeedsDetachForRepair)
+            .ToList();
+    }
+
+    public static string BuildDetachDamagedShipList(IEnumerable<ShipLog> shipLogs)
+    {
+        return string.Join("\n", shipLogs.Select(shipLog =>
+        {
+            var maxDamagePoint = shipLog.shipClass?.damagePoint ?? 0f;
+            return $"- {shipLog.namedShip?.name?.GetMergedName() ?? Localize("[Undefined or Invalid ShipLog]")} ({shipLog.damagePoint:0.##} / {maxDamagePoint:0.##} DP, {shipLog.GetMaxSpeedKnots():0.##} kts)";
+        }));
+    }
+}
+
+public class StrategicGroupTransferDialog
+{
+    class TargetOption
+    {
+        public string label;
+        public StrategicGroup group;
+        public bool isCreateNew;
+    }
+
+    const string CreateNewTargetValue = "__CREATE_NEW_SUB_GROUP__";
+
+    static readonly Dictionary<string, LocalizedString> localizedStringMap = new();
+
+    static string Localize(string key, params object[] args)
+    {
+        if (!localizedStringMap.TryGetValue(key, out var localizedString))
+        {
+            localizedString = new LocalizedString("Standard Table", key);
+            localizedStringMap[key] = localizedString;
+        }
+
+        var result = localizedString.GetLocalizedString(args);
+        if (result == null || result.StartsWith("No translation found"))
+        {
+            result = args.Length == 0 ? key : string.Format(key, args);
+        }
+
+        return result;
     }
 
     public string initialGroupObjectId;
@@ -358,7 +451,7 @@ public class StrategicGroupTransferDialog
             if (sourceToTargetIds.Count == 0)
                 return;
 
-            var newGroup = CreateNewSubGroup(sourceGroup, createIndependentSubGroup);
+            var newGroup = StrategicGroupSubGroupUtility.CreateNewSubGroup(sourceGroup, createIndependentSubGroup);
             foreach (var objectId in sourceToTargetIds)
             {
                 var member = EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(objectId);
@@ -713,38 +806,4 @@ public class StrategicGroupTransferDialog
         return EntityManager.Instance.Get<StrategicGroup>(selectedTargetGroupId);
     }
 
-    StrategicGroup CreateNewSubGroup(StrategicGroup sourceGroup, bool createIndependent)
-    {
-        var newGroup = new StrategicGroup()
-        {
-            name = BuildGeneratedSubGroupName(sourceGroup),
-            type = sourceGroup.type,
-            size = sourceGroup.size,
-            country = sourceGroup.country,
-            deployState = createIndependent ? StrategicGroup.DeployState.Independent : StrategicGroup.DeployState.Combined,
-        };
-
-        var gameState = StrategicGameState.Instance;
-        var sourceIndex = gameState.strategicGroups.IndexOf(sourceGroup);
-        if (sourceIndex >= 0)
-        {
-            gameState.strategicGroups.Insert(sourceIndex + 1, newGroup);
-        }
-        else
-        {
-            gameState.strategicGroups.Add(newGroup);
-        }
-
-        EntityManager.Instance.Register(newGroup, null);
-        newGroup.AttachTo(sourceGroup);
-        if (createIndependent)
-        {
-            newGroup.MoveToCell(sourceGroup.cell, false);
-        }
-        else
-        {
-            newGroup.deployState = StrategicGroup.DeployState.Combined;
-        }
-        return newGroup;
-    }
 }

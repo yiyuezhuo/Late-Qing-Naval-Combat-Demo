@@ -118,6 +118,15 @@ public class StrategicGroupView //
             }
         };
 
+        var detachDamagedButton = root.Q<Button>("DetachDamagedButton");
+        detachDamagedButton.clicked += () =>
+        {
+            if (Utils.TryResolveCurrentValueForBinding(detachDamagedButton, out StrategicGroup group))
+            {
+                DialogRoot.Instance.PopupStrategicGroupDetachDamagedDialog(group);
+            }
+        };
+
         var gotoContainerButton = root.Q<Button>("GotoContainerButton");
         gotoContainerButton.clicked += () =>
         {

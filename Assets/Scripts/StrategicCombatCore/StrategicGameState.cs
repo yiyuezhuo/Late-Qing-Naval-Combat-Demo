@@ -1408,6 +1408,34 @@ namespace StrategicCombatCore
                     strategicGroups.Remove(group);
                 }
             }
+
+            foreach (var group in strategicGroups.ToList())
+            {
+                if (!group.detachedRepair || group.deployState != StrategicGroup.DeployState.Independent)
+                    continue;
+
+                var parentGroup = group.strategicGroupReference.Get();
+                if (parentGroup == null || parentGroup.cell != group.cell)
+                    continue;
+
+                foreach (var memberRef in group.subordinatesCombined.ToList())
+                {
+                    if (memberRef.Get() is ShipLog shipLog && !StrategicGroupSubGroupUtility.NeedsDetachForRepair(shipLog))
+                    {
+                        group.MoveElementTo(shipLog, parentGroup);
+                    }
+                }
+
+                if (group.subordinatesCombined.Count > 0)
+                    continue;
+
+                group.ClearPlannedPath();
+                group.RemoveFromMap();
+                group.AttachTo(null);
+
+                EntityManager.Instance.Unregister(group);
+                strategicGroups.Remove(group);
+            }
         }
 
         public void Advance1HourForSupply()

@@ -1547,6 +1547,49 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
+    public void PopupStrategicGroupDetachDamagedDialog(StrategicGroup initialGroup)
+    {
+        if (initialGroup == null)
+        {
+            PopupMessageDialog("No strategic group is selected.");
+            return;
+        }
+
+        if (initialGroup.cell == null)
+        {
+            PopupMessageDialog(Localize("Detach damaged requires the current group to resolve to a cell."));
+            return;
+        }
+
+        var detachedShips = StrategicGroupSubGroupUtility.CollectDirectSubordinateShipsNeedingDetach(initialGroup);
+        if (detachedShips.Count == 0)
+        {
+            PopupMessageDialog(Localize("No ships require detach for repair."));
+            return;
+        }
+
+        var shipList = StrategicGroupSubGroupUtility.BuildDetachDamagedShipList(detachedShips);
+        PopupConfirmDialog(
+            Localize("The following ships will be detached for repair:") + "\n" + shipList,
+            () =>
+            {
+                var newGroup = StrategicGroupSubGroupUtility.CreateNewSubGroup(initialGroup, true, group =>
+                {
+                    group.detachedRepair = true;
+                    group.homeBaseObjectId = initialGroup.homeBaseObjectId;
+                });
+
+                foreach (var shipLog in detachedShips)
+                {
+                    initialGroup.MoveElementTo(shipLog, newGroup);
+                }
+
+                newGroup.StartReturnToBase(0);
+            },
+            Localize("Detach Damaged Ships")
+        );
+    }
+
     public void PopupLocationLabelDialog(StrategicLocationLabel label)
     {
         var tempDialog = new TempDialog()

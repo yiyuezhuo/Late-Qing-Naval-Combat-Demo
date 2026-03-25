@@ -2849,6 +2849,30 @@ MonoBehaviour:
     m_Localized: Create Independent Sub Group
     m_Metadata:
       m_Items: []
+  - m_Id: -90000000000001
+    m_Localized: Detached Repair
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90000000000002
+    m_Localized: Detach Damaged
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90000000000003
+    m_Localized: No ships require detach for repair.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90000000000004
+    m_Localized: Detach Damaged Ships
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90000000000005
+    m_Localized: "The following ships will be detached for repair:\n{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90000000000006
+    m_Localized: Detach damaged requires the current group to resolve to a cell.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

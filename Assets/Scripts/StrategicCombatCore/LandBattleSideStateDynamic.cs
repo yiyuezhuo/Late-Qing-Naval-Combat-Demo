@@ -465,6 +465,9 @@ namespace StrategicCombatCore
             foreach(var groupBundle in topGroupBundles)
             {
                 var group = groupBundle.group;
+                if (group.IsBase())
+                    continue;
+
                 group.StartRetreatFromLandDefend();
                 // group.posture = StrategicGroup.GroupPostureType.Disengaged;
                 // group.restoredHours = 48; // TODO: It's questionable to "return" to Active state sometimes, looks like we should separated those types of states.

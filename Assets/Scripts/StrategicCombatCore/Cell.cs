@@ -305,13 +305,34 @@ namespace StrategicCombatCore
         {
             if (!IsArmyPassable())
                 return;
-            
+
             var groups = StrategicGroupReferences
                 .Select(r => r.Get())
-                // .Where(g => g != null && g.IsArmy())
-                .Where(g => g != null && g.IsArmy()).ToList();
-            var activeSides = groups.Where(g => g.posture != StrategicGroup.GroupPostureType.Disengaged).Select(g => g.side).ToHashSet();
-            var passiveSides =groups.Select(g => g.side).ToHashSet();
+                .Where(g => g != null && g.IsArmy())
+                .ToList();
+
+            ApplyControlState(groups);
+            if (TryConvertCapturedBases(groups))
+            {
+                groups = StrategicGroupReferences
+                    .Select(r => r.Get())
+                    .Where(g => g != null && g.IsArmy())
+                    .ToList();
+                ApplyControlState(groups);
+            }
+        }
+
+        void ApplyControlState(List<StrategicGroup> groups)
+        {
+            var activeSides = groups
+                .Where(g => g.posture != StrategicGroup.GroupPostureType.Disengaged && !g.IsBase())
+                .Select(g => g.side)
+                .Where(s => s != null)
+                .ToHashSet();
+            var passiveSides = groups
+                .Select(g => g.side)
+                .Where(s => s != null)
+                .ToHashSet();
 
             if(passiveSides.Count <= 1)
             {
@@ -342,6 +363,21 @@ namespace StrategicCombatCore
             {
                 sideObjectIdHex = RandomUtils.Sample(activeSides.ToList()).objectId;
             }
+        }
+
+        bool TryConvertCapturedBases(List<StrategicGroup> groups)
+        {
+            var occupyingSide = GetHexSide();
+            if (occupyingSide == null)
+                return false;
+
+            var changed = false;
+            foreach (var baseGroup in groups.Where(g => g.IsBase() && g.deployState == StrategicGroup.DeployState.Independent).ToList())
+            {
+                changed |= baseGroup.ConvertCapturedBaseTo(occupyingSide);
+            }
+
+            return changed;
         }
 
         public void SetEdgeSide(EdgeDirection edgeDirection, SideState sideState)

@@ -134,12 +134,18 @@ namespace StrategicCombatCore
 
     public class DynamicCellGraphNavy : IGraphEnumerable<Cell>
     {
+        public SideState movingSide;
+
         public IEnumerable<Cell> Neighbors(Cell pos)
         {
             foreach (var nei in pos.GetNeighbors())
             {
-                if (nei.IsNavyPassable() && !pos.HasEdgeFeatureTo(nei, EdgeFeatureType.BlockSeaMovement))
+                if (nei.IsNavyPassable() &&
+                    !pos.HasEdgeFeatureTo(nei, EdgeFeatureType.BlockSeaMovement) &&
+                    !StrategicGroup.CellHasHostileFortifiedBaseFor(nei, movingSide))
+                {
                     yield return nei;
+                }
             }
         }
 

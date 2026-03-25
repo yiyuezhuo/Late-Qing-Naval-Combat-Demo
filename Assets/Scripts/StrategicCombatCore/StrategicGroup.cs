@@ -398,6 +398,7 @@ namespace StrategicCombatCore
 
         public bool IsNavy() => type == Type.Fleet;
         public bool IsArmy() => type != Type.Fleet;
+        public bool IsBase() => type == Type.Base;
 
         public bool IsIndependent() => deployState == DeployState.Independent;
 
@@ -422,6 +423,72 @@ namespace StrategicCombatCore
         public float GetShipTons() => subordinatesCombined.Sum(r => r.GetShipTons());
         public float GetCombatShipTons() => WalkGroupMembersDeployedShips().Select(shipLog => shipLog.shipClass).Where(shipClass => shipClass.IsCombatShip()).Sum(shipClass => shipClass.displacementTons);
         // WalkGroupMembersDeployedShips
+        public IEnumerable<StrategicGroup> WalkSelfAndDescendantStrategicGroups()
+        {
+            yield return this;
+
+            foreach (var subordinateRef in subordinatesCombined)
+            {
+                if (subordinateRef.Get() is not StrategicGroup subGroup)
+                    continue;
+
+                foreach (var nestedGroup in subGroup.WalkSelfAndDescendantStrategicGroups())
+                    yield return nestedGroup;
+            }
+        }
+
+        public bool HasDescendantStrategicGroupType(Type targetType)
+        {
+            return WalkSelfAndDescendantStrategicGroups().Any(group => group != this && group.type == targetType);
+        }
+
+        public bool IsHostileFortifiedBaseFor(SideState otherSide)
+        {
+            return IsBase() &&
+                deployState == DeployState.Independent &&
+                side != null &&
+                otherSide != null &&
+                side != otherSide &&
+                HasDescendantStrategicGroupType(Type.CoastArtillery);
+        }
+
+        public static bool CellHasHostileFortifiedBaseFor(Cell targetCell, SideState movingSide)
+        {
+            if (targetCell == null || movingSide == null)
+                return false;
+
+            return targetCell.StrategicGroupReferences
+                .Select(reference => reference.Get())
+                .Any(group => group != null && group.IsHostileFortifiedBaseFor(movingSide));
+        }
+
+        public bool CanEnterCell(Cell toCell)
+        {
+            if (toCell == null)
+                return false;
+
+            if (cell == toCell)
+                return true;
+
+            return !IsNavy() || !CellHasHostileFortifiedBaseFor(toCell, side);
+        }
+
+        public bool ConvertCapturedBaseTo(SideState occupyingSide)
+        {
+            if (!IsBase() || occupyingSide == null || side == occupyingSide)
+                return false;
+
+            var newCountry = occupyingSide.countries.FirstOrDefault();
+            foreach (var group in WalkSelfAndDescendantStrategicGroups())
+            {
+                group.leaderReference.referenceObjectId = null;
+                group.country = newCountry;
+            }
+
+            homeBaseObjectId = null;
+            return true;
+        }
+
         public float GetCombinedPowerPoint(bool isTop)
         {
             if (!isTop && deployState != DeployState.Combined)
@@ -535,8 +602,7 @@ namespace StrategicCombatCore
             if (deployState != DeployState.Independent || toCell == null)
                 return false;
 
-            MoveToCell(toCell, moveThroughEdge);
-            return true;
+            return MoveToCell(toCell, moveThroughEdge);
         }
 
         public bool TryRelocateIndependentGroupToGrid(int targetX, int targetY)
@@ -562,13 +628,15 @@ namespace StrategicCombatCore
 
         // From Vacuum or to vacuum, or move to other cell through vacuum.
         // public void MoveToXY(int toX, int toY, bool moveThroughEdge)
-        public void MoveToCell(Cell toCell, bool moveThroughEdge)
+        public bool MoveToCell(Cell toCell, bool moveThroughEdge)
         {
             if (toCell == null)
-                return;
+                return false;
 
             // var toCell = StrategicGameState.Instance.cellMatrix[toX, toY];
             var prevCell = cell;
+            if (!CanEnterCell(toCell))
+                return false;
 
             if (deployState == DeployState.Independent && prevCell != null)
             {
@@ -594,7 +662,7 @@ namespace StrategicCombatCore
 
             toCell.StrategicGroupReferences.Add(new() { referenceId = objectId });
 
-            if (moveThroughEdge && IsArmy())
+            if (moveThroughEdge && IsArmy() && prevCell != null)
             {
                 if (toCell.TryGetDirection(prevCell, out var edge))
                 {
@@ -610,6 +678,7 @@ namespace StrategicCombatCore
             toCell.RefreshControlState();
             // StrategicGameState.Instance.InvokeMapCellUpdated(toCell.x, toCell.y);
             StrategicGameState.Instance.InvokeMapCellUpdated(toCell);
+            return true;
         }
         
         public void UnloadFromContainer()
@@ -701,6 +770,10 @@ namespace StrategicCombatCore
 
         public float GetSpeedKmPerHour()
         {
+            if (IsBase())
+            {
+                return 0;
+            }
             if (posture == GroupPostureType.Reorganized)
             {
                 return 0;
@@ -950,7 +1023,7 @@ namespace StrategicCombatCore
         {
             plannedPath.Clear();
             
-            IGraphEnumerable<Cell> graph = IsNavy() ? new DynamicCellGraphNavy() : new DynamicLandRetreatGraph(){side=side};
+            IGraphEnumerable<Cell> graph = IsNavy() ? new DynamicCellGraphNavy(){movingSide=side} : new DynamicLandRetreatGraph(){side=side};
             var possibleNeighbors = graph.Neighbors(cell).ToList();
             if(possibleNeighbors.Count > 0)
             {
@@ -967,6 +1040,9 @@ namespace StrategicCombatCore
 
         public void StartRetreatFromLandDefend()
         {
+            if (IsBase())
+                return;
+
             posture = GroupPostureType.Disengaged;
             restoredHours = 24; // TODO: It's questionable to "return" to Active state sometimes, looks like we should separated those types of states.
 
@@ -995,7 +1071,7 @@ namespace StrategicCombatCore
         {
             plannedPath.Clear();
             
-            IGraphEnumerable<Cell> graph = IsNavy() ? new DynamicCellGraphNavy() : new DynamicCellGraphArmy();
+            IGraphEnumerable<Cell> graph = IsNavy() ? new DynamicCellGraphNavy(){movingSide=side} : new DynamicCellGraphArmy();
             var pathCells = PathFinding<Cell>.AStar(graph, cell, dstCell);
             var pathXY = pathCells.Select(c => c.ToXY()).ToList();
 
@@ -1029,7 +1105,7 @@ namespace StrategicCombatCore
                 var depotCell = GetDepotGroup()?.cell;
                 if(depotCell != null && groupCell != depotCell)
                 {
-                    var graph = new DynamicCellGraphNavy();
+                    var graph = new DynamicCellGraphNavy(){movingSide=side};
                     var pathCells = PathFinding<Cell>.AStar(graph, groupCell, depotCell);
                     if (pathCells.Count >= 2)
                     {
@@ -1080,6 +1156,9 @@ namespace StrategicCombatCore
 
         void EliminateByNoRetreatPath()
         {
+            if (IsBase())
+                return;
+
             RemoveFromMap();
             deployState = DeployState.NotDeployed;
             // TODO: Add log?
@@ -1408,10 +1487,21 @@ namespace StrategicCombatCore
                     }
                     else
                     {
+                        var nextCell = plannedPath[1].GetCell();
+                        if (!CanEnterCell(nextCell))
+                        {
+                            ClearPlannedPath();
+                            break;
+                        }
+
                         moveKmCap -= nextDistKm;
+                        if (!MoveToCell(nextCell, true))
+                        {
+                            ClearPlannedPath();
+                            break;
+                        }
+
                         plannedPath.RemoveAt(0);
-                        // strategicGroup.MoveToXY(strategicGroup.plannedPath[0].x, strategicGroup.plannedPath[0].y, true);
-                        MoveToCell(plannedPath[0].GetCell(), true); // TODO: Generalize to Area System
                         
                         moveProgressionKm = 0;
                         if (plannedPath.Count < 2)

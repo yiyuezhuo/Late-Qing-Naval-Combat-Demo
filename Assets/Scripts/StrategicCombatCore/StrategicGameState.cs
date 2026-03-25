@@ -830,10 +830,11 @@ namespace StrategicCombatCore
                 if(arriveState != null && !arriveState.arrived && arriveState.arriveTime <= scenarioState.dateTime && !group.IsOnMap())
                 {
                     var toCell = arriveState.arriveTo.GetCell();
-                    group.MoveToCell(toCell, false);
-
-                    // TODO: Use "Mobilisation"?
-                    AddLog($"{group.name.GetShortName()} arrived at {toCell.GetLocationSummary()}", group.side);
+                    if (group.MoveToCell(toCell, false))
+                    {
+                        // TODO: Use "Mobilisation"?
+                        AddLog($"{group.name.GetShortName()} arrived at {toCell.GetLocationSummary()}", group.side);
+                    }
                 }
                 // if(group.arragroup.IsOnMap())
             }

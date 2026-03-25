@@ -1308,9 +1308,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             if (lastSelectedStrategicGroup != null)
             {
                 // lastSelectedStrategicGroup.MoveToXY(cell.x, cell.y, false);
-                lastSelectedStrategicGroup.MoveToCell(cell, false);
-                // lastSelectedStrategicGroup.plannedPath.Clear();
-                lastSelectedStrategicGroup.ClearPlannedPath();
+                if (lastSelectedStrategicGroup.MoveToCell(cell, false))
+                {
+                    // lastSelectedStrategicGroup.plannedPath.Clear();
+                    lastSelectedStrategicGroup.ClearPlannedPath();
+                }
             }
         });
     }
@@ -1412,7 +1414,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             return false;
 
         var srcCell = strategicGroup.cell;
-        IGraphEnumerable<Cell> graph = strategicGroup.IsArmy() ? new DynamicCellGraphArmy() : new DynamicCellGraphNavy();
+        IGraphEnumerable<Cell> graph = strategicGroup.IsArmy()
+            ? new DynamicCellGraphArmy()
+            : new DynamicCellGraphNavy(){movingSide=strategicGroup.side};
         var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
 
         strategicGroup.SetPlannedPath(pathCells.Select(c => c.ToXY()).ToList());
@@ -1437,7 +1441,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         var appending = p.Count >= 2;
         var srcCell = appending ? p[^1].GetCell() : strategicGroup.cell;
 
-        IGraphEnumerable<Cell> graph = strategicGroup.IsArmy() ? new DynamicCellGraphArmy() : new DynamicCellGraphNavy();
+        IGraphEnumerable<Cell> graph = strategicGroup.IsArmy()
+            ? new DynamicCellGraphArmy()
+            : new DynamicCellGraphNavy(){movingSide=strategicGroup.side};
         var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
 
         if (appending)
@@ -1550,11 +1556,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 var srcCell = selectedMission.waypoints[^1].GetCell();
                 var dstCell = activeCell;
 
+                var missionSide = selectedMission?.GetSide();
                 IGraphEnumerable<Cell> graph = pointListEditorPassabilityMode switch
                 {
                     PassabilityMode.Land => new DynamicCellGraphArmy(),
-                    PassabilityMode.Sea => new DynamicCellGraphNavy(),
-                    _ => new DynamicCellGraphNavy(),
+                    PassabilityMode.Sea => new DynamicCellGraphNavy(){movingSide=missionSide},
+                    _ => new DynamicCellGraphNavy(){movingSide=missionSide},
                 };
 
                 var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);

@@ -785,7 +785,7 @@ namespace StrategicCombatCore
             var leadGroupSide = leadGroup.side;
             var srcCell = leadGroup.cell;
 
-            IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy(); // TODO: Generalize to army?
+            IGraphEnumerable<Cell> graph = new DynamicCellGraphNavy(){movingSide=leadGroupSide}; // TODO: Generalize to army?
             var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
 
             var missionName = prefix.Add(dstCell.GetLocationSummaryGlobalString());

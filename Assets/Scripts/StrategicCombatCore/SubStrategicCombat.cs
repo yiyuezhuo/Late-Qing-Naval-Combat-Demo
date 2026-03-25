@@ -13,12 +13,12 @@ namespace StrategicCombatCore
         public StrategicGroupMemberReference groupReference = new();
         public float commitPercent = 1; // 0f ~ 1f
 
-        public float GetFirepower(IFirepowerContext ctx)
+        public float GetFirepower(IFirepowerContext ctx, bool isGlobalAttacker)
         {
             var obj = groupReference.Get();
             if (obj is LandUnit landUnit)
             {
-                return landUnit.GetFirepower(ctx) * commitPercent;
+                return landUnit.GetFirepower(ctx) * landUnit.GetLandBattleFirepowerCoef(isGlobalAttacker) * commitPercent;
             }
             // TODO: Add ship log
             return 0;
@@ -70,7 +70,8 @@ namespace StrategicCombatCore
 
             public float GetFirepower() // Combat Value
             {
-                return items.Sum(x => x.GetFirepower(combat)) * GetCombatValueCoef();
+                var isGlobalAttacker = this == combat.attacker;
+                return items.Sum(x => x.GetFirepower(combat, isGlobalAttacker)) * GetCombatValueCoef();
             }
 
             public float GetStrength() => items.Sum(x => x.GetStrength());
@@ -128,7 +129,7 @@ namespace StrategicCombatCore
         {
             var hexEquivalent = distanceMeter / 40;
             var strength = sideState.GetStrength();
-            var firepower = attacker.GetFirepower();
+            var firepower = sideState.GetFirepower();
             return new CombatSideStateDynamic
             {
                 strength = strength,

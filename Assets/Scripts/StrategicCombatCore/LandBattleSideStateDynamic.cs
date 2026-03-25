@@ -65,9 +65,9 @@ namespace StrategicCombatCore
                 return landUnit.strength; // TODO: apply suppression modifier and other non-weapon/strength modifier
             }
 
-            public float GetAttackerWeight()
+            public float GetAttackerWeight(bool isGlobalAttacker)
             {
-                return landUnit.GetLethality();
+                return landUnit.GetLethality(isGlobalAttacker);
                 // return landUnit.strength; // TODO: Apply suppression modifier
             }
 
@@ -91,7 +91,7 @@ namespace StrategicCombatCore
                 public int GetCommitableStrength() => landUnitBundle.landUnit.strength;
                 public float GetCommitPercent() => commitStrength / landUnitBundle.landUnit.strength;
                 public LandUnit landUnit => landUnitBundle.landUnit;
-                public float GetLethality() => landUnitBundle.landUnit.GetLethality();
+                public float GetLethality() => landUnitBundle.landUnit.GetLethality(isGlobalAttacker);
                 
                 public float GetEqHexWidth() => commitStrength / menPerEqHex;
                 public float GetMenPerEqHex() => menPerEqHex;
@@ -373,12 +373,12 @@ namespace StrategicCombatCore
             return RandomUtils.Sample(validLandUnitBundles, weights);
         }
 
-        public LandUnitBundle RollSubCombatAttacker()
+        public LandUnitBundle RollSubCombatAttacker(bool isGlobalAttacker)
         {
             var validLandUnitBundles = landUnitBundles.Where(b => b.landUnit.strength > 0).ToList();
             if(validLandUnitBundles.Count == 0)
                 return null;
-            var weights = validLandUnitBundles.Select(b => b.GetAttackerWeight()).ToList();
+            var weights = validLandUnitBundles.Select(b => b.GetAttackerWeight(isGlobalAttacker)).ToList();
             return RandomUtils.Sample(validLandUnitBundles, weights);
         }
 
@@ -413,7 +413,7 @@ namespace StrategicCombatCore
             {
                 isGlobalAttacker=attackerInitiative,
                 isLocalInitiative=true,
-                landUnitBundle=RollSubCombatAttacker() // TODO: Introduce postive correlation for history engagement?
+                landUnitBundle=RollSubCombatAttacker(attackerInitiative) // TODO: Introduce postive correlation for history engagement?
             };
             if(attacker.landUnitBundle == null)
                 return null;

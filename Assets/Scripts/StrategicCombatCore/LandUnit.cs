@@ -52,9 +52,10 @@ namespace StrategicCombatCore
                 return;
             }
 
-            suppression = Math.Max(0, suppression - Math.Max(0.25f, suppression * 0.8f)); // -80% of max suppression of 25% suppression
-            morale = Math.Min(1, morale + 0.1f); // +10% morale per turn
-            fatigue = Math.Max(0, fatigue - 0.025f); // -2.5% fatigue per turn
+            var recoveryCoef = GetRecoveryCoef();
+            suppression = Math.Max(0, suppression - Math.Max(0.25f, suppression * 0.8f) * recoveryCoef); // -80% of max suppression of 25% suppression
+            morale = Math.Min(1, morale + 0.1f * recoveryCoef); // +10% morale per turn
+            fatigue = Math.Max(0, fatigue - 0.025f * recoveryCoef); // -2.5% fatigue per turn
         }
 
         public float GetFirepower(IFirepowerContext ctx)
@@ -103,6 +104,17 @@ namespace StrategicCombatCore
         }
 
         public float GetSupplyCostTonsPerDay() => GetSupplyCostTonsPerMenDay() * strength;
+
+        public bool IsOutOfSupply() => supplyTons <= 0;
+
+        public float GetRecoveryCoef() => IsOutOfSupply() ? 0.5f : 1f;
+
+        public float GetLandBattleFirepowerCoef(bool isGlobalAttacker)
+        {
+            if (!IsOutOfSupply())
+                return 1f;
+            return isGlobalAttacker ? 0.25f : 0.5f;
+        }
 
         public float GetSupplyCostTonsPerMenDay()
         {
@@ -193,6 +205,8 @@ namespace StrategicCombatCore
             }
             return 0;
         }
+
+        public float GetLethality(bool isGlobalAttacker) => GetLethality() * GetLandBattleFirepowerCoef(isGlobalAttacker);
 
         public GlobalString GetName() => name;
     }

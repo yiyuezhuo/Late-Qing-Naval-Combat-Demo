@@ -628,11 +628,54 @@ namespace StrategicCombatCore
                 {
                     if (cell.GetEdgeSide(edge).objectId != side.objectId)
                         return 0; // edge control block
-                    return GetSpeedKmPerHour(cell, nextCell) * disengagedMod;
+
+                    var normalSpeedKmPerHour = GetSpeedKmPerHour(cell, nextCell);
+                    if (HasAnyOutOfSupplyLandUnit())
+                    {
+                        normalSpeedKmPerHour *= 0.5f;
+                    }
+                    return normalSpeedKmPerHour * disengagedMod;
                 }
                 return 0;
             }
-            return 10 * disengagedMod; // 10km/h, cruise speed for ships
+            return GetFleetStrategicSpeedKmPerHour() * disengagedMod;
+        }
+
+        public float GetFleetStrategicSpeedKmPerHour()
+        {
+            var deployedShips = WalkGroupMembersDeployedShips().ToList();
+            if (deployedShips.Count == 0)
+            {
+                return 0;
+            }
+
+            var speedKnots = deployedShips.Min(GetShipStrategicSpeedKnots);
+            return speedKnots * MeasureUtils.navalMileToKilometer;
+        }
+
+        public static float cruiseSpeedCoef = 0.5f;
+
+        public float GetShipStrategicSpeedKnots(ShipLog shipLog)
+        {
+            if (shipLog == null)
+            {
+                return 0;
+            }
+
+            if (shipLog.supplyTons <= 0)
+            {
+                return 4f;
+            }
+
+            return Math.Max(4f, shipLog.GetMaxSpeedKnots() * cruiseSpeedCoef);
+        }
+
+        public bool HasAnyOutOfSupplyLandUnit()
+        {
+            return WalkGroupMembers<LandUnit>().Any(landUnit =>
+                landUnit.GetLandUnitTemplate()?.unitType != LandUnitType.Supply &&
+                landUnit.supplyTons <= 0
+            );
         }
 
         public Cell GetPathNextCell()

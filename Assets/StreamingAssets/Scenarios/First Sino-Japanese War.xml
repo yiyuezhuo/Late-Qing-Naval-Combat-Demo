@@ -25025,9 +25025,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>0e49ae2f-5d43-4a1e-a5e1-5ef9709c79e7</objectId>
-    <strategicGroupReference>
-     <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
-    </strategicGroupReference>
+    <strategicGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -25106,9 +25104,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0.4</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>98e31d97-95e9-428c-81f8-1e28218c3b66</objectId>
-    <strategicGroupReference>
-     <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
-    </strategicGroupReference>
+    <strategicGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -25147,9 +25143,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0.6666667</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>062a8581-948d-4e6f-a192-c944ea148f12</objectId>
-    <strategicGroupReference>
-     <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
-    </strategicGroupReference>
+    <strategicGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -25288,9 +25282,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>1dad34b2-1ddd-40ec-86e6-c2533261da78</objectId>
-    <strategicGroupReference>
-     <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
-    </strategicGroupReference>
+    <strategicGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -26643,9 +26635,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>e8e81f29-4c58-4e0c-acc7-d089ebe3e863</objectId>
-    <strategicGroupReference>
-     <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
-    </strategicGroupReference>
+    <strategicGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -28017,9 +28007,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0.333333343</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>d1c1613a-412d-4865-a8fc-f3b72273b8a1</objectId>
-    <strategicGroupReference>
-     <referenceId>d9103ed8-50ae-49ca-810c-6eb72e30264c</referenceId>
-    </strategicGroupReference>
+    <strategicGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -28134,9 +28122,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0.333333343</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>2ec01ac9-17e9-4f9a-8c4d-e05caacea520</objectId>
-    <strategicGroupReference>
-     <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
-    </strategicGroupReference>
+    <strategicGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -28772,9 +28758,7 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>006864f2-71d6-42be-9210-08555952259d</objectId>
-    <strategicGroupReference>
-     <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
-    </strategicGroupReference>
+    <strategicGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -28969,9 +28953,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0.25</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>7435a9f5-5161-49f0-b1ab-cba06b6eee0b</objectId>
-    <strategicGroupReference>
-     <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
-    </strategicGroupReference>
+    <strategicGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -29135,9 +29117,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>cd2d3e47-9de3-4d98-8bb4-4435b320f9f0</objectId>
-    <strategicGroupReference>
-     <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
-    </strategicGroupReference>
+    <strategicGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -29173,9 +29153,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>03952567-843b-4447-8574-ecf41bcfa11c</objectId>
-    <strategicGroupReference>
-     <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
-    </strategicGroupReference>
+    <strategicGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>

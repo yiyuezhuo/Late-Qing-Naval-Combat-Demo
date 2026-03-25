@@ -4972,9 +4972,7 @@
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>d7239c1d-abdf-49fe-80bc-a2568d837526</objectId>
-    <strategicGroupReference>
-     <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
-    </strategicGroupReference>
+    <strategicGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -5010,9 +5008,7 @@
     <stackPriority>0.5</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>7cc10e6e-260c-4492-8f4c-304596825029</objectId>
-    <strategicGroupReference>
-     <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
-    </strategicGroupReference>
+    <strategicGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>

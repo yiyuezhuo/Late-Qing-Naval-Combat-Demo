@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using CoreUtils;
 using NavalCombatCore;
 using UnityEngine.UIElements;
 using StrategicCombatCore;
@@ -39,6 +40,16 @@ public class FullGroupTree : ITree<IStrategicGroupMemberReferenceable, string>
 
 public class FullGroupTreeNameLink : ITree<IStrategicGroupMemberReferenceable, IStrategicGroupMemberReferenceable>
 {
+    static Leader GetLeader(IStrategicGroupMemberReferenceable node)
+    {
+        return node switch
+        {
+            StrategicGroup group => group.leaderReference.Get(),
+            ShipLog ship => ship.leader,
+            _ => null,
+        };
+    }
+
     public IStrategicGroupMemberReferenceable GetParent(IStrategicGroupMemberReferenceable node)
     {
         var parent = node.strategicGroupReference.Get();
@@ -86,9 +97,10 @@ public class FullGroupTreeNameLink : ITree<IStrategicGroupMemberReferenceable, I
         treeView.makeItem = () =>
         {
             var el = treeView.itemTemplate.CloneTree();
-            // TODO: Bind link here.
+            var nameLabel = el.Q<Label>("OOBNameLinkLabel");
+            var leaderLabel = el.Q<Label>("OOBLeaderLinkLabel");
 
-            Utils.RegisterLinkTag(el.Q<Label>(), new()
+            Utils.RegisterLinkTag(nameLabel, new()
             {
                 ["nameLink"] = () =>
                 {
@@ -96,6 +108,21 @@ public class FullGroupTreeNameLink : ITree<IStrategicGroupMemberReferenceable, I
                     {
                         Debug.Log($"Resolved: {r}");
                         SwitchCenter.Instance.SwitchByIStrategicGroupMemberReferenceable(r);
+                    }
+                }
+            });
+
+            Utils.RegisterLinkTag(leaderLabel, new()
+            {
+                ["leaderLink"] = () =>
+                {
+                    if (Utils.TryResolveCurrentValueForBinding(el, out IStrategicGroupMemberReferenceable r))
+                    {
+                        var leader = GetLeader(r);
+                        if (leader != null)
+                        {
+                            SwitchCenter.Instance.SwitchToLeaderView(leader);
+                        }
                     }
                 }
             });

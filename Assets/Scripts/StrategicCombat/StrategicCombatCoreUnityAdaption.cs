@@ -219,6 +219,33 @@ namespace StrategicCombatCore
         }
 
         [CreateProperty]
+        public string oobNameLink
+        {
+            get
+            {
+                var rawName = name.GetShortName();
+                if (rawName == null)
+                    rawName = "_";
+                return $"<link=\"nameLink\"><color=#40a0ff>{rawName}</color></link>";
+            }
+        }
+
+        [CreateProperty]
+        public Leader oobLeader => leaderReference.Get();
+
+        [CreateProperty]
+        public string oobLeaderNameLink
+        {
+            get
+            {
+                var leaderName = oobLeader?.name?.GetShortName();
+                if (leaderName == null)
+                    return string.Empty;
+                return $"<link=\"leaderLink\">{leaderName}</link>";
+            }
+        }
+
+        [CreateProperty]
         public string leaderNameLink
         {
             get
@@ -588,6 +615,24 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public string nameLink => $"<link=\"nameLink\"><color=#40a0ff>{GetName().GetMergedName()}</color></link>";
+
+        [CreateProperty]
+        public string oobNameLink
+        {
+            get
+            {
+                var rawName = GetName()?.GetShortName();
+                if (rawName == null)
+                    return "[Not Specified]";
+                return $"<link=\"nameLink\"><color=#40a0ff>{rawName}</color></link>";
+            }
+        }
+
+        [CreateProperty]
+        public Leader oobLeader => null;
+
+        [CreateProperty]
+        public string oobLeaderNameLink => string.Empty;
     }
 
     public partial class SubStrategicCombat
@@ -1072,6 +1117,33 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public float supplyCapTons => GetSupplyCapTons();
+
+        [CreateProperty]
+        public string oobNameLink
+        {
+            get
+            {
+                var rawName = namedShip?.name?.GetShortName();
+                if (rawName == null)
+                    return "[Not Specified]";
+                return $"<link=\"nameLink\"><color=#40a0ff>{rawName}</color></link>";
+            }
+        }
+
+        [CreateProperty]
+        public Leader oobLeader => leader;
+
+        [CreateProperty]
+        public string oobLeaderNameLink
+        {
+            get
+            {
+                var leaderName = leader?.name?.GetShortName();
+                if (leaderName == null)
+                    return string.Empty;
+                return $"<link=\"leaderLink\">{leaderName}</link>";
+            }
+        }
     }
 }
 

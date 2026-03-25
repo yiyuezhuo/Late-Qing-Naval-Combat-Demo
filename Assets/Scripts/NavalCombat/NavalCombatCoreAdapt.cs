@@ -23,6 +23,18 @@ namespace NavalCombatCore
         public string nameLink;
     }
 
+    public class StrategicOOBTreeRowPlaceholder
+    {
+        [CreateProperty]
+        public string oobNameLink;
+
+        [CreateProperty]
+        public string oobLeaderNameLink;
+
+        [CreateProperty]
+        public Leader oobLeader;
+    }
+
     public partial class ShipClass : INamed
     {
         [CreateProperty]

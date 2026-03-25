@@ -1,0 +1,15 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="NavalCombatCore.StrategicOOBTreeRowPlaceholder, Assembly-CSharp" style="flex-direction: row; align-items: center; flex-grow: 1;">
+        <ui:Label name="OOBNameLinkLabel" style="flex-grow: 1;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="oobNameLink" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:Label>
+        <ui:Label name="OOBLeaderLinkLabel" style="margin-left: 8px; flex-shrink: 0; -unity-text-align: middle-right; color: rgb(143, 136, 122);">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="oobLeaderNameLink" binding-mode="ToTarget" />
+                <ui:DataBinding property="style.display" data-source-path="oobLeader" binding-mode="ToTarget" source-to-ui-converters="Leader =&gt; DisplayStyle" />
+            </Bindings>
+        </ui:Label>
+    </ui:VisualElement>
+</ui:UXML>

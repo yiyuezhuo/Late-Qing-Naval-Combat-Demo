@@ -105,6 +105,10 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
         moveButton.clicked += StrategicGameManager.Instance.TryToStartMakeNewMove;
 
         root.Q<Button>("MoveAppendButton").clicked += StrategicGameManager.Instance.TryToStartAppendMove;
+        root.Q<Button>("TransferButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupStrategicGroupTransferDialog(StrategicGameManager.Instance.lastSelectedStrategicGroup);
+        };
 
         var landBattleButton = root.Q<Button>("LandBattleButton");
         landBattleButton.clicked += () =>

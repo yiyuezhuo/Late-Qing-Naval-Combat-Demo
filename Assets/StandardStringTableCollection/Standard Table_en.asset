@@ -2813,6 +2813,42 @@ MonoBehaviour:
     m_Localized: Generate Placeholder Image - {0}
     m_Metadata:
       m_Items: []
+  - m_Id: 69800000000052
+    m_Localized: Transfer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000053
+    m_Localized: Strategic Group Transfer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000054
+    m_Localized: Source Group
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000055
+    m_Localized: Target Group
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000056
+    m_Localized: Include Combined
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000057
+    m_Localized: Create New Sub Group
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000058
+    m_Localized: Transfer requires the current group to resolve to a cell.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000059
+    m_Localized: No valid transfer groups found for the current cell.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69800000000060
+    m_Localized: Create Independent Sub Group
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

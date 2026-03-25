@@ -1,0 +1,54 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement data-source-type="StrategicGroupTransferDialog, Assembly-CSharp" class="panel-dialog" style="width: 980px; min-height: 520px;">
+        <ui:Label text="Strategic Group Transfer" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000053)" />
+            </Bindings>
+        </ui:Label>
+        <ui:VisualElement style="flex-direction: row; align-items: center; flex-shrink: 0;">
+            <ui:Label text="Source Group" style="min-width: 120px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000054)" />
+                </Bindings>
+            </ui:Label>
+            <ui:DropdownField name="SourceGroupDropdownField" style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row; align-items: center; flex-shrink: 0;">
+            <ui:Label text="Target Group" style="min-width: 120px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000055)" />
+                </Bindings>
+            </ui:Label>
+            <ui:DropdownField name="TargetGroupDropdownField" style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:Toggle name="IncludeCombinedToggle" text="Include Combined" style="flex-shrink: 0;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000056)" />
+            </Bindings>
+        </ui:Toggle>
+        <ui:VisualElement name="CreateIndependentSubGroupRow" style="flex-direction: row; flex-shrink: 0;">
+            <ui:Toggle name="CreateIndependentSubGroupToggle" text="Create Independent Sub Group">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000060)" />
+                </Bindings>
+            </ui:Toggle>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row; flex-grow: 1; min-height: 340px; gap: 8px;">
+            <ui:ListView name="SourceSubordinatesListView" selection-type="Single" fixed-item-height="42" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupTransferDialogItem.uxml?fileID=9197481963319205126&amp;guid=86b1ab3cf2a04f4fa9f6a0902b04fed0&amp;type=3#StrategicGroupTransferDialogItem" style="flex-grow: 1; flex-basis: 0; min-width: 0;" />
+            <ui:ListView name="TargetSubordinatesListView" selection-type="Single" fixed-item-height="42" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupTransferDialogItem.uxml?fileID=9197481963319205126&amp;guid=86b1ab3cf2a04f4fa9f6a0902b04fed0&amp;type=3#StrategicGroupTransferDialogItem" style="flex-grow: 1; flex-basis: 0; min-width: 0;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1; flex-basis: 50px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+                </Bindings>
+            </ui:Button>
+            <ui:Button text="Cancel" name="CancelButton" style="flex-grow: 1; flex-basis: 50px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66269346435072)" />
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

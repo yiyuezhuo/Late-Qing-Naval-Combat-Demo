@@ -1,0 +1,21 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="StrategicGroupTransferDialogItem, Assembly-CSharp" style="flex-direction: row; align-items: center; height: 42px; padding-left: 4px; padding-right: 4px;">
+        <ui:VisualElement style="width: 28px; height: 28px; flex-shrink: 0; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgb(240, 240, 240); -unity-background-scale-mode: scale-to-fit;">
+            <Bindings>
+                <ui:DataBinding property="style.backgroundImage" data-source-path="icon" binding-mode="ToTarget" />
+            </Bindings>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; margin-left: 6px;">
+            <ui:Label text="Name" style="margin-top: 0; margin-bottom: 0;">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Description" style="margin-top: 0; margin-bottom: 0; font-size: 11px;">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="desc" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

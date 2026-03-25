@@ -253,6 +253,11 @@
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(18007625104527360)"/>
                             </Bindings>
                         </ui:Button>
+                        <ui:Button text="Transfer" name="TransferButton">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000052)"/>
+                            </Bindings>
+                        </ui:Button>
                     </ui:VisualElement>
                     <ui:Label text="Strategic speed" style="white-space: normal;">
                         <Bindings>

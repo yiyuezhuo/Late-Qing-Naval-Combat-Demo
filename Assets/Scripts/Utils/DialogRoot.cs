@@ -267,6 +267,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset shipGroupRemarkDialogDocument;
     public VisualTreeAsset locationLabelsEditorDialogDocument;
     public VisualTreeAsset subordinatePickerDialogDocument;
+    public VisualTreeAsset strategicGroupTransferDialogDocument;
     public VisualTreeAsset strategicGroupPickerDialogDocument;
     public VisualTreeAsset gamePreferenceDialogDocument;
     public VisualTreeAsset batteryArcIndicatorDialogDocument;
@@ -1505,6 +1506,43 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         };
         tempDialog.onCreated += subordinatePickerDialog.OnCreated;
         tempDialog.onConfirmed += subordinatePickerDialog.OnConfirmed;
+
+        tempDialog.Popup();
+    }
+
+    public void PopupStrategicGroupTransferDialog(StrategicGroup initialGroup)
+    {
+        if (initialGroup == null)
+        {
+            PopupMessageDialog("No strategic group is selected.");
+            return;
+        }
+
+        if (strategicGroupTransferDialogDocument == null)
+        {
+            PopupMessageDialog("StrategicGroupTransferDialog is not configured.");
+            return;
+        }
+
+        var transferDialog = new StrategicGroupTransferDialog()
+        {
+            initialGroupObjectId = initialGroup.objectId,
+        };
+
+        if (!transferDialog.CanOpen(out var message))
+        {
+            PopupMessageDialog(message);
+            return;
+        }
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = strategicGroupTransferDialogDocument,
+            templateDataSource = transferDialog,
+        };
+        tempDialog.onCreated += transferDialog.OnCreated;
+        tempDialog.onConfirmed += transferDialog.OnConfirmed;
 
         tempDialog.Popup();
     }

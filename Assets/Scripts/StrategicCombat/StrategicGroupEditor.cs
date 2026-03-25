@@ -109,6 +109,15 @@ public class StrategicGroupView //
             }
         };
 
+        var transferButton = root.Q<Button>("TransferButton");
+        transferButton.clicked += () =>
+        {
+            if (Utils.TryResolveCurrentValueForBinding(transferButton, out StrategicGroup group))
+            {
+                DialogRoot.Instance.PopupStrategicGroupTransferDialog(group);
+            }
+        };
+
         var gotoContainerButton = root.Q<Button>("GotoContainerButton");
         gotoContainerButton.clicked += () =>
         {

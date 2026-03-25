@@ -88,6 +88,7 @@ MonoBehaviour:
   shipGroupRemarkDialogDocument: {fileID: 9197481963319205126, guid: cc0b947147264f65bb4d41000f496f9d, type: 3}
   locationLabelsEditorDialogDocument: {fileID: 9197481963319205126, guid: 2fd2600c8db241db936cd6838dd8db5e, type: 3}
   subordinatePickerDialogDocument: {fileID: 9197481963319205126, guid: e420e095d56a2e8459a8ffea946107a6, type: 3}
+  strategicGroupTransferDialogDocument: {fileID: 9197481963319205126, guid: 5f5414b7295740ef8f4727d3ad2a6d01, type: 3}
   strategicGroupPickerDialogDocument: {fileID: 9197481963319205126, guid: d8ca426e4e204724686473d7a2501aa9, type: 3}
   gamePreferenceDialogDocument: {fileID: 9197481963319205126, guid: d36e21b721ef0904fa96150894be669f, type: 3}
   batteryArcIndicatorDialogDocument: {fileID: 9197481963319205126, guid: 56ed18c232204f54db09ba227b4e17aa, type: 3}

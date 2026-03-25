@@ -68,8 +68,12 @@ public partial class LocalizedEnumField : BaseField<int>
         {
             // m_Input.choices = Enum.GetNames(m_EnumType).Select(LocalizeEnum).ToList();
             var idx = m_Input.index;
+            var unityLocalizationService = ServiceLocator.Get<ILocalizeService>() as UnityLocalizationService;
 
-            m_Input.choices = Enum.GetNames(m_EnumType).Select(x => Localize($"{m_EnumType.Name}.{x}")).ToList();
+            m_Input.choices = Enum.GetNames(m_EnumType)
+                .Select(x => unityLocalizationService?.GetEnum(m_EnumType, x)
+                    ?? Localize(UnityLocalizationService.GetEnumKey(m_EnumType, x)))
+                .ToList();
             // this.value = this.value; // try to refresh displayed field
 
             m_Input.index = idx;

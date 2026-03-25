@@ -1575,6 +1575,86 @@ MonoBehaviour:
     m_Key: Country.Portugal
     m_Metadata:
       m_Items: []
+  - m_Id: -910000000000000001
+    m_Key: StrategicGroup.Type.General
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000002
+    m_Key: StrategicGroup.Type.HeadQuarter
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000003
+    m_Key: StrategicGroup.Type.Infantry
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000004
+    m_Key: StrategicGroup.Type.Cavalry
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000005
+    m_Key: StrategicGroup.Type.Artillery
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000006
+    m_Key: StrategicGroup.Type.Engineer
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000007
+    m_Key: StrategicGroup.Type.Fleet
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000008
+    m_Key: StrategicGroup.Type.CoastArtillery
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000009
+    m_Key: StrategicGroup.Type.Base
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000010
+    m_Key: StrategicUnitSize.Unspecified
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000011
+    m_Key: StrategicUnitSize.ArmyGroup
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000012
+    m_Key: StrategicUnitSize.Army
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000013
+    m_Key: StrategicUnitSize.Corp
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000014
+    m_Key: StrategicUnitSize.Division
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000015
+    m_Key: StrategicUnitSize.Bridge
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000016
+    m_Key: StrategicUnitSize.Regiment
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000017
+    m_Key: StrategicUnitSize.Battalion
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000018
+    m_Key: StrategicUnitSize.Company
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000019
+    m_Key: StrategicUnitSize.Platoon
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000020
+    m_Key: StrategicUnitSize.Squad
+    m_Metadata:
+      m_Items: []
   - m_Id: 1354008289251328
     m_Key: ShipType.NotSpecified
     m_Metadata:

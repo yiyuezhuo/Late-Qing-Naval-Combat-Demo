@@ -1584,6 +1584,86 @@ MonoBehaviour:
     m_Localized: Japan
     m_Metadata:
       m_Items: []
+  - m_Id: -910000000000000001
+    m_Localized: General
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000002
+    m_Localized: Headquarters
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000003
+    m_Localized: Infantry
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000004
+    m_Localized: Cavalry
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000005
+    m_Localized: Artillery
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000006
+    m_Localized: Engineer
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000007
+    m_Localized: Fleet
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000008
+    m_Localized: Coast Artillery
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000009
+    m_Localized: Base
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000010
+    m_Localized: Unspecified
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000011
+    m_Localized: Army Group
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000012
+    m_Localized: Army
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000013
+    m_Localized: Corps
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000014
+    m_Localized: Division
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000015
+    m_Localized: Brigade
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000016
+    m_Localized: Regiment
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000017
+    m_Localized: Battalion
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000018
+    m_Localized: Company
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000019
+    m_Localized: Platoon
+    m_Metadata:
+      m_Items: []
+  - m_Id: -910000000000000020
+    m_Localized: Squad
+    m_Metadata:
+      m_Items: []
   - m_Id: 1354008289251328
     m_Localized: Not Specified
     m_Metadata:

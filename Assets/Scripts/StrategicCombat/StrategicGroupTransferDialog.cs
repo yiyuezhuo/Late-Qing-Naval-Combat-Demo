@@ -7,6 +7,7 @@ using StrategicCombatCore;
 using Unity.Properties;
 using UnityEngine;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UIElements;
 
 public class StrategicGroupTransferDialogItem
@@ -124,6 +125,110 @@ public class StrategicGroupTransferDialog
         }
 
         return result;
+    }
+
+    static string LocalizeDynamicKeyForLocale(string key, string localeCode, string fallback)
+    {
+        var locale = LocalizationSettings.AvailableLocales?.Locales?
+            .FirstOrDefault(candidate => candidate?.Identifier.CultureInfo.Name == localeCode);
+        if (locale == null)
+            return fallback;
+
+        var result = LocalizationSettings.StringDatabase.GetLocalizedString("Dynamic Table", key, locale);
+        if (string.IsNullOrEmpty(result) || result.StartsWith("No translation found"))
+            return fallback;
+
+        return result;
+    }
+
+    static GlobalString LocalizeEnumGlobalString<T>(T value)
+    {
+        var fallback = value?.ToString() ?? string.Empty;
+        return new GlobalString()
+        {
+            english = LocalizeEnumForLocale(typeof(T), value, "en", fallback),
+            japanese = LocalizeEnumForLocale(typeof(T), value, "ja", fallback),
+            chineseSimplified = LocalizeEnumForLocale(typeof(T), value, "zh-Hans", fallback),
+            chineseTraditional = LocalizeEnumForLocale(typeof(T), value, "zh-Hant", fallback),
+        };
+    }
+
+    static string LocalizeEnumForLocale(Type enumType, object value, string localeCode, string fallback)
+    {
+        foreach (var key in UnityLocalizationService.GetEnumKeys(enumType, value))
+        {
+            var result = LocalizeDynamicKeyForLocale(key, localeCode, key);
+            if (!string.Equals(result, key, StringComparison.Ordinal))
+                return result;
+        }
+
+        return fallback;
+    }
+
+    static string CombineNameSegment(string left, string right, string separator)
+    {
+        if (string.IsNullOrWhiteSpace(left))
+            return right;
+        if (string.IsNullOrWhiteSpace(right))
+            return left;
+        return $"{left}{separator}{right}";
+    }
+
+    static GlobalString CombineNameParts(GlobalString left, GlobalString right)
+    {
+        return new GlobalString()
+        {
+            english = CombineNameSegment(left?.english, right?.english, " "),
+            japanese = CombineNameSegment(left?.japanese, right?.japanese, string.Empty),
+            chineseSimplified = CombineNameSegment(left?.chineseSimplified, right?.chineseSimplified, string.Empty),
+            chineseTraditional = CombineNameSegment(left?.chineseTraditional, right?.chineseTraditional, string.Empty),
+        };
+    }
+
+    static GlobalString AppendGeneratedNameIndex(GlobalString baseName, int index)
+    {
+        var suffix = index.ToString();
+        return new GlobalString()
+        {
+            english = CombineNameSegment(baseName?.english, suffix, " "),
+            japanese = CombineNameSegment(baseName?.japanese, suffix, string.Empty),
+            chineseSimplified = CombineNameSegment(baseName?.chineseSimplified, suffix, string.Empty),
+            chineseTraditional = CombineNameSegment(baseName?.chineseTraditional, suffix, string.Empty),
+        };
+    }
+
+    static string GetEnglishName(GlobalString name) => name?.GetNameFromType(LanguageType.English)?.Trim();
+
+    static GlobalString GetGeneratedSubGroupRoleName(StrategicGroup sourceGroup)
+    {
+        if (sourceGroup.IsNavy())
+            return LocalizeEnumGlobalString(StrategicGroup.Type.Fleet);
+
+        if (sourceGroup.size != StrategicUnitSize.Unspecified)
+            return LocalizeEnumGlobalString(sourceGroup.size);
+
+        return LocalizeEnumGlobalString(sourceGroup.type);
+    }
+
+    static GlobalString BuildGeneratedSubGroupName(StrategicGroup sourceGroup)
+    {
+        var baseName = CombineNameParts(
+            LocalizeEnumGlobalString(sourceGroup.country),
+            GetGeneratedSubGroupRoleName(sourceGroup)
+        );
+        var existingEnglishNames = StrategicGameState.Instance.strategicGroups
+            .Where(group => group != null)
+            .Select(group => GetEnglishName(group.name))
+            .Where(name => !string.IsNullOrWhiteSpace(name))
+            .ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+        var nextIndex = 1;
+        while (existingEnglishNames.Contains(GetEnglishName(AppendGeneratedNameIndex(baseName, nextIndex))))
+        {
+            nextIndex++;
+        }
+
+        return AppendGeneratedNameIndex(baseName, nextIndex);
     }
 
     public string initialGroupObjectId;
@@ -612,7 +717,7 @@ public class StrategicGroupTransferDialog
     {
         var newGroup = new StrategicGroup()
         {
-            name = sourceGroup.name.Add("/2"),
+            name = BuildGeneratedSubGroupName(sourceGroup),
             type = sourceGroup.type,
             size = sourceGroup.size,
             country = sourceGroup.country,

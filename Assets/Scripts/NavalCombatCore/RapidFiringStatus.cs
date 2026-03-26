@@ -465,9 +465,17 @@ namespace NavalCombatCore
                 };
                 original.targettingRecords.Add(matched);
             }
+
+            var targetObjectId = target?.objectId;
+            if (matched.targetObjectId == targetObjectId)
+            {
+                matched.allocated = original.GetAvailableBarrels(side);
+                return;
+            }
+
             matched.processingSeconds = 0;
             matched.allocated = original.GetAvailableBarrels(side);
-            matched.targetObjectId = target?.objectId;
+            matched.targetObjectId = targetObjectId;
             // original.targettingRecords.
         }
 

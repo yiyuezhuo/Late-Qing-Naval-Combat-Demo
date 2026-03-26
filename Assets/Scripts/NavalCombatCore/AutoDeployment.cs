@@ -55,6 +55,7 @@ namespace NavalCombatCore
                 shipLog.speedKnots = speedKnots;
                 shipLog.desiredSpeedKnots = speedKnots;
                 shipLog.mapState = MapState.Deployed;
+                shipLog.MarkNonPhysicalPoseChanged();
             }
         }
 

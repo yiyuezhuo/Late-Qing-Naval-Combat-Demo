@@ -132,6 +132,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     };
     readonly List<LineRenderer> autoWakeLines = new();
     readonly List<WakeSample> wakeSamples = new();
+    int observedNonPhysicalPoseRevision = -1;
     Transform wakePortAnchor;
     Transform wakeStarboardAnchor;
     Material wakeTrailMaterial;
@@ -566,6 +567,19 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
     void UpdateWakeEffects(ShipLog shipLog, float shipLengthWu, float shipBeamWu)
     {
+        if (shipLog == null)
+        {
+            observedNonPhysicalPoseRevision = -1;
+            ClearAutoWakeLines();
+            return;
+        }
+
+        if (observedNonPhysicalPoseRevision != shipLog.NonPhysicalPoseRevision)
+        {
+            observedNonPhysicalPoseRevision = shipLog.NonPhysicalPoseRevision;
+            ClearAutoWakeLines();
+        }
+
         var isMoving = shipLog != null && shipLog.mapState == MapState.Deployed && Math.Abs(shipLog.speedKnots) >= wakeSpeedThresholdKnots;
 
         if (wakeGameObjects != null)
@@ -575,12 +589,6 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
                 if (go != null)
                     go.SetActive(isMoving);
             }
-        }
-
-        if (shipLog == null)
-        {
-            ClearAutoWakeLines();
-            return;
         }
 
         EnsureAutoWakeLines();

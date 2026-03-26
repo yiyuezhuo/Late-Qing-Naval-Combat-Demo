@@ -144,6 +144,14 @@ namespace NavalCombatCore
 
     public partial class ShipLog : IPortraitViewerObservable
     {
+        [XmlIgnore]
+        public int NonPhysicalPoseRevision { get; private set; }
+
+        public void MarkNonPhysicalPoseChanged()
+        {
+            NonPhysicalPoseRevision++;
+        }
+
         [CreateProperty]
         public ShipClass shipClassProperty
         {

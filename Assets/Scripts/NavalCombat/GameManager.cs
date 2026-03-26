@@ -1469,6 +1469,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     {
                         var hitPoint = CameraController2.Instance.GetHitPoint();
                         selectedShipLog.position = Utils.Vector3ToLatLon(hitPoint);
+                        selectedShipLog.MarkNonPhysicalPoseChanged();
                     }
                 }
             }

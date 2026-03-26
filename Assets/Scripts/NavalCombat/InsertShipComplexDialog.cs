@@ -193,6 +193,7 @@ public class InsertShipComplexDialog
         {
             deployedShipLog.mapState = MapState.Deployed;
             deployedShipLog.position = latLon;
+            deployedShipLog.MarkNonPhysicalPoseChanged();
 
             var isShipGroupValid = shipGroupDropdownField.index >= 0 && shipGroupDropdownField.index < gameState.shipGroups.Count;
             if(isShipGroupValid)

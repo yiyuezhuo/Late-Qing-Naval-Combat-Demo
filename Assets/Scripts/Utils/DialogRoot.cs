@@ -2175,6 +2175,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             {
                 selectedShipLog.mapState = MapState.Deployed;
                 selectedShipLog.position = latLon;
+                selectedShipLog.MarkNonPhysicalPoseChanged();
                 // Set Default heading?
             }
         };

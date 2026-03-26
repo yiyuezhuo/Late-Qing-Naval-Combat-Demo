@@ -57,6 +57,7 @@ namespace NavalCombatCore
                     var headingDeg = MeasureUtils.NormalizeAngle(groupHeadingDegree + 180);
                     subShipLog.headingDeg = subShipLog.desiredHeadingDeg = headingDeg;
                     subShipLog.speedKnots = subShipLog.desiredSpeedKnots = speedKnots;
+                    subShipLog.MarkNonPhysicalPoseChanged();
 
                     Geodesic.WGS84.Direct(groupAnchor.LatDeg, groupAnchor.LonDeg, groupHeadingDegree, innerDist, out double lat2, out double lon2);
                     groupAnchor = new LatLon((float)lat2, (float)lon2);

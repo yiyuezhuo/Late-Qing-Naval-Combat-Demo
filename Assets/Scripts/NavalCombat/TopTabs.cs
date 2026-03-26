@@ -446,6 +446,7 @@ public class TopTabs : SingletonDocument<TopTabs>
                     picked.position = new LatLon((float)lat2, (float)lon2);
                     picked.headingDeg = picked.desiredHeadingDeg = target.headingDeg;
                     picked.speedKnots = picked.desiredSpeedKnots = target.speedKnots;
+                    picked.MarkNonPhysicalPoseChanged();
 
                     break;
                 case ControlMode.RelativeToTarget:
@@ -465,6 +466,7 @@ public class TopTabs : SingletonDocument<TopTabs>
                     picked.position = new LatLon((float)lat2, (float)lon2);
                     picked.headingDeg = picked.desiredHeadingDeg = target.headingDeg;
                     picked.speedKnots = picked.desiredSpeedKnots = target.speedKnots;
+                    picked.MarkNonPhysicalPoseChanged();
 
                     break;
             }

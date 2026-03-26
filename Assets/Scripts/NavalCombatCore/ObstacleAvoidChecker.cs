@@ -20,19 +20,23 @@ namespace NavalCombatCore
         Dictionary<float, bool> headingPassedMap = new();
 
         public static float stepDeg = 10; //
+        public static float simpleStepDeg = 20;
+
         public static float boundDeg = 10; //
+
         public static float extrapolateSecondsLow = 60; // 1min
         public static float extrapolateMinHigh = 300; // 5min
         // public static float extrapolateSecondsLow = 60; // 2min
         // public static float extrapolateMinHigh = 120; // 2min
         public static float extrapolateMinStep = 60; // 1min/step
-        // public static bool useBound = false;
+
         public static bool useBound = true;
-        // public static List<float> extrapolateRange = new(){30, 60, 120, 240, 480};
+        public static bool simpleUseBound = true;
+
         public static List<float> extrapolateRange = new(){30, 60, 120, 240};
         public static List<float> simpleExtrapolateRange = new(){60};
-        public static bool simpleUseBound = true;
-        public static float simpleStepDeg = 20;
+        
+        
 
         public static ObstacleAvoidChecker Extract(ShipLog shipLog, bool simple=false)
         {
@@ -50,6 +54,7 @@ namespace NavalCombatCore
                 latLon=latLon,
                 initialDesiredHeadingDeg=shipLog.desiredHeadingDeg,
                 speedMeterPerSecond=speedMeterPerSecond,
+                simple=simple
                 // elevationProvider=ServiceLocator.Get<IElevationProvider>()
             };
         }

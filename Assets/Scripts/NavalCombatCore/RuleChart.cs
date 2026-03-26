@@ -528,6 +528,7 @@ namespace NavalCombatCore
             return torpedoDamageTable.cells[rowIdx, colIdx];
         }
 
+        // T5 Torpedo Damage Table - Armor Adjustment
         public static float[,] armorAdjustmentTable = new float[,]
         {
             { 0,   1.4f, 2.5f, 3.5f, 4.5f, 5.5f, 6.5f, 8.0f, 9.5f, 11.0f, 12.5f, 14.0f},
@@ -536,7 +537,7 @@ namespace NavalCombatCore
 
         public static float GetArmorAdjustment(float armorEffInch)
         {
-            var colIdx = Enumerable.Range(0, armorAdjustmentTable.GetLength(1)).Where(col => armorAdjustmentTable[0, col] <= armorEffInch).Last();
+            var colIdx = Enumerable.Range(0, armorAdjustmentTable.GetLength(1)).Last(col => armorAdjustmentTable[0, col] <= armorEffInch);
             return armorAdjustmentTable[1, colIdx];
         }
 

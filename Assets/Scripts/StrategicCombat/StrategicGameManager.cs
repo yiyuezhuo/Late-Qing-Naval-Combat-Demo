@@ -1174,7 +1174,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
         else if(side0yScore == side1yScore)
         {
-            if(gl[0].Key.name.english[0] > gl[1].Key.name.english[1])
+            // if(gl[0].Key.name.english[0] > gl[1].Key.name.english[0])
+            if(gl[0].Key.name.english.CompareTo(gl[1].Key.name.english) > 0)
             {
                 gTop = gl[1];
                 gBottom = gl[0];

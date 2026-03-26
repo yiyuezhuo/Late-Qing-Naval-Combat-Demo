@@ -141,8 +141,9 @@ namespace NavalCombatCore
 
                             if (armorEffInch > 0)
                             {
+                                // This modifier may be bad for ironclad though. Ironclad should not have no effective TDS for that.
                                 var adjustment = RuleChart.GetArmorAdjustment(armorEffInch);
-                                torpedoDamage = Math.Max(0, torpedoDamage - armorEffInch);
+                                torpedoDamage = Math.Max(0, torpedoDamage - adjustment);
                             }
 
                             // collidedShipLog.damagePoint += torpedoDamage;

@@ -530,7 +530,8 @@ namespace NavalCombatCore
             // always mode
             foreach (var shipLog in autoOperationalShipLogs)
             {
-                var checker = ObstacleAvoidChecker.Extract(shipLog, true);
+                // var checker = ObstacleAvoidChecker.Extract(shipLog, true);
+                var checker = ObstacleAvoidChecker.Extract(shipLog, false);
                 var newDesiredHeadingDeg = checker.Check();
                 shipLog.preCollsionAvoiding = newDesiredHeadingDeg != shipLog.desiredHeadingDeg;
                 shipLog.desiredHeadingDeg = newDesiredHeadingDeg;

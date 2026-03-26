@@ -220,6 +220,8 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             DialogRoot.Instance.PopupOOBTreeDialog(viewableGroups);
         };
 
+        root.Q<Button>("StrategicInfluenceMapButton").clicked += DialogRoot.Instance.PopupStrategicInfluenceMapDialog;
+
         root.Q<Button>("LandBattleEditorButton").clicked += () =>
         {
             LandBattleEditor.Instance.Show();

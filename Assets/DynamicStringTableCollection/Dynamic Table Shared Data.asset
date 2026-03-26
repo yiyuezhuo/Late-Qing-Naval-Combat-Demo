@@ -3130,6 +3130,14 @@ MonoBehaviour:
     m_Key: SJS - Pacific Fleet in the First Sino-Japanese War.scen.xml
     m_Metadata:
       m_Items: []
+  - m_Id: -81000000100001
+    m_Key: StrategicInfluenceMapType.Power
+    m_Metadata:
+      m_Items: []
+  - m_Id: -81000000100002
+    m_Key: StrategicInfluenceMapType.Control
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

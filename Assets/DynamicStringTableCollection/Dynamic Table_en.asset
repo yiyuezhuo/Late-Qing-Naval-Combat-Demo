@@ -3139,6 +3139,14 @@ MonoBehaviour:
     m_Localized: SJS - Pacific Fleet in the First Sino-Japanese War
     m_Metadata:
       m_Items: []
+  - m_Id: -81000000100001
+    m_Localized: Power
+    m_Metadata:
+      m_Items: []
+  - m_Id: -81000000100002
+    m_Localized: Control
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

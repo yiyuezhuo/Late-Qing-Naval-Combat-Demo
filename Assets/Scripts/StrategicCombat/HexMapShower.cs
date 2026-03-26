@@ -101,7 +101,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
             if (value != _showSideFlag)
             {
                 _showSideFlag = value;
-                sideFlagContainerTransform.gameObject.SetActive(showSideFlag);
+                RefreshSideFlagVisibility();
             }
         }
     }
@@ -129,7 +129,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         gameState.mapCellUpdated += OnMapCellUpdated;
         gameState.edgeFeatureUpdated += OnEdgeFeatureUpdated;
 
-        sideFlagContainerTransform.gameObject.SetActive(showSideFlag);
+        RefreshSideFlagVisibility();
 
         GamePreference.Instance.shortLabelLanguageTypeChanged += OnShortLabelLanguageTypeChanged;
     }
@@ -582,9 +582,13 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     {
         public SpriteRenderer flagRenderer;
         public TMP_Text text;
+        public Color defaultTextColor;
     }
 
     Dictionary<(int, int), CellViewer> gridCellViewerMap = new();
+    Dictionary<(int, int), float> influenceOverlayValues = new();
+    bool influenceOverlayActive;
+    float influenceOverlayMaxAbs;
     // Dictionary<string, CellViewer> areaCellViewerMap = new();
 
     public void RefreshMap()
@@ -617,6 +621,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
             var idx = x + y * width;
             cellViewer.flagRenderer = sideFlagRenderers[idx];
             cellViewer.text = cellLabels[idx];
+            cellViewer.defaultTextColor = cellViewer.text.color;
 
             var (xf, yf) = CellXYToLocalXY(x, y);
             var vec = controlledRenderer.transform.TransformPoint(xf, yf, 0);
@@ -644,6 +649,16 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     {
         var cellViewer = gridCellViewerMap[(x, y)];
 
+        if (influenceOverlayActive)
+        {
+            var value = influenceOverlayValues.GetValueOrDefault((x, y));
+            cellViewer.text.text = StrategicInfluenceMapUtility.FormatValue(value);
+            cellViewer.text.color = StrategicInfluenceMapUtility.GetValueColor(value, influenceOverlayMaxAbs);
+            return;
+        }
+
+        cellViewer.text.color = cellViewer.defaultTextColor;
+
         // CellLabelDisplayMode
         if (cellLabelDisplayMode == CellLabelDisplayMode.None)
         {
@@ -669,6 +684,34 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         {
             RefreshCellLabelDisplayMode(x, y);
         }
+    }
+
+    void RefreshSideFlagVisibility()
+    {
+        if (sideFlagContainerTransform != null)
+        {
+            sideFlagContainerTransform.gameObject.SetActive(showSideFlag && !influenceOverlayActive);
+        }
+    }
+
+    public void SetInfluenceOverlay(Dictionary<(int, int), float> values, float maxAbs)
+    {
+        influenceOverlayValues = values != null
+            ? new Dictionary<(int, int), float>(values)
+            : new Dictionary<(int, int), float>();
+        influenceOverlayActive = true;
+        influenceOverlayMaxAbs = maxAbs;
+        RefreshSideFlagVisibility();
+        RefreshCellLabelDisplayMode();
+    }
+
+    public void ClearInfluenceOverlay()
+    {
+        influenceOverlayActive = false;
+        influenceOverlayValues.Clear();
+        influenceOverlayMaxAbs = 0f;
+        RefreshSideFlagVisibility();
+        RefreshCellLabelDisplayMode();
     }
 
     public void RefreshSideFlags()

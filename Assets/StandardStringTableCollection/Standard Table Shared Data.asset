@@ -2791,6 +2791,30 @@ MonoBehaviour:
     m_Key: Detach damaged requires the current group to resolve to a cell.
     m_Metadata:
       m_Items: []
+  - m_Id: -81000000000001
+    m_Key: Side 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: -81000000000002
+    m_Key: Side 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: -81000000000003
+    m_Key: Linear Range (movement cost)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -81000000000004
+    m_Key: Exponential Decay Length (movement cost)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -81000000000005
+    m_Key: Inverse Half-Effect Distance (movement cost)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -81000000000006
+    m_Key: Gaussian Sigma (movement cost)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

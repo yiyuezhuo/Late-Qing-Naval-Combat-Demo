@@ -280,6 +280,72 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         set => HexMapShower.Instance.cellLabelDisplayMode = value;
     }
 
+    public void PlotStrategicInfluenceMap(StrategicInfluenceMapRequest request)
+    {
+        if (request == null)
+            return;
+
+        var side1 = EntityManager.Instance.Get<SideState>(request.side1ObjectId);
+        if (side1 == null)
+        {
+            DialogRoot.Instance.PopupMessageDialog("Strategic Influence Map requires a valid Side 1.");
+            return;
+        }
+
+        if (request.mapType == StrategicInfluenceMapType.Control)
+        {
+            var side2 = EntityManager.Instance.Get<SideState>(request.side2ObjectId);
+            if (side2 == null)
+            {
+                DialogRoot.Instance.PopupMessageDialog("Strategic Influence Map requires a valid Side 2 for Control mode.");
+                return;
+            }
+
+            if (side1.objectId == side2.objectId)
+            {
+                DialogRoot.Instance.PopupMessageDialog("Side 1 and Side 2 must be different for Control mode.");
+                return;
+            }
+        }
+
+        var field = StrategicInfluenceMapUtility.BuildField(StrategicGameState.Instance, request);
+        HexMapShower.Instance.SetInfluenceOverlay(field.gridValues, field.maxAbs);
+        ApplyAreaInfluenceOverlay(field.areaValues, field.maxAbs);
+    }
+
+    public void ClearStrategicInfluenceMap()
+    {
+        if (HexMapShower.Instance != null)
+        {
+            HexMapShower.Instance.ClearInfluenceOverlay();
+        }
+
+        foreach (var hitArea in areaCellObjectIdToHitArea.Values)
+        {
+            hitArea?.ClearInfluenceOverlay();
+        }
+    }
+
+    void ApplyAreaInfluenceOverlay(Dictionary<string, float> areaValues, float maxAbs)
+    {
+        foreach (var (areaCellObjectId, hitArea) in areaCellObjectIdToHitArea)
+        {
+            if (hitArea == null)
+                continue;
+
+            if (!string.IsNullOrWhiteSpace(areaCellObjectId) &&
+                areaValues != null &&
+                areaValues.TryGetValue(areaCellObjectId, out var value))
+            {
+                hitArea.SetInfluenceOverlay(value, maxAbs);
+            }
+            else
+            {
+                hitArea.ClearInfluenceOverlay();
+            }
+        }
+    }
+
     void Start()
     {
         SwitchCenter.Instance.Reset();

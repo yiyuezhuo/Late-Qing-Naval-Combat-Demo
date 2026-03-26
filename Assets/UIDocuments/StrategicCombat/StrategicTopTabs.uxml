@@ -29,6 +29,11 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022935840002048)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="Influence Map" name="StrategicInfluenceMapButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000021)"/>
+                        </Bindings>
+                    </ui:Button>
                     <ui:Label text="Edit Mode">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40292542655926272)"/>

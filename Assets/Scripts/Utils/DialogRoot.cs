@@ -273,6 +273,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset batteryArcIndicatorDialogDocument;
     public VisualTreeAsset plotTrajectoryDialogDocument;
     public VisualTreeAsset influenceMapDialogDocument;
+    public VisualTreeAsset strategicInfluenceMapDialogDocument;
     public VisualTreeAsset shipTimeLocDialogDocument;
     public VisualTreeAsset eventStateEditorDialogDocument;
     public VisualTreeAsset weaponPickerDialogDocument;
@@ -1335,6 +1336,152 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             if (clearButton != null)
             {
                 clearButton.clicked += GameManager.Instance.ClearInfluenceMap;
+            }
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupStrategicInfluenceMapDialog()
+    {
+        var template = strategicInfluenceMapDialogDocument != null
+            ? strategicInfluenceMapDialogDocument
+            : influenceMapDialogDocument;
+        if (template == null)
+        {
+            PopupMessageDialog("StrategicInfluenceMapDialog is not configured.");
+            return;
+        }
+
+        var model = new StrategicInfluenceMapDialogModel();
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = template,
+            templateDataSource = model,
+        };
+
+        tempDialog.onCreated += (_, el) =>
+        {
+            var state = StrategicGameState.Instance;
+            var sides = StrategicInfluenceMapUtility.GetAvailableSides(state);
+            var sideNames = sides.Select(side => side.name.GetMergedName()).ToList();
+
+            var side1DropdownField = el.Q<DropdownField>("Side1DropdownField");
+            var side2DropdownField = el.Q<DropdownField>("Side2DropdownField");
+            var plotButton = el.Q<Button>("PlotButton");
+            var clearButton = el.Q<Button>("ClearButton");
+            var mapTypeField = el.Q<LocalizedEnumField>("MapTypeField");
+            var falloffAlgorithmField = el.Q<LocalizedEnumField>("FalloffAlgorithmField");
+            var linearParameterRow = el.Q<VisualElement>("LinearParameterRow");
+            var exponentialParameterRow = el.Q<VisualElement>("ExponentialParameterRow");
+            var inverseParameterRow = el.Q<VisualElement>("InverseParameterRow");
+            var gaussianParameterRow = el.Q<VisualElement>("GaussianParameterRow");
+
+            void SetSideSelection(DropdownField dropdownField, Action<string> setObjectId, string objectId, int fallbackIndex = 0)
+            {
+                if (dropdownField == null)
+                    return;
+
+                var dropdownSides = dropdownField.userData as List<SideState>;
+                if (dropdownSides == null || dropdownSides.Count == 0)
+                {
+                    dropdownField.index = -1;
+                    setObjectId(null);
+                    return;
+                }
+
+                var selectedIndex = !string.IsNullOrEmpty(objectId)
+                    ? dropdownSides.FindIndex(side => side.objectId == objectId)
+                    : -1;
+                if (selectedIndex < 0)
+                    selectedIndex = Mathf.Clamp(fallbackIndex, 0, dropdownSides.Count - 1);
+
+                dropdownField.index = selectedIndex;
+                setObjectId(dropdownSides[selectedIndex].objectId);
+            }
+
+            void SyncSideSelection(DropdownField dropdownField, Action<string> setObjectId, string defaultObjectId, int defaultIndex = 0)
+            {
+                if (dropdownField == null)
+                    return;
+
+                dropdownField.choices = sideNames;
+                dropdownField.userData = sides;
+                if (sides.Count == 0)
+                {
+                    dropdownField.index = -1;
+                    setObjectId(null);
+                    return;
+                }
+
+                SetSideSelection(dropdownField, setObjectId, defaultObjectId, defaultIndex);
+                dropdownField.RegisterValueChangedCallback(_ =>
+                {
+                    var dropdownSides = dropdownField.userData as List<SideState>;
+                    if (dropdownSides == null || dropdownField.index < 0 || dropdownField.index >= dropdownSides.Count)
+                    {
+                        setObjectId(null);
+                        return;
+                    }
+
+                    setObjectId(dropdownSides[dropdownField.index].objectId);
+                });
+            }
+
+            void SyncFalloffParameterState(InfluenceMapFalloffAlgorithm algorithm)
+            {
+                if (linearParameterRow != null)
+                    linearParameterRow.style.display = algorithm == InfluenceMapFalloffAlgorithm.Linear ? DisplayStyle.Flex : DisplayStyle.None;
+                if (exponentialParameterRow != null)
+                    exponentialParameterRow.style.display = algorithm == InfluenceMapFalloffAlgorithm.Exponential ? DisplayStyle.Flex : DisplayStyle.None;
+                if (inverseParameterRow != null)
+                    inverseParameterRow.style.display = algorithm == InfluenceMapFalloffAlgorithm.Inverse ? DisplayStyle.Flex : DisplayStyle.None;
+                if (gaussianParameterRow != null)
+                    gaussianParameterRow.style.display = algorithm == InfluenceMapFalloffAlgorithm.Gaussian ? DisplayStyle.Flex : DisplayStyle.None;
+            }
+
+            void SyncSide2State(StrategicInfluenceMapType mapType)
+            {
+                side2DropdownField?.SetEnabled(mapType == StrategicInfluenceMapType.Control);
+            }
+
+            var defaultSide1ObjectId = StrategicInfluenceMapUtility.GetDefaultSide1ObjectId(state, StrategicGameManager.Instance.currentSideStateObjectId);
+            var defaultSide2ObjectId = StrategicInfluenceMapUtility.GetDefaultSide2ObjectId(state, defaultSide1ObjectId);
+
+            SyncSideSelection(side1DropdownField, objectId => model.side1ObjectId = objectId, defaultSide1ObjectId, 0);
+            SyncSideSelection(side2DropdownField, objectId => model.side2ObjectId = objectId, defaultSide2ObjectId, sides.Count > 1 ? 1 : 0);
+
+            mapTypeField?.RegisterValueChangedCallback(evt =>
+            {
+                SyncSide2State((StrategicInfluenceMapType)evt.newValue);
+            });
+            SyncSide2State(mapTypeField != null ? (StrategicInfluenceMapType)mapTypeField.value : model.mapType);
+
+            falloffAlgorithmField?.RegisterValueChangedCallback(evt => SyncFalloffParameterState((InfluenceMapFalloffAlgorithm)evt.newValue));
+            SyncFalloffParameterState(falloffAlgorithmField != null ? (InfluenceMapFalloffAlgorithm)falloffAlgorithmField.value : model.falloffAlgorithm);
+
+            if (plotButton != null)
+            {
+                plotButton.clicked += () =>
+                {
+                    StrategicGameManager.Instance.PlotStrategicInfluenceMap(new StrategicInfluenceMapRequest
+                    {
+                        mapType = model.mapType,
+                        falloffAlgorithm = model.falloffAlgorithm,
+                        side1ObjectId = model.side1ObjectId,
+                        side2ObjectId = model.side2ObjectId,
+                        linearRangeCost = model.linearRangeCost,
+                        exponentialDecayLengthCost = model.exponentialDecayLengthCost,
+                        inverseHalfEffectDistanceCost = model.inverseHalfEffectDistanceCost,
+                        gaussianSigmaCost = model.gaussianSigmaCost,
+                    });
+                };
+            }
+
+            if (clearButton != null)
+            {
+                clearButton.clicked += StrategicGameManager.Instance.ClearStrategicInfluenceMap;
             }
         };
 

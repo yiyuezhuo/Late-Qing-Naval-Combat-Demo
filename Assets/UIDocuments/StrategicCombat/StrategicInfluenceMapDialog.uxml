@@ -1,0 +1,82 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="StrategicInfluenceMapDialogModel, Assembly-CSharp" class="panel-dialog" style="width: 420px; height: auto;">
+        <ui:Label text="Influence Map" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000021)"/>
+            </Bindings>
+        </ui:Label>
+        <ui:VisualElement style="flex-grow: 1;">
+            <LocalizedEnumField name="MapTypeField" type-str="StrategicInfluenceMapType" label="Influence Map Type">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="mapTypeValue" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000022)"/>
+                </Bindings>
+            </LocalizedEnumField>
+            <ui:DropdownField name="Side1DropdownField" label="Side 1">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-81000000000001)"/>
+                </Bindings>
+            </ui:DropdownField>
+            <ui:DropdownField name="Side2DropdownField" label="Side 2">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-81000000000002)"/>
+                </Bindings>
+            </ui:DropdownField>
+            <LocalizedEnumField name="FalloffAlgorithmField" type-str="InfluenceMapFalloffAlgorithm" label="Falloff Algorithm">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="falloffAlgorithmValue" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000027)"/>
+                </Bindings>
+            </LocalizedEnumField>
+            <ui:VisualElement name="LinearParameterRow">
+                <ui:FloatField name="LinearRangeField" label="Linear Range (movement cost)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="linearRangeCost" binding-mode="TwoWay"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-81000000000003)"/>
+                    </Bindings>
+                </ui:FloatField>
+            </ui:VisualElement>
+            <ui:VisualElement name="ExponentialParameterRow" style="display: none;">
+                <ui:FloatField name="ExponentialDecayField" label="Exponential Decay Length (movement cost)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="exponentialDecayLengthCost" binding-mode="TwoWay"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-81000000000004)"/>
+                    </Bindings>
+                </ui:FloatField>
+            </ui:VisualElement>
+            <ui:VisualElement name="InverseParameterRow" style="display: none;">
+                <ui:FloatField name="InverseHalfEffectField" label="Inverse Half-Effect Distance (movement cost)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="inverseHalfEffectDistanceCost" binding-mode="TwoWay"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-81000000000005)"/>
+                    </Bindings>
+                </ui:FloatField>
+            </ui:VisualElement>
+            <ui:VisualElement name="GaussianParameterRow" style="display: none;">
+                <ui:FloatField name="GaussianSigmaField" label="Gaussian Sigma (movement cost)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="gaussianSigmaCost" binding-mode="TwoWay"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-81000000000006)"/>
+                    </Bindings>
+                </ui:FloatField>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row; flex-grow: 0; flex-shrink: 0;">
+            <ui:Button text="Plot" name="PlotButton" style="flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000025)"/>
+                </Bindings>
+            </ui:Button>
+            <ui:Button text="Clear" name="ClearButton" style="flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000026)"/>
+                </Bindings>
+            </ui:Button>
+            <ui:Button text="Cancel" name="CancelButton" style="flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66269346435072)"/>
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

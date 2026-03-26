@@ -42,7 +42,8 @@ namespace NavalCombatCore
 
         public float underfireCoef = 0.1f;
         public float overconcentrateCoef = 0.2f;
-        public float changeTargetCoef = 0.5f; // TODO: Enable it in another implementation?
+        public float changeTargetCoef = 0f; // Legacy flat stickiness is disabled in favor of state-based retention bonuses.
+        public static float currentTargetTrackingEffectivenessBonus = 0.2f; // Bonus when keeping fire on a target already under Tracking/Hitting.
 
         // Urgency boost for knife-fight distances where enemy torpedo danger is assumed to be imminent.
         public static float torpedoThreatRangeYards = 1000f;
@@ -85,6 +86,7 @@ namespace NavalCombatCore
             public IWTABattery original;
             // Frozen Values
             public TargetRecord currentTarget;
+            public float currentTargetFireEffectivenessFactor = 1f;
             // Solver States
             public Dictionary<TargetRecord, float> firepowerScoreMap = new();
             public TargetRecord assignedTarget;
@@ -150,6 +152,10 @@ namespace NavalCombatCore
                     {
                         battery.currentTarget = oriToTarget.GetValueOrDefault(currentTargetObject);
                         battery.isChangeTargetBlocked = battery.original.IsChangeTargetBlocked();
+                        if (battery.currentTarget != null)
+                        {
+                            battery.currentTargetFireEffectivenessFactor = GetCurrentTargetFireEffectivenessFactor(battery);
+                        }
                     }
                 }
 
@@ -175,7 +181,7 @@ namespace NavalCombatCore
                     if (battery.currentTarget != null && battery.isChangeTargetBlocked)
                     {
                         battery.assignedTarget = battery.currentTarget; // TODO: Is it too harsh to a battery which is capable to shoot multiply targets?
-                        battery.currentTarget.underFirepower += battery.firepowerScoreMap[battery.currentTarget];
+                        battery.currentTarget.underFirepower += battery.firepowerScoreMap[battery.currentTarget] * battery.currentTargetFireEffectivenessFactor;
                         battery.currentTarget.overConcentrationScore += battery.overConcentrationCoef;
                     }
                 }
@@ -207,6 +213,10 @@ namespace NavalCombatCore
                             var stats = shooter.measurements[target];
                             var targetUrgencyFactor = GetTargetUrgencyFactor(stats.distanceYards);
                             var tryAddedFirepowerScore = battery.firepowerScoreMap[target];
+                            if (battery.currentTarget == target)
+                            {
+                                tryAddedFirepowerScore *= battery.currentTargetFireEffectivenessFactor;
+                            }
                             var tryAddedOverconcentrationScore = battery.overConcentrationCoef;
                             var gain = GetTargettingScoreGain(target.selfFirepowerScore, target.survivability, targetUrgencyFactor,
                                     target.underFirepower, target.overConcentrationScore, tryAddedFirepowerScore, tryAddedOverconcentrationScore);
@@ -285,6 +295,49 @@ namespace NavalCombatCore
         static float GetTargetUrgencyFactor(float distanceYards)
         {
             return distanceYards < torpedoThreatRangeYards ? torpedoThreatTargetUrgencyFactor : 1f;
+        }
+
+        static float GetCurrentTargetFireEffectivenessFactor(BatteryRecord battery)
+        {
+            if (battery.currentTarget == null)
+                return 1f;
+
+            var factor = 1f;
+
+            if (battery.original is BatteryStatus gunBattery)
+            {
+                var currentTargetShip = battery.currentTarget.original as ShipLog;
+                var hasTrackingBonus = gunBattery.fireControlSystemStatusRecords.Any(fcs =>
+                    fcs.IsOperational() &&
+                    fcs.GetTarget() == currentTargetShip &&
+                    (fcs.trackingState == TrackingSystemState.Tracking || fcs.trackingState == TrackingSystemState.Hitting)
+                );
+                if (hasTrackingBonus)
+                {
+                    factor += currentTargetTrackingEffectivenessBonus;
+                }
+
+                var averageProcessSeconds = gunBattery.mountStatus
+                    .Where(mnt => mnt.IsOperational() && mnt.GetFiringTarget() == currentTargetShip)
+                    .Select(mnt => mnt.processSeconds)
+                    .DefaultIfEmpty(0f)
+                    .Average();
+                factor += averageProcessSeconds / 120f;
+                return factor;
+            }
+
+            if (battery.original is RapidFiringBatteryStatusOneSide rapidBattery)
+            {
+                var currentTargetShip = battery.currentTarget.original as ShipLog;
+                var processingSeconds = rapidBattery.original.targettingRecords
+                    .Where(r => r.location == rapidBattery.side && r.GetTarget() == currentTargetShip)
+                    .Select(r => r.processingSeconds)
+                    .DefaultIfEmpty(0f)
+                    .First();
+                factor += processingSeconds / 120f;
+            }
+
+            return factor;
         }
     }
 

@@ -29527,10 +29527,6 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <interrupted>false</interrupted>
     <objectId>382b9f09-2109-4f56-84fb-640f3129a8e5</objectId>
     <supplyState>AssemblingAndLoading</supplyState>
-    <sourceDepotReference />
-    <targetDepotReference>
-     <objectId>69fa8dac-d422-4297-9726-e145ece4ab13</objectId>
-    </targetDepotReference>
    </StrategicMission>
    <StrategicMission xsi:type="NavalTransferMission">
     <name>

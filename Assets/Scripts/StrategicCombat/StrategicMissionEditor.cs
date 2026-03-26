@@ -66,9 +66,6 @@ public class StrategicMissionEditor : LeftObjectPickerRightEditorStrategic<Strat
         // Utils.BindStrategicGroupMemberReferenceListView(groupsListView, contentContainer, this);
         Utils.BindMissionMembership(groupsListView, contentContainer, this);
 
-        BindDepotSetGotoButton(root.Q<Button>("SetSourceDepotButton"), root.Q<Button>("GotoSourceDepotButton"));
-        BindDepotSetGotoButton(root.Q<Button>("SetTargetDepotButton"), root.Q<Button>("GotoTargetDepotButton"));
-
         var parentMissionButton = root.Q<Button>("ParentMissionButton");
         parentMissionButton.clicked += () =>
         {
@@ -144,32 +141,4 @@ public class StrategicMissionEditor : LeftObjectPickerRightEditorStrategic<Strat
         };
     }
 
-    public void BindDepotSetGotoButton(Button setButton, Button gotoButton)
-    {
-        setButton.clicked += () =>
-        {
-            if (Utils.TryResolveCurrentValueForBinding(setButton, out LandUnitReference landUnitRef))
-            {
-                DialogRoot.Instance.PopupSubordinatePickerDialog(selectedReferenceables =>
-                {
-                    var depot = selectedReferenceables.FirstOrDefault() as LandUnit;
-                    if (depot != null)
-                    {
-                        landUnitRef.objectId = depot.objectId;
-                    }
-
-                }, SubordinatePickerDialog.Mode.Depot);
-            }
-        };
-
-        gotoButton.clicked += () =>
-        {
-            if (Utils.TryResolveCurrentValueForBinding(gotoButton, out LandUnitReference landUnitRef))
-            {
-                var sourceDepot = landUnitRef.Get();
-
-                SwitchCenter.Instance.SwitchToLandUnitView(sourceDepot);
-            }
-        };
-    }
 }

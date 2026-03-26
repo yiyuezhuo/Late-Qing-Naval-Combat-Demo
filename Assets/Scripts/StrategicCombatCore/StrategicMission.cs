@@ -540,16 +540,30 @@ namespace StrategicCombatCore
 
         public SupplyState supplyState;
 
-        // public StrategicGroupMemberReference startHq;
-        // public StrategicGroupMemberReference destinationHq;
-        // public string sourceDepotObjectId;
-        // public string targetDepotObjectId;
-        public LandUnitReference sourceDepotReference = new();
-        public LandUnitReference targetDepotReference = new();
-
-
         // public bool IsValidSupplyMission() => type == MissionType.Supply && waypoints.Count >= 2;
         public bool IsValidSupplyMission() => waypoints.Count >= 2;
+
+        LandUnit GetWaypointDestinationDepot()
+        {
+            var destinationCell = GetWaypointDestinationCell();
+            if (destinationCell == null)
+                return null;
+
+            var missionSide = GetSide();
+            var baseGroups = destinationCell.StrategicGroupReferences
+                .Select(reference => reference.Get())
+                .Where(group => group != null && group.IsBase())
+                .OrderByDescending(group => group.side == missionSide);
+
+            foreach (var baseGroup in baseGroups)
+            {
+                var depot = baseGroup.GetFirstDepot();
+                if (depot != null)
+                    return depot;
+            }
+
+            return null;
+        }
 
         protected override void DoTransition()
         {
@@ -605,7 +619,7 @@ namespace StrategicCombatCore
             // Transfer supply from ship to destination here or in the supply step
             if (supplyState == SupplyState.StartToDestinationAndUnloading)
             {
-                var targetDepot = targetDepotReference.Get();
+                var targetDepot = GetWaypointDestinationDepot();
                 if (targetDepot != null && strategicGroup.cell == targetDepot.cell)
                 {
                     foreach (var ship in WalkGroupMembersDeployedShips())

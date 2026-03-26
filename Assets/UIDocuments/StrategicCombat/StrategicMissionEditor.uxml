@@ -117,40 +117,6 @@
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054384923971584)"/>
                                         </Bindings>
                                     </ui:EnumField>
-                                    <ui:VisualElement data-source-path="sourceDepotReference" style="flex-grow: 1; flex-direction: row;">
-                                        <ui:Label text="Source Depot" style="width: 120px;">
-                                            <Bindings>
-                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054514137894912)"/>
-                                            </Bindings>
-                                        </ui:Label>
-                                        <ui:Button text="Set" name="SetSourceDepotButton">
-                                            <Bindings>
-                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)"/>
-                                            </Bindings>
-                                        </ui:Button>
-                                        <ui:Button text="Source Depot Name" name="GotoSourceDepotButton" style="flex-grow: 1;">
-                                            <Bindings>
-                                                <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget"/>
-                                            </Bindings>
-                                        </ui:Button>
-                                    </ui:VisualElement>
-                                    <ui:VisualElement data-source-path="targetDepotReference" style="flex-grow: 1; flex-direction: row;">
-                                        <ui:Label text="Target Depot" style="width: 120px;">
-                                            <Bindings>
-                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054619624640512)"/>
-                                            </Bindings>
-                                        </ui:Label>
-                                        <ui:Button text="Set" name="SetTargetDepotButton">
-                                            <Bindings>
-                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)"/>
-                                            </Bindings>
-                                        </ui:Button>
-                                        <ui:Button text="Target Depot Name" name="GotoTargetDepotButton" style="flex-grow: 1;">
-                                            <Bindings>
-                                                <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget"/>
-                                            </Bindings>
-                                        </ui:Button>
-                                    </ui:VisualElement>
                                 </ui:VisualElement>
                                 <Bindings>
                                     <ui:DataBinding property="style.display" data-source-path="isSupply" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>

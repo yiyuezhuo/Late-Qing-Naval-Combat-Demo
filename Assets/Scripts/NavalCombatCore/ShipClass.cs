@@ -613,6 +613,11 @@ namespace NavalCombatCore
             if (fireControlRow == null)
                 return 0;
             var fireControlValue = fireControlRow.GetValue(rangeBand, targetAspect);
+            if (distanceYards <= 4500 && rangeBand == RangeBand.Short)
+            {
+                var closeRangeFireControlValue = RuleChart.GetCloseRangeFireControlScore(distanceYards, targetSpeedKnots, targetAspect);
+                fireControlValue = Math.Max(fireControlValue, closeRangeFireControlValue);
+            }
 
             return damageRating * rateOfFire * fireControlValue;
         }

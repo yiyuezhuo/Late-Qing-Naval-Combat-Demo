@@ -148,6 +148,11 @@ public class MainMenu : SingletonDocument<MainMenu>
         var longitude = 123.5f;
 
         var gameState = new NavalGameState();
+        if (skirmish)
+        {
+            gameState.scenarioState.hasEndDateTime = true;
+            gameState.scenarioState.endDateTime = gameState.scenarioState.dateTime.AddHours(3);
+        }
 
         if(!skirmish)
         {

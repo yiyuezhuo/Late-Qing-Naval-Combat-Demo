@@ -44,16 +44,6 @@ namespace NavalCombatCore
         public float overconcentrateCoef = 0.2f;
         public float changeTargetCoef = 0.5f; // TODO: Enable it in another implementation?
 
-        // Engagement bands used to boost the effectiveness of short-range gunnery in the allocator.
-        public static float closeRangeStartYards = 2000f;
-        public static float closeRangeEndYards = 4500f;
-        public static float closeRangeFireEffectivenessFactor = 1.5f;
-
-        // Extra bonus for very close combat where short-range fire becomes even more decisive.
-        public static float closeRangePlusStartYards = 0f;
-        public static float closeRangePlusEndYards = 2000f;
-        public static float closeRangePlusFireEffectivenessFactor = 1.75f;
-
         // Urgency boost for knife-fight distances where enemy torpedo danger is assumed to be imminent.
         public static float torpedoThreatRangeYards = 1000f;
         public static float torpedoThreatTargetUrgencyFactor = 1.5f;
@@ -184,10 +174,8 @@ namespace NavalCombatCore
 
                     if (battery.currentTarget != null && battery.isChangeTargetBlocked)
                     {
-                        var stats = shooter.measurements[battery.currentTarget];
-                        var fireEffectivenessFactor = GetFireEffectivenessFactor(stats.distanceYards);
                         battery.assignedTarget = battery.currentTarget; // TODO: Is it too harsh to a battery which is capable to shoot multiply targets?
-                        battery.currentTarget.underFirepower += battery.firepowerScoreMap[battery.currentTarget] * fireEffectivenessFactor;
+                        battery.currentTarget.underFirepower += battery.firepowerScoreMap[battery.currentTarget];
                         battery.currentTarget.overConcentrationScore += battery.overConcentrationCoef;
                     }
                 }
@@ -217,9 +205,8 @@ namespace NavalCombatCore
                                 continue;
 
                             var stats = shooter.measurements[target];
-                            var fireEffectivenessFactor = GetFireEffectivenessFactor(stats.distanceYards);
                             var targetUrgencyFactor = GetTargetUrgencyFactor(stats.distanceYards);
-                            var tryAddedFirepowerScore = battery.firepowerScoreMap[target] * fireEffectivenessFactor;
+                            var tryAddedFirepowerScore = battery.firepowerScoreMap[target];
                             var tryAddedOverconcentrationScore = battery.overConcentrationCoef;
                             var gain = GetTargettingScoreGain(target.selfFirepowerScore, target.survivability, targetUrgencyFactor,
                                     target.underFirepower, target.overConcentrationScore, tryAddedFirepowerScore, tryAddedOverconcentrationScore);
@@ -293,15 +280,6 @@ namespace NavalCombatCore
             var newScore = GetTargettingScore(targetSelfFirepower, targetSurvivability, targetUrgencyFactor,
                 currentTargetUnderFirepower + newBatteryFirepower, currentOverConcentrationScore + tryAddedOverconcentrationScore);
             return newScore - currentScore;
-        }
-
-        static float GetFireEffectivenessFactor(float distanceYards)
-        {
-            if (distanceYards >= closeRangePlusStartYards && distanceYards < closeRangePlusEndYards)
-                return closeRangePlusFireEffectivenessFactor;
-            if (distanceYards >= closeRangeStartYards && distanceYards <= closeRangeEndYards)
-                return closeRangeFireEffectivenessFactor;
-            return 1f;
         }
 
         static float GetTargetUrgencyFactor(float distanceYards)

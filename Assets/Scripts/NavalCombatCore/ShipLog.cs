@@ -1778,6 +1778,11 @@ namespace NavalCombatCore
             return dp * armorScoreSmoothed;
         }
 
+        float IWTAObject.EvaluateSurvivability()
+        {
+            return shipClass?.EvaluateSurvivability() ?? 0;
+        }
+
         public float EvaluateBatteryFirepowerScore()
         {
             return batteryStatus.Sum(bs => bs.EvaluateFirepowerScore());

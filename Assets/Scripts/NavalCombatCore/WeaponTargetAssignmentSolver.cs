@@ -46,8 +46,8 @@ namespace NavalCombatCore
         public static float currentTargetTrackingEffectivenessBonus = 0.2f; // Bonus when keeping fire on a target already under Tracking/Hitting.
 
         // Urgency boost for knife-fight distances where enemy torpedo danger is assumed to be imminent.
-        public static float torpedoThreatRangeYards = 1000f;
-        public static float torpedoThreatTargetUrgencyFactor = 1.5f;
+        public static float torpedoThreatRangeYards = 1500f;
+        public static float torpedoThreatTargetUrgencyFactor = 2.0f;
 
         public class ShooterRecord
         {

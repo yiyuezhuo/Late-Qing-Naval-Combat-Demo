@@ -38,3 +38,6 @@ Check Localization_AI_Guide.md for making localization modifications in UI Toolk
 
 ## Local command guardrails
 - Only build this repo’s solution: `Late-Qing-Naval-Combat-Demo.slnx`.
+
+## Subagent Authorization
+- For tasks in this repository, the agent may autonomously use subagents when helpful for exploration, parallel analysis, focused implementation, or verification.

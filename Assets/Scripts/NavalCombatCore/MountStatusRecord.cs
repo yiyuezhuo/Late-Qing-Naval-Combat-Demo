@@ -743,7 +743,7 @@ namespace NavalCombatCore
             breakdown.baseFireControlValue = fireControlScoreRaw;
 
             // Positive Modifier
-            if (stats.distanceYards <= 4500)
+            if (stats.distanceYards <= 4500 && penRecord.rangeBand == RangeBand.Short)
             {
                 var closeRangeFireControlScore = RuleChart.GetCloseRangeFireControlScore(stats.distanceYards, target.speedKnots, stats.targetPresentAspectFromObserver);
                 var adjusted = Math.Max(fireControlScoreRaw, closeRangeFireControlScore);

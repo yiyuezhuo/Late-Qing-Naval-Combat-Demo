@@ -1818,7 +1818,7 @@ namespace NavalCombatCore
         public float EvaluateSurvivability()
         {
             var armorScoreSmoothed = 1 + EvaluateArmorScore();
-            var dp = shipClass?.damagePoint ?? 0 - damagePoint;
+            var dp = Math.Max(0, (shipClass?.damagePoint ?? 0) - damagePoint);
             return dp * armorScoreSmoothed;
         }
 

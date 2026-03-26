@@ -44,6 +44,20 @@ namespace NavalCombatCore
         public float overconcentrateCoef = 0.2f;
         public float changeTargetCoef = 0.5f; // TODO: Enable it in another implementation?
 
+        // Engagement bands used to boost the effectiveness of short-range gunnery in the allocator.
+        public static float closeRangeStartYards = 2000f;
+        public static float closeRangeEndYards = 4500f;
+        public static float closeRangeFireEffectivenessFactor = 1.5f;
+
+        // Extra bonus for very close combat where short-range fire becomes even more decisive.
+        public static float closeRangePlusStartYards = 0f;
+        public static float closeRangePlusEndYards = 2000f;
+        public static float closeRangePlusFireEffectivenessFactor = 1.75f;
+
+        // Urgency boost for knife-fight distances where enemy torpedo danger is assumed to be imminent.
+        public static float torpedoThreatRangeYards = 1000f;
+        public static float torpedoThreatTargetUrgencyFactor = 1.5f;
+
         public class ShooterRecord
         {
             public IWTAObject original;
@@ -170,8 +184,10 @@ namespace NavalCombatCore
 
                     if (battery.currentTarget != null && battery.isChangeTargetBlocked)
                     {
+                        var stats = shooter.measurements[battery.currentTarget];
+                        var fireEffectivenessFactor = GetFireEffectivenessFactor(stats.distanceYards);
                         battery.assignedTarget = battery.currentTarget; // TODO: Is it too harsh to a battery which is capable to shoot multiply targets?
-                        battery.currentTarget.selfFirepowerScore += battery.firepowerScoreMap[battery.currentTarget];
+                        battery.currentTarget.underFirepower += battery.firepowerScoreMap[battery.currentTarget] * fireEffectivenessFactor;
                         battery.currentTarget.overConcentrationScore += battery.overConcentrationCoef;
                     }
                 }
@@ -200,11 +216,12 @@ namespace NavalCombatCore
                             if(shooter.manualFireTarget != null && shooter.manualFireTarget != target)
                                 continue;
 
-                            // var stats = shooter.measurements[target];
-                            // var firepowerScore = battery.original.EvaluateFirepowerScore(stats.distanceYards, stats.targetPresentAspectFromObserver, target.speedKnots, stats.observerToTargetViewBearingRelativeToBowDeg);
-                            var tryAddedFirepowerScore = battery.firepowerScoreMap[target];
+                            var stats = shooter.measurements[target];
+                            var fireEffectivenessFactor = GetFireEffectivenessFactor(stats.distanceYards);
+                            var targetUrgencyFactor = GetTargetUrgencyFactor(stats.distanceYards);
+                            var tryAddedFirepowerScore = battery.firepowerScoreMap[target] * fireEffectivenessFactor;
                             var tryAddedOverconcentrationScore = battery.overConcentrationCoef;
-                            var gain = GetTargettingScoreGain(target.selfFirepowerScore, target.survivability,
+                            var gain = GetTargettingScoreGain(target.selfFirepowerScore, target.survivability, targetUrgencyFactor,
                                     target.underFirepower, target.overConcentrationScore, tryAddedFirepowerScore, tryAddedOverconcentrationScore);
                             if (battery.currentTarget == target)
                             {
@@ -236,7 +253,7 @@ namespace NavalCombatCore
                 // }
 
                 bestBattery.assignedTarget = bestTarget; // TODO: Too harsh to battery which is capable to shoot multiply targets?
-                bestTarget.selfFirepowerScore += bestFirepowerScore;
+                bestTarget.underFirepower += bestFirepowerScore;
                 bestTarget.overConcentrationScore += bestBattery.overConcentrationCoef;
             }
 
@@ -251,10 +268,11 @@ namespace NavalCombatCore
             }
         }
 
-        public float GetTargettingScore(float targetSelfFirepower, float targetSurvivability, float targetUnderFirepower, int overConcentrationScore)
+        public float GetTargettingScore(float targetSelfFirepower, float targetSurvivability, float targetUrgencyFactor, float targetUnderFirepower, int overConcentrationScore)
         {
             // var score = targetSelfFirepower / (1 + targetSurvivability) * targetUnderFirepower;
-            var score = (1 + targetSelfFirepower) / (1 + targetSurvivability) * targetUnderFirepower;
+            var targetValue = (1 + targetSelfFirepower) / (1 + targetSurvivability) * targetUrgencyFactor;
+            var score = targetValue * targetUnderFirepower;
             if (overConcentrationScore == 1)
             {
                 score *= 1 + underfireCoef;
@@ -266,14 +284,29 @@ namespace NavalCombatCore
             return score;
         }
 
-        public float GetTargettingScoreGain(float targetSelfFirepower, float targetSurvivability, float currentTargetUnderFirepower, int currentOverConcentrationScore,
+        public float GetTargettingScoreGain(float targetSelfFirepower, float targetSurvivability, float targetUrgencyFactor,
+            float currentTargetUnderFirepower, int currentOverConcentrationScore,
             float newBatteryFirepower, int tryAddedOverconcentrationScore)
         {
-            var currentScore = GetTargettingScore(targetSelfFirepower, targetSurvivability,
+            var currentScore = GetTargettingScore(targetSelfFirepower, targetSurvivability, targetUrgencyFactor,
                 currentTargetUnderFirepower, currentOverConcentrationScore);
-            var newScore = GetTargettingScore(targetSelfFirepower, targetSurvivability,
+            var newScore = GetTargettingScore(targetSelfFirepower, targetSurvivability, targetUrgencyFactor,
                 currentTargetUnderFirepower + newBatteryFirepower, currentOverConcentrationScore + tryAddedOverconcentrationScore);
             return newScore - currentScore;
+        }
+
+        static float GetFireEffectivenessFactor(float distanceYards)
+        {
+            if (distanceYards >= closeRangePlusStartYards && distanceYards < closeRangePlusEndYards)
+                return closeRangePlusFireEffectivenessFactor;
+            if (distanceYards >= closeRangeStartYards && distanceYards <= closeRangeEndYards)
+                return closeRangeFireEffectivenessFactor;
+            return 1f;
+        }
+
+        static float GetTargetUrgencyFactor(float distanceYards)
+        {
+            return distanceYards < torpedoThreatRangeYards ? torpedoThreatTargetUrgencyFactor : 1f;
         }
     }
 

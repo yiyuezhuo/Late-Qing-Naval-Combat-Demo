@@ -221,6 +221,23 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         isRealtimeAdvancing = !isRealtimeAdvancing;
     }
 
+    public void StopRealtimeAdvance()
+    {
+        isRealtimeAdvancing = false;
+    }
+
+    public void PopupMessageWithPause(string message, string title = null)
+    {
+        StopRealtimeAdvance();
+        DialogRoot.Instance.PopupMessageDialog(message, title);
+    }
+
+    public void PopupConfirmWithPause(string message, Action confirmCallback, string title = null)
+    {
+        StopRealtimeAdvance();
+        DialogRoot.Instance.PopupConfirmDialog(message, confirmCallback, title);
+    }
+
     public void SetStrategicTimeAdvanceSpeed(StrategicTimeAdvanceSpeed speed)
     {
         strategicTimeAdvanceSpeed = speed;
@@ -529,7 +546,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         {
             gameState.scenarioState.firstLoaded = true;
 
-            DialogRoot.Instance.PopupMessageDialog(gameState.scenarioState.globalDescription.GetShortName(), "Scenario Description");
+            PopupMessageWithPause(gameState.scenarioState.globalDescription.GetShortName(), "Scenario Description");
         }
     }
 

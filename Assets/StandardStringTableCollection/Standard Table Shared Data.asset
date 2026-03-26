@@ -2782,7 +2782,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -90000000000005
-    m_Key: "The following ships will be detached for repair:\n{0}"
+    m_Key: 'The following ships will be detached for repair:
+
+      {0}'
     m_Metadata:
       m_Items: []
   - m_Id: -90000000000006

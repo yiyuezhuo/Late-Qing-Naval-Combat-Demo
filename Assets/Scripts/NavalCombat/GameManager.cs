@@ -658,6 +658,26 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             PauseUnityClock();
     }
 
+    public void StopAutoPlay()
+    {
+        isAutoPlaying = false;
+        remainAdvanceSimulationSecondsRequestedByUserInput = 0f;
+        remainAdvanceSimulationSecondsRequestedByUpdate = 0f;
+        RefreshClockState();
+    }
+
+    public void PopupMessageWithPause(string message, string title = null)
+    {
+        StopAutoPlay();
+        DialogRoot.Instance.PopupMessageDialog(message, title);
+    }
+
+    public void PopupConfirmWithPause(string message, Action confirmCallback, string title = null)
+    {
+        StopAutoPlay();
+        DialogRoot.Instance.PopupConfirmDialog(message, confirmCallback, title);
+    }
+
     public void UpdateSimulation()
     {
         projectileVisualAdvanceSecondsThisFrame = 0f;
@@ -789,7 +809,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     if(startupConfig.IsFromStrategic())
                     {
-                        DialogRoot.Instance.PopupConfirmDialog(Localize(
+                        PopupConfirmWithPause(Localize(
                             "The battle field has only a operational fleet now. You can return to the strategic game now, or use the button on the top menu bar to return at any time."
                         ), () =>
                         {
@@ -798,7 +818,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     }
                     else
                     {
-                        DialogRoot.Instance.PopupConfirmDialog(Localize(
+                        PopupConfirmWithPause(Localize(
                             "The battle field has only a operational fleet now. Check the victory status now?"
                             ), () =>
                             {
@@ -836,7 +856,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
                     if(startupConfig.IsFromStrategic())
                     {
-                        DialogRoot.Instance.PopupConfirmDialog(Localize(
+                        PopupConfirmWithPause(Localize(
                             "Fleets appears to be disengaged. You can return to the strategic game now, or use the button on the top menu bar to exit at any time."
                         ), () =>
                         {
@@ -845,7 +865,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     }
                     else
                     {
-                        DialogRoot.Instance.PopupConfirmDialog(Localize(
+                        PopupConfirmWithPause(Localize(
                             "Fleets appears to be disengaged. Check the victory status now?"
                             ), () =>
                             {
@@ -865,7 +885,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
             if(startupConfig.IsFromStrategic())
             {
-                DialogRoot.Instance.PopupConfirmDialog(Localize(
+                PopupConfirmWithPause(Localize(
                     "Scenario End time is reached. You can return to the strategic game now, or use the button on the top menu bar to return at any time."
                 ), () =>
                 {
@@ -874,7 +894,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else
             {
-                DialogRoot.Instance.PopupConfirmDialog(Localize(
+                PopupConfirmWithPause(Localize(
                     "Scenario End time is reached. Check the victory status now?"
                     ), () =>
                     {
@@ -1342,12 +1362,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     if(networkingManager == null)
                     {
-                        isAutoPlaying = !isAutoPlaying;
-                        if(isAutoPlaying) // Clear logs if current only and clear potential "leaked" seconds requested by input.
+                        if (isAutoPlaying)
                         {
-                            SetRemainAdvanceSimulationSecondsRequestedByUserInput(0);
+                            StopAutoPlay();
                         }
-                        RefreshClockState();
+                        else
+                        {
+                            isAutoPlaying = true;
+                            SetRemainAdvanceSimulationSecondsRequestedByUserInput(0);
+                            RefreshClockState();
+                        }
                     }
                     else
                     {

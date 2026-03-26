@@ -126,7 +126,10 @@ public class ScriptEngine
     {
         // Tutorial prompts should still appear when naval simulation is paused (timeScale = 0).
         yield return new WaitForSecondsRealtime(seconds);
-        DialogRoot.Instance.PopupMessageDialog(msg);
+        if (GameManager.Instance != null)
+            GameManager.Instance.PopupMessageWithPause(msg);
+        else
+            DialogRoot.Instance.PopupMessageDialog(msg);
         // NavalGameState.Instance.tempSubjectLogs.A
     }
 

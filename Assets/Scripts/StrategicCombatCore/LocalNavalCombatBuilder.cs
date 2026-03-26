@@ -122,13 +122,11 @@ namespace StrategicCombatCore
             }
 
             var viewerSide = StrategicGameManager.Instance.GetViewerSide();
-            if(viewerSide != null)
+            var shouldUseAutomaticManeuver = viewerSide == null || side != viewerSide;
+            if (shouldUseAutomaticManeuver)
             {
-                if(side != viewerSide)
-                {
-                    shipGroup.doctrine.maneuverAutomaticType.isInherited = false;
-                    shipGroup.doctrine.maneuverAutomaticType.value = AutomaticType.Automatic; 
-                }
+                shipGroup.doctrine.maneuverAutomaticType.isInherited = false;
+                shipGroup.doctrine.maneuverAutomaticType.value = AutomaticType.Automatic;
             }
 
             return shipGroup;

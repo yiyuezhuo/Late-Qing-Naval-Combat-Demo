@@ -2897,6 +2897,10 @@ MonoBehaviour:
     m_Localized: Gaussian Sigma (movement cost)
     m_Metadata:
       m_Items: []
+  - m_Id: -91000000000001
+    m_Localized: Summary
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

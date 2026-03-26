@@ -1,0 +1,71 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="VictoryStatusShipDetailItem" data-source-type="NavalCombatCore.ShipVictoryDetailItem, Assembly-CSharp" class="victory-detail-ship-row">
+        <ui:VisualElement name="ShipNameHost" class="victory-detail-ship-name-host">
+            <ui:VisualElement name="ShipOverlayIconContainer" class="victory-detail-ship-overlay-icon-container">
+                <Bindings>
+                    <ui:DataBinding property="style.width" data-source-path="portraitWidth" binding-mode="ToTarget" />
+                </Bindings>
+                <ui:VisualElement name="ShipOverlayIconImage" class="victory-detail-ship-overlay-icon-image">
+                    <Bindings>
+                        <ui:DataBinding property="style.backgroundImage" data-source-path="shipIconStyleBackground" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label text="Ship" class="victory-detail-ship-name victory-detail-ship-name-outline victory-detail-ship-name-outline-left">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="displayName" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Ship" class="victory-detail-ship-name victory-detail-ship-name-outline victory-detail-ship-name-outline-right">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="displayName" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Ship" class="victory-detail-ship-name victory-detail-ship-name-outline victory-detail-ship-name-outline-up">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="displayName" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Ship" class="victory-detail-ship-name victory-detail-ship-name-outline victory-detail-ship-name-outline-down">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="displayName" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label name="ShipNameLabel" text="Ship" class="victory-detail-ship-name victory-detail-ship-name-main">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="displayName" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+        <ui:VisualElement name="DamageBarTrack" class="victory-detail-bar-track">
+            <ui:VisualElement name="YellowSegment" class="victory-detail-bar-segment victory-detail-bar-yellow" />
+            <ui:VisualElement name="RedSegment" class="victory-detail-bar-segment victory-detail-bar-red" />
+            <ui:VisualElement name="TransparentSegment" class="victory-detail-bar-segment victory-detail-bar-transparent" />
+            <ui:Label text="S0 H0 IH0 L0 O0" class="victory-detail-bar-text victory-detail-bar-text-outline victory-detail-bar-text-outline-left">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="statOverlayText" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="S0 H0 IH0 L0 O0" class="victory-detail-bar-text victory-detail-bar-text-outline victory-detail-bar-text-outline-right">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="statOverlayText" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="S0 H0 IH0 L0 O0" class="victory-detail-bar-text victory-detail-bar-text-outline victory-detail-bar-text-outline-up">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="statOverlayText" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="S0 H0 IH0 L0 O0" class="victory-detail-bar-text victory-detail-bar-text-outline victory-detail-bar-text-outline-down">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="statOverlayText" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="S0 H0 IH0 L0 O0" class="victory-detail-bar-text victory-detail-bar-text-main">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="statOverlayText" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

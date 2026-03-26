@@ -2361,6 +2361,74 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
+    void SetVictoryStatusSegmentWidth(VisualElement segment, float ratio)
+    {
+        if (segment == null)
+            return;
+
+        var clampedRatio = Mathf.Clamp01(ratio);
+        segment.style.display = clampedRatio > 0f ? DisplayStyle.Flex : DisplayStyle.None;
+        segment.style.width = new Length(clampedRatio * 100f, LengthUnit.Percent);
+    }
+
+    void ConfigureVictoryStatusDetailListView(ListView listView)
+    {
+        if (listView == null)
+            return;
+
+        listView.makeItem = () =>
+        {
+            var item = listView.itemTemplate.CloneTree();
+            Utils.BindItemsSourceRecursive(item);
+            return item;
+        };
+
+        listView.bindItem = (item, index) =>
+        {
+            if (listView.itemsSource is not List<ShipVictoryDetailItem> items ||
+                index < 0 ||
+                index >= items.Count)
+                return;
+
+            var shipDetailItem = items[index];
+            item.dataSource = shipDetailItem;
+
+            var shipIconContainer = item.Q<VisualElement>("ShipOverlayIconContainer");
+            var shipIconImage = item.Q<VisualElement>("ShipOverlayIconImage");
+            shipIconContainer?.EnableInClassList("victory-detail-ship-overlay-icon-container-sunk", shipDetailItem.isSunk);
+            shipIconImage?.EnableInClassList("victory-detail-ship-overlay-icon-image-sunk", shipDetailItem.isSunk);
+
+            SetVictoryStatusSegmentWidth(item.Q<VisualElement>("YellowSegment"), shipDetailItem.yellowRatio);
+            SetVictoryStatusSegmentWidth(item.Q<VisualElement>("RedSegment"), shipDetailItem.redRatio);
+            SetVictoryStatusSegmentWidth(item.Q<VisualElement>("TransparentSegment"), shipDetailItem.transparentRatio);
+        };
+    }
+
+    void BindVictoryStatusDetailCard(VisualElement card, SideVictoryStatus sideVictoryStatus)
+    {
+        if (card == null)
+            return;
+
+        if (sideVictoryStatus == null)
+        {
+            card.style.display = DisplayStyle.None;
+            return;
+        }
+
+        card.style.display = DisplayStyle.Flex;
+
+        var groupNameLabel = card.Q<Label>(null, "victory-detail-group-title");
+        if (groupNameLabel != null)
+            groupNameLabel.text = sideVictoryStatus.name;
+
+        var listView = card.Q<ListView>();
+        if (listView != null)
+        {
+            listView.itemsSource = sideVictoryStatus.shipDetailItems;
+            listView.Rebuild();
+        }
+    }
+
     public void PopupVictoryStatusDialog(VictoryStatus victoryStatus)
     {
         // StrategicGameManager.startupConfig.victoryStatus
@@ -2389,6 +2457,37 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
                 return el;
             };
+
+            ConfigureVictoryStatusDetailListView(root.Q<ListView>("DetailGroup0ListView"));
+            ConfigureVictoryStatusDetailListView(root.Q<ListView>("DetailGroup1ListView"));
+
+            var detailSideVictoryStatuses = victoryStatus?.sideVictoryStatuses?.Take(2).ToList() ?? new();
+            BindVictoryStatusDetailCard(root.Q<VisualElement>("DetailGroup0Card"), detailSideVictoryStatuses.ElementAtOrDefault(0));
+            BindVictoryStatusDetailCard(root.Q<VisualElement>("DetailGroup1Card"), detailSideVictoryStatuses.ElementAtOrDefault(1));
+
+            var summaryContainer = root.Q<VisualElement>("SummaryContainer");
+            var detailContainer = root.Q<VisualElement>("DetailContainer");
+            var modeToggleButton = root.Q<Button>("ModeToggleButton");
+
+            void SetVictoryStatusMode(bool showDetail)
+            {
+                if (detailContainer != null)
+                    detailContainer.style.display = showDetail ? DisplayStyle.Flex : DisplayStyle.None;
+                if (summaryContainer != null)
+                    summaryContainer.style.display = showDetail ? DisplayStyle.None : DisplayStyle.Flex;
+                if (modeToggleButton != null)
+                    modeToggleButton.text = Localize(showDetail ? "Summary" : "Detail");
+            }
+
+            SetVictoryStatusMode(showDetail: false);
+            if (modeToggleButton != null)
+            {
+                modeToggleButton.clicked += () =>
+                {
+                    var showingDetail = detailContainer == null || detailContainer.style.display != DisplayStyle.None;
+                    SetVictoryStatusMode(!showingDetail);
+                };
+            }
         };
 
         tempDialog.Popup();

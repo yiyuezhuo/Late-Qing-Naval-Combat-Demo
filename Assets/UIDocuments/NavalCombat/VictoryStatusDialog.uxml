@@ -1,11 +1,28 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement data-source-type="NavalCombatCore.VictoryStatus, Assembly-CSharp" class="panel-dialog" style="flex-grow: 0; width: 700px;">
+    <ui:VisualElement data-source-type="NavalCombatCore.VictoryStatus, Assembly-CSharp" class="panel-dialog" style="flex-grow: 0; width: 960px; height: 620px;">
         <ui:Label text="Victory" class="title">
             <Bindings>
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61178581258240)" />
             </Bindings>
         </ui:Label>
-        <ui:ListView name="SideVictoryStatusesListView" data-source-path="sideVictoryStatuses" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/NavalCombat/SideVictoryStatusViewer.uxml?fileID=9197481963319205126&amp;guid=00aa82529951f914aaedba9c2a95aec5&amp;type=3#SideVictoryStatusViewer" virtualization-method="DynamicHeight" style="flex-grow: 1;" />
+        <ui:Button text="Detail" name="ModeToggleButton" class="victory-detail-mode-button">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(102671505330176)" />
+            </Bindings>
+        </ui:Button>
+        <ui:VisualElement name="SummaryContainer" style="flex-grow: 1;">
+            <ui:ListView name="SideVictoryStatusesListView" data-source-path="sideVictoryStatuses" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/NavalCombat/SideVictoryStatusViewer.uxml?fileID=9197481963319205126&amp;guid=00aa82529951f914aaedba9c2a95aec5&amp;type=3#SideVictoryStatusViewer" virtualization-method="DynamicHeight" style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="DetailContainer" class="victory-detail-root" style="flex-grow: 1; display: none;">
+            <ui:VisualElement name="DetailGroup0Card" class="victory-detail-group-card">
+                <ui:Label name="DetailGroup0NameLabel" text="Group 1" class="victory-detail-group-title" />
+                <ui:ListView name="DetailGroup0ListView" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/VictoryStatusShipDetailItem.uxml?fileID=9197481963319205126&amp;guid=1f8cdca0de744d9e87db63b503fb326f&amp;type=3#VictoryStatusShipDetailItem" fixed-item-height="36" style="flex-grow: 1;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="DetailGroup1Card" class="victory-detail-group-card">
+                <ui:Label name="DetailGroup1NameLabel" text="Group 2" class="victory-detail-group-title" />
+                <ui:ListView name="DetailGroup1ListView" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/VictoryStatusShipDetailItem.uxml?fileID=9197481963319205126&amp;guid=1f8cdca0de744d9e87db63b503fb326f&amp;type=3#VictoryStatusShipDetailItem" fixed-item-height="36" style="flex-grow: 1;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
         <ui:Button text="Confirm" name="ConfirmButton">
             <Bindings>
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />

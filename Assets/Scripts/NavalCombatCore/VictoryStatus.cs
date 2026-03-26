@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CoreUtils;
 
 
 namespace NavalCombatCore
@@ -41,6 +42,7 @@ namespace NavalCombatCore
         public float initialLossVictoryPoint;
         public float commitVictoryPoint;
         public List<ShipTypeLossBaseline> shipTypeLossBaselines = new();
+        public List<ShipVictoryDetailBaseline> shipDetailBaselines = new();
     }
 
     public class ShipTypeLossBaseline
@@ -55,25 +57,138 @@ namespace NavalCombatCore
         public float commitVictroyPoint;
     }
 
+    public class ShipVictoryDetailBaseline
+    {
+        public string shipObjectId;
+        public float damageRatio;
+    }
+
     public class VictoryStatus
     {
         public List<SideVictoryStatus> sideVictoryStatuses = new();
 
+        static List<ShipLog> GetShipsInOobOrder(ShipGroup rootGroup)
+        {
+            var ships = new List<ShipLog>();
+            if (rootGroup == null)
+                return ships;
+
+            void Visit(ShipGroup group)
+            {
+                foreach (var childObjectId in group.childrenObjectIds ?? Enumerable.Empty<string>())
+                {
+                    var child = EntityManager.Instance.Get<IShipGroupMember>(childObjectId);
+                    switch (child)
+                    {
+                        case ShipLog shipLog:
+                            ships.Add(shipLog);
+                            break;
+                        case ShipGroup childGroup:
+                            Visit(childGroup);
+                            break;
+                    }
+                }
+            }
+
+            Visit(rootGroup);
+            return ships;
+        }
+
+        static float GetDamageRatio(ShipLog shipLog)
+        {
+            if (shipLog == null)
+                return 0f;
+            if (shipLog.mapState == MapState.Destroyed)
+                return 1f;
+
+            return shipLog.damagePoint / Math.Max(1f, shipLog.shipClass?.damagePoint ?? 0f);
+        }
+
+        static void PopulateHistoryStats(ShipVictoryDetailItem shipDetailItem, ShipLog shipLog, NavalGameState gameState)
+        {
+            if (shipDetailItem == null || shipLog == null)
+                return;
+
+            var batteryLogs = shipLog.batteryStatus
+                .SelectMany(batteryStatus => batteryStatus.mountStatus)
+                .SelectMany(mountStatus => mountStatus.logs)
+                .ToList();
+            var rapidLogs = shipLog.rapidFiringStatus
+                .SelectMany(rapidStatus => rapidStatus.logs)
+                .ToList();
+            var torpedoLogs = gameState?.launchedTorpedos?
+                .Where(torpedo => torpedo.shooterId == shipLog.objectId)
+                .ToList()
+                ?? new List<LaunchedTorpedo>();
+
+            shipDetailItem.shotsFiredCount =
+                batteryLogs.Count +
+                rapidLogs.Count +
+                torpedoLogs.Count;
+            shipDetailItem.hitsLandedCount =
+                batteryLogs.Count(log => log.hit) +
+                rapidLogs.Count(log => log.hit) +
+                torpedoLogs.Count(torpedo => torpedo.endgameType == LaunchedTorpedoEndgameType.Hit);
+            shipDetailItem.hitsTakenCount =
+                shipLog.logs.OfType<ShipLogBatteryHitLog>().Count() +
+                shipLog.logs.OfType<ShipLogRapidFiringGunHitLog>().Count() +
+                shipLog.logs.OfType<ShipLogTorpedoHitLog>().Count();
+            shipDetailItem.damagePointLost =
+                Math.Max(0f, shipLog.damagePoint + shipLog.pendingDamagePoint);
+            shipDetailItem.damagePointInflicted =
+                batteryLogs.Where(log => log.hit).Sum(log => log.ShellDamageResult?.damagePoint ?? 0f) +
+                rapidLogs.Where(log => log.hit).Sum(log => log.damagePoint) +
+                torpedoLogs.Where(torpedo => torpedo.endgameType == LaunchedTorpedoEndgameType.Hit).Sum(torpedo => torpedo.inflictDamagePoint);
+        }
+
         static List<SideVictoryStatus> GenerateCurrentSnapshot(NavalGameState gameState)
         {
             var sideVictoryStatuses = new List<SideVictoryStatus>();
+            if (gameState == null)
+                return sideVictoryStatuses;
 
-            var rootGroupings = gameState.shipLogs.GroupBy(shipLog => (shipLog as IShipGroupMember).GetRootParent()).ToList();
+            var topGroups = global::InfluenceMapUtility.GetTopLevelShipGroupsInOobOrder(gameState);
+            var topGroupSet = new HashSet<string>(
+                topGroups
+                    .Where(group => group?.objectId != null)
+                    .Select(group => group.objectId)
+            );
 
-            foreach (var grouping in rootGroupings)
+            foreach (var rootGroup in gameState.shipLogs
+                         .Select(shipLog => (shipLog as IShipGroupMember)?.GetRootParent() as ShipGroup)
+                         .Where(group => group != null && group.objectId != null && !topGroupSet.Contains(group.objectId))
+                         .GroupBy(group => group.objectId)
+                         .Select(grouping => grouping.First()))
             {
+                topGroups.Add(rootGroup);
+                topGroupSet.Add(rootGroup.objectId);
+            }
+
+            foreach (var rootGroup in topGroups.Where(group => group != null))
+            {
+                var ships = GetShipsInOobOrder(rootGroup);
                 var sideVictoryStatus = new SideVictoryStatus()
                 {
-                    sideObjectId = grouping.Key.objectId,
-                    name = grouping.Key.GetMemberName()
+                    sideObjectId = rootGroup.objectId,
+                    name = rootGroup.GetMemberName()
                 };
 
-                var typeGroupings = grouping.ToList().GroupBy(shipLog => shipLog.shipClass.type).ToList();
+                foreach (var shipLog in ships.Where(shipLog => shipLog != null))
+                {
+                    sideVictoryStatus.shipDetailItems.Add(new ShipVictoryDetailItem()
+                    {
+                        shipObjectId = shipLog.objectId,
+                        name = shipLog.GetMemberName(),
+                        currentDamageRatio = GetDamageRatio(shipLog),
+                        isSunk = shipLog.mapState == MapState.Destroyed,
+                    });
+                    PopulateHistoryStats(sideVictoryStatus.shipDetailItems[^1], shipLog, gameState);
+                }
+
+                var typeGroupings = ships
+                    .Where(shipLog => shipLog?.shipClass != null)
+                    .GroupBy(shipLog => shipLog.shipClass.type)
+                    .ToList();
                 foreach (var typeGrouping in typeGroupings)
                 {
                     var shipTypeLossItem = new ShipTypeLossItem()
@@ -119,6 +234,11 @@ namespace NavalCombatCore
                         sunk = shipTypeLossItem.sunk,
                         lossVictoryPoint = shipTypeLossItem.lossVictoryPoint,
                         commitVictroyPoint = shipTypeLossItem.commitVictroyPoint
+                    }).ToList(),
+                    shipDetailBaselines = sideVictoryStatus.shipDetailItems.Select(shipDetailItem => new ShipVictoryDetailBaseline()
+                    {
+                        shipObjectId = shipDetailItem.shipObjectId,
+                        damageRatio = shipDetailItem.currentDamageRatio,
                     }).ToList()
                 }).ToList()
             };
@@ -166,6 +286,12 @@ namespace NavalCombatCore
                         .GroupBy(shipTypeBaseline => shipTypeBaseline.shipType)
                         .ToDictionary(grouping => grouping.Key, grouping => grouping.First())
                     ?? new Dictionary<ShipType, ShipTypeLossBaseline>();
+                var sideBaselineByShipObjectId =
+                    sideBaseline?.shipDetailBaselines?
+                        .Where(shipDetailBaseline => shipDetailBaseline.shipObjectId != null)
+                        .GroupBy(shipDetailBaseline => shipDetailBaseline.shipObjectId)
+                        .ToDictionary(grouping => grouping.Key, grouping => grouping.First())
+                    ?? new Dictionary<string, ShipVictoryDetailBaseline>();
 
                 foreach (var shipTypeLossItem in sideVictoryStatus.shipTypeLossItems)
                 {
@@ -185,6 +311,21 @@ namespace NavalCombatCore
                         shipTypeLossItem.initialHeavy = 0;
                         shipTypeLossItem.initialSunk = 0;
                     }
+                }
+
+                foreach (var shipDetailItem in sideVictoryStatus.shipDetailItems)
+                {
+                    if (shipDetailItem.shipObjectId != null &&
+                        sideBaselineByShipObjectId.TryGetValue(shipDetailItem.shipObjectId, out var shipDetailBaseline))
+                    {
+                        shipDetailItem.initialDamageRatio = shipDetailBaseline.damageRatio;
+                    }
+                    else
+                    {
+                        shipDetailItem.initialDamageRatio = 0f;
+                    }
+
+                    shipDetailItem.RefreshSegmentRatios();
                 }
             }
 
@@ -309,5 +450,33 @@ namespace NavalCombatCore
         public VictoryLevel victoryLevel;
 
         public List<ShipTypeLossItem> shipTypeLossItems = new();
+        public List<ShipVictoryDetailItem> shipDetailItems = new();
+    }
+
+    public partial class ShipVictoryDetailItem
+    {
+        public string shipObjectId;
+        public string name;
+        public float initialDamageRatio;
+        public float currentDamageRatio;
+        public bool isSunk;
+        public float yellowRatio;
+        public float redRatio;
+        public float transparentRatio;
+        public int shotsFiredCount;
+        public int hitsLandedCount;
+        public int hitsTakenCount;
+        public float damagePointLost;
+        public float damagePointInflicted;
+
+        public void RefreshSegmentRatios()
+        {
+            var clampedInitial = Math.Clamp(initialDamageRatio, 0f, 1f);
+            var clampedCurrent = Math.Clamp(currentDamageRatio, 0f, 1f);
+
+            yellowRatio = Math.Max(0f, 1f - clampedCurrent);
+            transparentRatio = Math.Min(clampedInitial, clampedCurrent);
+            redRatio = Math.Max(0f, 1f - yellowRatio - transparentRatio);
+        }
     }
 }

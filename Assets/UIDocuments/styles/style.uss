@@ -72,6 +72,15 @@
     --ui-border-time-panel-bottom: rgb(72, 61, 43);
     --ui-border-time-panel-side: rgb(102, 88, 63);
     --ui-text-time-muted: rgb(194, 184, 163);
+    --ui-surface-victory-detail-card: rgba(31, 34, 39, 0.86);
+    --ui-border-victory-detail-card-top: rgb(139, 125, 93);
+    --ui-border-victory-detail-card-side: rgb(91, 80, 60);
+    --ui-border-victory-detail-card-bottom: rgb(58, 50, 38);
+    --ui-surface-victory-detail-track: rgb(22, 24, 27);
+    --ui-surface-victory-detail-yellow: rgb(192, 158, 78);
+    --ui-surface-victory-detail-red: rgb(153, 74, 63);
+    --ui-surface-victory-detail-icon-box: rgb(46, 50, 55);
+    --ui-surface-victory-detail-icon-sunk: rgb(70, 104, 150);
 }
 
 .unity-base-field__input {
@@ -471,7 +480,7 @@
 .strategic-time-play-button {
     min-width: 44px;
     margin-left: 6px;
-    unity-text-align: middle-center;
+    -unity-text-align: middle-center;
 }
 
 .strategic-time-status {
@@ -980,4 +989,211 @@
 
 .strategic-unit-icon-box > .unity-label {
     color: var(--strategic-unit-icon-text-color);
+}
+
+.victory-detail-mode-button {
+    margin-top: 6px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    margin-left: 6px;
+}
+
+.victory-detail-root {
+    flex-direction: row;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+}
+
+.victory-detail-group-card {
+    flex-grow: 1;
+    background-color: var(--ui-surface-victory-detail-card);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-color: var(--ui-border-victory-detail-card-top);
+    border-right-color: var(--ui-border-victory-detail-card-side);
+    border-bottom-color: var(--ui-border-victory-detail-card-bottom);
+    border-left-color: var(--ui-border-victory-detail-card-side);
+    margin-right: 6px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+.victory-detail-group-title {
+    -unity-font-style: bold;
+    margin-bottom: 4px;
+}
+
+.victory-detail-ship-row {
+    flex-direction: row;
+    align-items: center;
+    min-height: 50px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.victory-detail-ship-name-host {
+    width: 190px;
+    min-width: 190px;
+    height: 32px;
+    position: relative;
+    background-color: var(--ui-surface-input);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: var(--ui-border-input-side);
+    border-right-color: var(--ui-border-input-side);
+    border-top-color: var(--ui-border-input-top);
+    border-bottom-color: var(--ui-border-input-bottom);
+    margin-right: 8px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.victory-detail-ship-name {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-top: 5px;
+    padding-right: 4px;
+    padding-bottom: 5px;
+    padding-left: 6px;
+}
+
+.victory-detail-ship-name-main {
+    color: var(--ui-text-primary);
+}
+
+.victory-detail-ship-name-outline {
+    color: var(--ui-surface-input);
+}
+
+.victory-detail-ship-name-outline-left {
+    left: -1px;
+    right: 1px;
+}
+
+.victory-detail-ship-name-outline-right {
+    left: 1px;
+    right: -1px;
+}
+
+.victory-detail-ship-name-outline-up {
+    top: -1px;
+    bottom: 1px;
+}
+
+.victory-detail-ship-name-outline-down {
+    top: 1px;
+    bottom: -1px;
+}
+
+.victory-detail-ship-overlay-icon-container {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    background-color: var(--ui-surface-victory-detail-icon-box);
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.victory-detail-ship-overlay-icon-container-sunk {
+    background-color: var(--ui-surface-victory-detail-icon-sunk);
+}
+
+.victory-detail-ship-overlay-icon-image {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.victory-detail-ship-overlay-icon-image-sunk {
+    opacity: 0.4;
+}
+
+.victory-detail-bar-track {
+    flex-grow: 1;
+    flex-direction: row;
+    height: 24px;
+    position: relative;
+    background-color: var(--ui-surface-victory-detail-track);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-color: var(--ui-border-victory-detail-card-top);
+    border-right-color: var(--ui-border-victory-detail-card-side);
+    border-bottom-color: var(--ui-border-victory-detail-card-bottom);
+    border-left-color: var(--ui-border-victory-detail-card-side);
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.victory-detail-bar-segment {
+    height: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.victory-detail-bar-yellow {
+    background-color: var(--ui-surface-victory-detail-yellow);
+}
+
+.victory-detail-bar-red {
+    background-color: var(--ui-surface-victory-detail-red);
+}
+
+.victory-detail-bar-transparent {
+    background-color: var(--ui-border-transparent);
+}
+
+.victory-detail-bar-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-size: 13px;
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.victory-detail-bar-text-main {
+    color: var(--ui-text-primary);
+}
+
+.victory-detail-bar-text-outline {
+    color: var(--ui-surface-input);
+}
+
+.victory-detail-bar-text-outline-left {
+    left: -1px;
+    right: 1px;
+}
+
+.victory-detail-bar-text-outline-right {
+    left: 1px;
+    right: -1px;
+}
+
+.victory-detail-bar-text-outline-up {
+    top: -1px;
+    bottom: 1px;
+}
+
+.victory-detail-bar-text-outline-down {
+    top: 1px;
+    bottom: -1px;
 }

@@ -767,6 +767,30 @@ namespace NavalCombatCore
         public string victoryLevelStr => Localize($"{nameof(VictoryLevel)}.{victoryLevel}");
     }
 
+    public partial class ShipVictoryDetailItem
+    {
+        [CreateProperty]
+        public string displayName => EntityManager.Instance.Get<ShipLog>(shipObjectId)?.namedShip?.name?.GetShortName() ?? name;
+
+        [CreateProperty]
+        public Length portraitWidth => new Length(
+            (EntityManager.Instance.Get<ShipLog>(shipObjectId)?.shipClass?.lengthFoot ?? 300f) / 1000f * 100f,
+            LengthUnit.Percent
+        );
+
+        [CreateProperty]
+        public bool isSunkProp => isSunk;
+
+        [CreateProperty]
+        public StyleBackground shipIconStyleBackground
+        {
+            get => EntityManager.Instance.Get<ShipLog>(shipObjectId)?.shipClass?.portraitIconStyleBackground ?? default;
+        }
+
+        [CreateProperty]
+        public string statOverlayText => $"S{shotsFiredCount} H{hitsLandedCount} IH{hitsTakenCount} L{damagePointLost:0.#} O{damagePointInflicted:0.#}";
+    }
+
     public partial class FireControlSystem
     {
         [XmlIgnore]

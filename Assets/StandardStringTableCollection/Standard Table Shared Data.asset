@@ -2815,6 +2815,10 @@ MonoBehaviour:
     m_Key: Gaussian Sigma (movement cost)
     m_Metadata:
       m_Items: []
+  - m_Id: -91000000000001
+    m_Key: Summary
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

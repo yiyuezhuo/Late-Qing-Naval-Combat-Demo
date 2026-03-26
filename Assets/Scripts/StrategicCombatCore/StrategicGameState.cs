@@ -1812,24 +1812,38 @@ namespace StrategicCombatCore
             return true;
         }
 
+        void RemoveDirectMemberReferenceFromAllGroups(string memberObjectId)
+        {
+            if (string.IsNullOrWhiteSpace(memberObjectId))
+                return;
+
+            foreach (var group in strategicGroups.Where(group => group != null))
+            {
+                group.RemoveDirectMemberReference(memberObjectId);
+            }
+        }
+
+        static void RemoveIndicesDescending<T>(List<T> list, List<int> indices)
+        {
+            for (var idx = indices.Count - 1; idx >= 0; idx--)
+            {
+                list.RemoveAt(indices[idx]);
+            }
+        }
+
         void NormalizeStrategicGroupMembership()
         {
             var groupMap = strategicGroups
                 .Where(group => group != null && !string.IsNullOrWhiteSpace(group.objectId))
-                .ToDictionary(group => group.objectId, group => group);
+                .GroupBy(group => group.objectId)
+                .ToDictionary(group => group.Key, group => group.First());
 
-            foreach (var group in strategicGroups.Where(group => group != null))
-            {
-                if (string.IsNullOrWhiteSpace(group.strategicGroupReference.referenceId))
-                    continue;
+            var memberMap = IterAllStrategicGroupMembers()
+                .Where(member => member != null && !string.IsNullOrWhiteSpace(member.objectId))
+                .GroupBy(member => member.objectId)
+                .ToDictionary(group => group.Key, group => group.First());
 
-                if (!HasAcyclicParentChain(group, groupMap))
-                {
-                    group.strategicGroupReference.referenceId = null;
-                }
-            }
-
-            foreach (var member in IterAllStrategicGroupMembers())
+            foreach (var member in memberMap.Values)
             {
                 var parentId = member.strategicGroupReference.referenceId;
                 if (string.IsNullOrWhiteSpace(parentId) || !groupMap.ContainsKey(parentId))
@@ -1847,13 +1861,73 @@ namespace StrategicCombatCore
             foreach (var group in strategicGroups.Where(group => group != null))
             {
                 group.subordinatesCombined ??= new List<StrategicGroupMemberReference>();
-                group.subordinatesCombined.Clear();
+
+                var seenMemberIds = new HashSet<string>();
+                var indicesToRemove = new List<int>();
+                for (var idx = 0; idx < group.subordinatesCombined.Count; idx++)
+                {
+                    var memberId = group.subordinatesCombined[idx]?.referenceId;
+                    if (string.IsNullOrWhiteSpace(memberId) ||
+                        memberId == group.objectId ||
+                        !memberMap.ContainsKey(memberId) ||
+                        !seenMemberIds.Add(memberId))
+                    {
+                        indicesToRemove.Add(idx);
+                    }
+                }
+
+                RemoveIndicesDescending(group.subordinatesCombined, indicesToRemove);
             }
 
-            foreach (var member in IterAllStrategicGroupMembers())
+            var claimedParentIds = new Dictionary<string, string>();
+            foreach (var group in strategicGroups.Where(group => group != null))
             {
-                var parentGroup = member.strategicGroupReference.Get();
-                parentGroup?.EnsureDirectMemberReference(member.objectId);
+                var duplicateIndices = new List<int>();
+                for (var idx = 0; idx < group.subordinatesCombined.Count; idx++)
+                {
+                    var memberId = group.subordinatesCombined[idx].referenceId;
+                    if (claimedParentIds.ContainsKey(memberId))
+                    {
+                        duplicateIndices.Add(idx);
+                        continue;
+                    }
+
+                    claimedParentIds.Add(memberId, group.objectId);
+                }
+
+                RemoveIndicesDescending(group.subordinatesCombined, duplicateIndices);
+            }
+
+            foreach (var claimedParentId in claimedParentIds)
+            {
+                memberMap[claimedParentId.Key].strategicGroupReference.referenceId = claimedParentId.Value;
+            }
+
+            var groupsWithCycles = strategicGroups
+                .Where(group => group != null && !string.IsNullOrWhiteSpace(group.strategicGroupReference.referenceId))
+                .ToList();
+            foreach (var group in groupsWithCycles)
+            {
+                if (HasAcyclicParentChain(group, groupMap))
+                    continue;
+
+                RemoveDirectMemberReferenceFromAllGroups(group.objectId);
+                group.strategicGroupReference.referenceId = null;
+            }
+
+            var finalClaimedIds = strategicGroups
+                .Where(group => group != null)
+                .SelectMany(group => group.subordinatesCombined)
+                .Where(reference => reference != null && !string.IsNullOrWhiteSpace(reference.referenceId))
+                .Select(reference => reference.referenceId)
+                .ToHashSet();
+
+            foreach (var member in memberMap.Values)
+            {
+                if (!finalClaimedIds.Contains(member.objectId))
+                {
+                    member.strategicGroupReference.referenceId = null;
+                }
             }
         }
 

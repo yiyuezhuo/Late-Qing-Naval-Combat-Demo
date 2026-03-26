@@ -561,6 +561,13 @@ namespace StrategicCombatCore
                 return;
 
             var oldParentGroup = member.strategicGroupReference.Get();
+            if (oldParentGroup == newParentGroup)
+            {
+                newParentGroup?.EnsureDirectMemberReference(member.objectId);
+                member.strategicGroupReference.referenceId = newParentGroup?.objectId;
+                return;
+            }
+
             oldParentGroup?.RemoveDirectMemberReference(member.objectId);
             newParentGroup?.EnsureDirectMemberReference(member.objectId);
             member.strategicGroupReference.referenceId = newParentGroup?.objectId;

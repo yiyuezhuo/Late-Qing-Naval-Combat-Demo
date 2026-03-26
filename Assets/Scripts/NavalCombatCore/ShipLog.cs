@@ -1165,50 +1165,6 @@ namespace NavalCombatCore
             torpedoSectorStatus.ammunition = shipClass.torpedoSector.ammunitionCapacity - torpedoSectorStatus.mountStatus.Sum(m => m.reloadedLoad);
         }
 
-        public string GetBatterySummary()
-        {
-            if (shipClass == null)
-                return "[Class Invalid or not binded]";
-            return string.Join("\n", batteryStatus.Select(bs => bs.Summary()));
-        }
-
-        public string GetTorpedoSummary()
-        {
-            var _shipClass = shipClass;
-            if (_shipClass == null)
-                return "[Class Invalid or not binded]";
-
-            var torpedoBarrels = _shipClass.torpedoSector.mountLocationRecords.Sum(r => r.barrels * r.mounts);
-            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.IsOperational()).Sum(m => m.barrels);
-            var torpedoAmmu = torpedoSectorStatus.ammunition;
-            return $"x{torpedoBarrelsAvailable}/{torpedoBarrels} {_shipClass.torpedoSector.name.mergedName} ({torpedoAmmu})";
-        }
-
-        public string GetRapidFiringSummary()
-        {
-            if (shipClass == null)
-                return "[Class Invalid or not binded]";
-            return string.Join("\n", rapidFiringStatus.Select(s => s.GetInfo()));
-        }
-
-        public string Summary()
-        {
-            if (shipClass == null)
-                return "[Class Invalid or not binded]";
-
-            var lines = new List<string>
-            {
-                Localize("Battery:"),
-                GetBatterySummary(),
-                Localize("Torpedo:"),
-                GetTorpedoSummary(),
-                Localize("Rapid Firing Battery:"),
-                GetRapidFiringSummary()
-            };
-
-            return string.Join("\n", lines);
-        }
-
         public void AddDamagePoint(float addedDamagePoint)
         {
             pendingDamagePoint += addedDamagePoint;

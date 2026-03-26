@@ -17,6 +17,30 @@ using CoreUtils;
 
 namespace NavalCombatCore
 {
+    internal static class InformationPanelSummaryUtils
+    {
+        public static string GetCurrentTargetSuffix(IEnumerable<ShipLog> targets)
+        {
+            var targetNames = new List<string>();
+            var seenTargetIds = new HashSet<string>();
+
+            foreach (var target in targets)
+            {
+                if (target == null)
+                    continue;
+
+                var dedupeKey = target.objectId ?? target.namedShipObjectId ?? target.namedShip?.name?.GetShortName();
+                if (!string.IsNullOrWhiteSpace(dedupeKey) && !seenTargetIds.Add(dedupeKey))
+                    continue;
+
+                var shortName = target.namedShip?.name?.GetShortName();
+                targetNames.Add(string.IsNullOrWhiteSpace(shortName) ? target.objectId ?? "[Unknown]" : shortName);
+            }
+
+            return targetNames.Count == 0 ? "" : $" -> {string.Join(", ", targetNames)}";
+        }
+    }
+
     public class NameLinkPlaceholder // ShipLog, LandUnit, StrategicGroup "implement" this now
     {
         [CreateProperty]
@@ -144,6 +168,53 @@ namespace NavalCombatCore
 
     public partial class ShipLog : IPortraitViewerObservable
     {
+        public string GetBatterySummary()
+        {
+            if (shipClass == null)
+                return "[Class Invalid or not binded]";
+            return string.Join("\n", batteryStatus.Select(bs => bs.Summary()));
+        }
+
+        public string GetTorpedoSummary()
+        {
+            var _shipClass = shipClass;
+            if (_shipClass == null)
+                return "[Class Invalid or not binded]";
+
+            var torpedoBarrels = _shipClass.torpedoSector.mountLocationRecords.Sum(r => r.barrels * r.mounts);
+            var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.IsOperational()).Sum(m => m.barrels);
+            var torpedoAmmu = torpedoSectorStatus.ammunition;
+            var targetSuffix = InformationPanelSummaryUtils.GetCurrentTargetSuffix(
+                torpedoSectorStatus.mountStatus.Select(m => m.GetFiringTarget())
+            );
+            return $"x{torpedoBarrelsAvailable}/{torpedoBarrels} {_shipClass.torpedoSector.name.GetShortName()} ({torpedoAmmu}){targetSuffix}";
+        }
+
+        public string GetRapidFiringSummary()
+        {
+            if (shipClass == null)
+                return "[Class Invalid or not binded]";
+            return string.Join("\n", rapidFiringStatus.Select(s => s.GetInfo()));
+        }
+
+        public string Summary()
+        {
+            if (shipClass == null)
+                return "[Class Invalid or not binded]";
+
+            var lines = new List<string>
+            {
+                Localize("Battery:"),
+                GetBatterySummary(),
+                Localize("Torpedo:"),
+                GetTorpedoSummary(),
+                Localize("Rapid Firing Battery:"),
+                GetRapidFiringSummary()
+            };
+
+            return string.Join("\n", lines);
+        }
+
         [XmlIgnore]
         public int NonPhysicalPoseRevision { get; private set; }
 
@@ -575,8 +646,39 @@ namespace NavalCombatCore
         }
     }
 
+    public partial class BatteryStatus
+    {
+        public string Summary() // Used in information panel
+        {
+            var batteryRecord = GetBatteryRecord();
+            if (batteryRecord == null)
+                return "[Not Specified]";
+
+            var barrels = batteryRecord.mountLocationRecords.Sum(r => r.barrels * r.mounts);
+            var availableBarrels = mountStatus.Where(m => m.IsOperational()).Sum(m => m.barrels);
+            var targetSuffix = InformationPanelSummaryUtils.GetCurrentTargetSuffix(
+                mountStatus.Select(m => m.GetFiringTarget())
+            );
+            return $"{availableBarrels}/{barrels} {batteryRecord.name.GetShortName()} ({ammunition.Summary()}){targetSuffix}";
+        }
+    }
+
     public partial class RapidFiringStatus
     {
+        public string GetInfo()
+        {
+            var r = rapidFireBatteryRecord;
+            if (r == null)
+                return "Not Valid";
+
+            var (portClass, portCurrent) = GetClassCurrentBarrels(r.barrelsLevelPort, portMountHits);
+            var (starboardClass, starboardCurrent) = GetClassCurrentBarrels(r.barrelsLevelStarboard, starboardMountHits);
+            var targetSuffix = InformationPanelSummaryUtils.GetCurrentTargetSuffix(
+                targettingRecords.Select(rf => rf.GetTarget())
+            );
+            return $"{portClass}({portCurrent})/{starboardClass}({starboardCurrent}) {r.name.GetShortName()} ({ammunition}){targetSuffix}";
+        }
+
         [CreateProperty]
         public RapidFireBatteryRecord rapidFireBatteryRecord
         {

@@ -146,18 +146,6 @@ namespace NavalCombatCore
             return shipClass.rapidFireBatteryRecords[idx];
         }
 
-        public string GetInfo()
-        {
-            var r = rapidFireBatteryRecord;
-            if (r == null)
-                return "Not Valid";
-
-            var (portClass, portCurrent) = GetClassCurrentBarrels(r.barrelsLevelPort, portMountHits);
-            var (starboardClass, starboardCurrent) = GetClassCurrentBarrels(r.barrelsLevelStarboard, starboardMountHits);
-
-            return $"{portClass}({portCurrent})/{starboardClass}({starboardCurrent}) {r.name.mergedName} ({ammunition})";
-        }
-
         (int, int) GetClassCurrentBarrels(List<int> barrelsLevel, int hit)
         {
             hit = Math.Max(0, hit);

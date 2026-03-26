@@ -78,17 +78,6 @@ namespace NavalCombatCore
             ctx.SetAmmunition(batteryRecord.shellSizeInch, batteryRecord.ammunitionCapacity, ammunition);
         }
 
-        public string Summary() // Used in information panel
-        {
-            var batteryRecord = GetBatteryRecord();
-            if (batteryRecord == null)
-                return "[Not Specified]";
-            var barrels = batteryRecord.mountLocationRecords.Sum(r => r.barrels * r.mounts);
-            // var availableBarrels = mountStatus.Where(m => m.status == MountStatus.Operational).Sum(m => (m.mountLocationRecord.mounts - m.mountsDestroyed) * m.mountLocationRecord.barrels);
-            var availableBarrels = mountStatus.Where(m => m.IsOperational()).Sum(m => m.barrels);
-            return $"{availableBarrels}/{barrels} {batteryRecord.name.mergedName} ({ammunition.Summary()})";
-        }
-
         public float GetEffectiveBarrels(IEnumerable<MountStatusRecord> considieredMounts) // modified by ROF, FC value modifier and etc
         {
             var barrels = considieredMounts.Sum(m => m.barrels *

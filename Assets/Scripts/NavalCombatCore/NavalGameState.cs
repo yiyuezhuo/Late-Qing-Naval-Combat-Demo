@@ -118,7 +118,14 @@ namespace NavalCombatCore
 
         void ApplyAutomaticSearchlightAssignments(IEnumerable<ShipLog> ships)
         {
-            foreach (var ship in ships)
+            var illuminatedTargetIds = new HashSet<string>();
+            var orderedShips = ships
+                .Where(ship => ship != null)
+                .OrderBy(ship => ship.shipClass?.displacementTons ?? 0f)
+                .ThenBy(ship => ship.objectId)
+                .ToList();
+
+            foreach (var ship in orderedShips)
             {
                 if (ship?.searchLightHits == null)
                     continue;
@@ -135,6 +142,9 @@ namespace NavalCombatCore
                 var starboardAssigned = false;
                 foreach (var target in EnumerateOrderedSearchlightTargets(ship))
                 {
+                    if (target == null || string.IsNullOrWhiteSpace(target.objectId) || illuminatedTargetIds.Contains(target.objectId))
+                        continue;
+
                     if (!NavalUtils.TryResolveSearchlightTargetAssignment(ship, target, out var side, out var directionDeg))
                         continue;
 
@@ -146,6 +156,8 @@ namespace NavalCombatCore
                         ship.searchLightHits.portDirectionDeg = directionDeg;
                         ship.searchLightHits.portEnabled = true;
                         portAssigned = ship.searchLightHits.portEnabled;
+                        if (portAssigned)
+                            illuminatedTargetIds.Add(target.objectId);
                     }
                     else
                     {
@@ -155,6 +167,8 @@ namespace NavalCombatCore
                         ship.searchLightHits.starboardDirectionDeg = directionDeg;
                         ship.searchLightHits.starboardEnabled = true;
                         starboardAssigned = ship.searchLightHits.starboardEnabled;
+                        if (starboardAssigned)
+                            illuminatedTargetIds.Add(target.objectId);
                     }
 
                     if (portAssigned && starboardAssigned)

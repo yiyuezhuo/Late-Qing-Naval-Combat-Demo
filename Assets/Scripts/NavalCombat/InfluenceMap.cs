@@ -140,7 +140,6 @@ public static class InfluenceMapUtility
     public const float RangeYards = InfluenceMapDefaults.LinearRangeYards;
     public const float BoundsPaddingRatio = InfluenceMapDefaults.BoundsPaddingRatio;
     public const float MinBoundsPaddingDeg = InfluenceMapDefaults.MinBoundsPaddingDeg;
-    const float YardsPerDegree = 6076.11549f * 60f / 3f;
 
     readonly struct ContourSegment
     {
@@ -154,30 +153,6 @@ public static class InfluenceMapUtility
         }
     }
 
-    readonly struct LocalProjection
-    {
-        public readonly float centerLatDeg;
-        public readonly float centerLonDeg;
-        public readonly float lonScaleYards;
-
-        public LocalProjection(InfluenceMapBounds bounds)
-        {
-            centerLatDeg = (bounds.minLat + bounds.maxLat) * 0.5f;
-            centerLonDeg = (bounds.minLon + bounds.maxLon) * 0.5f;
-            lonScaleYards = Mathf.Max(0.01f, Mathf.Abs(Mathf.Cos(centerLatDeg * Mathf.Deg2Rad))) * YardsPerDegree;
-        }
-
-        public float LatitudeToY(float latitudeDeg)
-        {
-            return (latitudeDeg - centerLatDeg) * YardsPerDegree;
-        }
-
-        public float LongitudeToX(float longitudeDeg)
-        {
-            return (longitudeDeg - centerLonDeg) * lonScaleYards;
-        }
-    }
-
     readonly struct ShipFieldSample
     {
         public readonly ShipLog shipLog;
@@ -186,7 +161,7 @@ public static class InfluenceMapUtility
         public readonly float headingDeg;
         public readonly float generalScore;
 
-        public ShipFieldSample(ShipLog shipLog, LocalProjection projection)
+        public ShipFieldSample(ShipLog shipLog, MeasureUtils.LocalProjection projection)
         {
             this.shipLog = shipLog;
             xYards = projection.LongitudeToX(shipLog.position.LonDeg);
@@ -456,7 +431,10 @@ public static class InfluenceMapUtility
             height = height,
         };
 
-        var projection = new LocalProjection(bounds);
+        var projection = new MeasureUtils.LocalProjection(
+            (bounds.minLat + bounds.maxLat) * 0.5f,
+            (bounds.minLon + bounds.maxLon) * 0.5f
+        );
         var xCoords = BuildSampleXCoordinates(bounds, projection, width);
         var yCoords = BuildSampleYCoordinates(bounds, projection, height);
         var group1Samples = BuildShipFieldSamples(group1Ships, projection);
@@ -619,7 +597,7 @@ public static class InfluenceMapUtility
         return polyline.points[polyline.points.Count / 2];
     }
 
-    static float[] BuildSampleXCoordinates(InfluenceMapBounds bounds, LocalProjection projection, int width)
+    static float[] BuildSampleXCoordinates(InfluenceMapBounds bounds, MeasureUtils.LocalProjection projection, int width)
     {
         var coords = new float[width];
         for (var x = 0; x < width; x++)
@@ -631,7 +609,7 @@ public static class InfluenceMapUtility
         return coords;
     }
 
-    static float[] BuildSampleYCoordinates(InfluenceMapBounds bounds, LocalProjection projection, int height)
+    static float[] BuildSampleYCoordinates(InfluenceMapBounds bounds, MeasureUtils.LocalProjection projection, int height)
     {
         var coords = new float[height];
         for (var y = 0; y < height; y++)
@@ -643,7 +621,7 @@ public static class InfluenceMapUtility
         return coords;
     }
 
-    static List<ShipFieldSample> BuildShipFieldSamples(IReadOnlyList<ShipLog> ships, LocalProjection projection)
+    static List<ShipFieldSample> BuildShipFieldSamples(IReadOnlyList<ShipLog> ships, MeasureUtils.LocalProjection projection)
     {
         var samples = new List<ShipFieldSample>(ships?.Count ?? 0);
         if (ships == null)
@@ -784,10 +762,7 @@ public static class InfluenceMapUtility
 
     static float ApproximateDistanceYards(LatLon a, LatLon b)
     {
-        var averageLatRad = (a.LatDeg + b.LatDeg) * 0.5f * Mathf.Deg2Rad;
-        var dx = (b.LonDeg - a.LonDeg) * Mathf.Cos(averageLatRad) * YardsPerDegree;
-        var dy = (b.LatDeg - a.LatDeg) * YardsPerDegree;
-        return Mathf.Sqrt(Square(dx) + Square(dy));
+        return MeasureUtils.ApproximateDistanceYards(a, b);
     }
 
     static float Square(float value)

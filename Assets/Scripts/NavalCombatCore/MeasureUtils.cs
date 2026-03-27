@@ -221,6 +221,8 @@ namespace NavalCombatCore
 
     public static class MeasureUtils
     {
+        public const float YardsPerDegree = 2025.37183f * 60f;
+
         public static float yardToMeter = 0.9144f;
         public static float meterToYard = 1.09361f;
         public static float navalMileToMeter = 1852f;
@@ -231,6 +233,43 @@ namespace NavalCombatCore
         public static float kilometerToNavalMile = 1f / navalMileToKilometer;
         public static float kilometerToYard = meterToYard * 1000;
         public static float navalMileToYard = 2025.37183f;
+
+        public readonly struct LocalProjection
+        {
+            public readonly float centerLatDeg;
+            public readonly float centerLonDeg;
+            public readonly float lonScaleYards;
+
+            public LocalProjection(float centerLatDeg, float centerLonDeg)
+            {
+                this.centerLatDeg = centerLatDeg;
+                this.centerLonDeg = centerLonDeg;
+                lonScaleYards = Math.Max(0.01f, Math.Abs((float)Math.Cos(centerLatDeg * Math.PI / 180f))) * YardsPerDegree;
+            }
+
+            public float LatitudeToY(float latitudeDeg)
+            {
+                return (latitudeDeg - centerLatDeg) * YardsPerDegree;
+            }
+
+            public float LongitudeToX(float longitudeDeg)
+            {
+                return (longitudeDeg - centerLonDeg) * lonScaleYards;
+            }
+        }
+
+        public static float ApproximateDistanceSquaredYards(LatLon a, LatLon b)
+        {
+            var averageLatRad = (a.LatDeg + b.LatDeg) * 0.5f * (float)Math.PI / 180f;
+            var dx = (b.LonDeg - a.LonDeg) * (float)Math.Cos(averageLatRad) * YardsPerDegree;
+            var dy = (b.LatDeg - a.LatDeg) * YardsPerDegree;
+            return dx * dx + dy * dy;
+        }
+
+        public static float ApproximateDistanceYards(LatLon a, LatLon b)
+        {
+            return (float)Math.Sqrt(ApproximateDistanceSquaredYards(a, b));
+        }
 
         public static float MoveAngleTowards(float current, float target, float step)
         {

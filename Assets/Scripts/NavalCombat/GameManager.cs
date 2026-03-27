@@ -37,8 +37,8 @@ public class GunneryImpactFxHandle : MonoBehaviour
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     const float AutoEndDisengagedDistanceYards = 48000f;
+    // Compare squared distance to avoid an unnecessary sqrt for every ship pair.
     const float AutoEndDisengagedDistanceSquaredYards = AutoEndDisengagedDistanceYards * AutoEndDisengagedDistanceYards;
-    const float AutoEndYardsPerDegree = 2025.37183f * 60f;
 
     enum GunneryImpactFxKind
     {
@@ -58,36 +58,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         public float followHeightOffsetWu;
     }
 
-    readonly struct AutoEndLocalProjection
-    {
-        public readonly float centerLatDeg;
-        public readonly float centerLonDeg;
-        public readonly float lonScaleYards;
-
-        public AutoEndLocalProjection(float centerLatDeg, float centerLonDeg)
-        {
-            this.centerLatDeg = centerLatDeg;
-            this.centerLonDeg = centerLonDeg;
-            lonScaleYards = Mathf.Max(0.01f, Mathf.Abs(Mathf.Cos(centerLatDeg * Mathf.Deg2Rad))) * AutoEndYardsPerDegree;
-        }
-
-        public float LatitudeToY(float latitudeDeg)
-        {
-            return (latitudeDeg - centerLatDeg) * AutoEndYardsPerDegree;
-        }
-
-        public float LongitudeToX(float longitudeDeg)
-        {
-            return (longitudeDeg - centerLonDeg) * lonScaleYards;
-        }
-    }
-
     readonly struct AutoEndProjectedShip
     {
         public readonly float xYards;
         public readonly float yYards;
 
-        public AutoEndProjectedShip(ShipLog shipLog, AutoEndLocalProjection projection)
+        public AutoEndProjectedShip(ShipLog shipLog, MeasureUtils.LocalProjection projection)
         {
             xYards = projection.LongitudeToX(shipLog.position.LonDeg);
             yYards = projection.LatitudeToY(shipLog.position.LatDeg);
@@ -979,7 +955,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         return true;
     }
 
-    static AutoEndLocalProjection BuildAutoEndProjection(IReadOnlyList<List<ShipLog>> operationalRootGroups)
+    static MeasureUtils.LocalProjection BuildAutoEndProjection(IReadOnlyList<List<ShipLog>> operationalRootGroups)
     {
         var minLat = float.PositiveInfinity;
         var maxLat = float.NegativeInfinity;
@@ -997,7 +973,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
         }
 
-        return new AutoEndLocalProjection(
+        // Use the battle bounds center as the local origin to keep coordinates small and stable.
+        return new MeasureUtils.LocalProjection(
             (minLat + maxLat) * 0.5f,
             (minLon + maxLon) * 0.5f
         );

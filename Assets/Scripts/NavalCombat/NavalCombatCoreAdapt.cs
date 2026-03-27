@@ -183,11 +183,13 @@ namespace NavalCombatCore
 
             var torpedoBarrels = _shipClass.torpedoSector.mountLocationRecords.Sum(r => r.barrels * r.mounts);
             var torpedoBarrelsAvailable = torpedoSectorStatus.mountStatus.Where(m => m.IsOperational()).Sum(m => m.barrels);
-            var torpedoAmmu = torpedoSectorStatus.ammunition;
+            var torpedoMagazine = torpedoSectorStatus.ammunition;
+            var torpedoLoaded = torpedoSectorStatus.mountStatus.Sum(m => m.currentLoad);
+            var torpedoTotal = torpedoSectorStatus.GetAmmunitionMagazinePlusLoaded();
             var targetSuffix = InformationPanelSummaryUtils.GetCurrentTargetSuffix(
                 torpedoSectorStatus.mountStatus.Select(m => m.GetFiringTarget())
             );
-            return $"x{torpedoBarrelsAvailable}/{torpedoBarrels} {_shipClass.torpedoSector.name.GetShortName()} ({torpedoAmmu}){targetSuffix}";
+            return $"x{torpedoBarrelsAvailable}/{torpedoBarrels} {_shipClass.torpedoSector.name.GetShortName()} (mag {torpedoMagazine}, tube {torpedoLoaded}, total {torpedoTotal}){targetSuffix}";
         }
 
         public string GetRapidFiringSummary()

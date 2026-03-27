@@ -120,10 +120,12 @@ namespace NavalCombatCore
         {
             foreach (var ship in ships)
             {
-                DisableAllSearchlights(ship);
-
                 if (ship?.searchLightHits == null)
                     continue;
+                if (ship.doctrine?.GetSearchlightAutomaticType() != AutomaticType.Automatic)
+                    continue;
+
+                DisableAllSearchlights(ship);
 
                 var ownSunState = scenarioState.GetSunPosition(ship.position);
                 if (ownSunState == null || ownSunState.GetDayNightLevel() == DayNightLevel.Day)

@@ -55,6 +55,7 @@ namespace NavalCombatCore
         public string objectId { get; set; }
         public Inheriable<AutomaticType> maneuverAutomaticType = new() { value = AutomaticType.Manual };
         public Inheriable<AutomaticType> fireAutomaticType = new() { value = AutomaticType.Automatic };
+        public Inheriable<AutomaticType> searchlightAutomaticType = new() { value = AutomaticType.Automatic };
         public Inheriable<bool> ammunitionFallbackable = new() { value = true };
         public Inheriable<AutomaticType> ammunitionSwitchAutomaticType = new() { value = AutomaticType.Automatic };
         public InheriableUnspecifiableFloat maximumFiringDistanceYardsFor200mmPlus = new(); // mainly primary gun
@@ -103,6 +104,13 @@ namespace NavalCombatCore
             if (!fireAutomaticType.isInherited)
                 return fireAutomaticType.value;
             return GetParentDocrine()?.GetFireAutomaticType() ?? AutomaticType.Automatic;
+        }
+
+        public AutomaticType GetSearchlightAutomaticType()
+        {
+            if (!searchlightAutomaticType.isInherited)
+                return searchlightAutomaticType.value;
+            return GetParentDocrine()?.GetSearchlightAutomaticType() ?? AutomaticType.Automatic;
         }
 
         public UnspecifiableFloat GetMaximumFiringDistanceYardsFor200mmPlus()

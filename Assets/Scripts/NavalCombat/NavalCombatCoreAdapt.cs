@@ -1154,6 +1154,9 @@ namespace NavalCombatCore
         public string resolvedFireAutomaticTypeStr => LocalizeEnum(GetFireAutomaticType());
 
         [CreateProperty]
+        public string resolvedSearchlightAutomaticTypeStr => LocalizeEnum(GetSearchlightAutomaticType());
+
+        [CreateProperty]
         public string resolvedAmmunitionFallbackableStr => Localize(GetAmmunitionFallbackable().ToString());
 
         [CreateProperty]

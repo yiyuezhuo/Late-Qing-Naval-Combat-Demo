@@ -159,6 +159,37 @@
                 </Bindings>
             </ui:Label>
         </ui:VisualElement>
+        <ui:VisualElement name="" style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement data-source-path="searchlightAutomaticType" style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Searchlight Control:"/>
+                <ui:Label text="Inherit">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Toggle>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay"/>
+                    </Bindings>
+                </ui:Toggle>
+                <LocalizedEnumField type-str="NavalCombatCore.AutomaticType" class="long-dropdown">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="value" source-to-ui-converters="AutomaticType =&gt; int" ui-to-source-converters="int =&gt; AutomaticType" binding-mode="TwoWay"/>
+                        <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
+                    </Bindings>
+                </LocalizedEnumField>
+            </ui:VisualElement>
+            <ui:Label text="Current:">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(41460150319091712)"/>
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Label">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="resolvedSearchlightAutomaticTypeStr" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement data-source-path="maximumFiringDistanceYardsFor200mmPlus" style="flex-grow: 0; flex-direction: row;">
                 <ui:Label text="Max Fire Dist 200mm+ (yards):">

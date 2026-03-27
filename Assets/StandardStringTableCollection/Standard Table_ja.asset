@@ -2856,6 +2856,86 @@ MonoBehaviour:
     m_Localized: "\u8981\u7D04"
     m_Metadata:
       m_Items: []
+  - m_Id: -92000000000001
+    m_Localized: "\u9B5A\u96F7\u8981\u6483\u89E3\u30D3\u30B8\u30E5\u30A2\u30E9\u30A4\u30B6\u30FC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000002
+    m_Localized: "\u7121\u52B9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000003
+    m_Localized: "\u89E3\u306A\u3057"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000004
+    m_Localized: "\u767A\u5C04\u53EF\u80FD"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000005
+    m_Localized: "\u88C5\u586B\u4E2D"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000006
+    m_Localized: "\u5F3E\u85AC\u306A\u3057"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000007
+    m_Localized: "\u5C04\u754C\u5916"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000008
+    m_Localized: "\u30C9\u30AF\u30C8\u30EA\u30F3\u5236\u9650"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000009
+    m_Localized: "\u5371\u967A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000010
+    m_Localized: "\u9B5A\u96F7\u8A2D\u5B9A\u306A\u3057"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000011
+    m_Localized: "\u4F7F\u7528\u4E0D\u80FD"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000012
+    m_Localized: "\u65B9\u4F4D {0} \u5EA6\u3001\u8DDD\u96E2 {1} \u30E4\u30FC\u30C9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000013
+    m_Localized: "\u547D\u4E2D\u78BA\u7387"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000014
+    m_Localized: "\u547D\u4E2D\u78BA\u7387: {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000015
+    m_Localized: "\u901F\u5EA6\u30E9\u30F3\u30C0\u30E0\u30E2\u30C7\u30EB"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000016
+    m_Localized: "\u6700\u5C0F\u901F\u529B (kts)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000017
+    m_Localized: "\u6700\u5927\u901F\u529B (kts)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000018
+    m_Localized: "\u65B9\u5411\u30E9\u30F3\u30C0\u30E0\u30E2\u30C7\u30EB"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000019
+    m_Localized: "\u504F\u89D2\u4E0B\u9650 (deg)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000020
+    m_Localized: "\u504F\u89D2\u4E0A\u9650 (deg)"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

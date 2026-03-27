@@ -244,6 +244,421 @@ public class RelativeFormationDialogModel
     public RelativeFormationMode mode => (RelativeFormationMode)modeValue;
 }
 
+public class TorpedoInterceptSolutionDialogModel
+{
+    public string shooterObjectId;
+    public string targetObjectId;
+}
+
+public sealed class TorpedoInterceptRandomModel
+{
+    public float minSpeedKnots;
+    public float maxSpeedKnots;
+    public float lowerHeadingOffsetDeg;
+    public float upperHeadingOffsetDeg;
+}
+
+public enum TorpedoInterceptMountDiagnosticStatus
+{
+    Invalid,
+    Disabled,
+    NoTorpedoSetting,
+    Reloading,
+    NoAmmunition,
+    DoctrineBlocked,
+    Unsafe,
+    NoSolution,
+    OutOfArc,
+    CanFire
+}
+
+public sealed class TorpedoInterceptVisualizerSolution
+{
+    public ShipLog shooter;
+    public ShipLog target;
+    public float currentDistanceYards;
+    public bool isValid;
+    public bool doctrineRespected;
+    public bool isSafeToFire;
+    public TorpedoInterceptFailureReason failureReason;
+    public TorpedoSetting selectedSetting;
+    public TorpedoAttackContext.ShipLogPairSupplementary selectedSupplementary;
+    public InterceptionPointSolver.Result interceptionResult;
+    public LatLon interceptionPoint;
+    public bool hasSolution => selectedSupplementary != null && interceptionResult != null && interceptionResult.success;
+}
+
+public sealed class TorpedoInterceptProbabilityEstimate
+{
+    public bool isValid;
+    public float hitProbability;
+    public int headingDivisions;
+    public int speedDivisions;
+    public List<LatLon> futureRegionGridPoints = new();
+    public List<bool> hitCellMask = new();
+}
+
+public static class TorpedoInterceptSolutionDialogSupport
+{
+    static readonly float knotToMetersPerSecond = MeasureUtils.navalMileToMeter / 3600f;
+
+    public static string GetShipDisplayName(ShipLog shipLog)
+    {
+        if (shipLog == null)
+            return "[Invalid]";
+        return shipLog.namedShip?.name?.GetShortName()
+            ?? shipLog.namedShip?.name?.GetMergedName()
+            ?? shipLog.objectId
+            ?? "[Invalid]";
+    }
+
+    public static bool IsValidShooterTargetCombination(ShipLog shooter, ShipLog target)
+    {
+        if (shooter == null || target == null)
+            return false;
+        if (!shooter.IsOnMap() || !target.IsOnMap())
+            return false;
+        if (shooter == target)
+            return false;
+        return (shooter as IShipGroupMember)?.GetRootParent() != (target as IShipGroupMember)?.GetRootParent();
+    }
+
+    public static ShipLog GetDefaultTarget(ShipLog shooter)
+    {
+        if (shooter == null || !shooter.IsOnMap())
+            return null;
+        return new TorpedoBattery() { original = shooter }.GetCurrentFiringTarget() as ShipLog;
+    }
+
+    public static List<ShipLog> GetTargetCandidates(ShipLog shooter)
+    {
+        if (shooter == null || !shooter.IsOnMap())
+            return new List<ShipLog>();
+
+        var shooterRootParent = (shooter as IShipGroupMember)?.GetRootParent();
+        return NavalGameState.Instance.shipLogsOnMap
+            .Where(target => target != null && target != shooter && (target as IShipGroupMember)?.GetRootParent() != shooterRootParent)
+            .OrderBy(target => GetCurrentDistanceYards(shooter, target))
+            .ToList();
+    }
+
+    public static float GetCurrentDistanceYards(ShipLog shooter, ShipLog target)
+    {
+        if (shooter == null || target == null)
+            return float.PositiveInfinity;
+        var (distanceKm, _) = MeasureStats.Approximation.CalculateDistanceKmAndBearingDeg(
+            shooter.position.LatDeg, shooter.position.LonDeg,
+            target.position.LatDeg, target.position.LonDeg
+        );
+        return (float)(distanceKm * 1000 * MeasureUtils.meterToYard);
+    }
+
+    public static string BuildTargetChoiceLabel(ShipLog shooter, ShipLog target)
+    {
+        var distanceYards = GetCurrentDistanceYards(shooter, target);
+        return $"{GetShipDisplayName(target)} ({distanceYards:0} yd)";
+    }
+
+    public static TorpedoInterceptRandomModel BuildDefaultRandomModel(ShipLog target)
+    {
+        var speedKnots = Mathf.Max(0f, target?.speedKnots ?? 0f);
+        return new TorpedoInterceptRandomModel()
+        {
+            minSpeedKnots = speedKnots * 0.8f,
+            maxSpeedKnots = speedKnots * 1.2f,
+            lowerHeadingOffsetDeg = -30f,
+            upperHeadingOffsetDeg = 30f
+        };
+    }
+
+    public static TorpedoInterceptRandomModel SanitizeRandomModel(TorpedoInterceptRandomModel model)
+    {
+        if (model == null)
+            return BuildDefaultRandomModel(null);
+
+        var minSpeedKnots = Mathf.Max(0f, model.minSpeedKnots);
+        var maxSpeedKnots = Mathf.Max(0f, model.maxSpeedKnots);
+        if (minSpeedKnots > maxSpeedKnots)
+            (minSpeedKnots, maxSpeedKnots) = (maxSpeedKnots, minSpeedKnots);
+
+        var lowerHeadingOffsetDeg = model.lowerHeadingOffsetDeg;
+        var upperHeadingOffsetDeg = model.upperHeadingOffsetDeg;
+        if (lowerHeadingOffsetDeg > upperHeadingOffsetDeg)
+            (lowerHeadingOffsetDeg, upperHeadingOffsetDeg) = (upperHeadingOffsetDeg, lowerHeadingOffsetDeg);
+
+        return new TorpedoInterceptRandomModel()
+        {
+            minSpeedKnots = minSpeedKnots,
+            maxSpeedKnots = maxSpeedKnots,
+            lowerHeadingOffsetDeg = lowerHeadingOffsetDeg,
+            upperHeadingOffsetDeg = upperHeadingOffsetDeg
+        };
+    }
+
+    public static float GetTargetLengthMeters(ShipLog target)
+    {
+        if (target == null)
+            return 1f;
+        return Mathf.Max(1f, target.GetLengthFoot() * MeasureUtils.footToYard * MeasureUtils.yardToMeter);
+    }
+
+    public static float GetTargetBeamMeters(ShipLog target)
+    {
+        if (target == null)
+            return 1f;
+        return Mathf.Max(1f, target.GetBeamFoot() * MeasureUtils.footToYard * MeasureUtils.yardToMeter);
+    }
+
+    public static LatLon OffsetLatLon(LatLon origin, float eastMeters, float northMeters)
+    {
+        var distanceMeters = Mathf.Sqrt(eastMeters * eastMeters + northMeters * northMeters);
+        if (distanceMeters <= 0.001f)
+            return origin;
+
+        var azimuthDeg = MeasureUtils.NormalizeAngle(Mathf.Atan2(eastMeters, northMeters) * Mathf.Rad2Deg);
+        Geodesic.WGS84.Direct(origin.LatDeg, origin.LonDeg, azimuthDeg, distanceMeters, out var lat2, out var lon2);
+        return new LatLon((float)lat2, (float)lon2);
+    }
+
+    public static Vector2 ProjectRelativeMeters(LatLon origin, LatLon point)
+    {
+        var (distanceKm, bearingDeg) = MeasureStats.Approximation.CalculateDistanceKmAndBearingDeg(
+            origin.LatDeg, origin.LonDeg,
+            point.LatDeg, point.LonDeg
+        );
+        var distanceMeters = (float)(distanceKm * 1000);
+        var bearingRad = (float)(bearingDeg * Mathf.Deg2Rad);
+        return new Vector2(
+            distanceMeters * Mathf.Sin(bearingRad),
+            distanceMeters * Mathf.Cos(bearingRad)
+        );
+    }
+
+    public static TorpedoInterceptProbabilityEstimate EvaluateProbability(
+        TorpedoInterceptVisualizerSolution solution,
+        TorpedoInterceptRandomModel model,
+        int speedSamples = 15,
+        int headingSamples = 21
+    )
+    {
+        var estimate = new TorpedoInterceptProbabilityEstimate()
+        {
+            isValid = solution != null && solution.hasSolution
+        };
+        if (!estimate.isValid)
+            return estimate;
+
+        var sanitizedModel = SanitizeRandomModel(model);
+        var arrivalSeconds = Mathf.Max(0f, solution.interceptionResult.arrivalSeconds);
+        estimate.headingDivisions = Mathf.Max(1, headingSamples);
+        estimate.speedDivisions = Mathf.Max(1, speedSamples);
+
+        var halfLengthMeters = GetTargetLengthMeters(solution.target) * 0.5f;
+        var halfBeamMeters = GetTargetBeamMeters(solution.target) * 0.5f;
+        var startHeadingDeg = solution.target.headingDeg + sanitizedModel.lowerHeadingOffsetDeg;
+        var endHeadingDeg = solution.target.headingDeg + sanitizedModel.upperHeadingOffsetDeg;
+        var safeSpeedSamples = estimate.speedDivisions;
+        var safeHeadingSamples = estimate.headingDivisions;
+        var hitSamples = 0;
+        var totalSamples = 0;
+
+        for (var headingIdx = 0; headingIdx <= safeHeadingSamples; headingIdx++)
+        {
+            var headingT = safeHeadingSamples == 0 ? 0f : headingIdx / (float)safeHeadingSamples;
+            var headingDeg = Mathf.Lerp(startHeadingDeg, endHeadingDeg, headingT);
+            for (var speedIdx = 0; speedIdx <= safeSpeedSamples; speedIdx++)
+            {
+                var speedT = safeSpeedSamples == 0 ? 0f : speedIdx / (float)safeSpeedSamples;
+                var speedKnots = Mathf.Lerp(sanitizedModel.minSpeedKnots, sanitizedModel.maxSpeedKnots, speedT);
+                var travelDistanceMeters = speedKnots * knotToMetersPerSecond * arrivalSeconds;
+                var (gridLat, gridLon) = MeasureStats.Approximation.CalculateNewPosition(
+                    solution.target.position.LatDeg,
+                    solution.target.position.LonDeg,
+                    headingDeg,
+                    travelDistanceMeters
+                );
+                estimate.futureRegionGridPoints.Add(new LatLon((float)gridLat, (float)gridLon));
+            }
+        }
+
+        for (var headingIdx = 0; headingIdx < safeHeadingSamples; headingIdx++)
+        {
+            var headingT = (headingIdx + 0.5f) / safeHeadingSamples;
+            var headingDeg = Mathf.Lerp(startHeadingDeg, endHeadingDeg, headingT);
+            var headingRad = headingDeg * Mathf.Deg2Rad;
+            var forward = new Vector2(Mathf.Sin(headingRad), Mathf.Cos(headingRad));
+            var right = new Vector2(Mathf.Cos(headingRad), -Mathf.Sin(headingRad));
+
+            for (var speedIdx = 0; speedIdx < safeSpeedSamples; speedIdx++)
+            {
+                var speedT = (speedIdx + 0.5f) / safeSpeedSamples;
+                var speedKnots = Mathf.Lerp(sanitizedModel.minSpeedKnots, sanitizedModel.maxSpeedKnots, speedT);
+                var travelDistanceMeters = speedKnots * knotToMetersPerSecond * arrivalSeconds;
+                var (sampleLat, sampleLon) = MeasureStats.Approximation.CalculateNewPosition(
+                    solution.target.position.LatDeg,
+                    solution.target.position.LonDeg,
+                    headingDeg,
+                    travelDistanceMeters
+                );
+                var sampleCenter = new LatLon((float)sampleLat, (float)sampleLon);
+                var relativeToIntercept = ProjectRelativeMeters(sampleCenter, solution.interceptionPoint);
+                var forwardOffsetMeters = Vector2.Dot(relativeToIntercept, forward);
+                var lateralOffsetMeters = Vector2.Dot(relativeToIntercept, right);
+                var hit = Mathf.Abs(forwardOffsetMeters) <= halfLengthMeters
+                          && Mathf.Abs(lateralOffsetMeters) <= halfBeamMeters;
+                estimate.hitCellMask.Add(hit);
+                if (hit)
+                    hitSamples++;
+                totalSamples++;
+            }
+        }
+
+        estimate.hitProbability = totalSamples > 0 ? hitSamples / (float)totalSamples : 0f;
+        return estimate;
+    }
+
+    public static TorpedoInterceptVisualizerSolution EvaluateSolution(ShipLog shooter, ShipLog target, TorpedoAttackContext torpedoAttackContext)
+    {
+        var solution = new TorpedoInterceptVisualizerSolution()
+        {
+            shooter = shooter,
+            target = target,
+            isValid = IsValidShooterTargetCombination(shooter, target)
+        };
+
+        if (!solution.isValid)
+            return solution;
+
+        solution.currentDistanceYards = GetCurrentDistanceYards(shooter, target);
+        solution.doctrineRespected = shooter.doctrine.GetMaximumFiringDistanceYardsForTorpedo().IsGreaterThanIfSpecified(solution.currentDistanceYards);
+
+        var settings = shooter.shipClass?.torpedoSector?.torpedoSettings ?? new List<TorpedoSetting>();
+        if (settings.Count == 0)
+            return solution;
+
+        TorpedoAttackContext.ShipLogPairSupplementary firstSupplementary = null;
+        float minInterceptionDistanceYards = float.PositiveInfinity;
+
+        foreach (var setting in settings)
+        {
+            var supplementary = torpedoAttackContext.GetOrCalculateFireComplexSupplementary(shooter, target, setting.speedKnots);
+            firstSupplementary ??= supplementary;
+
+            if (supplementary == null)
+                continue;
+
+            if (supplementary.failureReason == TorpedoInterceptFailureReason.Unsafe)
+            {
+                solution.isSafeToFire = false;
+                solution.failureReason = TorpedoInterceptFailureReason.Unsafe;
+            }
+            else if (solution.failureReason == TorpedoInterceptFailureReason.None)
+            {
+                solution.isSafeToFire = supplementary.isSafeToFire;
+                solution.failureReason = supplementary.failureReason;
+            }
+
+            var interceptionResult = supplementary.interceptionPointSolverResult;
+            if (interceptionResult == null || !interceptionResult.success || interceptionResult.distanceYards >= setting.rangeYards)
+                continue;
+
+            if (interceptionResult.distanceYards < minInterceptionDistanceYards)
+            {
+                minInterceptionDistanceYards = interceptionResult.distanceYards;
+                solution.selectedSetting = setting;
+                solution.selectedSupplementary = supplementary;
+                solution.interceptionResult = interceptionResult;
+            }
+        }
+
+        if (firstSupplementary != null)
+        {
+            solution.isSafeToFire = firstSupplementary.isSafeToFire;
+            if (!solution.hasSolution)
+                solution.failureReason = firstSupplementary.failureReason;
+        }
+
+        if (solution.hasSolution)
+        {
+            solution.isSafeToFire = true;
+            solution.failureReason = TorpedoInterceptFailureReason.None;
+            Geodesic.WGS84.Direct(
+                shooter.position.LatDeg, shooter.position.LonDeg,
+                solution.interceptionResult.azimuth,
+                solution.interceptionResult.distanceYards * MeasureUtils.yardToMeter,
+                out var lat2,
+                out var lon2
+            );
+            solution.interceptionPoint = new LatLon((float)lat2, (float)lon2);
+        }
+
+        return solution;
+    }
+
+    public static TorpedoInterceptMountDiagnosticStatus EvaluateMountStatus(TorpedoMountStatusRecord mount, TorpedoInterceptVisualizerSolution solution)
+    {
+        if (mount == null || solution == null || !solution.isValid)
+            return TorpedoInterceptMountDiagnosticStatus.Invalid;
+
+        if (!mount.IsOperational())
+            return TorpedoInterceptMountDiagnosticStatus.Disabled;
+
+        var shooter = solution.shooter;
+        var classSector = shooter?.shipClass?.torpedoSector;
+        if (classSector == null || classSector.torpedoSettings.Count == 0)
+            return TorpedoInterceptMountDiagnosticStatus.NoTorpedoSetting;
+
+        if (mount.currentLoad <= 0)
+            return CanReload(mount, shooter)
+                ? TorpedoInterceptMountDiagnosticStatus.Reloading
+                : TorpedoInterceptMountDiagnosticStatus.NoAmmunition;
+
+        if (!solution.doctrineRespected)
+            return TorpedoInterceptMountDiagnosticStatus.DoctrineBlocked;
+
+        if (!solution.isSafeToFire)
+            return TorpedoInterceptMountDiagnosticStatus.Unsafe;
+
+        if (!solution.hasSolution)
+            return TorpedoInterceptMountDiagnosticStatus.NoSolution;
+
+        var recordInfo = mount.GetTorpedoMountLocationRecordInfo();
+        if (recordInfo?.record == null)
+            return TorpedoInterceptMountDiagnosticStatus.Invalid;
+
+        var bearingRelativeToBowDeg = MeasureUtils.NormalizeAngle(solution.interceptionResult.azimuth - shooter.headingDeg);
+        if (!recordInfo.record.IsInArc(bearingRelativeToBowDeg))
+            return TorpedoInterceptMountDiagnosticStatus.OutOfArc;
+
+        return TorpedoInterceptMountDiagnosticStatus.CanFire;
+    }
+
+    static bool CanReload(TorpedoMountStatusRecord mount, ShipLog shooter)
+    {
+        if (mount == null || shooter == null)
+            return false;
+
+        var recordInfo = mount.GetTorpedoMountLocationRecordInfo();
+        if (recordInfo?.record == null)
+            return false;
+
+        var requested = mount.barrels - mount.currentLoad;
+        var ammunitionCap = shooter.torpedoSectorStatus.ammunition;
+        int reloadLimitCap;
+        if (TorpedoMountStatusRecord.disableTorpedoReload)
+        {
+            reloadLimitCap = 0;
+        }
+        else
+        {
+            reloadLimitCap = recordInfo.record.reloadLimit == 0 ? int.MaxValue : recordInfo.record.reloadLimit - mount.reloadedLoad;
+        }
+
+        var transferred = Math.Min(reloadLimitCap, Math.Min(requested, ammunitionCap));
+        return transferred > 0;
+    }
+}
+
 
 public class DialogRoot : SingletonDocument<DialogRoot>
 {
@@ -273,6 +688,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset batteryArcIndicatorDialogDocument;
     public VisualTreeAsset plotTrajectoryDialogDocument;
     public VisualTreeAsset influenceMapDialogDocument;
+    public VisualTreeAsset torpedoInterceptSolutionVisualizerDialogDocument;
     public VisualTreeAsset strategicInfluenceMapDialogDocument;
     public VisualTreeAsset shipTimeLocDialogDocument;
     public VisualTreeAsset eventStateEditorDialogDocument;
@@ -1337,6 +1753,547 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             {
                 clearButton.clicked += GameManager.Instance.ClearInfluenceMap;
             }
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupTorpedoInterceptSolutionVisualizerDialog()
+    {
+        if (torpedoInterceptSolutionVisualizerDialogDocument == null)
+        {
+            PopupMessageDialog("TorpedoInterceptSolutionVisualizerDialog is not configured.");
+            return;
+        }
+
+        var selectedShipLog = GameManager.Instance.selectedShipLog;
+        if (selectedShipLog != null && !selectedShipLog.IsOnMap())
+            selectedShipLog = null;
+
+        var model = new TorpedoInterceptSolutionDialogModel()
+        {
+            shooterObjectId = selectedShipLog?.objectId,
+            targetObjectId = TorpedoInterceptSolutionDialogSupport.GetDefaultTarget(selectedShipLog)?.objectId
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = torpedoInterceptSolutionVisualizerDialogDocument,
+            templateDataSource = model,
+        };
+
+        tempDialog.onCreated += (_, el) =>
+        {
+            var shooterValueLabel = el.Q<Label>("ShooterValueLabel");
+            var targetDropdownField = el.Q<DropdownField>("TargetDropdownField");
+            var solutionLabel = el.Q<Label>("SolutionLabel");
+            var probabilityLabel = el.Q<Label>("ProbabilityLabel");
+            var minSpeedField = el.Q<FloatField>("MinSpeedField");
+            var maxSpeedField = el.Q<FloatField>("MaxSpeedField");
+            var lowerOffsetField = el.Q<FloatField>("LowerOffsetField");
+            var upperOffsetField = el.Q<FloatField>("UpperOffsetField");
+            var mountStatusScrollView = el.Q<ScrollView>("MountStatusScrollView");
+
+            LineRenderer interceptLineRenderer = null;
+            GameObject overlayRoot = null;
+            GameObject hitRegionOverlayObject = null;
+            GameObject futureRegionOverlayObject = null;
+            IVisualElementScheduledItem refreshItem = null;
+            bool suppressCallbacks = false;
+
+            LineRenderer GetOrCreateInterceptLineRenderer()
+            {
+                if (interceptLineRenderer != null)
+                    return interceptLineRenderer;
+
+                var gameManager = GameManager.Instance;
+                if (gameManager.shipLogTrajectoryPrefab != null)
+                {
+                    var lineObject = Instantiate(gameManager.shipLogTrajectoryPrefab, gameManager.transform);
+                    lineObject.name = "TorpedoInterceptSolutionVisualizerLine";
+                    interceptLineRenderer = lineObject.GetComponent<LineRenderer>();
+                }
+
+                if (interceptLineRenderer == null)
+                {
+                    var lineObject = new GameObject("TorpedoInterceptSolutionVisualizerLine");
+                    lineObject.transform.SetParent(GameManager.Instance.transform, false);
+                    interceptLineRenderer = lineObject.AddComponent<LineRenderer>();
+                    var shader = Shader.Find("Sprites/Default");
+                    if (shader != null)
+                        interceptLineRenderer.material = new Material(shader);
+                    interceptLineRenderer.widthMultiplier = 0.0005f;
+                    interceptLineRenderer.useWorldSpace = true;
+                }
+                interceptLineRenderer.widthMultiplier = interceptLineRenderer.widthMultiplier > 0
+                    ? interceptLineRenderer.widthMultiplier / 3f
+                    : 0.0005f / 3f;
+
+                var transparentMagenta = new Color(1f, 0f, 1f, 0.35f);
+                interceptLineRenderer.startColor = transparentMagenta;
+                interceptLineRenderer.endColor = transparentMagenta;
+                interceptLineRenderer.enabled = false;
+                interceptLineRenderer.positionCount = 0;
+                return interceptLineRenderer;
+            }
+
+            void HideInterceptLine()
+            {
+                if (interceptLineRenderer == null)
+                    return;
+                interceptLineRenderer.positionCount = 0;
+                interceptLineRenderer.enabled = false;
+            }
+
+            void DrawInterceptLine(TorpedoInterceptVisualizerSolution solution)
+            {
+                if (solution == null || !solution.hasSolution)
+                {
+                    HideInterceptLine();
+                    return;
+                }
+
+                var lineRenderer = GetOrCreateInterceptLineRenderer();
+                var inverseLine = Geodesic.WGS84.InverseLine(
+                    solution.shooter.position.LatDeg, solution.shooter.position.LonDeg,
+                    solution.interceptionPoint.LatDeg, solution.interceptionPoint.LonDeg
+                );
+                var distanceMeters = inverseLine.Distance;
+                const int segments = 16;
+                var positions = new Vector3[segments + 1];
+                for (var i = 0; i <= segments; i++)
+                {
+                    var p = segments == 0 ? 0f : (float)i / segments;
+                    var pos = inverseLine.Position(distanceMeters * p);
+                    positions[i] = Utils.LatitudeLongitudeDegHeightFootToVector3((float)pos.Latitude, (float)pos.Longitude, 40);
+                }
+
+                var transparentMagenta = new Color(1f, 0f, 1f, 0.35f);
+                lineRenderer.startColor = transparentMagenta;
+                lineRenderer.endColor = transparentMagenta;
+                lineRenderer.positionCount = positions.Length;
+                lineRenderer.SetPositions(positions);
+                lineRenderer.enabled = true;
+            }
+
+            GameObject GetOrCreateOverlayRoot()
+            {
+                if (overlayRoot != null)
+                    return overlayRoot;
+
+                var parent = GameManager.Instance.earthTransform != null
+                    ? GameManager.Instance.earthTransform
+                    : GameManager.Instance.transform;
+                overlayRoot = new GameObject("TorpedoInterceptSolutionVisualizerOverlay");
+                overlayRoot.transform.SetParent(parent, false);
+                return overlayRoot;
+            }
+
+            Material CreateOverlayMaterial(string materialName, Color color)
+            {
+                var shader = Shader.Find("Sprites/Default");
+                if (shader == null)
+                    shader = Shader.Find("Universal Render Pipeline/Unlit");
+                if (shader == null)
+                    shader = Shader.Find("Standard");
+                return new Material(shader)
+                {
+                    name = materialName,
+                    color = color
+                };
+            }
+
+            GameObject GetOrCreateOverlayObject(ref GameObject overlayObject, string name, Color color)
+            {
+                if (overlayObject != null)
+                    return overlayObject;
+
+                overlayObject = new GameObject(name);
+                overlayObject.transform.SetParent(GetOrCreateOverlayRoot().transform, false);
+                var meshFilter = overlayObject.AddComponent<MeshFilter>();
+                meshFilter.sharedMesh = new Mesh { name = $"{name}Mesh" };
+                var meshRenderer = overlayObject.AddComponent<MeshRenderer>();
+                meshRenderer.sharedMaterial = CreateOverlayMaterial($"{name}Material", color);
+                meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                meshRenderer.receiveShadows = false;
+                meshRenderer.motionVectorGenerationMode = MotionVectorGenerationMode.ForceNoMotion;
+                meshRenderer.enabled = false;
+                return overlayObject;
+            }
+
+            void HideOverlay(GameObject overlayObject)
+            {
+                if (overlayObject == null)
+                    return;
+
+                var meshFilter = overlayObject.GetComponent<MeshFilter>();
+                if (meshFilter?.sharedMesh != null)
+                    meshFilter.sharedMesh.Clear();
+
+                var meshRenderer = overlayObject.GetComponent<MeshRenderer>();
+                if (meshRenderer != null)
+                    meshRenderer.enabled = false;
+            }
+
+            void DrawGridOverlay(
+                ref GameObject overlayObject,
+                string name,
+                IReadOnlyList<LatLon> gridPoints,
+                int headingDivisions,
+                int speedDivisions,
+                IReadOnlyList<bool> cellMask,
+                Color color,
+                float heightFoot
+            )
+            {
+                if (gridPoints == null || headingDivisions <= 0 || speedDivisions <= 0)
+                {
+                    HideOverlay(overlayObject);
+                    return;
+                }
+
+                var expectedGridPointCount = (headingDivisions + 1) * (speedDivisions + 1);
+                if (gridPoints.Count != expectedGridPointCount)
+                {
+                    HideOverlay(overlayObject);
+                    return;
+                }
+
+                var overlay = GetOrCreateOverlayObject(ref overlayObject, name, color);
+                var meshFilter = overlay.GetComponent<MeshFilter>();
+                var meshRenderer = overlay.GetComponent<MeshRenderer>();
+                var mesh = meshFilter.sharedMesh ??= new Mesh { name = $"{name}Mesh" };
+                mesh.Clear();
+
+                var vertices = gridPoints
+                    .Select(point => Utils.LatitudeLongitudeDegHeightFootToVector3(point.LatDeg, point.LonDeg, heightFoot))
+                    .ToArray();
+                var triangles = new List<int>();
+
+                for (var headingIdx = 0; headingIdx < headingDivisions; headingIdx++)
+                {
+                    for (var speedIdx = 0; speedIdx < speedDivisions; speedIdx++)
+                    {
+                        var cellIndex = headingIdx * speedDivisions + speedIdx;
+                        if (cellMask != null && (cellIndex < 0 || cellIndex >= cellMask.Count || !cellMask[cellIndex]))
+                            continue;
+
+                        var v00 = headingIdx * (speedDivisions + 1) + speedIdx;
+                        var v10 = v00 + 1;
+                        var v01 = v00 + speedDivisions + 1;
+                        var v11 = v01 + 1;
+
+                        triangles.Add(v00);
+                        triangles.Add(v01);
+                        triangles.Add(v10);
+                        triangles.Add(v10);
+                        triangles.Add(v01);
+                        triangles.Add(v11);
+                    }
+                }
+
+                if (triangles.Count == 0)
+                {
+                    HideOverlay(overlayObject);
+                    return;
+                }
+
+                mesh.vertices = vertices;
+                mesh.triangles = triangles.ToArray();
+                mesh.RecalculateBounds();
+                meshRenderer.enabled = true;
+            }
+
+            void HideProbabilityOverlays()
+            {
+                HideOverlay(hitRegionOverlayObject);
+                HideOverlay(futureRegionOverlayObject);
+            }
+
+            void DestroyOverlayObject(ref GameObject overlayObject)
+            {
+                if (overlayObject == null)
+                    return;
+
+                var meshFilter = overlayObject.GetComponent<MeshFilter>();
+                if (meshFilter?.sharedMesh != null)
+                    Destroy(meshFilter.sharedMesh);
+
+                var meshRenderer = overlayObject.GetComponent<MeshRenderer>();
+                if (meshRenderer?.sharedMaterial != null)
+                    Destroy(meshRenderer.sharedMaterial);
+
+                Destroy(overlayObject);
+                overlayObject = null;
+            }
+
+            void CleanupProbabilityOverlays()
+            {
+                DestroyOverlayObject(ref hitRegionOverlayObject);
+                DestroyOverlayObject(ref futureRegionOverlayObject);
+                if (overlayRoot != null)
+                {
+                    Destroy(overlayRoot);
+                    overlayRoot = null;
+                }
+            }
+
+            void ApplyRandomModelDefaults(ShipLog target)
+            {
+                var defaultModel = TorpedoInterceptSolutionDialogSupport.BuildDefaultRandomModel(target);
+                suppressCallbacks = true;
+                if (minSpeedField != null)
+                    minSpeedField.value = defaultModel.minSpeedKnots;
+                if (maxSpeedField != null)
+                    maxSpeedField.value = defaultModel.maxSpeedKnots;
+                if (lowerOffsetField != null)
+                    lowerOffsetField.value = defaultModel.lowerHeadingOffsetDeg;
+                if (upperOffsetField != null)
+                    upperOffsetField.value = defaultModel.upperHeadingOffsetDeg;
+                suppressCallbacks = false;
+            }
+
+            TorpedoInterceptRandomModel ReadRandomModel()
+            {
+                var target = EntityManager.Instance.Get<ShipLog>(model.targetObjectId);
+                var defaultModel = TorpedoInterceptSolutionDialogSupport.BuildDefaultRandomModel(target);
+                return TorpedoInterceptSolutionDialogSupport.SanitizeRandomModel(new TorpedoInterceptRandomModel()
+                {
+                    minSpeedKnots = minSpeedField != null ? minSpeedField.value : defaultModel.minSpeedKnots,
+                    maxSpeedKnots = maxSpeedField != null ? maxSpeedField.value : defaultModel.maxSpeedKnots,
+                    lowerHeadingOffsetDeg = lowerOffsetField != null ? lowerOffsetField.value : defaultModel.lowerHeadingOffsetDeg,
+                    upperHeadingOffsetDeg = upperOffsetField != null ? upperOffsetField.value : defaultModel.upperHeadingOffsetDeg,
+                });
+            }
+
+            ShipLog GetCurrentShooter()
+            {
+                var shooter = GameManager.Instance.selectedShipLog;
+                return shooter != null && shooter.IsOnMap() ? shooter : null;
+            }
+
+            void SetDropdownSelection(DropdownField dropdownField, List<ShipLog> ships, string objectId)
+            {
+                suppressCallbacks = true;
+                dropdownField.userData = ships;
+                dropdownField.choices = ships.Select(ship =>
+                    TorpedoInterceptSolutionDialogSupport.BuildTargetChoiceLabel(EntityManager.Instance.Get<ShipLog>(model.shooterObjectId), ship)).ToList();
+
+                if (ships.Count == 0)
+                {
+                    dropdownField.index = -1;
+                    suppressCallbacks = false;
+                    return;
+                }
+
+                var idx = !string.IsNullOrWhiteSpace(objectId)
+                    ? ships.FindIndex(ship => ship.objectId == objectId)
+                    : -1;
+                dropdownField.index = idx >= 0 ? idx : -1;
+                suppressCallbacks = false;
+            }
+
+            bool SyncShooterLabelAndModel()
+            {
+                var shooter = GetCurrentShooter();
+                var newShooterObjectId = shooter?.objectId;
+                var shooterChanged = !string.Equals(model.shooterObjectId, newShooterObjectId, StringComparison.Ordinal);
+                model.shooterObjectId = newShooterObjectId;
+                if (shooterValueLabel != null)
+                    shooterValueLabel.text = shooter != null
+                        ? TorpedoInterceptSolutionDialogSupport.GetShipDisplayName(shooter)
+                        : Localize("Invalid");
+                return shooterChanged;
+            }
+
+            void SyncTargetDropdown(bool resetToDefaultTarget)
+            {
+                var shooter = EntityManager.Instance.Get<ShipLog>(model.shooterObjectId);
+                var targets = TorpedoInterceptSolutionDialogSupport.GetTargetCandidates(shooter);
+
+                if (resetToDefaultTarget)
+                    model.targetObjectId = TorpedoInterceptSolutionDialogSupport.GetDefaultTarget(shooter)?.objectId;
+
+                if (model.targetObjectId != null && targets.All(ship => ship.objectId != model.targetObjectId))
+                    model.targetObjectId = null;
+
+                SetDropdownSelection(targetDropdownField, targets, model.targetObjectId);
+            }
+
+            string GetMountStatusText(TorpedoInterceptMountDiagnosticStatus status, TorpedoMountStatusRecord mount)
+            {
+                return status switch
+                {
+                    TorpedoInterceptMountDiagnosticStatus.Invalid => Localize("Invalid"),
+                    TorpedoInterceptMountDiagnosticStatus.Disabled => Localize("Disabled"),
+                    TorpedoInterceptMountDiagnosticStatus.NoTorpedoSetting => Localize("No Torpedo Setting"),
+                    TorpedoInterceptMountDiagnosticStatus.Reloading => $"{Localize("Reloading")} ({mount.reloadingSeconds:0}s / 360s)",
+                    TorpedoInterceptMountDiagnosticStatus.NoAmmunition => Localize("No Ammunition"),
+                    TorpedoInterceptMountDiagnosticStatus.DoctrineBlocked => Localize("Doctrine Blocked"),
+                    TorpedoInterceptMountDiagnosticStatus.Unsafe => Localize("Unsafe"),
+                    TorpedoInterceptMountDiagnosticStatus.NoSolution => Localize("No Solution"),
+                    TorpedoInterceptMountDiagnosticStatus.OutOfArc => Localize("Out Of Arc"),
+                    TorpedoInterceptMountDiagnosticStatus.CanFire => Localize("Can Fire"),
+                    _ => Localize("Invalid")
+                };
+            }
+
+            void RefreshMountStatuses(TorpedoInterceptVisualizerSolution solution)
+            {
+                mountStatusScrollView.contentContainer.Clear();
+
+                var shooter = solution?.shooter;
+                var mounts = shooter?.torpedoSectorStatus?.mountStatus ?? new List<TorpedoMountStatusRecord>();
+                if (mounts.Count == 0)
+                {
+                    mountStatusScrollView.contentContainer.Add(new Label(solution != null && solution.isValid
+                        ? Localize("No Torpedo Setting")
+                        : Localize("Invalid")));
+                    return;
+                }
+
+                foreach (var mount in mounts)
+                {
+                    var mountLabel = mount?.GetTorpedoMountLocationRecordInfo()?.Summary() ?? "Invalid";
+                    var status = TorpedoInterceptSolutionDialogSupport.EvaluateMountStatus(mount, solution);
+                    mountStatusScrollView.contentContainer.Add(new Label($"{mountLabel}: {GetMountStatusText(status, mount)}"));
+                }
+            }
+
+            void RefreshProbabilityEstimate(TorpedoInterceptVisualizerSolution solution)
+            {
+                if (solution == null || !solution.hasSolution)
+                {
+                    if (probabilityLabel != null)
+                    {
+                        var statusText = solution != null && solution.isValid
+                            ? Localize("No Solution")
+                            : Localize("Invalid");
+                        probabilityLabel.text = Localize("Hit Probability: {0}", statusText);
+                    }
+
+                    HideProbabilityOverlays();
+                    return;
+                }
+
+                var estimate = TorpedoInterceptSolutionDialogSupport.EvaluateProbability(solution, ReadRandomModel());
+                if (probabilityLabel != null)
+                    probabilityLabel.text = Localize("Hit Probability: {0}", $"{estimate.hitProbability * 100f:0.0}%");
+
+                DrawGridOverlay(
+                    ref futureRegionOverlayObject,
+                    "TorpedoInterceptFutureRegion",
+                    estimate.futureRegionGridPoints,
+                    estimate.headingDivisions,
+                    estimate.speedDivisions,
+                    null,
+                    new Color(0.12f, 0.45f, 1f, 0.16f),
+                    30f
+                );
+                DrawGridOverlay(
+                    ref hitRegionOverlayObject,
+                    "TorpedoInterceptHitRegion",
+                    estimate.futureRegionGridPoints,
+                    estimate.headingDivisions,
+                    estimate.speedDivisions,
+                    estimate.hitCellMask,
+                    new Color(1f, 0.08f, 0.08f, 0.18f),
+                    34f
+                );
+            }
+
+            void RefreshAll(bool resetTargetToDefault = false)
+            {
+                var shooterChanged = SyncShooterLabelAndModel();
+                var shouldResetTarget = resetTargetToDefault || shooterChanged;
+                SyncTargetDropdown(shouldResetTarget);
+                if (shooterChanged)
+                    ApplyRandomModelDefaults(EntityManager.Instance.Get<ShipLog>(model.targetObjectId));
+
+                var shooter = EntityManager.Instance.Get<ShipLog>(model.shooterObjectId);
+                var target = EntityManager.Instance.Get<ShipLog>(model.targetObjectId);
+                if (!TorpedoInterceptSolutionDialogSupport.IsValidShooterTargetCombination(shooter, target))
+                {
+                    solutionLabel.text = Localize("Invalid");
+                    if (probabilityLabel != null)
+                        probabilityLabel.text = Localize("Hit Probability: {0}", Localize("Invalid"));
+                    HideInterceptLine();
+                    HideProbabilityOverlays();
+                    RefreshMountStatuses(new TorpedoInterceptVisualizerSolution()
+                    {
+                        shooter = shooter,
+                        target = target,
+                        isValid = false
+                    });
+                    return;
+                }
+
+                using (var torpedoAttackContext = TorpedoAttackContext.Begin())
+                {
+                    var solution = TorpedoInterceptSolutionDialogSupport.EvaluateSolution(shooter, target, torpedoAttackContext);
+                    if (solution.hasSolution)
+                    {
+                        solutionLabel.text = Localize("Azimuth {0} deg, Distance {1} yd, Time {2}s @ {3} kts",
+                            solution.interceptionResult.azimuth.ToString("0.0"),
+                            solution.interceptionResult.distanceYards.ToString("0"),
+                            solution.interceptionResult.arrivalSeconds.ToString("0.0"),
+                            solution.selectedSetting?.speedKnots.ToString("0.#") ?? "?");
+                        DrawInterceptLine(solution);
+                    }
+                    else
+                    {
+                        solutionLabel.text = Localize("No Solution");
+                        HideInterceptLine();
+                    }
+
+                    RefreshProbabilityEstimate(solution);
+                    RefreshMountStatuses(solution);
+                }
+            }
+
+            targetDropdownField.RegisterValueChangedCallback(_ =>
+            {
+                if (suppressCallbacks)
+                    return;
+
+                var targets = targetDropdownField.userData as List<ShipLog>;
+                model.targetObjectId = targets != null &&
+                                       targetDropdownField.index >= 0 &&
+                                       targetDropdownField.index < targets.Count
+                    ? targets[targetDropdownField.index].objectId
+                    : null;
+                ApplyRandomModelDefaults(EntityManager.Instance.Get<ShipLog>(model.targetObjectId));
+                RefreshAll();
+            });
+
+            void RegisterRandomModelCallback(FloatField field)
+            {
+                field?.RegisterValueChangedCallback(_ =>
+                {
+                    if (suppressCallbacks)
+                        return;
+                    RefreshAll();
+                });
+            }
+
+            RegisterRandomModelCallback(minSpeedField);
+            RegisterRandomModelCallback(maxSpeedField);
+            RegisterRandomModelCallback(lowerOffsetField);
+            RegisterRandomModelCallback(upperOffsetField);
+
+            ApplyRandomModelDefaults(EntityManager.Instance.Get<ShipLog>(model.targetObjectId));
+            RefreshAll();
+            refreshItem = el.schedule.Execute(() => RefreshAll()).Every(250);
+
+            tempDialog.onClosed += (_, _) =>
+            {
+                refreshItem?.Pause();
+                HideInterceptLine();
+                CleanupProbabilityOverlays();
+                if (interceptLineRenderer != null)
+                    Destroy(interceptLineRenderer.gameObject);
+            };
         };
 
         tempDialog.Popup();

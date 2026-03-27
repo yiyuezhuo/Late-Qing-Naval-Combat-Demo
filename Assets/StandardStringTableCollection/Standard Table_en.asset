@@ -2901,6 +2901,86 @@ MonoBehaviour:
     m_Localized: Summary
     m_Metadata:
       m_Items: []
+  - m_Id: -92000000000001
+    m_Localized: Torpedo Intercept Solution Visualizer
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000002
+    m_Localized: Invalid
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000003
+    m_Localized: No Solution
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000004
+    m_Localized: Can Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000005
+    m_Localized: Reloading
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000006
+    m_Localized: No Ammunition
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000007
+    m_Localized: Out Of Arc
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000008
+    m_Localized: Doctrine Blocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000009
+    m_Localized: Unsafe
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000010
+    m_Localized: No Torpedo Setting
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000011
+    m_Localized: Disabled
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000012
+    m_Localized: Azimuth {0} deg, Distance {1} yd
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000013
+    m_Localized: Hit Probability
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000014
+    m_Localized: 'Hit Probability: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000015
+    m_Localized: Speed Random Model
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000016
+    m_Localized: Minimum Speed (kts)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000017
+    m_Localized: Maximum Speed (kts)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000018
+    m_Localized: Heading Random Model
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000019
+    m_Localized: Lower Offset (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000020
+    m_Localized: Upper Offset (deg)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

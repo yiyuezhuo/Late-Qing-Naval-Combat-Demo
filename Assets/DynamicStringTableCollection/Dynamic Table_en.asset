@@ -3147,6 +3147,58 @@ MonoBehaviour:
     m_Localized: Control
     m_Metadata:
       m_Items: []
+  - m_Id: -92000000100001
+    m_Localized: Invalid
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000100002
+    m_Localized: No Solution
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000100003
+    m_Localized: Can Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000100004
+    m_Localized: Reloading
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000100005
+    m_Localized: No Ammunition
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000100006
+    m_Localized: Out Of Arc
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000100007
+    m_Localized: Doctrine Blocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000100008
+    m_Localized: Unsafe
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000100009
+    m_Localized: No Torpedo Setting
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000100010
+    m_Localized: Disabled
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000100011
+    m_Localized: Azimuth {0} deg, Distance {1} yd
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000100012
+    m_Localized: 'Hit Probability: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000100013
+    m_Localized: 'Azimuth {0} deg, Distance {1} yd, Time {2}s @ {3} kts'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

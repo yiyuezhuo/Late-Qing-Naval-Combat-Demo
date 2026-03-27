@@ -6,6 +6,13 @@ using YYZ;
 
 namespace NavalCombatCore
 {
+    public enum TorpedoInterceptFailureReason
+    {
+        None,
+        Unsafe,
+        NoSolution
+    }
+
     public class AbstractPrecalculationContext<T> : IDisposable where T : class, new()
     {
         static Stack<T> stack = new();
@@ -162,6 +169,8 @@ namespace NavalCombatCore
         {
             public ShipLog shooter;
             public ShipLog target;
+            public bool isSafeToFire;
+            public TorpedoInterceptFailureReason failureReason;
             public InterceptionPointSolver.Result interceptionPointSolverResult;
         }
 
@@ -172,30 +181,32 @@ namespace NavalCombatCore
             var key = (shooter, target, speedKnots);
             if (!fireComplexSupplementaryMap.TryGetValue(key, out var supplementary))
             {
-                supplementary = fireComplexSupplementaryMap[key] = new()
-                {
-                    shooter = shooter,
-                    target = target,
-                    interceptionPointSolverResult = CalcualteInterceptionPoint(shooter, target, speedKnots)
-                };
+                supplementary = fireComplexSupplementaryMap[key] = CalculateFireComplexSupplementary(shooter, target, speedKnots);
             }
             return supplementary;
         }
 
-        public static InterceptionPointSolver.Result CalcualteInterceptionPoint(ShipLog shooter, ShipLog target, float speedKnots)
+        static ShipLogPairSupplementary CalculateFireComplexSupplementary(ShipLog shooter, ShipLog target, float speedKnots)
         {
-            // var maskCheckService = ServiceLocator.Get<IMaskCheckService>();
-            // var maskCheckResult = maskCheckService.Check(shooter, target); // TODO: Using bigger threat volume compared to true collision volume.
-
             var maskCheckService = ServiceLocator.Get<IMaskCheckService>();
             var isSafe = maskCheckService.IsSafeToFireTorpedoAt(shooter, target); // TODO: Using bigger threat volume compared to true collision volume.
-            if(!isSafe)
-            {
-                return new(){success=false};
-            }
+            var interceptionPointSolverResult = isSafe
+                ? InterceptionPointSolver.Calcualte(shooter, target, speedKnots)
+                : new InterceptionPointSolver.Result() { success = false };
+            var failureReason = !isSafe
+                ? TorpedoInterceptFailureReason.Unsafe
+                : interceptionPointSolverResult.success
+                    ? TorpedoInterceptFailureReason.None
+                    : TorpedoInterceptFailureReason.NoSolution;
 
-            var ret = InterceptionPointSolver.Calcualte(shooter, target, speedKnots);
-            return ret;
+            return new ShipLogPairSupplementary()
+            {
+                shooter = shooter,
+                target = target,
+                isSafeToFire = isSafe,
+                failureReason = failureReason,
+                interceptionPointSolverResult = interceptionPointSolverResult
+            };
         }
     }
 }

@@ -1,0 +1,64 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="TorpedoInterceptSolutionDialogModel, Assembly-CSharp" class="panel-dialog" style="width: 540px; height: auto;">
+        <ui:Label text="Torpedo Intercept Solution Visualizer" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92000000000001)"/>
+            </Bindings>
+        </ui:Label>
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:VisualElement style="flex-direction: row; align-items: center; margin-top: 2px; margin-bottom: 2px;">
+                <ui:Label text="Shooter" style="min-width: 120px; margin-right: 4px;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(179033234640896)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Label name="ShooterValueLabel" text="Invalid" style="flex-grow: 1; white-space: normal;"/>
+            </ui:VisualElement>
+            <ui:DropdownField name="TargetDropdownField" label="Target">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(444321398165504)"/>
+                </Bindings>
+            </ui:DropdownField>
+            <ui:Label name="SolutionLabel" text="Invalid" style="white-space: normal; margin-top: 6px; margin-bottom: 4px;"/>
+            <ui:Label name="ProbabilityLabel" text="Hit Probability: Invalid" style="white-space: normal; margin-bottom: 6px;"/>
+            <ui:Label text="Speed Random Model" style="margin-top: 4px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92000000000015)"/>
+                </Bindings>
+            </ui:Label>
+            <ui:FloatField name="MinSpeedField" label="Minimum Speed (kts)">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92000000000016)"/>
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField name="MaxSpeedField" label="Maximum Speed (kts)">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92000000000017)"/>
+                </Bindings>
+            </ui:FloatField>
+            <ui:Label text="Heading Random Model" style="margin-top: 4px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92000000000018)"/>
+                </Bindings>
+            </ui:Label>
+            <ui:FloatField name="LowerOffsetField" label="Lower Offset (deg)">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92000000000019)"/>
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField name="UpperOffsetField" label="Upper Offset (deg)">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92000000000020)"/>
+                </Bindings>
+            </ui:FloatField>
+            <ui:ScrollView name="MountStatusScrollView" style="height: 180px; flex-grow: 1; margin-top: 6px; margin-bottom: 6px;"/>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row; flex-grow: 0; flex-shrink: 0;">
+            <ui:Button text="Cancel" name="CancelButton" style="flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66269346435072)"/>
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

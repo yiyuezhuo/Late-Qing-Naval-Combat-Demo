@@ -2773,6 +2773,86 @@ MonoBehaviour:
     m_Key: Detach Damaged
     m_Metadata:
       m_Items: []
+  - m_Id: -92000000000001
+    m_Key: Torpedo Intercept Solution Visualizer
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000002
+    m_Key: Invalid
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000003
+    m_Key: No Solution
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000004
+    m_Key: Can Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000005
+    m_Key: Reloading
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000006
+    m_Key: No Ammunition
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000007
+    m_Key: Out Of Arc
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000008
+    m_Key: Doctrine Blocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000009
+    m_Key: Unsafe
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000010
+    m_Key: No Torpedo Setting
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000011
+    m_Key: Disabled
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000012
+    m_Key: Azimuth {0} deg, Distance {1} yd
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000013
+    m_Key: Hit Probability
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000014
+    m_Key: 'Hit Probability: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000015
+    m_Key: Speed Random Model
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000016
+    m_Key: Minimum Speed (kts)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000017
+    m_Key: Maximum Speed (kts)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000018
+    m_Key: Heading Random Model
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000019
+    m_Key: Lower Offset (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92000000000020
+    m_Key: Upper Offset (deg)
+    m_Metadata:
+      m_Items: []
   - m_Id: -90000000000003
     m_Key: No ships require detach for repair.
     m_Metadata:

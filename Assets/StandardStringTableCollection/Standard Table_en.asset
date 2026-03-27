@@ -2997,6 +2997,10 @@ MonoBehaviour:
     m_Localized: Upper Offset (deg)
     m_Metadata:
       m_Items: []
+  - m_Id: -91000000000002
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

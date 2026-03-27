@@ -99,6 +99,16 @@ public class TopTabs : SingletonDocument<TopTabs>
             IOManager.Instance.LoadTextFile(OnFullStateXMLLoaded, "xml");
         };
 
+        root.Q<Button>("RestartButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupConfirmDialog(Localize(
+                "Confirm to restart current scene?"
+            ), () =>
+            {
+                GameManager.RestartCurrentScene();
+            });
+        };
+
         var selectionBuiltinButton = root.Q<Button>("SelectionBuiltinButton");
         selectionBuiltinButton.clicked += DialogRoot.Instance.PopupScenarioPickerDialogForScenarioSwitchInGame;
 
@@ -511,6 +521,13 @@ public class TopTabs : SingletonDocument<TopTabs>
         // IOManager.Instance.textLoaded -= OnFullStateXMLLoaded;
 
         var fullState = FullState.FromXML(text);
+        GameManager.SetRestartConfig(new GameManager.StartupConfig()
+        {
+            mode = GameManager.StartupConfig.Mode.FullState,
+            fullState = fullState,
+            isFromStrategic = GameManager.startupConfig.isFromStrategic,
+            isFromSkirmish = GameManager.startupConfig.isFromSkirmish
+        });
         StartCoroutine(GameManager.Instance.CompleteFullStateAndUpdateCoroutine(fullState));
     }
 

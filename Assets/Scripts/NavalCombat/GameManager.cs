@@ -191,9 +191,28 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         // public bool IsFromStrategic() => scenarioSetupGenerator != null;
         public bool IsFromStrategic() => isFromStrategic;
+
+        public StartupConfig DeepClone() => XmlUtils.FromXML<StartupConfig>(XmlUtils.ToXML(this));
     }
 
     public static StartupConfig startupConfig = new();
+    public static StartupConfig restartConfig;
+
+    public static void CaptureRestartConfig()
+    {
+        restartConfig = startupConfig?.DeepClone();
+    }
+
+    public static void SetRestartConfig(StartupConfig config)
+    {
+        restartConfig = config?.DeepClone();
+    }
+
+    public static void RestartCurrentScene()
+    {
+        startupConfig = (restartConfig ?? startupConfig)?.DeepClone() ?? new StartupConfig();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
     // public static FullState oneShotStartupFullState = null; // one-shot config
     // public static string scenarioSuffix = "_Yalu_Torpedo.xml";
@@ -213,6 +232,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         audioSource = GetComponent<AudioSource>();
 
         SwitchCenter.Instance.Reset();
+        CaptureRestartConfig();
 
         GamePreference.Instance.SetShortLabelLanguageTypeByLocale(LocalizationSettings.SelectedLocale);
         enableGunneryShellVisual = GamePreference.Instance.enableGunneryShellVisual;

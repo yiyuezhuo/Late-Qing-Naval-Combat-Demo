@@ -2915,6 +2915,10 @@ MonoBehaviour:
     m_Key: Summary
     m_Metadata:
       m_Items: []
+  - m_Id: -91000000000002
+    m_Key: Restart
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

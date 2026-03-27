@@ -3221,6 +3221,10 @@ MonoBehaviour:
     m_Localized: "\u65B9\u4F4D {0} \u5EA6\uFF0C\u8DDD\u96E2 {1} \u78BC\uFF0C\u5230\u9054\u6642\u9593 {2} \u79D2 @ {3} kts"
     m_Metadata:
       m_Items: []
+  - m_Id: -92000000100014
+    m_Localized: "\u78BA\u8A8D\u91CD\u65B0\u958B\u59CB\u76EE\u524D\u5834\u666F\uFF1F"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

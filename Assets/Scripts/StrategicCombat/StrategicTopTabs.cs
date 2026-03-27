@@ -73,6 +73,16 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             IOManager.Instance.LoadTextFile(OnMapXMLLoaded, "xml");
         };
 
+        root.Q<Button>("RestartButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupConfirmDialog(Localize(
+                "Confirm to restart current scene?"
+            ), () =>
+            {
+                StrategicGameManager.RestartCurrentScene();
+            });
+        };
+
         root.Q<Button>("GenerateMapButton").clicked += () =>
         {
             Debug.Log("GenerateMapButton clicked");
@@ -391,7 +401,12 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
         // var strategicGameState = XmlUtils.FromXML<StrategicGameState>(text);
         // StrategicGameState.Instance.UpdateTo(strategicGameState);
-
-        StartCoroutine(StrategicGameManager.Instance.OnScenTextLoaded(text));
+        var fullState = XmlUtils.FromXML<StrategicFullState>(text);
+        StrategicGameManager.SetRestartConfig(new StrategicGameManager.StartupConfig()
+        {
+            mode = StrategicGameManager.StartupConfig.Mode.FullState,
+            fullState = fullState
+        });
+        StartCoroutine(StrategicGameManager.Instance.ProcessFullState(fullState));
     }
 }

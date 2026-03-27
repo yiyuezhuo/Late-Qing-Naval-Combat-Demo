@@ -2952,6 +2952,10 @@ MonoBehaviour:
     m_Localized: "\u504F\u89D2\u4E0A\u9650 (deg)"
     m_Metadata:
       m_Items: []
+  - m_Id: -91000000000002
+    m_Localized: "\u30EA\u30B9\u30BF\u30FC\u30C8"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

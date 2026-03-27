@@ -91,11 +91,30 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         public List<ShipLog> syncShipLogs;
         public VictoryStatus victoryStatus;
         public List<LaunchedTorpedo> syncLaunchedTorpedos;
+
+        public StartupConfig DeepClone() => XmlUtils.FromXML<StartupConfig>(XmlUtils.ToXML(this));
     }
 
     public static string lastOpenedScenarioPath; // Used to suggest save file name
 
     public static StartupConfig startupConfig = new StartupConfig();
+    public static StartupConfig restartConfig;
+
+    public static void CaptureRestartConfig()
+    {
+        restartConfig = startupConfig?.DeepClone();
+    }
+
+    public static void SetRestartConfig(StartupConfig config)
+    {
+        restartConfig = config?.DeepClone();
+    }
+
+    public static void RestartCurrentScene()
+    {
+        startupConfig = (restartConfig ?? startupConfig)?.DeepClone() ?? new StartupConfig();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
     // public static string initialScenPath = "Strategic/StrategicGameState.xml";
 
@@ -351,6 +370,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         SwitchCenter.Instance.Reset();
 
         allUIDocuments = FindObjectsByType<UIDocument>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        CaptureRestartConfig();
 
         GamePreference.Instance.SetShortLabelLanguageTypeByLocale(LocalizationSettings.SelectedLocale);
 

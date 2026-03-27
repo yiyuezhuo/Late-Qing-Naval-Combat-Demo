@@ -180,8 +180,8 @@ namespace NavalCombatCore
 
             // TODO: Add doctrine for 100mm- batteries
 
-            var isStarboard = MeasureUtils.GetPositiveAngleDifference(bearingRelativeToBowDeg, 45) < 90;
-            var barrelsCurrent = GetAvailableBarrels(isStarboard ? RapidFiringBatteryLocation.Starboard : RapidFiringBatteryLocation.Port);
+            var side = NavalUtils.GetBatterySide(bearingRelativeToBowDeg);
+            var barrelsCurrent = GetAvailableBarrels(side);
 
             // var fcRecord = fireControlHits >= r.fireControlRecords.Count ? null : r.fireControlRecords[fireControlHits];
             // var fireControlScore = fcRecord == null ? 0 : (distanceYards <= r.effectiveRangeYards ? fcRecord.fireControlEffectiveRange : fcRecord.fireControlMaxRange);
@@ -253,7 +253,7 @@ namespace NavalCombatCore
                     if (!doctrineRespected)
                         continue;
 
-                    var side = MeasureUtils.GetPositiveAngleDifference(stats.observerToTargetBearingRelativeToBowDeg, 45) <= 90 ? RapidFiringBatteryLocation.Starboard : RapidFiringBatteryLocation.Port;
+                    var side = NavalUtils.GetBatterySide(stats.observerToTargetBearingRelativeToBowDeg);
                     var used = 0;
                     if (unfiredBarrels[side] <= 0)
                     {
@@ -430,8 +430,8 @@ namespace NavalCombatCore
 
         public float EvaluateFirepowerScore(float distanceYards, TargetAspect targetAspect, float targetSpeedKnots, float bearingRelativeToBowDeg)
         {
-            var isStarboard = MeasureUtils.GetPositiveAngleDifference(bearingRelativeToBowDeg, 45) < 90;
-            if ((isStarboard && side != RapidFiringBatteryLocation.Starboard) || (!isStarboard && side == RapidFiringBatteryLocation.Starboard))
+            var resolvedSide = NavalUtils.GetBatterySide(bearingRelativeToBowDeg);
+            if (resolvedSide != side)
                 return 0;
             return original.EvaluateFirepowerScore(distanceYards, bearingRelativeToBowDeg);
 

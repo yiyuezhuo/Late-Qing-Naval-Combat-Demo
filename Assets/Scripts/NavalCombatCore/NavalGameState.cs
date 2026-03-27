@@ -81,6 +81,86 @@ namespace NavalCombatCore
             { ControlMode.RelativeToTarget, -1 },
         };
 
+        static void DisableAllSearchlights(ShipLog ship)
+        {
+            if (ship?.searchLightHits == null)
+                return;
+
+            ship.searchLightHits.portEnabled = false;
+            ship.searchLightHits.starboardEnabled = false;
+        }
+
+        static IEnumerable<ShipLog> EnumerateOrderedSearchlightTargets(ShipLog ship)
+        {
+            if (ship == null)
+                yield break;
+
+            foreach (var battery in ship.batteryStatus)
+            {
+                foreach (var mount in battery.mountStatus)
+                {
+                    var target = mount.GetFiringTarget();
+                    if (target != null)
+                        yield return target;
+                }
+            }
+
+            foreach (var rapidBattery in ship.rapidFiringStatus)
+            {
+                foreach (var targetting in rapidBattery.targettingRecords)
+                {
+                    var target = targetting.GetTarget();
+                    if (target != null)
+                        yield return target;
+                }
+            }
+        }
+
+        void ApplyAutomaticSearchlightAssignments(IEnumerable<ShipLog> ships)
+        {
+            foreach (var ship in ships)
+            {
+                DisableAllSearchlights(ship);
+
+                if (ship?.searchLightHits == null)
+                    continue;
+
+                var ownSunState = scenarioState.GetSunPosition(ship.position);
+                if (ownSunState == null || ownSunState.GetDayNightLevel() == DayNightLevel.Day)
+                    continue;
+
+                var portAssigned = false;
+                var starboardAssigned = false;
+                foreach (var target in EnumerateOrderedSearchlightTargets(ship))
+                {
+                    if (!NavalUtils.TryResolveSearchlightTargetAssignment(ship, target, out var side, out var directionDeg))
+                        continue;
+
+                    if (side == RapidFiringBatteryLocation.Port)
+                    {
+                        if (portAssigned)
+                            continue;
+
+                        ship.searchLightHits.portDirectionDeg = directionDeg;
+                        ship.searchLightHits.portEnabled = true;
+                        portAssigned = ship.searchLightHits.portEnabled;
+                    }
+                    else
+                    {
+                        if (starboardAssigned)
+                            continue;
+
+                        ship.searchLightHits.starboardDirectionDeg = directionDeg;
+                        ship.searchLightHits.starboardEnabled = true;
+                        starboardAssigned = ship.searchLightHits.starboardEnabled;
+                    }
+
+                    if (portAssigned && starboardAssigned)
+                        break;
+                }
+            }
+        }
+
         public List<ShipGroup> shipGroups = new();
         public ScenarioState scenarioState = new();
         public List<LaunchedTorpedo> launchedTorpedos = new();
@@ -474,6 +554,8 @@ namespace NavalCombatCore
                     }
                     // leadShipLog.desiredSpeedKnots = desiredSpeedKnots;// Group's max speed
                 }
+
+                ApplyAutomaticSearchlightAssignments(shipLogsOnMapList);
 
                 // foreach(var shipLog in leadShipLogs)
                 // {

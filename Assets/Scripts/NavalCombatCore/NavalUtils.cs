@@ -55,10 +55,56 @@ namespace NavalCombatCore
             if (ship?.searchLightHits == null)
                 return false;
 
-            if (ship.GetSubStates<IElectronicSystemModifier>().Any(mod => mod.IsSearchLightDisabled()))
+            if (IsSearchlightDisabled(ship))
                 return false;
 
             return ship.searchLightHits.portEnabled || ship.searchLightHits.starboardEnabled;
+        }
+
+        public static bool IsSearchlightDisabled(ShipLog ship)
+        {
+            return ship == null || ship.GetSubStates<IElectronicSystemModifier>().Any(mod => mod.IsSearchLightDisabled());
+        }
+
+        public static RapidFiringBatteryLocation GetBatterySide(float bearingRelativeToBowDeg)
+        {
+            return MeasureUtils.NormalizeAngle(bearingRelativeToBowDeg) > 180f
+                ? RapidFiringBatteryLocation.Port
+                : RapidFiringBatteryLocation.Starboard;
+        }
+
+        public static bool CanOperateSearchlight(ShipLog ship, RapidFiringBatteryLocation side)
+        {
+            if (ship?.searchLightHits == null || IsSearchlightDisabled(ship))
+                return false;
+
+            return side == RapidFiringBatteryLocation.Port
+                ? ship.searchLightHits.CanUsePortSearchlight()
+                : ship.searchLightHits.CanUseStarboardSearchlight();
+        }
+
+        public static bool TryResolveSearchlightTargetAssignment(
+            ShipLog illuminator,
+            ShipLog target,
+            out RapidFiringBatteryLocation side,
+            out float directionDeg)
+        {
+            side = RapidFiringBatteryLocation.Starboard;
+            directionDeg = 0f;
+
+            if (illuminator == null || target == null || illuminator == target || !target.IsOnMap())
+                return false;
+
+            var stats = MeasureStats.MeasureApproximation(illuminator, target);
+            if (stats.distanceYards > SearchlightSectorRangeYards)
+                return false;
+
+            side = GetBatterySide(stats.observerToTargetBearingRelativeToBowDeg);
+            if (!CanOperateSearchlight(illuminator, side))
+                return false;
+
+            directionDeg = stats.observerToTargetBearingRelativeToBowDeg;
+            return true;
         }
 
         public static bool IsAfire(ShipLog ship)

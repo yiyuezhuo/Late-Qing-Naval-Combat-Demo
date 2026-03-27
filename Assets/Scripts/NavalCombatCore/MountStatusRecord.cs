@@ -392,7 +392,7 @@ namespace NavalCombatCore
             if (tgt != null && currentLoad > 0 && classSector.torpedoSettings.Count > 0)
             {
                 var (distanceKm, azi1) = MeasureStats.Approximation.CalculateDistanceKmAndBearingDeg(platform.position.LatDeg, platform.position.LonDeg, tgt.position.LatDeg, tgt.position.LonDeg);
-                var distYards = (float)distanceKm * MeasureUtils.meterToYard;
+                var distYards = (float)distanceKm * 1000 * MeasureUtils.meterToYard;
                 var doctrineRespected = platform.doctrine.GetMaximumFiringDistanceYardsForTorpedo().IsGreaterThanIfSpecified(distYards);
                 if (doctrineRespected)
                 {

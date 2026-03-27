@@ -277,6 +277,29 @@ namespace NavalCombatCore
                         secondsPerShot *= 2; // ROF / 2 if masked
                     }
 
+                    var targetSunState = NavalGameState.Instance.scenarioState.GetSunPosition(tgt.position);
+                    var dawnDuskOffset = 0;
+                    var nightMoonlightOffset = 0;
+                    var illuminationModifier = NavalUtils.GetNightIlluminationFireControlModifier(tgt, targetSunState);
+
+                    if (illuminationModifier.fireControlOffset <= 0)
+                    {
+                        // Target silhouetted by horizon: +1
+                        // Target in darkness: -2
+                        // None of above: +0
+                        // (EQ to Batteries)
+                        dawnDuskOffset = NavalUtils.GetDawnDuskFireControlOffset(targetSunState, stats.observerToTargetTrueBearingRelativeToNorthDeg);
+
+                        // Handle Additional for night conditions
+                        // No moonlight: -4
+                        // Moonlight: -2
+                        // (EQ to Batteries)
+                        if (targetSunState.GetDayNightLevel() == DayNightLevel.Night)
+                        {
+                            nightMoonlightOffset = NavalGameState.Instance.scenarioState.hasMoonlight ? -2 : -4;
+                        }
+                    }
+
                     while (tgtRec.processingSeconds >= secondsPerShot && ammunition > 0)
                     {
                         tgtRec.processingSeconds -= secondsPerShot;
@@ -303,32 +326,9 @@ namespace NavalCombatCore
                             fireControlScore += -4;
                         }
 
-                        // TODO: Move to precalculate context?
-                        var shooterSunState = NavalGameState.Instance.scenarioState.GetSunPosition(shooter.position);
-                        var targetSunState = NavalGameState.Instance.scenarioState.GetSunPosition(tgt.position);
-                        var sunLevel = shooterSunState.GetDayNightLevel();
-
-                        // Target silhouetted by horizon: +1
-                        // Target in darkness: -2
-                        // None of above: +0
-                        // (EQ to Batteries)
-                        fireControlScore += NavalUtils.GetDawnDuskFireControlOffset(targetSunState, stats.observerToTargetTrueBearingRelativeToNorthDeg);
-
-                        // Handle Additional for night conditions
-                        // No moonlight: -4
-                        // Moonlight: -2
-                        // (EQ to Batteries)
-
-                        if (sunLevel == DayNightLevel.Night)
-                        {
-                            var moonlightOffset = NavalGameState.Instance.scenarioState.hasMoonlight ? -2 : -4;
-                            fireControlScore += moonlightOffset;
-                        }
-
-                        // TODO: Handle Additional for illumination (1b or 1c)
-                        // Target afire or illuminated by searchlight: +2
-                        // Target using searchlight OR is illuminated: +1
-                        // (EQ to Batteries)
+                        fireControlScore += dawnDuskOffset;
+                        fireControlScore += nightMoonlightOffset;
+                        fireControlScore += illuminationModifier.fireControlOffset;
 
                         // TODO: Smoke 
                         // Target obscured by battle smoke or funnel smokescreen: -2

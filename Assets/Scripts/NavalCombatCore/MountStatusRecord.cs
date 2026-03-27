@@ -536,6 +536,8 @@ namespace NavalCombatCore
             public float visibilityOffset;
             public float dawnDuskOffset;
             public float nightMoonlightOffset;
+            public float illuminationOffset;
+            public string illuminationReason;
             public float evasiveActionOffset;
             public float trackingOffset;
             public bool trackingLocalControl;
@@ -569,6 +571,7 @@ namespace NavalCombatCore
                     S(visibilityOffset),
                     S(dawnDuskOffset),
                     S(nightMoonlightOffset),
+                    S(illuminationOffset),
                     S(evasiveActionOffset),
                     S(trackingOffset),
                     S(underFireOffset),
@@ -664,6 +667,7 @@ namespace NavalCombatCore
             lines.Add($"Visibility ({NavalGameState.Instance.scenarioState.visibility}): {FormatSigned(breakdown.visibilityOffset)}");
             lines.Add($"Dawn/Dusk (Sun Bearing Sector): {FormatSigned(breakdown.dawnDuskOffset)}");
             lines.Add($"Night/Moonlight: {FormatSigned(breakdown.nightMoonlightOffset)}");
+            lines.Add($"Illumination/Afire{(string.IsNullOrWhiteSpace(breakdown.illuminationReason) ? "" : $" ({breakdown.illuminationReason})")}: {FormatSigned(breakdown.illuminationOffset)}");
             lines.Add($"Evasive Action: {FormatSigned(breakdown.evasiveActionOffset)}");
             lines.Add(breakdown.trackingLocalControl
                 ? "Tracking (Local Control): x0.5"
@@ -792,28 +796,39 @@ namespace NavalCombatCore
             }
             fireControlScore += breakdown.visibilityOffset;
 
-            // TODO: Move to precalculate context?
-            var shooterSunState = NavalGameState.Instance.scenarioState.GetSunPosition(ctx.shipLog.position);
+            // d: additional for illumination (1b or 1c)
             var targetSunState = NavalGameState.Instance.scenarioState.GetSunPosition(target.position);
+            var illuminationModifier = NavalUtils.GetNightIlluminationFireControlModifier(target, targetSunState);
+            if (illuminationModifier.targetAfire && illuminationModifier.targetIlluminatedBySearchlight)
+                breakdown.illuminationReason = "Afire + Illuminated";
+            else if (illuminationModifier.targetAfire)
+                breakdown.illuminationReason = "Afire";
+            else if (illuminationModifier.targetIlluminatedBySearchlight)
+                breakdown.illuminationReason = "Illuminated";
+            else if (illuminationModifier.targetUsingSearchlight)
+                breakdown.illuminationReason = "Using Searchlight";
 
-            // Target silhouetted by horizon: +1
-            // Target in darkness: -2
-            // None of above: +0
-            breakdown.dawnDuskOffset = NavalUtils.GetDawnDuskFireControlOffset(targetSunState, stats.observerToTargetTrueBearingRelativeToNorthDeg);
-            fireControlScore += breakdown.dawnDuskOffset;
-
-            // Handle Additional for night conditions
-            // No moonlight: -4
-            // Moonlight: -2
-            if (targetSunState.GetDayNightLevel() == DayNightLevel.Night)
+            if (illuminationModifier.fireControlOffset <= 0)
             {
-                breakdown.nightMoonlightOffset = NavalGameState.Instance.scenarioState.hasMoonlight ? -2 : -4;
-            }
-            fireControlScore += breakdown.nightMoonlightOffset;
+                // b: additional for dawn/dusk conditions
+                // Target silhouetted by horizon: +1
+                // Target in darkness: -2
+                // None of above: +0
+                breakdown.dawnDuskOffset = NavalUtils.GetDawnDuskFireControlOffset(targetSunState, stats.observerToTargetTrueBearingRelativeToNorthDeg);
 
-            // TODO: Handle Additional for illumination (1b or 1c)
-            // Target afire or illuminated by searchlight: +2
-            // Target using searchlight OR is illuminated: +1
+                // c: Additional for night conditions
+                // No moonlight: -4
+                // Moonlight: -2
+                if (targetSunState.GetDayNightLevel() == DayNightLevel.Night)
+                {
+                    breakdown.nightMoonlightOffset = NavalGameState.Instance.scenarioState.hasMoonlight ? -2 : -4;
+                }
+            }
+
+            breakdown.illuminationOffset = illuminationModifier.fireControlOffset;
+            fireControlScore += breakdown.dawnDuskOffset;
+            fireControlScore += breakdown.nightMoonlightOffset;
+            fireControlScore += breakdown.illuminationOffset;
 
             // TODO: Blind Fire
             // Firing ship is using Blind Fire (target cannot be seen): -5

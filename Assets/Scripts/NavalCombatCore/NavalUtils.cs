@@ -11,6 +11,8 @@ namespace NavalCombatCore
     public static class NavalUtils
     {
         public const float TargetSilhouettedByHorizonAzimuthToleranceDeg = 30f;
+        public const float SearchlightSectorSweepDeg = 30f;
+        public const float SearchlightSectorRangeYards = 3500f;
 
         public static SunState GetSunPosition(DateTime dateTime, LatLon latLon)
         {
@@ -46,6 +48,73 @@ namespace NavalCombatCore
                 return -2;
 
             return 0;
+        }
+
+        public static bool IsUsingSearchlight(ShipLog ship)
+        {
+            if (ship?.searchLightHits == null)
+                return false;
+
+            if (ship.GetSubStates<IElectronicSystemModifier>().Any(mod => mod.IsSearchLightDisabled()))
+                return false;
+
+            return ship.searchLightHits.portEnabled || ship.searchLightHits.starboardEnabled;
+        }
+
+        public static bool IsAfire(ShipLog ship)
+        {
+            return ship != null && ship.GetSubStates<ShipboardFireState>().Any(state => state.severity >= 50f);
+        }
+
+        static bool IsTargetInsideSearchlightSector(ShipLog illuminator, ShipLog target, bool enabled, float directionDeg)
+        {
+            if (!enabled)
+                return false;
+
+            var stats = MeasureStats.MeasureApproximation(illuminator, target);
+            if (stats.distanceYards > SearchlightSectorRangeYards)
+                return false;
+
+            return MeasureUtils.GetPositiveAngleDifference(stats.observerToTargetBearingRelativeToBowDeg, directionDeg) <= SearchlightSectorSweepDeg * 0.5f;
+        }
+
+        public static bool IsIlluminatedBySearchlight(ShipLog target)
+        {
+            if (target == null || NavalGameState.Instance == null)
+                return false;
+
+            foreach (var illuminator in NavalGameState.Instance.shipLogsOnMap)
+            {
+                if (illuminator == null || illuminator == target || !IsUsingSearchlight(illuminator))
+                    continue;
+
+                var searchLightHits = illuminator.searchLightHits;
+                if (searchLightHits == null)
+                    continue;
+
+                if (IsTargetInsideSearchlightSector(illuminator, target, searchLightHits.portEnabled, searchLightHits.portDirectionDeg) ||
+                    IsTargetInsideSearchlightSector(illuminator, target, searchLightHits.starboardEnabled, searchLightHits.starboardDirectionDeg))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static (int fireControlOffset, bool targetUsingSearchlight, bool targetIlluminatedBySearchlight, bool targetAfire) GetNightIlluminationFireControlModifier(
+            ShipLog target,
+            SunState targetSunState)
+        {
+            if (target == null || targetSunState == null || targetSunState.GetDayNightLevel() == DayNightLevel.Day)
+                return (0, false, false, false);
+
+            var targetUsingSearchlight = IsUsingSearchlight(target);
+            var targetIlluminatedBySearchlight = IsIlluminatedBySearchlight(target);
+            var targetAfire = IsAfire(target);
+
+            var fireControlOffset = (targetAfire || targetIlluminatedBySearchlight) ? 2 : (targetUsingSearchlight ? 1 : 0);
+            return (fireControlOffset, targetUsingSearchlight, targetIlluminatedBySearchlight, targetAfire);
         }
     }
 }

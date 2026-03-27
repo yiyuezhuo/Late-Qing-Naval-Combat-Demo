@@ -36,6 +36,10 @@ public class GunneryImpactFxHandle : MonoBehaviour
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
+    const float AutoEndDisengagedDistanceYards = 48000f;
+    const float AutoEndDisengagedDistanceSquaredYards = AutoEndDisengagedDistanceYards * AutoEndDisengagedDistanceYards;
+    const float AutoEndYardsPerDegree = 2025.37183f * 60f;
+
     enum GunneryImpactFxKind
     {
         Splash,
@@ -52,6 +56,42 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         public Vector3 fallbackPositionWu;
         public string followTargetObjectId;
         public float followHeightOffsetWu;
+    }
+
+    readonly struct AutoEndLocalProjection
+    {
+        public readonly float centerLatDeg;
+        public readonly float centerLonDeg;
+        public readonly float lonScaleYards;
+
+        public AutoEndLocalProjection(float centerLatDeg, float centerLonDeg)
+        {
+            this.centerLatDeg = centerLatDeg;
+            this.centerLonDeg = centerLonDeg;
+            lonScaleYards = Mathf.Max(0.01f, Mathf.Abs(Mathf.Cos(centerLatDeg * Mathf.Deg2Rad))) * AutoEndYardsPerDegree;
+        }
+
+        public float LatitudeToY(float latitudeDeg)
+        {
+            return (latitudeDeg - centerLatDeg) * AutoEndYardsPerDegree;
+        }
+
+        public float LongitudeToX(float longitudeDeg)
+        {
+            return (longitudeDeg - centerLonDeg) * lonScaleYards;
+        }
+    }
+
+    readonly struct AutoEndProjectedShip
+    {
+        public readonly float xYards;
+        public readonly float yYards;
+
+        public AutoEndProjectedShip(ShipLog shipLog, AutoEndLocalProjection projection)
+        {
+            xYards = projection.LongitudeToX(shipLog.position.LonDeg);
+            yYards = projection.LatitudeToY(shipLog.position.LatDeg);
+        }
     }
 
     [CreateProperty]
@@ -808,18 +848,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         if(!scenarioState.firstRemainOneOperationalFleet)
         {
             var rootGroups = navalGameState.shipGroups.Where(g => g.parentObjectId == null).ToList();
-            var rootGroupShips = rootGroups.Select(g => g.Walk<ShipLog>().ToList()).ToList();
-            // var test = rootGroupShips.Select(shipLogs => shipLogs.Select(s => (s.mapState, s.operationalState, s.GetMaxSpeedKnots())).ToList()).ToList();
-            var operationalGroupCounts = rootGroupShips.Count(shipLogs => 
-                shipLogs.Any(shipLog =>
-                    shipLog.mapState == MapState.Deployed
-                    && shipLog.operationalState == ShipOperationalState.Operational
-                    && (
-                        shipLog.GetMaxSpeedKnots() > 0
-                        || (shipLog.IsLandBattery() && shipLog.isLandTarget)
-                    )
-                )
-            );
+            var operationalRootGroups = rootGroups
+                .Select(g => g.Walk<ShipLog>().Where(IsAutoEndOperationalShip).ToList())
+                .Where(shipLogs => shipLogs.Count > 0)
+                .ToList();
+            var operationalGroupCounts = operationalRootGroups.Count;
 
             if(operationalGroupCounts <= 1) // Effective Completed (only one side has effective ships)
             {
@@ -852,25 +885,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if(!navalGameState.scenarioState.firstDisengaged) // So operationalGroupCounts.Count >= 2
             {
-                var latLonAverages = rootGroupShips.Select(shipLogs => new LatLon(
-                    shipLogs.Average(s => s.GetLatitudeDeg()), // FIXME: separated retreat?
-                    shipLogs.Average(s => s.GetLongitudeDeg())
-                )).ToList();
-
-                var disengagedAny = false;
-                for(int i=0; i<latLonAverages.Count; i++)
-                {
-                    for(int j=i+1; j<latLonAverages.Count; j++)
-                    {
-                        var distIJYards = MeasureStats.Approximation.HaversineDistanceYards(latLonAverages[i], latLonAverages[j]);
-                        if(distIJYards > 48000) // 48000 yards to determine disengaged
-                        {
-                            disengagedAny = true;
-                            break;
-                        }
-                    }
-                }
-                if(disengagedAny)
+                if(AreOperationalRootGroupsDisengaged(operationalRootGroups))
                 {
                     scenarioState.firstDisengaged = true;
 
@@ -925,6 +940,88 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 );
             }
         }
+    }
+
+    static bool IsAutoEndOperationalShip(ShipLog shipLog)
+    {
+        return shipLog != null
+            && shipLog.mapState == MapState.Deployed
+            && shipLog.operationalState == ShipOperationalState.Operational
+            && (
+                shipLog.GetMaxSpeedKnots() > 0
+                || (shipLog.IsLandBattery() && shipLog.isLandTarget)
+            );
+    }
+
+    static bool AreOperationalRootGroupsDisengaged(IReadOnlyList<List<ShipLog>> operationalRootGroups)
+    {
+        if(operationalRootGroups == null || operationalRootGroups.Count <= 1)
+        {
+            return false;
+        }
+
+        var projection = BuildAutoEndProjection(operationalRootGroups);
+        var projectedRootGroups = operationalRootGroups
+            .Select(shipLogs => shipLogs.Select(shipLog => new AutoEndProjectedShip(shipLog, projection)).ToList())
+            .ToList();
+
+        for(int i=0; i<projectedRootGroups.Count; i++)
+        {
+            for(int j=i+1; j<projectedRootGroups.Count; j++)
+            {
+                if(!IsRootGroupPairDisengaged(projectedRootGroups[i], projectedRootGroups[j]))
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    static AutoEndLocalProjection BuildAutoEndProjection(IReadOnlyList<List<ShipLog>> operationalRootGroups)
+    {
+        var minLat = float.PositiveInfinity;
+        var maxLat = float.NegativeInfinity;
+        var minLon = float.PositiveInfinity;
+        var maxLon = float.NegativeInfinity;
+
+        foreach(var shipLogs in operationalRootGroups)
+        {
+            foreach(var shipLog in shipLogs)
+            {
+                minLat = Mathf.Min(minLat, shipLog.position.LatDeg);
+                maxLat = Mathf.Max(maxLat, shipLog.position.LatDeg);
+                minLon = Mathf.Min(minLon, shipLog.position.LonDeg);
+                maxLon = Mathf.Max(maxLon, shipLog.position.LonDeg);
+            }
+        }
+
+        return new AutoEndLocalProjection(
+            (minLat + maxLat) * 0.5f,
+            (minLon + maxLon) * 0.5f
+        );
+    }
+
+    static bool IsRootGroupPairDisengaged(IReadOnlyList<AutoEndProjectedShip> rootGroupA, IReadOnlyList<AutoEndProjectedShip> rootGroupB)
+    {
+        for(int i=0; i<rootGroupA.Count; i++)
+        {
+            var shipA = rootGroupA[i];
+            for(int j=0; j<rootGroupB.Count; j++)
+            {
+                var shipB = rootGroupB[j];
+                var dx = shipA.xYards - shipB.xYards;
+                var dy = shipA.yYards - shipB.yYards;
+                var distanceSquaredYards = dx * dx + dy * dy;
+                if(distanceSquaredYards <= AutoEndDisengagedDistanceSquaredYards)
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     static Dictionary<KeyCode, float> simulationSecondsAdvanceMap = new()

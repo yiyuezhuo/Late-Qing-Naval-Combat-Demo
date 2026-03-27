@@ -307,18 +307,46 @@
                                     </ui:IntegerField>
                                     <ui:IntegerField label="Port Searchlight Hits">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="searchLightHits.portHit" binding-mode="TwoWay"/>
+                                            <ui:DataBinding property="value" data-source-path="portSearchlightHits" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(168576851546112)"/>
                                             <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:IntegerField>
+                                    <ui:Toggle label="Port Searchlight On">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="portSearchlightEnabled" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-1001001)"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="portSearchlightToggleEditable" binding-mode="ToTarget"/>
+                                        </Bindings>
+                                    </ui:Toggle>
+                                    <ui:Slider label="Port Searchlight Relative Bearing (deg)" low-value="180" high-value="360" show-input-field="true">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="portSearchlightDirectionDeg" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-1001002)"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="portSearchlightDirectionEditable" binding-mode="ToTarget"/>
+                                        </Bindings>
+                                    </ui:Slider>
                                     <ui:IntegerField label="Starboard Searchlight Hits">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="searchLightHits.starboardHit" binding-mode="TwoWay"/>
+                                            <ui:DataBinding property="value" data-source-path="starboardSearchlightHits" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(168654257426432)"/>
                                             <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:IntegerField>
+                                    <ui:Toggle label="Starboard Searchlight On">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="starboardSearchlightEnabled" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-1001003)"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="starboardSearchlightToggleEditable" binding-mode="ToTarget"/>
+                                        </Bindings>
+                                    </ui:Toggle>
+                                    <ui:Slider label="Starboard Searchlight Relative Bearing (deg)" high-value="180" show-input-field="true">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="starboardSearchlightDirectionDeg" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-1001004)"/>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="starboardSearchlightDirectionEditable" binding-mode="ToTarget"/>
+                                        </Bindings>
+                                    </ui:Slider>
                                     <ui:Toggle label="Smoke Generator Disabled">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="smokeGeneratorDisabled" binding-mode="TwoWay"/>

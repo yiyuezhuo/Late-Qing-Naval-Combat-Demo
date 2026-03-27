@@ -164,6 +164,18 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     const float runtimeHullAlphaThreshold = 0.1f;
     const float runtimeHullTopOffsetWu = 0.0005f;
     const float runtimeHullMinDepthWu = 0.0001f;
+    const float searchlightSectorTopOffsetWu = 0.0007f;
+    const float searchlightSectorSweepDeg = 30f;
+    const float searchlightSectorRangeYards = 3500f;
+    const int searchlightSectorSegments = 12;
+    static readonly Color searchlightSectorColor = new(1f, 0.96f, 0.78f, 0.09f);
+    GameObject portSearchlightSectorObject;
+    MeshFilter portSearchlightSectorMeshFilter;
+    MeshRenderer portSearchlightSectorMeshRenderer;
+    GameObject starboardSearchlightSectorObject;
+    MeshFilter starboardSearchlightSectorMeshFilter;
+    MeshRenderer starboardSearchlightSectorMeshRenderer;
+    Material searchlightSectorMaterial;
 
     // float initialEmissionRateOverTimeConstant;
 
@@ -198,8 +210,11 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
     {
         GamePreference.Instance.enable3DBaseChanged -= OnEnable3DBaseChanged;
         DestroyRuntimeHullObject();
+        DestroySearchlightSectorObjects();
         if (runtimeHullMaterial != null)
             Destroy(runtimeHullMaterial);
+        if (searchlightSectorMaterial != null)
+            Destroy(searchlightSectorMaterial);
     }
 
     void OnEnable3DBaseChanged(object sender, bool enabled)
@@ -308,6 +323,197 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
             return;
 
         material.SetTexture(mainTexPropertyId, texture);
+    }
+
+    void DestroySearchlightSectorObject(ref GameObject sectorObject, ref MeshFilter meshFilter, ref MeshRenderer meshRenderer)
+    {
+        if (meshFilter != null && meshFilter.sharedMesh != null)
+            Destroy(meshFilter.sharedMesh);
+        if (sectorObject != null)
+            Destroy(sectorObject);
+
+        sectorObject = null;
+        meshFilter = null;
+        meshRenderer = null;
+    }
+
+    void DestroySearchlightSectorObjects()
+    {
+        DestroySearchlightSectorObject(ref portSearchlightSectorObject, ref portSearchlightSectorMeshFilter, ref portSearchlightSectorMeshRenderer);
+        DestroySearchlightSectorObject(ref starboardSearchlightSectorObject, ref starboardSearchlightSectorMeshFilter, ref starboardSearchlightSectorMeshRenderer);
+    }
+
+    void EnsureSearchlightSectorObject(ref GameObject sectorObject, ref MeshFilter meshFilter, ref MeshRenderer meshRenderer, string name)
+    {
+        if (sectorObject != null)
+            return;
+
+        sectorObject = new GameObject(name);
+        sectorObject.transform.SetParent(headingTransform, false);
+        sectorObject.transform.localPosition = new Vector3(0f, 0f, searchlightSectorTopOffsetWu);
+        sectorObject.transform.localRotation = Quaternion.identity;
+        sectorObject.layer = iconRenderer != null ? iconRenderer.gameObject.layer : gameObject.layer;
+
+        meshFilter = sectorObject.AddComponent<MeshFilter>();
+        meshFilter.sharedMesh = new Mesh
+        {
+            name = $"{name}Mesh"
+        };
+
+        meshRenderer = sectorObject.AddComponent<MeshRenderer>();
+        meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        meshRenderer.receiveShadows = false;
+        meshRenderer.motionVectorGenerationMode = UnityEngine.MotionVectorGenerationMode.ForceNoMotion;
+
+        if (searchlightSectorMaterial == null)
+        {
+            var shader = Shader.Find("Sprites/Default");
+            if (shader == null)
+                shader = Shader.Find("Universal Render Pipeline/Unlit");
+            if (shader == null)
+                shader = Shader.Find("Standard");
+
+            if (shader != null)
+            {
+                searchlightSectorMaterial = new Material(shader)
+                {
+                    name = "SearchlightSectorMaterial",
+                    color = searchlightSectorColor
+                };
+
+                var baseMaterial = iconRenderer != null
+                    ? (iconRenderer.sharedMaterial != null ? iconRenderer.sharedMaterial : iconRenderer.material)
+                    : null;
+                var baseRenderQueue = baseMaterial != null ? baseMaterial.renderQueue : searchlightSectorMaterial.renderQueue;
+                searchlightSectorMaterial.renderQueue = Mathf.Max(0, baseRenderQueue - 2);
+            }
+        }
+
+        if (searchlightSectorMaterial != null)
+            meshRenderer.sharedMaterial = searchlightSectorMaterial;
+
+        meshRenderer.enabled = false;
+    }
+
+    static Vector3 GetSearchlightSectorPoint(float relativeBearingDeg, float rangeWu)
+    {
+        var rad = relativeBearingDeg * Mathf.Deg2Rad;
+        return new Vector3(
+            Mathf.Cos(rad) * rangeWu,
+            -Mathf.Sin(rad) * rangeWu,
+            0f
+        );
+    }
+
+    static void RebuildSearchlightSectorMesh(Mesh mesh, float centerBearingDeg, float rangeWu)
+    {
+        if (mesh == null)
+            return;
+
+        var halfSweepDeg = searchlightSectorSweepDeg * 0.5f;
+        var vertices = new Vector3[searchlightSectorSegments + 2];
+        var triangles = new int[searchlightSectorSegments * 3];
+
+        vertices[0] = Vector3.zero;
+        for (int i = 0; i <= searchlightSectorSegments; i++)
+        {
+            var t = (float)i / searchlightSectorSegments;
+            var bearingDeg = MeasureUtils.NormalizeAngle(centerBearingDeg - halfSweepDeg + searchlightSectorSweepDeg * t);
+            vertices[i + 1] = GetSearchlightSectorPoint(bearingDeg, rangeWu);
+        }
+
+        for (int i = 0; i < searchlightSectorSegments; i++)
+        {
+            var triOffset = i * 3;
+            triangles[triOffset] = 0;
+            triangles[triOffset + 1] = i + 2;
+            triangles[triOffset + 2] = i + 1;
+        }
+
+        mesh.Clear();
+        mesh.vertices = vertices;
+        mesh.triangles = triangles;
+        mesh.RecalculateNormals();
+        mesh.RecalculateBounds();
+    }
+
+    void SyncSearchlightSector(
+        ref GameObject sectorObject,
+        ref MeshFilter meshFilter,
+        ref MeshRenderer meshRenderer,
+        string name,
+        bool enabled,
+        float directionDeg
+    )
+    {
+        if (!enabled && sectorObject == null)
+            return;
+
+        EnsureSearchlightSectorObject(ref sectorObject, ref meshFilter, ref meshRenderer, name);
+        if (sectorObject == null || meshFilter == null || meshRenderer == null)
+            return;
+
+        sectorObject.transform.localPosition = new Vector3(0f, 0f, searchlightSectorTopOffsetWu);
+        sectorObject.transform.localRotation = Quaternion.identity;
+        sectorObject.transform.localScale = Vector3.one;
+
+        if (!enabled)
+        {
+            meshRenderer.enabled = false;
+            if (meshFilter.sharedMesh != null)
+                meshFilter.sharedMesh.Clear();
+            return;
+        }
+
+        RebuildSearchlightSectorMesh(meshFilter.sharedMesh, directionDeg, searchlightSectorRangeYards * Utils.yardsToWu);
+        meshRenderer.enabled = true;
+    }
+
+    void UpdateSearchlightEffects(ShipLog shipLog)
+    {
+        var searchlightStatus = shipLog?.searchLightHits;
+        var canRender = shipLog != null &&
+                        shipLog.mapState == MapState.Deployed &&
+                        !shipLog.IsLandBattery() &&
+                        searchlightStatus != null;
+
+        if (!canRender)
+        {
+            SyncSearchlightSector(
+                ref portSearchlightSectorObject,
+                ref portSearchlightSectorMeshFilter,
+                ref portSearchlightSectorMeshRenderer,
+                "PortSearchlightSector",
+                false,
+                0f
+            );
+            SyncSearchlightSector(
+                ref starboardSearchlightSectorObject,
+                ref starboardSearchlightSectorMeshFilter,
+                ref starboardSearchlightSectorMeshRenderer,
+                "StarboardSearchlightSector",
+                false,
+                0f
+            );
+            return;
+        }
+
+        SyncSearchlightSector(
+            ref portSearchlightSectorObject,
+            ref portSearchlightSectorMeshFilter,
+            ref portSearchlightSectorMeshRenderer,
+            "PortSearchlightSector",
+            searchlightStatus.portEnabled,
+            searchlightStatus.portDirectionDeg
+        );
+        SyncSearchlightSector(
+            ref starboardSearchlightSectorObject,
+            ref starboardSearchlightSectorMeshFilter,
+            ref starboardSearchlightSectorMeshRenderer,
+            "StarboardSearchlightSector",
+            searchlightStatus.starboardEnabled,
+            searchlightStatus.starboardDirectionDeg
+        );
     }
 
     void UpdateRuntimeHullPreview(ShipLog shipLog, float lengthWu, float beamWu, Color mainColor)
@@ -818,6 +1024,7 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
         MaintainFlagRotationSize();
         UpdateWakeEffects(shipLog, lengthWu, beamWu);
+        UpdateSearchlightEffects(shipLog);
 
         if (isLandBattery)
         {

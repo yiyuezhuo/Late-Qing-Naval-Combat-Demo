@@ -446,6 +446,84 @@ namespace NavalCombatCore
         [CreateProperty]
         public int damageControlRatingProp => GetDamageControlRating();
 
+        [CreateProperty]
+        public int portSearchlightHits
+        {
+            get => searchLightHits?.portHit ?? 0;
+            set
+            {
+                if (searchLightHits != null)
+                    searchLightHits.portHit = value;
+            }
+        }
+
+        [CreateProperty]
+        public int starboardSearchlightHits
+        {
+            get => searchLightHits?.starboardHit ?? 0;
+            set
+            {
+                if (searchLightHits != null)
+                    searchLightHits.starboardHit = value;
+            }
+        }
+
+        [CreateProperty]
+        public bool portSearchlightEnabled
+        {
+            get => searchLightHits?.portEnabled ?? false;
+            set
+            {
+                if (searchLightHits != null)
+                    searchLightHits.portEnabled = value;
+            }
+        }
+
+        [CreateProperty]
+        public float portSearchlightDirectionDeg
+        {
+            get => searchLightHits?.portDirectionDeg ?? 0f;
+            set
+            {
+                if (searchLightHits != null)
+                    searchLightHits.portDirectionDeg = value;
+            }
+        }
+
+        [CreateProperty]
+        public bool starboardSearchlightEnabled
+        {
+            get => searchLightHits?.starboardEnabled ?? false;
+            set
+            {
+                if (searchLightHits != null)
+                    searchLightHits.starboardEnabled = value;
+            }
+        }
+
+        [CreateProperty]
+        public float starboardSearchlightDirectionDeg
+        {
+            get => searchLightHits?.starboardDirectionDeg ?? 0f;
+            set
+            {
+                if (searchLightHits != null)
+                    searchLightHits.starboardDirectionDeg = value;
+            }
+        }
+
+        [CreateProperty]
+        public bool portSearchlightToggleEditable => isInEditMode && (searchLightHits?.CanUsePortSearchlight() ?? false);
+
+        [CreateProperty]
+        public bool portSearchlightDirectionEditable => isInEditMode && (searchLightHits?.portEnabled ?? false);
+
+        [CreateProperty]
+        public bool starboardSearchlightToggleEditable => isInEditMode && (searchLightHits?.CanUseStarboardSearchlight() ?? false);
+
+        [CreateProperty]
+        public bool starboardSearchlightDirectionEditable => isInEditMode && (searchLightHits?.starboardEnabled ?? false);
+
         public string GetMapStatePrefix()
         {
             return mapState switch

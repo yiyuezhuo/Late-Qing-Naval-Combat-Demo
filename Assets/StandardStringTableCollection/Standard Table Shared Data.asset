@@ -797,6 +797,22 @@ MonoBehaviour:
     m_Key: Starboard Searchlight Hits
     m_Metadata:
       m_Items: []
+  - m_Id: -1001001
+    m_Key: Port Searchlight On
+    m_Metadata:
+      m_Items: []
+  - m_Id: -1001002
+    m_Key: Port Searchlight Relative Bearing (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -1001003
+    m_Key: Starboard Searchlight On
+    m_Metadata:
+      m_Items: []
+  - m_Id: -1001004
+    m_Key: Starboard Searchlight Relative Bearing (deg)
+    m_Metadata:
+      m_Items: []
   - m_Id: 168731373899776
     m_Key: Smoke Generator Disabled
     m_Metadata:

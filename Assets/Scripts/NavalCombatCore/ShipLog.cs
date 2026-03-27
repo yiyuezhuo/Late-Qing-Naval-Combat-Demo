@@ -61,13 +61,70 @@ namespace NavalCombatCore
 
     public class SearchLightStatus
     {
-        public int portHit;
-        public int starboardHit;
+        int _portHit;
+        int _starboardHit;
+        bool _portEnabled;
+        bool _starboardEnabled;
+        float _portDirectionDeg;
+        float _starboardDirectionDeg;
+
+        public int portHit
+        {
+            get => _portHit;
+            set
+            {
+                _portHit = Math.Max(0, value);
+                if (_portHit > 0)
+                    _portEnabled = false;
+            }
+        }
+
+        public int starboardHit
+        {
+            get => _starboardHit;
+            set
+            {
+                _starboardHit = Math.Max(0, value);
+                if (_starboardHit > 0)
+                    _starboardEnabled = false;
+            }
+        }
+
+        public bool portEnabled
+        {
+            get => _portEnabled;
+            set => _portEnabled = value && CanUsePortSearchlight();
+        }
+
+        public float portDirectionDeg
+        {
+            get => _portDirectionDeg;
+            set => _portDirectionDeg = Math.Clamp(value, 180f, 360f);
+        }
+
+        public bool starboardEnabled
+        {
+            get => _starboardEnabled;
+            set => _starboardEnabled = value && CanUseStarboardSearchlight();
+        }
+
+        public float starboardDirectionDeg
+        {
+            get => _starboardDirectionDeg;
+            set => _starboardDirectionDeg = Math.Clamp(value, 0f, 180f);
+        }
+
+        public bool CanUsePortSearchlight() => portHit == 0;
+        public bool CanUseStarboardSearchlight() => starboardHit == 0;
 
         public void ResetDamageExpenditureState()
         {
             portHit = 0;
             starboardHit = 0;
+            portEnabled = false;
+            starboardEnabled = false;
+            portDirectionDeg = 270f;
+            starboardDirectionDeg = 90f;
         }
     }
 

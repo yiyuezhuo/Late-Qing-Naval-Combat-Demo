@@ -800,6 +800,22 @@ MonoBehaviour:
     m_Localized: Starboard Searchlight Hits
     m_Metadata:
       m_Items: []
+  - m_Id: -1001001
+    m_Localized: Port Searchlight On
+    m_Metadata:
+      m_Items: []
+  - m_Id: -1001002
+    m_Localized: Port Searchlight Relative Bearing (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -1001003
+    m_Localized: Starboard Searchlight On
+    m_Metadata:
+      m_Items: []
+  - m_Id: -1001004
+    m_Localized: Starboard Searchlight Relative Bearing (deg)
+    m_Metadata:
+      m_Items: []
   - m_Id: 168731373899776
     m_Localized: Smoke Generator Disabled
     m_Metadata:

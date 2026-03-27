@@ -304,14 +304,15 @@ namespace NavalCombatCore
                         }
 
                         // TODO: Move to precalculate context?
-                        var sunState = NavalGameState.Instance.scenarioState.GetSunPosition(shooter.position);
-                        var sunLevel = sunState.GetDayNightLevel();
+                        var shooterSunState = NavalGameState.Instance.scenarioState.GetSunPosition(shooter.position);
+                        var targetSunState = NavalGameState.Instance.scenarioState.GetSunPosition(tgt.position);
+                        var sunLevel = shooterSunState.GetDayNightLevel();
 
-                        // TODO: Handle Additional for dawn/dusk condition
                         // Target silhouetted by horizon: +1
                         // Target in darkness: -2
                         // None of above: +0
                         // (EQ to Batteries)
+                        fireControlScore += NavalUtils.GetDawnDuskFireControlOffset(targetSunState, stats.observerToTargetTrueBearingRelativeToNorthDeg);
 
                         // Handle Additional for night conditions
                         // No moonlight: -4

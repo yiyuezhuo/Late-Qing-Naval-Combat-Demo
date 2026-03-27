@@ -534,6 +534,7 @@ namespace NavalCombatCore
             public float mountSubstateOffset;
             public float mountSubstateCoef = 1f;
             public float visibilityOffset;
+            public float dawnDuskOffset;
             public float nightMoonlightOffset;
             public float evasiveActionOffset;
             public float trackingOffset;
@@ -566,6 +567,7 @@ namespace NavalCombatCore
                     S(mountSubstateOffset),
                     S(mountSubstateCoef),
                     S(visibilityOffset),
+                    S(dawnDuskOffset),
                     S(nightMoonlightOffset),
                     S(evasiveActionOffset),
                     S(trackingOffset),
@@ -660,11 +662,12 @@ namespace NavalCombatCore
             lines.Add($"Mount/Substate FC Offset: {FormatSigned(breakdown.mountSubstateOffset)}");
             lines.Add($"Mount/Substate FC Coef: x{FormatNumber(breakdown.mountSubstateCoef)}");
             lines.Add($"Visibility ({NavalGameState.Instance.scenarioState.visibility}): {FormatSigned(breakdown.visibilityOffset)}");
+            lines.Add($"Dawn/Dusk (Sun Bearing Sector): {FormatSigned(breakdown.dawnDuskOffset)}");
             lines.Add($"Night/Moonlight: {FormatSigned(breakdown.nightMoonlightOffset)}");
             lines.Add($"Evasive Action: {FormatSigned(breakdown.evasiveActionOffset)}");
             lines.Add(breakdown.trackingLocalControl
                 ? "Tracking (Local Control): x0.5"
-                : $"Tracking: {FormatSigned(breakdown.trackingOffset)}");
+                : $"Tracking State: {FormatSigned(breakdown.trackingOffset)}");
             lines.Add($"Under Fire (3+ ships): {FormatSigned(breakdown.underFireOffset)}");
             lines.Add($"Over Concentration: {FormatSigned(breakdown.overConcentrationOffset)}");
             lines.Add($"Target Size: {FormatSigned(breakdown.targetSizeOffset)}");
@@ -790,17 +793,19 @@ namespace NavalCombatCore
             fireControlScore += breakdown.visibilityOffset;
 
             // TODO: Move to precalculate context?
-            var sunState = NavalGameState.Instance.scenarioState.GetSunPosition(ctx.shipLog.position);
+            var shooterSunState = NavalGameState.Instance.scenarioState.GetSunPosition(ctx.shipLog.position);
+            var targetSunState = NavalGameState.Instance.scenarioState.GetSunPosition(target.position);
 
-            // TODO: Handle Additional for dawn/dusk condition
             // Target silhouetted by horizon: +1
             // Target in darkness: -2
             // None of above: +0
+            breakdown.dawnDuskOffset = NavalUtils.GetDawnDuskFireControlOffset(targetSunState, stats.observerToTargetTrueBearingRelativeToNorthDeg);
+            fireControlScore += breakdown.dawnDuskOffset;
 
             // Handle Additional for night conditions
             // No moonlight: -4
             // Moonlight: -2
-            if (sunState.GetDayNightLevel() == DayNightLevel.Night)
+            if (targetSunState.GetDayNightLevel() == DayNightLevel.Night)
             {
                 breakdown.nightMoonlightOffset = NavalGameState.Instance.scenarioState.hasMoonlight ? -2 : -4;
             }

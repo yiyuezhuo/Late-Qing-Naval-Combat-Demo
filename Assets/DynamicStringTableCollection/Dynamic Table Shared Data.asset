@@ -3187,7 +3187,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -92000000100013
-    m_Key: 'Azimuth {0} deg, Distance {1} yd, Time {2}s @ {3} kts'
+    m_Key: Azimuth {0} deg, Distance {1} yd, Time {2}s @ {3} kts
     m_Metadata:
       m_Items: []
   - m_Id: -92000000100014

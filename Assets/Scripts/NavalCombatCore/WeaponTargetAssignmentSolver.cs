@@ -48,6 +48,7 @@ namespace NavalCombatCore
         // Urgency boost for knife-fight distances where enemy torpedo danger is assumed to be imminent.
         public static float torpedoThreatRangeYards = 1500f;
         public static float torpedoThreatTargetUrgencyFactor = 2.0f;
+        public static float subjectiveCloseRangePreferenceMinFactor = 0.5f;
 
         public class ShooterRecord
         {
@@ -164,7 +165,8 @@ namespace NavalCombatCore
                     var stats = shooter.measurements[target] = MeasureStats.Measure(shooter.original, target.original);
                     foreach (var battery in shooter.batteries)
                     {
-                        var firepowerScore = battery.original.EvaluateFirepowerScore(stats.distanceYards, stats.targetPresentAspectFromObserver, target.speedKnots, stats.observerToTargetBearingRelativeToBowDeg);
+                        var firepowerScore = battery.original.EvaluateFirepowerScore(stats.distanceYards, stats.targetPresentAspectFromObserver, target.speedKnots, stats.observerToTargetBearingRelativeToBowDeg)
+                            * GetSubjectiveCloseRangePreferenceFactor(stats.distanceYards);
                         battery.firepowerScoreMap[target] = firepowerScore;
                     }
                 }
@@ -295,6 +297,39 @@ namespace NavalCombatCore
         static float GetTargetUrgencyFactor(float distanceYards)
         {
             return distanceYards < torpedoThreatRangeYards ? torpedoThreatTargetUrgencyFactor : 1f;
+        }
+
+        static float GetSubjectiveCloseRangePreferenceFactor(float distanceYards)
+        {
+            if (distanceYards <= 2000f)
+            {
+                return LerpByDistance(1f, 0.9f, distanceYards, 0f, 2000f);
+            }
+
+            if (distanceYards <= 4500f)
+            {
+                return LerpByDistance(0.9f, 0.7f, distanceYards, 2000f, 4500f);
+            }
+
+            if (distanceYards <= 8000f)
+            {
+                return LerpByDistance(0.7f, 0.5f, distanceYards, 4500f, 8000f);
+            }
+
+            return subjectiveCloseRangePreferenceMinFactor;
+        }
+
+        static float LerpByDistance(float startValue, float endValue, float distanceYards, float startDistanceYards, float endDistanceYards)
+        {
+            if (endDistanceYards <= startDistanceYards)
+                return endValue;
+
+            var t = (distanceYards - startDistanceYards) / (endDistanceYards - startDistanceYards);
+            if (t < 0f)
+                t = 0f;
+            else if (t > 1f)
+                t = 1f;
+            return startValue + (endValue - startValue) * t;
         }
 
         static float GetCurrentTargetFireEffectivenessFactor(BatteryRecord battery)

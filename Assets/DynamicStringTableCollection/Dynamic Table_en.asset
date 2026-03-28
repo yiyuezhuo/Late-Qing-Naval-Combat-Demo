@@ -3203,6 +3203,74 @@ MonoBehaviour:
     m_Localized: Confirm to restart current scene?
     m_Metadata:
       m_Items: []
+  - m_Id: -93000000100001
+    m_Localized: Scan
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100002
+    m_Localized: Shooter
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100003
+    m_Localized: Target
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100004
+    m_Localized: Gain
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100005
+    m_Localized: Raw Gain
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100006
+    m_Localized: Distance
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100007
+    m_Localized: Target FP
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100008
+    m_Localized: Target SV
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100009
+    m_Localized: Urgency
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100010
+    m_Localized: Under FP
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100011
+    m_Localized: Over Conc
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100012
+    m_Localized: FP Base
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100013
+    m_Localized: FP Eff
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100014
+    m_Localized: Try OC
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100015
+    m_Localized: Current
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100016
+    m_Localized: Current Eff
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100017
+    m_Localized: Stickiness
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

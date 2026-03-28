@@ -688,6 +688,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset batteryArcIndicatorDialogDocument;
     public VisualTreeAsset plotTrajectoryDialogDocument;
     public VisualTreeAsset influenceMapDialogDocument;
+    public VisualTreeAsset wtaSolverInspectorDialogDocument;
     public VisualTreeAsset torpedoInterceptSolutionVisualizerDialogDocument;
     public VisualTreeAsset strategicInfluenceMapDialogDocument;
     public VisualTreeAsset shipTimeLocDialogDocument;
@@ -2296,6 +2297,25 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             };
         };
 
+        tempDialog.Popup();
+    }
+
+    public void PopupWtaSolverInspectorDialog()
+    {
+        if (wtaSolverInspectorDialogDocument == null)
+        {
+            PopupMessageDialog("WtaSolverInspectorDialog is not configured.");
+            return;
+        }
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = wtaSolverInspectorDialogDocument,
+        };
+
+        var dialog = new WtaSolverInspectorDialog();
+        tempDialog.onCreated += dialog.OnCreated;
         tempDialog.Popup();
     }
 

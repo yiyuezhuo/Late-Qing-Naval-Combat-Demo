@@ -115,7 +115,78 @@ namespace NavalCombatCore
             }
         }
 
+        readonly struct CandidateEvaluation
+        {
+            public readonly MeasureStats stats;
+            public readonly float targetUrgencyFactor;
+            public readonly float tryAddedFirepowerScoreBase;
+            public readonly float tryAddedFirepowerScoreEffective;
+            public readonly int tryAddedOverconcentrationScore;
+            public readonly float rawGainBeforeStickiness;
+            public readonly float changeTargetMultiplier;
+            public readonly float finalGain;
+            public readonly bool isCurrentTarget;
+
+            public CandidateEvaluation(
+                MeasureStats stats,
+                float targetUrgencyFactor,
+                float tryAddedFirepowerScoreBase,
+                float tryAddedFirepowerScoreEffective,
+                int tryAddedOverconcentrationScore,
+                float rawGainBeforeStickiness,
+                float changeTargetMultiplier,
+                float finalGain,
+                bool isCurrentTarget)
+            {
+                this.stats = stats;
+                this.targetUrgencyFactor = targetUrgencyFactor;
+                this.tryAddedFirepowerScoreBase = tryAddedFirepowerScoreBase;
+                this.tryAddedFirepowerScoreEffective = tryAddedFirepowerScoreEffective;
+                this.tryAddedOverconcentrationScore = tryAddedOverconcentrationScore;
+                this.rawGainBeforeStickiness = rawGainBeforeStickiness;
+                this.changeTargetMultiplier = changeTargetMultiplier;
+                this.finalGain = finalGain;
+                this.isCurrentTarget = isCurrentTarget;
+            }
+        }
+
         public void Solve(IEnumerable<IWTAObject> shooterObjects, IEnumerable<IWTAObject> targetObjects)
+        {
+            var state = InitializeSolverState(shooterObjects, targetObjects);
+            ApplyNonChangeableAssignments(state);
+
+            // Pick a local optimal in every step until decision space become a empty set. 
+            while (true)
+            {
+                var hasDecision = TryFindBestDecision(state, out var bestBattery, out var bestTarget, out var bestGain, out var bestFirepowerScore);
+
+                if (!hasDecision)
+                    break;
+                if (bestGain <= 0)
+                    break;
+
+                // DEBUG
+                // if (bestDecisionRecord.battery.currentTarget != bestDecisionRecord.target)
+                // {
+                //     var r = bestDecisionRecord;
+                //     UnityEngine.Debug.LogWarning($"Retarget: ({r.shooter}, {r.battery}) {r.battery} -> {r.target}");
+                // }
+
+                ApplyDecision(bestBattery, bestTarget, bestFirepowerScore);
+            }
+
+            // Apply result
+            ApplyAssignmentsToOriginal(state);
+        }
+
+        public WeaponTargetAssignmentInspectionSession CreateInspectionSession(IEnumerable<IWTAObject> shooterObjects, IEnumerable<IWTAObject> targetObjects)
+        {
+            var state = InitializeSolverState(shooterObjects, targetObjects);
+            ApplyNonChangeableAssignments(state);
+            return new WeaponTargetAssignmentInspectionSession(this, state);
+        }
+
+        internal WeaponTargetAssignmentSolverState InitializeSolverState(IEnumerable<IWTAObject> shooterObjects, IEnumerable<IWTAObject> targetObjects)
         {
             var shooters = shooterObjects.Select(s => new ShooterRecord()
             {
@@ -137,11 +208,10 @@ namespace NavalCombatCore
 
             var oriToTarget = targets.ToDictionary(t => t.original, t => t);
 
-            // pre-calculation
             foreach (var shooter in shooters)
             {
                 var manualFireTarget = shooter.original.GetManualFireTarget();
-                if(manualFireTarget != null)
+                if (manualFireTarget != null)
                 {
                     shooter.manualFireTarget = oriToTarget.GetValueOrDefault(manualFireTarget);
                 }
@@ -165,15 +235,23 @@ namespace NavalCombatCore
                     var stats = shooter.measurements[target] = MeasureStats.Measure(shooter.original, target.original);
                     foreach (var battery in shooter.batteries)
                     {
-                        var firepowerScore = battery.original.EvaluateFirepowerScore(stats.distanceYards, stats.targetPresentAspectFromObserver, target.speedKnots, stats.observerToTargetBearingRelativeToBowDeg)
+                        var firepowerScore = battery.original.EvaluateFirepowerScore(
+                                stats.distanceYards,
+                                stats.targetPresentAspectFromObserver,
+                                target.speedKnots,
+                                stats.observerToTargetBearingRelativeToBowDeg)
                             * GetSubjectiveCloseRangePreferenceFactor(stats.distanceYards);
                         battery.firepowerScoreMap[target] = firepowerScore;
                     }
                 }
             }
 
-            // Process non-changeable batteries
-            foreach (var shooter in shooters)
+            return new WeaponTargetAssignmentSolverState(shooters, targets);
+        }
+
+        internal void ApplyNonChangeableAssignments(WeaponTargetAssignmentSolverState state)
+        {
+            foreach (var shooter in state.shooters)
             {
                 foreach (var battery in shooter.batteries)
                 {
@@ -188,83 +266,193 @@ namespace NavalCombatCore
                     }
                 }
             }
+        }
 
-            // Pick a local optimal in every step until decision space become a empty set. 
-            while (true)
-            {
-                // DecisionRecord is good for debugging but degrade too much performance, so switch to local variables
-                bool hasDecision = false;
-                BatteryRecord bestBattery = null;
-                TargetRecord bestTarget = null;
-                float bestGain = 0;
-                float bestFirepowerScore = 0;
+        internal bool TryFindBestDecision(WeaponTargetAssignmentSolverState state, out BatteryRecord bestBattery, out TargetRecord bestTarget, out float bestGain, out float bestFirepowerScore)
+        {
+            bool hasDecision = false;
+            bestBattery = null;
+            bestTarget = null;
+            bestGain = 0f;
+            bestFirepowerScore = 0f;
 
-                foreach (var shooter in shooters)
-                {
-                    // shooter.manualFireTarget
-                    foreach (var battery in shooter.batteries)
-                    {
-                        if (battery.assignedTarget != null)
-                            continue;
-
-                        foreach (var target in targets)
-                        {
-                            if(shooter.manualFireTarget != null && shooter.manualFireTarget != target)
-                                continue;
-
-                            var stats = shooter.measurements[target];
-                            var targetUrgencyFactor = GetTargetUrgencyFactor(stats.distanceYards);
-                            var tryAddedFirepowerScore = battery.firepowerScoreMap[target];
-                            if (battery.currentTarget == target)
-                            {
-                                tryAddedFirepowerScore *= battery.currentTargetFireEffectivenessFactor;
-                            }
-                            var tryAddedOverconcentrationScore = battery.overConcentrationCoef;
-                            var gain = GetTargettingScoreGain(target.selfFirepowerScore, target.survivability, targetUrgencyFactor,
-                                    target.underFirepower, target.overConcentrationScore, tryAddedFirepowerScore, tryAddedOverconcentrationScore);
-                            if (battery.currentTarget == target)
-                            {
-                                gain *= 1 + changeTargetCoef;
-                            }
-
-                            if (!hasDecision || gain > bestGain)
-                            {
-                                hasDecision = true;
-                                bestBattery = battery;
-                                bestTarget = target;
-                                bestGain = gain;
-                                bestFirepowerScore = tryAddedFirepowerScore;
-                            }
-                        }
-                    }
-                }
-
-                if (!hasDecision)
-                    break;
-                if (bestGain <= 0)
-                    break;
-
-                // DEBUG
-                // if (bestDecisionRecord.battery.currentTarget != bestDecisionRecord.target)
-                // {
-                //     var r = bestDecisionRecord;
-                //     UnityEngine.Debug.LogWarning($"Retarget: ({r.shooter}, {r.battery}) {r.battery} -> {r.target}");
-                // }
-
-                bestBattery.assignedTarget = bestTarget; // TODO: Too harsh to battery which is capable to shoot multiply targets?
-                bestTarget.underFirepower += bestFirepowerScore;
-                bestTarget.overConcentrationScore += bestBattery.overConcentrationCoef;
-            }
-
-            // Apply result
-            foreach (var shooter in shooters)
+            foreach (var shooter in state.shooters)
             {
                 foreach (var battery in shooter.batteries)
                 {
-                    // battery.original.ResetFiringTarget();
+                    if (battery.assignedTarget != null)
+                        continue;
+
+                    foreach (var target in state.targets)
+                    {
+                        if (shooter.manualFireTarget != null && shooter.manualFireTarget != target)
+                            continue;
+
+                        var evaluation = EvaluateCandidate(shooter, battery, target);
+                        if (!hasDecision || evaluation.finalGain > bestGain)
+                        {
+                            hasDecision = true;
+                            bestBattery = battery;
+                            bestTarget = target;
+                            bestGain = evaluation.finalGain;
+                            bestFirepowerScore = evaluation.tryAddedFirepowerScoreEffective;
+                        }
+                    }
+                }
+            }
+
+            return hasDecision;
+        }
+
+        internal List<WeaponTargetAssignmentGainRow> BuildGainRows(WeaponTargetAssignmentSolverState state, out WeaponTargetAssignmentGainRow bestRow)
+        {
+            var rows = new List<WeaponTargetAssignmentGainRow>();
+            bestRow = null;
+            var bestGain = 0f;
+            var hasDecision = false;
+            var scanOrder = 0;
+
+            foreach (var shooter in state.shooters)
+            {
+                foreach (var battery in shooter.batteries)
+                {
+                    if (battery.assignedTarget != null)
+                        continue;
+
+                    foreach (var target in state.targets)
+                    {
+                        if (shooter.manualFireTarget != null && shooter.manualFireTarget != target)
+                            continue;
+
+                        scanOrder++;
+                        var evaluation = EvaluateCandidate(shooter, battery, target);
+                        var row = new WeaponTargetAssignmentGainRow
+                        {
+                            scanOrder = scanOrder,
+                            shooterName = ResolveObjectShortName(shooter.original),
+                            batteryName = ResolveBatteryShortName(battery.original),
+                            targetName = ResolveObjectShortName(target.original),
+                            finalGain = evaluation.finalGain,
+                            rawGainBeforeStickiness = evaluation.rawGainBeforeStickiness,
+                            distanceYards = evaluation.stats.distanceYards,
+                            targetSelfFirepower = target.selfFirepowerScore,
+                            targetSurvivability = target.survivability,
+                            targetUrgencyFactor = evaluation.targetUrgencyFactor,
+                            currentUnderFirepower = target.underFirepower,
+                            currentOverConcentrationScore = target.overConcentrationScore,
+                            tryAddedFirepowerScoreBase = evaluation.tryAddedFirepowerScoreBase,
+                            tryAddedFirepowerScoreEffective = evaluation.tryAddedFirepowerScoreEffective,
+                            tryAddedOverconcentrationScore = evaluation.tryAddedOverconcentrationScore,
+                            isCurrentTarget = evaluation.isCurrentTarget,
+                            currentTargetFireEffectivenessFactor = battery.currentTargetFireEffectivenessFactor,
+                            changeTargetMultiplier = evaluation.changeTargetMultiplier,
+                            batteryRecord = battery,
+                            targetRecord = target,
+                        };
+                        rows.Add(row);
+
+                        if (!hasDecision || row.finalGain > bestGain)
+                        {
+                            hasDecision = true;
+                            bestGain = row.finalGain;
+                            bestRow = row;
+                        }
+                    }
+                }
+            }
+
+            return rows;
+        }
+
+        CandidateEvaluation EvaluateCandidate(ShooterRecord shooter, BatteryRecord battery, TargetRecord target)
+        {
+            var stats = shooter.measurements[target];
+            var targetUrgencyFactor = GetTargetUrgencyFactor(stats.distanceYards);
+            var tryAddedFirepowerScoreBase = battery.firepowerScoreMap[target];
+            var isCurrentTarget = battery.currentTarget == target;
+            var tryAddedFirepowerScoreEffective = tryAddedFirepowerScoreBase;
+            if (isCurrentTarget)
+            {
+                tryAddedFirepowerScoreEffective *= battery.currentTargetFireEffectivenessFactor;
+            }
+
+            var tryAddedOverconcentrationScore = battery.overConcentrationCoef;
+            var rawGainBeforeStickiness = GetTargettingScoreGain(
+                target.selfFirepowerScore,
+                target.survivability,
+                targetUrgencyFactor,
+                target.underFirepower,
+                target.overConcentrationScore,
+                tryAddedFirepowerScoreEffective,
+                tryAddedOverconcentrationScore);
+            var changeTargetMultiplier = isCurrentTarget ? 1 + changeTargetCoef : 1f;
+            var finalGain = rawGainBeforeStickiness * changeTargetMultiplier;
+
+            return new CandidateEvaluation(
+                stats,
+                targetUrgencyFactor,
+                tryAddedFirepowerScoreBase,
+                tryAddedFirepowerScoreEffective,
+                tryAddedOverconcentrationScore,
+                rawGainBeforeStickiness,
+                changeTargetMultiplier,
+                finalGain,
+                isCurrentTarget);
+        }
+
+        internal void ApplyDecision(BatteryRecord bestBattery, TargetRecord bestTarget, float bestFirepowerScore)
+        {
+            bestBattery.assignedTarget = bestTarget; // TODO: Too harsh to battery which is capable to shoot multiply targets?
+            bestTarget.underFirepower += bestFirepowerScore;
+            bestTarget.overConcentrationScore += bestBattery.overConcentrationCoef;
+        }
+
+        internal void ApplyAssignmentsToOriginal(WeaponTargetAssignmentSolverState state)
+        {
+            foreach (var shooter in state.shooters)
+            {
+                foreach (var battery in shooter.batteries)
+                {
                     battery.original.SetFiringTarget(battery.assignedTarget?.original);
                 }
             }
+        }
+
+        static string ResolveObjectShortName(IWTAObject obj)
+        {
+            if (obj is ShipLog shipLog)
+            {
+                return shipLog.namedShip?.name?.GetShortName()
+                    ?? shipLog.namedShip?.name?.GetMergedName()
+                    ?? shipLog.objectId
+                    ?? "[Invalid]";
+            }
+
+            return obj?.ToString() ?? "[Invalid]";
+        }
+
+        static string ResolveBatteryShortName(IWTABattery battery)
+        {
+            if (battery is BatteryStatus gunBattery)
+            {
+                return gunBattery.GetBatteryRecord()?.name?.GetShortName()
+                    ?? "Battery";
+            }
+
+            if (battery is RapidFiringBatteryStatusOneSide rapidBattery)
+            {
+                var baseName = rapidBattery.original.GetRapidFireBatteryRecord()?.name?.GetShortName()
+                    ?? "Rapid Firing";
+                return $"{baseName} ({rapidBattery.side})";
+            }
+
+            if (battery is TorpedoBattery torpedoBattery)
+            {
+                return torpedoBattery.original?.shipClass?.torpedoSector?.name?.GetShortName()
+                    ?? "Torpedo";
+            }
+
+            return battery?.ToString() ?? "[Invalid]";
         }
 
         public float GetTargettingScore(float targetSelfFirepower, float targetSurvivability, float targetUrgencyFactor, float targetUnderFirepower, int overConcentrationScore)
@@ -373,6 +561,81 @@ namespace NavalCombatCore
             }
 
             return factor;
+        }
+    }
+
+    internal sealed class WeaponTargetAssignmentSolverState
+    {
+        public readonly List<WeaponTargetAssignmentSolver.ShooterRecord> shooters;
+        public readonly List<WeaponTargetAssignmentSolver.TargetRecord> targets;
+
+        public WeaponTargetAssignmentSolverState(
+            List<WeaponTargetAssignmentSolver.ShooterRecord> shooters,
+            List<WeaponTargetAssignmentSolver.TargetRecord> targets)
+        {
+            this.shooters = shooters;
+            this.targets = targets;
+        }
+    }
+
+    public sealed class WeaponTargetAssignmentGainRow
+    {
+        public int scanOrder;
+        public string shooterName;
+        public string batteryName;
+        public string targetName;
+        public float finalGain;
+        public float rawGainBeforeStickiness;
+        public float distanceYards;
+        public float targetSelfFirepower;
+        public float targetSurvivability;
+        public float targetUrgencyFactor;
+        public float currentUnderFirepower;
+        public int currentOverConcentrationScore;
+        public float tryAddedFirepowerScoreBase;
+        public float tryAddedFirepowerScoreEffective;
+        public int tryAddedOverconcentrationScore;
+        public bool isCurrentTarget;
+        public float currentTargetFireEffectivenessFactor;
+        public float changeTargetMultiplier;
+
+        internal WeaponTargetAssignmentSolver.BatteryRecord batteryRecord;
+        internal WeaponTargetAssignmentSolver.TargetRecord targetRecord;
+    }
+
+    public sealed class WeaponTargetAssignmentInspectionSession
+    {
+        readonly WeaponTargetAssignmentSolver solver;
+        readonly WeaponTargetAssignmentSolverState state;
+
+        public List<WeaponTargetAssignmentGainRow> CurrentRows { get; private set; } = new();
+        public WeaponTargetAssignmentGainRow BestRow { get; private set; }
+        public int StepIndex { get; private set; }
+        public bool CanStep => BestRow != null && BestRow.finalGain > 0f;
+
+        internal WeaponTargetAssignmentInspectionSession(WeaponTargetAssignmentSolver solver, WeaponTargetAssignmentSolverState state)
+        {
+            this.solver = solver;
+            this.state = state;
+            RecomputeDecisionSpace();
+        }
+
+        public void RecomputeDecisionSpace()
+        {
+            CurrentRows = solver.BuildGainRows(state, out var bestRow);
+            BestRow = bestRow;
+        }
+
+        public bool StepNext()
+        {
+            if (!CanStep)
+                return false;
+
+            solver.ApplyDecision(BestRow.batteryRecord, BestRow.targetRecord, BestRow.tryAddedFirepowerScoreEffective);
+            BestRow.batteryRecord.original.SetFiringTarget(BestRow.targetRecord.original);
+            StepIndex++;
+            RecomputeDecisionSpace();
+            return true;
         }
     }
 

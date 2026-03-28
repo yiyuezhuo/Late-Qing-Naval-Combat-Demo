@@ -2919,6 +2919,30 @@ MonoBehaviour:
     m_Key: Restart
     m_Metadata:
       m_Items: []
+  - m_Id: -93000000000001
+    m_Key: WTA Solver Inspector
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000000002
+    m_Key: Root Group
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000000003
+    m_Key: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000000004
+    m_Key: Primary Sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000000005
+    m_Key: Secondary Sort
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000000006
+    m_Key: Export CSV
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

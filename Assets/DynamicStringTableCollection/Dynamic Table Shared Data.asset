@@ -3194,6 +3194,74 @@ MonoBehaviour:
     m_Key: Confirm to restart current scene?
     m_Metadata:
       m_Items: []
+  - m_Id: -93000000100001
+    m_Key: Scan
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100002
+    m_Key: Shooter
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100003
+    m_Key: Target
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100004
+    m_Key: Gain
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100005
+    m_Key: Raw Gain
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100006
+    m_Key: Distance
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100007
+    m_Key: Target FP
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100008
+    m_Key: Target SV
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100009
+    m_Key: Urgency
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100010
+    m_Key: Under FP
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100011
+    m_Key: Over Conc
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100012
+    m_Key: FP Base
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100013
+    m_Key: FP Eff
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100014
+    m_Key: Try OC
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100015
+    m_Key: Current
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100016
+    m_Key: Current Eff
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100017
+    m_Key: Stickiness
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

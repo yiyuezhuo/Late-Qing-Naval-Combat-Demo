@@ -4156,4 +4156,95 @@ https://ru.wikipedia.org/wiki/%D0%A2%D1%8B%D1%80%D1%82%D0%BE%D0%B2%2C_%D0%A1%D0%
 </remark>
   <objectId>73ce2f5b-725a-44a5-a555-6d2b4ce39cdd</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Pyotr Serebrennikov</english>
+   <japanese>ピョートル・セレブレンニコフ</japanese>
+   <chineseSimplified>彼得·谢列布连尼科夫</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Pyotr Serebrennikov.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Пётр Ио́сифович Сере́бренников
+
+https://en.wikipedia.org/wiki/Pyotr_Serebrennikov
+</remark>
+  <objectId>4fd0ae80-1b57-48ef-9df3-272ab5117950</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nikolai Bukhvostov</english>
+   <japanese>ニコライ・ブフヴォストフ</japanese>
+   <chineseSimplified>尼古拉·布赫沃斯托夫</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Nikolai Bukhvostov.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Бухвостов, Николай Михайлович
+
+https://en.wikipedia.org/wiki/Nikolai_Bukhvostov
+
+</remark>
+  <objectId>58661393-e1ea-4046-abc4-bda166c6b50e</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Vasily Ignatius</english>
+   <japanese>ヴァシリー・イグナティウス</japanese>
+   <chineseSimplified>瓦西里·伊格内修斯</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Vasily Ignatius.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Игнациус, Василий Васильевич
+
+https://en.wikipedia.org/wiki/Vasily_Ignatius</remark>
+  <objectId>10b5fdd1-4f8d-437a-8b38-ab62d1d8959e</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nikolay Yung</english>
+   <japanese>ニコライ・ユング</japanese>
+   <chineseSimplified>尼古拉·荣格</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Nikolay Yung.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Юнг, Николай Викторович
+
+https://en.wikipedia.org/wiki/Nikolay_Yung</remark>
+  <objectId>4786d9dc-e90b-41f6-ac76-6285774a0704</objectId>
+ </Leader>
 </ArrayOfLeader>

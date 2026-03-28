@@ -6581,4 +6581,110 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
   <objectId>80060b20-58c0-4c8f-a6c8-2adc96cf3c45</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>b48fc9d0-13dc-43c3-b2d2-7a00596b7e3b</shipClassObjectId>
+  <name>
+   <english>Borodino</english>
+   <japanese>ボロジノ</japanese>
+   <chineseSimplified>博罗季诺</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>4fd0ae80-1b57-48ef-9df3-272ab5117950</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Бородино
+
+https://en.wikipedia.org/wiki/Russian_battleship_Borodino
+́</remark>
+  <objectId>08ccf09a-760d-43e2-9e7e-43d7cab1986c</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>b48fc9d0-13dc-43c3-b2d2-7a00596b7e3b</shipClassObjectId>
+  <name>
+   <english>Imperator Alekasandr III</english>
+   <japanese>インペラートル・アレクサンドル3世</japanese>
+   <chineseSimplified>亚历山大三世</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>58661393-e1ea-4046-abc4-bda166c6b50e</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Император Александр III
+
+https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Aleksandr_III_(1901)</remark>
+  <objectId>922678e2-d35d-414a-96ba-67381362b0f9</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>b48fc9d0-13dc-43c3-b2d2-7a00596b7e3b</shipClassObjectId>
+  <name>
+   <english>Kniaz Suvarov</english>
+   <japanese>クニャージ・スヴォーロフ</japanese>
+   <chineseSimplified>苏沃洛夫公爵</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>10b5fdd1-4f8d-437a-8b38-ab62d1d8959e</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Князь Суворов
+
+https://en.wikipedia.org/wiki/Russian_battleship_Knyaz_Suvorov</remark>
+  <objectId>a48a7e49-098d-419c-b1ff-6286f90afdf3</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>b48fc9d0-13dc-43c3-b2d2-7a00596b7e3b</shipClassObjectId>
+  <name>
+   <english>Orel</english>
+   <japanese>オリョール</japanese>
+   <chineseSimplified>鹰</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>4786d9dc-e90b-41f6-ac76-6285774a0704</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Орёл
+
+https://en.wikipedia.org/wiki/Russian_battleship_Oryol
+</remark>
+  <objectId>4e57accb-d8db-4546-88e7-b523ac15395c</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

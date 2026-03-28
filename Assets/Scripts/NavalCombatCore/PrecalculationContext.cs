@@ -51,6 +51,7 @@ namespace NavalCombatCore
         public Dictionary<MountStatusRecord, MountStatusSupplementary> mountStatusRecordMap = new();
         public Dictionary<ShipLog, ShipLogSupplementary> shipLogSupplementaryMap = new();
         public Dictionary<(ShipLog, ShipLog), ShipLogPairSupplementary> shooterTargetSupplementaryMap = new();
+        Dictionary<ShipLog, TargetIlluminationSupplementary> targetIlluminationSupplementaryMap;
 
         public class MountStatusSupplementary
         {
@@ -81,11 +82,22 @@ namespace NavalCombatCore
             }
         }
 
+        public class TargetIlluminationSupplementary
+        {
+            public ShipLog target;
+            public SunState targetSunState;
+            public int fireControlOffset;
+            public bool targetUsingSearchlight;
+            public bool targetIlluminatedBySearchlight;
+            public bool targetAfire;
+        }
+
         public void Reset()
         {
             mountStatusRecordMap.Clear();
             shipLogSupplementaryMap.Clear();
             shooterTargetSupplementaryMap.Clear();
+            targetIlluminationSupplementaryMap?.Clear();
         }
 
         public ShipLogPairSupplementary GetOrCalcualteShipLogPairSupplementary(ShipLog shooter, ShipLog target)
@@ -98,6 +110,33 @@ namespace NavalCombatCore
                 target = target,
                 stats = MeasureStats.MeasureApproximation(shooter, target)
             };
+            return ret;
+        }
+
+        public TargetIlluminationSupplementary GetOrCalculateTargetIlluminationSupplementary(ShipLog target)
+        {
+            if (target == null)
+                return null;
+
+            if (targetIlluminationSupplementaryMap != null &&
+                targetIlluminationSupplementaryMap.TryGetValue(target, out var ret))
+            {
+                return ret;
+            }
+
+            var targetSunState = NavalGameState.Instance?.scenarioState?.GetSunPosition(target.position);
+            var illuminationModifier = NavalUtils.GetNightIlluminationFireControlModifier(target, targetSunState);
+            ret = new()
+            {
+                target = target,
+                targetSunState = targetSunState,
+                fireControlOffset = illuminationModifier.fireControlOffset,
+                targetUsingSearchlight = illuminationModifier.targetUsingSearchlight,
+                targetIlluminatedBySearchlight = illuminationModifier.targetIlluminatedBySearchlight,
+                targetAfire = illuminationModifier.targetAfire,
+            };
+
+            (targetIlluminationSupplementaryMap ??= new())[target] = ret;
             return ret;
         }
 

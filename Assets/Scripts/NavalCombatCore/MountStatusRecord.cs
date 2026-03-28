@@ -797,18 +797,18 @@ namespace NavalCombatCore
             fireControlScore += breakdown.visibilityOffset;
 
             // d: additional for illumination (1b or 1c)
-            var targetSunState = NavalGameState.Instance.scenarioState.GetSunPosition(target.position);
-            var illuminationModifier = NavalUtils.GetNightIlluminationFireControlModifier(target, targetSunState);
-            if (illuminationModifier.targetAfire && illuminationModifier.targetIlluminatedBySearchlight)
+            var targetIlluminationSup = fireCtx.GetOrCalculateTargetIlluminationSupplementary(target);
+            var targetSunState = targetIlluminationSup?.targetSunState;
+            if (targetIlluminationSup?.targetAfire == true && targetIlluminationSup.targetIlluminatedBySearchlight)
                 breakdown.illuminationReason = "Afire + Illuminated";
-            else if (illuminationModifier.targetAfire)
+            else if (targetIlluminationSup?.targetAfire == true)
                 breakdown.illuminationReason = "Afire";
-            else if (illuminationModifier.targetIlluminatedBySearchlight)
+            else if (targetIlluminationSup?.targetIlluminatedBySearchlight == true)
                 breakdown.illuminationReason = "Illuminated";
-            else if (illuminationModifier.targetUsingSearchlight)
+            else if (targetIlluminationSup?.targetUsingSearchlight == true)
                 breakdown.illuminationReason = "Using Searchlight";
 
-            if (illuminationModifier.fireControlOffset <= 0)
+            if ((targetIlluminationSup?.fireControlOffset ?? 0) <= 0)
             {
                 // b: additional for dawn/dusk conditions
                 // Target silhouetted by horizon: +1
@@ -825,7 +825,7 @@ namespace NavalCombatCore
                 }
             }
 
-            breakdown.illuminationOffset = illuminationModifier.fireControlOffset;
+            breakdown.illuminationOffset = targetIlluminationSup?.fireControlOffset ?? 0;
             fireControlScore += breakdown.dawnDuskOffset;
             fireControlScore += breakdown.nightMoonlightOffset;
             fireControlScore += breakdown.illuminationOffset;

@@ -277,12 +277,12 @@ namespace NavalCombatCore
                         secondsPerShot *= 2; // ROF / 2 if masked
                     }
 
-                    var targetSunState = NavalGameState.Instance.scenarioState.GetSunPosition(tgt.position);
+                    var targetIlluminationSup = fireCtx.GetOrCalculateTargetIlluminationSupplementary(tgt);
+                    var targetSunState = targetIlluminationSup?.targetSunState;
                     var dawnDuskOffset = 0;
                     var nightMoonlightOffset = 0;
-                    var illuminationModifier = NavalUtils.GetNightIlluminationFireControlModifier(tgt, targetSunState);
 
-                    if (illuminationModifier.fireControlOffset <= 0)
+                    if ((targetIlluminationSup?.fireControlOffset ?? 0) <= 0)
                     {
                         // Target silhouetted by horizon: +1
                         // Target in darkness: -2
@@ -328,7 +328,7 @@ namespace NavalCombatCore
 
                         fireControlScore += dawnDuskOffset;
                         fireControlScore += nightMoonlightOffset;
-                        fireControlScore += illuminationModifier.fireControlOffset;
+                        fireControlScore += targetIlluminationSup?.fireControlOffset ?? 0;
 
                         // TODO: Smoke 
                         // Target obscured by battle smoke or funnel smokescreen: -2

@@ -6514,6 +6514,30 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <objectId>5aee1ca4-89bc-4916-83d3-95d31359a32d</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>0845f239-86c7-43f3-9293-fdd509ad4cb1</shipClassObjectId>
+  <name>
+   <english>Admiral Nakhimov (1903)</english>
+   <japanese>アドミラル・ナヒーモフ</japanese>
+   <chineseSimplified>纳希莫夫</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>4cda3d53-13ef-455a-961a-8be68d8aaa23</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
+  <objectId>49bda5a7-3b5c-4a24-8581-0bcc687c29b8</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>906652af-c8fc-4e40-a881-e29c0baa2825</shipClassObjectId>
   <name>
    <english>Pamiat Azova</english>
@@ -6686,5 +6710,31 @@ https://en.wikipedia.org/wiki/Russian_battleship_Knyaz_Suvorov</remark>
 https://en.wikipedia.org/wiki/Russian_battleship_Oryol
 </remark>
   <objectId>4e57accb-d8db-4546-88e7-b523ac15395c</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>99507e72-d7d6-458f-9a92-460754d47236</shipClassObjectId>
+  <name>
+   <english>Oslyabya</english>
+   <japanese>オスリャービャ</japanese>
+   <chineseSimplified>奥斯利雅维亚</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>ca9c5e84-af8a-4891-8c4e-dc3321e7d568</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Ослябя
+
+https://en.wikipedia.org/wiki/Russian_battleship_Oslyabya</remark>
+  <objectId>6086a75d-86dd-484f-bd45-9dccc479ee86</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

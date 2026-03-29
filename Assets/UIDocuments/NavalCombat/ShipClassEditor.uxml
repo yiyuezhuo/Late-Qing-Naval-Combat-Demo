@@ -221,7 +221,7 @@
                         </ui:Tab>
                         <ui:Tab label="Rapid Fire Battery">
                             <ui:VisualElement style="flex-grow: 1;">
-                                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-shrink: 0;">
                                     <ui:Button text="Set Selected By Rapid Fire Battery Selector" name="SetSelectedByRapidFireBatterySelectorButton">
                                         <Bindings>
                                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36693742829867008)"/>

@@ -204,6 +204,13 @@ namespace NavalCombatCore
 
     public class TorpedoAttackContext : AbstractPrecalculationContext<TorpedoAttackContext>
     {
+        public class ShipLogPairSafetySupplementary
+        {
+            public ShipLog shooter;
+            public ShipLog target;
+            public bool isSafeToFire;
+        }
+
         public class ShipLogPairSupplementary
         {
             public ShipLog shooter;
@@ -213,7 +220,24 @@ namespace NavalCombatCore
             public InterceptionPointSolver.Result interceptionPointSolverResult;
         }
 
+        public Dictionary<(ShipLog, ShipLog), ShipLogPairSafetySupplementary> fireSafetySupplementaryMap = new();
         public Dictionary<(ShipLog, ShipLog, float), ShipLogPairSupplementary> fireComplexSupplementaryMap = new();
+
+        public ShipLogPairSafetySupplementary GetOrCalculateFireSafetySupplementary(ShipLog shooter, ShipLog target)
+        {
+            var key = (shooter, target);
+            if (!fireSafetySupplementaryMap.TryGetValue(key, out var supplementary))
+            {
+                var maskCheckService = ServiceLocator.Get<IMaskCheckService>();
+                supplementary = fireSafetySupplementaryMap[key] = new ShipLogPairSafetySupplementary()
+                {
+                    shooter = shooter,
+                    target = target,
+                    isSafeToFire = maskCheckService.IsSafeToFireTorpedoAt(shooter, target)
+                };
+            }
+            return supplementary;
+        }
 
         public ShipLogPairSupplementary GetOrCalculateFireComplexSupplementary(ShipLog shooter, ShipLog target, float speedKnots)
         {
@@ -227,8 +251,8 @@ namespace NavalCombatCore
 
         static ShipLogPairSupplementary CalculateFireComplexSupplementary(ShipLog shooter, ShipLog target, float speedKnots)
         {
-            var maskCheckService = ServiceLocator.Get<IMaskCheckService>();
-            var isSafe = maskCheckService.IsSafeToFireTorpedoAt(shooter, target); // TODO: Using bigger threat volume compared to true collision volume.
+            var safetySupplementary = GetCurrentOrCreateTemp().GetOrCalculateFireSafetySupplementary(shooter, target);
+            var isSafe = safetySupplementary.isSafeToFire; // TODO: Using bigger threat volume compared to true collision volume.
             var interceptionPointSolverResult = isSafe
                 ? InterceptionPointSolver.Calcualte(shooter, target, speedKnots)
                 : new InterceptionPointSolver.Result() { success = false };

@@ -402,6 +402,8 @@ namespace NavalCombatCore
 
     public class InterceptionPointSolver
     {
+        const float epsilon = 0.0001f;
+
         public class Result
         {
             public bool success;
@@ -412,6 +414,48 @@ namespace NavalCombatCore
 
         public static Result Calcualte(IDF4Model shooter, IDF4Model target, float speedKnots)
         {
+            if (speedKnots <= epsilon)
+                return new();
+
+            var projection = new MeasureUtils.LocalProjection(shooter.GetLatitudeDeg(), shooter.GetLongitudeDeg());
+            var relativeTargetPosition = (
+                x: projection.LongitudeToX(target.GetLongitudeDeg()),
+                y: projection.LatitudeToY(target.GetLatitudeDeg())
+            );
+
+            var targetSpeedYardsPerSecond = target.GetSpeedKnots() * MeasureUtils.navalMileToYard / 3600f;
+            var targetHeadingRad = target.GetHeadingDeg() * Math.PI / 180.0;
+            var targetVelocity = (
+                x: (float)(Math.Sin(targetHeadingRad) * targetSpeedYardsPerSecond),
+                y: (float)(Math.Cos(targetHeadingRad) * targetSpeedYardsPerSecond)
+            );
+
+            var projectileSpeedYardsPerSecond = speedKnots * MeasureUtils.navalMileToYard / 3600f;
+            var arrivalTimeSeconds = SolveArrivalSeconds(relativeTargetPosition, targetVelocity, projectileSpeedYardsPerSecond);
+            if (arrivalTimeSeconds <= epsilon || float.IsNaN(arrivalTimeSeconds) || float.IsInfinity(arrivalTimeSeconds))
+                return new();
+
+            var interceptPosition = (
+                x: relativeTargetPosition.x + targetVelocity.x * arrivalTimeSeconds,
+                y: relativeTargetPosition.y + targetVelocity.y * arrivalTimeSeconds
+            );
+            var interceptDistanceYards = (float)Math.Sqrt(interceptPosition.x * interceptPosition.x + interceptPosition.y * interceptPosition.y);
+            if (interceptDistanceYards <= epsilon)
+                return new();
+
+            var azimuthDeg = MeasureUtils.NormalizeAngle((float)(Math.Atan2(interceptPosition.x, interceptPosition.y) * 180.0 / Math.PI));
+            return new()
+            {
+                success = true,
+                azimuth = azimuthDeg,
+                arrivalSeconds = arrivalTimeSeconds,
+                distanceYards = interceptDistanceYards
+            };
+        }
+
+        // Legacy fixed-point iteration solver kept for reference and comparison.
+        public static Result CalcualteFixedPointLegacy(IDF4Model shooter, IDF4Model target, float speedKnots)
+        {
             var shooterLat = shooter.GetLatitudeDeg();
             var shooterLon = shooter.GetLongitudeDeg();
             var targetLat = target.GetLatitudeDeg();
@@ -419,14 +463,14 @@ namespace NavalCombatCore
 
             var prevArrivalTimeSeconds = 0f;
 
-            for (int i = 0; i < 20; i++) // solved using iteration method, success if approximated fixed point is found
+            for (int i = 0; i < 20; i++)
             {
                 var (distanceKm, azi1) = MeasureStats.Approximation.CalculateDistanceKmAndBearingDeg(shooterLat, shooterLon, targetLat, targetLon);
                 var distanceNm = distanceKm * MeasureUtils.kilometerToNavalMile;
                 var arrivalTimeSeconds = distanceNm / speedKnots * 3600;
 
                 var diffSeconds = arrivalTimeSeconds - prevArrivalTimeSeconds;
-                if (Math.Abs(diffSeconds) < 0.1f) // convergence condition, diff < 0.1s
+                if (Math.Abs(diffSeconds) < 0.1f)
                 {
                     return new()
                     {
@@ -436,6 +480,7 @@ namespace NavalCombatCore
                         distanceYards = (float)distanceKm * 1000 * MeasureUtils.meterToYard
                     };
                 }
+
                 prevArrivalTimeSeconds = (float)arrivalTimeSeconds;
                 var movedM = diffSeconds / 3600 * target.GetSpeedKnots() * MeasureUtils.navalMileToMeter;
                 var (_targetLat, _targetLon) = MeasureStats.Approximation.CalculateNewPosition(targetLat, targetLon, target.GetHeadingDeg(), movedM);
@@ -444,6 +489,44 @@ namespace NavalCombatCore
             }
 
             return new();
+        }
+
+        static float SolveArrivalSeconds((float x, float y) relativeTargetPosition, (float x, float y) targetVelocity, float projectileSpeedYardsPerSecond)
+        {
+            var px = relativeTargetPosition.x;
+            var py = relativeTargetPosition.y;
+            var vx = targetVelocity.x;
+            var vy = targetVelocity.y;
+            var speedSquared = projectileSpeedYardsPerSecond * projectileSpeedYardsPerSecond;
+
+            var a = vx * vx + vy * vy - speedSquared;
+            var b = 2f * (px * vx + py * vy);
+            var c = px * px + py * py;
+
+            if (Math.Abs(a) <= epsilon)
+            {
+                if (Math.Abs(b) <= epsilon)
+                    return -1f;
+
+                var linearRoot = -c / b;
+                return linearRoot > epsilon ? linearRoot : -1f;
+            }
+
+            var discriminant = b * b - 4f * a * c;
+            if (discriminant < 0f)
+                return -1f;
+
+            var sqrtDiscriminant = (float)Math.Sqrt(discriminant);
+            var root1 = (-b - sqrtDiscriminant) / (2f * a);
+            var root2 = (-b + sqrtDiscriminant) / (2f * a);
+
+            var bestRoot = float.PositiveInfinity;
+            if (root1 > epsilon)
+                bestRoot = root1;
+            if (root2 > epsilon && root2 < bestRoot)
+                bestRoot = root2;
+
+            return float.IsPositiveInfinity(bestRoot) ? -1f : bestRoot;
         }
     }
 

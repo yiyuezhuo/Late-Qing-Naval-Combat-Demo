@@ -152,6 +152,9 @@ sealed class WtaSolverInspectorDialog
         AddTextColumn("rawGainBeforeStickiness", LocalizeDynamic("Raw Gain"), 110, row => FormatFloat(row.rawGainBeforeStickiness));
         AddTextColumn("distanceYards", LocalizeDynamic("Distance"), 90, row => FormatFloat(row.distanceYards));
         AddTextColumn("targetSelfFirepower", LocalizeDynamic("Target FP"), 95, row => FormatFloat(row.targetSelfFirepower));
+        AddTextColumn("targetLongTermThreat", LocalizeDynamic("Long Threat"), 100, row => FormatFloat(row.targetLongTermThreat));
+        AddTextColumn("targetShortTermThreat", LocalizeDynamic("Short Threat"), 100, row => FormatFloat(row.targetShortTermThreat));
+        AddTextColumn("threatDistanceFactor", LocalizeDynamic("Threat Dist"), 95, row => FormatFloat(row.threatDistanceFactor));
         AddTextColumn("targetSurvivability", LocalizeDynamic("Target SV"), 95, row => FormatFloat(row.targetSurvivability));
         AddTextColumn("targetUrgencyFactor", LocalizeDynamic("Urgency"), 85, row => FormatFloat(row.targetUrgencyFactor));
         AddTextColumn("currentUnderFirepower", LocalizeDynamic("Under FP"), 95, row => FormatFloat(row.currentUnderFirepower));
@@ -348,6 +351,9 @@ sealed class WtaSolverInspectorDialog
             "rawGainBeforeStickiness",
             "distanceYards",
             "targetSelfFirepower",
+            "targetLongTermThreat",
+            "targetShortTermThreat",
+            "threatDistanceFactor",
             "targetSurvivability",
             "targetUrgencyFactor",
             "currentUnderFirepower",
@@ -373,6 +379,9 @@ sealed class WtaSolverInspectorDialog
                 FormatFloat(row.rawGainBeforeStickiness),
                 FormatFloat(row.distanceYards),
                 FormatFloat(row.targetSelfFirepower),
+                FormatFloat(row.targetLongTermThreat),
+                FormatFloat(row.targetShortTermThreat),
+                FormatFloat(row.threatDistanceFactor),
                 FormatFloat(row.targetSurvivability),
                 FormatFloat(row.targetUrgencyFactor),
                 FormatFloat(row.currentUnderFirepower),

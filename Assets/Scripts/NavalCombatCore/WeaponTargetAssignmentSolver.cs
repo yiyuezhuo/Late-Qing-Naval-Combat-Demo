@@ -44,6 +44,10 @@ namespace NavalCombatCore
         public float overconcentrateCoef = 0.2f;
         public float changeTargetCoef = 0f; // Legacy flat stickiness is disabled in favor of state-based retention bonuses.
         public static float currentTargetTrackingEffectivenessBonus = 0.2f; // Bonus when keeping fire on a target already under Tracking/Hitting.
+        public float longTermThreatWeight = 0.025f;
+        public float shortTermThreatWeight = 0.975f;
+        public static float shortThreatMinDistanceFactor = 0.33f;
+        public static float shortThreatMaxDistanceFactor = 3f;
 
         // Urgency boost for knife-fight distances where enemy torpedo danger is assumed to be imminent.
         public static float torpedoThreatRangeYards = 1500f;
@@ -71,6 +75,8 @@ namespace NavalCombatCore
             // Frozen Values
             public float survivability;
             public float selfFirepowerScore;
+            public float shortTermThreatScore;
+            public float blendedThreatScore;
             public float speedKnots;
             // Solver states
             public float underFirepower;
@@ -118,6 +124,7 @@ namespace NavalCombatCore
         readonly struct CandidateEvaluation
         {
             public readonly MeasureStats stats;
+            public readonly float threatDistanceFactor;
             public readonly float targetUrgencyFactor;
             public readonly float tryAddedFirepowerScoreBase;
             public readonly float tryAddedFirepowerScoreEffective;
@@ -129,6 +136,7 @@ namespace NavalCombatCore
 
             public CandidateEvaluation(
                 MeasureStats stats,
+                float threatDistanceFactor,
                 float targetUrgencyFactor,
                 float tryAddedFirepowerScoreBase,
                 float tryAddedFirepowerScoreEffective,
@@ -139,6 +147,7 @@ namespace NavalCombatCore
                 bool isCurrentTarget)
             {
                 this.stats = stats;
+                this.threatDistanceFactor = threatDistanceFactor;
                 this.targetUrgencyFactor = targetUrgencyFactor;
                 this.tryAddedFirepowerScoreBase = tryAddedFirepowerScoreBase;
                 this.tryAddedFirepowerScoreEffective = tryAddedFirepowerScoreEffective;
@@ -233,6 +242,12 @@ namespace NavalCombatCore
                 foreach (var target in targets)
                 {
                     var stats = shooter.measurements[target] = MeasureStats.Measure(shooter.original, target.original);
+                    var pairShortTermThreat = target.selfFirepowerScore * GetThreatDistanceFactor(stats.distanceYards);
+                    if (pairShortTermThreat > target.shortTermThreatScore)
+                    {
+                        target.shortTermThreatScore = pairShortTermThreat;
+                    }
+
                     foreach (var battery in shooter.batteries)
                     {
                         var firepowerScore = battery.original.EvaluateFirepowerScore(
@@ -244,6 +259,13 @@ namespace NavalCombatCore
                         battery.firepowerScoreMap[target] = firepowerScore;
                     }
                 }
+            }
+
+            foreach (var target in targets)
+            {
+                target.blendedThreatScore =
+                    target.selfFirepowerScore * longTermThreatWeight
+                    + target.shortTermThreatScore * shortTermThreatWeight;
             }
 
             return new WeaponTargetAssignmentSolverState(shooters, targets);
@@ -335,7 +357,10 @@ namespace NavalCombatCore
                             finalGain = evaluation.finalGain,
                             rawGainBeforeStickiness = evaluation.rawGainBeforeStickiness,
                             distanceYards = evaluation.stats.distanceYards,
-                            targetSelfFirepower = target.selfFirepowerScore,
+                            targetSelfFirepower = target.blendedThreatScore,
+                            targetLongTermThreat = target.selfFirepowerScore,
+                            targetShortTermThreat = target.shortTermThreatScore,
+                            threatDistanceFactor = evaluation.threatDistanceFactor,
                             targetSurvivability = target.survivability,
                             targetUrgencyFactor = evaluation.targetUrgencyFactor,
                             currentUnderFirepower = target.underFirepower,
@@ -367,6 +392,7 @@ namespace NavalCombatCore
         CandidateEvaluation EvaluateCandidate(ShooterRecord shooter, BatteryRecord battery, TargetRecord target)
         {
             var stats = shooter.measurements[target];
+            var threatDistanceFactor = GetThreatDistanceFactor(stats.distanceYards);
             var targetUrgencyFactor = GetTargetUrgencyFactor(stats.distanceYards);
             var tryAddedFirepowerScoreBase = battery.firepowerScoreMap[target];
             var isCurrentTarget = battery.currentTarget == target;
@@ -378,7 +404,7 @@ namespace NavalCombatCore
 
             var tryAddedOverconcentrationScore = battery.overConcentrationCoef;
             var rawGainBeforeStickiness = GetTargettingScoreGain(
-                target.selfFirepowerScore,
+                target.blendedThreatScore,
                 target.survivability,
                 targetUrgencyFactor,
                 target.underFirepower,
@@ -390,6 +416,7 @@ namespace NavalCombatCore
 
             return new CandidateEvaluation(
                 stats,
+                threatDistanceFactor,
                 targetUrgencyFactor,
                 tryAddedFirepowerScoreBase,
                 tryAddedFirepowerScoreEffective,
@@ -507,6 +534,23 @@ namespace NavalCombatCore
             return subjectiveCloseRangePreferenceMinFactor;
         }
 
+        static float GetThreatDistanceFactor(float distanceYards)
+        {
+            var preferenceFactor = GetSubjectiveCloseRangePreferenceFactor(distanceYards);
+            var denominator = 1f - subjectiveCloseRangePreferenceMinFactor;
+            if (denominator <= 0f)
+                return shortThreatMaxDistanceFactor;
+
+            var normalizedPreference = (preferenceFactor - subjectiveCloseRangePreferenceMinFactor) / denominator;
+            if (normalizedPreference < 0f)
+                normalizedPreference = 0f;
+            else if (normalizedPreference > 1f)
+                normalizedPreference = 1f;
+
+            return shortThreatMinDistanceFactor
+                + (shortThreatMaxDistanceFactor - shortThreatMinDistanceFactor) * normalizedPreference;
+        }
+
         static float LerpByDistance(float startValue, float endValue, float distanceYards, float startDistanceYards, float endDistanceYards)
         {
             if (endDistanceYards <= startDistanceYards)
@@ -588,6 +632,9 @@ namespace NavalCombatCore
         public float rawGainBeforeStickiness;
         public float distanceYards;
         public float targetSelfFirepower;
+        public float targetLongTermThreat;
+        public float targetShortTermThreat;
+        public float threatDistanceFactor;
         public float targetSurvivability;
         public float targetUrgencyFactor;
         public float currentUnderFirepower;

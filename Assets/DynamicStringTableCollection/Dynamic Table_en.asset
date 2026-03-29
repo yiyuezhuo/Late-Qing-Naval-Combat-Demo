@@ -3271,6 +3271,18 @@ MonoBehaviour:
     m_Localized: Stickiness
     m_Metadata:
       m_Items: []
+  - m_Id: -93000000100018
+    m_Localized: Long Threat
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100019
+    m_Localized: Short Threat
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100020
+    m_Localized: Threat Dist
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

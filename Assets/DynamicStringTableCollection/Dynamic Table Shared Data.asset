@@ -3262,6 +3262,18 @@ MonoBehaviour:
     m_Key: Stickiness
     m_Metadata:
       m_Items: []
+  - m_Id: -93000000100018
+    m_Key: Long Threat
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100019
+    m_Key: Short Threat
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93000000100020
+    m_Key: Threat Dist
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

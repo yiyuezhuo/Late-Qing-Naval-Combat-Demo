@@ -295,12 +295,21 @@ public sealed class TorpedoInterceptProbabilityEstimate
     public int headingDivisions;
     public int speedDivisions;
     public List<LatLon> futureRegionGridPoints = new();
-    public List<bool> hitCellMask = new();
+    public List<LatLon> hitRegionVertices = new();
+    public List<int> hitRegionTriangles = new();
 }
 
 public static class TorpedoInterceptSolutionDialogSupport
 {
     static readonly float knotToMetersPerSecond = MeasureUtils.navalMileToMeter / 3600f;
+    const float torpedoInterceptGeometryEpsilon = 0.0001f;
+
+    struct TorpedoInterceptSpeedRange
+    {
+        public bool isValid;
+        public float minSpeedKnots;
+        public float maxSpeedKnots;
+    }
 
     public static string GetShipDisplayName(ShipLog shipLog)
     {
@@ -434,6 +443,87 @@ public static class TorpedoInterceptSolutionDialogSupport
         );
     }
 
+    static Vector2 HeadingToDirection(float headingDeg)
+    {
+        var headingRad = headingDeg * Mathf.Deg2Rad;
+        return new Vector2(Mathf.Sin(headingRad), Mathf.Cos(headingRad));
+    }
+
+    static float Cross2D(Vector2 lhs, Vector2 rhs) => lhs.x * rhs.y - lhs.y * rhs.x;
+
+    static LatLon GetFuturePositionAtArrival(ShipLog target, float headingDeg, float speedKnots, float arrivalSeconds)
+    {
+        var travelDistanceMeters = speedKnots * knotToMetersPerSecond * arrivalSeconds;
+        var (futureLat, futureLon) = MeasureStats.Approximation.CalculateNewPosition(
+            target.position.LatDeg,
+            target.position.LonDeg,
+            headingDeg,
+            travelDistanceMeters
+        );
+        return new LatLon((float)futureLat, (float)futureLon);
+    }
+
+    static TorpedoInterceptSpeedRange EvaluateHeadingHitSpeedRange(
+        TorpedoInterceptVisualizerSolution solution,
+        TorpedoInterceptRandomModel sanitizedModel,
+        float headingDeg,
+        Vector2 shooterRelativeMeters,
+        Vector2 torpedoDirection,
+        float torpedoSpeedMetersPerSecond,
+        float torpedoMaxTravelSeconds,
+        float halfLengthMeters,
+        float halfBeamMeters
+    )
+    {
+        if (solution?.target == null || torpedoSpeedMetersPerSecond <= torpedoInterceptGeometryEpsilon)
+            return default;
+
+        var forward = HeadingToDirection(headingDeg);
+        var determinant = Cross2D(torpedoDirection, forward);
+        var absDeterminant = Mathf.Abs(determinant);
+        if (absDeterminant <= torpedoInterceptGeometryEpsilon)
+            return default;
+
+        var targetOriginFromShooter = -shooterRelativeMeters;
+        var torpedoDistanceMeters = Cross2D(targetOriginFromShooter, forward) / determinant;
+        var targetAlongTrackMeters = Cross2D(targetOriginFromShooter, torpedoDirection) / determinant;
+        if (torpedoDistanceMeters < 0f || targetAlongTrackMeters < 0f)
+            return default;
+
+        var torpedoArrivalSeconds = torpedoDistanceMeters / torpedoSpeedMetersPerSecond;
+        if (torpedoArrivalSeconds < 0f || torpedoArrivalSeconds > torpedoMaxTravelSeconds)
+            return default;
+
+        var right = new Vector2(forward.y, -forward.x);
+        var torpedoNormal = new Vector2(torpedoDirection.y, -torpedoDirection.x);
+        var normalProjectionOnForward = Vector2.Dot(torpedoNormal, forward);
+        if (Mathf.Abs(normalProjectionOnForward) <= torpedoInterceptGeometryEpsilon)
+            return default;
+
+        var halfExtentNormal = Mathf.Abs(Vector2.Dot(torpedoNormal, forward)) * halfLengthMeters
+                               + Mathf.Abs(Vector2.Dot(torpedoNormal, right)) * halfBeamMeters;
+        var deltaAlongTrackMeters = halfExtentNormal / Mathf.Abs(normalProjectionOnForward);
+        var safeArrivalSeconds = Mathf.Max(torpedoArrivalSeconds, torpedoInterceptGeometryEpsilon);
+        var minSpeedMetersPerSecond = Mathf.Max(0f, (targetAlongTrackMeters - deltaAlongTrackMeters) / safeArrivalSeconds);
+        var maxSpeedMetersPerSecond = (targetAlongTrackMeters + deltaAlongTrackMeters) / safeArrivalSeconds;
+        if (maxSpeedMetersPerSecond < 0f)
+            return default;
+
+        var minSpeedKnots = minSpeedMetersPerSecond / knotToMetersPerSecond;
+        var maxSpeedKnots = maxSpeedMetersPerSecond / knotToMetersPerSecond;
+        minSpeedKnots = Mathf.Max(sanitizedModel.minSpeedKnots, minSpeedKnots);
+        maxSpeedKnots = Mathf.Min(sanitizedModel.maxSpeedKnots, maxSpeedKnots);
+        if (maxSpeedKnots < minSpeedKnots)
+            return default;
+
+        return new TorpedoInterceptSpeedRange()
+        {
+            isValid = true,
+            minSpeedKnots = minSpeedKnots,
+            maxSpeedKnots = maxSpeedKnots
+        };
+    }
+
     public static TorpedoInterceptProbabilityEstimate EvaluateProbability(
         TorpedoInterceptVisualizerSolution solution,
         TorpedoInterceptRandomModel model,
@@ -459,6 +549,15 @@ public static class TorpedoInterceptSolutionDialogSupport
         var endHeadingDeg = solution.target.headingDeg + sanitizedModel.upperHeadingOffsetDeg;
         var safeSpeedSamples = estimate.speedDivisions;
         var safeHeadingSamples = estimate.headingDivisions;
+        var shooterRelativeMeters = ProjectRelativeMeters(solution.target.position, solution.shooter.position);
+        var torpedoDirection = HeadingToDirection(solution.interceptionResult.azimuth);
+        var torpedoSpeedMetersPerSecond = Mathf.Max(
+            torpedoInterceptGeometryEpsilon,
+            (solution.selectedSetting?.speedKnots ?? 0f) * knotToMetersPerSecond
+        );
+        var torpedoMaxTravelSeconds = solution.selectedSetting != null
+            ? solution.selectedSetting.rangeYards * MeasureUtils.yardToMeter / torpedoSpeedMetersPerSecond
+            : 0f;
         var hitSamples = 0;
         var totalSamples = 0;
 
@@ -470,46 +569,115 @@ public static class TorpedoInterceptSolutionDialogSupport
             {
                 var speedT = safeSpeedSamples == 0 ? 0f : speedIdx / (float)safeSpeedSamples;
                 var speedKnots = Mathf.Lerp(sanitizedModel.minSpeedKnots, sanitizedModel.maxSpeedKnots, speedT);
-                var travelDistanceMeters = speedKnots * knotToMetersPerSecond * arrivalSeconds;
-                var (gridLat, gridLon) = MeasureStats.Approximation.CalculateNewPosition(
-                    solution.target.position.LatDeg,
-                    solution.target.position.LonDeg,
-                    headingDeg,
-                    travelDistanceMeters
-                );
-                estimate.futureRegionGridPoints.Add(new LatLon((float)gridLat, (float)gridLon));
+                estimate.futureRegionGridPoints.Add(GetFuturePositionAtArrival(solution.target, headingDeg, speedKnots, arrivalSeconds));
             }
+        }
+
+        var headingLineDegs = new float[safeHeadingSamples + 1];
+        var headingLineRanges = new TorpedoInterceptSpeedRange[safeHeadingSamples + 1];
+        for (var headingIdx = 0; headingIdx <= safeHeadingSamples; headingIdx++)
+        {
+            var headingT = safeHeadingSamples == 0 ? 0f : headingIdx / (float)safeHeadingSamples;
+            var headingDeg = Mathf.Lerp(startHeadingDeg, endHeadingDeg, headingT);
+            headingLineDegs[headingIdx] = headingDeg;
+            headingLineRanges[headingIdx] = EvaluateHeadingHitSpeedRange(
+                solution,
+                sanitizedModel,
+                headingDeg,
+                shooterRelativeMeters,
+                torpedoDirection,
+                torpedoSpeedMetersPerSecond,
+                torpedoMaxTravelSeconds,
+                halfLengthMeters,
+                halfBeamMeters
+            );
         }
 
         for (var headingIdx = 0; headingIdx < safeHeadingSamples; headingIdx++)
         {
             var headingT = (headingIdx + 0.5f) / safeHeadingSamples;
             var headingDeg = Mathf.Lerp(startHeadingDeg, endHeadingDeg, headingT);
-            var headingRad = headingDeg * Mathf.Deg2Rad;
-            var forward = new Vector2(Mathf.Sin(headingRad), Mathf.Cos(headingRad));
-            var right = new Vector2(Mathf.Cos(headingRad), -Mathf.Sin(headingRad));
+            var hitSpeedRange = EvaluateHeadingHitSpeedRange(
+                solution,
+                sanitizedModel,
+                headingDeg,
+                shooterRelativeMeters,
+                torpedoDirection,
+                torpedoSpeedMetersPerSecond,
+                torpedoMaxTravelSeconds,
+                halfLengthMeters,
+                halfBeamMeters
+            );
 
             for (var speedIdx = 0; speedIdx < safeSpeedSamples; speedIdx++)
             {
                 var speedT = (speedIdx + 0.5f) / safeSpeedSamples;
                 var speedKnots = Mathf.Lerp(sanitizedModel.minSpeedKnots, sanitizedModel.maxSpeedKnots, speedT);
-                var travelDistanceMeters = speedKnots * knotToMetersPerSecond * arrivalSeconds;
-                var (sampleLat, sampleLon) = MeasureStats.Approximation.CalculateNewPosition(
-                    solution.target.position.LatDeg,
-                    solution.target.position.LonDeg,
-                    headingDeg,
-                    travelDistanceMeters
-                );
-                var sampleCenter = new LatLon((float)sampleLat, (float)sampleLon);
-                var relativeToIntercept = ProjectRelativeMeters(sampleCenter, solution.interceptionPoint);
-                var forwardOffsetMeters = Vector2.Dot(relativeToIntercept, forward);
-                var lateralOffsetMeters = Vector2.Dot(relativeToIntercept, right);
-                var hit = Mathf.Abs(forwardOffsetMeters) <= halfLengthMeters
-                          && Mathf.Abs(lateralOffsetMeters) <= halfBeamMeters;
-                estimate.hitCellMask.Add(hit);
+                var hit = hitSpeedRange.isValid
+                          && speedKnots >= hitSpeedRange.minSpeedKnots - torpedoInterceptGeometryEpsilon
+                          && speedKnots <= hitSpeedRange.maxSpeedKnots + torpedoInterceptGeometryEpsilon;
                 if (hit)
                     hitSamples++;
                 totalSamples++;
+            }
+        }
+
+        int AddHitRegionVertex(float headingDeg, float speedKnots)
+        {
+            estimate.hitRegionVertices.Add(GetFuturePositionAtArrival(solution.target, headingDeg, speedKnots, arrivalSeconds));
+            return estimate.hitRegionVertices.Count - 1;
+        }
+
+        void AddHitRegionTriangle(int a, int b, int c)
+        {
+            estimate.hitRegionTriangles.Add(a);
+            estimate.hitRegionTriangles.Add(b);
+            estimate.hitRegionTriangles.Add(c);
+        }
+
+        for (var headingIdx = 0; headingIdx < safeHeadingSamples; headingIdx++)
+        {
+            var currentRange = headingLineRanges[headingIdx];
+            var nextRange = headingLineRanges[headingIdx + 1];
+            var currentHeadingDeg = headingLineDegs[headingIdx];
+            var nextHeadingDeg = headingLineDegs[headingIdx + 1];
+
+            if (currentRange.isValid && nextRange.isValid)
+            {
+                var currentLower = AddHitRegionVertex(currentHeadingDeg, currentRange.minSpeedKnots);
+                var nextLower = AddHitRegionVertex(nextHeadingDeg, nextRange.minSpeedKnots);
+                var currentUpper = AddHitRegionVertex(currentHeadingDeg, currentRange.maxSpeedKnots);
+                var nextUpper = AddHitRegionVertex(nextHeadingDeg, nextRange.maxSpeedKnots);
+                AddHitRegionTriangle(currentLower, nextLower, currentUpper);
+                AddHitRegionTriangle(currentUpper, nextLower, nextUpper);
+                continue;
+            }
+
+            if (currentRange.isValid)
+            {
+                var apexSpeedKnots = Mathf.Clamp(
+                    0.5f * (currentRange.minSpeedKnots + currentRange.maxSpeedKnots),
+                    sanitizedModel.minSpeedKnots,
+                    sanitizedModel.maxSpeedKnots
+                );
+                var currentLower = AddHitRegionVertex(currentHeadingDeg, currentRange.minSpeedKnots);
+                var apex = AddHitRegionVertex(nextHeadingDeg, apexSpeedKnots);
+                var currentUpper = AddHitRegionVertex(currentHeadingDeg, currentRange.maxSpeedKnots);
+                AddHitRegionTriangle(currentLower, apex, currentUpper);
+                continue;
+            }
+
+            if (nextRange.isValid)
+            {
+                var apexSpeedKnots = Mathf.Clamp(
+                    0.5f * (nextRange.minSpeedKnots + nextRange.maxSpeedKnots),
+                    sanitizedModel.minSpeedKnots,
+                    sanitizedModel.maxSpeedKnots
+                );
+                var apex = AddHitRegionVertex(currentHeadingDeg, apexSpeedKnots);
+                var nextLower = AddHitRegionVertex(nextHeadingDeg, nextRange.minSpeedKnots);
+                var nextUpper = AddHitRegionVertex(nextHeadingDeg, nextRange.maxSpeedKnots);
+                AddHitRegionTriangle(apex, nextLower, nextUpper);
             }
         }
 
@@ -2006,6 +2174,35 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 meshRenderer.enabled = true;
             }
 
+            void DrawMeshOverlay(
+                ref GameObject overlayObject,
+                string name,
+                IReadOnlyList<LatLon> verticesLatLon,
+                IReadOnlyList<int> triangles,
+                Color color,
+                float heightFoot
+            )
+            {
+                if (verticesLatLon == null || triangles == null || verticesLatLon.Count == 0 || triangles.Count < 3)
+                {
+                    HideOverlay(overlayObject);
+                    return;
+                }
+
+                var overlay = GetOrCreateOverlayObject(ref overlayObject, name, color);
+                var meshFilter = overlay.GetComponent<MeshFilter>();
+                var meshRenderer = overlay.GetComponent<MeshRenderer>();
+                var mesh = meshFilter.sharedMesh ??= new Mesh { name = $"{name}Mesh" };
+                mesh.Clear();
+
+                mesh.vertices = verticesLatLon
+                    .Select(point => Utils.LatitudeLongitudeDegHeightFootToVector3(point.LatDeg, point.LonDeg, heightFoot))
+                    .ToArray();
+                mesh.triangles = triangles.ToArray();
+                mesh.RecalculateBounds();
+                meshRenderer.enabled = true;
+            }
+
             void HideProbabilityOverlays()
             {
                 HideOverlay(hitRegionOverlayObject);
@@ -2192,13 +2389,11 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                     new Color(0.12f, 0.45f, 1f, 0.16f),
                     30f
                 );
-                DrawGridOverlay(
+                DrawMeshOverlay(
                     ref hitRegionOverlayObject,
                     "TorpedoInterceptHitRegion",
-                    estimate.futureRegionGridPoints,
-                    estimate.headingDivisions,
-                    estimate.speedDivisions,
-                    estimate.hitCellMask,
+                    estimate.hitRegionVertices,
+                    estimate.hitRegionTriangles,
                     new Color(1f, 0.08f, 0.08f, 0.18f),
                     34f
                 );

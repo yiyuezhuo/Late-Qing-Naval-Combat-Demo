@@ -17,16 +17,31 @@ using YYZ;
 
 public class BuildProcessor : IPreprocessBuildWithReport
 {
+    const string RequiredManualRelativePath = "Manuals/readme.pdf";
+
     public int callbackOrder { get { return 100; } }
 
 
     public void OnPreprocessBuild(BuildReport report)
     {
         Debug.Log("Preprocess build started for: " + report.summary.platform);
+        CheckRequiredStreamingAssets();
         BuildManifest();
 
         Debug.Log("Checking MultiColumnListView integrity...");
         CheckMultiColumnListViewBlockOnly();
+    }
+
+    static void CheckRequiredStreamingAssets()
+    {
+        var requiredManualPath = Path.Combine(Application.streamingAssetsPath, RequiredManualRelativePath);
+        if (File.Exists(requiredManualPath))
+            return;
+
+        throw new BuildFailedException(
+            "Required manual PDF is missing. " +
+            $"Expected file: {requiredManualPath}. " +
+            "Please export the latest manual PDF and place it at Assets/StreamingAssets/Manuals/readme.pdf before building.");
     }
 
     public void CheckMultiColumnListViewBlockOnly()

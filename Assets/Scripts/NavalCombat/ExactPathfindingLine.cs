@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using YYZ;
 
-public class PathfindingLine : SingletonMonoBehaviour<PathfindingLine>
+public class ExactPathfindingLine : SingletonMonoBehaviour<ExactPathfindingLine>
 {
     public enum State
     {
@@ -16,7 +16,6 @@ public class PathfindingLine : SingletonMonoBehaviour<PathfindingLine>
         Fixed
     }
 
-    const int DefaultStridePixels = 8;
     const string IconLayerName = "Icon";
 
     public State state = State.Idle;
@@ -25,10 +24,10 @@ public class PathfindingLine : SingletonMonoBehaviour<PathfindingLine>
 
     LatLon startLatLon;
     Vector3 startPosition;
-    ROIShoreFieldPathfinder pathfinder;
+    ExactROIShoreFieldPathfinder pathfinder;
     ElevationProvider elevationProvider;
     PathfindingResult currentResult;
-    int lastPreviewCoarseIndex = -1;
+    int lastPreviewIndex = -2;
     float lastPreviewThreshold = float.NaN;
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
@@ -40,43 +39,18 @@ public class PathfindingLine : SingletonMonoBehaviour<PathfindingLine>
         Hide();
     }
 
-    void Start()
-    {
-        EnsurePathfinder();
-    }
-
     public void BeginChooseStart()
     {
         EnsureVisuals();
-        EnsurePathfinder();
+        elevationProvider = ElevationService.Instance.elevationProvider as ElevationProvider;
+        pathfinder = null;
         state = State.ChooseStart;
         currentResult = null;
-        lastPreviewCoarseIndex = -1;
+        lastPreviewIndex = -2;
         lastPreviewThreshold = float.NaN;
         lineRenderer.positionCount = 0;
         lineRenderer.enabled = false;
-        ShowText(Localize("Pathfinding: choose source"), TryGetCurrentHitPoint(out var hitPoint) ? hitPoint : transform.position);
-    }
-
-    void EnsurePathfinder()
-    {
-        var currentProvider = ElevationService.Instance.elevationProvider as ElevationProvider;
-        if (currentProvider == null)
-        {
-            elevationProvider = null;
-            pathfinder = null;
-            return;
-        }
-
-        if (ReferenceEquals(elevationProvider, currentProvider) && pathfinder != null)
-        {
-            return;
-        }
-
-        elevationProvider = currentProvider;
-        pathfinder = elevationProvider.HasValidROIShoreField()
-            ? new ROIShoreFieldPathfinder(elevationProvider, DefaultStridePixels)
-            : null;
+        ShowText(Localize("Exact Pathfinding: choose source"), TryGetCurrentHitPoint(out var hitPoint) ? hitPoint : transform.position);
     }
 
     void EnsureVisuals()
@@ -86,7 +60,7 @@ public class PathfindingLine : SingletonMonoBehaviour<PathfindingLine>
 
         if (lineRenderer == null)
         {
-            var lineObject = new GameObject("PathfindingRoute");
+            var lineObject = new GameObject("ExactPathfindingRoute");
             lineObject.transform.SetParent(transform, false);
             lineObject.layer = iconLayer;
 
@@ -95,8 +69,8 @@ public class PathfindingLine : SingletonMonoBehaviour<PathfindingLine>
             lineRenderer.useWorldSpace = true;
             lineRenderer.widthMultiplier = 0.1f;
             lineRenderer.positionCount = 0;
-            lineRenderer.startColor = new Color(0.2f, 1f, 1f, 1f);
-            lineRenderer.endColor = new Color(0.2f, 1f, 1f, 1f);
+            lineRenderer.startColor = new Color(1f, 0.7f, 0.1f, 1f);
+            lineRenderer.endColor = new Color(1f, 0.7f, 0.1f, 1f);
 
             var fixedSizeLine = lineObject.AddComponent<FixedSizeLine>();
             fixedSizeLine.scaleFactor = 0.01f;
@@ -108,7 +82,7 @@ public class PathfindingLine : SingletonMonoBehaviour<PathfindingLine>
 
         if (text == null)
         {
-            var textObject = new GameObject("PathfindingText");
+            var textObject = new GameObject("ExactPathfindingText");
             textObject.transform.SetParent(transform, false);
             textObject.layer = iconLayer;
 
@@ -161,7 +135,7 @@ public class PathfindingLine : SingletonMonoBehaviour<PathfindingLine>
     void ClearAndHide()
     {
         currentResult = null;
-        lastPreviewCoarseIndex = -1;
+        lastPreviewIndex = -2;
         lastPreviewThreshold = float.NaN;
         Hide();
     }
@@ -228,29 +202,30 @@ public class PathfindingLine : SingletonMonoBehaviour<PathfindingLine>
         lineRenderer.SetPositions(positions);
 
         var distanceNm = result.routedDistanceMeters / MeasureUtils.navalMileToMeter;
-        ShowText(Localize("Pathfinding: routed distance {0:0.00} nm", distanceNm), positions[positions.Length - 1]);
+        ShowText(Localize("Exact Pathfinding: routed distance {0:0.00} nm", distanceNm), positions[positions.Length - 1]);
     }
 
     void UpdateChooseStart()
     {
         if (!TryGetCurrentHitPoint(out var hitPoint))
         {
-            ShowText(Localize("Pathfinding: choose source"), transform.position);
+            ShowText(Localize("Exact Pathfinding: choose source"), transform.position);
             return;
         }
 
-        ShowText(Localize("Pathfinding: choose source"), hitPoint);
+        ShowText(Localize("Exact Pathfinding: choose source"), hitPoint);
         if (!Input.GetMouseButtonDown(0))
         {
             return;
         }
 
-        EnsurePathfinder();
         if (!TryGetCurrentLatLon(out hitPoint, out var latLon))
         {
             return;
         }
 
+        elevationProvider = ElevationService.Instance.elevationProvider as ElevationProvider;
+        pathfinder = elevationProvider != null ? new ExactROIShoreFieldPathfinder(elevationProvider, latLon) : null;
         var result = pathfinder?.FindPath(latLon, latLon, GamePreference.Instance.pathfindingShorePassableDistancePixels);
         if (result == null)
         {
@@ -268,30 +243,29 @@ public class PathfindingLine : SingletonMonoBehaviour<PathfindingLine>
         startPosition = hitPoint;
         state = State.ChooseEnd;
         currentResult = null;
-        lastPreviewCoarseIndex = -1;
+        lastPreviewIndex = -2;
         lastPreviewThreshold = float.NaN;
         lineRenderer.enabled = false;
         lineRenderer.positionCount = 0;
-        ShowText(Localize("Pathfinding: choose destination"), hitPoint);
+        ShowText(Localize("Exact Pathfinding: choose destination"), hitPoint);
     }
 
     void UpdateChooseEnd()
     {
-        EnsurePathfinder();
         if (!TryGetCurrentLatLon(out var hitPoint, out var currentLatLon))
         {
-            ShowText(Localize("Pathfinding: choose destination"), startPosition);
+            ShowText(Localize("Exact Pathfinding: choose destination"), startPosition);
             return;
         }
 
         var threshold = GamePreference.Instance.pathfindingShorePassableDistancePixels;
-        var coarseIndex = -1;
-        pathfinder?.TryGetCoarseNodeIndex(currentLatLon, out coarseIndex);
+        var previewIndex = -1;
+        pathfinder?.TryGetWindowNodeIndex(currentLatLon, out previewIndex);
 
-        if (pathfinder == null || coarseIndex != lastPreviewCoarseIndex || Math.Abs(lastPreviewThreshold - threshold) > 1e-5f)
+        if (pathfinder == null || previewIndex != lastPreviewIndex || Math.Abs(lastPreviewThreshold - threshold) > 1e-5f)
         {
             currentResult = pathfinder?.FindPath(startLatLon, currentLatLon, threshold);
-            lastPreviewCoarseIndex = coarseIndex;
+            lastPreviewIndex = previewIndex;
             lastPreviewThreshold = threshold;
         }
 
@@ -314,8 +288,6 @@ public class PathfindingLine : SingletonMonoBehaviour<PathfindingLine>
 
     void Update()
     {
-        EnsurePathfinder();
-
         switch (state)
         {
             case State.ChooseStart:
@@ -329,7 +301,7 @@ public class PathfindingLine : SingletonMonoBehaviour<PathfindingLine>
         }
 
         var isPressingAlt = Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt);
-        if (!EventSystem.current.IsPointerOverGameObject() && Input.GetKeyDown(KeyCode.P) && !isPressingAlt)
+        if (!EventSystem.current.IsPointerOverGameObject() && Input.GetKeyDown(KeyCode.P) && isPressingAlt)
         {
             BeginChooseStart();
         }

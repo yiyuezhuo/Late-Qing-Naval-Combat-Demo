@@ -3315,6 +3315,22 @@ MonoBehaviour:
     m_Localized: Routed distance {0:0.00} nm
     m_Metadata:
       m_Items: []
+  - m_Id: -94000000000019
+    m_Localized: Choose source
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000020
+    m_Localized: Choose destination
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000021
+    m_Localized: Routed distance {0:0.00} nm
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000022
+    m_Localized: Outside exact search window
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

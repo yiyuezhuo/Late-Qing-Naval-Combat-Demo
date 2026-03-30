@@ -3306,6 +3306,22 @@ MonoBehaviour:
     m_Key: 'Pathfinding: routed distance {0:0.00} nm'
     m_Metadata:
       m_Items: []
+  - m_Id: -94000000000019
+    m_Key: 'Exact Pathfinding: choose source'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000020
+    m_Key: 'Exact Pathfinding: choose destination'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000021
+    m_Key: 'Exact Pathfinding: routed distance {0:0.00} nm'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000022
+    m_Key: 'Pathfinding: outside exact search window'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

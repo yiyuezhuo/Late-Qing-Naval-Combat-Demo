@@ -2951,6 +2951,10 @@ MonoBehaviour:
     m_Key: Pathfinding Passable Shore Distance (Pixels)
     m_Metadata:
       m_Items: []
+  - m_Id: -94000000000003
+    m_Key: Exact Pathfinding (Alt + P)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

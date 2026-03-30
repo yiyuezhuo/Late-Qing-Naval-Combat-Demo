@@ -179,6 +179,11 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-94000000000001)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="Exact Pathfinding (Alt + P)" name="ExactPathfindingButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-94000000000003)"/>
+                        </Bindings>
+                    </ui:Button>
                     <ui:Button text="LOS Measure (S)" name="MaskMeasureButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63593606975488)"/>

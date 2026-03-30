@@ -4,35 +4,19 @@ using GeographicLib;
 using NavalCombatCore;
 using UnityEngine;
 
-public enum PathfindingFailureReason
+public sealed class ExactROIShoreFieldPathfinder
 {
-    None,
-    ShoreFieldUnavailable,
-    OutsideROI,
-    SearchWindowExceeded,
-    SourceBlocked,
-    DestinationBlocked,
-    NoPath
-}
-
-public sealed class PathfindingResult
-{
-    public bool success;
-    public List<LatLon> points = new();
-    public float routedDistanceMeters;
-    public PathfindingFailureReason failureReason;
-}
-
-public sealed class ROIShoreFieldPathfinder
-{
+    const int DefaultSearchWindowSize = 1024;
     const float DiagonalCost = 1.41421356f;
-    const int EndpointSearchRadius = 64;
 
     readonly ElevationProvider provider;
-    readonly int stridePixels;
-    readonly int coarseWidth;
-    readonly int coarseHeight;
-    readonly float[] coarseDistancePixels;
+    readonly int windowMinX;
+    readonly int windowMinY;
+    readonly int windowWidth;
+    readonly int windowHeight;
+    readonly int sourcePixelX;
+    readonly int sourcePixelY;
+    readonly float[] windowDistancePixels;
     readonly float[] gScore;
     readonly int[] cameFrom;
     readonly int[] nodeStamp;
@@ -40,20 +24,6 @@ public sealed class ROIShoreFieldPathfinder
     readonly MinHeap openSet;
 
     int currentSearchStamp;
-
-    struct CoarseNode
-    {
-        public int x;
-        public int y;
-        public int index;
-
-        public CoarseNode(int x, int y, int width)
-        {
-            this.x = x;
-            this.y = y;
-            index = y * width + x;
-        }
-    }
 
     sealed class MinHeap
     {
@@ -163,43 +133,54 @@ public sealed class ROIShoreFieldPathfinder
         }
     }
 
-    public ROIShoreFieldPathfinder(ElevationProvider provider, int stridePixels = 8)
+    public ExactROIShoreFieldPathfinder(ElevationProvider provider, LatLon source, int searchWindowSize = DefaultSearchWindowSize)
     {
         this.provider = provider;
-        this.stridePixels = Math.Max(1, stridePixels);
-
         if (provider == null || !provider.HasValidROIShoreField())
         {
             return;
         }
 
-        coarseWidth = Math.Max(1, Mathf.CeilToInt(provider.ROIShoreFieldWidth / (float)this.stridePixels));
-        coarseHeight = Math.Max(1, Mathf.CeilToInt(provider.ROIShoreFieldHeight / (float)this.stridePixels));
+        if (!provider.TryGetROIPixelCoordsRounded(source, out sourcePixelX, out sourcePixelY))
+        {
+            return;
+        }
 
-        var nodeCount = coarseWidth * coarseHeight;
-        coarseDistancePixels = new float[nodeCount];
+        var clampedWindowWidth = Math.Min(searchWindowSize, provider.ROIShoreFieldWidth);
+        var clampedWindowHeight = Math.Min(searchWindowSize, provider.ROIShoreFieldHeight);
+
+        windowWidth = Math.Max(1, clampedWindowWidth);
+        windowHeight = Math.Max(1, clampedWindowHeight);
+        windowMinX = Mathf.Clamp(sourcePixelX - windowWidth / 2, 0, Math.Max(0, provider.ROIShoreFieldWidth - windowWidth));
+        windowMinY = Mathf.Clamp(sourcePixelY - windowHeight / 2, 0, Math.Max(0, provider.ROIShoreFieldHeight - windowHeight));
+
+        var nodeCount = windowWidth * windowHeight;
+        windowDistancePixels = new float[nodeCount];
         gScore = new float[nodeCount];
         cameFrom = new int[nodeCount];
         nodeStamp = new int[nodeCount];
         closedStamp = new int[nodeCount];
         openSet = new MinHeap(nodeCount / 16 + 16);
 
-        BuildCoarseDistanceField();
+        BuildWindowDistanceField();
     }
 
-    public bool IsReady => provider != null && coarseDistancePixels != null;
+    public bool IsReady => provider != null && windowDistancePixels != null;
 
-    public bool TryGetCoarseNodeIndex(LatLon latLon, out int coarseIndex)
+    public bool TryGetWindowNodeIndex(LatLon latLon, out int localIndex)
     {
-        coarseIndex = -1;
-        if (!IsReady || !provider.TryGetROIPixelCoords(latLon, out var rawX, out var rawY))
+        localIndex = -1;
+        if (!provider.TryGetROIPixelCoordsRounded(latLon, out var pixelX, out var pixelY))
         {
             return false;
         }
 
-        coarseIndex = ToCoarseIndex(
-            Mathf.Clamp(Mathf.RoundToInt(rawX / stridePixels), 0, coarseWidth - 1),
-            Mathf.Clamp(Mathf.RoundToInt(rawY / stridePixels), 0, coarseHeight - 1));
+        if (!IsPixelInsideWindow(pixelX, pixelY))
+        {
+            return false;
+        }
+
+        localIndex = ToLocalIndex(pixelX - windowMinX, pixelY - windowMinY);
         return true;
     }
 
@@ -212,14 +193,20 @@ public sealed class ROIShoreFieldPathfinder
             return result;
         }
 
-        if (!provider.TryGetROIPixelCoords(source, out var sourcePixelX, out var sourcePixelY)
-            || !provider.TryGetROIPixelCoords(destination, out var destinationPixelX, out var destinationPixelY))
+        if (!provider.TryGetROIPixelCoordsRounded(source, out var sourceX, out var sourceY)
+            || !provider.TryGetROIPixelCoordsRounded(destination, out var destinationX, out var destinationY))
         {
             result.failureReason = PathfindingFailureReason.OutsideROI;
             return result;
         }
 
-        if (!provider.TryGetROIShoreFieldDistancePixels(source, out var sourceDistance))
+        if (!IsPixelInsideWindow(destinationX, destinationY))
+        {
+            result.failureReason = PathfindingFailureReason.SearchWindowExceeded;
+            return result;
+        }
+
+        if (!TryGetDistancePixels(sourceX, sourceY, out var sourceDistance))
         {
             result.failureReason = PathfindingFailureReason.ShoreFieldUnavailable;
             return result;
@@ -231,7 +218,7 @@ public sealed class ROIShoreFieldPathfinder
             return result;
         }
 
-        if (!provider.TryGetROIShoreFieldDistancePixels(destination, out var destinationDistance))
+        if (!TryGetDistancePixels(destinationX, destinationY, out var destinationDistance))
         {
             result.failureReason = PathfindingFailureReason.ShoreFieldUnavailable;
             return result;
@@ -243,21 +230,16 @@ public sealed class ROIShoreFieldPathfinder
             return result;
         }
 
-        if (!TryFindNearestPassableCoarseNode(sourcePixelX, sourcePixelY, thresholdPixels, out var startNode)
-            || !TryFindNearestPassableCoarseNode(destinationPixelX, destinationPixelY, thresholdPixels, out var endNode))
+        var startIndex = ToLocalIndex(sourceX - windowMinX, sourceY - windowMinY);
+        var endIndex = ToLocalIndex(destinationX - windowMinX, destinationY - windowMinY);
+        var rawPath = RunAStar(startIndex, endIndex, thresholdPixels);
+        if (rawPath == null || rawPath.Count == 0)
         {
             result.failureReason = PathfindingFailureReason.NoPath;
             return result;
         }
 
-        var coarsePath = RunAStar(startNode.index, endNode.index, thresholdPixels);
-        if (coarsePath == null || coarsePath.Count == 0)
-        {
-            result.failureReason = PathfindingFailureReason.NoPath;
-            return result;
-        }
-
-        var simplifiedPath = SimplifyPath(coarsePath, thresholdPixels);
+        var simplifiedPath = SimplifyPath(rawPath, thresholdPixels);
         result.points = BuildLatLonPath(source, destination, simplifiedPath);
         result.routedDistanceMeters = ComputeDistanceMeters(result.points);
         result.success = true;
@@ -265,79 +247,45 @@ public sealed class ROIShoreFieldPathfinder
         return result;
     }
 
-    void BuildCoarseDistanceField()
+    void BuildWindowDistanceField()
     {
-        var centerOffset = stridePixels * 0.5f;
-        for (var y = 0; y < coarseHeight; y++)
+        for (var localY = 0; localY < windowHeight; localY++)
         {
-            for (var x = 0; x < coarseWidth; x++)
+            for (var localX = 0; localX < windowWidth; localX++)
             {
-                var pixelX = Mathf.Clamp(Mathf.RoundToInt(x * stridePixels + centerOffset), 0, provider.ROIShoreFieldWidth - 1);
-                var pixelY = Mathf.Clamp(Mathf.RoundToInt(y * stridePixels + centerOffset), 0, provider.ROIShoreFieldHeight - 1);
+                var pixelX = windowMinX + localX;
+                var pixelY = windowMinY + localY;
                 if (!provider.TryGetROIShoreFieldDistancePixels(pixelX, pixelY, out var distancePixels))
                 {
                     distancePixels = 0f;
                 }
 
-                coarseDistancePixels[ToCoarseIndex(x, y)] = distancePixels;
+                windowDistancePixels[ToLocalIndex(localX, localY)] = distancePixels;
             }
         }
     }
 
-    int ToCoarseIndex(int x, int y) => y * coarseWidth + x;
-
-    bool TryFindNearestPassableCoarseNode(float pixelX, float pixelY, float thresholdPixels, out CoarseNode coarseNode)
+    bool IsPixelInsideWindow(int pixelX, int pixelY)
     {
-        coarseNode = default;
-        var centerX = Mathf.Clamp(Mathf.RoundToInt(pixelX / stridePixels), 0, coarseWidth - 1);
-        var centerY = Mathf.Clamp(Mathf.RoundToInt(pixelY / stridePixels), 0, coarseHeight - 1);
+        return pixelX >= windowMinX
+            && pixelX < windowMinX + windowWidth
+            && pixelY >= windowMinY
+            && pixelY < windowMinY + windowHeight;
+    }
 
-        var found = false;
-        var bestDistanceSq = float.PositiveInfinity;
-        for (var radius = 0; radius <= EndpointSearchRadius; radius++)
+    bool TryGetDistancePixels(int pixelX, int pixelY, out float distancePixels)
+    {
+        distancePixels = 0f;
+        if (!IsPixelInsideWindow(pixelX, pixelY))
         {
-            var minX = Mathf.Max(0, centerX - radius);
-            var maxX = Mathf.Min(coarseWidth - 1, centerX + radius);
-            var minY = Mathf.Max(0, centerY - radius);
-            var maxY = Mathf.Min(coarseHeight - 1, centerY + radius);
-
-            for (var y = minY; y <= maxY; y++)
-            {
-                for (var x = minX; x <= maxX; x++)
-                {
-                    if (radius > 0
-                        && x > minX && x < maxX
-                        && y > minY && y < maxY)
-                    {
-                        continue;
-                    }
-
-                    var index = ToCoarseIndex(x, y);
-                    if (coarseDistancePixels[index] < thresholdPixels)
-                    {
-                        continue;
-                    }
-
-                    var dx = x - centerX;
-                    var dy = y - centerY;
-                    var distanceSq = dx * dx + dy * dy;
-                    if (distanceSq < bestDistanceSq)
-                    {
-                        coarseNode = new CoarseNode(x, y, coarseWidth);
-                        bestDistanceSq = distanceSq;
-                        found = true;
-                    }
-                }
-            }
-
-            if (found)
-            {
-                return true;
-            }
+            return false;
         }
 
-        return false;
+        distancePixels = windowDistancePixels[ToLocalIndex(pixelX - windowMinX, pixelY - windowMinY)];
+        return true;
     }
+
+    int ToLocalIndex(int localX, int localY) => localY * windowWidth + localX;
 
     List<int> RunAStar(int startIndex, int endIndex, float thresholdPixels)
     {
@@ -378,8 +326,8 @@ public sealed class ROIShoreFieldPathfinder
             }
 
             closedStamp[currentIndex] = currentSearchStamp;
-            var currentX = currentIndex % coarseWidth;
-            var currentY = currentIndex / coarseWidth;
+            var currentX = currentIndex % windowWidth;
+            var currentY = currentIndex / windowWidth;
 
             for (var deltaY = -1; deltaY <= 1; deltaY++)
             {
@@ -392,13 +340,13 @@ public sealed class ROIShoreFieldPathfinder
 
                     var nextX = currentX + deltaX;
                     var nextY = currentY + deltaY;
-                    if (nextX < 0 || nextX >= coarseWidth || nextY < 0 || nextY >= coarseHeight)
+                    if (nextX < 0 || nextX >= windowWidth || nextY < 0 || nextY >= windowHeight)
                     {
                         continue;
                     }
 
-                    var nextIndex = ToCoarseIndex(nextX, nextY);
-                    if (closedStamp[nextIndex] == currentSearchStamp || coarseDistancePixels[nextIndex] < thresholdPixels)
+                    var nextIndex = ToLocalIndex(nextX, nextY);
+                    if (closedStamp[nextIndex] == currentSearchStamp || windowDistancePixels[nextIndex] < thresholdPixels)
                     {
                         continue;
                     }
@@ -421,10 +369,10 @@ public sealed class ROIShoreFieldPathfinder
 
     float EstimateCost(int srcIndex, int dstIndex)
     {
-        var srcX = srcIndex % coarseWidth;
-        var srcY = srcIndex / coarseWidth;
-        var dstX = dstIndex % coarseWidth;
-        var dstY = dstIndex / coarseWidth;
+        var srcX = srcIndex % windowWidth;
+        var srcY = srcIndex / windowWidth;
+        var dstX = dstIndex % windowWidth;
+        var dstY = dstIndex / windowWidth;
         return Vector2.Distance(new Vector2(srcX, srcY), new Vector2(dstX, dstY));
     }
 
@@ -493,12 +441,12 @@ public sealed class ROIShoreFieldPathfinder
             var current = path[i];
             var next = path[i + 1];
 
-            var prevX = prev % coarseWidth;
-            var prevY = prev / coarseWidth;
-            var currentX = current % coarseWidth;
-            var currentY = current / coarseWidth;
-            var nextX = next % coarseWidth;
-            var nextY = next / coarseWidth;
+            var prevX = prev % windowWidth;
+            var prevY = prev / windowWidth;
+            var currentX = current % windowWidth;
+            var currentY = current / windowWidth;
+            var nextX = next % windowWidth;
+            var nextY = next / windowWidth;
 
             var dirAX = currentX - prevX;
             var dirAY = currentY - prevY;
@@ -519,25 +467,25 @@ public sealed class ROIShoreFieldPathfinder
 
     bool IsStraightPassable(int startIndex, int endIndex, float thresholdPixels)
     {
-        var startX = startIndex % coarseWidth;
-        var startY = startIndex / coarseWidth;
-        var endX = endIndex % coarseWidth;
-        var endY = endIndex / coarseWidth;
+        var startX = startIndex % windowWidth;
+        var startY = startIndex / windowWidth;
+        var endX = endIndex % windowWidth;
+        var endY = endIndex / windowWidth;
 
         var deltaX = endX - startX;
         var deltaY = endY - startY;
         var steps = Math.Max(Math.Abs(deltaX), Math.Abs(deltaY)) * 2;
         if (steps <= 0)
         {
-            return coarseDistancePixels[startIndex] >= thresholdPixels;
+            return windowDistancePixels[startIndex] >= thresholdPixels;
         }
 
         for (var step = 0; step <= steps; step++)
         {
             var t = step / (float)steps;
-            var x = Mathf.Clamp(Mathf.RoundToInt(Mathf.Lerp(startX, endX, t)), 0, coarseWidth - 1);
-            var y = Mathf.Clamp(Mathf.RoundToInt(Mathf.Lerp(startY, endY, t)), 0, coarseHeight - 1);
-            if (coarseDistancePixels[ToCoarseIndex(x, y)] < thresholdPixels)
+            var x = Mathf.Clamp(Mathf.RoundToInt(Mathf.Lerp(startX, endX, t)), 0, windowWidth - 1);
+            var y = Mathf.Clamp(Mathf.RoundToInt(Mathf.Lerp(startY, endY, t)), 0, windowHeight - 1);
+            if (windowDistancePixels[ToLocalIndex(x, y)] < thresholdPixels)
             {
                 return false;
             }
@@ -546,30 +494,19 @@ public sealed class ROIShoreFieldPathfinder
         return true;
     }
 
-    List<LatLon> BuildLatLonPath(LatLon source, LatLon destination, List<int> coarsePath)
+    List<LatLon> BuildLatLonPath(LatLon source, LatLon destination, List<int> localPath)
     {
         var points = new List<LatLon> { source };
-        for (var i = 0; i < coarsePath.Count; i++)
+        for (var i = 0; i < localPath.Count; i++)
         {
-            var index = coarsePath[i];
-            var x = index % coarseWidth;
-            var y = index / coarseWidth;
-            var latLon = provider.ROIPixelCoordsToLatLon(GetCoarsePixelCenterX(x), GetCoarsePixelCenterY(y));
-            points.Add(latLon);
+            var index = localPath[i];
+            var localX = index % windowWidth;
+            var localY = index / windowWidth;
+            points.Add(provider.ROIPixelCoordsToLatLon(windowMinX + localX, windowMinY + localY));
         }
 
         points.Add(destination);
         return DeduplicatePoints(points);
-    }
-
-    float GetCoarsePixelCenterX(int coarseX)
-    {
-        return Mathf.Clamp(coarseX * stridePixels + stridePixels * 0.5f, 0f, Mathf.Max(0f, provider.ROIShoreFieldWidth - 1f));
-    }
-
-    float GetCoarsePixelCenterY(int coarseY)
-    {
-        return Mathf.Clamp(coarseY * stridePixels + stridePixels * 0.5f, 0f, Mathf.Max(0f, provider.ROIShoreFieldHeight - 1f));
     }
 
     static List<LatLon> DeduplicatePoints(List<LatLon> points)

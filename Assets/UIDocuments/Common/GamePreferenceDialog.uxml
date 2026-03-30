@@ -179,8 +179,9 @@
                 </Bindings>
             </ui:Tab>
             <ui:Tab label="Naval Tactical Core">
-                <ui:VisualElement data-source-path="navalCombatCoreParameter" style="flex-grow: 1;">
-                    <ui:TabView>
+                <ui:VisualElement style="flex-grow: 1;">
+                    <ui:VisualElement data-source-path="navalCombatCoreParameter" style="flex-grow: 1;">
+                        <ui:TabView>
                         <ui:Tab label="Balance &amp; Performance">
                             <ui:VisualElement style="flex-grow: 1;">
                                 <ui:Toggle label="Land Collision">
@@ -292,6 +293,11 @@
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(29774939210551296)"/>
                                     </Bindings>
                                 </ui:FloatField>
+                                <ui:Toggle label="Enable ROI Shore-Field Avoidance">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="enableROIShoreFieldAvoidance" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:Toggle>
                                 <ui:FloatField label="Combat Expected Range (Low, yard)">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="expectedCombatRangeYardLow" binding-mode="TwoWay"/>
@@ -322,7 +328,8 @@
                                 </ui:SliderInt>
                             </ui:VisualElement>
                         </ui:Tab>
-                    </ui:TabView>
+                        </ui:TabView>
+                    </ui:VisualElement>
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(181094349180928)"/>

@@ -37,8 +37,8 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
 
     public MeshRenderer meshRenderer;
 
-    public AssetReference baseHeightTextureAssetReference;
-    public AssetReference roiHeightTextureAssetReference;
+    // public AssetReference baseHeightTextureAssetReference;
+    // public AssetReference roiHeightTextureAssetReference;
     public TextAsset roiShoreRuntimeBytes;
 
     ushort[] roiShoreRuntimeDistanceData;
@@ -72,39 +72,8 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
             Debug.Log(latLon + ": " + ElevationService.Instance.GetElevation(latLon));
         }
 
-        AssetReferenceManager.Instance.LoadTexture2D(baseHeightTextureAssetReference, SetBaseTexture);
-        // {
-        //     AsyncOperationHandle handle = baseHeightTextureAssetReference.LoadAssetAsync<Texture2D>();
-        //     handle.Completed += (AsyncOperationHandle obj) =>
-        //     {
-        //         if (obj.Status == AsyncOperationStatus.Succeeded)
-        //         {
-        //             Debug.Log($"AssetReference {baseHeightTextureAssetReference.RuntimeKey} Success to load.");
-        //             SetBaseTexture(baseHeightTextureAssetReference.Asset as Texture2D);
-        //         }
-        //         else
-        //         {
-        //             Debug.LogError($"AssetReference {baseHeightTextureAssetReference.RuntimeKey} failed to load.");
-        //         }
-        //     };
-        // }
-
-        AssetReferenceManager.Instance.LoadTexture2D(roiHeightTextureAssetReference, SetROITexture);
-        // {
-        //     AsyncOperationHandle handle = roiHeightTextureAssetReference.LoadAssetAsync<Texture2D>();
-        //     handle.Completed += (AsyncOperationHandle obj) =>
-        //     {
-        //         if (obj.Status == AsyncOperationStatus.Succeeded)
-        //         {
-        //             Debug.Log($"AssetReference {roiHeightTextureAssetReference.RuntimeKey} Success to load.");
-        //             SetROITexture(roiHeightTextureAssetReference.Asset as Texture2D);
-        //         }
-        //         else
-        //         {
-        //             Debug.LogError($"AssetReference {roiHeightTextureAssetReference.RuntimeKey} failed to load.");
-        //         }
-        //     };
-        // }
+        // AssetReferenceManager.Instance.LoadTexture2D(baseHeightTextureAssetReference, SetBaseTexture);
+        // AssetReferenceManager.Instance.LoadTexture2D(roiHeightTextureAssetReference, SetROITexture);
 
         TryLoadROIShoreRuntime();
         ValidateROIShoreRuntimeDimensions();
@@ -114,11 +83,11 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
 
     private void OnDestroy()
     {
-        if (baseHeightTextureAssetReference != null && baseHeightTextureAssetReference.IsValid())
-            baseHeightTextureAssetReference.ReleaseAsset();
+        // if (baseHeightTextureAssetReference != null && baseHeightTextureAssetReference.IsValid())
+        //     baseHeightTextureAssetReference.ReleaseAsset();
 
-        if (roiHeightTextureAssetReference != null && roiHeightTextureAssetReference.IsValid())
-            roiHeightTextureAssetReference.ReleaseAsset();
+        // if (roiHeightTextureAssetReference != null && roiHeightTextureAssetReference.IsValid())
+        //     roiHeightTextureAssetReference.ReleaseAsset();
     }
 
     // void FetchHighPrecisionTextures() // TODO: This method should not be placed in "ElevationProvider" though.

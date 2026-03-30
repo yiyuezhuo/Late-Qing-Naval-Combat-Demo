@@ -38,6 +38,7 @@ namespace NavalCombatCore
 
         public static bool useBound = true;
         public static bool simpleUseBound = true;
+        public static bool enableROIShoreFieldAvoidance = true;
 
         public static List<float> extrapolateRange = new(){30, 60, 120, 240};
         public static List<float> simpleExtrapolateRange = new(){60};
@@ -104,7 +105,7 @@ namespace NavalCombatCore
         {
             newHeadingDeg = initialDesiredHeadingDeg;
 
-            if (speedMeterPerSecond <= 0 || !GamePreference.Instance.enableROIShoreFieldAvoidance)
+            if (speedMeterPerSecond <= 0 || !enableROIShoreFieldAvoidance)
                 return false;
 
             if (ElevationService.Instance.elevationProvider is not ElevationProvider elevationProvider)

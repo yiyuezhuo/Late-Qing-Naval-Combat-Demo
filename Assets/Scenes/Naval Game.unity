@@ -746,26 +746,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bac8df06c436694ca75f1a1493ca07c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHeightTexture: {fileID: 2800000, guid: 2cd6e119d6a024b4fb72440ee2835123, type: 3}
-  roiHeightTexture: {fileID: 2800000, guid: 36ac568f6e6bded429d5bf0fc70a82bf, type: 3}
+  baseHeightTexture: {fileID: 2800000, guid: 678f2dceb3168f143bdbadb3dc5e42a6, type: 3}
+  roiHeightTexture: {fileID: 2800000, guid: 66b5022ebceec0c45ab313697c7471d4, type: 3}
   roiLatitudeDeg0: 15
   roiLatitudeDeg1: 55
   roiLongitudeDeg0: 105
   roiLongitudeDeg1: 146
   useROI: 1
   meshRenderer: {fileID: 227654952}
-  baseHeightTextureAssetReference:
-    m_AssetGUID: 678f2dceb3168f143bdbadb3dc5e42a6
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  roiHeightTextureAssetReference:
-    m_AssetGUID: 66b5022ebceec0c45ab313697c7471d4
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
   roiShoreRuntimeBytes: {fileID: 4900000, guid: 7e671b0b76dd1c9409b74d18c515563d, type: 3}
 --- !u!1 &267460018
 GameObject:

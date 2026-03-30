@@ -272,7 +272,6 @@ public class GamePreference
 
     bool _enableAudio = true;
     float _audioVolume = 1;
-    bool _enableROIShoreFieldAvoidance = true;
 
     [CreateProperty]
     public bool enableAudio
@@ -286,13 +285,6 @@ public class GamePreference
                 AudioListener.pause = !_enableAudio;
             }
         }
-    }
-
-    [CreateProperty]
-    public bool enableROIShoreFieldAvoidance
-    {
-        get => _enableROIShoreFieldAvoidance;
-        set => _enableROIShoreFieldAvoidance = value;
     }
 
     [CreateProperty]
@@ -393,7 +385,7 @@ public class GamePreference
         p.enable3DBase = PlayerPrefs.GetInt("enable3DBase", 1) == 1;
         p.enableGunneryShellVisual = PlayerPrefs.GetInt("enableGunneryShellVisual", 1) == 1;
         p.gunneryShellRadiusScaleCoef = PlayerPrefs.GetFloat("gunneryShellRadiusScaleCoef", 12f);
-        p.enableROIShoreFieldAvoidance = PlayerPrefs.GetInt("enableROIShoreFieldAvoidance", 1) == 1;
+        CoreParameter.Instance.enableROIShoreFieldAvoidance = PlayerPrefs.GetInt("enableROIShoreFieldAvoidance", 1) == 1;
         // CoreParameter.Instance.noPenetrationDamageCoef = Mathf.Clamp01(PlayerPrefs.GetFloat("noPenetrationDamageCoef", 0.25f));
     }
 
@@ -409,7 +401,7 @@ public class GamePreference
         PlayerPrefs.SetInt("enable3DBase", enable3DBase ? 1 : 0);
         PlayerPrefs.SetInt("enableGunneryShellVisual", enableGunneryShellVisual ? 1 : 0);
         PlayerPrefs.SetFloat("gunneryShellRadiusScaleCoef", gunneryShellRadiusScaleCoef);
-        PlayerPrefs.SetInt("enableROIShoreFieldAvoidance", enableROIShoreFieldAvoidance ? 1 : 0);
+        PlayerPrefs.SetInt("enableROIShoreFieldAvoidance", CoreParameter.Instance.enableROIShoreFieldAvoidance ? 1 : 0);
         // PlayerPrefs.SetFloat("noPenetrationDamageCoef", Mathf.Clamp01(CoreParameter.Instance.noPenetrationDamageCoef));
 
         PlayerPrefs.Save();
@@ -472,6 +464,13 @@ namespace NavalCombatCore
         {
             get => TorpedoMountStatusRecord.disableTorpedoReload;
             set => TorpedoMountStatusRecord.disableTorpedoReload = value;
+        }
+
+        [CreateProperty]
+        public bool enableROIShoreFieldAvoidance
+        {
+            get => ObstacleAvoidChecker.enableROIShoreFieldAvoidance;
+            set => ObstacleAvoidChecker.enableROIShoreFieldAvoidance = value;
         }
 
         // [CreateProperty]

@@ -11,21 +11,20 @@ public enum ShoreFieldExportMode
 
 public class HeightFieldDerivedTextureWindow : EditorWindow
 {
-    const float InfiniteDistance = 1e20f;
     const float GradientMagnitudeEpsilon = 1e-5f;
 
     Texture2D sourceHeightTexture;
     float landThreshold = 0f;
-    float distanceEncodeMaxPixels = 64f;
+    float distanceEncodeMaxPixels = 255f;
     ShoreFieldExportMode exportMode = ShoreFieldExportMode.Packed;
     bool overwriteExisting;
 
     bool[] landMask;
-    float[] distanceField;
-    float[] oneDimensionalInput;
-    float[] oneDimensionalOutput;
+    double[] distanceField;
+    double[] oneDimensionalInput;
+    double[] oneDimensionalOutput;
     int[] envelopeIndices;
-    float[] envelopeIntersections;
+    double[] envelopeIntersections;
 
     [MenuItem("Custom/GIS/Generate Shore Distance & Gradient")]
     public static void ShowWindow()
@@ -108,7 +107,7 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
             EditorUtility.DisplayProgressBar("Generate Shore Field", "Converting distances...", 0.8f);
             ConvertSquaredDistancesToDistances(pixelCount);
             var maxDistance = GetMaxDistance(pixelCount);
-            var distanceEncodeMax = Mathf.Min(maxDistance, distanceEncodeMaxPixels);
+            var distanceEncodeMax = Math.Min(maxDistance, distanceEncodeMaxPixels);
 
             if (overwriteExisting)
             {
@@ -120,7 +119,7 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
             if (exportMode == ShoreFieldExportMode.Packed)
             {
                 WritePackedTexturePng(width, height, packedPath, distanceEncodeMax);
-                WritePackedMetadataJson(width, height, packedJsonPath, maxDistance, distanceEncodeMax);
+                WritePackedMetadataJson(width, height, packedJsonPath, (float)maxDistance, (float)distanceEncodeMax);
                 primaryAsset = AssetDatabase.LoadAssetAtPath<Texture2D>(packedPath);
             }
             else
@@ -254,16 +253,16 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
 
         if (distanceField == null || distanceField.Length != pixelCount)
         {
-            distanceField = new float[pixelCount];
+            distanceField = new double[pixelCount];
         }
 
         var maxDimension = Mathf.Max(width, height);
         if (oneDimensionalInput == null || oneDimensionalInput.Length != maxDimension)
         {
-            oneDimensionalInput = new float[maxDimension];
-            oneDimensionalOutput = new float[maxDimension];
+            oneDimensionalInput = new double[maxDimension];
+            oneDimensionalOutput = new double[maxDimension];
             envelopeIndices = new int[maxDimension];
-            envelopeIntersections = new float[maxDimension + 1];
+            envelopeIntersections = new double[maxDimension + 1];
         }
     }
 
@@ -318,21 +317,15 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
             return false;
         }
 
-        var format = texture.format;
-        if (format == TextureFormat.R16)
-        {
-            return true;
-        }
-
-        var expectedBytes = (long)width * height * sizeof(ushort);
-        return (long)texture.GetRawTextureData<byte>().Length == expectedBytes;
+        return texture.format == TextureFormat.R16;
     }
 
     void BuildDistanceField(int width, int height)
     {
+        var infiniteDistance = GetDistanceTransformSentinelSquared(width, height);
         for (var i = 0; i < distanceField.Length; i++)
         {
-            distanceField[i] = landMask[i] ? 0f : InfiniteDistance;
+            distanceField[i] = landMask[i] ? 0d : infiniteDistance;
         }
 
         for (var x = 0; x < width; x++)
@@ -379,12 +372,19 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
         }
     }
 
-    void DistanceTransform1D(float[] input, int length)
+    static double GetDistanceTransformSentinelSquared(int width, int height)
+    {
+        var maxDx = Math.Max(0, width - 1);
+        var maxDy = Math.Max(0, height - 1);
+        return (double)maxDx * maxDx + (double)maxDy * maxDy + 1d;
+    }
+
+    void DistanceTransform1D(double[] input, int length)
     {
         var k = 0;
         envelopeIndices[0] = 0;
-        envelopeIntersections[0] = float.NegativeInfinity;
-        envelopeIntersections[1] = float.PositiveInfinity;
+        envelopeIntersections[0] = double.NegativeInfinity;
+        envelopeIntersections[1] = double.PositiveInfinity;
 
         for (var q = 1; q < length; q++)
         {
@@ -398,7 +398,7 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
             k++;
             envelopeIndices[k] = q;
             envelopeIntersections[k] = s;
-            envelopeIntersections[k + 1] = float.PositiveInfinity;
+            envelopeIntersections[k + 1] = double.PositiveInfinity;
         }
 
         k = 0;
@@ -414,22 +414,22 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
         }
     }
 
-    static float Intersection(int q, int vk, float[] input)
+    static double Intersection(int q, int vk, double[] input)
     {
-        return ((input[q] + q * q) - (input[vk] + vk * vk)) / (2f * (q - vk));
+        return ((input[q] + (double)q * q) - (input[vk] + (double)vk * vk)) / (2d * (q - vk));
     }
 
     void ConvertSquaredDistancesToDistances(int pixelCount)
     {
         for (var i = 0; i < pixelCount; i++)
         {
-            distanceField[i] = Mathf.Sqrt(distanceField[i]);
+            distanceField[i] = Math.Sqrt(distanceField[i]);
         }
     }
 
-    float GetMaxDistance(int pixelCount)
+    double GetMaxDistance(int pixelCount)
     {
-        var maxDistance = 0f;
+        var maxDistance = 0d;
         for (var i = 0; i < pixelCount; i++)
         {
             if (distanceField[i] > maxDistance)
@@ -441,14 +441,14 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
         return maxDistance;
     }
 
-    void WritePackedTexturePng(int width, int height, string assetPath, float maxDistance)
+    void WritePackedTexturePng(int width, int height, string assetPath, double maxDistance)
     {
         var pixels = new Color32[checked(width * height)];
         FillPackedTexturePixels(pixels, width, height, maxDistance);
         WritePngTexture(assetPath, width, height, pixels, TextureFormat.RGB24);
     }
 
-    void WriteDistanceTexturePng(int width, int height, string assetPath, float maxDistance)
+    void WriteDistanceTexturePng(int width, int height, string assetPath, double maxDistance)
     {
         var pixels = new Color32[checked(width * height)];
         FillDistanceTexturePixels(pixels, width, height, maxDistance);
@@ -462,7 +462,7 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
         WritePngTexture(assetPath, width, height, pixels, TextureFormat.RGB24);
     }
 
-    void FillPackedTexturePixels(Color32[] pixels, int width, int height, float maxDistance)
+    void FillPackedTexturePixels(Color32[] pixels, int width, int height, double maxDistance)
     {
         for (var y = 0; y < height; y++)
         {
@@ -487,7 +487,7 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
         }
     }
 
-    void FillDistanceTexturePixels(Color32[] pixels, int width, int height, float maxDistance)
+    void FillDistanceTexturePixels(Color32[] pixels, int width, int height, double maxDistance)
     {
         for (var y = 0; y < height; y++)
         {
@@ -573,14 +573,15 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
         AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
     }
 
-    static byte EncodeNormalizedByte(float value, float maxValue)
+    static byte EncodeNormalizedByte(double value, double maxValue)
     {
-        if (maxValue <= 0f)
+        if (maxValue <= 0d)
         {
             return 0;
         }
 
-        return (byte)Mathf.Clamp(Mathf.RoundToInt(Mathf.Min(value, maxValue) / maxValue * 255f), 0, 255);
+        var normalized = Math.Min(value, maxValue) / maxValue * 255d;
+        return (byte)Mathf.Clamp((int)Math.Round(normalized), 0, 255);
     }
 
     static byte EncodeSignedUnitByte(float value)
@@ -623,12 +624,12 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
 
         var dx = x == 0 ? right - distanceField[index]
             : x == width - 1 ? distanceField[index] - left
-            : (right - left) * 0.5f;
+            : (right - left) * 0.5d;
         var dy = y == 0 ? up - distanceField[index]
             : y == height - 1 ? distanceField[index] - down
-            : (up - down) * 0.5f;
+            : (up - down) * 0.5d;
 
-        var gradient = new Vector2(dx, dy);
+        var gradient = new Vector2((float)dx, (float)dy);
         if (gradient.sqrMagnitude <= GradientMagnitudeEpsilon * GradientMagnitudeEpsilon)
         {
             return Vector2.zero;

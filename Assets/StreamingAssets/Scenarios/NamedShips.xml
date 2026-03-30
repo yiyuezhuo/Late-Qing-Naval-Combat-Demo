@@ -6737,4 +6737,56 @@ https://en.wikipedia.org/wiki/Russian_battleship_Oryol
 https://en.wikipedia.org/wiki/Russian_battleship_Oslyabya</remark>
   <objectId>6086a75d-86dd-484f-bd45-9dccc479ee86</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>0063382d-2b69-44cf-a252-1103ba061669</shipClassObjectId>
+  <name>
+   <english>Sissoi Veliki (1905)</english>
+   <japanese>シソイ・ヴェリキィー (1905)</japanese>
+   <chineseSimplified>西索伊·维利基 (1905)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>d708309c-f320-47fa-8191-a3831091b752</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Сисой Великий
+
+https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
+  <objectId>f5a986af-fcf7-446e-93f1-8d6b9aab09ac</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>21c53e76-72e5-40d4-a362-a58985e94a62</shipClassObjectId>
+  <name>
+   <english>Navarin(1905)</english>
+   <japanese>ナヴァリン(1905)</japanese>
+   <chineseSimplified>纳瓦林(1905)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>67c406d2-12c8-4afe-9aaf-b358ffb1a0df</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Наварин
+
+https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
+  <objectId>5c5654d7-bfc8-4ece-b3b3-9c14c45fb6b0</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

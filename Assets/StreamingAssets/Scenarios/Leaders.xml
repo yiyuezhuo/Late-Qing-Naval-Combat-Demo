@@ -4291,4 +4291,48 @@ https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D0%B4%D0%B8%D0%BE%D0%BD%D0%BE%D0%B2,_
 https://en.wikipedia.org/wiki/Vladimir_Baer</remark>
   <objectId>ca9c5e84-af8a-4891-8c4e-dc3321e7d568</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Manuil Ozerov</english>
+   <japanese>マヌイル・オゼロフ</japanese>
+   <chineseSimplified>马努伊尔·奥泽罗夫</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Ozerov_Manuil_Vasilevich.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Озеров, Мануил Васильевич
+
+https://en.wikipedia.org/wiki/Manuil_Ozerov</remark>
+  <objectId>d708309c-f320-47fa-8191-a3831091b752</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Bruno von Vietinghoff</english>
+   <japanese>ブルーノ・フォン・フィーティングホフ</japanese>
+   <chineseSimplified>布鲁诺·冯·菲廷霍夫</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Bruno von Vietinghoff.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Фитингоф, Бруно Александрович фон
+
+https://en.wikipedia.org/wiki/Bruno_von_Vietinghoff</remark>
+  <objectId>67c406d2-12c8-4afe-9aaf-b358ffb1a0df</objectId>
+ </Leader>
 </ArrayOfLeader>

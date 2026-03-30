@@ -81,3 +81,8 @@ Assets/StreamingAssets/Manuals
 
 Assets/AddressableAssetsData/link.xml
 Assets/AddressableAssetsData/link.xml.meta
+
+# Ignore GIS large shore field data
+
+Assets/Textures/NavalCombat/GIS/*_shoreField.*
+Assets/Textures/NavalCombat/GIS/*_shoreRuntime.*

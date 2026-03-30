@@ -76,6 +76,8 @@ public class UnityWebRequestImageReader
     {
         taskMap.Clear();
         activingTasks.Clear();
+
+        Resources.UnloadUnusedAssets();
     }
 
     public StyleBackground FetchStyleBackground(string path)

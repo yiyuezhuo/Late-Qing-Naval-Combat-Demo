@@ -1,0 +1,10 @@
+{
+    "exportMode": "Packed",
+    "width": 9840,
+    "height": 9600,
+    "landThreshold": 0.0,
+    "maxDistancePixels": 2700.0,
+    "distanceEncodeMaxPixels": 255.0,
+    "distanceEncoding": "8-bit linear encoding over [0, distanceEncodeMaxPixels]; values above that range are clamped to 255",
+    "gradientEncoding": "signed unit gradient mapped to 0..1; decode by value/255 * 2 - 1"
+}

@@ -135,10 +135,11 @@ Shader "Unlit/Earth0_RTW_like2"
                 if(_ShowShoreDistance > 0.5)
                 {
                     // float distance01 = saturate(shore.r);
-                    float distance01 = 20 * shore.r;
-                    float nearShore = 1 - distance01;
+                    float distance01 = 50 * shore.r;
+                    // float nearShore = 1 - distance01;
                     // float3 distanceColor = lerp(float3(0.05, 0.2, 0.8), float3(1.0, 0.35, 0.0), nearShore);
-                    float3 distanceColor = lerp(float3(0.0, 0.0, 0.0), float3(1.0, 1, 1), nearShore);
+                    // float3 distanceColor = lerp(float3(0.0, 0.0, 0.0), float3(1.0, 1, 1), nearShore);
+                    float3 distanceColor = lerp(float3(0.0, 0.0, 0.0), float3(1.0, 1, 1), distance01);
                     overlayColor += distanceColor;
                     overlayCount += 1;
                 }

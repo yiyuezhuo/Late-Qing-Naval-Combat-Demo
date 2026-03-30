@@ -9,9 +9,12 @@ namespace NavalCombatCore
 {
     public class ObstacleAvoidChecker
     {
-        const float ROIShorePreviewSeconds = 90f;
+        // const float ROIShorePreviewSeconds = 90f;
+        const float ROIShorePreviewSeconds = 60f;
         const float ROIShoreHardClearancePixels = 1.5f;
-        const float ROIShoreInfluenceDistancePixels = 10f;
+        // const float ROIShoreInfluenceDistancePixels = 10f;
+        // const float ROIShoreInfluenceDistancePixels = 5f;
+        const float ROIShoreInfluenceDistancePixels = 2.5f;
         const float ROIShoreGradientEpsilon = 1e-4f;
 
         // Argments

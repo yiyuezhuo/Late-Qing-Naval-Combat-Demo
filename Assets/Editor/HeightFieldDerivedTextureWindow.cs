@@ -13,10 +13,10 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
 {
     const float InfiniteDistance = 1e20f;
     const float GradientMagnitudeEpsilon = 1e-5f;
-    const string RuntimeBinaryMagic = "SFD1";
 
     Texture2D sourceHeightTexture;
     float landThreshold = 0f;
+    float distanceEncodeMaxPixels = 64f;
     ShoreFieldExportMode exportMode = ShoreFieldExportMode.Packed;
     bool overwriteExisting;
 
@@ -42,14 +42,15 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
 
         sourceHeightTexture = (Texture2D)EditorGUILayout.ObjectField("Source Height Texture", sourceHeightTexture, typeof(Texture2D), false);
         landThreshold = EditorGUILayout.FloatField("Land Threshold", landThreshold);
+        distanceEncodeMaxPixels = Mathf.Max(1f, EditorGUILayout.FloatField("Distance Encode Max Pixels", distanceEncodeMaxPixels));
         exportMode = (ShoreFieldExportMode)EditorGUILayout.EnumPopup("Export Mode", exportMode);
         overwriteExisting = EditorGUILayout.Toggle("Overwrite Existing", overwriteExisting);
 
         EditorGUILayout.Space();
         EditorGUILayout.HelpBox(
             exportMode == ShoreFieldExportMode.Packed
-                ? "Always exports a compact runtime binary plus preview PNGs. Packed preview PNG: R=normalized distance, G=gradX mapped to 0..1, B=gradY mapped to 0..1."
-                : "Always exports a compact runtime binary plus preview PNGs. Separate preview PNGs: one grayscale distance PNG and one gradient visualization PNG.",
+                ? "Exports packed preview PNG + metadata JSON. Distance PNG encoding preserves near-shore precision by linearly encoding only the first N pixels and saturating beyond that range."
+                : "Exports separate preview PNGs. Distance PNG encoding preserves near-shore precision by linearly encoding only the first N pixels and saturating beyond that range.",
             MessageType.Info);
 
         using (new EditorGUI.DisabledScope(sourceHeightTexture == null))
@@ -83,11 +84,11 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
             var pixelCount = checked(width * height);
 
             var packedPath = $"{directory}/{fileName}_shoreField.png";
+            var packedJsonPath = $"{directory}/{fileName}_shoreField.json";
             var distancePath = $"{directory}/{fileName}_shoreDistance.png";
             var gradientPath = $"{directory}/{fileName}_shoreGradient.png";
-            var runtimeBinaryPath = $"{directory}/{fileName}_shoreRuntime.bytes";
 
-            if (!ValidateOutputTargets(packedPath, distancePath, gradientPath, runtimeBinaryPath))
+            if (!ValidateOutputTargets(packedPath, packedJsonPath, distancePath, gradientPath))
             {
                 return;
             }
@@ -107,23 +108,24 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
             EditorUtility.DisplayProgressBar("Generate Shore Field", "Converting distances...", 0.8f);
             ConvertSquaredDistancesToDistances(pixelCount);
             var maxDistance = GetMaxDistance(pixelCount);
+            var distanceEncodeMax = Mathf.Min(maxDistance, distanceEncodeMaxPixels);
 
             if (overwriteExisting)
             {
-                DeleteExistingAssets(packedPath, distancePath, gradientPath, runtimeBinaryPath);
+                DeleteExistingAssets(packedPath, packedJsonPath, distancePath, gradientPath);
             }
 
             UnityEngine.Object primaryAsset;
             EditorUtility.DisplayProgressBar("Generate Shore Field", "Writing output textures...", 0.9f);
-            WriteRuntimeBinary(width, height, runtimeBinaryPath, maxDistance);
             if (exportMode == ShoreFieldExportMode.Packed)
             {
-                WritePackedTexturePng(width, height, packedPath, maxDistance);
+                WritePackedTexturePng(width, height, packedPath, distanceEncodeMax);
+                WritePackedMetadataJson(width, height, packedJsonPath, maxDistance, distanceEncodeMax);
                 primaryAsset = AssetDatabase.LoadAssetAtPath<Texture2D>(packedPath);
             }
             else
             {
-                WriteDistanceTexturePng(width, height, distancePath, maxDistance);
+                WriteDistanceTexturePng(width, height, distancePath, distanceEncodeMax);
                 WriteGradientTexturePng(width, height, gradientPath);
                 primaryAsset = AssetDatabase.LoadAssetAtPath<Texture2D>(distancePath);
             }
@@ -176,16 +178,11 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
         return true;
     }
 
-    bool ValidateOutputTargets(string packedPath, string distancePath, string gradientPath, string runtimeBinaryPath)
+    bool ValidateOutputTargets(string packedPath, string packedJsonPath, string distancePath, string gradientPath)
     {
-        if (AssetExistsAndCannotOverwrite(runtimeBinaryPath))
-        {
-            return false;
-        }
-
         if (exportMode == ShoreFieldExportMode.Packed)
         {
-            if (AssetExistsAndCannotOverwrite(packedPath))
+            if (AssetExistsAndCannotOverwrite(packedPath) || AssetExistsAndCannotOverwrite(packedJsonPath))
             {
                 return false;
             }
@@ -217,13 +214,12 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
         return true;
     }
 
-    void DeleteExistingAssets(string packedPath, string distancePath, string gradientPath, string runtimeBinaryPath)
+    void DeleteExistingAssets(string packedPath, string packedJsonPath, string distancePath, string gradientPath)
     {
-        DeleteAssetIfExists(runtimeBinaryPath);
-
         if (exportMode == ShoreFieldExportMode.Packed)
         {
             DeleteAssetIfExists(packedPath);
+            DeleteAssetIfExists(packedJsonPath);
             return;
         }
 
@@ -559,36 +555,21 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
         ConfigureTextureImporter(assetPath);
     }
 
-    void WriteRuntimeBinary(int width, int height, string assetPath, float maxDistance)
+    void WritePackedMetadataJson(int width, int height, string assetPath, float maxDistance, float distanceEncodeMax)
     {
-        using var stream = new FileStream(AssetPathToAbsolutePath(assetPath), FileMode.Create, FileAccess.Write, FileShare.None);
-        using var writer = new BinaryWriter(stream);
-
-        writer.Write(RuntimeBinaryMagic);
-        writer.Write(width);
-        writer.Write(height);
-        writer.Write(landThreshold);
-        writer.Write(maxDistance);
-
-        for (var y = 0; y < height; y++)
+        var metadata = new ShoreFieldPackedMetadata()
         {
-            var rowStart = y * width;
-            for (var x = 0; x < width; x++)
-            {
-                var index = rowStart + x;
-                var gradient = ComputeGradient(x, y, width, height, index);
-                writer.Write(EncodeRuntimeDistance(distanceField[index], maxDistance));
-                writer.Write(EncodeRuntimeGradient(gradient.x));
-                writer.Write(EncodeRuntimeGradient(gradient.y));
-            }
+            exportMode = "Packed",
+            width = width,
+            height = height,
+            landThreshold = landThreshold,
+            maxDistancePixels = maxDistance,
+            distanceEncodeMaxPixels = distanceEncodeMax,
+            distanceEncoding = "8-bit linear encoding over [0, distanceEncodeMaxPixels]; values above that range are clamped to 255",
+            gradientEncoding = "signed unit gradient mapped to 0..1; decode by value/255 * 2 - 1"
+        };
 
-            if ((y & 127) == 0)
-            {
-                var progress = Mathf.Lerp(0.82f, 0.9f, y / Mathf.Max(1f, height - 1f));
-                EditorUtility.DisplayProgressBar("Generate Shore Field", "Writing runtime binary...", progress);
-            }
-        }
-
+        File.WriteAllText(AssetPathToAbsolutePath(assetPath), JsonUtility.ToJson(metadata, true));
         AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
     }
 
@@ -599,29 +580,13 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
             return 0;
         }
 
-        return (byte)Mathf.Clamp(Mathf.RoundToInt(value / maxValue * 255f), 0, 255);
+        return (byte)Mathf.Clamp(Mathf.RoundToInt(Mathf.Min(value, maxValue) / maxValue * 255f), 0, 255);
     }
 
     static byte EncodeSignedUnitByte(float value)
     {
         var normalized = value * 0.5f + 0.5f;
         return (byte)Mathf.Clamp(Mathf.RoundToInt(normalized * 255f), 0, 255);
-    }
-
-    static ushort EncodeRuntimeDistance(float value, float maxDistance)
-    {
-        if (value <= 0f || maxDistance <= 0f)
-        {
-            return 0;
-        }
-
-        var encoded = Mathf.Clamp(Mathf.RoundToInt(value / maxDistance * ushort.MaxValue), 1, ushort.MaxValue);
-        return (ushort)encoded;
-    }
-
-    static sbyte EncodeRuntimeGradient(float value)
-    {
-        return (sbyte)Mathf.Clamp(Mathf.RoundToInt(value * 127f), -127, 127);
     }
 
     static void ConfigureTextureImporter(string assetPath)
@@ -670,5 +635,18 @@ public class HeightFieldDerivedTextureWindow : EditorWindow
         }
 
         return gradient.normalized;
+    }
+
+    [Serializable]
+    class ShoreFieldPackedMetadata
+    {
+        public string exportMode;
+        public int width;
+        public int height;
+        public float landThreshold;
+        public float maxDistancePixels;
+        public float distanceEncodeMaxPixels;
+        public string distanceEncoding;
+        public string gradientEncoding;
     }
 }

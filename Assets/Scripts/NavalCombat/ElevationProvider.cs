@@ -19,6 +19,7 @@ class ShoreFieldMetadata
     public int height;
     public float landThreshold;
     public float maxDistancePixels;
+    public float distanceEncodeMaxPixels;
 }
 #pragma warning restore CS0649
 
@@ -54,6 +55,7 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
     int roiShoreFieldHeight;
     float roiShoreFieldLandThreshold;
     float roiShoreFieldMaxDistance;
+    float roiShoreFieldDistanceDecodeMax;
     bool roiShoreFieldLoaded;
     bool roiShoreFieldDimensionsValid = true;
     bool roiShoreFieldWarningLogged;
@@ -237,7 +239,7 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
 
         return new ShoreFieldSample
         {
-            distancePixels = pixel.r / DistanceTextureDecodeScale * roiShoreFieldMaxDistance,
+            distancePixels = pixel.r / DistanceTextureDecodeScale * roiShoreFieldDistanceDecodeMax,
             gradient = gradient
         };
     }
@@ -271,6 +273,9 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
 
             roiShoreFieldLandThreshold = metadata.landThreshold;
             roiShoreFieldMaxDistance = metadata.maxDistancePixels;
+            roiShoreFieldDistanceDecodeMax = metadata.distanceEncodeMaxPixels > 0f
+                ? metadata.distanceEncodeMaxPixels
+                : metadata.maxDistancePixels;
             roiShoreFieldWidth = roiShoreFieldTexture.width;
             roiShoreFieldHeight = roiShoreFieldTexture.height;
 

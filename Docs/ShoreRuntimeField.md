@@ -61,16 +61,18 @@ Important fields:
 - `height`
 - `landThreshold`
 - `maxDistancePixels`
+- `distanceEncodeMaxPixels`
 - `exportMode`
 
-The runtime should treat `maxDistancePixels` as the authoritative distance decode scale.
+The runtime should treat `distanceEncodeMaxPixels` as the authoritative decode scale for the packed PNG distance channel.
+`maxDistancePixels` remains the true maximum distance found in the source field and is retained as metadata.
 
 ## Decode Rules
 
 ### Distance
 
 ```text
-distancePixels = R / 255.0 * maxDistancePixels
+distancePixels = R / 255.0 * distanceEncodeMaxPixels
 ```
 
 Interpretation:
@@ -78,6 +80,7 @@ Interpretation:
 - `distancePixels == 0` means land
 - `distancePixels > 0` means water
 - the unit is pixel distance in the ROI raster
+- distances larger than `distanceEncodeMaxPixels` are intentionally clamped to the same saturated value in the packed PNG
 
 ### Gradient
 

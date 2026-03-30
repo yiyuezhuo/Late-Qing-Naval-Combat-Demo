@@ -121,6 +121,20 @@ public class GamePreference
         set => SphereController.useSeaTexture = value;
     }
 
+    [CreateProperty]
+    public bool showROIShoreDistanceField
+    {
+        get => SphereController.showROIShoreDistanceField;
+        set => SphereController.showROIShoreDistanceField = value;
+    }
+
+    [CreateProperty]
+    public bool showROIShoreGradientField
+    {
+        get => SphereController.showROIShoreGradientField;
+        set => SphereController.showROIShoreGradientField = value;
+    }
+
     // [CreateProperty]
     // public bool earthDarkThemeEnabled => SuperGameState.Instance.IsInNavalGame();
 
@@ -382,9 +396,12 @@ public class GamePreference
         p.unitLabelDisplayMode = Enum.IsDefined(typeof(UnitLabelDisplayMode), unitLabelDisplayModeRaw)
             ? (UnitLabelDisplayMode)unitLabelDisplayModeRaw
             : UnitLabelDisplayMode.Unit;
+        p.showROIShoreDistanceField = PlayerPrefs.GetInt("showROIShoreDistanceField", 0) == 1;
+        p.showROIShoreGradientField = PlayerPrefs.GetInt("showROIShoreGradientField", 0) == 1;
         p.enable3DBase = PlayerPrefs.GetInt("enable3DBase", 1) == 1;
         p.enableGunneryShellVisual = PlayerPrefs.GetInt("enableGunneryShellVisual", 1) == 1;
         p.gunneryShellRadiusScaleCoef = PlayerPrefs.GetFloat("gunneryShellRadiusScaleCoef", 12f);
+        CoreParameter.Instance.enableObstacleAvoidanceForPlayerControl = PlayerPrefs.GetInt("enableObstacleAvoidanceForPlayerControl", 1) == 1;
         CoreParameter.Instance.enableROIShoreFieldAvoidance = PlayerPrefs.GetInt("enableROIShoreFieldAvoidance", 1) == 1;
         // CoreParameter.Instance.noPenetrationDamageCoef = Mathf.Clamp01(PlayerPrefs.GetFloat("noPenetrationDamageCoef", 0.25f));
     }
@@ -398,9 +415,12 @@ public class GamePreference
         PlayerPrefs.SetInt("isInEditMode", isInEditMode ? 1 : 0);
         PlayerPrefs.SetInt("rangeRingDisplayMode", (int)rangeRingDisplayMode);
         PlayerPrefs.SetInt("unitLabelDisplayMode", (int)unitLabelDisplayMode);
+        PlayerPrefs.SetInt("showROIShoreDistanceField", showROIShoreDistanceField ? 1 : 0);
+        PlayerPrefs.SetInt("showROIShoreGradientField", showROIShoreGradientField ? 1 : 0);
         PlayerPrefs.SetInt("enable3DBase", enable3DBase ? 1 : 0);
         PlayerPrefs.SetInt("enableGunneryShellVisual", enableGunneryShellVisual ? 1 : 0);
         PlayerPrefs.SetFloat("gunneryShellRadiusScaleCoef", gunneryShellRadiusScaleCoef);
+        PlayerPrefs.SetInt("enableObstacleAvoidanceForPlayerControl", CoreParameter.Instance.enableObstacleAvoidanceForPlayerControl ? 1 : 0);
         PlayerPrefs.SetInt("enableROIShoreFieldAvoidance", CoreParameter.Instance.enableROIShoreFieldAvoidance ? 1 : 0);
         // PlayerPrefs.SetFloat("noPenetrationDamageCoef", Mathf.Clamp01(CoreParameter.Instance.noPenetrationDamageCoef));
 
@@ -471,6 +491,13 @@ namespace NavalCombatCore
         {
             get => ObstacleAvoidChecker.enableROIShoreFieldAvoidance;
             set => ObstacleAvoidChecker.enableROIShoreFieldAvoidance = value;
+        }
+
+        [CreateProperty]
+        public bool enableObstacleAvoidanceForPlayerControl
+        {
+            get => NavalGameState.enableObstacleAvoidanceForPlayerControl;
+            set => NavalGameState.enableObstacleAvoidanceForPlayerControl = value;
         }
 
         // [CreateProperty]

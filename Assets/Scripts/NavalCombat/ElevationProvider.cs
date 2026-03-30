@@ -1,11 +1,8 @@
-using UnityEngine;
-using NavalCombatCore;
 using System;
 using System.Collections.Generic;
-using System.Collections;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using System.IO;
+using NavalCombatCore;
+using Unity.Collections;
+using UnityEngine;
 
 public struct ShoreFieldSample
 {
@@ -13,14 +10,27 @@ public struct ShoreFieldSample
     public Vector2 gradient;
 }
 
+#pragma warning disable CS0649
+[Serializable]
+class ShoreFieldMetadata
+{
+    public string exportMode = string.Empty;
+    public int width;
+    public int height;
+    public float landThreshold;
+    public float maxDistancePixels;
+}
+#pragma warning restore CS0649
+
 // Elevation Service Dependency Injector
 public class ElevationProvider : MonoBehaviour, IElevationProvider
 {
-    const string ROIShoreRuntimeMagic = "SFD1";
-    const float GradientDecodeScale = 127f;
+    const float DistanceTextureDecodeScale = 255f;
 
     public Texture2D baseHeightTexture;
     public Texture2D roiHeightTexture;
+    public Texture2D roiShoreFieldTexture;
+    public TextAsset roiShoreFieldMetadataJson;
 
     // _ROILatDeg0 ("ROI Latitude Deg 0", Float) = 15 // 30
     // _ROILatDeg1 ("ROI Latitude Deg 1", Float) = 55 // 41
@@ -32,34 +42,32 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
     public float roiLongitudeDeg1 = 146;
     public bool useROI = true;
 
-    Unity.Collections.NativeArray<ushort> baseHeightTextureRawArray;
-    Unity.Collections.NativeArray<ushort> roiHeightTextureRawArray;
+    NativeArray<ushort> baseHeightTextureRawArray;
+    NativeArray<ushort> roiHeightTextureRawArray;
+    NativeArray<Color32> roiShoreFieldTextureRawArray;
+    Color32[] roiShoreFieldPixelsFallback;
+    bool roiShoreFieldUseRawArray;
 
     public MeshRenderer meshRenderer;
 
-    // public AssetReference baseHeightTextureAssetReference;
-    // public AssetReference roiHeightTextureAssetReference;
-    public TextAsset roiShoreRuntimeBytes;
-
-    ushort[] roiShoreRuntimeDistanceData;
-    sbyte[] roiShoreRuntimeGradientXData;
-    sbyte[] roiShoreRuntimeGradientYData;
-    int roiShoreRuntimeWidth;
-    int roiShoreRuntimeHeight;
-    float roiShoreRuntimeLandThreshold;
-    float roiShoreRuntimeMaxDistance;
-    bool roiShoreRuntimeLoaded;
-    bool roiShoreRuntimeDimensionsValid = true;
-    bool roiShoreRuntimeWarningLogged;
+    int roiShoreFieldWidth;
+    int roiShoreFieldHeight;
+    float roiShoreFieldLandThreshold;
+    float roiShoreFieldMaxDistance;
+    bool roiShoreFieldLoaded;
+    bool roiShoreFieldDimensionsValid = true;
+    bool roiShoreFieldWarningLogged;
 
     public void Awake()
     {
-        // Assume placeholder existence of placeholder texture
         baseHeightTextureRawArray = baseHeightTexture.GetRawTextureData<ushort>();
         roiHeightTextureRawArray = roiHeightTexture.GetRawTextureData<ushort>();
 
-        // ServiceLocator.Register<IElevationProvider>(this);
         ElevationService.Instance.elevationProvider = this;
+
+        ApplyShaderTexturesAndParams();
+        TryLoadROIShoreField();
+        ValidateROIShoreFieldDimensions();
 
         var testLatLonList = new List<LatLon>()
         {
@@ -71,56 +79,55 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
         {
             Debug.Log(latLon + ": " + ElevationService.Instance.GetElevation(latLon));
         }
-
-        // AssetReferenceManager.Instance.LoadTexture2D(baseHeightTextureAssetReference, SetBaseTexture);
-        // AssetReferenceManager.Instance.LoadTexture2D(roiHeightTextureAssetReference, SetROITexture);
-
-        TryLoadROIShoreRuntime();
-        ValidateROIShoreRuntimeDimensions();
-
-        // FetchHighPrecisionTextures();
     }
 
-    private void OnDestroy()
+    public void SetBaseTexture(Texture2D newBaseHeightTexture)
     {
-        // if (baseHeightTextureAssetReference != null && baseHeightTextureAssetReference.IsValid())
-        //     baseHeightTextureAssetReference.ReleaseAsset();
-
-        // if (roiHeightTextureAssetReference != null && roiHeightTextureAssetReference.IsValid())
-        //     roiHeightTextureAssetReference.ReleaseAsset();
-    }
-
-    // void FetchHighPrecisionTextures() // TODO: This method should not be placed in "ElevationProvider" though.
-    // {
-    //     UnityWebRequestImageReader.Instance.RequestIfNotRequestedYet(new ImageFetchTask()
-    //     {
-    //         path = Application.streamingAssetsPath + "/Pictures/GIS/full_uint16_16384x8192.png",
-    //         continueCallback = SetBaseTexture
-    //     });
-
-    //     UnityWebRequestImageReader.Instance.RequestIfNotRequestedYet(new ImageFetchTask()
-    //     {
-    //         path = Application.streamingAssetsPath + "/Pictures/GIS/aoi_105_146_15_55_uint16_9840x9600.png",
-    //         continueCallback = SetROITexture
-    //     });
-    // }
-
-    public void SetBaseTexture(Texture2D baseHeightTexture)
-    {
-        this.baseHeightTexture = baseHeightTexture;
-        meshRenderer.material.SetTexture("_HeightTex", baseHeightTexture);
+        baseHeightTexture = newBaseHeightTexture;
         baseHeightTextureRawArray = baseHeightTexture.GetRawTextureData<ushort>();
+        ApplyShaderTexturesAndParams();
     }
 
-    public void SetROITexture(Texture2D roiHeightTexture)
+    public void SetROITexture(Texture2D newRoiHeightTexture)
     {
-        this.roiHeightTexture = roiHeightTexture;
-        meshRenderer.material.SetTexture("_HeightTexROI", roiHeightTexture);
+        roiHeightTexture = newRoiHeightTexture;
         roiHeightTextureRawArray = roiHeightTexture.GetRawTextureData<ushort>();
-        ValidateROIShoreRuntimeDimensions();
+        ApplyShaderTexturesAndParams();
+        ValidateROIShoreFieldDimensions();
     }
 
-    public ushort GetTextureArrayValue(Unity.Collections.NativeArray<ushort> arr, int width, int height, float lonMin, float lonMax, float latMin, float latMax, LatLon latLon)
+    public void SetROIShoreField(Texture2D newRoiShoreFieldTexture, TextAsset newRoiShoreFieldMetadataJson = null)
+    {
+        roiShoreFieldTexture = newRoiShoreFieldTexture;
+        if (newRoiShoreFieldMetadataJson != null)
+        {
+            roiShoreFieldMetadataJson = newRoiShoreFieldMetadataJson;
+        }
+
+        ApplyShaderTexturesAndParams();
+        TryLoadROIShoreField();
+        ValidateROIShoreFieldDimensions();
+    }
+
+    void ApplyShaderTexturesAndParams()
+    {
+        if (meshRenderer == null)
+        {
+            return;
+        }
+
+        var material = meshRenderer.material;
+        material.SetTexture("_HeightTex", baseHeightTexture);
+        material.SetTexture("_HeightTexROI", roiHeightTexture);
+        material.SetTexture("_ShoreFieldTexROI", roiShoreFieldTexture);
+        material.SetFloat("_ROILatDeg0", roiLatitudeDeg0);
+        material.SetFloat("_ROILatDeg1", roiLatitudeDeg1);
+        material.SetFloat("_ROILonDeg0", roiLongitudeDeg0);
+        material.SetFloat("_ROILonDeg1", roiLongitudeDeg1);
+        material.SetFloat("_UseROI", useROI ? 1f : 0f);
+    }
+
+    public ushort GetTextureArrayValue(NativeArray<ushort> arr, int width, int height, float lonMin, float lonMax, float latMin, float latMax, LatLon latLon)
     {
         var u = (latLon.LonDeg - lonMin) / (lonMax - lonMin);
         var v = (latLon.LatDeg - latMin) / (latMax - latMin);
@@ -134,16 +141,16 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
         return useROI && IsInROIRange(latLon);
     }
 
-    public bool HasValidROIShoreRuntime()
+    public bool HasValidROIShoreField()
     {
-        ValidateROIShoreRuntimeDimensions();
-        return roiShoreRuntimeLoaded && roiShoreRuntimeDimensionsValid;
+        ValidateROIShoreFieldDimensions();
+        return roiShoreFieldLoaded && roiShoreFieldDimensionsValid;
     }
 
     public bool TrySampleROIShoreField(LatLon latLon, out ShoreFieldSample sample)
     {
         sample = default;
-        if (!IsUsingROIForElevation(latLon) || !HasValidROIShoreRuntime())
+        if (!IsUsingROIForElevation(latLon) || !HasValidROIShoreField())
         {
             return false;
         }
@@ -176,17 +183,17 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
 
         var u = Mathf.Clamp01((latLon.LonDeg - roiLongitudeDeg0) / (roiLongitudeDeg1 - roiLongitudeDeg0));
         var v = Mathf.Clamp01((latLon.LatDeg - roiLatitudeDeg0) / (roiLatitudeDeg1 - roiLatitudeDeg0));
-        x = u * Mathf.Max(0, roiShoreRuntimeWidth - 1);
-        y = v * Mathf.Max(0, roiShoreRuntimeHeight - 1);
+        x = u * Mathf.Max(0, roiShoreFieldWidth - 1);
+        y = v * Mathf.Max(0, roiShoreFieldHeight - 1);
         return true;
     }
 
     ShoreFieldSample SampleROIShoreFieldBilinear(float x, float y)
     {
-        var x0 = Mathf.Clamp(Mathf.FloorToInt(x), 0, roiShoreRuntimeWidth - 1);
-        var y0 = Mathf.Clamp(Mathf.FloorToInt(y), 0, roiShoreRuntimeHeight - 1);
-        var x1 = Mathf.Min(x0 + 1, roiShoreRuntimeWidth - 1);
-        var y1 = Mathf.Min(y0 + 1, roiShoreRuntimeHeight - 1);
+        var x0 = Mathf.Clamp(Mathf.FloorToInt(x), 0, roiShoreFieldWidth - 1);
+        var y0 = Mathf.Clamp(Mathf.FloorToInt(y), 0, roiShoreFieldHeight - 1);
+        var x1 = Mathf.Min(x0 + 1, roiShoreFieldWidth - 1);
+        var y1 = Mathf.Min(y0 + 1, roiShoreFieldHeight - 1);
 
         var tx = Mathf.Clamp01(x - x0);
         var ty = Mathf.Clamp01(y - y0);
@@ -217,87 +224,128 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
 
     ShoreFieldSample DecodeROIShoreFieldSample(int x, int y)
     {
-        var index = y * roiShoreRuntimeWidth + x;
+        var index = y * roiShoreFieldWidth + x;
+        var pixel = GetROIShoreFieldPixel(index);
+
+        var gradient = new Vector2(
+            pixel.g / DistanceTextureDecodeScale * 2f - 1f,
+            pixel.b / DistanceTextureDecodeScale * 2f - 1f);
+        if (gradient.sqrMagnitude > 1f)
+        {
+            gradient.Normalize();
+        }
+
         return new ShoreFieldSample
         {
-            distancePixels = roiShoreRuntimeDistanceData[index] / (float)ushort.MaxValue * roiShoreRuntimeMaxDistance,
-            gradient = new Vector2(
-                roiShoreRuntimeGradientXData[index] / GradientDecodeScale,
-                roiShoreRuntimeGradientYData[index] / GradientDecodeScale)
+            distancePixels = pixel.r / DistanceTextureDecodeScale * roiShoreFieldMaxDistance,
+            gradient = gradient
         };
     }
 
-    void TryLoadROIShoreRuntime()
+    Color32 GetROIShoreFieldPixel(int index)
     {
-        roiShoreRuntimeLoaded = false;
-        roiShoreRuntimeDimensionsValid = true;
-        roiShoreRuntimeWarningLogged = false;
+        return roiShoreFieldUseRawArray ? roiShoreFieldTextureRawArray[index] : roiShoreFieldPixelsFallback[index];
+    }
 
-        if (roiShoreRuntimeBytes == null)
+    void TryLoadROIShoreField()
+    {
+        roiShoreFieldLoaded = false;
+        roiShoreFieldDimensionsValid = true;
+        roiShoreFieldWarningLogged = false;
+        roiShoreFieldUseRawArray = false;
+        roiShoreFieldPixelsFallback = null;
+
+        if (roiShoreFieldTexture == null || roiShoreFieldMetadataJson == null)
         {
             return;
         }
 
         try
         {
-            using var stream = new MemoryStream(roiShoreRuntimeBytes.bytes, false);
-            using var reader = new BinaryReader(stream);
-
-            var magic = reader.ReadString();
-            if (magic != ROIShoreRuntimeMagic)
+            var metadata = JsonUtility.FromJson<ShoreFieldMetadata>(roiShoreFieldMetadataJson.text);
+            if (metadata == null || metadata.maxDistancePixels < 0f)
             {
-                Debug.LogWarning($"ROI shore runtime magic mismatch: expected {ROIShoreRuntimeMagic}, got {magic}.");
+                Debug.LogWarning("ROI shore-field metadata is missing or invalid.");
                 return;
             }
 
-            roiShoreRuntimeWidth = reader.ReadInt32();
-            roiShoreRuntimeHeight = reader.ReadInt32();
-            roiShoreRuntimeLandThreshold = reader.ReadSingle();
-            roiShoreRuntimeMaxDistance = reader.ReadSingle();
+            roiShoreFieldLandThreshold = metadata.landThreshold;
+            roiShoreFieldMaxDistance = metadata.maxDistancePixels;
+            roiShoreFieldWidth = roiShoreFieldTexture.width;
+            roiShoreFieldHeight = roiShoreFieldTexture.height;
 
-            if (roiShoreRuntimeWidth <= 0 || roiShoreRuntimeHeight <= 0 || roiShoreRuntimeMaxDistance < 0f)
+            if (metadata.width > 0 && metadata.height > 0
+                && (metadata.width != roiShoreFieldWidth || metadata.height != roiShoreFieldHeight))
             {
-                Debug.LogWarning("ROI shore runtime file contains invalid dimensions or max distance.");
+                Debug.LogWarning(
+                    $"ROI shore-field metadata dimensions ({metadata.width}x{metadata.height}) do not match texture dimensions ({roiShoreFieldWidth}x{roiShoreFieldHeight}).");
+            }
+
+            if (!TryLoadROIShoreFieldPixels())
+            {
                 return;
             }
 
-            var pixelCount = checked(roiShoreRuntimeWidth * roiShoreRuntimeHeight);
-            roiShoreRuntimeDistanceData = new ushort[pixelCount];
-            roiShoreRuntimeGradientXData = new sbyte[pixelCount];
-            roiShoreRuntimeGradientYData = new sbyte[pixelCount];
-
-            for (var i = 0; i < pixelCount; i++)
-            {
-                roiShoreRuntimeDistanceData[i] = reader.ReadUInt16();
-                roiShoreRuntimeGradientXData[i] = reader.ReadSByte();
-                roiShoreRuntimeGradientYData[i] = reader.ReadSByte();
-            }
-
-            roiShoreRuntimeLoaded = true;
+            roiShoreFieldLoaded = true;
         }
         catch (Exception ex)
         {
-            Debug.LogWarning($"Failed to load ROI shore runtime bytes: {ex.Message}");
-            roiShoreRuntimeLoaded = false;
+            Debug.LogWarning($"Failed to load ROI shore-field texture data: {ex.Message}");
+            roiShoreFieldLoaded = false;
         }
     }
 
-    void ValidateROIShoreRuntimeDimensions()
+    bool TryLoadROIShoreFieldPixels()
     {
-        roiShoreRuntimeDimensionsValid = roiShoreRuntimeLoaded;
-        if (!roiShoreRuntimeLoaded || roiHeightTexture == null)
+        var pixelCount = checked(roiShoreFieldWidth * roiShoreFieldHeight);
+
+        try
+        {
+            roiShoreFieldTextureRawArray = roiShoreFieldTexture.GetRawTextureData<Color32>();
+            if (roiShoreFieldTextureRawArray.Length == pixelCount)
+            {
+                roiShoreFieldUseRawArray = true;
+                return true;
+            }
+        }
+        catch (Exception)
+        {
+        }
+
+        if (!roiShoreFieldTexture.isReadable)
+        {
+            Debug.LogWarning("ROI shore-field texture is not readable, so ROI shore-field avoidance will fall back to the legacy logic.");
+            return false;
+        }
+
+        var pixels = roiShoreFieldTexture.GetPixels32();
+        if (pixels == null || pixels.Length != pixelCount)
+        {
+            Debug.LogWarning("ROI shore-field texture pixel data size is invalid.");
+            return false;
+        }
+
+        roiShoreFieldPixelsFallback = pixels;
+        roiShoreFieldUseRawArray = false;
+        return true;
+    }
+
+    void ValidateROIShoreFieldDimensions()
+    {
+        roiShoreFieldDimensionsValid = roiShoreFieldLoaded;
+        if (!roiShoreFieldLoaded || roiHeightTexture == null)
         {
             return;
         }
 
-        roiShoreRuntimeDimensionsValid = roiShoreRuntimeWidth == roiHeightTexture.width
-            && roiShoreRuntimeHeight == roiHeightTexture.height;
-        if (!roiShoreRuntimeDimensionsValid && !roiShoreRuntimeWarningLogged)
+        roiShoreFieldDimensionsValid = roiShoreFieldWidth == roiHeightTexture.width
+            && roiShoreFieldHeight == roiHeightTexture.height;
+        if (!roiShoreFieldDimensionsValid && !roiShoreFieldWarningLogged)
         {
             Debug.LogWarning(
-                $"ROI shore runtime dimensions ({roiShoreRuntimeWidth}x{roiShoreRuntimeHeight}) do not match ROI height texture dimensions ({roiHeightTexture.width}x{roiHeightTexture.height}). " +
+                $"ROI shore-field texture dimensions ({roiShoreFieldWidth}x{roiShoreFieldHeight}) do not match ROI height texture dimensions ({roiHeightTexture.width}x{roiHeightTexture.height}). " +
                 "ROI shore-field avoidance will fall back to the legacy logic.");
-            roiShoreRuntimeWarningLogged = true;
+            roiShoreFieldWarningLogged = true;
         }
     }
 

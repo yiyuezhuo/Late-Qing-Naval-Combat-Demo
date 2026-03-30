@@ -4,6 +4,7 @@ Shader "Unlit/Earth0_RTW_like2"
     {
         _HeightTex ("Height Texture", 2D) = "white" {}
         _HeightTexROI ("Height Texture ROI", 2D) = "white" {}
+        _ShoreFieldTexROI ("Shore Field Texture ROI", 2D) = "black" {}
         _ROILatDeg0 ("ROI Latitude Deg 0", Float) = 15 // 30
         _ROILatDeg1 ("ROI Latitude Deg 1", Float) = 55 // 41
         _ROILonDeg0 ("ROI Longitude Deg 0", Float) = 105 // 116
@@ -20,6 +21,8 @@ Shader "Unlit/Earth0_RTW_like2"
         [Toggle] _UseROI ("Use ROI", Float) = 1
         [Toggle] _UseDark ("Use Dark", Float) = 0
         [Toggle] _UseSeaTex ("Use Sea Texture", Float) = 1
+        [Toggle] _ShowShoreDistance ("Show Shore Distance", Float) = 0
+        [Toggle] _ShowShoreGradient ("Show Shore Gradient", Float) = 0
         [Toggle] _UseSunLight ("Use Sun Light", Float) = 1
         _SunDirObj ("Sun Direction (Object Space)", Vector) = (0, 1, 0, 0)
         _NightBrightness ("Night Brightness", Range(0,1)) = 0.35
@@ -64,6 +67,7 @@ Shader "Unlit/Earth0_RTW_like2"
 
             sampler2D _HeightTex;
             sampler2D _HeightTexROI;
+            sampler2D _ShoreFieldTexROI;
 
             float _ROILatDeg0;
             float _ROILatDeg1;
@@ -82,6 +86,8 @@ Shader "Unlit/Earth0_RTW_like2"
             float _UseROI;
             float _UseDark;
             float _UseSeaTex;
+            float _ShowShoreDistance;
+            float _ShowShoreGradient;
             float _UseSunLight;
             float4 _SunDirObj;
             float _NightBrightness;
@@ -120,6 +126,37 @@ Shader "Unlit/Earth0_RTW_like2"
                 return h > 0 ? getLandColor(h) : getSeaColor(h, longLatDeg);
             }
 
+            float3 applyShoreFieldOverlay(float3 baseRgb, float2 texCoord)
+            {
+                float overlayCount = 0;
+                float3 overlayColor = 0;
+                float4 shore = tex2D(_ShoreFieldTexROI, texCoord);
+
+                if(_ShowShoreDistance > 0.5)
+                {
+                    // float distance01 = saturate(shore.r);
+                    float distance01 = 20 * shore.r;
+                    float nearShore = 1 - distance01;
+                    // float3 distanceColor = lerp(float3(0.05, 0.2, 0.8), float3(1.0, 0.35, 0.0), nearShore);
+                    float3 distanceColor = lerp(float3(0.0, 0.0, 0.0), float3(1.0, 1, 1), nearShore);
+                    overlayColor += distanceColor;
+                    overlayCount += 1;
+                }
+
+                if(_ShowShoreGradient > 0.5)
+                {
+                    overlayColor += float3(shore.g, shore.b, 0.5);
+                    overlayCount += 1;
+                }
+
+                if(overlayCount <= 0)
+                {
+                    return baseRgb;
+                }
+
+                return lerp(baseRgb, overlayColor / overlayCount, 0.85);
+            }
+
             v2f vert (appdata v)
             {
                 v2f o;
@@ -145,7 +182,9 @@ Shader "Unlit/Earth0_RTW_like2"
                 // float h;
                 float4 col;
                 // if(longLatDeg.x > _ROILatDeg0 && longLatDeg.x < _ROILatDeg1 && longLatDeg.y > _ROILonDeg0 && longLatDeg.y < _ROILonDeg1)
-                if(_UseROI && longLatDeg.x > _ROILonDeg0 && longLatDeg.x < _ROILonDeg1 && longLatDeg.y > _ROILatDeg0 && longLatDeg.y < _ROILatDeg1)
+                bool inROI = _UseROI && longLatDeg.x > _ROILonDeg0 && longLatDeg.x < _ROILonDeg1 && longLatDeg.y > _ROILatDeg0 && longLatDeg.y < _ROILatDeg1;
+                bool showShoreOverlay = _ShowShoreDistance > 0.5 || _ShowShoreGradient > 0.5;
+                if(inROI)
                 {
                     float longitudeDeg = longLatDeg[0]; // range [-PI, PI]
                     float latitudeDeg = longLatDeg[1]; // range [-PI/2, PI/2]
@@ -156,6 +195,10 @@ Shader "Unlit/Earth0_RTW_like2"
                     float2 texCoord = float2(u, v);
                     float h = tex2D(_HeightTexROI, texCoord);
                     col = getColor(h, longLatDeg);
+                    if(showShoreOverlay)
+                    {
+                        col.rgb = applyShoreFieldOverlay(col.rgb, texCoord);
+                    }
                 }
                 else
                 {

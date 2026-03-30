@@ -65,6 +65,8 @@ namespace NavalCombatCore
 
     public class NavalGameState : AbstractGameState
     {
+        public static bool enableObstacleAvoidanceForPlayerControl = true;
+
         struct ControlChainEdge
         {
             public ShipLog controlledShip;
@@ -529,6 +531,11 @@ namespace NavalCombatCore
                 && !s.IsLandBattery()
                 && s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic
             ).ToList();
+            var obstacleAvoidOperationalShipLogs = shipLogsOnMapList.Where(s =>
+                s.operationalState == ShipOperationalState.Operational
+                && !s.IsLandBattery()
+                && (enableObstacleAvoidanceForPlayerControl || s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic)
+            ).ToList();
 
             // tempSubjectLogs.Clear();
 
@@ -626,7 +633,7 @@ namespace NavalCombatCore
             // }
 
             // always mode
-            foreach (var shipLog in autoOperationalShipLogs)
+            foreach (var shipLog in obstacleAvoidOperationalShipLogs)
             {
                 // var checker = ObstacleAvoidChecker.Extract(shipLog, true);
                 var checker = ObstacleAvoidChecker.Extract(shipLog, false);

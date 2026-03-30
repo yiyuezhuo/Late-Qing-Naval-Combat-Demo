@@ -21,9 +21,9 @@ public class SphereController : SingletonMonoBehaviour<SphereController>
             {
                 _earthDarkTheme = value;
                 var instance = Instance;
-                if(instance != null)
+                if(instance != null && instance.meshRenderer != null)
                 {
-                    Instance.shaderEarthDarkTheme = value;
+                    instance.shaderEarthDarkTheme = value;
                 }
             }
         }
@@ -39,9 +39,45 @@ public class SphereController : SingletonMonoBehaviour<SphereController>
             {
                 _useSeaTexture = value;
                 var instance = Instance;
-                if(instance != null)
+                if(instance != null && instance.meshRenderer != null)
                 {
-                    Instance.shaderUseSeaTexture = value;
+                    instance.shaderUseSeaTexture = value;
+                }
+            }
+        }
+    }
+
+    static bool _showROIShoreDistanceField = false;
+    public static bool showROIShoreDistanceField
+    {
+        get => _showROIShoreDistanceField;
+        set
+        {
+            if (_showROIShoreDistanceField != value)
+            {
+                _showROIShoreDistanceField = value;
+                var instance = Instance;
+                if (instance != null && instance.meshRenderer != null)
+                {
+                    instance.shaderShowROIShoreDistanceField = value;
+                }
+            }
+        }
+    }
+
+    static bool _showROIShoreGradientField = false;
+    public static bool showROIShoreGradientField
+    {
+        get => _showROIShoreGradientField;
+        set
+        {
+            if (_showROIShoreGradientField != value)
+            {
+                _showROIShoreGradientField = value;
+                var instance = Instance;
+                if (instance != null && instance.meshRenderer != null)
+                {
+                    instance.shaderShowROIShoreGradientField = value;
                 }
             }
         }
@@ -57,6 +93,8 @@ public class SphereController : SingletonMonoBehaviour<SphereController>
 
         shaderEarthDarkTheme = earthDarkTheme;
         shaderUseSeaTexture = useSeaTexture;
+        shaderShowROIShoreDistanceField = showROIShoreDistanceField;
+        shaderShowROIShoreGradientField = showROIShoreGradientField;
         RefreshSunDirection(force: true);
     }
 
@@ -102,14 +140,50 @@ public class SphereController : SingletonMonoBehaviour<SphereController>
 
     bool shaderEarthDarkTheme
     {
-        get => meshRenderer.material.GetFloat("_UseDark") == 1;
-        set => meshRenderer.material.SetFloat("_UseDark", value ? 1 : 0);
+        get => meshRenderer != null && meshRenderer.material.GetFloat("_UseDark") == 1;
+        set
+        {
+            if (meshRenderer != null)
+            {
+                meshRenderer.material.SetFloat("_UseDark", value ? 1 : 0);
+            }
+        }
     }
     
     bool shaderUseSeaTexture
     {
-        get => meshRenderer.material.GetFloat("_UseSeaTex") == 1;
-        set => meshRenderer.material.SetFloat("_UseSeaTex", value ? 1 : 0);
+        get => meshRenderer != null && meshRenderer.material.GetFloat("_UseSeaTex") == 1;
+        set
+        {
+            if (meshRenderer != null)
+            {
+                meshRenderer.material.SetFloat("_UseSeaTex", value ? 1 : 0);
+            }
+        }
+    }
+
+    bool shaderShowROIShoreDistanceField
+    {
+        get => meshRenderer != null && meshRenderer.material.GetFloat("_ShowShoreDistance") == 1;
+        set
+        {
+            if (meshRenderer != null)
+            {
+                meshRenderer.material.SetFloat("_ShowShoreDistance", value ? 1 : 0);
+            }
+        }
+    }
+
+    bool shaderShowROIShoreGradientField
+    {
+        get => meshRenderer != null && meshRenderer.material.GetFloat("_ShowShoreGradient") == 1;
+        set
+        {
+            if (meshRenderer != null)
+            {
+                meshRenderer.material.SetFloat("_ShowShoreGradient", value ? 1 : 0);
+            }
+        }
     }
     
 }

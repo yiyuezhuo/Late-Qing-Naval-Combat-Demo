@@ -1,24 +1,35 @@
-# Shore Runtime Field Format
+# Shore Field Assets
 
 ## Purpose
 
-`*_shoreRuntime.bytes` stores a precomputed coastal avoidance field for naval ROI navigation.
+The ROI shore field is a precomputed coastal avoidance dataset derived from the ROI elevation texture.
 
-The file is used by runtime CPU-side obstacle avoidance. It is not intended for shader sampling.
+It is used in two places:
 
-Inside the ROI elevation path, ships can use this field to:
+- CPU-side ROI obstacle avoidance
+- optional in-game visualization on the earth shader
 
-- estimate distance from land in pixel units
-- read a gradient that points away from land
-- steer smoothly along coastlines instead of relying only on binary collision checks
+Outside the ROI elevation path, the game still falls back to the legacy elevation-based obstacle avoidance logic.
 
-Outside the ROI elevation path, the game falls back to the legacy elevation-based obstacle avoidance logic.
+## Runtime Assets
+
+The runtime representation is a packed texture plus a metadata JSON sidecar:
+
+- `*_shoreField.png`
+- `*_shoreField.json`
+
+Example:
+
+- `roi_105_146_15_55_uint16_9840x9600_shoreField.png`
+- `roi_105_146_15_55_uint16_9840x9600_shoreField.json`
+
+The old `*_shoreRuntime.bytes` format is legacy and is no longer the primary runtime source.
 
 ## Geographic Scope
 
-The file itself does not define the active ROI bounds.
+The file name may contain a human-readable ROI hint, but runtime code must not depend on the file name for authoritative bounds.
 
-Runtime code must take the geographic ROI bounds from the active `ElevationProvider` configuration:
+Runtime code must use the active `ElevationProvider` ROI configuration:
 
 - `roiLongitudeDeg0`
 - `roiLongitudeDeg1`
@@ -26,100 +37,82 @@ Runtime code must take the geographic ROI bounds from the active `ElevationProvi
 - `roiLatitudeDeg1`
 - `useROI`
 
-The file name may include a human-readable ROI hint such as `105_146_15_55`, but runtime logic must not depend on the file name for the authoritative bounds.
+## Packed Texture Layout
 
-## Binary Encoding
+The packed PNG stores one texel per ROI pixel.
 
-The file is written with `.NET BinaryWriter` and read with `.NET BinaryReader`.
+Current channel meaning:
 
-This implies:
+- `R`: normalized distance-from-land
+- `G`: gradient X encoded from `[-1, 1]` into `[0, 1]`
+- `B`: gradient Y encoded from `[-1, 1]` into `[0, 1]`
 
-- little-endian numeric encoding
-- `BinaryWriter.Write(string)` / `BinaryReader.ReadString()` for the magic header
+`X` follows the ROI texture horizontal axis, which maps to longitude.
 
-## Header Layout
+`Y` follows the ROI texture vertical axis, which maps to latitude.
 
-The header is written in this exact order:
+## Metadata JSON
 
-1. `string magic`
-2. `int32 width`
-3. `int32 height`
-4. `float32 landThreshold`
-5. `float32 maxDistance`
+The JSON sidecar provides the decode scale and validation metadata.
 
-Current magic value:
+Important fields:
 
-- `SFD1`
+- `width`
+- `height`
+- `landThreshold`
+- `maxDistancePixels`
+- `exportMode`
 
-## Pixel Payload Layout
-
-After the header, the file stores one record per pixel in row-major order.
-
-Row-major means:
-
-- all pixels of row `0` from `x=0` to `x=width-1`
-- then all pixels of row `1`
-- and so on
-
-Each pixel record is written in this exact order:
-
-1. `uint16 distance`
-2. `int8 gradX`
-3. `int8 gradY`
-
-So each pixel costs 4 bytes total.
+The runtime should treat `maxDistancePixels` as the authoritative distance decode scale.
 
 ## Decode Rules
 
 ### Distance
 
-`distance` is stored as a normalized unsigned 16-bit value.
-
-Decode formula:
-
 ```text
-distancePixels = encodedDistance / 65535.0 * maxDistance
+distancePixels = R / 255.0 * maxDistancePixels
 ```
 
 Interpretation:
 
 - `distancePixels == 0` means land
 - `distancePixels > 0` means water
-- the unit is pixel distance in the ROI raster, not meters and not nautical miles
+- the unit is pixel distance in the ROI raster
 
 ### Gradient
 
-`gradX` and `gradY` are stored as signed bytes.
-
-Decode formula:
-
 ```text
-gradientX = encodedGradX / 127.0
-gradientY = encodedGradY / 127.0
+gradientX = G / 255.0 * 2.0 - 1.0
+gradientY = B / 255.0 * 2.0 - 1.0
 ```
 
 Interpretation:
 
 - the gradient points away from land
-- `X` follows the ROI texture horizontal axis, which maps to longitude
-- `Y` follows the ROI texture vertical axis, which maps to latitude
+- runtime code may renormalize after bilinear interpolation
 
 ## Runtime Sampling Contract
 
 Runtime code should only use the field when all of the following are true:
 
 - the active elevation provider is using ROI elevation for the queried position
-- the `.bytes` file loaded successfully
-- the field dimensions match the active ROI height texture dimensions
+- the packed shore-field texture loaded successfully
+- the metadata JSON loaded successfully
+- the packed field dimensions match the active ROI height texture dimensions
 
 Recommended sampling behavior:
 
 - map latitude/longitude into ROI pixel coordinates using the runtime `ElevationProvider`
-- sample the field bilinearly for smooth steering
-- treat missing or invalid field data as a reason to fall back to legacy avoidance
+- bilinearly sample the packed field
+- fall back to legacy obstacle avoidance when the field is unavailable or invalid
 
-## Legacy Fallback
+## Visualization Contract
 
-This field supplements runtime avoidance; it does not replace the legacy code path globally.
+The same packed texture may also be passed into the earth shader.
 
-When the field is unavailable, invalid, disabled in preferences, or not applicable to the current position, the game should continue using the old obstacle avoidance behavior based on elevation collision checks.
+Two optional preference-controlled overlays exist:
+
+- distance-field display
+- gradient-field display
+
+When both display toggles are off, the shader should avoid sampling the shore-field texture so that the visualization feature does not add avoidable runtime cost.

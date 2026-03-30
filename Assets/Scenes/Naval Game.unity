@@ -754,7 +754,8 @@ MonoBehaviour:
   roiLongitudeDeg1: 146
   useROI: 1
   meshRenderer: {fileID: 227654952}
-  roiShoreRuntimeBytes: {fileID: 4900000, guid: 7e671b0b76dd1c9409b74d18c515563d, type: 3}
+  roiShoreFieldTexture: {fileID: 2800000, guid: 015fc14baed7ed64c97bccdc3adff8cc, type: 3}
+  roiShoreFieldMetadataJson: {fileID: 4900000, guid: 236ceb3343c641d499a7228e9d60a06e, type: 3}
 --- !u!1 &267460018
 GameObject:
   m_ObjectHideFlags: 0

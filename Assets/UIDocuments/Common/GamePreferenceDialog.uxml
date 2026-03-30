@@ -112,6 +112,16 @@
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(44040432205336576)"/>
                             </Bindings>
                         </ui:Toggle>
+                        <ui:Toggle label="Show ROI Shore Distance Field">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="showROIShoreDistanceField" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:Toggle>
+                        <ui:Toggle label="Show ROI Shore Gradient Field">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="showROIShoreGradientField" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:Toggle>
                         <LocalizedEnumField label="Unit Label" type-str="GamePreference+UnitLabelDisplayMode">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(719572929515520)"/>
@@ -296,6 +306,11 @@
                                 <ui:Toggle label="Enable ROI Shore-Field Avoidance">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="enableROIShoreFieldAvoidance" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:Toggle>
+                                <ui:Toggle label="Enable Obstacle Avoidance For Player Control">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="enableObstacleAvoidanceForPlayerControl" binding-mode="TwoWay"/>
                                     </Bindings>
                                 </ui:Toggle>
                                 <ui:FloatField label="Combat Expected Range (Low, yard)">

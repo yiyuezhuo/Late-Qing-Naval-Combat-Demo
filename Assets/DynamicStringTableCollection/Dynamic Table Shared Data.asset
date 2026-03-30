@@ -3274,6 +3274,38 @@ MonoBehaviour:
     m_Key: Threat Dist
     m_Metadata:
       m_Items: []
+  - m_Id: -94000000000011
+    m_Key: 'Pathfinding: choose source'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000012
+    m_Key: 'Pathfinding: choose destination'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000013
+    m_Key: 'Pathfinding: shore field unavailable'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000014
+    m_Key: 'Pathfinding: outside ROI'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000015
+    m_Key: 'Pathfinding: source blocked'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000016
+    m_Key: 'Pathfinding: destination blocked'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000017
+    m_Key: 'Pathfinding: no path'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000018
+    m_Key: 'Pathfinding: routed distance {0:0.00} nm'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

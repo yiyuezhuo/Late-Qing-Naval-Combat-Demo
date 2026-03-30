@@ -135,6 +135,9 @@ public class GamePreference
         set => SphereController.showROIShoreGradientField = value;
     }
 
+    [CreateProperty]
+    public float pathfindingShorePassableDistancePixels { get; set; } = 3f;
+
     // [CreateProperty]
     // public bool earthDarkThemeEnabled => SuperGameState.Instance.IsInNavalGame();
 
@@ -398,6 +401,7 @@ public class GamePreference
             : UnitLabelDisplayMode.Unit;
         p.showROIShoreDistanceField = PlayerPrefs.GetInt("showROIShoreDistanceField", 0) == 1;
         p.showROIShoreGradientField = PlayerPrefs.GetInt("showROIShoreGradientField", 0) == 1;
+        p.pathfindingShorePassableDistancePixels = PlayerPrefs.GetFloat("pathfindingShorePassableDistancePixels", 3f);
         p.enable3DBase = PlayerPrefs.GetInt("enable3DBase", 1) == 1;
         p.enableGunneryShellVisual = PlayerPrefs.GetInt("enableGunneryShellVisual", 1) == 1;
         p.gunneryShellRadiusScaleCoef = PlayerPrefs.GetFloat("gunneryShellRadiusScaleCoef", 12f);
@@ -417,6 +421,7 @@ public class GamePreference
         PlayerPrefs.SetInt("unitLabelDisplayMode", (int)unitLabelDisplayMode);
         PlayerPrefs.SetInt("showROIShoreDistanceField", showROIShoreDistanceField ? 1 : 0);
         PlayerPrefs.SetInt("showROIShoreGradientField", showROIShoreGradientField ? 1 : 0);
+        PlayerPrefs.SetFloat("pathfindingShorePassableDistancePixels", pathfindingShorePassableDistancePixels);
         PlayerPrefs.SetInt("enable3DBase", enable3DBase ? 1 : 0);
         PlayerPrefs.SetInt("enableGunneryShellVisual", enableGunneryShellVisual ? 1 : 0);
         PlayerPrefs.SetFloat("gunneryShellRadiusScaleCoef", gunneryShellRadiusScaleCoef);

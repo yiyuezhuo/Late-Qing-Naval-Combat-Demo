@@ -2980,6 +2980,14 @@ MonoBehaviour:
     m_Localized: "\u0043\u0053\u0056\u3092\u30A8\u30AF\u30B9\u30DD\u30FC\u30C8"
     m_Metadata:
       m_Items: []
+  - m_Id: -94000000000001
+    m_Localized: "\u7D4C\u8DEF\u63A2\u7D22 (P)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000002
+    m_Localized: "\u7D4C\u8DEF\u63A2\u7D22 \u901A\u884C\u53EF\u80FD\u306A\u6CBF\u5CB8\u8DDD\u96E2 (\u30D4\u30AF\u30BB\u30EB)"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

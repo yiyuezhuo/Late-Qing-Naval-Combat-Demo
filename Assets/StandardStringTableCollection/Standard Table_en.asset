@@ -3025,6 +3025,14 @@ MonoBehaviour:
     m_Localized: Export CSV
     m_Metadata:
       m_Items: []
+  - m_Id: -94000000000001
+    m_Localized: Pathfinding (P)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000002
+    m_Localized: Pathfinding Passable Shore Distance (Pixels)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

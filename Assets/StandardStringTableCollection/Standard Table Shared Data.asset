@@ -2943,6 +2943,14 @@ MonoBehaviour:
     m_Key: Export CSV
     m_Metadata:
       m_Items: []
+  - m_Id: -94000000000001
+    m_Key: Pathfinding (P)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000002
+    m_Key: Pathfinding Passable Shore Distance (Pixels)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

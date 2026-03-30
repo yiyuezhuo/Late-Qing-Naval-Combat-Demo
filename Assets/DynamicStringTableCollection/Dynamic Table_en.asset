@@ -3283,6 +3283,38 @@ MonoBehaviour:
     m_Localized: Threat Dist
     m_Metadata:
       m_Items: []
+  - m_Id: -94000000000011
+    m_Localized: Choose source
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000012
+    m_Localized: Choose destination
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000013
+    m_Localized: Shore field unavailable
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000014
+    m_Localized: Outside ROI
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000015
+    m_Localized: Source blocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000016
+    m_Localized: Destination blocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000017
+    m_Localized: No path
+    m_Metadata:
+      m_Items: []
+  - m_Id: -94000000000018
+    m_Localized: Routed distance {0:0.00} nm
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

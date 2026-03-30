@@ -192,6 +192,11 @@ public class TopTabs : SingletonDocument<TopTabs>
             MeasureLine.Instance.state = MeasureLine.State.ChooseStart;
         };
 
+        root.Q<Button>("PathfindingButton").clicked += () =>
+        {
+            PathfindingLine.Instance?.BeginChooseStart();
+        };
+
         root.Q<Button>("MaskMeasureButton").clicked += () =>
         {
             LOSLine.Instance.state = LOSLine.State.ChooseStart;

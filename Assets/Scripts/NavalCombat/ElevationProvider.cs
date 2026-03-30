@@ -149,6 +149,13 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
         return roiShoreFieldLoaded && roiShoreFieldDimensionsValid;
     }
 
+    public int ROIShoreFieldWidth => roiShoreFieldWidth;
+    public int ROIShoreFieldHeight => roiShoreFieldHeight;
+    public float ROILatitudeDeg0 => roiLatitudeDeg0;
+    public float ROILatitudeDeg1 => roiLatitudeDeg1;
+    public float ROILongitudeDeg0 => roiLongitudeDeg0;
+    public float ROILongitudeDeg1 => roiLongitudeDeg1;
+
     public bool TrySampleROIShoreField(LatLon latLon, out ShoreFieldSample sample)
     {
         sample = default;
@@ -166,6 +173,58 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
         return true;
     }
 
+    public bool TryGetROIShoreFieldDistancePixels(LatLon latLon, out float distancePixels)
+    {
+        distancePixels = 0f;
+        if (!TrySampleROIShoreField(latLon, out var sample))
+        {
+            return false;
+        }
+
+        distancePixels = sample.distancePixels;
+        return true;
+    }
+
+    public bool TryGetROIShoreFieldDistancePixels(int x, int y, out float distancePixels)
+    {
+        distancePixels = 0f;
+        if (!TryGetROIShoreFieldSample(x, y, out var sample))
+        {
+            return false;
+        }
+
+        distancePixels = sample.distancePixels;
+        return true;
+    }
+
+    public bool TryGetROIShoreFieldSample(int x, int y, out ShoreFieldSample sample)
+    {
+        sample = default;
+        if (!HasValidROIShoreField()
+            || x < 0 || x >= roiShoreFieldWidth
+            || y < 0 || y >= roiShoreFieldHeight)
+        {
+            return false;
+        }
+
+        sample = DecodeROIShoreFieldSample(x, y);
+        return true;
+    }
+
+    public LatLon ROIPixelCoordsToLatLon(float x, float y)
+    {
+        if (roiShoreFieldWidth <= 1 || roiShoreFieldHeight <= 1)
+        {
+            return new LatLon(roiLatitudeDeg0, roiLongitudeDeg0);
+        }
+
+        var u = Mathf.Clamp01(x / (roiShoreFieldWidth - 1f));
+        var v = Mathf.Clamp01(y / (roiShoreFieldHeight - 1f));
+        var lonDeg = Mathf.Lerp(roiLongitudeDeg0, roiLongitudeDeg1, u);
+        var latDeg = Mathf.Lerp(roiLatitudeDeg0, roiLatitudeDeg1, v);
+        return new LatLon(latDeg, lonDeg);
+    }
+
     bool IsInROIRange(LatLon latLon)
     {
         return latLon.LatDeg >= roiLatitudeDeg0
@@ -174,7 +233,7 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
             && latLon.LonDeg <= roiLongitudeDeg1;
     }
 
-    bool TryGetROIPixelCoords(LatLon latLon, out float x, out float y)
+    public bool TryGetROIPixelCoords(LatLon latLon, out float x, out float y)
     {
         x = 0f;
         y = 0f;
@@ -187,6 +246,20 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
         var v = Mathf.Clamp01((latLon.LatDeg - roiLatitudeDeg0) / (roiLatitudeDeg1 - roiLatitudeDeg0));
         x = u * Mathf.Max(0, roiShoreFieldWidth - 1);
         y = v * Mathf.Max(0, roiShoreFieldHeight - 1);
+        return true;
+    }
+
+    public bool TryGetROIPixelCoordsRounded(LatLon latLon, out int x, out int y)
+    {
+        x = 0;
+        y = 0;
+        if (!TryGetROIPixelCoords(latLon, out var rawX, out var rawY))
+        {
+            return false;
+        }
+
+        x = Mathf.Clamp(Mathf.RoundToInt(rawX), 0, Mathf.Max(0, roiShoreFieldWidth - 1));
+        y = Mathf.Clamp(Mathf.RoundToInt(rawY), 0, Mathf.Max(0, roiShoreFieldHeight - 1));
         return true;
     }
 

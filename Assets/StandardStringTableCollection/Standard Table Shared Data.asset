@@ -2979,6 +2979,22 @@ MonoBehaviour:
     m_Key: Player Control Obstacle Avoidance
     m_Metadata:
       m_Items: []
+  - m_Id: -96000000000002
+    m_Key: Show ROI Shore Distance Field
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000000003
+    m_Key: Show ROI Shore Gradient Field
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000000004
+    m_Key: Enable ROI Shore-Field Avoidance
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000000005
+    m_Key: 'Searchlight Control:'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

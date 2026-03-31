@@ -115,11 +115,13 @@
                         <ui:Toggle label="Show ROI Shore Distance Field">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="showROIShoreDistanceField" binding-mode="TwoWay"/>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96000000000002)"/>
                             </Bindings>
                         </ui:Toggle>
                         <ui:Toggle label="Show ROI Shore Gradient Field">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="showROIShoreGradientField" binding-mode="TwoWay"/>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96000000000003)"/>
                             </Bindings>
                         </ui:Toggle>
                         <ui:FloatField label="Pathfinding Passable Shore Distance (Pixels)">
@@ -312,6 +314,7 @@
                                 <ui:Toggle label="Enable ROI Shore-Field Avoidance">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="enableROIShoreFieldAvoidance" binding-mode="TwoWay"/>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96000000000004)"/>
                                     </Bindings>
                                 </ui:Toggle>
                                 <LocalizedEnumField type-str="NavalCombatCore.ObstacleAvoidanceMode" label="Player Control Obstacle Avoidance">

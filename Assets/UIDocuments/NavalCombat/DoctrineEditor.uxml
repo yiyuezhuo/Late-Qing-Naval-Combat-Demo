@@ -161,7 +161,11 @@
         </ui:VisualElement>
         <ui:VisualElement name="" style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement data-source-path="searchlightAutomaticType" style="flex-grow: 0; flex-direction: row;">
-                <ui:Label text="Searchlight Control:"/>
+                <ui:Label text="Searchlight Control:">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96000000000005)"/>
+                    </Bindings>
+                </ui:Label>
                 <ui:Label text="Inherit">
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)"/>

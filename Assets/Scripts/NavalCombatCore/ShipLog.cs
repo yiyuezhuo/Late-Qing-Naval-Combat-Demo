@@ -1631,7 +1631,10 @@ namespace NavalCombatCore
         List<(LatLon latLon, float xYards, float yYards)> BuildProjectedManualRoute()
         {
             var projection = new MeasureUtils.LocalProjection(position.LatDeg, position.LonDeg);
-            var projectedRoute = new List<(LatLon latLon, float xYards, float yYards)>(manualRoute.Count);
+            var projectedRoute = new List<(LatLon latLon, float xYards, float yYards)>(manualRoute.Count + 1)
+            {
+                (position, 0f, 0f)
+            };
 
             foreach (var waypoint in manualRoute)
             {

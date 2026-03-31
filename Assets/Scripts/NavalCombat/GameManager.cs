@@ -1150,6 +1150,79 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         return $"{source.LatDeg:F6}:{source.LonDeg:F6}";
     }
 
+    static float ComputePathDistanceMeters(IReadOnlyList<LatLon> points)
+    {
+        if (points == null || points.Count < 2)
+            return 0f;
+
+        var totalMeters = 0f;
+        for (var i = 1; i < points.Count; i++)
+        {
+            if (points[i - 1] == null || points[i] == null)
+                continue;
+
+            var inverseLine = Geodesic.WGS84.InverseLine(
+                points[i - 1].LatDeg, points[i - 1].LonDeg,
+                points[i].LatDeg, points[i].LonDeg);
+            totalMeters += (float)inverseLine.Distance;
+        }
+
+        return totalMeters;
+    }
+
+    static List<LatLon> ExtractShipManualRouteSegmentPoints(PathfindingResult result)
+    {
+        var extractedPoints = new List<LatLon>();
+        if (result?.success != true || result.points == null || result.points.Count <= 1)
+            return extractedPoints;
+
+        var startIndex = 1;
+        var endExclusive = result.points.Count;
+        if (endExclusive - startIndex > 1)
+            endExclusive--;
+
+        for (var i = startIndex; i < endExclusive; i++)
+        {
+            var point = result.points[i];
+            if (point == null)
+                continue;
+
+            extractedPoints.Add(point.Clone());
+        }
+
+        if (extractedPoints.Count == 0)
+        {
+            var fallbackPoint = result.points[^1];
+            if (fallbackPoint != null)
+                extractedPoints.Add(fallbackPoint.Clone());
+        }
+
+        return extractedPoints;
+    }
+
+    static PathfindingResult NormalizeShipManualRoutePreviewResult(PathfindingResult rawResult, LatLon sourcePoint)
+    {
+        if (rawResult == null || !rawResult.success)
+            return rawResult;
+
+        var normalizedSegmentPoints = ExtractShipManualRouteSegmentPoints(rawResult);
+        if (normalizedSegmentPoints.Count == 0)
+            return rawResult;
+
+        var previewPoints = new List<LatLon>(normalizedSegmentPoints.Count + 1);
+        if (sourcePoint != null)
+            previewPoints.Add(sourcePoint.Clone());
+        previewPoints.AddRange(normalizedSegmentPoints.Select(point => point.Clone()));
+
+        return new PathfindingResult
+        {
+            success = true,
+            failureReason = PathfindingFailureReason.None,
+            points = previewPoints,
+            routedDistanceMeters = ComputePathDistanceMeters(previewPoints),
+        };
+    }
+
     bool TryGetCurrentMapHitPoint(out Vector3 hitPoint)
     {
         hitPoint = Vector3.zero;
@@ -1207,7 +1280,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     || previewIndex != shipManualRoutePreviewWindowIndex
                     || Math.Abs(threshold - shipManualRoutePreviewThreshold) > 1e-5f)
                 {
-                    shipManualRoutePreviewResult = shipManualRoutePathfinder?.FindPath(sourcePoint, currentLatLon, threshold);
+                    var rawPreviewResult = shipManualRoutePathfinder?.FindPath(sourcePoint, currentLatLon, threshold);
+                    shipManualRoutePreviewResult = NormalizeShipManualRoutePreviewResult(rawPreviewResult, sourcePoint);
                     shipManualRoutePreviewSourceKey = sourceKey;
                     shipManualRoutePreviewWindowIndex = previewIndex;
                     shipManualRoutePreviewThreshold = threshold;
@@ -1268,7 +1342,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         var sourceKey = BuildShipManualRoutePreviewSourceKey(sourcePoint);
         var previewIndex = -1;
         shipManualRoutePathfinder?.TryGetWindowNodeIndex(currentLatLon, out previewIndex);
-        shipManualRoutePreviewResult = shipManualRoutePathfinder?.FindPath(sourcePoint, currentLatLon, threshold);
+        var rawCommitResult = shipManualRoutePathfinder?.FindPath(sourcePoint, currentLatLon, threshold);
+        shipManualRoutePreviewResult = NormalizeShipManualRoutePreviewResult(rawCommitResult, sourcePoint);
         shipManualRoutePreviewSourceKey = sourceKey;
         shipManualRoutePreviewWindowIndex = previewIndex;
         shipManualRoutePreviewThreshold = threshold;
@@ -1276,7 +1351,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         if (shipManualRoutePreviewResult == null || !shipManualRoutePreviewResult.success)
             return;
 
-        var pathPointsToAppend = shipManualRoutePreviewResult.points.Skip(1);
+        var pathPointsToAppend = ExtractShipManualRouteSegmentPoints(rawCommitResult);
         if (shipLog.HasManualRoute())
         {
             shipLog.AppendRouteSegment(pathPointsToAppend);

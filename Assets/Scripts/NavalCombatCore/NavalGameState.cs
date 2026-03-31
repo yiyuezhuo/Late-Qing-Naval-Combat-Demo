@@ -504,6 +504,28 @@ namespace NavalCombatCore
             return extractedPoints;
         }
 
+        static void TrimAutomaticOperationalRouteLeadingPoints(ShipLog shipLog, ElevationProvider elevationProvider, List<LatLon> routePoints)
+        {
+            if (shipLog == null || elevationProvider == null || routePoints == null)
+                return;
+            if (!elevationProvider.TryGetROIPixelCoords(shipLog.position, out var shipPixelX, out var shipPixelY))
+                return;
+
+            const float trimDistancePixelsSquared = 4f;
+            while (routePoints.Count > 1)
+            {
+                if (!elevationProvider.TryGetROIPixelCoords(routePoints[0], out var waypointPixelX, out var waypointPixelY))
+                    break;
+
+                var deltaX = waypointPixelX - shipPixelX;
+                var deltaY = waypointPixelY - shipPixelY;
+                if (deltaX * deltaX + deltaY * deltaY > trimDistancePixelsSquared)
+                    break;
+
+                routePoints.RemoveAt(0);
+            }
+        }
+
         static bool TryBuildAutomaticOperationalRoute(ShipLog shipLog, LatLon targetPosition, out List<LatLon> routePoints)
         {
             routePoints = null;
@@ -526,6 +548,7 @@ namespace NavalCombatCore
             }
 
             routePoints = ExtractPathRouteSegmentPoints(selectedResult);
+            TrimAutomaticOperationalRouteLeadingPoints(shipLog, elevationProvider, routePoints);
             return routePoints.Count > 0;
         }
 

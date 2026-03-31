@@ -7,6 +7,7 @@ using UnityEngine;
 public sealed class ExactROIShoreFieldPathfinder
 {
     const int DefaultSearchWindowSize = 1024;
+    const int EndpointRecoveryRadius = 2;
     const float DiagonalCost = 1.41421356f;
 
     readonly ElevationProvider provider;
@@ -208,7 +209,10 @@ public sealed class ExactROIShoreFieldPathfinder
             return result;
         }
 
-        if (sourceDistance < thresholdPixels)
+        var startLocalX = sourceX - windowMinX;
+        var startLocalY = sourceY - windowMinY;
+        if (sourceDistance < thresholdPixels
+            && !TryFindNearestPassableWindowNode(startLocalX, startLocalY, thresholdPixels, EndpointRecoveryRadius, out startLocalX, out startLocalY))
         {
             result.failureReason = PathfindingFailureReason.SourceBlocked;
             return result;
@@ -220,14 +224,17 @@ public sealed class ExactROIShoreFieldPathfinder
             return result;
         }
 
-        if (destinationDistance < thresholdPixels)
+        var endLocalX = destinationX - windowMinX;
+        var endLocalY = destinationY - windowMinY;
+        if (destinationDistance < thresholdPixels
+            && !TryFindNearestPassableWindowNode(endLocalX, endLocalY, thresholdPixels, EndpointRecoveryRadius, out endLocalX, out endLocalY))
         {
             result.failureReason = PathfindingFailureReason.DestinationBlocked;
             return result;
         }
 
-        var startIndex = ToLocalIndex(sourceX - windowMinX, sourceY - windowMinY);
-        var endIndex = ToLocalIndex(destinationX - windowMinX, destinationY - windowMinY);
+        var startIndex = ToLocalIndex(startLocalX, startLocalY);
+        var endIndex = ToLocalIndex(endLocalX, endLocalY);
         var rawPath = RunAStar(startIndex, endIndex, thresholdPixels);
         if (rawPath == null || rawPath.Count == 0)
         {
@@ -271,6 +278,72 @@ public sealed class ExactROIShoreFieldPathfinder
         }
 
         return provider.TryGetROIShoreFieldDistancePixels(windowMinX + localX, windowMinY + localY, out distancePixels);
+    }
+
+    bool TryFindNearestPassableWindowNode(
+        int centerLocalX,
+        int centerLocalY,
+        float thresholdPixels,
+        int maxRadius,
+        out int recoveredLocalX,
+        out int recoveredLocalY)
+    {
+        recoveredLocalX = centerLocalX;
+        recoveredLocalY = centerLocalY;
+
+        if (!IsReady || centerLocalX < 0 || centerLocalX >= windowWidth || centerLocalY < 0 || centerLocalY >= windowHeight)
+        {
+            return false;
+        }
+
+        if (TryGetLocalDistancePixels(centerLocalX, centerLocalY, out var centerDistance) && centerDistance >= thresholdPixels)
+        {
+            return true;
+        }
+
+        var found = false;
+        var bestDistanceSq = int.MaxValue;
+        for (var radius = 1; radius <= maxRadius; radius++)
+        {
+            var minX = Mathf.Max(0, centerLocalX - radius);
+            var maxX = Mathf.Min(windowWidth - 1, centerLocalX + radius);
+            var minY = Mathf.Max(0, centerLocalY - radius);
+            var maxY = Mathf.Min(windowHeight - 1, centerLocalY + radius);
+
+            for (var y = minY; y <= maxY; y++)
+            {
+                for (var x = minX; x <= maxX; x++)
+                {
+                    if (x > minX && x < maxX && y > minY && y < maxY)
+                    {
+                        continue;
+                    }
+
+                    if (!TryGetLocalDistancePixels(x, y, out var distancePixels) || distancePixels < thresholdPixels)
+                    {
+                        continue;
+                    }
+
+                    var dx = x - centerLocalX;
+                    var dy = y - centerLocalY;
+                    var distanceSq = dx * dx + dy * dy;
+                    if (distanceSq < bestDistanceSq)
+                    {
+                        recoveredLocalX = x;
+                        recoveredLocalY = y;
+                        bestDistanceSq = distanceSq;
+                        found = true;
+                    }
+                }
+            }
+
+            if (found)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     int ToLocalIndex(int localX, int localY) => localY * windowWidth + localX;

@@ -369,7 +369,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     {
         SwitchCenter.Instance.Reset();
 
-        allUIDocuments = FindObjectsByType<UIDocument>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        allUIDocuments = FindObjectsByType<UIDocument>(FindObjectsInactive.Include);
         CaptureRestartConfig();
 
         GamePreference.Instance.SetShortLabelLanguageTypeByLocale(LocalizationSettings.SelectedLocale);
@@ -1358,7 +1358,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     {
         if (allUIDocuments == null || allUIDocuments.Length == 0)
         {
-            allUIDocuments = FindObjectsByType<UIDocument>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            allUIDocuments = FindObjectsByType<UIDocument>(FindObjectsInactive.Include);
         }
 
         if (allUIDocuments != null)

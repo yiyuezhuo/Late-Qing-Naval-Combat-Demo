@@ -22,8 +22,7 @@ public class HitAreaEditor : Editor
         if(GUILayout.Button("Assign Distinct GUID to every HitArea in the scene"))
         {
             var hitAreas = FindObjectsByType<HitArea>(
-                FindObjectsInactive.Include,
-                FindObjectsSortMode.None
+                FindObjectsInactive.Include
             ).ToList();
             Debug.Log($"hitAreas.Count={hitAreas.Count}");
 

@@ -10,7 +10,7 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
         get
         {
             if (_instance == null)
-                _instance = FindFirstObjectByType<T>(FindObjectsInactive.Include);
+                _instance = FindAnyObjectByType<T>(FindObjectsInactive.Include);
             return _instance;
         }
     }

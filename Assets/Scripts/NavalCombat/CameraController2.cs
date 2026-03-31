@@ -418,7 +418,7 @@ public class CameraController2 : MonoBehaviour
         get
         {
             if(_instance == null)
-                _instance = FindFirstObjectByType<CameraController2>();
+                _instance = FindAnyObjectByType<CameraController2>();
             return _instance;
         }
     }

@@ -253,7 +253,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public void Start()
     {
-        allUIDocuments = FindObjectsByType<UIDocument>(FindObjectsSortMode.None);
+        allUIDocuments = FindObjectsByType<UIDocument>();
         audioSource = GetComponent<AudioSource>();
 
         SwitchCenter.Instance.Reset();

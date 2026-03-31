@@ -875,7 +875,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
             else if(!navalGameState.scenarioState.firstDisengaged) // So operationalGroupCounts.Count >= 2
             {
-                if(AreOperationalRootGroupsDisengaged(operationalRootGroups))
+                var operationalRootGroupMembers = operationalRootGroups
+                    .Select(shipLogs => (IShipGroupMember)(shipLogs.FirstOrDefault() as IShipGroupMember)?.GetRootParent())
+                    .Where(rootGroup => rootGroup != null)
+                    .ToList();
+                if(navalGameState.AreOperationalRootGroupsDisengaged(operationalRootGroupMembers))
                 {
                     scenarioState.firstDisengaged = true;
 

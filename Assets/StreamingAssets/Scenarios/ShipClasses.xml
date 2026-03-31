@@ -47735,7 +47735,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
      <trainable>true</trainable>
      <reloadLimit>0</reloadLimit>
      <mountArcsPattern>Normal</mountArcsPattern>
-     <objectId>91a4925f-df57-4f30-9873-392f8f6dfaad</objectId>
+     <objectId>7860070b-62c6-44d4-9467-27d6f692e93e</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
      <mountLocation>StarboardMidship</mountLocation>
@@ -47747,7 +47747,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
      <trainable>true</trainable>
      <reloadLimit>0</reloadLimit>
      <mountArcsPattern>Normal</mountArcsPattern>
-     <objectId>28ea6b3f-6546-4568-a72f-047a3b7c71b2</objectId>
+     <objectId>34dc5178-2023-42d5-991d-b1015637f26a</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
      <mountLocation>After</mountLocation>
@@ -47759,7 +47759,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
      <trainable>true</trainable>
      <reloadLimit>0</reloadLimit>
      <mountArcsPattern>Normal</mountArcsPattern>
-     <objectId>fd440419-50ca-49ee-b0d5-caa255eb9e11</objectId>
+     <objectId>189b5453-111c-4318-a9c7-72377fb37e02</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
      <mountLocation>PortMidship</mountLocation>
@@ -47771,7 +47771,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
      <trainable>true</trainable>
      <reloadLimit>0</reloadLimit>
      <mountArcsPattern>Normal</mountArcsPattern>
-     <objectId>f70efa07-192d-4d58-871e-5102bb0e5792</objectId>
+     <objectId>d888735f-0439-41b7-849d-adecd3925f7b</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
    <torpedoSettings>

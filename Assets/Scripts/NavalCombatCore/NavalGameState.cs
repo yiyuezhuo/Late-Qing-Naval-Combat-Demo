@@ -66,6 +66,75 @@ namespace NavalCombatCore
     public class NavalGameState : AbstractGameState
     {
         public static ObstacleAvoidanceMode playerControlObstacleAvoidanceMode = ObstacleAvoidanceMode.Weak;
+        public const float TacticalManeuverDistanceYards = 16000f;
+        public const float TacticalManeuverDistanceSquaredYards = TacticalManeuverDistanceYards * TacticalManeuverDistanceYards;
+        public const float AutoEndDisengagedDistanceYards = 48000f;
+        public const float AutoEndDisengagedDistanceSquaredYards = AutoEndDisengagedDistanceYards * AutoEndDisengagedDistanceYards;
+        const float OperationalRouteReplanTargetDriftYards = 1000f;
+
+        public enum AutomaticManeuverMode
+        {
+            Tactical,
+            Operational
+        }
+
+        public readonly struct RootGroupHostileSeparationKey : IEquatable<RootGroupHostileSeparationKey>
+        {
+            public readonly string rootGroupObjectIdA;
+            public readonly string rootGroupObjectIdB;
+
+            public RootGroupHostileSeparationKey(string rootGroupObjectIdA, string rootGroupObjectIdB)
+            {
+                if (string.CompareOrdinal(rootGroupObjectIdA, rootGroupObjectIdB) <= 0)
+                {
+                    this.rootGroupObjectIdA = rootGroupObjectIdA;
+                    this.rootGroupObjectIdB = rootGroupObjectIdB;
+                }
+                else
+                {
+                    this.rootGroupObjectIdA = rootGroupObjectIdB;
+                    this.rootGroupObjectIdB = rootGroupObjectIdA;
+                }
+            }
+
+            public bool Equals(RootGroupHostileSeparationKey other)
+            {
+                return rootGroupObjectIdA == other.rootGroupObjectIdA
+                    && rootGroupObjectIdB == other.rootGroupObjectIdB;
+            }
+
+            public override bool Equals(object obj)
+            {
+                return obj is RootGroupHostileSeparationKey other && Equals(other);
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(rootGroupObjectIdA, rootGroupObjectIdB);
+            }
+        }
+
+        public sealed class ShipHostileProximityInfo
+        {
+            public ShipLog ship;
+            public ShipLog nearestEnemy;
+            public float nearestEnemyDistanceSquaredYards = float.PositiveInfinity;
+            public AutomaticManeuverMode automaticManeuverMode = AutomaticManeuverMode.Operational;
+        }
+
+        public sealed class RootGroupHostileSeparationInfo
+        {
+            public IShipGroupMember rootGroupA;
+            public IShipGroupMember rootGroupB;
+            public float minDistanceSquaredYards = float.PositiveInfinity;
+        }
+
+        public sealed class HostileProximitySnapshot
+        {
+            public long minuteKey;
+            internal readonly Dictionary<string, ShipHostileProximityInfo> shipInfoByShipObjectId = new();
+            internal readonly Dictionary<RootGroupHostileSeparationKey, RootGroupHostileSeparationInfo> rootGroupSeparationByKey = new();
+        }
 
         struct ControlChainEdge
         {
@@ -83,10 +152,25 @@ namespace NavalCombatCore
             { ControlMode.RelativeToTarget, -1 },
         };
 
+        [XmlIgnore]
+        HostileProximitySnapshot hostileProximitySnapshot;
+
         static ObstacleAvoidanceParameters ResolveObstacleAvoidanceParameters(ShipLog shipLog)
         {
             if (shipLog?.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic)
+            {
+                var controlRoot = shipLog.GetControlRoot();
+                if (controlRoot != null
+                    && controlRoot.GetEffectiveControlMode() == ControlMode.Independent
+                    && Instance.TryGetShipHostileProximityInfo(controlRoot, out var proximityInfo))
+                {
+                    return proximityInfo.automaticManeuverMode == AutomaticManeuverMode.Tactical
+                        ? ObstacleAvoidanceParameters.Strong
+                        : ObstacleAvoidanceParameters.Weak;
+                }
+
                 return ObstacleAvoidanceParameters.Strong;
+            }
 
             return playerControlObstacleAvoidanceMode switch
             {
@@ -191,6 +275,327 @@ namespace NavalCombatCore
                         break;
                 }
             }
+        }
+
+        static long GetMinuteKey(DateTime dateTime)
+        {
+            return dateTime.Ticks / TimeSpan.TicksPerMinute;
+        }
+
+        static bool IsSnapshotManeuverCandidateShip(ShipLog shipLog)
+        {
+            return shipLog != null
+                && shipLog.mapState == MapState.Deployed
+                && shipLog.operationalState == ShipOperationalState.Operational
+                && !shipLog.IsLandBattery();
+        }
+
+        static bool IsSnapshotAutoEndOperationalShip(ShipLog shipLog)
+        {
+            return shipLog != null
+                && shipLog.mapState == MapState.Deployed
+                && shipLog.operationalState == ShipOperationalState.Operational
+                && (
+                    shipLog.GetMaxSpeedKnots() > 0
+                    || (shipLog.IsLandBattery() && shipLog.isLandTarget)
+                );
+        }
+
+        static MeasureUtils.LocalProjection BuildHostileProximityProjection(IReadOnlyList<ShipLog> shipLogs)
+        {
+            var minLat = float.PositiveInfinity;
+            var maxLat = float.NegativeInfinity;
+            var minLon = float.PositiveInfinity;
+            var maxLon = float.NegativeInfinity;
+
+            foreach (var shipLog in shipLogs)
+            {
+                minLat = Math.Min(minLat, shipLog.position.LatDeg);
+                maxLat = Math.Max(maxLat, shipLog.position.LatDeg);
+                minLon = Math.Min(minLon, shipLog.position.LonDeg);
+                maxLon = Math.Max(maxLon, shipLog.position.LonDeg);
+            }
+
+            return new MeasureUtils.LocalProjection(
+                (minLat + maxLat) * 0.5f,
+                (minLon + maxLon) * 0.5f
+            );
+        }
+
+        HostileProximitySnapshot BuildHostileProximitySnapshot()
+        {
+            var snapshot = new HostileProximitySnapshot()
+            {
+                minuteKey = GetMinuteKey(scenarioState.dateTime)
+            };
+
+            var maneuverCandidateShips = shipLogs.Where(IsSnapshotManeuverCandidateShip).ToList();
+            var autoEndOperationalShips = shipLogs.Where(IsSnapshotAutoEndOperationalShip).ToList();
+            var projectedShips = maneuverCandidateShips
+                .Concat(autoEndOperationalShips)
+                .Where(ship => ship != null)
+                .GroupBy(ship => ship.objectId)
+                .Select(group => group.First())
+                .ToList();
+            if (projectedShips.Count == 0)
+                return snapshot;
+
+            var projection = BuildHostileProximityProjection(projectedShips);
+            var projectedByShipObjectId = projectedShips.ToDictionary(
+                ship => ship.objectId,
+                ship => (
+                    rootGroup: ((IShipGroupMember)ship).GetRootParent(),
+                    xYards: projection.LongitudeToX(ship.position.LonDeg),
+                    yYards: projection.LatitudeToY(ship.position.LatDeg)
+                ));
+
+            foreach (var ship in maneuverCandidateShips)
+            {
+                if (!projectedByShipObjectId.TryGetValue(ship.objectId, out var projectedShip))
+                    continue;
+
+                var info = new ShipHostileProximityInfo()
+                {
+                    ship = ship
+                };
+                foreach (var enemy in maneuverCandidateShips)
+                {
+                    if (enemy == ship)
+                        continue;
+                    if (!projectedByShipObjectId.TryGetValue(enemy.objectId, out var projectedEnemy))
+                        continue;
+                    if (projectedShip.rootGroup == projectedEnemy.rootGroup)
+                        continue;
+
+                    var dx = projectedShip.xYards - projectedEnemy.xYards;
+                    var dy = projectedShip.yYards - projectedEnemy.yYards;
+                    var distanceSquaredYards = dx * dx + dy * dy;
+                    if (distanceSquaredYards < info.nearestEnemyDistanceSquaredYards)
+                    {
+                        info.nearestEnemy = enemy;
+                        info.nearestEnemyDistanceSquaredYards = distanceSquaredYards;
+                    }
+                }
+
+                info.automaticManeuverMode = info.nearestEnemy != null
+                    && info.nearestEnemyDistanceSquaredYards <= TacticalManeuverDistanceSquaredYards
+                    ? AutomaticManeuverMode.Tactical
+                    : AutomaticManeuverMode.Operational;
+                snapshot.shipInfoByShipObjectId[ship.objectId] = info;
+            }
+
+            for (var i = 0; i < autoEndOperationalShips.Count; i++)
+            {
+                var shipA = autoEndOperationalShips[i];
+                if (!projectedByShipObjectId.TryGetValue(shipA.objectId, out var projectedShipA))
+                    continue;
+
+                for (var j = i + 1; j < autoEndOperationalShips.Count; j++)
+                {
+                    var shipB = autoEndOperationalShips[j];
+                    if (!projectedByShipObjectId.TryGetValue(shipB.objectId, out var projectedShipB))
+                        continue;
+                    if (projectedShipA.rootGroup == projectedShipB.rootGroup)
+                        continue;
+
+                    var separationKey = new RootGroupHostileSeparationKey(
+                        projectedShipA.rootGroup.objectId,
+                        projectedShipB.rootGroup.objectId);
+                    if (!snapshot.rootGroupSeparationByKey.TryGetValue(separationKey, out var separationInfo))
+                    {
+                        separationInfo = new RootGroupHostileSeparationInfo()
+                        {
+                            rootGroupA = projectedShipA.rootGroup,
+                            rootGroupB = projectedShipB.rootGroup
+                        };
+                        snapshot.rootGroupSeparationByKey[separationKey] = separationInfo;
+                    }
+
+                    var dx = projectedShipA.xYards - projectedShipB.xYards;
+                    var dy = projectedShipA.yYards - projectedShipB.yYards;
+                    var distanceSquaredYards = dx * dx + dy * dy;
+                    if (distanceSquaredYards < separationInfo.minDistanceSquaredYards)
+                    {
+                        separationInfo.minDistanceSquaredYards = distanceSquaredYards;
+                    }
+                }
+            }
+
+            return snapshot;
+        }
+
+        public void EnsureHostileProximitySnapshotCurrent()
+        {
+            var currentMinuteKey = GetMinuteKey(scenarioState.dateTime);
+            if (hostileProximitySnapshot != null && hostileProximitySnapshot.minuteKey == currentMinuteKey)
+                return;
+
+            hostileProximitySnapshot = BuildHostileProximitySnapshot();
+        }
+
+        public bool TryGetShipHostileProximityInfo(ShipLog shipLog, out ShipHostileProximityInfo info)
+        {
+            info = null;
+            if (shipLog == null)
+                return false;
+
+            EnsureHostileProximitySnapshotCurrent();
+            return hostileProximitySnapshot != null
+                && hostileProximitySnapshot.shipInfoByShipObjectId.TryGetValue(shipLog.objectId, out info);
+        }
+
+        public bool AreOperationalRootGroupsDisengaged(IReadOnlyList<IShipGroupMember> operationalRootGroups)
+        {
+            if (operationalRootGroups == null || operationalRootGroups.Count <= 1)
+                return false;
+
+            EnsureHostileProximitySnapshotCurrent();
+            if (hostileProximitySnapshot == null)
+                return false;
+
+            for (var i = 0; i < operationalRootGroups.Count; i++)
+            {
+                var rootGroupA = operationalRootGroups[i];
+                if (rootGroupA == null)
+                    return false;
+
+                for (var j = i + 1; j < operationalRootGroups.Count; j++)
+                {
+                    var rootGroupB = operationalRootGroups[j];
+                    if (rootGroupB == null)
+                        return false;
+
+                    var key = new RootGroupHostileSeparationKey(rootGroupA.objectId, rootGroupB.objectId);
+                    if (!hostileProximitySnapshot.rootGroupSeparationByKey.TryGetValue(key, out var separationInfo))
+                        return false;
+                    if (separationInfo.minDistanceSquaredYards <= AutoEndDisengagedDistanceSquaredYards)
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        static List<LatLon> ExtractPathRouteSegmentPoints(PathfindingResult result)
+        {
+            var extractedPoints = new List<LatLon>();
+            if (result?.success != true || result.points == null || result.points.Count <= 1)
+                return extractedPoints;
+
+            var startIndex = 1;
+            var endExclusive = result.points.Count;
+            if (endExclusive - startIndex > 1)
+                endExclusive--;
+
+            for (var i = startIndex; i < endExclusive; i++)
+            {
+                var point = result.points[i];
+                if (point != null)
+                    extractedPoints.Add(point.Clone());
+            }
+
+            if (extractedPoints.Count == 0)
+            {
+                var fallbackPoint = result.points[^1];
+                if (fallbackPoint != null)
+                    extractedPoints.Add(fallbackPoint.Clone());
+            }
+
+            return extractedPoints;
+        }
+
+        static bool TryBuildAutomaticOperationalRoute(ShipLog shipLog, LatLon targetPosition, out List<LatLon> routePoints)
+        {
+            routePoints = null;
+            if (shipLog == null || targetPosition == null)
+                return false;
+            if (ElevationService.Instance.elevationProvider is not ElevationProvider elevationProvider || !elevationProvider.HasValidROIShoreField())
+                return false;
+
+            var threshold = GamePreference.Instance.pathfindingShorePassableDistancePixels;
+            var sourcePoint = shipLog.position;
+            var exactPathfinder = new ExactROIShoreFieldPathfinder(elevationProvider, sourcePoint);
+            var exactResult = exactPathfinder.FindPath(sourcePoint, targetPosition, threshold);
+            PathfindingResult selectedResult = exactResult;
+            if (exactResult != null
+                && !exactResult.success
+                && exactResult.failureReason == PathfindingFailureReason.SearchWindowExceeded)
+            {
+                var coarsePathfinder = new ROIShoreFieldPathfinder(elevationProvider);
+                selectedResult = coarsePathfinder.FindPath(sourcePoint, targetPosition, threshold);
+            }
+
+            routePoints = ExtractPathRouteSegmentPoints(selectedResult);
+            return routePoints.Count > 0;
+        }
+
+        void ApplyOperationalCombatRoute(ShipLog shipLog, ShipHostileProximityInfo proximityInfo)
+        {
+            var targetShip = proximityInfo?.nearestEnemy;
+            var targetPosition = targetShip?.position;
+            if (targetShip == null || targetPosition == null)
+            {
+                shipLog.ClearAutomaticOperationalRouteState();
+                return;
+            }
+
+            if (!shipLog.ShouldReplanAutomaticOperationalRoute(targetShip, targetPosition, OperationalRouteReplanTargetDriftYards))
+                return;
+
+            if (TryBuildAutomaticOperationalRoute(shipLog, targetPosition, out var routePoints))
+            {
+                shipLog.ReplaceRouteFromPath(routePoints);
+                shipLog.SetAutomaticOperationalRouteState(targetShip, targetPosition);
+                return;
+            }
+
+            shipLog.ClearManualRoute();
+            shipLog.ClearAutomaticOperationalRouteState();
+        }
+
+        static void ApplyOperationalRetreatHeading(ShipLog shipLog, ShipHostileProximityInfo proximityInfo)
+        {
+            var enemyPosition = proximityInfo?.nearestEnemy?.position;
+            if (shipLog == null || enemyPosition == null)
+                return;
+
+            shipLog.desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)MeasureStats.Approximation.CalculateInitialBearing(
+                enemyPosition.LatDeg, enemyPosition.LonDeg,
+                shipLog.position.LatDeg, shipLog.position.LonDeg));
+        }
+
+        HashSet<ShipLog> ApplyAutomaticManeuverModes(IReadOnlyList<ShipLog> autoOperationalShipLogs)
+        {
+            var tacticalControlRoots = new HashSet<ShipLog>();
+            foreach (var shipLog in autoOperationalShipLogs)
+            {
+                if (shipLog.GetEffectiveControlMode() != ControlMode.Independent)
+                    continue;
+                if (!TryGetShipHostileProximityInfo(shipLog, out var proximityInfo))
+                    continue;
+
+                if (proximityInfo.automaticManeuverMode == AutomaticManeuverMode.Tactical)
+                {
+                    shipLog.ClearAutomaticOperationalRouteState();
+                    if (shipLog.HasManualRoute())
+                        shipLog.ClearManualRoute();
+                    tacticalControlRoots.Add(shipLog);
+                    continue;
+                }
+
+                if (shipLog.shipClass?.IsCombatShip() == true)
+                {
+                    ApplyOperationalCombatRoute(shipLog, proximityInfo);
+                }
+                else
+                {
+                    shipLog.ClearManualRoute();
+                    shipLog.ClearAutomaticOperationalRouteState();
+                    ApplyOperationalRetreatHeading(shipLog, proximityInfo);
+                }
+            }
+
+            return tacticalControlRoots;
         }
 
         public List<ShipGroup> shipGroups = new();
@@ -556,6 +961,8 @@ namespace NavalCombatCore
             var weaponSimulationAssignmentClockTicked = scenarioState.weaponSimulationAssignmentClock.Step(deltaSeconds) > 0;
             if (weaponSimulationAssignmentClockTicked) // The clock is not limited to Weapon allocation though
             {
+                EnsureHostileProximitySnapshotCurrent();
+                var tacticalControlRoots = ApplyAutomaticManeuverModes(autoOperationalShipLogs);
                 foreach ((var meShipLogs, var otherShipLogs) in GetOpposeSidePairs())
                 {
                     var solver = new WeaponTargetAssignmentSolver();
@@ -566,18 +973,14 @@ namespace NavalCombatCore
 
                     var planner = new LowLevelCoursePlanner();
                     planner.Plan(
-                        // meShipLogs.Where(s => s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic),
-                        meShipLogs.Where(s => s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic && s.GetControlRoot().doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic),
+                        meShipLogs.Where(s =>
+                            s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic
+                            && s.GetControlRoot().doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic
+                            && tacticalControlRoots.Contains(s.GetControlRoot())),
                         otherShipLogs,
                         CoreParameter.Instance.extrapolateSeconds
                     ); // Extrapolate 360s
                 }
-
-                var activceShipLogs = shipLogsOnMapList.Where(s =>
-                    s.mapState == MapState.Deployed 
-                    && s.operationalState == ShipOperationalState.Operational
-                    // && s.speedKnots > 0
-                ).ToList();
 
                 foreach(var g in shipLogsOnMapList.GroupBy(s => s.GetControlRoot()))
                 {
@@ -692,6 +1095,7 @@ namespace NavalCombatCore
             foreach (var shipLog in shipLogsOnMapList)
                 shipLog.StepLogging();
 
+            EnsureHostileProximitySnapshotCurrent();
             scenarioState.doingStep = false;
         }
 

@@ -557,6 +557,10 @@ namespace NavalCombatCore
         public bool assistedDeceleration = true;
         public ControlMode controlMode;
         public List<LatLon> manualRoute = new();
+        [XmlIgnore]
+        public string automaticOperationalRouteTargetObjectId;
+        [XmlIgnore]
+        public LatLon automaticOperationalRouteTargetPosition;
         public string followedTargetObjectId;
         public ShipLog followedTarget
         {
@@ -729,11 +733,34 @@ namespace NavalCombatCore
         {
             if (!HasManualRoute())
                 return "No route";
-            if (doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic)
-                return "Ignored by automatic maneuver";
             if (GetEffectiveControlMode() != ControlMode.Independent)
                 return "Ignored by control mode";
             return "Active";
+        }
+
+        public void ClearAutomaticOperationalRouteState()
+        {
+            automaticOperationalRouteTargetObjectId = null;
+            automaticOperationalRouteTargetPosition = null;
+        }
+
+        public void SetAutomaticOperationalRouteState(ShipLog targetShip, LatLon targetPosition)
+        {
+            automaticOperationalRouteTargetObjectId = targetShip?.objectId;
+            automaticOperationalRouteTargetPosition = targetPosition?.Clone();
+        }
+
+        public bool ShouldReplanAutomaticOperationalRoute(ShipLog targetShip, LatLon targetPosition, float targetDriftToleranceYards)
+        {
+            if (targetShip == null || targetPosition == null)
+                return false;
+            if (!HasManualRoute())
+                return true;
+            if (automaticOperationalRouteTargetPosition == null)
+                return true;
+            if (automaticOperationalRouteTargetObjectId != targetShip.objectId)
+                return true;
+            return MeasureUtils.ApproximateDistanceYards(automaticOperationalRouteTargetPosition, targetPosition) > targetDriftToleranceYards;
         }
 
         public string GetMemberName() => namedShip?.name?.mergedName ?? "[Not Specified]";// name.mergedName;
@@ -1509,7 +1536,6 @@ namespace NavalCombatCore
                 }
             }
             else if (effectiveControlMode == ControlMode.Independent
-                && doctrine.GetManeuverAutomaticType() == AutomaticType.Manual
                 && HasManualRoute())
             {
                 ApplyManualRouteGuidance();

@@ -1778,7 +1778,7 @@ namespace NavalCombatCore
             var boilerUpperLimit = shipClass.speedKnotsBoilerRooms.ElementAtOrDefault(boilerRoomHits); // default => 0 => Upper Limit => 0 (not movable)
             maxSpeedKnots = Math.Min(maxSpeedKnots, boilerUpperLimit);
 
-            return maxSpeedKnots;
+            return Math.Max(0, maxSpeedKnots);
         }
 
         public float GetMinSpeedKnots() => -GetMaxSpeedKnots() / 3;

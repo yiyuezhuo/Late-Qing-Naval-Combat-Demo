@@ -287,11 +287,15 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             {
                 var _torpedoSector = _shipClass.torpedoSector;
                 var torpedoSector = XmlUtils.FromXML<TorpedoSector>(XmlUtils.ToXML(_torpedoSector));
-                // ((IObjectIdLabeled)rapidFireBatteryRecord).ResetObjectId();
+                foreach (var mountLocationRecord in torpedoSector.mountLocationRecords)
+                {
+                    mountLocationRecord.objectId = null;
+                }
 
                 if(Utils.TryResolveCurrentValueForBinding<ShipClass>(setByTorpedoSelectorButton, out var shipClass))
                 {
                     shipClass.torpedoSector = torpedoSector;
+                    SuperGameState.Instance.GetCurrentGameState().ResetAndRegisterAll();
                 }
             });
         };

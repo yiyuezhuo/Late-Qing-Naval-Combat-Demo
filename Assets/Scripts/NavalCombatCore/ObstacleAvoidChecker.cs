@@ -22,6 +22,7 @@ namespace NavalCombatCore
         // const float ROIShoreInfluenceDistancePixels = 2f;
         // const float ROIShoreInfluenceDistancePixels = 1.5f;
         const float ROIShoreGradientEpsilon = 1e-4f;
+        const float ROIShoreEarlyExitDistancePixels = 15f;
 
         // Argments
         // public ShipLog shipLog;
@@ -122,6 +123,12 @@ namespace NavalCombatCore
 
             if (!elevationProvider.TrySampleROIShoreField(latLon, out var currentSample))
                 return false;
+
+            if (currentSample.distancePixels >= ROIShoreEarlyExitDistancePixels)
+            {
+                newHeadingDeg = initialDesiredHeadingDeg;
+                return true;
+            }
 
             var previewDistanceM = speedMeterPerSecond * ROIShorePreviewSeconds;
             Geodesic.WGS84.Direct(latLon.LatDeg, latLon.LonDeg, initialDesiredHeadingDeg, previewDistanceM, out double lat2, out double lon2);

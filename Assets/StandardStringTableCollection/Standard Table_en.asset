@@ -3057,6 +3057,10 @@ MonoBehaviour:
     m_Localized: Index
     m_Metadata:
       m_Items: []
+  - m_Id: -96000000000001
+    m_Localized: Player Control Obstacle Avoidance
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

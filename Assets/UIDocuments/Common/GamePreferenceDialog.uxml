@@ -314,11 +314,12 @@
                                         <ui:DataBinding property="value" data-source-path="enableROIShoreFieldAvoidance" binding-mode="TwoWay"/>
                                     </Bindings>
                                 </ui:Toggle>
-                                <ui:Toggle label="Enable Obstacle Avoidance For Player Control">
+                                <LocalizedEnumField type-str="NavalCombatCore.ObstacleAvoidanceMode" label="Player Control Obstacle Avoidance">
                                     <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="enableObstacleAvoidanceForPlayerControl" binding-mode="TwoWay"/>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96000000000001)"/>
+                                        <ui:DataBinding property="value" data-source-path="playerControlObstacleAvoidanceMode" source-to-ui-converters="ObstacleAvoidanceMode =&gt; int" ui-to-source-converters="int =&gt; ObstacleAvoidanceMode" binding-mode="TwoWay"/>
                                     </Bindings>
-                                </ui:Toggle>
+                                </LocalizedEnumField>
                                 <ui:FloatField label="Combat Expected Range (Low, yard)">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="expectedCombatRangeYardLow" binding-mode="TwoWay"/>

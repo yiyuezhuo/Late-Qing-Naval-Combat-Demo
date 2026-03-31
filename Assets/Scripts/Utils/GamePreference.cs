@@ -136,7 +136,7 @@ public class GamePreference
     }
 
     [CreateProperty]
-    public float pathfindingShorePassableDistancePixels { get; set; } = 3f;
+    public float pathfindingShorePassableDistancePixels { get; set; } = 2f;
 
     // [CreateProperty]
     // public bool earthDarkThemeEnabled => SuperGameState.Instance.IsInNavalGame();
@@ -388,6 +388,7 @@ public class GamePreference
     public static void Setup()
     {
         var p = GamePreference.Instance;
+        const string playerControlObstacleAvoidanceModeKey = "playerControlObstacleAvoidanceMode";
         p.forcedNavalCombatResolution = PlayerPrefs.GetInt("forcedNavalCombatResolution", 1) == 1;
         p.showAIDialog = PlayerPrefs.GetInt("showAIDialog", 1) == 1;
         p.simulationRateRatio = PlayerPrefs.GetFloat("simulationRateRaio", 120);
@@ -405,7 +406,23 @@ public class GamePreference
         p.enable3DBase = PlayerPrefs.GetInt("enable3DBase", 1) == 1;
         p.enableGunneryShellVisual = PlayerPrefs.GetInt("enableGunneryShellVisual", 1) == 1;
         p.gunneryShellRadiusScaleCoef = PlayerPrefs.GetFloat("gunneryShellRadiusScaleCoef", 12f);
-        CoreParameter.Instance.enableObstacleAvoidanceForPlayerControl = PlayerPrefs.GetInt("enableObstacleAvoidanceForPlayerControl", 1) == 1;
+        if (PlayerPrefs.HasKey(playerControlObstacleAvoidanceModeKey))
+        {
+            var rawMode = PlayerPrefs.GetInt(playerControlObstacleAvoidanceModeKey, (int)ObstacleAvoidanceMode.Weak);
+            CoreParameter.Instance.playerControlObstacleAvoidanceMode = Enum.IsDefined(typeof(ObstacleAvoidanceMode), rawMode)
+                ? (ObstacleAvoidanceMode)rawMode
+                : ObstacleAvoidanceMode.Weak;
+        }
+        else if (PlayerPrefs.HasKey("enableObstacleAvoidanceForPlayerControl"))
+        {
+            CoreParameter.Instance.playerControlObstacleAvoidanceMode = PlayerPrefs.GetInt("enableObstacleAvoidanceForPlayerControl", 1) == 1
+                ? ObstacleAvoidanceMode.Strong
+                : ObstacleAvoidanceMode.None;
+        }
+        else
+        {
+            CoreParameter.Instance.playerControlObstacleAvoidanceMode = ObstacleAvoidanceMode.Weak;
+        }
         CoreParameter.Instance.enableROIShoreFieldAvoidance = PlayerPrefs.GetInt("enableROIShoreFieldAvoidance", 1) == 1;
         // CoreParameter.Instance.noPenetrationDamageCoef = Mathf.Clamp01(PlayerPrefs.GetFloat("noPenetrationDamageCoef", 0.25f));
     }
@@ -425,7 +442,7 @@ public class GamePreference
         PlayerPrefs.SetInt("enable3DBase", enable3DBase ? 1 : 0);
         PlayerPrefs.SetInt("enableGunneryShellVisual", enableGunneryShellVisual ? 1 : 0);
         PlayerPrefs.SetFloat("gunneryShellRadiusScaleCoef", gunneryShellRadiusScaleCoef);
-        PlayerPrefs.SetInt("enableObstacleAvoidanceForPlayerControl", CoreParameter.Instance.enableObstacleAvoidanceForPlayerControl ? 1 : 0);
+        PlayerPrefs.SetInt("playerControlObstacleAvoidanceMode", (int)CoreParameter.Instance.playerControlObstacleAvoidanceMode);
         PlayerPrefs.SetInt("enableROIShoreFieldAvoidance", CoreParameter.Instance.enableROIShoreFieldAvoidance ? 1 : 0);
         // PlayerPrefs.SetFloat("noPenetrationDamageCoef", Mathf.Clamp01(CoreParameter.Instance.noPenetrationDamageCoef));
 
@@ -499,10 +516,12 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
-        public bool enableObstacleAvoidanceForPlayerControl
+        public ObstacleAvoidanceMode playerControlObstacleAvoidanceMode
         {
-            get => NavalGameState.enableObstacleAvoidanceForPlayerControl;
-            set => NavalGameState.enableObstacleAvoidanceForPlayerControl = value;
+            get => NavalGameState.playerControlObstacleAvoidanceMode;
+            set => NavalGameState.playerControlObstacleAvoidanceMode = Enum.IsDefined(typeof(ObstacleAvoidanceMode), value)
+                ? value
+                : ObstacleAvoidanceMode.Weak;
         }
 
         // [CreateProperty]

@@ -3374,6 +3374,18 @@ MonoBehaviour:
     m_Key: 'Waypoint: outside exact search window'
     m_Metadata:
       m_Items: []
+  - m_Id: -96000000010001
+    m_Key: ObstacleAvoidanceMode.None
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000010002
+    m_Key: ObstacleAvoidanceMode.Weak
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000010003
+    m_Key: ObstacleAvoidanceMode.Strong
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

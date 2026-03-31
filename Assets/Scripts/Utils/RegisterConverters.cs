@@ -175,6 +175,7 @@ public static class RegisteredConverters
         RegisterEnumIntTwoWay<GamePreference.FiringLineDisplayMode>();
         RegisterEnumIntTwoWay<GamePreference.RangeRingDisplayMode>();
         RegisterEnumIntTwoWay<GamePreference.UnitLabelDisplayMode>();
+        RegisterEnumIntTwoWay<ObstacleAvoidanceMode>();
         RegisterEnumIntTwoWay<VictoryLevel>();
 
         RegisterEnumIntTwoWay<PortraitViewer.Mode>();

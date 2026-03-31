@@ -3383,6 +3383,18 @@ MonoBehaviour:
     m_Localized: 'Waypoint: outside exact search window'
     m_Metadata:
       m_Items: []
+  - m_Id: -96000000010001
+    m_Localized: None
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000010002
+    m_Localized: Weak
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000010003
+    m_Localized: Strong
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -2975,6 +2975,10 @@ MonoBehaviour:
     m_Key: Index
     m_Metadata:
       m_Items: []
+  - m_Id: -96000000000001
+    m_Key: Player Control Obstacle Avoidance
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -1,28 +1,50 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using CoreUtils;
 using GeographicLib;
 using UnityEngine;
 
 namespace NavalCombatCore
 {
+    public enum ObstacleAvoidanceMode
+    {
+        None,
+        Weak,
+        Strong
+    }
+
+    public sealed class ObstacleAvoidanceParameters
+    {
+        public float roiPreviewSeconds;
+        public float roiHardClearancePixels;
+        public float roiInfluenceDistancePixels;
+        public float roiEarlyExitDistancePixels;
+
+        public static readonly ObstacleAvoidanceParameters Strong = new()
+        {
+            roiPreviewSeconds = 75f,
+            roiHardClearancePixels = 1.5f,
+            roiInfluenceDistancePixels = 4f,
+            roiEarlyExitDistancePixels = 15f
+        };
+
+        public static readonly ObstacleAvoidanceParameters Weak = new()
+        {
+            roiPreviewSeconds = 37.5f,
+            roiHardClearancePixels = 0.75f,
+            roiInfluenceDistancePixels = 2f,
+            roiEarlyExitDistancePixels = 7.5f
+        };
+    }
+
     public class ObstacleAvoidChecker
     {
-        // const float ROIShorePreviewSeconds = 90f;
-        const float ROIShorePreviewSeconds = 75f;
-        // const float ROIShorePreviewSeconds = 60f;
-        const float ROIShoreHardClearancePixels = 1.5f;
-        // const float ROIShoreHardClearancePixels = 1f;
-        // const float ROIShoreInfluenceDistancePixels = 10f;
-        // const float ROIShoreInfluenceDistancePixels = 5f;
-        const float ROIShoreInfluenceDistancePixels = 4f;
-        // const float ROIShoreInfluenceDistancePixels = 3f;
-        // const float ROIShoreInfluenceDistancePixels = 2.5f;
-        // const float ROIShoreInfluenceDistancePixels = 2f;
-        // const float ROIShoreInfluenceDistancePixels = 1.5f;
         const float ROIShoreGradientEpsilon = 1e-4f;
-        const float ROIShoreEarlyExitDistancePixels = 15f;
+        const float LegacyStepDeg = 10f;
+        const float LegacySimpleStepDeg = 20f;
+        const float LegacyBoundDeg = 10f;
+        static readonly float[] LegacyExtrapolateRange = { 30f, 60f, 120f, 240f };
+        static readonly float[] LegacySimpleExtrapolateRange = { 60f };
 
         // Argments
         // public ShipLog shipLog;
@@ -30,32 +52,15 @@ namespace NavalCombatCore
         public float initialDesiredHeadingDeg;
         public float speedMeterPerSecond;
         public bool simple;
+        public ObstacleAvoidanceParameters parameters;
         // public IElevationProvider elevationProvider;
 
         // States
         Dictionary<float, bool> headingPassedMap = new();
 
-        public static float stepDeg = 10; //
-        public static float simpleStepDeg = 20;
-
-        public static float boundDeg = 10; //
-
-        public static float extrapolateSecondsLow = 60; // 1min
-        public static float extrapolateMinHigh = 300; // 5min
-        // public static float extrapolateSecondsLow = 60; // 2min
-        // public static float extrapolateMinHigh = 120; // 2min
-        public static float extrapolateMinStep = 60; // 1min/step
-
-        public static bool useBound = true;
-        public static bool simpleUseBound = true;
         public static bool enableROIShoreFieldAvoidance = true;
 
-        public static List<float> extrapolateRange = new(){30, 60, 120, 240};
-        public static List<float> simpleExtrapolateRange = new(){60};
-        
-        
-
-        public static ObstacleAvoidChecker Extract(ShipLog shipLog, bool simple=false)
+        public static ObstacleAvoidChecker Extract(ShipLog shipLog, ObstacleAvoidanceParameters parameters, bool simple=false)
         {
             // var speedKnots = shipLog.GetSpeedKnots();
             // if(speedKnots < 0) // Assume it's move astern to resolve collision
@@ -71,12 +76,13 @@ namespace NavalCombatCore
                 latLon=latLon,
                 initialDesiredHeadingDeg=shipLog.desiredHeadingDeg,
                 speedMeterPerSecond=speedMeterPerSecond,
-                simple=simple
+                simple=simple,
+                parameters=parameters ?? ObstacleAvoidanceParameters.Strong
                 // elevationProvider=ServiceLocator.Get<IElevationProvider>()
             };
         }
 
-        public float GetStepDeg() => simple ? simpleStepDeg : stepDeg;
+        float GetLegacyStepDeg() => simple ? LegacySimpleStepDeg : LegacyStepDeg;
 
         public float Check()
         {
@@ -91,7 +97,7 @@ namespace NavalCombatCore
             if(speedMeterPerSecond <= 0)
                 return initialDesiredHeadingDeg;
 
-            for(var deltaHeadingDeg = 0f; deltaHeadingDeg < 180; deltaHeadingDeg += GetStepDeg())
+            for(var deltaHeadingDeg = 0f; deltaHeadingDeg < 180; deltaHeadingDeg += GetLegacyStepDeg())
             {
                 var currentHeading = initialDesiredHeadingDeg + deltaHeadingDeg;
                 if(Detect3(currentHeading))
@@ -124,13 +130,13 @@ namespace NavalCombatCore
             if (!elevationProvider.TrySampleROIShoreField(latLon, out var currentSample))
                 return false;
 
-            if (currentSample.distancePixels >= ROIShoreEarlyExitDistancePixels)
+            if (currentSample.distancePixels >= parameters.roiEarlyExitDistancePixels)
             {
                 newHeadingDeg = initialDesiredHeadingDeg;
                 return true;
             }
 
-            var previewDistanceM = speedMeterPerSecond * ROIShorePreviewSeconds;
+            var previewDistanceM = speedMeterPerSecond * parameters.roiPreviewSeconds;
             Geodesic.WGS84.Direct(latLon.LatDeg, latLon.LonDeg, initialDesiredHeadingDeg, previewDistanceM, out double lat2, out double lon2);
             var previewLatLon = new LatLon((float)lat2, (float)lon2);
             if (!elevationProvider.TrySampleROIShoreField(previewLatLon, out var previewSample))
@@ -139,9 +145,9 @@ namespace NavalCombatCore
             var goal = HeadingDegToVector(initialDesiredHeadingDeg);
             var away = ResolveAwayVector(currentSample, previewSample);
             var previewDistancePixels = previewSample.distancePixels;
-            var avoidWeight = previewDistancePixels <= ROIShoreHardClearancePixels
+            var avoidWeight = previewDistancePixels <= parameters.roiHardClearancePixels
                 ? 1f
-                : Mathf.Clamp01((ROIShoreInfluenceDistancePixels - previewDistancePixels) / (ROIShoreInfluenceDistancePixels - ROIShoreHardClearancePixels));
+                : Mathf.Clamp01((parameters.roiInfluenceDistancePixels - previewDistancePixels) / (parameters.roiInfluenceDistancePixels - parameters.roiHardClearancePixels));
 
             if (avoidWeight <= 0f)
             {
@@ -157,7 +163,7 @@ namespace NavalCombatCore
             var tangentRight = -tangentLeft;
             var tangent = Vector2.Dot(goal, tangentLeft) >= Vector2.Dot(goal, tangentRight) ? tangentLeft : tangentRight;
 
-            Vector2 steer = previewDistancePixels <= ROIShoreHardClearancePixels
+            Vector2 steer = previewDistancePixels <= parameters.roiHardClearancePixels
                 ? tangent * 0.55f + away * 1.0f
                 : goal * (1f - avoidWeight) + tangent * avoidWeight * 0.7f + away * avoidWeight * 0.9f;
 
@@ -169,20 +175,20 @@ namespace NavalCombatCore
             return true;
         }
 
-        public bool IsUseBound() => simple ? simpleUseBound : useBound;
+        bool IsUseLegacyBound() => true;
 
         public bool Detect3(float headingDeg)
         {
-            if(IsUseBound())
+            if(IsUseLegacyBound())
             {
-                return Detect(headingDeg - boundDeg)
+                return Detect(headingDeg - LegacyBoundDeg)
                     && Detect(headingDeg)
-                    && Detect(headingDeg + boundDeg);
+                    && Detect(headingDeg + LegacyBoundDeg);
             }
             return Detect(headingDeg);
         }
 
-        public List<float> GetExtrapolateRange() => simple ? simpleExtrapolateRange : extrapolateRange;
+        IReadOnlyList<float> GetLegacyExtrapolateRange() => simple ? LegacySimpleExtrapolateRange : LegacyExtrapolateRange;
 
         public bool Detect(float headingDeg)
         {
@@ -191,7 +197,7 @@ namespace NavalCombatCore
 
             var ret = true;
             // for(var extrapolateSeconds = extrapolateSecondsLow; extrapolateSeconds <= extrapolateMinHigh; extrapolateSeconds += extrapolateMinStep)
-            foreach(var extrapolateSeconds in GetExtrapolateRange())
+            foreach(var extrapolateSeconds in GetLegacyExtrapolateRange())
             {
                 var distM = speedMeterPerSecond * extrapolateSeconds;
                 double arcLength = Geodesic.WGS84.Direct(latLon.LatDeg, latLon.LonDeg, headingDeg, distM, out double lat2, out double lon2);

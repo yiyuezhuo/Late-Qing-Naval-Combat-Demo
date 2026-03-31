@@ -65,7 +65,7 @@ namespace NavalCombatCore
 
     public class NavalGameState : AbstractGameState
     {
-        public static bool enableObstacleAvoidanceForPlayerControl = true;
+        public static ObstacleAvoidanceMode playerControlObstacleAvoidanceMode = ObstacleAvoidanceMode.Weak;
 
         struct ControlChainEdge
         {
@@ -82,6 +82,20 @@ namespace NavalCombatCore
             { ControlMode.FollowTarget, -2 },
             { ControlMode.RelativeToTarget, -1 },
         };
+
+        static ObstacleAvoidanceParameters ResolveObstacleAvoidanceParameters(ShipLog shipLog)
+        {
+            if (shipLog?.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic)
+                return ObstacleAvoidanceParameters.Strong;
+
+            return playerControlObstacleAvoidanceMode switch
+            {
+                ObstacleAvoidanceMode.None => null,
+                ObstacleAvoidanceMode.Weak => ObstacleAvoidanceParameters.Weak,
+                ObstacleAvoidanceMode.Strong => ObstacleAvoidanceParameters.Strong,
+                _ => ObstacleAvoidanceParameters.Weak
+            };
+        }
 
         static void DisableAllSearchlights(ShipLog ship)
         {
@@ -534,7 +548,6 @@ namespace NavalCombatCore
             var obstacleAvoidOperationalShipLogs = shipLogsOnMapList.Where(s =>
                 s.operationalState == ShipOperationalState.Operational
                 && !s.IsLandBattery()
-                && (enableObstacleAvoidanceForPlayerControl || s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic)
             ).ToList();
 
             // tempSubjectLogs.Clear();
@@ -635,8 +648,14 @@ namespace NavalCombatCore
             // always mode
             foreach (var shipLog in obstacleAvoidOperationalShipLogs)
             {
-                // var checker = ObstacleAvoidChecker.Extract(shipLog, true);
-                var checker = ObstacleAvoidChecker.Extract(shipLog, false);
+                var obstacleAvoidanceParameters = ResolveObstacleAvoidanceParameters(shipLog);
+                if (obstacleAvoidanceParameters == null)
+                {
+                    shipLog.preCollsionAvoiding = false;
+                    continue;
+                }
+
+                var checker = ObstacleAvoidChecker.Extract(shipLog, obstacleAvoidanceParameters, false);
                 var newDesiredHeadingDeg = checker.Check();
                 shipLog.preCollsionAvoiding = newDesiredHeadingDeg != shipLog.desiredHeadingDeg;
                 shipLog.desiredHeadingDeg = newDesiredHeadingDeg;

@@ -392,6 +392,21 @@ namespace NavalCombatCore
             get => controlMode == ControlMode.RelativeToTarget ? DisplayStyle.Flex : DisplayStyle.None;
         }
 
+        [CreateProperty]
+        public string manualRouteStatusDesc
+        {
+            get => Localize(GetManualRouteStatusKey());
+        }
+
+        [CreateProperty]
+        public string manualRouteSummaryDesc
+        {
+            get => Localize(
+                "Waypoints: {0}, Remaining distance: {1:0.00} nm",
+                GetManualRouteWaypointCount(),
+                GetManualRouteRemainingDistanceMeters() / MeasureUtils.navalMileToMeter);
+        }
+
         // Score: presentation & AI debug
         [CreateProperty]
         public float armorScoreProp => EvaluateArmorScore();

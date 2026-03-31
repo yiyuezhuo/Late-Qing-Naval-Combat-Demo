@@ -352,6 +352,8 @@ public class ShipLogView
     HistoryStackedBarChart batteryArmorLocationChart;
     HistoryStackedBarChart outgoingWeaponFireChart;
     string lastHistorySignature;
+    ListView waypointListView;
+    readonly List<LatLon> emptyWaypointList = new();
 
     readonly Color32[] historyChartPalette =
     {
@@ -661,6 +663,43 @@ public class ShipLogView
             };
         }
 
+        waypointListView = root.Q<ListView>("WaypointListView");
+        if (waypointListView != null)
+        {
+            waypointListView.makeItem = () =>
+            {
+                var row = new VisualElement();
+                row.style.flexDirection = FlexDirection.Row;
+
+                var indexLabel = new Label { name = "WaypointIndexLabel" };
+                indexLabel.style.width = 56;
+                row.Add(indexLabel);
+
+                var latitudeLabel = new Label { name = "WaypointLatitudeLabel" };
+                latitudeLabel.style.flexGrow = 1;
+                row.Add(latitudeLabel);
+
+                var longitudeLabel = new Label { name = "WaypointLongitudeLabel" };
+                longitudeLabel.style.flexGrow = 1;
+                row.Add(longitudeLabel);
+
+                return row;
+            };
+            waypointListView.bindItem = (element, index) =>
+            {
+                var shipLog = GetSelectedShipLog();
+                var waypoint = shipLog?.manualRoute != null && index >= 0 && index < shipLog.manualRoute.Count
+                    ? shipLog.manualRoute[index]
+                    : null;
+
+                element.Q<Label>("WaypointIndexLabel").text = (index + 1).ToString();
+                element.Q<Label>("WaypointLatitudeLabel").text = waypoint != null ? waypoint.LatDeg.ToString("0.0000") : string.Empty;
+                element.Q<Label>("WaypointLongitudeLabel").text = waypoint != null ? waypoint.LonDeg.ToString("0.0000") : string.Empty;
+            };
+            root.schedule.Execute(RefreshWaypointListView).Every(250);
+            RefreshWaypointListView();
+        }
+
         InitializeHistoryTab();
 
         // Utils.BindIStrategicGroupMemberReferenceable(root, this);
@@ -711,6 +750,16 @@ public class ShipLogView
         historyTabContent.RegisterCallback<GeometryChangedEvent>(_ => RequestHistoryRefresh());
         historyTabContent.schedule.Execute(() => RequestHistoryRefresh()).Every(500);
         RequestHistoryRefresh(true);
+    }
+
+    void RefreshWaypointListView()
+    {
+        if (waypointListView == null)
+            return;
+
+        var shipLog = GetSelectedShipLog();
+        waypointListView.itemsSource = shipLog?.manualRoute ?? emptyWaypointList;
+        waypointListView.Rebuild();
     }
 
     public void RequestHistoryRefresh(bool force = false)

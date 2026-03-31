@@ -219,6 +219,11 @@ public class TopTabs : SingletonDocument<TopTabs>
             GameManager.Instance.state = GameManager.State.SelectingCourseTarget;
         };
 
+        root.Q<Button>("WaypointButton").clicked += () =>
+        {
+            GameManager.Instance.ToggleSelectedShipWaypointEditing();
+        };
+
         // root.Q<Button>("OpenOpenSourceRepoButton").clicked += () =>
         // {
         //     Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");

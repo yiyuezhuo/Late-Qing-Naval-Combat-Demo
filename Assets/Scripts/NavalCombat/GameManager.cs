@@ -133,6 +133,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public List<PostureMaterialConfig> postureMaterialMap = new();
 
     public LatLon lastSelectedLatLon;
+    ElevationProvider shipManualRouteElevationProvider;
+    ExactROIShoreFieldPathfinder shipManualRoutePathfinder;
+    ShipManualRouteDisplay shipManualRouteDisplay;
+    PathfindingResult shipManualRoutePreviewResult;
+    int shipManualRoutePreviewWindowIndex = -2;
+    float shipManualRoutePreviewThreshold = float.NaN;
+    string shipManualRoutePreviewSourceKey;
+    string shipManualRoutePathfinderSourceKey;
 
     public enum State
     {
@@ -149,7 +157,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         SelectingTorpedoFiringTarget,
         SelectingTargetMisc,
         SelectingCourseTarget,
-        SelectingShipLevelFiringTarget
+        SelectingShipLevelFiringTarget,
+        SelectingWaypointDestination
     }
 
     State _state = State.Idle;
@@ -265,6 +274,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         if (GetComponent<NavalLocationLabelOverlay>() == null)
         {
             gameObject.AddComponent<NavalLocationLabelOverlay>();
+        }
+        shipManualRouteDisplay = GetComponent<ShipManualRouteDisplay>();
+        if (shipManualRouteDisplay == null)
+        {
+            shipManualRouteDisplay = gameObject.AddComponent<ShipManualRouteDisplay>();
         }
         // Debug.Log($"Persistent Path:{Application.persistentDataPath}");
 
@@ -1049,6 +1063,232 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
+    public void ToggleSelectedShipWaypointEditing()
+    {
+        if (state == State.SelectingWaypointDestination)
+        {
+            ExitSelectedShipWaypointEditing();
+            return;
+        }
+
+        var shipLog = GetSelectedShipLogForWaypointRouting();
+        if (shipLog == null)
+            return;
+
+        shipLog.ClearManualRoute();
+        state = State.SelectingWaypointDestination;
+        ResetShipManualRoutePreview();
+    }
+
+    void ExitSelectedShipWaypointEditing()
+    {
+        if (state == State.SelectingWaypointDestination)
+        {
+            state = State.Idle;
+        }
+        ResetShipManualRoutePreview();
+    }
+
+    ShipLog GetSelectedShipLogForWaypointRouting()
+    {
+        var shipLog = selectedShipLog;
+        if (shipLog == null || shipLog.mapState != MapState.Deployed || shipLog.IsLandBattery())
+            return null;
+        return shipLog;
+    }
+
+    void ResetShipManualRoutePreview()
+    {
+        shipManualRoutePreviewResult = null;
+        shipManualRoutePreviewWindowIndex = -2;
+        shipManualRoutePreviewThreshold = float.NaN;
+        shipManualRoutePreviewSourceKey = null;
+    }
+
+    void EnsureShipManualRoutePathfinder(LatLon sourcePoint)
+    {
+        var currentProvider = ElevationService.Instance.elevationProvider as ElevationProvider;
+        var sourceKey = BuildShipManualRoutePreviewSourceKey(sourcePoint);
+        if (currentProvider == null || sourcePoint == null)
+        {
+            shipManualRouteElevationProvider = null;
+            shipManualRoutePathfinder = null;
+            shipManualRoutePathfinderSourceKey = null;
+            return;
+        }
+
+        if (ReferenceEquals(shipManualRouteElevationProvider, currentProvider)
+            && shipManualRoutePathfinder != null
+            && shipManualRoutePathfinderSourceKey == sourceKey)
+            return;
+
+        shipManualRouteElevationProvider = currentProvider;
+        shipManualRoutePathfinderSourceKey = sourceKey;
+        shipManualRoutePathfinder = currentProvider.HasValidROIShoreField()
+            ? new ExactROIShoreFieldPathfinder(currentProvider, sourcePoint)
+            : null;
+    }
+
+    string GetShipManualRouteFailureMessage(PathfindingFailureReason failureReason)
+    {
+        return failureReason switch
+        {
+            PathfindingFailureReason.ShoreFieldUnavailable => Localize("Waypoint: shore field unavailable"),
+            PathfindingFailureReason.OutsideROI => Localize("Waypoint: outside ROI"),
+            PathfindingFailureReason.SearchWindowExceeded => Localize("Waypoint: outside exact search window"),
+            PathfindingFailureReason.SourceBlocked => Localize("Waypoint: source blocked"),
+            PathfindingFailureReason.DestinationBlocked => Localize("Waypoint: destination blocked"),
+            PathfindingFailureReason.NoPath => Localize("Waypoint: no path"),
+            _ => string.Empty
+        };
+    }
+
+    static string BuildShipManualRoutePreviewSourceKey(LatLon source)
+    {
+        if (source == null)
+            return string.Empty;
+        return $"{source.LatDeg:F6}:{source.LonDeg:F6}";
+    }
+
+    bool TryGetCurrentMapHitPoint(out Vector3 hitPoint)
+    {
+        hitPoint = Vector3.zero;
+        var controller = CameraController2.Instance;
+        if (controller == null)
+            return false;
+
+        hitPoint = controller.GetHitPoint();
+        return hitPoint != Vector3.zero;
+    }
+
+    bool TryGetCurrentMapLatLon(out Vector3 hitPoint, out LatLon latLon)
+    {
+        latLon = null;
+        if (!TryGetCurrentMapHitPoint(out hitPoint))
+            return false;
+
+        latLon = Utils.Vector3ToLatLon(hitPoint);
+        return latLon != null;
+    }
+
+    void SyncSelectedShipManualRouteDisplay(bool pointerOverBlockingUi)
+    {
+        if (shipManualRouteDisplay == null)
+            return;
+
+        var shipLog = GetSelectedShipLogForWaypointRouting();
+        if (shipLog == null)
+        {
+            if (state == State.SelectingWaypointDestination)
+                ExitSelectedShipWaypointEditing();
+
+            shipManualRouteDisplay.Hide();
+            return;
+        }
+
+        if (state == State.SelectingWaypointDestination)
+        {
+            var sourcePoint = shipLog.HasManualRoute() ? shipLog.manualRoute[^1] : shipLog.position;
+            EnsureShipManualRoutePathfinder(sourcePoint);
+
+            var anchorPosition = Utils.LatLonToVector3(sourcePoint);
+            var message = Localize("Waypoint: choose destination");
+            var previewResult = shipManualRoutePreviewResult;
+
+            if (!pointerOverBlockingUi && TryGetCurrentMapLatLon(out var hitPoint, out var currentLatLon))
+            {
+                var threshold = GamePreference.Instance.pathfindingShorePassableDistancePixels;
+                var sourceKey = BuildShipManualRoutePreviewSourceKey(sourcePoint);
+                var previewIndex = -1;
+                shipManualRoutePathfinder?.TryGetWindowNodeIndex(currentLatLon, out previewIndex);
+
+                if (shipManualRoutePathfinder == null
+                    || sourceKey != shipManualRoutePreviewSourceKey
+                    || previewIndex != shipManualRoutePreviewWindowIndex
+                    || Math.Abs(threshold - shipManualRoutePreviewThreshold) > 1e-5f)
+                {
+                    shipManualRoutePreviewResult = shipManualRoutePathfinder?.FindPath(sourcePoint, currentLatLon, threshold);
+                    shipManualRoutePreviewSourceKey = sourceKey;
+                    shipManualRoutePreviewWindowIndex = previewIndex;
+                    shipManualRoutePreviewThreshold = threshold;
+                }
+
+                previewResult = shipManualRoutePreviewResult;
+                anchorPosition = hitPoint;
+
+                if (previewResult == null)
+                {
+                    message = GetShipManualRouteFailureMessage(PathfindingFailureReason.ShoreFieldUnavailable);
+                }
+                else if (previewResult.success)
+                {
+                    var distanceNm = previewResult.routedDistanceMeters / MeasureUtils.navalMileToMeter;
+                    message = Localize("Waypoint: routed distance {0:0.00} nm", distanceNm);
+                }
+                else
+                {
+                    message = GetShipManualRouteFailureMessage(previewResult.failureReason);
+                }
+            }
+            else
+            {
+                ResetShipManualRoutePreview();
+            }
+
+            shipManualRouteDisplay.Render(shipLog, previewResult, message, anchorPosition);
+            return;
+        }
+
+        ResetShipManualRoutePreview();
+        if (shipLog.HasManualRoute())
+        {
+            shipManualRouteDisplay.Render(shipLog, null, null, null);
+        }
+        else
+        {
+            shipManualRouteDisplay.Hide();
+        }
+    }
+
+    void TryCommitSelectedShipManualRouteAtPointer()
+    {
+        var shipLog = GetSelectedShipLogForWaypointRouting();
+        if (shipLog == null)
+        {
+            ExitSelectedShipWaypointEditing();
+            return;
+        }
+
+        if (!TryGetCurrentMapLatLon(out _, out var currentLatLon))
+            return;
+
+        var threshold = GamePreference.Instance.pathfindingShorePassableDistancePixels;
+        var sourcePoint = shipLog.HasManualRoute() ? shipLog.manualRoute[^1] : shipLog.position;
+        EnsureShipManualRoutePathfinder(sourcePoint);
+        var sourceKey = BuildShipManualRoutePreviewSourceKey(sourcePoint);
+        var previewIndex = -1;
+        shipManualRoutePathfinder?.TryGetWindowNodeIndex(currentLatLon, out previewIndex);
+        shipManualRoutePreviewResult = shipManualRoutePathfinder?.FindPath(sourcePoint, currentLatLon, threshold);
+        shipManualRoutePreviewSourceKey = sourceKey;
+        shipManualRoutePreviewWindowIndex = previewIndex;
+        shipManualRoutePreviewThreshold = threshold;
+
+        if (shipManualRoutePreviewResult == null || !shipManualRoutePreviewResult.success)
+            return;
+
+        var pathPointsToAppend = shipManualRoutePreviewResult.points.Skip(1);
+        if (shipLog.HasManualRoute())
+        {
+            shipLog.AppendRouteSegment(pathPointsToAppend);
+        }
+        else
+        {
+            shipLog.ReplaceRouteFromPath(pathPointsToAppend);
+        }
+
+        ResetShipManualRoutePreview();
+    }
+
     void ClearPendingRightClickAction()
     {
         rightClickPendingExecution = false;
@@ -1369,6 +1609,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             ClearPendingRightClickAction();
         }
 
+        SyncSelectedShipManualRouteDisplay(pointerOverBlockingUi);
+
         if (hotKeyEnabled)
         {
             if (Input.GetKeyDown(KeyCode.H))
@@ -1378,6 +1620,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                if (state == State.SelectingWaypointDestination)
+                {
+                    ExitSelectedShipWaypointEditing();
+                    return;
+                }
+
                 state = State.Idle;
                 selectedShipLogObjectId = null;
                 rightClickCandidateActive = false;
@@ -1387,6 +1635,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
             var isPressingShift = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
             var isPressingAlt = Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt);
+
+            if (Input.GetKeyDown(KeyCode.W) && (state == State.Idle || state == State.SelectingWaypointDestination))
+            {
+                ToggleSelectedShipWaypointEditing();
+                return;
+            }
 
             if (state != State.Idle && (rightClickCandidateActive || rightClickPendingExecution))
             {
@@ -1691,6 +1945,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     state = State.Idle;
                     SetSelectedShipCourseTowardPointer();
+                }
+            }
+            else if (state == State.SelectingWaypointDestination)
+            {
+                if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
+                {
+                    TryCommitSelectedShipManualRouteAtPointer();
                 }
             }
             else if(state == State.SelectingShipLevelFiringTarget)

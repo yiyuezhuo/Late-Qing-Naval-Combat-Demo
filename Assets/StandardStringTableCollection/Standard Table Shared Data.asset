@@ -2955,6 +2955,26 @@ MonoBehaviour:
     m_Key: Exact Pathfinding (Alt + P)
     m_Metadata:
       m_Items: []
+  - m_Id: -95000000000001
+    m_Key: Waypoint (W)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000000002
+    m_Key: Route Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000000003
+    m_Key: Route Summary
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000000004
+    m_Key: Waypoints
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000000005
+    m_Key: Index
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

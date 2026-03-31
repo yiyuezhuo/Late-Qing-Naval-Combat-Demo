@@ -3331,6 +3331,58 @@ MonoBehaviour:
     m_Localized: Outside exact search window
     m_Metadata:
       m_Items: []
+  - m_Id: -95000000010001
+    m_Localized: No route
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010002
+    m_Localized: Active
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010003
+    m_Localized: Ignored by automatic maneuver
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010004
+    m_Localized: Ignored by control mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010005
+    m_Localized: 'Waypoints: {0}, Remaining distance: {1:0.00} nm'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010006
+    m_Localized: 'Waypoint: choose destination'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010007
+    m_Localized: 'Waypoint: shore field unavailable'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010008
+    m_Localized: 'Waypoint: outside ROI'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010009
+    m_Localized: 'Waypoint: source blocked'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010010
+    m_Localized: 'Waypoint: destination blocked'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010011
+    m_Localized: 'Waypoint: no path'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010012
+    m_Localized: 'Waypoint: routed distance {0:0.00} nm'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010013
+    m_Localized: 'Waypoint: outside exact search window'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

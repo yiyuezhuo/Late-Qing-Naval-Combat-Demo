@@ -556,6 +556,7 @@ namespace NavalCombatCore
         public bool emergencyRudder;
         public bool assistedDeceleration = true;
         public ControlMode controlMode;
+        public List<LatLon> manualRoute = new();
         public string followedTargetObjectId;
         public ShipLog followedTarget
         {
@@ -661,6 +662,79 @@ namespace NavalCombatCore
         public float relativeToTargetDistanceYards = 250;
         public float relativeToTargetAzimuth = 135; // right-after position
         public bool relativeToAbsolute;
+
+        const float ManualRouteArrivalRadiusYards = 50f;
+        const float ManualRoutePassedCornerCaptureRadiusYards = 150f;
+        const float ManualRouteLookaheadMinYards = 100f;
+        const float ManualRouteLookaheadMaxYards = 600f;
+        const float ManualRouteLookaheadSpeedCoefYards = 34f;
+
+        public bool HasManualRoute() => manualRoute != null && manualRoute.Count > 0;
+
+        public int GetManualRouteWaypointCount() => manualRoute?.Count ?? 0;
+
+        public void ClearManualRoute()
+        {
+            manualRoute ??= new List<LatLon>();
+            manualRoute.Clear();
+        }
+
+        public void ReplaceRouteFromPath(IEnumerable<LatLon> pathPoints)
+        {
+            ClearManualRoute();
+            AppendRouteSegment(pathPoints);
+        }
+
+        public void AppendRouteSegment(IEnumerable<LatLon> pathPoints)
+        {
+            if (pathPoints == null)
+                return;
+
+            manualRoute ??= new List<LatLon>();
+            foreach (var point in pathPoints)
+            {
+                if (point == null)
+                    continue;
+
+                if (manualRoute.Count > 0 && MeasureUtils.ApproximateDistanceYards(manualRoute[^1], point) <= 0.1f)
+                    continue;
+
+                manualRoute.Add(point.Clone());
+            }
+        }
+
+        public float GetManualRouteRemainingDistanceMeters()
+        {
+            if (!HasManualRoute())
+                return 0f;
+
+            var totalMeters = 0f;
+            var previousPoint = position;
+            foreach (var waypoint in manualRoute)
+            {
+                if (waypoint == null)
+                    continue;
+
+                var inverseLine = Geodesic.WGS84.InverseLine(
+                    previousPoint.LatDeg, previousPoint.LonDeg,
+                    waypoint.LatDeg, waypoint.LonDeg
+                );
+                totalMeters += (float)inverseLine.Distance;
+                previousPoint = waypoint;
+            }
+            return totalMeters;
+        }
+
+        public string GetManualRouteStatusKey()
+        {
+            if (!HasManualRoute())
+                return "No route";
+            if (doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic)
+                return "Ignored by automatic maneuver";
+            if (GetEffectiveControlMode() != ControlMode.Independent)
+                return "Ignored by control mode";
+            return "Active";
+        }
 
         public string GetMemberName() => namedShip?.name?.mergedName ?? "[Not Specified]";// name.mergedName;
 
@@ -1313,7 +1387,8 @@ namespace NavalCombatCore
             var decelerationKnotsCapPer2Min = maxSpeedKnots * (assistedDeceleration ? 0.6f : 0.2f);
             var decelerationKnotsCapPerSec = decelerationKnotsCapPer2Min / 120f;
 
-            if (controlMode == ControlMode.FollowTarget)
+            var effectiveControlMode = GetEffectiveControlMode();
+            if (effectiveControlMode == ControlMode.FollowTarget)
             {
                 if (followedTarget != null)
                 {
@@ -1376,7 +1451,7 @@ namespace NavalCombatCore
                     desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)inverseLine.Azimuth);
                 }
             }
-            else if (controlMode == ControlMode.RelativeToTarget)
+            else if (effectiveControlMode == ControlMode.RelativeToTarget)
             {
                 if (relativeToTarget != null)
                 {
@@ -1433,6 +1508,206 @@ namespace NavalCombatCore
                     }
                 }
             }
+            else if (effectiveControlMode == ControlMode.Independent
+                && doctrine.GetManeuverAutomaticType() == AutomaticType.Manual
+                && HasManualRoute())
+            {
+                ApplyManualRouteGuidance();
+            }
+        }
+
+        void ApplyManualRouteGuidance()
+        {
+            PruneReachedManualRouteWaypoints();
+            if (!HasManualRoute())
+                return;
+
+            if (manualRoute.Count == 1)
+            {
+                var terminalPoint = manualRoute[0];
+                desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)MeasureStats.Approximation.CalculateInitialBearing(
+                    position.LatDeg, position.LonDeg,
+                    terminalPoint.LatDeg, terminalPoint.LonDeg));
+                return;
+            }
+
+            var projectedRoute = BuildProjectedManualRoute();
+            if (projectedRoute.Count == 0)
+                return;
+            if (projectedRoute.Count == 1)
+            {
+                var terminalPoint = projectedRoute[0].latLon;
+                desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)MeasureStats.Approximation.CalculateInitialBearing(
+                    position.LatDeg, position.LonDeg,
+                    terminalPoint.LatDeg, terminalPoint.LonDeg));
+                return;
+            }
+
+            var totalLengthYards = 0f;
+            var closestDistanceAlongRouteYards = 0f;
+            var closestDistanceSqYards = float.PositiveInfinity;
+            var lengthBeforeSegmentYards = 0f;
+
+            for (var i = 0; i < projectedRoute.Count - 1; i++)
+            {
+                var a = projectedRoute[i];
+                var b = projectedRoute[i + 1];
+                var deltaX = b.xYards - a.xYards;
+                var deltaY = b.yYards - a.yYards;
+                var segmentLengthSq = deltaX * deltaX + deltaY * deltaY;
+                var segmentLengthYards = (float)Math.Sqrt(segmentLengthSq);
+
+                float t;
+                float closestX;
+                float closestY;
+                if (segmentLengthSq <= 1e-4f)
+                {
+                    t = 0f;
+                    closestX = a.xYards;
+                    closestY = a.yYards;
+                }
+                else
+                {
+                    t = Math.Clamp((-(a.xYards * deltaX + a.yYards * deltaY)) / segmentLengthSq, 0f, 1f);
+                    closestX = a.xYards + deltaX * t;
+                    closestY = a.yYards + deltaY * t;
+                }
+
+                var distanceSqYards = closestX * closestX + closestY * closestY;
+                if (distanceSqYards < closestDistanceSqYards)
+                {
+                    closestDistanceSqYards = distanceSqYards;
+                    closestDistanceAlongRouteYards = lengthBeforeSegmentYards + segmentLengthYards * t;
+                }
+
+                lengthBeforeSegmentYards += segmentLengthYards;
+                totalLengthYards += segmentLengthYards;
+            }
+
+            var lookaheadYards = Math.Clamp(
+                speedKnots * ManualRouteLookaheadSpeedCoefYards,
+                ManualRouteLookaheadMinYards,
+                ManualRouteLookaheadMaxYards);
+            var targetDistanceAlongRouteYards = Math.Min(totalLengthYards, closestDistanceAlongRouteYards + lookaheadYards);
+            var targetPoint = ResolveProjectedRoutePointAtDistance(projectedRoute, targetDistanceAlongRouteYards);
+            if (targetPoint == null)
+                targetPoint = manualRoute[0];
+
+            desiredHeadingDeg = MeasureUtils.NormalizeAngle((float)MeasureStats.Approximation.CalculateInitialBearing(
+                position.LatDeg, position.LonDeg,
+                targetPoint.LatDeg, targetPoint.LonDeg));
+        }
+
+        void PruneReachedManualRouteWaypoints()
+        {
+            if (manualRoute == null)
+                return;
+
+            var projection = new MeasureUtils.LocalProjection(position.LatDeg, position.LonDeg);
+            while (manualRoute.Count > 0)
+            {
+                if (manualRoute[0] == null)
+                {
+                    manualRoute.RemoveAt(0);
+                    continue;
+                }
+
+                if (MeasureUtils.ApproximateDistanceYards(position, manualRoute[0]) <= ManualRouteArrivalRadiusYards)
+                {
+                    manualRoute.RemoveAt(0);
+                    continue;
+                }
+
+                if (manualRoute.Count >= 2 && HasPassedLeadingManualRouteWaypoint(projection, manualRoute[0], manualRoute[1]))
+                {
+                    manualRoute.RemoveAt(0);
+                    continue;
+                }
+
+                break;
+            }
+        }
+
+        List<(LatLon latLon, float xYards, float yYards)> BuildProjectedManualRoute()
+        {
+            var projection = new MeasureUtils.LocalProjection(position.LatDeg, position.LonDeg);
+            var projectedRoute = new List<(LatLon latLon, float xYards, float yYards)>(manualRoute.Count);
+
+            foreach (var waypoint in manualRoute)
+            {
+                if (waypoint == null)
+                    continue;
+
+                projectedRoute.Add((
+                    waypoint,
+                    projection.LongitudeToX(waypoint.LonDeg),
+                    projection.LatitudeToY(waypoint.LatDeg)));
+            }
+
+            return projectedRoute;
+        }
+
+        bool HasPassedLeadingManualRouteWaypoint(MeasureUtils.LocalProjection projection, LatLon leadingWaypoint, LatLon nextWaypoint)
+        {
+            if (leadingWaypoint == null || nextWaypoint == null)
+                return false;
+
+            var leadingX = projection.LongitudeToX(leadingWaypoint.LonDeg);
+            var leadingY = projection.LatitudeToY(leadingWaypoint.LatDeg);
+            var nextX = projection.LongitudeToX(nextWaypoint.LonDeg);
+            var nextY = projection.LatitudeToY(nextWaypoint.LatDeg);
+            var legX = nextX - leadingX;
+            var legY = nextY - leadingY;
+            var legLengthSq = legX * legX + legY * legY;
+            if (legLengthSq <= 1e-4f)
+                return false;
+
+            var progressAlongLeg = (-(leadingX * legX + leadingY * legY)) / legLengthSq;
+            if (progressAlongLeg <= 0f)
+                return false;
+
+            var closestPointOnLegX = leadingX + legX * progressAlongLeg;
+            var closestPointOnLegY = leadingY + legY * progressAlongLeg;
+            var distanceToLegYards = (float)Math.Sqrt(closestPointOnLegX * closestPointOnLegX + closestPointOnLegY * closestPointOnLegY);
+            if (distanceToLegYards <= ManualRoutePassedCornerCaptureRadiusYards)
+                return true;
+
+            var distanceToLeadingWaypointYards = (float)Math.Sqrt(leadingX * leadingX + leadingY * leadingY);
+            var distanceToNextWaypointYards = (float)Math.Sqrt(nextX * nextX + nextY * nextY);
+            return distanceToNextWaypointYards + ManualRouteArrivalRadiusYards < distanceToLeadingWaypointYards;
+        }
+
+        LatLon ResolveProjectedRoutePointAtDistance(List<(LatLon latLon, float xYards, float yYards)> projectedRoute, float distanceAlongRouteYards)
+        {
+            if (projectedRoute == null || projectedRoute.Count == 0)
+                return null;
+            if (projectedRoute.Count == 1)
+                return projectedRoute[0].latLon;
+
+            var traversedYards = 0f;
+            for (var i = 0; i < projectedRoute.Count - 1; i++)
+            {
+                var currentPoint = projectedRoute[i];
+                var nextPoint = projectedRoute[i + 1];
+                var deltaX = nextPoint.xYards - currentPoint.xYards;
+                var deltaY = nextPoint.yYards - currentPoint.yYards;
+                var segmentLengthYards = (float)Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
+
+                if (segmentLengthYards <= 1e-4f)
+                    continue;
+
+                if (distanceAlongRouteYards <= traversedYards + segmentLengthYards)
+                {
+                    var t = (distanceAlongRouteYards - traversedYards) / segmentLengthYards;
+                    return new LatLon(
+                        currentPoint.latLon.LatDeg + (nextPoint.latLon.LatDeg - currentPoint.latLon.LatDeg) * t,
+                        currentPoint.latLon.LonDeg + (nextPoint.latLon.LonDeg - currentPoint.latLon.LonDeg) * t);
+                }
+
+                traversedYards += segmentLengthYards;
+            }
+
+            return projectedRoute[^1].latLon;
         }
 
         public float GetMaxSpeedKnots() // cache in context?

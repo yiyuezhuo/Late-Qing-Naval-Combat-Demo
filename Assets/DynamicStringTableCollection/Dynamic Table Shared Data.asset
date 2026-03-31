@@ -3322,6 +3322,58 @@ MonoBehaviour:
     m_Key: 'Pathfinding: outside exact search window'
     m_Metadata:
       m_Items: []
+  - m_Id: -95000000010001
+    m_Key: No route
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010002
+    m_Key: Active
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010003
+    m_Key: Ignored by automatic maneuver
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010004
+    m_Key: Ignored by control mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010005
+    m_Key: 'Waypoints: {0}, Remaining distance: {1:0.00} nm'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010006
+    m_Key: 'Waypoint: choose destination'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010007
+    m_Key: 'Waypoint: shore field unavailable'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010008
+    m_Key: 'Waypoint: outside ROI'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010009
+    m_Key: 'Waypoint: source blocked'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010010
+    m_Key: 'Waypoint: destination blocked'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010011
+    m_Key: 'Waypoint: no path'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010012
+    m_Key: 'Waypoint: routed distance {0:0.00} nm'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010013
+    m_Key: 'Waypoint: outside exact search window'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

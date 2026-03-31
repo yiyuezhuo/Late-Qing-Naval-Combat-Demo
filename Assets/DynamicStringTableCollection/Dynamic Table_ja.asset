@@ -3369,6 +3369,58 @@ MonoBehaviour:
     m_Localized: "\u7CBE\u5BC6\u691C\u7D22\u7BC4\u56F2\u5916\u3067\u3059"
     m_Metadata:
       m_Items: []
+  - m_Id: -95000000010001
+    m_Localized: "\u822A\u8DEF\u306A\u3057"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010002
+    m_Localized: "\u6709\u52B9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010003
+    m_Localized: "\u81EA\u52D5\u6A5F\u52D5\u4E2D\u306E\u305F\u3081\u7121\u8996"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010004
+    m_Localized: "\u7BA1\u5236\u65B9\u5F0F\u306E\u305F\u3081\u7121\u8996"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010005
+    m_Localized: "\u822A\u8DEF\u70B9: {0}, \u6B8B\u8DDD\u96E2: {1:0.00} nm"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010006
+    m_Localized: "\u30A6\u30A7\u30A4\u30DD\u30A4\u30F3\u30C8: \u76EE\u7684\u5730\u3092\u9078\u629E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010007
+    m_Localized: "\u30A6\u30A7\u30A4\u30DD\u30A4\u30F3\u30C8: \u6D77\u5CB8\u8DDD\u96E2\u5834\u3092\u5229\u7528\u3067\u304D\u307E\u305B\u3093"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010008
+    m_Localized: "\u30A6\u30A7\u30A4\u30DD\u30A4\u30F3\u30C8: ROI \u5916"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010009
+    m_Localized: "\u30A6\u30A7\u30A4\u30DD\u30A4\u30F3\u30C8: \u59CB\u70B9\u306F\u901A\u884C\u4E0D\u80FD"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010010
+    m_Localized: "\u30A6\u30A7\u30A4\u30DD\u30A4\u30F3\u30C8: \u7D42\u70B9\u306F\u901A\u884C\u4E0D\u80FD"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010011
+    m_Localized: "\u30A6\u30A7\u30A4\u30DD\u30A4\u30F3\u30C8: \u7D4C\u8DEF\u306A\u3057"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010012
+    m_Localized: "\u30A6\u30A7\u30A4\u30DD\u30A4\u30F3\u30C8\u7D4C\u8DEF\u8DDD\u96E2 {0:0.00} nm"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -95000000010013
+    m_Localized: "\u30A6\u30A7\u30A4\u30DD\u30A4\u30F3\u30C8: \u7CBE\u5BC6\u63A2\u7D22\u30A6\u30A3\u30F3\u30C9\u30A6\u5916"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -561,6 +561,8 @@ namespace NavalCombatCore
         public string automaticOperationalRouteTargetObjectId;
         [XmlIgnore]
         public LatLon automaticOperationalRouteTargetPosition;
+        [XmlIgnore]
+        public DateTime automaticOperationalRouteNextReplanTime;
         public string followedTargetObjectId;
         public ShipLog followedTarget
         {
@@ -742,12 +744,20 @@ namespace NavalCombatCore
         {
             automaticOperationalRouteTargetObjectId = null;
             automaticOperationalRouteTargetPosition = null;
+            automaticOperationalRouteNextReplanTime = default;
         }
 
-        public void SetAutomaticOperationalRouteState(ShipLog targetShip, LatLon targetPosition)
+        public void SetAutomaticOperationalRouteState(ShipLog targetShip, LatLon targetPosition, DateTime nextReplanTime = default)
         {
             automaticOperationalRouteTargetObjectId = targetShip?.objectId;
             automaticOperationalRouteTargetPosition = targetPosition?.Clone();
+            automaticOperationalRouteNextReplanTime = nextReplanTime;
+        }
+
+        public bool IsAutomaticOperationalRouteReplanCoolingDown(DateTime currentTime)
+        {
+            return automaticOperationalRouteNextReplanTime != default
+                && currentTime < automaticOperationalRouteNextReplanTime;
         }
 
         public bool ShouldReplanAutomaticOperationalRoute(ShipLog targetShip, LatLon targetPosition, float targetDriftToleranceYards)

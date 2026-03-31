@@ -71,6 +71,7 @@ namespace NavalCombatCore
         public const float AutoEndDisengagedDistanceYards = 48000f;
         public const float AutoEndDisengagedDistanceSquaredYards = AutoEndDisengagedDistanceYards * AutoEndDisengagedDistanceYards;
         const float OperationalRouteReplanTargetDriftYards = 1000f;
+        const float OperationalRouteFarDistanceReplanIntervalSeconds = 20 * 60f;
 
         public enum AutomaticManeuverMode
         {
@@ -562,18 +563,27 @@ namespace NavalCombatCore
                 return;
             }
 
+            var useFarDistanceReplanInterval = proximityInfo.nearestEnemyDistanceSquaredYards > TacticalManeuverDistanceSquaredYards;
+            var nextReplanTime = useFarDistanceReplanInterval
+                ? scenarioState.dateTime.AddSeconds(OperationalRouteFarDistanceReplanIntervalSeconds)
+                : default;
+
+            if (useFarDistanceReplanInterval
+                && shipLog.IsAutomaticOperationalRouteReplanCoolingDown(scenarioState.dateTime))
+                return;
+
             if (!shipLog.ShouldReplanAutomaticOperationalRoute(targetShip, targetPosition, OperationalRouteReplanTargetDriftYards))
                 return;
 
             if (TryBuildAutomaticOperationalRoute(shipLog, targetPosition, out var routePoints))
             {
                 shipLog.ReplaceRouteFromPath(routePoints);
-                shipLog.SetAutomaticOperationalRouteState(targetShip, targetPosition);
+                shipLog.SetAutomaticOperationalRouteState(targetShip, targetPosition, nextReplanTime);
                 return;
             }
 
             shipLog.ClearManualRoute();
-            shipLog.ClearAutomaticOperationalRouteState();
+            shipLog.SetAutomaticOperationalRouteState(targetShip, targetPosition, nextReplanTime);
         }
 
         static void ApplyOperationalRetreatHeading(ShipLog shipLog, ShipHostileProximityInfo proximityInfo)

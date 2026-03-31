@@ -16,7 +16,6 @@ public sealed class ExactROIShoreFieldPathfinder
     readonly int windowHeight;
     readonly int sourcePixelX;
     readonly int sourcePixelY;
-    readonly float[] windowDistancePixels;
     readonly float[] gScore;
     readonly int[] cameFrom;
     readonly int[] nodeStamp;
@@ -155,17 +154,14 @@ public sealed class ExactROIShoreFieldPathfinder
         windowMinY = Mathf.Clamp(sourcePixelY - windowHeight / 2, 0, Math.Max(0, provider.ROIShoreFieldHeight - windowHeight));
 
         var nodeCount = windowWidth * windowHeight;
-        windowDistancePixels = new float[nodeCount];
         gScore = new float[nodeCount];
         cameFrom = new int[nodeCount];
         nodeStamp = new int[nodeCount];
         closedStamp = new int[nodeCount];
         openSet = new MinHeap(nodeCount / 16 + 16);
-
-        BuildWindowDistanceField();
     }
 
-    public bool IsReady => provider != null && windowDistancePixels != null;
+    public bool IsReady => provider != null && gScore != null && windowWidth > 0 && windowHeight > 0;
 
     public bool TryGetWindowNodeIndex(LatLon latLon, out int localIndex)
     {
@@ -247,24 +243,6 @@ public sealed class ExactROIShoreFieldPathfinder
         return result;
     }
 
-    void BuildWindowDistanceField()
-    {
-        for (var localY = 0; localY < windowHeight; localY++)
-        {
-            for (var localX = 0; localX < windowWidth; localX++)
-            {
-                var pixelX = windowMinX + localX;
-                var pixelY = windowMinY + localY;
-                if (!provider.TryGetROIShoreFieldDistancePixels(pixelX, pixelY, out var distancePixels))
-                {
-                    distancePixels = 0f;
-                }
-
-                windowDistancePixels[ToLocalIndex(localX, localY)] = distancePixels;
-            }
-        }
-    }
-
     bool IsPixelInsideWindow(int pixelX, int pixelY)
     {
         return pixelX >= windowMinX
@@ -276,13 +254,23 @@ public sealed class ExactROIShoreFieldPathfinder
     bool TryGetDistancePixels(int pixelX, int pixelY, out float distancePixels)
     {
         distancePixels = 0f;
-        if (!IsPixelInsideWindow(pixelX, pixelY))
+        if (!IsReady || !IsPixelInsideWindow(pixelX, pixelY))
         {
             return false;
         }
 
-        distancePixels = windowDistancePixels[ToLocalIndex(pixelX - windowMinX, pixelY - windowMinY)];
-        return true;
+        return provider.TryGetROIShoreFieldDistancePixels(pixelX, pixelY, out distancePixels);
+    }
+
+    bool TryGetLocalDistancePixels(int localX, int localY, out float distancePixels)
+    {
+        distancePixels = 0f;
+        if (!IsReady || localX < 0 || localX >= windowWidth || localY < 0 || localY >= windowHeight)
+        {
+            return false;
+        }
+
+        return provider.TryGetROIShoreFieldDistancePixels(windowMinX + localX, windowMinY + localY, out distancePixels);
     }
 
     int ToLocalIndex(int localX, int localY) => localY * windowWidth + localX;
@@ -346,7 +334,12 @@ public sealed class ExactROIShoreFieldPathfinder
                     }
 
                     var nextIndex = ToLocalIndex(nextX, nextY);
-                    if (closedStamp[nextIndex] == currentSearchStamp || windowDistancePixels[nextIndex] < thresholdPixels)
+                    if (closedStamp[nextIndex] == currentSearchStamp)
+                    {
+                        continue;
+                    }
+
+                    if (!TryGetLocalDistancePixels(nextX, nextY, out var nextDistance) || nextDistance < thresholdPixels)
                     {
                         continue;
                     }
@@ -477,7 +470,7 @@ public sealed class ExactROIShoreFieldPathfinder
         var steps = Math.Max(Math.Abs(deltaX), Math.Abs(deltaY)) * 2;
         if (steps <= 0)
         {
-            return windowDistancePixels[startIndex] >= thresholdPixels;
+            return TryGetLocalDistancePixels(startX, startY, out var startDistance) && startDistance >= thresholdPixels;
         }
 
         for (var step = 0; step <= steps; step++)
@@ -485,7 +478,7 @@ public sealed class ExactROIShoreFieldPathfinder
             var t = step / (float)steps;
             var x = Mathf.Clamp(Mathf.RoundToInt(Mathf.Lerp(startX, endX, t)), 0, windowWidth - 1);
             var y = Mathf.Clamp(Mathf.RoundToInt(Mathf.Lerp(startY, endY, t)), 0, windowHeight - 1);
-            if (windowDistancePixels[ToLocalIndex(x, y)] < thresholdPixels)
+            if (!TryGetLocalDistancePixels(x, y, out var distancePixels) || distancePixels < thresholdPixels)
             {
                 return false;
             }

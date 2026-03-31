@@ -32,7 +32,6 @@ public sealed class ROIShoreFieldPathfinder
     readonly int stridePixels;
     readonly int coarseWidth;
     readonly int coarseHeight;
-    readonly float[] coarseDistancePixels;
     readonly float[] gScore;
     readonly int[] cameFrom;
     readonly int[] nodeStamp;
@@ -177,17 +176,14 @@ public sealed class ROIShoreFieldPathfinder
         coarseHeight = Math.Max(1, Mathf.CeilToInt(provider.ROIShoreFieldHeight / (float)this.stridePixels));
 
         var nodeCount = coarseWidth * coarseHeight;
-        coarseDistancePixels = new float[nodeCount];
         gScore = new float[nodeCount];
         cameFrom = new int[nodeCount];
         nodeStamp = new int[nodeCount];
         closedStamp = new int[nodeCount];
         openSet = new MinHeap(nodeCount / 16 + 16);
-
-        BuildCoarseDistanceField();
     }
 
-    public bool IsReady => provider != null && coarseDistancePixels != null;
+    public bool IsReady => provider != null && gScore != null && coarseWidth > 0 && coarseHeight > 0;
 
     public bool TryGetCoarseNodeIndex(LatLon latLon, out int coarseIndex)
     {
@@ -265,26 +261,20 @@ public sealed class ROIShoreFieldPathfinder
         return result;
     }
 
-    void BuildCoarseDistanceField()
-    {
-        var centerOffset = stridePixels * 0.5f;
-        for (var y = 0; y < coarseHeight; y++)
-        {
-            for (var x = 0; x < coarseWidth; x++)
-            {
-                var pixelX = Mathf.Clamp(Mathf.RoundToInt(x * stridePixels + centerOffset), 0, provider.ROIShoreFieldWidth - 1);
-                var pixelY = Mathf.Clamp(Mathf.RoundToInt(y * stridePixels + centerOffset), 0, provider.ROIShoreFieldHeight - 1);
-                if (!provider.TryGetROIShoreFieldDistancePixels(pixelX, pixelY, out var distancePixels))
-                {
-                    distancePixels = 0f;
-                }
-
-                coarseDistancePixels[ToCoarseIndex(x, y)] = distancePixels;
-            }
-        }
-    }
-
     int ToCoarseIndex(int x, int y) => y * coarseWidth + x;
+
+    bool TryGetCoarseDistancePixels(int coarseX, int coarseY, out float distancePixels)
+    {
+        distancePixels = 0f;
+        if (!IsReady || coarseX < 0 || coarseX >= coarseWidth || coarseY < 0 || coarseY >= coarseHeight)
+        {
+            return false;
+        }
+
+        var pixelX = Mathf.Clamp(Mathf.RoundToInt(GetCoarsePixelCenterX(coarseX)), 0, provider.ROIShoreFieldWidth - 1);
+        var pixelY = Mathf.Clamp(Mathf.RoundToInt(GetCoarsePixelCenterY(coarseY)), 0, provider.ROIShoreFieldHeight - 1);
+        return provider.TryGetROIShoreFieldDistancePixels(pixelX, pixelY, out distancePixels);
+    }
 
     bool TryFindNearestPassableCoarseNode(float pixelX, float pixelY, float thresholdPixels, out CoarseNode coarseNode)
     {
@@ -312,8 +302,7 @@ public sealed class ROIShoreFieldPathfinder
                         continue;
                     }
 
-                    var index = ToCoarseIndex(x, y);
-                    if (coarseDistancePixels[index] < thresholdPixels)
+                    if (!TryGetCoarseDistancePixels(x, y, out var distancePixels) || distancePixels < thresholdPixels)
                     {
                         continue;
                     }
@@ -398,7 +387,12 @@ public sealed class ROIShoreFieldPathfinder
                     }
 
                     var nextIndex = ToCoarseIndex(nextX, nextY);
-                    if (closedStamp[nextIndex] == currentSearchStamp || coarseDistancePixels[nextIndex] < thresholdPixels)
+                    if (closedStamp[nextIndex] == currentSearchStamp)
+                    {
+                        continue;
+                    }
+
+                    if (!TryGetCoarseDistancePixels(nextX, nextY, out var nextDistance) || nextDistance < thresholdPixels)
                     {
                         continue;
                     }
@@ -529,7 +523,7 @@ public sealed class ROIShoreFieldPathfinder
         var steps = Math.Max(Math.Abs(deltaX), Math.Abs(deltaY)) * 2;
         if (steps <= 0)
         {
-            return coarseDistancePixels[startIndex] >= thresholdPixels;
+            return TryGetCoarseDistancePixels(startX, startY, out var startDistance) && startDistance >= thresholdPixels;
         }
 
         for (var step = 0; step <= steps; step++)
@@ -537,7 +531,7 @@ public sealed class ROIShoreFieldPathfinder
             var t = step / (float)steps;
             var x = Mathf.Clamp(Mathf.RoundToInt(Mathf.Lerp(startX, endX, t)), 0, coarseWidth - 1);
             var y = Mathf.Clamp(Mathf.RoundToInt(Mathf.Lerp(startY, endY, t)), 0, coarseHeight - 1);
-            if (coarseDistancePixels[ToCoarseIndex(x, y)] < thresholdPixels)
+            if (!TryGetCoarseDistancePixels(x, y, out var distancePixels) || distancePixels < thresholdPixels)
             {
                 return false;
             }

@@ -19,12 +19,15 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
     VisualElement portraitTopPreview;
     VisualElement portraitIconPreview;
     VisualElement graphicTabContent;
+    VisualElement sectorArcsTabContent;
+    VisualElement batterySectorArcsContainer;
     Image defaultPlaceholderPreviewImage;
     Texture2D defaultPlaceholderPreviewTexture;
     string lastDefaultPlaceholderSignature;
     string lastDefaultPlaceholderShipObjectId;
+    string lastSectorArcSignature;
+    string lastSectorArcShipObjectId;
 
-    SectorArcIndicatorBinder sectorArcIndicatorBinder = new();
     SectorArcIndicatorBinder torpedoSectorArcIndicatorBinder = new();
 
     protected override string ObjectListViewElementName => "ShipClassListView";
@@ -44,9 +47,10 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
     {
         base.OnEnable();
 
-        // TODO: Switch to Data Binding from callback (though how to bind list is very poorly documented)
-        sectorArcIndicatorBinder.BindUI(root.Q<VisualElement>("SectorArcIndicator"));
         torpedoSectorArcIndicatorBinder.BindUI(root.Q<VisualElement>("TorpedoSectorArcIndicator"));
+        sectorArcsTabContent = root.Q<VisualElement>("SectorArcsTabContent");
+        batterySectorArcsContainer = root.Q<VisualElement>("BatterySectorArcsContainer");
+        sectorArcsTabContent?.RegisterCallback<GeometryChangedEvent>(_ => RequestSectorArcRefresh());
 
         shipClassListView.selectionChanged += (objs) =>
         {
@@ -55,11 +59,9 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             if (currentShipClass != null)
             {
                 Debug.Log($"currentShipClass: {currentShipClass}");
-
-                sectorArcIndicatorBinder.BindBatteryData(currentShipClass);
-                torpedoSectorArcIndicatorBinder.BindTorpedoData(currentShipClass);
             }
 
+            RequestSectorArcRefresh(currentShipClass, true);
             RequestDefaultPlaceholderPreviewRefresh(currentShipClass, true);
         };
 
@@ -303,6 +305,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 
     void OnDisable()
     {
+        ClearSectorArcState();
         DisposeDefaultPlaceholderPreviewTexture();
     }
 
@@ -394,6 +397,38 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         RequestDefaultPlaceholderPreviewRefresh();
     }
 
+    void RequestSectorArcRefresh(bool force = false)
+    {
+        RequestSectorArcRefresh(selectedShipClass, force);
+    }
+
+    void RequestSectorArcRefresh(ShipClass shipClass, bool force = false)
+    {
+        if (sectorArcsTabContent == null || batterySectorArcsContainer == null || !IsElementActuallyVisible(sectorArcsTabContent))
+            return;
+
+        if (shipClass == null)
+        {
+            ClearSectorArcState();
+            return;
+        }
+
+        if (lastSectorArcShipObjectId != shipClass.objectId)
+        {
+            ClearSectorArcState();
+            lastSectorArcShipObjectId = shipClass.objectId;
+        }
+
+        var signature = BuildSectorArcSignature(shipClass);
+        if (!force && signature == lastSectorArcSignature)
+            return;
+
+        RebuildBatterySectorArcCards(shipClass);
+        torpedoSectorArcIndicatorBinder.BindTorpedoData(shipClass);
+        lastSectorArcShipObjectId = shipClass.objectId;
+        lastSectorArcSignature = signature;
+    }
+
     void RequestDefaultPlaceholderPreviewRefresh(bool force = false)
     {
         RequestDefaultPlaceholderPreviewRefresh(selectedShipClass, force);
@@ -440,6 +475,138 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             Destroy(renderResult.iconTexture);
     }
 
+    void RebuildBatterySectorArcCards(ShipClass shipClass)
+    {
+        batterySectorArcsContainer.Clear();
+
+        if (shipClass?.batteryRecords == null)
+            return;
+
+        for (int i = 0; i < shipClass.batteryRecords.Count; i++)
+        {
+            batterySectorArcsContainer.Add(BuildBatterySectorArcCard(shipClass.batteryRecords[i], i));
+        }
+    }
+
+    VisualElement BuildBatterySectorArcCard(BatteryRecord batteryRecord, int batteryIndex)
+    {
+        var card = new VisualElement();
+        card.style.width = 220;
+        card.style.minWidth = 220;
+        card.style.marginRight = 8;
+        card.style.marginBottom = 8;
+        card.style.paddingTop = 6;
+        card.style.paddingRight = 6;
+        card.style.paddingBottom = 6;
+        card.style.paddingLeft = 6;
+        card.style.alignItems = Align.Center;
+        card.style.borderTopWidth = 1;
+        card.style.borderRightWidth = 1;
+        card.style.borderBottomWidth = 1;
+        card.style.borderLeftWidth = 1;
+        card.style.borderTopColor = Color.black;
+        card.style.borderRightColor = Color.black;
+        card.style.borderBottomColor = Color.black;
+        card.style.borderLeftColor = Color.black;
+
+        var titleLabel = new Label(GetBatterySectorArcTitle(batteryRecord, batteryIndex));
+        titleLabel.style.width = Length.Percent(100);
+        titleLabel.style.unityTextAlign = TextAnchor.MiddleCenter;
+        titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+        titleLabel.style.whiteSpace = WhiteSpace.Normal;
+        titleLabel.style.marginBottom = 6;
+        card.Add(titleLabel);
+
+        var indicatorRoot = CreateSectorArcIndicatorLayout();
+        var binder = new SectorArcIndicatorBinder();
+        binder.BindUI(indicatorRoot);
+        binder.BindBatteryData(batteryRecord);
+        card.Add(indicatorRoot);
+
+        return card;
+    }
+
+    VisualElement CreateSectorArcIndicatorLayout()
+    {
+        var indicatorRoot = new VisualElement();
+        indicatorRoot.style.flexGrow = 0;
+        indicatorRoot.style.alignItems = Align.Center;
+        indicatorRoot.Add(CreateSectorArcIndicatorRow("PortForward", "Forward", "StarboardForward"));
+        indicatorRoot.Add(CreateSectorArcIndicatorRow("PortMidship", "Midship", "StarboardMidship"));
+        indicatorRoot.Add(CreateSectorArcIndicatorRow("PortAfter", "After", "StarboardAfter"));
+        return indicatorRoot;
+    }
+
+    VisualElement CreateSectorArcIndicatorRow(params string[] indicatorNames)
+    {
+        var row = new VisualElement();
+        row.style.flexGrow = 0;
+        row.style.flexDirection = FlexDirection.Row;
+
+        foreach (var indicatorName in indicatorNames)
+        {
+            var indicator = new BatteryArcIndicator();
+            indicator.name = indicatorName;
+            indicator.style.justifyContent = Justify.Center;
+            row.Add(indicator);
+        }
+
+        return row;
+    }
+
+    void ClearSectorArcState()
+    {
+        batterySectorArcsContainer?.Clear();
+        torpedoSectorArcIndicatorBinder.BindTorpedoData((ShipClass)null);
+        lastSectorArcSignature = null;
+        lastSectorArcShipObjectId = null;
+    }
+
+    string GetBatterySectorArcTitle(BatteryRecord batteryRecord, int batteryIndex)
+    {
+        var shortName = batteryRecord?.name?.GetShortName();
+        return string.IsNullOrWhiteSpace(shortName) ? Localize("Battery {0}", batteryIndex + 1) : shortName;
+    }
+
+    string BuildSectorArcSignature(ShipClass shipClass)
+    {
+        if (shipClass == null)
+            return null;
+
+        var batterySignature = string.Join(";",
+            (shipClass.batteryRecords ?? new List<BatteryRecord>())
+                .Select(batteryRecord => string.Join("~", new[]
+                {
+                    batteryRecord?.name?.GetShortName() ?? "",
+                    BuildMountLocationSignature(batteryRecord?.mountLocationRecords)
+                })));
+
+        return string.Join("|", new[]
+        {
+            shipClass.objectId ?? "",
+            batterySignature,
+            BuildMountLocationSignature(shipClass.torpedoSector?.mountLocationRecords)
+        });
+    }
+
+    static string BuildMountLocationSignature(IEnumerable<MountLocationRecord> mountLocationRecords)
+    {
+        return string.Join(";",
+            (mountLocationRecords ?? Enumerable.Empty<MountLocationRecord>())
+                .Select(record => string.Join(":", new[]
+                {
+                    record.mountLocation.ToString(),
+                    BuildMountArcSignature(record.mountArcs)
+                })));
+    }
+
+    static string BuildMountArcSignature(IEnumerable<MountArcRecord> mountArcs)
+    {
+        return string.Join(",",
+            (mountArcs ?? Enumerable.Empty<MountArcRecord>())
+                .Select(arc => $"{arc.startDeg:0.###}-{arc.CoverageDeg:0.###}"));
+    }
+
     void ClearDefaultPlaceholderPreviewState()
     {
         DisposeDefaultPlaceholderPreviewTexture();
@@ -466,6 +633,8 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             && element.worldBound.width > 1f
             && element.worldBound.height > 1f;
     }
+
+    static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
     static void RefreshPictureField(VisualElement fieldRoot, PictureReference pictureReference)
     {

@@ -130,33 +130,23 @@ public class SectorArcIndicatorBinder
 
     public void BindBatteryData(ShipClass shipClass)
     {
-        var updatedSet = new HashSet<MountLocation>();
-        foreach (var grouping in shipClass.batteryRecords.SelectMany(btyRec => btyRec.mountLocationRecords).GroupBy(mntRec => mntRec.mountLocation))
-        {
-            updatedSet.Add(grouping.Key);
-            if (uiMap.TryGetValue(grouping.Key, out var ui))
-            {
-                var startEndTopZeroCWAngles = grouping.SelectMany(g => g.mountArcs)
-                    .Select(arcRec => (arcRec.startDeg, arcRec.startDeg + arcRec.CoverageDeg))
-                    .ToList();
+        BindMountLocationRecords(shipClass?.batteryRecords?.SelectMany(btyRec => btyRec.mountLocationRecords));
+    }
 
-                // ui.startEndTopZeroCWAngles = startEndTopZeroCWAngles;
-                ui.UpdateStartEndTopZeroCWAngles(startEndTopZeroCWAngles);
-            }
-        }
-        foreach (var (mntLoc, ui) in uiMap)
-        {
-            if (!updatedSet.Contains(mntLoc))
-            {
-                ui.UpdateStartEndTopZeroCWAngles(new());
-            }
-        }
+    public void BindBatteryData(BatteryRecord batteryRecord)
+    {
+        BindMountLocationRecords(batteryRecord?.mountLocationRecords);
     }
 
     public void BindTorpedoData(ShipClass shipClass)
     {
+        BindMountLocationRecords(shipClass?.torpedoSector?.mountLocationRecords);
+    }
+
+    void BindMountLocationRecords(IEnumerable<MountLocationRecord> mountLocationRecords)
+    {
         var updatedSet = new HashSet<MountLocation>();
-        foreach (var grouping in shipClass.torpedoSector.mountLocationRecords.GroupBy(mntRec => mntRec.mountLocation))
+        foreach (var grouping in (mountLocationRecords ?? Enumerable.Empty<MountLocationRecord>()).GroupBy(mntRec => mntRec.mountLocation))
         {
             if (uiMap.TryGetValue(grouping.Key, out var ui))
             {

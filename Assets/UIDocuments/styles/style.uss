@@ -155,15 +155,17 @@
 .unity-radio-button__checkmark-background {
     width: 18px;
     height: 18px;
-    padding-top: 3px;
+    padding-top: 0;
     padding-bottom: 0;
-    padding-left: 1px;
-    padding-right: 1px;
+    padding-left: 0;
+    padding-right: 0;
+    align-items: center;
+    justify-content: center;
 }
 
 .unity-radio-button__checkmark {
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
 }
 
 .unity-toggle__checkmark.unity-foldout__checkmark {

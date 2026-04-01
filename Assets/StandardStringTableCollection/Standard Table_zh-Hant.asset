@@ -2656,7 +2656,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 69800000000043
-    m_Localized: "Battery \u547D\u4E2D\u88DD\u7532\u90E8\u4F4D\u7D50\u679C"
+    m_Localized: "\u7832\u7D44\u547D\u4E2D\u88DD\u7532\u90E8\u4F4D\u7D50\u679C"
     m_Metadata:
       m_Items: []
   - m_Id: 69800000000044
@@ -2868,7 +2868,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -92000000000001
-    m_Localized: "\u9B5A\u96F7\u6514\u622A\u89E3\u8996\u89BA\u5316\u5668"
+    m_Localized: "\u9B5A\u96F7\u706B\u63A7\u89E3\u53EF\u8996\u5316\u5668"
     m_Metadata:
       m_Items: []
   - m_Id: -92000000000002
@@ -2896,7 +2896,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -92000000000008
-    m_Localized: "\u5B78\u8AAA\u9650\u5236"
+    m_Localized: "\u689D\u4EE4\u9650\u5236"
     m_Metadata:
       m_Items: []
   - m_Id: -92000000000009
@@ -2952,7 +2952,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -93000000000001
-    m_Localized: "\u0057\u0054\u0041\u6C42\u89E3\u5668\u6AA2\u67E5\u5668"
+    m_Localized: "WTA\u6C42\u89E3\u5668\u6AA2\u67E5\u5668"
     m_Metadata:
       m_Items: []
   - m_Id: -93000000000002
@@ -2972,7 +2972,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -93000000000006
-    m_Localized: "\u532F\u51FA\u0020\u0043\u0053\u0056"
+    m_Localized: "\u532F\u51FA CSV"
     m_Metadata:
       m_Items: []
   - m_Id: -94000000000001
@@ -3032,11 +3032,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -96000000000007
-    m_Localized: "\u89BA\u9192\u8DDD\u96E2\uff08\u78BC\uff09"
+    m_Localized: "\u89BA\u9192\u8DDD\u96E2\uFF08\u78BC\uFF09"
     m_Metadata:
       m_Items: []
   - m_Id: -96000000000008
-    m_Localized: "\u89BA\u9192\u5012\u6578\uff08\u5206\uff09:"
+    m_Localized: "\u89BA\u9192\u5012\u6578\uFF08\u5206\uFF09:"
     m_Metadata:
       m_Items: []
   - m_Id: -96000000000009

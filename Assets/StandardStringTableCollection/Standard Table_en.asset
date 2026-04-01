@@ -2882,7 +2882,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -90000000000005
-    m_Localized: "The following ships will be detached for repair:\n{0}"
+    m_Localized: 'The following ships will be detached for repair:
+
+      {0}'
     m_Metadata:
       m_Items: []
   - m_Id: -90000000000006
@@ -2918,7 +2920,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -92000000000001
-    m_Localized: Torpedo Intercept Solution Visualizer
+    m_Localized: Torpedo Solution Visualizer
     m_Metadata:
       m_Items: []
   - m_Id: -92000000000002

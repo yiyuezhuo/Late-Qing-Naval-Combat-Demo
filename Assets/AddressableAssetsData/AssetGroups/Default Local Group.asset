@@ -14,12 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: 34fcf7570e549b748910202e777101b9
-  m_SerializeEntries:
-  - m_GUID: 678f2dceb3168f143bdbadb3dc5e42a6
-    m_Address: Assets/Textures/NavalCombat/GIS/full_uint16_16384x8192.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5b66bf5b9a9b8c6459df8d84871e0184, type: 2}
   m_SchemaSet:

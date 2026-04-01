@@ -59,6 +59,8 @@ namespace NavalCombatCore
         public VisibilityDescription visibility = VisibilityDescription.ExceptionallyClear;
         public int seaStateBeaufort;
         public bool hasMoonlight = true;
+        public bool surpriseAttack;
+        public float awakeDistanceYards;
 
         // public string description;
         public GlobalString globalDescription = new();

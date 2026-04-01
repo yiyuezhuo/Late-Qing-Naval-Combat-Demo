@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using CoreUtils;
@@ -58,6 +59,8 @@ namespace NavalCombatCore
         public Inheriable<AutomaticType> searchlightAutomaticType = new() { value = AutomaticType.Automatic };
         public Inheriable<bool> ammunitionFallbackable = new() { value = true };
         public Inheriable<AutomaticType> ammunitionSwitchAutomaticType = new() { value = AutomaticType.Automatic };
+        public Inheriable<int> awakeCountdownMinutes = new();
+        public Inheriable<bool> awaking = new() { value = true };
         public InheriableUnspecifiableFloat maximumFiringDistanceYardsFor200mmPlus = new(); // mainly primary gun
         public InheriableUnspecifiableFloat maximumFiringDistanceYardsFor100mmTo200mm = new(); // mainly secondary gun
         public InheriableUnspecifiableFloat maximumFiringDistanceYardsFor100mmLess = new(); // rapid firing gun
@@ -77,6 +80,8 @@ namespace NavalCombatCore
             var parent = member.GetParentGroup();
             return parent?.doctrine;
         }
+
+        public IShipGroupMember GetOwnerMember() => EntityManager.Instance.GetParent<IShipGroupMember>(this);
 
         public AutomaticType GetAmmunitionSwitchAutomaticType()
         {
@@ -111,6 +116,36 @@ namespace NavalCombatCore
             if (!searchlightAutomaticType.isInherited)
                 return searchlightAutomaticType.value;
             return GetParentDocrine()?.GetSearchlightAutomaticType() ?? AutomaticType.Automatic;
+        }
+
+        public int GetAwakeCountdownMinutes()
+        {
+            if (!awakeCountdownMinutes.isInherited)
+                return Math.Max(0, awakeCountdownMinutes.value);
+            return GetParentDocrine()?.GetAwakeCountdownMinutes() ?? Math.Max(0, awakeCountdownMinutes.value);
+        }
+
+        public Doctrine GetAwakeCountdownMinutesOwner()
+        {
+            var parent = GetParentDocrine();
+            if (!awakeCountdownMinutes.isInherited || parent == null)
+                return this;
+            return parent.GetAwakeCountdownMinutesOwner();
+        }
+
+        public bool GetAwaking()
+        {
+            if (!awaking.isInherited)
+                return awaking.value;
+            return GetParentDocrine()?.GetAwaking() ?? true;
+        }
+
+        public Doctrine GetAwakingOwner()
+        {
+            var parent = GetParentDocrine();
+            if (!awaking.isInherited || parent == null)
+                return this;
+            return parent.GetAwakingOwner();
         }
 
         public UnspecifiableFloat GetMaximumFiringDistanceYardsFor200mmPlus()

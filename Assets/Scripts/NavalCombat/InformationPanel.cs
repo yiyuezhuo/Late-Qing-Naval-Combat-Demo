@@ -75,6 +75,9 @@ public class InformationPanel : SingletonDocument<InformationPanel>
         var setAttackTargetButton = root.Q<Button>("SetAttackTargetButton");
         setAttackTargetButton.clicked += () =>
         {
+            var selectedShipLog = GameManager.Instance.selectedShipLog;
+            if (selectedShipLog == null || selectedShipLog.IsSurpriseCommandChangeBlocked())
+                return;
             GameManager.Instance.state = GameManager.State.SelectingShipLevelFiringTarget;
         };
 

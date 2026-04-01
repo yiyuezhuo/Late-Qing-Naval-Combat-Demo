@@ -278,9 +278,87 @@ namespace NavalCombatCore
             }
         }
 
-        static long GetMinuteKey(DateTime dateTime)
+        public static long GetMinuteKey(DateTime dateTime)
         {
             return dateTime.Ticks / TimeSpan.TicksPerMinute;
+        }
+
+        static void AddDoctrineShipMapping(Dictionary<Doctrine, List<ShipLog>> map, Doctrine owner, ShipLog shipLog)
+        {
+            if (owner == null || shipLog == null)
+                return;
+
+            if (!map.TryGetValue(owner, out var shipLogs))
+            {
+                shipLogs = new List<ShipLog>();
+                map[owner] = shipLogs;
+            }
+
+            if (!shipLogs.Contains(shipLog))
+                shipLogs.Add(shipLog);
+        }
+
+        bool IsWithinAwakeDistance(ShipLog shipLog)
+        {
+            if (shipLog == null)
+                return false;
+
+            var awakeDistanceYards = scenarioState?.awakeDistanceYards ?? 0f;
+            if (awakeDistanceYards <= 0f)
+                return false;
+
+            return TryGetShipHostileProximityInfo(shipLog, out var proximityInfo)
+                && proximityInfo?.nearestEnemy != null
+                && proximityInfo.nearestEnemyDistanceSquaredYards < awakeDistanceYards * awakeDistanceYards;
+        }
+
+        public void ProcessSurpriseAttackMinuteRollover(long previousMinuteKey)
+        {
+            if (scenarioState?.surpriseAttack != true)
+                return;
+
+            EnsureHostileProximitySnapshotCurrent();
+
+            var countdownOwnerShipMap = new Dictionary<Doctrine, List<ShipLog>>();
+            var awakingOwnerShipMap = new Dictionary<Doctrine, List<ShipLog>>();
+            var awakingOwnersTriggeredThisMinute = new HashSet<Doctrine>();
+            foreach (var shipLog in shipLogsOnMap)
+            {
+                if (shipLog?.doctrine == null)
+                    continue;
+
+                AddDoctrineShipMapping(countdownOwnerShipMap, shipLog.doctrine.GetAwakeCountdownMinutesOwner(), shipLog);
+                AddDoctrineShipMapping(awakingOwnerShipMap, shipLog.doctrine.GetAwakingOwner(), shipLog);
+            }
+
+            foreach (var kv in awakingOwnerShipMap)
+            {
+                var owner = kv.Key;
+                var dependentShips = kv.Value;
+                if (owner == null || owner.GetAwaking())
+                    continue;
+
+                if (dependentShips.Any(shipLog => shipLog.WasAttackedInMinute(previousMinuteKey) || IsWithinAwakeDistance(shipLog)))
+                {
+                    owner.awaking.value = true;
+                    awakingOwnersTriggeredThisMinute.Add(owner);
+                }
+            }
+
+            foreach (var kv in countdownOwnerShipMap)
+            {
+                var owner = kv.Key;
+                var dependentShips = kv.Value;
+                if (owner == null || owner.GetAwakeCountdownMinutes() <= 0)
+                    continue;
+                if (awakingOwnersTriggeredThisMinute.Contains(owner))
+                    continue;
+
+                if (dependentShips.Any(shipLog => shipLog.GetResolvedAwaking()))
+                {
+                    owner.awakeCountdownMinutes.value = Math.Max(0, owner.awakeCountdownMinutes.value - 1);
+                }
+            }
         }
 
         static bool IsSnapshotManeuverCandidateShip(ShipLog shipLog)
@@ -674,6 +752,7 @@ namespace NavalCombatCore
             foreach (var shipLog in shipLogs)
             {
                 shipLog.EnforceLandBatteryFixedKinematics();
+                shipLog.CaptureSurpriseAttackInitialCommandIfMissing();
             }
 
             foreach (var shipGroup in shipGroups)
@@ -981,11 +1060,13 @@ namespace NavalCombatCore
             var autoOperationalShipLogs = shipLogsOnMapList.Where(s =>
                 s.operationalState == ShipOperationalState.Operational
                 && !s.IsLandBattery()
+                && !s.IsSurpriseRestricted()
                 && s.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic
             ).ToList();
             var obstacleAvoidOperationalShipLogs = shipLogsOnMapList.Where(s =>
                 s.operationalState == ShipOperationalState.Operational
                 && !s.IsLandBattery()
+                && !s.IsSurpriseRestricted()
             ).ToList();
 
             // tempSubjectLogs.Clear();
@@ -1000,7 +1081,7 @@ namespace NavalCombatCore
                 {
                     var solver = new WeaponTargetAssignmentSolver();
                     solver.Solve(
-                        meShipLogs.Where(s => s.doctrine.GetFireAutomaticType() == AutomaticType.Automatic),
+                        meShipLogs.Where(s => s.doctrine.GetFireAutomaticType() == AutomaticType.Automatic && !s.IsSurpriseRestricted()),
                         otherShipLogs
                     );
 
@@ -1021,8 +1102,11 @@ namespace NavalCombatCore
                     if(leadShipLog.doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic)
                     {
                         var leadMaxSpeed = leadShipLog.GetMaxSpeedKnots();
-                        var desiredSpeedKnots = g.Select(s => s.GetMaxSpeedKnots()).Where(s => s >= 4).DefaultIfEmpty(leadMaxSpeed).Min();
-                        leadShipLog.desiredSpeedKnots = Math.Max(0, desiredSpeedKnots - 2); // RTW stlye max speed - 2
+                        if (!leadShipLog.IsSurpriseRestricted())
+                        {
+                            var desiredSpeedKnots = g.Select(s => s.GetMaxSpeedKnots()).Where(s => s >= 4).DefaultIfEmpty(leadMaxSpeed).Min();
+                            leadShipLog.desiredSpeedKnots = Math.Max(0, desiredSpeedKnots - 2); // RTW stlye max speed - 2
+                        }
                     }
                     // leadShipLog.desiredSpeedKnots = desiredSpeedKnots;// Group's max speed
                 }

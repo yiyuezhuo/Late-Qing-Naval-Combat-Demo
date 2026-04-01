@@ -2995,6 +2995,22 @@ MonoBehaviour:
     m_Key: 'Searchlight Control:'
     m_Metadata:
       m_Items: []
+  - m_Id: -96000000000006
+    m_Key: Surprise Attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000000007
+    m_Key: Awake Distance Yards
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000000008
+    m_Key: 'Awake Countdown Minutes:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000000009
+    m_Key: 'Awaking:'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -3077,6 +3077,22 @@ MonoBehaviour:
     m_Localized: 'Searchlight Control:'
     m_Metadata:
       m_Items: []
+  - m_Id: -96000000000006
+    m_Localized: Surprise Attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000000007
+    m_Localized: Awake Distance Yards
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000000008
+    m_Localized: 'Awake Countdown Minutes:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000000009
+    m_Localized: 'Awaking:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

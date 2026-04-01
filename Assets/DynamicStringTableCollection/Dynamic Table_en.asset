@@ -3395,6 +3395,14 @@ MonoBehaviour:
     m_Localized: Strong
     m_Metadata:
       m_Items: []
+  - m_Id: -96000000010004
+    m_Localized: Sleep ({0} min)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000010005
+    m_Localized: Awaking ({0} min)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

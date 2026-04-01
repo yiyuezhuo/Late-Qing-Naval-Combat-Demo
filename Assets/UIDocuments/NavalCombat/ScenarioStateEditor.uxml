@@ -82,6 +82,18 @@
                                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(177281374523392)"/>
                                     </Bindings>
                                 </ui:IntegerField>
+                                <ui:Toggle label="Surprise Attack">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="scenarioState.surpriseAttack" binding-mode="TwoWay"/>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96000000000006)"/>
+                                    </Bindings>
+                                </ui:Toggle>
+                                <ui:FloatField label="Awake Distance Yards">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="scenarioState.awakeDistanceYards" binding-mode="TwoWay"/>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96000000000007)"/>
+                                    </Bindings>
+                                </ui:FloatField>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
                                 <ui:Instance template="PictureField" data-source-path="scenarioState.backgroundPictureReference" name="BackgroundPictureField">

@@ -3419,6 +3419,14 @@ MonoBehaviour:
     m_Localized: "\u5F3A"
     m_Metadata:
       m_Items: []
+  - m_Id: -96000000010004
+    m_Localized: "\u7761\u7720\u4E2D\uff08{0} \u5206\uff09"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000010005
+    m_Localized: "\u89C9\u9192\u4E2D\uff08{0} \u5206\uff09"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

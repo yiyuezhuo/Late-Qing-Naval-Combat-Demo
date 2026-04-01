@@ -81,6 +81,7 @@
     --ui-surface-victory-detail-red: rgb(153, 74, 63);
     --ui-surface-victory-detail-icon-box: rgb(46, 50, 55);
     --ui-surface-victory-detail-icon-sunk: rgb(70, 104, 150);
+    --ui-text-surprise-status: rgb(255, 154, 214);
 }
 
 .unity-base-field__input {
@@ -440,6 +441,12 @@
     padding-right: 6px;
     padding-bottom: 6px;
     padding-left: 6px;
+}
+
+.surprise-attack-status {
+    color: var(--ui-text-surprise-status);
+    margin-top: 2px;
+    margin-bottom: 4px;
 }
 
 .strategic-time-panel {

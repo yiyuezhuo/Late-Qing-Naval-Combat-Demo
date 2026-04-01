@@ -231,6 +231,9 @@ namespace NavalCombatCore
         {
             var r = GetRapidFireBatteryRecord();
             var shooter = EntityManager.Instance.GetParent<ShipLog>(this);
+            if (shooter != null && shooter.IsSurpriseRestricted())
+                return;
+
             var fireCtx = GunneryFireContext.GetCurrentOrCreateTemp();
 
             var unfiredBarrels = (new[] { RapidFiringBatteryLocation.Starboard, RapidFiringBatteryLocation.Port }).ToDictionary(
@@ -387,6 +390,7 @@ namespace NavalCombatCore
                             hit = hit
                         };
                         logs.Add(log);
+                        tgt.MarkAttackedAtCurrentMinute();
 
                         if (hit)
                         {

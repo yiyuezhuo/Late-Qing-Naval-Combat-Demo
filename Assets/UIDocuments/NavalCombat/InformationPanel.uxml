@@ -36,6 +36,12 @@
                         </Bindings>
                     </ui:Image>
                 </ui:VisualElement>
+                <ui:Label text="Surprise Attack Status" class="surprise-attack-status" style="color: rgb(230, 109, 199);">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="surpriseAttackStatusText" binding-mode="ToTarget"/>
+                        <ui:DataBinding property="style.display" data-source-path="surpriseAttackStatusVisible" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                    </Bindings>
+                </ui:Label>
                 <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
                     <ui:Label text="Speed (kts):">
                         <Bindings>
@@ -53,6 +59,7 @@
                         <ui:DataBinding property="value" data-source-path="desiredSpeedKnots" binding-mode="TwoWay"/>
                         <ui:DataBinding property="highValue" data-source-path="maxSpeedKnotsProp" binding-mode="ToTarget"/>
                         <ui:DataBinding property="lowValue" data-source-path="minSpeedKnotsProp" binding-mode="ToTarget"/>
+                        <ui:DataBinding property="enabledSelf" data-source-path="surpriseAttackCommandEditable" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Slider>
                 <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
@@ -70,6 +77,7 @@
                 <ui:Slider high-value="360" show-input-field="true">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="desiredHeadingDeg" binding-mode="TwoWay"/>
+                        <ui:DataBinding property="enabledSelf" data-source-path="surpriseAttackCommandEditable" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Slider>
                 <ui:ProgressBar>
@@ -87,6 +95,7 @@
                 <ui:Button text="Set Attack Target (A)" name="SetAttackTargetButton">
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(47647284608536576)"/>
+                        <ui:DataBinding property="enabledSelf" data-source-path="surpriseAttackCommandEditable" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:Button>
                 <ui:Label text="Manual Attack Target Desc" style="white-space: normal;">

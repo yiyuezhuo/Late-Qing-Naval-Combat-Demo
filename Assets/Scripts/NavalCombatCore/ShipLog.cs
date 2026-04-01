@@ -800,6 +800,9 @@ namespace NavalCombatCore
         }
 
         public Doctrine doctrine { get; set; } = new();
+        public bool surpriseAttackInitialCommandCaptured;
+        public float surpriseAttackInitialDesiredSpeedKnots;
+        public float surpriseAttackInitialDesiredHeadingDeg;
 
         public bool isEvasiveManeuvering;
 
@@ -832,8 +835,50 @@ namespace NavalCombatCore
         [XmlIgnore]
         public float dirtySeconds;
 
+        [XmlIgnore]
+        public long lastAttackedMinuteKey = long.MinValue;
+
         protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
         protected static string LocalizeFor(object obj) => ServiceLocator.Get<ILocalizeService>().GetFor(obj);
+
+        public void CaptureSurpriseAttackInitialCommandIfMissing()
+        {
+            if (surpriseAttackInitialCommandCaptured)
+                return;
+
+            surpriseAttackInitialDesiredSpeedKnots = desiredSpeedKnots;
+            surpriseAttackInitialDesiredHeadingDeg = desiredHeadingDeg;
+            surpriseAttackInitialCommandCaptured = true;
+        }
+
+        public void MarkAttackedAtCurrentMinute()
+        {
+            var gameState = NavalGameState.Instance;
+            if (gameState?.scenarioState == null)
+                return;
+
+            lastAttackedMinuteKey = NavalGameState.GetMinuteKey(gameState.scenarioState.dateTime);
+        }
+
+        public bool WasAttackedInMinute(long minuteKey) => lastAttackedMinuteKey == minuteKey;
+
+        public bool IsSurpriseAttackEnabled() => NavalGameState.Instance?.scenarioState?.surpriseAttack ?? false;
+        public int GetResolvedAwakeCountdownMinutes() => doctrine?.GetAwakeCountdownMinutes() ?? 0;
+        public bool GetResolvedAwaking() => doctrine?.GetAwaking() ?? true;
+        public bool IsSurpriseRestricted() => IsSurpriseAttackEnabled() && GetResolvedAwakeCountdownMinutes() > 0;
+        public bool IsFullyAwakeUnderSurpriseAttack() => !IsSurpriseRestricted();
+        public bool IsSleepUnderSurpriseAttack() => IsSurpriseRestricted() && !GetResolvedAwaking();
+        public bool IsAwakingUnderSurpriseAttack() => IsSurpriseRestricted() && GetResolvedAwaking();
+        public bool IsSurpriseCommandChangeBlocked() => IsSurpriseRestricted();
+
+        public void ApplySurpriseAttackCommandRestriction()
+        {
+            if (!IsSurpriseCommandChangeBlocked())
+                return;
+
+            desiredSpeedKnots = surpriseAttackInitialDesiredSpeedKnots;
+            desiredHeadingDeg = surpriseAttackInitialDesiredHeadingDeg;
+        }
 
         static LeaderSkillLevel NormalizeLeaderSkillLevelForVariant(LeaderSkillLevel level)
         {
@@ -1404,7 +1449,13 @@ namespace NavalCombatCore
                 EnforceLandBatteryFixedKinematics();
                 return;
             }
-            
+
+            if (IsSurpriseCommandChangeBlocked())
+            {
+                ApplySurpriseAttackCommandRestriction();
+                return;
+            }
+             
             if(doctrine.GetManeuverAutomaticType() == AutomaticType.Automatic)
             {
                 var isRecentCollided = recentCollisionClock.remainSeconds > 0;
@@ -1986,6 +2037,9 @@ namespace NavalCombatCore
         public void StepBatteryStatus(float deltaSeconds)
         {
             firingRounds = 0;
+
+            if (IsSurpriseRestricted())
+                return;
 
             foreach (var bs in batteryStatus)
             {

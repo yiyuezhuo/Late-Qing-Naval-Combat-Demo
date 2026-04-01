@@ -765,6 +765,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             while (remainAdvanceSimulationSecondsRequestedByUpdate >= pulseLengthSeconds)
             {
+                var previousDateTime = NavalGameState.Instance.scenarioState.dateTime;
                 var lastMin = NavalGameState.Instance.scenarioState.dateTime.Minute;
 
                 NavalGameState.Instance.Step(pulseLengthSeconds);
@@ -772,6 +773,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
                 if (NavalGameState.Instance.scenarioState.dateTime.Minute != lastMin)
                 {
+                    NavalGameState.Instance.ProcessSurpriseAttackMinuteRollover(NavalGameState.GetMinuteKey(previousDateTime));
                     minuteChanged?.Invoke(this, EventArgs.Empty);
                     
                     minuteAdvanced = true;
@@ -785,6 +787,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             {
                 manualAdvanceAny = true;
 
+                var previousDateTime = NavalGameState.Instance.scenarioState.dateTime;
                 var lastMin = NavalGameState.Instance.scenarioState.dateTime.Minute;
 
                 NavalGameState.Instance.Step(pulseLengthSeconds);
@@ -793,6 +796,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
                 if (NavalGameState.Instance.scenarioState.dateTime.Minute != lastMin)
                 {
+                    NavalGameState.Instance.ProcessSurpriseAttackMinuteRollover(NavalGameState.GetMinuteKey(previousDateTime));
                     minuteChanged?.Invoke(this, EventArgs.Empty);
                     
                     minuteAdvanced = true;
@@ -1043,7 +1047,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         if (selectedShipLog != null)
         {
-            if (selectedShipLog.IsLandBattery())
+            if (selectedShipLog.IsLandBattery() || selectedShipLog.IsSurpriseCommandChangeBlocked())
                 return;
 
             var cameraController = CameraController2.Instance;
@@ -1096,7 +1100,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     ShipLog GetSelectedShipLogForWaypointRouting()
     {
         var shipLog = selectedShipLog;
-        if (shipLog == null || shipLog.mapState != MapState.Deployed || shipLog.IsLandBattery())
+        if (shipLog == null || shipLog.mapState != MapState.Deployed || shipLog.IsLandBattery() || shipLog.IsSurpriseCommandChangeBlocked())
             return null;
         return shipLog;
     }
@@ -1746,7 +1750,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 }
 
 
-                if (Input.GetKeyDown(KeyCode.M) && selectedShipLog != null) // Move Unit
+                if (Input.GetKeyDown(KeyCode.M) && selectedShipLog != null && !selectedShipLog.IsSurpriseCommandChangeBlocked()) // Move Unit
                 {
                     state = State.MovingUnit;
                 }
@@ -1806,17 +1810,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     }
                 }
 
-                if (Input.GetKeyDown(KeyCode.I) && selectedShipLog != null)
+                if (Input.GetKeyDown(KeyCode.I) && selectedShipLog != null && !selectedShipLog.IsSurpriseCommandChangeBlocked())
                 {
                     selectedShipLog.controlMode = ControlMode.Independent;
                 }
 
-                if (Input.GetKeyDown(KeyCode.F) && selectedShipLog != null) // Set "Follow" Control
+                if (Input.GetKeyDown(KeyCode.F) && selectedShipLog != null && !selectedShipLog.IsSurpriseCommandChangeBlocked()) // Set "Follow" Control
                 {
                     state = State.SelectingFollowedTarget;
                 }
 
-                if (Input.GetKeyDown(KeyCode.R) && selectedShipLog != null) // Set "Relative To" Control
+                if (Input.GetKeyDown(KeyCode.R) && selectedShipLog != null && !selectedShipLog.IsSurpriseCommandChangeBlocked()) // Set "Relative To" Control
                 {
                     state = State.SelectingRelativeToTarget;
                 }
@@ -1830,7 +1834,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     selectedShipLog.mapState = MapState.NotDeployed;
                 }
-                if(Input.GetKeyDown(KeyCode.A) && selectedShipLog != null) // Set Ship-level attack target
+                if(Input.GetKeyDown(KeyCode.A) && selectedShipLog != null && !selectedShipLog.IsSurpriseCommandChangeBlocked()) // Set Ship-level attack target
                 {
                     state = State.SelectingShipLevelFiringTarget;
                 }
@@ -1892,7 +1896,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
-                    if (selectedShipLog != null)
+                    if (selectedShipLog != null && !selectedShipLog.IsSurpriseCommandChangeBlocked())
                     {
                         var hitPoint = CameraController2.Instance.GetHitPoint();
                         selectedShipLog.position = Utils.Vector3ToLatLon(hitPoint);
@@ -1905,7 +1909,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
-                    if (selectedShipLog != null)
+                    if (selectedShipLog != null && !selectedShipLog.IsSurpriseCommandChangeBlocked())
                     {
                         var targetShipLog = TryToRaycastShipLog();
                         if (targetShipLog != null && CheckGiveControlTo(selectedShipLog, targetShipLog))
@@ -1922,7 +1926,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
-                    if (selectedShipLog != null)
+                    if (selectedShipLog != null && !selectedShipLog.IsSurpriseCommandChangeBlocked())
                     {
                         var targetShipLog = TryToRaycastShipLog();
                         if (targetShipLog != null && CheckGiveControlTo(selectedShipLog, targetShipLog))
@@ -2039,10 +2043,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     state = State.Idle;
                     // set Ship-level target
-                    var targetShipLog = TryToRaycastShipLog();
-                    selectedShipLog.shipLevelFiringTargetObjectId = targetShipLog?.objectId;
-                    
-                    Debug.Log($"Set Ship-Level Target: {selectedShipLog} -> {targetShipLog}");
+                    if (selectedShipLog != null && !selectedShipLog.IsSurpriseCommandChangeBlocked())
+                    {
+                        var targetShipLog = TryToRaycastShipLog();
+                        selectedShipLog.shipLevelFiringTargetObjectId = targetShipLog?.objectId;
+                        
+                        Debug.Log($"Set Ship-Level Target: {selectedShipLog} -> {targetShipLog}");
+                    }
                 }
             }
         }

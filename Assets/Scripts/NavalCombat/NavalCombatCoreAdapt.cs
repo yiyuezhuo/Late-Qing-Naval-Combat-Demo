@@ -459,6 +459,26 @@ namespace NavalCombatCore
         public float minSpeedKnotsProp => GetMinSpeedKnots();
 
         [CreateProperty]
+        public bool surpriseAttackStatusVisible => IsSurpriseRestricted();
+
+        [CreateProperty]
+        public string surpriseAttackStatusText
+        {
+            get
+            {
+                var awakeCountdownMinutes = GetResolvedAwakeCountdownMinutes();
+                if (awakeCountdownMinutes <= 0)
+                    return "";
+                return IsSleepUnderSurpriseAttack()
+                    ? Localize("Sleep ({0} min)", awakeCountdownMinutes)
+                    : Localize("Awaking ({0} min)", awakeCountdownMinutes);
+            }
+        }
+
+        [CreateProperty]
+        public bool surpriseAttackCommandEditable => !IsSurpriseCommandChangeBlocked();
+
+        [CreateProperty]
         public int damageControlRatingProp => GetDamageControlRating();
 
         [CreateProperty]
@@ -1176,6 +1196,15 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public string resolvedAmmunitionSwitchAutomationTypeStr => LocalizeEnum(GetAmmunitionSwitchAutomaticType());
+
+        [CreateProperty]
+        public bool showSurpriseAttackSettings => NavalGameState.Instance?.scenarioState?.surpriseAttack ?? false;
+
+        [CreateProperty]
+        public string resolvedAwakeCountdownMinutesStr => GetAwakeCountdownMinutes().ToString();
+
+        [CreateProperty]
+        public string resolvedAwakingStr => Localize(GetAwaking().ToString());
 
         public string Describe(UnspecifiableFloat num)
         {

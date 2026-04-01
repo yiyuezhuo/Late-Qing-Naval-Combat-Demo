@@ -394,5 +394,88 @@
                 </Bindings>
             </ui:Label>
         </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="showSurpriseAttackSettings" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+            </Bindings>
+            <ui:VisualElement data-source-path="awakeCountdownMinutes" style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Awake Countdown Minutes:">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96000000000008)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="Inherit">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Toggle>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay"/>
+                    </Bindings>
+                </ui:Toggle>
+                <ui:IntegerField style="min-width: 100px;">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay"/>
+                        <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
+                    </Bindings>
+                </ui:IntegerField>
+            </ui:VisualElement>
+            <ui:Label text="Current:">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(41460150319091712)"/>
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Label">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="resolvedAwakeCountdownMinutesStr" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="showSurpriseAttackSettings" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+            </Bindings>
+            <ui:VisualElement data-source-path="awaking" style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Awaking:">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96000000000009)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="Inherit">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(362769544810496)"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Toggle>
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="isInherited" binding-mode="TwoWay"/>
+                    </Bindings>
+                </ui:Toggle>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:Label text="Enabled">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16458511166377984)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Toggle>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="value" binding-mode="TwoWay"/>
+                            <ui:DataBinding property="style.display" data-source-path="isInherited" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
+                        </Bindings>
+                    </ui:Toggle>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label text="Current:">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(41460150319091712)"/>
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Label">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="resolvedAwakingStr" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

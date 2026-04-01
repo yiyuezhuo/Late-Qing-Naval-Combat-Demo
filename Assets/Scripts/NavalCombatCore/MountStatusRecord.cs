@@ -421,6 +421,9 @@ namespace NavalCombatCore
                         var firingAngle = MeasureUtils.NormalizeAngle(interceptionRes.azimuth + RandomUtils.NextFloat(-torpedoFiringAngleErrorDeg, torpedoFiringAngleErrorDeg));
                         if (recordInfo.record.IsInArc(bearingRelativeToBowDeg))
                         {
+                            if (platform.IsSurpriseRestricted())
+                                return;
+
                             // Launch Torpedo!
                             var newTorpedo = new LaunchedTorpedo()
                             {
@@ -437,6 +440,7 @@ namespace NavalCombatCore
                             };
                             NavalGameState.Instance.launchedTorpedos.Add(newTorpedo);
                             EntityManager.Instance.Register(newTorpedo, null);
+                            tgt.MarkAttackedAtCurrentMinute();
 
                             currentLoad -= 1;
 
@@ -1186,6 +1190,7 @@ namespace NavalCombatCore
                         // shellDamageResult = shellDamageResult
                     };
                     logs.Add(logRecord); // logRecord could be further modified in the following code
+                    tgt.MarkAttackedAtCurrentMinute();
 
                     if (hit)
                     {

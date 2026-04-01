@@ -3394,6 +3394,18 @@ MonoBehaviour:
     m_Key: Awaking ({0} min)
     m_Metadata:
       m_Items: []
+  - m_Id: -96000000010006
+    m_Key: Vertical Penetration (in)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000010007
+    m_Key: Horizontal Penetration (in)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000010008
+    m_Key: Fire Control (Lowest Speed Broad)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

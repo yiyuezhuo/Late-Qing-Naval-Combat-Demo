@@ -12,6 +12,380 @@ using CoreUtils;
 using System;
 using YYZ;
 
+public class BatteryFigurePoint
+{
+    public float distanceYards;
+    public float verticalPenetrationInches;
+    public float horizontalPenetrationInches;
+    public float fireControlValue;
+}
+
+[UxmlElement]
+public partial class BatteryPenetrationFireControlChart : VisualElement
+{
+    const float LeftPadding = 42f;
+    const float RightPadding = 42f;
+    const float TopPadding = 20f;
+    const float BottomPadding = 34f;
+
+    readonly VisualElement labelLayer = new();
+    List<BatteryFigurePoint> points = new();
+    float? rangeYards;
+
+    static readonly Color VerticalPenetrationColor = new(0.75f, 0.2f, 0.18f, 1f);
+    static readonly Color HorizontalPenetrationColor = new(0.16f, 0.42f, 0.78f, 1f);
+    static readonly Color FireControlColor = new(0.12f, 0.6f, 0.24f, 1f);
+    static readonly Color GridColor = new(0f, 0f, 0f, 0.18f);
+    static readonly Color RangeLineColor = new(0.85f, 0.85f, 0.85f, 0.9f);
+
+    public BatteryPenetrationFireControlChart()
+    {
+        style.position = Position.Relative;
+
+        labelLayer.style.position = Position.Absolute;
+        labelLayer.style.left = 0;
+        labelLayer.style.top = 0;
+        labelLayer.style.right = 0;
+        labelLayer.style.bottom = 0;
+        labelLayer.pickingMode = PickingMode.Ignore;
+        Add(labelLayer);
+
+        generateVisualContent += OnGenerateVisualContent;
+        RegisterCallback<GeometryChangedEvent>(_ => RebuildLabels());
+    }
+
+    public void SetPoints(IEnumerable<BatteryFigurePoint> newPoints)
+    {
+        points = newPoints?.Where(point => point != null).OrderBy(point => point.distanceYards).ToList() ?? new();
+        RebuildLabels();
+        MarkDirtyRepaint();
+    }
+
+    public void SetRangeYards(float? value)
+    {
+        rangeYards = value;
+        RebuildLabels();
+        MarkDirtyRepaint();
+    }
+
+    void OnGenerateVisualContent(MeshGenerationContext context)
+    {
+        var chartRect = GetChartRect();
+        if (chartRect.width <= 0 || chartRect.height <= 0)
+            return;
+
+        var painter = context.painter2D;
+        painter.lineWidth = 1f;
+        painter.lineCap = LineCap.Butt;
+        painter.strokeColor = Color.black;
+
+        DrawAxes(painter, chartRect);
+
+        if (points.Count == 0)
+            return;
+
+        var leftMax = GetLeftAxisMax();
+        var rightMax = GetRightAxisMax();
+        var (minDistance, maxDistance) = GetDistanceBounds();
+
+        DrawRangeLine(painter, chartRect, minDistance, maxDistance);
+
+        DrawSeries(
+            painter,
+            chartRect,
+            points.Select(point => MapPoint(chartRect, point.distanceYards, point.verticalPenetrationInches, minDistance, maxDistance, leftMax)),
+            VerticalPenetrationColor);
+        DrawSeries(
+            painter,
+            chartRect,
+            points.Select(point => MapPoint(chartRect, point.distanceYards, point.horizontalPenetrationInches, minDistance, maxDistance, leftMax)),
+            HorizontalPenetrationColor);
+        DrawSeries(
+            painter,
+            chartRect,
+            points.Select(point => MapPoint(chartRect, point.distanceYards, point.fireControlValue, minDistance, maxDistance, rightMax)),
+            FireControlColor);
+    }
+
+    void DrawAxes(Painter2D painter, Rect chartRect)
+    {
+        painter.strokeColor = Color.black;
+        painter.BeginPath();
+        painter.MoveTo(new Vector2(chartRect.xMin, chartRect.yMin));
+        painter.LineTo(new Vector2(chartRect.xMin, chartRect.yMax));
+        painter.LineTo(new Vector2(chartRect.xMax, chartRect.yMax));
+        painter.LineTo(new Vector2(chartRect.xMax, chartRect.yMin));
+        painter.Stroke();
+
+        var leftMax = GetLeftAxisMax();
+        var rightMax = GetRightAxisMax();
+        foreach (var ratio in GetTickRatios())
+        {
+            var y = Mathf.Lerp(chartRect.yMax, chartRect.yMin, ratio);
+            painter.strokeColor = GridColor;
+            painter.BeginPath();
+            painter.MoveTo(new Vector2(chartRect.xMin, y));
+            painter.LineTo(new Vector2(chartRect.xMax, y));
+            painter.Stroke();
+
+            painter.strokeColor = Color.black;
+            painter.BeginPath();
+            painter.MoveTo(new Vector2(chartRect.xMin - 4f, y));
+            painter.LineTo(new Vector2(chartRect.xMin, y));
+            painter.MoveTo(new Vector2(chartRect.xMax, y));
+            painter.LineTo(new Vector2(chartRect.xMax + 4f, y));
+            painter.Stroke();
+        }
+
+        if (points.Count == 0)
+            return;
+
+        var (minDistance, maxDistance) = GetDistanceBounds();
+
+        foreach (var tickDistance in GetDistanceLabelDistances())
+        {
+            var x = Mathf.Lerp(chartRect.xMin, chartRect.xMax, Mathf.InverseLerp(minDistance, maxDistance, tickDistance));
+            painter.strokeColor = Color.black;
+            painter.BeginPath();
+            painter.MoveTo(new Vector2(x, chartRect.yMax));
+            painter.LineTo(new Vector2(x, chartRect.yMax + 4f));
+            painter.Stroke();
+        }
+    }
+
+    void RebuildLabels()
+    {
+        labelLayer.Clear();
+        var chartRect = GetChartRect();
+        if (chartRect.width <= 0 || chartRect.height <= 0)
+            return;
+
+        labelLayer.Add(BuildOverlayLabel(
+            "(in)",
+            0f,
+            2f,
+            LeftPadding - 6f,
+            14f,
+            TextAnchor.UpperRight));
+        labelLayer.Add(BuildOverlayLabel(
+            "(fc)",
+            contentRect.width - RightPadding + 6f,
+            2f,
+            RightPadding - 6f,
+            14f,
+            TextAnchor.UpperLeft));
+        if (rangeYards.HasValue)
+        {
+            var (rangeMinDistance, rangeMaxDistance) = GetDistanceBounds();
+            var rangeX = Mathf.Lerp(chartRect.xMin, chartRect.xMax, Mathf.InverseLerp(rangeMinDistance, rangeMaxDistance, rangeYards.Value));
+            labelLayer.Add(BuildOverlayLabel(
+                rangeYards.Value.ToString("0"),
+                rangeX - 32f,
+                2f,
+                64f,
+                14f,
+                TextAnchor.UpperCenter,
+                RangeLineColor));
+        }
+
+        var leftMax = GetLeftAxisMax();
+        var rightMax = GetRightAxisMax();
+        foreach (var ratio in GetTickRatios())
+        {
+            var y = Mathf.Lerp(chartRect.yMax, chartRect.yMin, ratio) - 8f;
+            labelLayer.Add(BuildOverlayLabel(
+                Mathf.Lerp(0f, leftMax, ratio).ToString("0.0"),
+                0f,
+                y,
+                LeftPadding - 6f,
+                16f,
+                TextAnchor.MiddleRight));
+            labelLayer.Add(BuildOverlayLabel(
+                Mathf.Lerp(0f, rightMax, ratio).ToString("0.0"),
+                chartRect.xMax + 6f,
+                y,
+                RightPadding - 6f,
+                16f,
+                TextAnchor.MiddleLeft));
+        }
+
+        if (points.Count == 0)
+            return;
+
+        var (minDistance, maxDistance) = GetDistanceBounds();
+
+        var distanceLabelWidth = GetDistanceLabelWidth(chartRect.width);
+        foreach (var tickDistance in GetDistanceLabelDistances())
+        {
+            var x = Mathf.Lerp(chartRect.xMin, chartRect.xMax, Mathf.InverseLerp(minDistance, maxDistance, tickDistance));
+            labelLayer.Add(BuildOverlayLabel(
+                tickDistance.ToString("0"),
+                x - distanceLabelWidth * 0.5f,
+                chartRect.yMax + 6f,
+                distanceLabelWidth,
+                18f,
+                TextAnchor.UpperCenter));
+        }
+    }
+
+    Rect GetChartRect()
+    {
+        var width = Mathf.Max(0f, contentRect.width - LeftPadding - RightPadding);
+        var height = Mathf.Max(0f, contentRect.height - TopPadding - BottomPadding);
+        return new Rect(LeftPadding, TopPadding, width, height);
+    }
+
+    float GetLeftAxisMax()
+    {
+        var maxValue = points.Count == 0
+            ? 1f
+            : Mathf.Max(
+                points.Max(point => point.verticalPenetrationInches),
+                points.Max(point => point.horizontalPenetrationInches));
+        return Mathf.Max(1f, Mathf.Ceil(maxValue));
+    }
+
+    float GetRightAxisMax()
+    {
+        var maxValue = points.Count == 0 ? 1f : points.Max(point => point.fireControlValue);
+        return Mathf.Max(1f, Mathf.Ceil(maxValue));
+    }
+
+    (float minDistance, float maxDistance) GetDistanceBounds()
+    {
+        if (points.Count == 0)
+            return (0f, 1f);
+
+        var minDistance = points.Min(point => point.distanceYards);
+        var maxDistance = points.Max(point => point.distanceYards);
+        if (rangeYards.HasValue)
+        {
+            minDistance = Mathf.Min(minDistance, rangeYards.Value);
+            maxDistance = Mathf.Max(maxDistance, rangeYards.Value);
+        }
+
+        if (Mathf.Approximately(minDistance, maxDistance))
+        {
+            minDistance -= 1f;
+            maxDistance += 1f;
+        }
+
+        return (minDistance, maxDistance);
+    }
+
+    static IEnumerable<float> GetTickRatios()
+    {
+        yield return 0f;
+        yield return 0.25f;
+        yield return 0.5f;
+        yield return 0.75f;
+        yield return 1f;
+    }
+
+    IEnumerable<float> GetDistanceLabelDistances()
+    {
+        return points
+            .Select(point => point.distanceYards)
+            .Distinct()
+            .OrderBy(distance => distance)
+            .ToList();
+    }
+
+    float GetDistanceLabelWidth(float chartWidth)
+    {
+        var count = Mathf.Max(1, GetDistanceLabelDistances().Count());
+        return Mathf.Max(32f, chartWidth / count + 12f);
+    }
+
+    static Vector2 MapPoint(Rect chartRect, float distanceYards, float value, float minDistance, float maxDistance, float axisMax)
+    {
+        var x = Mathf.Lerp(chartRect.xMin, chartRect.xMax, Mathf.InverseLerp(minDistance, maxDistance, distanceYards));
+        var y = Mathf.Lerp(chartRect.yMax, chartRect.yMin, Mathf.InverseLerp(0f, Mathf.Max(1f, axisMax), value));
+        return new Vector2(x, y);
+    }
+
+    static void DrawSeries(Painter2D painter, Rect chartRect, IEnumerable<Vector2> seriesPoints, Color color)
+    {
+        var pointList = seriesPoints.ToList();
+        if (pointList.Count == 0)
+            return;
+
+        painter.strokeColor = color;
+        painter.fillColor = color;
+        painter.lineWidth = 2f;
+        if (pointList.Count >= 2)
+        {
+            painter.BeginPath();
+            painter.MoveTo(pointList[0]);
+            for (int i = 1; i < pointList.Count; i++)
+            {
+                painter.LineTo(pointList[i]);
+            }
+            painter.Stroke();
+        }
+
+        foreach (var point in pointList)
+        {
+            if (!chartRect.Contains(point))
+                continue;
+
+            painter.BeginPath();
+            painter.Arc(point, 2.5f, 0f, 360f);
+            painter.ClosePath();
+            painter.Fill();
+        }
+    }
+
+    static void DrawRangeLine(Painter2D painter, Rect chartRect, float minDistance, float maxDistance, float rangeYards)
+    {
+        var x = Mathf.Lerp(chartRect.xMin, chartRect.xMax, Mathf.InverseLerp(minDistance, maxDistance, rangeYards));
+        if (x < chartRect.xMin || x > chartRect.xMax)
+            return;
+
+        painter.strokeColor = RangeLineColor;
+        painter.lineWidth = 1f;
+        const float dashLength = 6f;
+        const float gapLength = 4f;
+        var y = chartRect.yMin;
+        while (y < chartRect.yMax)
+        {
+            var endY = Mathf.Min(y + dashLength, chartRect.yMax);
+            painter.BeginPath();
+            painter.MoveTo(new Vector2(x, y));
+            painter.LineTo(new Vector2(x, endY));
+            painter.Stroke();
+            y += dashLength + gapLength;
+        }
+    }
+
+    void DrawRangeLine(Painter2D painter, Rect chartRect, float minDistance, float maxDistance)
+    {
+        if (rangeYards.HasValue)
+        {
+            DrawRangeLine(painter, chartRect, minDistance, maxDistance, rangeYards.Value);
+        }
+    }
+
+    static Label BuildOverlayLabel(string text, float x, float y, float width, float height, TextAnchor textAnchor, Color? color = null)
+    {
+        var label = new Label(text);
+        label.pickingMode = PickingMode.Ignore;
+        label.style.position = Position.Absolute;
+        label.style.left = x;
+        label.style.top = y;
+        label.style.width = width;
+        label.style.height = height;
+        label.style.fontSize = 10;
+        label.style.unityTextAlign = textAnchor;
+        label.style.whiteSpace = WhiteSpace.NoWrap;
+        if (color.HasValue)
+        {
+            label.style.color = color.Value;
+        }
+        return label;
+    }
+}
+
 
 public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, ShipClass>
 {
@@ -21,6 +395,8 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
     VisualElement graphicTabContent;
     VisualElement sectorArcsTabContent;
     VisualElement batterySectorArcsContainer;
+    VisualElement batteryFigureChartsContainer;
+    Label torpedoSectorTitleLabel;
     Image defaultPlaceholderPreviewImage;
     Texture2D defaultPlaceholderPreviewTexture;
     string lastDefaultPlaceholderSignature;
@@ -50,6 +426,8 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         torpedoSectorArcIndicatorBinder.BindUI(root.Q<VisualElement>("TorpedoSectorArcIndicator"));
         sectorArcsTabContent = root.Q<VisualElement>("SectorArcsTabContent");
         batterySectorArcsContainer = root.Q<VisualElement>("BatterySectorArcsContainer");
+        batteryFigureChartsContainer = root.Q<VisualElement>("BatteryFigureChartsContainer");
+        torpedoSectorTitleLabel = root.Q<Label>("TorpedoSectorTitleLabel");
         sectorArcsTabContent?.RegisterCallback<GeometryChangedEvent>(_ => RequestSectorArcRefresh());
 
         shipClassListView.selectionChanged += (objs) =>
@@ -404,7 +782,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 
     void RequestSectorArcRefresh(ShipClass shipClass, bool force = false)
     {
-        if (sectorArcsTabContent == null || batterySectorArcsContainer == null || !IsElementActuallyVisible(sectorArcsTabContent))
+        if (sectorArcsTabContent == null || batterySectorArcsContainer == null || batteryFigureChartsContainer == null || !IsElementActuallyVisible(sectorArcsTabContent))
             return;
 
         if (shipClass == null)
@@ -424,7 +802,12 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             return;
 
         RebuildBatterySectorArcCards(shipClass);
+        RebuildBatteryFigureCharts(shipClass);
         torpedoSectorArcIndicatorBinder.BindTorpedoData(shipClass);
+        if (torpedoSectorTitleLabel != null)
+        {
+            torpedoSectorTitleLabel.text = shipClass?.torpedoSector?.name?.GetShortName() ?? "";
+        }
         lastSectorArcShipObjectId = shipClass.objectId;
         lastSectorArcSignature = signature;
     }
@@ -488,18 +871,31 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         }
     }
 
+    void RebuildBatteryFigureCharts(ShipClass shipClass)
+    {
+        batteryFigureChartsContainer.Clear();
+
+        if (shipClass?.batteryRecords == null)
+            return;
+
+        for (int i = 0; i < shipClass.batteryRecords.Count; i++)
+        {
+            batteryFigureChartsContainer.Add(BuildBatteryFigureChartCard(shipClass.batteryRecords[i], i));
+        }
+    }
+
     VisualElement BuildBatterySectorArcCard(BatteryRecord batteryRecord, int batteryIndex)
     {
         var card = new VisualElement();
         card.style.width = 220;
         card.style.minWidth = 220;
+        card.style.alignItems = Align.Center;
         card.style.marginRight = 8;
         card.style.marginBottom = 8;
         card.style.paddingTop = 6;
         card.style.paddingRight = 6;
         card.style.paddingBottom = 6;
         card.style.paddingLeft = 6;
-        card.style.alignItems = Align.Center;
         card.style.borderTopWidth = 1;
         card.style.borderRightWidth = 1;
         card.style.borderBottomWidth = 1;
@@ -522,6 +918,50 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         binder.BindUI(indicatorRoot);
         binder.BindBatteryData(batteryRecord);
         card.Add(indicatorRoot);
+
+        return card;
+    }
+
+    VisualElement BuildBatteryFigureChartCard(BatteryRecord batteryRecord, int batteryIndex)
+    {
+        var card = new VisualElement();
+        card.style.flexDirection = FlexDirection.Column;
+        card.style.alignItems = Align.Stretch;
+        card.style.marginBottom = 8;
+        card.style.paddingTop = 6;
+        card.style.paddingRight = 6;
+        card.style.paddingBottom = 6;
+        card.style.paddingLeft = 6;
+        card.style.borderTopWidth = 1;
+        card.style.borderRightWidth = 1;
+        card.style.borderBottomWidth = 1;
+        card.style.borderLeftWidth = 1;
+        card.style.borderTopColor = Color.black;
+        card.style.borderRightColor = Color.black;
+        card.style.borderBottomColor = Color.black;
+        card.style.borderLeftColor = Color.black;
+
+        var titleLabel = new Label(GetBatterySectorArcTitle(batteryRecord, batteryIndex));
+        titleLabel.style.width = Length.Percent(100);
+        titleLabel.style.unityTextAlign = TextAnchor.MiddleCenter;
+        titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+        titleLabel.style.whiteSpace = WhiteSpace.Normal;
+        titleLabel.style.marginBottom = 6;
+        card.Add(titleLabel);
+
+        var chartRow = new VisualElement();
+        chartRow.style.flexDirection = FlexDirection.Row;
+        chartRow.style.alignItems = Align.FlexStart;
+        var chart = new BatteryPenetrationFireControlChart();
+        chart.style.flexGrow = 1;
+        chart.style.minWidth = 560;
+        chart.style.height = 220;
+        chart.style.minHeight = 220;
+        chart.SetPoints(BuildBatteryFigurePoints(batteryRecord));
+        chart.SetRangeYards(batteryRecord?.rangeYards);
+        chartRow.Add(chart);
+        chartRow.Add(BuildBatteryFigureLegend());
+        card.Add(chartRow);
 
         return card;
     }
@@ -557,7 +997,12 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
     void ClearSectorArcState()
     {
         batterySectorArcsContainer?.Clear();
+        batteryFigureChartsContainer?.Clear();
         torpedoSectorArcIndicatorBinder.BindTorpedoData((ShipClass)null);
+        if (torpedoSectorTitleLabel != null)
+        {
+            torpedoSectorTitleLabel.text = string.Empty;
+        }
         lastSectorArcSignature = null;
         lastSectorArcShipObjectId = null;
     }
@@ -578,7 +1023,9 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
                 .Select(batteryRecord => string.Join("~", new[]
                 {
                     batteryRecord?.name?.GetShortName() ?? "",
-                    BuildMountLocationSignature(batteryRecord?.mountLocationRecords)
+                    BuildMountLocationSignature(batteryRecord?.mountLocationRecords),
+                    BuildPenetrationSignature(batteryRecord?.penetrationTableRecords),
+                    BuildFireControlSignature(batteryRecord?.fireControlTableRecords)
                 })));
 
         return string.Join("|", new[]
@@ -605,6 +1052,78 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return string.Join(",",
             (mountArcs ?? Enumerable.Empty<MountArcRecord>())
                 .Select(arc => $"{arc.startDeg:0.###}-{arc.CoverageDeg:0.###}"));
+    }
+
+    static string BuildPenetrationSignature(IEnumerable<PenetrationTableRecord> penetrationTableRecords)
+    {
+        return string.Join(",",
+            (penetrationTableRecords ?? Enumerable.Empty<PenetrationTableRecord>())
+                .Select(record => $"{record.distanceYards:0.###}:{record.verticalPenetrationInchs:0.###}:{record.horizontalPenetrationInchs:0.###}:{record.rateOfFire:0.###}:{record.rangeBand}"));
+    }
+
+    static string BuildFireControlSignature(IEnumerable<FireControlTableRecord> fireControlTableRecords)
+    {
+        return string.Join(",",
+            (fireControlTableRecords ?? Enumerable.Empty<FireControlTableRecord>())
+                .Select(record => $"{record.speedThresholdKnot:0.###}:{record.shortBroad:0.###}:{record.shortNarrow:0.###}:{record.mediumBroad:0.###}:{record.mediumNarrow:0.###}:{record.longBroad:0.###}:{record.longNarrow:0.###}:{record.extremeBroad:0.###}:{record.extremeNarrow:0.###}"));
+    }
+
+    VisualElement BuildBatteryFigureLegend()
+    {
+        var legendColumn = new VisualElement();
+        legendColumn.style.width = 200;
+        legendColumn.style.minWidth = 200;
+        legendColumn.style.marginLeft = 10;
+        legendColumn.style.paddingTop = 8;
+        legendColumn.style.flexDirection = FlexDirection.Column;
+        legendColumn.style.alignItems = Align.FlexStart;
+
+        legendColumn.Add(BuildLegendItem(new Color(0.75f, 0.2f, 0.18f, 1f), Localize("Vertical Penetration (in)")));
+        legendColumn.Add(BuildLegendItem(new Color(0.16f, 0.42f, 0.78f, 1f), Localize("Horizontal Penetration (in)")));
+        legendColumn.Add(BuildLegendItem(new Color(0.12f, 0.6f, 0.24f, 1f), Localize("Fire Control (Lowest Speed Broad)")));
+
+        return legendColumn;
+    }
+
+    VisualElement BuildLegendItem(Color color, string text)
+    {
+        var item = new VisualElement();
+        item.style.flexDirection = FlexDirection.Row;
+        item.style.alignItems = Align.Center;
+        item.style.marginBottom = 6;
+
+        var swatch = new VisualElement();
+        swatch.style.width = 10;
+        swatch.style.height = 10;
+        swatch.style.backgroundColor = color;
+        swatch.style.marginRight = 4;
+        item.Add(swatch);
+
+        var label = new Label(text);
+        label.style.fontSize = 10;
+        label.style.whiteSpace = WhiteSpace.Normal;
+        label.style.flexGrow = 1;
+        item.Add(label);
+
+        return item;
+    }
+
+    static List<BatteryFigurePoint> BuildBatteryFigurePoints(BatteryRecord batteryRecord)
+    {
+        var lowestSpeedFireControlRow = (batteryRecord?.fireControlTableRecords ?? new List<FireControlTableRecord>())
+            .OrderBy(record => record.speedThresholdKnot)
+            .FirstOrDefault();
+
+        return (batteryRecord?.penetrationTableRecords ?? new List<PenetrationTableRecord>())
+            .OrderBy(record => record.distanceYards)
+            .Select(record => new BatteryFigurePoint
+            {
+                distanceYards = record.distanceYards,
+                verticalPenetrationInches = record.verticalPenetrationInchs,
+                horizontalPenetrationInches = record.horizontalPenetrationInchs,
+                fireControlValue = lowestSpeedFireControlRow?.GetValue(record.rangeBand, TargetAspect.Broad) ?? 0f
+            })
+            .ToList();
     }
 
     void ClearDefaultPlaceholderPreviewState()

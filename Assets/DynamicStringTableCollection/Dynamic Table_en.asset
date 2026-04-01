@@ -3403,6 +3403,18 @@ MonoBehaviour:
     m_Localized: Awaking ({0} min)
     m_Metadata:
       m_Items: []
+  - m_Id: -96000000010006
+    m_Localized: Vertical Penetration (in)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000010007
+    m_Localized: Horizontal Penetration (in)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96000000010008
+    m_Localized: Fire Control (Lowest Speed Broad)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

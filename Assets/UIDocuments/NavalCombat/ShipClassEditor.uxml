@@ -533,29 +533,33 @@
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(68037681778688)"/>
                             </Bindings>
                         </ui:Tab>
-                        <ui:Tab label="Sector Arcs">
-                            <ui:VisualElement name="SectorArcsTabContent" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 500px; min-width: 320px; margin-right: 8px;">
-                                    <ui:Label text="Battery Sector Arcs" style="-unity-text-align: upper-center;">
-                                        <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(91517060026368)"/>
-                                        </Bindings>
-                                    </ui:Label>
-                                    <ui:ScrollView style="flex-grow: 1; margin-top: 8px;">
-                                        <ui:VisualElement name="BatterySectorArcsContainer" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; align-content: flex-start; padding-right: 4px; padding-bottom: 4px;"/>
-                                    </ui:ScrollView>
-                                </ui:VisualElement>
-                                <ui:VisualElement style="width: 220px; flex-shrink: 0;">
-                                    <ui:Label text="Torpedo Sector Arcs" style="-unity-text-align: upper-center;">
-                                        <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(91572517113856)"/>
-                                        </Bindings>
-                                    </ui:Label>
-                                    <ui:VisualElement style="flex-grow: 1; margin-top: 8px; align-items: center;">
-                                        <ui:Instance template="SectorArcIndicator" name="TorpedoSectorArcIndicator"/>
+                        <ui:Tab label="Figure">
+                            <ui:ScrollView style="flex-grow: 1;">
+                                <ui:VisualElement name="SectorArcsTabContent" style="flex-grow: 1; flex-direction: column; padding-right: 4px; padding-bottom: 4px;">
+                                    <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-wrap: wrap;">
+                                        <ui:VisualElement style="flex-grow: 1; flex-basis: 500px; min-width: 320px; margin-right: 8px;">
+                                            <ui:Label text="Battery Sector Arcs" style="-unity-text-align: upper-center;">
+                                                <Bindings>
+                                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(91517060026368)"/>
+                                                </Bindings>
+                                            </ui:Label>
+                                            <ui:VisualElement name="BatterySectorArcsContainer" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; align-content: flex-start; margin-top: 8px;"/>
+                                        </ui:VisualElement>
+                                        <ui:VisualElement style="width: 220px; flex-shrink: 0;">
+                                        <ui:Label text="Torpedo Sector Arcs" style="-unity-text-align: upper-center;">
+                                            <Bindings>
+                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(91572517113856)"/>
+                                            </Bindings>
+                                        </ui:Label>
+                                        <ui:VisualElement style="width: 220px; min-width: 220px; margin-top: 8px; padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px; align-items: center; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                                            <ui:Label name="TorpedoSectorTitleLabel" style="width: 100%; -unity-text-align: upper-center; -unity-font-style: bold; white-space: normal; margin-bottom: 6px;"/>
+                                            <ui:Instance template="SectorArcIndicator" name="TorpedoSectorArcIndicator"/>
+                                        </ui:VisualElement>
                                     </ui:VisualElement>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement name="BatteryFigureChartsContainer" style="flex-grow: 1; flex-direction: column; align-items: stretch; margin-top: 8px;"/>
                                 </ui:VisualElement>
-                            </ui:VisualElement>
+                            </ui:ScrollView>
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(68131466416128)"/>
                             </Bindings>

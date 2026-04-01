@@ -200,16 +200,17 @@ namespace StrategicCombatCore
                 }
             };
 
-            static Rule()
-            {
-                russoJapaneseWar.Setup();
-                sinoJapaneseWar.Setup();
-            }
+        static Rule()
+        {
+            russoJapaneseWar.Setup();
+            sinoJapaneseWar.Setup();
+        }
 
-            public enum Mode
-            {
-                RussoJapaneseWar,
-                SinoJapaneseWar,
+        [XmlType("NavalForceEstimationRuleMode")]
+        public enum Mode
+        {
+            RussoJapaneseWar,
+            SinoJapaneseWar,
             }
 
             public static Rule Get(Mode mode)

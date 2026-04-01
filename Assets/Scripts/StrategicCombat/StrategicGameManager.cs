@@ -13,6 +13,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using System.Xml.Serialization;
 
 
 using CoreUtils;
@@ -71,6 +72,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public class StartupConfig
     {
+        [XmlType("StrategicStartupConfigMode")]
         public enum Mode
         {
             Empty,

@@ -4335,4 +4335,28 @@ https://en.wikipedia.org/wiki/Manuil_Ozerov</remark>
 https://en.wikipedia.org/wiki/Bruno_von_Vietinghoff</remark>
   <objectId>67c406d2-12c8-4afe-9aaf-b358ffb1a0df</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Richard Dicker</english>
+   <japanese>リチャード・ディッカー</japanese>
+   <chineseSimplified>理查德·迪克尔</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Richard_Dicker.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Р. Р. Дикер
+
+Richard Romanovich Dicker
+
+https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</remark>
+  <objectId>602a66da-963a-4c6a-97a0-b13c715bfc3c</objectId>
+ </Leader>
 </ArrayOfLeader>

@@ -1614,7 +1614,9 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 tree=tree
             };
             var rootItems = treeViewerBuilder.CreateTreeViewRootItems(
-                viewableGroups.Where(group => group.type != StrategicGroup.Type.Base));
+                viewableGroups.Where(group =>
+                    group.type != StrategicGroup.Type.Base &&
+                    !tree.ShouldHideAsBaseRootDescendant(group)));
             oobTreeView.SetRootItems(rootItems);
 
             tree.BindMakeItemBindItem(oobTreeView);

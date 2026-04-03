@@ -61,6 +61,19 @@ public class FullGroupTreeNameLink : ITree<IStrategicGroupMemberReferenceable, I
         return parent;
     }
 
+    public bool ShouldHideAsBaseRootDescendant(IStrategicGroupMemberReferenceable node)
+    {
+        var parent = node?.strategicGroupReference?.Get();
+        var skippedBase = false;
+        while (parent is StrategicGroup group && group.type == StrategicGroup.Type.Base)
+        {
+            skippedBase = true;
+            parent = parent.strategicGroupReference.Get();
+        }
+
+        return skippedBase && parent == null;
+    }
+
     public IEnumerable<IStrategicGroupMemberReferenceable> GetChildren(IStrategicGroupMemberReferenceable node)
     {
         if (node is StrategicGroup group)

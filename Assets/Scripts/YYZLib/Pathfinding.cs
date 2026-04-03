@@ -67,6 +67,32 @@ namespace YYZ.PathFinding
             }
         }
 
+        class AStarQueueNode
+        {
+            public IndexT node;
+            public float fScore;
+            public long order;
+        }
+
+        class AStarQueueNodeComparer : IComparer<AStarQueueNode>
+        {
+            public int Compare(AStarQueueNode x, AStarQueueNode y)
+            {
+                if (ReferenceEquals(x, y))
+                    return 0;
+                if (x is null)
+                    return -1;
+                if (y is null)
+                    return 1;
+
+                var scoreCmp = x.fScore.CompareTo(y.fScore);
+                if (scoreCmp != 0)
+                    return scoreCmp;
+
+                return x.order.CompareTo(y.order);
+            }
+        }
+
         static List<IndexT> ReconstructPath(Dictionary<IndexT, IndexT> cameFrom, IndexT current)
         {
             var total_path = new List<IndexT> { current };
@@ -104,38 +130,34 @@ namespace YYZ.PathFinding
 
         public static float AStar2(IGraph<IndexT> graph, IndexT src, IndexT dst, out List<IndexT> path)
         {
-            var openSet = new HashSet<IndexT> { src };
             var cameFrom = new Dictionary<IndexT, IndexT>();
-
-            var gScore = new Dictionary<IndexT, float> { { src, 0 } }; // default Mathf.Infinity
-
+            var gScore = new Dictionary<IndexT, float> { { src, 0 } };
             var fScore = new Dictionary<IndexT, float> { { src, graph.EstimateCost(src, dst) } };
+            var openQueue = new SortedSet<AStarQueueNode>(new AStarQueueNodeComparer());
+            long nextOrder = 0;
 
-            while (openSet.Count > 0)
+            openQueue.Add(new AStarQueueNode
             {
-                IEnumerator<IndexT> openSetEnumerator = openSet.GetEnumerator();
+                node = src,
+                fScore = fScore[src],
+                order = nextOrder++
+            });
 
-                openSetEnumerator.MoveNext(); // assert?
-                IndexT current = openSetEnumerator.Current;
-                float lowest_f_score = fScore[current];
+            while (openQueue.Count > 0)
+            {
+                var currentNode = openQueue.Min;
+                openQueue.Remove(currentNode);
 
-                while (openSetEnumerator.MoveNext())
-                {
-                    IndexT pos = openSetEnumerator.Current;
-                    if (fScore[pos] < lowest_f_score)
-                    {
-                        lowest_f_score = TryGet(fScore, pos);
-                        current = pos;
-                    }
-                }
+                var current = currentNode.node;
+                if (currentNode.fScore != TryGet(fScore, current))
+                    continue;
 
-                if (current.Equals(dst))
+                if (EqualityComparer<IndexT>.Default.Equals(current, dst))
                 {
                     path = ReconstructPath(cameFrom, current);
-                    return lowest_f_score;
+                    return TryGet(gScore, current);
                 }
 
-                openSet.Remove(current);
                 foreach (IndexT neighbor in graph.Neighbors(current)) // TODO: Switch to graph.NeighborsWithMoveCost API to prevent hash calculation 
                 {
                     float tentative_gScore = TryGet(gScore, current) + graph.MoveCost(current, neighbor);
@@ -143,9 +165,15 @@ namespace YYZ.PathFinding
                     {
                         cameFrom[neighbor] = current;
                         gScore[neighbor] = tentative_gScore;
-                        fScore[neighbor] = TryGet(gScore, neighbor) + graph.EstimateCost(neighbor, dst);
+                        var neighborFScore = tentative_gScore + graph.EstimateCost(neighbor, dst);
+                        fScore[neighbor] = neighborFScore;
 
-                        openSet.Add(neighbor);
+                        openQueue.Add(new AStarQueueNode
+                        {
+                            node = neighbor,
+                            fScore = neighborFScore,
+                            order = nextOrder++
+                        });
                     }
                 }
             }

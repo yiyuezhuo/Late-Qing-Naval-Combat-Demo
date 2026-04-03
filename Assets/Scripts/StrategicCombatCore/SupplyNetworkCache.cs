@@ -9,7 +9,7 @@ namespace StrategicCombatCore
     {
         readonly Dictionary<(SideState side, Cell src, Cell dst), AStarResult<Cell>> landSupplyPathfindingCache = new();
         readonly Dictionary<SideState, List<StrategicGroup>> friendlyBaseGroupsBySideCache = new();
-        readonly Dictionary<SideState, Dictionary<Cell, LandUnit>> nearestFriendlyBaseDepotBySideCache = new();
+        readonly Dictionary<SideState, NearestFriendlyBaseDepotCache> nearestFriendlyBaseDepotCacheBySide = new();
 
         public LandUnit GetNearestFriendlyBaseDepot(StrategicGroup group)
         {
@@ -18,14 +18,25 @@ namespace StrategicCombatCore
             if (srcCell == null || sideState == null)
                 return null;
 
-            var depotByCell = GetNearestFriendlyBaseDepotBySide(sideState);
-            return depotByCell.GetValueOrDefault(srcCell);
+            return GetNearestFriendlyBaseDepotCache(sideState).GetDepot(srcCell);
         }
 
         public AStarResult<Cell> GetLandSupplyPath(SideState sideState, Cell srcCell, Cell dstCell)
         {
             if (sideState == null || srcCell == null || dstCell == null)
-                return default;
+                return BuildFailedPathResult();
+
+            if (srcCell == dstCell)
+            {
+                return new AStarResult<Cell>()
+                {
+                    Cost = 0f,
+                    Path = new List<Cell>() { srcCell }
+                };
+            }
+
+            if (TryGetPathToNearestFriendlyBaseDepot(sideState, srcCell, dstCell, out var nearestDepotPathResult))
+                return nearestDepotPathResult;
 
             var graph = new DynamicLandSupplyNetworkingGraph() { side = sideState };
             return GetLandSupplyPath(graph, sideState, srcCell, dstCell);
@@ -41,17 +52,30 @@ namespace StrategicCombatCore
             return result;
         }
 
-        Dictionary<Cell, LandUnit> GetNearestFriendlyBaseDepotBySide(SideState sideState)
+        public bool TryGetPathToNearestFriendlyBaseDepot(SideState sideState, Cell srcCell, Cell dstCell, out AStarResult<Cell> result)
         {
-            if (!nearestFriendlyBaseDepotBySideCache.TryGetValue(sideState, out var depotByCell))
-            {
-                depotByCell = BuildNearestFriendlyBaseDepotBySide(sideState);
-                nearestFriendlyBaseDepotBySideCache[sideState] = depotByCell;
-            }
-            return depotByCell;
+            result = default;
+            if (sideState == null || srcCell == null || dstCell == null)
+                return false;
+
+            var cache = GetNearestFriendlyBaseDepotCache(sideState);
+            if (!cache.TryGetPathResult(srcCell, dstCell, out result))
+                return false;
+
+            return true;
         }
 
-        Dictionary<Cell, LandUnit> BuildNearestFriendlyBaseDepotBySide(SideState sideState)
+        NearestFriendlyBaseDepotCache GetNearestFriendlyBaseDepotCache(SideState sideState)
+        {
+            if (!nearestFriendlyBaseDepotCacheBySide.TryGetValue(sideState, out var depotCache))
+            {
+                depotCache = BuildNearestFriendlyBaseDepotCache(sideState);
+                nearestFriendlyBaseDepotCacheBySide[sideState] = depotCache;
+            }
+            return depotCache;
+        }
+
+        NearestFriendlyBaseDepotCache BuildNearestFriendlyBaseDepotCache(SideState sideState)
         {
             var reverseGraph = new ReverseDynamicLandSupplyNetworkingGraph() { side = sideState };
             var bestStates = new Dictionary<Cell, DepotPathState>();
@@ -65,7 +89,13 @@ namespace StrategicCombatCore
                 if (depot == null || cell == null)
                     continue;
 
-                var state = new DepotPathState() { cost = 0, depot = depot };
+                var state = new DepotPathState()
+                {
+                    cost = 0,
+                    depot = depot,
+                    depotCell = cell,
+                    nextCellTowardDepot = null
+                };
                 if (bestStates.TryGetValue(cell, out var currentBest) && currentBest.cost <= 0)
                     continue;
 
@@ -89,12 +119,18 @@ namespace StrategicCombatCore
                     if (bestStates.TryGetValue(previousCell, out var previousBest) && previousBest.cost <= nextCost)
                         continue;
 
-                    bestStates[previousCell] = new DepotPathState() { cost = nextCost, depot = currentState.depot };
+                    bestStates[previousCell] = new DepotPathState()
+                    {
+                        cost = nextCost,
+                        depot = currentState.depot,
+                        depotCell = currentState.depotCell,
+                        nextCellTowardDepot = currentCell
+                    };
                     openSet.Add(new QueueNode(previousCell, nextCost, nextOrder++));
                 }
             }
 
-            return bestStates.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.depot);
+            return new NearestFriendlyBaseDepotCache(bestStates);
         }
 
         List<StrategicGroup> GetFriendlyBaseGroups(SideState sideState)
@@ -138,6 +174,62 @@ namespace StrategicCombatCore
         {
             public float cost;
             public LandUnit depot;
+            public Cell depotCell;
+            public Cell nextCellTowardDepot;
+        }
+
+        class NearestFriendlyBaseDepotCache
+        {
+            readonly Dictionary<Cell, DepotPathState> bestStates;
+
+            public NearestFriendlyBaseDepotCache(Dictionary<Cell, DepotPathState> bestStates)
+            {
+                this.bestStates = bestStates ?? new Dictionary<Cell, DepotPathState>();
+            }
+
+            public LandUnit GetDepot(Cell srcCell)
+            {
+                if (srcCell == null)
+                    return null;
+
+                return bestStates.TryGetValue(srcCell, out var state)
+                    ? state.depot
+                    : null;
+            }
+
+            public bool TryGetPathResult(Cell srcCell, Cell dstCell, out AStarResult<Cell> result)
+            {
+                result = default;
+                if (srcCell == null || dstCell == null)
+                    return false;
+                if (!bestStates.TryGetValue(srcCell, out var srcState))
+                    return false;
+                if (srcState.depotCell != dstCell)
+                    return false;
+
+                var path = new List<Cell>();
+                var currentCell = srcCell;
+                while (currentCell != null)
+                {
+                    path.Add(currentCell);
+                    if (currentCell == dstCell)
+                    {
+                        result = new AStarResult<Cell>()
+                        {
+                            Cost = srcState.cost,
+                            Path = path
+                        };
+                        return true;
+                    }
+
+                    if (!bestStates.TryGetValue(currentCell, out var currentState))
+                        return false;
+
+                    currentCell = currentState.nextCellTowardDepot;
+                }
+
+                return false;
+            }
         }
 
         class QueueNode
@@ -171,6 +263,15 @@ namespace StrategicCombatCore
 
                 return x.order.CompareTo(y.order);
             }
+        }
+
+        static AStarResult<Cell> BuildFailedPathResult()
+        {
+            return new AStarResult<Cell>()
+            {
+                Cost = float.PositiveInfinity,
+                Path = new List<Cell>()
+            };
         }
     }
 }

@@ -129,3 +129,5 @@ MonoBehaviour:
   pointListEditorDialogDocument: {fileID: 9197481963319205126, guid: 5b6c9876447cfcb41befa26445a94aa2, type: 3}
   rectangleEditorDialogDocument: {fileID: 9197481963319205126, guid: 91b7b8a93cea49f419c3cfe136600932, type: 3}
   strategicStartupDialogDocument: {fileID: 9197481963319205126, guid: 940bd850bcb0a144ab22f22a09553381, type: 3}
+  theaterSelectorDialogDocument: {fileID: 9197481963319205126, guid: 9a6e2e8f65f74dbca76c46d2bb95ef01, type: 3}
+  theaterDetailDialogDocument: {fileID: 9197481963319205126, guid: d8f8e2e297c64b39819c3a26f163ca77, type: 3}

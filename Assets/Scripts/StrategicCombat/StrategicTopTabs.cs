@@ -242,6 +242,11 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             DialogRoot.Instance.PopupStrategicScenarioStateEditorDialog();
         };
 
+        root.Q<Button>("TheaterButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupTheaterSelectorDialog();
+        };
+
         root.Q<Button>("RunDebugScriptButton").clicked += () =>
         {
             var navalContactReports = StrategicGameState.Instance.navalContactReports;

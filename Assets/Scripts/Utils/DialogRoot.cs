@@ -818,6 +818,12 @@ public static class TorpedoInterceptSolutionDialogSupport
 }
 
 
+enum TheaterSelectorDisplayMode
+{
+    Membership,
+    Frontline
+}
+
 public class DialogRoot : SingletonDocument<DialogRoot>
 {
     public VisualTreeAsset shipLogSelectorDocument;
@@ -881,6 +887,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset pointListEditorDialogDocument;
     public VisualTreeAsset rectangleEditorDialogDocument;
     public VisualTreeAsset strategicStartupDialogDocument;
+    public VisualTreeAsset theaterSelectorDialogDocument;
+    public VisualTreeAsset theaterDetailDialogDocument;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -1198,6 +1206,166 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
         // tempDialog.onCreated += selectorDialog.OnCreated;
         tempDialog.onConfirmed += selectorDialog.OnConfirm;
+
+        tempDialog.Popup();
+    }
+
+    public void PopupTheaterSelectorDialog()
+    {
+        if (theaterSelectorDialogDocument == null)
+        {
+            PopupMessageDialog("TheaterSelectorDialog is not configured.");
+            return;
+        }
+
+        var state = StrategicGameState.Instance;
+        state.RefreshTheaters();
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = theaterSelectorDialogDocument,
+            templateDataSource = state
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var displayModeDropdownField = el.Q<DropdownField>("DisplayModeDropdownField");
+            var theaterListView = el.Q<ListView>("TheaterListView");
+            List<Theater> orderedTheaters = null;
+            var selectedDisplayMode = TheaterSelectorDisplayMode.Membership;
+            theaterListView.makeItem = () =>
+            {
+                var item = theaterListView.itemTemplate.CloneTree();
+                var detailButton = item.Q<Button>("DetailButton");
+                detailButton.clicked += () =>
+                {
+                    if (Utils.TryResolveCurrentValueForBinding(item, out Theater theater))
+                    {
+                        PopupTheaterDetailDialog(theater);
+                    }
+                };
+                return item;
+            };
+
+            void RefreshDisplayModeDropdown()
+            {
+                if (displayModeDropdownField == null)
+                    return;
+
+                displayModeDropdownField.choices = new()
+                {
+                    Localize("Membership"),
+                    Localize("Frontline")
+                };
+                displayModeDropdownField.SetValueWithoutNotify(displayModeDropdownField.choices[(int)selectedDisplayMode]);
+            }
+
+            void RefreshOrderedTheaters()
+            {
+                orderedTheaters = (state.theaters ?? new List<Theater>())
+                    .Select((theater, index) => new { theater, index })
+                    .Where(x => x.theater != null)
+                    .OrderByDescending(x => x.theater.cells?.Count ?? 0)
+                    .ThenBy(x => x.index)
+                    .Select(x => x.theater)
+                    .ToList();
+                theaterListView.itemsSource = orderedTheaters;
+                theaterListView.Rebuild();
+            }
+
+            void UpdateTheaterOverlay(Theater theater)
+            {
+                if (theater == null)
+                {
+                    HexMapShower.Instance?.ClearTheaterOverlay();
+                    return;
+                }
+
+                if (selectedDisplayMode == TheaterSelectorDisplayMode.Frontline)
+                {
+                    HexMapShower.Instance?.SetTheaterOverlayTexts(state.BuildTheaterFrontlineOverlayTexts(theater));
+                    return;
+                }
+
+                HexMapShower.Instance?.SetTheaterOverlay(theater.cells);
+            }
+
+            void SyncSelectionByObjectId(string objectId)
+            {
+                if (string.IsNullOrWhiteSpace(objectId))
+                {
+                    theaterListView.ClearSelection();
+                    HexMapShower.Instance?.ClearTheaterOverlay();
+                    return;
+                }
+
+                var selectedIndex = orderedTheaters?.FindIndex(theater => theater?.objectId == objectId) ?? -1;
+                if (selectedIndex < 0)
+                {
+                    theaterListView.ClearSelection();
+                    HexMapShower.Instance?.ClearTheaterOverlay();
+                    return;
+                }
+
+                UpdateTheaterOverlay(orderedTheaters[selectedIndex]);
+                BehaviourUtils.Instance.ScheduleToSetSelectionForListView(theaterListView, selectedIndex);
+            }
+
+            theaterListView.selectionChanged += objects =>
+            {
+                var theater = objects.FirstOrDefault() as Theater;
+                UpdateTheaterOverlay(theater);
+            };
+
+            displayModeDropdownField?.RegisterValueChangedCallback(_ =>
+            {
+                selectedDisplayMode = displayModeDropdownField.index == (int)TheaterSelectorDisplayMode.Frontline
+                    ? TheaterSelectorDisplayMode.Frontline
+                    : TheaterSelectorDisplayMode.Membership;
+                UpdateTheaterOverlay(theaterListView.selectedItem as Theater);
+            });
+
+            el.Q<Button>("RefreshButton").clicked += () =>
+            {
+                var selectedTheater = theaterListView.selectedItem as Theater;
+                var selectedId = selectedTheater?.objectId;
+                state.RefreshTheaters();
+                RefreshOrderedTheaters();
+                SyncSelectionByObjectId(selectedId);
+            };
+
+            el.Q<Button>("ClearButton").clicked += () =>
+            {
+                state.ClearTheaters();
+                RefreshOrderedTheaters();
+                theaterListView.ClearSelection();
+                HexMapShower.Instance?.ClearTheaterOverlay();
+            };
+
+            RefreshDisplayModeDropdown();
+            RefreshOrderedTheaters();
+            SyncSelectionByObjectId(orderedTheaters.FirstOrDefault()?.objectId);
+        };
+
+        tempDialog.onClosed += (_, _) => HexMapShower.Instance?.ClearTheaterOverlay();
+        tempDialog.Popup();
+    }
+
+    public void PopupTheaterDetailDialog(Theater theater)
+    {
+        if (theaterDetailDialogDocument == null)
+        {
+            PopupMessageDialog("TheaterDetailDialog is not configured.");
+            return;
+        }
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = theaterDetailDialogDocument,
+            templateDataSource = theater
+        };
 
         tempDialog.Popup();
     }

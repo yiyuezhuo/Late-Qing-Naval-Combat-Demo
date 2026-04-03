@@ -90,6 +90,7 @@ namespace StrategicCombatCore
 
         public List<PendingNavalCombat> pendingNavalCombats = new();
         public List<LandBattle> landBattles = new();
+        public List<Theater> theaters = new();
 
         public List<SidedLazyLocalizedString> logs = new();
         // public List<LazyLocalizedString> logs = new();
@@ -248,6 +249,7 @@ namespace StrategicCombatCore
             missions = newInstance.missions;
             pendingNavalCombats = newInstance.pendingNavalCombats;
             landBattles = newInstance.landBattles;
+            theaters = newInstance.theaters ?? new();
 
             logs = newInstance.logs;
             navalContactReports = newInstance.navalContactReports;
@@ -820,6 +822,11 @@ namespace StrategicCombatCore
 
 
             Advance1HourForScripts();
+
+            if (scenarioState.dateTime.Hour == 0)
+            {
+                RefreshTheaters();
+            }
         }
 
         void Advance1HourForReinforcement()
@@ -1629,6 +1636,483 @@ namespace StrategicCombatCore
             }
         }
 
+        public void RefreshTheaters()
+        {
+            theaters ??= new();
+            var oldTheaters = theaters.Where(theater => theater != null).ToList();
+            var scannedTheaters = ScanTheaters().ToList();
+
+            var oldCellSets = oldTheaters
+                .Select(theater => BuildTheaterCellKeySet(theater.cells))
+                .ToList();
+            var newCellSets = scannedTheaters
+                .Select(theater => BuildTheaterCellKeySet(theater.cells))
+                .ToList();
+
+            var candidates = new List<TheaterMatchCandidate>();
+            for (var oldIdx = 0; oldIdx < oldTheaters.Count; oldIdx++)
+            {
+                for (var newIdx = 0; newIdx < scannedTheaters.Count; newIdx++)
+                {
+                    var intersectionCount = CountIntersection(oldCellSets[oldIdx], newCellSets[newIdx]);
+                    if (intersectionCount <= 0)
+                        continue;
+
+                    var unionCount = oldCellSets[oldIdx].Count + newCellSets[newIdx].Count - intersectionCount;
+                    if (unionCount <= 0)
+                        continue;
+
+                    candidates.Add(new TheaterMatchCandidate()
+                    {
+                        oldIndex = oldIdx,
+                        newIndex = newIdx,
+                        intersectionCount = intersectionCount,
+                        jaccard = (float)intersectionCount / unionCount
+                    });
+                }
+            }
+
+            candidates.Sort((left, right) =>
+            {
+                var cmp = right.jaccard.CompareTo(left.jaccard);
+                if (cmp != 0)
+                    return cmp;
+
+                cmp = right.intersectionCount.CompareTo(left.intersectionCount);
+                if (cmp != 0)
+                    return cmp;
+
+                cmp = left.oldIndex.CompareTo(right.oldIndex);
+                if (cmp != 0)
+                    return cmp;
+
+                return left.newIndex.CompareTo(right.newIndex);
+            });
+
+            var matchedOldIndices = new HashSet<int>();
+            var matchedNewIndices = new HashSet<int>();
+            foreach (var candidate in candidates)
+            {
+                if (!matchedOldIndices.Add(candidate.oldIndex))
+                    continue;
+                if (!matchedNewIndices.Add(candidate.newIndex))
+                {
+                    matchedOldIndices.Remove(candidate.oldIndex);
+                    continue;
+                }
+
+                var oldTheater = oldTheaters[candidate.oldIndex];
+                var scannedTheater = scannedTheaters[candidate.newIndex];
+                oldTheater.sideObjectId = scannedTheater.sideObjectId;
+                oldTheater.cells = scannedTheater.cells;
+                oldTheater.frontlineCells = scannedTheater.frontlineCells;
+            }
+
+            foreach (var oldIdx in Enumerable.Range(0, oldTheaters.Count))
+            {
+                if (matchedOldIndices.Contains(oldIdx))
+                    continue;
+
+                var removeTheater = oldTheaters[oldIdx];
+                theaters.Remove(removeTheater);
+                EntityManager.Instance.Unregister(removeTheater);
+            }
+
+            foreach (var newIdx in Enumerable.Range(0, scannedTheaters.Count))
+            {
+                if (matchedNewIndices.Contains(newIdx))
+                    continue;
+
+                var newTheater = scannedTheaters[newIdx];
+                newTheater.name = GenerateNameForNewTheater(newTheater);
+                theaters.Add(newTheater);
+                EntityManager.Instance.Register(newTheater, this);
+            }
+        }
+
+        public void ClearTheaters()
+        {
+            if (theaters == null)
+                return;
+
+            foreach (var theater in theaters.Where(theater => theater != null).ToList())
+            {
+                EntityManager.Instance.Unregister(theater);
+            }
+            theaters.Clear();
+        }
+
+        IEnumerable<Theater> ScanTheaters()
+        {
+            if (cellMatrix == null)
+                yield break;
+
+            var visited = new HashSet<(int, int)>();
+            var width = GetMapWidth();
+            var height = GetMapHeight();
+
+            for (var x = 0; x < width; x++)
+            {
+                for (var y = 0; y < height; y++)
+                {
+                    if (!visited.Add((x, y)))
+                        continue;
+
+                    var startCell = cellMatrix[x, y];
+                    var side = startCell?.GetHexSide();
+                    if (side == null)
+                        continue;
+
+                    var queue = new Queue<Cell>();
+                    var memberCells = new List<XY>();
+                    queue.Enqueue(startCell);
+
+                    while (queue.Count > 0)
+                    {
+                        var cell = queue.Dequeue();
+                        if (cell == null)
+                            continue;
+
+                        var cellSide = cell.GetHexSide();
+                        if (cellSide == null || cellSide.objectId != side.objectId)
+                            continue;
+
+                        memberCells.Add(cell.ToXY());
+
+                        foreach (var neighbor in cell.GetNeighbors())
+                        {
+                            if (neighbor == null || neighbor.IsAreaCell())
+                                continue;
+
+                            var neighborSide = neighbor.GetHexSide();
+                            if (neighborSide != null &&
+                                neighborSide.objectId == side.objectId &&
+                                visited.Add((neighbor.x, neighbor.y)))
+                            {
+                                queue.Enqueue(neighbor);
+                            }
+                        }
+                    }
+
+                    if (memberCells.Count == 0)
+                        continue;
+
+                    yield return new Theater()
+                    {
+                        sideObjectId = side.objectId,
+                        cells = memberCells,
+                        frontlineCells = BuildTheaterFrontlineCells(memberCells)
+                    };
+                }
+            }
+        }
+
+        List<XY> BuildTheaterFrontlineCells(IEnumerable<XY> theaterCells)
+        {
+            var cellList = (theaterCells ?? Enumerable.Empty<XY>())
+                .Where(cell => cell != null && string.IsNullOrWhiteSpace(cell.areaCellObjectId))
+                .ToList();
+            var cellSet = BuildTheaterCellKeySet(cellList);
+            var result = new List<XY>();
+            var directions = Enum.GetValues(typeof(EdgeDirection)).Cast<EdgeDirection>();
+            foreach (var cellXY in cellList)
+            {
+                var cell = cellXY.GetCell();
+                if (cell == null || !cell.IsGridCell() || !cell.IsArmyPassable())
+                    continue;
+
+                var isFrontline = false;
+                foreach (var direction in directions)
+                {
+                    var neighbor = cell.GetNeighbor(direction);
+                    if (neighbor == null ||
+                        neighbor.IsAreaCell() ||
+                        !neighbor.IsArmyPassable())
+                    {
+                        continue;
+                    }
+
+                    if (!cellSet.Contains((neighbor.x, neighbor.y)))
+                    {
+                        isFrontline = true;
+                        break;
+                    }
+                }
+
+                if (isFrontline)
+                {
+                    result.Add(cellXY);
+                }
+            }
+            return result;
+        }
+
+        public Dictionary<(int, int), string> BuildTheaterFrontlineOverlayTexts(Theater theater)
+        {
+            var result = new Dictionary<(int, int), string>();
+            if (theater == null)
+                return result;
+
+            var theaterCellSet = BuildTheaterCellKeySet(theater.cells);
+            var frontlineCells = theater.frontlineCells;
+            if (frontlineCells == null || frontlineCells.Count == 0)
+            {
+                frontlineCells = BuildTheaterFrontlineCells(theater.cells);
+            }
+
+            var passableFrontlineCells = (frontlineCells ?? Enumerable.Empty<XY>())
+                .Select(xy => xy?.GetCell())
+                .Where(cell => cell != null && cell.IsGridCell() && cell.IsArmyPassable())
+                .GroupBy(cell => (cell.x, cell.y))
+                .Select(group => group.First())
+                .ToList();
+
+            foreach (var cell in passableFrontlineCells)
+            {
+                result[(cell.x, cell.y)] = "0";
+            }
+
+            var insideDistances = BuildTheaterSignedLayerDistances(
+                passableFrontlineCells,
+                neighbor => theaterCellSet.Contains((neighbor.x, neighbor.y)),
+                includeSeedCell: false
+            );
+            foreach (var (xy, distance) in insideDistances)
+            {
+                result[xy] = $"-{distance}";
+            }
+
+            var outsideDistances = BuildTheaterSignedLayerDistances(
+                passableFrontlineCells,
+                neighbor => !theaterCellSet.Contains((neighbor.x, neighbor.y)),
+                includeSeedCell: false
+            );
+            foreach (var (xy, distance) in outsideDistances)
+            {
+                result[xy] = $"+{distance}";
+            }
+
+            return result;
+        }
+
+        static Dictionary<(int, int), int> BuildTheaterSignedLayerDistances(
+            IEnumerable<Cell> seedCells,
+            Func<Cell, bool> canTraverse,
+            bool includeSeedCell)
+        {
+            var distances = new Dictionary<(int, int), int>();
+            var queue = new Queue<Cell>();
+            foreach (var cell in seedCells ?? Enumerable.Empty<Cell>())
+            {
+                if (cell == null)
+                    continue;
+
+                var key = (cell.x, cell.y);
+                if (distances.ContainsKey(key))
+                    continue;
+
+                distances[key] = 0;
+                queue.Enqueue(cell);
+            }
+
+            while (queue.Count > 0)
+            {
+                var cell = queue.Dequeue();
+                var currentDistance = distances[(cell.x, cell.y)];
+                foreach (var neighbor in cell.GetNeighbors())
+                {
+                    if (neighbor == null ||
+                        neighbor.IsAreaCell() ||
+                        !neighbor.IsArmyPassable() ||
+                        !canTraverse(neighbor))
+                    {
+                        continue;
+                    }
+
+                    var neighborKey = (neighbor.x, neighbor.y);
+                    if (distances.ContainsKey(neighborKey))
+                        continue;
+
+                    distances[neighborKey] = currentDistance + 1;
+                    queue.Enqueue(neighbor);
+                }
+            }
+
+            if (!includeSeedCell)
+            {
+                foreach (var cell in seedCells ?? Enumerable.Empty<Cell>())
+                {
+                    if (cell != null)
+                    {
+                        distances.Remove((cell.x, cell.y));
+                    }
+                }
+            }
+
+            return distances;
+        }
+
+        HashSet<(int, int)> BuildTheaterCellKeySet(IEnumerable<XY> cells)
+        {
+            var result = new HashSet<(int, int)>();
+            foreach (var cell in cells ?? Enumerable.Empty<XY>())
+            {
+                if (cell?.areaCellObjectId != null)
+                    continue;
+                result.Add((cell.x, cell.y));
+            }
+            return result;
+        }
+
+        static int CountIntersection(HashSet<(int, int)> left, HashSet<(int, int)> right)
+        {
+            if (left == null || right == null || left.Count == 0 || right.Count == 0)
+                return 0;
+
+            if (left.Count > right.Count)
+            {
+                (left, right) = (right, left);
+            }
+
+            var count = 0;
+            foreach (var cell in left)
+            {
+                if (right.Contains(cell))
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        GlobalString GenerateNameForNewTheater(Theater theater)
+        {
+            var side = theater?.GetSide();
+            var candidateGroups = IterateTheaterNamingGroups(theater?.cells, side);
+            StrategicGroup bestGroup = null;
+            var bestPower = float.MinValue;
+            foreach (var group in candidateGroups)
+            {
+                var power = GetTheaterNamingPower(group);
+                if (power > bestPower ||
+                    (Math.Abs(power - bestPower) < 0.0001f &&
+                     TheaterNamingGroupHasNoSuperior(group) &&
+                     !TheaterNamingGroupHasNoSuperior(bestGroup)))
+                {
+                    bestPower = power;
+                    bestGroup = group;
+                }
+            }
+
+            if (bestGroup != null)
+            {
+                return CombineGlobalStrings(bestGroup.name, TheaterSuffixName);
+            }
+
+            foreach (var cellXY in theater?.cells ?? Enumerable.Empty<XY>())
+            {
+                var label = cellXY?.GetCell()?.Label;
+                if (label != null)
+                {
+                    return label.Clone();
+                }
+            }
+
+            return NewTheaterName.Clone();
+        }
+
+        float GetTheaterNamingPower(StrategicGroup group)
+        {
+            if (group == null)
+                return 0f;
+
+            var landPower = group
+                .WalkGroupMembers<LandUnit>(includeNotCombined: true)
+                .Sum(landUnit => landUnit?.GetCombinedPowerPoint(false) ?? 0f);
+            var shipPower = group
+                .WalkGroupMembers<ShipLog>(includeNotCombined: true)
+                .Sum(shipLog => shipLog?.GetCombinedPowerPoint(false) ?? 0f);
+            return landPower + shipPower;
+        }
+
+        static bool TheaterNamingGroupHasNoSuperior(StrategicGroup group)
+        {
+            var parentGroup = group?.strategicGroupReference?.Get();
+            return parentGroup == null || parentGroup == group;
+        }
+
+        IEnumerable<StrategicGroup> IterateTheaterNamingGroups(IEnumerable<XY> theaterCells, SideState side)
+        {
+            if (side == null)
+                yield break;
+
+            var yieldedGroupIds = new HashSet<string>();
+            foreach (var cellXY in theaterCells ?? Enumerable.Empty<XY>())
+            {
+                var cell = cellXY?.GetCell();
+                if (cell == null)
+                    continue;
+
+                foreach (var groupRef in cell.StrategicGroupReferences)
+                {
+                    var group = groupRef.Get();
+                    if (group == null ||
+                        group.side != side ||
+                        group.deployState != StrategicGroup.DeployState.Independent)
+                    {
+                        continue;
+                    }
+
+                    if (yieldedGroupIds.Add(group.objectId))
+                    {
+                        yield return group;
+                    }
+                }
+            }
+        }
+
+        static GlobalString CombineGlobalStrings(GlobalString left, GlobalString right)
+        {
+            return new()
+            {
+                english = CombineLocalizedText(left?.english, right?.english),
+                japanese = CombineLocalizedText(left?.japanese, right?.japanese),
+                chineseSimplified = CombineLocalizedText(left?.chineseSimplified, right?.chineseSimplified),
+                chineseTraditional = CombineLocalizedText(left?.chineseTraditional, right?.chineseTraditional)
+            };
+        }
+
+        static string CombineLocalizedText(string left, string right)
+        {
+            if (string.IsNullOrWhiteSpace(left) || string.IsNullOrWhiteSpace(right))
+                return null;
+            return $"{left}{right}";
+        }
+
+        static readonly GlobalString TheaterSuffixName = new()
+        {
+            english = " Theater",
+            japanese = "\u6226\u533A",
+            chineseSimplified = "\u6218\u533A",
+            chineseTraditional = "\u6230\u5340"
+        };
+
+        static readonly GlobalString NewTheaterName = new()
+        {
+            english = "New Theater",
+            japanese = "\u65B0\u6226\u533A",
+            chineseSimplified = "\u65B0\u6218\u533A",
+            chineseTraditional = "\u65B0\u6230\u5340"
+        };
+
+        class TheaterMatchCandidate
+        {
+            public int oldIndex;
+            public int newIndex;
+            public int intersectionCount;
+            public float jaccard;
+        }
+
         public void CreateDefaultShipLog()
         {
             var createdObjectIds = shipLogs.Select(shipLog => shipLog.namedShip.objectId).Where(id => id != null && id != "").ToHashSet();
@@ -1773,6 +2257,9 @@ namespace StrategicCombatCore
 
             foreach(var navalContactReport in navalContactReports)
                 EntityManager.Instance.Register(navalContactReport, null);
+
+            foreach (var theater in theaters ?? Enumerable.Empty<Theater>())
+                EntityManager.Instance.Register(theater, null);
 
             NormalizeStrategicGroupMembership();
             RebuildCacheForSideStates();

@@ -3011,6 +3011,34 @@ MonoBehaviour:
     m_Key: 'Awaking:'
     m_Metadata:
       m_Items: []
+  - m_Id: -97000000000001
+    m_Key: Theater
+    m_Metadata:
+      m_Items: []
+  - m_Id: -97000000000002
+    m_Key: Theater Selector
+    m_Metadata:
+      m_Items: []
+  - m_Id: -97000000000003
+    m_Key: Theater Detail
+    m_Metadata:
+      m_Items: []
+  - m_Id: -97000000000004
+    m_Key: Theater Cells
+    m_Metadata:
+      m_Items: []
+  - m_Id: -97000000000005
+    m_Key: Display Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: -97000000000006
+    m_Key: Membership
+    m_Metadata:
+      m_Items: []
+  - m_Id: -97000000000007
+    m_Key: Frontline
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

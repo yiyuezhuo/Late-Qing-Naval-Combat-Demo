@@ -479,6 +479,8 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     Dictionary<(int, int), float> influenceOverlayValues = new();
     bool influenceOverlayActive;
     float influenceOverlayMaxAbs;
+    bool theaterOverlayActive;
+    Dictionary<(int, int), string> theaterOverlayTexts = new();
     // Dictionary<string, CellViewer> areaCellViewerMap = new();
 
     public void RefreshMap()
@@ -538,6 +540,13 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     public void RefreshCellLabelDisplayMode(int x, int y)
     {
         var cellViewer = gridCellViewerMap[(x, y)];
+
+        if (theaterOverlayActive)
+        {
+            cellViewer.text.text = theaterOverlayTexts.GetValueOrDefault((x, y), string.Empty);
+            cellViewer.text.color = cellViewer.defaultTextColor;
+            return;
+        }
 
         if (influenceOverlayActive)
         {
@@ -601,6 +610,31 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         influenceOverlayValues.Clear();
         influenceOverlayMaxAbs = 0f;
         RefreshSideFlagVisibility();
+        RefreshCellLabelDisplayMode();
+    }
+
+    public void SetTheaterOverlay(IEnumerable<XY> cells)
+    {
+        var overlayTexts = (cells ?? Enumerable.Empty<XY>())
+            .Where(cell => cell != null && string.IsNullOrWhiteSpace(cell.areaCellObjectId))
+            .GroupBy(cell => (cell.x, cell.y))
+            .ToDictionary(group => group.Key, _ => "X");
+        SetTheaterOverlayTexts(overlayTexts);
+    }
+
+    public void SetTheaterOverlayTexts(IDictionary<(int, int), string> overlayTexts)
+    {
+        theaterOverlayTexts = (overlayTexts ?? new Dictionary<(int, int), string>())
+            .Where(pair => !string.IsNullOrWhiteSpace(pair.Value))
+            .ToDictionary(pair => pair.Key, pair => pair.Value);
+        theaterOverlayActive = true;
+        RefreshCellLabelDisplayMode();
+    }
+
+    public void ClearTheaterOverlay()
+    {
+        theaterOverlayActive = false;
+        theaterOverlayTexts.Clear();
         RefreshCellLabelDisplayMode();
     }
 

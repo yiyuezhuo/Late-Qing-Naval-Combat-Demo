@@ -34377,7 +34377,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.6666667</stackPriority>
+    <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>3391b8ea-4a7a-44d2-bdf1-f70f42bbd346</objectId>
     <strategicGroupReference>
@@ -34409,7 +34409,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0</stackPriority>
+    <stackPriority>0.333333343</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>15a7175c-1740-4b9f-863e-d83ed2d16962</objectId>
     <strategicGroupReference />
@@ -34439,7 +34439,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.333333343</stackPriority>
+    <stackPriority>0.6666667</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>c1d45c08-3ada-495e-adf9-a6f840c5b571</objectId>
     <strategicGroupReference />
@@ -34484,11 +34484,6 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
       <relationValue>-100</relationValue>
       <state>War</state>
      </DiplomacyRelation>
-     <DiplomacyRelation>
-      <sideObjectId>86452665-ae11-4f1d-b056-59d7272e083e</sideObjectId>
-      <relationValue>0</relationValue>
-      <state>War</state>
-     </DiplomacyRelation>
     </diplomacyRelations>
     <victoryPoints>0</victoryPoints>
     <defaultAmmunitionLoadoutWeightRecord>
@@ -34517,11 +34512,6 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
       <relationValue>-100</relationValue>
       <state>War</state>
      </DiplomacyRelation>
-     <DiplomacyRelation>
-      <sideObjectId>86452665-ae11-4f1d-b056-59d7272e083e</sideObjectId>
-      <relationValue>0</relationValue>
-      <state>War</state>
-     </DiplomacyRelation>
     </diplomacyRelations>
     <victoryPoints>0</victoryPoints>
     <defaultAmmunitionLoadoutWeightRecord>
@@ -34534,39 +34524,6 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </defaultAmmunitionLoadoutWeightRecord>
     <extraAmmunitionLoadoutWeightRecords />
     <objectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</objectId>
-   </SideState>
-   <SideState>
-    <name>
-     <english>Korea</english>
-     <japanese>朝鮮</japanese>
-     <chineseSimplified>朝鲜</chineseSimplified>
-    </name>
-    <countries>
-     <Country>Korea</Country>
-    </countries>
-    <diplomacyRelations>
-     <DiplomacyRelation>
-      <sideObjectId>dd43c3f3-1a02-46ca-b287-4ac069c23218</sideObjectId>
-      <relationValue>0</relationValue>
-      <state>War</state>
-     </DiplomacyRelation>
-     <DiplomacyRelation>
-      <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
-      <relationValue>0</relationValue>
-      <state>War</state>
-     </DiplomacyRelation>
-    </diplomacyRelations>
-    <victoryPoints>0</victoryPoints>
-    <defaultAmmunitionLoadoutWeightRecord>
-     <shellSizeInchLow>0</shellSizeInchLow>
-     <shellSizeInchHigh>999</shellSizeInchHigh>
-     <armorPiercing>50</armorPiercing>
-     <semiArmorPiercing>0</semiArmorPiercing>
-     <common>50</common>
-     <highExplosive>0</highExplosive>
-    </defaultAmmunitionLoadoutWeightRecord>
-    <extraAmmunitionLoadoutWeightRecords />
-    <objectId>86452665-ae11-4f1d-b056-59d7272e083e</objectId>
    </SideState>
    <SideState>
     <name>
@@ -34819,6 +34776,1268 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
   </missions>
   <pendingNavalCombats />
   <landBattles />
+  <theaters>
+   <Theater>
+    <name>
+     <english>Grand Council Theater</english>
+     <japanese>軍機処戦区</japanese>
+     <chineseSimplified>军机处战区</chineseSimplified>
+    </name>
+    <sideObjectId>dd43c3f3-1a02-46ca-b287-4ac069c23218</sideObjectId>
+    <cells>
+     <XY x="0" y="1" />
+     <XY x="0" y="2" />
+     <XY x="1" y="1" />
+     <XY x="0" y="3" />
+     <XY x="1" y="2" />
+     <XY x="2" y="2" />
+     <XY x="2" y="1" />
+     <XY x="0" y="4" />
+     <XY x="1" y="3" />
+     <XY x="2" y="3" />
+     <XY x="3" y="2" />
+     <XY x="0" y="5" />
+     <XY x="1" y="4" />
+     <XY x="2" y="4" />
+     <XY x="3" y="3" />
+     <XY x="4" y="3" />
+     <XY x="0" y="6" />
+     <XY x="1" y="5" />
+     <XY x="2" y="5" />
+     <XY x="3" y="4" />
+     <XY x="4" y="4" />
+     <XY x="5" y="3" />
+     <XY x="5" y="2" />
+     <XY x="0" y="7" />
+     <XY x="1" y="6" />
+     <XY x="2" y="6" />
+     <XY x="3" y="5" />
+     <XY x="4" y="5" />
+     <XY x="5" y="4" />
+     <XY x="6" y="4" />
+     <XY x="6" y="3" />
+     <XY x="6" y="2" />
+     <XY x="0" y="8" />
+     <XY x="1" y="7" />
+     <XY x="2" y="7" />
+     <XY x="3" y="6" />
+     <XY x="4" y="6" />
+     <XY x="5" y="5" />
+     <XY x="6" y="5" />
+     <XY x="7" y="4" />
+     <XY x="7" y="3" />
+     <XY x="7" y="2" />
+     <XY x="7" y="1" />
+     <XY x="0" y="9" />
+     <XY x="1" y="8" />
+     <XY x="2" y="8" />
+     <XY x="3" y="7" />
+     <XY x="4" y="7" />
+     <XY x="5" y="6" />
+     <XY x="6" y="6" />
+     <XY x="7" y="5" />
+     <XY x="8" y="5" />
+     <XY x="8" y="4" />
+     <XY x="8" y="3" />
+     <XY x="8" y="2" />
+     <XY x="0" y="10" />
+     <XY x="1" y="9" />
+     <XY x="2" y="9" />
+     <XY x="3" y="8" />
+     <XY x="4" y="8" />
+     <XY x="5" y="7" />
+     <XY x="6" y="7" />
+     <XY x="7" y="6" />
+     <XY x="8" y="6" />
+     <XY x="9" y="5" />
+     <XY x="9" y="4" />
+     <XY x="9" y="3" />
+     <XY x="9" y="2" />
+     <XY x="0" y="11" />
+     <XY x="1" y="10" />
+     <XY x="2" y="10" />
+     <XY x="3" y="9" />
+     <XY x="4" y="9" />
+     <XY x="5" y="8" />
+     <XY x="6" y="8" />
+     <XY x="7" y="7" />
+     <XY x="8" y="7" />
+     <XY x="9" y="6" />
+     <XY x="10" y="6" />
+     <XY x="10" y="5" />
+     <XY x="10" y="4" />
+     <XY x="10" y="3" />
+     <XY x="0" y="12" />
+     <XY x="1" y="11" />
+     <XY x="2" y="11" />
+     <XY x="3" y="10" />
+     <XY x="4" y="10" />
+     <XY x="5" y="9" />
+     <XY x="6" y="9" />
+     <XY x="7" y="8" />
+     <XY x="8" y="8" />
+     <XY x="9" y="7" />
+     <XY x="10" y="7" />
+     <XY x="11" y="6" />
+     <XY x="11" y="5" />
+     <XY x="11" y="4" />
+     <XY x="11" y="3" />
+     <XY x="0" y="13" />
+     <XY x="1" y="12" />
+     <XY x="2" y="12" />
+     <XY x="3" y="11" />
+     <XY x="4" y="11" />
+     <XY x="5" y="10" />
+     <XY x="6" y="10" />
+     <XY x="7" y="9" />
+     <XY x="8" y="9" />
+     <XY x="9" y="8" />
+     <XY x="10" y="8" />
+     <XY x="11" y="7" />
+     <XY x="12" y="7" />
+     <XY x="12" y="6" />
+     <XY x="12" y="5" />
+     <XY x="12" y="4" />
+     <XY x="0" y="14" />
+     <XY x="1" y="13" />
+     <XY x="2" y="13" />
+     <XY x="3" y="12" />
+     <XY x="4" y="12" />
+     <XY x="5" y="11" />
+     <XY x="6" y="11" />
+     <XY x="7" y="10" />
+     <XY x="8" y="10" />
+     <XY x="9" y="9" />
+     <XY x="10" y="9" />
+     <XY x="11" y="8" />
+     <XY x="12" y="8" />
+     <XY x="13" y="7" />
+     <XY x="13" y="6" />
+     <XY x="13" y="5" />
+     <XY x="13" y="4" />
+     <XY x="0" y="15" />
+     <XY x="1" y="14" />
+     <XY x="2" y="14" />
+     <XY x="3" y="13" />
+     <XY x="4" y="13" />
+     <XY x="5" y="12" />
+     <XY x="6" y="12" />
+     <XY x="7" y="11" />
+     <XY x="8" y="11" />
+     <XY x="9" y="10" />
+     <XY x="10" y="10" />
+     <XY x="11" y="9" />
+     <XY x="12" y="9" />
+     <XY x="13" y="8" />
+     <XY x="14" y="8" />
+     <XY x="14" y="7" />
+     <XY x="14" y="6" />
+     <XY x="14" y="5" />
+     <XY x="0" y="16" />
+     <XY x="1" y="15" />
+     <XY x="2" y="15" />
+     <XY x="3" y="14" />
+     <XY x="4" y="14" />
+     <XY x="5" y="13" />
+     <XY x="6" y="13" />
+     <XY x="7" y="12" />
+     <XY x="8" y="12" />
+     <XY x="9" y="11" />
+     <XY x="10" y="11" />
+     <XY x="11" y="10" />
+     <XY x="12" y="10" />
+     <XY x="13" y="9" />
+     <XY x="14" y="9" />
+     <XY x="15" y="8" />
+     <XY x="15" y="7" />
+     <XY x="15" y="6" />
+     <XY x="15" y="5" />
+     <XY x="0" y="17" />
+     <XY x="1" y="16" />
+     <XY x="2" y="16" />
+     <XY x="3" y="15" />
+     <XY x="4" y="15" />
+     <XY x="5" y="14" />
+     <XY x="6" y="14" />
+     <XY x="7" y="13" />
+     <XY x="8" y="13" />
+     <XY x="9" y="12" />
+     <XY x="10" y="12" />
+     <XY x="11" y="11" />
+     <XY x="12" y="11" />
+     <XY x="13" y="10" />
+     <XY x="14" y="10" />
+     <XY x="15" y="9" />
+     <XY x="16" y="9" />
+     <XY x="16" y="8" />
+     <XY x="16" y="7" />
+     <XY x="16" y="6" />
+     <XY x="0" y="18" />
+     <XY x="1" y="17" />
+     <XY x="2" y="17" />
+     <XY x="3" y="16" />
+     <XY x="4" y="16" />
+     <XY x="5" y="15" />
+     <XY x="6" y="15" />
+     <XY x="7" y="14" />
+     <XY x="8" y="14" />
+     <XY x="9" y="13" />
+     <XY x="10" y="13" />
+     <XY x="11" y="12" />
+     <XY x="12" y="12" />
+     <XY x="13" y="11" />
+     <XY x="14" y="11" />
+     <XY x="15" y="10" />
+     <XY x="16" y="10" />
+     <XY x="17" y="9" />
+     <XY x="17" y="8" />
+     <XY x="0" y="19" />
+     <XY x="1" y="18" />
+     <XY x="2" y="18" />
+     <XY x="3" y="17" />
+     <XY x="4" y="17" />
+     <XY x="5" y="16" />
+     <XY x="6" y="16" />
+     <XY x="7" y="15" />
+     <XY x="8" y="15" />
+     <XY x="9" y="14" />
+     <XY x="10" y="14" />
+     <XY x="11" y="13" />
+     <XY x="12" y="13" />
+     <XY x="13" y="12" />
+     <XY x="14" y="12" />
+     <XY x="15" y="11" />
+     <XY x="16" y="11" />
+     <XY x="17" y="10" />
+     <XY x="18" y="10" />
+     <XY x="18" y="9" />
+     <XY x="0" y="20" />
+     <XY x="1" y="19" />
+     <XY x="2" y="19" />
+     <XY x="3" y="18" />
+     <XY x="4" y="18" />
+     <XY x="5" y="17" />
+     <XY x="6" y="17" />
+     <XY x="7" y="16" />
+     <XY x="8" y="16" />
+     <XY x="9" y="15" />
+     <XY x="10" y="15" />
+     <XY x="11" y="14" />
+     <XY x="12" y="14" />
+     <XY x="13" y="13" />
+     <XY x="14" y="13" />
+     <XY x="15" y="12" />
+     <XY x="16" y="12" />
+     <XY x="17" y="11" />
+     <XY x="18" y="11" />
+     <XY x="19" y="10" />
+     <XY x="0" y="21" />
+     <XY x="1" y="20" />
+     <XY x="2" y="20" />
+     <XY x="3" y="19" />
+     <XY x="4" y="19" />
+     <XY x="5" y="18" />
+     <XY x="6" y="18" />
+     <XY x="7" y="17" />
+     <XY x="8" y="17" />
+     <XY x="9" y="16" />
+     <XY x="10" y="16" />
+     <XY x="11" y="15" />
+     <XY x="12" y="15" />
+     <XY x="13" y="14" />
+     <XY x="14" y="14" />
+     <XY x="15" y="13" />
+     <XY x="16" y="13" />
+     <XY x="17" y="12" />
+     <XY x="18" y="12" />
+     <XY x="19" y="11" />
+     <XY x="20" y="11" />
+     <XY x="0" y="22" />
+     <XY x="1" y="21" />
+     <XY x="2" y="21" />
+     <XY x="3" y="20" />
+     <XY x="4" y="20" />
+     <XY x="5" y="19" />
+     <XY x="6" y="19" />
+     <XY x="7" y="18" />
+     <XY x="8" y="18" />
+     <XY x="9" y="17" />
+     <XY x="10" y="17" />
+     <XY x="11" y="16" />
+     <XY x="12" y="16" />
+     <XY x="13" y="15" />
+     <XY x="14" y="15" />
+     <XY x="15" y="14" />
+     <XY x="16" y="14" />
+     <XY x="17" y="13" />
+     <XY x="18" y="13" />
+     <XY x="19" y="12" />
+     <XY x="20" y="12" />
+     <XY x="21" y="11" />
+     <XY x="0" y="23" />
+     <XY x="1" y="22" />
+     <XY x="2" y="22" />
+     <XY x="3" y="21" />
+     <XY x="4" y="21" />
+     <XY x="5" y="20" />
+     <XY x="6" y="20" />
+     <XY x="7" y="19" />
+     <XY x="8" y="19" />
+     <XY x="9" y="18" />
+     <XY x="10" y="18" />
+     <XY x="11" y="17" />
+     <XY x="12" y="17" />
+     <XY x="13" y="16" />
+     <XY x="14" y="16" />
+     <XY x="15" y="15" />
+     <XY x="16" y="15" />
+     <XY x="17" y="14" />
+     <XY x="18" y="14" />
+     <XY x="19" y="13" />
+     <XY x="20" y="13" />
+     <XY x="21" y="12" />
+     <XY x="0" y="24" />
+     <XY x="1" y="23" />
+     <XY x="2" y="23" />
+     <XY x="3" y="22" />
+     <XY x="4" y="22" />
+     <XY x="5" y="21" />
+     <XY x="6" y="21" />
+     <XY x="7" y="20" />
+     <XY x="8" y="20" />
+     <XY x="9" y="19" />
+     <XY x="10" y="19" />
+     <XY x="11" y="18" />
+     <XY x="12" y="18" />
+     <XY x="13" y="17" />
+     <XY x="14" y="17" />
+     <XY x="15" y="16" />
+     <XY x="16" y="16" />
+     <XY x="17" y="15" />
+     <XY x="18" y="15" />
+     <XY x="19" y="14" />
+     <XY x="20" y="14" />
+     <XY x="21" y="13" />
+     <XY x="0" y="25" />
+     <XY x="1" y="24" />
+     <XY x="2" y="24" />
+     <XY x="3" y="23" />
+     <XY x="4" y="23" />
+     <XY x="5" y="22" />
+     <XY x="6" y="22" />
+     <XY x="7" y="21" />
+     <XY x="8" y="21" />
+     <XY x="9" y="20" />
+     <XY x="10" y="20" />
+     <XY x="11" y="19" />
+     <XY x="12" y="19" />
+     <XY x="13" y="18" />
+     <XY x="14" y="18" />
+     <XY x="15" y="17" />
+     <XY x="16" y="17" />
+     <XY x="17" y="16" />
+     <XY x="18" y="16" />
+     <XY x="19" y="15" />
+     <XY x="20" y="15" />
+     <XY x="21" y="14" />
+     <XY x="0" y="26" />
+     <XY x="1" y="25" />
+     <XY x="2" y="25" />
+     <XY x="3" y="24" />
+     <XY x="4" y="24" />
+     <XY x="5" y="23" />
+     <XY x="6" y="23" />
+     <XY x="7" y="22" />
+     <XY x="8" y="22" />
+     <XY x="9" y="21" />
+     <XY x="10" y="21" />
+     <XY x="11" y="20" />
+     <XY x="12" y="20" />
+     <XY x="13" y="19" />
+     <XY x="14" y="19" />
+     <XY x="15" y="18" />
+     <XY x="16" y="18" />
+     <XY x="17" y="17" />
+     <XY x="18" y="17" />
+     <XY x="19" y="16" />
+     <XY x="20" y="16" />
+     <XY x="22" y="15" />
+     <XY x="0" y="27" />
+     <XY x="1" y="26" />
+     <XY x="2" y="26" />
+     <XY x="3" y="25" />
+     <XY x="4" y="25" />
+     <XY x="5" y="24" />
+     <XY x="6" y="24" />
+     <XY x="7" y="23" />
+     <XY x="8" y="23" />
+     <XY x="9" y="22" />
+     <XY x="10" y="22" />
+     <XY x="11" y="21" />
+     <XY x="12" y="21" />
+     <XY x="13" y="20" />
+     <XY x="14" y="20" />
+     <XY x="15" y="19" />
+     <XY x="16" y="19" />
+     <XY x="17" y="18" />
+     <XY x="18" y="18" />
+     <XY x="19" y="17" />
+     <XY x="20" y="17" />
+     <XY x="21" y="16" />
+     <XY x="0" y="28" />
+     <XY x="1" y="27" />
+     <XY x="2" y="27" />
+     <XY x="3" y="26" />
+     <XY x="4" y="26" />
+     <XY x="5" y="25" />
+     <XY x="6" y="25" />
+     <XY x="7" y="24" />
+     <XY x="8" y="24" />
+     <XY x="9" y="23" />
+     <XY x="10" y="23" />
+     <XY x="11" y="22" />
+     <XY x="12" y="22" />
+     <XY x="13" y="21" />
+     <XY x="14" y="21" />
+     <XY x="15" y="20" />
+     <XY x="16" y="20" />
+     <XY x="17" y="19" />
+     <XY x="18" y="19" />
+     <XY x="19" y="18" />
+     <XY x="20" y="18" />
+     <XY x="21" y="17" />
+     <XY x="0" y="29" />
+     <XY x="1" y="28" />
+     <XY x="2" y="28" />
+     <XY x="3" y="27" />
+     <XY x="4" y="27" />
+     <XY x="5" y="26" />
+     <XY x="6" y="26" />
+     <XY x="7" y="25" />
+     <XY x="8" y="25" />
+     <XY x="9" y="24" />
+     <XY x="10" y="24" />
+     <XY x="11" y="23" />
+     <XY x="12" y="23" />
+     <XY x="13" y="22" />
+     <XY x="14" y="22" />
+     <XY x="15" y="21" />
+     <XY x="16" y="21" />
+     <XY x="17" y="20" />
+     <XY x="18" y="20" />
+     <XY x="19" y="19" />
+     <XY x="20" y="19" />
+     <XY x="0" y="30" />
+     <XY x="1" y="29" />
+     <XY x="2" y="29" />
+     <XY x="3" y="28" />
+     <XY x="4" y="28" />
+     <XY x="5" y="27" />
+     <XY x="6" y="27" />
+     <XY x="7" y="26" />
+     <XY x="8" y="26" />
+     <XY x="9" y="25" />
+     <XY x="10" y="25" />
+     <XY x="11" y="24" />
+     <XY x="12" y="24" />
+     <XY x="13" y="23" />
+     <XY x="14" y="23" />
+     <XY x="15" y="22" />
+     <XY x="16" y="22" />
+     <XY x="17" y="21" />
+     <XY x="18" y="21" />
+     <XY x="19" y="20" />
+     <XY x="0" y="31" />
+     <XY x="1" y="30" />
+     <XY x="2" y="30" />
+     <XY x="3" y="29" />
+     <XY x="4" y="29" />
+     <XY x="5" y="28" />
+     <XY x="6" y="28" />
+     <XY x="7" y="27" />
+     <XY x="8" y="27" />
+     <XY x="9" y="26" />
+     <XY x="10" y="26" />
+     <XY x="11" y="25" />
+     <XY x="12" y="25" />
+     <XY x="13" y="24" />
+     <XY x="14" y="24" />
+     <XY x="15" y="23" />
+     <XY x="16" y="23" />
+     <XY x="17" y="22" />
+     <XY x="18" y="22" />
+     <XY x="19" y="21" />
+     <XY x="0" y="32" />
+     <XY x="1" y="31" />
+     <XY x="2" y="31" />
+     <XY x="3" y="30" />
+     <XY x="4" y="30" />
+     <XY x="5" y="29" />
+     <XY x="6" y="29" />
+     <XY x="7" y="28" />
+     <XY x="8" y="28" />
+     <XY x="9" y="27" />
+     <XY x="10" y="27" />
+     <XY x="11" y="26" />
+     <XY x="12" y="26" />
+     <XY x="13" y="25" />
+     <XY x="14" y="25" />
+     <XY x="15" y="24" />
+     <XY x="16" y="24" />
+     <XY x="17" y="23" />
+     <XY x="0" y="33" />
+     <XY x="1" y="32" />
+     <XY x="2" y="32" />
+     <XY x="3" y="31" />
+     <XY x="4" y="31" />
+     <XY x="5" y="30" />
+     <XY x="6" y="30" />
+     <XY x="7" y="29" />
+     <XY x="8" y="29" />
+     <XY x="9" y="28" />
+     <XY x="10" y="28" />
+     <XY x="11" y="27" />
+     <XY x="12" y="27" />
+     <XY x="13" y="26" />
+     <XY x="14" y="26" />
+     <XY x="15" y="25" />
+     <XY x="16" y="25" />
+     <XY x="17" y="24" />
+     <XY x="0" y="34" />
+     <XY x="1" y="33" />
+     <XY x="2" y="33" />
+     <XY x="3" y="32" />
+     <XY x="4" y="32" />
+     <XY x="5" y="31" />
+     <XY x="6" y="31" />
+     <XY x="7" y="30" />
+     <XY x="8" y="30" />
+     <XY x="9" y="29" />
+     <XY x="10" y="29" />
+     <XY x="11" y="28" />
+     <XY x="12" y="28" />
+     <XY x="13" y="27" />
+     <XY x="14" y="27" />
+     <XY x="15" y="26" />
+     <XY x="16" y="26" />
+     <XY x="17" y="25" />
+     <XY x="18" y="25" />
+     <XY x="0" y="35" />
+     <XY x="1" y="34" />
+     <XY x="2" y="34" />
+     <XY x="3" y="33" />
+     <XY x="4" y="33" />
+     <XY x="5" y="32" />
+     <XY x="6" y="32" />
+     <XY x="7" y="31" />
+     <XY x="8" y="31" />
+     <XY x="9" y="30" />
+     <XY x="10" y="30" />
+     <XY x="11" y="29" />
+     <XY x="12" y="29" />
+     <XY x="13" y="28" />
+     <XY x="14" y="28" />
+     <XY x="15" y="27" />
+     <XY x="16" y="27" />
+     <XY x="17" y="26" />
+     <XY x="18" y="26" />
+     <XY x="19" y="25" />
+     <XY x="0" y="36" />
+     <XY x="1" y="35" />
+     <XY x="2" y="35" />
+     <XY x="3" y="34" />
+     <XY x="4" y="34" />
+     <XY x="5" y="33" />
+     <XY x="6" y="33" />
+     <XY x="7" y="32" />
+     <XY x="8" y="32" />
+     <XY x="9" y="31" />
+     <XY x="10" y="31" />
+     <XY x="11" y="30" />
+     <XY x="12" y="30" />
+     <XY x="13" y="29" />
+     <XY x="14" y="29" />
+     <XY x="15" y="28" />
+     <XY x="16" y="28" />
+     <XY x="17" y="27" />
+     <XY x="18" y="27" />
+     <XY x="19" y="26" />
+     <XY x="20" y="26" />
+     <XY x="0" y="37" />
+     <XY x="1" y="36" />
+     <XY x="2" y="36" />
+     <XY x="3" y="35" />
+     <XY x="4" y="35" />
+     <XY x="5" y="34" />
+     <XY x="6" y="34" />
+     <XY x="7" y="33" />
+     <XY x="8" y="33" />
+     <XY x="9" y="32" />
+     <XY x="10" y="32" />
+     <XY x="11" y="31" />
+     <XY x="12" y="31" />
+     <XY x="13" y="30" />
+     <XY x="14" y="30" />
+     <XY x="15" y="29" />
+     <XY x="16" y="29" />
+     <XY x="18" y="28" />
+     <XY x="19" y="27" />
+     <XY x="20" y="27" />
+     <XY x="21" y="26" />
+     <XY x="0" y="38" />
+     <XY x="1" y="37" />
+     <XY x="2" y="37" />
+     <XY x="3" y="36" />
+     <XY x="4" y="36" />
+     <XY x="5" y="35" />
+     <XY x="6" y="35" />
+     <XY x="7" y="34" />
+     <XY x="8" y="34" />
+     <XY x="9" y="33" />
+     <XY x="10" y="33" />
+     <XY x="11" y="32" />
+     <XY x="12" y="32" />
+     <XY x="13" y="31" />
+     <XY x="14" y="31" />
+     <XY x="19" y="28" />
+     <XY x="20" y="28" />
+     <XY x="21" y="27" />
+     <XY x="22" y="27" />
+     <XY x="0" y="39" />
+     <XY x="1" y="38" />
+     <XY x="2" y="38" />
+     <XY x="3" y="37" />
+     <XY x="4" y="37" />
+     <XY x="5" y="36" />
+     <XY x="6" y="36" />
+     <XY x="7" y="35" />
+     <XY x="8" y="35" />
+     <XY x="9" y="34" />
+     <XY x="10" y="34" />
+     <XY x="11" y="33" />
+     <XY x="12" y="33" />
+     <XY x="13" y="32" />
+     <XY x="14" y="32" />
+     <XY x="15" y="31" />
+     <XY x="20" y="29" />
+     <XY x="21" y="28" />
+     <XY x="22" y="28" />
+     <XY x="23" y="27" />
+     <XY x="1" y="39" />
+     <XY x="2" y="39" />
+     <XY x="3" y="38" />
+     <XY x="4" y="38" />
+     <XY x="5" y="37" />
+     <XY x="6" y="37" />
+     <XY x="7" y="36" />
+     <XY x="8" y="36" />
+     <XY x="9" y="35" />
+     <XY x="10" y="35" />
+     <XY x="11" y="34" />
+     <XY x="12" y="34" />
+     <XY x="13" y="33" />
+     <XY x="14" y="33" />
+     <XY x="15" y="32" />
+     <XY x="16" y="32" />
+     <XY x="3" y="39" />
+     <XY x="4" y="39" />
+     <XY x="5" y="38" />
+     <XY x="6" y="38" />
+     <XY x="7" y="37" />
+     <XY x="8" y="37" />
+     <XY x="9" y="36" />
+     <XY x="10" y="36" />
+     <XY x="11" y="35" />
+     <XY x="12" y="35" />
+     <XY x="13" y="34" />
+     <XY x="14" y="34" />
+     <XY x="15" y="33" />
+     <XY x="16" y="33" />
+     <XY x="17" y="32" />
+     <XY x="17" y="31" />
+     <XY x="5" y="39" />
+     <XY x="6" y="39" />
+     <XY x="7" y="38" />
+     <XY x="8" y="38" />
+     <XY x="9" y="37" />
+     <XY x="10" y="37" />
+     <XY x="11" y="36" />
+     <XY x="12" y="36" />
+     <XY x="13" y="35" />
+     <XY x="14" y="35" />
+     <XY x="15" y="34" />
+     <XY x="16" y="34" />
+     <XY x="17" y="33" />
+     <XY x="18" y="33" />
+     <XY x="7" y="39" />
+     <XY x="8" y="39" />
+     <XY x="9" y="38" />
+     <XY x="10" y="38" />
+     <XY x="11" y="37" />
+     <XY x="12" y="37" />
+     <XY x="13" y="36" />
+     <XY x="14" y="36" />
+     <XY x="15" y="35" />
+     <XY x="16" y="35" />
+     <XY x="17" y="34" />
+     <XY x="18" y="34" />
+     <XY x="19" y="33" />
+     <XY x="9" y="39" />
+     <XY x="10" y="39" />
+     <XY x="11" y="38" />
+     <XY x="12" y="38" />
+     <XY x="13" y="37" />
+     <XY x="14" y="37" />
+     <XY x="15" y="36" />
+     <XY x="16" y="36" />
+     <XY x="17" y="35" />
+     <XY x="18" y="35" />
+     <XY x="19" y="34" />
+     <XY x="20" y="34" />
+     <XY x="11" y="39" />
+     <XY x="12" y="39" />
+     <XY x="13" y="38" />
+     <XY x="14" y="38" />
+     <XY x="15" y="37" />
+     <XY x="16" y="37" />
+     <XY x="17" y="36" />
+     <XY x="18" y="36" />
+     <XY x="19" y="35" />
+     <XY x="20" y="35" />
+     <XY x="21" y="34" />
+     <XY x="13" y="39" />
+     <XY x="14" y="39" />
+     <XY x="15" y="38" />
+     <XY x="16" y="38" />
+     <XY x="17" y="37" />
+     <XY x="18" y="37" />
+     <XY x="19" y="36" />
+     <XY x="20" y="36" />
+     <XY x="21" y="35" />
+     <XY x="22" y="35" />
+     <XY x="22" y="34" />
+     <XY x="15" y="39" />
+     <XY x="16" y="39" />
+     <XY x="17" y="38" />
+     <XY x="18" y="38" />
+     <XY x="19" y="37" />
+     <XY x="20" y="37" />
+     <XY x="21" y="36" />
+     <XY x="22" y="36" />
+     <XY x="23" y="35" />
+     <XY x="23" y="34" />
+     <XY x="23" y="33" />
+     <XY x="22" y="33" />
+     <XY x="17" y="39" />
+     <XY x="18" y="39" />
+     <XY x="19" y="38" />
+     <XY x="20" y="38" />
+     <XY x="21" y="37" />
+     <XY x="22" y="37" />
+     <XY x="23" y="36" />
+     <XY x="24" y="36" />
+     <XY x="24" y="35" />
+     <XY x="24" y="34" />
+     <XY x="24" y="33" />
+     <XY x="23" y="32" />
+     <XY x="22" y="32" />
+     <XY x="21" y="32" />
+     <XY x="19" y="39" />
+     <XY x="20" y="39" />
+     <XY x="21" y="38" />
+     <XY x="22" y="38" />
+     <XY x="23" y="37" />
+     <XY x="24" y="37" />
+     <XY x="25" y="36" />
+     <XY x="25" y="35" />
+     <XY x="25" y="34" />
+     <XY x="25" y="33" />
+     <XY x="25" y="32" />
+     <XY x="24" y="32" />
+     <XY x="23" y="31" />
+     <XY x="22" y="31" />
+     <XY x="21" y="31" />
+     <XY x="21" y="39" />
+     <XY x="22" y="39" />
+     <XY x="23" y="38" />
+     <XY x="24" y="38" />
+     <XY x="25" y="37" />
+     <XY x="26" y="37" />
+     <XY x="26" y="36" />
+     <XY x="26" y="35" />
+     <XY x="26" y="34" />
+     <XY x="26" y="33" />
+     <XY x="21" y="30" />
+     <XY x="23" y="39" />
+     <XY x="24" y="39" />
+     <XY x="25" y="38" />
+     <XY x="26" y="38" />
+     <XY x="27" y="37" />
+     <XY x="27" y="36" />
+     <XY x="27" y="35" />
+     <XY x="27" y="34" />
+     <XY x="27" y="33" />
+     <XY x="27" y="32" />
+     <XY x="25" y="39" />
+     <XY x="26" y="39" />
+     <XY x="27" y="38" />
+     <XY x="28" y="38" />
+     <XY x="28" y="37" />
+     <XY x="28" y="36" />
+     <XY x="28" y="35" />
+     <XY x="28" y="34" />
+     <XY x="28" y="33" />
+     <XY x="27" y="39" />
+     <XY x="28" y="39" />
+     <XY x="29" y="38" />
+     <XY x="29" y="37" />
+     <XY x="29" y="36" />
+     <XY x="29" y="35" />
+     <XY x="29" y="34" />
+     <XY x="29" y="39" />
+     <XY x="30" y="39" />
+     <XY x="30" y="38" />
+     <XY x="30" y="37" />
+     <XY x="30" y="36" />
+     <XY x="31" y="39" />
+     <XY x="31" y="38" />
+     <XY x="31" y="37" />
+     <XY x="31" y="36" />
+     <XY x="31" y="35" />
+     <XY x="32" y="39" />
+     <XY x="32" y="38" />
+     <XY x="32" y="37" />
+     <XY x="32" y="36" />
+     <XY x="33" y="39" />
+     <XY x="33" y="38" />
+     <XY x="33" y="37" />
+     <XY x="33" y="36" />
+     <XY x="34" y="39" />
+     <XY x="34" y="38" />
+     <XY x="34" y="37" />
+     <XY x="35" y="38" />
+     <XY x="35" y="37" />
+     <XY x="36" y="39" />
+     <XY x="37" y="39" />
+    </cells>
+    <frontlineCells>
+     <XY x="2" y="2" />
+     <XY x="2" y="1" />
+     <XY x="3" y="2" />
+     <XY x="4" y="3" />
+     <XY x="5" y="2" />
+     <XY x="6" y="2" />
+     <XY x="27" y="32" />
+     <XY x="28" y="34" />
+     <XY x="28" y="33" />
+     <XY x="29" y="35" />
+     <XY x="29" y="34" />
+     <XY x="30" y="36" />
+     <XY x="31" y="35" />
+     <XY x="32" y="36" />
+     <XY x="33" y="36" />
+     <XY x="34" y="39" />
+     <XY x="34" y="37" />
+     <XY x="35" y="38" />
+     <XY x="35" y="37" />
+     <XY x="36" y="39" />
+     <XY x="37" y="39" />
+    </frontlineCells>
+    <objectId>3358843a-2c1b-4018-83bb-aea90a3523c6</objectId>
+   </Theater>
+   <Theater>
+    <name>
+     <english>Macao</english>
+     <japanese>マカオ</japanese>
+     <chineseSimplified>澳门</chineseSimplified>
+    </name>
+    <sideObjectId>b0834e29-87e8-46c8-851b-2d0bd493b96f</sideObjectId>
+    <cells>
+     <XY x="3" y="1" />
+    </cells>
+    <frontlineCells>
+     <XY x="3" y="1" />
+    </frontlineCells>
+    <objectId>6e4b59a9-73cf-434f-acd1-296b3590070c</objectId>
+   </Theater>
+   <Theater>
+    <name>
+     <english>Hong Kong</english>
+     <japanese>香港</japanese>
+     <chineseSimplified>香港</chineseSimplified>
+    </name>
+    <sideObjectId>ce8f94e9-7710-47b8-af2e-88c4cc8c8c0f</sideObjectId>
+    <cells>
+     <XY x="4" y="1" />
+     <XY x="4" y="2" />
+     <XY x="5" y="1" />
+    </cells>
+    <frontlineCells>
+     <XY x="4" y="2" />
+     <XY x="5" y="1" />
+    </frontlineCells>
+    <objectId>38de578b-801d-4631-8acc-22fb86cafe20</objectId>
+   </Theater>
+   <Theater>
+    <name>
+     <english>Governor of Taiwan Theater</english>
+     <japanese>台湾巡撫戦区</japanese>
+     <chineseSimplified>台湾巡抚战区</chineseSimplified>
+    </name>
+    <sideObjectId>dd43c3f3-1a02-46ca-b287-4ac069c23218</sideObjectId>
+    <cells>
+     <XY x="17" y="1" />
+     <XY x="17" y="2" />
+     <XY x="18" y="2" />
+     <XY x="18" y="1" />
+     <XY x="17" y="3" />
+     <XY x="18" y="3" />
+     <XY x="19" y="2" />
+     <XY x="19" y="1" />
+     <XY x="18" y="0" />
+     <XY x="18" y="4" />
+     <XY x="19" y="3" />
+     <XY x="20" y="3" />
+     <XY x="20" y="2" />
+     <XY x="18" y="5" />
+     <XY x="19" y="4" />
+     <XY x="20" y="4" />
+     <XY x="19" y="5" />
+     <XY x="20" y="5" />
+     <XY x="21" y="4" />
+     <XY x="20" y="6" />
+     <XY x="21" y="5" />
+    </cells>
+    <frontlineCells />
+    <objectId>4c8fb4b6-5627-463f-b7e2-e641eed208f3</objectId>
+   </Theater>
+   <Theater>
+    <name>
+     <english>Taketomi</english>
+     <japanese>竹富島</japanese>
+     <chineseSimplified>竹富岛</chineseSimplified>
+    </name>
+    <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
+    <cells>
+     <XY x="24" y="4" />
+     <XY x="25" y="4" />
+     <XY x="26" y="5" />
+     <XY x="26" y="4" />
+    </cells>
+    <frontlineCells />
+    <objectId>4007df9b-f540-4110-b76b-2dc51448a45f</objectId>
+   </Theater>
+   <Theater>
+    <name>
+     <english>Miyakojima</english>
+     <japanese>宮古島</japanese>
+     <chineseSimplified>宫吉岛</chineseSimplified>
+    </name>
+    <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
+    <cells>
+     <XY x="28" y="5" />
+    </cells>
+    <frontlineCells />
+    <objectId>d71aba50-dda6-4e7d-8ca8-7051a44b4bdd</objectId>
+   </Theater>
+   <Theater>
+    <name>
+     <english>Quelpart</english>
+     <japanese>済州島</japanese>
+     <chineseSimplified>济州岛</chineseSimplified>
+    </name>
+    <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
+    <cells>
+     <XY x="30" y="21" />
+     <XY x="31" y="20" />
+    </cells>
+    <frontlineCells />
+    <objectId>f1de3514-b5f9-4119-9044-48577da73fbb</objectId>
+   </Theater>
+   <Theater>
+    <name>
+     <english>Asan Corp Theater</english>
+     <japanese>牙山軍戦区</japanese>
+     <chineseSimplified>牙山军战区</chineseSimplified>
+    </name>
+    <sideObjectId>dd43c3f3-1a02-46ca-b287-4ac069c23218</sideObjectId>
+    <cells>
+     <XY x="31" y="27" />
+    </cells>
+    <frontlineCells>
+     <XY x="31" y="27" />
+    </frontlineCells>
+    <objectId>652cddb8-33f3-4b00-93ab-fcd26acc0f49</objectId>
+   </Theater>
+   <Theater>
+    <name>
+     <english>9th Combined Bridge Theater</english>
+     <japanese>第九混成旅団戦区</japanese>
+     <chineseSimplified>第九混成旅团战区</chineseSimplified>
+    </name>
+    <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
+    <cells>
+     <XY x="31" y="28" />
+    </cells>
+    <frontlineCells>
+     <XY x="31" y="28" />
+    </frontlineCells>
+    <objectId>74b6fe0d-0a0e-49ec-817c-56ecd201387f</objectId>
+   </Theater>
+   <Theater>
+    <name>
+     <english>Okinawa</english>
+     <japanese>沖縄</japanese>
+     <chineseSimplified>冲绳</chineseSimplified>
+    </name>
+    <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
+    <cells>
+     <XY x="33" y="7" />
+     <XY x="33" y="8" />
+     <XY x="34" y="8" />
+     <XY x="34" y="9" />
+    </cells>
+    <frontlineCells />
+    <objectId>c229ceb1-2e53-4f06-b30b-1b7388ed0860</objectId>
+   </Theater>
+   <Theater>
+    <name>
+     <english>Amami Oshima</english>
+     <japanese>奄美大島</japanese>
+     <chineseSimplified>奄美大岛</chineseSimplified>
+    </name>
+    <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
+    <cells>
+     <XY x="35" y="10" />
+     <XY x="35" y="11" />
+     <XY x="36" y="11" />
+     <XY x="36" y="12" />
+     <XY x="37" y="11" />
+    </cells>
+    <frontlineCells />
+    <objectId>84ac2083-b918-4ab8-906b-e30a4a357385</objectId>
+   </Theater>
+   <Theater>
+    <name>
+     <english>Imperial General Headquarters Theater</english>
+     <japanese>大本営戦区</japanese>
+     <chineseSimplified>大本营战区</chineseSimplified>
+    </name>
+    <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
+    <cells>
+     <XY x="35" y="19" />
+     <XY x="36" y="20" />
+     <XY x="36" y="21" />
+     <XY x="37" y="20" />
+     <XY x="37" y="19" />
+     <XY x="37" y="21" />
+     <XY x="38" y="21" />
+     <XY x="38" y="20" />
+     <XY x="38" y="19" />
+     <XY x="37" y="18" />
+     <XY x="38" y="22" />
+     <XY x="39" y="21" />
+     <XY x="39" y="20" />
+     <XY x="39" y="19" />
+     <XY x="39" y="18" />
+     <XY x="38" y="18" />
+     <XY x="39" y="22" />
+     <XY x="40" y="22" />
+     <XY x="40" y="21" />
+     <XY x="40" y="20" />
+     <XY x="40" y="19" />
+     <XY x="40" y="18" />
+     <XY x="39" y="17" />
+     <XY x="38" y="17" />
+     <XY x="40" y="23" />
+     <XY x="41" y="22" />
+     <XY x="41" y="21" />
+     <XY x="41" y="20" />
+     <XY x="41" y="19" />
+     <XY x="40" y="17" />
+     <XY x="39" y="16" />
+     <XY x="41" y="23" />
+     <XY x="42" y="23" />
+     <XY x="42" y="22" />
+     <XY x="42" y="21" />
+     <XY x="42" y="20" />
+     <XY x="39" y="15" />
+     <XY x="41" y="24" />
+     <XY x="42" y="24" />
+     <XY x="43" y="23" />
+     <XY x="43" y="22" />
+     <XY x="43" y="21" />
+     <XY x="43" y="20" />
+     <XY x="43" y="19" />
+     <XY x="38" y="15" />
+     <XY x="42" y="25" />
+     <XY x="43" y="24" />
+     <XY x="44" y="24" />
+     <XY x="44" y="23" />
+     <XY x="44" y="22" />
+     <XY x="44" y="21" />
+     <XY x="43" y="25" />
+     <XY x="44" y="25" />
+     <XY x="45" y="24" />
+     <XY x="45" y="23" />
+     <XY x="45" y="22" />
+     <XY x="45" y="21" />
+     <XY x="45" y="20" />
+     <XY x="45" y="25" />
+     <XY x="46" y="25" />
+     <XY x="46" y="24" />
+     <XY x="46" y="23" />
+     <XY x="46" y="22" />
+     <XY x="47" y="25" />
+     <XY x="47" y="24" />
+     <XY x="47" y="23" />
+     <XY x="47" y="22" />
+     <XY x="47" y="21" />
+     <XY x="48" y="26" />
+     <XY x="48" y="25" />
+     <XY x="48" y="24" />
+     <XY x="48" y="23" />
+     <XY x="48" y="22" />
+     <XY x="48" y="21" />
+     <XY x="48" y="27" />
+     <XY x="49" y="26" />
+     <XY x="49" y="25" />
+     <XY x="49" y="24" />
+     <XY x="49" y="23" />
+     <XY x="49" y="22" />
+     <XY x="49" y="27" />
+     <XY x="50" y="27" />
+     <XY x="50" y="26" />
+     <XY x="50" y="25" />
+     <XY x="50" y="24" />
+     <XY x="50" y="23" />
+     <XY x="49" y="28" />
+     <XY x="50" y="28" />
+     <XY x="51" y="27" />
+     <XY x="51" y="26" />
+     <XY x="51" y="25" />
+     <XY x="51" y="24" />
+     <XY x="51" y="23" />
+     <XY x="49" y="29" />
+     <XY x="50" y="29" />
+     <XY x="51" y="28" />
+     <XY x="52" y="28" />
+     <XY x="52" y="27" />
+     <XY x="52" y="26" />
+     <XY x="52" y="25" />
+     <XY x="52" y="24" />
+     <XY x="51" y="29" />
+     <XY x="52" y="29" />
+     <XY x="53" y="28" />
+     <XY x="53" y="27" />
+     <XY x="53" y="26" />
+     <XY x="53" y="25" />
+     <XY x="53" y="24" />
+     <XY x="51" y="30" />
+     <XY x="52" y="30" />
+     <XY x="53" y="29" />
+     <XY x="54" y="29" />
+     <XY x="54" y="28" />
+     <XY x="54" y="27" />
+     <XY x="54" y="26" />
+     <XY x="54" y="25" />
+     <XY x="54" y="24" />
+     <XY x="52" y="31" />
+     <XY x="53" y="30" />
+     <XY x="54" y="30" />
+     <XY x="55" y="29" />
+     <XY x="55" y="28" />
+     <XY x="55" y="27" />
+     <XY x="55" y="26" />
+     <XY x="55" y="25" />
+     <XY x="55" y="24" />
+     <XY x="54" y="31" />
+     <XY x="55" y="30" />
+     <XY x="56" y="30" />
+     <XY x="56" y="29" />
+     <XY x="56" y="28" />
+     <XY x="56" y="27" />
+     <XY x="56" y="26" />
+     <XY x="56" y="25" />
+     <XY x="54" y="32" />
+     <XY x="55" y="31" />
+     <XY x="56" y="31" />
+     <XY x="57" y="30" />
+     <XY x="57" y="29" />
+     <XY x="57" y="28" />
+     <XY x="57" y="26" />
+     <XY x="54" y="33" />
+     <XY x="55" y="32" />
+     <XY x="56" y="32" />
+     <XY x="57" y="31" />
+     <XY x="54" y="34" />
+     <XY x="55" y="33" />
+     <XY x="56" y="33" />
+     <XY x="57" y="32" />
+     <XY x="54" y="35" />
+     <XY x="55" y="34" />
+     <XY x="56" y="34" />
+     <XY x="57" y="33" />
+     <XY x="58" y="33" />
+     <XY x="54" y="36" />
+     <XY x="55" y="35" />
+     <XY x="56" y="35" />
+     <XY x="57" y="34" />
+     <XY x="58" y="34" />
+     <XY x="54" y="37" />
+     <XY x="55" y="36" />
+     <XY x="56" y="36" />
+     <XY x="57" y="35" />
+     <XY x="54" y="38" />
+     <XY x="55" y="37" />
+     <XY x="53" y="37" />
+     <XY x="56" y="37" />
+     <XY x="54" y="39" />
+     <XY x="55" y="38" />
+     <XY x="53" y="38" />
+     <XY x="55" y="39" />
+     <XY x="53" y="39" />
+     <XY x="56" y="39" />
+     <XY x="57" y="39" />
+     <XY x="57" y="38" />
+     <XY x="58" y="39" />
+     <XY x="58" y="38" />
+     <XY x="59" y="39" />
+     <XY x="59" y="38" />
+    </cells>
+    <frontlineCells />
+    <objectId>a73da4dd-05f8-4868-aca5-acf5bab5e3ad</objectId>
+   </Theater>
+   <Theater>
+    <name>
+     <english>Vladivostok HQ Theater</english>
+     <chineseSimplified>海参崴总部战区</chineseSimplified>
+    </name>
+    <sideObjectId>6900b3ca-0f12-491a-9799-2e499a9d6e3e</sideObjectId>
+    <cells>
+     <XY x="37" y="37" />
+     <XY x="37" y="38" />
+     <XY x="38" y="38" />
+     <XY x="38" y="39" />
+     <XY x="39" y="38" />
+     <XY x="39" y="39" />
+     <XY x="40" y="39" />
+     <XY x="41" y="39" />
+     <XY x="41" y="38" />
+     <XY x="42" y="39" />
+     <XY x="42" y="38" />
+     <XY x="43" y="39" />
+     <XY x="43" y="38" />
+     <XY x="44" y="39" />
+    </cells>
+    <frontlineCells>
+     <XY x="37" y="37" />
+     <XY x="37" y="38" />
+     <XY x="38" y="39" />
+    </frontlineCells>
+    <objectId>92c0d12a-731c-431d-906b-d5e534cf451f</objectId>
+   </Theater>
+  </theaters>
   <logs />
   <navalContactReports />
   <serializedCells>
@@ -34963,7 +36182,13 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="2" y="38" terrain="DesertRough" longitude="110.94175" latitude="42.38026" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="2" y="39" terrain="Desert" longitude="110.923996" latitude="42.92539" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="3" y="0" terrain="ShallowWater" longitude="113.762337" latitude="21.7119236" />
-    <Cell x="3" y="1" terrain="HeavyUrban" longitude="113.72" latitude="22.27" GroundControlPoint="true" IsCoast="true" sideObjectIdHex="b0834e29-87e8-46c8-851b-2d0bd493b96f" roadsStr="5" blockSeaMovementsStr="1" />
+    <Cell x="3" y="1" terrain="HeavyUrban" longitude="113.72" latitude="22.27" GroundControlPoint="true" IsCoast="true" sideObjectIdHex="b0834e29-87e8-46c8-851b-2d0bd493b96f" roadsStr="5" blockSeaMovementsStr="1">
+     <Label>
+      <english>Macao</english>
+      <japanese>マカオ</japanese>
+      <chineseSimplified>澳门</chineseSimplified>
+     </Label>
+    </Cell>
     <Cell x="3" y="2" terrain="Field" longitude="113.666588" latitude="22.832283" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" blockSeaMovementsStr="2" />
     <Cell x="3" y="3" terrain="Clear" longitude="113.606468" latitude="23.3966141" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/2" />
     <Cell x="3" y="4" terrain="Forest" longitude="113.542076" latitude="23.9617443" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -35739,7 +36964,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="19" y="16" terrain="Field" longitude="120.77401" latitude="31.0528126" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="19" y="17" terrain="Field" longitude="120.743591" latitude="31.5973015" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/2" riversStr="1/0" />
     <Cell x="19" y="18" terrain="Field" longitude="120.711617" latitude="32.14108" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="3/4" />
-    <Cell x="19" y="19" terrain="Field" longitude="120.677795" latitude="32.6841431" />
+    <Cell x="19" y="19" terrain="Field" longitude="120.677795" latitude="32.6841431" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="19" y="20" terrain="Field" longitude="120.641991" latitude="33.2265129" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="19" y="21" terrain="ShallowWater" longitude="120.604225" latitude="33.7682076" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="19" y="22" terrain="ShallowWater" longitude="120.564705" latitude="34.30928" />
@@ -35800,9 +37025,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </Cell>
     <Cell x="20" y="15" terrain="Field" longitude="121.319748" latitude="30.25183" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="20" y="16" terrain="Field" longitude="121.295" latitude="30.79709" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="20" y="17" terrain="Field" longitude="121.269218" latitude="31.3416977" roadsStr="5/2" riversStr="1/0" />
+    <Cell x="20" y="17" terrain="Field" longitude="121.269218" latitude="31.3416977" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/2" riversStr="1/0" />
     <Cell x="20" y="18" terrain="Field" longitude="121.241943" latitude="31.8856544" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="3/4" />
-    <Cell x="20" y="19" terrain="Field" longitude="121.2128" latitude="32.42896" />
+    <Cell x="20" y="19" terrain="Field" longitude="121.2128" latitude="32.42896" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="20" y="20" terrain="ShallowWater" longitude="121.181534" latitude="32.97162" />
     <Cell x="20" y="21" terrain="ShallowWater" longitude="121.148071" latitude="33.5136528" />
     <Cell x="20" y="22" terrain="ShallowWater" longitude="121.112556" latitude="34.0551071" />
@@ -35994,7 +37219,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="23" y="25" terrain="ShallowWater" longitude="122.59211" latitude="35.9884033" />
     <Cell x="23" y="26" terrain="ShallowWater" longitude="122.562744" latitude="36.5296249" />
     <Cell x="23" y="27" terrain="Field" longitude="122.535049" latitude="37.07104" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" blockSeaMovementsStr="5" />
-    <Cell x="23" y="28" terrain="Field" longitude="122.5094" latitude="37.6125565" IsCoast="true" sideObjectIdHex="">
+    <Cell x="23" y="28" terrain="ShallowWater" longitude="122.5094" latitude="37.6125565">
      <StrategicGroupReferences>
       <StrategicGroupReference>
        <referenceId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</referenceId>
@@ -36136,7 +37361,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="26" y="29" terrain="ShallowWater" longitude="124.119156" latitude="37.9036026" />
     <Cell x="26" y="30" terrain="ShallowWater" longitude="124.09993" latitude="38.44339" />
     <Cell x="26" y="31" terrain="ShallowWater" longitude="124.079994" latitude="38.98143" />
-    <Cell x="26" y="32" terrain="ForestRough" longitude="124.058922" latitude="39.5173454" IsCoast="true" riversStr="0/5" />
+    <Cell x="26" y="32" terrain="ShallowWater" longitude="124.058922" latitude="39.5173454" riversStr="0/5" />
     <Cell x="26" y="33" terrain="ForestRough" longitude="124.0376" latitude="40.0514221" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/2" riversStr="2/3" />
     <Cell x="26" y="34" terrain="Forest" longitude="124.017555" latitude="40.5843" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="26" y="35" terrain="Forest" longitude="124.00013" latitude="41.116497" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -36343,14 +37568,14 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="30" y="17" terrain="ShallowWater" longitude="126.372482" latitude="31.4079933" />
     <Cell x="30" y="18" terrain="ShallowWater" longitude="126.380196" latitude="31.9508629" />
     <Cell x="30" y="19" terrain="ShallowWater" longitude="126.386208" latitude="32.4934273" />
-    <Cell x="30" y="20" terrain="ShallowWater" longitude="126.388214" latitude="33.0354">
+    <Cell x="30" y="20" terrain="ShallowWater" longitude="126.388214" latitude="33.0354" />
+    <Cell x="30" y="21" terrain="Clear" longitude="126.381577" latitude="33.57613" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d">
      <Label>
       <english>Quelpart</english>
       <japanese>済州島</japanese>
       <chineseSimplified>济州岛</chineseSimplified>
      </Label>
     </Cell>
-    <Cell x="30" y="21" terrain="Clear" longitude="126.381577" latitude="33.57613" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
     <Cell x="30" y="22" terrain="ShallowWater" longitude="126.366577" latitude="34.115696" blockSeaMovementsStr="0" />
     <Cell x="30" y="23" terrain="Field" longitude="126.348412" latitude="34.65491" IsCoast="true" blockSeaMovementsStr="2/3/4" />
     <Cell x="30" y="24" terrain="ShallowWater" longitude="126.329819" latitude="35.19419" />
@@ -36819,7 +38044,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="39" y="36" terrain="DeepWater" longitude="131.2767" latitude="41.8082275" />
     <Cell x="39" y="37" terrain="ShallowWater" longitude="131.294418" latitude="42.34831" />
     <Cell x="39" y="38" terrain="ForestRough" longitude="131.3139" latitude="42.88634" IsCoast="true" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" />
-    <Cell x="39" y="39" terrain="ForestRough" longitude="131.338745" latitude="43.4206429" roadsStr="2/4" />
+    <Cell x="39" y="39" terrain="ForestRough" longitude="131.338745" latitude="43.4206429" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" roadsStr="2/4" />
     <Cell x="40" y="0" terrain="DeepWater" longitude="131.727356" latitude="21.99686" />
     <Cell x="40" y="1" terrain="DeepWater" longitude="131.684067" latitude="22.5537567" />
     <Cell x="40" y="2" terrain="DeepWater" longitude="131.644012" latitude="23.1093769" />
@@ -36867,13 +38092,13 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      </Label>
      <StrategicGroupReferences>
       <StrategicGroupReference>
-       <referenceId>c1d45c08-3ada-495e-adf9-a6f840c5b571</referenceId>
-      </StrategicGroupReference>
-      <StrategicGroupReference>
        <referenceId>3391b8ea-4a7a-44d2-bdf1-f70f42bbd346</referenceId>
       </StrategicGroupReference>
       <StrategicGroupReference>
        <referenceId>15a7175c-1740-4b9f-863e-d83ed2d16962</referenceId>
+      </StrategicGroupReference>
+      <StrategicGroupReference>
+       <referenceId>c1d45c08-3ada-495e-adf9-a6f840c5b571</referenceId>
       </StrategicGroupReference>
      </StrategicGroupReferences>
     </Cell>
@@ -36916,7 +38141,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="41" y="36" terrain="DeepWater" longitude="132.444717" latitude="41.7601662" />
     <Cell x="41" y="37" terrain="ShallowWater" longitude="132.4675" latitude="42.30126" />
     <Cell x="41" y="38" terrain="ForestRough" longitude="132.49118" latitude="42.8403854" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" />
-    <Cell x="41" y="39" terrain="ForestRough" longitude="132.5194" latitude="43.3758469" />
+    <Cell x="41" y="39" terrain="ForestRough" longitude="132.5194" latitude="43.3758469" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" />
     <Cell x="42" y="0" terrain="DeepWater" longitude="132.782364" latitude="21.9774818" />
     <Cell x="42" y="1" terrain="DeepWater" longitude="132.741287" latitude="22.5325985" />
     <Cell x="42" y="2" terrain="DeepWater" longitude="132.703232" latitude="23.0864544" />
@@ -37025,7 +38250,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="43" y="36" terrain="DeepWater" longitude="133.631638" latitude="41.703598" />
     <Cell x="43" y="37" terrain="DeepWater" longitude="133.660782" latitude="42.2447281" />
     <Cell x="43" y="38" terrain="ForestRough" longitude="133.690079" latitude="42.7839546" IsCoast="true" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" />
-    <Cell x="43" y="39" terrain="ForestRough" longitude="133.721054" latitude="43.3205948" />
+    <Cell x="43" y="39" terrain="ForestRough" longitude="133.721054" latitude="43.3205948" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" />
     <Cell x="44" y="0" terrain="DeepWater" longitude="133.846115" latitude="21.9551" />
     <Cell x="44" y="1" terrain="DeepWater" longitude="133.8072" latitude="22.5084839" />
     <Cell x="44" y="2" terrain="DeepWater" longitude="133.771133" latitude="23.0606213" />
@@ -37603,7 +38828,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="57" y="24" terrain="ShallowWater" longitude="141.332947" latitude="34.80548" />
     <Cell x="57" y="25" terrain="ShallowWater" longitude="141.409149" latitude="35.3360939" />
     <Cell x="57" y="26" terrain="Field" longitude="141.483047" latitude="35.86893" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
-    <Cell x="57" y="27" terrain="Clear" longitude="141.5533" latitude="36.4039574" IsCoast="true" />
+    <Cell x="57" y="27" terrain="ShallowWater" longitude="141.5533" latitude="36.4039574" />
     <Cell x="57" y="28" terrain="Field" longitude="141.620987" latitude="36.94067" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
     <Cell x="57" y="29" terrain="Field" longitude="141.687424" latitude="37.47851" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
     <Cell x="57" y="30" terrain="Field" longitude="141.75322" latitude="38.017067" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
@@ -37611,7 +38836,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="57" y="32" terrain="Field" longitude="141.8833" latitude="39.0951767" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
     <Cell x="57" y="33" terrain="Rough" longitude="141.947144" latitude="39.6343651" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
     <Cell x="57" y="34" terrain="Field" longitude="142.009567" latitude="40.1735153" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
-    <Cell x="57" y="35" terrain="ForestRough" longitude="142.069946" latitude="40.7126427" IsCoast="true" />
+    <Cell x="57" y="35" terrain="ForestRough" longitude="142.069946" latitude="40.7126427" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
     <Cell x="57" y="36" terrain="ShallowWater" longitude="142.1273" latitude="41.25185" />
     <Cell x="57" y="37" terrain="ShallowWater" longitude="142.180267" latitude="41.7914047" />
     <Cell x="57" y="38" terrain="Clear" longitude="142.22641" latitude="42.3318825" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" />
@@ -37700,8 +38925,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
   </serializedCells>
  </gameState>
  <viewState>
-  <xPosition>2.39435339</xPosition>
-  <yPosition>11.7811365</yPosition>
+  <xPosition>2.21599746</xPosition>
+  <yPosition>11.7423754</yPosition>
   <orthographicSize>11</orthographicSize>
   <hitAreaMapRecords>
    <HitAreaMapRecord hitAreaObjectId="0b2cbd39-ad25-4233-b5a1-5744048e7491" areaCellObjectId="" />

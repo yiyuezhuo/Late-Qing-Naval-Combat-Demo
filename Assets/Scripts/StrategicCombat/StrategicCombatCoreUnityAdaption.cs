@@ -1038,6 +1038,43 @@ namespace StrategicCombatCore
     {
         [CreateProperty]
         public string areaCellName => GetAreaCellName();
+
+        [CreateProperty]
+        public string cellName => StrategicGameState.Instance.GetCellName(this);
+    }
+
+    public partial class Theater
+    {
+        [CreateProperty]
+        public string sideName => GetSide()?.name?.GetMergedName() ?? string.Empty;
+
+        [CreateProperty]
+        public int cellCount => cells?.Count ?? 0;
+
+        [CreateProperty]
+        public string cellCountText => cellCount.ToString();
+
+        [CreateProperty]
+        public string cellSummaryText
+        {
+            get
+            {
+                var count = cellCount;
+                if (count <= 0)
+                    return "0";
+
+                var names = (cells ?? new())
+                    .Take(3)
+                    .Select(cell => StrategicGameState.Instance.GetCellName(cell))
+                    .Where(name => !string.IsNullOrWhiteSpace(name))
+                    .ToList();
+                if (names.Count == 0)
+                    return count.ToString();
+
+                var ellipsis = count > 3 ? "..." : string.Empty;
+                return $"{count} ({string.Join(", ", names)}{ellipsis})";
+            }
+        }
     }
 
     public partial class CellConnection

@@ -1,0 +1,31 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor" />
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style" />
+    <ui:VisualElement data-source-type="StrategicCombatCore.Theater, Assembly-CSharp" class="panel-dialog" style="width: 520px; height: auto;">
+        <ui:Label text="Theater Detail" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-97000000000003)" />
+            </Bindings>
+        </ui:Label>
+        <ui:Instance template="GlobalStringEditor" data-source-path="name">
+            <AttributeOverrides element-name="GlobalStringLabel" text="Name" />
+        </ui:Instance>
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Label text="Theater Cells" style="flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-97000000000004)" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="0">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="cellSummaryText" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+        <ui:Button text="Confirm" name="ConfirmButton">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />
+            </Bindings>
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

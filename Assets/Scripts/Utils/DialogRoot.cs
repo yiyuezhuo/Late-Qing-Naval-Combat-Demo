@@ -2683,7 +2683,16 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             return;
         }
 
-        var model = new StrategicInfluenceMapDialogModel();
+        var scenarioState = StrategicGameState.Instance.scenarioState;
+        var model = new StrategicInfluenceMapDialogModel
+        {
+            falloffAlgorithmValue = (int)scenarioState.falloffAlgorithmValue,
+            linearRangeCost = scenarioState.linearRangeCost,
+            exponentialDecayLengthCost = scenarioState.exponentialDecayLengthCost,
+            inverseHalfEffectDistanceCost = scenarioState.inverseHalfEffectDistanceCost,
+            gaussianSigmaCost = scenarioState.gaussianSigmaCost,
+            forceRefresh = true
+        };
         var tempDialog = new TempDialog()
         {
             root = root,
@@ -2699,14 +2708,46 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
             var side1DropdownField = el.Q<DropdownField>("Side1DropdownField");
             var side2DropdownField = el.Q<DropdownField>("Side2DropdownField");
+            var forceRefreshToggle = el.Q<Toggle>("ForceRefreshToggle");
             var plotButton = el.Q<Button>("PlotButton");
             var clearButton = el.Q<Button>("ClearButton");
             var mapTypeField = el.Q<LocalizedEnumField>("MapTypeField");
             var falloffAlgorithmField = el.Q<LocalizedEnumField>("FalloffAlgorithmField");
+            var linearRangeField = el.Q<FloatField>("LinearRangeField");
+            var exponentialDecayField = el.Q<FloatField>("ExponentialDecayField");
+            var inverseHalfEffectField = el.Q<FloatField>("InverseHalfEffectField");
+            var gaussianSigmaField = el.Q<FloatField>("GaussianSigmaField");
             var linearParameterRow = el.Q<VisualElement>("LinearParameterRow");
             var exponentialParameterRow = el.Q<VisualElement>("ExponentialParameterRow");
             var inverseParameterRow = el.Q<VisualElement>("InverseParameterRow");
             var gaussianParameterRow = el.Q<VisualElement>("GaussianParameterRow");
+
+            void CopyScenarioPowerParametersToModel()
+            {
+                model.falloffAlgorithmValue = state.scenarioState.falloffAlgorithmValue;
+                model.linearRangeCost = state.scenarioState.linearRangeCost;
+                model.exponentialDecayLengthCost = state.scenarioState.exponentialDecayLengthCost;
+                model.inverseHalfEffectDistanceCost = state.scenarioState.inverseHalfEffectDistanceCost;
+                model.gaussianSigmaCost = state.scenarioState.gaussianSigmaCost;
+            }
+
+            void RefreshParameterFieldValuesFromModel()
+            {
+                falloffAlgorithmField?.SetValueWithoutNotify(model.falloffAlgorithmValue);
+                linearRangeField?.SetValueWithoutNotify(model.linearRangeCost);
+                exponentialDecayField?.SetValueWithoutNotify(model.exponentialDecayLengthCost);
+                inverseHalfEffectField?.SetValueWithoutNotify(model.inverseHalfEffectDistanceCost);
+                gaussianSigmaField?.SetValueWithoutNotify(model.gaussianSigmaCost);
+            }
+
+            void SyncScenarioStatePowerParameters()
+            {
+                state.scenarioState.falloffAlgorithmValue = model.falloffAlgorithmValue;
+                state.scenarioState.linearRangeCost = model.linearRangeCost;
+                state.scenarioState.exponentialDecayLengthCost = model.exponentialDecayLengthCost;
+                state.scenarioState.inverseHalfEffectDistanceCost = model.inverseHalfEffectDistanceCost;
+                state.scenarioState.gaussianSigmaCost = model.gaussianSigmaCost;
+            }
 
             void SetSideSelection(DropdownField dropdownField, Action<string> setObjectId, string objectId, int fallbackIndex = 0)
             {
@@ -2776,6 +2817,53 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 side2DropdownField?.SetEnabled(mapType == StrategicInfluenceMapType.Control);
             }
 
+            void SyncPowerParameterEditability(StrategicInfluenceMapType mapType)
+            {
+                var isPower = mapType == StrategicInfluenceMapType.Power;
+                falloffAlgorithmField?.SetEnabled(true);
+                linearRangeField?.SetEnabled(true);
+                exponentialDecayField?.SetEnabled(true);
+                inverseHalfEffectField?.SetEnabled(true);
+                gaussianSigmaField?.SetEnabled(true);
+
+                if (isPower)
+                {
+                    CopyScenarioPowerParametersToModel();
+                    RefreshParameterFieldValuesFromModel();
+                }
+            }
+
+            void SyncForceRefreshState()
+            {
+                var isPower = model.mapType == StrategicInfluenceMapType.Power;
+                if (forceRefreshToggle == null)
+                    return;
+
+                forceRefreshToggle.style.display = isPower ? DisplayStyle.Flex : DisplayStyle.None;
+                if (!isPower)
+                {
+                    model.forceRefresh = true;
+                    forceRefreshToggle.SetValueWithoutNotify(true);
+                    forceRefreshToggle.SetEnabled(false);
+                    return;
+                }
+
+                var selectedSide = EntityManager.Instance.Get<SideState>(model.side1ObjectId);
+                var hasValidCache = StrategicInfluenceMapUtility.HasValidPowerCache(selectedSide, state.scenarioState);
+                if (hasValidCache)
+                {
+                    model.forceRefresh = false;
+                    forceRefreshToggle.SetValueWithoutNotify(false);
+                    forceRefreshToggle.SetEnabled(true);
+                }
+                else
+                {
+                    model.forceRefresh = true;
+                    forceRefreshToggle.SetValueWithoutNotify(true);
+                    forceRefreshToggle.SetEnabled(false);
+                }
+            }
+
             var defaultSide1ObjectId = StrategicInfluenceMapUtility.GetDefaultSide1ObjectId(state, StrategicGameManager.Instance.currentSideStateObjectId);
             var defaultSide2ObjectId = StrategicInfluenceMapUtility.GetDefaultSide2ObjectId(state, defaultSide1ObjectId);
 
@@ -2784,28 +2872,108 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
             mapTypeField?.RegisterValueChangedCallback(evt =>
             {
-                SyncSide2State((StrategicInfluenceMapType)evt.newValue);
+                model.mapTypeValue = evt.newValue;
+                var mapType = (StrategicInfluenceMapType)evt.newValue;
+                SyncSide2State(mapType);
+                SyncPowerParameterEditability(mapType);
+                SyncFalloffParameterState((InfluenceMapFalloffAlgorithm)falloffAlgorithmField.value);
+                SyncForceRefreshState();
             });
             SyncSide2State(mapTypeField != null ? (StrategicInfluenceMapType)mapTypeField.value : model.mapType);
 
-            falloffAlgorithmField?.RegisterValueChangedCallback(evt => SyncFalloffParameterState((InfluenceMapFalloffAlgorithm)evt.newValue));
+            falloffAlgorithmField?.RegisterValueChangedCallback(evt =>
+            {
+                model.falloffAlgorithmValue = evt.newValue;
+                if (model.mapType == StrategicInfluenceMapType.Power)
+                {
+                    SyncScenarioStatePowerParameters();
+                    SyncForceRefreshState();
+                }
+
+                SyncFalloffParameterState((InfluenceMapFalloffAlgorithm)evt.newValue);
+            });
+
+            linearRangeField?.RegisterValueChangedCallback(evt =>
+            {
+                model.linearRangeCost = evt.newValue;
+                if (model.mapType == StrategicInfluenceMapType.Power)
+                {
+                    SyncScenarioStatePowerParameters();
+                    SyncForceRefreshState();
+                }
+            });
+
+            exponentialDecayField?.RegisterValueChangedCallback(evt =>
+            {
+                model.exponentialDecayLengthCost = evt.newValue;
+                if (model.mapType == StrategicInfluenceMapType.Power)
+                {
+                    SyncScenarioStatePowerParameters();
+                    SyncForceRefreshState();
+                }
+            });
+
+            inverseHalfEffectField?.RegisterValueChangedCallback(evt =>
+            {
+                model.inverseHalfEffectDistanceCost = evt.newValue;
+                if (model.mapType == StrategicInfluenceMapType.Power)
+                {
+                    SyncScenarioStatePowerParameters();
+                    SyncForceRefreshState();
+                }
+            });
+
+            gaussianSigmaField?.RegisterValueChangedCallback(evt =>
+            {
+                model.gaussianSigmaCost = evt.newValue;
+                if (model.mapType == StrategicInfluenceMapType.Power)
+                {
+                    SyncScenarioStatePowerParameters();
+                    SyncForceRefreshState();
+                }
+            });
+
+            forceRefreshToggle?.RegisterValueChangedCallback(evt =>
+            {
+                model.forceRefresh = evt.newValue;
+            });
+
+            side1DropdownField?.RegisterValueChangedCallback(_ => SyncForceRefreshState());
             SyncFalloffParameterState(falloffAlgorithmField != null ? (InfluenceMapFalloffAlgorithm)falloffAlgorithmField.value : model.falloffAlgorithm);
+            SyncPowerParameterEditability(model.mapType);
+            SyncForceRefreshState();
 
             if (plotButton != null)
             {
                 plotButton.clicked += () =>
                 {
-                    StrategicGameManager.Instance.PlotStrategicInfluenceMap(new StrategicInfluenceMapRequest
+                    StrategicInfluenceMapRequest request;
+                    if (model.mapType == StrategicInfluenceMapType.Power)
                     {
-                        mapType = model.mapType,
-                        falloffAlgorithm = model.falloffAlgorithm,
-                        side1ObjectId = model.side1ObjectId,
-                        side2ObjectId = model.side2ObjectId,
-                        linearRangeCost = model.linearRangeCost,
-                        exponentialDecayLengthCost = model.exponentialDecayLengthCost,
-                        inverseHalfEffectDistanceCost = model.inverseHalfEffectDistanceCost,
-                        gaussianSigmaCost = model.gaussianSigmaCost,
-                    });
+                        request = StrategicInfluenceMapUtility.BuildPowerRequest(state, model.side1ObjectId);
+                        request.forceRefresh = model.forceRefresh;
+                    }
+                    else
+                    {
+                        request = new StrategicInfluenceMapRequest
+                        {
+                            mapType = model.mapType,
+                            forceRefresh = true,
+                            falloffAlgorithm = model.falloffAlgorithm,
+                            side1ObjectId = model.side1ObjectId,
+                            side2ObjectId = model.side2ObjectId,
+                            linearRangeCost = model.linearRangeCost,
+                            exponentialDecayLengthCost = model.exponentialDecayLengthCost,
+                            inverseHalfEffectDistanceCost = model.inverseHalfEffectDistanceCost,
+                            gaussianSigmaCost = model.gaussianSigmaCost,
+                        };
+                    }
+
+                    StrategicGameManager.Instance.PlotStrategicInfluenceMap(request);
+                    if (model.mapType == StrategicInfluenceMapType.Power)
+                    {
+                        SyncForceRefreshState();
+                    }
                 };
             }
 

@@ -825,7 +825,16 @@ namespace StrategicCombatCore
 
             if (scenarioState.dateTime.Hour == 0)
             {
+                RefreshDailyPowerInfluenceMapCaches();
                 RefreshTheaters();
+            }
+        }
+
+        public void RefreshDailyPowerInfluenceMapCaches()
+        {
+            foreach (var sideState in sideStates.Where(side => side != null))
+            {
+                sideState.powerInfluenceMapCache = StrategicInfluenceMapUtility.BuildPowerCache(this, sideState);
             }
         }
 

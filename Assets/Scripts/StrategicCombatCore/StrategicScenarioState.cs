@@ -49,6 +49,12 @@ namespace StrategicCombatCore
         public bool firstLoaded;
 
         public NavalForceEstimation.Rule.Mode estimationRuleMode = NavalForceEstimation.Rule.Mode.SinoJapaneseWar;
+        public InfluenceMapFalloffAlgorithm powerInfluenceFalloffAlgorithm = InfluenceMapFalloffAlgorithm.Linear;
+        public float powerInfluenceLinearRangeCost = StrategicInfluenceMapDefaults.LinearRangeCost;
+        public float powerInfluenceExponentialDecayLengthCost = StrategicInfluenceMapDefaults.ExponentialDecayLengthCost;
+        public float powerInfluenceInverseHalfEffectDistanceCost = StrategicInfluenceMapDefaults.InverseHalfEffectDistanceCost;
+        public float powerInfluenceGaussianSigmaCost = StrategicInfluenceMapDefaults.GaussianSigmaCost;
+
         public NavalForceEstimation.EstimationCategoryConfig GetEstimationCategoryConfig(NavalForceEstimation.EstimationCategory estimationCategory) => 
         
         NavalForceEstimation.Rule.Get(estimationRuleMode).estimateConfigMap[estimationCategory];

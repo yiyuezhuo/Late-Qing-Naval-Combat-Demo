@@ -1009,6 +1009,41 @@ namespace StrategicCombatCore
         [CreateProperty]
         public string areaSystemSummary => $"({areaSystem.areaStates.Count}) {areaSystem.backgroundReference.isBuiltin}, {areaSystem.backgroundReference.path}";
 
+        [CreateProperty]
+        public int falloffAlgorithmValue
+        {
+            get => (int)powerInfluenceFalloffAlgorithm;
+            set => powerInfluenceFalloffAlgorithm = (InfluenceMapFalloffAlgorithm)value;
+        }
+
+        [CreateProperty]
+        public float linearRangeCost
+        {
+            get => powerInfluenceLinearRangeCost;
+            set => powerInfluenceLinearRangeCost = value;
+        }
+
+        [CreateProperty]
+        public float exponentialDecayLengthCost
+        {
+            get => powerInfluenceExponentialDecayLengthCost;
+            set => powerInfluenceExponentialDecayLengthCost = value;
+        }
+
+        [CreateProperty]
+        public float inverseHalfEffectDistanceCost
+        {
+            get => powerInfluenceInverseHalfEffectDistanceCost;
+            set => powerInfluenceInverseHalfEffectDistanceCost = value;
+        }
+
+        [CreateProperty]
+        public float gaussianSigmaCost
+        {
+            get => powerInfluenceGaussianSigmaCost;
+            set => powerInfluenceGaussianSigmaCost = value;
+        }
+
         [XmlIgnore]
         [CreateProperty]
         public bool enableGridSystemProp

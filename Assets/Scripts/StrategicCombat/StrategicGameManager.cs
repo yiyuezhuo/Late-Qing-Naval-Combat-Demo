@@ -306,6 +306,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         if (request == null)
             return;
 
+        var state = StrategicGameState.Instance;
         var side1 = EntityManager.Instance.Get<SideState>(request.side1ObjectId);
         if (side1 == null)
         {
@@ -329,9 +330,30 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             }
         }
 
-        var field = StrategicInfluenceMapUtility.BuildField(StrategicGameState.Instance, request);
-        HexMapShower.Instance.SetInfluenceOverlay(field.gridValues, field.maxAbs);
-        ApplyAreaInfluenceOverlay(field.areaValues, field.maxAbs);
+        StrategicInfluenceMapFieldData field;
+        if (request.mapType == StrategicInfluenceMapType.Power && !request.forceRefresh)
+        {
+            if (!StrategicInfluenceMapUtility.TryBuildFieldFromValidPowerCache(side1, state.scenarioState, out field))
+            {
+                DialogRoot.Instance.PopupMessageDialog("Power Influence Map cache is unavailable for the selected Side.");
+                return;
+            }
+        }
+        else if (request.mapType == StrategicInfluenceMapType.Power)
+        {
+            field = StrategicInfluenceMapUtility.BuildPowerField(state, side1.objectId);
+            side1.powerInfluenceMapCache = StrategicPowerInfluenceMapCache.FromFieldData(
+                field,
+                StrategicPowerInfluenceParameterSnapshot.FromScenarioState(state.scenarioState),
+                DateTime.UtcNow
+            );
+        }
+        else
+        {
+            field = StrategicInfluenceMapUtility.BuildField(state, request);
+        }
+
+        ApplyStrategicInfluenceField(field);
     }
 
     public void ClearStrategicInfluenceMap()
@@ -365,6 +387,13 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                 hitArea.ClearInfluenceOverlay();
             }
         }
+    }
+
+    void ApplyStrategicInfluenceField(StrategicInfluenceMapFieldData field)
+    {
+        field ??= new StrategicInfluenceMapFieldData();
+        HexMapShower.Instance.SetInfluenceOverlay(field.gridValues, field.maxAbs);
+        ApplyAreaInfluenceOverlay(field.areaValues, field.maxAbs);
     }
 
     void Start()

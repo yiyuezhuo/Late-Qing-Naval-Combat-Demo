@@ -36,6 +36,7 @@ namespace StrategicCombatCore
         public List<DiplomacyRelation> diplomacyRelations = new();
         public float victoryPoints;
         public string remark;
+        public StrategicPowerInfluenceMapCache powerInfluenceMapCache = new();
 
         public AmmunitionLoadoutWeightRecord defaultAmmunitionLoadoutWeightRecord = new();
         public List<AmmunitionLoadoutWeightRecord> extraAmmunitionLoadoutWeightRecords = new();

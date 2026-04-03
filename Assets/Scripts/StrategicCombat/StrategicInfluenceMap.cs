@@ -24,6 +24,7 @@ public static class StrategicInfluenceMapDefaults
 public sealed class StrategicInfluenceMapRequest
 {
     public StrategicInfluenceMapType mapType;
+    public bool forceRefresh = true;
     public InfluenceMapFalloffAlgorithm falloffAlgorithm = InfluenceMapFalloffAlgorithm.Linear;
     public string side1ObjectId;
     public string side2ObjectId;
@@ -37,6 +38,9 @@ public sealed class StrategicInfluenceMapDialogModel
 {
     [CreateProperty]
     public int mapTypeValue { get; set; } = (int)StrategicInfluenceMapType.Power;
+
+    [CreateProperty]
+    public bool forceRefresh { get; set; } = true;
 
     [CreateProperty]
     public int falloffAlgorithmValue { get; set; } = (int)InfluenceMapFalloffAlgorithm.Linear;
@@ -197,6 +201,56 @@ public static class StrategicInfluenceMapUtility
     public static Color GetValueColor(float value, float maxAbs)
     {
         return InfluenceMapUtility.GetContourColor(value, maxAbs);
+    }
+
+    public static StrategicInfluenceMapRequest BuildPowerRequest(StrategicGameState state, string sideObjectId)
+    {
+        var scenarioState = state?.scenarioState;
+        return new StrategicInfluenceMapRequest
+        {
+            mapType = StrategicInfluenceMapType.Power,
+            forceRefresh = true,
+            side1ObjectId = sideObjectId,
+            falloffAlgorithm = scenarioState?.powerInfluenceFalloffAlgorithm ?? InfluenceMapFalloffAlgorithm.Linear,
+            linearRangeCost = scenarioState?.powerInfluenceLinearRangeCost ?? StrategicInfluenceMapDefaults.LinearRangeCost,
+            exponentialDecayLengthCost = scenarioState?.powerInfluenceExponentialDecayLengthCost ?? StrategicInfluenceMapDefaults.ExponentialDecayLengthCost,
+            inverseHalfEffectDistanceCost = scenarioState?.powerInfluenceInverseHalfEffectDistanceCost ?? StrategicInfluenceMapDefaults.InverseHalfEffectDistanceCost,
+            gaussianSigmaCost = scenarioState?.powerInfluenceGaussianSigmaCost ?? StrategicInfluenceMapDefaults.GaussianSigmaCost
+        };
+    }
+
+    public static StrategicInfluenceMapFieldData BuildPowerField(StrategicGameState state, string sideObjectId)
+    {
+        return BuildField(state, BuildPowerRequest(state, sideObjectId));
+    }
+
+    public static StrategicPowerInfluenceMapCache BuildPowerCache(StrategicGameState state, SideState side)
+    {
+        if (state == null || side == null)
+            return new StrategicPowerInfluenceMapCache();
+
+        return StrategicPowerInfluenceMapCache.FromFieldData(
+            BuildPowerField(state, side.objectId),
+            StrategicPowerInfluenceParameterSnapshot.FromScenarioState(state.scenarioState),
+            DateTime.UtcNow
+        );
+    }
+
+    public static bool HasValidPowerCache(SideState side, StrategicScenarioState scenarioState)
+    {
+        return side?.powerInfluenceMapCache != null && side.powerInfluenceMapCache.Matches(scenarioState);
+    }
+
+    public static bool TryBuildFieldFromValidPowerCache(SideState side, StrategicScenarioState scenarioState, out StrategicInfluenceMapFieldData field)
+    {
+        if (HasValidPowerCache(side, scenarioState))
+        {
+            field = side.powerInfluenceMapCache.ToFieldData();
+            return true;
+        }
+
+        field = null;
+        return false;
     }
 
     public static StrategicInfluenceMapFieldData BuildField(StrategicGameState state, StrategicInfluenceMapRequest request)

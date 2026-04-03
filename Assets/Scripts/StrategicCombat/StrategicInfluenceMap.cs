@@ -193,6 +193,19 @@ public static class StrategicInfluenceMapUtility
         };
     }
 
+    public static float GetEffectiveCutoffCost(StrategicInfluenceMapRequest request)
+    {
+        var parameter = Mathf.Max(0.01f, GetPrimaryDistanceParameter(request));
+        return (request?.falloffAlgorithm ?? InfluenceMapFalloffAlgorithm.Linear) switch
+        {
+            InfluenceMapFalloffAlgorithm.Linear => parameter,
+            InfluenceMapFalloffAlgorithm.Exponential => parameter * 6f,
+            InfluenceMapFalloffAlgorithm.Inverse => parameter * 64f,
+            InfluenceMapFalloffAlgorithm.Gaussian => parameter * 4f,
+            _ => float.PositiveInfinity
+        };
+    }
+
     public static string FormatValue(float value)
     {
         return Mathf.Abs(value) < 0.05f ? "0" : value.ToString("0.#");
@@ -277,29 +290,19 @@ public static class StrategicInfluenceMapUtility
             }
         }
 
-        if (state.scenarioState.enableAreaSystem)
-        {
-            foreach (var areaCell in state.areaCells.Where(cell => cell != null))
-                displayCells.Add(areaCell);
-        }
-
-        foreach (var cell in displayCells)
-        {
-            SetCellValue(field, cell, 0f);
-        }
-
         var side1Samples = BuildSourceSamples(state, side1);
+        if (request.mapType == StrategicInfluenceMapType.Power && side1Samples.Count == 0)
+            return field;
+
         AccumulateField(field, graph, displayCells, side1Samples, request, 1f);
 
         if (request.mapType == StrategicInfluenceMapType.Control)
         {
             var side2Samples = BuildSourceSamples(state, side2);
-            AccumulateField(field, graph, displayCells, side2Samples, request, -1f);
-        }
+            if (side1Samples.Count == 0 && side2Samples.Count == 0)
+                return field;
 
-        foreach (var cell in displayCells)
-        {
-            field.maxAbs = Mathf.Max(field.maxAbs, Mathf.Abs(GetCellValue(field, cell)));
+            AccumulateField(field, graph, displayCells, side2Samples, request, -1f);
         }
 
         return field;
@@ -359,6 +362,7 @@ public static class StrategicInfluenceMapUtility
             .Where(sample => sample?.cell != null)
             .GroupBy(sample => sample.cell)
             .ToDictionary(group => group.Key, group => group.Sum(sample => sample.lethality));
+        var cutoffCost = GetEffectiveCutoffCost(request);
 
         foreach (var (sourceCell, totalLethality) in samplesByCell)
         {
@@ -366,15 +370,14 @@ public static class StrategicInfluenceMapUtility
                 graph,
                 new[] { sourceCell },
                 PathFinding<Cell>.DummyFalsePredicate,
-                float.PositiveInfinity
+                cutoffCost
             );
 
-            foreach (var targetCell in displayCells)
+            foreach (var (targetCell, path) in dijkstra.nodeToPath)
             {
                 if (targetCell == null)
                     continue;
-
-                if (!dijkstra.nodeToPath.TryGetValue(targetCell, out var path))
+                if (!displayCells.Contains(targetCell))
                     continue;
 
                 var attenuation = EvaluateDistanceAttenuation(path.cost, request);
@@ -409,12 +412,16 @@ public static class StrategicInfluenceMapUtility
 
         if (cell.IsAreaCell())
         {
-            field.areaValues[cell.objectId] = field.areaValues.GetValueOrDefault(cell.objectId) + delta;
+            var value = field.areaValues.GetValueOrDefault(cell.objectId) + delta;
+            field.areaValues[cell.objectId] = value;
+            field.maxAbs = Mathf.Max(field.maxAbs, Mathf.Abs(value));
         }
         else
         {
             var key = (cell.x, cell.y);
-            field.gridValues[key] = field.gridValues.GetValueOrDefault(key) + delta;
+            var value = field.gridValues.GetValueOrDefault(key) + delta;
+            field.gridValues[key] = value;
+            field.maxAbs = Mathf.Max(field.maxAbs, Mathf.Abs(value));
         }
     }
 

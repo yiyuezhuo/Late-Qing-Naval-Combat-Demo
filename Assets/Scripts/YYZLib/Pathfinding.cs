@@ -41,6 +41,32 @@ namespace YYZ.PathFinding
 
     public static class PathFinding<IndexT>
     {
+        class DijkstraQueueNode
+        {
+            public IndexT node;
+            public float cost;
+            public long order;
+        }
+
+        class DijkstraQueueNodeComparer : IComparer<DijkstraQueueNode>
+        {
+            public int Compare(DijkstraQueueNode x, DijkstraQueueNode y)
+            {
+                if (ReferenceEquals(x, y))
+                    return 0;
+                if (x is null)
+                    return -1;
+                if (y is null)
+                    return 1;
+
+                var costCmp = x.cost.CompareTo(y.cost);
+                if (costCmp != 0)
+                    return costCmp;
+
+                return x.order.CompareTo(y.order);
+            }
+        }
+
         static List<IndexT> ReconstructPath(Dictionary<IndexT, IndexT> cameFrom, IndexT current)
         {
             var total_path = new List<IndexT> { current };
@@ -140,70 +166,57 @@ namespace YYZ.PathFinding
             var ret = new DijkstraResult<IndexT>();
 
             var nodeToPath = ret.nodeToPath = new Dictionary<IndexT, Path<IndexT>>();
-            var closeSet = srcIter.ToHashSet();
-            var openSet = new HashSet<IndexT>();
-            foreach(var closed in closeSet)
+            var queue = new SortedSet<DijkstraQueueNode>(new DijkstraQueueNodeComparer());
+            long nextOrder = 0;
+
+            foreach (var src in srcIter ?? Enumerable.Empty<IndexT>())
             {
-                foreach (var node in graph.Neighbors(closed))
-                    openSet.Add(node);
-                nodeToPath[closed] = new Path<IndexT>();
+                if (nodeToPath.TryGetValue(src, out var currentBest) && currentBest.cost <= 0f)
+                    continue;
+
+                nodeToPath[src] = new Path<IndexT>() { cost = 0f };
+                queue.Add(new DijkstraQueueNode
+                {
+                    node = src,
+                    cost = 0f,
+                    order = nextOrder++
+                });
             }
 
-            while(openSet.Count > 0)
+            while (queue.Count > 0)
             {
-                // pick
-                /*
-                openSet.Min(node => 
-                    graph.Neighbors(node).Where(nei => closeSet.Contains(nei)).Select(nei => 
-                        graph.MoveCost(node, nei)
-                    ).Min()
-                );
-                */
+                var current = queue.Min;
+                queue.Remove(current);
 
-                IndexT pickedNode = default(IndexT);
-                IndexT pickedClosedNei = default(IndexT);
-                Path<IndexT> pickedPath = null;
-                float pickedCost = -1;
+                if (!nodeToPath.TryGetValue(current.node, out var currentPath) || current.cost != currentPath.cost)
+                    continue;
 
-                bool picked = false;
-
-                foreach(var openNode in openSet)
+                if (Predicate(current.node))
                 {
-                    foreach(var closedNei in graph.Neighbors(openNode).Where(nei => closeSet.Contains(nei)))
-                    {
-                        var path = nodeToPath[closedNei];
-                        var cost = graph.MoveCost(openNode, closedNei) + path.cost;
-
-                        if(!picked || cost < pickedCost)
-                        {
-                            picked = true;
-
-                            pickedNode = openNode;
-                            pickedClosedNei = closedNei;
-                            pickedPath = path;
-                            pickedCost = cost;
-                        }
-                    }
-                }
-
-                // Asymmetric Graph may raise exception here.
-                nodeToPath[pickedNode] = new Path<IndexT>() { cost = pickedCost, prev = pickedClosedNei };
-
-                if (Predicate(pickedNode))
-                {
-                    ret.pickedNode = pickedNode;
+                    ret.pickedNode = current.node;
                     break;
                 }
 
-                openSet.Remove(pickedNode);
-                closeSet.Add(pickedNode);
-
-                if (budget - pickedCost <= 0) // We allows the value to be negative, but it will not be allowed to "propagate".
+                if (budget - current.cost <= 0) // We allows the value to be negative, but it will not be allowed to "propagate".
                     continue;
 
-                foreach(var nei in graph.Neighbors(pickedNode).Where(nei => !closeSet.Contains(nei)))
+                foreach (var nei in graph.Neighbors(current.node))
                 {
-                    openSet.Add(nei);
+                    var nextCost = current.cost + graph.MoveCost(current.node, nei);
+                    if (nodeToPath.TryGetValue(nei, out var bestPath) && bestPath.cost <= nextCost)
+                        continue;
+
+                    nodeToPath[nei] = new Path<IndexT>()
+                    {
+                        cost = nextCost,
+                        prev = current.node
+                    };
+                    queue.Add(new DijkstraQueueNode
+                    {
+                        node = nei,
+                        cost = nextCost,
+                        order = nextOrder++
+                    });
                 }
             }
             return ret;

@@ -122,6 +122,7 @@ namespace StrategicCombatCore
                 parameterSnapshot = parameterSnapshot ?? new StrategicPowerInfluenceParameterSnapshot(),
                 maxAbs = field.maxAbs,
                 gridValues = field.gridValues
+                    .Where(pair => pair.Value != 0f)
                     .Select(pair => new StrategicPowerInfluenceGridValue
                     {
                         x = pair.Key.x,
@@ -130,6 +131,7 @@ namespace StrategicCombatCore
                     })
                     .ToList(),
                 areaValues = field.areaValues
+                    .Where(pair => pair.Value != 0f)
                     .Select(pair => new StrategicPowerInfluenceAreaValue
                     {
                         areaCellObjectId = pair.Key,

@@ -821,7 +821,8 @@ public static class TorpedoInterceptSolutionDialogSupport
 enum TheaterSelectorDisplayMode
 {
     Membership,
-    Frontline
+    Frontline,
+    WeightRequested
 }
 
 public class DialogRoot : SingletonDocument<DialogRoot>
@@ -1256,7 +1257,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 displayModeDropdownField.choices = new()
                 {
                     Localize("Membership"),
-                    Localize("Frontline")
+                    Localize("Frontline"),
+                    Localize("Weight Requested")
                 };
                 displayModeDropdownField.SetValueWithoutNotify(displayModeDropdownField.choices[(int)selectedDisplayMode]);
             }
@@ -1285,6 +1287,12 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 if (selectedDisplayMode == TheaterSelectorDisplayMode.Frontline)
                 {
                     HexMapShower.Instance?.SetTheaterOverlayTexts(state.BuildTheaterFrontlineOverlayTexts(theater));
+                    return;
+                }
+
+                if (selectedDisplayMode == TheaterSelectorDisplayMode.WeightRequested)
+                {
+                    HexMapShower.Instance?.SetTheaterOverlayTexts(state.BuildTheaterFrontlineWeightRequestedOverlayTexts(theater));
                     return;
                 }
 
@@ -1320,9 +1328,12 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
             displayModeDropdownField?.RegisterValueChangedCallback(_ =>
             {
-                selectedDisplayMode = displayModeDropdownField.index == (int)TheaterSelectorDisplayMode.Frontline
-                    ? TheaterSelectorDisplayMode.Frontline
-                    : TheaterSelectorDisplayMode.Membership;
+                selectedDisplayMode = displayModeDropdownField.index switch
+                {
+                    (int)TheaterSelectorDisplayMode.Frontline => TheaterSelectorDisplayMode.Frontline,
+                    (int)TheaterSelectorDisplayMode.WeightRequested => TheaterSelectorDisplayMode.WeightRequested,
+                    _ => TheaterSelectorDisplayMode.Membership
+                };
                 UpdateTheaterOverlay(theaterListView.selectedItem as Theater);
             });
 
@@ -1365,6 +1376,29 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             root = root,
             template = theaterDetailDialogDocument,
             templateDataSource = theater
+        };
+
+        tempDialog.onCreated += (_, el) =>
+        {
+            var state = StrategicGameState.Instance;
+            var stats = state.GetTheaterFrontlineWeightRequestedStats(theater);
+
+            var frontlineSummaryLabel = el.Q<Label>("FrontlineCellSummaryLabel");
+            var weightMinLabel = el.Q<Label>("FrontlineWeightMinLabel");
+            var weightMaxLabel = el.Q<Label>("FrontlineWeightMaxLabel");
+            var weightAverageLabel = el.Q<Label>("FrontlineWeightAverageLabel");
+            var weightStdDevLabel = el.Q<Label>("FrontlineWeightStdDevLabel");
+
+            if (frontlineSummaryLabel != null)
+                frontlineSummaryLabel.text = stats.frontlineSummary;
+            if (weightMinLabel != null)
+                weightMinLabel.text = StrategicInfluenceMapUtility.FormatValue(stats.min);
+            if (weightMaxLabel != null)
+                weightMaxLabel.text = StrategicInfluenceMapUtility.FormatValue(stats.max);
+            if (weightAverageLabel != null)
+                weightAverageLabel.text = StrategicInfluenceMapUtility.FormatValue(stats.average);
+            if (weightStdDevLabel != null)
+                weightStdDevLabel.text = StrategicInfluenceMapUtility.FormatValue(stats.standardDeviation);
         };
 
         tempDialog.Popup();

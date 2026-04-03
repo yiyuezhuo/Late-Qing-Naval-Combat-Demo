@@ -22,6 +22,30 @@
                 </Bindings>
             </ui:Label>
         </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Label text="Frontline Cells" style="flex-grow: 1;" />
+            <ui:Label name="FrontlineCellSummaryLabel" text="0">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="frontlineCellSummaryText" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Label text="Frontline Weight Min" style="flex-grow: 1;" />
+            <ui:Label name="FrontlineWeightMinLabel" text="0" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Label text="Frontline Weight Max" style="flex-grow: 1;" />
+            <ui:Label name="FrontlineWeightMaxLabel" text="0" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Label text="Frontline Weight Average" style="flex-grow: 1;" />
+            <ui:Label name="FrontlineWeightAverageLabel" text="0" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Label text="Frontline Weight Std Dev" style="flex-grow: 1;" />
+            <ui:Label name="FrontlineWeightStdDevLabel" text="0" />
+        </ui:VisualElement>
         <ui:Button text="Confirm" name="ConfirmButton">
             <Bindings>
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)" />

@@ -5,13 +5,28 @@ using NavalCombatCore;
 
 namespace StrategicCombatCore
 {
+    public class FrontlineCellInfo
+    {
+        [XmlAttribute]
+        public int x;
+
+        [XmlAttribute]
+        public int y;
+
+        [XmlAttribute]
+        public float weightRequested;
+
+        [XmlIgnore]
+        public XY xy => new() { x = x, y = y };
+    }
+
     public partial class Theater : IObjectIdLabeled, INamed
     {
         public string objectId { get; set; }
         public GlobalString name = new();
         public string sideObjectId;
         public List<XY> cells = new();
-        public List<XY> frontlineCells = new();
+        public List<FrontlineCellInfo> frontlineCellInfos = new();
 
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
@@ -26,7 +41,7 @@ namespace StrategicCombatCore
 
         public override string ToString()
         {
-            return $"Theater({name?.GetMergedName()}, {cells?.Count ?? 0}, frontline {frontlineCells?.Count ?? 0})";
+            return $"Theater({name?.GetMergedName()}, {cells?.Count ?? 0}, frontline {frontlineCellInfos?.Count ?? 0})";
         }
     }
 }

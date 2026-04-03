@@ -266,6 +266,11 @@ public static class StrategicInfluenceMapUtility
         return false;
     }
 
+    public static float GetValueAtCell(StrategicInfluenceMapFieldData field, Cell cell)
+    {
+        return GetCellValue(field, cell);
+    }
+
     public static StrategicInfluenceMapFieldData BuildField(StrategicGameState state, StrategicInfluenceMapRequest request)
     {
         var field = new StrategicInfluenceMapFieldData();

@@ -36,6 +36,16 @@ namespace StrategicCombatCore
 
     public class StrategicGameState : AbstractGameState
     {
+        public sealed class TheaterFrontlineWeightRequestedStats
+        {
+            public int frontlineCount;
+            public string frontlineSummary;
+            public float min;
+            public float max;
+            public float average;
+            public float standardDeviation;
+        }
+
         [XmlIgnore]
         public Cell[,] cellMatrix;
 
@@ -1714,7 +1724,7 @@ namespace StrategicCombatCore
                 var scannedTheater = scannedTheaters[candidate.newIndex];
                 oldTheater.sideObjectId = scannedTheater.sideObjectId;
                 oldTheater.cells = scannedTheater.cells;
-                oldTheater.frontlineCells = scannedTheater.frontlineCells;
+                oldTheater.frontlineCellInfos = scannedTheater.frontlineCellInfos;
             }
 
             foreach (var oldIdx in Enumerable.Range(0, oldTheaters.Count))
@@ -1737,6 +1747,8 @@ namespace StrategicCombatCore
                 theaters.Add(newTheater);
                 EntityManager.Instance.Register(newTheater, this);
             }
+
+            RefreshTheaterFrontlineWeightRequested();
         }
 
         public void ClearTheaters()
@@ -1809,8 +1821,7 @@ namespace StrategicCombatCore
                     yield return new Theater()
                     {
                         sideObjectId = side.objectId,
-                        cells = memberCells,
-                        frontlineCells = BuildTheaterFrontlineCells(memberCells)
+                        cells = memberCells
                     };
                 }
             }
@@ -1863,14 +1874,8 @@ namespace StrategicCombatCore
                 return result;
 
             var theaterCellSet = BuildTheaterCellKeySet(theater.cells);
-            var frontlineCells = theater.frontlineCells;
-            if (frontlineCells == null || frontlineCells.Count == 0)
-            {
-                frontlineCells = BuildTheaterFrontlineCells(theater.cells);
-            }
-
-            var passableFrontlineCells = (frontlineCells ?? Enumerable.Empty<XY>())
-                .Select(xy => xy?.GetCell())
+            var passableFrontlineCells = EnumerateFrontlineCells(theater)
+                .Select(cellXY => cellXY?.GetCell())
                 .Where(cell => cell != null && cell.IsGridCell() && cell.IsArmyPassable())
                 .GroupBy(cell => (cell.x, cell.y))
                 .Select(group => group.First())
@@ -1902,6 +1907,209 @@ namespace StrategicCombatCore
             }
 
             return result;
+        }
+
+        public Dictionary<(int, int), float> BuildTheaterFrontlineWeightRequestedValues(Theater theater)
+        {
+            var result = new Dictionary<(int, int), float>();
+            if (theater == null)
+                return result;
+
+            foreach (var info in theater.frontlineCellInfos ?? Enumerable.Empty<FrontlineCellInfo>())
+            {
+                var cell = info?.xy?.GetCell();
+                if (cell == null || !cell.IsGridCell())
+                    continue;
+
+                result[(cell.x, cell.y)] = info.weightRequested;
+            }
+
+            return result;
+        }
+
+        public Dictionary<(int, int), string> BuildTheaterFrontlineWeightRequestedOverlayTexts(Theater theater)
+        {
+            var result = new Dictionary<(int, int), string>();
+            if (theater == null)
+                return result;
+
+            foreach (var cell in (theater.cells ?? Enumerable.Empty<XY>())
+                .Select(xy => xy?.GetCell())
+                .Where(cell => cell != null && cell.IsGridCell())
+                .GroupBy(cell => (cell.x, cell.y))
+                .Select(group => group.First()))
+            {
+                result[(cell.x, cell.y)] = "X";
+            }
+
+            foreach (var cell in EnumerateFrontlineCells(theater)
+                .Select(xy => xy?.GetCell())
+                .Where(cell => cell != null && cell.IsGridCell() && cell.IsArmyPassable())
+                .GroupBy(cell => (cell.x, cell.y))
+                .Select(group => group.First()))
+            {
+                result[(cell.x, cell.y)] = "0";
+            }
+
+            foreach (var (xy, value) in BuildTheaterFrontlineWeightRequestedValues(theater))
+            {
+                result[xy] = StrategicInfluenceMapUtility.FormatValue(value);
+            }
+
+            return result;
+        }
+
+        public TheaterFrontlineWeightRequestedStats GetTheaterFrontlineWeightRequestedStats(Theater theater)
+        {
+            var frontlineCells = EnumerateFrontlineCells(theater).ToList();
+            var storedValueMap = BuildTheaterFrontlineWeightRequestedValues(theater);
+            var values = frontlineCells
+                .Select(xy => xy?.GetCell())
+                .Where(cell => cell != null && cell.IsGridCell() && cell.IsArmyPassable())
+                .GroupBy(cell => (cell.x, cell.y))
+                .Select(group => storedValueMap.GetValueOrDefault(group.Key))
+                .ToList();
+            var stats = new TheaterFrontlineWeightRequestedStats()
+            {
+                frontlineCount = values.Count,
+                frontlineSummary = BuildCellSummaryText(frontlineCells)
+            };
+
+            if (values.Count == 0)
+                return stats;
+
+            stats.min = values.Min();
+            stats.max = values.Max();
+            stats.average = values.Average();
+
+            var variance = values.Sum(value => Math.Pow(value - stats.average, 2f)) / values.Count;
+            stats.standardDeviation = (float)Math.Sqrt(variance);
+            return stats;
+        }
+
+        IEnumerable<SideState> GetHostileSides(SideState side)
+        {
+            if (side == null)
+                yield break;
+
+            foreach (var candidate in sideStates ?? Enumerable.Empty<SideState>())
+            {
+                if (candidate == null || candidate == side)
+                    continue;
+
+                if (IsHostile(side, candidate))
+                    yield return candidate;
+            }
+        }
+
+        static bool IsHostile(SideState left, SideState right)
+        {
+            if (left == null || right == null || left == right)
+                return false;
+
+            return GetDiplomacyState(left, right) == DiplomacyState.War ||
+                   GetDiplomacyState(right, left) == DiplomacyState.War;
+        }
+
+        static DiplomacyState? GetDiplomacyState(SideState from, SideState to)
+        {
+            return from?.diplomacyRelations?
+                .FirstOrDefault(relation => relation?.sideObjectId == to?.objectId)?
+                .state;
+        }
+
+        public string BuildCellSummaryText(IEnumerable<XY> cells)
+        {
+            var cellList = (cells ?? Enumerable.Empty<XY>())
+                .Where(cell => cell != null)
+                .ToList();
+            var count = cellList.Count;
+            if (count <= 0)
+                return "0";
+
+            var names = cellList
+                .Take(3)
+                .Select(cell => GetCellName(cell))
+                .Where(name => !string.IsNullOrWhiteSpace(name))
+                .ToList();
+            if (names.Count == 0)
+                return count.ToString();
+
+            var ellipsis = count > 3 ? "..." : string.Empty;
+            return $"{count} ({string.Join(", ", names)}{ellipsis})";
+        }
+
+        void RefreshTheaterFrontlineWeightRequested()
+        {
+            foreach (var theater in theaters ?? Enumerable.Empty<Theater>())
+            {
+                if (theater == null)
+                    continue;
+
+                theater.frontlineCellInfos = BuildFrontlineCellInfos(theater);
+            }
+        }
+
+        IEnumerable<XY> EnumerateFrontlineCells(Theater theater)
+        {
+            if (theater == null)
+                yield break;
+
+            var hasStoredInfo = false;
+            foreach (var info in theater.frontlineCellInfos ?? Enumerable.Empty<FrontlineCellInfo>())
+            {
+                if (info == null)
+                    continue;
+
+                hasStoredInfo = true;
+                yield return info.xy;
+            }
+
+            if (hasStoredInfo)
+                yield break;
+
+            foreach (var xy in BuildTheaterFrontlineCells(theater.cells))
+            {
+                if (xy != null)
+                    yield return xy;
+            }
+        }
+
+        List<FrontlineCellInfo> BuildFrontlineCellInfos(Theater theater)
+        {
+            var infos = new List<FrontlineCellInfo>();
+            if (theater == null)
+                return infos;
+
+            var hostileFields = GetHostileSides(theater.GetSide())
+                .Select(side =>
+                {
+                    if (StrategicInfluenceMapUtility.TryBuildFieldFromValidPowerCache(side, scenarioState, out var field))
+                        return field;
+
+                    return StrategicInfluenceMapUtility.BuildPowerField(this, side.objectId);
+                })
+                .ToList();
+
+            foreach (var cell in BuildTheaterFrontlineCells(theater.cells)
+                .Select(xy => xy?.GetCell())
+                .Where(cell => cell != null && cell.IsGridCell() && cell.IsArmyPassable())
+                .GroupBy(cell => (cell.x, cell.y))
+                .Select(group => group.First()))
+            {
+                var total = 0f;
+                foreach (var hostileField in hostileFields)
+                    total += StrategicInfluenceMapUtility.GetValueAtCell(hostileField, cell);
+
+                infos.Add(new FrontlineCellInfo
+                {
+                    x = cell.x,
+                    y = cell.y,
+                    weightRequested = total
+                });
+            }
+
+            return infos;
         }
 
         static Dictionary<(int, int), int> BuildTheaterSignedLayerDistances(

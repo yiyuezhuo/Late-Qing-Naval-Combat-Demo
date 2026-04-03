@@ -37628,29 +37628,29 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="36" y="39" />
      <XY x="37" y="39" />
     </cells>
-    <frontlineCells>
-     <XY x="2" y="2" />
-     <XY x="2" y="1" />
-     <XY x="3" y="2" />
-     <XY x="4" y="3" />
-     <XY x="5" y="2" />
-     <XY x="6" y="2" />
-     <XY x="27" y="32" />
-     <XY x="28" y="34" />
-     <XY x="28" y="33" />
-     <XY x="29" y="35" />
-     <XY x="29" y="34" />
-     <XY x="30" y="36" />
-     <XY x="31" y="35" />
-     <XY x="32" y="36" />
-     <XY x="33" y="36" />
-     <XY x="34" y="39" />
-     <XY x="34" y="37" />
-     <XY x="35" y="38" />
-     <XY x="35" y="37" />
-     <XY x="36" y="39" />
-     <XY x="37" y="39" />
-    </frontlineCells>
+    <frontlineCellInfos>
+     <FrontlineCellInfo x="2" y="2" weightRequested="9.624118E-42" />
+     <FrontlineCellInfo x="2" y="1" weightRequested="0" />
+     <FrontlineCellInfo x="3" y="2" weightRequested="0" />
+     <FrontlineCellInfo x="4" y="3" weightRequested="0" />
+     <FrontlineCellInfo x="5" y="2" weightRequested="0" />
+     <FrontlineCellInfo x="6" y="2" weightRequested="0" />
+     <FrontlineCellInfo x="27" y="32" weightRequested="371.629852" />
+     <FrontlineCellInfo x="28" y="34" weightRequested="0.38400352" />
+     <FrontlineCellInfo x="28" y="33" weightRequested="35.1994553" />
+     <FrontlineCellInfo x="29" y="35" weightRequested="4.4833946E-06" />
+     <FrontlineCellInfo x="29" y="34" weightRequested="0.00243250676" />
+     <FrontlineCellInfo x="30" y="36" weightRequested="1.00319838E-07" />
+     <FrontlineCellInfo x="31" y="35" weightRequested="4.17808877E-07" />
+     <FrontlineCellInfo x="32" y="36" weightRequested="7.791562E-08" />
+     <FrontlineCellInfo x="33" y="36" weightRequested="0.000512029568" />
+     <FrontlineCellInfo x="34" y="39" weightRequested="3.16818569E-06" />
+     <FrontlineCellInfo x="34" y="37" weightRequested="2.05836415" />
+     <FrontlineCellInfo x="35" y="38" weightRequested="0.007389307" />
+     <FrontlineCellInfo x="35" y="37" weightRequested="2.05836415" />
+     <FrontlineCellInfo x="36" y="39" weightRequested="0.007389307" />
+     <FrontlineCellInfo x="37" y="39" weightRequested="0.00210973341" />
+    </frontlineCellInfos>
     <objectId>3358843a-2c1b-4018-83bb-aea90a3523c6</objectId>
    </Theater>
    <Theater>
@@ -37663,9 +37663,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <cells>
      <XY x="3" y="1" />
     </cells>
-    <frontlineCells>
-     <XY x="3" y="1" />
-    </frontlineCells>
+    <frontlineCellInfos>
+     <FrontlineCellInfo x="3" y="1" weightRequested="0" />
+    </frontlineCellInfos>
     <objectId>6e4b59a9-73cf-434f-acd1-296b3590070c</objectId>
    </Theater>
    <Theater>
@@ -37680,10 +37680,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="4" y="2" />
      <XY x="5" y="1" />
     </cells>
-    <frontlineCells>
-     <XY x="4" y="2" />
-     <XY x="5" y="1" />
-    </frontlineCells>
+    <frontlineCellInfos>
+     <FrontlineCellInfo x="4" y="2" weightRequested="0" />
+     <FrontlineCellInfo x="5" y="1" weightRequested="0" />
+    </frontlineCellInfos>
     <objectId>38de578b-801d-4631-8acc-22fb86cafe20</objectId>
    </Theater>
    <Theater>
@@ -37716,7 +37716,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="20" y="6" />
      <XY x="21" y="5" />
     </cells>
-    <frontlineCells />
+    <frontlineCellInfos />
     <objectId>4c8fb4b6-5627-463f-b7e2-e641eed208f3</objectId>
    </Theater>
    <Theater>
@@ -37732,7 +37732,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="26" y="5" />
      <XY x="26" y="4" />
     </cells>
-    <frontlineCells />
+    <frontlineCellInfos />
     <objectId>4007df9b-f540-4110-b76b-2dc51448a45f</objectId>
    </Theater>
    <Theater>
@@ -37745,7 +37745,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <cells>
      <XY x="28" y="5" />
     </cells>
-    <frontlineCells />
+    <frontlineCellInfos />
     <objectId>d71aba50-dda6-4e7d-8ca8-7051a44b4bdd</objectId>
    </Theater>
    <Theater>
@@ -37759,7 +37759,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="30" y="21" />
      <XY x="31" y="20" />
     </cells>
-    <frontlineCells />
+    <frontlineCellInfos />
     <objectId>f1de3514-b5f9-4119-9044-48577da73fbb</objectId>
    </Theater>
    <Theater>
@@ -37772,9 +37772,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <cells>
      <XY x="31" y="27" />
     </cells>
-    <frontlineCells>
-     <XY x="31" y="27" />
-    </frontlineCells>
+    <frontlineCellInfos>
+     <FrontlineCellInfo x="31" y="27" weightRequested="1109.48181" />
+    </frontlineCellInfos>
     <objectId>652cddb8-33f3-4b00-93ab-fcd26acc0f49</objectId>
    </Theater>
    <Theater>
@@ -37787,9 +37787,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <cells>
      <XY x="31" y="28" />
     </cells>
-    <frontlineCells>
-     <XY x="31" y="28" />
-    </frontlineCells>
+    <frontlineCellInfos>
+     <FrontlineCellInfo x="31" y="28" weightRequested="403.5515" />
+    </frontlineCellInfos>
     <objectId>74b6fe0d-0a0e-49ec-817c-56ecd201387f</objectId>
    </Theater>
    <Theater>
@@ -37805,7 +37805,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="34" y="8" />
      <XY x="34" y="9" />
     </cells>
-    <frontlineCells />
+    <frontlineCellInfos />
     <objectId>c229ceb1-2e53-4f06-b30b-1b7388ed0860</objectId>
    </Theater>
    <Theater>
@@ -37822,7 +37822,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="36" y="12" />
      <XY x="37" y="11" />
     </cells>
-    <frontlineCells />
+    <frontlineCellInfos />
     <objectId>84ac2083-b918-4ab8-906b-e30a4a357385</objectId>
    </Theater>
    <Theater>
@@ -38013,7 +38013,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="59" y="39" />
      <XY x="59" y="38" />
     </cells>
-    <frontlineCells />
+    <frontlineCellInfos />
     <objectId>a73da4dd-05f8-4868-aca5-acf5bab5e3ad</objectId>
    </Theater>
    <Theater>
@@ -38038,11 +38038,11 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="43" y="38" />
      <XY x="44" y="39" />
     </cells>
-    <frontlineCells>
-     <XY x="37" y="37" />
-     <XY x="37" y="38" />
-     <XY x="38" y="39" />
-    </frontlineCells>
+    <frontlineCellInfos>
+     <FrontlineCellInfo x="37" y="37" weightRequested="0" />
+     <FrontlineCellInfo x="37" y="38" weightRequested="0" />
+     <FrontlineCellInfo x="38" y="39" weightRequested="0" />
+    </frontlineCellInfos>
     <objectId>92c0d12a-731c-431d-906b-d5e534cf451f</objectId>
    </Theater>
   </theaters>

@@ -425,17 +425,47 @@ namespace StrategicCombatCore
         public float GetShipTons() => subordinatesCombined.Sum(r => r.GetShipTons());
         public float GetCombatShipTons() => WalkGroupMembersDeployedShips().Select(shipLog => shipLog.shipClass).Where(shipClass => shipClass.IsCombatShip()).Sum(shipClass => shipClass.displacementTons);
         // WalkGroupMembersDeployedShips
+        public IEnumerable<IStrategicGroupMemberReferenceable> WalkDirectMembers()
+        {
+            foreach (var subordinateRef in subordinatesCombined)
+            {
+                var subordinate = subordinateRef.Get();
+                if (subordinate != null)
+                    yield return subordinate;
+            }
+        }
+
+        public IEnumerable<T> WalkDirectMembers<T>() where T : class, IStrategicGroupMemberReferenceable
+        {
+            foreach (var subordinate in WalkDirectMembers())
+            {
+                if (subordinate is T obj)
+                    yield return obj;
+            }
+        }
+
         public IEnumerable<StrategicGroup> WalkSelfAndDescendantStrategicGroups()
         {
             yield return this;
 
-            foreach (var subordinateRef in subordinatesCombined)
+            foreach (var subGroup in WalkDirectMembers<StrategicGroup>())
             {
-                if (subordinateRef.Get() is not StrategicGroup subGroup)
-                    continue;
-
                 foreach (var nestedGroup in subGroup.WalkSelfAndDescendantStrategicGroups())
                     yield return nestedGroup;
+            }
+        }
+
+        public IEnumerable<StrategicGroup> WalkDescendantStrategicGroups(bool includeNotCombined = false)
+        {
+            foreach (var subGroup in WalkDirectMembers<StrategicGroup>())
+            {
+                yield return subGroup;
+
+                if (includeNotCombined || subGroup.deployState == DeployState.Combined)
+                {
+                    foreach (var nestedGroup in subGroup.WalkDescendantStrategicGroups(includeNotCombined))
+                        yield return nestedGroup;
+                }
             }
         }
 
@@ -899,10 +929,8 @@ namespace StrategicCombatCore
 
         public IEnumerable<T> WalkGroupMembers<T>(bool includeNotCombined=false) where T : IStrategicGroupMemberReferenceable
         {
-            foreach (var subordinateRef in subordinatesCombined)
+            foreach (var subordinate in WalkDirectMembers())
             {
-                var subordinate = subordinateRef.Get();
-
                 if (subordinate is T obj && obj != null)
                     yield return obj;
 

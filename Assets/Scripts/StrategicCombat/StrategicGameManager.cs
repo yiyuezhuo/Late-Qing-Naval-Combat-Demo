@@ -1059,23 +1059,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         if (rootGroup == null)
             yield break;
 
-        foreach (var subordinateReference in rootGroup.subordinatesCombined)
+        foreach (var subordinateGroup in rootGroup.WalkDescendantStrategicGroups())
         {
-            if (subordinateReference.Get() is not StrategicGroup subordinateGroup)
-                continue;
-
             if (subordinateGroup.deployState == StrategicGroup.DeployState.Independent)
             {
                 yield return subordinateGroup;
-                continue;
-            }
-
-            if (subordinateGroup.deployState != StrategicGroup.DeployState.Combined)
-                continue;
-
-            foreach (var nestedSubordinate in EnumerateDisplayedIndependentSubordinates(subordinateGroup))
-            {
-                yield return nestedSubordinate;
             }
         }
     }

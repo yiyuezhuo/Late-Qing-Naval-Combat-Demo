@@ -802,17 +802,11 @@ public class StrategicGroupTransferDialog
 
     IEnumerable<StrategicGroup> WalkCombinedChildren(StrategicGroup group)
     {
-        foreach (var subordinateReference in group.subordinatesCombined)
+        foreach (var subordinateGroup in group.WalkDescendantStrategicGroups())
         {
-            if (subordinateReference.Get() is not StrategicGroup subordinateGroup ||
-                subordinateGroup.deployState != StrategicGroup.DeployState.Combined)
-                continue;
-
-            yield return subordinateGroup;
-
-            foreach (var nestedGroup in WalkCombinedChildren(subordinateGroup))
+            if (subordinateGroup.deployState == StrategicGroup.DeployState.Combined)
             {
-                yield return nestedGroup;
+                yield return subordinateGroup;
             }
         }
     }

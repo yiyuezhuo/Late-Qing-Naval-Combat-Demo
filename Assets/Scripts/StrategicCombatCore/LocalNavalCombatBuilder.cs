@@ -39,12 +39,9 @@ namespace StrategicCombatCore
             shipGroup.parentObjectId = parentShipGroup.objectId;
             parentShipGroup.childrenObjectIds.Add(shipGroup.objectId);
 
-            foreach (var subordinateRef in strategicGroup.subordinatesCombined)
+            foreach (var shipLog in strategicGroup.WalkDirectMembers<ShipLog>())
             {
-                var subordinate = subordinateRef.Get();
-                var shipLog = subordinate as ShipLog;
-                // if (shipLog != null)
-                if (shipLog != null && shipLog.mapState == MapState.Deployed)
+                if (shipLog.mapState == MapState.Deployed)
                 {
                     var shipLogCloned = XmlUtils.FromXML<ShipLog>(XmlUtils.ToXML(shipLog));
                     shipLogCloned.ClearLogs(); // Detach old logs for sandboxing
@@ -80,8 +77,11 @@ namespace StrategicCombatCore
                     shipGroup.childrenObjectIds.Add(shipLogCloned.objectId);
                     // TODO: Other setup for ShipLog in tactical?
                 }
-                var subStrategicGroup = subordinate as StrategicGroup;
-                if (subStrategicGroup != null && subStrategicGroup.deployState == StrategicGroup.DeployState.Combined && subStrategicGroup.type == StrategicGroup.Type.Fleet)
+            }
+
+            foreach (var subStrategicGroup in strategicGroup.WalkDirectMembers<StrategicGroup>())
+            {
+                if (subStrategicGroup.deployState == StrategicGroup.DeployState.Combined && subStrategicGroup.type == StrategicGroup.Type.Fleet)
                 {
                     Scan(shipGroup, subStrategicGroup);
                 }

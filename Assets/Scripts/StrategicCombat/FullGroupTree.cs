@@ -17,11 +17,9 @@ public class FullGroupTree : ITree<IStrategicGroupMemberReferenceable, string>
     {
         if (node is StrategicGroup group)
         {
-            foreach (var sub in group.subordinatesCombined)
+            foreach (var obj in group.WalkDirectMembers())
             {
-                var obj = sub.Get();
-                if (obj != null)
-                    yield return obj;
+                yield return obj;
             }
         }
     }
@@ -78,14 +76,8 @@ public class FullGroupTreeNameLink : ITree<IStrategicGroupMemberReferenceable, I
     {
         if (node is StrategicGroup group)
         {
-            foreach (var sub in group.subordinatesCombined)
+            foreach (var obj in group.WalkDirectMembers())
             {
-                var obj = sub.Get();
-                if (obj == null)
-                {
-                    continue;
-                }
-
                 if (obj is StrategicGroup subGroup && subGroup.type == StrategicGroup.Type.Base)
                 {
                     foreach (var visibleChild in GetChildren(subGroup))

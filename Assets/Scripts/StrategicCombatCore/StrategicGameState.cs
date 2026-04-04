@@ -1463,12 +1463,27 @@ namespace StrategicCombatCore
                     continue;
 
                 var parentGroup = group.parentGroupReference.Get();
-                if (parentGroup == null || parentGroup.cell != group.cell)
+                if (parentGroup == null)
                     continue;
 
                 foreach (var memberRef in group.subordinatesCombined.ToList())
                 {
-                    if (memberRef.Get() is ShipLog shipLog && !StrategicGroupSubGroupUtility.NeedsDetachForRepair(shipLog))
+                    if (memberRef.Get() is not ShipLog shipLog || StrategicGroupSubGroupUtility.NeedsDetachForRepair(shipLog))
+                        continue;
+
+                    var member = (IStrategicGroupMemberReferenceable)shipLog;
+                    var detachedFromGroup = member.GetDetachedFromGroup();
+                    if (detachedFromGroup != null)
+                    {
+                        if (member.IsOnSameCellWithDetachedFromGroup())
+                        {
+                            IStrategicGroupMemberReferenceable.TryReattachToDetachedFromGroup(shipLog);
+                        }
+
+                        continue;
+                    }
+
+                    if (parentGroup.cell == group.cell)
                     {
                         group.MoveElementTo(shipLog, parentGroup);
                     }

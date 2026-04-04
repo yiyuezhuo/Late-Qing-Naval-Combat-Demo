@@ -284,6 +284,16 @@ public static class StrategicGroupSubGroupUtility
             .ToList();
     }
 
+    public static List<ShipLog> CollectCombinedHierarchyShipsNeedingDetach(StrategicGroup group)
+    {
+        if (group == null)
+            return new();
+
+        return group.WalkGroupMembersDeployedShips()
+            .Where(NeedsDetachForRepair)
+            .ToList();
+    }
+
     public static string BuildDetachDamagedShipList(IEnumerable<ShipLog> shipLogs)
     {
         return string.Join("\n", shipLogs.Select(shipLog =>

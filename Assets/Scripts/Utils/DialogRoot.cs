@@ -3243,7 +3243,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             return;
         }
 
-        var detachedShips = StrategicGroupSubGroupUtility.CollectDirectSubordinateShipsNeedingDetach(initialGroup);
+        var detachedShips = StrategicGroupSubGroupUtility.CollectCombinedHierarchyShipsNeedingDetach(initialGroup);
         if (detachedShips.Count == 0)
         {
             PopupMessageDialog(Localize("No ships require detach for repair."));
@@ -3263,7 +3263,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
                 foreach (var shipLog in detachedShips)
                 {
-                    initialGroup.MoveElementTo(shipLog, newGroup);
+                    IStrategicGroupMemberReferenceable.TemporaryAttachTo(shipLog, newGroup);
                 }
 
                 newGroup.StartReturnToBase(0);
